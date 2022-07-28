@@ -16,28 +16,37 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SalesOrderListState {
+  List<SalesOrder> get salesOrderList => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function(List<SalesOrder> salesOrderList) loadSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(List<SalesOrder> salesOrderList) initial,
+    required TResult Function(List<SalesOrder> salesOrderList) loadInProgress,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, bool isNextPageAvailable)
+        loadSuccess,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, JbmMobileFailure failure)
+        loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +75,10 @@ mixin _$SalesOrderListState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SalesOrderListStateCopyWith<SalesOrderListState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -73,6 +86,7 @@ abstract class $SalesOrderListStateCopyWith<$Res> {
   factory $SalesOrderListStateCopyWith(
           SalesOrderListState value, $Res Function(SalesOrderListState) then) =
       _$SalesOrderListStateCopyWithImpl<$Res>;
+  $Res call({List<SalesOrder> salesOrderList});
 }
 
 /// @nodoc
@@ -83,13 +97,28 @@ class _$SalesOrderListStateCopyWithImpl<$Res>
   final SalesOrderListState _value;
   // ignore: unused_field
   final $Res Function(SalesOrderListState) _then;
+
+  @override
+  $Res call({
+    Object? salesOrderList = freezed,
+  }) {
+    return _then(_value.copyWith(
+      salesOrderList: salesOrderList == freezed
+          ? _value.salesOrderList
+          : salesOrderList // ignore: cast_nullable_to_non_nullable
+              as List<SalesOrder>,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
+abstract class _$$_InitialCopyWith<$Res>
+    implements $SalesOrderListStateCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+  @override
+  $Res call({List<SalesOrder> salesOrderList});
 }
 
 /// @nodoc
@@ -101,60 +130,98 @@ class __$$_InitialCopyWithImpl<$Res>
 
   @override
   _$_Initial get _value => super._value as _$_Initial;
+
+  @override
+  $Res call({
+    Object? salesOrderList = freezed,
+  }) {
+    return _then(_$_Initial(
+      salesOrderList == freezed
+          ? _value._salesOrderList
+          : salesOrderList // ignore: cast_nullable_to_non_nullable
+              as List<SalesOrder>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
+  const _$_Initial(final List<SalesOrder> salesOrderList)
+      : _salesOrderList = salesOrderList,
+        super._();
+
+  final List<SalesOrder> _salesOrderList;
+  @override
+  List<SalesOrder> get salesOrderList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_salesOrderList);
+  }
 
   @override
   String toString() {
-    return 'SalesOrderListState.initial()';
+    return 'SalesOrderListState.initial(salesOrderList: $salesOrderList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_Initial &&
+            const DeepCollectionEquality()
+                .equals(other._salesOrderList, _salesOrderList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_salesOrderList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function(List<SalesOrder> salesOrderList) loadSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(List<SalesOrder> salesOrderList) initial,
+    required TResult Function(List<SalesOrder> salesOrderList) loadInProgress,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, bool isNextPageAvailable)
+        loadSuccess,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, JbmMobileFailure failure)
+        loadFailure,
   }) {
-    return initial();
+    return initial(salesOrderList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
   }) {
-    return initial?.call();
+    return initial?.call(salesOrderList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(salesOrderList);
     }
     return orElse();
   }
@@ -198,15 +265,25 @@ class _$_Initial extends _Initial {
 }
 
 abstract class _Initial extends SalesOrderListState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial(final List<SalesOrder> salesOrderList) = _$_Initial;
   const _Initial._() : super._();
+
+  @override
+  List<SalesOrder> get salesOrderList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadInProgressCopyWith<$Res> {
+abstract class _$$_LoadInProgressCopyWith<$Res>
+    implements $SalesOrderListStateCopyWith<$Res> {
   factory _$$_LoadInProgressCopyWith(
           _$_LoadInProgress value, $Res Function(_$_LoadInProgress) then) =
       __$$_LoadInProgressCopyWithImpl<$Res>;
+  @override
+  $Res call({List<SalesOrder> salesOrderList});
 }
 
 /// @nodoc
@@ -219,60 +296,98 @@ class __$$_LoadInProgressCopyWithImpl<$Res>
 
   @override
   _$_LoadInProgress get _value => super._value as _$_LoadInProgress;
+
+  @override
+  $Res call({
+    Object? salesOrderList = freezed,
+  }) {
+    return _then(_$_LoadInProgress(
+      salesOrderList == freezed
+          ? _value._salesOrderList
+          : salesOrderList // ignore: cast_nullable_to_non_nullable
+              as List<SalesOrder>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_LoadInProgress extends _LoadInProgress {
-  const _$_LoadInProgress() : super._();
+  const _$_LoadInProgress(final List<SalesOrder> salesOrderList)
+      : _salesOrderList = salesOrderList,
+        super._();
+
+  final List<SalesOrder> _salesOrderList;
+  @override
+  List<SalesOrder> get salesOrderList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_salesOrderList);
+  }
 
   @override
   String toString() {
-    return 'SalesOrderListState.loadInProgress()';
+    return 'SalesOrderListState.loadInProgress(salesOrderList: $salesOrderList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadInProgress);
+        (other.runtimeType == runtimeType &&
+            other is _$_LoadInProgress &&
+            const DeepCollectionEquality()
+                .equals(other._salesOrderList, _salesOrderList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_salesOrderList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LoadInProgressCopyWith<_$_LoadInProgress> get copyWith =>
+      __$$_LoadInProgressCopyWithImpl<_$_LoadInProgress>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function(List<SalesOrder> salesOrderList) loadSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(List<SalesOrder> salesOrderList) initial,
+    required TResult Function(List<SalesOrder> salesOrderList) loadInProgress,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, bool isNextPageAvailable)
+        loadSuccess,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, JbmMobileFailure failure)
+        loadFailure,
   }) {
-    return loadInProgress();
+    return loadInProgress(salesOrderList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
   }) {
-    return loadInProgress?.call();
+    return loadInProgress?.call(salesOrderList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
-      return loadInProgress();
+      return loadInProgress(salesOrderList);
     }
     return orElse();
   }
@@ -316,16 +431,26 @@ class _$_LoadInProgress extends _LoadInProgress {
 }
 
 abstract class _LoadInProgress extends SalesOrderListState {
-  const factory _LoadInProgress() = _$_LoadInProgress;
+  const factory _LoadInProgress(final List<SalesOrder> salesOrderList) =
+      _$_LoadInProgress;
   const _LoadInProgress._() : super._();
+
+  @override
+  List<SalesOrder> get salesOrderList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LoadInProgressCopyWith<_$_LoadInProgress> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_SyncSuccessCopyWith<$Res> {
+abstract class _$$_SyncSuccessCopyWith<$Res>
+    implements $SalesOrderListStateCopyWith<$Res> {
   factory _$$_SyncSuccessCopyWith(
           _$_SyncSuccess value, $Res Function(_$_SyncSuccess) then) =
       __$$_SyncSuccessCopyWithImpl<$Res>;
-  $Res call({List<SalesOrder> salesOrderList});
+  @override
+  $Res call({List<SalesOrder> salesOrderList, bool isNextPageAvailable});
 }
 
 /// @nodoc
@@ -342,12 +467,17 @@ class __$$_SyncSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? salesOrderList = freezed,
+    Object? isNextPageAvailable = freezed,
   }) {
     return _then(_$_SyncSuccess(
       salesOrderList == freezed
           ? _value._salesOrderList
           : salesOrderList // ignore: cast_nullable_to_non_nullable
               as List<SalesOrder>,
+      isNextPageAvailable == freezed
+          ? _value.isNextPageAvailable
+          : isNextPageAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -355,7 +485,8 @@ class __$$_SyncSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SyncSuccess extends _SyncSuccess {
-  const _$_SyncSuccess(final List<SalesOrder> salesOrderList)
+  const _$_SyncSuccess(
+      final List<SalesOrder> salesOrderList, this.isNextPageAvailable)
       : _salesOrderList = salesOrderList,
         super._();
 
@@ -367,8 +498,11 @@ class _$_SyncSuccess extends _SyncSuccess {
   }
 
   @override
+  final bool isNextPageAvailable;
+
+  @override
   String toString() {
-    return 'SalesOrderListState.loadSuccess(salesOrderList: $salesOrderList)';
+    return 'SalesOrderListState.loadSuccess(salesOrderList: $salesOrderList, isNextPageAvailable: $isNextPageAvailable)';
   }
 
   @override
@@ -377,12 +511,16 @@ class _$_SyncSuccess extends _SyncSuccess {
         (other.runtimeType == runtimeType &&
             other is _$_SyncSuccess &&
             const DeepCollectionEquality()
-                .equals(other._salesOrderList, _salesOrderList));
+                .equals(other._salesOrderList, _salesOrderList) &&
+            const DeepCollectionEquality()
+                .equals(other.isNextPageAvailable, isNextPageAvailable));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_salesOrderList));
+      runtimeType,
+      const DeepCollectionEquality().hash(_salesOrderList),
+      const DeepCollectionEquality().hash(isNextPageAvailable));
 
   @JsonKey(ignore: true)
   @override
@@ -392,36 +530,44 @@ class _$_SyncSuccess extends _SyncSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function(List<SalesOrder> salesOrderList) loadSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(List<SalesOrder> salesOrderList) initial,
+    required TResult Function(List<SalesOrder> salesOrderList) loadInProgress,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, bool isNextPageAvailable)
+        loadSuccess,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, JbmMobileFailure failure)
+        loadFailure,
   }) {
-    return loadSuccess(salesOrderList);
+    return loadSuccess(salesOrderList, isNextPageAvailable);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
   }) {
-    return loadSuccess?.call(salesOrderList);
+    return loadSuccess?.call(salesOrderList, isNextPageAvailable);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(salesOrderList);
+      return loadSuccess(salesOrderList, isNextPageAvailable);
     }
     return orElse();
   }
@@ -465,22 +611,27 @@ class _$_SyncSuccess extends _SyncSuccess {
 }
 
 abstract class _SyncSuccess extends SalesOrderListState {
-  const factory _SyncSuccess(final List<SalesOrder> salesOrderList) =
-      _$_SyncSuccess;
+  const factory _SyncSuccess(final List<SalesOrder> salesOrderList,
+      final bool isNextPageAvailable) = _$_SyncSuccess;
   const _SyncSuccess._() : super._();
 
+  @override
   List<SalesOrder> get salesOrderList;
+  bool get isNextPageAvailable;
+  @override
   @JsonKey(ignore: true)
   _$$_SyncSuccessCopyWith<_$_SyncSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadFailureCopyWith<$Res> {
+abstract class _$$_LoadFailureCopyWith<$Res>
+    implements $SalesOrderListStateCopyWith<$Res> {
   factory _$$_LoadFailureCopyWith(
           _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
       __$$_LoadFailureCopyWithImpl<$Res>;
-  $Res call({JbmMobileFailure failure});
+  @override
+  $Res call({List<SalesOrder> salesOrderList, JbmMobileFailure failure});
 
   $JbmMobileFailureCopyWith<$Res> get failure;
 }
@@ -498,9 +649,14 @@ class __$$_LoadFailureCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? salesOrderList = freezed,
     Object? failure = freezed,
   }) {
     return _then(_$_LoadFailure(
+      salesOrderList == freezed
+          ? _value._salesOrderList
+          : salesOrderList // ignore: cast_nullable_to_non_nullable
+              as List<SalesOrder>,
       failure == freezed
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -519,14 +675,23 @@ class __$$_LoadFailureCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoadFailure extends _LoadFailure {
-  const _$_LoadFailure(this.failure) : super._();
+  const _$_LoadFailure(final List<SalesOrder> salesOrderList, this.failure)
+      : _salesOrderList = salesOrderList,
+        super._();
+
+  final List<SalesOrder> _salesOrderList;
+  @override
+  List<SalesOrder> get salesOrderList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_salesOrderList);
+  }
 
   @override
   final JbmMobileFailure failure;
 
   @override
   String toString() {
-    return 'SalesOrderListState.loadFailure(failure: $failure)';
+    return 'SalesOrderListState.loadFailure(salesOrderList: $salesOrderList, failure: $failure)';
   }
 
   @override
@@ -534,12 +699,16 @@ class _$_LoadFailure extends _LoadFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadFailure &&
+            const DeepCollectionEquality()
+                .equals(other._salesOrderList, _salesOrderList) &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_salesOrderList),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
@@ -549,36 +718,44 @@ class _$_LoadFailure extends _LoadFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function(List<SalesOrder> salesOrderList) loadSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(List<SalesOrder> salesOrderList) initial,
+    required TResult Function(List<SalesOrder> salesOrderList) loadInProgress,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, bool isNextPageAvailable)
+        loadSuccess,
+    required TResult Function(
+            List<SalesOrder> salesOrderList, JbmMobileFailure failure)
+        loadFailure,
   }) {
-    return loadFailure(failure);
+    return loadFailure(salesOrderList, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
   }) {
-    return loadFailure?.call(failure);
+    return loadFailure?.call(salesOrderList, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<SalesOrder> salesOrderList)? loadSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(List<SalesOrder> salesOrderList)? initial,
+    TResult Function(List<SalesOrder> salesOrderList)? loadInProgress,
+    TResult Function(List<SalesOrder> salesOrderList, bool isNextPageAvailable)?
+        loadSuccess,
+    TResult Function(List<SalesOrder> salesOrderList, JbmMobileFailure failure)?
+        loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
-      return loadFailure(failure);
+      return loadFailure(salesOrderList, failure);
     }
     return orElse();
   }
@@ -622,10 +799,14 @@ class _$_LoadFailure extends _LoadFailure {
 }
 
 abstract class _LoadFailure extends SalesOrderListState {
-  const factory _LoadFailure(final JbmMobileFailure failure) = _$_LoadFailure;
+  const factory _LoadFailure(final List<SalesOrder> salesOrderList,
+      final JbmMobileFailure failure) = _$_LoadFailure;
   const _LoadFailure._() : super._();
 
+  @override
+  List<SalesOrder> get salesOrderList;
   JbmMobileFailure get failure;
+  @override
   @JsonKey(ignore: true)
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;

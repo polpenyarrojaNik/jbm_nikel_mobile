@@ -21,9 +21,9 @@ _$_SalesOrderDTO _$$_SalesOrderDTOFromJson(Map<String, dynamic> json) =>
       state: json['PROVINCIA'] as String?,
       countryId: json['PAIS_ID'] as String?,
       divisaId: json['DIVISA_ID'] as String,
-      taxBase: json['BASE_IMPONIBLE'] as String? ?? '0',
-      ivaAmount: json['IMPORTE_IVA'] as String? ?? '0',
-      total: json['TOTAL'] as String? ?? '0',
+      taxBase: (json['BASE_IMPONIBLE'] as num).toDouble(),
+      ivaAmount: (json['IMPORTE_IVA'] as num).toDouble(),
+      total: (json['TOTAL'] as num).toDouble(),
       lastUpdated: json['LAST_UPDATED'] == null
           ? null
           : DateTime.parse(json['LAST_UPDATED'] as String),

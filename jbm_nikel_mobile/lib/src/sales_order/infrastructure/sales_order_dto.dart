@@ -24,9 +24,9 @@ class SalesOrderDTO with _$SalesOrderDTO {
     @JsonKey(name: 'PROVINCIA') required String? state,
     @JsonKey(name: 'PAIS_ID') required String? countryId,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
-    @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0') required String taxBase,
-    @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0') required String ivaAmount,
-    @JsonKey(name: 'TOTAL', defaultValue: '0') required String total,
+    @JsonKey(name: 'BASE_IMPONIBLE') required double taxBase,
+    @JsonKey(name: 'IMPORTE_IVA') required double ivaAmount,
+    @JsonKey(name: 'TOTAL') required double total,
     @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
         required DateTime? lastUpdated,
     @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
@@ -51,12 +51,34 @@ class SalesOrderDTO with _$SalesOrderDTO {
       state: _.state,
       countryId: _.countryId,
       divisaId: _.divisaId,
-      taxBase: _.taxBase.toString(),
-      ivaAmount: _.ivaAmount.toString(),
-      total: _.total.toString(),
+      taxBase: _.taxBase.amount.toDecimal().toDouble(),
+      ivaAmount: _.ivaAmount.amount.toDecimal().toDouble(),
+      total: _.total.amount.toDecimal().toDouble(),
       lastUpdated: _.lastUpdated,
       deleted: _.deleted,
     );
+  }
+
+  factory SalesOrderDTO.fromDB(Map<String, dynamic> json) {
+    return SalesOrderDTO(
+        companyId: json['companyId'],
+        salesOrderId: json['salesOrderId'],
+        salesOrderDate: DateTime.parse(json['salesOrderDate']),
+        salesType: json['salesType'],
+        customerId: json['customerId'],
+        customerName: json['customerName'],
+        shippingAddress1: json['shippingAddress1'],
+        shippingAddress2: json['shippingAddress2'],
+        zipCode: json['zipCode'],
+        city: json['city'],
+        state: json['state'],
+        countryId: json['countryId'],
+        divisaId: json['divisaId'],
+        taxBase: json['taxBase'],
+        ivaAmount: json['ivaAmount'],
+        total: json['total'],
+        lastUpdated: DateTime.parse(json['lastUpdated']),
+        deleted: (json['deleted'] == 'S') ? true : false);
   }
 
   SalesOrder toDomain() {
@@ -74,17 +96,11 @@ class SalesOrderDTO with _$SalesOrderDTO {
         state: state,
         countryId: countryId,
         divisaId: divisaId,
-        taxBase: taxBase.parseMoney(divisaId),
-        ivaAmount: ivaAmount.parseMoney(divisaId),
-        total: total.parseMoney(divisaId),
+        taxBase: taxBase.parseMoney(taxBase, divisaId),
+        ivaAmount: ivaAmount.parseMoney(ivaAmount, divisaId),
+        total: total.parseMoney(total, divisaId),
         lastUpdated: lastUpdated,
         deleted: deleted);
-  }
-
-  Map<String, dynamic> toSembast() {
-    final json = toJson();
-    json.remove('NUM_PED_CLI');
-    return json;
   }
 
   static bool _boolFromString(String value) => value == 'S';

@@ -2,11 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/sync/presentation/sync_page_controller.dart';
 
-class SyncPage extends ConsumerWidget {
+class SyncPage extends ConsumerStatefulWidget {
   const SyncPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SyncPage> createState() => _SyncPageState();
+}
+
+class _SyncPageState extends ConsumerState<SyncPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(
+        () => ref.read(syncPageStateNotifier.notifier).syncValuesInLocalDB());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(syncPageStateNotifier);
 
     return Scaffold(

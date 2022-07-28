@@ -12,5 +12,6 @@ class RemoteResponse<T> with _$RemoteResponse<T> {
   const factory RemoteResponse.withNewData(
     T data, {
     required int maxPage,
+    required int totalRows,
   }) = _WithNewData<T>;
 }

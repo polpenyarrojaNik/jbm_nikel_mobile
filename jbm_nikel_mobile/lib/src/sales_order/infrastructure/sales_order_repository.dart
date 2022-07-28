@@ -17,14 +17,18 @@ class SalesOrderListRepository {
   SalesOrderListRepository(this._localService);
 
   Future<Either<JbmMobileFailure, Fresh<List<SalesOrder>>>>
-      getSalesOrderListPage({required int page}) async {
-    final List<SalesOrder> salesOrder = [];
+      getSalesOrderListPage({required int page, required int pageSize}) async {
     try {
-      final salesOrderLocalItems =
-          await _localService.getSalesOrderLocal(page: page, pageSize: 50);
+      final salesOrderDTOLocalItems =
+          await _localService.getSalesOrder(page: page, pageSize: pageSize);
+
+      final salesOrderCount = await _localService.getSalesOrderCount();
+
+      print(salesOrderCount);
+
       return right(Fresh.yes(
-        salesOrder,
-      ));
+          salesOrderDTOLocalItems.map((e) => e.toDomain()).toList(),
+          isNextPageAvailable: page < (salesOrderCount / pageSize)));
     } on RestApiException catch (e) {
       log.severe(e.message, e, e.stackTrace);
       return left(JbmMobileFailure.api(e.errorCode, e.message));

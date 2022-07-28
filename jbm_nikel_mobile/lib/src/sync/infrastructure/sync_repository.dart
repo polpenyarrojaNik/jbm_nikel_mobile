@@ -20,33 +20,59 @@ class SyncRepository {
   Future<Either<JbmMobileFailure, Unit>> syncAllSalesOrder() async {
     int page = 1;
     bool isNextPageAvailable = true;
+    int? _totalRows;
 
     try {
+      final dbSysdateStr = await _remoteService.getDbSysdate(
+          requestUri: Uri.http(
+            dotenv.get('URL', fallback: 'loclahost:3001'),
+            '/api/v1/date',
+          ),
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await _localService.getLastSyncSalesOrderDate();
       while (isNextPageAvailable) {
+        final query = {
+          'page': '$page',
+          'pageSize': '100',
+          'sysdate': dbSysdateStr
+        };
+
+        if (lastSyncDate != null) {
+          query.addAll({'lastSyncDate': lastSyncDate});
+        }
+
+        if (_totalRows != null) {
+          query.addAll({'totalRows': '$_totalRows'});
+        }
         final remotePageItems = await _remoteService.syncAllSalesOrder(
-            requestUri: Uri.https(
-              dotenv.get('URL', fallback: 'loclahost:3001'),
+            requestUri: Uri.http(
+              dotenv.get('URL', fallback: 'localhost:3001'),
               '/api/v1/sales-order',
-              {
-                'page': '$page',
-                'pageSize': '500',
-              },
+              query,
             ),
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
 
         await remotePageItems.maybeWhen(
           orElse: () {},
-          withNewData: (data, maxPage) async {
+          withNewData: (data, maxPage, totalRows) async {
             await _localService.upsertSalesOrder(data);
 
             isNextPageAvailable = page < maxPage;
+            _totalRows = totalRows;
+            page += 1;
           },
         );
       }
+      await _localService.addLastSyncSalesOrder(lastSyncDate: dbSysdateStr);
+
       return right(unit);
     } on RestApiException catch (e) {
       log.severe(e.message, e, e.stackTrace);
       return left(JbmMobileFailure.api(e.errorCode, e.message));
+    } on DBException catch (e) {
+      log.severe(e.message, e, e.stackTrace);
+      return left(JbmMobileFailure.db(e.message));
     } catch (e, stackTrace) {
       log.severe(e.toString(), e, stackTrace);
       return left(JbmMobileFailure.local(e.toString()));

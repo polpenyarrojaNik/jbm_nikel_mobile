@@ -37,12 +37,10 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 
   void navigateToSyncPage() {
-    ref.read(syncPageStateNotifier.notifier).syncValuesInLocalDB();
     appRouter.push(const SyncRoute());
   }
 
   void navigateToSalesOrderPage() {
-    ref.read(salesOrderStateNotifier.notifier).getSalesOrderListPage();
     appRouter.push(const SalesOrderListRoute());
   }
 }

@@ -46,12 +46,12 @@ mixin _$SalesOrderDTO {
   String? get countryId => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIVISA_ID')
   String get divisaId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
-  String get taxBase => throw _privateConstructorUsedError;
-  @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
-  String get ivaAmount => throw _privateConstructorUsedError;
-  @JsonKey(name: 'TOTAL', defaultValue: '0')
-  String get total => throw _privateConstructorUsedError;
+  @JsonKey(name: 'BASE_IMPONIBLE')
+  double get taxBase => throw _privateConstructorUsedError;
+  @JsonKey(name: 'IMPORTE_IVA')
+  double get ivaAmount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TOTAL')
+  double get total => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(
@@ -98,12 +98,12 @@ abstract class $SalesOrderDTOCopyWith<$Res> {
           String? countryId,
       @JsonKey(name: 'DIVISA_ID')
           String divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
-          String taxBase,
-      @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
-          String ivaAmount,
-      @JsonKey(name: 'TOTAL', defaultValue: '0')
-          String total,
+      @JsonKey(name: 'BASE_IMPONIBLE')
+          double taxBase,
+      @JsonKey(name: 'IMPORTE_IVA')
+          double ivaAmount,
+      @JsonKey(name: 'TOTAL')
+          double total,
       @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
           DateTime? lastUpdated,
       @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
@@ -196,15 +196,15 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
       taxBase: taxBase == freezed
           ? _value.taxBase
           : taxBase // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       ivaAmount: ivaAmount == freezed
           ? _value.ivaAmount
           : ivaAmount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -251,12 +251,12 @@ abstract class _$$_SalesOrderDTOCopyWith<$Res>
           String? countryId,
       @JsonKey(name: 'DIVISA_ID')
           String divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
-          String taxBase,
-      @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
-          String ivaAmount,
-      @JsonKey(name: 'TOTAL', defaultValue: '0')
-          String total,
+      @JsonKey(name: 'BASE_IMPONIBLE')
+          double taxBase,
+      @JsonKey(name: 'IMPORTE_IVA')
+          double ivaAmount,
+      @JsonKey(name: 'TOTAL')
+          double total,
       @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
           DateTime? lastUpdated,
       @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
@@ -351,15 +351,15 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
       taxBase: taxBase == freezed
           ? _value.taxBase
           : taxBase // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       ivaAmount: ivaAmount == freezed
           ? _value.ivaAmount
           : ivaAmount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -402,11 +402,11 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
           required this.countryId,
       @JsonKey(name: 'DIVISA_ID')
           required this.divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
+      @JsonKey(name: 'BASE_IMPONIBLE')
           required this.taxBase,
-      @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
+      @JsonKey(name: 'IMPORTE_IVA')
           required this.ivaAmount,
-      @JsonKey(name: 'TOTAL', defaultValue: '0')
+      @JsonKey(name: 'TOTAL')
           required this.total,
       @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
           required this.lastUpdated,
@@ -457,14 +457,14 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
   @JsonKey(name: 'DIVISA_ID')
   final String divisaId;
   @override
-  @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
-  final String taxBase;
+  @JsonKey(name: 'BASE_IMPONIBLE')
+  final double taxBase;
   @override
-  @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
-  final String ivaAmount;
+  @JsonKey(name: 'IMPORTE_IVA')
+  final double ivaAmount;
   @override
-  @JsonKey(name: 'TOTAL', defaultValue: '0')
-  final String total;
+  @JsonKey(name: 'TOTAL')
+  final double total;
   @override
   @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
   final DateTime? lastUpdated;
@@ -576,12 +576,12 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
           required final String? countryId,
       @JsonKey(name: 'DIVISA_ID')
           required final String divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
-          required final String taxBase,
-      @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
-          required final String ivaAmount,
-      @JsonKey(name: 'TOTAL', defaultValue: '0')
-          required final String total,
+      @JsonKey(name: 'BASE_IMPONIBLE')
+          required final double taxBase,
+      @JsonKey(name: 'IMPORTE_IVA')
+          required final double ivaAmount,
+      @JsonKey(name: 'TOTAL')
+          required final double total,
       @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
           required final DateTime? lastUpdated,
       @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
@@ -631,14 +631,14 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
   @JsonKey(name: 'DIVISA_ID')
   String get divisaId;
   @override
-  @JsonKey(name: 'BASE_IMPONIBLE', defaultValue: '0')
-  String get taxBase;
+  @JsonKey(name: 'BASE_IMPONIBLE')
+  double get taxBase;
   @override
-  @JsonKey(name: 'IMPORTE_IVA', defaultValue: '0')
-  String get ivaAmount;
+  @JsonKey(name: 'IMPORTE_IVA')
+  double get ivaAmount;
   @override
-  @JsonKey(name: 'TOTAL', defaultValue: '0')
-  String get total;
+  @JsonKey(name: 'TOTAL')
+  double get total;
   @override
   @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
   DateTime? get lastUpdated;

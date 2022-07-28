@@ -17,49 +17,74 @@ final salesOrderStateNotifier = StateNotifierProvider.autoDispose<
 @freezed
 class SalesOrderListState with _$SalesOrderListState {
   const SalesOrderListState._();
-  const factory SalesOrderListState.initial() = _Initial;
-  const factory SalesOrderListState.loadInProgress() = _LoadInProgress;
+  const factory SalesOrderListState.initial(List<SalesOrder> salesOrderList) =
+      _Initial;
+  const factory SalesOrderListState.loadInProgress(
+      List<SalesOrder> salesOrderList) = _LoadInProgress;
   const factory SalesOrderListState.loadSuccess(
-      List<SalesOrder> salesOrderList) = _SyncSuccess;
+      List<SalesOrder> salesOrderList, bool isNextPageAvailable) = _SyncSuccess;
   const factory SalesOrderListState.loadFailure(
+    List<SalesOrder> salesOrderList,
     JbmMobileFailure failure,
   ) = _LoadFailure;
 }
 
 class SalesOrderListNotifier extends StateNotifier<SalesOrderListState> {
   final SalesOrderListRepository salesOrderListRepository;
-  SalesOrderListNotifier(this.salesOrderListRepository)
-      : super(const SalesOrderListState.initial());
-
-  bool isNextPageAvailable = true;
   int _page = 1;
+  bool isNextPageAvailable = false;
+  SalesOrderListNotifier(this.salesOrderListRepository)
+      : super(const SalesOrderListState.initial([])) {
+    getSalesOrderListPage(page: 1);
+  }
 
   @protected
   void resetState() {
     _page = 1;
-    isNextPageAvailable = true;
-    state = const SalesOrderListState.initial();
+    state = const SalesOrderListState.initial([]);
   }
 
-  Future<void> getSalesOrderListPage({int? page = 1}) async {
-    state = const SalesOrderListState.loadInProgress();
+  Future<void> getSalesOrderListPage({int? page}) async {
+    state = SalesOrderListState.loadInProgress(state.salesOrderList);
 
     if (page != null) {
       _page = page;
-      isNextPageAvailable = true;
     }
 
-    final salesOrderListFold =
-        await salesOrderListRepository.getSalesOrderListPage(page: _page);
+    await Future.delayed(const Duration(seconds: 1));
 
-    state = salesOrderListFold.fold((l) {
-      isNextPageAvailable = false;
+    final salesOrderListFold = await salesOrderListRepository
+        .getSalesOrderListPage(page: _page, pageSize: 20);
 
-      return SalesOrderListState.loadFailure(l);
-    }, (r) {
-      isNextPageAvailable = r.isNextPageAvailable ?? false;
+    salesOrderListFold.fold(
+        (l) => state = SalesOrderListState.loadFailure(state.salesOrderList, l),
+        (r) {
       _page += 1;
-      return SalesOrderListState.loadSuccess(r.entity);
+      isNextPageAvailable = r.isNextPageAvailable ?? false;
+
+      state = SalesOrderListState.loadSuccess(
+          [...state.salesOrderList, ...r.entity],
+          r.isNextPageAvailable ?? false);
+    });
+  }
+
+  Future<void> getNextSalesOrderListPage() async {
+    print('getNextSalesOrderListPage()');
+    state = SalesOrderListState.loadInProgress(state.salesOrderList);
+
+    await Future.delayed(const Duration(seconds: 1));
+
+    final salesOrderListFold = await salesOrderListRepository
+        .getSalesOrderListPage(page: _page, pageSize: 20);
+
+    salesOrderListFold.fold(
+        (l) => state = SalesOrderListState.loadFailure(state.salesOrderList, l),
+        (r) {
+      _page += 1;
+      isNextPageAvailable = r.isNextPageAvailable ?? false;
+      return state = SalesOrderListState.loadSuccess(
+          [...state.salesOrderList, ...r.entity],
+          r.isNextPageAvailable ?? false);
     });
   }
 }

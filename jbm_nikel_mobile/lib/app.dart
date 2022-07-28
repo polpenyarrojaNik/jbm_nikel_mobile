@@ -9,10 +9,11 @@ import 'package:jbm_nikel_mobile/src/core/shared/providers.dart';
 
 import 'src/core/presentation/router/app_router.gr.dart';
 import 'src/core/presentation/theme/custom_theme.dart';
+import 'src/inital_db/infrastructure/initial_db_repository.dart';
 
 final initializationProvider = FutureProvider<void>((ref) async {
   await dotenv.load();
-  ref.read(dbProvider);
+
   // final authNotifier = ref.read(authNotifierProvider.notifier);
   // await authNotifier.checkAndUpdateAuthStatus();
   ref.read(dioProvider)
@@ -32,6 +33,20 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(initializationProvider, (_, __) {});
+
+    ref.watch(initialDBRepositoryProvider).when(
+        data: (_) {
+          print('Db file get it Succcessfuly');
+          appRouter.pushAndPopUntil(const HomeRoute(),
+              predicate: (route) => false);
+        },
+        error: (_, __) {
+          print('Db file get it failed: $_');
+          appRouter.pushAndPopUntil(const HomeRoute(),
+              predicate: (route) => false);
+        },
+        loading: () => appRouter.pushAndPopUntil(const SplashRoute(),
+            predicate: (route) => false));
 
     return MaterialApp.router(
       title: 'JBM Mobile',
