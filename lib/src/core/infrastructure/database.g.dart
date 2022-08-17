@@ -7,341 +7,10 @@ part of 'database.dart';
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class SalesOrderTableData extends DataClass
-    implements Insertable<SalesOrderTableData> {
-  final String companyId;
-  final String salesOrderId;
-  final String salesOrderDate;
-  final String salesType;
-  final String customerId;
-  final String? customerName;
-  final String? shippingAddress1;
-  final String? shippingAddress2;
-  final String? zipCode;
-  final String? city;
-  final String? state;
-  final String? countryId;
-  final String divisaId;
-  final double taxBase;
-  final double ivaAmount;
-  final double total;
-  final String? lastUpdated;
-  final String deleted;
-  final DateTime? lastSync;
-  SalesOrderTableData(
-      {required this.companyId,
-      required this.salesOrderId,
-      required this.salesOrderDate,
-      required this.salesType,
-      required this.customerId,
-      this.customerName,
-      this.shippingAddress1,
-      this.shippingAddress2,
-      this.zipCode,
-      this.city,
-      this.state,
-      this.countryId,
-      required this.divisaId,
-      required this.taxBase,
-      required this.ivaAmount,
-      required this.total,
-      this.lastUpdated,
-      required this.deleted,
-      this.lastSync});
-  factory SalesOrderTableData.fromData(Map<String, dynamic> data,
-      {String? prefix}) {
-    final effectivePrefix = prefix ?? '';
-    return SalesOrderTableData(
-      companyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EMPRESA_ID'])!,
-      salesOrderId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PEDIDO_ID'])!,
-      salesOrderDate: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_PEDIDO'])!,
-      salesType: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_VENTA'])!,
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      customerName: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NOMBRE_CLIENTE']),
-      shippingAddress1: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ENVIO1']),
-      shippingAddress2: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ENVIO2']),
-      zipCode: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CODIGO_POSTAL']),
-      city: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}POBLACION']),
-      state: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PROVINCIA']),
-      countryId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID']),
-      divisaId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIVISA_ID'])!,
-      taxBase: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}BASE_IMPONIBLE'])!,
-      ivaAmount: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IMPORTE_IVA'])!,
-      total: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TOTAL'])!,
-      lastUpdated: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED']),
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
-      lastSync: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC']),
-    );
-  }
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['EMPRESA_ID'] = Variable<String>(companyId);
-    map['PEDIDO_ID'] = Variable<String>(salesOrderId);
-    map['FECHA_PEDIDO'] = Variable<String>(salesOrderDate);
-    map['TIPO_VENTA'] = Variable<String>(salesType);
-    map['CLIENTE_ID'] = Variable<String>(customerId);
-    if (!nullToAbsent || customerName != null) {
-      map['NOMBRE_CLIENTE'] = Variable<String?>(customerName);
-    }
-    if (!nullToAbsent || shippingAddress1 != null) {
-      map['DIRECCION_ENVIO1'] = Variable<String?>(shippingAddress1);
-    }
-    if (!nullToAbsent || shippingAddress2 != null) {
-      map['DIRECCION_ENVIO2'] = Variable<String?>(shippingAddress2);
-    }
-    if (!nullToAbsent || zipCode != null) {
-      map['CODIGO_POSTAL'] = Variable<String?>(zipCode);
-    }
-    if (!nullToAbsent || city != null) {
-      map['POBLACION'] = Variable<String?>(city);
-    }
-    if (!nullToAbsent || state != null) {
-      map['PROVINCIA'] = Variable<String?>(state);
-    }
-    if (!nullToAbsent || countryId != null) {
-      map['PAIS_ID'] = Variable<String?>(countryId);
-    }
-    map['DIVISA_ID'] = Variable<String>(divisaId);
-    map['BASE_IMPONIBLE'] = Variable<double>(taxBase);
-    map['IMPORTE_IVA'] = Variable<double>(ivaAmount);
-    map['TOTAL'] = Variable<double>(total);
-    if (!nullToAbsent || lastUpdated != null) {
-      map['LAST_UPDATED'] = Variable<String?>(lastUpdated);
-    }
-    map['DELETED'] = Variable<String>(deleted);
-    if (!nullToAbsent || lastSync != null) {
-      map['LAST_SYNC'] = Variable<DateTime?>(lastSync);
-    }
-    return map;
-  }
-
-  SalesOrderTableCompanion toCompanion(bool nullToAbsent) {
-    return SalesOrderTableCompanion(
-      companyId: Value(companyId),
-      salesOrderId: Value(salesOrderId),
-      salesOrderDate: Value(salesOrderDate),
-      salesType: Value(salesType),
-      customerId: Value(customerId),
-      customerName: customerName == null && nullToAbsent
-          ? const Value.absent()
-          : Value(customerName),
-      shippingAddress1: shippingAddress1 == null && nullToAbsent
-          ? const Value.absent()
-          : Value(shippingAddress1),
-      shippingAddress2: shippingAddress2 == null && nullToAbsent
-          ? const Value.absent()
-          : Value(shippingAddress2),
-      zipCode: zipCode == null && nullToAbsent
-          ? const Value.absent()
-          : Value(zipCode),
-      city: city == null && nullToAbsent ? const Value.absent() : Value(city),
-      state:
-          state == null && nullToAbsent ? const Value.absent() : Value(state),
-      countryId: countryId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(countryId),
-      divisaId: Value(divisaId),
-      taxBase: Value(taxBase),
-      ivaAmount: Value(ivaAmount),
-      total: Value(total),
-      lastUpdated: lastUpdated == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastUpdated),
-      deleted: Value(deleted),
-      lastSync: lastSync == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSync),
-    );
-  }
-
-  factory SalesOrderTableData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return SalesOrderTableData(
-      companyId: serializer.fromJson<String>(json['companyId']),
-      salesOrderId: serializer.fromJson<String>(json['salesOrderId']),
-      salesOrderDate: serializer.fromJson<String>(json['salesOrderDate']),
-      salesType: serializer.fromJson<String>(json['salesType']),
-      customerId: serializer.fromJson<String>(json['customerId']),
-      customerName: serializer.fromJson<String?>(json['customerName']),
-      shippingAddress1: serializer.fromJson<String?>(json['shippingAddress1']),
-      shippingAddress2: serializer.fromJson<String?>(json['shippingAddress2']),
-      zipCode: serializer.fromJson<String?>(json['zipCode']),
-      city: serializer.fromJson<String?>(json['city']),
-      state: serializer.fromJson<String?>(json['state']),
-      countryId: serializer.fromJson<String?>(json['countryId']),
-      divisaId: serializer.fromJson<String>(json['divisaId']),
-      taxBase: serializer.fromJson<double>(json['taxBase']),
-      ivaAmount: serializer.fromJson<double>(json['ivaAmount']),
-      total: serializer.fromJson<double>(json['total']),
-      lastUpdated: serializer.fromJson<String?>(json['lastUpdated']),
-      deleted: serializer.fromJson<String>(json['deleted']),
-      lastSync: serializer.fromJson<DateTime?>(json['lastSync']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'companyId': serializer.toJson<String>(companyId),
-      'salesOrderId': serializer.toJson<String>(salesOrderId),
-      'salesOrderDate': serializer.toJson<String>(salesOrderDate),
-      'salesType': serializer.toJson<String>(salesType),
-      'customerId': serializer.toJson<String>(customerId),
-      'customerName': serializer.toJson<String?>(customerName),
-      'shippingAddress1': serializer.toJson<String?>(shippingAddress1),
-      'shippingAddress2': serializer.toJson<String?>(shippingAddress2),
-      'zipCode': serializer.toJson<String?>(zipCode),
-      'city': serializer.toJson<String?>(city),
-      'state': serializer.toJson<String?>(state),
-      'countryId': serializer.toJson<String?>(countryId),
-      'divisaId': serializer.toJson<String>(divisaId),
-      'taxBase': serializer.toJson<double>(taxBase),
-      'ivaAmount': serializer.toJson<double>(ivaAmount),
-      'total': serializer.toJson<double>(total),
-      'lastUpdated': serializer.toJson<String?>(lastUpdated),
-      'deleted': serializer.toJson<String>(deleted),
-      'lastSync': serializer.toJson<DateTime?>(lastSync),
-    };
-  }
-
-  SalesOrderTableData copyWith(
-          {String? companyId,
-          String? salesOrderId,
-          String? salesOrderDate,
-          String? salesType,
-          String? customerId,
-          String? customerName,
-          String? shippingAddress1,
-          String? shippingAddress2,
-          String? zipCode,
-          String? city,
-          String? state,
-          String? countryId,
-          String? divisaId,
-          double? taxBase,
-          double? ivaAmount,
-          double? total,
-          String? lastUpdated,
-          String? deleted,
-          DateTime? lastSync}) =>
-      SalesOrderTableData(
-        companyId: companyId ?? this.companyId,
-        salesOrderId: salesOrderId ?? this.salesOrderId,
-        salesOrderDate: salesOrderDate ?? this.salesOrderDate,
-        salesType: salesType ?? this.salesType,
-        customerId: customerId ?? this.customerId,
-        customerName: customerName ?? this.customerName,
-        shippingAddress1: shippingAddress1 ?? this.shippingAddress1,
-        shippingAddress2: shippingAddress2 ?? this.shippingAddress2,
-        zipCode: zipCode ?? this.zipCode,
-        city: city ?? this.city,
-        state: state ?? this.state,
-        countryId: countryId ?? this.countryId,
-        divisaId: divisaId ?? this.divisaId,
-        taxBase: taxBase ?? this.taxBase,
-        ivaAmount: ivaAmount ?? this.ivaAmount,
-        total: total ?? this.total,
-        lastUpdated: lastUpdated ?? this.lastUpdated,
-        deleted: deleted ?? this.deleted,
-        lastSync: lastSync ?? this.lastSync,
-      );
-  @override
-  String toString() {
-    return (StringBuffer('SalesOrderTableData(')
-          ..write('companyId: $companyId, ')
-          ..write('salesOrderId: $salesOrderId, ')
-          ..write('salesOrderDate: $salesOrderDate, ')
-          ..write('salesType: $salesType, ')
-          ..write('customerId: $customerId, ')
-          ..write('customerName: $customerName, ')
-          ..write('shippingAddress1: $shippingAddress1, ')
-          ..write('shippingAddress2: $shippingAddress2, ')
-          ..write('zipCode: $zipCode, ')
-          ..write('city: $city, ')
-          ..write('state: $state, ')
-          ..write('countryId: $countryId, ')
-          ..write('divisaId: $divisaId, ')
-          ..write('taxBase: $taxBase, ')
-          ..write('ivaAmount: $ivaAmount, ')
-          ..write('total: $total, ')
-          ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted, ')
-          ..write('lastSync: $lastSync')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      companyId,
-      salesOrderId,
-      salesOrderDate,
-      salesType,
-      customerId,
-      customerName,
-      shippingAddress1,
-      shippingAddress2,
-      zipCode,
-      city,
-      state,
-      countryId,
-      divisaId,
-      taxBase,
-      ivaAmount,
-      total,
-      lastUpdated,
-      deleted,
-      lastSync);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is SalesOrderTableData &&
-          other.companyId == this.companyId &&
-          other.salesOrderId == this.salesOrderId &&
-          other.salesOrderDate == this.salesOrderDate &&
-          other.salesType == this.salesType &&
-          other.customerId == this.customerId &&
-          other.customerName == this.customerName &&
-          other.shippingAddress1 == this.shippingAddress1 &&
-          other.shippingAddress2 == this.shippingAddress2 &&
-          other.zipCode == this.zipCode &&
-          other.city == this.city &&
-          other.state == this.state &&
-          other.countryId == this.countryId &&
-          other.divisaId == this.divisaId &&
-          other.taxBase == this.taxBase &&
-          other.ivaAmount == this.ivaAmount &&
-          other.total == this.total &&
-          other.lastUpdated == this.lastUpdated &&
-          other.deleted == this.deleted &&
-          other.lastSync == this.lastSync);
-}
-
-class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
+class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
   final Value<String> companyId;
   final Value<String> salesOrderId;
-  final Value<String> salesOrderDate;
+  final Value<DateTime> salesOrderDate;
   final Value<String> salesType;
   final Value<String> customerId;
   final Value<String?> customerName;
@@ -355,8 +24,8 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
   final Value<double> taxBase;
   final Value<double> ivaAmount;
   final Value<double> total;
-  final Value<String?> lastUpdated;
-  final Value<String> deleted;
+  final Value<DateTime?> lastUpdated;
+  final Value<bool> deleted;
   final Value<DateTime?> lastSync;
   const SalesOrderTableCompanion({
     this.companyId = const Value.absent(),
@@ -382,7 +51,7 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
   SalesOrderTableCompanion.insert({
     required String companyId,
     required String salesOrderId,
-    required String salesOrderDate,
+    required DateTime salesOrderDate,
     required String salesType,
     required String customerId,
     this.customerName = const Value.absent(),
@@ -405,10 +74,10 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
         salesType = Value(salesType),
         customerId = Value(customerId),
         divisaId = Value(divisaId);
-  static Insertable<SalesOrderTableData> custom({
+  static Insertable<SalesOrderDTO> custom({
     Expression<String>? companyId,
     Expression<String>? salesOrderId,
-    Expression<String>? salesOrderDate,
+    Expression<DateTime>? salesOrderDate,
     Expression<String>? salesType,
     Expression<String>? customerId,
     Expression<String?>? customerName,
@@ -422,8 +91,8 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
     Expression<double>? taxBase,
     Expression<double>? ivaAmount,
     Expression<double>? total,
-    Expression<String?>? lastUpdated,
-    Expression<String>? deleted,
+    Expression<DateTime?>? lastUpdated,
+    Expression<bool>? deleted,
     Expression<DateTime?>? lastSync,
   }) {
     return RawValuesInsertable({
@@ -452,7 +121,7 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
   SalesOrderTableCompanion copyWith(
       {Value<String>? companyId,
       Value<String>? salesOrderId,
-      Value<String>? salesOrderDate,
+      Value<DateTime>? salesOrderDate,
       Value<String>? salesType,
       Value<String>? customerId,
       Value<String?>? customerName,
@@ -466,8 +135,8 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
       Value<double>? taxBase,
       Value<double>? ivaAmount,
       Value<double>? total,
-      Value<String?>? lastUpdated,
-      Value<String>? deleted,
+      Value<DateTime?>? lastUpdated,
+      Value<bool>? deleted,
       Value<DateTime?>? lastSync}) {
     return SalesOrderTableCompanion(
       companyId: companyId ?? this.companyId,
@@ -502,7 +171,7 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
       map['PEDIDO_ID'] = Variable<String>(salesOrderId.value);
     }
     if (salesOrderDate.present) {
-      map['FECHA_PEDIDO'] = Variable<String>(salesOrderDate.value);
+      map['FECHA_PEDIDO'] = Variable<DateTime>(salesOrderDate.value);
     }
     if (salesType.present) {
       map['TIPO_VENTA'] = Variable<String>(salesType.value);
@@ -544,10 +213,10 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
       map['TOTAL'] = Variable<double>(total.value);
     }
     if (lastUpdated.present) {
-      map['LAST_UPDATED'] = Variable<String?>(lastUpdated.value);
+      map['LAST_UPDATED'] = Variable<DateTime?>(lastUpdated.value);
     }
     if (deleted.present) {
-      map['DELETED'] = Variable<String>(deleted.value);
+      map['DELETED'] = Variable<bool>(deleted.value);
     }
     if (lastSync.present) {
       map['LAST_SYNC'] = Variable<DateTime?>(lastSync.value);
@@ -583,7 +252,7 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderTableData> {
 }
 
 class $SalesOrderTableTable extends SalesOrderTable
-    with TableInfo<$SalesOrderTableTable, SalesOrderTableData> {
+    with TableInfo<$SalesOrderTableTable, SalesOrderDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -606,9 +275,9 @@ class $SalesOrderTableTable extends SalesOrderTable
   final VerificationMeta _salesOrderDateMeta =
       const VerificationMeta('salesOrderDate');
   @override
-  late final GeneratedColumn<String?> salesOrderDate = GeneratedColumn<String?>(
-      'FECHA_PEDIDO', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime?> salesOrderDate =
+      GeneratedColumn<DateTime?>('FECHA_PEDIDO', aliasedName, false,
+          type: const IntType(), requiredDuringInsert: true);
   final VerificationMeta _salesTypeMeta = const VerificationMeta('salesType');
   @override
   late final GeneratedColumn<String?> salesType = GeneratedColumn<String?>(
@@ -706,17 +375,17 @@ class $SalesOrderTableTable extends SalesOrderTable
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<String?> lastUpdated = GeneratedColumn<String?>(
-      'LAST_UPDATED', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime?> lastUpdated =
+      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, true,
+          type: const IntType(), requiredDuringInsert: false);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<bool?> deleted = GeneratedColumn<bool?>(
       'DELETED', aliasedName, false,
-      additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 1),
-      type: const StringType(),
+      type: const BoolType(),
       requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
+      defaultConstraints: 'CHECK (DELETED IN (0, 1))',
+      defaultValue: const Constant(false));
   final VerificationMeta _lastSyncMeta = const VerificationMeta('lastSync');
   @override
   late final GeneratedColumn<DateTime?> lastSync = GeneratedColumn<DateTime?>(
@@ -751,8 +420,7 @@ class $SalesOrderTableTable extends SalesOrderTable
   @override
   String get actualTableName => 'sales_order_table';
   @override
-  VerificationContext validateIntegrity(
-      Insertable<SalesOrderTableData> instance,
+  VerificationContext validateIntegrity(Insertable<SalesOrderDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -866,9 +534,46 @@ class $SalesOrderTableTable extends SalesOrderTable
   @override
   Set<GeneratedColumn> get $primaryKey => {salesOrderId, companyId};
   @override
-  SalesOrderTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return SalesOrderTableData.fromData(data,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+  SalesOrderDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SalesOrderDTO(
+      companyId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}EMPRESA_ID'])!,
+      salesOrderId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}PEDIDO_ID'])!,
+      salesOrderDate: const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_PEDIDO'])!,
+      salesType: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_VENTA'])!,
+      customerId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
+      customerName: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}NOMBRE_CLIENTE']),
+      shippingAddress1: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ENVIO1']),
+      shippingAddress2: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ENVIO2']),
+      zipCode: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}CODIGO_POSTAL']),
+      city: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}POBLACION']),
+      state: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}PROVINCIA']),
+      countryId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID']),
+      divisaId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}DIVISA_ID'])!,
+      taxBase: const RealType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}BASE_IMPONIBLE'])!,
+      ivaAmount: const RealType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}IMPORTE_IVA'])!,
+      total: const RealType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}TOTAL'])!,
+      lastUpdated: const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED']),
+      deleted: const BoolType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+    );
   }
 
   @override
@@ -877,153 +582,231 @@ class $SalesOrderTableTable extends SalesOrderTable
   }
 }
 
-class LastSyncTableData extends DataClass
-    implements Insertable<LastSyncTableData> {
-  final String lastSyncSalesOrder;
-  LastSyncTableData({required this.lastSyncSalesOrder});
-  factory LastSyncTableData.fromData(Map<String, dynamic> data,
+class LastSyncDateTableData extends DataClass
+    implements Insertable<LastSyncDateTableData> {
+  final String id;
+  final String? lastSyncSalesOrder;
+  final String? lastSyncCustomer;
+  LastSyncDateTableData(
+      {required this.id, this.lastSyncSalesOrder, this.lastSyncCustomer});
+  factory LastSyncDateTableData.fromData(Map<String, dynamic> data,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
-    return LastSyncTableData(
+    return LastSyncDateTableData(
+      id: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}ID'])!,
       lastSyncSalesOrder: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_SALES_ORDER'])!,
+          data['${effectivePrefix}LAST_SYNC_SALES_ORDER']),
+      lastSyncCustomer: const StringType().mapFromDatabaseResponse(
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER']),
     );
   }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['LAST_SYNC_SALES_ORDER'] = Variable<String>(lastSyncSalesOrder);
+    map['ID'] = Variable<String>(id);
+    if (!nullToAbsent || lastSyncSalesOrder != null) {
+      map['LAST_SYNC_SALES_ORDER'] = Variable<String?>(lastSyncSalesOrder);
+    }
+    if (!nullToAbsent || lastSyncCustomer != null) {
+      map['LAST_SYNC_CUSTOMER'] = Variable<String?>(lastSyncCustomer);
+    }
     return map;
   }
 
-  LastSyncTableCompanion toCompanion(bool nullToAbsent) {
-    return LastSyncTableCompanion(
-      lastSyncSalesOrder: Value(lastSyncSalesOrder),
+  LastSyncDateTableCompanion toCompanion(bool nullToAbsent) {
+    return LastSyncDateTableCompanion(
+      id: Value(id),
+      lastSyncSalesOrder: lastSyncSalesOrder == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastSyncSalesOrder),
+      lastSyncCustomer: lastSyncCustomer == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastSyncCustomer),
     );
   }
 
-  factory LastSyncTableData.fromJson(Map<String, dynamic> json,
+  factory LastSyncDateTableData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return LastSyncTableData(
+    return LastSyncDateTableData(
+      id: serializer.fromJson<String>(json['id']),
       lastSyncSalesOrder:
-          serializer.fromJson<String>(json['lastSyncSalesOrder']),
+          serializer.fromJson<String?>(json['lastSyncSalesOrder']),
+      lastSyncCustomer: serializer.fromJson<String?>(json['lastSyncCustomer']),
     );
   }
   @override
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'lastSyncSalesOrder': serializer.toJson<String>(lastSyncSalesOrder),
+      'id': serializer.toJson<String>(id),
+      'lastSyncSalesOrder': serializer.toJson<String?>(lastSyncSalesOrder),
+      'lastSyncCustomer': serializer.toJson<String?>(lastSyncCustomer),
     };
   }
 
-  LastSyncTableData copyWith({String? lastSyncSalesOrder}) => LastSyncTableData(
+  LastSyncDateTableData copyWith(
+          {String? id, String? lastSyncSalesOrder, String? lastSyncCustomer}) =>
+      LastSyncDateTableData(
+        id: id ?? this.id,
         lastSyncSalesOrder: lastSyncSalesOrder ?? this.lastSyncSalesOrder,
+        lastSyncCustomer: lastSyncCustomer ?? this.lastSyncCustomer,
       );
   @override
   String toString() {
-    return (StringBuffer('LastSyncTableData(')
-          ..write('lastSyncSalesOrder: $lastSyncSalesOrder')
+    return (StringBuffer('LastSyncDateTableData(')
+          ..write('id: $id, ')
+          ..write('lastSyncSalesOrder: $lastSyncSalesOrder, ')
+          ..write('lastSyncCustomer: $lastSyncCustomer')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => lastSyncSalesOrder.hashCode;
+  int get hashCode => Object.hash(id, lastSyncSalesOrder, lastSyncCustomer);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is LastSyncTableData &&
-          other.lastSyncSalesOrder == this.lastSyncSalesOrder);
+      (other is LastSyncDateTableData &&
+          other.id == this.id &&
+          other.lastSyncSalesOrder == this.lastSyncSalesOrder &&
+          other.lastSyncCustomer == this.lastSyncCustomer);
 }
 
-class LastSyncTableCompanion extends UpdateCompanion<LastSyncTableData> {
-  final Value<String> lastSyncSalesOrder;
-  const LastSyncTableCompanion({
+class LastSyncDateTableCompanion
+    extends UpdateCompanion<LastSyncDateTableData> {
+  final Value<String> id;
+  final Value<String?> lastSyncSalesOrder;
+  final Value<String?> lastSyncCustomer;
+  const LastSyncDateTableCompanion({
+    this.id = const Value.absent(),
     this.lastSyncSalesOrder = const Value.absent(),
+    this.lastSyncCustomer = const Value.absent(),
   });
-  LastSyncTableCompanion.insert({
-    required String lastSyncSalesOrder,
-  }) : lastSyncSalesOrder = Value(lastSyncSalesOrder);
-  static Insertable<LastSyncTableData> custom({
-    Expression<String>? lastSyncSalesOrder,
+  LastSyncDateTableCompanion.insert({
+    required String id,
+    this.lastSyncSalesOrder = const Value.absent(),
+    this.lastSyncCustomer = const Value.absent(),
+  }) : id = Value(id);
+  static Insertable<LastSyncDateTableData> custom({
+    Expression<String>? id,
+    Expression<String?>? lastSyncSalesOrder,
+    Expression<String?>? lastSyncCustomer,
   }) {
     return RawValuesInsertable({
+      if (id != null) 'ID': id,
       if (lastSyncSalesOrder != null)
         'LAST_SYNC_SALES_ORDER': lastSyncSalesOrder,
+      if (lastSyncCustomer != null) 'LAST_SYNC_CUSTOMER': lastSyncCustomer,
     });
   }
 
-  LastSyncTableCompanion copyWith({Value<String>? lastSyncSalesOrder}) {
-    return LastSyncTableCompanion(
+  LastSyncDateTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String?>? lastSyncSalesOrder,
+      Value<String?>? lastSyncCustomer}) {
+    return LastSyncDateTableCompanion(
+      id: id ?? this.id,
       lastSyncSalesOrder: lastSyncSalesOrder ?? this.lastSyncSalesOrder,
+      lastSyncCustomer: lastSyncCustomer ?? this.lastSyncCustomer,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (id.present) {
+      map['ID'] = Variable<String>(id.value);
+    }
     if (lastSyncSalesOrder.present) {
-      map['LAST_SYNC_SALES_ORDER'] = Variable<String>(lastSyncSalesOrder.value);
+      map['LAST_SYNC_SALES_ORDER'] =
+          Variable<String?>(lastSyncSalesOrder.value);
+    }
+    if (lastSyncCustomer.present) {
+      map['LAST_SYNC_CUSTOMER'] = Variable<String?>(lastSyncCustomer.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('LastSyncTableCompanion(')
-          ..write('lastSyncSalesOrder: $lastSyncSalesOrder')
+    return (StringBuffer('LastSyncDateTableCompanion(')
+          ..write('id: $id, ')
+          ..write('lastSyncSalesOrder: $lastSyncSalesOrder, ')
+          ..write('lastSyncCustomer: $lastSyncCustomer')
           ..write(')'))
         .toString();
   }
 }
 
-class $LastSyncTableTable extends LastSyncTable
-    with TableInfo<$LastSyncTableTable, LastSyncTableData> {
+class $LastSyncDateTableTable extends LastSyncDateTable
+    with TableInfo<$LastSyncDateTableTable, LastSyncDateTableData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $LastSyncTableTable(this.attachedDatabase, [this._alias]);
+  $LastSyncDateTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+      'ID', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
   final VerificationMeta _lastSyncSalesOrderMeta =
       const VerificationMeta('lastSyncSalesOrder');
   @override
   late final GeneratedColumn<String?> lastSyncSalesOrder =
-      GeneratedColumn<String?>('LAST_SYNC_SALES_ORDER', aliasedName, false,
-          type: const StringType(), requiredDuringInsert: true);
+      GeneratedColumn<String?>('LAST_SYNC_SALES_ORDER', aliasedName, true,
+          type: const StringType(), requiredDuringInsert: false);
+  final VerificationMeta _lastSyncCustomerMeta =
+      const VerificationMeta('lastSyncCustomer');
   @override
-  List<GeneratedColumn> get $columns => [lastSyncSalesOrder];
+  late final GeneratedColumn<String?> lastSyncCustomer =
+      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER', aliasedName, true,
+          type: const StringType(), requiredDuringInsert: false);
   @override
-  String get aliasedName => _alias ?? 'last_sync_table';
+  List<GeneratedColumn> get $columns =>
+      [id, lastSyncSalesOrder, lastSyncCustomer];
   @override
-  String get actualTableName => 'last_sync_table';
+  String get aliasedName => _alias ?? 'last_sync_date_table';
   @override
-  VerificationContext validateIntegrity(Insertable<LastSyncTableData> instance,
+  String get actualTableName => 'last_sync_date_table';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<LastSyncDateTableData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('ID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
     if (data.containsKey('LAST_SYNC_SALES_ORDER')) {
       context.handle(
           _lastSyncSalesOrderMeta,
           lastSyncSalesOrder.isAcceptableOrUnknown(
               data['LAST_SYNC_SALES_ORDER']!, _lastSyncSalesOrderMeta));
-    } else if (isInserting) {
-      context.missing(_lastSyncSalesOrderMeta);
+    }
+    if (data.containsKey('LAST_SYNC_CUSTOMER')) {
+      context.handle(
+          _lastSyncCustomerMeta,
+          lastSyncCustomer.isAcceptableOrUnknown(
+              data['LAST_SYNC_CUSTOMER']!, _lastSyncCustomerMeta));
     }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => <GeneratedColumn>{};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  LastSyncTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return LastSyncTableData.fromData(data,
+  LastSyncDateTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return LastSyncDateTableData.fromData(data,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
   @override
-  $LastSyncTableTable createAlias(String alias) {
-    return $LastSyncTableTable(attachedDatabase, alias);
+  $LastSyncDateTableTable createAlias(String alias) {
+    return $LastSyncDateTableTable(attachedDatabase, alias);
   }
 }
 
@@ -1031,10 +814,11 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $SalesOrderTableTable salesOrderTable =
       $SalesOrderTableTable(this);
-  late final $LastSyncTableTable lastSyncTable = $LastSyncTableTable(this);
+  late final $LastSyncDateTableTable lastSyncDateTable =
+      $LastSyncDateTableTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [salesOrderTable, lastSyncTable];
+      [salesOrderTable, lastSyncDateTable];
 }

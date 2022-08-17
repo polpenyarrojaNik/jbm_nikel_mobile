@@ -1,4 +1,6 @@
+import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/extension.dart';
 
 import '../domain/sales_order.dart';
@@ -8,7 +10,7 @@ part 'sales_order_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 @freezed
-class SalesOrderDTO with _$SalesOrderDTO {
+class SalesOrderDTO with _$SalesOrderDTO implements Insertable<SalesOrderDTO> {
   const SalesOrderDTO._();
   const factory SalesOrderDTO({
     @JsonKey(name: 'EMPRESA_ID') required String companyId,
@@ -106,4 +108,70 @@ class SalesOrderDTO with _$SalesOrderDTO {
   static bool _boolFromString(String value) => value == 'S';
 
   static String _boolToString(bool value) => (value) ? 'S' : 'N';
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    return SalesOrderTableCompanion(
+      companyId: Value(companyId),
+      salesOrderId: Value(salesOrderId),
+      salesOrderDate: Value(salesOrderDate),
+      salesType: Value(salesType),
+      customerId: Value(customerId),
+      customerName: Value(customerName),
+      shippingAddress1: Value(shippingAddress1),
+      shippingAddress2: Value(shippingAddress2),
+      zipCode: Value(zipCode),
+      city: Value(city),
+      state: Value(state),
+      countryId: Value(countryId),
+      divisaId: Value(divisaId),
+      taxBase: Value(taxBase),
+      ivaAmount: Value(ivaAmount),
+      total: Value(total),
+      lastUpdated: Value(lastUpdated),
+      deleted: Value(deleted),
+    ).toColumns(nullToAbsent);
+  }
+}
+
+@UseRowClass(SalesOrderDTO)
+class SalesOrderTable extends Table {
+  TextColumn get companyId => text().withLength(max: 2).named('EMPRESA_ID')();
+  TextColumn get salesOrderId =>
+      text().withLength(max: 10).named('PEDIDO_ID')();
+  DateTimeColumn get salesOrderDate => dateTime().named('FECHA_PEDIDO')();
+  TextColumn get salesType => text().withLength(max: 1).named('TIPO_VENTA')();
+  TextColumn get customerId => text().withLength(max: 6).named('CLIENTE_ID')();
+  TextColumn get customerName =>
+      text().withLength(max: 100).nullable().named('NOMBRE_CLIENTE')();
+  TextColumn get shippingAddress1 =>
+      text().withLength(max: 100).nullable().named('DIRECCION_ENVIO1')();
+  TextColumn get shippingAddress2 =>
+      text().withLength(max: 100).nullable().named('DIRECCION_ENVIO2')();
+  TextColumn get zipCode =>
+      text().withLength(max: 10).nullable().named('CODIGO_POSTAL')();
+  TextColumn get city =>
+      text().withLength(max: 60).nullable().named('POBLACION')();
+  TextColumn get state =>
+      text().withLength(max: 50).nullable().named('PROVINCIA')();
+  TextColumn get countryId =>
+      text().withLength(max: 3).nullable().named('PAIS_ID')();
+  TextColumn get divisaId => text().withLength(max: 2).named('DIVISA_ID')();
+  RealColumn get taxBase =>
+      real().withDefault(const Constant(0.0)).named('BASE_IMPONIBLE')();
+  RealColumn get ivaAmount =>
+      real().withDefault(const Constant(0.0)).named('IMPORTE_IVA')();
+  RealColumn get total =>
+      real().withDefault(const Constant(0.0)).named('TOTAL')();
+  DateTimeColumn get lastUpdated =>
+      dateTime().nullable().named('LAST_UPDATED')();
+  BoolColumn get deleted =>
+      boolean().withDefault(const Constant(false)).named('DELETED')();
+  DateTimeColumn get lastSync => dateTime()
+      .nullable()
+      .withDefault(currentDateAndTime)
+      .named('LAST_SYNC')();
+
+  @override
+  Set<Column> get primaryKey => {salesOrderId, companyId};
 }

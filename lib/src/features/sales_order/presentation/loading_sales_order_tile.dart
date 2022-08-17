@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_decoration.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../core/presentation/app_decoration.dart';
 
 class LoadingSalesOrderTile extends StatelessWidget {
   const LoadingSalesOrderTile({Key? key}) : super(key: key);

@@ -4,12 +4,23 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
-import '../infrastructure/exceptions.dart';
-import 'db_tables.dart';
+import '../../features/sales_order/infrastructure/sales_order_dto.dart';
+import 'exceptions.dart';
 
 part 'database.g.dart';
 
-@DriftDatabase(tables: [SalesOrderTable, LastSyncTable])
+class LastSyncDateTable extends Table {
+  TextColumn get id => text().named('ID')();
+  TextColumn get lastSyncSalesOrder =>
+      text().nullable().named('LAST_SYNC_SALES_ORDER')();
+  TextColumn get lastSyncCustomer =>
+      text().nullable().named('LAST_SYNC_CUSTOMER')();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DriftDatabase(tables: [SalesOrderTable, LastSyncDateTable])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
@@ -22,7 +33,7 @@ class AppDatabase extends _$AppDatabase {
     return await super.close();
   }
 
-  Future<List<SalesOrderTableData>> getSalesOrder(
+  Future<List<SalesOrderDTO>> getSalesOrder(
       {required int page, required int pageSize}) async {
     int offset = (page - 1) * pageSize;
     print('Page: $page');
@@ -50,33 +61,43 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
-  Future<int> upsertSalesOrder(
-      {required SalesOrderTableCompanion salesOrder}) async {
+  Future<int> upsertSalesOrder({required SalesOrderDTO salesOrderDto}) async {
     try {
-      return await into(salesOrderTable).insertOnConflictUpdate(salesOrder);
+      return await into(salesOrderTable).insertOnConflictUpdate(salesOrderDto);
     } catch (e, stackTrace) {
       throw DBException(e.toString(), stackTrace);
     }
   }
 
-  Future<int> addLastSyncSalesOrder(
-      {required LastSyncTableCompanion entity}) async {
+  Future<int> addInitialSyncDate(
+      {required LastSyncDateTableCompanion initialSyncDate}) async {
     try {
-      return await into(lastSyncTable).insert(entity);
+      return await into(lastSyncDateTable).insert(initialSyncDate);
     } catch (e, stackTrace) {
       throw DBException(e.toString(), stackTrace);
     }
   }
 
-  Future<LastSyncTableData?> getLastSyncSalesOrderDate() async {
+  Future<int> updateLastSyncSalesOrder(
+      {required LastSyncDateTableCompanion lastSyncDateSalesOrder}) async {
     try {
-      return await (select(lastSyncTable)
-            ..limit(1)
-            ..orderBy([
-              (t) => OrderingTerm(
-                  expression: t.lastSyncSalesOrder, mode: OrderingMode.desc)
-            ]))
-          .getSingleOrNull();
+      return await (update(lastSyncDateTable)..where((t) => t.id.equals('1')))
+          .write(lastSyncDateSalesOrder);
+    } catch (e, stackTrace) {
+      throw DBException(e.toString(), stackTrace);
+    }
+  }
+
+  Future<String?> getLastSyncSalesOrderDate() async {
+    try {
+      return (await (select(lastSyncDateTable)
+                ..limit(1)
+                ..orderBy([
+                  (t) => OrderingTerm(
+                      expression: t.lastSyncSalesOrder, mode: OrderingMode.desc)
+                ]))
+              .getSingleOrNull())
+          ?.lastSyncSalesOrder;
     } catch (e, stackTrace) {
       throw DBException(e.toString(), stackTrace);
     }

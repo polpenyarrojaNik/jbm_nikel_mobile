@@ -1,21 +1,28 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/sync/infrastructure/sync_local_service.dart';
-import 'package:jbm_nikel_mobile/src/sync/infrastructure/sync_remote_service.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_dto.dart';
 
 import '../../core/domain/jbm_mobile_failure.dart';
+import '../../core/infrastructure/database.dart';
 import '../../core/infrastructure/exceptions.dart';
-import '../../core/shared/log.dart';
+import '../../core/infrastructure/log.dart';
+import '../../core/infrastructure/remote_response.dart';
+import '../../features/sales_order/infrastructure/sales_order_headers.dart';
 
-final syncRepositoryProvider = Provider((ref) => SyncRepository(
-    ref.watch(syncLocalServiceProvider), ref.watch(syncRemoteServiceProvider)));
+final syncRepositoryProvider = Provider.autoDispose<SyncRepository>(
+  // * Override this in the main method
+  (ref) => throw UnimplementedError(),
+);
 
 class SyncRepository {
-  final SyncLocalService _localService;
-  final SyncRemoteService _remoteService;
+  AppDatabase db;
+  Dio dio;
 
-  SyncRepository(this._localService, this._remoteService);
+  SyncRepository(this.db, this.dio);
 
   Future<Either<JbmMobileFailure, Unit>> syncAllSalesOrder() async {
     int page = 1;
@@ -23,14 +30,14 @@ class SyncRepository {
     int? _totalRows;
 
     try {
-      final dbSysdateStr = await _remoteService.getDbSysdate(
+      final dbSysdateStr = await _getRemoteDbSysDate(
           requestUri: Uri.http(
-            dotenv.get('URL', fallback: 'loclahost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'loclahost:3001'),
             '/api/v1/date',
           ),
           jsonDataSelector: (json) => json['data'] as String);
 
-      final lastSyncDate = await _localService.getLastSyncSalesOrderDate();
+      final lastSyncDate = await db.getLastSyncSalesOrderDate();
       while (isNextPageAvailable) {
         final query = {
           'page': '$page',
@@ -45,9 +52,9 @@ class SyncRepository {
         if (_totalRows != null) {
           query.addAll({'totalRows': '$_totalRows'});
         }
-        final remotePageItems = await _remoteService.syncAllSalesOrder(
+        final remotePageItems = await _remoteSyncAllSalesOrder(
             requestUri: Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
               '/api/v1/sales-order',
               query,
             ),
@@ -56,15 +63,21 @@ class SyncRepository {
         await remotePageItems.maybeWhen(
           orElse: () {},
           withNewData: (data, maxPage, totalRows) async {
-            await _localService.upsertSalesOrder(data);
-
+            final salesOrderDTOList =
+                data.map((e) => SalesOrderDTO.fromJson(e)).toList();
+            for (var i = 0; i < salesOrderDTOList.length; i++) {
+              await db.upsertSalesOrder(salesOrderDto: salesOrderDTOList[i]);
+            }
             isNextPageAvailable = page < maxPage;
             _totalRows = totalRows;
             page += 1;
           },
         );
       }
-      await _localService.addLastSyncSalesOrder(lastSyncDate: dbSysdateStr);
+      await db.updateLastSyncSalesOrder(
+        lastSyncDateSalesOrder: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncSalesOrder: Value(dbSysdateStr)),
+      );
 
       return right(unit);
     } on RestApiException catch (e) {
@@ -76,6 +89,87 @@ class SyncRepository {
     } catch (e, stackTrace) {
       log.severe(e.toString(), e, stackTrace);
       return left(JbmMobileFailure.local(e.toString()));
+    }
+  }
+
+  Future<RemoteResponse<List<Map<String, dynamic>>>> _remoteSyncAllSalesOrder({
+    required Uri requestUri,
+    required List<dynamic> Function(dynamic json) jsonDataSelector,
+  }) async {
+    try {
+      log.info('${(this).runtimeType}.getPage - Get Uri: $requestUri');
+      final response = await dio.getUri(
+        requestUri,
+      );
+      log.info(
+          '${(this).runtimeType}.getPage - Received response: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        final convertedDate = jsonDataSelector(response.data)
+            .map((salesOrderMap) => salesOrderMap as Map<String, dynamic>)
+            .toList();
+        final headers = SalesOrderHeaders.parse(response);
+
+        log.info('${(this).runtimeType}.getPage - Saved cache');
+        return RemoteResponse.withNewData(
+          convertedDate,
+          maxPage: headers.maxPage ?? 1,
+          totalRows: headers.totalRows ?? 0,
+        );
+      } else {
+        throw RestApiException(response.statusCode, response.toString(), null);
+      }
+    } on DioError catch (e) {
+      if (e.isNoConnectionError) {
+        return const RemoteResponse.noConnection();
+      } else if (e.response != null) {
+        throw RestApiException(
+            e.response?.statusCode,
+            (e.response?.data is Map)
+                ? e.response?.data['detail'] ?? e.response?.data['message']
+                : e.response?.statusMessage,
+            e.stackTrace);
+      } else {
+        rethrow;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String> _getRemoteDbSysDate({
+    required Uri requestUri,
+    required dynamic Function(dynamic json) jsonDataSelector,
+  }) async {
+    try {
+      log.info('${(this).runtimeType}.getDbSysdate - Get Uri: $requestUri');
+      final response = await dio.getUri(
+        requestUri,
+      );
+      log.info(
+          '${(this).runtimeType}.getDbSysdate - Received response: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        final convertedDate = jsonDataSelector(response.data);
+
+        log.info('${(this).runtimeType}.getPage - Saved cache');
+        return convertedDate;
+      } else {
+        throw RestApiException(response.statusCode, response.toString(), null);
+      }
+    } on DioError catch (e) {
+      if (e.response != null) {
+        throw RestApiException(
+            e.response?.statusCode,
+            (e.response?.data is Map)
+                ? e.response?.data['detail'] ?? e.response?.data['message']
+                : e.response?.statusMessage,
+            e.stackTrace);
+      } else {
+        rethrow;
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 }

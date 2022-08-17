@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/sales_order/domain/sales_order.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order.dart';
 
-import '../../core/domain/jbm_mobile_failure.dart';
+import '../../../core/domain/jbm_mobile_failure.dart';
 import '../infrastructure/sales_order_repository.dart';
 
 part 'sales_order_list_controller.freezed.dart';
@@ -30,7 +30,7 @@ class SalesOrderListState with _$SalesOrderListState {
 }
 
 class SalesOrderListNotifier extends StateNotifier<SalesOrderListState> {
-  final SalesOrderListRepository salesOrderListRepository;
+  final SalesOrderRepository salesOrderListRepository;
   int _page = 1;
   bool isNextPageAvailable = false;
   SalesOrderListNotifier(this.salesOrderListRepository)

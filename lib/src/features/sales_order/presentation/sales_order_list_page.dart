@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/sales_order/presentation/failure_sales_order_tile.dart';
-import 'package:jbm_nikel_mobile/src/sales_order/presentation/sales_order_list_controller.dart';
-import 'package:jbm_nikel_mobile/src/sales_order/presentation/sales_order_list_tile.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/failure_sales_order_tile.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/sales_order_list_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/sales_order_list_tile.dart';
 
+import '../../../core/presentation/common_widgets/app_drawer.dart';
 import 'loading_sales_order_tile.dart';
 
 class SalesOrderListPage extends ConsumerWidget {
@@ -32,6 +33,7 @@ class SalesOrderListPage extends ConsumerWidget {
     });
 
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: AppBar(title: const Text('Sales Order List')),
       body: state.maybeWhen(
         orElse: () => false,

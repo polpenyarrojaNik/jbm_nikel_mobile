@@ -1,28 +1,32 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/sales_order/domain/sales_order.dart';
-import 'package:jbm_nikel_mobile/src/sales_order/infrastructure/sales_order_local_service.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/exceptions.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order.dart';
 
-import '../../core/domain/fresh.dart';
-import '../../core/domain/jbm_mobile_failure.dart';
-import '../../core/infrastructure/exceptions.dart';
-import '../../core/shared/log.dart';
+import '../../../core/domain/fresh.dart';
+import '../../../core/domain/jbm_mobile_failure.dart';
+import '../../../core/infrastructure/log.dart';
 
-final salesOrderRepositoryProvider = Provider((ref) =>
-    SalesOrderListRepository(ref.watch(salesOrderLocalServiceProvider)));
+final salesOrderRepositoryProvider = Provider.autoDispose<SalesOrderRepository>(
+  // * Override this in the main method
+  (ref) => throw UnimplementedError(),
+);
 
-class SalesOrderListRepository {
-  final SalesOrderListLocalService _localService;
+class SalesOrderRepository {
+  AppDatabase db;
+  Dio dio;
 
-  SalesOrderListRepository(this._localService);
+  SalesOrderRepository(this.db, this.dio);
 
   Future<Either<JbmMobileFailure, Fresh<List<SalesOrder>>>>
       getSalesOrderListPage({required int page, required int pageSize}) async {
     try {
       final salesOrderDTOLocalItems =
-          await _localService.getSalesOrder(page: page, pageSize: pageSize);
+          await db.getSalesOrder(page: page, pageSize: pageSize);
 
-      final salesOrderCount = await _localService.getSalesOrderCount();
+      final salesOrderCount = await db.getSalesOrderCount();
 
       print(salesOrderCount);
 
