@@ -21,7 +21,7 @@ mixin _$SyncPageState {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() syncSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(Object error) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$SyncPageState {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$SyncPageState {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$_Initial extends _Initial {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() syncSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(Object error) loadFailure,
   }) {
     return initial();
   }
@@ -138,7 +138,7 @@ class _$_Initial extends _Initial {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
   }) {
     return initial?.call();
   }
@@ -149,7 +149,7 @@ class _$_Initial extends _Initial {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -245,7 +245,7 @@ class _$_LoadInProgress extends _LoadInProgress {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() syncSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(Object error) loadFailure,
   }) {
     return loadInProgress();
   }
@@ -256,7 +256,7 @@ class _$_LoadInProgress extends _LoadInProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
   }) {
     return loadInProgress?.call();
   }
@@ -267,7 +267,7 @@ class _$_LoadInProgress extends _LoadInProgress {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -363,7 +363,7 @@ class _$_SyncSuccess extends _SyncSuccess {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() syncSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(Object error) loadFailure,
   }) {
     return syncSuccess();
   }
@@ -374,7 +374,7 @@ class _$_SyncSuccess extends _SyncSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
   }) {
     return syncSuccess?.call();
   }
@@ -385,7 +385,7 @@ class _$_SyncSuccess extends _SyncSuccess {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
     required TResult orElse(),
   }) {
     if (syncSuccess != null) {
@@ -442,9 +442,7 @@ abstract class _$$_LoadFailureCopyWith<$Res> {
   factory _$$_LoadFailureCopyWith(
           _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
       __$$_LoadFailureCopyWithImpl<$Res>;
-  $Res call({JbmMobileFailure failure});
-
-  $JbmMobileFailureCopyWith<$Res> get failure;
+  $Res call({Object error});
 }
 
 /// @nodoc
@@ -460,35 +458,28 @@ class __$$_LoadFailureCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? failure = freezed,
+    Object? error = freezed,
   }) {
     return _then(_$_LoadFailure(
-      failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as JbmMobileFailure,
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Object,
     ));
-  }
-
-  @override
-  $JbmMobileFailureCopyWith<$Res> get failure {
-    return $JbmMobileFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_LoadFailure extends _LoadFailure {
-  const _$_LoadFailure(this.failure) : super._();
+  const _$_LoadFailure(this.error) : super._();
 
   @override
-  final JbmMobileFailure failure;
+  final Object error;
 
   @override
   String toString() {
-    return 'SyncPageState.loadFailure(failure: $failure)';
+    return 'SyncPageState.loadFailure(error: $error)';
   }
 
   @override
@@ -496,12 +487,12 @@ class _$_LoadFailure extends _LoadFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoadFailure &&
-            const DeepCollectionEquality().equals(other.failure, failure));
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
 
   @JsonKey(ignore: true)
   @override
@@ -514,9 +505,9 @@ class _$_LoadFailure extends _LoadFailure {
     required TResult Function() initial,
     required TResult Function() loadInProgress,
     required TResult Function() syncSuccess,
-    required TResult Function(JbmMobileFailure failure) loadFailure,
+    required TResult Function(Object error) loadFailure,
   }) {
-    return loadFailure(failure);
+    return loadFailure(error);
   }
 
   @override
@@ -525,9 +516,9 @@ class _$_LoadFailure extends _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
   }) {
-    return loadFailure?.call(failure);
+    return loadFailure?.call(error);
   }
 
   @override
@@ -536,11 +527,11 @@ class _$_LoadFailure extends _LoadFailure {
     TResult Function()? initial,
     TResult Function()? loadInProgress,
     TResult Function()? syncSuccess,
-    TResult Function(JbmMobileFailure failure)? loadFailure,
+    TResult Function(Object error)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
-      return loadFailure(failure);
+      return loadFailure(error);
     }
     return orElse();
   }
@@ -584,10 +575,10 @@ class _$_LoadFailure extends _LoadFailure {
 }
 
 abstract class _LoadFailure extends SyncPageState {
-  const factory _LoadFailure(final JbmMobileFailure failure) = _$_LoadFailure;
+  const factory _LoadFailure(final Object error) = _$_LoadFailure;
   const _LoadFailure._() : super._();
 
-  JbmMobileFailure get failure;
+  Object get error;
   @JsonKey(ignore: true)
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
       throw _privateConstructorUsedError;

@@ -23,6 +23,10 @@ class SalesOrder with _$SalesOrder {
     required Money taxBase,
     required Money ivaAmount,
     required Money total,
+    required int salesOrderStatusId,
+    required bool isOffer,
+    required double promptPaymentDiscount,
+    required double iva,
     required DateTime? lastUpdated,
     required bool deleted,
   }) = _SalesOrder;

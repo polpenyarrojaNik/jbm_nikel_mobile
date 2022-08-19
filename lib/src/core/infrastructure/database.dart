@@ -1,26 +1,43 @@
 import 'dart:io';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/country_dto.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
+import '../../features/customer/infrastructure/collection_method_dto.dart';
+import '../../features/customer/infrastructure/collection_term_dto.dart';
+import '../../features/customer/infrastructure/customer_dto.dart';
 import '../../features/sales_order/infrastructure/sales_order_dto.dart';
-import 'exceptions.dart';
+import '../exceptions/app_exception.dart';
 
 part 'database.g.dart';
 
 class LastSyncDateTable extends Table {
+  @override
+  String get tableName => 'LAST_SYNC_DATE';
+
+  @override
+  Set<Column> get primaryKey => {id};
+
   TextColumn get id => text().named('ID')();
   TextColumn get lastSyncSalesOrder =>
       text().nullable().named('LAST_SYNC_SALES_ORDER')();
   TextColumn get lastSyncCustomer =>
       text().nullable().named('LAST_SYNC_CUSTOMER')();
-
-  @override
-  Set<Column> get primaryKey => {id};
 }
 
-@DriftDatabase(tables: [SalesOrderTable, LastSyncDateTable])
+@DriftDatabase(tables: [
+  SalesOrderTable,
+  LastSyncDateTable,
+  CollectionMethodTable,
+  CollectionTermTable,
+  CountryTable,
+  DivisaTable,
+  CustomerTable,
+])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
@@ -33,48 +50,37 @@ class AppDatabase extends _$AppDatabase {
     return await super.close();
   }
 
-  Future<List<SalesOrderDTO>> getSalesOrder(
-      {required int page, required int pageSize}) async {
-    int offset = (page - 1) * pageSize;
-    print('Page: $page');
-    try {
-      return await (select(salesOrderTable)
-            ..limit(pageSize, offset: offset)
-            ..orderBy([
-              (t) => OrderingTerm(
-                  expression: t.salesOrderDate, mode: OrderingMode.desc)
-            ]))
-          .get();
-    } catch (e, stackTrace) {
-      throw DBException(e.toString(), stackTrace);
-    }
+  Stream<List<SalesOrderDTO>> getSalesOrderDTO() {
+    return (select(salesOrderTable)
+          ..orderBy([
+            (t) => OrderingTerm(
+                expression: t.salesOrderDate, mode: OrderingMode.desc)
+          ]))
+        .watch();
   }
 
   Future<int> getSalesOrderCount() async {
-    try {
-      var countExp = salesOrderTable.rowId.count();
+    var countExp = salesOrderTable.rowId.count();
 
-      final query = selectOnly(salesOrderTable)..addColumns([countExp]);
-      return await query.map((row) => row.read(countExp)).getSingle();
-    } catch (e, stackTrace) {
-      throw DBException(e.toString(), stackTrace);
-    }
+    final query = selectOnly(salesOrderTable)..addColumns([countExp]);
+    return await query.map((row) => row.read(countExp)).getSingle();
   }
 
   Future<int> upsertSalesOrder({required SalesOrderDTO salesOrderDto}) async {
     try {
       return await into(salesOrderTable).insertOnConflictUpdate(salesOrderDto);
-    } catch (e, stackTrace) {
-      throw DBException(e.toString(), stackTrace);
+    } catch (e) {
+      throw AppException.salesOrderUpsertFailure(e.toString());
     }
   }
 
   Future<int> addInitialSyncDate(
       {required LastSyncDateTableCompanion initialSyncDate}) async {
     try {
-      return await into(lastSyncDateTable).insert(initialSyncDate);
+      final result = await into(lastSyncDateTable).insert(initialSyncDate);
+      return result;
     } catch (e, stackTrace) {
-      throw DBException(e.toString(), stackTrace);
+      throw AppException.syncFailure('LAST_SYNC_DATE', e.toString());
     }
   }
 
@@ -83,8 +89,8 @@ class AppDatabase extends _$AppDatabase {
     try {
       return await (update(lastSyncDateTable)..where((t) => t.id.equals('1')))
           .write(lastSyncDateSalesOrder);
-    } catch (e, stackTrace) {
-      throw DBException(e.toString(), stackTrace);
+    } catch (e) {
+      throw AppException.syncFailure('LAST_SYNC_DATE', e.toString());
     }
   }
 
@@ -98,21 +104,17 @@ class AppDatabase extends _$AppDatabase {
                 ]))
               .getSingleOrNull())
           ?.lastSyncSalesOrder;
-    } catch (e, stackTrace) {
-      throw DBException(e.toString(), stackTrace);
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 }
 
 LazyDatabase _openConnection() {
-  try {
-    return LazyDatabase(() async {
-      final dbFolder = await getApplicationDocumentsDirectory();
+  return LazyDatabase(() async {
+    final dbFolder = await getApplicationDocumentsDirectory();
 
-      final file = File(join(dbFolder.path, 'jbm.db'));
-      return NativeDatabase(file);
-    });
-  } catch (e, stackTrace) {
-    throw DBException(e.toString(), stackTrace);
-  }
+    final file = File(join(dbFolder.path, 'jbm.db'));
+    return NativeDatabase(file);
+  });
 }

@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
-  flutter_riverpod: ^1.0.4
+  flutter_riverpod: ^2.0.0-dev.9
   shared_preferences: ^2.0.15
   freezed_annotation: ^2.0.3
   json_annotation: ^4.6.0
@@ -36,12 +36,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  auto_route_generator: ^4.0.0
-  build_runner: ^2.1.11
-  flutter_launcher_icons: ^0.9.0
-  freezed: ^2.0.3+1
-  json_serializable: ^6.1.4
+  flutter_lints: ^2.0.1
+  build_runner: ^2.2.0
+  flutter_launcher_icons: ^0.9.3
+  freezed: ^2.0.5
+  json_serializable: ^6.3.1
   drift_dev: ^1.7.0
 
 # flutter_icons:

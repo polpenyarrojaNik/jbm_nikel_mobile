@@ -32,6 +32,10 @@ mixin _$SalesOrder {
   Money get taxBase => throw _privateConstructorUsedError;
   Money get ivaAmount => throw _privateConstructorUsedError;
   Money get total => throw _privateConstructorUsedError;
+  int get salesOrderStatusId => throw _privateConstructorUsedError;
+  bool get isOffer => throw _privateConstructorUsedError;
+  double get promptPaymentDiscount => throw _privateConstructorUsedError;
+  double get iva => throw _privateConstructorUsedError;
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -62,6 +66,10 @@ abstract class $SalesOrderCopyWith<$Res> {
       Money taxBase,
       Money ivaAmount,
       Money total,
+      int salesOrderStatusId,
+      bool isOffer,
+      double promptPaymentDiscount,
+      double iva,
       DateTime? lastUpdated,
       bool deleted});
 }
@@ -92,6 +100,10 @@ class _$SalesOrderCopyWithImpl<$Res> implements $SalesOrderCopyWith<$Res> {
     Object? taxBase = freezed,
     Object? ivaAmount = freezed,
     Object? total = freezed,
+    Object? salesOrderStatusId = freezed,
+    Object? isOffer = freezed,
+    Object? promptPaymentDiscount = freezed,
+    Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -160,6 +172,22 @@ class _$SalesOrderCopyWithImpl<$Res> implements $SalesOrderCopyWith<$Res> {
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as Money,
+      salesOrderStatusId: salesOrderStatusId == freezed
+          ? _value.salesOrderStatusId
+          : salesOrderStatusId // ignore: cast_nullable_to_non_nullable
+              as int,
+      isOffer: isOffer == freezed
+          ? _value.isOffer
+          : isOffer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      promptPaymentDiscount: promptPaymentDiscount == freezed
+          ? _value.promptPaymentDiscount
+          : promptPaymentDiscount // ignore: cast_nullable_to_non_nullable
+              as double,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -196,6 +224,10 @@ abstract class _$$_SalesOrderCopyWith<$Res>
       Money taxBase,
       Money ivaAmount,
       Money total,
+      int salesOrderStatusId,
+      bool isOffer,
+      double promptPaymentDiscount,
+      double iva,
       DateTime? lastUpdated,
       bool deleted});
 }
@@ -228,6 +260,10 @@ class __$$_SalesOrderCopyWithImpl<$Res> extends _$SalesOrderCopyWithImpl<$Res>
     Object? taxBase = freezed,
     Object? ivaAmount = freezed,
     Object? total = freezed,
+    Object? salesOrderStatusId = freezed,
+    Object? isOffer = freezed,
+    Object? promptPaymentDiscount = freezed,
+    Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -296,6 +332,22 @@ class __$$_SalesOrderCopyWithImpl<$Res> extends _$SalesOrderCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as Money,
+      salesOrderStatusId: salesOrderStatusId == freezed
+          ? _value.salesOrderStatusId
+          : salesOrderStatusId // ignore: cast_nullable_to_non_nullable
+              as int,
+      isOffer: isOffer == freezed
+          ? _value.isOffer
+          : isOffer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      promptPaymentDiscount: promptPaymentDiscount == freezed
+          ? _value.promptPaymentDiscount
+          : promptPaymentDiscount // ignore: cast_nullable_to_non_nullable
+              as double,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -328,6 +380,10 @@ class _$_SalesOrder extends _SalesOrder {
       required this.taxBase,
       required this.ivaAmount,
       required this.total,
+      required this.salesOrderStatusId,
+      required this.isOffer,
+      required this.promptPaymentDiscount,
+      required this.iva,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -365,13 +421,21 @@ class _$_SalesOrder extends _SalesOrder {
   @override
   final Money total;
   @override
+  final int salesOrderStatusId;
+  @override
+  final bool isOffer;
+  @override
+  final double promptPaymentDiscount;
+  @override
+  final double iva;
+  @override
   final DateTime? lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'SalesOrder(companyId: $companyId, salesOrderId: $salesOrderId, salesOrderDate: $salesOrderDate, salesType: $salesType, customerId: $customerId, customerName: $customerName, shippingAddress1: $shippingAddress1, shippingAddress2: $shippingAddress2, zipCode: $zipCode, city: $city, state: $state, countryId: $countryId, divisaId: $divisaId, taxBase: $taxBase, ivaAmount: $ivaAmount, total: $total, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'SalesOrder(companyId: $companyId, salesOrderId: $salesOrderId, salesOrderDate: $salesOrderDate, salesType: $salesType, customerId: $customerId, customerName: $customerName, shippingAddress1: $shippingAddress1, shippingAddress2: $shippingAddress2, zipCode: $zipCode, city: $city, state: $state, countryId: $countryId, divisaId: $divisaId, taxBase: $taxBase, ivaAmount: $ivaAmount, total: $total, salesOrderStatusId: $salesOrderStatusId, isOffer: $isOffer, promptPaymentDiscount: $promptPaymentDiscount, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -402,31 +466,42 @@ class _$_SalesOrder extends _SalesOrder {
             const DeepCollectionEquality().equals(other.ivaAmount, ivaAmount) &&
             const DeepCollectionEquality().equals(other.total, total) &&
             const DeepCollectionEquality()
+                .equals(other.salesOrderStatusId, salesOrderStatusId) &&
+            const DeepCollectionEquality().equals(other.isOffer, isOffer) &&
+            const DeepCollectionEquality()
+                .equals(other.promptPaymentDiscount, promptPaymentDiscount) &&
+            const DeepCollectionEquality().equals(other.iva, iva) &&
+            const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(companyId),
-      const DeepCollectionEquality().hash(salesOrderId),
-      const DeepCollectionEquality().hash(salesOrderDate),
-      const DeepCollectionEquality().hash(salesType),
-      const DeepCollectionEquality().hash(customerId),
-      const DeepCollectionEquality().hash(customerName),
-      const DeepCollectionEquality().hash(shippingAddress1),
-      const DeepCollectionEquality().hash(shippingAddress2),
-      const DeepCollectionEquality().hash(zipCode),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(countryId),
-      const DeepCollectionEquality().hash(divisaId),
-      const DeepCollectionEquality().hash(taxBase),
-      const DeepCollectionEquality().hash(ivaAmount),
-      const DeepCollectionEquality().hash(total),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(companyId),
+        const DeepCollectionEquality().hash(salesOrderId),
+        const DeepCollectionEquality().hash(salesOrderDate),
+        const DeepCollectionEquality().hash(salesType),
+        const DeepCollectionEquality().hash(customerId),
+        const DeepCollectionEquality().hash(customerName),
+        const DeepCollectionEquality().hash(shippingAddress1),
+        const DeepCollectionEquality().hash(shippingAddress2),
+        const DeepCollectionEquality().hash(zipCode),
+        const DeepCollectionEquality().hash(city),
+        const DeepCollectionEquality().hash(state),
+        const DeepCollectionEquality().hash(countryId),
+        const DeepCollectionEquality().hash(divisaId),
+        const DeepCollectionEquality().hash(taxBase),
+        const DeepCollectionEquality().hash(ivaAmount),
+        const DeepCollectionEquality().hash(total),
+        const DeepCollectionEquality().hash(salesOrderStatusId),
+        const DeepCollectionEquality().hash(isOffer),
+        const DeepCollectionEquality().hash(promptPaymentDiscount),
+        const DeepCollectionEquality().hash(iva),
+        const DeepCollectionEquality().hash(lastUpdated),
+        const DeepCollectionEquality().hash(deleted)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -452,6 +527,10 @@ abstract class _SalesOrder extends SalesOrder {
       required final Money taxBase,
       required final Money ivaAmount,
       required final Money total,
+      required final int salesOrderStatusId,
+      required final bool isOffer,
+      required final double promptPaymentDiscount,
+      required final double iva,
       required final DateTime? lastUpdated,
       required final bool deleted}) = _$_SalesOrder;
   const _SalesOrder._() : super._();
@@ -488,6 +567,14 @@ abstract class _SalesOrder extends SalesOrder {
   Money get ivaAmount;
   @override
   Money get total;
+  @override
+  int get salesOrderStatusId;
+  @override
+  bool get isOffer;
+  @override
+  double get promptPaymentDiscount;
+  @override
+  double get iva;
   @override
   DateTime? get lastUpdated;
   @override

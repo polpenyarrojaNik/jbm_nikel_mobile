@@ -3,15 +3,14 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_dto.dart';
 
-import '../../core/domain/jbm_mobile_failure.dart';
-import '../../core/infrastructure/database.dart';
-import '../../core/infrastructure/exceptions.dart';
-import '../../core/infrastructure/log.dart';
-import '../../core/infrastructure/remote_response.dart';
-import '../../features/sales_order/infrastructure/sales_order_headers.dart';
+import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/log.dart';
+import '../../../core/infrastructure/remote_response.dart';
+import '../../sales_order/infrastructure/sales_order_headers.dart';
 
 final syncRepositoryProvider = Provider.autoDispose<SyncRepository>(
   // * Override this in the main method
@@ -24,7 +23,7 @@ class SyncRepository {
 
   SyncRepository(this.db, this.dio);
 
-  Future<Either<JbmMobileFailure, Unit>> syncAllSalesOrder() async {
+  Future<void> syncAllSalesOrder() async {
     int page = 1;
     bool isNextPageAvailable = true;
     int? _totalRows;
@@ -78,17 +77,11 @@ class SyncRepository {
         lastSyncDateSalesOrder: LastSyncDateTableCompanion(
             id: const Value('1'), lastSyncSalesOrder: Value(dbSysdateStr)),
       );
-
-      return right(unit);
-    } on RestApiException catch (e) {
-      log.severe(e.message, e, e.stackTrace);
-      return left(JbmMobileFailure.api(e.errorCode, e.message));
-    } on DBException catch (e) {
-      log.severe(e.message, e, e.stackTrace);
-      return left(JbmMobileFailure.db(e.message));
-    } catch (e, stackTrace) {
-      log.severe(e.toString(), e, stackTrace);
-      return left(JbmMobileFailure.local(e.toString()));
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -117,18 +110,18 @@ class SyncRepository {
           totalRows: headers.totalRows ?? 0,
         );
       } else {
-        throw RestApiException(response.statusCode, response.toString(), null);
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.toString());
       }
     } on DioError catch (e) {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {
-        throw RestApiException(
-            e.response?.statusCode,
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400,
             (e.response?.data is Map)
                 ? e.response?.data['detail'] ?? e.response?.data['message']
-                : e.response?.statusMessage,
-            e.stackTrace);
+                : e.response?.statusMessage);
       } else {
         rethrow;
       }
@@ -155,16 +148,17 @@ class SyncRepository {
         log.info('${(this).runtimeType}.getPage - Saved cache');
         return convertedDate;
       } else {
-        throw RestApiException(response.statusCode, response.toString(), null);
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.toString());
       }
     } on DioError catch (e) {
       if (e.response != null) {
-        throw RestApiException(
-            e.response?.statusCode,
-            (e.response?.data is Map)
-                ? e.response?.data['detail'] ?? e.response?.data['message']
-                : e.response?.statusMessage,
-            e.stackTrace);
+        throw AppException.restApiFailure(
+          e.response?.statusCode ?? 400,
+          (e.response?.data is Map)
+              ? e.response?.data['detail'] ?? e.response?.data['message']
+              : e.response?.statusMessage,
+        );
       } else {
         rethrow;
       }

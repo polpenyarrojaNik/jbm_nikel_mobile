@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/extension.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
 import '../domain/sales_order.dart';
 
@@ -29,10 +29,14 @@ class SalesOrderDTO with _$SalesOrderDTO implements Insertable<SalesOrderDTO> {
     @JsonKey(name: 'BASE_IMPONIBLE') required double taxBase,
     @JsonKey(name: 'IMPORTE_IVA') required double ivaAmount,
     @JsonKey(name: 'TOTAL') required double total,
+    @JsonKey(name: 'ESTADO_PEDIDO_ID') required int salesOrderStatusId,
+    @JsonKey(name: 'OFERTA_SN') required String isOffer,
+    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+        required double promptPaymentDiscount,
+    @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
         required DateTime? lastUpdated,
-    @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
-        required bool deleted,
+    @JsonKey(name: 'DELETED') required String deleted,
   }) = _SalesOrderDTO;
 
   factory SalesOrderDTO.fromJson(Map<String, dynamic> json) =>
@@ -56,31 +60,13 @@ class SalesOrderDTO with _$SalesOrderDTO implements Insertable<SalesOrderDTO> {
       taxBase: _.taxBase.amount.toDecimal().toDouble(),
       ivaAmount: _.ivaAmount.amount.toDecimal().toDouble(),
       total: _.total.amount.toDecimal().toDouble(),
+      salesOrderStatusId: _.salesOrderStatusId,
+      isOffer: (_.isOffer) ? 'S' : 'N',
+      promptPaymentDiscount: _.promptPaymentDiscount,
+      iva: _.iva,
       lastUpdated: _.lastUpdated,
-      deleted: _.deleted,
+      deleted: (_.deleted) ? 'S' : 'N',
     );
-  }
-
-  factory SalesOrderDTO.fromDB(Map<String, dynamic> json) {
-    return SalesOrderDTO(
-        companyId: json['companyId'],
-        salesOrderId: json['salesOrderId'],
-        salesOrderDate: DateTime.parse(json['salesOrderDate']),
-        salesType: json['salesType'],
-        customerId: json['customerId'],
-        customerName: json['customerName'],
-        shippingAddress1: json['shippingAddress1'],
-        shippingAddress2: json['shippingAddress2'],
-        zipCode: json['zipCode'],
-        city: json['city'],
-        state: json['state'],
-        countryId: json['countryId'],
-        divisaId: json['divisaId'],
-        taxBase: json['taxBase'],
-        ivaAmount: json['ivaAmount'],
-        total: json['total'],
-        lastUpdated: DateTime.parse(json['lastUpdated']),
-        deleted: (json['deleted'] == 'S') ? true : false);
   }
 
   SalesOrder toDomain() {
@@ -101,13 +87,13 @@ class SalesOrderDTO with _$SalesOrderDTO implements Insertable<SalesOrderDTO> {
         taxBase: taxBase.parseMoney(taxBase, divisaId),
         ivaAmount: ivaAmount.parseMoney(ivaAmount, divisaId),
         total: total.parseMoney(total, divisaId),
+        salesOrderStatusId: salesOrderStatusId,
+        isOffer: (isOffer == 'S') ? true : false,
+        promptPaymentDiscount: promptPaymentDiscount,
+        iva: iva,
         lastUpdated: lastUpdated,
-        deleted: deleted);
+        deleted: (deleted == 'S') ? true : false);
   }
-
-  static bool _boolFromString(String value) => value == 'S';
-
-  static String _boolToString(bool value) => (value) ? 'S' : 'N';
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -128,6 +114,10 @@ class SalesOrderDTO with _$SalesOrderDTO implements Insertable<SalesOrderDTO> {
       taxBase: Value(taxBase),
       ivaAmount: Value(ivaAmount),
       total: Value(total),
+      salesOrderStatusId: Value(salesOrderStatusId),
+      isOffer: Value(isOffer),
+      promptPaymentDiscount: Value(promptPaymentDiscount),
+      iva: Value(iva),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -163,10 +153,17 @@ class SalesOrderTable extends Table {
       real().withDefault(const Constant(0.0)).named('IMPORTE_IVA')();
   RealColumn get total =>
       real().withDefault(const Constant(0.0)).named('TOTAL')();
+  IntColumn get salesOrderStatusId =>
+      integer().withDefault(const Constant(0)).named('ESTADO_PEDIDO_ID')();
+  TextColumn get isOffer =>
+      text().withDefault(const Constant('N')).named('OFERTA_SN')();
+  RealColumn get promptPaymentDiscount =>
+      real().withDefault(const Constant(0.0)).named('DESCUENTO_PRONTO_PAGO')();
+  RealColumn get iva => real().withDefault(const Constant(0.0)).named('IVA')();
   DateTimeColumn get lastUpdated =>
       dateTime().nullable().named('LAST_UPDATED')();
-  BoolColumn get deleted =>
-      boolean().withDefault(const Constant(false)).named('DELETED')();
+  TextColumn get deleted =>
+      text().withDefault(const Constant('N')).named('DELETED')();
   DateTimeColumn get lastSync => dateTime()
       .nullable()
       .withDefault(currentDateAndTime)
@@ -174,4 +171,7 @@ class SalesOrderTable extends Table {
 
   @override
   Set<Column> get primaryKey => {salesOrderId, companyId};
+
+  @override
+  String get tableName => 'PEDIDOS';
 }

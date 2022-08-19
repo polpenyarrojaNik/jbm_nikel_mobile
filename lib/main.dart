@@ -8,13 +8,17 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_repository.dart';
-import 'package:jbm_nikel_mobile/src/inital_db/infrastructure/initial_db_repository.dart';
-import 'package:jbm_nikel_mobile/src/sync/infrastructure/sync_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/sync/infrastructure/sync_repository.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/initial_db_repository.dart';
+import 'package:logging/logging.dart';
 import 'app.dart';
 
 void main() async {
   await runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    Logger.root.level = Level.ALL; // defaults to Level.INFO
+    Logger.root.onRecord.listen((record) =>
+        print('${record.level.name}: ${record.time}: ${record.message}'));
     GoRouter.setUrlPathStrategy(UrlPathStrategy.path);
     await dotenv.load();
 

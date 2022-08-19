@@ -1,8 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/sync/infrastructure/sync_repository.dart';
 
-import '../../core/domain/jbm_mobile_failure.dart';
+import '../infrastructure/sync_repository.dart';
 
 part 'sync_page_controller.freezed.dart';
 
@@ -20,7 +19,7 @@ class SyncPageState with _$SyncPageState {
   const factory SyncPageState.loadInProgress() = _LoadInProgress;
   const factory SyncPageState.syncSuccess() = _SyncSuccess;
   const factory SyncPageState.loadFailure(
-    JbmMobileFailure failure,
+    Object error,
   ) = _LoadFailure;
 }
 
@@ -30,10 +29,11 @@ class SyncPageNotifier extends StateNotifier<SyncPageState> {
 
   Future<void> syncValuesInLocalDB() async {
     state = const SyncPageState.loadInProgress();
-
-    final syncAllSalesOrderFold = await syncRepository.syncAllSalesOrder();
-
-    state = syncAllSalesOrderFold.fold((l) => SyncPageState.loadFailure(l),
-        (r) => const SyncPageState.syncSuccess());
+    try {
+      await syncRepository.syncAllSalesOrder();
+      state = const SyncPageState.syncSuccess();
+    } catch (e) {
+      state = SyncPageState.loadFailure(e);
+    }
   }
 }

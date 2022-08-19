@@ -1,12 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logging/logging.dart';
 
-bool get isInDebugMode {
-  bool inDebugMode = false;
-  assert(inDebugMode = true);
-  return inDebugMode;
-}
-
 final log = Logger('JBMLogger');
 
 class RiverpodLogger extends ProviderObserver {
@@ -17,7 +11,7 @@ class RiverpodLogger extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
-    log.info('Provider: ${provider.name ?? provider.runtimeType}');
-    log.info('          newValue: $newValue');
+    print('Provider: ${provider.name ?? provider.runtimeType}');
+    print('          newValue: $newValue');
   }
 }

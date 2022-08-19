@@ -2,9 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/presentation/customer_page.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/sales_order_list_page.dart';
-import 'package:jbm_nikel_mobile/src/splash/presentation/splash_page.dart';
-import 'package:jbm_nikel_mobile/src/sync/presentation/sync_page.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../features/splash/presentation/splash_page.dart';
+import '../../features/sync/presentation/sync_page.dart';
+import '../infrastructure/initial_db_repository.dart';
 
 enum AppRoute {
   home,
@@ -21,10 +23,7 @@ enum AppRoute {
 final goRouterProvider = Provider((ref) {
   return GoRouter(
     debugLogDiagnostics: false,
-    // refreshListenable: ref
-    //     .watch(setInitialDbProvider)
-    //     .when(data: (_) {}, error: (_, __) {}, loading: () {}),
-    // redirect: (state) => redirectLogic(state, ref),
+    redirect: (state) => redirectLogic(state, ref),
     routes: [
       GoRoute(
         path: '/',
@@ -97,8 +96,10 @@ final goRouterProvider = Provider((ref) {
 });
 
 String? redirectLogic(GoRouterState state, ProviderRef<GoRouter> ref) {
-  //  ref.watch(setInitialDbProvider).when(
-  //     data: (_) => '/',
-  //     error: (_, __) => '/',
-  //     loading: () => (state.location == '/loading') ? '/loading' : null);
+  final initalDbState = ref.watch(setInitialDbProvider);
+
+  return initalDbState.when(
+      data: (_) => null,
+      error: (_, __) => null,
+      loading: () => (state.location != '/loading') ? '/loading' : null);
 }

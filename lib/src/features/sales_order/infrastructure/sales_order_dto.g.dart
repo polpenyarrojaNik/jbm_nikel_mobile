@@ -24,10 +24,14 @@ _$_SalesOrderDTO _$$_SalesOrderDTOFromJson(Map<String, dynamic> json) =>
       taxBase: (json['BASE_IMPONIBLE'] as num).toDouble(),
       ivaAmount: (json['IMPORTE_IVA'] as num).toDouble(),
       total: (json['TOTAL'] as num).toDouble(),
+      salesOrderStatusId: json['ESTADO_PEDIDO_ID'] as int,
+      isOffer: json['OFERTA_SN'] as String,
+      promptPaymentDiscount: (json['DESCUENTO_PRONTO_PAGO'] as num).toDouble(),
+      iva: (json['IVA'] as num).toDouble(),
       lastUpdated: json['LAST_UPDATED'] == null
           ? null
           : DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: SalesOrderDTO._boolFromString(json['DELETED'] as String),
+      deleted: json['DELETED'] as String,
     );
 
 Map<String, dynamic> _$$_SalesOrderDTOToJson(_$_SalesOrderDTO instance) =>
@@ -48,6 +52,10 @@ Map<String, dynamic> _$$_SalesOrderDTOToJson(_$_SalesOrderDTO instance) =>
       'BASE_IMPONIBLE': instance.taxBase,
       'IMPORTE_IVA': instance.ivaAmount,
       'TOTAL': instance.total,
+      'ESTADO_PEDIDO_ID': instance.salesOrderStatusId,
+      'OFERTA_SN': instance.isOffer,
+      'DESCUENTO_PRONTO_PAGO': instance.promptPaymentDiscount,
+      'IVA': instance.iva,
       'LAST_UPDATED': instance.lastUpdated?.toIso8601String(),
-      'DELETED': SalesOrderDTO._boolToString(instance.deleted),
+      'DELETED': instance.deleted,
     };

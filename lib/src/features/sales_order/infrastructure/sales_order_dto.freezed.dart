@@ -52,13 +52,18 @@ mixin _$SalesOrderDTO {
   double get ivaAmount => throw _privateConstructorUsedError;
   @JsonKey(name: 'TOTAL')
   double get total => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ESTADO_PEDIDO_ID')
+  int get salesOrderStatusId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'OFERTA_SN')
+  String get isOffer => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+  double get promptPaymentDiscount => throw _privateConstructorUsedError;
+  @JsonKey(name: 'IVA')
+  double get iva => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
   DateTime? get lastUpdated => throw _privateConstructorUsedError;
-  @JsonKey(
-      name: 'DELETED',
-      fromJson: SalesOrderDTO._boolFromString,
-      toJson: SalesOrderDTO._boolToString)
-  bool get deleted => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DELETED')
+  String get deleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,42 +77,28 @@ abstract class $SalesOrderDTOCopyWith<$Res> {
           SalesOrderDTO value, $Res Function(SalesOrderDTO) then) =
       _$SalesOrderDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'EMPRESA_ID')
-          String companyId,
-      @JsonKey(name: 'PEDIDO_ID')
-          String salesOrderId,
-      @JsonKey(name: 'FECHA_PEDIDO')
-          DateTime salesOrderDate,
-      @JsonKey(name: 'TIPO_VENTA')
-          String salesType,
-      @JsonKey(name: 'CLIENTE_ID')
-          String customerId,
-      @JsonKey(name: 'NOMBRE_CLIENTE')
-          String? customerName,
-      @JsonKey(name: 'DIRECCION_ENVIO1')
-          String? shippingAddress1,
-      @JsonKey(name: 'DIRECCION_ENVIO2')
-          String? shippingAddress2,
-      @JsonKey(name: 'CODIGO_POSTAL')
-          String? zipCode,
-      @JsonKey(name: 'POBLACION')
-          String? city,
-      @JsonKey(name: 'PROVINCIA')
-          String? state,
-      @JsonKey(name: 'PAIS_ID')
-          String? countryId,
-      @JsonKey(name: 'DIVISA_ID')
-          String divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE')
-          double taxBase,
-      @JsonKey(name: 'IMPORTE_IVA')
-          double ivaAmount,
-      @JsonKey(name: 'TOTAL')
-          double total,
-      @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
-          DateTime? lastUpdated,
-      @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
-          bool deleted});
+      {@JsonKey(name: 'EMPRESA_ID') String companyId,
+      @JsonKey(name: 'PEDIDO_ID') String salesOrderId,
+      @JsonKey(name: 'FECHA_PEDIDO') DateTime salesOrderDate,
+      @JsonKey(name: 'TIPO_VENTA') String salesType,
+      @JsonKey(name: 'CLIENTE_ID') String customerId,
+      @JsonKey(name: 'NOMBRE_CLIENTE') String? customerName,
+      @JsonKey(name: 'DIRECCION_ENVIO1') String? shippingAddress1,
+      @JsonKey(name: 'DIRECCION_ENVIO2') String? shippingAddress2,
+      @JsonKey(name: 'CODIGO_POSTAL') String? zipCode,
+      @JsonKey(name: 'POBLACION') String? city,
+      @JsonKey(name: 'PROVINCIA') String? state,
+      @JsonKey(name: 'PAIS_ID') String? countryId,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') double taxBase,
+      @JsonKey(name: 'IMPORTE_IVA') double ivaAmount,
+      @JsonKey(name: 'TOTAL') double total,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') int salesOrderStatusId,
+      @JsonKey(name: 'OFERTA_SN') String isOffer,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double promptPaymentDiscount,
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'LAST_UPDATED', defaultValue: null) DateTime? lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -137,6 +128,10 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
     Object? taxBase = freezed,
     Object? ivaAmount = freezed,
     Object? total = freezed,
+    Object? salesOrderStatusId = freezed,
+    Object? isOffer = freezed,
+    Object? promptPaymentDiscount = freezed,
+    Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -205,6 +200,22 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as double,
+      salesOrderStatusId: salesOrderStatusId == freezed
+          ? _value.salesOrderStatusId
+          : salesOrderStatusId // ignore: cast_nullable_to_non_nullable
+              as int,
+      isOffer: isOffer == freezed
+          ? _value.isOffer
+          : isOffer // ignore: cast_nullable_to_non_nullable
+              as String,
+      promptPaymentDiscount: promptPaymentDiscount == freezed
+          ? _value.promptPaymentDiscount
+          : promptPaymentDiscount // ignore: cast_nullable_to_non_nullable
+              as double,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -212,7 +223,7 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String,
     ));
   }
 }
@@ -225,42 +236,28 @@ abstract class _$$_SalesOrderDTOCopyWith<$Res>
       __$$_SalesOrderDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'EMPRESA_ID')
-          String companyId,
-      @JsonKey(name: 'PEDIDO_ID')
-          String salesOrderId,
-      @JsonKey(name: 'FECHA_PEDIDO')
-          DateTime salesOrderDate,
-      @JsonKey(name: 'TIPO_VENTA')
-          String salesType,
-      @JsonKey(name: 'CLIENTE_ID')
-          String customerId,
-      @JsonKey(name: 'NOMBRE_CLIENTE')
-          String? customerName,
-      @JsonKey(name: 'DIRECCION_ENVIO1')
-          String? shippingAddress1,
-      @JsonKey(name: 'DIRECCION_ENVIO2')
-          String? shippingAddress2,
-      @JsonKey(name: 'CODIGO_POSTAL')
-          String? zipCode,
-      @JsonKey(name: 'POBLACION')
-          String? city,
-      @JsonKey(name: 'PROVINCIA')
-          String? state,
-      @JsonKey(name: 'PAIS_ID')
-          String? countryId,
-      @JsonKey(name: 'DIVISA_ID')
-          String divisaId,
-      @JsonKey(name: 'BASE_IMPONIBLE')
-          double taxBase,
-      @JsonKey(name: 'IMPORTE_IVA')
-          double ivaAmount,
-      @JsonKey(name: 'TOTAL')
-          double total,
-      @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
-          DateTime? lastUpdated,
-      @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
-          bool deleted});
+      {@JsonKey(name: 'EMPRESA_ID') String companyId,
+      @JsonKey(name: 'PEDIDO_ID') String salesOrderId,
+      @JsonKey(name: 'FECHA_PEDIDO') DateTime salesOrderDate,
+      @JsonKey(name: 'TIPO_VENTA') String salesType,
+      @JsonKey(name: 'CLIENTE_ID') String customerId,
+      @JsonKey(name: 'NOMBRE_CLIENTE') String? customerName,
+      @JsonKey(name: 'DIRECCION_ENVIO1') String? shippingAddress1,
+      @JsonKey(name: 'DIRECCION_ENVIO2') String? shippingAddress2,
+      @JsonKey(name: 'CODIGO_POSTAL') String? zipCode,
+      @JsonKey(name: 'POBLACION') String? city,
+      @JsonKey(name: 'PROVINCIA') String? state,
+      @JsonKey(name: 'PAIS_ID') String? countryId,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
+      @JsonKey(name: 'BASE_IMPONIBLE') double taxBase,
+      @JsonKey(name: 'IMPORTE_IVA') double ivaAmount,
+      @JsonKey(name: 'TOTAL') double total,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') int salesOrderStatusId,
+      @JsonKey(name: 'OFERTA_SN') String isOffer,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double promptPaymentDiscount,
+      @JsonKey(name: 'IVA') double iva,
+      @JsonKey(name: 'LAST_UPDATED', defaultValue: null) DateTime? lastUpdated,
+      @JsonKey(name: 'DELETED') String deleted});
 }
 
 /// @nodoc
@@ -292,6 +289,10 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
     Object? taxBase = freezed,
     Object? ivaAmount = freezed,
     Object? total = freezed,
+    Object? salesOrderStatusId = freezed,
+    Object? isOffer = freezed,
+    Object? promptPaymentDiscount = freezed,
+    Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -360,6 +361,22 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as double,
+      salesOrderStatusId: salesOrderStatusId == freezed
+          ? _value.salesOrderStatusId
+          : salesOrderStatusId // ignore: cast_nullable_to_non_nullable
+              as int,
+      isOffer: isOffer == freezed
+          ? _value.isOffer
+          : isOffer // ignore: cast_nullable_to_non_nullable
+              as String,
+      promptPaymentDiscount: promptPaymentDiscount == freezed
+          ? _value.promptPaymentDiscount
+          : promptPaymentDiscount // ignore: cast_nullable_to_non_nullable
+              as double,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -367,7 +384,7 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String,
     ));
   }
 }
@@ -408,9 +425,17 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
           required this.ivaAmount,
       @JsonKey(name: 'TOTAL')
           required this.total,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID')
+          required this.salesOrderStatusId,
+      @JsonKey(name: 'OFERTA_SN')
+          required this.isOffer,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+          required this.promptPaymentDiscount,
+      @JsonKey(name: 'IVA')
+          required this.iva,
       @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
           required this.lastUpdated,
-      @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
+      @JsonKey(name: 'DELETED')
           required this.deleted})
       : super._();
 
@@ -466,18 +491,27 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
   @JsonKey(name: 'TOTAL')
   final double total;
   @override
+  @JsonKey(name: 'ESTADO_PEDIDO_ID')
+  final int salesOrderStatusId;
+  @override
+  @JsonKey(name: 'OFERTA_SN')
+  final String isOffer;
+  @override
+  @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+  final double promptPaymentDiscount;
+  @override
+  @JsonKey(name: 'IVA')
+  final double iva;
+  @override
   @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
   final DateTime? lastUpdated;
   @override
-  @JsonKey(
-      name: 'DELETED',
-      fromJson: SalesOrderDTO._boolFromString,
-      toJson: SalesOrderDTO._boolToString)
-  final bool deleted;
+  @JsonKey(name: 'DELETED')
+  final String deleted;
 
   @override
   String toString() {
-    return 'SalesOrderDTO(companyId: $companyId, salesOrderId: $salesOrderId, salesOrderDate: $salesOrderDate, salesType: $salesType, customerId: $customerId, customerName: $customerName, shippingAddress1: $shippingAddress1, shippingAddress2: $shippingAddress2, zipCode: $zipCode, city: $city, state: $state, countryId: $countryId, divisaId: $divisaId, taxBase: $taxBase, ivaAmount: $ivaAmount, total: $total, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'SalesOrderDTO(companyId: $companyId, salesOrderId: $salesOrderId, salesOrderDate: $salesOrderDate, salesType: $salesType, customerId: $customerId, customerName: $customerName, shippingAddress1: $shippingAddress1, shippingAddress2: $shippingAddress2, zipCode: $zipCode, city: $city, state: $state, countryId: $countryId, divisaId: $divisaId, taxBase: $taxBase, ivaAmount: $ivaAmount, total: $total, salesOrderStatusId: $salesOrderStatusId, isOffer: $isOffer, promptPaymentDiscount: $promptPaymentDiscount, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -508,32 +542,43 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
             const DeepCollectionEquality().equals(other.ivaAmount, ivaAmount) &&
             const DeepCollectionEquality().equals(other.total, total) &&
             const DeepCollectionEquality()
+                .equals(other.salesOrderStatusId, salesOrderStatusId) &&
+            const DeepCollectionEquality().equals(other.isOffer, isOffer) &&
+            const DeepCollectionEquality()
+                .equals(other.promptPaymentDiscount, promptPaymentDiscount) &&
+            const DeepCollectionEquality().equals(other.iva, iva) &&
+            const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(companyId),
-      const DeepCollectionEquality().hash(salesOrderId),
-      const DeepCollectionEquality().hash(salesOrderDate),
-      const DeepCollectionEquality().hash(salesType),
-      const DeepCollectionEquality().hash(customerId),
-      const DeepCollectionEquality().hash(customerName),
-      const DeepCollectionEquality().hash(shippingAddress1),
-      const DeepCollectionEquality().hash(shippingAddress2),
-      const DeepCollectionEquality().hash(zipCode),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(countryId),
-      const DeepCollectionEquality().hash(divisaId),
-      const DeepCollectionEquality().hash(taxBase),
-      const DeepCollectionEquality().hash(ivaAmount),
-      const DeepCollectionEquality().hash(total),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(companyId),
+        const DeepCollectionEquality().hash(salesOrderId),
+        const DeepCollectionEquality().hash(salesOrderDate),
+        const DeepCollectionEquality().hash(salesType),
+        const DeepCollectionEquality().hash(customerId),
+        const DeepCollectionEquality().hash(customerName),
+        const DeepCollectionEquality().hash(shippingAddress1),
+        const DeepCollectionEquality().hash(shippingAddress2),
+        const DeepCollectionEquality().hash(zipCode),
+        const DeepCollectionEquality().hash(city),
+        const DeepCollectionEquality().hash(state),
+        const DeepCollectionEquality().hash(countryId),
+        const DeepCollectionEquality().hash(divisaId),
+        const DeepCollectionEquality().hash(taxBase),
+        const DeepCollectionEquality().hash(ivaAmount),
+        const DeepCollectionEquality().hash(total),
+        const DeepCollectionEquality().hash(salesOrderStatusId),
+        const DeepCollectionEquality().hash(isOffer),
+        const DeepCollectionEquality().hash(promptPaymentDiscount),
+        const DeepCollectionEquality().hash(iva),
+        const DeepCollectionEquality().hash(lastUpdated),
+        const DeepCollectionEquality().hash(deleted)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -582,10 +627,18 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
           required final double ivaAmount,
       @JsonKey(name: 'TOTAL')
           required final double total,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID')
+          required final int salesOrderStatusId,
+      @JsonKey(name: 'OFERTA_SN')
+          required final String isOffer,
+      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+          required final double promptPaymentDiscount,
+      @JsonKey(name: 'IVA')
+          required final double iva,
       @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
           required final DateTime? lastUpdated,
-      @JsonKey(name: 'DELETED', fromJson: SalesOrderDTO._boolFromString, toJson: SalesOrderDTO._boolToString)
-          required final bool deleted}) = _$_SalesOrderDTO;
+      @JsonKey(name: 'DELETED')
+          required final String deleted}) = _$_SalesOrderDTO;
   const _SalesOrderDTO._() : super._();
 
   factory _SalesOrderDTO.fromJson(Map<String, dynamic> json) =
@@ -640,14 +693,23 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
   @JsonKey(name: 'TOTAL')
   double get total;
   @override
+  @JsonKey(name: 'ESTADO_PEDIDO_ID')
+  int get salesOrderStatusId;
+  @override
+  @JsonKey(name: 'OFERTA_SN')
+  String get isOffer;
+  @override
+  @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
+  double get promptPaymentDiscount;
+  @override
+  @JsonKey(name: 'IVA')
+  double get iva;
+  @override
   @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
   DateTime? get lastUpdated;
   @override
-  @JsonKey(
-      name: 'DELETED',
-      fromJson: SalesOrderDTO._boolFromString,
-      toJson: SalesOrderDTO._boolToString)
-  bool get deleted;
+  @JsonKey(name: 'DELETED')
+  String get deleted;
   @override
   @JsonKey(ignore: true)
   _$$_SalesOrderDTOCopyWith<_$_SalesOrderDTO> get copyWith =>

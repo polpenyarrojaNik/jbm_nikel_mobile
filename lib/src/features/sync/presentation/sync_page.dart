@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_drawer.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
-import 'package:jbm_nikel_mobile/src/sync/presentation/sync_page_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/sync/presentation/sync_page_controller.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -15,12 +16,8 @@ class SettingsPage extends ConsumerWidget {
         orElse: () => null,
         syncSuccess: () =>
             showToast('Sincronización realizada con éxito', context),
-        loadFailure: (failure) => showToast(
-          failure.when(
-            api: (errorCode, e) => 'Error en la sincronización: $errorCode: $e',
-            db: (e) => 'Error en la sincronización: $e',
-            local: (e) => 'Error en la sincronización: $e',
-          ),
+        loadFailure: (error) => showToast(
+          (error is AppException) ? error.details.message : error.toString(),
           context,
         ),
       ),
