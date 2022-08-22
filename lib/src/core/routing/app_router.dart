@@ -1,16 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/presentation/customer_page.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/sales_order_list_page.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/presentation/login_page.dart';
+import '../../features/settings/presentation/sync_page.dart';
 import '../../features/splash/presentation/splash_page.dart';
-import '../../features/sync/presentation/sync_page.dart';
 import '../infrastructure/initial_db_repository.dart';
 
 enum AppRoute {
   home,
-  homeindex,
+  login,
   customerindex,
   articleindex,
   salesorderindex,
@@ -76,6 +78,11 @@ final goRouterProvider = Provider((ref) {
         ],
       ),
       GoRoute(
+        path: '/login',
+        name: AppRoute.login.name,
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
         name: AppRoute.customerindex.name,
         path: '/home',
         builder: (context, state) => const CustomerPage(),
@@ -87,7 +94,7 @@ final goRouterProvider = Provider((ref) {
       ),
       GoRoute(
         name: AppRoute.settings.name,
-        path: '/sync',
+        path: '/settings',
         builder: (context, state) => const SettingsPage(),
       ),
     ],
@@ -97,9 +104,14 @@ final goRouterProvider = Provider((ref) {
 
 String? redirectLogic(GoRouterState state, ProviderRef<GoRouter> ref) {
   final initalDbState = ref.watch(setInitialDbProvider);
+  final authControllerState = ref.watch(authControllerProvider);
 
-  return initalDbState.when(
-      data: (_) => null,
-      error: (_, __) => null,
+  return initalDbState.maybeWhen(
+      orElse: () => authControllerState.maybeWhen(
+          orElse: () => null,
+          authenticating: () =>
+              (state.location != '/loading') ? '/loading' : null,
+          unauthenticated: () =>
+              (state.location != '/login') ? '/login' : null),
       loading: () => (state.location != '/loading') ? '/loading' : null);
 }

@@ -4,11 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/auth_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/sync/infrastructure/sync_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/sync_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/initial_db_repository.dart';
 import 'package:logging/logging.dart';
 import 'app.dart';
@@ -24,6 +26,7 @@ void main() async {
 
     final database = AppDatabase();
     final dio = Dio();
+    const secureStorage = FlutterSecureStorage();
 
     final container = ProviderContainer(
       overrides: [
@@ -32,6 +35,8 @@ void main() async {
         salesOrderRepositoryProvider
             .overrideWithValue(SalesOrderRepository(database, dio)),
         syncRepositoryProvider.overrideWithValue(SyncRepository(database, dio)),
+        authRepositoryProvider
+            .overrideWithValue(AuthRepository(dio, secureStorage)),
       ],
       observers: [
         RiverpodLogger(),

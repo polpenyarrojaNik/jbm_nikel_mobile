@@ -695,8 +695,14 @@ class LastSyncDateTableData extends DataClass
   final String id;
   final String? lastSyncSalesOrder;
   final String? lastSyncCustomer;
+  final String? lastSyncCustomerUser;
+  final String? lastSyncUser;
   LastSyncDateTableData(
-      {required this.id, this.lastSyncSalesOrder, this.lastSyncCustomer});
+      {required this.id,
+      this.lastSyncSalesOrder,
+      this.lastSyncCustomer,
+      this.lastSyncCustomerUser,
+      this.lastSyncUser});
   factory LastSyncDateTableData.fromData(Map<String, dynamic> data,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
@@ -707,6 +713,10 @@ class LastSyncDateTableData extends DataClass
           data['${effectivePrefix}LAST_SYNC_SALES_ORDER']),
       lastSyncCustomer: const StringType().mapFromDatabaseResponse(
           data['${effectivePrefix}LAST_SYNC_CUSTOMER']),
+      lastSyncCustomerUser: const StringType().mapFromDatabaseResponse(
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_USER']),
+      lastSyncUser: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC_USER']),
     );
   }
   @override
@@ -718,6 +728,12 @@ class LastSyncDateTableData extends DataClass
     }
     if (!nullToAbsent || lastSyncCustomer != null) {
       map['LAST_SYNC_CUSTOMER'] = Variable<String?>(lastSyncCustomer);
+    }
+    if (!nullToAbsent || lastSyncCustomerUser != null) {
+      map['LAST_SYNC_CUSTOMER_USER'] = Variable<String?>(lastSyncCustomerUser);
+    }
+    if (!nullToAbsent || lastSyncUser != null) {
+      map['LAST_SYNC_USER'] = Variable<String?>(lastSyncUser);
     }
     return map;
   }
@@ -731,6 +747,12 @@ class LastSyncDateTableData extends DataClass
       lastSyncCustomer: lastSyncCustomer == null && nullToAbsent
           ? const Value.absent()
           : Value(lastSyncCustomer),
+      lastSyncCustomerUser: lastSyncCustomerUser == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastSyncCustomerUser),
+      lastSyncUser: lastSyncUser == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastSyncUser),
     );
   }
 
@@ -742,6 +764,9 @@ class LastSyncDateTableData extends DataClass
       lastSyncSalesOrder:
           serializer.fromJson<String?>(json['lastSyncSalesOrder']),
       lastSyncCustomer: serializer.fromJson<String?>(json['lastSyncCustomer']),
+      lastSyncCustomerUser:
+          serializer.fromJson<String?>(json['lastSyncCustomerUser']),
+      lastSyncUser: serializer.fromJson<String?>(json['lastSyncUser']),
     );
   }
   @override
@@ -751,35 +776,48 @@ class LastSyncDateTableData extends DataClass
       'id': serializer.toJson<String>(id),
       'lastSyncSalesOrder': serializer.toJson<String?>(lastSyncSalesOrder),
       'lastSyncCustomer': serializer.toJson<String?>(lastSyncCustomer),
+      'lastSyncCustomerUser': serializer.toJson<String?>(lastSyncCustomerUser),
+      'lastSyncUser': serializer.toJson<String?>(lastSyncUser),
     };
   }
 
   LastSyncDateTableData copyWith(
-          {String? id, String? lastSyncSalesOrder, String? lastSyncCustomer}) =>
+          {String? id,
+          String? lastSyncSalesOrder,
+          String? lastSyncCustomer,
+          String? lastSyncCustomerUser,
+          String? lastSyncUser}) =>
       LastSyncDateTableData(
         id: id ?? this.id,
         lastSyncSalesOrder: lastSyncSalesOrder ?? this.lastSyncSalesOrder,
         lastSyncCustomer: lastSyncCustomer ?? this.lastSyncCustomer,
+        lastSyncCustomerUser: lastSyncCustomerUser ?? this.lastSyncCustomerUser,
+        lastSyncUser: lastSyncUser ?? this.lastSyncUser,
       );
   @override
   String toString() {
     return (StringBuffer('LastSyncDateTableData(')
           ..write('id: $id, ')
           ..write('lastSyncSalesOrder: $lastSyncSalesOrder, ')
-          ..write('lastSyncCustomer: $lastSyncCustomer')
+          ..write('lastSyncCustomer: $lastSyncCustomer, ')
+          ..write('lastSyncCustomerUser: $lastSyncCustomerUser, ')
+          ..write('lastSyncUser: $lastSyncUser')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, lastSyncSalesOrder, lastSyncCustomer);
+  int get hashCode => Object.hash(id, lastSyncSalesOrder, lastSyncCustomer,
+      lastSyncCustomerUser, lastSyncUser);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is LastSyncDateTableData &&
           other.id == this.id &&
           other.lastSyncSalesOrder == this.lastSyncSalesOrder &&
-          other.lastSyncCustomer == this.lastSyncCustomer);
+          other.lastSyncCustomer == this.lastSyncCustomer &&
+          other.lastSyncCustomerUser == this.lastSyncCustomerUser &&
+          other.lastSyncUser == this.lastSyncUser);
 }
 
 class LastSyncDateTableCompanion
@@ -787,37 +825,52 @@ class LastSyncDateTableCompanion
   final Value<String> id;
   final Value<String?> lastSyncSalesOrder;
   final Value<String?> lastSyncCustomer;
+  final Value<String?> lastSyncCustomerUser;
+  final Value<String?> lastSyncUser;
   const LastSyncDateTableCompanion({
     this.id = const Value.absent(),
     this.lastSyncSalesOrder = const Value.absent(),
     this.lastSyncCustomer = const Value.absent(),
+    this.lastSyncCustomerUser = const Value.absent(),
+    this.lastSyncUser = const Value.absent(),
   });
   LastSyncDateTableCompanion.insert({
     required String id,
     this.lastSyncSalesOrder = const Value.absent(),
     this.lastSyncCustomer = const Value.absent(),
+    this.lastSyncCustomerUser = const Value.absent(),
+    this.lastSyncUser = const Value.absent(),
   }) : id = Value(id);
   static Insertable<LastSyncDateTableData> custom({
     Expression<String>? id,
     Expression<String?>? lastSyncSalesOrder,
     Expression<String?>? lastSyncCustomer,
+    Expression<String?>? lastSyncCustomerUser,
+    Expression<String?>? lastSyncUser,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ID': id,
       if (lastSyncSalesOrder != null)
         'LAST_SYNC_SALES_ORDER': lastSyncSalesOrder,
       if (lastSyncCustomer != null) 'LAST_SYNC_CUSTOMER': lastSyncCustomer,
+      if (lastSyncCustomerUser != null)
+        'LAST_SYNC_CUSTOMER_USER': lastSyncCustomerUser,
+      if (lastSyncUser != null) 'LAST_SYNC_USER': lastSyncUser,
     });
   }
 
   LastSyncDateTableCompanion copyWith(
       {Value<String>? id,
       Value<String?>? lastSyncSalesOrder,
-      Value<String?>? lastSyncCustomer}) {
+      Value<String?>? lastSyncCustomer,
+      Value<String?>? lastSyncCustomerUser,
+      Value<String?>? lastSyncUser}) {
     return LastSyncDateTableCompanion(
       id: id ?? this.id,
       lastSyncSalesOrder: lastSyncSalesOrder ?? this.lastSyncSalesOrder,
       lastSyncCustomer: lastSyncCustomer ?? this.lastSyncCustomer,
+      lastSyncCustomerUser: lastSyncCustomerUser ?? this.lastSyncCustomerUser,
+      lastSyncUser: lastSyncUser ?? this.lastSyncUser,
     );
   }
 
@@ -834,6 +887,13 @@ class LastSyncDateTableCompanion
     if (lastSyncCustomer.present) {
       map['LAST_SYNC_CUSTOMER'] = Variable<String?>(lastSyncCustomer.value);
     }
+    if (lastSyncCustomerUser.present) {
+      map['LAST_SYNC_CUSTOMER_USER'] =
+          Variable<String?>(lastSyncCustomerUser.value);
+    }
+    if (lastSyncUser.present) {
+      map['LAST_SYNC_USER'] = Variable<String?>(lastSyncUser.value);
+    }
     return map;
   }
 
@@ -842,7 +902,9 @@ class LastSyncDateTableCompanion
     return (StringBuffer('LastSyncDateTableCompanion(')
           ..write('id: $id, ')
           ..write('lastSyncSalesOrder: $lastSyncSalesOrder, ')
-          ..write('lastSyncCustomer: $lastSyncCustomer')
+          ..write('lastSyncCustomer: $lastSyncCustomer, ')
+          ..write('lastSyncCustomerUser: $lastSyncCustomerUser, ')
+          ..write('lastSyncUser: $lastSyncUser')
           ..write(')'))
         .toString();
   }
@@ -871,9 +933,26 @@ class $LastSyncDateTableTable extends LastSyncDateTable
   late final GeneratedColumn<String?> lastSyncCustomer =
       GeneratedColumn<String?>('LAST_SYNC_CUSTOMER', aliasedName, true,
           type: const StringType(), requiredDuringInsert: false);
+  final VerificationMeta _lastSyncCustomerUserMeta =
+      const VerificationMeta('lastSyncCustomerUser');
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, lastSyncSalesOrder, lastSyncCustomer];
+  late final GeneratedColumn<String?> lastSyncCustomerUser =
+      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER_USER', aliasedName, true,
+          type: const StringType(), requiredDuringInsert: false);
+  final VerificationMeta _lastSyncUserMeta =
+      const VerificationMeta('lastSyncUser');
+  @override
+  late final GeneratedColumn<String?> lastSyncUser = GeneratedColumn<String?>(
+      'LAST_SYNC_USER', aliasedName, true,
+      type: const StringType(), requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        lastSyncSalesOrder,
+        lastSyncCustomer,
+        lastSyncCustomerUser,
+        lastSyncUser
+      ];
   @override
   String get aliasedName => _alias ?? 'LAST_SYNC_DATE';
   @override
@@ -900,6 +979,18 @@ class $LastSyncDateTableTable extends LastSyncDateTable
           _lastSyncCustomerMeta,
           lastSyncCustomer.isAcceptableOrUnknown(
               data['LAST_SYNC_CUSTOMER']!, _lastSyncCustomerMeta));
+    }
+    if (data.containsKey('LAST_SYNC_CUSTOMER_USER')) {
+      context.handle(
+          _lastSyncCustomerUserMeta,
+          lastSyncCustomerUser.isAcceptableOrUnknown(
+              data['LAST_SYNC_CUSTOMER_USER']!, _lastSyncCustomerUserMeta));
+    }
+    if (data.containsKey('LAST_SYNC_USER')) {
+      context.handle(
+          _lastSyncUserMeta,
+          lastSyncUser.isAcceptableOrUnknown(
+              data['LAST_SYNC_USER']!, _lastSyncUserMeta));
     }
     return context;
   }
@@ -4466,6 +4557,175 @@ class $CustomerTableTable extends CustomerTable
   }
 }
 
+class CustomerUserTableCompanion extends UpdateCompanion<CustomerUserDTO> {
+  final Value<String> customerId;
+  final Value<String> userId;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const CustomerUserTableCompanion({
+    this.customerId = const Value.absent(),
+    this.userId = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  CustomerUserTableCompanion.insert({
+    required String customerId,
+    required String userId,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : customerId = Value(customerId),
+        userId = Value(userId),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<CustomerUserDTO> custom({
+    Expression<String>? customerId,
+    Expression<String>? userId,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (customerId != null) 'customer_id': customerId,
+      if (userId != null) 'user_id': userId,
+      if (lastUpdated != null) 'last_updated': lastUpdated,
+      if (deleted != null) 'deleted': deleted,
+    });
+  }
+
+  CustomerUserTableCompanion copyWith(
+      {Value<String>? customerId,
+      Value<String>? userId,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return CustomerUserTableCompanion(
+      customerId: customerId ?? this.customerId,
+      userId: userId ?? this.userId,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (customerId.present) {
+      map['customer_id'] = Variable<String>(customerId.value);
+    }
+    if (userId.present) {
+      map['user_id'] = Variable<String>(userId.value);
+    }
+    if (lastUpdated.present) {
+      map['last_updated'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['deleted'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomerUserTableCompanion(')
+          ..write('customerId: $customerId, ')
+          ..write('userId: $userId, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CustomerUserTableTable extends CustomerUserTable
+    with TableInfo<$CustomerUserTableTable, CustomerUserDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CustomerUserTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  @override
+  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+      'customer_id', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _userIdMeta = const VerificationMeta('userId');
+  @override
+  late final GeneratedColumn<String?> userId = GeneratedColumn<String?>(
+      'user_id', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime?> lastUpdated =
+      GeneratedColumn<DateTime?>('last_updated', aliasedName, false,
+          type: const IntType(), requiredDuringInsert: true);
+  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+      'deleted', aliasedName, false,
+      type: const StringType(),
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns =>
+      [customerId, userId, lastUpdated, deleted];
+  @override
+  String get aliasedName => _alias ?? 'CLIENTES_USUARIO';
+  @override
+  String get actualTableName => 'CLIENTES_USUARIO';
+  @override
+  VerificationContext validateIntegrity(Insertable<CustomerUserDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('customer_id')) {
+      context.handle(
+          _customerIdMeta,
+          customerId.isAcceptableOrUnknown(
+              data['customer_id']!, _customerIdMeta));
+    } else if (isInserting) {
+      context.missing(_customerIdMeta);
+    }
+    if (data.containsKey('user_id')) {
+      context.handle(_userIdMeta,
+          userId.isAcceptableOrUnknown(data['user_id']!, _userIdMeta));
+    } else if (isInserting) {
+      context.missing(_userIdMeta);
+    }
+    if (data.containsKey('last_updated')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['last_updated']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('deleted')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['deleted']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {customerId, userId};
+  @override
+  CustomerUserDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CustomerUserDTO(
+      customerId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}customer_id'])!,
+      userId: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}user_id'])!,
+      lastUpdated: const DateTimeType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}last_updated'])!,
+      deleted: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}deleted'])!,
+    );
+  }
+
+  @override
+  $CustomerUserTableTable createAlias(String alias) {
+    return $CustomerUserTableTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $SalesOrderTableTable salesOrderTable =
@@ -4479,6 +4739,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $CountryTableTable countryTable = $CountryTableTable(this);
   late final $DivisaTableTable divisaTable = $DivisaTableTable(this);
   late final $CustomerTableTable customerTable = $CustomerTableTable(this);
+  late final $CustomerUserTableTable customerUserTable =
+      $CustomerUserTableTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
@@ -4489,6 +4751,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         collectionTermTable,
         countryTable,
         divisaTable,
-        customerTable
+        customerTable,
+        customerUserTable
       ];
 }

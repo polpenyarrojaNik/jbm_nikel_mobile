@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/infrastructure/initial_db_repository.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
 
 class CustomerPage extends ConsumerStatefulWidget {

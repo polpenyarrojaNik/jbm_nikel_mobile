@@ -16,6 +16,10 @@ class AppException with _$AppException {
 
   // Customer
   const factory AppException.customerNotFound() = CustomerNotFoundFailure;
+  const factory AppException.customerUpsertFailure(String errorMessage) =
+      CustomerUpsertFailure;
+  const factory AppException.customerUserUpsertFailure(String errorMessage) =
+      CustomerUserUpsertFailure;
 
   //Article
   const factory AppException.articleNotFound() = ArticleNotFoundFailure;
@@ -56,6 +60,14 @@ extension AppExceptionDetails on AppException {
       customerNotFound: () => AppExceptionData(
         'customer-not-found',
         'Customer not found',
+      ),
+      customerUpsertFailure: (errorMessage) => AppExceptionData(
+        'customer-upsert-failure',
+        'Error saving Customer: $errorMessage',
+      ),
+      customerUserUpsertFailure: (errorMessage) => AppExceptionData(
+        'customer-user-upsert-failure',
+        'Error saving Customer user: $errorMessage',
       ),
       articleNotFound: () => AppExceptionData(
         'article-not-found',

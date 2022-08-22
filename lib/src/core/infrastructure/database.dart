@@ -3,7 +3,6 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/country_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
@@ -11,6 +10,7 @@ import '../../features/customer/infrastructure/collection_method_dto.dart';
 import '../../features/customer/infrastructure/collection_term_dto.dart';
 import '../../features/customer/infrastructure/customer_dto.dart';
 import '../../features/sales_order/infrastructure/sales_order_dto.dart';
+import '../../features/customer/infrastructure/customer_user_dto.dart';
 import '../exceptions/app_exception.dart';
 
 part 'database.g.dart';
@@ -27,6 +27,9 @@ class LastSyncDateTable extends Table {
       text().nullable().named('LAST_SYNC_SALES_ORDER')();
   TextColumn get lastSyncCustomer =>
       text().nullable().named('LAST_SYNC_CUSTOMER')();
+  TextColumn get lastSyncCustomerUser =>
+      text().nullable().named('LAST_SYNC_CUSTOMER_USER')();
+  TextColumn get lastSyncUser => text().nullable().named('LAST_SYNC_USER')();
 }
 
 @DriftDatabase(tables: [
@@ -37,6 +40,7 @@ class LastSyncDateTable extends Table {
   CountryTable,
   DivisaTable,
   CustomerTable,
+  CustomerUserTable,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
@@ -74,38 +78,72 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
+  Future<int> upsertCustomer({required CustomerDTO customerDto}) async {
+    try {
+      return await into(customerTable).insertOnConflictUpdate(customerDto);
+    } catch (e) {
+      throw AppException.customerUpsertFailure(e.toString());
+    }
+  }
+
+  Future<int> upsertCustomerUser(
+      {required CustomerUserDTO customerUserDto}) async {
+    try {
+      return await into(customerUserTable)
+          .insertOnConflictUpdate(customerUserDto);
+    } catch (e) {
+      throw AppException.customerUserUpsertFailure(e.toString());
+    }
+  }
+
+  //---------------------------------------------------------------------------------------------------------------------------
+
+  Future<String?> getLastSyncSalesOrderDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncSalesOrder;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncCustomerDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncCustomer;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncCustomerUserDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncCustomerUser;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+//---------------------------------------------------------------------------------------------------------------------------
+
   Future<int> addInitialSyncDate(
       {required LastSyncDateTableCompanion initialSyncDate}) async {
     try {
       final result = await into(lastSyncDateTable).insert(initialSyncDate);
       return result;
-    } catch (e, stackTrace) {
+    } catch (e) {
       throw AppException.syncFailure('LAST_SYNC_DATE', e.toString());
     }
   }
 
-  Future<int> updateLastSyncSalesOrder(
-      {required LastSyncDateTableCompanion lastSyncDateSalesOrder}) async {
+  Future<int> updateLastSyncTable(
+      {required LastSyncDateTableCompanion lastSyncDateValue}) async {
     try {
       return await (update(lastSyncDateTable)..where((t) => t.id.equals('1')))
-          .write(lastSyncDateSalesOrder);
+          .write(lastSyncDateValue);
     } catch (e) {
       throw AppException.syncFailure('LAST_SYNC_DATE', e.toString());
-    }
-  }
-
-  Future<String?> getLastSyncSalesOrderDate() async {
-    try {
-      return (await (select(lastSyncDateTable)
-                ..limit(1)
-                ..orderBy([
-                  (t) => OrderingTerm(
-                      expression: t.lastSyncSalesOrder, mode: OrderingMode.desc)
-                ]))
-              .getSingleOrNull())
-          ?.lastSyncSalesOrder;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 }

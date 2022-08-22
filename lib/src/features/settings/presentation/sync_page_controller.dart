@@ -31,6 +31,9 @@ class SyncPageNotifier extends StateNotifier<SyncPageState> {
     state = const SyncPageState.loadInProgress();
     try {
       await syncRepository.syncAllSalesOrder();
+      await syncRepository.syncAllCustomer();
+      await syncRepository.syncAllCustomerUser();
+
       state = const SyncPageState.syncSuccess();
     } catch (e) {
       state = SyncPageState.loadFailure(e);

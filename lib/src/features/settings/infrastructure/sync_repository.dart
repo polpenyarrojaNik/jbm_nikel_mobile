@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -10,6 +9,8 @@ import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_o
 import '../../../core/infrastructure/database.dart';
 import '../../../core/infrastructure/log.dart';
 import '../../../core/infrastructure/remote_response.dart';
+import '../../customer/infrastructure/customer_dto.dart';
+import '../../customer/infrastructure/customer_user_dto.dart';
 import '../../sales_order/infrastructure/sales_order_headers.dart';
 
 final syncRepositoryProvider = Provider.autoDispose<SyncRepository>(
@@ -31,7 +32,7 @@ class SyncRepository {
     try {
       final dbSysdateStr = await _getRemoteDbSysDate(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'loclahost:3001'),
+            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
             '/api/v1/date',
           ),
           jsonDataSelector: (json) => json['data'] as String);
@@ -51,10 +52,10 @@ class SyncRepository {
         if (_totalRows != null) {
           query.addAll({'totalRows': '$_totalRows'});
         }
-        final remotePageItems = await _remoteSyncAllSalesOrder(
+        final remotePageItems = await _remoteSyncData(
             requestUri: Uri.http(
-              dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
-              '/api/v1/sales-order',
+              dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+              'sync/api/v1/pedidos',
               query,
             ),
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
@@ -73,8 +74,8 @@ class SyncRepository {
           },
         );
       }
-      await db.updateLastSyncSalesOrder(
-        lastSyncDateSalesOrder: LastSyncDateTableCompanion(
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
             id: const Value('1'), lastSyncSalesOrder: Value(dbSysdateStr)),
       );
     } on AppException catch (e) {
@@ -85,7 +86,132 @@ class SyncRepository {
     }
   }
 
-  Future<RemoteResponse<List<Map<String, dynamic>>>> _remoteSyncAllSalesOrder({
+  Future<void> syncAllCustomer() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? _totalRows;
+
+    try {
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          requestUri: Uri.http(
+            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
+            '/api/v1/date',
+          ),
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerDate();
+      while (isNextPageAvailable) {
+        final query = {
+          'page': '$page',
+          'pageSize': '100',
+          'sysdate': dbSysdateStr
+        };
+
+        if (lastSyncDate != null) {
+          query.addAll({'lastSyncDate': lastSyncDate});
+        }
+
+        if (_totalRows != null) {
+          query.addAll({'totalRows': '$_totalRows'});
+        }
+        final remotePageItems = await _remoteSyncData(
+            requestUri: Uri.http(
+              dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+              '/api/v1/clientes',
+              query,
+            ),
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerDTOList =
+                data.map((e) => CustomerDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerDTOList.length; i++) {
+              await db.upsertCustomer(customerDto: customerDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            _totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCustomer: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerUser() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? _totalRows;
+
+    try {
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          requestUri: Uri.http(
+            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
+            '/api/v1/date',
+          ),
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerUserDate();
+      while (isNextPageAvailable) {
+        final query = {
+          'page': '$page',
+          'pageSize': '100',
+          'sysdate': dbSysdateStr
+        };
+
+        if (lastSyncDate != null) {
+          query.addAll({'lastSyncDate': lastSyncDate});
+        }
+
+        if (_totalRows != null) {
+          query.addAll({'totalRows': '$_totalRows'});
+        }
+        final remotePageItems = await _remoteSyncData(
+            requestUri: Uri.http(
+              dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+              '/api/v1/clientes-usuario',
+              query,
+            ),
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerUserDTOList =
+                data.map((e) => CustomerUserDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerUserDTOList.length; i++) {
+              await db.upsertCustomerUser(
+                  customerUserDto: customerUserDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            _totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCustomerUser: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<RemoteResponse<List<Map<String, dynamic>>>> _remoteSyncData({
     required Uri requestUri,
     required List<dynamic> Function(dynamic json) jsonDataSelector,
   }) async {

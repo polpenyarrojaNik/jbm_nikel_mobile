@@ -37,7 +37,7 @@ class InitalDBRepository {
 
         final data = await _getRemoteInitialDb(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'loclahost:3001'),
+            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
             '/api/v1/sync/init-db',
           ),
         );

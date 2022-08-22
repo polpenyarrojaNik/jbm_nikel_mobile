@@ -9,6 +9,13 @@ class AppDecoration {
         ),
       ));
 
+  static InputDecoration loginField(String text) => InputDecoration(
+        labelText: text,
+        helperText: '',
+        helperStyle: const TextStyle(height: 0.7),
+        errorStyle: const TextStyle(height: 0.7),
+      );
+
   static InputDecoration defaultFieldDecoration(String text) => InputDecoration(
         contentPadding: const EdgeInsets.all(5),
         labelText: text,

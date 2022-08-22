@@ -3,7 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_drawer.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
-import 'package:jbm_nikel_mobile/src/features/sync/presentation/sync_page_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/settings/presentation/sync_page_controller.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -28,6 +29,12 @@ class SettingsPage extends ConsumerWidget {
       drawer: const AppDrawer(),
       appBar: AppBar(
         title: const Text('Settigns'),
+        actions: [
+          IconButton(
+              onPressed: () =>
+                  ref.read(authControllerProvider.notifier).logout(),
+              icon: const Icon(Icons.logout))
+        ],
       ),
       body: Center(
         child: TextButton(
