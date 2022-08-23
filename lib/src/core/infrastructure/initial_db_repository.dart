@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
@@ -37,7 +36,7 @@ class InitalDBRepository {
 
         final data = await _getRemoteInitialDb(
           requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'loclahost:3001'),
             '/api/v1/sync/init-db',
           ),
         );
@@ -45,11 +44,7 @@ class InitalDBRepository {
         await _createDbFile(directory: directory, data: data);
 
         await db.addInitialSyncDate(
-          initialSyncDate: LastSyncDateTableCompanion(
-              id: const Value('1'),
-              lastSyncCustomer: Value(initailSyncDateString),
-              lastSyncSalesOrder: Value(initailSyncDateString)),
-        );
+            initialSyncDateString: initailSyncDateString);
       }
     } on AppException catch (e) {
       log.severe(e.details);

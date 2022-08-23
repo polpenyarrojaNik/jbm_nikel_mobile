@@ -16,18 +16,13 @@ class AppException with _$AppException {
 
   // Customer
   const factory AppException.customerNotFound() = CustomerNotFoundFailure;
-  const factory AppException.customerUpsertFailure(String errorMessage) =
-      CustomerUpsertFailure;
-  const factory AppException.customerUserUpsertFailure(String errorMessage) =
-      CustomerUserUpsertFailure;
 
   //Article
   const factory AppException.articleNotFound() = ArticleNotFoundFailure;
 
   //SalesOrder
   const factory AppException.salesOrderNotFound() = SalesOrderNotFoundFailure;
-  const factory AppException.salesOrderUpsertFailure(String errorMessage) =
-      SalesOrderUpsertFailure;
+
   const factory AppException.salesOrderDeleteFailure(String errorMessage) =
       SalesOrderDeleteFailure;
 }
@@ -61,14 +56,6 @@ extension AppExceptionDetails on AppException {
         'customer-not-found',
         'Customer not found',
       ),
-      customerUpsertFailure: (errorMessage) => AppExceptionData(
-        'customer-upsert-failure',
-        'Error saving Customer: $errorMessage',
-      ),
-      customerUserUpsertFailure: (errorMessage) => AppExceptionData(
-        'customer-user-upsert-failure',
-        'Error saving Customer user: $errorMessage',
-      ),
       articleNotFound: () => AppExceptionData(
         'article-not-found',
         'Article not found',
@@ -76,10 +63,6 @@ extension AppExceptionDetails on AppException {
       salesOrderNotFound: () => AppExceptionData(
         'sales-order-not-found',
         'Sales order not found',
-      ),
-      salesOrderUpsertFailure: (errorMessage) => AppExceptionData(
-        'sales-order-upsert-failure',
-        'Error saving Sales order: $errorMessage',
       ),
       salesOrderDeleteFailure: (errorMessage) => AppExceptionData(
         'sales-order-delete-failure',

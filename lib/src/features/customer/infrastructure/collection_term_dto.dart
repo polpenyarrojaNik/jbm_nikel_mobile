@@ -93,22 +93,23 @@ class CollectionTermTable extends Table {
   @override
   Set<Column> get primaryKey => {id};
 
-  TextColumn get id => text()();
-  TextColumn get descriptionES => text()();
-  TextColumn get descriptionEN => text().nullable()();
-  TextColumn get descriptionFR => text().nullable()();
-  TextColumn get descriptionDE => text().nullable()();
-  TextColumn get descriptionCA => text().nullable()();
-  TextColumn get descriptionGB => text().nullable()();
-  TextColumn get descriptionHU => text().nullable()();
-  TextColumn get descriptionIT => text().nullable()();
-  TextColumn get descriptionNL => text().nullable()();
-  TextColumn get descriptionPL => text().nullable()();
-  TextColumn get descriptionPT => text().nullable()();
-  TextColumn get descriptionRO => text().nullable()();
-  TextColumn get descriptionRU => text().nullable()();
-  TextColumn get descriptionCN => text().nullable()();
-  TextColumn get descriptionEL => text().nullable()();
-  DateTimeColumn get lastUpdated => dateTime()();
-  TextColumn get deleted => text().withDefault(const Constant('N'))();
+  TextColumn get id => text().named('PLAZOS_COBRO_ID')();
+  TextColumn get descriptionES => text().named('DESCRIPCION_ES')();
+  TextColumn get descriptionEN => text().nullable().named('DESCRIPCION_EN')();
+  TextColumn get descriptionFR => text().nullable().named('DESCRIPCION_FR')();
+  TextColumn get descriptionDE => text().nullable().named('DESCRIPCION_DE')();
+  TextColumn get descriptionCA => text().nullable().named('DESCRIPCION_CA')();
+  TextColumn get descriptionGB => text().nullable().named('DESCRIPCION_GB')();
+  TextColumn get descriptionHU => text().nullable().named('DESCRIPCION_HU')();
+  TextColumn get descriptionIT => text().nullable().named('DESCRIPCION_IT')();
+  TextColumn get descriptionNL => text().nullable().named('DESCRIPCION_NL')();
+  TextColumn get descriptionPL => text().nullable().named('DESCRIPCION_PL')();
+  TextColumn get descriptionPT => text().nullable().named('DESCRIPCION_PT')();
+  TextColumn get descriptionRO => text().nullable().named('DESCRIPCION_RO')();
+  TextColumn get descriptionRU => text().nullable().named('DESCRIPCION_RU')();
+  TextColumn get descriptionCN => text().nullable().named('DESCRIPCION_CN')();
+  TextColumn get descriptionEL => text().nullable().named('DESCRIPCION_EL')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get deleted =>
+      text().withDefault(const Constant('N')).named('DELETED')();
 }

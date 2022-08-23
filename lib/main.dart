@@ -28,15 +28,17 @@ void main() async {
     final dio = Dio();
     const secureStorage = FlutterSecureStorage();
 
+    final authRepository = AuthRepository(dio, secureStorage);
+
     final container = ProviderContainer(
       overrides: [
         initialDbRepositoryProvider
             .overrideWithValue(InitalDBRepository(database, dio)),
+        authRepositoryProvider.overrideWithValue(authRepository),
         salesOrderRepositoryProvider
             .overrideWithValue(SalesOrderRepository(database, dio)),
-        syncRepositoryProvider.overrideWithValue(SyncRepository(database, dio)),
-        authRepositoryProvider
-            .overrideWithValue(AuthRepository(dio, secureStorage)),
+        syncRepositoryProvider
+            .overrideWithValue(SyncRepository(database, dio, authRepository)),
       ],
       observers: [
         RiverpodLogger(),

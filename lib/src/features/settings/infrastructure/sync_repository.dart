@@ -6,12 +6,28 @@ import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_dto.dart';
 
+import '../../../core/infrastructure/country_dto.dart';
 import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/divisa_dto.dart';
+import '../../../core/infrastructure/family_dto.dart';
 import '../../../core/infrastructure/log.dart';
 import '../../../core/infrastructure/remote_response.dart';
+import '../../../core/infrastructure/subfamily_dto.dart';
+import '../../auth/infrastructure/auth_repository.dart';
+import '../../customer/infrastructure/collection_method_dto.dart';
+import '../../customer/infrastructure/collection_term_dto.dart';
+import '../../customer/infrastructure/customer_address_dto.dart';
+import '../../customer/infrastructure/customer_contact_dto.dart';
+import '../../customer/infrastructure/customer_discount_dto.dart';
 import '../../customer/infrastructure/customer_dto.dart';
+import '../../customer/infrastructure/customer_net_group_dto.dart';
+import '../../customer/infrastructure/customer_net_price_dto.dart';
+import '../../customer/infrastructure/customer_pending_payment_dto.dart';
+import '../../customer/infrastructure/customer_rappel_dto.dart';
 import '../../customer/infrastructure/customer_user_dto.dart';
 import '../../sales_order/infrastructure/sales_order_headers.dart';
+import '../../sales_order/infrastructure/sales_order_status_dto.dart';
+import '../../visits/infrastructure/visit_dto.dart';
 
 final syncRepositoryProvider = Provider.autoDispose<SyncRepository>(
   // * Override this in the main method
@@ -21,43 +37,34 @@ final syncRepositoryProvider = Provider.autoDispose<SyncRepository>(
 class SyncRepository {
   AppDatabase db;
   Dio dio;
+  AuthRepository authRepository;
 
-  SyncRepository(this.db, this.dio);
+  SyncRepository(this.db, this.dio, this.authRepository);
 
   Future<void> syncAllSalesOrder() async {
     int page = 1;
     bool isNextPageAvailable = true;
-    int? _totalRows;
+    int? totalRows;
 
     try {
+      final user = await authRepository.getSignedInUser();
+
       final dbSysdateStr = await _getRemoteDbSysDate(
-          requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
-            '/api/v1/date',
-          ),
+          provisionalToken: user!.provisionalToken,
           jsonDataSelector: (json) => json['data'] as String);
 
       final lastSyncDate = await db.getLastSyncSalesOrderDate();
       while (isNextPageAvailable) {
-        final query = {
-          'page': '$page',
-          'pageSize': '100',
-          'sysdate': dbSysdateStr
-        };
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
 
-        if (lastSyncDate != null) {
-          query.addAll({'lastSyncDate': lastSyncDate});
-        }
-
-        if (_totalRows != null) {
-          query.addAll({'totalRows': '$_totalRows'});
-        }
         final remotePageItems = await _remoteSyncData(
-            requestUri: Uri.http(
-              dotenv.get('URL_HOME', fallback: 'localhost:3001'),
-              'sync/api/v1/pedidos',
-              query,
-            ),
+            path: 'sync/api/v1/sync/pedidos',
+            query: query,
+            provisionalToken: user.provisionalToken,
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
 
         await remotePageItems.maybeWhen(
@@ -69,7 +76,7 @@ class SyncRepository {
               await db.upsertSalesOrder(salesOrderDto: salesOrderDTOList[i]);
             }
             isNextPageAvailable = page < maxPage;
-            _totalRows = totalRows;
+            totalRows = totalRows;
             page += 1;
           },
         );
@@ -86,40 +93,76 @@ class SyncRepository {
     }
   }
 
+  Future<void> syncAllSalesOrderStatus() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncSalesOrderStatusDate();
+      final query = createSyncQuery(
+        dbSysdateStr: dbSysdateStr,
+        lastSyncDate: lastSyncDate,
+      );
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/pedidos/estados',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final salesOrderStatusDTOList =
+              data.map((e) => SalesOrderStatusDTO.fromJson(e)).toList();
+          for (var i = 0; i < salesOrderStatusDTOList.length; i++) {
+            await db.upsertSalesOrderStatus(
+                salesOrderStatusDto: salesOrderStatusDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'),
+            lastSyncSalesOrderStatus: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncAllCustomer() async {
     int page = 1;
     bool isNextPageAvailable = true;
-    int? _totalRows;
+    int? totalRows;
 
     try {
+      final user = await authRepository.getSignedInUser();
+
       final dbSysdateStr = await _getRemoteDbSysDate(
-          requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
-            '/api/v1/date',
-          ),
+          provisionalToken: user!.provisionalToken,
           jsonDataSelector: (json) => json['data'] as String);
 
       final lastSyncDate = await db.getLastSyncCustomerDate();
+
       while (isNextPageAvailable) {
-        final query = {
-          'page': '$page',
-          'pageSize': '100',
-          'sysdate': dbSysdateStr
-        };
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
 
-        if (lastSyncDate != null) {
-          query.addAll({'lastSyncDate': lastSyncDate});
-        }
-
-        if (_totalRows != null) {
-          query.addAll({'totalRows': '$_totalRows'});
-        }
         final remotePageItems = await _remoteSyncData(
-            requestUri: Uri.http(
-              dotenv.get('URL_HOME', fallback: 'localhost:3001'),
-              '/api/v1/clientes',
-              query,
-            ),
+            path: '/api/v1/sync/clientes',
+            query: query,
+            provisionalToken: user.provisionalToken,
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
 
         await remotePageItems.maybeWhen(
@@ -131,7 +174,7 @@ class SyncRepository {
               await db.upsertCustomer(customerDto: customerDTOList[i]);
             }
             isNextPageAvailable = page < maxPage;
-            _totalRows = totalRows;
+            totalRows = totalRows;
             page += 1;
           },
         );
@@ -151,37 +194,27 @@ class SyncRepository {
   Future<void> syncAllCustomerUser() async {
     int page = 1;
     bool isNextPageAvailable = true;
-    int? _totalRows;
+    int? totalRows;
 
     try {
+      final user = await authRepository.getSignedInUser();
+
       final dbSysdateStr = await _getRemoteDbSysDate(
-          requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
-            '/api/v1/date',
-          ),
+          provisionalToken: user!.provisionalToken,
           jsonDataSelector: (json) => json['data'] as String);
 
       final lastSyncDate = await db.getLastSyncCustomerUserDate();
       while (isNextPageAvailable) {
-        final query = {
-          'page': '$page',
-          'pageSize': '100',
-          'sysdate': dbSysdateStr
-        };
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
 
-        if (lastSyncDate != null) {
-          query.addAll({'lastSyncDate': lastSyncDate});
-        }
-
-        if (_totalRows != null) {
-          query.addAll({'totalRows': '$_totalRows'});
-        }
         final remotePageItems = await _remoteSyncData(
-            requestUri: Uri.http(
-              dotenv.get('URL_HOME', fallback: 'localhost:3001'),
-              '/api/v1/clientes-usuario',
-              query,
-            ),
+            path: '/api/v1/sync/clientes-usuario',
+            query: query,
+            provisionalToken: user.provisionalToken,
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
 
         await remotePageItems.maybeWhen(
@@ -194,7 +227,7 @@ class SyncRepository {
                   customerUserDto: customerUserDTOList[i]);
             }
             isNextPageAvailable = page < maxPage;
-            _totalRows = totalRows;
+            totalRows = totalRows;
             page += 1;
           },
         );
@@ -211,17 +244,701 @@ class SyncRepository {
     }
   }
 
+  Future<void> syncAllCustomerAddress() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerAddressDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/direcciones',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerAddressDTOList =
+                data.map((e) => CustomerAddressDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerAddressDTOList.length; i++) {
+              await db.upsertCustomerAddress(
+                  customerAddressDto: customerAddressDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCustomerAddress: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerContact() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerContactDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/contactos',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerContactDTOList =
+                data.map((e) => CustomerContactDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerContactDTOList.length; i++) {
+              await db.upsertCustomerContact(
+                  customerContactDto: customerContactDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCustomerContact: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerDiscount() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerDiscountDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/descuentos',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerDiscountDTOList =
+                data.map((e) => CustomerDiscountDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerDiscountDTOList.length; i++) {
+              await db.upsertCustomerDiscount(
+                  customerDiscountDto: customerDiscountDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'),
+            lastSyncCustomerDiscount: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerNetGroup() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerNetGroupDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/grupos-netos',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerNetGroupDTOList =
+                data.map((e) => CustomerNetGroupDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerNetGroupDTOList.length; i++) {
+              await db.upsertCustomerNetGroup(
+                  customerNetGroupDto: customerNetGroupDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'),
+            lastSyncCustomerNetGroup: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerNetPrice() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerNetPriceDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/precios-netos',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerNetPriceDTOList =
+                data.map((e) => CustomerNetPriceDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerNetPriceDTOList.length; i++) {
+              await db.upsertCustomerNetPrice(
+                  customerNetPriceDto: customerNetPriceDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'),
+            lastSyncCustomerNetPrice: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerPendingPayment() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerPendingPaymentDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/pagos-pendientes',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerPendingPaymentDTOList =
+                data.map((e) => CustomerPendingPaymentDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerPendingPaymentDTOList.length; i++) {
+              await db.upsertCustomerPendingPayment(
+                  customerPendingPaymentDto: customerPendingPaymentDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'),
+            lastSyncCustomerPendingPayment: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCustomerRappels() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCustomerRappelsDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/clientes/rappels',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final customerRappelsDTOList =
+                data.map((e) => CustomerRappelDTO.fromJson(e)).toList();
+            for (var i = 0; i < customerRappelsDTOList.length; i++) {
+              await db.upsertCustomerRappel(
+                  customerRappelDto: customerRappelsDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCustomerRappels: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllVisit() async {
+    int page = 1;
+    bool isNextPageAvailable = true;
+    int? totalRows;
+
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncVisitDate();
+      while (isNextPageAvailable) {
+        final query = createSyncQueryPagination(
+            page: page,
+            dbSysdateStr: dbSysdateStr,
+            lastSyncDate: lastSyncDate,
+            totalRows: totalRows);
+
+        final remotePageItems = await _remoteSyncData(
+            path: '/api/v1/sync/visitas',
+            query: query,
+            provisionalToken: user.provisionalToken,
+            jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+        await remotePageItems.maybeWhen(
+          orElse: () {},
+          withNewData: (data, maxPage, totalRows) async {
+            final visitDTOList = data.map((e) => VisitDTO.fromJson(e)).toList();
+            for (var i = 0; i < visitDTOList.length; i++) {
+              await db.upsertVisit(visitDto: visitDTOList[i]);
+            }
+            isNextPageAvailable = page < maxPage;
+            totalRows = totalRows;
+            page += 1;
+          },
+        );
+      }
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncVisit: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCountry() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCountryDate();
+      final query = createSyncQuery(
+        dbSysdateStr: dbSysdateStr,
+        lastSyncDate: lastSyncDate,
+      );
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/paises',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final countryDTOList =
+              data.map((e) => CountryDTO.fromJson(e)).toList();
+          for (var i = 0; i < countryDTOList.length; i++) {
+            await db.upsertCountry(countryDto: countryDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCountry: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllDivisa() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncDivisaDate();
+
+      final query = createSyncQuery(
+          dbSysdateStr: dbSysdateStr, lastSyncDate: lastSyncDate);
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/divisa',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final divisaDTOList = data.map((e) => DivisaDTO.fromJson(e)).toList();
+          for (var i = 0; i < divisaDTOList.length; i++) {
+            await db.upsertDivisa(divisaDto: divisaDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncDivisa: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCollectionTerm() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCollectionTermDate();
+      final query = createSyncQuery(
+          dbSysdateStr: dbSysdateStr, lastSyncDate: lastSyncDate);
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/plazos-cobro',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final collectionTermDTOList =
+              data.map((e) => CollectionTermDTO.fromJson(e)).toList();
+          for (var i = 0; i < collectionTermDTOList.length; i++) {
+            await db.upsertCollectionTerm(
+                collectionTermDto: collectionTermDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncCollectionTerm: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllCollectionMethods() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncCollectionMethodDate();
+      final query = createSyncQuery(
+          dbSysdateStr: dbSysdateStr, lastSyncDate: lastSyncDate);
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/metodos-cobro',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final collectionMethodDTOList =
+              data.map((e) => CollectionMethodDTO.fromJson(e)).toList();
+          for (var i = 0; i < collectionMethodDTOList.length; i++) {
+            await db.upsertCollectionMethod(
+                collectionMethodDto: collectionMethodDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'),
+            lastSyncCollectionMethod: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllFamily() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncFamilyDate();
+
+      final query = createSyncQuery(
+          dbSysdateStr: dbSysdateStr, lastSyncDate: lastSyncDate);
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/articulo/familia',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final familyDTOList = data.map((e) => FamilyDTO.fromJson(e)).toList();
+          for (var i = 0; i < familyDTOList.length; i++) {
+            await db.upsertFamily(familyDto: familyDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncFamily: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncAllSubfamily() async {
+    try {
+      final user = await authRepository.getSignedInUser();
+
+      final dbSysdateStr = await _getRemoteDbSysDate(
+          provisionalToken: user!.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as String);
+
+      final lastSyncDate = await db.getLastSyncSubfamilyDate();
+
+      final query = createSyncQuery(
+          dbSysdateStr: dbSysdateStr, lastSyncDate: lastSyncDate);
+
+      final remotePageItems = await _remoteSyncData(
+          path: '/api/v1/sync/articulo/subfamilia',
+          query: query,
+          provisionalToken: user.provisionalToken,
+          jsonDataSelector: (json) => json['data'] as List<dynamic>);
+
+      await remotePageItems.maybeWhen(
+        orElse: () {},
+        withNewData: (data, maxPage, totalRows) async {
+          final subfamilyDTOList =
+              data.map((e) => SubfamilyDTO.fromJson(e)).toList();
+          for (var i = 0; i < subfamilyDTOList.length; i++) {
+            await db.upsertSubfamily(subfamilyDto: subfamilyDTOList[i]);
+          }
+        },
+      );
+
+      await db.updateLastSyncTable(
+        lastSyncDateValue: LastSyncDateTableCompanion(
+            id: const Value('1'), lastSyncSubfamily: Value(dbSysdateStr)),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<RemoteResponse<List<Map<String, dynamic>>>> _remoteSyncData({
-    required Uri requestUri,
+    required String path,
+    Map<String, String>? query,
+    required String provisionalToken,
     required List<dynamic> Function(dynamic json) jsonDataSelector,
   }) async {
     try {
-      log.info('${(this).runtimeType}.getPage - Get Uri: $requestUri');
       final response = await dio.getUri(
-        requestUri,
+        Uri.http(
+          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+          path,
+          query,
+        ),
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
       );
-      log.info(
-          '${(this).runtimeType}.getPage - Received response: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final convertedDate = jsonDataSelector(response.data)
@@ -229,7 +946,6 @@ class SyncRepository {
             .toList();
         final headers = SalesOrderHeaders.parse(response);
 
-        log.info('${(this).runtimeType}.getPage - Saved cache');
         return RemoteResponse.withNewData(
           convertedDate,
           maxPage: headers.maxPage ?? 1,
@@ -246,7 +962,8 @@ class SyncRepository {
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400,
             (e.response?.data is Map)
-                ? e.response?.data['detail'] ?? e.response?.data['message']
+                ? e.response?.data['error']['detail'] ??
+                    e.response?.data['message']
                 : e.response?.statusMessage);
       } else {
         rethrow;
@@ -257,21 +974,24 @@ class SyncRepository {
   }
 
   Future<String> _getRemoteDbSysDate({
-    required Uri requestUri,
+    required String provisionalToken,
     required dynamic Function(dynamic json) jsonDataSelector,
   }) async {
     try {
-      log.info('${(this).runtimeType}.getDbSysdate - Get Uri: $requestUri');
       final response = await dio.getUri(
-        requestUri,
-      );
+          Uri.http(
+            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            '/api/v1/sync/db-datetime',
+          ),
+          options: Options(
+            headers: {'authorization': 'Bearer $provisionalToken'},
+          ));
       log.info(
           '${(this).runtimeType}.getDbSysdate - Received response: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final convertedDate = jsonDataSelector(response.data);
 
-        log.info('${(this).runtimeType}.getPage - Saved cache');
         return convertedDate;
       } else {
         throw AppException.restApiFailure(
@@ -281,9 +1001,7 @@ class SyncRepository {
       if (e.response != null) {
         throw AppException.restApiFailure(
           e.response?.statusCode ?? 400,
-          (e.response?.data is Map)
-              ? e.response?.data['detail'] ?? e.response?.data['message']
-              : e.response?.statusMessage,
+          e.response?.statusMessage ?? '',
         );
       } else {
         rethrow;
@@ -292,4 +1010,34 @@ class SyncRepository {
       rethrow;
     }
   }
+
+  Map<String, String> createSyncQueryPagination(
+      {required int page,
+      required String dbSysdateStr,
+      required String? lastSyncDate,
+      required int? totalRows}) {
+    final query = {'page': '$page', 'pageSize': '100', 'sysdate': dbSysdateStr};
+
+    if (lastSyncDate != null) {
+      query.addAll({'lastSyncDate': lastSyncDate});
+    }
+
+    if (totalRows != null) {
+      query.addAll({'totalRows': '$totalRows'});
+    }
+    return query;
+  }
+}
+
+Map<String, String> createSyncQuery({
+  required String dbSysdateStr,
+  required String? lastSyncDate,
+}) {
+  final query = {'sysdate': dbSysdateStr};
+
+  if (lastSyncDate != null) {
+    query.addAll({'lastSyncDate': lastSyncDate});
+  }
+
+  return query;
 }

@@ -51,8 +51,9 @@ class CustomerUserTable extends Table {
   @override
   Set<Column> get primaryKey => {customerId, userId};
 
-  TextColumn get customerId => text()();
-  TextColumn get userId => text()();
-  DateTimeColumn get lastUpdated => dateTime()();
-  TextColumn get deleted => text().withDefault(const Constant('N'))();
+  TextColumn get customerId => text().named('CLIENTE_ID')();
+  TextColumn get userId => text().named('USUARIO_ID')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get deleted =>
+      text().withDefault(const Constant('N')).named('DELETED')();
 }

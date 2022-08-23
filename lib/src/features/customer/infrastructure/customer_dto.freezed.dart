@@ -34,7 +34,7 @@ mixin _$CustomerDTO {
   String? get fiscalAddress2 => throw _privateConstructorUsedError;
   @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
   String? get fiscalZipCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'POBLACION_FISCAL1')
+  @JsonKey(name: 'POBLACION_FISCAL')
   String? get fiscalCity => throw _privateConstructorUsedError;
   @JsonKey(name: 'PAIS_ID_FISCAL')
   String? get fiscalCountryId => throw _privateConstructorUsedError;
@@ -140,7 +140,7 @@ abstract class $CustomerDTOCopyWith<$Res> {
           String? fiscalAddress2,
       @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
           String? fiscalZipCode,
-      @JsonKey(name: 'POBLACION_FISCAL1')
+      @JsonKey(name: 'POBLACION_FISCAL')
           String? fiscalCity,
       @JsonKey(name: 'PAIS_ID_FISCAL')
           String? fiscalCountryId,
@@ -488,7 +488,7 @@ abstract class _$$_CustomerDTOCopyWith<$Res>
           String? fiscalAddress2,
       @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
           String? fiscalZipCode,
-      @JsonKey(name: 'POBLACION_FISCAL1')
+      @JsonKey(name: 'POBLACION_FISCAL')
           String? fiscalCity,
       @JsonKey(name: 'PAIS_ID_FISCAL')
           String? fiscalCountryId,
@@ -834,7 +834,7 @@ class _$_CustomerDTO extends _CustomerDTO {
           this.fiscalAddress2,
       @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
           this.fiscalZipCode,
-      @JsonKey(name: 'POBLACION_FISCAL1')
+      @JsonKey(name: 'POBLACION_FISCAL')
           this.fiscalCity,
       @JsonKey(name: 'PAIS_ID_FISCAL')
           this.fiscalCountryId,
@@ -939,7 +939,7 @@ class _$_CustomerDTO extends _CustomerDTO {
   @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
   final String? fiscalZipCode;
   @override
-  @JsonKey(name: 'POBLACION_FISCAL1')
+  @JsonKey(name: 'POBLACION_FISCAL')
   final String? fiscalCity;
   @override
   @JsonKey(name: 'PAIS_ID_FISCAL')
@@ -1235,7 +1235,7 @@ abstract class _CustomerDTO extends CustomerDTO {
           final String? fiscalAddress2,
       @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
           final String? fiscalZipCode,
-      @JsonKey(name: 'POBLACION_FISCAL1')
+      @JsonKey(name: 'POBLACION_FISCAL')
           final String? fiscalCity,
       @JsonKey(name: 'PAIS_ID_FISCAL')
           final String? fiscalCountryId,
@@ -1340,7 +1340,7 @@ abstract class _CustomerDTO extends CustomerDTO {
   @JsonKey(name: 'CODIGO_POSTAL_FISCAL')
   String? get fiscalZipCode;
   @override
-  @JsonKey(name: 'POBLACION_FISCAL1')
+  @JsonKey(name: 'POBLACION_FISCAL')
   String? get fiscalCity;
   @override
   @JsonKey(name: 'PAIS_ID_FISCAL')

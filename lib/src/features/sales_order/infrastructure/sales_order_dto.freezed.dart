@@ -29,7 +29,9 @@ mixin _$SalesOrderDTO {
   @JsonKey(name: 'TIPO_VENTA')
   String get salesType => throw _privateConstructorUsedError;
   @JsonKey(name: 'CLIENTE_ID')
-  String get customerId => throw _privateConstructorUsedError;
+  String? get customerId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DIRECCION_ID')
+  String? get addressId => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_CLIENTE')
   String? get customerName => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_ENVIO1')
@@ -60,8 +62,8 @@ mixin _$SalesOrderDTO {
   double get promptPaymentDiscount => throw _privateConstructorUsedError;
   @JsonKey(name: 'IVA')
   double get iva => throw _privateConstructorUsedError;
-  @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
-  DateTime? get lastUpdated => throw _privateConstructorUsedError;
+  @JsonKey(name: 'LAST_UPDATED')
+  DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
   String get deleted => throw _privateConstructorUsedError;
 
@@ -81,7 +83,8 @@ abstract class $SalesOrderDTOCopyWith<$Res> {
       @JsonKey(name: 'PEDIDO_ID') String salesOrderId,
       @JsonKey(name: 'FECHA_PEDIDO') DateTime salesOrderDate,
       @JsonKey(name: 'TIPO_VENTA') String salesType,
-      @JsonKey(name: 'CLIENTE_ID') String customerId,
+      @JsonKey(name: 'CLIENTE_ID') String? customerId,
+      @JsonKey(name: 'DIRECCION_ID') String? addressId,
       @JsonKey(name: 'NOMBRE_CLIENTE') String? customerName,
       @JsonKey(name: 'DIRECCION_ENVIO1') String? shippingAddress1,
       @JsonKey(name: 'DIRECCION_ENVIO2') String? shippingAddress2,
@@ -97,7 +100,7 @@ abstract class $SalesOrderDTOCopyWith<$Res> {
       @JsonKey(name: 'OFERTA_SN') String isOffer,
       @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double promptPaymentDiscount,
       @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'LAST_UPDATED', defaultValue: null) DateTime? lastUpdated,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
 
@@ -117,6 +120,7 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
     Object? salesOrderDate = freezed,
     Object? salesType = freezed,
     Object? customerId = freezed,
+    Object? addressId = freezed,
     Object? customerName = freezed,
     Object? shippingAddress1 = freezed,
     Object? shippingAddress2 = freezed,
@@ -155,7 +159,11 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      addressId: addressId == freezed
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
       customerName: customerName == freezed
           ? _value.customerName
           : customerName // ignore: cast_nullable_to_non_nullable
@@ -219,7 +227,7 @@ class _$SalesOrderDTOCopyWithImpl<$Res>
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
@@ -240,7 +248,8 @@ abstract class _$$_SalesOrderDTOCopyWith<$Res>
       @JsonKey(name: 'PEDIDO_ID') String salesOrderId,
       @JsonKey(name: 'FECHA_PEDIDO') DateTime salesOrderDate,
       @JsonKey(name: 'TIPO_VENTA') String salesType,
-      @JsonKey(name: 'CLIENTE_ID') String customerId,
+      @JsonKey(name: 'CLIENTE_ID') String? customerId,
+      @JsonKey(name: 'DIRECCION_ID') String? addressId,
       @JsonKey(name: 'NOMBRE_CLIENTE') String? customerName,
       @JsonKey(name: 'DIRECCION_ENVIO1') String? shippingAddress1,
       @JsonKey(name: 'DIRECCION_ENVIO2') String? shippingAddress2,
@@ -256,7 +265,7 @@ abstract class _$$_SalesOrderDTOCopyWith<$Res>
       @JsonKey(name: 'OFERTA_SN') String isOffer,
       @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double promptPaymentDiscount,
       @JsonKey(name: 'IVA') double iva,
-      @JsonKey(name: 'LAST_UPDATED', defaultValue: null) DateTime? lastUpdated,
+      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
 
@@ -278,6 +287,7 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
     Object? salesOrderDate = freezed,
     Object? salesType = freezed,
     Object? customerId = freezed,
+    Object? addressId = freezed,
     Object? customerName = freezed,
     Object? shippingAddress1 = freezed,
     Object? shippingAddress2 = freezed,
@@ -316,7 +326,11 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
       customerId: customerId == freezed
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      addressId: addressId == freezed
+          ? _value.addressId
+          : addressId // ignore: cast_nullable_to_non_nullable
+              as String?,
       customerName: customerName == freezed
           ? _value.customerName
           : customerName // ignore: cast_nullable_to_non_nullable
@@ -380,7 +394,7 @@ class __$$_SalesOrderDTOCopyWithImpl<$Res>
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
@@ -402,21 +416,23 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
       @JsonKey(name: 'TIPO_VENTA')
           required this.salesType,
       @JsonKey(name: 'CLIENTE_ID')
-          required this.customerId,
+          this.customerId,
+      @JsonKey(name: 'DIRECCION_ID')
+          this.addressId,
       @JsonKey(name: 'NOMBRE_CLIENTE')
-          required this.customerName,
+          this.customerName,
       @JsonKey(name: 'DIRECCION_ENVIO1')
-          required this.shippingAddress1,
+          this.shippingAddress1,
       @JsonKey(name: 'DIRECCION_ENVIO2')
-          required this.shippingAddress2,
+          this.shippingAddress2,
       @JsonKey(name: 'CODIGO_POSTAL')
-          required this.zipCode,
+          this.zipCode,
       @JsonKey(name: 'POBLACION')
-          required this.city,
+          this.city,
       @JsonKey(name: 'PROVINCIA')
-          required this.state,
+          this.state,
       @JsonKey(name: 'PAIS_ID')
-          required this.countryId,
+          this.countryId,
       @JsonKey(name: 'DIVISA_ID')
           required this.divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE')
@@ -433,7 +449,7 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
           required this.promptPaymentDiscount,
       @JsonKey(name: 'IVA')
           required this.iva,
-      @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
+      @JsonKey(name: 'LAST_UPDATED')
           required this.lastUpdated,
       @JsonKey(name: 'DELETED')
           required this.deleted})
@@ -456,7 +472,10 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
   final String salesType;
   @override
   @JsonKey(name: 'CLIENTE_ID')
-  final String customerId;
+  final String? customerId;
+  @override
+  @JsonKey(name: 'DIRECCION_ID')
+  final String? addressId;
   @override
   @JsonKey(name: 'NOMBRE_CLIENTE')
   final String? customerName;
@@ -503,15 +522,15 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
   @JsonKey(name: 'IVA')
   final double iva;
   @override
-  @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
-  final DateTime? lastUpdated;
+  @JsonKey(name: 'LAST_UPDATED')
+  final DateTime lastUpdated;
   @override
   @JsonKey(name: 'DELETED')
   final String deleted;
 
   @override
   String toString() {
-    return 'SalesOrderDTO(companyId: $companyId, salesOrderId: $salesOrderId, salesOrderDate: $salesOrderDate, salesType: $salesType, customerId: $customerId, customerName: $customerName, shippingAddress1: $shippingAddress1, shippingAddress2: $shippingAddress2, zipCode: $zipCode, city: $city, state: $state, countryId: $countryId, divisaId: $divisaId, taxBase: $taxBase, ivaAmount: $ivaAmount, total: $total, salesOrderStatusId: $salesOrderStatusId, isOffer: $isOffer, promptPaymentDiscount: $promptPaymentDiscount, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'SalesOrderDTO(companyId: $companyId, salesOrderId: $salesOrderId, salesOrderDate: $salesOrderDate, salesType: $salesType, customerId: $customerId, addressId: $addressId, customerName: $customerName, shippingAddress1: $shippingAddress1, shippingAddress2: $shippingAddress2, zipCode: $zipCode, city: $city, state: $state, countryId: $countryId, divisaId: $divisaId, taxBase: $taxBase, ivaAmount: $ivaAmount, total: $total, salesOrderStatusId: $salesOrderStatusId, isOffer: $isOffer, promptPaymentDiscount: $promptPaymentDiscount, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -527,6 +546,7 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
             const DeepCollectionEquality().equals(other.salesType, salesType) &&
             const DeepCollectionEquality()
                 .equals(other.customerId, customerId) &&
+            const DeepCollectionEquality().equals(other.addressId, addressId) &&
             const DeepCollectionEquality()
                 .equals(other.customerName, customerName) &&
             const DeepCollectionEquality()
@@ -561,6 +581,7 @@ class _$_SalesOrderDTO extends _SalesOrderDTO {
         const DeepCollectionEquality().hash(salesOrderDate),
         const DeepCollectionEquality().hash(salesType),
         const DeepCollectionEquality().hash(customerId),
+        const DeepCollectionEquality().hash(addressId),
         const DeepCollectionEquality().hash(customerName),
         const DeepCollectionEquality().hash(shippingAddress1),
         const DeepCollectionEquality().hash(shippingAddress2),
@@ -604,21 +625,23 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
       @JsonKey(name: 'TIPO_VENTA')
           required final String salesType,
       @JsonKey(name: 'CLIENTE_ID')
-          required final String customerId,
+          final String? customerId,
+      @JsonKey(name: 'DIRECCION_ID')
+          final String? addressId,
       @JsonKey(name: 'NOMBRE_CLIENTE')
-          required final String? customerName,
+          final String? customerName,
       @JsonKey(name: 'DIRECCION_ENVIO1')
-          required final String? shippingAddress1,
+          final String? shippingAddress1,
       @JsonKey(name: 'DIRECCION_ENVIO2')
-          required final String? shippingAddress2,
+          final String? shippingAddress2,
       @JsonKey(name: 'CODIGO_POSTAL')
-          required final String? zipCode,
+          final String? zipCode,
       @JsonKey(name: 'POBLACION')
-          required final String? city,
+          final String? city,
       @JsonKey(name: 'PROVINCIA')
-          required final String? state,
+          final String? state,
       @JsonKey(name: 'PAIS_ID')
-          required final String? countryId,
+          final String? countryId,
       @JsonKey(name: 'DIVISA_ID')
           required final String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE')
@@ -635,8 +658,8 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
           required final double promptPaymentDiscount,
       @JsonKey(name: 'IVA')
           required final double iva,
-      @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
-          required final DateTime? lastUpdated,
+      @JsonKey(name: 'LAST_UPDATED')
+          required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
           required final String deleted}) = _$_SalesOrderDTO;
   const _SalesOrderDTO._() : super._();
@@ -658,7 +681,10 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
   String get salesType;
   @override
   @JsonKey(name: 'CLIENTE_ID')
-  String get customerId;
+  String? get customerId;
+  @override
+  @JsonKey(name: 'DIRECCION_ID')
+  String? get addressId;
   @override
   @JsonKey(name: 'NOMBRE_CLIENTE')
   String? get customerName;
@@ -705,8 +731,8 @@ abstract class _SalesOrderDTO extends SalesOrderDTO {
   @JsonKey(name: 'IVA')
   double get iva;
   @override
-  @JsonKey(name: 'LAST_UPDATED', defaultValue: null)
-  DateTime? get lastUpdated;
+  @JsonKey(name: 'LAST_UPDATED')
+  DateTime get lastUpdated;
   @override
   @JsonKey(name: 'DELETED')
   String get deleted;

@@ -28,7 +28,7 @@ class CustomerDTO with _$CustomerDTO implements Insertable<CustomerDTO> {
     @JsonKey(name: 'DIRECCION_FISCAL1') String? fiscalAddress1,
     @JsonKey(name: 'DIRECCION_FISCAL2') String? fiscalAddress2,
     @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? fiscalZipCode,
-    @JsonKey(name: 'POBLACION_FISCAL1') String? fiscalCity,
+    @JsonKey(name: 'POBLACION_FISCAL') String? fiscalCity,
     @JsonKey(name: 'PAIS_ID_FISCAL') String? fiscalCountryId,
     @JsonKey(name: 'PROVINCIA_FISCAL') String? fiscalState,
     @JsonKey(name: 'LATITUD_FISCAL') double? fiscalLatitude,
@@ -193,53 +193,84 @@ class CustomerTable extends Table {
   @override
   Set<Column> get primaryKey => {id};
 
-  TextColumn get id => text()();
-  TextColumn get customerName => text().nullable()();
-  TextColumn get nif => text().nullable()();
-  TextColumn get fiscalName => text().nullable()();
-  TextColumn get fiscalAddress1 => text().nullable()();
-  TextColumn get fiscalAddress2 => text().nullable()();
-  TextColumn get fiscalZipCode => text().nullable()();
-  TextColumn get fiscalCity => text().nullable()();
-  TextColumn get fiscalState => text().nullable()();
+  TextColumn get id => text().named('CLIENTE_ID')();
+  TextColumn get customerName => text().nullable().named('NOMBRE')();
+  TextColumn get nif => text().nullable().named('NIF')();
+  TextColumn get fiscalName => text().nullable().named('NOMBRE_FISCAL')();
+  TextColumn get fiscalAddress1 =>
+      text().nullable().named('DIRECCION_FISCAL1')();
+  TextColumn get fiscalAddress2 =>
+      text().nullable().named('DIRECCION_FISCAL2')();
+  TextColumn get fiscalZipCode =>
+      text().nullable().named('CODIGO_POSTAL_FISCAL')();
+  TextColumn get fiscalCity => text().nullable().named('POBLACION_FISCAL')();
+  TextColumn get fiscalState => text().nullable().named('PROVINCIA_FISCAL')();
   TextColumn get fiscalCountryId =>
-      text().references(CountryTable, #id).nullable()();
-  RealColumn get fiscalLatitude => real().nullable()();
-  RealColumn get fiscalLongitude => real().nullable()();
-  TextColumn get companyId => text()();
-  RealColumn get especialVAT => real().nullable()();
-  TextColumn get exemptVat => text().nullable()();
-  RealColumn get currentYearSales => real().nullable()();
-  RealColumn get previousYearSales => real().nullable()();
-  RealColumn get salesTwoYearsAgo => real().nullable()();
-  RealColumn get currentYearMargin => real().nullable()();
-  RealColumn get previousYearMargin => real().nullable()();
-  RealColumn get marginTwoYearsAgo => real().nullable()();
-  RealColumn get paymentPercent => real().nullable()();
-  RealColumn get warrantyPercent => real().nullable()();
-  TextColumn get shoppingCenterName => text().nullable()();
-  TextColumn get urlWebsite => text().nullable()();
-  TextColumn get divisaId => text().references(DivisaTable, #id).nullable()();
-  TextColumn get rateId => text().nullable()();
-  TextColumn get rateDescription => text().nullable()();
-  TextColumn get generalDiscount => text().nullable()();
-  TextColumn get generalDiscountDescription => text().nullable()();
-  TextColumn get priceCalculationType => text()();
-  TextColumn get collectionTermId =>
-      text().references(CollectionTermTable, #id).nullable()();
-  TextColumn get collectionMethodId =>
-      text().references(CollectionMethodTable, #id).nullable()();
-  RealColumn get promptPaymentDiscount => real()();
-  RealColumn get internalGrantedRisk => real()();
-  DateTimeColumn get internalGrantedRiskDate => dateTime().nullable()();
-  RealColumn get cofaceGrantedRisk => real()();
-  DateTimeColumn get cofaceGrantedRiskDate => dateTime().nullable()();
-  RealColumn get riskGranted => real().nullable()();
-  RealColumn get riskPendingCollectionDue => real().nullable()();
-  RealColumn get riskPendingColleectionNotDue => real().nullable()();
-  RealColumn get riskPendingToServe => real().nullable()();
-  RealColumn get riskPendingBilling => real().nullable()();
-  TextColumn get internalRemarks => text().nullable()();
-  DateTimeColumn get lastUpdated => dateTime()();
-  TextColumn get deleted => text().withDefault(const Constant('N'))();
+      text().references(CountryTable, #id).nullable().named('PAIS_ID_FISCAL')();
+  RealColumn get fiscalLatitude => real().nullable().named('LATITUD_FISCAL')();
+  RealColumn get fiscalLongitude =>
+      real().nullable().named('LONGITUD_FISCAL')();
+  TextColumn get companyId => text().named('EMPRESA_ID')();
+  RealColumn get especialVAT => real().nullable().named('IVA_ESPECIAL')();
+  TextColumn get exemptVat => text().nullable().named('IVA_EXENTO')();
+  RealColumn get currentYearSales =>
+      real().nullable().named('VENTAS_ANYO_ACTUAL')();
+  RealColumn get previousYearSales =>
+      real().nullable().named('VENTAS_ANYO_ANTERIOR')();
+  RealColumn get salesTwoYearsAgo =>
+      real().nullable().named('VENTAS_HACE_DOS_ANYOS')();
+  RealColumn get currentYearMargin =>
+      real().nullable().named('MARGEN_ANYO_ACTUAL')();
+  RealColumn get previousYearMargin =>
+      real().nullable().named('MARGEN_ANYO_ANTERIOR')();
+  RealColumn get marginTwoYearsAgo =>
+      real().nullable().named('MARGEN_HACE_DOS_ANYOS')();
+  RealColumn get paymentPercent =>
+      real().nullable().named('PORCENTAJE_ABONOS')();
+  RealColumn get warrantyPercent =>
+      real().nullable().named('PORCENTAJE_GARANTIAS')();
+  TextColumn get shoppingCenterName =>
+      text().nullable().named('CENTRAL_COMPRAS_NOMBRE')();
+  TextColumn get urlWebsite => text().nullable().named('URL_WEB')();
+  TextColumn get divisaId =>
+      text().references(DivisaTable, #id).nullable().named('DIVISA_ID')();
+  TextColumn get rateId => text().nullable().named('TARIFA_ID')();
+  TextColumn get rateDescription =>
+      text().nullable().named('TARIFA_DESCRIPCION')();
+  TextColumn get generalDiscount =>
+      text().nullable().named('DESCUENTO_GENERAL_ID')();
+  TextColumn get generalDiscountDescription =>
+      text().nullable().named('DESCUENTO_GENERAL_DESCRIPCION')();
+  TextColumn get priceCalculationType => text().named('TIPO_CALCULO_PRECIO')();
+  TextColumn get collectionTermId => text()
+      .references(CollectionTermTable, #id)
+      .nullable()
+      .named('PLAZO_COBRO_ID')();
+  TextColumn get collectionMethodId => text()
+      .references(CollectionMethodTable, #id)
+      .nullable()
+      .named('METODO_COBRO_ID')();
+  RealColumn get promptPaymentDiscount =>
+      real().named('DESCUENTO_PRONTO_PAGO')();
+  RealColumn get internalGrantedRisk =>
+      real().named('RIESGO_CONCEDIDO_INTERNO')();
+  DateTimeColumn get internalGrantedRiskDate =>
+      dateTime().nullable().named('RIESGO_CONCEDIDO_INTERNO_FECHA')();
+  RealColumn get cofaceGrantedRisk => real().named('RIESGO_CONCEDIDO_COFACE')();
+  DateTimeColumn get cofaceGrantedRiskDate =>
+      dateTime().nullable().named('RIESGO_CONCEDIDO_COFACE_FECHA')();
+  RealColumn get riskGranted => real().nullable().named('RIESGO_CONCEDIDO')();
+  RealColumn get riskPendingCollectionDue =>
+      real().nullable().named('RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')();
+  RealColumn get riskPendingColleectionNotDue =>
+      real().nullable().named('RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')();
+  RealColumn get riskPendingToServe =>
+      real().nullable().named('RIESGO_PDTE_SERVIR_CLIENTE')();
+  RealColumn get riskPendingBilling =>
+      real().nullable().named('RIESGO_PDTE_FACTURAR_CLIENTE')();
+  TextColumn get internalRemarks =>
+      text().nullable().named('OBSERVACIONES_INTERNAS')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get deleted =>
+      text().withDefault(const Constant('N')).named('DELETED')();
 }

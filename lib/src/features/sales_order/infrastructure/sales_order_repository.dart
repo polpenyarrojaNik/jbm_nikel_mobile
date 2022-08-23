@@ -8,11 +8,11 @@ final salesOrderRepositoryProvider = Provider.autoDispose<SalesOrderRepository>(
   (ref) => throw UnimplementedError(),
 );
 
-final salesOrderListStreamProvider =
-    StreamProvider.autoDispose<List<SalesOrder>>((ref) {
-  final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
-  return salesOrderRepository.watchSalesOrderList();
-});
+// final salesOrderListStreamProvider =
+//     StreamProvider.autoDispose<List<SalesOrder>>((ref) {
+//   final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+//   return salesOrderRepository.watchSalesOrderList();
+// });
 
 class SalesOrderRepository {
   AppDatabase db;
@@ -20,9 +20,9 @@ class SalesOrderRepository {
 
   SalesOrderRepository(this.db, this.dio);
 
-  Stream<List<SalesOrder>> watchSalesOrderList() {
-    return db
-        .getSalesOrderDTO()
-        .map((rows) => rows.map((e) => e.toDomain()).toList());
-  }
+  // Stream<List<SalesOrder>> watchSalesOrderList() {
+  //   return db
+  //       .getSalesOrderDTO()
+  //       .map((rows) => rows.map((e) => e.toDomain()).toList());
+  // }
 }
