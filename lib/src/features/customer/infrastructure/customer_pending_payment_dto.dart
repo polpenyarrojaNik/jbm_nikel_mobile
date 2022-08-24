@@ -80,7 +80,7 @@ class CustomerPendingPaymentTable extends Table {
   Set<Column> get primaryKey => {customerId, effectId};
 
   TextColumn get customerId => text().named('CLIENTE_ID')();
-  TextColumn get effectId => text().named('ARTICULO_ID')();
+  TextColumn get effectId => text().named('EFECTO_ID')();
   TextColumn get invoiceId => text().nullable().named('FACTURA_ID')();
   DateTimeColumn get invoiceDate =>
       dateTime().nullable().named('FECHA_FACTURA')();

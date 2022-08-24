@@ -28,7 +28,7 @@ class SettingsPage extends ConsumerWidget {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
-        title: const Text('Settigns'),
+        title: const Text('Settings'),
         actions: [
           IconButton(
               onPressed: () =>

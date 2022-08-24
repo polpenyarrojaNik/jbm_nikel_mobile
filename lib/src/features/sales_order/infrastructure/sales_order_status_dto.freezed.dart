@@ -39,9 +39,8 @@ mixin _$SalesOrderStatusDTO {
   @JsonKey(name: 'DESCRIPCION_IT')
   String? get descriptionIT => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_NL')
-  String? get descriptionNL => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descriptionPL => throw _privateConstructorUsedError;
+  String? get descriptionNL =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
   @JsonKey(name: 'DESCRIPCION_PT')
   String? get descriptionPT => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_RO')
@@ -79,7 +78,6 @@ abstract class $SalesOrderStatusDTOCopyWith<$Res> {
       @JsonKey(name: 'DESCRIPCION_HU') String? descriptionHU,
       @JsonKey(name: 'DESCRIPCION_IT') String? descriptionIT,
       @JsonKey(name: 'DESCRIPCION_NL') String? descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
       @JsonKey(name: 'DESCRIPCION_PT') String? descriptionPT,
       @JsonKey(name: 'DESCRIPCION_RO') String? descriptionRO,
       @JsonKey(name: 'DESCRIPCION_RU') String? descriptionRU,
@@ -110,7 +108,6 @@ class _$SalesOrderStatusDTOCopyWithImpl<$Res>
     Object? descriptionHU = freezed,
     Object? descriptionIT = freezed,
     Object? descriptionNL = freezed,
-    Object? descriptionPL = freezed,
     Object? descriptionPT = freezed,
     Object? descriptionRO = freezed,
     Object? descriptionRU = freezed,
@@ -159,10 +156,6 @@ class _$SalesOrderStatusDTOCopyWithImpl<$Res>
       descriptionNL: descriptionNL == freezed
           ? _value.descriptionNL
           : descriptionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descriptionPL: descriptionPL == freezed
-          ? _value.descriptionPL
-          : descriptionPL // ignore: cast_nullable_to_non_nullable
               as String?,
       descriptionPT: descriptionPT == freezed
           ? _value.descriptionPT
@@ -214,7 +207,6 @@ abstract class _$$_SalesOrderStatusDTOCopyWith<$Res>
       @JsonKey(name: 'DESCRIPCION_HU') String? descriptionHU,
       @JsonKey(name: 'DESCRIPCION_IT') String? descriptionIT,
       @JsonKey(name: 'DESCRIPCION_NL') String? descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
       @JsonKey(name: 'DESCRIPCION_PT') String? descriptionPT,
       @JsonKey(name: 'DESCRIPCION_RO') String? descriptionRO,
       @JsonKey(name: 'DESCRIPCION_RU') String? descriptionRU,
@@ -247,7 +239,6 @@ class __$$_SalesOrderStatusDTOCopyWithImpl<$Res>
     Object? descriptionHU = freezed,
     Object? descriptionIT = freezed,
     Object? descriptionNL = freezed,
-    Object? descriptionPL = freezed,
     Object? descriptionPT = freezed,
     Object? descriptionRO = freezed,
     Object? descriptionRU = freezed,
@@ -297,10 +288,6 @@ class __$$_SalesOrderStatusDTOCopyWithImpl<$Res>
           ? _value.descriptionNL
           : descriptionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionPL: descriptionPL == freezed
-          ? _value.descriptionPL
-          : descriptionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
       descriptionPT: descriptionPT == freezed
           ? _value.descriptionPT
           : descriptionPT // ignore: cast_nullable_to_non_nullable
@@ -347,7 +334,6 @@ class _$_SalesOrderStatusDTO extends _SalesOrderStatusDTO {
       @JsonKey(name: 'DESCRIPCION_HU') this.descriptionHU,
       @JsonKey(name: 'DESCRIPCION_IT') this.descriptionIT,
       @JsonKey(name: 'DESCRIPCION_NL') this.descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') this.descriptionPL,
       @JsonKey(name: 'DESCRIPCION_PT') this.descriptionPT,
       @JsonKey(name: 'DESCRIPCION_RO') this.descriptionRO,
       @JsonKey(name: 'DESCRIPCION_RU') this.descriptionRU,
@@ -390,9 +376,7 @@ class _$_SalesOrderStatusDTO extends _SalesOrderStatusDTO {
   @override
   @JsonKey(name: 'DESCRIPCION_NL')
   final String? descriptionNL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PL')
-  final String? descriptionPL;
+// @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
   @override
   @JsonKey(name: 'DESCRIPCION_PT')
   final String? descriptionPT;
@@ -417,7 +401,7 @@ class _$_SalesOrderStatusDTO extends _SalesOrderStatusDTO {
 
   @override
   String toString() {
-    return 'SalesOrderStatusDTO(id: $id, descriptionES: $descriptionES, descriptionEN: $descriptionEN, descriptionFR: $descriptionFR, descriptionDE: $descriptionDE, descriptionCA: $descriptionCA, descriptionGB: $descriptionGB, descriptionHU: $descriptionHU, descriptionIT: $descriptionIT, descriptionNL: $descriptionNL, descriptionPL: $descriptionPL, descriptionPT: $descriptionPT, descriptionRO: $descriptionRO, descriptionRU: $descriptionRU, descriptionCN: $descriptionCN, descriptionEL: $descriptionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'SalesOrderStatusDTO(id: $id, descriptionES: $descriptionES, descriptionEN: $descriptionEN, descriptionFR: $descriptionFR, descriptionDE: $descriptionDE, descriptionCA: $descriptionCA, descriptionGB: $descriptionGB, descriptionHU: $descriptionHU, descriptionIT: $descriptionIT, descriptionNL: $descriptionNL, descriptionPT: $descriptionPT, descriptionRO: $descriptionRO, descriptionRU: $descriptionRU, descriptionCN: $descriptionCN, descriptionEL: $descriptionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -444,8 +428,6 @@ class _$_SalesOrderStatusDTO extends _SalesOrderStatusDTO {
                 .equals(other.descriptionIT, descriptionIT) &&
             const DeepCollectionEquality()
                 .equals(other.descriptionNL, descriptionNL) &&
-            const DeepCollectionEquality()
-                .equals(other.descriptionPL, descriptionPL) &&
             const DeepCollectionEquality()
                 .equals(other.descriptionPT, descriptionPT) &&
             const DeepCollectionEquality()
@@ -475,7 +457,6 @@ class _$_SalesOrderStatusDTO extends _SalesOrderStatusDTO {
       const DeepCollectionEquality().hash(descriptionHU),
       const DeepCollectionEquality().hash(descriptionIT),
       const DeepCollectionEquality().hash(descriptionNL),
-      const DeepCollectionEquality().hash(descriptionPL),
       const DeepCollectionEquality().hash(descriptionPT),
       const DeepCollectionEquality().hash(descriptionRO),
       const DeepCollectionEquality().hash(descriptionRU),
@@ -510,7 +491,6 @@ abstract class _SalesOrderStatusDTO extends SalesOrderStatusDTO {
       @JsonKey(name: 'DESCRIPCION_HU') final String? descriptionHU,
       @JsonKey(name: 'DESCRIPCION_IT') final String? descriptionIT,
       @JsonKey(name: 'DESCRIPCION_NL') final String? descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') final String? descriptionPL,
       @JsonKey(name: 'DESCRIPCION_PT') final String? descriptionPT,
       @JsonKey(name: 'DESCRIPCION_RO') final String? descriptionRO,
       @JsonKey(name: 'DESCRIPCION_RU') final String? descriptionRU,
@@ -553,10 +533,7 @@ abstract class _SalesOrderStatusDTO extends SalesOrderStatusDTO {
   @override
   @JsonKey(name: 'DESCRIPCION_NL')
   String? get descriptionNL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descriptionPL;
-  @override
+  @override // @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
   @JsonKey(name: 'DESCRIPCION_PT')
   String? get descriptionPT;
   @override

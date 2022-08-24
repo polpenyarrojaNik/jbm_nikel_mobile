@@ -33,7 +33,7 @@ class SalesOrderLineDTO
   factory SalesOrderLineDTO.fromJson(Map<String, dynamic> json) =>
       _$SalesOrderLineDTOFromJson(json);
 
-  SalesOrderLine toDomain() {
+  SalesOrderLine toDomain({required String divisaId}) {
     return SalesOrderLine(
         companyId: companyId,
         salesOrderId: salesOrderId,

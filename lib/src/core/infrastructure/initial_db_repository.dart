@@ -32,7 +32,12 @@ class InitalDBRepository {
       final Directory directory = await getApplicationDocumentsDirectory();
 
       if (!await _databaseFileExist(directory: directory)) {
-        final initailSyncDateString = DateTime.now().toIso8601String();
+        final initailSyncDateString = await _getRemoteInitialDbDate(
+          requestUri: Uri.http(
+            dotenv.get('URL_NIKEL', fallback: 'loclahost:3001'),
+            '/api/v1/sync/init-db-date',
+          ),
+        );
 
         final data = await _getRemoteInitialDb(
           requestUri: Uri.http(
@@ -79,6 +84,36 @@ class InitalDBRepository {
       if (e.isNoConnectionError) {
         return const RemoteResponse.noConnection();
       } else if (e.response != null) {
+        throw AppException.restApiFailure(
+          e.response?.statusCode ?? 400,
+          (e.response?.data is Map)
+              ? e.response?.data['detail'] ?? e.response?.data['message']
+              : e.response?.statusMessage,
+        );
+      } else {
+        rethrow;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<String> _getRemoteInitialDbDate({required Uri requestUri}) async {
+    try {
+      log.info('${(this).runtimeType}.getPage - Get Uri: $requestUri');
+      final response = await dio.getUri(requestUri);
+      log.info(
+          '${(this).runtimeType}.getPage - Received response: ${response.statusCode}');
+      log.info(
+          '${(this).runtimeType}.getPage - ETag: ${response.headers.map['ETag']}');
+      if (response.statusCode == 200) {
+        return response.data['data'] as String;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.toString());
+      }
+    } on DioError catch (e) {
+      if (e.response != null) {
         throw AppException.restApiFailure(
           e.response?.statusCode ?? 400,
           (e.response?.data is Map)

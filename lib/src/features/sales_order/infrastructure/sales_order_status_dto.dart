@@ -24,7 +24,7 @@ class SalesOrderStatusDTO
     @JsonKey(name: 'DESCRIPCION_HU') String? descriptionHU,
     @JsonKey(name: 'DESCRIPCION_IT') String? descriptionIT,
     @JsonKey(name: 'DESCRIPCION_NL') String? descriptionNL,
-    @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
+    // @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
     @JsonKey(name: 'DESCRIPCION_PT') String? descriptionPT,
     @JsonKey(name: 'DESCRIPCION_RO') String? descriptionRO,
     @JsonKey(name: 'DESCRIPCION_RU') String? descriptionRU,
@@ -73,7 +73,7 @@ class SalesOrderStatusDTO
       descriptionHU: Value(descriptionHU),
       descriptionIT: Value(descriptionIT),
       descriptionNL: Value(descriptionNL),
-      descriptionPL: Value(descriptionPL),
+      // descriptionPL: Value(descriptionPL),
       descriptionPT: Value(descriptionPT),
       descriptionRO: Value(descriptionRO),
       descriptionRU: Value(descriptionRU),
@@ -103,7 +103,7 @@ class SalesOrderStatusTable extends Table {
   TextColumn get descriptionHU => text().nullable().named('DESCRIPCION_HU')();
   TextColumn get descriptionIT => text().nullable().named('DESCRIPCION_IT')();
   TextColumn get descriptionNL => text().nullable().named('DESCRIPCION_NL')();
-  TextColumn get descriptionPL => text().nullable().named('DESCRIPCION_PL')();
+  // TextColumn get descriptionPL => text().nullable().named('DESCRIPCION_PL')();
   TextColumn get descriptionPT => text().nullable().named('DESCRIPCION_PT')();
   TextColumn get descriptionRO => text().nullable().named('DESCRIPCION_RO')();
   TextColumn get descriptionRU => text().nullable().named('DESCRIPCION_RU')();

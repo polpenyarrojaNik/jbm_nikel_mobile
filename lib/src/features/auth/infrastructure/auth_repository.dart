@@ -64,7 +64,8 @@ class AuthRepository {
       }
       return null;
     } catch (e) {
-      rethrow;
+      logout();
+      return null;
     }
   }
 

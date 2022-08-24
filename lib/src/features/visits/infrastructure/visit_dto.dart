@@ -1,7 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/features/customer/domain/customer_contact.dart';
 import 'package:jbm_nikel_mobile/src/features/visits/domain/visit.dart';
 
 part 'visit_dto.freezed.dart';

@@ -31,7 +31,9 @@ class SyncPageNotifier extends StateNotifier<SyncPageState> {
   Future<void> syncValuesInLocalDB() async {
     state = const SyncPageState.loadInProgress();
     try {
-      // await syncRepository.syncAllSalesOrder();
+      print(DateTime.now().toIso8601String());
+      await syncRepository.syncAllSalesOrder();
+      await syncRepository.syncAllSalesOrderLines();
       await syncRepository.syncAllSalesOrderStatus();
       await syncRepository.syncAllCustomer();
       await syncRepository.syncAllCustomerUser();
@@ -41,7 +43,16 @@ class SyncPageNotifier extends StateNotifier<SyncPageState> {
       await syncRepository.syncAllCustomerNetPrice();
       await syncRepository.syncAllCustomerNetGroup();
       await syncRepository.syncAllCustomerPendingPayment();
-      await syncRepository.syncAllCustomerRappels();
+      await syncRepository.syncAllTopArticles();
+      await syncRepository.syncAllArticle();
+      await syncRepository.syncAllArticleCompanyVat();
+      await syncRepository.syncAllArticleComponents();
+      await syncRepository.syncAllArticleNetGroup();
+      await syncRepository.syncAllArticleRatePrice();
+      await syncRepository.syncAllArticleSpare();
+      await syncRepository.syncAllArticleSubstitute();
+      await syncRepository.syncAllStatsCustomerUserSales();
+      await syncRepository.syncAllStatsLastPrice();
       await syncRepository.syncAllVisit();
       await syncRepository.syncAllCountry();
       await syncRepository.syncAllDivisa();
@@ -49,12 +60,13 @@ class SyncPageNotifier extends StateNotifier<SyncPageState> {
       await syncRepository.syncAllCollectionMethods();
       await syncRepository.syncAllFamily();
       await syncRepository.syncAllSubfamily();
-
       state = const SyncPageState.syncSuccess();
     } on AppException catch (e) {
       state = SyncPageState.loadFailure(e);
     } catch (e) {
       rethrow;
+    } finally {
+      print(DateTime.now().toIso8601String());
     }
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/sales_order_list_tile.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';

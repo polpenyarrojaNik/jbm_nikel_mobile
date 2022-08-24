@@ -5,9 +5,17 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/country_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamily_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_net_group_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/stats/infrastructure/stats_customer_user_sales_dto.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
+import '../../features/articles/infrastructure/article_company_vat_dto.dart';
+import '../../features/articles/infrastructure/article_component_dto.dart';
+import '../../features/articles/infrastructure/article_dto.dart';
+import '../../features/articles/infrastructure/article_net_group_price_dto.dart';
+import '../../features/articles/infrastructure/article_rate_price_dto.dart';
+import '../../features/articles/infrastructure/article_spare_dto.dart';
+import '../../features/articles/infrastructure/article_substitute_dto.dart';
 import '../../features/customer/infrastructure/collection_method_dto.dart';
 import '../../features/customer/infrastructure/collection_term_dto.dart';
 import '../../features/customer/infrastructure/customer_address_dto.dart';
@@ -17,10 +25,12 @@ import '../../features/customer/infrastructure/customer_dto.dart';
 import '../../features/customer/infrastructure/customer_net_price_dto.dart';
 import '../../features/customer/infrastructure/customer_pending_payment_dto.dart';
 import '../../features/customer/infrastructure/customer_rappel_dto.dart';
+import '../../features/customer/infrastructure/top_article_dto.dart';
 import '../../features/sales_order/infrastructure/sales_order_dto.dart';
 import '../../features/customer/infrastructure/customer_user_dto.dart';
 import '../../features/sales_order/infrastructure/sales_order_line_dto.dart';
 import '../../features/sales_order/infrastructure/sales_order_status_dto.dart';
+import '../../features/stats/infrastructure/stats_last_price_dto.dart';
 import '../../features/visits/infrastructure/visit_dto.dart';
 import '../exceptions/app_exception.dart';
 import 'family_dto.dart';
@@ -61,6 +71,8 @@ class LastSyncDateTable extends Table {
       text().nullable().named('LAST_SYNC_CUSTOMER_PENDING_PAYMENT')();
   TextColumn get lastSyncCustomerRappels =>
       text().nullable().named('LAST_SYNC_CUSTOMER_RAPPELS')();
+  TextColumn get lastSyncTopArticles =>
+      text().nullable().named('LAST_SYNC_TOP_ARTICLES')();
   TextColumn get lastSyncSalesOrder =>
       text().nullable().named('LAST_SYNC_SALES_ORDER')();
   TextColumn get lastSyncVisit => text().nullable().named('LAST_SYNC_VISIT')();
@@ -86,17 +98,17 @@ class LastSyncDateTable extends Table {
       text().nullable().named('LAST_SYNC_ARTICLE_SPARE')();
   TextColumn get lastSyncArticleCompanyVat =>
       text().nullable().named('LAST_SYNC_ARTICLE_COMPANY_VAT')();
+  TextColumn get lastSyncStatsCustomerUserSales =>
+      text().nullable().named('LAST_SYNC_STATS_CUSTOMER_USER_SALES')();
+  TextColumn get lastSyncStatsLastPrices =>
+      text().nullable().named('LAST_SYNC_STATS_LAST_PRICES')();
 }
 
 @DriftDatabase(tables: [
+  LastSyncDateTable,
   SalesOrderTable,
   SalesOrderStatusTable,
   SalesOrderLineTable,
-  LastSyncDateTable,
-  CollectionMethodTable,
-  CollectionTermTable,
-  CountryTable,
-  DivisaTable,
   CustomerTable,
   CustomerUserTable,
   CustomerNetGroupTable,
@@ -106,9 +118,23 @@ class LastSyncDateTable extends Table {
   CustomerPendingPaymentTable,
   CustomerNetPriceTable,
   CustomerRappelTable,
+  TopArticleTable,
+  ArticleTable,
+  ArticleComponentTable,
+  ArticleCompanyVatTable,
+  ArticleSpareTable,
+  ArticleSubstituteTable,
+  ArticleRatePriceTable,
+  ArticleNetGroupPriceTable,
+  StatsCustomerUserSalesTable,
+  StatsLastPriceTable,
   FamilyTable,
   SubfamilyTable,
   VisitTable,
+  CollectionMethodTable,
+  CollectionTermTable,
+  CountryTable,
+  DivisaTable,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
@@ -144,6 +170,17 @@ class AppDatabase extends _$AppDatabase {
     } catch (e) {
       throw AppException.syncFailure(
           salesOrderTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertSalesOrderLine(
+      {required SalesOrderLineDTO salesOrderLineDto}) async {
+    try {
+      return await into(salesOrderLineTable)
+          .insertOnConflictUpdate(salesOrderLineDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          salesOrderLineTable.actualTableName, e.toString());
     }
   }
 
@@ -255,6 +292,112 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
+  Future<int> upsertTopArticle({required TopArticleDTO topArticleDto}) async {
+    try {
+      return await into(topArticleTable).insertOnConflictUpdate(topArticleDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          topArticleTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticle({required ArticleDTO articleDto}) async {
+    try {
+      return await into(articleTable).insertOnConflictUpdate(articleDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticleCompanyVAT(
+      {required ArticleCompanyVATDTO articleCompanyVatDto}) async {
+    try {
+      return await into(articleCompanyVatTable)
+          .insertOnConflictUpdate(articleCompanyVatDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleCompanyVatTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticleComponent(
+      {required ArticleComponentDTO articleComponentDto}) async {
+    try {
+      return await into(articleComponentTable)
+          .insertOnConflictUpdate(articleComponentDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleComponentTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticleNetGroupPrice(
+      {required ArticleNetGroupPriceDTO articleNetGroupPriceDto}) async {
+    try {
+      return await into(articleNetGroupPriceTable)
+          .insertOnConflictUpdate(articleNetGroupPriceDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleNetGroupPriceTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticleRatePrice(
+      {required ArticleRatePriceDTO articleRatePriceDto}) async {
+    try {
+      return await into(articleRatePriceTable)
+          .insertOnConflictUpdate(articleRatePriceDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleRatePriceTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticleSpare(
+      {required ArticleSpareDTO articleSpareDto}) async {
+    try {
+      return await into(articleSpareTable)
+          .insertOnConflictUpdate(articleSpareDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleSpareTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertArticleSubstitute(
+      {required ArticleSubstituteDTO articleSubstituteDto}) async {
+    try {
+      return await into(articleSubstituteTable)
+          .insertOnConflictUpdate(articleSubstituteDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          articleSubstituteTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertStatsCustomerUserSales(
+      {required StatsCustomerUserSalesDTO statsCustomerUserSalesDto}) async {
+    try {
+      return await into(statsCustomerUserSalesTable)
+          .insertOnConflictUpdate(statsCustomerUserSalesDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          statsCustomerUserSalesTable.actualTableName, e.toString());
+    }
+  }
+
+  Future<int> upsertStatsLastPrice(
+      {required StatsLastPriceDTO statsLastPriceDto}) async {
+    try {
+      return await into(statsLastPriceTable)
+          .insertOnConflictUpdate(statsLastPriceDto);
+    } catch (e) {
+      throw AppException.syncFailure(
+          statsLastPriceTable.actualTableName, e.toString());
+    }
+  }
+
   Future<int> upsertVisit({required VisitDTO visitDto}) async {
     try {
       return await into(visitTable).insertOnConflictUpdate(visitDto);
@@ -325,6 +468,15 @@ class AppDatabase extends _$AppDatabase {
     try {
       return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
           ?.lastSyncSalesOrder;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncSalesOrderLineDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncSalesOrderLine;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -415,6 +567,96 @@ class AppDatabase extends _$AppDatabase {
     try {
       return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
           ?.lastSyncCustomerRappels;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncTopArticlesDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncTopArticles;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticle;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleCompanyVatDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticleCompanyVat;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleComponentDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticleComponent;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleNetGroupPriceDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticleNetGroup;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleRatePriceDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticleRatePrice;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleSpareDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticleSpare;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncArticleSubstituteDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncArticleSubstitute;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncStatsCustomerUserSalesDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncStatsCustomerUserSales;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<String?> getLastSyncStatsLastPriceDate() async {
+    try {
+      return (await (select(lastSyncDateTable)..limit(1)).getSingleOrNull())
+          ?.lastSyncStatsLastPrices;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

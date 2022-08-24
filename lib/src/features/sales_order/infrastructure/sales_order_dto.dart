@@ -144,7 +144,7 @@ class SalesOrderTable extends Table {
   TextColumn get customerId =>
       text().nullable().withLength(max: 6).named('CLIENTE_ID')();
   TextColumn get customerName =>
-      text().withLength(max: 100).nullable().named('NOMBRE_CLIENTE')();
+      text().withLength(max: 100).nullable().named('NOMRE_CLIENTE')();
   TextColumn get addressId => text().nullable().named('DIRECCION_ID')();
   TextColumn get shippingAddress1 =>
       text().withLength(max: 100).nullable().named('DIRECCION_ENVIO1')();
