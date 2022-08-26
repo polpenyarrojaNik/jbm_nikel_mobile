@@ -80,10 +80,10 @@ class CustomerDTO with _$CustomerDTO implements Insertable<CustomerDTO> {
       _$CustomerDTOFromJson(json);
 
   Customer toDomain({
-    required Country fiscalCountry,
-    required Divisa divisa,
-    required CollectionMethod collectionMethod,
-    required CollectionTerm collectionTerm,
+    required Country? fiscalCountry,
+    required Divisa? divisa,
+    required CollectionMethod? collectionMethod,
+    required CollectionTerm? collectionTerm,
   }) {
     return Customer(
       id: id,

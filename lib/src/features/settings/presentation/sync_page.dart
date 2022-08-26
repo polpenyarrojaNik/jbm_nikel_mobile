@@ -6,6 +6,8 @@ import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/presentation/sync_page_controller.dart';
 
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({Key? key}) : super(key: key);
 
@@ -44,7 +46,7 @@ class SettingsPage extends ConsumerWidget {
           ),
           child: state.maybeWhen(
             orElse: () => const Text('Sync Local DB'),
-            loadInProgress: () => const CircularProgressIndicator(),
+            loadInProgress: () => const ProgressIndicatorWidget(),
           ),
         ),
       ),

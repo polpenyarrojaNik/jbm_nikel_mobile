@@ -9,7 +9,7 @@ part of 'sales_order_status_dto.dart';
 _$_SalesOrderStatusDTO _$$_SalesOrderStatusDTOFromJson(
         Map<String, dynamic> json) =>
     _$_SalesOrderStatusDTO(
-      id: json['EStADO_PEDIDO_ID'] as String,
+      id: json['ESTADO_PEDIDO_ID'] as int,
       descriptionES: json['DESCRIPCION_ES'] as String,
       descriptionEN: json['DESCRIPCION_EN'] as String?,
       descriptionFR: json['DESCRIPCION_FR'] as String?,
@@ -31,7 +31,7 @@ _$_SalesOrderStatusDTO _$$_SalesOrderStatusDTOFromJson(
 Map<String, dynamic> _$$_SalesOrderStatusDTOToJson(
         _$_SalesOrderStatusDTO instance) =>
     <String, dynamic>{
-      'EStADO_PEDIDO_ID': instance.id,
+      'ESTADO_PEDIDO_ID': instance.id,
       'DESCRIPCION_ES': instance.descriptionES,
       'DESCRIPCION_EN': instance.descriptionEN,
       'DESCRIPCION_FR': instance.descriptionFR,

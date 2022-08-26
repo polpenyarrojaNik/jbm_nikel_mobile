@@ -48,7 +48,7 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: const Text('Visitas'),
-            onTap: () => context.goNamed(AppRoute.articleindex.name),
+            onTap: () => context.goNamed(AppRoute.visitindex.name),
           ),
           ListTile(
             leading: const Icon(

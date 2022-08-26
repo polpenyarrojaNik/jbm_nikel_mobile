@@ -21,7 +21,7 @@ dependencies:
   path: ^1.8.1
   path_provider: ^2.0.10
   intl: ^0.17.0
-  drift: ^1.7.1
+  drift: ^2.0.2+1
   logging: ^1.0.2
   uuid: ^3.0.6
   money2: ^3.1.2
@@ -43,7 +43,8 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.3
   freezed: ^2.0.5
   json_serializable: ^6.3.1
-  drift_dev: ^1.7.0
+  drift_dev: ^2.0.2
+  built_value_generator: ^8.1.1
 
 # flutter_icons:
 #   android: true

@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/features/customer/domain/collection_term.dart';
 
 import '../../../core/infrastructure/database.dart';
-import '../domain/collection_method.dart';
 
 part 'collection_term_dto.freezed.dart';
 part 'collection_term_dto.g.dart';
@@ -37,8 +37,8 @@ class CollectionTermDTO
   factory CollectionTermDTO.fromJson(Map<String, dynamic> json) =>
       _$CollectionTermDTOFromJson(json);
 
-  CollectionMethod toDomain() {
-    return CollectionMethod(
+  CollectionTerm toDomain() {
+    return CollectionTerm(
         id: id,
         description: getDescription(),
         lastUpdate: lastUpdated,
@@ -93,7 +93,7 @@ class CollectionTermTable extends Table {
   @override
   Set<Column> get primaryKey => {id};
 
-  TextColumn get id => text().named('PLAZOS_COBRO_ID')();
+  TextColumn get id => text().named('PLAZO_COBRO_ID')();
   TextColumn get descriptionES => text().named('DESCRIPCION_ES')();
   TextColumn get descriptionEN => text().nullable().named('DESCRIPCION_EN')();
   TextColumn get descriptionFR => text().nullable().named('DESCRIPCION_FR')();

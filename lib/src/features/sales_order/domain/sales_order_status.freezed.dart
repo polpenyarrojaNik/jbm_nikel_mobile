@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SalesOrderStatus {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -31,7 +31,7 @@ abstract class $SalesOrderStatusCopyWith<$Res> {
   factory $SalesOrderStatusCopyWith(
           SalesOrderStatus value, $Res Function(SalesOrderStatus) then) =
       _$SalesOrderStatusCopyWithImpl<$Res>;
-  $Res call({String id, String description, DateTime lastUpdate, bool deleted});
+  $Res call({int id, String description, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$SalesOrderStatusCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$_SalesOrderStatusCopyWith<$Res>
           _$_SalesOrderStatus value, $Res Function(_$_SalesOrderStatus) then) =
       __$$_SalesOrderStatusCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String description, DateTime lastUpdate, bool deleted});
+  $Res call({int id, String description, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_SalesOrderStatusCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_SalesOrderStatus extends _SalesOrderStatus {
       : super._();
 
   @override
-  final String id;
+  final int id;
   @override
   final String description;
   @override
@@ -173,14 +173,14 @@ class _$_SalesOrderStatus extends _SalesOrderStatus {
 
 abstract class _SalesOrderStatus extends SalesOrderStatus {
   const factory _SalesOrderStatus(
-      {required final String id,
+      {required final int id,
       required final String description,
       required final DateTime lastUpdate,
       required final bool deleted}) = _$_SalesOrderStatus;
   const _SalesOrderStatus._() : super._();
 
   @override
-  String get id;
+  int get id;
   @override
   String get description;
   @override

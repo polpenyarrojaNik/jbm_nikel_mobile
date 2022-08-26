@@ -8,11 +8,17 @@ final salesOrderRepositoryProvider = Provider.autoDispose<SalesOrderRepository>(
   (ref) => throw UnimplementedError(),
 );
 
-// final salesOrderListStreamProvider =
-//     StreamProvider.autoDispose<List<SalesOrder>>((ref) {
-//   final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
-//   return salesOrderRepository.watchSalesOrderList();
-// });
+final salesOrderListStreamProvider =
+    StreamProvider.autoDispose<List<SalesOrder>>((ref) {
+  final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+  return salesOrderRepository.watchSalesOrderList();
+});
+
+final salesOrderProvider =
+    FutureProvider.autoDispose.family<SalesOrder, String>((ref, salesOrderId) {
+  final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+  return salesOrderRepository.getSalesOrderById(salesOrderId: salesOrderId);
+});
 
 class SalesOrderRepository {
   AppDatabase db;
@@ -20,9 +26,11 @@ class SalesOrderRepository {
 
   SalesOrderRepository(this.db, this.dio);
 
-  // Stream<List<SalesOrder>> watchSalesOrderList() {
-  //   return db
-  //       .getSalesOrderDTO()
-  //       .map((rows) => rows.map((e) => e.toDomain()).toList());
-  // }
+  Stream<List<SalesOrder>> watchSalesOrderList({String? searchText}) {
+    return db.getSalesOrderList(searchText: searchText?.toUpperCase());
+  }
+
+  Future<SalesOrder> getSalesOrderById({required String salesOrderId}) async {
+    return db.getSalesOrderById(salesOrderId: salesOrderId);
+  }
 }

@@ -14,7 +14,7 @@ class SalesOrderStatusDTO
     implements Insertable<SalesOrderStatusDTO> {
   const SalesOrderStatusDTO._();
   const factory SalesOrderStatusDTO({
-    @JsonKey(name: 'EStADO_PEDIDO_ID') required String id,
+    @JsonKey(name: 'ESTADO_PEDIDO_ID') required int id,
     @JsonKey(name: 'DESCRIPCION_ES') required String descriptionES,
     @JsonKey(name: 'DESCRIPCION_EN') String? descriptionEN,
     @JsonKey(name: 'DESCRIPCION_FR') String? descriptionFR,
@@ -93,7 +93,7 @@ class SalesOrderStatusTable extends Table {
   @override
   Set<Column> get primaryKey => {id};
 
-  TextColumn get id => text().named('PAIS_ID')();
+  IntColumn get id => integer().named('ESTADO_PEDIDO_ID')();
   TextColumn get descriptionES => text().named('DESCRIPCION_ES')();
   TextColumn get descriptionEN => text().nullable().named('DESCRIPCION_EN')();
   TextColumn get descriptionFR => text().nullable().named('DESCRIPCION_FR')();

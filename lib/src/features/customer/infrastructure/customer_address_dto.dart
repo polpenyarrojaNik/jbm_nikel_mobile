@@ -27,7 +27,7 @@ class CustomerAddressDTO
     @JsonKey(name: 'PROVINCIA') String? state,
     @JsonKey(name: 'PAIS_ID') String? countryId,
     @JsonKey(name: 'LATITUD') required double latitude,
-    @JsonKey(name: 'LONGUITUD') required double longitude,
+    @JsonKey(name: 'LONGITUD') required double longitude,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _CustomerAddressDTO;

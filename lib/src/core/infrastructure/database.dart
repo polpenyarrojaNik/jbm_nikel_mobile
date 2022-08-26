@@ -6,9 +6,11 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamily_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_net_group_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/infrastructure/stats_customer_user_sales_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/visits/domain/visit.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
+import '../../features/articles/domain/article.dart';
 import '../../features/articles/infrastructure/article_company_vat_dto.dart';
 import '../../features/articles/infrastructure/article_component_dto.dart';
 import '../../features/articles/infrastructure/article_dto.dart';
@@ -16,6 +18,7 @@ import '../../features/articles/infrastructure/article_net_group_price_dto.dart'
 import '../../features/articles/infrastructure/article_rate_price_dto.dart';
 import '../../features/articles/infrastructure/article_spare_dto.dart';
 import '../../features/articles/infrastructure/article_substitute_dto.dart';
+import '../../features/customer/domain/customer.dart';
 import '../../features/customer/infrastructure/collection_method_dto.dart';
 import '../../features/customer/infrastructure/collection_term_dto.dart';
 import '../../features/customer/infrastructure/customer_address_dto.dart';
@@ -26,6 +29,7 @@ import '../../features/customer/infrastructure/customer_net_price_dto.dart';
 import '../../features/customer/infrastructure/customer_pending_payment_dto.dart';
 import '../../features/customer/infrastructure/customer_rappel_dto.dart';
 import '../../features/customer/infrastructure/top_article_dto.dart';
+import '../../features/sales_order/domain/sales_order.dart';
 import '../../features/sales_order/infrastructure/sales_order_dto.dart';
 import '../../features/customer/infrastructure/customer_user_dto.dart';
 import '../../features/sales_order/infrastructure/sales_order_line_dto.dart';
@@ -35,6 +39,7 @@ import '../../features/visits/infrastructure/visit_dto.dart';
 import '../exceptions/app_exception.dart';
 import 'family_dto.dart';
 
+// part 'database.drift.dart';
 part 'database.g.dart';
 
 class LastSyncDateTable extends Table {
@@ -87,7 +92,7 @@ class LastSyncDateTable extends Table {
   TextColumn get lastSyncSubfamily =>
       text().nullable().named('LAST_SYNC_SUBFAMILY')();
   TextColumn get lastSyncArticleNetGroup =>
-      text().nullable().named('LAST_SYNC_ARtICLE_NET_GROUP')();
+      text().nullable().named('LAST_SYNC_ARTICLE_NET_GROUP')();
   TextColumn get lastSyncArticleRatePrice =>
       text().nullable().named('LAST_SYNC_ARTICLE_RATE_PRICE')();
   TextColumn get lastSyncArticleComponent =>
@@ -148,21 +153,171 @@ class AppDatabase extends _$AppDatabase {
     return await super.close();
   }
 
-  Stream<List<SalesOrderDTO>> getSalesOrderDTO() {
-    return (select(salesOrderTable)
-          ..orderBy([
-            (t) => OrderingTerm(
-                expression: t.salesOrderDate, mode: OrderingMode.desc)
-          ]))
-        .watch();
+  Stream<List<SalesOrder>> getSalesOrderList({String? searchText}) {
+    try {
+      final query = (select(salesOrderTable)
+        ..where(
+          (t) =>
+              t.deleted.equals('N') &
+              (t.salesOrderId.like(searchText ?? '') |
+                  t.customerName.like(searchText ?? '') |
+                  t.customerId.like(searchText ?? '') |
+                  t.city.like(searchText ?? '') |
+                  t.zipCode.like(searchText ?? '') |
+                  t.state.like(searchText ?? '')),
+        )
+        ..orderBy([
+          (t) => OrderingTerm(
+              expression: t.salesOrderDate, mode: OrderingMode.desc)
+        ]));
+
+      return query.asyncMap((row) async {
+        final countryDTO = await (select(countryTable)
+              ..where((t) => t.id.equals(row.countryId ?? '')))
+            .getSingleOrNull();
+        final divisaDTO = await (select(divisaTable)
+              ..where((t) => t.id.equals(row.divisaId)))
+            .getSingle();
+        final salesOrderStatusDTO = await (select(salesOrderStatusTable)
+              ..where((t) => t.id.equals(row.salesOrderStatusId)))
+            .getSingle();
+        return row.toDomain(
+            country: countryDTO?.toDomain(),
+            divisa: divisaDTO.toDomain(),
+            salesOrderStatus: salesOrderStatusDTO.toDomain());
+      }).watch();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
   }
 
-  Future<int> getSalesOrderCount() async {
-    var countExp = salesOrderTable.rowId.count();
+  Future<SalesOrder> getSalesOrderById({required String salesOrderId}) {
+    try {
+      final query = (select(salesOrderTable)
+        ..where((t) => t.salesOrderId.equals(salesOrderId)));
 
-    final query = selectOnly(salesOrderTable)..addColumns([countExp]);
-    return await query.map((row) => row.read(countExp)).getSingle();
+      return query.asyncMap((row) async {
+        final countryDTO = await (select(countryTable)
+              ..where((t) => t.id.equals(row.countryId ?? '')))
+            .getSingleOrNull();
+        final divisaDTO = await (select(divisaTable)
+              ..where((t) => t.id.equals(row.divisaId)))
+            .getSingle();
+        final salesOrderStatusDTO = await (select(salesOrderStatusTable)
+              ..where((t) => t.id.equals(row.salesOrderStatusId)))
+            .getSingle();
+        return row.toDomain(
+            country: countryDTO?.toDomain(),
+            divisa: divisaDTO.toDomain(),
+            salesOrderStatus: salesOrderStatusDTO.toDomain());
+      }).getSingle();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
   }
+
+  Future<Article> getArticleById({required String articleId}) {
+    try {
+      final query =
+          (select(articleTable)..where((t) => t.id.equals(articleId)));
+
+      return query.asyncMap((row) async {
+        final familyDTO = await (select(familyTable)
+              ..where((t) => t.id.equals(row.familyId ?? '')))
+            .getSingleOrNull();
+        final subfamilyDTO = await (select(subfamilyTable)
+              ..where((t) => t.id.equals(row.subfamilyId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          family: familyDTO?.toDomain(),
+          subfamily: subfamilyDTO?.toDomain(),
+        );
+      }).getSingle();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Stream<List<Customer>> getCustomerList() {
+    try {
+      final query = (select(customerTable)
+        ..where((t) => t.deleted.equals('N'))
+        ..orderBy([
+          (t) => OrderingTerm(expression: t.customerName),
+          (t) => OrderingTerm(expression: t.id)
+        ]));
+
+      return query.asyncMap((row) async {
+        final countryDTO = await (select(countryTable)
+              ..where((t) => t.id.equals(row.fiscalCountryId ?? '')))
+            .getSingleOrNull();
+        final divisaDTO = await (select(divisaTable)
+              ..where((t) => t.id.equals(row.divisaId ?? '')))
+            .getSingleOrNull();
+        final collectionMethodDTO = await (select(collectionMethodTable)
+              ..where((t) => t.id.equals(row.collectionMethodId ?? '')))
+            .getSingleOrNull();
+        final collectionTermDTO = await (select(collectionTermTable)
+              ..where((t) => t.id.equals(row.collectionTermId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          fiscalCountry: countryDTO?.toDomain(),
+          divisa: divisaDTO?.toDomain(),
+          collectionMethod: collectionMethodDTO?.toDomain(),
+          collectionTerm: collectionTermDTO?.toDomain(),
+        );
+      }).watch();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Stream<List<Article>> getArticleList() {
+    try {
+      final query = (select(articleTable)
+        ..where(
+          (t) => t.deleted.equals('N'),
+        )
+        ..orderBy([(t) => OrderingTerm(expression: t.id)]));
+
+      return query.asyncMap((row) async {
+        final familyDTO = await (select(familyTable)
+              ..where((t) => t.id.equals(row.familyId ?? '')))
+            .getSingleOrNull();
+        final subfamilyDTO = await (select(subfamilyTable)
+              ..where((t) => t.id.equals(row.subfamilyId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          family: familyDTO?.toDomain(),
+          subfamily: subfamilyDTO?.toDomain(),
+        );
+      }).watch();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Stream<List<Visit>> getVisitList() {
+    try {
+      final query = (select(visitTable)
+        ..where((t) => t.deleted.equals('N'))
+        ..orderBy([
+          (t) => OrderingTerm(expression: t.date),
+        ]));
+
+      return query.map((row) => row.toDomain()).watch();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   Future<int> upsertSalesOrder({required SalesOrderDTO salesOrderDto}) async {
     try {
@@ -759,6 +914,9 @@ class AppDatabase extends _$AppDatabase {
           lastSyncArticleSubstitute: Value(initialSyncDateString),
           lastSyncArticleSpare: Value(initialSyncDateString),
           lastSyncArticleCompanyVat: Value(initialSyncDateString),
+          lastSyncStatsCustomerUserSales: Value(initialSyncDateString),
+          lastSyncStatsLastPrices: Value(initialSyncDateString),
+          lastSyncTopArticles: Value(initialSyncDateString),
         ),
       );
       return result;

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../domain/sales_order.dart';
+import '../../../core/helpers/formatters.dart';
+import '../domain/visit.dart';
 
-class SalesOrderListTile extends StatelessWidget {
-  const SalesOrderListTile(
-      {Key? key, required this.salesOrder, required this.i})
-      : super(key: key);
+class VisitListTile extends StatelessWidget {
+  const VisitListTile({Key? key, required this.visit}) : super(key: key);
 
-  final SalesOrder salesOrder;
-  final int i;
+  final Visit visit;
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +28,13 @@ class SalesOrderListTile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(salesOrder.salesOrderId),
-                Text(salesOrder.taxBase.toString()),
-              ],
-            ),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Flexible(
-                  child: Text(
-                    '#${salesOrder.customerId} ${salesOrder.customerName ?? ''}',
-                  ),
+                Text(
+                  dateFormatter(visit.date.toIso8601String()),
                 ),
               ],
             ),
             Text(
-              i.toString(),
+              visit.id,
             ),
           ],
         ),

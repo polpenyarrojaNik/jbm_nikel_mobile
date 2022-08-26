@@ -56,7 +56,7 @@ class ArticleSubstituteTable extends Table {
   Set<Column> get primaryKey => {articleId, id};
 
   TextColumn get articleId => text().named('ARTICULO_ID')();
-  TextColumn get id => text().named('ARTICULO_SUSTITUTIVO_ID')();
+  TextColumn get id => text().named('ARTICULO_ID_SUSTITUTIVO')();
   RealColumn get order => real().named('ORDEN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

@@ -19,7 +19,7 @@ _$_CustomerAddressDTO _$$_CustomerAddressDTOFromJson(
       state: json['PROVINCIA'] as String?,
       countryId: json['PAIS_ID'] as String?,
       latitude: (json['LATITUD'] as num).toDouble(),
-      longitude: (json['LONGUITUD'] as num).toDouble(),
+      longitude: (json['LONGITUD'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -37,7 +37,7 @@ Map<String, dynamic> _$$_CustomerAddressDTOToJson(
       'PROVINCIA': instance.state,
       'PAIS_ID': instance.countryId,
       'LATITUD': instance.latitude,
-      'LONGUITUD': instance.longitude,
+      'LONGITUD': instance.longitude,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

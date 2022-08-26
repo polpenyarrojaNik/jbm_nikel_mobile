@@ -3,11 +3,11 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_dto.dart';
 
 import '../../../core/infrastructure/country_dto.dart';
-import '../../../core/infrastructure/database.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../../core/infrastructure/family_dto.dart';
 import '../../../core/infrastructure/log.dart';
@@ -188,7 +188,7 @@ class SyncRepository {
             await db.upsertSalesOrderStatus(
                 salesOrderStatusDto: salesOrderStatusDTOList[i]);
           }
-          print('Sales order staus Page: 1/1');
+          print('Sales order staus Page: 1/$maxPage');
         },
       );
 
@@ -732,7 +732,7 @@ class SyncRepository {
           for (var i = 0; i < topArticlesDTOList.length; i++) {
             await db.upsertTopArticle(topArticleDto: topArticlesDTOList[i]);
           }
-          print('Top Articles Page: 1/1');
+          print('Top Articles Page: 1/$maxPage');
         },
       );
 
@@ -1329,7 +1329,7 @@ class SyncRepository {
             await db.upsertCountry(countryDto: countryDTOList[i]);
           }
 
-          print('Countries Page: 1/1');
+          print('Countries Page: 1/$maxPage');
         },
       );
 
@@ -1372,7 +1372,7 @@ class SyncRepository {
             await db.upsertDivisa(divisaDto: divisaDTOList[i]);
           }
 
-          print('Divisa Page: 1/1');
+          print('Divisa Page: 1/$maxPage');
         },
       );
 
@@ -1416,7 +1416,7 @@ class SyncRepository {
                 collectionTermDto: collectionTermDTOList[i]);
           }
 
-          print('CollectionTerms Page: 1/1');
+          print('CollectionTerms Page: 1/$maxPage');
         },
       );
 
@@ -1460,7 +1460,7 @@ class SyncRepository {
                 collectionMethodDto: collectionMethodDTOList[i]);
           }
 
-          print('Collection Methods Page: 1/1');
+          print('Collection Methods Page: 1/$maxPage');
         },
       );
 
@@ -1504,7 +1504,7 @@ class SyncRepository {
             await db.upsertFamily(familyDto: familyDTOList[i]);
           }
 
-          print('Families Page: 1/1');
+          print('Families Page: 1/$maxPage');
         },
       );
 
@@ -1547,7 +1547,7 @@ class SyncRepository {
           for (var i = 0; i < subfamilyDTOList.length; i++) {
             await db.upsertSubfamily(subfamilyDto: subfamilyDTOList[i]);
           }
-          print('SubfamliesPage: 1/1');
+          print('SubfamliesPage: 1/$maxPage');
         },
       );
 

@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../core/presentation/common_widgets/app_decoration.dart';
+import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -110,7 +111,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       state.maybeWhen(
                         orElse: () => Container(),
                         authenticating: () => const Center(
-                          child: CircularProgressIndicator(),
+                          child: ProgressIndicatorWidget(),
                         ),
                       ),
                       ElevatedButton(

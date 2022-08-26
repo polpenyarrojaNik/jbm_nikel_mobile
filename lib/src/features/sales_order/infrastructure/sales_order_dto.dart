@@ -76,7 +76,7 @@ class SalesOrderDTO with _$SalesOrderDTO implements Insertable<SalesOrderDTO> {
   // }
 
   SalesOrder toDomain(
-      {required Country country,
+      {required Country? country,
       required Divisa divisa,
       required SalesOrderStatus salesOrderStatus}) {
     return SalesOrder(

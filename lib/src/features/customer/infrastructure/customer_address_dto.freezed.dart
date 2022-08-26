@@ -40,7 +40,7 @@ mixin _$CustomerAddressDTO {
   String? get countryId => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD')
   double get latitude => throw _privateConstructorUsedError;
-  @JsonKey(name: 'LONGUITUD')
+  @JsonKey(name: 'LONGITUD')
   double get longitude => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
@@ -69,7 +69,7 @@ abstract class $CustomerAddressDTOCopyWith<$Res> {
       @JsonKey(name: 'PROVINCIA') String? state,
       @JsonKey(name: 'PAIS_ID') String? countryId,
       @JsonKey(name: 'LATITUD') double latitude,
-      @JsonKey(name: 'LONGUITUD') double longitude,
+      @JsonKey(name: 'LONGITUD') double longitude,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -174,7 +174,7 @@ abstract class _$$_CustomerAddressDTOCopyWith<$Res>
       @JsonKey(name: 'PROVINCIA') String? state,
       @JsonKey(name: 'PAIS_ID') String? countryId,
       @JsonKey(name: 'LATITUD') double latitude,
-      @JsonKey(name: 'LONGUITUD') double longitude,
+      @JsonKey(name: 'LONGITUD') double longitude,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -277,7 +277,7 @@ class _$_CustomerAddressDTO extends _CustomerAddressDTO {
       @JsonKey(name: 'PROVINCIA') this.state,
       @JsonKey(name: 'PAIS_ID') this.countryId,
       @JsonKey(name: 'LATITUD') required this.latitude,
-      @JsonKey(name: 'LONGUITUD') required this.longitude,
+      @JsonKey(name: 'LONGITUD') required this.longitude,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -316,7 +316,7 @@ class _$_CustomerAddressDTO extends _CustomerAddressDTO {
   @JsonKey(name: 'LATITUD')
   final double latitude;
   @override
-  @JsonKey(name: 'LONGUITUD')
+  @JsonKey(name: 'LONGITUD')
   final double longitude;
   @override
   @JsonKey(name: 'LAST_UPDATED')
@@ -396,7 +396,7 @@ abstract class _CustomerAddressDTO extends CustomerAddressDTO {
       @JsonKey(name: 'PROVINCIA') final String? state,
       @JsonKey(name: 'PAIS_ID') final String? countryId,
       @JsonKey(name: 'LATITUD') required final double latitude,
-      @JsonKey(name: 'LONGUITUD') required final double longitude,
+      @JsonKey(name: 'LONGITUD') required final double longitude,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$_CustomerAddressDTO;
   const _CustomerAddressDTO._() : super._();
@@ -435,7 +435,7 @@ abstract class _CustomerAddressDTO extends CustomerAddressDTO {
   @JsonKey(name: 'LATITUD')
   double get latitude;
   @override
-  @JsonKey(name: 'LONGUITUD')
+  @JsonKey(name: 'LONGITUD')
   double get longitude;
   @override
   @JsonKey(name: 'LAST_UPDATED')

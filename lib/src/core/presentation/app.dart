@@ -3,8 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/generated/l10n.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/initial_db_repository.dart';
-import 'src/core/presentation/theme/custom_theme.dart';
-import 'src/core/routing/app_router.dart';
+import 'theme/custom_theme.dart';
+import '../routing/app_router.dart';
 
 class App extends ConsumerWidget {
   const App({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class App extends ConsumerWidget {
     initialDbState.maybeWhen(
         orElse: () => null,
         data: (_) => print('Initial db copied successfully'),
-        error: (_, __) => print('Error copied inital db: ${_}'));
+        error: (_, __) => print('Error copied inital db: $_'));
 
     return MaterialApp.router(
       title: 'JBM Mobile',

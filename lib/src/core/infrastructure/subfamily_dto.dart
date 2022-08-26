@@ -90,7 +90,7 @@ class SubfamilyDTO with _$SubfamilyDTO implements Insertable<SubfamilyDTO> {
 @UseRowClass(SubfamilyDTO)
 class SubfamilyTable extends Table {
   @override
-  String get tableName => 'FAMILIAS';
+  String get tableName => 'SUBFAMILIAS';
 
   @override
   Set<Column> get primaryKey => {id, familyId};

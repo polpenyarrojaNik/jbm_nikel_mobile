@@ -3,7 +3,7 @@
 part of 'database.dart';
 
 // **************************************************************************
-// MoorGenerator
+// DriftDatabaseGenerator
 // **************************************************************************
 
 // ignore_for_file: type=lint
@@ -39,7 +39,7 @@ class LastSyncDateTableData extends DataClass
   final String? lastSyncArticleCompanyVat;
   final String? lastSyncStatsCustomerUserSales;
   final String? lastSyncStatsLastPrices;
-  LastSyncDateTableData(
+  const LastSyncDateTableData(
       {required this.id,
       this.lastSyncDivisa,
       this.lastSyncCountry,
@@ -70,182 +70,114 @@ class LastSyncDateTableData extends DataClass
       this.lastSyncArticleCompanyVat,
       this.lastSyncStatsCustomerUserSales,
       this.lastSyncStatsLastPrices});
-  factory LastSyncDateTableData.fromData(Map<String, dynamic> data,
-      {String? prefix}) {
-    final effectivePrefix = prefix ?? '';
-    return LastSyncDateTableData(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ID'])!,
-      lastSyncDivisa: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC_DIVISA']),
-      lastSyncCountry: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC_COUNTRY']),
-      lastSyncCollectionMethod: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_COLLECTION_METHOD']),
-      lastSyncCollectionTerm: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_COLLECTION_TERM']),
-      lastSyncCustomer: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER']),
-      lastSyncCustomerUser: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_USER']),
-      lastSyncCustomerContact: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_CONTACT']),
-      lastSyncCustomerDiscount: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_DISCOUNT']),
-      lastSyncCustomerAddress: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_ADDRESS']),
-      lastSyncCustomerNetPrice: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_NET_PRICE']),
-      lastSyncCustomerNetGroup: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_NET_GROUP']),
-      lastSyncCustomerPendingPayment: const StringType()
-          .mapFromDatabaseResponse(
-              data['${effectivePrefix}LAST_SYNC_CUSTOMER_PENDING_PAYMENT']),
-      lastSyncCustomerRappels: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_RAPPELS']),
-      lastSyncTopArticles: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_TOP_ARTICLES']),
-      lastSyncSalesOrder: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_SALES_ORDER']),
-      lastSyncVisit: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC_VISIT']),
-      lastSyncSalesOrderLine: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_SALES_ORDER_LINE']),
-      lastSyncSalesOrderStatus: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_SALES_ORDER_STATUS']),
-      lastSyncArticle: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC_ARTICLE']),
-      lastSyncFamily: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_SYNC_FAMILY']),
-      lastSyncSubfamily: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_SUBFAMILY']),
-      lastSyncArticleNetGroup: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_ARtICLE_NET_GROUP']),
-      lastSyncArticleRatePrice: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_RATE_PRICE']),
-      lastSyncArticleComponent: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_COMPONENT']),
-      lastSyncArticleSubstitute: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_SUBSTITUTE']),
-      lastSyncArticleSpare: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_SPARE']),
-      lastSyncArticleCompanyVat: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_COMPANY_VAT']),
-      lastSyncStatsCustomerUserSales: const StringType()
-          .mapFromDatabaseResponse(
-              data['${effectivePrefix}LAST_SYNC_STATS_CUSTOMER_USER_SALES']),
-      lastSyncStatsLastPrices: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}LAST_SYNC_STATS_LAST_PRICES']),
-    );
-  }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['ID'] = Variable<String>(id);
     if (!nullToAbsent || lastSyncDivisa != null) {
-      map['LAST_SYNC_DIVISA'] = Variable<String?>(lastSyncDivisa);
+      map['LAST_SYNC_DIVISA'] = Variable<String>(lastSyncDivisa);
     }
     if (!nullToAbsent || lastSyncCountry != null) {
-      map['LAST_SYNC_COUNTRY'] = Variable<String?>(lastSyncCountry);
+      map['LAST_SYNC_COUNTRY'] = Variable<String>(lastSyncCountry);
     }
     if (!nullToAbsent || lastSyncCollectionMethod != null) {
       map['LAST_SYNC_COLLECTION_METHOD'] =
-          Variable<String?>(lastSyncCollectionMethod);
+          Variable<String>(lastSyncCollectionMethod);
     }
     if (!nullToAbsent || lastSyncCollectionTerm != null) {
       map['LAST_SYNC_COLLECTION_TERM'] =
-          Variable<String?>(lastSyncCollectionTerm);
+          Variable<String>(lastSyncCollectionTerm);
     }
     if (!nullToAbsent || lastSyncCustomer != null) {
-      map['LAST_SYNC_CUSTOMER'] = Variable<String?>(lastSyncCustomer);
+      map['LAST_SYNC_CUSTOMER'] = Variable<String>(lastSyncCustomer);
     }
     if (!nullToAbsent || lastSyncCustomerUser != null) {
-      map['LAST_SYNC_CUSTOMER_USER'] = Variable<String?>(lastSyncCustomerUser);
+      map['LAST_SYNC_CUSTOMER_USER'] = Variable<String>(lastSyncCustomerUser);
     }
     if (!nullToAbsent || lastSyncCustomerContact != null) {
       map['LAST_SYNC_CUSTOMER_CONTACT'] =
-          Variable<String?>(lastSyncCustomerContact);
+          Variable<String>(lastSyncCustomerContact);
     }
     if (!nullToAbsent || lastSyncCustomerDiscount != null) {
       map['LAST_SYNC_CUSTOMER_DISCOUNT'] =
-          Variable<String?>(lastSyncCustomerDiscount);
+          Variable<String>(lastSyncCustomerDiscount);
     }
     if (!nullToAbsent || lastSyncCustomerAddress != null) {
       map['LAST_SYNC_CUSTOMER_ADDRESS'] =
-          Variable<String?>(lastSyncCustomerAddress);
+          Variable<String>(lastSyncCustomerAddress);
     }
     if (!nullToAbsent || lastSyncCustomerNetPrice != null) {
       map['LAST_SYNC_CUSTOMER_NET_PRICE'] =
-          Variable<String?>(lastSyncCustomerNetPrice);
+          Variable<String>(lastSyncCustomerNetPrice);
     }
     if (!nullToAbsent || lastSyncCustomerNetGroup != null) {
       map['LAST_SYNC_CUSTOMER_NET_GROUP'] =
-          Variable<String?>(lastSyncCustomerNetGroup);
+          Variable<String>(lastSyncCustomerNetGroup);
     }
     if (!nullToAbsent || lastSyncCustomerPendingPayment != null) {
       map['LAST_SYNC_CUSTOMER_PENDING_PAYMENT'] =
-          Variable<String?>(lastSyncCustomerPendingPayment);
+          Variable<String>(lastSyncCustomerPendingPayment);
     }
     if (!nullToAbsent || lastSyncCustomerRappels != null) {
       map['LAST_SYNC_CUSTOMER_RAPPELS'] =
-          Variable<String?>(lastSyncCustomerRappels);
+          Variable<String>(lastSyncCustomerRappels);
     }
     if (!nullToAbsent || lastSyncTopArticles != null) {
-      map['LAST_SYNC_TOP_ARTICLES'] = Variable<String?>(lastSyncTopArticles);
+      map['LAST_SYNC_TOP_ARTICLES'] = Variable<String>(lastSyncTopArticles);
     }
     if (!nullToAbsent || lastSyncSalesOrder != null) {
-      map['LAST_SYNC_SALES_ORDER'] = Variable<String?>(lastSyncSalesOrder);
+      map['LAST_SYNC_SALES_ORDER'] = Variable<String>(lastSyncSalesOrder);
     }
     if (!nullToAbsent || lastSyncVisit != null) {
-      map['LAST_SYNC_VISIT'] = Variable<String?>(lastSyncVisit);
+      map['LAST_SYNC_VISIT'] = Variable<String>(lastSyncVisit);
     }
     if (!nullToAbsent || lastSyncSalesOrderLine != null) {
       map['LAST_SYNC_SALES_ORDER_LINE'] =
-          Variable<String?>(lastSyncSalesOrderLine);
+          Variable<String>(lastSyncSalesOrderLine);
     }
     if (!nullToAbsent || lastSyncSalesOrderStatus != null) {
       map['LAST_SYNC_SALES_ORDER_STATUS'] =
-          Variable<String?>(lastSyncSalesOrderStatus);
+          Variable<String>(lastSyncSalesOrderStatus);
     }
     if (!nullToAbsent || lastSyncArticle != null) {
-      map['LAST_SYNC_ARTICLE'] = Variable<String?>(lastSyncArticle);
+      map['LAST_SYNC_ARTICLE'] = Variable<String>(lastSyncArticle);
     }
     if (!nullToAbsent || lastSyncFamily != null) {
-      map['LAST_SYNC_FAMILY'] = Variable<String?>(lastSyncFamily);
+      map['LAST_SYNC_FAMILY'] = Variable<String>(lastSyncFamily);
     }
     if (!nullToAbsent || lastSyncSubfamily != null) {
-      map['LAST_SYNC_SUBFAMILY'] = Variable<String?>(lastSyncSubfamily);
+      map['LAST_SYNC_SUBFAMILY'] = Variable<String>(lastSyncSubfamily);
     }
     if (!nullToAbsent || lastSyncArticleNetGroup != null) {
-      map['LAST_SYNC_ARtICLE_NET_GROUP'] =
-          Variable<String?>(lastSyncArticleNetGroup);
+      map['LAST_SYNC_ARTICLE_NET_GROUP'] =
+          Variable<String>(lastSyncArticleNetGroup);
     }
     if (!nullToAbsent || lastSyncArticleRatePrice != null) {
       map['LAST_SYNC_ARTICLE_RATE_PRICE'] =
-          Variable<String?>(lastSyncArticleRatePrice);
+          Variable<String>(lastSyncArticleRatePrice);
     }
     if (!nullToAbsent || lastSyncArticleComponent != null) {
       map['LAST_SYNC_ARTICLE_COMPONENT'] =
-          Variable<String?>(lastSyncArticleComponent);
+          Variable<String>(lastSyncArticleComponent);
     }
     if (!nullToAbsent || lastSyncArticleSubstitute != null) {
       map['LAST_SYNC_ARTICLE_SUBSTITUTE'] =
-          Variable<String?>(lastSyncArticleSubstitute);
+          Variable<String>(lastSyncArticleSubstitute);
     }
     if (!nullToAbsent || lastSyncArticleSpare != null) {
-      map['LAST_SYNC_ARTICLE_SPARE'] = Variable<String?>(lastSyncArticleSpare);
+      map['LAST_SYNC_ARTICLE_SPARE'] = Variable<String>(lastSyncArticleSpare);
     }
     if (!nullToAbsent || lastSyncArticleCompanyVat != null) {
       map['LAST_SYNC_ARTICLE_COMPANY_VAT'] =
-          Variable<String?>(lastSyncArticleCompanyVat);
+          Variable<String>(lastSyncArticleCompanyVat);
     }
     if (!nullToAbsent || lastSyncStatsCustomerUserSales != null) {
       map['LAST_SYNC_STATS_CUSTOMER_USER_SALES'] =
-          Variable<String?>(lastSyncStatsCustomerUserSales);
+          Variable<String>(lastSyncStatsCustomerUserSales);
     }
     if (!nullToAbsent || lastSyncStatsLastPrices != null) {
       map['LAST_SYNC_STATS_LAST_PRICES'] =
-          Variable<String?>(lastSyncStatsLastPrices);
+          Variable<String>(lastSyncStatsLastPrices);
     }
     return map;
   }
@@ -463,84 +395,121 @@ class LastSyncDateTableData extends DataClass
 
   LastSyncDateTableData copyWith(
           {String? id,
-          String? lastSyncDivisa,
-          String? lastSyncCountry,
-          String? lastSyncCollectionMethod,
-          String? lastSyncCollectionTerm,
-          String? lastSyncCustomer,
-          String? lastSyncCustomerUser,
-          String? lastSyncCustomerContact,
-          String? lastSyncCustomerDiscount,
-          String? lastSyncCustomerAddress,
-          String? lastSyncCustomerNetPrice,
-          String? lastSyncCustomerNetGroup,
-          String? lastSyncCustomerPendingPayment,
-          String? lastSyncCustomerRappels,
-          String? lastSyncTopArticles,
-          String? lastSyncSalesOrder,
-          String? lastSyncVisit,
-          String? lastSyncSalesOrderLine,
-          String? lastSyncSalesOrderStatus,
-          String? lastSyncArticle,
-          String? lastSyncFamily,
-          String? lastSyncSubfamily,
-          String? lastSyncArticleNetGroup,
-          String? lastSyncArticleRatePrice,
-          String? lastSyncArticleComponent,
-          String? lastSyncArticleSubstitute,
-          String? lastSyncArticleSpare,
-          String? lastSyncArticleCompanyVat,
-          String? lastSyncStatsCustomerUserSales,
-          String? lastSyncStatsLastPrices}) =>
+          Value<String?> lastSyncDivisa = const Value.absent(),
+          Value<String?> lastSyncCountry = const Value.absent(),
+          Value<String?> lastSyncCollectionMethod = const Value.absent(),
+          Value<String?> lastSyncCollectionTerm = const Value.absent(),
+          Value<String?> lastSyncCustomer = const Value.absent(),
+          Value<String?> lastSyncCustomerUser = const Value.absent(),
+          Value<String?> lastSyncCustomerContact = const Value.absent(),
+          Value<String?> lastSyncCustomerDiscount = const Value.absent(),
+          Value<String?> lastSyncCustomerAddress = const Value.absent(),
+          Value<String?> lastSyncCustomerNetPrice = const Value.absent(),
+          Value<String?> lastSyncCustomerNetGroup = const Value.absent(),
+          Value<String?> lastSyncCustomerPendingPayment = const Value.absent(),
+          Value<String?> lastSyncCustomerRappels = const Value.absent(),
+          Value<String?> lastSyncTopArticles = const Value.absent(),
+          Value<String?> lastSyncSalesOrder = const Value.absent(),
+          Value<String?> lastSyncVisit = const Value.absent(),
+          Value<String?> lastSyncSalesOrderLine = const Value.absent(),
+          Value<String?> lastSyncSalesOrderStatus = const Value.absent(),
+          Value<String?> lastSyncArticle = const Value.absent(),
+          Value<String?> lastSyncFamily = const Value.absent(),
+          Value<String?> lastSyncSubfamily = const Value.absent(),
+          Value<String?> lastSyncArticleNetGroup = const Value.absent(),
+          Value<String?> lastSyncArticleRatePrice = const Value.absent(),
+          Value<String?> lastSyncArticleComponent = const Value.absent(),
+          Value<String?> lastSyncArticleSubstitute = const Value.absent(),
+          Value<String?> lastSyncArticleSpare = const Value.absent(),
+          Value<String?> lastSyncArticleCompanyVat = const Value.absent(),
+          Value<String?> lastSyncStatsCustomerUserSales = const Value.absent(),
+          Value<String?> lastSyncStatsLastPrices = const Value.absent()}) =>
       LastSyncDateTableData(
         id: id ?? this.id,
-        lastSyncDivisa: lastSyncDivisa ?? this.lastSyncDivisa,
-        lastSyncCountry: lastSyncCountry ?? this.lastSyncCountry,
-        lastSyncCollectionMethod:
-            lastSyncCollectionMethod ?? this.lastSyncCollectionMethod,
-        lastSyncCollectionTerm:
-            lastSyncCollectionTerm ?? this.lastSyncCollectionTerm,
-        lastSyncCustomer: lastSyncCustomer ?? this.lastSyncCustomer,
-        lastSyncCustomerUser: lastSyncCustomerUser ?? this.lastSyncCustomerUser,
-        lastSyncCustomerContact:
-            lastSyncCustomerContact ?? this.lastSyncCustomerContact,
-        lastSyncCustomerDiscount:
-            lastSyncCustomerDiscount ?? this.lastSyncCustomerDiscount,
-        lastSyncCustomerAddress:
-            lastSyncCustomerAddress ?? this.lastSyncCustomerAddress,
-        lastSyncCustomerNetPrice:
-            lastSyncCustomerNetPrice ?? this.lastSyncCustomerNetPrice,
-        lastSyncCustomerNetGroup:
-            lastSyncCustomerNetGroup ?? this.lastSyncCustomerNetGroup,
-        lastSyncCustomerPendingPayment: lastSyncCustomerPendingPayment ??
-            this.lastSyncCustomerPendingPayment,
-        lastSyncCustomerRappels:
-            lastSyncCustomerRappels ?? this.lastSyncCustomerRappels,
-        lastSyncTopArticles: lastSyncTopArticles ?? this.lastSyncTopArticles,
-        lastSyncSalesOrder: lastSyncSalesOrder ?? this.lastSyncSalesOrder,
-        lastSyncVisit: lastSyncVisit ?? this.lastSyncVisit,
-        lastSyncSalesOrderLine:
-            lastSyncSalesOrderLine ?? this.lastSyncSalesOrderLine,
-        lastSyncSalesOrderStatus:
-            lastSyncSalesOrderStatus ?? this.lastSyncSalesOrderStatus,
-        lastSyncArticle: lastSyncArticle ?? this.lastSyncArticle,
-        lastSyncFamily: lastSyncFamily ?? this.lastSyncFamily,
-        lastSyncSubfamily: lastSyncSubfamily ?? this.lastSyncSubfamily,
-        lastSyncArticleNetGroup:
-            lastSyncArticleNetGroup ?? this.lastSyncArticleNetGroup,
-        lastSyncArticleRatePrice:
-            lastSyncArticleRatePrice ?? this.lastSyncArticleRatePrice,
-        lastSyncArticleComponent:
-            lastSyncArticleComponent ?? this.lastSyncArticleComponent,
-        lastSyncArticleSubstitute:
-            lastSyncArticleSubstitute ?? this.lastSyncArticleSubstitute,
-        lastSyncArticleSpare: lastSyncArticleSpare ?? this.lastSyncArticleSpare,
-        lastSyncArticleCompanyVat:
-            lastSyncArticleCompanyVat ?? this.lastSyncArticleCompanyVat,
-        lastSyncStatsCustomerUserSales: lastSyncStatsCustomerUserSales ??
-            this.lastSyncStatsCustomerUserSales,
-        lastSyncStatsLastPrices:
-            lastSyncStatsLastPrices ?? this.lastSyncStatsLastPrices,
+        lastSyncDivisa:
+            lastSyncDivisa.present ? lastSyncDivisa.value : this.lastSyncDivisa,
+        lastSyncCountry: lastSyncCountry.present
+            ? lastSyncCountry.value
+            : this.lastSyncCountry,
+        lastSyncCollectionMethod: lastSyncCollectionMethod.present
+            ? lastSyncCollectionMethod.value
+            : this.lastSyncCollectionMethod,
+        lastSyncCollectionTerm: lastSyncCollectionTerm.present
+            ? lastSyncCollectionTerm.value
+            : this.lastSyncCollectionTerm,
+        lastSyncCustomer: lastSyncCustomer.present
+            ? lastSyncCustomer.value
+            : this.lastSyncCustomer,
+        lastSyncCustomerUser: lastSyncCustomerUser.present
+            ? lastSyncCustomerUser.value
+            : this.lastSyncCustomerUser,
+        lastSyncCustomerContact: lastSyncCustomerContact.present
+            ? lastSyncCustomerContact.value
+            : this.lastSyncCustomerContact,
+        lastSyncCustomerDiscount: lastSyncCustomerDiscount.present
+            ? lastSyncCustomerDiscount.value
+            : this.lastSyncCustomerDiscount,
+        lastSyncCustomerAddress: lastSyncCustomerAddress.present
+            ? lastSyncCustomerAddress.value
+            : this.lastSyncCustomerAddress,
+        lastSyncCustomerNetPrice: lastSyncCustomerNetPrice.present
+            ? lastSyncCustomerNetPrice.value
+            : this.lastSyncCustomerNetPrice,
+        lastSyncCustomerNetGroup: lastSyncCustomerNetGroup.present
+            ? lastSyncCustomerNetGroup.value
+            : this.lastSyncCustomerNetGroup,
+        lastSyncCustomerPendingPayment: lastSyncCustomerPendingPayment.present
+            ? lastSyncCustomerPendingPayment.value
+            : this.lastSyncCustomerPendingPayment,
+        lastSyncCustomerRappels: lastSyncCustomerRappels.present
+            ? lastSyncCustomerRappels.value
+            : this.lastSyncCustomerRappels,
+        lastSyncTopArticles: lastSyncTopArticles.present
+            ? lastSyncTopArticles.value
+            : this.lastSyncTopArticles,
+        lastSyncSalesOrder: lastSyncSalesOrder.present
+            ? lastSyncSalesOrder.value
+            : this.lastSyncSalesOrder,
+        lastSyncVisit:
+            lastSyncVisit.present ? lastSyncVisit.value : this.lastSyncVisit,
+        lastSyncSalesOrderLine: lastSyncSalesOrderLine.present
+            ? lastSyncSalesOrderLine.value
+            : this.lastSyncSalesOrderLine,
+        lastSyncSalesOrderStatus: lastSyncSalesOrderStatus.present
+            ? lastSyncSalesOrderStatus.value
+            : this.lastSyncSalesOrderStatus,
+        lastSyncArticle: lastSyncArticle.present
+            ? lastSyncArticle.value
+            : this.lastSyncArticle,
+        lastSyncFamily:
+            lastSyncFamily.present ? lastSyncFamily.value : this.lastSyncFamily,
+        lastSyncSubfamily: lastSyncSubfamily.present
+            ? lastSyncSubfamily.value
+            : this.lastSyncSubfamily,
+        lastSyncArticleNetGroup: lastSyncArticleNetGroup.present
+            ? lastSyncArticleNetGroup.value
+            : this.lastSyncArticleNetGroup,
+        lastSyncArticleRatePrice: lastSyncArticleRatePrice.present
+            ? lastSyncArticleRatePrice.value
+            : this.lastSyncArticleRatePrice,
+        lastSyncArticleComponent: lastSyncArticleComponent.present
+            ? lastSyncArticleComponent.value
+            : this.lastSyncArticleComponent,
+        lastSyncArticleSubstitute: lastSyncArticleSubstitute.present
+            ? lastSyncArticleSubstitute.value
+            : this.lastSyncArticleSubstitute,
+        lastSyncArticleSpare: lastSyncArticleSpare.present
+            ? lastSyncArticleSpare.value
+            : this.lastSyncArticleSpare,
+        lastSyncArticleCompanyVat: lastSyncArticleCompanyVat.present
+            ? lastSyncArticleCompanyVat.value
+            : this.lastSyncArticleCompanyVat,
+        lastSyncStatsCustomerUserSales: lastSyncStatsCustomerUserSales.present
+            ? lastSyncStatsCustomerUserSales.value
+            : this.lastSyncStatsCustomerUserSales,
+        lastSyncStatsLastPrices: lastSyncStatsLastPrices.present
+            ? lastSyncStatsLastPrices.value
+            : this.lastSyncStatsLastPrices,
       );
   @override
   String toString() {
@@ -750,35 +719,35 @@ class LastSyncDateTableCompanion
   }) : id = Value(id);
   static Insertable<LastSyncDateTableData> custom({
     Expression<String>? id,
-    Expression<String?>? lastSyncDivisa,
-    Expression<String?>? lastSyncCountry,
-    Expression<String?>? lastSyncCollectionMethod,
-    Expression<String?>? lastSyncCollectionTerm,
-    Expression<String?>? lastSyncCustomer,
-    Expression<String?>? lastSyncCustomerUser,
-    Expression<String?>? lastSyncCustomerContact,
-    Expression<String?>? lastSyncCustomerDiscount,
-    Expression<String?>? lastSyncCustomerAddress,
-    Expression<String?>? lastSyncCustomerNetPrice,
-    Expression<String?>? lastSyncCustomerNetGroup,
-    Expression<String?>? lastSyncCustomerPendingPayment,
-    Expression<String?>? lastSyncCustomerRappels,
-    Expression<String?>? lastSyncTopArticles,
-    Expression<String?>? lastSyncSalesOrder,
-    Expression<String?>? lastSyncVisit,
-    Expression<String?>? lastSyncSalesOrderLine,
-    Expression<String?>? lastSyncSalesOrderStatus,
-    Expression<String?>? lastSyncArticle,
-    Expression<String?>? lastSyncFamily,
-    Expression<String?>? lastSyncSubfamily,
-    Expression<String?>? lastSyncArticleNetGroup,
-    Expression<String?>? lastSyncArticleRatePrice,
-    Expression<String?>? lastSyncArticleComponent,
-    Expression<String?>? lastSyncArticleSubstitute,
-    Expression<String?>? lastSyncArticleSpare,
-    Expression<String?>? lastSyncArticleCompanyVat,
-    Expression<String?>? lastSyncStatsCustomerUserSales,
-    Expression<String?>? lastSyncStatsLastPrices,
+    Expression<String>? lastSyncDivisa,
+    Expression<String>? lastSyncCountry,
+    Expression<String>? lastSyncCollectionMethod,
+    Expression<String>? lastSyncCollectionTerm,
+    Expression<String>? lastSyncCustomer,
+    Expression<String>? lastSyncCustomerUser,
+    Expression<String>? lastSyncCustomerContact,
+    Expression<String>? lastSyncCustomerDiscount,
+    Expression<String>? lastSyncCustomerAddress,
+    Expression<String>? lastSyncCustomerNetPrice,
+    Expression<String>? lastSyncCustomerNetGroup,
+    Expression<String>? lastSyncCustomerPendingPayment,
+    Expression<String>? lastSyncCustomerRappels,
+    Expression<String>? lastSyncTopArticles,
+    Expression<String>? lastSyncSalesOrder,
+    Expression<String>? lastSyncVisit,
+    Expression<String>? lastSyncSalesOrderLine,
+    Expression<String>? lastSyncSalesOrderStatus,
+    Expression<String>? lastSyncArticle,
+    Expression<String>? lastSyncFamily,
+    Expression<String>? lastSyncSubfamily,
+    Expression<String>? lastSyncArticleNetGroup,
+    Expression<String>? lastSyncArticleRatePrice,
+    Expression<String>? lastSyncArticleComponent,
+    Expression<String>? lastSyncArticleSubstitute,
+    Expression<String>? lastSyncArticleSpare,
+    Expression<String>? lastSyncArticleCompanyVat,
+    Expression<String>? lastSyncStatsCustomerUserSales,
+    Expression<String>? lastSyncStatsLastPrices,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ID': id,
@@ -818,7 +787,7 @@ class LastSyncDateTableCompanion
       if (lastSyncFamily != null) 'LAST_SYNC_FAMILY': lastSyncFamily,
       if (lastSyncSubfamily != null) 'LAST_SYNC_SUBFAMILY': lastSyncSubfamily,
       if (lastSyncArticleNetGroup != null)
-        'LAST_SYNC_ARtICLE_NET_GROUP': lastSyncArticleNetGroup,
+        'LAST_SYNC_ARTICLE_NET_GROUP': lastSyncArticleNetGroup,
       if (lastSyncArticleRatePrice != null)
         'LAST_SYNC_ARTICLE_RATE_PRICE': lastSyncArticleRatePrice,
       if (lastSyncArticleComponent != null)
@@ -926,113 +895,112 @@ class LastSyncDateTableCompanion
       map['ID'] = Variable<String>(id.value);
     }
     if (lastSyncDivisa.present) {
-      map['LAST_SYNC_DIVISA'] = Variable<String?>(lastSyncDivisa.value);
+      map['LAST_SYNC_DIVISA'] = Variable<String>(lastSyncDivisa.value);
     }
     if (lastSyncCountry.present) {
-      map['LAST_SYNC_COUNTRY'] = Variable<String?>(lastSyncCountry.value);
+      map['LAST_SYNC_COUNTRY'] = Variable<String>(lastSyncCountry.value);
     }
     if (lastSyncCollectionMethod.present) {
       map['LAST_SYNC_COLLECTION_METHOD'] =
-          Variable<String?>(lastSyncCollectionMethod.value);
+          Variable<String>(lastSyncCollectionMethod.value);
     }
     if (lastSyncCollectionTerm.present) {
       map['LAST_SYNC_COLLECTION_TERM'] =
-          Variable<String?>(lastSyncCollectionTerm.value);
+          Variable<String>(lastSyncCollectionTerm.value);
     }
     if (lastSyncCustomer.present) {
-      map['LAST_SYNC_CUSTOMER'] = Variable<String?>(lastSyncCustomer.value);
+      map['LAST_SYNC_CUSTOMER'] = Variable<String>(lastSyncCustomer.value);
     }
     if (lastSyncCustomerUser.present) {
       map['LAST_SYNC_CUSTOMER_USER'] =
-          Variable<String?>(lastSyncCustomerUser.value);
+          Variable<String>(lastSyncCustomerUser.value);
     }
     if (lastSyncCustomerContact.present) {
       map['LAST_SYNC_CUSTOMER_CONTACT'] =
-          Variable<String?>(lastSyncCustomerContact.value);
+          Variable<String>(lastSyncCustomerContact.value);
     }
     if (lastSyncCustomerDiscount.present) {
       map['LAST_SYNC_CUSTOMER_DISCOUNT'] =
-          Variable<String?>(lastSyncCustomerDiscount.value);
+          Variable<String>(lastSyncCustomerDiscount.value);
     }
     if (lastSyncCustomerAddress.present) {
       map['LAST_SYNC_CUSTOMER_ADDRESS'] =
-          Variable<String?>(lastSyncCustomerAddress.value);
+          Variable<String>(lastSyncCustomerAddress.value);
     }
     if (lastSyncCustomerNetPrice.present) {
       map['LAST_SYNC_CUSTOMER_NET_PRICE'] =
-          Variable<String?>(lastSyncCustomerNetPrice.value);
+          Variable<String>(lastSyncCustomerNetPrice.value);
     }
     if (lastSyncCustomerNetGroup.present) {
       map['LAST_SYNC_CUSTOMER_NET_GROUP'] =
-          Variable<String?>(lastSyncCustomerNetGroup.value);
+          Variable<String>(lastSyncCustomerNetGroup.value);
     }
     if (lastSyncCustomerPendingPayment.present) {
       map['LAST_SYNC_CUSTOMER_PENDING_PAYMENT'] =
-          Variable<String?>(lastSyncCustomerPendingPayment.value);
+          Variable<String>(lastSyncCustomerPendingPayment.value);
     }
     if (lastSyncCustomerRappels.present) {
       map['LAST_SYNC_CUSTOMER_RAPPELS'] =
-          Variable<String?>(lastSyncCustomerRappels.value);
+          Variable<String>(lastSyncCustomerRappels.value);
     }
     if (lastSyncTopArticles.present) {
       map['LAST_SYNC_TOP_ARTICLES'] =
-          Variable<String?>(lastSyncTopArticles.value);
+          Variable<String>(lastSyncTopArticles.value);
     }
     if (lastSyncSalesOrder.present) {
-      map['LAST_SYNC_SALES_ORDER'] =
-          Variable<String?>(lastSyncSalesOrder.value);
+      map['LAST_SYNC_SALES_ORDER'] = Variable<String>(lastSyncSalesOrder.value);
     }
     if (lastSyncVisit.present) {
-      map['LAST_SYNC_VISIT'] = Variable<String?>(lastSyncVisit.value);
+      map['LAST_SYNC_VISIT'] = Variable<String>(lastSyncVisit.value);
     }
     if (lastSyncSalesOrderLine.present) {
       map['LAST_SYNC_SALES_ORDER_LINE'] =
-          Variable<String?>(lastSyncSalesOrderLine.value);
+          Variable<String>(lastSyncSalesOrderLine.value);
     }
     if (lastSyncSalesOrderStatus.present) {
       map['LAST_SYNC_SALES_ORDER_STATUS'] =
-          Variable<String?>(lastSyncSalesOrderStatus.value);
+          Variable<String>(lastSyncSalesOrderStatus.value);
     }
     if (lastSyncArticle.present) {
-      map['LAST_SYNC_ARTICLE'] = Variable<String?>(lastSyncArticle.value);
+      map['LAST_SYNC_ARTICLE'] = Variable<String>(lastSyncArticle.value);
     }
     if (lastSyncFamily.present) {
-      map['LAST_SYNC_FAMILY'] = Variable<String?>(lastSyncFamily.value);
+      map['LAST_SYNC_FAMILY'] = Variable<String>(lastSyncFamily.value);
     }
     if (lastSyncSubfamily.present) {
-      map['LAST_SYNC_SUBFAMILY'] = Variable<String?>(lastSyncSubfamily.value);
+      map['LAST_SYNC_SUBFAMILY'] = Variable<String>(lastSyncSubfamily.value);
     }
     if (lastSyncArticleNetGroup.present) {
-      map['LAST_SYNC_ARtICLE_NET_GROUP'] =
-          Variable<String?>(lastSyncArticleNetGroup.value);
+      map['LAST_SYNC_ARTICLE_NET_GROUP'] =
+          Variable<String>(lastSyncArticleNetGroup.value);
     }
     if (lastSyncArticleRatePrice.present) {
       map['LAST_SYNC_ARTICLE_RATE_PRICE'] =
-          Variable<String?>(lastSyncArticleRatePrice.value);
+          Variable<String>(lastSyncArticleRatePrice.value);
     }
     if (lastSyncArticleComponent.present) {
       map['LAST_SYNC_ARTICLE_COMPONENT'] =
-          Variable<String?>(lastSyncArticleComponent.value);
+          Variable<String>(lastSyncArticleComponent.value);
     }
     if (lastSyncArticleSubstitute.present) {
       map['LAST_SYNC_ARTICLE_SUBSTITUTE'] =
-          Variable<String?>(lastSyncArticleSubstitute.value);
+          Variable<String>(lastSyncArticleSubstitute.value);
     }
     if (lastSyncArticleSpare.present) {
       map['LAST_SYNC_ARTICLE_SPARE'] =
-          Variable<String?>(lastSyncArticleSpare.value);
+          Variable<String>(lastSyncArticleSpare.value);
     }
     if (lastSyncArticleCompanyVat.present) {
       map['LAST_SYNC_ARTICLE_COMPANY_VAT'] =
-          Variable<String?>(lastSyncArticleCompanyVat.value);
+          Variable<String>(lastSyncArticleCompanyVat.value);
     }
     if (lastSyncStatsCustomerUserSales.present) {
       map['LAST_SYNC_STATS_CUSTOMER_USER_SALES'] =
-          Variable<String?>(lastSyncStatsCustomerUserSales.value);
+          Variable<String>(lastSyncStatsCustomerUserSales.value);
     }
     if (lastSyncStatsLastPrices.present) {
       map['LAST_SYNC_STATS_LAST_PRICES'] =
-          Variable<String?>(lastSyncStatsLastPrices.value);
+          Variable<String>(lastSyncStatsLastPrices.value);
     }
     return map;
   }
@@ -1085,191 +1053,186 @@ class $LastSyncDateTableTable extends LastSyncDateTable
   $LastSyncDateTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _lastSyncDivisaMeta =
       const VerificationMeta('lastSyncDivisa');
   @override
-  late final GeneratedColumn<String?> lastSyncDivisa = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastSyncDivisa = GeneratedColumn<String>(
       'LAST_SYNC_DIVISA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCountryMeta =
       const VerificationMeta('lastSyncCountry');
   @override
-  late final GeneratedColumn<String?> lastSyncCountry =
-      GeneratedColumn<String?>('LAST_SYNC_COUNTRY', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCountry = GeneratedColumn<String>(
+      'LAST_SYNC_COUNTRY', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCollectionMethodMeta =
       const VerificationMeta('lastSyncCollectionMethod');
   @override
-  late final GeneratedColumn<String?> lastSyncCollectionMethod =
-      GeneratedColumn<String?>('LAST_SYNC_COLLECTION_METHOD', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCollectionMethod =
+      GeneratedColumn<String>('LAST_SYNC_COLLECTION_METHOD', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCollectionTermMeta =
       const VerificationMeta('lastSyncCollectionTerm');
   @override
-  late final GeneratedColumn<String?> lastSyncCollectionTerm =
-      GeneratedColumn<String?>('LAST_SYNC_COLLECTION_TERM', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCollectionTerm =
+      GeneratedColumn<String>('LAST_SYNC_COLLECTION_TERM', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerMeta =
       const VerificationMeta('lastSyncCustomer');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomer =
-      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomer = GeneratedColumn<String>(
+      'LAST_SYNC_CUSTOMER', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerUserMeta =
       const VerificationMeta('lastSyncCustomerUser');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerUser =
-      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER_USER', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerUser =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_USER', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerContactMeta =
       const VerificationMeta('lastSyncCustomerContact');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerContact =
-      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER_CONTACT', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerContact =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_CONTACT', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerDiscountMeta =
       const VerificationMeta('lastSyncCustomerDiscount');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerDiscount =
-      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER_DISCOUNT', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerDiscount =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_DISCOUNT', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerAddressMeta =
       const VerificationMeta('lastSyncCustomerAddress');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerAddress =
-      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER_ADDRESS', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerAddress =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_ADDRESS', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerNetPriceMeta =
       const VerificationMeta('lastSyncCustomerNetPrice');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerNetPrice =
-      GeneratedColumn<String?>(
-          'LAST_SYNC_CUSTOMER_NET_PRICE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerNetPrice =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_NET_PRICE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerNetGroupMeta =
       const VerificationMeta('lastSyncCustomerNetGroup');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerNetGroup =
-      GeneratedColumn<String?>(
-          'LAST_SYNC_CUSTOMER_NET_GROUP', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerNetGroup =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_NET_GROUP', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerPendingPaymentMeta =
       const VerificationMeta('lastSyncCustomerPendingPayment');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerPendingPayment =
-      GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastSyncCustomerPendingPayment =
+      GeneratedColumn<String>(
           'LAST_SYNC_CUSTOMER_PENDING_PAYMENT', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncCustomerRappelsMeta =
       const VerificationMeta('lastSyncCustomerRappels');
   @override
-  late final GeneratedColumn<String?> lastSyncCustomerRappels =
-      GeneratedColumn<String?>('LAST_SYNC_CUSTOMER_RAPPELS', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncCustomerRappels =
+      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_RAPPELS', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncTopArticlesMeta =
       const VerificationMeta('lastSyncTopArticles');
   @override
-  late final GeneratedColumn<String?> lastSyncTopArticles =
-      GeneratedColumn<String?>('LAST_SYNC_TOP_ARTICLES', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncTopArticles =
+      GeneratedColumn<String>('LAST_SYNC_TOP_ARTICLES', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncSalesOrderMeta =
       const VerificationMeta('lastSyncSalesOrder');
   @override
-  late final GeneratedColumn<String?> lastSyncSalesOrder =
-      GeneratedColumn<String?>('LAST_SYNC_SALES_ORDER', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncSalesOrder =
+      GeneratedColumn<String>('LAST_SYNC_SALES_ORDER', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncVisitMeta =
       const VerificationMeta('lastSyncVisit');
   @override
-  late final GeneratedColumn<String?> lastSyncVisit = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastSyncVisit = GeneratedColumn<String>(
       'LAST_SYNC_VISIT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncSalesOrderLineMeta =
       const VerificationMeta('lastSyncSalesOrderLine');
   @override
-  late final GeneratedColumn<String?> lastSyncSalesOrderLine =
-      GeneratedColumn<String?>('LAST_SYNC_SALES_ORDER_LINE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncSalesOrderLine =
+      GeneratedColumn<String>('LAST_SYNC_SALES_ORDER_LINE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncSalesOrderStatusMeta =
       const VerificationMeta('lastSyncSalesOrderStatus');
   @override
-  late final GeneratedColumn<String?> lastSyncSalesOrderStatus =
-      GeneratedColumn<String?>(
-          'LAST_SYNC_SALES_ORDER_STATUS', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncSalesOrderStatus =
+      GeneratedColumn<String>('LAST_SYNC_SALES_ORDER_STATUS', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleMeta =
       const VerificationMeta('lastSyncArticle');
   @override
-  late final GeneratedColumn<String?> lastSyncArticle =
-      GeneratedColumn<String?>('LAST_SYNC_ARTICLE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncArticle = GeneratedColumn<String>(
+      'LAST_SYNC_ARTICLE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncFamilyMeta =
       const VerificationMeta('lastSyncFamily');
   @override
-  late final GeneratedColumn<String?> lastSyncFamily = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastSyncFamily = GeneratedColumn<String>(
       'LAST_SYNC_FAMILY', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncSubfamilyMeta =
       const VerificationMeta('lastSyncSubfamily');
   @override
-  late final GeneratedColumn<String?> lastSyncSubfamily =
-      GeneratedColumn<String?>('LAST_SYNC_SUBFAMILY', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncSubfamily =
+      GeneratedColumn<String>('LAST_SYNC_SUBFAMILY', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleNetGroupMeta =
       const VerificationMeta('lastSyncArticleNetGroup');
   @override
-  late final GeneratedColumn<String?> lastSyncArticleNetGroup =
-      GeneratedColumn<String?>('LAST_SYNC_ARtICLE_NET_GROUP', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncArticleNetGroup =
+      GeneratedColumn<String>('LAST_SYNC_ARTICLE_NET_GROUP', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleRatePriceMeta =
       const VerificationMeta('lastSyncArticleRatePrice');
   @override
-  late final GeneratedColumn<String?> lastSyncArticleRatePrice =
-      GeneratedColumn<String?>(
-          'LAST_SYNC_ARTICLE_RATE_PRICE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncArticleRatePrice =
+      GeneratedColumn<String>('LAST_SYNC_ARTICLE_RATE_PRICE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleComponentMeta =
       const VerificationMeta('lastSyncArticleComponent');
   @override
-  late final GeneratedColumn<String?> lastSyncArticleComponent =
-      GeneratedColumn<String?>('LAST_SYNC_ARTICLE_COMPONENT', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncArticleComponent =
+      GeneratedColumn<String>('LAST_SYNC_ARTICLE_COMPONENT', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleSubstituteMeta =
       const VerificationMeta('lastSyncArticleSubstitute');
   @override
-  late final GeneratedColumn<String?> lastSyncArticleSubstitute =
-      GeneratedColumn<String?>(
-          'LAST_SYNC_ARTICLE_SUBSTITUTE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncArticleSubstitute =
+      GeneratedColumn<String>('LAST_SYNC_ARTICLE_SUBSTITUTE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleSpareMeta =
       const VerificationMeta('lastSyncArticleSpare');
   @override
-  late final GeneratedColumn<String?> lastSyncArticleSpare =
-      GeneratedColumn<String?>('LAST_SYNC_ARTICLE_SPARE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncArticleSpare =
+      GeneratedColumn<String>('LAST_SYNC_ARTICLE_SPARE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncArticleCompanyVatMeta =
       const VerificationMeta('lastSyncArticleCompanyVat');
   @override
-  late final GeneratedColumn<String?> lastSyncArticleCompanyVat =
-      GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastSyncArticleCompanyVat =
+      GeneratedColumn<String>(
           'LAST_SYNC_ARTICLE_COMPANY_VAT', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncStatsCustomerUserSalesMeta =
       const VerificationMeta('lastSyncStatsCustomerUserSales');
   @override
-  late final GeneratedColumn<String?> lastSyncStatsCustomerUserSales =
-      GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastSyncStatsCustomerUserSales =
+      GeneratedColumn<String>(
           'LAST_SYNC_STATS_CUSTOMER_USER_SALES', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastSyncStatsLastPricesMeta =
       const VerificationMeta('lastSyncStatsLastPrices');
   @override
-  late final GeneratedColumn<String?> lastSyncStatsLastPrices =
-      GeneratedColumn<String?>('LAST_SYNC_STATS_LAST_PRICES', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastSyncStatsLastPrices =
+      GeneratedColumn<String>('LAST_SYNC_STATS_LAST_PRICES', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -1454,11 +1417,11 @@ class $LastSyncDateTableTable extends LastSyncDateTable
           lastSyncSubfamily.isAcceptableOrUnknown(
               data['LAST_SYNC_SUBFAMILY']!, _lastSyncSubfamilyMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARtICLE_NET_GROUP')) {
+    if (data.containsKey('LAST_SYNC_ARTICLE_NET_GROUP')) {
       context.handle(
           _lastSyncArticleNetGroupMeta,
           lastSyncArticleNetGroup.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARtICLE_NET_GROUP']!,
+              data['LAST_SYNC_ARTICLE_NET_GROUP']!,
               _lastSyncArticleNetGroupMeta));
     }
     if (data.containsKey('LAST_SYNC_ARTICLE_RATE_PRICE')) {
@@ -1516,8 +1479,90 @@ class $LastSyncDateTableTable extends LastSyncDateTable
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
   LastSyncDateTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return LastSyncDateTableData.fromData(data,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LastSyncDateTableData(
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ID'])!,
+      lastSyncDivisa: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_DIVISA']),
+      lastSyncCountry: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_COUNTRY']),
+      lastSyncCollectionMethod: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_COLLECTION_METHOD']),
+      lastSyncCollectionTerm: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_COLLECTION_TERM']),
+      lastSyncCustomer: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_CUSTOMER']),
+      lastSyncCustomerUser: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_USER']),
+      lastSyncCustomerContact: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_CONTACT']),
+      lastSyncCustomerDiscount: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_DISCOUNT']),
+      lastSyncCustomerAddress: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_ADDRESS']),
+      lastSyncCustomerNetPrice: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_NET_PRICE']),
+      lastSyncCustomerNetGroup: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_NET_GROUP']),
+      lastSyncCustomerPendingPayment: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_PENDING_PAYMENT']),
+      lastSyncCustomerRappels: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_CUSTOMER_RAPPELS']),
+      lastSyncTopArticles: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_TOP_ARTICLES']),
+      lastSyncSalesOrder: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_SALES_ORDER']),
+      lastSyncVisit: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_VISIT']),
+      lastSyncSalesOrderLine: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_SALES_ORDER_LINE']),
+      lastSyncSalesOrderStatus: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_SALES_ORDER_STATUS']),
+      lastSyncArticle: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_ARTICLE']),
+      lastSyncFamily: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_FAMILY']),
+      lastSyncSubfamily: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_SUBFAMILY']),
+      lastSyncArticleNetGroup: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_ARTICLE_NET_GROUP']),
+      lastSyncArticleRatePrice: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_ARTICLE_RATE_PRICE']),
+      lastSyncArticleComponent: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_ARTICLE_COMPONENT']),
+      lastSyncArticleSubstitute: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_ARTICLE_SUBSTITUTE']),
+      lastSyncArticleSpare: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_ARTICLE_SPARE']),
+      lastSyncArticleCompanyVat: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_ARTICLE_COMPANY_VAT']),
+      lastSyncStatsCustomerUserSales: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_STATS_CUSTOMER_USER_SALES']),
+      lastSyncStatsLastPrices: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}LAST_SYNC_STATS_LAST_PRICES']),
+    );
   }
 
   @override
@@ -1592,22 +1637,22 @@ class CountryTableCompanion extends UpdateCompanion<CountryDTO> {
         lastUpdated = Value(lastUpdated);
   static Insertable<CountryDTO> custom({
     Expression<String>? id,
-    Expression<String?>? isoCode,
+    Expression<String>? isoCode,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -1684,52 +1729,52 @@ class CountryTableCompanion extends UpdateCompanion<CountryDTO> {
       map['PAIS_ID'] = Variable<String>(id.value);
     }
     if (isoCode.present) {
-      map['CODIGO_ISO'] = Variable<String?>(isoCode.value);
+      map['CODIGO_ISO'] = Variable<String>(isoCode.value);
     }
     if (descriptionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -1775,115 +1820,115 @@ class $CountryTableTable extends CountryTable
   $CountryTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _isoCodeMeta = const VerificationMeta('isoCode');
   @override
-  late final GeneratedColumn<String?> isoCode = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> isoCode = GeneratedColumn<String>(
       'CODIGO_ISO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -2040,44 +2085,44 @@ class $CountryTableTable extends CountryTable
   CountryDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CountryDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID'])!,
-      isoCode: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CODIGO_ISO']),
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID'])!,
+      isoCode: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_ISO']),
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -2161,23 +2206,23 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
   static Insertable<DivisaDTO> custom({
     Expression<String>? id,
     Expression<String>? abv,
-    Expression<String?>? symbol,
-    Expression<double?>? rounded,
+    Expression<String>? symbol,
+    Expression<double>? rounded,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -2263,55 +2308,55 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
       map['ABREVIACION'] = Variable<String>(abv.value);
     }
     if (symbol.present) {
-      map['SIMBOLO'] = Variable<String?>(symbol.value);
+      map['SIMBOLO'] = Variable<String>(symbol.value);
     }
     if (rounded.present) {
-      map['REDONDEO'] = Variable<double?>(rounded.value);
+      map['REDONDEO'] = Variable<double>(rounded.value);
     }
     if (descriptionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -2359,125 +2404,125 @@ class $DivisaTableTable extends DivisaTable
   $DivisaTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _abvMeta = const VerificationMeta('abv');
   @override
-  late final GeneratedColumn<String?> abv = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> abv = GeneratedColumn<String>(
       'ABREVIACION', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _symbolMeta = const VerificationMeta('symbol');
   @override
-  late final GeneratedColumn<String?> symbol = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
       'SIMBOLO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _roundedMeta = const VerificationMeta('rounded');
   @override
-  late final GeneratedColumn<double?> rounded = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> rounded = GeneratedColumn<double>(
       'REDONDEO', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -2646,48 +2691,48 @@ class $DivisaTableTable extends DivisaTable
   DivisaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DivisaDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIVISA_ID'])!,
-      abv: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ABREVIACION'])!,
-      symbol: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}SIMBOLO']),
-      rounded: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}REDONDEO']),
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
+      abv: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ABREVIACION'])!,
+      symbol: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}SIMBOLO']),
+      rounded: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}REDONDEO']),
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -2699,7 +2744,7 @@ class $DivisaTableTable extends DivisaTable
 
 class SalesOrderStatusTableCompanion
     extends UpdateCompanion<SalesOrderStatusDTO> {
-  final Value<String> id;
+  final Value<int> id;
   final Value<String> descriptionES;
   final Value<String?> descriptionEN;
   final Value<String?> descriptionFR;
@@ -2736,7 +2781,7 @@ class SalesOrderStatusTableCompanion
     this.deleted = const Value.absent(),
   });
   SalesOrderStatusTableCompanion.insert({
-    required String id,
+    this.id = const Value.absent(),
     required String descriptionES,
     this.descriptionEN = const Value.absent(),
     this.descriptionFR = const Value.absent(),
@@ -2753,30 +2798,29 @@ class SalesOrderStatusTableCompanion
     this.descriptionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : id = Value(id),
-        descriptionES = Value(descriptionES),
+  })  : descriptionES = Value(descriptionES),
         lastUpdated = Value(lastUpdated);
   static Insertable<SalesOrderStatusDTO> custom({
-    Expression<String>? id,
+    Expression<int>? id,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'PAIS_ID': id,
+      if (id != null) 'ESTADO_PEDIDO_ID': id,
       if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
       if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
       if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
@@ -2797,7 +2841,7 @@ class SalesOrderStatusTableCompanion
   }
 
   SalesOrderStatusTableCompanion copyWith(
-      {Value<String>? id,
+      {Value<int>? id,
       Value<String>? descriptionES,
       Value<String?>? descriptionEN,
       Value<String?>? descriptionFR,
@@ -2839,49 +2883,49 @@ class SalesOrderStatusTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['PAIS_ID'] = Variable<String>(id.value);
+      map['ESTADO_PEDIDO_ID'] = Variable<int>(id.value);
     }
     if (descriptionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -2925,104 +2969,104 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
   $SalesOrderStatusTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
-      'PAIS_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'ESTADO_PEDIDO_ID', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -3055,11 +3099,9 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('PAIS_ID')) {
-      context.handle(
-          _idMeta, id.isAcceptableOrUnknown(data['PAIS_ID']!, _idMeta));
-    } else if (isInserting) {
-      context.missing(_idMeta);
+    if (data.containsKey('ESTADO_PEDIDO_ID')) {
+      context.handle(_idMeta,
+          id.isAcceptableOrUnknown(data['ESTADO_PEDIDO_ID']!, _idMeta));
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
@@ -3168,40 +3210,40 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
   SalesOrderStatusDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SalesOrderStatusDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID'])!,
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -3295,15 +3337,15 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
     Expression<String>? salesOrderId,
     Expression<DateTime>? salesOrderDate,
     Expression<String>? salesType,
-    Expression<String?>? customerId,
-    Expression<String?>? customerName,
-    Expression<String?>? addressId,
-    Expression<String?>? shippingAddress1,
-    Expression<String?>? shippingAddress2,
-    Expression<String?>? zipCode,
-    Expression<String?>? city,
-    Expression<String?>? state,
-    Expression<String?>? countryId,
+    Expression<String>? customerId,
+    Expression<String>? customerName,
+    Expression<String>? addressId,
+    Expression<String>? shippingAddress1,
+    Expression<String>? shippingAddress2,
+    Expression<String>? zipCode,
+    Expression<String>? city,
+    Expression<String>? state,
+    Expression<String>? countryId,
     Expression<String>? divisaId,
     Expression<double>? taxBase,
     Expression<double>? ivaAmount,
@@ -3411,31 +3453,31 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
       map['TIPO_VENTA'] = Variable<String>(salesType.value);
     }
     if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String?>(customerId.value);
+      map['CLIENTE_ID'] = Variable<String>(customerId.value);
     }
     if (customerName.present) {
-      map['NOMRE_CLIENTE'] = Variable<String?>(customerName.value);
+      map['NOMRE_CLIENTE'] = Variable<String>(customerName.value);
     }
     if (addressId.present) {
-      map['DIRECCION_ID'] = Variable<String?>(addressId.value);
+      map['DIRECCION_ID'] = Variable<String>(addressId.value);
     }
     if (shippingAddress1.present) {
-      map['DIRECCION_ENVIO1'] = Variable<String?>(shippingAddress1.value);
+      map['DIRECCION_ENVIO1'] = Variable<String>(shippingAddress1.value);
     }
     if (shippingAddress2.present) {
-      map['DIRECCION_ENVIO2'] = Variable<String?>(shippingAddress2.value);
+      map['DIRECCION_ENVIO2'] = Variable<String>(shippingAddress2.value);
     }
     if (zipCode.present) {
-      map['CODIGO_POSTAL'] = Variable<String?>(zipCode.value);
+      map['CODIGO_POSTAL'] = Variable<String>(zipCode.value);
     }
     if (city.present) {
-      map['POBLACION'] = Variable<String?>(city.value);
+      map['POBLACION'] = Variable<String>(city.value);
     }
     if (state.present) {
-      map['PROVINCIA'] = Variable<String?>(state.value);
+      map['PROVINCIA'] = Variable<String>(state.value);
     }
     if (countryId.present) {
-      map['PAIS_ID'] = Variable<String?>(countryId.value);
+      map['PAIS_ID'] = Variable<String>(countryId.value);
     }
     if (divisaId.present) {
       map['DIVISA_ID'] = Variable<String>(divisaId.value);
@@ -3510,168 +3552,168 @@ class $SalesOrderTableTable extends SalesOrderTable
   $SalesOrderTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
   @override
-  late final GeneratedColumn<String?> companyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 2),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: true);
   final VerificationMeta _salesOrderIdMeta =
       const VerificationMeta('salesOrderId');
   @override
-  late final GeneratedColumn<String?> salesOrderId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> salesOrderId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 10),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: true);
   final VerificationMeta _salesOrderDateMeta =
       const VerificationMeta('salesOrderDate');
   @override
-  late final GeneratedColumn<DateTime?> salesOrderDate =
-      GeneratedColumn<DateTime?>('FECHA_PEDIDO', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> salesOrderDate =
+      GeneratedColumn<DateTime>('FECHA_PEDIDO', aliasedName, false,
+          type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _salesTypeMeta = const VerificationMeta('salesType');
   @override
-  late final GeneratedColumn<String?> salesType = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> salesType = GeneratedColumn<String>(
       'TIPO_VENTA', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 1),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: true);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 6),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false);
   final VerificationMeta _customerNameMeta =
       const VerificationMeta('customerName');
   @override
-  late final GeneratedColumn<String?> customerName = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
       'NOMRE_CLIENTE', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false);
   final VerificationMeta _addressIdMeta = const VerificationMeta('addressId');
   @override
-  late final GeneratedColumn<String?> addressId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> addressId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _shippingAddress1Meta =
       const VerificationMeta('shippingAddress1');
   @override
-  late final GeneratedColumn<String?> shippingAddress1 =
-      GeneratedColumn<String?>('DIRECCION_ENVIO1', aliasedName, true,
-          additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
-          type: const StringType(),
-          requiredDuringInsert: false);
+  late final GeneratedColumn<String> shippingAddress1 = GeneratedColumn<String>(
+      'DIRECCION_ENVIO1', aliasedName, true,
+      additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
+      type: DriftSqlType.string,
+      requiredDuringInsert: false);
   final VerificationMeta _shippingAddress2Meta =
       const VerificationMeta('shippingAddress2');
   @override
-  late final GeneratedColumn<String?> shippingAddress2 =
-      GeneratedColumn<String?>('DIRECCION_ENVIO2', aliasedName, true,
-          additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
-          type: const StringType(),
-          requiredDuringInsert: false);
+  late final GeneratedColumn<String> shippingAddress2 = GeneratedColumn<String>(
+      'DIRECCION_ENVIO2', aliasedName, true,
+      additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
+      type: DriftSqlType.string,
+      requiredDuringInsert: false);
   final VerificationMeta _zipCodeMeta = const VerificationMeta('zipCode');
   @override
-  late final GeneratedColumn<String?> zipCode = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> zipCode = GeneratedColumn<String>(
       'CODIGO_POSTAL', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 10),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false);
   final VerificationMeta _cityMeta = const VerificationMeta('city');
   @override
-  late final GeneratedColumn<String?> city = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> city = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 60),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false);
   final VerificationMeta _stateMeta = const VerificationMeta('state');
   @override
-  late final GeneratedColumn<String?> state = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> state = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 50),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false);
   final VerificationMeta _countryIdMeta = const VerificationMeta('countryId');
   @override
-  late final GeneratedColumn<String?> countryId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 3),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
   final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
   @override
-  late final GeneratedColumn<String?> divisaId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 2),
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
   final VerificationMeta _taxBaseMeta = const VerificationMeta('taxBase');
   @override
-  late final GeneratedColumn<double?> taxBase = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> taxBase = GeneratedColumn<double>(
       'BASE_IMPONIBLE', aliasedName, false,
-      type: const RealType(),
+      type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
   final VerificationMeta _ivaAmountMeta = const VerificationMeta('ivaAmount');
   @override
-  late final GeneratedColumn<double?> ivaAmount = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> ivaAmount = GeneratedColumn<double>(
       'IMPORTE_IVA', aliasedName, false,
-      type: const RealType(),
+      type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
   final VerificationMeta _totalMeta = const VerificationMeta('total');
   @override
-  late final GeneratedColumn<double?> total = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> total = GeneratedColumn<double>(
       'TOTAL', aliasedName, false,
-      type: const RealType(),
+      type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
   final VerificationMeta _salesOrderStatusIdMeta =
       const VerificationMeta('salesOrderStatusId');
   @override
-  late final GeneratedColumn<int?> salesOrderStatusId = GeneratedColumn<int?>(
+  late final GeneratedColumn<int> salesOrderStatusId = GeneratedColumn<int>(
       'ESTADO_PEDIDO_ID', aliasedName, false,
-      type: const IntType(),
+      type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PEDIDOS_ESTADOS (PAIS_ID)',
+      defaultConstraints: 'REFERENCES PEDIDOS_ESTADOS (ESTADO_PEDIDO_ID)',
       defaultValue: const Constant(0));
   final VerificationMeta _isOfferMeta = const VerificationMeta('isOffer');
   @override
-  late final GeneratedColumn<String?> isOffer = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> isOffer = GeneratedColumn<String>(
       'OFERTA_SN', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   final VerificationMeta _promptPaymentDiscountMeta =
       const VerificationMeta('promptPaymentDiscount');
   @override
-  late final GeneratedColumn<double?> promptPaymentDiscount =
-      GeneratedColumn<double?>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
-          type: const RealType(),
+  late final GeneratedColumn<double> promptPaymentDiscount =
+      GeneratedColumn<double>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
+          type: DriftSqlType.double,
           requiredDuringInsert: false,
           defaultValue: const Constant(0.0));
   final VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
-  late final GeneratedColumn<double?> iva = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
-      type: const RealType(),
+      type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -3844,52 +3886,53 @@ class $SalesOrderTableTable extends SalesOrderTable
   SalesOrderDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SalesOrderDTO(
-      companyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EMPRESA_ID'])!,
-      salesOrderId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PEDIDO_ID'])!,
-      salesOrderDate: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_PEDIDO'])!,
-      salesType: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_VENTA'])!,
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID']),
-      addressId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ID']),
-      customerName: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NOMRE_CLIENTE']),
-      shippingAddress1: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ENVIO1']),
-      shippingAddress2: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ENVIO2']),
-      zipCode: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CODIGO_POSTAL']),
-      city: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}POBLACION']),
-      state: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PROVINCIA']),
-      countryId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID']),
-      divisaId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIVISA_ID'])!,
-      taxBase: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}BASE_IMPONIBLE'])!,
-      ivaAmount: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IMPORTE_IVA'])!,
-      total: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TOTAL'])!,
-      salesOrderStatusId: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
-      isOffer: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}OFERTA_SN'])!,
-      promptPaymentDiscount: const RealType().mapFromDatabaseResponse(
+      companyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      salesOrderId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
+      salesOrderDate: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_PEDIDO'])!,
+      salesType: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TIPO_VENTA'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID']),
+      addressId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
+      customerName: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMRE_CLIENTE']),
+      shippingAddress1: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}DIRECCION_ENVIO1']),
+      shippingAddress2: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}DIRECCION_ENVIO2']),
+      zipCode: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
+      city: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
+      state: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
+      countryId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      divisaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
+      taxBase: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}BASE_IMPONIBLE'])!,
+      ivaAmount: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_IVA'])!,
+      total: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TOTAL'])!,
+      salesOrderStatusId: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
+      isOffer: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
+      promptPaymentDiscount: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'])!,
-      iva: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IVA'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      iva: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -3957,10 +4000,10 @@ class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
     Expression<String>? salesOrderId,
     Expression<String>? id,
     Expression<String>? articleId,
-    Expression<String?>? articleDescription,
+    Expression<String>? articleDescription,
     Expression<double>? quantity,
     Expression<double>? divisaPrice,
-    Expression<double?>? priceType,
+    Expression<double>? priceType,
     Expression<double>? discount1,
     Expression<double>? discount2,
     Expression<double>? discount3,
@@ -4032,7 +4075,7 @@ class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
       map['ARTICULO_ID'] = Variable<String>(articleId.value);
     }
     if (articleDescription.present) {
-      map['ARTICULO_DESCRIPCION'] = Variable<String?>(articleDescription.value);
+      map['ARTICULO_DESCRIPCION'] = Variable<String>(articleDescription.value);
     }
     if (quantity.present) {
       map['CANTIDAD'] = Variable<double>(quantity.value);
@@ -4041,7 +4084,7 @@ class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
       map['PRECIO_DIVISA'] = Variable<double>(divisaPrice.value);
     }
     if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double?>(priceType.value);
+      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
     }
     if (discount1.present) {
       map['DESCUENTO1'] = Variable<double>(discount1.value);
@@ -4090,73 +4133,73 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
   $SalesOrderLineTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
   @override
-  late final GeneratedColumn<String?> companyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _salesOrderIdMeta =
       const VerificationMeta('salesOrderId');
   @override
-  late final GeneratedColumn<String?> salesOrderId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> salesOrderId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'PEDIDO_LINEA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articleDescriptionMeta =
       const VerificationMeta('articleDescription');
   @override
-  late final GeneratedColumn<String?> articleDescription =
-      GeneratedColumn<String?>('ARTICULO_DESCRIPCION', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> articleDescription =
+      GeneratedColumn<String>('ARTICULO_DESCRIPCION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
   @override
-  late final GeneratedColumn<double?> quantity = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
       'CANTIDAD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _divisaPriceMeta =
       const VerificationMeta('divisaPrice');
   @override
-  late final GeneratedColumn<double?> divisaPrice = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> divisaPrice = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
   @override
-  late final GeneratedColumn<double?> priceType = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _discount1Meta = const VerificationMeta('discount1');
   @override
-  late final GeneratedColumn<double?> discount1 = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount1 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _discount2Meta = const VerificationMeta('discount2');
   @override
-  late final GeneratedColumn<double?> discount2 = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount2 = GeneratedColumn<double>(
       'DESCUENTO2', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _discount3Meta = const VerificationMeta('discount3');
   @override
-  late final GeneratedColumn<double?> discount3 = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -4277,32 +4320,32 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
   SalesOrderLineDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SalesOrderLineDTO(
-      companyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EMPRESA_ID'])!,
-      salesOrderId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PEDIDO_ID'])!,
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PEDIDO_LINEA_ID'])!,
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      articleDescription: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}ARTICULO_DESCRIPCION']),
-      quantity: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD'])!,
-      divisaPrice: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PRECIO_DIVISA'])!,
-      priceType: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_PRECIO']),
-      discount1: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO1'])!,
-      discount2: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO2'])!,
-      discount3: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO3'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      companyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      salesOrderId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
+      id: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}PEDIDO_LINEA_ID'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      articleDescription: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ARTICULO_DESCRIPCION']),
+      quantity: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
+      divisaPrice: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
+      priceType: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
+      discount1: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
+      discount2: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO2'])!,
+      discount3: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -4376,25 +4419,25 @@ class CollectionTermTableCompanion extends UpdateCompanion<CollectionTermDTO> {
   static Insertable<CollectionTermDTO> custom({
     Expression<String>? id,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'PLAZOS_COBRO_ID': id,
+      if (id != null) 'PLAZO_COBRO_ID': id,
       if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
       if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
       if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
@@ -4460,52 +4503,52 @@ class CollectionTermTableCompanion extends UpdateCompanion<CollectionTermDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['PLAZOS_COBRO_ID'] = Variable<String>(id.value);
+      map['PLAZO_COBRO_ID'] = Variable<String>(id.value);
     }
     if (descriptionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -4550,110 +4593,110 @@ class $CollectionTermTableTable extends CollectionTermTable
   $CollectionTermTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
-      'PLAZOS_COBRO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'PLAZO_COBRO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -4686,9 +4729,9 @@ class $CollectionTermTableTable extends CollectionTermTable
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('PLAZOS_COBRO_ID')) {
+    if (data.containsKey('PLAZO_COBRO_ID')) {
       context.handle(
-          _idMeta, id.isAcceptableOrUnknown(data['PLAZOS_COBRO_ID']!, _idMeta));
+          _idMeta, id.isAcceptableOrUnknown(data['PLAZO_COBRO_ID']!, _idMeta));
     } else if (isInserting) {
       context.missing(_idMeta);
     }
@@ -4805,42 +4848,42 @@ class $CollectionTermTableTable extends CollectionTermTable
   CollectionTermDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CollectionTermDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PLAZOS_COBRO_ID'])!,
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID'])!,
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -4915,20 +4958,20 @@ class CollectionMethodTableCompanion
   static Insertable<CollectionMethodDTO> custom({
     Expression<String>? id,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -5005,46 +5048,46 @@ class CollectionMethodTableCompanion
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -5089,110 +5132,110 @@ class $CollectionMethodTableTable extends CollectionMethodTable
   $CollectionMethodTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'METODO_COBRO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -5345,42 +5388,42 @@ class $CollectionMethodTableTable extends CollectionMethodTable
   CollectionMethodDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CollectionMethodDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}METODO_COBRO_ID'])!,
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID'])!,
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -5541,49 +5584,49 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
         lastUpdated = Value(lastUpdated);
   static Insertable<CustomerDTO> custom({
     Expression<String>? id,
-    Expression<String?>? customerName,
-    Expression<String?>? nif,
-    Expression<String?>? fiscalName,
-    Expression<String?>? fiscalAddress1,
-    Expression<String?>? fiscalAddress2,
-    Expression<String?>? fiscalZipCode,
-    Expression<String?>? fiscalCity,
-    Expression<String?>? fiscalState,
-    Expression<String?>? fiscalCountryId,
-    Expression<double?>? fiscalLatitude,
-    Expression<double?>? fiscalLongitude,
+    Expression<String>? customerName,
+    Expression<String>? nif,
+    Expression<String>? fiscalName,
+    Expression<String>? fiscalAddress1,
+    Expression<String>? fiscalAddress2,
+    Expression<String>? fiscalZipCode,
+    Expression<String>? fiscalCity,
+    Expression<String>? fiscalState,
+    Expression<String>? fiscalCountryId,
+    Expression<double>? fiscalLatitude,
+    Expression<double>? fiscalLongitude,
     Expression<String>? companyId,
-    Expression<double?>? especialVAT,
-    Expression<String?>? exemptVat,
-    Expression<double?>? currentYearSales,
-    Expression<double?>? previousYearSales,
-    Expression<double?>? salesTwoYearsAgo,
-    Expression<double?>? currentYearMargin,
-    Expression<double?>? previousYearMargin,
-    Expression<double?>? marginTwoYearsAgo,
-    Expression<double?>? paymentPercent,
-    Expression<double?>? warrantyPercent,
-    Expression<String?>? shoppingCenterName,
-    Expression<String?>? urlWebsite,
-    Expression<String?>? divisaId,
-    Expression<String?>? rateId,
-    Expression<String?>? rateDescription,
-    Expression<String?>? generalDiscount,
-    Expression<String?>? generalDiscountDescription,
+    Expression<double>? especialVAT,
+    Expression<String>? exemptVat,
+    Expression<double>? currentYearSales,
+    Expression<double>? previousYearSales,
+    Expression<double>? salesTwoYearsAgo,
+    Expression<double>? currentYearMargin,
+    Expression<double>? previousYearMargin,
+    Expression<double>? marginTwoYearsAgo,
+    Expression<double>? paymentPercent,
+    Expression<double>? warrantyPercent,
+    Expression<String>? shoppingCenterName,
+    Expression<String>? urlWebsite,
+    Expression<String>? divisaId,
+    Expression<String>? rateId,
+    Expression<String>? rateDescription,
+    Expression<String>? generalDiscount,
+    Expression<String>? generalDiscountDescription,
     Expression<String>? priceCalculationType,
-    Expression<String?>? collectionTermId,
-    Expression<String?>? collectionMethodId,
+    Expression<String>? collectionTermId,
+    Expression<String>? collectionMethodId,
     Expression<double>? promptPaymentDiscount,
     Expression<double>? internalGrantedRisk,
-    Expression<DateTime?>? internalGrantedRiskDate,
+    Expression<DateTime>? internalGrantedRiskDate,
     Expression<double>? cofaceGrantedRisk,
-    Expression<DateTime?>? cofaceGrantedRiskDate,
-    Expression<double?>? riskGranted,
-    Expression<double?>? riskPendingCollectionDue,
-    Expression<double?>? riskPendingColleectionNotDue,
-    Expression<double?>? riskPendingToServe,
-    Expression<double?>? riskPendingBilling,
-    Expression<String?>? internalRemarks,
+    Expression<DateTime>? cofaceGrantedRiskDate,
+    Expression<double>? riskGranted,
+    Expression<double>? riskPendingCollectionDue,
+    Expression<double>? riskPendingColleectionNotDue,
+    Expression<double>? riskPendingToServe,
+    Expression<double>? riskPendingBilling,
+    Expression<String>? internalRemarks,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -5760,102 +5803,102 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
       map['CLIENTE_ID'] = Variable<String>(id.value);
     }
     if (customerName.present) {
-      map['NOMBRE'] = Variable<String?>(customerName.value);
+      map['NOMBRE'] = Variable<String>(customerName.value);
     }
     if (nif.present) {
-      map['NIF'] = Variable<String?>(nif.value);
+      map['NIF'] = Variable<String>(nif.value);
     }
     if (fiscalName.present) {
-      map['NOMBRE_FISCAL'] = Variable<String?>(fiscalName.value);
+      map['NOMBRE_FISCAL'] = Variable<String>(fiscalName.value);
     }
     if (fiscalAddress1.present) {
-      map['DIRECCION_FISCAL1'] = Variable<String?>(fiscalAddress1.value);
+      map['DIRECCION_FISCAL1'] = Variable<String>(fiscalAddress1.value);
     }
     if (fiscalAddress2.present) {
-      map['DIRECCION_FISCAL2'] = Variable<String?>(fiscalAddress2.value);
+      map['DIRECCION_FISCAL2'] = Variable<String>(fiscalAddress2.value);
     }
     if (fiscalZipCode.present) {
-      map['CODIGO_POSTAL_FISCAL'] = Variable<String?>(fiscalZipCode.value);
+      map['CODIGO_POSTAL_FISCAL'] = Variable<String>(fiscalZipCode.value);
     }
     if (fiscalCity.present) {
-      map['POBLACION_FISCAL'] = Variable<String?>(fiscalCity.value);
+      map['POBLACION_FISCAL'] = Variable<String>(fiscalCity.value);
     }
     if (fiscalState.present) {
-      map['PROVINCIA_FISCAL'] = Variable<String?>(fiscalState.value);
+      map['PROVINCIA_FISCAL'] = Variable<String>(fiscalState.value);
     }
     if (fiscalCountryId.present) {
-      map['PAIS_ID_FISCAL'] = Variable<String?>(fiscalCountryId.value);
+      map['PAIS_ID_FISCAL'] = Variable<String>(fiscalCountryId.value);
     }
     if (fiscalLatitude.present) {
-      map['LATITUD_FISCAL'] = Variable<double?>(fiscalLatitude.value);
+      map['LATITUD_FISCAL'] = Variable<double>(fiscalLatitude.value);
     }
     if (fiscalLongitude.present) {
-      map['LONGITUD_FISCAL'] = Variable<double?>(fiscalLongitude.value);
+      map['LONGITUD_FISCAL'] = Variable<double>(fiscalLongitude.value);
     }
     if (companyId.present) {
       map['EMPRESA_ID'] = Variable<String>(companyId.value);
     }
     if (especialVAT.present) {
-      map['IVA_ESPECIAL'] = Variable<double?>(especialVAT.value);
+      map['IVA_ESPECIAL'] = Variable<double>(especialVAT.value);
     }
     if (exemptVat.present) {
-      map['IVA_EXENTO'] = Variable<String?>(exemptVat.value);
+      map['IVA_EXENTO'] = Variable<String>(exemptVat.value);
     }
     if (currentYearSales.present) {
-      map['VENTAS_ANYO_ACTUAL'] = Variable<double?>(currentYearSales.value);
+      map['VENTAS_ANYO_ACTUAL'] = Variable<double>(currentYearSales.value);
     }
     if (previousYearSales.present) {
-      map['VENTAS_ANYO_ANTERIOR'] = Variable<double?>(previousYearSales.value);
+      map['VENTAS_ANYO_ANTERIOR'] = Variable<double>(previousYearSales.value);
     }
     if (salesTwoYearsAgo.present) {
-      map['VENTAS_HACE_DOS_ANYOS'] = Variable<double?>(salesTwoYearsAgo.value);
+      map['VENTAS_HACE_DOS_ANYOS'] = Variable<double>(salesTwoYearsAgo.value);
     }
     if (currentYearMargin.present) {
-      map['MARGEN_ANYO_ACTUAL'] = Variable<double?>(currentYearMargin.value);
+      map['MARGEN_ANYO_ACTUAL'] = Variable<double>(currentYearMargin.value);
     }
     if (previousYearMargin.present) {
-      map['MARGEN_ANYO_ANTERIOR'] = Variable<double?>(previousYearMargin.value);
+      map['MARGEN_ANYO_ANTERIOR'] = Variable<double>(previousYearMargin.value);
     }
     if (marginTwoYearsAgo.present) {
-      map['MARGEN_HACE_DOS_ANYOS'] = Variable<double?>(marginTwoYearsAgo.value);
+      map['MARGEN_HACE_DOS_ANYOS'] = Variable<double>(marginTwoYearsAgo.value);
     }
     if (paymentPercent.present) {
-      map['PORCENTAJE_ABONOS'] = Variable<double?>(paymentPercent.value);
+      map['PORCENTAJE_ABONOS'] = Variable<double>(paymentPercent.value);
     }
     if (warrantyPercent.present) {
-      map['PORCENTAJE_GARANTIAS'] = Variable<double?>(warrantyPercent.value);
+      map['PORCENTAJE_GARANTIAS'] = Variable<double>(warrantyPercent.value);
     }
     if (shoppingCenterName.present) {
       map['CENTRAL_COMPRAS_NOMBRE'] =
-          Variable<String?>(shoppingCenterName.value);
+          Variable<String>(shoppingCenterName.value);
     }
     if (urlWebsite.present) {
-      map['URL_WEB'] = Variable<String?>(urlWebsite.value);
+      map['URL_WEB'] = Variable<String>(urlWebsite.value);
     }
     if (divisaId.present) {
-      map['DIVISA_ID'] = Variable<String?>(divisaId.value);
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
     }
     if (rateId.present) {
-      map['TARIFA_ID'] = Variable<String?>(rateId.value);
+      map['TARIFA_ID'] = Variable<String>(rateId.value);
     }
     if (rateDescription.present) {
-      map['TARIFA_DESCRIPCION'] = Variable<String?>(rateDescription.value);
+      map['TARIFA_DESCRIPCION'] = Variable<String>(rateDescription.value);
     }
     if (generalDiscount.present) {
-      map['DESCUENTO_GENERAL_ID'] = Variable<String?>(generalDiscount.value);
+      map['DESCUENTO_GENERAL_ID'] = Variable<String>(generalDiscount.value);
     }
     if (generalDiscountDescription.present) {
       map['DESCUENTO_GENERAL_DESCRIPCION'] =
-          Variable<String?>(generalDiscountDescription.value);
+          Variable<String>(generalDiscountDescription.value);
     }
     if (priceCalculationType.present) {
       map['TIPO_CALCULO_PRECIO'] = Variable<String>(priceCalculationType.value);
     }
     if (collectionTermId.present) {
-      map['PLAZO_COBRO_ID'] = Variable<String?>(collectionTermId.value);
+      map['PLAZO_COBRO_ID'] = Variable<String>(collectionTermId.value);
     }
     if (collectionMethodId.present) {
-      map['METODO_COBRO_ID'] = Variable<String?>(collectionMethodId.value);
+      map['METODO_COBRO_ID'] = Variable<String>(collectionMethodId.value);
     }
     if (promptPaymentDiscount.present) {
       map['DESCUENTO_PRONTO_PAGO'] =
@@ -5867,7 +5910,7 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
     }
     if (internalGrantedRiskDate.present) {
       map['RIESGO_CONCEDIDO_INTERNO_FECHA'] =
-          Variable<DateTime?>(internalGrantedRiskDate.value);
+          Variable<DateTime>(internalGrantedRiskDate.value);
     }
     if (cofaceGrantedRisk.present) {
       map['RIESGO_CONCEDIDO_COFACE'] =
@@ -5875,29 +5918,29 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
     }
     if (cofaceGrantedRiskDate.present) {
       map['RIESGO_CONCEDIDO_COFACE_FECHA'] =
-          Variable<DateTime?>(cofaceGrantedRiskDate.value);
+          Variable<DateTime>(cofaceGrantedRiskDate.value);
     }
     if (riskGranted.present) {
-      map['RIESGO_CONCEDIDO'] = Variable<double?>(riskGranted.value);
+      map['RIESGO_CONCEDIDO'] = Variable<double>(riskGranted.value);
     }
     if (riskPendingCollectionDue.present) {
       map['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] =
-          Variable<double?>(riskPendingCollectionDue.value);
+          Variable<double>(riskPendingCollectionDue.value);
     }
     if (riskPendingColleectionNotDue.present) {
       map['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] =
-          Variable<double?>(riskPendingColleectionNotDue.value);
+          Variable<double>(riskPendingColleectionNotDue.value);
     }
     if (riskPendingToServe.present) {
       map['RIESGO_PDTE_SERVIR_CLIENTE'] =
-          Variable<double?>(riskPendingToServe.value);
+          Variable<double>(riskPendingToServe.value);
     }
     if (riskPendingBilling.present) {
       map['RIESGO_PDTE_FACTURAR_CLIENTE'] =
-          Variable<double?>(riskPendingBilling.value);
+          Variable<double>(riskPendingBilling.value);
     }
     if (internalRemarks.present) {
-      map['OBSERVACIONES_INTERNAS'] = Variable<String?>(internalRemarks.value);
+      map['OBSERVACIONES_INTERNAS'] = Variable<String>(internalRemarks.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -5971,284 +6014,283 @@ class $CustomerTableTable extends CustomerTable
   $CustomerTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _customerNameMeta =
       const VerificationMeta('customerName');
   @override
-  late final GeneratedColumn<String?> customerName = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _nifMeta = const VerificationMeta('nif');
   @override
-  late final GeneratedColumn<String?> nif = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> nif = GeneratedColumn<String>(
       'NIF', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalNameMeta = const VerificationMeta('fiscalName');
   @override
-  late final GeneratedColumn<String?> fiscalName = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> fiscalName = GeneratedColumn<String>(
       'NOMBRE_FISCAL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalAddress1Meta =
       const VerificationMeta('fiscalAddress1');
   @override
-  late final GeneratedColumn<String?> fiscalAddress1 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> fiscalAddress1 = GeneratedColumn<String>(
       'DIRECCION_FISCAL1', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalAddress2Meta =
       const VerificationMeta('fiscalAddress2');
   @override
-  late final GeneratedColumn<String?> fiscalAddress2 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> fiscalAddress2 = GeneratedColumn<String>(
       'DIRECCION_FISCAL2', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalZipCodeMeta =
       const VerificationMeta('fiscalZipCode');
   @override
-  late final GeneratedColumn<String?> fiscalZipCode = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> fiscalZipCode = GeneratedColumn<String>(
       'CODIGO_POSTAL_FISCAL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalCityMeta = const VerificationMeta('fiscalCity');
   @override
-  late final GeneratedColumn<String?> fiscalCity = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> fiscalCity = GeneratedColumn<String>(
       'POBLACION_FISCAL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalStateMeta =
       const VerificationMeta('fiscalState');
   @override
-  late final GeneratedColumn<String?> fiscalState = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> fiscalState = GeneratedColumn<String>(
       'PROVINCIA_FISCAL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _fiscalCountryIdMeta =
       const VerificationMeta('fiscalCountryId');
   @override
-  late final GeneratedColumn<String?> fiscalCountryId =
-      GeneratedColumn<String?>('PAIS_ID_FISCAL', aliasedName, true,
-          type: const StringType(),
-          requiredDuringInsert: false,
-          defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
+  late final GeneratedColumn<String> fiscalCountryId = GeneratedColumn<String>(
+      'PAIS_ID_FISCAL', aliasedName, true,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
   final VerificationMeta _fiscalLatitudeMeta =
       const VerificationMeta('fiscalLatitude');
   @override
-  late final GeneratedColumn<double?> fiscalLatitude = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> fiscalLatitude = GeneratedColumn<double>(
       'LATITUD_FISCAL', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _fiscalLongitudeMeta =
       const VerificationMeta('fiscalLongitude');
   @override
-  late final GeneratedColumn<double?> fiscalLongitude =
-      GeneratedColumn<double?>('LONGITUD_FISCAL', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> fiscalLongitude = GeneratedColumn<double>(
+      'LONGITUD_FISCAL', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
   @override
-  late final GeneratedColumn<String?> companyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _especialVATMeta =
       const VerificationMeta('especialVAT');
   @override
-  late final GeneratedColumn<double?> especialVAT = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> especialVAT = GeneratedColumn<double>(
       'IVA_ESPECIAL', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _exemptVatMeta = const VerificationMeta('exemptVat');
   @override
-  late final GeneratedColumn<String?> exemptVat = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> exemptVat = GeneratedColumn<String>(
       'IVA_EXENTO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _currentYearSalesMeta =
       const VerificationMeta('currentYearSales');
   @override
-  late final GeneratedColumn<double?> currentYearSales =
-      GeneratedColumn<double?>('VENTAS_ANYO_ACTUAL', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> currentYearSales = GeneratedColumn<double>(
+      'VENTAS_ANYO_ACTUAL', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _previousYearSalesMeta =
       const VerificationMeta('previousYearSales');
   @override
-  late final GeneratedColumn<double?> previousYearSales =
-      GeneratedColumn<double?>('VENTAS_ANYO_ANTERIOR', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> previousYearSales =
+      GeneratedColumn<double>('VENTAS_ANYO_ANTERIOR', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _salesTwoYearsAgoMeta =
       const VerificationMeta('salesTwoYearsAgo');
   @override
-  late final GeneratedColumn<double?> salesTwoYearsAgo =
-      GeneratedColumn<double?>('VENTAS_HACE_DOS_ANYOS', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> salesTwoYearsAgo = GeneratedColumn<double>(
+      'VENTAS_HACE_DOS_ANYOS', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _currentYearMarginMeta =
       const VerificationMeta('currentYearMargin');
   @override
-  late final GeneratedColumn<double?> currentYearMargin =
-      GeneratedColumn<double?>('MARGEN_ANYO_ACTUAL', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> currentYearMargin =
+      GeneratedColumn<double>('MARGEN_ANYO_ACTUAL', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _previousYearMarginMeta =
       const VerificationMeta('previousYearMargin');
   @override
-  late final GeneratedColumn<double?> previousYearMargin =
-      GeneratedColumn<double?>('MARGEN_ANYO_ANTERIOR', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> previousYearMargin =
+      GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _marginTwoYearsAgoMeta =
       const VerificationMeta('marginTwoYearsAgo');
   @override
-  late final GeneratedColumn<double?> marginTwoYearsAgo =
-      GeneratedColumn<double?>('MARGEN_HACE_DOS_ANYOS', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> marginTwoYearsAgo =
+      GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _paymentPercentMeta =
       const VerificationMeta('paymentPercent');
   @override
-  late final GeneratedColumn<double?> paymentPercent = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> paymentPercent = GeneratedColumn<double>(
       'PORCENTAJE_ABONOS', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _warrantyPercentMeta =
       const VerificationMeta('warrantyPercent');
   @override
-  late final GeneratedColumn<double?> warrantyPercent =
-      GeneratedColumn<double?>('PORCENTAJE_GARANTIAS', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> warrantyPercent = GeneratedColumn<double>(
+      'PORCENTAJE_GARANTIAS', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _shoppingCenterNameMeta =
       const VerificationMeta('shoppingCenterName');
   @override
-  late final GeneratedColumn<String?> shoppingCenterName =
-      GeneratedColumn<String?>('CENTRAL_COMPRAS_NOMBRE', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> shoppingCenterName =
+      GeneratedColumn<String>('CENTRAL_COMPRAS_NOMBRE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _urlWebsiteMeta = const VerificationMeta('urlWebsite');
   @override
-  late final GeneratedColumn<String?> urlWebsite = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> urlWebsite = GeneratedColumn<String>(
       'URL_WEB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
   @override
-  late final GeneratedColumn<String?> divisaId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, true,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
   final VerificationMeta _rateIdMeta = const VerificationMeta('rateId');
   @override
-  late final GeneratedColumn<String?> rateId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> rateId = GeneratedColumn<String>(
       'TARIFA_ID', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _rateDescriptionMeta =
       const VerificationMeta('rateDescription');
   @override
-  late final GeneratedColumn<String?> rateDescription =
-      GeneratedColumn<String?>('TARIFA_DESCRIPCION', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> rateDescription = GeneratedColumn<String>(
+      'TARIFA_DESCRIPCION', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _generalDiscountMeta =
       const VerificationMeta('generalDiscount');
   @override
-  late final GeneratedColumn<String?> generalDiscount =
-      GeneratedColumn<String?>('DESCUENTO_GENERAL_ID', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> generalDiscount = GeneratedColumn<String>(
+      'DESCUENTO_GENERAL_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _generalDiscountDescriptionMeta =
       const VerificationMeta('generalDiscountDescription');
   @override
-  late final GeneratedColumn<String?> generalDiscountDescription =
-      GeneratedColumn<String?>(
+  late final GeneratedColumn<String> generalDiscountDescription =
+      GeneratedColumn<String>(
           'DESCUENTO_GENERAL_DESCRIPCION', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _priceCalculationTypeMeta =
       const VerificationMeta('priceCalculationType');
   @override
-  late final GeneratedColumn<String?> priceCalculationType =
-      GeneratedColumn<String?>('TIPO_CALCULO_PRECIO', aliasedName, false,
-          type: const StringType(), requiredDuringInsert: true);
+  late final GeneratedColumn<String> priceCalculationType =
+      GeneratedColumn<String>('TIPO_CALCULO_PRECIO', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _collectionTermIdMeta =
       const VerificationMeta('collectionTermId');
   @override
-  late final GeneratedColumn<String?> collectionTermId =
-      GeneratedColumn<String?>('PLAZO_COBRO_ID', aliasedName, true,
-          type: const StringType(),
-          requiredDuringInsert: false,
-          defaultConstraints: 'REFERENCES PLAZOS_COBRO (PLAZOS_COBRO_ID)');
+  late final GeneratedColumn<String> collectionTermId = GeneratedColumn<String>(
+      'PLAZO_COBRO_ID', aliasedName, true,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultConstraints: 'REFERENCES PLAZOS_COBRO (PLAZO_COBRO_ID)');
   final VerificationMeta _collectionMethodIdMeta =
       const VerificationMeta('collectionMethodId');
   @override
-  late final GeneratedColumn<String?> collectionMethodId =
-      GeneratedColumn<String?>('METODO_COBRO_ID', aliasedName, true,
-          type: const StringType(),
+  late final GeneratedColumn<String> collectionMethodId =
+      GeneratedColumn<String>('METODO_COBRO_ID', aliasedName, true,
+          type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
   final VerificationMeta _promptPaymentDiscountMeta =
       const VerificationMeta('promptPaymentDiscount');
   @override
-  late final GeneratedColumn<double?> promptPaymentDiscount =
-      GeneratedColumn<double?>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
-          type: const RealType(), requiredDuringInsert: true);
+  late final GeneratedColumn<double> promptPaymentDiscount =
+      GeneratedColumn<double>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
+          type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _internalGrantedRiskMeta =
       const VerificationMeta('internalGrantedRisk');
   @override
-  late final GeneratedColumn<double?> internalGrantedRisk =
-      GeneratedColumn<double?>('RIESGO_CONCEDIDO_INTERNO', aliasedName, false,
-          type: const RealType(), requiredDuringInsert: true);
+  late final GeneratedColumn<double> internalGrantedRisk =
+      GeneratedColumn<double>('RIESGO_CONCEDIDO_INTERNO', aliasedName, false,
+          type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _internalGrantedRiskDateMeta =
       const VerificationMeta('internalGrantedRiskDate');
   @override
-  late final GeneratedColumn<DateTime?> internalGrantedRiskDate =
-      GeneratedColumn<DateTime?>(
+  late final GeneratedColumn<DateTime> internalGrantedRiskDate =
+      GeneratedColumn<DateTime>(
           'RIESGO_CONCEDIDO_INTERNO_FECHA', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _cofaceGrantedRiskMeta =
       const VerificationMeta('cofaceGrantedRisk');
   @override
-  late final GeneratedColumn<double?> cofaceGrantedRisk =
-      GeneratedColumn<double?>('RIESGO_CONCEDIDO_COFACE', aliasedName, false,
-          type: const RealType(), requiredDuringInsert: true);
+  late final GeneratedColumn<double> cofaceGrantedRisk =
+      GeneratedColumn<double>('RIESGO_CONCEDIDO_COFACE', aliasedName, false,
+          type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _cofaceGrantedRiskDateMeta =
       const VerificationMeta('cofaceGrantedRiskDate');
   @override
-  late final GeneratedColumn<DateTime?> cofaceGrantedRiskDate =
-      GeneratedColumn<DateTime?>(
+  late final GeneratedColumn<DateTime> cofaceGrantedRiskDate =
+      GeneratedColumn<DateTime>(
           'RIESGO_CONCEDIDO_COFACE_FECHA', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _riskGrantedMeta =
       const VerificationMeta('riskGranted');
   @override
-  late final GeneratedColumn<double?> riskGranted = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> riskGranted = GeneratedColumn<double>(
       'RIESGO_CONCEDIDO', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _riskPendingCollectionDueMeta =
       const VerificationMeta('riskPendingCollectionDue');
   @override
-  late final GeneratedColumn<double?> riskPendingCollectionDue =
-      GeneratedColumn<double?>(
+  late final GeneratedColumn<double> riskPendingCollectionDue =
+      GeneratedColumn<double>(
           'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _riskPendingColleectionNotDueMeta =
       const VerificationMeta('riskPendingColleectionNotDue');
   @override
-  late final GeneratedColumn<double?> riskPendingColleectionNotDue =
-      GeneratedColumn<double?>(
+  late final GeneratedColumn<double> riskPendingColleectionNotDue =
+      GeneratedColumn<double>(
           'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _riskPendingToServeMeta =
       const VerificationMeta('riskPendingToServe');
   @override
-  late final GeneratedColumn<double?> riskPendingToServe =
-      GeneratedColumn<double?>('RIESGO_PDTE_SERVIR_CLIENTE', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> riskPendingToServe =
+      GeneratedColumn<double>('RIESGO_PDTE_SERVIR_CLIENTE', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _riskPendingBillingMeta =
       const VerificationMeta('riskPendingBilling');
   @override
-  late final GeneratedColumn<double?> riskPendingBilling =
-      GeneratedColumn<double?>(
-          'RIESGO_PDTE_FACTURAR_CLIENTE', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> riskPendingBilling =
+      GeneratedColumn<double>('RIESGO_PDTE_FACTURAR_CLIENTE', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _internalRemarksMeta =
       const VerificationMeta('internalRemarks');
   @override
-  late final GeneratedColumn<String?> internalRemarks =
-      GeneratedColumn<String?>('OBSERVACIONES_INTERNAS', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> internalRemarks = GeneratedColumn<String>(
+      'OBSERVACIONES_INTERNAS', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -6597,98 +6639,109 @@ class $CustomerTableTable extends CustomerTable
   CustomerDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      customerName: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NOMBRE']),
-      nif: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NIF']),
-      fiscalName: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NOMBRE_FISCAL']),
-      fiscalAddress1: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_FISCAL1']),
-      fiscalAddress2: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_FISCAL2']),
-      fiscalZipCode: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}CODIGO_POSTAL_FISCAL']),
-      fiscalCity: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}POBLACION_FISCAL']),
-      fiscalCountryId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID_FISCAL']),
-      fiscalState: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PROVINCIA_FISCAL']),
-      fiscalLatitude: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LATITUD_FISCAL']),
-      fiscalLongitude: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LONGITUD_FISCAL']),
-      companyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EMPRESA_ID'])!,
-      especialVAT: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IVA_ESPECIAL']),
-      exemptVat: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IVA_EXENTO']),
-      currentYearSales: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}VENTAS_ANYO_ACTUAL']),
-      previousYearSales: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}VENTAS_ANYO_ANTERIOR']),
-      salesTwoYearsAgo: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS']),
-      currentYearMargin: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}MARGEN_ANYO_ACTUAL']),
-      previousYearMargin: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}MARGEN_ANYO_ANTERIOR']),
-      marginTwoYearsAgo: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS']),
-      paymentPercent: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PORCENTAJE_ABONOS']),
-      warrantyPercent: const RealType().mapFromDatabaseResponse(
-          data['${effectivePrefix}PORCENTAJE_GARANTIAS']),
-      shoppingCenterName: const StringType().mapFromDatabaseResponse(
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      customerName: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
+      nif: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NIF']),
+      fiscalName: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_FISCAL']),
+      fiscalAddress1: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}DIRECCION_FISCAL1']),
+      fiscalAddress2: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}DIRECCION_FISCAL2']),
+      fiscalZipCode: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL_FISCAL']),
+      fiscalCity: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}POBLACION_FISCAL']),
+      fiscalCountryId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID_FISCAL']),
+      fiscalState: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}PROVINCIA_FISCAL']),
+      fiscalLatitude: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LATITUD_FISCAL']),
+      fiscalLongitude: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD_FISCAL']),
+      companyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      especialVAT: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IVA_ESPECIAL']),
+      exemptVat: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}IVA_EXENTO']),
+      currentYearSales: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ACTUAL']),
+      previousYearSales: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ANTERIOR']),
+      salesTwoYearsAgo: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS']),
+      currentYearMargin: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL']),
+      previousYearMargin: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR']),
+      marginTwoYearsAgo: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS']),
+      paymentPercent: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_ABONOS']),
+      warrantyPercent: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_GARANTIAS']),
+      shoppingCenterName: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}CENTRAL_COMPRAS_NOMBRE']),
-      urlWebsite: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}URL_WEB']),
-      divisaId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIVISA_ID']),
-      rateId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TARIFA_ID']),
-      rateDescription: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      generalDiscount: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}DESCUENTO_GENERAL_ID']),
-      generalDiscountDescription: const StringType().mapFromDatabaseResponse(
+      urlWebsite: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}URL_WEB']),
+      divisaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID']),
+      rateId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID']),
+      rateDescription: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
+      generalDiscount: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}DESCUENTO_GENERAL_ID']),
+      generalDiscountDescription: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}DESCUENTO_GENERAL_DESCRIPCION']),
-      priceCalculationType: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}TIPO_CALCULO_PRECIO'])!,
-      collectionTermId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PLAZO_COBRO_ID']),
-      collectionMethodId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}METODO_COBRO_ID']),
-      promptPaymentDiscount: const RealType().mapFromDatabaseResponse(
+      priceCalculationType: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}TIPO_CALCULO_PRECIO'])!,
+      collectionTermId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID']),
+      collectionMethodId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID']),
+      promptPaymentDiscount: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'])!,
-      internalGrantedRisk: const RealType().mapFromDatabaseResponse(
+      internalGrantedRisk: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO'])!,
-      internalGrantedRiskDate: const DateTimeType().mapFromDatabaseResponse(
+      internalGrantedRiskDate: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime,
           data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO_FECHA']),
-      cofaceGrantedRisk: const RealType().mapFromDatabaseResponse(
+      cofaceGrantedRisk: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE'])!,
-      cofaceGrantedRiskDate: const DateTimeType().mapFromDatabaseResponse(
+      cofaceGrantedRiskDate: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime,
           data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE_FECHA']),
-      riskGranted: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RIESGO_CONCEDIDO']),
-      riskPendingCollectionDue: const RealType().mapFromDatabaseResponse(
+      riskGranted: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}RIESGO_CONCEDIDO']),
+      riskPendingCollectionDue: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_COBRO_VENCIDO_CLIENTE']),
-      riskPendingColleectionNotDue: const RealType().mapFromDatabaseResponse(
+      riskPendingColleectionNotDue: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE']),
-      riskPendingToServe: const RealType().mapFromDatabaseResponse(
+      riskPendingToServe: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_SERVIR_CLIENTE']),
-      riskPendingBilling: const RealType().mapFromDatabaseResponse(
+      riskPendingBilling: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_FACTURAR_CLIENTE']),
-      internalRemarks: const StringType().mapFromDatabaseResponse(
+      internalRemarks: attachedDatabase.options.types.read(DriftSqlType.string,
           data['${effectivePrefix}OBSERVACIONES_INTERNAS']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -6782,25 +6835,25 @@ class $CustomerUserTableTable extends CustomerUserTable
   $CustomerUserTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _userIdMeta = const VerificationMeta('userId');
   @override
-  late final GeneratedColumn<String?> userId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> userId = GeneratedColumn<String>(
       'USUARIO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -6850,14 +6903,14 @@ class $CustomerUserTableTable extends CustomerUserTable
   CustomerUserDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerUserDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      userId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}USUARIO_ID'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      userId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -6893,7 +6946,7 @@ class CustomerNetGroupTableCompanion
   static Insertable<CustomerNetGroupDTO> custom({
     Expression<String>? customerId,
     Expression<String>? netGroupId,
-    Expression<String?>? netGroupDescription,
+    Expression<String>? netGroupDescription,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -6933,7 +6986,7 @@ class CustomerNetGroupTableCompanion
     }
     if (netGroupDescription.present) {
       map['GRUPO_NETO_DESCRIPCION'] =
-          Variable<String?>(netGroupDescription.value);
+          Variable<String>(netGroupDescription.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -6965,31 +7018,31 @@ class $CustomerNetGroupTableTable extends CustomerNetGroupTable
   $CustomerNetGroupTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _netGroupIdMeta = const VerificationMeta('netGroupId');
   @override
-  late final GeneratedColumn<String?> netGroupId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> netGroupId = GeneratedColumn<String>(
       'GRUPO_NETO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _netGroupDescriptionMeta =
       const VerificationMeta('netGroupDescription');
   @override
-  late final GeneratedColumn<String?> netGroupDescription =
-      GeneratedColumn<String?>('GRUPO_NETO_DESCRIPCION', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> netGroupDescription =
+      GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -7048,16 +7101,17 @@ class $CustomerNetGroupTableTable extends CustomerNetGroupTable
   CustomerNetGroupDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerNetGroupDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      netGroupId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}GRUPO_NETO_ID'])!,
-      netGroupDescription: const StringType().mapFromDatabaseResponse(
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      netGroupId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}GRUPO_NETO_ID'])!,
+      netGroupDescription: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -7131,20 +7185,20 @@ class FamilyTableCompanion extends UpdateCompanion<FamilyDTO> {
   static Insertable<FamilyDTO> custom({
     Expression<String>? id,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -7221,46 +7275,46 @@ class FamilyTableCompanion extends UpdateCompanion<FamilyDTO> {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7305,110 +7359,110 @@ class $FamilyTableTable extends FamilyTable
   $FamilyTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -7560,42 +7614,42 @@ class $FamilyTableTable extends FamilyTable
   FamilyDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return FamilyDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FAMILIA_ID'])!,
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -7674,20 +7728,20 @@ class SubfamilyTableCompanion extends UpdateCompanion<SubfamilyDTO> {
     Expression<String>? id,
     Expression<String>? familyId,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -7770,46 +7824,46 @@ class SubfamilyTableCompanion extends UpdateCompanion<SubfamilyDTO> {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7855,115 +7909,115 @@ class $SubfamilyTableTable extends SubfamilyTable
   $SubfamilyTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _familyIdMeta = const VerificationMeta('familyId');
   @override
-  late final GeneratedColumn<String?> familyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> familyId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -7989,9 +8043,9 @@ class $SubfamilyTableTable extends SubfamilyTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'FAMILIAS';
+  String get aliasedName => _alias ?? 'SUBFAMILIAS';
   @override
-  String get actualTableName => 'FAMILIAS';
+  String get actualTableName => 'SUBFAMILIAS';
   @override
   VerificationContext validateIntegrity(Insertable<SubfamilyDTO> instance,
       {bool isInserting = false}) {
@@ -8122,44 +8176,44 @@ class $SubfamilyTableTable extends SubfamilyTable
   SubfamilyDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SubfamilyDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      familyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FAMILIA_ID'])!,
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
+      familyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -8302,51 +8356,51 @@ class $CustomerDiscountTableTable extends CustomerDiscountTable
   $CustomerDiscountTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _familyIdMeta = const VerificationMeta('familyId');
   @override
-  late final GeneratedColumn<String?> familyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> familyId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints: 'REFERENCES FAMILIAS (FAMILIA_ID)');
   final VerificationMeta _subfamilyIdMeta =
       const VerificationMeta('subfamilyId');
   @override
-  late final GeneratedColumn<String?> subfamilyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> subfamilyId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES FAMILIAS (SUBFAMILIA_ID)');
+      defaultConstraints: 'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)');
   final VerificationMeta _quantityFromMeta =
       const VerificationMeta('quantityFrom');
   @override
-  late final GeneratedColumn<double?> quantityFrom = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _discountMeta = const VerificationMeta('discount');
   @override
-  late final GeneratedColumn<double?> discount = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount = GeneratedColumn<double>(
       'DESCUENTO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -8436,22 +8490,22 @@ class $CustomerDiscountTableTable extends CustomerDiscountTable
   CustomerDiscountDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerDiscountDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      familyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FAMILIA_ID'])!,
-      subfamilyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      quantityFrom: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      discount: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      familyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
+      subfamilyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
+      quantityFrom: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
+      discount: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -8505,13 +8559,13 @@ class CustomerContactTableCompanion
   static Insertable<CustomerContactDTO> custom({
     Expression<String>? customerId,
     Expression<String>? contactId,
-    Expression<String?>? remarks,
-    Expression<String?>? name,
-    Expression<String?>? lastName1,
-    Expression<String?>? lastName2,
-    Expression<String?>? phone1,
-    Expression<String?>? phone2,
-    Expression<String?>? email,
+    Expression<String>? remarks,
+    Expression<String>? name,
+    Expression<String>? lastName1,
+    Expression<String>? lastName2,
+    Expression<String>? phone1,
+    Expression<String>? phone2,
+    Expression<String>? email,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -8521,7 +8575,7 @@ class CustomerContactTableCompanion
       if (remarks != null) 'OBSERVACIONES': remarks,
       if (name != null) 'NOMBRE': name,
       if (lastName1 != null) 'APELLIDO1': lastName1,
-      if (lastName2 != null) 'APELLIDO12': lastName2,
+      if (lastName2 != null) 'APELLIDO2': lastName2,
       if (phone1 != null) 'TELEFONO1': phone1,
       if (phone2 != null) 'TELEFONO2': phone2,
       if (email != null) 'EMAIL': email,
@@ -8567,25 +8621,25 @@ class CustomerContactTableCompanion
       map['CONTACTO_ID'] = Variable<String>(contactId.value);
     }
     if (remarks.present) {
-      map['OBSERVACIONES'] = Variable<String?>(remarks.value);
+      map['OBSERVACIONES'] = Variable<String>(remarks.value);
     }
     if (name.present) {
-      map['NOMBRE'] = Variable<String?>(name.value);
+      map['NOMBRE'] = Variable<String>(name.value);
     }
     if (lastName1.present) {
-      map['APELLIDO1'] = Variable<String?>(lastName1.value);
+      map['APELLIDO1'] = Variable<String>(lastName1.value);
     }
     if (lastName2.present) {
-      map['APELLIDO12'] = Variable<String?>(lastName2.value);
+      map['APELLIDO2'] = Variable<String>(lastName2.value);
     }
     if (phone1.present) {
-      map['TELEFONO1'] = Variable<String?>(phone1.value);
+      map['TELEFONO1'] = Variable<String>(phone1.value);
     }
     if (phone2.present) {
-      map['TELEFONO2'] = Variable<String?>(phone2.value);
+      map['TELEFONO2'] = Variable<String>(phone2.value);
     }
     if (email.present) {
-      map['EMAIL'] = Variable<String?>(email.value);
+      map['EMAIL'] = Variable<String>(email.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -8623,60 +8677,60 @@ class $CustomerContactTableTable extends CustomerContactTable
   $CustomerContactTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _contactIdMeta = const VerificationMeta('contactId');
   @override
-  late final GeneratedColumn<String?> contactId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
       'CONTACTO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _remarksMeta = const VerificationMeta('remarks');
   @override
-  late final GeneratedColumn<String?> remarks = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> remarks = GeneratedColumn<String>(
       'OBSERVACIONES', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
-  late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastName1Meta = const VerificationMeta('lastName1');
   @override
-  late final GeneratedColumn<String?> lastName1 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> lastName1 = GeneratedColumn<String>(
       'APELLIDO1', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastName2Meta = const VerificationMeta('lastName2');
   @override
-  late final GeneratedColumn<String?> lastName2 = GeneratedColumn<String?>(
-      'APELLIDO12', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> lastName2 = GeneratedColumn<String>(
+      'APELLIDO2', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _phone1Meta = const VerificationMeta('phone1');
   @override
-  late final GeneratedColumn<String?> phone1 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> phone1 = GeneratedColumn<String>(
       'TELEFONO1', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _phone2Meta = const VerificationMeta('phone2');
   @override
-  late final GeneratedColumn<String?> phone2 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> phone2 = GeneratedColumn<String>(
       'TELEFONO2', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _emailMeta = const VerificationMeta('email');
   @override
-  late final GeneratedColumn<String?> email = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
       'EMAIL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -8730,9 +8784,9 @@ class $CustomerContactTableTable extends CustomerContactTable
       context.handle(_lastName1Meta,
           lastName1.isAcceptableOrUnknown(data['APELLIDO1']!, _lastName1Meta));
     }
-    if (data.containsKey('APELLIDO12')) {
+    if (data.containsKey('APELLIDO2')) {
       context.handle(_lastName2Meta,
-          lastName2.isAcceptableOrUnknown(data['APELLIDO12']!, _lastName2Meta));
+          lastName2.isAcceptableOrUnknown(data['APELLIDO2']!, _lastName2Meta));
     }
     if (data.containsKey('TELEFONO1')) {
       context.handle(_phone1Meta,
@@ -8767,28 +8821,28 @@ class $CustomerContactTableTable extends CustomerContactTable
   CustomerContactDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerContactDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      contactId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CONTACTO_ID'])!,
-      remarks: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}OBSERVACIONES']),
-      name: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NOMBRE']),
-      lastName1: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}APELLIDO1']),
-      lastName2: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}APELLIDO12']),
-      phone1: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TELEFONO1']),
-      phone2: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TELEFONO2']),
-      email: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EMAIL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      contactId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO_ID'])!,
+      remarks: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
+      name: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
+      lastName1: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO1']),
+      lastName2: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO2']),
+      phone1: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO1']),
+      phone2: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO2']),
+      email: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMAIL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -8850,13 +8904,13 @@ class CustomerAddressTableCompanion
   static Insertable<CustomerAddressDTO> custom({
     Expression<String>? customerId,
     Expression<String>? addressId,
-    Expression<String?>? name,
-    Expression<String?>? address1,
-    Expression<String?>? address2,
-    Expression<String?>? zipCode,
-    Expression<String?>? city,
-    Expression<String?>? state,
-    Expression<String?>? countryId,
+    Expression<String>? name,
+    Expression<String>? address1,
+    Expression<String>? address2,
+    Expression<String>? zipCode,
+    Expression<String>? city,
+    Expression<String>? state,
+    Expression<String>? countryId,
     Expression<double>? latitude,
     Expression<double>? longitude,
     Expression<DateTime>? lastUpdated,
@@ -8920,25 +8974,25 @@ class CustomerAddressTableCompanion
       map['DIRECCION_ID'] = Variable<String>(addressId.value);
     }
     if (name.present) {
-      map['NOMBRE'] = Variable<String?>(name.value);
+      map['NOMBRE'] = Variable<String>(name.value);
     }
     if (address1.present) {
-      map['DIRECCION1'] = Variable<String?>(address1.value);
+      map['DIRECCION1'] = Variable<String>(address1.value);
     }
     if (address2.present) {
-      map['DIRECCION2'] = Variable<String?>(address2.value);
+      map['DIRECCION2'] = Variable<String>(address2.value);
     }
     if (zipCode.present) {
-      map['CODIGO_POSTAL'] = Variable<String?>(zipCode.value);
+      map['CODIGO_POSTAL'] = Variable<String>(zipCode.value);
     }
     if (city.present) {
-      map['POBLACION'] = Variable<String?>(city.value);
+      map['POBLACION'] = Variable<String>(city.value);
     }
     if (state.present) {
-      map['PROVINCIA'] = Variable<String?>(state.value);
+      map['PROVINCIA'] = Variable<String>(state.value);
     }
     if (countryId.present) {
-      map['PAIS_ID'] = Variable<String?>(countryId.value);
+      map['PAIS_ID'] = Variable<String>(countryId.value);
     }
     if (latitude.present) {
       map['LATITUD'] = Variable<double>(latitude.value);
@@ -8984,72 +9038,72 @@ class $CustomerAddressTableTable extends CustomerAddressTable
   $CustomerAddressTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _addressIdMeta = const VerificationMeta('addressId');
   @override
-  late final GeneratedColumn<String?> addressId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> addressId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
-  late final GeneratedColumn<String?> name = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _address1Meta = const VerificationMeta('address1');
   @override
-  late final GeneratedColumn<String?> address1 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> address1 = GeneratedColumn<String>(
       'DIRECCION1', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _address2Meta = const VerificationMeta('address2');
   @override
-  late final GeneratedColumn<String?> address2 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> address2 = GeneratedColumn<String>(
       'DIRECCION2', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _zipCodeMeta = const VerificationMeta('zipCode');
   @override
-  late final GeneratedColumn<String?> zipCode = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> zipCode = GeneratedColumn<String>(
       'CODIGO_POSTAL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _cityMeta = const VerificationMeta('city');
   @override
-  late final GeneratedColumn<String?> city = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> city = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _stateMeta = const VerificationMeta('state');
   @override
-  late final GeneratedColumn<String?> state = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> state = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _countryIdMeta = const VerificationMeta('countryId');
   @override
-  late final GeneratedColumn<String?> countryId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
   final VerificationMeta _latitudeMeta = const VerificationMeta('latitude');
   @override
-  late final GeneratedColumn<double?> latitude = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _longitudeMeta = const VerificationMeta('longitude');
   @override
-  late final GeneratedColumn<double?> longitude = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -9154,32 +9208,32 @@ class $CustomerAddressTableTable extends CustomerAddressTable
   CustomerAddressDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerAddressDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      addressId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION_ID'])!,
-      name: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NOMBRE']),
-      address1: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION1']),
-      address2: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DIRECCION2']),
-      zipCode: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CODIGO_POSTAL']),
-      city: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}POBLACION']),
-      state: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PROVINCIA']),
-      countryId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PAIS_ID']),
-      latitude: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LATITUD'])!,
-      longitude: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LONGITUD'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      addressId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID'])!,
+      name: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
+      address1: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
+      address2: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
+      zipCode: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
+      city: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
+      state: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
+      countryId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      latitude: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
+      longitude: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -9236,14 +9290,14 @@ class CustomerPendingPaymentTableCompanion
   static Insertable<CustomerPendingPaymentDTO> custom({
     Expression<String>? customerId,
     Expression<String>? effectId,
-    Expression<String?>? invoiceId,
-    Expression<DateTime?>? invoiceDate,
-    Expression<DateTime?>? expirationDate,
-    Expression<String?>? collectionMethodId,
-    Expression<String?>? collectionStatusId,
-    Expression<double?>? amount,
-    Expression<DateTime?>? initialExpirationDate,
-    Expression<String?>? expirationJBM,
+    Expression<String>? invoiceId,
+    Expression<DateTime>? invoiceDate,
+    Expression<DateTime>? expirationDate,
+    Expression<String>? collectionMethodId,
+    Expression<String>? collectionStatusId,
+    Expression<double>? amount,
+    Expression<DateTime>? initialExpirationDate,
+    Expression<String>? expirationJBM,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -9304,29 +9358,29 @@ class CustomerPendingPaymentTableCompanion
       map['EFECTO_ID'] = Variable<String>(effectId.value);
     }
     if (invoiceId.present) {
-      map['FACTURA_ID'] = Variable<String?>(invoiceId.value);
+      map['FACTURA_ID'] = Variable<String>(invoiceId.value);
     }
     if (invoiceDate.present) {
-      map['FECHA_FACTURA'] = Variable<DateTime?>(invoiceDate.value);
+      map['FECHA_FACTURA'] = Variable<DateTime>(invoiceDate.value);
     }
     if (expirationDate.present) {
-      map['FECHA_VENCIMIENTO'] = Variable<DateTime?>(expirationDate.value);
+      map['FECHA_VENCIMIENTO'] = Variable<DateTime>(expirationDate.value);
     }
     if (collectionMethodId.present) {
-      map['METODO_COBRO_ID'] = Variable<String?>(collectionMethodId.value);
+      map['METODO_COBRO_ID'] = Variable<String>(collectionMethodId.value);
     }
     if (collectionStatusId.present) {
-      map['ESTADO_COBRO_ID'] = Variable<String?>(collectionStatusId.value);
+      map['ESTADO_COBRO_ID'] = Variable<String>(collectionStatusId.value);
     }
     if (amount.present) {
-      map['IMPORTE'] = Variable<double?>(amount.value);
+      map['IMPORTE'] = Variable<double>(amount.value);
     }
     if (initialExpirationDate.present) {
       map['FECHA_VENCIMIENTO_INICIAL'] =
-          Variable<DateTime?>(initialExpirationDate.value);
+          Variable<DateTime>(initialExpirationDate.value);
     }
     if (expirationJBM.present) {
-      map['VENCIDO_JBM'] = Variable<String?>(expirationJBM.value);
+      map['VENCIDO_JBM'] = Variable<String>(expirationJBM.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9367,73 +9421,73 @@ class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
   $CustomerPendingPaymentTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _effectIdMeta = const VerificationMeta('effectId');
   @override
-  late final GeneratedColumn<String?> effectId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> effectId = GeneratedColumn<String>(
       'EFECTO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _invoiceIdMeta = const VerificationMeta('invoiceId');
   @override
-  late final GeneratedColumn<String?> invoiceId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> invoiceId = GeneratedColumn<String>(
       'FACTURA_ID', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _invoiceDateMeta =
       const VerificationMeta('invoiceDate');
   @override
-  late final GeneratedColumn<DateTime?> invoiceDate =
-      GeneratedColumn<DateTime?>('FECHA_FACTURA', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime> invoiceDate = GeneratedColumn<DateTime>(
+      'FECHA_FACTURA', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _expirationDateMeta =
       const VerificationMeta('expirationDate');
   @override
-  late final GeneratedColumn<DateTime?> expirationDate =
-      GeneratedColumn<DateTime?>('FECHA_VENCIMIENTO', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime> expirationDate =
+      GeneratedColumn<DateTime>('FECHA_VENCIMIENTO', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _collectionMethodIdMeta =
       const VerificationMeta('collectionMethodId');
   @override
-  late final GeneratedColumn<String?> collectionMethodId =
-      GeneratedColumn<String?>('METODO_COBRO_ID', aliasedName, true,
-          type: const StringType(),
+  late final GeneratedColumn<String> collectionMethodId =
+      GeneratedColumn<String>('METODO_COBRO_ID', aliasedName, true,
+          type: DriftSqlType.string,
           requiredDuringInsert: false,
           defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
   final VerificationMeta _collectionStatusIdMeta =
       const VerificationMeta('collectionStatusId');
   @override
-  late final GeneratedColumn<String?> collectionStatusId =
-      GeneratedColumn<String?>('ESTADO_COBRO_ID', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> collectionStatusId =
+      GeneratedColumn<String>('ESTADO_COBRO_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _amountMeta = const VerificationMeta('amount');
   @override
-  late final GeneratedColumn<double?> amount = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
       'IMPORTE', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _initialExpirationDateMeta =
       const VerificationMeta('initialExpirationDate');
   @override
-  late final GeneratedColumn<DateTime?> initialExpirationDate =
-      GeneratedColumn<DateTime?>('FECHA_VENCIMIENTO_INICIAL', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime> initialExpirationDate =
+      GeneratedColumn<DateTime>('FECHA_VENCIMIENTO_INICIAL', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _expirationJBMMeta =
       const VerificationMeta('expirationJBM');
   @override
-  late final GeneratedColumn<String?> expirationJBM = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> expirationJBM = GeneratedColumn<String>(
       'VENCIDO_JBM', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -9541,30 +9595,31 @@ class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerPendingPaymentDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      effectId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EFECTO_ID'])!,
-      invoiceId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FACTURA_ID']),
-      invoiceDate: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_FACTURA']),
-      expirationDate: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_VENCIMIENTO']),
-      collectionMethodId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}METODO_COBRO_ID']),
-      collectionStatusId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ESTADO_COBRO_ID']),
-      amount: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IMPORTE']),
-      initialExpirationDate: const DateTimeType().mapFromDatabaseResponse(
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      effectId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EFECTO_ID'])!,
+      invoiceId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}FACTURA_ID']),
+      invoiceDate: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_FACTURA']),
+      expirationDate: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}FECHA_VENCIMIENTO']),
+      collectionMethodId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID']),
+      collectionStatusId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ESTADO_COBRO_ID']),
+      amount: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE']),
+      initialExpirationDate: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime,
           data['${effectivePrefix}FECHA_VENCIMIENTO_INICIAL']),
-      expirationJBM: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}VENCIDO_JBM']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      expirationJBM: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}VENCIDO_JBM']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -9610,7 +9665,7 @@ class CustomerNetPriceTableCompanion
     Expression<String>? articleId,
     Expression<double>? quantityFrom,
     Expression<double>? price,
-    Expression<double?>? priceType,
+    Expression<double>? priceType,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -9660,7 +9715,7 @@ class CustomerNetPriceTableCompanion
       map['PRECIO'] = Variable<double>(price.value);
     }
     if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double?>(priceType.value);
+      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9694,41 +9749,41 @@ class $CustomerNetPriceTableTable extends CustomerNetPriceTable
   $CustomerNetPriceTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _quantityFromMeta =
       const VerificationMeta('quantityFrom');
   @override
-  late final GeneratedColumn<double?> quantityFrom = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceMeta = const VerificationMeta('price');
   @override
-  late final GeneratedColumn<double?> price = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
   @override
-  late final GeneratedColumn<double?> priceType = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -9808,20 +9863,20 @@ class $CustomerNetPriceTableTable extends CustomerNetPriceTable
   CustomerNetPriceDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerNetPriceDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      quantityFrom: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      price: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PRECIO'])!,
-      priceType: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_PRECIO']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      quantityFrom: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
+      price: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
+      priceType: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -9866,7 +9921,7 @@ class CustomerRappelTableCompanion extends UpdateCompanion<CustomerRappelDTO> {
     Expression<String>? rappelId,
     Expression<String>? description,
     Expression<DateTime>? dateFrom,
-    Expression<DateTime?>? dateTo,
+    Expression<DateTime>? dateTo,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -9916,7 +9971,7 @@ class CustomerRappelTableCompanion extends UpdateCompanion<CustomerRappelDTO> {
       map['FECHA_DESDE'] = Variable<DateTime>(dateFrom.value);
     }
     if (dateTo.present) {
-      map['FECHA_HASTA'] = Variable<DateTime?>(dateTo.value);
+      map['FECHA_HASTA'] = Variable<DateTime>(dateTo.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9950,41 +10005,41 @@ class $CustomerRappelTableTable extends CustomerRappelTable
   $CustomerRappelTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _rappelIdMeta = const VerificationMeta('rappelId');
   @override
-  late final GeneratedColumn<String?> rappelId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> rappelId = GeneratedColumn<String>(
       'RAPPEL_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionMeta =
       const VerificationMeta('description');
   @override
-  late final GeneratedColumn<String?> description = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
       'DESCRIPCION', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _dateFromMeta = const VerificationMeta('dateFrom');
   @override
-  late final GeneratedColumn<DateTime?> dateFrom = GeneratedColumn<DateTime?>(
+  late final GeneratedColumn<DateTime> dateFrom = GeneratedColumn<DateTime>(
       'FECHA_DESDE', aliasedName, false,
-      type: const IntType(), requiredDuringInsert: true);
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _dateToMeta = const VerificationMeta('dateTo');
   @override
-  late final GeneratedColumn<DateTime?> dateTo = GeneratedColumn<DateTime?>(
+  late final GeneratedColumn<DateTime> dateTo = GeneratedColumn<DateTime>(
       'FECHA_HASTA', aliasedName, true,
-      type: const IntType(), requiredDuringInsert: false);
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -10059,20 +10114,20 @@ class $CustomerRappelTableTable extends CustomerRappelTable
   CustomerRappelDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return CustomerRappelDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      rappelId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RAPPEL_ID'])!,
-      description: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION'])!,
-      dateFrom: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_DESDE'])!,
-      dateTo: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA_HASTA']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      rappelId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RAPPEL_ID'])!,
+      description: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
+      dateFrom: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_DESDE'])!,
+      dateTo: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_HASTA']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -10154,20 +10209,20 @@ class $TopArticleTableTable extends TopArticleTable
   $TopArticleTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -10210,12 +10265,12 @@ class $TopArticleTableTable extends TopArticleTable
   TopArticleDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return TopArticleDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -10440,22 +10495,22 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
   static Insertable<ArticleDTO> custom({
     Expression<String>? id,
     Expression<String>? descriptionES,
-    Expression<String?>? descriptionEN,
-    Expression<String?>? descriptionFR,
-    Expression<String?>? descriptionDE,
-    Expression<String?>? descriptionCA,
-    Expression<String?>? descriptionGB,
-    Expression<String?>? descriptionHU,
-    Expression<String?>? descriptionIT,
-    Expression<String?>? descriptionNL,
-    Expression<String?>? descriptionPL,
-    Expression<String?>? descriptionPT,
-    Expression<String?>? descriptionRO,
-    Expression<String?>? descriptionRU,
-    Expression<String?>? descriptionCN,
-    Expression<String?>? descriptionEL,
-    Expression<String?>? familyId,
-    Expression<String?>? subfamilyId,
+    Expression<String>? descriptionEN,
+    Expression<String>? descriptionFR,
+    Expression<String>? descriptionDE,
+    Expression<String>? descriptionCA,
+    Expression<String>? descriptionGB,
+    Expression<String>? descriptionHU,
+    Expression<String>? descriptionIT,
+    Expression<String>? descriptionNL,
+    Expression<String>? descriptionPL,
+    Expression<String>? descriptionPT,
+    Expression<String>? descriptionRO,
+    Expression<String>? descriptionRU,
+    Expression<String>? descriptionCN,
+    Expression<String>? descriptionEL,
+    Expression<String>? familyId,
+    Expression<String>? subfamilyId,
     Expression<double>? minimumSales,
     Expression<double>? multipleSales,
     Expression<double>? subboxUnits,
@@ -10465,41 +10520,41 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
     Expression<String>? isActiveApp,
     Expression<String>? inCatalogue,
     Expression<String>? discontinued,
-    Expression<String?>? cataloguePage,
-    Expression<String?>? cataloguePage2,
+    Expression<String>? cataloguePage,
+    Expression<String>? cataloguePage2,
     Expression<double>? weightKg,
     Expression<double>? largeCm,
     Expression<double>? widthCm,
     Expression<double>? tallCm,
-    Expression<String?>? summaryES,
-    Expression<String?>? summaryEN,
-    Expression<String?>? summaryFR,
-    Expression<String?>? summaryDE,
-    Expression<String?>? summaryCA,
-    Expression<String?>? summaryGB,
-    Expression<String?>? summaryHU,
-    Expression<String?>? summaryIT,
-    Expression<String?>? summaryNL,
-    Expression<String?>? summaryPL,
-    Expression<String?>? summaryPT,
-    Expression<String?>? summaryRO,
-    Expression<String?>? summaryRU,
-    Expression<String?>? summaryCN,
-    Expression<String?>? summaryEL,
-    Expression<double?>? availableStock,
-    Expression<double?>? currentSales,
-    Expression<double?>? previousSales,
-    Expression<double?>? purchasesDeliveryQuantity1,
-    Expression<double?>? purchasesDeliveryQuantity2,
-    Expression<double?>? purchasesDeliveryQuantity3,
-    Expression<double?>? purchasesDeliveryQuantityMore3,
-    Expression<DateTime?>? purchasesDeliveryDate1,
-    Expression<DateTime?>? purchasesDeliveryDate2,
-    Expression<DateTime?>? purchasesDeliveryDate3,
-    Expression<String?>? purchasesDeliveryStatus1,
-    Expression<String?>? purchasesDeliveryStatus2,
-    Expression<String?>? purchasesDeliveryStatus3,
-    Expression<String?>? principalImage,
+    Expression<String>? summaryES,
+    Expression<String>? summaryEN,
+    Expression<String>? summaryFR,
+    Expression<String>? summaryDE,
+    Expression<String>? summaryCA,
+    Expression<String>? summaryGB,
+    Expression<String>? summaryHU,
+    Expression<String>? summaryIT,
+    Expression<String>? summaryNL,
+    Expression<String>? summaryPL,
+    Expression<String>? summaryPT,
+    Expression<String>? summaryRO,
+    Expression<String>? summaryRU,
+    Expression<String>? summaryCN,
+    Expression<String>? summaryEL,
+    Expression<double>? availableStock,
+    Expression<double>? currentSales,
+    Expression<double>? previousSales,
+    Expression<double>? purchasesDeliveryQuantity1,
+    Expression<double>? purchasesDeliveryQuantity2,
+    Expression<double>? purchasesDeliveryQuantity3,
+    Expression<double>? purchasesDeliveryQuantityMore3,
+    Expression<DateTime>? purchasesDeliveryDate1,
+    Expression<DateTime>? purchasesDeliveryDate2,
+    Expression<DateTime>? purchasesDeliveryDate3,
+    Expression<String>? purchasesDeliveryStatus1,
+    Expression<String>? purchasesDeliveryStatus2,
+    Expression<String>? purchasesDeliveryStatus3,
+    Expression<String>? principalImage,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -10734,52 +10789,52 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
       map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
     }
     if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String?>(descriptionEN.value);
+      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
     }
     if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String?>(descriptionFR.value);
+      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
     }
     if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String?>(descriptionDE.value);
+      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
     }
     if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String?>(descriptionCA.value);
+      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
     }
     if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String?>(descriptionGB.value);
+      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
     }
     if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String?>(descriptionHU.value);
+      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
     }
     if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String?>(descriptionIT.value);
+      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
     }
     if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String?>(descriptionNL.value);
+      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
     }
     if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String?>(descriptionPL.value);
+      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
     }
     if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String?>(descriptionPT.value);
+      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
     }
     if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String?>(descriptionRO.value);
+      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
     }
     if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String?>(descriptionRU.value);
+      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
     }
     if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String?>(descriptionCN.value);
+      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
     }
     if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String?>(descriptionEL.value);
+      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
     }
     if (familyId.present) {
-      map['FAMILIA_ID'] = Variable<String?>(familyId.value);
+      map['FAMILIA_ID'] = Variable<String>(familyId.value);
     }
     if (subfamilyId.present) {
-      map['SUBFAMILIA_ID'] = Variable<String?>(subfamilyId.value);
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamilyId.value);
     }
     if (minimumSales.present) {
       map['VENTA_MINIMO'] = Variable<double>(minimumSales.value);
@@ -10809,10 +10864,10 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
       map['DESCATALOGADO'] = Variable<String>(discontinued.value);
     }
     if (cataloguePage.present) {
-      map['PAGINA_EN_CATALOGO'] = Variable<String?>(cataloguePage.value);
+      map['PAGINA_EN_CATALOGO'] = Variable<String>(cataloguePage.value);
     }
     if (cataloguePage2.present) {
-      map['PAGINA_EN_CATALOGO2'] = Variable<String?>(cataloguePage2.value);
+      map['PAGINA_EN_CATALOGO2'] = Variable<String>(cataloguePage2.value);
     }
     if (weightKg.present) {
       map['PESO_KG'] = Variable<double>(weightKg.value);
@@ -10827,101 +10882,101 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
       map['ALTO_CM'] = Variable<double>(tallCm.value);
     }
     if (summaryES.present) {
-      map['RESUMEN_ES'] = Variable<String?>(summaryES.value);
+      map['RESUMEN_ES'] = Variable<String>(summaryES.value);
     }
     if (summaryEN.present) {
-      map['RESUMEN_EN'] = Variable<String?>(summaryEN.value);
+      map['RESUMEN_EN'] = Variable<String>(summaryEN.value);
     }
     if (summaryFR.present) {
-      map['RESUMEN_FR'] = Variable<String?>(summaryFR.value);
+      map['RESUMEN_FR'] = Variable<String>(summaryFR.value);
     }
     if (summaryDE.present) {
-      map['RESUMEN_DE'] = Variable<String?>(summaryDE.value);
+      map['RESUMEN_DE'] = Variable<String>(summaryDE.value);
     }
     if (summaryCA.present) {
-      map['RESUMEN_CA'] = Variable<String?>(summaryCA.value);
+      map['RESUMEN_CA'] = Variable<String>(summaryCA.value);
     }
     if (summaryGB.present) {
-      map['RESUMEN_GB'] = Variable<String?>(summaryGB.value);
+      map['RESUMEN_GB'] = Variable<String>(summaryGB.value);
     }
     if (summaryHU.present) {
-      map['RESUMEN_HU'] = Variable<String?>(summaryHU.value);
+      map['RESUMEN_HU'] = Variable<String>(summaryHU.value);
     }
     if (summaryIT.present) {
-      map['RESUMEN_IT'] = Variable<String?>(summaryIT.value);
+      map['RESUMEN_IT'] = Variable<String>(summaryIT.value);
     }
     if (summaryNL.present) {
-      map['RESUMEN_NL'] = Variable<String?>(summaryNL.value);
+      map['RESUMEN_NL'] = Variable<String>(summaryNL.value);
     }
     if (summaryPL.present) {
-      map['RESUMEN_PL'] = Variable<String?>(summaryPL.value);
+      map['RESUMEN_PL'] = Variable<String>(summaryPL.value);
     }
     if (summaryPT.present) {
-      map['RESUMEN_PT'] = Variable<String?>(summaryPT.value);
+      map['RESUMEN_PT'] = Variable<String>(summaryPT.value);
     }
     if (summaryRO.present) {
-      map['RESUMEN_RO'] = Variable<String?>(summaryRO.value);
+      map['RESUMEN_RO'] = Variable<String>(summaryRO.value);
     }
     if (summaryRU.present) {
-      map['RESUMEN_RU'] = Variable<String?>(summaryRU.value);
+      map['RESUMEN_RU'] = Variable<String>(summaryRU.value);
     }
     if (summaryCN.present) {
-      map['RESUMEN_CN'] = Variable<String?>(summaryCN.value);
+      map['RESUMEN_CN'] = Variable<String>(summaryCN.value);
     }
     if (summaryEL.present) {
-      map['RESUMEN_EL'] = Variable<String?>(summaryEL.value);
+      map['RESUMEN_EL'] = Variable<String>(summaryEL.value);
     }
     if (availableStock.present) {
-      map['STOCK_DISPONIBLE'] = Variable<double?>(availableStock.value);
+      map['STOCK_DISPONIBLE'] = Variable<double>(availableStock.value);
     }
     if (currentSales.present) {
-      map['VENTAS_ACTUAL'] = Variable<double?>(currentSales.value);
+      map['VENTAS_ACTUAL'] = Variable<double>(currentSales.value);
     }
     if (previousSales.present) {
-      map['VENTAS_ANTERIOR'] = Variable<double?>(previousSales.value);
+      map['VENTAS_ANTERIOR'] = Variable<double>(previousSales.value);
     }
     if (purchasesDeliveryQuantity1.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_1'] =
-          Variable<double?>(purchasesDeliveryQuantity1.value);
+          Variable<double>(purchasesDeliveryQuantity1.value);
     }
     if (purchasesDeliveryQuantity2.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_2'] =
-          Variable<double?>(purchasesDeliveryQuantity2.value);
+          Variable<double>(purchasesDeliveryQuantity2.value);
     }
     if (purchasesDeliveryQuantity3.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_3'] =
-          Variable<double?>(purchasesDeliveryQuantity3.value);
+          Variable<double>(purchasesDeliveryQuantity3.value);
     }
     if (purchasesDeliveryQuantityMore3.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] =
-          Variable<double?>(purchasesDeliveryQuantityMore3.value);
+          Variable<double>(purchasesDeliveryQuantityMore3.value);
     }
     if (purchasesDeliveryDate1.present) {
       map['COMPRAS_ENTREGA_FECHA_1'] =
-          Variable<DateTime?>(purchasesDeliveryDate1.value);
+          Variable<DateTime>(purchasesDeliveryDate1.value);
     }
     if (purchasesDeliveryDate2.present) {
       map['COMPRAS_ENTREGA_FECHA_2'] =
-          Variable<DateTime?>(purchasesDeliveryDate2.value);
+          Variable<DateTime>(purchasesDeliveryDate2.value);
     }
     if (purchasesDeliveryDate3.present) {
       map['COMPRAS_ENTREGA_FECHA_3'] =
-          Variable<DateTime?>(purchasesDeliveryDate3.value);
+          Variable<DateTime>(purchasesDeliveryDate3.value);
     }
     if (purchasesDeliveryStatus1.present) {
       map['COMPRAS_ENTREGA_ESTADO_1'] =
-          Variable<String?>(purchasesDeliveryStatus1.value);
+          Variable<String>(purchasesDeliveryStatus1.value);
     }
     if (purchasesDeliveryStatus2.present) {
       map['COMPRAS_ENTREGA_ESTADO_2'] =
-          Variable<String?>(purchasesDeliveryStatus2.value);
+          Variable<String>(purchasesDeliveryStatus2.value);
     }
     if (purchasesDeliveryStatus3.present) {
       map['COMPRAS_ENTREGA_ESTADO_3'] =
-          Variable<String?>(purchasesDeliveryStatus3.value);
+          Variable<String>(purchasesDeliveryStatus3.value);
     }
     if (principalImage.present) {
-      map['IMAGEN_PRINCIPAL'] = Variable<String?>(principalImage.value);
+      map['IMAGEN_PRINCIPAL'] = Variable<String>(principalImage.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -11013,369 +11068,369 @@ class $ArticleTableTable extends ArticleTable
   $ArticleTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionESMeta =
       const VerificationMeta('descriptionES');
   @override
-  late final GeneratedColumn<String?> descriptionES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionENMeta =
       const VerificationMeta('descriptionEN');
   @override
-  late final GeneratedColumn<String?> descriptionEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionFRMeta =
       const VerificationMeta('descriptionFR');
   @override
-  late final GeneratedColumn<String?> descriptionFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionDEMeta =
       const VerificationMeta('descriptionDE');
   @override
-  late final GeneratedColumn<String?> descriptionDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCAMeta =
       const VerificationMeta('descriptionCA');
   @override
-  late final GeneratedColumn<String?> descriptionCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionGBMeta =
       const VerificationMeta('descriptionGB');
   @override
-  late final GeneratedColumn<String?> descriptionGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionHUMeta =
       const VerificationMeta('descriptionHU');
   @override
-  late final GeneratedColumn<String?> descriptionHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionITMeta =
       const VerificationMeta('descriptionIT');
   @override
-  late final GeneratedColumn<String?> descriptionIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionNLMeta =
       const VerificationMeta('descriptionNL');
   @override
-  late final GeneratedColumn<String?> descriptionNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPLMeta =
       const VerificationMeta('descriptionPL');
   @override
-  late final GeneratedColumn<String?> descriptionPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionPTMeta =
       const VerificationMeta('descriptionPT');
   @override
-  late final GeneratedColumn<String?> descriptionPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionROMeta =
       const VerificationMeta('descriptionRO');
   @override
-  late final GeneratedColumn<String?> descriptionRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionRUMeta =
       const VerificationMeta('descriptionRU');
   @override
-  late final GeneratedColumn<String?> descriptionRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionCNMeta =
       const VerificationMeta('descriptionCN');
   @override
-  late final GeneratedColumn<String?> descriptionCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descriptionELMeta =
       const VerificationMeta('descriptionEL');
   @override
-  late final GeneratedColumn<String?> descriptionEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _familyIdMeta = const VerificationMeta('familyId');
   @override
-  late final GeneratedColumn<String?> familyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> familyId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, true,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES FAMILIAS (FAMILIA_ID)');
   final VerificationMeta _subfamilyIdMeta =
       const VerificationMeta('subfamilyId');
   @override
-  late final GeneratedColumn<String?> subfamilyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> subfamilyId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, true,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES FAMILIAS (SUBFAMILIA_ID)');
+      defaultConstraints: 'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)');
   final VerificationMeta _minimumSalesMeta =
       const VerificationMeta('minimumSales');
   @override
-  late final GeneratedColumn<double?> minimumSales = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> minimumSales = GeneratedColumn<double>(
       'VENTA_MINIMO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _multipleSalesMeta =
       const VerificationMeta('multipleSales');
   @override
-  late final GeneratedColumn<double?> multipleSales = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> multipleSales = GeneratedColumn<double>(
       'VENTA_MULTIPLO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _subboxUnitsMeta =
       const VerificationMeta('subboxUnits');
   @override
-  late final GeneratedColumn<double?> subboxUnits = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> subboxUnits = GeneratedColumn<double>(
       'UNIDADES_SUBCAJA', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _boxUnitsMeta = const VerificationMeta('boxUnits');
   @override
-  late final GeneratedColumn<double?> boxUnits = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> boxUnits = GeneratedColumn<double>(
       'UNIDADES_CAJA', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _paletUnitsMeta = const VerificationMeta('paletUnits');
   @override
-  late final GeneratedColumn<double?> paletUnits = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> paletUnits = GeneratedColumn<double>(
       'UNIDADES_PALET', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _isActiveWebMeta =
       const VerificationMeta('isActiveWeb');
   @override
-  late final GeneratedColumn<String?> isActiveWeb = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> isActiveWeb = GeneratedColumn<String>(
       'ACTIVO_WEB', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _isActiveAppMeta =
       const VerificationMeta('isActiveApp');
   @override
-  late final GeneratedColumn<String?> isActiveApp = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> isActiveApp = GeneratedColumn<String>(
       'ACTIVO_APP', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _inCatalogueMeta =
       const VerificationMeta('inCatalogue');
   @override
-  late final GeneratedColumn<String?> inCatalogue = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> inCatalogue = GeneratedColumn<String>(
       'EN_CATALOGO', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _discontinuedMeta =
       const VerificationMeta('discontinued');
   @override
-  late final GeneratedColumn<String?> discontinued = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> discontinued = GeneratedColumn<String>(
       'DESCATALOGADO', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _cataloguePageMeta =
       const VerificationMeta('cataloguePage');
   @override
-  late final GeneratedColumn<String?> cataloguePage = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> cataloguePage = GeneratedColumn<String>(
       'PAGINA_EN_CATALOGO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _cataloguePage2Meta =
       const VerificationMeta('cataloguePage2');
   @override
-  late final GeneratedColumn<String?> cataloguePage2 = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> cataloguePage2 = GeneratedColumn<String>(
       'PAGINA_EN_CATALOGO2', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _weightKgMeta = const VerificationMeta('weightKg');
   @override
-  late final GeneratedColumn<double?> weightKg = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> weightKg = GeneratedColumn<double>(
       'PESO_KG', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _largeCmMeta = const VerificationMeta('largeCm');
   @override
-  late final GeneratedColumn<double?> largeCm = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> largeCm = GeneratedColumn<double>(
       'LARGO_CM', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _widthCmMeta = const VerificationMeta('widthCm');
   @override
-  late final GeneratedColumn<double?> widthCm = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> widthCm = GeneratedColumn<double>(
       'ANCHO_CM', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _tallCmMeta = const VerificationMeta('tallCm');
   @override
-  late final GeneratedColumn<double?> tallCm = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> tallCm = GeneratedColumn<double>(
       'ALTO_CM', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _summaryESMeta = const VerificationMeta('summaryES');
   @override
-  late final GeneratedColumn<String?> summaryES = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryES = GeneratedColumn<String>(
       'RESUMEN_ES', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryENMeta = const VerificationMeta('summaryEN');
   @override
-  late final GeneratedColumn<String?> summaryEN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryEN = GeneratedColumn<String>(
       'RESUMEN_EN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryFRMeta = const VerificationMeta('summaryFR');
   @override
-  late final GeneratedColumn<String?> summaryFR = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryFR = GeneratedColumn<String>(
       'RESUMEN_FR', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryDEMeta = const VerificationMeta('summaryDE');
   @override
-  late final GeneratedColumn<String?> summaryDE = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryDE = GeneratedColumn<String>(
       'RESUMEN_DE', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryCAMeta = const VerificationMeta('summaryCA');
   @override
-  late final GeneratedColumn<String?> summaryCA = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryCA = GeneratedColumn<String>(
       'RESUMEN_CA', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryGBMeta = const VerificationMeta('summaryGB');
   @override
-  late final GeneratedColumn<String?> summaryGB = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryGB = GeneratedColumn<String>(
       'RESUMEN_GB', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryHUMeta = const VerificationMeta('summaryHU');
   @override
-  late final GeneratedColumn<String?> summaryHU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryHU = GeneratedColumn<String>(
       'RESUMEN_HU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryITMeta = const VerificationMeta('summaryIT');
   @override
-  late final GeneratedColumn<String?> summaryIT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryIT = GeneratedColumn<String>(
       'RESUMEN_IT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryNLMeta = const VerificationMeta('summaryNL');
   @override
-  late final GeneratedColumn<String?> summaryNL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryNL = GeneratedColumn<String>(
       'RESUMEN_NL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryPLMeta = const VerificationMeta('summaryPL');
   @override
-  late final GeneratedColumn<String?> summaryPL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryPL = GeneratedColumn<String>(
       'RESUMEN_PL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryPTMeta = const VerificationMeta('summaryPT');
   @override
-  late final GeneratedColumn<String?> summaryPT = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryPT = GeneratedColumn<String>(
       'RESUMEN_PT', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryROMeta = const VerificationMeta('summaryRO');
   @override
-  late final GeneratedColumn<String?> summaryRO = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryRO = GeneratedColumn<String>(
       'RESUMEN_RO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryRUMeta = const VerificationMeta('summaryRU');
   @override
-  late final GeneratedColumn<String?> summaryRU = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryRU = GeneratedColumn<String>(
       'RESUMEN_RU', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryCNMeta = const VerificationMeta('summaryCN');
   @override
-  late final GeneratedColumn<String?> summaryCN = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryCN = GeneratedColumn<String>(
       'RESUMEN_CN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryELMeta = const VerificationMeta('summaryEL');
   @override
-  late final GeneratedColumn<String?> summaryEL = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summaryEL = GeneratedColumn<String>(
       'RESUMEN_EL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _availableStockMeta =
       const VerificationMeta('availableStock');
   @override
-  late final GeneratedColumn<double?> availableStock = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> availableStock = GeneratedColumn<double>(
       'STOCK_DISPONIBLE', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _currentSalesMeta =
       const VerificationMeta('currentSales');
   @override
-  late final GeneratedColumn<double?> currentSales = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> currentSales = GeneratedColumn<double>(
       'VENTAS_ACTUAL', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _previousSalesMeta =
       const VerificationMeta('previousSales');
   @override
-  late final GeneratedColumn<double?> previousSales = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> previousSales = GeneratedColumn<double>(
       'VENTAS_ANTERIOR', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryQuantity1Meta =
       const VerificationMeta('purchasesDeliveryQuantity1');
   @override
-  late final GeneratedColumn<double?> purchasesDeliveryQuantity1 =
-      GeneratedColumn<double?>('COMPRAS_ENTREGA_CANTIDAD_1', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> purchasesDeliveryQuantity1 =
+      GeneratedColumn<double>('COMPRAS_ENTREGA_CANTIDAD_1', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryQuantity2Meta =
       const VerificationMeta('purchasesDeliveryQuantity2');
   @override
-  late final GeneratedColumn<double?> purchasesDeliveryQuantity2 =
-      GeneratedColumn<double?>('COMPRAS_ENTREGA_CANTIDAD_2', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> purchasesDeliveryQuantity2 =
+      GeneratedColumn<double>('COMPRAS_ENTREGA_CANTIDAD_2', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryQuantity3Meta =
       const VerificationMeta('purchasesDeliveryQuantity3');
   @override
-  late final GeneratedColumn<double?> purchasesDeliveryQuantity3 =
-      GeneratedColumn<double?>('COMPRAS_ENTREGA_CANTIDAD_3', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+  late final GeneratedColumn<double> purchasesDeliveryQuantity3 =
+      GeneratedColumn<double>('COMPRAS_ENTREGA_CANTIDAD_3', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryQuantityMore3Meta =
       const VerificationMeta('purchasesDeliveryQuantityMore3');
   @override
-  late final GeneratedColumn<double?> purchasesDeliveryQuantityMore3 =
-      GeneratedColumn<double?>(
+  late final GeneratedColumn<double> purchasesDeliveryQuantityMore3 =
+      GeneratedColumn<double>(
           'COMPRAS_ENTREGA_CANTIDAD_MAS_3', aliasedName, true,
-          type: const RealType(), requiredDuringInsert: false);
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryDate1Meta =
       const VerificationMeta('purchasesDeliveryDate1');
   @override
-  late final GeneratedColumn<DateTime?> purchasesDeliveryDate1 =
-      GeneratedColumn<DateTime?>('COMPRAS_ENTREGA_FECHA_1', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime> purchasesDeliveryDate1 =
+      GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_1', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryDate2Meta =
       const VerificationMeta('purchasesDeliveryDate2');
   @override
-  late final GeneratedColumn<DateTime?> purchasesDeliveryDate2 =
-      GeneratedColumn<DateTime?>('COMPRAS_ENTREGA_FECHA_2', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime> purchasesDeliveryDate2 =
+      GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_2', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryDate3Meta =
       const VerificationMeta('purchasesDeliveryDate3');
   @override
-  late final GeneratedColumn<DateTime?> purchasesDeliveryDate3 =
-      GeneratedColumn<DateTime?>('COMPRAS_ENTREGA_FECHA_3', aliasedName, true,
-          type: const IntType(), requiredDuringInsert: false);
+  late final GeneratedColumn<DateTime> purchasesDeliveryDate3 =
+      GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_3', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryStatus1Meta =
       const VerificationMeta('purchasesDeliveryStatus1');
   @override
-  late final GeneratedColumn<String?> purchasesDeliveryStatus1 =
-      GeneratedColumn<String?>('COMPRAS_ENTREGA_ESTADO_1', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> purchasesDeliveryStatus1 =
+      GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_1', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryStatus2Meta =
       const VerificationMeta('purchasesDeliveryStatus2');
   @override
-  late final GeneratedColumn<String?> purchasesDeliveryStatus2 =
-      GeneratedColumn<String?>('COMPRAS_ENTREGA_ESTADO_2', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> purchasesDeliveryStatus2 =
+      GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_2', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _purchasesDeliveryStatus3Meta =
       const VerificationMeta('purchasesDeliveryStatus3');
   @override
-  late final GeneratedColumn<String?> purchasesDeliveryStatus3 =
-      GeneratedColumn<String?>('COMPRAS_ENTREGA_ESTADO_3', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> purchasesDeliveryStatus3 =
+      GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_3', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _principalImageMeta =
       const VerificationMeta('principalImage');
   @override
-  late final GeneratedColumn<String?> principalImage = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> principalImage = GeneratedColumn<String>(
       'IMAGEN_PRINCIPAL', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -11842,134 +11897,144 @@ class $ArticleTableTable extends ArticleTable
   ArticleDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      descriptionES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION_EL']),
-      familyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FAMILIA_ID']),
-      subfamilyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}SUBFAMILIA_ID']),
-      minimumSales: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}VENTA_MINIMO'])!,
-      multipleSales: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}VENTA_MULTIPLO'])!,
-      subboxUnits: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}UNIDADES_SUBCAJA'])!,
-      boxUnits: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}UNIDADES_CAJA'])!,
-      paletUnits: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}UNIDADES_PALET'])!,
-      isActiveWeb: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ACTIVO_WEB'])!,
-      isActiveApp: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ACTIVO_APP'])!,
-      inCatalogue: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EN_CATALOGO'])!,
-      discontinued: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCATALOGADO'])!,
-      cataloguePage: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}PAGINA_EN_CATALOGO']),
-      cataloguePage2: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}PAGINA_EN_CATALOGO2']),
-      weightKg: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PESO_KG'])!,
-      largeCm: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LARGO_CM'])!,
-      widthCm: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ANCHO_CM'])!,
-      tallCm: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ALTO_CM'])!,
-      summaryES: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_ES']),
-      summaryEN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_EN']),
-      summaryFR: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_FR']),
-      summaryDE: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_DE']),
-      summaryCA: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_CA']),
-      summaryGB: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_GB']),
-      summaryHU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_HU']),
-      summaryIT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_IT']),
-      summaryNL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_NL']),
-      summaryPL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_PL']),
-      summaryPT: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_PT']),
-      summaryRO: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_RO']),
-      summaryRU: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_RU']),
-      summaryCN: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_CN']),
-      summaryEL: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN_EL']),
-      availableStock: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}STOCK_DISPONIBLE']),
-      currentSales: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}VENTAS_ACTUAL']),
-      previousSales: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}VENTAS_ANTERIOR']),
-      purchasesDeliveryQuantity1: const RealType().mapFromDatabaseResponse(
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      descriptionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descriptionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descriptionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descriptionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descriptionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descriptionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descriptionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descriptionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descriptionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descriptionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descriptionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descriptionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descriptionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descriptionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descriptionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      familyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID']),
+      subfamilyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID']),
+      minimumSales: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}VENTA_MINIMO'])!,
+      multipleSales: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}VENTA_MULTIPLO'])!,
+      subboxUnits: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}UNIDADES_SUBCAJA'])!,
+      boxUnits: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES_CAJA'])!,
+      paletUnits: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES_PALET'])!,
+      isActiveWeb: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ACTIVO_WEB'])!,
+      isActiveApp: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ACTIVO_APP'])!,
+      inCatalogue: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EN_CATALOGO'])!,
+      discontinued: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCATALOGADO'])!,
+      cataloguePage: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}PAGINA_EN_CATALOGO']),
+      cataloguePage2: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}PAGINA_EN_CATALOGO2']),
+      weightKg: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PESO_KG'])!,
+      largeCm: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LARGO_CM'])!,
+      widthCm: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}ANCHO_CM'])!,
+      tallCm: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}ALTO_CM'])!,
+      summaryES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_ES']),
+      summaryEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_EN']),
+      summaryFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_FR']),
+      summaryDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_DE']),
+      summaryCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_CA']),
+      summaryGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_GB']),
+      summaryHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_HU']),
+      summaryIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_IT']),
+      summaryNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_NL']),
+      summaryPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_PL']),
+      summaryPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_PT']),
+      summaryRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_RO']),
+      summaryRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_RU']),
+      summaryCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_CN']),
+      summaryEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_EL']),
+      availableStock: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}STOCK_DISPONIBLE']),
+      currentSales: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}VENTAS_ACTUAL']),
+      previousSales: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}VENTAS_ANTERIOR']),
+      purchasesDeliveryQuantity1: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_1']),
-      purchasesDeliveryQuantity2: const RealType().mapFromDatabaseResponse(
+      purchasesDeliveryQuantity2: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_2']),
-      purchasesDeliveryQuantity3: const RealType().mapFromDatabaseResponse(
+      purchasesDeliveryQuantity3: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_3']),
-      purchasesDeliveryQuantityMore3: const RealType().mapFromDatabaseResponse(
+      purchasesDeliveryQuantityMore3: attachedDatabase.options.types.read(
+          DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_MAS_3']),
-      purchasesDeliveryDate1: const DateTimeType().mapFromDatabaseResponse(
+      purchasesDeliveryDate1: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_1']),
-      purchasesDeliveryDate2: const DateTimeType().mapFromDatabaseResponse(
+      purchasesDeliveryDate2: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_2']),
-      purchasesDeliveryDate3: const DateTimeType().mapFromDatabaseResponse(
+      purchasesDeliveryDate3: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_3']),
-      purchasesDeliveryStatus1: const StringType().mapFromDatabaseResponse(
+      purchasesDeliveryStatus1: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_1']),
-      purchasesDeliveryStatus2: const StringType().mapFromDatabaseResponse(
+      purchasesDeliveryStatus2: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_2']),
-      purchasesDeliveryStatus3: const StringType().mapFromDatabaseResponse(
+      purchasesDeliveryStatus3: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_3']),
-      principalImage: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IMAGEN_PRINCIPAL']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      principalImage: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}IMAGEN_PRINCIPAL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -12076,30 +12141,30 @@ class $ArticleComponentTableTable extends ArticleComponentTable
   $ArticleComponentTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ARTICULO_COMPONENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
   @override
-  late final GeneratedColumn<double?> quantity = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
       'CANTIDAD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -12156,16 +12221,16 @@ class $ArticleComponentTableTable extends ArticleComponentTable
   ArticleComponentDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleComponentDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      id: const StringType().mapFromDatabaseResponse(
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      id: attachedDatabase.options.types.read(DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
-      quantity: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      quantity: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -12272,30 +12337,30 @@ class $ArticleCompanyVatTableTable extends ArticleCompanyVatTable
   $ArticleCompanyVatTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
   @override
-  late final GeneratedColumn<String?> companyId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _vatMeta = const VerificationMeta('vat');
   @override
-  late final GeneratedColumn<double?> vat = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> vat = GeneratedColumn<double>(
       'IVA', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -12352,16 +12417,16 @@ class $ArticleCompanyVatTableTable extends ArticleCompanyVatTable
   ArticleCompanyVATDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleCompanyVATDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      companyId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}EMPRESA_ID'])!,
-      vat: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IVA'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      companyId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      vat: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -12479,36 +12544,36 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   $ArticleSpareTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ARTICULO_COMPONENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionMeta =
       const VerificationMeta('description');
   @override
-  late final GeneratedColumn<String?> description = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> description = GeneratedColumn<String>(
       'DESCRIPCION', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
   @override
-  late final GeneratedColumn<double?> quantity = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
       'CANTIDAD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -12572,18 +12637,18 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   ArticleSpareDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleSpareDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      id: const StringType().mapFromDatabaseResponse(
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      id: attachedDatabase.options.types.read(DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
-      description: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCRIPCION'])!,
-      quantity: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      description: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
+      quantity: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -12626,7 +12691,7 @@ class ArticleSubstituteTableCompanion
   }) {
     return RawValuesInsertable({
       if (articleId != null) 'ARTICULO_ID': articleId,
-      if (id != null) 'ARTICULO_SUSTITUTIVO_ID': id,
+      if (id != null) 'ARTICULO_ID_SUSTITUTIVO': id,
       if (order != null) 'ORDEN': order,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
@@ -12655,7 +12720,7 @@ class ArticleSubstituteTableCompanion
       map['ARTICULO_ID'] = Variable<String>(articleId.value);
     }
     if (id.present) {
-      map['ARTICULO_SUSTITUTIVO_ID'] = Variable<String>(id.value);
+      map['ARTICULO_ID_SUSTITUTIVO'] = Variable<String>(id.value);
     }
     if (order.present) {
       map['ORDEN'] = Variable<double>(order.value);
@@ -12690,30 +12755,30 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
   $ArticleSubstituteTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
-      'ARTICULO_SUSTITUTIVO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'ARTICULO_ID_SUSTITUTIVO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _orderMeta = const VerificationMeta('order');
   @override
-  late final GeneratedColumn<double?> order = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> order = GeneratedColumn<double>(
       'ORDEN', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -12737,9 +12802,9 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
     } else if (isInserting) {
       context.missing(_articleIdMeta);
     }
-    if (data.containsKey('ARTICULO_SUSTITUTIVO_ID')) {
+    if (data.containsKey('ARTICULO_ID_SUSTITUTIVO')) {
       context.handle(_idMeta,
-          id.isAcceptableOrUnknown(data['ARTICULO_SUSTITUTIVO_ID']!, _idMeta));
+          id.isAcceptableOrUnknown(data['ARTICULO_ID_SUSTITUTIVO']!, _idMeta));
     } else if (isInserting) {
       context.missing(_idMeta);
     }
@@ -12770,16 +12835,16 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
   ArticleSubstituteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleSubstituteDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      id: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}ARTICULO_SUSTITUTIVO_ID'])!,
-      order: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ORDEN'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      id: attachedDatabase.options.types.read(DriftSqlType.string,
+          data['${effectivePrefix}ARTICULO_ID_SUSTITUTIVO'])!,
+      order: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}ORDEN'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -12826,10 +12891,10 @@ class ArticleRatePriceTableCompanion
   static Insertable<ArticleRatePriceDTO> custom({
     Expression<String>? articleId,
     Expression<String>? rateId,
-    Expression<String?>? rateDescription,
+    Expression<String>? rateDescription,
     Expression<double>? quantityFrom,
     Expression<double>? price,
-    Expression<double?>? priceType,
+    Expression<double>? priceType,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -12876,7 +12941,7 @@ class ArticleRatePriceTableCompanion
       map['TARIFA_ID'] = Variable<String>(rateId.value);
     }
     if (rateDescription.present) {
-      map['TARIFA_DESCRIPCION'] = Variable<String?>(rateDescription.value);
+      map['TARIFA_DESCRIPCION'] = Variable<String>(rateDescription.value);
     }
     if (quantityFrom.present) {
       map['CANTIDAD_DESDE'] = Variable<double>(quantityFrom.value);
@@ -12885,7 +12950,7 @@ class ArticleRatePriceTableCompanion
       map['PRECIO'] = Variable<double>(price.value);
     }
     if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double?>(priceType.value);
+      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12920,47 +12985,47 @@ class $ArticleRatePriceTableTable extends ArticleRatePriceTable
   $ArticleRatePriceTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _rateIdMeta = const VerificationMeta('rateId');
   @override
-  late final GeneratedColumn<String?> rateId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> rateId = GeneratedColumn<String>(
       'TARIFA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _rateDescriptionMeta =
       const VerificationMeta('rateDescription');
   @override
-  late final GeneratedColumn<String?> rateDescription =
-      GeneratedColumn<String?>('TARIFA_DESCRIPCION', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> rateDescription = GeneratedColumn<String>(
+      'TARIFA_DESCRIPCION', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _quantityFromMeta =
       const VerificationMeta('quantityFrom');
   @override
-  late final GeneratedColumn<double?> quantityFrom = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceMeta = const VerificationMeta('price');
   @override
-  late final GeneratedColumn<double?> price = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
   @override
-  late final GeneratedColumn<double?> priceType = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -13045,22 +13110,22 @@ class $ArticleRatePriceTableTable extends ArticleRatePriceTable
   ArticleRatePriceDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleRatePriceDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      rateId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TARIFA_ID'])!,
-      rateDescription: const StringType().mapFromDatabaseResponse(
-          data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      quantityFrom: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      price: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PRECIO'])!,
-      priceType: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_PRECIO']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      rateId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID'])!,
+      rateDescription: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
+      quantityFrom: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
+      price: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
+      priceType: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -13107,10 +13172,10 @@ class ArticleNetGroupPriceTableCompanion
   static Insertable<ArticleNetGroupPriceDTO> custom({
     Expression<String>? articleId,
     Expression<String>? netGroupId,
-    Expression<String?>? netGroupDescription,
+    Expression<String>? netGroupDescription,
     Expression<double>? quantityFrom,
     Expression<double>? price,
-    Expression<double?>? priceType,
+    Expression<double>? priceType,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -13159,7 +13224,7 @@ class ArticleNetGroupPriceTableCompanion
     }
     if (netGroupDescription.present) {
       map['GRUPO_NETO_DESCRIPCION'] =
-          Variable<String?>(netGroupDescription.value);
+          Variable<String>(netGroupDescription.value);
     }
     if (quantityFrom.present) {
       map['CANTIDAD_DESDE'] = Variable<double>(quantityFrom.value);
@@ -13168,7 +13233,7 @@ class ArticleNetGroupPriceTableCompanion
       map['PRECIO'] = Variable<double>(price.value);
     }
     if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double?>(priceType.value);
+      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13203,47 +13268,47 @@ class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
   $ArticleNetGroupPriceTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _netGroupIdMeta = const VerificationMeta('netGroupId');
   @override
-  late final GeneratedColumn<String?> netGroupId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> netGroupId = GeneratedColumn<String>(
       'GRUPO_NETO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _netGroupDescriptionMeta =
       const VerificationMeta('netGroupDescription');
   @override
-  late final GeneratedColumn<String?> netGroupDescription =
-      GeneratedColumn<String?>('GRUPO_NETO_DESCRIPCION', aliasedName, true,
-          type: const StringType(), requiredDuringInsert: false);
+  late final GeneratedColumn<String> netGroupDescription =
+      GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _quantityFromMeta =
       const VerificationMeta('quantityFrom');
   @override
-  late final GeneratedColumn<double?> quantityFrom = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceMeta = const VerificationMeta('price');
   @override
-  late final GeneratedColumn<double?> price = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
   @override
-  late final GeneratedColumn<double?> priceType = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -13331,22 +13396,23 @@ class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleNetGroupPriceDTO(
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      netGroupId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}GRUPO_NETO_ID'])!,
-      netGroupDescription: const StringType().mapFromDatabaseResponse(
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      netGroupId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}GRUPO_NETO_ID'])!,
+      netGroupDescription: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION']),
-      quantityFrom: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      price: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PRECIO'])!,
-      priceType: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_PRECIO']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      quantityFrom: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
+      price: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
+      priceType: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -13398,9 +13464,9 @@ class StatsCustomerUserSalesTableCompanion
     Expression<double>? month,
     Expression<String>? customerId,
     Expression<String>? articleId,
-    Expression<double?>? units,
-    Expression<double?>? amount,
-    Expression<double?>? cost,
+    Expression<double>? units,
+    Expression<double>? amount,
+    Expression<double>? cost,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -13456,13 +13522,13 @@ class StatsCustomerUserSalesTableCompanion
       map['ARTICULO_ID'] = Variable<String>(articleId.value);
     }
     if (units.present) {
-      map['UNIDADES'] = Variable<double?>(units.value);
+      map['UNIDADES'] = Variable<double>(units.value);
     }
     if (amount.present) {
-      map['IMPORTE'] = Variable<double?>(amount.value);
+      map['IMPORTE'] = Variable<double>(amount.value);
     }
     if (cost.present) {
-      map['COSTE'] = Variable<double?>(cost.value);
+      map['COSTE'] = Variable<double>(cost.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13500,50 +13566,50 @@ class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
   $StatsCustomerUserSalesTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _yearMeta = const VerificationMeta('year');
   @override
-  late final GeneratedColumn<double?> year = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> year = GeneratedColumn<double>(
       'ANYO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _monthMeta = const VerificationMeta('month');
   @override
-  late final GeneratedColumn<double?> month = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> month = GeneratedColumn<double>(
       'MES', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _unitsMeta = const VerificationMeta('units');
   @override
-  late final GeneratedColumn<double?> units = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> units = GeneratedColumn<double>(
       'UNIDADES', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _amountMeta = const VerificationMeta('amount');
   @override
-  late final GeneratedColumn<double?> amount = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
       'IMPORTE', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _costMeta = const VerificationMeta('cost');
   @override
-  late final GeneratedColumn<double?> cost = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> cost = GeneratedColumn<double>(
       'COSTE', aliasedName, true,
-      type: const RealType(), requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -13630,24 +13696,24 @@ class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return StatsCustomerUserSalesDTO(
-      year: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ANYO'])!,
-      month: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}MES'])!,
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      units: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}UNIDADES']),
-      amount: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}IMPORTE']),
-      cost: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}COSTE']),
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      year: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}ANYO'])!,
+      month: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}MES'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      units: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES']),
+      amount: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE']),
+      cost: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}COSTE']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -13813,56 +13879,56 @@ class $StatsLastPriceTableTable extends StatsLastPriceTable
   $StatsLastPriceTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
   @override
-  late final GeneratedColumn<String?> articleId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _dateMeta = const VerificationMeta('date');
   @override
-  late final GeneratedColumn<DateTime?> date = GeneratedColumn<DateTime?>(
+  late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
-      type: const IntType(), requiredDuringInsert: true);
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _divisaPriceMeta =
       const VerificationMeta('divisaPrice');
   @override
-  late final GeneratedColumn<double?> divisaPrice = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> divisaPrice = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
   @override
-  late final GeneratedColumn<double?> priceType = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _discount1Meta = const VerificationMeta('discount1');
   @override
-  late final GeneratedColumn<double?> discount1 = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount1 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _discount2Meta = const VerificationMeta('discount2');
   @override
-  late final GeneratedColumn<double?> discount2 = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount2 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _discount3Meta = const VerificationMeta('discount3');
   @override
-  late final GeneratedColumn<double?> discount3 = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> discount3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -13973,26 +14039,26 @@ class $StatsLastPriceTableTable extends StatsLastPriceTable
   StatsLastPriceDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return StatsLastPriceDTO(
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}ARTICULO_ID'])!,
-      date: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA'])!,
-      divisaPrice: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}PRECIO_DIVISA'])!,
-      priceType: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}TIPO_PRECIO'])!,
-      discount1: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO1'])!,
-      discount2: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO1'])!,
-      discount3: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DESCUENTO3'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      articleId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      date: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      divisaPrice: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
+      priceType: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO'])!,
+      discount1: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
+      discount2: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
+      discount3: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -14048,8 +14114,8 @@ class VisitTableCompanion extends UpdateCompanion<VisitDTO> {
     Expression<String>? customerId,
     Expression<DateTime>? date,
     Expression<String>? numEmpl,
-    Expression<String?>? contact,
-    Expression<String?>? summary,
+    Expression<String>? contact,
+    Expression<String>? summary,
     Expression<double>? latitude,
     Expression<double>? longitude,
     Expression<DateTime>? lastUpdated,
@@ -14110,10 +14176,10 @@ class VisitTableCompanion extends UpdateCompanion<VisitDTO> {
       map['NUM_EMPL'] = Variable<String>(numEmpl.value);
     }
     if (contact.present) {
-      map['CONTACTO'] = Variable<String?>(contact.value);
+      map['CONTACTO'] = Variable<String>(contact.value);
     }
     if (summary.present) {
-      map['RESUMEN'] = Variable<String?>(summary.value);
+      map['RESUMEN'] = Variable<String>(summary.value);
     }
     if (latitude.present) {
       map['LATITUD'] = Variable<double>(latitude.value);
@@ -14156,55 +14222,55 @@ class $VisitTableTable extends VisitTable
   $VisitTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'VISITA_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
   @override
-  late final GeneratedColumn<String?> customerId = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _dateMeta = const VerificationMeta('date');
   @override
-  late final GeneratedColumn<DateTime?> date = GeneratedColumn<DateTime?>(
+  late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
-      type: const IntType(), requiredDuringInsert: true);
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _numEmplMeta = const VerificationMeta('numEmpl');
   @override
-  late final GeneratedColumn<String?> numEmpl = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> numEmpl = GeneratedColumn<String>(
       'NUM_EMPL', aliasedName, false,
-      type: const StringType(), requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _contactMeta = const VerificationMeta('contact');
   @override
-  late final GeneratedColumn<String?> contact = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> contact = GeneratedColumn<String>(
       'CONTACTO', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _summaryMeta = const VerificationMeta('summary');
   @override
-  late final GeneratedColumn<String?> summary = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> summary = GeneratedColumn<String>(
       'RESUMEN', aliasedName, true,
-      type: const StringType(), requiredDuringInsert: false);
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _latitudeMeta = const VerificationMeta('latitude');
   @override
-  late final GeneratedColumn<double?> latitude = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _longitudeMeta = const VerificationMeta('longitude');
   @override
-  late final GeneratedColumn<double?> longitude = GeneratedColumn<double?>(
+  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
-      type: const RealType(), requiredDuringInsert: true);
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
-  late final GeneratedColumn<DateTime?> lastUpdated =
-      GeneratedColumn<DateTime?>('LAST_UPDATED', aliasedName, false,
-          type: const IntType(), requiredDuringInsert: true);
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
   @override
-  late final GeneratedColumn<String?> deleted = GeneratedColumn<String?>(
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
-      type: const StringType(),
+      type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
@@ -14296,26 +14362,26 @@ class $VisitTableTable extends VisitTable
   VisitDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitDTO(
-      id: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}VISITA_ID'])!,
-      customerId: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CLIENTE_ID'])!,
-      date: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}FECHA'])!,
-      numEmpl: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}NUM_EMPL'])!,
-      contact: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}CONTACTO']),
-      summary: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}RESUMEN']),
-      latitude: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LATITUD'])!,
-      longitude: const RealType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LONGITUD'])!,
-      lastUpdated: const DateTimeType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}DELETED'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}VISITA_ID'])!,
+      customerId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      date: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      numEmpl: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
+      contact: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
+      summary: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
+      latitude: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
+      longitude: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
 
@@ -14326,7 +14392,8 @@ class $VisitTableTable extends VisitTable
 }
 
 abstract class _$AppDatabase extends GeneratedDatabase {
-  _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
+  _$AppDatabase(QueryExecutor e) : super(e);
+  _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
   late final $LastSyncDateTableTable lastSyncDateTable =
       $LastSyncDateTableTable(this);
   late final $CountryTableTable countryTable = $CountryTableTable(this);
@@ -14381,7 +14448,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $StatsLastPriceTableTable(this);
   late final $VisitTableTable visitTable = $VisitTableTable(this);
   @override
-  Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
+  Iterable<TableInfo<Table, dynamic>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
         lastSyncDateTable,
@@ -14415,4 +14483,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         statsLastPriceTable,
         visitTable
       ];
+  @override
+  DriftDatabaseOptions get options =>
+      const DriftDatabaseOptions(storeDateTimeAsText: true);
 }

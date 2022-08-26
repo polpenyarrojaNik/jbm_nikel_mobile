@@ -77,7 +77,7 @@ class CustomerContactTable extends Table {
   TextColumn get remarks => text().nullable().named('OBSERVACIONES')();
   TextColumn get name => text().nullable().named('NOMBRE')();
   TextColumn get lastName1 => text().nullable().named('APELLIDO1')();
-  TextColumn get lastName2 => text().nullable().named('APELLIDO12')();
+  TextColumn get lastName2 => text().nullable().named('APELLIDO2')();
   TextColumn get phone1 => text().nullable().named('TELEFONO1')();
   TextColumn get phone2 => text().nullable().named('TELEFONO2')();
   TextColumn get email => text().nullable().named('EMAIL')();

@@ -8,11 +8,14 @@
     "**/Thumbs.db": true,
     "**/*.freezed.dart": true,
     "**/*.g.dart": true,
+    "**/*.drift.dart": true,
     "**/.gitkeep": false,
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "explorerExclude.backup": {}
+  "explorerExclude.backup": {
+  
+  }
 }

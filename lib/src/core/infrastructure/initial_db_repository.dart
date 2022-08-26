@@ -4,12 +4,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'log.dart';
-import 'remote_response.dart';
 
 final initialDbRepositoryProvider = Provider<InitalDBRepository>(
   // * Override this in the main method
@@ -81,9 +79,7 @@ class InitalDBRepository {
             response.statusCode ?? 400, response.toString());
       }
     } on DioError catch (e) {
-      if (e.isNoConnectionError) {
-        return const RemoteResponse.noConnection();
-      } else if (e.response != null) {
+      if (e.response != null) {
         throw AppException.restApiFailure(
           e.response?.statusCode ?? 400,
           (e.response?.data is Map)
