@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/helpers/formatters.dart';
-import '../domain/visit.dart';
+import '../../../../core/helpers/formatters.dart';
+import '../../domain/visit.dart';
 
 class VisitListTile extends StatelessWidget {
   const VisitListTile({Key? key, required this.visit}) : super(key: key);

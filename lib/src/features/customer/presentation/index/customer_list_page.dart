@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_repository.dart';
 
-import '../../../core/presentation/common_widgets/app_drawer.dart';
-import '../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+
 import 'customer_list_tile.dart';
 
 class CustomerListPage extends ConsumerWidget {

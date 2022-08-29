@@ -35,7 +35,7 @@ class CustomerAddressDTO
   factory CustomerAddressDTO.fromJson(Map<String, dynamic> json) =>
       _$CustomerAddressDTOFromJson(json);
 
-  CustomerAddress toDomain({required Country country}) {
+  CustomerAddress toDomain({required Country? country}) {
     return CustomerAddress(
       customerId: customerId,
       addressId: addressId,

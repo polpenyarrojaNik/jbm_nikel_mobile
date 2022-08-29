@@ -4,6 +4,7 @@ import 'package:drift/native.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/country_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamily_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/customer/domain/customer_pending_payment.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_net_group_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/infrastructure/stats_customer_user_sales_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/visits/domain/visit.dart';
@@ -19,6 +20,13 @@ import '../../features/articles/infrastructure/article_rate_price_dto.dart';
 import '../../features/articles/infrastructure/article_spare_dto.dart';
 import '../../features/articles/infrastructure/article_substitute_dto.dart';
 import '../../features/customer/domain/customer.dart';
+import '../../features/customer/domain/customer_address.dart';
+import '../../features/customer/domain/customer_contact.dart';
+import '../../features/customer/domain/customer_discount.dart';
+import '../../features/customer/domain/customer_net_group.dart';
+import '../../features/customer/domain/customer_net_price.dart';
+import '../../features/customer/domain/customer_rappel.dart';
+import '../../features/customer/domain/top_article.dart';
 import '../../features/customer/infrastructure/collection_method_dto.dart';
 import '../../features/customer/infrastructure/collection_term_dto.dart';
 import '../../features/customer/infrastructure/customer_address_dto.dart';
@@ -218,28 +226,7 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
-  Future<Article> getArticleById({required String articleId}) {
-    try {
-      final query =
-          (select(articleTable)..where((t) => t.id.equals(articleId)));
-
-      return query.asyncMap((row) async {
-        final familyDTO = await (select(familyTable)
-              ..where((t) => t.id.equals(row.familyId ?? '')))
-            .getSingleOrNull();
-        final subfamilyDTO = await (select(subfamilyTable)
-              ..where((t) => t.id.equals(row.subfamilyId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(
-          family: familyDTO?.toDomain(),
-          subfamily: subfamilyDTO?.toDomain(),
-        );
-      }).getSingle();
-    } catch (e) {
-      print(e);
-      rethrow;
-    }
-  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
 
   Stream<List<Customer>> getCustomerList() {
     try {
@@ -276,6 +263,160 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
+  Future<Customer> getCustomerById({required String customerId}) {
+    try {
+      final query =
+          (select(customerTable)..where((t) => t.id.equals(customerId)));
+
+      return query.asyncMap((row) async {
+        final countryDTO = await (select(countryTable)
+              ..where((t) => t.id.equals(row.fiscalCountryId ?? '')))
+            .getSingleOrNull();
+        final divisaDTO = await (select(divisaTable)
+              ..where((t) => t.id.equals(row.divisaId ?? '')))
+            .getSingleOrNull();
+        final collectionMethodDTO = await (select(collectionMethodTable)
+              ..where((t) => t.id.equals(row.collectionMethodId ?? '')))
+            .getSingleOrNull();
+        final collectionTermDTO = await (select(collectionTermTable)
+              ..where((t) => t.id.equals(row.collectionTermId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          fiscalCountry: countryDTO?.toDomain(),
+          divisa: divisaDTO?.toDomain(),
+          collectionMethod: collectionMethodDTO?.toDomain(),
+          collectionTerm: collectionTermDTO?.toDomain(),
+        );
+      }).getSingle();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Stream<List<CustomerAddress>> getCustomerAddressById(
+      {required String customerId}) {
+    try {
+      final query = (select(customerAddressTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.asyncMap((row) async {
+        final countryDTO = await (select(countryTable)
+              ..where((t) => t.id.equals(row.countryId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          country: countryDTO?.toDomain(),
+        );
+      }).watch();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<CustomerContact>> getCustomerContactById(
+      {required String customerId}) async {
+    try {
+      final query = (select(customerContactTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<CustomerDiscount>> getCustomerDiscountById(
+      {required String customerId}) async {
+    try {
+      final query = (select(customerDiscountTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.asyncMap((row) async {
+        final familyDTO = await (select(familyTable)
+              ..where((t) => t.id.equals(row.familyId)))
+            .getSingle();
+        final subfamilyDTO = await (select(subfamilyTable)
+              ..where((t) => t.id.equals(row.subfamilyId)))
+            .getSingle();
+        return row.toDomain(
+            family: familyDTO.toDomain(), subfamily: subfamilyDTO.toDomain());
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<CustomerNetPrice>> getCustomerNetPriceById(
+      {required String customerId}) async {
+    try {
+      final query = (select(customerNetPriceTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<CustomerNetGroup>> getCustomerNetGroupById(
+      {required String customerId}) async {
+    try {
+      final query = (select(customerNetGroupTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<CustomerRappel>> getCustomerRappelById(
+      {required String customerId}) async {
+    try {
+      final query = (select(customerRappelTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<CustomerPendingPayment>> getCustomerPendingPaymentsById(
+      {required String customerId}) async {
+    try {
+      final query = (select(customerPendingPaymentTable)
+        ..where((t) => t.customerId.equals(customerId)));
+
+      return query.asyncMap((row) async {
+        final collectionMethodDTO = await (select(collectionMethodTable)
+              ..where((t) => t.id.equals(row.collectionMethodId ?? '')))
+            .getSingleOrNull();
+
+        return row.toDomain(collectionMethod: collectionMethodDTO?.toDomain());
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////
+
   Stream<List<Article>> getArticleList() {
     try {
       final query = (select(articleTable)
@@ -302,6 +443,44 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
+  Future<Article> getArticleById({required String articleId}) {
+    try {
+      final query =
+          (select(articleTable)..where((t) => t.id.equals(articleId)));
+
+      return query.asyncMap((row) async {
+        final familyDTO = await (select(familyTable)
+              ..where((t) => t.id.equals(row.familyId ?? '')))
+            .getSingleOrNull();
+        final subfamilyDTO = await (select(subfamilyTable)
+              ..where((t) => t.id.equals(row.subfamilyId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          family: familyDTO?.toDomain(),
+          subfamily: subfamilyDTO?.toDomain(),
+        );
+      }).getSingle();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<TopArticle>> getTopArticleList() {
+    try {
+      final query = (select(topArticleTable));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  /////////////////////////////////////////////////////////////////////////////////////
+
   Stream<List<Visit>> getVisitList() {
     try {
       final query = (select(visitTable)
@@ -311,6 +490,19 @@ class AppDatabase extends _$AppDatabase {
         ]));
 
       return query.map((row) => row.toDomain()).watch();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<Visit> getVisitById({required String visitId}) {
+    try {
+      final query = (select(visitTable)..where((t) => t.id.equals(visitId)));
+
+      return query.asyncMap((row) async {
+        return row.toDomain();
+      }).getSingle();
     } catch (e) {
       print(e);
       rethrow;

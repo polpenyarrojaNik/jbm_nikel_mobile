@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/customer/presentation/customer_list_page.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/show/sales_order_detail_page.dart';
@@ -9,17 +8,22 @@ import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/show/sale
 import '../../features/articles/presentation/index/article_list_page.dart';
 import '../../features/articles/presentation/show/article_detail_page.dart';
 import '../../features/auth/presentation/login_page.dart';
+import '../../features/customer/presentation/index/customer_list_page.dart';
+import '../../features/customer/presentation/show/customer_detail_page.dart';
 import '../../features/sales_order/presentation/edit/sales_order_edit_page.dart';
 import '../../features/sales_order/presentation/index/sales_order_list_page.dart';
 import '../../features/settings/presentation/sync_page.dart';
 import '../../features/splash/presentation/splash_page.dart';
-import '../../features/visits/presentation/visit_list_page.dart';
+import '../../features/visits/presentation/edit/visit_edit_page.dart';
+import '../../features/visits/presentation/index/visit_list_page.dart';
+import '../../features/visits/presentation/show/visit_detail_page.dart';
 import '../infrastructure/initial_db_repository.dart';
 
 enum AppRoute {
   home,
   login,
   customerindex,
+  customershow,
   articleindex,
   articleshow,
   salesorderindex,
@@ -27,6 +31,9 @@ enum AppRoute {
   salesorderedit,
   salesordernew,
   visitindex,
+  visitshow,
+  visitedit,
+  visitnew,
   kpisindex,
   settings,
   splash,
@@ -47,17 +54,17 @@ final goRouterProvider = Provider((ref) {
         path: '/salesorder',
         builder: (context, state) => const SalesOrderListPage(),
         routes: [
-          // GoRoute(
-          //   name: AppRoute.photogearnew.name,
-          //   path: 'new',
-          //   pageBuilder: (context, state) {
-          //     return MaterialPage(
-          //       key: state.pageKey,
-          //       fullscreenDialog: true,
-          //       child: PhotoGearEditScreen(),
-          //     );
-          //   },
-          // ),
+          GoRoute(
+            name: AppRoute.salesordernew.name,
+            path: 'new',
+            pageBuilder: (context, state) {
+              return MaterialPage(
+                key: state.pageKey,
+                fullscreenDialog: true,
+                child: SalesOrderEditPage(),
+              );
+            },
+          ),
           GoRoute(
             name: AppRoute.salesordershow.name,
             path: ':id',
@@ -95,6 +102,19 @@ final goRouterProvider = Provider((ref) {
         name: AppRoute.customerindex.name,
         path: '/home',
         builder: (context, state) => const CustomerListPage(),
+        routes: [
+          GoRoute(
+            name: AppRoute.customershow.name,
+            path: ':id',
+            pageBuilder: (context, state) {
+              final customerId = state.params['id']!;
+              return MaterialPage(
+                key: state.pageKey,
+                child: CustomerDetailPage(customerId: customerId),
+              );
+            },
+          ),
+        ],
       ),
       GoRoute(
         name: AppRoute.articleindex.name,
@@ -118,6 +138,40 @@ final goRouterProvider = Provider((ref) {
         name: AppRoute.visitindex.name,
         path: '/visit',
         builder: (context, state) => const VisitListPage(),
+        routes: [
+          GoRoute(
+            name: AppRoute.visitshow.name,
+            path: ':id',
+            pageBuilder: (context, state) {
+              final visitId = state.params['id']!;
+              return MaterialPage(
+                key: state.pageKey,
+                child: VisitDetailPage(visitId: visitId),
+              );
+            },
+          ),
+          GoRoute(
+            name: AppRoute.visitnew.name,
+            path: 'new',
+            pageBuilder: (context, state) {
+              return MaterialPage(
+                key: state.pageKey,
+                child: VisitEditPage(),
+              );
+            },
+          ),
+          GoRoute(
+            name: AppRoute.visitedit.name,
+            path: 'edit',
+            pageBuilder: (context, state) {
+              final visitId = state.params['id']!;
+              return MaterialPage(
+                key: state.pageKey,
+                child: VisitEditPage(visitId: visitId),
+              );
+            },
+          ),
+        ],
       ),
       GoRoute(
         name: AppRoute.splash.name,

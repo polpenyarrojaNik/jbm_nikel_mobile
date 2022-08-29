@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/visits/infrastructure/visit_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/visits/presentation/index/visit_list_tile.dart';
 
-import '../../../core/exceptions/app_exception.dart';
-import '../../../core/presentation/common_widgets/app_drawer.dart';
-import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'visit_list_tile.dart';
+import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class VisitListPage extends ConsumerWidget {
   const VisitListPage({Key? key}) : super(key: key);

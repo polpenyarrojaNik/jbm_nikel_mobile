@@ -35,7 +35,7 @@ class CustomerPendingPaymentDTO
       _$CustomerPendingPaymentDTOFromJson(json);
 
   CustomerPendingPayment toDomain(
-      {required CollectionMethod collectionMethod}) {
+      {required CollectionMethod? collectionMethod}) {
     return CustomerPendingPayment(
       customerId: customerId,
       effectId: effectId,

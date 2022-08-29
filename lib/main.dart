@@ -8,6 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/top_article_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articles/infrastructure/article_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/auth_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_repository.dart';
@@ -43,12 +44,14 @@ void main() async {
             .overrideWithValue(SyncRepository(database, dio, authRepository)),
         salesOrderRepositoryProvider
             .overrideWithValue(SalesOrderRepository(database, dio)),
-        customerRepositoryProvider
-            .overrideWithValue(CustomerRepository(database, dio)),
+        customerRepositoryProvider.overrideWithValue(
+            CustomerRepository(database, dio, authRepository)),
         articleRepositoryProvider
             .overrideWithValue(ArticleRepository(database, dio)),
         visitRepositoryProvider
             .overrideWithValue(VisitRepository(database, dio)),
+        topArticleRepositoryProvider
+            .overrideWithValue(TopArticleRepository(database)),
       ],
       observers: [
         RiverpodLogger(),

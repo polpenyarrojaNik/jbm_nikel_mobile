@@ -14,6 +14,12 @@ final visitListStreamProvider = StreamProvider.autoDispose<List<Visit>>((ref) {
   return visitRepository.watchVisitList();
 });
 
+final visitProvider =
+    FutureProvider.autoDispose.family<Visit, String>((ref, visitId) {
+  final visitRepository = ref.watch(visitRepositoryProvider);
+  return visitRepository.getVisitById(visitId: visitId);
+});
+
 class VisitRepository {
   AppDatabase db;
   Dio dio;
@@ -22,5 +28,9 @@ class VisitRepository {
 
   Stream<List<Visit>> watchVisitList() {
     return db.getVisitList();
+  }
+
+  Future<Visit> getVisitById({required String visitId}) async {
+    return db.getVisitById(visitId: visitId);
   }
 }
