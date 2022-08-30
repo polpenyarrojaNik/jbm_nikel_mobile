@@ -23,7 +23,7 @@ mixin _$ArticleSubstituteDTO {
   @JsonKey(name: 'ARTICULO_ID')
   String get articleId => throw _privateConstructorUsedError;
   @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-  String get id => throw _privateConstructorUsedError;
+  String get articleSubstituteId => throw _privateConstructorUsedError;
   @JsonKey(name: 'ORDEN')
   double get order => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -44,7 +44,7 @@ abstract class $ArticleSubstituteDTOCopyWith<$Res> {
       _$ArticleSubstituteDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articleId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String id,
+      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articleSubstituteId,
       @JsonKey(name: 'ORDEN') double order,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -62,7 +62,7 @@ class _$ArticleSubstituteDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articleId = freezed,
-    Object? id = freezed,
+    Object? articleSubstituteId = freezed,
     Object? order = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -72,9 +72,9 @@ class _$ArticleSubstituteDTOCopyWithImpl<$Res>
           ? _value.articleId
           : articleId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      articleSubstituteId: articleSubstituteId == freezed
+          ? _value.articleSubstituteId
+          : articleSubstituteId // ignore: cast_nullable_to_non_nullable
               as String,
       order: order == freezed
           ? _value.order
@@ -101,7 +101,7 @@ abstract class _$$_ArticleSubstituteDTOCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articleId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String id,
+      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articleSubstituteId,
       @JsonKey(name: 'ORDEN') double order,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -121,7 +121,7 @@ class __$$_ArticleSubstituteDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articleId = freezed,
-    Object? id = freezed,
+    Object? articleSubstituteId = freezed,
     Object? order = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -131,9 +131,9 @@ class __$$_ArticleSubstituteDTOCopyWithImpl<$Res>
           ? _value.articleId
           : articleId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      articleSubstituteId: articleSubstituteId == freezed
+          ? _value.articleSubstituteId
+          : articleSubstituteId // ignore: cast_nullable_to_non_nullable
               as String,
       order: order == freezed
           ? _value.order
@@ -155,11 +155,16 @@ class __$$_ArticleSubstituteDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ArticleSubstituteDTO extends _ArticleSubstituteDTO {
   const _$_ArticleSubstituteDTO(
-      {@JsonKey(name: 'ARTICULO_ID') required this.articleId,
-      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') required this.id,
-      @JsonKey(name: 'ORDEN') required this.order,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      {@JsonKey(name: 'ARTICULO_ID')
+          required this.articleId,
+      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
+          required this.articleSubstituteId,
+      @JsonKey(name: 'ORDEN')
+          required this.order,
+      @JsonKey(name: 'LAST_UPDATED')
+          required this.lastUpdated,
+      @JsonKey(name: 'DELETED')
+          this.deleted = 'N'})
       : super._();
 
   factory _$_ArticleSubstituteDTO.fromJson(Map<String, dynamic> json) =>
@@ -170,7 +175,7 @@ class _$_ArticleSubstituteDTO extends _ArticleSubstituteDTO {
   final String articleId;
   @override
   @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-  final String id;
+  final String articleSubstituteId;
   @override
   @JsonKey(name: 'ORDEN')
   final double order;
@@ -183,7 +188,7 @@ class _$_ArticleSubstituteDTO extends _ArticleSubstituteDTO {
 
   @override
   String toString() {
-    return 'ArticleSubstituteDTO(articleId: $articleId, id: $id, order: $order, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticleSubstituteDTO(articleId: $articleId, articleSubstituteId: $articleSubstituteId, order: $order, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -192,7 +197,8 @@ class _$_ArticleSubstituteDTO extends _ArticleSubstituteDTO {
         (other.runtimeType == runtimeType &&
             other is _$_ArticleSubstituteDTO &&
             const DeepCollectionEquality().equals(other.articleId, articleId) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.articleSubstituteId, articleSubstituteId) &&
             const DeepCollectionEquality().equals(other.order, order) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -204,7 +210,7 @@ class _$_ArticleSubstituteDTO extends _ArticleSubstituteDTO {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(articleId),
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(articleSubstituteId),
       const DeepCollectionEquality().hash(order),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -225,12 +231,16 @@ class _$_ArticleSubstituteDTO extends _ArticleSubstituteDTO {
 
 abstract class _ArticleSubstituteDTO extends ArticleSubstituteDTO {
   const factory _ArticleSubstituteDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articleId,
-          @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') required final String id,
-          @JsonKey(name: 'ORDEN') required final double order,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ArticleSubstituteDTO;
+      {@JsonKey(name: 'ARTICULO_ID')
+          required final String articleId,
+      @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
+          required final String articleSubstituteId,
+      @JsonKey(name: 'ORDEN')
+          required final double order,
+      @JsonKey(name: 'LAST_UPDATED')
+          required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          final String deleted}) = _$_ArticleSubstituteDTO;
   const _ArticleSubstituteDTO._() : super._();
 
   factory _ArticleSubstituteDTO.fromJson(Map<String, dynamic> json) =
@@ -241,7 +251,7 @@ abstract class _ArticleSubstituteDTO extends ArticleSubstituteDTO {
   String get articleId;
   @override
   @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
-  String get id;
+  String get articleSubstituteId;
   @override
   @JsonKey(name: 'ORDEN')
   double get order;

@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_valu
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/article_repository.dart';
 import 'article_list_tile.dart';
 
@@ -39,6 +40,8 @@ class ArticleListPage extends ConsumerWidget {
               delegate: SliverChildBuilderDelegate(
                 (context, i) => ArticleListTile(
                   article: articleList[i],
+                  appRoute: AppRoute.articleshow,
+                  customerId: null,
                 ),
                 childCount: articleList.length,
               ),

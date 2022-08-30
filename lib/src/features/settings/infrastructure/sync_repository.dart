@@ -1572,7 +1572,7 @@ class SyncRepository {
     try {
       final response = await dio.getUri(
         Uri.http(
-          dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
           path,
           query,
         ),
@@ -1621,7 +1621,7 @@ class SyncRepository {
     try {
       final response = await dio.getUri(
           Uri.http(
-            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
             '/api/v1/sync/db-datetime',
           ),
           options: Options(

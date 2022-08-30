@@ -29,13 +29,13 @@ class ArticleNetGroupPriceDTO
   factory ArticleNetGroupPriceDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticleNetGroupPriceDTOFromJson(json);
 
-  ArticleNetGroupPrice toDomain({required String divisaId}) {
+  ArticleNetGroupPrice toDomain() {
     return ArticleNetGroupPrice(
       articleId: articleId,
       netGroupId: netGroupId,
       netGroupDescription: netGroupDescription,
       quantityFrom: quantityFrom,
-      price: price.parseMoney(price, divisaId),
+      price: price,
       priceType: priceType,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,

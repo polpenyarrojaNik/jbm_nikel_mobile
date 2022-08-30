@@ -137,7 +137,7 @@ class CustomerRepository {
     final query = {'CLIENTE_ID': customerId};
     final customerAttahcmentDTOList = await _remoteGetCustomerAttachment(
         requestUri: Uri.http(
-          dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
           'api/v1/online/cliente/adjuntos',
           query,
         ),

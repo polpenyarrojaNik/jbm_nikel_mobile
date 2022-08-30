@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArticleComponent {
-  String get articleId => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  Article get article => throw _privateConstructorUsedError;
+  Article get articleComponent => throw _privateConstructorUsedError;
   double get quantity => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -33,11 +33,14 @@ abstract class $ArticleComponentCopyWith<$Res> {
           ArticleComponent value, $Res Function(ArticleComponent) then) =
       _$ArticleComponentCopyWithImpl<$Res>;
   $Res call(
-      {String articleId,
-      String id,
+      {Article article,
+      Article articleComponent,
       double quantity,
       DateTime lastUpdated,
       bool deleted});
+
+  $ArticleCopyWith<$Res> get article;
+  $ArticleCopyWith<$Res> get articleComponent;
 }
 
 /// @nodoc
@@ -51,21 +54,21 @@ class _$ArticleComponentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? articleId = freezed,
-    Object? id = freezed,
+    Object? article = freezed,
+    Object? articleComponent = freezed,
     Object? quantity = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
     return _then(_value.copyWith(
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
+      articleComponent: articleComponent == freezed
+          ? _value.articleComponent
+          : articleComponent // ignore: cast_nullable_to_non_nullable
+              as Article,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -80,6 +83,20 @@ class _$ArticleComponentCopyWithImpl<$Res>
               as bool,
     ));
   }
+
+  @override
+  $ArticleCopyWith<$Res> get article {
+    return $ArticleCopyWith<$Res>(_value.article, (value) {
+      return _then(_value.copyWith(article: value));
+    });
+  }
+
+  @override
+  $ArticleCopyWith<$Res> get articleComponent {
+    return $ArticleCopyWith<$Res>(_value.articleComponent, (value) {
+      return _then(_value.copyWith(articleComponent: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -90,11 +107,16 @@ abstract class _$$_ArticleComponentCopyWith<$Res>
       __$$_ArticleComponentCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String articleId,
-      String id,
+      {Article article,
+      Article articleComponent,
       double quantity,
       DateTime lastUpdated,
       bool deleted});
+
+  @override
+  $ArticleCopyWith<$Res> get article;
+  @override
+  $ArticleCopyWith<$Res> get articleComponent;
 }
 
 /// @nodoc
@@ -110,21 +132,21 @@ class __$$_ArticleComponentCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? articleId = freezed,
-    Object? id = freezed,
+    Object? article = freezed,
+    Object? articleComponent = freezed,
     Object? quantity = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
     return _then(_$_ArticleComponent(
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
+      articleComponent: articleComponent == freezed
+          ? _value.articleComponent
+          : articleComponent // ignore: cast_nullable_to_non_nullable
+              as Article,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -145,17 +167,17 @@ class __$$_ArticleComponentCopyWithImpl<$Res>
 
 class _$_ArticleComponent extends _ArticleComponent {
   const _$_ArticleComponent(
-      {required this.articleId,
-      required this.id,
+      {required this.article,
+      required this.articleComponent,
       required this.quantity,
       required this.lastUpdated,
       required this.deleted})
       : super._();
 
   @override
-  final String articleId;
+  final Article article;
   @override
-  final String id;
+  final Article articleComponent;
   @override
   final double quantity;
   @override
@@ -165,7 +187,7 @@ class _$_ArticleComponent extends _ArticleComponent {
 
   @override
   String toString() {
-    return 'ArticleComponent(articleId: $articleId, id: $id, quantity: $quantity, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticleComponent(article: $article, articleComponent: $articleComponent, quantity: $quantity, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -173,8 +195,9 @@ class _$_ArticleComponent extends _ArticleComponent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticleComponent &&
-            const DeepCollectionEquality().equals(other.articleId, articleId) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.article, article) &&
+            const DeepCollectionEquality()
+                .equals(other.articleComponent, articleComponent) &&
             const DeepCollectionEquality().equals(other.quantity, quantity) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -184,8 +207,8 @@ class _$_ArticleComponent extends _ArticleComponent {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articleId),
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(article),
+      const DeepCollectionEquality().hash(articleComponent),
       const DeepCollectionEquality().hash(quantity),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -198,17 +221,17 @@ class _$_ArticleComponent extends _ArticleComponent {
 
 abstract class _ArticleComponent extends ArticleComponent {
   const factory _ArticleComponent(
-      {required final String articleId,
-      required final String id,
+      {required final Article article,
+      required final Article articleComponent,
       required final double quantity,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticleComponent;
   const _ArticleComponent._() : super._();
 
   @override
-  String get articleId;
+  Article get article;
   @override
-  String get id;
+  Article get articleComponent;
   @override
   double get quantity;
   @override

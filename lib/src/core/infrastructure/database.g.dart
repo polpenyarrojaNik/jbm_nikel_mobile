@@ -12047,37 +12047,38 @@ class $ArticleTableTable extends ArticleTable
 class ArticleComponentTableCompanion
     extends UpdateCompanion<ArticleComponentDTO> {
   final Value<String> articleId;
-  final Value<String> id;
+  final Value<String> articleComponentId;
   final Value<double> quantity;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ArticleComponentTableCompanion({
     this.articleId = const Value.absent(),
-    this.id = const Value.absent(),
+    this.articleComponentId = const Value.absent(),
     this.quantity = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
   ArticleComponentTableCompanion.insert({
     required String articleId,
-    required String id,
+    required String articleComponentId,
     required double quantity,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articleId = Value(articleId),
-        id = Value(id),
+        articleComponentId = Value(articleComponentId),
         quantity = Value(quantity),
         lastUpdated = Value(lastUpdated);
   static Insertable<ArticleComponentDTO> custom({
     Expression<String>? articleId,
-    Expression<String>? id,
+    Expression<String>? articleComponentId,
     Expression<double>? quantity,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (articleId != null) 'ARTICULO_ID': articleId,
-      if (id != null) 'ARTICULO_COMPONENTE_ID': id,
+      if (articleComponentId != null)
+        'ARTICULO_COMPONENTE_ID': articleComponentId,
       if (quantity != null) 'CANTIDAD': quantity,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
@@ -12086,13 +12087,13 @@ class ArticleComponentTableCompanion
 
   ArticleComponentTableCompanion copyWith(
       {Value<String>? articleId,
-      Value<String>? id,
+      Value<String>? articleComponentId,
       Value<double>? quantity,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ArticleComponentTableCompanion(
       articleId: articleId ?? this.articleId,
-      id: id ?? this.id,
+      articleComponentId: articleComponentId ?? this.articleComponentId,
       quantity: quantity ?? this.quantity,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -12105,8 +12106,9 @@ class ArticleComponentTableCompanion
     if (articleId.present) {
       map['ARTICULO_ID'] = Variable<String>(articleId.value);
     }
-    if (id.present) {
-      map['ARTICULO_COMPONENTE_ID'] = Variable<String>(id.value);
+    if (articleComponentId.present) {
+      map['ARTICULO_COMPONENTE_ID'] =
+          Variable<String>(articleComponentId.value);
     }
     if (quantity.present) {
       map['CANTIDAD'] = Variable<double>(quantity.value);
@@ -12124,7 +12126,7 @@ class ArticleComponentTableCompanion
   String toString() {
     return (StringBuffer('ArticleComponentTableCompanion(')
           ..write('articleId: $articleId, ')
-          ..write('id: $id, ')
+          ..write('articleComponentId: $articleComponentId, ')
           ..write('quantity: $quantity, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -12144,11 +12146,12 @@ class $ArticleComponentTableTable extends ArticleComponentTable
   late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  final VerificationMeta _articleComponentIdMeta =
+      const VerificationMeta('articleComponentId');
   @override
-  late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'ARTICULO_COMPONENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  late final GeneratedColumn<String> articleComponentId =
+      GeneratedColumn<String>('ARTICULO_COMPONENTE_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
   @override
   late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
@@ -12169,7 +12172,7 @@ class $ArticleComponentTableTable extends ArticleComponentTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [articleId, id, quantity, lastUpdated, deleted];
+      [articleId, articleComponentId, quantity, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_COMPONENTES';
   @override
@@ -12189,10 +12192,12 @@ class $ArticleComponentTableTable extends ArticleComponentTable
       context.missing(_articleIdMeta);
     }
     if (data.containsKey('ARTICULO_COMPONENTE_ID')) {
-      context.handle(_idMeta,
-          id.isAcceptableOrUnknown(data['ARTICULO_COMPONENTE_ID']!, _idMeta));
+      context.handle(
+          _articleComponentIdMeta,
+          articleComponentId.isAcceptableOrUnknown(
+              data['ARTICULO_COMPONENTE_ID']!, _articleComponentIdMeta));
     } else if (isInserting) {
-      context.missing(_idMeta);
+      context.missing(_articleComponentIdMeta);
     }
     if (data.containsKey('CANTIDAD')) {
       context.handle(_quantityMeta,
@@ -12216,14 +12221,15 @@ class $ArticleComponentTableTable extends ArticleComponentTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, id};
+  Set<GeneratedColumn> get $primaryKey => {articleId, articleComponentId};
   @override
   ArticleComponentDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleComponentDTO(
       articleId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      id: attachedDatabase.options.types.read(DriftSqlType.string,
+      articleComponentId: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
       quantity: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
@@ -12661,37 +12667,38 @@ class $ArticleSpareTableTable extends ArticleSpareTable
 class ArticleSubstituteTableCompanion
     extends UpdateCompanion<ArticleSubstituteDTO> {
   final Value<String> articleId;
-  final Value<String> id;
+  final Value<String> articleSubstituteId;
   final Value<double> order;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ArticleSubstituteTableCompanion({
     this.articleId = const Value.absent(),
-    this.id = const Value.absent(),
+    this.articleSubstituteId = const Value.absent(),
     this.order = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
   ArticleSubstituteTableCompanion.insert({
     required String articleId,
-    required String id,
+    required String articleSubstituteId,
     required double order,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articleId = Value(articleId),
-        id = Value(id),
+        articleSubstituteId = Value(articleSubstituteId),
         order = Value(order),
         lastUpdated = Value(lastUpdated);
   static Insertable<ArticleSubstituteDTO> custom({
     Expression<String>? articleId,
-    Expression<String>? id,
+    Expression<String>? articleSubstituteId,
     Expression<double>? order,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (articleId != null) 'ARTICULO_ID': articleId,
-      if (id != null) 'ARTICULO_ID_SUSTITUTIVO': id,
+      if (articleSubstituteId != null)
+        'ARTICULO_ID_SUSTITUTIVO': articleSubstituteId,
       if (order != null) 'ORDEN': order,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
@@ -12700,13 +12707,13 @@ class ArticleSubstituteTableCompanion
 
   ArticleSubstituteTableCompanion copyWith(
       {Value<String>? articleId,
-      Value<String>? id,
+      Value<String>? articleSubstituteId,
       Value<double>? order,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ArticleSubstituteTableCompanion(
       articleId: articleId ?? this.articleId,
-      id: id ?? this.id,
+      articleSubstituteId: articleSubstituteId ?? this.articleSubstituteId,
       order: order ?? this.order,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -12719,8 +12726,9 @@ class ArticleSubstituteTableCompanion
     if (articleId.present) {
       map['ARTICULO_ID'] = Variable<String>(articleId.value);
     }
-    if (id.present) {
-      map['ARTICULO_ID_SUSTITUTIVO'] = Variable<String>(id.value);
+    if (articleSubstituteId.present) {
+      map['ARTICULO_ID_SUSTITUTIVO'] =
+          Variable<String>(articleSubstituteId.value);
     }
     if (order.present) {
       map['ORDEN'] = Variable<double>(order.value);
@@ -12738,7 +12746,7 @@ class ArticleSubstituteTableCompanion
   String toString() {
     return (StringBuffer('ArticleSubstituteTableCompanion(')
           ..write('articleId: $articleId, ')
-          ..write('id: $id, ')
+          ..write('articleSubstituteId: $articleSubstituteId, ')
           ..write('order: $order, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -12758,11 +12766,12 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
   late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  final VerificationMeta _articleSubstituteIdMeta =
+      const VerificationMeta('articleSubstituteId');
   @override
-  late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'ARTICULO_ID_SUSTITUTIVO', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  late final GeneratedColumn<String> articleSubstituteId =
+      GeneratedColumn<String>('ARTICULO_ID_SUSTITUTIVO', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _orderMeta = const VerificationMeta('order');
   @override
   late final GeneratedColumn<double> order = GeneratedColumn<double>(
@@ -12783,7 +12792,7 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [articleId, id, order, lastUpdated, deleted];
+      [articleId, articleSubstituteId, order, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_SUSTITUTIVOS';
   @override
@@ -12803,10 +12812,12 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
       context.missing(_articleIdMeta);
     }
     if (data.containsKey('ARTICULO_ID_SUSTITUTIVO')) {
-      context.handle(_idMeta,
-          id.isAcceptableOrUnknown(data['ARTICULO_ID_SUSTITUTIVO']!, _idMeta));
+      context.handle(
+          _articleSubstituteIdMeta,
+          articleSubstituteId.isAcceptableOrUnknown(
+              data['ARTICULO_ID_SUSTITUTIVO']!, _articleSubstituteIdMeta));
     } else if (isInserting) {
-      context.missing(_idMeta);
+      context.missing(_articleSubstituteIdMeta);
     }
     if (data.containsKey('ORDEN')) {
       context.handle(
@@ -12830,14 +12841,15 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, id};
+  Set<GeneratedColumn> get $primaryKey => {articleId, articleSubstituteId};
   @override
   ArticleSubstituteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticleSubstituteDTO(
       articleId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      id: attachedDatabase.options.types.read(DriftSqlType.string,
+      articleSubstituteId: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_ID_SUSTITUTIVO'])!,
       order: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ORDEN'])!,

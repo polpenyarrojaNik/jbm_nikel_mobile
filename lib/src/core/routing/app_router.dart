@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/features/customer/presentation/show/customer_top_articles_list_page.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/show/sales_order_detail_page.dart';
 
 import '../../features/articles/presentation/index/article_list_page.dart';
@@ -10,6 +11,10 @@ import '../../features/articles/presentation/show/article_detail_page.dart';
 import '../../features/auth/presentation/login_page.dart';
 import '../../features/customer/presentation/index/customer_list_page.dart';
 import '../../features/customer/presentation/show/customer_detail_page.dart';
+import '../../features/customer/presentation/show/customer_pending_payment_page.dart';
+import '../../features/customer/presentation/show/customer_sales_article_page.dart';
+import '../../features/customer/presentation/show/customer_sales_month_page.dart';
+import '../../features/customer/presentation/show/customer_stock_b2b_page.dart';
 import '../../features/sales_order/presentation/edit/sales_order_edit_page.dart';
 import '../../features/sales_order/presentation/index/sales_order_list_page.dart';
 import '../../features/settings/presentation/sync_page.dart';
@@ -24,8 +29,18 @@ enum AppRoute {
   login,
   customerindex,
   customershow,
+  customerpendingpayment,
+  customersalesmonth,
+  customersalesarticle,
+  customerstockb2b,
+  customertoparticles,
+  customertoparticlesshow,
   articleindex,
   articleshow,
+  articlesalesorder,
+  articlereturns,
+  articlelastprice,
+  articlestats,
   salesorderindex,
   salesordershow,
   salesorderedit,
@@ -113,6 +128,79 @@ final goRouterProvider = Provider((ref) {
                 child: CustomerDetailPage(customerId: customerId),
               );
             },
+            routes: [
+              GoRoute(
+                name: AppRoute.customersalesmonth.name,
+                path: 'sales-month',
+                pageBuilder: (context, state) {
+                  final customerId = state.params['id']!;
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: CustomerSalesMonthPage(customerId: customerId),
+                  );
+                },
+              ),
+              GoRoute(
+                name: AppRoute.customersalesarticle.name,
+                path: 'sales-article',
+                pageBuilder: (context, state) {
+                  final customerId = state.params['id']!;
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: CustomerSalesArticlePage(customerId: customerId),
+                  );
+                },
+              ),
+              GoRoute(
+                name: AppRoute.customerpendingpayment.name,
+                path: 'pending-payments',
+                pageBuilder: (context, state) {
+                  final customerId = state.params['id']!;
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: CustomerPendingPaymentPage(customerId: customerId),
+                  );
+                },
+              ),
+              GoRoute(
+                name: AppRoute.customerstockb2b.name,
+                path: 'stockb2b',
+                pageBuilder: (context, state) {
+                  final customerId = state.params['id']!;
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: CustomerStockB2BPage(customerId: customerId),
+                  );
+                },
+              ),
+              GoRoute(
+                  name: AppRoute.customertoparticles.name,
+                  path: 'top-articles',
+                  pageBuilder: (context, state) {
+                    final customerId = state.params['id']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child:
+                          CustomerTopArticlesListPage(customerId: customerId),
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      name: AppRoute.customertoparticlesshow.name,
+                      path: ':articleId',
+                      pageBuilder: (context, state) {
+                        final articleId = state.params['articleId']!;
+
+                        return MaterialPage(
+                          key: state.pageKey,
+                          child: ArticleDetailPage(
+                            articleId: articleId,
+                          ),
+                        );
+                      },
+                    ),
+                  ]),
+            ],
           ),
         ],
       ),
@@ -123,9 +211,9 @@ final goRouterProvider = Provider((ref) {
         routes: [
           GoRoute(
             name: AppRoute.articleshow.name,
-            path: ':id',
+            path: ':articleId',
             pageBuilder: (context, state) {
-              final articleId = state.params['id']!;
+              final articleId = state.params['articleId']!;
               return MaterialPage(
                 key: state.pageKey,
                 child: ArticleDetailPage(articleId: articleId),

@@ -52,6 +52,7 @@ class AuthController extends StateNotifier<AuthState> {
   }
 
   Future<void> checkAndUpdateAuthStatus() async {
+    state = const AuthState.authenticating();
     state = (await _authRepository.isSignIn())
         ? const AuthState.authenticated()
         : const AuthState.unauthenticated();

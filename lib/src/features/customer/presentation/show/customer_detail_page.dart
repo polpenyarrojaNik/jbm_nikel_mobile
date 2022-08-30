@@ -4,12 +4,15 @@ import 'package:jbm_nikel_mobile/src/features/customer/domain/customer.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/presentation/show/customer_address_container.dart';
 
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
+import '../../../../core/presentation/common_widgets/buttons_row_bar_widget.dart';
+import '../../../../core/presentation/common_widgets/text_button_widget.dart';
+import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/customer_repository.dart';
-import 'customer_attachment_tile.dart';
+import 'customer_attachment_container.dart';
 import 'customer_contact_container.dart';
 import 'customer_discount_container.dart';
 import 'customer_net_group_container.dart';
-import 'customer_net_price_customer.dart.dart';
+import 'customer_net_price_container.dart.dart';
 import 'customer_rappel_container.dart';
 
 class CustomerDetailPage extends StatelessWidget {
@@ -36,21 +39,39 @@ class CustomerDetailPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2.5),
-                      child: SizedBox(
-                        height: 45,
-                        child: ListView(
-                          shrinkWrap: true,
-                          controller: ScrollController(),
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            TextButton(
-                                onPressed: () {},
-                                child: const Text('Pagos Pendientes'))
-                          ],
+                    ButtonsRowBarWidget(
+                      textButtonsList: [
+                        TextButtonWidget(
+                          titleText: 'Vtas. Mes',
+                          entityId: customerId,
+                          appRouteValue: AppRoute.customersalesmonth,
                         ),
-                      ),
+                        TextButtonWidget(
+                          titleText: '¿Vtas. Art?',
+                          entityId: customerId,
+                          appRouteValue: AppRoute.customersalesarticle,
+                        ),
+                        TextButtonWidget(
+                          titleText: '¿Precio Neto?',
+                          entityId: customerId,
+                          appRouteValue: AppRoute.customerpendingpayment,
+                        ),
+                        TextButtonWidget(
+                          titleText: 'Fact. Pendientes',
+                          entityId: customerId,
+                          appRouteValue: AppRoute.customerpendingpayment,
+                        ),
+                        TextButtonWidget(
+                          titleText: '¿Stock B2B?',
+                          entityId: customerId,
+                          appRouteValue: AppRoute.customerstockb2b,
+                        ),
+                        TextButtonWidget(
+                          titleText: 'Top 150',
+                          entityId: customerId,
+                          appRouteValue: AppRoute.customertoparticles,
+                        ),
+                      ],
                     ),
                     const Divider(),
                     Text(

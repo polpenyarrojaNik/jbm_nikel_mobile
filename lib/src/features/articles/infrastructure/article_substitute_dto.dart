@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/infrastructure/database.dart';
+import '../domain/article.dart';
 import '../domain/article_substitute.dart';
 
 part 'article_substitute_dto.freezed.dart';
@@ -16,7 +17,8 @@ class ArticleSubstituteDTO
   const ArticleSubstituteDTO._();
   const factory ArticleSubstituteDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articleId,
-    @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') required String id,
+    @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
+        required String articleSubstituteId,
     @JsonKey(name: 'ORDEN') required double order,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
@@ -25,10 +27,10 @@ class ArticleSubstituteDTO
   factory ArticleSubstituteDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticleSubstituteDTOFromJson(json);
 
-  ArticleSubstitute toDomain() {
+  ArticleSubstitute toDomain({required Article articleSubstitute}) {
     return ArticleSubstitute(
       articleId: articleId,
-      id: id,
+      articleSubstitute: articleSubstitute,
       order: order,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
@@ -39,7 +41,7 @@ class ArticleSubstituteDTO
   Map<String, Expression> toColumns(bool nullToAbsent) {
     return ArticleSubstituteTableCompanion(
       articleId: Value(articleId),
-      id: Value(id),
+      articleSubstituteId: Value(articleSubstituteId),
       order: Value(order),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
@@ -53,10 +55,11 @@ class ArticleSubstituteTable extends Table {
   String get tableName => 'ARTICULOS_SUSTITUTIVOS';
 
   @override
-  Set<Column> get primaryKey => {articleId, id};
+  Set<Column> get primaryKey => {articleId, articleSubstituteId};
 
   TextColumn get articleId => text().named('ARTICULO_ID')();
-  TextColumn get id => text().named('ARTICULO_ID_SUSTITUTIVO')();
+  TextColumn get articleSubstituteId =>
+      text().named('ARTICULO_ID_SUSTITUTIVO')();
   RealColumn get order => real().named('ORDEN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

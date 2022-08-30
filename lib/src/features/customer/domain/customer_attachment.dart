@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'customer_attachment.freezed.dart';

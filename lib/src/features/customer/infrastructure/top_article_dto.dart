@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/infrastructure/database.dart';
+import '../../articles/domain/article.dart';
 import '../domain/top_article.dart';
 
 part 'top_article_dto.freezed.dart';
@@ -21,9 +22,9 @@ class TopArticleDTO with _$TopArticleDTO implements Insertable<TopArticleDTO> {
   factory TopArticleDTO.fromJson(Map<String, dynamic> json) =>
       _$TopArticleDTOFromJson(json);
 
-  TopArticle toDomain() {
+  TopArticle toDomain({required Article article}) {
     return TopArticle(
-      articleId: articleId,
+      article: article,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );

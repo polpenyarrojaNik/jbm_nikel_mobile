@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ArticleSubstitute {
   String get articleId => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  Article get articleSubstitute => throw _privateConstructorUsedError;
   double get order => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -34,10 +34,12 @@ abstract class $ArticleSubstituteCopyWith<$Res> {
       _$ArticleSubstituteCopyWithImpl<$Res>;
   $Res call(
       {String articleId,
-      String id,
+      Article articleSubstitute,
       double order,
       DateTime lastUpdated,
       bool deleted});
+
+  $ArticleCopyWith<$Res> get articleSubstitute;
 }
 
 /// @nodoc
@@ -52,7 +54,7 @@ class _$ArticleSubstituteCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articleId = freezed,
-    Object? id = freezed,
+    Object? articleSubstitute = freezed,
     Object? order = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -62,10 +64,10 @@ class _$ArticleSubstituteCopyWithImpl<$Res>
           ? _value.articleId
           : articleId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      articleSubstitute: articleSubstitute == freezed
+          ? _value.articleSubstitute
+          : articleSubstitute // ignore: cast_nullable_to_non_nullable
+              as Article,
       order: order == freezed
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -80,6 +82,13 @@ class _$ArticleSubstituteCopyWithImpl<$Res>
               as bool,
     ));
   }
+
+  @override
+  $ArticleCopyWith<$Res> get articleSubstitute {
+    return $ArticleCopyWith<$Res>(_value.articleSubstitute, (value) {
+      return _then(_value.copyWith(articleSubstitute: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -91,10 +100,13 @@ abstract class _$$_ArticleSubstituteCopyWith<$Res>
   @override
   $Res call(
       {String articleId,
-      String id,
+      Article articleSubstitute,
       double order,
       DateTime lastUpdated,
       bool deleted});
+
+  @override
+  $ArticleCopyWith<$Res> get articleSubstitute;
 }
 
 /// @nodoc
@@ -111,7 +123,7 @@ class __$$_ArticleSubstituteCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articleId = freezed,
-    Object? id = freezed,
+    Object? articleSubstitute = freezed,
     Object? order = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -121,10 +133,10 @@ class __$$_ArticleSubstituteCopyWithImpl<$Res>
           ? _value.articleId
           : articleId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+      articleSubstitute: articleSubstitute == freezed
+          ? _value.articleSubstitute
+          : articleSubstitute // ignore: cast_nullable_to_non_nullable
+              as Article,
       order: order == freezed
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
@@ -146,7 +158,7 @@ class __$$_ArticleSubstituteCopyWithImpl<$Res>
 class _$_ArticleSubstitute extends _ArticleSubstitute {
   const _$_ArticleSubstitute(
       {required this.articleId,
-      required this.id,
+      required this.articleSubstitute,
       required this.order,
       required this.lastUpdated,
       required this.deleted})
@@ -155,7 +167,7 @@ class _$_ArticleSubstitute extends _ArticleSubstitute {
   @override
   final String articleId;
   @override
-  final String id;
+  final Article articleSubstitute;
   @override
   final double order;
   @override
@@ -165,7 +177,7 @@ class _$_ArticleSubstitute extends _ArticleSubstitute {
 
   @override
   String toString() {
-    return 'ArticleSubstitute(articleId: $articleId, id: $id, order: $order, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticleSubstitute(articleId: $articleId, articleSubstitute: $articleSubstitute, order: $order, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -174,7 +186,8 @@ class _$_ArticleSubstitute extends _ArticleSubstitute {
         (other.runtimeType == runtimeType &&
             other is _$_ArticleSubstitute &&
             const DeepCollectionEquality().equals(other.articleId, articleId) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.articleSubstitute, articleSubstitute) &&
             const DeepCollectionEquality().equals(other.order, order) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -185,7 +198,7 @@ class _$_ArticleSubstitute extends _ArticleSubstitute {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(articleId),
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(articleSubstitute),
       const DeepCollectionEquality().hash(order),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -200,7 +213,7 @@ class _$_ArticleSubstitute extends _ArticleSubstitute {
 abstract class _ArticleSubstitute extends ArticleSubstitute {
   const factory _ArticleSubstitute(
       {required final String articleId,
-      required final String id,
+      required final Article articleSubstitute,
       required final double order,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticleSubstitute;
@@ -209,7 +222,7 @@ abstract class _ArticleSubstitute extends ArticleSubstitute {
   @override
   String get articleId;
   @override
-  String get id;
+  Article get articleSubstitute;
   @override
   double get order;
   @override

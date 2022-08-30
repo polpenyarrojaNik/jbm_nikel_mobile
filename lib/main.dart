@@ -46,8 +46,8 @@ void main() async {
             .overrideWithValue(SalesOrderRepository(database, dio)),
         customerRepositoryProvider.overrideWithValue(
             CustomerRepository(database, dio, authRepository)),
-        articleRepositoryProvider
-            .overrideWithValue(ArticleRepository(database, dio)),
+        articleRepositoryProvider.overrideWithValue(
+            ArticleRepository(database, dio, authRepository)),
         visitRepositoryProvider
             .overrideWithValue(VisitRepository(database, dio)),
         topArticleRepositoryProvider

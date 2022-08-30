@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TopArticle {
-  String get articleId => throw _privateConstructorUsedError;
+  Article get article => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -30,7 +30,9 @@ abstract class $TopArticleCopyWith<$Res> {
   factory $TopArticleCopyWith(
           TopArticle value, $Res Function(TopArticle) then) =
       _$TopArticleCopyWithImpl<$Res>;
-  $Res call({String articleId, DateTime lastUpdated, bool deleted});
+  $Res call({Article article, DateTime lastUpdated, bool deleted});
+
+  $ArticleCopyWith<$Res> get article;
 }
 
 /// @nodoc
@@ -43,15 +45,15 @@ class _$TopArticleCopyWithImpl<$Res> implements $TopArticleCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? articleId = freezed,
+    Object? article = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
     return _then(_value.copyWith(
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -62,6 +64,13 @@ class _$TopArticleCopyWithImpl<$Res> implements $TopArticleCopyWith<$Res> {
               as bool,
     ));
   }
+
+  @override
+  $ArticleCopyWith<$Res> get article {
+    return $ArticleCopyWith<$Res>(_value.article, (value) {
+      return _then(_value.copyWith(article: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -71,7 +80,10 @@ abstract class _$$_TopArticleCopyWith<$Res>
           _$_TopArticle value, $Res Function(_$_TopArticle) then) =
       __$$_TopArticleCopyWithImpl<$Res>;
   @override
-  $Res call({String articleId, DateTime lastUpdated, bool deleted});
+  $Res call({Article article, DateTime lastUpdated, bool deleted});
+
+  @override
+  $ArticleCopyWith<$Res> get article;
 }
 
 /// @nodoc
@@ -86,15 +98,15 @@ class __$$_TopArticleCopyWithImpl<$Res> extends _$TopArticleCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? articleId = freezed,
+    Object? article = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
     return _then(_$_TopArticle(
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -111,13 +123,11 @@ class __$$_TopArticleCopyWithImpl<$Res> extends _$TopArticleCopyWithImpl<$Res>
 
 class _$_TopArticle extends _TopArticle {
   const _$_TopArticle(
-      {required this.articleId,
-      required this.lastUpdated,
-      required this.deleted})
+      {required this.article, required this.lastUpdated, required this.deleted})
       : super._();
 
   @override
-  final String articleId;
+  final Article article;
   @override
   final DateTime lastUpdated;
   @override
@@ -125,7 +135,7 @@ class _$_TopArticle extends _TopArticle {
 
   @override
   String toString() {
-    return 'TopArticle(articleId: $articleId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'TopArticle(article: $article, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -133,7 +143,7 @@ class _$_TopArticle extends _TopArticle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TopArticle &&
-            const DeepCollectionEquality().equals(other.articleId, articleId) &&
+            const DeepCollectionEquality().equals(other.article, article) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
@@ -142,7 +152,7 @@ class _$_TopArticle extends _TopArticle {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articleId),
+      const DeepCollectionEquality().hash(article),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
 
@@ -154,13 +164,13 @@ class _$_TopArticle extends _TopArticle {
 
 abstract class _TopArticle extends TopArticle {
   const factory _TopArticle(
-      {required final String articleId,
+      {required final Article article,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_TopArticle;
   const _TopArticle._() : super._();
 
   @override
-  String get articleId;
+  Article get article;
   @override
   DateTime get lastUpdated;
   @override

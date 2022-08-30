@@ -20,7 +20,7 @@ mixin _$ArticleRatePrice {
   String get rateId => throw _privateConstructorUsedError;
   String? get rateDescription => throw _privateConstructorUsedError;
   double get quantityFrom => throw _privateConstructorUsedError;
-  Money get price => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   double? get priceType => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $ArticleRatePriceCopyWith<$Res> {
       String rateId,
       String? rateDescription,
       double quantityFrom,
-      Money price,
+      double price,
       double? priceType,
       DateTime lastUpdated,
       bool deleted});
@@ -86,7 +86,7 @@ class _$ArticleRatePriceCopyWithImpl<$Res>
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as double,
       priceType: priceType == freezed
           ? _value.priceType
           : priceType // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ abstract class _$$_ArticleRatePriceCopyWith<$Res>
       String rateId,
       String? rateDescription,
       double quantityFrom,
-      Money price,
+      double price,
       double? priceType,
       DateTime lastUpdated,
       bool deleted});
@@ -163,7 +163,7 @@ class __$$_ArticleRatePriceCopyWithImpl<$Res>
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as double,
       priceType: priceType == freezed
           ? _value.priceType
           : priceType // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ class _$_ArticleRatePrice extends _ArticleRatePrice {
   @override
   final double quantityFrom;
   @override
-  final Money price;
+  final double price;
   @override
   final double? priceType;
   @override
@@ -258,7 +258,7 @@ abstract class _ArticleRatePrice extends ArticleRatePrice {
       required final String rateId,
       final String? rateDescription,
       required final double quantityFrom,
-      required final Money price,
+      required final double price,
       final double? priceType,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticleRatePrice;
@@ -273,7 +273,7 @@ abstract class _ArticleRatePrice extends ArticleRatePrice {
   @override
   double get quantityFrom;
   @override
-  Money get price;
+  double get price;
   @override
   double? get priceType;
   @override

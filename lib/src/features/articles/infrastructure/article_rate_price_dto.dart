@@ -29,13 +29,13 @@ class ArticleRatePriceDTO
   factory ArticleRatePriceDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticleRatePriceDTOFromJson(json);
 
-  ArticleRatePrice toDomain({required String divisaId}) {
+  ArticleRatePrice toDomain() {
     return ArticleRatePrice(
       articleId: articleId,
       rateId: rateId,
       rateDescription: rateDescription,
       quantityFrom: quantityFrom,
-      price: price.parseMoney(price, divisaId),
+      price: price,
       priceType: priceType,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,

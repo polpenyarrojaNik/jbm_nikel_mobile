@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_repository.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/customer_pending_payment.dart';
@@ -50,11 +51,76 @@ class CustomerPendingPaymentTile extends StatelessWidget {
             Text(customerPendingPayment.effectId),
           ],
         ),
-        const SizedBox(width: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                const Text('Factura'),
+                Text(customerPendingPayment.invoiceId ?? ''),
+              ],
+            ),
+            Column(
+              children: [
+                const Text('Fecha factura'),
+                Text((customerPendingPayment.invoiceDate != null)
+                    ? dateFormatter(
+                        customerPendingPayment.invoiceDate!.toIso8601String())
+                    : ''),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                const Text('Metodo de cobro'),
+                Text(
+                    customerPendingPayment.collectionMethod?.description ?? ''),
+              ],
+            ),
+            Column(
+              children: [
+                const Text('Estado Cobro'),
+                Text(customerPendingPayment.collectionStatusId ?? ''),
+              ],
+            ),
+          ],
+        ),
+        const SizedBox(height: 5),
         Column(
           children: [
             const Text('Amount'),
             Text(customerPendingPayment.amount?.toString() ?? ''),
+          ],
+        ),
+        const SizedBox(height: 5),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                const Text('Fecha vencimiento inicial'),
+                Text((customerPendingPayment.initialExpirationDate != null)
+                    ? dateFormatter(customerPendingPayment
+                        .initialExpirationDate!
+                        .toIso8601String())
+                    : ''),
+              ],
+            ),
+            Column(
+              children: [
+                const Text('Vencido JBM'),
+                (customerPendingPayment.expirationJBM != null)
+                    ? Switch(
+                        value: customerPendingPayment.expirationJBM!,
+                        onChanged: null)
+                    : const Text('Undefined'),
+              ],
+            ),
           ],
         ),
       ],

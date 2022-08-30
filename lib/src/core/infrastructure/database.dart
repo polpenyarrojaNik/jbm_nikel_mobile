@@ -4,6 +4,11 @@ import 'package:drift/native.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/country_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamily_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/articles/domain/article_component.dart';
+import 'package:jbm_nikel_mobile/src/features/articles/domain/article_net_group_price.dart';
+import 'package:jbm_nikel_mobile/src/features/articles/domain/article_rate_price.dart';
+import 'package:jbm_nikel_mobile/src/features/articles/domain/article_spare.dart';
+import 'package:jbm_nikel_mobile/src/features/articles/domain/article_substitute.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/domain/customer_pending_payment.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_net_group_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/infrastructure/stats_customer_user_sales_dto.dart';
@@ -415,6 +420,20 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
+  Future<List<TopArticle>> getTopArticleList() {
+    try {
+      final query = (select(topArticleTable));
+
+      return query.asyncMap((row) async {
+        final article = await getArticleById(articleId: row.articleId);
+        return row.toDomain(article: article);
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////
 
   Stream<List<Article>> getArticleList() {
@@ -466,12 +485,99 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
-  Future<List<TopArticle>> getTopArticleList() {
+  Future<List<ArticleComponent>> getArticleComponentById(
+      {required String articleId}) async {
     try {
-      final query = (select(topArticleTable));
+      final query = (select(articleComponentTable)
+        ..where((t) => t.articleId.equals(articleId)));
+
+      return query.asyncMap((row) async {
+        final article = await getArticleById(articleId: row.articleId);
+        final articleComponent =
+            await getArticleById(articleId: row.articleComponentId);
+        return row.toDomain(
+            article: article, articleComponent: articleComponent);
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<ArticleRatePrice>> getArticleRatePriceById(
+      {required String articleId}) async {
+    try {
+      final query = (select(articleRatePriceTable)
+        ..where((t) => t.articleId.equals(articleId)));
 
       return query.map((row) {
         return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<ArticleNetGroupPrice>> getArticleNetGroupPriceById(
+      {required String articleId}) async {
+    try {
+      final query = (select(articleNetGroupPriceTable)
+        ..where((t) => t.articleId.equals(articleId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<ArticleSpare>> getArticleSpareById(
+      {required String articleId}) async {
+    try {
+      final query = (select(articleSpareTable)
+        ..where((t) => t.articleId.equals(articleId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<ArticleSubstitute>> getArticleSubstituteById(
+      {required String articleId}) async {
+    try {
+      final query = (select(articleSubstituteTable)
+        ..where((t) => t.articleId.equals(articleId)));
+
+      return query.asyncMap((row) async {
+        final articleSubstitute =
+            await getArticleById(articleId: row.articleSubstituteId);
+        return row.toDomain(articleSubstitute: articleSubstitute);
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<ArticleComponent>> getArticleComponentIncludedById(
+      {required String articleId}) async {
+    try {
+      final query = (select(articleComponentTable)
+        ..where((t) => t.articleComponentId.equals(articleId)));
+
+      return query.asyncMap((row) async {
+        final article = await getArticleById(articleId: row.articleId);
+        final articleComponent =
+            await getArticleById(articleId: row.articleComponentId);
+        return row.toDomain(
+            article: article, articleComponent: articleComponent);
       }).get();
     } catch (e) {
       print(e);
