@@ -283,8 +283,10 @@ String? redirectLogic(GoRouterState state, ProviderRef<GoRouter> ref) {
   return initalDbState.maybeWhen(
       orElse: () => authControllerState.maybeWhen(
           orElse: () => null,
-          authenticating: () =>
+          authenticating: () => (state.location != '/login') ? '/login' : null,
+          checkingStatus: () =>
               (state.location != '/loading') ? '/loading' : null,
+          failure: (e) => (state.location != '/login') ? '/login' : null,
           unauthenticated: () =>
               (state.location != '/login') ? '/login' : null),
       loading: () => (state.location != '/loading') ? '/loading' : null);

@@ -29,28 +29,28 @@ class LoginPageState extends ConsumerState<LoginPage> {
         authControllerProvider,
         (_, state) => state.maybeWhen(
               failure: (errorMessage) => showFlash(
-                  context: context,
-                  duration: const Duration(seconds: 4),
-                  builder: (context, controller) => Flash.bar(
-                        backgroundColor:
-                            Theme.of(context).colorScheme.onSecondary,
-                        controller: controller,
-                        position: FlashPosition.bottom,
-                        horizontalDismissDirection:
-                            HorizontalDismissDirection.startToEnd,
-                        margin: const EdgeInsets.all(8),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(4),
-                        ),
-                        child: FlashBar(
-                          content: Text(
-                            errorMessage,
-                            style: const TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      )),
+                context: context,
+                duration: const Duration(seconds: 4),
+                builder: (context, controller) => Flash.bar(
+                  backgroundColor: Theme.of(context).colorScheme.onSecondary,
+                  controller: controller,
+                  position: FlashPosition.bottom,
+                  horizontalDismissDirection:
+                      HorizontalDismissDirection.startToEnd,
+                  margin: const EdgeInsets.all(8),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(4),
+                  ),
+                  child: FlashBar(
+                    content: Text(
+                      errorMessage,
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               orElse: () => null,
             ));
 
@@ -89,6 +89,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       ReactiveTextField<String>(
                         key: const ValueKey('user'),
                         formControlName: 'user',
+                        textCapitalization: TextCapitalization.characters,
                         validationMessages: (control) => {
                           ValidationMessage.required: 'NO EMPTY',
                         },
@@ -109,17 +110,16 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         ),
                       ),
                       state.maybeWhen(
-                        orElse: () => Container(),
+                        orElse: () => ElevatedButton(
+                          onPressed: () => _submit(form, ref),
+                          child: const Text(
+                            'Login',
+                          ),
+                        ),
                         authenticating: () => const Center(
                           child: ProgressIndicatorWidget(),
                         ),
                       ),
-                      ElevatedButton(
-                        onPressed: () => _submit(form, ref),
-                        child: const Text(
-                          'Login',
-                        ),
-                      )
                     ],
                   ),
                 ),

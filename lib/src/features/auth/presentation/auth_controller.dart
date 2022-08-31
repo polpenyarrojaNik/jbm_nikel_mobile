@@ -12,9 +12,9 @@ final authControllerProvider = StateNotifierProvider<AuthController, AuthState>(
 @freezed
 class AuthState with _$AuthState {
   const AuthState._();
-  const factory AuthState.initial() = _Initial;
   const factory AuthState.unauthenticated() = _Unauthenticated;
   const factory AuthState.authenticating() = _Authenticating;
+  const factory AuthState.checkingStatus() = _CheckingStatus;
   const factory AuthState.authenticated() = _Authenticated;
   const factory AuthState.failure(String e) = _Failure;
 }
@@ -22,7 +22,8 @@ class AuthState with _$AuthState {
 class AuthController extends StateNotifier<AuthState> {
   final AuthRepository _authRepository;
 
-  AuthController(this._authRepository) : super(const AuthState.initial()) {
+  AuthController(this._authRepository)
+      : super(const AuthState.checkingStatus()) {
     checkAndUpdateAuthStatus();
   }
 
@@ -35,6 +36,8 @@ class AuthController extends StateNotifier<AuthState> {
     } on AppException catch (e) {
       state = AuthState.failure(e.details.message);
     } catch (e) {
+      state = AuthState.failure(e.toString());
+
       rethrow;
     }
   }
@@ -52,7 +55,7 @@ class AuthController extends StateNotifier<AuthState> {
   }
 
   Future<void> checkAndUpdateAuthStatus() async {
-    state = const AuthState.authenticating();
+    state = const AuthState.checkingStatus();
     state = (await _authRepository.isSignIn())
         ? const AuthState.authenticated()
         : const AuthState.unauthenticated();

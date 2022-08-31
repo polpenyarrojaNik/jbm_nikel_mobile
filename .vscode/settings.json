@@ -15,5 +15,6 @@
     "**/.factorypath": true,
     "**/*.drift.dart": true
   },
-  "explorerExclude.backup": {}
+  "explorerExclude.backup": {},
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
