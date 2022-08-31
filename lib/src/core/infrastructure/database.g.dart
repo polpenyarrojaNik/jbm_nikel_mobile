@@ -10313,7 +10313,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
   final Value<double> weightKg;
   final Value<double> largeCm;
   final Value<double> widthCm;
-  final Value<double> tallCm;
+  final Value<double> heightCm;
   final Value<String?> summaryES;
   final Value<String?> summaryEN;
   final Value<String?> summaryFR;
@@ -10378,7 +10378,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
     this.weightKg = const Value.absent(),
     this.largeCm = const Value.absent(),
     this.widthCm = const Value.absent(),
-    this.tallCm = const Value.absent(),
+    this.heightCm = const Value.absent(),
     this.summaryES = const Value.absent(),
     this.summaryEN = const Value.absent(),
     this.summaryFR = const Value.absent(),
@@ -10444,7 +10444,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
     required double weightKg,
     required double largeCm,
     required double widthCm,
-    required double tallCm,
+    required double heightCm,
     this.summaryES = const Value.absent(),
     this.summaryEN = const Value.absent(),
     this.summaryFR = const Value.absent(),
@@ -10490,7 +10490,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
         weightKg = Value(weightKg),
         largeCm = Value(largeCm),
         widthCm = Value(widthCm),
-        tallCm = Value(tallCm),
+        heightCm = Value(heightCm),
         lastUpdated = Value(lastUpdated);
   static Insertable<ArticleDTO> custom({
     Expression<String>? id,
@@ -10525,7 +10525,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
     Expression<double>? weightKg,
     Expression<double>? largeCm,
     Expression<double>? widthCm,
-    Expression<double>? tallCm,
+    Expression<double>? heightCm,
     Expression<String>? summaryES,
     Expression<String>? summaryEN,
     Expression<String>? summaryFR,
@@ -10591,7 +10591,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
       if (weightKg != null) 'PESO_KG': weightKg,
       if (largeCm != null) 'LARGO_CM': largeCm,
       if (widthCm != null) 'ANCHO_CM': widthCm,
-      if (tallCm != null) 'ALTO_CM': tallCm,
+      if (heightCm != null) 'ALTO_CM': heightCm,
       if (summaryES != null) 'RESUMEN_ES': summaryES,
       if (summaryEN != null) 'RESUMEN_EN': summaryEN,
       if (summaryFR != null) 'RESUMEN_FR': summaryFR,
@@ -10669,7 +10669,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
       Value<double>? weightKg,
       Value<double>? largeCm,
       Value<double>? widthCm,
-      Value<double>? tallCm,
+      Value<double>? heightCm,
       Value<String?>? summaryES,
       Value<String?>? summaryEN,
       Value<String?>? summaryFR,
@@ -10734,7 +10734,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
       weightKg: weightKg ?? this.weightKg,
       largeCm: largeCm ?? this.largeCm,
       widthCm: widthCm ?? this.widthCm,
-      tallCm: tallCm ?? this.tallCm,
+      heightCm: heightCm ?? this.heightCm,
       summaryES: summaryES ?? this.summaryES,
       summaryEN: summaryEN ?? this.summaryEN,
       summaryFR: summaryFR ?? this.summaryFR,
@@ -10878,8 +10878,8 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
     if (widthCm.present) {
       map['ANCHO_CM'] = Variable<double>(widthCm.value);
     }
-    if (tallCm.present) {
-      map['ALTO_CM'] = Variable<double>(tallCm.value);
+    if (heightCm.present) {
+      map['ALTO_CM'] = Variable<double>(heightCm.value);
     }
     if (summaryES.present) {
       map['RESUMEN_ES'] = Variable<String>(summaryES.value);
@@ -11022,7 +11022,7 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
           ..write('weightKg: $weightKg, ')
           ..write('largeCm: $largeCm, ')
           ..write('widthCm: $widthCm, ')
-          ..write('tallCm: $tallCm, ')
+          ..write('heightCm: $heightCm, ')
           ..write('summaryES: $summaryES, ')
           ..write('summaryEN: $summaryEN, ')
           ..write('summaryFR: $summaryFR, ')
@@ -11255,9 +11255,9 @@ class $ArticleTableTable extends ArticleTable
   late final GeneratedColumn<double> widthCm = GeneratedColumn<double>(
       'ANCHO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _tallCmMeta = const VerificationMeta('tallCm');
+  final VerificationMeta _heightCmMeta = const VerificationMeta('heightCm');
   @override
-  late final GeneratedColumn<double> tallCm = GeneratedColumn<double>(
+  late final GeneratedColumn<double> heightCm = GeneratedColumn<double>(
       'ALTO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _summaryESMeta = const VerificationMeta('summaryES');
@@ -11467,7 +11467,7 @@ class $ArticleTableTable extends ArticleTable
         weightKg,
         largeCm,
         widthCm,
-        tallCm,
+        heightCm,
         summaryES,
         summaryEN,
         summaryFR,
@@ -11720,10 +11720,10 @@ class $ArticleTableTable extends ArticleTable
       context.missing(_widthCmMeta);
     }
     if (data.containsKey('ALTO_CM')) {
-      context.handle(_tallCmMeta,
-          tallCm.isAcceptableOrUnknown(data['ALTO_CM']!, _tallCmMeta));
+      context.handle(_heightCmMeta,
+          heightCm.isAcceptableOrUnknown(data['ALTO_CM']!, _heightCmMeta));
     } else if (isInserting) {
-      context.missing(_tallCmMeta);
+      context.missing(_heightCmMeta);
     }
     if (data.containsKey('RESUMEN_ES')) {
       context.handle(_summaryESMeta,
@@ -11961,7 +11961,7 @@ class $ArticleTableTable extends ArticleTable
           .read(DriftSqlType.double, data['${effectivePrefix}LARGO_CM'])!,
       widthCm: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ANCHO_CM'])!,
-      tallCm: attachedDatabase.options.types
+      heightCm: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ALTO_CM'])!,
       summaryES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_ES']),

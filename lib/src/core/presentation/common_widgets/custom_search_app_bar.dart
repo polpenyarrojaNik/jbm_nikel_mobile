@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_repository.dart';
 
 class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomSearchAppBar(
-      {Key? key, required this.title, required this.searchTitle})
+      {Key? key,
+      required this.title,
+      required this.searchTitle,
+      required this.onSubmitted})
       : super(key: key);
 
   final String title;
   final String searchTitle;
+  final Function(String searchText) onSubmitted;
 
   @override
   State<CustomSearchAppBar> createState() => _CustomSearchAppBarState();
@@ -28,7 +31,8 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       title: (isSearching)
-          ? SearchListTile(searchTitle: widget.searchTitle)
+          ? SearchListTile(
+              searchTitle: widget.searchTitle, onSubmitted: widget.onSubmitted)
           : Text(widget.title),
       actions: [
         IconButton(
@@ -46,9 +50,12 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
 }
 
 class SearchListTile extends ConsumerWidget {
-  const SearchListTile({Key? key, required this.searchTitle}) : super(key: key);
+  const SearchListTile(
+      {Key? key, required this.searchTitle, required this.onSubmitted})
+      : super(key: key);
 
   final String searchTitle;
+  final Function(String searchText) onSubmitted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -71,9 +78,7 @@ class SearchListTile extends ConsumerWidget {
           style: const TextStyle(
             color: Colors.white,
           ),
-          onSubmitted: (value) => ref
-              .read(salesOrderRepositoryProvider)
-              .watchSalesOrderList(searchText: value)),
+          onSubmitted: (value) => onSubmitted(value)),
     );
   }
 }

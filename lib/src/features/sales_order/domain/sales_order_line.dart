@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:money2/money2.dart';
 
 part 'sales_order_line.freezed.dart';
 
@@ -13,7 +12,7 @@ class SalesOrderLine with _$SalesOrderLine {
     required String articleId,
     String? articleDescription,
     required double quantity,
-    required Money divisaPrice,
+    required double divisaPrice,
     double? priceType,
     required double discount1,
     required double discount2,

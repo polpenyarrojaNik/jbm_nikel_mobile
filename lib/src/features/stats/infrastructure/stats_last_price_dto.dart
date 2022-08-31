@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_last_price.dart';
 
 import '../../../core/infrastructure/database.dart';
+import '../../articles/domain/article.dart';
 
 part 'stats_last_price_dto.freezed.dart';
 part 'stats_last_price_dto.g.dart';
@@ -31,10 +32,10 @@ class StatsLastPriceDTO
   factory StatsLastPriceDTO.fromJson(Map<String, dynamic> json) =>
       _$StatsLastPriceDTOFromJson(json);
 
-  StatsLastPrice toDomain() {
+  StatsLastPrice toDomain({required Article article}) {
     return StatsLastPrice(
       customerId: customerId,
-      articleId: articleId,
+      article: article,
       date: date,
       divisaPrice: divisaPrice,
       priceType: priceType,

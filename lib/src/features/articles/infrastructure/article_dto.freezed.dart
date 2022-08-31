@@ -85,7 +85,7 @@ mixin _$ArticleDTO {
   @JsonKey(name: 'ANCHO_CM')
   double get widthCm => throw _privateConstructorUsedError;
   @JsonKey(name: 'ALTO_CM')
-  double get tallCm => throw _privateConstructorUsedError;
+  double get heightCm => throw _privateConstructorUsedError;
   @JsonKey(name: 'SUMMARY_ES')
   String? get summaryES => throw _privateConstructorUsedError;
   @JsonKey(name: 'SUMMARY_EN')
@@ -227,7 +227,7 @@ abstract class $ArticleDTOCopyWith<$Res> {
       @JsonKey(name: 'ANCHO_CM')
           double widthCm,
       @JsonKey(name: 'ALTO_CM')
-          double tallCm,
+          double heightCm,
       @JsonKey(name: 'SUMMARY_ES')
           String? summaryES,
       @JsonKey(name: 'SUMMARY_EN')
@@ -334,7 +334,7 @@ class _$ArticleDTOCopyWithImpl<$Res> implements $ArticleDTOCopyWith<$Res> {
     Object? weightKg = freezed,
     Object? largeCm = freezed,
     Object? widthCm = freezed,
-    Object? tallCm = freezed,
+    Object? heightCm = freezed,
     Object? summaryES = freezed,
     Object? summaryEN = freezed,
     Object? summaryFR = freezed,
@@ -496,9 +496,9 @@ class _$ArticleDTOCopyWithImpl<$Res> implements $ArticleDTOCopyWith<$Res> {
           ? _value.widthCm
           : widthCm // ignore: cast_nullable_to_non_nullable
               as double,
-      tallCm: tallCm == freezed
-          ? _value.tallCm
-          : tallCm // ignore: cast_nullable_to_non_nullable
+      heightCm: heightCm == freezed
+          ? _value.heightCm
+          : heightCm // ignore: cast_nullable_to_non_nullable
               as double,
       summaryES: summaryES == freezed
           ? _value.summaryES
@@ -701,7 +701,7 @@ abstract class _$$_ArticleDTOCopyWith<$Res>
       @JsonKey(name: 'ANCHO_CM')
           double widthCm,
       @JsonKey(name: 'ALTO_CM')
-          double tallCm,
+          double heightCm,
       @JsonKey(name: 'SUMMARY_ES')
           String? summaryES,
       @JsonKey(name: 'SUMMARY_EN')
@@ -810,7 +810,7 @@ class __$$_ArticleDTOCopyWithImpl<$Res> extends _$ArticleDTOCopyWithImpl<$Res>
     Object? weightKg = freezed,
     Object? largeCm = freezed,
     Object? widthCm = freezed,
-    Object? tallCm = freezed,
+    Object? heightCm = freezed,
     Object? summaryES = freezed,
     Object? summaryEN = freezed,
     Object? summaryFR = freezed,
@@ -972,9 +972,9 @@ class __$$_ArticleDTOCopyWithImpl<$Res> extends _$ArticleDTOCopyWithImpl<$Res>
           ? _value.widthCm
           : widthCm // ignore: cast_nullable_to_non_nullable
               as double,
-      tallCm: tallCm == freezed
-          ? _value.tallCm
-          : tallCm // ignore: cast_nullable_to_non_nullable
+      heightCm: heightCm == freezed
+          ? _value.heightCm
+          : heightCm // ignore: cast_nullable_to_non_nullable
               as double,
       summaryES: summaryES == freezed
           ? _value.summaryES
@@ -1173,7 +1173,7 @@ class _$_ArticleDTO extends _ArticleDTO {
       @JsonKey(name: 'ANCHO_CM')
           required this.widthCm,
       @JsonKey(name: 'ALTO_CM')
-          required this.tallCm,
+          required this.heightCm,
       @JsonKey(name: 'SUMMARY_ES')
           this.summaryES,
       @JsonKey(name: 'SUMMARY_EN')
@@ -1339,7 +1339,7 @@ class _$_ArticleDTO extends _ArticleDTO {
   final double widthCm;
   @override
   @JsonKey(name: 'ALTO_CM')
-  final double tallCm;
+  final double heightCm;
   @override
   @JsonKey(name: 'SUMMARY_ES')
   final String? summaryES;
@@ -1436,7 +1436,7 @@ class _$_ArticleDTO extends _ArticleDTO {
 
   @override
   String toString() {
-    return 'ArticleDTO(id: $id, descriptionES: $descriptionES, descriptionEN: $descriptionEN, descriptionFR: $descriptionFR, descriptionDE: $descriptionDE, descriptionCA: $descriptionCA, descriptionGB: $descriptionGB, descriptionHU: $descriptionHU, descriptionIT: $descriptionIT, descriptionNL: $descriptionNL, descriptionPL: $descriptionPL, descriptionPT: $descriptionPT, descriptionRO: $descriptionRO, descriptionRU: $descriptionRU, descriptionCN: $descriptionCN, descriptionEL: $descriptionEL, familyId: $familyId, subfamilyId: $subfamilyId, minimumSales: $minimumSales, multipleSales: $multipleSales, subboxUnits: $subboxUnits, boxUnits: $boxUnits, paletUnits: $paletUnits, isActiveWeb: $isActiveWeb, isActiveApp: $isActiveApp, inCatalogue: $inCatalogue, discontinued: $discontinued, cataloguePage: $cataloguePage, cataloguePage2: $cataloguePage2, weightKg: $weightKg, largeCm: $largeCm, widthCm: $widthCm, tallCm: $tallCm, summaryES: $summaryES, summaryEN: $summaryEN, summaryFR: $summaryFR, summaryDE: $summaryDE, summaryCA: $summaryCA, summaryGB: $summaryGB, summaryHU: $summaryHU, summaryIT: $summaryIT, summaryNL: $summaryNL, summaryPL: $summaryPL, summaryPT: $summaryPT, summaryRO: $summaryRO, summaryRU: $summaryRU, summaryCN: $summaryCN, summaryEL: $summaryEL, availableStock: $availableStock, currentSales: $currentSales, previousSales: $previousSales, purchasesDeliveryQuantity1: $purchasesDeliveryQuantity1, purchasesDeliveryQuantity2: $purchasesDeliveryQuantity2, purchasesDeliveryQuantity3: $purchasesDeliveryQuantity3, purchasesDeliveryQuantityMore3: $purchasesDeliveryQuantityMore3, purchasesDeliveryDate1: $purchasesDeliveryDate1, purchasesDeliveryDate2: $purchasesDeliveryDate2, purchasesDeliveryDate3: $purchasesDeliveryDate3, purchasesDeliveryStatus1: $purchasesDeliveryStatus1, purchasesDeliveryStatus2: $purchasesDeliveryStatus2, purchasesDeliveryStatus3: $purchasesDeliveryStatus3, principalImage: $principalImage, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticleDTO(id: $id, descriptionES: $descriptionES, descriptionEN: $descriptionEN, descriptionFR: $descriptionFR, descriptionDE: $descriptionDE, descriptionCA: $descriptionCA, descriptionGB: $descriptionGB, descriptionHU: $descriptionHU, descriptionIT: $descriptionIT, descriptionNL: $descriptionNL, descriptionPL: $descriptionPL, descriptionPT: $descriptionPT, descriptionRO: $descriptionRO, descriptionRU: $descriptionRU, descriptionCN: $descriptionCN, descriptionEL: $descriptionEL, familyId: $familyId, subfamilyId: $subfamilyId, minimumSales: $minimumSales, multipleSales: $multipleSales, subboxUnits: $subboxUnits, boxUnits: $boxUnits, paletUnits: $paletUnits, isActiveWeb: $isActiveWeb, isActiveApp: $isActiveApp, inCatalogue: $inCatalogue, discontinued: $discontinued, cataloguePage: $cataloguePage, cataloguePage2: $cataloguePage2, weightKg: $weightKg, largeCm: $largeCm, widthCm: $widthCm, heightCm: $heightCm, summaryES: $summaryES, summaryEN: $summaryEN, summaryFR: $summaryFR, summaryDE: $summaryDE, summaryCA: $summaryCA, summaryGB: $summaryGB, summaryHU: $summaryHU, summaryIT: $summaryIT, summaryNL: $summaryNL, summaryPL: $summaryPL, summaryPT: $summaryPT, summaryRO: $summaryRO, summaryRU: $summaryRU, summaryCN: $summaryCN, summaryEL: $summaryEL, availableStock: $availableStock, currentSales: $currentSales, previousSales: $previousSales, purchasesDeliveryQuantity1: $purchasesDeliveryQuantity1, purchasesDeliveryQuantity2: $purchasesDeliveryQuantity2, purchasesDeliveryQuantity3: $purchasesDeliveryQuantity3, purchasesDeliveryQuantityMore3: $purchasesDeliveryQuantityMore3, purchasesDeliveryDate1: $purchasesDeliveryDate1, purchasesDeliveryDate2: $purchasesDeliveryDate2, purchasesDeliveryDate3: $purchasesDeliveryDate3, purchasesDeliveryStatus1: $purchasesDeliveryStatus1, purchasesDeliveryStatus2: $purchasesDeliveryStatus2, purchasesDeliveryStatus3: $purchasesDeliveryStatus3, principalImage: $principalImage, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1502,7 +1502,7 @@ class _$_ArticleDTO extends _ArticleDTO {
             const DeepCollectionEquality().equals(other.weightKg, weightKg) &&
             const DeepCollectionEquality().equals(other.largeCm, largeCm) &&
             const DeepCollectionEquality().equals(other.widthCm, widthCm) &&
-            const DeepCollectionEquality().equals(other.tallCm, tallCm) &&
+            const DeepCollectionEquality().equals(other.heightCm, heightCm) &&
             const DeepCollectionEquality().equals(other.summaryES, summaryES) &&
             const DeepCollectionEquality().equals(other.summaryEN, summaryEN) &&
             const DeepCollectionEquality().equals(other.summaryFR, summaryFR) &&
@@ -1587,7 +1587,7 @@ class _$_ArticleDTO extends _ArticleDTO {
         const DeepCollectionEquality().hash(weightKg),
         const DeepCollectionEquality().hash(largeCm),
         const DeepCollectionEquality().hash(widthCm),
-        const DeepCollectionEquality().hash(tallCm),
+        const DeepCollectionEquality().hash(heightCm),
         const DeepCollectionEquality().hash(summaryES),
         const DeepCollectionEquality().hash(summaryEN),
         const DeepCollectionEquality().hash(summaryFR),
@@ -1701,7 +1701,7 @@ abstract class _ArticleDTO extends ArticleDTO {
       @JsonKey(name: 'ANCHO_CM')
           required final double widthCm,
       @JsonKey(name: 'ALTO_CM')
-          required final double tallCm,
+          required final double heightCm,
       @JsonKey(name: 'SUMMARY_ES')
           final String? summaryES,
       @JsonKey(name: 'SUMMARY_EN')
@@ -1867,7 +1867,7 @@ abstract class _ArticleDTO extends ArticleDTO {
   double get widthCm;
   @override
   @JsonKey(name: 'ALTO_CM')
-  double get tallCm;
+  double get heightCm;
   @override
   @JsonKey(name: 'SUMMARY_ES')
   String? get summaryES;

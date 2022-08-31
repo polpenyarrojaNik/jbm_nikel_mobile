@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StatsLastPrice {
   String get customerId => throw _privateConstructorUsedError;
-  String get articleId => throw _privateConstructorUsedError;
+  Article get article => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   double get divisaPrice => throw _privateConstructorUsedError;
   double get priceType => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $StatsLastPriceCopyWith<$Res> {
       _$StatsLastPriceCopyWithImpl<$Res>;
   $Res call(
       {String customerId,
-      String articleId,
+      Article article,
       DateTime date,
       double divisaPrice,
       double priceType,
@@ -48,6 +48,8 @@ abstract class $StatsLastPriceCopyWith<$Res> {
       double discount3,
       DateTime lastUpdated,
       bool deleted});
+
+  $ArticleCopyWith<$Res> get article;
 }
 
 /// @nodoc
@@ -62,7 +64,7 @@ class _$StatsLastPriceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? customerId = freezed,
-    Object? articleId = freezed,
+    Object? article = freezed,
     Object? date = freezed,
     Object? divisaPrice = freezed,
     Object? priceType = freezed,
@@ -77,10 +79,10 @@ class _$StatsLastPriceCopyWithImpl<$Res>
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as String,
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -115,6 +117,13 @@ class _$StatsLastPriceCopyWithImpl<$Res>
               as bool,
     ));
   }
+
+  @override
+  $ArticleCopyWith<$Res> get article {
+    return $ArticleCopyWith<$Res>(_value.article, (value) {
+      return _then(_value.copyWith(article: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -126,7 +135,7 @@ abstract class _$$_StatsLastPriceCopyWith<$Res>
   @override
   $Res call(
       {String customerId,
-      String articleId,
+      Article article,
       DateTime date,
       double divisaPrice,
       double priceType,
@@ -135,6 +144,9 @@ abstract class _$$_StatsLastPriceCopyWith<$Res>
       double discount3,
       DateTime lastUpdated,
       bool deleted});
+
+  @override
+  $ArticleCopyWith<$Res> get article;
 }
 
 /// @nodoc
@@ -151,7 +163,7 @@ class __$$_StatsLastPriceCopyWithImpl<$Res>
   @override
   $Res call({
     Object? customerId = freezed,
-    Object? articleId = freezed,
+    Object? article = freezed,
     Object? date = freezed,
     Object? divisaPrice = freezed,
     Object? priceType = freezed,
@@ -166,10 +178,10 @@ class __$$_StatsLastPriceCopyWithImpl<$Res>
           ? _value.customerId
           : customerId // ignore: cast_nullable_to_non_nullable
               as String,
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -211,7 +223,7 @@ class __$$_StatsLastPriceCopyWithImpl<$Res>
 class _$_StatsLastPrice extends _StatsLastPrice {
   const _$_StatsLastPrice(
       {required this.customerId,
-      required this.articleId,
+      required this.article,
       required this.date,
       required this.divisaPrice,
       required this.priceType,
@@ -225,7 +237,7 @@ class _$_StatsLastPrice extends _StatsLastPrice {
   @override
   final String customerId;
   @override
-  final String articleId;
+  final Article article;
   @override
   final DateTime date;
   @override
@@ -245,7 +257,7 @@ class _$_StatsLastPrice extends _StatsLastPrice {
 
   @override
   String toString() {
-    return 'StatsLastPrice(customerId: $customerId, articleId: $articleId, date: $date, divisaPrice: $divisaPrice, priceType: $priceType, discount1: $discount1, discount2: $discount2, discount3: $discount3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'StatsLastPrice(customerId: $customerId, article: $article, date: $date, divisaPrice: $divisaPrice, priceType: $priceType, discount1: $discount1, discount2: $discount2, discount3: $discount3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -255,7 +267,7 @@ class _$_StatsLastPrice extends _StatsLastPrice {
             other is _$_StatsLastPrice &&
             const DeepCollectionEquality()
                 .equals(other.customerId, customerId) &&
-            const DeepCollectionEquality().equals(other.articleId, articleId) &&
+            const DeepCollectionEquality().equals(other.article, article) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality()
                 .equals(other.divisaPrice, divisaPrice) &&
@@ -272,7 +284,7 @@ class _$_StatsLastPrice extends _StatsLastPrice {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(customerId),
-      const DeepCollectionEquality().hash(articleId),
+      const DeepCollectionEquality().hash(article),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(divisaPrice),
       const DeepCollectionEquality().hash(priceType),
@@ -291,7 +303,7 @@ class _$_StatsLastPrice extends _StatsLastPrice {
 abstract class _StatsLastPrice extends StatsLastPrice {
   const factory _StatsLastPrice(
       {required final String customerId,
-      required final String articleId,
+      required final Article article,
       required final DateTime date,
       required final double divisaPrice,
       required final double priceType,
@@ -305,7 +317,7 @@ abstract class _StatsLastPrice extends StatsLastPrice {
   @override
   String get customerId;
   @override
-  String get articleId;
+  Article get article;
   @override
   DateTime get date;
   @override

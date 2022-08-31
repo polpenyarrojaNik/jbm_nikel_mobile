@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/features/articles/presentation/show/article_last_price_page.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,7 @@ import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/show/sale
 
 import '../../features/articles/presentation/index/article_list_page.dart';
 import '../../features/articles/presentation/show/article_detail_page.dart';
+import '../../features/articles/presentation/show/article_sales_order_page.dart';
 import '../../features/auth/presentation/login_page.dart';
 import '../../features/customer/presentation/index/customer_list_page.dart';
 import '../../features/customer/presentation/show/customer_detail_page.dart';
@@ -120,9 +122,9 @@ final goRouterProvider = Provider((ref) {
         routes: [
           GoRoute(
             name: AppRoute.customershow.name,
-            path: ':id',
+            path: ':customerId',
             pageBuilder: (context, state) {
-              final customerId = state.params['id']!;
+              final customerId = state.params['customerId']!;
               return MaterialPage(
                 key: state.pageKey,
                 child: CustomerDetailPage(customerId: customerId),
@@ -133,7 +135,7 @@ final goRouterProvider = Provider((ref) {
                 name: AppRoute.customersalesmonth.name,
                 path: 'sales-month',
                 pageBuilder: (context, state) {
-                  final customerId = state.params['id']!;
+                  final customerId = state.params['customerId']!;
                   return MaterialPage(
                     key: state.pageKey,
                     child: CustomerSalesMonthPage(customerId: customerId),
@@ -144,7 +146,7 @@ final goRouterProvider = Provider((ref) {
                 name: AppRoute.customersalesarticle.name,
                 path: 'sales-article',
                 pageBuilder: (context, state) {
-                  final customerId = state.params['id']!;
+                  final customerId = state.params['customerId']!;
                   return MaterialPage(
                     key: state.pageKey,
                     child: CustomerSalesArticlePage(customerId: customerId),
@@ -155,7 +157,7 @@ final goRouterProvider = Provider((ref) {
                 name: AppRoute.customerpendingpayment.name,
                 path: 'pending-payments',
                 pageBuilder: (context, state) {
-                  final customerId = state.params['id']!;
+                  final customerId = state.params['customerId']!;
                   return MaterialPage(
                     key: state.pageKey,
                     child: CustomerPendingPaymentPage(customerId: customerId),
@@ -166,7 +168,7 @@ final goRouterProvider = Provider((ref) {
                 name: AppRoute.customerstockb2b.name,
                 path: 'stockb2b',
                 pageBuilder: (context, state) {
-                  final customerId = state.params['id']!;
+                  final customerId = state.params['customerId']!;
                   return MaterialPage(
                     key: state.pageKey,
                     child: CustomerStockB2BPage(customerId: customerId),
@@ -177,7 +179,7 @@ final goRouterProvider = Provider((ref) {
                   name: AppRoute.customertoparticles.name,
                   path: 'top-articles',
                   pageBuilder: (context, state) {
-                    final customerId = state.params['id']!;
+                    final customerId = state.params['customerId']!;
                     return MaterialPage(
                       key: state.pageKey,
                       child:
@@ -219,6 +221,30 @@ final goRouterProvider = Provider((ref) {
                 child: ArticleDetailPage(articleId: articleId),
               );
             },
+            routes: [
+              GoRoute(
+                name: AppRoute.articlesalesorder.name,
+                path: 'salesorder',
+                pageBuilder: (context, state) {
+                  final articleId = state.params['articleId']!;
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: ArticleSalesOrderPage(articleId: articleId),
+                  );
+                },
+              ),
+              GoRoute(
+                name: AppRoute.articlelastprice.name,
+                path: 'lastprice',
+                pageBuilder: (context, state) {
+                  final articleId = state.params['articleId']!;
+                  return MaterialPage(
+                    key: state.pageKey,
+                    child: ArticleLastPricePage(articleId: articleId),
+                  );
+                },
+              ),
+            ],
           ),
         ],
       ),

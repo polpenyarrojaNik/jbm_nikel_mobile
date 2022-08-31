@@ -21,6 +21,8 @@ class ArticleImagesContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (articleImageList) => ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, _) => const Divider(),
           itemBuilder: (context, i) => ArticleImageTile(
             articleImage: articleImageList[i],

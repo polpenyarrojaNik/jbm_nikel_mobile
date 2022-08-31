@@ -22,7 +22,7 @@ mixin _$SalesOrderLine {
   String get articleId => throw _privateConstructorUsedError;
   String? get articleDescription => throw _privateConstructorUsedError;
   double get quantity => throw _privateConstructorUsedError;
-  Money get divisaPrice => throw _privateConstructorUsedError;
+  double get divisaPrice => throw _privateConstructorUsedError;
   double? get priceType => throw _privateConstructorUsedError;
   double get discount1 => throw _privateConstructorUsedError;
   double get discount2 => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $SalesOrderLineCopyWith<$Res> {
       String articleId,
       String? articleDescription,
       double quantity,
-      Money divisaPrice,
+      double divisaPrice,
       double? priceType,
       double discount1,
       double discount2,
@@ -109,7 +109,7 @@ class _$SalesOrderLineCopyWithImpl<$Res>
       divisaPrice: divisaPrice == freezed
           ? _value.divisaPrice
           : divisaPrice // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as double,
       priceType: priceType == freezed
           ? _value.priceType
           : priceType // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ abstract class _$$_SalesOrderLineCopyWith<$Res>
       String articleId,
       String? articleDescription,
       double quantity,
-      Money divisaPrice,
+      double divisaPrice,
       double? priceType,
       double discount1,
       double discount2,
@@ -216,7 +216,7 @@ class __$$_SalesOrderLineCopyWithImpl<$Res>
       divisaPrice: divisaPrice == freezed
           ? _value.divisaPrice
           : divisaPrice // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as double,
       priceType: priceType == freezed
           ? _value.priceType
           : priceType // ignore: cast_nullable_to_non_nullable
@@ -277,7 +277,7 @@ class _$_SalesOrderLine extends _SalesOrderLine {
   @override
   final double quantity;
   @override
-  final Money divisaPrice;
+  final double divisaPrice;
   @override
   final double? priceType;
   @override
@@ -351,7 +351,7 @@ abstract class _SalesOrderLine extends SalesOrderLine {
       required final String articleId,
       final String? articleDescription,
       required final double quantity,
-      required final Money divisaPrice,
+      required final double divisaPrice,
       final double? priceType,
       required final double discount1,
       required final double discount2,
@@ -373,7 +373,7 @@ abstract class _SalesOrderLine extends SalesOrderLine {
   @override
   double get quantity;
   @override
-  Money get divisaPrice;
+  double get divisaPrice;
   @override
   double? get priceType;
   @override

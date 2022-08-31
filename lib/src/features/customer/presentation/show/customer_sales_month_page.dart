@@ -14,8 +14,11 @@ class CustomerSalesMonthPage extends ConsumerWidget {
         title: const Text('Vtas. Mes'),
       ),
       body: const Padding(
-          padding: EdgeInsets.all(8),
-          child: Center(child: Text('Proximamente'))),
+        padding: EdgeInsets.all(8),
+        child: Center(
+          child: Text('Proximamente'),
+        ),
+      ),
     );
   }
 }

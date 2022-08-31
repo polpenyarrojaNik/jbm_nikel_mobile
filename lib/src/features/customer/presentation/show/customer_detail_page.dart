@@ -23,82 +23,83 @@ class CustomerDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final params = {'customerId': customerId};
     return Scaffold(
       appBar: AppBar(
         title: const Text('Customer detail'),
       ),
       body: Consumer(
         builder: (context, ref, _) {
-          final visitValue = ref.watch(customerProvider(customerId));
+          final customerValue = ref.watch(customerProvider(customerId));
           return AsyncValueWidget<Customer>(
-            value: visitValue,
-            data: (visit) => Padding(
-              padding: const EdgeInsets.all(8),
-              child: DefaultTabController(
-                length: 8,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ButtonsRowBarWidget(
-                      textButtonsList: [
-                        TextButtonWidget(
+            value: customerValue,
+            data: (customer) => DefaultTabController(
+              length: 8,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ButtonsRowBarWidget(
+                    textButtonsList: [
+                      TextButtonWidget(
                           titleText: 'Vtas. Mes',
                           entityId: customerId,
                           appRouteValue: AppRoute.customersalesmonth,
-                        ),
-                        TextButtonWidget(
-                          titleText: '¿Vtas. Art?',
+                          params: params),
+                      TextButtonWidget(
+                          titleText: 'Vtas. Art',
                           entityId: customerId,
                           appRouteValue: AppRoute.customersalesarticle,
-                        ),
-                        TextButtonWidget(
+                          params: params),
+                      TextButtonWidget(
                           titleText: '¿Precio Neto?',
                           entityId: customerId,
                           appRouteValue: AppRoute.customerpendingpayment,
-                        ),
-                        TextButtonWidget(
+                          params: params),
+                      TextButtonWidget(
                           titleText: 'Fact. Pendientes',
                           entityId: customerId,
                           appRouteValue: AppRoute.customerpendingpayment,
-                        ),
-                        TextButtonWidget(
+                          params: params),
+                      TextButtonWidget(
                           titleText: '¿Stock B2B?',
                           entityId: customerId,
                           appRouteValue: AppRoute.customerstockb2b,
-                        ),
-                        TextButtonWidget(
-                          titleText: 'Top 150',
-                          entityId: customerId,
-                          appRouteValue: AppRoute.customertoparticles,
-                        ),
-                      ],
-                    ),
-                    const Divider(),
-                    Text(
-                      visit.id,
-                    ),
-                    const SizedBox(
-                      height: 450,
-                      child: Center(
-                        child: Text('Customer INFO'),
+                          params: params),
+                      TextButtonWidget(
+                        titleText: 'Top 150',
+                        entityId: customerId,
+                        appRouteValue: AppRoute.customertoparticles,
+                        params: params,
                       ),
-                    ),
-                    const Divider(),
-                    const TabBar(
-                      labelColor: Colors.black,
-                      tabs: [
-                        Tab(icon: Icon(Icons.local_shipping, size: 16)),
-                        Tab(icon: Icon(Icons.person, size: 16)),
-                        Tab(icon: Icon(Icons.money, size: 16)),
-                        Tab(icon: Icon(Icons.group, size: 16)),
-                        Tab(icon: Icon(Icons.discount_outlined, size: 16)),
-                        Tab(icon: Icon(Icons.local_shipping, size: 16)),
-                        Tab(icon: Icon(Icons.local_shipping, size: 16)),
-                        Tab(icon: Icon(Icons.attach_file, size: 16)),
+                    ],
+                  ),
+                  const Divider(),
+                  Expanded(
+                    child: NestedScrollView(
+                      scrollDirection: Axis.vertical,
+                      headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                        SliverToBoxAdapter(
+                          child: _CustomerInfoContainer(customer: customer),
+                        ),
+                        const SliverToBoxAdapter(
+                          child: TabBar(
+                            labelColor: Colors.black,
+                            tabs: [
+                              Tab(icon: Icon(Icons.local_shipping, size: 16)),
+                              Tab(icon: Icon(Icons.person, size: 16)),
+                              Tab(icon: Icon(Icons.money, size: 16)),
+                              Tab(icon: Icon(Icons.group, size: 16)),
+                              Tab(
+                                  icon:
+                                      Icon(Icons.discount_outlined, size: 16)),
+                              Tab(icon: Icon(Icons.local_shipping, size: 16)),
+                              Tab(icon: Icon(Icons.local_shipping, size: 16)),
+                              Tab(icon: Icon(Icons.attach_file, size: 16)),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
-                    Expanded(
-                      child: TabBarView(
+                      body: TabBarView(
                         physics: const NeverScrollableScrollPhysics(),
                         viewportFraction: 1,
                         children: [
@@ -113,13 +114,34 @@ class CustomerDetailPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );
         },
       ),
     );
+  }
+}
+
+class _CustomerInfoContainer extends StatelessWidget {
+  const _CustomerInfoContainer({Key? key, required this.customer})
+      : super(key: key);
+
+  final Customer customer;
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        customer.id,
+      ),
+      const SizedBox(
+        height: 450,
+        child: Center(
+          child: Text('Customer INFO'),
+        ),
+      ),
+    ]);
   }
 }

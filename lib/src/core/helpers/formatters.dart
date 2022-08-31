@@ -80,3 +80,20 @@ IconData? getIconFromExtension(String path) {
 String getFileName(String path) {
   return path.split('/').last;
 }
+
+String dtoText(BuildContext context, double discount1, double discount2,
+    double discount3) {
+  var stringText = '';
+
+  if (discount1 != 0 && discount2 != 0 && discount3 != 0.0) {
+    stringText =
+        'Dto: ${numberFormat(discount1)}% + ${numberFormat(discount2)}% + ${numberFormat(discount3)}%';
+  } else if (discount1 != 0 && discount2 != 0) {
+    stringText =
+        'Dto: ${numberFormat(discount1)}% + ${numberFormat(discount2)}% ';
+  } else if (discount1 != 0) {
+    stringText = 'Dto: ${numberFormat(discount1)}% ';
+  }
+
+  return stringText;
+}

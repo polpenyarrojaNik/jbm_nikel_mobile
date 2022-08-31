@@ -26,6 +26,8 @@ class ArticleDocumentContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (articleDocumentList) => ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, i) => ArticleDocumentTile(
             articleDocument: articleDocumentList[i],
           ),

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../articles/domain/article.dart';
+
 part 'stats_last_price.freezed.dart';
 
 @freezed
@@ -7,7 +9,7 @@ class StatsLastPrice with _$StatsLastPrice {
   const StatsLastPrice._();
   const factory StatsLastPrice(
       {required String customerId,
-      required String articleId,
+      required Article article,
       required DateTime date,
       required double divisaPrice,
       required double priceType,

@@ -80,6 +80,9 @@ class CustomerListTile extends StatelessWidget {
 
   void navigateToCustomerDetail(
       {required BuildContext context, required String customerId}) {
-    context.goNamed(AppRoute.customershow.name, params: {'id': customerId});
+    context.goNamed(
+      AppRoute.customershow.name,
+      params: {'customerId': customerId},
+    );
   }
 }

@@ -9,7 +9,7 @@ class ErrorMessageWidget extends StatelessWidget {
       errorMessage,
       style: Theme.of(context)
           .textTheme
-          .headline6!
+          .labelMedium!
           .copyWith(color: Theme.of(context).colorScheme.error),
     );
   }

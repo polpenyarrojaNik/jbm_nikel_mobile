@@ -3,6 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_customer_user_sales.dart';
 
+import '../../articles/domain/article.dart';
+import '../../customer/domain/customer.dart';
+
 part 'stats_customer_user_sales_dto.freezed.dart';
 part 'stats_customer_user_sales_dto.g.dart';
 
@@ -28,12 +31,13 @@ class StatsCustomerUserSalesDTO
   factory StatsCustomerUserSalesDTO.fromJson(Map<String, dynamic> json) =>
       _$StatsCustomerUserSalesDTOFromJson(json);
 
-  StatsCustomerUserSales toDomain() {
+  StatsCustomerUserSales toDomain(
+      {required Customer customer, required Article article}) {
     return StatsCustomerUserSales(
       year: year,
       month: month,
-      customerId: customerId,
-      articleId: articleId,
+      customer: customer,
+      article: article,
       units: units,
       amount: amount,
       cost: cost,

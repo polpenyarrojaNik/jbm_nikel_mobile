@@ -25,16 +25,16 @@ mixin _$Article {
   double get subboxUnits => throw _privateConstructorUsedError;
   double get boxUnits => throw _privateConstructorUsedError;
   double get paletUnits => throw _privateConstructorUsedError;
-  String get isActiveWeb => throw _privateConstructorUsedError;
-  String get isActiveApp => throw _privateConstructorUsedError;
-  String get inCatalogue => throw _privateConstructorUsedError;
-  String get discontinued => throw _privateConstructorUsedError;
+  bool get isActiveWeb => throw _privateConstructorUsedError;
+  bool get isActiveApp => throw _privateConstructorUsedError;
+  bool get inCatalogue => throw _privateConstructorUsedError;
+  bool get discontinued => throw _privateConstructorUsedError;
   String? get cataloguePage => throw _privateConstructorUsedError;
   String? get cataloguePage2 => throw _privateConstructorUsedError;
   double get weightKg => throw _privateConstructorUsedError;
   double get largeCm => throw _privateConstructorUsedError;
   double get widthCm => throw _privateConstructorUsedError;
-  double get tallCm => throw _privateConstructorUsedError;
+  double get heightCm => throw _privateConstructorUsedError;
   String? get summary => throw _privateConstructorUsedError;
   double? get availableStock => throw _privateConstructorUsedError;
   double? get currentSales => throw _privateConstructorUsedError;
@@ -72,16 +72,16 @@ abstract class $ArticleCopyWith<$Res> {
       double subboxUnits,
       double boxUnits,
       double paletUnits,
-      String isActiveWeb,
-      String isActiveApp,
-      String inCatalogue,
-      String discontinued,
+      bool isActiveWeb,
+      bool isActiveApp,
+      bool inCatalogue,
+      bool discontinued,
       String? cataloguePage,
       String? cataloguePage2,
       double weightKg,
       double largeCm,
       double widthCm,
-      double tallCm,
+      double heightCm,
       String? summary,
       double? availableStock,
       double? currentSales,
@@ -132,7 +132,7 @@ class _$ArticleCopyWithImpl<$Res> implements $ArticleCopyWith<$Res> {
     Object? weightKg = freezed,
     Object? largeCm = freezed,
     Object? widthCm = freezed,
-    Object? tallCm = freezed,
+    Object? heightCm = freezed,
     Object? summary = freezed,
     Object? availableStock = freezed,
     Object? currentSales = freezed,
@@ -191,19 +191,19 @@ class _$ArticleCopyWithImpl<$Res> implements $ArticleCopyWith<$Res> {
       isActiveWeb: isActiveWeb == freezed
           ? _value.isActiveWeb
           : isActiveWeb // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       isActiveApp: isActiveApp == freezed
           ? _value.isActiveApp
           : isActiveApp // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       inCatalogue: inCatalogue == freezed
           ? _value.inCatalogue
           : inCatalogue // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       discontinued: discontinued == freezed
           ? _value.discontinued
           : discontinued // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       cataloguePage: cataloguePage == freezed
           ? _value.cataloguePage
           : cataloguePage // ignore: cast_nullable_to_non_nullable
@@ -224,9 +224,9 @@ class _$ArticleCopyWithImpl<$Res> implements $ArticleCopyWith<$Res> {
           ? _value.widthCm
           : widthCm // ignore: cast_nullable_to_non_nullable
               as double,
-      tallCm: tallCm == freezed
-          ? _value.tallCm
-          : tallCm // ignore: cast_nullable_to_non_nullable
+      heightCm: heightCm == freezed
+          ? _value.heightCm
+          : heightCm // ignore: cast_nullable_to_non_nullable
               as double,
       summary: summary == freezed
           ? _value.summary
@@ -338,16 +338,16 @@ abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       double subboxUnits,
       double boxUnits,
       double paletUnits,
-      String isActiveWeb,
-      String isActiveApp,
-      String inCatalogue,
-      String discontinued,
+      bool isActiveWeb,
+      bool isActiveApp,
+      bool inCatalogue,
+      bool discontinued,
       String? cataloguePage,
       String? cataloguePage2,
       double weightKg,
       double largeCm,
       double widthCm,
-      double tallCm,
+      double heightCm,
       String? summary,
       double? availableStock,
       double? currentSales,
@@ -401,7 +401,7 @@ class __$$_ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
     Object? weightKg = freezed,
     Object? largeCm = freezed,
     Object? widthCm = freezed,
-    Object? tallCm = freezed,
+    Object? heightCm = freezed,
     Object? summary = freezed,
     Object? availableStock = freezed,
     Object? currentSales = freezed,
@@ -460,19 +460,19 @@ class __$$_ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
       isActiveWeb: isActiveWeb == freezed
           ? _value.isActiveWeb
           : isActiveWeb // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       isActiveApp: isActiveApp == freezed
           ? _value.isActiveApp
           : isActiveApp // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       inCatalogue: inCatalogue == freezed
           ? _value.inCatalogue
           : inCatalogue // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       discontinued: discontinued == freezed
           ? _value.discontinued
           : discontinued // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
       cataloguePage: cataloguePage == freezed
           ? _value.cataloguePage
           : cataloguePage // ignore: cast_nullable_to_non_nullable
@@ -493,9 +493,9 @@ class __$$_ArticleCopyWithImpl<$Res> extends _$ArticleCopyWithImpl<$Res>
           ? _value.widthCm
           : widthCm // ignore: cast_nullable_to_non_nullable
               as double,
-      tallCm: tallCm == freezed
-          ? _value.tallCm
-          : tallCm // ignore: cast_nullable_to_non_nullable
+      heightCm: heightCm == freezed
+          ? _value.heightCm
+          : heightCm // ignore: cast_nullable_to_non_nullable
               as double,
       summary: summary == freezed
           ? _value.summary
@@ -591,7 +591,7 @@ class _$_Article extends _Article {
       required this.weightKg,
       required this.largeCm,
       required this.widthCm,
-      required this.tallCm,
+      required this.heightCm,
       this.summary,
       this.availableStock,
       this.currentSales,
@@ -630,13 +630,13 @@ class _$_Article extends _Article {
   @override
   final double paletUnits;
   @override
-  final String isActiveWeb;
+  final bool isActiveWeb;
   @override
-  final String isActiveApp;
+  final bool isActiveApp;
   @override
-  final String inCatalogue;
+  final bool inCatalogue;
   @override
-  final String discontinued;
+  final bool discontinued;
   @override
   final String? cataloguePage;
   @override
@@ -648,7 +648,7 @@ class _$_Article extends _Article {
   @override
   final double widthCm;
   @override
-  final double tallCm;
+  final double heightCm;
   @override
   final String? summary;
   @override
@@ -686,7 +686,7 @@ class _$_Article extends _Article {
 
   @override
   String toString() {
-    return 'Article(id: $id, description: $description, family: $family, subfamily: $subfamily, minimumSales: $minimumSales, multipleSales: $multipleSales, subboxUnits: $subboxUnits, boxUnits: $boxUnits, paletUnits: $paletUnits, isActiveWeb: $isActiveWeb, isActiveApp: $isActiveApp, inCatalogue: $inCatalogue, discontinued: $discontinued, cataloguePage: $cataloguePage, cataloguePage2: $cataloguePage2, weightKg: $weightKg, largeCm: $largeCm, widthCm: $widthCm, tallCm: $tallCm, summary: $summary, availableStock: $availableStock, currentSales: $currentSales, previousSales: $previousSales, purchasesDeliveryQuantity1: $purchasesDeliveryQuantity1, purchasesDeliveryQuantity2: $purchasesDeliveryQuantity2, purchasesDeliveryQuantity3: $purchasesDeliveryQuantity3, purchasesDeliveryQuantityMore3: $purchasesDeliveryQuantityMore3, purchasesDeliveryDate1: $purchasesDeliveryDate1, purchasesDeliveryDate2: $purchasesDeliveryDate2, purchasesDeliveryDate3: $purchasesDeliveryDate3, purchasesDeliveryStatus1: $purchasesDeliveryStatus1, purchasesDeliveryStatus2: $purchasesDeliveryStatus2, purchasesDeliveryStatus3: $purchasesDeliveryStatus3, principalImage: $principalImage, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Article(id: $id, description: $description, family: $family, subfamily: $subfamily, minimumSales: $minimumSales, multipleSales: $multipleSales, subboxUnits: $subboxUnits, boxUnits: $boxUnits, paletUnits: $paletUnits, isActiveWeb: $isActiveWeb, isActiveApp: $isActiveApp, inCatalogue: $inCatalogue, discontinued: $discontinued, cataloguePage: $cataloguePage, cataloguePage2: $cataloguePage2, weightKg: $weightKg, largeCm: $largeCm, widthCm: $widthCm, heightCm: $heightCm, summary: $summary, availableStock: $availableStock, currentSales: $currentSales, previousSales: $previousSales, purchasesDeliveryQuantity1: $purchasesDeliveryQuantity1, purchasesDeliveryQuantity2: $purchasesDeliveryQuantity2, purchasesDeliveryQuantity3: $purchasesDeliveryQuantity3, purchasesDeliveryQuantityMore3: $purchasesDeliveryQuantityMore3, purchasesDeliveryDate1: $purchasesDeliveryDate1, purchasesDeliveryDate2: $purchasesDeliveryDate2, purchasesDeliveryDate3: $purchasesDeliveryDate3, purchasesDeliveryStatus1: $purchasesDeliveryStatus1, purchasesDeliveryStatus2: $purchasesDeliveryStatus2, purchasesDeliveryStatus3: $purchasesDeliveryStatus3, principalImage: $principalImage, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -723,7 +723,7 @@ class _$_Article extends _Article {
             const DeepCollectionEquality().equals(other.weightKg, weightKg) &&
             const DeepCollectionEquality().equals(other.largeCm, largeCm) &&
             const DeepCollectionEquality().equals(other.widthCm, widthCm) &&
-            const DeepCollectionEquality().equals(other.tallCm, tallCm) &&
+            const DeepCollectionEquality().equals(other.heightCm, heightCm) &&
             const DeepCollectionEquality().equals(other.summary, summary) &&
             const DeepCollectionEquality()
                 .equals(other.availableStock, availableStock) &&
@@ -780,7 +780,7 @@ class _$_Article extends _Article {
         const DeepCollectionEquality().hash(weightKg),
         const DeepCollectionEquality().hash(largeCm),
         const DeepCollectionEquality().hash(widthCm),
-        const DeepCollectionEquality().hash(tallCm),
+        const DeepCollectionEquality().hash(heightCm),
         const DeepCollectionEquality().hash(summary),
         const DeepCollectionEquality().hash(availableStock),
         const DeepCollectionEquality().hash(currentSales),
@@ -817,16 +817,16 @@ abstract class _Article extends Article {
       required final double subboxUnits,
       required final double boxUnits,
       required final double paletUnits,
-      required final String isActiveWeb,
-      required final String isActiveApp,
-      required final String inCatalogue,
-      required final String discontinued,
+      required final bool isActiveWeb,
+      required final bool isActiveApp,
+      required final bool inCatalogue,
+      required final bool discontinued,
       final String? cataloguePage,
       final String? cataloguePage2,
       required final double weightKg,
       required final double largeCm,
       required final double widthCm,
-      required final double tallCm,
+      required final double heightCm,
       final String? summary,
       final double? availableStock,
       final double? currentSales,
@@ -865,13 +865,13 @@ abstract class _Article extends Article {
   @override
   double get paletUnits;
   @override
-  String get isActiveWeb;
+  bool get isActiveWeb;
   @override
-  String get isActiveApp;
+  bool get isActiveApp;
   @override
-  String get inCatalogue;
+  bool get inCatalogue;
   @override
-  String get discontinued;
+  bool get discontinued;
   @override
   String? get cataloguePage;
   @override
@@ -883,7 +883,7 @@ abstract class _Article extends Article {
   @override
   double get widthCm;
   @override
-  double get tallCm;
+  double get heightCm;
   @override
   String? get summary;
   @override

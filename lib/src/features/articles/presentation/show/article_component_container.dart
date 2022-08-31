@@ -20,13 +20,19 @@ class ArticleComponentsContainer extends ConsumerWidget {
       child: state.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (articleComponentList) => ListView.separated(
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => ArticleComponentTile(
-            articleComponent: articleComponentList[i],
-          ),
-          itemCount: articleComponentList.length,
-        ),
+        data: (articleComponentList) => (articleComponentList.isNotEmpty)
+            ? ListView.separated(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, _) => const Divider(),
+                itemBuilder: (context, i) => ArticleComponentTile(
+                  articleComponent: articleComponentList[i],
+                ),
+                itemCount: articleComponentList.length,
+              )
+            : const Center(
+                child: Text('No results'),
+              ),
       ),
     );
   }

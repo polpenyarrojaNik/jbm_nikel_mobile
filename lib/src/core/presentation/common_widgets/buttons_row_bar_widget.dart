@@ -10,24 +10,27 @@ class ButtonsRowBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2.5),
+      padding: const EdgeInsets.only(top: 5, left: 8, right: 8),
       child: SizedBox(
         height: 45,
-        child: Scrollbar(
-          thumbVisibility: true,
-          trackVisibility: true,
+        child:
+
+            // Scrollbar(
+            //   thumbVisibility: true,
+            // trackVisibility: true,
+            // controller: _scrollController,
+            // child:
+            ListView.separated(
+          shrinkWrap: true,
           controller: _scrollController,
-          child: ListView.separated(
-            shrinkWrap: true,
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, i) => textButtonsList[i],
-            separatorBuilder: (context, i) => const SizedBox(
-              width: 5,
-            ),
-            itemCount: textButtonsList.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, i) => textButtonsList[i],
+          separatorBuilder: (context, i) => const SizedBox(
+            width: 4,
           ),
+          itemCount: textButtonsList.length,
         ),
+        // ),
       ),
     );
   }

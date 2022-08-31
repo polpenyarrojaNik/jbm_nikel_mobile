@@ -11,6 +11,9 @@ import 'package:jbm_nikel_mobile/src/features/articles/domain/article_spare.dart
 import 'package:jbm_nikel_mobile/src/features/articles/domain/article_substitute.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/domain/customer_pending_payment.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_net_group_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order_line.dart';
+import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_customer_user_sales.dart';
+import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_last_price.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/infrastructure/stats_customer_user_sales_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/visits/domain/visit.dart';
 import 'package:path_provider/path_provider.dart';
@@ -31,6 +34,7 @@ import '../../features/customer/domain/customer_discount.dart';
 import '../../features/customer/domain/customer_net_group.dart';
 import '../../features/customer/domain/customer_net_price.dart';
 import '../../features/customer/domain/customer_rappel.dart';
+import '../../features/customer/domain/customer_sales_month.dart';
 import '../../features/customer/domain/top_article.dart';
 import '../../features/customer/infrastructure/collection_method_dto.dart';
 import '../../features/customer/infrastructure/collection_term_dto.dart';
@@ -168,21 +172,27 @@ class AppDatabase extends _$AppDatabase {
 
   Stream<List<SalesOrder>> getSalesOrderList({String? searchText}) {
     try {
-      final query = (select(salesOrderTable)
-        ..where(
+      final query = (select(salesOrderTable));
+
+      if (searchText != null) {
+        query.where(
           (t) =>
               t.deleted.equals('N') &
-              (t.salesOrderId.like(searchText ?? '') |
-                  t.customerName.like(searchText ?? '') |
-                  t.customerId.like(searchText ?? '') |
-                  t.city.like(searchText ?? '') |
-                  t.zipCode.like(searchText ?? '') |
-                  t.state.like(searchText ?? '')),
-        )
-        ..orderBy([
-          (t) => OrderingTerm(
-              expression: t.salesOrderDate, mode: OrderingMode.desc)
-        ]));
+              (t.salesOrderId.like(searchText) |
+                  t.customerName.like(searchText) |
+                  t.customerId.like(searchText) |
+                  t.city.like(searchText) |
+                  t.zipCode.like(searchText) |
+                  t.state.like(searchText)),
+        );
+      } else {
+        query.where((t) => t.deleted.equals('N'));
+      }
+
+      query.orderBy([
+        (t) =>
+            OrderingTerm(expression: t.salesOrderDate, mode: OrderingMode.desc)
+      ]);
 
       return query.asyncMap((row) async {
         final countryDTO = await (select(countryTable)
@@ -420,6 +430,36 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
+  // Future<List<StatsCustomerUserSales>> getArticleSalesList(
+  //     {required String customerId}) {
+  //   try {
+  //     final query = (select(topArticleTable));
+
+  //     return query.asyncMap((row) async {
+  //       final article = await getArticleById(articleId: row.articleId);
+  //       return row.toDomain(article: article);
+  //     }).get();
+  //   } catch (e) {
+  //     print(e);
+  //     rethrow;
+  //   }
+  // }
+
+  // Future<List<CustomerSalesMonth>> getSalesMonthList(
+  //     {required String customerId}) {
+  //   try {
+  //     final query = (select(statsCustomerUserSalesTable));
+
+  //     return query.asyncMap((row) async {
+  //       final article = await getArticleById(articleId: row.articleId);
+  //       return row.toDomain(article: article);
+  //     }).get();
+  //   } catch (e) {
+  //     print(e);
+  //     rethrow;
+  //   }
+  // }
+
   Future<List<TopArticle>> getTopArticleList() {
     try {
       final query = (select(topArticleTable));
@@ -578,6 +618,40 @@ class AppDatabase extends _$AppDatabase {
             await getArticleById(articleId: row.articleComponentId);
         return row.toDomain(
             article: article, articleComponent: articleComponent);
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<SalesOrderLine>> getArticleSalesOrderById(
+      {required String articleId}) async {
+    try {
+      final query = (select(salesOrderLineTable)
+        ..where((t) => t.articleId.equals(articleId)));
+
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<List<StatsLastPrice>> getArticleLastPriceById(
+      {required String articleId}) async {
+    try {
+      final query = (select(statsLastPriceTable)
+        ..where((t) => t.articleId.equals(articleId))
+        ..orderBy(
+          [(t) => OrderingTerm(expression: t.date)],
+        ));
+
+      return query.asyncMap((row) async {
+        final article = await getArticleById(articleId: row.articleId);
+        return row.toDomain(article: article);
       }).get();
     } catch (e) {
       print(e);

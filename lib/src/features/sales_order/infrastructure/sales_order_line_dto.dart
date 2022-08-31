@@ -1,6 +1,5 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
 import '../domain/sales_order_line.dart';
@@ -33,7 +32,7 @@ class SalesOrderLineDTO
   factory SalesOrderLineDTO.fromJson(Map<String, dynamic> json) =>
       _$SalesOrderLineDTOFromJson(json);
 
-  SalesOrderLine toDomain({required String divisaId}) {
+  SalesOrderLine toDomain() {
     return SalesOrderLine(
         companyId: companyId,
         salesOrderId: salesOrderId,
@@ -41,7 +40,7 @@ class SalesOrderLineDTO
         articleId: articleId,
         articleDescription: articleDescription,
         quantity: quantity,
-        divisaPrice: divisaPrice.parseMoney(divisaPrice, divisaId),
+        divisaPrice: divisaPrice,
         priceType: priceType,
         discount1: discount1,
         discount2: discount2,

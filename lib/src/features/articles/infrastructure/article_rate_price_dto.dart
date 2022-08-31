@@ -1,6 +1,5 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
 import '../../../core/infrastructure/database.dart';
 import '../domain/article_rate_price.dart';

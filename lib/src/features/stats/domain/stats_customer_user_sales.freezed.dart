@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StatsCustomerUserSales {
   double get year => throw _privateConstructorUsedError;
   double get month => throw _privateConstructorUsedError;
-  String get customerId => throw _privateConstructorUsedError;
-  String get articleId => throw _privateConstructorUsedError;
+  Customer get customer => throw _privateConstructorUsedError;
+  Article get article => throw _privateConstructorUsedError;
   double? get units => throw _privateConstructorUsedError;
   double? get amount => throw _privateConstructorUsedError;
   double? get cost => throw _privateConstructorUsedError;
@@ -39,13 +39,16 @@ abstract class $StatsCustomerUserSalesCopyWith<$Res> {
   $Res call(
       {double year,
       double month,
-      String customerId,
-      String articleId,
+      Customer customer,
+      Article article,
       double? units,
       double? amount,
       double? cost,
       DateTime lastUpdated,
       bool deleted});
+
+  $CustomerCopyWith<$Res> get customer;
+  $ArticleCopyWith<$Res> get article;
 }
 
 /// @nodoc
@@ -61,8 +64,8 @@ class _$StatsCustomerUserSalesCopyWithImpl<$Res>
   $Res call({
     Object? year = freezed,
     Object? month = freezed,
-    Object? customerId = freezed,
-    Object? articleId = freezed,
+    Object? customer = freezed,
+    Object? article = freezed,
     Object? units = freezed,
     Object? amount = freezed,
     Object? cost = freezed,
@@ -78,14 +81,14 @@ class _$StatsCustomerUserSalesCopyWithImpl<$Res>
           ? _value.month
           : month // ignore: cast_nullable_to_non_nullable
               as double,
-      customerId: customerId == freezed
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
+      customer: customer == freezed
+          ? _value.customer
+          : customer // ignore: cast_nullable_to_non_nullable
+              as Customer,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
       units: units == freezed
           ? _value.units
           : units // ignore: cast_nullable_to_non_nullable
@@ -108,6 +111,20 @@ class _$StatsCustomerUserSalesCopyWithImpl<$Res>
               as bool,
     ));
   }
+
+  @override
+  $CustomerCopyWith<$Res> get customer {
+    return $CustomerCopyWith<$Res>(_value.customer, (value) {
+      return _then(_value.copyWith(customer: value));
+    });
+  }
+
+  @override
+  $ArticleCopyWith<$Res> get article {
+    return $ArticleCopyWith<$Res>(_value.article, (value) {
+      return _then(_value.copyWith(article: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -120,13 +137,18 @@ abstract class _$$_StatsCustomerUserSalesCopyWith<$Res>
   $Res call(
       {double year,
       double month,
-      String customerId,
-      String articleId,
+      Customer customer,
+      Article article,
       double? units,
       double? amount,
       double? cost,
       DateTime lastUpdated,
       bool deleted});
+
+  @override
+  $CustomerCopyWith<$Res> get customer;
+  @override
+  $ArticleCopyWith<$Res> get article;
 }
 
 /// @nodoc
@@ -145,8 +167,8 @@ class __$$_StatsCustomerUserSalesCopyWithImpl<$Res>
   $Res call({
     Object? year = freezed,
     Object? month = freezed,
-    Object? customerId = freezed,
-    Object? articleId = freezed,
+    Object? customer = freezed,
+    Object? article = freezed,
     Object? units = freezed,
     Object? amount = freezed,
     Object? cost = freezed,
@@ -162,14 +184,14 @@ class __$$_StatsCustomerUserSalesCopyWithImpl<$Res>
           ? _value.month
           : month // ignore: cast_nullable_to_non_nullable
               as double,
-      customerId: customerId == freezed
-          ? _value.customerId
-          : customerId // ignore: cast_nullable_to_non_nullable
-              as String,
-      articleId: articleId == freezed
-          ? _value.articleId
-          : articleId // ignore: cast_nullable_to_non_nullable
-              as String,
+      customer: customer == freezed
+          ? _value.customer
+          : customer // ignore: cast_nullable_to_non_nullable
+              as Customer,
+      article: article == freezed
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as Article,
       units: units == freezed
           ? _value.units
           : units // ignore: cast_nullable_to_non_nullable
@@ -200,8 +222,8 @@ class _$_StatsCustomerUserSales extends _StatsCustomerUserSales {
   const _$_StatsCustomerUserSales(
       {required this.year,
       required this.month,
-      required this.customerId,
-      required this.articleId,
+      required this.customer,
+      required this.article,
       this.units,
       this.amount,
       this.cost,
@@ -214,9 +236,9 @@ class _$_StatsCustomerUserSales extends _StatsCustomerUserSales {
   @override
   final double month;
   @override
-  final String customerId;
+  final Customer customer;
   @override
-  final String articleId;
+  final Article article;
   @override
   final double? units;
   @override
@@ -230,7 +252,7 @@ class _$_StatsCustomerUserSales extends _StatsCustomerUserSales {
 
   @override
   String toString() {
-    return 'StatsCustomerUserSales(year: $year, month: $month, customerId: $customerId, articleId: $articleId, units: $units, amount: $amount, cost: $cost, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'StatsCustomerUserSales(year: $year, month: $month, customer: $customer, article: $article, units: $units, amount: $amount, cost: $cost, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -240,9 +262,8 @@ class _$_StatsCustomerUserSales extends _StatsCustomerUserSales {
             other is _$_StatsCustomerUserSales &&
             const DeepCollectionEquality().equals(other.year, year) &&
             const DeepCollectionEquality().equals(other.month, month) &&
-            const DeepCollectionEquality()
-                .equals(other.customerId, customerId) &&
-            const DeepCollectionEquality().equals(other.articleId, articleId) &&
+            const DeepCollectionEquality().equals(other.customer, customer) &&
+            const DeepCollectionEquality().equals(other.article, article) &&
             const DeepCollectionEquality().equals(other.units, units) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.cost, cost) &&
@@ -256,8 +277,8 @@ class _$_StatsCustomerUserSales extends _StatsCustomerUserSales {
       runtimeType,
       const DeepCollectionEquality().hash(year),
       const DeepCollectionEquality().hash(month),
-      const DeepCollectionEquality().hash(customerId),
-      const DeepCollectionEquality().hash(articleId),
+      const DeepCollectionEquality().hash(customer),
+      const DeepCollectionEquality().hash(article),
       const DeepCollectionEquality().hash(units),
       const DeepCollectionEquality().hash(amount),
       const DeepCollectionEquality().hash(cost),
@@ -275,8 +296,8 @@ abstract class _StatsCustomerUserSales extends StatsCustomerUserSales {
   const factory _StatsCustomerUserSales(
       {required final double year,
       required final double month,
-      required final String customerId,
-      required final String articleId,
+      required final Customer customer,
+      required final Article article,
       final double? units,
       final double? amount,
       final double? cost,
@@ -289,9 +310,9 @@ abstract class _StatsCustomerUserSales extends StatsCustomerUserSales {
   @override
   double get month;
   @override
-  String get customerId;
+  Customer get customer;
   @override
-  String get articleId;
+  Article get article;
   @override
   double? get units;
   @override

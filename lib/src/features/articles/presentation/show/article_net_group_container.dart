@@ -21,6 +21,8 @@ class ArticleNetGroupPriceContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (articleNetGroupPriceList) => ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, _) => const Divider(),
           itemBuilder: (context, i) => ArticleNetGroupPriceTile(
             articleNetGroupPrice: articleNetGroupPriceList[i],

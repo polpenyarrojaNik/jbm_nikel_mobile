@@ -21,6 +21,8 @@ class ArticleSubstituteContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (articleSubstituteList) => ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, _) => const Divider(),
           itemBuilder: (context, i) => ArticleSubstituteTile(
             articleSubstitute: articleSubstituteList[i],

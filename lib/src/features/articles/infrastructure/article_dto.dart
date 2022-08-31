@@ -50,7 +50,7 @@ class ArticleDTO with _$ArticleDTO implements Insertable<ArticleDTO> {
     @JsonKey(name: 'PESO_KG') required double weightKg,
     @JsonKey(name: 'LARGO_CM') required double largeCm,
     @JsonKey(name: 'ANCHO_CM') required double widthCm,
-    @JsonKey(name: 'ALTO_CM') required double tallCm,
+    @JsonKey(name: 'ALTO_CM') required double heightCm,
     @JsonKey(name: 'SUMMARY_ES') String? summaryES,
     @JsonKey(name: 'SUMMARY_EN') String? summaryEN,
     @JsonKey(name: 'SUMMARY_FR') String? summaryFR,
@@ -105,16 +105,16 @@ class ArticleDTO with _$ArticleDTO implements Insertable<ArticleDTO> {
       subboxUnits: subboxUnits,
       boxUnits: boxUnits,
       paletUnits: paletUnits,
-      isActiveWeb: isActiveWeb,
-      isActiveApp: isActiveApp,
-      inCatalogue: inCatalogue,
-      discontinued: discontinued,
+      isActiveWeb: (isActiveWeb == 'S') ? true : false,
+      isActiveApp: (isActiveApp == 'S') ? true : false,
+      inCatalogue: (inCatalogue == 'S') ? true : false,
+      discontinued: (discontinued == 'S') ? true : false,
       cataloguePage: cataloguePage,
       cataloguePage2: cataloguePage2,
       weightKg: weightKg,
       largeCm: largeCm,
       widthCm: widthCm,
-      tallCm: tallCm,
+      heightCm: heightCm,
       summary: getSummary(),
       availableStock: availableStock,
       currentSales: currentSales,
@@ -202,7 +202,7 @@ class ArticleDTO with _$ArticleDTO implements Insertable<ArticleDTO> {
       weightKg: Value(weightKg),
       largeCm: Value(largeCm),
       widthCm: Value(widthCm),
-      tallCm: Value(tallCm),
+      heightCm: Value(heightCm),
       summaryES: Value(summaryES),
       summaryEN: Value(summaryEN),
       summaryFR: Value(summaryFR),
@@ -284,7 +284,7 @@ class ArticleTable extends Table {
   RealColumn get weightKg => real().named('PESO_KG')();
   RealColumn get largeCm => real().named('LARGO_CM')();
   RealColumn get widthCm => real().named('ANCHO_CM')();
-  RealColumn get tallCm => real().named('ALTO_CM')();
+  RealColumn get heightCm => real().named('ALTO_CM')();
   TextColumn get summaryES => text().nullable().named('RESUMEN_ES')();
   TextColumn get summaryEN => text().nullable().named('RESUMEN_EN')();
   TextColumn get summaryFR => text().nullable().named('RESUMEN_FR')();

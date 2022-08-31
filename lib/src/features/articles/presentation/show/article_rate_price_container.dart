@@ -21,6 +21,8 @@ class ArticleRatePriceContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (articleRatePriceList) => ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, _) => const Divider(),
           itemBuilder: (context, i) => ArticleRatePriceTile(
             articleRatePrice: articleRatePriceList[i],

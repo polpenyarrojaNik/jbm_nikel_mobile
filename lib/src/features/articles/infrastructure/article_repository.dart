@@ -10,6 +10,8 @@ import 'package:jbm_nikel_mobile/src/features/articles/domain/article_document.d
 import 'package:jbm_nikel_mobile/src/features/articles/domain/article_rate_price.dart';
 import 'package:jbm_nikel_mobile/src/features/articles/domain/article_spare.dart';
 import 'package:jbm_nikel_mobile/src/features/articles/infrastructure/article_image_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order_line.dart';
+import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_last_price.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/exceptions/app_exception.dart';
@@ -97,6 +99,18 @@ final articleImageFileProvider =
     FutureProvider.autoDispose.family<Uint8List?, String>((ref, path) {
   final articleRepository = ref.watch(articleRepositoryProvider);
   return articleRepository.getImageFile(path: path);
+});
+
+final articleSalesOrderLineListProvider = FutureProvider.autoDispose
+    .family<List<SalesOrderLine>, String>((ref, articleId) {
+  final articleRepository = ref.watch(articleRepositoryProvider);
+  return articleRepository.getArticleSalesOrderById(articleId: articleId);
+});
+
+final articleLastPriceListProvider = FutureProvider.autoDispose
+    .family<List<StatsLastPrice>, String>((ref, articleId) {
+  final articleRepository = ref.watch(articleRepositoryProvider);
+  return articleRepository.getArticleLastPriceById(articleId: articleId);
 });
 
 class ArticleRepository {
@@ -211,6 +225,16 @@ class ArticleRepository {
     }
 
     return null;
+  }
+
+  Future<List<SalesOrderLine>> getArticleSalesOrderById(
+      {required String articleId}) async {
+    return await db.getArticleSalesOrderById(articleId: articleId);
+  }
+
+  Future<List<StatsLastPrice>> getArticleLastPriceById(
+      {required String articleId}) async {
+    return await db.getArticleLastPriceById(articleId: articleId);
   }
 
   Future<List<ArticleImageDTO>> _remoteGetArticleImages({
