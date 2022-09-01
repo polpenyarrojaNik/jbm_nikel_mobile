@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/field_text_detail.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/features/articles/domain/article.dart';
 
 import '../../../../core/presentation/common_widgets/buttons_row_bar_widget.dart';
@@ -149,8 +149,9 @@ class _ArticleInfoContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FieldTextDetail(fieldTitleValue: 'Código', value: article.id),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
+                  fieldTitleValue: 'Código', value: article.id),
+              ColumnFieldTextDetail(
                   fieldTitleValue: 'Descripción', value: article.description),
               if (article.family != null || article.subfamily != null)
                 Row(
@@ -158,14 +159,14 @@ class _ArticleInfoContainer extends StatelessWidget {
                   children: [
                     if (article.family != null)
                       Expanded(
-                        child: FieldTextDetail(
+                        child: ColumnFieldTextDetail(
                             fieldTitleValue: 'Familia',
                             value: article.family!.description),
                       ),
                     const Spacer(),
                     if (article.subfamily != null)
                       Expanded(
-                        child: FieldTextDetail(
+                        child: ColumnFieldTextDetail(
                             fieldTitleValue: 'Subamilia',
                             value: article.subfamily!.description),
                       ),
@@ -173,7 +174,7 @@ class _ArticleInfoContainer extends StatelessWidget {
                   ],
                 ),
               const Divider(),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                 fieldTitleValue: 'Entrega 1',
                 value: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,7 +201,7 @@ class _ArticleInfoContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                 fieldTitleValue: 'Entrega 2',
                 value: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -227,7 +228,7 @@ class _ArticleInfoContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                 fieldTitleValue: 'Entrega 3',
                 value: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -254,7 +255,7 @@ class _ArticleInfoContainer extends StatelessWidget {
                   ],
                 ),
               ),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                 fieldTitleValue: '+',
                 value: Row(
                   children: [
@@ -266,7 +267,7 @@ class _ArticleInfoContainer extends StatelessWidget {
               ),
               const Divider(),
               if (article.availableStock != null)
-                FieldTextDetail(
+                ColumnFieldTextDetail(
                     fieldTitleValue: 'Stock',
                     value: article.availableStock.toString()),
             ],
@@ -278,12 +279,12 @@ class _ArticleInfoContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                   fieldTitleValue: 'Subcaja',
                   value: article.subboxUnits.toString()),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                   fieldTitleValue: 'Caja', value: article.boxUnits.toString()),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                   fieldTitleValue: 'Palet',
                   value: article.paletUnits.toString()),
               const Divider(),
@@ -291,13 +292,13 @@ class _ArticleInfoContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: FieldTextDetail(
+                    child: ColumnFieldTextDetail(
                         fieldTitleValue: 'Peso(kg)',
                         value: article.availableStock.toString()),
                   ),
                   const Spacer(),
                   Expanded(
-                    child: FieldTextDetail(
+                    child: ColumnFieldTextDetail(
                         fieldTitleValue: 'Largo(cm)',
                         value: article.largeCm.toString()),
                   ),
@@ -308,13 +309,13 @@ class _ArticleInfoContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: FieldTextDetail(
+                    child: ColumnFieldTextDetail(
                         fieldTitleValue: 'Alto(cm)',
                         value: article.heightCm.toString()),
                   ),
                   const Spacer(),
                   Expanded(
-                    child: FieldTextDetail(
+                    child: ColumnFieldTextDetail(
                         fieldTitleValue: 'Ancho(cm)',
                         value: article.widthCm.toString()),
                   ),
@@ -330,7 +331,7 @@ class _ArticleInfoContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                 fieldTitleValue: 'Pád.Catalogo/2ªEdi.',
                 value: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -412,7 +413,7 @@ class _ArticleInfoContainer extends StatelessWidget {
                 ],
               ),
               const Divider(),
-              FieldTextDetail(
+              ColumnFieldTextDetail(
                   fieldTitleValue: 'Resumen', value: article.summary ?? ''),
             ],
           ),

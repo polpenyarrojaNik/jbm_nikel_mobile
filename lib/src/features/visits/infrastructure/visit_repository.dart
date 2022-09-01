@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
+import '../../auth/infrastructure/auth_repository.dart';
 import '../domain/visit.dart';
 
 final visitRepositoryProvider = Provider.autoDispose<VisitRepository>(
@@ -9,9 +10,12 @@ final visitRepositoryProvider = Provider.autoDispose<VisitRepository>(
   (ref) => throw UnimplementedError(),
 );
 
-final visitListStreamProvider = StreamProvider.autoDispose<List<Visit>>((ref) {
+final visitListStreamProvider =
+    StreamProvider.autoDispose<List<Visit>>((ref) async* {
   final visitRepository = ref.watch(visitRepositoryProvider);
-  return visitRepository.watchVisitList();
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  yield* visitRepository.watchVisitList(userId: user!.id);
 });
 
 final visitProvider =
@@ -26,8 +30,8 @@ class VisitRepository {
 
   VisitRepository(this.db, this.dio);
 
-  Stream<List<Visit>> watchVisitList() {
-    return db.getVisitList();
+  Stream<List<Visit>> watchVisitList({required String userId}) {
+    return db.getVisitList(userId: userId);
   }
 
   Future<Visit> getVisitById({required String visitId}) async {

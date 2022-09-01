@@ -42,12 +42,12 @@ void main() async {
         authRepositoryProvider.overrideWithValue(authRepository),
         syncRepositoryProvider
             .overrideWithValue(SyncRepository(database, dio, authRepository)),
-        salesOrderRepositoryProvider
-            .overrideWithValue(SalesOrderRepository(database, dio)),
-        customerRepositoryProvider.overrideWithValue(
-            CustomerRepository(database, dio, authRepository)),
-        articleRepositoryProvider.overrideWithValue(
-            ArticleRepository(database, dio, authRepository)),
+        salesOrderRepositoryProvider.overrideWithValue(
+            SalesOrderRepository(database, dio, authRepository)),
+        customerRepositoryProvider
+            .overrideWithValue(CustomerRepository(database, dio)),
+        articleRepositoryProvider
+            .overrideWithValue(ArticleRepository(database, dio)),
         visitRepositoryProvider
             .overrideWithValue(VisitRepository(database, dio)),
         topArticleRepositoryProvider

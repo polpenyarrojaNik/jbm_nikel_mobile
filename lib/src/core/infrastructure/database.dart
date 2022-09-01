@@ -170,41 +170,45 @@ class AppDatabase extends _$AppDatabase {
     return await super.close();
   }
 
-  Stream<List<SalesOrder>> getSalesOrderList({String? searchText}) {
+  Stream<List<SalesOrder>> getSalesOrderList(
+      {required String userId, String? searchText}) {
     try {
-      final query = (select(salesOrderTable));
+      final query = select(salesOrderTable).join([
+        innerJoin(customerUserTable,
+            customerUserTable.customerId.equalsExp(salesOrderTable.customerId)),
+        innerJoin(
+            countryTable, countryTable.id.equalsExp(salesOrderTable.countryId)),
+        innerJoin(
+            divisaTable, divisaTable.id.equalsExp(salesOrderTable.divisaId)),
+        innerJoin(
+            salesOrderStatusTable,
+            salesOrderStatusTable.id
+                .equalsExp(salesOrderTable.salesOrderStatusId)),
+      ]);
 
       if (searchText != null) {
         query.where(
-          (t) =>
-              t.deleted.equals('N') &
-              (t.salesOrderId.like(searchText) |
-                  t.customerName.like(searchText) |
-                  t.customerId.like(searchText) |
-                  t.city.like(searchText) |
-                  t.zipCode.like(searchText) |
-                  t.state.like(searchText)),
+          salesOrderTable.deleted.equals('N') &
+              (salesOrderTable.salesOrderId.like(searchText) |
+                  salesOrderTable.customerName.like(searchText) |
+                  salesOrderTable.customerId.like(searchText) |
+                  salesOrderTable.city.like(searchText) |
+                  salesOrderTable.zipCode.like(searchText) |
+                  salesOrderTable.state.like(searchText)),
         );
       } else {
-        query.where((t) => t.deleted.equals('N'));
+        query.where(salesOrderTable.deleted.equals('N'));
       }
 
-      query.orderBy([
-        (t) =>
-            OrderingTerm(expression: t.salesOrderDate, mode: OrderingMode.desc)
-      ]);
+      query.orderBy([OrderingTerm.desc(salesOrderTable.salesOrderDate)]);
 
       return query.asyncMap((row) async {
-        final countryDTO = await (select(countryTable)
-              ..where((t) => t.id.equals(row.countryId ?? '')))
-            .getSingleOrNull();
-        final divisaDTO = await (select(divisaTable)
-              ..where((t) => t.id.equals(row.divisaId)))
-            .getSingle();
-        final salesOrderStatusDTO = await (select(salesOrderStatusTable)
-              ..where((t) => t.id.equals(row.salesOrderStatusId)))
-            .getSingle();
-        return row.toDomain(
+        final salesOrderDTO = row.readTable(salesOrderTable);
+        final countryDTO = row.readTableOrNull(countryTable);
+        final divisaDTO = row.readTable(divisaTable);
+        final salesOrderStatusDTO = row.readTable(salesOrderStatusTable);
+
+        return salesOrderDTO.toDomain(
             country: countryDTO?.toDomain(),
             divisa: divisaDTO.toDomain(),
             salesOrderStatus: salesOrderStatusDTO.toDomain());
@@ -241,31 +245,55 @@ class AppDatabase extends _$AppDatabase {
     }
   }
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  Stream<List<Customer>> getCustomerList() {
+  Future<List<SalesOrderLine>> getSalesOrderLineById(
+      {required String salesOrderId}) {
     try {
-      final query = (select(customerTable)
-        ..where((t) => t.deleted.equals('N'))
-        ..orderBy([
-          (t) => OrderingTerm(expression: t.customerName),
-          (t) => OrderingTerm(expression: t.id)
-        ]));
+      final query = (select(salesOrderLineTable)
+        ..where((t) => t.salesOrderId.equals(salesOrderId)));
 
       return query.asyncMap((row) async {
-        final countryDTO = await (select(countryTable)
-              ..where((t) => t.id.equals(row.fiscalCountryId ?? '')))
-            .getSingleOrNull();
-        final divisaDTO = await (select(divisaTable)
-              ..where((t) => t.id.equals(row.divisaId ?? '')))
-            .getSingleOrNull();
-        final collectionMethodDTO = await (select(collectionMethodTable)
-              ..where((t) => t.id.equals(row.collectionMethodId ?? '')))
-            .getSingleOrNull();
-        final collectionTermDTO = await (select(collectionTermTable)
-              ..where((t) => t.id.equals(row.collectionTermId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  Stream<List<Customer>> getCustomerList({required String userId}) {
+    try {
+      final query = select(customerTable).join([
+        innerJoin(customerUserTable,
+            customerUserTable.customerId.equalsExp(customerTable.id)),
+        innerJoin(countryTable,
+            countryTable.id.equalsExp(customerTable.fiscalCountryId)),
+        innerJoin(
+            divisaTable, divisaTable.id.equalsExp(customerTable.divisaId)),
+        innerJoin(
+            collectionMethodTable,
+            collectionMethodTable.id
+                .equalsExp(customerTable.collectionMethodId)),
+        innerJoin(collectionTermTable,
+            collectionTermTable.id.equalsExp(customerTable.collectionTermId))
+      ]);
+
+      query.where(customerTable.deleted.equals('N') &
+          customerUserTable.userId.equals(userId));
+      query.orderBy([
+        OrderingTerm.asc(customerTable.customerName),
+        OrderingTerm.asc(customerTable.id)
+      ]);
+
+      return query.asyncMap((row) async {
+        final customerDTO = row.readTable(customerTable);
+        final countryDTO = row.readTableOrNull(countryTable);
+        final divisaDTO = row.readTableOrNull(divisaTable);
+        final collectionMethodDTO = row.readTableOrNull(collectionMethodTable);
+        final collectionTermDTO = row.readTableOrNull(collectionTermTable);
+
+        return customerDTO.toDomain(
           fiscalCountry: countryDTO?.toDomain(),
           divisa: divisaDTO?.toDomain(),
           collectionMethod: collectionMethodDTO?.toDomain(),
@@ -626,13 +654,23 @@ class AppDatabase extends _$AppDatabase {
   }
 
   Future<List<SalesOrderLine>> getArticleSalesOrderById(
-      {required String articleId}) async {
+      {required String articleId, required String userId}) async {
     try {
-      final query = (select(salesOrderLineTable)
-        ..where((t) => t.articleId.equals(articleId)));
+      final query = select(salesOrderLineTable).join([
+        innerJoin(
+            salesOrderTable,
+            salesOrderTable.salesOrderId
+                .equalsExp(salesOrderLineTable.salesOrderId)),
+        innerJoin(customerUserTable,
+            customerUserTable.customerId.equalsExp(salesOrderTable.customerId))
+      ]);
 
-      return query.map((row) {
-        return row.toDomain();
+      query.where((salesOrderLineTable.articleId.equals(articleId) &
+          customerUserTable.userId.equals(userId)));
+
+      return query.asyncMap((row) async {
+        final salesOrderLineDTO = row.readTable(salesOrderLineTable);
+        return salesOrderLineDTO.toDomain();
       }).get();
     } catch (e) {
       print(e);
@@ -641,17 +679,25 @@ class AppDatabase extends _$AppDatabase {
   }
 
   Future<List<StatsLastPrice>> getArticleLastPriceById(
-      {required String articleId}) async {
+      {required String articleId, required String userId}) async {
     try {
-      final query = (select(statsLastPriceTable)
-        ..where((t) => t.articleId.equals(articleId))
-        ..orderBy(
-          [(t) => OrderingTerm(expression: t.date)],
-        ));
+      final query = select(statsLastPriceTable).join([
+        innerJoin(
+            customerUserTable,
+            customerUserTable.customerId
+                .equalsExp(statsLastPriceTable.customerId))
+      ]);
+      query.where(statsLastPriceTable.articleId.equals(articleId) &
+          customerUserTable.userId.equals(userId));
+      query.orderBy(
+        [OrderingTerm.desc(statsLastPriceTable.date)],
+      );
 
       return query.asyncMap((row) async {
-        final article = await getArticleById(articleId: row.articleId);
-        return row.toDomain(article: article);
+        final lastPriceArticleDTO = row.readTable(statsLastPriceTable);
+        final article =
+            await getArticleById(articleId: lastPriceArticleDTO.articleId);
+        return lastPriceArticleDTO.toDomain(article: article);
       }).get();
     } catch (e) {
       print(e);
@@ -661,15 +707,23 @@ class AppDatabase extends _$AppDatabase {
 
   /////////////////////////////////////////////////////////////////////////////////////
 
-  Stream<List<Visit>> getVisitList() {
+  Stream<List<Visit>> getVisitList({required String userId}) {
     try {
-      final query = (select(visitTable)
-        ..where((t) => t.deleted.equals('N'))
-        ..orderBy([
-          (t) => OrderingTerm(expression: t.date),
-        ]));
+      final query = select(visitTable).join([
+        innerJoin(customerUserTable,
+            customerUserTable.customerId.equalsExp(customerTable.id))
+      ]);
 
-      return query.map((row) => row.toDomain()).watch();
+      query.where(visitTable.deleted.equals('N') &
+          customerUserTable.customerId.equals(userId));
+      query.orderBy([
+        OrderingTerm.desc(visitTable.date),
+      ]);
+
+      return query.map((row) {
+        final visitDTO = row.readTable(visitTable);
+        return visitDTO.toDomain();
+      }).watch();
     } catch (e) {
       print(e);
       rethrow;

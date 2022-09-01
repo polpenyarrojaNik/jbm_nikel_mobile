@@ -3,6 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order.dart';
 
+import '../../auth/infrastructure/auth_repository.dart';
+import '../domain/sales_order_line.dart';
+
 final salesOrderRepositoryProvider = Provider.autoDispose<SalesOrderRepository>(
   // * Override this in the main method
   (ref) => throw UnimplementedError(),
@@ -11,6 +14,7 @@ final salesOrderRepositoryProvider = Provider.autoDispose<SalesOrderRepository>(
 final salesOrderListStreamProvider =
     StreamProvider.autoDispose<List<SalesOrder>>((ref) {
   final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+
   return salesOrderRepository.watchSalesOrderList();
 });
 
@@ -20,17 +24,31 @@ final salesOrderProvider =
   return salesOrderRepository.getSalesOrderById(salesOrderId: salesOrderId);
 });
 
+final salesOrderLineProvider = FutureProvider.autoDispose
+    .family<List<SalesOrderLine>, String>((ref, salesOrderId) {
+  final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+  return salesOrderRepository.getSalesOrderLineById(salesOrderId: salesOrderId);
+});
+
 class SalesOrderRepository {
   AppDatabase db;
   Dio dio;
+  AuthRepository authRepository;
 
-  SalesOrderRepository(this.db, this.dio);
+  SalesOrderRepository(this.db, this.dio, this.authRepository);
 
-  Stream<List<SalesOrder>> watchSalesOrderList({String? searchText}) {
-    return db.getSalesOrderList(searchText: searchText?.toUpperCase());
+  Stream<List<SalesOrder>> watchSalesOrderList({String? searchText}) async* {
+    final user = await authRepository.getSignedInUser();
+    yield* db.getSalesOrderList(
+        searchText: searchText?.toUpperCase(), userId: user!.id);
   }
 
   Future<SalesOrder> getSalesOrderById({required String salesOrderId}) async {
-    return db.getSalesOrderById(salesOrderId: salesOrderId);
+    return await db.getSalesOrderById(salesOrderId: salesOrderId);
+  }
+
+  Future<List<SalesOrderLine>> getSalesOrderLineById(
+      {required String salesOrderId}) async {
+    return await db.getSalesOrderLineById(salesOrderId: salesOrderId);
   }
 }

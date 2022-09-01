@@ -78,47 +78,64 @@ final articleSpareListProvider = FutureProvider.autoDispose
 });
 
 final articleImageListProvider = FutureProvider.autoDispose
-    .family<List<ArticleImage>, String>((ref, articleId) {
+    .family<List<ArticleImage>, String>((ref, articleId) async {
   final articleRepository = ref.watch(articleRepositoryProvider);
-  return articleRepository.getArticleImagesListById(articleId: articleId);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return articleRepository.getArticleImagesListById(
+      articleId: articleId, provisionalToken: user!.provisionalToken);
 });
 
 final articleDocumentListProvider = FutureProvider.autoDispose
-    .family<List<ArticleDocument>, String>((ref, articleId) {
+    .family<List<ArticleDocument>, String>((ref, articleId) async {
   final articleRepository = ref.watch(articleRepositoryProvider);
-  return articleRepository.getArticleDocumentListById(articleId: articleId);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return articleRepository.getArticleDocumentListById(
+      articleId: articleId, provisionalToken: user!.provisionalToken);
 });
 
 final articleDocumentFileProvider =
-    FutureProvider.autoDispose.family<File?, String>((ref, path) {
+    FutureProvider.autoDispose.family<File?, String>((ref, path) async {
   final articleRepository = ref.watch(articleRepositoryProvider);
-  return articleRepository.getDocumentFile(path: path);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return articleRepository.getDocumentFile(
+      path: path, provisionalToken: user!.provisionalToken);
 });
 
 final articleImageFileProvider =
-    FutureProvider.autoDispose.family<Uint8List?, String>((ref, path) {
+    FutureProvider.autoDispose.family<Uint8List?, String>((ref, path) async {
   final articleRepository = ref.watch(articleRepositoryProvider);
-  return articleRepository.getImageFile(path: path);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return articleRepository.getImageFile(
+      path: path, provisionalToken: user!.provisionalToken);
 });
 
 final articleSalesOrderLineListProvider = FutureProvider.autoDispose
-    .family<List<SalesOrderLine>, String>((ref, articleId) {
+    .family<List<SalesOrderLine>, String>((ref, articleId) async {
   final articleRepository = ref.watch(articleRepositoryProvider);
-  return articleRepository.getArticleSalesOrderById(articleId: articleId);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return articleRepository.getArticleSalesOrderById(
+      articleId: articleId, userId: user!.id);
 });
 
 final articleLastPriceListProvider = FutureProvider.autoDispose
-    .family<List<StatsLastPrice>, String>((ref, articleId) {
+    .family<List<StatsLastPrice>, String>((ref, articleId) async {
   final articleRepository = ref.watch(articleRepositoryProvider);
-  return articleRepository.getArticleLastPriceById(articleId: articleId);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return articleRepository.getArticleLastPriceById(
+      articleId: articleId, userId: user!.id);
 });
 
 class ArticleRepository {
   AppDatabase db;
   Dio dio;
-  AuthRepository authRepository;
 
-  ArticleRepository(this.db, this.dio, this.authRepository);
+  ArticleRepository(this.db, this.dio);
 
   Stream<List<Article>> watchArticleList() {
     return db.getArticleList();
@@ -159,43 +176,48 @@ class ArticleRepository {
   }
 
   Future<List<ArticleImage>> getArticleImagesListById(
-      {required String articleId}) async {
+      {required String articleId, required String provisionalToken}) async {
     final query = {'ARTICULO_ID': articleId};
     final articleImageDTOList = await _remoteGetArticleImages(
-        requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
-          'api/v1/online/articulo/imagenes',
-          query,
-        ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>);
+      requestUri: Uri.http(
+        dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+        'api/v1/online/articulo/imagenes',
+        query,
+      ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: provisionalToken,
+    );
 
     return articleImageDTOList.map((e) => e.toDomain()).toList();
   }
 
   Future<List<ArticleDocument>> getArticleDocumentListById(
-      {required String articleId}) async {
+      {required String articleId, required String provisionalToken}) async {
     final query = {'ARTICULO_ID': articleId};
     final articleDocumentDTOList = await _remoteGetArticleDocuments(
-        requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
-          'api/v1/online/articulo/documentos',
-          query,
-        ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>);
+      requestUri: Uri.http(
+        dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+        'api/v1/online/articulo/documentos',
+        query,
+      ),
+      jsonDataSelector: (json) => json['data'] as List<dynamic>,
+      provisionalToken: provisionalToken,
+    );
 
     return articleDocumentDTOList.map((e) => e.toDomain()).toList();
   }
 
-  Future<Uint8List?> getImageFile({required String path}) async {
+  Future<Uint8List?> getImageFile(
+      {required String path, required String provisionalToken}) async {
     if (path != '') {
       final query = {'PATH': path};
       final dataImage = await _remoteGetAttachment(
-        requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
-          'api/v1/online/adjunto',
-          query,
-        ),
-      );
+          requestUri: Uri.http(
+            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            'api/v1/online/adjunto',
+            query,
+          ),
+          provisionalToken: provisionalToken);
 
       return Uint8List.fromList((dataImage));
     }
@@ -203,16 +225,17 @@ class ArticleRepository {
     return null;
   }
 
-  Future<File?> getDocumentFile({required String path}) async {
+  Future<File?> getDocumentFile(
+      {required String path, required String provisionalToken}) async {
     if (path != '') {
       final query = {'PATH': path};
       final data = await _remoteGetAttachment(
-        requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
-          'api/v1/online/adjunto',
-          query,
-        ),
-      );
+          requestUri: Uri.http(
+            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            'api/v1/online/adjunto',
+            query,
+          ),
+          provisionalToken: provisionalToken);
 
       final Directory cahceDirectories = await getTemporaryDirectory();
 
@@ -228,25 +251,31 @@ class ArticleRepository {
   }
 
   Future<List<SalesOrderLine>> getArticleSalesOrderById(
-      {required String articleId}) async {
-    return await db.getArticleSalesOrderById(articleId: articleId);
+      {required String articleId, required String userId}) async {
+    return await db.getArticleSalesOrderById(
+        articleId: articleId, userId: userId);
   }
 
   Future<List<StatsLastPrice>> getArticleLastPriceById(
-      {required String articleId}) async {
-    return await db.getArticleLastPriceById(articleId: articleId);
+      {required String articleId, required String userId}) async {
+    final lastPricesList =
+        await db.getArticleLastPriceById(articleId: articleId, userId: userId);
+
+    print(lastPricesList[0]);
+
+    return lastPricesList;
   }
 
   Future<List<ArticleImageDTO>> _remoteGetArticleImages({
     required Uri requestUri,
     required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
   }) async {
-    final user = await authRepository.getSignedInUser();
     try {
       final response = await dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+          headers: {'authorization': 'Bearer $provisionalToken'},
         ),
       );
       if (response.statusCode == 200) {
@@ -277,13 +306,13 @@ class ArticleRepository {
   Future<List<ArticleDocumentDTO>> _remoteGetArticleDocuments({
     required Uri requestUri,
     required dynamic Function(dynamic json) jsonDataSelector,
+    required String provisionalToken,
   }) async {
-    final user = await authRepository.getSignedInUser();
     try {
       final response = await dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+          headers: {'authorization': 'Bearer $provisionalToken'},
         ),
       );
       if (response.statusCode == 200) {
@@ -313,13 +342,13 @@ class ArticleRepository {
 
   Future<List<int>> _remoteGetAttachment({
     required Uri requestUri,
+    required String provisionalToken,
   }) async {
-    final user = await authRepository.getSignedInUser();
     try {
       final response = await dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+          headers: {'authorization': 'Bearer $provisionalToken'},
           responseType: ResponseType.bytes,
           receiveDataWhenStatusError: true,
         ),

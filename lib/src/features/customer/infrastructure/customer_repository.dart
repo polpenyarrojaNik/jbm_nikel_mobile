@@ -22,9 +22,11 @@ final customerRepositoryProvider = Provider.autoDispose<CustomerRepository>(
 );
 
 final customerListStreamProvider =
-    StreamProvider.autoDispose<List<Customer>>((ref) {
+    StreamProvider.autoDispose<List<Customer>>((ref) async* {
   final customerRepository = ref.watch(customerRepositoryProvider);
-  return customerRepository.watchCustomerList();
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  yield* customerRepository.watchCustomerList(userId: user!.id);
 });
 
 final customerProvider =
@@ -77,20 +79,22 @@ final customerRappelProvider = FutureProvider.autoDispose
 });
 
 final customerAttachmentProvider = FutureProvider.autoDispose
-    .family<List<CustomerAttachment>, String>((ref, customerId) {
+    .family<List<CustomerAttachment>, String>((ref, customerId) async {
   final customerRepository = ref.watch(customerRepositoryProvider);
-  return customerRepository.getCustomerAttachmentById(customerId: customerId);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final user = await authRepository.getSignedInUser();
+  return customerRepository.getCustomerAttachmentById(
+      customerId: customerId, provisionalToken: user!.provisionalToken);
 });
 
 class CustomerRepository {
   AppDatabase db;
   Dio dio;
-  AuthRepository authRepository;
 
-  CustomerRepository(this.db, this.dio, this.authRepository);
+  CustomerRepository(this.db, this.dio);
 
-  Stream<List<Customer>> watchCustomerList() {
-    return db.getCustomerList();
+  Stream<List<Customer>> watchCustomerList({required String userId}) {
+    return db.getCustomerList(userId: userId);
   }
 
   Future<Customer> getCustomerById({required String customerId}) async {
@@ -133,29 +137,29 @@ class CustomerRepository {
   }
 
   Future<List<CustomerAttachment>> getCustomerAttachmentById(
-      {required String customerId}) async {
+      {required String customerId, required String provisionalToken}) async {
     final query = {'CLIENTE_ID': customerId};
     final customerAttahcmentDTOList = await _remoteGetCustomerAttachment(
         requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+          dotenv.get('URL_HOME', fallback: 'localhost:3001'),
           'api/v1/online/cliente/adjuntos',
           query,
         ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>);
+        jsonDataSelector: (json) => json['data'] as List<dynamic>,
+        provisionalToken: provisionalToken);
 
     return customerAttahcmentDTOList.map((e) => e.toDomain()).toList();
   }
 
-  Future<List<CustomerAttachmentDTO>> _remoteGetCustomerAttachment({
-    required Uri requestUri,
-    required dynamic Function(dynamic json) jsonDataSelector,
-  }) async {
-    final user = await authRepository.getSignedInUser();
+  Future<List<CustomerAttachmentDTO>> _remoteGetCustomerAttachment(
+      {required Uri requestUri,
+      required dynamic Function(dynamic json) jsonDataSelector,
+      required String provisionalToken}) async {
     try {
       final response = await dio.getUri(
         requestUri,
         options: Options(
-          headers: {'authorization': 'Bearer ${user!.provisionalToken}'},
+          headers: {'authorization': 'Bearer $provisionalToken'},
         ),
       );
       if (response.statusCode == 200) {
