@@ -10,16 +10,24 @@ class RowFieldTextDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(fieldTitleValue,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2!
-                .copyWith(color: Theme.of(context).textTheme.caption!.color)),
+        Text(
+          fieldTitleValue,
+          textAlign: TextAlign.end,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(color: Theme.of(context).textTheme.caption!.color),
+        ),
         (value is String)
-            ? Text(
-                value,
+            ? Flexible(
+                child: Text(
+                  value,
+                  style: Theme.of(context).textTheme.bodyText2!,
+                  textAlign: TextAlign.end,
+                ),
               )
             : value,
       ],

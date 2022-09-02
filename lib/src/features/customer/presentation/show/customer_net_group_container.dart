@@ -20,13 +20,14 @@ class CustomerNetGroupContainer extends ConsumerWidget {
       child: state.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (customerNetGroupList) => ListView.separated(
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => CustomerNetGroupTile(
-            customerNetGroup: customerNetGroupList[i],
-          ),
-          itemCount: customerNetGroupList.length,
-        ),
+        data: (customerNetGroupList) => (customerNetGroupList.isEmpty)
+            ? const Center(child: Text('No Results'))
+            : ListView.builder(
+                itemBuilder: (context, i) => CustomerNetGroupTile(
+                  customerNetGroup: customerNetGroupList[i],
+                ),
+                itemCount: customerNetGroupList.length,
+              ),
       ),
     );
   }
@@ -40,25 +41,47 @@ class CustomerNetGroupTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            children: [
-              const Text('Grupo Neto Id'),
-              Text(customerNetGroup.netGroupId),
-            ],
-          ),
-          const SizedBox(width: 5),
-          Column(
-            children: [
-              const Text('Description'),
-              Text(customerNetGroup.netGroupDescription ?? ''),
-            ],
-          ),
-        ],
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4), // if you need this
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.2),
+          width: 1,
+        ),
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            Container(
+              width: 100,
+              color: Theme.of(context).colorScheme.surface,
+              padding: const EdgeInsets.all(4.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(customerNetGroup.netGroupId),
+                ],
+              ),
+            ),
+            Flexible(
+              child: Container(
+                height: 60,
+                padding: const EdgeInsets.all(6.5),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      customerNetGroup.netGroupDescription ?? '',
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

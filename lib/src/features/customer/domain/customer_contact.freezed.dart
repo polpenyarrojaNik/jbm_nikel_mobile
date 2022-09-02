@@ -20,8 +20,6 @@ mixin _$CustomerContact {
   String get contactId => throw _privateConstructorUsedError;
   String? get remarks => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get lastName1 => throw _privateConstructorUsedError;
-  String? get lastName2 => throw _privateConstructorUsedError;
   String? get phone1 => throw _privateConstructorUsedError;
   String? get phone2 => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -43,8 +41,6 @@ abstract class $CustomerContactCopyWith<$Res> {
       String contactId,
       String? remarks,
       String? name,
-      String? lastName1,
-      String? lastName2,
       String? phone1,
       String? phone2,
       String? email,
@@ -67,8 +63,6 @@ class _$CustomerContactCopyWithImpl<$Res>
     Object? contactId = freezed,
     Object? remarks = freezed,
     Object? name = freezed,
-    Object? lastName1 = freezed,
-    Object? lastName2 = freezed,
     Object? phone1 = freezed,
     Object? phone2 = freezed,
     Object? email = freezed,
@@ -91,14 +85,6 @@ class _$CustomerContactCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName1: lastName1 == freezed
-          ? _value.lastName1
-          : lastName1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName2: lastName2 == freezed
-          ? _value.lastName2
-          : lastName2 // ignore: cast_nullable_to_non_nullable
               as String?,
       phone1: phone1 == freezed
           ? _value.phone1
@@ -136,8 +122,6 @@ abstract class _$$_CustomerContactCopyWith<$Res>
       String contactId,
       String? remarks,
       String? name,
-      String? lastName1,
-      String? lastName2,
       String? phone1,
       String? phone2,
       String? email,
@@ -162,8 +146,6 @@ class __$$_CustomerContactCopyWithImpl<$Res>
     Object? contactId = freezed,
     Object? remarks = freezed,
     Object? name = freezed,
-    Object? lastName1 = freezed,
-    Object? lastName2 = freezed,
     Object? phone1 = freezed,
     Object? phone2 = freezed,
     Object? email = freezed,
@@ -186,14 +168,6 @@ class __$$_CustomerContactCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName1: lastName1 == freezed
-          ? _value.lastName1
-          : lastName1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName2: lastName2 == freezed
-          ? _value.lastName2
-          : lastName2 // ignore: cast_nullable_to_non_nullable
               as String?,
       phone1: phone1 == freezed
           ? _value.phone1
@@ -227,8 +201,6 @@ class _$_CustomerContact extends _CustomerContact {
       required this.contactId,
       this.remarks,
       this.name,
-      this.lastName1,
-      this.lastName2,
       this.phone1,
       this.phone2,
       this.email,
@@ -245,10 +217,6 @@ class _$_CustomerContact extends _CustomerContact {
   @override
   final String? name;
   @override
-  final String? lastName1;
-  @override
-  final String? lastName2;
-  @override
   final String? phone1;
   @override
   final String? phone2;
@@ -261,7 +229,7 @@ class _$_CustomerContact extends _CustomerContact {
 
   @override
   String toString() {
-    return 'CustomerContact(customerId: $customerId, contactId: $contactId, remarks: $remarks, name: $name, lastName1: $lastName1, lastName2: $lastName2, phone1: $phone1, phone2: $phone2, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'CustomerContact(customerId: $customerId, contactId: $contactId, remarks: $remarks, name: $name, phone1: $phone1, phone2: $phone2, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -274,8 +242,6 @@ class _$_CustomerContact extends _CustomerContact {
             const DeepCollectionEquality().equals(other.contactId, contactId) &&
             const DeepCollectionEquality().equals(other.remarks, remarks) &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.lastName1, lastName1) &&
-            const DeepCollectionEquality().equals(other.lastName2, lastName2) &&
             const DeepCollectionEquality().equals(other.phone1, phone1) &&
             const DeepCollectionEquality().equals(other.phone2, phone2) &&
             const DeepCollectionEquality().equals(other.email, email) &&
@@ -291,8 +257,6 @@ class _$_CustomerContact extends _CustomerContact {
       const DeepCollectionEquality().hash(contactId),
       const DeepCollectionEquality().hash(remarks),
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(lastName1),
-      const DeepCollectionEquality().hash(lastName2),
       const DeepCollectionEquality().hash(phone1),
       const DeepCollectionEquality().hash(phone2),
       const DeepCollectionEquality().hash(email),
@@ -311,8 +275,6 @@ abstract class _CustomerContact extends CustomerContact {
       required final String contactId,
       final String? remarks,
       final String? name,
-      final String? lastName1,
-      final String? lastName2,
       final String? phone1,
       final String? phone2,
       final String? email,
@@ -328,10 +290,6 @@ abstract class _CustomerContact extends CustomerContact {
   String? get remarks;
   @override
   String? get name;
-  @override
-  String? get lastName1;
-  @override
-  String? get lastName2;
   @override
   String? get phone1;
   @override

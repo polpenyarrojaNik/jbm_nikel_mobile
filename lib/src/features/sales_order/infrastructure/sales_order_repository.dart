@@ -18,6 +18,17 @@ final salesOrderListStreamProvider =
   return salesOrderRepository.watchSalesOrderList();
 });
 
+final salesOrderLastSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
+  final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+  return salesOrderRepository.getLastSyncSalesOrder();
+});
+
+final salesOrderLineLastSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
+  return salesOrderRepository.getLastSyncSalesOrderLine();
+});
+
 final salesOrderProvider =
     FutureProvider.autoDispose.family<SalesOrder, String>((ref, salesOrderId) {
   final salesOrderRepository = ref.watch(salesOrderRepositoryProvider);
@@ -50,5 +61,15 @@ class SalesOrderRepository {
   Future<List<SalesOrderLine>> getSalesOrderLineById(
       {required String salesOrderId}) async {
     return await db.getSalesOrderLineById(salesOrderId: salesOrderId);
+  }
+
+  Future<DateTime> getLastSyncSalesOrder() async {
+    final date = await db.getLastSyncSalesOrderDate();
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getLastSyncSalesOrderLine() async {
+    final date = await db.getLastSyncSalesOrderLineDate();
+    return DateTime.parse(date!);
   }
 }

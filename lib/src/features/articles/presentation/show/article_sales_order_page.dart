@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articles/infrastructure/article_re
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../sales_order/domain/sales_order_line.dart';
 
@@ -16,18 +17,30 @@ class ArticleSalesOrderPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articleSalesOrderLineListProvider(articleId));
+    final stateLastSync = ref.watch(articleSalesOrderLastSyncProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('Pedidos')),
-      body: state.when(
-          data: (salesOrderListLine) => (salesOrderListLine.isEmpty)
-              ? const Center(child: Text('No Results'))
-              : ListView.builder(
-                  itemBuilder: (context, i) =>
-                      SalesOrderLineTile(salesOrderLine: salesOrderListLine[i]),
-                  itemCount: salesOrderListLine.length,
-                ),
-          error: (e, _) => ErrorMessageWidget(e.toString()),
-          loading: () => const ProgressIndicatorWidget()),
+      body: Column(
+        children: [
+          stateLastSync.when(
+              data: (lastSyncDate) =>
+                  LastSyncDateWidget(lastSyncDate: lastSyncDate),
+              error: (e, _) => ErrorMessageWidget(e.toString()),
+              loading: () => const ProgressIndicatorWidget()),
+          Expanded(
+            child: state.when(
+                data: (salesOrderListLine) => (salesOrderListLine.isEmpty)
+                    ? const Center(child: Text('No Results'))
+                    : ListView.builder(
+                        itemBuilder: (context, i) => SalesOrderLineTile(
+                            salesOrderLine: salesOrderListLine[i]),
+                        itemCount: salesOrderListLine.length,
+                      ),
+                error: (e, _) => ErrorMessageWidget(e.toString()),
+                loading: () => const ProgressIndicatorWidget()),
+          ),
+        ],
+      ),
     );
   }
 }

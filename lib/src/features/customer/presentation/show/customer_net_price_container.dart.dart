@@ -20,13 +20,15 @@ class CustomerNetPriceContainer extends ConsumerWidget {
       child: state.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (customerNetPriceList) => ListView.separated(
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => CustomerNetPriceTile(
-            customerNetPrice: customerNetPriceList[i],
-          ),
-          itemCount: customerNetPriceList.length,
-        ),
+        data: (customerNetPriceList) => (customerNetPriceList.isEmpty)
+            ? const Center(child: Text('No Results'))
+            : ListView.separated(
+                separatorBuilder: (context, _) => const Divider(),
+                itemBuilder: (context, i) => CustomerNetPriceTile(
+                  customerNetPrice: customerNetPriceList[i],
+                ),
+                itemCount: customerNetPriceList.length,
+              ),
       ),
     );
   }
@@ -40,49 +42,43 @@ class CustomerNetPriceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const Text('Artículo'),
-                  Text(customerNetPrice.articleId),
-                ],
-              ),
-              const SizedBox(width: 5),
-              Column(
-                children: [
-                  const Text('Price Type'),
-                  Text(customerNetPrice.priceType.toString()),
-                ],
-              ),
-            ],
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4), // if you need this
+        side: BorderSide(
+          color: Colors.grey.withOpacity(0.2),
+          width: 1,
+        ),
+      ),
+      child: IntrinsicHeight(
+        child: Flexible(
+          child: Container(
+            height: 50,
+            padding: const EdgeInsets.all(6.5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(customerNetPrice.articleId,
+                        style: Theme.of(context).textTheme.subtitle2),
+                    Text(
+                        'Des de ${customerNetPrice.quantityFrom.toString()} unidad/es',
+                        style: Theme.of(context).textTheme.subtitle2),
+                  ],
+                ),
+                const Spacer(),
+                Text(
+                  'Precio: ${customerNetPrice.price.toString()}x${customerNetPrice.priceType?.toString() ?? '1'}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ],
+            ),
           ),
-          const SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  const Text('Price'),
-                  Text(customerNetPrice.price.toString()),
-                ],
-              ),
-              const SizedBox(width: 5),
-              Column(
-                children: [
-                  const Text('Cantidad des de'),
-                  Text(customerNetPrice.quantityFrom.toString()),
-                ],
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }

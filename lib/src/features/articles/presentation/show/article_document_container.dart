@@ -73,7 +73,7 @@ class ArticleDocumentTile extends ConsumerWidget {
                   color: Theme.of(context).textTheme.caption!.color,
                 ),
                 const SizedBox(width: 8),
-                Text(getFileName(file.path)),
+                Flexible(child: Text(getFileName(file.path))),
               ],
             ),
             error: (e, _) => ErrorMessageWidget(e.toString()),

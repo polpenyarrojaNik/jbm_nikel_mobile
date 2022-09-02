@@ -6,6 +6,7 @@ import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/index/sal
 
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class SalesOrderListPage extends ConsumerWidget {
@@ -17,6 +18,8 @@ class SalesOrderListPage extends ConsumerWidget {
 
     final state = ref.watch(salesOrderListStreamProvider);
 
+    final stateLastSync = ref.watch(salesOrderLastSyncProvider);
+
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
@@ -26,19 +29,30 @@ class SalesOrderListPage extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: state.when(
-          loading: () => const ProgressIndicatorWidget(),
-          error: (e, _) => ErrorMessageWidget(e.toString()),
-          data: (salesOrderList) => (salesOrderList.isEmpty)
-              ? Container()
-              : ListView.builder(
-                  shrinkWrap: true,
-                  controller: scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: salesOrderList.length,
-                  itemBuilder: (context, i) =>
-                      SalesOrderListTile(salesOrder: salesOrderList[i]),
-                ),
+        child: Column(
+          children: [
+            stateLastSync.when(
+              data: (lastSyncDate) =>
+                  LastSyncDateWidget(lastSyncDate: lastSyncDate),
+              error: (e, _) => ErrorMessageWidget(e.toString()),
+              loading: () => const ProgressIndicatorWidget(),
+            ),
+            Expanded(
+              child: state.when(
+                loading: () => const ProgressIndicatorWidget(),
+                error: (e, _) => ErrorMessageWidget(e.toString()),
+                data: (salesOrderList) => (salesOrderList.isEmpty)
+                    ? Container()
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        controller: scrollController,
+                        itemCount: salesOrderList.length,
+                        itemBuilder: (context, i) =>
+                            SalesOrderListTile(salesOrder: salesOrderList[i]),
+                      ),
+              ),
+            ),
+          ],
         ),
       ),
     );

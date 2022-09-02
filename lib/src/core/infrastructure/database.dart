@@ -12,7 +12,6 @@ import 'package:jbm_nikel_mobile/src/features/articles/domain/article_substitute
 import 'package:jbm_nikel_mobile/src/features/customer/domain/customer_pending_payment.dart';
 import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_net_group_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order_line.dart';
-import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_customer_user_sales.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/domain/stats_last_price.dart';
 import 'package:jbm_nikel_mobile/src/features/stats/infrastructure/stats_customer_user_sales_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/visits/domain/visit.dart';
@@ -34,7 +33,6 @@ import '../../features/customer/domain/customer_discount.dart';
 import '../../features/customer/domain/customer_net_group.dart';
 import '../../features/customer/domain/customer_net_price.dart';
 import '../../features/customer/domain/customer_rappel.dart';
-import '../../features/customer/domain/customer_sales_month.dart';
 import '../../features/customer/domain/top_article.dart';
 import '../../features/customer/infrastructure/collection_method_dto.dart';
 import '../../features/customer/infrastructure/collection_term_dto.dart';

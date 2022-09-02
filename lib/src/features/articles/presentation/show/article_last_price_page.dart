@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articles/infrastructure/article_re
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../stats/domain/stats_last_price.dart';
 
@@ -16,20 +17,32 @@ class ArticleLastPricePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articleLastPriceListProvider(articleId));
+    final stateLastSync = ref.watch(articleLastPricesLastSyncProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Last prices'),
       ),
-      body: state.when(
-          data: (lastPriceList) => (lastPriceList.isEmpty)
-              ? const Center(child: Text('No Results'))
-              : ListView.builder(
-                  itemBuilder: (context, i) =>
-                      LastPriceTile(lastPrice: lastPriceList[i]),
-                  itemCount: lastPriceList.length,
-                ),
-          error: (e, _) => ErrorMessageWidget(e.toString()),
-          loading: () => const ProgressIndicatorWidget()),
+      body: Column(
+        children: [
+          stateLastSync.when(
+              data: (lastSyncDate) =>
+                  LastSyncDateWidget(lastSyncDate: lastSyncDate),
+              error: (e, _) => ErrorMessageWidget(e.toString()),
+              loading: () => const ProgressIndicatorWidget()),
+          Expanded(
+            child: state.when(
+                data: (lastPriceList) => (lastPriceList.isEmpty)
+                    ? const Center(child: Text('No Results'))
+                    : ListView.builder(
+                        itemBuilder: (context, i) =>
+                            LastPriceTile(lastPrice: lastPriceList[i]),
+                        itemCount: lastPriceList.length,
+                      ),
+                error: (e, _) => ErrorMessageWidget(e.toString()),
+                loading: () => const ProgressIndicatorWidget()),
+          ),
+        ],
+      ),
     );
   }
 }

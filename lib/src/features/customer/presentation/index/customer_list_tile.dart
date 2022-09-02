@@ -44,7 +44,7 @@ class CustomerListTile extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      '#${customer.id} ${customer.customerName ?? ''}',
+                      '#${customer.id} ${customer.fiscalName ?? ''}',
                     ),
                   ),
                 ],

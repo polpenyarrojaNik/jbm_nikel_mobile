@@ -53,13 +53,13 @@ class ArticleSpareDTO
 @UseRowClass(ArticleSpareDTO)
 class ArticleSpareTable extends Table {
   @override
-  String get tableName => 'ARTICULOS_COMPONENTES';
+  String get tableName => 'ARTICULOS_RECAMBIOS';
 
   @override
   Set<Column> get primaryKey => {articleId, id};
 
   TextColumn get articleId => text().named('ARTICULO_ID')();
-  TextColumn get id => text().named('ARTICULO_COMPONENTE_ID')();
+  TextColumn get id => text().named('RECAMBIO_ID')();
   TextColumn get description => text().named('DESCRIPCION')();
   RealColumn get quantity => real().named('CANTIDAD')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();

@@ -87,6 +87,23 @@ final customerAttachmentProvider = FutureProvider.autoDispose
       customerId: customerId, provisionalToken: user!.provisionalToken);
 });
 
+final customerLastSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
+  final customerRepository = ref.watch(customerRepositoryProvider);
+  return customerRepository.getLastSyncCustomer();
+});
+
+final customerPendingPaymentsLastSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final customerRepository = ref.watch(customerRepositoryProvider);
+  return customerRepository.getLastSyncCustomerPendingPayments();
+});
+
+final customerTopArticleLastSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final customerRepository = ref.watch(customerRepositoryProvider);
+  return customerRepository.getLastSyncTopArticles();
+});
+
 class CustomerRepository {
   AppDatabase db;
   Dio dio;
@@ -141,7 +158,7 @@ class CustomerRepository {
     final query = {'CLIENTE_ID': customerId};
     final customerAttahcmentDTOList = await _remoteGetCustomerAttachment(
         requestUri: Uri.http(
-          dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
           'api/v1/online/cliente/adjuntos',
           query,
         ),
@@ -149,6 +166,21 @@ class CustomerRepository {
         provisionalToken: provisionalToken);
 
     return customerAttahcmentDTOList.map((e) => e.toDomain()).toList();
+  }
+
+  Future<DateTime> getLastSyncCustomer() async {
+    final date = await db.getLastSyncCustomerDate();
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getLastSyncCustomerPendingPayments() async {
+    final date = await db.getLastSyncCustomerPendingPaymentDate();
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getLastSyncTopArticles() async {
+    final date = await db.getLastSyncTopArticlesDate();
+    return DateTime.parse(date!);
   }
 
   Future<List<CustomerAttachmentDTO>> _remoteGetCustomerAttachment(

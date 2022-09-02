@@ -10,8 +10,6 @@ class CustomerContact with _$CustomerContact {
       required String contactId,
       String? remarks,
       String? name,
-      String? lastName1,
-      String? lastName2,
       String? phone1,
       String? phone2,
       String? email,

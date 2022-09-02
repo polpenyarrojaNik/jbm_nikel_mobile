@@ -12479,7 +12479,7 @@ class ArticleSpareTableCompanion extends UpdateCompanion<ArticleSpareDTO> {
   }) {
     return RawValuesInsertable({
       if (articleId != null) 'ARTICULO_ID': articleId,
-      if (id != null) 'ARTICULO_COMPONENTE_ID': id,
+      if (id != null) 'RECAMBIO_ID': id,
       if (description != null) 'DESCRIPCION': description,
       if (quantity != null) 'CANTIDAD': quantity,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
@@ -12511,7 +12511,7 @@ class ArticleSpareTableCompanion extends UpdateCompanion<ArticleSpareDTO> {
       map['ARTICULO_ID'] = Variable<String>(articleId.value);
     }
     if (id.present) {
-      map['ARTICULO_COMPONENTE_ID'] = Variable<String>(id.value);
+      map['RECAMBIO_ID'] = Variable<String>(id.value);
     }
     if (description.present) {
       map['DESCRIPCION'] = Variable<String>(description.value);
@@ -12556,7 +12556,7 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'ARTICULO_COMPONENTE_ID', aliasedName, false,
+      'RECAMBIO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _descriptionMeta =
       const VerificationMeta('description');
@@ -12586,9 +12586,9 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   List<GeneratedColumn> get $columns =>
       [articleId, id, description, quantity, lastUpdated, deleted];
   @override
-  String get aliasedName => _alias ?? 'ARTICULOS_COMPONENTES';
+  String get aliasedName => _alias ?? 'ARTICULOS_RECAMBIOS';
   @override
-  String get actualTableName => 'ARTICULOS_COMPONENTES';
+  String get actualTableName => 'ARTICULOS_RECAMBIOS';
   @override
   VerificationContext validateIntegrity(Insertable<ArticleSpareDTO> instance,
       {bool isInserting = false}) {
@@ -12602,9 +12602,9 @@ class $ArticleSpareTableTable extends ArticleSpareTable
     } else if (isInserting) {
       context.missing(_articleIdMeta);
     }
-    if (data.containsKey('ARTICULO_COMPONENTE_ID')) {
-      context.handle(_idMeta,
-          id.isAcceptableOrUnknown(data['ARTICULO_COMPONENTE_ID']!, _idMeta));
+    if (data.containsKey('RECAMBIO_ID')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['RECAMBIO_ID']!, _idMeta));
     } else if (isInserting) {
       context.missing(_idMeta);
     }
@@ -12645,8 +12645,8 @@ class $ArticleSpareTableTable extends ArticleSpareTable
     return ArticleSpareDTO(
       articleId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      id: attachedDatabase.options.types.read(DriftSqlType.string,
-          data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RECAMBIO_ID'])!,
       description: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
       quantity: attachedDatabase.options.types

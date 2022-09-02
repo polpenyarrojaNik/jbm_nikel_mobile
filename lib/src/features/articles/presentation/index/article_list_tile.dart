@@ -38,6 +38,16 @@ class ArticleListTile extends StatelessWidget {
               children: [
                 Text(
                   article.id,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                Text(
+                  article.description,
+                ),
+                Text(
+                  (article.subfamily != null)
+                      ? '${article.family?.description}/${article.subfamily?.description}'
+                      : '${article.family?.description}',
+                  style: Theme.of(context).textTheme.caption,
                 ),
               ],
             ),
@@ -50,7 +60,7 @@ class ArticleListTile extends StatelessWidget {
     final params = {'articleId': article.id};
 
     if (customerId != null) {
-      params.addAll({'id': customerId});
+      params.addAll({'customerId': customerId});
     }
     context.goNamed(appRoute.name, params: params);
   }

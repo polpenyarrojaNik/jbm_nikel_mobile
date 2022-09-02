@@ -1572,7 +1572,7 @@ class SyncRepository {
     try {
       final response = await dio.getUri(
         Uri.http(
-          dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
           path,
           query,
         ),
@@ -1621,7 +1621,7 @@ class SyncRepository {
     try {
       final response = await dio.getUri(
           Uri.http(
-            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
             '/api/v1/sync/db-datetime',
           ),
           options: Options(
@@ -1657,7 +1657,11 @@ class SyncRepository {
       required String dbSysdateStr,
       required String? lastSyncDate,
       required int? totalRows}) {
-    final query = {'page': '$page', 'pageSize': '100', 'sysdate': dbSysdateStr};
+    final query = {
+      'page': '$page',
+      'pageSize': '7000',
+      'sysdate': dbSysdateStr
+    };
 
     if (lastSyncDate != null) {
       query.addAll({'lastSyncDate': lastSyncDate});

@@ -131,6 +131,23 @@ final articleLastPriceListProvider = FutureProvider.autoDispose
       articleId: articleId, userId: user!.id);
 });
 
+final articleLastSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
+  final articleRepository = ref.watch(articleRepositoryProvider);
+  return articleRepository.getLastSyncArticle();
+});
+
+final articleSalesOrderLastSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final articleRepository = ref.watch(articleRepositoryProvider);
+  return articleRepository.getLastSyncArticleSalesOrder();
+});
+
+final articleLastPricesLastSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final articleRepository = ref.watch(articleRepositoryProvider);
+  return articleRepository.getLastSyncArticleLastPrices();
+});
+
 class ArticleRepository {
   AppDatabase db;
   Dio dio;
@@ -180,7 +197,7 @@ class ArticleRepository {
     final query = {'ARTICULO_ID': articleId};
     final articleImageDTOList = await _remoteGetArticleImages(
       requestUri: Uri.http(
-        dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+        dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
         'api/v1/online/articulo/imagenes',
         query,
       ),
@@ -196,7 +213,7 @@ class ArticleRepository {
     final query = {'ARTICULO_ID': articleId};
     final articleDocumentDTOList = await _remoteGetArticleDocuments(
       requestUri: Uri.http(
-        dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+        dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
         'api/v1/online/articulo/documentos',
         query,
       ),
@@ -213,7 +230,7 @@ class ArticleRepository {
       final query = {'PATH': path};
       final dataImage = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
             'api/v1/online/adjunto',
             query,
           ),
@@ -231,7 +248,7 @@ class ArticleRepository {
       final query = {'PATH': path};
       final data = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
             'api/v1/online/adjunto',
             query,
           ),
@@ -264,6 +281,21 @@ class ArticleRepository {
     print(lastPricesList[0]);
 
     return lastPricesList;
+  }
+
+  Future<DateTime> getLastSyncArticle() async {
+    final date = await db.getLastSyncArticleDate();
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getLastSyncArticleSalesOrder() async {
+    final date = await db.getLastSyncSalesOrderLineDate();
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getLastSyncArticleLastPrices() async {
+    final date = await db.getLastSyncStatsLastPriceDate();
+    return DateTime.parse(date!);
   }
 
   Future<List<ArticleImageDTO>> _remoteGetArticleImages({

@@ -3,11 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/country.dart';
 
-String dateFormatter(String dateStr) {
+String dateFormatter(String dateStr, {bool allDay = false}) {
   DateFormat formatter;
   DateTime date;
 
-  formatter = DateFormat.yMd(Intl.getCurrentLocale());
+  formatter = DateFormat(
+      (!allDay) ? 'dd/MM/yyyy' : 'dd/MM/yyyy HH:mm', Intl.getCurrentLocale());
 
   date = DateTime.parse(dateStr);
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/domain/sales_order.dart';
 import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_repository.dart';
@@ -10,6 +9,7 @@ import 'package:jbm_nikel_mobile/src/features/sales_order/presentation/show/sale
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/routing/app_router.dart';
@@ -40,15 +40,27 @@ class SalesOrderDetailPage extends StatelessWidget {
       body: Consumer(
         builder: (context, ref, _) {
           final salesOrderValue = ref.watch(salesOrderProvider(salesOrderId));
+          final stateLastSync = ref.watch(salesOrderLastSyncProvider);
+
           return AsyncValueWidget<SalesOrder>(
             value: salesOrderValue,
             data: (salesOrder) => SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: stateLastSync.when(
+                        data: (lastSyncDate) =>
+                            LastSyncDateWidget(lastSyncDate: lastSyncDate),
+                        error: (e, _) => ErrorMessageWidget(e.toString()),
+                        loading: () => const ProgressIndicatorWidget()),
+                  ),
                   CustomerInfoContainer(salesOrder: salesOrder),
                   const SizedBox(height: 5.0),
                   SalesOrderInfoContainer(salesOrder: salesOrder),
+                  const SizedBox(height: 5.0),
+                  SalesOrderLineContainer(salesOrderId: salesOrder.salesOrderId)
                 ],
               ),
             ),
@@ -96,6 +108,7 @@ class CustomerInfoContainer extends StatelessWidget {
                     Flexible(
                       child: Text(
                         salesOrder.customerName!,
+                        style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ),
                   ],
@@ -215,8 +228,6 @@ class SalesOrderInfoContainer extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 5.0),
-        SalesOrderLineContainer(salesOrderId: salesOrder.salesOrderId)
       ],
     );
   }
@@ -240,12 +251,14 @@ class SalesOrderLineContainer extends ConsumerWidget {
           child: state.when(
             data: (salesOrderLineList) => (salesOrderLineList.isEmpty)
                 ? const Center(child: Text('No results'))
-                : ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, i) => SalesOrderLineTile(
-                        salesOrderLine: salesOrderLineList[i]),
-                    itemCount: salesOrderLineList.length,
+                : Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, i) => SalesOrderLineTile(
+                          salesOrderLine: salesOrderLineList[i]),
+                      itemCount: salesOrderLineList.length,
+                    ),
                   ),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             loading: () => const ProgressIndicatorWidget(),

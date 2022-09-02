@@ -35,9 +35,7 @@ class CustomerContactDTO
       customerId: customerId,
       contactId: contactId,
       remarks: remarks,
-      name: name,
-      lastName1: lastName1,
-      lastName2: lastName2,
+      name: getName(name, lastName1, lastName2),
       phone1: phone1,
       phone2: phone2,
       email: email,
@@ -61,6 +59,17 @@ class CustomerContactDTO
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
+  }
+
+  String? getName(String? name, String? lastName1, String? lastName2) {
+    if (name != null && lastName1 != null && lastName2 != null) {
+      return '$name $lastName1 $lastName2';
+    } else if (name != null && lastName1 != null) {
+      return '$name $lastName1';
+    } else if (name != null) {
+      return name;
+    }
+    return null;
   }
 }
 
