@@ -23,6 +23,7 @@ class CustomerNetGroupContainer extends ConsumerWidget {
         data: (customerNetGroupList) => (customerNetGroupList.isEmpty)
             ? const Center(child: Text('No Results'))
             : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) => CustomerNetGroupTile(
                   customerNetGroup: customerNetGroupList[i],
                 ),

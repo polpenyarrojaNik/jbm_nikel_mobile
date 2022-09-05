@@ -24,6 +24,7 @@ class CustomerRappelContainer extends ConsumerWidget {
         data: (customerRappelList) => (customerRappelList.isEmpty)
             ? const Center(child: Text('No Results'))
             : ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, _) => const Divider(),
                 itemBuilder: (context, i) => CustomerRappelTile(
                   customerRappel: customerRappelList[i],

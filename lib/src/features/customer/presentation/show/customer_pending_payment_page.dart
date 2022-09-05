@@ -35,6 +35,7 @@ class CustomerPendingPaymentPage extends ConsumerWidget {
                   data: (_) => (_.isEmpty)
                       ? const Center(child: Text('No Results'))
                       : ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, i) =>
                               CustomerPendingPaymentTile(
                                   customerPendingPayment: _[i]),

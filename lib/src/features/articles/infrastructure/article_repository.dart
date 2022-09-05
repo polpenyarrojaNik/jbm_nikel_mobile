@@ -197,7 +197,7 @@ class ArticleRepository {
     final query = {'ARTICULO_ID': articleId};
     final articleImageDTOList = await _remoteGetArticleImages(
       requestUri: Uri.http(
-        dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+        dotenv.get('URL_HOME', fallback: 'localhost:3001'),
         'api/v1/online/articulo/imagenes',
         query,
       ),
@@ -213,7 +213,7 @@ class ArticleRepository {
     final query = {'ARTICULO_ID': articleId};
     final articleDocumentDTOList = await _remoteGetArticleDocuments(
       requestUri: Uri.http(
-        dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+        dotenv.get('URL_HOME', fallback: 'localhost:3001'),
         'api/v1/online/articulo/documentos',
         query,
       ),
@@ -230,7 +230,7 @@ class ArticleRepository {
       final query = {'PATH': path};
       final dataImage = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
             'api/v1/online/adjunto',
             query,
           ),
@@ -248,7 +248,7 @@ class ArticleRepository {
       final query = {'PATH': path};
       final data = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
             'api/v1/online/adjunto',
             query,
           ),

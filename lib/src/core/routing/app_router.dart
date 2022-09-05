@@ -57,9 +57,10 @@ enum AppRoute {
 }
 
 final goRouterProvider = Provider((ref) {
+  final authState = ref.watch(authControllerProvider);
   return GoRouter(
     debugLogDiagnostics: false,
-    redirect: (state) => redirectLogic(state, ref),
+    redirect: (state) => redirectLogic(state, ref, authState),
     routes: [
       GoRoute(
         path: '/',
@@ -302,16 +303,14 @@ final goRouterProvider = Provider((ref) {
   );
 });
 
-String? redirectLogic(GoRouterState state, ProviderRef<GoRouter> ref) {
+String? redirectLogic(
+    GoRouterState state, ProviderRef<GoRouter> ref, AuthState authState) {
   final initalDbState = ref.watch(setInitialDbProvider);
-  final authControllerState = ref.watch(authControllerProvider);
 
   return initalDbState.maybeWhen(
-      orElse: () => authControllerState.maybeWhen(
+      orElse: () => authState.maybeWhen(
           orElse: () => null,
           authenticating: () => (state.location != '/login') ? '/login' : null,
-          checkingStatus: () =>
-              (state.location != '/loading') ? '/loading' : null,
           failure: (e) => (state.location != '/login') ? '/login' : null,
           unauthenticated: () =>
               (state.location != '/login') ? '/login' : null),

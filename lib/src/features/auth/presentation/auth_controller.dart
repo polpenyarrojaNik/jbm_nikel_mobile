@@ -14,7 +14,6 @@ class AuthState with _$AuthState {
   const AuthState._();
   const factory AuthState.unauthenticated() = _Unauthenticated;
   const factory AuthState.authenticating() = _Authenticating;
-  const factory AuthState.checkingStatus() = _CheckingStatus;
   const factory AuthState.authenticated() = _Authenticated;
   const factory AuthState.failure(String e) = _Failure;
 }
@@ -23,7 +22,7 @@ class AuthController extends StateNotifier<AuthState> {
   final AuthRepository _authRepository;
 
   AuthController(this._authRepository)
-      : super(const AuthState.checkingStatus()) {
+      : super(const AuthState.authenticating()) {
     checkAndUpdateAuthStatus();
   }
 
@@ -55,7 +54,7 @@ class AuthController extends StateNotifier<AuthState> {
   }
 
   Future<void> checkAndUpdateAuthStatus() async {
-    state = const AuthState.checkingStatus();
+    state = const AuthState.authenticating();
     state = (await _authRepository.isSignIn())
         ? const AuthState.authenticated()
         : const AuthState.unauthenticated();

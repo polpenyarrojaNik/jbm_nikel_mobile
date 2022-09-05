@@ -176,169 +176,176 @@ class CustomerGeneralData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const MobileCustomSeparators(separatorTitle: 'Datos Generales'),
-      Padding(
-        padding: const EdgeInsets.all(8),
-        child: Card(
-          clipBehavior: Clip.hardEdge,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4), // if you need this
-            side: BorderSide(
-              color: Colors.grey.withOpacity(0.2),
-              width: 1,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const MobileCustomSeparators(separatorTitle: 'Datos Generales'),
+        const SizedBox(height: 5),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4), // if you need this
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                (customer.fiscalName != null &&
-                        customer.fiscalName!.length > 35)
-                    ? ColumnFieldTextDetail(
-                        fieldTitleValue: 'Nombre fiscal',
-                        value: customer.fiscalName)
-                    : RowFieldTextDetail(
-                        fieldTitleValue: 'Nombre fiscal',
-                        value: customer.fiscalName),
-                const SizedBox(height: 2),
-                (customer.fiscalAddress1 != null &&
-                        customer.fiscalAddress1!.length > 35)
-                    ? ColumnFieldTextDetail(
-                        fieldTitleValue: 'Dirección',
-                        value: customer.fiscalAddress1 ?? '')
-                    : RowFieldTextDetail(
-                        fieldTitleValue: 'Dirección',
-                        value: customer.fiscalAddress1 ?? ''),
-                const SizedBox(height: 2),
-                (customer.fiscalAddress2 != null &&
-                        customer.fiscalAddress2!.length > 35)
-                    ? ColumnFieldTextDetail(
-                        fieldTitleValue: 'Dirección2',
-                        value: customer.fiscalAddress2 ?? '')
-                    : RowFieldTextDetail(
-                        fieldTitleValue: 'Dirección2',
-                        value: customer.fiscalAddress2 ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Código fiscal',
-                    value: customer.fiscalZipCode ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Población',
-                    value: customer.fiscalCity ?? ''),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Provincia',
-                    value: customer.fiscalState ?? ''),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'País',
-                    value: customer.fiscalCountry?.description ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'NIF', value: customer.nif ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Latitud',
-                    value: customer.fiscalLatitude?.toString() ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Longitud',
-                    value: customer.fiscalLongitude?.toString() ?? ''),
-              ],
-            ),
-          ),
-        ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8),
-        child: Card(
-          clipBehavior: Clip.hardEdge,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4), // if you need this
-            side: BorderSide(
-              color: Colors.grey.withOpacity(0.2),
-              width: 1,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Venta Año Actual',
-                    value: customer.currentYearSales?.toString() ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Venta Año Anterior',
-                    value: customer.previousYearSales?.toString() ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Ventas Hace 2 Años',
-                    value: customer.salesTwoYearsAgo?.toString() ?? ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Porcentaje Garantias',
-                    value: (customer.warrantyPercent != null)
-                        ? '${customer.warrantyPercent?.toString()}%'
-                        : ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Margen Año Actual',
-                    value: (customer.currentYearMargin != null)
-                        ? '${customer.currentYearMargin?.toString()}%'
-                        : ''),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Margen Año Anterior',
-                    value: (customer.previousYearMargin != null)
-                        ? '${customer.previousYearMargin?.toString()}%'
-                        : ''),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Margen Hace 2 Años',
-                    value: (customer.marginTwoYearsAgo != null)
-                        ? '${customer.marginTwoYearsAgo?.toString()}%'
-                        : ''),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Porcentaje Abonos',
-                    value: (customer.paymentPercent != null)
-                        ? '${customer.paymentPercent?.toString()}%'
-                        : ''),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  (customer.fiscalName != null &&
+                          customer.fiscalName!.length > 35)
+                      ? ColumnFieldTextDetail(
+                          fieldTitleValue: 'Nombre fiscal',
+                          value: customer.fiscalName)
+                      : RowFieldTextDetail(
+                          fieldTitleValue: 'Nombre fiscal',
+                          value: customer.fiscalName),
+                  const SizedBox(height: 2),
+                  (customer.fiscalAddress1 != null &&
+                          customer.fiscalAddress1!.length > 35)
+                      ? ColumnFieldTextDetail(
+                          fieldTitleValue: 'Dirección',
+                          value: customer.fiscalAddress1 ?? '')
+                      : RowFieldTextDetail(
+                          fieldTitleValue: 'Dirección',
+                          value: customer.fiscalAddress1 ?? ''),
+                  const SizedBox(height: 2),
+                  (customer.fiscalAddress2 != null &&
+                          customer.fiscalAddress2!.length > 35)
+                      ? ColumnFieldTextDetail(
+                          fieldTitleValue: 'Dirección2',
+                          value: customer.fiscalAddress2 ?? '')
+                      : RowFieldTextDetail(
+                          fieldTitleValue: 'Dirección2',
+                          value: customer.fiscalAddress2 ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Código fiscal',
+                      value: customer.fiscalZipCode ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Población',
+                      value: customer.fiscalCity ?? ''),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Provincia',
+                      value: customer.fiscalState ?? ''),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'País',
+                      value: customer.fiscalCountry?.description ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'NIF', value: customer.nif ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Latitud',
+                      value: customer.fiscalLatitude?.toString() ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Longitud',
+                      value: customer.fiscalLongitude?.toString() ?? ''),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8),
-        child: Card(
-          clipBehavior: Clip.hardEdge,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4), // if you need this
-            side: BorderSide(
-              color: Colors.grey.withOpacity(0.2),
-              width: 1,
+        const SizedBox(height: 5),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4), // if you need this
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Central compras',
-                    value: customer.shoppingCenterName ?? ''),
-                RowFieldTextDetail(
-                    fieldTitleValue: 'Web', value: customer.urlWebsite ?? ''),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Venta Año Actual',
+                      value: customer.currentYearSales?.toString() ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Venta Año Anterior',
+                      value: customer.previousYearSales?.toString() ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Ventas Hace 2 Años',
+                      value: customer.salesTwoYearsAgo?.toString() ?? ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Porcentaje Garantias',
+                      value: (customer.warrantyPercent != null)
+                          ? '${customer.warrantyPercent?.toString()}%'
+                          : ''),
+                  const SizedBox(height: 2),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Margen Año Actual',
+                      value: (customer.currentYearMargin != null)
+                          ? '${customer.currentYearMargin?.toString()}%'
+                          : ''),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Margen Año Anterior',
+                      value: (customer.previousYearMargin != null)
+                          ? '${customer.previousYearMargin?.toString()}%'
+                          : ''),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Margen Hace 2 Años',
+                      value: (customer.marginTwoYearsAgo != null)
+                          ? '${customer.marginTwoYearsAgo?.toString()}%'
+                          : ''),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Porcentaje Abonos',
+                      value: (customer.paymentPercent != null)
+                          ? '${customer.paymentPercent?.toString()}%'
+                          : ''),
+                ],
+              ),
             ),
           ),
         ),
-      )
-    ]);
+        const SizedBox(height: 5),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Card(
+            clipBehavior: Clip.hardEdge,
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4), // if you need this
+              side: BorderSide(
+                color: Colors.grey.withOpacity(0.2),
+                width: 1,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Central compras',
+                      value: customer.shoppingCenterName ?? ''),
+                  RowFieldTextDetail(
+                      fieldTitleValue: 'Web', value: customer.urlWebsite ?? ''),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 5),
+      ],
+    );
   }
 }
 
@@ -474,8 +481,9 @@ class CustomerRiskContainer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const MobileCustomSeparators(separatorTitle: 'Riesgos'),
+        const SizedBox(height: 8),
         Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Card(
             clipBehavior: Clip.hardEdge,
             elevation: 0,
@@ -505,8 +513,9 @@ class CustomerRiskContainer extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 5),
         Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Card(
             clipBehavior: Clip.hardEdge,
             elevation: 0,
@@ -535,8 +544,9 @@ class CustomerRiskContainer extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 5),
         Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Card(
             clipBehavior: Clip.hardEdge,
             elevation: 0,

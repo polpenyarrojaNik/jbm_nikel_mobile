@@ -36,6 +36,7 @@ class CustomerTopArticlesListPage extends ConsumerWidget {
               Expanded(
                 child: state.when(
                     data: (topArticleList) => ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: topArticleList.length,
                           itemBuilder: (context, i) => ArticleListTile(
                               article: topArticleList[i].article,

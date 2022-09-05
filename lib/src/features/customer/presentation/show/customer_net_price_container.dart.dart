@@ -23,6 +23,7 @@ class CustomerNetPriceContainer extends ConsumerWidget {
         data: (customerNetPriceList) => (customerNetPriceList.isEmpty)
             ? const Center(child: Text('No Results'))
             : ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, _) => const Divider(),
                 itemBuilder: (context, i) => CustomerNetPriceTile(
                   customerNetPrice: customerNetPriceList[i],

@@ -24,6 +24,7 @@ class CustomerAddressesContainer extends ConsumerWidget {
         data: (customerAddressList) => (customerAddressList.isEmpty)
             ? const Center(child: Text('No Results'))
             : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) => CustomerAddressTile(
                   customerAddress: customerAddressList[i],
                 ),

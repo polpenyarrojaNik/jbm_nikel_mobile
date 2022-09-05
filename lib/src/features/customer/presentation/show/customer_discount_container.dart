@@ -23,10 +23,11 @@ class CustomerDiscountContainer extends ConsumerWidget {
         data: (customerDiscountList) => (customerDiscountList.isEmpty)
             ? const Center(child: Text('No Results'))
             : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) => CustomerDiscountTile(
                   customerDiscount: customerDiscountList[i],
                 ),
-                itemCount: customerDiscountList.length,
+                itemCount: 50,
               ),
       ),
     );
@@ -56,20 +57,20 @@ class CustomerDiscountTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(customerDiscount.articleId,
-                    style: Theme.of(context).textTheme.subtitle2),
-                Text('${customerDiscount.discount.toString()}%',
-                    style: Theme.of(context).textTheme.subtitle2),
-              ],
-            ),
-            Text(
-                '${customerDiscount.family.description}/${customerDiscount.subfamily.description}',
-                style: Theme.of(context).textTheme.caption),
-            Text('Des de ${customerDiscount.quantityFrom.toString()} unidad/es',
-                style: Theme.of(context).textTheme.caption),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Text(customerDiscount.articleId,
+            //         style: Theme.of(context).textTheme.subtitle2),
+            //     Text('${customerDiscount.discount.toString()}%',
+            //         style: Theme.of(context).textTheme.subtitle2),
+            //   ],
+            // ),
+            // Text(
+            //     '${customerDiscount.family.description}/${customerDiscount.subfamily.description}',
+            //     style: Theme.of(context).textTheme.caption),
+            Text('Des de unidad/es',
+                style: Theme.of(context).textTheme.headline6),
           ],
         ),
       ),

@@ -32,6 +32,7 @@ class ArticleSalesOrderPage extends ConsumerWidget {
                 data: (salesOrderListLine) => (salesOrderListLine.isEmpty)
                     ? const Center(child: Text('No Results'))
                     : ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, i) => SalesOrderLineTile(
                             salesOrderLine: salesOrderListLine[i]),
                         itemCount: salesOrderListLine.length,

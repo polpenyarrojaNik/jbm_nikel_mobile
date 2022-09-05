@@ -24,6 +24,7 @@ class CustomerAttachmentContainer extends ConsumerWidget {
         data: (customerAttachmentList) => (customerAttachmentList.isEmpty)
             ? const Center(child: Text('No Results'))
             : ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) => CustomerAttachmentTile(
                   customerAttachment: customerAttachmentList[i],
                 ),
