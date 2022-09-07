@@ -50,7 +50,7 @@ String formatProvinciaAndPais({
 }
 
 IconData? getIconoFromExtension(String path) {
-  final extension = path.split(".").last;
+  final extension = path.split('.').last;
   if (extension == 'pdf') {
     return FontAwesomeIcons.filePdf;
   } else if (extension == 'doc' || extension == 'docx' || extension == 'odt') {
