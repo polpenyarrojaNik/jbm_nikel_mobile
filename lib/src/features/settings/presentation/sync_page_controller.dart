@@ -43,7 +43,7 @@ class SyncPageNotifier extends StateNotifier<SyncPageState> {
       // await syncRepository.syncClientePrecioNeto();
       // await syncRepository.syncClienteGrupoNeto();
       // await syncRepository.syncClientePagoPendiente();
-      await syncRepository.syncArticulosTop();
+      // await syncRepository.syncArticulosTop();
       await syncRepository.syncArticulo();
       await syncRepository.syncArticuloEmpresaIva();
       await syncRepository.syncArticuloComponentes();
