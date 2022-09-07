@@ -1,16 +1,70 @@
-# jbm_nikel_mobile
+# JBM Nikel Mobile
 
-A new Flutter project.
+Aplicación móvil para JBM
 
-## Getting Started
+## How to Start Development
 
-This project is a starting point for a Flutter application.
+**Step 1:**
 
-A few resources to get you started if this is your first Flutter project:
+Download or clone this repo by using the link below:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<https://github.com/nikelConsultores/jbm_nikel_mobile.git>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Step 2:**
+
+Go to project root and execute the following command in console to get the required dependencies:
+
+```sh
+flutter pub get
+```
+
+**Step 3:**
+
+This project uses libraries that works with code generation, execute the following command to generate files:
+
+```sh
+flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+or watch command in order to keep the source code synced automatically:
+
+```sh
+flutter packages pub run build_runner watch --delete-conflicting-outputs
+```
+
+## Code Snippets
+
+### Upgrade pubspec.yaml
+
+```sh
+make upgrade
+
+```
+
+### Build iOS
+
+```sh
+make build_ios_mobile
+
+```
+
+### Build and watch automatic code generation
+
+```sh
+flutter pub run build_runner watch --delete-conflicting-outputs
+
+```
+
+### Code coverage
+
+```sh
+flutter test --coverage
+
+```
+
+### Generate App Icons
+
+```sh
+flutter pub run flutter_launcher_icons:main
+
+```
