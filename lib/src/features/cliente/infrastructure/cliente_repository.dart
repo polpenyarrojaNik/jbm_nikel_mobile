@@ -9,10 +9,9 @@ import '../../../core/exceptions/app_exception.dart';
 import '../../auth/infrastructure/auth_repository.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
-import '../domain/cliente_direccion.dart';
 import '../domain/cliente_contacto.dart';
 import '../domain/cliente_descuento.dart';
-
+import '../domain/cliente_direccion.dart';
 import '../domain/cliente_grupo_neto.dart';
 import '../domain/cliente_pago_pendiente.dart';
 import '../domain/cliente_precio_neto.dart';
@@ -270,7 +269,7 @@ class ClienteRepository {
     final query = {'CLIENTE_ID': clienteId};
     final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
         requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+          dotenv.get('URL', fallback: 'localhost:3001'),
           'api/v1/online/cliente/adjuntos',
           query,
         ),

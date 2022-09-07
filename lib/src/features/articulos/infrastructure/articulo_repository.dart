@@ -5,8 +5,8 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_tarifa_precio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_tarifa_precio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -251,7 +251,7 @@ class ArticuloRepository {
     final query = {'ARTICULO_ID': articuloId};
     final articuloImageDTOList = await _remoteGetArticuloImagen(
       requestUri: Uri.http(
-        dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+        dotenv.get('URL', fallback: 'localhost:3001'),
         'api/v1/online/articulo/imagenes',
         query,
       ),
@@ -267,7 +267,7 @@ class ArticuloRepository {
     final query = {'ARTICULO_ID': articuloId};
     final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
       requestUri: Uri.http(
-        dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+        dotenv.get('URL', fallback: 'localhost:3001'),
         'api/v1/online/articulo/documentos',
         query,
       ),
@@ -284,7 +284,7 @@ class ArticuloRepository {
       final query = {'PATH': path};
       final dataImage = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            dotenv.get('URL', fallback: 'localhost:3001'),
             'api/v1/online/adjunto',
             query,
           ),
@@ -302,7 +302,7 @@ class ArticuloRepository {
       final query = {'PATH': path};
       final data = await _remoteGetAttachment(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            dotenv.get('URL', fallback: 'localhost:3001'),
             'api/v1/online/adjunto',
             query,
           ),

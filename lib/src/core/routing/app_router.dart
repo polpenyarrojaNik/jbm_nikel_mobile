@@ -1,33 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
+import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/auth_repository.dart';
 
 import '../../features/articulos/presentation/index/articulo_lista_page.dart';
 import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
 import '../../features/articulos/presentation/show/articulo_pedido_venta_page.dart';
 import '../../features/articulos/presentation/show/articulo_ultimos_precios_page.dart';
 import '../../features/auth/presentation/login_page.dart';
-
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_detalle_page.dart';
-
 import '../../features/cliente/presentation/show/cliente_pago_pendiente_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_articulo_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
 import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.dart';
-
 import '../../features/settings/presentation/sync_page.dart';
 import '../../features/splash/presentation/splash_page.dart';
-
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
-import '../infrastructure/initial_db_repository.dart';
 
 enum AppRoute {
   home,
@@ -60,68 +55,38 @@ enum AppRoute {
 }
 
 final goRouterProvider = Provider((ref) {
-  final authState = ref.watch(authControllerProvider);
+  final authRepository = ref.watch(authRepositoryProvider);
   return GoRouter(
-    debugLogDiagnostics: false,
-    redirect: (state) => redirectLogic(state, ref, authState),
+    debugLogDiagnostics: true,
+    urlPathStrategy: UrlPathStrategy.path,
+    refreshListenable: GoRouterRefreshStream(authRepository.authStateChanges()),
+    redirect: (state) {
+      final isLoggedIn = authRepository.currentUser != null;
+      if (isLoggedIn) {
+        if (state.location == '/login') {
+          return state.namedLocation(AppRoute.clienteindex.name);
+        }
+      } else {
+        if (state.location != '/login') {
+          return state.namedLocation(AppRoute.login.name);
+        }
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/',
         name: AppRoute.home.name,
-        redirect: (_) => '/home',
+        redirect: (state) => state.namedLocation(AppRoute.splash.name),
       ),
       GoRoute(
-        name: AppRoute.salesorderindex.name,
-        path: '/salesorder',
-        builder: (context, state) => const PedidoVentaListPage(),
-        routes: [
-          GoRoute(
-            name: AppRoute.salesordernew.name,
-            path: 'new',
-            pageBuilder: (context, state) {
-              return MaterialPage(
-                key: state.pageKey,
-                fullscreenDialog: true,
-                child: PedidoVentaEditPage(),
-              );
-            },
-          ),
-          GoRoute(
-            name: AppRoute.salesordershow.name,
-            path: ':id',
-            pageBuilder: (context, state) {
-              final pedidoVentaId = state.params['id']!;
-              return MaterialPage(
-                key: state.pageKey,
-                child: PedidoVentaDetallePage(pedidoVentaId: pedidoVentaId),
-              );
-            },
-            routes: [
-              GoRoute(
-                name: AppRoute.salesorderedit.name,
-                path: 'edit',
-                pageBuilder: (context, state) {
-                  final pedidoVentaId = state.params['id']!;
-
-                  return MaterialPage(
-                    key: state.pageKey,
-                    fullscreenDialog: true,
-                    child: PedidoVentaEditPage(pedidoVentaId: pedidoVentaId),
-                  );
-                },
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
-        path: '/login',
-        name: AppRoute.login.name,
-        builder: (context, state) => const LoginPage(),
+        name: AppRoute.splash.name,
+        path: '/splash',
+        builder: (context, state) => const SplashPage(),
       ),
       GoRoute(
         name: AppRoute.clienteindex.name,
-        path: '/home',
+        path: '/clientes',
         builder: (context, state) => const ClienteListaPage(),
         routes: [
           GoRoute(
@@ -199,8 +164,57 @@ final goRouterProvider = Provider((ref) {
         ],
       ),
       GoRoute(
+        name: AppRoute.salesorderindex.name,
+        path: '/pedidos',
+        builder: (context, state) => const PedidoVentaListPage(),
+        routes: [
+          GoRoute(
+            name: AppRoute.salesordernew.name,
+            path: 'new',
+            pageBuilder: (context, state) {
+              return MaterialPage(
+                key: state.pageKey,
+                fullscreenDialog: true,
+                child: PedidoVentaEditPage(),
+              );
+            },
+          ),
+          GoRoute(
+            name: AppRoute.salesordershow.name,
+            path: ':id',
+            pageBuilder: (context, state) {
+              final pedidoVentaId = state.params['id']!;
+              return MaterialPage(
+                key: state.pageKey,
+                child: PedidoVentaDetallePage(pedidoVentaId: pedidoVentaId),
+              );
+            },
+            routes: [
+              GoRoute(
+                name: AppRoute.salesorderedit.name,
+                path: 'edit',
+                pageBuilder: (context, state) {
+                  final pedidoVentaId = state.params['id']!;
+
+                  return MaterialPage(
+                    key: state.pageKey,
+                    fullscreenDialog: true,
+                    child: PedidoVentaEditPage(pedidoVentaId: pedidoVentaId),
+                  );
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/login',
+        name: AppRoute.login.name,
+        builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
         name: AppRoute.articuloindex.name,
-        path: '/articulo',
+        path: '/articulos',
         builder: (context, state) => const ArticuloListaPage(),
         routes: [
           GoRoute(
@@ -280,11 +294,6 @@ final goRouterProvider = Provider((ref) {
         ],
       ),
       GoRoute(
-        name: AppRoute.splash.name,
-        path: '/loading',
-        builder: (context, state) => const SplashPage(),
-      ),
-      GoRoute(
         name: AppRoute.settings.name,
         path: '/settings',
         builder: (context, state) => const SettingsPage(),
@@ -293,17 +302,3 @@ final goRouterProvider = Provider((ref) {
     errorBuilder: (context, state) => const NotFoundScreen(),
   );
 });
-
-String? redirectLogic(
-    GoRouterState state, ProviderRef<GoRouter> ref, AuthState authState) {
-  final initalDbState = ref.watch(setInitialDbProvider);
-
-  return initalDbState.maybeWhen(
-      orElse: () => authState.maybeWhen(
-          orElse: () => null,
-          authenticating: () => (state.location != '/login') ? '/login' : null,
-          failure: (e) => (state.location != '/login') ? '/login' : null,
-          unauthenticated: () =>
-              (state.location != '/login') ? '/login' : null),
-      loading: () => (state.location != '/loading') ? '/loading' : null);
-}

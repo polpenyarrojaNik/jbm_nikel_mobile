@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/usuario_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/helpers/in_memory_store.dart';
 import '../../../core/infrastructure/log.dart';
 import '../domain/usuario.dart';
 
@@ -22,6 +23,9 @@ const _preferenceKey = 'auth_credentials';
 class AuthRepository {
   Dio dio;
   FlutterSecureStorage storage;
+  final _authState = InMemoryStore<Usuario?>(null);
+  Usuario? get currentUser => _authState.value;
+  Stream<Usuario?> authStateChanges() => _authState.stream;
 
   AuthRepository(this.dio, this.storage);
 
@@ -30,12 +34,13 @@ class AuthRepository {
     try {
       final usuarioDTO = await _remoteLogin(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            dotenv.get('URL', fallback: 'localhost:3001'),
             '/api/v1/login',
           ),
           body: {'USUARIO': usuario, 'CLAVE': contrasenya});
 
       await saveUsuario(usuarioDTO);
+      _authState.value = usuarioDTO.toDomain();
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -52,7 +57,7 @@ class AuthRepository {
         if (usuarioDto.canRefresh && usuarioDto.isExpired) {
           final newUsuarioDto = await _refresh(
               requestUri: Uri.http(
-                dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 '/api/v1/renew-token',
               ),
               body: {'REFRESH_TOKEN': usuarioDto.refreshToken!});
@@ -76,6 +81,7 @@ class AuthRepository {
   Future<void> logout() async {
     try {
       await clear();
+      _authState.value = null;
     } catch (e) {
       rethrow;
     }
@@ -172,4 +178,6 @@ class AuthRepository {
   Future<void> clear() async {
     await storage.delete(key: _preferenceKey);
   }
+
+  void dispose() => _authState.close();
 }

@@ -129,12 +129,12 @@ class LoginPageState extends ConsumerState<LoginPage> {
         ));
   }
 
-  void _submit(FormGroup form, WidgetRef ref) {
+  Future<void> _submit(FormGroup form, WidgetRef ref) async {
     if (form.valid) {
       usuario = (form.control('usuario').value as String).toUpperCase();
       contrasenya = form.control('contrasenya').value as String;
 
-      ref
+      await ref
           .read(authControllerProvider.notifier)
           .login(usuario: usuario, contrasenya: contrasenya);
     } else {
