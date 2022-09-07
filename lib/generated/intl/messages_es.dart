@@ -22,61 +22,57 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "article_index_buscarArticulos":
+        "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Buscar artículos"),
-        "article_index_titulo":
+        "articulo_index_titulo":
             MessageLookupByLibrary.simpleMessage("Artículos"),
-        "article_show_articleComponentIncluded_stock":
+        "articulo_show_articuloComponenteIncluded_stock":
             MessageLookupByLibrary.simpleMessage("Stock"),
-        "article_show_articleComponent_stock":
+        "articulo_show_articuloComponente_stock":
             MessageLookupByLibrary.simpleMessage("Stock"),
-        "article_show_articleDetail_activoApp":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_activoWeb":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_caja":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_codigo":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_datosGenerales":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_descatalogadoCompras":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_descripcion":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_devoluciones":
-            MessageLookupByLibrary.simpleMessage("¿Devoluciones?"),
-        "article_show_articleDetail_enCatalogo":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_entrega1":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_entrega2":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_entrega3":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_estadisticas":
-            MessageLookupByLibrary.simpleMessage("¿Estadísticas?"),
-        "article_show_articleDetail_familia":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_palet":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_pedVentas":
+        "articulo_show_articuloDetalle_activoApp":
+            MessageLookupByLibrary.simpleMessage("Activo app"),
+        "articulo_show_articuloDetalle_activoWeb":
+            MessageLookupByLibrary.simpleMessage("Activo web"),
+        "articulo_show_articuloDetalle_caja":
+            MessageLookupByLibrary.simpleMessage("Caja"),
+        "articulo_show_articuloDetalle_codigo":
+            MessageLookupByLibrary.simpleMessage("Código"),
+        "articulo_show_articuloDetalle_datosGenerales":
+            MessageLookupByLibrary.simpleMessage("Datos generales"),
+        "articulo_show_articuloDetalle_descatalogadoCompras":
+            MessageLookupByLibrary.simpleMessage("Descatalogado"),
+        "articulo_show_articuloDetalle_descripcion":
+            MessageLookupByLibrary.simpleMessage("Descripción"),
+        "articulo_show_articuloDetalle_enCatalogo":
+            MessageLookupByLibrary.simpleMessage("En Catálogo"),
+        "articulo_show_articuloDetalle_entrega1":
+            MessageLookupByLibrary.simpleMessage("Entrega 1"),
+        "articulo_show_articuloDetalle_entrega2":
+            MessageLookupByLibrary.simpleMessage("Entrega 2"),
+        "articulo_show_articuloDetalle_entrega3":
+            MessageLookupByLibrary.simpleMessage("Entrega 3"),
+        "articulo_show_articuloDetalle_familia":
+            MessageLookupByLibrary.simpleMessage("Familia"),
+        "articulo_show_articuloDetalle_palet":
+            MessageLookupByLibrary.simpleMessage("Palet"),
+        "articulo_show_articuloDetalle_pedVentas":
             MessageLookupByLibrary.simpleMessage("Ped. Ventas"),
-        "article_show_articleDetail_resumen":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_stock":
+        "articulo_show_articuloDetalle_resumen":
+            MessageLookupByLibrary.simpleMessage("Resumen"),
+        "articulo_show_articuloDetalle_stock":
             MessageLookupByLibrary.simpleMessage("Stock"),
-        "article_show_articleDetail_subcaja":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_subfamilia":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_articleDetail_ultimosPrecios":
+        "articulo_show_articuloDetalle_subcaja":
+            MessageLookupByLibrary.simpleMessage("Subcaja"),
+        "articulo_show_articuloDetalle_subfamilia":
+            MessageLookupByLibrary.simpleMessage("Subfamilia"),
+        "articulo_show_articuloDetalle_ultimosPrecios":
             MessageLookupByLibrary.simpleMessage("Últimos precios"),
-        "article_show_articleSalesOrder_pedido":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_lastPrices_precio":
-            MessageLookupByLibrary.simpleMessage(""),
-        "article_show_lastPrices_titulo":
+        "articulo_show_articuloPedidoVenta_pedido":
+            MessageLookupByLibrary.simpleMessage("Pedido"),
+        "articulo_show_lastPrices_precio":
+            MessageLookupByLibrary.simpleMessage("Precio"),
+        "articulo_show_lastPrices_titulo":
             MessageLookupByLibrary.simpleMessage("Últimos precios"),
         "auth_loginPage_iniciarSesion":
             MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
@@ -87,6 +83,94 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("LOGIN TITLE"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Usuario"),
+        "cliente_index_buscarClientes":
+            MessageLookupByLibrary.simpleMessage(" Buscar clientes..."),
+        "cliente_index_titulo":
+            MessageLookupByLibrary.simpleMessage("Clientes"),
+        "cliente_show_clienteArticulosTop_titulo":
+            MessageLookupByLibrary.simpleMessage("Top 150"),
+        "cliente_show_clienteContacto_observaciones":
+            MessageLookupByLibrary.simpleMessage("Observaciones"),
+        "cliente_show_clienteDescuento_desDe":
+            MessageLookupByLibrary.simpleMessage("Des de"),
+        "cliente_show_clienteDetalle_bonificacion":
+            MessageLookupByLibrary.simpleMessage("Bonificación"),
+        "cliente_show_clienteDetalle_centralCompras":
+            MessageLookupByLibrary.simpleMessage("Central compras"),
+        "cliente_show_clienteDetalle_codigoPostal":
+            MessageLookupByLibrary.simpleMessage("Código Postal"),
+        "cliente_show_clienteDetalle_concedidoCOFACE":
+            MessageLookupByLibrary.simpleMessage("Concedido COFACE"),
+        "cliente_show_clienteDetalle_concedidoFecha":
+            MessageLookupByLibrary.simpleMessage("Concedido fecha"),
+        "cliente_show_clienteDetalle_concedidoJBM":
+            MessageLookupByLibrary.simpleMessage("Concedido JBM"),
+        "cliente_show_clienteDetalle_datosGenerales":
+            MessageLookupByLibrary.simpleMessage("Datos generales"),
+        "cliente_show_clienteDetalle_descuentoGeneral":
+            MessageLookupByLibrary.simpleMessage("Descuento general"),
+        "cliente_show_clienteDetalle_descuentoPP":
+            MessageLookupByLibrary.simpleMessage("Descuento P.P"),
+        "cliente_show_clienteDetalle_direccion":
+            MessageLookupByLibrary.simpleMessage("Dirección"),
+        "cliente_show_clienteDetalle_direccion2":
+            MessageLookupByLibrary.simpleMessage("Dirección 2"),
+        "cliente_show_clienteDetalle_divisa":
+            MessageLookupByLibrary.simpleMessage("Divisa"),
+        "cliente_show_clienteDetalle_factPendientes":
+            MessageLookupByLibrary.simpleMessage("Fact. pedientes"),
+        "cliente_show_clienteDetalle_facturacion":
+            MessageLookupByLibrary.simpleMessage("Facturación"),
+        "cliente_show_clienteDetalle_fechaCOFACE":
+            MessageLookupByLibrary.simpleMessage("Fecha COFACE"),
+        "cliente_show_clienteDetalle_latitud":
+            MessageLookupByLibrary.simpleMessage("Latitud"),
+        "cliente_show_clienteDetalle_longitud":
+            MessageLookupByLibrary.simpleMessage("Longitud"),
+        "cliente_show_clienteDetalle_metodoCalculoPrecio":
+            MessageLookupByLibrary.simpleMessage("Método cálculo precio"),
+        "cliente_show_clienteDetalle_metodoDeCobro":
+            MessageLookupByLibrary.simpleMessage("Método de cobro"),
+        "cliente_show_clienteDetalle_nif":
+            MessageLookupByLibrary.simpleMessage("NIF"),
+        "cliente_show_clienteDetalle_nombreFiscal":
+            MessageLookupByLibrary.simpleMessage("Nombre fiscal"),
+        "cliente_show_clienteDetalle_pais":
+            MessageLookupByLibrary.simpleMessage("Pais"),
+        "cliente_show_clienteDetalle_pdteCobroNoVencido":
+            MessageLookupByLibrary.simpleMessage("Pdte. Cobro No Vencido"),
+        "cliente_show_clienteDetalle_pdteCobroVencido":
+            MessageLookupByLibrary.simpleMessage("Pdte. Cobro Vencido"),
+        "cliente_show_clienteDetalle_pdteServir":
+            MessageLookupByLibrary.simpleMessage("Pdte. Servir"),
+        "cliente_show_clienteDetalle_plazoDeCobro":
+            MessageLookupByLibrary.simpleMessage("Plazo de corbo"),
+        "cliente_show_clienteDetalle_poblacion":
+            MessageLookupByLibrary.simpleMessage("Población"),
+        "cliente_show_clienteDetalle_provincia":
+            MessageLookupByLibrary.simpleMessage("Provincia"),
+        "cliente_show_clienteDetalle_riesgoActual":
+            MessageLookupByLibrary.simpleMessage("Riesgo actual"),
+        "cliente_show_clienteDetalle_riesgoConcedido":
+            MessageLookupByLibrary.simpleMessage("Riesgo concedido"),
+        "cliente_show_clienteDetalle_riesgos":
+            MessageLookupByLibrary.simpleMessage("Riesgos"),
+        "cliente_show_clienteDetalle_tarifa":
+            MessageLookupByLibrary.simpleMessage("Tarifa"),
+        "cliente_show_clienteDetalle_titulo":
+            MessageLookupByLibrary.simpleMessage("Cliente detalle"),
+        "cliente_show_clienteDetalle_top150":
+            MessageLookupByLibrary.simpleMessage("Top 150"),
+        "cliente_show_clienteDetalle_vtasArt":
+            MessageLookupByLibrary.simpleMessage("Vtas. Art"),
+        "cliente_show_clienteDetalle_vtasMes":
+            MessageLookupByLibrary.simpleMessage("Vtas. Mes"),
+        "cliente_show_clienteDetalle_web":
+            MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clientePrecioNeto_desDe":
+            MessageLookupByLibrary.simpleMessage("Des de"),
+        "cliente_show_clientePrecioNeto_precio":
+            MessageLookupByLibrary.simpleMessage("Precio"),
         "commonWidgets_appDrawer_ajustes":
             MessageLookupByLibrary.simpleMessage("Ajustes"),
         "commonWidgets_appDrawer_articulos":
@@ -98,140 +182,40 @@ class MessageLookup extends MessageLookupByLibrary {
         "commonWidgets_appDrawer_pedidos":
             MessageLookupByLibrary.simpleMessage("Pedidos"),
         "commonWidgets_appDrawer_visitas":
-            MessageLookupByLibrary.simpleMessage("Visitas"),
+            MessageLookupByLibrary.simpleMessage("Visitaas"),
         "commonWidgets_emptyPlaceholfer_irAIncio":
             MessageLookupByLibrary.simpleMessage("Ir a inicio"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Última sincronización"),
-        "customer_index_buscarClientes":
-            MessageLookupByLibrary.simpleMessage(" Buscar clientes..."),
-        "customer_index_titulo":
-            MessageLookupByLibrary.simpleMessage("Clientes"),
-        "customer_show_customerContact_observaciones":
-            MessageLookupByLibrary.simpleMessage("Observaciones"),
-        "customer_show_customerDetail_PorcentajeAbonos":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_bonificacion":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_centralCompras":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_codigoPostal":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_concedidoCOFACE":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_concedidoFecha":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_concedidoJBM":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_datosGenerales":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_descuentoGeneral":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_descuentoPP":
-            MessageLookupByLibrary.simpleMessage("Descuento P.P"),
-        "customer_show_customerDetail_descuentoTipoEntrada":
-            MessageLookupByLibrary.simpleMessage("¿Descuento Tipo Entrada?"),
-        "customer_show_customerDetail_direccion":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_direccion2":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_divisa":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_factPendientes":
-            MessageLookupByLibrary.simpleMessage("Fact. pedientes"),
-        "customer_show_customerDetail_facturacion":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_fechaCOFACE":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_latitud":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_longitud":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_metodoCalculoPrecio":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_metodoDeCobro":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_nif":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_nombreFiscal":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_pais":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_pdteCobroNoVencido":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_pdteCobroVencido":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_pdteServir":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_plazoDeCobro":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_poblacion":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_porcentajeGarantias":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_precioNeto":
-            MessageLookupByLibrary.simpleMessage("¿Precio Neto?"),
-        "customer_show_customerDetail_provincia":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_riesgoActual":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_riesgoConcedido":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_riesgos":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_ritmoVisitas":
-            MessageLookupByLibrary.simpleMessage("¿Ritmo visitas(sem)?"),
-        "customer_show_customerDetail_stockB2B":
-            MessageLookupByLibrary.simpleMessage("¿Stock B2B?"),
-        "customer_show_customerDetail_tarifa":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_titulo":
-            MessageLookupByLibrary.simpleMessage("Cliente detalle"),
-        "customer_show_customerDetail_top150":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDetail_vtasArt":
-            MessageLookupByLibrary.simpleMessage("Vtas. Art"),
-        "customer_show_customerDetail_vtasMes":
-            MessageLookupByLibrary.simpleMessage("Vtas. Mes"),
-        "customer_show_customerDetail_web":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerDiscount_desDe":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerNetPrice_desDe":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerNetPrice_precio":
-            MessageLookupByLibrary.simpleMessage("Precio"),
-        "customer_show_customerPendingPayment_titulo":
-            MessageLookupByLibrary.simpleMessage(""),
-        "customer_show_customerTopArticles_titulo":
-            MessageLookupByLibrary.simpleMessage("Top 150"),
         "salesorder_index_buscarPedidos":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_index_titulo": MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_baseImponible":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_estado":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_fecha":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_importeIva":
+            MessageLookupByLibrary.simpleMessage("Buscar pedidos..."),
+        "salesorder_index_titulo":
+            MessageLookupByLibrary.simpleMessage("Pedidos"),
+        "salesorder_show_pedidoVentaDetalle_baseImponible":
+            MessageLookupByLibrary.simpleMessage("Base imponible"),
+        "salesorder_show_pedidoVentaDetalle_estado":
+            MessageLookupByLibrary.simpleMessage("Estado"),
+        "salesorder_show_pedidoVentaDetalle_fecha":
+            MessageLookupByLibrary.simpleMessage("Fecha"),
+        "salesorder_show_pedidoVentaDetalle_importeIva":
             MessageLookupByLibrary.simpleMessage("Importe IVA"),
-        "salesorder_show_salesOrderDetail_lineas":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_precio":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_titulo":
-            MessageLookupByLibrary.simpleMessage(""),
-        "salesorder_show_salesOrderDetail_total":
-            MessageLookupByLibrary.simpleMessage(""),
+        "salesorder_show_pedidoVentaDetalle_lineas":
+            MessageLookupByLibrary.simpleMessage("Líneas"),
+        "salesorder_show_pedidoVentaDetalle_precio":
+            MessageLookupByLibrary.simpleMessage("Precio"),
+        "salesorder_show_pedidoVentaDetalle_titulo":
+            MessageLookupByLibrary.simpleMessage("Pedido"),
+        "salesorder_show_pedidoVentaDetalle_total":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "settings_sincronicacionRealizadaConExito":
-            MessageLookupByLibrary.simpleMessage(""),
+            MessageLookupByLibrary.simpleMessage(
+                "Sincronización relaizado con éxito"),
         "settings_sincronizarDatos":
             MessageLookupByLibrary.simpleMessage("Sincronizar datos"),
         "settings_titulo": MessageLookupByLibrary.simpleMessage("Ajustes"),
         "sinResultados": MessageLookupByLibrary.simpleMessage("Sin resultados"),
-        "visit_index_titulo": MessageLookupByLibrary.simpleMessage("Visitas"),
-        "visit_show_visitDetail_titulo":
+        "visita_index_titulo": MessageLookupByLibrary.simpleMessage("Visitas"),
+        "visita_show_visitaDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Detalle visita")
       };
 }

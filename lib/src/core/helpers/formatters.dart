@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/country.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 
 String dateFormatter(String dateStr, {bool allDay = false}) {
-  DateFormat formatter;
   DateTime date;
 
-  formatter = DateFormat(
-      (!allDay) ? 'dd/MM/yyyy' : 'dd/MM/yyyy HH:mm', Intl.getCurrentLocale());
+  final formatter = DateFormat.yMd(Intl.getCurrentLocale()).add_Hm();
 
   date = DateTime.parse(dateStr);
 
@@ -21,35 +19,37 @@ String numberFormat(double number) {
   return formatter.format(number);
 }
 
-String formatZipCodeAndCity({
-  String? zipCode,
-  String? city,
+String formatCodigoPostalAndPoblacion({
+  String? codigoPostal,
+  String? poblacion,
 }) {
-  String zipCodeAndCity = '';
-  if (zipCode != null) zipCodeAndCity = zipCodeAndCity + zipCode;
-  if (zipCode != null && city != null) {
-    zipCodeAndCity = '$zipCodeAndCity - ';
+  String codigoPostalAndCity = '';
+  if (codigoPostal != null) {
+    codigoPostalAndCity = codigoPostalAndCity + codigoPostal;
   }
-  if (city != null) zipCodeAndCity = zipCodeAndCity + city;
-  return zipCodeAndCity;
+  if (codigoPostal != null && poblacion != null) {
+    codigoPostalAndCity = '$codigoPostalAndCity - ';
+  }
+  if (poblacion != null) codigoPostalAndCity = codigoPostalAndCity + poblacion;
+  return codigoPostalAndCity;
 }
 
-String formatProvinceAndCountry({
+String formatProvinciaAndPais({
   String? province,
-  Country? country,
+  Pais? pais,
 }) {
-  String provinceAndCountry = '';
-  if (province != null) provinceAndCountry = provinceAndCountry + province;
-  if (province != null && country != null) {
-    provinceAndCountry = '$provinceAndCountry ';
+  String provinceAndPais = '';
+  if (province != null) provinceAndPais = provinceAndPais + province;
+  if (province != null && pais != null) {
+    provinceAndPais = '$provinceAndPais ';
   }
-  if (country != null) {
-    provinceAndCountry = '$provinceAndCountry(${country.description})';
+  if (pais != null) {
+    provinceAndPais = '$provinceAndPais(${pais.descripcion})';
   }
-  return provinceAndCountry;
+  return provinceAndPais;
 }
 
-IconData? getIconFromExtension(String path) {
+IconData? getIconoFromExtension(String path) {
   final extension = path.split(".").last;
   if (extension == 'pdf') {
     return FontAwesomeIcons.filePdf;
@@ -78,22 +78,22 @@ IconData? getIconFromExtension(String path) {
   }
 }
 
-String getFileName(String path) {
+String getNombreArchivo(String path) {
   return path.split('/').last;
 }
 
-String dtoText(BuildContext context, double discount1, double discount2,
-    double discount3) {
+String dtoText(BuildContext context, double descuento1, double descuento2,
+    double descuento3) {
   var stringText = '';
 
-  if (discount1 != 0 && discount2 != 0 && discount3 != 0.0) {
+  if (descuento1 != 0 && descuento2 != 0 && descuento3 != 0.0) {
     stringText =
-        'Dto: ${numberFormat(discount1)}% + ${numberFormat(discount2)}% + ${numberFormat(discount3)}%';
-  } else if (discount1 != 0 && discount2 != 0) {
+        'Dto: ${numberFormat(descuento1)}% + ${numberFormat(descuento2)}% + ${numberFormat(descuento3)}%';
+  } else if (descuento1 != 0 && descuento2 != 0) {
     stringText =
-        'Dto: ${numberFormat(discount1)}% + ${numberFormat(discount2)}% ';
-  } else if (discount1 != 0) {
-    stringText = 'Dto: ${numberFormat(discount1)}% ';
+        'Dto: ${numberFormat(descuento1)}% + ${numberFormat(descuento2)}% ';
+  } else if (descuento1 != 0) {
+    stringText = 'Dto: ${numberFormat(descuento1)}% ';
   }
 
   return stringText;

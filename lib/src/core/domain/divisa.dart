@@ -8,9 +8,9 @@ class Divisa with _$Divisa {
   const factory Divisa(
       {required String id,
       required String abv,
-      required String? symbol,
-      required double? rounded,
-      required String description,
+      required String? simbolo,
+      required double? redondeo,
+      required String descripcion,
       required DateTime lastUpdate,
       required bool deleted}) = _Divisa;
 }

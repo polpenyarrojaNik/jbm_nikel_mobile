@@ -14,13 +14,13 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class LoginPageState extends ConsumerState<LoginPage> {
-  String user = '';
-  String password = '';
+  String usuario = '';
+  String contrasenya = '';
   FormGroup buildForm() => fb.group(<String, Object>{
-        'user': FormControl<String>(
+        'usuario': FormControl<String>(
           validators: [Validators.required],
         ),
-        'password': ['', Validators.required],
+        'contrasenya': ['', Validators.required],
       });
 
   @override
@@ -87,18 +87,18 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         height: 16.0,
                       ),
                       ReactiveTextField<String>(
-                        key: const ValueKey('user'),
-                        formControlName: 'user',
+                        key: const ValueKey('usuario'),
+                        formControlName: 'usuario',
                         textCapitalization: TextCapitalization.characters,
                         validationMessages: (control) => {
                           ValidationMessage.required: 'NO EMPTY',
                         },
                         textInputAction: TextInputAction.next,
-                        decoration: AppDecoration.loginField('User'),
+                        decoration: AppDecoration.loginField('Usuario'),
                       ),
                       const SizedBox(height: 16.0),
                       ReactiveTextField<String>(
-                        formControlName: 'password',
+                        formControlName: 'contrasenya',
                         obscureText: true,
                         validationMessages: (control) => {
                           ValidationMessage.required: 'No Empty',
@@ -131,12 +131,12 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   void _submit(FormGroup form, WidgetRef ref) {
     if (form.valid) {
-      user = (form.control('user').value as String).toUpperCase();
-      password = form.control('password').value as String;
+      usuario = (form.control('usuario').value as String).toUpperCase();
+      contrasenya = form.control('contrasenya').value as String;
 
       ref
           .read(authControllerProvider.notifier)
-          .login(user: user, password: password);
+          .login(usuario: usuario, contrasenya: contrasenya);
     } else {
       form.markAllAsTouched();
     }

@@ -1,0 +1,49 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:jbm_nikel_mobile/src/core/domain/familia.dart';
+
+import '../../../core/domain/subfamilia.dart';
+
+part 'articulo.freezed.dart';
+
+@freezed
+class Articulo with _$Articulo {
+  const Articulo._();
+  const factory Articulo(
+      {required String id,
+      required String descripcion,
+      Familia? familia,
+      Subfamilia? subfamilia,
+      required double ventaMinimo,
+      required double ventaMultiplo,
+      required double unidadesSubcaja,
+      required double unidadesCaja,
+      required double unidadesPalet,
+      required bool activoWeb,
+      required bool activoApp,
+      required bool enCatalogo,
+      required bool descatalogado,
+      String? paginaEnCatalgo,
+      String? paginaEnCatalgo2,
+      required double pesoKg,
+      required double largoCm,
+      required double anchoCm,
+      required double altoCm,
+      String? resumen,
+      double? stockDisponible,
+      double? ventasActual,
+      double? ventasAnterior,
+      double? comprasEntregaCantidad1,
+      double? comprasEntregaCantidad2,
+      double? comprasEntregaCantidad3,
+      double? comprasEntregaCantidadMas3,
+      DateTime? comprasEntregaFecha1,
+      DateTime? comprasEntregaFecha2,
+      DateTime? comprasEntregaFecha3,
+      String? comprasEntregaEstado1,
+      String? comprasEntregaEstado2,
+      String? comprasEntregaEstado3,
+      String? imagenPrincipal,
+      required DateTime lastUpdated,
+      required bool deleted}) = _Articulo;
+}

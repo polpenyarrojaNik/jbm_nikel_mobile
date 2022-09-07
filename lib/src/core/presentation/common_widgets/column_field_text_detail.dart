@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ColumnFieldTextDetail extends StatelessWidget {
-  const ColumnFieldTextDetail(
+class ColumnFieldTextDetalle extends StatelessWidget {
+  const ColumnFieldTextDetalle(
       {Key? key, required this.fieldTitleValue, required this.value})
       : super(key: key);
   final String fieldTitleValue;

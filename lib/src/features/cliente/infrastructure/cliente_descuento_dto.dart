@@ -1,0 +1,84 @@
+import 'package:drift/drift.dart' hide JsonKey;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_descuento.dart';
+
+import '../../../core/domain/familia.dart';
+import '../../../core/domain/subfamilia.dart';
+import '../../../core/infrastructure/familia_dto.dart';
+import '../../../core/infrastructure/subfamilia_dto.dart';
+
+part 'cliente_descuento_dto.freezed.dart';
+part 'cliente_descuento_dto.g.dart';
+
+// ignore_for_file: invalid_annotation_target
+
+@freezed
+class ClienteDescuentoDTO
+    with _$ClienteDescuentoDTO
+    implements Insertable<ClienteDescuentoDTO> {
+  const ClienteDescuentoDTO._();
+  const factory ClienteDescuentoDTO({
+    @JsonKey(name: 'CLIENTE_ID') required String clienteId,
+    @JsonKey(name: 'ARTICULO_ID') required String articuloId,
+    @JsonKey(name: 'FAMILIA_ID') required String familiaId,
+    @JsonKey(name: 'SUBFAMILIA_ID') required String subfamiliaId,
+    @JsonKey(name: 'CANTIDAD_DESDE') required double cantidadDesDe,
+    @JsonKey(name: 'DESCUENTO') required double descuento,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
+  }) = _ClienteDescuentoDTO;
+
+  factory ClienteDescuentoDTO.fromJson(Map<String, dynamic> json) =>
+      _$ClienteDescuentoDTOFromJson(json);
+
+  ClienteDescuento toDomain(
+      {required Familia familia, required Subfamilia subfamilia}) {
+    return ClienteDescuento(
+      clienteId: clienteId,
+      articuloId: articuloId,
+      familia: familia,
+      subfamilia: subfamilia,
+      cantidadDesDe: cantidadDesDe,
+      descuento: descuento,
+      lastUpdated: lastUpdated,
+      deleted: (deleted == 'S') ? true : false,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    return ClienteDescuentoTableCompanion(
+      clienteId: Value(clienteId),
+      articuloId: Value(articuloId),
+      familiaId: Value(familiaId),
+      subfamiliaId: Value(subfamiliaId),
+      cantidadDesDe: Value(cantidadDesDe),
+      descuento: Value(descuento),
+      lastUpdated: Value(lastUpdated),
+      deleted: Value(deleted),
+    ).toColumns(nullToAbsent);
+  }
+}
+
+@UseRowClass(ClienteDescuentoDTO)
+class ClienteDescuentoTable extends Table {
+  @override
+  String get tableName => 'CLIENTES_DESCUENTOS';
+
+  @override
+  Set<Column> get primaryKey =>
+      {clienteId, articuloId, familiaId, subfamiliaId, cantidadDesDe};
+
+  TextColumn get clienteId => text().named('CLIENTE_ID')();
+  TextColumn get articuloId => text().named('ARTICULO_ID')();
+  TextColumn get familiaId =>
+      text().references(FamiliaTable, #id).named('FAMILIA_ID')();
+  TextColumn get subfamiliaId =>
+      text().references(SubfamiliaTable, #id).named('SUBFAMILIA_ID')();
+  RealColumn get cantidadDesDe => real().named('CANTIDAD_DESDE')();
+  RealColumn get descuento => real().named('DESCUENTO')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get deleted =>
+      text().withDefault(const Constant('N')).named('DELETED')();
+}

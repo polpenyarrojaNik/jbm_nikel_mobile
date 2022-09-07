@@ -4,11 +4,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/user_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/usuario_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/log.dart';
-import '../domain/user.dart';
+import '../domain/usuario.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>(
   // * Override this in the main method
@@ -25,16 +25,17 @@ class AuthRepository {
 
   AuthRepository(this.dio, this.storage);
 
-  Future<void> login({required String user, required String password}) async {
+  Future<void> login(
+      {required String usuario, required String contrasenya}) async {
     try {
-      final userDTO = await _remoteLogin(
+      final usuarioDTO = await _remoteLogin(
           requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
             '/api/v1/login',
           ),
-          body: {'USUARIO': user, 'CLAVE': password});
+          body: {'USUARIO': usuario, 'CLAVE': contrasenya});
 
-      await saveUser(userDTO);
+      await saveUsuario(usuarioDTO);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -43,24 +44,24 @@ class AuthRepository {
     }
   }
 
-  Future<User?> getSignedInUser() async {
+  Future<Usuario?> getSignedInUsuario() async {
     try {
-      final userDto = await read();
+      final usuarioDto = await read();
 
-      if (userDto != null) {
-        if (userDto.canRefresh && userDto.isExpired) {
-          final newUserDto = await _refresh(
+      if (usuarioDto != null) {
+        if (usuarioDto.canRefresh && usuarioDto.isExpired) {
+          final newUsuarioDto = await _refresh(
               requestUri: Uri.http(
-                dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+                dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
                 '/api/v1/renew-token',
               ),
-              body: {'REFRESH_TOKEN': userDto.refreshToken});
+              body: {'REFRESH_TOKEN': usuarioDto.refreshToken});
 
-          await saveUser(newUserDto);
+          await saveUsuario(newUsuarioDto);
 
-          return newUserDto.toDomain();
+          return newUsuarioDto.toDomain();
         }
-        return userDto.toDomain();
+        return usuarioDto.toDomain();
       }
       return null;
     } catch (e) {
@@ -70,7 +71,7 @@ class AuthRepository {
   }
 
   Future<bool> isSignIn() async =>
-      getSignedInUser().then((credentials) => credentials != null);
+      getSignedInUsuario().then((credentials) => credentials != null);
 
   Future<void> logout() async {
     try {
@@ -80,7 +81,7 @@ class AuthRepository {
     }
   }
 
-  Future<UserDTO> _remoteLogin({
+  Future<UsuarioDTO> _remoteLogin({
     required Uri requestUri,
     required Map<String, String> body,
   }) async {
@@ -90,20 +91,21 @@ class AuthRepository {
         data: body,
       );
       if (response.statusCode == 200) {
-        return UserDTO.fromJson(response.data['data'] as Map<String, dynamic>);
+        return UsuarioDTO.fromJson(
+            response.data['data'] as Map<String, dynamic>);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
     } on DioError catch (e) {
-      String? errorDetail;
+      String? errorDetalle;
       final responseErrorJson =
-          e.response?.data['detail'] ?? e.response?.data['message'] as String?;
+          e.response?.data['detalle'] ?? e.response?.data['message'] as String?;
       if (responseErrorJson != null) {
-        errorDetail = responseErrorJson;
+        errorDetalle = responseErrorJson;
 
         throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetail ?? '');
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
       } else {
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
@@ -113,7 +115,7 @@ class AuthRepository {
     }
   }
 
-  Future<UserDTO> _refresh({
+  Future<UsuarioDTO> _refresh({
     required Uri requestUri,
     required Map<String, String> body,
   }) async {
@@ -123,20 +125,21 @@ class AuthRepository {
         data: body,
       );
       if (response.statusCode == 200) {
-        return UserDTO.fromJson(response.data['data'] as Map<String, dynamic>);
+        return UsuarioDTO.fromJson(
+            response.data['data'] as Map<String, dynamic>);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
     } on DioError catch (e) {
-      String? errorDetail;
+      String? errorDetalle;
       final responseErrorJson =
-          e.response?.data['detail'] ?? e.response?.data['message'] as String?;
+          e.response?.data['detalle'] ?? e.response?.data['message'] as String?;
       if (responseErrorJson != null) {
-        errorDetail = responseErrorJson;
+        errorDetalle = responseErrorJson;
 
         throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetail ?? '');
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
       } else {
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
@@ -146,20 +149,20 @@ class AuthRepository {
     }
   }
 
-  Future<void> saveUser(UserDTO userDto) async {
-    // _cachedCredentials = userDto;
+  Future<void> saveUsuario(UsuarioDTO usuarioDto) async {
+    // _cachedCredentials = usuarioDto;
     await storage.write(
       key: _preferenceKey,
-      value: jsonEncode(userDto),
+      value: jsonEncode(usuarioDto),
     );
   }
 
-  Future<UserDTO?> read() async {
+  Future<UsuarioDTO?> read() async {
     try {
-      final userString = await storage.read(key: _preferenceKey);
+      final usuarioString = await storage.read(key: _preferenceKey);
 
-      return (userString != null)
-          ? UserDTO.fromJson(jsonDecode(userString) as Json)
+      return (usuarioString != null)
+          ? UsuarioDTO.fromJson(jsonDecode(usuarioString) as Json)
           : null;
     } catch (e) {
       rethrow;

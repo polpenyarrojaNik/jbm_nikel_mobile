@@ -7,335 +7,352 @@ part of 'database.dart';
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class LastSyncDateTableData extends DataClass
-    implements Insertable<LastSyncDateTableData> {
+class FechaUltimaSyncTableData extends DataClass
+    implements Insertable<FechaUltimaSyncTableData> {
   final String id;
-  final String? lastSyncDivisa;
-  final String? lastSyncCountry;
-  final String? lastSyncCollectionMethod;
-  final String? lastSyncCollectionTerm;
-  final String? lastSyncCustomer;
-  final String? lastSyncCustomerUser;
-  final String? lastSyncCustomerContact;
-  final String? lastSyncCustomerDiscount;
-  final String? lastSyncCustomerAddress;
-  final String? lastSyncCustomerNetPrice;
-  final String? lastSyncCustomerNetGroup;
-  final String? lastSyncCustomerPendingPayment;
-  final String? lastSyncCustomerRappels;
-  final String? lastSyncTopArticles;
-  final String? lastSyncSalesOrder;
-  final String? lastSyncVisit;
-  final String? lastSyncSalesOrderLine;
-  final String? lastSyncSalesOrderStatus;
-  final String? lastSyncArticle;
-  final String? lastSyncFamily;
-  final String? lastSyncSubfamily;
-  final String? lastSyncArticleNetGroup;
-  final String? lastSyncArticleRatePrice;
-  final String? lastSyncArticleComponent;
-  final String? lastSyncArticleSubstitute;
-  final String? lastSyncArticleSpare;
-  final String? lastSyncArticleCompanyVat;
-  final String? lastSyncStatsCustomerUserSales;
-  final String? lastSyncStatsLastPrices;
-  const LastSyncDateTableData(
+  final String? ultimaSyncDivisa;
+  final String? ultimaSyncPais;
+  final String? ultimaSyncMetodoDeCobro;
+  final String? ultimaSyncPlazoDeCobro;
+  final String? ultimaSyncCliente;
+  final String? ultimaSyncClienteUsuario;
+  final String? ultimaSyncClienteContacto;
+  final String? ultimaSyncClienteDescuento;
+  final String? ultimaSyncClienteDireccion;
+  final String? ultimaSyncClientePrecioNeto;
+  final String? ultimaSyncClienteGrupoNeto;
+  final String? ultimaSyncClientePagoPendiente;
+  final String? ultimaSyncClienteRappels;
+  final String? ultimaSyncArticulosTop;
+  final String? ultimaSyncPedidoVenta;
+  final String? ultimaSyncVisita;
+  final String? ultimaSyncPedidoVentaLinea;
+  final String? ultimaSyncPedidoVentaEstado;
+  final String? ultimaSyncArticulo;
+  final String? ultimaSyncFamilia;
+  final String? ultimaSyncSubfamilia;
+  final String? ultimaSyncArticuloGrupoNeto;
+  final String? ultimaSyncArticuloTarifaPrecio;
+  final String? ultimaSyncArticuloComponente;
+  final String? ultimaSyncArticuloSustitutivo;
+  final String? ultimaSyncArticuloRecambio;
+  final String? ultimaSyncArticuloEmpresaIva;
+  final String? ultimaSyncEstadisticasClienteUsuarioVentas;
+  final String? ultimaSyncEstadisticasUltimosPrecios;
+  const FechaUltimaSyncTableData(
       {required this.id,
-      this.lastSyncDivisa,
-      this.lastSyncCountry,
-      this.lastSyncCollectionMethod,
-      this.lastSyncCollectionTerm,
-      this.lastSyncCustomer,
-      this.lastSyncCustomerUser,
-      this.lastSyncCustomerContact,
-      this.lastSyncCustomerDiscount,
-      this.lastSyncCustomerAddress,
-      this.lastSyncCustomerNetPrice,
-      this.lastSyncCustomerNetGroup,
-      this.lastSyncCustomerPendingPayment,
-      this.lastSyncCustomerRappels,
-      this.lastSyncTopArticles,
-      this.lastSyncSalesOrder,
-      this.lastSyncVisit,
-      this.lastSyncSalesOrderLine,
-      this.lastSyncSalesOrderStatus,
-      this.lastSyncArticle,
-      this.lastSyncFamily,
-      this.lastSyncSubfamily,
-      this.lastSyncArticleNetGroup,
-      this.lastSyncArticleRatePrice,
-      this.lastSyncArticleComponent,
-      this.lastSyncArticleSubstitute,
-      this.lastSyncArticleSpare,
-      this.lastSyncArticleCompanyVat,
-      this.lastSyncStatsCustomerUserSales,
-      this.lastSyncStatsLastPrices});
+      this.ultimaSyncDivisa,
+      this.ultimaSyncPais,
+      this.ultimaSyncMetodoDeCobro,
+      this.ultimaSyncPlazoDeCobro,
+      this.ultimaSyncCliente,
+      this.ultimaSyncClienteUsuario,
+      this.ultimaSyncClienteContacto,
+      this.ultimaSyncClienteDescuento,
+      this.ultimaSyncClienteDireccion,
+      this.ultimaSyncClientePrecioNeto,
+      this.ultimaSyncClienteGrupoNeto,
+      this.ultimaSyncClientePagoPendiente,
+      this.ultimaSyncClienteRappels,
+      this.ultimaSyncArticulosTop,
+      this.ultimaSyncPedidoVenta,
+      this.ultimaSyncVisita,
+      this.ultimaSyncPedidoVentaLinea,
+      this.ultimaSyncPedidoVentaEstado,
+      this.ultimaSyncArticulo,
+      this.ultimaSyncFamilia,
+      this.ultimaSyncSubfamilia,
+      this.ultimaSyncArticuloGrupoNeto,
+      this.ultimaSyncArticuloTarifaPrecio,
+      this.ultimaSyncArticuloComponente,
+      this.ultimaSyncArticuloSustitutivo,
+      this.ultimaSyncArticuloRecambio,
+      this.ultimaSyncArticuloEmpresaIva,
+      this.ultimaSyncEstadisticasClienteUsuarioVentas,
+      this.ultimaSyncEstadisticasUltimosPrecios});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['ID'] = Variable<String>(id);
-    if (!nullToAbsent || lastSyncDivisa != null) {
-      map['LAST_SYNC_DIVISA'] = Variable<String>(lastSyncDivisa);
+    if (!nullToAbsent || ultimaSyncDivisa != null) {
+      map['ULTIMA_SYNC_DIVISA'] = Variable<String>(ultimaSyncDivisa);
     }
-    if (!nullToAbsent || lastSyncCountry != null) {
-      map['LAST_SYNC_COUNTRY'] = Variable<String>(lastSyncCountry);
+    if (!nullToAbsent || ultimaSyncPais != null) {
+      map['ULTIMA_SYNC_PAIS'] = Variable<String>(ultimaSyncPais);
     }
-    if (!nullToAbsent || lastSyncCollectionMethod != null) {
-      map['LAST_SYNC_COLLECTION_METHOD'] =
-          Variable<String>(lastSyncCollectionMethod);
+    if (!nullToAbsent || ultimaSyncMetodoDeCobro != null) {
+      map['ULTIMA_SYNC_METODO_COBRO'] =
+          Variable<String>(ultimaSyncMetodoDeCobro);
     }
-    if (!nullToAbsent || lastSyncCollectionTerm != null) {
-      map['LAST_SYNC_COLLECTION_TERM'] =
-          Variable<String>(lastSyncCollectionTerm);
+    if (!nullToAbsent || ultimaSyncPlazoDeCobro != null) {
+      map['ULTIMA_SYNC_PLAZO_COBRO'] = Variable<String>(ultimaSyncPlazoDeCobro);
     }
-    if (!nullToAbsent || lastSyncCustomer != null) {
-      map['LAST_SYNC_CUSTOMER'] = Variable<String>(lastSyncCustomer);
+    if (!nullToAbsent || ultimaSyncCliente != null) {
+      map['ULTIMA_SYNC_CLIENTE'] = Variable<String>(ultimaSyncCliente);
     }
-    if (!nullToAbsent || lastSyncCustomerUser != null) {
-      map['LAST_SYNC_CUSTOMER_USER'] = Variable<String>(lastSyncCustomerUser);
+    if (!nullToAbsent || ultimaSyncClienteUsuario != null) {
+      map['ULTIMA_SYNC_CLIENTE_USUARIO'] =
+          Variable<String>(ultimaSyncClienteUsuario);
     }
-    if (!nullToAbsent || lastSyncCustomerContact != null) {
-      map['LAST_SYNC_CUSTOMER_CONTACT'] =
-          Variable<String>(lastSyncCustomerContact);
+    if (!nullToAbsent || ultimaSyncClienteContacto != null) {
+      map['ULTIMA_SYNC_CLIENTE_CONTACTO'] =
+          Variable<String>(ultimaSyncClienteContacto);
     }
-    if (!nullToAbsent || lastSyncCustomerDiscount != null) {
-      map['LAST_SYNC_CUSTOMER_DISCOUNT'] =
-          Variable<String>(lastSyncCustomerDiscount);
+    if (!nullToAbsent || ultimaSyncClienteDescuento != null) {
+      map['ULTIMA_SYNC_CLIENTE_DESCUENTO'] =
+          Variable<String>(ultimaSyncClienteDescuento);
     }
-    if (!nullToAbsent || lastSyncCustomerAddress != null) {
-      map['LAST_SYNC_CUSTOMER_ADDRESS'] =
-          Variable<String>(lastSyncCustomerAddress);
+    if (!nullToAbsent || ultimaSyncClienteDireccion != null) {
+      map['ULTIMA_SYNC_CLIENTE_DIRECCION'] =
+          Variable<String>(ultimaSyncClienteDireccion);
     }
-    if (!nullToAbsent || lastSyncCustomerNetPrice != null) {
-      map['LAST_SYNC_CUSTOMER_NET_PRICE'] =
-          Variable<String>(lastSyncCustomerNetPrice);
+    if (!nullToAbsent || ultimaSyncClientePrecioNeto != null) {
+      map['ULTIMA_SYNC_CLIENTE_PRECIO_NETO'] =
+          Variable<String>(ultimaSyncClientePrecioNeto);
     }
-    if (!nullToAbsent || lastSyncCustomerNetGroup != null) {
-      map['LAST_SYNC_CUSTOMER_NET_GROUP'] =
-          Variable<String>(lastSyncCustomerNetGroup);
+    if (!nullToAbsent || ultimaSyncClienteGrupoNeto != null) {
+      map['ULTIMA_SYNC_CLIENTE_GRUPO_NETO'] =
+          Variable<String>(ultimaSyncClienteGrupoNeto);
     }
-    if (!nullToAbsent || lastSyncCustomerPendingPayment != null) {
-      map['LAST_SYNC_CUSTOMER_PENDING_PAYMENT'] =
-          Variable<String>(lastSyncCustomerPendingPayment);
+    if (!nullToAbsent || ultimaSyncClientePagoPendiente != null) {
+      map['ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE'] =
+          Variable<String>(ultimaSyncClientePagoPendiente);
     }
-    if (!nullToAbsent || lastSyncCustomerRappels != null) {
-      map['LAST_SYNC_CUSTOMER_RAPPELS'] =
-          Variable<String>(lastSyncCustomerRappels);
+    if (!nullToAbsent || ultimaSyncClienteRappels != null) {
+      map['ULTIMA_SYNC_CLIENTE_RAPPELS'] =
+          Variable<String>(ultimaSyncClienteRappels);
     }
-    if (!nullToAbsent || lastSyncTopArticles != null) {
-      map['LAST_SYNC_TOP_ARTICLES'] = Variable<String>(lastSyncTopArticles);
+    if (!nullToAbsent || ultimaSyncArticulosTop != null) {
+      map['ULTIMA_SYNC_ARTICULOS_TOP'] =
+          Variable<String>(ultimaSyncArticulosTop);
     }
-    if (!nullToAbsent || lastSyncSalesOrder != null) {
-      map['LAST_SYNC_SALES_ORDER'] = Variable<String>(lastSyncSalesOrder);
+    if (!nullToAbsent || ultimaSyncPedidoVenta != null) {
+      map['ULTIMA_SYNC_PEDIDO_VENTA'] = Variable<String>(ultimaSyncPedidoVenta);
     }
-    if (!nullToAbsent || lastSyncVisit != null) {
-      map['LAST_SYNC_VISIT'] = Variable<String>(lastSyncVisit);
+    if (!nullToAbsent || ultimaSyncVisita != null) {
+      map['ULTIMA_SYNC_VISITA'] = Variable<String>(ultimaSyncVisita);
     }
-    if (!nullToAbsent || lastSyncSalesOrderLine != null) {
-      map['LAST_SYNC_SALES_ORDER_LINE'] =
-          Variable<String>(lastSyncSalesOrderLine);
+    if (!nullToAbsent || ultimaSyncPedidoVentaLinea != null) {
+      map['ULTIMA_SYNC_PEDIDO_VENTA_LINEA'] =
+          Variable<String>(ultimaSyncPedidoVentaLinea);
     }
-    if (!nullToAbsent || lastSyncSalesOrderStatus != null) {
-      map['LAST_SYNC_SALES_ORDER_STATUS'] =
-          Variable<String>(lastSyncSalesOrderStatus);
+    if (!nullToAbsent || ultimaSyncPedidoVentaEstado != null) {
+      map['ULTIMA_SYNC_PEDIDO_VENTA_ESTADO'] =
+          Variable<String>(ultimaSyncPedidoVentaEstado);
     }
-    if (!nullToAbsent || lastSyncArticle != null) {
-      map['LAST_SYNC_ARTICLE'] = Variable<String>(lastSyncArticle);
+    if (!nullToAbsent || ultimaSyncArticulo != null) {
+      map['ULTIMA_SYNC_ARTICULO'] = Variable<String>(ultimaSyncArticulo);
     }
-    if (!nullToAbsent || lastSyncFamily != null) {
-      map['LAST_SYNC_FAMILY'] = Variable<String>(lastSyncFamily);
+    if (!nullToAbsent || ultimaSyncFamilia != null) {
+      map['ULTIMA_SYNC_FAMILIA'] = Variable<String>(ultimaSyncFamilia);
     }
-    if (!nullToAbsent || lastSyncSubfamily != null) {
-      map['LAST_SYNC_SUBFAMILY'] = Variable<String>(lastSyncSubfamily);
+    if (!nullToAbsent || ultimaSyncSubfamilia != null) {
+      map['ULTIMA_SYNC_SUBFAMILIA'] = Variable<String>(ultimaSyncSubfamilia);
     }
-    if (!nullToAbsent || lastSyncArticleNetGroup != null) {
-      map['LAST_SYNC_ARTICLE_NET_GROUP'] =
-          Variable<String>(lastSyncArticleNetGroup);
+    if (!nullToAbsent || ultimaSyncArticuloGrupoNeto != null) {
+      map['ULTIMA_SYNC_ARTICULO_GRUPO_NETO'] =
+          Variable<String>(ultimaSyncArticuloGrupoNeto);
     }
-    if (!nullToAbsent || lastSyncArticleRatePrice != null) {
-      map['LAST_SYNC_ARTICLE_RATE_PRICE'] =
-          Variable<String>(lastSyncArticleRatePrice);
+    if (!nullToAbsent || ultimaSyncArticuloTarifaPrecio != null) {
+      map['ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO'] =
+          Variable<String>(ultimaSyncArticuloTarifaPrecio);
     }
-    if (!nullToAbsent || lastSyncArticleComponent != null) {
-      map['LAST_SYNC_ARTICLE_COMPONENT'] =
-          Variable<String>(lastSyncArticleComponent);
+    if (!nullToAbsent || ultimaSyncArticuloComponente != null) {
+      map['ULTIMA_SYNC_ARTICULO_COMPONENTE'] =
+          Variable<String>(ultimaSyncArticuloComponente);
     }
-    if (!nullToAbsent || lastSyncArticleSubstitute != null) {
-      map['LAST_SYNC_ARTICLE_SUBSTITUTE'] =
-          Variable<String>(lastSyncArticleSubstitute);
+    if (!nullToAbsent || ultimaSyncArticuloSustitutivo != null) {
+      map['ULTIMA_SYNC_ARTICULO_SUSTITUTIVO'] =
+          Variable<String>(ultimaSyncArticuloSustitutivo);
     }
-    if (!nullToAbsent || lastSyncArticleSpare != null) {
-      map['LAST_SYNC_ARTICLE_SPARE'] = Variable<String>(lastSyncArticleSpare);
+    if (!nullToAbsent || ultimaSyncArticuloRecambio != null) {
+      map['ULTIMA_SYNC_ARTICULO_RECAMBIO'] =
+          Variable<String>(ultimaSyncArticuloRecambio);
     }
-    if (!nullToAbsent || lastSyncArticleCompanyVat != null) {
-      map['LAST_SYNC_ARTICLE_COMPANY_VAT'] =
-          Variable<String>(lastSyncArticleCompanyVat);
+    if (!nullToAbsent || ultimaSyncArticuloEmpresaIva != null) {
+      map['ULTIMA_SYNC_ARTICULO_EMPRESA_IVA'] =
+          Variable<String>(ultimaSyncArticuloEmpresaIva);
     }
-    if (!nullToAbsent || lastSyncStatsCustomerUserSales != null) {
-      map['LAST_SYNC_STATS_CUSTOMER_USER_SALES'] =
-          Variable<String>(lastSyncStatsCustomerUserSales);
+    if (!nullToAbsent || ultimaSyncEstadisticasClienteUsuarioVentas != null) {
+      map['ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO'] =
+          Variable<String>(ultimaSyncEstadisticasClienteUsuarioVentas);
     }
-    if (!nullToAbsent || lastSyncStatsLastPrices != null) {
-      map['LAST_SYNC_STATS_LAST_PRICES'] =
-          Variable<String>(lastSyncStatsLastPrices);
+    if (!nullToAbsent || ultimaSyncEstadisticasUltimosPrecios != null) {
+      map['ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS'] =
+          Variable<String>(ultimaSyncEstadisticasUltimosPrecios);
     }
     return map;
   }
 
-  LastSyncDateTableCompanion toCompanion(bool nullToAbsent) {
-    return LastSyncDateTableCompanion(
+  FechaUltimaSyncTableCompanion toCompanion(bool nullToAbsent) {
+    return FechaUltimaSyncTableCompanion(
       id: Value(id),
-      lastSyncDivisa: lastSyncDivisa == null && nullToAbsent
+      ultimaSyncDivisa: ultimaSyncDivisa == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncDivisa),
-      lastSyncCountry: lastSyncCountry == null && nullToAbsent
+          : Value(ultimaSyncDivisa),
+      ultimaSyncPais: ultimaSyncPais == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncCountry),
-      lastSyncCollectionMethod: lastSyncCollectionMethod == null && nullToAbsent
+          : Value(ultimaSyncPais),
+      ultimaSyncMetodoDeCobro: ultimaSyncMetodoDeCobro == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncCollectionMethod),
-      lastSyncCollectionTerm: lastSyncCollectionTerm == null && nullToAbsent
+          : Value(ultimaSyncMetodoDeCobro),
+      ultimaSyncPlazoDeCobro: ultimaSyncPlazoDeCobro == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncCollectionTerm),
-      lastSyncCustomer: lastSyncCustomer == null && nullToAbsent
+          : Value(ultimaSyncPlazoDeCobro),
+      ultimaSyncCliente: ultimaSyncCliente == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncCustomer),
-      lastSyncCustomerUser: lastSyncCustomerUser == null && nullToAbsent
+          : Value(ultimaSyncCliente),
+      ultimaSyncClienteUsuario: ultimaSyncClienteUsuario == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncCustomerUser),
-      lastSyncCustomerContact: lastSyncCustomerContact == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncCustomerContact),
-      lastSyncCustomerDiscount: lastSyncCustomerDiscount == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncCustomerDiscount),
-      lastSyncCustomerAddress: lastSyncCustomerAddress == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncCustomerAddress),
-      lastSyncCustomerNetPrice: lastSyncCustomerNetPrice == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncCustomerNetPrice),
-      lastSyncCustomerNetGroup: lastSyncCustomerNetGroup == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncCustomerNetGroup),
-      lastSyncCustomerPendingPayment:
-          lastSyncCustomerPendingPayment == null && nullToAbsent
+          : Value(ultimaSyncClienteUsuario),
+      ultimaSyncClienteContacto:
+          ultimaSyncClienteContacto == null && nullToAbsent
               ? const Value.absent()
-              : Value(lastSyncCustomerPendingPayment),
-      lastSyncCustomerRappels: lastSyncCustomerRappels == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncCustomerRappels),
-      lastSyncTopArticles: lastSyncTopArticles == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncTopArticles),
-      lastSyncSalesOrder: lastSyncSalesOrder == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncSalesOrder),
-      lastSyncVisit: lastSyncVisit == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncVisit),
-      lastSyncSalesOrderLine: lastSyncSalesOrderLine == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncSalesOrderLine),
-      lastSyncSalesOrderStatus: lastSyncSalesOrderStatus == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncSalesOrderStatus),
-      lastSyncArticle: lastSyncArticle == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncArticle),
-      lastSyncFamily: lastSyncFamily == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncFamily),
-      lastSyncSubfamily: lastSyncSubfamily == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncSubfamily),
-      lastSyncArticleNetGroup: lastSyncArticleNetGroup == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncArticleNetGroup),
-      lastSyncArticleRatePrice: lastSyncArticleRatePrice == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncArticleRatePrice),
-      lastSyncArticleComponent: lastSyncArticleComponent == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncArticleComponent),
-      lastSyncArticleSubstitute:
-          lastSyncArticleSubstitute == null && nullToAbsent
+              : Value(ultimaSyncClienteContacto),
+      ultimaSyncClienteDescuento:
+          ultimaSyncClienteDescuento == null && nullToAbsent
               ? const Value.absent()
-              : Value(lastSyncArticleSubstitute),
-      lastSyncArticleSpare: lastSyncArticleSpare == null && nullToAbsent
-          ? const Value.absent()
-          : Value(lastSyncArticleSpare),
-      lastSyncArticleCompanyVat:
-          lastSyncArticleCompanyVat == null && nullToAbsent
+              : Value(ultimaSyncClienteDescuento),
+      ultimaSyncClienteDireccion:
+          ultimaSyncClienteDireccion == null && nullToAbsent
               ? const Value.absent()
-              : Value(lastSyncArticleCompanyVat),
-      lastSyncStatsCustomerUserSales:
-          lastSyncStatsCustomerUserSales == null && nullToAbsent
+              : Value(ultimaSyncClienteDireccion),
+      ultimaSyncClientePrecioNeto:
+          ultimaSyncClientePrecioNeto == null && nullToAbsent
               ? const Value.absent()
-              : Value(lastSyncStatsCustomerUserSales),
-      lastSyncStatsLastPrices: lastSyncStatsLastPrices == null && nullToAbsent
+              : Value(ultimaSyncClientePrecioNeto),
+      ultimaSyncClienteGrupoNeto:
+          ultimaSyncClienteGrupoNeto == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncClienteGrupoNeto),
+      ultimaSyncClientePagoPendiente:
+          ultimaSyncClientePagoPendiente == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncClientePagoPendiente),
+      ultimaSyncClienteRappels: ultimaSyncClienteRappels == null && nullToAbsent
           ? const Value.absent()
-          : Value(lastSyncStatsLastPrices),
+          : Value(ultimaSyncClienteRappels),
+      ultimaSyncArticulosTop: ultimaSyncArticulosTop == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaSyncArticulosTop),
+      ultimaSyncPedidoVenta: ultimaSyncPedidoVenta == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaSyncPedidoVenta),
+      ultimaSyncVisita: ultimaSyncVisita == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaSyncVisita),
+      ultimaSyncPedidoVentaLinea:
+          ultimaSyncPedidoVentaLinea == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncPedidoVentaLinea),
+      ultimaSyncPedidoVentaEstado:
+          ultimaSyncPedidoVentaEstado == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncPedidoVentaEstado),
+      ultimaSyncArticulo: ultimaSyncArticulo == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaSyncArticulo),
+      ultimaSyncFamilia: ultimaSyncFamilia == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaSyncFamilia),
+      ultimaSyncSubfamilia: ultimaSyncSubfamilia == null && nullToAbsent
+          ? const Value.absent()
+          : Value(ultimaSyncSubfamilia),
+      ultimaSyncArticuloGrupoNeto:
+          ultimaSyncArticuloGrupoNeto == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncArticuloGrupoNeto),
+      ultimaSyncArticuloTarifaPrecio:
+          ultimaSyncArticuloTarifaPrecio == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncArticuloTarifaPrecio),
+      ultimaSyncArticuloComponente:
+          ultimaSyncArticuloComponente == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncArticuloComponente),
+      ultimaSyncArticuloSustitutivo:
+          ultimaSyncArticuloSustitutivo == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncArticuloSustitutivo),
+      ultimaSyncArticuloRecambio:
+          ultimaSyncArticuloRecambio == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncArticuloRecambio),
+      ultimaSyncArticuloEmpresaIva:
+          ultimaSyncArticuloEmpresaIva == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncArticuloEmpresaIva),
+      ultimaSyncEstadisticasClienteUsuarioVentas:
+          ultimaSyncEstadisticasClienteUsuarioVentas == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncEstadisticasClienteUsuarioVentas),
+      ultimaSyncEstadisticasUltimosPrecios:
+          ultimaSyncEstadisticasUltimosPrecios == null && nullToAbsent
+              ? const Value.absent()
+              : Value(ultimaSyncEstadisticasUltimosPrecios),
     );
   }
 
-  factory LastSyncDateTableData.fromJson(Map<String, dynamic> json,
+  factory FechaUltimaSyncTableData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return LastSyncDateTableData(
+    return FechaUltimaSyncTableData(
       id: serializer.fromJson<String>(json['id']),
-      lastSyncDivisa: serializer.fromJson<String?>(json['lastSyncDivisa']),
-      lastSyncCountry: serializer.fromJson<String?>(json['lastSyncCountry']),
-      lastSyncCollectionMethod:
-          serializer.fromJson<String?>(json['lastSyncCollectionMethod']),
-      lastSyncCollectionTerm:
-          serializer.fromJson<String?>(json['lastSyncCollectionTerm']),
-      lastSyncCustomer: serializer.fromJson<String?>(json['lastSyncCustomer']),
-      lastSyncCustomerUser:
-          serializer.fromJson<String?>(json['lastSyncCustomerUser']),
-      lastSyncCustomerContact:
-          serializer.fromJson<String?>(json['lastSyncCustomerContact']),
-      lastSyncCustomerDiscount:
-          serializer.fromJson<String?>(json['lastSyncCustomerDiscount']),
-      lastSyncCustomerAddress:
-          serializer.fromJson<String?>(json['lastSyncCustomerAddress']),
-      lastSyncCustomerNetPrice:
-          serializer.fromJson<String?>(json['lastSyncCustomerNetPrice']),
-      lastSyncCustomerNetGroup:
-          serializer.fromJson<String?>(json['lastSyncCustomerNetGroup']),
-      lastSyncCustomerPendingPayment:
-          serializer.fromJson<String?>(json['lastSyncCustomerPendingPayment']),
-      lastSyncCustomerRappels:
-          serializer.fromJson<String?>(json['lastSyncCustomerRappels']),
-      lastSyncTopArticles:
-          serializer.fromJson<String?>(json['lastSyncTopArticles']),
-      lastSyncSalesOrder:
-          serializer.fromJson<String?>(json['lastSyncSalesOrder']),
-      lastSyncVisit: serializer.fromJson<String?>(json['lastSyncVisit']),
-      lastSyncSalesOrderLine:
-          serializer.fromJson<String?>(json['lastSyncSalesOrderLine']),
-      lastSyncSalesOrderStatus:
-          serializer.fromJson<String?>(json['lastSyncSalesOrderStatus']),
-      lastSyncArticle: serializer.fromJson<String?>(json['lastSyncArticle']),
-      lastSyncFamily: serializer.fromJson<String?>(json['lastSyncFamily']),
-      lastSyncSubfamily:
-          serializer.fromJson<String?>(json['lastSyncSubfamily']),
-      lastSyncArticleNetGroup:
-          serializer.fromJson<String?>(json['lastSyncArticleNetGroup']),
-      lastSyncArticleRatePrice:
-          serializer.fromJson<String?>(json['lastSyncArticleRatePrice']),
-      lastSyncArticleComponent:
-          serializer.fromJson<String?>(json['lastSyncArticleComponent']),
-      lastSyncArticleSubstitute:
-          serializer.fromJson<String?>(json['lastSyncArticleSubstitute']),
-      lastSyncArticleSpare:
-          serializer.fromJson<String?>(json['lastSyncArticleSpare']),
-      lastSyncArticleCompanyVat:
-          serializer.fromJson<String?>(json['lastSyncArticleCompanyVat']),
-      lastSyncStatsCustomerUserSales:
-          serializer.fromJson<String?>(json['lastSyncStatsCustomerUserSales']),
-      lastSyncStatsLastPrices:
-          serializer.fromJson<String?>(json['lastSyncStatsLastPrices']),
+      ultimaSyncDivisa: serializer.fromJson<String?>(json['ultimaSyncDivisa']),
+      ultimaSyncPais: serializer.fromJson<String?>(json['ultimaSyncPais']),
+      ultimaSyncMetodoDeCobro:
+          serializer.fromJson<String?>(json['ultimaSyncMetodoDeCobro']),
+      ultimaSyncPlazoDeCobro:
+          serializer.fromJson<String?>(json['ultimaSyncPlazoDeCobro']),
+      ultimaSyncCliente:
+          serializer.fromJson<String?>(json['ultimaSyncCliente']),
+      ultimaSyncClienteUsuario:
+          serializer.fromJson<String?>(json['ultimaSyncClienteUsuario']),
+      ultimaSyncClienteContacto:
+          serializer.fromJson<String?>(json['ultimaSyncClienteContacto']),
+      ultimaSyncClienteDescuento:
+          serializer.fromJson<String?>(json['ultimaSyncClienteDescuento']),
+      ultimaSyncClienteDireccion:
+          serializer.fromJson<String?>(json['ultimaSyncClienteDireccion']),
+      ultimaSyncClientePrecioNeto:
+          serializer.fromJson<String?>(json['ultimaSyncClientePrecioNeto']),
+      ultimaSyncClienteGrupoNeto:
+          serializer.fromJson<String?>(json['ultimaSyncClienteGrupoNeto']),
+      ultimaSyncClientePagoPendiente:
+          serializer.fromJson<String?>(json['ultimaSyncClientePagoPendiente']),
+      ultimaSyncClienteRappels:
+          serializer.fromJson<String?>(json['ultimaSyncClienteRappels']),
+      ultimaSyncArticulosTop:
+          serializer.fromJson<String?>(json['ultimaSyncArticulosTop']),
+      ultimaSyncPedidoVenta:
+          serializer.fromJson<String?>(json['ultimaSyncPedidoVenta']),
+      ultimaSyncVisita: serializer.fromJson<String?>(json['ultimaSyncVisita']),
+      ultimaSyncPedidoVentaLinea:
+          serializer.fromJson<String?>(json['ultimaSyncPedidoVentaLinea']),
+      ultimaSyncPedidoVentaEstado:
+          serializer.fromJson<String?>(json['ultimaSyncPedidoVentaEstado']),
+      ultimaSyncArticulo:
+          serializer.fromJson<String?>(json['ultimaSyncArticulo']),
+      ultimaSyncFamilia:
+          serializer.fromJson<String?>(json['ultimaSyncFamilia']),
+      ultimaSyncSubfamilia:
+          serializer.fromJson<String?>(json['ultimaSyncSubfamilia']),
+      ultimaSyncArticuloGrupoNeto:
+          serializer.fromJson<String?>(json['ultimaSyncArticuloGrupoNeto']),
+      ultimaSyncArticuloTarifaPrecio:
+          serializer.fromJson<String?>(json['ultimaSyncArticuloTarifaPrecio']),
+      ultimaSyncArticuloComponente:
+          serializer.fromJson<String?>(json['ultimaSyncArticuloComponente']),
+      ultimaSyncArticuloSustitutivo:
+          serializer.fromJson<String?>(json['ultimaSyncArticuloSustitutivo']),
+      ultimaSyncArticuloRecambio:
+          serializer.fromJson<String?>(json['ultimaSyncArticuloRecambio']),
+      ultimaSyncArticuloEmpresaIva:
+          serializer.fromJson<String?>(json['ultimaSyncArticuloEmpresaIva']),
+      ultimaSyncEstadisticasClienteUsuarioVentas: serializer.fromJson<String?>(
+          json['ultimaSyncEstadisticasClienteUsuarioVentas']),
+      ultimaSyncEstadisticasUltimosPrecios: serializer
+          .fromJson<String?>(json['ultimaSyncEstadisticasUltimosPrecios']),
     );
   }
   @override
@@ -343,209 +360,224 @@ class LastSyncDateTableData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
-      'lastSyncDivisa': serializer.toJson<String?>(lastSyncDivisa),
-      'lastSyncCountry': serializer.toJson<String?>(lastSyncCountry),
-      'lastSyncCollectionMethod':
-          serializer.toJson<String?>(lastSyncCollectionMethod),
-      'lastSyncCollectionTerm':
-          serializer.toJson<String?>(lastSyncCollectionTerm),
-      'lastSyncCustomer': serializer.toJson<String?>(lastSyncCustomer),
-      'lastSyncCustomerUser': serializer.toJson<String?>(lastSyncCustomerUser),
-      'lastSyncCustomerContact':
-          serializer.toJson<String?>(lastSyncCustomerContact),
-      'lastSyncCustomerDiscount':
-          serializer.toJson<String?>(lastSyncCustomerDiscount),
-      'lastSyncCustomerAddress':
-          serializer.toJson<String?>(lastSyncCustomerAddress),
-      'lastSyncCustomerNetPrice':
-          serializer.toJson<String?>(lastSyncCustomerNetPrice),
-      'lastSyncCustomerNetGroup':
-          serializer.toJson<String?>(lastSyncCustomerNetGroup),
-      'lastSyncCustomerPendingPayment':
-          serializer.toJson<String?>(lastSyncCustomerPendingPayment),
-      'lastSyncCustomerRappels':
-          serializer.toJson<String?>(lastSyncCustomerRappels),
-      'lastSyncTopArticles': serializer.toJson<String?>(lastSyncTopArticles),
-      'lastSyncSalesOrder': serializer.toJson<String?>(lastSyncSalesOrder),
-      'lastSyncVisit': serializer.toJson<String?>(lastSyncVisit),
-      'lastSyncSalesOrderLine':
-          serializer.toJson<String?>(lastSyncSalesOrderLine),
-      'lastSyncSalesOrderStatus':
-          serializer.toJson<String?>(lastSyncSalesOrderStatus),
-      'lastSyncArticle': serializer.toJson<String?>(lastSyncArticle),
-      'lastSyncFamily': serializer.toJson<String?>(lastSyncFamily),
-      'lastSyncSubfamily': serializer.toJson<String?>(lastSyncSubfamily),
-      'lastSyncArticleNetGroup':
-          serializer.toJson<String?>(lastSyncArticleNetGroup),
-      'lastSyncArticleRatePrice':
-          serializer.toJson<String?>(lastSyncArticleRatePrice),
-      'lastSyncArticleComponent':
-          serializer.toJson<String?>(lastSyncArticleComponent),
-      'lastSyncArticleSubstitute':
-          serializer.toJson<String?>(lastSyncArticleSubstitute),
-      'lastSyncArticleSpare': serializer.toJson<String?>(lastSyncArticleSpare),
-      'lastSyncArticleCompanyVat':
-          serializer.toJson<String?>(lastSyncArticleCompanyVat),
-      'lastSyncStatsCustomerUserSales':
-          serializer.toJson<String?>(lastSyncStatsCustomerUserSales),
-      'lastSyncStatsLastPrices':
-          serializer.toJson<String?>(lastSyncStatsLastPrices),
+      'ultimaSyncDivisa': serializer.toJson<String?>(ultimaSyncDivisa),
+      'ultimaSyncPais': serializer.toJson<String?>(ultimaSyncPais),
+      'ultimaSyncMetodoDeCobro':
+          serializer.toJson<String?>(ultimaSyncMetodoDeCobro),
+      'ultimaSyncPlazoDeCobro':
+          serializer.toJson<String?>(ultimaSyncPlazoDeCobro),
+      'ultimaSyncCliente': serializer.toJson<String?>(ultimaSyncCliente),
+      'ultimaSyncClienteUsuario':
+          serializer.toJson<String?>(ultimaSyncClienteUsuario),
+      'ultimaSyncClienteContacto':
+          serializer.toJson<String?>(ultimaSyncClienteContacto),
+      'ultimaSyncClienteDescuento':
+          serializer.toJson<String?>(ultimaSyncClienteDescuento),
+      'ultimaSyncClienteDireccion':
+          serializer.toJson<String?>(ultimaSyncClienteDireccion),
+      'ultimaSyncClientePrecioNeto':
+          serializer.toJson<String?>(ultimaSyncClientePrecioNeto),
+      'ultimaSyncClienteGrupoNeto':
+          serializer.toJson<String?>(ultimaSyncClienteGrupoNeto),
+      'ultimaSyncClientePagoPendiente':
+          serializer.toJson<String?>(ultimaSyncClientePagoPendiente),
+      'ultimaSyncClienteRappels':
+          serializer.toJson<String?>(ultimaSyncClienteRappels),
+      'ultimaSyncArticulosTop':
+          serializer.toJson<String?>(ultimaSyncArticulosTop),
+      'ultimaSyncPedidoVenta':
+          serializer.toJson<String?>(ultimaSyncPedidoVenta),
+      'ultimaSyncVisita': serializer.toJson<String?>(ultimaSyncVisita),
+      'ultimaSyncPedidoVentaLinea':
+          serializer.toJson<String?>(ultimaSyncPedidoVentaLinea),
+      'ultimaSyncPedidoVentaEstado':
+          serializer.toJson<String?>(ultimaSyncPedidoVentaEstado),
+      'ultimaSyncArticulo': serializer.toJson<String?>(ultimaSyncArticulo),
+      'ultimaSyncFamilia': serializer.toJson<String?>(ultimaSyncFamilia),
+      'ultimaSyncSubfamilia': serializer.toJson<String?>(ultimaSyncSubfamilia),
+      'ultimaSyncArticuloGrupoNeto':
+          serializer.toJson<String?>(ultimaSyncArticuloGrupoNeto),
+      'ultimaSyncArticuloTarifaPrecio':
+          serializer.toJson<String?>(ultimaSyncArticuloTarifaPrecio),
+      'ultimaSyncArticuloComponente':
+          serializer.toJson<String?>(ultimaSyncArticuloComponente),
+      'ultimaSyncArticuloSustitutivo':
+          serializer.toJson<String?>(ultimaSyncArticuloSustitutivo),
+      'ultimaSyncArticuloRecambio':
+          serializer.toJson<String?>(ultimaSyncArticuloRecambio),
+      'ultimaSyncArticuloEmpresaIva':
+          serializer.toJson<String?>(ultimaSyncArticuloEmpresaIva),
+      'ultimaSyncEstadisticasClienteUsuarioVentas': serializer
+          .toJson<String?>(ultimaSyncEstadisticasClienteUsuarioVentas),
+      'ultimaSyncEstadisticasUltimosPrecios':
+          serializer.toJson<String?>(ultimaSyncEstadisticasUltimosPrecios),
     };
   }
 
-  LastSyncDateTableData copyWith(
+  FechaUltimaSyncTableData copyWith(
           {String? id,
-          Value<String?> lastSyncDivisa = const Value.absent(),
-          Value<String?> lastSyncCountry = const Value.absent(),
-          Value<String?> lastSyncCollectionMethod = const Value.absent(),
-          Value<String?> lastSyncCollectionTerm = const Value.absent(),
-          Value<String?> lastSyncCustomer = const Value.absent(),
-          Value<String?> lastSyncCustomerUser = const Value.absent(),
-          Value<String?> lastSyncCustomerContact = const Value.absent(),
-          Value<String?> lastSyncCustomerDiscount = const Value.absent(),
-          Value<String?> lastSyncCustomerAddress = const Value.absent(),
-          Value<String?> lastSyncCustomerNetPrice = const Value.absent(),
-          Value<String?> lastSyncCustomerNetGroup = const Value.absent(),
-          Value<String?> lastSyncCustomerPendingPayment = const Value.absent(),
-          Value<String?> lastSyncCustomerRappels = const Value.absent(),
-          Value<String?> lastSyncTopArticles = const Value.absent(),
-          Value<String?> lastSyncSalesOrder = const Value.absent(),
-          Value<String?> lastSyncVisit = const Value.absent(),
-          Value<String?> lastSyncSalesOrderLine = const Value.absent(),
-          Value<String?> lastSyncSalesOrderStatus = const Value.absent(),
-          Value<String?> lastSyncArticle = const Value.absent(),
-          Value<String?> lastSyncFamily = const Value.absent(),
-          Value<String?> lastSyncSubfamily = const Value.absent(),
-          Value<String?> lastSyncArticleNetGroup = const Value.absent(),
-          Value<String?> lastSyncArticleRatePrice = const Value.absent(),
-          Value<String?> lastSyncArticleComponent = const Value.absent(),
-          Value<String?> lastSyncArticleSubstitute = const Value.absent(),
-          Value<String?> lastSyncArticleSpare = const Value.absent(),
-          Value<String?> lastSyncArticleCompanyVat = const Value.absent(),
-          Value<String?> lastSyncStatsCustomerUserSales = const Value.absent(),
-          Value<String?> lastSyncStatsLastPrices = const Value.absent()}) =>
-      LastSyncDateTableData(
+          Value<String?> ultimaSyncDivisa = const Value.absent(),
+          Value<String?> ultimaSyncPais = const Value.absent(),
+          Value<String?> ultimaSyncMetodoDeCobro = const Value.absent(),
+          Value<String?> ultimaSyncPlazoDeCobro = const Value.absent(),
+          Value<String?> ultimaSyncCliente = const Value.absent(),
+          Value<String?> ultimaSyncClienteUsuario = const Value.absent(),
+          Value<String?> ultimaSyncClienteContacto = const Value.absent(),
+          Value<String?> ultimaSyncClienteDescuento = const Value.absent(),
+          Value<String?> ultimaSyncClienteDireccion = const Value.absent(),
+          Value<String?> ultimaSyncClientePrecioNeto = const Value.absent(),
+          Value<String?> ultimaSyncClienteGrupoNeto = const Value.absent(),
+          Value<String?> ultimaSyncClientePagoPendiente = const Value.absent(),
+          Value<String?> ultimaSyncClienteRappels = const Value.absent(),
+          Value<String?> ultimaSyncArticulosTop = const Value.absent(),
+          Value<String?> ultimaSyncPedidoVenta = const Value.absent(),
+          Value<String?> ultimaSyncVisita = const Value.absent(),
+          Value<String?> ultimaSyncPedidoVentaLinea = const Value.absent(),
+          Value<String?> ultimaSyncPedidoVentaEstado = const Value.absent(),
+          Value<String?> ultimaSyncArticulo = const Value.absent(),
+          Value<String?> ultimaSyncFamilia = const Value.absent(),
+          Value<String?> ultimaSyncSubfamilia = const Value.absent(),
+          Value<String?> ultimaSyncArticuloGrupoNeto = const Value.absent(),
+          Value<String?> ultimaSyncArticuloTarifaPrecio = const Value.absent(),
+          Value<String?> ultimaSyncArticuloComponente = const Value.absent(),
+          Value<String?> ultimaSyncArticuloSustitutivo = const Value.absent(),
+          Value<String?> ultimaSyncArticuloRecambio = const Value.absent(),
+          Value<String?> ultimaSyncArticuloEmpresaIva = const Value.absent(),
+          Value<String?> ultimaSyncEstadisticasClienteUsuarioVentas =
+              const Value.absent(),
+          Value<String?> ultimaSyncEstadisticasUltimosPrecios =
+              const Value.absent()}) =>
+      FechaUltimaSyncTableData(
         id: id ?? this.id,
-        lastSyncDivisa:
-            lastSyncDivisa.present ? lastSyncDivisa.value : this.lastSyncDivisa,
-        lastSyncCountry: lastSyncCountry.present
-            ? lastSyncCountry.value
-            : this.lastSyncCountry,
-        lastSyncCollectionMethod: lastSyncCollectionMethod.present
-            ? lastSyncCollectionMethod.value
-            : this.lastSyncCollectionMethod,
-        lastSyncCollectionTerm: lastSyncCollectionTerm.present
-            ? lastSyncCollectionTerm.value
-            : this.lastSyncCollectionTerm,
-        lastSyncCustomer: lastSyncCustomer.present
-            ? lastSyncCustomer.value
-            : this.lastSyncCustomer,
-        lastSyncCustomerUser: lastSyncCustomerUser.present
-            ? lastSyncCustomerUser.value
-            : this.lastSyncCustomerUser,
-        lastSyncCustomerContact: lastSyncCustomerContact.present
-            ? lastSyncCustomerContact.value
-            : this.lastSyncCustomerContact,
-        lastSyncCustomerDiscount: lastSyncCustomerDiscount.present
-            ? lastSyncCustomerDiscount.value
-            : this.lastSyncCustomerDiscount,
-        lastSyncCustomerAddress: lastSyncCustomerAddress.present
-            ? lastSyncCustomerAddress.value
-            : this.lastSyncCustomerAddress,
-        lastSyncCustomerNetPrice: lastSyncCustomerNetPrice.present
-            ? lastSyncCustomerNetPrice.value
-            : this.lastSyncCustomerNetPrice,
-        lastSyncCustomerNetGroup: lastSyncCustomerNetGroup.present
-            ? lastSyncCustomerNetGroup.value
-            : this.lastSyncCustomerNetGroup,
-        lastSyncCustomerPendingPayment: lastSyncCustomerPendingPayment.present
-            ? lastSyncCustomerPendingPayment.value
-            : this.lastSyncCustomerPendingPayment,
-        lastSyncCustomerRappels: lastSyncCustomerRappels.present
-            ? lastSyncCustomerRappels.value
-            : this.lastSyncCustomerRappels,
-        lastSyncTopArticles: lastSyncTopArticles.present
-            ? lastSyncTopArticles.value
-            : this.lastSyncTopArticles,
-        lastSyncSalesOrder: lastSyncSalesOrder.present
-            ? lastSyncSalesOrder.value
-            : this.lastSyncSalesOrder,
-        lastSyncVisit:
-            lastSyncVisit.present ? lastSyncVisit.value : this.lastSyncVisit,
-        lastSyncSalesOrderLine: lastSyncSalesOrderLine.present
-            ? lastSyncSalesOrderLine.value
-            : this.lastSyncSalesOrderLine,
-        lastSyncSalesOrderStatus: lastSyncSalesOrderStatus.present
-            ? lastSyncSalesOrderStatus.value
-            : this.lastSyncSalesOrderStatus,
-        lastSyncArticle: lastSyncArticle.present
-            ? lastSyncArticle.value
-            : this.lastSyncArticle,
-        lastSyncFamily:
-            lastSyncFamily.present ? lastSyncFamily.value : this.lastSyncFamily,
-        lastSyncSubfamily: lastSyncSubfamily.present
-            ? lastSyncSubfamily.value
-            : this.lastSyncSubfamily,
-        lastSyncArticleNetGroup: lastSyncArticleNetGroup.present
-            ? lastSyncArticleNetGroup.value
-            : this.lastSyncArticleNetGroup,
-        lastSyncArticleRatePrice: lastSyncArticleRatePrice.present
-            ? lastSyncArticleRatePrice.value
-            : this.lastSyncArticleRatePrice,
-        lastSyncArticleComponent: lastSyncArticleComponent.present
-            ? lastSyncArticleComponent.value
-            : this.lastSyncArticleComponent,
-        lastSyncArticleSubstitute: lastSyncArticleSubstitute.present
-            ? lastSyncArticleSubstitute.value
-            : this.lastSyncArticleSubstitute,
-        lastSyncArticleSpare: lastSyncArticleSpare.present
-            ? lastSyncArticleSpare.value
-            : this.lastSyncArticleSpare,
-        lastSyncArticleCompanyVat: lastSyncArticleCompanyVat.present
-            ? lastSyncArticleCompanyVat.value
-            : this.lastSyncArticleCompanyVat,
-        lastSyncStatsCustomerUserSales: lastSyncStatsCustomerUserSales.present
-            ? lastSyncStatsCustomerUserSales.value
-            : this.lastSyncStatsCustomerUserSales,
-        lastSyncStatsLastPrices: lastSyncStatsLastPrices.present
-            ? lastSyncStatsLastPrices.value
-            : this.lastSyncStatsLastPrices,
+        ultimaSyncDivisa: ultimaSyncDivisa.present
+            ? ultimaSyncDivisa.value
+            : this.ultimaSyncDivisa,
+        ultimaSyncPais:
+            ultimaSyncPais.present ? ultimaSyncPais.value : this.ultimaSyncPais,
+        ultimaSyncMetodoDeCobro: ultimaSyncMetodoDeCobro.present
+            ? ultimaSyncMetodoDeCobro.value
+            : this.ultimaSyncMetodoDeCobro,
+        ultimaSyncPlazoDeCobro: ultimaSyncPlazoDeCobro.present
+            ? ultimaSyncPlazoDeCobro.value
+            : this.ultimaSyncPlazoDeCobro,
+        ultimaSyncCliente: ultimaSyncCliente.present
+            ? ultimaSyncCliente.value
+            : this.ultimaSyncCliente,
+        ultimaSyncClienteUsuario: ultimaSyncClienteUsuario.present
+            ? ultimaSyncClienteUsuario.value
+            : this.ultimaSyncClienteUsuario,
+        ultimaSyncClienteContacto: ultimaSyncClienteContacto.present
+            ? ultimaSyncClienteContacto.value
+            : this.ultimaSyncClienteContacto,
+        ultimaSyncClienteDescuento: ultimaSyncClienteDescuento.present
+            ? ultimaSyncClienteDescuento.value
+            : this.ultimaSyncClienteDescuento,
+        ultimaSyncClienteDireccion: ultimaSyncClienteDireccion.present
+            ? ultimaSyncClienteDireccion.value
+            : this.ultimaSyncClienteDireccion,
+        ultimaSyncClientePrecioNeto: ultimaSyncClientePrecioNeto.present
+            ? ultimaSyncClientePrecioNeto.value
+            : this.ultimaSyncClientePrecioNeto,
+        ultimaSyncClienteGrupoNeto: ultimaSyncClienteGrupoNeto.present
+            ? ultimaSyncClienteGrupoNeto.value
+            : this.ultimaSyncClienteGrupoNeto,
+        ultimaSyncClientePagoPendiente: ultimaSyncClientePagoPendiente.present
+            ? ultimaSyncClientePagoPendiente.value
+            : this.ultimaSyncClientePagoPendiente,
+        ultimaSyncClienteRappels: ultimaSyncClienteRappels.present
+            ? ultimaSyncClienteRappels.value
+            : this.ultimaSyncClienteRappels,
+        ultimaSyncArticulosTop: ultimaSyncArticulosTop.present
+            ? ultimaSyncArticulosTop.value
+            : this.ultimaSyncArticulosTop,
+        ultimaSyncPedidoVenta: ultimaSyncPedidoVenta.present
+            ? ultimaSyncPedidoVenta.value
+            : this.ultimaSyncPedidoVenta,
+        ultimaSyncVisita: ultimaSyncVisita.present
+            ? ultimaSyncVisita.value
+            : this.ultimaSyncVisita,
+        ultimaSyncPedidoVentaLinea: ultimaSyncPedidoVentaLinea.present
+            ? ultimaSyncPedidoVentaLinea.value
+            : this.ultimaSyncPedidoVentaLinea,
+        ultimaSyncPedidoVentaEstado: ultimaSyncPedidoVentaEstado.present
+            ? ultimaSyncPedidoVentaEstado.value
+            : this.ultimaSyncPedidoVentaEstado,
+        ultimaSyncArticulo: ultimaSyncArticulo.present
+            ? ultimaSyncArticulo.value
+            : this.ultimaSyncArticulo,
+        ultimaSyncFamilia: ultimaSyncFamilia.present
+            ? ultimaSyncFamilia.value
+            : this.ultimaSyncFamilia,
+        ultimaSyncSubfamilia: ultimaSyncSubfamilia.present
+            ? ultimaSyncSubfamilia.value
+            : this.ultimaSyncSubfamilia,
+        ultimaSyncArticuloGrupoNeto: ultimaSyncArticuloGrupoNeto.present
+            ? ultimaSyncArticuloGrupoNeto.value
+            : this.ultimaSyncArticuloGrupoNeto,
+        ultimaSyncArticuloTarifaPrecio: ultimaSyncArticuloTarifaPrecio.present
+            ? ultimaSyncArticuloTarifaPrecio.value
+            : this.ultimaSyncArticuloTarifaPrecio,
+        ultimaSyncArticuloComponente: ultimaSyncArticuloComponente.present
+            ? ultimaSyncArticuloComponente.value
+            : this.ultimaSyncArticuloComponente,
+        ultimaSyncArticuloSustitutivo: ultimaSyncArticuloSustitutivo.present
+            ? ultimaSyncArticuloSustitutivo.value
+            : this.ultimaSyncArticuloSustitutivo,
+        ultimaSyncArticuloRecambio: ultimaSyncArticuloRecambio.present
+            ? ultimaSyncArticuloRecambio.value
+            : this.ultimaSyncArticuloRecambio,
+        ultimaSyncArticuloEmpresaIva: ultimaSyncArticuloEmpresaIva.present
+            ? ultimaSyncArticuloEmpresaIva.value
+            : this.ultimaSyncArticuloEmpresaIva,
+        ultimaSyncEstadisticasClienteUsuarioVentas:
+            ultimaSyncEstadisticasClienteUsuarioVentas.present
+                ? ultimaSyncEstadisticasClienteUsuarioVentas.value
+                : this.ultimaSyncEstadisticasClienteUsuarioVentas,
+        ultimaSyncEstadisticasUltimosPrecios:
+            ultimaSyncEstadisticasUltimosPrecios.present
+                ? ultimaSyncEstadisticasUltimosPrecios.value
+                : this.ultimaSyncEstadisticasUltimosPrecios,
       );
   @override
   String toString() {
-    return (StringBuffer('LastSyncDateTableData(')
+    return (StringBuffer('FechaUltimaSyncTableData(')
           ..write('id: $id, ')
-          ..write('lastSyncDivisa: $lastSyncDivisa, ')
-          ..write('lastSyncCountry: $lastSyncCountry, ')
-          ..write('lastSyncCollectionMethod: $lastSyncCollectionMethod, ')
-          ..write('lastSyncCollectionTerm: $lastSyncCollectionTerm, ')
-          ..write('lastSyncCustomer: $lastSyncCustomer, ')
-          ..write('lastSyncCustomerUser: $lastSyncCustomerUser, ')
-          ..write('lastSyncCustomerContact: $lastSyncCustomerContact, ')
-          ..write('lastSyncCustomerDiscount: $lastSyncCustomerDiscount, ')
-          ..write('lastSyncCustomerAddress: $lastSyncCustomerAddress, ')
-          ..write('lastSyncCustomerNetPrice: $lastSyncCustomerNetPrice, ')
-          ..write('lastSyncCustomerNetGroup: $lastSyncCustomerNetGroup, ')
+          ..write('ultimaSyncDivisa: $ultimaSyncDivisa, ')
+          ..write('ultimaSyncPais: $ultimaSyncPais, ')
+          ..write('ultimaSyncMetodoDeCobro: $ultimaSyncMetodoDeCobro, ')
+          ..write('ultimaSyncPlazoDeCobro: $ultimaSyncPlazoDeCobro, ')
+          ..write('ultimaSyncCliente: $ultimaSyncCliente, ')
+          ..write('ultimaSyncClienteUsuario: $ultimaSyncClienteUsuario, ')
+          ..write('ultimaSyncClienteContacto: $ultimaSyncClienteContacto, ')
+          ..write('ultimaSyncClienteDescuento: $ultimaSyncClienteDescuento, ')
+          ..write('ultimaSyncClienteDireccion: $ultimaSyncClienteDireccion, ')
+          ..write('ultimaSyncClientePrecioNeto: $ultimaSyncClientePrecioNeto, ')
+          ..write('ultimaSyncClienteGrupoNeto: $ultimaSyncClienteGrupoNeto, ')
           ..write(
-              'lastSyncCustomerPendingPayment: $lastSyncCustomerPendingPayment, ')
-          ..write('lastSyncCustomerRappels: $lastSyncCustomerRappels, ')
-          ..write('lastSyncTopArticles: $lastSyncTopArticles, ')
-          ..write('lastSyncSalesOrder: $lastSyncSalesOrder, ')
-          ..write('lastSyncVisit: $lastSyncVisit, ')
-          ..write('lastSyncSalesOrderLine: $lastSyncSalesOrderLine, ')
-          ..write('lastSyncSalesOrderStatus: $lastSyncSalesOrderStatus, ')
-          ..write('lastSyncArticle: $lastSyncArticle, ')
-          ..write('lastSyncFamily: $lastSyncFamily, ')
-          ..write('lastSyncSubfamily: $lastSyncSubfamily, ')
-          ..write('lastSyncArticleNetGroup: $lastSyncArticleNetGroup, ')
-          ..write('lastSyncArticleRatePrice: $lastSyncArticleRatePrice, ')
-          ..write('lastSyncArticleComponent: $lastSyncArticleComponent, ')
-          ..write('lastSyncArticleSubstitute: $lastSyncArticleSubstitute, ')
-          ..write('lastSyncArticleSpare: $lastSyncArticleSpare, ')
-          ..write('lastSyncArticleCompanyVat: $lastSyncArticleCompanyVat, ')
+              'ultimaSyncClientePagoPendiente: $ultimaSyncClientePagoPendiente, ')
+          ..write('ultimaSyncClienteRappels: $ultimaSyncClienteRappels, ')
+          ..write('ultimaSyncArticulosTop: $ultimaSyncArticulosTop, ')
+          ..write('ultimaSyncPedidoVenta: $ultimaSyncPedidoVenta, ')
+          ..write('ultimaSyncVisita: $ultimaSyncVisita, ')
+          ..write('ultimaSyncPedidoVentaLinea: $ultimaSyncPedidoVentaLinea, ')
+          ..write('ultimaSyncPedidoVentaEstado: $ultimaSyncPedidoVentaEstado, ')
+          ..write('ultimaSyncArticulo: $ultimaSyncArticulo, ')
+          ..write('ultimaSyncFamilia: $ultimaSyncFamilia, ')
+          ..write('ultimaSyncSubfamilia: $ultimaSyncSubfamilia, ')
+          ..write('ultimaSyncArticuloGrupoNeto: $ultimaSyncArticuloGrupoNeto, ')
           ..write(
-              'lastSyncStatsCustomerUserSales: $lastSyncStatsCustomerUserSales, ')
-          ..write('lastSyncStatsLastPrices: $lastSyncStatsLastPrices')
+              'ultimaSyncArticuloTarifaPrecio: $ultimaSyncArticuloTarifaPrecio, ')
+          ..write(
+              'ultimaSyncArticuloComponente: $ultimaSyncArticuloComponente, ')
+          ..write(
+              'ultimaSyncArticuloSustitutivo: $ultimaSyncArticuloSustitutivo, ')
+          ..write('ultimaSyncArticuloRecambio: $ultimaSyncArticuloRecambio, ')
+          ..write(
+              'ultimaSyncArticuloEmpresaIva: $ultimaSyncArticuloEmpresaIva, ')
+          ..write(
+              'ultimaSyncEstadisticasClienteUsuarioVentas: $ultimaSyncEstadisticasClienteUsuarioVentas, ')
+          ..write(
+              'ultimaSyncEstadisticasUltimosPrecios: $ultimaSyncEstadisticasUltimosPrecios')
           ..write(')'))
         .toString();
   }
@@ -553,338 +585,356 @@ class LastSyncDateTableData extends DataClass
   @override
   int get hashCode => Object.hashAll([
         id,
-        lastSyncDivisa,
-        lastSyncCountry,
-        lastSyncCollectionMethod,
-        lastSyncCollectionTerm,
-        lastSyncCustomer,
-        lastSyncCustomerUser,
-        lastSyncCustomerContact,
-        lastSyncCustomerDiscount,
-        lastSyncCustomerAddress,
-        lastSyncCustomerNetPrice,
-        lastSyncCustomerNetGroup,
-        lastSyncCustomerPendingPayment,
-        lastSyncCustomerRappels,
-        lastSyncTopArticles,
-        lastSyncSalesOrder,
-        lastSyncVisit,
-        lastSyncSalesOrderLine,
-        lastSyncSalesOrderStatus,
-        lastSyncArticle,
-        lastSyncFamily,
-        lastSyncSubfamily,
-        lastSyncArticleNetGroup,
-        lastSyncArticleRatePrice,
-        lastSyncArticleComponent,
-        lastSyncArticleSubstitute,
-        lastSyncArticleSpare,
-        lastSyncArticleCompanyVat,
-        lastSyncStatsCustomerUserSales,
-        lastSyncStatsLastPrices
+        ultimaSyncDivisa,
+        ultimaSyncPais,
+        ultimaSyncMetodoDeCobro,
+        ultimaSyncPlazoDeCobro,
+        ultimaSyncCliente,
+        ultimaSyncClienteUsuario,
+        ultimaSyncClienteContacto,
+        ultimaSyncClienteDescuento,
+        ultimaSyncClienteDireccion,
+        ultimaSyncClientePrecioNeto,
+        ultimaSyncClienteGrupoNeto,
+        ultimaSyncClientePagoPendiente,
+        ultimaSyncClienteRappels,
+        ultimaSyncArticulosTop,
+        ultimaSyncPedidoVenta,
+        ultimaSyncVisita,
+        ultimaSyncPedidoVentaLinea,
+        ultimaSyncPedidoVentaEstado,
+        ultimaSyncArticulo,
+        ultimaSyncFamilia,
+        ultimaSyncSubfamilia,
+        ultimaSyncArticuloGrupoNeto,
+        ultimaSyncArticuloTarifaPrecio,
+        ultimaSyncArticuloComponente,
+        ultimaSyncArticuloSustitutivo,
+        ultimaSyncArticuloRecambio,
+        ultimaSyncArticuloEmpresaIva,
+        ultimaSyncEstadisticasClienteUsuarioVentas,
+        ultimaSyncEstadisticasUltimosPrecios
       ]);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is LastSyncDateTableData &&
+      (other is FechaUltimaSyncTableData &&
           other.id == this.id &&
-          other.lastSyncDivisa == this.lastSyncDivisa &&
-          other.lastSyncCountry == this.lastSyncCountry &&
-          other.lastSyncCollectionMethod == this.lastSyncCollectionMethod &&
-          other.lastSyncCollectionTerm == this.lastSyncCollectionTerm &&
-          other.lastSyncCustomer == this.lastSyncCustomer &&
-          other.lastSyncCustomerUser == this.lastSyncCustomerUser &&
-          other.lastSyncCustomerContact == this.lastSyncCustomerContact &&
-          other.lastSyncCustomerDiscount == this.lastSyncCustomerDiscount &&
-          other.lastSyncCustomerAddress == this.lastSyncCustomerAddress &&
-          other.lastSyncCustomerNetPrice == this.lastSyncCustomerNetPrice &&
-          other.lastSyncCustomerNetGroup == this.lastSyncCustomerNetGroup &&
-          other.lastSyncCustomerPendingPayment ==
-              this.lastSyncCustomerPendingPayment &&
-          other.lastSyncCustomerRappels == this.lastSyncCustomerRappels &&
-          other.lastSyncTopArticles == this.lastSyncTopArticles &&
-          other.lastSyncSalesOrder == this.lastSyncSalesOrder &&
-          other.lastSyncVisit == this.lastSyncVisit &&
-          other.lastSyncSalesOrderLine == this.lastSyncSalesOrderLine &&
-          other.lastSyncSalesOrderStatus == this.lastSyncSalesOrderStatus &&
-          other.lastSyncArticle == this.lastSyncArticle &&
-          other.lastSyncFamily == this.lastSyncFamily &&
-          other.lastSyncSubfamily == this.lastSyncSubfamily &&
-          other.lastSyncArticleNetGroup == this.lastSyncArticleNetGroup &&
-          other.lastSyncArticleRatePrice == this.lastSyncArticleRatePrice &&
-          other.lastSyncArticleComponent == this.lastSyncArticleComponent &&
-          other.lastSyncArticleSubstitute == this.lastSyncArticleSubstitute &&
-          other.lastSyncArticleSpare == this.lastSyncArticleSpare &&
-          other.lastSyncArticleCompanyVat == this.lastSyncArticleCompanyVat &&
-          other.lastSyncStatsCustomerUserSales ==
-              this.lastSyncStatsCustomerUserSales &&
-          other.lastSyncStatsLastPrices == this.lastSyncStatsLastPrices);
+          other.ultimaSyncDivisa == this.ultimaSyncDivisa &&
+          other.ultimaSyncPais == this.ultimaSyncPais &&
+          other.ultimaSyncMetodoDeCobro == this.ultimaSyncMetodoDeCobro &&
+          other.ultimaSyncPlazoDeCobro == this.ultimaSyncPlazoDeCobro &&
+          other.ultimaSyncCliente == this.ultimaSyncCliente &&
+          other.ultimaSyncClienteUsuario == this.ultimaSyncClienteUsuario &&
+          other.ultimaSyncClienteContacto == this.ultimaSyncClienteContacto &&
+          other.ultimaSyncClienteDescuento == this.ultimaSyncClienteDescuento &&
+          other.ultimaSyncClienteDireccion == this.ultimaSyncClienteDireccion &&
+          other.ultimaSyncClientePrecioNeto ==
+              this.ultimaSyncClientePrecioNeto &&
+          other.ultimaSyncClienteGrupoNeto == this.ultimaSyncClienteGrupoNeto &&
+          other.ultimaSyncClientePagoPendiente ==
+              this.ultimaSyncClientePagoPendiente &&
+          other.ultimaSyncClienteRappels == this.ultimaSyncClienteRappels &&
+          other.ultimaSyncArticulosTop == this.ultimaSyncArticulosTop &&
+          other.ultimaSyncPedidoVenta == this.ultimaSyncPedidoVenta &&
+          other.ultimaSyncVisita == this.ultimaSyncVisita &&
+          other.ultimaSyncPedidoVentaLinea == this.ultimaSyncPedidoVentaLinea &&
+          other.ultimaSyncPedidoVentaEstado ==
+              this.ultimaSyncPedidoVentaEstado &&
+          other.ultimaSyncArticulo == this.ultimaSyncArticulo &&
+          other.ultimaSyncFamilia == this.ultimaSyncFamilia &&
+          other.ultimaSyncSubfamilia == this.ultimaSyncSubfamilia &&
+          other.ultimaSyncArticuloGrupoNeto ==
+              this.ultimaSyncArticuloGrupoNeto &&
+          other.ultimaSyncArticuloTarifaPrecio ==
+              this.ultimaSyncArticuloTarifaPrecio &&
+          other.ultimaSyncArticuloComponente ==
+              this.ultimaSyncArticuloComponente &&
+          other.ultimaSyncArticuloSustitutivo ==
+              this.ultimaSyncArticuloSustitutivo &&
+          other.ultimaSyncArticuloRecambio == this.ultimaSyncArticuloRecambio &&
+          other.ultimaSyncArticuloEmpresaIva ==
+              this.ultimaSyncArticuloEmpresaIva &&
+          other.ultimaSyncEstadisticasClienteUsuarioVentas ==
+              this.ultimaSyncEstadisticasClienteUsuarioVentas &&
+          other.ultimaSyncEstadisticasUltimosPrecios ==
+              this.ultimaSyncEstadisticasUltimosPrecios);
 }
 
-class LastSyncDateTableCompanion
-    extends UpdateCompanion<LastSyncDateTableData> {
+class FechaUltimaSyncTableCompanion
+    extends UpdateCompanion<FechaUltimaSyncTableData> {
   final Value<String> id;
-  final Value<String?> lastSyncDivisa;
-  final Value<String?> lastSyncCountry;
-  final Value<String?> lastSyncCollectionMethod;
-  final Value<String?> lastSyncCollectionTerm;
-  final Value<String?> lastSyncCustomer;
-  final Value<String?> lastSyncCustomerUser;
-  final Value<String?> lastSyncCustomerContact;
-  final Value<String?> lastSyncCustomerDiscount;
-  final Value<String?> lastSyncCustomerAddress;
-  final Value<String?> lastSyncCustomerNetPrice;
-  final Value<String?> lastSyncCustomerNetGroup;
-  final Value<String?> lastSyncCustomerPendingPayment;
-  final Value<String?> lastSyncCustomerRappels;
-  final Value<String?> lastSyncTopArticles;
-  final Value<String?> lastSyncSalesOrder;
-  final Value<String?> lastSyncVisit;
-  final Value<String?> lastSyncSalesOrderLine;
-  final Value<String?> lastSyncSalesOrderStatus;
-  final Value<String?> lastSyncArticle;
-  final Value<String?> lastSyncFamily;
-  final Value<String?> lastSyncSubfamily;
-  final Value<String?> lastSyncArticleNetGroup;
-  final Value<String?> lastSyncArticleRatePrice;
-  final Value<String?> lastSyncArticleComponent;
-  final Value<String?> lastSyncArticleSubstitute;
-  final Value<String?> lastSyncArticleSpare;
-  final Value<String?> lastSyncArticleCompanyVat;
-  final Value<String?> lastSyncStatsCustomerUserSales;
-  final Value<String?> lastSyncStatsLastPrices;
-  const LastSyncDateTableCompanion({
+  final Value<String?> ultimaSyncDivisa;
+  final Value<String?> ultimaSyncPais;
+  final Value<String?> ultimaSyncMetodoDeCobro;
+  final Value<String?> ultimaSyncPlazoDeCobro;
+  final Value<String?> ultimaSyncCliente;
+  final Value<String?> ultimaSyncClienteUsuario;
+  final Value<String?> ultimaSyncClienteContacto;
+  final Value<String?> ultimaSyncClienteDescuento;
+  final Value<String?> ultimaSyncClienteDireccion;
+  final Value<String?> ultimaSyncClientePrecioNeto;
+  final Value<String?> ultimaSyncClienteGrupoNeto;
+  final Value<String?> ultimaSyncClientePagoPendiente;
+  final Value<String?> ultimaSyncClienteRappels;
+  final Value<String?> ultimaSyncArticulosTop;
+  final Value<String?> ultimaSyncPedidoVenta;
+  final Value<String?> ultimaSyncVisita;
+  final Value<String?> ultimaSyncPedidoVentaLinea;
+  final Value<String?> ultimaSyncPedidoVentaEstado;
+  final Value<String?> ultimaSyncArticulo;
+  final Value<String?> ultimaSyncFamilia;
+  final Value<String?> ultimaSyncSubfamilia;
+  final Value<String?> ultimaSyncArticuloGrupoNeto;
+  final Value<String?> ultimaSyncArticuloTarifaPrecio;
+  final Value<String?> ultimaSyncArticuloComponente;
+  final Value<String?> ultimaSyncArticuloSustitutivo;
+  final Value<String?> ultimaSyncArticuloRecambio;
+  final Value<String?> ultimaSyncArticuloEmpresaIva;
+  final Value<String?> ultimaSyncEstadisticasClienteUsuarioVentas;
+  final Value<String?> ultimaSyncEstadisticasUltimosPrecios;
+  const FechaUltimaSyncTableCompanion({
     this.id = const Value.absent(),
-    this.lastSyncDivisa = const Value.absent(),
-    this.lastSyncCountry = const Value.absent(),
-    this.lastSyncCollectionMethod = const Value.absent(),
-    this.lastSyncCollectionTerm = const Value.absent(),
-    this.lastSyncCustomer = const Value.absent(),
-    this.lastSyncCustomerUser = const Value.absent(),
-    this.lastSyncCustomerContact = const Value.absent(),
-    this.lastSyncCustomerDiscount = const Value.absent(),
-    this.lastSyncCustomerAddress = const Value.absent(),
-    this.lastSyncCustomerNetPrice = const Value.absent(),
-    this.lastSyncCustomerNetGroup = const Value.absent(),
-    this.lastSyncCustomerPendingPayment = const Value.absent(),
-    this.lastSyncCustomerRappels = const Value.absent(),
-    this.lastSyncTopArticles = const Value.absent(),
-    this.lastSyncSalesOrder = const Value.absent(),
-    this.lastSyncVisit = const Value.absent(),
-    this.lastSyncSalesOrderLine = const Value.absent(),
-    this.lastSyncSalesOrderStatus = const Value.absent(),
-    this.lastSyncArticle = const Value.absent(),
-    this.lastSyncFamily = const Value.absent(),
-    this.lastSyncSubfamily = const Value.absent(),
-    this.lastSyncArticleNetGroup = const Value.absent(),
-    this.lastSyncArticleRatePrice = const Value.absent(),
-    this.lastSyncArticleComponent = const Value.absent(),
-    this.lastSyncArticleSubstitute = const Value.absent(),
-    this.lastSyncArticleSpare = const Value.absent(),
-    this.lastSyncArticleCompanyVat = const Value.absent(),
-    this.lastSyncStatsCustomerUserSales = const Value.absent(),
-    this.lastSyncStatsLastPrices = const Value.absent(),
+    this.ultimaSyncDivisa = const Value.absent(),
+    this.ultimaSyncPais = const Value.absent(),
+    this.ultimaSyncMetodoDeCobro = const Value.absent(),
+    this.ultimaSyncPlazoDeCobro = const Value.absent(),
+    this.ultimaSyncCliente = const Value.absent(),
+    this.ultimaSyncClienteUsuario = const Value.absent(),
+    this.ultimaSyncClienteContacto = const Value.absent(),
+    this.ultimaSyncClienteDescuento = const Value.absent(),
+    this.ultimaSyncClienteDireccion = const Value.absent(),
+    this.ultimaSyncClientePrecioNeto = const Value.absent(),
+    this.ultimaSyncClienteGrupoNeto = const Value.absent(),
+    this.ultimaSyncClientePagoPendiente = const Value.absent(),
+    this.ultimaSyncClienteRappels = const Value.absent(),
+    this.ultimaSyncArticulosTop = const Value.absent(),
+    this.ultimaSyncPedidoVenta = const Value.absent(),
+    this.ultimaSyncVisita = const Value.absent(),
+    this.ultimaSyncPedidoVentaLinea = const Value.absent(),
+    this.ultimaSyncPedidoVentaEstado = const Value.absent(),
+    this.ultimaSyncArticulo = const Value.absent(),
+    this.ultimaSyncFamilia = const Value.absent(),
+    this.ultimaSyncSubfamilia = const Value.absent(),
+    this.ultimaSyncArticuloGrupoNeto = const Value.absent(),
+    this.ultimaSyncArticuloTarifaPrecio = const Value.absent(),
+    this.ultimaSyncArticuloComponente = const Value.absent(),
+    this.ultimaSyncArticuloSustitutivo = const Value.absent(),
+    this.ultimaSyncArticuloRecambio = const Value.absent(),
+    this.ultimaSyncArticuloEmpresaIva = const Value.absent(),
+    this.ultimaSyncEstadisticasClienteUsuarioVentas = const Value.absent(),
+    this.ultimaSyncEstadisticasUltimosPrecios = const Value.absent(),
   });
-  LastSyncDateTableCompanion.insert({
+  FechaUltimaSyncTableCompanion.insert({
     required String id,
-    this.lastSyncDivisa = const Value.absent(),
-    this.lastSyncCountry = const Value.absent(),
-    this.lastSyncCollectionMethod = const Value.absent(),
-    this.lastSyncCollectionTerm = const Value.absent(),
-    this.lastSyncCustomer = const Value.absent(),
-    this.lastSyncCustomerUser = const Value.absent(),
-    this.lastSyncCustomerContact = const Value.absent(),
-    this.lastSyncCustomerDiscount = const Value.absent(),
-    this.lastSyncCustomerAddress = const Value.absent(),
-    this.lastSyncCustomerNetPrice = const Value.absent(),
-    this.lastSyncCustomerNetGroup = const Value.absent(),
-    this.lastSyncCustomerPendingPayment = const Value.absent(),
-    this.lastSyncCustomerRappels = const Value.absent(),
-    this.lastSyncTopArticles = const Value.absent(),
-    this.lastSyncSalesOrder = const Value.absent(),
-    this.lastSyncVisit = const Value.absent(),
-    this.lastSyncSalesOrderLine = const Value.absent(),
-    this.lastSyncSalesOrderStatus = const Value.absent(),
-    this.lastSyncArticle = const Value.absent(),
-    this.lastSyncFamily = const Value.absent(),
-    this.lastSyncSubfamily = const Value.absent(),
-    this.lastSyncArticleNetGroup = const Value.absent(),
-    this.lastSyncArticleRatePrice = const Value.absent(),
-    this.lastSyncArticleComponent = const Value.absent(),
-    this.lastSyncArticleSubstitute = const Value.absent(),
-    this.lastSyncArticleSpare = const Value.absent(),
-    this.lastSyncArticleCompanyVat = const Value.absent(),
-    this.lastSyncStatsCustomerUserSales = const Value.absent(),
-    this.lastSyncStatsLastPrices = const Value.absent(),
+    this.ultimaSyncDivisa = const Value.absent(),
+    this.ultimaSyncPais = const Value.absent(),
+    this.ultimaSyncMetodoDeCobro = const Value.absent(),
+    this.ultimaSyncPlazoDeCobro = const Value.absent(),
+    this.ultimaSyncCliente = const Value.absent(),
+    this.ultimaSyncClienteUsuario = const Value.absent(),
+    this.ultimaSyncClienteContacto = const Value.absent(),
+    this.ultimaSyncClienteDescuento = const Value.absent(),
+    this.ultimaSyncClienteDireccion = const Value.absent(),
+    this.ultimaSyncClientePrecioNeto = const Value.absent(),
+    this.ultimaSyncClienteGrupoNeto = const Value.absent(),
+    this.ultimaSyncClientePagoPendiente = const Value.absent(),
+    this.ultimaSyncClienteRappels = const Value.absent(),
+    this.ultimaSyncArticulosTop = const Value.absent(),
+    this.ultimaSyncPedidoVenta = const Value.absent(),
+    this.ultimaSyncVisita = const Value.absent(),
+    this.ultimaSyncPedidoVentaLinea = const Value.absent(),
+    this.ultimaSyncPedidoVentaEstado = const Value.absent(),
+    this.ultimaSyncArticulo = const Value.absent(),
+    this.ultimaSyncFamilia = const Value.absent(),
+    this.ultimaSyncSubfamilia = const Value.absent(),
+    this.ultimaSyncArticuloGrupoNeto = const Value.absent(),
+    this.ultimaSyncArticuloTarifaPrecio = const Value.absent(),
+    this.ultimaSyncArticuloComponente = const Value.absent(),
+    this.ultimaSyncArticuloSustitutivo = const Value.absent(),
+    this.ultimaSyncArticuloRecambio = const Value.absent(),
+    this.ultimaSyncArticuloEmpresaIva = const Value.absent(),
+    this.ultimaSyncEstadisticasClienteUsuarioVentas = const Value.absent(),
+    this.ultimaSyncEstadisticasUltimosPrecios = const Value.absent(),
   }) : id = Value(id);
-  static Insertable<LastSyncDateTableData> custom({
+  static Insertable<FechaUltimaSyncTableData> custom({
     Expression<String>? id,
-    Expression<String>? lastSyncDivisa,
-    Expression<String>? lastSyncCountry,
-    Expression<String>? lastSyncCollectionMethod,
-    Expression<String>? lastSyncCollectionTerm,
-    Expression<String>? lastSyncCustomer,
-    Expression<String>? lastSyncCustomerUser,
-    Expression<String>? lastSyncCustomerContact,
-    Expression<String>? lastSyncCustomerDiscount,
-    Expression<String>? lastSyncCustomerAddress,
-    Expression<String>? lastSyncCustomerNetPrice,
-    Expression<String>? lastSyncCustomerNetGroup,
-    Expression<String>? lastSyncCustomerPendingPayment,
-    Expression<String>? lastSyncCustomerRappels,
-    Expression<String>? lastSyncTopArticles,
-    Expression<String>? lastSyncSalesOrder,
-    Expression<String>? lastSyncVisit,
-    Expression<String>? lastSyncSalesOrderLine,
-    Expression<String>? lastSyncSalesOrderStatus,
-    Expression<String>? lastSyncArticle,
-    Expression<String>? lastSyncFamily,
-    Expression<String>? lastSyncSubfamily,
-    Expression<String>? lastSyncArticleNetGroup,
-    Expression<String>? lastSyncArticleRatePrice,
-    Expression<String>? lastSyncArticleComponent,
-    Expression<String>? lastSyncArticleSubstitute,
-    Expression<String>? lastSyncArticleSpare,
-    Expression<String>? lastSyncArticleCompanyVat,
-    Expression<String>? lastSyncStatsCustomerUserSales,
-    Expression<String>? lastSyncStatsLastPrices,
+    Expression<String>? ultimaSyncDivisa,
+    Expression<String>? ultimaSyncPais,
+    Expression<String>? ultimaSyncMetodoDeCobro,
+    Expression<String>? ultimaSyncPlazoDeCobro,
+    Expression<String>? ultimaSyncCliente,
+    Expression<String>? ultimaSyncClienteUsuario,
+    Expression<String>? ultimaSyncClienteContacto,
+    Expression<String>? ultimaSyncClienteDescuento,
+    Expression<String>? ultimaSyncClienteDireccion,
+    Expression<String>? ultimaSyncClientePrecioNeto,
+    Expression<String>? ultimaSyncClienteGrupoNeto,
+    Expression<String>? ultimaSyncClientePagoPendiente,
+    Expression<String>? ultimaSyncClienteRappels,
+    Expression<String>? ultimaSyncArticulosTop,
+    Expression<String>? ultimaSyncPedidoVenta,
+    Expression<String>? ultimaSyncVisita,
+    Expression<String>? ultimaSyncPedidoVentaLinea,
+    Expression<String>? ultimaSyncPedidoVentaEstado,
+    Expression<String>? ultimaSyncArticulo,
+    Expression<String>? ultimaSyncFamilia,
+    Expression<String>? ultimaSyncSubfamilia,
+    Expression<String>? ultimaSyncArticuloGrupoNeto,
+    Expression<String>? ultimaSyncArticuloTarifaPrecio,
+    Expression<String>? ultimaSyncArticuloComponente,
+    Expression<String>? ultimaSyncArticuloSustitutivo,
+    Expression<String>? ultimaSyncArticuloRecambio,
+    Expression<String>? ultimaSyncArticuloEmpresaIva,
+    Expression<String>? ultimaSyncEstadisticasClienteUsuarioVentas,
+    Expression<String>? ultimaSyncEstadisticasUltimosPrecios,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ID': id,
-      if (lastSyncDivisa != null) 'LAST_SYNC_DIVISA': lastSyncDivisa,
-      if (lastSyncCountry != null) 'LAST_SYNC_COUNTRY': lastSyncCountry,
-      if (lastSyncCollectionMethod != null)
-        'LAST_SYNC_COLLECTION_METHOD': lastSyncCollectionMethod,
-      if (lastSyncCollectionTerm != null)
-        'LAST_SYNC_COLLECTION_TERM': lastSyncCollectionTerm,
-      if (lastSyncCustomer != null) 'LAST_SYNC_CUSTOMER': lastSyncCustomer,
-      if (lastSyncCustomerUser != null)
-        'LAST_SYNC_CUSTOMER_USER': lastSyncCustomerUser,
-      if (lastSyncCustomerContact != null)
-        'LAST_SYNC_CUSTOMER_CONTACT': lastSyncCustomerContact,
-      if (lastSyncCustomerDiscount != null)
-        'LAST_SYNC_CUSTOMER_DISCOUNT': lastSyncCustomerDiscount,
-      if (lastSyncCustomerAddress != null)
-        'LAST_SYNC_CUSTOMER_ADDRESS': lastSyncCustomerAddress,
-      if (lastSyncCustomerNetPrice != null)
-        'LAST_SYNC_CUSTOMER_NET_PRICE': lastSyncCustomerNetPrice,
-      if (lastSyncCustomerNetGroup != null)
-        'LAST_SYNC_CUSTOMER_NET_GROUP': lastSyncCustomerNetGroup,
-      if (lastSyncCustomerPendingPayment != null)
-        'LAST_SYNC_CUSTOMER_PENDING_PAYMENT': lastSyncCustomerPendingPayment,
-      if (lastSyncCustomerRappels != null)
-        'LAST_SYNC_CUSTOMER_RAPPELS': lastSyncCustomerRappels,
-      if (lastSyncTopArticles != null)
-        'LAST_SYNC_TOP_ARTICLES': lastSyncTopArticles,
-      if (lastSyncSalesOrder != null)
-        'LAST_SYNC_SALES_ORDER': lastSyncSalesOrder,
-      if (lastSyncVisit != null) 'LAST_SYNC_VISIT': lastSyncVisit,
-      if (lastSyncSalesOrderLine != null)
-        'LAST_SYNC_SALES_ORDER_LINE': lastSyncSalesOrderLine,
-      if (lastSyncSalesOrderStatus != null)
-        'LAST_SYNC_SALES_ORDER_STATUS': lastSyncSalesOrderStatus,
-      if (lastSyncArticle != null) 'LAST_SYNC_ARTICLE': lastSyncArticle,
-      if (lastSyncFamily != null) 'LAST_SYNC_FAMILY': lastSyncFamily,
-      if (lastSyncSubfamily != null) 'LAST_SYNC_SUBFAMILY': lastSyncSubfamily,
-      if (lastSyncArticleNetGroup != null)
-        'LAST_SYNC_ARTICLE_NET_GROUP': lastSyncArticleNetGroup,
-      if (lastSyncArticleRatePrice != null)
-        'LAST_SYNC_ARTICLE_RATE_PRICE': lastSyncArticleRatePrice,
-      if (lastSyncArticleComponent != null)
-        'LAST_SYNC_ARTICLE_COMPONENT': lastSyncArticleComponent,
-      if (lastSyncArticleSubstitute != null)
-        'LAST_SYNC_ARTICLE_SUBSTITUTE': lastSyncArticleSubstitute,
-      if (lastSyncArticleSpare != null)
-        'LAST_SYNC_ARTICLE_SPARE': lastSyncArticleSpare,
-      if (lastSyncArticleCompanyVat != null)
-        'LAST_SYNC_ARTICLE_COMPANY_VAT': lastSyncArticleCompanyVat,
-      if (lastSyncStatsCustomerUserSales != null)
-        'LAST_SYNC_STATS_CUSTOMER_USER_SALES': lastSyncStatsCustomerUserSales,
-      if (lastSyncStatsLastPrices != null)
-        'LAST_SYNC_STATS_LAST_PRICES': lastSyncStatsLastPrices,
+      if (ultimaSyncDivisa != null) 'ULTIMA_SYNC_DIVISA': ultimaSyncDivisa,
+      if (ultimaSyncPais != null) 'ULTIMA_SYNC_PAIS': ultimaSyncPais,
+      if (ultimaSyncMetodoDeCobro != null)
+        'ULTIMA_SYNC_METODO_COBRO': ultimaSyncMetodoDeCobro,
+      if (ultimaSyncPlazoDeCobro != null)
+        'ULTIMA_SYNC_PLAZO_COBRO': ultimaSyncPlazoDeCobro,
+      if (ultimaSyncCliente != null) 'ULTIMA_SYNC_CLIENTE': ultimaSyncCliente,
+      if (ultimaSyncClienteUsuario != null)
+        'ULTIMA_SYNC_CLIENTE_USUARIO': ultimaSyncClienteUsuario,
+      if (ultimaSyncClienteContacto != null)
+        'ULTIMA_SYNC_CLIENTE_CONTACTO': ultimaSyncClienteContacto,
+      if (ultimaSyncClienteDescuento != null)
+        'ULTIMA_SYNC_CLIENTE_DESCUENTO': ultimaSyncClienteDescuento,
+      if (ultimaSyncClienteDireccion != null)
+        'ULTIMA_SYNC_CLIENTE_DIRECCION': ultimaSyncClienteDireccion,
+      if (ultimaSyncClientePrecioNeto != null)
+        'ULTIMA_SYNC_CLIENTE_PRECIO_NETO': ultimaSyncClientePrecioNeto,
+      if (ultimaSyncClienteGrupoNeto != null)
+        'ULTIMA_SYNC_CLIENTE_GRUPO_NETO': ultimaSyncClienteGrupoNeto,
+      if (ultimaSyncClientePagoPendiente != null)
+        'ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE': ultimaSyncClientePagoPendiente,
+      if (ultimaSyncClienteRappels != null)
+        'ULTIMA_SYNC_CLIENTE_RAPPELS': ultimaSyncClienteRappels,
+      if (ultimaSyncArticulosTop != null)
+        'ULTIMA_SYNC_ARTICULOS_TOP': ultimaSyncArticulosTop,
+      if (ultimaSyncPedidoVenta != null)
+        'ULTIMA_SYNC_PEDIDO_VENTA': ultimaSyncPedidoVenta,
+      if (ultimaSyncVisita != null) 'ULTIMA_SYNC_VISITA': ultimaSyncVisita,
+      if (ultimaSyncPedidoVentaLinea != null)
+        'ULTIMA_SYNC_PEDIDO_VENTA_LINEA': ultimaSyncPedidoVentaLinea,
+      if (ultimaSyncPedidoVentaEstado != null)
+        'ULTIMA_SYNC_PEDIDO_VENTA_ESTADO': ultimaSyncPedidoVentaEstado,
+      if (ultimaSyncArticulo != null)
+        'ULTIMA_SYNC_ARTICULO': ultimaSyncArticulo,
+      if (ultimaSyncFamilia != null) 'ULTIMA_SYNC_FAMILIA': ultimaSyncFamilia,
+      if (ultimaSyncSubfamilia != null)
+        'ULTIMA_SYNC_SUBFAMILIA': ultimaSyncSubfamilia,
+      if (ultimaSyncArticuloGrupoNeto != null)
+        'ULTIMA_SYNC_ARTICULO_GRUPO_NETO': ultimaSyncArticuloGrupoNeto,
+      if (ultimaSyncArticuloTarifaPrecio != null)
+        'ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO': ultimaSyncArticuloTarifaPrecio,
+      if (ultimaSyncArticuloComponente != null)
+        'ULTIMA_SYNC_ARTICULO_COMPONENTE': ultimaSyncArticuloComponente,
+      if (ultimaSyncArticuloSustitutivo != null)
+        'ULTIMA_SYNC_ARTICULO_SUSTITUTIVO': ultimaSyncArticuloSustitutivo,
+      if (ultimaSyncArticuloRecambio != null)
+        'ULTIMA_SYNC_ARTICULO_RECAMBIO': ultimaSyncArticuloRecambio,
+      if (ultimaSyncArticuloEmpresaIva != null)
+        'ULTIMA_SYNC_ARTICULO_EMPRESA_IVA': ultimaSyncArticuloEmpresaIva,
+      if (ultimaSyncEstadisticasClienteUsuarioVentas != null)
+        'ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO':
+            ultimaSyncEstadisticasClienteUsuarioVentas,
+      if (ultimaSyncEstadisticasUltimosPrecios != null)
+        'ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS':
+            ultimaSyncEstadisticasUltimosPrecios,
     });
   }
 
-  LastSyncDateTableCompanion copyWith(
+  FechaUltimaSyncTableCompanion copyWith(
       {Value<String>? id,
-      Value<String?>? lastSyncDivisa,
-      Value<String?>? lastSyncCountry,
-      Value<String?>? lastSyncCollectionMethod,
-      Value<String?>? lastSyncCollectionTerm,
-      Value<String?>? lastSyncCustomer,
-      Value<String?>? lastSyncCustomerUser,
-      Value<String?>? lastSyncCustomerContact,
-      Value<String?>? lastSyncCustomerDiscount,
-      Value<String?>? lastSyncCustomerAddress,
-      Value<String?>? lastSyncCustomerNetPrice,
-      Value<String?>? lastSyncCustomerNetGroup,
-      Value<String?>? lastSyncCustomerPendingPayment,
-      Value<String?>? lastSyncCustomerRappels,
-      Value<String?>? lastSyncTopArticles,
-      Value<String?>? lastSyncSalesOrder,
-      Value<String?>? lastSyncVisit,
-      Value<String?>? lastSyncSalesOrderLine,
-      Value<String?>? lastSyncSalesOrderStatus,
-      Value<String?>? lastSyncArticle,
-      Value<String?>? lastSyncFamily,
-      Value<String?>? lastSyncSubfamily,
-      Value<String?>? lastSyncArticleNetGroup,
-      Value<String?>? lastSyncArticleRatePrice,
-      Value<String?>? lastSyncArticleComponent,
-      Value<String?>? lastSyncArticleSubstitute,
-      Value<String?>? lastSyncArticleSpare,
-      Value<String?>? lastSyncArticleCompanyVat,
-      Value<String?>? lastSyncStatsCustomerUserSales,
-      Value<String?>? lastSyncStatsLastPrices}) {
-    return LastSyncDateTableCompanion(
+      Value<String?>? ultimaSyncDivisa,
+      Value<String?>? ultimaSyncPais,
+      Value<String?>? ultimaSyncMetodoDeCobro,
+      Value<String?>? ultimaSyncPlazoDeCobro,
+      Value<String?>? ultimaSyncCliente,
+      Value<String?>? ultimaSyncClienteUsuario,
+      Value<String?>? ultimaSyncClienteContacto,
+      Value<String?>? ultimaSyncClienteDescuento,
+      Value<String?>? ultimaSyncClienteDireccion,
+      Value<String?>? ultimaSyncClientePrecioNeto,
+      Value<String?>? ultimaSyncClienteGrupoNeto,
+      Value<String?>? ultimaSyncClientePagoPendiente,
+      Value<String?>? ultimaSyncClienteRappels,
+      Value<String?>? ultimaSyncArticulosTop,
+      Value<String?>? ultimaSyncPedidoVenta,
+      Value<String?>? ultimaSyncVisita,
+      Value<String?>? ultimaSyncPedidoVentaLinea,
+      Value<String?>? ultimaSyncPedidoVentaEstado,
+      Value<String?>? ultimaSyncArticulo,
+      Value<String?>? ultimaSyncFamilia,
+      Value<String?>? ultimaSyncSubfamilia,
+      Value<String?>? ultimaSyncArticuloGrupoNeto,
+      Value<String?>? ultimaSyncArticuloTarifaPrecio,
+      Value<String?>? ultimaSyncArticuloComponente,
+      Value<String?>? ultimaSyncArticuloSustitutivo,
+      Value<String?>? ultimaSyncArticuloRecambio,
+      Value<String?>? ultimaSyncArticuloEmpresaIva,
+      Value<String?>? ultimaSyncEstadisticasClienteUsuarioVentas,
+      Value<String?>? ultimaSyncEstadisticasUltimosPrecios}) {
+    return FechaUltimaSyncTableCompanion(
       id: id ?? this.id,
-      lastSyncDivisa: lastSyncDivisa ?? this.lastSyncDivisa,
-      lastSyncCountry: lastSyncCountry ?? this.lastSyncCountry,
-      lastSyncCollectionMethod:
-          lastSyncCollectionMethod ?? this.lastSyncCollectionMethod,
-      lastSyncCollectionTerm:
-          lastSyncCollectionTerm ?? this.lastSyncCollectionTerm,
-      lastSyncCustomer: lastSyncCustomer ?? this.lastSyncCustomer,
-      lastSyncCustomerUser: lastSyncCustomerUser ?? this.lastSyncCustomerUser,
-      lastSyncCustomerContact:
-          lastSyncCustomerContact ?? this.lastSyncCustomerContact,
-      lastSyncCustomerDiscount:
-          lastSyncCustomerDiscount ?? this.lastSyncCustomerDiscount,
-      lastSyncCustomerAddress:
-          lastSyncCustomerAddress ?? this.lastSyncCustomerAddress,
-      lastSyncCustomerNetPrice:
-          lastSyncCustomerNetPrice ?? this.lastSyncCustomerNetPrice,
-      lastSyncCustomerNetGroup:
-          lastSyncCustomerNetGroup ?? this.lastSyncCustomerNetGroup,
-      lastSyncCustomerPendingPayment:
-          lastSyncCustomerPendingPayment ?? this.lastSyncCustomerPendingPayment,
-      lastSyncCustomerRappels:
-          lastSyncCustomerRappels ?? this.lastSyncCustomerRappels,
-      lastSyncTopArticles: lastSyncTopArticles ?? this.lastSyncTopArticles,
-      lastSyncSalesOrder: lastSyncSalesOrder ?? this.lastSyncSalesOrder,
-      lastSyncVisit: lastSyncVisit ?? this.lastSyncVisit,
-      lastSyncSalesOrderLine:
-          lastSyncSalesOrderLine ?? this.lastSyncSalesOrderLine,
-      lastSyncSalesOrderStatus:
-          lastSyncSalesOrderStatus ?? this.lastSyncSalesOrderStatus,
-      lastSyncArticle: lastSyncArticle ?? this.lastSyncArticle,
-      lastSyncFamily: lastSyncFamily ?? this.lastSyncFamily,
-      lastSyncSubfamily: lastSyncSubfamily ?? this.lastSyncSubfamily,
-      lastSyncArticleNetGroup:
-          lastSyncArticleNetGroup ?? this.lastSyncArticleNetGroup,
-      lastSyncArticleRatePrice:
-          lastSyncArticleRatePrice ?? this.lastSyncArticleRatePrice,
-      lastSyncArticleComponent:
-          lastSyncArticleComponent ?? this.lastSyncArticleComponent,
-      lastSyncArticleSubstitute:
-          lastSyncArticleSubstitute ?? this.lastSyncArticleSubstitute,
-      lastSyncArticleSpare: lastSyncArticleSpare ?? this.lastSyncArticleSpare,
-      lastSyncArticleCompanyVat:
-          lastSyncArticleCompanyVat ?? this.lastSyncArticleCompanyVat,
-      lastSyncStatsCustomerUserSales:
-          lastSyncStatsCustomerUserSales ?? this.lastSyncStatsCustomerUserSales,
-      lastSyncStatsLastPrices:
-          lastSyncStatsLastPrices ?? this.lastSyncStatsLastPrices,
+      ultimaSyncDivisa: ultimaSyncDivisa ?? this.ultimaSyncDivisa,
+      ultimaSyncPais: ultimaSyncPais ?? this.ultimaSyncPais,
+      ultimaSyncMetodoDeCobro:
+          ultimaSyncMetodoDeCobro ?? this.ultimaSyncMetodoDeCobro,
+      ultimaSyncPlazoDeCobro:
+          ultimaSyncPlazoDeCobro ?? this.ultimaSyncPlazoDeCobro,
+      ultimaSyncCliente: ultimaSyncCliente ?? this.ultimaSyncCliente,
+      ultimaSyncClienteUsuario:
+          ultimaSyncClienteUsuario ?? this.ultimaSyncClienteUsuario,
+      ultimaSyncClienteContacto:
+          ultimaSyncClienteContacto ?? this.ultimaSyncClienteContacto,
+      ultimaSyncClienteDescuento:
+          ultimaSyncClienteDescuento ?? this.ultimaSyncClienteDescuento,
+      ultimaSyncClienteDireccion:
+          ultimaSyncClienteDireccion ?? this.ultimaSyncClienteDireccion,
+      ultimaSyncClientePrecioNeto:
+          ultimaSyncClientePrecioNeto ?? this.ultimaSyncClientePrecioNeto,
+      ultimaSyncClienteGrupoNeto:
+          ultimaSyncClienteGrupoNeto ?? this.ultimaSyncClienteGrupoNeto,
+      ultimaSyncClientePagoPendiente:
+          ultimaSyncClientePagoPendiente ?? this.ultimaSyncClientePagoPendiente,
+      ultimaSyncClienteRappels:
+          ultimaSyncClienteRappels ?? this.ultimaSyncClienteRappels,
+      ultimaSyncArticulosTop:
+          ultimaSyncArticulosTop ?? this.ultimaSyncArticulosTop,
+      ultimaSyncPedidoVenta:
+          ultimaSyncPedidoVenta ?? this.ultimaSyncPedidoVenta,
+      ultimaSyncVisita: ultimaSyncVisita ?? this.ultimaSyncVisita,
+      ultimaSyncPedidoVentaLinea:
+          ultimaSyncPedidoVentaLinea ?? this.ultimaSyncPedidoVentaLinea,
+      ultimaSyncPedidoVentaEstado:
+          ultimaSyncPedidoVentaEstado ?? this.ultimaSyncPedidoVentaEstado,
+      ultimaSyncArticulo: ultimaSyncArticulo ?? this.ultimaSyncArticulo,
+      ultimaSyncFamilia: ultimaSyncFamilia ?? this.ultimaSyncFamilia,
+      ultimaSyncSubfamilia: ultimaSyncSubfamilia ?? this.ultimaSyncSubfamilia,
+      ultimaSyncArticuloGrupoNeto:
+          ultimaSyncArticuloGrupoNeto ?? this.ultimaSyncArticuloGrupoNeto,
+      ultimaSyncArticuloTarifaPrecio:
+          ultimaSyncArticuloTarifaPrecio ?? this.ultimaSyncArticuloTarifaPrecio,
+      ultimaSyncArticuloComponente:
+          ultimaSyncArticuloComponente ?? this.ultimaSyncArticuloComponente,
+      ultimaSyncArticuloSustitutivo:
+          ultimaSyncArticuloSustitutivo ?? this.ultimaSyncArticuloSustitutivo,
+      ultimaSyncArticuloRecambio:
+          ultimaSyncArticuloRecambio ?? this.ultimaSyncArticuloRecambio,
+      ultimaSyncArticuloEmpresaIva:
+          ultimaSyncArticuloEmpresaIva ?? this.ultimaSyncArticuloEmpresaIva,
+      ultimaSyncEstadisticasClienteUsuarioVentas:
+          ultimaSyncEstadisticasClienteUsuarioVentas ??
+              this.ultimaSyncEstadisticasClienteUsuarioVentas,
+      ultimaSyncEstadisticasUltimosPrecios:
+          ultimaSyncEstadisticasUltimosPrecios ??
+              this.ultimaSyncEstadisticasUltimosPrecios,
     );
   }
 
@@ -894,385 +944,404 @@ class LastSyncDateTableCompanion
     if (id.present) {
       map['ID'] = Variable<String>(id.value);
     }
-    if (lastSyncDivisa.present) {
-      map['LAST_SYNC_DIVISA'] = Variable<String>(lastSyncDivisa.value);
+    if (ultimaSyncDivisa.present) {
+      map['ULTIMA_SYNC_DIVISA'] = Variable<String>(ultimaSyncDivisa.value);
     }
-    if (lastSyncCountry.present) {
-      map['LAST_SYNC_COUNTRY'] = Variable<String>(lastSyncCountry.value);
+    if (ultimaSyncPais.present) {
+      map['ULTIMA_SYNC_PAIS'] = Variable<String>(ultimaSyncPais.value);
     }
-    if (lastSyncCollectionMethod.present) {
-      map['LAST_SYNC_COLLECTION_METHOD'] =
-          Variable<String>(lastSyncCollectionMethod.value);
+    if (ultimaSyncMetodoDeCobro.present) {
+      map['ULTIMA_SYNC_METODO_COBRO'] =
+          Variable<String>(ultimaSyncMetodoDeCobro.value);
     }
-    if (lastSyncCollectionTerm.present) {
-      map['LAST_SYNC_COLLECTION_TERM'] =
-          Variable<String>(lastSyncCollectionTerm.value);
+    if (ultimaSyncPlazoDeCobro.present) {
+      map['ULTIMA_SYNC_PLAZO_COBRO'] =
+          Variable<String>(ultimaSyncPlazoDeCobro.value);
     }
-    if (lastSyncCustomer.present) {
-      map['LAST_SYNC_CUSTOMER'] = Variable<String>(lastSyncCustomer.value);
+    if (ultimaSyncCliente.present) {
+      map['ULTIMA_SYNC_CLIENTE'] = Variable<String>(ultimaSyncCliente.value);
     }
-    if (lastSyncCustomerUser.present) {
-      map['LAST_SYNC_CUSTOMER_USER'] =
-          Variable<String>(lastSyncCustomerUser.value);
+    if (ultimaSyncClienteUsuario.present) {
+      map['ULTIMA_SYNC_CLIENTE_USUARIO'] =
+          Variable<String>(ultimaSyncClienteUsuario.value);
     }
-    if (lastSyncCustomerContact.present) {
-      map['LAST_SYNC_CUSTOMER_CONTACT'] =
-          Variable<String>(lastSyncCustomerContact.value);
+    if (ultimaSyncClienteContacto.present) {
+      map['ULTIMA_SYNC_CLIENTE_CONTACTO'] =
+          Variable<String>(ultimaSyncClienteContacto.value);
     }
-    if (lastSyncCustomerDiscount.present) {
-      map['LAST_SYNC_CUSTOMER_DISCOUNT'] =
-          Variable<String>(lastSyncCustomerDiscount.value);
+    if (ultimaSyncClienteDescuento.present) {
+      map['ULTIMA_SYNC_CLIENTE_DESCUENTO'] =
+          Variable<String>(ultimaSyncClienteDescuento.value);
     }
-    if (lastSyncCustomerAddress.present) {
-      map['LAST_SYNC_CUSTOMER_ADDRESS'] =
-          Variable<String>(lastSyncCustomerAddress.value);
+    if (ultimaSyncClienteDireccion.present) {
+      map['ULTIMA_SYNC_CLIENTE_DIRECCION'] =
+          Variable<String>(ultimaSyncClienteDireccion.value);
     }
-    if (lastSyncCustomerNetPrice.present) {
-      map['LAST_SYNC_CUSTOMER_NET_PRICE'] =
-          Variable<String>(lastSyncCustomerNetPrice.value);
+    if (ultimaSyncClientePrecioNeto.present) {
+      map['ULTIMA_SYNC_CLIENTE_PRECIO_NETO'] =
+          Variable<String>(ultimaSyncClientePrecioNeto.value);
     }
-    if (lastSyncCustomerNetGroup.present) {
-      map['LAST_SYNC_CUSTOMER_NET_GROUP'] =
-          Variable<String>(lastSyncCustomerNetGroup.value);
+    if (ultimaSyncClienteGrupoNeto.present) {
+      map['ULTIMA_SYNC_CLIENTE_GRUPO_NETO'] =
+          Variable<String>(ultimaSyncClienteGrupoNeto.value);
     }
-    if (lastSyncCustomerPendingPayment.present) {
-      map['LAST_SYNC_CUSTOMER_PENDING_PAYMENT'] =
-          Variable<String>(lastSyncCustomerPendingPayment.value);
+    if (ultimaSyncClientePagoPendiente.present) {
+      map['ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE'] =
+          Variable<String>(ultimaSyncClientePagoPendiente.value);
     }
-    if (lastSyncCustomerRappels.present) {
-      map['LAST_SYNC_CUSTOMER_RAPPELS'] =
-          Variable<String>(lastSyncCustomerRappels.value);
+    if (ultimaSyncClienteRappels.present) {
+      map['ULTIMA_SYNC_CLIENTE_RAPPELS'] =
+          Variable<String>(ultimaSyncClienteRappels.value);
     }
-    if (lastSyncTopArticles.present) {
-      map['LAST_SYNC_TOP_ARTICLES'] =
-          Variable<String>(lastSyncTopArticles.value);
+    if (ultimaSyncArticulosTop.present) {
+      map['ULTIMA_SYNC_ARTICULOS_TOP'] =
+          Variable<String>(ultimaSyncArticulosTop.value);
     }
-    if (lastSyncSalesOrder.present) {
-      map['LAST_SYNC_SALES_ORDER'] = Variable<String>(lastSyncSalesOrder.value);
+    if (ultimaSyncPedidoVenta.present) {
+      map['ULTIMA_SYNC_PEDIDO_VENTA'] =
+          Variable<String>(ultimaSyncPedidoVenta.value);
     }
-    if (lastSyncVisit.present) {
-      map['LAST_SYNC_VISIT'] = Variable<String>(lastSyncVisit.value);
+    if (ultimaSyncVisita.present) {
+      map['ULTIMA_SYNC_VISITA'] = Variable<String>(ultimaSyncVisita.value);
     }
-    if (lastSyncSalesOrderLine.present) {
-      map['LAST_SYNC_SALES_ORDER_LINE'] =
-          Variable<String>(lastSyncSalesOrderLine.value);
+    if (ultimaSyncPedidoVentaLinea.present) {
+      map['ULTIMA_SYNC_PEDIDO_VENTA_LINEA'] =
+          Variable<String>(ultimaSyncPedidoVentaLinea.value);
     }
-    if (lastSyncSalesOrderStatus.present) {
-      map['LAST_SYNC_SALES_ORDER_STATUS'] =
-          Variable<String>(lastSyncSalesOrderStatus.value);
+    if (ultimaSyncPedidoVentaEstado.present) {
+      map['ULTIMA_SYNC_PEDIDO_VENTA_ESTADO'] =
+          Variable<String>(ultimaSyncPedidoVentaEstado.value);
     }
-    if (lastSyncArticle.present) {
-      map['LAST_SYNC_ARTICLE'] = Variable<String>(lastSyncArticle.value);
+    if (ultimaSyncArticulo.present) {
+      map['ULTIMA_SYNC_ARTICULO'] = Variable<String>(ultimaSyncArticulo.value);
     }
-    if (lastSyncFamily.present) {
-      map['LAST_SYNC_FAMILY'] = Variable<String>(lastSyncFamily.value);
+    if (ultimaSyncFamilia.present) {
+      map['ULTIMA_SYNC_FAMILIA'] = Variable<String>(ultimaSyncFamilia.value);
     }
-    if (lastSyncSubfamily.present) {
-      map['LAST_SYNC_SUBFAMILY'] = Variable<String>(lastSyncSubfamily.value);
+    if (ultimaSyncSubfamilia.present) {
+      map['ULTIMA_SYNC_SUBFAMILIA'] =
+          Variable<String>(ultimaSyncSubfamilia.value);
     }
-    if (lastSyncArticleNetGroup.present) {
-      map['LAST_SYNC_ARTICLE_NET_GROUP'] =
-          Variable<String>(lastSyncArticleNetGroup.value);
+    if (ultimaSyncArticuloGrupoNeto.present) {
+      map['ULTIMA_SYNC_ARTICULO_GRUPO_NETO'] =
+          Variable<String>(ultimaSyncArticuloGrupoNeto.value);
     }
-    if (lastSyncArticleRatePrice.present) {
-      map['LAST_SYNC_ARTICLE_RATE_PRICE'] =
-          Variable<String>(lastSyncArticleRatePrice.value);
+    if (ultimaSyncArticuloTarifaPrecio.present) {
+      map['ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO'] =
+          Variable<String>(ultimaSyncArticuloTarifaPrecio.value);
     }
-    if (lastSyncArticleComponent.present) {
-      map['LAST_SYNC_ARTICLE_COMPONENT'] =
-          Variable<String>(lastSyncArticleComponent.value);
+    if (ultimaSyncArticuloComponente.present) {
+      map['ULTIMA_SYNC_ARTICULO_COMPONENTE'] =
+          Variable<String>(ultimaSyncArticuloComponente.value);
     }
-    if (lastSyncArticleSubstitute.present) {
-      map['LAST_SYNC_ARTICLE_SUBSTITUTE'] =
-          Variable<String>(lastSyncArticleSubstitute.value);
+    if (ultimaSyncArticuloSustitutivo.present) {
+      map['ULTIMA_SYNC_ARTICULO_SUSTITUTIVO'] =
+          Variable<String>(ultimaSyncArticuloSustitutivo.value);
     }
-    if (lastSyncArticleSpare.present) {
-      map['LAST_SYNC_ARTICLE_SPARE'] =
-          Variable<String>(lastSyncArticleSpare.value);
+    if (ultimaSyncArticuloRecambio.present) {
+      map['ULTIMA_SYNC_ARTICULO_RECAMBIO'] =
+          Variable<String>(ultimaSyncArticuloRecambio.value);
     }
-    if (lastSyncArticleCompanyVat.present) {
-      map['LAST_SYNC_ARTICLE_COMPANY_VAT'] =
-          Variable<String>(lastSyncArticleCompanyVat.value);
+    if (ultimaSyncArticuloEmpresaIva.present) {
+      map['ULTIMA_SYNC_ARTICULO_EMPRESA_IVA'] =
+          Variable<String>(ultimaSyncArticuloEmpresaIva.value);
     }
-    if (lastSyncStatsCustomerUserSales.present) {
-      map['LAST_SYNC_STATS_CUSTOMER_USER_SALES'] =
-          Variable<String>(lastSyncStatsCustomerUserSales.value);
+    if (ultimaSyncEstadisticasClienteUsuarioVentas.present) {
+      map['ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO'] =
+          Variable<String>(ultimaSyncEstadisticasClienteUsuarioVentas.value);
     }
-    if (lastSyncStatsLastPrices.present) {
-      map['LAST_SYNC_STATS_LAST_PRICES'] =
-          Variable<String>(lastSyncStatsLastPrices.value);
+    if (ultimaSyncEstadisticasUltimosPrecios.present) {
+      map['ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS'] =
+          Variable<String>(ultimaSyncEstadisticasUltimosPrecios.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('LastSyncDateTableCompanion(')
+    return (StringBuffer('FechaUltimaSyncTableCompanion(')
           ..write('id: $id, ')
-          ..write('lastSyncDivisa: $lastSyncDivisa, ')
-          ..write('lastSyncCountry: $lastSyncCountry, ')
-          ..write('lastSyncCollectionMethod: $lastSyncCollectionMethod, ')
-          ..write('lastSyncCollectionTerm: $lastSyncCollectionTerm, ')
-          ..write('lastSyncCustomer: $lastSyncCustomer, ')
-          ..write('lastSyncCustomerUser: $lastSyncCustomerUser, ')
-          ..write('lastSyncCustomerContact: $lastSyncCustomerContact, ')
-          ..write('lastSyncCustomerDiscount: $lastSyncCustomerDiscount, ')
-          ..write('lastSyncCustomerAddress: $lastSyncCustomerAddress, ')
-          ..write('lastSyncCustomerNetPrice: $lastSyncCustomerNetPrice, ')
-          ..write('lastSyncCustomerNetGroup: $lastSyncCustomerNetGroup, ')
+          ..write('ultimaSyncDivisa: $ultimaSyncDivisa, ')
+          ..write('ultimaSyncPais: $ultimaSyncPais, ')
+          ..write('ultimaSyncMetodoDeCobro: $ultimaSyncMetodoDeCobro, ')
+          ..write('ultimaSyncPlazoDeCobro: $ultimaSyncPlazoDeCobro, ')
+          ..write('ultimaSyncCliente: $ultimaSyncCliente, ')
+          ..write('ultimaSyncClienteUsuario: $ultimaSyncClienteUsuario, ')
+          ..write('ultimaSyncClienteContacto: $ultimaSyncClienteContacto, ')
+          ..write('ultimaSyncClienteDescuento: $ultimaSyncClienteDescuento, ')
+          ..write('ultimaSyncClienteDireccion: $ultimaSyncClienteDireccion, ')
+          ..write('ultimaSyncClientePrecioNeto: $ultimaSyncClientePrecioNeto, ')
+          ..write('ultimaSyncClienteGrupoNeto: $ultimaSyncClienteGrupoNeto, ')
           ..write(
-              'lastSyncCustomerPendingPayment: $lastSyncCustomerPendingPayment, ')
-          ..write('lastSyncCustomerRappels: $lastSyncCustomerRappels, ')
-          ..write('lastSyncTopArticles: $lastSyncTopArticles, ')
-          ..write('lastSyncSalesOrder: $lastSyncSalesOrder, ')
-          ..write('lastSyncVisit: $lastSyncVisit, ')
-          ..write('lastSyncSalesOrderLine: $lastSyncSalesOrderLine, ')
-          ..write('lastSyncSalesOrderStatus: $lastSyncSalesOrderStatus, ')
-          ..write('lastSyncArticle: $lastSyncArticle, ')
-          ..write('lastSyncFamily: $lastSyncFamily, ')
-          ..write('lastSyncSubfamily: $lastSyncSubfamily, ')
-          ..write('lastSyncArticleNetGroup: $lastSyncArticleNetGroup, ')
-          ..write('lastSyncArticleRatePrice: $lastSyncArticleRatePrice, ')
-          ..write('lastSyncArticleComponent: $lastSyncArticleComponent, ')
-          ..write('lastSyncArticleSubstitute: $lastSyncArticleSubstitute, ')
-          ..write('lastSyncArticleSpare: $lastSyncArticleSpare, ')
-          ..write('lastSyncArticleCompanyVat: $lastSyncArticleCompanyVat, ')
+              'ultimaSyncClientePagoPendiente: $ultimaSyncClientePagoPendiente, ')
+          ..write('ultimaSyncClienteRappels: $ultimaSyncClienteRappels, ')
+          ..write('ultimaSyncArticulosTop: $ultimaSyncArticulosTop, ')
+          ..write('ultimaSyncPedidoVenta: $ultimaSyncPedidoVenta, ')
+          ..write('ultimaSyncVisita: $ultimaSyncVisita, ')
+          ..write('ultimaSyncPedidoVentaLinea: $ultimaSyncPedidoVentaLinea, ')
+          ..write('ultimaSyncPedidoVentaEstado: $ultimaSyncPedidoVentaEstado, ')
+          ..write('ultimaSyncArticulo: $ultimaSyncArticulo, ')
+          ..write('ultimaSyncFamilia: $ultimaSyncFamilia, ')
+          ..write('ultimaSyncSubfamilia: $ultimaSyncSubfamilia, ')
+          ..write('ultimaSyncArticuloGrupoNeto: $ultimaSyncArticuloGrupoNeto, ')
           ..write(
-              'lastSyncStatsCustomerUserSales: $lastSyncStatsCustomerUserSales, ')
-          ..write('lastSyncStatsLastPrices: $lastSyncStatsLastPrices')
+              'ultimaSyncArticuloTarifaPrecio: $ultimaSyncArticuloTarifaPrecio, ')
+          ..write(
+              'ultimaSyncArticuloComponente: $ultimaSyncArticuloComponente, ')
+          ..write(
+              'ultimaSyncArticuloSustitutivo: $ultimaSyncArticuloSustitutivo, ')
+          ..write('ultimaSyncArticuloRecambio: $ultimaSyncArticuloRecambio, ')
+          ..write(
+              'ultimaSyncArticuloEmpresaIva: $ultimaSyncArticuloEmpresaIva, ')
+          ..write(
+              'ultimaSyncEstadisticasClienteUsuarioVentas: $ultimaSyncEstadisticasClienteUsuarioVentas, ')
+          ..write(
+              'ultimaSyncEstadisticasUltimosPrecios: $ultimaSyncEstadisticasUltimosPrecios')
           ..write(')'))
         .toString();
   }
 }
 
-class $LastSyncDateTableTable extends LastSyncDateTable
-    with TableInfo<$LastSyncDateTableTable, LastSyncDateTableData> {
+class $FechaUltimaSyncTableTable extends FechaUltimaSyncTable
+    with TableInfo<$FechaUltimaSyncTableTable, FechaUltimaSyncTableData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $LastSyncDateTableTable(this.attachedDatabase, [this._alias]);
+  $FechaUltimaSyncTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _lastSyncDivisaMeta =
-      const VerificationMeta('lastSyncDivisa');
+  final VerificationMeta _ultimaSyncDivisaMeta =
+      const VerificationMeta('ultimaSyncDivisa');
   @override
-  late final GeneratedColumn<String> lastSyncDivisa = GeneratedColumn<String>(
-      'LAST_SYNC_DIVISA', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncDivisa = GeneratedColumn<String>(
+      'ULTIMA_SYNC_DIVISA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCountryMeta =
-      const VerificationMeta('lastSyncCountry');
+  final VerificationMeta _ultimaSyncPaisMeta =
+      const VerificationMeta('ultimaSyncPais');
   @override
-  late final GeneratedColumn<String> lastSyncCountry = GeneratedColumn<String>(
-      'LAST_SYNC_COUNTRY', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncPais = GeneratedColumn<String>(
+      'ULTIMA_SYNC_PAIS', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCollectionMethodMeta =
-      const VerificationMeta('lastSyncCollectionMethod');
+  final VerificationMeta _ultimaSyncMetodoDeCobroMeta =
+      const VerificationMeta('ultimaSyncMetodoDeCobro');
   @override
-  late final GeneratedColumn<String> lastSyncCollectionMethod =
-      GeneratedColumn<String>('LAST_SYNC_COLLECTION_METHOD', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncMetodoDeCobro =
+      GeneratedColumn<String>('ULTIMA_SYNC_METODO_COBRO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCollectionTermMeta =
-      const VerificationMeta('lastSyncCollectionTerm');
+  final VerificationMeta _ultimaSyncPlazoDeCobroMeta =
+      const VerificationMeta('ultimaSyncPlazoDeCobro');
   @override
-  late final GeneratedColumn<String> lastSyncCollectionTerm =
-      GeneratedColumn<String>('LAST_SYNC_COLLECTION_TERM', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncPlazoDeCobro =
+      GeneratedColumn<String>('ULTIMA_SYNC_PLAZO_COBRO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerMeta =
-      const VerificationMeta('lastSyncCustomer');
+  final VerificationMeta _ultimaSyncClienteMeta =
+      const VerificationMeta('ultimaSyncCliente');
   @override
-  late final GeneratedColumn<String> lastSyncCustomer = GeneratedColumn<String>(
-      'LAST_SYNC_CUSTOMER', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerUserMeta =
-      const VerificationMeta('lastSyncCustomerUser');
-  @override
-  late final GeneratedColumn<String> lastSyncCustomerUser =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_USER', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncCliente =
+      GeneratedColumn<String>('ULTIMA_SYNC_CLIENTE', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerContactMeta =
-      const VerificationMeta('lastSyncCustomerContact');
+  final VerificationMeta _ultimaSyncClienteUsuarioMeta =
+      const VerificationMeta('ultimaSyncClienteUsuario');
   @override
-  late final GeneratedColumn<String> lastSyncCustomerContact =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_CONTACT', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncClienteUsuario =
+      GeneratedColumn<String>('ULTIMA_SYNC_CLIENTE_USUARIO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerDiscountMeta =
-      const VerificationMeta('lastSyncCustomerDiscount');
+  final VerificationMeta _ultimaSyncClienteContactoMeta =
+      const VerificationMeta('ultimaSyncClienteContacto');
   @override
-  late final GeneratedColumn<String> lastSyncCustomerDiscount =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_DISCOUNT', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncClienteContacto =
+      GeneratedColumn<String>('ULTIMA_SYNC_CLIENTE_CONTACTO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerAddressMeta =
-      const VerificationMeta('lastSyncCustomerAddress');
+  final VerificationMeta _ultimaSyncClienteDescuentoMeta =
+      const VerificationMeta('ultimaSyncClienteDescuento');
   @override
-  late final GeneratedColumn<String> lastSyncCustomerAddress =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_ADDRESS', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerNetPriceMeta =
-      const VerificationMeta('lastSyncCustomerNetPrice');
-  @override
-  late final GeneratedColumn<String> lastSyncCustomerNetPrice =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_NET_PRICE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerNetGroupMeta =
-      const VerificationMeta('lastSyncCustomerNetGroup');
-  @override
-  late final GeneratedColumn<String> lastSyncCustomerNetGroup =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_NET_GROUP', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerPendingPaymentMeta =
-      const VerificationMeta('lastSyncCustomerPendingPayment');
-  @override
-  late final GeneratedColumn<String> lastSyncCustomerPendingPayment =
+  late final GeneratedColumn<String> ultimaSyncClienteDescuento =
       GeneratedColumn<String>(
-          'LAST_SYNC_CUSTOMER_PENDING_PAYMENT', aliasedName, true,
+          'ULTIMA_SYNC_CLIENTE_DESCUENTO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncCustomerRappelsMeta =
-      const VerificationMeta('lastSyncCustomerRappels');
+  final VerificationMeta _ultimaSyncClienteDireccionMeta =
+      const VerificationMeta('ultimaSyncClienteDireccion');
   @override
-  late final GeneratedColumn<String> lastSyncCustomerRappels =
-      GeneratedColumn<String>('LAST_SYNC_CUSTOMER_RAPPELS', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncTopArticlesMeta =
-      const VerificationMeta('lastSyncTopArticles');
-  @override
-  late final GeneratedColumn<String> lastSyncTopArticles =
-      GeneratedColumn<String>('LAST_SYNC_TOP_ARTICLES', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncSalesOrderMeta =
-      const VerificationMeta('lastSyncSalesOrder');
-  @override
-  late final GeneratedColumn<String> lastSyncSalesOrder =
-      GeneratedColumn<String>('LAST_SYNC_SALES_ORDER', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncVisitMeta =
-      const VerificationMeta('lastSyncVisit');
-  @override
-  late final GeneratedColumn<String> lastSyncVisit = GeneratedColumn<String>(
-      'LAST_SYNC_VISIT', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncSalesOrderLineMeta =
-      const VerificationMeta('lastSyncSalesOrderLine');
-  @override
-  late final GeneratedColumn<String> lastSyncSalesOrderLine =
-      GeneratedColumn<String>('LAST_SYNC_SALES_ORDER_LINE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncSalesOrderStatusMeta =
-      const VerificationMeta('lastSyncSalesOrderStatus');
-  @override
-  late final GeneratedColumn<String> lastSyncSalesOrderStatus =
-      GeneratedColumn<String>('LAST_SYNC_SALES_ORDER_STATUS', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleMeta =
-      const VerificationMeta('lastSyncArticle');
-  @override
-  late final GeneratedColumn<String> lastSyncArticle = GeneratedColumn<String>(
-      'LAST_SYNC_ARTICLE', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncFamilyMeta =
-      const VerificationMeta('lastSyncFamily');
-  @override
-  late final GeneratedColumn<String> lastSyncFamily = GeneratedColumn<String>(
-      'LAST_SYNC_FAMILY', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncSubfamilyMeta =
-      const VerificationMeta('lastSyncSubfamily');
-  @override
-  late final GeneratedColumn<String> lastSyncSubfamily =
-      GeneratedColumn<String>('LAST_SYNC_SUBFAMILY', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleNetGroupMeta =
-      const VerificationMeta('lastSyncArticleNetGroup');
-  @override
-  late final GeneratedColumn<String> lastSyncArticleNetGroup =
-      GeneratedColumn<String>('LAST_SYNC_ARTICLE_NET_GROUP', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleRatePriceMeta =
-      const VerificationMeta('lastSyncArticleRatePrice');
-  @override
-  late final GeneratedColumn<String> lastSyncArticleRatePrice =
-      GeneratedColumn<String>('LAST_SYNC_ARTICLE_RATE_PRICE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleComponentMeta =
-      const VerificationMeta('lastSyncArticleComponent');
-  @override
-  late final GeneratedColumn<String> lastSyncArticleComponent =
-      GeneratedColumn<String>('LAST_SYNC_ARTICLE_COMPONENT', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleSubstituteMeta =
-      const VerificationMeta('lastSyncArticleSubstitute');
-  @override
-  late final GeneratedColumn<String> lastSyncArticleSubstitute =
-      GeneratedColumn<String>('LAST_SYNC_ARTICLE_SUBSTITUTE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleSpareMeta =
-      const VerificationMeta('lastSyncArticleSpare');
-  @override
-  late final GeneratedColumn<String> lastSyncArticleSpare =
-      GeneratedColumn<String>('LAST_SYNC_ARTICLE_SPARE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncArticleCompanyVatMeta =
-      const VerificationMeta('lastSyncArticleCompanyVat');
-  @override
-  late final GeneratedColumn<String> lastSyncArticleCompanyVat =
+  late final GeneratedColumn<String> ultimaSyncClienteDireccion =
       GeneratedColumn<String>(
-          'LAST_SYNC_ARTICLE_COMPANY_VAT', aliasedName, true,
+          'ULTIMA_SYNC_CLIENTE_DIRECCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncStatsCustomerUserSalesMeta =
-      const VerificationMeta('lastSyncStatsCustomerUserSales');
+  final VerificationMeta _ultimaSyncClientePrecioNetoMeta =
+      const VerificationMeta('ultimaSyncClientePrecioNeto');
   @override
-  late final GeneratedColumn<String> lastSyncStatsCustomerUserSales =
+  late final GeneratedColumn<String> ultimaSyncClientePrecioNeto =
       GeneratedColumn<String>(
-          'LAST_SYNC_STATS_CUSTOMER_USER_SALES', aliasedName, true,
+          'ULTIMA_SYNC_CLIENTE_PRECIO_NETO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastSyncStatsLastPricesMeta =
-      const VerificationMeta('lastSyncStatsLastPrices');
+  final VerificationMeta _ultimaSyncClienteGrupoNetoMeta =
+      const VerificationMeta('ultimaSyncClienteGrupoNeto');
   @override
-  late final GeneratedColumn<String> lastSyncStatsLastPrices =
-      GeneratedColumn<String>('LAST_SYNC_STATS_LAST_PRICES', aliasedName, true,
+  late final GeneratedColumn<String> ultimaSyncClienteGrupoNeto =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_CLIENTE_GRUPO_NETO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncClientePagoPendienteMeta =
+      const VerificationMeta('ultimaSyncClientePagoPendiente');
+  @override
+  late final GeneratedColumn<String> ultimaSyncClientePagoPendiente =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncClienteRappelsMeta =
+      const VerificationMeta('ultimaSyncClienteRappels');
+  @override
+  late final GeneratedColumn<String> ultimaSyncClienteRappels =
+      GeneratedColumn<String>('ULTIMA_SYNC_CLIENTE_RAPPELS', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticulosTopMeta =
+      const VerificationMeta('ultimaSyncArticulosTop');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticulosTop =
+      GeneratedColumn<String>('ULTIMA_SYNC_ARTICULOS_TOP', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncPedidoVentaMeta =
+      const VerificationMeta('ultimaSyncPedidoVenta');
+  @override
+  late final GeneratedColumn<String> ultimaSyncPedidoVenta =
+      GeneratedColumn<String>('ULTIMA_SYNC_PEDIDO_VENTA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncVisitaMeta =
+      const VerificationMeta('ultimaSyncVisita');
+  @override
+  late final GeneratedColumn<String> ultimaSyncVisita = GeneratedColumn<String>(
+      'ULTIMA_SYNC_VISITA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncPedidoVentaLineaMeta =
+      const VerificationMeta('ultimaSyncPedidoVentaLinea');
+  @override
+  late final GeneratedColumn<String> ultimaSyncPedidoVentaLinea =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_PEDIDO_VENTA_LINEA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncPedidoVentaEstadoMeta =
+      const VerificationMeta('ultimaSyncPedidoVentaEstado');
+  @override
+  late final GeneratedColumn<String> ultimaSyncPedidoVentaEstado =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_PEDIDO_VENTA_ESTADO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloMeta =
+      const VerificationMeta('ultimaSyncArticulo');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticulo =
+      GeneratedColumn<String>('ULTIMA_SYNC_ARTICULO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncFamiliaMeta =
+      const VerificationMeta('ultimaSyncFamilia');
+  @override
+  late final GeneratedColumn<String> ultimaSyncFamilia =
+      GeneratedColumn<String>('ULTIMA_SYNC_FAMILIA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncSubfamiliaMeta =
+      const VerificationMeta('ultimaSyncSubfamilia');
+  @override
+  late final GeneratedColumn<String> ultimaSyncSubfamilia =
+      GeneratedColumn<String>('ULTIMA_SYNC_SUBFAMILIA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloGrupoNetoMeta =
+      const VerificationMeta('ultimaSyncArticuloGrupoNeto');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticuloGrupoNeto =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ARTICULO_GRUPO_NETO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloTarifaPrecioMeta =
+      const VerificationMeta('ultimaSyncArticuloTarifaPrecio');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticuloTarifaPrecio =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloComponenteMeta =
+      const VerificationMeta('ultimaSyncArticuloComponente');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticuloComponente =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ARTICULO_COMPONENTE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloSustitutivoMeta =
+      const VerificationMeta('ultimaSyncArticuloSustitutivo');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticuloSustitutivo =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ARTICULO_SUSTITUTIVO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloRecambioMeta =
+      const VerificationMeta('ultimaSyncArticuloRecambio');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticuloRecambio =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ARTICULO_RECAMBIO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncArticuloEmpresaIvaMeta =
+      const VerificationMeta('ultimaSyncArticuloEmpresaIva');
+  @override
+  late final GeneratedColumn<String> ultimaSyncArticuloEmpresaIva =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ARTICULO_EMPRESA_IVA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncEstadisticasClienteUsuarioVentasMeta =
+      const VerificationMeta('ultimaSyncEstadisticasClienteUsuarioVentas');
+  @override
+  late final GeneratedColumn<String>
+      ultimaSyncEstadisticasClienteUsuarioVentas = GeneratedColumn<String>(
+          'ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ultimaSyncEstadisticasUltimosPreciosMeta =
+      const VerificationMeta('ultimaSyncEstadisticasUltimosPrecios');
+  @override
+  late final GeneratedColumn<String> ultimaSyncEstadisticasUltimosPrecios =
+      GeneratedColumn<String>(
+          'ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        lastSyncDivisa,
-        lastSyncCountry,
-        lastSyncCollectionMethod,
-        lastSyncCollectionTerm,
-        lastSyncCustomer,
-        lastSyncCustomerUser,
-        lastSyncCustomerContact,
-        lastSyncCustomerDiscount,
-        lastSyncCustomerAddress,
-        lastSyncCustomerNetPrice,
-        lastSyncCustomerNetGroup,
-        lastSyncCustomerPendingPayment,
-        lastSyncCustomerRappels,
-        lastSyncTopArticles,
-        lastSyncSalesOrder,
-        lastSyncVisit,
-        lastSyncSalesOrderLine,
-        lastSyncSalesOrderStatus,
-        lastSyncArticle,
-        lastSyncFamily,
-        lastSyncSubfamily,
-        lastSyncArticleNetGroup,
-        lastSyncArticleRatePrice,
-        lastSyncArticleComponent,
-        lastSyncArticleSubstitute,
-        lastSyncArticleSpare,
-        lastSyncArticleCompanyVat,
-        lastSyncStatsCustomerUserSales,
-        lastSyncStatsLastPrices
+        ultimaSyncDivisa,
+        ultimaSyncPais,
+        ultimaSyncMetodoDeCobro,
+        ultimaSyncPlazoDeCobro,
+        ultimaSyncCliente,
+        ultimaSyncClienteUsuario,
+        ultimaSyncClienteContacto,
+        ultimaSyncClienteDescuento,
+        ultimaSyncClienteDireccion,
+        ultimaSyncClientePrecioNeto,
+        ultimaSyncClienteGrupoNeto,
+        ultimaSyncClientePagoPendiente,
+        ultimaSyncClienteRappels,
+        ultimaSyncArticulosTop,
+        ultimaSyncPedidoVenta,
+        ultimaSyncVisita,
+        ultimaSyncPedidoVentaLinea,
+        ultimaSyncPedidoVentaEstado,
+        ultimaSyncArticulo,
+        ultimaSyncFamilia,
+        ultimaSyncSubfamilia,
+        ultimaSyncArticuloGrupoNeto,
+        ultimaSyncArticuloTarifaPrecio,
+        ultimaSyncArticuloComponente,
+        ultimaSyncArticuloSustitutivo,
+        ultimaSyncArticuloRecambio,
+        ultimaSyncArticuloEmpresaIva,
+        ultimaSyncEstadisticasClienteUsuarioVentas,
+        ultimaSyncEstadisticasUltimosPrecios
       ];
   @override
-  String get aliasedName => _alias ?? 'LAST_SYNC_DATE';
+  String get aliasedName => _alias ?? 'FECHA_ULTIMA_SYNC';
   @override
-  String get actualTableName => 'LAST_SYNC_DATE';
+  String get actualTableName => 'FECHA_ULTIMA_SYNC';
   @override
   VerificationContext validateIntegrity(
-      Insertable<LastSyncDateTableData> instance,
+      Insertable<FechaUltimaSyncTableData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -1281,196 +1350,197 @@ class $LastSyncDateTableTable extends LastSyncDateTable
     } else if (isInserting) {
       context.missing(_idMeta);
     }
-    if (data.containsKey('LAST_SYNC_DIVISA')) {
+    if (data.containsKey('ULTIMA_SYNC_DIVISA')) {
       context.handle(
-          _lastSyncDivisaMeta,
-          lastSyncDivisa.isAcceptableOrUnknown(
-              data['LAST_SYNC_DIVISA']!, _lastSyncDivisaMeta));
+          _ultimaSyncDivisaMeta,
+          ultimaSyncDivisa.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_DIVISA']!, _ultimaSyncDivisaMeta));
     }
-    if (data.containsKey('LAST_SYNC_COUNTRY')) {
+    if (data.containsKey('ULTIMA_SYNC_PAIS')) {
       context.handle(
-          _lastSyncCountryMeta,
-          lastSyncCountry.isAcceptableOrUnknown(
-              data['LAST_SYNC_COUNTRY']!, _lastSyncCountryMeta));
+          _ultimaSyncPaisMeta,
+          ultimaSyncPais.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_PAIS']!, _ultimaSyncPaisMeta));
     }
-    if (data.containsKey('LAST_SYNC_COLLECTION_METHOD')) {
+    if (data.containsKey('ULTIMA_SYNC_METODO_COBRO')) {
       context.handle(
-          _lastSyncCollectionMethodMeta,
-          lastSyncCollectionMethod.isAcceptableOrUnknown(
-              data['LAST_SYNC_COLLECTION_METHOD']!,
-              _lastSyncCollectionMethodMeta));
+          _ultimaSyncMetodoDeCobroMeta,
+          ultimaSyncMetodoDeCobro.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_METODO_COBRO']!, _ultimaSyncMetodoDeCobroMeta));
     }
-    if (data.containsKey('LAST_SYNC_COLLECTION_TERM')) {
+    if (data.containsKey('ULTIMA_SYNC_PLAZO_COBRO')) {
       context.handle(
-          _lastSyncCollectionTermMeta,
-          lastSyncCollectionTerm.isAcceptableOrUnknown(
-              data['LAST_SYNC_COLLECTION_TERM']!, _lastSyncCollectionTermMeta));
+          _ultimaSyncPlazoDeCobroMeta,
+          ultimaSyncPlazoDeCobro.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_PLAZO_COBRO']!, _ultimaSyncPlazoDeCobroMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE')) {
       context.handle(
-          _lastSyncCustomerMeta,
-          lastSyncCustomer.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER']!, _lastSyncCustomerMeta));
+          _ultimaSyncClienteMeta,
+          ultimaSyncCliente.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE']!, _ultimaSyncClienteMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_USER')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_USUARIO')) {
       context.handle(
-          _lastSyncCustomerUserMeta,
-          lastSyncCustomerUser.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_USER']!, _lastSyncCustomerUserMeta));
+          _ultimaSyncClienteUsuarioMeta,
+          ultimaSyncClienteUsuario.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_USUARIO']!,
+              _ultimaSyncClienteUsuarioMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_CONTACT')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_CONTACTO')) {
       context.handle(
-          _lastSyncCustomerContactMeta,
-          lastSyncCustomerContact.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_CONTACT']!,
-              _lastSyncCustomerContactMeta));
+          _ultimaSyncClienteContactoMeta,
+          ultimaSyncClienteContacto.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_CONTACTO']!,
+              _ultimaSyncClienteContactoMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_DISCOUNT')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_DESCUENTO')) {
       context.handle(
-          _lastSyncCustomerDiscountMeta,
-          lastSyncCustomerDiscount.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_DISCOUNT']!,
-              _lastSyncCustomerDiscountMeta));
+          _ultimaSyncClienteDescuentoMeta,
+          ultimaSyncClienteDescuento.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_DESCUENTO']!,
+              _ultimaSyncClienteDescuentoMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_ADDRESS')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_DIRECCION')) {
       context.handle(
-          _lastSyncCustomerAddressMeta,
-          lastSyncCustomerAddress.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_ADDRESS']!,
-              _lastSyncCustomerAddressMeta));
+          _ultimaSyncClienteDireccionMeta,
+          ultimaSyncClienteDireccion.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_DIRECCION']!,
+              _ultimaSyncClienteDireccionMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_NET_PRICE')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_PRECIO_NETO')) {
       context.handle(
-          _lastSyncCustomerNetPriceMeta,
-          lastSyncCustomerNetPrice.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_NET_PRICE']!,
-              _lastSyncCustomerNetPriceMeta));
+          _ultimaSyncClientePrecioNetoMeta,
+          ultimaSyncClientePrecioNeto.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_PRECIO_NETO']!,
+              _ultimaSyncClientePrecioNetoMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_NET_GROUP')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_GRUPO_NETO')) {
       context.handle(
-          _lastSyncCustomerNetGroupMeta,
-          lastSyncCustomerNetGroup.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_NET_GROUP']!,
-              _lastSyncCustomerNetGroupMeta));
+          _ultimaSyncClienteGrupoNetoMeta,
+          ultimaSyncClienteGrupoNeto.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_GRUPO_NETO']!,
+              _ultimaSyncClienteGrupoNetoMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_PENDING_PAYMENT')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE')) {
       context.handle(
-          _lastSyncCustomerPendingPaymentMeta,
-          lastSyncCustomerPendingPayment.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_PENDING_PAYMENT']!,
-              _lastSyncCustomerPendingPaymentMeta));
+          _ultimaSyncClientePagoPendienteMeta,
+          ultimaSyncClientePagoPendiente.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE']!,
+              _ultimaSyncClientePagoPendienteMeta));
     }
-    if (data.containsKey('LAST_SYNC_CUSTOMER_RAPPELS')) {
+    if (data.containsKey('ULTIMA_SYNC_CLIENTE_RAPPELS')) {
       context.handle(
-          _lastSyncCustomerRappelsMeta,
-          lastSyncCustomerRappels.isAcceptableOrUnknown(
-              data['LAST_SYNC_CUSTOMER_RAPPELS']!,
-              _lastSyncCustomerRappelsMeta));
+          _ultimaSyncClienteRappelsMeta,
+          ultimaSyncClienteRappels.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_CLIENTE_RAPPELS']!,
+              _ultimaSyncClienteRappelsMeta));
     }
-    if (data.containsKey('LAST_SYNC_TOP_ARTICLES')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULOS_TOP')) {
       context.handle(
-          _lastSyncTopArticlesMeta,
-          lastSyncTopArticles.isAcceptableOrUnknown(
-              data['LAST_SYNC_TOP_ARTICLES']!, _lastSyncTopArticlesMeta));
+          _ultimaSyncArticulosTopMeta,
+          ultimaSyncArticulosTop.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULOS_TOP']!, _ultimaSyncArticulosTopMeta));
     }
-    if (data.containsKey('LAST_SYNC_SALES_ORDER')) {
+    if (data.containsKey('ULTIMA_SYNC_PEDIDO_VENTA')) {
       context.handle(
-          _lastSyncSalesOrderMeta,
-          lastSyncSalesOrder.isAcceptableOrUnknown(
-              data['LAST_SYNC_SALES_ORDER']!, _lastSyncSalesOrderMeta));
+          _ultimaSyncPedidoVentaMeta,
+          ultimaSyncPedidoVenta.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_PEDIDO_VENTA']!, _ultimaSyncPedidoVentaMeta));
     }
-    if (data.containsKey('LAST_SYNC_VISIT')) {
+    if (data.containsKey('ULTIMA_SYNC_VISITA')) {
       context.handle(
-          _lastSyncVisitMeta,
-          lastSyncVisit.isAcceptableOrUnknown(
-              data['LAST_SYNC_VISIT']!, _lastSyncVisitMeta));
+          _ultimaSyncVisitaMeta,
+          ultimaSyncVisita.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_VISITA']!, _ultimaSyncVisitaMeta));
     }
-    if (data.containsKey('LAST_SYNC_SALES_ORDER_LINE')) {
+    if (data.containsKey('ULTIMA_SYNC_PEDIDO_VENTA_LINEA')) {
       context.handle(
-          _lastSyncSalesOrderLineMeta,
-          lastSyncSalesOrderLine.isAcceptableOrUnknown(
-              data['LAST_SYNC_SALES_ORDER_LINE']!,
-              _lastSyncSalesOrderLineMeta));
+          _ultimaSyncPedidoVentaLineaMeta,
+          ultimaSyncPedidoVentaLinea.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_PEDIDO_VENTA_LINEA']!,
+              _ultimaSyncPedidoVentaLineaMeta));
     }
-    if (data.containsKey('LAST_SYNC_SALES_ORDER_STATUS')) {
+    if (data.containsKey('ULTIMA_SYNC_PEDIDO_VENTA_ESTADO')) {
       context.handle(
-          _lastSyncSalesOrderStatusMeta,
-          lastSyncSalesOrderStatus.isAcceptableOrUnknown(
-              data['LAST_SYNC_SALES_ORDER_STATUS']!,
-              _lastSyncSalesOrderStatusMeta));
+          _ultimaSyncPedidoVentaEstadoMeta,
+          ultimaSyncPedidoVentaEstado.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_PEDIDO_VENTA_ESTADO']!,
+              _ultimaSyncPedidoVentaEstadoMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO')) {
       context.handle(
-          _lastSyncArticleMeta,
-          lastSyncArticle.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE']!, _lastSyncArticleMeta));
+          _ultimaSyncArticuloMeta,
+          ultimaSyncArticulo.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO']!, _ultimaSyncArticuloMeta));
     }
-    if (data.containsKey('LAST_SYNC_FAMILY')) {
+    if (data.containsKey('ULTIMA_SYNC_FAMILIA')) {
       context.handle(
-          _lastSyncFamilyMeta,
-          lastSyncFamily.isAcceptableOrUnknown(
-              data['LAST_SYNC_FAMILY']!, _lastSyncFamilyMeta));
+          _ultimaSyncFamiliaMeta,
+          ultimaSyncFamilia.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_FAMILIA']!, _ultimaSyncFamiliaMeta));
     }
-    if (data.containsKey('LAST_SYNC_SUBFAMILY')) {
+    if (data.containsKey('ULTIMA_SYNC_SUBFAMILIA')) {
       context.handle(
-          _lastSyncSubfamilyMeta,
-          lastSyncSubfamily.isAcceptableOrUnknown(
-              data['LAST_SYNC_SUBFAMILY']!, _lastSyncSubfamilyMeta));
+          _ultimaSyncSubfamiliaMeta,
+          ultimaSyncSubfamilia.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_SUBFAMILIA']!, _ultimaSyncSubfamiliaMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE_NET_GROUP')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO_GRUPO_NETO')) {
       context.handle(
-          _lastSyncArticleNetGroupMeta,
-          lastSyncArticleNetGroup.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE_NET_GROUP']!,
-              _lastSyncArticleNetGroupMeta));
+          _ultimaSyncArticuloGrupoNetoMeta,
+          ultimaSyncArticuloGrupoNeto.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO_GRUPO_NETO']!,
+              _ultimaSyncArticuloGrupoNetoMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE_RATE_PRICE')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO')) {
       context.handle(
-          _lastSyncArticleRatePriceMeta,
-          lastSyncArticleRatePrice.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE_RATE_PRICE']!,
-              _lastSyncArticleRatePriceMeta));
+          _ultimaSyncArticuloTarifaPrecioMeta,
+          ultimaSyncArticuloTarifaPrecio.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO']!,
+              _ultimaSyncArticuloTarifaPrecioMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE_COMPONENT')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO_COMPONENTE')) {
       context.handle(
-          _lastSyncArticleComponentMeta,
-          lastSyncArticleComponent.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE_COMPONENT']!,
-              _lastSyncArticleComponentMeta));
+          _ultimaSyncArticuloComponenteMeta,
+          ultimaSyncArticuloComponente.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO_COMPONENTE']!,
+              _ultimaSyncArticuloComponenteMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE_SUBSTITUTE')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO_SUSTITUTIVO')) {
       context.handle(
-          _lastSyncArticleSubstituteMeta,
-          lastSyncArticleSubstitute.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE_SUBSTITUTE']!,
-              _lastSyncArticleSubstituteMeta));
+          _ultimaSyncArticuloSustitutivoMeta,
+          ultimaSyncArticuloSustitutivo.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO_SUSTITUTIVO']!,
+              _ultimaSyncArticuloSustitutivoMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE_SPARE')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO_RECAMBIO')) {
       context.handle(
-          _lastSyncArticleSpareMeta,
-          lastSyncArticleSpare.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE_SPARE']!, _lastSyncArticleSpareMeta));
+          _ultimaSyncArticuloRecambioMeta,
+          ultimaSyncArticuloRecambio.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO_RECAMBIO']!,
+              _ultimaSyncArticuloRecambioMeta));
     }
-    if (data.containsKey('LAST_SYNC_ARTICLE_COMPANY_VAT')) {
+    if (data.containsKey('ULTIMA_SYNC_ARTICULO_EMPRESA_IVA')) {
       context.handle(
-          _lastSyncArticleCompanyVatMeta,
-          lastSyncArticleCompanyVat.isAcceptableOrUnknown(
-              data['LAST_SYNC_ARTICLE_COMPANY_VAT']!,
-              _lastSyncArticleCompanyVatMeta));
+          _ultimaSyncArticuloEmpresaIvaMeta,
+          ultimaSyncArticuloEmpresaIva.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ARTICULO_EMPRESA_IVA']!,
+              _ultimaSyncArticuloEmpresaIvaMeta));
     }
-    if (data.containsKey('LAST_SYNC_STATS_CUSTOMER_USER_SALES')) {
+    if (data.containsKey('ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO')) {
       context.handle(
-          _lastSyncStatsCustomerUserSalesMeta,
-          lastSyncStatsCustomerUserSales.isAcceptableOrUnknown(
-              data['LAST_SYNC_STATS_CUSTOMER_USER_SALES']!,
-              _lastSyncStatsCustomerUserSalesMeta));
+          _ultimaSyncEstadisticasClienteUsuarioVentasMeta,
+          ultimaSyncEstadisticasClienteUsuarioVentas.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO']!,
+              _ultimaSyncEstadisticasClienteUsuarioVentasMeta));
     }
-    if (data.containsKey('LAST_SYNC_STATS_LAST_PRICES')) {
+    if (data.containsKey('ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS')) {
       context.handle(
-          _lastSyncStatsLastPricesMeta,
-          lastSyncStatsLastPrices.isAcceptableOrUnknown(
-              data['LAST_SYNC_STATS_LAST_PRICES']!,
-              _lastSyncStatsLastPricesMeta));
+          _ultimaSyncEstadisticasUltimosPreciosMeta,
+          ultimaSyncEstadisticasUltimosPrecios.isAcceptableOrUnknown(
+              data['ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS']!,
+              _ultimaSyncEstadisticasUltimosPreciosMeta));
     }
     return context;
   }
@@ -1478,245 +1548,250 @@ class $LastSyncDateTableTable extends LastSyncDateTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  LastSyncDateTableData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  FechaUltimaSyncTableData map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return LastSyncDateTableData(
+    return FechaUltimaSyncTableData(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ID'])!,
-      lastSyncDivisa: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_DIVISA']),
-      lastSyncCountry: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_COUNTRY']),
-      lastSyncCollectionMethod: attachedDatabase.options.types.read(
+      ultimaSyncDivisa: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ULTIMA_SYNC_DIVISA']),
+      ultimaSyncPais: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ULTIMA_SYNC_PAIS']),
+      ultimaSyncMetodoDeCobro: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_COLLECTION_METHOD']),
-      lastSyncCollectionTerm: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_METODO_COBRO']),
+      ultimaSyncPlazoDeCobro: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_COLLECTION_TERM']),
-      lastSyncCustomer: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_CUSTOMER']),
-      lastSyncCustomerUser: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_PLAZO_COBRO']),
+      ultimaSyncCliente: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ULTIMA_SYNC_CLIENTE']),
+      ultimaSyncClienteUsuario: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_USER']),
-      lastSyncCustomerContact: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_USUARIO']),
+      ultimaSyncClienteContacto: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_CONTACT']),
-      lastSyncCustomerDiscount: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_CONTACTO']),
+      ultimaSyncClienteDescuento: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_DISCOUNT']),
-      lastSyncCustomerAddress: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_DESCUENTO']),
+      ultimaSyncClienteDireccion: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_ADDRESS']),
-      lastSyncCustomerNetPrice: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_DIRECCION']),
+      ultimaSyncClientePrecioNeto: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_NET_PRICE']),
-      lastSyncCustomerNetGroup: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_PRECIO_NETO']),
+      ultimaSyncClienteGrupoNeto: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_NET_GROUP']),
-      lastSyncCustomerPendingPayment: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_GRUPO_NETO']),
+      ultimaSyncClientePagoPendiente: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_PENDING_PAYMENT']),
-      lastSyncCustomerRappels: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE']),
+      ultimaSyncClienteRappels: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_CUSTOMER_RAPPELS']),
-      lastSyncTopArticles: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_CLIENTE_RAPPELS']),
+      ultimaSyncArticulosTop: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_TOP_ARTICLES']),
-      lastSyncSalesOrder: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_SALES_ORDER']),
-      lastSyncVisit: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_VISIT']),
-      lastSyncSalesOrderLine: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULOS_TOP']),
+      ultimaSyncPedidoVenta: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_SALES_ORDER_LINE']),
-      lastSyncSalesOrderStatus: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_PEDIDO_VENTA']),
+      ultimaSyncVisita: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ULTIMA_SYNC_VISITA']),
+      ultimaSyncPedidoVentaLinea: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_SALES_ORDER_STATUS']),
-      lastSyncArticle: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_ARTICLE']),
-      lastSyncFamily: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_FAMILY']),
-      lastSyncSubfamily: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}LAST_SYNC_SUBFAMILY']),
-      lastSyncArticleNetGroup: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_PEDIDO_VENTA_LINEA']),
+      ultimaSyncPedidoVentaEstado: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_NET_GROUP']),
-      lastSyncArticleRatePrice: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_PEDIDO_VENTA_ESTADO']),
+      ultimaSyncArticulo: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ULTIMA_SYNC_ARTICULO']),
+      ultimaSyncFamilia: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ULTIMA_SYNC_FAMILIA']),
+      ultimaSyncSubfamilia: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_RATE_PRICE']),
-      lastSyncArticleComponent: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_SUBFAMILIA']),
+      ultimaSyncArticuloGrupoNeto: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_COMPONENT']),
-      lastSyncArticleSubstitute: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULO_GRUPO_NETO']),
+      ultimaSyncArticuloTarifaPrecio: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_SUBSTITUTE']),
-      lastSyncArticleSpare: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO']),
+      ultimaSyncArticuloComponente: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_SPARE']),
-      lastSyncArticleCompanyVat: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULO_COMPONENTE']),
+      ultimaSyncArticuloSustitutivo: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_ARTICLE_COMPANY_VAT']),
-      lastSyncStatsCustomerUserSales: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULO_SUSTITUTIVO']),
+      ultimaSyncArticuloRecambio: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_STATS_CUSTOMER_USER_SALES']),
-      lastSyncStatsLastPrices: attachedDatabase.options.types.read(
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULO_RECAMBIO']),
+      ultimaSyncArticuloEmpresaIva: attachedDatabase.options.types.read(
           DriftSqlType.string,
-          data['${effectivePrefix}LAST_SYNC_STATS_LAST_PRICES']),
+          data['${effectivePrefix}ULTIMA_SYNC_ARTICULO_EMPRESA_IVA']),
+      ultimaSyncEstadisticasClienteUsuarioVentas: attachedDatabase.options.types
+          .read(
+              DriftSqlType.string,
+              data[
+                  '${effectivePrefix}ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO']),
+      ultimaSyncEstadisticasUltimosPrecios: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS']),
     );
   }
 
   @override
-  $LastSyncDateTableTable createAlias(String alias) {
-    return $LastSyncDateTableTable(attachedDatabase, alias);
+  $FechaUltimaSyncTableTable createAlias(String alias) {
+    return $FechaUltimaSyncTableTable(attachedDatabase, alias);
   }
 }
 
-class CountryTableCompanion extends UpdateCompanion<CountryDTO> {
+class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
   final Value<String> id;
   final Value<String?> isoCode;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CountryTableCompanion({
+  const PaisTableCompanion({
     this.id = const Value.absent(),
     this.isoCode = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CountryTableCompanion.insert({
+  PaisTableCompanion.insert({
     required String id,
     this.isoCode = const Value.absent(),
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        descriptionES = Value(descriptionES),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CountryDTO> custom({
+  static Insertable<PaisDTO> custom({
     Expression<String>? id,
     Expression<String>? isoCode,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'PAIS_ID': id,
       if (isoCode != null) 'CODIGO_ISO': isoCode,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CountryTableCompanion copyWith(
+  PaisTableCompanion copyWith(
       {Value<String>? id,
       Value<String?>? isoCode,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CountryTableCompanion(
+    return PaisTableCompanion(
       id: id ?? this.id,
       isoCode: isoCode ?? this.isoCode,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -1731,50 +1806,50 @@ class CountryTableCompanion extends UpdateCompanion<CountryDTO> {
     if (isoCode.present) {
       map['CODIGO_ISO'] = Variable<String>(isoCode.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -1787,24 +1862,24 @@ class CountryTableCompanion extends UpdateCompanion<CountryDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('CountryTableCompanion(')
+    return (StringBuffer('PaisTableCompanion(')
           ..write('id: $id, ')
           ..write('isoCode: $isoCode, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -1812,12 +1887,12 @@ class CountryTableCompanion extends UpdateCompanion<CountryDTO> {
   }
 }
 
-class $CountryTableTable extends CountryTable
-    with TableInfo<$CountryTableTable, CountryDTO> {
+class $PaisTableTable extends PaisTable
+    with TableInfo<$PaisTableTable, PaisDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CountryTableTable(this.attachedDatabase, [this._alias]);
+  $PaisTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
@@ -1828,94 +1903,94 @@ class $CountryTableTable extends CountryTable
   late final GeneratedColumn<String> isoCode = GeneratedColumn<String>(
       'CODIGO_ISO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -1935,21 +2010,21 @@ class $CountryTableTable extends CountryTable
   List<GeneratedColumn> get $columns => [
         id,
         isoCode,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -1958,7 +2033,7 @@ class $CountryTableTable extends CountryTable
   @override
   String get actualTableName => 'PAISES';
   @override
-  VerificationContext validateIntegrity(Insertable<CountryDTO> instance,
+  VerificationContext validateIntegrity(Insertable<PaisDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -1974,95 +2049,95 @@ class $CountryTableTable extends CountryTable
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -2082,42 +2157,42 @@ class $CountryTableTable extends CountryTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  CountryDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PaisDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CountryDTO(
+    return PaisDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID'])!,
       isoCode: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_ISO']),
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -2127,125 +2202,125 @@ class $CountryTableTable extends CountryTable
   }
 
   @override
-  $CountryTableTable createAlias(String alias) {
-    return $CountryTableTable(attachedDatabase, alias);
+  $PaisTableTable createAlias(String alias) {
+    return $PaisTableTable(attachedDatabase, alias);
   }
 }
 
 class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
   final Value<String> id;
   final Value<String> abv;
-  final Value<String?> symbol;
-  final Value<double?> rounded;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+  final Value<String?> simbolo;
+  final Value<double?> redondeo;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const DivisaTableCompanion({
     this.id = const Value.absent(),
     this.abv = const Value.absent(),
-    this.symbol = const Value.absent(),
-    this.rounded = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.simbolo = const Value.absent(),
+    this.redondeo = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
   DivisaTableCompanion.insert({
     required String id,
     required String abv,
-    this.symbol = const Value.absent(),
-    this.rounded = const Value.absent(),
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.simbolo = const Value.absent(),
+    this.redondeo = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
         abv = Value(abv),
-        descriptionES = Value(descriptionES),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
   static Insertable<DivisaDTO> custom({
     Expression<String>? id,
     Expression<String>? abv,
-    Expression<String>? symbol,
-    Expression<double>? rounded,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+    Expression<String>? simbolo,
+    Expression<double>? redondeo,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'DIVISA_ID': id,
       if (abv != null) 'ABREVIACION': abv,
-      if (symbol != null) 'SIMBOLO': symbol,
-      if (rounded != null) 'REDONDEO': rounded,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (simbolo != null) 'SIMBOLO': simbolo,
+      if (redondeo != null) 'REDONDEO': redondeo,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -2254,45 +2329,45 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
   DivisaTableCompanion copyWith(
       {Value<String>? id,
       Value<String>? abv,
-      Value<String?>? symbol,
-      Value<double?>? rounded,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+      Value<String?>? simbolo,
+      Value<double?>? redondeo,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return DivisaTableCompanion(
       id: id ?? this.id,
       abv: abv ?? this.abv,
-      symbol: symbol ?? this.symbol,
-      rounded: rounded ?? this.rounded,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      simbolo: simbolo ?? this.simbolo,
+      redondeo: redondeo ?? this.redondeo,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -2307,56 +2382,56 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     if (abv.present) {
       map['ABREVIACION'] = Variable<String>(abv.value);
     }
-    if (symbol.present) {
-      map['SIMBOLO'] = Variable<String>(symbol.value);
+    if (simbolo.present) {
+      map['SIMBOLO'] = Variable<String>(simbolo.value);
     }
-    if (rounded.present) {
-      map['REDONDEO'] = Variable<double>(rounded.value);
+    if (redondeo.present) {
+      map['REDONDEO'] = Variable<double>(redondeo.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -2372,23 +2447,23 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     return (StringBuffer('DivisaTableCompanion(')
           ..write('id: $id, ')
           ..write('abv: $abv, ')
-          ..write('symbol: $symbol, ')
-          ..write('rounded: $rounded, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('simbolo: $simbolo, ')
+          ..write('redondeo: $redondeo, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -2412,104 +2487,104 @@ class $DivisaTableTable extends DivisaTable
   late final GeneratedColumn<String> abv = GeneratedColumn<String>(
       'ABREVIACION', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _symbolMeta = const VerificationMeta('symbol');
+  final VerificationMeta _simboloMeta = const VerificationMeta('simbolo');
   @override
-  late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
+  late final GeneratedColumn<String> simbolo = GeneratedColumn<String>(
       'SIMBOLO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _roundedMeta = const VerificationMeta('rounded');
+  final VerificationMeta _redondeoMeta = const VerificationMeta('redondeo');
   @override
-  late final GeneratedColumn<double> rounded = GeneratedColumn<double>(
+  late final GeneratedColumn<double> redondeo = GeneratedColumn<double>(
       'REDONDEO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -2529,23 +2604,23 @@ class $DivisaTableTable extends DivisaTable
   List<GeneratedColumn> get $columns => [
         id,
         abv,
-        symbol,
-        rounded,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        simbolo,
+        redondeo,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -2571,104 +2646,104 @@ class $DivisaTableTable extends DivisaTable
       context.missing(_abvMeta);
     }
     if (data.containsKey('SIMBOLO')) {
-      context.handle(_symbolMeta,
-          symbol.isAcceptableOrUnknown(data['SIMBOLO']!, _symbolMeta));
+      context.handle(_simboloMeta,
+          simbolo.isAcceptableOrUnknown(data['SIMBOLO']!, _simboloMeta));
     }
     if (data.containsKey('REDONDEO')) {
-      context.handle(_roundedMeta,
-          rounded.isAcceptableOrUnknown(data['REDONDEO']!, _roundedMeta));
+      context.handle(_redondeoMeta,
+          redondeo.isAcceptableOrUnknown(data['REDONDEO']!, _redondeoMeta));
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -2695,39 +2770,39 @@ class $DivisaTableTable extends DivisaTable
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
       abv: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ABREVIACION'])!,
-      symbol: attachedDatabase.options.types
+      simbolo: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}SIMBOLO']),
-      rounded: attachedDatabase.options.types
+      redondeo: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}REDONDEO']),
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -2742,138 +2817,139 @@ class $DivisaTableTable extends DivisaTable
   }
 }
 
-class SalesOrderStatusTableCompanion
-    extends UpdateCompanion<SalesOrderStatusDTO> {
-  final Value<int> id;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+class PedidoVentaEstadoTableCompanion
+    extends UpdateCompanion<PedidoVentaEstadoDTO> {
+  final Value<double> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const SalesOrderStatusTableCompanion({
+  const PedidoVentaEstadoTableCompanion({
     this.id = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  SalesOrderStatusTableCompanion.insert({
-    this.id = const Value.absent(),
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+  PedidoVentaEstadoTableCompanion.insert({
+    required double id,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : descriptionES = Value(descriptionES),
+  })  : id = Value(id),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<SalesOrderStatusDTO> custom({
-    Expression<int>? id,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+  static Insertable<PedidoVentaEstadoDTO> custom({
+    Expression<double>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ESTADO_PEDIDO_ID': id,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  SalesOrderStatusTableCompanion copyWith(
-      {Value<int>? id,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+  PedidoVentaEstadoTableCompanion copyWith(
+      {Value<double>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return SalesOrderStatusTableCompanion(
+    return PedidoVentaEstadoTableCompanion(
       id: id ?? this.id,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -2883,49 +2959,49 @@ class SalesOrderStatusTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['ESTADO_PEDIDO_ID'] = Variable<int>(id.value);
+      map['ESTADO_PEDIDO_ID'] = Variable<double>(id.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -2938,22 +3014,22 @@ class SalesOrderStatusTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('SalesOrderStatusTableCompanion(')
+    return (StringBuffer('PedidoVentaEstadoTableCompanion(')
           ..write('id: $id, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -2961,99 +3037,99 @@ class SalesOrderStatusTableCompanion
   }
 }
 
-class $SalesOrderStatusTableTable extends SalesOrderStatusTable
-    with TableInfo<$SalesOrderStatusTableTable, SalesOrderStatusDTO> {
+class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
+    with TableInfo<$PedidoVentaEstadoTableTable, PedidoVentaEstadoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $SalesOrderStatusTableTable(this.attachedDatabase, [this._alias]);
+  $PedidoVentaEstadoTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+  late final GeneratedColumn<double> id = GeneratedColumn<double>(
       'ESTADO_PEDIDO_ID', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -3072,20 +3148,20 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -3095,99 +3171,101 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
   String get actualTableName => 'PEDIDOS_ESTADOS';
   @override
   VerificationContext validateIntegrity(
-      Insertable<SalesOrderStatusDTO> instance,
+      Insertable<PedidoVentaEstadoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ESTADO_PEDIDO_ID')) {
       context.handle(_idMeta,
           id.isAcceptableOrUnknown(data['ESTADO_PEDIDO_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -3207,38 +3285,38 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  SalesOrderStatusDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PedidoVentaEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SalesOrderStatusDTO(
-      id: attachedDatabase.options.types
-          .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
-      descriptionES: attachedDatabase.options.types
+    return PedidoVentaEstadoDTO(
+      id: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -3248,189 +3326,188 @@ class $SalesOrderStatusTableTable extends SalesOrderStatusTable
   }
 
   @override
-  $SalesOrderStatusTableTable createAlias(String alias) {
-    return $SalesOrderStatusTableTable(attachedDatabase, alias);
+  $PedidoVentaEstadoTableTable createAlias(String alias) {
+    return $PedidoVentaEstadoTableTable(attachedDatabase, alias);
   }
 }
 
-class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
-  final Value<String> companyId;
-  final Value<String> salesOrderId;
-  final Value<DateTime> salesOrderDate;
-  final Value<String> salesType;
-  final Value<String?> customerId;
-  final Value<String?> customerName;
-  final Value<String?> addressId;
-  final Value<String?> shippingAddress1;
-  final Value<String?> shippingAddress2;
-  final Value<String?> zipCode;
-  final Value<String?> city;
-  final Value<String?> state;
-  final Value<String?> countryId;
+class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
+  final Value<String> empresaId;
+  final Value<String> pedidoVentaId;
+  final Value<DateTime> pedidoVentaDate;
+  final Value<String> tipoVenta;
+  final Value<String?> clienteId;
+  final Value<String?> nombreCliente;
+  final Value<String?> direccionId;
+  final Value<String?> direccionEntrga1;
+  final Value<String?> direccionEntrga2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
   final Value<String> divisaId;
-  final Value<double> taxBase;
-  final Value<double> ivaAmount;
+  final Value<double> baseImponible;
+  final Value<double> importeIva;
   final Value<double> total;
-  final Value<int> salesOrderStatusId;
-  final Value<String> isOffer;
-  final Value<double> promptPaymentDiscount;
+  final Value<double> pedidoVentaEstadoId;
+  final Value<String> oferta;
+  final Value<double> descuentoProntoPago;
   final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const SalesOrderTableCompanion({
-    this.companyId = const Value.absent(),
-    this.salesOrderId = const Value.absent(),
-    this.salesOrderDate = const Value.absent(),
-    this.salesType = const Value.absent(),
-    this.customerId = const Value.absent(),
-    this.customerName = const Value.absent(),
-    this.addressId = const Value.absent(),
-    this.shippingAddress1 = const Value.absent(),
-    this.shippingAddress2 = const Value.absent(),
-    this.zipCode = const Value.absent(),
-    this.city = const Value.absent(),
-    this.state = const Value.absent(),
-    this.countryId = const Value.absent(),
+  const PedidoVentaTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.pedidoVentaId = const Value.absent(),
+    this.pedidoVentaDate = const Value.absent(),
+    this.tipoVenta = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.direccionEntrga1 = const Value.absent(),
+    this.direccionEntrga2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
     this.divisaId = const Value.absent(),
-    this.taxBase = const Value.absent(),
-    this.ivaAmount = const Value.absent(),
+    this.baseImponible = const Value.absent(),
+    this.importeIva = const Value.absent(),
     this.total = const Value.absent(),
-    this.salesOrderStatusId = const Value.absent(),
-    this.isOffer = const Value.absent(),
-    this.promptPaymentDiscount = const Value.absent(),
+    this.pedidoVentaEstadoId = const Value.absent(),
+    this.oferta = const Value.absent(),
+    this.descuentoProntoPago = const Value.absent(),
     this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  SalesOrderTableCompanion.insert({
-    required String companyId,
-    required String salesOrderId,
-    required DateTime salesOrderDate,
-    required String salesType,
-    this.customerId = const Value.absent(),
-    this.customerName = const Value.absent(),
-    this.addressId = const Value.absent(),
-    this.shippingAddress1 = const Value.absent(),
-    this.shippingAddress2 = const Value.absent(),
-    this.zipCode = const Value.absent(),
-    this.city = const Value.absent(),
-    this.state = const Value.absent(),
-    this.countryId = const Value.absent(),
+  PedidoVentaTableCompanion.insert({
+    required String empresaId,
+    required String pedidoVentaId,
+    required DateTime pedidoVentaDate,
+    required String tipoVenta,
+    this.clienteId = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.direccionEntrga1 = const Value.absent(),
+    this.direccionEntrga2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
     required String divisaId,
-    this.taxBase = const Value.absent(),
-    this.ivaAmount = const Value.absent(),
+    this.baseImponible = const Value.absent(),
+    this.importeIva = const Value.absent(),
     this.total = const Value.absent(),
-    this.salesOrderStatusId = const Value.absent(),
-    this.isOffer = const Value.absent(),
-    this.promptPaymentDiscount = const Value.absent(),
+    this.pedidoVentaEstadoId = const Value.absent(),
+    this.oferta = const Value.absent(),
+    this.descuentoProntoPago = const Value.absent(),
     this.iva = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : companyId = Value(companyId),
-        salesOrderId = Value(salesOrderId),
-        salesOrderDate = Value(salesOrderDate),
-        salesType = Value(salesType),
+  })  : empresaId = Value(empresaId),
+        pedidoVentaId = Value(pedidoVentaId),
+        pedidoVentaDate = Value(pedidoVentaDate),
+        tipoVenta = Value(tipoVenta),
         divisaId = Value(divisaId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<SalesOrderDTO> custom({
-    Expression<String>? companyId,
-    Expression<String>? salesOrderId,
-    Expression<DateTime>? salesOrderDate,
-    Expression<String>? salesType,
-    Expression<String>? customerId,
-    Expression<String>? customerName,
-    Expression<String>? addressId,
-    Expression<String>? shippingAddress1,
-    Expression<String>? shippingAddress2,
-    Expression<String>? zipCode,
-    Expression<String>? city,
-    Expression<String>? state,
-    Expression<String>? countryId,
+  static Insertable<PedidoVentaDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? pedidoVentaId,
+    Expression<DateTime>? pedidoVentaDate,
+    Expression<String>? tipoVenta,
+    Expression<String>? clienteId,
+    Expression<String>? nombreCliente,
+    Expression<String>? direccionId,
+    Expression<String>? direccionEntrga1,
+    Expression<String>? direccionEntrga2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
     Expression<String>? divisaId,
-    Expression<double>? taxBase,
-    Expression<double>? ivaAmount,
+    Expression<double>? baseImponible,
+    Expression<double>? importeIva,
     Expression<double>? total,
-    Expression<int>? salesOrderStatusId,
-    Expression<String>? isOffer,
-    Expression<double>? promptPaymentDiscount,
+    Expression<double>? pedidoVentaEstadoId,
+    Expression<String>? oferta,
+    Expression<double>? descuentoProntoPago,
     Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (companyId != null) 'EMPRESA_ID': companyId,
-      if (salesOrderId != null) 'PEDIDO_ID': salesOrderId,
-      if (salesOrderDate != null) 'FECHA_PEDIDO': salesOrderDate,
-      if (salesType != null) 'TIPO_VENTA': salesType,
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (customerName != null) 'NOMRE_CLIENTE': customerName,
-      if (addressId != null) 'DIRECCION_ID': addressId,
-      if (shippingAddress1 != null) 'DIRECCION_ENVIO1': shippingAddress1,
-      if (shippingAddress2 != null) 'DIRECCION_ENVIO2': shippingAddress2,
-      if (zipCode != null) 'CODIGO_POSTAL': zipCode,
-      if (city != null) 'POBLACION': city,
-      if (state != null) 'PROVINCIA': state,
-      if (countryId != null) 'PAIS_ID': countryId,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
+      if (pedidoVentaDate != null) 'FECHA_PEDIDO': pedidoVentaDate,
+      if (tipoVenta != null) 'TIPO_VENTA': tipoVenta,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (nombreCliente != null) 'NOMRE_CLIENTE': nombreCliente,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (direccionEntrga1 != null) 'DIRECCION_ENVIO1': direccionEntrga1,
+      if (direccionEntrga2 != null) 'DIRECCION_ENVIO2': direccionEntrga2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
       if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (taxBase != null) 'BASE_IMPONIBLE': taxBase,
-      if (ivaAmount != null) 'IMPORTE_IVA': ivaAmount,
+      if (baseImponible != null) 'BASE_IMPONIBLE': baseImponible,
+      if (importeIva != null) 'IMPORTE_IVA': importeIva,
       if (total != null) 'TOTAL': total,
-      if (salesOrderStatusId != null) 'ESTADO_PEDIDO_ID': salesOrderStatusId,
-      if (isOffer != null) 'OFERTA_SN': isOffer,
-      if (promptPaymentDiscount != null)
-        'DESCUENTO_PRONTO_PAGO': promptPaymentDiscount,
+      if (pedidoVentaEstadoId != null) 'ESTADO_PEDIDO_ID': pedidoVentaEstadoId,
+      if (oferta != null) 'OFERTA_SN': oferta,
+      if (descuentoProntoPago != null)
+        'DESCUENTO_PRONTO_PAGO': descuentoProntoPago,
       if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  SalesOrderTableCompanion copyWith(
-      {Value<String>? companyId,
-      Value<String>? salesOrderId,
-      Value<DateTime>? salesOrderDate,
-      Value<String>? salesType,
-      Value<String?>? customerId,
-      Value<String?>? customerName,
-      Value<String?>? addressId,
-      Value<String?>? shippingAddress1,
-      Value<String?>? shippingAddress2,
-      Value<String?>? zipCode,
-      Value<String?>? city,
-      Value<String?>? state,
-      Value<String?>? countryId,
+  PedidoVentaTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? pedidoVentaId,
+      Value<DateTime>? pedidoVentaDate,
+      Value<String>? tipoVenta,
+      Value<String?>? clienteId,
+      Value<String?>? nombreCliente,
+      Value<String?>? direccionId,
+      Value<String?>? direccionEntrga1,
+      Value<String?>? direccionEntrga2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
       Value<String>? divisaId,
-      Value<double>? taxBase,
-      Value<double>? ivaAmount,
+      Value<double>? baseImponible,
+      Value<double>? importeIva,
       Value<double>? total,
-      Value<int>? salesOrderStatusId,
-      Value<String>? isOffer,
-      Value<double>? promptPaymentDiscount,
+      Value<double>? pedidoVentaEstadoId,
+      Value<String>? oferta,
+      Value<double>? descuentoProntoPago,
       Value<double>? iva,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return SalesOrderTableCompanion(
-      companyId: companyId ?? this.companyId,
-      salesOrderId: salesOrderId ?? this.salesOrderId,
-      salesOrderDate: salesOrderDate ?? this.salesOrderDate,
-      salesType: salesType ?? this.salesType,
-      customerId: customerId ?? this.customerId,
-      customerName: customerName ?? this.customerName,
-      addressId: addressId ?? this.addressId,
-      shippingAddress1: shippingAddress1 ?? this.shippingAddress1,
-      shippingAddress2: shippingAddress2 ?? this.shippingAddress2,
-      zipCode: zipCode ?? this.zipCode,
-      city: city ?? this.city,
-      state: state ?? this.state,
-      countryId: countryId ?? this.countryId,
+    return PedidoVentaTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
+      pedidoVentaDate: pedidoVentaDate ?? this.pedidoVentaDate,
+      tipoVenta: tipoVenta ?? this.tipoVenta,
+      clienteId: clienteId ?? this.clienteId,
+      nombreCliente: nombreCliente ?? this.nombreCliente,
+      direccionId: direccionId ?? this.direccionId,
+      direccionEntrga1: direccionEntrga1 ?? this.direccionEntrga1,
+      direccionEntrga2: direccionEntrga2 ?? this.direccionEntrga2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
       divisaId: divisaId ?? this.divisaId,
-      taxBase: taxBase ?? this.taxBase,
-      ivaAmount: ivaAmount ?? this.ivaAmount,
+      baseImponible: baseImponible ?? this.baseImponible,
+      importeIva: importeIva ?? this.importeIva,
       total: total ?? this.total,
-      salesOrderStatusId: salesOrderStatusId ?? this.salesOrderStatusId,
-      isOffer: isOffer ?? this.isOffer,
-      promptPaymentDiscount:
-          promptPaymentDiscount ?? this.promptPaymentDiscount,
+      pedidoVentaEstadoId: pedidoVentaEstadoId ?? this.pedidoVentaEstadoId,
+      oferta: oferta ?? this.oferta,
+      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
       iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -3440,66 +3517,66 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (companyId.present) {
-      map['EMPRESA_ID'] = Variable<String>(companyId.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (salesOrderId.present) {
-      map['PEDIDO_ID'] = Variable<String>(salesOrderId.value);
+    if (pedidoVentaId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
     }
-    if (salesOrderDate.present) {
-      map['FECHA_PEDIDO'] = Variable<DateTime>(salesOrderDate.value);
+    if (pedidoVentaDate.present) {
+      map['FECHA_PEDIDO'] = Variable<DateTime>(pedidoVentaDate.value);
     }
-    if (salesType.present) {
-      map['TIPO_VENTA'] = Variable<String>(salesType.value);
+    if (tipoVenta.present) {
+      map['TIPO_VENTA'] = Variable<String>(tipoVenta.value);
     }
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (customerName.present) {
-      map['NOMRE_CLIENTE'] = Variable<String>(customerName.value);
+    if (nombreCliente.present) {
+      map['NOMRE_CLIENTE'] = Variable<String>(nombreCliente.value);
     }
-    if (addressId.present) {
-      map['DIRECCION_ID'] = Variable<String>(addressId.value);
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
     }
-    if (shippingAddress1.present) {
-      map['DIRECCION_ENVIO1'] = Variable<String>(shippingAddress1.value);
+    if (direccionEntrga1.present) {
+      map['DIRECCION_ENVIO1'] = Variable<String>(direccionEntrga1.value);
     }
-    if (shippingAddress2.present) {
-      map['DIRECCION_ENVIO2'] = Variable<String>(shippingAddress2.value);
+    if (direccionEntrga2.present) {
+      map['DIRECCION_ENVIO2'] = Variable<String>(direccionEntrga2.value);
     }
-    if (zipCode.present) {
-      map['CODIGO_POSTAL'] = Variable<String>(zipCode.value);
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
     }
-    if (city.present) {
-      map['POBLACION'] = Variable<String>(city.value);
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
     }
-    if (state.present) {
-      map['PROVINCIA'] = Variable<String>(state.value);
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
     }
-    if (countryId.present) {
-      map['PAIS_ID'] = Variable<String>(countryId.value);
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
     }
     if (divisaId.present) {
       map['DIVISA_ID'] = Variable<String>(divisaId.value);
     }
-    if (taxBase.present) {
-      map['BASE_IMPONIBLE'] = Variable<double>(taxBase.value);
+    if (baseImponible.present) {
+      map['BASE_IMPONIBLE'] = Variable<double>(baseImponible.value);
     }
-    if (ivaAmount.present) {
-      map['IMPORTE_IVA'] = Variable<double>(ivaAmount.value);
+    if (importeIva.present) {
+      map['IMPORTE_IVA'] = Variable<double>(importeIva.value);
     }
     if (total.present) {
       map['TOTAL'] = Variable<double>(total.value);
     }
-    if (salesOrderStatusId.present) {
-      map['ESTADO_PEDIDO_ID'] = Variable<int>(salesOrderStatusId.value);
+    if (pedidoVentaEstadoId.present) {
+      map['ESTADO_PEDIDO_ID'] = Variable<double>(pedidoVentaEstadoId.value);
     }
-    if (isOffer.present) {
-      map['OFERTA_SN'] = Variable<String>(isOffer.value);
+    if (oferta.present) {
+      map['OFERTA_SN'] = Variable<String>(oferta.value);
     }
-    if (promptPaymentDiscount.present) {
+    if (descuentoProntoPago.present) {
       map['DESCUENTO_PRONTO_PAGO'] =
-          Variable<double>(promptPaymentDiscount.value);
+          Variable<double>(descuentoProntoPago.value);
     }
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
@@ -3515,27 +3592,27 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('SalesOrderTableCompanion(')
-          ..write('companyId: $companyId, ')
-          ..write('salesOrderId: $salesOrderId, ')
-          ..write('salesOrderDate: $salesOrderDate, ')
-          ..write('salesType: $salesType, ')
-          ..write('customerId: $customerId, ')
-          ..write('customerName: $customerName, ')
-          ..write('addressId: $addressId, ')
-          ..write('shippingAddress1: $shippingAddress1, ')
-          ..write('shippingAddress2: $shippingAddress2, ')
-          ..write('zipCode: $zipCode, ')
-          ..write('city: $city, ')
-          ..write('state: $state, ')
-          ..write('countryId: $countryId, ')
+    return (StringBuffer('PedidoVentaTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('pedidoVentaId: $pedidoVentaId, ')
+          ..write('pedidoVentaDate: $pedidoVentaDate, ')
+          ..write('tipoVenta: $tipoVenta, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('nombreCliente: $nombreCliente, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('direccionEntrga1: $direccionEntrga1, ')
+          ..write('direccionEntrga2: $direccionEntrga2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
           ..write('divisaId: $divisaId, ')
-          ..write('taxBase: $taxBase, ')
-          ..write('ivaAmount: $ivaAmount, ')
+          ..write('baseImponible: $baseImponible, ')
+          ..write('importeIva: $importeIva, ')
           ..write('total: $total, ')
-          ..write('salesOrderStatusId: $salesOrderStatusId, ')
-          ..write('isOffer: $isOffer, ')
-          ..write('promptPaymentDiscount: $promptPaymentDiscount, ')
+          ..write('pedidoVentaEstadoId: $pedidoVentaEstadoId, ')
+          ..write('oferta: $oferta, ')
+          ..write('descuentoProntoPago: $descuentoProntoPago, ')
           ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -3544,100 +3621,102 @@ class SalesOrderTableCompanion extends UpdateCompanion<SalesOrderDTO> {
   }
 }
 
-class $SalesOrderTableTable extends SalesOrderTable
-    with TableInfo<$SalesOrderTableTable, SalesOrderDTO> {
+class $PedidoVentaTableTable extends PedidoVentaTable
+    with TableInfo<$PedidoVentaTableTable, PedidoVentaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $SalesOrderTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
+  $PedidoVentaTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
   @override
-  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 2),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _salesOrderIdMeta =
-      const VerificationMeta('salesOrderId');
+  final VerificationMeta _pedidoVentaIdMeta =
+      const VerificationMeta('pedidoVentaId');
   @override
-  late final GeneratedColumn<String> salesOrderId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 10),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _salesOrderDateMeta =
-      const VerificationMeta('salesOrderDate');
+  final VerificationMeta _pedidoVentaDateMeta =
+      const VerificationMeta('pedidoVentaDate');
   @override
-  late final GeneratedColumn<DateTime> salesOrderDate =
+  late final GeneratedColumn<DateTime> pedidoVentaDate =
       GeneratedColumn<DateTime>('FECHA_PEDIDO', aliasedName, false,
           type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _salesTypeMeta = const VerificationMeta('salesType');
+  final VerificationMeta _tipoVentaMeta = const VerificationMeta('tipoVenta');
   @override
-  late final GeneratedColumn<String> salesType = GeneratedColumn<String>(
+  late final GeneratedColumn<String> tipoVenta = GeneratedColumn<String>(
       'TIPO_VENTA', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 1),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 6),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _customerNameMeta =
-      const VerificationMeta('customerName');
+  final VerificationMeta _nombreClienteMeta =
+      const VerificationMeta('nombreCliente');
   @override
-  late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
+  late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
       'NOMRE_CLIENTE', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _addressIdMeta = const VerificationMeta('addressId');
+  final VerificationMeta _direccionIdMeta =
+      const VerificationMeta('direccionId');
   @override
-  late final GeneratedColumn<String> addressId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _shippingAddress1Meta =
-      const VerificationMeta('shippingAddress1');
+  final VerificationMeta _direccionEntrga1Meta =
+      const VerificationMeta('direccionEntrga1');
   @override
-  late final GeneratedColumn<String> shippingAddress1 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccionEntrga1 = GeneratedColumn<String>(
       'DIRECCION_ENVIO1', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _shippingAddress2Meta =
-      const VerificationMeta('shippingAddress2');
+  final VerificationMeta _direccionEntrga2Meta =
+      const VerificationMeta('direccionEntrga2');
   @override
-  late final GeneratedColumn<String> shippingAddress2 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccionEntrga2 = GeneratedColumn<String>(
       'DIRECCION_ENVIO2', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _zipCodeMeta = const VerificationMeta('zipCode');
+  final VerificationMeta _codigoPostalMeta =
+      const VerificationMeta('codigoPostal');
   @override
-  late final GeneratedColumn<String> zipCode = GeneratedColumn<String>(
+  late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
       'CODIGO_POSTAL', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 10),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _cityMeta = const VerificationMeta('city');
+  final VerificationMeta _poblacionMeta = const VerificationMeta('poblacion');
   @override
-  late final GeneratedColumn<String> city = GeneratedColumn<String>(
+  late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 60),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _stateMeta = const VerificationMeta('state');
+  final VerificationMeta _provinciaMeta = const VerificationMeta('provincia');
   @override
-  late final GeneratedColumn<String> state = GeneratedColumn<String>(
+  late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 50),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _countryIdMeta = const VerificationMeta('countryId');
+  final VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
-  late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 3),
       type: DriftSqlType.string,
@@ -3651,16 +3730,17 @@ class $SalesOrderTableTable extends SalesOrderTable
       type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
-  final VerificationMeta _taxBaseMeta = const VerificationMeta('taxBase');
+  final VerificationMeta _baseImponibleMeta =
+      const VerificationMeta('baseImponible');
   @override
-  late final GeneratedColumn<double> taxBase = GeneratedColumn<double>(
+  late final GeneratedColumn<double> baseImponible = GeneratedColumn<double>(
       'BASE_IMPONIBLE', aliasedName, false,
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _ivaAmountMeta = const VerificationMeta('ivaAmount');
+  final VerificationMeta _importeIvaMeta = const VerificationMeta('importeIva');
   @override
-  late final GeneratedColumn<double> ivaAmount = GeneratedColumn<double>(
+  late final GeneratedColumn<double> importeIva = GeneratedColumn<double>(
       'IMPORTE_IVA', aliasedName, false,
       type: DriftSqlType.double,
       requiredDuringInsert: false,
@@ -3672,26 +3752,26 @@ class $SalesOrderTableTable extends SalesOrderTable
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _salesOrderStatusIdMeta =
-      const VerificationMeta('salesOrderStatusId');
+  final VerificationMeta _pedidoVentaEstadoIdMeta =
+      const VerificationMeta('pedidoVentaEstadoId');
   @override
-  late final GeneratedColumn<int> salesOrderStatusId = GeneratedColumn<int>(
-      'ESTADO_PEDIDO_ID', aliasedName, false,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PEDIDOS_ESTADOS (ESTADO_PEDIDO_ID)',
-      defaultValue: const Constant(0));
-  final VerificationMeta _isOfferMeta = const VerificationMeta('isOffer');
+  late final GeneratedColumn<double> pedidoVentaEstadoId =
+      GeneratedColumn<double>('ESTADO_PEDIDO_ID', aliasedName, false,
+          type: DriftSqlType.double,
+          requiredDuringInsert: false,
+          defaultConstraints: 'REFERENCES PEDIDOS_ESTADOS (ESTADO_PEDIDO_ID)',
+          defaultValue: const Constant(0));
+  final VerificationMeta _ofertaMeta = const VerificationMeta('oferta');
   @override
-  late final GeneratedColumn<String> isOffer = GeneratedColumn<String>(
+  late final GeneratedColumn<String> oferta = GeneratedColumn<String>(
       'OFERTA_SN', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _promptPaymentDiscountMeta =
-      const VerificationMeta('promptPaymentDiscount');
+  final VerificationMeta _descuentoProntoPagoMeta =
+      const VerificationMeta('descuentoProntoPago');
   @override
-  late final GeneratedColumn<double> promptPaymentDiscount =
+  late final GeneratedColumn<double> descuentoProntoPago =
       GeneratedColumn<double>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
           type: DriftSqlType.double,
           requiredDuringInsert: false,
@@ -3718,26 +3798,26 @@ class $SalesOrderTableTable extends SalesOrderTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        companyId,
-        salesOrderId,
-        salesOrderDate,
-        salesType,
-        customerId,
-        customerName,
-        addressId,
-        shippingAddress1,
-        shippingAddress2,
-        zipCode,
-        city,
-        state,
-        countryId,
+        empresaId,
+        pedidoVentaId,
+        pedidoVentaDate,
+        tipoVenta,
+        clienteId,
+        nombreCliente,
+        direccionId,
+        direccionEntrga1,
+        direccionEntrga2,
+        codigoPostal,
+        poblacion,
+        provincia,
+        paisId,
         divisaId,
-        taxBase,
-        ivaAmount,
+        baseImponible,
+        importeIva,
         total,
-        salesOrderStatusId,
-        isOffer,
-        promptPaymentDiscount,
+        pedidoVentaEstadoId,
+        oferta,
+        descuentoProntoPago,
         iva,
         lastUpdated,
         deleted
@@ -3747,83 +3827,83 @@ class $SalesOrderTableTable extends SalesOrderTable
   @override
   String get actualTableName => 'PEDIDOS';
   @override
-  VerificationContext validateIntegrity(Insertable<SalesOrderDTO> instance,
+  VerificationContext validateIntegrity(Insertable<PedidoVentaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('EMPRESA_ID')) {
-      context.handle(_companyIdMeta,
-          companyId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _companyIdMeta));
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
     } else if (isInserting) {
-      context.missing(_companyIdMeta);
+      context.missing(_empresaIdMeta);
     }
     if (data.containsKey('PEDIDO_ID')) {
       context.handle(
-          _salesOrderIdMeta,
-          salesOrderId.isAcceptableOrUnknown(
-              data['PEDIDO_ID']!, _salesOrderIdMeta));
+          _pedidoVentaIdMeta,
+          pedidoVentaId.isAcceptableOrUnknown(
+              data['PEDIDO_ID']!, _pedidoVentaIdMeta));
     } else if (isInserting) {
-      context.missing(_salesOrderIdMeta);
+      context.missing(_pedidoVentaIdMeta);
     }
     if (data.containsKey('FECHA_PEDIDO')) {
       context.handle(
-          _salesOrderDateMeta,
-          salesOrderDate.isAcceptableOrUnknown(
-              data['FECHA_PEDIDO']!, _salesOrderDateMeta));
+          _pedidoVentaDateMeta,
+          pedidoVentaDate.isAcceptableOrUnknown(
+              data['FECHA_PEDIDO']!, _pedidoVentaDateMeta));
     } else if (isInserting) {
-      context.missing(_salesOrderDateMeta);
+      context.missing(_pedidoVentaDateMeta);
     }
     if (data.containsKey('TIPO_VENTA')) {
-      context.handle(_salesTypeMeta,
-          salesType.isAcceptableOrUnknown(data['TIPO_VENTA']!, _salesTypeMeta));
+      context.handle(_tipoVentaMeta,
+          tipoVenta.isAcceptableOrUnknown(data['TIPO_VENTA']!, _tipoVentaMeta));
     } else if (isInserting) {
-      context.missing(_salesTypeMeta);
+      context.missing(_tipoVentaMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     }
     if (data.containsKey('NOMRE_CLIENTE')) {
       context.handle(
-          _customerNameMeta,
-          customerName.isAcceptableOrUnknown(
-              data['NOMRE_CLIENTE']!, _customerNameMeta));
+          _nombreClienteMeta,
+          nombreCliente.isAcceptableOrUnknown(
+              data['NOMRE_CLIENTE']!, _nombreClienteMeta));
     }
     if (data.containsKey('DIRECCION_ID')) {
       context.handle(
-          _addressIdMeta,
-          addressId.isAcceptableOrUnknown(
-              data['DIRECCION_ID']!, _addressIdMeta));
+          _direccionIdMeta,
+          direccionId.isAcceptableOrUnknown(
+              data['DIRECCION_ID']!, _direccionIdMeta));
     }
     if (data.containsKey('DIRECCION_ENVIO1')) {
       context.handle(
-          _shippingAddress1Meta,
-          shippingAddress1.isAcceptableOrUnknown(
-              data['DIRECCION_ENVIO1']!, _shippingAddress1Meta));
+          _direccionEntrga1Meta,
+          direccionEntrga1.isAcceptableOrUnknown(
+              data['DIRECCION_ENVIO1']!, _direccionEntrga1Meta));
     }
     if (data.containsKey('DIRECCION_ENVIO2')) {
       context.handle(
-          _shippingAddress2Meta,
-          shippingAddress2.isAcceptableOrUnknown(
-              data['DIRECCION_ENVIO2']!, _shippingAddress2Meta));
+          _direccionEntrga2Meta,
+          direccionEntrga2.isAcceptableOrUnknown(
+              data['DIRECCION_ENVIO2']!, _direccionEntrga2Meta));
     }
     if (data.containsKey('CODIGO_POSTAL')) {
-      context.handle(_zipCodeMeta,
-          zipCode.isAcceptableOrUnknown(data['CODIGO_POSTAL']!, _zipCodeMeta));
+      context.handle(
+          _codigoPostalMeta,
+          codigoPostal.isAcceptableOrUnknown(
+              data['CODIGO_POSTAL']!, _codigoPostalMeta));
     }
     if (data.containsKey('POBLACION')) {
-      context.handle(
-          _cityMeta, city.isAcceptableOrUnknown(data['POBLACION']!, _cityMeta));
+      context.handle(_poblacionMeta,
+          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
     }
     if (data.containsKey('PROVINCIA')) {
-      context.handle(_stateMeta,
-          state.isAcceptableOrUnknown(data['PROVINCIA']!, _stateMeta));
+      context.handle(_provinciaMeta,
+          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
     }
     if (data.containsKey('PAIS_ID')) {
-      context.handle(_countryIdMeta,
-          countryId.isAcceptableOrUnknown(data['PAIS_ID']!, _countryIdMeta));
+      context.handle(_paisIdMeta,
+          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
     }
     if (data.containsKey('DIVISA_ID')) {
       context.handle(_divisaIdMeta,
@@ -3832,14 +3912,16 @@ class $SalesOrderTableTable extends SalesOrderTable
       context.missing(_divisaIdMeta);
     }
     if (data.containsKey('BASE_IMPONIBLE')) {
-      context.handle(_taxBaseMeta,
-          taxBase.isAcceptableOrUnknown(data['BASE_IMPONIBLE']!, _taxBaseMeta));
+      context.handle(
+          _baseImponibleMeta,
+          baseImponible.isAcceptableOrUnknown(
+              data['BASE_IMPONIBLE']!, _baseImponibleMeta));
     }
     if (data.containsKey('IMPORTE_IVA')) {
       context.handle(
-          _ivaAmountMeta,
-          ivaAmount.isAcceptableOrUnknown(
-              data['IMPORTE_IVA']!, _ivaAmountMeta));
+          _importeIvaMeta,
+          importeIva.isAcceptableOrUnknown(
+              data['IMPORTE_IVA']!, _importeIvaMeta));
     }
     if (data.containsKey('TOTAL')) {
       context.handle(
@@ -3847,19 +3929,19 @@ class $SalesOrderTableTable extends SalesOrderTable
     }
     if (data.containsKey('ESTADO_PEDIDO_ID')) {
       context.handle(
-          _salesOrderStatusIdMeta,
-          salesOrderStatusId.isAcceptableOrUnknown(
-              data['ESTADO_PEDIDO_ID']!, _salesOrderStatusIdMeta));
+          _pedidoVentaEstadoIdMeta,
+          pedidoVentaEstadoId.isAcceptableOrUnknown(
+              data['ESTADO_PEDIDO_ID']!, _pedidoVentaEstadoIdMeta));
     }
     if (data.containsKey('OFERTA_SN')) {
-      context.handle(_isOfferMeta,
-          isOffer.isAcceptableOrUnknown(data['OFERTA_SN']!, _isOfferMeta));
+      context.handle(_ofertaMeta,
+          oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta));
     }
     if (data.containsKey('DESCUENTO_PRONTO_PAGO')) {
       context.handle(
-          _promptPaymentDiscountMeta,
-          promptPaymentDiscount.isAcceptableOrUnknown(
-              data['DESCUENTO_PRONTO_PAGO']!, _promptPaymentDiscountMeta));
+          _descuentoProntoPagoMeta,
+          descuentoProntoPago.isAcceptableOrUnknown(
+              data['DESCUENTO_PRONTO_PAGO']!, _descuentoProntoPagoMeta));
     }
     if (data.containsKey('IVA')) {
       context.handle(
@@ -3881,50 +3963,50 @@ class $SalesOrderTableTable extends SalesOrderTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {salesOrderId, companyId};
+  Set<GeneratedColumn> get $primaryKey => {pedidoVentaId, empresaId};
   @override
-  SalesOrderDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PedidoVentaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SalesOrderDTO(
-      companyId: attachedDatabase.options.types
+    return PedidoVentaDTO(
+      empresaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      salesOrderId: attachedDatabase.options.types
+      pedidoVentaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
-      salesOrderDate: attachedDatabase.options.types
+      pedidoVentaDate: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_PEDIDO'])!,
-      salesType: attachedDatabase.options.types
+      tipoVenta: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TIPO_VENTA'])!,
-      customerId: attachedDatabase.options.types
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID']),
-      addressId: attachedDatabase.options.types
+      direccionId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
-      customerName: attachedDatabase.options.types
+      nombreCliente: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NOMRE_CLIENTE']),
-      shippingAddress1: attachedDatabase.options.types.read(
+      direccionEntrga1: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_ENVIO1']),
-      shippingAddress2: attachedDatabase.options.types.read(
+      direccionEntrga2: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_ENVIO2']),
-      zipCode: attachedDatabase.options.types
+      codigoPostal: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      city: attachedDatabase.options.types
+      poblacion: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      state: attachedDatabase.options.types
+      provincia: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      countryId: attachedDatabase.options.types
+      paisId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
       divisaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
-      taxBase: attachedDatabase.options.types
+      baseImponible: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}BASE_IMPONIBLE'])!,
-      ivaAmount: attachedDatabase.options.types
+      importeIva: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_IVA'])!,
       total: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TOTAL'])!,
-      salesOrderStatusId: attachedDatabase.options.types
-          .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
-      isOffer: attachedDatabase.options.types
+      pedidoVentaEstadoId: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
+      oferta: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
-      promptPaymentDiscount: attachedDatabase.options.types.read(
+      descuentoProntoPago: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'])!,
       iva: attachedDatabase.options.types
@@ -3937,123 +4019,124 @@ class $SalesOrderTableTable extends SalesOrderTable
   }
 
   @override
-  $SalesOrderTableTable createAlias(String alias) {
-    return $SalesOrderTableTable(attachedDatabase, alias);
+  $PedidoVentaTableTable createAlias(String alias) {
+    return $PedidoVentaTableTable(attachedDatabase, alias);
   }
 }
 
-class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
-  final Value<String> companyId;
-  final Value<String> salesOrderId;
+class PedidoVentaLineaTableCompanion
+    extends UpdateCompanion<PedidoVentaLineaDTO> {
+  final Value<String> empresaId;
+  final Value<String> pedidoVentaId;
   final Value<String> id;
-  final Value<String> articleId;
-  final Value<String?> articleDescription;
-  final Value<double> quantity;
-  final Value<double> divisaPrice;
-  final Value<double?> priceType;
-  final Value<double> discount1;
-  final Value<double> discount2;
-  final Value<double> discount3;
+  final Value<String> articuloId;
+  final Value<String?> articuloDescription;
+  final Value<double> cantidad;
+  final Value<double> precioDivisa;
+  final Value<double?> tipoPrecio;
+  final Value<double> descuento1;
+  final Value<double> descuento2;
+  final Value<double> descuento3;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const SalesOrderLineTableCompanion({
-    this.companyId = const Value.absent(),
-    this.salesOrderId = const Value.absent(),
+  const PedidoVentaLineaTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.pedidoVentaId = const Value.absent(),
     this.id = const Value.absent(),
-    this.articleId = const Value.absent(),
-    this.articleDescription = const Value.absent(),
-    this.quantity = const Value.absent(),
-    this.divisaPrice = const Value.absent(),
-    this.priceType = const Value.absent(),
-    this.discount1 = const Value.absent(),
-    this.discount2 = const Value.absent(),
-    this.discount3 = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.articuloDescription = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.precioDivisa = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.descuento1 = const Value.absent(),
+    this.descuento2 = const Value.absent(),
+    this.descuento3 = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  SalesOrderLineTableCompanion.insert({
-    required String companyId,
-    required String salesOrderId,
+  PedidoVentaLineaTableCompanion.insert({
+    required String empresaId,
+    required String pedidoVentaId,
     required String id,
-    required String articleId,
-    this.articleDescription = const Value.absent(),
-    required double quantity,
-    required double divisaPrice,
-    this.priceType = const Value.absent(),
-    required double discount1,
-    required double discount2,
-    required double discount3,
+    required String articuloId,
+    this.articuloDescription = const Value.absent(),
+    required double cantidad,
+    required double precioDivisa,
+    this.tipoPrecio = const Value.absent(),
+    required double descuento1,
+    required double descuento2,
+    required double descuento3,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : companyId = Value(companyId),
-        salesOrderId = Value(salesOrderId),
+  })  : empresaId = Value(empresaId),
+        pedidoVentaId = Value(pedidoVentaId),
         id = Value(id),
-        articleId = Value(articleId),
-        quantity = Value(quantity),
-        divisaPrice = Value(divisaPrice),
-        discount1 = Value(discount1),
-        discount2 = Value(discount2),
-        discount3 = Value(discount3),
+        articuloId = Value(articuloId),
+        cantidad = Value(cantidad),
+        precioDivisa = Value(precioDivisa),
+        descuento1 = Value(descuento1),
+        descuento2 = Value(descuento2),
+        descuento3 = Value(descuento3),
         lastUpdated = Value(lastUpdated);
-  static Insertable<SalesOrderLineDTO> custom({
-    Expression<String>? companyId,
-    Expression<String>? salesOrderId,
+  static Insertable<PedidoVentaLineaDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? pedidoVentaId,
     Expression<String>? id,
-    Expression<String>? articleId,
-    Expression<String>? articleDescription,
-    Expression<double>? quantity,
-    Expression<double>? divisaPrice,
-    Expression<double>? priceType,
-    Expression<double>? discount1,
-    Expression<double>? discount2,
-    Expression<double>? discount3,
+    Expression<String>? articuloId,
+    Expression<String>? articuloDescription,
+    Expression<double>? cantidad,
+    Expression<double>? precioDivisa,
+    Expression<double>? tipoPrecio,
+    Expression<double>? descuento1,
+    Expression<double>? descuento2,
+    Expression<double>? descuento3,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (companyId != null) 'EMPRESA_ID': companyId,
-      if (salesOrderId != null) 'PEDIDO_ID': salesOrderId,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
       if (id != null) 'PEDIDO_LINEA_ID': id,
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (articleDescription != null)
-        'ARTICULO_DESCRIPCION': articleDescription,
-      if (quantity != null) 'CANTIDAD': quantity,
-      if (divisaPrice != null) 'PRECIO_DIVISA': divisaPrice,
-      if (priceType != null) 'TIPO_PRECIO': priceType,
-      if (discount1 != null) 'DESCUENTO1': discount1,
-      if (discount2 != null) 'DESCUENTO2': discount2,
-      if (discount3 != null) 'DESCUENTO3': discount3,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (articuloDescription != null)
+        'ARTICULO_DESCRIPCION': articuloDescription,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (descuento1 != null) 'DESCUENTO1': descuento1,
+      if (descuento2 != null) 'DESCUENTO2': descuento2,
+      if (descuento3 != null) 'DESCUENTO3': descuento3,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  SalesOrderLineTableCompanion copyWith(
-      {Value<String>? companyId,
-      Value<String>? salesOrderId,
+  PedidoVentaLineaTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? pedidoVentaId,
       Value<String>? id,
-      Value<String>? articleId,
-      Value<String?>? articleDescription,
-      Value<double>? quantity,
-      Value<double>? divisaPrice,
-      Value<double?>? priceType,
-      Value<double>? discount1,
-      Value<double>? discount2,
-      Value<double>? discount3,
+      Value<String>? articuloId,
+      Value<String?>? articuloDescription,
+      Value<double>? cantidad,
+      Value<double>? precioDivisa,
+      Value<double?>? tipoPrecio,
+      Value<double>? descuento1,
+      Value<double>? descuento2,
+      Value<double>? descuento3,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return SalesOrderLineTableCompanion(
-      companyId: companyId ?? this.companyId,
-      salesOrderId: salesOrderId ?? this.salesOrderId,
+    return PedidoVentaLineaTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
       id: id ?? this.id,
-      articleId: articleId ?? this.articleId,
-      articleDescription: articleDescription ?? this.articleDescription,
-      quantity: quantity ?? this.quantity,
-      divisaPrice: divisaPrice ?? this.divisaPrice,
-      priceType: priceType ?? this.priceType,
-      discount1: discount1 ?? this.discount1,
-      discount2: discount2 ?? this.discount2,
-      discount3: discount3 ?? this.discount3,
+      articuloId: articuloId ?? this.articuloId,
+      articuloDescription: articuloDescription ?? this.articuloDescription,
+      cantidad: cantidad ?? this.cantidad,
+      precioDivisa: precioDivisa ?? this.precioDivisa,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      descuento1: descuento1 ?? this.descuento1,
+      descuento2: descuento2 ?? this.descuento2,
+      descuento3: descuento3 ?? this.descuento3,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -4062,38 +4145,38 @@ class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (companyId.present) {
-      map['EMPRESA_ID'] = Variable<String>(companyId.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (salesOrderId.present) {
-      map['PEDIDO_ID'] = Variable<String>(salesOrderId.value);
+    if (pedidoVentaId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
     }
     if (id.present) {
       map['PEDIDO_LINEA_ID'] = Variable<String>(id.value);
     }
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (articleDescription.present) {
-      map['ARTICULO_DESCRIPCION'] = Variable<String>(articleDescription.value);
+    if (articuloDescription.present) {
+      map['ARTICULO_DESCRIPCION'] = Variable<String>(articuloDescription.value);
     }
-    if (quantity.present) {
-      map['CANTIDAD'] = Variable<double>(quantity.value);
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<double>(cantidad.value);
     }
-    if (divisaPrice.present) {
-      map['PRECIO_DIVISA'] = Variable<double>(divisaPrice.value);
+    if (precioDivisa.present) {
+      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
     }
-    if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<double>(tipoPrecio.value);
     }
-    if (discount1.present) {
-      map['DESCUENTO1'] = Variable<double>(discount1.value);
+    if (descuento1.present) {
+      map['DESCUENTO1'] = Variable<double>(descuento1.value);
     }
-    if (discount2.present) {
-      map['DESCUENTO2'] = Variable<double>(discount2.value);
+    if (descuento2.present) {
+      map['DESCUENTO2'] = Variable<double>(descuento2.value);
     }
-    if (discount3.present) {
-      map['DESCUENTO3'] = Variable<double>(discount3.value);
+    if (descuento3.present) {
+      map['DESCUENTO3'] = Variable<double>(descuento3.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -4106,18 +4189,18 @@ class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('SalesOrderLineTableCompanion(')
-          ..write('companyId: $companyId, ')
-          ..write('salesOrderId: $salesOrderId, ')
+    return (StringBuffer('PedidoVentaLineaTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('pedidoVentaId: $pedidoVentaId, ')
           ..write('id: $id, ')
-          ..write('articleId: $articleId, ')
-          ..write('articleDescription: $articleDescription, ')
-          ..write('quantity: $quantity, ')
-          ..write('divisaPrice: $divisaPrice, ')
-          ..write('priceType: $priceType, ')
-          ..write('discount1: $discount1, ')
-          ..write('discount2: $discount2, ')
-          ..write('discount3: $discount3, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloDescription: $articuloDescription, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('precioDivisa: $precioDivisa, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('descuento1: $descuento1, ')
+          ..write('descuento2: $descuento2, ')
+          ..write('descuento3: $descuento3, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -4125,21 +4208,21 @@ class SalesOrderLineTableCompanion extends UpdateCompanion<SalesOrderLineDTO> {
   }
 }
 
-class $SalesOrderLineTableTable extends SalesOrderLineTable
-    with TableInfo<$SalesOrderLineTableTable, SalesOrderLineDTO> {
+class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
+    with TableInfo<$PedidoVentaLineaTableTable, PedidoVentaLineaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $SalesOrderLineTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
+  $PedidoVentaLineaTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
   @override
-  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _salesOrderIdMeta =
-      const VerificationMeta('salesOrderId');
+  final VerificationMeta _pedidoVentaIdMeta =
+      const VerificationMeta('pedidoVentaId');
   @override
-  late final GeneratedColumn<String> salesOrderId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _idMeta = const VerificationMeta('id');
@@ -4147,46 +4230,46 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'PEDIDO_LINEA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleDescriptionMeta =
-      const VerificationMeta('articleDescription');
+  final VerificationMeta _articuloDescriptionMeta =
+      const VerificationMeta('articuloDescription');
   @override
-  late final GeneratedColumn<String> articleDescription =
+  late final GeneratedColumn<String> articuloDescription =
       GeneratedColumn<String>('ARTICULO_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
+  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
   @override
-  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidad = GeneratedColumn<double>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _divisaPriceMeta =
-      const VerificationMeta('divisaPrice');
+  final VerificationMeta _precioDivisaMeta =
+      const VerificationMeta('precioDivisa');
   @override
-  late final GeneratedColumn<double> divisaPrice = GeneratedColumn<double>(
+  late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
+  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
   @override
-  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
+  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _discount1Meta = const VerificationMeta('discount1');
+  final VerificationMeta _descuento1Meta = const VerificationMeta('descuento1');
   @override
-  late final GeneratedColumn<double> discount1 = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _discount2Meta = const VerificationMeta('discount2');
+  final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
   @override
-  late final GeneratedColumn<double> discount2 = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
       'DESCUENTO2', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _discount3Meta = const VerificationMeta('discount3');
+  final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
   @override
-  late final GeneratedColumn<double> discount3 = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -4204,17 +4287,17 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        companyId,
-        salesOrderId,
+        empresaId,
+        pedidoVentaId,
         id,
-        articleId,
-        articleDescription,
-        quantity,
-        divisaPrice,
-        priceType,
-        discount1,
-        discount2,
-        discount3,
+        articuloId,
+        articuloDescription,
+        cantidad,
+        precioDivisa,
+        tipoPrecio,
+        descuento1,
+        descuento2,
+        descuento3,
         lastUpdated,
         deleted
       ];
@@ -4223,23 +4306,24 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
   @override
   String get actualTableName => 'PEDIDOS_LINEAS';
   @override
-  VerificationContext validateIntegrity(Insertable<SalesOrderLineDTO> instance,
+  VerificationContext validateIntegrity(
+      Insertable<PedidoVentaLineaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('EMPRESA_ID')) {
-      context.handle(_companyIdMeta,
-          companyId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _companyIdMeta));
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
     } else if (isInserting) {
-      context.missing(_companyIdMeta);
+      context.missing(_empresaIdMeta);
     }
     if (data.containsKey('PEDIDO_ID')) {
       context.handle(
-          _salesOrderIdMeta,
-          salesOrderId.isAcceptableOrUnknown(
-              data['PEDIDO_ID']!, _salesOrderIdMeta));
+          _pedidoVentaIdMeta,
+          pedidoVentaId.isAcceptableOrUnknown(
+              data['PEDIDO_ID']!, _pedidoVentaIdMeta));
     } else if (isInserting) {
-      context.missing(_salesOrderIdMeta);
+      context.missing(_pedidoVentaIdMeta);
     }
     if (data.containsKey('PEDIDO_LINEA_ID')) {
       context.handle(
@@ -4249,55 +4333,61 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
     }
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('ARTICULO_DESCRIPCION')) {
       context.handle(
-          _articleDescriptionMeta,
-          articleDescription.isAcceptableOrUnknown(
-              data['ARTICULO_DESCRIPCION']!, _articleDescriptionMeta));
+          _articuloDescriptionMeta,
+          articuloDescription.isAcceptableOrUnknown(
+              data['ARTICULO_DESCRIPCION']!, _articuloDescriptionMeta));
     }
     if (data.containsKey('CANTIDAD')) {
-      context.handle(_quantityMeta,
-          quantity.isAcceptableOrUnknown(data['CANTIDAD']!, _quantityMeta));
+      context.handle(_cantidadMeta,
+          cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta));
     } else if (isInserting) {
-      context.missing(_quantityMeta);
+      context.missing(_cantidadMeta);
     }
     if (data.containsKey('PRECIO_DIVISA')) {
       context.handle(
-          _divisaPriceMeta,
-          divisaPrice.isAcceptableOrUnknown(
-              data['PRECIO_DIVISA']!, _divisaPriceMeta));
+          _precioDivisaMeta,
+          precioDivisa.isAcceptableOrUnknown(
+              data['PRECIO_DIVISA']!, _precioDivisaMeta));
     } else if (isInserting) {
-      context.missing(_divisaPriceMeta);
+      context.missing(_precioDivisaMeta);
     }
     if (data.containsKey('TIPO_PRECIO')) {
       context.handle(
-          _priceTypeMeta,
-          priceType.isAcceptableOrUnknown(
-              data['TIPO_PRECIO']!, _priceTypeMeta));
+          _tipoPrecioMeta,
+          tipoPrecio.isAcceptableOrUnknown(
+              data['TIPO_PRECIO']!, _tipoPrecioMeta));
     }
     if (data.containsKey('DESCUENTO1')) {
-      context.handle(_discount1Meta,
-          discount1.isAcceptableOrUnknown(data['DESCUENTO1']!, _discount1Meta));
+      context.handle(
+          _descuento1Meta,
+          descuento1.isAcceptableOrUnknown(
+              data['DESCUENTO1']!, _descuento1Meta));
     } else if (isInserting) {
-      context.missing(_discount1Meta);
+      context.missing(_descuento1Meta);
     }
     if (data.containsKey('DESCUENTO2')) {
-      context.handle(_discount2Meta,
-          discount2.isAcceptableOrUnknown(data['DESCUENTO2']!, _discount2Meta));
+      context.handle(
+          _descuento2Meta,
+          descuento2.isAcceptableOrUnknown(
+              data['DESCUENTO2']!, _descuento2Meta));
     } else if (isInserting) {
-      context.missing(_discount2Meta);
+      context.missing(_descuento2Meta);
     }
     if (data.containsKey('DESCUENTO3')) {
-      context.handle(_discount3Meta,
-          discount3.isAcceptableOrUnknown(data['DESCUENTO3']!, _discount3Meta));
+      context.handle(
+          _descuento3Meta,
+          descuento3.isAcceptableOrUnknown(
+              data['DESCUENTO3']!, _descuento3Meta));
     } else if (isInserting) {
-      context.missing(_discount3Meta);
+      context.missing(_descuento3Meta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -4315,32 +4405,32 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {salesOrderId, companyId, id};
+  Set<GeneratedColumn> get $primaryKey => {pedidoVentaId, empresaId, id};
   @override
-  SalesOrderLineDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PedidoVentaLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SalesOrderLineDTO(
-      companyId: attachedDatabase.options.types
+    return PedidoVentaLineaDTO(
+      empresaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      salesOrderId: attachedDatabase.options.types
+      pedidoVentaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
       id: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}PEDIDO_LINEA_ID'])!,
-      articleId: attachedDatabase.options.types
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      articleDescription: attachedDatabase.options.types.read(
+      articuloDescription: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}ARTICULO_DESCRIPCION']),
-      quantity: attachedDatabase.options.types
+      cantidad: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
-      divisaPrice: attachedDatabase.options.types
+      precioDivisa: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
-      priceType: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
-      discount1: attachedDatabase.options.types
+      descuento1: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
-      discount2: attachedDatabase.options.types
+      descuento2: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO2'])!,
-      discount3: attachedDatabase.options.types
+      descuento3: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -4350,150 +4440,150 @@ class $SalesOrderLineTableTable extends SalesOrderLineTable
   }
 
   @override
-  $SalesOrderLineTableTable createAlias(String alias) {
-    return $SalesOrderLineTableTable(attachedDatabase, alias);
+  $PedidoVentaLineaTableTable createAlias(String alias) {
+    return $PedidoVentaLineaTableTable(attachedDatabase, alias);
   }
 }
 
-class CollectionTermTableCompanion extends UpdateCompanion<CollectionTermDTO> {
+class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
   final Value<String> id;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CollectionTermTableCompanion({
+  const PlazoDeCobroTableCompanion({
     this.id = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CollectionTermTableCompanion.insert({
+  PlazoDeCobroTableCompanion.insert({
     required String id,
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        descriptionES = Value(descriptionES),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CollectionTermDTO> custom({
+  static Insertable<PlazoDeCobroDTO> custom({
     Expression<String>? id,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'PLAZO_COBRO_ID': id,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CollectionTermTableCompanion copyWith(
+  PlazoDeCobroTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CollectionTermTableCompanion(
+    return PlazoDeCobroTableCompanion(
       id: id ?? this.id,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -4505,50 +4595,50 @@ class CollectionTermTableCompanion extends UpdateCompanion<CollectionTermDTO> {
     if (id.present) {
       map['PLAZO_COBRO_ID'] = Variable<String>(id.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -4561,23 +4651,23 @@ class CollectionTermTableCompanion extends UpdateCompanion<CollectionTermDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('CollectionTermTableCompanion(')
+    return (StringBuffer('PlazoDeCobroTableCompanion(')
           ..write('id: $id, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -4585,105 +4675,105 @@ class CollectionTermTableCompanion extends UpdateCompanion<CollectionTermDTO> {
   }
 }
 
-class $CollectionTermTableTable extends CollectionTermTable
-    with TableInfo<$CollectionTermTableTable, CollectionTermDTO> {
+class $PlazoDeCobroTableTable extends PlazoDeCobroTable
+    with TableInfo<$PlazoDeCobroTableTable, PlazoDeCobroDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CollectionTermTableTable(this.attachedDatabase, [this._alias]);
+  $PlazoDeCobroTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'PLAZO_COBRO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -4702,21 +4792,21 @@ class $CollectionTermTableTable extends CollectionTermTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -4725,7 +4815,7 @@ class $CollectionTermTableTable extends CollectionTermTable
   @override
   String get actualTableName => 'PLAZOS_COBRO';
   @override
-  VerificationContext validateIntegrity(Insertable<CollectionTermDTO> instance,
+  VerificationContext validateIntegrity(Insertable<PlazoDeCobroDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -4737,95 +4827,95 @@ class $CollectionTermTableTable extends CollectionTermTable
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -4845,40 +4935,40 @@ class $CollectionTermTableTable extends CollectionTermTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  CollectionTermDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PlazoDeCobroDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CollectionTermDTO(
+    return PlazoDeCobroDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID'])!,
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -4888,151 +4978,150 @@ class $CollectionTermTableTable extends CollectionTermTable
   }
 
   @override
-  $CollectionTermTableTable createAlias(String alias) {
-    return $CollectionTermTableTable(attachedDatabase, alias);
+  $PlazoDeCobroTableTable createAlias(String alias) {
+    return $PlazoDeCobroTableTable(attachedDatabase, alias);
   }
 }
 
-class CollectionMethodTableCompanion
-    extends UpdateCompanion<CollectionMethodDTO> {
+class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
   final Value<String> id;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CollectionMethodTableCompanion({
+  const MetodoDeCobroTableCompanion({
     this.id = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CollectionMethodTableCompanion.insert({
+  MetodoDeCobroTableCompanion.insert({
     required String id,
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        descriptionES = Value(descriptionES),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CollectionMethodDTO> custom({
+  static Insertable<MetodoDeCobroDTO> custom({
     Expression<String>? id,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'METODO_COBRO_ID': id,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CollectionMethodTableCompanion copyWith(
+  MetodoDeCobroTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CollectionMethodTableCompanion(
+    return MetodoDeCobroTableCompanion(
       id: id ?? this.id,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -5044,50 +5133,50 @@ class CollectionMethodTableCompanion
     if (id.present) {
       map['METODO_COBRO_ID'] = Variable<String>(id.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -5100,23 +5189,23 @@ class CollectionMethodTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CollectionMethodTableCompanion(')
+    return (StringBuffer('MetodoDeCobroTableCompanion(')
           ..write('id: $id, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -5124,105 +5213,105 @@ class CollectionMethodTableCompanion
   }
 }
 
-class $CollectionMethodTableTable extends CollectionMethodTable
-    with TableInfo<$CollectionMethodTableTable, CollectionMethodDTO> {
+class $MetodoDeCobroTableTable extends MetodoDeCobroTable
+    with TableInfo<$MetodoDeCobroTableTable, MetodoDeCobroDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CollectionMethodTableTable(this.attachedDatabase, [this._alias]);
+  $MetodoDeCobroTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'METODO_COBRO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -5241,21 +5330,21 @@ class $CollectionMethodTableTable extends CollectionMethodTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -5264,8 +5353,7 @@ class $CollectionMethodTableTable extends CollectionMethodTable
   @override
   String get actualTableName => 'METODOS_COBRO';
   @override
-  VerificationContext validateIntegrity(
-      Insertable<CollectionMethodDTO> instance,
+  VerificationContext validateIntegrity(Insertable<MetodoDeCobroDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -5277,95 +5365,95 @@ class $CollectionMethodTableTable extends CollectionMethodTable
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -5385,40 +5473,40 @@ class $CollectionMethodTableTable extends CollectionMethodTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  CollectionMethodDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  MetodoDeCobroDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CollectionMethodDTO(
+    return MetodoDeCobroDTO(
       id: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID'])!,
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -5428,369 +5516,376 @@ class $CollectionMethodTableTable extends CollectionMethodTable
   }
 
   @override
-  $CollectionMethodTableTable createAlias(String alias) {
-    return $CollectionMethodTableTable(attachedDatabase, alias);
+  $MetodoDeCobroTableTable createAlias(String alias) {
+    return $MetodoDeCobroTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
+class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String> id;
-  final Value<String?> customerName;
+  final Value<String?> nombreCliente;
   final Value<String?> nif;
-  final Value<String?> fiscalName;
-  final Value<String?> fiscalAddress1;
-  final Value<String?> fiscalAddress2;
-  final Value<String?> fiscalZipCode;
-  final Value<String?> fiscalCity;
-  final Value<String?> fiscalState;
-  final Value<String?> fiscalCountryId;
-  final Value<double?> fiscalLatitude;
-  final Value<double?> fiscalLongitude;
-  final Value<String> companyId;
-  final Value<double?> especialVAT;
-  final Value<String?> exemptVat;
-  final Value<double?> currentYearSales;
-  final Value<double?> previousYearSales;
-  final Value<double?> salesTwoYearsAgo;
-  final Value<double?> currentYearMargin;
-  final Value<double?> previousYearMargin;
-  final Value<double?> marginTwoYearsAgo;
-  final Value<double?> paymentPercent;
-  final Value<double?> warrantyPercent;
-  final Value<String?> shoppingCenterName;
-  final Value<String?> urlWebsite;
+  final Value<String?> nombreFiscal;
+  final Value<String?> direccionFiscal1;
+  final Value<String?> direccionFiscal2;
+  final Value<String?> codigoPostalFiscal;
+  final Value<String?> poblacionFiscal;
+  final Value<String?> provinciaFiscal;
+  final Value<String?> paisFiscalId;
+  final Value<double?> latitudFiscal;
+  final Value<double?> longitudFiscal;
+  final Value<String> empresaId;
+  final Value<double?> ivaEspecial;
+  final Value<String?> extentoIva;
+  final Value<double?> ventasAnyoActual;
+  final Value<double?> ventasAnyoAnterior;
+  final Value<double?> ventasHaceDosAnyos;
+  final Value<double?> margenAnyoActual;
+  final Value<double?> margenAnyoAnterior;
+  final Value<double?> margenHaceDosAnyos;
+  final Value<double?> porcentajeAbonos;
+  final Value<double?> porcentajeGarantias;
+  final Value<String?> centralCompras;
+  final Value<String?> urlWeb;
   final Value<String?> divisaId;
-  final Value<String?> rateId;
-  final Value<String?> rateDescription;
-  final Value<String?> generalDiscount;
-  final Value<String?> generalDiscountDescription;
-  final Value<String> priceCalculationType;
-  final Value<String?> collectionTermId;
-  final Value<String?> collectionMethodId;
-  final Value<double> promptPaymentDiscount;
-  final Value<double> internalGrantedRisk;
-  final Value<DateTime?> internalGrantedRiskDate;
-  final Value<double> cofaceGrantedRisk;
-  final Value<DateTime?> cofaceGrantedRiskDate;
-  final Value<double?> riskGranted;
-  final Value<double?> riskPendingCollectionDue;
-  final Value<double?> riskPendingColleectionNotDue;
-  final Value<double?> riskPendingToServe;
-  final Value<double?> riskPendingBilling;
-  final Value<String?> internalRemarks;
+  final Value<String?> tarifaId;
+  final Value<String?> tarifaDescripcion;
+  final Value<String?> descuentoGeneral;
+  final Value<String?> descripcionDescuentoGeneral;
+  final Value<String> tipoCalucloPrecio;
+  final Value<String?> plazoDeCobroId;
+  final Value<String?> metodoDeCobroId;
+  final Value<double> descuentoProntoPago;
+  final Value<double> riesgoConcedidoInterno;
+  final Value<DateTime?> riesgoConcedidoInternoDate;
+  final Value<double> riesgoConcedidoCoafe;
+  final Value<DateTime?> riesgoConcedidoCoafeFecha;
+  final Value<double?> riesgoConcedido;
+  final Value<double?> riesgoPendienteCobroVencido;
+  final Value<double?> riesgoPendienteCobroNoVencido;
+  final Value<double?> riesgoPendienteServir;
+  final Value<double?> riesgoPendienteFacturar;
+  final Value<String?> obvservacionesInternas;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerTableCompanion({
+  const ClienteTableCompanion({
     this.id = const Value.absent(),
-    this.customerName = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
     this.nif = const Value.absent(),
-    this.fiscalName = const Value.absent(),
-    this.fiscalAddress1 = const Value.absent(),
-    this.fiscalAddress2 = const Value.absent(),
-    this.fiscalZipCode = const Value.absent(),
-    this.fiscalCity = const Value.absent(),
-    this.fiscalState = const Value.absent(),
-    this.fiscalCountryId = const Value.absent(),
-    this.fiscalLatitude = const Value.absent(),
-    this.fiscalLongitude = const Value.absent(),
-    this.companyId = const Value.absent(),
-    this.especialVAT = const Value.absent(),
-    this.exemptVat = const Value.absent(),
-    this.currentYearSales = const Value.absent(),
-    this.previousYearSales = const Value.absent(),
-    this.salesTwoYearsAgo = const Value.absent(),
-    this.currentYearMargin = const Value.absent(),
-    this.previousYearMargin = const Value.absent(),
-    this.marginTwoYearsAgo = const Value.absent(),
-    this.paymentPercent = const Value.absent(),
-    this.warrantyPercent = const Value.absent(),
-    this.shoppingCenterName = const Value.absent(),
-    this.urlWebsite = const Value.absent(),
+    this.nombreFiscal = const Value.absent(),
+    this.direccionFiscal1 = const Value.absent(),
+    this.direccionFiscal2 = const Value.absent(),
+    this.codigoPostalFiscal = const Value.absent(),
+    this.poblacionFiscal = const Value.absent(),
+    this.provinciaFiscal = const Value.absent(),
+    this.paisFiscalId = const Value.absent(),
+    this.latitudFiscal = const Value.absent(),
+    this.longitudFiscal = const Value.absent(),
+    this.empresaId = const Value.absent(),
+    this.ivaEspecial = const Value.absent(),
+    this.extentoIva = const Value.absent(),
+    this.ventasAnyoActual = const Value.absent(),
+    this.ventasAnyoAnterior = const Value.absent(),
+    this.ventasHaceDosAnyos = const Value.absent(),
+    this.margenAnyoActual = const Value.absent(),
+    this.margenAnyoAnterior = const Value.absent(),
+    this.margenHaceDosAnyos = const Value.absent(),
+    this.porcentajeAbonos = const Value.absent(),
+    this.porcentajeGarantias = const Value.absent(),
+    this.centralCompras = const Value.absent(),
+    this.urlWeb = const Value.absent(),
     this.divisaId = const Value.absent(),
-    this.rateId = const Value.absent(),
-    this.rateDescription = const Value.absent(),
-    this.generalDiscount = const Value.absent(),
-    this.generalDiscountDescription = const Value.absent(),
-    this.priceCalculationType = const Value.absent(),
-    this.collectionTermId = const Value.absent(),
-    this.collectionMethodId = const Value.absent(),
-    this.promptPaymentDiscount = const Value.absent(),
-    this.internalGrantedRisk = const Value.absent(),
-    this.internalGrantedRiskDate = const Value.absent(),
-    this.cofaceGrantedRisk = const Value.absent(),
-    this.cofaceGrantedRiskDate = const Value.absent(),
-    this.riskGranted = const Value.absent(),
-    this.riskPendingCollectionDue = const Value.absent(),
-    this.riskPendingColleectionNotDue = const Value.absent(),
-    this.riskPendingToServe = const Value.absent(),
-    this.riskPendingBilling = const Value.absent(),
-    this.internalRemarks = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.tarifaDescripcion = const Value.absent(),
+    this.descuentoGeneral = const Value.absent(),
+    this.descripcionDescuentoGeneral = const Value.absent(),
+    this.tipoCalucloPrecio = const Value.absent(),
+    this.plazoDeCobroId = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    this.descuentoProntoPago = const Value.absent(),
+    this.riesgoConcedidoInterno = const Value.absent(),
+    this.riesgoConcedidoInternoDate = const Value.absent(),
+    this.riesgoConcedidoCoafe = const Value.absent(),
+    this.riesgoConcedidoCoafeFecha = const Value.absent(),
+    this.riesgoConcedido = const Value.absent(),
+    this.riesgoPendienteCobroVencido = const Value.absent(),
+    this.riesgoPendienteCobroNoVencido = const Value.absent(),
+    this.riesgoPendienteServir = const Value.absent(),
+    this.riesgoPendienteFacturar = const Value.absent(),
+    this.obvservacionesInternas = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerTableCompanion.insert({
+  ClienteTableCompanion.insert({
     required String id,
-    this.customerName = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
     this.nif = const Value.absent(),
-    this.fiscalName = const Value.absent(),
-    this.fiscalAddress1 = const Value.absent(),
-    this.fiscalAddress2 = const Value.absent(),
-    this.fiscalZipCode = const Value.absent(),
-    this.fiscalCity = const Value.absent(),
-    this.fiscalState = const Value.absent(),
-    this.fiscalCountryId = const Value.absent(),
-    this.fiscalLatitude = const Value.absent(),
-    this.fiscalLongitude = const Value.absent(),
-    required String companyId,
-    this.especialVAT = const Value.absent(),
-    this.exemptVat = const Value.absent(),
-    this.currentYearSales = const Value.absent(),
-    this.previousYearSales = const Value.absent(),
-    this.salesTwoYearsAgo = const Value.absent(),
-    this.currentYearMargin = const Value.absent(),
-    this.previousYearMargin = const Value.absent(),
-    this.marginTwoYearsAgo = const Value.absent(),
-    this.paymentPercent = const Value.absent(),
-    this.warrantyPercent = const Value.absent(),
-    this.shoppingCenterName = const Value.absent(),
-    this.urlWebsite = const Value.absent(),
+    this.nombreFiscal = const Value.absent(),
+    this.direccionFiscal1 = const Value.absent(),
+    this.direccionFiscal2 = const Value.absent(),
+    this.codigoPostalFiscal = const Value.absent(),
+    this.poblacionFiscal = const Value.absent(),
+    this.provinciaFiscal = const Value.absent(),
+    this.paisFiscalId = const Value.absent(),
+    this.latitudFiscal = const Value.absent(),
+    this.longitudFiscal = const Value.absent(),
+    required String empresaId,
+    this.ivaEspecial = const Value.absent(),
+    this.extentoIva = const Value.absent(),
+    this.ventasAnyoActual = const Value.absent(),
+    this.ventasAnyoAnterior = const Value.absent(),
+    this.ventasHaceDosAnyos = const Value.absent(),
+    this.margenAnyoActual = const Value.absent(),
+    this.margenAnyoAnterior = const Value.absent(),
+    this.margenHaceDosAnyos = const Value.absent(),
+    this.porcentajeAbonos = const Value.absent(),
+    this.porcentajeGarantias = const Value.absent(),
+    this.centralCompras = const Value.absent(),
+    this.urlWeb = const Value.absent(),
     this.divisaId = const Value.absent(),
-    this.rateId = const Value.absent(),
-    this.rateDescription = const Value.absent(),
-    this.generalDiscount = const Value.absent(),
-    this.generalDiscountDescription = const Value.absent(),
-    required String priceCalculationType,
-    this.collectionTermId = const Value.absent(),
-    this.collectionMethodId = const Value.absent(),
-    required double promptPaymentDiscount,
-    required double internalGrantedRisk,
-    this.internalGrantedRiskDate = const Value.absent(),
-    required double cofaceGrantedRisk,
-    this.cofaceGrantedRiskDate = const Value.absent(),
-    this.riskGranted = const Value.absent(),
-    this.riskPendingCollectionDue = const Value.absent(),
-    this.riskPendingColleectionNotDue = const Value.absent(),
-    this.riskPendingToServe = const Value.absent(),
-    this.riskPendingBilling = const Value.absent(),
-    this.internalRemarks = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.tarifaDescripcion = const Value.absent(),
+    this.descuentoGeneral = const Value.absent(),
+    this.descripcionDescuentoGeneral = const Value.absent(),
+    required String tipoCalucloPrecio,
+    this.plazoDeCobroId = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    required double descuentoProntoPago,
+    required double riesgoConcedidoInterno,
+    this.riesgoConcedidoInternoDate = const Value.absent(),
+    required double riesgoConcedidoCoafe,
+    this.riesgoConcedidoCoafeFecha = const Value.absent(),
+    this.riesgoConcedido = const Value.absent(),
+    this.riesgoPendienteCobroVencido = const Value.absent(),
+    this.riesgoPendienteCobroNoVencido = const Value.absent(),
+    this.riesgoPendienteServir = const Value.absent(),
+    this.riesgoPendienteFacturar = const Value.absent(),
+    this.obvservacionesInternas = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        companyId = Value(companyId),
-        priceCalculationType = Value(priceCalculationType),
-        promptPaymentDiscount = Value(promptPaymentDiscount),
-        internalGrantedRisk = Value(internalGrantedRisk),
-        cofaceGrantedRisk = Value(cofaceGrantedRisk),
+        empresaId = Value(empresaId),
+        tipoCalucloPrecio = Value(tipoCalucloPrecio),
+        descuentoProntoPago = Value(descuentoProntoPago),
+        riesgoConcedidoInterno = Value(riesgoConcedidoInterno),
+        riesgoConcedidoCoafe = Value(riesgoConcedidoCoafe),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerDTO> custom({
+  static Insertable<ClienteDTO> custom({
     Expression<String>? id,
-    Expression<String>? customerName,
+    Expression<String>? nombreCliente,
     Expression<String>? nif,
-    Expression<String>? fiscalName,
-    Expression<String>? fiscalAddress1,
-    Expression<String>? fiscalAddress2,
-    Expression<String>? fiscalZipCode,
-    Expression<String>? fiscalCity,
-    Expression<String>? fiscalState,
-    Expression<String>? fiscalCountryId,
-    Expression<double>? fiscalLatitude,
-    Expression<double>? fiscalLongitude,
-    Expression<String>? companyId,
-    Expression<double>? especialVAT,
-    Expression<String>? exemptVat,
-    Expression<double>? currentYearSales,
-    Expression<double>? previousYearSales,
-    Expression<double>? salesTwoYearsAgo,
-    Expression<double>? currentYearMargin,
-    Expression<double>? previousYearMargin,
-    Expression<double>? marginTwoYearsAgo,
-    Expression<double>? paymentPercent,
-    Expression<double>? warrantyPercent,
-    Expression<String>? shoppingCenterName,
-    Expression<String>? urlWebsite,
+    Expression<String>? nombreFiscal,
+    Expression<String>? direccionFiscal1,
+    Expression<String>? direccionFiscal2,
+    Expression<String>? codigoPostalFiscal,
+    Expression<String>? poblacionFiscal,
+    Expression<String>? provinciaFiscal,
+    Expression<String>? paisFiscalId,
+    Expression<double>? latitudFiscal,
+    Expression<double>? longitudFiscal,
+    Expression<String>? empresaId,
+    Expression<double>? ivaEspecial,
+    Expression<String>? extentoIva,
+    Expression<double>? ventasAnyoActual,
+    Expression<double>? ventasAnyoAnterior,
+    Expression<double>? ventasHaceDosAnyos,
+    Expression<double>? margenAnyoActual,
+    Expression<double>? margenAnyoAnterior,
+    Expression<double>? margenHaceDosAnyos,
+    Expression<double>? porcentajeAbonos,
+    Expression<double>? porcentajeGarantias,
+    Expression<String>? centralCompras,
+    Expression<String>? urlWeb,
     Expression<String>? divisaId,
-    Expression<String>? rateId,
-    Expression<String>? rateDescription,
-    Expression<String>? generalDiscount,
-    Expression<String>? generalDiscountDescription,
-    Expression<String>? priceCalculationType,
-    Expression<String>? collectionTermId,
-    Expression<String>? collectionMethodId,
-    Expression<double>? promptPaymentDiscount,
-    Expression<double>? internalGrantedRisk,
-    Expression<DateTime>? internalGrantedRiskDate,
-    Expression<double>? cofaceGrantedRisk,
-    Expression<DateTime>? cofaceGrantedRiskDate,
-    Expression<double>? riskGranted,
-    Expression<double>? riskPendingCollectionDue,
-    Expression<double>? riskPendingColleectionNotDue,
-    Expression<double>? riskPendingToServe,
-    Expression<double>? riskPendingBilling,
-    Expression<String>? internalRemarks,
+    Expression<String>? tarifaId,
+    Expression<String>? tarifaDescripcion,
+    Expression<String>? descuentoGeneral,
+    Expression<String>? descripcionDescuentoGeneral,
+    Expression<String>? tipoCalucloPrecio,
+    Expression<String>? plazoDeCobroId,
+    Expression<String>? metodoDeCobroId,
+    Expression<double>? descuentoProntoPago,
+    Expression<double>? riesgoConcedidoInterno,
+    Expression<DateTime>? riesgoConcedidoInternoDate,
+    Expression<double>? riesgoConcedidoCoafe,
+    Expression<DateTime>? riesgoConcedidoCoafeFecha,
+    Expression<double>? riesgoConcedido,
+    Expression<double>? riesgoPendienteCobroVencido,
+    Expression<double>? riesgoPendienteCobroNoVencido,
+    Expression<double>? riesgoPendienteServir,
+    Expression<double>? riesgoPendienteFacturar,
+    Expression<String>? obvservacionesInternas,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'CLIENTE_ID': id,
-      if (customerName != null) 'NOMBRE': customerName,
+      if (nombreCliente != null) 'NOMBRE': nombreCliente,
       if (nif != null) 'NIF': nif,
-      if (fiscalName != null) 'NOMBRE_FISCAL': fiscalName,
-      if (fiscalAddress1 != null) 'DIRECCION_FISCAL1': fiscalAddress1,
-      if (fiscalAddress2 != null) 'DIRECCION_FISCAL2': fiscalAddress2,
-      if (fiscalZipCode != null) 'CODIGO_POSTAL_FISCAL': fiscalZipCode,
-      if (fiscalCity != null) 'POBLACION_FISCAL': fiscalCity,
-      if (fiscalState != null) 'PROVINCIA_FISCAL': fiscalState,
-      if (fiscalCountryId != null) 'PAIS_ID_FISCAL': fiscalCountryId,
-      if (fiscalLatitude != null) 'LATITUD_FISCAL': fiscalLatitude,
-      if (fiscalLongitude != null) 'LONGITUD_FISCAL': fiscalLongitude,
-      if (companyId != null) 'EMPRESA_ID': companyId,
-      if (especialVAT != null) 'IVA_ESPECIAL': especialVAT,
-      if (exemptVat != null) 'IVA_EXENTO': exemptVat,
-      if (currentYearSales != null) 'VENTAS_ANYO_ACTUAL': currentYearSales,
-      if (previousYearSales != null) 'VENTAS_ANYO_ANTERIOR': previousYearSales,
-      if (salesTwoYearsAgo != null) 'VENTAS_HACE_DOS_ANYOS': salesTwoYearsAgo,
-      if (currentYearMargin != null) 'MARGEN_ANYO_ACTUAL': currentYearMargin,
-      if (previousYearMargin != null)
-        'MARGEN_ANYO_ANTERIOR': previousYearMargin,
-      if (marginTwoYearsAgo != null) 'MARGEN_HACE_DOS_ANYOS': marginTwoYearsAgo,
-      if (paymentPercent != null) 'PORCENTAJE_ABONOS': paymentPercent,
-      if (warrantyPercent != null) 'PORCENTAJE_GARANTIAS': warrantyPercent,
-      if (shoppingCenterName != null)
-        'CENTRAL_COMPRAS_NOMBRE': shoppingCenterName,
-      if (urlWebsite != null) 'URL_WEB': urlWebsite,
+      if (nombreFiscal != null) 'NOMBRE_FISCAL': nombreFiscal,
+      if (direccionFiscal1 != null) 'DIRECCION_FISCAL1': direccionFiscal1,
+      if (direccionFiscal2 != null) 'DIRECCION_FISCAL2': direccionFiscal2,
+      if (codigoPostalFiscal != null)
+        'CODIGO_POSTAL_FISCAL': codigoPostalFiscal,
+      if (poblacionFiscal != null) 'POBLACION_FISCAL': poblacionFiscal,
+      if (provinciaFiscal != null) 'PROVINCIA_FISCAL': provinciaFiscal,
+      if (paisFiscalId != null) 'PAIS_ID_FISCAL': paisFiscalId,
+      if (latitudFiscal != null) 'LATITUD_FISCAL': latitudFiscal,
+      if (longitudFiscal != null) 'LONGITUD_FISCAL': longitudFiscal,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (ivaEspecial != null) 'IVA_ESPECIAL': ivaEspecial,
+      if (extentoIva != null) 'IVA_EXENTO': extentoIva,
+      if (ventasAnyoActual != null) 'VENTAS_ANYO_ACTUAL': ventasAnyoActual,
+      if (ventasAnyoAnterior != null)
+        'VENTAS_ANYO_ANTERIOR': ventasAnyoAnterior,
+      if (ventasHaceDosAnyos != null)
+        'VENTAS_HACE_DOS_ANYOS': ventasHaceDosAnyos,
+      if (margenAnyoActual != null) 'MARGEN_ANYO_ACTUAL': margenAnyoActual,
+      if (margenAnyoAnterior != null)
+        'MARGEN_ANYO_ANTERIOR': margenAnyoAnterior,
+      if (margenHaceDosAnyos != null)
+        'MARGEN_HACE_DOS_ANYOS': margenHaceDosAnyos,
+      if (porcentajeAbonos != null) 'PORCENTAJE_ABONOS': porcentajeAbonos,
+      if (porcentajeGarantias != null)
+        'PORCENTAJE_GARANTIAS': porcentajeGarantias,
+      if (centralCompras != null) 'CENTRAL_COMPRAS_NOMBRE': centralCompras,
+      if (urlWeb != null) 'URL_WEB': urlWeb,
       if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (rateId != null) 'TARIFA_ID': rateId,
-      if (rateDescription != null) 'TARIFA_DESCRIPCION': rateDescription,
-      if (generalDiscount != null) 'DESCUENTO_GENERAL_ID': generalDiscount,
-      if (generalDiscountDescription != null)
-        'DESCUENTO_GENERAL_DESCRIPCION': generalDiscountDescription,
-      if (priceCalculationType != null)
-        'TIPO_CALCULO_PRECIO': priceCalculationType,
-      if (collectionTermId != null) 'PLAZO_COBRO_ID': collectionTermId,
-      if (collectionMethodId != null) 'METODO_COBRO_ID': collectionMethodId,
-      if (promptPaymentDiscount != null)
-        'DESCUENTO_PRONTO_PAGO': promptPaymentDiscount,
-      if (internalGrantedRisk != null)
-        'RIESGO_CONCEDIDO_INTERNO': internalGrantedRisk,
-      if (internalGrantedRiskDate != null)
-        'RIESGO_CONCEDIDO_INTERNO_FECHA': internalGrantedRiskDate,
-      if (cofaceGrantedRisk != null)
-        'RIESGO_CONCEDIDO_COFACE': cofaceGrantedRisk,
-      if (cofaceGrantedRiskDate != null)
-        'RIESGO_CONCEDIDO_COFACE_FECHA': cofaceGrantedRiskDate,
-      if (riskGranted != null) 'RIESGO_CONCEDIDO': riskGranted,
-      if (riskPendingCollectionDue != null)
-        'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE': riskPendingCollectionDue,
-      if (riskPendingColleectionNotDue != null)
-        'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE': riskPendingColleectionNotDue,
-      if (riskPendingToServe != null)
-        'RIESGO_PDTE_SERVIR_CLIENTE': riskPendingToServe,
-      if (riskPendingBilling != null)
-        'RIESGO_PDTE_FACTURAR_CLIENTE': riskPendingBilling,
-      if (internalRemarks != null) 'OBSERVACIONES_INTERNAS': internalRemarks,
+      if (tarifaId != null) 'TARIFA_ID': tarifaId,
+      if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
+      if (descuentoGeneral != null) 'DESCUENTO_GENERAL_ID': descuentoGeneral,
+      if (descripcionDescuentoGeneral != null)
+        'DESCUENTO_GENERAL_DESCRIPCION': descripcionDescuentoGeneral,
+      if (tipoCalucloPrecio != null) 'TIPO_CALCULO_PRECIO': tipoCalucloPrecio,
+      if (plazoDeCobroId != null) 'PLAZO_COBRO_ID': plazoDeCobroId,
+      if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
+      if (descuentoProntoPago != null)
+        'DESCUENTO_PRONTO_PAGO': descuentoProntoPago,
+      if (riesgoConcedidoInterno != null)
+        'RIESGO_CONCEDIDO_INTERNO': riesgoConcedidoInterno,
+      if (riesgoConcedidoInternoDate != null)
+        'RIESGO_CONCEDIDO_INTERNO_FECHA': riesgoConcedidoInternoDate,
+      if (riesgoConcedidoCoafe != null)
+        'RIESGO_CONCEDIDO_COFACE': riesgoConcedidoCoafe,
+      if (riesgoConcedidoCoafeFecha != null)
+        'RIESGO_CONCEDIDO_COFACE_FECHA': riesgoConcedidoCoafeFecha,
+      if (riesgoConcedido != null) 'RIESGO_CONCEDIDO': riesgoConcedido,
+      if (riesgoPendienteCobroVencido != null)
+        'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE': riesgoPendienteCobroVencido,
+      if (riesgoPendienteCobroNoVencido != null)
+        'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE': riesgoPendienteCobroNoVencido,
+      if (riesgoPendienteServir != null)
+        'RIESGO_PDTE_SERVIR_CLIENTE': riesgoPendienteServir,
+      if (riesgoPendienteFacturar != null)
+        'RIESGO_PDTE_FACTURAR_CLIENTE': riesgoPendienteFacturar,
+      if (obvservacionesInternas != null)
+        'OBSERVACIONES_INTERNAS': obvservacionesInternas,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerTableCompanion copyWith(
+  ClienteTableCompanion copyWith(
       {Value<String>? id,
-      Value<String?>? customerName,
+      Value<String?>? nombreCliente,
       Value<String?>? nif,
-      Value<String?>? fiscalName,
-      Value<String?>? fiscalAddress1,
-      Value<String?>? fiscalAddress2,
-      Value<String?>? fiscalZipCode,
-      Value<String?>? fiscalCity,
-      Value<String?>? fiscalState,
-      Value<String?>? fiscalCountryId,
-      Value<double?>? fiscalLatitude,
-      Value<double?>? fiscalLongitude,
-      Value<String>? companyId,
-      Value<double?>? especialVAT,
-      Value<String?>? exemptVat,
-      Value<double?>? currentYearSales,
-      Value<double?>? previousYearSales,
-      Value<double?>? salesTwoYearsAgo,
-      Value<double?>? currentYearMargin,
-      Value<double?>? previousYearMargin,
-      Value<double?>? marginTwoYearsAgo,
-      Value<double?>? paymentPercent,
-      Value<double?>? warrantyPercent,
-      Value<String?>? shoppingCenterName,
-      Value<String?>? urlWebsite,
+      Value<String?>? nombreFiscal,
+      Value<String?>? direccionFiscal1,
+      Value<String?>? direccionFiscal2,
+      Value<String?>? codigoPostalFiscal,
+      Value<String?>? poblacionFiscal,
+      Value<String?>? provinciaFiscal,
+      Value<String?>? paisFiscalId,
+      Value<double?>? latitudFiscal,
+      Value<double?>? longitudFiscal,
+      Value<String>? empresaId,
+      Value<double?>? ivaEspecial,
+      Value<String?>? extentoIva,
+      Value<double?>? ventasAnyoActual,
+      Value<double?>? ventasAnyoAnterior,
+      Value<double?>? ventasHaceDosAnyos,
+      Value<double?>? margenAnyoActual,
+      Value<double?>? margenAnyoAnterior,
+      Value<double?>? margenHaceDosAnyos,
+      Value<double?>? porcentajeAbonos,
+      Value<double?>? porcentajeGarantias,
+      Value<String?>? centralCompras,
+      Value<String?>? urlWeb,
       Value<String?>? divisaId,
-      Value<String?>? rateId,
-      Value<String?>? rateDescription,
-      Value<String?>? generalDiscount,
-      Value<String?>? generalDiscountDescription,
-      Value<String>? priceCalculationType,
-      Value<String?>? collectionTermId,
-      Value<String?>? collectionMethodId,
-      Value<double>? promptPaymentDiscount,
-      Value<double>? internalGrantedRisk,
-      Value<DateTime?>? internalGrantedRiskDate,
-      Value<double>? cofaceGrantedRisk,
-      Value<DateTime?>? cofaceGrantedRiskDate,
-      Value<double?>? riskGranted,
-      Value<double?>? riskPendingCollectionDue,
-      Value<double?>? riskPendingColleectionNotDue,
-      Value<double?>? riskPendingToServe,
-      Value<double?>? riskPendingBilling,
-      Value<String?>? internalRemarks,
+      Value<String?>? tarifaId,
+      Value<String?>? tarifaDescripcion,
+      Value<String?>? descuentoGeneral,
+      Value<String?>? descripcionDescuentoGeneral,
+      Value<String>? tipoCalucloPrecio,
+      Value<String?>? plazoDeCobroId,
+      Value<String?>? metodoDeCobroId,
+      Value<double>? descuentoProntoPago,
+      Value<double>? riesgoConcedidoInterno,
+      Value<DateTime?>? riesgoConcedidoInternoDate,
+      Value<double>? riesgoConcedidoCoafe,
+      Value<DateTime?>? riesgoConcedidoCoafeFecha,
+      Value<double?>? riesgoConcedido,
+      Value<double?>? riesgoPendienteCobroVencido,
+      Value<double?>? riesgoPendienteCobroNoVencido,
+      Value<double?>? riesgoPendienteServir,
+      Value<double?>? riesgoPendienteFacturar,
+      Value<String?>? obvservacionesInternas,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerTableCompanion(
+    return ClienteTableCompanion(
       id: id ?? this.id,
-      customerName: customerName ?? this.customerName,
+      nombreCliente: nombreCliente ?? this.nombreCliente,
       nif: nif ?? this.nif,
-      fiscalName: fiscalName ?? this.fiscalName,
-      fiscalAddress1: fiscalAddress1 ?? this.fiscalAddress1,
-      fiscalAddress2: fiscalAddress2 ?? this.fiscalAddress2,
-      fiscalZipCode: fiscalZipCode ?? this.fiscalZipCode,
-      fiscalCity: fiscalCity ?? this.fiscalCity,
-      fiscalState: fiscalState ?? this.fiscalState,
-      fiscalCountryId: fiscalCountryId ?? this.fiscalCountryId,
-      fiscalLatitude: fiscalLatitude ?? this.fiscalLatitude,
-      fiscalLongitude: fiscalLongitude ?? this.fiscalLongitude,
-      companyId: companyId ?? this.companyId,
-      especialVAT: especialVAT ?? this.especialVAT,
-      exemptVat: exemptVat ?? this.exemptVat,
-      currentYearSales: currentYearSales ?? this.currentYearSales,
-      previousYearSales: previousYearSales ?? this.previousYearSales,
-      salesTwoYearsAgo: salesTwoYearsAgo ?? this.salesTwoYearsAgo,
-      currentYearMargin: currentYearMargin ?? this.currentYearMargin,
-      previousYearMargin: previousYearMargin ?? this.previousYearMargin,
-      marginTwoYearsAgo: marginTwoYearsAgo ?? this.marginTwoYearsAgo,
-      paymentPercent: paymentPercent ?? this.paymentPercent,
-      warrantyPercent: warrantyPercent ?? this.warrantyPercent,
-      shoppingCenterName: shoppingCenterName ?? this.shoppingCenterName,
-      urlWebsite: urlWebsite ?? this.urlWebsite,
+      nombreFiscal: nombreFiscal ?? this.nombreFiscal,
+      direccionFiscal1: direccionFiscal1 ?? this.direccionFiscal1,
+      direccionFiscal2: direccionFiscal2 ?? this.direccionFiscal2,
+      codigoPostalFiscal: codigoPostalFiscal ?? this.codigoPostalFiscal,
+      poblacionFiscal: poblacionFiscal ?? this.poblacionFiscal,
+      provinciaFiscal: provinciaFiscal ?? this.provinciaFiscal,
+      paisFiscalId: paisFiscalId ?? this.paisFiscalId,
+      latitudFiscal: latitudFiscal ?? this.latitudFiscal,
+      longitudFiscal: longitudFiscal ?? this.longitudFiscal,
+      empresaId: empresaId ?? this.empresaId,
+      ivaEspecial: ivaEspecial ?? this.ivaEspecial,
+      extentoIva: extentoIva ?? this.extentoIva,
+      ventasAnyoActual: ventasAnyoActual ?? this.ventasAnyoActual,
+      ventasAnyoAnterior: ventasAnyoAnterior ?? this.ventasAnyoAnterior,
+      ventasHaceDosAnyos: ventasHaceDosAnyos ?? this.ventasHaceDosAnyos,
+      margenAnyoActual: margenAnyoActual ?? this.margenAnyoActual,
+      margenAnyoAnterior: margenAnyoAnterior ?? this.margenAnyoAnterior,
+      margenHaceDosAnyos: margenHaceDosAnyos ?? this.margenHaceDosAnyos,
+      porcentajeAbonos: porcentajeAbonos ?? this.porcentajeAbonos,
+      porcentajeGarantias: porcentajeGarantias ?? this.porcentajeGarantias,
+      centralCompras: centralCompras ?? this.centralCompras,
+      urlWeb: urlWeb ?? this.urlWeb,
       divisaId: divisaId ?? this.divisaId,
-      rateId: rateId ?? this.rateId,
-      rateDescription: rateDescription ?? this.rateDescription,
-      generalDiscount: generalDiscount ?? this.generalDiscount,
-      generalDiscountDescription:
-          generalDiscountDescription ?? this.generalDiscountDescription,
-      priceCalculationType: priceCalculationType ?? this.priceCalculationType,
-      collectionTermId: collectionTermId ?? this.collectionTermId,
-      collectionMethodId: collectionMethodId ?? this.collectionMethodId,
-      promptPaymentDiscount:
-          promptPaymentDiscount ?? this.promptPaymentDiscount,
-      internalGrantedRisk: internalGrantedRisk ?? this.internalGrantedRisk,
-      internalGrantedRiskDate:
-          internalGrantedRiskDate ?? this.internalGrantedRiskDate,
-      cofaceGrantedRisk: cofaceGrantedRisk ?? this.cofaceGrantedRisk,
-      cofaceGrantedRiskDate:
-          cofaceGrantedRiskDate ?? this.cofaceGrantedRiskDate,
-      riskGranted: riskGranted ?? this.riskGranted,
-      riskPendingCollectionDue:
-          riskPendingCollectionDue ?? this.riskPendingCollectionDue,
-      riskPendingColleectionNotDue:
-          riskPendingColleectionNotDue ?? this.riskPendingColleectionNotDue,
-      riskPendingToServe: riskPendingToServe ?? this.riskPendingToServe,
-      riskPendingBilling: riskPendingBilling ?? this.riskPendingBilling,
-      internalRemarks: internalRemarks ?? this.internalRemarks,
+      tarifaId: tarifaId ?? this.tarifaId,
+      tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
+      descuentoGeneral: descuentoGeneral ?? this.descuentoGeneral,
+      descripcionDescuentoGeneral:
+          descripcionDescuentoGeneral ?? this.descripcionDescuentoGeneral,
+      tipoCalucloPrecio: tipoCalucloPrecio ?? this.tipoCalucloPrecio,
+      plazoDeCobroId: plazoDeCobroId ?? this.plazoDeCobroId,
+      metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
+      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
+      riesgoConcedidoInterno:
+          riesgoConcedidoInterno ?? this.riesgoConcedidoInterno,
+      riesgoConcedidoInternoDate:
+          riesgoConcedidoInternoDate ?? this.riesgoConcedidoInternoDate,
+      riesgoConcedidoCoafe: riesgoConcedidoCoafe ?? this.riesgoConcedidoCoafe,
+      riesgoConcedidoCoafeFecha:
+          riesgoConcedidoCoafeFecha ?? this.riesgoConcedidoCoafeFecha,
+      riesgoConcedido: riesgoConcedido ?? this.riesgoConcedido,
+      riesgoPendienteCobroVencido:
+          riesgoPendienteCobroVencido ?? this.riesgoPendienteCobroVencido,
+      riesgoPendienteCobroNoVencido:
+          riesgoPendienteCobroNoVencido ?? this.riesgoPendienteCobroNoVencido,
+      riesgoPendienteServir:
+          riesgoPendienteServir ?? this.riesgoPendienteServir,
+      riesgoPendienteFacturar:
+          riesgoPendienteFacturar ?? this.riesgoPendienteFacturar,
+      obvservacionesInternas:
+          obvservacionesInternas ?? this.obvservacionesInternas,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -5802,145 +5897,145 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
     if (id.present) {
       map['CLIENTE_ID'] = Variable<String>(id.value);
     }
-    if (customerName.present) {
-      map['NOMBRE'] = Variable<String>(customerName.value);
+    if (nombreCliente.present) {
+      map['NOMBRE'] = Variable<String>(nombreCliente.value);
     }
     if (nif.present) {
       map['NIF'] = Variable<String>(nif.value);
     }
-    if (fiscalName.present) {
-      map['NOMBRE_FISCAL'] = Variable<String>(fiscalName.value);
+    if (nombreFiscal.present) {
+      map['NOMBRE_FISCAL'] = Variable<String>(nombreFiscal.value);
     }
-    if (fiscalAddress1.present) {
-      map['DIRECCION_FISCAL1'] = Variable<String>(fiscalAddress1.value);
+    if (direccionFiscal1.present) {
+      map['DIRECCION_FISCAL1'] = Variable<String>(direccionFiscal1.value);
     }
-    if (fiscalAddress2.present) {
-      map['DIRECCION_FISCAL2'] = Variable<String>(fiscalAddress2.value);
+    if (direccionFiscal2.present) {
+      map['DIRECCION_FISCAL2'] = Variable<String>(direccionFiscal2.value);
     }
-    if (fiscalZipCode.present) {
-      map['CODIGO_POSTAL_FISCAL'] = Variable<String>(fiscalZipCode.value);
+    if (codigoPostalFiscal.present) {
+      map['CODIGO_POSTAL_FISCAL'] = Variable<String>(codigoPostalFiscal.value);
     }
-    if (fiscalCity.present) {
-      map['POBLACION_FISCAL'] = Variable<String>(fiscalCity.value);
+    if (poblacionFiscal.present) {
+      map['POBLACION_FISCAL'] = Variable<String>(poblacionFiscal.value);
     }
-    if (fiscalState.present) {
-      map['PROVINCIA_FISCAL'] = Variable<String>(fiscalState.value);
+    if (provinciaFiscal.present) {
+      map['PROVINCIA_FISCAL'] = Variable<String>(provinciaFiscal.value);
     }
-    if (fiscalCountryId.present) {
-      map['PAIS_ID_FISCAL'] = Variable<String>(fiscalCountryId.value);
+    if (paisFiscalId.present) {
+      map['PAIS_ID_FISCAL'] = Variable<String>(paisFiscalId.value);
     }
-    if (fiscalLatitude.present) {
-      map['LATITUD_FISCAL'] = Variable<double>(fiscalLatitude.value);
+    if (latitudFiscal.present) {
+      map['LATITUD_FISCAL'] = Variable<double>(latitudFiscal.value);
     }
-    if (fiscalLongitude.present) {
-      map['LONGITUD_FISCAL'] = Variable<double>(fiscalLongitude.value);
+    if (longitudFiscal.present) {
+      map['LONGITUD_FISCAL'] = Variable<double>(longitudFiscal.value);
     }
-    if (companyId.present) {
-      map['EMPRESA_ID'] = Variable<String>(companyId.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (especialVAT.present) {
-      map['IVA_ESPECIAL'] = Variable<double>(especialVAT.value);
+    if (ivaEspecial.present) {
+      map['IVA_ESPECIAL'] = Variable<double>(ivaEspecial.value);
     }
-    if (exemptVat.present) {
-      map['IVA_EXENTO'] = Variable<String>(exemptVat.value);
+    if (extentoIva.present) {
+      map['IVA_EXENTO'] = Variable<String>(extentoIva.value);
     }
-    if (currentYearSales.present) {
-      map['VENTAS_ANYO_ACTUAL'] = Variable<double>(currentYearSales.value);
+    if (ventasAnyoActual.present) {
+      map['VENTAS_ANYO_ACTUAL'] = Variable<double>(ventasAnyoActual.value);
     }
-    if (previousYearSales.present) {
-      map['VENTAS_ANYO_ANTERIOR'] = Variable<double>(previousYearSales.value);
+    if (ventasAnyoAnterior.present) {
+      map['VENTAS_ANYO_ANTERIOR'] = Variable<double>(ventasAnyoAnterior.value);
     }
-    if (salesTwoYearsAgo.present) {
-      map['VENTAS_HACE_DOS_ANYOS'] = Variable<double>(salesTwoYearsAgo.value);
+    if (ventasHaceDosAnyos.present) {
+      map['VENTAS_HACE_DOS_ANYOS'] = Variable<double>(ventasHaceDosAnyos.value);
     }
-    if (currentYearMargin.present) {
-      map['MARGEN_ANYO_ACTUAL'] = Variable<double>(currentYearMargin.value);
+    if (margenAnyoActual.present) {
+      map['MARGEN_ANYO_ACTUAL'] = Variable<double>(margenAnyoActual.value);
     }
-    if (previousYearMargin.present) {
-      map['MARGEN_ANYO_ANTERIOR'] = Variable<double>(previousYearMargin.value);
+    if (margenAnyoAnterior.present) {
+      map['MARGEN_ANYO_ANTERIOR'] = Variable<double>(margenAnyoAnterior.value);
     }
-    if (marginTwoYearsAgo.present) {
-      map['MARGEN_HACE_DOS_ANYOS'] = Variable<double>(marginTwoYearsAgo.value);
+    if (margenHaceDosAnyos.present) {
+      map['MARGEN_HACE_DOS_ANYOS'] = Variable<double>(margenHaceDosAnyos.value);
     }
-    if (paymentPercent.present) {
-      map['PORCENTAJE_ABONOS'] = Variable<double>(paymentPercent.value);
+    if (porcentajeAbonos.present) {
+      map['PORCENTAJE_ABONOS'] = Variable<double>(porcentajeAbonos.value);
     }
-    if (warrantyPercent.present) {
-      map['PORCENTAJE_GARANTIAS'] = Variable<double>(warrantyPercent.value);
+    if (porcentajeGarantias.present) {
+      map['PORCENTAJE_GARANTIAS'] = Variable<double>(porcentajeGarantias.value);
     }
-    if (shoppingCenterName.present) {
-      map['CENTRAL_COMPRAS_NOMBRE'] =
-          Variable<String>(shoppingCenterName.value);
+    if (centralCompras.present) {
+      map['CENTRAL_COMPRAS_NOMBRE'] = Variable<String>(centralCompras.value);
     }
-    if (urlWebsite.present) {
-      map['URL_WEB'] = Variable<String>(urlWebsite.value);
+    if (urlWeb.present) {
+      map['URL_WEB'] = Variable<String>(urlWeb.value);
     }
     if (divisaId.present) {
       map['DIVISA_ID'] = Variable<String>(divisaId.value);
     }
-    if (rateId.present) {
-      map['TARIFA_ID'] = Variable<String>(rateId.value);
+    if (tarifaId.present) {
+      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
     }
-    if (rateDescription.present) {
-      map['TARIFA_DESCRIPCION'] = Variable<String>(rateDescription.value);
+    if (tarifaDescripcion.present) {
+      map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
     }
-    if (generalDiscount.present) {
-      map['DESCUENTO_GENERAL_ID'] = Variable<String>(generalDiscount.value);
+    if (descuentoGeneral.present) {
+      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneral.value);
     }
-    if (generalDiscountDescription.present) {
+    if (descripcionDescuentoGeneral.present) {
       map['DESCUENTO_GENERAL_DESCRIPCION'] =
-          Variable<String>(generalDiscountDescription.value);
+          Variable<String>(descripcionDescuentoGeneral.value);
     }
-    if (priceCalculationType.present) {
-      map['TIPO_CALCULO_PRECIO'] = Variable<String>(priceCalculationType.value);
+    if (tipoCalucloPrecio.present) {
+      map['TIPO_CALCULO_PRECIO'] = Variable<String>(tipoCalucloPrecio.value);
     }
-    if (collectionTermId.present) {
-      map['PLAZO_COBRO_ID'] = Variable<String>(collectionTermId.value);
+    if (plazoDeCobroId.present) {
+      map['PLAZO_COBRO_ID'] = Variable<String>(plazoDeCobroId.value);
     }
-    if (collectionMethodId.present) {
-      map['METODO_COBRO_ID'] = Variable<String>(collectionMethodId.value);
+    if (metodoDeCobroId.present) {
+      map['METODO_COBRO_ID'] = Variable<String>(metodoDeCobroId.value);
     }
-    if (promptPaymentDiscount.present) {
+    if (descuentoProntoPago.present) {
       map['DESCUENTO_PRONTO_PAGO'] =
-          Variable<double>(promptPaymentDiscount.value);
+          Variable<double>(descuentoProntoPago.value);
     }
-    if (internalGrantedRisk.present) {
+    if (riesgoConcedidoInterno.present) {
       map['RIESGO_CONCEDIDO_INTERNO'] =
-          Variable<double>(internalGrantedRisk.value);
+          Variable<double>(riesgoConcedidoInterno.value);
     }
-    if (internalGrantedRiskDate.present) {
+    if (riesgoConcedidoInternoDate.present) {
       map['RIESGO_CONCEDIDO_INTERNO_FECHA'] =
-          Variable<DateTime>(internalGrantedRiskDate.value);
+          Variable<DateTime>(riesgoConcedidoInternoDate.value);
     }
-    if (cofaceGrantedRisk.present) {
+    if (riesgoConcedidoCoafe.present) {
       map['RIESGO_CONCEDIDO_COFACE'] =
-          Variable<double>(cofaceGrantedRisk.value);
+          Variable<double>(riesgoConcedidoCoafe.value);
     }
-    if (cofaceGrantedRiskDate.present) {
+    if (riesgoConcedidoCoafeFecha.present) {
       map['RIESGO_CONCEDIDO_COFACE_FECHA'] =
-          Variable<DateTime>(cofaceGrantedRiskDate.value);
+          Variable<DateTime>(riesgoConcedidoCoafeFecha.value);
     }
-    if (riskGranted.present) {
-      map['RIESGO_CONCEDIDO'] = Variable<double>(riskGranted.value);
+    if (riesgoConcedido.present) {
+      map['RIESGO_CONCEDIDO'] = Variable<double>(riesgoConcedido.value);
     }
-    if (riskPendingCollectionDue.present) {
+    if (riesgoPendienteCobroVencido.present) {
       map['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] =
-          Variable<double>(riskPendingCollectionDue.value);
+          Variable<double>(riesgoPendienteCobroVencido.value);
     }
-    if (riskPendingColleectionNotDue.present) {
+    if (riesgoPendienteCobroNoVencido.present) {
       map['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] =
-          Variable<double>(riskPendingColleectionNotDue.value);
+          Variable<double>(riesgoPendienteCobroNoVencido.value);
     }
-    if (riskPendingToServe.present) {
+    if (riesgoPendienteServir.present) {
       map['RIESGO_PDTE_SERVIR_CLIENTE'] =
-          Variable<double>(riskPendingToServe.value);
+          Variable<double>(riesgoPendienteServir.value);
     }
-    if (riskPendingBilling.present) {
+    if (riesgoPendienteFacturar.present) {
       map['RIESGO_PDTE_FACTURAR_CLIENTE'] =
-          Variable<double>(riskPendingBilling.value);
+          Variable<double>(riesgoPendienteFacturar.value);
     }
-    if (internalRemarks.present) {
-      map['OBSERVACIONES_INTERNAS'] = Variable<String>(internalRemarks.value);
+    if (obvservacionesInternas.present) {
+      map['OBSERVACIONES_INTERNAS'] =
+          Variable<String>(obvservacionesInternas.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -5953,52 +6048,52 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('CustomerTableCompanion(')
+    return (StringBuffer('ClienteTableCompanion(')
           ..write('id: $id, ')
-          ..write('customerName: $customerName, ')
+          ..write('nombreCliente: $nombreCliente, ')
           ..write('nif: $nif, ')
-          ..write('fiscalName: $fiscalName, ')
-          ..write('fiscalAddress1: $fiscalAddress1, ')
-          ..write('fiscalAddress2: $fiscalAddress2, ')
-          ..write('fiscalZipCode: $fiscalZipCode, ')
-          ..write('fiscalCity: $fiscalCity, ')
-          ..write('fiscalState: $fiscalState, ')
-          ..write('fiscalCountryId: $fiscalCountryId, ')
-          ..write('fiscalLatitude: $fiscalLatitude, ')
-          ..write('fiscalLongitude: $fiscalLongitude, ')
-          ..write('companyId: $companyId, ')
-          ..write('especialVAT: $especialVAT, ')
-          ..write('exemptVat: $exemptVat, ')
-          ..write('currentYearSales: $currentYearSales, ')
-          ..write('previousYearSales: $previousYearSales, ')
-          ..write('salesTwoYearsAgo: $salesTwoYearsAgo, ')
-          ..write('currentYearMargin: $currentYearMargin, ')
-          ..write('previousYearMargin: $previousYearMargin, ')
-          ..write('marginTwoYearsAgo: $marginTwoYearsAgo, ')
-          ..write('paymentPercent: $paymentPercent, ')
-          ..write('warrantyPercent: $warrantyPercent, ')
-          ..write('shoppingCenterName: $shoppingCenterName, ')
-          ..write('urlWebsite: $urlWebsite, ')
+          ..write('nombreFiscal: $nombreFiscal, ')
+          ..write('direccionFiscal1: $direccionFiscal1, ')
+          ..write('direccionFiscal2: $direccionFiscal2, ')
+          ..write('codigoPostalFiscal: $codigoPostalFiscal, ')
+          ..write('poblacionFiscal: $poblacionFiscal, ')
+          ..write('provinciaFiscal: $provinciaFiscal, ')
+          ..write('paisFiscalId: $paisFiscalId, ')
+          ..write('latitudFiscal: $latitudFiscal, ')
+          ..write('longitudFiscal: $longitudFiscal, ')
+          ..write('empresaId: $empresaId, ')
+          ..write('ivaEspecial: $ivaEspecial, ')
+          ..write('extentoIva: $extentoIva, ')
+          ..write('ventasAnyoActual: $ventasAnyoActual, ')
+          ..write('ventasAnyoAnterior: $ventasAnyoAnterior, ')
+          ..write('ventasHaceDosAnyos: $ventasHaceDosAnyos, ')
+          ..write('margenAnyoActual: $margenAnyoActual, ')
+          ..write('margenAnyoAnterior: $margenAnyoAnterior, ')
+          ..write('margenHaceDosAnyos: $margenHaceDosAnyos, ')
+          ..write('porcentajeAbonos: $porcentajeAbonos, ')
+          ..write('porcentajeGarantias: $porcentajeGarantias, ')
+          ..write('centralCompras: $centralCompras, ')
+          ..write('urlWeb: $urlWeb, ')
           ..write('divisaId: $divisaId, ')
-          ..write('rateId: $rateId, ')
-          ..write('rateDescription: $rateDescription, ')
-          ..write('generalDiscount: $generalDiscount, ')
-          ..write('generalDiscountDescription: $generalDiscountDescription, ')
-          ..write('priceCalculationType: $priceCalculationType, ')
-          ..write('collectionTermId: $collectionTermId, ')
-          ..write('collectionMethodId: $collectionMethodId, ')
-          ..write('promptPaymentDiscount: $promptPaymentDiscount, ')
-          ..write('internalGrantedRisk: $internalGrantedRisk, ')
-          ..write('internalGrantedRiskDate: $internalGrantedRiskDate, ')
-          ..write('cofaceGrantedRisk: $cofaceGrantedRisk, ')
-          ..write('cofaceGrantedRiskDate: $cofaceGrantedRiskDate, ')
-          ..write('riskGranted: $riskGranted, ')
-          ..write('riskPendingCollectionDue: $riskPendingCollectionDue, ')
+          ..write('tarifaId: $tarifaId, ')
+          ..write('tarifaDescripcion: $tarifaDescripcion, ')
+          ..write('descuentoGeneral: $descuentoGeneral, ')
+          ..write('descripcionDescuentoGeneral: $descripcionDescuentoGeneral, ')
+          ..write('tipoCalucloPrecio: $tipoCalucloPrecio, ')
+          ..write('plazoDeCobroId: $plazoDeCobroId, ')
+          ..write('metodoDeCobroId: $metodoDeCobroId, ')
+          ..write('descuentoProntoPago: $descuentoProntoPago, ')
+          ..write('riesgoConcedidoInterno: $riesgoConcedidoInterno, ')
+          ..write('riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, ')
+          ..write('riesgoConcedidoCoafe: $riesgoConcedidoCoafe, ')
+          ..write('riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, ')
+          ..write('riesgoConcedido: $riesgoConcedido, ')
+          ..write('riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, ')
           ..write(
-              'riskPendingColleectionNotDue: $riskPendingColleectionNotDue, ')
-          ..write('riskPendingToServe: $riskPendingToServe, ')
-          ..write('riskPendingBilling: $riskPendingBilling, ')
-          ..write('internalRemarks: $internalRemarks, ')
+              'riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, ')
+          ..write('riesgoPendienteServir: $riesgoPendienteServir, ')
+          ..write('riesgoPendienteFacturar: $riesgoPendienteFacturar, ')
+          ..write('obvservacionesInternas: $obvservacionesInternas, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -6006,21 +6101,21 @@ class CustomerTableCompanion extends UpdateCompanion<CustomerDTO> {
   }
 }
 
-class $CustomerTableTable extends CustomerTable
-    with TableInfo<$CustomerTableTable, CustomerDTO> {
+class $ClienteTableTable extends ClienteTable
+    with TableInfo<$ClienteTableTable, ClienteDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerTableTable(this.attachedDatabase, [this._alias]);
+  $ClienteTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _customerNameMeta =
-      const VerificationMeta('customerName');
+  final VerificationMeta _nombreClienteMeta =
+      const VerificationMeta('nombreCliente');
   @override
-  late final GeneratedColumn<String> customerName = GeneratedColumn<String>(
+  late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _nifMeta = const VerificationMeta('nif');
@@ -6028,133 +6123,135 @@ class $CustomerTableTable extends CustomerTable
   late final GeneratedColumn<String> nif = GeneratedColumn<String>(
       'NIF', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalNameMeta = const VerificationMeta('fiscalName');
+  final VerificationMeta _nombreFiscalMeta =
+      const VerificationMeta('nombreFiscal');
   @override
-  late final GeneratedColumn<String> fiscalName = GeneratedColumn<String>(
+  late final GeneratedColumn<String> nombreFiscal = GeneratedColumn<String>(
       'NOMBRE_FISCAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalAddress1Meta =
-      const VerificationMeta('fiscalAddress1');
+  final VerificationMeta _direccionFiscal1Meta =
+      const VerificationMeta('direccionFiscal1');
   @override
-  late final GeneratedColumn<String> fiscalAddress1 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccionFiscal1 = GeneratedColumn<String>(
       'DIRECCION_FISCAL1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalAddress2Meta =
-      const VerificationMeta('fiscalAddress2');
+  final VerificationMeta _direccionFiscal2Meta =
+      const VerificationMeta('direccionFiscal2');
   @override
-  late final GeneratedColumn<String> fiscalAddress2 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccionFiscal2 = GeneratedColumn<String>(
       'DIRECCION_FISCAL2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalZipCodeMeta =
-      const VerificationMeta('fiscalZipCode');
+  final VerificationMeta _codigoPostalFiscalMeta =
+      const VerificationMeta('codigoPostalFiscal');
   @override
-  late final GeneratedColumn<String> fiscalZipCode = GeneratedColumn<String>(
-      'CODIGO_POSTAL_FISCAL', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalCityMeta = const VerificationMeta('fiscalCity');
+  late final GeneratedColumn<String> codigoPostalFiscal =
+      GeneratedColumn<String>('CODIGO_POSTAL_FISCAL', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _poblacionFiscalMeta =
+      const VerificationMeta('poblacionFiscal');
   @override
-  late final GeneratedColumn<String> fiscalCity = GeneratedColumn<String>(
+  late final GeneratedColumn<String> poblacionFiscal = GeneratedColumn<String>(
       'POBLACION_FISCAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalStateMeta =
-      const VerificationMeta('fiscalState');
+  final VerificationMeta _provinciaFiscalMeta =
+      const VerificationMeta('provinciaFiscal');
   @override
-  late final GeneratedColumn<String> fiscalState = GeneratedColumn<String>(
+  late final GeneratedColumn<String> provinciaFiscal = GeneratedColumn<String>(
       'PROVINCIA_FISCAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fiscalCountryIdMeta =
-      const VerificationMeta('fiscalCountryId');
+  final VerificationMeta _paisFiscalIdMeta =
+      const VerificationMeta('paisFiscalId');
   @override
-  late final GeneratedColumn<String> fiscalCountryId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> paisFiscalId = GeneratedColumn<String>(
       'PAIS_ID_FISCAL', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
-  final VerificationMeta _fiscalLatitudeMeta =
-      const VerificationMeta('fiscalLatitude');
+  final VerificationMeta _latitudFiscalMeta =
+      const VerificationMeta('latitudFiscal');
   @override
-  late final GeneratedColumn<double> fiscalLatitude = GeneratedColumn<double>(
+  late final GeneratedColumn<double> latitudFiscal = GeneratedColumn<double>(
       'LATITUD_FISCAL', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _fiscalLongitudeMeta =
-      const VerificationMeta('fiscalLongitude');
+  final VerificationMeta _longitudFiscalMeta =
+      const VerificationMeta('longitudFiscal');
   @override
-  late final GeneratedColumn<double> fiscalLongitude = GeneratedColumn<double>(
+  late final GeneratedColumn<double> longitudFiscal = GeneratedColumn<double>(
       'LONGITUD_FISCAL', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
+  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
   @override
-  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _especialVATMeta =
-      const VerificationMeta('especialVAT');
+  final VerificationMeta _ivaEspecialMeta =
+      const VerificationMeta('ivaEspecial');
   @override
-  late final GeneratedColumn<double> especialVAT = GeneratedColumn<double>(
+  late final GeneratedColumn<double> ivaEspecial = GeneratedColumn<double>(
       'IVA_ESPECIAL', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _exemptVatMeta = const VerificationMeta('exemptVat');
+  final VerificationMeta _extentoIvaMeta = const VerificationMeta('extentoIva');
   @override
-  late final GeneratedColumn<String> exemptVat = GeneratedColumn<String>(
+  late final GeneratedColumn<String> extentoIva = GeneratedColumn<String>(
       'IVA_EXENTO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _currentYearSalesMeta =
-      const VerificationMeta('currentYearSales');
+  final VerificationMeta _ventasAnyoActualMeta =
+      const VerificationMeta('ventasAnyoActual');
   @override
-  late final GeneratedColumn<double> currentYearSales = GeneratedColumn<double>(
+  late final GeneratedColumn<double> ventasAnyoActual = GeneratedColumn<double>(
       'VENTAS_ANYO_ACTUAL', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _previousYearSalesMeta =
-      const VerificationMeta('previousYearSales');
+  final VerificationMeta _ventasAnyoAnteriorMeta =
+      const VerificationMeta('ventasAnyoAnterior');
   @override
-  late final GeneratedColumn<double> previousYearSales =
+  late final GeneratedColumn<double> ventasAnyoAnterior =
       GeneratedColumn<double>('VENTAS_ANYO_ANTERIOR', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _salesTwoYearsAgoMeta =
-      const VerificationMeta('salesTwoYearsAgo');
+  final VerificationMeta _ventasHaceDosAnyosMeta =
+      const VerificationMeta('ventasHaceDosAnyos');
   @override
-  late final GeneratedColumn<double> salesTwoYearsAgo = GeneratedColumn<double>(
-      'VENTAS_HACE_DOS_ANYOS', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _currentYearMarginMeta =
-      const VerificationMeta('currentYearMargin');
-  @override
-  late final GeneratedColumn<double> currentYearMargin =
-      GeneratedColumn<double>('MARGEN_ANYO_ACTUAL', aliasedName, true,
+  late final GeneratedColumn<double> ventasHaceDosAnyos =
+      GeneratedColumn<double>('VENTAS_HACE_DOS_ANYOS', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _previousYearMarginMeta =
-      const VerificationMeta('previousYearMargin');
+  final VerificationMeta _margenAnyoActualMeta =
+      const VerificationMeta('margenAnyoActual');
   @override
-  late final GeneratedColumn<double> previousYearMargin =
+  late final GeneratedColumn<double> margenAnyoActual = GeneratedColumn<double>(
+      'MARGEN_ANYO_ACTUAL', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  final VerificationMeta _margenAnyoAnteriorMeta =
+      const VerificationMeta('margenAnyoAnterior');
+  @override
+  late final GeneratedColumn<double> margenAnyoAnterior =
       GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _marginTwoYearsAgoMeta =
-      const VerificationMeta('marginTwoYearsAgo');
+  final VerificationMeta _margenHaceDosAnyosMeta =
+      const VerificationMeta('margenHaceDosAnyos');
   @override
-  late final GeneratedColumn<double> marginTwoYearsAgo =
+  late final GeneratedColumn<double> margenHaceDosAnyos =
       GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _paymentPercentMeta =
-      const VerificationMeta('paymentPercent');
+  final VerificationMeta _porcentajeAbonosMeta =
+      const VerificationMeta('porcentajeAbonos');
   @override
-  late final GeneratedColumn<double> paymentPercent = GeneratedColumn<double>(
+  late final GeneratedColumn<double> porcentajeAbonos = GeneratedColumn<double>(
       'PORCENTAJE_ABONOS', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _warrantyPercentMeta =
-      const VerificationMeta('warrantyPercent');
+  final VerificationMeta _porcentajeGarantiasMeta =
+      const VerificationMeta('porcentajeGarantias');
   @override
-  late final GeneratedColumn<double> warrantyPercent = GeneratedColumn<double>(
-      'PORCENTAJE_GARANTIAS', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _shoppingCenterNameMeta =
-      const VerificationMeta('shoppingCenterName');
+  late final GeneratedColumn<double> porcentajeGarantias =
+      GeneratedColumn<double>('PORCENTAJE_GARANTIAS', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
+  final VerificationMeta _centralComprasMeta =
+      const VerificationMeta('centralCompras');
   @override
-  late final GeneratedColumn<String> shoppingCenterName =
-      GeneratedColumn<String>('CENTRAL_COMPRAS_NOMBRE', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _urlWebsiteMeta = const VerificationMeta('urlWebsite');
+  late final GeneratedColumn<String> centralCompras = GeneratedColumn<String>(
+      'CENTRAL_COMPRAS_NOMBRE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _urlWebMeta = const VerificationMeta('urlWeb');
   @override
-  late final GeneratedColumn<String> urlWebsite = GeneratedColumn<String>(
+  late final GeneratedColumn<String> urlWeb = GeneratedColumn<String>(
       'URL_WEB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
@@ -6164,122 +6261,122 @@ class $CustomerTableTable extends CustomerTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
-  final VerificationMeta _rateIdMeta = const VerificationMeta('rateId');
+  final VerificationMeta _tarifaIdMeta = const VerificationMeta('tarifaId');
   @override
-  late final GeneratedColumn<String> rateId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> tarifaId = GeneratedColumn<String>(
       'TARIFA_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _rateDescriptionMeta =
-      const VerificationMeta('rateDescription');
+  final VerificationMeta _tarifaDescripcionMeta =
+      const VerificationMeta('tarifaDescripcion');
   @override
-  late final GeneratedColumn<String> rateDescription = GeneratedColumn<String>(
-      'TARIFA_DESCRIPCION', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _generalDiscountMeta =
-      const VerificationMeta('generalDiscount');
+  late final GeneratedColumn<String> tarifaDescripcion =
+      GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descuentoGeneralMeta =
+      const VerificationMeta('descuentoGeneral');
   @override
-  late final GeneratedColumn<String> generalDiscount = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descuentoGeneral = GeneratedColumn<String>(
       'DESCUENTO_GENERAL_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _generalDiscountDescriptionMeta =
-      const VerificationMeta('generalDiscountDescription');
+  final VerificationMeta _descripcionDescuentoGeneralMeta =
+      const VerificationMeta('descripcionDescuentoGeneral');
   @override
-  late final GeneratedColumn<String> generalDiscountDescription =
+  late final GeneratedColumn<String> descripcionDescuentoGeneral =
       GeneratedColumn<String>(
           'DESCUENTO_GENERAL_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _priceCalculationTypeMeta =
-      const VerificationMeta('priceCalculationType');
+  final VerificationMeta _tipoCalucloPrecioMeta =
+      const VerificationMeta('tipoCalucloPrecio');
   @override
-  late final GeneratedColumn<String> priceCalculationType =
+  late final GeneratedColumn<String> tipoCalucloPrecio =
       GeneratedColumn<String>('TIPO_CALCULO_PRECIO', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _collectionTermIdMeta =
-      const VerificationMeta('collectionTermId');
+  final VerificationMeta _plazoDeCobroIdMeta =
+      const VerificationMeta('plazoDeCobroId');
   @override
-  late final GeneratedColumn<String> collectionTermId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> plazoDeCobroId = GeneratedColumn<String>(
       'PLAZO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES PLAZOS_COBRO (PLAZO_COBRO_ID)');
-  final VerificationMeta _collectionMethodIdMeta =
-      const VerificationMeta('collectionMethodId');
+  final VerificationMeta _metodoDeCobroIdMeta =
+      const VerificationMeta('metodoDeCobroId');
   @override
-  late final GeneratedColumn<String> collectionMethodId =
-      GeneratedColumn<String>('METODO_COBRO_ID', aliasedName, true,
-          type: DriftSqlType.string,
-          requiredDuringInsert: false,
-          defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
-  final VerificationMeta _promptPaymentDiscountMeta =
-      const VerificationMeta('promptPaymentDiscount');
+  late final GeneratedColumn<String> metodoDeCobroId = GeneratedColumn<String>(
+      'METODO_COBRO_ID', aliasedName, true,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
+  final VerificationMeta _descuentoProntoPagoMeta =
+      const VerificationMeta('descuentoProntoPago');
   @override
-  late final GeneratedColumn<double> promptPaymentDiscount =
+  late final GeneratedColumn<double> descuentoProntoPago =
       GeneratedColumn<double>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _internalGrantedRiskMeta =
-      const VerificationMeta('internalGrantedRisk');
+  final VerificationMeta _riesgoConcedidoInternoMeta =
+      const VerificationMeta('riesgoConcedidoInterno');
   @override
-  late final GeneratedColumn<double> internalGrantedRisk =
+  late final GeneratedColumn<double> riesgoConcedidoInterno =
       GeneratedColumn<double>('RIESGO_CONCEDIDO_INTERNO', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _internalGrantedRiskDateMeta =
-      const VerificationMeta('internalGrantedRiskDate');
+  final VerificationMeta _riesgoConcedidoInternoDateMeta =
+      const VerificationMeta('riesgoConcedidoInternoDate');
   @override
-  late final GeneratedColumn<DateTime> internalGrantedRiskDate =
+  late final GeneratedColumn<DateTime> riesgoConcedidoInternoDate =
       GeneratedColumn<DateTime>(
           'RIESGO_CONCEDIDO_INTERNO_FECHA', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _cofaceGrantedRiskMeta =
-      const VerificationMeta('cofaceGrantedRisk');
+  final VerificationMeta _riesgoConcedidoCoafeMeta =
+      const VerificationMeta('riesgoConcedidoCoafe');
   @override
-  late final GeneratedColumn<double> cofaceGrantedRisk =
+  late final GeneratedColumn<double> riesgoConcedidoCoafe =
       GeneratedColumn<double>('RIESGO_CONCEDIDO_COFACE', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _cofaceGrantedRiskDateMeta =
-      const VerificationMeta('cofaceGrantedRiskDate');
+  final VerificationMeta _riesgoConcedidoCoafeFechaMeta =
+      const VerificationMeta('riesgoConcedidoCoafeFecha');
   @override
-  late final GeneratedColumn<DateTime> cofaceGrantedRiskDate =
+  late final GeneratedColumn<DateTime> riesgoConcedidoCoafeFecha =
       GeneratedColumn<DateTime>(
           'RIESGO_CONCEDIDO_COFACE_FECHA', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _riskGrantedMeta =
-      const VerificationMeta('riskGranted');
+  final VerificationMeta _riesgoConcedidoMeta =
+      const VerificationMeta('riesgoConcedido');
   @override
-  late final GeneratedColumn<double> riskGranted = GeneratedColumn<double>(
+  late final GeneratedColumn<double> riesgoConcedido = GeneratedColumn<double>(
       'RIESGO_CONCEDIDO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riskPendingCollectionDueMeta =
-      const VerificationMeta('riskPendingCollectionDue');
+  final VerificationMeta _riesgoPendienteCobroVencidoMeta =
+      const VerificationMeta('riesgoPendienteCobroVencido');
   @override
-  late final GeneratedColumn<double> riskPendingCollectionDue =
+  late final GeneratedColumn<double> riesgoPendienteCobroVencido =
       GeneratedColumn<double>(
           'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riskPendingColleectionNotDueMeta =
-      const VerificationMeta('riskPendingColleectionNotDue');
+  final VerificationMeta _riesgoPendienteCobroNoVencidoMeta =
+      const VerificationMeta('riesgoPendienteCobroNoVencido');
   @override
-  late final GeneratedColumn<double> riskPendingColleectionNotDue =
+  late final GeneratedColumn<double> riesgoPendienteCobroNoVencido =
       GeneratedColumn<double>(
           'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riskPendingToServeMeta =
-      const VerificationMeta('riskPendingToServe');
+  final VerificationMeta _riesgoPendienteServirMeta =
+      const VerificationMeta('riesgoPendienteServir');
   @override
-  late final GeneratedColumn<double> riskPendingToServe =
+  late final GeneratedColumn<double> riesgoPendienteServir =
       GeneratedColumn<double>('RIESGO_PDTE_SERVIR_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riskPendingBillingMeta =
-      const VerificationMeta('riskPendingBilling');
+  final VerificationMeta _riesgoPendienteFacturarMeta =
+      const VerificationMeta('riesgoPendienteFacturar');
   @override
-  late final GeneratedColumn<double> riskPendingBilling =
+  late final GeneratedColumn<double> riesgoPendienteFacturar =
       GeneratedColumn<double>('RIESGO_PDTE_FACTURAR_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _internalRemarksMeta =
-      const VerificationMeta('internalRemarks');
+  final VerificationMeta _obvservacionesInternasMeta =
+      const VerificationMeta('obvservacionesInternas');
   @override
-  late final GeneratedColumn<String> internalRemarks = GeneratedColumn<String>(
-      'OBSERVACIONES_INTERNAS', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+  late final GeneratedColumn<String> obvservacionesInternas =
+      GeneratedColumn<String>('OBSERVACIONES_INTERNAS', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -6296,49 +6393,49 @@ class $CustomerTableTable extends CustomerTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        customerName,
+        nombreCliente,
         nif,
-        fiscalName,
-        fiscalAddress1,
-        fiscalAddress2,
-        fiscalZipCode,
-        fiscalCity,
-        fiscalState,
-        fiscalCountryId,
-        fiscalLatitude,
-        fiscalLongitude,
-        companyId,
-        especialVAT,
-        exemptVat,
-        currentYearSales,
-        previousYearSales,
-        salesTwoYearsAgo,
-        currentYearMargin,
-        previousYearMargin,
-        marginTwoYearsAgo,
-        paymentPercent,
-        warrantyPercent,
-        shoppingCenterName,
-        urlWebsite,
+        nombreFiscal,
+        direccionFiscal1,
+        direccionFiscal2,
+        codigoPostalFiscal,
+        poblacionFiscal,
+        provinciaFiscal,
+        paisFiscalId,
+        latitudFiscal,
+        longitudFiscal,
+        empresaId,
+        ivaEspecial,
+        extentoIva,
+        ventasAnyoActual,
+        ventasAnyoAnterior,
+        ventasHaceDosAnyos,
+        margenAnyoActual,
+        margenAnyoAnterior,
+        margenHaceDosAnyos,
+        porcentajeAbonos,
+        porcentajeGarantias,
+        centralCompras,
+        urlWeb,
         divisaId,
-        rateId,
-        rateDescription,
-        generalDiscount,
-        generalDiscountDescription,
-        priceCalculationType,
-        collectionTermId,
-        collectionMethodId,
-        promptPaymentDiscount,
-        internalGrantedRisk,
-        internalGrantedRiskDate,
-        cofaceGrantedRisk,
-        cofaceGrantedRiskDate,
-        riskGranted,
-        riskPendingCollectionDue,
-        riskPendingColleectionNotDue,
-        riskPendingToServe,
-        riskPendingBilling,
-        internalRemarks,
+        tarifaId,
+        tarifaDescripcion,
+        descuentoGeneral,
+        descripcionDescuentoGeneral,
+        tipoCalucloPrecio,
+        plazoDeCobroId,
+        metodoDeCobroId,
+        descuentoProntoPago,
+        riesgoConcedidoInterno,
+        riesgoConcedidoInternoDate,
+        riesgoConcedidoCoafe,
+        riesgoConcedidoCoafeFecha,
+        riesgoConcedido,
+        riesgoPendienteCobroVencido,
+        riesgoPendienteCobroNoVencido,
+        riesgoPendienteServir,
+        riesgoPendienteFacturar,
+        obvservacionesInternas,
         lastUpdated,
         deleted
       ];
@@ -6347,7 +6444,7 @@ class $CustomerTableTable extends CustomerTable
   @override
   String get actualTableName => 'CLIENTES';
   @override
-  VerificationContext validateIntegrity(Insertable<CustomerDTO> instance,
+  VerificationContext validateIntegrity(Insertable<ClienteDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -6359,9 +6456,9 @@ class $CustomerTableTable extends CustomerTable
     }
     if (data.containsKey('NOMBRE')) {
       context.handle(
-          _customerNameMeta,
-          customerName.isAcceptableOrUnknown(
-              data['NOMBRE']!, _customerNameMeta));
+          _nombreClienteMeta,
+          nombreCliente.isAcceptableOrUnknown(
+              data['NOMBRE']!, _nombreClienteMeta));
     }
     if (data.containsKey('NIF')) {
       context.handle(
@@ -6369,254 +6466,257 @@ class $CustomerTableTable extends CustomerTable
     }
     if (data.containsKey('NOMBRE_FISCAL')) {
       context.handle(
-          _fiscalNameMeta,
-          fiscalName.isAcceptableOrUnknown(
-              data['NOMBRE_FISCAL']!, _fiscalNameMeta));
+          _nombreFiscalMeta,
+          nombreFiscal.isAcceptableOrUnknown(
+              data['NOMBRE_FISCAL']!, _nombreFiscalMeta));
     }
     if (data.containsKey('DIRECCION_FISCAL1')) {
       context.handle(
-          _fiscalAddress1Meta,
-          fiscalAddress1.isAcceptableOrUnknown(
-              data['DIRECCION_FISCAL1']!, _fiscalAddress1Meta));
+          _direccionFiscal1Meta,
+          direccionFiscal1.isAcceptableOrUnknown(
+              data['DIRECCION_FISCAL1']!, _direccionFiscal1Meta));
     }
     if (data.containsKey('DIRECCION_FISCAL2')) {
       context.handle(
-          _fiscalAddress2Meta,
-          fiscalAddress2.isAcceptableOrUnknown(
-              data['DIRECCION_FISCAL2']!, _fiscalAddress2Meta));
+          _direccionFiscal2Meta,
+          direccionFiscal2.isAcceptableOrUnknown(
+              data['DIRECCION_FISCAL2']!, _direccionFiscal2Meta));
     }
     if (data.containsKey('CODIGO_POSTAL_FISCAL')) {
       context.handle(
-          _fiscalZipCodeMeta,
-          fiscalZipCode.isAcceptableOrUnknown(
-              data['CODIGO_POSTAL_FISCAL']!, _fiscalZipCodeMeta));
+          _codigoPostalFiscalMeta,
+          codigoPostalFiscal.isAcceptableOrUnknown(
+              data['CODIGO_POSTAL_FISCAL']!, _codigoPostalFiscalMeta));
     }
     if (data.containsKey('POBLACION_FISCAL')) {
       context.handle(
-          _fiscalCityMeta,
-          fiscalCity.isAcceptableOrUnknown(
-              data['POBLACION_FISCAL']!, _fiscalCityMeta));
+          _poblacionFiscalMeta,
+          poblacionFiscal.isAcceptableOrUnknown(
+              data['POBLACION_FISCAL']!, _poblacionFiscalMeta));
     }
     if (data.containsKey('PROVINCIA_FISCAL')) {
       context.handle(
-          _fiscalStateMeta,
-          fiscalState.isAcceptableOrUnknown(
-              data['PROVINCIA_FISCAL']!, _fiscalStateMeta));
+          _provinciaFiscalMeta,
+          provinciaFiscal.isAcceptableOrUnknown(
+              data['PROVINCIA_FISCAL']!, _provinciaFiscalMeta));
     }
     if (data.containsKey('PAIS_ID_FISCAL')) {
       context.handle(
-          _fiscalCountryIdMeta,
-          fiscalCountryId.isAcceptableOrUnknown(
-              data['PAIS_ID_FISCAL']!, _fiscalCountryIdMeta));
+          _paisFiscalIdMeta,
+          paisFiscalId.isAcceptableOrUnknown(
+              data['PAIS_ID_FISCAL']!, _paisFiscalIdMeta));
     }
     if (data.containsKey('LATITUD_FISCAL')) {
       context.handle(
-          _fiscalLatitudeMeta,
-          fiscalLatitude.isAcceptableOrUnknown(
-              data['LATITUD_FISCAL']!, _fiscalLatitudeMeta));
+          _latitudFiscalMeta,
+          latitudFiscal.isAcceptableOrUnknown(
+              data['LATITUD_FISCAL']!, _latitudFiscalMeta));
     }
     if (data.containsKey('LONGITUD_FISCAL')) {
       context.handle(
-          _fiscalLongitudeMeta,
-          fiscalLongitude.isAcceptableOrUnknown(
-              data['LONGITUD_FISCAL']!, _fiscalLongitudeMeta));
+          _longitudFiscalMeta,
+          longitudFiscal.isAcceptableOrUnknown(
+              data['LONGITUD_FISCAL']!, _longitudFiscalMeta));
     }
     if (data.containsKey('EMPRESA_ID')) {
-      context.handle(_companyIdMeta,
-          companyId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _companyIdMeta));
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
     } else if (isInserting) {
-      context.missing(_companyIdMeta);
+      context.missing(_empresaIdMeta);
     }
     if (data.containsKey('IVA_ESPECIAL')) {
       context.handle(
-          _especialVATMeta,
-          especialVAT.isAcceptableOrUnknown(
-              data['IVA_ESPECIAL']!, _especialVATMeta));
+          _ivaEspecialMeta,
+          ivaEspecial.isAcceptableOrUnknown(
+              data['IVA_ESPECIAL']!, _ivaEspecialMeta));
     }
     if (data.containsKey('IVA_EXENTO')) {
-      context.handle(_exemptVatMeta,
-          exemptVat.isAcceptableOrUnknown(data['IVA_EXENTO']!, _exemptVatMeta));
+      context.handle(
+          _extentoIvaMeta,
+          extentoIva.isAcceptableOrUnknown(
+              data['IVA_EXENTO']!, _extentoIvaMeta));
     }
     if (data.containsKey('VENTAS_ANYO_ACTUAL')) {
       context.handle(
-          _currentYearSalesMeta,
-          currentYearSales.isAcceptableOrUnknown(
-              data['VENTAS_ANYO_ACTUAL']!, _currentYearSalesMeta));
+          _ventasAnyoActualMeta,
+          ventasAnyoActual.isAcceptableOrUnknown(
+              data['VENTAS_ANYO_ACTUAL']!, _ventasAnyoActualMeta));
     }
     if (data.containsKey('VENTAS_ANYO_ANTERIOR')) {
       context.handle(
-          _previousYearSalesMeta,
-          previousYearSales.isAcceptableOrUnknown(
-              data['VENTAS_ANYO_ANTERIOR']!, _previousYearSalesMeta));
+          _ventasAnyoAnteriorMeta,
+          ventasAnyoAnterior.isAcceptableOrUnknown(
+              data['VENTAS_ANYO_ANTERIOR']!, _ventasAnyoAnteriorMeta));
     }
     if (data.containsKey('VENTAS_HACE_DOS_ANYOS')) {
       context.handle(
-          _salesTwoYearsAgoMeta,
-          salesTwoYearsAgo.isAcceptableOrUnknown(
-              data['VENTAS_HACE_DOS_ANYOS']!, _salesTwoYearsAgoMeta));
+          _ventasHaceDosAnyosMeta,
+          ventasHaceDosAnyos.isAcceptableOrUnknown(
+              data['VENTAS_HACE_DOS_ANYOS']!, _ventasHaceDosAnyosMeta));
     }
     if (data.containsKey('MARGEN_ANYO_ACTUAL')) {
       context.handle(
-          _currentYearMarginMeta,
-          currentYearMargin.isAcceptableOrUnknown(
-              data['MARGEN_ANYO_ACTUAL']!, _currentYearMarginMeta));
+          _margenAnyoActualMeta,
+          margenAnyoActual.isAcceptableOrUnknown(
+              data['MARGEN_ANYO_ACTUAL']!, _margenAnyoActualMeta));
     }
     if (data.containsKey('MARGEN_ANYO_ANTERIOR')) {
       context.handle(
-          _previousYearMarginMeta,
-          previousYearMargin.isAcceptableOrUnknown(
-              data['MARGEN_ANYO_ANTERIOR']!, _previousYearMarginMeta));
+          _margenAnyoAnteriorMeta,
+          margenAnyoAnterior.isAcceptableOrUnknown(
+              data['MARGEN_ANYO_ANTERIOR']!, _margenAnyoAnteriorMeta));
     }
     if (data.containsKey('MARGEN_HACE_DOS_ANYOS')) {
       context.handle(
-          _marginTwoYearsAgoMeta,
-          marginTwoYearsAgo.isAcceptableOrUnknown(
-              data['MARGEN_HACE_DOS_ANYOS']!, _marginTwoYearsAgoMeta));
+          _margenHaceDosAnyosMeta,
+          margenHaceDosAnyos.isAcceptableOrUnknown(
+              data['MARGEN_HACE_DOS_ANYOS']!, _margenHaceDosAnyosMeta));
     }
     if (data.containsKey('PORCENTAJE_ABONOS')) {
       context.handle(
-          _paymentPercentMeta,
-          paymentPercent.isAcceptableOrUnknown(
-              data['PORCENTAJE_ABONOS']!, _paymentPercentMeta));
+          _porcentajeAbonosMeta,
+          porcentajeAbonos.isAcceptableOrUnknown(
+              data['PORCENTAJE_ABONOS']!, _porcentajeAbonosMeta));
     }
     if (data.containsKey('PORCENTAJE_GARANTIAS')) {
       context.handle(
-          _warrantyPercentMeta,
-          warrantyPercent.isAcceptableOrUnknown(
-              data['PORCENTAJE_GARANTIAS']!, _warrantyPercentMeta));
+          _porcentajeGarantiasMeta,
+          porcentajeGarantias.isAcceptableOrUnknown(
+              data['PORCENTAJE_GARANTIAS']!, _porcentajeGarantiasMeta));
     }
     if (data.containsKey('CENTRAL_COMPRAS_NOMBRE')) {
       context.handle(
-          _shoppingCenterNameMeta,
-          shoppingCenterName.isAcceptableOrUnknown(
-              data['CENTRAL_COMPRAS_NOMBRE']!, _shoppingCenterNameMeta));
+          _centralComprasMeta,
+          centralCompras.isAcceptableOrUnknown(
+              data['CENTRAL_COMPRAS_NOMBRE']!, _centralComprasMeta));
     }
     if (data.containsKey('URL_WEB')) {
-      context.handle(_urlWebsiteMeta,
-          urlWebsite.isAcceptableOrUnknown(data['URL_WEB']!, _urlWebsiteMeta));
+      context.handle(_urlWebMeta,
+          urlWeb.isAcceptableOrUnknown(data['URL_WEB']!, _urlWebMeta));
     }
     if (data.containsKey('DIVISA_ID')) {
       context.handle(_divisaIdMeta,
           divisaId.isAcceptableOrUnknown(data['DIVISA_ID']!, _divisaIdMeta));
     }
     if (data.containsKey('TARIFA_ID')) {
-      context.handle(_rateIdMeta,
-          rateId.isAcceptableOrUnknown(data['TARIFA_ID']!, _rateIdMeta));
+      context.handle(_tarifaIdMeta,
+          tarifaId.isAcceptableOrUnknown(data['TARIFA_ID']!, _tarifaIdMeta));
     }
     if (data.containsKey('TARIFA_DESCRIPCION')) {
       context.handle(
-          _rateDescriptionMeta,
-          rateDescription.isAcceptableOrUnknown(
-              data['TARIFA_DESCRIPCION']!, _rateDescriptionMeta));
+          _tarifaDescripcionMeta,
+          tarifaDescripcion.isAcceptableOrUnknown(
+              data['TARIFA_DESCRIPCION']!, _tarifaDescripcionMeta));
     }
     if (data.containsKey('DESCUENTO_GENERAL_ID')) {
       context.handle(
-          _generalDiscountMeta,
-          generalDiscount.isAcceptableOrUnknown(
-              data['DESCUENTO_GENERAL_ID']!, _generalDiscountMeta));
+          _descuentoGeneralMeta,
+          descuentoGeneral.isAcceptableOrUnknown(
+              data['DESCUENTO_GENERAL_ID']!, _descuentoGeneralMeta));
     }
     if (data.containsKey('DESCUENTO_GENERAL_DESCRIPCION')) {
       context.handle(
-          _generalDiscountDescriptionMeta,
-          generalDiscountDescription.isAcceptableOrUnknown(
+          _descripcionDescuentoGeneralMeta,
+          descripcionDescuentoGeneral.isAcceptableOrUnknown(
               data['DESCUENTO_GENERAL_DESCRIPCION']!,
-              _generalDiscountDescriptionMeta));
+              _descripcionDescuentoGeneralMeta));
     }
     if (data.containsKey('TIPO_CALCULO_PRECIO')) {
       context.handle(
-          _priceCalculationTypeMeta,
-          priceCalculationType.isAcceptableOrUnknown(
-              data['TIPO_CALCULO_PRECIO']!, _priceCalculationTypeMeta));
+          _tipoCalucloPrecioMeta,
+          tipoCalucloPrecio.isAcceptableOrUnknown(
+              data['TIPO_CALCULO_PRECIO']!, _tipoCalucloPrecioMeta));
     } else if (isInserting) {
-      context.missing(_priceCalculationTypeMeta);
+      context.missing(_tipoCalucloPrecioMeta);
     }
     if (data.containsKey('PLAZO_COBRO_ID')) {
       context.handle(
-          _collectionTermIdMeta,
-          collectionTermId.isAcceptableOrUnknown(
-              data['PLAZO_COBRO_ID']!, _collectionTermIdMeta));
+          _plazoDeCobroIdMeta,
+          plazoDeCobroId.isAcceptableOrUnknown(
+              data['PLAZO_COBRO_ID']!, _plazoDeCobroIdMeta));
     }
     if (data.containsKey('METODO_COBRO_ID')) {
       context.handle(
-          _collectionMethodIdMeta,
-          collectionMethodId.isAcceptableOrUnknown(
-              data['METODO_COBRO_ID']!, _collectionMethodIdMeta));
+          _metodoDeCobroIdMeta,
+          metodoDeCobroId.isAcceptableOrUnknown(
+              data['METODO_COBRO_ID']!, _metodoDeCobroIdMeta));
     }
     if (data.containsKey('DESCUENTO_PRONTO_PAGO')) {
       context.handle(
-          _promptPaymentDiscountMeta,
-          promptPaymentDiscount.isAcceptableOrUnknown(
-              data['DESCUENTO_PRONTO_PAGO']!, _promptPaymentDiscountMeta));
+          _descuentoProntoPagoMeta,
+          descuentoProntoPago.isAcceptableOrUnknown(
+              data['DESCUENTO_PRONTO_PAGO']!, _descuentoProntoPagoMeta));
     } else if (isInserting) {
-      context.missing(_promptPaymentDiscountMeta);
+      context.missing(_descuentoProntoPagoMeta);
     }
     if (data.containsKey('RIESGO_CONCEDIDO_INTERNO')) {
       context.handle(
-          _internalGrantedRiskMeta,
-          internalGrantedRisk.isAcceptableOrUnknown(
-              data['RIESGO_CONCEDIDO_INTERNO']!, _internalGrantedRiskMeta));
+          _riesgoConcedidoInternoMeta,
+          riesgoConcedidoInterno.isAcceptableOrUnknown(
+              data['RIESGO_CONCEDIDO_INTERNO']!, _riesgoConcedidoInternoMeta));
     } else if (isInserting) {
-      context.missing(_internalGrantedRiskMeta);
+      context.missing(_riesgoConcedidoInternoMeta);
     }
     if (data.containsKey('RIESGO_CONCEDIDO_INTERNO_FECHA')) {
       context.handle(
-          _internalGrantedRiskDateMeta,
-          internalGrantedRiskDate.isAcceptableOrUnknown(
+          _riesgoConcedidoInternoDateMeta,
+          riesgoConcedidoInternoDate.isAcceptableOrUnknown(
               data['RIESGO_CONCEDIDO_INTERNO_FECHA']!,
-              _internalGrantedRiskDateMeta));
+              _riesgoConcedidoInternoDateMeta));
     }
     if (data.containsKey('RIESGO_CONCEDIDO_COFACE')) {
       context.handle(
-          _cofaceGrantedRiskMeta,
-          cofaceGrantedRisk.isAcceptableOrUnknown(
-              data['RIESGO_CONCEDIDO_COFACE']!, _cofaceGrantedRiskMeta));
+          _riesgoConcedidoCoafeMeta,
+          riesgoConcedidoCoafe.isAcceptableOrUnknown(
+              data['RIESGO_CONCEDIDO_COFACE']!, _riesgoConcedidoCoafeMeta));
     } else if (isInserting) {
-      context.missing(_cofaceGrantedRiskMeta);
+      context.missing(_riesgoConcedidoCoafeMeta);
     }
     if (data.containsKey('RIESGO_CONCEDIDO_COFACE_FECHA')) {
       context.handle(
-          _cofaceGrantedRiskDateMeta,
-          cofaceGrantedRiskDate.isAcceptableOrUnknown(
+          _riesgoConcedidoCoafeFechaMeta,
+          riesgoConcedidoCoafeFecha.isAcceptableOrUnknown(
               data['RIESGO_CONCEDIDO_COFACE_FECHA']!,
-              _cofaceGrantedRiskDateMeta));
+              _riesgoConcedidoCoafeFechaMeta));
     }
     if (data.containsKey('RIESGO_CONCEDIDO')) {
       context.handle(
-          _riskGrantedMeta,
-          riskGranted.isAcceptableOrUnknown(
-              data['RIESGO_CONCEDIDO']!, _riskGrantedMeta));
+          _riesgoConcedidoMeta,
+          riesgoConcedido.isAcceptableOrUnknown(
+              data['RIESGO_CONCEDIDO']!, _riesgoConcedidoMeta));
     }
     if (data.containsKey('RIESGO_PDTE_COBRO_VENCIDO_CLIENTE')) {
       context.handle(
-          _riskPendingCollectionDueMeta,
-          riskPendingCollectionDue.isAcceptableOrUnknown(
+          _riesgoPendienteCobroVencidoMeta,
+          riesgoPendienteCobroVencido.isAcceptableOrUnknown(
               data['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE']!,
-              _riskPendingCollectionDueMeta));
+              _riesgoPendienteCobroVencidoMeta));
     }
     if (data.containsKey('RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE')) {
       context.handle(
-          _riskPendingColleectionNotDueMeta,
-          riskPendingColleectionNotDue.isAcceptableOrUnknown(
+          _riesgoPendienteCobroNoVencidoMeta,
+          riesgoPendienteCobroNoVencido.isAcceptableOrUnknown(
               data['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE']!,
-              _riskPendingColleectionNotDueMeta));
+              _riesgoPendienteCobroNoVencidoMeta));
     }
     if (data.containsKey('RIESGO_PDTE_SERVIR_CLIENTE')) {
       context.handle(
-          _riskPendingToServeMeta,
-          riskPendingToServe.isAcceptableOrUnknown(
-              data['RIESGO_PDTE_SERVIR_CLIENTE']!, _riskPendingToServeMeta));
+          _riesgoPendienteServirMeta,
+          riesgoPendienteServir.isAcceptableOrUnknown(
+              data['RIESGO_PDTE_SERVIR_CLIENTE']!, _riesgoPendienteServirMeta));
     }
     if (data.containsKey('RIESGO_PDTE_FACTURAR_CLIENTE')) {
       context.handle(
-          _riskPendingBillingMeta,
-          riskPendingBilling.isAcceptableOrUnknown(
-              data['RIESGO_PDTE_FACTURAR_CLIENTE']!, _riskPendingBillingMeta));
+          _riesgoPendienteFacturarMeta,
+          riesgoPendienteFacturar.isAcceptableOrUnknown(
+              data['RIESGO_PDTE_FACTURAR_CLIENTE']!,
+              _riesgoPendienteFacturarMeta));
     }
     if (data.containsKey('OBSERVACIONES_INTERNAS')) {
       context.handle(
-          _internalRemarksMeta,
-          internalRemarks.isAcceptableOrUnknown(
-              data['OBSERVACIONES_INTERNAS']!, _internalRemarksMeta));
+          _obvservacionesInternasMeta,
+          obvservacionesInternas.isAcceptableOrUnknown(
+              data['OBSERVACIONES_INTERNAS']!, _obvservacionesInternasMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -6636,107 +6736,107 @@ class $CustomerTableTable extends CustomerTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  CustomerDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerDTO(
+    return ClienteDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      customerName: attachedDatabase.options.types
+      nombreCliente: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
       nif: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NIF']),
-      fiscalName: attachedDatabase.options.types
+      nombreFiscal: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_FISCAL']),
-      fiscalAddress1: attachedDatabase.options.types.read(
+      direccionFiscal1: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_FISCAL1']),
-      fiscalAddress2: attachedDatabase.options.types.read(
+      direccionFiscal2: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_FISCAL2']),
-      fiscalZipCode: attachedDatabase.options.types.read(
+      codigoPostalFiscal: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL_FISCAL']),
-      fiscalCity: attachedDatabase.options.types.read(
+      poblacionFiscal: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}POBLACION_FISCAL']),
-      fiscalCountryId: attachedDatabase.options.types
+      paisFiscalId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID_FISCAL']),
-      fiscalState: attachedDatabase.options.types.read(
+      provinciaFiscal: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}PROVINCIA_FISCAL']),
-      fiscalLatitude: attachedDatabase.options.types
+      latitudFiscal: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD_FISCAL']),
-      fiscalLongitude: attachedDatabase.options.types
+      longitudFiscal: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD_FISCAL']),
-      companyId: attachedDatabase.options.types
+      empresaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      especialVAT: attachedDatabase.options.types
+      ivaEspecial: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IVA_ESPECIAL']),
-      exemptVat: attachedDatabase.options.types
+      extentoIva: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}IVA_EXENTO']),
-      currentYearSales: attachedDatabase.options.types.read(
+      ventasAnyoActual: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ACTUAL']),
-      previousYearSales: attachedDatabase.options.types.read(
+      ventasAnyoAnterior: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ANTERIOR']),
-      salesTwoYearsAgo: attachedDatabase.options.types.read(
+      ventasHaceDosAnyos: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS']),
-      currentYearMargin: attachedDatabase.options.types.read(
+      margenAnyoActual: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL']),
-      previousYearMargin: attachedDatabase.options.types.read(
+      margenAnyoAnterior: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR']),
-      marginTwoYearsAgo: attachedDatabase.options.types.read(
+      margenHaceDosAnyos: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS']),
-      paymentPercent: attachedDatabase.options.types.read(
+      porcentajeAbonos: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_ABONOS']),
-      warrantyPercent: attachedDatabase.options.types.read(
+      porcentajeGarantias: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_GARANTIAS']),
-      shoppingCenterName: attachedDatabase.options.types.read(
-          DriftSqlType.string,
+      centralCompras: attachedDatabase.options.types.read(DriftSqlType.string,
           data['${effectivePrefix}CENTRAL_COMPRAS_NOMBRE']),
-      urlWebsite: attachedDatabase.options.types
+      urlWeb: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}URL_WEB']),
       divisaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID']),
-      rateId: attachedDatabase.options.types
+      tarifaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID']),
-      rateDescription: attachedDatabase.options.types.read(
+      tarifaDescripcion: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      generalDiscount: attachedDatabase.options.types.read(
+      descuentoGeneral: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}DESCUENTO_GENERAL_ID']),
-      generalDiscountDescription: attachedDatabase.options.types.read(
+      descripcionDescuentoGeneral: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}DESCUENTO_GENERAL_DESCRIPCION']),
-      priceCalculationType: attachedDatabase.options.types.read(
+      tipoCalucloPrecio: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}TIPO_CALCULO_PRECIO'])!,
-      collectionTermId: attachedDatabase.options.types
+      plazoDeCobroId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID']),
-      collectionMethodId: attachedDatabase.options.types
+      metodoDeCobroId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID']),
-      promptPaymentDiscount: attachedDatabase.options.types.read(
+      descuentoProntoPago: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'])!,
-      internalGrantedRisk: attachedDatabase.options.types.read(
+      riesgoConcedidoInterno: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO'])!,
-      internalGrantedRiskDate: attachedDatabase.options.types.read(
+      riesgoConcedidoInternoDate: attachedDatabase.options.types.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO_FECHA']),
-      cofaceGrantedRisk: attachedDatabase.options.types.read(
+      riesgoConcedidoCoafe: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE'])!,
-      cofaceGrantedRiskDate: attachedDatabase.options.types.read(
+      riesgoConcedidoCoafeFecha: attachedDatabase.options.types.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE_FECHA']),
-      riskGranted: attachedDatabase.options.types.read(
+      riesgoConcedido: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}RIESGO_CONCEDIDO']),
-      riskPendingCollectionDue: attachedDatabase.options.types.read(
+      riesgoPendienteCobroVencido: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_COBRO_VENCIDO_CLIENTE']),
-      riskPendingColleectionNotDue: attachedDatabase.options.types.read(
+      riesgoPendienteCobroNoVencido: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE']),
-      riskPendingToServe: attachedDatabase.options.types.read(
+      riesgoPendienteServir: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_SERVIR_CLIENTE']),
-      riskPendingBilling: attachedDatabase.options.types.read(
+      riesgoPendienteFacturar: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_FACTURAR_CLIENTE']),
-      internalRemarks: attachedDatabase.options.types.read(DriftSqlType.string,
+      obvservacionesInternas: attachedDatabase.options.types.read(
+          DriftSqlType.string,
           data['${effectivePrefix}OBSERVACIONES_INTERNAS']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -6746,52 +6846,52 @@ class $CustomerTableTable extends CustomerTable
   }
 
   @override
-  $CustomerTableTable createAlias(String alias) {
-    return $CustomerTableTable(attachedDatabase, alias);
+  $ClienteTableTable createAlias(String alias) {
+    return $ClienteTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerUserTableCompanion extends UpdateCompanion<CustomerUserDTO> {
-  final Value<String> customerId;
-  final Value<String> userId;
+class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
+  final Value<String> clienteId;
+  final Value<String> usuarioId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerUserTableCompanion({
-    this.customerId = const Value.absent(),
-    this.userId = const Value.absent(),
+  const ClienteUsuarioTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.usuarioId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerUserTableCompanion.insert({
-    required String customerId,
-    required String userId,
+  ClienteUsuarioTableCompanion.insert({
+    required String clienteId,
+    required String usuarioId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        userId = Value(userId),
+  })  : clienteId = Value(clienteId),
+        usuarioId = Value(usuarioId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerUserDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? userId,
+  static Insertable<ClienteUsuarioDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? usuarioId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (userId != null) 'USUARIO_ID': userId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerUserTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? userId,
+  ClienteUsuarioTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? usuarioId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerUserTableCompanion(
-      customerId: customerId ?? this.customerId,
-      userId: userId ?? this.userId,
+    return ClienteUsuarioTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      usuarioId: usuarioId ?? this.usuarioId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -6800,11 +6900,11 @@ class CustomerUserTableCompanion extends UpdateCompanion<CustomerUserDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (userId.present) {
-      map['USUARIO_ID'] = Variable<String>(userId.value);
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -6817,9 +6917,9 @@ class CustomerUserTableCompanion extends UpdateCompanion<CustomerUserDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('CustomerUserTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('userId: $userId, ')
+    return (StringBuffer('ClienteUsuarioTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('usuarioId: $usuarioId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -6827,20 +6927,20 @@ class CustomerUserTableCompanion extends UpdateCompanion<CustomerUserDTO> {
   }
 }
 
-class $CustomerUserTableTable extends CustomerUserTable
-    with TableInfo<$CustomerUserTableTable, CustomerUserDTO> {
+class $ClienteUsuarioTableTable extends ClienteUsuarioTable
+    with TableInfo<$ClienteUsuarioTableTable, ClienteUsuarioDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerUserTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClienteUsuarioTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _userIdMeta = const VerificationMeta('userId');
+  final VerificationMeta _usuarioIdMeta = const VerificationMeta('usuarioId');
   @override
-  late final GeneratedColumn<String> userId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
       'USUARIO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -6858,29 +6958,27 @@ class $CustomerUserTableTable extends CustomerUserTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [customerId, userId, lastUpdated, deleted];
+      [clienteId, usuarioId, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'CLIENTES_USUARIO';
   @override
   String get actualTableName => 'CLIENTES_USUARIO';
   @override
-  VerificationContext validateIntegrity(Insertable<CustomerUserDTO> instance,
+  VerificationContext validateIntegrity(Insertable<ClienteUsuarioDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('USUARIO_ID')) {
-      context.handle(_userIdMeta,
-          userId.isAcceptableOrUnknown(data['USUARIO_ID']!, _userIdMeta));
+      context.handle(_usuarioIdMeta,
+          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
     } else if (isInserting) {
-      context.missing(_userIdMeta);
+      context.missing(_usuarioIdMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -6898,14 +6996,14 @@ class $CustomerUserTableTable extends CustomerUserTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, userId};
+  Set<GeneratedColumn> get $primaryKey => {clienteId, usuarioId};
   @override
-  CustomerUserDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteUsuarioDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerUserDTO(
-      customerId: attachedDatabase.options.types
+    return ClienteUsuarioDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      userId: attachedDatabase.options.types
+      usuarioId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -6915,61 +7013,61 @@ class $CustomerUserTableTable extends CustomerUserTable
   }
 
   @override
-  $CustomerUserTableTable createAlias(String alias) {
-    return $CustomerUserTableTable(attachedDatabase, alias);
+  $ClienteUsuarioTableTable createAlias(String alias) {
+    return $ClienteUsuarioTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerNetGroupTableCompanion
-    extends UpdateCompanion<CustomerNetGroupDTO> {
-  final Value<String> customerId;
-  final Value<String> netGroupId;
-  final Value<String?> netGroupDescription;
+class ClienteGrupoNetoTableCompanion
+    extends UpdateCompanion<ClienteGrupoNetoDTO> {
+  final Value<String> clienteId;
+  final Value<String> grupoNetoId;
+  final Value<String?> grupoNetoDescripcion;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerNetGroupTableCompanion({
-    this.customerId = const Value.absent(),
-    this.netGroupId = const Value.absent(),
-    this.netGroupDescription = const Value.absent(),
+  const ClienteGrupoNetoTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.grupoNetoId = const Value.absent(),
+    this.grupoNetoDescripcion = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerNetGroupTableCompanion.insert({
-    required String customerId,
-    required String netGroupId,
-    this.netGroupDescription = const Value.absent(),
+  ClienteGrupoNetoTableCompanion.insert({
+    required String clienteId,
+    required String grupoNetoId,
+    this.grupoNetoDescripcion = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        netGroupId = Value(netGroupId),
+  })  : clienteId = Value(clienteId),
+        grupoNetoId = Value(grupoNetoId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerNetGroupDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? netGroupId,
-    Expression<String>? netGroupDescription,
+  static Insertable<ClienteGrupoNetoDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? grupoNetoId,
+    Expression<String>? grupoNetoDescripcion,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (netGroupId != null) 'GRUPO_NETO_ID': netGroupId,
-      if (netGroupDescription != null)
-        'GRUPO_NETO_DESCRIPCION': netGroupDescription,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
+      if (grupoNetoDescripcion != null)
+        'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerNetGroupTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? netGroupId,
-      Value<String?>? netGroupDescription,
+  ClienteGrupoNetoTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? grupoNetoId,
+      Value<String?>? grupoNetoDescripcion,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerNetGroupTableCompanion(
-      customerId: customerId ?? this.customerId,
-      netGroupId: netGroupId ?? this.netGroupId,
-      netGroupDescription: netGroupDescription ?? this.netGroupDescription,
+    return ClienteGrupoNetoTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      grupoNetoId: grupoNetoId ?? this.grupoNetoId,
+      grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -6978,15 +7076,15 @@ class CustomerNetGroupTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (netGroupId.present) {
-      map['GRUPO_NETO_ID'] = Variable<String>(netGroupId.value);
+    if (grupoNetoId.present) {
+      map['GRUPO_NETO_ID'] = Variable<String>(grupoNetoId.value);
     }
-    if (netGroupDescription.present) {
+    if (grupoNetoDescripcion.present) {
       map['GRUPO_NETO_DESCRIPCION'] =
-          Variable<String>(netGroupDescription.value);
+          Variable<String>(grupoNetoDescripcion.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -6999,10 +7097,10 @@ class CustomerNetGroupTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CustomerNetGroupTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('netGroupId: $netGroupId, ')
-          ..write('netGroupDescription: $netGroupDescription, ')
+    return (StringBuffer('ClienteGrupoNetoTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('grupoNetoId: $grupoNetoId, ')
+          ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -7010,26 +7108,27 @@ class CustomerNetGroupTableCompanion
   }
 }
 
-class $CustomerNetGroupTableTable extends CustomerNetGroupTable
-    with TableInfo<$CustomerNetGroupTableTable, CustomerNetGroupDTO> {
+class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
+    with TableInfo<$ClienteGrupoNetoTableTable, ClienteGrupoNetoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerNetGroupTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClienteGrupoNetoTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _netGroupIdMeta = const VerificationMeta('netGroupId');
+  final VerificationMeta _grupoNetoIdMeta =
+      const VerificationMeta('grupoNetoId');
   @override
-  late final GeneratedColumn<String> netGroupId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> grupoNetoId = GeneratedColumn<String>(
       'GRUPO_NETO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _netGroupDescriptionMeta =
-      const VerificationMeta('netGroupDescription');
+  final VerificationMeta _grupoNetoDescripcionMeta =
+      const VerificationMeta('grupoNetoDescripcion');
   @override
-  late final GeneratedColumn<String> netGroupDescription =
+  late final GeneratedColumn<String> grupoNetoDescripcion =
       GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -7047,38 +7146,36 @@ class $CustomerNetGroupTableTable extends CustomerNetGroupTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [customerId, netGroupId, netGroupDescription, lastUpdated, deleted];
+      [clienteId, grupoNetoId, grupoNetoDescripcion, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'CLIENTES_GRUPOS_NETOS';
   @override
   String get actualTableName => 'CLIENTES_GRUPOS_NETOS';
   @override
   VerificationContext validateIntegrity(
-      Insertable<CustomerNetGroupDTO> instance,
+      Insertable<ClienteGrupoNetoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('GRUPO_NETO_ID')) {
       context.handle(
-          _netGroupIdMeta,
-          netGroupId.isAcceptableOrUnknown(
-              data['GRUPO_NETO_ID']!, _netGroupIdMeta));
+          _grupoNetoIdMeta,
+          grupoNetoId.isAcceptableOrUnknown(
+              data['GRUPO_NETO_ID']!, _grupoNetoIdMeta));
     } else if (isInserting) {
-      context.missing(_netGroupIdMeta);
+      context.missing(_grupoNetoIdMeta);
     }
     if (data.containsKey('GRUPO_NETO_DESCRIPCION')) {
       context.handle(
-          _netGroupDescriptionMeta,
-          netGroupDescription.isAcceptableOrUnknown(
-              data['GRUPO_NETO_DESCRIPCION']!, _netGroupDescriptionMeta));
+          _grupoNetoDescripcionMeta,
+          grupoNetoDescripcion.isAcceptableOrUnknown(
+              data['GRUPO_NETO_DESCRIPCION']!, _grupoNetoDescripcionMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -7096,16 +7193,16 @@ class $CustomerNetGroupTableTable extends CustomerNetGroupTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, netGroupId};
+  Set<GeneratedColumn> get $primaryKey => {clienteId, grupoNetoId};
   @override
-  CustomerNetGroupDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteGrupoNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerNetGroupDTO(
-      customerId: attachedDatabase.options.types
+    return ClienteGrupoNetoDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      netGroupId: attachedDatabase.options.types
+      grupoNetoId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}GRUPO_NETO_ID'])!,
-      netGroupDescription: attachedDatabase.options.types.read(
+      grupoNetoDescripcion: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION']),
       lastUpdated: attachedDatabase.options.types
@@ -7116,150 +7213,150 @@ class $CustomerNetGroupTableTable extends CustomerNetGroupTable
   }
 
   @override
-  $CustomerNetGroupTableTable createAlias(String alias) {
-    return $CustomerNetGroupTableTable(attachedDatabase, alias);
+  $ClienteGrupoNetoTableTable createAlias(String alias) {
+    return $ClienteGrupoNetoTableTable(attachedDatabase, alias);
   }
 }
 
-class FamilyTableCompanion extends UpdateCompanion<FamilyDTO> {
+class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
   final Value<String> id;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const FamilyTableCompanion({
+  const FamiliaTableCompanion({
     this.id = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  FamilyTableCompanion.insert({
+  FamiliaTableCompanion.insert({
     required String id,
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        descriptionES = Value(descriptionES),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<FamilyDTO> custom({
+  static Insertable<FamiliaDTO> custom({
     Expression<String>? id,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'FAMILIA_ID': id,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  FamilyTableCompanion copyWith(
+  FamiliaTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return FamilyTableCompanion(
+    return FamiliaTableCompanion(
       id: id ?? this.id,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -7271,50 +7368,50 @@ class FamilyTableCompanion extends UpdateCompanion<FamilyDTO> {
     if (id.present) {
       map['FAMILIA_ID'] = Variable<String>(id.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7327,23 +7424,23 @@ class FamilyTableCompanion extends UpdateCompanion<FamilyDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('FamilyTableCompanion(')
+    return (StringBuffer('FamiliaTableCompanion(')
           ..write('id: $id, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -7351,105 +7448,105 @@ class FamilyTableCompanion extends UpdateCompanion<FamilyDTO> {
   }
 }
 
-class $FamilyTableTable extends FamilyTable
-    with TableInfo<$FamilyTableTable, FamilyDTO> {
+class $FamiliaTableTable extends FamiliaTable
+    with TableInfo<$FamiliaTableTable, FamiliaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $FamilyTableTable(this.attachedDatabase, [this._alias]);
+  $FamiliaTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -7468,21 +7565,21 @@ class $FamilyTableTable extends FamilyTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -7491,7 +7588,7 @@ class $FamilyTableTable extends FamilyTable
   @override
   String get actualTableName => 'FAMILIAS';
   @override
-  VerificationContext validateIntegrity(Insertable<FamilyDTO> instance,
+  VerificationContext validateIntegrity(Insertable<FamiliaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -7503,95 +7600,95 @@ class $FamilyTableTable extends FamilyTable
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -7611,40 +7708,40 @@ class $FamilyTableTable extends FamilyTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  FamilyDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  FamiliaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return FamilyDTO(
+    return FamiliaDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -7654,158 +7751,158 @@ class $FamilyTableTable extends FamilyTable
   }
 
   @override
-  $FamilyTableTable createAlias(String alias) {
-    return $FamilyTableTable(attachedDatabase, alias);
+  $FamiliaTableTable createAlias(String alias) {
+    return $FamiliaTableTable(attachedDatabase, alias);
   }
 }
 
-class SubfamilyTableCompanion extends UpdateCompanion<SubfamilyDTO> {
+class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
   final Value<String> id;
-  final Value<String> familyId;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
+  final Value<String> familiaId;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const SubfamilyTableCompanion({
+  const SubfamiliaTableCompanion({
     this.id = const Value.absent(),
-    this.familyId = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  SubfamilyTableCompanion.insert({
+  SubfamiliaTableCompanion.insert({
     required String id,
-    required String familyId,
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
+    required String familiaId,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        familyId = Value(familyId),
-        descriptionES = Value(descriptionES),
+        familiaId = Value(familiaId),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<SubfamilyDTO> custom({
+  static Insertable<SubfamiliaDTO> custom({
     Expression<String>? id,
-    Expression<String>? familyId,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
+    Expression<String>? familiaId,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'SUBFAMILIA_ID': id,
-      if (familyId != null) 'FAMILIA_ID': familyId,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  SubfamilyTableCompanion copyWith(
+  SubfamiliaTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? familyId,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
+      Value<String>? familiaId,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return SubfamilyTableCompanion(
+    return SubfamiliaTableCompanion(
       id: id ?? this.id,
-      familyId: familyId ?? this.familyId,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
+      familiaId: familiaId ?? this.familiaId,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -7817,53 +7914,53 @@ class SubfamilyTableCompanion extends UpdateCompanion<SubfamilyDTO> {
     if (id.present) {
       map['SUBFAMILIA_ID'] = Variable<String>(id.value);
     }
-    if (familyId.present) {
-      map['FAMILIA_ID'] = Variable<String>(familyId.value);
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7876,24 +7973,24 @@ class SubfamilyTableCompanion extends UpdateCompanion<SubfamilyDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('SubfamilyTableCompanion(')
+    return (StringBuffer('SubfamiliaTableCompanion(')
           ..write('id: $id, ')
-          ..write('familyId: $familyId, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -7901,110 +7998,110 @@ class SubfamilyTableCompanion extends UpdateCompanion<SubfamilyDTO> {
   }
 }
 
-class $SubfamilyTableTable extends SubfamilyTable
-    with TableInfo<$SubfamilyTableTable, SubfamilyDTO> {
+class $SubfamiliaTableTable extends SubfamiliaTable
+    with TableInfo<$SubfamiliaTableTable, SubfamiliaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $SubfamilyTableTable(this.attachedDatabase, [this._alias]);
+  $SubfamiliaTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _familyIdMeta = const VerificationMeta('familyId');
+  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
   @override
-  late final GeneratedColumn<String> familyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -8023,22 +8120,22 @@ class $SubfamilyTableTable extends SubfamilyTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        familyId,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
+        familiaId,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
         lastUpdated,
         deleted
       ];
@@ -8047,7 +8144,7 @@ class $SubfamilyTableTable extends SubfamilyTable
   @override
   String get actualTableName => 'SUBFAMILIAS';
   @override
-  VerificationContext validateIntegrity(Insertable<SubfamilyDTO> instance,
+  VerificationContext validateIntegrity(Insertable<SubfamiliaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -8058,102 +8155,102 @@ class $SubfamilyTableTable extends SubfamilyTable
       context.missing(_idMeta);
     }
     if (data.containsKey('FAMILIA_ID')) {
-      context.handle(_familyIdMeta,
-          familyId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familyIdMeta));
+      context.handle(_familiaIdMeta,
+          familiaId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familiaIdMeta));
     } else if (isInserting) {
-      context.missing(_familyIdMeta);
+      context.missing(_familiaIdMeta);
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -8171,44 +8268,44 @@ class $SubfamilyTableTable extends SubfamilyTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id, familyId};
+  Set<GeneratedColumn> get $primaryKey => {id, familiaId};
   @override
-  SubfamilyDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  SubfamiliaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return SubfamilyDTO(
+    return SubfamiliaDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      familyId: attachedDatabase.options.types
+      familiaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -8218,85 +8315,85 @@ class $SubfamilyTableTable extends SubfamilyTable
   }
 
   @override
-  $SubfamilyTableTable createAlias(String alias) {
-    return $SubfamilyTableTable(attachedDatabase, alias);
+  $SubfamiliaTableTable createAlias(String alias) {
+    return $SubfamiliaTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerDiscountTableCompanion
-    extends UpdateCompanion<CustomerDiscountDTO> {
-  final Value<String> customerId;
-  final Value<String> articleId;
-  final Value<String> familyId;
-  final Value<String> subfamilyId;
-  final Value<double> quantityFrom;
-  final Value<double> discount;
+class ClienteDescuentoTableCompanion
+    extends UpdateCompanion<ClienteDescuentoDTO> {
+  final Value<String> clienteId;
+  final Value<String> articuloId;
+  final Value<String> familiaId;
+  final Value<String> subfamiliaId;
+  final Value<double> cantidadDesDe;
+  final Value<double> descuento;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerDiscountTableCompanion({
-    this.customerId = const Value.absent(),
-    this.articleId = const Value.absent(),
-    this.familyId = const Value.absent(),
-    this.subfamilyId = const Value.absent(),
-    this.quantityFrom = const Value.absent(),
-    this.discount = const Value.absent(),
+  const ClienteDescuentoTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    this.cantidadDesDe = const Value.absent(),
+    this.descuento = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerDiscountTableCompanion.insert({
-    required String customerId,
-    required String articleId,
-    required String familyId,
-    required String subfamilyId,
-    required double quantityFrom,
-    required double discount,
+  ClienteDescuentoTableCompanion.insert({
+    required String clienteId,
+    required String articuloId,
+    required String familiaId,
+    required String subfamiliaId,
+    required double cantidadDesDe,
+    required double descuento,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        articleId = Value(articleId),
-        familyId = Value(familyId),
-        subfamilyId = Value(subfamilyId),
-        quantityFrom = Value(quantityFrom),
-        discount = Value(discount),
+  })  : clienteId = Value(clienteId),
+        articuloId = Value(articuloId),
+        familiaId = Value(familiaId),
+        subfamiliaId = Value(subfamiliaId),
+        cantidadDesDe = Value(cantidadDesDe),
+        descuento = Value(descuento),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerDiscountDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? articleId,
-    Expression<String>? familyId,
-    Expression<String>? subfamilyId,
-    Expression<double>? quantityFrom,
-    Expression<double>? discount,
+  static Insertable<ClienteDescuentoDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? articuloId,
+    Expression<String>? familiaId,
+    Expression<String>? subfamiliaId,
+    Expression<double>? cantidadDesDe,
+    Expression<double>? descuento,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (familyId != null) 'FAMILIA_ID': familyId,
-      if (subfamilyId != null) 'SUBFAMILIA_ID': subfamilyId,
-      if (quantityFrom != null) 'CANTIDAD_DESDE': quantityFrom,
-      if (discount != null) 'DESCUENTO': discount,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
+      if (cantidadDesDe != null) 'CANTIDAD_DESDE': cantidadDesDe,
+      if (descuento != null) 'DESCUENTO': descuento,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerDiscountTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? articleId,
-      Value<String>? familyId,
-      Value<String>? subfamilyId,
-      Value<double>? quantityFrom,
-      Value<double>? discount,
+  ClienteDescuentoTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? articuloId,
+      Value<String>? familiaId,
+      Value<String>? subfamiliaId,
+      Value<double>? cantidadDesDe,
+      Value<double>? descuento,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerDiscountTableCompanion(
-      customerId: customerId ?? this.customerId,
-      articleId: articleId ?? this.articleId,
-      familyId: familyId ?? this.familyId,
-      subfamilyId: subfamilyId ?? this.subfamilyId,
-      quantityFrom: quantityFrom ?? this.quantityFrom,
-      discount: discount ?? this.discount,
+    return ClienteDescuentoTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      articuloId: articuloId ?? this.articuloId,
+      familiaId: familiaId ?? this.familiaId,
+      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
+      cantidadDesDe: cantidadDesDe ?? this.cantidadDesDe,
+      descuento: descuento ?? this.descuento,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8305,23 +8402,23 @@ class CustomerDiscountTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (familyId.present) {
-      map['FAMILIA_ID'] = Variable<String>(familyId.value);
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
     }
-    if (subfamilyId.present) {
-      map['SUBFAMILIA_ID'] = Variable<String>(subfamilyId.value);
+    if (subfamiliaId.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
     }
-    if (quantityFrom.present) {
-      map['CANTIDAD_DESDE'] = Variable<double>(quantityFrom.value);
+    if (cantidadDesDe.present) {
+      map['CANTIDAD_DESDE'] = Variable<double>(cantidadDesDe.value);
     }
-    if (discount.present) {
-      map['DESCUENTO'] = Variable<double>(discount.value);
+    if (descuento.present) {
+      map['DESCUENTO'] = Variable<double>(descuento.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -8334,13 +8431,13 @@ class CustomerDiscountTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CustomerDiscountTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('articleId: $articleId, ')
-          ..write('familyId: $familyId, ')
-          ..write('subfamilyId: $subfamilyId, ')
-          ..write('quantityFrom: $quantityFrom, ')
-          ..write('discount: $discount, ')
+    return (StringBuffer('ClienteDescuentoTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('subfamiliaId: $subfamiliaId, ')
+          ..write('cantidadDesDe: $cantidadDesDe, ')
+          ..write('descuento: $descuento, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -8348,46 +8445,46 @@ class CustomerDiscountTableCompanion
   }
 }
 
-class $CustomerDiscountTableTable extends CustomerDiscountTable
-    with TableInfo<$CustomerDiscountTableTable, CustomerDiscountDTO> {
+class $ClienteDescuentoTableTable extends ClienteDescuentoTable
+    with TableInfo<$ClienteDescuentoTableTable, ClienteDescuentoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerDiscountTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClienteDescuentoTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _familyIdMeta = const VerificationMeta('familyId');
+  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
   @override
-  late final GeneratedColumn<String> familyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints: 'REFERENCES FAMILIAS (FAMILIA_ID)');
-  final VerificationMeta _subfamilyIdMeta =
-      const VerificationMeta('subfamilyId');
+  final VerificationMeta _subfamiliaIdMeta =
+      const VerificationMeta('subfamiliaId');
   @override
-  late final GeneratedColumn<String> subfamilyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> subfamiliaId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
       defaultConstraints: 'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)');
-  final VerificationMeta _quantityFromMeta =
-      const VerificationMeta('quantityFrom');
+  final VerificationMeta _cantidadDesDeMeta =
+      const VerificationMeta('cantidadDesDe');
   @override
-  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidadDesDe = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _discountMeta = const VerificationMeta('discount');
+  final VerificationMeta _descuentoMeta = const VerificationMeta('descuento');
   @override
-  late final GeneratedColumn<double> discount = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento = GeneratedColumn<double>(
       'DESCUENTO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -8405,12 +8502,12 @@ class $CustomerDiscountTableTable extends CustomerDiscountTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        articleId,
-        familyId,
-        subfamilyId,
-        quantityFrom,
-        discount,
+        clienteId,
+        articuloId,
+        familiaId,
+        subfamiliaId,
+        cantidadDesDe,
+        descuento,
         lastUpdated,
         deleted
       ];
@@ -8420,53 +8517,51 @@ class $CustomerDiscountTableTable extends CustomerDiscountTable
   String get actualTableName => 'CLIENTES_DESCUENTOS';
   @override
   VerificationContext validateIntegrity(
-      Insertable<CustomerDiscountDTO> instance,
+      Insertable<ClienteDescuentoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('FAMILIA_ID')) {
-      context.handle(_familyIdMeta,
-          familyId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familyIdMeta));
+      context.handle(_familiaIdMeta,
+          familiaId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familiaIdMeta));
     } else if (isInserting) {
-      context.missing(_familyIdMeta);
+      context.missing(_familiaIdMeta);
     }
     if (data.containsKey('SUBFAMILIA_ID')) {
       context.handle(
-          _subfamilyIdMeta,
-          subfamilyId.isAcceptableOrUnknown(
-              data['SUBFAMILIA_ID']!, _subfamilyIdMeta));
+          _subfamiliaIdMeta,
+          subfamiliaId.isAcceptableOrUnknown(
+              data['SUBFAMILIA_ID']!, _subfamiliaIdMeta));
     } else if (isInserting) {
-      context.missing(_subfamilyIdMeta);
+      context.missing(_subfamiliaIdMeta);
     }
     if (data.containsKey('CANTIDAD_DESDE')) {
       context.handle(
-          _quantityFromMeta,
-          quantityFrom.isAcceptableOrUnknown(
-              data['CANTIDAD_DESDE']!, _quantityFromMeta));
+          _cantidadDesDeMeta,
+          cantidadDesDe.isAcceptableOrUnknown(
+              data['CANTIDAD_DESDE']!, _cantidadDesDeMeta));
     } else if (isInserting) {
-      context.missing(_quantityFromMeta);
+      context.missing(_cantidadDesDeMeta);
     }
     if (data.containsKey('DESCUENTO')) {
-      context.handle(_discountMeta,
-          discount.isAcceptableOrUnknown(data['DESCUENTO']!, _discountMeta));
+      context.handle(_descuentoMeta,
+          descuento.isAcceptableOrUnknown(data['DESCUENTO']!, _descuentoMeta));
     } else if (isInserting) {
-      context.missing(_discountMeta);
+      context.missing(_descuentoMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -8485,22 +8580,22 @@ class $CustomerDiscountTableTable extends CustomerDiscountTable
 
   @override
   Set<GeneratedColumn> get $primaryKey =>
-      {customerId, articleId, familyId, subfamilyId, quantityFrom};
+      {clienteId, articuloId, familiaId, subfamiliaId, cantidadDesDe};
   @override
-  CustomerDiscountDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteDescuentoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerDiscountDTO(
-      customerId: attachedDatabase.options.types
+    return ClienteDescuentoDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: attachedDatabase.options.types
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      familyId: attachedDatabase.options.types
+      familiaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      subfamilyId: attachedDatabase.options.types
+      subfamiliaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      quantityFrom: attachedDatabase.options.types
+      cantidadDesDe: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      discount: attachedDatabase.options.types
+      descuento: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -8510,101 +8605,101 @@ class $CustomerDiscountTableTable extends CustomerDiscountTable
   }
 
   @override
-  $CustomerDiscountTableTable createAlias(String alias) {
-    return $CustomerDiscountTableTable(attachedDatabase, alias);
+  $ClienteDescuentoTableTable createAlias(String alias) {
+    return $ClienteDescuentoTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerContactTableCompanion
-    extends UpdateCompanion<CustomerContactDTO> {
-  final Value<String> customerId;
-  final Value<String> contactId;
-  final Value<String?> remarks;
-  final Value<String?> name;
-  final Value<String?> lastName1;
-  final Value<String?> lastName2;
-  final Value<String?> phone1;
-  final Value<String?> phone2;
+class ClienteContactoTableCompanion
+    extends UpdateCompanion<ClienteContactoDTO> {
+  final Value<String> clienteId;
+  final Value<String> contactoId;
+  final Value<String?> observaciones;
+  final Value<String?> nombre;
+  final Value<String?> apellido1;
+  final Value<String?> apellido2;
+  final Value<String?> telefono1;
+  final Value<String?> telefono2;
   final Value<String?> email;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerContactTableCompanion({
-    this.customerId = const Value.absent(),
-    this.contactId = const Value.absent(),
-    this.remarks = const Value.absent(),
-    this.name = const Value.absent(),
-    this.lastName1 = const Value.absent(),
-    this.lastName2 = const Value.absent(),
-    this.phone1 = const Value.absent(),
-    this.phone2 = const Value.absent(),
+  const ClienteContactoTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.contactoId = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.apellido1 = const Value.absent(),
+    this.apellido2 = const Value.absent(),
+    this.telefono1 = const Value.absent(),
+    this.telefono2 = const Value.absent(),
     this.email = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerContactTableCompanion.insert({
-    required String customerId,
-    required String contactId,
-    this.remarks = const Value.absent(),
-    this.name = const Value.absent(),
-    this.lastName1 = const Value.absent(),
-    this.lastName2 = const Value.absent(),
-    this.phone1 = const Value.absent(),
-    this.phone2 = const Value.absent(),
+  ClienteContactoTableCompanion.insert({
+    required String clienteId,
+    required String contactoId,
+    this.observaciones = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.apellido1 = const Value.absent(),
+    this.apellido2 = const Value.absent(),
+    this.telefono1 = const Value.absent(),
+    this.telefono2 = const Value.absent(),
     this.email = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        contactId = Value(contactId),
+  })  : clienteId = Value(clienteId),
+        contactoId = Value(contactoId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerContactDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? contactId,
-    Expression<String>? remarks,
-    Expression<String>? name,
-    Expression<String>? lastName1,
-    Expression<String>? lastName2,
-    Expression<String>? phone1,
-    Expression<String>? phone2,
+  static Insertable<ClienteContactoDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? contactoId,
+    Expression<String>? observaciones,
+    Expression<String>? nombre,
+    Expression<String>? apellido1,
+    Expression<String>? apellido2,
+    Expression<String>? telefono1,
+    Expression<String>? telefono2,
     Expression<String>? email,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (contactId != null) 'CONTACTO_ID': contactId,
-      if (remarks != null) 'OBSERVACIONES': remarks,
-      if (name != null) 'NOMBRE': name,
-      if (lastName1 != null) 'APELLIDO1': lastName1,
-      if (lastName2 != null) 'APELLIDO2': lastName2,
-      if (phone1 != null) 'TELEFONO1': phone1,
-      if (phone2 != null) 'TELEFONO2': phone2,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (contactoId != null) 'CONTACTOO_ID': contactoId,
+      if (observaciones != null) 'OBSERVACIONES': observaciones,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (apellido1 != null) 'APELLIDO1': apellido1,
+      if (apellido2 != null) 'APELLIDO2': apellido2,
+      if (telefono1 != null) 'TELEFONO1': telefono1,
+      if (telefono2 != null) 'TELEFONO2': telefono2,
       if (email != null) 'EMAIL': email,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerContactTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? contactId,
-      Value<String?>? remarks,
-      Value<String?>? name,
-      Value<String?>? lastName1,
-      Value<String?>? lastName2,
-      Value<String?>? phone1,
-      Value<String?>? phone2,
+  ClienteContactoTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? contactoId,
+      Value<String?>? observaciones,
+      Value<String?>? nombre,
+      Value<String?>? apellido1,
+      Value<String?>? apellido2,
+      Value<String?>? telefono1,
+      Value<String?>? telefono2,
       Value<String?>? email,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerContactTableCompanion(
-      customerId: customerId ?? this.customerId,
-      contactId: contactId ?? this.contactId,
-      remarks: remarks ?? this.remarks,
-      name: name ?? this.name,
-      lastName1: lastName1 ?? this.lastName1,
-      lastName2: lastName2 ?? this.lastName2,
-      phone1: phone1 ?? this.phone1,
-      phone2: phone2 ?? this.phone2,
+    return ClienteContactoTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      contactoId: contactoId ?? this.contactoId,
+      observaciones: observaciones ?? this.observaciones,
+      nombre: nombre ?? this.nombre,
+      apellido1: apellido1 ?? this.apellido1,
+      apellido2: apellido2 ?? this.apellido2,
+      telefono1: telefono1 ?? this.telefono1,
+      telefono2: telefono2 ?? this.telefono2,
       email: email ?? this.email,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -8614,29 +8709,29 @@ class CustomerContactTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (contactId.present) {
-      map['CONTACTO_ID'] = Variable<String>(contactId.value);
+    if (contactoId.present) {
+      map['CONTACTOO_ID'] = Variable<String>(contactoId.value);
     }
-    if (remarks.present) {
-      map['OBSERVACIONES'] = Variable<String>(remarks.value);
+    if (observaciones.present) {
+      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
     }
-    if (name.present) {
-      map['NOMBRE'] = Variable<String>(name.value);
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
     }
-    if (lastName1.present) {
-      map['APELLIDO1'] = Variable<String>(lastName1.value);
+    if (apellido1.present) {
+      map['APELLIDO1'] = Variable<String>(apellido1.value);
     }
-    if (lastName2.present) {
-      map['APELLIDO2'] = Variable<String>(lastName2.value);
+    if (apellido2.present) {
+      map['APELLIDO2'] = Variable<String>(apellido2.value);
     }
-    if (phone1.present) {
-      map['TELEFONO1'] = Variable<String>(phone1.value);
+    if (telefono1.present) {
+      map['TELEFONO1'] = Variable<String>(telefono1.value);
     }
-    if (phone2.present) {
-      map['TELEFONO2'] = Variable<String>(phone2.value);
+    if (telefono2.present) {
+      map['TELEFONO2'] = Variable<String>(telefono2.value);
     }
     if (email.present) {
       map['EMAIL'] = Variable<String>(email.value);
@@ -8652,15 +8747,15 @@ class CustomerContactTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CustomerContactTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('contactId: $contactId, ')
-          ..write('remarks: $remarks, ')
-          ..write('name: $name, ')
-          ..write('lastName1: $lastName1, ')
-          ..write('lastName2: $lastName2, ')
-          ..write('phone1: $phone1, ')
-          ..write('phone2: $phone2, ')
+    return (StringBuffer('ClienteContactoTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('contactoId: $contactoId, ')
+          ..write('observaciones: $observaciones, ')
+          ..write('nombre: $nombre, ')
+          ..write('apellido1: $apellido1, ')
+          ..write('apellido2: $apellido2, ')
+          ..write('telefono1: $telefono1, ')
+          ..write('telefono2: $telefono2, ')
           ..write('email: $email, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -8669,50 +8764,51 @@ class CustomerContactTableCompanion
   }
 }
 
-class $CustomerContactTableTable extends CustomerContactTable
-    with TableInfo<$CustomerContactTableTable, CustomerContactDTO> {
+class $ClienteContactoTableTable extends ClienteContactoTable
+    with TableInfo<$ClienteContactoTableTable, ClienteContactoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerContactTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClienteContactoTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _contactIdMeta = const VerificationMeta('contactId');
+  final VerificationMeta _contactoIdMeta = const VerificationMeta('contactoId');
   @override
-  late final GeneratedColumn<String> contactId = GeneratedColumn<String>(
-      'CONTACTO_ID', aliasedName, false,
+  late final GeneratedColumn<String> contactoId = GeneratedColumn<String>(
+      'CONTACTOO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _remarksMeta = const VerificationMeta('remarks');
+  final VerificationMeta _observacionesMeta =
+      const VerificationMeta('observaciones');
   @override
-  late final GeneratedColumn<String> remarks = GeneratedColumn<String>(
+  late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
       'OBSERVACIONES', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _nameMeta = const VerificationMeta('name');
+  final VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
-  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastName1Meta = const VerificationMeta('lastName1');
+  final VerificationMeta _apellido1Meta = const VerificationMeta('apellido1');
   @override
-  late final GeneratedColumn<String> lastName1 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> apellido1 = GeneratedColumn<String>(
       'APELLIDO1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastName2Meta = const VerificationMeta('lastName2');
+  final VerificationMeta _apellido2Meta = const VerificationMeta('apellido2');
   @override
-  late final GeneratedColumn<String> lastName2 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> apellido2 = GeneratedColumn<String>(
       'APELLIDO2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _phone1Meta = const VerificationMeta('phone1');
+  final VerificationMeta _telefono1Meta = const VerificationMeta('telefono1');
   @override
-  late final GeneratedColumn<String> phone1 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> telefono1 = GeneratedColumn<String>(
       'TELEFONO1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _phone2Meta = const VerificationMeta('phone2');
+  final VerificationMeta _telefono2Meta = const VerificationMeta('telefono2');
   @override
-  late final GeneratedColumn<String> phone2 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> telefono2 = GeneratedColumn<String>(
       'TELEFONO2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _emailMeta = const VerificationMeta('email');
@@ -8735,66 +8831,66 @@ class $CustomerContactTableTable extends CustomerContactTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        contactId,
-        remarks,
-        name,
-        lastName1,
-        lastName2,
-        phone1,
-        phone2,
+        clienteId,
+        contactoId,
+        observaciones,
+        nombre,
+        apellido1,
+        apellido2,
+        telefono1,
+        telefono2,
         email,
         lastUpdated,
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOS';
+  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOOS';
   @override
-  String get actualTableName => 'CLIENTES_CONTACTOS';
+  String get actualTableName => 'CLIENTES_CONTACTOOS';
   @override
-  VerificationContext validateIntegrity(Insertable<CustomerContactDTO> instance,
+  VerificationContext validateIntegrity(Insertable<ClienteContactoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
-    if (data.containsKey('CONTACTO_ID')) {
+    if (data.containsKey('CONTACTOO_ID')) {
       context.handle(
-          _contactIdMeta,
-          contactId.isAcceptableOrUnknown(
-              data['CONTACTO_ID']!, _contactIdMeta));
+          _contactoIdMeta,
+          contactoId.isAcceptableOrUnknown(
+              data['CONTACTOO_ID']!, _contactoIdMeta));
     } else if (isInserting) {
-      context.missing(_contactIdMeta);
+      context.missing(_contactoIdMeta);
     }
     if (data.containsKey('OBSERVACIONES')) {
-      context.handle(_remarksMeta,
-          remarks.isAcceptableOrUnknown(data['OBSERVACIONES']!, _remarksMeta));
+      context.handle(
+          _observacionesMeta,
+          observaciones.isAcceptableOrUnknown(
+              data['OBSERVACIONES']!, _observacionesMeta));
     }
     if (data.containsKey('NOMBRE')) {
-      context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['NOMBRE']!, _nameMeta));
+      context.handle(_nombreMeta,
+          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
     }
     if (data.containsKey('APELLIDO1')) {
-      context.handle(_lastName1Meta,
-          lastName1.isAcceptableOrUnknown(data['APELLIDO1']!, _lastName1Meta));
+      context.handle(_apellido1Meta,
+          apellido1.isAcceptableOrUnknown(data['APELLIDO1']!, _apellido1Meta));
     }
     if (data.containsKey('APELLIDO2')) {
-      context.handle(_lastName2Meta,
-          lastName2.isAcceptableOrUnknown(data['APELLIDO2']!, _lastName2Meta));
+      context.handle(_apellido2Meta,
+          apellido2.isAcceptableOrUnknown(data['APELLIDO2']!, _apellido2Meta));
     }
     if (data.containsKey('TELEFONO1')) {
-      context.handle(_phone1Meta,
-          phone1.isAcceptableOrUnknown(data['TELEFONO1']!, _phone1Meta));
+      context.handle(_telefono1Meta,
+          telefono1.isAcceptableOrUnknown(data['TELEFONO1']!, _telefono1Meta));
     }
     if (data.containsKey('TELEFONO2')) {
-      context.handle(_phone2Meta,
-          phone2.isAcceptableOrUnknown(data['TELEFONO2']!, _phone2Meta));
+      context.handle(_telefono2Meta,
+          telefono2.isAcceptableOrUnknown(data['TELEFONO2']!, _telefono2Meta));
     }
     if (data.containsKey('EMAIL')) {
       context.handle(
@@ -8816,26 +8912,26 @@ class $CustomerContactTableTable extends CustomerContactTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, contactId};
+  Set<GeneratedColumn> get $primaryKey => {clienteId, contactoId};
   @override
-  CustomerContactDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteContactoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerContactDTO(
-      customerId: attachedDatabase.options.types
+    return ClienteContactoDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      contactId: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO_ID'])!,
-      remarks: attachedDatabase.options.types
+      contactoId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTOO_ID'])!,
+      observaciones: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
-      name: attachedDatabase.options.types
+      nombre: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
-      lastName1: attachedDatabase.options.types
+      apellido1: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO1']),
-      lastName2: attachedDatabase.options.types
+      apellido2: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO2']),
-      phone1: attachedDatabase.options.types
+      telefono1: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO1']),
-      phone2: attachedDatabase.options.types
+      telefono2: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO2']),
       email: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EMAIL']),
@@ -8847,118 +8943,118 @@ class $CustomerContactTableTable extends CustomerContactTable
   }
 
   @override
-  $CustomerContactTableTable createAlias(String alias) {
-    return $CustomerContactTableTable(attachedDatabase, alias);
+  $ClienteContactoTableTable createAlias(String alias) {
+    return $ClienteContactoTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerAddressTableCompanion
-    extends UpdateCompanion<CustomerAddressDTO> {
-  final Value<String> customerId;
-  final Value<String> addressId;
-  final Value<String?> name;
-  final Value<String?> address1;
-  final Value<String?> address2;
-  final Value<String?> zipCode;
-  final Value<String?> city;
-  final Value<String?> state;
-  final Value<String?> countryId;
-  final Value<double> latitude;
-  final Value<double> longitude;
+class ClienteDireccionTableCompanion
+    extends UpdateCompanion<ClienteDireccionDTO> {
+  final Value<String> clienteId;
+  final Value<String> direccionId;
+  final Value<String?> nombre;
+  final Value<String?> direccion1;
+  final Value<String?> direccion2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
+  final Value<double> latitud;
+  final Value<double> longitud;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerAddressTableCompanion({
-    this.customerId = const Value.absent(),
-    this.addressId = const Value.absent(),
-    this.name = const Value.absent(),
-    this.address1 = const Value.absent(),
-    this.address2 = const Value.absent(),
-    this.zipCode = const Value.absent(),
-    this.city = const Value.absent(),
-    this.state = const Value.absent(),
-    this.countryId = const Value.absent(),
-    this.latitude = const Value.absent(),
-    this.longitude = const Value.absent(),
+  const ClienteDireccionTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.latitud = const Value.absent(),
+    this.longitud = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerAddressTableCompanion.insert({
-    required String customerId,
-    required String addressId,
-    this.name = const Value.absent(),
-    this.address1 = const Value.absent(),
-    this.address2 = const Value.absent(),
-    this.zipCode = const Value.absent(),
-    this.city = const Value.absent(),
-    this.state = const Value.absent(),
-    this.countryId = const Value.absent(),
-    required double latitude,
-    required double longitude,
+  ClienteDireccionTableCompanion.insert({
+    required String clienteId,
+    required String direccionId,
+    this.nombre = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    required double latitud,
+    required double longitud,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        addressId = Value(addressId),
-        latitude = Value(latitude),
-        longitude = Value(longitude),
+  })  : clienteId = Value(clienteId),
+        direccionId = Value(direccionId),
+        latitud = Value(latitud),
+        longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerAddressDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? addressId,
-    Expression<String>? name,
-    Expression<String>? address1,
-    Expression<String>? address2,
-    Expression<String>? zipCode,
-    Expression<String>? city,
-    Expression<String>? state,
-    Expression<String>? countryId,
-    Expression<double>? latitude,
-    Expression<double>? longitude,
+  static Insertable<ClienteDireccionDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? direccionId,
+    Expression<String>? nombre,
+    Expression<String>? direccion1,
+    Expression<String>? direccion2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
+    Expression<double>? latitud,
+    Expression<double>? longitud,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (addressId != null) 'DIRECCION_ID': addressId,
-      if (name != null) 'NOMBRE': name,
-      if (address1 != null) 'DIRECCION1': address1,
-      if (address2 != null) 'DIRECCION2': address2,
-      if (zipCode != null) 'CODIGO_POSTAL': zipCode,
-      if (city != null) 'POBLACION': city,
-      if (state != null) 'PROVINCIA': state,
-      if (countryId != null) 'PAIS_ID': countryId,
-      if (latitude != null) 'LATITUD': latitude,
-      if (longitude != null) 'LONGITUD': longitude,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (direccion1 != null) 'DIRECCION1': direccion1,
+      if (direccion2 != null) 'DIRECCION2': direccion2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (latitud != null) 'LATITUD': latitud,
+      if (longitud != null) 'LONGITUD': longitud,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerAddressTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? addressId,
-      Value<String?>? name,
-      Value<String?>? address1,
-      Value<String?>? address2,
-      Value<String?>? zipCode,
-      Value<String?>? city,
-      Value<String?>? state,
-      Value<String?>? countryId,
-      Value<double>? latitude,
-      Value<double>? longitude,
+  ClienteDireccionTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? direccionId,
+      Value<String?>? nombre,
+      Value<String?>? direccion1,
+      Value<String?>? direccion2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
+      Value<double>? latitud,
+      Value<double>? longitud,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerAddressTableCompanion(
-      customerId: customerId ?? this.customerId,
-      addressId: addressId ?? this.addressId,
-      name: name ?? this.name,
-      address1: address1 ?? this.address1,
-      address2: address2 ?? this.address2,
-      zipCode: zipCode ?? this.zipCode,
-      city: city ?? this.city,
-      state: state ?? this.state,
-      countryId: countryId ?? this.countryId,
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
+    return ClienteDireccionTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      direccionId: direccionId ?? this.direccionId,
+      nombre: nombre ?? this.nombre,
+      direccion1: direccion1 ?? this.direccion1,
+      direccion2: direccion2 ?? this.direccion2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
+      latitud: latitud ?? this.latitud,
+      longitud: longitud ?? this.longitud,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8967,38 +9063,38 @@ class CustomerAddressTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (addressId.present) {
-      map['DIRECCION_ID'] = Variable<String>(addressId.value);
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
     }
-    if (name.present) {
-      map['NOMBRE'] = Variable<String>(name.value);
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
     }
-    if (address1.present) {
-      map['DIRECCION1'] = Variable<String>(address1.value);
+    if (direccion1.present) {
+      map['DIRECCION1'] = Variable<String>(direccion1.value);
     }
-    if (address2.present) {
-      map['DIRECCION2'] = Variable<String>(address2.value);
+    if (direccion2.present) {
+      map['DIRECCION2'] = Variable<String>(direccion2.value);
     }
-    if (zipCode.present) {
-      map['CODIGO_POSTAL'] = Variable<String>(zipCode.value);
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
     }
-    if (city.present) {
-      map['POBLACION'] = Variable<String>(city.value);
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
     }
-    if (state.present) {
-      map['PROVINCIA'] = Variable<String>(state.value);
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
     }
-    if (countryId.present) {
-      map['PAIS_ID'] = Variable<String>(countryId.value);
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
     }
-    if (latitude.present) {
-      map['LATITUD'] = Variable<double>(latitude.value);
+    if (latitud.present) {
+      map['LATITUD'] = Variable<double>(latitud.value);
     }
-    if (longitude.present) {
-      map['LONGITUD'] = Variable<double>(longitude.value);
+    if (longitud.present) {
+      map['LONGITUD'] = Variable<double>(longitud.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9011,18 +9107,18 @@ class CustomerAddressTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CustomerAddressTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('addressId: $addressId, ')
-          ..write('name: $name, ')
-          ..write('address1: $address1, ')
-          ..write('address2: $address2, ')
-          ..write('zipCode: $zipCode, ')
-          ..write('city: $city, ')
-          ..write('state: $state, ')
-          ..write('countryId: $countryId, ')
-          ..write('latitude: $latitude, ')
-          ..write('longitude: $longitude, ')
+    return (StringBuffer('ClienteDireccionTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('nombre: $nombre, ')
+          ..write('direccion1: $direccion1, ')
+          ..write('direccion2: $direccion2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
+          ..write('latitud: $latitud, ')
+          ..write('longitud: $longitud, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -9030,67 +9126,69 @@ class CustomerAddressTableCompanion
   }
 }
 
-class $CustomerAddressTableTable extends CustomerAddressTable
-    with TableInfo<$CustomerAddressTableTable, CustomerAddressDTO> {
+class $ClienteDireccionTableTable extends ClienteDireccionTable
+    with TableInfo<$ClienteDireccionTableTable, ClienteDireccionDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerAddressTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClienteDireccionTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _addressIdMeta = const VerificationMeta('addressId');
+  final VerificationMeta _direccionIdMeta =
+      const VerificationMeta('direccionId');
   @override
-  late final GeneratedColumn<String> addressId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _nameMeta = const VerificationMeta('name');
+  final VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
-  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _address1Meta = const VerificationMeta('address1');
+  final VerificationMeta _direccion1Meta = const VerificationMeta('direccion1');
   @override
-  late final GeneratedColumn<String> address1 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
       'DIRECCION1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _address2Meta = const VerificationMeta('address2');
+  final VerificationMeta _direccion2Meta = const VerificationMeta('direccion2');
   @override
-  late final GeneratedColumn<String> address2 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
       'DIRECCION2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _zipCodeMeta = const VerificationMeta('zipCode');
+  final VerificationMeta _codigoPostalMeta =
+      const VerificationMeta('codigoPostal');
   @override
-  late final GeneratedColumn<String> zipCode = GeneratedColumn<String>(
+  late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
       'CODIGO_POSTAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _cityMeta = const VerificationMeta('city');
+  final VerificationMeta _poblacionMeta = const VerificationMeta('poblacion');
   @override
-  late final GeneratedColumn<String> city = GeneratedColumn<String>(
+  late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _stateMeta = const VerificationMeta('state');
+  final VerificationMeta _provinciaMeta = const VerificationMeta('provincia');
   @override
-  late final GeneratedColumn<String> state = GeneratedColumn<String>(
+  late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _countryIdMeta = const VerificationMeta('countryId');
+  final VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
-  late final GeneratedColumn<String> countryId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
-  final VerificationMeta _latitudeMeta = const VerificationMeta('latitude');
+  final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
   @override
-  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
+  late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _longitudeMeta = const VerificationMeta('longitude');
+  final VerificationMeta _longitudMeta = const VerificationMeta('longitud');
   @override
-  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
+  late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -9108,17 +9206,17 @@ class $CustomerAddressTableTable extends CustomerAddressTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        addressId,
-        name,
-        address1,
-        address2,
-        zipCode,
-        city,
-        state,
-        countryId,
-        latitude,
-        longitude,
+        clienteId,
+        direccionId,
+        nombre,
+        direccion1,
+        direccion2,
+        codigoPostal,
+        poblacion,
+        provincia,
+        paisId,
+        latitud,
+        longitud,
         lastUpdated,
         deleted
       ];
@@ -9127,65 +9225,70 @@ class $CustomerAddressTableTable extends CustomerAddressTable
   @override
   String get actualTableName => 'CLIENTES_DIRECCIONES_ENVIO';
   @override
-  VerificationContext validateIntegrity(Insertable<CustomerAddressDTO> instance,
+  VerificationContext validateIntegrity(
+      Insertable<ClienteDireccionDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('DIRECCION_ID')) {
       context.handle(
-          _addressIdMeta,
-          addressId.isAcceptableOrUnknown(
-              data['DIRECCION_ID']!, _addressIdMeta));
+          _direccionIdMeta,
+          direccionId.isAcceptableOrUnknown(
+              data['DIRECCION_ID']!, _direccionIdMeta));
     } else if (isInserting) {
-      context.missing(_addressIdMeta);
+      context.missing(_direccionIdMeta);
     }
     if (data.containsKey('NOMBRE')) {
-      context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['NOMBRE']!, _nameMeta));
+      context.handle(_nombreMeta,
+          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
     }
     if (data.containsKey('DIRECCION1')) {
-      context.handle(_address1Meta,
-          address1.isAcceptableOrUnknown(data['DIRECCION1']!, _address1Meta));
+      context.handle(
+          _direccion1Meta,
+          direccion1.isAcceptableOrUnknown(
+              data['DIRECCION1']!, _direccion1Meta));
     }
     if (data.containsKey('DIRECCION2')) {
-      context.handle(_address2Meta,
-          address2.isAcceptableOrUnknown(data['DIRECCION2']!, _address2Meta));
+      context.handle(
+          _direccion2Meta,
+          direccion2.isAcceptableOrUnknown(
+              data['DIRECCION2']!, _direccion2Meta));
     }
     if (data.containsKey('CODIGO_POSTAL')) {
-      context.handle(_zipCodeMeta,
-          zipCode.isAcceptableOrUnknown(data['CODIGO_POSTAL']!, _zipCodeMeta));
+      context.handle(
+          _codigoPostalMeta,
+          codigoPostal.isAcceptableOrUnknown(
+              data['CODIGO_POSTAL']!, _codigoPostalMeta));
     }
     if (data.containsKey('POBLACION')) {
-      context.handle(
-          _cityMeta, city.isAcceptableOrUnknown(data['POBLACION']!, _cityMeta));
+      context.handle(_poblacionMeta,
+          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
     }
     if (data.containsKey('PROVINCIA')) {
-      context.handle(_stateMeta,
-          state.isAcceptableOrUnknown(data['PROVINCIA']!, _stateMeta));
+      context.handle(_provinciaMeta,
+          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
     }
     if (data.containsKey('PAIS_ID')) {
-      context.handle(_countryIdMeta,
-          countryId.isAcceptableOrUnknown(data['PAIS_ID']!, _countryIdMeta));
+      context.handle(_paisIdMeta,
+          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
     }
     if (data.containsKey('LATITUD')) {
-      context.handle(_latitudeMeta,
-          latitude.isAcceptableOrUnknown(data['LATITUD']!, _latitudeMeta));
+      context.handle(_latitudMeta,
+          latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta));
     } else if (isInserting) {
-      context.missing(_latitudeMeta);
+      context.missing(_latitudMeta);
     }
     if (data.containsKey('LONGITUD')) {
-      context.handle(_longitudeMeta,
-          longitude.isAcceptableOrUnknown(data['LONGITUD']!, _longitudeMeta));
+      context.handle(_longitudMeta,
+          longitud.isAcceptableOrUnknown(data['LONGITUD']!, _longitudMeta));
     } else if (isInserting) {
-      context.missing(_longitudeMeta);
+      context.missing(_longitudMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -9203,32 +9306,32 @@ class $CustomerAddressTableTable extends CustomerAddressTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, addressId};
+  Set<GeneratedColumn> get $primaryKey => {clienteId, direccionId};
   @override
-  CustomerAddressDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteDireccionDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerAddressDTO(
-      customerId: attachedDatabase.options.types
+    return ClienteDireccionDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      addressId: attachedDatabase.options.types
+      direccionId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID'])!,
-      name: attachedDatabase.options.types
+      nombre: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
-      address1: attachedDatabase.options.types
+      direccion1: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
-      address2: attachedDatabase.options.types
+      direccion2: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
-      zipCode: attachedDatabase.options.types
+      codigoPostal: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      city: attachedDatabase.options.types
+      poblacion: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      state: attachedDatabase.options.types
+      provincia: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      countryId: attachedDatabase.options.types
+      paisId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      latitude: attachedDatabase.options.types
+      latitud: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitude: attachedDatabase.options.types
+      longitud: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -9238,111 +9341,111 @@ class $CustomerAddressTableTable extends CustomerAddressTable
   }
 
   @override
-  $CustomerAddressTableTable createAlias(String alias) {
-    return $CustomerAddressTableTable(attachedDatabase, alias);
+  $ClienteDireccionTableTable createAlias(String alias) {
+    return $ClienteDireccionTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerPendingPaymentTableCompanion
-    extends UpdateCompanion<CustomerPendingPaymentDTO> {
-  final Value<String> customerId;
-  final Value<String> effectId;
-  final Value<String?> invoiceId;
-  final Value<DateTime?> invoiceDate;
-  final Value<DateTime?> expirationDate;
-  final Value<String?> collectionMethodId;
-  final Value<String?> collectionStatusId;
-  final Value<double?> amount;
-  final Value<DateTime?> initialExpirationDate;
-  final Value<String?> expirationJBM;
+class ClientePagoPendienteTableCompanion
+    extends UpdateCompanion<ClientePagoPendienteDTO> {
+  final Value<String> clienteId;
+  final Value<String> efectoId;
+  final Value<String?> facutaId;
+  final Value<DateTime?> fechaFactura;
+  final Value<DateTime?> fechaExpiracion;
+  final Value<String?> metodoDeCobroId;
+  final Value<String?> estadoCobroId;
+  final Value<double?> importe;
+  final Value<DateTime?> fechaExpiracionInicial;
+  final Value<String?> vencidoJBM;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerPendingPaymentTableCompanion({
-    this.customerId = const Value.absent(),
-    this.effectId = const Value.absent(),
-    this.invoiceId = const Value.absent(),
-    this.invoiceDate = const Value.absent(),
-    this.expirationDate = const Value.absent(),
-    this.collectionMethodId = const Value.absent(),
-    this.collectionStatusId = const Value.absent(),
-    this.amount = const Value.absent(),
-    this.initialExpirationDate = const Value.absent(),
-    this.expirationJBM = const Value.absent(),
+  const ClientePagoPendienteTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.efectoId = const Value.absent(),
+    this.facutaId = const Value.absent(),
+    this.fechaFactura = const Value.absent(),
+    this.fechaExpiracion = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    this.estadoCobroId = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.fechaExpiracionInicial = const Value.absent(),
+    this.vencidoJBM = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerPendingPaymentTableCompanion.insert({
-    required String customerId,
-    required String effectId,
-    this.invoiceId = const Value.absent(),
-    this.invoiceDate = const Value.absent(),
-    this.expirationDate = const Value.absent(),
-    this.collectionMethodId = const Value.absent(),
-    this.collectionStatusId = const Value.absent(),
-    this.amount = const Value.absent(),
-    this.initialExpirationDate = const Value.absent(),
-    this.expirationJBM = const Value.absent(),
+  ClientePagoPendienteTableCompanion.insert({
+    required String clienteId,
+    required String efectoId,
+    this.facutaId = const Value.absent(),
+    this.fechaFactura = const Value.absent(),
+    this.fechaExpiracion = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    this.estadoCobroId = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.fechaExpiracionInicial = const Value.absent(),
+    this.vencidoJBM = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        effectId = Value(effectId),
+  })  : clienteId = Value(clienteId),
+        efectoId = Value(efectoId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerPendingPaymentDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? effectId,
-    Expression<String>? invoiceId,
-    Expression<DateTime>? invoiceDate,
-    Expression<DateTime>? expirationDate,
-    Expression<String>? collectionMethodId,
-    Expression<String>? collectionStatusId,
-    Expression<double>? amount,
-    Expression<DateTime>? initialExpirationDate,
-    Expression<String>? expirationJBM,
+  static Insertable<ClientePagoPendienteDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? efectoId,
+    Expression<String>? facutaId,
+    Expression<DateTime>? fechaFactura,
+    Expression<DateTime>? fechaExpiracion,
+    Expression<String>? metodoDeCobroId,
+    Expression<String>? estadoCobroId,
+    Expression<double>? importe,
+    Expression<DateTime>? fechaExpiracionInicial,
+    Expression<String>? vencidoJBM,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (effectId != null) 'EFECTO_ID': effectId,
-      if (invoiceId != null) 'FACTURA_ID': invoiceId,
-      if (invoiceDate != null) 'FECHA_FACTURA': invoiceDate,
-      if (expirationDate != null) 'FECHA_VENCIMIENTO': expirationDate,
-      if (collectionMethodId != null) 'METODO_COBRO_ID': collectionMethodId,
-      if (collectionStatusId != null) 'ESTADO_COBRO_ID': collectionStatusId,
-      if (amount != null) 'IMPORTE': amount,
-      if (initialExpirationDate != null)
-        'FECHA_VENCIMIENTO_INICIAL': initialExpirationDate,
-      if (expirationJBM != null) 'VENCIDO_JBM': expirationJBM,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (efectoId != null) 'EFECTO_ID': efectoId,
+      if (facutaId != null) 'FACTURA_ID': facutaId,
+      if (fechaFactura != null) 'FECHA_FACTURA': fechaFactura,
+      if (fechaExpiracion != null) 'FECHA_VENCIMIENTO': fechaExpiracion,
+      if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
+      if (estadoCobroId != null) 'ESTADO_COBRO_ID': estadoCobroId,
+      if (importe != null) 'IMPORTE': importe,
+      if (fechaExpiracionInicial != null)
+        'FECHA_VENCIMIENTO_INICIAL': fechaExpiracionInicial,
+      if (vencidoJBM != null) 'VENCIDO_JBM': vencidoJBM,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerPendingPaymentTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? effectId,
-      Value<String?>? invoiceId,
-      Value<DateTime?>? invoiceDate,
-      Value<DateTime?>? expirationDate,
-      Value<String?>? collectionMethodId,
-      Value<String?>? collectionStatusId,
-      Value<double?>? amount,
-      Value<DateTime?>? initialExpirationDate,
-      Value<String?>? expirationJBM,
+  ClientePagoPendienteTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? efectoId,
+      Value<String?>? facutaId,
+      Value<DateTime?>? fechaFactura,
+      Value<DateTime?>? fechaExpiracion,
+      Value<String?>? metodoDeCobroId,
+      Value<String?>? estadoCobroId,
+      Value<double?>? importe,
+      Value<DateTime?>? fechaExpiracionInicial,
+      Value<String?>? vencidoJBM,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerPendingPaymentTableCompanion(
-      customerId: customerId ?? this.customerId,
-      effectId: effectId ?? this.effectId,
-      invoiceId: invoiceId ?? this.invoiceId,
-      invoiceDate: invoiceDate ?? this.invoiceDate,
-      expirationDate: expirationDate ?? this.expirationDate,
-      collectionMethodId: collectionMethodId ?? this.collectionMethodId,
-      collectionStatusId: collectionStatusId ?? this.collectionStatusId,
-      amount: amount ?? this.amount,
-      initialExpirationDate:
-          initialExpirationDate ?? this.initialExpirationDate,
-      expirationJBM: expirationJBM ?? this.expirationJBM,
+    return ClientePagoPendienteTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      efectoId: efectoId ?? this.efectoId,
+      facutaId: facutaId ?? this.facutaId,
+      fechaFactura: fechaFactura ?? this.fechaFactura,
+      fechaExpiracion: fechaExpiracion ?? this.fechaExpiracion,
+      metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
+      estadoCobroId: estadoCobroId ?? this.estadoCobroId,
+      importe: importe ?? this.importe,
+      fechaExpiracionInicial:
+          fechaExpiracionInicial ?? this.fechaExpiracionInicial,
+      vencidoJBM: vencidoJBM ?? this.vencidoJBM,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -9351,36 +9454,36 @@ class CustomerPendingPaymentTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (effectId.present) {
-      map['EFECTO_ID'] = Variable<String>(effectId.value);
+    if (efectoId.present) {
+      map['EFECTO_ID'] = Variable<String>(efectoId.value);
     }
-    if (invoiceId.present) {
-      map['FACTURA_ID'] = Variable<String>(invoiceId.value);
+    if (facutaId.present) {
+      map['FACTURA_ID'] = Variable<String>(facutaId.value);
     }
-    if (invoiceDate.present) {
-      map['FECHA_FACTURA'] = Variable<DateTime>(invoiceDate.value);
+    if (fechaFactura.present) {
+      map['FECHA_FACTURA'] = Variable<DateTime>(fechaFactura.value);
     }
-    if (expirationDate.present) {
-      map['FECHA_VENCIMIENTO'] = Variable<DateTime>(expirationDate.value);
+    if (fechaExpiracion.present) {
+      map['FECHA_VENCIMIENTO'] = Variable<DateTime>(fechaExpiracion.value);
     }
-    if (collectionMethodId.present) {
-      map['METODO_COBRO_ID'] = Variable<String>(collectionMethodId.value);
+    if (metodoDeCobroId.present) {
+      map['METODO_COBRO_ID'] = Variable<String>(metodoDeCobroId.value);
     }
-    if (collectionStatusId.present) {
-      map['ESTADO_COBRO_ID'] = Variable<String>(collectionStatusId.value);
+    if (estadoCobroId.present) {
+      map['ESTADO_COBRO_ID'] = Variable<String>(estadoCobroId.value);
     }
-    if (amount.present) {
-      map['IMPORTE'] = Variable<double>(amount.value);
+    if (importe.present) {
+      map['IMPORTE'] = Variable<double>(importe.value);
     }
-    if (initialExpirationDate.present) {
+    if (fechaExpiracionInicial.present) {
       map['FECHA_VENCIMIENTO_INICIAL'] =
-          Variable<DateTime>(initialExpirationDate.value);
+          Variable<DateTime>(fechaExpiracionInicial.value);
     }
-    if (expirationJBM.present) {
-      map['VENCIDO_JBM'] = Variable<String>(expirationJBM.value);
+    if (vencidoJBM.present) {
+      map['VENCIDO_JBM'] = Variable<String>(vencidoJBM.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9393,17 +9496,17 @@ class CustomerPendingPaymentTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CustomerPendingPaymentTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('effectId: $effectId, ')
-          ..write('invoiceId: $invoiceId, ')
-          ..write('invoiceDate: $invoiceDate, ')
-          ..write('expirationDate: $expirationDate, ')
-          ..write('collectionMethodId: $collectionMethodId, ')
-          ..write('collectionStatusId: $collectionStatusId, ')
-          ..write('amount: $amount, ')
-          ..write('initialExpirationDate: $initialExpirationDate, ')
-          ..write('expirationJBM: $expirationJBM, ')
+    return (StringBuffer('ClientePagoPendienteTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('efectoId: $efectoId, ')
+          ..write('facutaId: $facutaId, ')
+          ..write('fechaFactura: $fechaFactura, ')
+          ..write('fechaExpiracion: $fechaExpiracion, ')
+          ..write('metodoDeCobroId: $metodoDeCobroId, ')
+          ..write('estadoCobroId: $estadoCobroId, ')
+          ..write('importe: $importe, ')
+          ..write('fechaExpiracionInicial: $fechaExpiracionInicial, ')
+          ..write('vencidoJBM: $vencidoJBM, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -9411,70 +9514,67 @@ class CustomerPendingPaymentTableCompanion
   }
 }
 
-class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
-    with
-        TableInfo<$CustomerPendingPaymentTableTable,
-            CustomerPendingPaymentDTO> {
+class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
+    with TableInfo<$ClientePagoPendienteTableTable, ClientePagoPendienteDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerPendingPaymentTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClientePagoPendienteTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _effectIdMeta = const VerificationMeta('effectId');
+  final VerificationMeta _efectoIdMeta = const VerificationMeta('efectoId');
   @override
-  late final GeneratedColumn<String> effectId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> efectoId = GeneratedColumn<String>(
       'EFECTO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _invoiceIdMeta = const VerificationMeta('invoiceId');
+  final VerificationMeta _facutaIdMeta = const VerificationMeta('facutaId');
   @override
-  late final GeneratedColumn<String> invoiceId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> facutaId = GeneratedColumn<String>(
       'FACTURA_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _invoiceDateMeta =
-      const VerificationMeta('invoiceDate');
+  final VerificationMeta _fechaFacturaMeta =
+      const VerificationMeta('fechaFactura');
   @override
-  late final GeneratedColumn<DateTime> invoiceDate = GeneratedColumn<DateTime>(
+  late final GeneratedColumn<DateTime> fechaFactura = GeneratedColumn<DateTime>(
       'FECHA_FACTURA', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _expirationDateMeta =
-      const VerificationMeta('expirationDate');
+  final VerificationMeta _fechaExpiracionMeta =
+      const VerificationMeta('fechaExpiracion');
   @override
-  late final GeneratedColumn<DateTime> expirationDate =
+  late final GeneratedColumn<DateTime> fechaExpiracion =
       GeneratedColumn<DateTime>('FECHA_VENCIMIENTO', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _collectionMethodIdMeta =
-      const VerificationMeta('collectionMethodId');
+  final VerificationMeta _metodoDeCobroIdMeta =
+      const VerificationMeta('metodoDeCobroId');
   @override
-  late final GeneratedColumn<String> collectionMethodId =
-      GeneratedColumn<String>('METODO_COBRO_ID', aliasedName, true,
-          type: DriftSqlType.string,
-          requiredDuringInsert: false,
-          defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
-  final VerificationMeta _collectionStatusIdMeta =
-      const VerificationMeta('collectionStatusId');
+  late final GeneratedColumn<String> metodoDeCobroId = GeneratedColumn<String>(
+      'METODO_COBRO_ID', aliasedName, true,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
+  final VerificationMeta _estadoCobroIdMeta =
+      const VerificationMeta('estadoCobroId');
   @override
-  late final GeneratedColumn<String> collectionStatusId =
-      GeneratedColumn<String>('ESTADO_COBRO_ID', aliasedName, true,
-          type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _amountMeta = const VerificationMeta('amount');
+  late final GeneratedColumn<String> estadoCobroId = GeneratedColumn<String>(
+      'ESTADO_COBRO_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _importeMeta = const VerificationMeta('importe');
   @override
-  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
+  late final GeneratedColumn<double> importe = GeneratedColumn<double>(
       'IMPORTE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _initialExpirationDateMeta =
-      const VerificationMeta('initialExpirationDate');
+  final VerificationMeta _fechaExpiracionInicialMeta =
+      const VerificationMeta('fechaExpiracionInicial');
   @override
-  late final GeneratedColumn<DateTime> initialExpirationDate =
+  late final GeneratedColumn<DateTime> fechaExpiracionInicial =
       GeneratedColumn<DateTime>('FECHA_VENCIMIENTO_INICIAL', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _expirationJBMMeta =
-      const VerificationMeta('expirationJBM');
+  final VerificationMeta _vencidoJBMMeta = const VerificationMeta('vencidoJBM');
   @override
-  late final GeneratedColumn<String> expirationJBM = GeneratedColumn<String>(
+  late final GeneratedColumn<String> vencidoJBM = GeneratedColumn<String>(
       'VENCIDO_JBM', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -9492,16 +9592,16 @@ class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        effectId,
-        invoiceId,
-        invoiceDate,
-        expirationDate,
-        collectionMethodId,
-        collectionStatusId,
-        amount,
-        initialExpirationDate,
-        expirationJBM,
+        clienteId,
+        efectoId,
+        facutaId,
+        fechaFactura,
+        fechaExpiracion,
+        metodoDeCobroId,
+        estadoCobroId,
+        importe,
+        fechaExpiracionInicial,
+        vencidoJBM,
         lastUpdated,
         deleted
       ];
@@ -9511,67 +9611,65 @@ class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
   String get actualTableName => 'CLIENTES_PAGOS_PENDIENTES';
   @override
   VerificationContext validateIntegrity(
-      Insertable<CustomerPendingPaymentDTO> instance,
+      Insertable<ClientePagoPendienteDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('EFECTO_ID')) {
-      context.handle(_effectIdMeta,
-          effectId.isAcceptableOrUnknown(data['EFECTO_ID']!, _effectIdMeta));
+      context.handle(_efectoIdMeta,
+          efectoId.isAcceptableOrUnknown(data['EFECTO_ID']!, _efectoIdMeta));
     } else if (isInserting) {
-      context.missing(_effectIdMeta);
+      context.missing(_efectoIdMeta);
     }
     if (data.containsKey('FACTURA_ID')) {
-      context.handle(_invoiceIdMeta,
-          invoiceId.isAcceptableOrUnknown(data['FACTURA_ID']!, _invoiceIdMeta));
+      context.handle(_facutaIdMeta,
+          facutaId.isAcceptableOrUnknown(data['FACTURA_ID']!, _facutaIdMeta));
     }
     if (data.containsKey('FECHA_FACTURA')) {
       context.handle(
-          _invoiceDateMeta,
-          invoiceDate.isAcceptableOrUnknown(
-              data['FECHA_FACTURA']!, _invoiceDateMeta));
+          _fechaFacturaMeta,
+          fechaFactura.isAcceptableOrUnknown(
+              data['FECHA_FACTURA']!, _fechaFacturaMeta));
     }
     if (data.containsKey('FECHA_VENCIMIENTO')) {
       context.handle(
-          _expirationDateMeta,
-          expirationDate.isAcceptableOrUnknown(
-              data['FECHA_VENCIMIENTO']!, _expirationDateMeta));
+          _fechaExpiracionMeta,
+          fechaExpiracion.isAcceptableOrUnknown(
+              data['FECHA_VENCIMIENTO']!, _fechaExpiracionMeta));
     }
     if (data.containsKey('METODO_COBRO_ID')) {
       context.handle(
-          _collectionMethodIdMeta,
-          collectionMethodId.isAcceptableOrUnknown(
-              data['METODO_COBRO_ID']!, _collectionMethodIdMeta));
+          _metodoDeCobroIdMeta,
+          metodoDeCobroId.isAcceptableOrUnknown(
+              data['METODO_COBRO_ID']!, _metodoDeCobroIdMeta));
     }
     if (data.containsKey('ESTADO_COBRO_ID')) {
       context.handle(
-          _collectionStatusIdMeta,
-          collectionStatusId.isAcceptableOrUnknown(
-              data['ESTADO_COBRO_ID']!, _collectionStatusIdMeta));
+          _estadoCobroIdMeta,
+          estadoCobroId.isAcceptableOrUnknown(
+              data['ESTADO_COBRO_ID']!, _estadoCobroIdMeta));
     }
     if (data.containsKey('IMPORTE')) {
-      context.handle(_amountMeta,
-          amount.isAcceptableOrUnknown(data['IMPORTE']!, _amountMeta));
+      context.handle(_importeMeta,
+          importe.isAcceptableOrUnknown(data['IMPORTE']!, _importeMeta));
     }
     if (data.containsKey('FECHA_VENCIMIENTO_INICIAL')) {
       context.handle(
-          _initialExpirationDateMeta,
-          initialExpirationDate.isAcceptableOrUnknown(
-              data['FECHA_VENCIMIENTO_INICIAL']!, _initialExpirationDateMeta));
+          _fechaExpiracionInicialMeta,
+          fechaExpiracionInicial.isAcceptableOrUnknown(
+              data['FECHA_VENCIMIENTO_INICIAL']!, _fechaExpiracionInicialMeta));
     }
     if (data.containsKey('VENCIDO_JBM')) {
       context.handle(
-          _expirationJBMMeta,
-          expirationJBM.isAcceptableOrUnknown(
-              data['VENCIDO_JBM']!, _expirationJBMMeta));
+          _vencidoJBMMeta,
+          vencidoJBM.isAcceptableOrUnknown(
+              data['VENCIDO_JBM']!, _vencidoJBMMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -9589,32 +9687,32 @@ class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, effectId};
+  Set<GeneratedColumn> get $primaryKey => {clienteId, efectoId};
   @override
-  CustomerPendingPaymentDTO map(Map<String, dynamic> data,
+  ClientePagoPendienteDTO map(Map<String, dynamic> data,
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerPendingPaymentDTO(
-      customerId: attachedDatabase.options.types
+    return ClientePagoPendienteDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      effectId: attachedDatabase.options.types
+      efectoId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EFECTO_ID'])!,
-      invoiceId: attachedDatabase.options.types
+      facutaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}FACTURA_ID']),
-      invoiceDate: attachedDatabase.options.types
+      fechaFactura: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_FACTURA']),
-      expirationDate: attachedDatabase.options.types.read(
+      fechaExpiracion: attachedDatabase.options.types.read(
           DriftSqlType.dateTime, data['${effectivePrefix}FECHA_VENCIMIENTO']),
-      collectionMethodId: attachedDatabase.options.types
+      metodoDeCobroId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID']),
-      collectionStatusId: attachedDatabase.options.types
+      estadoCobroId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ESTADO_COBRO_ID']),
-      amount: attachedDatabase.options.types
+      importe: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE']),
-      initialExpirationDate: attachedDatabase.options.types.read(
+      fechaExpiracionInicial: attachedDatabase.options.types.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}FECHA_VENCIMIENTO_INICIAL']),
-      expirationJBM: attachedDatabase.options.types
+      vencidoJBM: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}VENCIDO_JBM']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -9624,76 +9722,76 @@ class $CustomerPendingPaymentTableTable extends CustomerPendingPaymentTable
   }
 
   @override
-  $CustomerPendingPaymentTableTable createAlias(String alias) {
-    return $CustomerPendingPaymentTableTable(attachedDatabase, alias);
+  $ClientePagoPendienteTableTable createAlias(String alias) {
+    return $ClientePagoPendienteTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerNetPriceTableCompanion
-    extends UpdateCompanion<CustomerNetPriceDTO> {
-  final Value<String> customerId;
-  final Value<String> articleId;
-  final Value<double> quantityFrom;
-  final Value<double> price;
-  final Value<double?> priceType;
+class ClientePrecioNetoTableCompanion
+    extends UpdateCompanion<ClientePrecioNetoDTO> {
+  final Value<String> clienteId;
+  final Value<String> articuloId;
+  final Value<double> cantidadDesDe;
+  final Value<double> precio;
+  final Value<double?> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerNetPriceTableCompanion({
-    this.customerId = const Value.absent(),
-    this.articleId = const Value.absent(),
-    this.quantityFrom = const Value.absent(),
-    this.price = const Value.absent(),
-    this.priceType = const Value.absent(),
+  const ClientePrecioNetoTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.cantidadDesDe = const Value.absent(),
+    this.precio = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerNetPriceTableCompanion.insert({
-    required String customerId,
-    required String articleId,
-    required double quantityFrom,
-    required double price,
-    this.priceType = const Value.absent(),
+  ClientePrecioNetoTableCompanion.insert({
+    required String clienteId,
+    required String articuloId,
+    required double cantidadDesDe,
+    required double precio,
+    this.tipoPrecio = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        articleId = Value(articleId),
-        quantityFrom = Value(quantityFrom),
-        price = Value(price),
+  })  : clienteId = Value(clienteId),
+        articuloId = Value(articuloId),
+        cantidadDesDe = Value(cantidadDesDe),
+        precio = Value(precio),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerNetPriceDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? articleId,
-    Expression<double>? quantityFrom,
-    Expression<double>? price,
-    Expression<double>? priceType,
+  static Insertable<ClientePrecioNetoDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? articuloId,
+    Expression<double>? cantidadDesDe,
+    Expression<double>? precio,
+    Expression<double>? tipoPrecio,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (quantityFrom != null) 'CANTIDAD_DESDE': quantityFrom,
-      if (price != null) 'PRECIO': price,
-      if (priceType != null) 'TIPO_PRECIO': priceType,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (cantidadDesDe != null) 'CANTIDAD_DESDE': cantidadDesDe,
+      if (precio != null) 'PRECIO': precio,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerNetPriceTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? articleId,
-      Value<double>? quantityFrom,
-      Value<double>? price,
-      Value<double?>? priceType,
+  ClientePrecioNetoTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? articuloId,
+      Value<double>? cantidadDesDe,
+      Value<double>? precio,
+      Value<double?>? tipoPrecio,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerNetPriceTableCompanion(
-      customerId: customerId ?? this.customerId,
-      articleId: articleId ?? this.articleId,
-      quantityFrom: quantityFrom ?? this.quantityFrom,
-      price: price ?? this.price,
-      priceType: priceType ?? this.priceType,
+    return ClientePrecioNetoTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      articuloId: articuloId ?? this.articuloId,
+      cantidadDesDe: cantidadDesDe ?? this.cantidadDesDe,
+      precio: precio ?? this.precio,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -9702,20 +9800,20 @@ class CustomerNetPriceTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (quantityFrom.present) {
-      map['CANTIDAD_DESDE'] = Variable<double>(quantityFrom.value);
+    if (cantidadDesDe.present) {
+      map['CANTIDAD_DESDE'] = Variable<double>(cantidadDesDe.value);
     }
-    if (price.present) {
-      map['PRECIO'] = Variable<double>(price.value);
+    if (precio.present) {
+      map['PRECIO'] = Variable<double>(precio.value);
     }
-    if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<double>(tipoPrecio.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9728,12 +9826,12 @@ class CustomerNetPriceTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('CustomerNetPriceTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('articleId: $articleId, ')
-          ..write('quantityFrom: $quantityFrom, ')
-          ..write('price: $price, ')
-          ..write('priceType: $priceType, ')
+    return (StringBuffer('ClientePrecioNetoTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('cantidadDesDe: $cantidadDesDe, ')
+          ..write('precio: $precio, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -9741,36 +9839,36 @@ class CustomerNetPriceTableCompanion
   }
 }
 
-class $CustomerNetPriceTableTable extends CustomerNetPriceTable
-    with TableInfo<$CustomerNetPriceTableTable, CustomerNetPriceDTO> {
+class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
+    with TableInfo<$ClientePrecioNetoTableTable, ClientePrecioNetoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerNetPriceTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClientePrecioNetoTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _quantityFromMeta =
-      const VerificationMeta('quantityFrom');
+  final VerificationMeta _cantidadDesDeMeta =
+      const VerificationMeta('cantidadDesDe');
   @override
-  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidadDesDe = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceMeta = const VerificationMeta('price');
+  final VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
-  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+  late final GeneratedColumn<double> precio = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
+  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
   @override
-  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
+  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -9788,11 +9886,11 @@ class $CustomerNetPriceTableTable extends CustomerNetPriceTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        articleId,
-        quantityFrom,
-        price,
-        priceType,
+        clienteId,
+        articuloId,
+        cantidadDesDe,
+        precio,
+        tipoPrecio,
         lastUpdated,
         deleted
       ];
@@ -9802,45 +9900,43 @@ class $CustomerNetPriceTableTable extends CustomerNetPriceTable
   String get actualTableName => 'CLIENTES_PRECIOS_NETOS';
   @override
   VerificationContext validateIntegrity(
-      Insertable<CustomerNetPriceDTO> instance,
+      Insertable<ClientePrecioNetoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('CANTIDAD_DESDE')) {
       context.handle(
-          _quantityFromMeta,
-          quantityFrom.isAcceptableOrUnknown(
-              data['CANTIDAD_DESDE']!, _quantityFromMeta));
+          _cantidadDesDeMeta,
+          cantidadDesDe.isAcceptableOrUnknown(
+              data['CANTIDAD_DESDE']!, _cantidadDesDeMeta));
     } else if (isInserting) {
-      context.missing(_quantityFromMeta);
+      context.missing(_cantidadDesDeMeta);
     }
     if (data.containsKey('PRECIO')) {
-      context.handle(
-          _priceMeta, price.isAcceptableOrUnknown(data['PRECIO']!, _priceMeta));
+      context.handle(_precioMeta,
+          precio.isAcceptableOrUnknown(data['PRECIO']!, _precioMeta));
     } else if (isInserting) {
-      context.missing(_priceMeta);
+      context.missing(_precioMeta);
     }
     if (data.containsKey('TIPO_PRECIO')) {
       context.handle(
-          _priceTypeMeta,
-          priceType.isAcceptableOrUnknown(
-              data['TIPO_PRECIO']!, _priceTypeMeta));
+          _tipoPrecioMeta,
+          tipoPrecio.isAcceptableOrUnknown(
+              data['TIPO_PRECIO']!, _tipoPrecioMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -9858,20 +9954,21 @@ class $CustomerNetPriceTableTable extends CustomerNetPriceTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, articleId, quantityFrom};
+  Set<GeneratedColumn> get $primaryKey =>
+      {clienteId, articuloId, cantidadDesDe};
   @override
-  CustomerNetPriceDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClientePrecioNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerNetPriceDTO(
-      customerId: attachedDatabase.options.types
+    return ClientePrecioNetoDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: attachedDatabase.options.types
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      quantityFrom: attachedDatabase.options.types
+      cantidadDesDe: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      price: attachedDatabase.options.types
+      precio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
-      priceType: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -9881,75 +9978,75 @@ class $CustomerNetPriceTableTable extends CustomerNetPriceTable
   }
 
   @override
-  $CustomerNetPriceTableTable createAlias(String alias) {
-    return $CustomerNetPriceTableTable(attachedDatabase, alias);
+  $ClientePrecioNetoTableTable createAlias(String alias) {
+    return $ClientePrecioNetoTableTable(attachedDatabase, alias);
   }
 }
 
-class CustomerRappelTableCompanion extends UpdateCompanion<CustomerRappelDTO> {
-  final Value<String> customerId;
+class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
+  final Value<String> clienteId;
   final Value<String> rappelId;
-  final Value<String> description;
-  final Value<DateTime> dateFrom;
-  final Value<DateTime?> dateTo;
+  final Value<String> descripcion;
+  final Value<DateTime> fechaDesDe;
+  final Value<DateTime?> fechaHasta;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const CustomerRappelTableCompanion({
-    this.customerId = const Value.absent(),
+  const ClienteRappelTableCompanion({
+    this.clienteId = const Value.absent(),
     this.rappelId = const Value.absent(),
-    this.description = const Value.absent(),
-    this.dateFrom = const Value.absent(),
-    this.dateTo = const Value.absent(),
+    this.descripcion = const Value.absent(),
+    this.fechaDesDe = const Value.absent(),
+    this.fechaHasta = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  CustomerRappelTableCompanion.insert({
-    required String customerId,
+  ClienteRappelTableCompanion.insert({
+    required String clienteId,
     required String rappelId,
-    required String description,
-    required DateTime dateFrom,
-    this.dateTo = const Value.absent(),
+    required String descripcion,
+    required DateTime fechaDesDe,
+    this.fechaHasta = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
+  })  : clienteId = Value(clienteId),
         rappelId = Value(rappelId),
-        description = Value(description),
-        dateFrom = Value(dateFrom),
+        descripcion = Value(descripcion),
+        fechaDesDe = Value(fechaDesDe),
         lastUpdated = Value(lastUpdated);
-  static Insertable<CustomerRappelDTO> custom({
-    Expression<String>? customerId,
+  static Insertable<ClienteRappelDTO> custom({
+    Expression<String>? clienteId,
     Expression<String>? rappelId,
-    Expression<String>? description,
-    Expression<DateTime>? dateFrom,
-    Expression<DateTime>? dateTo,
+    Expression<String>? descripcion,
+    Expression<DateTime>? fechaDesDe,
+    Expression<DateTime>? fechaHasta,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (rappelId != null) 'RAPPEL_ID': rappelId,
-      if (description != null) 'DESCRIPCION': description,
-      if (dateFrom != null) 'FECHA_DESDE': dateFrom,
-      if (dateTo != null) 'FECHA_HASTA': dateTo,
+      if (descripcion != null) 'DESCRIPCION': descripcion,
+      if (fechaDesDe != null) 'FECHA_DESDE': fechaDesDe,
+      if (fechaHasta != null) 'FECHA_HASTA': fechaHasta,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  CustomerRappelTableCompanion copyWith(
-      {Value<String>? customerId,
+  ClienteRappelTableCompanion copyWith(
+      {Value<String>? clienteId,
       Value<String>? rappelId,
-      Value<String>? description,
-      Value<DateTime>? dateFrom,
-      Value<DateTime?>? dateTo,
+      Value<String>? descripcion,
+      Value<DateTime>? fechaDesDe,
+      Value<DateTime?>? fechaHasta,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return CustomerRappelTableCompanion(
-      customerId: customerId ?? this.customerId,
+    return ClienteRappelTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
       rappelId: rappelId ?? this.rappelId,
-      description: description ?? this.description,
-      dateFrom: dateFrom ?? this.dateFrom,
-      dateTo: dateTo ?? this.dateTo,
+      descripcion: descripcion ?? this.descripcion,
+      fechaDesDe: fechaDesDe ?? this.fechaDesDe,
+      fechaHasta: fechaHasta ?? this.fechaHasta,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -9958,20 +10055,20 @@ class CustomerRappelTableCompanion extends UpdateCompanion<CustomerRappelDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
     if (rappelId.present) {
       map['RAPPEL_ID'] = Variable<String>(rappelId.value);
     }
-    if (description.present) {
-      map['DESCRIPCION'] = Variable<String>(description.value);
+    if (descripcion.present) {
+      map['DESCRIPCION'] = Variable<String>(descripcion.value);
     }
-    if (dateFrom.present) {
-      map['FECHA_DESDE'] = Variable<DateTime>(dateFrom.value);
+    if (fechaDesDe.present) {
+      map['FECHA_DESDE'] = Variable<DateTime>(fechaDesDe.value);
     }
-    if (dateTo.present) {
-      map['FECHA_HASTA'] = Variable<DateTime>(dateTo.value);
+    if (fechaHasta.present) {
+      map['FECHA_HASTA'] = Variable<DateTime>(fechaHasta.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9984,12 +10081,12 @@ class CustomerRappelTableCompanion extends UpdateCompanion<CustomerRappelDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('CustomerRappelTableCompanion(')
-          ..write('customerId: $customerId, ')
+    return (StringBuffer('ClienteRappelTableCompanion(')
+          ..write('clienteId: $clienteId, ')
           ..write('rappelId: $rappelId, ')
-          ..write('description: $description, ')
-          ..write('dateFrom: $dateFrom, ')
-          ..write('dateTo: $dateTo, ')
+          ..write('descripcion: $descripcion, ')
+          ..write('fechaDesDe: $fechaDesDe, ')
+          ..write('fechaHasta: $fechaHasta, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -9997,15 +10094,15 @@ class CustomerRappelTableCompanion extends UpdateCompanion<CustomerRappelDTO> {
   }
 }
 
-class $CustomerRappelTableTable extends CustomerRappelTable
-    with TableInfo<$CustomerRappelTableTable, CustomerRappelDTO> {
+class $ClienteRappelTableTable extends ClienteRappelTable
+    with TableInfo<$ClienteRappelTableTable, ClienteRappelDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $CustomerRappelTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $ClienteRappelTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _rappelIdMeta = const VerificationMeta('rappelId');
@@ -10013,20 +10110,20 @@ class $CustomerRappelTableTable extends CustomerRappelTable
   late final GeneratedColumn<String> rappelId = GeneratedColumn<String>(
       'RAPPEL_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionMeta =
-      const VerificationMeta('description');
+  final VerificationMeta _descripcionMeta =
+      const VerificationMeta('descripcion');
   @override
-  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcion = GeneratedColumn<String>(
       'DESCRIPCION', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _dateFromMeta = const VerificationMeta('dateFrom');
+  final VerificationMeta _fechaDesDeMeta = const VerificationMeta('fechaDesDe');
   @override
-  late final GeneratedColumn<DateTime> dateFrom = GeneratedColumn<DateTime>(
+  late final GeneratedColumn<DateTime> fechaDesDe = GeneratedColumn<DateTime>(
       'FECHA_DESDE', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _dateToMeta = const VerificationMeta('dateTo');
+  final VerificationMeta _fechaHastaMeta = const VerificationMeta('fechaHasta');
   @override
-  late final GeneratedColumn<DateTime> dateTo = GeneratedColumn<DateTime>(
+  late final GeneratedColumn<DateTime> fechaHasta = GeneratedColumn<DateTime>(
       'FECHA_HASTA', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -10044,11 +10141,11 @@ class $CustomerRappelTableTable extends CustomerRappelTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
+        clienteId,
         rappelId,
-        description,
-        dateFrom,
-        dateTo,
+        descripcion,
+        fechaDesDe,
+        fechaHasta,
         lastUpdated,
         deleted
       ];
@@ -10057,17 +10154,15 @@ class $CustomerRappelTableTable extends CustomerRappelTable
   @override
   String get actualTableName => 'CLIENTES_RAPPELS';
   @override
-  VerificationContext validateIntegrity(Insertable<CustomerRappelDTO> instance,
+  VerificationContext validateIntegrity(Insertable<ClienteRappelDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('RAPPEL_ID')) {
       context.handle(_rappelIdMeta,
@@ -10077,21 +10172,25 @@ class $CustomerRappelTableTable extends CustomerRappelTable
     }
     if (data.containsKey('DESCRIPCION')) {
       context.handle(
-          _descriptionMeta,
-          description.isAcceptableOrUnknown(
-              data['DESCRIPCION']!, _descriptionMeta));
+          _descripcionMeta,
+          descripcion.isAcceptableOrUnknown(
+              data['DESCRIPCION']!, _descripcionMeta));
     } else if (isInserting) {
-      context.missing(_descriptionMeta);
+      context.missing(_descripcionMeta);
     }
     if (data.containsKey('FECHA_DESDE')) {
-      context.handle(_dateFromMeta,
-          dateFrom.isAcceptableOrUnknown(data['FECHA_DESDE']!, _dateFromMeta));
+      context.handle(
+          _fechaDesDeMeta,
+          fechaDesDe.isAcceptableOrUnknown(
+              data['FECHA_DESDE']!, _fechaDesDeMeta));
     } else if (isInserting) {
-      context.missing(_dateFromMeta);
+      context.missing(_fechaDesDeMeta);
     }
     if (data.containsKey('FECHA_HASTA')) {
-      context.handle(_dateToMeta,
-          dateTo.isAcceptableOrUnknown(data['FECHA_HASTA']!, _dateToMeta));
+      context.handle(
+          _fechaHastaMeta,
+          fechaHasta.isAcceptableOrUnknown(
+              data['FECHA_HASTA']!, _fechaHastaMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -10109,20 +10208,20 @@ class $CustomerRappelTableTable extends CustomerRappelTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {customerId, rappelId};
+  Set<GeneratedColumn> get $primaryKey => {clienteId, rappelId};
   @override
-  CustomerRappelDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ClienteRappelDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return CustomerRappelDTO(
-      customerId: attachedDatabase.options.types
+    return ClienteRappelDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       rappelId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RAPPEL_ID'])!,
-      description: attachedDatabase.options.types
+      descripcion: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
-      dateFrom: attachedDatabase.options.types
+      fechaDesDe: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_DESDE'])!,
-      dateTo: attachedDatabase.options.types
+      fechaHasta: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_HASTA']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -10132,44 +10231,44 @@ class $CustomerRappelTableTable extends CustomerRappelTable
   }
 
   @override
-  $CustomerRappelTableTable createAlias(String alias) {
-    return $CustomerRappelTableTable(attachedDatabase, alias);
+  $ClienteRappelTableTable createAlias(String alias) {
+    return $ClienteRappelTableTable(attachedDatabase, alias);
   }
 }
 
-class TopArticleTableCompanion extends UpdateCompanion<TopArticleDTO> {
-  final Value<String> articleId;
+class ArticuloTopTableCompanion extends UpdateCompanion<ArticuloTopDTO> {
+  final Value<String> articuloId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const TopArticleTableCompanion({
-    this.articleId = const Value.absent(),
+  const ArticuloTopTableCompanion({
+    this.articuloId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  TopArticleTableCompanion.insert({
-    required String articleId,
+  ArticuloTopTableCompanion.insert({
+    required String articuloId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
+  })  : articuloId = Value(articuloId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<TopArticleDTO> custom({
-    Expression<String>? articleId,
+  static Insertable<ArticuloTopDTO> custom({
+    Expression<String>? articuloId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  TopArticleTableCompanion copyWith(
-      {Value<String>? articleId,
+  ArticuloTopTableCompanion copyWith(
+      {Value<String>? articuloId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return TopArticleTableCompanion(
-      articleId: articleId ?? this.articleId,
+    return ArticuloTopTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -10178,8 +10277,8 @@ class TopArticleTableCompanion extends UpdateCompanion<TopArticleDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -10192,8 +10291,8 @@ class TopArticleTableCompanion extends UpdateCompanion<TopArticleDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('TopArticleTableCompanion(')
-          ..write('articleId: $articleId, ')
+    return (StringBuffer('ArticuloTopTableCompanion(')
+          ..write('articuloId: $articuloId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -10201,15 +10300,15 @@ class TopArticleTableCompanion extends UpdateCompanion<TopArticleDTO> {
   }
 }
 
-class $TopArticleTableTable extends TopArticleTable
-    with TableInfo<$TopArticleTableTable, TopArticleDTO> {
+class $ArticuloTopTableTable extends ArticuloTopTable
+    with TableInfo<$ArticuloTopTableTable, ArticuloTopDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $TopArticleTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloTopTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -10226,23 +10325,23 @@ class $TopArticleTableTable extends TopArticleTable
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
-  List<GeneratedColumn> get $columns => [articleId, lastUpdated, deleted];
+  List<GeneratedColumn> get $columns => [articuloId, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ESTADISTICAS_ARTICULOS_TOP';
   @override
   String get actualTableName => 'ESTADISTICAS_ARTICULOS_TOP';
   @override
-  VerificationContext validateIntegrity(Insertable<TopArticleDTO> instance,
+  VerificationContext validateIntegrity(Insertable<ArticuloTopDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -10260,12 +10359,12 @@ class $TopArticleTableTable extends TopArticleTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId};
+  Set<GeneratedColumn> get $primaryKey => {articuloId};
   @override
-  TopArticleDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloTopDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return TopArticleDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloTopDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -10275,505 +10374,502 @@ class $TopArticleTableTable extends TopArticleTable
   }
 
   @override
-  $TopArticleTableTable createAlias(String alias) {
-    return $TopArticleTableTable(attachedDatabase, alias);
+  $ArticuloTopTableTable createAlias(String alias) {
+    return $ArticuloTopTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
+class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   final Value<String> id;
-  final Value<String> descriptionES;
-  final Value<String?> descriptionEN;
-  final Value<String?> descriptionFR;
-  final Value<String?> descriptionDE;
-  final Value<String?> descriptionCA;
-  final Value<String?> descriptionGB;
-  final Value<String?> descriptionHU;
-  final Value<String?> descriptionIT;
-  final Value<String?> descriptionNL;
-  final Value<String?> descriptionPL;
-  final Value<String?> descriptionPT;
-  final Value<String?> descriptionRO;
-  final Value<String?> descriptionRU;
-  final Value<String?> descriptionCN;
-  final Value<String?> descriptionEL;
-  final Value<String?> familyId;
-  final Value<String?> subfamilyId;
-  final Value<double> minimumSales;
-  final Value<double> multipleSales;
-  final Value<double> subboxUnits;
-  final Value<double> boxUnits;
-  final Value<double> paletUnits;
-  final Value<String> isActiveWeb;
-  final Value<String> isActiveApp;
-  final Value<String> inCatalogue;
-  final Value<String> discontinued;
-  final Value<String?> cataloguePage;
-  final Value<String?> cataloguePage2;
-  final Value<double> weightKg;
-  final Value<double> largeCm;
-  final Value<double> widthCm;
-  final Value<double> heightCm;
-  final Value<String?> summaryES;
-  final Value<String?> summaryEN;
-  final Value<String?> summaryFR;
-  final Value<String?> summaryDE;
-  final Value<String?> summaryCA;
-  final Value<String?> summaryGB;
-  final Value<String?> summaryHU;
-  final Value<String?> summaryIT;
-  final Value<String?> summaryNL;
-  final Value<String?> summaryPL;
-  final Value<String?> summaryPT;
-  final Value<String?> summaryRO;
-  final Value<String?> summaryRU;
-  final Value<String?> summaryCN;
-  final Value<String?> summaryEL;
-  final Value<double?> availableStock;
-  final Value<double?> currentSales;
-  final Value<double?> previousSales;
-  final Value<double?> purchasesDeliveryQuantity1;
-  final Value<double?> purchasesDeliveryQuantity2;
-  final Value<double?> purchasesDeliveryQuantity3;
-  final Value<double?> purchasesDeliveryQuantityMore3;
-  final Value<DateTime?> purchasesDeliveryDate1;
-  final Value<DateTime?> purchasesDeliveryDate2;
-  final Value<DateTime?> purchasesDeliveryDate3;
-  final Value<String?> purchasesDeliveryStatus1;
-  final Value<String?> purchasesDeliveryStatus2;
-  final Value<String?> purchasesDeliveryStatus3;
-  final Value<String?> principalImage;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<String?> familiaId;
+  final Value<String?> subfamiliaId;
+  final Value<double> ventaMinimo;
+  final Value<double> ventaMultiplo;
+  final Value<double> unidadesSubcaja;
+  final Value<double> unidadesCaja;
+  final Value<double> unidadesPalet;
+  final Value<String> activoWeb;
+  final Value<String> activoApp;
+  final Value<String> enCatalogo;
+  final Value<String> descatalogado;
+  final Value<String?> paginaEnCatalgo;
+  final Value<String?> paginaEnCatalgo2;
+  final Value<double> pesoKg;
+  final Value<double> largoCm;
+  final Value<double> anchoCm;
+  final Value<double> altoCm;
+  final Value<String?> resumenES;
+  final Value<String?> resumenEN;
+  final Value<String?> resumenFR;
+  final Value<String?> resumenDE;
+  final Value<String?> resumenCA;
+  final Value<String?> resumenGB;
+  final Value<String?> resumenHU;
+  final Value<String?> resumenIT;
+  final Value<String?> resumenNL;
+  final Value<String?> resumenPL;
+  final Value<String?> resumenPT;
+  final Value<String?> resumenRO;
+  final Value<String?> resumenRU;
+  final Value<String?> resumenCN;
+  final Value<String?> resumenEL;
+  final Value<double?> stockDisponible;
+  final Value<double?> ventasActual;
+  final Value<double?> ventasAnterior;
+  final Value<double?> comprasEntregaCantidad1;
+  final Value<double?> comprasEntregaCantidad2;
+  final Value<double?> comprasEntregaCantidad3;
+  final Value<double?> comprasEntregaCantidadMas3;
+  final Value<DateTime?> comprasEntregaFecha1;
+  final Value<DateTime?> comprasEntregaFecha2;
+  final Value<DateTime?> comprasEntregaFecha3;
+  final Value<String?> comprasEntregaEstado1;
+  final Value<String?> comprasEntregaEstado2;
+  final Value<String?> comprasEntregaEstado3;
+  final Value<String?> imagenPrincipal;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleTableCompanion({
+  const ArticuloTableCompanion({
     this.id = const Value.absent(),
-    this.descriptionES = const Value.absent(),
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
-    this.familyId = const Value.absent(),
-    this.subfamilyId = const Value.absent(),
-    this.minimumSales = const Value.absent(),
-    this.multipleSales = const Value.absent(),
-    this.subboxUnits = const Value.absent(),
-    this.boxUnits = const Value.absent(),
-    this.paletUnits = const Value.absent(),
-    this.isActiveWeb = const Value.absent(),
-    this.isActiveApp = const Value.absent(),
-    this.inCatalogue = const Value.absent(),
-    this.discontinued = const Value.absent(),
-    this.cataloguePage = const Value.absent(),
-    this.cataloguePage2 = const Value.absent(),
-    this.weightKg = const Value.absent(),
-    this.largeCm = const Value.absent(),
-    this.widthCm = const Value.absent(),
-    this.heightCm = const Value.absent(),
-    this.summaryES = const Value.absent(),
-    this.summaryEN = const Value.absent(),
-    this.summaryFR = const Value.absent(),
-    this.summaryDE = const Value.absent(),
-    this.summaryCA = const Value.absent(),
-    this.summaryGB = const Value.absent(),
-    this.summaryHU = const Value.absent(),
-    this.summaryIT = const Value.absent(),
-    this.summaryNL = const Value.absent(),
-    this.summaryPL = const Value.absent(),
-    this.summaryPT = const Value.absent(),
-    this.summaryRO = const Value.absent(),
-    this.summaryRU = const Value.absent(),
-    this.summaryCN = const Value.absent(),
-    this.summaryEL = const Value.absent(),
-    this.availableStock = const Value.absent(),
-    this.currentSales = const Value.absent(),
-    this.previousSales = const Value.absent(),
-    this.purchasesDeliveryQuantity1 = const Value.absent(),
-    this.purchasesDeliveryQuantity2 = const Value.absent(),
-    this.purchasesDeliveryQuantity3 = const Value.absent(),
-    this.purchasesDeliveryQuantityMore3 = const Value.absent(),
-    this.purchasesDeliveryDate1 = const Value.absent(),
-    this.purchasesDeliveryDate2 = const Value.absent(),
-    this.purchasesDeliveryDate3 = const Value.absent(),
-    this.purchasesDeliveryStatus1 = const Value.absent(),
-    this.purchasesDeliveryStatus2 = const Value.absent(),
-    this.purchasesDeliveryStatus3 = const Value.absent(),
-    this.principalImage = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    this.ventaMinimo = const Value.absent(),
+    this.ventaMultiplo = const Value.absent(),
+    this.unidadesSubcaja = const Value.absent(),
+    this.unidadesCaja = const Value.absent(),
+    this.unidadesPalet = const Value.absent(),
+    this.activoWeb = const Value.absent(),
+    this.activoApp = const Value.absent(),
+    this.enCatalogo = const Value.absent(),
+    this.descatalogado = const Value.absent(),
+    this.paginaEnCatalgo = const Value.absent(),
+    this.paginaEnCatalgo2 = const Value.absent(),
+    this.pesoKg = const Value.absent(),
+    this.largoCm = const Value.absent(),
+    this.anchoCm = const Value.absent(),
+    this.altoCm = const Value.absent(),
+    this.resumenES = const Value.absent(),
+    this.resumenEN = const Value.absent(),
+    this.resumenFR = const Value.absent(),
+    this.resumenDE = const Value.absent(),
+    this.resumenCA = const Value.absent(),
+    this.resumenGB = const Value.absent(),
+    this.resumenHU = const Value.absent(),
+    this.resumenIT = const Value.absent(),
+    this.resumenNL = const Value.absent(),
+    this.resumenPL = const Value.absent(),
+    this.resumenPT = const Value.absent(),
+    this.resumenRO = const Value.absent(),
+    this.resumenRU = const Value.absent(),
+    this.resumenCN = const Value.absent(),
+    this.resumenEL = const Value.absent(),
+    this.stockDisponible = const Value.absent(),
+    this.ventasActual = const Value.absent(),
+    this.ventasAnterior = const Value.absent(),
+    this.comprasEntregaCantidad1 = const Value.absent(),
+    this.comprasEntregaCantidad2 = const Value.absent(),
+    this.comprasEntregaCantidad3 = const Value.absent(),
+    this.comprasEntregaCantidadMas3 = const Value.absent(),
+    this.comprasEntregaFecha1 = const Value.absent(),
+    this.comprasEntregaFecha2 = const Value.absent(),
+    this.comprasEntregaFecha3 = const Value.absent(),
+    this.comprasEntregaEstado1 = const Value.absent(),
+    this.comprasEntregaEstado2 = const Value.absent(),
+    this.comprasEntregaEstado3 = const Value.absent(),
+    this.imagenPrincipal = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleTableCompanion.insert({
+  ArticuloTableCompanion.insert({
     required String id,
-    required String descriptionES,
-    this.descriptionEN = const Value.absent(),
-    this.descriptionFR = const Value.absent(),
-    this.descriptionDE = const Value.absent(),
-    this.descriptionCA = const Value.absent(),
-    this.descriptionGB = const Value.absent(),
-    this.descriptionHU = const Value.absent(),
-    this.descriptionIT = const Value.absent(),
-    this.descriptionNL = const Value.absent(),
-    this.descriptionPL = const Value.absent(),
-    this.descriptionPT = const Value.absent(),
-    this.descriptionRO = const Value.absent(),
-    this.descriptionRU = const Value.absent(),
-    this.descriptionCN = const Value.absent(),
-    this.descriptionEL = const Value.absent(),
-    this.familyId = const Value.absent(),
-    this.subfamilyId = const Value.absent(),
-    required double minimumSales,
-    required double multipleSales,
-    required double subboxUnits,
-    required double boxUnits,
-    required double paletUnits,
-    required String isActiveWeb,
-    required String isActiveApp,
-    required String inCatalogue,
-    required String discontinued,
-    this.cataloguePage = const Value.absent(),
-    this.cataloguePage2 = const Value.absent(),
-    required double weightKg,
-    required double largeCm,
-    required double widthCm,
-    required double heightCm,
-    this.summaryES = const Value.absent(),
-    this.summaryEN = const Value.absent(),
-    this.summaryFR = const Value.absent(),
-    this.summaryDE = const Value.absent(),
-    this.summaryCA = const Value.absent(),
-    this.summaryGB = const Value.absent(),
-    this.summaryHU = const Value.absent(),
-    this.summaryIT = const Value.absent(),
-    this.summaryNL = const Value.absent(),
-    this.summaryPL = const Value.absent(),
-    this.summaryPT = const Value.absent(),
-    this.summaryRO = const Value.absent(),
-    this.summaryRU = const Value.absent(),
-    this.summaryCN = const Value.absent(),
-    this.summaryEL = const Value.absent(),
-    this.availableStock = const Value.absent(),
-    this.currentSales = const Value.absent(),
-    this.previousSales = const Value.absent(),
-    this.purchasesDeliveryQuantity1 = const Value.absent(),
-    this.purchasesDeliveryQuantity2 = const Value.absent(),
-    this.purchasesDeliveryQuantity3 = const Value.absent(),
-    this.purchasesDeliveryQuantityMore3 = const Value.absent(),
-    this.purchasesDeliveryDate1 = const Value.absent(),
-    this.purchasesDeliveryDate2 = const Value.absent(),
-    this.purchasesDeliveryDate3 = const Value.absent(),
-    this.purchasesDeliveryStatus1 = const Value.absent(),
-    this.purchasesDeliveryStatus2 = const Value.absent(),
-    this.purchasesDeliveryStatus3 = const Value.absent(),
-    this.principalImage = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    required double ventaMinimo,
+    required double ventaMultiplo,
+    required double unidadesSubcaja,
+    required double unidadesCaja,
+    required double unidadesPalet,
+    required String activoWeb,
+    required String activoApp,
+    required String enCatalogo,
+    required String descatalogado,
+    this.paginaEnCatalgo = const Value.absent(),
+    this.paginaEnCatalgo2 = const Value.absent(),
+    required double pesoKg,
+    required double largoCm,
+    required double anchoCm,
+    required double altoCm,
+    this.resumenES = const Value.absent(),
+    this.resumenEN = const Value.absent(),
+    this.resumenFR = const Value.absent(),
+    this.resumenDE = const Value.absent(),
+    this.resumenCA = const Value.absent(),
+    this.resumenGB = const Value.absent(),
+    this.resumenHU = const Value.absent(),
+    this.resumenIT = const Value.absent(),
+    this.resumenNL = const Value.absent(),
+    this.resumenPL = const Value.absent(),
+    this.resumenPT = const Value.absent(),
+    this.resumenRO = const Value.absent(),
+    this.resumenRU = const Value.absent(),
+    this.resumenCN = const Value.absent(),
+    this.resumenEL = const Value.absent(),
+    this.stockDisponible = const Value.absent(),
+    this.ventasActual = const Value.absent(),
+    this.ventasAnterior = const Value.absent(),
+    this.comprasEntregaCantidad1 = const Value.absent(),
+    this.comprasEntregaCantidad2 = const Value.absent(),
+    this.comprasEntregaCantidad3 = const Value.absent(),
+    this.comprasEntregaCantidadMas3 = const Value.absent(),
+    this.comprasEntregaFecha1 = const Value.absent(),
+    this.comprasEntregaFecha2 = const Value.absent(),
+    this.comprasEntregaFecha3 = const Value.absent(),
+    this.comprasEntregaEstado1 = const Value.absent(),
+    this.comprasEntregaEstado2 = const Value.absent(),
+    this.comprasEntregaEstado3 = const Value.absent(),
+    this.imagenPrincipal = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        descriptionES = Value(descriptionES),
-        minimumSales = Value(minimumSales),
-        multipleSales = Value(multipleSales),
-        subboxUnits = Value(subboxUnits),
-        boxUnits = Value(boxUnits),
-        paletUnits = Value(paletUnits),
-        isActiveWeb = Value(isActiveWeb),
-        isActiveApp = Value(isActiveApp),
-        inCatalogue = Value(inCatalogue),
-        discontinued = Value(discontinued),
-        weightKg = Value(weightKg),
-        largeCm = Value(largeCm),
-        widthCm = Value(widthCm),
-        heightCm = Value(heightCm),
+        descripcionES = Value(descripcionES),
+        ventaMinimo = Value(ventaMinimo),
+        ventaMultiplo = Value(ventaMultiplo),
+        unidadesSubcaja = Value(unidadesSubcaja),
+        unidadesCaja = Value(unidadesCaja),
+        unidadesPalet = Value(unidadesPalet),
+        activoWeb = Value(activoWeb),
+        activoApp = Value(activoApp),
+        enCatalogo = Value(enCatalogo),
+        descatalogado = Value(descatalogado),
+        pesoKg = Value(pesoKg),
+        largoCm = Value(largoCm),
+        anchoCm = Value(anchoCm),
+        altoCm = Value(altoCm),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleDTO> custom({
+  static Insertable<ArticuloDTO> custom({
     Expression<String>? id,
-    Expression<String>? descriptionES,
-    Expression<String>? descriptionEN,
-    Expression<String>? descriptionFR,
-    Expression<String>? descriptionDE,
-    Expression<String>? descriptionCA,
-    Expression<String>? descriptionGB,
-    Expression<String>? descriptionHU,
-    Expression<String>? descriptionIT,
-    Expression<String>? descriptionNL,
-    Expression<String>? descriptionPL,
-    Expression<String>? descriptionPT,
-    Expression<String>? descriptionRO,
-    Expression<String>? descriptionRU,
-    Expression<String>? descriptionCN,
-    Expression<String>? descriptionEL,
-    Expression<String>? familyId,
-    Expression<String>? subfamilyId,
-    Expression<double>? minimumSales,
-    Expression<double>? multipleSales,
-    Expression<double>? subboxUnits,
-    Expression<double>? boxUnits,
-    Expression<double>? paletUnits,
-    Expression<String>? isActiveWeb,
-    Expression<String>? isActiveApp,
-    Expression<String>? inCatalogue,
-    Expression<String>? discontinued,
-    Expression<String>? cataloguePage,
-    Expression<String>? cataloguePage2,
-    Expression<double>? weightKg,
-    Expression<double>? largeCm,
-    Expression<double>? widthCm,
-    Expression<double>? heightCm,
-    Expression<String>? summaryES,
-    Expression<String>? summaryEN,
-    Expression<String>? summaryFR,
-    Expression<String>? summaryDE,
-    Expression<String>? summaryCA,
-    Expression<String>? summaryGB,
-    Expression<String>? summaryHU,
-    Expression<String>? summaryIT,
-    Expression<String>? summaryNL,
-    Expression<String>? summaryPL,
-    Expression<String>? summaryPT,
-    Expression<String>? summaryRO,
-    Expression<String>? summaryRU,
-    Expression<String>? summaryCN,
-    Expression<String>? summaryEL,
-    Expression<double>? availableStock,
-    Expression<double>? currentSales,
-    Expression<double>? previousSales,
-    Expression<double>? purchasesDeliveryQuantity1,
-    Expression<double>? purchasesDeliveryQuantity2,
-    Expression<double>? purchasesDeliveryQuantity3,
-    Expression<double>? purchasesDeliveryQuantityMore3,
-    Expression<DateTime>? purchasesDeliveryDate1,
-    Expression<DateTime>? purchasesDeliveryDate2,
-    Expression<DateTime>? purchasesDeliveryDate3,
-    Expression<String>? purchasesDeliveryStatus1,
-    Expression<String>? purchasesDeliveryStatus2,
-    Expression<String>? purchasesDeliveryStatus3,
-    Expression<String>? principalImage,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<String>? familiaId,
+    Expression<String>? subfamiliaId,
+    Expression<double>? ventaMinimo,
+    Expression<double>? ventaMultiplo,
+    Expression<double>? unidadesSubcaja,
+    Expression<double>? unidadesCaja,
+    Expression<double>? unidadesPalet,
+    Expression<String>? activoWeb,
+    Expression<String>? activoApp,
+    Expression<String>? enCatalogo,
+    Expression<String>? descatalogado,
+    Expression<String>? paginaEnCatalgo,
+    Expression<String>? paginaEnCatalgo2,
+    Expression<double>? pesoKg,
+    Expression<double>? largoCm,
+    Expression<double>? anchoCm,
+    Expression<double>? altoCm,
+    Expression<String>? resumenES,
+    Expression<String>? resumenEN,
+    Expression<String>? resumenFR,
+    Expression<String>? resumenDE,
+    Expression<String>? resumenCA,
+    Expression<String>? resumenGB,
+    Expression<String>? resumenHU,
+    Expression<String>? resumenIT,
+    Expression<String>? resumenNL,
+    Expression<String>? resumenPL,
+    Expression<String>? resumenPT,
+    Expression<String>? resumenRO,
+    Expression<String>? resumenRU,
+    Expression<String>? resumenCN,
+    Expression<String>? resumenEL,
+    Expression<double>? stockDisponible,
+    Expression<double>? ventasActual,
+    Expression<double>? ventasAnterior,
+    Expression<double>? comprasEntregaCantidad1,
+    Expression<double>? comprasEntregaCantidad2,
+    Expression<double>? comprasEntregaCantidad3,
+    Expression<double>? comprasEntregaCantidadMas3,
+    Expression<DateTime>? comprasEntregaFecha1,
+    Expression<DateTime>? comprasEntregaFecha2,
+    Expression<DateTime>? comprasEntregaFecha3,
+    Expression<String>? comprasEntregaEstado1,
+    Expression<String>? comprasEntregaEstado2,
+    Expression<String>? comprasEntregaEstado3,
+    Expression<String>? imagenPrincipal,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ARTICULO_ID': id,
-      if (descriptionES != null) 'DESCRIPCION_ES': descriptionES,
-      if (descriptionEN != null) 'DESCRIPCION_EN': descriptionEN,
-      if (descriptionFR != null) 'DESCRIPCION_FR': descriptionFR,
-      if (descriptionDE != null) 'DESCRIPCION_DE': descriptionDE,
-      if (descriptionCA != null) 'DESCRIPCION_CA': descriptionCA,
-      if (descriptionGB != null) 'DESCRIPCION_GB': descriptionGB,
-      if (descriptionHU != null) 'DESCRIPCION_HU': descriptionHU,
-      if (descriptionIT != null) 'DESCRIPCION_IT': descriptionIT,
-      if (descriptionNL != null) 'DESCRIPCION_NL': descriptionNL,
-      if (descriptionPL != null) 'DESCRIPCION_PL': descriptionPL,
-      if (descriptionPT != null) 'DESCRIPCION_PT': descriptionPT,
-      if (descriptionRO != null) 'DESCRIPCION_RO': descriptionRO,
-      if (descriptionRU != null) 'DESCRIPCION_RU': descriptionRU,
-      if (descriptionCN != null) 'DESCRIPCION_CN': descriptionCN,
-      if (descriptionEL != null) 'DESCRIPCION_EL': descriptionEL,
-      if (familyId != null) 'FAMILIA_ID': familyId,
-      if (subfamilyId != null) 'SUBFAMILIA_ID': subfamilyId,
-      if (minimumSales != null) 'VENTA_MINIMO': minimumSales,
-      if (multipleSales != null) 'VENTA_MULTIPLO': multipleSales,
-      if (subboxUnits != null) 'UNIDADES_SUBCAJA': subboxUnits,
-      if (boxUnits != null) 'UNIDADES_CAJA': boxUnits,
-      if (paletUnits != null) 'UNIDADES_PALET': paletUnits,
-      if (isActiveWeb != null) 'ACTIVO_WEB': isActiveWeb,
-      if (isActiveApp != null) 'ACTIVO_APP': isActiveApp,
-      if (inCatalogue != null) 'EN_CATALOGO': inCatalogue,
-      if (discontinued != null) 'DESCATALOGADO': discontinued,
-      if (cataloguePage != null) 'PAGINA_EN_CATALOGO': cataloguePage,
-      if (cataloguePage2 != null) 'PAGINA_EN_CATALOGO2': cataloguePage2,
-      if (weightKg != null) 'PESO_KG': weightKg,
-      if (largeCm != null) 'LARGO_CM': largeCm,
-      if (widthCm != null) 'ANCHO_CM': widthCm,
-      if (heightCm != null) 'ALTO_CM': heightCm,
-      if (summaryES != null) 'RESUMEN_ES': summaryES,
-      if (summaryEN != null) 'RESUMEN_EN': summaryEN,
-      if (summaryFR != null) 'RESUMEN_FR': summaryFR,
-      if (summaryDE != null) 'RESUMEN_DE': summaryDE,
-      if (summaryCA != null) 'RESUMEN_CA': summaryCA,
-      if (summaryGB != null) 'RESUMEN_GB': summaryGB,
-      if (summaryHU != null) 'RESUMEN_HU': summaryHU,
-      if (summaryIT != null) 'RESUMEN_IT': summaryIT,
-      if (summaryNL != null) 'RESUMEN_NL': summaryNL,
-      if (summaryPL != null) 'RESUMEN_PL': summaryPL,
-      if (summaryPT != null) 'RESUMEN_PT': summaryPT,
-      if (summaryRO != null) 'RESUMEN_RO': summaryRO,
-      if (summaryRU != null) 'RESUMEN_RU': summaryRU,
-      if (summaryCN != null) 'RESUMEN_CN': summaryCN,
-      if (summaryEL != null) 'RESUMEN_EL': summaryEL,
-      if (availableStock != null) 'STOCK_DISPONIBLE': availableStock,
-      if (currentSales != null) 'VENTAS_ACTUAL': currentSales,
-      if (previousSales != null) 'VENTAS_ANTERIOR': previousSales,
-      if (purchasesDeliveryQuantity1 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_1': purchasesDeliveryQuantity1,
-      if (purchasesDeliveryQuantity2 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_2': purchasesDeliveryQuantity2,
-      if (purchasesDeliveryQuantity3 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_3': purchasesDeliveryQuantity3,
-      if (purchasesDeliveryQuantityMore3 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_MAS_3': purchasesDeliveryQuantityMore3,
-      if (purchasesDeliveryDate1 != null)
-        'COMPRAS_ENTREGA_FECHA_1': purchasesDeliveryDate1,
-      if (purchasesDeliveryDate2 != null)
-        'COMPRAS_ENTREGA_FECHA_2': purchasesDeliveryDate2,
-      if (purchasesDeliveryDate3 != null)
-        'COMPRAS_ENTREGA_FECHA_3': purchasesDeliveryDate3,
-      if (purchasesDeliveryStatus1 != null)
-        'COMPRAS_ENTREGA_ESTADO_1': purchasesDeliveryStatus1,
-      if (purchasesDeliveryStatus2 != null)
-        'COMPRAS_ENTREGA_ESTADO_2': purchasesDeliveryStatus2,
-      if (purchasesDeliveryStatus3 != null)
-        'COMPRAS_ENTREGA_ESTADO_3': purchasesDeliveryStatus3,
-      if (principalImage != null) 'IMAGEN_PRINCIPAL': principalImage,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
+      if (ventaMinimo != null) 'VENTA_MINIMO': ventaMinimo,
+      if (ventaMultiplo != null) 'VENTA_MULTIPLO': ventaMultiplo,
+      if (unidadesSubcaja != null) 'UNIDADES_SUBCAJA': unidadesSubcaja,
+      if (unidadesCaja != null) 'UNIDADES_CAJA': unidadesCaja,
+      if (unidadesPalet != null) 'UNIDADES_PALET': unidadesPalet,
+      if (activoWeb != null) 'ACTIVO_WEB': activoWeb,
+      if (activoApp != null) 'ACTIVO_APP': activoApp,
+      if (enCatalogo != null) 'EN_CATALOGO': enCatalogo,
+      if (descatalogado != null) 'DESCATALOGADO': descatalogado,
+      if (paginaEnCatalgo != null) 'PAGINA_EN_CATALOGO': paginaEnCatalgo,
+      if (paginaEnCatalgo2 != null) 'PAGINA_EN_CATALOGO2': paginaEnCatalgo2,
+      if (pesoKg != null) 'PESO_KG': pesoKg,
+      if (largoCm != null) 'LARGO_CM': largoCm,
+      if (anchoCm != null) 'ANCHO_CM': anchoCm,
+      if (altoCm != null) 'ALTO_CM': altoCm,
+      if (resumenES != null) 'RESUMEN_ES': resumenES,
+      if (resumenEN != null) 'RESUMEN_EN': resumenEN,
+      if (resumenFR != null) 'RESUMEN_FR': resumenFR,
+      if (resumenDE != null) 'RESUMEN_DE': resumenDE,
+      if (resumenCA != null) 'RESUMEN_CA': resumenCA,
+      if (resumenGB != null) 'RESUMEN_GB': resumenGB,
+      if (resumenHU != null) 'RESUMEN_HU': resumenHU,
+      if (resumenIT != null) 'RESUMEN_IT': resumenIT,
+      if (resumenNL != null) 'RESUMEN_NL': resumenNL,
+      if (resumenPL != null) 'RESUMEN_PL': resumenPL,
+      if (resumenPT != null) 'RESUMEN_PT': resumenPT,
+      if (resumenRO != null) 'RESUMEN_RO': resumenRO,
+      if (resumenRU != null) 'RESUMEN_RU': resumenRU,
+      if (resumenCN != null) 'RESUMEN_CN': resumenCN,
+      if (resumenEL != null) 'RESUMEN_EL': resumenEL,
+      if (stockDisponible != null) 'STOCK_DISPONIBLE': stockDisponible,
+      if (ventasActual != null) 'VENTAS_ACTUAL': ventasActual,
+      if (ventasAnterior != null) 'VENTAS_ANTERIOR': ventasAnterior,
+      if (comprasEntregaCantidad1 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_1': comprasEntregaCantidad1,
+      if (comprasEntregaCantidad2 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_2': comprasEntregaCantidad2,
+      if (comprasEntregaCantidad3 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_3': comprasEntregaCantidad3,
+      if (comprasEntregaCantidadMas3 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_MAS_3': comprasEntregaCantidadMas3,
+      if (comprasEntregaFecha1 != null)
+        'COMPRAS_ENTREGA_FECHA_1': comprasEntregaFecha1,
+      if (comprasEntregaFecha2 != null)
+        'COMPRAS_ENTREGA_FECHA_2': comprasEntregaFecha2,
+      if (comprasEntregaFecha3 != null)
+        'COMPRAS_ENTREGA_FECHA_3': comprasEntregaFecha3,
+      if (comprasEntregaEstado1 != null)
+        'COMPRAS_ENTREGA_ESTADO_1': comprasEntregaEstado1,
+      if (comprasEntregaEstado2 != null)
+        'COMPRAS_ENTREGA_ESTADO_2': comprasEntregaEstado2,
+      if (comprasEntregaEstado3 != null)
+        'COMPRAS_ENTREGA_ESTADO_3': comprasEntregaEstado3,
+      if (imagenPrincipal != null) 'IMAGEN_PRINCIPAL': imagenPrincipal,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleTableCompanion copyWith(
+  ArticuloTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? descriptionES,
-      Value<String?>? descriptionEN,
-      Value<String?>? descriptionFR,
-      Value<String?>? descriptionDE,
-      Value<String?>? descriptionCA,
-      Value<String?>? descriptionGB,
-      Value<String?>? descriptionHU,
-      Value<String?>? descriptionIT,
-      Value<String?>? descriptionNL,
-      Value<String?>? descriptionPL,
-      Value<String?>? descriptionPT,
-      Value<String?>? descriptionRO,
-      Value<String?>? descriptionRU,
-      Value<String?>? descriptionCN,
-      Value<String?>? descriptionEL,
-      Value<String?>? familyId,
-      Value<String?>? subfamilyId,
-      Value<double>? minimumSales,
-      Value<double>? multipleSales,
-      Value<double>? subboxUnits,
-      Value<double>? boxUnits,
-      Value<double>? paletUnits,
-      Value<String>? isActiveWeb,
-      Value<String>? isActiveApp,
-      Value<String>? inCatalogue,
-      Value<String>? discontinued,
-      Value<String?>? cataloguePage,
-      Value<String?>? cataloguePage2,
-      Value<double>? weightKg,
-      Value<double>? largeCm,
-      Value<double>? widthCm,
-      Value<double>? heightCm,
-      Value<String?>? summaryES,
-      Value<String?>? summaryEN,
-      Value<String?>? summaryFR,
-      Value<String?>? summaryDE,
-      Value<String?>? summaryCA,
-      Value<String?>? summaryGB,
-      Value<String?>? summaryHU,
-      Value<String?>? summaryIT,
-      Value<String?>? summaryNL,
-      Value<String?>? summaryPL,
-      Value<String?>? summaryPT,
-      Value<String?>? summaryRO,
-      Value<String?>? summaryRU,
-      Value<String?>? summaryCN,
-      Value<String?>? summaryEL,
-      Value<double?>? availableStock,
-      Value<double?>? currentSales,
-      Value<double?>? previousSales,
-      Value<double?>? purchasesDeliveryQuantity1,
-      Value<double?>? purchasesDeliveryQuantity2,
-      Value<double?>? purchasesDeliveryQuantity3,
-      Value<double?>? purchasesDeliveryQuantityMore3,
-      Value<DateTime?>? purchasesDeliveryDate1,
-      Value<DateTime?>? purchasesDeliveryDate2,
-      Value<DateTime?>? purchasesDeliveryDate3,
-      Value<String?>? purchasesDeliveryStatus1,
-      Value<String?>? purchasesDeliveryStatus2,
-      Value<String?>? purchasesDeliveryStatus3,
-      Value<String?>? principalImage,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<String?>? familiaId,
+      Value<String?>? subfamiliaId,
+      Value<double>? ventaMinimo,
+      Value<double>? ventaMultiplo,
+      Value<double>? unidadesSubcaja,
+      Value<double>? unidadesCaja,
+      Value<double>? unidadesPalet,
+      Value<String>? activoWeb,
+      Value<String>? activoApp,
+      Value<String>? enCatalogo,
+      Value<String>? descatalogado,
+      Value<String?>? paginaEnCatalgo,
+      Value<String?>? paginaEnCatalgo2,
+      Value<double>? pesoKg,
+      Value<double>? largoCm,
+      Value<double>? anchoCm,
+      Value<double>? altoCm,
+      Value<String?>? resumenES,
+      Value<String?>? resumenEN,
+      Value<String?>? resumenFR,
+      Value<String?>? resumenDE,
+      Value<String?>? resumenCA,
+      Value<String?>? resumenGB,
+      Value<String?>? resumenHU,
+      Value<String?>? resumenIT,
+      Value<String?>? resumenNL,
+      Value<String?>? resumenPL,
+      Value<String?>? resumenPT,
+      Value<String?>? resumenRO,
+      Value<String?>? resumenRU,
+      Value<String?>? resumenCN,
+      Value<String?>? resumenEL,
+      Value<double?>? stockDisponible,
+      Value<double?>? ventasActual,
+      Value<double?>? ventasAnterior,
+      Value<double?>? comprasEntregaCantidad1,
+      Value<double?>? comprasEntregaCantidad2,
+      Value<double?>? comprasEntregaCantidad3,
+      Value<double?>? comprasEntregaCantidadMas3,
+      Value<DateTime?>? comprasEntregaFecha1,
+      Value<DateTime?>? comprasEntregaFecha2,
+      Value<DateTime?>? comprasEntregaFecha3,
+      Value<String?>? comprasEntregaEstado1,
+      Value<String?>? comprasEntregaEstado2,
+      Value<String?>? comprasEntregaEstado3,
+      Value<String?>? imagenPrincipal,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleTableCompanion(
+    return ArticuloTableCompanion(
       id: id ?? this.id,
-      descriptionES: descriptionES ?? this.descriptionES,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      descriptionFR: descriptionFR ?? this.descriptionFR,
-      descriptionDE: descriptionDE ?? this.descriptionDE,
-      descriptionCA: descriptionCA ?? this.descriptionCA,
-      descriptionGB: descriptionGB ?? this.descriptionGB,
-      descriptionHU: descriptionHU ?? this.descriptionHU,
-      descriptionIT: descriptionIT ?? this.descriptionIT,
-      descriptionNL: descriptionNL ?? this.descriptionNL,
-      descriptionPL: descriptionPL ?? this.descriptionPL,
-      descriptionPT: descriptionPT ?? this.descriptionPT,
-      descriptionRO: descriptionRO ?? this.descriptionRO,
-      descriptionRU: descriptionRU ?? this.descriptionRU,
-      descriptionCN: descriptionCN ?? this.descriptionCN,
-      descriptionEL: descriptionEL ?? this.descriptionEL,
-      familyId: familyId ?? this.familyId,
-      subfamilyId: subfamilyId ?? this.subfamilyId,
-      minimumSales: minimumSales ?? this.minimumSales,
-      multipleSales: multipleSales ?? this.multipleSales,
-      subboxUnits: subboxUnits ?? this.subboxUnits,
-      boxUnits: boxUnits ?? this.boxUnits,
-      paletUnits: paletUnits ?? this.paletUnits,
-      isActiveWeb: isActiveWeb ?? this.isActiveWeb,
-      isActiveApp: isActiveApp ?? this.isActiveApp,
-      inCatalogue: inCatalogue ?? this.inCatalogue,
-      discontinued: discontinued ?? this.discontinued,
-      cataloguePage: cataloguePage ?? this.cataloguePage,
-      cataloguePage2: cataloguePage2 ?? this.cataloguePage2,
-      weightKg: weightKg ?? this.weightKg,
-      largeCm: largeCm ?? this.largeCm,
-      widthCm: widthCm ?? this.widthCm,
-      heightCm: heightCm ?? this.heightCm,
-      summaryES: summaryES ?? this.summaryES,
-      summaryEN: summaryEN ?? this.summaryEN,
-      summaryFR: summaryFR ?? this.summaryFR,
-      summaryDE: summaryDE ?? this.summaryDE,
-      summaryCA: summaryCA ?? this.summaryCA,
-      summaryGB: summaryGB ?? this.summaryGB,
-      summaryHU: summaryHU ?? this.summaryHU,
-      summaryIT: summaryIT ?? this.summaryIT,
-      summaryNL: summaryNL ?? this.summaryNL,
-      summaryPL: summaryPL ?? this.summaryPL,
-      summaryPT: summaryPT ?? this.summaryPT,
-      summaryRO: summaryRO ?? this.summaryRO,
-      summaryRU: summaryRU ?? this.summaryRU,
-      summaryCN: summaryCN ?? this.summaryCN,
-      summaryEL: summaryEL ?? this.summaryEL,
-      availableStock: availableStock ?? this.availableStock,
-      currentSales: currentSales ?? this.currentSales,
-      previousSales: previousSales ?? this.previousSales,
-      purchasesDeliveryQuantity1:
-          purchasesDeliveryQuantity1 ?? this.purchasesDeliveryQuantity1,
-      purchasesDeliveryQuantity2:
-          purchasesDeliveryQuantity2 ?? this.purchasesDeliveryQuantity2,
-      purchasesDeliveryQuantity3:
-          purchasesDeliveryQuantity3 ?? this.purchasesDeliveryQuantity3,
-      purchasesDeliveryQuantityMore3:
-          purchasesDeliveryQuantityMore3 ?? this.purchasesDeliveryQuantityMore3,
-      purchasesDeliveryDate1:
-          purchasesDeliveryDate1 ?? this.purchasesDeliveryDate1,
-      purchasesDeliveryDate2:
-          purchasesDeliveryDate2 ?? this.purchasesDeliveryDate2,
-      purchasesDeliveryDate3:
-          purchasesDeliveryDate3 ?? this.purchasesDeliveryDate3,
-      purchasesDeliveryStatus1:
-          purchasesDeliveryStatus1 ?? this.purchasesDeliveryStatus1,
-      purchasesDeliveryStatus2:
-          purchasesDeliveryStatus2 ?? this.purchasesDeliveryStatus2,
-      purchasesDeliveryStatus3:
-          purchasesDeliveryStatus3 ?? this.purchasesDeliveryStatus3,
-      principalImage: principalImage ?? this.principalImage,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      familiaId: familiaId ?? this.familiaId,
+      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
+      ventaMinimo: ventaMinimo ?? this.ventaMinimo,
+      ventaMultiplo: ventaMultiplo ?? this.ventaMultiplo,
+      unidadesSubcaja: unidadesSubcaja ?? this.unidadesSubcaja,
+      unidadesCaja: unidadesCaja ?? this.unidadesCaja,
+      unidadesPalet: unidadesPalet ?? this.unidadesPalet,
+      activoWeb: activoWeb ?? this.activoWeb,
+      activoApp: activoApp ?? this.activoApp,
+      enCatalogo: enCatalogo ?? this.enCatalogo,
+      descatalogado: descatalogado ?? this.descatalogado,
+      paginaEnCatalgo: paginaEnCatalgo ?? this.paginaEnCatalgo,
+      paginaEnCatalgo2: paginaEnCatalgo2 ?? this.paginaEnCatalgo2,
+      pesoKg: pesoKg ?? this.pesoKg,
+      largoCm: largoCm ?? this.largoCm,
+      anchoCm: anchoCm ?? this.anchoCm,
+      altoCm: altoCm ?? this.altoCm,
+      resumenES: resumenES ?? this.resumenES,
+      resumenEN: resumenEN ?? this.resumenEN,
+      resumenFR: resumenFR ?? this.resumenFR,
+      resumenDE: resumenDE ?? this.resumenDE,
+      resumenCA: resumenCA ?? this.resumenCA,
+      resumenGB: resumenGB ?? this.resumenGB,
+      resumenHU: resumenHU ?? this.resumenHU,
+      resumenIT: resumenIT ?? this.resumenIT,
+      resumenNL: resumenNL ?? this.resumenNL,
+      resumenPL: resumenPL ?? this.resumenPL,
+      resumenPT: resumenPT ?? this.resumenPT,
+      resumenRO: resumenRO ?? this.resumenRO,
+      resumenRU: resumenRU ?? this.resumenRU,
+      resumenCN: resumenCN ?? this.resumenCN,
+      resumenEL: resumenEL ?? this.resumenEL,
+      stockDisponible: stockDisponible ?? this.stockDisponible,
+      ventasActual: ventasActual ?? this.ventasActual,
+      ventasAnterior: ventasAnterior ?? this.ventasAnterior,
+      comprasEntregaCantidad1:
+          comprasEntregaCantidad1 ?? this.comprasEntregaCantidad1,
+      comprasEntregaCantidad2:
+          comprasEntregaCantidad2 ?? this.comprasEntregaCantidad2,
+      comprasEntregaCantidad3:
+          comprasEntregaCantidad3 ?? this.comprasEntregaCantidad3,
+      comprasEntregaCantidadMas3:
+          comprasEntregaCantidadMas3 ?? this.comprasEntregaCantidadMas3,
+      comprasEntregaFecha1: comprasEntregaFecha1 ?? this.comprasEntregaFecha1,
+      comprasEntregaFecha2: comprasEntregaFecha2 ?? this.comprasEntregaFecha2,
+      comprasEntregaFecha3: comprasEntregaFecha3 ?? this.comprasEntregaFecha3,
+      comprasEntregaEstado1:
+          comprasEntregaEstado1 ?? this.comprasEntregaEstado1,
+      comprasEntregaEstado2:
+          comprasEntregaEstado2 ?? this.comprasEntregaEstado2,
+      comprasEntregaEstado3:
+          comprasEntregaEstado3 ?? this.comprasEntregaEstado3,
+      imagenPrincipal: imagenPrincipal ?? this.imagenPrincipal,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -10785,198 +10881,198 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
     if (id.present) {
       map['ARTICULO_ID'] = Variable<String>(id.value);
     }
-    if (descriptionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descriptionES.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (descriptionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descriptionEN.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descriptionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descriptionFR.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (descriptionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descriptionDE.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (descriptionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descriptionCA.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (descriptionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descriptionGB.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (descriptionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descriptionHU.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (descriptionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descriptionIT.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (descriptionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descriptionNL.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (descriptionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descriptionPL.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (descriptionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descriptionPT.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (descriptionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descriptionRO.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (descriptionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descriptionRU.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (descriptionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descriptionCN.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (descriptionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descriptionEL.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
-    if (familyId.present) {
-      map['FAMILIA_ID'] = Variable<String>(familyId.value);
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
     }
-    if (subfamilyId.present) {
-      map['SUBFAMILIA_ID'] = Variable<String>(subfamilyId.value);
+    if (subfamiliaId.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
     }
-    if (minimumSales.present) {
-      map['VENTA_MINIMO'] = Variable<double>(minimumSales.value);
+    if (ventaMinimo.present) {
+      map['VENTA_MINIMO'] = Variable<double>(ventaMinimo.value);
     }
-    if (multipleSales.present) {
-      map['VENTA_MULTIPLO'] = Variable<double>(multipleSales.value);
+    if (ventaMultiplo.present) {
+      map['VENTA_MULTIPLO'] = Variable<double>(ventaMultiplo.value);
     }
-    if (subboxUnits.present) {
-      map['UNIDADES_SUBCAJA'] = Variable<double>(subboxUnits.value);
+    if (unidadesSubcaja.present) {
+      map['UNIDADES_SUBCAJA'] = Variable<double>(unidadesSubcaja.value);
     }
-    if (boxUnits.present) {
-      map['UNIDADES_CAJA'] = Variable<double>(boxUnits.value);
+    if (unidadesCaja.present) {
+      map['UNIDADES_CAJA'] = Variable<double>(unidadesCaja.value);
     }
-    if (paletUnits.present) {
-      map['UNIDADES_PALET'] = Variable<double>(paletUnits.value);
+    if (unidadesPalet.present) {
+      map['UNIDADES_PALET'] = Variable<double>(unidadesPalet.value);
     }
-    if (isActiveWeb.present) {
-      map['ACTIVO_WEB'] = Variable<String>(isActiveWeb.value);
+    if (activoWeb.present) {
+      map['ACTIVO_WEB'] = Variable<String>(activoWeb.value);
     }
-    if (isActiveApp.present) {
-      map['ACTIVO_APP'] = Variable<String>(isActiveApp.value);
+    if (activoApp.present) {
+      map['ACTIVO_APP'] = Variable<String>(activoApp.value);
     }
-    if (inCatalogue.present) {
-      map['EN_CATALOGO'] = Variable<String>(inCatalogue.value);
+    if (enCatalogo.present) {
+      map['EN_CATALOGO'] = Variable<String>(enCatalogo.value);
     }
-    if (discontinued.present) {
-      map['DESCATALOGADO'] = Variable<String>(discontinued.value);
+    if (descatalogado.present) {
+      map['DESCATALOGADO'] = Variable<String>(descatalogado.value);
     }
-    if (cataloguePage.present) {
-      map['PAGINA_EN_CATALOGO'] = Variable<String>(cataloguePage.value);
+    if (paginaEnCatalgo.present) {
+      map['PAGINA_EN_CATALOGO'] = Variable<String>(paginaEnCatalgo.value);
     }
-    if (cataloguePage2.present) {
-      map['PAGINA_EN_CATALOGO2'] = Variable<String>(cataloguePage2.value);
+    if (paginaEnCatalgo2.present) {
+      map['PAGINA_EN_CATALOGO2'] = Variable<String>(paginaEnCatalgo2.value);
     }
-    if (weightKg.present) {
-      map['PESO_KG'] = Variable<double>(weightKg.value);
+    if (pesoKg.present) {
+      map['PESO_KG'] = Variable<double>(pesoKg.value);
     }
-    if (largeCm.present) {
-      map['LARGO_CM'] = Variable<double>(largeCm.value);
+    if (largoCm.present) {
+      map['LARGO_CM'] = Variable<double>(largoCm.value);
     }
-    if (widthCm.present) {
-      map['ANCHO_CM'] = Variable<double>(widthCm.value);
+    if (anchoCm.present) {
+      map['ANCHO_CM'] = Variable<double>(anchoCm.value);
     }
-    if (heightCm.present) {
-      map['ALTO_CM'] = Variable<double>(heightCm.value);
+    if (altoCm.present) {
+      map['ALTO_CM'] = Variable<double>(altoCm.value);
     }
-    if (summaryES.present) {
-      map['RESUMEN_ES'] = Variable<String>(summaryES.value);
+    if (resumenES.present) {
+      map['RESUMEN_ES'] = Variable<String>(resumenES.value);
     }
-    if (summaryEN.present) {
-      map['RESUMEN_EN'] = Variable<String>(summaryEN.value);
+    if (resumenEN.present) {
+      map['RESUMEN_EN'] = Variable<String>(resumenEN.value);
     }
-    if (summaryFR.present) {
-      map['RESUMEN_FR'] = Variable<String>(summaryFR.value);
+    if (resumenFR.present) {
+      map['RESUMEN_FR'] = Variable<String>(resumenFR.value);
     }
-    if (summaryDE.present) {
-      map['RESUMEN_DE'] = Variable<String>(summaryDE.value);
+    if (resumenDE.present) {
+      map['RESUMEN_DE'] = Variable<String>(resumenDE.value);
     }
-    if (summaryCA.present) {
-      map['RESUMEN_CA'] = Variable<String>(summaryCA.value);
+    if (resumenCA.present) {
+      map['RESUMEN_CA'] = Variable<String>(resumenCA.value);
     }
-    if (summaryGB.present) {
-      map['RESUMEN_GB'] = Variable<String>(summaryGB.value);
+    if (resumenGB.present) {
+      map['RESUMEN_GB'] = Variable<String>(resumenGB.value);
     }
-    if (summaryHU.present) {
-      map['RESUMEN_HU'] = Variable<String>(summaryHU.value);
+    if (resumenHU.present) {
+      map['RESUMEN_HU'] = Variable<String>(resumenHU.value);
     }
-    if (summaryIT.present) {
-      map['RESUMEN_IT'] = Variable<String>(summaryIT.value);
+    if (resumenIT.present) {
+      map['RESUMEN_IT'] = Variable<String>(resumenIT.value);
     }
-    if (summaryNL.present) {
-      map['RESUMEN_NL'] = Variable<String>(summaryNL.value);
+    if (resumenNL.present) {
+      map['RESUMEN_NL'] = Variable<String>(resumenNL.value);
     }
-    if (summaryPL.present) {
-      map['RESUMEN_PL'] = Variable<String>(summaryPL.value);
+    if (resumenPL.present) {
+      map['RESUMEN_PL'] = Variable<String>(resumenPL.value);
     }
-    if (summaryPT.present) {
-      map['RESUMEN_PT'] = Variable<String>(summaryPT.value);
+    if (resumenPT.present) {
+      map['RESUMEN_PT'] = Variable<String>(resumenPT.value);
     }
-    if (summaryRO.present) {
-      map['RESUMEN_RO'] = Variable<String>(summaryRO.value);
+    if (resumenRO.present) {
+      map['RESUMEN_RO'] = Variable<String>(resumenRO.value);
     }
-    if (summaryRU.present) {
-      map['RESUMEN_RU'] = Variable<String>(summaryRU.value);
+    if (resumenRU.present) {
+      map['RESUMEN_RU'] = Variable<String>(resumenRU.value);
     }
-    if (summaryCN.present) {
-      map['RESUMEN_CN'] = Variable<String>(summaryCN.value);
+    if (resumenCN.present) {
+      map['RESUMEN_CN'] = Variable<String>(resumenCN.value);
     }
-    if (summaryEL.present) {
-      map['RESUMEN_EL'] = Variable<String>(summaryEL.value);
+    if (resumenEL.present) {
+      map['RESUMEN_EL'] = Variable<String>(resumenEL.value);
     }
-    if (availableStock.present) {
-      map['STOCK_DISPONIBLE'] = Variable<double>(availableStock.value);
+    if (stockDisponible.present) {
+      map['STOCK_DISPONIBLE'] = Variable<double>(stockDisponible.value);
     }
-    if (currentSales.present) {
-      map['VENTAS_ACTUAL'] = Variable<double>(currentSales.value);
+    if (ventasActual.present) {
+      map['VENTAS_ACTUAL'] = Variable<double>(ventasActual.value);
     }
-    if (previousSales.present) {
-      map['VENTAS_ANTERIOR'] = Variable<double>(previousSales.value);
+    if (ventasAnterior.present) {
+      map['VENTAS_ANTERIOR'] = Variable<double>(ventasAnterior.value);
     }
-    if (purchasesDeliveryQuantity1.present) {
+    if (comprasEntregaCantidad1.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_1'] =
-          Variable<double>(purchasesDeliveryQuantity1.value);
+          Variable<double>(comprasEntregaCantidad1.value);
     }
-    if (purchasesDeliveryQuantity2.present) {
+    if (comprasEntregaCantidad2.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_2'] =
-          Variable<double>(purchasesDeliveryQuantity2.value);
+          Variable<double>(comprasEntregaCantidad2.value);
     }
-    if (purchasesDeliveryQuantity3.present) {
+    if (comprasEntregaCantidad3.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_3'] =
-          Variable<double>(purchasesDeliveryQuantity3.value);
+          Variable<double>(comprasEntregaCantidad3.value);
     }
-    if (purchasesDeliveryQuantityMore3.present) {
+    if (comprasEntregaCantidadMas3.present) {
       map['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] =
-          Variable<double>(purchasesDeliveryQuantityMore3.value);
+          Variable<double>(comprasEntregaCantidadMas3.value);
     }
-    if (purchasesDeliveryDate1.present) {
+    if (comprasEntregaFecha1.present) {
       map['COMPRAS_ENTREGA_FECHA_1'] =
-          Variable<DateTime>(purchasesDeliveryDate1.value);
+          Variable<DateTime>(comprasEntregaFecha1.value);
     }
-    if (purchasesDeliveryDate2.present) {
+    if (comprasEntregaFecha2.present) {
       map['COMPRAS_ENTREGA_FECHA_2'] =
-          Variable<DateTime>(purchasesDeliveryDate2.value);
+          Variable<DateTime>(comprasEntregaFecha2.value);
     }
-    if (purchasesDeliveryDate3.present) {
+    if (comprasEntregaFecha3.present) {
       map['COMPRAS_ENTREGA_FECHA_3'] =
-          Variable<DateTime>(purchasesDeliveryDate3.value);
+          Variable<DateTime>(comprasEntregaFecha3.value);
     }
-    if (purchasesDeliveryStatus1.present) {
+    if (comprasEntregaEstado1.present) {
       map['COMPRAS_ENTREGA_ESTADO_1'] =
-          Variable<String>(purchasesDeliveryStatus1.value);
+          Variable<String>(comprasEntregaEstado1.value);
     }
-    if (purchasesDeliveryStatus2.present) {
+    if (comprasEntregaEstado2.present) {
       map['COMPRAS_ENTREGA_ESTADO_2'] =
-          Variable<String>(purchasesDeliveryStatus2.value);
+          Variable<String>(comprasEntregaEstado2.value);
     }
-    if (purchasesDeliveryStatus3.present) {
+    if (comprasEntregaEstado3.present) {
       map['COMPRAS_ENTREGA_ESTADO_3'] =
-          Variable<String>(purchasesDeliveryStatus3.value);
+          Variable<String>(comprasEntregaEstado3.value);
     }
-    if (principalImage.present) {
-      map['IMAGEN_PRINCIPAL'] = Variable<String>(principalImage.value);
+    if (imagenPrincipal.present) {
+      map['IMAGEN_PRINCIPAL'] = Variable<String>(imagenPrincipal.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -10989,70 +11085,69 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ArticleTableCompanion(')
+    return (StringBuffer('ArticuloTableCompanion(')
           ..write('id: $id, ')
-          ..write('descriptionES: $descriptionES, ')
-          ..write('descriptionEN: $descriptionEN, ')
-          ..write('descriptionFR: $descriptionFR, ')
-          ..write('descriptionDE: $descriptionDE, ')
-          ..write('descriptionCA: $descriptionCA, ')
-          ..write('descriptionGB: $descriptionGB, ')
-          ..write('descriptionHU: $descriptionHU, ')
-          ..write('descriptionIT: $descriptionIT, ')
-          ..write('descriptionNL: $descriptionNL, ')
-          ..write('descriptionPL: $descriptionPL, ')
-          ..write('descriptionPT: $descriptionPT, ')
-          ..write('descriptionRO: $descriptionRO, ')
-          ..write('descriptionRU: $descriptionRU, ')
-          ..write('descriptionCN: $descriptionCN, ')
-          ..write('descriptionEL: $descriptionEL, ')
-          ..write('familyId: $familyId, ')
-          ..write('subfamilyId: $subfamilyId, ')
-          ..write('minimumSales: $minimumSales, ')
-          ..write('multipleSales: $multipleSales, ')
-          ..write('subboxUnits: $subboxUnits, ')
-          ..write('boxUnits: $boxUnits, ')
-          ..write('paletUnits: $paletUnits, ')
-          ..write('isActiveWeb: $isActiveWeb, ')
-          ..write('isActiveApp: $isActiveApp, ')
-          ..write('inCatalogue: $inCatalogue, ')
-          ..write('discontinued: $discontinued, ')
-          ..write('cataloguePage: $cataloguePage, ')
-          ..write('cataloguePage2: $cataloguePage2, ')
-          ..write('weightKg: $weightKg, ')
-          ..write('largeCm: $largeCm, ')
-          ..write('widthCm: $widthCm, ')
-          ..write('heightCm: $heightCm, ')
-          ..write('summaryES: $summaryES, ')
-          ..write('summaryEN: $summaryEN, ')
-          ..write('summaryFR: $summaryFR, ')
-          ..write('summaryDE: $summaryDE, ')
-          ..write('summaryCA: $summaryCA, ')
-          ..write('summaryGB: $summaryGB, ')
-          ..write('summaryHU: $summaryHU, ')
-          ..write('summaryIT: $summaryIT, ')
-          ..write('summaryNL: $summaryNL, ')
-          ..write('summaryPL: $summaryPL, ')
-          ..write('summaryPT: $summaryPT, ')
-          ..write('summaryRO: $summaryRO, ')
-          ..write('summaryRU: $summaryRU, ')
-          ..write('summaryCN: $summaryCN, ')
-          ..write('summaryEL: $summaryEL, ')
-          ..write('availableStock: $availableStock, ')
-          ..write('currentSales: $currentSales, ')
-          ..write('previousSales: $previousSales, ')
-          ..write('purchasesDeliveryQuantity1: $purchasesDeliveryQuantity1, ')
-          ..write('purchasesDeliveryQuantity2: $purchasesDeliveryQuantity2, ')
-          ..write('purchasesDeliveryQuantity3: $purchasesDeliveryQuantity3, ')
-          ..write(
-              'purchasesDeliveryQuantityMore3: $purchasesDeliveryQuantityMore3, ')
-          ..write('purchasesDeliveryDate1: $purchasesDeliveryDate1, ')
-          ..write('purchasesDeliveryDate2: $purchasesDeliveryDate2, ')
-          ..write('purchasesDeliveryDate3: $purchasesDeliveryDate3, ')
-          ..write('purchasesDeliveryStatus1: $purchasesDeliveryStatus1, ')
-          ..write('purchasesDeliveryStatus2: $purchasesDeliveryStatus2, ')
-          ..write('purchasesDeliveryStatus3: $purchasesDeliveryStatus3, ')
-          ..write('principalImage: $principalImage, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('subfamiliaId: $subfamiliaId, ')
+          ..write('ventaMinimo: $ventaMinimo, ')
+          ..write('ventaMultiplo: $ventaMultiplo, ')
+          ..write('unidadesSubcaja: $unidadesSubcaja, ')
+          ..write('unidadesCaja: $unidadesCaja, ')
+          ..write('unidadesPalet: $unidadesPalet, ')
+          ..write('activoWeb: $activoWeb, ')
+          ..write('activoApp: $activoApp, ')
+          ..write('enCatalogo: $enCatalogo, ')
+          ..write('descatalogado: $descatalogado, ')
+          ..write('paginaEnCatalgo: $paginaEnCatalgo, ')
+          ..write('paginaEnCatalgo2: $paginaEnCatalgo2, ')
+          ..write('pesoKg: $pesoKg, ')
+          ..write('largoCm: $largoCm, ')
+          ..write('anchoCm: $anchoCm, ')
+          ..write('altoCm: $altoCm, ')
+          ..write('resumenES: $resumenES, ')
+          ..write('resumenEN: $resumenEN, ')
+          ..write('resumenFR: $resumenFR, ')
+          ..write('resumenDE: $resumenDE, ')
+          ..write('resumenCA: $resumenCA, ')
+          ..write('resumenGB: $resumenGB, ')
+          ..write('resumenHU: $resumenHU, ')
+          ..write('resumenIT: $resumenIT, ')
+          ..write('resumenNL: $resumenNL, ')
+          ..write('resumenPL: $resumenPL, ')
+          ..write('resumenPT: $resumenPT, ')
+          ..write('resumenRO: $resumenRO, ')
+          ..write('resumenRU: $resumenRU, ')
+          ..write('resumenCN: $resumenCN, ')
+          ..write('resumenEL: $resumenEL, ')
+          ..write('stockDisponible: $stockDisponible, ')
+          ..write('ventasActual: $ventasActual, ')
+          ..write('ventasAnterior: $ventasAnterior, ')
+          ..write('comprasEntregaCantidad1: $comprasEntregaCantidad1, ')
+          ..write('comprasEntregaCantidad2: $comprasEntregaCantidad2, ')
+          ..write('comprasEntregaCantidad3: $comprasEntregaCantidad3, ')
+          ..write('comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, ')
+          ..write('comprasEntregaFecha1: $comprasEntregaFecha1, ')
+          ..write('comprasEntregaFecha2: $comprasEntregaFecha2, ')
+          ..write('comprasEntregaFecha3: $comprasEntregaFecha3, ')
+          ..write('comprasEntregaEstado1: $comprasEntregaEstado1, ')
+          ..write('comprasEntregaEstado2: $comprasEntregaEstado2, ')
+          ..write('comprasEntregaEstado3: $comprasEntregaEstado3, ')
+          ..write('imagenPrincipal: $imagenPrincipal, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -11060,364 +11155,363 @@ class ArticleTableCompanion extends UpdateCompanion<ArticleDTO> {
   }
 }
 
-class $ArticleTableTable extends ArticleTable
-    with TableInfo<$ArticleTableTable, ArticleDTO> {
+class $ArticuloTableTable extends ArticuloTable
+    with TableInfo<$ArticuloTableTable, ArticuloDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleTableTable(this.attachedDatabase, [this._alias]);
+  $ArticuloTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionESMeta =
-      const VerificationMeta('descriptionES');
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
   @override
-  late final GeneratedColumn<String> descriptionES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionENMeta =
-      const VerificationMeta('descriptionEN');
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
   @override
-  late final GeneratedColumn<String> descriptionEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionFRMeta =
-      const VerificationMeta('descriptionFR');
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
   @override
-  late final GeneratedColumn<String> descriptionFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionDEMeta =
-      const VerificationMeta('descriptionDE');
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
   @override
-  late final GeneratedColumn<String> descriptionDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCAMeta =
-      const VerificationMeta('descriptionCA');
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
   @override
-  late final GeneratedColumn<String> descriptionCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionGBMeta =
-      const VerificationMeta('descriptionGB');
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
   @override
-  late final GeneratedColumn<String> descriptionGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionHUMeta =
-      const VerificationMeta('descriptionHU');
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
   @override
-  late final GeneratedColumn<String> descriptionHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionITMeta =
-      const VerificationMeta('descriptionIT');
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
   @override
-  late final GeneratedColumn<String> descriptionIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionNLMeta =
-      const VerificationMeta('descriptionNL');
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
   @override
-  late final GeneratedColumn<String> descriptionNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPLMeta =
-      const VerificationMeta('descriptionPL');
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
   @override
-  late final GeneratedColumn<String> descriptionPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionPTMeta =
-      const VerificationMeta('descriptionPT');
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
   @override
-  late final GeneratedColumn<String> descriptionPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionROMeta =
-      const VerificationMeta('descriptionRO');
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
   @override
-  late final GeneratedColumn<String> descriptionRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionRUMeta =
-      const VerificationMeta('descriptionRU');
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
   @override
-  late final GeneratedColumn<String> descriptionRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionCNMeta =
-      const VerificationMeta('descriptionCN');
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
   @override
-  late final GeneratedColumn<String> descriptionCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descriptionELMeta =
-      const VerificationMeta('descriptionEL');
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
   @override
-  late final GeneratedColumn<String> descriptionEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _familyIdMeta = const VerificationMeta('familyId');
+  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
   @override
-  late final GeneratedColumn<String> familyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES FAMILIAS (FAMILIA_ID)');
-  final VerificationMeta _subfamilyIdMeta =
-      const VerificationMeta('subfamilyId');
+  final VerificationMeta _subfamiliaIdMeta =
+      const VerificationMeta('subfamiliaId');
   @override
-  late final GeneratedColumn<String> subfamilyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> subfamiliaId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultConstraints: 'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)');
-  final VerificationMeta _minimumSalesMeta =
-      const VerificationMeta('minimumSales');
+  final VerificationMeta _ventaMinimoMeta =
+      const VerificationMeta('ventaMinimo');
   @override
-  late final GeneratedColumn<double> minimumSales = GeneratedColumn<double>(
+  late final GeneratedColumn<double> ventaMinimo = GeneratedColumn<double>(
       'VENTA_MINIMO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _multipleSalesMeta =
-      const VerificationMeta('multipleSales');
+  final VerificationMeta _ventaMultiploMeta =
+      const VerificationMeta('ventaMultiplo');
   @override
-  late final GeneratedColumn<double> multipleSales = GeneratedColumn<double>(
+  late final GeneratedColumn<double> ventaMultiplo = GeneratedColumn<double>(
       'VENTA_MULTIPLO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _subboxUnitsMeta =
-      const VerificationMeta('subboxUnits');
+  final VerificationMeta _unidadesSubcajaMeta =
+      const VerificationMeta('unidadesSubcaja');
   @override
-  late final GeneratedColumn<double> subboxUnits = GeneratedColumn<double>(
+  late final GeneratedColumn<double> unidadesSubcaja = GeneratedColumn<double>(
       'UNIDADES_SUBCAJA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _boxUnitsMeta = const VerificationMeta('boxUnits');
+  final VerificationMeta _unidadesCajaMeta =
+      const VerificationMeta('unidadesCaja');
   @override
-  late final GeneratedColumn<double> boxUnits = GeneratedColumn<double>(
+  late final GeneratedColumn<double> unidadesCaja = GeneratedColumn<double>(
       'UNIDADES_CAJA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _paletUnitsMeta = const VerificationMeta('paletUnits');
+  final VerificationMeta _unidadesPaletMeta =
+      const VerificationMeta('unidadesPalet');
   @override
-  late final GeneratedColumn<double> paletUnits = GeneratedColumn<double>(
+  late final GeneratedColumn<double> unidadesPalet = GeneratedColumn<double>(
       'UNIDADES_PALET', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _isActiveWebMeta =
-      const VerificationMeta('isActiveWeb');
+  final VerificationMeta _activoWebMeta = const VerificationMeta('activoWeb');
   @override
-  late final GeneratedColumn<String> isActiveWeb = GeneratedColumn<String>(
+  late final GeneratedColumn<String> activoWeb = GeneratedColumn<String>(
       'ACTIVO_WEB', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _isActiveAppMeta =
-      const VerificationMeta('isActiveApp');
+  final VerificationMeta _activoAppMeta = const VerificationMeta('activoApp');
   @override
-  late final GeneratedColumn<String> isActiveApp = GeneratedColumn<String>(
+  late final GeneratedColumn<String> activoApp = GeneratedColumn<String>(
       'ACTIVO_APP', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _inCatalogueMeta =
-      const VerificationMeta('inCatalogue');
+  final VerificationMeta _enCatalogoMeta = const VerificationMeta('enCatalogo');
   @override
-  late final GeneratedColumn<String> inCatalogue = GeneratedColumn<String>(
+  late final GeneratedColumn<String> enCatalogo = GeneratedColumn<String>(
       'EN_CATALOGO', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _discontinuedMeta =
-      const VerificationMeta('discontinued');
+  final VerificationMeta _descatalogadoMeta =
+      const VerificationMeta('descatalogado');
   @override
-  late final GeneratedColumn<String> discontinued = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descatalogado = GeneratedColumn<String>(
       'DESCATALOGADO', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cataloguePageMeta =
-      const VerificationMeta('cataloguePage');
+  final VerificationMeta _paginaEnCatalgoMeta =
+      const VerificationMeta('paginaEnCatalgo');
   @override
-  late final GeneratedColumn<String> cataloguePage = GeneratedColumn<String>(
+  late final GeneratedColumn<String> paginaEnCatalgo = GeneratedColumn<String>(
       'PAGINA_EN_CATALOGO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _cataloguePage2Meta =
-      const VerificationMeta('cataloguePage2');
+  final VerificationMeta _paginaEnCatalgo2Meta =
+      const VerificationMeta('paginaEnCatalgo2');
   @override
-  late final GeneratedColumn<String> cataloguePage2 = GeneratedColumn<String>(
+  late final GeneratedColumn<String> paginaEnCatalgo2 = GeneratedColumn<String>(
       'PAGINA_EN_CATALOGO2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _weightKgMeta = const VerificationMeta('weightKg');
+  final VerificationMeta _pesoKgMeta = const VerificationMeta('pesoKg');
   @override
-  late final GeneratedColumn<double> weightKg = GeneratedColumn<double>(
+  late final GeneratedColumn<double> pesoKg = GeneratedColumn<double>(
       'PESO_KG', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _largeCmMeta = const VerificationMeta('largeCm');
+  final VerificationMeta _largoCmMeta = const VerificationMeta('largoCm');
   @override
-  late final GeneratedColumn<double> largeCm = GeneratedColumn<double>(
+  late final GeneratedColumn<double> largoCm = GeneratedColumn<double>(
       'LARGO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _widthCmMeta = const VerificationMeta('widthCm');
+  final VerificationMeta _anchoCmMeta = const VerificationMeta('anchoCm');
   @override
-  late final GeneratedColumn<double> widthCm = GeneratedColumn<double>(
+  late final GeneratedColumn<double> anchoCm = GeneratedColumn<double>(
       'ANCHO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _heightCmMeta = const VerificationMeta('heightCm');
+  final VerificationMeta _altoCmMeta = const VerificationMeta('altoCm');
   @override
-  late final GeneratedColumn<double> heightCm = GeneratedColumn<double>(
+  late final GeneratedColumn<double> altoCm = GeneratedColumn<double>(
       'ALTO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _summaryESMeta = const VerificationMeta('summaryES');
+  final VerificationMeta _resumenESMeta = const VerificationMeta('resumenES');
   @override
-  late final GeneratedColumn<String> summaryES = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenES = GeneratedColumn<String>(
       'RESUMEN_ES', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryENMeta = const VerificationMeta('summaryEN');
+  final VerificationMeta _resumenENMeta = const VerificationMeta('resumenEN');
   @override
-  late final GeneratedColumn<String> summaryEN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenEN = GeneratedColumn<String>(
       'RESUMEN_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryFRMeta = const VerificationMeta('summaryFR');
+  final VerificationMeta _resumenFRMeta = const VerificationMeta('resumenFR');
   @override
-  late final GeneratedColumn<String> summaryFR = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenFR = GeneratedColumn<String>(
       'RESUMEN_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryDEMeta = const VerificationMeta('summaryDE');
+  final VerificationMeta _resumenDEMeta = const VerificationMeta('resumenDE');
   @override
-  late final GeneratedColumn<String> summaryDE = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenDE = GeneratedColumn<String>(
       'RESUMEN_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryCAMeta = const VerificationMeta('summaryCA');
+  final VerificationMeta _resumenCAMeta = const VerificationMeta('resumenCA');
   @override
-  late final GeneratedColumn<String> summaryCA = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenCA = GeneratedColumn<String>(
       'RESUMEN_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryGBMeta = const VerificationMeta('summaryGB');
+  final VerificationMeta _resumenGBMeta = const VerificationMeta('resumenGB');
   @override
-  late final GeneratedColumn<String> summaryGB = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenGB = GeneratedColumn<String>(
       'RESUMEN_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryHUMeta = const VerificationMeta('summaryHU');
+  final VerificationMeta _resumenHUMeta = const VerificationMeta('resumenHU');
   @override
-  late final GeneratedColumn<String> summaryHU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenHU = GeneratedColumn<String>(
       'RESUMEN_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryITMeta = const VerificationMeta('summaryIT');
+  final VerificationMeta _resumenITMeta = const VerificationMeta('resumenIT');
   @override
-  late final GeneratedColumn<String> summaryIT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenIT = GeneratedColumn<String>(
       'RESUMEN_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryNLMeta = const VerificationMeta('summaryNL');
+  final VerificationMeta _resumenNLMeta = const VerificationMeta('resumenNL');
   @override
-  late final GeneratedColumn<String> summaryNL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenNL = GeneratedColumn<String>(
       'RESUMEN_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryPLMeta = const VerificationMeta('summaryPL');
+  final VerificationMeta _resumenPLMeta = const VerificationMeta('resumenPL');
   @override
-  late final GeneratedColumn<String> summaryPL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenPL = GeneratedColumn<String>(
       'RESUMEN_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryPTMeta = const VerificationMeta('summaryPT');
+  final VerificationMeta _resumenPTMeta = const VerificationMeta('resumenPT');
   @override
-  late final GeneratedColumn<String> summaryPT = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenPT = GeneratedColumn<String>(
       'RESUMEN_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryROMeta = const VerificationMeta('summaryRO');
+  final VerificationMeta _resumenROMeta = const VerificationMeta('resumenRO');
   @override
-  late final GeneratedColumn<String> summaryRO = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenRO = GeneratedColumn<String>(
       'RESUMEN_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryRUMeta = const VerificationMeta('summaryRU');
+  final VerificationMeta _resumenRUMeta = const VerificationMeta('resumenRU');
   @override
-  late final GeneratedColumn<String> summaryRU = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenRU = GeneratedColumn<String>(
       'RESUMEN_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryCNMeta = const VerificationMeta('summaryCN');
+  final VerificationMeta _resumenCNMeta = const VerificationMeta('resumenCN');
   @override
-  late final GeneratedColumn<String> summaryCN = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenCN = GeneratedColumn<String>(
       'RESUMEN_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryELMeta = const VerificationMeta('summaryEL');
+  final VerificationMeta _resumenELMeta = const VerificationMeta('resumenEL');
   @override
-  late final GeneratedColumn<String> summaryEL = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumenEL = GeneratedColumn<String>(
       'RESUMEN_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _availableStockMeta =
-      const VerificationMeta('availableStock');
+  final VerificationMeta _stockDisponibleMeta =
+      const VerificationMeta('stockDisponible');
   @override
-  late final GeneratedColumn<double> availableStock = GeneratedColumn<double>(
+  late final GeneratedColumn<double> stockDisponible = GeneratedColumn<double>(
       'STOCK_DISPONIBLE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _currentSalesMeta =
-      const VerificationMeta('currentSales');
+  final VerificationMeta _ventasActualMeta =
+      const VerificationMeta('ventasActual');
   @override
-  late final GeneratedColumn<double> currentSales = GeneratedColumn<double>(
+  late final GeneratedColumn<double> ventasActual = GeneratedColumn<double>(
       'VENTAS_ACTUAL', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _previousSalesMeta =
-      const VerificationMeta('previousSales');
+  final VerificationMeta _ventasAnteriorMeta =
+      const VerificationMeta('ventasAnterior');
   @override
-  late final GeneratedColumn<double> previousSales = GeneratedColumn<double>(
+  late final GeneratedColumn<double> ventasAnterior = GeneratedColumn<double>(
       'VENTAS_ANTERIOR', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryQuantity1Meta =
-      const VerificationMeta('purchasesDeliveryQuantity1');
+  final VerificationMeta _comprasEntregaCantidad1Meta =
+      const VerificationMeta('comprasEntregaCantidad1');
   @override
-  late final GeneratedColumn<double> purchasesDeliveryQuantity1 =
+  late final GeneratedColumn<double> comprasEntregaCantidad1 =
       GeneratedColumn<double>('COMPRAS_ENTREGA_CANTIDAD_1', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryQuantity2Meta =
-      const VerificationMeta('purchasesDeliveryQuantity2');
+  final VerificationMeta _comprasEntregaCantidad2Meta =
+      const VerificationMeta('comprasEntregaCantidad2');
   @override
-  late final GeneratedColumn<double> purchasesDeliveryQuantity2 =
+  late final GeneratedColumn<double> comprasEntregaCantidad2 =
       GeneratedColumn<double>('COMPRAS_ENTREGA_CANTIDAD_2', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryQuantity3Meta =
-      const VerificationMeta('purchasesDeliveryQuantity3');
+  final VerificationMeta _comprasEntregaCantidad3Meta =
+      const VerificationMeta('comprasEntregaCantidad3');
   @override
-  late final GeneratedColumn<double> purchasesDeliveryQuantity3 =
+  late final GeneratedColumn<double> comprasEntregaCantidad3 =
       GeneratedColumn<double>('COMPRAS_ENTREGA_CANTIDAD_3', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryQuantityMore3Meta =
-      const VerificationMeta('purchasesDeliveryQuantityMore3');
+  final VerificationMeta _comprasEntregaCantidadMas3Meta =
+      const VerificationMeta('comprasEntregaCantidadMas3');
   @override
-  late final GeneratedColumn<double> purchasesDeliveryQuantityMore3 =
+  late final GeneratedColumn<double> comprasEntregaCantidadMas3 =
       GeneratedColumn<double>(
           'COMPRAS_ENTREGA_CANTIDAD_MAS_3', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryDate1Meta =
-      const VerificationMeta('purchasesDeliveryDate1');
+  final VerificationMeta _comprasEntregaFecha1Meta =
+      const VerificationMeta('comprasEntregaFecha1');
   @override
-  late final GeneratedColumn<DateTime> purchasesDeliveryDate1 =
+  late final GeneratedColumn<DateTime> comprasEntregaFecha1 =
       GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_1', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryDate2Meta =
-      const VerificationMeta('purchasesDeliveryDate2');
+  final VerificationMeta _comprasEntregaFecha2Meta =
+      const VerificationMeta('comprasEntregaFecha2');
   @override
-  late final GeneratedColumn<DateTime> purchasesDeliveryDate2 =
+  late final GeneratedColumn<DateTime> comprasEntregaFecha2 =
       GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_2', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryDate3Meta =
-      const VerificationMeta('purchasesDeliveryDate3');
+  final VerificationMeta _comprasEntregaFecha3Meta =
+      const VerificationMeta('comprasEntregaFecha3');
   @override
-  late final GeneratedColumn<DateTime> purchasesDeliveryDate3 =
+  late final GeneratedColumn<DateTime> comprasEntregaFecha3 =
       GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_3', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryStatus1Meta =
-      const VerificationMeta('purchasesDeliveryStatus1');
+  final VerificationMeta _comprasEntregaEstado1Meta =
+      const VerificationMeta('comprasEntregaEstado1');
   @override
-  late final GeneratedColumn<String> purchasesDeliveryStatus1 =
+  late final GeneratedColumn<String> comprasEntregaEstado1 =
       GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_1', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryStatus2Meta =
-      const VerificationMeta('purchasesDeliveryStatus2');
+  final VerificationMeta _comprasEntregaEstado2Meta =
+      const VerificationMeta('comprasEntregaEstado2');
   @override
-  late final GeneratedColumn<String> purchasesDeliveryStatus2 =
+  late final GeneratedColumn<String> comprasEntregaEstado2 =
       GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_2', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _purchasesDeliveryStatus3Meta =
-      const VerificationMeta('purchasesDeliveryStatus3');
+  final VerificationMeta _comprasEntregaEstado3Meta =
+      const VerificationMeta('comprasEntregaEstado3');
   @override
-  late final GeneratedColumn<String> purchasesDeliveryStatus3 =
+  late final GeneratedColumn<String> comprasEntregaEstado3 =
       GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_3', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _principalImageMeta =
-      const VerificationMeta('principalImage');
+  final VerificationMeta _imagenPrincipalMeta =
+      const VerificationMeta('imagenPrincipal');
   @override
-  late final GeneratedColumn<String> principalImage = GeneratedColumn<String>(
+  late final GeneratedColumn<String> imagenPrincipal = GeneratedColumn<String>(
       'IMAGEN_PRINCIPAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -11436,67 +11530,67 @@ class $ArticleTableTable extends ArticleTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        descriptionES,
-        descriptionEN,
-        descriptionFR,
-        descriptionDE,
-        descriptionCA,
-        descriptionGB,
-        descriptionHU,
-        descriptionIT,
-        descriptionNL,
-        descriptionPL,
-        descriptionPT,
-        descriptionRO,
-        descriptionRU,
-        descriptionCN,
-        descriptionEL,
-        familyId,
-        subfamilyId,
-        minimumSales,
-        multipleSales,
-        subboxUnits,
-        boxUnits,
-        paletUnits,
-        isActiveWeb,
-        isActiveApp,
-        inCatalogue,
-        discontinued,
-        cataloguePage,
-        cataloguePage2,
-        weightKg,
-        largeCm,
-        widthCm,
-        heightCm,
-        summaryES,
-        summaryEN,
-        summaryFR,
-        summaryDE,
-        summaryCA,
-        summaryGB,
-        summaryHU,
-        summaryIT,
-        summaryNL,
-        summaryPL,
-        summaryPT,
-        summaryRO,
-        summaryRU,
-        summaryCN,
-        summaryEL,
-        availableStock,
-        currentSales,
-        previousSales,
-        purchasesDeliveryQuantity1,
-        purchasesDeliveryQuantity2,
-        purchasesDeliveryQuantity3,
-        purchasesDeliveryQuantityMore3,
-        purchasesDeliveryDate1,
-        purchasesDeliveryDate2,
-        purchasesDeliveryDate3,
-        purchasesDeliveryStatus1,
-        purchasesDeliveryStatus2,
-        purchasesDeliveryStatus3,
-        principalImage,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        familiaId,
+        subfamiliaId,
+        ventaMinimo,
+        ventaMultiplo,
+        unidadesSubcaja,
+        unidadesCaja,
+        unidadesPalet,
+        activoWeb,
+        activoApp,
+        enCatalogo,
+        descatalogado,
+        paginaEnCatalgo,
+        paginaEnCatalgo2,
+        pesoKg,
+        largoCm,
+        anchoCm,
+        altoCm,
+        resumenES,
+        resumenEN,
+        resumenFR,
+        resumenDE,
+        resumenCA,
+        resumenGB,
+        resumenHU,
+        resumenIT,
+        resumenNL,
+        resumenPL,
+        resumenPT,
+        resumenRO,
+        resumenRU,
+        resumenCN,
+        resumenEL,
+        stockDisponible,
+        ventasActual,
+        ventasAnterior,
+        comprasEntregaCantidad1,
+        comprasEntregaCantidad2,
+        comprasEntregaCantidad3,
+        comprasEntregaCantidadMas3,
+        comprasEntregaFecha1,
+        comprasEntregaFecha2,
+        comprasEntregaFecha3,
+        comprasEntregaEstado1,
+        comprasEntregaEstado2,
+        comprasEntregaEstado3,
+        imagenPrincipal,
         lastUpdated,
         deleted
       ];
@@ -11505,7 +11599,7 @@ class $ArticleTableTable extends ArticleTable
   @override
   String get actualTableName => 'ARTICULOS';
   @override
-  VerificationContext validateIntegrity(Insertable<ArticleDTO> instance,
+  VerificationContext validateIntegrity(Insertable<ArticuloDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -11517,364 +11611,357 @@ class $ArticleTableTable extends ArticleTable
     }
     if (data.containsKey('DESCRIPCION_ES')) {
       context.handle(
-          _descriptionESMeta,
-          descriptionES.isAcceptableOrUnknown(
-              data['DESCRIPCION_ES']!, _descriptionESMeta));
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
     } else if (isInserting) {
-      context.missing(_descriptionESMeta);
+      context.missing(_descripcionESMeta);
     }
     if (data.containsKey('DESCRIPCION_EN')) {
       context.handle(
-          _descriptionENMeta,
-          descriptionEN.isAcceptableOrUnknown(
-              data['DESCRIPCION_EN']!, _descriptionENMeta));
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
     }
     if (data.containsKey('DESCRIPCION_FR')) {
       context.handle(
-          _descriptionFRMeta,
-          descriptionFR.isAcceptableOrUnknown(
-              data['DESCRIPCION_FR']!, _descriptionFRMeta));
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
     }
     if (data.containsKey('DESCRIPCION_DE')) {
       context.handle(
-          _descriptionDEMeta,
-          descriptionDE.isAcceptableOrUnknown(
-              data['DESCRIPCION_DE']!, _descriptionDEMeta));
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
     }
     if (data.containsKey('DESCRIPCION_CA')) {
       context.handle(
-          _descriptionCAMeta,
-          descriptionCA.isAcceptableOrUnknown(
-              data['DESCRIPCION_CA']!, _descriptionCAMeta));
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
     }
     if (data.containsKey('DESCRIPCION_GB')) {
       context.handle(
-          _descriptionGBMeta,
-          descriptionGB.isAcceptableOrUnknown(
-              data['DESCRIPCION_GB']!, _descriptionGBMeta));
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
     }
     if (data.containsKey('DESCRIPCION_HU')) {
       context.handle(
-          _descriptionHUMeta,
-          descriptionHU.isAcceptableOrUnknown(
-              data['DESCRIPCION_HU']!, _descriptionHUMeta));
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
     }
     if (data.containsKey('DESCRIPCION_IT')) {
       context.handle(
-          _descriptionITMeta,
-          descriptionIT.isAcceptableOrUnknown(
-              data['DESCRIPCION_IT']!, _descriptionITMeta));
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
     }
     if (data.containsKey('DESCRIPCION_NL')) {
       context.handle(
-          _descriptionNLMeta,
-          descriptionNL.isAcceptableOrUnknown(
-              data['DESCRIPCION_NL']!, _descriptionNLMeta));
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
     }
     if (data.containsKey('DESCRIPCION_PL')) {
       context.handle(
-          _descriptionPLMeta,
-          descriptionPL.isAcceptableOrUnknown(
-              data['DESCRIPCION_PL']!, _descriptionPLMeta));
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
     }
     if (data.containsKey('DESCRIPCION_PT')) {
       context.handle(
-          _descriptionPTMeta,
-          descriptionPT.isAcceptableOrUnknown(
-              data['DESCRIPCION_PT']!, _descriptionPTMeta));
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
     }
     if (data.containsKey('DESCRIPCION_RO')) {
       context.handle(
-          _descriptionROMeta,
-          descriptionRO.isAcceptableOrUnknown(
-              data['DESCRIPCION_RO']!, _descriptionROMeta));
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
     }
     if (data.containsKey('DESCRIPCION_RU')) {
       context.handle(
-          _descriptionRUMeta,
-          descriptionRU.isAcceptableOrUnknown(
-              data['DESCRIPCION_RU']!, _descriptionRUMeta));
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
     }
     if (data.containsKey('DESCRIPCION_CN')) {
       context.handle(
-          _descriptionCNMeta,
-          descriptionCN.isAcceptableOrUnknown(
-              data['DESCRIPCION_CN']!, _descriptionCNMeta));
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
     }
     if (data.containsKey('DESCRIPCION_EL')) {
       context.handle(
-          _descriptionELMeta,
-          descriptionEL.isAcceptableOrUnknown(
-              data['DESCRIPCION_EL']!, _descriptionELMeta));
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
     }
     if (data.containsKey('FAMILIA_ID')) {
-      context.handle(_familyIdMeta,
-          familyId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familyIdMeta));
+      context.handle(_familiaIdMeta,
+          familiaId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familiaIdMeta));
     }
     if (data.containsKey('SUBFAMILIA_ID')) {
       context.handle(
-          _subfamilyIdMeta,
-          subfamilyId.isAcceptableOrUnknown(
-              data['SUBFAMILIA_ID']!, _subfamilyIdMeta));
+          _subfamiliaIdMeta,
+          subfamiliaId.isAcceptableOrUnknown(
+              data['SUBFAMILIA_ID']!, _subfamiliaIdMeta));
     }
     if (data.containsKey('VENTA_MINIMO')) {
       context.handle(
-          _minimumSalesMeta,
-          minimumSales.isAcceptableOrUnknown(
-              data['VENTA_MINIMO']!, _minimumSalesMeta));
+          _ventaMinimoMeta,
+          ventaMinimo.isAcceptableOrUnknown(
+              data['VENTA_MINIMO']!, _ventaMinimoMeta));
     } else if (isInserting) {
-      context.missing(_minimumSalesMeta);
+      context.missing(_ventaMinimoMeta);
     }
     if (data.containsKey('VENTA_MULTIPLO')) {
       context.handle(
-          _multipleSalesMeta,
-          multipleSales.isAcceptableOrUnknown(
-              data['VENTA_MULTIPLO']!, _multipleSalesMeta));
+          _ventaMultiploMeta,
+          ventaMultiplo.isAcceptableOrUnknown(
+              data['VENTA_MULTIPLO']!, _ventaMultiploMeta));
     } else if (isInserting) {
-      context.missing(_multipleSalesMeta);
+      context.missing(_ventaMultiploMeta);
     }
     if (data.containsKey('UNIDADES_SUBCAJA')) {
       context.handle(
-          _subboxUnitsMeta,
-          subboxUnits.isAcceptableOrUnknown(
-              data['UNIDADES_SUBCAJA']!, _subboxUnitsMeta));
+          _unidadesSubcajaMeta,
+          unidadesSubcaja.isAcceptableOrUnknown(
+              data['UNIDADES_SUBCAJA']!, _unidadesSubcajaMeta));
     } else if (isInserting) {
-      context.missing(_subboxUnitsMeta);
+      context.missing(_unidadesSubcajaMeta);
     }
     if (data.containsKey('UNIDADES_CAJA')) {
       context.handle(
-          _boxUnitsMeta,
-          boxUnits.isAcceptableOrUnknown(
-              data['UNIDADES_CAJA']!, _boxUnitsMeta));
+          _unidadesCajaMeta,
+          unidadesCaja.isAcceptableOrUnknown(
+              data['UNIDADES_CAJA']!, _unidadesCajaMeta));
     } else if (isInserting) {
-      context.missing(_boxUnitsMeta);
+      context.missing(_unidadesCajaMeta);
     }
     if (data.containsKey('UNIDADES_PALET')) {
       context.handle(
-          _paletUnitsMeta,
-          paletUnits.isAcceptableOrUnknown(
-              data['UNIDADES_PALET']!, _paletUnitsMeta));
+          _unidadesPaletMeta,
+          unidadesPalet.isAcceptableOrUnknown(
+              data['UNIDADES_PALET']!, _unidadesPaletMeta));
     } else if (isInserting) {
-      context.missing(_paletUnitsMeta);
+      context.missing(_unidadesPaletMeta);
     }
     if (data.containsKey('ACTIVO_WEB')) {
-      context.handle(
-          _isActiveWebMeta,
-          isActiveWeb.isAcceptableOrUnknown(
-              data['ACTIVO_WEB']!, _isActiveWebMeta));
+      context.handle(_activoWebMeta,
+          activoWeb.isAcceptableOrUnknown(data['ACTIVO_WEB']!, _activoWebMeta));
     } else if (isInserting) {
-      context.missing(_isActiveWebMeta);
+      context.missing(_activoWebMeta);
     }
     if (data.containsKey('ACTIVO_APP')) {
-      context.handle(
-          _isActiveAppMeta,
-          isActiveApp.isAcceptableOrUnknown(
-              data['ACTIVO_APP']!, _isActiveAppMeta));
+      context.handle(_activoAppMeta,
+          activoApp.isAcceptableOrUnknown(data['ACTIVO_APP']!, _activoAppMeta));
     } else if (isInserting) {
-      context.missing(_isActiveAppMeta);
+      context.missing(_activoAppMeta);
     }
     if (data.containsKey('EN_CATALOGO')) {
       context.handle(
-          _inCatalogueMeta,
-          inCatalogue.isAcceptableOrUnknown(
-              data['EN_CATALOGO']!, _inCatalogueMeta));
+          _enCatalogoMeta,
+          enCatalogo.isAcceptableOrUnknown(
+              data['EN_CATALOGO']!, _enCatalogoMeta));
     } else if (isInserting) {
-      context.missing(_inCatalogueMeta);
+      context.missing(_enCatalogoMeta);
     }
     if (data.containsKey('DESCATALOGADO')) {
       context.handle(
-          _discontinuedMeta,
-          discontinued.isAcceptableOrUnknown(
-              data['DESCATALOGADO']!, _discontinuedMeta));
+          _descatalogadoMeta,
+          descatalogado.isAcceptableOrUnknown(
+              data['DESCATALOGADO']!, _descatalogadoMeta));
     } else if (isInserting) {
-      context.missing(_discontinuedMeta);
+      context.missing(_descatalogadoMeta);
     }
     if (data.containsKey('PAGINA_EN_CATALOGO')) {
       context.handle(
-          _cataloguePageMeta,
-          cataloguePage.isAcceptableOrUnknown(
-              data['PAGINA_EN_CATALOGO']!, _cataloguePageMeta));
+          _paginaEnCatalgoMeta,
+          paginaEnCatalgo.isAcceptableOrUnknown(
+              data['PAGINA_EN_CATALOGO']!, _paginaEnCatalgoMeta));
     }
     if (data.containsKey('PAGINA_EN_CATALOGO2')) {
       context.handle(
-          _cataloguePage2Meta,
-          cataloguePage2.isAcceptableOrUnknown(
-              data['PAGINA_EN_CATALOGO2']!, _cataloguePage2Meta));
+          _paginaEnCatalgo2Meta,
+          paginaEnCatalgo2.isAcceptableOrUnknown(
+              data['PAGINA_EN_CATALOGO2']!, _paginaEnCatalgo2Meta));
     }
     if (data.containsKey('PESO_KG')) {
-      context.handle(_weightKgMeta,
-          weightKg.isAcceptableOrUnknown(data['PESO_KG']!, _weightKgMeta));
+      context.handle(_pesoKgMeta,
+          pesoKg.isAcceptableOrUnknown(data['PESO_KG']!, _pesoKgMeta));
     } else if (isInserting) {
-      context.missing(_weightKgMeta);
+      context.missing(_pesoKgMeta);
     }
     if (data.containsKey('LARGO_CM')) {
-      context.handle(_largeCmMeta,
-          largeCm.isAcceptableOrUnknown(data['LARGO_CM']!, _largeCmMeta));
+      context.handle(_largoCmMeta,
+          largoCm.isAcceptableOrUnknown(data['LARGO_CM']!, _largoCmMeta));
     } else if (isInserting) {
-      context.missing(_largeCmMeta);
+      context.missing(_largoCmMeta);
     }
     if (data.containsKey('ANCHO_CM')) {
-      context.handle(_widthCmMeta,
-          widthCm.isAcceptableOrUnknown(data['ANCHO_CM']!, _widthCmMeta));
+      context.handle(_anchoCmMeta,
+          anchoCm.isAcceptableOrUnknown(data['ANCHO_CM']!, _anchoCmMeta));
     } else if (isInserting) {
-      context.missing(_widthCmMeta);
+      context.missing(_anchoCmMeta);
     }
     if (data.containsKey('ALTO_CM')) {
-      context.handle(_heightCmMeta,
-          heightCm.isAcceptableOrUnknown(data['ALTO_CM']!, _heightCmMeta));
+      context.handle(_altoCmMeta,
+          altoCm.isAcceptableOrUnknown(data['ALTO_CM']!, _altoCmMeta));
     } else if (isInserting) {
-      context.missing(_heightCmMeta);
+      context.missing(_altoCmMeta);
     }
     if (data.containsKey('RESUMEN_ES')) {
-      context.handle(_summaryESMeta,
-          summaryES.isAcceptableOrUnknown(data['RESUMEN_ES']!, _summaryESMeta));
+      context.handle(_resumenESMeta,
+          resumenES.isAcceptableOrUnknown(data['RESUMEN_ES']!, _resumenESMeta));
     }
     if (data.containsKey('RESUMEN_EN')) {
-      context.handle(_summaryENMeta,
-          summaryEN.isAcceptableOrUnknown(data['RESUMEN_EN']!, _summaryENMeta));
+      context.handle(_resumenENMeta,
+          resumenEN.isAcceptableOrUnknown(data['RESUMEN_EN']!, _resumenENMeta));
     }
     if (data.containsKey('RESUMEN_FR')) {
-      context.handle(_summaryFRMeta,
-          summaryFR.isAcceptableOrUnknown(data['RESUMEN_FR']!, _summaryFRMeta));
+      context.handle(_resumenFRMeta,
+          resumenFR.isAcceptableOrUnknown(data['RESUMEN_FR']!, _resumenFRMeta));
     }
     if (data.containsKey('RESUMEN_DE')) {
-      context.handle(_summaryDEMeta,
-          summaryDE.isAcceptableOrUnknown(data['RESUMEN_DE']!, _summaryDEMeta));
+      context.handle(_resumenDEMeta,
+          resumenDE.isAcceptableOrUnknown(data['RESUMEN_DE']!, _resumenDEMeta));
     }
     if (data.containsKey('RESUMEN_CA')) {
-      context.handle(_summaryCAMeta,
-          summaryCA.isAcceptableOrUnknown(data['RESUMEN_CA']!, _summaryCAMeta));
+      context.handle(_resumenCAMeta,
+          resumenCA.isAcceptableOrUnknown(data['RESUMEN_CA']!, _resumenCAMeta));
     }
     if (data.containsKey('RESUMEN_GB')) {
-      context.handle(_summaryGBMeta,
-          summaryGB.isAcceptableOrUnknown(data['RESUMEN_GB']!, _summaryGBMeta));
+      context.handle(_resumenGBMeta,
+          resumenGB.isAcceptableOrUnknown(data['RESUMEN_GB']!, _resumenGBMeta));
     }
     if (data.containsKey('RESUMEN_HU')) {
-      context.handle(_summaryHUMeta,
-          summaryHU.isAcceptableOrUnknown(data['RESUMEN_HU']!, _summaryHUMeta));
+      context.handle(_resumenHUMeta,
+          resumenHU.isAcceptableOrUnknown(data['RESUMEN_HU']!, _resumenHUMeta));
     }
     if (data.containsKey('RESUMEN_IT')) {
-      context.handle(_summaryITMeta,
-          summaryIT.isAcceptableOrUnknown(data['RESUMEN_IT']!, _summaryITMeta));
+      context.handle(_resumenITMeta,
+          resumenIT.isAcceptableOrUnknown(data['RESUMEN_IT']!, _resumenITMeta));
     }
     if (data.containsKey('RESUMEN_NL')) {
-      context.handle(_summaryNLMeta,
-          summaryNL.isAcceptableOrUnknown(data['RESUMEN_NL']!, _summaryNLMeta));
+      context.handle(_resumenNLMeta,
+          resumenNL.isAcceptableOrUnknown(data['RESUMEN_NL']!, _resumenNLMeta));
     }
     if (data.containsKey('RESUMEN_PL')) {
-      context.handle(_summaryPLMeta,
-          summaryPL.isAcceptableOrUnknown(data['RESUMEN_PL']!, _summaryPLMeta));
+      context.handle(_resumenPLMeta,
+          resumenPL.isAcceptableOrUnknown(data['RESUMEN_PL']!, _resumenPLMeta));
     }
     if (data.containsKey('RESUMEN_PT')) {
-      context.handle(_summaryPTMeta,
-          summaryPT.isAcceptableOrUnknown(data['RESUMEN_PT']!, _summaryPTMeta));
+      context.handle(_resumenPTMeta,
+          resumenPT.isAcceptableOrUnknown(data['RESUMEN_PT']!, _resumenPTMeta));
     }
     if (data.containsKey('RESUMEN_RO')) {
-      context.handle(_summaryROMeta,
-          summaryRO.isAcceptableOrUnknown(data['RESUMEN_RO']!, _summaryROMeta));
+      context.handle(_resumenROMeta,
+          resumenRO.isAcceptableOrUnknown(data['RESUMEN_RO']!, _resumenROMeta));
     }
     if (data.containsKey('RESUMEN_RU')) {
-      context.handle(_summaryRUMeta,
-          summaryRU.isAcceptableOrUnknown(data['RESUMEN_RU']!, _summaryRUMeta));
+      context.handle(_resumenRUMeta,
+          resumenRU.isAcceptableOrUnknown(data['RESUMEN_RU']!, _resumenRUMeta));
     }
     if (data.containsKey('RESUMEN_CN')) {
-      context.handle(_summaryCNMeta,
-          summaryCN.isAcceptableOrUnknown(data['RESUMEN_CN']!, _summaryCNMeta));
+      context.handle(_resumenCNMeta,
+          resumenCN.isAcceptableOrUnknown(data['RESUMEN_CN']!, _resumenCNMeta));
     }
     if (data.containsKey('RESUMEN_EL')) {
-      context.handle(_summaryELMeta,
-          summaryEL.isAcceptableOrUnknown(data['RESUMEN_EL']!, _summaryELMeta));
+      context.handle(_resumenELMeta,
+          resumenEL.isAcceptableOrUnknown(data['RESUMEN_EL']!, _resumenELMeta));
     }
     if (data.containsKey('STOCK_DISPONIBLE')) {
       context.handle(
-          _availableStockMeta,
-          availableStock.isAcceptableOrUnknown(
-              data['STOCK_DISPONIBLE']!, _availableStockMeta));
+          _stockDisponibleMeta,
+          stockDisponible.isAcceptableOrUnknown(
+              data['STOCK_DISPONIBLE']!, _stockDisponibleMeta));
     }
     if (data.containsKey('VENTAS_ACTUAL')) {
       context.handle(
-          _currentSalesMeta,
-          currentSales.isAcceptableOrUnknown(
-              data['VENTAS_ACTUAL']!, _currentSalesMeta));
+          _ventasActualMeta,
+          ventasActual.isAcceptableOrUnknown(
+              data['VENTAS_ACTUAL']!, _ventasActualMeta));
     }
     if (data.containsKey('VENTAS_ANTERIOR')) {
       context.handle(
-          _previousSalesMeta,
-          previousSales.isAcceptableOrUnknown(
-              data['VENTAS_ANTERIOR']!, _previousSalesMeta));
+          _ventasAnteriorMeta,
+          ventasAnterior.isAcceptableOrUnknown(
+              data['VENTAS_ANTERIOR']!, _ventasAnteriorMeta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_CANTIDAD_1')) {
       context.handle(
-          _purchasesDeliveryQuantity1Meta,
-          purchasesDeliveryQuantity1.isAcceptableOrUnknown(
+          _comprasEntregaCantidad1Meta,
+          comprasEntregaCantidad1.isAcceptableOrUnknown(
               data['COMPRAS_ENTREGA_CANTIDAD_1']!,
-              _purchasesDeliveryQuantity1Meta));
+              _comprasEntregaCantidad1Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_CANTIDAD_2')) {
       context.handle(
-          _purchasesDeliveryQuantity2Meta,
-          purchasesDeliveryQuantity2.isAcceptableOrUnknown(
+          _comprasEntregaCantidad2Meta,
+          comprasEntregaCantidad2.isAcceptableOrUnknown(
               data['COMPRAS_ENTREGA_CANTIDAD_2']!,
-              _purchasesDeliveryQuantity2Meta));
+              _comprasEntregaCantidad2Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_CANTIDAD_3')) {
       context.handle(
-          _purchasesDeliveryQuantity3Meta,
-          purchasesDeliveryQuantity3.isAcceptableOrUnknown(
+          _comprasEntregaCantidad3Meta,
+          comprasEntregaCantidad3.isAcceptableOrUnknown(
               data['COMPRAS_ENTREGA_CANTIDAD_3']!,
-              _purchasesDeliveryQuantity3Meta));
+              _comprasEntregaCantidad3Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_CANTIDAD_MAS_3')) {
       context.handle(
-          _purchasesDeliveryQuantityMore3Meta,
-          purchasesDeliveryQuantityMore3.isAcceptableOrUnknown(
+          _comprasEntregaCantidadMas3Meta,
+          comprasEntregaCantidadMas3.isAcceptableOrUnknown(
               data['COMPRAS_ENTREGA_CANTIDAD_MAS_3']!,
-              _purchasesDeliveryQuantityMore3Meta));
+              _comprasEntregaCantidadMas3Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_FECHA_1')) {
       context.handle(
-          _purchasesDeliveryDate1Meta,
-          purchasesDeliveryDate1.isAcceptableOrUnknown(
-              data['COMPRAS_ENTREGA_FECHA_1']!, _purchasesDeliveryDate1Meta));
+          _comprasEntregaFecha1Meta,
+          comprasEntregaFecha1.isAcceptableOrUnknown(
+              data['COMPRAS_ENTREGA_FECHA_1']!, _comprasEntregaFecha1Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_FECHA_2')) {
       context.handle(
-          _purchasesDeliveryDate2Meta,
-          purchasesDeliveryDate2.isAcceptableOrUnknown(
-              data['COMPRAS_ENTREGA_FECHA_2']!, _purchasesDeliveryDate2Meta));
+          _comprasEntregaFecha2Meta,
+          comprasEntregaFecha2.isAcceptableOrUnknown(
+              data['COMPRAS_ENTREGA_FECHA_2']!, _comprasEntregaFecha2Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_FECHA_3')) {
       context.handle(
-          _purchasesDeliveryDate3Meta,
-          purchasesDeliveryDate3.isAcceptableOrUnknown(
-              data['COMPRAS_ENTREGA_FECHA_3']!, _purchasesDeliveryDate3Meta));
+          _comprasEntregaFecha3Meta,
+          comprasEntregaFecha3.isAcceptableOrUnknown(
+              data['COMPRAS_ENTREGA_FECHA_3']!, _comprasEntregaFecha3Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_ESTADO_1')) {
       context.handle(
-          _purchasesDeliveryStatus1Meta,
-          purchasesDeliveryStatus1.isAcceptableOrUnknown(
-              data['COMPRAS_ENTREGA_ESTADO_1']!,
-              _purchasesDeliveryStatus1Meta));
+          _comprasEntregaEstado1Meta,
+          comprasEntregaEstado1.isAcceptableOrUnknown(
+              data['COMPRAS_ENTREGA_ESTADO_1']!, _comprasEntregaEstado1Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_ESTADO_2')) {
       context.handle(
-          _purchasesDeliveryStatus2Meta,
-          purchasesDeliveryStatus2.isAcceptableOrUnknown(
-              data['COMPRAS_ENTREGA_ESTADO_2']!,
-              _purchasesDeliveryStatus2Meta));
+          _comprasEntregaEstado2Meta,
+          comprasEntregaEstado2.isAcceptableOrUnknown(
+              data['COMPRAS_ENTREGA_ESTADO_2']!, _comprasEntregaEstado2Meta));
     }
     if (data.containsKey('COMPRAS_ENTREGA_ESTADO_3')) {
       context.handle(
-          _purchasesDeliveryStatus3Meta,
-          purchasesDeliveryStatus3.isAcceptableOrUnknown(
-              data['COMPRAS_ENTREGA_ESTADO_3']!,
-              _purchasesDeliveryStatus3Meta));
+          _comprasEntregaEstado3Meta,
+          comprasEntregaEstado3.isAcceptableOrUnknown(
+              data['COMPRAS_ENTREGA_ESTADO_3']!, _comprasEntregaEstado3Meta));
     }
     if (data.containsKey('IMAGEN_PRINCIPAL')) {
       context.handle(
-          _principalImageMeta,
-          principalImage.isAcceptableOrUnknown(
-              data['IMAGEN_PRINCIPAL']!, _principalImageMeta));
+          _imagenPrincipalMeta,
+          imagenPrincipal.isAcceptableOrUnknown(
+              data['IMAGEN_PRINCIPAL']!, _imagenPrincipalMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -11894,142 +11981,142 @@ class $ArticleTableTable extends ArticleTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ArticleDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleDTO(
+    return ArticuloDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      descriptionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descriptionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descriptionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descriptionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descriptionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descriptionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descriptionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descriptionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descriptionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descriptionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descriptionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descriptionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descriptionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descriptionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descriptionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      familyId: attachedDatabase.options.types
+      familiaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID']),
-      subfamilyId: attachedDatabase.options.types
+      subfamiliaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID']),
-      minimumSales: attachedDatabase.options.types
+      ventaMinimo: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}VENTA_MINIMO'])!,
-      multipleSales: attachedDatabase.options.types
+      ventaMultiplo: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}VENTA_MULTIPLO'])!,
-      subboxUnits: attachedDatabase.options.types.read(
+      unidadesSubcaja: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}UNIDADES_SUBCAJA'])!,
-      boxUnits: attachedDatabase.options.types
+      unidadesCaja: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES_CAJA'])!,
-      paletUnits: attachedDatabase.options.types
+      unidadesPalet: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES_PALET'])!,
-      isActiveWeb: attachedDatabase.options.types
+      activoWeb: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ACTIVO_WEB'])!,
-      isActiveApp: attachedDatabase.options.types
+      activoApp: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ACTIVO_APP'])!,
-      inCatalogue: attachedDatabase.options.types
+      enCatalogo: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EN_CATALOGO'])!,
-      discontinued: attachedDatabase.options.types
+      descatalogado: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCATALOGADO'])!,
-      cataloguePage: attachedDatabase.options.types.read(
+      paginaEnCatalgo: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}PAGINA_EN_CATALOGO']),
-      cataloguePage2: attachedDatabase.options.types.read(
+      paginaEnCatalgo2: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}PAGINA_EN_CATALOGO2']),
-      weightKg: attachedDatabase.options.types
+      pesoKg: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}PESO_KG'])!,
-      largeCm: attachedDatabase.options.types
+      largoCm: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LARGO_CM'])!,
-      widthCm: attachedDatabase.options.types
+      anchoCm: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ANCHO_CM'])!,
-      heightCm: attachedDatabase.options.types
+      altoCm: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ALTO_CM'])!,
-      summaryES: attachedDatabase.options.types
+      resumenES: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_ES']),
-      summaryEN: attachedDatabase.options.types
+      resumenEN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_EN']),
-      summaryFR: attachedDatabase.options.types
+      resumenFR: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_FR']),
-      summaryDE: attachedDatabase.options.types
+      resumenDE: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_DE']),
-      summaryCA: attachedDatabase.options.types
+      resumenCA: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_CA']),
-      summaryGB: attachedDatabase.options.types
+      resumenGB: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_GB']),
-      summaryHU: attachedDatabase.options.types
+      resumenHU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_HU']),
-      summaryIT: attachedDatabase.options.types
+      resumenIT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_IT']),
-      summaryNL: attachedDatabase.options.types
+      resumenNL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_NL']),
-      summaryPL: attachedDatabase.options.types
+      resumenPL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_PL']),
-      summaryPT: attachedDatabase.options.types
+      resumenPT: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_PT']),
-      summaryRO: attachedDatabase.options.types
+      resumenRO: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_RO']),
-      summaryRU: attachedDatabase.options.types
+      resumenRU: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_RU']),
-      summaryCN: attachedDatabase.options.types
+      resumenCN: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_CN']),
-      summaryEL: attachedDatabase.options.types
+      resumenEL: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_EL']),
-      availableStock: attachedDatabase.options.types.read(
+      stockDisponible: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}STOCK_DISPONIBLE']),
-      currentSales: attachedDatabase.options.types
+      ventasActual: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}VENTAS_ACTUAL']),
-      previousSales: attachedDatabase.options.types
+      ventasAnterior: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}VENTAS_ANTERIOR']),
-      purchasesDeliveryQuantity1: attachedDatabase.options.types.read(
+      comprasEntregaCantidad1: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_1']),
-      purchasesDeliveryQuantity2: attachedDatabase.options.types.read(
+      comprasEntregaCantidad2: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_2']),
-      purchasesDeliveryQuantity3: attachedDatabase.options.types.read(
+      comprasEntregaCantidad3: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_3']),
-      purchasesDeliveryQuantityMore3: attachedDatabase.options.types.read(
+      comprasEntregaCantidadMas3: attachedDatabase.options.types.read(
           DriftSqlType.double,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_MAS_3']),
-      purchasesDeliveryDate1: attachedDatabase.options.types.read(
+      comprasEntregaFecha1: attachedDatabase.options.types.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_1']),
-      purchasesDeliveryDate2: attachedDatabase.options.types.read(
+      comprasEntregaFecha2: attachedDatabase.options.types.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_2']),
-      purchasesDeliveryDate3: attachedDatabase.options.types.read(
+      comprasEntregaFecha3: attachedDatabase.options.types.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_3']),
-      purchasesDeliveryStatus1: attachedDatabase.options.types.read(
+      comprasEntregaEstado1: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_1']),
-      purchasesDeliveryStatus2: attachedDatabase.options.types.read(
+      comprasEntregaEstado2: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_2']),
-      purchasesDeliveryStatus3: attachedDatabase.options.types.read(
+      comprasEntregaEstado3: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_3']),
-      principalImage: attachedDatabase.options.types.read(
+      imagenPrincipal: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}IMAGEN_PRINCIPAL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -12039,62 +12126,62 @@ class $ArticleTableTable extends ArticleTable
   }
 
   @override
-  $ArticleTableTable createAlias(String alias) {
-    return $ArticleTableTable(attachedDatabase, alias);
+  $ArticuloTableTable createAlias(String alias) {
+    return $ArticuloTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleComponentTableCompanion
-    extends UpdateCompanion<ArticleComponentDTO> {
-  final Value<String> articleId;
-  final Value<String> articleComponentId;
-  final Value<double> quantity;
+class ArticuloComponenteTableCompanion
+    extends UpdateCompanion<ArticuloComponenteDTO> {
+  final Value<String> articuloId;
+  final Value<String> articuloComponenteId;
+  final Value<double> cantidad;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleComponentTableCompanion({
-    this.articleId = const Value.absent(),
-    this.articleComponentId = const Value.absent(),
-    this.quantity = const Value.absent(),
+  const ArticuloComponenteTableCompanion({
+    this.articuloId = const Value.absent(),
+    this.articuloComponenteId = const Value.absent(),
+    this.cantidad = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleComponentTableCompanion.insert({
-    required String articleId,
-    required String articleComponentId,
-    required double quantity,
+  ArticuloComponenteTableCompanion.insert({
+    required String articuloId,
+    required String articuloComponenteId,
+    required double cantidad,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
-        articleComponentId = Value(articleComponentId),
-        quantity = Value(quantity),
+  })  : articuloId = Value(articuloId),
+        articuloComponenteId = Value(articuloComponenteId),
+        cantidad = Value(cantidad),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleComponentDTO> custom({
-    Expression<String>? articleId,
-    Expression<String>? articleComponentId,
-    Expression<double>? quantity,
+  static Insertable<ArticuloComponenteDTO> custom({
+    Expression<String>? articuloId,
+    Expression<String>? articuloComponenteId,
+    Expression<double>? cantidad,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (articleComponentId != null)
-        'ARTICULO_COMPONENTE_ID': articleComponentId,
-      if (quantity != null) 'CANTIDAD': quantity,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (articuloComponenteId != null)
+        'ARTICULO_COMPONENTE_ID': articuloComponenteId,
+      if (cantidad != null) 'CANTIDAD': cantidad,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleComponentTableCompanion copyWith(
-      {Value<String>? articleId,
-      Value<String>? articleComponentId,
-      Value<double>? quantity,
+  ArticuloComponenteTableCompanion copyWith(
+      {Value<String>? articuloId,
+      Value<String>? articuloComponenteId,
+      Value<double>? cantidad,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleComponentTableCompanion(
-      articleId: articleId ?? this.articleId,
-      articleComponentId: articleComponentId ?? this.articleComponentId,
-      quantity: quantity ?? this.quantity,
+    return ArticuloComponenteTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
+      articuloComponenteId: articuloComponenteId ?? this.articuloComponenteId,
+      cantidad: cantidad ?? this.cantidad,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12103,15 +12190,15 @@ class ArticleComponentTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (articleComponentId.present) {
+    if (articuloComponenteId.present) {
       map['ARTICULO_COMPONENTE_ID'] =
-          Variable<String>(articleComponentId.value);
+          Variable<String>(articuloComponenteId.value);
     }
-    if (quantity.present) {
-      map['CANTIDAD'] = Variable<double>(quantity.value);
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<double>(cantidad.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12124,10 +12211,10 @@ class ArticleComponentTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticleComponentTableCompanion(')
-          ..write('articleId: $articleId, ')
-          ..write('articleComponentId: $articleComponentId, ')
-          ..write('quantity: $quantity, ')
+    return (StringBuffer('ArticuloComponenteTableCompanion(')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloComponenteId: $articuloComponenteId, ')
+          ..write('cantidad: $cantidad, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12135,26 +12222,26 @@ class ArticleComponentTableCompanion
   }
 }
 
-class $ArticleComponentTableTable extends ArticleComponentTable
-    with TableInfo<$ArticleComponentTableTable, ArticleComponentDTO> {
+class $ArticuloComponenteTableTable extends ArticuloComponenteTable
+    with TableInfo<$ArticuloComponenteTableTable, ArticuloComponenteDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleComponentTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloComponenteTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleComponentIdMeta =
-      const VerificationMeta('articleComponentId');
+  final VerificationMeta _articuloComponenteIdMeta =
+      const VerificationMeta('articuloComponenteId');
   @override
-  late final GeneratedColumn<String> articleComponentId =
+  late final GeneratedColumn<String> articuloComponenteId =
       GeneratedColumn<String>('ARTICULO_COMPONENTE_ID', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
+  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
   @override
-  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidad = GeneratedColumn<double>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -12172,38 +12259,38 @@ class $ArticleComponentTableTable extends ArticleComponentTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [articleId, articleComponentId, quantity, lastUpdated, deleted];
+      [articuloId, articuloComponenteId, cantidad, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_COMPONENTES';
   @override
   String get actualTableName => 'ARTICULOS_COMPONENTES';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ArticleComponentDTO> instance,
+      Insertable<ArticuloComponenteDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('ARTICULO_COMPONENTE_ID')) {
       context.handle(
-          _articleComponentIdMeta,
-          articleComponentId.isAcceptableOrUnknown(
-              data['ARTICULO_COMPONENTE_ID']!, _articleComponentIdMeta));
+          _articuloComponenteIdMeta,
+          articuloComponenteId.isAcceptableOrUnknown(
+              data['ARTICULO_COMPONENTE_ID']!, _articuloComponenteIdMeta));
     } else if (isInserting) {
-      context.missing(_articleComponentIdMeta);
+      context.missing(_articuloComponenteIdMeta);
     }
     if (data.containsKey('CANTIDAD')) {
-      context.handle(_quantityMeta,
-          quantity.isAcceptableOrUnknown(data['CANTIDAD']!, _quantityMeta));
+      context.handle(_cantidadMeta,
+          cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta));
     } else if (isInserting) {
-      context.missing(_quantityMeta);
+      context.missing(_cantidadMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -12221,17 +12308,17 @@ class $ArticleComponentTableTable extends ArticleComponentTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, articleComponentId};
+  Set<GeneratedColumn> get $primaryKey => {articuloId, articuloComponenteId};
   @override
-  ArticleComponentDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloComponenteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleComponentDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloComponenteDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      articleComponentId: attachedDatabase.options.types.read(
+      articuloComponenteId: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
-      quantity: attachedDatabase.options.types
+      cantidad: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -12241,61 +12328,61 @@ class $ArticleComponentTableTable extends ArticleComponentTable
   }
 
   @override
-  $ArticleComponentTableTable createAlias(String alias) {
-    return $ArticleComponentTableTable(attachedDatabase, alias);
+  $ArticuloComponenteTableTable createAlias(String alias) {
+    return $ArticuloComponenteTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleCompanyVatTableCompanion
-    extends UpdateCompanion<ArticleCompanyVATDTO> {
-  final Value<String> articleId;
-  final Value<String> companyId;
-  final Value<double> vat;
+class ArticuloEmpresaIvaTableCompanion
+    extends UpdateCompanion<ArticuloEmpresaIvaDTO> {
+  final Value<String> articuloId;
+  final Value<String> empresaId;
+  final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleCompanyVatTableCompanion({
-    this.articleId = const Value.absent(),
-    this.companyId = const Value.absent(),
-    this.vat = const Value.absent(),
+  const ArticuloEmpresaIvaTableCompanion({
+    this.articuloId = const Value.absent(),
+    this.empresaId = const Value.absent(),
+    this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleCompanyVatTableCompanion.insert({
-    required String articleId,
-    required String companyId,
-    required double vat,
+  ArticuloEmpresaIvaTableCompanion.insert({
+    required String articuloId,
+    required String empresaId,
+    required double iva,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
-        companyId = Value(companyId),
-        vat = Value(vat),
+  })  : articuloId = Value(articuloId),
+        empresaId = Value(empresaId),
+        iva = Value(iva),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleCompanyVATDTO> custom({
-    Expression<String>? articleId,
-    Expression<String>? companyId,
-    Expression<double>? vat,
+  static Insertable<ArticuloEmpresaIvaDTO> custom({
+    Expression<String>? articuloId,
+    Expression<String>? empresaId,
+    Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (companyId != null) 'EMPRESA_ID': companyId,
-      if (vat != null) 'IVA': vat,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleCompanyVatTableCompanion copyWith(
-      {Value<String>? articleId,
-      Value<String>? companyId,
-      Value<double>? vat,
+  ArticuloEmpresaIvaTableCompanion copyWith(
+      {Value<String>? articuloId,
+      Value<String>? empresaId,
+      Value<double>? iva,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleCompanyVatTableCompanion(
-      articleId: articleId ?? this.articleId,
-      companyId: companyId ?? this.companyId,
-      vat: vat ?? this.vat,
+    return ArticuloEmpresaIvaTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
+      empresaId: empresaId ?? this.empresaId,
+      iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12304,14 +12391,14 @@ class ArticleCompanyVatTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (companyId.present) {
-      map['EMPRESA_ID'] = Variable<String>(companyId.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (vat.present) {
-      map['IVA'] = Variable<double>(vat.value);
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12324,10 +12411,10 @@ class ArticleCompanyVatTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticleCompanyVatTableCompanion(')
-          ..write('articleId: $articleId, ')
-          ..write('companyId: $companyId, ')
-          ..write('vat: $vat, ')
+    return (StringBuffer('ArticuloEmpresaIvaTableCompanion(')
+          ..write('articuloId: $articuloId, ')
+          ..write('empresaId: $empresaId, ')
+          ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12335,25 +12422,25 @@ class ArticleCompanyVatTableCompanion
   }
 }
 
-class $ArticleCompanyVatTableTable extends ArticleCompanyVatTable
-    with TableInfo<$ArticleCompanyVatTableTable, ArticleCompanyVATDTO> {
+class $ArticuloEmpresaIvaTableTable extends ArticuloEmpresaIvaTable
+    with TableInfo<$ArticuloEmpresaIvaTableTable, ArticuloEmpresaIvaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleCompanyVatTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloEmpresaIvaTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _companyIdMeta = const VerificationMeta('companyId');
+  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
   @override
-  late final GeneratedColumn<String> companyId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _vatMeta = const VerificationMeta('vat');
+  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
-  late final GeneratedColumn<double> vat = GeneratedColumn<double>(
+  late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -12371,36 +12458,36 @@ class $ArticleCompanyVatTableTable extends ArticleCompanyVatTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [articleId, companyId, vat, lastUpdated, deleted];
+      [articuloId, empresaId, iva, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_EMPRESAS_IVA';
   @override
   String get actualTableName => 'ARTICULOS_EMPRESAS_IVA';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ArticleCompanyVATDTO> instance,
+      Insertable<ArticuloEmpresaIvaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('EMPRESA_ID')) {
-      context.handle(_companyIdMeta,
-          companyId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _companyIdMeta));
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
     } else if (isInserting) {
-      context.missing(_companyIdMeta);
+      context.missing(_empresaIdMeta);
     }
     if (data.containsKey('IVA')) {
       context.handle(
-          _vatMeta, vat.isAcceptableOrUnknown(data['IVA']!, _vatMeta));
+          _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
     } else if (isInserting) {
-      context.missing(_vatMeta);
+      context.missing(_ivaMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -12418,16 +12505,16 @@ class $ArticleCompanyVatTableTable extends ArticleCompanyVatTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, companyId};
+  Set<GeneratedColumn> get $primaryKey => {articuloId, empresaId};
   @override
-  ArticleCompanyVATDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloEmpresaIvaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleCompanyVATDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloEmpresaIvaDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      companyId: attachedDatabase.options.types
+      empresaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      vat: attachedDatabase.options.types
+      iva: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -12437,68 +12524,69 @@ class $ArticleCompanyVatTableTable extends ArticleCompanyVatTable
   }
 
   @override
-  $ArticleCompanyVatTableTable createAlias(String alias) {
-    return $ArticleCompanyVatTableTable(attachedDatabase, alias);
+  $ArticuloEmpresaIvaTableTable createAlias(String alias) {
+    return $ArticuloEmpresaIvaTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleSpareTableCompanion extends UpdateCompanion<ArticleSpareDTO> {
-  final Value<String> articleId;
+class ArticuloRecambioTableCompanion
+    extends UpdateCompanion<ArticuloRecambioDTO> {
+  final Value<String> articuloId;
   final Value<String> id;
-  final Value<String> description;
-  final Value<double> quantity;
+  final Value<String> descripcion;
+  final Value<double> cantidad;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleSpareTableCompanion({
-    this.articleId = const Value.absent(),
+  const ArticuloRecambioTableCompanion({
+    this.articuloId = const Value.absent(),
     this.id = const Value.absent(),
-    this.description = const Value.absent(),
-    this.quantity = const Value.absent(),
+    this.descripcion = const Value.absent(),
+    this.cantidad = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleSpareTableCompanion.insert({
-    required String articleId,
+  ArticuloRecambioTableCompanion.insert({
+    required String articuloId,
     required String id,
-    required String description,
-    required double quantity,
+    required String descripcion,
+    required double cantidad,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
+  })  : articuloId = Value(articuloId),
         id = Value(id),
-        description = Value(description),
-        quantity = Value(quantity),
+        descripcion = Value(descripcion),
+        cantidad = Value(cantidad),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleSpareDTO> custom({
-    Expression<String>? articleId,
+  static Insertable<ArticuloRecambioDTO> custom({
+    Expression<String>? articuloId,
     Expression<String>? id,
-    Expression<String>? description,
-    Expression<double>? quantity,
+    Expression<String>? descripcion,
+    Expression<double>? cantidad,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (id != null) 'RECAMBIO_ID': id,
-      if (description != null) 'DESCRIPCION': description,
-      if (quantity != null) 'CANTIDAD': quantity,
+      if (descripcion != null) 'DESCRIPCION': descripcion,
+      if (cantidad != null) 'CANTIDAD': cantidad,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleSpareTableCompanion copyWith(
-      {Value<String>? articleId,
+  ArticuloRecambioTableCompanion copyWith(
+      {Value<String>? articuloId,
       Value<String>? id,
-      Value<String>? description,
-      Value<double>? quantity,
+      Value<String>? descripcion,
+      Value<double>? cantidad,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleSpareTableCompanion(
-      articleId: articleId ?? this.articleId,
+    return ArticuloRecambioTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
       id: id ?? this.id,
-      description: description ?? this.description,
-      quantity: quantity ?? this.quantity,
+      descripcion: descripcion ?? this.descripcion,
+      cantidad: cantidad ?? this.cantidad,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12507,17 +12595,17 @@ class ArticleSpareTableCompanion extends UpdateCompanion<ArticleSpareDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
     if (id.present) {
       map['RECAMBIO_ID'] = Variable<String>(id.value);
     }
-    if (description.present) {
-      map['DESCRIPCION'] = Variable<String>(description.value);
+    if (descripcion.present) {
+      map['DESCRIPCION'] = Variable<String>(descripcion.value);
     }
-    if (quantity.present) {
-      map['CANTIDAD'] = Variable<double>(quantity.value);
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<double>(cantidad.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12530,11 +12618,11 @@ class ArticleSpareTableCompanion extends UpdateCompanion<ArticleSpareDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ArticleSpareTableCompanion(')
-          ..write('articleId: $articleId, ')
+    return (StringBuffer('ArticuloRecambioTableCompanion(')
+          ..write('articuloId: $articuloId, ')
           ..write('id: $id, ')
-          ..write('description: $description, ')
-          ..write('quantity: $quantity, ')
+          ..write('descripcion: $descripcion, ')
+          ..write('cantidad: $cantidad, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12542,15 +12630,15 @@ class ArticleSpareTableCompanion extends UpdateCompanion<ArticleSpareDTO> {
   }
 }
 
-class $ArticleSpareTableTable extends ArticleSpareTable
-    with TableInfo<$ArticleSpareTableTable, ArticleSpareDTO> {
+class $ArticuloRecambioTableTable extends ArticuloRecambioTable
+    with TableInfo<$ArticuloRecambioTableTable, ArticuloRecambioDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleSpareTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloRecambioTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _idMeta = const VerificationMeta('id');
@@ -12558,15 +12646,15 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'RECAMBIO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descriptionMeta =
-      const VerificationMeta('description');
+  final VerificationMeta _descripcionMeta =
+      const VerificationMeta('descripcion');
   @override
-  late final GeneratedColumn<String> description = GeneratedColumn<String>(
+  late final GeneratedColumn<String> descripcion = GeneratedColumn<String>(
       'DESCRIPCION', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _quantityMeta = const VerificationMeta('quantity');
+  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
   @override
-  late final GeneratedColumn<double> quantity = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidad = GeneratedColumn<double>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -12584,23 +12672,24 @@ class $ArticleSpareTableTable extends ArticleSpareTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [articleId, id, description, quantity, lastUpdated, deleted];
+      [articuloId, id, descripcion, cantidad, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_RECAMBIOS';
   @override
   String get actualTableName => 'ARTICULOS_RECAMBIOS';
   @override
-  VerificationContext validateIntegrity(Insertable<ArticleSpareDTO> instance,
+  VerificationContext validateIntegrity(
+      Insertable<ArticuloRecambioDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('RECAMBIO_ID')) {
       context.handle(
@@ -12610,17 +12699,17 @@ class $ArticleSpareTableTable extends ArticleSpareTable
     }
     if (data.containsKey('DESCRIPCION')) {
       context.handle(
-          _descriptionMeta,
-          description.isAcceptableOrUnknown(
-              data['DESCRIPCION']!, _descriptionMeta));
+          _descripcionMeta,
+          descripcion.isAcceptableOrUnknown(
+              data['DESCRIPCION']!, _descripcionMeta));
     } else if (isInserting) {
-      context.missing(_descriptionMeta);
+      context.missing(_descripcionMeta);
     }
     if (data.containsKey('CANTIDAD')) {
-      context.handle(_quantityMeta,
-          quantity.isAcceptableOrUnknown(data['CANTIDAD']!, _quantityMeta));
+      context.handle(_cantidadMeta,
+          cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta));
     } else if (isInserting) {
-      context.missing(_quantityMeta);
+      context.missing(_cantidadMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -12638,18 +12727,18 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, id};
+  Set<GeneratedColumn> get $primaryKey => {articuloId, id};
   @override
-  ArticleSpareDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloRecambioDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleSpareDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloRecambioDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RECAMBIO_ID'])!,
-      description: attachedDatabase.options.types
+      descripcion: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
-      quantity: attachedDatabase.options.types
+      cantidad: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -12659,62 +12748,63 @@ class $ArticleSpareTableTable extends ArticleSpareTable
   }
 
   @override
-  $ArticleSpareTableTable createAlias(String alias) {
-    return $ArticleSpareTableTable(attachedDatabase, alias);
+  $ArticuloRecambioTableTable createAlias(String alias) {
+    return $ArticuloRecambioTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleSubstituteTableCompanion
-    extends UpdateCompanion<ArticleSubstituteDTO> {
-  final Value<String> articleId;
-  final Value<String> articleSubstituteId;
-  final Value<double> order;
+class ArticuloSustitutivoTableCompanion
+    extends UpdateCompanion<ArticuloSustitutivoDTO> {
+  final Value<String> articuloId;
+  final Value<String> articuloSustitutivoId;
+  final Value<double> orden;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleSubstituteTableCompanion({
-    this.articleId = const Value.absent(),
-    this.articleSubstituteId = const Value.absent(),
-    this.order = const Value.absent(),
+  const ArticuloSustitutivoTableCompanion({
+    this.articuloId = const Value.absent(),
+    this.articuloSustitutivoId = const Value.absent(),
+    this.orden = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleSubstituteTableCompanion.insert({
-    required String articleId,
-    required String articleSubstituteId,
-    required double order,
+  ArticuloSustitutivoTableCompanion.insert({
+    required String articuloId,
+    required String articuloSustitutivoId,
+    required double orden,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
-        articleSubstituteId = Value(articleSubstituteId),
-        order = Value(order),
+  })  : articuloId = Value(articuloId),
+        articuloSustitutivoId = Value(articuloSustitutivoId),
+        orden = Value(orden),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleSubstituteDTO> custom({
-    Expression<String>? articleId,
-    Expression<String>? articleSubstituteId,
-    Expression<double>? order,
+  static Insertable<ArticuloSustitutivoDTO> custom({
+    Expression<String>? articuloId,
+    Expression<String>? articuloSustitutivoId,
+    Expression<double>? orden,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (articleSubstituteId != null)
-        'ARTICULO_ID_SUSTITUTIVO': articleSubstituteId,
-      if (order != null) 'ORDEN': order,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (articuloSustitutivoId != null)
+        'ARTICULO_ID_SUSTITUTIVO': articuloSustitutivoId,
+      if (orden != null) 'ORDEN': orden,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleSubstituteTableCompanion copyWith(
-      {Value<String>? articleId,
-      Value<String>? articleSubstituteId,
-      Value<double>? order,
+  ArticuloSustitutivoTableCompanion copyWith(
+      {Value<String>? articuloId,
+      Value<String>? articuloSustitutivoId,
+      Value<double>? orden,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleSubstituteTableCompanion(
-      articleId: articleId ?? this.articleId,
-      articleSubstituteId: articleSubstituteId ?? this.articleSubstituteId,
-      order: order ?? this.order,
+    return ArticuloSustitutivoTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
+      articuloSustitutivoId:
+          articuloSustitutivoId ?? this.articuloSustitutivoId,
+      orden: orden ?? this.orden,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12723,15 +12813,15 @@ class ArticleSubstituteTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (articleSubstituteId.present) {
+    if (articuloSustitutivoId.present) {
       map['ARTICULO_ID_SUSTITUTIVO'] =
-          Variable<String>(articleSubstituteId.value);
+          Variable<String>(articuloSustitutivoId.value);
     }
-    if (order.present) {
-      map['ORDEN'] = Variable<double>(order.value);
+    if (orden.present) {
+      map['ORDEN'] = Variable<double>(orden.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12744,10 +12834,10 @@ class ArticleSubstituteTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticleSubstituteTableCompanion(')
-          ..write('articleId: $articleId, ')
-          ..write('articleSubstituteId: $articleSubstituteId, ')
-          ..write('order: $order, ')
+    return (StringBuffer('ArticuloSustitutivoTableCompanion(')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloSustitutivoId: $articuloSustitutivoId, ')
+          ..write('orden: $orden, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12755,26 +12845,26 @@ class ArticleSubstituteTableCompanion
   }
 }
 
-class $ArticleSubstituteTableTable extends ArticleSubstituteTable
-    with TableInfo<$ArticleSubstituteTableTable, ArticleSubstituteDTO> {
+class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
+    with TableInfo<$ArticuloSustitutivoTableTable, ArticuloSustitutivoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleSubstituteTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloSustitutivoTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleSubstituteIdMeta =
-      const VerificationMeta('articleSubstituteId');
+  final VerificationMeta _articuloSustitutivoIdMeta =
+      const VerificationMeta('articuloSustitutivoId');
   @override
-  late final GeneratedColumn<String> articleSubstituteId =
+  late final GeneratedColumn<String> articuloSustitutivoId =
       GeneratedColumn<String>('ARTICULO_ID_SUSTITUTIVO', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _orderMeta = const VerificationMeta('order');
+  final VerificationMeta _ordenMeta = const VerificationMeta('orden');
   @override
-  late final GeneratedColumn<double> order = GeneratedColumn<double>(
+  late final GeneratedColumn<double> orden = GeneratedColumn<double>(
       'ORDEN', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -12792,38 +12882,38 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns =>
-      [articleId, articleSubstituteId, order, lastUpdated, deleted];
+      [articuloId, articuloSustitutivoId, orden, lastUpdated, deleted];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_SUSTITUTIVOS';
   @override
   String get actualTableName => 'ARTICULOS_SUSTITUTIVOS';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ArticleSubstituteDTO> instance,
+      Insertable<ArticuloSustitutivoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('ARTICULO_ID_SUSTITUTIVO')) {
       context.handle(
-          _articleSubstituteIdMeta,
-          articleSubstituteId.isAcceptableOrUnknown(
-              data['ARTICULO_ID_SUSTITUTIVO']!, _articleSubstituteIdMeta));
+          _articuloSustitutivoIdMeta,
+          articuloSustitutivoId.isAcceptableOrUnknown(
+              data['ARTICULO_ID_SUSTITUTIVO']!, _articuloSustitutivoIdMeta));
     } else if (isInserting) {
-      context.missing(_articleSubstituteIdMeta);
+      context.missing(_articuloSustitutivoIdMeta);
     }
     if (data.containsKey('ORDEN')) {
       context.handle(
-          _orderMeta, order.isAcceptableOrUnknown(data['ORDEN']!, _orderMeta));
+          _ordenMeta, orden.isAcceptableOrUnknown(data['ORDEN']!, _ordenMeta));
     } else if (isInserting) {
-      context.missing(_orderMeta);
+      context.missing(_ordenMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -12841,17 +12931,17 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, articleSubstituteId};
+  Set<GeneratedColumn> get $primaryKey => {articuloId, articuloSustitutivoId};
   @override
-  ArticleSubstituteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloSustitutivoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleSubstituteDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloSustitutivoDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      articleSubstituteId: attachedDatabase.options.types.read(
+      articuloSustitutivoId: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_ID_SUSTITUTIVO'])!,
-      order: attachedDatabase.options.types
+      orden: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ORDEN'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -12861,83 +12951,83 @@ class $ArticleSubstituteTableTable extends ArticleSubstituteTable
   }
 
   @override
-  $ArticleSubstituteTableTable createAlias(String alias) {
-    return $ArticleSubstituteTableTable(attachedDatabase, alias);
+  $ArticuloSustitutivoTableTable createAlias(String alias) {
+    return $ArticuloSustitutivoTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleRatePriceTableCompanion
-    extends UpdateCompanion<ArticleRatePriceDTO> {
-  final Value<String> articleId;
-  final Value<String> rateId;
-  final Value<String?> rateDescription;
-  final Value<double> quantityFrom;
-  final Value<double> price;
-  final Value<double?> priceType;
+class ArticuloTarifaPrecioTableCompanion
+    extends UpdateCompanion<ArticuloTarifaPrecioDTO> {
+  final Value<String> articuloId;
+  final Value<String> tarifaId;
+  final Value<String?> tarifaDescripcion;
+  final Value<double> cantidadDesDe;
+  final Value<double> precio;
+  final Value<double?> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleRatePriceTableCompanion({
-    this.articleId = const Value.absent(),
-    this.rateId = const Value.absent(),
-    this.rateDescription = const Value.absent(),
-    this.quantityFrom = const Value.absent(),
-    this.price = const Value.absent(),
-    this.priceType = const Value.absent(),
+  const ArticuloTarifaPrecioTableCompanion({
+    this.articuloId = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.tarifaDescripcion = const Value.absent(),
+    this.cantidadDesDe = const Value.absent(),
+    this.precio = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleRatePriceTableCompanion.insert({
-    required String articleId,
-    required String rateId,
-    this.rateDescription = const Value.absent(),
-    required double quantityFrom,
-    required double price,
-    this.priceType = const Value.absent(),
+  ArticuloTarifaPrecioTableCompanion.insert({
+    required String articuloId,
+    required String tarifaId,
+    this.tarifaDescripcion = const Value.absent(),
+    required double cantidadDesDe,
+    required double precio,
+    this.tipoPrecio = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
-        rateId = Value(rateId),
-        quantityFrom = Value(quantityFrom),
-        price = Value(price),
+  })  : articuloId = Value(articuloId),
+        tarifaId = Value(tarifaId),
+        cantidadDesDe = Value(cantidadDesDe),
+        precio = Value(precio),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleRatePriceDTO> custom({
-    Expression<String>? articleId,
-    Expression<String>? rateId,
-    Expression<String>? rateDescription,
-    Expression<double>? quantityFrom,
-    Expression<double>? price,
-    Expression<double>? priceType,
+  static Insertable<ArticuloTarifaPrecioDTO> custom({
+    Expression<String>? articuloId,
+    Expression<String>? tarifaId,
+    Expression<String>? tarifaDescripcion,
+    Expression<double>? cantidadDesDe,
+    Expression<double>? precio,
+    Expression<double>? tipoPrecio,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (rateId != null) 'TARIFA_ID': rateId,
-      if (rateDescription != null) 'TARIFA_DESCRIPCION': rateDescription,
-      if (quantityFrom != null) 'CANTIDAD_DESDE': quantityFrom,
-      if (price != null) 'PRECIO': price,
-      if (priceType != null) 'TIPO_PRECIO': priceType,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (tarifaId != null) 'TARIFA_ID': tarifaId,
+      if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
+      if (cantidadDesDe != null) 'CANTIDAD_DESDE': cantidadDesDe,
+      if (precio != null) 'PRECIO': precio,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleRatePriceTableCompanion copyWith(
-      {Value<String>? articleId,
-      Value<String>? rateId,
-      Value<String?>? rateDescription,
-      Value<double>? quantityFrom,
-      Value<double>? price,
-      Value<double?>? priceType,
+  ArticuloTarifaPrecioTableCompanion copyWith(
+      {Value<String>? articuloId,
+      Value<String>? tarifaId,
+      Value<String?>? tarifaDescripcion,
+      Value<double>? cantidadDesDe,
+      Value<double>? precio,
+      Value<double?>? tipoPrecio,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleRatePriceTableCompanion(
-      articleId: articleId ?? this.articleId,
-      rateId: rateId ?? this.rateId,
-      rateDescription: rateDescription ?? this.rateDescription,
-      quantityFrom: quantityFrom ?? this.quantityFrom,
-      price: price ?? this.price,
-      priceType: priceType ?? this.priceType,
+    return ArticuloTarifaPrecioTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
+      tarifaId: tarifaId ?? this.tarifaId,
+      tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
+      cantidadDesDe: cantidadDesDe ?? this.cantidadDesDe,
+      precio: precio ?? this.precio,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12946,23 +13036,23 @@ class ArticleRatePriceTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (rateId.present) {
-      map['TARIFA_ID'] = Variable<String>(rateId.value);
+    if (tarifaId.present) {
+      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
     }
-    if (rateDescription.present) {
-      map['TARIFA_DESCRIPCION'] = Variable<String>(rateDescription.value);
+    if (tarifaDescripcion.present) {
+      map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
     }
-    if (quantityFrom.present) {
-      map['CANTIDAD_DESDE'] = Variable<double>(quantityFrom.value);
+    if (cantidadDesDe.present) {
+      map['CANTIDAD_DESDE'] = Variable<double>(cantidadDesDe.value);
     }
-    if (price.present) {
-      map['PRECIO'] = Variable<double>(price.value);
+    if (precio.present) {
+      map['PRECIO'] = Variable<double>(precio.value);
     }
-    if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<double>(tipoPrecio.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12975,13 +13065,13 @@ class ArticleRatePriceTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticleRatePriceTableCompanion(')
-          ..write('articleId: $articleId, ')
-          ..write('rateId: $rateId, ')
-          ..write('rateDescription: $rateDescription, ')
-          ..write('quantityFrom: $quantityFrom, ')
-          ..write('price: $price, ')
-          ..write('priceType: $priceType, ')
+    return (StringBuffer('ArticuloTarifaPrecioTableCompanion(')
+          ..write('articuloId: $articuloId, ')
+          ..write('tarifaId: $tarifaId, ')
+          ..write('tarifaDescripcion: $tarifaDescripcion, ')
+          ..write('cantidadDesDe: $cantidadDesDe, ')
+          ..write('precio: $precio, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12989,42 +13079,42 @@ class ArticleRatePriceTableCompanion
   }
 }
 
-class $ArticleRatePriceTableTable extends ArticleRatePriceTable
-    with TableInfo<$ArticleRatePriceTableTable, ArticleRatePriceDTO> {
+class $ArticuloTarifaPrecioTableTable extends ArticuloTarifaPrecioTable
+    with TableInfo<$ArticuloTarifaPrecioTableTable, ArticuloTarifaPrecioDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleRatePriceTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloTarifaPrecioTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _rateIdMeta = const VerificationMeta('rateId');
+  final VerificationMeta _tarifaIdMeta = const VerificationMeta('tarifaId');
   @override
-  late final GeneratedColumn<String> rateId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> tarifaId = GeneratedColumn<String>(
       'TARIFA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _rateDescriptionMeta =
-      const VerificationMeta('rateDescription');
+  final VerificationMeta _tarifaDescripcionMeta =
+      const VerificationMeta('tarifaDescripcion');
   @override
-  late final GeneratedColumn<String> rateDescription = GeneratedColumn<String>(
-      'TARIFA_DESCRIPCION', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _quantityFromMeta =
-      const VerificationMeta('quantityFrom');
+  late final GeneratedColumn<String> tarifaDescripcion =
+      GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _cantidadDesDeMeta =
+      const VerificationMeta('cantidadDesDe');
   @override
-  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidadDesDe = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceMeta = const VerificationMeta('price');
+  final VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
-  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+  late final GeneratedColumn<double> precio = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
+  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
   @override
-  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
+  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -13042,12 +13132,12 @@ class $ArticleRatePriceTableTable extends ArticleRatePriceTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        articleId,
-        rateId,
-        rateDescription,
-        quantityFrom,
-        price,
-        priceType,
+        articuloId,
+        tarifaId,
+        tarifaDescripcion,
+        cantidadDesDe,
+        precio,
+        tipoPrecio,
         lastUpdated,
         deleted
       ];
@@ -13057,49 +13147,49 @@ class $ArticleRatePriceTableTable extends ArticleRatePriceTable
   String get actualTableName => 'ARTICULOS_TARIFA_PRECIO';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ArticleRatePriceDTO> instance,
+      Insertable<ArticuloTarifaPrecioDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('TARIFA_ID')) {
-      context.handle(_rateIdMeta,
-          rateId.isAcceptableOrUnknown(data['TARIFA_ID']!, _rateIdMeta));
+      context.handle(_tarifaIdMeta,
+          tarifaId.isAcceptableOrUnknown(data['TARIFA_ID']!, _tarifaIdMeta));
     } else if (isInserting) {
-      context.missing(_rateIdMeta);
+      context.missing(_tarifaIdMeta);
     }
     if (data.containsKey('TARIFA_DESCRIPCION')) {
       context.handle(
-          _rateDescriptionMeta,
-          rateDescription.isAcceptableOrUnknown(
-              data['TARIFA_DESCRIPCION']!, _rateDescriptionMeta));
+          _tarifaDescripcionMeta,
+          tarifaDescripcion.isAcceptableOrUnknown(
+              data['TARIFA_DESCRIPCION']!, _tarifaDescripcionMeta));
     }
     if (data.containsKey('CANTIDAD_DESDE')) {
       context.handle(
-          _quantityFromMeta,
-          quantityFrom.isAcceptableOrUnknown(
-              data['CANTIDAD_DESDE']!, _quantityFromMeta));
+          _cantidadDesDeMeta,
+          cantidadDesDe.isAcceptableOrUnknown(
+              data['CANTIDAD_DESDE']!, _cantidadDesDeMeta));
     } else if (isInserting) {
-      context.missing(_quantityFromMeta);
+      context.missing(_cantidadDesDeMeta);
     }
     if (data.containsKey('PRECIO')) {
-      context.handle(
-          _priceMeta, price.isAcceptableOrUnknown(data['PRECIO']!, _priceMeta));
+      context.handle(_precioMeta,
+          precio.isAcceptableOrUnknown(data['PRECIO']!, _precioMeta));
     } else if (isInserting) {
-      context.missing(_priceMeta);
+      context.missing(_precioMeta);
     }
     if (data.containsKey('TIPO_PRECIO')) {
       context.handle(
-          _priceTypeMeta,
-          priceType.isAcceptableOrUnknown(
-              data['TIPO_PRECIO']!, _priceTypeMeta));
+          _tipoPrecioMeta,
+          tipoPrecio.isAcceptableOrUnknown(
+              data['TIPO_PRECIO']!, _tipoPrecioMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -13117,22 +13207,23 @@ class $ArticleRatePriceTableTable extends ArticleRatePriceTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, rateId, quantityFrom};
+  Set<GeneratedColumn> get $primaryKey => {articuloId, tarifaId, cantidadDesDe};
   @override
-  ArticleRatePriceDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ArticuloTarifaPrecioDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleRatePriceDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloTarifaPrecioDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      rateId: attachedDatabase.options.types
+      tarifaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID'])!,
-      rateDescription: attachedDatabase.options.types.read(
+      tarifaDescripcion: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      quantityFrom: attachedDatabase.options.types
+      cantidadDesDe: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      price: attachedDatabase.options.types
+      precio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
-      priceType: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -13142,84 +13233,84 @@ class $ArticleRatePriceTableTable extends ArticleRatePriceTable
   }
 
   @override
-  $ArticleRatePriceTableTable createAlias(String alias) {
-    return $ArticleRatePriceTableTable(attachedDatabase, alias);
+  $ArticuloTarifaPrecioTableTable createAlias(String alias) {
+    return $ArticuloTarifaPrecioTableTable(attachedDatabase, alias);
   }
 }
 
-class ArticleNetGroupPriceTableCompanion
-    extends UpdateCompanion<ArticleNetGroupPriceDTO> {
-  final Value<String> articleId;
-  final Value<String> netGroupId;
-  final Value<String?> netGroupDescription;
-  final Value<double> quantityFrom;
-  final Value<double> price;
-  final Value<double?> priceType;
+class ArticuloGrupoNetoTableCompanion
+    extends UpdateCompanion<ArticuloGrupoNetoDTO> {
+  final Value<String> articuloId;
+  final Value<String> grupoNetoId;
+  final Value<String?> grupoNetoDescripcion;
+  final Value<double> cantidadDesDe;
+  final Value<double> precio;
+  final Value<double?> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticleNetGroupPriceTableCompanion({
-    this.articleId = const Value.absent(),
-    this.netGroupId = const Value.absent(),
-    this.netGroupDescription = const Value.absent(),
-    this.quantityFrom = const Value.absent(),
-    this.price = const Value.absent(),
-    this.priceType = const Value.absent(),
+  const ArticuloGrupoNetoTableCompanion({
+    this.articuloId = const Value.absent(),
+    this.grupoNetoId = const Value.absent(),
+    this.grupoNetoDescripcion = const Value.absent(),
+    this.cantidadDesDe = const Value.absent(),
+    this.precio = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticleNetGroupPriceTableCompanion.insert({
-    required String articleId,
-    required String netGroupId,
-    this.netGroupDescription = const Value.absent(),
-    required double quantityFrom,
-    required double price,
-    this.priceType = const Value.absent(),
+  ArticuloGrupoNetoTableCompanion.insert({
+    required String articuloId,
+    required String grupoNetoId,
+    this.grupoNetoDescripcion = const Value.absent(),
+    required double cantidadDesDe,
+    required double precio,
+    this.tipoPrecio = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articleId = Value(articleId),
-        netGroupId = Value(netGroupId),
-        quantityFrom = Value(quantityFrom),
-        price = Value(price),
+  })  : articuloId = Value(articuloId),
+        grupoNetoId = Value(grupoNetoId),
+        cantidadDesDe = Value(cantidadDesDe),
+        precio = Value(precio),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticleNetGroupPriceDTO> custom({
-    Expression<String>? articleId,
-    Expression<String>? netGroupId,
-    Expression<String>? netGroupDescription,
-    Expression<double>? quantityFrom,
-    Expression<double>? price,
-    Expression<double>? priceType,
+  static Insertable<ArticuloGrupoNetoDTO> custom({
+    Expression<String>? articuloId,
+    Expression<String>? grupoNetoId,
+    Expression<String>? grupoNetoDescripcion,
+    Expression<double>? cantidadDesDe,
+    Expression<double>? precio,
+    Expression<double>? tipoPrecio,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (netGroupId != null) 'GRUPO_NETO_ID': netGroupId,
-      if (netGroupDescription != null)
-        'GRUPO_NETO_DESCRIPCION': netGroupDescription,
-      if (quantityFrom != null) 'CANTIDAD_DESDE': quantityFrom,
-      if (price != null) 'PRECIO': price,
-      if (priceType != null) 'TIPO_PRECIO': priceType,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
+      if (grupoNetoDescripcion != null)
+        'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
+      if (cantidadDesDe != null) 'CANTIDAD_DESDE': cantidadDesDe,
+      if (precio != null) 'PRECIO': precio,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticleNetGroupPriceTableCompanion copyWith(
-      {Value<String>? articleId,
-      Value<String>? netGroupId,
-      Value<String?>? netGroupDescription,
-      Value<double>? quantityFrom,
-      Value<double>? price,
-      Value<double?>? priceType,
+  ArticuloGrupoNetoTableCompanion copyWith(
+      {Value<String>? articuloId,
+      Value<String>? grupoNetoId,
+      Value<String?>? grupoNetoDescripcion,
+      Value<double>? cantidadDesDe,
+      Value<double>? precio,
+      Value<double?>? tipoPrecio,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticleNetGroupPriceTableCompanion(
-      articleId: articleId ?? this.articleId,
-      netGroupId: netGroupId ?? this.netGroupId,
-      netGroupDescription: netGroupDescription ?? this.netGroupDescription,
-      quantityFrom: quantityFrom ?? this.quantityFrom,
-      price: price ?? this.price,
-      priceType: priceType ?? this.priceType,
+    return ArticuloGrupoNetoTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
+      grupoNetoId: grupoNetoId ?? this.grupoNetoId,
+      grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
+      cantidadDesDe: cantidadDesDe ?? this.cantidadDesDe,
+      precio: precio ?? this.precio,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13228,24 +13319,24 @@ class ArticleNetGroupPriceTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (netGroupId.present) {
-      map['GRUPO_NETO_ID'] = Variable<String>(netGroupId.value);
+    if (grupoNetoId.present) {
+      map['GRUPO_NETO_ID'] = Variable<String>(grupoNetoId.value);
     }
-    if (netGroupDescription.present) {
+    if (grupoNetoDescripcion.present) {
       map['GRUPO_NETO_DESCRIPCION'] =
-          Variable<String>(netGroupDescription.value);
+          Variable<String>(grupoNetoDescripcion.value);
     }
-    if (quantityFrom.present) {
-      map['CANTIDAD_DESDE'] = Variable<double>(quantityFrom.value);
+    if (cantidadDesDe.present) {
+      map['CANTIDAD_DESDE'] = Variable<double>(cantidadDesDe.value);
     }
-    if (price.present) {
-      map['PRECIO'] = Variable<double>(price.value);
+    if (precio.present) {
+      map['PRECIO'] = Variable<double>(precio.value);
     }
-    if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<double>(tipoPrecio.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13258,13 +13349,13 @@ class ArticleNetGroupPriceTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticleNetGroupPriceTableCompanion(')
-          ..write('articleId: $articleId, ')
-          ..write('netGroupId: $netGroupId, ')
-          ..write('netGroupDescription: $netGroupDescription, ')
-          ..write('quantityFrom: $quantityFrom, ')
-          ..write('price: $price, ')
-          ..write('priceType: $priceType, ')
+    return (StringBuffer('ArticuloGrupoNetoTableCompanion(')
+          ..write('articuloId: $articuloId, ')
+          ..write('grupoNetoId: $grupoNetoId, ')
+          ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
+          ..write('cantidadDesDe: $cantidadDesDe, ')
+          ..write('precio: $precio, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13272,42 +13363,43 @@ class ArticleNetGroupPriceTableCompanion
   }
 }
 
-class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
-    with TableInfo<$ArticleNetGroupPriceTableTable, ArticleNetGroupPriceDTO> {
+class $ArticuloGrupoNetoTableTable extends ArticuloGrupoNetoTable
+    with TableInfo<$ArticuloGrupoNetoTableTable, ArticuloGrupoNetoDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticleNetGroupPriceTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  $ArticuloGrupoNetoTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _netGroupIdMeta = const VerificationMeta('netGroupId');
+  final VerificationMeta _grupoNetoIdMeta =
+      const VerificationMeta('grupoNetoId');
   @override
-  late final GeneratedColumn<String> netGroupId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> grupoNetoId = GeneratedColumn<String>(
       'GRUPO_NETO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _netGroupDescriptionMeta =
-      const VerificationMeta('netGroupDescription');
+  final VerificationMeta _grupoNetoDescripcionMeta =
+      const VerificationMeta('grupoNetoDescripcion');
   @override
-  late final GeneratedColumn<String> netGroupDescription =
+  late final GeneratedColumn<String> grupoNetoDescripcion =
       GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _quantityFromMeta =
-      const VerificationMeta('quantityFrom');
+  final VerificationMeta _cantidadDesDeMeta =
+      const VerificationMeta('cantidadDesDe');
   @override
-  late final GeneratedColumn<double> quantityFrom = GeneratedColumn<double>(
+  late final GeneratedColumn<double> cantidadDesDe = GeneratedColumn<double>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceMeta = const VerificationMeta('price');
+  final VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
-  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+  late final GeneratedColumn<double> precio = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
+  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
   @override
-  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
+  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -13325,12 +13417,12 @@ class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        articleId,
-        netGroupId,
-        netGroupDescription,
-        quantityFrom,
-        price,
-        priceType,
+        articuloId,
+        grupoNetoId,
+        grupoNetoDescripcion,
+        cantidadDesDe,
+        precio,
+        tipoPrecio,
         lastUpdated,
         deleted
       ];
@@ -13340,51 +13432,51 @@ class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
   String get actualTableName => 'ARTICULOS_GRUPOS_NETOS_PRECIO';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ArticleNetGroupPriceDTO> instance,
+      Insertable<ArticuloGrupoNetoDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('GRUPO_NETO_ID')) {
       context.handle(
-          _netGroupIdMeta,
-          netGroupId.isAcceptableOrUnknown(
-              data['GRUPO_NETO_ID']!, _netGroupIdMeta));
+          _grupoNetoIdMeta,
+          grupoNetoId.isAcceptableOrUnknown(
+              data['GRUPO_NETO_ID']!, _grupoNetoIdMeta));
     } else if (isInserting) {
-      context.missing(_netGroupIdMeta);
+      context.missing(_grupoNetoIdMeta);
     }
     if (data.containsKey('GRUPO_NETO_DESCRIPCION')) {
       context.handle(
-          _netGroupDescriptionMeta,
-          netGroupDescription.isAcceptableOrUnknown(
-              data['GRUPO_NETO_DESCRIPCION']!, _netGroupDescriptionMeta));
+          _grupoNetoDescripcionMeta,
+          grupoNetoDescripcion.isAcceptableOrUnknown(
+              data['GRUPO_NETO_DESCRIPCION']!, _grupoNetoDescripcionMeta));
     }
     if (data.containsKey('CANTIDAD_DESDE')) {
       context.handle(
-          _quantityFromMeta,
-          quantityFrom.isAcceptableOrUnknown(
-              data['CANTIDAD_DESDE']!, _quantityFromMeta));
+          _cantidadDesDeMeta,
+          cantidadDesDe.isAcceptableOrUnknown(
+              data['CANTIDAD_DESDE']!, _cantidadDesDeMeta));
     } else if (isInserting) {
-      context.missing(_quantityFromMeta);
+      context.missing(_cantidadDesDeMeta);
     }
     if (data.containsKey('PRECIO')) {
-      context.handle(
-          _priceMeta, price.isAcceptableOrUnknown(data['PRECIO']!, _priceMeta));
+      context.handle(_precioMeta,
+          precio.isAcceptableOrUnknown(data['PRECIO']!, _precioMeta));
     } else if (isInserting) {
-      context.missing(_priceMeta);
+      context.missing(_precioMeta);
     }
     if (data.containsKey('TIPO_PRECIO')) {
       context.handle(
-          _priceTypeMeta,
-          priceType.isAcceptableOrUnknown(
-              data['TIPO_PRECIO']!, _priceTypeMeta));
+          _tipoPrecioMeta,
+          tipoPrecio.isAcceptableOrUnknown(
+              data['TIPO_PRECIO']!, _tipoPrecioMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -13402,24 +13494,24 @@ class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {articleId, netGroupId, quantityFrom};
+  Set<GeneratedColumn> get $primaryKey =>
+      {articuloId, grupoNetoId, cantidadDesDe};
   @override
-  ArticleNetGroupPriceDTO map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  ArticuloGrupoNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticleNetGroupPriceDTO(
-      articleId: attachedDatabase.options.types
+    return ArticuloGrupoNetoDTO(
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      netGroupId: attachedDatabase.options.types
+      grupoNetoId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}GRUPO_NETO_ID'])!,
-      netGroupDescription: attachedDatabase.options.types.read(
+      grupoNetoDescripcion: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION']),
-      quantityFrom: attachedDatabase.options.types
+      cantidadDesDe: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      price: attachedDatabase.options.types
+      precio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
-      priceType: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -13429,90 +13521,90 @@ class $ArticleNetGroupPriceTableTable extends ArticleNetGroupPriceTable
   }
 
   @override
-  $ArticleNetGroupPriceTableTable createAlias(String alias) {
-    return $ArticleNetGroupPriceTableTable(attachedDatabase, alias);
+  $ArticuloGrupoNetoTableTable createAlias(String alias) {
+    return $ArticuloGrupoNetoTableTable(attachedDatabase, alias);
   }
 }
 
-class StatsCustomerUserSalesTableCompanion
-    extends UpdateCompanion<StatsCustomerUserSalesDTO> {
-  final Value<double> year;
-  final Value<double> month;
-  final Value<String> customerId;
-  final Value<String> articleId;
-  final Value<double?> units;
-  final Value<double?> amount;
-  final Value<double?> cost;
+class EstadisticasClienteUsuarioVentasTableCompanion
+    extends UpdateCompanion<EstadisticasVentaClienteUsuarioDTO> {
+  final Value<double> anyo;
+  final Value<double> mes;
+  final Value<String> clienteId;
+  final Value<String> articuloId;
+  final Value<double?> unidades;
+  final Value<double?> importe;
+  final Value<double?> coste;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const StatsCustomerUserSalesTableCompanion({
-    this.year = const Value.absent(),
-    this.month = const Value.absent(),
-    this.customerId = const Value.absent(),
-    this.articleId = const Value.absent(),
-    this.units = const Value.absent(),
-    this.amount = const Value.absent(),
-    this.cost = const Value.absent(),
+  const EstadisticasClienteUsuarioVentasTableCompanion({
+    this.anyo = const Value.absent(),
+    this.mes = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.unidades = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.coste = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  StatsCustomerUserSalesTableCompanion.insert({
-    required double year,
-    required double month,
-    required String customerId,
-    required String articleId,
-    this.units = const Value.absent(),
-    this.amount = const Value.absent(),
-    this.cost = const Value.absent(),
+  EstadisticasClienteUsuarioVentasTableCompanion.insert({
+    required double anyo,
+    required double mes,
+    required String clienteId,
+    required String articuloId,
+    this.unidades = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.coste = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : year = Value(year),
-        month = Value(month),
-        customerId = Value(customerId),
-        articleId = Value(articleId),
+  })  : anyo = Value(anyo),
+        mes = Value(mes),
+        clienteId = Value(clienteId),
+        articuloId = Value(articuloId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<StatsCustomerUserSalesDTO> custom({
-    Expression<double>? year,
-    Expression<double>? month,
-    Expression<String>? customerId,
-    Expression<String>? articleId,
-    Expression<double>? units,
-    Expression<double>? amount,
-    Expression<double>? cost,
+  static Insertable<EstadisticasVentaClienteUsuarioDTO> custom({
+    Expression<double>? anyo,
+    Expression<double>? mes,
+    Expression<String>? clienteId,
+    Expression<String>? articuloId,
+    Expression<double>? unidades,
+    Expression<double>? importe,
+    Expression<double>? coste,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (year != null) 'ANYO': year,
-      if (month != null) 'MES': month,
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (units != null) 'UNIDADES': units,
-      if (amount != null) 'IMPORTE': amount,
-      if (cost != null) 'COSTE': cost,
+      if (anyo != null) 'ANYO': anyo,
+      if (mes != null) 'MES': mes,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (unidades != null) 'UNIDADES': unidades,
+      if (importe != null) 'IMPORTE': importe,
+      if (coste != null) 'COSTE': coste,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  StatsCustomerUserSalesTableCompanion copyWith(
-      {Value<double>? year,
-      Value<double>? month,
-      Value<String>? customerId,
-      Value<String>? articleId,
-      Value<double?>? units,
-      Value<double?>? amount,
-      Value<double?>? cost,
+  EstadisticasClienteUsuarioVentasTableCompanion copyWith(
+      {Value<double>? anyo,
+      Value<double>? mes,
+      Value<String>? clienteId,
+      Value<String>? articuloId,
+      Value<double?>? unidades,
+      Value<double?>? importe,
+      Value<double?>? coste,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return StatsCustomerUserSalesTableCompanion(
-      year: year ?? this.year,
-      month: month ?? this.month,
-      customerId: customerId ?? this.customerId,
-      articleId: articleId ?? this.articleId,
-      units: units ?? this.units,
-      amount: amount ?? this.amount,
-      cost: cost ?? this.cost,
+    return EstadisticasClienteUsuarioVentasTableCompanion(
+      anyo: anyo ?? this.anyo,
+      mes: mes ?? this.mes,
+      clienteId: clienteId ?? this.clienteId,
+      articuloId: articuloId ?? this.articuloId,
+      unidades: unidades ?? this.unidades,
+      importe: importe ?? this.importe,
+      coste: coste ?? this.coste,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13521,26 +13613,26 @@ class StatsCustomerUserSalesTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (year.present) {
-      map['ANYO'] = Variable<double>(year.value);
+    if (anyo.present) {
+      map['ANYO'] = Variable<double>(anyo.value);
     }
-    if (month.present) {
-      map['MES'] = Variable<double>(month.value);
+    if (mes.present) {
+      map['MES'] = Variable<double>(mes.value);
     }
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (units.present) {
-      map['UNIDADES'] = Variable<double>(units.value);
+    if (unidades.present) {
+      map['UNIDADES'] = Variable<double>(unidades.value);
     }
-    if (amount.present) {
-      map['IMPORTE'] = Variable<double>(amount.value);
+    if (importe.present) {
+      map['IMPORTE'] = Variable<double>(importe.value);
     }
-    if (cost.present) {
-      map['COSTE'] = Variable<double>(cost.value);
+    if (coste.present) {
+      map['COSTE'] = Variable<double>(coste.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13553,14 +13645,14 @@ class StatsCustomerUserSalesTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('StatsCustomerUserSalesTableCompanion(')
-          ..write('year: $year, ')
-          ..write('month: $month, ')
-          ..write('customerId: $customerId, ')
-          ..write('articleId: $articleId, ')
-          ..write('units: $units, ')
-          ..write('amount: $amount, ')
-          ..write('cost: $cost, ')
+    return (StringBuffer('EstadisticasClienteUsuarioVentasTableCompanion(')
+          ..write('anyo: $anyo, ')
+          ..write('mes: $mes, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('unidades: $unidades, ')
+          ..write('importe: $importe, ')
+          ..write('coste: $coste, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13568,47 +13660,49 @@ class StatsCustomerUserSalesTableCompanion
   }
 }
 
-class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
+class $EstadisticasClienteUsuarioVentasTableTable
+    extends EstadisticasClienteUsuarioVentasTable
     with
-        TableInfo<$StatsCustomerUserSalesTableTable,
-            StatsCustomerUserSalesDTO> {
+        TableInfo<$EstadisticasClienteUsuarioVentasTableTable,
+            EstadisticasVentaClienteUsuarioDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $StatsCustomerUserSalesTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _yearMeta = const VerificationMeta('year');
+  $EstadisticasClienteUsuarioVentasTableTable(this.attachedDatabase,
+      [this._alias]);
+  final VerificationMeta _anyoMeta = const VerificationMeta('anyo');
   @override
-  late final GeneratedColumn<double> year = GeneratedColumn<double>(
+  late final GeneratedColumn<double> anyo = GeneratedColumn<double>(
       'ANYO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _monthMeta = const VerificationMeta('month');
+  final VerificationMeta _mesMeta = const VerificationMeta('mes');
   @override
-  late final GeneratedColumn<double> month = GeneratedColumn<double>(
+  late final GeneratedColumn<double> mes = GeneratedColumn<double>(
       'MES', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _unitsMeta = const VerificationMeta('units');
+  final VerificationMeta _unidadesMeta = const VerificationMeta('unidades');
   @override
-  late final GeneratedColumn<double> units = GeneratedColumn<double>(
+  late final GeneratedColumn<double> unidades = GeneratedColumn<double>(
       'UNIDADES', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _amountMeta = const VerificationMeta('amount');
+  final VerificationMeta _importeMeta = const VerificationMeta('importe');
   @override
-  late final GeneratedColumn<double> amount = GeneratedColumn<double>(
+  late final GeneratedColumn<double> importe = GeneratedColumn<double>(
       'IMPORTE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _costMeta = const VerificationMeta('cost');
+  final VerificationMeta _costeMeta = const VerificationMeta('coste');
   @override
-  late final GeneratedColumn<double> cost = GeneratedColumn<double>(
+  late final GeneratedColumn<double> coste = GeneratedColumn<double>(
       'COSTE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
@@ -13626,13 +13720,13 @@ class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        year,
-        month,
-        customerId,
-        articleId,
-        units,
-        amount,
-        cost,
+        anyo,
+        mes,
+        clienteId,
+        articuloId,
+        unidades,
+        importe,
+        coste,
         lastUpdated,
         deleted
       ];
@@ -13642,49 +13736,47 @@ class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
   String get actualTableName => 'ESTADISTICAS_VENTA';
   @override
   VerificationContext validateIntegrity(
-      Insertable<StatsCustomerUserSalesDTO> instance,
+      Insertable<EstadisticasVentaClienteUsuarioDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('ANYO')) {
       context.handle(
-          _yearMeta, year.isAcceptableOrUnknown(data['ANYO']!, _yearMeta));
+          _anyoMeta, anyo.isAcceptableOrUnknown(data['ANYO']!, _anyoMeta));
     } else if (isInserting) {
-      context.missing(_yearMeta);
+      context.missing(_anyoMeta);
     }
     if (data.containsKey('MES')) {
       context.handle(
-          _monthMeta, month.isAcceptableOrUnknown(data['MES']!, _monthMeta));
+          _mesMeta, mes.isAcceptableOrUnknown(data['MES']!, _mesMeta));
     } else if (isInserting) {
-      context.missing(_monthMeta);
+      context.missing(_mesMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('UNIDADES')) {
-      context.handle(_unitsMeta,
-          units.isAcceptableOrUnknown(data['UNIDADES']!, _unitsMeta));
+      context.handle(_unidadesMeta,
+          unidades.isAcceptableOrUnknown(data['UNIDADES']!, _unidadesMeta));
     }
     if (data.containsKey('IMPORTE')) {
-      context.handle(_amountMeta,
-          amount.isAcceptableOrUnknown(data['IMPORTE']!, _amountMeta));
+      context.handle(_importeMeta,
+          importe.isAcceptableOrUnknown(data['IMPORTE']!, _importeMeta));
     }
     if (data.containsKey('COSTE')) {
       context.handle(
-          _costMeta, cost.isAcceptableOrUnknown(data['COSTE']!, _costMeta));
+          _costeMeta, coste.isAcceptableOrUnknown(data['COSTE']!, _costeMeta));
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -13702,25 +13794,25 @@ class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {year, month, customerId, articleId};
+  Set<GeneratedColumn> get $primaryKey => {anyo, mes, clienteId, articuloId};
   @override
-  StatsCustomerUserSalesDTO map(Map<String, dynamic> data,
+  EstadisticasVentaClienteUsuarioDTO map(Map<String, dynamic> data,
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return StatsCustomerUserSalesDTO(
-      year: attachedDatabase.options.types
+    return EstadisticasVentaClienteUsuarioDTO(
+      anyo: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}ANYO'])!,
-      month: attachedDatabase.options.types
+      mes: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}MES'])!,
-      customerId: attachedDatabase.options.types
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: attachedDatabase.options.types
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      units: attachedDatabase.options.types
+      unidades: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES']),
-      amount: attachedDatabase.options.types
+      importe: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE']),
-      cost: attachedDatabase.options.types
+      coste: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}COSTE']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -13730,100 +13822,101 @@ class $StatsCustomerUserSalesTableTable extends StatsCustomerUserSalesTable
   }
 
   @override
-  $StatsCustomerUserSalesTableTable createAlias(String alias) {
-    return $StatsCustomerUserSalesTableTable(attachedDatabase, alias);
+  $EstadisticasClienteUsuarioVentasTableTable createAlias(String alias) {
+    return $EstadisticasClienteUsuarioVentasTableTable(attachedDatabase, alias);
   }
 }
 
-class StatsLastPriceTableCompanion extends UpdateCompanion<StatsLastPriceDTO> {
-  final Value<String> customerId;
-  final Value<String> articleId;
-  final Value<DateTime> date;
-  final Value<double> divisaPrice;
-  final Value<double> priceType;
-  final Value<double> discount1;
-  final Value<double> discount2;
-  final Value<double> discount3;
+class EstadisticasUltimosPreciosTableCompanion
+    extends UpdateCompanion<EstadisticasUltimosPreciosDTO> {
+  final Value<String> clienteId;
+  final Value<String> articuloId;
+  final Value<DateTime> fecha;
+  final Value<double> precioDivisa;
+  final Value<double> tipoPrecio;
+  final Value<double> descuento1;
+  final Value<double> descuento2;
+  final Value<double> descuento3;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const StatsLastPriceTableCompanion({
-    this.customerId = const Value.absent(),
-    this.articleId = const Value.absent(),
-    this.date = const Value.absent(),
-    this.divisaPrice = const Value.absent(),
-    this.priceType = const Value.absent(),
-    this.discount1 = const Value.absent(),
-    this.discount2 = const Value.absent(),
-    this.discount3 = const Value.absent(),
+  const EstadisticasUltimosPreciosTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.precioDivisa = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.descuento1 = const Value.absent(),
+    this.descuento2 = const Value.absent(),
+    this.descuento3 = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  StatsLastPriceTableCompanion.insert({
-    required String customerId,
-    required String articleId,
-    required DateTime date,
-    required double divisaPrice,
-    required double priceType,
-    required double discount1,
-    required double discount2,
-    required double discount3,
+  EstadisticasUltimosPreciosTableCompanion.insert({
+    required String clienteId,
+    required String articuloId,
+    required DateTime fecha,
+    required double precioDivisa,
+    required double tipoPrecio,
+    required double descuento1,
+    required double descuento2,
+    required double descuento3,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : customerId = Value(customerId),
-        articleId = Value(articleId),
-        date = Value(date),
-        divisaPrice = Value(divisaPrice),
-        priceType = Value(priceType),
-        discount1 = Value(discount1),
-        discount2 = Value(discount2),
-        discount3 = Value(discount3),
+  })  : clienteId = Value(clienteId),
+        articuloId = Value(articuloId),
+        fecha = Value(fecha),
+        precioDivisa = Value(precioDivisa),
+        tipoPrecio = Value(tipoPrecio),
+        descuento1 = Value(descuento1),
+        descuento2 = Value(descuento2),
+        descuento3 = Value(descuento3),
         lastUpdated = Value(lastUpdated);
-  static Insertable<StatsLastPriceDTO> custom({
-    Expression<String>? customerId,
-    Expression<String>? articleId,
-    Expression<DateTime>? date,
-    Expression<double>? divisaPrice,
-    Expression<double>? priceType,
-    Expression<double>? discount1,
-    Expression<double>? discount2,
-    Expression<double>? discount3,
+  static Insertable<EstadisticasUltimosPreciosDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? articuloId,
+    Expression<DateTime>? fecha,
+    Expression<double>? precioDivisa,
+    Expression<double>? tipoPrecio,
+    Expression<double>? descuento1,
+    Expression<double>? descuento2,
+    Expression<double>? descuento3,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (articleId != null) 'ARTICULO_ID': articleId,
-      if (date != null) 'FECHA': date,
-      if (divisaPrice != null) 'PRECIO_DIVISA': divisaPrice,
-      if (priceType != null) 'TIPO_PRECIO': priceType,
-      if (discount1 != null) 'DESCUENTO1': discount1,
-      if (discount2 != null) 'DESCUENTO1': discount2,
-      if (discount3 != null) 'DESCUENTO3': discount3,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (fecha != null) 'FECHA': fecha,
+      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (descuento1 != null) 'DESCUENTO1': descuento1,
+      if (descuento2 != null) 'DESCUENTO1': descuento2,
+      if (descuento3 != null) 'DESCUENTO3': descuento3,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  StatsLastPriceTableCompanion copyWith(
-      {Value<String>? customerId,
-      Value<String>? articleId,
-      Value<DateTime>? date,
-      Value<double>? divisaPrice,
-      Value<double>? priceType,
-      Value<double>? discount1,
-      Value<double>? discount2,
-      Value<double>? discount3,
+  EstadisticasUltimosPreciosTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? articuloId,
+      Value<DateTime>? fecha,
+      Value<double>? precioDivisa,
+      Value<double>? tipoPrecio,
+      Value<double>? descuento1,
+      Value<double>? descuento2,
+      Value<double>? descuento3,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return StatsLastPriceTableCompanion(
-      customerId: customerId ?? this.customerId,
-      articleId: articleId ?? this.articleId,
-      date: date ?? this.date,
-      divisaPrice: divisaPrice ?? this.divisaPrice,
-      priceType: priceType ?? this.priceType,
-      discount1: discount1 ?? this.discount1,
-      discount2: discount2 ?? this.discount2,
-      discount3: discount3 ?? this.discount3,
+    return EstadisticasUltimosPreciosTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      articuloId: articuloId ?? this.articuloId,
+      fecha: fecha ?? this.fecha,
+      precioDivisa: precioDivisa ?? this.precioDivisa,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      descuento1: descuento1 ?? this.descuento1,
+      descuento2: descuento2 ?? this.descuento2,
+      descuento3: descuento3 ?? this.descuento3,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13832,29 +13925,29 @@ class StatsLastPriceTableCompanion extends UpdateCompanion<StatsLastPriceDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (articleId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articleId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (date.present) {
-      map['FECHA'] = Variable<DateTime>(date.value);
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
     }
-    if (divisaPrice.present) {
-      map['PRECIO_DIVISA'] = Variable<double>(divisaPrice.value);
+    if (precioDivisa.present) {
+      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
     }
-    if (priceType.present) {
-      map['TIPO_PRECIO'] = Variable<double>(priceType.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<double>(tipoPrecio.value);
     }
-    if (discount1.present) {
-      map['DESCUENTO1'] = Variable<double>(discount1.value);
+    if (descuento1.present) {
+      map['DESCUENTO1'] = Variable<double>(descuento1.value);
     }
-    if (discount2.present) {
-      map['DESCUENTO1'] = Variable<double>(discount2.value);
+    if (descuento2.present) {
+      map['DESCUENTO1'] = Variable<double>(descuento2.value);
     }
-    if (discount3.present) {
-      map['DESCUENTO3'] = Variable<double>(discount3.value);
+    if (descuento3.present) {
+      map['DESCUENTO3'] = Variable<double>(descuento3.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13867,15 +13960,15 @@ class StatsLastPriceTableCompanion extends UpdateCompanion<StatsLastPriceDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('StatsLastPriceTableCompanion(')
-          ..write('customerId: $customerId, ')
-          ..write('articleId: $articleId, ')
-          ..write('date: $date, ')
-          ..write('divisaPrice: $divisaPrice, ')
-          ..write('priceType: $priceType, ')
-          ..write('discount1: $discount1, ')
-          ..write('discount2: $discount2, ')
-          ..write('discount3: $discount3, ')
+    return (StringBuffer('EstadisticasUltimosPreciosTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('fecha: $fecha, ')
+          ..write('precioDivisa: $precioDivisa, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('descuento1: $descuento1, ')
+          ..write('descuento2: $descuento2, ')
+          ..write('descuento3: $descuento3, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13883,51 +13976,54 @@ class StatsLastPriceTableCompanion extends UpdateCompanion<StatsLastPriceDTO> {
   }
 }
 
-class $StatsLastPriceTableTable extends StatsLastPriceTable
-    with TableInfo<$StatsLastPriceTableTable, StatsLastPriceDTO> {
+class $EstadisticasUltimosPreciosTableTable
+    extends EstadisticasUltimosPreciosTable
+    with
+        TableInfo<$EstadisticasUltimosPreciosTableTable,
+            EstadisticasUltimosPreciosDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $StatsLastPriceTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  $EstadisticasUltimosPreciosTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articleIdMeta = const VerificationMeta('articleId');
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
-  late final GeneratedColumn<String> articleId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _dateMeta = const VerificationMeta('date');
+  final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
-  late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
+  late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _divisaPriceMeta =
-      const VerificationMeta('divisaPrice');
+  final VerificationMeta _precioDivisaMeta =
+      const VerificationMeta('precioDivisa');
   @override
-  late final GeneratedColumn<double> divisaPrice = GeneratedColumn<double>(
+  late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _priceTypeMeta = const VerificationMeta('priceType');
+  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
   @override
-  late final GeneratedColumn<double> priceType = GeneratedColumn<double>(
+  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _discount1Meta = const VerificationMeta('discount1');
+  final VerificationMeta _descuento1Meta = const VerificationMeta('descuento1');
   @override
-  late final GeneratedColumn<double> discount1 = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _discount2Meta = const VerificationMeta('discount2');
+  final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
   @override
-  late final GeneratedColumn<double> discount2 = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _discount3Meta = const VerificationMeta('discount3');
+  final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
   @override
-  late final GeneratedColumn<double> discount3 = GeneratedColumn<double>(
+  late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -13945,14 +14041,14 @@ class $StatsLastPriceTableTable extends StatsLastPriceTable
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
-        customerId,
-        articleId,
-        date,
-        divisaPrice,
-        priceType,
-        discount1,
-        discount2,
-        discount3,
+        clienteId,
+        articuloId,
+        fecha,
+        precioDivisa,
+        tipoPrecio,
+        descuento1,
+        descuento2,
+        descuento3,
         lastUpdated,
         deleted
       ];
@@ -13961,65 +14057,70 @@ class $StatsLastPriceTableTable extends StatsLastPriceTable
   @override
   String get actualTableName => 'ULTIMOS_PRECIOS';
   @override
-  VerificationContext validateIntegrity(Insertable<StatsLastPriceDTO> instance,
+  VerificationContext validateIntegrity(
+      Insertable<EstadisticasUltimosPreciosDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
-          _articleIdMeta,
-          articleId.isAcceptableOrUnknown(
-              data['ARTICULO_ID']!, _articleIdMeta));
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
-      context.missing(_articleIdMeta);
+      context.missing(_articuloIdMeta);
     }
     if (data.containsKey('FECHA')) {
       context.handle(
-          _dateMeta, date.isAcceptableOrUnknown(data['FECHA']!, _dateMeta));
+          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
     } else if (isInserting) {
-      context.missing(_dateMeta);
+      context.missing(_fechaMeta);
     }
     if (data.containsKey('PRECIO_DIVISA')) {
       context.handle(
-          _divisaPriceMeta,
-          divisaPrice.isAcceptableOrUnknown(
-              data['PRECIO_DIVISA']!, _divisaPriceMeta));
+          _precioDivisaMeta,
+          precioDivisa.isAcceptableOrUnknown(
+              data['PRECIO_DIVISA']!, _precioDivisaMeta));
     } else if (isInserting) {
-      context.missing(_divisaPriceMeta);
+      context.missing(_precioDivisaMeta);
     }
     if (data.containsKey('TIPO_PRECIO')) {
       context.handle(
-          _priceTypeMeta,
-          priceType.isAcceptableOrUnknown(
-              data['TIPO_PRECIO']!, _priceTypeMeta));
+          _tipoPrecioMeta,
+          tipoPrecio.isAcceptableOrUnknown(
+              data['TIPO_PRECIO']!, _tipoPrecioMeta));
     } else if (isInserting) {
-      context.missing(_priceTypeMeta);
+      context.missing(_tipoPrecioMeta);
     }
     if (data.containsKey('DESCUENTO1')) {
-      context.handle(_discount1Meta,
-          discount1.isAcceptableOrUnknown(data['DESCUENTO1']!, _discount1Meta));
+      context.handle(
+          _descuento1Meta,
+          descuento1.isAcceptableOrUnknown(
+              data['DESCUENTO1']!, _descuento1Meta));
     } else if (isInserting) {
-      context.missing(_discount1Meta);
+      context.missing(_descuento1Meta);
     }
     if (data.containsKey('DESCUENTO1')) {
-      context.handle(_discount2Meta,
-          discount2.isAcceptableOrUnknown(data['DESCUENTO1']!, _discount2Meta));
+      context.handle(
+          _descuento2Meta,
+          descuento2.isAcceptableOrUnknown(
+              data['DESCUENTO1']!, _descuento2Meta));
     } else if (isInserting) {
-      context.missing(_discount2Meta);
+      context.missing(_descuento2Meta);
     }
     if (data.containsKey('DESCUENTO3')) {
-      context.handle(_discount3Meta,
-          discount3.isAcceptableOrUnknown(data['DESCUENTO3']!, _discount3Meta));
+      context.handle(
+          _descuento3Meta,
+          descuento3.isAcceptableOrUnknown(
+              data['DESCUENTO3']!, _descuento3Meta));
     } else if (isInserting) {
-      context.missing(_discount3Meta);
+      context.missing(_descuento3Meta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -14038,34 +14139,35 @@ class $StatsLastPriceTableTable extends StatsLastPriceTable
 
   @override
   Set<GeneratedColumn> get $primaryKey => {
-        customerId,
-        articleId,
-        date,
-        divisaPrice,
-        priceType,
-        discount1,
-        discount2,
-        discount3
+        clienteId,
+        articuloId,
+        fecha,
+        precioDivisa,
+        tipoPrecio,
+        descuento1,
+        descuento2,
+        descuento3
       };
   @override
-  StatsLastPriceDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  EstadisticasUltimosPreciosDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return StatsLastPriceDTO(
-      customerId: attachedDatabase.options.types
+    return EstadisticasUltimosPreciosDTO(
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articleId: attachedDatabase.options.types
+      articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      date: attachedDatabase.options.types
+      fecha: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      divisaPrice: attachedDatabase.options.types
+      precioDivisa: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
-      priceType: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TIPO_PRECIO'])!,
-      discount1: attachedDatabase.options.types
+      descuento1: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
-      discount2: attachedDatabase.options.types
+      descuento2: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
-      discount3: attachedDatabase.options.types
+      descuento3: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -14075,98 +14177,98 @@ class $StatsLastPriceTableTable extends StatsLastPriceTable
   }
 
   @override
-  $StatsLastPriceTableTable createAlias(String alias) {
-    return $StatsLastPriceTableTable(attachedDatabase, alias);
+  $EstadisticasUltimosPreciosTableTable createAlias(String alias) {
+    return $EstadisticasUltimosPreciosTableTable(attachedDatabase, alias);
   }
 }
 
-class VisitTableCompanion extends UpdateCompanion<VisitDTO> {
+class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String> id;
-  final Value<String> customerId;
-  final Value<DateTime> date;
+  final Value<String> clienteId;
+  final Value<DateTime> fecha;
   final Value<String> numEmpl;
-  final Value<String?> contact;
-  final Value<String?> summary;
-  final Value<double> latitude;
-  final Value<double> longitude;
+  final Value<String?> contacto;
+  final Value<String?> resumen;
+  final Value<double> latitud;
+  final Value<double> longitud;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const VisitTableCompanion({
+  const VisitaTableCompanion({
     this.id = const Value.absent(),
-    this.customerId = const Value.absent(),
-    this.date = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.fecha = const Value.absent(),
     this.numEmpl = const Value.absent(),
-    this.contact = const Value.absent(),
-    this.summary = const Value.absent(),
-    this.latitude = const Value.absent(),
-    this.longitude = const Value.absent(),
+    this.contacto = const Value.absent(),
+    this.resumen = const Value.absent(),
+    this.latitud = const Value.absent(),
+    this.longitud = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  VisitTableCompanion.insert({
+  VisitaTableCompanion.insert({
     required String id,
-    required String customerId,
-    required DateTime date,
+    required String clienteId,
+    required DateTime fecha,
     required String numEmpl,
-    this.contact = const Value.absent(),
-    this.summary = const Value.absent(),
-    required double latitude,
-    required double longitude,
+    this.contacto = const Value.absent(),
+    this.resumen = const Value.absent(),
+    required double latitud,
+    required double longitud,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        customerId = Value(customerId),
-        date = Value(date),
+        clienteId = Value(clienteId),
+        fecha = Value(fecha),
         numEmpl = Value(numEmpl),
-        latitude = Value(latitude),
-        longitude = Value(longitude),
+        latitud = Value(latitud),
+        longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
-  static Insertable<VisitDTO> custom({
+  static Insertable<VisitaDTO> custom({
     Expression<String>? id,
-    Expression<String>? customerId,
-    Expression<DateTime>? date,
+    Expression<String>? clienteId,
+    Expression<DateTime>? fecha,
     Expression<String>? numEmpl,
-    Expression<String>? contact,
-    Expression<String>? summary,
-    Expression<double>? latitude,
-    Expression<double>? longitude,
+    Expression<String>? contacto,
+    Expression<String>? resumen,
+    Expression<double>? latitud,
+    Expression<double>? longitud,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (id != null) 'VISITA_ID': id,
-      if (customerId != null) 'CLIENTE_ID': customerId,
-      if (date != null) 'FECHA': date,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (fecha != null) 'FECHA': fecha,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
-      if (contact != null) 'CONTACTO': contact,
-      if (summary != null) 'RESUMEN': summary,
-      if (latitude != null) 'LATITUD': latitude,
-      if (longitude != null) 'LONGITUD': longitude,
+      if (contacto != null) 'CONTACTOO': contacto,
+      if (resumen != null) 'RESUMEN': resumen,
+      if (latitud != null) 'LATITUD': latitud,
+      if (longitud != null) 'LONGITUD': longitud,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  VisitTableCompanion copyWith(
+  VisitaTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? customerId,
-      Value<DateTime>? date,
+      Value<String>? clienteId,
+      Value<DateTime>? fecha,
       Value<String>? numEmpl,
-      Value<String?>? contact,
-      Value<String?>? summary,
-      Value<double>? latitude,
-      Value<double>? longitude,
+      Value<String?>? contacto,
+      Value<String?>? resumen,
+      Value<double>? latitud,
+      Value<double>? longitud,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return VisitTableCompanion(
+    return VisitaTableCompanion(
       id: id ?? this.id,
-      customerId: customerId ?? this.customerId,
-      date: date ?? this.date,
+      clienteId: clienteId ?? this.clienteId,
+      fecha: fecha ?? this.fecha,
       numEmpl: numEmpl ?? this.numEmpl,
-      contact: contact ?? this.contact,
-      summary: summary ?? this.summary,
-      latitude: latitude ?? this.latitude,
-      longitude: longitude ?? this.longitude,
+      contacto: contacto ?? this.contacto,
+      resumen: resumen ?? this.resumen,
+      latitud: latitud ?? this.latitud,
+      longitud: longitud ?? this.longitud,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -14178,26 +14280,26 @@ class VisitTableCompanion extends UpdateCompanion<VisitDTO> {
     if (id.present) {
       map['VISITA_ID'] = Variable<String>(id.value);
     }
-    if (customerId.present) {
-      map['CLIENTE_ID'] = Variable<String>(customerId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (date.present) {
-      map['FECHA'] = Variable<DateTime>(date.value);
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
     }
     if (numEmpl.present) {
       map['NUM_EMPL'] = Variable<String>(numEmpl.value);
     }
-    if (contact.present) {
-      map['CONTACTO'] = Variable<String>(contact.value);
+    if (contacto.present) {
+      map['CONTACTOO'] = Variable<String>(contacto.value);
     }
-    if (summary.present) {
-      map['RESUMEN'] = Variable<String>(summary.value);
+    if (resumen.present) {
+      map['RESUMEN'] = Variable<String>(resumen.value);
     }
-    if (latitude.present) {
-      map['LATITUD'] = Variable<double>(latitude.value);
+    if (latitud.present) {
+      map['LATITUD'] = Variable<double>(latitud.value);
     }
-    if (longitude.present) {
-      map['LONGITUD'] = Variable<double>(longitude.value);
+    if (longitud.present) {
+      map['LONGITUD'] = Variable<double>(longitud.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -14210,15 +14312,15 @@ class VisitTableCompanion extends UpdateCompanion<VisitDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('VisitTableCompanion(')
+    return (StringBuffer('VisitaTableCompanion(')
           ..write('id: $id, ')
-          ..write('customerId: $customerId, ')
-          ..write('date: $date, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('fecha: $fecha, ')
           ..write('numEmpl: $numEmpl, ')
-          ..write('contact: $contact, ')
-          ..write('summary: $summary, ')
-          ..write('latitude: $latitude, ')
-          ..write('longitude: $longitude, ')
+          ..write('contacto: $contacto, ')
+          ..write('resumen: $resumen, ')
+          ..write('latitud: $latitud, ')
+          ..write('longitud: $longitud, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -14226,25 +14328,25 @@ class VisitTableCompanion extends UpdateCompanion<VisitDTO> {
   }
 }
 
-class $VisitTableTable extends VisitTable
-    with TableInfo<$VisitTableTable, VisitDTO> {
+class $VisitaTableTable extends VisitaTable
+    with TableInfo<$VisitaTableTable, VisitaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $VisitTableTable(this.attachedDatabase, [this._alias]);
+  $VisitaTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'VISITA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _customerIdMeta = const VerificationMeta('customerId');
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
   @override
-  late final GeneratedColumn<String> customerId = GeneratedColumn<String>(
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _dateMeta = const VerificationMeta('date');
+  final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
-  late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
+  late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   final VerificationMeta _numEmplMeta = const VerificationMeta('numEmpl');
@@ -14252,24 +14354,24 @@ class $VisitTableTable extends VisitTable
   late final GeneratedColumn<String> numEmpl = GeneratedColumn<String>(
       'NUM_EMPL', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _contactMeta = const VerificationMeta('contact');
+  final VerificationMeta _contactoMeta = const VerificationMeta('contacto');
   @override
-  late final GeneratedColumn<String> contact = GeneratedColumn<String>(
-      'CONTACTO', aliasedName, true,
+  late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
+      'CONTACTOO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _summaryMeta = const VerificationMeta('summary');
+  final VerificationMeta _resumenMeta = const VerificationMeta('resumen');
   @override
-  late final GeneratedColumn<String> summary = GeneratedColumn<String>(
+  late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
       'RESUMEN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _latitudeMeta = const VerificationMeta('latitude');
+  final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
   @override
-  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
+  late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _longitudeMeta = const VerificationMeta('longitude');
+  final VerificationMeta _longitudMeta = const VerificationMeta('longitud');
   @override
-  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
+  late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
@@ -14288,13 +14390,13 @@ class $VisitTableTable extends VisitTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        customerId,
-        date,
+        clienteId,
+        fecha,
         numEmpl,
-        contact,
-        summary,
-        latitude,
-        longitude,
+        contacto,
+        resumen,
+        latitud,
+        longitud,
         lastUpdated,
         deleted
       ];
@@ -14303,7 +14405,7 @@ class $VisitTableTable extends VisitTable
   @override
   String get actualTableName => 'VISITAS';
   @override
-  VerificationContext validateIntegrity(Insertable<VisitDTO> instance,
+  VerificationContext validateIntegrity(Insertable<VisitaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -14314,18 +14416,16 @@ class $VisitTableTable extends VisitTable
       context.missing(_idMeta);
     }
     if (data.containsKey('CLIENTE_ID')) {
-      context.handle(
-          _customerIdMeta,
-          customerId.isAcceptableOrUnknown(
-              data['CLIENTE_ID']!, _customerIdMeta));
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
     } else if (isInserting) {
-      context.missing(_customerIdMeta);
+      context.missing(_clienteIdMeta);
     }
     if (data.containsKey('FECHA')) {
       context.handle(
-          _dateMeta, date.isAcceptableOrUnknown(data['FECHA']!, _dateMeta));
+          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
     } else if (isInserting) {
-      context.missing(_dateMeta);
+      context.missing(_fechaMeta);
     }
     if (data.containsKey('NUM_EMPL')) {
       context.handle(_numEmplMeta,
@@ -14333,25 +14433,25 @@ class $VisitTableTable extends VisitTable
     } else if (isInserting) {
       context.missing(_numEmplMeta);
     }
-    if (data.containsKey('CONTACTO')) {
-      context.handle(_contactMeta,
-          contact.isAcceptableOrUnknown(data['CONTACTO']!, _contactMeta));
+    if (data.containsKey('CONTACTOO')) {
+      context.handle(_contactoMeta,
+          contacto.isAcceptableOrUnknown(data['CONTACTOO']!, _contactoMeta));
     }
     if (data.containsKey('RESUMEN')) {
-      context.handle(_summaryMeta,
-          summary.isAcceptableOrUnknown(data['RESUMEN']!, _summaryMeta));
+      context.handle(_resumenMeta,
+          resumen.isAcceptableOrUnknown(data['RESUMEN']!, _resumenMeta));
     }
     if (data.containsKey('LATITUD')) {
-      context.handle(_latitudeMeta,
-          latitude.isAcceptableOrUnknown(data['LATITUD']!, _latitudeMeta));
+      context.handle(_latitudMeta,
+          latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta));
     } else if (isInserting) {
-      context.missing(_latitudeMeta);
+      context.missing(_latitudMeta);
     }
     if (data.containsKey('LONGITUD')) {
-      context.handle(_longitudeMeta,
-          longitude.isAcceptableOrUnknown(data['LONGITUD']!, _longitudeMeta));
+      context.handle(_longitudMeta,
+          longitud.isAcceptableOrUnknown(data['LONGITUD']!, _longitudMeta));
     } else if (isInserting) {
-      context.missing(_longitudeMeta);
+      context.missing(_longitudMeta);
     }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
@@ -14371,24 +14471,24 @@ class $VisitTableTable extends VisitTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  VisitDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  VisitaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return VisitDTO(
+    return VisitaDTO(
       id: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}VISITA_ID'])!,
-      customerId: attachedDatabase.options.types
+      clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      date: attachedDatabase.options.types
+      fecha: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
       numEmpl: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
-      contact: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
-      summary: attachedDatabase.options.types
+      contacto: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTOO']),
+      resumen: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
-      latitude: attachedDatabase.options.types
+      latitud: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitude: attachedDatabase.options.types
+      longitud: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
@@ -14398,102 +14498,105 @@ class $VisitTableTable extends VisitTable
   }
 
   @override
-  $VisitTableTable createAlias(String alias) {
-    return $VisitTableTable(attachedDatabase, alias);
+  $VisitaTableTable createAlias(String alias) {
+    return $VisitaTableTable(attachedDatabase, alias);
   }
 }
 
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
-  late final $LastSyncDateTableTable lastSyncDateTable =
-      $LastSyncDateTableTable(this);
-  late final $CountryTableTable countryTable = $CountryTableTable(this);
+  late final $FechaUltimaSyncTableTable fechaUltimaSyncTable =
+      $FechaUltimaSyncTableTable(this);
+  late final $PaisTableTable paisTable = $PaisTableTable(this);
   late final $DivisaTableTable divisaTable = $DivisaTableTable(this);
-  late final $SalesOrderStatusTableTable salesOrderStatusTable =
-      $SalesOrderStatusTableTable(this);
-  late final $SalesOrderTableTable salesOrderTable =
-      $SalesOrderTableTable(this);
-  late final $SalesOrderLineTableTable salesOrderLineTable =
-      $SalesOrderLineTableTable(this);
-  late final $CollectionTermTableTable collectionTermTable =
-      $CollectionTermTableTable(this);
-  late final $CollectionMethodTableTable collectionMethodTable =
-      $CollectionMethodTableTable(this);
-  late final $CustomerTableTable customerTable = $CustomerTableTable(this);
-  late final $CustomerUserTableTable customerUserTable =
-      $CustomerUserTableTable(this);
-  late final $CustomerNetGroupTableTable customerNetGroupTable =
-      $CustomerNetGroupTableTable(this);
-  late final $FamilyTableTable familyTable = $FamilyTableTable(this);
-  late final $SubfamilyTableTable subfamilyTable = $SubfamilyTableTable(this);
-  late final $CustomerDiscountTableTable customerDiscountTable =
-      $CustomerDiscountTableTable(this);
-  late final $CustomerContactTableTable customerContactTable =
-      $CustomerContactTableTable(this);
-  late final $CustomerAddressTableTable customerAddressTable =
-      $CustomerAddressTableTable(this);
-  late final $CustomerPendingPaymentTableTable customerPendingPaymentTable =
-      $CustomerPendingPaymentTableTable(this);
-  late final $CustomerNetPriceTableTable customerNetPriceTable =
-      $CustomerNetPriceTableTable(this);
-  late final $CustomerRappelTableTable customerRappelTable =
-      $CustomerRappelTableTable(this);
-  late final $TopArticleTableTable topArticleTable =
-      $TopArticleTableTable(this);
-  late final $ArticleTableTable articleTable = $ArticleTableTable(this);
-  late final $ArticleComponentTableTable articleComponentTable =
-      $ArticleComponentTableTable(this);
-  late final $ArticleCompanyVatTableTable articleCompanyVatTable =
-      $ArticleCompanyVatTableTable(this);
-  late final $ArticleSpareTableTable articleSpareTable =
-      $ArticleSpareTableTable(this);
-  late final $ArticleSubstituteTableTable articleSubstituteTable =
-      $ArticleSubstituteTableTable(this);
-  late final $ArticleRatePriceTableTable articleRatePriceTable =
-      $ArticleRatePriceTableTable(this);
-  late final $ArticleNetGroupPriceTableTable articleNetGroupPriceTable =
-      $ArticleNetGroupPriceTableTable(this);
-  late final $StatsCustomerUserSalesTableTable statsCustomerUserSalesTable =
-      $StatsCustomerUserSalesTableTable(this);
-  late final $StatsLastPriceTableTable statsLastPriceTable =
-      $StatsLastPriceTableTable(this);
-  late final $VisitTableTable visitTable = $VisitTableTable(this);
+  late final $PedidoVentaEstadoTableTable pedidoVentaEstadoTable =
+      $PedidoVentaEstadoTableTable(this);
+  late final $PedidoVentaTableTable pedidoVentaTable =
+      $PedidoVentaTableTable(this);
+  late final $PedidoVentaLineaTableTable pedidoVentaLineaTable =
+      $PedidoVentaLineaTableTable(this);
+  late final $PlazoDeCobroTableTable plazoDeCobroTable =
+      $PlazoDeCobroTableTable(this);
+  late final $MetodoDeCobroTableTable metodoDeCobroTable =
+      $MetodoDeCobroTableTable(this);
+  late final $ClienteTableTable clienteTable = $ClienteTableTable(this);
+  late final $ClienteUsuarioTableTable clienteUsuarioTable =
+      $ClienteUsuarioTableTable(this);
+  late final $ClienteGrupoNetoTableTable clienteGrupoNetoTable =
+      $ClienteGrupoNetoTableTable(this);
+  late final $FamiliaTableTable familiaTable = $FamiliaTableTable(this);
+  late final $SubfamiliaTableTable subfamiliaTable =
+      $SubfamiliaTableTable(this);
+  late final $ClienteDescuentoTableTable clienteDescuentoTable =
+      $ClienteDescuentoTableTable(this);
+  late final $ClienteContactoTableTable clienteContactoTable =
+      $ClienteContactoTableTable(this);
+  late final $ClienteDireccionTableTable clienteDireccionTable =
+      $ClienteDireccionTableTable(this);
+  late final $ClientePagoPendienteTableTable clientePagoPendienteTable =
+      $ClientePagoPendienteTableTable(this);
+  late final $ClientePrecioNetoTableTable clientePrecioNetoTable =
+      $ClientePrecioNetoTableTable(this);
+  late final $ClienteRappelTableTable clienteRappelTable =
+      $ClienteRappelTableTable(this);
+  late final $ArticuloTopTableTable articuloTopTable =
+      $ArticuloTopTableTable(this);
+  late final $ArticuloTableTable articuloTable = $ArticuloTableTable(this);
+  late final $ArticuloComponenteTableTable articuloComponenteTable =
+      $ArticuloComponenteTableTable(this);
+  late final $ArticuloEmpresaIvaTableTable articuloEmpresaIvaTable =
+      $ArticuloEmpresaIvaTableTable(this);
+  late final $ArticuloRecambioTableTable articuloRecambioTable =
+      $ArticuloRecambioTableTable(this);
+  late final $ArticuloSustitutivoTableTable articuloSustitutivoTable =
+      $ArticuloSustitutivoTableTable(this);
+  late final $ArticuloTarifaPrecioTableTable articuloTarifaPrecioTable =
+      $ArticuloTarifaPrecioTableTable(this);
+  late final $ArticuloGrupoNetoTableTable articuloGrupoNetoTable =
+      $ArticuloGrupoNetoTableTable(this);
+  late final $EstadisticasClienteUsuarioVentasTableTable
+      estadisticasClienteUsuarioVentasTable =
+      $EstadisticasClienteUsuarioVentasTableTable(this);
+  late final $EstadisticasUltimosPreciosTableTable
+      estadisticasUltimosPreciosTable =
+      $EstadisticasUltimosPreciosTableTable(this);
+  late final $VisitaTableTable visitaTable = $VisitaTableTable(this);
   @override
   Iterable<TableInfo<Table, dynamic>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
-        lastSyncDateTable,
-        countryTable,
+        fechaUltimaSyncTable,
+        paisTable,
         divisaTable,
-        salesOrderStatusTable,
-        salesOrderTable,
-        salesOrderLineTable,
-        collectionTermTable,
-        collectionMethodTable,
-        customerTable,
-        customerUserTable,
-        customerNetGroupTable,
-        familyTable,
-        subfamilyTable,
-        customerDiscountTable,
-        customerContactTable,
-        customerAddressTable,
-        customerPendingPaymentTable,
-        customerNetPriceTable,
-        customerRappelTable,
-        topArticleTable,
-        articleTable,
-        articleComponentTable,
-        articleCompanyVatTable,
-        articleSpareTable,
-        articleSubstituteTable,
-        articleRatePriceTable,
-        articleNetGroupPriceTable,
-        statsCustomerUserSalesTable,
-        statsLastPriceTable,
-        visitTable
+        pedidoVentaEstadoTable,
+        pedidoVentaTable,
+        pedidoVentaLineaTable,
+        plazoDeCobroTable,
+        metodoDeCobroTable,
+        clienteTable,
+        clienteUsuarioTable,
+        clienteGrupoNetoTable,
+        familiaTable,
+        subfamiliaTable,
+        clienteDescuentoTable,
+        clienteContactoTable,
+        clienteDireccionTable,
+        clientePagoPendienteTable,
+        clientePrecioNetoTable,
+        clienteRappelTable,
+        articuloTopTable,
+        articuloTable,
+        articuloComponenteTable,
+        articuloEmpresaIvaTable,
+        articuloRecambioTable,
+        articuloSustitutivoTable,
+        articuloTarifaPrecioTable,
+        articuloGrupoNetoTable,
+        estadisticasClienteUsuarioVentasTable,
+        estadisticasUltimosPreciosTable,
+        visitaTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/articulo_top_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/top_article_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/articles/infrastructure/article_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/auth_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/customer/infrastructure/customer_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/sales_order/infrastructure/sales_order_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/sync_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/initial_db_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/visits/infrastructure/visit_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_repository.dart';
 import 'package:logging/logging.dart';
 import 'src/core/presentation/app.dart';
 
@@ -42,16 +42,16 @@ void main() async {
         authRepositoryProvider.overrideWithValue(authRepository),
         syncRepositoryProvider
             .overrideWithValue(SyncRepository(database, dio, authRepository)),
-        salesOrderRepositoryProvider.overrideWithValue(
-            SalesOrderRepository(database, dio, authRepository)),
-        customerRepositoryProvider
-            .overrideWithValue(CustomerRepository(database, dio)),
-        articleRepositoryProvider
-            .overrideWithValue(ArticleRepository(database, dio)),
-        visitRepositoryProvider
-            .overrideWithValue(VisitRepository(database, dio)),
-        topArticleRepositoryProvider
-            .overrideWithValue(TopArticleRepository(database)),
+        pedidoVentaRepositoryProvider.overrideWithValue(
+            PedidoVentaRepository(database, dio, authRepository)),
+        clienteRepositoryProvider
+            .overrideWithValue(ClienteRepository(database, dio)),
+        articuloRepositoryProvider
+            .overrideWithValue(ArticuloRepository(database, dio)),
+        visitaRepositoryProvider
+            .overrideWithValue(VisitaRepository(database, dio)),
+        articuloTopRepositoryProvider
+            .overrideWithValue(ArticuloTopRepository(database)),
       ],
       observers: [
         RiverpodLogger(),
@@ -63,16 +63,16 @@ void main() async {
       child: const App(),
     ));
 
-    FlutterError.onError = (FlutterErrorDetails details) {
-      FlutterError.presentError(details);
+    FlutterError.onError = (FlutterErrorDetails detalles) {
+      FlutterError.presentError(detalles);
     };
-    ErrorWidget.builder = (FlutterErrorDetails details) {
+    ErrorWidget.builder = (FlutterErrorDetails detalles) {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
           title: const Text('An error occurred'),
         ),
-        body: Center(child: Text(details.toString())),
+        body: Center(child: Text(detalles.toString())),
       );
     };
   }, (Object error, StackTrace stack) {

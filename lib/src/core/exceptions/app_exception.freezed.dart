@@ -23,10 +23,10 @@ mixin _$AppException {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,10 +34,10 @@ mixin _$AppException {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,10 +45,10 @@ mixin _$AppException {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,12 +58,12 @@ mixin _$AppException {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,10 +71,10 @@ mixin _$AppException {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,10 +82,10 @@ mixin _$AppException {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -188,10 +188,10 @@ class _$RestApiFailure implements RestApiFailure {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) {
     return restApiFailure(errorCode, errorMessage);
   }
@@ -202,10 +202,10 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) {
     return restApiFailure?.call(errorCode, errorMessage);
   }
@@ -216,10 +216,10 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
     if (restApiFailure != null) {
@@ -235,12 +235,12 @@ class _$RestApiFailure implements RestApiFailure {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) {
     return restApiFailure(this);
   }
@@ -251,10 +251,10 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) {
     return restApiFailure?.call(this);
   }
@@ -265,10 +265,10 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
     if (restApiFailure != null) {
@@ -361,10 +361,10 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) {
     return fetchLocalDataFailure(errorMessage);
   }
@@ -375,10 +375,10 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) {
     return fetchLocalDataFailure?.call(errorMessage);
   }
@@ -389,10 +389,10 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
     if (fetchLocalDataFailure != null) {
@@ -408,12 +408,12 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) {
     return fetchLocalDataFailure(this);
   }
@@ -424,10 +424,10 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) {
     return fetchLocalDataFailure?.call(this);
   }
@@ -438,10 +438,10 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
     if (fetchLocalDataFailure != null) {
@@ -542,10 +542,10 @@ class _$SyncFailure implements SyncFailure {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) {
     return syncFailure(tableToSync, errorMessage);
   }
@@ -556,10 +556,10 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) {
     return syncFailure?.call(tableToSync, errorMessage);
   }
@@ -570,10 +570,10 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
     if (syncFailure != null) {
@@ -589,12 +589,12 @@ class _$SyncFailure implements SyncFailure {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) {
     return syncFailure(this);
   }
@@ -605,10 +605,10 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) {
     return syncFailure?.call(this);
   }
@@ -619,10 +619,10 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
     if (syncFailure != null) {
@@ -644,40 +644,181 @@ abstract class SyncFailure implements AppException {
 }
 
 /// @nodoc
-abstract class _$$CustomerNotFoundFailureCopyWith<$Res> {
-  factory _$$CustomerNotFoundFailureCopyWith(_$CustomerNotFoundFailure value,
-          $Res Function(_$CustomerNotFoundFailure) then) =
-      __$$CustomerNotFoundFailureCopyWithImpl<$Res>;
+abstract class _$$ClienteNotFoundFailureCopyWith<$Res> {
+  factory _$$ClienteNotFoundFailureCopyWith(_$ClienteNotFoundFailure value,
+          $Res Function(_$ClienteNotFoundFailure) then) =
+      __$$ClienteNotFoundFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$CustomerNotFoundFailureCopyWithImpl<$Res>
+class __$$ClienteNotFoundFailureCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$$CustomerNotFoundFailureCopyWith<$Res> {
-  __$$CustomerNotFoundFailureCopyWithImpl(_$CustomerNotFoundFailure _value,
-      $Res Function(_$CustomerNotFoundFailure) _then)
-      : super(_value, (v) => _then(v as _$CustomerNotFoundFailure));
+    implements _$$ClienteNotFoundFailureCopyWith<$Res> {
+  __$$ClienteNotFoundFailureCopyWithImpl(_$ClienteNotFoundFailure _value,
+      $Res Function(_$ClienteNotFoundFailure) _then)
+      : super(_value, (v) => _then(v as _$ClienteNotFoundFailure));
 
   @override
-  _$CustomerNotFoundFailure get _value =>
-      super._value as _$CustomerNotFoundFailure;
+  _$ClienteNotFoundFailure get _value =>
+      super._value as _$ClienteNotFoundFailure;
 }
 
 /// @nodoc
 
-class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
-  const _$CustomerNotFoundFailure();
+class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
+  const _$ClienteNotFoundFailure();
 
   @override
   String toString() {
-    return 'AppException.customerNotFound()';
+    return 'AppException.clienteNotFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClienteNotFoundFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int errorCode, String errorMessage)
+        restApiFailure,
+    required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String tableToSync, String errorMessage)
+        syncFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+  }) {
+    return clienteNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+  }) {
+    return clienteNotFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    required TResult orElse(),
+  }) {
+    if (clienteNotFound != null) {
+      return clienteNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(FetchLocalDataFailure value)
+        fetchLocalDataFailure,
+    required TResult Function(SyncFailure value) syncFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
+  }) {
+    return clienteNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+  }) {
+    return clienteNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    required TResult orElse(),
+  }) {
+    if (clienteNotFound != null) {
+      return clienteNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ClienteNotFoundFailure implements AppException {
+  const factory ClienteNotFoundFailure() = _$ClienteNotFoundFailure;
+}
+
+/// @nodoc
+abstract class _$$ArticuloNotFoundFailureCopyWith<$Res> {
+  factory _$$ArticuloNotFoundFailureCopyWith(_$ArticuloNotFoundFailure value,
+          $Res Function(_$ArticuloNotFoundFailure) then) =
+      __$$ArticuloNotFoundFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ArticuloNotFoundFailureCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res>
+    implements _$$ArticuloNotFoundFailureCopyWith<$Res> {
+  __$$ArticuloNotFoundFailureCopyWithImpl(_$ArticuloNotFoundFailure _value,
+      $Res Function(_$ArticuloNotFoundFailure) _then)
+      : super(_value, (v) => _then(v as _$ArticuloNotFoundFailure));
+
+  @override
+  _$ArticuloNotFoundFailure get _value =>
+      super._value as _$ArticuloNotFoundFailure;
+}
+
+/// @nodoc
+
+class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
+  const _$ArticuloNotFoundFailure();
+
+  @override
+  String toString() {
+    return 'AppException.articuloNotFound()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomerNotFoundFailure);
+            other is _$ArticuloNotFoundFailure);
   }
 
   @override
@@ -691,12 +832,12 @@ class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) {
-    return customerNotFound();
+    return articuloNotFound();
   }
 
   @override
@@ -705,12 +846,12 @@ class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) {
-    return customerNotFound?.call();
+    return articuloNotFound?.call();
   }
 
   @override
@@ -719,14 +860,14 @@ class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
-    if (customerNotFound != null) {
-      return customerNotFound();
+    if (articuloNotFound != null) {
+      return articuloNotFound();
     }
     return orElse();
   }
@@ -738,14 +879,14 @@ class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) {
-    return customerNotFound(this);
+    return articuloNotFound(this);
   }
 
   @override
@@ -754,12 +895,12 @@ class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) {
-    return customerNotFound?.call(this);
+    return articuloNotFound?.call(this);
   }
 
   @override
@@ -768,200 +909,60 @@ class _$CustomerNotFoundFailure implements CustomerNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
-    if (customerNotFound != null) {
-      return customerNotFound(this);
+    if (articuloNotFound != null) {
+      return articuloNotFound(this);
     }
     return orElse();
   }
 }
 
-abstract class CustomerNotFoundFailure implements AppException {
-  const factory CustomerNotFoundFailure() = _$CustomerNotFoundFailure;
+abstract class ArticuloNotFoundFailure implements AppException {
+  const factory ArticuloNotFoundFailure() = _$ArticuloNotFoundFailure;
 }
 
 /// @nodoc
-abstract class _$$ArticleNotFoundFailureCopyWith<$Res> {
-  factory _$$ArticleNotFoundFailureCopyWith(_$ArticleNotFoundFailure value,
-          $Res Function(_$ArticleNotFoundFailure) then) =
-      __$$ArticleNotFoundFailureCopyWithImpl<$Res>;
+abstract class _$$PedidoVentaNotFoundFailureCopyWith<$Res> {
+  factory _$$PedidoVentaNotFoundFailureCopyWith(
+          _$PedidoVentaNotFoundFailure value,
+          $Res Function(_$PedidoVentaNotFoundFailure) then) =
+      __$$PedidoVentaNotFoundFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ArticleNotFoundFailureCopyWithImpl<$Res>
+class __$$PedidoVentaNotFoundFailureCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$$ArticleNotFoundFailureCopyWith<$Res> {
-  __$$ArticleNotFoundFailureCopyWithImpl(_$ArticleNotFoundFailure _value,
-      $Res Function(_$ArticleNotFoundFailure) _then)
-      : super(_value, (v) => _then(v as _$ArticleNotFoundFailure));
+    implements _$$PedidoVentaNotFoundFailureCopyWith<$Res> {
+  __$$PedidoVentaNotFoundFailureCopyWithImpl(
+      _$PedidoVentaNotFoundFailure _value,
+      $Res Function(_$PedidoVentaNotFoundFailure) _then)
+      : super(_value, (v) => _then(v as _$PedidoVentaNotFoundFailure));
 
   @override
-  _$ArticleNotFoundFailure get _value =>
-      super._value as _$ArticleNotFoundFailure;
+  _$PedidoVentaNotFoundFailure get _value =>
+      super._value as _$PedidoVentaNotFoundFailure;
 }
 
 /// @nodoc
 
-class _$ArticleNotFoundFailure implements ArticleNotFoundFailure {
-  const _$ArticleNotFoundFailure();
+class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
+  const _$PedidoVentaNotFoundFailure();
 
   @override
   String toString() {
-    return 'AppException.articleNotFound()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ArticleNotFoundFailure);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(int errorCode, String errorMessage)
-        restApiFailure,
-    required TResult Function(String errorMessage) fetchLocalDataFailure,
-    required TResult Function(String tableToSync, String errorMessage)
-        syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
-  }) {
-    return articleNotFound();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
-  }) {
-    return articleNotFound?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
-    required TResult orElse(),
-  }) {
-    if (articleNotFound != null) {
-      return articleNotFound();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(RestApiFailure value) restApiFailure,
-    required TResult Function(FetchLocalDataFailure value)
-        fetchLocalDataFailure,
-    required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
-  }) {
-    return articleNotFound(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
-  }) {
-    return articleNotFound?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
-    required TResult orElse(),
-  }) {
-    if (articleNotFound != null) {
-      return articleNotFound(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ArticleNotFoundFailure implements AppException {
-  const factory ArticleNotFoundFailure() = _$ArticleNotFoundFailure;
-}
-
-/// @nodoc
-abstract class _$$SalesOrderNotFoundFailureCopyWith<$Res> {
-  factory _$$SalesOrderNotFoundFailureCopyWith(
-          _$SalesOrderNotFoundFailure value,
-          $Res Function(_$SalesOrderNotFoundFailure) then) =
-      __$$SalesOrderNotFoundFailureCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SalesOrderNotFoundFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$$SalesOrderNotFoundFailureCopyWith<$Res> {
-  __$$SalesOrderNotFoundFailureCopyWithImpl(_$SalesOrderNotFoundFailure _value,
-      $Res Function(_$SalesOrderNotFoundFailure) _then)
-      : super(_value, (v) => _then(v as _$SalesOrderNotFoundFailure));
-
-  @override
-  _$SalesOrderNotFoundFailure get _value =>
-      super._value as _$SalesOrderNotFoundFailure;
-}
-
-/// @nodoc
-
-class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
-  const _$SalesOrderNotFoundFailure();
-
-  @override
-  String toString() {
-    return 'AppException.salesOrderNotFound()';
+    return 'AppException.pedidoVentaNotFound()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SalesOrderNotFoundFailure);
+            other is _$PedidoVentaNotFoundFailure);
   }
 
   @override
@@ -975,12 +976,12 @@ class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) {
-    return salesOrderNotFound();
+    return pedidoVentaNotFound();
   }
 
   @override
@@ -989,12 +990,12 @@ class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) {
-    return salesOrderNotFound?.call();
+    return pedidoVentaNotFound?.call();
   }
 
   @override
@@ -1003,14 +1004,14 @@ class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
-    if (salesOrderNotFound != null) {
-      return salesOrderNotFound();
+    if (pedidoVentaNotFound != null) {
+      return pedidoVentaNotFound();
     }
     return orElse();
   }
@@ -1022,14 +1023,14 @@ class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) {
-    return salesOrderNotFound(this);
+    return pedidoVentaNotFound(this);
   }
 
   @override
@@ -1038,12 +1039,12 @@ class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) {
-    return salesOrderNotFound?.call(this);
+    return pedidoVentaNotFound?.call(this);
   }
 
   @override
@@ -1052,48 +1053,48 @@ class _$SalesOrderNotFoundFailure implements SalesOrderNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
-    if (salesOrderNotFound != null) {
-      return salesOrderNotFound(this);
+    if (pedidoVentaNotFound != null) {
+      return pedidoVentaNotFound(this);
     }
     return orElse();
   }
 }
 
-abstract class SalesOrderNotFoundFailure implements AppException {
-  const factory SalesOrderNotFoundFailure() = _$SalesOrderNotFoundFailure;
+abstract class PedidoVentaNotFoundFailure implements AppException {
+  const factory PedidoVentaNotFoundFailure() = _$PedidoVentaNotFoundFailure;
 }
 
 /// @nodoc
-abstract class _$$SalesOrderDeleteFailureCopyWith<$Res> {
-  factory _$$SalesOrderDeleteFailureCopyWith(_$SalesOrderDeleteFailure value,
-          $Res Function(_$SalesOrderDeleteFailure) then) =
-      __$$SalesOrderDeleteFailureCopyWithImpl<$Res>;
+abstract class _$$PedidoVentaDeleteFailureCopyWith<$Res> {
+  factory _$$PedidoVentaDeleteFailureCopyWith(_$PedidoVentaDeleteFailure value,
+          $Res Function(_$PedidoVentaDeleteFailure) then) =
+      __$$PedidoVentaDeleteFailureCopyWithImpl<$Res>;
   $Res call({String errorMessage});
 }
 
 /// @nodoc
-class __$$SalesOrderDeleteFailureCopyWithImpl<$Res>
+class __$$PedidoVentaDeleteFailureCopyWithImpl<$Res>
     extends _$AppExceptionCopyWithImpl<$Res>
-    implements _$$SalesOrderDeleteFailureCopyWith<$Res> {
-  __$$SalesOrderDeleteFailureCopyWithImpl(_$SalesOrderDeleteFailure _value,
-      $Res Function(_$SalesOrderDeleteFailure) _then)
-      : super(_value, (v) => _then(v as _$SalesOrderDeleteFailure));
+    implements _$$PedidoVentaDeleteFailureCopyWith<$Res> {
+  __$$PedidoVentaDeleteFailureCopyWithImpl(_$PedidoVentaDeleteFailure _value,
+      $Res Function(_$PedidoVentaDeleteFailure) _then)
+      : super(_value, (v) => _then(v as _$PedidoVentaDeleteFailure));
 
   @override
-  _$SalesOrderDeleteFailure get _value =>
-      super._value as _$SalesOrderDeleteFailure;
+  _$PedidoVentaDeleteFailure get _value =>
+      super._value as _$PedidoVentaDeleteFailure;
 
   @override
   $Res call({
     Object? errorMessage = freezed,
   }) {
-    return _then(_$SalesOrderDeleteFailure(
+    return _then(_$PedidoVentaDeleteFailure(
       errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -1104,22 +1105,22 @@ class __$$SalesOrderDeleteFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
-  const _$SalesOrderDeleteFailure(this.errorMessage);
+class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
+  const _$PedidoVentaDeleteFailure(this.errorMessage);
 
   @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'AppException.salesOrderDeleteFailure(errorMessage: $errorMessage)';
+    return 'AppException.pedidoVentaDeleteFailure(errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SalesOrderDeleteFailure &&
+            other is _$PedidoVentaDeleteFailure &&
             const DeepCollectionEquality()
                 .equals(other.errorMessage, errorMessage));
   }
@@ -1130,9 +1131,10 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
 
   @JsonKey(ignore: true)
   @override
-  _$$SalesOrderDeleteFailureCopyWith<_$SalesOrderDeleteFailure> get copyWith =>
-      __$$SalesOrderDeleteFailureCopyWithImpl<_$SalesOrderDeleteFailure>(
-          this, _$identity);
+  _$$PedidoVentaDeleteFailureCopyWith<_$PedidoVentaDeleteFailure>
+      get copyWith =>
+          __$$PedidoVentaDeleteFailureCopyWithImpl<_$PedidoVentaDeleteFailure>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1142,12 +1144,12 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
-    required TResult Function() customerNotFound,
-    required TResult Function() articleNotFound,
-    required TResult Function() salesOrderNotFound,
-    required TResult Function(String errorMessage) salesOrderDeleteFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
   }) {
-    return salesOrderDeleteFailure(errorMessage);
+    return pedidoVentaDeleteFailure(errorMessage);
   }
 
   @override
@@ -1156,12 +1158,12 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
   }) {
-    return salesOrderDeleteFailure?.call(errorMessage);
+    return pedidoVentaDeleteFailure?.call(errorMessage);
   }
 
   @override
@@ -1170,14 +1172,14 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? customerNotFound,
-    TResult Function()? articleNotFound,
-    TResult Function()? salesOrderNotFound,
-    TResult Function(String errorMessage)? salesOrderDeleteFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
-    if (salesOrderDeleteFailure != null) {
-      return salesOrderDeleteFailure(errorMessage);
+    if (pedidoVentaDeleteFailure != null) {
+      return pedidoVentaDeleteFailure(errorMessage);
     }
     return orElse();
   }
@@ -1189,14 +1191,14 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
-    required TResult Function(CustomerNotFoundFailure value) customerNotFound,
-    required TResult Function(ArticleNotFoundFailure value) articleNotFound,
-    required TResult Function(SalesOrderNotFoundFailure value)
-        salesOrderNotFound,
-    required TResult Function(SalesOrderDeleteFailure value)
-        salesOrderDeleteFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
   }) {
-    return salesOrderDeleteFailure(this);
+    return pedidoVentaDeleteFailure(this);
   }
 
   @override
@@ -1205,12 +1207,12 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
   }) {
-    return salesOrderDeleteFailure?.call(this);
+    return pedidoVentaDeleteFailure?.call(this);
   }
 
   @override
@@ -1219,25 +1221,25 @@ class _$SalesOrderDeleteFailure implements SalesOrderDeleteFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(CustomerNotFoundFailure value)? customerNotFound,
-    TResult Function(ArticleNotFoundFailure value)? articleNotFound,
-    TResult Function(SalesOrderNotFoundFailure value)? salesOrderNotFound,
-    TResult Function(SalesOrderDeleteFailure value)? salesOrderDeleteFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
     required TResult orElse(),
   }) {
-    if (salesOrderDeleteFailure != null) {
-      return salesOrderDeleteFailure(this);
+    if (pedidoVentaDeleteFailure != null) {
+      return pedidoVentaDeleteFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class SalesOrderDeleteFailure implements AppException {
-  const factory SalesOrderDeleteFailure(final String errorMessage) =
-      _$SalesOrderDeleteFailure;
+abstract class PedidoVentaDeleteFailure implements AppException {
+  const factory PedidoVentaDeleteFailure(final String errorMessage) =
+      _$PedidoVentaDeleteFailure;
 
   String get errorMessage;
   @JsonKey(ignore: true)
-  _$$SalesOrderDeleteFailureCopyWith<_$SalesOrderDeleteFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PedidoVentaDeleteFailureCopyWith<_$PedidoVentaDeleteFailure>
+      get copyWith => throw _privateConstructorUsedError;
 }

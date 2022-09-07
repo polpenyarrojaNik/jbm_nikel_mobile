@@ -31,7 +31,7 @@ class AppDecoration {
         // ),
       );
 
-  static BoxDecoration loadingSalesOrderTile = BoxDecoration(
+  static BoxDecoration loadingPedidoVentaTile = BoxDecoration(
     color: Colors.grey,
     borderRadius: BorderRadius.circular(4),
   );

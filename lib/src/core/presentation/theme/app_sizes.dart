@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Constant sizes to be used in the app (paddings, gaps, rounded corners etc.)
+/// Constant sizes to be used in the app (paddings, gaps, redondeo corners etc.)
 class Sizes {
   static const p4 = 4.0;
   static const p8 = 8.0;

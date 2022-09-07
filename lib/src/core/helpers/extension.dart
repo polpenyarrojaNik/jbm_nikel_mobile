@@ -58,7 +58,7 @@ extension MoneyParsing on String {
 }
 
 extension MoneyParsingDouble on double {
-  Money parseMoney(double amount, String currencyId) {
+  Money parseMoney(double importe, String currencyId) {
     final euroCurrency = Currency.create('EUR', 2,
         symbol: '€', invertSeparators: true, pattern: 'S#.##0,##');
 
@@ -80,10 +80,10 @@ extension MoneyParsingDouble on double {
 
     NumberFormat formatter = NumberFormat.decimalPattern('es');
 
-    final amountStr = formatter.format(amount);
+    final importeStr = formatter.format(importe);
 
     try {
-      return Money.parseWithCurrency(amountStr, currency);
+      return Money.parseWithCurrency(importeStr, currency);
     } on MoneyParseException {
       return Money.fromIntWithCurrency(0, currency);
     }

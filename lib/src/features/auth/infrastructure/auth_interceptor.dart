@@ -18,7 +18,7 @@ class AuthInterceptor extends Interceptor {
   Future<void> onError(DioError err, ErrorInterceptorHandler handler) async {
     final errorResponse = err.response;
     if (errorResponse != null && errorResponse.statusCode == 401) {
-      final credentials = await _authenticator.getSignedInUser();
+      final credentials = await _authenticator.getSignedInUsuario();
 
       if (credentials == null) {
         await _authenticator.clear();

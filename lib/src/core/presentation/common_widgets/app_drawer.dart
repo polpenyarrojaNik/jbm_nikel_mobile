@@ -24,7 +24,7 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: const Text('Clientes'),
-            onTap: () => context.goNamed(AppRoute.customerindex.name),
+            onTap: () => context.goNamed(AppRoute.clienteindex.name),
           ),
           ListTile(
             leading: const Icon(
@@ -32,7 +32,7 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: const Text('Artículos'),
-            onTap: () => context.goNamed(AppRoute.articleindex.name),
+            onTap: () => context.goNamed(AppRoute.articuloindex.name),
           ),
           ListTile(
             leading: const Icon(
@@ -47,8 +47,8 @@ class AppDrawer extends StatelessWidget {
               MdiIcons.packageVariantClosed,
               size: 30,
             ),
-            title: const Text('Visitas'),
-            onTap: () => context.goNamed(AppRoute.visitindex.name),
+            title: const Text('Visitaas'),
+            onTap: () => context.goNamed(AppRoute.visitaindex.name),
           ),
           ListTile(
             leading: const Icon(
@@ -56,7 +56,7 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: const Text('KPI'),
-            onTap: () => context.goNamed(AppRoute.articleindex.name),
+            onTap: () => context.goNamed(AppRoute.articuloindex.name),
           ),
           ListTile(
             leading: const Icon(

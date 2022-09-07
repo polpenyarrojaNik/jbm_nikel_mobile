@@ -1,0 +1,195 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+
+part of 'cliente_usuario.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$ClienteUsuario {
+  String get clienteId => throw _privateConstructorUsedError;
+  String get usuarioId => throw _privateConstructorUsedError;
+  DateTime get lastUpdated => throw _privateConstructorUsedError;
+  bool get deleted => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ClienteUsuarioCopyWith<ClienteUsuario> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ClienteUsuarioCopyWith<$Res> {
+  factory $ClienteUsuarioCopyWith(
+          ClienteUsuario value, $Res Function(ClienteUsuario) then) =
+      _$ClienteUsuarioCopyWithImpl<$Res>;
+  $Res call(
+      {String clienteId, String usuarioId, DateTime lastUpdated, bool deleted});
+}
+
+/// @nodoc
+class _$ClienteUsuarioCopyWithImpl<$Res>
+    implements $ClienteUsuarioCopyWith<$Res> {
+  _$ClienteUsuarioCopyWithImpl(this._value, this._then);
+
+  final ClienteUsuario _value;
+  // ignore: unused_field
+  final $Res Function(ClienteUsuario) _then;
+
+  @override
+  $Res call({
+    Object? clienteId = freezed,
+    Object? usuarioId = freezed,
+    Object? lastUpdated = freezed,
+    Object? deleted = freezed,
+  }) {
+    return _then(_value.copyWith(
+      clienteId: clienteId == freezed
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      usuarioId: usuarioId == freezed
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: lastUpdated == freezed
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: deleted == freezed
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_ClienteUsuarioCopyWith<$Res>
+    implements $ClienteUsuarioCopyWith<$Res> {
+  factory _$$_ClienteUsuarioCopyWith(
+          _$_ClienteUsuario value, $Res Function(_$_ClienteUsuario) then) =
+      __$$_ClienteUsuarioCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String clienteId, String usuarioId, DateTime lastUpdated, bool deleted});
+}
+
+/// @nodoc
+class __$$_ClienteUsuarioCopyWithImpl<$Res>
+    extends _$ClienteUsuarioCopyWithImpl<$Res>
+    implements _$$_ClienteUsuarioCopyWith<$Res> {
+  __$$_ClienteUsuarioCopyWithImpl(
+      _$_ClienteUsuario _value, $Res Function(_$_ClienteUsuario) _then)
+      : super(_value, (v) => _then(v as _$_ClienteUsuario));
+
+  @override
+  _$_ClienteUsuario get _value => super._value as _$_ClienteUsuario;
+
+  @override
+  $Res call({
+    Object? clienteId = freezed,
+    Object? usuarioId = freezed,
+    Object? lastUpdated = freezed,
+    Object? deleted = freezed,
+  }) {
+    return _then(_$_ClienteUsuario(
+      clienteId: clienteId == freezed
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      usuarioId: usuarioId == freezed
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdated: lastUpdated == freezed
+          ? _value.lastUpdated
+          : lastUpdated // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      deleted: deleted == freezed
+          ? _value.deleted
+          : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ClienteUsuario extends _ClienteUsuario {
+  const _$_ClienteUsuario(
+      {required this.clienteId,
+      required this.usuarioId,
+      required this.lastUpdated,
+      required this.deleted})
+      : super._();
+
+  @override
+  final String clienteId;
+  @override
+  final String usuarioId;
+  @override
+  final DateTime lastUpdated;
+  @override
+  final bool deleted;
+
+  @override
+  String toString() {
+    return 'ClienteUsuario(clienteId: $clienteId, usuarioId: $usuarioId, lastUpdated: $lastUpdated, deleted: $deleted)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ClienteUsuario &&
+            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
+            const DeepCollectionEquality().equals(other.usuarioId, usuarioId) &&
+            const DeepCollectionEquality()
+                .equals(other.lastUpdated, lastUpdated) &&
+            const DeepCollectionEquality().equals(other.deleted, deleted));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(clienteId),
+      const DeepCollectionEquality().hash(usuarioId),
+      const DeepCollectionEquality().hash(lastUpdated),
+      const DeepCollectionEquality().hash(deleted));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ClienteUsuarioCopyWith<_$_ClienteUsuario> get copyWith =>
+      __$$_ClienteUsuarioCopyWithImpl<_$_ClienteUsuario>(this, _$identity);
+}
+
+abstract class _ClienteUsuario extends ClienteUsuario {
+  const factory _ClienteUsuario(
+      {required final String clienteId,
+      required final String usuarioId,
+      required final DateTime lastUpdated,
+      required final bool deleted}) = _$_ClienteUsuario;
+  const _ClienteUsuario._() : super._();
+
+  @override
+  String get clienteId;
+  @override
+  String get usuarioId;
+  @override
+  DateTime get lastUpdated;
+  @override
+  bool get deleted;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ClienteUsuarioCopyWith<_$_ClienteUsuario> get copyWith =>
+      throw _privateConstructorUsedError;
+}
