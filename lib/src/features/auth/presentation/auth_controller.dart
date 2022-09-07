@@ -26,11 +26,12 @@ class AuthController extends StateNotifier<AuthState> {
     checkAndUpdateAuthStatus();
   }
 
-  Future<void> login({required String user, required String password}) async {
+  Future<void> login(
+      {required String usuario, required String contrasenya}) async {
     try {
       state = const AuthState.authenticating();
 
-      await _authRepository.login(user: user, password: password);
+      await _authRepository.login(usuario: usuario, contrasenya: contrasenya);
       state = const AuthState.authenticated();
     } on AppException catch (e) {
       state = AuthState.failure(e.details.message);

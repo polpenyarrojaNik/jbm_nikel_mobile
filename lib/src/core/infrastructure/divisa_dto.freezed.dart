@@ -25,39 +25,39 @@ mixin _$DivisaDTO {
   @JsonKey(name: 'ABREVIACION')
   String get abv => throw _privateConstructorUsedError;
   @JsonKey(name: 'SIMBOLO')
-  String? get symbol => throw _privateConstructorUsedError;
+  String? get simbolo => throw _privateConstructorUsedError;
   @JsonKey(name: 'REDONDEO')
-  double? get rounded => throw _privateConstructorUsedError;
+  double? get redondeo => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_ES')
-  String get descriptionES => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_EN')
-  String? get descriptionEN => throw _privateConstructorUsedError;
+  String? get descripcionEN => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_FR')
-  String? get descriptionFR => throw _privateConstructorUsedError;
+  String? get descripcionFR => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_DE')
-  String? get descriptionDE => throw _privateConstructorUsedError;
+  String? get descripcionDE => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_CA')
-  String? get descriptionCA => throw _privateConstructorUsedError;
+  String? get descripcionCA => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_GB')
-  String? get descriptionGB => throw _privateConstructorUsedError;
+  String? get descripcionGB => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_HU')
-  String? get descriptionHU => throw _privateConstructorUsedError;
+  String? get descripcionHU => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_IT')
-  String? get descriptionIT => throw _privateConstructorUsedError;
+  String? get descripcionIT => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_NL')
-  String? get descriptionNL => throw _privateConstructorUsedError;
+  String? get descripcionNL => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descriptionPL => throw _privateConstructorUsedError;
+  String? get descripcionPL => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_PT')
-  String? get descriptionPT => throw _privateConstructorUsedError;
+  String? get descripcionPT => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_RO')
-  String? get descriptionRO => throw _privateConstructorUsedError;
+  String? get descripcionRO => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_RU')
-  String? get descriptionRU => throw _privateConstructorUsedError;
+  String? get descripcionRU => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_CN')
-  String? get descriptionCN => throw _privateConstructorUsedError;
+  String? get descripcionCN => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_EL')
-  String? get descriptionEL => throw _privateConstructorUsedError;
+  String? get descripcionEL => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -76,23 +76,23 @@ abstract class $DivisaDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'DIVISA_ID') String id,
       @JsonKey(name: 'ABREVIACION') String abv,
-      @JsonKey(name: 'SIMBOLO') String? symbol,
-      @JsonKey(name: 'REDONDEO') double? rounded,
-      @JsonKey(name: 'DESCRIPCION_ES') String descriptionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descriptionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descriptionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descriptionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descriptionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descriptionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descriptionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descriptionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') String? descriptionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') String? descriptionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') String? descriptionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') String? descriptionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') String? descriptionEL,
+      @JsonKey(name: 'SIMBOLO') String? simbolo,
+      @JsonKey(name: 'REDONDEO') double? redondeo,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -109,23 +109,23 @@ class _$DivisaDTOCopyWithImpl<$Res> implements $DivisaDTOCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? abv = freezed,
-    Object? symbol = freezed,
-    Object? rounded = freezed,
-    Object? descriptionES = freezed,
-    Object? descriptionEN = freezed,
-    Object? descriptionFR = freezed,
-    Object? descriptionDE = freezed,
-    Object? descriptionCA = freezed,
-    Object? descriptionGB = freezed,
-    Object? descriptionHU = freezed,
-    Object? descriptionIT = freezed,
-    Object? descriptionNL = freezed,
-    Object? descriptionPL = freezed,
-    Object? descriptionPT = freezed,
-    Object? descriptionRO = freezed,
-    Object? descriptionRU = freezed,
-    Object? descriptionCN = freezed,
-    Object? descriptionEL = freezed,
+    Object? simbolo = freezed,
+    Object? redondeo = freezed,
+    Object? descripcionES = freezed,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -138,73 +138,73 @@ class _$DivisaDTOCopyWithImpl<$Res> implements $DivisaDTOCopyWith<$Res> {
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as String,
-      symbol: symbol == freezed
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
+      simbolo: simbolo == freezed
+          ? _value.simbolo
+          : simbolo // ignore: cast_nullable_to_non_nullable
               as String?,
-      rounded: rounded == freezed
-          ? _value.rounded
-          : rounded // ignore: cast_nullable_to_non_nullable
+      redondeo: redondeo == freezed
+          ? _value.redondeo
+          : redondeo // ignore: cast_nullable_to_non_nullable
               as double?,
-      descriptionES: descriptionES == freezed
-          ? _value.descriptionES
-          : descriptionES // ignore: cast_nullable_to_non_nullable
+      descripcionES: descripcionES == freezed
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descriptionEN: descriptionEN == freezed
-          ? _value.descriptionEN
-          : descriptionEN // ignore: cast_nullable_to_non_nullable
+      descripcionEN: descripcionEN == freezed
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionFR: descriptionFR == freezed
-          ? _value.descriptionFR
-          : descriptionFR // ignore: cast_nullable_to_non_nullable
+      descripcionFR: descripcionFR == freezed
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionDE: descriptionDE == freezed
-          ? _value.descriptionDE
-          : descriptionDE // ignore: cast_nullable_to_non_nullable
+      descripcionDE: descripcionDE == freezed
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionCA: descriptionCA == freezed
-          ? _value.descriptionCA
-          : descriptionCA // ignore: cast_nullable_to_non_nullable
+      descripcionCA: descripcionCA == freezed
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionGB: descriptionGB == freezed
-          ? _value.descriptionGB
-          : descriptionGB // ignore: cast_nullable_to_non_nullable
+      descripcionGB: descripcionGB == freezed
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionHU: descriptionHU == freezed
-          ? _value.descriptionHU
-          : descriptionHU // ignore: cast_nullable_to_non_nullable
+      descripcionHU: descripcionHU == freezed
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionIT: descriptionIT == freezed
-          ? _value.descriptionIT
-          : descriptionIT // ignore: cast_nullable_to_non_nullable
+      descripcionIT: descripcionIT == freezed
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionNL: descriptionNL == freezed
-          ? _value.descriptionNL
-          : descriptionNL // ignore: cast_nullable_to_non_nullable
+      descripcionNL: descripcionNL == freezed
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionPL: descriptionPL == freezed
-          ? _value.descriptionPL
-          : descriptionPL // ignore: cast_nullable_to_non_nullable
+      descripcionPL: descripcionPL == freezed
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionPT: descriptionPT == freezed
-          ? _value.descriptionPT
-          : descriptionPT // ignore: cast_nullable_to_non_nullable
+      descripcionPT: descripcionPT == freezed
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionRO: descriptionRO == freezed
-          ? _value.descriptionRO
-          : descriptionRO // ignore: cast_nullable_to_non_nullable
+      descripcionRO: descripcionRO == freezed
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionRU: descriptionRU == freezed
-          ? _value.descriptionRU
-          : descriptionRU // ignore: cast_nullable_to_non_nullable
+      descripcionRU: descripcionRU == freezed
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionCN: descriptionCN == freezed
-          ? _value.descriptionCN
-          : descriptionCN // ignore: cast_nullable_to_non_nullable
+      descripcionCN: descripcionCN == freezed
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionEL: descriptionEL == freezed
-          ? _value.descriptionEL
-          : descriptionEL // ignore: cast_nullable_to_non_nullable
+      descripcionEL: descripcionEL == freezed
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
@@ -227,23 +227,23 @@ abstract class _$$_DivisaDTOCopyWith<$Res> implements $DivisaDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'DIVISA_ID') String id,
       @JsonKey(name: 'ABREVIACION') String abv,
-      @JsonKey(name: 'SIMBOLO') String? symbol,
-      @JsonKey(name: 'REDONDEO') double? rounded,
-      @JsonKey(name: 'DESCRIPCION_ES') String descriptionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descriptionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descriptionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descriptionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descriptionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descriptionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descriptionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descriptionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descriptionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') String? descriptionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') String? descriptionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') String? descriptionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') String? descriptionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') String? descriptionEL,
+      @JsonKey(name: 'SIMBOLO') String? simbolo,
+      @JsonKey(name: 'REDONDEO') double? redondeo,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -262,23 +262,23 @@ class __$$_DivisaDTOCopyWithImpl<$Res> extends _$DivisaDTOCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? abv = freezed,
-    Object? symbol = freezed,
-    Object? rounded = freezed,
-    Object? descriptionES = freezed,
-    Object? descriptionEN = freezed,
-    Object? descriptionFR = freezed,
-    Object? descriptionDE = freezed,
-    Object? descriptionCA = freezed,
-    Object? descriptionGB = freezed,
-    Object? descriptionHU = freezed,
-    Object? descriptionIT = freezed,
-    Object? descriptionNL = freezed,
-    Object? descriptionPL = freezed,
-    Object? descriptionPT = freezed,
-    Object? descriptionRO = freezed,
-    Object? descriptionRU = freezed,
-    Object? descriptionCN = freezed,
-    Object? descriptionEL = freezed,
+    Object? simbolo = freezed,
+    Object? redondeo = freezed,
+    Object? descripcionES = freezed,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -291,73 +291,73 @@ class __$$_DivisaDTOCopyWithImpl<$Res> extends _$DivisaDTOCopyWithImpl<$Res>
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as String,
-      symbol: symbol == freezed
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
+      simbolo: simbolo == freezed
+          ? _value.simbolo
+          : simbolo // ignore: cast_nullable_to_non_nullable
               as String?,
-      rounded: rounded == freezed
-          ? _value.rounded
-          : rounded // ignore: cast_nullable_to_non_nullable
+      redondeo: redondeo == freezed
+          ? _value.redondeo
+          : redondeo // ignore: cast_nullable_to_non_nullable
               as double?,
-      descriptionES: descriptionES == freezed
-          ? _value.descriptionES
-          : descriptionES // ignore: cast_nullable_to_non_nullable
+      descripcionES: descripcionES == freezed
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descriptionEN: descriptionEN == freezed
-          ? _value.descriptionEN
-          : descriptionEN // ignore: cast_nullable_to_non_nullable
+      descripcionEN: descripcionEN == freezed
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionFR: descriptionFR == freezed
-          ? _value.descriptionFR
-          : descriptionFR // ignore: cast_nullable_to_non_nullable
+      descripcionFR: descripcionFR == freezed
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionDE: descriptionDE == freezed
-          ? _value.descriptionDE
-          : descriptionDE // ignore: cast_nullable_to_non_nullable
+      descripcionDE: descripcionDE == freezed
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionCA: descriptionCA == freezed
-          ? _value.descriptionCA
-          : descriptionCA // ignore: cast_nullable_to_non_nullable
+      descripcionCA: descripcionCA == freezed
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionGB: descriptionGB == freezed
-          ? _value.descriptionGB
-          : descriptionGB // ignore: cast_nullable_to_non_nullable
+      descripcionGB: descripcionGB == freezed
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionHU: descriptionHU == freezed
-          ? _value.descriptionHU
-          : descriptionHU // ignore: cast_nullable_to_non_nullable
+      descripcionHU: descripcionHU == freezed
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionIT: descriptionIT == freezed
-          ? _value.descriptionIT
-          : descriptionIT // ignore: cast_nullable_to_non_nullable
+      descripcionIT: descripcionIT == freezed
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionNL: descriptionNL == freezed
-          ? _value.descriptionNL
-          : descriptionNL // ignore: cast_nullable_to_non_nullable
+      descripcionNL: descripcionNL == freezed
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionPL: descriptionPL == freezed
-          ? _value.descriptionPL
-          : descriptionPL // ignore: cast_nullable_to_non_nullable
+      descripcionPL: descripcionPL == freezed
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionPT: descriptionPT == freezed
-          ? _value.descriptionPT
-          : descriptionPT // ignore: cast_nullable_to_non_nullable
+      descripcionPT: descripcionPT == freezed
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionRO: descriptionRO == freezed
-          ? _value.descriptionRO
-          : descriptionRO // ignore: cast_nullable_to_non_nullable
+      descripcionRO: descripcionRO == freezed
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionRU: descriptionRU == freezed
-          ? _value.descriptionRU
-          : descriptionRU // ignore: cast_nullable_to_non_nullable
+      descripcionRU: descripcionRU == freezed
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionCN: descriptionCN == freezed
-          ? _value.descriptionCN
-          : descriptionCN // ignore: cast_nullable_to_non_nullable
+      descripcionCN: descripcionCN == freezed
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descriptionEL: descriptionEL == freezed
-          ? _value.descriptionEL
-          : descriptionEL // ignore: cast_nullable_to_non_nullable
+      descripcionEL: descripcionEL == freezed
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
@@ -377,23 +377,23 @@ class _$_DivisaDTO extends _DivisaDTO {
   const _$_DivisaDTO(
       {@JsonKey(name: 'DIVISA_ID') required this.id,
       @JsonKey(name: 'ABREVIACION') required this.abv,
-      @JsonKey(name: 'SIMBOLO') this.symbol,
-      @JsonKey(name: 'REDONDEO') this.rounded,
-      @JsonKey(name: 'DESCRIPCION_ES') required this.descriptionES,
-      @JsonKey(name: 'DESCRIPCION_EN') this.descriptionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') this.descriptionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') this.descriptionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') this.descriptionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') this.descriptionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') this.descriptionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') this.descriptionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') this.descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') this.descriptionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') this.descriptionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') this.descriptionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') this.descriptionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') this.descriptionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') this.descriptionEL,
+      @JsonKey(name: 'SIMBOLO') this.simbolo,
+      @JsonKey(name: 'REDONDEO') this.redondeo,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -409,55 +409,55 @@ class _$_DivisaDTO extends _DivisaDTO {
   final String abv;
   @override
   @JsonKey(name: 'SIMBOLO')
-  final String? symbol;
+  final String? simbolo;
   @override
   @JsonKey(name: 'REDONDEO')
-  final double? rounded;
+  final double? redondeo;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  final String descriptionES;
+  final String descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
-  final String? descriptionEN;
+  final String? descripcionEN;
   @override
   @JsonKey(name: 'DESCRIPCION_FR')
-  final String? descriptionFR;
+  final String? descripcionFR;
   @override
   @JsonKey(name: 'DESCRIPCION_DE')
-  final String? descriptionDE;
+  final String? descripcionDE;
   @override
   @JsonKey(name: 'DESCRIPCION_CA')
-  final String? descriptionCA;
+  final String? descripcionCA;
   @override
   @JsonKey(name: 'DESCRIPCION_GB')
-  final String? descriptionGB;
+  final String? descripcionGB;
   @override
   @JsonKey(name: 'DESCRIPCION_HU')
-  final String? descriptionHU;
+  final String? descripcionHU;
   @override
   @JsonKey(name: 'DESCRIPCION_IT')
-  final String? descriptionIT;
+  final String? descripcionIT;
   @override
   @JsonKey(name: 'DESCRIPCION_NL')
-  final String? descriptionNL;
+  final String? descripcionNL;
   @override
   @JsonKey(name: 'DESCRIPCION_PL')
-  final String? descriptionPL;
+  final String? descripcionPL;
   @override
   @JsonKey(name: 'DESCRIPCION_PT')
-  final String? descriptionPT;
+  final String? descripcionPT;
   @override
   @JsonKey(name: 'DESCRIPCION_RO')
-  final String? descriptionRO;
+  final String? descripcionRO;
   @override
   @JsonKey(name: 'DESCRIPCION_RU')
-  final String? descriptionRU;
+  final String? descripcionRU;
   @override
   @JsonKey(name: 'DESCRIPCION_CN')
-  final String? descriptionCN;
+  final String? descripcionCN;
   @override
   @JsonKey(name: 'DESCRIPCION_EL')
-  final String? descriptionEL;
+  final String? descripcionEL;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -467,7 +467,7 @@ class _$_DivisaDTO extends _DivisaDTO {
 
   @override
   String toString() {
-    return 'DivisaDTO(id: $id, abv: $abv, symbol: $symbol, rounded: $rounded, descriptionES: $descriptionES, descriptionEN: $descriptionEN, descriptionFR: $descriptionFR, descriptionDE: $descriptionDE, descriptionCA: $descriptionCA, descriptionGB: $descriptionGB, descriptionHU: $descriptionHU, descriptionIT: $descriptionIT, descriptionNL: $descriptionNL, descriptionPL: $descriptionPL, descriptionPT: $descriptionPT, descriptionRO: $descriptionRO, descriptionRU: $descriptionRU, descriptionCN: $descriptionCN, descriptionEL: $descriptionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'DivisaDTO(id: $id, abv: $abv, simbolo: $simbolo, redondeo: $redondeo, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -477,38 +477,38 @@ class _$_DivisaDTO extends _DivisaDTO {
             other is _$_DivisaDTO &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.abv, abv) &&
-            const DeepCollectionEquality().equals(other.symbol, symbol) &&
-            const DeepCollectionEquality().equals(other.rounded, rounded) &&
+            const DeepCollectionEquality().equals(other.simbolo, simbolo) &&
+            const DeepCollectionEquality().equals(other.redondeo, redondeo) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionES, descriptionES) &&
+                .equals(other.descripcionES, descripcionES) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionEN, descriptionEN) &&
+                .equals(other.descripcionEN, descripcionEN) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionFR, descriptionFR) &&
+                .equals(other.descripcionFR, descripcionFR) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionDE, descriptionDE) &&
+                .equals(other.descripcionDE, descripcionDE) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionCA, descriptionCA) &&
+                .equals(other.descripcionCA, descripcionCA) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionGB, descriptionGB) &&
+                .equals(other.descripcionGB, descripcionGB) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionHU, descriptionHU) &&
+                .equals(other.descripcionHU, descripcionHU) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionIT, descriptionIT) &&
+                .equals(other.descripcionIT, descripcionIT) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionNL, descriptionNL) &&
+                .equals(other.descripcionNL, descripcionNL) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionPL, descriptionPL) &&
+                .equals(other.descripcionPL, descripcionPL) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionPT, descriptionPT) &&
+                .equals(other.descripcionPT, descripcionPT) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionRO, descriptionRO) &&
+                .equals(other.descripcionRO, descripcionRO) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionRU, descriptionRU) &&
+                .equals(other.descripcionRU, descripcionRU) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionCN, descriptionCN) &&
+                .equals(other.descripcionCN, descripcionCN) &&
             const DeepCollectionEquality()
-                .equals(other.descriptionEL, descriptionEL) &&
+                .equals(other.descripcionEL, descripcionEL) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
@@ -520,23 +520,23 @@ class _$_DivisaDTO extends _DivisaDTO {
         runtimeType,
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(abv),
-        const DeepCollectionEquality().hash(symbol),
-        const DeepCollectionEquality().hash(rounded),
-        const DeepCollectionEquality().hash(descriptionES),
-        const DeepCollectionEquality().hash(descriptionEN),
-        const DeepCollectionEquality().hash(descriptionFR),
-        const DeepCollectionEquality().hash(descriptionDE),
-        const DeepCollectionEquality().hash(descriptionCA),
-        const DeepCollectionEquality().hash(descriptionGB),
-        const DeepCollectionEquality().hash(descriptionHU),
-        const DeepCollectionEquality().hash(descriptionIT),
-        const DeepCollectionEquality().hash(descriptionNL),
-        const DeepCollectionEquality().hash(descriptionPL),
-        const DeepCollectionEquality().hash(descriptionPT),
-        const DeepCollectionEquality().hash(descriptionRO),
-        const DeepCollectionEquality().hash(descriptionRU),
-        const DeepCollectionEquality().hash(descriptionCN),
-        const DeepCollectionEquality().hash(descriptionEL),
+        const DeepCollectionEquality().hash(simbolo),
+        const DeepCollectionEquality().hash(redondeo),
+        const DeepCollectionEquality().hash(descripcionES),
+        const DeepCollectionEquality().hash(descripcionEN),
+        const DeepCollectionEquality().hash(descripcionFR),
+        const DeepCollectionEquality().hash(descripcionDE),
+        const DeepCollectionEquality().hash(descripcionCA),
+        const DeepCollectionEquality().hash(descripcionGB),
+        const DeepCollectionEquality().hash(descripcionHU),
+        const DeepCollectionEquality().hash(descripcionIT),
+        const DeepCollectionEquality().hash(descripcionNL),
+        const DeepCollectionEquality().hash(descripcionPL),
+        const DeepCollectionEquality().hash(descripcionPT),
+        const DeepCollectionEquality().hash(descripcionRO),
+        const DeepCollectionEquality().hash(descripcionRU),
+        const DeepCollectionEquality().hash(descripcionCN),
+        const DeepCollectionEquality().hash(descripcionEL),
         const DeepCollectionEquality().hash(lastUpdated),
         const DeepCollectionEquality().hash(deleted)
       ]);
@@ -558,23 +558,23 @@ abstract class _DivisaDTO extends DivisaDTO {
   const factory _DivisaDTO(
       {@JsonKey(name: 'DIVISA_ID') required final String id,
       @JsonKey(name: 'ABREVIACION') required final String abv,
-      @JsonKey(name: 'SIMBOLO') final String? symbol,
-      @JsonKey(name: 'REDONDEO') final double? rounded,
-      @JsonKey(name: 'DESCRIPCION_ES') required final String descriptionES,
-      @JsonKey(name: 'DESCRIPCION_EN') final String? descriptionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') final String? descriptionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') final String? descriptionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') final String? descriptionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') final String? descriptionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') final String? descriptionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') final String? descriptionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') final String? descriptionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') final String? descriptionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') final String? descriptionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') final String? descriptionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') final String? descriptionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') final String? descriptionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') final String? descriptionEL,
+      @JsonKey(name: 'SIMBOLO') final String? simbolo,
+      @JsonKey(name: 'REDONDEO') final double? redondeo,
+      @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
+      @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
+      @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
+      @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
+      @JsonKey(name: 'DESCRIPCION_CA') final String? descripcionCA,
+      @JsonKey(name: 'DESCRIPCION_GB') final String? descripcionGB,
+      @JsonKey(name: 'DESCRIPCION_HU') final String? descripcionHU,
+      @JsonKey(name: 'DESCRIPCION_IT') final String? descripcionIT,
+      @JsonKey(name: 'DESCRIPCION_NL') final String? descripcionNL,
+      @JsonKey(name: 'DESCRIPCION_PL') final String? descripcionPL,
+      @JsonKey(name: 'DESCRIPCION_PT') final String? descripcionPT,
+      @JsonKey(name: 'DESCRIPCION_RO') final String? descripcionRO,
+      @JsonKey(name: 'DESCRIPCION_RU') final String? descripcionRU,
+      @JsonKey(name: 'DESCRIPCION_CN') final String? descripcionCN,
+      @JsonKey(name: 'DESCRIPCION_EL') final String? descripcionEL,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$_DivisaDTO;
   const _DivisaDTO._() : super._();
@@ -590,55 +590,55 @@ abstract class _DivisaDTO extends DivisaDTO {
   String get abv;
   @override
   @JsonKey(name: 'SIMBOLO')
-  String? get symbol;
+  String? get simbolo;
   @override
   @JsonKey(name: 'REDONDEO')
-  double? get rounded;
+  double? get redondeo;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  String get descriptionES;
+  String get descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
-  String? get descriptionEN;
+  String? get descripcionEN;
   @override
   @JsonKey(name: 'DESCRIPCION_FR')
-  String? get descriptionFR;
+  String? get descripcionFR;
   @override
   @JsonKey(name: 'DESCRIPCION_DE')
-  String? get descriptionDE;
+  String? get descripcionDE;
   @override
   @JsonKey(name: 'DESCRIPCION_CA')
-  String? get descriptionCA;
+  String? get descripcionCA;
   @override
   @JsonKey(name: 'DESCRIPCION_GB')
-  String? get descriptionGB;
+  String? get descripcionGB;
   @override
   @JsonKey(name: 'DESCRIPCION_HU')
-  String? get descriptionHU;
+  String? get descripcionHU;
   @override
   @JsonKey(name: 'DESCRIPCION_IT')
-  String? get descriptionIT;
+  String? get descripcionIT;
   @override
   @JsonKey(name: 'DESCRIPCION_NL')
-  String? get descriptionNL;
+  String? get descripcionNL;
   @override
   @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descriptionPL;
+  String? get descripcionPL;
   @override
   @JsonKey(name: 'DESCRIPCION_PT')
-  String? get descriptionPT;
+  String? get descripcionPT;
   @override
   @JsonKey(name: 'DESCRIPCION_RO')
-  String? get descriptionRO;
+  String? get descripcionRO;
   @override
   @JsonKey(name: 'DESCRIPCION_RU')
-  String? get descriptionRU;
+  String? get descripcionRU;
   @override
   @JsonKey(name: 'DESCRIPCION_CN')
-  String? get descriptionCN;
+  String? get descripcionCN;
   @override
   @JsonKey(name: 'DESCRIPCION_EL')
-  String? get descriptionEL;
+  String? get descripcionEL;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

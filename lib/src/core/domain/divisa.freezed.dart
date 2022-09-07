@@ -18,9 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Divisa {
   String get id => throw _privateConstructorUsedError;
   String get abv => throw _privateConstructorUsedError;
-  String? get symbol => throw _privateConstructorUsedError;
-  double? get rounded => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get simbolo => throw _privateConstructorUsedError;
+  double? get redondeo => throw _privateConstructorUsedError;
+  String get descripcion => throw _privateConstructorUsedError;
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -35,9 +35,9 @@ abstract class $DivisaCopyWith<$Res> {
   $Res call(
       {String id,
       String abv,
-      String? symbol,
-      double? rounded,
-      String description,
+      String? simbolo,
+      double? redondeo,
+      String descripcion,
       DateTime lastUpdate,
       bool deleted});
 }
@@ -54,9 +54,9 @@ class _$DivisaCopyWithImpl<$Res> implements $DivisaCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? abv = freezed,
-    Object? symbol = freezed,
-    Object? rounded = freezed,
-    Object? description = freezed,
+    Object? simbolo = freezed,
+    Object? redondeo = freezed,
+    Object? descripcion = freezed,
     Object? lastUpdate = freezed,
     Object? deleted = freezed,
   }) {
@@ -69,17 +69,17 @@ class _$DivisaCopyWithImpl<$Res> implements $DivisaCopyWith<$Res> {
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as String,
-      symbol: symbol == freezed
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
+      simbolo: simbolo == freezed
+          ? _value.simbolo
+          : simbolo // ignore: cast_nullable_to_non_nullable
               as String?,
-      rounded: rounded == freezed
-          ? _value.rounded
-          : rounded // ignore: cast_nullable_to_non_nullable
+      redondeo: redondeo == freezed
+          ? _value.redondeo
+          : redondeo // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      descripcion: descripcion == freezed
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
       lastUpdate: lastUpdate == freezed
           ? _value.lastUpdate
@@ -101,9 +101,9 @@ abstract class _$$_DivisaCopyWith<$Res> implements $DivisaCopyWith<$Res> {
   $Res call(
       {String id,
       String abv,
-      String? symbol,
-      double? rounded,
-      String description,
+      String? simbolo,
+      double? redondeo,
+      String descripcion,
       DateTime lastUpdate,
       bool deleted});
 }
@@ -121,9 +121,9 @@ class __$$_DivisaCopyWithImpl<$Res> extends _$DivisaCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? abv = freezed,
-    Object? symbol = freezed,
-    Object? rounded = freezed,
-    Object? description = freezed,
+    Object? simbolo = freezed,
+    Object? redondeo = freezed,
+    Object? descripcion = freezed,
     Object? lastUpdate = freezed,
     Object? deleted = freezed,
   }) {
@@ -136,17 +136,17 @@ class __$$_DivisaCopyWithImpl<$Res> extends _$DivisaCopyWithImpl<$Res>
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as String,
-      symbol: symbol == freezed
-          ? _value.symbol
-          : symbol // ignore: cast_nullable_to_non_nullable
+      simbolo: simbolo == freezed
+          ? _value.simbolo
+          : simbolo // ignore: cast_nullable_to_non_nullable
               as String?,
-      rounded: rounded == freezed
-          ? _value.rounded
-          : rounded // ignore: cast_nullable_to_non_nullable
+      redondeo: redondeo == freezed
+          ? _value.redondeo
+          : redondeo // ignore: cast_nullable_to_non_nullable
               as double?,
-      description: description == freezed
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      descripcion: descripcion == freezed
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
       lastUpdate: lastUpdate == freezed
           ? _value.lastUpdate
@@ -166,9 +166,9 @@ class _$_Divisa extends _Divisa {
   const _$_Divisa(
       {required this.id,
       required this.abv,
-      required this.symbol,
-      required this.rounded,
-      required this.description,
+      required this.simbolo,
+      required this.redondeo,
+      required this.descripcion,
       required this.lastUpdate,
       required this.deleted})
       : super._();
@@ -178,11 +178,11 @@ class _$_Divisa extends _Divisa {
   @override
   final String abv;
   @override
-  final String? symbol;
+  final String? simbolo;
   @override
-  final double? rounded;
+  final double? redondeo;
   @override
-  final String description;
+  final String descripcion;
   @override
   final DateTime lastUpdate;
   @override
@@ -190,7 +190,7 @@ class _$_Divisa extends _Divisa {
 
   @override
   String toString() {
-    return 'Divisa(id: $id, abv: $abv, symbol: $symbol, rounded: $rounded, description: $description, lastUpdate: $lastUpdate, deleted: $deleted)';
+    return 'Divisa(id: $id, abv: $abv, simbolo: $simbolo, redondeo: $redondeo, descripcion: $descripcion, lastUpdate: $lastUpdate, deleted: $deleted)';
   }
 
   @override
@@ -200,10 +200,10 @@ class _$_Divisa extends _Divisa {
             other is _$_Divisa &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.abv, abv) &&
-            const DeepCollectionEquality().equals(other.symbol, symbol) &&
-            const DeepCollectionEquality().equals(other.rounded, rounded) &&
+            const DeepCollectionEquality().equals(other.simbolo, simbolo) &&
+            const DeepCollectionEquality().equals(other.redondeo, redondeo) &&
             const DeepCollectionEquality()
-                .equals(other.description, description) &&
+                .equals(other.descripcion, descripcion) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdate, lastUpdate) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
@@ -214,9 +214,9 @@ class _$_Divisa extends _Divisa {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(abv),
-      const DeepCollectionEquality().hash(symbol),
-      const DeepCollectionEquality().hash(rounded),
-      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(simbolo),
+      const DeepCollectionEquality().hash(redondeo),
+      const DeepCollectionEquality().hash(descripcion),
       const DeepCollectionEquality().hash(lastUpdate),
       const DeepCollectionEquality().hash(deleted));
 
@@ -230,9 +230,9 @@ abstract class _Divisa extends Divisa {
   const factory _Divisa(
       {required final String id,
       required final String abv,
-      required final String? symbol,
-      required final double? rounded,
-      required final String description,
+      required final String? simbolo,
+      required final double? redondeo,
+      required final String descripcion,
       required final DateTime lastUpdate,
       required final bool deleted}) = _$_Divisa;
   const _Divisa._() : super._();
@@ -242,11 +242,11 @@ abstract class _Divisa extends Divisa {
   @override
   String get abv;
   @override
-  String? get symbol;
+  String? get simbolo;
   @override
-  double? get rounded;
+  double? get redondeo;
   @override
-  String get description;
+  String get descripcion;
   @override
   DateTime get lastUpdate;
   @override

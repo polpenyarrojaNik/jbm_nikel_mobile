@@ -14,17 +14,17 @@ class AppException with _$AppException {
   const factory AppException.syncFailure(
       String tableToSync, String errorMessage) = SyncFailure;
 
-  // Customer
-  const factory AppException.customerNotFound() = CustomerNotFoundFailure;
+  // Cliente
+  const factory AppException.clienteNotFound() = ClienteNotFoundFailure;
 
-  //Article
-  const factory AppException.articleNotFound() = ArticleNotFoundFailure;
+  //Articulo
+  const factory AppException.articuloNotFound() = ArticuloNotFoundFailure;
 
-  //SalesOrder
-  const factory AppException.salesOrderNotFound() = SalesOrderNotFoundFailure;
+  //PedidoVenta
+  const factory AppException.pedidoVentaNotFound() = PedidoVentaNotFoundFailure;
 
-  const factory AppException.salesOrderDeleteFailure(String errorMessage) =
-      SalesOrderDeleteFailure;
+  const factory AppException.pedidoVentaDeleteFailure(String errorMessage) =
+      PedidoVentaDeleteFailure;
 }
 
 class AppExceptionData {
@@ -37,7 +37,7 @@ class AppExceptionData {
   String toString() => 'AppExceptionData(code: $code, message: $message';
 }
 
-extension AppExceptionDetails on AppException {
+extension AppExceptionDetalles on AppException {
   AppExceptionData get details {
     return when(
       restApiFailure: (errorCode, errorMessage) => AppExceptionData(
@@ -52,21 +52,21 @@ extension AppExceptionDetails on AppException {
         'sync-failure',
         'Error to sync data in $tableToSync: $errorMessage',
       ),
-      customerNotFound: () => AppExceptionData(
-        'customer-not-found',
-        'Customer not found',
+      clienteNotFound: () => AppExceptionData(
+        'cliente-not-found',
+        'Cliente not found',
       ),
-      articleNotFound: () => AppExceptionData(
-        'article-not-found',
-        'Article not found',
+      articuloNotFound: () => AppExceptionData(
+        'articulo-not-found',
+        'Articulo not found',
       ),
-      salesOrderNotFound: () => AppExceptionData(
+      pedidoVentaNotFound: () => AppExceptionData(
         'sales-order-not-found',
-        'Sales order not found',
+        'Ventas order not found',
       ),
-      salesOrderDeleteFailure: (errorMessage) => AppExceptionData(
+      pedidoVentaDeleteFailure: (errorMessage) => AppExceptionData(
         'sales-order-delete-failure',
-        'Error deleting Sales order $errorMessage',
+        'Error deleting Ventas order $errorMessage',
       ),
     );
   }

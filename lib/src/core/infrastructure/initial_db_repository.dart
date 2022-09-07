@@ -30,16 +30,16 @@ class InitalDBRepository {
       final Directory directory = await getApplicationDocumentsDirectory();
 
       if (!await _databaseFileExist(directory: directory)) {
-        final initailSyncDateString = await _getRemoteInitialDbDate(
+        final initailSyncUTCDateString = await _getRemoteInitialDbDate(
           requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'localhost:3001'),
+            dotenv.get('URL', fallback: 'localhost:3001'),
             '/api/v1/sync/init-db-date',
           ),
         );
 
         final data = await _getRemoteInitialDb(
           requestUri: Uri.http(
-            dotenv.get('URL_HOME', fallback: 'loclahost:3001'),
+            dotenv.get('URL', fallback: 'loclahost:3001'),
             '/api/v1/sync/init-db',
           ),
         );
@@ -47,7 +47,8 @@ class InitalDBRepository {
         await _createDbFile(directory: directory, data: data);
 
         await db.addInitialSyncDate(
-            initialSyncDateString: initailSyncDateString);
+            initailSyncUTCDateString:
+                initailSyncUTCDateString.toIso8601String());
       }
     } on AppException catch (e) {
       log.severe(e.details);
@@ -83,7 +84,7 @@ class InitalDBRepository {
         throw AppException.restApiFailure(
           e.response?.statusCode ?? 400,
           (e.response?.data is Map)
-              ? e.response?.data['detail'] ?? e.response?.data['message']
+              ? e.response?.data['detalle'] ?? e.response?.data['message']
               : e.response?.statusMessage,
         );
       } else {
@@ -94,7 +95,7 @@ class InitalDBRepository {
     }
   }
 
-  Future<String> _getRemoteInitialDbDate({required Uri requestUri}) async {
+  Future<DateTime> _getRemoteInitialDbDate({required Uri requestUri}) async {
     try {
       log.info('${(this).runtimeType}.getPage - Get Uri: $requestUri');
       final response = await dio.getUri(requestUri);
@@ -103,7 +104,12 @@ class InitalDBRepository {
       log.info(
           '${(this).runtimeType}.getPage - ETag: ${response.headers.map['ETag']}');
       if (response.statusCode == 200) {
-        return response.data['data'] as String;
+        final dateStr = response.data['data'] as String;
+        print('DateStr: $dateStr');
+        final date = DateTime.parse(dateStr);
+        print('Date: $dateStr');
+
+        return date;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.toString());
@@ -113,7 +119,7 @@ class InitalDBRepository {
         throw AppException.restApiFailure(
           e.response?.statusCode ?? 400,
           (e.response?.data is Map)
-              ? e.response?.data['detail'] ?? e.response?.data['message']
+              ? e.response?.data['detalle'] ?? e.response?.data['message']
               : e.response?.statusMessage,
         );
       } else {

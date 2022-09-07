@@ -1,0 +1,95 @@
+import 'package:drift/drift.dart' hide JsonKey;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+
+import '../domain/pedido_venta_linea.dart';
+
+part 'pedido_venta_linea_dto.freezed.dart';
+part 'pedido_venta_linea_dto.g.dart';
+
+// ignore_for_file: invalid_annotation_target
+@freezed
+class PedidoVentaLineaDTO
+    with _$PedidoVentaLineaDTO
+    implements Insertable<PedidoVentaLineaDTO> {
+  const PedidoVentaLineaDTO._();
+  const factory PedidoVentaLineaDTO({
+    @JsonKey(name: 'EMPRESA_ID') required String empresaId,
+    @JsonKey(name: 'PEDIDO_ID') required String pedidoVentaId,
+    @JsonKey(name: 'PEDIDO_LINEA_ID') required String id,
+    @JsonKey(name: 'ARTICULO_ID') required String articuloId,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION') String? articuloDescription,
+    @JsonKey(name: 'CANTIDAD') required double cantidad,
+    @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
+    @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+    @JsonKey(name: 'DESCUENTO1') required double descuento1,
+    @JsonKey(name: 'DESCUENTO2') required double descuento2,
+    @JsonKey(name: 'DESCUENTO3') required double descuento3,
+    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'DELETED') required String deleted,
+  }) = _PedidoVentaLineaDTO;
+
+  factory PedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
+      _$PedidoVentaLineaDTOFromJson(json);
+
+  PedidoVentaLinea toDomain() {
+    return PedidoVentaLinea(
+        empresaId: empresaId,
+        pedidoVentaId: pedidoVentaId,
+        id: id,
+        articuloId: articuloId,
+        articuloDescription: articuloDescription,
+        cantidad: cantidad,
+        precioDivisa: precioDivisa,
+        tipoPrecio: tipoPrecio,
+        descuento1: descuento1,
+        descuento2: descuento2,
+        descuento3: descuento3,
+        lastUpdated: lastUpdated,
+        deleted: (deleted == 'S') ? true : false);
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    return PedidoVentaLineaTableCompanion(
+      empresaId: Value(empresaId),
+      pedidoVentaId: Value(pedidoVentaId),
+      id: Value(id),
+      articuloId: Value(articuloId),
+      articuloDescription: Value(articuloDescription),
+      cantidad: Value(cantidad),
+      precioDivisa: Value(precioDivisa),
+      tipoPrecio: Value(tipoPrecio),
+      descuento1: Value(descuento1),
+      descuento2: Value(descuento2),
+      descuento3: Value(descuento3),
+      lastUpdated: Value(lastUpdated),
+      deleted: Value(deleted),
+    ).toColumns(nullToAbsent);
+  }
+}
+
+@UseRowClass(PedidoVentaLineaDTO)
+class PedidoVentaLineaTable extends Table {
+  TextColumn get empresaId => text().named('EMPRESA_ID')();
+  TextColumn get pedidoVentaId => text().named('PEDIDO_ID')();
+  TextColumn get id => text().named('PEDIDO_LINEA_ID')();
+  TextColumn get articuloId => text().named('ARTICULO_ID')();
+  TextColumn get articuloDescription =>
+      text().nullable().named('ARTICULO_DESCRIPCION')();
+  RealColumn get cantidad => real().named('CANTIDAD')();
+  RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
+  RealColumn get tipoPrecio => real().nullable().named('TIPO_PRECIO')();
+  RealColumn get descuento1 => real().named('DESCUENTO1')();
+  RealColumn get descuento2 => real().named('DESCUENTO2')();
+  RealColumn get descuento3 => real().named('DESCUENTO3')();
+  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get deleted =>
+      text().withDefault(const Constant('N')).named('DELETED')();
+
+  @override
+  Set<Column> get primaryKey => {pedidoVentaId, empresaId, id};
+
+  @override
+  String get tableName => 'PEDIDOS_LINEAS';
+}

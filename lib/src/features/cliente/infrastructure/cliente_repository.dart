@@ -1,0 +1,339 @@
+import 'package:dio/dio.dart';
+import 'package:drift/drift.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
+
+import '../../../core/exceptions/app_exception.dart';
+import '../../auth/infrastructure/auth_repository.dart';
+import '../domain/cliente.dart';
+import '../domain/cliente_adjunto.dart';
+import '../domain/cliente_direccion.dart';
+import '../domain/cliente_contacto.dart';
+import '../domain/cliente_descuento.dart';
+
+import '../domain/cliente_grupo_neto.dart';
+import '../domain/cliente_pago_pendiente.dart';
+import '../domain/cliente_precio_neto.dart';
+import '../domain/cliente_rappel.dart';
+
+final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>(
+  // * Override this in the main method
+  (ref) => throw UnimplementedError(),
+);
+
+final clienteListaStreamProvider =
+    StreamProvider.autoDispose.family<List<Cliente>, int>((ref, page) async* {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final usuario = await authRepository.getSignedInUsuario();
+  yield* clienteRepository.watchClienteLista(
+      usuarioId: usuario!.id, page: page);
+});
+
+final clienteProvider =
+    FutureProvider.autoDispose.family<Cliente, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClienteById(clienteId: clienteId);
+});
+
+final clienteDireccionStreamProvider = StreamProvider.autoDispose
+    .family<List<ClienteDireccion>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClienteDireccionById(clienteId: clienteId);
+});
+
+final clienteContactoProvider = FutureProvider.autoDispose
+    .family<List<ClienteContacto>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClienteContactoById(clienteId: clienteId);
+});
+
+final clienteDescuentoProvider = FutureProvider.autoDispose
+    .family<List<ClienteDescuento>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClienteDescuentoById(clienteId: clienteId);
+});
+
+final clienteGrupoNetoProvider = FutureProvider.autoDispose
+    .family<List<ClienteGrupoNeto>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClienteGrupoNetoById(clienteId: clienteId);
+});
+
+final clientePrecioNetoProvider = FutureProvider.autoDispose
+    .family<List<ClientePrecioNeto>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClientePrecioNetoById(clienteId: clienteId);
+});
+
+final clientePendientePagoProvider = FutureProvider.autoDispose
+    .family<List<ClientePagoPendiente>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClientePagoPendienteById(clienteId: clienteId);
+});
+
+final clienteRappelProvider = FutureProvider.autoDispose
+    .family<List<ClienteRappel>, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getClienteRappelById(clienteId: clienteId);
+});
+
+final clienteAdjuntoProvider = FutureProvider.autoDispose
+    .family<List<ClienteAdjunto>, String>((ref, clienteId) async {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  final authRepository = ref.watch(authRepositoryProvider);
+  final usuario = await authRepository.getSignedInUsuario();
+  return clienteRepository.getClienteAdjuntoById(
+      clienteId: clienteId, provisionalToken: usuario!.provisionalToken);
+});
+
+final clienteUltimaSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getFechaUltimaSyncCliente();
+});
+
+final clientePendientePagoUltimaSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getFechaUltimaSyncClientePagoPendiente();
+});
+
+final clienteArticuloTopUltimaSyncProvider =
+    FutureProvider.autoDispose<DateTime>((ref) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getFechaUltimaSyncArticulosTop();
+});
+
+const pageSize = 100;
+
+class ClienteRepository {
+  AppDatabase db;
+  Dio dio;
+
+  ClienteRepository(this.db, this.dio);
+
+  Stream<List<Cliente>> watchClienteLista(
+      {required String usuarioId, required int page}) {
+    final query = db.select(db.clienteTable).join([
+      innerJoin(db.clienteUsuarioTable,
+          db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id)),
+      innerJoin(db.paisTable,
+          db.paisTable.id.equalsExp(db.clienteTable.paisFiscalId)),
+      innerJoin(db.divisaTable,
+          db.divisaTable.id.equalsExp(db.clienteTable.divisaId)),
+      innerJoin(db.metodoDeCobroTable,
+          db.metodoDeCobroTable.id.equalsExp(db.clienteTable.metodoDeCobroId)),
+      innerJoin(db.plazoDeCobroTable,
+          db.plazoDeCobroTable.id.equalsExp(db.clienteTable.plazoDeCobroId))
+    ]);
+
+    query.where(db.clienteTable.deleted.equals('N') &
+        db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+    query.orderBy([
+      OrderingTerm.asc(db.clienteTable.nombreCliente),
+      OrderingTerm.asc(db.clienteTable.id)
+    ]);
+
+    return query.asyncMap((row) async {
+      final clienteDTO = row.readTable(db.clienteTable);
+      final paisDTO = row.readTableOrNull(db.paisTable);
+      final divisaDTO = row.readTableOrNull(db.divisaTable);
+      final metodoDeCobroDTO = row.readTableOrNull(db.metodoDeCobroTable);
+      final plazoDeCobroDTO = row.readTableOrNull(db.plazoDeCobroTable);
+
+      return clienteDTO.toDomain(
+        paisFiscal: paisDTO?.toDomain(),
+        divisa: divisaDTO?.toDomain(),
+        metodoDeCobro: metodoDeCobroDTO?.toDomain(),
+        plazoDeCobro: plazoDeCobroDTO?.toDomain(),
+      );
+    }).watch();
+  }
+
+  Future<Cliente> getClienteById({required String clienteId}) async {
+    final query =
+        (db.select(db.clienteTable)..where((t) => t.id.equals(clienteId)));
+
+    return query.asyncMap((row) async {
+      final paisDTO = await (db.select(db.paisTable)
+            ..where((t) => t.id.equals(row.paisFiscalId ?? '')))
+          .getSingleOrNull();
+      final divisaDTO = await (db.select(db.divisaTable)
+            ..where((t) => t.id.equals(row.divisaId ?? '')))
+          .getSingleOrNull();
+      final metodoDeCobroDTO = await (db.select(db.metodoDeCobroTable)
+            ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
+          .getSingleOrNull();
+      final plazoDeCobroDTO = await (db.select(db.plazoDeCobroTable)
+            ..where((t) => t.id.equals(row.plazoDeCobroId ?? '')))
+          .getSingleOrNull();
+      return row.toDomain(
+        paisFiscal: paisDTO?.toDomain(),
+        divisa: divisaDTO?.toDomain(),
+        metodoDeCobro: metodoDeCobroDTO?.toDomain(),
+        plazoDeCobro: plazoDeCobroDTO?.toDomain(),
+      );
+    }).getSingle();
+  }
+
+  Stream<List<ClienteDireccion>> getClienteDireccionById(
+      {required String clienteId}) {
+    final query = (db.select(db.clienteDireccionTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.asyncMap((row) async {
+      final paisDTO = await (db.select(db.paisTable)
+            ..where((t) => t.id.equals(row.paisId ?? '')))
+          .getSingleOrNull();
+      return row.toDomain(
+        pais: paisDTO?.toDomain(),
+      );
+    }).watch();
+  }
+
+  Future<List<ClienteContacto>> getClienteContactoById(
+      {required String clienteId}) {
+    final query = (db.select(db.clienteContactoTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.map((row) {
+      return row.toDomain();
+    }).get();
+  }
+
+  Future<List<ClienteDescuento>> getClienteDescuentoById(
+      {required String clienteId}) {
+    final query = (db.select(db.clienteDescuentoTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.asyncMap((row) async {
+      final familiaDTO = await (db.select(db.familiaTable)
+            ..where((t) => t.id.equals(row.familiaId)))
+          .getSingle();
+      final subfamiliaDTO = await (db.select(db.subfamiliaTable)
+            ..where((t) => t.id.equals(row.subfamiliaId)))
+          .getSingle();
+      return row.toDomain(
+          familia: familiaDTO.toDomain(), subfamilia: subfamiliaDTO.toDomain());
+    }).get();
+  }
+
+  Future<List<ClientePrecioNeto>> getClientePrecioNetoById(
+      {required String clienteId}) {
+    final query = (db.select(db.clientePrecioNetoTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.map((row) {
+      return row.toDomain();
+    }).get();
+  }
+
+  Future<List<ClienteGrupoNeto>> getClienteGrupoNetoById(
+      {required String clienteId}) {
+    final query = (db.select(db.clienteGrupoNetoTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.map((row) {
+      return row.toDomain();
+    }).get();
+  }
+
+  Future<List<ClienteRappel>> getClienteRappelById(
+      {required String clienteId}) {
+    final query = (db.select(db.clienteRappelTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.map((row) {
+      return row.toDomain();
+    }).get();
+  }
+
+  Future<List<ClientePagoPendiente>> getClientePagoPendienteById(
+      {required String clienteId}) {
+    final query = (db.select(db.clientePagoPendienteTable)
+      ..where((t) => t.clienteId.equals(clienteId)));
+
+    return query.asyncMap((row) async {
+      final metodoDeCobroDTO = await (db.select(db.metodoDeCobroTable)
+            ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
+          .getSingleOrNull();
+
+      return row.toDomain(metodoDeCobro: metodoDeCobroDTO?.toDomain());
+    }).get();
+  }
+
+  Future<List<ClienteAdjunto>> getClienteAdjuntoById(
+      {required String clienteId, required String provisionalToken}) async {
+    final query = {'CLIENTE_ID': clienteId};
+    final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
+        requestUri: Uri.http(
+          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+          'api/v1/online/cliente/adjuntos',
+          query,
+        ),
+        jsonDataSelector: (json) => json['data'] as List<dynamic>,
+        provisionalToken: provisionalToken);
+
+    return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
+  }
+
+  Future<DateTime> getFechaUltimaSyncCliente() async {
+    final date =
+        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+            .ultimaSyncCliente;
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getFechaUltimaSyncClientePagoPendiente() async {
+    final date =
+        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+            .ultimaSyncClientePagoPendiente;
+    return DateTime.parse(date!);
+  }
+
+  Future<DateTime> getFechaUltimaSyncArticulosTop() async {
+    final date =
+        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+            .ultimaSyncArticulosTop;
+    return DateTime.parse(date!);
+  }
+
+  Future<List<ClienteAdjuntoDTO>> _remoteGetClienteAdjunto(
+      {required Uri requestUri,
+      required dynamic Function(dynamic json) jsonDataSelector,
+      required String provisionalToken}) async {
+    try {
+      final response = await dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final data = jsonDataSelector(response.data) as List<dynamic>;
+        return data.map((e) => ClienteAdjuntoDTO.fromJson(e)).toList();
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } on DioError catch (e) {
+      String? errorDetalle;
+      final responseErrorJson =
+          e.response?.data['detalle'] ?? e.response?.data['message'] as String?;
+      if (responseErrorJson != null) {
+        errorDetalle = responseErrorJson;
+
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
+      } else {
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+}

@@ -1,0 +1,120 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'cliente_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$_ClienteDTO _$$_ClienteDTOFromJson(Map<String, dynamic> json) =>
+    _$_ClienteDTO(
+      id: json['CLIENTE_ID'] as String,
+      nombreCliente: json['NOMBRE'] as String?,
+      nif: json['NIF'] as String?,
+      nombreFiscal: json['NOMBRE_FISCAL'] as String?,
+      direccionFiscal1: json['DIRECCION_FISCAL1'] as String?,
+      direccionFiscal2: json['DIRECCION_FISCAL2'] as String?,
+      codigoPostalFiscal: json['CODIGO_POSTAL_FISCAL'] as String?,
+      poblacionFiscal: json['POBLACION_FISCAL'] as String?,
+      paisFiscalId: json['PAIS_ID_FISCAL'] as String?,
+      provinciaFiscal: json['PROVINCIA_FISCAL'] as String?,
+      latitudFiscal: (json['LATITUD_FISCAL'] as num?)?.toDouble(),
+      longitudFiscal: (json['LONGITUD_FISCAL'] as num?)?.toDouble(),
+      empresaId: json['EMPRESA_ID'] as String,
+      ivaEspecial: (json['IVA_ESPECIAL'] as num?)?.toDouble(),
+      extentoIva: json['IVA_EXENTO'] as String?,
+      ventasAnyoActual: (json['VENTAS_ANYO_ACTUAL'] as num?)?.toDouble(),
+      ventasAnyoAnterior: (json['VENTAS_ANYO_ANTERIOR'] as num?)?.toDouble(),
+      ventasHaceDosAnyos: (json['VENTAS_HACE_DOS_ANYOS'] as num?)?.toDouble(),
+      margenAnyoActual: (json['MARGEN_ANYO_ACTUAL'] as num?)?.toDouble(),
+      margenAnyoAnterior: (json['MARGEN_ANYO_ANTERIOR'] as num?)?.toDouble(),
+      margenHaceDosAnyos: (json['MARGEN_HACE_DOS_ANYOS'] as num?)?.toDouble(),
+      porcentajeAbonos: (json['PORCENTAJE_ABONOS'] as num?)?.toDouble(),
+      porcentajeGarantias: (json['PORCENTAJE_GARANTIAS'] as num?)?.toDouble(),
+      centralCompras: json['CENTRAL_COMPRAS_NOMBRE'] as String?,
+      urlWeb: json['URL_WEB'] as String?,
+      divisaId: json['DIVISA_ID'] as String?,
+      tarifaId: json['TARIFA_ID'] as String?,
+      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
+      descuentoGeneral: json['DESCUENTO_GENERAL_ID'] as String?,
+      descripcionDescuentoGeneral:
+          json['DESCUENTO_GENERAL_DESCRIPCION'] as String?,
+      tipoCalucloPrecio: json['TIPO_CALCULO_PRECIO'] as String,
+      plazoDeCobroId: json['PLAZO_COBRO_ID'] as String?,
+      metodoDeCobroId: json['METODO_COBRO_ID'] as String?,
+      descuentoProntoPago: (json['DESCUENTO_PRONTO_PAGO'] as num).toDouble(),
+      riesgoConcedidoInterno:
+          (json['RIESGO_CONCEDIDO_INTERNO'] as num).toDouble(),
+      riesgoConcedidoInternoDate: json['RIESGO_CONCEDIDO_INTERNO_FECHA'] == null
+          ? null
+          : DateTime.parse(json['RIESGO_CONCEDIDO_INTERNO_FECHA'] as String),
+      riesgoConcedidoCoafe: (json['RIESGO_CONCEDIDO_COFACE'] as num).toDouble(),
+      riesgoConcedidoCoafeFecha: json['RIESGO_CONCEDIDO_COFACE_FECHA'] == null
+          ? null
+          : DateTime.parse(json['RIESGO_CONCEDIDO_COFACE_FECHA'] as String),
+      riesgoConcedido: (json['RIESGO_CONCEDIDO'] as num?)?.toDouble(),
+      riesgoPendienteCobroVencido:
+          (json['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
+      riesgoPendienteCobroNoVencido:
+          (json['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] as num?)?.toDouble(),
+      riesgoPendienteServir:
+          (json['RIESGO_PDTE_SERVIR_CLIENTE'] as num?)?.toDouble(),
+      riesgoPendienteFacturar:
+          (json['RIESGO_PDTE_FACTURAR_CLIENTE'] as num?)?.toDouble(),
+      obvservacionesInternas: json['OBSERVACIONES_INTERNAS'] as String?,
+      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
+      deleted: json['DELETED'] as String? ?? 'N',
+    );
+
+Map<String, dynamic> _$$_ClienteDTOToJson(_$_ClienteDTO instance) =>
+    <String, dynamic>{
+      'CLIENTE_ID': instance.id,
+      'NOMBRE': instance.nombreCliente,
+      'NIF': instance.nif,
+      'NOMBRE_FISCAL': instance.nombreFiscal,
+      'DIRECCION_FISCAL1': instance.direccionFiscal1,
+      'DIRECCION_FISCAL2': instance.direccionFiscal2,
+      'CODIGO_POSTAL_FISCAL': instance.codigoPostalFiscal,
+      'POBLACION_FISCAL': instance.poblacionFiscal,
+      'PAIS_ID_FISCAL': instance.paisFiscalId,
+      'PROVINCIA_FISCAL': instance.provinciaFiscal,
+      'LATITUD_FISCAL': instance.latitudFiscal,
+      'LONGITUD_FISCAL': instance.longitudFiscal,
+      'EMPRESA_ID': instance.empresaId,
+      'IVA_ESPECIAL': instance.ivaEspecial,
+      'IVA_EXENTO': instance.extentoIva,
+      'VENTAS_ANYO_ACTUAL': instance.ventasAnyoActual,
+      'VENTAS_ANYO_ANTERIOR': instance.ventasAnyoAnterior,
+      'VENTAS_HACE_DOS_ANYOS': instance.ventasHaceDosAnyos,
+      'MARGEN_ANYO_ACTUAL': instance.margenAnyoActual,
+      'MARGEN_ANYO_ANTERIOR': instance.margenAnyoAnterior,
+      'MARGEN_HACE_DOS_ANYOS': instance.margenHaceDosAnyos,
+      'PORCENTAJE_ABONOS': instance.porcentajeAbonos,
+      'PORCENTAJE_GARANTIAS': instance.porcentajeGarantias,
+      'CENTRAL_COMPRAS_NOMBRE': instance.centralCompras,
+      'URL_WEB': instance.urlWeb,
+      'DIVISA_ID': instance.divisaId,
+      'TARIFA_ID': instance.tarifaId,
+      'TARIFA_DESCRIPCION': instance.tarifaDescripcion,
+      'DESCUENTO_GENERAL_ID': instance.descuentoGeneral,
+      'DESCUENTO_GENERAL_DESCRIPCION': instance.descripcionDescuentoGeneral,
+      'TIPO_CALCULO_PRECIO': instance.tipoCalucloPrecio,
+      'PLAZO_COBRO_ID': instance.plazoDeCobroId,
+      'METODO_COBRO_ID': instance.metodoDeCobroId,
+      'DESCUENTO_PRONTO_PAGO': instance.descuentoProntoPago,
+      'RIESGO_CONCEDIDO_INTERNO': instance.riesgoConcedidoInterno,
+      'RIESGO_CONCEDIDO_INTERNO_FECHA':
+          instance.riesgoConcedidoInternoDate?.toIso8601String(),
+      'RIESGO_CONCEDIDO_COFACE': instance.riesgoConcedidoCoafe,
+      'RIESGO_CONCEDIDO_COFACE_FECHA':
+          instance.riesgoConcedidoCoafeFecha?.toIso8601String(),
+      'RIESGO_CONCEDIDO': instance.riesgoConcedido,
+      'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE': instance.riesgoPendienteCobroVencido,
+      'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE':
+          instance.riesgoPendienteCobroNoVencido,
+      'RIESGO_PDTE_SERVIR_CLIENTE': instance.riesgoPendienteServir,
+      'RIESGO_PDTE_FACTURAR_CLIENTE': instance.riesgoPendienteFacturar,
+      'OBSERVACIONES_INTERNAS': instance.obvservacionesInternas,
+      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
+      'DELETED': instance.deleted,
+    };

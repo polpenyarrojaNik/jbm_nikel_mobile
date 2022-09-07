@@ -1,0 +1,261 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+
+part of 'articulo_documento_dto.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+ArticuloDocumentoDTO _$ArticuloDocumentoDTOFromJson(Map<String, dynamic> json) {
+  return _ArticuloDocumentoDTO.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ArticuloDocumentoDTO {
+  @JsonKey(name: 'ARTICULO_ID')
+  String get articuloId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  String? get nombreArchivo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PATH_ARCHIVO')
+  String? get pathArchivo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'IDIOMA_ID')
+  String get idiomaId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'OBSERVACIONES')
+  String? get observaciones => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ArticuloDocumentoDTOCopyWith<ArticuloDocumentoDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ArticuloDocumentoDTOCopyWith<$Res> {
+  factory $ArticuloDocumentoDTOCopyWith(ArticuloDocumentoDTO value,
+          $Res Function(ArticuloDocumentoDTO) then) =
+      _$ArticuloDocumentoDTOCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
+      @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'OBSERVACIONES') String? observaciones});
+}
+
+/// @nodoc
+class _$ArticuloDocumentoDTOCopyWithImpl<$Res>
+    implements $ArticuloDocumentoDTOCopyWith<$Res> {
+  _$ArticuloDocumentoDTOCopyWithImpl(this._value, this._then);
+
+  final ArticuloDocumentoDTO _value;
+  // ignore: unused_field
+  final $Res Function(ArticuloDocumentoDTO) _then;
+
+  @override
+  $Res call({
+    Object? articuloId = freezed,
+    Object? nombreArchivo = freezed,
+    Object? pathArchivo = freezed,
+    Object? idiomaId = freezed,
+    Object? observaciones = freezed,
+  }) {
+    return _then(_value.copyWith(
+      articuloId: articuloId == freezed
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreArchivo: nombreArchivo == freezed
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pathArchivo: pathArchivo == freezed
+          ? _value.pathArchivo
+          : pathArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idiomaId: idiomaId == freezed
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      observaciones: observaciones == freezed
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_ArticuloDocumentoDTOCopyWith<$Res>
+    implements $ArticuloDocumentoDTOCopyWith<$Res> {
+  factory _$$_ArticuloDocumentoDTOCopyWith(_$_ArticuloDocumentoDTO value,
+          $Res Function(_$_ArticuloDocumentoDTO) then) =
+      __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {@JsonKey(name: 'ARTICULO_ID') String articuloId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
+      @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo,
+      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
+      @JsonKey(name: 'OBSERVACIONES') String? observaciones});
+}
+
+/// @nodoc
+class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
+    extends _$ArticuloDocumentoDTOCopyWithImpl<$Res>
+    implements _$$_ArticuloDocumentoDTOCopyWith<$Res> {
+  __$$_ArticuloDocumentoDTOCopyWithImpl(_$_ArticuloDocumentoDTO _value,
+      $Res Function(_$_ArticuloDocumentoDTO) _then)
+      : super(_value, (v) => _then(v as _$_ArticuloDocumentoDTO));
+
+  @override
+  _$_ArticuloDocumentoDTO get _value => super._value as _$_ArticuloDocumentoDTO;
+
+  @override
+  $Res call({
+    Object? articuloId = freezed,
+    Object? nombreArchivo = freezed,
+    Object? pathArchivo = freezed,
+    Object? idiomaId = freezed,
+    Object? observaciones = freezed,
+  }) {
+    return _then(_$_ArticuloDocumentoDTO(
+      articuloId: articuloId == freezed
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      nombreArchivo: nombreArchivo == freezed
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pathArchivo: pathArchivo == freezed
+          ? _value.pathArchivo
+          : pathArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      idiomaId: idiomaId == freezed
+          ? _value.idiomaId
+          : idiomaId // ignore: cast_nullable_to_non_nullable
+              as String,
+      observaciones: observaciones == freezed
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
+  const _$_ArticuloDocumentoDTO(
+      {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') this.nombreArchivo,
+      @JsonKey(name: 'PATH_ARCHIVO') this.pathArchivo,
+      @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
+      @JsonKey(name: 'OBSERVACIONES') this.observaciones})
+      : super._();
+
+  factory _$_ArticuloDocumentoDTO.fromJson(Map<String, dynamic> json) =>
+      _$$_ArticuloDocumentoDTOFromJson(json);
+
+  @override
+  @JsonKey(name: 'ARTICULO_ID')
+  final String articuloId;
+  @override
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  final String? nombreArchivo;
+  @override
+  @JsonKey(name: 'PATH_ARCHIVO')
+  final String? pathArchivo;
+  @override
+  @JsonKey(name: 'IDIOMA_ID')
+  final String idiomaId;
+  @override
+  @JsonKey(name: 'OBSERVACIONES')
+  final String? observaciones;
+
+  @override
+  String toString() {
+    return 'ArticuloDocumentoDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, pathArchivo: $pathArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ArticuloDocumentoDTO &&
+            const DeepCollectionEquality()
+                .equals(other.articuloId, articuloId) &&
+            const DeepCollectionEquality()
+                .equals(other.nombreArchivo, nombreArchivo) &&
+            const DeepCollectionEquality()
+                .equals(other.pathArchivo, pathArchivo) &&
+            const DeepCollectionEquality().equals(other.idiomaId, idiomaId) &&
+            const DeepCollectionEquality()
+                .equals(other.observaciones, observaciones));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(articuloId),
+      const DeepCollectionEquality().hash(nombreArchivo),
+      const DeepCollectionEquality().hash(pathArchivo),
+      const DeepCollectionEquality().hash(idiomaId),
+      const DeepCollectionEquality().hash(observaciones));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ArticuloDocumentoDTOCopyWith<_$_ArticuloDocumentoDTO> get copyWith =>
+      __$$_ArticuloDocumentoDTOCopyWithImpl<_$_ArticuloDocumentoDTO>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ArticuloDocumentoDTOToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ArticuloDocumentoDTO extends ArticuloDocumentoDTO {
+  const factory _ArticuloDocumentoDTO(
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'NOMBRE_ARCHIVO') final String? nombreArchivo,
+          @JsonKey(name: 'PATH_ARCHIVO') final String? pathArchivo,
+          @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
+          @JsonKey(name: 'OBSERVACIONES') final String? observaciones}) =
+      _$_ArticuloDocumentoDTO;
+  const _ArticuloDocumentoDTO._() : super._();
+
+  factory _ArticuloDocumentoDTO.fromJson(Map<String, dynamic> json) =
+      _$_ArticuloDocumentoDTO.fromJson;
+
+  @override
+  @JsonKey(name: 'ARTICULO_ID')
+  String get articuloId;
+  @override
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  String? get nombreArchivo;
+  @override
+  @JsonKey(name: 'PATH_ARCHIVO')
+  String? get pathArchivo;
+  @override
+  @JsonKey(name: 'IDIOMA_ID')
+  String get idiomaId;
+  @override
+  @JsonKey(name: 'OBSERVACIONES')
+  String? get observaciones;
+  @override
+  @JsonKey(ignore: true)
+  _$$_ArticuloDocumentoDTOCopyWith<_$_ArticuloDocumentoDTO> get copyWith =>
+      throw _privateConstructorUsedError;
+}

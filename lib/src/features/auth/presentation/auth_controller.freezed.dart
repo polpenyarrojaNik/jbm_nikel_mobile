@@ -20,7 +20,6 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
     required TResult Function() authenticating,
-    required TResult Function() checkingStatus,
     required TResult Function() authenticated,
     required TResult Function(String e) failure,
   }) =>
@@ -29,7 +28,6 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
   }) =>
@@ -38,7 +36,6 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
     required TResult orElse(),
@@ -48,7 +45,6 @@ mixin _$AuthState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticating value) authenticating,
-    required TResult Function(_CheckingStatus value) checkingStatus,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) =>
@@ -57,7 +53,6 @@ mixin _$AuthState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
   }) =>
@@ -66,7 +61,6 @@ mixin _$AuthState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -132,7 +126,6 @@ class _$_Unauthenticated extends _Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
     required TResult Function() authenticating,
-    required TResult Function() checkingStatus,
     required TResult Function() authenticated,
     required TResult Function(String e) failure,
   }) {
@@ -144,7 +137,6 @@ class _$_Unauthenticated extends _Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
   }) {
@@ -156,7 +148,6 @@ class _$_Unauthenticated extends _Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
     required TResult orElse(),
@@ -172,7 +163,6 @@ class _$_Unauthenticated extends _Unauthenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticating value) authenticating,
-    required TResult Function(_CheckingStatus value) checkingStatus,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -184,7 +174,6 @@ class _$_Unauthenticated extends _Unauthenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
   }) {
@@ -196,7 +185,6 @@ class _$_Unauthenticated extends _Unauthenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -256,7 +244,6 @@ class _$_Authenticating extends _Authenticating {
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
     required TResult Function() authenticating,
-    required TResult Function() checkingStatus,
     required TResult Function() authenticated,
     required TResult Function(String e) failure,
   }) {
@@ -268,7 +255,6 @@ class _$_Authenticating extends _Authenticating {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
   }) {
@@ -280,7 +266,6 @@ class _$_Authenticating extends _Authenticating {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
     required TResult orElse(),
@@ -296,7 +281,6 @@ class _$_Authenticating extends _Authenticating {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticating value) authenticating,
-    required TResult Function(_CheckingStatus value) checkingStatus,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -308,7 +292,6 @@ class _$_Authenticating extends _Authenticating {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
   }) {
@@ -320,7 +303,6 @@ class _$_Authenticating extends _Authenticating {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -335,130 +317,6 @@ class _$_Authenticating extends _Authenticating {
 abstract class _Authenticating extends AuthState {
   const factory _Authenticating() = _$_Authenticating;
   const _Authenticating._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_CheckingStatusCopyWith<$Res> {
-  factory _$$_CheckingStatusCopyWith(
-          _$_CheckingStatus value, $Res Function(_$_CheckingStatus) then) =
-      __$$_CheckingStatusCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_CheckingStatusCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
-    implements _$$_CheckingStatusCopyWith<$Res> {
-  __$$_CheckingStatusCopyWithImpl(
-      _$_CheckingStatus _value, $Res Function(_$_CheckingStatus) _then)
-      : super(_value, (v) => _then(v as _$_CheckingStatus));
-
-  @override
-  _$_CheckingStatus get _value => super._value as _$_CheckingStatus;
-}
-
-/// @nodoc
-
-class _$_CheckingStatus extends _CheckingStatus {
-  const _$_CheckingStatus() : super._();
-
-  @override
-  String toString() {
-    return 'AuthState.checkingStatus()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_CheckingStatus);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() unauthenticated,
-    required TResult Function() authenticating,
-    required TResult Function() checkingStatus,
-    required TResult Function() authenticated,
-    required TResult Function(String e) failure,
-  }) {
-    return checkingStatus();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unauthenticated,
-    TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
-    TResult Function()? authenticated,
-    TResult Function(String e)? failure,
-  }) {
-    return checkingStatus?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unauthenticated,
-    TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
-    TResult Function()? authenticated,
-    TResult Function(String e)? failure,
-    required TResult orElse(),
-  }) {
-    if (checkingStatus != null) {
-      return checkingStatus();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Authenticating value) authenticating,
-    required TResult Function(_CheckingStatus value) checkingStatus,
-    required TResult Function(_Authenticated value) authenticated,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return checkingStatus(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Failure value)? failure,
-  }) {
-    return checkingStatus?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
-    TResult Function(_Authenticated value)? authenticated,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (checkingStatus != null) {
-      return checkingStatus(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _CheckingStatus extends AuthState {
-  const factory _CheckingStatus() = _$_CheckingStatus;
-  const _CheckingStatus._() : super._();
 }
 
 /// @nodoc
@@ -503,7 +361,6 @@ class _$_Authenticated extends _Authenticated {
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
     required TResult Function() authenticating,
-    required TResult Function() checkingStatus,
     required TResult Function() authenticated,
     required TResult Function(String e) failure,
   }) {
@@ -515,7 +372,6 @@ class _$_Authenticated extends _Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
   }) {
@@ -527,7 +383,6 @@ class _$_Authenticated extends _Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
     required TResult orElse(),
@@ -543,7 +398,6 @@ class _$_Authenticated extends _Authenticated {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticating value) authenticating,
-    required TResult Function(_CheckingStatus value) checkingStatus,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -555,7 +409,6 @@ class _$_Authenticated extends _Authenticated {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
   }) {
@@ -567,7 +420,6 @@ class _$_Authenticated extends _Authenticated {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
@@ -649,7 +501,6 @@ class _$_Failure extends _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() unauthenticated,
     required TResult Function() authenticating,
-    required TResult Function() checkingStatus,
     required TResult Function() authenticated,
     required TResult Function(String e) failure,
   }) {
@@ -661,7 +512,6 @@ class _$_Failure extends _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
   }) {
@@ -673,7 +523,6 @@ class _$_Failure extends _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unauthenticated,
     TResult Function()? authenticating,
-    TResult Function()? checkingStatus,
     TResult Function()? authenticated,
     TResult Function(String e)? failure,
     required TResult orElse(),
@@ -689,7 +538,6 @@ class _$_Failure extends _Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticating value) authenticating,
-    required TResult Function(_CheckingStatus value) checkingStatus,
     required TResult Function(_Authenticated value) authenticated,
     required TResult Function(_Failure value) failure,
   }) {
@@ -701,7 +549,6 @@ class _$_Failure extends _Failure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
   }) {
@@ -713,7 +560,6 @@ class _$_Failure extends _Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticating value)? authenticating,
-    TResult Function(_CheckingStatus value)? checkingStatus,
     TResult Function(_Authenticated value)? authenticated,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
