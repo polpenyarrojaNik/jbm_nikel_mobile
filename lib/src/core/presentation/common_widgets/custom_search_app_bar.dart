@@ -3,11 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomSearchAppBar(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.searchTitle,
-      required this.onSubmitted})
-      : super(key: key);
+      required this.onSubmitted});
 
   final String title;
   final String searchTitle;
@@ -51,8 +50,7 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
 
 class SearchListTile extends ConsumerWidget {
   const SearchListTile(
-      {Key? key, required this.searchTitle, required this.onSubmitted})
-      : super(key: key);
+      {super.key, required this.searchTitle, required this.onSubmitted});
 
   final String searchTitle;
   final Function(String searchText) onSubmitted;

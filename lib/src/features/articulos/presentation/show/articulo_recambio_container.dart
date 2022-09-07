@@ -7,8 +7,7 @@ import '../../domain/articulo_recambio.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloRecambioContainer extends ConsumerWidget {
-  const ArticuloRecambioContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloRecambioContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +34,7 @@ class ArticuloRecambioContainer extends ConsumerWidget {
 }
 
 class ArticuloRecambioTile extends StatelessWidget {
-  const ArticuloRecambioTile({Key? key, required this.articuloRecambio})
-      : super(key: key);
+  const ArticuloRecambioTile({super.key, required this.articuloRecambio});
 
   final ArticuloRecambio articuloRecambio;
 

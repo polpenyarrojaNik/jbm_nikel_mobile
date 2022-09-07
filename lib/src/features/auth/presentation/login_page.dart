@@ -8,7 +8,7 @@ import '../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
   @override
   LoginPageState createState() => LoginPageState();
 }
@@ -90,8 +90,8 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         key: const ValueKey('usuario'),
                         formControlName: 'usuario',
                         textCapitalization: TextCapitalization.characters,
-                        validationMessages: (control) => {
-                          ValidationMessage.required: 'NO EMPTY',
+                        validationMessages: {
+                          ValidationMessage.required: (error) => 'NO EMPTY'
                         },
                         textInputAction: TextInputAction.next,
                         decoration: AppDecoration.loginField('Usuario'),
@@ -100,11 +100,11 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       ReactiveTextField<String>(
                         formControlName: 'contrasenya',
                         obscureText: true,
-                        validationMessages: (control) => {
-                          ValidationMessage.required: 'No Empty',
+                        validationMessages: {
+                          ValidationMessage.required: (error) => 'NO EMPTY'
                         },
                         textInputAction: TextInputAction.done,
-                        onSubmitted: () => _submit(form, ref),
+                        onSubmitted: (_) => _submit(form, ref),
                         decoration: AppDecoration.loginField(
                           'Password',
                         ),

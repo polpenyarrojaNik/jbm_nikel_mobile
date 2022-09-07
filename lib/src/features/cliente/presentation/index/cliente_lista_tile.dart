@@ -6,7 +6,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../domain/cliente.dart';
 
 class ClienteListaTile extends StatelessWidget {
-  const ClienteListaTile({Key? key, required this.cliente}) : super(key: key);
+  const ClienteListaTile({super.key, required this.cliente});
 
   final Cliente cliente;
 

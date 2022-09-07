@@ -9,8 +9,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/cliente_pago_pendiente.dart';
 
 class ClientePagoPendientePage extends ConsumerWidget {
-  const ClientePagoPendientePage({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClientePagoPendientePage({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -50,8 +49,8 @@ class ClientePagoPendientePage extends ConsumerWidget {
 }
 
 class ClientePagoPendienteTile extends StatelessWidget {
-  const ClientePagoPendienteTile({Key? key, required this.clientePagoPendiente})
-      : super(key: key);
+  const ClientePagoPendienteTile(
+      {super.key, required this.clientePagoPendiente});
 
   final ClientePagoPendiente clientePagoPendiente;
 

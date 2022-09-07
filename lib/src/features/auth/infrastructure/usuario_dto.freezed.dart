@@ -31,7 +31,7 @@ mixin _$UsuarioDTO {
   @JsonKey(name: 'PROVISIONAL_TOKEN')
   String get provisionalToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'REFRESH_TOKEN')
-  String get refreshToken => throw _privateConstructorUsedError;
+  String? get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +50,7 @@ abstract class $UsuarioDTOCopyWith<$Res> {
       @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
       @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') String refreshToken});
+      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken});
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class _$UsuarioDTOCopyWithImpl<$Res> implements $UsuarioDTOCopyWith<$Res> {
       refreshToken: refreshToken == freezed
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -112,7 +112,7 @@ abstract class _$$_UsuarioDTOCopyWith<$Res>
       @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
       @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') String refreshToken});
+      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken});
 }
 
 /// @nodoc
@@ -158,7 +158,7 @@ class __$$_UsuarioDTOCopyWithImpl<$Res> extends _$UsuarioDTOCopyWithImpl<$Res>
       refreshToken: refreshToken == freezed
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -178,7 +178,7 @@ class _$_UsuarioDTO extends _UsuarioDTO {
       @JsonKey(name: 'PROVISIONAL_TOKEN')
           required this.provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN')
-          required this.refreshToken})
+          this.refreshToken})
       : super._();
 
   factory _$_UsuarioDTO.fromJson(Map<String, dynamic> json) =>
@@ -201,7 +201,7 @@ class _$_UsuarioDTO extends _UsuarioDTO {
   final String provisionalToken;
   @override
   @JsonKey(name: 'REFRESH_TOKEN')
-  final String refreshToken;
+  final String? refreshToken;
 
   @override
   String toString() {
@@ -262,7 +262,7 @@ abstract class _UsuarioDTO extends UsuarioDTO {
       @JsonKey(name: 'PROVISIONAL_TOKEN')
           required final String provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN')
-          required final String refreshToken}) = _$_UsuarioDTO;
+          final String? refreshToken}) = _$_UsuarioDTO;
   const _UsuarioDTO._() : super._();
 
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =
@@ -285,7 +285,7 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   String get provisionalToken;
   @override
   @JsonKey(name: 'REFRESH_TOKEN')
-  String get refreshToken;
+  String? get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$_UsuarioDTOCopyWith<_$_UsuarioDTO> get copyWith =>

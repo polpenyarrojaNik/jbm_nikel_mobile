@@ -23,8 +23,7 @@ import 'cliente_precio_neto_container.dart.dart';
 import 'cliente_rappel_container.dart';
 
 class ClienteDetallePage extends StatelessWidget {
-  const ClienteDetallePage({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteDetallePage({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -142,8 +141,7 @@ class ClienteDetallePage extends StatelessWidget {
 }
 
 class _ClienteInfoContainer extends StatelessWidget {
-  const _ClienteInfoContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const _ClienteInfoContainer({required this.cliente});
 
   final Cliente cliente;
   @override
@@ -169,7 +167,7 @@ class _ClienteInfoContainer extends StatelessWidget {
 }
 
 class ClienteGeneralData extends StatelessWidget {
-  const ClienteGeneralData({Key? key, required this.cliente}) : super(key: key);
+  const ClienteGeneralData({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -349,8 +347,7 @@ class ClienteGeneralData extends StatelessWidget {
 }
 
 class ClientePricesAndOthersData extends StatelessWidget {
-  const ClientePricesAndOthersData({Key? key, required this.cliente})
-      : super(key: key);
+  const ClientePricesAndOthersData({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -409,8 +406,7 @@ class ClientePricesAndOthersData extends StatelessWidget {
 }
 
 class ClienteFacturationDataContainer extends StatelessWidget {
-  const ClienteFacturationDataContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const ClienteFacturationDataContainer({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -457,8 +453,7 @@ class ClienteFacturationDataContainer extends StatelessWidget {
 }
 
 class ClienteRemarksContainer extends StatelessWidget {
-  const ClienteRemarksContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const ClienteRemarksContainer({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -469,8 +464,7 @@ class ClienteRemarksContainer extends StatelessWidget {
 }
 
 class ClienteRiskContainer extends StatelessWidget {
-  const ClienteRiskContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const ClienteRiskContainer({super.key, required this.cliente});
 
   final Cliente cliente;
 

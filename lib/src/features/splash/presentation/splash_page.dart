@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {

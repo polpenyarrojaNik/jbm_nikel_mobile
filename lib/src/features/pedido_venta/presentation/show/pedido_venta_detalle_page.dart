@@ -15,8 +15,7 @@ import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 class PedidoVentaDetallePage extends StatelessWidget {
-  const PedidoVentaDetallePage({Key? key, required this.pedidoVentaId})
-      : super(key: key);
+  const PedidoVentaDetallePage({super.key, required this.pedidoVentaId});
 
   final String pedidoVentaId;
 
@@ -74,8 +73,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
 }
 
 class ClienteInfoContainer extends StatelessWidget {
-  const ClienteInfoContainer({Key? key, required this.pedidoVenta})
-      : super(key: key);
+  const ClienteInfoContainer({super.key, required this.pedidoVenta});
 
   final PedidoVenta pedidoVenta;
 
@@ -155,8 +153,7 @@ class ClienteInfoContainer extends StatelessWidget {
 }
 
 class PedidoVentaInfoContainer extends StatelessWidget {
-  const PedidoVentaInfoContainer({Key? key, required this.pedidoVenta})
-      : super(key: key);
+  const PedidoVentaInfoContainer({super.key, required this.pedidoVenta});
 
   final PedidoVenta pedidoVenta;
 
@@ -236,8 +233,7 @@ class PedidoVentaInfoContainer extends StatelessWidget {
 }
 
 class PedidoVentaLineaContainer extends ConsumerWidget {
-  const PedidoVentaLineaContainer({Key? key, required this.pedidoVentaId})
-      : super(key: key);
+  const PedidoVentaLineaContainer({super.key, required this.pedidoVentaId});
 
   final String pedidoVentaId;
 

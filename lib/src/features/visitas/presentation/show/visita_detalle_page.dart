@@ -6,7 +6,7 @@ import '../../domain/visita.dart';
 import '../../infrastructure/visita_repository.dart';
 
 class VisitaDetallePage extends StatelessWidget {
-  const VisitaDetallePage({Key? key, required this.visitaId}) : super(key: key);
+  const VisitaDetallePage({super.key, required this.visitaId});
 
   final String visitaId;
 

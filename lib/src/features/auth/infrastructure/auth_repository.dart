@@ -55,7 +55,7 @@ class AuthRepository {
                 dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
                 '/api/v1/renew-token',
               ),
-              body: {'REFRESH_TOKEN': usuarioDto.refreshToken});
+              body: {'REFRESH_TOKEN': usuarioDto.refreshToken!});
 
           await saveUsuario(newUsuarioDto);
 

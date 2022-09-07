@@ -10,8 +10,7 @@ import '../../../articulos/presentation/index/articulo_lista_tile.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteArticulosTopListPage extends ConsumerWidget {
-  const ClienteArticulosTopListPage({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteArticulosTopListPage({super.key, required this.clienteId});
 
   final String clienteId;
 

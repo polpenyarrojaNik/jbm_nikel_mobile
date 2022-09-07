@@ -7,8 +7,7 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class ArticuloTarifaPrecioContainer extends ConsumerWidget {
-  const ArticuloTarifaPrecioContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloTarifaPrecioContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +34,8 @@ class ArticuloTarifaPrecioContainer extends ConsumerWidget {
 }
 
 class ArticuloTarifaPrecioTile extends StatelessWidget {
-  const ArticuloTarifaPrecioTile({Key? key, required this.articuloTarifaPrecio})
-      : super(key: key);
+  const ArticuloTarifaPrecioTile(
+      {super.key, required this.articuloTarifaPrecio});
 
   final ArticuloTarifaPrecio articuloTarifaPrecio;
 

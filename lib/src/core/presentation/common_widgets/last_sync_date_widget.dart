@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../../helpers/formatters.dart';
 
 class UltimaSyncDateWidget extends StatelessWidget {
-  const UltimaSyncDateWidget({Key? key, required this.ultimaSyncDate})
-      : super(key: key);
+  const UltimaSyncDateWidget({super.key, required this.ultimaSyncDate});
   final DateTime ultimaSyncDate;
 
   @override

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColumnFieldTextDetalle extends StatelessWidget {
   const ColumnFieldTextDetalle(
-      {Key? key, required this.fieldTitleValue, required this.value})
-      : super(key: key);
+      {super.key, required this.fieldTitleValue, required this.value});
   final String fieldTitleValue;
   final dynamic value;
 

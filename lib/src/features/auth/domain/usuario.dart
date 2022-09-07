@@ -10,7 +10,7 @@ class Usuario with _$Usuario {
     required String usuario,
     required String contrasenya,
     String? nombreUsuario,
-    required String refreshToken,
+    String? refreshToken,
     required String provisionalToken,
   }) = _Usuario;
 }

@@ -22,8 +22,7 @@ import 'articulo_recambio_container.dart';
 import 'articulo_sustitutivo_container.dart';
 
 class ArticuloDetallePage extends StatelessWidget {
-  const ArticuloDetallePage({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloDetallePage({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -127,8 +126,7 @@ class ArticuloDetallePage extends StatelessWidget {
 }
 
 class _ArticuloInfoContainer extends StatelessWidget {
-  const _ArticuloInfoContainer({Key? key, required this.articulo})
-      : super(key: key);
+  const _ArticuloInfoContainer({required this.articulo});
 
   final Articulo articulo;
 
@@ -433,8 +431,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
 
 class _ArticuloPrincipalImage extends ConsumerWidget {
   const _ArticuloPrincipalImage(
-      {Key? key, required this.articuloId, required this.imagenPrincipal})
-      : super(key: key);
+      {required this.articuloId, required this.imagenPrincipal});
 
   final String articuloId;
   final String imagenPrincipal;

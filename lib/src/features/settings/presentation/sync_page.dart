@@ -9,7 +9,7 @@ import 'package:jbm_nikel_mobile/src/features/settings/presentation/sync_page_co
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class SettingsPage extends ConsumerWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

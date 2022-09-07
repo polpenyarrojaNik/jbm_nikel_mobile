@@ -4,7 +4,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../domain/visita.dart';
 
 class VisitaListaTile extends StatelessWidget {
-  const VisitaListaTile({Key? key, required this.visita}) : super(key: key);
+  const VisitaListaTile({super.key, required this.visita});
 
   final Visita visita;
 

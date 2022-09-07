@@ -20,7 +20,7 @@ mixin _$Usuario {
   String get usuario => throw _privateConstructorUsedError;
   String get contrasenya => throw _privateConstructorUsedError;
   String? get nombreUsuario => throw _privateConstructorUsedError;
-  String get refreshToken => throw _privateConstructorUsedError;
+  String? get refreshToken => throw _privateConstructorUsedError;
   String get provisionalToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $UsuarioCopyWith<$Res> {
       String usuario,
       String contrasenya,
       String? nombreUsuario,
-      String refreshToken,
+      String? refreshToken,
       String provisionalToken});
 }
 
@@ -77,7 +77,7 @@ class _$UsuarioCopyWithImpl<$Res> implements $UsuarioCopyWith<$Res> {
       refreshToken: refreshToken == freezed
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       provisionalToken: provisionalToken == freezed
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
       String usuario,
       String contrasenya,
       String? nombreUsuario,
-      String refreshToken,
+      String? refreshToken,
       String provisionalToken});
 }
 
@@ -139,7 +139,7 @@ class __$$_UsuarioCopyWithImpl<$Res> extends _$UsuarioCopyWithImpl<$Res>
       refreshToken: refreshToken == freezed
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       provisionalToken: provisionalToken == freezed
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
@@ -156,7 +156,7 @@ class _$_Usuario extends _Usuario {
       required this.usuario,
       required this.contrasenya,
       this.nombreUsuario,
-      required this.refreshToken,
+      this.refreshToken,
       required this.provisionalToken})
       : super._();
 
@@ -169,7 +169,7 @@ class _$_Usuario extends _Usuario {
   @override
   final String? nombreUsuario;
   @override
-  final String refreshToken;
+  final String? refreshToken;
   @override
   final String provisionalToken;
 
@@ -217,7 +217,7 @@ abstract class _Usuario extends Usuario {
       required final String usuario,
       required final String contrasenya,
       final String? nombreUsuario,
-      required final String refreshToken,
+      final String? refreshToken,
       required final String provisionalToken}) = _$_Usuario;
   const _Usuario._() : super._();
 
@@ -230,7 +230,7 @@ abstract class _Usuario extends Usuario {
   @override
   String? get nombreUsuario;
   @override
-  String get refreshToken;
+  String? get refreshToken;
   @override
   String get provisionalToken;
   @override

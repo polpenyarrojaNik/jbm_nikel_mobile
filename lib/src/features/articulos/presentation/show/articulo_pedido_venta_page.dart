@@ -9,8 +9,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../pedido_venta/domain/pedido_venta_linea.dart';
 
 class ArticuloPedidoVentaPage extends ConsumerWidget {
-  const ArticuloPedidoVentaPage({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloPedidoVentaPage({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -48,9 +47,9 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
 
 class PedidoVentaLineaTile extends StatelessWidget {
   const PedidoVentaLineaTile({
-    Key? key,
+    super.key,
     required this.pedidoVentaLinea,
-  }) : super(key: key);
+  });
 
   final PedidoVentaLinea pedidoVentaLinea;
 

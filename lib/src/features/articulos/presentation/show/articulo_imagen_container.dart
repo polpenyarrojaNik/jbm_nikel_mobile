@@ -7,8 +7,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/articulo_imagen.dart';
 
 class ArticuloImagenContainer extends ConsumerWidget {
-  const ArticuloImagenContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloImagenContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +34,7 @@ class ArticuloImagenContainer extends ConsumerWidget {
 }
 
 class ArticuloImagenTile extends ConsumerWidget {
-  const ArticuloImagenTile({Key? key, required this.articuloImagen})
-      : super(key: key);
+  const ArticuloImagenTile({super.key, required this.articuloImagen});
 
   final ArticuloImagen articuloImagen;
 

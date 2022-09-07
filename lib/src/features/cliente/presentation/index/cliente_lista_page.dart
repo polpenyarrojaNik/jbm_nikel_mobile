@@ -11,7 +11,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
-  const ClienteListaPage({Key? key}) : super(key: key);
+  const ClienteListaPage({super.key});
 
   @override
   ConsumerState<ClienteListaPage> createState() => _ClienteListPageState();

@@ -7,8 +7,7 @@ import '../../domain/articulo_grupo_neto.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloGrupoNetoContainer extends ConsumerWidget {
-  const ArticuloGrupoNetoContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloGrupoNetoContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +34,7 @@ class ArticuloGrupoNetoContainer extends ConsumerWidget {
 }
 
 class ArticuloGrupoNetoTile extends StatelessWidget {
-  const ArticuloGrupoNetoTile({Key? key, required this.articuloGrupoNeto})
-      : super(key: key);
+  const ArticuloGrupoNetoTile({super.key, required this.articuloGrupoNeto});
 
   final ArticuloGrupoNeto articuloGrupoNeto;
 

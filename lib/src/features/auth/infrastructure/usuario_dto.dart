@@ -16,7 +16,7 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '')
         required String? nombreUsuario,
     @JsonKey(name: 'PROVISIONAL_TOKEN') required String provisionalToken,
-    @JsonKey(name: 'REFRESH_TOKEN') required String refreshToken,
+    @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {

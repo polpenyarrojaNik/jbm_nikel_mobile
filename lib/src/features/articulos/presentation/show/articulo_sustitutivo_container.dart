@@ -7,8 +7,7 @@ import '../../domain/articulo_sustitutivo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloSustitutivoContainer extends ConsumerWidget {
-  const ArticuloSustitutivoContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloSustitutivoContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +34,7 @@ class ArticuloSustitutivoContainer extends ConsumerWidget {
 }
 
 class ArticuloSustitutivoTile extends StatelessWidget {
-  const ArticuloSustitutivoTile({Key? key, required this.articuloSustitutivo})
-      : super(key: key);
+  const ArticuloSustitutivoTile({super.key, required this.articuloSustitutivo});
 
   final ArticuloSustitutivo articuloSustitutivo;
 

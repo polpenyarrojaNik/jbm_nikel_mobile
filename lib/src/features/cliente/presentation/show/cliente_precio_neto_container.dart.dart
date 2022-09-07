@@ -7,8 +7,7 @@ import '../../domain/cliente_precio_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClientePrecioNetoContainer extends ConsumerWidget {
-  const ClientePrecioNetoContainer({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClientePrecioNetoContainer({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -36,8 +35,7 @@ class ClientePrecioNetoContainer extends ConsumerWidget {
 }
 
 class ClientePrecioNetoTile extends StatelessWidget {
-  const ClientePrecioNetoTile({Key? key, required this.clientePrecioNeto})
-      : super(key: key);
+  const ClientePrecioNetoTile({super.key, required this.clientePrecioNeto});
 
   final ClientePrecioNeto clientePrecioNeto;
 
