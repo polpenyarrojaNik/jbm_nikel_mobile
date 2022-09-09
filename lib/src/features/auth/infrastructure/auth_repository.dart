@@ -30,7 +30,7 @@ class AuthRepository {
     try {
       final usuarioDTO = await _remoteLogin(
           requestUri: Uri.http(
-            dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+            dotenv.get('URL', fallback: 'localhost:3001'),
             '/api/v1/login',
           ),
           body: {'USUARIO': usuario, 'CLAVE': contrasenya});
@@ -52,7 +52,7 @@ class AuthRepository {
         if (usuarioDto.canRefresh && usuarioDto.isExpired) {
           final newUsuarioDto = await _refresh(
               requestUri: Uri.http(
-                dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+                dotenv.get('URL', fallback: 'localhost:3001'),
                 '/api/v1/renew-token',
               ),
               body: {'REFRESH_TOKEN': usuarioDto.refreshToken});

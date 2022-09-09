@@ -12,6 +12,7 @@ import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/infrastructure/auth_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/sync_repository.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/initial_db_repository.dart';
@@ -46,6 +47,8 @@ void main() async {
             PedidoVentaRepository(database, dio, authRepository)),
         clienteRepositoryProvider
             .overrideWithValue(ClienteRepository(database, dio)),
+        clientesAlrededorRepositoryProvider
+            .overrideWithValue(ClienteAlrededorRepository(database)),
         articuloRepositoryProvider
             .overrideWithValue(ArticuloRepository(database, dio)),
         visitaRepositoryProvider

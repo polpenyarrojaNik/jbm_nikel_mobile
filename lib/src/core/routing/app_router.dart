@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/not_found_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/presentation/clientes_alrededo_page.dart';
 
 import '../../features/articulos/presentation/index/articulo_lista_page.dart';
 import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
@@ -37,9 +38,9 @@ enum AppRoute {
   clientependingpayment,
   clientesalesmes,
   clientesalesarticulo,
-  clientestockb2b,
   clientetoparticulos,
   clientetoparticulosshow,
+  clientealrededor,
   articuloindex,
   articuloshow,
   articulosalesorder,
@@ -124,6 +125,14 @@ final goRouterProvider = Provider((ref) {
         path: '/home',
         builder: (context, state) => const ClienteListaPage(),
         routes: [
+          GoRoute(
+            name: AppRoute.clientealrededor.name,
+            path: 'alrededor',
+            pageBuilder: (context, state) => MaterialPage(
+              key: state.pageKey,
+              child: const ClientesAlrededorPage(),
+            ),
+          ),
           GoRoute(
             name: AppRoute.clienteshow.name,
             path: ':clienteId',

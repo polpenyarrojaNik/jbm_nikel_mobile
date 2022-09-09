@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
 
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
@@ -8,6 +9,7 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
+import '../../../../core/routing/app_router.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
@@ -42,6 +44,10 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         title: 'Cliente',
         searchTitle: 'Search Cliente...',
         onSubmitted: (searchText) => {print(searchText)},
+        addActionButton: IconButton(
+          onPressed: () => navigateToClientesAlrededor(),
+          icon: (const Icon(Icons.near_me_outlined)),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -71,6 +77,12 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
           ],
         ),
       ),
+    );
+  }
+
+  void navigateToClientesAlrededor() {
+    context.goNamed(
+      AppRoute.clientealrededor.name,
     );
   }
 }

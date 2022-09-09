@@ -13890,7 +13890,7 @@ class EstadisticasUltimosPreciosTableCompanion
       if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (descuento1 != null) 'DESCUENTO1': descuento1,
-      if (descuento2 != null) 'DESCUENTO1': descuento2,
+      if (descuento2 != null) 'DESCUENTO2': descuento2,
       if (descuento3 != null) 'DESCUENTO3': descuento3,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
@@ -13944,7 +13944,7 @@ class EstadisticasUltimosPreciosTableCompanion
       map['DESCUENTO1'] = Variable<double>(descuento1.value);
     }
     if (descuento2.present) {
-      map['DESCUENTO1'] = Variable<double>(descuento2.value);
+      map['DESCUENTO2'] = Variable<double>(descuento2.value);
     }
     if (descuento3.present) {
       map['DESCUENTO3'] = Variable<double>(descuento3.value);
@@ -14019,7 +14019,7 @@ class $EstadisticasUltimosPreciosTableTable
   final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
   @override
   late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
-      'DESCUENTO1', aliasedName, false,
+      'DESCUENTO2', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
   @override
@@ -14106,11 +14106,11 @@ class $EstadisticasUltimosPreciosTableTable
     } else if (isInserting) {
       context.missing(_descuento1Meta);
     }
-    if (data.containsKey('DESCUENTO1')) {
+    if (data.containsKey('DESCUENTO2')) {
       context.handle(
           _descuento2Meta,
           descuento2.isAcceptableOrUnknown(
-              data['DESCUENTO1']!, _descuento2Meta));
+              data['DESCUENTO2']!, _descuento2Meta));
     } else if (isInserting) {
       context.missing(_descuento2Meta);
     }
@@ -14166,7 +14166,7 @@ class $EstadisticasUltimosPreciosTableTable
       descuento1: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
       descuento2: attachedDatabase.options.types
-          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO2'])!,
       descuento3: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
       lastUpdated: attachedDatabase.options.types

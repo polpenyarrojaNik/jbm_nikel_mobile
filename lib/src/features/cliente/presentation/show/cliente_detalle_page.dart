@@ -60,19 +60,9 @@ class ClienteDetallePage extends StatelessWidget {
                           appRouteValue: AppRoute.clientesalesarticulo,
                           params: params),
                       TextButtonWidget(
-                          titleText: '¿Precio Neto?',
-                          entityId: clienteId,
-                          appRouteValue: AppRoute.clientependingpayment,
-                          params: params),
-                      TextButtonWidget(
                           titleText: 'Fact. Pendientes',
                           entityId: clienteId,
                           appRouteValue: AppRoute.clientependingpayment,
-                          params: params),
-                      TextButtonWidget(
-                          titleText: '¿Stock B2B?',
-                          entityId: clienteId,
-                          appRouteValue: AppRoute.clientestockb2b,
                           params: params),
                       TextButtonWidget(
                         titleText: 'Top 150',
@@ -142,8 +132,7 @@ class ClienteDetallePage extends StatelessWidget {
 }
 
 class _ClienteInfoContainer extends StatelessWidget {
-  const _ClienteInfoContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const _ClienteInfoContainer({super.key, required this.cliente});
 
   final Cliente cliente;
   @override
@@ -169,7 +158,7 @@ class _ClienteInfoContainer extends StatelessWidget {
 }
 
 class ClienteGeneralData extends StatelessWidget {
-  const ClienteGeneralData({Key? key, required this.cliente}) : super(key: key);
+  const ClienteGeneralData({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -294,16 +283,19 @@ class ClienteGeneralData extends StatelessWidget {
                       value: (cliente.margenAnyoActual != null)
                           ? '${cliente.margenAnyoActual?.toString()}%'
                           : ''),
+                  const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Año Anterior',
                       value: (cliente.margenAnyoAnterior != null)
                           ? '${cliente.margenAnyoAnterior?.toString()}%'
                           : ''),
+                  const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Hace 2 Años',
                       value: (cliente.margenHaceDosAnyos != null)
                           ? '${cliente.margenHaceDosAnyos?.toString()}%'
                           : ''),
+                  const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Porcentaje Abonos',
                       value: (cliente.porcentajeAbonos != null)

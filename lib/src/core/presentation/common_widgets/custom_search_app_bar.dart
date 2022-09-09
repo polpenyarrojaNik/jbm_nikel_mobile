@@ -3,15 +3,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomSearchAppBar(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.searchTitle,
-      required this.onSubmitted})
-      : super(key: key);
+      required this.onSubmitted,
+      this.addActionButton});
 
   final String title;
   final String searchTitle;
   final Function(String searchText) onSubmitted;
+  final IconButton? addActionButton;
 
   @override
   State<CustomSearchAppBar> createState() => _CustomSearchAppBarState();
@@ -38,6 +39,7 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
         IconButton(
             onPressed: () => changeSearchValue(),
             icon: (isSearching) ? searchIcon : icon),
+        if (widget.addActionButton != null) widget.addActionButton!
       ],
     );
   }

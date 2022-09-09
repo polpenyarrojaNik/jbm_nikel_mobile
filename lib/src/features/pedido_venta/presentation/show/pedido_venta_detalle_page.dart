@@ -24,7 +24,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ventas order detalle'),
+        title: const Text('Pedido venta detalle'),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),

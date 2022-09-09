@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 
+import '../../../../core/domain/pais.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../domain/cliente.dart';
 
 class ClienteListaTile extends StatelessWidget {
-  const ClienteListaTile({Key? key, required this.cliente}) : super(key: key);
+  const ClienteListaTile({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -49,28 +51,11 @@ class ClienteListaTile extends StatelessWidget {
                   ),
                 ],
               ),
-              Text(
-                formatCodigoPostalAndPoblacion(
+              AddressTextWidget(
                   codigoPostal: cliente.codigoPostalFiscal,
                   poblacion: cliente.poblacionFiscal,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: Theme.of(context).textTheme.caption!.color,
-                    ),
-              ),
-              Text(
-                formatProvinciaAndPais(
-                  province: cliente.provinciaFiscal,
-                  pais: cliente.paisFiscal,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: Theme.of(context).textTheme.caption!.color,
-                    ),
-              ),
+                  provincia: cliente.provinciaFiscal,
+                  pais: cliente.paisFiscal)
             ],
           ),
         ),
