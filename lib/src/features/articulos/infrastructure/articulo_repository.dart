@@ -11,9 +11,10 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/exceptions/app_exception.dart';
-import '../../auth/infrastructure/auth_repository.dart';
+import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta_linea.dart';
+import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/articulo.dart';
 import '../domain/articulo_componente.dart';
 import '../domain/articulo_documento.dart';
@@ -23,8 +24,11 @@ import '../domain/articulo_sustitutivo.dart';
 import 'articulo_imagen_dto.dart';
 
 final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
-  // * Override this in the main method
-  (ref) => throw UnimplementedError(),
+  (ref) {
+    final db = ref.watch(appDatabaseProvider);
+    final dio = ref.watch(dioProvider);
+    return ArticuloRepository(db, dio);
+  },
 );
 
 final articuloListaStreamProvider =
@@ -77,8 +81,7 @@ final articuloSpareListProvider = FutureProvider.autoDispose
 final articuloImageListProvider = FutureProvider.autoDispose
     .family<List<ArticuloImagen>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloImagenesListaById(
       articuloId: articuloId, provisionalToken: usuario!.provisionalToken);
 });
@@ -86,8 +89,7 @@ final articuloImageListProvider = FutureProvider.autoDispose
 final articuloDocumentListProvider = FutureProvider.autoDispose
     .family<List<ArticuloDocumento>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloDocumentoListById(
       articuloId: articuloId, provisionalToken: usuario!.provisionalToken);
 });
@@ -95,8 +97,7 @@ final articuloDocumentListProvider = FutureProvider.autoDispose
 final articuloDocumentFileProvider =
     FutureProvider.autoDispose.family<File?, String>((ref, path) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getDocumentFile(
       path: path, provisionalToken: usuario!.provisionalToken);
 });
@@ -104,8 +105,8 @@ final articuloDocumentFileProvider =
 final articuloImageFileProvider =
     FutureProvider.autoDispose.family<Uint8List?, String>((ref, path) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getImageFile(
       path: path, provisionalToken: usuario!.provisionalToken);
 });
@@ -113,8 +114,8 @@ final articuloImageFileProvider =
 final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
     .family<List<PedidoVentaLinea>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloPedidoVentaById(
       articuloId: articuloId, usuarioId: usuario!.id);
 });
@@ -122,8 +123,8 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
 final articuloUltimosPreciosListProvider = FutureProvider.autoDispose
     .family<List<EstadisticasUltimosPrecios>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloUltimosPreciosById(
       articuloId: articuloId, usuarioId: usuario!.id);
 });
@@ -146,23 +147,23 @@ final articuloUltimosPreciossUltimaSyncProvider =
 });
 
 class ArticuloRepository {
-  AppDatabase db;
-  Dio dio;
+  final AppDatabase _db;
+  final Dio _dio;
 
-  ArticuloRepository(this.db, this.dio);
+  ArticuloRepository(this._db, this._dio);
 
   Stream<List<Articulo>> watchArticuloLista() {
-    final query = (db.select(db.articuloTable)
+    final query = (_db.select(_db.articuloTable)
       ..where(
         (t) => t.deleted.equals('N'),
       )
       ..orderBy([(t) => OrderingTerm(expression: t.id)]));
 
     return query.asyncMap((row) async {
-      final familiaDTO = await (db.select(db.familiaTable)
+      final familiaDTO = await (_db.select(_db.familiaTable)
             ..where((t) => t.id.equals(row.familiaId ?? '')))
           .getSingleOrNull();
-      final subfamiliaDTO = await (db.select(db.subfamiliaTable)
+      final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
             ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
           .getSingleOrNull();
       return row.toDomain(
@@ -174,13 +175,13 @@ class ArticuloRepository {
 
   Future<Articulo> getArticuloById({required String articuloId}) async {
     final query =
-        (db.select(db.articuloTable)..where((t) => t.id.equals(articuloId)));
+        (_db.select(_db.articuloTable)..where((t) => t.id.equals(articuloId)));
 
     return query.asyncMap((row) async {
-      final familiaDTO = await (db.select(db.familiaTable)
+      final familiaDTO = await (_db.select(_db.familiaTable)
             ..where((t) => t.id.equals(row.familiaId ?? '')))
           .getSingleOrNull();
-      final subfamiliaDTO = await (db.select(db.subfamiliaTable)
+      final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
             ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
           .getSingleOrNull();
       return row.toDomain(
@@ -192,7 +193,7 @@ class ArticuloRepository {
 
   Future<List<ArticuloComponente>> getArticuloComponenteListaById(
       {required String articuloId}) async {
-    final query = (db.select(db.articuloComponenteTable)
+    final query = (_db.select(_db.articuloComponenteTable)
       ..where((t) => t.articuloId.equals(articuloId)));
 
     return query.asyncMap((row) async {
@@ -206,7 +207,7 @@ class ArticuloRepository {
 
   Future<List<ArticuloTarifaPrecio>> getArticuloTarifaPrecioListaById(
       {required String articuloId}) async {
-    final query = (db.select(db.articuloTarifaPrecioTable)
+    final query = (_db.select(_db.articuloTarifaPrecioTable)
       ..where((t) => t.articuloId.equals(articuloId)));
 
     return query.map((row) {
@@ -216,7 +217,7 @@ class ArticuloRepository {
 
   Future<List<ArticuloGrupoNeto>> getArticuloGrupoNetoListaById(
       {required String articuloId}) async {
-    final query = (db.select(db.articuloGrupoNetoTable)
+    final query = (_db.select(_db.articuloGrupoNetoTable)
       ..where((t) => t.articuloId.equals(articuloId)));
 
     return query.map((row) {
@@ -226,7 +227,7 @@ class ArticuloRepository {
 
   Future<List<ArticuloRecambio>> getArticuloRecambioListaById(
       {required String articuloId}) async {
-    final query = (db.select(db.articuloRecambioTable)
+    final query = (_db.select(_db.articuloRecambioTable)
       ..where((t) => t.articuloId.equals(articuloId)));
 
     return query.map((row) {
@@ -236,7 +237,7 @@ class ArticuloRepository {
 
   Future<List<ArticuloSustitutivo>> getArticuloSustitutivoListaById(
       {required String articuloId}) async {
-    final query = (db.select(db.articuloSustitutivoTable)
+    final query = (_db.select(_db.articuloSustitutivoTable)
       ..where((t) => t.articuloId.equals(articuloId)));
 
     return query.asyncMap((row) async {
@@ -323,44 +324,44 @@ class ArticuloRepository {
 
   Future<List<PedidoVentaLinea>> getArticuloPedidoVentaById(
       {required String articuloId, required String usuarioId}) async {
-    final query = db.select(db.pedidoVentaLineaTable).join([
+    final query = _db.select(_db.pedidoVentaLineaTable).join([
       innerJoin(
-          db.pedidoVentaTable,
-          db.pedidoVentaTable.pedidoVentaId
-              .equalsExp(db.pedidoVentaLineaTable.pedidoVentaId)),
+          _db.pedidoVentaTable,
+          _db.pedidoVentaTable.pedidoVentaId
+              .equalsExp(_db.pedidoVentaLineaTable.pedidoVentaId)),
       innerJoin(
-          db.clienteUsuarioTable,
-          db.clienteUsuarioTable.clienteId
-              .equalsExp(db.pedidoVentaTable.clienteId))
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.pedidoVentaTable.clienteId))
     ]);
 
-    query.where((db.pedidoVentaLineaTable.articuloId.equals(articuloId) &
-        db.clienteUsuarioTable.usuarioId.equals(usuarioId)));
+    query.where((_db.pedidoVentaLineaTable.articuloId.equals(articuloId) &
+        _db.clienteUsuarioTable.usuarioId.equals(usuarioId)));
 
     return query.asyncMap((row) async {
-      final pedidoVentaLineaDTO = row.readTable(db.pedidoVentaLineaTable);
+      final pedidoVentaLineaDTO = row.readTable(_db.pedidoVentaLineaTable);
       return pedidoVentaLineaDTO.toDomain();
     }).get();
   }
 
   Future<List<EstadisticasUltimosPrecios>> getArticuloUltimosPreciosById(
       {required String articuloId, required String usuarioId}) async {
-    final query = db.select(db.estadisticasUltimosPreciosTable).join([
+    final query = _db.select(_db.estadisticasUltimosPreciosTable).join([
       innerJoin(
-          db.clienteUsuarioTable,
-          db.clienteUsuarioTable.clienteId
-              .equalsExp(db.estadisticasUltimosPreciosTable.clienteId))
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId))
     ]);
     query.where(
-        db.estadisticasUltimosPreciosTable.articuloId.equals(articuloId) &
-            db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+        _db.estadisticasUltimosPreciosTable.articuloId.equals(articuloId) &
+            _db.clienteUsuarioTable.usuarioId.equals(usuarioId));
     query.orderBy(
-      [OrderingTerm.desc(db.estadisticasUltimosPreciosTable.fecha)],
+      [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
     );
 
     return query.asyncMap((row) async {
       final lastPriceArticuloDTO =
-          row.readTable(db.estadisticasUltimosPreciosTable);
+          row.readTable(_db.estadisticasUltimosPreciosTable);
       final articulo =
           await getArticuloById(articuloId: lastPriceArticuloDTO.articuloId);
       return lastPriceArticuloDTO.toDomain(articulo: articulo);
@@ -369,21 +370,21 @@ class ArticuloRepository {
 
   Future<DateTime> getFechaUltimaSyncArticulo() async {
     final date =
-        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
             .ultimaSyncArticulo;
     return DateTime.parse(date!);
   }
 
   Future<DateTime> getFechaUltimaSyncArticuloPedidoVenta() async {
     final date =
-        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
             .ultimaSyncPedidoVentaLinea;
     return DateTime.parse(date!);
   }
 
   Future<DateTime> getFechaUltimaSyncArticuloUltimosPrecios() async {
     final date =
-        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
             .ultimaSyncEstadisticasUltimosPrecios;
     return DateTime.parse(date!);
   }
@@ -394,7 +395,7 @@ class ArticuloRepository {
     required String provisionalToken,
   }) async {
     try {
-      final response = await dio.getUri(
+      final response = await _dio.getUri(
         requestUri,
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},
@@ -431,7 +432,7 @@ class ArticuloRepository {
     required String provisionalToken,
   }) async {
     try {
-      final response = await dio.getUri(
+      final response = await _dio.getUri(
         requestUri,
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},
@@ -467,7 +468,7 @@ class ArticuloRepository {
     required String provisionalToken,
   }) async {
     try {
-      final response = await dio.getUri(
+      final response = await _dio.getUri(
         requestUri,
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},

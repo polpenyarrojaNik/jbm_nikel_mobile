@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
-import '../../auth/infrastructure/auth_repository.dart';
 import '../domain/visita.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
@@ -14,8 +14,8 @@ final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
 final visitaListaStreamProvider =
     StreamProvider.autoDispose<List<Visita>>((ref) async* {
   final visitaRepository = ref.watch(visitaRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuarioService = ref.watch(usuarioServiceProvider);
+  final usuario = await usuarioService.getSignedInUsuario();
   yield* visitaRepository.watchVisitaList(usuarioId: usuario!.id);
 });
 

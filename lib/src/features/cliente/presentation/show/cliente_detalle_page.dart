@@ -51,32 +51,32 @@ class ClienteDetallePage extends StatelessWidget {
                       TextButtonWidget(
                           titleText: 'Vtas. Mes',
                           entityId: clienteId,
-                          appRouteValue: AppRoute.clientesalesmes,
+                          appRouteValue: AppRoutes.clientesalesmes,
                           params: params),
                       TextButtonWidget(
                           titleText: 'Vtas. Art',
                           entityId: clienteId,
-                          appRouteValue: AppRoute.clientesalesarticulo,
+                          appRouteValue: AppRoutes.clientesalesarticulo,
                           params: params),
                       TextButtonWidget(
                           titleText: '¿Precio Neto?',
                           entityId: clienteId,
-                          appRouteValue: AppRoute.clientependingpayment,
+                          appRouteValue: AppRoutes.clientependingpayment,
                           params: params),
                       TextButtonWidget(
                           titleText: 'Fact. Pendientes',
                           entityId: clienteId,
-                          appRouteValue: AppRoute.clientependingpayment,
+                          appRouteValue: AppRoutes.clientependingpayment,
                           params: params),
                       TextButtonWidget(
                           titleText: '¿Stock B2B?',
                           entityId: clienteId,
-                          appRouteValue: AppRoute.clientestockb2b,
+                          appRouteValue: AppRoutes.clientestockb2b,
                           params: params),
                       TextButtonWidget(
                         titleText: 'Top 150',
                         entityId: clienteId,
-                        appRouteValue: AppRoute.clientetoparticulos,
+                        appRouteValue: AppRoutes.clientetoparticulos,
                         params: params,
                       ),
                     ],

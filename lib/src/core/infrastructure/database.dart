@@ -1,23 +1,26 @@
 import 'dart:io';
+
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+
 import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
 import '../../features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
-import '../../features/articulos/infrastructure/articulo_tarifa_precio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
+import '../../features/articulos/infrastructure/articulo_tarifa_precio_dto.dart';
 import '../../features/cliente/infrastructure/articulo_top_dto.dart';
-import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
+import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_dto.dart';
 import '../../features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_pago_pendiente_dto.dart';
@@ -138,6 +141,12 @@ class FechaUltimaSyncTable extends Table {
   PaisTable,
   DivisaTable,
 ])
+final appDatabaseProvider = Provider<AppDatabase>(
+  // * Override this in the main method
+
+  (ref) => AppDatabase(),
+);
+
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 

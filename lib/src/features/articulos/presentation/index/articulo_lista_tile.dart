@@ -12,7 +12,7 @@ class ArticuloListaTile extends StatelessWidget {
       required this.clienteId});
 
   final Articulo articulo;
-  final AppRoute appRoute;
+  final AppRoutes appRoute;
   final String? clienteId;
 
   @override

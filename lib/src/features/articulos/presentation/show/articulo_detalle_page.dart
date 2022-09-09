@@ -15,11 +15,11 @@ import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/articulo_repository.dart';
 import 'articulo_componente_container.dart';
 import 'articulo_documento_container.dart';
-import 'articulo_imagen_container.dart';
 import 'articulo_grupos_netos_container.dart';
-import 'articulo_tarifa_precio_container.dart';
+import 'articulo_imagen_container.dart';
 import 'articulo_recambio_container.dart';
 import 'articulo_sustitutivo_container.dart';
+import 'articulo_tarifa_precio_container.dart';
 
 class ArticuloDetallePage extends StatelessWidget {
   const ArticuloDetallePage({super.key, required this.articuloId});
@@ -50,22 +50,22 @@ class ArticuloDetallePage extends StatelessWidget {
                       TextButtonWidget(
                           titleText: 'Ped. Ventas',
                           entityId: articuloId,
-                          appRouteValue: AppRoute.articulosalesorder,
+                          appRouteValue: AppRoutes.articulosalesorder,
                           params: params),
                       TextButtonWidget(
                           titleText: '¿Devoluciones?',
                           entityId: articuloId,
-                          appRouteValue: AppRoute.articuloreturns,
+                          appRouteValue: AppRoutes.articuloreturns,
                           params: params),
                       TextButtonWidget(
                           titleText: 'Últimos Precios',
                           entityId: articuloId,
-                          appRouteValue: AppRoute.articulolastprecio,
+                          appRouteValue: AppRoutes.articulolastprecio,
                           params: params),
                       TextButtonWidget(
                           titleText: '¿Estadísticas?',
                           entityId: articuloId,
-                          appRouteValue: AppRoute.articulostats,
+                          appRouteValue: AppRoutes.articulostats,
                           params: params),
                     ],
                   ),

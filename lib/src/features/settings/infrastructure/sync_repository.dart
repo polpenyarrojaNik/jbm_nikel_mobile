@@ -5,28 +5,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 
-import '../../../core/infrastructure/jbm_headers.dart';
-import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../../core/infrastructure/familia_dto.dart';
+import '../../../core/infrastructure/jbm_headers.dart';
 import '../../../core/infrastructure/log.dart';
+import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/remote_response.dart';
 import '../../../core/infrastructure/subfamilia_dto.dart';
-
 import '../../articulos/infrastructure/articulo_componente_dto.dart';
 import '../../articulos/infrastructure/articulo_dto.dart';
 import '../../articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import '../../articulos/infrastructure/articulo_grupo_neto_dto.dart';
-import '../../articulos/infrastructure/articulo_tarifa_precio_dto.dart';
 import '../../articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../articulos/infrastructure/articulo_sustitutivo_dto.dart';
-import '../../auth/infrastructure/auth_repository.dart';
+import '../../articulos/infrastructure/articulo_tarifa_precio_dto.dart';
 import '../../cliente/infrastructure/articulo_top_dto.dart';
-import '../../cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../cliente/infrastructure/cliente_descuento_dto.dart';
+import '../../cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../cliente/infrastructure/cliente_grupo_neto_dto.dart';
 import '../../cliente/infrastructure/cliente_pago_pendiente_dto.dart';
@@ -42,25 +41,26 @@ import '../../pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../../visitas/infrastructure/visita_dto.dart';
 
 final syncRepositoryProvider = Provider.autoDispose<SyncRepository>(
-  // * Override this in the main method
-  (ref) => throw UnimplementedError(),
+  (ref) => SyncRepository(
+    ref.watch(appDatabaseProvider),
+    ref.watch(dioProvider),
+  ),
 );
 
 class SyncRepository {
-  AppDatabase db;
-  Dio dio;
-  AuthRepository authRepository;
+  final AppDatabase _db;
+  final Dio _dio;
 
-  SyncRepository(this.db, this.dio, this.authRepository);
+  SyncRepository(this._db, this._dio);
 
   Future<void> syncPedidoVenta() async {
     try {
       await syncTable(
         fromJson: (e) => PedidoVentaDTO.fromJson(e),
         path: '/pedidos',
-        dbTable: db.pedidoVentaTable,
+        dbTable: _db.pedidoVentaTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncPedidoVenta,
+            _db.fechaUltimaSyncTable.ultimaSyncPedidoVenta,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -75,9 +75,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => PedidoVentaLineaDTO.fromJson(e),
         path: '/pedidos/detalle',
-        dbTable: db.pedidoVentaLineaTable,
+        dbTable: _db.pedidoVentaLineaTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncPedidoVentaLinea,
+            _db.fechaUltimaSyncTable.ultimaSyncPedidoVentaLinea,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -92,9 +92,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => PedidoVentaEstadoDTO.fromJson(e),
         path: '/pedidos/estados',
-        dbTable: db.pedidoVentaEstadoTable,
+        dbTable: _db.pedidoVentaEstadoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncPedidoVentaEstado,
+            _db.fechaUltimaSyncTable.ultimaSyncPedidoVentaEstado,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -109,8 +109,8 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteDTO.fromJson(e),
         path: '/clientes',
-        dbTable: db.clienteTable,
-        ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncCliente,
+        dbTable: _db.clienteTable,
+        ultimaSyncDateTableColumn: _db.fechaUltimaSyncTable.ultimaSyncCliente,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -125,9 +125,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteUsuarioDTO.fromJson(e),
         path: '/clientes-usuario',
-        dbTable: db.clienteUsuarioTable,
+        dbTable: _db.clienteUsuarioTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClienteUsuario,
+            _db.fechaUltimaSyncTable.ultimaSyncClienteUsuario,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -142,9 +142,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteDireccionDTO.fromJson(e),
         path: '/clientes/direcciones',
-        dbTable: db.clienteDireccionTable,
+        dbTable: _db.clienteDireccionTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClienteDireccion,
+            _db.fechaUltimaSyncTable.ultimaSyncClienteDireccion,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -159,9 +159,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteContactoDTO.fromJson(e),
         path: '/clientes/contactoos',
-        dbTable: db.clienteContactoTable,
+        dbTable: _db.clienteContactoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClienteContacto,
+            _db.fechaUltimaSyncTable.ultimaSyncClienteContacto,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -176,9 +176,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteDescuentoDTO.fromJson(e),
         path: '/clientes/descuentos',
-        dbTable: db.clienteDescuentoTable,
+        dbTable: _db.clienteDescuentoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClienteDescuento,
+            _db.fechaUltimaSyncTable.ultimaSyncClienteDescuento,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -193,9 +193,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteGrupoNetoDTO.fromJson(e),
         path: '/clientes/grupos-netos',
-        dbTable: db.clienteGrupoNetoTable,
+        dbTable: _db.clienteGrupoNetoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClienteGrupoNeto,
+            _db.fechaUltimaSyncTable.ultimaSyncClienteGrupoNeto,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -210,9 +210,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClientePrecioNetoDTO.fromJson(e),
         path: '/clientes/precios-netos',
-        dbTable: db.clientePrecioNetoTable,
+        dbTable: _db.clientePrecioNetoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClientePrecioNeto,
+            _db.fechaUltimaSyncTable.ultimaSyncClientePrecioNeto,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -227,9 +227,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClientePagoPendienteDTO.fromJson(e),
         path: '/clientes/pagos-pendientes',
-        dbTable: db.clientePagoPendienteTable,
+        dbTable: _db.clientePagoPendienteTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClientePagoPendiente,
+            _db.fechaUltimaSyncTable.ultimaSyncClientePagoPendiente,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -244,9 +244,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ClienteRappelDTO.fromJson(e),
         path: '/clientes/rappels',
-        dbTable: db.clienteRappelTable,
+        dbTable: _db.clienteRappelTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncClienteRappels,
+            _db.fechaUltimaSyncTable.ultimaSyncClienteRappels,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -261,9 +261,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloTopDTO.fromJson(e),
         path: '/clientes/articulos-top',
-        dbTable: db.articuloTopTable,
+        dbTable: _db.articuloTopTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticulosTop,
+            _db.fechaUltimaSyncTable.ultimaSyncArticulosTop,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -278,8 +278,8 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloDTO.fromJson(e),
         path: '/articulos',
-        dbTable: db.articuloTable,
-        ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncArticulo,
+        dbTable: _db.articuloTable,
+        ultimaSyncDateTableColumn: _db.fechaUltimaSyncTable.ultimaSyncArticulo,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -294,9 +294,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloEmpresaIvaDTO.fromJson(e),
         path: '/articulos/empresa-iva',
-        dbTable: db.articuloEmpresaIvaTable,
+        dbTable: _db.articuloEmpresaIvaTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticuloEmpresaIva,
+            _db.fechaUltimaSyncTable.ultimaSyncArticuloEmpresaIva,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -311,9 +311,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloComponenteDTO.fromJson(e),
         path: '/articulos/componentes',
-        dbTable: db.articuloComponenteTable,
+        dbTable: _db.articuloComponenteTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticuloComponente,
+            _db.fechaUltimaSyncTable.ultimaSyncArticuloComponente,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -328,9 +328,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloGrupoNetoDTO.fromJson(e),
         path: '/articulos/grupos-netos',
-        dbTable: db.articuloGrupoNetoTable,
+        dbTable: _db.articuloGrupoNetoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticuloGrupoNeto,
+            _db.fechaUltimaSyncTable.ultimaSyncArticuloGrupoNeto,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -345,9 +345,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloTarifaPrecioDTO.fromJson(e),
         path: '/articulos/precios-tarifa',
-        dbTable: db.articuloTarifaPrecioTable,
+        dbTable: _db.articuloTarifaPrecioTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticuloTarifaPrecio,
+            _db.fechaUltimaSyncTable.ultimaSyncArticuloTarifaPrecio,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -362,9 +362,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloRecambioDTO.fromJson(e),
         path: '/articulos/recambios',
-        dbTable: db.articuloRecambioTable,
+        dbTable: _db.articuloRecambioTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticuloRecambio,
+            _db.fechaUltimaSyncTable.ultimaSyncArticuloRecambio,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -379,9 +379,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => ArticuloSustitutivoDTO.fromJson(e),
         path: '/articulos/sustitutivos',
-        dbTable: db.articuloSustitutivoTable,
+        dbTable: _db.articuloSustitutivoTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncArticuloSustitutivo,
+            _db.fechaUltimaSyncTable.ultimaSyncArticuloSustitutivo,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -396,9 +396,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => EstadisticasVentaClienteUsuarioDTO.fromJson(e),
         path: '/estadisticas/ventas-cliente-usuario',
-        dbTable: db.estadisticasClienteUsuarioVentasTable,
+        dbTable: _db.estadisticasClienteUsuarioVentasTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncEstadisticasClienteUsuarioVentas,
+            _db.fechaUltimaSyncTable.ultimaSyncEstadisticasClienteUsuarioVentas,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -413,9 +413,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => EstadisticasUltimosPreciosDTO.fromJson(e),
         path: '/estadisticas/ultimos-precios-cliente-articulo',
-        dbTable: db.estadisticasUltimosPreciosTable,
+        dbTable: _db.estadisticasUltimosPreciosTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncEstadisticasUltimosPrecios,
+            _db.fechaUltimaSyncTable.ultimaSyncEstadisticasUltimosPrecios,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -430,8 +430,8 @@ class SyncRepository {
       await syncTable(
           fromJson: (e) => VisitaDTO.fromJson(e),
           path: '/visitas',
-          dbTable: db.visitaTable,
-          ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncVisita);
+          dbTable: _db.visitaTable,
+          ultimaSyncDateTableColumn: _db.fechaUltimaSyncTable.ultimaSyncVisita);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -445,8 +445,8 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => PaisDTO.fromJson(e),
         path: '/paises',
-        dbTable: db.paisTable,
-        ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncPais,
+        dbTable: _db.paisTable,
+        ultimaSyncDateTableColumn: _db.fechaUltimaSyncTable.ultimaSyncPais,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -461,8 +461,8 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => DivisaDTO.fromJson(e),
         path: '/divisa',
-        dbTable: db.divisaTable,
-        ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncDivisa,
+        dbTable: _db.divisaTable,
+        ultimaSyncDateTableColumn: _db.fechaUltimaSyncTable.ultimaSyncDivisa,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -477,9 +477,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => PlazoDeCobroDTO.fromJson(e),
         path: '/plazos-cobro',
-        dbTable: db.plazoDeCobroTable,
+        dbTable: _db.plazoDeCobroTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncPlazoDeCobro,
+            _db.fechaUltimaSyncTable.ultimaSyncPlazoDeCobro,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -494,9 +494,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => MetodoDeCobroDTO.fromJson(e),
         path: '/metodos-cobro',
-        dbTable: db.metodoDeCobroTable,
+        dbTable: _db.metodoDeCobroTable,
         ultimaSyncDateTableColumn:
-            db.fechaUltimaSyncTable.ultimaSyncMetodoDeCobro,
+            _db.fechaUltimaSyncTable.ultimaSyncMetodoDeCobro,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -511,8 +511,8 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => FamiliaDTO.fromJson(e),
         path: '/articulos/familia',
-        dbTable: db.familiaTable,
-        ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncFamilia,
+        dbTable: _db.familiaTable,
+        ultimaSyncDateTableColumn: _db.fechaUltimaSyncTable.ultimaSyncFamilia,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -527,8 +527,9 @@ class SyncRepository {
       await syncTable(
         fromJson: (e) => SubfamiliaDTO.fromJson(e),
         path: '/articulos/subfamilia',
-        dbTable: db.subfamiliaTable,
-        ultimaSyncDateTableColumn: db.fechaUltimaSyncTable.ultimaSyncSubfamilia,
+        dbTable: _db.subfamiliaTable,
+        ultimaSyncDateTableColumn:
+            _db.fechaUltimaSyncTable.ultimaSyncSubfamilia,
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -548,10 +549,7 @@ class SyncRepository {
     int? totalRows;
 
     try {
-      final usuario = await authRepository.getSignedInUsuario();
-
       final dbSysdateStr = await _getRemoteDbSysDate(
-          provisionalToken: usuario!.provisionalToken,
           jsonDataSelector: (json) => json['data'] as String);
 
       final ultimaFechaSync =
@@ -567,7 +565,6 @@ class SyncRepository {
         final remotePageItems = await _remoteSyncData(
             path: '/api/v1/sync/$path',
             query: query,
-            provisionalToken: usuario.provisionalToken,
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
 
         await remotePageItems.maybeWhen(
@@ -594,7 +591,8 @@ class SyncRepository {
       final fechaUltimaSyncValue = createFechaUltimaSyncValue(
           columnName: ultimaSyncDateTableColumn.name, date: dbSysdateStr);
 
-      await (db.update(db.fechaUltimaSyncTable)..where((t) => t.id.equals('1')))
+      await (_db.update(_db.fechaUltimaSyncTable)
+            ..where((t) => t.id.equals('1')))
           .write(fechaUltimaSyncValue);
     } on AppException catch (e) {
       log.severe(e.details);
@@ -607,7 +605,7 @@ class SyncRepository {
   Future<void> upsertTable(
       {required TableInfo<Table, dynamic> table, required dynamic dto}) async {
     try {
-      await db.into(table).insertOnConflictUpdate(dto);
+      await _db.into(table).insertOnConflictUpdate(dto);
     } catch (e) {
       rethrow;
     }
@@ -616,7 +614,7 @@ class SyncRepository {
   Future<void> deleteTableValue(
       {required TableInfo<Table, dynamic> table, required dynamic dto}) async {
     try {
-      await db.delete(table).delete(dto);
+      await _db.delete(table).delete(dto);
     } catch (e) {
       rethrow;
     }
@@ -625,18 +623,14 @@ class SyncRepository {
   Future<RemoteResponse<List<Map<String, dynamic>>>> _remoteSyncData({
     required String path,
     Map<String, String>? query,
-    required String provisionalToken,
     required List<dynamic> Function(dynamic json) jsonDataSelector,
   }) async {
     try {
-      final response = await dio.getUri(
+      final response = await _dio.getUri(
         Uri.http(
           dotenv.get('URL', fallback: 'localhost:3001'),
           path,
           query,
-        ),
-        options: Options(
-          headers: {'authorization': 'Bearer $provisionalToken'},
         ),
       );
 
@@ -674,18 +668,15 @@ class SyncRepository {
   }
 
   Future<String> _getRemoteDbSysDate({
-    required String provisionalToken,
     required dynamic Function(dynamic json) jsonDataSelector,
   }) async {
     try {
-      final response = await dio.getUri(
-          Uri.http(
-            dotenv.get('URL', fallback: 'localhost:3001'),
-            '/api/v1/sync/db-datetime',
-          ),
-          options: Options(
-            headers: {'authorization': 'Bearer $provisionalToken'},
-          ));
+      final response = await _dio.getUri(
+        Uri.http(
+          dotenv.get('URL', fallback: 'localhost:3001'),
+          '/api/v1/sync/db-datetime',
+        ),
+      );
       log.info(
           '${(this).runtimeType}.getDbSysdate - Received response: ${response.statusCode}');
 
@@ -806,119 +797,119 @@ class SyncRepository {
   Future<String?> getUltimaFechaSync({required String columnName}) async {
     switch (columnName) {
       case 'ULTIMA_SYNC_DIVISA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncDivisa;
       case 'ULTIMA_SYNC_PAIS':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncPais;
       case 'ULTIMA_SYNC_METODO_COBRO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncMetodoDeCobro;
       case 'ULTIMA_SYNC_PLAZO_COBRO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncPlazoDeCobro;
       case 'ULTIMA_SYNC_CLIENTE':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncCliente;
       case 'ULTIMA_SYNC_CLIENTE_USUARIO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClienteUsuario;
       case 'ULTIMA_SYNC_CLIENTE_CONTACTO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClienteContacto;
       case 'ULTIMA_SYNC_CLIENTE_DESCUENTO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClienteDescuento;
       case 'ULTIMA_SYNC_CLIENTE_DIRECCION':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClienteDireccion;
       case 'ULTIMA_SYNC_CLIENTE_PRECIO_NETO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClientePrecioNeto;
       case 'ULTIMA_SYNC_CLIENTE_GRUPO_NETO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClienteGrupoNeto;
       case 'ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClientePagoPendiente;
       case 'ULTIMA_SYNC_CLIENTE_RAPPELS':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncClienteRappels;
       case 'ULTIMA_SYNC_ARTICULOS_TOP':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticulosTop;
       case 'ULTIMA_SYNC_PEDIDO_VENTA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncPedidoVenta;
       case 'ULTIMA_SYNC_PEDIDO_VENTA_LINEA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncPedidoVentaLinea;
       case 'ULTIMA_SYNC_PEDIDO_VENTA_ESTADO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncPedidoVentaLinea;
       case 'ULTIMA_SYNC_ARTICULO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticulo;
       case 'ULTIMA_SYNC_FAMILIA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncFamilia;
       case 'ULTIMA_SYNC_SUBFAMILIA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncSubfamilia;
       case 'ULTIMA_SYNC_ARTICULO_GRUPO_NETO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticuloGrupoNeto;
       case 'ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticuloTarifaPrecio;
       case 'ULTIMA_SYNC_ARTICULO_COMPONENTE':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticuloComponente;
       case 'ULTIMA_SYNC_ARTICULO_SUSTITUTIVO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticuloSustitutivo;
       case 'ULTIMA_SYNC_ARTICULO_RECAMBIO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticuloRecambio;
       case 'ULTIMA_SYNC_ARTICULO_EMPRESA_IVA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncArticuloEmpresaIva;
       case 'ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncEstadisticasClienteUsuarioVentas;
       case 'ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncEstadisticasUltimosPrecios;
       case 'ULTIMA_SYNC_VISITA':
-        return (await (db.select(db.fechaUltimaSyncTable)..limit(1))
+        return (await (_db.select(_db.fechaUltimaSyncTable)..limit(1))
                 .getSingleOrNull())
             ?.ultimaSyncVisita;
 

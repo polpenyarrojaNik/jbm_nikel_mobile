@@ -1,11 +1,12 @@
-import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/features/auth/presentation/auth_controller.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../core/presentation/common_widgets/app_decoration.dart';
-import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/presentation/common_widgets/app_decoration.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/toasts.dart';
+import 'login_controller.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
@@ -14,7 +15,7 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class LoginPageState extends ConsumerState<LoginPage> {
-  String usuario = '';
+  String username = '';
   String contrasenya = '';
   FormGroup buildForm() => fb.group(<String, Object>{
         'usuario': FormControl<String>(
@@ -25,36 +26,21 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AuthState>(
-        authControllerProvider,
+    ref.listen<AsyncValue>(
+        loginPageControllerProvider,
         (_, state) => state.maybeWhen(
-              failure: (errorMessage) => showFlash(
-                context: context,
-                duration: const Duration(seconds: 4),
-                builder: (context, controller) => Flash.bar(
-                  backgroundColor: Theme.of(context).colorScheme.onSecondary,
-                  controller: controller,
-                  position: FlashPosition.bottom,
-                  horizontalDismissDirection:
-                      HorizontalDismissDirection.startToEnd,
-                  margin: const EdgeInsets.all(8),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(4),
-                  ),
-                  child: FlashBar(
-                    content: Text(
-                      errorMessage,
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              orElse: () => null,
+              error: (error, stackTrace) {
+                if (!state.isRefreshing) {
+                  final errorMessage = (error is AppException)
+                      ? error.details.message
+                      : error.toString();
+                  showToast(errorMessage, context);
+                }
+              },
+              orElse: () {},
             ));
 
-    final state = ref.watch(authControllerProvider);
+    final state = ref.watch(loginPageControllerProvider);
     final deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -110,16 +96,13 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         ),
                       ),
                       state.maybeWhen(
-                        orElse: () => ElevatedButton(
-                          onPressed: () => _submit(form, ref),
-                          child: const Text(
-                            'Login',
-                          ),
-                        ),
-                        authenticating: () => const Center(
-                          child: ProgressIndicatorWidget(),
-                        ),
-                      ),
+                        orElse: () {
+                          return ElevatedButton(
+                              onPressed: () => _submit(form, ref),
+                              child: const Text('Login'));
+                        },
+                        loading: () => const ProgressIndicatorWidget(),
+                      )
                     ],
                   ),
                 ),
@@ -131,12 +114,12 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   Future<void> _submit(FormGroup form, WidgetRef ref) async {
     if (form.valid) {
-      usuario = (form.control('usuario').value as String).toUpperCase();
+      username = (form.control('usuario').value as String).toUpperCase();
       contrasenya = form.control('contrasenya').value as String;
 
       await ref
-          .read(authControllerProvider.notifier)
-          .login(usuario: usuario, contrasenya: contrasenya);
+          .read(loginPageControllerProvider.notifier)
+          .login(username: username, password: contrasenya);
     } else {
       form.markAllAsTouched();
     }

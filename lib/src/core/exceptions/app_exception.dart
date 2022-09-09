@@ -7,6 +7,8 @@ class AppException with _$AppException {
   // Global
   const factory AppException.restApiFailure(
       int errorCode, String errorMessage) = RestApiFailure;
+  const factory AppException.authLocalFailure(String errorMessage) =
+      AuthLocalFailure;
   const factory AppException.fetchLocalDataFailure(String errorMessage) =
       FetchLocalDataFailure;
 
@@ -40,6 +42,10 @@ class AppExceptionData {
 extension AppExceptionDetalles on AppException {
   AppExceptionData get details {
     return when(
+      authLocalFailure: (errorMessage) => AppExceptionData(
+        'auth-failure',
+        'Error authenticating $errorMessage',
+      ),
       restApiFailure: (errorCode, errorMessage) => AppExceptionData(
         'rest-api-failure',
         'API ERROR: $errorCode: $errorMessage',

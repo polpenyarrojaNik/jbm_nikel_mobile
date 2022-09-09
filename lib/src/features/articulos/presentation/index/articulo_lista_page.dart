@@ -55,7 +55,7 @@ class ArticuloListaPage extends ConsumerWidget {
                         itemCount: articuloList.length,
                         itemBuilder: (context, i) => ArticuloListaTile(
                           articulo: articuloList[i],
-                          appRoute: AppRoute.articuloshow,
+                          appRoute: AppRoutes.articuloshow,
                           clienteId: null,
                         ),
                       ),

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/auth/domain/usuario.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 part 'usuario_dto.freezed.dart';

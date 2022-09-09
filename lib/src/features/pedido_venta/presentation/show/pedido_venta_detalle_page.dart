@@ -28,7 +28,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: () => context.goNamed(
-              AppRoute.salesorderedit.name,
+              AppRoutes.salesorderedit.name,
               params: {
                 'id': pedidoVentaId,
               },
