@@ -42,7 +42,7 @@ class ClienteDetallePage extends StatelessWidget {
           return AsyncValueWidget<Cliente>(
             value: clienteValue,
             data: (cliente) => DefaultTabController(
-              length: 8,
+              length: 7,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
