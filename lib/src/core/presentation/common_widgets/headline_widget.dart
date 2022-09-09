@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class HeadlineWidget extends StatelessWidget {
   const HeadlineWidget(
-      {Key? key,
+      {super.key,
       required this.headlineTitle,
       required this.icon,
-      required this.onTap})
-      : super(key: key);
+      required this.onTap});
 
   final String headlineTitle;
   final Icon icon;

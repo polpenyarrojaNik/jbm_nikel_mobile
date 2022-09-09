@@ -29,7 +29,9 @@ final clienteListaStreamProvider =
   final authRepository = ref.watch(authRepositoryProvider);
   final usuario = await authRepository.getSignedInUsuario();
   yield* clienteRepository.watchClienteLista(
-      usuarioId: usuario!.id, page: page);
+    usuarioId: usuario!.id,
+    page: page,
+  );
 });
 
 final clienteProvider =
@@ -115,7 +117,7 @@ class ClienteRepository {
   ClienteRepository(this.db, this.dio);
 
   Stream<List<Cliente>> watchClienteLista(
-      {required String usuarioId, required int page}) {
+      {required String usuarioId, required int page, String? searchText}) {
     final query = db.select(db.clienteTable).join([
       innerJoin(db.clienteUsuarioTable,
           db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id)),
@@ -129,8 +131,15 @@ class ClienteRepository {
           db.plazoDeCobroTable.id.equalsExp(db.clienteTable.plazoDeCobroId))
     ]);
 
-    query.where(db.clienteTable.deleted.equals('N') &
-        db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    if (searchText != null) {
+      query.where(db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          (db.clienteTable.nombreCliente.like('%$searchText%') |
+              db.clienteTable.nombreCliente
+                  .like('%${searchText.toUpperCase()}%')));
+    } else {
+      query.where(db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    }
+
     query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
     query.orderBy([
       OrderingTerm.asc(db.clienteTable.nombreCliente),

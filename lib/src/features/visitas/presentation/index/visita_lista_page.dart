@@ -8,7 +8,7 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class VisitaListaPage extends ConsumerWidget {
-  const VisitaListaPage({Key? key}) : super(key: key);
+  const VisitaListaPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,7 +18,7 @@ class VisitaListaPage extends ConsumerWidget {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
-        title: const Text('Visitaas'),
+        title: const Text('Visitas'),
       ),
       body: ListView.builder(
         shrinkWrap: true,

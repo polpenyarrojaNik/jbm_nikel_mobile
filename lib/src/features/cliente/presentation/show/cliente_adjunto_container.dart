@@ -8,8 +8,7 @@ import '../../domain/cliente_adjunto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteAdjuntoContainer extends ConsumerWidget {
-  const ClienteAdjuntoContainer({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteAdjuntoContainer({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -36,8 +35,7 @@ class ClienteAdjuntoContainer extends ConsumerWidget {
 }
 
 class ClienteAdjuntoTile extends ConsumerWidget {
-  const ClienteAdjuntoTile({Key? key, required this.clienteAdjunto})
-      : super(key: key);
+  const ClienteAdjuntoTile({super.key, required this.clienteAdjunto});
 
   final ClienteAdjunto clienteAdjunto;
 

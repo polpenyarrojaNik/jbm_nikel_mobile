@@ -23,8 +23,7 @@ import 'cliente_precio_neto_container.dart.dart';
 import 'cliente_rappel_container.dart';
 
 class ClienteDetallePage extends StatelessWidget {
-  const ClienteDetallePage({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteDetallePage({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -98,7 +97,6 @@ class ClienteDetallePage extends StatelessWidget {
                               Tab(
                                   icon:
                                       Icon(Icons.discount_outlined, size: 16)),
-                              Tab(text: '¿?'),
                               Tab(icon: Icon(Icons.local_shipping, size: 16)),
                               Tab(icon: Icon(Icons.attach_file, size: 16)),
                             ],
@@ -114,7 +112,6 @@ class ClienteDetallePage extends StatelessWidget {
                           ClientePrecioNetoContainer(clienteId: clienteId),
                           ClienteGrupoNetoContainer(clienteId: clienteId),
                           ClienteDescuentoContainer(clienteId: clienteId),
-                          const Text('¿Descuento Tipo Entrada?'),
                           ClienteRappelContainer(clienteId: clienteId),
                           ClienteAdjuntoContainer(clienteId: clienteId),
                         ],
@@ -262,44 +259,45 @@ class ClienteGeneralData extends StatelessWidget {
                 children: [
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Venta Año Actual',
-                      value: cliente.ventasAnyoActual?.toString() ?? ''),
+                      value: numberFormat(cliente.ventasAnyoActual!)),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Venta Año Anterior',
-                      value: cliente.ventasAnyoAnterior?.toString() ?? ''),
+                    fieldTitleValue: 'Venta Año Anterior',
+                    value: numberFormat(cliente.ventasAnyoAnterior!),
+                  ),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Ventas Hace 2 Años',
-                      value: cliente.ventasHaceDosAnyos?.toString() ?? ''),
+                      value: numberFormat(cliente.ventasHaceDosAnyos!)),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Porcentaje Garantias',
                       value: (cliente.porcentajeGarantias != null)
-                          ? '${cliente.porcentajeGarantias?.toString()}%'
+                          ? '${numberFormat(cliente.porcentajeGarantias!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Año Actual',
                       value: (cliente.margenAnyoActual != null)
-                          ? '${cliente.margenAnyoActual?.toString()}%'
+                          ? '${numberFormat(cliente.margenAnyoActual!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Año Anterior',
                       value: (cliente.margenAnyoAnterior != null)
-                          ? '${cliente.margenAnyoAnterior?.toString()}%'
+                          ? '${numberFormat(cliente.margenAnyoAnterior!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Hace 2 Años',
                       value: (cliente.margenHaceDosAnyos != null)
-                          ? '${cliente.margenHaceDosAnyos?.toString()}%'
+                          ? '${numberFormat(cliente.margenHaceDosAnyos!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Porcentaje Abonos',
                       value: (cliente.porcentajeAbonos != null)
-                          ? '${cliente.porcentajeAbonos?.toString()}%'
+                          ? '${numberFormat(cliente.porcentajeAbonos!)}%'
                           : ''),
                 ],
               ),
@@ -341,8 +339,7 @@ class ClienteGeneralData extends StatelessWidget {
 }
 
 class ClientePricesAndOthersData extends StatelessWidget {
-  const ClientePricesAndOthersData({Key? key, required this.cliente})
-      : super(key: key);
+  const ClientePricesAndOthersData({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -383,8 +380,6 @@ class ClientePricesAndOthersData extends StatelessWidget {
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Descuento general',
                       value: cliente.descripcionDescuentoGeneral ?? ''),
-                  const RowFieldTextDetalle(
-                      fieldTitleValue: 'Bonificación', value: '¿?'),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Método cálculo precios',
                       value: cliente.tipoCalucloPrecio),
@@ -401,8 +396,7 @@ class ClientePricesAndOthersData extends StatelessWidget {
 }
 
 class ClienteFacturationDataContainer extends StatelessWidget {
-  const ClienteFacturationDataContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const ClienteFacturationDataContainer({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -437,7 +431,7 @@ class ClienteFacturationDataContainer extends StatelessWidget {
                       value: cliente.metodoDeCobro?.descripcion ?? ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Descuento P.P',
-                      value: cliente.descuentoProntoPago.toString()),
+                      value: numberFormat(cliente.descuentoProntoPago)),
                 ],
               ),
             ),
@@ -449,8 +443,7 @@ class ClienteFacturationDataContainer extends StatelessWidget {
 }
 
 class ClienteRemarksContainer extends StatelessWidget {
-  const ClienteRemarksContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const ClienteRemarksContainer({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -461,8 +454,7 @@ class ClienteRemarksContainer extends StatelessWidget {
 }
 
 class ClienteRiskContainer extends StatelessWidget {
-  const ClienteRiskContainer({Key? key, required this.cliente})
-      : super(key: key);
+  const ClienteRiskContainer({super.key, required this.cliente});
 
   final Cliente cliente;
 
@@ -497,6 +489,7 @@ class ClienteRiskContainer extends StatelessWidget {
                       fieldTitleValue: 'Concedido Fecha',
                       value: (cliente.riesgoConcedidoInternoDate != null)
                           ? dateFormatter(cliente.riesgoConcedidoInternoDate!
+                              .toLocal()
                               .toIso8601String())
                           : ''),
                 ],
@@ -524,11 +517,13 @@ class ClienteRiskContainer extends StatelessWidget {
                 children: [
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Concedido COFACE',
-                      value: cliente.riesgoConcedidoCoafe.toString()),
+                      value: numberFormat(cliente.riesgoConcedidoCoafe)),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Fecha COFACE',
                       value: (cliente.riesgoConcedidoCoafeFecha != null)
-                          ? cliente.riesgoConcedidoCoafeFecha!.toIso8601String()
+                          ? cliente.riesgoConcedidoCoafeFecha!
+                              .toLocal()
+                              .toIso8601String()
                           : ''),
                 ],
               ),
@@ -557,22 +552,29 @@ class ClienteRiskContainer extends StatelessWidget {
                       fieldTitleValue: 'Riesgo Actual', value: '¿?'),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Riesgo Concedido',
-                      value: cliente.riesgoConcedido?.toString() ?? ''),
+                      value: (cliente.riesgoConcedido != null)
+                          ? numberFormat(cliente.riesgoConcedido!)
+                          : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Pdte. Cobro Vencido',
-                      value: cliente.riesgoPendienteCobroVencido?.toString() ??
-                          ''),
+                      value: (cliente.riesgoPendienteCobroVencido != null)
+                          ? numberFormat(cliente.riesgoPendienteCobroVencido!)
+                          : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Pdte. Cobro No vencido',
-                      value:
-                          cliente.riesgoPendienteCobroNoVencido?.toString() ??
-                              ''),
+                      value: (cliente.riesgoPendienteCobroNoVencido != null)
+                          ? numberFormat(cliente.riesgoPendienteCobroNoVencido!)
+                          : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Pdte. Servir',
-                      value: cliente.riesgoPendienteServir?.toString() ?? ''),
+                      value: (cliente.riesgoPendienteServir != null)
+                          ? numberFormat(cliente.riesgoPendienteServir!)
+                          : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Riesgo Concedido',
-                      value: cliente.riesgoPendienteFacturar?.toString() ?? ''),
+                      value: (cliente.riesgoPendienteFacturar != null)
+                          ? numberFormat(cliente.riesgoPendienteFacturar!)
+                          : ''),
                 ],
               ),
             ),

@@ -8,7 +8,7 @@ import '../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
   @override
   LoginPageState createState() => LoginPageState();
 }

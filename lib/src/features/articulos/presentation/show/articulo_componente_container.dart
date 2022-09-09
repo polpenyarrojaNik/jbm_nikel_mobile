@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class ArticuloComponenteContainer extends ConsumerWidget {
-  const ArticuloComponenteContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloComponenteContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -39,8 +39,7 @@ class ArticuloComponenteContainer extends ConsumerWidget {
 }
 
 class ArticuloComponenteTile extends StatelessWidget {
-  const ArticuloComponenteTile({Key? key, required this.articuloComponente})
-      : super(key: key);
+  const ArticuloComponenteTile({super.key, required this.articuloComponente});
 
   final ArticuloComponente articuloComponente;
 
@@ -55,13 +54,14 @@ class ArticuloComponenteTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(articuloComponente.articuloComponente.id),
-              Text(articuloComponente.cantidad.toString()),
+              Text(numberFormat(articuloComponente.cantidad)),
             ],
           ),
           const SizedBox(height: 5),
           Text(articuloComponente.articuloComponente.descripcion),
-          Text(
-              'Stock: ${articuloComponente.articuloComponente.stockDisponible}'),
+          if (articuloComponente.articuloComponente.stockDisponible != null)
+            Text(
+                'Stock: ${numberFormat(articuloComponente.articuloComponente.stockDisponible!)}'),
         ],
       ),
     );

@@ -6,11 +6,10 @@ import '../../domain/articulo.dart';
 
 class ArticuloListaTile extends StatelessWidget {
   const ArticuloListaTile(
-      {Key? key,
+      {super.key,
       required this.articulo,
       required this.appRoute,
-      required this.clienteId})
-      : super(key: key);
+      required this.clienteId});
 
   final Articulo articulo;
   final AppRoute appRoute;

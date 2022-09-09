@@ -9,8 +9,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/cliente_pago_pendiente.dart';
 
 class ClientePagoPendientePage extends ConsumerWidget {
-  const ClientePagoPendientePage({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClientePagoPendientePage({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -50,8 +49,8 @@ class ClientePagoPendientePage extends ConsumerWidget {
 }
 
 class ClientePagoPendienteTile extends StatelessWidget {
-  const ClientePagoPendienteTile({Key? key, required this.clientePagoPendiente})
-      : super(key: key);
+  const ClientePagoPendienteTile(
+      {super.key, required this.clientePagoPendiente});
 
   final ClientePagoPendiente clientePagoPendiente;
 
@@ -100,7 +99,9 @@ class ClientePagoPendienteTile extends StatelessWidget {
                           style: Theme.of(context).textTheme.subtitle2,
                         ),
                         Text(
-                          clientePagoPendiente.importe?.toString() ?? '',
+                          (clientePagoPendiente.importe != null)
+                              ? numberFormat(clientePagoPendiente.importe!)
+                              : '',
                           style: Theme.of(context).textTheme.subtitle2,
                         ),
                       ],
@@ -108,6 +109,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
                     if (clientePagoPendiente.fechaFactura != null)
                       Text(
                           dateFormatter(clientePagoPendiente.fechaFactura!
+                              .toLocal()
                               .toIso8601String()),
                           style: Theme.of(context).textTheme.caption),
                     const Spacer(),
@@ -138,7 +140,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
                         ),
                         if (clientePagoPendiente.fechaExpiracionInicial != null)
                           Text(
-                            'Venc. Inicial ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toIso8601String())}',
+                            'Venc. Inicial ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
                             style: Theme.of(context).textTheme.caption,
                           ),
                       ],

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/text_button_widget.dart';
 
 class ButtonsRowBarWidget extends StatelessWidget {
-  ButtonsRowBarWidget({Key? key, required this.textButtonsList})
-      : super(key: key);
+  ButtonsRowBarWidget({super.key, required this.textButtonsList});
 
   final List<TextButtonWidget> textButtonsList;
   final ScrollController _scrollController = ScrollController();

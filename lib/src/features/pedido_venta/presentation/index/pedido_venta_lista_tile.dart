@@ -6,8 +6,7 @@ import '../../../../core/routing/app_router.dart';
 import '../../domain/pedido_venta.dart';
 
 class PedidoVentaListaTile extends StatelessWidget {
-  const PedidoVentaListaTile({Key? key, required this.pedidoVenta})
-      : super(key: key);
+  const PedidoVentaListaTile({super.key, required this.pedidoVenta});
 
   final PedidoVenta pedidoVenta;
 
@@ -36,7 +35,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                 children: [
                   Text(pedidoVenta.pedidoVentaId),
                   Text(dateFormatter(
-                      pedidoVenta.pedidoVentaDate.toIso8601String())),
+                      pedidoVenta.pedidoVentaDate.toLocal().toIso8601String())),
                 ],
               ),
               const SizedBox(height: 8),

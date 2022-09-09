@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MobileCustomSeparators extends StatelessWidget {
-  const MobileCustomSeparators({Key? key, required this.separatorTitle})
-      : super(key: key);
+  const MobileCustomSeparators({super.key, required this.separatorTitle});
 
   final String separatorTitle;
 

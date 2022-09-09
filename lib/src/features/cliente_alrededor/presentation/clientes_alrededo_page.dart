@@ -10,6 +10,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_clien
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../core/presentation/common_widgets/row_field_text_detail.dart';
 
@@ -223,18 +224,20 @@ class ClienteAlrededorDialog extends StatelessWidget {
                 const Divider(),
                 RowFieldTextDetalle(
                     fieldTitleValue: 'Venta Año Actual',
-                    value: cliente.ventasAnyoActual?.toString() ?? ''),
+                    value: (cliente.ventasAnyoActual != null)
+                        ? numberFormat(cliente.ventasAnyoActual!)
+                        : ''),
                 const SizedBox(height: 2),
                 RowFieldTextDetalle(
                     fieldTitleValue: 'Margen Año Actual',
                     value: (cliente.margenAnyoActual != null)
-                        ? '${cliente.margenAnyoActual?.toString()}%'
+                        ? '${numberFormat(cliente.margenAnyoActual!)}%'
                         : ''),
                 const SizedBox(height: 2),
                 RowFieldTextDetalle(
                     fieldTitleValue: 'Porcentaje Abonos',
                     value: (cliente.porcentajeAbonos != null)
-                        ? '${cliente.porcentajeAbonos?.toString()}%'
+                        ? '${numberFormat(cliente.porcentajeAbonos!)}%'
                         : ''),
               ],
             ),

@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_tarifa_precio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class ArticuloTarifaPrecioContainer extends ConsumerWidget {
-  const ArticuloTarifaPrecioContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloTarifaPrecioContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +35,8 @@ class ArticuloTarifaPrecioContainer extends ConsumerWidget {
 }
 
 class ArticuloTarifaPrecioTile extends StatelessWidget {
-  const ArticuloTarifaPrecioTile({Key? key, required this.articuloTarifaPrecio})
-      : super(key: key);
+  const ArticuloTarifaPrecioTile(
+      {super.key, required this.articuloTarifaPrecio});
 
   final ArticuloTarifaPrecio articuloTarifaPrecio;
 
@@ -54,8 +54,8 @@ class ArticuloTarifaPrecioTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  '${articuloTarifaPrecio.precio}/${articuloTarifaPrecio.tipoPrecio}'),
-              Text(articuloTarifaPrecio.cantidadDesDe.toString()),
+                  '${numberFormat(articuloTarifaPrecio.precio)}/${articuloTarifaPrecio.tipoPrecio}'),
+              Text(numberFormat(articuloTarifaPrecio.cantidadDesDe)),
             ],
           ),
         ],

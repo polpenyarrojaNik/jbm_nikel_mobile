@@ -10,7 +10,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../infrastructure/pedido_venta_repository.dart';
 
 class PedidoVentaListPage extends ConsumerWidget {
-  const PedidoVentaListPage({Key? key}) : super(key: key);
+  const PedidoVentaListPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,7 +25,7 @@ class PedidoVentaListPage extends ConsumerWidget {
       appBar: CustomSearchAppBar(
         title: 'Ventas Orders',
         searchTitle: 'Search Ventas order...',
-        onSubmitted: (searchText) => {print(searchText)},
+        onChanged: (searchText) => {print(searchText)},
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -6,12 +6,12 @@ class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
       {super.key,
       required this.title,
       required this.searchTitle,
-      required this.onSubmitted,
+      required this.onChanged,
       this.addActionButton});
 
   final String title;
   final String searchTitle;
-  final Function(String searchText) onSubmitted;
+  final Function(String searchText) onChanged;
   final IconButton? addActionButton;
 
   @override
@@ -33,7 +33,7 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
     return AppBar(
       title: (isSearching)
           ? SearchListTile(
-              searchTitle: widget.searchTitle, onSubmitted: widget.onSubmitted)
+              searchTitle: widget.searchTitle, onChanged: widget.onChanged)
           : Text(widget.title),
       actions: [
         IconButton(
@@ -53,11 +53,10 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
 
 class SearchListTile extends ConsumerWidget {
   const SearchListTile(
-      {Key? key, required this.searchTitle, required this.onSubmitted})
-      : super(key: key);
+      {super.key, required this.searchTitle, required this.onChanged});
 
   final String searchTitle;
-  final Function(String searchText) onSubmitted;
+  final Function(String searchText) onChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,19 +67,20 @@ class SearchListTile extends ConsumerWidget {
         size: 28,
       ),
       title: TextField(
-          decoration: InputDecoration(
-            hintText: searchTitle,
-            hintStyle: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontStyle: FontStyle.italic,
-            ),
-            border: InputBorder.none,
-          ),
-          style: const TextStyle(
+        decoration: InputDecoration(
+          hintText: searchTitle,
+          hintStyle: const TextStyle(
             color: Colors.white,
+            fontSize: 18,
+            fontStyle: FontStyle.italic,
           ),
-          onSubmitted: (value) => onSubmitted(value)),
+          border: InputBorder.none,
+        ),
+        style: const TextStyle(
+          color: Colors.white,
+        ),
+        onChanged: (value) => onChanged(value),
+      ),
     );
   }
 }

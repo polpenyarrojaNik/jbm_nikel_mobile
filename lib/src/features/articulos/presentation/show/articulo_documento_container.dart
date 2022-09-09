@@ -12,8 +12,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/articulo_documento.dart';
 
 class ArticuloDocumentContainer extends ConsumerWidget {
-  const ArticuloDocumentContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloDocumentContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -39,8 +38,7 @@ class ArticuloDocumentContainer extends ConsumerWidget {
 }
 
 class ArticuloDocumentoTile extends ConsumerWidget {
-  const ArticuloDocumentoTile({Key? key, required this.articuloDocumento})
-      : super(key: key);
+  const ArticuloDocumentoTile({super.key, required this.articuloDocumento});
 
   final ArticuloDocumento articuloDocumento;
 

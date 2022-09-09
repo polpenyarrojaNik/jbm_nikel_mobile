@@ -8,8 +8,7 @@ import '../../domain/cliente_direccion.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteDireccionesContainer extends ConsumerWidget {
-  const ClienteDireccionesContainer({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteDireccionesContainer({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -36,8 +35,7 @@ class ClienteDireccionesContainer extends ConsumerWidget {
 }
 
 class ClienteDireccionTile extends StatelessWidget {
-  const ClienteDireccionTile({Key? key, required this.clienteDireccion})
-      : super(key: key);
+  const ClienteDireccionTile({super.key, required this.clienteDireccion});
 
   final ClienteDireccion clienteDireccion;
 

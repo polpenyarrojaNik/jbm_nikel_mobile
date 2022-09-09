@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_grupo_neto.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloGrupoNetoContainer extends ConsumerWidget {
-  const ArticuloGrupoNetoContainer({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloGrupoNetoContainer({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -35,8 +35,7 @@ class ArticuloGrupoNetoContainer extends ConsumerWidget {
 }
 
 class ArticuloGrupoNetoTile extends StatelessWidget {
-  const ArticuloGrupoNetoTile({Key? key, required this.articuloGrupoNeto})
-      : super(key: key);
+  const ArticuloGrupoNetoTile({super.key, required this.articuloGrupoNeto});
 
   final ArticuloGrupoNeto articuloGrupoNeto;
 
@@ -59,8 +58,8 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  '${articuloGrupoNeto.precio}/${articuloGrupoNeto.tipoPrecio}'),
-              Text(articuloGrupoNeto.cantidadDesDe.toString()),
+                  '${numberFormat(articuloGrupoNeto.precio)}/${articuloGrupoNeto.tipoPrecio}'),
+              Text(numberFormat(articuloGrupoNeto.cantidadDesDe)),
             ],
           ),
         ],

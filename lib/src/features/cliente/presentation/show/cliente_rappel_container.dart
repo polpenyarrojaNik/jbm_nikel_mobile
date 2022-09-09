@@ -8,8 +8,7 @@ import '../../domain/cliente_rappel.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteRappelContainer extends ConsumerWidget {
-  const ClienteRappelContainer({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteRappelContainer({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -37,8 +36,7 @@ class ClienteRappelContainer extends ConsumerWidget {
 }
 
 class ClienteRappelTile extends StatelessWidget {
-  const ClienteRappelTile({Key? key, required this.clienteRappel})
-      : super(key: key);
+  const ClienteRappelTile({super.key, required this.clienteRappel});
 
   final ClienteRappel clienteRappel;
 
@@ -79,8 +77,9 @@ class ClienteRappelTile extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                            dateFormatter(
-                                clienteRappel.fechaDesDe.toIso8601String()),
+                            dateFormatter(clienteRappel.fechaDesDe
+                                .toLocal()
+                                .toIso8601String()),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText2
@@ -100,8 +99,9 @@ class ClienteRappelTile extends StatelessWidget {
                                         ?.color)),
                         Text(
                             (clienteRappel.fechaHasta != null)
-                                ? dateFormatter(
-                                    clienteRappel.fechaHasta!.toIso8601String())
+                                ? dateFormatter(clienteRappel.fechaHasta!
+                                    .toLocal()
+                                    .toIso8601String())
                                 : '',
                             style: Theme.of(context)
                                 .textTheme

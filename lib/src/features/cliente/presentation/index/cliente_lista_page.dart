@@ -13,7 +13,7 @@ import '../../../../core/routing/app_router.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
-  const ClienteListaPage({Key? key}) : super(key: key);
+  const ClienteListaPage({super.key});
 
   @override
   ConsumerState<ClienteListaPage> createState() => _ClienteListPageState();
@@ -43,7 +43,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       appBar: CustomSearchAppBar(
         title: 'Cliente',
         searchTitle: 'Search Cliente...',
-        onSubmitted: (searchText) => {print(searchText)},
+        onChanged: (searchText) => (print(searchText)),
         addActionButton: IconButton(
           onPressed: () => navigateToClientesAlrededor(),
           icon: (const Icon(Icons.near_me_outlined)),

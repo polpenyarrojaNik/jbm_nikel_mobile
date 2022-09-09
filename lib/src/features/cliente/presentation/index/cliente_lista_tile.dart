@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 
-import '../../../../core/domain/pais.dart';
-import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../domain/cliente.dart';
 

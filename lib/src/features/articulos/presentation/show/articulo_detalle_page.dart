@@ -22,8 +22,7 @@ import 'articulo_recambio_container.dart';
 import 'articulo_sustitutivo_container.dart';
 
 class ArticuloDetallePage extends StatelessWidget {
-  const ArticuloDetallePage({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloDetallePage({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -54,19 +53,9 @@ class ArticuloDetallePage extends StatelessWidget {
                           appRouteValue: AppRoute.articulosalesorder,
                           params: params),
                       TextButtonWidget(
-                          titleText: '¿Devoluciones?',
-                          entityId: articuloId,
-                          appRouteValue: AppRoute.articuloreturns,
-                          params: params),
-                      TextButtonWidget(
                           titleText: 'Últimos Precios',
                           entityId: articuloId,
                           appRouteValue: AppRoute.articulolastprecio,
-                          params: params),
-                      TextButtonWidget(
-                          titleText: '¿Estadísticas?',
-                          entityId: articuloId,
-                          appRouteValue: AppRoute.articulostats,
                           params: params),
                     ],
                   ),
@@ -127,8 +116,7 @@ class ArticuloDetallePage extends StatelessWidget {
 }
 
 class _ArticuloInfoContainer extends StatelessWidget {
-  const _ArticuloInfoContainer({Key? key, required this.articulo})
-      : super(key: key);
+  const _ArticuloInfoContainer({super.key, required this.articulo});
 
   final Articulo articulo;
 
@@ -189,8 +177,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Icons.shopping_cart_outlined, size: 18),
-                        Text(articulo.comprasEntregaCantidad1?.toString() ??
-                            '0.0'),
+                        Text((articulo.comprasEntregaCantidad1 != null)
+                            ? numberFormat(articulo.comprasEntregaCantidad1!)
+                            : '0.0'),
                       ],
                     ),
                     const Spacer(),
@@ -200,6 +189,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           const Icon(Icons.calendar_month, size: 18),
                           Text(
                             dateFormatter(articulo.comprasEntregaFecha1!
+                                .toLocal()
                                 .toIso8601String()),
                           ),
                         ],
@@ -216,8 +206,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Icons.shopping_cart_outlined, size: 18),
-                        Text(articulo.comprasEntregaCantidad2?.toString() ??
-                            '0.0'),
+                        Text((articulo.comprasEntregaCantidad2 != null)
+                            ? numberFormat(articulo.comprasEntregaCantidad2!)
+                            : '0.0'),
                       ],
                     ),
                     const Spacer(),
@@ -227,6 +218,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           const Icon(Icons.calendar_month, size: 18),
                           Text(
                             dateFormatter(articulo.comprasEntregaFecha2!
+                                .toLocal()
                                 .toIso8601String()),
                           ),
                         ],
@@ -243,8 +235,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(Icons.shopping_cart_outlined, size: 18),
-                        Text(articulo.comprasEntregaCantidad3?.toString() ??
-                            '0.0'),
+                        Text((articulo.comprasEntregaCantidad3 != null)
+                            ? numberFormat(articulo.comprasEntregaCantidad3!)
+                            : '0.0'),
                       ],
                     ),
                     const Spacer(),
@@ -254,6 +247,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           const Icon(Icons.calendar_month, size: 18),
                           Text(
                             dateFormatter(articulo.comprasEntregaFecha3!
+                                .toLocal()
                                 .toIso8601String()),
                           ),
                         ],
@@ -267,8 +261,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 value: Row(
                   children: [
                     const Icon(Icons.shopping_cart_outlined, size: 18),
-                    Text(articulo.comprasEntregaCantidadMas3?.toString() ??
-                        '0.0'),
+                    Text((articulo.comprasEntregaCantidadMas3 != null)
+                        ? numberFormat(articulo.comprasEntregaCantidadMas3!)
+                        : '0.0'),
                   ],
                 ),
               ),
@@ -276,7 +271,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
               if (articulo.stockDisponible != null)
                 ColumnFieldTextDetalle(
                     fieldTitleValue: 'Stock',
-                    value: articulo.stockDisponible.toString()),
+                    value: numberFormat(articulo.stockDisponible!)),
             ],
           ),
         ),
@@ -288,13 +283,13 @@ class _ArticuloInfoContainer extends StatelessWidget {
             children: [
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Subcaja',
-                  value: articulo.unidadesSubcaja.toString()),
+                  value: numberFormat(articulo.unidadesSubcaja)),
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Caja',
-                  value: articulo.unidadesCaja.toString()),
+                  value: numberFormat(articulo.unidadesCaja)),
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Palet',
-                  value: articulo.unidadesPalet.toString()),
+                  value: numberFormat(articulo.unidadesPalet)),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -302,13 +297,13 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   Expanded(
                     child: ColumnFieldTextDetalle(
                         fieldTitleValue: 'Peso(kg)',
-                        value: articulo.stockDisponible.toString()),
+                        value: (numberFormat(articulo.pesoKg))),
                   ),
                   const Spacer(),
                   Expanded(
                     child: ColumnFieldTextDetalle(
                         fieldTitleValue: 'Largo(cm)',
-                        value: articulo.largoCm.toString()),
+                        value: numberFormat(articulo.largoCm)),
                   ),
                   const Spacer(),
                 ],
@@ -319,13 +314,13 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   Expanded(
                     child: ColumnFieldTextDetalle(
                         fieldTitleValue: 'Alto(cm)',
-                        value: articulo.altoCm.toString()),
+                        value: numberFormat(articulo.altoCm)),
                   ),
                   const Spacer(),
                   Expanded(
                     child: ColumnFieldTextDetalle(
                         fieldTitleValue: 'Ancho(cm)',
-                        value: articulo.anchoCm.toString()),
+                        value: numberFormat(articulo.anchoCm)),
                   ),
                   const Spacer(),
                 ],
@@ -433,8 +428,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
 
 class _ArticuloPrincipalImage extends ConsumerWidget {
   const _ArticuloPrincipalImage(
-      {Key? key, required this.articuloId, required this.imagenPrincipal})
-      : super(key: key);
+      {super.key, required this.articuloId, required this.imagenPrincipal});
 
   final String articuloId;
   final String imagenPrincipal;

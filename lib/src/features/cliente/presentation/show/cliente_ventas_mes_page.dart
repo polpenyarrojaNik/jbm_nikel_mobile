@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ClienteVentasMonthPage extends ConsumerWidget {
-  const ClienteVentasMonthPage({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteVentasMonthPage({super.key, required this.clienteId});
 
   final String clienteId;
 

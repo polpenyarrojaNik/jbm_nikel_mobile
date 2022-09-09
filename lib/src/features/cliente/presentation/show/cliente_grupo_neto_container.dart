@@ -7,8 +7,7 @@ import '../../domain/cliente_grupo_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteGrupoNetoContainer extends ConsumerWidget {
-  const ClienteGrupoNetoContainer({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClienteGrupoNetoContainer({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -35,8 +34,7 @@ class ClienteGrupoNetoContainer extends ConsumerWidget {
 }
 
 class ClienteGrupoNetoTile extends StatelessWidget {
-  const ClienteGrupoNetoTile({Key? key, required this.clienteGrupoNeto})
-      : super(key: key);
+  const ClienteGrupoNetoTile({super.key, required this.clienteGrupoNeto});
 
   final ClienteGrupoNeto clienteGrupoNeto;
 

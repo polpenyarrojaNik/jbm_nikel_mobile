@@ -9,8 +9,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 
 class ArticuloUltimosPreciosPage extends ConsumerWidget {
-  const ArticuloUltimosPreciosPage({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloUltimosPreciosPage({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -49,8 +48,7 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
 }
 
 class UltimosPreciosTile extends StatelessWidget {
-  const UltimosPreciosTile({Key? key, required this.ultimosPrecios})
-      : super(key: key);
+  const UltimosPreciosTile({super.key, required this.ultimosPrecios});
 
   final EstadisticasUltimosPrecios ultimosPrecios;
 
@@ -84,7 +82,8 @@ class UltimosPreciosTile extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        dateFormatter(ultimosPrecios.fecha.toIso8601String()),
+                        dateFormatter(
+                            ultimosPrecios.fecha.toLocal().toIso8601String()),
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ],
@@ -121,7 +120,7 @@ class UltimosPreciosTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Precio: ${ultimosPrecios.precioDivisa}x${ultimosPrecios.tipoPrecio}',
+                              'Precio: ${numberFormat(ultimosPrecios.precioDivisa)}x${ultimosPrecios.tipoPrecio}',
                               style: Theme.of(context).textTheme.caption,
                             ),
                             if (ultimosPrecios.descuento1 != 0.0 ||

@@ -12,7 +12,7 @@ import '../../infrastructure/articulo_repository.dart';
 import 'articulo_lista_tile.dart';
 
 class ArticuloListaPage extends ConsumerWidget {
-  const ArticuloListaPage({Key? key}) : super(key: key);
+  const ArticuloListaPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +31,7 @@ class ArticuloListaPage extends ConsumerWidget {
       appBar: CustomSearchAppBar(
         title: 'Articulos',
         searchTitle: 'Search articulo...',
-        onSubmitted: (searchText) => {print(searchText)},
+        onChanged: (searchText) => {print(searchText)},
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

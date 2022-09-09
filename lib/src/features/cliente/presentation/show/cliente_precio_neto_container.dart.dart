@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_precio_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClientePrecioNetoContainer extends ConsumerWidget {
-  const ClientePrecioNetoContainer({Key? key, required this.clienteId})
-      : super(key: key);
+  const ClientePrecioNetoContainer({super.key, required this.clienteId});
 
   final String clienteId;
 
@@ -36,8 +36,7 @@ class ClientePrecioNetoContainer extends ConsumerWidget {
 }
 
 class ClientePrecioNetoTile extends StatelessWidget {
-  const ClientePrecioNetoTile({Key? key, required this.clientePrecioNeto})
-      : super(key: key);
+  const ClientePrecioNetoTile({super.key, required this.clientePrecioNeto});
 
   final ClientePrecioNeto clientePrecioNeto;
 
@@ -67,13 +66,13 @@ class ClientePrecioNetoTile extends StatelessWidget {
                     Text(clientePrecioNeto.articuloId,
                         style: Theme.of(context).textTheme.subtitle2),
                     Text(
-                        'Des de ${clientePrecioNeto.cantidadDesDe.toString()} unidad/es',
+                        'Des de ${numberFormat(clientePrecioNeto.cantidadDesDe)} unidad/es',
                         style: Theme.of(context).textTheme.subtitle2),
                   ],
                 ),
                 const Spacer(),
                 Text(
-                  'Precio: ${clientePrecioNeto.precio.toString()}x${clientePrecioNeto.tipoPrecio?.toString() ?? '1'}',
+                  'Precio: ${numberFormat(clientePrecioNeto.precio)}x${clientePrecioNeto.tipoPrecio?.toString() ?? '1'}',
                   style: Theme.of(context).textTheme.caption,
                 ),
               ],

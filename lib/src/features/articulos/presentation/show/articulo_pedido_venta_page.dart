@@ -9,8 +9,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../pedido_venta/domain/pedido_venta_linea.dart';
 
 class ArticuloPedidoVentaPage extends ConsumerWidget {
-  const ArticuloPedidoVentaPage({Key? key, required this.articuloId})
-      : super(key: key);
+  const ArticuloPedidoVentaPage({super.key, required this.articuloId});
 
   final String articuloId;
 
@@ -48,9 +47,9 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
 
 class PedidoVentaLineaTile extends StatelessWidget {
   const PedidoVentaLineaTile({
-    Key? key,
+    super.key,
     required this.pedidoVentaLinea,
-  }) : super(key: key);
+  });
 
   final PedidoVentaLinea pedidoVentaLinea;
 
@@ -100,7 +99,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '${pedidoVentaLinea.cantidad.toDouble()} unidades',
+                                '${numberFormat(pedidoVentaLinea.cantidad)} unidades',
                                 style: Theme.of(context).textTheme.subtitle2,
                               ),
                             ],
@@ -121,7 +120,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Pricio: ${pedidoVentaLinea.precioDivisa}x${pedidoVentaLinea.tipoPrecio}',
+                              'Pricio: ${numberFormat(pedidoVentaLinea.precioDivisa)}x${pedidoVentaLinea.tipoPrecio}',
                               style: Theme.of(context).textTheme.caption,
                             ),
                             if (pedidoVentaLinea.descuento1 != 0.0 ||

@@ -4,7 +4,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../domain/visita.dart';
 
 class VisitaListaTile extends StatelessWidget {
-  const VisitaListaTile({Key? key, required this.visita}) : super(key: key);
+  const VisitaListaTile({super.key, required this.visita});
 
   final Visita visita;
 
@@ -29,7 +29,7 @@ class VisitaListaTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  dateFormatter(visita.fecha.toIso8601String()),
+                  dateFormatter(visita.fecha.toLocal().toIso8601String()),
                 ),
               ],
             ),
