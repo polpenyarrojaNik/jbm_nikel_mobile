@@ -4,9 +4,11 @@ import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_ser
 
 final usuarioNotifierProvider =
     StateNotifierProvider<UsuarioNotifier, Usuario?>(
-  (ref) => UsuarioNotifier(
-    ref.watch(usuarioServiceProvider),
-  ),
+  (ref) {
+    final usuarioNotifier = UsuarioNotifier(ref.watch(usuarioServiceProvider));
+    usuarioNotifier.checkAndUpdateUsuario();
+    return usuarioNotifier;
+  },
 );
 
 class UsuarioNotifier extends StateNotifier<Usuario?> {

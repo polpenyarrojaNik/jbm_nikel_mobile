@@ -5,7 +5,7 @@ import '../../../../core/exceptions/app_exception.dart';
 import '../../infrastructure/usuario_service.dart';
 
 final loginPageControllerProvider =
-    StateNotifierProvider<LoginPageController, AsyncValue<void>>(
+    StateNotifierProvider.autoDispose<LoginPageController, AsyncValue<void>>(
   (ref) => LoginPageController(ref),
 );
 

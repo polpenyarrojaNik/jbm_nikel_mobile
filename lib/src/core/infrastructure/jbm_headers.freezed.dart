@@ -14,37 +14,37 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-JbmHeaders _$JbmHeadersFromJson(Map<String, dynamic> json) {
+JBMHeaders _$JBMHeadersFromJson(Map<String, dynamic> json) {
   return _JBMHeaders.fromJson(json);
 }
 
 /// @nodoc
-mixin _$JbmHeaders {
+mixin _$JBMHeaders {
   String? get etag => throw _privateConstructorUsedError;
   int? get maxPage => throw _privateConstructorUsedError;
   int? get totalRows => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $JbmHeadersCopyWith<JbmHeaders> get copyWith =>
+  $JBMHeadersCopyWith<JBMHeaders> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $JbmHeadersCopyWith<$Res> {
-  factory $JbmHeadersCopyWith(
-          JbmHeaders value, $Res Function(JbmHeaders) then) =
-      _$JbmHeadersCopyWithImpl<$Res>;
+abstract class $JBMHeadersCopyWith<$Res> {
+  factory $JBMHeadersCopyWith(
+          JBMHeaders value, $Res Function(JBMHeaders) then) =
+      _$JBMHeadersCopyWithImpl<$Res>;
   $Res call({String? etag, int? maxPage, int? totalRows});
 }
 
 /// @nodoc
-class _$JbmHeadersCopyWithImpl<$Res> implements $JbmHeadersCopyWith<$Res> {
-  _$JbmHeadersCopyWithImpl(this._value, this._then);
+class _$JBMHeadersCopyWithImpl<$Res> implements $JBMHeadersCopyWith<$Res> {
+  _$JBMHeadersCopyWithImpl(this._value, this._then);
 
-  final JbmHeaders _value;
+  final JBMHeaders _value;
   // ignore: unused_field
-  final $Res Function(JbmHeaders) _then;
+  final $Res Function(JBMHeaders) _then;
 
   @override
   $Res call({
@@ -71,7 +71,7 @@ class _$JbmHeadersCopyWithImpl<$Res> implements $JbmHeadersCopyWith<$Res> {
 
 /// @nodoc
 abstract class _$$_JBMHeadersCopyWith<$Res>
-    implements $JbmHeadersCopyWith<$Res> {
+    implements $JBMHeadersCopyWith<$Res> {
   factory _$$_JBMHeadersCopyWith(
           _$_JBMHeaders value, $Res Function(_$_JBMHeaders) then) =
       __$$_JBMHeadersCopyWithImpl<$Res>;
@@ -80,7 +80,7 @@ abstract class _$$_JBMHeadersCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_JBMHeadersCopyWithImpl<$Res> extends _$JbmHeadersCopyWithImpl<$Res>
+class __$$_JBMHeadersCopyWithImpl<$Res> extends _$JBMHeadersCopyWithImpl<$Res>
     implements _$$_JBMHeadersCopyWith<$Res> {
   __$$_JBMHeadersCopyWithImpl(
       _$_JBMHeaders _value, $Res Function(_$_JBMHeaders) _then)
@@ -129,7 +129,7 @@ class _$_JBMHeaders extends _JBMHeaders {
 
   @override
   String toString() {
-    return 'JbmHeaders(etag: $etag, maxPage: $maxPage, totalRows: $totalRows)';
+    return 'JBMHeaders(etag: $etag, maxPage: $maxPage, totalRows: $totalRows)';
   }
 
   @override
@@ -163,7 +163,7 @@ class _$_JBMHeaders extends _JBMHeaders {
   }
 }
 
-abstract class _JBMHeaders extends JbmHeaders {
+abstract class _JBMHeaders extends JBMHeaders {
   const factory _JBMHeaders(
       {final String? etag,
       final int? maxPage,

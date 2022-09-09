@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 
+import '../../features/app_initialization/presentation/splash_page.dart';
 import '../../features/articulos/presentation/index/articulo_lista_page.dart';
 import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
 import '../../features/articulos/presentation/show/articulo_pedido_venta_page.dart';
@@ -17,8 +16,9 @@ import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
 import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.dart';
-import '../../features/settings/presentation/sync_page.dart';
-import '../../features/splash/presentation/splash_page.dart';
+import '../../features/settings/presentation/setting/settings_page.dart';
+import '../../features/usuario/application/usuario_notifier.dart';
+import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';

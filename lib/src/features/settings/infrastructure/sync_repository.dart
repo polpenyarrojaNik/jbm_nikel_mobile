@@ -638,7 +638,7 @@ class SyncRepository {
         final convertedDate = jsonDataSelector(response.data)
             .map((pedidoVentaMap) => pedidoVentaMap as Map<String, dynamic>)
             .toList();
-        final headers = JbmHeaders.parse(response);
+        final headers = JBMHeaders.parse(response);
 
         return RemoteResponse.withNewData(
           convertedDate,

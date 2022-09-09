@@ -6,7 +6,7 @@ import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/toasts.dart';
-import 'login_controller.dart';
+import 'login_page_controller.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});

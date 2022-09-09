@@ -5,19 +5,19 @@ part 'jbm_headers.freezed.dart';
 part 'jbm_headers.g.dart';
 
 @freezed
-class JbmHeaders with _$JbmHeaders {
-  const JbmHeaders._();
-  const factory JbmHeaders({
+class JBMHeaders with _$JBMHeaders {
+  const JBMHeaders._();
+  const factory JBMHeaders({
     String? etag,
     int? maxPage,
     int? totalRows,
   }) = _JBMHeaders;
 
-  factory JbmHeaders.parse(Response response) {
+  factory JBMHeaders.parse(Response response) {
     final totalPages = response.headers.map['Total-Pages']?[0];
     final totalRows = response.headers.map['Total-Rows']?[0];
 
-    return JbmHeaders(
+    return JBMHeaders(
       etag: getEtag(response.headers.map),
       maxPage: totalPages == null
           ? null
@@ -32,8 +32,8 @@ class JbmHeaders with _$JbmHeaders {
     );
   }
 
-  factory JbmHeaders.fromJson(Map<String, dynamic> json) =>
-      _$JbmHeadersFromJson(json);
+  factory JBMHeaders.fromJson(Map<String, dynamic> json) =>
+      _$JBMHeadersFromJson(json);
 
   static String? getEtag(Map<String, List<String>> map) {
     if (map['ETag'] != null) {

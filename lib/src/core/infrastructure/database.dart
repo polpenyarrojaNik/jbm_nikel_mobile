@@ -34,11 +34,63 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
-import '../exceptions/app_exception.dart';
 import 'familia_dto.dart';
 
-// part 'database.drift.dart';
 part 'database.g.dart';
+
+final appDatabaseProvider = Provider<AppDatabase>(
+  (ref) => AppDatabase(),
+);
+
+const localDatabaseName = 'jbm.sqlite';
+
+@DriftDatabase(tables: [
+  FechaUltimaSyncTable,
+  PedidoVentaTable,
+  PedidoVentaEstadoTable,
+  PedidoVentaLineaTable,
+  ClienteTable,
+  ClienteUsuarioTable,
+  ClienteGrupoNetoTable,
+  ClienteDescuentoTable,
+  ClienteContactoTable,
+  ClienteDireccionTable,
+  ClientePagoPendienteTable,
+  ClientePrecioNetoTable,
+  ClienteRappelTable,
+  ArticuloTopTable,
+  ArticuloTable,
+  ArticuloComponenteTable,
+  ArticuloEmpresaIvaTable,
+  ArticuloRecambioTable,
+  ArticuloSustitutivoTable,
+  ArticuloTarifaPrecioTable,
+  ArticuloGrupoNetoTable,
+  EstadisticasClienteUsuarioVentasTable,
+  EstadisticasUltimosPreciosTable,
+  FamiliaTable,
+  SubfamiliaTable,
+  VisitaTable,
+  MetodoDeCobroTable,
+  PlazoDeCobroTable,
+  PaisTable,
+  DivisaTable,
+])
+class AppDatabase extends _$AppDatabase {
+  AppDatabase() : super(_openConnection());
+
+  @override
+  int get schemaVersion => 1;
+}
+
+LazyDatabase _openConnection() {
+  return LazyDatabase(() async {
+    final dbFolder = await getApplicationDocumentsDirectory();
+
+    final file = File(join(dbFolder.path, localDatabaseName));
+    return NativeDatabase(file);
+  });
+}
 
 class FechaUltimaSyncTable extends Table {
   @override
@@ -107,110 +159,4 @@ class FechaUltimaSyncTable extends Table {
       .named('ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO')();
   TextColumn get ultimaSyncEstadisticasUltimosPrecios =>
       text().nullable().named('ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS')();
-}
-
-@DriftDatabase(tables: [
-  FechaUltimaSyncTable,
-  PedidoVentaTable,
-  PedidoVentaEstadoTable,
-  PedidoVentaLineaTable,
-  ClienteTable,
-  ClienteUsuarioTable,
-  ClienteGrupoNetoTable,
-  ClienteDescuentoTable,
-  ClienteContactoTable,
-  ClienteDireccionTable,
-  ClientePagoPendienteTable,
-  ClientePrecioNetoTable,
-  ClienteRappelTable,
-  ArticuloTopTable,
-  ArticuloTable,
-  ArticuloComponenteTable,
-  ArticuloEmpresaIvaTable,
-  ArticuloRecambioTable,
-  ArticuloSustitutivoTable,
-  ArticuloTarifaPrecioTable,
-  ArticuloGrupoNetoTable,
-  EstadisticasClienteUsuarioVentasTable,
-  EstadisticasUltimosPreciosTable,
-  FamiliaTable,
-  SubfamiliaTable,
-  VisitaTable,
-  MetodoDeCobroTable,
-  PlazoDeCobroTable,
-  PaisTable,
-  DivisaTable,
-])
-final appDatabaseProvider = Provider<AppDatabase>(
-  // * Override this in the main method
-
-  (ref) => AppDatabase(),
-);
-
-class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
-
-  @override
-  int get schemaVersion => 1;
-
-  @override
-  Future<void> close() async {
-    await _openConnection().close();
-    return await super.close();
-  }
-
-//---------------------------------------------------------------------------------------------------------------------------
-
-  Future<int> addInitialSyncDate(
-      {required String initailSyncUTCDateString}) async {
-    try {
-      final result = await into(fechaUltimaSyncTable).insert(
-        FechaUltimaSyncTableCompanion(
-          id: const Value('1'),
-          ultimaSyncCliente: Value(initailSyncUTCDateString),
-          ultimaSyncClienteDireccion: Value(initailSyncUTCDateString),
-          ultimaSyncClienteDescuento: Value(initailSyncUTCDateString),
-          ultimaSyncClienteContacto: Value(initailSyncUTCDateString),
-          ultimaSyncClientePrecioNeto: Value(initailSyncUTCDateString),
-          ultimaSyncClienteGrupoNeto: Value(initailSyncUTCDateString),
-          ultimaSyncClientePagoPendiente: Value(initailSyncUTCDateString),
-          ultimaSyncClienteRappels: Value(initailSyncUTCDateString),
-          ultimaSyncClienteUsuario: Value(initailSyncUTCDateString),
-          ultimaSyncPedidoVenta: Value(initailSyncUTCDateString),
-          ultimaSyncPedidoVentaLinea: Value(initailSyncUTCDateString),
-          ultimaSyncPedidoVentaEstado: Value(initailSyncUTCDateString),
-          ultimaSyncMetodoDeCobro: Value(initailSyncUTCDateString),
-          ultimaSyncPlazoDeCobro: Value(initailSyncUTCDateString),
-          ultimaSyncPais: Value(initailSyncUTCDateString),
-          ultimaSyncDivisa: Value(initailSyncUTCDateString),
-          ultimaSyncFamilia: Value(initailSyncUTCDateString),
-          ultimaSyncSubfamilia: Value(initailSyncUTCDateString),
-          ultimaSyncVisita: Value(initailSyncUTCDateString),
-          ultimaSyncArticulo: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloGrupoNeto: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloTarifaPrecio: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloComponente: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloSustitutivo: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloRecambio: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloEmpresaIva: Value(initailSyncUTCDateString),
-          ultimaSyncEstadisticasClienteUsuarioVentas:
-              Value(initailSyncUTCDateString),
-          ultimaSyncEstadisticasUltimosPrecios: Value(initailSyncUTCDateString),
-          ultimaSyncArticulosTop: Value(initailSyncUTCDateString),
-        ),
-      );
-      return result;
-    } catch (e) {
-      throw AppException.syncFailure('ULTIMA_FECHA_SYNC', e.toString());
-    }
-  }
-}
-
-LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-
-    final file = File(join(dbFolder.path, 'jbm.db'));
-    return NativeDatabase(file);
-  });
 }
