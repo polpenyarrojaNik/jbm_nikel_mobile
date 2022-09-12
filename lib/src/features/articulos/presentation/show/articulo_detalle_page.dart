@@ -38,7 +38,7 @@ class ArticuloDetallePage extends StatelessWidget {
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
             data: (articulo) => DefaultTabController(
-              length: 8,
+              length: 7,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -75,7 +75,6 @@ class ArticuloDetallePage extends StatelessWidget {
                               Tab(icon: Icon(Icons.local_shipping, size: 16)),
                               Tab(icon: Icon(Icons.image, size: 16)),
                               Tab(icon: Icon(Icons.attach_file, size: 16)),
-                              Tab(icon: Icon(Icons.local_shipping, size: 16)),
                             ],
                           ),
                         )

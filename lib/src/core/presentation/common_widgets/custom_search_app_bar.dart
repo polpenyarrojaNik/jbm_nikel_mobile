@@ -64,21 +64,16 @@ class SearchListTile extends ConsumerWidget {
     return ListTile(
       leading: const Icon(
         Icons.search,
-        color: Colors.white,
         size: 28,
       ),
       title: TextField(
         decoration: InputDecoration(
           hintText: searchTitle,
           hintStyle: const TextStyle(
-            color: Colors.white,
             fontSize: 18,
             fontStyle: FontStyle.italic,
           ),
           border: InputBorder.none,
-        ),
-        style: const TextStyle(
-          color: Colors.white,
         ),
         onChanged: (value) => onChanged(value),
       ),
