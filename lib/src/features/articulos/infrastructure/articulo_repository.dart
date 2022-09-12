@@ -10,6 +10,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_tarifa_p
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -23,6 +24,8 @@ import '../domain/articulo_imagen.dart';
 import '../domain/articulo_sustitutivo.dart';
 import 'articulo_imagen_dto.dart';
 
+List<Articulo> articulos = [];
+
 final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   (ref) {
     final db = ref.watch(appDatabaseProvider);
@@ -32,9 +35,10 @@ final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
 );
 
 final articulosSearchProvider = FutureProvider.autoDispose
-    .family<List<Articulo>, String>((ref, searchText) {
+    .family<List<Articulo>, DefaultListParams>((ref, defaultListParams) {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloLista(searchText: searchText);
+  return articuloRepository.getArticuloLista(
+      page: defaultListParams.page, searchText: defaultListParams.searchText);
 });
 
 final articuloProvider =
@@ -129,19 +133,26 @@ final articuloUltimosPreciosListProvider = FutureProvider.autoDispose
       articuloId: articuloId, usuarioId: usuario!.id);
 });
 
+const pageSize = 100;
+
 class ArticuloRepository {
   final AppDatabase _db;
   final Dio _dio;
 
   ArticuloRepository(this._db, this._dio);
 
-  Future<List<Articulo>> getArticuloLista({required String searchText}) {
+  Future<List<Articulo>> getArticuloLista(
+      {required int page, required String searchText}) async {
+    if (page == 1) {
+      articulos.clear();
+    }
     final query = _db.select(_db.articuloTable);
 
     query.where((t) => t.id.like('%$searchText%'));
+    query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
     query.orderBy([(t) => OrderingTerm(expression: t.id)]);
 
-    return query.asyncMap((row) async {
+    final articlesList = await query.asyncMap((row) async {
       final familiaDTO = await (_db.select(_db.familiaTable)
             ..where((t) => t.id.equals(row.familiaId ?? '')))
           .getSingleOrNull();
@@ -153,6 +164,10 @@ class ArticuloRepository {
         subfamilia: subfamiliaDTO?.toDomain(),
       );
     }).get();
+
+    articulos.addAll(articlesList);
+
+    return articulos;
   }
 
   Future<Articulo> getArticuloById({required String articuloId}) async {

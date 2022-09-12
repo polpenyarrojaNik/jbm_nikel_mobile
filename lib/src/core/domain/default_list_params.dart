@@ -7,6 +7,6 @@ class DefaultListParams with _$DefaultListParams {
   const DefaultListParams._();
   const factory DefaultListParams({
     required int page,
-    String? searchText,
+    required String searchText,
   }) = _DefaultListParams;
 }

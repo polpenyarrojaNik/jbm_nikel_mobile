@@ -19,11 +19,23 @@ class ArticuloListaPage extends ConsumerStatefulWidget {
 
 class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   final _scrollController = ScrollController();
+  int page = 1;
+  bool canLoadNextPage = false;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_dismissOnScreenKeyboard);
+    _scrollController.addListener(() {
+      final metrics = _scrollController.position;
+      final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
+
+      if (canLoadNextPage && metrics.pixels >= limit) {
+        canLoadNextPage = false;
+        page++;
+        ref.read(articulosPaginationQueryStateProvider.notifier).state = page;
+      }
+    });
   }
 
   @override
@@ -44,7 +56,10 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   Widget build(BuildContext context) {
     ref.listen<AsyncValue>(
       articulosSearchResultsProvider,
-      (_, state) => state.showAlertDialogOnError(context),
+      (_, state) {
+        canLoadNextPage = true;
+        state.showAlertDialogOnError(context);
+      },
     );
     final state = ref.watch(articulosSearchResultsProvider);
 
@@ -53,9 +68,11 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       appBar: CustomSearchAppBar(
         title: 'Articulos',
         searchTitle: 'Search articulo...',
-        onChanged: (searchText) => ref
-            .read(articulosSearchQueryStateProvider.notifier)
-            .state = searchText,
+        onChanged: (searchText) {
+          ref.read(articulosSearchQueryStateProvider.notifier).state =
+              searchText;
+          ref.read(articulosPaginationQueryStateProvider.notifier).state = 1;
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -64,7 +81,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
           error: (e, _) => ErrorMessageWidget(e.toString()),
           data: (articuloList) => (articuloList.isEmpty)
               ? Container()
-              : ListView.builder(
+              : ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
                   shrinkWrap: true,
                   controller: _scrollController,
                   physics: const AlwaysScrollableScrollPhysics(),

@@ -10,11 +10,15 @@ class MobileCustomSeparators extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.055,
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      color: Theme.of(context).primaryColor,
+      color: Theme.of(context).colorScheme.surfaceVariant,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(separatorTitle, style: Theme.of(context).textTheme.subtitle1)
+          Text(
+            separatorTitle,
+            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                color: Theme.of(context).colorScheme.onSurfaceVariant),
+          )
         ],
       ),
     );

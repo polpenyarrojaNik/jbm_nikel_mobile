@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$DefaultListParams {
   int get page => throw _privateConstructorUsedError;
-  String? get searchText => throw _privateConstructorUsedError;
+  String get searchText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DefaultListParamsCopyWith<DefaultListParams> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $DefaultListParamsCopyWith<$Res> {
   factory $DefaultListParamsCopyWith(
           DefaultListParams value, $Res Function(DefaultListParams) then) =
       _$DefaultListParamsCopyWithImpl<$Res>;
-  $Res call({int page, String? searchText});
+  $Res call({int page, String searchText});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$DefaultListParamsCopyWithImpl<$Res>
       searchText: searchText == freezed
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -66,7 +66,7 @@ abstract class _$$_DefaultListParamsCopyWith<$Res>
           $Res Function(_$_DefaultListParams) then) =
       __$$_DefaultListParamsCopyWithImpl<$Res>;
   @override
-  $Res call({int page, String? searchText});
+  $Res call({int page, String searchText});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
       searchText: searchText == freezed
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -101,12 +101,13 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DefaultListParams extends _DefaultListParams {
-  const _$_DefaultListParams({required this.page, this.searchText}) : super._();
+  const _$_DefaultListParams({required this.page, required this.searchText})
+      : super._();
 
   @override
   final int page;
   @override
-  final String? searchText;
+  final String searchText;
 
   @override
   String toString() {
@@ -139,13 +140,13 @@ class _$_DefaultListParams extends _DefaultListParams {
 abstract class _DefaultListParams extends DefaultListParams {
   const factory _DefaultListParams(
       {required final int page,
-      final String? searchText}) = _$_DefaultListParams;
+      required final String searchText}) = _$_DefaultListParams;
   const _DefaultListParams._() : super._();
 
   @override
   int get page;
   @override
-  String? get searchText;
+  String get searchText;
   @override
   @JsonKey(ignore: true)
   _$$_DefaultListParamsCopyWith<_$_DefaultListParams> get copyWith =>
