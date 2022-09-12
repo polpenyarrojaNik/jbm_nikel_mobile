@@ -76,9 +76,8 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         key: const ValueKey('usuario'),
                         formControlName: 'usuario',
                         textCapitalization: TextCapitalization.characters,
-                        validationMessages: {
-                          ValidationMessage.required: (error) => 'NO EMPTY'
-                        },
+                        validationMessages: (formControl) =>
+                            {ValidationMessage.required: 'NO EMPTY'},
                         textInputAction: TextInputAction.next,
                         decoration: AppDecoration.loginField('Usuario'),
                       ),
@@ -86,11 +85,10 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       ReactiveTextField<String>(
                         formControlName: 'contrasenya',
                         obscureText: true,
-                        validationMessages: {
-                          ValidationMessage.required: (error) => 'NO EMPTY'
-                        },
+                        validationMessages: (formControl) =>
+                            {ValidationMessage.required: 'NO EMPTY'},
                         textInputAction: TextInputAction.done,
-                        onSubmitted: (_) => _submit(form, ref),
+                        onSubmitted: () => _submit(form, ref),
                         decoration: AppDecoration.loginField(
                           'Password',
                         ),

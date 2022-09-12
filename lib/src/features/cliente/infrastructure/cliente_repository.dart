@@ -118,7 +118,7 @@ class ClienteRepository {
   ClienteRepository(this._db, this._dio);
 
   Stream<List<Cliente>> watchClienteLista(
-      {required String usuarioId, required int page}) {
+      {required String usuarioId, required int page, String? searchText}) {
     final query = _db.select(_db.clienteTable).join([
       innerJoin(_db.clienteUsuarioTable,
           _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
@@ -135,12 +135,12 @@ class ClienteRepository {
     ]);
 
     if (searchText != null) {
-      query.where(db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-          (db.clienteTable.nombreCliente.like('%$searchText%') |
-              db.clienteTable.nombreCliente
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          (_db.clienteTable.nombreCliente.like('%$searchText%') |
+              _db.clienteTable.nombreCliente
                   .like('%${searchText.toUpperCase()}%')));
     } else {
-      query.where(db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
     }
 
     query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));

@@ -82,7 +82,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   void navigateToClientesAlrededor() {
     context.goNamed(
-      AppRoute.clientealrededor.name,
+      AppRoutes.clientealrededor.name,
     );
   }
 }

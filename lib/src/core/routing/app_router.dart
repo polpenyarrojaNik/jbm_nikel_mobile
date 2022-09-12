@@ -53,7 +53,6 @@ enum AppRoutes {
   visitanew,
   kpisindex,
   settings,
-  splash,
 }
 
 final routerNotifierProvider = Provider<GoRouter>((ref) {
@@ -179,6 +178,11 @@ class RouterNotifier extends ChangeNotifier {
                       ),
                     ]),
               ],
+            ),
+            GoRoute(
+              path: '/alrededor',
+              name: AppRoutes.clientealrededor.name,
+              builder: (context, state) => const ClientesAlrededorPage(),
             ),
           ],
         ),

@@ -59,27 +59,11 @@ class ClienteDetallePage extends StatelessWidget {
                           appRouteValue: AppRoutes.clientesalesarticulo,
                           params: params),
                       TextButtonWidget(
-<<<<<<< HEAD
-=======
-                          titleText: '¿Precio Neto?',
-                          entityId: clienteId,
-                          appRouteValue: AppRoutes.clientependingpayment,
-                          params: params),
-                      TextButtonWidget(
->>>>>>> b5f0d9b12207953d1049c665f76b50c03b8d394e
                           titleText: 'Fact. Pendientes',
                           entityId: clienteId,
                           appRouteValue: AppRoutes.clientependingpayment,
                           params: params),
                       TextButtonWidget(
-<<<<<<< HEAD
-=======
-                          titleText: '¿Stock B2B?',
-                          entityId: clienteId,
-                          appRouteValue: AppRoutes.clientestockb2b,
-                          params: params),
-                      TextButtonWidget(
->>>>>>> b5f0d9b12207953d1049c665f76b50c03b8d394e
                         titleText: 'Top 150',
                         entityId: clienteId,
                         appRouteValue: AppRoutes.clientetoparticulos,
@@ -145,7 +129,7 @@ class ClienteDetallePage extends StatelessWidget {
 }
 
 class _ClienteInfoContainer extends StatelessWidget {
-  const _ClienteInfoContainer({super.key, required this.cliente});
+  const _ClienteInfoContainer({required this.cliente});
 
   final Cliente cliente;
   @override

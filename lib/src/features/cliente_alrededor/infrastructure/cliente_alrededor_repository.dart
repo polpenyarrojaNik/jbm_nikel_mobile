@@ -4,9 +4,9 @@ import 'package:geolocator/geolocator.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
 import '../../../core/infrastructure/database.dart';
-import '../../auth/infrastructure/auth_repository.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
 
 final clientesAlrededorRepositoryProvider =
@@ -27,8 +27,8 @@ final clientesAlrededorListStream = StreamProvider.autoDispose
         (ref, clienteAlrededorArg) async* {
   final clientesAlrededorRepository =
       ref.watch(clientesAlrededorRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuarioService = ref.watch(usuarioServiceProvider);
+  final usuario = await usuarioService.getSignedInUsuario();
   yield* clientesAlrededorRepository.getClientesAlrededorLista(
       usuarioId: usuario!.id, clienteAlrededorArg: clienteAlrededorArg);
 });
