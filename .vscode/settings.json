@@ -1,4 +1,5 @@
 {
+  "makefile.extensionOutputFolder": "./.vscode",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -8,13 +9,10 @@
     "**/Thumbs.db": true,
     "**/*.freezed.dart": true,
     "**/*.g.dart": true,
-    "**/.gitkeep": false,
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true,
-    "**/*.drift.dart": true
+    "**/.gitkeep": true,
+    ".vscode": true,
+    "**/.dart_tool": true,
+    "**/.idea": true
   },
   "explorerExclude.backup": {},
-  "java.configuration.updateBuildConfiguration": "interactive"
 }

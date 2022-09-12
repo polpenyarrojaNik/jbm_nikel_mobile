@@ -1,23 +1,26 @@
 import 'dart:io';
+
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+
 import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
 import '../../features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
-import '../../features/articulos/infrastructure/articulo_tarifa_precio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
+import '../../features/articulos/infrastructure/articulo_tarifa_precio_dto.dart';
 import '../../features/cliente/infrastructure/articulo_top_dto.dart';
-import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
+import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_dto.dart';
 import '../../features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_pago_pendiente_dto.dart';
@@ -31,11 +34,63 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
-import '../exceptions/app_exception.dart';
 import 'familia_dto.dart';
 
-// part 'database.drift.dart';
 part 'database.g.dart';
+
+final appDatabaseProvider = Provider<AppDatabase>(
+  (ref) => AppDatabase(),
+);
+
+const localDatabaseName = 'jbm.sqlite';
+
+@DriftDatabase(tables: [
+  FechaUltimaSyncTable,
+  PedidoVentaTable,
+  PedidoVentaEstadoTable,
+  PedidoVentaLineaTable,
+  ClienteTable,
+  ClienteUsuarioTable,
+  ClienteGrupoNetoTable,
+  ClienteDescuentoTable,
+  ClienteContactoTable,
+  ClienteDireccionTable,
+  ClientePagoPendienteTable,
+  ClientePrecioNetoTable,
+  ClienteRappelTable,
+  ArticuloTopTable,
+  ArticuloTable,
+  ArticuloComponenteTable,
+  ArticuloEmpresaIvaTable,
+  ArticuloRecambioTable,
+  ArticuloSustitutivoTable,
+  ArticuloTarifaPrecioTable,
+  ArticuloGrupoNetoTable,
+  EstadisticasClienteUsuarioVentasTable,
+  EstadisticasUltimosPreciosTable,
+  FamiliaTable,
+  SubfamiliaTable,
+  VisitaTable,
+  MetodoDeCobroTable,
+  PlazoDeCobroTable,
+  PaisTable,
+  DivisaTable,
+])
+class AppDatabase extends _$AppDatabase {
+  AppDatabase() : super(_openConnection());
+
+  @override
+  int get schemaVersion => 1;
+}
+
+LazyDatabase _openConnection() {
+  return LazyDatabase(() async {
+    final dbFolder = await getApplicationDocumentsDirectory();
+
+    final file = File(join(dbFolder.path, localDatabaseName));
+    return NativeDatabase(file);
+  });
+}
 
 class FechaUltimaSyncTable extends Table {
   @override
@@ -104,104 +159,4 @@ class FechaUltimaSyncTable extends Table {
       .named('ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO')();
   TextColumn get ultimaSyncEstadisticasUltimosPrecios =>
       text().nullable().named('ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS')();
-}
-
-@DriftDatabase(tables: [
-  FechaUltimaSyncTable,
-  PedidoVentaTable,
-  PedidoVentaEstadoTable,
-  PedidoVentaLineaTable,
-  ClienteTable,
-  ClienteUsuarioTable,
-  ClienteGrupoNetoTable,
-  ClienteDescuentoTable,
-  ClienteContactoTable,
-  ClienteDireccionTable,
-  ClientePagoPendienteTable,
-  ClientePrecioNetoTable,
-  ClienteRappelTable,
-  ArticuloTopTable,
-  ArticuloTable,
-  ArticuloComponenteTable,
-  ArticuloEmpresaIvaTable,
-  ArticuloRecambioTable,
-  ArticuloSustitutivoTable,
-  ArticuloTarifaPrecioTable,
-  ArticuloGrupoNetoTable,
-  EstadisticasClienteUsuarioVentasTable,
-  EstadisticasUltimosPreciosTable,
-  FamiliaTable,
-  SubfamiliaTable,
-  VisitaTable,
-  MetodoDeCobroTable,
-  PlazoDeCobroTable,
-  PaisTable,
-  DivisaTable,
-])
-class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
-
-  @override
-  int get schemaVersion => 1;
-
-  @override
-  Future<void> close() async {
-    await _openConnection().close();
-    return await super.close();
-  }
-
-//---------------------------------------------------------------------------------------------------------------------------
-
-  Future<int> addInitialSyncDate(
-      {required String initailSyncUTCDateString}) async {
-    try {
-      final result = await into(fechaUltimaSyncTable).insert(
-        FechaUltimaSyncTableCompanion(
-          id: const Value('1'),
-          ultimaSyncCliente: Value(initailSyncUTCDateString),
-          ultimaSyncClienteDireccion: Value(initailSyncUTCDateString),
-          ultimaSyncClienteDescuento: Value(initailSyncUTCDateString),
-          ultimaSyncClienteContacto: Value(initailSyncUTCDateString),
-          ultimaSyncClientePrecioNeto: Value(initailSyncUTCDateString),
-          ultimaSyncClienteGrupoNeto: Value(initailSyncUTCDateString),
-          ultimaSyncClientePagoPendiente: Value(initailSyncUTCDateString),
-          ultimaSyncClienteRappels: Value(initailSyncUTCDateString),
-          ultimaSyncClienteUsuario: Value(initailSyncUTCDateString),
-          ultimaSyncPedidoVenta: Value(initailSyncUTCDateString),
-          ultimaSyncPedidoVentaLinea: Value(initailSyncUTCDateString),
-          ultimaSyncPedidoVentaEstado: Value(initailSyncUTCDateString),
-          ultimaSyncMetodoDeCobro: Value(initailSyncUTCDateString),
-          ultimaSyncPlazoDeCobro: Value(initailSyncUTCDateString),
-          ultimaSyncPais: Value(initailSyncUTCDateString),
-          ultimaSyncDivisa: Value(initailSyncUTCDateString),
-          ultimaSyncFamilia: Value(initailSyncUTCDateString),
-          ultimaSyncSubfamilia: Value(initailSyncUTCDateString),
-          ultimaSyncVisita: Value(initailSyncUTCDateString),
-          ultimaSyncArticulo: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloGrupoNeto: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloTarifaPrecio: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloComponente: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloSustitutivo: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloRecambio: Value(initailSyncUTCDateString),
-          ultimaSyncArticuloEmpresaIva: Value(initailSyncUTCDateString),
-          ultimaSyncEstadisticasClienteUsuarioVentas:
-              Value(initailSyncUTCDateString),
-          ultimaSyncEstadisticasUltimosPrecios: Value(initailSyncUTCDateString),
-          ultimaSyncArticulosTop: Value(initailSyncUTCDateString),
-        ),
-      );
-      return result;
-    } catch (e) {
-      throw AppException.syncFailure('ULTIMA_FECHA_SYNC', e.toString());
-    }
-  }
-}
-
-LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
-
-    final file = File(join(dbFolder.path, 'jbm.db'));
-    return NativeDatabase(file);
-  });
 }

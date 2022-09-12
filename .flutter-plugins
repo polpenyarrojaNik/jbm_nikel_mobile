@@ -1,6 +1,6 @@
 # This is a generated file; do not edit or check into version control.
 flutter_plugin_android_lifecycle=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7/
-flutter_secure_storage=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-5.1.2/
+flutter_secure_storage=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-6.0.0/
 flutter_secure_storage_linux=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_linux-1.1.1/
 flutter_secure_storage_macos=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_macos-1.1.1/
 flutter_secure_storage_web=/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_web-1.0.2/

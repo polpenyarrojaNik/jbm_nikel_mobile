@@ -12,7 +12,7 @@ class TextButtonWidget extends StatelessWidget {
 
   final String titleText;
   final String entityId;
-  final AppRoute appRouteValue;
+  final AppRoutes appRouteValue;
   final Map<String, String> params;
 
   @override
@@ -24,7 +24,7 @@ class TextButtonWidget extends StatelessWidget {
     );
   }
 
-  void navigateAppRouteValue(BuildContext context, AppRoute appRouteValue,
+  void navigateAppRouteValue(BuildContext context, AppRoutes appRouteValue,
       String entityId, Map<String, String> params) {
     context.goNamed(appRouteValue.name, params: params);
   }

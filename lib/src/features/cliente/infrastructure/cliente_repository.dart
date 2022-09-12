@@ -3,31 +3,33 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
-import '../../auth/infrastructure/auth_repository.dart';
+import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
-import '../domain/cliente_direccion.dart';
 import '../domain/cliente_contacto.dart';
 import '../domain/cliente_descuento.dart';
-
+import '../domain/cliente_direccion.dart';
 import '../domain/cliente_grupo_neto.dart';
 import '../domain/cliente_pago_pendiente.dart';
 import '../domain/cliente_precio_neto.dart';
 import '../domain/cliente_rappel.dart';
 
 final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>(
-  // * Override this in the main method
-  (ref) => throw UnimplementedError(),
+  (ref) {
+    final db = ref.watch(appDatabaseProvider);
+    final dio = ref.watch(dioProvider);
+    return ClienteRepository(db, dio);
+  },
 );
 
 final clienteListaStreamProvider =
     StreamProvider.autoDispose.family<List<Cliente>, int>((ref, page) async* {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   yield* clienteRepository.watchClienteLista(
     usuarioId: usuario!.id,
     page: page,
@@ -85,8 +87,7 @@ final clienteRappelProvider = FutureProvider.autoDispose
 final clienteAdjuntoProvider = FutureProvider.autoDispose
     .family<List<ClienteAdjunto>, String>((ref, clienteId) async {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
-  final authRepository = ref.watch(authRepositoryProvider);
-  final usuario = await authRepository.getSignedInUsuario();
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return clienteRepository.getClienteAdjuntoById(
       clienteId: clienteId, provisionalToken: usuario!.provisionalToken);
 });
@@ -111,24 +112,26 @@ final clienteArticuloTopUltimaSyncProvider =
 const pageSize = 100;
 
 class ClienteRepository {
-  AppDatabase db;
-  Dio dio;
+  final AppDatabase _db;
+  final Dio _dio;
 
-  ClienteRepository(this.db, this.dio);
+  ClienteRepository(this._db, this._dio);
 
   Stream<List<Cliente>> watchClienteLista(
-      {required String usuarioId, required int page, String? searchText}) {
-    final query = db.select(db.clienteTable).join([
-      innerJoin(db.clienteUsuarioTable,
-          db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id)),
-      innerJoin(db.paisTable,
-          db.paisTable.id.equalsExp(db.clienteTable.paisFiscalId)),
-      innerJoin(db.divisaTable,
-          db.divisaTable.id.equalsExp(db.clienteTable.divisaId)),
-      innerJoin(db.metodoDeCobroTable,
-          db.metodoDeCobroTable.id.equalsExp(db.clienteTable.metodoDeCobroId)),
-      innerJoin(db.plazoDeCobroTable,
-          db.plazoDeCobroTable.id.equalsExp(db.clienteTable.plazoDeCobroId))
+      {required String usuarioId, required int page}) {
+    final query = _db.select(_db.clienteTable).join([
+      innerJoin(_db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
+      innerJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
+      innerJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
+      innerJoin(
+          _db.metodoDeCobroTable,
+          _db.metodoDeCobroTable.id
+              .equalsExp(_db.clienteTable.metodoDeCobroId)),
+      innerJoin(_db.plazoDeCobroTable,
+          _db.plazoDeCobroTable.id.equalsExp(_db.clienteTable.plazoDeCobroId))
     ]);
 
     if (searchText != null) {
@@ -142,16 +145,16 @@ class ClienteRepository {
 
     query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
     query.orderBy([
-      OrderingTerm.asc(db.clienteTable.nombreCliente),
-      OrderingTerm.asc(db.clienteTable.id)
+      OrderingTerm.asc(_db.clienteTable.nombreCliente),
+      OrderingTerm.asc(_db.clienteTable.id)
     ]);
 
     return query.asyncMap((row) async {
-      final clienteDTO = row.readTable(db.clienteTable);
-      final paisDTO = row.readTableOrNull(db.paisTable);
-      final divisaDTO = row.readTableOrNull(db.divisaTable);
-      final metodoDeCobroDTO = row.readTableOrNull(db.metodoDeCobroTable);
-      final plazoDeCobroDTO = row.readTableOrNull(db.plazoDeCobroTable);
+      final clienteDTO = row.readTable(_db.clienteTable);
+      final paisDTO = row.readTableOrNull(_db.paisTable);
+      final divisaDTO = row.readTableOrNull(_db.divisaTable);
+      final metodoDeCobroDTO = row.readTableOrNull(_db.metodoDeCobroTable);
+      final plazoDeCobroDTO = row.readTableOrNull(_db.plazoDeCobroTable);
 
       return clienteDTO.toDomain(
         paisFiscal: paisDTO?.toDomain(),
@@ -164,19 +167,19 @@ class ClienteRepository {
 
   Future<Cliente> getClienteById({required String clienteId}) async {
     final query =
-        (db.select(db.clienteTable)..where((t) => t.id.equals(clienteId)));
+        (_db.select(_db.clienteTable)..where((t) => t.id.equals(clienteId)));
 
     return query.asyncMap((row) async {
-      final paisDTO = await (db.select(db.paisTable)
+      final paisDTO = await (_db.select(_db.paisTable)
             ..where((t) => t.id.equals(row.paisFiscalId ?? '')))
           .getSingleOrNull();
-      final divisaDTO = await (db.select(db.divisaTable)
+      final divisaDTO = await (_db.select(_db.divisaTable)
             ..where((t) => t.id.equals(row.divisaId ?? '')))
           .getSingleOrNull();
-      final metodoDeCobroDTO = await (db.select(db.metodoDeCobroTable)
+      final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
             ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
           .getSingleOrNull();
-      final plazoDeCobroDTO = await (db.select(db.plazoDeCobroTable)
+      final plazoDeCobroDTO = await (_db.select(_db.plazoDeCobroTable)
             ..where((t) => t.id.equals(row.plazoDeCobroId ?? '')))
           .getSingleOrNull();
       return row.toDomain(
@@ -190,11 +193,11 @@ class ClienteRepository {
 
   Stream<List<ClienteDireccion>> getClienteDireccionById(
       {required String clienteId}) {
-    final query = (db.select(db.clienteDireccionTable)
+    final query = (_db.select(_db.clienteDireccionTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.asyncMap((row) async {
-      final paisDTO = await (db.select(db.paisTable)
+      final paisDTO = await (_db.select(_db.paisTable)
             ..where((t) => t.id.equals(row.paisId ?? '')))
           .getSingleOrNull();
       return row.toDomain(
@@ -205,7 +208,7 @@ class ClienteRepository {
 
   Future<List<ClienteContacto>> getClienteContactoById(
       {required String clienteId}) {
-    final query = (db.select(db.clienteContactoTable)
+    final query = (_db.select(_db.clienteContactoTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.map((row) {
@@ -215,14 +218,14 @@ class ClienteRepository {
 
   Future<List<ClienteDescuento>> getClienteDescuentoById(
       {required String clienteId}) {
-    final query = (db.select(db.clienteDescuentoTable)
+    final query = (_db.select(_db.clienteDescuentoTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.asyncMap((row) async {
-      final familiaDTO = await (db.select(db.familiaTable)
+      final familiaDTO = await (_db.select(_db.familiaTable)
             ..where((t) => t.id.equals(row.familiaId)))
           .getSingle();
-      final subfamiliaDTO = await (db.select(db.subfamiliaTable)
+      final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
             ..where((t) => t.id.equals(row.subfamiliaId)))
           .getSingle();
       return row.toDomain(
@@ -232,7 +235,7 @@ class ClienteRepository {
 
   Future<List<ClientePrecioNeto>> getClientePrecioNetoById(
       {required String clienteId}) {
-    final query = (db.select(db.clientePrecioNetoTable)
+    final query = (_db.select(_db.clientePrecioNetoTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.map((row) {
@@ -242,7 +245,7 @@ class ClienteRepository {
 
   Future<List<ClienteGrupoNeto>> getClienteGrupoNetoById(
       {required String clienteId}) {
-    final query = (db.select(db.clienteGrupoNetoTable)
+    final query = (_db.select(_db.clienteGrupoNetoTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.map((row) {
@@ -252,7 +255,7 @@ class ClienteRepository {
 
   Future<List<ClienteRappel>> getClienteRappelById(
       {required String clienteId}) {
-    final query = (db.select(db.clienteRappelTable)
+    final query = (_db.select(_db.clienteRappelTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.map((row) {
@@ -262,11 +265,11 @@ class ClienteRepository {
 
   Future<List<ClientePagoPendiente>> getClientePagoPendienteById(
       {required String clienteId}) {
-    final query = (db.select(db.clientePagoPendienteTable)
+    final query = (_db.select(_db.clientePagoPendienteTable)
       ..where((t) => t.clienteId.equals(clienteId)));
 
     return query.asyncMap((row) async {
-      final metodoDeCobroDTO = await (db.select(db.metodoDeCobroTable)
+      final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
             ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
           .getSingleOrNull();
 
@@ -279,7 +282,7 @@ class ClienteRepository {
     final query = {'CLIENTE_ID': clienteId};
     final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
         requestUri: Uri.http(
-          dotenv.get('URL_NIKEL', fallback: 'localhost:3001'),
+          dotenv.get('URL', fallback: 'localhost:3001'),
           'api/v1/online/cliente/adjuntos',
           query,
         ),
@@ -291,21 +294,21 @@ class ClienteRepository {
 
   Future<DateTime> getFechaUltimaSyncCliente() async {
     final date =
-        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
             .ultimaSyncCliente;
     return DateTime.parse(date!);
   }
 
   Future<DateTime> getFechaUltimaSyncClientePagoPendiente() async {
     final date =
-        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
             .ultimaSyncClientePagoPendiente;
     return DateTime.parse(date!);
   }
 
   Future<DateTime> getFechaUltimaSyncArticulosTop() async {
     final date =
-        (await (db.select(db.fechaUltimaSyncTable)..limit(1)).getSingle())
+        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
             .ultimaSyncArticulosTop;
     return DateTime.parse(date!);
   }
@@ -315,7 +318,7 @@ class ClienteRepository {
       required dynamic Function(dynamic json) jsonDataSelector,
       required String provisionalToken}) async {
     try {
-      final response = await dio.getUri(
+      final response = await _dio.getUri(
         requestUri,
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},

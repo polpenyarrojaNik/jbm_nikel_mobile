@@ -64,7 +64,7 @@ class ClienteListaTile extends StatelessWidget {
   void navigateToClienteDetalle(
       {required BuildContext context, required String clienteId}) {
     context.goNamed(
-      AppRoute.clienteshow.name,
+      AppRoutes.clienteshow.name,
       params: {'clienteId': clienteId},
     );
   }

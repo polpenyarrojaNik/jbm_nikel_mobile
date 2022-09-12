@@ -20,6 +20,7 @@ mixin _$AppException {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -32,6 +33,7 @@ mixin _$AppException {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -43,6 +45,7 @@ mixin _$AppException {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -55,6 +58,7 @@ mixin _$AppException {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -69,6 +73,7 @@ mixin _$AppException {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -80,6 +85,7 @@ mixin _$AppException {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -185,6 +191,7 @@ class _$RestApiFailure implements RestApiFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -200,6 +207,7 @@ class _$RestApiFailure implements RestApiFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -214,6 +222,7 @@ class _$RestApiFailure implements RestApiFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -232,6 +241,7 @@ class _$RestApiFailure implements RestApiFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -249,6 +259,7 @@ class _$RestApiFailure implements RestApiFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -263,6 +274,7 @@ class _$RestApiFailure implements RestApiFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -286,6 +298,183 @@ abstract class RestApiFailure implements AppException {
   String get errorMessage;
   @JsonKey(ignore: true)
   _$$RestApiFailureCopyWith<_$RestApiFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AuthLocalFailureCopyWith<$Res> {
+  factory _$$AuthLocalFailureCopyWith(
+          _$AuthLocalFailure value, $Res Function(_$AuthLocalFailure) then) =
+      __$$AuthLocalFailureCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$AuthLocalFailureCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res>
+    implements _$$AuthLocalFailureCopyWith<$Res> {
+  __$$AuthLocalFailureCopyWithImpl(
+      _$AuthLocalFailure _value, $Res Function(_$AuthLocalFailure) _then)
+      : super(_value, (v) => _then(v as _$AuthLocalFailure));
+
+  @override
+  _$AuthLocalFailure get _value => super._value as _$AuthLocalFailure;
+
+  @override
+  $Res call({
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$AuthLocalFailure(
+      errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AuthLocalFailure implements AuthLocalFailure {
+  const _$AuthLocalFailure(this.errorMessage);
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AppException.authLocalFailure(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthLocalFailure &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$AuthLocalFailureCopyWith<_$AuthLocalFailure> get copyWith =>
+      __$$AuthLocalFailureCopyWithImpl<_$AuthLocalFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int errorCode, String errorMessage)
+        restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
+    required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String tableToSync, String errorMessage)
+        syncFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+  }) {
+    return authLocalFailure(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+  }) {
+    return authLocalFailure?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    required TResult orElse(),
+  }) {
+    if (authLocalFailure != null) {
+      return authLocalFailure(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
+    required TResult Function(FetchLocalDataFailure value)
+        fetchLocalDataFailure,
+    required TResult Function(SyncFailure value) syncFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
+  }) {
+    return authLocalFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+  }) {
+    return authLocalFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    required TResult orElse(),
+  }) {
+    if (authLocalFailure != null) {
+      return authLocalFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthLocalFailure implements AppException {
+  const factory AuthLocalFailure(final String errorMessage) =
+      _$AuthLocalFailure;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$AuthLocalFailureCopyWith<_$AuthLocalFailure> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -358,6 +547,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -373,6 +563,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -387,6 +578,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -405,6 +597,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -422,6 +615,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -436,6 +630,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -539,6 +734,7 @@ class _$SyncFailure implements SyncFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -554,6 +750,7 @@ class _$SyncFailure implements SyncFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -568,6 +765,7 @@ class _$SyncFailure implements SyncFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -586,6 +784,7 @@ class _$SyncFailure implements SyncFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -603,6 +802,7 @@ class _$SyncFailure implements SyncFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -617,6 +817,7 @@ class _$SyncFailure implements SyncFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -687,6 +888,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -702,6 +904,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -716,6 +919,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -734,6 +938,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -751,6 +956,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -765,6 +971,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -829,6 +1036,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -844,6 +1052,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -858,6 +1067,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -876,6 +1086,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -893,6 +1104,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -907,6 +1119,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -973,6 +1186,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -988,6 +1202,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -1002,6 +1217,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -1020,6 +1236,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -1037,6 +1254,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -1051,6 +1269,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -1141,6 +1360,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   TResult when<TResult extends Object?>({
     required TResult Function(int errorCode, String errorMessage)
         restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
@@ -1156,6 +1376,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -1170,6 +1391,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
@@ -1188,6 +1410,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
     required TResult Function(SyncFailure value) syncFailure,
@@ -1205,6 +1428,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
@@ -1219,6 +1443,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,

@@ -13,7 +13,7 @@ class PedidoVentaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.goNamed(AppRoute.salesordershow.name,
+      onTap: () => context.goNamed(AppRoutes.salesordershow.name,
           params: {'id': pedidoVenta.pedidoVentaId}),
       child: Card(
         clipBehavior: Clip.hardEdge,

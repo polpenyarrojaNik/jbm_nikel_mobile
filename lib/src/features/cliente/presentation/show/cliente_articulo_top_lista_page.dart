@@ -39,7 +39,7 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
                           itemCount: articuloTopList.length,
                           itemBuilder: (context, i) => ArticuloListaTile(
                               articulo: articuloTopList[i].articulo,
-                              appRoute: AppRoute.clientetoparticulosshow,
+                              appRoute: AppRoutes.clientetoparticulosshow,
                               clienteId: clienteId),
                         ),
                     error: (e, _) => ErrorMessageWidget(e.toString()),
