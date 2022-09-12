@@ -2,6 +2,8 @@
 .env
 coverage/lcov.info
 test/default.db
+.flutter-plugins-dependencie.flutter-plugins-dependencie
+.flutter-plugins
 
 ### Flutter ###
 # Flutter/Dart/Pub related
