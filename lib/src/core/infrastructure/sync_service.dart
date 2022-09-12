@@ -149,15 +149,12 @@ class SyncService {
     try {
       final remoteDatabaseDateTime = await getRemoteDatabaseDateTime();
 
-      //TODO: Cambiaremos el método. En vez de tabla utilizaremos MAX de la tabla local.
-
-      // final ultimaFechaSync =
-      //     await getUltimaFechaSync(columnName: ultimaSyncDateTableColumn.name);
+      final ultimaFechaSync = await getLastUpdatedDate(tableInfo: tableInfo);
 
       while (isNextPageAvailable) {
         final query = _getAPIQuery(
             page: page,
-            //dateFrom: ,
+            dateFrom: ultimaFechaSync,
             dateTo: remoteDatabaseDateTime,
             totalRows: totalRows);
 
@@ -174,9 +171,9 @@ class SyncService {
               final tableValue = tableValueDTOList[i];
 
               if (tableValue.deleted == 'S') {
-                //   await deleteTableValue(table: dbTable, dto: tableValue);
+                await deleteTableValue(tableInfo: tableInfo, dto: tableValue);
               } else {
-                //  await upsertTable(table: dbTable, dto: tableValue);
+                await upsertTable(tableInfo: tableInfo, dto: tableValue);
               }
             }
 
@@ -186,16 +183,29 @@ class SyncService {
           },
         );
       }
-
-      // final fechaUltimaSyncValue = createFechaUltimaSyncValue(
-      //     columnName: ultimaSyncDateTableColumn.name, date: dbSysdateStr);
-
-      // await (_db.update(_db.fechaUltimaSyncTable)
-      //       ..where((t) => t.id.equals('1')))
-      //     .write(fechaUltimaSyncValue);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> upsertTable(
+      {required TableInfo<Table, dynamic> tableInfo,
+      required dynamic dto}) async {
+    try {
+      await _db.into(tableInfo).insertOnConflictUpdate(dto);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteTableValue(
+      {required TableInfo<Table, dynamic> tableInfo,
+      required dynamic dto}) async {
+    try {
+      await _db.delete(tableInfo).delete(dto);
     } catch (e) {
       rethrow;
     }
@@ -262,6 +272,19 @@ class SyncService {
               'Internet Error',
         );
       }
+    }
+  }
+
+  Future<DateTime> getLastUpdatedDate(
+      {required TableInfo<Table, dynamic> tableInfo}) async {
+    try {
+      final query = await _db.customSelect(
+          ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
+          ''').getSingle();
+
+      return DateTime.parse(query.data['MAX_DATE']);
+    } catch (e) {
+      rethrow;
     }
   }
 }

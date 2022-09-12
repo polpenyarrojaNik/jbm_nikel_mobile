@@ -6,7 +6,6 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_rep
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 import '../../../../core/routing/app_router.dart';
@@ -27,7 +26,6 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(clienteListaStreamProvider(page));
-    final stateUltimaSync = ref.watch(clienteUltimaSyncProvider);
 
     scrollController.addListener(() {
       final metrics = scrollController.position;
@@ -51,30 +49,19 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            stateUltimaSync.when(
-                data: (ultimaSyncDate) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: ultimaSyncDate),
-                error: (e, _) => ErrorMessageWidget(e.toString()),
-                loading: () => const ProgressIndicatorWidget()),
-            Expanded(
-              child: state.when(
-                loading: () => const ProgressIndicatorWidget(),
-                error: (e, _) => ErrorMessageWidget(e.toString()),
-                data: (clienteList) => (clienteList.isEmpty)
-                    ? Container()
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        controller: scrollController,
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemCount: clienteList.length,
-                        itemBuilder: (context, i) =>
-                            ClienteListaTile(cliente: clienteList[i]),
-                      ),
-              ),
-            ),
-          ],
+        child: state.when(
+          loading: () => const ProgressIndicatorWidget(),
+          error: (e, _) => ErrorMessageWidget(e.toString()),
+          data: (clienteList) => (clienteList.isEmpty)
+              ? Container()
+              : ListView.builder(
+                  shrinkWrap: true,
+                  controller: scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: clienteList.length,
+                  itemBuilder: (context, i) =>
+                      ClienteListaTile(cliente: clienteList[i]),
+                ),
         ),
       ),
     );

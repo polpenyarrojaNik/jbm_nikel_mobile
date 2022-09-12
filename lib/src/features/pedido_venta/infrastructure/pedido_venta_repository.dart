@@ -21,18 +21,6 @@ final pedidoVentaListaStreamProvider =
   yield* pedidoVentaRepository.watchPedidoVentaLista(usuarioId: usuario!.id);
 });
 
-final pedidoVentaUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getFechaUltimaSyncPedidoVenta();
-});
-
-final pedidoVentaLineaUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getFechaUltimaSyncPedidoVentaLinea();
-});
-
 final pedidoVentaProvider = FutureProvider.autoDispose
     .family<PedidoVenta, String>((ref, pedidoVentaId) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
@@ -133,20 +121,5 @@ class PedidoVentaRepository {
     return query.asyncMap((row) async {
       return row.toDomain();
     }).get();
-  }
-
-  Future<DateTime> getFechaUltimaSyncPedidoVenta() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncPedidoVenta;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncPedidoVentaLinea() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncPedidoVentaLinea;
-
-    return DateTime.parse(date!);
   }
 }

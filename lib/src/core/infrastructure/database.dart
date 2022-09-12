@@ -45,7 +45,6 @@ final appDatabaseProvider = Provider<AppDatabase>(
 const localDatabaseName = 'jbm.sqlite';
 
 @DriftDatabase(tables: [
-  FechaUltimaSyncTable,
   PedidoVentaTable,
   PedidoVentaEstadoTable,
   PedidoVentaLineaTable,
@@ -90,73 +89,4 @@ LazyDatabase _openConnection() {
     final file = File(join(dbFolder.path, localDatabaseName));
     return NativeDatabase(file);
   });
-}
-
-class FechaUltimaSyncTable extends Table {
-  @override
-  String get tableName => 'FECHA_ULTIMA_SYNC';
-
-  @override
-  Set<Column> get primaryKey => {id};
-
-  TextColumn get id => text().named('ID')();
-  TextColumn get ultimaSyncDivisa =>
-      text().nullable().named('ULTIMA_SYNC_DIVISA')();
-  TextColumn get ultimaSyncPais =>
-      text().nullable().named('ULTIMA_SYNC_PAIS')();
-  TextColumn get ultimaSyncMetodoDeCobro =>
-      text().nullable().named('ULTIMA_SYNC_METODO_COBRO')();
-  TextColumn get ultimaSyncPlazoDeCobro =>
-      text().nullable().named('ULTIMA_SYNC_PLAZO_COBRO')();
-  TextColumn get ultimaSyncCliente =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE')();
-  TextColumn get ultimaSyncClienteUsuario =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_USUARIO')();
-  TextColumn get ultimaSyncClienteContacto =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_CONTACTO')();
-  TextColumn get ultimaSyncClienteDescuento =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_DESCUENTO')();
-  TextColumn get ultimaSyncClienteDireccion =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_DIRECCION')();
-  TextColumn get ultimaSyncClientePrecioNeto =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_PRECIO_NETO')();
-  TextColumn get ultimaSyncClienteGrupoNeto =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_GRUPO_NETO')();
-  TextColumn get ultimaSyncClientePagoPendiente =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_PAGO_PENDIENTE')();
-  TextColumn get ultimaSyncClienteRappels =>
-      text().nullable().named('ULTIMA_SYNC_CLIENTE_RAPPELS')();
-  TextColumn get ultimaSyncArticulosTop =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULOS_TOP')();
-  TextColumn get ultimaSyncPedidoVenta =>
-      text().nullable().named('ULTIMA_SYNC_PEDIDO_VENTA')();
-  TextColumn get ultimaSyncVisita =>
-      text().nullable().named('ULTIMA_SYNC_VISITA')();
-  TextColumn get ultimaSyncPedidoVentaLinea =>
-      text().nullable().named('ULTIMA_SYNC_PEDIDO_VENTA_LINEA')();
-  TextColumn get ultimaSyncPedidoVentaEstado =>
-      text().nullable().named('ULTIMA_SYNC_PEDIDO_VENTA_ESTADO')();
-  TextColumn get ultimaSyncArticulo =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO')();
-  TextColumn get ultimaSyncFamilia =>
-      text().nullable().named('ULTIMA_SYNC_FAMILIA')();
-  TextColumn get ultimaSyncSubfamilia =>
-      text().nullable().named('ULTIMA_SYNC_SUBFAMILIA')();
-  TextColumn get ultimaSyncArticuloGrupoNeto =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO_GRUPO_NETO')();
-  TextColumn get ultimaSyncArticuloTarifaPrecio =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO_TARIFA_PRECIO')();
-  TextColumn get ultimaSyncArticuloComponente =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO_COMPONENTE')();
-  TextColumn get ultimaSyncArticuloSustitutivo =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO_SUSTITUTIVO')();
-  TextColumn get ultimaSyncArticuloRecambio =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO_RECAMBIO')();
-  TextColumn get ultimaSyncArticuloEmpresaIva =>
-      text().nullable().named('ULTIMA_SYNC_ARTICULO_EMPRESA_IVA')();
-  TextColumn get ultimaSyncEstadisticasClienteUsuarioVentas => text()
-      .nullable()
-      .named('ULTIMA_SYNC_ESTADISTICAS_VENTA_CLIENTE_USUARIO')();
-  TextColumn get ultimaSyncEstadisticasUltimosPrecios =>
-      text().nullable().named('ULTIMA_SYNC_ESTADISTICAS_ULTIMOS_PRECIOS')();
 }

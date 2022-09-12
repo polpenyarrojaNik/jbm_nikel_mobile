@@ -129,23 +129,6 @@ final articuloUltimosPreciosListProvider = FutureProvider.autoDispose
       articuloId: articuloId, usuarioId: usuario!.id);
 });
 
-final articuloUltimaSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getFechaUltimaSyncArticulo();
-});
-
-final articuloPedidoVentaUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getFechaUltimaSyncArticuloPedidoVenta();
-});
-
-final articuloUltimosPreciossUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getFechaUltimaSyncArticuloUltimosPrecios();
-});
-
 class ArticuloRepository {
   final AppDatabase _db;
   final Dio _dio;
@@ -366,27 +349,6 @@ class ArticuloRepository {
           await getArticuloById(articuloId: lastPriceArticuloDTO.articuloId);
       return lastPriceArticuloDTO.toDomain(articulo: articulo);
     }).get();
-  }
-
-  Future<DateTime> getFechaUltimaSyncArticulo() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncArticulo;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncArticuloPedidoVenta() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncPedidoVentaLinea;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncArticuloUltimosPrecios() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncEstadisticasUltimosPrecios;
-    return DateTime.parse(date!);
   }
 
   Future<List<ArticuloImagenDTO>> _remoteGetArticuloImagen({

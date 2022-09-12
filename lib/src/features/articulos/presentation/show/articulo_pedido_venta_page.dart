@@ -4,7 +4,6 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../pedido_venta/domain/pedido_venta_linea.dart';
 
@@ -16,31 +15,19 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloPedidoVentaLineaListProvider(articuloId));
-    final stateUltimaSync = ref.watch(articuloPedidoVentaUltimaSyncProvider);
     return Scaffold(
       appBar: AppBar(title: const Text('Pedidos')),
-      body: Column(
-        children: [
-          stateUltimaSync.when(
-              data: (ultimaSyncDate) =>
-                  UltimaSyncDateWidget(ultimaSyncDate: ultimaSyncDate),
-              error: (e, _) => ErrorMessageWidget(e.toString()),
-              loading: () => const ProgressIndicatorWidget()),
-          Expanded(
-            child: state.when(
-                data: (pedidoVentaLineaLista) => (pedidoVentaLineaLista.isEmpty)
-                    ? const Center(child: Text('No Results'))
-                    : ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, i) => PedidoVentaLineaTile(
-                            pedidoVentaLinea: pedidoVentaLineaLista[i]),
-                        itemCount: pedidoVentaLineaLista.length,
-                      ),
-                error: (e, _) => ErrorMessageWidget(e.toString()),
-                loading: () => const ProgressIndicatorWidget()),
-          ),
-        ],
-      ),
+      body: state.when(
+          data: (pedidoVentaLineaLista) => (pedidoVentaLineaLista.isEmpty)
+              ? const Center(child: Text('No Results'))
+              : ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, i) => PedidoVentaLineaTile(
+                      pedidoVentaLinea: pedidoVentaLineaLista[i]),
+                  itemCount: pedidoVentaLineaLista.length,
+                ),
+          error: (e, _) => ErrorMessageWidget(e.toString()),
+          loading: () => const ProgressIndicatorWidget()),
     );
   }
 }

@@ -92,23 +92,6 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
       clienteId: clienteId, provisionalToken: usuario!.provisionalToken);
 });
 
-final clienteUltimaSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getFechaUltimaSyncCliente();
-});
-
-final clientePendientePagoUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getFechaUltimaSyncClientePagoPendiente();
-});
-
-final clienteArticuloTopUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getFechaUltimaSyncArticulosTop();
-});
-
 const pageSize = 100;
 
 class ClienteRepository {
@@ -290,27 +273,6 @@ class ClienteRepository {
         provisionalToken: provisionalToken);
 
     return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
-  }
-
-  Future<DateTime> getFechaUltimaSyncCliente() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncCliente;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncClientePagoPendiente() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncClientePagoPendiente;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncArticulosTop() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncArticulosTop;
-    return DateTime.parse(date!);
   }
 
   Future<List<ClienteAdjuntoDTO>> _remoteGetClienteAdjunto(

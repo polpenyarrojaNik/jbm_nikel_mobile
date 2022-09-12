@@ -76,8 +76,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
                         key: const ValueKey('usuario'),
                         formControlName: 'usuario',
                         textCapitalization: TextCapitalization.characters,
-                        validationMessages: (formControl) =>
-                            {ValidationMessage.required: 'NO EMPTY'},
+                        validationMessages: {
+                          ValidationMessage.required: (error) => 'NO EMPTY'
+                        },
                         textInputAction: TextInputAction.next,
                         decoration: AppDecoration.loginField('Usuario'),
                       ),
@@ -85,10 +86,11 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       ReactiveTextField<String>(
                         formControlName: 'contrasenya',
                         obscureText: true,
-                        validationMessages: (formControl) =>
-                            {ValidationMessage.required: 'NO EMPTY'},
+                        validationMessages: {
+                          ValidationMessage.required: (error) => 'NO EMPTY'
+                        },
                         textInputAction: TextInputAction.done,
-                        onSubmitted: () => _submit(form, ref),
+                        onSubmitted: (_) => _submit(form, ref),
                         decoration: AppDecoration.loginField(
                           'Password',
                         ),
@@ -96,8 +98,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       state.maybeWhen(
                         orElse: () {
                           return ElevatedButton(
-                              onPressed: () => _submit(form, ref),
-                              child: const Text('Login'));
+                            onPressed: () => _submit(form, ref),
+                            child: const Text('Login'),
+                          );
                         },
                         loading: () => const ProgressIndicatorWidget(),
                       )

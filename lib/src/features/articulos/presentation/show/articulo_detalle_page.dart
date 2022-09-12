@@ -7,9 +7,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
 
 import '../../../../core/presentation/common_widgets/buttons_row_bar_widget.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
-import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/text_button_widget.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -37,7 +35,6 @@ class ArticuloDetallePage extends StatelessWidget {
       body: Consumer(
         builder: (context, ref, _) {
           final articuloValue = ref.watch(articuloProvider(articuloId));
-          final stateUltimaSync = ref.watch(articuloUltimaSyncProvider);
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
             data: (articulo) => DefaultTabController(
@@ -64,13 +61,6 @@ class ArticuloDetallePage extends StatelessWidget {
                     child: NestedScrollView(
                       scrollDirection: Axis.vertical,
                       headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                        SliverToBoxAdapter(
-                          child: stateUltimaSync.when(
-                              data: (ultimaSyncDate) => UltimaSyncDateWidget(
-                                  ultimaSyncDate: ultimaSyncDate),
-                              error: (e, _) => ErrorMessageWidget(e.toString()),
-                              loading: () => const ProgressIndicatorWidget()),
-                        ),
                         SliverToBoxAdapter(
                           child: _ArticuloInfoContainer(articulo: articulo),
                         ),

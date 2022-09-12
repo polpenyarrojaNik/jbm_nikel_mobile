@@ -4,7 +4,6 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_rep
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_pago_pendiente.dart';
 
@@ -16,33 +15,21 @@ class ClientePagoPendientePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clientePendientePagoProvider(clienteId));
-    final stateUltimaSync = ref.watch(clientePendientePagoUltimaSyncProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Pending Payments')),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            stateUltimaSync.when(
-                data: (ultimaSyncDate) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: ultimaSyncDate),
-                error: (e, _) => ErrorMessageWidget(e.toString()),
-                loading: () => const ProgressIndicatorWidget()),
-            Expanded(
-              child: state.when(
-                  data: (_) => (_.isEmpty)
-                      ? const Center(child: Text('No Results'))
-                      : ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, i) => ClientePagoPendienteTile(
-                              clientePagoPendiente: _[i]),
-                          itemCount: _.length),
-                  error: (e, __) => ErrorMessageWidget(e.toString()),
-                  loading: () => const ProgressIndicatorWidget()),
-            ),
-          ],
-        ),
+        child: state.when(
+            data: (_) => (_.isEmpty)
+                ? const Center(child: Text('No Results'))
+                : ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, i) =>
+                        ClientePagoPendienteTile(clientePagoPendiente: _[i]),
+                    itemCount: _.length),
+            error: (e, __) => ErrorMessageWidget(e.toString()),
+            loading: () => const ProgressIndicatorWidget()),
       ),
     );
   }
