@@ -47,6 +47,7 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
   void changeSearchValue() {
     setState(() {
       isSearching = !isSearching;
+      widget.onChanged('');
     });
   }
 }

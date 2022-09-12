@@ -13,7 +13,7 @@ class SplashPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<void>>(splashPageControllerProvider, (_, state) {
       state.whenData((value) {
-        context.goNamed(AppRoutes.settings.name);
+        context.goNamed(AppRoutes.articuloindex.name);
       });
     });
     final splashPageValue = ref.watch(splashPageControllerProvider);

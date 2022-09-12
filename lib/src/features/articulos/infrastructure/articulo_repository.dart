@@ -31,10 +31,10 @@ final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   },
 );
 
-final articuloListaStreamProvider =
-    StreamProvider.autoDispose<List<Articulo>>((ref) {
+final articulosSearchProvider = FutureProvider.autoDispose
+    .family<List<Articulo>, String>((ref, searchText) {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.watchArticuloLista();
+  return articuloRepository.getArticuloLista(searchText: searchText);
 });
 
 final articuloProvider =
@@ -135,12 +135,11 @@ class ArticuloRepository {
 
   ArticuloRepository(this._db, this._dio);
 
-  Stream<List<Articulo>> watchArticuloLista() {
-    final query = (_db.select(_db.articuloTable)
-      ..where(
-        (t) => t.deleted.equals('N'),
-      )
-      ..orderBy([(t) => OrderingTerm(expression: t.id)]));
+  Future<List<Articulo>> getArticuloLista({required String searchText}) {
+    final query = _db.select(_db.articuloTable);
+
+    query.where((t) => t.id.like('%$searchText%'));
+    query.orderBy([(t) => OrderingTerm(expression: t.id)]);
 
     return query.asyncMap((row) async {
       final familiaDTO = await (_db.select(_db.familiaTable)
@@ -153,7 +152,7 @@ class ArticuloRepository {
         familia: familiaDTO?.toDomain(),
         subfamilia: subfamiliaDTO?.toDomain(),
       );
-    }).watch();
+    }).get();
   }
 
   Future<Articulo> getArticuloById({required String articuloId}) async {
