@@ -29,7 +29,7 @@ class VisitaListaTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  dateFormatter(visita.fecha.toIso8601String()),
+                  dateFormatter(visita.fecha.toLocal().toIso8601String()),
                 ),
               ],
             ),

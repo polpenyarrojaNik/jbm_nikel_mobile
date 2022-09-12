@@ -6,7 +6,6 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_cus
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/routing/app_router.dart';
@@ -23,7 +22,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ventas order detalle'),
+        title: const Text('Pedido venta detalle'),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
@@ -40,7 +39,6 @@ class PedidoVentaDetallePage extends StatelessWidget {
         builder: (context, ref, _) {
           final pedidoVentaValue =
               ref.watch(pedidoVentaProvider(pedidoVentaId));
-          final stateUltimaSync = ref.watch(pedidoVentaUltimaSyncProvider);
 
           return AsyncValueWidget<PedidoVenta>(
             value: pedidoVentaValue,
@@ -48,14 +46,6 @@ class PedidoVentaDetallePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: stateUltimaSync.when(
-                        data: (ultimaSyncDate) => UltimaSyncDateWidget(
-                            ultimaSyncDate: ultimaSyncDate),
-                        error: (e, _) => ErrorMessageWidget(e.toString()),
-                        loading: () => const ProgressIndicatorWidget()),
-                  ),
                   ClienteInfoContainer(pedidoVenta: pedidoVenta),
                   const SizedBox(height: 5.0),
                   PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
@@ -186,8 +176,9 @@ class PedidoVentaInfoContainer extends StatelessWidget {
                       value: pedidoVenta.pedidoVentaEstado.descripcion),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Date',
-                      value: dateFormatter(
-                          pedidoVenta.pedidoVentaDate.toIso8601String())),
+                      value: dateFormatter(pedidoVenta.pedidoVentaDate
+                          .toLocal()
+                          .toIso8601String())),
                 ],
               ),
             ),

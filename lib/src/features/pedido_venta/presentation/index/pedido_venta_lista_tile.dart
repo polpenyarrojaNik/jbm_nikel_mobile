@@ -35,7 +35,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                 children: [
                   Text(pedidoVenta.pedidoVentaId),
                   Text(dateFormatter(
-                      pedidoVenta.pedidoVentaDate.toIso8601String())),
+                      pedidoVenta.pedidoVentaDate.toLocal().toIso8601String())),
                 ],
               ),
               const SizedBox(height: 8),

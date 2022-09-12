@@ -31,7 +31,9 @@ final clienteListaStreamProvider =
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   yield* clienteRepository.watchClienteLista(
-      usuarioId: usuario!.id, page: page);
+    usuarioId: usuario!.id,
+    page: page,
+  );
 });
 
 final clienteProvider =
@@ -90,23 +92,6 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
       clienteId: clienteId, provisionalToken: usuario!.provisionalToken);
 });
 
-final clienteUltimaSyncProvider = FutureProvider.autoDispose<DateTime>((ref) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getFechaUltimaSyncCliente();
-});
-
-final clientePendientePagoUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getFechaUltimaSyncClientePagoPendiente();
-});
-
-final clienteArticuloTopUltimaSyncProvider =
-    FutureProvider.autoDispose<DateTime>((ref) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getFechaUltimaSyncArticulosTop();
-});
-
 const pageSize = 100;
 
 class ClienteRepository {
@@ -116,7 +101,7 @@ class ClienteRepository {
   ClienteRepository(this._db, this._dio);
 
   Stream<List<Cliente>> watchClienteLista(
-      {required String usuarioId, required int page}) {
+      {required String usuarioId, required int page, String? searchText}) {
     final query = _db.select(_db.clienteTable).join([
       innerJoin(_db.clienteUsuarioTable,
           _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
@@ -132,8 +117,15 @@ class ClienteRepository {
           _db.plazoDeCobroTable.id.equalsExp(_db.clienteTable.plazoDeCobroId))
     ]);
 
-    query.where(_db.clienteTable.deleted.equals('N') &
-        _db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    if (searchText != null) {
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          (_db.clienteTable.nombreCliente.like('%$searchText%') |
+              _db.clienteTable.nombreCliente
+                  .like('%${searchText.toUpperCase()}%')));
+    } else {
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    }
+
     query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
     query.orderBy([
       OrderingTerm.asc(_db.clienteTable.nombreCliente),
@@ -281,27 +273,6 @@ class ClienteRepository {
         provisionalToken: provisionalToken);
 
     return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
-  }
-
-  Future<DateTime> getFechaUltimaSyncCliente() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncCliente;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncClientePagoPendiente() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncClientePagoPendiente;
-    return DateTime.parse(date!);
-  }
-
-  Future<DateTime> getFechaUltimaSyncArticulosTop() async {
-    final date =
-        (await (_db.select(_db.fechaUltimaSyncTable)..limit(1)).getSingle())
-            .ultimaSyncArticulosTop;
-    return DateTime.parse(date!);
   }
 
   Future<List<ClienteAdjuntoDTO>> _remoteGetClienteAdjunto(

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_tarifa_precio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
@@ -53,8 +54,8 @@ class ArticuloTarifaPrecioTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  '${articuloTarifaPrecio.precio}/${articuloTarifaPrecio.tipoPrecio}'),
-              Text(articuloTarifaPrecio.cantidadDesDe.toString()),
+                  '${numberFormat(articuloTarifaPrecio.precio)}/${articuloTarifaPrecio.tipoPrecio}'),
+              Text(numberFormat(articuloTarifaPrecio.cantidadDesDe)),
             ],
           ),
         ],

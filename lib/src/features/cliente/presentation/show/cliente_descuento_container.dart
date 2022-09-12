@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_descuento.dart';
@@ -55,19 +56,20 @@ class ClienteDescuentoTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     Text(clienteDescuento.articuloId,
-            //         style: Theme.of(context).textTheme.subtitle2),
-            //     Text('${clienteDescuento.descuento.toString()}%',
-            //         style: Theme.of(context).textTheme.subtitle2),
-            //   ],
-            // ),
-            // Text(
-            //     '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
-            //     style: Theme.of(context).textTheme.caption),
-            Text('Des de unidad/es',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(clienteDescuento.articuloId,
+                    style: Theme.of(context).textTheme.subtitle2),
+                Text('${numberFormat(clienteDescuento.descuento)}%',
+                    style: Theme.of(context).textTheme.subtitle2),
+              ],
+            ),
+            Text(
+                '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
+                style: Theme.of(context).textTheme.caption),
+            Text(
+                'Des de unidad/es ${numberFormat(clienteDescuento.cantidadDesDe)}',
                 style: Theme.of(context).textTheme.headline6),
           ],
         ),

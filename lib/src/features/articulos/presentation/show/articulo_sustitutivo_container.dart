@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_sustitutivo.dart';
@@ -49,13 +50,14 @@ class ArticuloSustitutivoTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(articuloSustitutivo.articuloSustitutivo.id),
-              Text(articuloSustitutivo.orden.toString()),
+              Text(numberFormat(articuloSustitutivo.orden)),
             ],
           ),
           const SizedBox(height: 5),
           Text(articuloSustitutivo.articuloSustitutivo.descripcion),
-          Text(
-              'Stock: ${articuloSustitutivo.articuloSustitutivo.stockDisponible}'),
+          if (articuloSustitutivo.articuloSustitutivo.stockDisponible != null)
+            Text(
+                'Stock: ${numberFormat(articuloSustitutivo.articuloSustitutivo.stockDisponible!)}'),
         ],
       ),
     );

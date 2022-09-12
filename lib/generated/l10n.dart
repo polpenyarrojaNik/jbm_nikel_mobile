@@ -938,6 +938,30 @@ class S {
     );
   }
 
+  /// `Towards clients `
+  String get cliente_alrededor_titulo {
+    return Intl.message(
+      'Towards clients ',
+      name: 'cliente_alrededor_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  // skipped getter for the 'cliente_alrededor_ventasAñoActual' key
+
+  // skipped getter for the 'cliente_alrededor_margenAñoActual' key
+
+  /// `Payment percentage`
+  String get cliente_alrededor_porcentajeAbonos {
+    return Intl.message(
+      'Payment percentage',
+      name: 'cliente_alrededor_porcentajeAbonos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sales orders`
   String get salesorder_index_titulo {
     return Intl.message(

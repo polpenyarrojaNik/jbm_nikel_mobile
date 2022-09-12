@@ -86,7 +86,7 @@ class EstadisticasUltimosPreciosTable extends Table {
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
   RealColumn get tipoPrecio => real().named('TIPO_PRECIO')();
   RealColumn get descuento1 => real().named('DESCUENTO1')();
-  RealColumn get descuento2 => real().named('DESCUENTO1')();
+  RealColumn get descuento2 => real().named('DESCUENTO2')();
   RealColumn get descuento3 => real().named('DESCUENTO3')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

@@ -18,7 +18,7 @@ class VisitaListaPage extends ConsumerWidget {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
-        title: const Text('Visitaas'),
+        title: const Text('Visitas'),
       ),
       body: ListView.builder(
         shrinkWrap: true,

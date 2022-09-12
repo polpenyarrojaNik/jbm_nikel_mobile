@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_recambio.dart';
@@ -49,7 +50,7 @@ class ArticuloRecambioTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(articuloRecambio.id),
-              Text(articuloRecambio.cantidad.toString()),
+              Text(numberFormat(articuloRecambio.cantidad)),
             ],
           ),
           const SizedBox(height: 5),

@@ -83,6 +83,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("LOGIN TITLE"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Usuario"),
+        "cliente_alrededor_porcentajeAbonos":
+            MessageLookupByLibrary.simpleMessage("Porcentaje abonos"),
+        "cliente_alrededor_titulo":
+            MessageLookupByLibrary.simpleMessage("Clientes alrededor"),
         "cliente_index_buscarClientes":
             MessageLookupByLibrary.simpleMessage(" Buscar clientes..."),
         "cliente_index_titulo":

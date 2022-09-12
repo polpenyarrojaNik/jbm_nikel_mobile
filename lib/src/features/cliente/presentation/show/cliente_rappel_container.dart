@@ -77,8 +77,9 @@ class ClienteRappelTile extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                            dateFormatter(
-                                clienteRappel.fechaDesDe.toIso8601String()),
+                            dateFormatter(clienteRappel.fechaDesDe
+                                .toLocal()
+                                .toIso8601String()),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyText2
@@ -98,8 +99,9 @@ class ClienteRappelTile extends StatelessWidget {
                                         ?.color)),
                         Text(
                             (clienteRappel.fechaHasta != null)
-                                ? dateFormatter(
-                                    clienteRappel.fechaHasta!.toIso8601String())
+                                ? dateFormatter(clienteRappel.fechaHasta!
+                                    .toLocal()
+                                    .toIso8601String())
                                 : '',
                             style: Theme.of(context)
                                 .textTheme

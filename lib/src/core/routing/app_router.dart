@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/presentation/clientes_alrededo_page.dart';
 
 import '../../features/app_initialization/presentation/splash_page.dart';
 import '../../features/articulos/presentation/index/articulo_lista_page.dart';
@@ -33,9 +34,9 @@ enum AppRoutes {
   clientependingpayment,
   clientesalesmes,
   clientesalesarticulo,
-  clientestockb2b,
   clientetoparticulos,
   clientetoparticulosshow,
+  clientealrededor,
   articuloindex,
   articuloshow,
   articulosalesorder,
@@ -177,6 +178,11 @@ class RouterNotifier extends ChangeNotifier {
                       ),
                     ]),
               ],
+            ),
+            GoRoute(
+              path: 'alrededor',
+              name: AppRoutes.clientealrededor.name,
+              builder: (context, state) => const ClientesAlrededorPage(),
             ),
           ],
         ),
