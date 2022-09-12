@@ -13,10 +13,18 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            child: Text('JBM Nikel'),
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceVariant,
+            ),
+            child: Text(
+              'Nikel Mobile',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline5!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
           ),
           ListTile(
             leading: const Icon(

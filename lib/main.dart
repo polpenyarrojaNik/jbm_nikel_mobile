@@ -50,7 +50,7 @@ void main() async {
       observers: [
         RiverpodLogger(),
       ],
-      child: const App(),
+      child: App(),
     ));
 
     FlutterError.onError = (FlutterErrorDetails detalles) {

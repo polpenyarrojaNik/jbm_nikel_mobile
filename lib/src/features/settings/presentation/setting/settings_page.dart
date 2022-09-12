@@ -18,7 +18,9 @@ class SettingsPage extends StatelessWidget {
             builder: (context, ref, child) => IconButton(
                 onPressed: () =>
                     ref.read(usuarioNotifierProvider.notifier).signOut(),
-                icon: const Icon(Icons.logout)),
+                icon: const Icon(
+                  Icons.logout,
+                )),
           )
         ],
       ),

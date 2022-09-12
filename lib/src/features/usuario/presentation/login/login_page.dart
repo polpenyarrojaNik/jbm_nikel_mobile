@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/primary_button.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../core/exceptions/app_exception.dart';
@@ -41,75 +43,87 @@ class LoginPageState extends ConsumerState<LoginPage> {
             ));
 
     final state = ref.watch(loginPageControllerProvider);
-    final deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
         body: SafeArea(
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 48.0),
-              child: ReactiveFormBuilder(
-                form: buildForm,
-                builder: (context, form, child) => SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Image.asset(
-                        'assets/nikel_logo_400.png',
-                        fit: BoxFit.cover,
-                        width: deviceSize.width * 0.50,
-                      ),
-                      const SizedBox(height: 50),
-                      const Text(
-                        'LOGIN TITLE',
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Archia-Bold'),
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      ReactiveTextField<String>(
-                        key: const ValueKey('usuario'),
-                        formControlName: 'usuario',
-                        textCapitalization: TextCapitalization.characters,
-                        validationMessages: {
-                          ValidationMessage.required: (error) => 'NO EMPTY'
-                        },
-                        textInputAction: TextInputAction.next,
-                        decoration: AppDecoration.loginField('Usuario'),
-                      ),
-                      const SizedBox(height: 16.0),
-                      ReactiveTextField<String>(
-                        formControlName: 'contrasenya',
-                        obscureText: true,
-                        validationMessages: {
-                          ValidationMessage.required: (error) => 'NO EMPTY'
-                        },
-                        textInputAction: TextInputAction.done,
-                        onSubmitted: (_) => _submit(form, ref),
-                        decoration: AppDecoration.loginField(
-                          'Password',
-                        ),
-                      ),
-                      state.maybeWhen(
-                        orElse: () {
-                          return ElevatedButton(
-                              onPressed: () => _submit(form, ref),
-                              child: const Text('Login'));
-                        },
-                        loading: () => const ProgressIndicatorWidget(),
-                      )
-                    ],
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 48.0),
+          child: ReactiveFormBuilder(
+            form: buildForm,
+            builder: (context, form, child) => SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/jbm_300x300.png',
+                      fit: BoxFit.cover,
+                      width: 250,
+                    ),
                   ),
-                ),
+                  gapH48,
+                  Text(
+                    'Bienvenido a',
+                    style: Theme.of(context).textTheme.headline5!,
+                  ),
+                  Text(
+                    'Nikel Mobile',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline4!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  gapH16,
+                  ReactiveTextField<String>(
+                    key: const ValueKey('usuario'),
+                    formControlName: 'usuario',
+                    textCapitalization: TextCapitalization.characters,
+                    validationMessages: {
+                      ValidationMessage.required: (error) => 'Requerido'
+                    },
+                    textInputAction: TextInputAction.next,
+                    decoration: AppDecoration.loginField('Usuario'),
+                  ),
+                  gapH16,
+                  ReactiveTextField<String>(
+                    formControlName: 'contrasenya',
+                    obscureText: true,
+                    validationMessages: {
+                      ValidationMessage.required: (error) => 'Requerido'
+                    },
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => _submit(form, ref),
+                    decoration: AppDecoration.loginField(
+                      'Contraseña',
+                    ),
+                  ),
+                  gapH32,
+                  state.maybeWhen(
+                    orElse: () {
+                      return PrimaryButton(
+                          onPressed: () => _submit(form, ref), text: 'Login');
+                    },
+                    loading: () => const ProgressIndicatorWidget(),
+                  ),
+                  gapH32,
+                  Container(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      'assets/nikel_logo_400.png',
+                      fit: BoxFit.fitWidth,
+                      width: 150,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    ));
   }
 
   Future<void> _submit(FormGroup form, WidgetRef ref) async {
