@@ -97,7 +97,21 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
   }) {
     return Articulo(
       id: id,
-      descripcion: getDescription(),
+      descripcionES: descripcionES,
+      descripcionEN: descripcionEN,
+      descripcionFR: descripcionFR,
+      descripcionDE: descripcionDE,
+      descripcionCA: descripcionCA,
+      descripcionGB: descripcionGB,
+      descripcionHU: descripcionHU,
+      descripcionIT: descripcionIT,
+      descripcionNL: descripcionNL,
+      descripcionPL: descripcionPL,
+      descripcionPT: descripcionPT,
+      descripcionRO: descripcionRO,
+      descripcionRU: descripcionRU,
+      descripcionCN: descripcionCN,
+      descripcionEL: descripcionEL,
       familia: familia,
       subfamilia: subfamilia,
       ventaMinimo: ventaMinimo,
@@ -115,7 +129,21 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       largoCm: largoCm,
       anchoCm: anchoCm,
       altoCm: altoCm,
-      resumen: getSummary(),
+      resumenES: resumenES,
+      resumenEN: resumenEN,
+      resumenFR: resumenFR,
+      resumenDE: resumenDE,
+      resumenCA: resumenCA,
+      resumenGB: resumenGB,
+      resumenHU: resumenHU,
+      resumenIT: resumenIT,
+      resumenNL: resumenNL,
+      resumenPL: resumenPL,
+      resumenPT: resumenPT,
+      resumenRO: resumenRO,
+      resumenRU: resumenRU,
+      resumenCN: resumenCN,
+      resumenEL: resumenEL,
       stockDisponible: stockDisponible,
       ventasActual: ventasActual,
       ventasAnterior: ventasAnterior,
@@ -133,38 +161,6 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
-  }
-
-  String getDescription() {
-    if (descripcionEN != null) {
-      return descripcionEN!;
-    } else if (descripcionFR != null) {
-      return descripcionFR!;
-    } else if (descripcionDE != null) {
-      return descripcionDE!;
-    } else if (descripcionGB != null) {
-      return descripcionGB!;
-    } else if (descripcionCA != null) {
-      return descripcionCA!;
-    }
-    return descripcionES;
-  }
-
-  String? getSummary() {
-    if (resumenEN != null) {
-      return resumenEN!;
-    } else if (resumenFR != null) {
-      return resumenFR!;
-    } else if (resumenDE != null) {
-      return resumenDE!;
-    } else if (resumenGB != null) {
-      return resumenGB!;
-    } else if (resumenCA != null) {
-      return resumenCA!;
-    } else if (resumenES != null) {
-      return resumenES!;
-    }
-    return null;
   }
 
   @override

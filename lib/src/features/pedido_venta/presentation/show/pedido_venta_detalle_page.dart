@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/pedido_venta_linea_tile.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/helpers/formatters.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../domain/articulo.dart';
 
@@ -19,17 +20,28 @@ class ArticuloListaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => navigateToArticuloDetalPage(context, articulo.id, clienteId),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.transparent,
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              articulo.id,
-              style: Theme.of(context).textTheme.subtitle2,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  articulo.id,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                if (articulo.stockDisponible != null)
+                  Text(
+                    '${numberFormat(articulo.stockDisponible!)} unidades',
+                    style: Theme.of(context).textTheme.subtitle2,
+                  ),
+              ],
             ),
             Text(
-              articulo.descripcion,
+              getDescriptionInLocalLanguage(articulo: articulo),
             ),
             Text(
               (articulo.subfamilia != null)

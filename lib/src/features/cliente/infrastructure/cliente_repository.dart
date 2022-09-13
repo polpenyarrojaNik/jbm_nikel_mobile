@@ -102,177 +102,218 @@ class ClienteRepository {
 
   Stream<List<Cliente>> watchClienteLista(
       {required String usuarioId, required int page, String? searchText}) {
-    final query = _db.select(_db.clienteTable).join([
-      innerJoin(_db.clienteUsuarioTable,
-          _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
-      innerJoin(_db.paisTable,
-          _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
-      innerJoin(_db.divisaTable,
-          _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
-      innerJoin(
-          _db.metodoDeCobroTable,
-          _db.metodoDeCobroTable.id
-              .equalsExp(_db.clienteTable.metodoDeCobroId)),
-      innerJoin(_db.plazoDeCobroTable,
-          _db.plazoDeCobroTable.id.equalsExp(_db.clienteTable.plazoDeCobroId))
-    ]);
+    try {
+      final query = _db.select(_db.clienteTable).join([
+        innerJoin(_db.clienteUsuarioTable,
+            _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
+        innerJoin(_db.paisTable,
+            _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
+        innerJoin(_db.divisaTable,
+            _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
+        innerJoin(
+            _db.metodoDeCobroTable,
+            _db.metodoDeCobroTable.id
+                .equalsExp(_db.clienteTable.metodoDeCobroId)),
+        innerJoin(_db.plazoDeCobroTable,
+            _db.plazoDeCobroTable.id.equalsExp(_db.clienteTable.plazoDeCobroId))
+      ]);
 
-    if (searchText != null) {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-          (_db.clienteTable.nombreCliente.like('%$searchText%') |
-              _db.clienteTable.nombreCliente
-                  .like('%${searchText.toUpperCase()}%')));
-    } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      if (searchText != null) {
+        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+            (_db.clienteTable.nombreCliente.like('%$searchText%') |
+                _db.clienteTable.nombreCliente
+                    .like('%${searchText.toUpperCase()}%')));
+      } else {
+        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      }
+
+      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+      query.orderBy([
+        OrderingTerm.asc(_db.clienteTable.nombreCliente),
+        OrderingTerm.asc(_db.clienteTable.id)
+      ]);
+
+      return query.asyncMap((row) async {
+        final clienteDTO = row.readTable(_db.clienteTable);
+        final paisDTO = row.readTableOrNull(_db.paisTable);
+        final divisaDTO = row.readTableOrNull(_db.divisaTable);
+        final metodoDeCobroDTO = row.readTableOrNull(_db.metodoDeCobroTable);
+        final plazoDeCobroDTO = row.readTableOrNull(_db.plazoDeCobroTable);
+
+        return clienteDTO.toDomain(
+          paisFiscal: paisDTO?.toDomain(),
+          divisa: divisaDTO?.toDomain(),
+          metodoDeCobro: metodoDeCobroDTO?.toDomain(),
+          plazoDeCobro: plazoDeCobroDTO?.toDomain(),
+        );
+      }).watch();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
-
-    query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
-    query.orderBy([
-      OrderingTerm.asc(_db.clienteTable.nombreCliente),
-      OrderingTerm.asc(_db.clienteTable.id)
-    ]);
-
-    return query.asyncMap((row) async {
-      final clienteDTO = row.readTable(_db.clienteTable);
-      final paisDTO = row.readTableOrNull(_db.paisTable);
-      final divisaDTO = row.readTableOrNull(_db.divisaTable);
-      final metodoDeCobroDTO = row.readTableOrNull(_db.metodoDeCobroTable);
-      final plazoDeCobroDTO = row.readTableOrNull(_db.plazoDeCobroTable);
-
-      return clienteDTO.toDomain(
-        paisFiscal: paisDTO?.toDomain(),
-        divisa: divisaDTO?.toDomain(),
-        metodoDeCobro: metodoDeCobroDTO?.toDomain(),
-        plazoDeCobro: plazoDeCobroDTO?.toDomain(),
-      );
-    }).watch();
   }
 
   Future<Cliente> getClienteById({required String clienteId}) async {
-    final query =
-        (_db.select(_db.clienteTable)..where((t) => t.id.equals(clienteId)));
+    try {
+      final query =
+          (_db.select(_db.clienteTable)..where((t) => t.id.equals(clienteId)));
 
-    return query.asyncMap((row) async {
-      final paisDTO = await (_db.select(_db.paisTable)
-            ..where((t) => t.id.equals(row.paisFiscalId ?? '')))
-          .getSingleOrNull();
-      final divisaDTO = await (_db.select(_db.divisaTable)
-            ..where((t) => t.id.equals(row.divisaId ?? '')))
-          .getSingleOrNull();
-      final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
-            ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
-          .getSingleOrNull();
-      final plazoDeCobroDTO = await (_db.select(_db.plazoDeCobroTable)
-            ..where((t) => t.id.equals(row.plazoDeCobroId ?? '')))
-          .getSingleOrNull();
-      return row.toDomain(
-        paisFiscal: paisDTO?.toDomain(),
-        divisa: divisaDTO?.toDomain(),
-        metodoDeCobro: metodoDeCobroDTO?.toDomain(),
-        plazoDeCobro: plazoDeCobroDTO?.toDomain(),
-      );
-    }).getSingle();
+      return query.asyncMap((row) async {
+        final paisDTO = await (_db.select(_db.paisTable)
+              ..where((t) => t.id.equals(row.paisFiscalId ?? '')))
+            .getSingleOrNull();
+        final divisaDTO = await (_db.select(_db.divisaTable)
+              ..where((t) => t.id.equals(row.divisaId ?? '')))
+            .getSingleOrNull();
+        final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
+              ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
+            .getSingleOrNull();
+        final plazoDeCobroDTO = await (_db.select(_db.plazoDeCobroTable)
+              ..where((t) => t.id.equals(row.plazoDeCobroId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          paisFiscal: paisDTO?.toDomain(),
+          divisa: divisaDTO?.toDomain(),
+          metodoDeCobro: metodoDeCobroDTO?.toDomain(),
+          plazoDeCobro: plazoDeCobroDTO?.toDomain(),
+        );
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Stream<List<ClienteDireccion>> getClienteDireccionById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clienteDireccionTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clienteDireccionTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.asyncMap((row) async {
-      final paisDTO = await (_db.select(_db.paisTable)
-            ..where((t) => t.id.equals(row.paisId ?? '')))
-          .getSingleOrNull();
-      return row.toDomain(
-        pais: paisDTO?.toDomain(),
-      );
-    }).watch();
+      return query.asyncMap((row) async {
+        final paisDTO = await (_db.select(_db.paisTable)
+              ..where((t) => t.id.equals(row.paisId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          pais: paisDTO?.toDomain(),
+        );
+      }).watch();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClienteContacto>> getClienteContactoById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clienteContactoTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clienteContactoTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.map((row) {
-      return row.toDomain();
-    }).get();
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClienteDescuento>> getClienteDescuentoById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clienteDescuentoTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clienteDescuentoTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.asyncMap((row) async {
-      final familiaDTO = await (_db.select(_db.familiaTable)
-            ..where((t) => t.id.equals(row.familiaId)))
-          .getSingle();
-      final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
-            ..where((t) => t.id.equals(row.subfamiliaId)))
-          .getSingle();
-      return row.toDomain(
-          familia: familiaDTO.toDomain(), subfamilia: subfamiliaDTO.toDomain());
-    }).get();
+      return query.asyncMap((row) async {
+        final familiaDTO = await (_db.select(_db.familiaTable)
+              ..where((t) => t.id.equals(row.familiaId)))
+            .getSingle();
+        final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
+              ..where((t) => t.id.equals(row.subfamiliaId)))
+            .getSingle();
+        return row.toDomain(
+            familia: familiaDTO.toDomain(),
+            subfamilia: subfamiliaDTO.toDomain());
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClientePrecioNeto>> getClientePrecioNetoById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clientePrecioNetoTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clientePrecioNetoTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.map((row) {
-      return row.toDomain();
-    }).get();
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClienteGrupoNeto>> getClienteGrupoNetoById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clienteGrupoNetoTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clienteGrupoNetoTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.map((row) {
-      return row.toDomain();
-    }).get();
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClienteRappel>> getClienteRappelById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clienteRappelTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clienteRappelTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.map((row) {
-      return row.toDomain();
-    }).get();
+      return query.map((row) {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClientePagoPendiente>> getClientePagoPendienteById(
       {required String clienteId}) {
-    final query = (_db.select(_db.clientePagoPendienteTable)
-      ..where((t) => t.clienteId.equals(clienteId)));
+    try {
+      final query = (_db.select(_db.clientePagoPendienteTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-    return query.asyncMap((row) async {
-      final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
-            ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
-          .getSingleOrNull();
+      return query.asyncMap((row) async {
+        final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
+              ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
+            .getSingleOrNull();
 
-      return row.toDomain(metodoDeCobro: metodoDeCobroDTO?.toDomain());
-    }).get();
+        return row.toDomain(metodoDeCobro: metodoDeCobroDTO?.toDomain());
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<ClienteAdjunto>> getClienteAdjuntoById(
       {required String clienteId, required String provisionalToken}) async {
-    final query = {'CLIENTE_ID': clienteId};
-    final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
-        requestUri: Uri.http(
-          dotenv.get('URL', fallback: 'localhost:3001'),
-          'api/v1/online/cliente/adjuntos',
-          query,
-        ),
-        jsonDataSelector: (json) => json['data'] as List<dynamic>,
-        provisionalToken: provisionalToken);
+    try {
+      final query = {'CLIENTE_ID': clienteId};
+      final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
+          requestUri: Uri.http(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/cliente/adjuntos',
+            query,
+          ),
+          jsonDataSelector: (json) => json['data'] as List<dynamic>,
+          provisionalToken: provisionalToken);
 
-    return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
+      return clienteAdjuntoDTOList.map((e) => e.toDomain()).toList();
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<List<ClienteAdjuntoDTO>> _remoteGetClienteAdjunto(

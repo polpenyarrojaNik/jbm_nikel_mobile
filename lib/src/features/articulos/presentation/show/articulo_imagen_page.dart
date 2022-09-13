@@ -6,27 +6,33 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_imagen.dart';
 
-class ArticuloImagenContainer extends ConsumerWidget {
-  const ArticuloImagenContainer({super.key, required this.articuloId});
+class ArticuloImagenPage extends ConsumerWidget {
+  const ArticuloImagenPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloImageListProvider(articuloId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (articuloImagenList) => ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => ArticuloImagenTile(
-            articuloImagen: articuloImagenList[i],
-          ),
-          itemCount: articuloImagenList.length,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Articulo Imágenes')),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: state.maybeWhen(
+          orElse: () => const ProgressIndicatorWidget(),
+          error: (e, st) => ErrorMessageWidget(e.toString()),
+          data: (articuloImagenList) => (articuloImagenList.isNotEmpty)
+              ? ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, _) => const Divider(),
+                  itemBuilder: (context, i) => ArticuloImagenTile(
+                    articuloImagen: articuloImagenList[i],
+                  ),
+                  itemCount: articuloImagenList.length,
+                )
+              : const Center(
+                  child: Text('No Results'),
+                ),
         ),
       ),
     );
@@ -43,7 +49,6 @@ class ArticuloImagenTile extends ConsumerWidget {
     final state =
         ref.watch(articuloImageFileProvider(articuloImagen.pathArchivo ?? ''));
     return Card(
-      clipBehavior: Clip.hardEdge,
       elevation: 0,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4), // if you need this
@@ -62,10 +67,16 @@ class ArticuloImagenTile extends ConsumerWidget {
               data: (_) => (_ != null)
                   ? Image.memory(_, fit: BoxFit.fitHeight, height: 105)
                   : Image.asset('assets/image-placeholder.png'),
-              error: (e, _) => SizedBox(
-                  height: 150,
-                  width: 200,
-                  child: ErrorMessageWidget(e.toString())),
+              error: (e, _) => Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset('assets/image-placeholder.png'),
+                    ErrorMessageWidget(e.toString()),
+                  ],
+                ),
+              ),
               loading: () => Image.asset('assets/image-placeholder.png'),
             ),
             Text(articuloImagen.nombreArchivo),

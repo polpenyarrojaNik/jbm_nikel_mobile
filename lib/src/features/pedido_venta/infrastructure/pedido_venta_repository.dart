@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
+import '../../../core/exceptions/app_exception.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
@@ -87,39 +88,48 @@ class PedidoVentaRepository {
             pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
       }).watch();
     } catch (e) {
-      rethrow;
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
   Future<PedidoVenta> getPedidoVentaById(
       {required String pedidoVentaId}) async {
-    final query = (_db.select(_db.pedidoVentaTable)
-      ..where((t) => t.pedidoVentaId.equals(pedidoVentaId)));
+    try {
+      final query = (_db.select(_db.pedidoVentaTable)
+        ..where((t) => t.pedidoVentaId.equals(pedidoVentaId)));
 
-    return query.asyncMap((row) async {
-      final paisDTO = await (_db.select(_db.paisTable)
-            ..where((t) => t.id.equals(row.paisId ?? '')))
-          .getSingleOrNull();
-      final divisaDTO = await (_db.select(_db.divisaTable)
-            ..where((t) => t.id.equals(row.divisaId)))
-          .getSingle();
-      final pedidoVentaEstadoDTO = await (_db.select(_db.pedidoVentaEstadoTable)
-            ..where((t) => t.id.equals(row.pedidoVentaEstadoId)))
-          .getSingle();
-      return row.toDomain(
-          pais: paisDTO?.toDomain(),
-          divisa: divisaDTO.toDomain(),
-          pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
-    }).getSingle();
+      return query.asyncMap((row) async {
+        final paisDTO = await (_db.select(_db.paisTable)
+              ..where((t) => t.id.equals(row.paisId ?? '')))
+            .getSingleOrNull();
+        final divisaDTO = await (_db.select(_db.divisaTable)
+              ..where((t) => t.id.equals(row.divisaId)))
+            .getSingle();
+        final pedidoVentaEstadoDTO =
+            await (_db.select(_db.pedidoVentaEstadoTable)
+                  ..where((t) => t.id.equals(row.pedidoVentaEstadoId)))
+                .getSingle();
+        return row.toDomain(
+            pais: paisDTO?.toDomain(),
+            divisa: divisaDTO.toDomain(),
+            pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<PedidoVentaLinea>> getPedidoVentaLineaById(
       {required String pedidoVentaId}) async {
-    final query = (_db.select(_db.pedidoVentaLineaTable)
-      ..where((t) => t.pedidoVentaId.equals(pedidoVentaId)));
+    try {
+      final query = (_db.select(_db.pedidoVentaLineaTable)
+        ..where((t) => t.pedidoVentaId.equals(pedidoVentaId)));
 
-    return query.asyncMap((row) async {
-      return row.toDomain();
-    }).get();
+      return query.asyncMap((row) async {
+        return row.toDomain();
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 }

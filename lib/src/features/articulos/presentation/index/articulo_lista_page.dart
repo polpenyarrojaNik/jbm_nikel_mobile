@@ -66,8 +66,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
-        title: 'Articulos',
-        searchTitle: 'Search articulo...',
+        title: 'Artículos',
+        searchTitle: 'Search artículo...',
         onChanged: (searchText) {
           ref.read(articulosSearchQueryStateProvider.notifier).state =
               searchText;
@@ -75,7 +75,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
         },
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
         child: state.when(
           loading: () => const ProgressIndicatorWidget(),
           error: (e, _) => ErrorMessageWidget(e.toString()),

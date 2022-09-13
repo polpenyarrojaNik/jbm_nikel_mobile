@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../domain/visita.dart';
@@ -10,17 +12,11 @@ class VisitaListaTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: Padding(
+    return GestureDetector(
+      onTap: () =>
+          navigateToVisitaDetalle(context: context, visitaId: visita.id),
+      child: Container(
+        color: Colors.transparent,
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,5 +36,10 @@ class VisitaListaTile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void navigateToVisitaDetalle(
+      {required BuildContext context, required String visitaId}) {
+    context.goNamed(AppRoutes.visitashow.name, params: {'visitaId': visitaId});
   }
 }

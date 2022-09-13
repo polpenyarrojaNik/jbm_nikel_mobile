@@ -200,11 +200,31 @@ class S {
     );
   }
 
-  /// `General data`
-  String get articulo_show_articuloDetalle_datosGenerales {
+  /// `Stock y Entregas`
+  String get articulo_show_articuloDetalle_stockYEntregas {
     return Intl.message(
-      'General data',
-      name: 'articulo_show_articuloDetalle_datosGenerales',
+      'Stock y Entregas',
+      name: 'articulo_show_articuloDetalle_stockYEntregas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock`
+  String get articulo_show_articuloDetalle_stock {
+    return Intl.message(
+      'Stock',
+      name: 'articulo_show_articuloDetalle_stock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logístic data`
+  String get articulo_show_articuloDetalle_datosLogistica {
+    return Intl.message(
+      'Logístic data',
+      name: 'articulo_show_articuloDetalle_datosLogistica',
       desc: '',
       args: [],
     );
@@ -282,53 +302,55 @@ class S {
 
   // skipped getter for the 'articulo_show_articuloDetalle_+' key
 
-  /// `Stock`
-  String get articulo_show_articuloDetalle_stock {
+  /// `Subbox quantity`
+  String get articulo_show_articuloDetalle_cantidadSubcaja {
     return Intl.message(
-      'Stock',
-      name: 'articulo_show_articuloDetalle_stock',
+      'Subbox quantity',
+      name: 'articulo_show_articuloDetalle_cantidadSubcaja',
       desc: '',
       args: [],
     );
   }
 
-  /// `Subbox`
-  String get articulo_show_articuloDetalle_subcaja {
+  /// `Box quantity`
+  String get articulo_show_articuloDetalle_cantidadCaja {
     return Intl.message(
-      'Subbox',
-      name: 'articulo_show_articuloDetalle_subcaja',
+      'Box quantity',
+      name: 'articulo_show_articuloDetalle_cantidadCaja',
       desc: '',
       args: [],
     );
   }
 
-  /// `Box`
-  String get articulo_show_articuloDetalle_caja {
+  /// `Palet quantity`
+  String get articulo_show_articuloDetalle_cantidadPalet {
     return Intl.message(
-      'Box',
-      name: 'articulo_show_articuloDetalle_caja',
+      'Palet quantity',
+      name: 'articulo_show_articuloDetalle_cantidadPalet',
       desc: '',
       args: [],
     );
   }
 
-  /// `Palet`
-  String get articulo_show_articuloDetalle_palet {
+  /// `Measures`
+  String get articulo_show_articuloDetalle_medidas {
     return Intl.message(
-      'Palet',
-      name: 'articulo_show_articuloDetalle_palet',
+      'Measures',
+      name: 'articulo_show_articuloDetalle_medidas',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'articulo_show_articuloDetalle_peso(kg)' key
-
-  // skipped getter for the 'articulo_show_articuloDetalle_largo(cm)' key
-
-  // skipped getter for the 'articulo_show_articuloDetalle_alto(cm)' key
-
-  // skipped getter for the 'articulo_show_articuloDetalle_ancho(cm)' key
+  /// `Other data`
+  String get articulo_show_articuloDetalle_otrosDatos {
+    return Intl.message(
+      'Other data',
+      name: 'articulo_show_articuloDetalle_otrosDatos',
+      desc: '',
+      args: [],
+    );
+  }
 
   // skipped getter for the 'articulo_show_articuloDetalle_pagCatalogo/2ªEdi' key
 

@@ -7,27 +7,32 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
-class ArticuloTarifaPrecioContainer extends ConsumerWidget {
-  const ArticuloTarifaPrecioContainer({super.key, required this.articuloId});
+class ArticuloTarifaPrecioPage extends ConsumerWidget {
+  const ArticuloTarifaPrecioPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloTarifaPrecioListProvider(articuloId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (articuloTarifaPrecioList) => ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => ArticuloTarifaPrecioTile(
-            articuloTarifaPrecio: articuloTarifaPrecioList[i],
-          ),
-          itemCount: articuloTarifaPrecioList.length,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tarifa Precio')),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: state.maybeWhen(
+          orElse: () => const ProgressIndicatorWidget(),
+          error: (e, st) => ErrorMessageWidget(e.toString()),
+          data: (articuloTarifaPrecioList) =>
+              (articuloTarifaPrecioList.isNotEmpty)
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      separatorBuilder: (context, _) => const Divider(),
+                      itemBuilder: (context, i) => ArticuloTarifaPrecioTile(
+                        articuloTarifaPrecio: articuloTarifaPrecioList[i],
+                      ),
+                      itemCount: articuloTarifaPrecioList.length,
+                    )
+                  : const Center(child: Text('No Results')),
         ),
       ),
     );
@@ -54,8 +59,11 @@ class ArticuloTarifaPrecioTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                  '${numberFormat(articuloTarifaPrecio.precio)}/${articuloTarifaPrecio.tipoPrecio}'),
-              Text(numberFormat(articuloTarifaPrecio.cantidadDesDe)),
+                  'Precio: ${numberFormat(articuloTarifaPrecio.precio)}x${articuloTarifaPrecio.tipoPrecio}',
+                  style: Theme.of(context).textTheme.caption),
+              Text(
+                  'Cantidad des de: ${numberFormat(articuloTarifaPrecio.cantidadDesDe)}',
+                  style: Theme.of(context).textTheme.caption),
             ],
           ),
         ],

@@ -4,11 +4,13 @@ import 'package:jbm_nikel_mobile/src/core/domain/default_list_params.dart';
 import '../../domain/articulo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
-final articulosSearchQueryStateProvider = StateProvider<String>((ref) {
+final articulosSearchQueryStateProvider =
+    StateProvider.autoDispose<String>((ref) {
   return '';
 });
 
-final articulosPaginationQueryStateProvider = StateProvider<int>((ref) {
+final articulosPaginationQueryStateProvider =
+    StateProvider.autoDispose<int>((ref) {
   return 1;
 });
 

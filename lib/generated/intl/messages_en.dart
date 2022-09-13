@@ -34,12 +34,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Active app"),
         "articulo_show_articuloDetalle_activoWeb":
             MessageLookupByLibrary.simpleMessage("Active web"),
-        "articulo_show_articuloDetalle_caja":
-            MessageLookupByLibrary.simpleMessage("Box"),
+        "articulo_show_articuloDetalle_cantidadCaja":
+            MessageLookupByLibrary.simpleMessage("Box quantity"),
+        "articulo_show_articuloDetalle_cantidadPalet":
+            MessageLookupByLibrary.simpleMessage("Palet quantity"),
+        "articulo_show_articuloDetalle_cantidadSubcaja":
+            MessageLookupByLibrary.simpleMessage("Subbox quantity"),
         "articulo_show_articuloDetalle_codigo":
             MessageLookupByLibrary.simpleMessage("Code"),
-        "articulo_show_articuloDetalle_datosGenerales":
-            MessageLookupByLibrary.simpleMessage("General data"),
+        "articulo_show_articuloDetalle_datosLogistica":
+            MessageLookupByLibrary.simpleMessage("Logístic data"),
         "articulo_show_articuloDetalle_descatalogadoCompras":
             MessageLookupByLibrary.simpleMessage("Discontinued"),
         "articulo_show_articuloDetalle_descripcion":
@@ -54,16 +58,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delivery 3"),
         "articulo_show_articuloDetalle_familia":
             MessageLookupByLibrary.simpleMessage("Family"),
-        "articulo_show_articuloDetalle_palet":
-            MessageLookupByLibrary.simpleMessage("Palet"),
+        "articulo_show_articuloDetalle_medidas":
+            MessageLookupByLibrary.simpleMessage("Measures"),
+        "articulo_show_articuloDetalle_otrosDatos":
+            MessageLookupByLibrary.simpleMessage("Other data"),
         "articulo_show_articuloDetalle_pedVentas":
             MessageLookupByLibrary.simpleMessage("Sales orders"),
         "articulo_show_articuloDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Summary"),
         "articulo_show_articuloDetalle_stock":
             MessageLookupByLibrary.simpleMessage("Stock"),
-        "articulo_show_articuloDetalle_subcaja":
-            MessageLookupByLibrary.simpleMessage("Subbox"),
+        "articulo_show_articuloDetalle_stockYEntregas":
+            MessageLookupByLibrary.simpleMessage("Stock y Entregas"),
         "articulo_show_articuloDetalle_subfamilia":
             MessageLookupByLibrary.simpleMessage("Subfamily"),
         "articulo_show_articuloDetalle_ultimosPrecios":

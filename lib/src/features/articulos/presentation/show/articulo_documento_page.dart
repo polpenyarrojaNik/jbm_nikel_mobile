@@ -11,26 +11,30 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_documento.dart';
 
-class ArticuloDocumentContainer extends ConsumerWidget {
-  const ArticuloDocumentContainer({super.key, required this.articuloId});
+class ArticuloDocumentoPage extends ConsumerWidget {
+  const ArticuloDocumentoPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloDocumentListProvider(articuloId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (articuloDocumentoLista) => ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, i) => ArticuloDocumentoTile(
-            articuloDocumento: articuloDocumentoLista[i],
-          ),
-          itemCount: articuloDocumentoLista.length,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Documentos')),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: state.maybeWhen(
+          orElse: () => const ProgressIndicatorWidget(),
+          error: (e, st) => ErrorMessageWidget(e.toString()),
+          data: (articuloDocumentoLista) => (articuloDocumentoLista.isNotEmpty)
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, i) => ArticuloDocumentoTile(
+                    articuloDocumento: articuloDocumentoLista[i],
+                  ),
+                  itemCount: articuloDocumentoLista.length,
+                )
+              : const Center(child: Text('No Results')),
         ),
       ),
     );
@@ -52,7 +56,6 @@ class ArticuloDocumentoTile extends ConsumerWidget {
           error: (e, _) => () => showToast(e.toString(), context),
           loading: () => null),
       child: Card(
-        clipBehavior: Clip.hardEdge,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4), // if you need this

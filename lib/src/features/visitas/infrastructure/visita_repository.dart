@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
+import '../../../core/exceptions/app_exception.dart';
 import '../domain/visita.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
@@ -32,29 +33,37 @@ class VisitaRepository {
   VisitaRepository(this.db, this.dio);
 
   Stream<List<Visita>> watchVisitaList({required String usuarioId}) {
-    final query = db.select(db.visitaTable).join([
-      innerJoin(db.clienteUsuarioTable,
-          db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id))
-    ]);
+    try {
+      final query = db.select(db.visitaTable).join([
+        innerJoin(db.clienteUsuarioTable,
+            db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id))
+      ]);
 
-    query.where(db.visitaTable.deleted.equals('N') &
-        db.clienteUsuarioTable.clienteId.equals(usuarioId));
-    query.orderBy([
-      OrderingTerm.desc(db.visitaTable.fecha),
-    ]);
+      query.where(db.visitaTable.deleted.equals('N') &
+          db.clienteUsuarioTable.clienteId.equals(usuarioId));
+      query.orderBy([
+        OrderingTerm.desc(db.visitaTable.fecha),
+      ]);
 
-    return query.map((row) {
-      final visitaDTO = row.readTable(db.visitaTable);
-      return visitaDTO.toDomain();
-    }).watch();
+      return query.map((row) {
+        final visitaDTO = row.readTable(db.visitaTable);
+        return visitaDTO.toDomain();
+      }).watch();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<Visita> getVisitaById({required String visitaId}) async {
-    final query =
-        (db.select(db.visitaTable)..where((t) => t.id.equals(visitaId)));
+    try {
+      final query =
+          (db.select(db.visitaTable)..where((t) => t.id.equals(visitaId)));
 
-    return query.asyncMap((row) async {
-      return row.toDomain();
-    }).getSingle();
+      return query.asyncMap((row) async {
+        return row.toDomain();
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 }

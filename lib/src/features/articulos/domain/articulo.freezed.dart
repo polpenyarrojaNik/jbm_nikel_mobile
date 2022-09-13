@@ -17,7 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Articulo {
   String get id => throw _privateConstructorUsedError;
-  String get descripcion => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
+  String? get descripcionEN => throw _privateConstructorUsedError;
+  String? get descripcionFR => throw _privateConstructorUsedError;
+  String? get descripcionDE => throw _privateConstructorUsedError;
+  String? get descripcionCA => throw _privateConstructorUsedError;
+  String? get descripcionGB => throw _privateConstructorUsedError;
+  String? get descripcionHU => throw _privateConstructorUsedError;
+  String? get descripcionIT => throw _privateConstructorUsedError;
+  String? get descripcionNL => throw _privateConstructorUsedError;
+  String? get descripcionPL => throw _privateConstructorUsedError;
+  String? get descripcionPT => throw _privateConstructorUsedError;
+  String? get descripcionRO => throw _privateConstructorUsedError;
+  String? get descripcionRU => throw _privateConstructorUsedError;
+  String? get descripcionCN => throw _privateConstructorUsedError;
+  String? get descripcionEL => throw _privateConstructorUsedError;
   Familia? get familia => throw _privateConstructorUsedError;
   Subfamilia? get subfamilia => throw _privateConstructorUsedError;
   double get ventaMinimo => throw _privateConstructorUsedError;
@@ -35,7 +49,21 @@ mixin _$Articulo {
   double get largoCm => throw _privateConstructorUsedError;
   double get anchoCm => throw _privateConstructorUsedError;
   double get altoCm => throw _privateConstructorUsedError;
-  String? get resumen => throw _privateConstructorUsedError;
+  String? get resumenES => throw _privateConstructorUsedError;
+  String? get resumenEN => throw _privateConstructorUsedError;
+  String? get resumenFR => throw _privateConstructorUsedError;
+  String? get resumenDE => throw _privateConstructorUsedError;
+  String? get resumenCA => throw _privateConstructorUsedError;
+  String? get resumenGB => throw _privateConstructorUsedError;
+  String? get resumenHU => throw _privateConstructorUsedError;
+  String? get resumenIT => throw _privateConstructorUsedError;
+  String? get resumenNL => throw _privateConstructorUsedError;
+  String? get resumenPL => throw _privateConstructorUsedError;
+  String? get resumenPT => throw _privateConstructorUsedError;
+  String? get resumenRO => throw _privateConstructorUsedError;
+  String? get resumenRU => throw _privateConstructorUsedError;
+  String? get resumenCN => throw _privateConstructorUsedError;
+  String? get resumenEL => throw _privateConstructorUsedError;
   double? get stockDisponible => throw _privateConstructorUsedError;
   double? get ventasActual => throw _privateConstructorUsedError;
   double? get ventasAnterior => throw _privateConstructorUsedError;
@@ -64,7 +92,21 @@ abstract class $ArticuloCopyWith<$Res> {
       _$ArticuloCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String descripcion,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
       Familia? familia,
       Subfamilia? subfamilia,
       double ventaMinimo,
@@ -82,7 +124,21 @@ abstract class $ArticuloCopyWith<$Res> {
       double largoCm,
       double anchoCm,
       double altoCm,
-      String? resumen,
+      String? resumenES,
+      String? resumenEN,
+      String? resumenFR,
+      String? resumenDE,
+      String? resumenCA,
+      String? resumenGB,
+      String? resumenHU,
+      String? resumenIT,
+      String? resumenNL,
+      String? resumenPL,
+      String? resumenPT,
+      String? resumenRO,
+      String? resumenRU,
+      String? resumenCN,
+      String? resumenEL,
       double? stockDisponible,
       double? ventasActual,
       double? ventasAnterior,
@@ -115,7 +171,21 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
-    Object? descripcion = freezed,
+    Object? descripcionES = freezed,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
     Object? familia = freezed,
     Object? subfamilia = freezed,
     Object? ventaMinimo = freezed,
@@ -133,7 +203,21 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
     Object? largoCm = freezed,
     Object? anchoCm = freezed,
     Object? altoCm = freezed,
-    Object? resumen = freezed,
+    Object? resumenES = freezed,
+    Object? resumenEN = freezed,
+    Object? resumenFR = freezed,
+    Object? resumenDE = freezed,
+    Object? resumenCA = freezed,
+    Object? resumenGB = freezed,
+    Object? resumenHU = freezed,
+    Object? resumenIT = freezed,
+    Object? resumenNL = freezed,
+    Object? resumenPL = freezed,
+    Object? resumenPT = freezed,
+    Object? resumenRO = freezed,
+    Object? resumenRU = freezed,
+    Object? resumenCN = freezed,
+    Object? resumenEL = freezed,
     Object? stockDisponible = freezed,
     Object? ventasActual = freezed,
     Object? ventasAnterior = freezed,
@@ -156,10 +240,66 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
+      descripcionES: descripcionES == freezed
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
+      descripcionEN: descripcionEN == freezed
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: descripcionFR == freezed
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: descripcionDE == freezed
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: descripcionCA == freezed
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: descripcionGB == freezed
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: descripcionHU == freezed
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: descripcionIT == freezed
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: descripcionNL == freezed
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: descripcionPL == freezed
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: descripcionPT == freezed
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: descripcionRO == freezed
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: descripcionRU == freezed
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: descripcionCN == freezed
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: descripcionEL == freezed
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
       familia: familia == freezed
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
@@ -228,9 +368,65 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
           ? _value.altoCm
           : altoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      resumen: resumen == freezed
-          ? _value.resumen
-          : resumen // ignore: cast_nullable_to_non_nullable
+      resumenES: resumenES == freezed
+          ? _value.resumenES
+          : resumenES // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEN: resumenEN == freezed
+          ? _value.resumenEN
+          : resumenEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenFR: resumenFR == freezed
+          ? _value.resumenFR
+          : resumenFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenDE: resumenDE == freezed
+          ? _value.resumenDE
+          : resumenDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCA: resumenCA == freezed
+          ? _value.resumenCA
+          : resumenCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenGB: resumenGB == freezed
+          ? _value.resumenGB
+          : resumenGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenHU: resumenHU == freezed
+          ? _value.resumenHU
+          : resumenHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenIT: resumenIT == freezed
+          ? _value.resumenIT
+          : resumenIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenNL: resumenNL == freezed
+          ? _value.resumenNL
+          : resumenNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPL: resumenPL == freezed
+          ? _value.resumenPL
+          : resumenPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPT: resumenPT == freezed
+          ? _value.resumenPT
+          : resumenPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRO: resumenRO == freezed
+          ? _value.resumenRO
+          : resumenRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRU: resumenRU == freezed
+          ? _value.resumenRU
+          : resumenRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCN: resumenCN == freezed
+          ? _value.resumenCN
+          : resumenCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEL: resumenEL == freezed
+          ? _value.resumenEL
+          : resumenEL // ignore: cast_nullable_to_non_nullable
               as String?,
       stockDisponible: stockDisponible == freezed
           ? _value.stockDisponible
@@ -330,7 +526,21 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      String descripcion,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
       Familia? familia,
       Subfamilia? subfamilia,
       double ventaMinimo,
@@ -348,7 +558,21 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
       double largoCm,
       double anchoCm,
       double altoCm,
-      String? resumen,
+      String? resumenES,
+      String? resumenEN,
+      String? resumenFR,
+      String? resumenDE,
+      String? resumenCA,
+      String? resumenGB,
+      String? resumenHU,
+      String? resumenIT,
+      String? resumenNL,
+      String? resumenPL,
+      String? resumenPT,
+      String? resumenRO,
+      String? resumenRU,
+      String? resumenCN,
+      String? resumenEL,
       double? stockDisponible,
       double? ventasActual,
       double? ventasAnterior,
@@ -385,7 +609,21 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? descripcion = freezed,
+    Object? descripcionES = freezed,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
     Object? familia = freezed,
     Object? subfamilia = freezed,
     Object? ventaMinimo = freezed,
@@ -403,7 +641,21 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
     Object? largoCm = freezed,
     Object? anchoCm = freezed,
     Object? altoCm = freezed,
-    Object? resumen = freezed,
+    Object? resumenES = freezed,
+    Object? resumenEN = freezed,
+    Object? resumenFR = freezed,
+    Object? resumenDE = freezed,
+    Object? resumenCA = freezed,
+    Object? resumenGB = freezed,
+    Object? resumenHU = freezed,
+    Object? resumenIT = freezed,
+    Object? resumenNL = freezed,
+    Object? resumenPL = freezed,
+    Object? resumenPT = freezed,
+    Object? resumenRO = freezed,
+    Object? resumenRU = freezed,
+    Object? resumenCN = freezed,
+    Object? resumenEL = freezed,
     Object? stockDisponible = freezed,
     Object? ventasActual = freezed,
     Object? ventasAnterior = freezed,
@@ -426,10 +678,66 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
+      descripcionES: descripcionES == freezed
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
+      descripcionEN: descripcionEN == freezed
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: descripcionFR == freezed
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: descripcionDE == freezed
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: descripcionCA == freezed
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: descripcionGB == freezed
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: descripcionHU == freezed
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: descripcionIT == freezed
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: descripcionNL == freezed
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: descripcionPL == freezed
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: descripcionPT == freezed
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: descripcionRO == freezed
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: descripcionRU == freezed
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: descripcionCN == freezed
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: descripcionEL == freezed
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
       familia: familia == freezed
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
@@ -498,9 +806,65 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
           ? _value.altoCm
           : altoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      resumen: resumen == freezed
-          ? _value.resumen
-          : resumen // ignore: cast_nullable_to_non_nullable
+      resumenES: resumenES == freezed
+          ? _value.resumenES
+          : resumenES // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEN: resumenEN == freezed
+          ? _value.resumenEN
+          : resumenEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenFR: resumenFR == freezed
+          ? _value.resumenFR
+          : resumenFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenDE: resumenDE == freezed
+          ? _value.resumenDE
+          : resumenDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCA: resumenCA == freezed
+          ? _value.resumenCA
+          : resumenCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenGB: resumenGB == freezed
+          ? _value.resumenGB
+          : resumenGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenHU: resumenHU == freezed
+          ? _value.resumenHU
+          : resumenHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenIT: resumenIT == freezed
+          ? _value.resumenIT
+          : resumenIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenNL: resumenNL == freezed
+          ? _value.resumenNL
+          : resumenNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPL: resumenPL == freezed
+          ? _value.resumenPL
+          : resumenPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenPT: resumenPT == freezed
+          ? _value.resumenPT
+          : resumenPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRO: resumenRO == freezed
+          ? _value.resumenRO
+          : resumenRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenRU: resumenRU == freezed
+          ? _value.resumenRU
+          : resumenRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenCN: resumenCN == freezed
+          ? _value.resumenCN
+          : resumenCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resumenEL: resumenEL == freezed
+          ? _value.resumenEL
+          : resumenEL // ignore: cast_nullable_to_non_nullable
               as String?,
       stockDisponible: stockDisponible == freezed
           ? _value.stockDisponible
@@ -575,7 +939,21 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
 class _$_Articulo extends _Articulo {
   const _$_Articulo(
       {required this.id,
-      required this.descripcion,
+      required this.descripcionES,
+      this.descripcionEN,
+      this.descripcionFR,
+      this.descripcionDE,
+      this.descripcionCA,
+      this.descripcionGB,
+      this.descripcionHU,
+      this.descripcionIT,
+      this.descripcionNL,
+      this.descripcionPL,
+      this.descripcionPT,
+      this.descripcionRO,
+      this.descripcionRU,
+      this.descripcionCN,
+      this.descripcionEL,
       this.familia,
       this.subfamilia,
       required this.ventaMinimo,
@@ -593,7 +971,21 @@ class _$_Articulo extends _Articulo {
       required this.largoCm,
       required this.anchoCm,
       required this.altoCm,
-      this.resumen,
+      this.resumenES,
+      this.resumenEN,
+      this.resumenFR,
+      this.resumenDE,
+      this.resumenCA,
+      this.resumenGB,
+      this.resumenHU,
+      this.resumenIT,
+      this.resumenNL,
+      this.resumenPL,
+      this.resumenPT,
+      this.resumenRO,
+      this.resumenRU,
+      this.resumenCN,
+      this.resumenEL,
       this.stockDisponible,
       this.ventasActual,
       this.ventasAnterior,
@@ -615,7 +1007,35 @@ class _$_Articulo extends _Articulo {
   @override
   final String id;
   @override
-  final String descripcion;
+  final String descripcionES;
+  @override
+  final String? descripcionEN;
+  @override
+  final String? descripcionFR;
+  @override
+  final String? descripcionDE;
+  @override
+  final String? descripcionCA;
+  @override
+  final String? descripcionGB;
+  @override
+  final String? descripcionHU;
+  @override
+  final String? descripcionIT;
+  @override
+  final String? descripcionNL;
+  @override
+  final String? descripcionPL;
+  @override
+  final String? descripcionPT;
+  @override
+  final String? descripcionRO;
+  @override
+  final String? descripcionRU;
+  @override
+  final String? descripcionCN;
+  @override
+  final String? descripcionEL;
   @override
   final Familia? familia;
   @override
@@ -651,7 +1071,35 @@ class _$_Articulo extends _Articulo {
   @override
   final double altoCm;
   @override
-  final String? resumen;
+  final String? resumenES;
+  @override
+  final String? resumenEN;
+  @override
+  final String? resumenFR;
+  @override
+  final String? resumenDE;
+  @override
+  final String? resumenCA;
+  @override
+  final String? resumenGB;
+  @override
+  final String? resumenHU;
+  @override
+  final String? resumenIT;
+  @override
+  final String? resumenNL;
+  @override
+  final String? resumenPL;
+  @override
+  final String? resumenPT;
+  @override
+  final String? resumenRO;
+  @override
+  final String? resumenRU;
+  @override
+  final String? resumenCN;
+  @override
+  final String? resumenEL;
   @override
   final double? stockDisponible;
   @override
@@ -687,7 +1135,7 @@ class _$_Articulo extends _Articulo {
 
   @override
   String toString() {
-    return 'Articulo(id: $id, descripcion: $descripcion, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumen: $resumen, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -697,7 +1145,35 @@ class _$_Articulo extends _Articulo {
             other is _$_Articulo &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
+                .equals(other.descripcionES, descripcionES) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionEN, descripcionEN) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionFR, descripcionFR) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionDE, descripcionDE) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionCA, descripcionCA) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionGB, descripcionGB) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionHU, descripcionHU) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionIT, descripcionIT) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionNL, descripcionNL) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionPL, descripcionPL) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionPT, descripcionPT) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionRO, descripcionRO) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionRU, descripcionRU) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionCN, descripcionCN) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionEL, descripcionEL) &&
             const DeepCollectionEquality().equals(other.familia, familia) &&
             const DeepCollectionEquality()
                 .equals(other.subfamilia, subfamilia) &&
@@ -725,7 +1201,21 @@ class _$_Articulo extends _Articulo {
             const DeepCollectionEquality().equals(other.largoCm, largoCm) &&
             const DeepCollectionEquality().equals(other.anchoCm, anchoCm) &&
             const DeepCollectionEquality().equals(other.altoCm, altoCm) &&
-            const DeepCollectionEquality().equals(other.resumen, resumen) &&
+            const DeepCollectionEquality().equals(other.resumenES, resumenES) &&
+            const DeepCollectionEquality().equals(other.resumenEN, resumenEN) &&
+            const DeepCollectionEquality().equals(other.resumenFR, resumenFR) &&
+            const DeepCollectionEquality().equals(other.resumenDE, resumenDE) &&
+            const DeepCollectionEquality().equals(other.resumenCA, resumenCA) &&
+            const DeepCollectionEquality().equals(other.resumenGB, resumenGB) &&
+            const DeepCollectionEquality().equals(other.resumenHU, resumenHU) &&
+            const DeepCollectionEquality().equals(other.resumenIT, resumenIT) &&
+            const DeepCollectionEquality().equals(other.resumenNL, resumenNL) &&
+            const DeepCollectionEquality().equals(other.resumenPL, resumenPL) &&
+            const DeepCollectionEquality().equals(other.resumenPT, resumenPT) &&
+            const DeepCollectionEquality().equals(other.resumenRO, resumenRO) &&
+            const DeepCollectionEquality().equals(other.resumenRU, resumenRU) &&
+            const DeepCollectionEquality().equals(other.resumenCN, resumenCN) &&
+            const DeepCollectionEquality().equals(other.resumenEL, resumenEL) &&
             const DeepCollectionEquality()
                 .equals(other.stockDisponible, stockDisponible) &&
             const DeepCollectionEquality()
@@ -763,7 +1253,21 @@ class _$_Articulo extends _Articulo {
   int get hashCode => Object.hashAll([
         runtimeType,
         const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(descripcion),
+        const DeepCollectionEquality().hash(descripcionES),
+        const DeepCollectionEquality().hash(descripcionEN),
+        const DeepCollectionEquality().hash(descripcionFR),
+        const DeepCollectionEquality().hash(descripcionDE),
+        const DeepCollectionEquality().hash(descripcionCA),
+        const DeepCollectionEquality().hash(descripcionGB),
+        const DeepCollectionEquality().hash(descripcionHU),
+        const DeepCollectionEquality().hash(descripcionIT),
+        const DeepCollectionEquality().hash(descripcionNL),
+        const DeepCollectionEquality().hash(descripcionPL),
+        const DeepCollectionEquality().hash(descripcionPT),
+        const DeepCollectionEquality().hash(descripcionRO),
+        const DeepCollectionEquality().hash(descripcionRU),
+        const DeepCollectionEquality().hash(descripcionCN),
+        const DeepCollectionEquality().hash(descripcionEL),
         const DeepCollectionEquality().hash(familia),
         const DeepCollectionEquality().hash(subfamilia),
         const DeepCollectionEquality().hash(ventaMinimo),
@@ -781,7 +1285,21 @@ class _$_Articulo extends _Articulo {
         const DeepCollectionEquality().hash(largoCm),
         const DeepCollectionEquality().hash(anchoCm),
         const DeepCollectionEquality().hash(altoCm),
-        const DeepCollectionEquality().hash(resumen),
+        const DeepCollectionEquality().hash(resumenES),
+        const DeepCollectionEquality().hash(resumenEN),
+        const DeepCollectionEquality().hash(resumenFR),
+        const DeepCollectionEquality().hash(resumenDE),
+        const DeepCollectionEquality().hash(resumenCA),
+        const DeepCollectionEquality().hash(resumenGB),
+        const DeepCollectionEquality().hash(resumenHU),
+        const DeepCollectionEquality().hash(resumenIT),
+        const DeepCollectionEquality().hash(resumenNL),
+        const DeepCollectionEquality().hash(resumenPL),
+        const DeepCollectionEquality().hash(resumenPT),
+        const DeepCollectionEquality().hash(resumenRO),
+        const DeepCollectionEquality().hash(resumenRU),
+        const DeepCollectionEquality().hash(resumenCN),
+        const DeepCollectionEquality().hash(resumenEL),
         const DeepCollectionEquality().hash(stockDisponible),
         const DeepCollectionEquality().hash(ventasActual),
         const DeepCollectionEquality().hash(ventasAnterior),
@@ -809,7 +1327,21 @@ class _$_Articulo extends _Articulo {
 abstract class _Articulo extends Articulo {
   const factory _Articulo(
       {required final String id,
-      required final String descripcion,
+      required final String descripcionES,
+      final String? descripcionEN,
+      final String? descripcionFR,
+      final String? descripcionDE,
+      final String? descripcionCA,
+      final String? descripcionGB,
+      final String? descripcionHU,
+      final String? descripcionIT,
+      final String? descripcionNL,
+      final String? descripcionPL,
+      final String? descripcionPT,
+      final String? descripcionRO,
+      final String? descripcionRU,
+      final String? descripcionCN,
+      final String? descripcionEL,
       final Familia? familia,
       final Subfamilia? subfamilia,
       required final double ventaMinimo,
@@ -827,7 +1359,21 @@ abstract class _Articulo extends Articulo {
       required final double largoCm,
       required final double anchoCm,
       required final double altoCm,
-      final String? resumen,
+      final String? resumenES,
+      final String? resumenEN,
+      final String? resumenFR,
+      final String? resumenDE,
+      final String? resumenCA,
+      final String? resumenGB,
+      final String? resumenHU,
+      final String? resumenIT,
+      final String? resumenNL,
+      final String? resumenPL,
+      final String? resumenPT,
+      final String? resumenRO,
+      final String? resumenRU,
+      final String? resumenCN,
+      final String? resumenEL,
       final double? stockDisponible,
       final double? ventasActual,
       final double? ventasAnterior,
@@ -849,7 +1395,35 @@ abstract class _Articulo extends Articulo {
   @override
   String get id;
   @override
-  String get descripcion;
+  String get descripcionES;
+  @override
+  String? get descripcionEN;
+  @override
+  String? get descripcionFR;
+  @override
+  String? get descripcionDE;
+  @override
+  String? get descripcionCA;
+  @override
+  String? get descripcionGB;
+  @override
+  String? get descripcionHU;
+  @override
+  String? get descripcionIT;
+  @override
+  String? get descripcionNL;
+  @override
+  String? get descripcionPL;
+  @override
+  String? get descripcionPT;
+  @override
+  String? get descripcionRO;
+  @override
+  String? get descripcionRU;
+  @override
+  String? get descripcionCN;
+  @override
+  String? get descripcionEL;
   @override
   Familia? get familia;
   @override
@@ -885,7 +1459,35 @@ abstract class _Articulo extends Articulo {
   @override
   double get altoCm;
   @override
-  String? get resumen;
+  String? get resumenES;
+  @override
+  String? get resumenEN;
+  @override
+  String? get resumenFR;
+  @override
+  String? get resumenDE;
+  @override
+  String? get resumenCA;
+  @override
+  String? get resumenGB;
+  @override
+  String? get resumenHU;
+  @override
+  String? get resumenIT;
+  @override
+  String? get resumenNL;
+  @override
+  String? get resumenPL;
+  @override
+  String? get resumenPT;
+  @override
+  String? get resumenRO;
+  @override
+  String? get resumenRU;
+  @override
+  String? get resumenCN;
+  @override
+  String? get resumenEL;
   @override
   double? get stockDisponible;
   @override

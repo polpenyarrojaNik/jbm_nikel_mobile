@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/datos_extra_row.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
 
-import '../../../../core/presentation/common_widgets/buttons_row_bar_widget.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
-import '../../../../core/presentation/common_widgets/text_button_widget.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/articulo_repository.dart';
-import 'articulo_componente_container.dart';
-import 'articulo_documento_container.dart';
-import 'articulo_grupos_netos_container.dart';
-import 'articulo_imagen_container.dart';
-import 'articulo_recambio_container.dart';
-import 'articulo_sustitutivo_container.dart';
-import 'articulo_tarifa_precio_container.dart';
 
 class ArticuloDetallePage extends StatelessWidget {
   const ArticuloDetallePage({super.key, required this.articuloId});
@@ -37,65 +31,84 @@ class ArticuloDetallePage extends StatelessWidget {
           final articuloValue = ref.watch(articuloProvider(articuloId));
           return AsyncValueWidget<Articulo>(
             value: articuloValue,
-            data: (articulo) => DefaultTabController(
-              length: 7,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ButtonsRowBarWidget(
-                    textButtonsList: [
-                      TextButtonWidget(
-                          titleText: 'Ped. Ventas',
-                          entityId: articuloId,
-                          appRouteValue: AppRoutes.articulosalesorder,
-                          params: params),
-                      TextButtonWidget(
-                          titleText: 'Últimos Precios',
-                          entityId: articuloId,
-                          appRouteValue: AppRoutes.articulolastprecio,
-                          params: params),
-                    ],
+            data: (articulo) => ListView(
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              children: [
+                _ArticuloInfoContainer(articulo: articulo),
+                const MobileCustomSeparators(
+                    separatorTitle: 'Datos relacionados'),
+                DatosExtraRow(
+                  title: 'Ped. Ventas',
+                  navigationTo: () => context.goNamed(
+                      AppRoutes.articulosalesorder.name,
+                      params: params),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Últimos Precios',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articuloultimoprecio.name,
+                    params: params,
                   ),
-                  const Divider(),
-                  Expanded(
-                    child: NestedScrollView(
-                      scrollDirection: Axis.vertical,
-                      headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                        SliverToBoxAdapter(
-                          child: _ArticuloInfoContainer(articulo: articulo),
-                        ),
-                        const SliverToBoxAdapter(
-                          child: TabBar(
-                            labelColor: Colors.black,
-                            tabs: [
-                              Tab(icon: Icon(Icons.local_shipping, size: 16)),
-                              Tab(icon: Icon(Icons.person, size: 16)),
-                              Tab(icon: Icon(Icons.group, size: 16)),
-                              Tab(icon: Icon(Icons.group, size: 16)),
-                              Tab(icon: Icon(Icons.local_shipping, size: 16)),
-                              Tab(icon: Icon(Icons.image, size: 16)),
-                              Tab(icon: Icon(Icons.attach_file, size: 16)),
-                            ],
-                          ),
-                        )
-                      ],
-                      body: TabBarView(
-                        physics: const NeverScrollableScrollPhysics(),
-                        viewportFraction: 1,
-                        children: [
-                          ArticuloComponenteContainer(articuloId: articuloId),
-                          ArticuloTarifaPrecioContainer(articuloId: articuloId),
-                          ArticuloGrupoNetoContainer(articuloId: articuloId),
-                          ArticuloSustitutivoContainer(articuloId: articuloId),
-                          ArticuloRecambioContainer(articuloId: articuloId),
-                          ArticuloImagenContainer(articuloId: articuloId),
-                          ArticuloDocumentContainer(articuloId: articuloId),
-                        ],
-                      ),
-                    ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Componentes',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articulocomponente.name,
+                    params: params,
                   ),
-                ],
-              ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Grupos Netos',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articulogruponeto.name,
+                    params: params,
+                  ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Tarifa Precio',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articulotarifaprecio.name,
+                    params: params,
+                  ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Recambios',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articulorecambio.name,
+                    params: params,
+                  ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Sustitutivos',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articulosustitutivo.name,
+                    params: params,
+                  ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Imágenes',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articuloimagen.name,
+                    params: params,
+                  ),
+                ),
+                const Divider(),
+                DatosExtraRow(
+                  title: 'Documentos',
+                  navigationTo: () => context.goNamed(
+                    AppRoutes.articulodocumento.name,
+                    params: params,
+                  ),
+                ),
+              ],
             ),
           );
         },
@@ -111,173 +124,218 @@ class _ArticuloInfoContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       children: [
-        (articulo.imagenPrincipal != null)
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: _ArticuloPrincipalImage(
-                  articuloId: articulo.id,
-                  imagenPrincipal: articulo.imagenPrincipal!,
-                ),
-              )
-            : Image.asset(
-                height: 150,
-                fit: BoxFit.fitHeight,
-                'assets/image-placeholder.png',
-              ),
-        const MobileCustomSeparators(separatorTitle: 'Datos generales'),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
             children: [
-              ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Código', value: articulo.id),
-              ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Descripción', value: articulo.descripcion),
-              if (articulo.familia != null || articulo.subfamilia != null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (articulo.familia != null)
-                      Expanded(
-                        child: ColumnFieldTextDetalle(
-                            fieldTitleValue: 'Familia',
-                            value: articulo.familia!.descripcion),
-                      ),
-                    const Spacer(),
-                    if (articulo.subfamilia != null)
-                      Expanded(
-                        child: ColumnFieldTextDetalle(
-                            fieldTitleValue: 'Subamilia',
-                            value: articulo.subfamilia!.descripcion),
-                      ),
-                    const Spacer(),
-                  ],
-                ),
-              const Divider(),
-              ColumnFieldTextDetalle(
-                fieldTitleValue: 'Entrega 1',
-                value: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.shopping_cart_outlined, size: 18),
-                        Text((articulo.comprasEntregaCantidad1 != null)
-                            ? numberFormat(articulo.comprasEntregaCantidad1!)
-                            : '0.0'),
-                      ],
-                    ),
-                    const Spacer(),
-                    if (articulo.comprasEntregaFecha1 != null)
-                      Row(
-                        children: [
-                          const Icon(Icons.calendar_month, size: 18),
-                          Text(
-                            dateFormatter(articulo.comprasEntregaFecha1!
-                                .toLocal()
-                                .toIso8601String()),
-                          ),
-                        ],
-                      ),
-                    const Spacer(),
-                  ],
-                ),
+              Container(
+                padding: const EdgeInsets.all(8),
+                color: Theme.of(context).colorScheme.secondaryContainer,
+                child: Text(articulo.id,
+                    style: Theme.of(context).textTheme.subtitle2),
               ),
-              ColumnFieldTextDetalle(
-                fieldTitleValue: 'Entrega 2',
-                value: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.shopping_cart_outlined, size: 18),
-                        Text((articulo.comprasEntregaCantidad2 != null)
-                            ? numberFormat(articulo.comprasEntregaCantidad2!)
-                            : '0.0'),
-                      ],
-                    ),
-                    const Spacer(),
-                    if (articulo.comprasEntregaFecha2 != null)
-                      Row(
-                        children: [
-                          const Icon(Icons.calendar_month, size: 18),
-                          Text(
-                            dateFormatter(articulo.comprasEntregaFecha2!
-                                .toLocal()
-                                .toIso8601String()),
-                          ),
-                        ],
-                      ),
-                    const Spacer(),
-                  ],
-                ),
-              ),
-              ColumnFieldTextDetalle(
-                fieldTitleValue: 'Entrega 3',
-                value: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.shopping_cart_outlined, size: 18),
-                        Text((articulo.comprasEntregaCantidad3 != null)
-                            ? numberFormat(articulo.comprasEntregaCantidad3!)
-                            : '0.0'),
-                      ],
-                    ),
-                    const Spacer(),
-                    if (articulo.comprasEntregaFecha3 != null)
-                      Row(
-                        children: [
-                          const Icon(Icons.calendar_month, size: 18),
-                          Text(
-                            dateFormatter(articulo.comprasEntregaFecha3!
-                                .toLocal()
-                                .toIso8601String()),
-                          ),
-                        ],
-                      ),
-                    const Spacer(),
-                  ],
-                ),
-              ),
-              ColumnFieldTextDetalle(
-                fieldTitleValue: '+',
-                value: Row(
-                  children: [
-                    const Icon(Icons.shopping_cart_outlined, size: 18),
-                    Text((articulo.comprasEntregaCantidadMas3 != null)
-                        ? numberFormat(articulo.comprasEntregaCantidadMas3!)
-                        : '0.0'),
-                  ],
-                ),
-              ),
-              const Divider(),
-              if (articulo.stockDisponible != null)
-                ColumnFieldTextDetalle(
-                    fieldTitleValue: 'Stock',
-                    value: numberFormat(articulo.stockDisponible!)),
+              const Spacer(),
             ],
           ),
         ),
-        const MobileCustomSeparators(separatorTitle: 'Logística'),
+        if (articulo.imagenPrincipal != null)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: _ArticuloPrincipalImage(
+              articuloId: articulo.id,
+              imagenPrincipal: articulo.imagenPrincipal!,
+            ),
+          ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          child: Text(
+            getDescriptionInLocalLanguage(articulo: articulo),
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
+        ),
+        if (getSummaryInLocalLanguage(articulo: articulo) != null)
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              getSummaryInLocalLanguage(articulo: articulo)!,
+            ),
+          ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          child: Text(
+            (articulo.subfamilia != null)
+                ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
+                : '${articulo.familia?.descripcion}',
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ),
+        const MobileCustomSeparators(separatorTitle: 'Stock y Entregas'),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (articulo.stockDisponible != null)
+                Expanded(
+                  flex: 1,
+                  child: ColumnFieldTextDetalle(
+                      fieldTitleValue: 'Stock',
+                      value: numberFormat(articulo.stockDisponible!)),
+                ),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: [
+                    if (articulo.comprasEntregaCantidad1 != null &&
+                        articulo.comprasEntregaCantidad1 != 0)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Entrega 1',
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color),
+                          ),
+                          if (articulo.comprasEntregaCantidad1 != null &&
+                              articulo.comprasEntregaCantidad1 != 0)
+                            gapH8,
+                          if (articulo.comprasEntregaCantidad2 != null &&
+                              articulo.comprasEntregaCantidad2 != 0)
+                            Text(
+                              'Entrega 2',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color),
+                            ),
+                          if (articulo.comprasEntregaCantidad2 != null &&
+                              articulo.comprasEntregaCantidad2 != 0)
+                            gapH8,
+                          if (articulo.comprasEntregaCantidad3 != null &&
+                              articulo.comprasEntregaCantidad3 != 0)
+                            Text(
+                              'Entrega 3',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color),
+                            ),
+                          if (articulo.comprasEntregaCantidad3 != null &&
+                              articulo.comprasEntregaCantidad3 != 0)
+                            gapH8,
+                          if (articulo.comprasEntregaCantidadMas3 != null &&
+                              articulo.comprasEntregaCantidadMas3 != 0)
+                            Text(
+                              '+',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color),
+                            ),
+                        ],
+                      ),
+                    const Spacer(),
+                    Column(
+                      children: [
+                        if (articulo.comprasEntregaCantidad1 != null &&
+                            articulo.comprasEntregaCantidad1 != 0)
+                          Text(numberFormat(articulo.comprasEntregaCantidad1!)),
+                        if (articulo.comprasEntregaCantidad1 != null &&
+                            articulo.comprasEntregaCantidad1 != 0)
+                          gapH8,
+                        if (articulo.comprasEntregaCantidad2 != null &&
+                            articulo.comprasEntregaCantidad2 != 0)
+                          Text(numberFormat(articulo.comprasEntregaCantidad2!)),
+                        if (articulo.comprasEntregaCantidad2 != null &&
+                            articulo.comprasEntregaCantidad2 != 0)
+                          gapH8,
+                        if (articulo.comprasEntregaCantidad3 != null &&
+                            articulo.comprasEntregaCantidad3 != 0)
+                          Text(numberFormat(articulo.comprasEntregaCantidad3!)),
+                        if (articulo.comprasEntregaCantidad3 != null &&
+                            articulo.comprasEntregaCantidad3 != 0)
+                          gapH8,
+                        if (articulo.comprasEntregaCantidadMas3 != null &&
+                            articulo.comprasEntregaCantidadMas3 != 0)
+                          Text(numberFormat(
+                              articulo.comprasEntregaCantidadMas3!)),
+                      ],
+                    ),
+                    const Spacer(),
+                    Column(
+                      children: [
+                        if (articulo.comprasEntregaFecha1 != null)
+                          Text(
+                            dateFormatter(
+                              articulo.comprasEntregaFecha1!
+                                  .toLocal()
+                                  .toIso8601String(),
+                            ),
+                          ),
+                        if (articulo.comprasEntregaFecha1 != null) gapH8,
+                        if (articulo.comprasEntregaFecha2 != null)
+                          Text(dateFormatter(
+                            articulo.comprasEntregaFecha2!
+                                .toLocal()
+                                .toIso8601String(),
+                          )),
+                        if (articulo.comprasEntregaFecha2 != null) gapH8,
+                        if (articulo.comprasEntregaFecha3 != null)
+                          Text(dateFormatter(
+                            articulo.comprasEntregaFecha3!
+                                .toLocal()
+                                .toIso8601String(),
+                          )),
+                        if (articulo.comprasEntregaFecha3 != null) gapH8,
+                        const Text(
+                          '',
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        const MobileCustomSeparators(separatorTitle: 'Datos logística'),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Subcaja',
+                  fieldTitleValue: 'Cantidad subcaja',
                   value: numberFormat(articulo.unidadesSubcaja)),
               ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Caja',
+                  fieldTitleValue: 'Cantidad caja',
                   value: numberFormat(articulo.unidadesCaja)),
               ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Palet',
+                  fieldTitleValue: 'Cantidad palet',
                   value: numberFormat(articulo.unidadesPalet)),
               const Divider(),
               Row(
@@ -285,31 +343,16 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Peso(kg)',
-                        value: (numberFormat(articulo.pesoKg))),
+                      fieldTitleValue: 'Peso(kg)',
+                      value: numberFormat(articulo.pesoKg),
+                    ),
                   ),
                   const Spacer(),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Largo(cm)',
-                        value: numberFormat(articulo.largoCm)),
-                  ),
-                  const Spacer(),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Alto(cm)',
-                        value: numberFormat(articulo.altoCm)),
-                  ),
-                  const Spacer(),
-                  Expanded(
-                    child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Ancho(cm)',
-                        value: numberFormat(articulo.anchoCm)),
+                        fieldTitleValue: 'Medidas(cm)',
+                        value:
+                            '${numberFormat(articulo.altoCm)}x${numberFormat(articulo.largoCm)}x${numberFormat(articulo.anchoCm)}'),
                   ),
                   const Spacer(),
                 ],
@@ -317,59 +360,24 @@ class _ArticuloInfoContainer extends StatelessWidget {
             ],
           ),
         ),
-        const MobileCustomSeparators(separatorTitle: 'JBM'),
+        const MobileCustomSeparators(separatorTitle: 'Otros datos'),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColumnFieldTextDetalle(
-                fieldTitleValue: 'Pád.Catalogo/2ªEdi.',
-                value: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(articulo.paginaEnCatalgo ?? ''),
-                    const Spacer(),
-                    Text(articulo.paginaEnCatalgo ?? ''),
-                    const Spacer(),
-                  ],
+                fieldTitleValue: 'Página en catalogo/2ªEdición',
+                value: Text(
+                  (articulo.paginaEnCatalgo != null &&
+                          articulo.paginaEnCatalgo2 != null)
+                      ? '${articulo.paginaEnCatalgo} / ${articulo.paginaEnCatalgo2}'
+                      : (articulo.paginaEnCatalgo != null)
+                          ? articulo.paginaEnCatalgo ?? ''
+                          : '',
                 ),
               ),
               const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Flexible(child: Text('Activo Web')),
-                        Checkbox(
-                          visualDensity:
-                              const VisualDensity(vertical: -4, horizontal: -4),
-                          value: articulo.activoApp,
-                          onChanged: null,
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 50),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Flexible(child: Text('Activo APP')),
-                        Checkbox(
-                          visualDensity:
-                              const VisualDensity(vertical: -4, horizontal: -4),
-                          value: articulo.activoWeb,
-                          onChanged: null,
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -392,7 +400,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Flexible(child: Text('Descatalogado compras')),
+                        const Flexible(child: Text('Descatalogado')),
                         Checkbox(
                           visualDensity:
                               const VisualDensity(vertical: -4, horizontal: -4),
@@ -404,9 +412,27 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              const Divider(),
-              ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Resumen', value: articulo.resumen ?? ''),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Flexible(child: Text('Activo Web')),
+                        Checkbox(
+                          visualDensity:
+                              const VisualDensity(vertical: -4, horizontal: -4),
+                          value: articulo.activoApp,
+                          onChanged: null,
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 50),
+                  const Spacer(),
+                ],
+              ),
             ],
           ),
         )
@@ -441,13 +467,21 @@ class _ArticuloPrincipalImage extends ConsumerWidget {
               fit: BoxFit.contain,
               'assets/image-placeholder.png',
             ),
-      error: (e, _) => SizedBox(
-        width: 200,
-        child: ErrorMessageWidget(e.toString()),
+      error: (e, _) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(
+            height: 175,
+            width: 400,
+            fit: BoxFit.contain,
+            'assets/image-placeholder.png',
+          ),
+          ErrorMessageWidget(e.toString()),
+        ],
       ),
       loading: () => Image.asset(
-        height: 150,
-        width: 200,
+        height: 175,
+        width: 400,
         fit: BoxFit.fitHeight,
         'assets/image-placeholder.png',
       ),

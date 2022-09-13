@@ -43,8 +43,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         searchTitle: 'Search Cliente...',
         onChanged: (searchText) => (print(searchText)),
         addActionButton: IconButton(
-          onPressed: () => navigateToClientesAlrededor(),
-          icon: (const Icon(Icons.near_me_outlined)),
+          onPressed: () => navigateToClientesAlrededor(context),
+          icon: const Icon(Icons.near_me_outlined),
         ),
       ),
       body: Padding(
@@ -67,7 +67,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     );
   }
 
-  void navigateToClientesAlrededor() {
+  void navigateToClientesAlrededor(BuildContext context) {
     context.goNamed(
       AppRoutes.clientealrededor.name,
     );

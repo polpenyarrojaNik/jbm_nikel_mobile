@@ -7,27 +7,31 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/articulo_recambio.dart';
 import '../../infrastructure/articulo_repository.dart';
 
-class ArticuloRecambioContainer extends ConsumerWidget {
-  const ArticuloRecambioContainer({super.key, required this.articuloId});
+class ArticuloRecambioPage extends ConsumerWidget {
+  const ArticuloRecambioPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloSpareListProvider(articuloId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (articuloSpareList) => ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => ArticuloRecambioTile(
-            articuloRecambio: articuloSpareList[i],
-          ),
-          itemCount: articuloSpareList.length,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Articulo Recambios')),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: state.maybeWhen(
+          orElse: () => const ProgressIndicatorWidget(),
+          error: (e, st) => ErrorMessageWidget(e.toString()),
+          data: (articuloRecambioList) => (articuloRecambioList.isNotEmpty)
+              ? ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, _) => const Divider(),
+                  itemBuilder: (context, i) => ArticuloRecambioTile(
+                    articuloRecambio: articuloRecambioList[i],
+                  ),
+                  itemCount: articuloRecambioList.length,
+                )
+              : const Center(child: Text('No results')),
         ),
       ),
     );

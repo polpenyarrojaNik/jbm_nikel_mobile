@@ -6,6 +6,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
+import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/database.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
 
@@ -103,7 +104,7 @@ class ClienteAlrededorRepository {
         return cliente;
       }).watch();
     } catch (e) {
-      rethrow;
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 

@@ -7,27 +7,33 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/articulo_grupo_neto.dart';
 import '../../infrastructure/articulo_repository.dart';
 
-class ArticuloGrupoNetoContainer extends ConsumerWidget {
-  const ArticuloGrupoNetoContainer({super.key, required this.articuloId});
+class ArticuloGrupoNetoPage extends ConsumerWidget {
+  const ArticuloGrupoNetoPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloGrupoNetoPriceListProvider(articuloId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (articuloGrupoNetoList) => ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, _) => const Divider(),
-          itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-            articuloGrupoNeto: articuloGrupoNetoList[i],
-          ),
-          itemCount: articuloGrupoNetoList.length,
+    return Scaffold(
+      appBar: AppBar(title: const Text('Grupos Netos')),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: state.maybeWhen(
+          orElse: () => const ProgressIndicatorWidget(),
+          error: (e, st) => ErrorMessageWidget(e.toString()),
+          data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
+              ? ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, _) => const Divider(),
+                  itemBuilder: (context, i) => ArticuloGrupoNetoTile(
+                    articuloGrupoNeto: articuloGrupoNetoList[i],
+                  ),
+                  itemCount: articuloGrupoNetoList.length,
+                )
+              : const Center(
+                  child: Text('No results'),
+                ),
         ),
       ),
     );

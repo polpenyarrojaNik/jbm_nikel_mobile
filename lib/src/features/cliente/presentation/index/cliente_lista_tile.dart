@@ -16,7 +16,6 @@ class ClienteListaTile extends StatelessWidget {
       onTap: () =>
           navigateToClienteDetalle(context: context, clienteId: cliente.id),
       child: Card(
-        clipBehavior: Clip.hardEdge,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4), // if you need this
@@ -25,8 +24,9 @@ class ClienteListaTile extends StatelessWidget {
             width: 1,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        child: Container(
+          color: Colors.transparent,
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

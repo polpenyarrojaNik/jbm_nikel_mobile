@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/presentation/clientes_alrededo_page.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/presentation/clientes_alrededor_page.dart';
 
 import '../../features/app_initialization/presentation/splash_page.dart';
 import '../../features/articulos/presentation/index/articulo_lista_page.dart';
+import '../../features/articulos/presentation/show/articulo_componente_page.dart';
 import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
+import '../../features/articulos/presentation/show/articulo_documento_page.dart';
+import '../../features/articulos/presentation/show/articulo_grupos_netos_page.dart';
+import '../../features/articulos/presentation/show/articulo_imagen_page.dart';
 import '../../features/articulos/presentation/show/articulo_pedido_venta_page.dart';
+import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
+import '../../features/articulos/presentation/show/articulo_sustitutivo_page.dart';
+import '../../features/articulos/presentation/show/articulo_tarifa_precio_page.dart';
 import '../../features/articulos/presentation/show/articulo_ultimos_precios_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
@@ -40,9 +47,14 @@ enum AppRoutes {
   articuloindex,
   articuloshow,
   articulosalesorder,
-  articuloreturns,
-  articulolastprecio,
-  articulostats,
+  articuloultimoprecio,
+  articulocomponente,
+  articulogruponeto,
+  articulotarifaprecio,
+  articulorecambio,
+  articulosustitutivo,
+  articuloimagen,
+  articulodocumento,
   salesorderindex,
   salesordershow,
   salesorderedit,
@@ -107,6 +119,11 @@ class RouterNotifier extends ChangeNotifier {
           builder: (context, state) => const ClienteListaPage(),
           routes: [
             GoRoute(
+              path: 'alrededor',
+              name: AppRoutes.clientealrededor.name,
+              builder: (context, state) => const ClientesAlrededorPage(),
+            ),
+            GoRoute(
               name: AppRoutes.clienteshow.name,
               path: ':clienteId',
               pageBuilder: (context, state) {
@@ -151,38 +168,33 @@ class RouterNotifier extends ChangeNotifier {
                   },
                 ),
                 GoRoute(
-                    name: AppRoutes.clientetoparticulos.name,
-                    path: 'top-articulos',
-                    pageBuilder: (context, state) {
-                      final clienteId = state.params['clienteId']!;
-                      return MaterialPage(
-                        key: state.pageKey,
-                        child:
-                            ClienteArticulosTopListPage(clienteId: clienteId),
-                      );
-                    },
-                    routes: [
-                      GoRoute(
-                        name: AppRoutes.clientetoparticulosshow.name,
-                        path: ':articuloId',
-                        pageBuilder: (context, state) {
-                          final articuloId = state.params['articuloId']!;
+                  name: AppRoutes.clientetoparticulos.name,
+                  path: 'top-articulos',
+                  pageBuilder: (context, state) {
+                    final clienteId = state.params['clienteId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ClienteArticulosTopListPage(clienteId: clienteId),
+                    );
+                  },
+                  routes: [
+                    GoRoute(
+                      name: AppRoutes.clientetoparticulosshow.name,
+                      path: ':articuloId',
+                      pageBuilder: (context, state) {
+                        final articuloId = state.params['articuloId']!;
 
-                          return MaterialPage(
-                            key: state.pageKey,
-                            child: ArticuloDetallePage(
-                              articuloId: articuloId,
-                            ),
-                          );
-                        },
-                      ),
-                    ]),
+                        return MaterialPage(
+                          key: state.pageKey,
+                          child: ArticuloDetallePage(
+                            articuloId: articuloId,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ],
-            ),
-            GoRoute(
-              path: 'alrededor',
-              name: AppRoutes.clientealrededor.name,
-              builder: (context, state) => const ClientesAlrededorPage(),
             ),
           ],
         ),
@@ -248,7 +260,7 @@ class RouterNotifier extends ChangeNotifier {
               routes: [
                 GoRoute(
                   name: AppRoutes.articulosalesorder.name,
-                  path: 'salesorder',
+                  path: 'pedidosventa',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
                     return MaterialPage(
@@ -258,13 +270,90 @@ class RouterNotifier extends ChangeNotifier {
                   },
                 ),
                 GoRoute(
-                  name: AppRoutes.articulolastprecio.name,
-                  path: 'lastprecio',
+                  name: AppRoutes.articuloultimoprecio.name,
+                  path: 'ultimosprecios',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
                     return MaterialPage(
                       key: state.pageKey,
                       child: ArticuloUltimosPreciosPage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articulocomponente.name,
+                  path: 'componentes',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloComponentePage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articulogruponeto.name,
+                  path: 'gruposnetos',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloGrupoNetoPage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articulotarifaprecio.name,
+                  path: 'tartifaprecio',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloTarifaPrecioPage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articulorecambio.name,
+                  path: 'recambios',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloRecambioPage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articulosustitutivo.name,
+                  path: 'sustitutivos',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloSustitutivoPage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articuloimagen.name,
+                  path: 'imagenes',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloImagenPage(articuloId: articuloId),
+                    );
+                  },
+                ),
+                GoRoute(
+                  name: AppRoutes.articulodocumento.name,
+                  path: 'documentos',
+                  pageBuilder: (context, state) {
+                    final articuloId = state.params['articuloId']!;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ArticuloDocumentoPage(articuloId: articuloId),
                     );
                   },
                 ),
@@ -279,7 +368,7 @@ class RouterNotifier extends ChangeNotifier {
           routes: [
             GoRoute(
               name: AppRoutes.visitashow.name,
-              path: ':id',
+              path: ':visitaId',
               pageBuilder: (context, state) {
                 final visitaId = state.params['id']!;
                 return MaterialPage(
