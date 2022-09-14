@@ -19,7 +19,17 @@ class ArticuloDocumentoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<ArticuloDocumentoState>(articuloDocumentoControllerProvider,
+        (_, state) {
+      state.when(
+          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+          error: (error) => showToast(error.toString(), context),
+          loading: () => showToast('Abriendo Archivo....', context),
+          initial: () => null);
+    });
     final state = ref.watch(articuloDocumentListProvider(articuloId));
+    final stateOpenFile = ref.watch(articuloDocumentoControllerProvider);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Documentos')),
       body: Padding(
@@ -28,12 +38,22 @@ class ArticuloDocumentoPage extends ConsumerWidget {
           orElse: () => const ProgressIndicatorWidget(),
           error: (e, st) => ErrorMessageWidget(e.toString()),
           data: (articuloDocumentoLista) => (articuloDocumentoLista.isNotEmpty)
-              ? ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (context, i) => ArticuloDocumentoTile(
-                    articuloDocumento: articuloDocumentoLista[i],
-                  ),
-                  itemCount: articuloDocumentoLista.length,
+              ? Column(
+                  children: [
+                    stateOpenFile.maybeWhen(
+                      orElse: () => Container(),
+                      loading: () => const ProgressIndicatorWidget(),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemBuilder: (context, i) => ArticuloDocumentoTile(
+                          articuloDocumento: articuloDocumentoLista[i],
+                        ),
+                        itemCount: articuloDocumentoLista.length,
+                      ),
+                    ),
+                  ],
                 )
               : const Center(child: Text('No Results')),
         ),
@@ -49,13 +69,6 @@ class ArticuloDocumentoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<AsyncValue<File?>>(articuloDocumentoControllerProvider,
-        (_, state) {
-      state.when(
-          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
-          error: (error, _) => showToast(error.toString(), context),
-          loading: () => showToast('Abriendo Archivo....', context));
-    });
     return GestureDetector(
       onTap: () => openFile(
           articuloId: articuloDocumento.articuloId,
