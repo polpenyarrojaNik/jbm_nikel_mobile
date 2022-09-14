@@ -5,7 +5,6 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../pedido_venta/domain/pedido_venta_linea.dart';
 import '../../domain/articulo_pedido_venta_linea.dart';
 
 class ArticuloPedidoVentaPage extends ConsumerWidget {
@@ -61,9 +60,8 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
             ),
           ),
           Flexible(
-            child: Container(
+            child: SizedBox(
               height: 100,
-              padding: const EdgeInsets.all(6.5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -79,13 +77,11 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Pricio: ${numberFormat(pedidoVentaLinea.precioDivisa)}x${pedidoVentaLinea.tipoPrecio}',
+                            'Precio: ${numberFormat(pedidoVentaLinea.precioDivisa)}x${pedidoVentaLinea.tipoPrecio}',
                             style: Theme.of(context).textTheme.caption,
                           ),
                           if (pedidoVentaLinea.descuento1 != 0.0 ||
@@ -96,23 +92,14 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                                   context,
                                   pedidoVentaLinea.descuento1,
                                   pedidoVentaLinea.descuento2,
-                                  pedidoVentaLinea.descuento2),
+                                  pedidoVentaLinea.descuento3),
                               style: Theme.of(context).textTheme.caption,
                             ),
                         ],
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                '${numberFormat(pedidoVentaLinea.cantidad)} unidades',
-                                style: Theme.of(context).textTheme.subtitle2,
-                              ),
-                            ],
-                          ),
-                        ],
+                      Text(
+                        '${numberFormat(pedidoVentaLinea.cantidad)} unidades',
+                        style: Theme.of(context).textTheme.subtitle2,
                       ),
                     ],
                   ),

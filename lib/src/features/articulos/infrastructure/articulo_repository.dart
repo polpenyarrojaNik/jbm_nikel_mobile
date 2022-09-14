@@ -16,7 +16,6 @@ import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
-import '../../pedido_venta/domain/pedido_venta_linea.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/articulo.dart';
 import '../domain/articulo_componente.dart';
@@ -351,19 +350,23 @@ class ArticuloRepository {
         final data = await _remoteGetAttachment(
             requestUri: Uri.http(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/adjunto',
+              'api/v1/online/adjunto/doc',
               query,
             ),
             provisionalToken: provisionalToken);
 
-        final Directory cahceDirectories = await getTemporaryDirectory();
-
-        final File file = File('${cahceDirectories.path}/$path');
-        final raf = file.openSync(mode: FileMode.write);
-        raf.writeFromSync(data);
-        await raf.close();
-
-        return file;
+        try {
+          final cahceDirectories = await getTemporaryDirectory();
+          print('${cahceDirectories.path}/$path');
+          final File file = await File('${cahceDirectories.path}/$path')
+              .create(recursive: true);
+          final raf = file.openSync(mode: FileMode.write);
+          raf.writeFromSync(data);
+          await raf.close();
+          return file;
+        } catch (e) {
+          throw AppException.createFileInCacheFailure(e.toString());
+        }
       }
 
       return null;
@@ -391,14 +394,13 @@ class ArticuloRepository {
 
       return query.asyncMap((row) async {
         final pedidoVentaLineaDTO = row.readTable(_db.pedidoVentaLineaTable);
-        final clienteDTO = row.readTableOrNull(_db.clienteTable);
+        final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
 
         return ArticuloPedidoVentaLineaDTO.fromDB(
                 pedidoVentaLineaDto: pedidoVentaLineaDTO,
-                clienteDTO: clienteDTO)
-            .toDomain(
-                clienteId: clienteDTO?.id,
-                nombreCliente: clienteDTO?.nombreCliente);
+                clienteId: pedidoVentaDTO.clienteId,
+                nombreCliente: pedidoVentaDTO.nombreCliente)
+            .toDomain();
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

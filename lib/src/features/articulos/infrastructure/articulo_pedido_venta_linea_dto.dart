@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
 
 import '../../pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
@@ -32,8 +31,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
   factory ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloPedidoVentaLineaDTOFromJson(json);
 
-  ArticuloPedidoVentaLinea toDomain(
-      {String? clienteId, String? nombreCliente}) {
+  ArticuloPedidoVentaLinea toDomain() {
     return ArticuloPedidoVentaLinea(
         empresaId: empresaId,
         pedidoVentaId: pedidoVentaId,
@@ -54,15 +52,16 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
 
   factory ArticuloPedidoVentaLineaDTO.fromDB(
       {required PedidoVentaLineaDTO pedidoVentaLineaDto,
-      ClienteDTO? clienteDTO}) {
+      String? clienteId,
+      String? nombreCliente}) {
     return ArticuloPedidoVentaLineaDTO(
         empresaId: pedidoVentaLineaDto.empresaId,
         pedidoVentaId: pedidoVentaLineaDto.pedidoVentaId,
         id: pedidoVentaLineaDto.id,
         articuloId: pedidoVentaLineaDto.articuloId,
         articuloDescription: pedidoVentaLineaDto.articuloDescription,
-        clienteId: clienteDTO?.id,
-        nombreCliente: clienteDTO?.nombreCliente,
+        clienteId: clienteId,
+        nombreCliente: nombreCliente,
         cantidad: pedidoVentaLineaDto.cantidad,
         precioDivisa: pedidoVentaLineaDto.precioDivisa,
         tipoPrecio: pedidoVentaLineaDto.tipoPrecio,

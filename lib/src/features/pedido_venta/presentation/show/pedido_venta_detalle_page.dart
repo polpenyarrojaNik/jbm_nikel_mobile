@@ -10,7 +10,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/routing/app_router.dart';
-import '../../../articulos/presentation/show/articulo_pedido_venta_page.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 

@@ -22,6 +22,7 @@ mixin _$AppException {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -35,6 +36,7 @@ mixin _$AppException {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -47,6 +49,7 @@ mixin _$AppException {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -61,6 +64,8 @@ mixin _$AppException {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -75,6 +80,7 @@ mixin _$AppException {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -87,6 +93,7 @@ mixin _$AppException {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -193,6 +200,7 @@ class _$RestApiFailure implements RestApiFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -209,6 +217,7 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -224,6 +233,7 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -244,6 +254,8 @@ class _$RestApiFailure implements RestApiFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -261,6 +273,7 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -276,6 +289,7 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -371,6 +385,7 @@ class _$AuthLocalFailure implements AuthLocalFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -387,6 +402,7 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -402,6 +418,7 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -422,6 +439,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -439,6 +458,7 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -454,6 +474,7 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -549,6 +570,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -565,6 +587,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -580,6 +603,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -600,6 +624,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -617,6 +643,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -632,6 +659,7 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -654,6 +682,193 @@ abstract class FetchLocalDataFailure implements AppException {
   @JsonKey(ignore: true)
   _$$FetchLocalDataFailureCopyWith<_$FetchLocalDataFailure> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CreateFileInCahceFailureCopyWith<$Res> {
+  factory _$$CreateFileInCahceFailureCopyWith(_$CreateFileInCahceFailure value,
+          $Res Function(_$CreateFileInCahceFailure) then) =
+      __$$CreateFileInCahceFailureCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$CreateFileInCahceFailureCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res>
+    implements _$$CreateFileInCahceFailureCopyWith<$Res> {
+  __$$CreateFileInCahceFailureCopyWithImpl(_$CreateFileInCahceFailure _value,
+      $Res Function(_$CreateFileInCahceFailure) _then)
+      : super(_value, (v) => _then(v as _$CreateFileInCahceFailure));
+
+  @override
+  _$CreateFileInCahceFailure get _value =>
+      super._value as _$CreateFileInCahceFailure;
+
+  @override
+  $Res call({
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$CreateFileInCahceFailure(
+      errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
+  const _$CreateFileInCahceFailure(this.errorMessage);
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AppException.createFileInCacheFailure(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateFileInCahceFailure &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$CreateFileInCahceFailureCopyWith<_$CreateFileInCahceFailure>
+      get copyWith =>
+          __$$CreateFileInCahceFailureCopyWithImpl<_$CreateFileInCahceFailure>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int errorCode, String errorMessage)
+        restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
+    required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
+    required TResult Function(String tableToSync, String errorMessage)
+        syncFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+  }) {
+    return createFileInCacheFailure(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+  }) {
+    return createFileInCacheFailure?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    required TResult orElse(),
+  }) {
+    if (createFileInCacheFailure != null) {
+      return createFileInCacheFailure(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
+    required TResult Function(FetchLocalDataFailure value)
+        fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
+    required TResult Function(SyncFailure value) syncFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
+  }) {
+    return createFileInCacheFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+  }) {
+    return createFileInCacheFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    required TResult orElse(),
+  }) {
+    if (createFileInCacheFailure != null) {
+      return createFileInCacheFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CreateFileInCahceFailure implements AppException {
+  const factory CreateFileInCahceFailure(final String errorMessage) =
+      _$CreateFileInCahceFailure;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$CreateFileInCahceFailureCopyWith<_$CreateFileInCahceFailure>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -736,6 +951,7 @@ class _$SyncFailure implements SyncFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -752,6 +968,7 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -767,6 +984,7 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -787,6 +1005,8 @@ class _$SyncFailure implements SyncFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -804,6 +1024,7 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -819,6 +1040,7 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -890,6 +1112,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -906,6 +1129,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -921,6 +1145,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -941,6 +1166,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -958,6 +1185,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -973,6 +1201,7 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -1038,6 +1267,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -1054,6 +1284,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -1069,6 +1300,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -1089,6 +1321,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -1106,6 +1340,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -1121,6 +1356,7 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -1188,6 +1424,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -1204,6 +1441,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -1219,6 +1457,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -1239,6 +1478,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -1256,6 +1497,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -1271,6 +1513,7 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -1362,6 +1605,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
         restApiFailure,
     required TResult Function(String errorMessage) authLocalFailure,
     required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
     required TResult Function(String tableToSync, String errorMessage)
         syncFailure,
     required TResult Function() clienteNotFound,
@@ -1378,6 +1622,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -1393,6 +1638,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function(int errorCode, String errorMessage)? restApiFailure,
     TResult Function(String errorMessage)? authLocalFailure,
     TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
     TResult Function(String tableToSync, String errorMessage)? syncFailure,
     TResult Function()? clienteNotFound,
     TResult Function()? articuloNotFound,
@@ -1413,6 +1659,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     required TResult Function(AuthLocalFailure value) authLocalFailure,
     required TResult Function(FetchLocalDataFailure value)
         fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
     required TResult Function(SyncFailure value) syncFailure,
     required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
     required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
@@ -1430,6 +1678,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
@@ -1445,6 +1694,7 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function(RestApiFailure value)? restApiFailure,
     TResult Function(AuthLocalFailure value)? authLocalFailure,
     TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
     TResult Function(SyncFailure value)? syncFailure,
     TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,

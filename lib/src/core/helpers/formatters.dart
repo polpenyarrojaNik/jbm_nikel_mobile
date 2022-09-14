@@ -109,35 +109,35 @@ String getDescriptionInLocalLanguage({required Articulo articulo}) {
     return articulo.descripcionES;
   } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
     return articulo.descripcionEN!;
-  } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
-    return articulo.descripcionFR!;
-  } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
-    return articulo.descripcionDE!;
-  } else if (currentLocale == 'ca' && articulo.descripcionCA != null) {
-    return articulo.descripcionCA!;
-  } else if (currentLocale == 'gb' && articulo.descripcionGB != null) {
-    return articulo.descripcionGB!;
-  } else if (currentLocale == 'hu' && articulo.descripcionHU != null) {
-    return articulo.descripcionHU!;
-  } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
-    return articulo.descripcionIT!;
-  } else if (currentLocale == 'nl' && articulo.descripcionNL != null) {
-    return articulo.descripcionNL!;
-  } else if (currentLocale == 'pl' && articulo.descripcionPL != null) {
-    return articulo.descripcionPL!;
-  } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
-    return articulo.descripcionPT!;
-  } else if (currentLocale == 'ro' && articulo.descripcionRO != null) {
-    return articulo.descripcionRO!;
-  } else if (currentLocale == 'ru' && articulo.descripcionRU != null) {
-    return articulo.descripcionRU!;
-  } else if (currentLocale == 'cn' && articulo.descripcionCN != null) {
-    return articulo.descripcionCN!;
-  } else if (currentLocale == 'el' && articulo.descripcionEL != null) {
-    return articulo.descripcionEL!;
-  } else {
-    return articulo.descripcionES;
   }
+  //  else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
+  //   return articulo.descripcionFR!;
+  // } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
+  //   return articulo.descripcionDE!;
+  // } else if (currentLocale == 'ca' && articulo.descripcionCA != null) {
+  //   return articulo.descripcionCA!;
+  // } else if (currentLocale == 'gb' && articulo.descripcionGB != null) {
+  //   return articulo.descripcionGB!;
+  // } else if (currentLocale == 'hu' && articulo.descripcionHU != null) {
+  //   return articulo.descripcionHU!;
+  // } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
+  //   return articulo.descripcionIT!;
+  // } else if (currentLocale == 'nl' && articulo.descripcionNL != null) {
+  //   return articulo.descripcionNL!;
+  // } else if (currentLocale == 'pl' && articulo.descripcionPL != null) {
+  //   return articulo.descripcionPL!;
+  // } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
+  //   return articulo.descripcionPT!;
+  // } else if (currentLocale == 'ro' && articulo.descripcionRO != null) {
+  //   return articulo.descripcionRO!;
+  // } else if (currentLocale == 'ru' && articulo.descripcionRU != null) {
+  //   return articulo.descripcionRU!;
+  // } else if (currentLocale == 'cn' && articulo.descripcionCN != null) {
+  //   return articulo.descripcionCN!;
+  // } else if (currentLocale == 'el' && articulo.descripcionEL != null) {
+  //   return articulo.descripcionEL!;
+  //}
+  return articulo.descripcionES;
 }
 
 String? getSummaryInLocalLanguage({required Articulo articulo}) {
@@ -148,33 +148,35 @@ String? getSummaryInLocalLanguage({required Articulo articulo}) {
     return articulo.resumenES!;
   } else if (currentLocale == 'en' && articulo.resumenEN != null) {
     return articulo.resumenEN!;
-  } else if (currentLocale == 'fr' && articulo.resumenFR != null) {
-    return articulo.resumenFR!;
-  } else if (currentLocale == 'de' && articulo.resumenDE != null) {
-    return articulo.resumenDE!;
-  } else if (currentLocale == 'ca' && articulo.resumenCA != null) {
-    return articulo.resumenCA!;
-  } else if (currentLocale == 'gb' && articulo.resumenGB != null) {
-    return articulo.resumenGB!;
-  } else if (currentLocale == 'hu' && articulo.resumenHU != null) {
-    return articulo.resumenHU!;
-  } else if (currentLocale == 'it' && articulo.resumenIT != null) {
-    return articulo.resumenIT!;
-  } else if (currentLocale == 'nl' && articulo.resumenNL != null) {
-    return articulo.resumenNL!;
-  } else if (currentLocale == 'pl' && articulo.resumenPL != null) {
-    return articulo.resumenPL!;
-  } else if (currentLocale == 'pt' && articulo.resumenPT != null) {
-    return articulo.resumenPT!;
-  } else if (currentLocale == 'ro' && articulo.resumenRO != null) {
-    return articulo.resumenRO!;
-  } else if (currentLocale == 'ru' && articulo.resumenRU != null) {
-    return articulo.resumenRU!;
-  } else if (currentLocale == 'cn' && articulo.resumenCN != null) {
-    return articulo.resumenCN!;
-  } else if (currentLocale == 'el' && articulo.resumenEL != null) {
-    return articulo.resumenEL!;
-  } else {
-    return articulo.resumenES;
   }
+  //else if (currentLocale == 'fr' && articulo.resumenFR != null) {
+  //   return articulo.resumenFR!;
+  // } else if (currentLocale == 'de' && articulo.resumenDE != null) {
+  //   return articulo.resumenDE!;
+  // } else if (currentLocale == 'ca' && articulo.resumenCA != null) {
+  //   return articulo.resumenCA!;
+  // } else if (currentLocale == 'gb' && articulo.resumenGB != null) {
+  //   return articulo.resumenGB!;
+  // } else if (currentLocale == 'hu' && articulo.resumenHU != null) {
+  //   return articulo.resumenHU!;
+  // } else if (currentLocale == 'it' && articulo.resumenIT != null) {
+  //   return articulo.resumenIT!;
+  // } else if (currentLocale == 'nl' && articulo.resumenNL != null) {
+  //   return articulo.resumenNL!;
+  // } else if (currentLocale == 'pl' && articulo.resumenPL != null) {
+  //   return articulo.resumenPL!;
+  // } else if (currentLocale == 'pt' && articulo.resumenPT != null) {
+  //   return articulo.resumenPT!;
+  // } else if (currentLocale == 'ro' && articulo.resumenRO != null) {
+  //   return articulo.resumenRO!;
+  // } else if (currentLocale == 'ru' && articulo.resumenRU != null) {
+  //   return articulo.resumenRU!;
+  // } else if (currentLocale == 'cn' && articulo.resumenCN != null) {
+  //   return articulo.resumenCN!;
+  // } else if (currentLocale == 'el' && articulo.resumenEL != null) {
+  //   return articulo.resumenEL!;
+  // } else if (articulo.resumenES != null) {
+  //   return articulo.resumenES;
+  // }
+  return null;
 }

@@ -12,6 +12,9 @@ class AppException with _$AppException {
   const factory AppException.fetchLocalDataFailure(String errorMessage) =
       FetchLocalDataFailure;
 
+  const factory AppException.createFileInCacheFailure(String errorMessage) =
+      CreateFileInCahceFailure;
+
   //Sync
   const factory AppException.syncFailure(
       String tableToSync, String errorMessage) = SyncFailure;
@@ -53,6 +56,10 @@ extension AppExceptionDetalles on AppException {
       fetchLocalDataFailure: (errorMessage) => AppExceptionData(
         'fetch-local-data-failure',
         'Error accessing local data $errorMessage',
+      ),
+      createFileInCacheFailure: (errorMessage) => AppExceptionData(
+        'create-file-in-cachefailure',
+        'Error creating file in cahce $errorMessage',
       ),
       syncFailure: (tableToSync, errorMessage) => AppExceptionData(
         'sync-failure',

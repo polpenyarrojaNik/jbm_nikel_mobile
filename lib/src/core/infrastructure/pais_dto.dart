@@ -51,33 +51,34 @@ class PaisDTO with _$PaisDTO implements Insertable<PaisDTO> {
     if (currentLocale == 'es') {
     } else if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
-    } else if (currentLocale == 'fr' && descripcionFR != null) {
-      return descripcionFR!;
-    } else if (currentLocale == 'de' && descripcionDE != null) {
-      return descripcionDE!;
-    } else if (currentLocale == 'ca' && descripcionCA != null) {
-      return descripcionCA!;
-    } else if (currentLocale == 'gb' && descripcionGB != null) {
-      return descripcionGB!;
-    } else if (currentLocale == 'hu' && descripcionHU != null) {
-      return descripcionHU!;
-    } else if (currentLocale == 'it' && descripcionIT != null) {
-      return descripcionIT!;
-    } else if (currentLocale == 'nl' && descripcionNL != null) {
-      return descripcionNL!;
-    } else if (currentLocale == 'pl' && descripcionPL != null) {
-      return descripcionPL!;
-    } else if (currentLocale == 'pt' && descripcionPT != null) {
-      return descripcionPT!;
-    } else if (currentLocale == 'ro' && descripcionRO != null) {
-      return descripcionRO!;
-    } else if (currentLocale == 'ru' && descripcionRU != null) {
-      return descripcionRU!;
-    } else if (currentLocale == 'cn' && descripcionCN != null) {
-      return descripcionCN!;
-    } else if (currentLocale == 'el' && descripcionEL != null) {
-      return descripcionEL!;
     }
+    // else if (currentLocale == 'fr' && descripcionFR != null) {
+    //   return descripcionFR!;
+    // } else if (currentLocale == 'de' && descripcionDE != null) {
+    //   return descripcionDE!;
+    // } else if (currentLocale == 'ca' && descripcionCA != null) {
+    //   return descripcionCA!;
+    // } else if (currentLocale == 'gb' && descripcionGB != null) {
+    //   return descripcionGB!;
+    // } else if (currentLocale == 'hu' && descripcionHU != null) {
+    //   return descripcionHU!;
+    // } else if (currentLocale == 'it' && descripcionIT != null) {
+    //   return descripcionIT!;
+    // } else if (currentLocale == 'nl' && descripcionNL != null) {
+    //   return descripcionNL!;
+    // } else if (currentLocale == 'pl' && descripcionPL != null) {
+    //   return descripcionPL!;
+    // } else if (currentLocale == 'pt' && descripcionPT != null) {
+    //   return descripcionPT!;
+    // } else if (currentLocale == 'ro' && descripcionRO != null) {
+    //   return descripcionRO!;
+    // } else if (currentLocale == 'ru' && descripcionRU != null) {
+    //   return descripcionRU!;
+    // } else if (currentLocale == 'cn' && descripcionCN != null) {
+    //   return descripcionCN!;
+    // } else if (currentLocale == 'el' && descripcionEL != null) {
+    //   return descripcionEL!;
+    // }
 
     return descripcionES;
   }

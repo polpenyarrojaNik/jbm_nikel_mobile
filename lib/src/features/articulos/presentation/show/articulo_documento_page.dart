@@ -2,13 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_documento_controller.dart';
 import 'package:open_file/open_file.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/toasts.dart';
 import '../../domain/articulo_documento.dart';
 
 class ArticuloDocumentoPage extends ConsumerWidget {
@@ -48,13 +49,18 @@ class ArticuloDocumentoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(
-        articuloDocumentFileProvider(articuloDocumento.pathArchivo ?? ''));
+    ref.listen<AsyncValue<File?>>(articuloDocumentoControllerProvider,
+        (_, state) {
+      state.when(
+          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+          error: (error, _) => showToast(error.toString(), context),
+          loading: () => showToast('Abriendo Archivo....', context));
+    });
     return GestureDetector(
-      onTap: state.when(
-          data: (file) => (file != null) ? () => openFile(file: file) : null,
-          error: (e, _) => () => showToast(e.toString(), context),
-          loading: () => null),
+      onTap: () => openFile(
+          articuloId: articuloDocumento.articuloId,
+          nombreArchivo: articuloDocumento.nombreArchivo,
+          ref: ref),
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -66,26 +72,30 @@ class ArticuloDocumentoTile extends ConsumerWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: state.when(
-            data: (file) => Row(
-              children: [
-                Icon(
-                  getIconoFromExtension(file!.path),
-                  color: Theme.of(context).textTheme.caption!.color,
-                ),
-                const SizedBox(width: 8),
-                Flexible(child: Text(getNombreArchivo(file.path))),
-              ],
-            ),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            loading: () => const ProgressIndicatorWidget(),
+          child: Row(
+            children: [
+              Icon(
+                getIconoFromExtension(articuloDocumento.pathArchivo ?? ''),
+                color: Theme.of(context).textTheme.caption!.color,
+              ),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(articuloDocumento.nombreArchivo ?? ''),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  void openFile({required File file}) {
-    OpenFile.open(file.path);
+  void openFile({
+    required String articuloId,
+    required String? nombreArchivo,
+    required WidgetRef ref,
+  }) {
+    ref
+        .read(articuloDocumentoControllerProvider.notifier)
+        .getDocumentFile(path: '$articuloId/$nombreArchivo');
   }
 }
