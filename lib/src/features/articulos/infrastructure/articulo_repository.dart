@@ -132,14 +132,22 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
       articuloId: articuloId, usuarioId: usuario!.id);
 });
 
-final articuloUltimosPreciosListProvider = FutureProvider.autoDispose
-    .family<List<EstadisticasUltimosPrecios>, String>((ref, articuloId) async {
-  final articuloRepository = ref.watch(articuloRepositoryProvider);
+final articuloUltimosPreciosSearchProvider = FutureProvider.autoDispose
+    .family<List<EstadisticasUltimosPrecios>, DefaultListParams>(
+  (ref, defaultListParams) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    final usuario =
+        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
 
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getArticuloUltimosPreciosById(
-      articuloId: articuloId, usuarioId: usuario!.id);
-});
+    final articuloRepository = ref.watch(articuloRepositoryProvider);
+    return articuloRepository.getArticuloUltimosPreciosById(
+        articuloId: defaultListParams.entityId!,
+        usuarioId: usuario!.id,
+        page: defaultListParams.page,
+        searchText: defaultListParams.searchText);
+  },
+  // cacheTime: const Duration(seconds: 60),
+);
 
 const pageSize = 100;
 
@@ -415,7 +423,10 @@ class ArticuloRepository {
   }
 
   Future<List<EstadisticasUltimosPrecios>> getArticuloUltimosPreciosById(
-      {required String articuloId, required String usuarioId}) async {
+      {required String articuloId,
+      required String usuarioId,
+      required int page,
+      required String searchText}) async {
     try {
       final query = _db.select(_db.estadisticasUltimosPreciosTable).join([
         innerJoin(
@@ -427,9 +438,16 @@ class ArticuloRepository {
             _db.clienteTable.id
                 .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId))
       ]);
-      query.where(
-          _db.estadisticasUltimosPreciosTable.articuloId.equals(articuloId) &
-              _db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      query.where((_db.estadisticasUltimosPreciosTable.articuloId
+                  .equals(articuloId) &
+              _db.clienteUsuarioTable.usuarioId.equals(usuarioId)) |
+          _db.clienteTable.nombreCliente.like('%$searchText%') |
+          _db.clienteTable.nombreCliente.like('%${searchText.toUpperCase()}%') |
+          _db.clienteTable.nombreCliente.like('%${searchText.toUpperCase()}%') |
+          _db.clienteTable.nombreCliente.like('%${searchText.toUpperCase()}%') |
+          _db.clienteTable.id.like('%$searchText%') |
+          _db.clienteTable.nombreFiscal.like('%$searchText%') |
+          _db.clienteTable.nombreFiscal.like('%${searchText.toUpperCase()}%'));
       query.orderBy(
         [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
       );

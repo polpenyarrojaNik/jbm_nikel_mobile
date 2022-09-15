@@ -13,7 +13,7 @@ import '../../features/articulos/presentation/show/articulo_pedido_venta_page.da
 import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
 import '../../features/articulos/presentation/show/articulo_sustitutivo_page.dart';
 import '../../features/articulos/presentation/show/articulo_precio_tarifa_page.dart';
-import '../../features/articulos/presentation/show/articulo_ultimos_precios_page.dart';
+import '../../features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_detalle_page.dart';

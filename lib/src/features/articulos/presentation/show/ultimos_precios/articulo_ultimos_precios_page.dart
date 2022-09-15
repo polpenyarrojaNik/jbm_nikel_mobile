@@ -1,41 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_state.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
+import '../../../../../core/helpers/formatters.dart';
+import '../../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 
-class ArticuloUltimosPreciosPage extends ConsumerWidget {
+class ArticuloUltimosPreciosPage extends ConsumerStatefulWidget {
   const ArticuloUltimosPreciosPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloUltimosPreciosListProvider(articuloId));
+  ConsumerState<ArticuloUltimosPreciosPage> createState() =>
+      _ArticuloUltimosPreciosPageState();
+}
+
+class _ArticuloUltimosPreciosPageState
+    extends ConsumerState<ArticuloUltimosPreciosPage> {
+  final _scrollController = ScrollController();
+
+  int page = 1;
+  bool canLoadNextPage = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_dismissOnScreenKeyboard);
+    _scrollController.addListener(() {
+      final metrics = _scrollController.position;
+      final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
+
+      if (canLoadNextPage && metrics.pixels >= limit) {
+        canLoadNextPage = false;
+        page++;
+        ref
+            .read(articuloUltimosPreciosPaginationQueryStateProvider.notifier)
+            .state = page;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_dismissOnScreenKeyboard);
+    super.dispose();
+  }
+
+  // When the search text field gets the focus, the keyboard appears on mobile.
+  // This method is used to dismiss the keyboard when the user scrolls.
+  void _dismissOnScreenKeyboard() {
+    if (FocusScope.of(context).hasFocus) {
+      FocusScope.of(context).unfocus();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref
+        .watch(articuloUltimosPreciosSearchResultsProvider(widget.articuloId));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(articuloId),
-        bottom: AppBar(
-          title: const Text('Últimos Precios'),
-          automaticallyImplyLeading: false,
-        ),
+      appBar: CustomSearchAppBar(
+        title: 'Últimos Precios',
+        searchTitle: 'Search últimos precios...',
+        onChanged: (searchText) {
+          ref
+              .read(articuloUltimosPreciosSearchQueryStateProvider.notifier)
+              .state = searchText;
+          ref
+              .read(articuloUltimosPreciosPaginationQueryStateProvider.notifier)
+              .state = 1;
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: state.when(
-            data: (lastPriceList) => (lastPriceList.isEmpty)
+            data: (ultimosPreciosLista) => (ultimosPreciosLista.isEmpty)
                 ? const Center(child: Text('No Results'))
                 : ListView.separated(
+                    controller: _scrollController,
                     separatorBuilder: (context, i) => const Divider(),
-                    itemBuilder: (context, i) =>
-                        UltimosPreciosTile(ultimosPrecios: lastPriceList[i]),
-                    itemCount: lastPriceList.length,
+                    itemBuilder: (context, i) => UltimosPreciosTile(
+                        ultimosPrecios: ultimosPreciosLista[i]),
+                    itemCount: ultimosPreciosLista.length,
                   ),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             loading: () => const ProgressIndicatorWidget()),

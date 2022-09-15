@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DefaultListParams {
   int get page => throw _privateConstructorUsedError;
   String get searchText => throw _privateConstructorUsedError;
+  String? get entityId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DefaultListParamsCopyWith<DefaultListParams> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $DefaultListParamsCopyWith<$Res> {
   factory $DefaultListParamsCopyWith(
           DefaultListParams value, $Res Function(DefaultListParams) then) =
       _$DefaultListParamsCopyWithImpl<$Res>;
-  $Res call({int page, String searchText});
+  $Res call({int page, String searchText, String? entityId});
 }
 
 /// @nodoc
@@ -45,6 +46,7 @@ class _$DefaultListParamsCopyWithImpl<$Res>
   $Res call({
     Object? page = freezed,
     Object? searchText = freezed,
+    Object? entityId = freezed,
   }) {
     return _then(_value.copyWith(
       page: page == freezed
@@ -55,6 +57,10 @@ class _$DefaultListParamsCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      entityId: entityId == freezed
+          ? _value.entityId
+          : entityId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -66,7 +72,7 @@ abstract class _$$_DefaultListParamsCopyWith<$Res>
           $Res Function(_$_DefaultListParams) then) =
       __$$_DefaultListParamsCopyWithImpl<$Res>;
   @override
-  $Res call({int page, String searchText});
+  $Res call({int page, String searchText, String? entityId});
 }
 
 /// @nodoc
@@ -84,6 +90,7 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
   $Res call({
     Object? page = freezed,
     Object? searchText = freezed,
+    Object? entityId = freezed,
   }) {
     return _then(_$_DefaultListParams(
       page: page == freezed
@@ -94,6 +101,10 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      entityId: entityId == freezed
+          ? _value.entityId
+          : entityId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -101,17 +112,20 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DefaultListParams extends _DefaultListParams {
-  const _$_DefaultListParams({required this.page, required this.searchText})
+  const _$_DefaultListParams(
+      {required this.page, required this.searchText, this.entityId})
       : super._();
 
   @override
   final int page;
   @override
   final String searchText;
+  @override
+  final String? entityId;
 
   @override
   String toString() {
-    return 'DefaultListParams(page: $page, searchText: $searchText)';
+    return 'DefaultListParams(page: $page, searchText: $searchText, entityId: $entityId)';
   }
 
   @override
@@ -121,14 +135,16 @@ class _$_DefaultListParams extends _DefaultListParams {
             other is _$_DefaultListParams &&
             const DeepCollectionEquality().equals(other.page, page) &&
             const DeepCollectionEquality()
-                .equals(other.searchText, searchText));
+                .equals(other.searchText, searchText) &&
+            const DeepCollectionEquality().equals(other.entityId, entityId));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(page),
-      const DeepCollectionEquality().hash(searchText));
+      const DeepCollectionEquality().hash(searchText),
+      const DeepCollectionEquality().hash(entityId));
 
   @JsonKey(ignore: true)
   @override
@@ -140,13 +156,16 @@ class _$_DefaultListParams extends _DefaultListParams {
 abstract class _DefaultListParams extends DefaultListParams {
   const factory _DefaultListParams(
       {required final int page,
-      required final String searchText}) = _$_DefaultListParams;
+      required final String searchText,
+      final String? entityId}) = _$_DefaultListParams;
   const _DefaultListParams._() : super._();
 
   @override
   int get page;
   @override
   String get searchText;
+  @override
+  String? get entityId;
   @override
   @JsonKey(ignore: true)
   _$$_DefaultListParamsCopyWith<_$_DefaultListParams> get copyWith =>

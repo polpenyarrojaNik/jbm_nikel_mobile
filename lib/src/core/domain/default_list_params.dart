@@ -8,5 +8,6 @@ class DefaultListParams with _$DefaultListParams {
   const factory DefaultListParams({
     required int page,
     required String searchText,
+    String? entityId,
   }) = _DefaultListParams;
 }

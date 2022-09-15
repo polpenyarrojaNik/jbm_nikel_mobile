@@ -54,12 +54,12 @@ dev_dependencies:
   drift_dev: ^2.1.0
   built_value_generator: ^8.4.1
 
-# flutter_icons:
-#   android: true
-#   ios: true
-#   image_path: "dev_assets/icons/celo-instaladores.png"
-#   adaptive_icon_background: "#000000"
-#   adaptive_icon_foreground: "dev_assets/icons/celo-instaladores.png"
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icons/1x/photokits_app_icon_57x57.png"
+  adaptive_icon_background: "#000000"
+  adaptive_icon_foreground: "assets/app_icons/1x/photokits_app_icon_57x57.png"
 
 flutter:
   uses-material-design: true
