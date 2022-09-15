@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
 
 import '../../../core/infrastructure/database.dart';
-import '../domain/articulo.dart';
 
 part 'articulo_componente_dto.freezed.dart';
 part 'articulo_componente_dto.g.dart';
@@ -27,11 +26,11 @@ class ArticuloComponenteDTO
   factory ArticuloComponenteDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloComponenteDTOFromJson(json);
 
-  ArticuloComponente toDomain(
-      {required Articulo articulo, required Articulo articuloComponente}) {
+  ArticuloComponente toDomain({String? articuloComponenteDescripcion}) {
     return ArticuloComponente(
-      articulo: articulo,
-      articuloComponente: articuloComponente,
+      articuloId: articuloId,
+      articuloComponenteId: articuloComponenteId,
+      articuloComponenteDescripcion: articuloComponenteDescripcion,
       cantidad: cantidad,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,

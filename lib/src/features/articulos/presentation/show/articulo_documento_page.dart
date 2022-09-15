@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
@@ -31,7 +29,13 @@ class ArticuloDocumentoPage extends ConsumerWidget {
     final stateOpenFile = ref.watch(articuloDocumentoControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Documentos')),
+      appBar: AppBar(
+        title: Text(articuloId),
+        bottom: AppBar(
+          title: const Text('Documentos'),
+          automaticallyImplyLeading: false,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: state.maybeWhen(

@@ -66,13 +66,13 @@ class ClientePrecioNetoTile extends StatelessWidget {
                     Text(clientePrecioNeto.articuloId,
                         style: Theme.of(context).textTheme.subtitle2),
                     Text(
-                        'Des de ${numberFormat(clientePrecioNeto.cantidadDesDe)} unidad/es',
+                        '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesDe)} unidad/es',
                         style: Theme.of(context).textTheme.subtitle2),
                   ],
                 ),
                 const Spacer(),
                 Text(
-                  'Precio: ${numberFormat(clientePrecioNeto.precio)}x${clientePrecioNeto.tipoPrecio?.toString() ?? '1'}',
+                  'Precio: ${numberFormatDecimal(clientePrecioNeto.precio)}x ${clientePrecioNeto.tipoPrecio?.toString() ?? '1'}',
                   style: Theme.of(context).textTheme.caption,
                 ),
               ],

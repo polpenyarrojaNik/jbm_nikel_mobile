@@ -2,19 +2,19 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/infrastructure/database.dart';
-import '../domain/articulo_tarifa_precio.dart';
+import '../domain/articulo_precio_tarifa.dart';
 
-part 'articulo_tarifa_precio_dto.freezed.dart';
-part 'articulo_tarifa_precio_dto.g.dart';
+part 'articulo_precio_tarifa_dto.freezed.dart';
+part 'articulo_precio_tarifa_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloTarifaPrecioDTO
-    with _$ArticuloTarifaPrecioDTO
-    implements Insertable<ArticuloTarifaPrecioDTO> {
-  const ArticuloTarifaPrecioDTO._();
-  const factory ArticuloTarifaPrecioDTO({
+class ArticuloPrecioTarifaDTO
+    with _$ArticuloPrecioTarifaDTO
+    implements Insertable<ArticuloPrecioTarifaDTO> {
+  const ArticuloPrecioTarifaDTO._();
+  const factory ArticuloPrecioTarifaDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'TARIFA_ID') required String tarifaId,
     @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
@@ -23,13 +23,13 @@ class ArticuloTarifaPrecioDTO
     @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
-  }) = _ArticuloTarifaPrecioDTO;
+  }) = _ArticuloPrecioTarifaDTO;
 
-  factory ArticuloTarifaPrecioDTO.fromJson(Map<String, dynamic> json) =>
-      _$ArticuloTarifaPrecioDTOFromJson(json);
+  factory ArticuloPrecioTarifaDTO.fromJson(Map<String, dynamic> json) =>
+      _$ArticuloPrecioTarifaDTOFromJson(json);
 
-  ArticuloTarifaPrecio toDomain() {
-    return ArticuloTarifaPrecio(
+  ArticuloPrecioTarifa toDomain() {
+    return ArticuloPrecioTarifa(
       articuloId: articuloId,
       tarifaId: tarifaId,
       tarifaDescripcion: tarifaDescripcion,
@@ -43,7 +43,7 @@ class ArticuloTarifaPrecioDTO
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
-    return ArticuloTarifaPrecioTableCompanion(
+    return ArticuloPrecioTarifaTableCompanion(
       articuloId: Value(articuloId),
       tarifaId: Value(tarifaId),
       tarifaDescripcion: Value(tarifaDescripcion),
@@ -56,8 +56,8 @@ class ArticuloTarifaPrecioDTO
   }
 }
 
-@UseRowClass(ArticuloTarifaPrecioDTO)
-class ArticuloTarifaPrecioTable extends Table {
+@UseRowClass(ArticuloPrecioTarifaDTO)
+class ArticuloPrecioTarifaTable extends Table {
   @override
   String get tableName => 'ARTICULOS_TARIFA_PRECIO';
 

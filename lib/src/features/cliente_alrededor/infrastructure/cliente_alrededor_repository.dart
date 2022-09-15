@@ -12,8 +12,10 @@ import '../domain/get_cliente_alrededor_arg.dart';
 
 final clientesAlrededorRepositoryProvider =
     Provider.autoDispose<ClienteAlrededorRepository>(
-  // * Override this in the main method
-  (ref) => throw UnimplementedError(),
+  (ref) {
+    final db = ref.watch(appDatabaseProvider);
+    return ClienteAlrededorRepository(db);
+  },
 );
 
 final ubicacionActualProvider = FutureProvider.autoDispose<Position>((ref) {

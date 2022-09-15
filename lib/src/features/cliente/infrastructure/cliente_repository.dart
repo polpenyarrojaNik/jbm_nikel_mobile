@@ -6,6 +6,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 
+import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/cliente.dart';
@@ -26,14 +27,14 @@ final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>(
   },
 );
 
-final clienteListaStreamProvider =
-    StreamProvider.autoDispose.family<List<Cliente>, int>((ref, page) async* {
+final clienteListaSearchProvider = FutureProvider.autoDispose
+    .family<List<Cliente>, DefaultListParams>((ref, defaultListParams) async {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  yield* clienteRepository.watchClienteLista(
-    usuarioId: usuario!.id,
-    page: page,
-  );
+  return clienteRepository.getClienteLista(
+      usuarioId: usuario!.id,
+      page: defaultListParams.page,
+      searchText: defaultListParams.searchText);
 });
 
 final clienteProvider =
@@ -100,7 +101,7 @@ class ClienteRepository {
 
   ClienteRepository(this._db, this._dio);
 
-  Stream<List<Cliente>> watchClienteLista(
+  Future<List<Cliente>> getClienteLista(
       {required String usuarioId, required int page, String? searchText}) {
     try {
       final query = _db.select(_db.clienteTable).join([
@@ -120,9 +121,15 @@ class ClienteRepository {
 
       if (searchText != null) {
         query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-            (_db.clienteTable.nombreCliente.like('%$searchText%') |
-                _db.clienteTable.nombreCliente
-                    .like('%${searchText.toUpperCase()}%')));
+            ((_db.clienteTable.nombreCliente.like('%$searchText%') |
+                    _db.clienteTable.nombreCliente
+                        .like('%${searchText.toUpperCase()}%')) |
+                (_db.clienteTable.poblacionFiscal.like('%$searchText%') |
+                    _db.clienteTable.poblacionFiscal
+                        .like('%${searchText.toUpperCase()}%')) |
+                (_db.clienteTable.provinciaFiscal.like('%$searchText%') |
+                    _db.clienteTable.provinciaFiscal
+                        .like('%${searchText.toUpperCase()}%'))));
       } else {
         query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
       }
@@ -146,7 +153,7 @@ class ClienteRepository {
           metodoDeCobro: metodoDeCobroDTO?.toDomain(),
           plazoDeCobro: plazoDeCobroDTO?.toDomain(),
         );
-      }).watch();
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

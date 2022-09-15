@@ -16,8 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArticuloComponente {
-  Articulo get articulo => throw _privateConstructorUsedError;
-  Articulo get articuloComponente => throw _privateConstructorUsedError;
+  String get articuloId => throw _privateConstructorUsedError;
+  String get articuloComponenteId => throw _privateConstructorUsedError;
+  String? get articuloComponenteDescripcion =>
+      throw _privateConstructorUsedError;
   double get cantidad => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -33,14 +35,12 @@ abstract class $ArticuloComponenteCopyWith<$Res> {
           ArticuloComponente value, $Res Function(ArticuloComponente) then) =
       _$ArticuloComponenteCopyWithImpl<$Res>;
   $Res call(
-      {Articulo articulo,
-      Articulo articuloComponente,
+      {String articuloId,
+      String articuloComponenteId,
+      String? articuloComponenteDescripcion,
       double cantidad,
       DateTime lastUpdated,
       bool deleted});
-
-  $ArticuloCopyWith<$Res> get articulo;
-  $ArticuloCopyWith<$Res> get articuloComponente;
 }
 
 /// @nodoc
@@ -54,21 +54,26 @@ class _$ArticuloComponenteCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? articulo = freezed,
-    Object? articuloComponente = freezed,
+    Object? articuloId = freezed,
+    Object? articuloComponenteId = freezed,
+    Object? articuloComponenteDescripcion = freezed,
     Object? cantidad = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
     return _then(_value.copyWith(
-      articulo: articulo == freezed
-          ? _value.articulo
-          : articulo // ignore: cast_nullable_to_non_nullable
-              as Articulo,
-      articuloComponente: articuloComponente == freezed
-          ? _value.articuloComponente
-          : articuloComponente // ignore: cast_nullable_to_non_nullable
-              as Articulo,
+      articuloId: articuloId == freezed
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloComponenteId: articuloComponenteId == freezed
+          ? _value.articuloComponenteId
+          : articuloComponenteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloComponenteDescripcion: articuloComponenteDescripcion == freezed
+          ? _value.articuloComponenteDescripcion
+          : articuloComponenteDescripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
@@ -83,20 +88,6 @@ class _$ArticuloComponenteCopyWithImpl<$Res>
               as bool,
     ));
   }
-
-  @override
-  $ArticuloCopyWith<$Res> get articulo {
-    return $ArticuloCopyWith<$Res>(_value.articulo, (value) {
-      return _then(_value.copyWith(articulo: value));
-    });
-  }
-
-  @override
-  $ArticuloCopyWith<$Res> get articuloComponente {
-    return $ArticuloCopyWith<$Res>(_value.articuloComponente, (value) {
-      return _then(_value.copyWith(articuloComponente: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -107,16 +98,12 @@ abstract class _$$_ArticuloComponenteCopyWith<$Res>
       __$$_ArticuloComponenteCopyWithImpl<$Res>;
   @override
   $Res call(
-      {Articulo articulo,
-      Articulo articuloComponente,
+      {String articuloId,
+      String articuloComponenteId,
+      String? articuloComponenteDescripcion,
       double cantidad,
       DateTime lastUpdated,
       bool deleted});
-
-  @override
-  $ArticuloCopyWith<$Res> get articulo;
-  @override
-  $ArticuloCopyWith<$Res> get articuloComponente;
 }
 
 /// @nodoc
@@ -132,21 +119,26 @@ class __$$_ArticuloComponenteCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? articulo = freezed,
-    Object? articuloComponente = freezed,
+    Object? articuloId = freezed,
+    Object? articuloComponenteId = freezed,
+    Object? articuloComponenteDescripcion = freezed,
     Object? cantidad = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
     return _then(_$_ArticuloComponente(
-      articulo: articulo == freezed
-          ? _value.articulo
-          : articulo // ignore: cast_nullable_to_non_nullable
-              as Articulo,
-      articuloComponente: articuloComponente == freezed
-          ? _value.articuloComponente
-          : articuloComponente // ignore: cast_nullable_to_non_nullable
-              as Articulo,
+      articuloId: articuloId == freezed
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloComponenteId: articuloComponenteId == freezed
+          ? _value.articuloComponenteId
+          : articuloComponenteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloComponenteDescripcion: articuloComponenteDescripcion == freezed
+          ? _value.articuloComponenteDescripcion
+          : articuloComponenteDescripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
@@ -167,17 +159,20 @@ class __$$_ArticuloComponenteCopyWithImpl<$Res>
 
 class _$_ArticuloComponente extends _ArticuloComponente {
   const _$_ArticuloComponente(
-      {required this.articulo,
-      required this.articuloComponente,
+      {required this.articuloId,
+      required this.articuloComponenteId,
+      this.articuloComponenteDescripcion,
       required this.cantidad,
       required this.lastUpdated,
       required this.deleted})
       : super._();
 
   @override
-  final Articulo articulo;
+  final String articuloId;
   @override
-  final Articulo articuloComponente;
+  final String articuloComponenteId;
+  @override
+  final String? articuloComponenteDescripcion;
   @override
   final double cantidad;
   @override
@@ -187,7 +182,7 @@ class _$_ArticuloComponente extends _ArticuloComponente {
 
   @override
   String toString() {
-    return 'ArticuloComponente(articulo: $articulo, articuloComponente: $articuloComponente, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloComponente(articuloId: $articuloId, articuloComponenteId: $articuloComponenteId, articuloComponenteDescripcion: $articuloComponenteDescripcion, cantidad: $cantidad, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -195,9 +190,13 @@ class _$_ArticuloComponente extends _ArticuloComponente {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloComponente &&
-            const DeepCollectionEquality().equals(other.articulo, articulo) &&
             const DeepCollectionEquality()
-                .equals(other.articuloComponente, articuloComponente) &&
+                .equals(other.articuloId, articuloId) &&
+            const DeepCollectionEquality()
+                .equals(other.articuloComponenteId, articuloComponenteId) &&
+            const DeepCollectionEquality().equals(
+                other.articuloComponenteDescripcion,
+                articuloComponenteDescripcion) &&
             const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -207,8 +206,9 @@ class _$_ArticuloComponente extends _ArticuloComponente {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articulo),
-      const DeepCollectionEquality().hash(articuloComponente),
+      const DeepCollectionEquality().hash(articuloId),
+      const DeepCollectionEquality().hash(articuloComponenteId),
+      const DeepCollectionEquality().hash(articuloComponenteDescripcion),
       const DeepCollectionEquality().hash(cantidad),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -222,17 +222,20 @@ class _$_ArticuloComponente extends _ArticuloComponente {
 
 abstract class _ArticuloComponente extends ArticuloComponente {
   const factory _ArticuloComponente(
-      {required final Articulo articulo,
-      required final Articulo articuloComponente,
+      {required final String articuloId,
+      required final String articuloComponenteId,
+      final String? articuloComponenteDescripcion,
       required final double cantidad,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloComponente;
   const _ArticuloComponente._() : super._();
 
   @override
-  Articulo get articulo;
+  String get articuloId;
   @override
-  Articulo get articuloComponente;
+  String get articuloComponenteId;
+  @override
+  String? get articuloComponenteDescripcion;
   @override
   double get cantidad;
   @override

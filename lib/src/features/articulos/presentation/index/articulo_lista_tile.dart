@@ -35,7 +35,7 @@ class ArticuloListaTile extends StatelessWidget {
                 ),
                 if (articulo.stockDisponible != null)
                   Text(
-                    '${numberFormat(articulo.stockDisponible!)} unidades',
+                    '${numberFormatCantidades(articulo.stockDisponible!)} unidades',
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
               ],

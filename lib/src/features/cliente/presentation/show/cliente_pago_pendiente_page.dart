@@ -87,7 +87,8 @@ class ClientePagoPendienteTile extends StatelessWidget {
                         ),
                         Text(
                           (clientePagoPendiente.importe != null)
-                              ? numberFormat(clientePagoPendiente.importe!)
+                              ? numberFormatDecimal(
+                                  clientePagoPendiente.importe!)
                               : '',
                           style: Theme.of(context).textTheme.subtitle2,
                         ),

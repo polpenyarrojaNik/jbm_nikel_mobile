@@ -59,7 +59,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  '${numberFormat(pedidoVentaLinea.cantidad)} unidades',
+                                  '${numberFormatCantidades(pedidoVentaLinea.cantidad)} unidades',
                                   style: Theme.of(context).textTheme.subtitle2,
                                 ),
                               ],
@@ -76,25 +76,15 @@ class PedidoVentaLineaTile extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Pricio: ${numberFormat(pedidoVentaLinea.precioDivisa)}x${pedidoVentaLinea.tipoPrecio}',
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                              if (pedidoVentaLinea.descuento1 != 0.0 ||
-                                  pedidoVentaLinea.descuento2 != 0.0 ||
-                                  pedidoVentaLinea.descuento3 != 0.0)
-                                Text(
-                                  dtoText(
-                                      context,
-                                      pedidoVentaLinea.descuento1,
-                                      pedidoVentaLinea.descuento2,
-                                      pedidoVentaLinea.descuento2),
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                            ],
+                          Text(
+                            formatPrecioYDescuento(
+                              precio: pedidoVentaLinea.precioDivisa,
+                              tipoPrecio: pedidoVentaLinea.tipoPrecio,
+                              descuento1: pedidoVentaLinea.descuento1,
+                              descuento2: pedidoVentaLinea.descuento2,
+                              descuento3: pedidoVentaLinea.descuento3,
+                            ),
+                            style: Theme.of(context).textTheme.caption,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,

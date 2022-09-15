@@ -5,9 +5,10 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_tarifa_precio.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
 import 'package:path_provider/path_provider.dart';
@@ -61,10 +62,10 @@ final articuloComponenteListProvider = FutureProvider.autoDispose
       articuloId: articuloId);
 });
 
-final articuloTarifaPrecioListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloTarifaPrecio>, String>((ref, articuloId) {
+final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
+    .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getArticuloTarifaPrecioListaById(
+  return articuloRepository.getArticuloPrecioTarifaListaById(
       articuloId: articuloId);
 });
 
@@ -82,7 +83,7 @@ final articuloSustitutivoListProvider = FutureProvider.autoDispose
       articuloId: articuloId);
 });
 
-final articuloSpareListProvider = FutureProvider.autoDispose
+final articuloRecambioListProvider = FutureProvider.autoDispose
     .family<List<ArticuloRecambio>, String>((ref, articuloId) {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   return articuloRepository.getArticuloRecambioListaById(
@@ -211,21 +212,21 @@ class ArticuloRepository {
         ..where((t) => t.articuloId.equals(articuloId)));
 
       return query.asyncMap((row) async {
-        final articulo = await getArticuloById(articuloId: row.articuloId);
         final articuloComponente =
             await getArticuloById(articuloId: row.articuloComponenteId);
         return row.toDomain(
-            articulo: articulo, articuloComponente: articuloComponente);
+            articuloComponenteDescripcion:
+                getDescriptionInLocalLanguage(articulo: articuloComponente));
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<ArticuloTarifaPrecio>> getArticuloTarifaPrecioListaById(
+  Future<List<ArticuloPrecioTarifa>> getArticuloPrecioTarifaListaById(
       {required String articuloId}) async {
     try {
-      final query = (_db.select(_db.articuloTarifaPrecioTable)
+      final query = (_db.select(_db.articuloPrecioTarifaTable)
         ..where((t) => t.articuloId.equals(articuloId)));
 
       return query.map((row) {
@@ -267,13 +268,19 @@ class ArticuloRepository {
   Future<List<ArticuloSustitutivo>> getArticuloSustitutivoListaById(
       {required String articuloId}) async {
     try {
-      final query = (_db.select(_db.articuloSustitutivoTable)
-        ..where((t) => t.articuloId.equals(articuloId)));
+      final query =
+          (_db.select(_db.articuloSustitutivoTable)..where((t) => t.articuloId.equals(articuloId)))
+            ..orderBy([
+              (t) => OrderingTerm(expression: t.orden),
+              (t) => OrderingTerm(expression: t.articuloSustitutivoId)
+            ]);
 
       return query.asyncMap((row) async {
         final articuloSustitutivo =
             await getArticuloById(articuloId: row.articuloSustitutivoId);
-        return row.toDomain(articuloSustitutivo: articuloSustitutivo);
+        return row.toDomain(
+            articuloSustitutivoDescripcion:
+                getDescriptionInLocalLanguage(articulo: articuloSustitutivo));
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -379,7 +386,7 @@ class ArticuloRepository {
       {required String articuloId, required String usuarioId}) async {
     try {
       final query = _db.select(_db.pedidoVentaLineaTable).join([
-        innerJoin(
+        leftOuterJoin(
             _db.pedidoVentaTable,
             _db.pedidoVentaTable.pedidoVentaId
                 .equalsExp(_db.pedidoVentaLineaTable.pedidoVentaId)),
@@ -414,6 +421,10 @@ class ArticuloRepository {
         innerJoin(
             _db.clienteUsuarioTable,
             _db.clienteUsuarioTable.clienteId
+                .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId)),
+        leftOuterJoin(
+            _db.clienteTable,
+            _db.clienteTable.id
                 .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId))
       ]);
       query.where(
@@ -428,7 +439,9 @@ class ArticuloRepository {
             row.readTable(_db.estadisticasUltimosPreciosTable);
         final articulo =
             await getArticuloById(articuloId: lastPriceArticuloDTO.articuloId);
-        return lastPriceArticuloDTO.toDomain(articulo: articulo);
+        final clienteDTO = row.readTable(_db.clienteTable);
+        return lastPriceArticuloDTO.toDomain(
+            articulo: articulo, nombreCliente: clienteDTO.nombreCliente);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

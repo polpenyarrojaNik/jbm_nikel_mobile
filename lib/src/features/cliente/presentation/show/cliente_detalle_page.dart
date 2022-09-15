@@ -248,45 +248,45 @@ class ClienteGeneralData extends StatelessWidget {
                 children: [
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Venta Año Actual',
-                      value: numberFormat(cliente.ventasAnyoActual!)),
+                      value: numberFormatDecimal(cliente.ventasAnyoActual!)),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                     fieldTitleValue: 'Venta Año Anterior',
-                    value: numberFormat(cliente.ventasAnyoAnterior!),
+                    value: numberFormatDecimal(cliente.ventasAnyoAnterior!),
                   ),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Ventas Hace 2 Años',
-                      value: numberFormat(cliente.ventasHaceDosAnyos!)),
+                      value: numberFormatDecimal(cliente.ventasHaceDosAnyos!)),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Porcentaje Garantias',
                       value: (cliente.porcentajeGarantias != null)
-                          ? '${numberFormat(cliente.porcentajeGarantias!)}%'
+                          ? '${numberFormatDecimal(cliente.porcentajeGarantias!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Año Actual',
                       value: (cliente.margenAnyoActual != null)
-                          ? '${numberFormat(cliente.margenAnyoActual!)}%'
+                          ? '${numberFormatDecimal(cliente.margenAnyoActual!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Año Anterior',
                       value: (cliente.margenAnyoAnterior != null)
-                          ? '${numberFormat(cliente.margenAnyoAnterior!)}%'
+                          ? '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Margen Hace 2 Años',
                       value: (cliente.margenHaceDosAnyos != null)
-                          ? '${numberFormat(cliente.margenHaceDosAnyos!)}%'
+                          ? '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Porcentaje Abonos',
                       value: (cliente.porcentajeAbonos != null)
-                          ? '${numberFormat(cliente.porcentajeAbonos!)}%'
+                          ? '${numberFormatDecimal(cliente.porcentajeAbonos!)}%'
                           : ''),
                 ],
               ),
@@ -420,7 +420,7 @@ class ClienteFacturationDataContainer extends StatelessWidget {
                       value: cliente.metodoDeCobro?.descripcion ?? ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Descuento P.P',
-                      value: numberFormat(cliente.descuentoProntoPago)),
+                      value: numberFormatDecimal(cliente.descuentoProntoPago)),
                 ],
               ),
             ),
@@ -506,7 +506,7 @@ class ClienteRiskContainer extends StatelessWidget {
                 children: [
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Concedido COFACE',
-                      value: numberFormat(cliente.riesgoConcedidoCoafe)),
+                      value: numberFormatDecimal(cliente.riesgoConcedidoCoafe)),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Fecha COFACE',
                       value: (cliente.riesgoConcedidoCoafeFecha != null)
@@ -542,27 +542,30 @@ class ClienteRiskContainer extends StatelessWidget {
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Riesgo Concedido',
                       value: (cliente.riesgoConcedido != null)
-                          ? numberFormat(cliente.riesgoConcedido!)
+                          ? numberFormatDecimal(cliente.riesgoConcedido!)
                           : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Pdte. Cobro Vencido',
                       value: (cliente.riesgoPendienteCobroVencido != null)
-                          ? numberFormat(cliente.riesgoPendienteCobroVencido!)
+                          ? numberFormatDecimal(
+                              cliente.riesgoPendienteCobroVencido!)
                           : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Pdte. Cobro No vencido',
                       value: (cliente.riesgoPendienteCobroNoVencido != null)
-                          ? numberFormat(cliente.riesgoPendienteCobroNoVencido!)
+                          ? numberFormatDecimal(
+                              cliente.riesgoPendienteCobroNoVencido!)
                           : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Pdte. Servir',
                       value: (cliente.riesgoPendienteServir != null)
-                          ? numberFormat(cliente.riesgoPendienteServir!)
+                          ? numberFormatDecimal(cliente.riesgoPendienteServir!)
                           : ''),
                   RowFieldTextDetalle(
                       fieldTitleValue: 'Riesgo Concedido',
                       value: (cliente.riesgoPendienteFacturar != null)
-                          ? numberFormat(cliente.riesgoPendienteFacturar!)
+                          ? numberFormatDecimal(
+                              cliente.riesgoPendienteFacturar!)
                           : ''),
                 ],
               ),

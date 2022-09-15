@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../domain/articulo_grupo_neto.dart';
-import '../../infrastructure/articulo_repository.dart';
 
-class ArticuloGrupoNetoPage extends ConsumerWidget {
-  const ArticuloGrupoNetoPage({super.key, required this.articuloId});
+class ArticuloPrecioTarifaPage extends ConsumerWidget {
+  const ArticuloPrecioTarifaPage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloGrupoNetoPriceListProvider(articuloId));
+    final state = ref.watch(articuloPrecioTarifaListProvider(articuloId));
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Grupos Netos'),
+        title: const Text('Precios Tarifa'),
         bottom: AppBar(
           title: Text(articuloId),
           automaticallyImplyLeading: false,
@@ -29,28 +29,28 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
         child: state.maybeWhen(
           orElse: () => const ProgressIndicatorWidget(),
           error: (e, st) => ErrorMessageWidget(e.toString()),
-          data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
-              ? ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, _) => const Divider(),
-                  itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-                    articuloGrupoNeto: articuloGrupoNetoList[i],
-                  ),
-                  itemCount: articuloGrupoNetoList.length,
-                )
-              : const Center(
-                  child: Text('No results'),
-                ),
+          data: (articuloPrecioTarifaList) =>
+              (articuloPrecioTarifaList.isNotEmpty)
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      separatorBuilder: (context, _) => const Divider(),
+                      itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
+                        articuloPrecioTarifa: articuloPrecioTarifaList[i],
+                      ),
+                      itemCount: articuloPrecioTarifaList.length,
+                    )
+                  : const Center(child: Text('No Results')),
         ),
       ),
     );
   }
 }
 
-class ArticuloGrupoNetoTile extends StatelessWidget {
-  const ArticuloGrupoNetoTile({super.key, required this.articuloGrupoNeto});
+class ArticuloPrecioTarifaTile extends StatelessWidget {
+  const ArticuloPrecioTarifaTile(
+      {super.key, required this.articuloPrecioTarifa});
 
-  final ArticuloGrupoNeto articuloGrupoNeto;
+  final ArticuloPrecioTarifa articuloPrecioTarifa;
 
   @override
   Widget build(BuildContext context) {
@@ -59,24 +59,14 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                articuloGrupoNeto.grupoNetoId,
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-            ],
+          Text(
+            articuloPrecioTarifa.tarifaDescripcion ?? '',
           ),
-          if (articuloGrupoNeto.grupoNetoDescripcion != null)
-            Text(
-              articuloGrupoNeto.grupoNetoDescripcion!,
-            ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesDe)} ${((articuloGrupoNeto.cantidadDesDe) != 1) ? 'unidades' : 'unidad'}',
+                '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesDe)} ${((articuloPrecioTarifa.cantidadDesDe) != 1) ? 'unidades' : 'unidad'}',
                 style: Theme.of(context).textTheme.bodyText2?.copyWith(
                     color: Theme.of(context).textTheme.caption?.color),
               ),
@@ -85,8 +75,8 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
                   const Icon(MdiIcons.currencySign, size: 16),
                   Text(
                     formatPrecios(
-                        precio: articuloGrupoNeto.precio,
-                        tipoPrecio: articuloGrupoNeto.tipoPrecio),
+                        precio: articuloPrecioTarifa.precio,
+                        tipoPrecio: articuloPrecioTarifa.tipoPrecio),
                     style: Theme.of(context).textTheme.bodyText2?.copyWith(
                         color: Theme.of(context).textTheme.caption?.color),
                   ),

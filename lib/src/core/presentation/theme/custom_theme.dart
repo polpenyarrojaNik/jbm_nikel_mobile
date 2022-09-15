@@ -134,7 +134,7 @@ class CustomTheme {
       ).copyWith(
           subtitle2: GoogleFonts.montserrat(
                   textStyle: ThemeData.light().textTheme.subtitle2)
-              .copyWith(fontWeight: FontWeight.bold)),
+              .copyWith(fontWeight: FontWeight.w700)),
     );
   }
 

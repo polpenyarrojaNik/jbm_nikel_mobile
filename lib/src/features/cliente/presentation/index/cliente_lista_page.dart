@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
@@ -19,44 +20,78 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 }
 
 class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
-  final scrollController = ScrollController();
+  final _scrollController = ScrollController();
 
   int page = 1;
-  bool isFirstTime = true;
-  @override
-  Widget build(BuildContext context) {
-    final state = ref.watch(clienteListaStreamProvider(page));
+  bool canLoadNextPage = false;
 
-    scrollController.addListener(() {
-      final metrics = scrollController.position;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_dismissOnScreenKeyboard);
+    _scrollController.addListener(() {
+      final metrics = _scrollController.position;
       final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
-      if (isFirstTime && metrics.pixels >= limit) {
-        isFirstTime = false;
+
+      if (canLoadNextPage && metrics.pixels >= limit) {
+        canLoadNextPage = false;
         page++;
+        ref.read(clientesPaginationQueryStateProvider.notifier).state = page;
       }
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_dismissOnScreenKeyboard);
+    super.dispose();
+  }
+
+  // When the search text field gets the focus, the keyboard appears on mobile.
+  // This method is used to dismiss the keyboard when the user scrolls.
+  void _dismissOnScreenKeyboard() {
+    if (FocusScope.of(context).hasFocus) {
+      FocusScope.of(context).unfocus();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<AsyncValue>(
+      clientesSearchResultsProvider,
+      (_, state) {
+        canLoadNextPage = true;
+        state.showAlertDialogOnError(context);
+      },
+    );
+    final state = ref.watch(clientesSearchResultsProvider);
 
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
         title: 'Cliente',
         searchTitle: 'Search Cliente...',
-        onChanged: (searchText) => (print(searchText)),
+        onChanged: (searchText) {
+          ref.read(clientesSearchQueryStateProvider.notifier).state =
+              searchText;
+          ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+        },
         addActionButton: IconButton(
           onPressed: () => navigateToClientesAlrededor(context),
           icon: const Icon(Icons.near_me_outlined),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: state.when(
           loading: () => const ProgressIndicatorWidget(),
           error: (e, _) => ErrorMessageWidget(e.toString()),
           data: (clienteList) => (clienteList.isEmpty)
               ? Container()
-              : ListView.builder(
+              : ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
                   shrinkWrap: true,
-                  controller: scrollController,
+                  controller: _scrollController,
                   physics: const AlwaysScrollableScrollPhysics(),
                   itemCount: clienteList.length,
                   itemBuilder: (context, i) =>

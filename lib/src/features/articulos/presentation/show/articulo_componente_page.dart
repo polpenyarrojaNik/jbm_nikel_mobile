@@ -16,9 +16,15 @@ class ArticuloComponentePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloComponenteListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(title: const Text('Articulo Componente')),
+      appBar: AppBar(
+        title: const Text('Componentes'),
+        bottom: AppBar(
+          title: Text(articuloId),
+          automaticallyImplyLeading: false,
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: state.maybeWhen(
           orElse: () => const ProgressIndicatorWidget(),
           error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -48,25 +54,25 @@ class ArticuloComponenteTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(articuloComponente.articuloComponente.id),
-              Text(numberFormat(articuloComponente.cantidad)),
+              Text(articuloComponente.articuloComponenteId,
+                  style: Theme.of(context).textTheme.subtitle2),
+              Text(
+                  '${numberFormatCantidades(articuloComponente.cantidad)} ${((articuloComponente.cantidad) != 1) ? 'unidades' : 'unidad'}',
+                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      color: Theme.of(context).textTheme.caption?.color)),
             ],
           ),
-          const SizedBox(height: 5),
-          Text(
-            getDescriptionInLocalLanguage(
-                articulo: articuloComponente.articuloComponente),
-          ),
-          if (articuloComponente.articuloComponente.stockDisponible != null)
+          if (articuloComponente.articuloComponenteDescripcion != null)
             Text(
-                'Stock: ${numberFormat(articuloComponente.articuloComponente.stockDisponible!)}'),
+              articuloComponente.articuloComponenteDescripcion!,
+            ),
         ],
       ),
     );

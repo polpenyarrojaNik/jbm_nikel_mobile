@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'articulo_tarifa_precio_dto.dart';
+part of 'articulo_precio_tarifa_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ArticuloTarifaPrecioDTO _$$_ArticuloTarifaPrecioDTOFromJson(
+_$_ArticuloPrecioTarifaDTO _$$_ArticuloPrecioTarifaDTOFromJson(
         Map<String, dynamic> json) =>
-    _$_ArticuloTarifaPrecioDTO(
+    _$_ArticuloPrecioTarifaDTO(
       articuloId: json['ARTICULO_ID'] as String,
       tarifaId: json['TARIFA_ID'] as String,
       tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
@@ -19,8 +19,8 @@ _$_ArticuloTarifaPrecioDTO _$$_ArticuloTarifaPrecioDTOFromJson(
       deleted: json['DELETED'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ArticuloTarifaPrecioDTOToJson(
-        _$_ArticuloTarifaPrecioDTO instance) =>
+Map<String, dynamic> _$$_ArticuloPrecioTarifaDTOToJson(
+        _$_ArticuloPrecioTarifaDTO instance) =>
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'TARIFA_ID': instance.tarifaId,

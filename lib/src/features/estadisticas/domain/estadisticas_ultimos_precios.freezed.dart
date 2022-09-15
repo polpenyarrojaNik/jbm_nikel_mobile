@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EstadisticasUltimosPrecios {
   String get clienteId => throw _privateConstructorUsedError;
+  String? get nombreCliente => throw _privateConstructorUsedError;
   Articulo get articulo => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
   double get precioDivisa => throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
       _$EstadisticasUltimosPreciosCopyWithImpl<$Res>;
   $Res call(
       {String clienteId,
+      String? nombreCliente,
       Articulo articulo,
       DateTime fecha,
       double precioDivisa,
@@ -64,6 +66,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clienteId = freezed,
+    Object? nombreCliente = freezed,
     Object? articulo = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
@@ -79,6 +82,10 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
+      nombreCliente: nombreCliente == freezed
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
       articulo: articulo == freezed
           ? _value.articulo
           : articulo // ignore: cast_nullable_to_non_nullable
@@ -136,6 +143,7 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
   @override
   $Res call(
       {String clienteId,
+      String? nombreCliente,
       Articulo articulo,
       DateTime fecha,
       double precioDivisa,
@@ -166,6 +174,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clienteId = freezed,
+    Object? nombreCliente = freezed,
     Object? articulo = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
@@ -181,6 +190,10 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
+      nombreCliente: nombreCliente == freezed
+          ? _value.nombreCliente
+          : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
       articulo: articulo == freezed
           ? _value.articulo
           : articulo // ignore: cast_nullable_to_non_nullable
@@ -226,6 +239,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
 class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   const _$_EstadisticasUltimosPrecios(
       {required this.clienteId,
+      this.nombreCliente,
       required this.articulo,
       required this.fecha,
       required this.precioDivisa,
@@ -239,6 +253,8 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 
   @override
   final String clienteId;
+  @override
+  final String? nombreCliente;
   @override
   final Articulo articulo;
   @override
@@ -260,7 +276,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 
   @override
   String toString() {
-    return 'EstadisticasUltimosPrecios(clienteId: $clienteId, articulo: $articulo, fecha: $fecha, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasUltimosPrecios(clienteId: $clienteId, nombreCliente: $nombreCliente, articulo: $articulo, fecha: $fecha, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -269,6 +285,8 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
         (other.runtimeType == runtimeType &&
             other is _$_EstadisticasUltimosPrecios &&
             const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
+            const DeepCollectionEquality()
+                .equals(other.nombreCliente, nombreCliente) &&
             const DeepCollectionEquality().equals(other.articulo, articulo) &&
             const DeepCollectionEquality().equals(other.fecha, fecha) &&
             const DeepCollectionEquality()
@@ -290,6 +308,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(clienteId),
+      const DeepCollectionEquality().hash(nombreCliente),
       const DeepCollectionEquality().hash(articulo),
       const DeepCollectionEquality().hash(fecha),
       const DeepCollectionEquality().hash(precioDivisa),
@@ -310,6 +329,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   const factory _EstadisticasUltimosPrecios(
       {required final String clienteId,
+      final String? nombreCliente,
       required final Articulo articulo,
       required final DateTime fecha,
       required final double precioDivisa,
@@ -323,6 +343,8 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
 
   @override
   String get clienteId;
+  @override
+  String? get nombreCliente;
   @override
   Articulo get articulo;
   @override

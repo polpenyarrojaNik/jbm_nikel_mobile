@@ -3,8 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_cliente_alrededor_arg.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
@@ -194,55 +197,58 @@ class ClienteAlrededorDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(cliente.nombreCliente ?? '',
-                style: Theme.of(context).textTheme.subtitle2),
-            const Divider(),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('#${cliente.id} ${cliente.nombreFiscal}'),
-                const SizedBox(height: 2),
-                Text(
-                  cliente.direccionFiscal1 ?? '',
-                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        color: Theme.of(context).textTheme.caption!.color,
-                      ),
-                ),
-                const SizedBox(height: 2),
-                AddressTextWidget(
-                    codigoPostal: cliente.codigoPostalFiscal,
-                    poblacion: cliente.poblacionFiscal,
-                    provincia: cliente.provinciaFiscal,
-                    pais: cliente.paisFiscal),
-                const Divider(),
-                RowFieldTextDetalle(
-                    fieldTitleValue: 'Venta Año Actual',
-                    value: (cliente.ventasAnyoActual != null)
-                        ? numberFormat(cliente.ventasAnyoActual!)
-                        : ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetalle(
-                    fieldTitleValue: 'Margen Año Actual',
-                    value: (cliente.margenAnyoActual != null)
-                        ? '${numberFormat(cliente.margenAnyoActual!)}%'
-                        : ''),
-                const SizedBox(height: 2),
-                RowFieldTextDetalle(
-                    fieldTitleValue: 'Porcentaje Abonos',
-                    value: (cliente.porcentajeAbonos != null)
-                        ? '${numberFormat(cliente.porcentajeAbonos!)}%'
-                        : ''),
-              ],
+    return AlertDialog(
+      title: Row(
+        children: [
+          Flexible(
+            child: Text(
+              cliente.nombreCliente ?? '',
             ),
-          ],
-        ),
+          ),
+          gapW4,
+          IconButton(
+              onPressed: () => context.goNamed(AppRoutes.clienteshow.name,
+                  params: {'clienteId': cliente.id}),
+              icon: const Icon(Icons.info))
+        ],
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('#${cliente.id} ${cliente.nombreFiscal}'),
+          const SizedBox(height: 2),
+          Text(
+            cliente.direccionFiscal1 ?? '',
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  color: Theme.of(context).textTheme.caption!.color,
+                ),
+          ),
+          const SizedBox(height: 2),
+          AddressTextWidget(
+              codigoPostal: cliente.codigoPostalFiscal,
+              poblacion: cliente.poblacionFiscal,
+              provincia: cliente.provinciaFiscal,
+              pais: cliente.paisFiscal),
+          const Divider(),
+          RowFieldTextDetalle(
+              fieldTitleValue: 'Venta Año Actual',
+              value: (cliente.ventasAnyoActual != null)
+                  ? numberFormatDecimal(cliente.ventasAnyoActual!)
+                  : ''),
+          const SizedBox(height: 2),
+          RowFieldTextDetalle(
+              fieldTitleValue: 'Margen Año Actual',
+              value: (cliente.margenAnyoActual != null)
+                  ? '${numberFormatDecimal(cliente.margenAnyoActual!)}%'
+                  : ''),
+          const SizedBox(height: 2),
+          RowFieldTextDetalle(
+              fieldTitleValue: 'Porcentaje Abonos',
+              value: (cliente.porcentajeAbonos != null)
+                  ? '${numberFormatDecimal(cliente.porcentajeAbonos!)}%'
+                  : ''),
+        ],
       ),
     );
   }

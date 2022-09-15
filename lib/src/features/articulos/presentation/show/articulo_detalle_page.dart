@@ -39,70 +39,8 @@ class ArticuloDetallePage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               children: [
                 _ArticuloInfoContainer(articulo: articulo),
-                const MobileCustomSeparators(
-                    separatorTitle: 'Datos relacionados'),
-                DatosExtraRow(
-                  title: 'Ped. Ventas',
-                  navigationTo: () => context.goNamed(
-                      AppRoutes.articulosalesorder.name,
-                      params: params),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Últimos Precios',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articuloultimoprecio.name,
-                    params: params,
-                  ),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Componentes',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articulocomponente.name,
-                    params: params,
-                  ),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Grupos Netos',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articulogruponeto.name,
-                    params: params,
-                  ),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Tarifa Precio',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articulotarifaprecio.name,
-                    params: params,
-                  ),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Recambios',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articulorecambio.name,
-                    params: params,
-                  ),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Sustitutivos',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articulosustitutivo.name,
-                    params: params,
-                  ),
-                ),
-                const Divider(),
-                DatosExtraRow(
-                  title: 'Documentos',
-                  navigationTo: () => context.goNamed(
-                    AppRoutes.articulodocumento.name,
-                    params: params,
-                  ),
-                ),
+                _DatosRelacionados(articulo: articulo, params: params),
+                _Consultas(articulo: articulo, params: params),
               ],
             ),
           );
@@ -208,7 +146,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   flex: 1,
                   child: ColumnFieldTextDetalle(
                       fieldTitleValue: 'Stock',
-                      value: numberFormat(articulo.stockDisponible!)),
+                      value:
+                          '${numberFormatCantidades(articulo.stockDisponible!)} unidades'),
                 ),
               Expanded(
                 flex: 2,
@@ -285,25 +224,28 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       children: [
                         if (articulo.comprasEntregaCantidad1 != null &&
                             articulo.comprasEntregaCantidad1 != 0)
-                          Text(numberFormat(articulo.comprasEntregaCantidad1!)),
+                          Text(numberFormatDecimal(
+                              articulo.comprasEntregaCantidad1!)),
                         if (articulo.comprasEntregaCantidad1 != null &&
                             articulo.comprasEntregaCantidad1 != 0)
                           gapH8,
                         if (articulo.comprasEntregaCantidad2 != null &&
                             articulo.comprasEntregaCantidad2 != 0)
-                          Text(numberFormat(articulo.comprasEntregaCantidad2!)),
+                          Text(numberFormatDecimal(
+                              articulo.comprasEntregaCantidad2!)),
                         if (articulo.comprasEntregaCantidad2 != null &&
                             articulo.comprasEntregaCantidad2 != 0)
                           gapH8,
                         if (articulo.comprasEntregaCantidad3 != null &&
                             articulo.comprasEntregaCantidad3 != 0)
-                          Text(numberFormat(articulo.comprasEntregaCantidad3!)),
+                          Text(numberFormatDecimal(
+                              articulo.comprasEntregaCantidad3!)),
                         if (articulo.comprasEntregaCantidad3 != null &&
                             articulo.comprasEntregaCantidad3 != 0)
                           gapH8,
                         if (articulo.comprasEntregaCantidadMas3 != null &&
                             articulo.comprasEntregaCantidadMas3 != 0)
-                          Text(numberFormat(
+                          Text(numberFormatDecimal(
                               articulo.comprasEntregaCantidadMas3!)),
                       ],
                     ),
@@ -353,13 +295,13 @@ class _ArticuloInfoContainer extends StatelessWidget {
             children: [
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Cantidad subcaja',
-                  value: numberFormat(articulo.unidadesSubcaja)),
+                  value: numberFormatCantidades(articulo.unidadesSubcaja)),
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Cantidad caja',
-                  value: numberFormat(articulo.unidadesCaja)),
+                  value: numberFormatCantidades(articulo.unidadesCaja)),
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Cantidad palet',
-                  value: numberFormat(articulo.unidadesPalet)),
+                  value: numberFormatCantidades(articulo.unidadesPalet)),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -367,17 +309,15 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   Expanded(
                     child: ColumnFieldTextDetalle(
                       fieldTitleValue: 'Peso(kg)',
-                      value: numberFormat(articulo.pesoKg),
+                      value: numberFormatCantidades(articulo.pesoKg),
                     ),
                   ),
-                  const Spacer(),
                   Expanded(
                     child: ColumnFieldTextDetalle(
                         fieldTitleValue: 'Medidas(cm)',
                         value:
-                            '${numberFormat(articulo.altoCm)}x${numberFormat(articulo.largoCm)}x${numberFormat(articulo.anchoCm)}'),
+                            '${numberFormatCantidades(articulo.altoCm)} x ${numberFormatCantidades(articulo.largoCm)} x ${numberFormatCantidades(articulo.anchoCm)}'),
                   ),
-                  const Spacer(),
                 ],
               ),
             ],
@@ -390,7 +330,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColumnFieldTextDetalle(
-                fieldTitleValue: 'Página en catalogo/2ªEdición',
+                fieldTitleValue: 'Página en catalogo / 2ªEdición',
                 value: Text(
                   (articulo.paginaEnCatalgo != null &&
                           articulo.paginaEnCatalgo2 != null)
@@ -500,91 +440,91 @@ class _ArticleDescriptionDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DescriptionResumenRow(
+            _DescriptionResumenRow(
               title: 'Desc. ES: ',
               description: articulo.descripcionES,
             ),
             const Divider(),
             if (articulo.descripcionEN != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. EN: ',
                 description: articulo.descripcionEN,
               ),
             if (articulo.descripcionEN != null) const Divider(),
             if (articulo.descripcionFR != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. FR: ',
                 description: articulo.descripcionFR,
               ),
             if (articulo.descripcionFR != null) const Divider(),
             if (articulo.descripcionDE != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. DE: ',
                 description: articulo.descripcionDE,
               ),
             if (articulo.descripcionDE != null) const Divider(),
             if (articulo.descripcionCA != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. CA: ',
                 description: articulo.descripcionCA,
               ),
             if (articulo.descripcionCA != null) const Divider(),
             if (articulo.descripcionGB != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. GB: ',
                 description: articulo.descripcionGB,
               ),
             if (articulo.descripcionGB != null) const Divider(),
             if (articulo.descripcionHU != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. HU: ',
                 description: articulo.descripcionHU,
               ),
             if (articulo.descripcionHU != null) const Divider(),
             if (articulo.descripcionIT != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. IT: ',
                 description: articulo.descripcionIT,
               ),
             if (articulo.descripcionIT != null) const Divider(),
             if (articulo.descripcionNL != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. NL: ',
                 description: articulo.descripcionNL,
               ),
             if (articulo.descripcionNL != null) const Divider(),
             if (articulo.descripcionPL != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. PL: ',
                 description: articulo.descripcionPL,
               ),
             if (articulo.descripcionPL != null) const Divider(),
             if (articulo.descripcionPT != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. PT: ',
                 description: articulo.descripcionPT,
               ),
             if (articulo.descripcionPT != null) const Divider(),
             if (articulo.descripcionRO != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. RO: ',
                 description: articulo.descripcionRO,
               ),
             if (articulo.descripcionRO != null) const Divider(),
             if (articulo.descripcionRU != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. RU: ',
                 description: articulo.descripcionRU,
               ),
             if (articulo.descripcionRU != null) const Divider(),
             if (articulo.descripcionCN != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. CN: ',
                 description: articulo.descripcionCN,
               ),
             if (articulo.descripcionCN != null) const Divider(),
             if (articulo.descripcionEL != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Desc. EL: ',
                 description: articulo.descripcionEL,
               ),
@@ -615,91 +555,91 @@ class _ArticluloResumenDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DescriptionResumenRow(
+            _DescriptionResumenRow(
               title: 'Resumen ES: ',
               description: articulo.resumenES,
             ),
             const Divider(),
             if (articulo.resumenEN != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen EN: ',
                 description: articulo.resumenEN,
               ),
             if (articulo.resumenEN != null) const Divider(),
             if (articulo.resumenFR != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen FR: ',
                 description: articulo.resumenFR,
               ),
             if (articulo.resumenFR != null) const Divider(),
             if (articulo.resumenDE != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen DE: ',
                 description: articulo.resumenDE,
               ),
             if (articulo.resumenDE != null) const Divider(),
             if (articulo.resumenCA != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen CA: ',
                 description: articulo.resumenCA,
               ),
             if (articulo.resumenCA != null) const Divider(),
             if (articulo.resumenGB != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen GB: ',
                 description: articulo.resumenGB,
               ),
             if (articulo.resumenGB != null) const Divider(),
             if (articulo.resumenHU != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen HU: ',
                 description: articulo.resumenHU,
               ),
             if (articulo.resumenHU != null) const Divider(),
             if (articulo.resumenIT != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen IT: ',
                 description: articulo.resumenIT,
               ),
             if (articulo.resumenIT != null) const Divider(),
             if (articulo.resumenNL != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen NL: ',
                 description: articulo.resumenNL,
               ),
             if (articulo.resumenNL != null) const Divider(),
             if (articulo.resumenPL != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen PL: ',
                 description: articulo.resumenPL,
               ),
             if (articulo.resumenPL != null) const Divider(),
             if (articulo.resumenPT != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen PT: ',
                 description: articulo.resumenPT,
               ),
             if (articulo.resumenPT != null) const Divider(),
             if (articulo.resumenRO != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen RO: ',
                 description: articulo.resumenRO,
               ),
             if (articulo.resumenRO != null) const Divider(),
             if (articulo.resumenRU != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen RU: ',
                 description: articulo.resumenRU,
               ),
             if (articulo.resumenRU != null) const Divider(),
             if (articulo.resumenCN != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen CN: ',
                 description: articulo.resumenCN,
               ),
             if (articulo.resumenCN != null) const Divider(),
             if (articulo.resumenEL != null)
-              DescriptionResumenRow(
+              _DescriptionResumenRow(
                 title: 'Resumen EL: ',
                 description: articulo.resumenEL,
               ),
@@ -710,9 +650,8 @@ class _ArticluloResumenDialog extends StatelessWidget {
   }
 }
 
-class DescriptionResumenRow extends StatelessWidget {
-  const DescriptionResumenRow({
-    super.key,
+class _DescriptionResumenRow extends StatelessWidget {
+  const _DescriptionResumenRow({
     required this.title,
     required this.description,
   });
@@ -817,5 +756,95 @@ class _ArticuloImageCarrouselState
             shape: BoxShape.circle),
       );
     });
+  }
+}
+
+class _DatosRelacionados extends StatelessWidget {
+  const _DatosRelacionados({required this.articulo, required this.params});
+
+  final Articulo articulo;
+  final Map<String, String> params;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const MobileCustomSeparators(separatorTitle: 'Datos relacionados'),
+        DatosExtraRow(
+          title: 'Precios Tarifa',
+          navigationTo: () => context.goNamed(
+            AppRoutes.articulopreciotarifa.name,
+            params: params,
+          ),
+        ),
+        const Divider(),
+        DatosExtraRow(
+          title: 'Grupos Netos',
+          navigationTo: () => context.goNamed(
+            AppRoutes.articulogruponeto.name,
+            params: params,
+          ),
+        ),
+        const Divider(),
+        DatosExtraRow(
+          title: 'Componentes',
+          navigationTo: () => context.goNamed(
+            AppRoutes.articulocomponente.name,
+            params: params,
+          ),
+        ),
+        const Divider(),
+        DatosExtraRow(
+          title: 'Recambios',
+          navigationTo: () => context.goNamed(
+            AppRoutes.articulorecambio.name,
+            params: params,
+          ),
+        ),
+        const Divider(),
+        DatosExtraRow(
+          title: 'Articulos Sustitutivos',
+          navigationTo: () => context.goNamed(
+            AppRoutes.articulosustitutivo.name,
+            params: params,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _Consultas extends StatelessWidget {
+  const _Consultas({required this.articulo, required this.params});
+
+  final Articulo articulo;
+  final Map<String, String> params;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      const MobileCustomSeparators(separatorTitle: 'Consultas'),
+      DatosExtraRow(
+        title: 'Pedidos Venta',
+        navigationTo: () =>
+            context.goNamed(AppRoutes.articulosalesorder.name, params: params),
+      ),
+      const Divider(),
+      DatosExtraRow(
+        title: 'Últimos Precios',
+        navigationTo: () => context.goNamed(
+          AppRoutes.articuloultimoprecio.name,
+          params: params,
+        ),
+      ),
+      const Divider(),
+      DatosExtraRow(
+        title: 'Documentos',
+        navigationTo: () => context.goNamed(
+          AppRoutes.articulodocumento.name,
+          params: params,
+        ),
+      ),
+    ]);
   }
 }

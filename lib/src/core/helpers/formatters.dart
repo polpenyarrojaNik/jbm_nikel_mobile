@@ -8,14 +8,24 @@ import '../../features/articulos/domain/articulo.dart';
 String dateFormatter(String dateStr, {bool allDay = false}) {
   DateTime date;
 
-  final formatter = DateFormat.yMd(Intl.getCurrentLocale()).add_Hm();
+  final formatter = DateFormat.yMd(Intl.getCurrentLocale());
+
+  if (allDay) {
+    formatter.add_Hm();
+  }
 
   date = DateTime.parse(dateStr);
 
   return formatter.format(date);
 }
 
-String numberFormat(double number) {
+String numberFormatDecimal(double number) {
+  NumberFormat formatter = NumberFormat('#,##0.00', Intl.getCurrentLocale());
+
+  return formatter.format(number);
+}
+
+String numberFormatCantidades(double number) {
   NumberFormat formatter = NumberFormat.decimalPattern(Intl.getCurrentLocale());
 
   return formatter.format(number);
@@ -84,21 +94,49 @@ String getNombreArchivo(String path) {
   return path.split('/').last;
 }
 
-String dtoText(BuildContext context, double descuento1, double descuento2,
-    double descuento3) {
-  var stringText = '';
+String formatPrecioYDescuento({
+  required double precio,
+  required double? tipoPrecio,
+  required double descuento1,
+  required double descuento2,
+  required double descuento3,
+}) {
+  String formatPrecioYDescuento =
+      formatPrecios(precio: precio, tipoPrecio: tipoPrecio);
 
-  if (descuento1 != 0 && descuento2 != 0 && descuento3 != 0.0) {
-    stringText =
-        'Dto: ${numberFormat(descuento1)}% + ${numberFormat(descuento2)}% + ${numberFormat(descuento3)}%';
-  } else if (descuento1 != 0 && descuento2 != 0) {
-    stringText =
-        'Dto: ${numberFormat(descuento1)}% + ${numberFormat(descuento2)}% ';
-  } else if (descuento1 != 0) {
-    stringText = 'Dto: ${numberFormat(descuento1)}% ';
+  if (descuento1 != 0 && descuento2 != 0 && descuento3 != 0) {
+    formatPrecioYDescuento +=
+        '  ${dtoText(descuento1, descuento2, descuento3)}';
   }
 
-  return stringText;
+  return formatPrecioYDescuento;
+}
+
+String formatPrecios({required double precio, required double? tipoPrecio}) {
+  if (tipoPrecio == 1 || tipoPrecio == 0 || tipoPrecio == null) {
+    return numberFormatDecimal(precio);
+  } else {
+    return '${numberFormatDecimal(precio)} (x${tipoPrecio.round().toString()})';
+  }
+}
+
+String dtoText(
+  double descuento1,
+  double descuento2,
+  double descuento3,
+) {
+  String dtoText = '';
+
+  if (descuento1 != 0) {
+    dtoText += '$descuento1%';
+  }
+  if (descuento2 != 0) {
+    dtoText += (dtoText.isNotEmpty) ? ' - $descuento2%' : '$descuento2%';
+  }
+  if (descuento3 != 0) {
+    dtoText += (dtoText.isNotEmpty) ? ' - $descuento3%' : '$descuento3%';
+  }
+  return dtoText;
 }
 
 String getDescriptionInLocalLanguage({required Articulo articulo}) {

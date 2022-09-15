@@ -14,11 +14,17 @@ class ArticuloRecambioPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloSpareListProvider(articuloId));
+    final state = ref.watch(articuloRecambioListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(title: const Text('Articulo Recambios')),
+      appBar: AppBar(
+        title: Text(articuloId),
+        bottom: AppBar(
+          title: const Text('Recambios'),
+          automaticallyImplyLeading: false,
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: state.maybeWhen(
           orElse: () => const ProgressIndicatorWidget(),
           error: (e, st) => ErrorMessageWidget(e.toString()),
@@ -46,18 +52,22 @@ class ArticuloRecambioTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(articuloRecambio.id),
-              Text(numberFormat(articuloRecambio.cantidad)),
+              Text(articuloRecambio.id,
+                  style: Theme.of(context).textTheme.subtitle2),
+              Text(
+                '${numberFormatCantidades(articuloRecambio.cantidad)} ${((articuloRecambio.cantidad) != 1) ? 'unidades' : 'unidad'}',
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                    color: Theme.of(context).textTheme.caption?.color),
+              ),
             ],
           ),
-          const SizedBox(height: 5),
           Text(articuloRecambio.descripcion),
         ],
       ),

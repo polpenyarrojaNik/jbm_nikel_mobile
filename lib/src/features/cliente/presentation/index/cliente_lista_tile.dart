@@ -15,47 +15,38 @@ class ClienteListaTile extends StatelessWidget {
     return GestureDetector(
       onTap: () =>
           navigateToClienteDetalle(context: context, clienteId: cliente.id),
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4), // if you need this
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.2),
-            width: 1,
-          ),
-        ),
-        child: Container(
-          color: Colors.transparent,
-          padding: const EdgeInsets.all(5.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (cliente.nombreCliente != null)
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        cliente.nombreCliente!,
-                      ),
-                    ),
-                  ],
-                ),
+      child: Container(
+        color: Colors.transparent,
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (cliente.nombreCliente != null)
               Row(
                 children: [
                   Flexible(
                     child: Text(
-                      '#${cliente.id} ${cliente.nombreFiscal ?? ''}',
+                      cliente.nombreCliente!,
+                      style: Theme.of(context).textTheme.subtitle2,
                     ),
                   ),
                 ],
               ),
-              AddressTextWidget(
-                  codigoPostal: cliente.codigoPostalFiscal,
-                  poblacion: cliente.poblacionFiscal,
-                  provincia: cliente.provinciaFiscal,
-                  pais: cliente.paisFiscal)
-            ],
-          ),
+            Row(
+              children: [
+                Flexible(
+                  child: Text(
+                    '#${cliente.id} ${cliente.nombreFiscal ?? ''}',
+                  ),
+                ),
+              ],
+            ),
+            AddressTextWidget(
+                codigoPostal: cliente.codigoPostalFiscal,
+                poblacion: cliente.poblacionFiscal,
+                provincia: cliente.provinciaFiscal,
+                pais: cliente.paisFiscal)
+          ],
         ),
       ),
     );

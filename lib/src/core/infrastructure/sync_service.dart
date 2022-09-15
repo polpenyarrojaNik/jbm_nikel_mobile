@@ -9,6 +9,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../features/articulos/infrastructure/articulo_dto.dart';
+import '../../features/cliente/infrastructure/cliente_dto.dart';
 import '../exceptions/app_exception.dart';
 import '../presentation/app.dart';
 import 'database.dart';
@@ -137,6 +138,21 @@ class SyncService {
     }
   }
 
+  Future<void> syncClientes() async {
+    try {
+      await _syncTable(
+        apiPath: '/clientes',
+        tableInfo: _db.clienteTable,
+        fromJson: (e) => ClienteDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> _syncTable({
     required String apiPath,
     required TableInfo<Table, dynamic> tableInfo,
@@ -154,8 +170,8 @@ class SyncService {
       while (isNextPageAvailable) {
         final query = _getAPIQuery(
             page: page,
-            dateFrom: ultimaFechaSync,
-            dateTo: remoteDatabaseDateTime,
+            dateFrom: ultimaFechaSync.toUtc(),
+            dateTo: remoteDatabaseDateTime.toUtc(),
             totalRows: totalRows);
 
         final remotePageItems = await _getRemoteData(

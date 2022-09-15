@@ -11317,8 +11317,8 @@ class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
   }
 }
 
-class ArticuloTarifaPrecioTableCompanion
-    extends UpdateCompanion<ArticuloTarifaPrecioDTO> {
+class ArticuloPrecioTarifaTableCompanion
+    extends UpdateCompanion<ArticuloPrecioTarifaDTO> {
   final Value<String> articuloId;
   final Value<String> tarifaId;
   final Value<String?> tarifaDescripcion;
@@ -11327,7 +11327,7 @@ class ArticuloTarifaPrecioTableCompanion
   final Value<double?> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloTarifaPrecioTableCompanion({
+  const ArticuloPrecioTarifaTableCompanion({
     this.articuloId = const Value.absent(),
     this.tarifaId = const Value.absent(),
     this.tarifaDescripcion = const Value.absent(),
@@ -11337,7 +11337,7 @@ class ArticuloTarifaPrecioTableCompanion
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloTarifaPrecioTableCompanion.insert({
+  ArticuloPrecioTarifaTableCompanion.insert({
     required String articuloId,
     required String tarifaId,
     this.tarifaDescripcion = const Value.absent(),
@@ -11351,7 +11351,7 @@ class ArticuloTarifaPrecioTableCompanion
         cantidadDesDe = Value(cantidadDesDe),
         precio = Value(precio),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloTarifaPrecioDTO> custom({
+  static Insertable<ArticuloPrecioTarifaDTO> custom({
     Expression<String>? articuloId,
     Expression<String>? tarifaId,
     Expression<String>? tarifaDescripcion,
@@ -11373,7 +11373,7 @@ class ArticuloTarifaPrecioTableCompanion
     });
   }
 
-  ArticuloTarifaPrecioTableCompanion copyWith(
+  ArticuloPrecioTarifaTableCompanion copyWith(
       {Value<String>? articuloId,
       Value<String>? tarifaId,
       Value<String?>? tarifaDescripcion,
@@ -11382,7 +11382,7 @@ class ArticuloTarifaPrecioTableCompanion
       Value<double?>? tipoPrecio,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloTarifaPrecioTableCompanion(
+    return ArticuloPrecioTarifaTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       tarifaId: tarifaId ?? this.tarifaId,
       tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
@@ -11426,7 +11426,7 @@ class ArticuloTarifaPrecioTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloTarifaPrecioTableCompanion(')
+    return (StringBuffer('ArticuloPrecioTarifaTableCompanion(')
           ..write('articuloId: $articuloId, ')
           ..write('tarifaId: $tarifaId, ')
           ..write('tarifaDescripcion: $tarifaDescripcion, ')
@@ -11440,12 +11440,12 @@ class ArticuloTarifaPrecioTableCompanion
   }
 }
 
-class $ArticuloTarifaPrecioTableTable extends ArticuloTarifaPrecioTable
-    with TableInfo<$ArticuloTarifaPrecioTableTable, ArticuloTarifaPrecioDTO> {
+class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
+    with TableInfo<$ArticuloPrecioTarifaTableTable, ArticuloPrecioTarifaDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticuloTarifaPrecioTableTable(this.attachedDatabase, [this._alias]);
+  $ArticuloPrecioTarifaTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
@@ -11508,7 +11508,7 @@ class $ArticuloTarifaPrecioTableTable extends ArticuloTarifaPrecioTable
   String get actualTableName => 'ARTICULOS_TARIFA_PRECIO';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ArticuloTarifaPrecioDTO> instance,
+      Insertable<ArticuloPrecioTarifaDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -11570,10 +11570,10 @@ class $ArticuloTarifaPrecioTableTable extends ArticuloTarifaPrecioTable
   @override
   Set<GeneratedColumn> get $primaryKey => {articuloId, tarifaId, cantidadDesDe};
   @override
-  ArticuloTarifaPrecioDTO map(Map<String, dynamic> data,
+  ArticuloPrecioTarifaDTO map(Map<String, dynamic> data,
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticuloTarifaPrecioDTO(
+    return ArticuloPrecioTarifaDTO(
       articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
       tarifaId: attachedDatabase.options.types
@@ -11594,8 +11594,8 @@ class $ArticuloTarifaPrecioTableTable extends ArticuloTarifaPrecioTable
   }
 
   @override
-  $ArticuloTarifaPrecioTableTable createAlias(String alias) {
-    return $ArticuloTarifaPrecioTableTable(attachedDatabase, alias);
+  $ArticuloPrecioTarifaTableTable createAlias(String alias) {
+    return $ArticuloPrecioTarifaTableTable(attachedDatabase, alias);
   }
 }
 
@@ -12910,8 +12910,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $ArticuloRecambioTableTable(this);
   late final $ArticuloSustitutivoTableTable articuloSustitutivoTable =
       $ArticuloSustitutivoTableTable(this);
-  late final $ArticuloTarifaPrecioTableTable articuloTarifaPrecioTable =
-      $ArticuloTarifaPrecioTableTable(this);
+  late final $ArticuloPrecioTarifaTableTable articuloPrecioTarifaTable =
+      $ArticuloPrecioTarifaTableTable(this);
   late final $ArticuloGrupoNetoTableTable articuloGrupoNetoTable =
       $ArticuloGrupoNetoTableTable(this);
   late final $EstadisticasClienteUsuarioVentasTableTable
@@ -12950,7 +12950,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         articuloEmpresaIvaTable,
         articuloRecambioTable,
         articuloSustitutivoTable,
-        articuloTarifaPrecioTable,
+        articuloPrecioTarifaTable,
         articuloGrupoNetoTable,
         estadisticasClienteUsuarioVentasTable,
         estadisticasUltimosPreciosTable,

@@ -9,11 +9,10 @@ import '../../features/articulos/presentation/show/articulo_componente_page.dart
 import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
 import '../../features/articulos/presentation/show/articulo_documento_page.dart';
 import '../../features/articulos/presentation/show/articulo_grupos_netos_page.dart';
-import '../../features/articulos/presentation/show/articulo_imagen_page.dart';
 import '../../features/articulos/presentation/show/articulo_pedido_venta_page.dart';
 import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
 import '../../features/articulos/presentation/show/articulo_sustitutivo_page.dart';
-import '../../features/articulos/presentation/show/articulo_tarifa_precio_page.dart';
+import '../../features/articulos/presentation/show/articulo_precio_tarifa_page.dart';
 import '../../features/articulos/presentation/show/articulo_ultimos_precios_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
@@ -44,16 +43,16 @@ enum AppRoutes {
   clientetoparticulos,
   clientetoparticulosshow,
   clientealrededor,
+  clientealrededorshow,
   articuloindex,
   articuloshow,
   articulosalesorder,
   articuloultimoprecio,
   articulocomponente,
   articulogruponeto,
-  articulotarifaprecio,
+  articulopreciotarifa,
   articulorecambio,
   articulosustitutivo,
-  articuloimagen,
   articulodocumento,
   salesorderindex,
   salesordershow,
@@ -303,13 +302,13 @@ class RouterNotifier extends ChangeNotifier {
                   },
                 ),
                 GoRoute(
-                  name: AppRoutes.articulotarifaprecio.name,
-                  path: 'tartifaprecio',
+                  name: AppRoutes.articulopreciotarifa.name,
+                  path: 'preciotarifa',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloTarifaPrecioPage(articuloId: articuloId),
+                      child: ArticuloPrecioTarifaPage(articuloId: articuloId),
                     );
                   },
                 ),
@@ -332,17 +331,6 @@ class RouterNotifier extends ChangeNotifier {
                     return MaterialPage(
                       key: state.pageKey,
                       child: ArticuloSustitutivoPage(articuloId: articuloId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.articuloimagen.name,
-                  path: 'imagenes',
-                  pageBuilder: (context, state) {
-                    final articuloId = state.params['articuloId']!;
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ArticuloImagenPage(articuloId: articuloId),
                     );
                   },
                 ),

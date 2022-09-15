@@ -16,7 +16,7 @@ import '../../features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
-import '../../features/articulos/infrastructure/articulo_tarifa_precio_dto.dart';
+import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
@@ -63,7 +63,7 @@ const localDatabaseName = 'jbm.sqlite';
   ArticuloEmpresaIvaTable,
   ArticuloRecambioTable,
   ArticuloSustitutivoTable,
-  ArticuloTarifaPrecioTable,
+  ArticuloPrecioTarifaTable,
   ArticuloGrupoNetoTable,
   EstadisticasClienteUsuarioVentasTable,
   EstadisticasUltimosPreciosTable,

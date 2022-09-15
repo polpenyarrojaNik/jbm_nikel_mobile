@@ -2,7 +2,6 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/infrastructure/database.dart';
-import '../domain/articulo.dart';
 import '../domain/articulo_sustitutivo.dart';
 
 part 'articulo_sustitutivo_dto.freezed.dart';
@@ -27,10 +26,12 @@ class ArticuloSustitutivoDTO
   factory ArticuloSustitutivoDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloSustitutivoDTOFromJson(json);
 
-  ArticuloSustitutivo toDomain({required Articulo articuloSustitutivo}) {
+  ArticuloSustitutivo toDomain(
+      {required String? articuloSustitutivoDescripcion}) {
     return ArticuloSustitutivo(
       articuloId: articuloId,
-      articuloSustitutivo: articuloSustitutivo,
+      articuloSustitutivoId: articuloSustitutivoId,
+      articuloSustitutivoDescription: articuloSustitutivoDescripcion,
       orden: orden,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,

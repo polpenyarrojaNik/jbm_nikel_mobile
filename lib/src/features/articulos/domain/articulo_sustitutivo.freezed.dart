@@ -17,7 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ArticuloSustitutivo {
   String get articuloId => throw _privateConstructorUsedError;
-  Articulo get articuloSustitutivo => throw _privateConstructorUsedError;
+  String get articuloSustitutivoId => throw _privateConstructorUsedError;
+  String? get articuloSustitutivoDescription =>
+      throw _privateConstructorUsedError;
   double get orden => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -34,12 +36,11 @@ abstract class $ArticuloSustitutivoCopyWith<$Res> {
       _$ArticuloSustitutivoCopyWithImpl<$Res>;
   $Res call(
       {String articuloId,
-      Articulo articuloSustitutivo,
+      String articuloSustitutivoId,
+      String? articuloSustitutivoDescription,
       double orden,
       DateTime lastUpdated,
       bool deleted});
-
-  $ArticuloCopyWith<$Res> get articuloSustitutivo;
 }
 
 /// @nodoc
@@ -54,7 +55,8 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articuloId = freezed,
-    Object? articuloSustitutivo = freezed,
+    Object? articuloSustitutivoId = freezed,
+    Object? articuloSustitutivoDescription = freezed,
     Object? orden = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -64,10 +66,14 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloSustitutivo: articuloSustitutivo == freezed
-          ? _value.articuloSustitutivo
-          : articuloSustitutivo // ignore: cast_nullable_to_non_nullable
-              as Articulo,
+      articuloSustitutivoId: articuloSustitutivoId == freezed
+          ? _value.articuloSustitutivoId
+          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloSustitutivoDescription: articuloSustitutivoDescription == freezed
+          ? _value.articuloSustitutivoDescription
+          : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
       orden: orden == freezed
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
@@ -82,13 +88,6 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res>
               as bool,
     ));
   }
-
-  @override
-  $ArticuloCopyWith<$Res> get articuloSustitutivo {
-    return $ArticuloCopyWith<$Res>(_value.articuloSustitutivo, (value) {
-      return _then(_value.copyWith(articuloSustitutivo: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -100,13 +99,11 @@ abstract class _$$_ArticuloSustitutivoCopyWith<$Res>
   @override
   $Res call(
       {String articuloId,
-      Articulo articuloSustitutivo,
+      String articuloSustitutivoId,
+      String? articuloSustitutivoDescription,
       double orden,
       DateTime lastUpdated,
       bool deleted});
-
-  @override
-  $ArticuloCopyWith<$Res> get articuloSustitutivo;
 }
 
 /// @nodoc
@@ -123,7 +120,8 @@ class __$$_ArticuloSustitutivoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articuloId = freezed,
-    Object? articuloSustitutivo = freezed,
+    Object? articuloSustitutivoId = freezed,
+    Object? articuloSustitutivoDescription = freezed,
     Object? orden = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -133,10 +131,14 @@ class __$$_ArticuloSustitutivoCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloSustitutivo: articuloSustitutivo == freezed
-          ? _value.articuloSustitutivo
-          : articuloSustitutivo // ignore: cast_nullable_to_non_nullable
-              as Articulo,
+      articuloSustitutivoId: articuloSustitutivoId == freezed
+          ? _value.articuloSustitutivoId
+          : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      articuloSustitutivoDescription: articuloSustitutivoDescription == freezed
+          ? _value.articuloSustitutivoDescription
+          : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
       orden: orden == freezed
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
@@ -158,7 +160,8 @@ class __$$_ArticuloSustitutivoCopyWithImpl<$Res>
 class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
   const _$_ArticuloSustitutivo(
       {required this.articuloId,
-      required this.articuloSustitutivo,
+      required this.articuloSustitutivoId,
+      this.articuloSustitutivoDescription,
       required this.orden,
       required this.lastUpdated,
       required this.deleted})
@@ -167,7 +170,9 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
   @override
   final String articuloId;
   @override
-  final Articulo articuloSustitutivo;
+  final String articuloSustitutivoId;
+  @override
+  final String? articuloSustitutivoDescription;
   @override
   final double orden;
   @override
@@ -177,7 +182,7 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
 
   @override
   String toString() {
-    return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivo: $articuloSustitutivo, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, articuloSustitutivoDescription: $articuloSustitutivoDescription, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -188,7 +193,10 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
-                .equals(other.articuloSustitutivo, articuloSustitutivo) &&
+                .equals(other.articuloSustitutivoId, articuloSustitutivoId) &&
+            const DeepCollectionEquality().equals(
+                other.articuloSustitutivoDescription,
+                articuloSustitutivoDescription) &&
             const DeepCollectionEquality().equals(other.orden, orden) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -199,7 +207,8 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(articuloSustitutivo),
+      const DeepCollectionEquality().hash(articuloSustitutivoId),
+      const DeepCollectionEquality().hash(articuloSustitutivoDescription),
       const DeepCollectionEquality().hash(orden),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -214,7 +223,8 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
 abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
   const factory _ArticuloSustitutivo(
       {required final String articuloId,
-      required final Articulo articuloSustitutivo,
+      required final String articuloSustitutivoId,
+      final String? articuloSustitutivoDescription,
       required final double orden,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloSustitutivo;
@@ -223,7 +233,9 @@ abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
   @override
   String get articuloId;
   @override
-  Articulo get articuloSustitutivo;
+  String get articuloSustitutivoId;
+  @override
+  String? get articuloSustitutivoDescription;
   @override
   double get orden;
   @override
