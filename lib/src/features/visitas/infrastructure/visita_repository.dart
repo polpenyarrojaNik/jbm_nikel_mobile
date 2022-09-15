@@ -5,11 +5,15 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/presentation/app.dart';
 import '../domain/visita.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
-  // * Override this in the main method
-  (ref) => throw UnimplementedError(),
+  (ref) {
+    final db = ref.watch(appDatabaseProvider);
+    final dio = ref.watch(dioProvider);
+    return VisitaRepository(db, dio);
+  },
 );
 
 final visitaListaStreamProvider =

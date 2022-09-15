@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../articulos/domain/articulo.dart';
-
 part 'estadisticas_ultimos_precios.freezed.dart';
 
 @freezed
