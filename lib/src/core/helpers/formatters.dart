@@ -141,7 +141,6 @@ String dtoText(
 
 String getDescriptionInLocalLanguage({required Articulo articulo}) {
   final currentLocale = Intl.getCurrentLocale();
-  print(currentLocale);
 
   if (currentLocale == 'es') {
     return articulo.descripcionES;

@@ -40,8 +40,7 @@ final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
 final articulosSearchProvider =
     FutureProvider.autoDispose.family<List<Articulo>, DefaultListParams>(
   (ref, defaultListParams) async {
-    await Future.delayed(const Duration(milliseconds: 500));
-
+    print('Searching: ${defaultListParams.searchText}');
     final articuloRepository = ref.watch(articuloRepositoryProvider);
     return articuloRepository.getArticuloLista(
         page: defaultListParams.page, searchText: defaultListParams.searchText);
@@ -436,18 +435,20 @@ class ArticuloRepository {
         leftOuterJoin(
             _db.clienteTable,
             _db.clienteTable.id
-                .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId))
+                .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId)),
       ]);
-      query.where((_db.estadisticasUltimosPreciosTable.articuloId
-                  .equals(articuloId) &
-              _db.clienteUsuarioTable.usuarioId.equals(usuarioId)) |
-          _db.clienteTable.nombreCliente.like('%$searchText%') |
-          _db.clienteTable.nombreCliente.like('%${searchText.toUpperCase()}%') |
-          _db.clienteTable.nombreCliente.like('%${searchText.toUpperCase()}%') |
-          _db.clienteTable.nombreCliente.like('%${searchText.toUpperCase()}%') |
-          _db.clienteTable.id.like('%$searchText%') |
-          _db.clienteTable.nombreFiscal.like('%$searchText%') |
-          _db.clienteTable.nombreFiscal.like('%${searchText.toUpperCase()}%'));
+      query.where(
+          (_db.estadisticasUltimosPreciosTable.articuloId.equals(articuloId) &
+                  _db.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
+              (_db.clienteTable.nombreCliente.like('%$searchText%') |
+                  _db.clienteTable.nombreCliente
+                      .like('%${searchText.toUpperCase()}%') |
+                  _db.clienteTable.id.like('%$searchText%') |
+                  _db.clienteTable.nombreFiscal.like('%$searchText%') |
+                  _db.clienteTable.nombreFiscal
+                      .like('%${searchText.toUpperCase()}%')));
+      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+
       query.orderBy(
         [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
       );
@@ -455,11 +456,9 @@ class ArticuloRepository {
       return query.asyncMap((row) async {
         final lastPriceArticuloDTO =
             row.readTable(_db.estadisticasUltimosPreciosTable);
-        final articulo =
-            await getArticuloById(articuloId: lastPriceArticuloDTO.articuloId);
-        final clienteDTO = row.readTable(_db.clienteTable);
+        final clienteDTO = row.readTableOrNull(_db.clienteTable);
         return lastPriceArticuloDTO.toDomain(
-            articulo: articulo, nombreCliente: clienteDTO.nombreCliente);
+            nombreCliente: clienteDTO?.nombreCliente);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

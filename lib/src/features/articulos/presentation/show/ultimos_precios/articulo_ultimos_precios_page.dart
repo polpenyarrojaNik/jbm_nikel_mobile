@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_state.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
 import '../../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -23,6 +24,7 @@ class ArticuloUltimosPreciosPage extends ConsumerStatefulWidget {
 class _ArticuloUltimosPreciosPageState
     extends ConsumerState<ArticuloUltimosPreciosPage> {
   final _scrollController = ScrollController();
+  final _debouncer = Debouncer(milliseconds: 500);
 
   int page = 1;
   bool canLoadNextPage = false;
@@ -69,12 +71,15 @@ class _ArticuloUltimosPreciosPageState
         title: 'Últimos Precios',
         searchTitle: 'Search últimos precios...',
         onChanged: (searchText) {
-          ref
-              .read(articuloUltimosPreciosSearchQueryStateProvider.notifier)
-              .state = searchText;
-          ref
-              .read(articuloUltimosPreciosPaginationQueryStateProvider.notifier)
-              .state = 1;
+          _debouncer.run(() {
+            ref
+                .read(articuloUltimosPreciosSearchQueryStateProvider.notifier)
+                .state = searchText;
+            ref
+                .read(
+                    articuloUltimosPreciosPaginationQueryStateProvider.notifier)
+                .state = 1;
+          });
         },
       ),
       body: Padding(

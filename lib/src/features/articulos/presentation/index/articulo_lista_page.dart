@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 
+import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -21,6 +22,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   final _scrollController = ScrollController();
   int page = 1;
   bool canLoadNextPage = false;
+  final _debouncer = Debouncer(milliseconds: 500);
 
   @override
   void initState() {
@@ -69,9 +71,11 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
         title: 'Artículos',
         searchTitle: 'Search artículo...',
         onChanged: (searchText) {
-          ref.read(articulosSearchQueryStateProvider.notifier).state =
-              searchText;
-          ref.read(articulosPaginationQueryStateProvider.notifier).state = 1;
+          _debouncer.run(() {
+            ref.read(articulosSearchQueryStateProvider.notifier).state =
+                searchText;
+            ref.read(articulosPaginationQueryStateProvider.notifier).state = 1;
+          });
         },
       ),
       body: Padding(

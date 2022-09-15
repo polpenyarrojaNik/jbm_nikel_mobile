@@ -2,7 +2,6 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/infrastructure/database.dart';
-import '../../articulos/domain/articulo.dart';
 import '../domain/estadisticas_ultimos_precios.dart';
 
 part 'estadisticas_ultimos_precios_dto.freezed.dart';
@@ -31,12 +30,11 @@ class EstadisticasUltimosPreciosDTO
   factory EstadisticasUltimosPreciosDTO.fromJson(Map<String, dynamic> json) =>
       _$EstadisticasUltimosPreciosDTOFromJson(json);
 
-  EstadisticasUltimosPrecios toDomain(
-      {required Articulo articulo, required String? nombreCliente}) {
+  EstadisticasUltimosPrecios toDomain({required String? nombreCliente}) {
     return EstadisticasUltimosPrecios(
       clienteId: clienteId,
       nombreCliente: nombreCliente,
-      articulo: articulo,
+      articuloId: articuloId,
       fecha: fecha,
       precioDivisa: precioDivisa,
       tipoPrecio: tipoPrecio,

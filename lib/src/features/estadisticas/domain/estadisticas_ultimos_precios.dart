@@ -10,7 +10,7 @@ class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
   const factory EstadisticasUltimosPrecios(
       {required String clienteId,
       String? nombreCliente,
-      required Articulo articulo,
+      required String articuloId,
       required DateTime fecha,
       required double precioDivisa,
       required double tipoPrecio,

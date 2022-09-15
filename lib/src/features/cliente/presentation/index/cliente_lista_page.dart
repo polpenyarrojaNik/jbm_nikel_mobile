@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 
+import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -21,6 +22,7 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 
 class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _scrollController = ScrollController();
+  final _debouncer = Debouncer(milliseconds: 500);
 
   int page = 1;
   bool canLoadNextPage = false;
@@ -72,9 +74,11 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         title: 'Cliente',
         searchTitle: 'Search Cliente...',
         onChanged: (searchText) {
-          ref.read(clientesSearchQueryStateProvider.notifier).state =
-              searchText;
-          ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+          _debouncer.run(() {
+            ref.read(clientesSearchQueryStateProvider.notifier).state =
+                searchText;
+            ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+          });
         },
         addActionButton: IconButton(
           onPressed: () => navigateToClientesAlrededor(context),
