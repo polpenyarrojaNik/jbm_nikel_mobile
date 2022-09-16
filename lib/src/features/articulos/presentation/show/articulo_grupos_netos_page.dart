@@ -25,28 +25,27 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
             title: 'Grupos Netos',
             entityId: articuloId,
             subtitle: description,
+            searchTitle: 'Search in',
+            onChanged: (a) => {},
           ),
           SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: state.maybeWhen(
-                orElse: () => const ProgressIndicatorWidget(),
-                error: (e, st) => ErrorMessageWidget(e.toString()),
-                data: (articuloGrupoNetoList) =>
-                    (articuloGrupoNetoList.isNotEmpty)
-                        ? ListView.separated(
-                            shrinkWrap: true,
-                            physics: const BouncingScrollPhysics(),
-                            separatorBuilder: (context, _) => const Divider(),
-                            itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-                              articuloGrupoNeto: articuloGrupoNetoList[i],
-                            ),
-                            itemCount: articuloGrupoNetoList.length,
-                          )
-                        : const Center(
-                            child: Text('Sin resultados'),
+            child: state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (articuloGrupoNetoList) =>
+                  (articuloGrupoNetoList.isNotEmpty)
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          // physics: const BouncingScrollPhysics(),
+                          separatorBuilder: (context, _) => const Divider(),
+                          itemBuilder: (context, i) => ArticuloGrupoNetoTile(
+                            articuloGrupoNeto: articuloGrupoNetoList[i],
                           ),
-              ),
+                          itemCount: articuloGrupoNetoList.length,
+                        )
+                      : const Center(
+                          child: Text('Sin resultados'),
+                        ),
             ),
           ),
         ],

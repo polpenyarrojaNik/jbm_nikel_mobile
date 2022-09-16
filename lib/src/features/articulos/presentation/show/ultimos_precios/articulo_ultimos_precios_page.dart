@@ -4,7 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimo
 
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
-import '../../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -67,35 +67,47 @@ class _ArticuloUltimosPreciosPageState
         .watch(articuloUltimosPreciosSearchResultsProvider(widget.articuloId));
 
     return Scaffold(
-      appBar: CustomSearchAppBar(
-        title: 'Últimos Precios',
-        searchTitle: 'Search últimos precios...',
-        onChanged: (searchText) {
-          _debouncer.run(() {
-            ref
-                .read(articuloUltimosPreciosSearchQueryStateProvider.notifier)
-                .state = searchText;
-            ref
-                .read(
-                    articuloUltimosPreciosPaginationQueryStateProvider.notifier)
-                .state = 1;
-          });
-        },
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: state.when(
-            data: (ultimosPreciosLista) => (ultimosPreciosLista.isEmpty)
-                ? const Center(child: Text('Sin resultado'))
-                : ListView.separated(
-                    controller: _scrollController,
-                    separatorBuilder: (context, i) => const Divider(),
-                    itemBuilder: (context, i) => UltimosPreciosTile(
-                        ultimosPrecios: ultimosPreciosLista[i]),
-                    itemCount: ultimosPreciosLista.length,
-                  ),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            loading: () => const ProgressIndicatorWidget()),
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          AppBarDatosRelacionados(
+            title: 'Últimos Precios',
+            entityId: widget.articuloId,
+            subtitle: widget.description,
+            searchTitle: 'Buscar últimos precios...',
+            onChanged: (searchText) {
+              _debouncer.run(() {
+                ref
+                    .read(
+                        articuloUltimosPreciosSearchQueryStateProvider.notifier)
+                    .state = searchText;
+                ref
+                    .read(articuloUltimosPreciosPaginationQueryStateProvider
+                        .notifier)
+                    .state = 1;
+              });
+            },
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: state.when(
+                data: (ultimosPreciosLista) => (ultimosPreciosLista.isEmpty)
+                    ? const Center(child: Text('Sin resultado'))
+                    : ListView.separated(
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        separatorBuilder: (context, i) => const Divider(),
+                        itemBuilder: (context, i) => UltimosPreciosTile(
+                            ultimosPrecios: ultimosPreciosLista[i]),
+                        itemCount: ultimosPreciosLista.length,
+                      ),
+                error: (e, _) => ErrorMessageWidget(e.toString()),
+                loading: () => const ProgressIndicatorWidget(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
