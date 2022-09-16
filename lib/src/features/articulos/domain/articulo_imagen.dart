@@ -8,6 +8,7 @@ class ArticuloImagen with _$ArticuloImagen {
   const factory ArticuloImagen({
     required String articuloId,
     required String nombreArchivo,
+    required String url,
     String? pathArchivo,
   }) = _ArticuloImagen;
 }

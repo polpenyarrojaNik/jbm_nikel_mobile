@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_imagen.dart';
 
@@ -20,9 +21,13 @@ class ArticuloImagenDTO with _$ArticuloImagenDTO {
 
   ArticuloImagen toDomain() {
     return ArticuloImagen(
-      articuloId: articuloId,
-      nombreArchivo: nombreArchivo,
-      pathArchivo: pathArchivo,
-    );
+        articuloId: articuloId,
+        nombreArchivo: nombreArchivo,
+        pathArchivo: pathArchivo,
+        url: getImageUrl(articuloId, nombreArchivo));
+  }
+
+  String getImageUrl(String articuloId, String nombreArchivo) {
+    return 'http://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/img?PATH=$articuloId/$nombreArchivo';
   }
 }

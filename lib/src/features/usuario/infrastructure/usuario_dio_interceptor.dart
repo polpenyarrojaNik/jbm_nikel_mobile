@@ -45,17 +45,24 @@ class UsuarioDioInterceptor extends Interceptor {
     if (errorResponse != null && errorResponse.statusCode == 401) {
       final usuario = await _usuarioService.getSignedInUsuario();
 
-      if (usuario == null) {
-        await _usuarioService.getSignedInUsuario();
-        await _usuarioNotifier.checkAndUpdateUsuario();
-        handler.next(err);
+      if (usuario != null) {
+        final newUsuario = await _usuarioService.refresh();
+
+        if (newUsuario == null) {
+          await _usuarioService.signOut();
+          await _usuarioNotifier.checkAndUpdateUsuario();
+          handler.next(err);
+        } else {
+          handler.resolve(
+            await _dio.fetch(
+              errorResponse.requestOptions
+                ..headers['Authorization'] =
+                    'Bearer ${newUsuario.provisionalToken}',
+            ),
+          );
+        }
       } else {
-        handler.resolve(
-          await _dio.fetch(
-            errorResponse.requestOptions
-              ..headers['Authorization'] = 'Bearer ${usuario.provisionalToken}',
-          ),
-        );
+        handler.next(err);
       }
     } else {
       handler.next(err);

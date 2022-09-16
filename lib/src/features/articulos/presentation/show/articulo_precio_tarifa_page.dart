@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class ArticuloPrecioTarifaPage extends ConsumerWidget {
-  const ArticuloPrecioTarifaPage({super.key, required this.articuloId});
+  const ArticuloPrecioTarifaPage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +21,12 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Precios Tarifa'),
         bottom: AppBar(
-          title: Text(articuloId),
+          title: Column(
+            children: [
+              Text(articuloId),
+              Text(description, style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
           automaticallyImplyLeading: false,
         ),
       ),
@@ -39,7 +45,7 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
                       ),
                       itemCount: articuloPrecioTarifaList.length,
                     )
-                  : const Center(child: Text('No Results')),
+                  : const Center(child: Text('Sin resultado')),
         ),
       ),
     );
@@ -56,33 +62,33 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            articuloPrecioTarifa.tarifaDescripcion ?? '',
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesDe)} ${((articuloPrecioTarifa.cantidadDesDe) != 1) ? 'unidades' : 'unidad'}',
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    color: Theme.of(context).textTheme.caption?.color),
-              ),
-              Row(
-                children: [
-                  const Icon(MdiIcons.currencySign, size: 16),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  articuloPrecioTarifa.tarifaDescripcion ?? '',
+                ),
+                if (articuloPrecioTarifa.cantidadDesDe != 1)
                   Text(
-                    formatPrecios(
-                        precio: articuloPrecioTarifa.precio,
-                        tipoPrecio: articuloPrecioTarifa.tipoPrecio),
+                    '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesDe)}',
                     style: Theme.of(context).textTheme.bodyText2?.copyWith(
                         color: Theme.of(context).textTheme.caption?.color),
                   ),
-                ],
-              ),
-            ],
+              ],
+            ),
+          ),
+          Text(
+            formatPrecios(
+                precio: articuloPrecioTarifa.precio,
+                tipoPrecio: articuloPrecioTarifa.tipoPrecio),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2
+                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
           ),
         ],
       ),

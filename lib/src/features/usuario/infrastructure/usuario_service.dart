@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/local_usuario_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/remote_usuario_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
 
 import '../domain/usuario.dart';
 
@@ -23,12 +22,12 @@ class UsuarioService {
   Future<Usuario?> getSignedInUsuario() async {
     final storedCredentials = await _localUsuarioRepository.read();
 
-    if (storedCredentials != null) {
-      if (storedCredentials.canRefresh && storedCredentials.isExpired) {
-        _localUsuarioRepository.clear();
-        return null;
-      }
-    }
+    // if (storedCredentials != null) {
+    //   if (storedCredentials.canRefresh && storedCredentials.isExpired) {
+    //     _localUsuarioRepository.clear();
+    //     return null;
+    //   }
+    // }
     return storedCredentials?.toDomain();
   }
 
@@ -45,10 +44,18 @@ class UsuarioService {
     _localUsuarioRepository.clear();
   }
 
-  Future<Usuario> refresh(UsuarioDTO usuarioDTO) async {
-    final refreshedUsuarioDTO =
-        await _remoteUsuarioRepository.refresh(usuarioDTO);
-    await _localUsuarioRepository.save(refreshedUsuarioDTO);
-    return refreshedUsuarioDTO.toDomain();
+  Future<Usuario?> refresh() async {
+    try {
+      final storedCredentials = await _localUsuarioRepository.read();
+      if (storedCredentials != null && storedCredentials.canRefresh) {
+        final refreshedUsuarioDTO =
+            await _remoteUsuarioRepository.refresh(storedCredentials);
+        await _localUsuarioRepository.save(refreshedUsuarioDTO);
+        return refreshedUsuarioDTO.toDomain();
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 }

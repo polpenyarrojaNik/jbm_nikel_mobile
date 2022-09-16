@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_state.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
@@ -12,9 +10,11 @@ import '../../../../../core/presentation/common_widgets/progress_indicator_widge
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 
 class ArticuloUltimosPreciosPage extends ConsumerStatefulWidget {
-  const ArticuloUltimosPreciosPage({super.key, required this.articuloId});
+  const ArticuloUltimosPreciosPage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   ConsumerState<ArticuloUltimosPreciosPage> createState() =>
@@ -86,7 +86,7 @@ class _ArticuloUltimosPreciosPageState
         padding: const EdgeInsets.all(16.0),
         child: state.when(
             data: (ultimosPreciosLista) => (ultimosPreciosLista.isEmpty)
-                ? const Center(child: Text('No Results'))
+                ? const Center(child: Text('Sin resultado'))
                 : ListView.separated(
                     controller: _scrollController,
                     separatorBuilder: (context, i) => const Divider(),
@@ -123,35 +123,30 @@ class UltimosPreciosTile extends StatelessWidget {
               ),
             ),
             const VerticalDivider(),
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
-                    child: Text(
-                      '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                        ),
+                      ],
                     ),
                   ),
-                  gapH4,
-                  Row(
-                    children: [
-                      const Icon(
-                        MdiIcons.currencySign,
-                        size: 16,
-                      ),
-                      gapW4,
-                      Text(
-                        formatPrecioYDescuento(
-                          precio: ultimosPrecios.precioDivisa,
-                          tipoPrecio: ultimosPrecios.tipoPrecio,
-                          descuento1: ultimosPrecios.descuento1,
-                          descuento2: ultimosPrecios.descuento2,
-                          descuento3: ultimosPrecios.descuento3,
-                        ),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
-                      ),
-                    ],
+                  Text(
+                    formatPrecioYDescuento(
+                      precio: ultimosPrecios.precioDivisa,
+                      tipoPrecio: ultimosPrecios.tipoPrecio,
+                      descuento1: ultimosPrecios.descuento1,
+                      descuento2: ultimosPrecios.descuento2,
+                      descuento3: ultimosPrecios.descuento3,
+                    ),
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        color: Theme.of(context).textTheme.caption?.color),
                   ),
                 ],
               ),

@@ -11,9 +11,11 @@ import '../../../../core/presentation/toasts.dart';
 import '../../domain/articulo_documento.dart';
 
 class ArticuloDocumentoPage extends ConsumerWidget {
-  const ArticuloDocumentoPage({super.key, required this.articuloId});
+  const ArticuloDocumentoPage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -30,9 +32,14 @@ class ArticuloDocumentoPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(articuloId),
+        title: const Text('Documentos'),
         bottom: AppBar(
-          title: const Text('Documentos'),
+          title: Column(
+            children: [
+              Text(articuloId),
+              Text(description, style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
           automaticallyImplyLeading: false,
         ),
       ),
@@ -59,7 +66,7 @@ class ArticuloDocumentoPage extends ConsumerWidget {
                     ),
                   ],
                 )
-              : const Center(child: Text('No Results')),
+              : const Center(child: Text('Sin resultado')),
         ),
       ),
     );

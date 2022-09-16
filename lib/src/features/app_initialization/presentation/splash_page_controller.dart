@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/log.dart';
 
 final splashPageControllerProvider =
     StateNotifierProvider.autoDispose<SplashPageController, AsyncValue<void>>(
@@ -17,8 +18,12 @@ class SplashPageController extends StateNotifier<AsyncValue<void>> {
     try {
       state = const AsyncLoading();
       await _syncService.initDatabaBase();
-      await _syncService.syncArticulo();
-      await _syncService.syncClientes();
+      try {
+        await _syncService.syncArticulo();
+        await _syncService.syncClientes();
+      } catch (e) {
+        log.info(e.toString());
+      }
       // await _syncService.syncPedidos();
 
       state = const AsyncData(null);

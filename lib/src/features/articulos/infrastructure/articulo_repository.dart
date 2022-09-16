@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -10,6 +11,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -26,6 +28,7 @@ import '../domain/articulo_imagen.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
 import '../domain/articulo_sustitutivo.dart';
 import 'articulo_imagen_dto.dart';
+import 'articulo_precio_tarifa_dto.dart';
 
 List<Articulo> articulos = [];
 
@@ -62,17 +65,21 @@ final articuloComponenteListProvider = FutureProvider.autoDispose
 });
 
 final articuloPrecioTarifaListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) {
+    .family<List<ArticuloPrecioTarifa>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+
   return articuloRepository.getArticuloPrecioTarifaListaById(
-      articuloId: articuloId);
+      articuloId: articuloId, usuarioId: usuario!.id);
 });
 
 final articuloGrupoNetoPriceListProvider = FutureProvider.autoDispose
-    .family<List<ArticuloGrupoNeto>, String>((ref, articuloId) {
+    .family<List<ArticuloGrupoNeto>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+
   return articuloRepository.getArticuloGrupoNetoListaById(
-      articuloId: articuloId);
+      articuloId: articuloId, usuarioId: usuario!.id);
 });
 
 final articuloSustitutivoListProvider = FutureProvider.autoDispose
@@ -231,28 +238,58 @@ class ArticuloRepository {
   }
 
   Future<List<ArticuloPrecioTarifa>> getArticuloPrecioTarifaListaById(
-      {required String articuloId}) async {
+      {required String articuloId, required String usuarioId}) async {
     try {
-      final query = (_db.select(_db.articuloPrecioTarifaTable)
-        ..where((t) => t.articuloId.equals(articuloId)));
-
-      return query.map((row) {
-        return row.toDomain();
+      final query = await _db.customSelect('''
+      SELECT *
+  FROM ${_db.articuloPrecioTarifaTable.tableName}
+ WHERE EXISTS
+         (SELECT TARIFA_ID
+            FROM ${_db.clienteTable.tableName}
+                 INNER JOIN ${_db.clienteUsuarioTable.tableName} ON clientes_usuario.cliente_id = CLIENTES.cliente_id
+           WHERE CLIENTES.TARIFA_ID = ARTICULOS_TARIFA_PRECIO.TARIFA_ID
+             AND clientes_usuario.usuario_id = :usuarioId)
+   AND ARTICULOS_TARIFA_PRECIO.articulo_id = :articuloId;
+''', variables: [
+        Variable(usuarioId),
+        Variable(articuloId),
+      ], readsFrom: {
+        _db.articuloGrupoNetoTable,
+        _db.clienteGrupoNetoTable
       }).get();
+
+      return query
+          .map((row) => ArticuloPrecioTarifaDTO.fromJson(row.data).toDomain())
+          .toList();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
   Future<List<ArticuloGrupoNeto>> getArticuloGrupoNetoListaById(
-      {required String articuloId}) async {
+      {required String articuloId, required String usuarioId}) async {
     try {
-      final query = (_db.select(_db.articuloGrupoNetoTable)
-        ..where((t) => t.articuloId.equals(articuloId)));
-
-      return query.map((row) {
-        return row.toDomain();
+      final query = await _db.customSelect('''
+      SELECT *
+  FROM ${_db.articuloGrupoNetoTable.tableName}
+ WHERE EXISTS
+         (SELECT *
+            FROM ${_db.clienteGrupoNetoTable.tableName}
+                 INNER JOIN ${_db.clienteUsuarioTable.tableName} ON clientes_usuario.cliente_id = clientes_grupos_netos.cliente_id
+           WHERE clientes_grupos_netos.grupo_neto_id = articulos_grupos_netos_precio.grupo_neto_id
+             AND clientes_usuario.usuario_id = :usuarioId)
+   AND articulos_grupos_netos_precio.articulo_id = :articuloId
+''', variables: [
+        Variable(usuarioId),
+        Variable(articuloId),
+      ], readsFrom: {
+        _db.articuloGrupoNetoTable,
+        _db.clienteGrupoNetoTable
       }).get();
+
+      return query
+          .map((row) => ArticuloGrupoNetoDTO.fromJson(row.data).toDomain())
+          .toList();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -310,7 +347,7 @@ class ArticuloRepository {
 
       return articuloImageDTOList.map((e) => e.toDomain()).toList();
     } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
+      rethrow;
     }
   }
 
@@ -484,21 +521,33 @@ class ArticuloRepository {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson =
-          e.response?.data['detalle'] ?? e.response?.data['message'] as String?;
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
 
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
+  Error getApiError(Object e) {
+    if (e is DioError) {
+      if (e.response != null && e.response!.data != null) {
+        final responseStr = e.response!.data;
+        try {
+          final responseJson = jsonDecode(responseStr);
+
+          final responseErrorJson =
+              responseJson['detalle'] ?? responseJson['message'] as String?;
+
+          throw AppException.restApiFailure(
+              e.response?.statusCode ?? 400, responseErrorJson ?? '');
+        } catch (decodeError) {
+          throw AppException.restApiFailure(
+              e.response!.statusCode ?? 500, e.response?.statusMessage ?? '');
+        }
       } else {
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
       }
-    } catch (e) {
-      rethrow;
+    } else {
+      throw e;
     }
   }
 

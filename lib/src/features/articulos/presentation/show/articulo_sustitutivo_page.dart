@@ -7,18 +7,25 @@ import '../../domain/articulo_sustitutivo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloSustitutivoPage extends ConsumerWidget {
-  const ArticuloSustitutivoPage({super.key, required this.articuloId});
+  const ArticuloSustitutivoPage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloSustitutivoListProvider(articuloId));
     return Scaffold(
       appBar: AppBar(
-        title: Text(articuloId),
+        title: const Text('Artículos sustitutivos'),
         bottom: AppBar(
-          title: const Text('Artículos Sustitutivos'),
+          title: Column(
+            children: [
+              Text(articuloId),
+              Text(description, style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
           automaticallyImplyLeading: false,
         ),
       ),
@@ -37,7 +44,7 @@ class ArticuloSustitutivoPage extends ConsumerWidget {
                       ),
                       itemCount: articuloSustitutivoList.length,
                     )
-                  : const Center(child: Text('No results')),
+                  : const Center(child: Text('Sin resultado')),
         ),
       ),
     );

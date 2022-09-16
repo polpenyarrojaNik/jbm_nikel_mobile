@@ -71,7 +71,7 @@ class RemoteUsuarioRepository {
         data: {'REFRESH_TOKEN': usuarioDTO.refreshToken},
       );
       if (response.statusCode == 200) {
-        final newToken = response.data['data']['PROVISIONAL_TKN'] as String;
+        final newToken = response.data['data']['PROVISIONAL_TOKEN'] as String;
 
         return usuarioDTO.copyWith(provisionalToken: newToken);
       } else {
@@ -93,6 +93,8 @@ class RemoteUsuarioRepository {
       } else {
         rethrow;
       }
+    } catch (e) {
+      rethrow;
     }
   }
 }

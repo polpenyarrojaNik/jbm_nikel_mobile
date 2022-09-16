@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -10,18 +9,25 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../domain/articulo_pedido_venta_linea.dart';
 
 class ArticuloPedidoVentaPage extends ConsumerWidget {
-  const ArticuloPedidoVentaPage({super.key, required this.articuloId});
+  const ArticuloPedidoVentaPage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloPedidoVentaLineaListProvider(articuloId));
     return Scaffold(
       appBar: AppBar(
-        title: Text(articuloId),
+        title: const Text('Pedidos Venta'),
         bottom: AppBar(
-          title: const Text('Pedidos Venta'),
+          title: Column(
+            children: [
+              Text(articuloId),
+              Text(description, style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
           automaticallyImplyLeading: false,
         ),
       ),
@@ -29,7 +35,7 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
         padding: const EdgeInsets.all(16.0),
         child: state.when(
             data: (pedidoVentaLineaLista) => (pedidoVentaLineaLista.isEmpty)
-                ? const Center(child: Text('No Results'))
+                ? const Center(child: Text('Sin resultado'))
                 : ListView.separated(
                     separatorBuilder: (context, i) => const Divider(),
                     itemBuilder: (context, i) => ArticuloPedidoVentaLineaTile(
@@ -59,15 +65,18 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  pedidoVentaLinea.pedidoVentaId,
-                ),
-                Text(pedidoVentaLinea.id,
-                    style: Theme.of(context).textTheme.caption),
-              ],
+            SizedBox(
+              width: 70,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    pedidoVentaLinea.pedidoVentaId,
+                  ),
+                  Text(pedidoVentaLinea.id,
+                      style: Theme.of(context).textTheme.caption),
+                ],
+              ),
             ),
             const VerticalDivider(),
             Flexible(
@@ -89,30 +98,16 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             color: Theme.of(context).textTheme.caption?.color),
                       ),
-                      Row(
-                        children: [
-                          const Icon(
-                            MdiIcons.currencySign,
-                            size: 16,
-                          ),
-                          Text(
-                            formatPrecioYDescuento(
-                              precio: pedidoVentaLinea.precioDivisa,
-                              tipoPrecio: pedidoVentaLinea.tipoPrecio,
-                              descuento1: pedidoVentaLinea.descuento1,
-                              descuento2: pedidoVentaLinea.descuento2,
-                              descuento3: pedidoVentaLinea.descuento3,
-                            ),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color),
-                          ),
-                        ],
+                      Text(
+                        formatPrecioYDescuento(
+                          precio: pedidoVentaLinea.precioDivisa,
+                          tipoPrecio: pedidoVentaLinea.tipoPrecio,
+                          descuento1: pedidoVentaLinea.descuento1,
+                          descuento2: pedidoVentaLinea.descuento2,
+                          descuento3: pedidoVentaLinea.descuento3,
+                        ),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
                       ),
                     ],
                   ),

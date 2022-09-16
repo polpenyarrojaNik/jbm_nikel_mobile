@@ -8,9 +8,11 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
 class ArticuloComponentePage extends ConsumerWidget {
-  const ArticuloComponentePage({super.key, required this.articuloId});
+  const ArticuloComponentePage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,7 +21,12 @@ class ArticuloComponentePage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Componentes'),
         bottom: AppBar(
-          title: Text(articuloId),
+          title: Column(
+            children: [
+              Text(articuloId),
+              Text(description, style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
           automaticallyImplyLeading: false,
         ),
       ),
@@ -38,7 +45,7 @@ class ArticuloComponentePage extends ConsumerWidget {
                   itemCount: articuloComponenteList.length,
                 )
               : const Center(
-                  child: Text('No results'),
+                  child: Text('Sin resultado'),
                 ),
         ),
       ),

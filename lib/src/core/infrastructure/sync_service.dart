@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -11,6 +12,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
 import '../../features/cliente/infrastructure/cliente_dto.dart';
 import '../exceptions/app_exception.dart';
+import '../helpers/formatters.dart';
 import '../presentation/app.dart';
 import 'database.dart';
 import 'jbm_headers.dart';
@@ -30,7 +32,7 @@ class SyncService {
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v1/sync/init-db-date',
+    '/api/v1/sync/db-datetimeuu',
   );
 
   static final remoteInitDatabaseEndpoint = Uri.http(
@@ -57,7 +59,10 @@ class SyncService {
 
   Future<DateTime> getRemoteDatabaseDateTime() async {
     try {
-      final response = await _dio.getUri(remoteDatabaseDateTimeEndpoint);
+      final response = await _dio.getUri(
+        remoteDatabaseDateTimeEndpoint,
+      );
+
       if (response.statusCode == 200) {
         final dateStr = response.data['data'] as String;
         return DateTime.parse(dateStr);
@@ -72,6 +77,11 @@ class SyncService {
             e.response?.data['message'] ??
             'Internet Error',
       );
+      // }
+      // on TimeoutException catch (e) {
+      //   throw AppException.restApiFailure(500, e.toString());
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -166,6 +176,11 @@ class SyncService {
       final remoteDatabaseDateTime = await getRemoteDatabaseDateTime();
 
       final ultimaFechaSync = await getLastUpdatedDate(tableInfo: tableInfo);
+
+      print(
+          'dateFrom: ${dateFormatter(ultimaFechaSync.toIso8601String(), allDay: true)}');
+      print(
+          'dateTo: ${dateFormatter(remoteDatabaseDateTime.toIso8601String(), allDay: true)}');
 
       while (isNextPageAvailable) {
         final query = _getAPIQuery(
@@ -288,6 +303,8 @@ class SyncService {
               'Internet Error',
         );
       }
+    } catch (e) {
+      rethrow;
     }
   }
 

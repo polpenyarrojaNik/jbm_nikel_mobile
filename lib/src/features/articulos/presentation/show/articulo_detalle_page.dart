@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
@@ -11,7 +10,6 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_i
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
 
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -295,28 +293,31 @@ class _ArticuloInfoContainer extends StatelessWidget {
             children: [
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Cantidad subcaja',
-                  value: numberFormatCantidades(articulo.unidadesSubcaja)),
+                  value:
+                      '${numberFormatCantidades(articulo.unidadesSubcaja)} ${(articulo.unidadesSubcaja != 1) ? 'unidades' : 'unidad'}'),
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Cantidad caja',
-                  value: numberFormatCantidades(articulo.unidadesCaja)),
+                  value:
+                      '${numberFormatCantidades(articulo.unidadesCaja)} ${(articulo.unidadesCaja != 1) ? 'unidades' : 'unidad'}'),
               ColumnFieldTextDetalle(
                   fieldTitleValue: 'Cantidad palet',
-                  value: numberFormatCantidades(articulo.unidadesPalet)),
+                  value:
+                      '${numberFormatCantidades(articulo.unidadesPalet)} ${(articulo.unidadesPalet != 1) ? 'unidades' : 'unidad'}'),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                      fieldTitleValue: 'Peso(kg)',
-                      value: numberFormatCantidades(articulo.pesoKg),
+                      fieldTitleValue: 'Peso',
+                      value: '${numberFormatCantidades(articulo.pesoKg)} kg',
                     ),
                   ),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Medidas(cm)',
+                        fieldTitleValue: 'Medidas',
                         value:
-                            '${numberFormatCantidades(articulo.altoCm)} x ${numberFormatCantidades(articulo.largoCm)} x ${numberFormatCantidades(articulo.anchoCm)}'),
+                            '${numberFormatCantidades(articulo.altoCm)} cm x ${numberFormatCantidades(articulo.largoCm)} cm x ${numberFormatCantidades(articulo.anchoCm)} cm'),
                   ),
                 ],
               ),
@@ -329,16 +330,24 @@ class _ArticuloInfoContainer extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ColumnFieldTextDetalle(
-                fieldTitleValue: 'Página en catalogo / 2ªEdición',
-                value: Text(
-                  (articulo.paginaEnCatalgo != null &&
-                          articulo.paginaEnCatalgo2 != null)
-                      ? '${articulo.paginaEnCatalgo} / ${articulo.paginaEnCatalgo2}'
-                      : (articulo.paginaEnCatalgo != null)
-                          ? articulo.paginaEnCatalgo ?? ''
-                          : '',
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (articulo.paginaEnCatalgo != null)
+                    Expanded(
+                      child: ColumnFieldTextDetalle(
+                        fieldTitleValue: 'Página en catalogo',
+                        value: Text(articulo.paginaEnCatalgo!),
+                      ),
+                    ),
+                  if (articulo.paginaEnCatalgo2 != null)
+                    Expanded(
+                      child: ColumnFieldTextDetalle(
+                        fieldTitleValue: 'Página 2ªEdición',
+                        value: Text(articulo.paginaEnCatalgo2!),
+                      ),
+                    ),
+                ],
               ),
               const Divider(),
               Row(
@@ -719,8 +728,7 @@ class _ArticuloImageCarrouselState
                       });
                     },
                     itemBuilder: (context, i) => CachedNetworkImage(
-                      imageUrl:
-                          'http://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/img?PATH=${widget.articuloId}/${articuloImagenes[i].nombreArchivo}',
+                      imageUrl: articuloImagenes[i].url,
                       progressIndicatorBuilder: (context, url, progress) =>
                           Image.asset(
                         height: 175,
@@ -729,7 +737,7 @@ class _ArticuloImageCarrouselState
                         'assets/image-placeholder.png',
                       ),
                       errorWidget: (context, error, _) =>
-                          const Icon(Icons.error),
+                          const Center(child: Text('No disponible')),
                       height: 175,
                       width: 400,
                       fit: BoxFit.contain,
@@ -741,7 +749,7 @@ class _ArticuloImageCarrouselState
                     children: indicators(articuloImagenes.length, activePage))
               ],
             ),
-        error: (error, _) => ErrorMessageWidget(error.toString()),
+        error: (error, _) => Container(),
         loading: () => const ProgressIndicatorWidget());
   }
 
@@ -775,6 +783,7 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.goNamed(
             AppRoutes.articulopreciotarifa.name,
             params: params,
+            extra: getDescriptionInLocalLanguage(articulo: articulo),
           ),
         ),
         const Divider(),
@@ -783,6 +792,7 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.goNamed(
             AppRoutes.articulogruponeto.name,
             params: params,
+            extra: getDescriptionInLocalLanguage(articulo: articulo),
           ),
         ),
         const Divider(),
@@ -791,6 +801,7 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.goNamed(
             AppRoutes.articulocomponente.name,
             params: params,
+            extra: getDescriptionInLocalLanguage(articulo: articulo),
           ),
         ),
         const Divider(),
@@ -799,6 +810,7 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.goNamed(
             AppRoutes.articulorecambio.name,
             params: params,
+            extra: getDescriptionInLocalLanguage(articulo: articulo),
           ),
         ),
         const Divider(),
@@ -807,6 +819,7 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.goNamed(
             AppRoutes.articulosustitutivo.name,
             params: params,
+            extra: getDescriptionInLocalLanguage(articulo: articulo),
           ),
         ),
       ],
@@ -826,8 +839,11 @@ class _Consultas extends StatelessWidget {
       const MobileCustomSeparators(separatorTitle: 'Consultas'),
       DatosExtraRow(
         title: 'Pedidos Venta',
-        navigationTo: () =>
-            context.goNamed(AppRoutes.articulosalesorder.name, params: params),
+        navigationTo: () => context.goNamed(
+          AppRoutes.articulosalesorder.name,
+          params: params,
+          extra: getDescriptionInLocalLanguage(articulo: articulo),
+        ),
       ),
       const Divider(),
       DatosExtraRow(
@@ -835,6 +851,7 @@ class _Consultas extends StatelessWidget {
         navigationTo: () => context.goNamed(
           AppRoutes.articuloultimoprecio.name,
           params: params,
+          extra: getDescriptionInLocalLanguage(articulo: articulo),
         ),
       ),
       const Divider(),
@@ -843,6 +860,7 @@ class _Consultas extends StatelessWidget {
         navigationTo: () => context.goNamed(
           AppRoutes.articulodocumento.name,
           params: params,
+          extra: getDescriptionInLocalLanguage(articulo: articulo),
         ),
       ),
     ]);

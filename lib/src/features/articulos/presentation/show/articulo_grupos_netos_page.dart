@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -9,9 +8,11 @@ import '../../domain/articulo_grupo_neto.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloGrupoNetoPage extends ConsumerWidget {
-  const ArticuloGrupoNetoPage({super.key, required this.articuloId});
+  const ArticuloGrupoNetoPage(
+      {super.key, required this.articuloId, required this.description});
 
   final String articuloId;
+  final String description;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +21,12 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Grupos Netos'),
         bottom: AppBar(
-          title: Text(articuloId),
+          title: Column(
+            children: [
+              Text(articuloId),
+              Text(description, style: Theme.of(context).textTheme.bodyText2),
+            ],
+          ),
           automaticallyImplyLeading: false,
         ),
       ),
@@ -56,43 +62,38 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                articuloGrupoNeto.grupoNetoId,
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-            ],
-          ),
-          if (articuloGrupoNeto.grupoNetoDescripcion != null)
-            Text(
-              articuloGrupoNeto.grupoNetoDescripcion!,
-            ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesDe)} ${((articuloGrupoNeto.cantidadDesDe) != 1) ? 'unidades' : 'unidad'}',
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    color: Theme.of(context).textTheme.caption?.color),
-              ),
-              Row(
-                children: [
-                  const Icon(MdiIcons.currencySign, size: 16),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  articuloGrupoNeto.grupoNetoId,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                if (articuloGrupoNeto.grupoNetoDescripcion != null)
                   Text(
-                    formatPrecios(
-                        precio: articuloGrupoNeto.precio,
-                        tipoPrecio: articuloGrupoNeto.tipoPrecio),
+                    articuloGrupoNeto.grupoNetoDescripcion!,
+                  ),
+                if (articuloGrupoNeto.cantidadDesDe != 1)
+                  Text(
+                    '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesDe)}',
                     style: Theme.of(context).textTheme.bodyText2?.copyWith(
                         color: Theme.of(context).textTheme.caption?.color),
                   ),
-                ],
-              ),
-            ],
+              ],
+            ),
+          ),
+          Text(
+            formatPrecios(
+                precio: articuloGrupoNeto.precio,
+                tipoPrecio: articuloGrupoNeto.tipoPrecio),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2
+                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
           ),
         ],
       ),

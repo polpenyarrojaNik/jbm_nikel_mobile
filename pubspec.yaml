@@ -57,9 +57,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/app_icons/1x/photokits_app_icon_57x57.png"
+  image_path: "assets/app_icons/1x/photokits_app_icon_1024x1024.png"
   adaptive_icon_background: "#000000"
-  adaptive_icon_foreground: "assets/app_icons/1x/photokits_app_icon_57x57.png"
+  adaptive_icon_foreground: "assets/app_icons/1x/photokits_app_icon_1024x1024.png"
 
 flutter:
   uses-material-design: true

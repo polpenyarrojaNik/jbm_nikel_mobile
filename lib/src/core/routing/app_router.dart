@@ -262,9 +262,11 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'pedidosventa',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloPedidoVentaPage(articuloId: articuloId),
+                      child: ArticuloPedidoVentaPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -273,9 +275,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'ultimosprecios',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloUltimosPreciosPage(articuloId: articuloId),
+                      child: ArticuloUltimosPreciosPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -284,9 +289,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'componentes',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloComponentePage(articuloId: articuloId),
+                      child: ArticuloComponentePage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -295,9 +303,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'gruposnetos',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloGrupoNetoPage(articuloId: articuloId),
+                      child: ArticuloGrupoNetoPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -306,9 +317,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'preciotarifa',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloPrecioTarifaPage(articuloId: articuloId),
+                      child: ArticuloPrecioTarifaPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -317,9 +331,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'recambios',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloRecambioPage(articuloId: articuloId),
+                      child: ArticuloRecambioPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -328,9 +345,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'sustitutivos',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloSustitutivoPage(articuloId: articuloId),
+                      child: ArticuloSustitutivoPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),
@@ -339,9 +359,12 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'documentos',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
+                    final description = state.extra as String;
+
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ArticuloDocumentoPage(articuloId: articuloId),
+                      child: ArticuloDocumentoPage(
+                          articuloId: articuloId, description: description),
                     );
                   },
                 ),

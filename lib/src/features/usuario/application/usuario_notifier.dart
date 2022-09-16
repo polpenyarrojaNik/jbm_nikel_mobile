@@ -40,4 +40,12 @@ class UsuarioNotifier extends StateNotifier<Usuario?> {
       state = null;
     }
   }
+
+  Future<void> refreshToken({required Usuario usuario}) async {
+    try {
+      state = await _usuarioService.refresh();
+    } catch (e) {
+      state = null;
+    }
+  }
 }

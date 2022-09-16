@@ -86,35 +86,35 @@ mixin _$ArticuloDTO {
   double get anchoCm => throw _privateConstructorUsedError;
   @JsonKey(name: 'ALTO_CM')
   double get altoCm => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_ES')
+  @JsonKey(name: 'RESUMEN_ES')
   String? get resumenES => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_EN')
+  @JsonKey(name: 'RESUMEN_EN')
   String? get resumenEN => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_FR')
+  @JsonKey(name: 'RESUMEN_FR')
   String? get resumenFR => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_DE')
+  @JsonKey(name: 'RESUMEN_DE')
   String? get resumenDE => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_CA')
+  @JsonKey(name: 'RESUMEN_CA')
   String? get resumenCA => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_GB')
+  @JsonKey(name: 'RESUMEN_GB')
   String? get resumenGB => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_HU')
+  @JsonKey(name: 'RESUMEN_HU')
   String? get resumenHU => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_IT')
+  @JsonKey(name: 'RESUMEN_IT')
   String? get resumenIT => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_NL')
+  @JsonKey(name: 'RESUMEN_NL')
   String? get resumenNL => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_PL')
+  @JsonKey(name: 'RESUMEN_PL')
   String? get resumenPL => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_PT')
+  @JsonKey(name: 'RESUMEN_PT')
   String? get resumenPT => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_RO')
+  @JsonKey(name: 'RESUMEN_RO')
   String? get resumenRO => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_RU')
+  @JsonKey(name: 'RESUMEN_RU')
   String? get resumenRU => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_CN')
+  @JsonKey(name: 'RESUMEN_CN')
   String? get resumenCN => throw _privateConstructorUsedError;
-  @JsonKey(name: 'SUMMARY_EL')
+  @JsonKey(name: 'RESUMEN_EL')
   String? get resumenEL => throw _privateConstructorUsedError;
   @JsonKey(name: 'STOCK_DISPONIBLE')
   double? get stockDisponible => throw _privateConstructorUsedError;
@@ -227,35 +227,35 @@ abstract class $ArticuloDTOCopyWith<$Res> {
           double anchoCm,
       @JsonKey(name: 'ALTO_CM')
           double altoCm,
-      @JsonKey(name: 'SUMMARY_ES')
+      @JsonKey(name: 'RESUMEN_ES')
           String? resumenES,
-      @JsonKey(name: 'SUMMARY_EN')
+      @JsonKey(name: 'RESUMEN_EN')
           String? resumenEN,
-      @JsonKey(name: 'SUMMARY_FR')
+      @JsonKey(name: 'RESUMEN_FR')
           String? resumenFR,
-      @JsonKey(name: 'SUMMARY_DE')
+      @JsonKey(name: 'RESUMEN_DE')
           String? resumenDE,
-      @JsonKey(name: 'SUMMARY_CA')
+      @JsonKey(name: 'RESUMEN_CA')
           String? resumenCA,
-      @JsonKey(name: 'SUMMARY_GB')
+      @JsonKey(name: 'RESUMEN_GB')
           String? resumenGB,
-      @JsonKey(name: 'SUMMARY_HU')
+      @JsonKey(name: 'RESUMEN_HU')
           String? resumenHU,
-      @JsonKey(name: 'SUMMARY_IT')
+      @JsonKey(name: 'RESUMEN_IT')
           String? resumenIT,
-      @JsonKey(name: 'SUMMARY_NL')
+      @JsonKey(name: 'RESUMEN_NL')
           String? resumenNL,
-      @JsonKey(name: 'SUMMARY_PL')
+      @JsonKey(name: 'RESUMEN_PL')
           String? resumenPL,
-      @JsonKey(name: 'SUMMARY_PT')
+      @JsonKey(name: 'RESUMEN_PT')
           String? resumenPT,
-      @JsonKey(name: 'SUMMARY_RO')
+      @JsonKey(name: 'RESUMEN_RO')
           String? resumenRO,
-      @JsonKey(name: 'SUMMARY_RU')
+      @JsonKey(name: 'RESUMEN_RU')
           String? resumenRU,
-      @JsonKey(name: 'SUMMARY_CN')
+      @JsonKey(name: 'RESUMEN_CN')
           String? resumenCN,
-      @JsonKey(name: 'SUMMARY_EL')
+      @JsonKey(name: 'RESUMEN_EL')
           String? resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
           double? stockDisponible,
@@ -701,35 +701,35 @@ abstract class _$$_ArticuloDTOCopyWith<$Res>
           double anchoCm,
       @JsonKey(name: 'ALTO_CM')
           double altoCm,
-      @JsonKey(name: 'SUMMARY_ES')
+      @JsonKey(name: 'RESUMEN_ES')
           String? resumenES,
-      @JsonKey(name: 'SUMMARY_EN')
+      @JsonKey(name: 'RESUMEN_EN')
           String? resumenEN,
-      @JsonKey(name: 'SUMMARY_FR')
+      @JsonKey(name: 'RESUMEN_FR')
           String? resumenFR,
-      @JsonKey(name: 'SUMMARY_DE')
+      @JsonKey(name: 'RESUMEN_DE')
           String? resumenDE,
-      @JsonKey(name: 'SUMMARY_CA')
+      @JsonKey(name: 'RESUMEN_CA')
           String? resumenCA,
-      @JsonKey(name: 'SUMMARY_GB')
+      @JsonKey(name: 'RESUMEN_GB')
           String? resumenGB,
-      @JsonKey(name: 'SUMMARY_HU')
+      @JsonKey(name: 'RESUMEN_HU')
           String? resumenHU,
-      @JsonKey(name: 'SUMMARY_IT')
+      @JsonKey(name: 'RESUMEN_IT')
           String? resumenIT,
-      @JsonKey(name: 'SUMMARY_NL')
+      @JsonKey(name: 'RESUMEN_NL')
           String? resumenNL,
-      @JsonKey(name: 'SUMMARY_PL')
+      @JsonKey(name: 'RESUMEN_PL')
           String? resumenPL,
-      @JsonKey(name: 'SUMMARY_PT')
+      @JsonKey(name: 'RESUMEN_PT')
           String? resumenPT,
-      @JsonKey(name: 'SUMMARY_RO')
+      @JsonKey(name: 'RESUMEN_RO')
           String? resumenRO,
-      @JsonKey(name: 'SUMMARY_RU')
+      @JsonKey(name: 'RESUMEN_RU')
           String? resumenRU,
-      @JsonKey(name: 'SUMMARY_CN')
+      @JsonKey(name: 'RESUMEN_CN')
           String? resumenCN,
-      @JsonKey(name: 'SUMMARY_EL')
+      @JsonKey(name: 'RESUMEN_EL')
           String? resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
           double? stockDisponible,
@@ -1173,35 +1173,35 @@ class _$_ArticuloDTO extends _ArticuloDTO {
           required this.anchoCm,
       @JsonKey(name: 'ALTO_CM')
           required this.altoCm,
-      @JsonKey(name: 'SUMMARY_ES')
+      @JsonKey(name: 'RESUMEN_ES')
           this.resumenES,
-      @JsonKey(name: 'SUMMARY_EN')
+      @JsonKey(name: 'RESUMEN_EN')
           this.resumenEN,
-      @JsonKey(name: 'SUMMARY_FR')
+      @JsonKey(name: 'RESUMEN_FR')
           this.resumenFR,
-      @JsonKey(name: 'SUMMARY_DE')
+      @JsonKey(name: 'RESUMEN_DE')
           this.resumenDE,
-      @JsonKey(name: 'SUMMARY_CA')
+      @JsonKey(name: 'RESUMEN_CA')
           this.resumenCA,
-      @JsonKey(name: 'SUMMARY_GB')
+      @JsonKey(name: 'RESUMEN_GB')
           this.resumenGB,
-      @JsonKey(name: 'SUMMARY_HU')
+      @JsonKey(name: 'RESUMEN_HU')
           this.resumenHU,
-      @JsonKey(name: 'SUMMARY_IT')
+      @JsonKey(name: 'RESUMEN_IT')
           this.resumenIT,
-      @JsonKey(name: 'SUMMARY_NL')
+      @JsonKey(name: 'RESUMEN_NL')
           this.resumenNL,
-      @JsonKey(name: 'SUMMARY_PL')
+      @JsonKey(name: 'RESUMEN_PL')
           this.resumenPL,
-      @JsonKey(name: 'SUMMARY_PT')
+      @JsonKey(name: 'RESUMEN_PT')
           this.resumenPT,
-      @JsonKey(name: 'SUMMARY_RO')
+      @JsonKey(name: 'RESUMEN_RO')
           this.resumenRO,
-      @JsonKey(name: 'SUMMARY_RU')
+      @JsonKey(name: 'RESUMEN_RU')
           this.resumenRU,
-      @JsonKey(name: 'SUMMARY_CN')
+      @JsonKey(name: 'RESUMEN_CN')
           this.resumenCN,
-      @JsonKey(name: 'SUMMARY_EL')
+      @JsonKey(name: 'RESUMEN_EL')
           this.resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
           this.stockDisponible,
@@ -1340,49 +1340,49 @@ class _$_ArticuloDTO extends _ArticuloDTO {
   @JsonKey(name: 'ALTO_CM')
   final double altoCm;
   @override
-  @JsonKey(name: 'SUMMARY_ES')
+  @JsonKey(name: 'RESUMEN_ES')
   final String? resumenES;
   @override
-  @JsonKey(name: 'SUMMARY_EN')
+  @JsonKey(name: 'RESUMEN_EN')
   final String? resumenEN;
   @override
-  @JsonKey(name: 'SUMMARY_FR')
+  @JsonKey(name: 'RESUMEN_FR')
   final String? resumenFR;
   @override
-  @JsonKey(name: 'SUMMARY_DE')
+  @JsonKey(name: 'RESUMEN_DE')
   final String? resumenDE;
   @override
-  @JsonKey(name: 'SUMMARY_CA')
+  @JsonKey(name: 'RESUMEN_CA')
   final String? resumenCA;
   @override
-  @JsonKey(name: 'SUMMARY_GB')
+  @JsonKey(name: 'RESUMEN_GB')
   final String? resumenGB;
   @override
-  @JsonKey(name: 'SUMMARY_HU')
+  @JsonKey(name: 'RESUMEN_HU')
   final String? resumenHU;
   @override
-  @JsonKey(name: 'SUMMARY_IT')
+  @JsonKey(name: 'RESUMEN_IT')
   final String? resumenIT;
   @override
-  @JsonKey(name: 'SUMMARY_NL')
+  @JsonKey(name: 'RESUMEN_NL')
   final String? resumenNL;
   @override
-  @JsonKey(name: 'SUMMARY_PL')
+  @JsonKey(name: 'RESUMEN_PL')
   final String? resumenPL;
   @override
-  @JsonKey(name: 'SUMMARY_PT')
+  @JsonKey(name: 'RESUMEN_PT')
   final String? resumenPT;
   @override
-  @JsonKey(name: 'SUMMARY_RO')
+  @JsonKey(name: 'RESUMEN_RO')
   final String? resumenRO;
   @override
-  @JsonKey(name: 'SUMMARY_RU')
+  @JsonKey(name: 'RESUMEN_RU')
   final String? resumenRU;
   @override
-  @JsonKey(name: 'SUMMARY_CN')
+  @JsonKey(name: 'RESUMEN_CN')
   final String? resumenCN;
   @override
-  @JsonKey(name: 'SUMMARY_EL')
+  @JsonKey(name: 'RESUMEN_EL')
   final String? resumenEL;
   @override
   @JsonKey(name: 'STOCK_DISPONIBLE')
@@ -1700,35 +1700,35 @@ abstract class _ArticuloDTO extends ArticuloDTO {
           required final double anchoCm,
       @JsonKey(name: 'ALTO_CM')
           required final double altoCm,
-      @JsonKey(name: 'SUMMARY_ES')
+      @JsonKey(name: 'RESUMEN_ES')
           final String? resumenES,
-      @JsonKey(name: 'SUMMARY_EN')
+      @JsonKey(name: 'RESUMEN_EN')
           final String? resumenEN,
-      @JsonKey(name: 'SUMMARY_FR')
+      @JsonKey(name: 'RESUMEN_FR')
           final String? resumenFR,
-      @JsonKey(name: 'SUMMARY_DE')
+      @JsonKey(name: 'RESUMEN_DE')
           final String? resumenDE,
-      @JsonKey(name: 'SUMMARY_CA')
+      @JsonKey(name: 'RESUMEN_CA')
           final String? resumenCA,
-      @JsonKey(name: 'SUMMARY_GB')
+      @JsonKey(name: 'RESUMEN_GB')
           final String? resumenGB,
-      @JsonKey(name: 'SUMMARY_HU')
+      @JsonKey(name: 'RESUMEN_HU')
           final String? resumenHU,
-      @JsonKey(name: 'SUMMARY_IT')
+      @JsonKey(name: 'RESUMEN_IT')
           final String? resumenIT,
-      @JsonKey(name: 'SUMMARY_NL')
+      @JsonKey(name: 'RESUMEN_NL')
           final String? resumenNL,
-      @JsonKey(name: 'SUMMARY_PL')
+      @JsonKey(name: 'RESUMEN_PL')
           final String? resumenPL,
-      @JsonKey(name: 'SUMMARY_PT')
+      @JsonKey(name: 'RESUMEN_PT')
           final String? resumenPT,
-      @JsonKey(name: 'SUMMARY_RO')
+      @JsonKey(name: 'RESUMEN_RO')
           final String? resumenRO,
-      @JsonKey(name: 'SUMMARY_RU')
+      @JsonKey(name: 'RESUMEN_RU')
           final String? resumenRU,
-      @JsonKey(name: 'SUMMARY_CN')
+      @JsonKey(name: 'RESUMEN_CN')
           final String? resumenCN,
-      @JsonKey(name: 'SUMMARY_EL')
+      @JsonKey(name: 'RESUMEN_EL')
           final String? resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
           final double? stockDisponible,
@@ -1867,49 +1867,49 @@ abstract class _ArticuloDTO extends ArticuloDTO {
   @JsonKey(name: 'ALTO_CM')
   double get altoCm;
   @override
-  @JsonKey(name: 'SUMMARY_ES')
+  @JsonKey(name: 'RESUMEN_ES')
   String? get resumenES;
   @override
-  @JsonKey(name: 'SUMMARY_EN')
+  @JsonKey(name: 'RESUMEN_EN')
   String? get resumenEN;
   @override
-  @JsonKey(name: 'SUMMARY_FR')
+  @JsonKey(name: 'RESUMEN_FR')
   String? get resumenFR;
   @override
-  @JsonKey(name: 'SUMMARY_DE')
+  @JsonKey(name: 'RESUMEN_DE')
   String? get resumenDE;
   @override
-  @JsonKey(name: 'SUMMARY_CA')
+  @JsonKey(name: 'RESUMEN_CA')
   String? get resumenCA;
   @override
-  @JsonKey(name: 'SUMMARY_GB')
+  @JsonKey(name: 'RESUMEN_GB')
   String? get resumenGB;
   @override
-  @JsonKey(name: 'SUMMARY_HU')
+  @JsonKey(name: 'RESUMEN_HU')
   String? get resumenHU;
   @override
-  @JsonKey(name: 'SUMMARY_IT')
+  @JsonKey(name: 'RESUMEN_IT')
   String? get resumenIT;
   @override
-  @JsonKey(name: 'SUMMARY_NL')
+  @JsonKey(name: 'RESUMEN_NL')
   String? get resumenNL;
   @override
-  @JsonKey(name: 'SUMMARY_PL')
+  @JsonKey(name: 'RESUMEN_PL')
   String? get resumenPL;
   @override
-  @JsonKey(name: 'SUMMARY_PT')
+  @JsonKey(name: 'RESUMEN_PT')
   String? get resumenPT;
   @override
-  @JsonKey(name: 'SUMMARY_RO')
+  @JsonKey(name: 'RESUMEN_RO')
   String? get resumenRO;
   @override
-  @JsonKey(name: 'SUMMARY_RU')
+  @JsonKey(name: 'RESUMEN_RU')
   String? get resumenRU;
   @override
-  @JsonKey(name: 'SUMMARY_CN')
+  @JsonKey(name: 'RESUMEN_CN')
   String? get resumenCN;
   @override
-  @JsonKey(name: 'SUMMARY_EL')
+  @JsonKey(name: 'RESUMEN_EL')
   String? get resumenEL;
   @override
   @JsonKey(name: 'STOCK_DISPONIBLE')

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArticuloImagen {
   String get articuloId => throw _privateConstructorUsedError;
   String get nombreArchivo => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
   String? get pathArchivo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,11 @@ abstract class $ArticuloImagenCopyWith<$Res> {
   factory $ArticuloImagenCopyWith(
           ArticuloImagen value, $Res Function(ArticuloImagen) then) =
       _$ArticuloImagenCopyWithImpl<$Res>;
-  $Res call({String articuloId, String nombreArchivo, String? pathArchivo});
+  $Res call(
+      {String articuloId,
+      String nombreArchivo,
+      String url,
+      String? pathArchivo});
 }
 
 /// @nodoc
@@ -46,6 +51,7 @@ class _$ArticuloImagenCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
+    Object? url = freezed,
     Object? pathArchivo = freezed,
   }) {
     return _then(_value.copyWith(
@@ -56,6 +62,10 @@ class _$ArticuloImagenCopyWithImpl<$Res>
       nombreArchivo: nombreArchivo == freezed
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       pathArchivo: pathArchivo == freezed
           ? _value.pathArchivo
@@ -72,7 +82,11 @@ abstract class _$$_ArticuloImagenCopyWith<$Res>
           _$_ArticuloImagen value, $Res Function(_$_ArticuloImagen) then) =
       __$$_ArticuloImagenCopyWithImpl<$Res>;
   @override
-  $Res call({String articuloId, String nombreArchivo, String? pathArchivo});
+  $Res call(
+      {String articuloId,
+      String nombreArchivo,
+      String url,
+      String? pathArchivo});
 }
 
 /// @nodoc
@@ -90,6 +104,7 @@ class __$$_ArticuloImagenCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
+    Object? url = freezed,
     Object? pathArchivo = freezed,
   }) {
     return _then(_$_ArticuloImagen(
@@ -100,6 +115,10 @@ class __$$_ArticuloImagenCopyWithImpl<$Res>
       nombreArchivo: nombreArchivo == freezed
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
               as String,
       pathArchivo: pathArchivo == freezed
           ? _value.pathArchivo
@@ -113,7 +132,10 @@ class __$$_ArticuloImagenCopyWithImpl<$Res>
 
 class _$_ArticuloImagen extends _ArticuloImagen {
   const _$_ArticuloImagen(
-      {required this.articuloId, required this.nombreArchivo, this.pathArchivo})
+      {required this.articuloId,
+      required this.nombreArchivo,
+      required this.url,
+      this.pathArchivo})
       : super._();
 
   @override
@@ -121,11 +143,13 @@ class _$_ArticuloImagen extends _ArticuloImagen {
   @override
   final String nombreArchivo;
   @override
+  final String url;
+  @override
   final String? pathArchivo;
 
   @override
   String toString() {
-    return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, pathArchivo: $pathArchivo)';
+    return 'ArticuloImagen(articuloId: $articuloId, nombreArchivo: $nombreArchivo, url: $url, pathArchivo: $pathArchivo)';
   }
 
   @override
@@ -137,6 +161,7 @@ class _$_ArticuloImagen extends _ArticuloImagen {
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
                 .equals(other.nombreArchivo, nombreArchivo) &&
+            const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality()
                 .equals(other.pathArchivo, pathArchivo));
   }
@@ -146,6 +171,7 @@ class _$_ArticuloImagen extends _ArticuloImagen {
       runtimeType,
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(nombreArchivo),
+      const DeepCollectionEquality().hash(url),
       const DeepCollectionEquality().hash(pathArchivo));
 
   @JsonKey(ignore: true)
@@ -158,6 +184,7 @@ abstract class _ArticuloImagen extends ArticuloImagen {
   const factory _ArticuloImagen(
       {required final String articuloId,
       required final String nombreArchivo,
+      required final String url,
       final String? pathArchivo}) = _$_ArticuloImagen;
   const _ArticuloImagen._() : super._();
 
@@ -165,6 +192,8 @@ abstract class _ArticuloImagen extends ArticuloImagen {
   String get articuloId;
   @override
   String get nombreArchivo;
+  @override
+  String get url;
   @override
   String? get pathArchivo;
   @override

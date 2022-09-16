@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -17,34 +18,6 @@ void main() async {
         print('${record.level.name}: ${record.time}: ${record.message}'));
 
     await dotenv.load();
-
-    // final database = AppDatabase();
-    // final dio = Dio();
-    // const secureStorage = FlutterSecureStorage();
-    // final authRepository = AuthRepository(dio, secureStorage);
-
-    // final container = ProviderContainer(
-    //   overrides: [
-    //     initialDbRepositoryProvider
-    //         .overrideWithValue(InitalDBRepository(database, dio)),
-    //     authRepositoryProvider.overrideWithValue(authRepository),
-    //     syncRepositoryProvider
-    //         .overrideWithValue(SyncRepository(database, dio, authRepository)),
-    //     pedidoVentaRepositoryProvider.overrideWithValue(
-    //         PedidoVentaRepository(database, dio, authRepository)),
-    //     clienteRepositoryProvider
-    //         .overrideWithValue(ClienteRepository(database, dio)),
-    //     articuloRepositoryProvider
-    //         .overrideWithValue(ArticuloRepository(database, dio)),
-    //     visitaRepositoryProvider
-    //         .overrideWithValue(VisitaRepository(database, dio)),
-    //     articuloTopRepositoryProvider
-    //         .overrideWithValue(ArticuloTopRepository(database)),
-    //   ],
-    //   observers: [
-    //     RiverpodLogger(),
-    //   ],
-    // );
 
     runApp(ProviderScope(
       observers: [
@@ -67,5 +40,6 @@ void main() async {
     };
   }, (Object error, StackTrace stack) {
     log.severe(error, stack);
+    exit(1);
   });
 }

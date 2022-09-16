@@ -19,20 +19,12 @@ class AppDrawer extends StatelessWidget {
               color: Theme.of(context).colorScheme.surfaceVariant,
             ),
             child: Text(
-              'Nikel Mobile',
+              'JBM Nikel Mobile',
               style: Theme.of(context)
                   .textTheme
                   .headline5!
                   .copyWith(fontWeight: FontWeight.bold),
             ),
-          ),
-          ListTile(
-            leading: const Icon(
-              Icons.person,
-              size: 30,
-            ),
-            title: const Text('Clientes'),
-            onTap: () => context.goNamed(AppRoutes.clienteindex.name),
           ),
           ListTile(
             leading: const Icon(
@@ -43,6 +35,16 @@ class AppDrawer extends StatelessWidget {
             onTap: () => context.goNamed(AppRoutes.articuloindex.name),
           ),
           ListTile(
+            enabled: false,
+            leading: const Icon(
+              Icons.person,
+              size: 30,
+            ),
+            title: const Text('Clientes'),
+            onTap: () => context.goNamed(AppRoutes.clienteindex.name),
+          ),
+          ListTile(
+            enabled: false,
             leading: const Icon(
               MdiIcons.packageVariantClosed,
               size: 30,
@@ -51,14 +53,16 @@ class AppDrawer extends StatelessWidget {
             onTap: () => context.goNamed(AppRoutes.salesorderindex.name),
           ),
           ListTile(
+            enabled: false,
             leading: const Icon(
               MdiIcons.packageVariantClosed,
               size: 30,
             ),
-            title: const Text('Visitaas'),
+            title: const Text('Visitas'),
             onTap: () => context.goNamed(AppRoutes.visitaindex.name),
           ),
           ListTile(
+            enabled: false,
             leading: const Icon(
               MdiIcons.packageVariantClosed,
               size: 30,
