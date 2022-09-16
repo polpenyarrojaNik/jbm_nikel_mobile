@@ -32,7 +32,7 @@ class SyncService {
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     dotenv.get('URL', fallback: 'localhost:3001'),
-    '/api/v1/sync/db-datetimeuu',
+    '/api/v1/sync/db-datetime',
   );
 
   static final remoteInitDatabaseEndpoint = Uri.http(
