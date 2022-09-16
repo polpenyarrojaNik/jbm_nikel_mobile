@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
+import 'package:money2/money2.dart';
 
 import '../../features/articulos/domain/articulo.dart';
 
@@ -95,7 +96,7 @@ String getNombreArchivo(String path) {
 }
 
 String formatPrecioYDescuento({
-  required double precio,
+  required Money precio,
   required double? tipoPrecio,
   required double descuento1,
   required double descuento2,
@@ -112,11 +113,11 @@ String formatPrecioYDescuento({
   return formatPrecioYDescuento;
 }
 
-String formatPrecios({required double precio, required double? tipoPrecio}) {
+String formatPrecios({required Money precio, required double? tipoPrecio}) {
   if (tipoPrecio == 1 || tipoPrecio == 0 || tipoPrecio == null) {
-    return numberFormatDecimal(precio);
+    return precio.toString();
   } else {
-    return '${numberFormatDecimal(precio)} (x${tipoPrecio.round().toString()})';
+    return '${precio.toString()} (x${tipoPrecio.round().toString()})';
   }
 }
 

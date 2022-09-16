@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
 
 part 'articulo_precio_tarifa.freezed.dart';
 
@@ -10,7 +11,8 @@ class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
       required String tarifaId,
       String? tarifaDescripcion,
       required double cantidadDesDe,
-      required double precio,
+      required Money precio,
+      required String divisaId,
       double? tipoPrecio,
       required DateTime lastUpdated,
       required bool deleted}) = _ArticuloPrecioTarifa;

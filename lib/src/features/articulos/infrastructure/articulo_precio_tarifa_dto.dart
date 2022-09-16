@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
 import '../../../core/infrastructure/database.dart';
 import '../domain/articulo_precio_tarifa.dart';
@@ -20,6 +21,7 @@ class ArticuloPrecioTarifaDTO
     @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
     @JsonKey(name: 'CANTIDAD_DESDE') required double cantidadDesDe,
     @JsonKey(name: 'PRECIO') required double precio,
+    @JsonKey(name: 'DIVISA_ID') required String divisaId,
     @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
@@ -34,7 +36,8 @@ class ArticuloPrecioTarifaDTO
       tarifaId: tarifaId,
       tarifaDescripcion: tarifaDescripcion,
       cantidadDesDe: cantidadDesDe,
-      precio: precio,
+      precio: precio.parseMoney(precio, divisaId),
+      divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
@@ -49,6 +52,7 @@ class ArticuloPrecioTarifaDTO
       tarifaDescripcion: Value(tarifaDescripcion),
       cantidadDesDe: Value(cantidadDesDe),
       precio: Value(precio),
+      divisaId: Value(divisaId),
       tipoPrecio: Value(tipoPrecio),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
@@ -70,6 +74,7 @@ class ArticuloPrecioTarifaTable extends Table {
       text().nullable().named('TARIFA_DESCRIPCION')();
   RealColumn get cantidadDesDe => real().named('CANTIDAD_DESDE')();
   RealColumn get precio => real().named('PRECIO')();
+  TextColumn get divisaId => text().named('DIVISA_ID')();
   RealColumn get tipoPrecio => real().nullable().named('TIPO_PRECIO')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

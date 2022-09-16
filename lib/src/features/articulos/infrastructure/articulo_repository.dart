@@ -414,7 +414,7 @@ class ArticuloRepository {
                 pedidoVentaLineaDto: pedidoVentaLineaDTO,
                 clienteId: pedidoVentaDTO.clienteId,
                 nombreCliente: pedidoVentaDTO.nombreCliente)
-            .toDomain();
+            .toDomain(divisaId: pedidoVentaDTO.divisaId);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

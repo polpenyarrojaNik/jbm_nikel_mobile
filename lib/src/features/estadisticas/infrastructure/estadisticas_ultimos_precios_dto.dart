@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
 import '../../../core/infrastructure/database.dart';
 import '../domain/estadisticas_ultimos_precios.dart';
@@ -19,6 +20,7 @@ class EstadisticasUltimosPreciosDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'FECHA') required DateTime fecha,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
+    @JsonKey(name: 'DIVISA_ID') required String divisaId,
     @JsonKey(name: 'TIPO_PRECIO') required double tipoPrecio,
     @JsonKey(name: 'DESCUENTO1') required double descuento1,
     @JsonKey(name: 'DESCUENTO2') required double descuento2,
@@ -36,7 +38,8 @@ class EstadisticasUltimosPreciosDTO
       nombreCliente: nombreCliente,
       articuloId: articuloId,
       fecha: fecha,
-      precioDivisa: precioDivisa,
+      precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
+      divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       descuento1: descuento1,
       descuento2: descuento2,
@@ -53,6 +56,7 @@ class EstadisticasUltimosPreciosDTO
       articuloId: Value(articuloId),
       fecha: Value(fecha),
       precioDivisa: Value(precioDivisa),
+      divisaId: Value(divisaId),
       tipoPrecio: Value(tipoPrecio),
       descuento1: Value(descuento1),
       descuento2: Value(descuento2),
@@ -85,6 +89,7 @@ class EstadisticasUltimosPreciosTable extends Table {
   DateTimeColumn get fecha => dateTime().named('FECHA')();
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
   RealColumn get tipoPrecio => real().named('TIPO_PRECIO')();
+  TextColumn get divisaId => text().named('DIVISA_ID')();
   RealColumn get descuento1 => real().named('DESCUENTO1')();
   RealColumn get descuento2 => real().named('DESCUENTO2')();
   RealColumn get descuento3 => real().named('DESCUENTO3')();

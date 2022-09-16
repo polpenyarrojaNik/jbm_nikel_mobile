@@ -60,7 +60,7 @@ extension MoneyParsing on String {
 extension MoneyParsingDouble on double {
   Money parseMoney(double importe, String currencyId) {
     final euroCurrency = Currency.create('EUR', 2,
-        symbol: '€', invertSeparators: true, pattern: 'S#.##0,##');
+        symbol: '€', invertSeparators: true, pattern: 'S#.##0,00');
 
     Currencies().registerList(
       [

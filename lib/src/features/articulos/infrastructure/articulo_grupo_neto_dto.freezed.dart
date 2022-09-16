@@ -30,6 +30,8 @@ mixin _$ArticuloGrupoNetoDTO {
   double get cantidadDesDe => throw _privateConstructorUsedError;
   @JsonKey(name: 'PRECIO')
   double get precio => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO')
   double? get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -54,6 +56,7 @@ abstract class $ArticuloGrupoNetoDTOCopyWith<$Res> {
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String? grupoNetoDescripcion,
       @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
       @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -75,6 +78,7 @@ class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res>
     Object? grupoNetoDescripcion = freezed,
     Object? cantidadDesDe = freezed,
     Object? precio = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -100,6 +104,10 @@ class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -129,6 +137,7 @@ abstract class _$$_ArticuloGrupoNetoDTOCopyWith<$Res>
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String? grupoNetoDescripcion,
       @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
       @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -152,6 +161,7 @@ class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
     Object? grupoNetoDescripcion = freezed,
     Object? cantidadDesDe = freezed,
     Object? precio = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -177,6 +187,10 @@ class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -202,6 +216,7 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') this.grupoNetoDescripcion,
       @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesDe,
       @JsonKey(name: 'PRECIO') required this.precio,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
       @JsonKey(name: 'TIPO_PRECIO') this.tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
@@ -226,6 +241,9 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
   @JsonKey(name: 'PRECIO')
   final double precio;
   @override
+  @JsonKey(name: 'DIVISA_ID')
+  final String divisaId;
+  @override
   @JsonKey(name: 'TIPO_PRECIO')
   final double? tipoPrecio;
   @override
@@ -237,7 +255,7 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
 
   @override
   String toString() {
-    return 'ArticuloGrupoNetoDTO(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesDe: $cantidadDesDe, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloGrupoNetoDTO(articuloId: $articuloId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, cantidadDesDe: $cantidadDesDe, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -254,6 +272,7 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
             const DeepCollectionEquality()
                 .equals(other.cantidadDesDe, cantidadDesDe) &&
             const DeepCollectionEquality().equals(other.precio, precio) &&
+            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
                 .equals(other.tipoPrecio, tipoPrecio) &&
             const DeepCollectionEquality()
@@ -270,6 +289,7 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
       const DeepCollectionEquality().hash(grupoNetoDescripcion),
       const DeepCollectionEquality().hash(cantidadDesDe),
       const DeepCollectionEquality().hash(precio),
+      const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(tipoPrecio),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -300,6 +320,8 @@ abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
           required final double cantidadDesDe,
       @JsonKey(name: 'PRECIO')
           required final double precio,
+      @JsonKey(name: 'DIVISA_ID')
+          required final String divisaId,
       @JsonKey(name: 'TIPO_PRECIO')
           final double? tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED')
@@ -326,6 +348,9 @@ abstract class _ArticuloGrupoNetoDTO extends ArticuloGrupoNetoDTO {
   @override
   @JsonKey(name: 'PRECIO')
   double get precio;
+  @override
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
   double? get tipoPrecio;

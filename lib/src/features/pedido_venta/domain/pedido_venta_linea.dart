@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
 
 part 'pedido_venta_linea.freezed.dart';
 
@@ -12,7 +13,8 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     required String articuloId,
     String? articuloDescription,
     required double cantidad,
-    required double precioDivisa,
+    required Money precioDivisa,
+    required String divisaId,
     double? tipoPrecio,
     required double descuento1,
     required double descuento2,

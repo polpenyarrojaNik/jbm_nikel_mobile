@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
 import '../../pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
@@ -31,7 +32,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
   factory ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloPedidoVentaLineaDTOFromJson(json);
 
-  ArticuloPedidoVentaLinea toDomain() {
+  ArticuloPedidoVentaLinea toDomain({required String divisaId}) {
     return ArticuloPedidoVentaLinea(
         empresaId: empresaId,
         pedidoVentaId: pedidoVentaId,
@@ -41,7 +42,8 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
         clienteId: clienteId,
         nombreCliente: nombreCliente,
         cantidad: cantidad,
-        precioDivisa: precioDivisa,
+        precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
+        divisaId: divisaId,
         tipoPrecio: tipoPrecio,
         descuento1: descuento1,
         descuento2: descuento2,

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
 
 part 'estadisticas_ultimos_precios.freezed.dart';
 
@@ -10,7 +11,8 @@ class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
       String? nombreCliente,
       required String articuloId,
       required DateTime fecha,
-      required double precioDivisa,
+      required Money precioDivisa,
+      required String divisaId,
       required double tipoPrecio,
       required double descuento1,
       required double descuento2,

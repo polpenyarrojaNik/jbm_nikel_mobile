@@ -31,6 +31,8 @@ mixin _$ArticuloPrecioTarifaDTO {
   double get cantidadDesDe => throw _privateConstructorUsedError;
   @JsonKey(name: 'PRECIO')
   double get precio => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO')
   double? get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -55,6 +57,7 @@ abstract class $ArticuloPrecioTarifaDTOCopyWith<$Res> {
       @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
       @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
       @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -76,6 +79,7 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
     Object? tarifaDescripcion = freezed,
     Object? cantidadDesDe = freezed,
     Object? precio = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -101,6 +105,10 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -130,6 +138,7 @@ abstract class _$$_ArticuloPrecioTarifaDTOCopyWith<$Res>
       @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
       @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
       @JsonKey(name: 'PRECIO') double precio,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -154,6 +163,7 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
     Object? tarifaDescripcion = freezed,
     Object? cantidadDesDe = freezed,
     Object? precio = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -179,6 +189,10 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -204,6 +218,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
       @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
       @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesDe,
       @JsonKey(name: 'PRECIO') required this.precio,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
       @JsonKey(name: 'TIPO_PRECIO') this.tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
@@ -228,6 +243,9 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
   @JsonKey(name: 'PRECIO')
   final double precio;
   @override
+  @JsonKey(name: 'DIVISA_ID')
+  final String divisaId;
+  @override
   @JsonKey(name: 'TIPO_PRECIO')
   final double? tipoPrecio;
   @override
@@ -239,7 +257,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
 
   @override
   String toString() {
-    return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesDe: $cantidadDesDe, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesDe: $cantidadDesDe, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -255,6 +273,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
             const DeepCollectionEquality()
                 .equals(other.cantidadDesDe, cantidadDesDe) &&
             const DeepCollectionEquality().equals(other.precio, precio) &&
+            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
                 .equals(other.tipoPrecio, tipoPrecio) &&
             const DeepCollectionEquality()
@@ -271,6 +290,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
       const DeepCollectionEquality().hash(tarifaDescripcion),
       const DeepCollectionEquality().hash(cantidadDesDe),
       const DeepCollectionEquality().hash(precio),
+      const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(tipoPrecio),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -297,6 +317,7 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
           @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
           @JsonKey(name: 'CANTIDAD_DESDE') required final double cantidadDesDe,
           @JsonKey(name: 'PRECIO') required final double precio,
+          @JsonKey(name: 'DIVISA_ID') required final String divisaId,
           @JsonKey(name: 'TIPO_PRECIO') final double? tipoPrecio,
           @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
           @JsonKey(name: 'DELETED') final String deleted}) =
@@ -321,6 +342,9 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   @override
   @JsonKey(name: 'PRECIO')
   double get precio;
+  @override
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
   double? get tipoPrecio;

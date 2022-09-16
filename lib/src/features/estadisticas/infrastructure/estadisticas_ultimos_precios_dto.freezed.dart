@@ -29,6 +29,8 @@ mixin _$EstadisticasUltimosPreciosDTO {
   DateTime get fecha => throw _privateConstructorUsedError;
   @JsonKey(name: 'PRECIO_DIVISA')
   double get precioDivisa => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO')
   double get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCUENTO1')
@@ -59,6 +61,7 @@ abstract class $EstadisticasUltimosPreciosDTOCopyWith<$Res> {
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'FECHA') DateTime fecha,
       @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'TIPO_PRECIO') double tipoPrecio,
       @JsonKey(name: 'DESCUENTO1') double descuento1,
       @JsonKey(name: 'DESCUENTO2') double descuento2,
@@ -82,6 +85,7 @@ class _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
@@ -106,6 +110,10 @@ class _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
               as double,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -147,6 +155,7 @@ abstract class _$$_EstadisticasUltimosPreciosDTOCopyWith<$Res>
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'FECHA') DateTime fecha,
       @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
+      @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'TIPO_PRECIO') double tipoPrecio,
       @JsonKey(name: 'DESCUENTO1') double descuento1,
       @JsonKey(name: 'DESCUENTO2') double descuento2,
@@ -174,6 +183,7 @@ class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
@@ -198,6 +208,10 @@ class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
               as double,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -234,6 +248,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'FECHA') required this.fecha,
       @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId,
       @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
       @JsonKey(name: 'DESCUENTO1') required this.descuento1,
       @JsonKey(name: 'DESCUENTO2') required this.descuento2,
@@ -259,6 +274,9 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
   @JsonKey(name: 'PRECIO_DIVISA')
   final double precioDivisa;
   @override
+  @JsonKey(name: 'DIVISA_ID')
+  final String divisaId;
+  @override
   @JsonKey(name: 'TIPO_PRECIO')
   final double tipoPrecio;
   @override
@@ -279,7 +297,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
 
   @override
   String toString() {
-    return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, fecha: $fecha, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -293,6 +311,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
             const DeepCollectionEquality().equals(other.fecha, fecha) &&
             const DeepCollectionEquality()
                 .equals(other.precioDivisa, precioDivisa) &&
+            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
                 .equals(other.tipoPrecio, tipoPrecio) &&
             const DeepCollectionEquality()
@@ -314,6 +333,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(fecha),
       const DeepCollectionEquality().hash(precioDivisa),
+      const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(tipoPrecio),
       const DeepCollectionEquality().hash(descuento1),
       const DeepCollectionEquality().hash(descuento2),
@@ -342,6 +362,7 @@ abstract class _EstadisticasUltimosPreciosDTO
           @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
           @JsonKey(name: 'FECHA') required final DateTime fecha,
           @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
+          @JsonKey(name: 'DIVISA_ID') required final String divisaId,
           @JsonKey(name: 'TIPO_PRECIO') required final double tipoPrecio,
           @JsonKey(name: 'DESCUENTO1') required final double descuento1,
           @JsonKey(name: 'DESCUENTO2') required final double descuento2,
@@ -366,6 +387,9 @@ abstract class _EstadisticasUltimosPreciosDTO
   @override
   @JsonKey(name: 'PRECIO_DIVISA')
   double get precioDivisa;
+  @override
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
   double get tipoPrecio;

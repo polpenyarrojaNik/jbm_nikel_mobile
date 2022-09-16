@@ -20,7 +20,8 @@ mixin _$EstadisticasUltimosPrecios {
   String? get nombreCliente => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
-  double get precioDivisa => throw _privateConstructorUsedError;
+  Money get precioDivisa => throw _privateConstructorUsedError;
+  String get divisaId => throw _privateConstructorUsedError;
   double get tipoPrecio => throw _privateConstructorUsedError;
   double get descuento1 => throw _privateConstructorUsedError;
   double get descuento2 => throw _privateConstructorUsedError;
@@ -43,7 +44,8 @@ abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
       String? nombreCliente,
       String articuloId,
       DateTime fecha,
-      double precioDivisa,
+      Money precioDivisa,
+      String divisaId,
       double tipoPrecio,
       double descuento1,
       double descuento2,
@@ -68,6 +70,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
@@ -95,7 +98,11 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
       precioDivisa: precioDivisa == freezed
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -137,7 +144,8 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
       String? nombreCliente,
       String articuloId,
       DateTime fecha,
-      double precioDivisa,
+      Money precioDivisa,
+      String divisaId,
       double tipoPrecio,
       double descuento1,
       double descuento2,
@@ -166,6 +174,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
+    Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
@@ -193,7 +202,11 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
       precioDivisa: precioDivisa == freezed
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -231,6 +244,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
       required this.articuloId,
       required this.fecha,
       required this.precioDivisa,
+      required this.divisaId,
       required this.tipoPrecio,
       required this.descuento1,
       required this.descuento2,
@@ -248,7 +262,9 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   @override
   final DateTime fecha;
   @override
-  final double precioDivisa;
+  final Money precioDivisa;
+  @override
+  final String divisaId;
   @override
   final double tipoPrecio;
   @override
@@ -264,7 +280,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 
   @override
   String toString() {
-    return 'EstadisticasUltimosPrecios(clienteId: $clienteId, nombreCliente: $nombreCliente, articuloId: $articuloId, fecha: $fecha, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasUltimosPrecios(clienteId: $clienteId, nombreCliente: $nombreCliente, articuloId: $articuloId, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -280,6 +296,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
             const DeepCollectionEquality().equals(other.fecha, fecha) &&
             const DeepCollectionEquality()
                 .equals(other.precioDivisa, precioDivisa) &&
+            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
                 .equals(other.tipoPrecio, tipoPrecio) &&
             const DeepCollectionEquality()
@@ -301,6 +318,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(fecha),
       const DeepCollectionEquality().hash(precioDivisa),
+      const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(tipoPrecio),
       const DeepCollectionEquality().hash(descuento1),
       const DeepCollectionEquality().hash(descuento2),
@@ -321,7 +339,8 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
       final String? nombreCliente,
       required final String articuloId,
       required final DateTime fecha,
-      required final double precioDivisa,
+      required final Money precioDivisa,
+      required final String divisaId,
       required final double tipoPrecio,
       required final double descuento1,
       required final double descuento2,
@@ -339,7 +358,9 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   @override
   DateTime get fecha;
   @override
-  double get precioDivisa;
+  Money get precioDivisa;
+  @override
+  String get divisaId;
   @override
   double get tipoPrecio;
   @override
