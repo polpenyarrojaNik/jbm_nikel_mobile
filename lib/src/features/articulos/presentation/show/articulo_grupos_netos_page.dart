@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -20,24 +21,10 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            expandedHeight: 125,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: false,
-              expandedTitleScale: 1,
-              titlePadding: const EdgeInsets.all(16),
-              title: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(articuloId,
-                      style: Theme.of(context).textTheme.subtitle2),
-                  Text(description,
-                      style: Theme.of(context).textTheme.bodyText2),
-                ],
-              ),
-            ),
-            title: const Text('Grupos Netos'),
+          AppBarDatosRelacionados(
+            title: 'Grupos Netos',
+            entityId: articuloId,
+            subtitle: description,
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -57,7 +44,7 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
                             itemCount: articuloGrupoNetoList.length,
                           )
                         : const Center(
-                            child: Text('No results'),
+                            child: Text('Sin resultados'),
                           ),
               ),
             ),
