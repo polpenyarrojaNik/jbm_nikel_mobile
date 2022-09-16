@@ -18,36 +18,51 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloGrupoNetoPriceListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Grupos Netos'),
-        bottom: AppBar(
-          title: Column(
-            children: [
-              Text(articuloId),
-              Text(description, style: Theme.of(context).textTheme.bodyText2),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: 125,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: false,
+              expandedTitleScale: 1,
+              titlePadding: const EdgeInsets.all(16),
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(articuloId,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  Text(description,
+                      style: Theme.of(context).textTheme.bodyText2),
+                ],
+              ),
+            ),
+            title: const Text('Grupos Netos'),
           ),
-          automaticallyImplyLeading: false,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: state.maybeWhen(
-          orElse: () => const ProgressIndicatorWidget(),
-          error: (e, st) => ErrorMessageWidget(e.toString()),
-          data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
-              ? ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, _) => const Divider(),
-                  itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-                    articuloGrupoNeto: articuloGrupoNetoList[i],
-                  ),
-                  itemCount: articuloGrupoNetoList.length,
-                )
-              : const Center(
-                  child: Text('No results'),
-                ),
-        ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: state.maybeWhen(
+                orElse: () => const ProgressIndicatorWidget(),
+                error: (e, st) => ErrorMessageWidget(e.toString()),
+                data: (articuloGrupoNetoList) =>
+                    (articuloGrupoNetoList.isNotEmpty)
+                        ? ListView.separated(
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            separatorBuilder: (context, _) => const Divider(),
+                            itemBuilder: (context, i) => ArticuloGrupoNetoTile(
+                              articuloGrupoNeto: articuloGrupoNetoList[i],
+                            ),
+                            itemCount: articuloGrupoNetoList.length,
+                          )
+                        : const Center(
+                            child: Text('No results'),
+                          ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
