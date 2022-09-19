@@ -47,11 +47,14 @@ class ArticuloDocumentoPage extends ConsumerWidget {
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
-                ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      childCount: articuloDocumentoList.length,
-                      (context, i) => ArticuloDocumentoTile(
-                        articuloDocumento: articuloDocumentoList[i],
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: articuloDocumentoList.length,
+                        (context, i) => ArticuloDocumentoTile(
+                          articuloDocumento: articuloDocumentoList[i],
+                        ),
                       ),
                     ),
                   )
