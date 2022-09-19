@@ -44,6 +44,7 @@ dependencies:
   material_color_utilities:
   dynamic_color: ^1.5.4
   cached_network_image: ^3.2.2
+  flutter_archive: ^5.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.1

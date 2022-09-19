@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
+import 'package:flutter_archive/flutter_archive.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
@@ -123,9 +124,15 @@ class SyncService {
     RandomAccessFile? raf;
 
     try {
-      final File file = File((join(directory.path, localDatabaseName)));
+      final temporalyDirectory = await getTemporaryDirectory();
+      final File file =
+          File((join(temporalyDirectory.path, localDatabaseName)));
       final raf = file.openSync(mode: FileMode.write);
       raf.writeFromSync(data);
+
+      await ZipFile.extractToDirectory(
+          zipFile: file, destinationDir: directory);
+      file.deleteSync(recursive: true);
     } catch (e) {
       rethrow;
     } finally {
