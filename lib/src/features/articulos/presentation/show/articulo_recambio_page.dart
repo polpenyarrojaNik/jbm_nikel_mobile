@@ -27,21 +27,23 @@ class ArticuloRecambioPage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloRecambioList) => (articuloRecambioList.isNotEmpty)
-                ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      childCount: articuloRecambioList.length,
-                      (context, i) => ArticuloRecambioTile(
-                        articuloRecambio: articuloRecambioList[i],
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: articuloRecambioList.length,
+                        (context, i) => ArticuloRecambioTile(
+                          articuloRecambio: articuloRecambioList[i],
+                        ),
                       ),
-                    ),
-                  )
+                    ))
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -82,6 +84,7 @@ class ArticuloRecambioTile extends StatelessWidget {
             ],
           ),
           Text(articuloRecambio.descripcion),
+          const Divider(),
         ],
       ),
     );

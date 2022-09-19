@@ -27,21 +27,23 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
-                ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      childCount: articuloGrupoNetoList.length,
-                      (context, i) => ArticuloGrupoNetoTile(
-                        articuloGrupoNeto: articuloGrupoNetoList[i],
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: articuloGrupoNetoList.length,
+                        (context, i) => ArticuloGrupoNetoTile(
+                          articuloGrupoNeto: articuloGrupoNetoList[i],
+                        ),
                       ),
-                    ),
-                  )
+                    ))
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -66,39 +68,42 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  articuloGrupoNeto.grupoNetoId,
-                  style: Theme.of(context).textTheme.subtitle2,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      articuloGrupoNeto.grupoNetoId,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                    if (articuloGrupoNeto.grupoNetoDescripcion != null)
+                      Text(
+                        articuloGrupoNeto.grupoNetoDescripcion!,
+                      ),
+                    if (articuloGrupoNeto.cantidadDesDe != 1)
+                      Text(
+                        '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesDe)}',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                  ],
                 ),
-                if (articuloGrupoNeto.grupoNetoDescripcion != null)
-                  Text(
-                    articuloGrupoNeto.grupoNetoDescripcion!,
-                  ),
-                if (articuloGrupoNeto.cantidadDesDe != 1)
-                  Text(
-                    '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesDe)}',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        color: Theme.of(context).textTheme.caption?.color),
-                  ),
-              ],
-            ),
+              ),
+              Text(
+                formatPrecios(
+                    precio: articuloGrupoNeto.precio,
+                    tipoPrecio: articuloGrupoNeto.tipoPrecio),
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                    color: Theme.of(context).textTheme.caption?.color),
+              ),
+            ],
           ),
-          Text(
-            formatPrecios(
-                precio: articuloGrupoNeto.precio,
-                tipoPrecio: articuloGrupoNeto.tipoPrecio),
-            style: Theme.of(context)
-                .textTheme
-                .bodyText2
-                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
-          ),
+          const Divider(),
         ],
       ),
     );

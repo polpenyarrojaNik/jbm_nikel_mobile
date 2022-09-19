@@ -29,7 +29,6 @@ class ArticuloDocumentoPage extends ConsumerWidget {
           initial: () => null);
     });
     final state = ref.watch(articuloDocumentListProvider(articuloId));
-    final stateOpenFile = ref.watch(articuloDocumentoControllerProvider);
 
     return Scaffold(
       body: CustomScrollView(
@@ -40,10 +39,10 @@ class ArticuloDocumentoPage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
@@ -69,32 +68,6 @@ class ArticuloDocumentoPage extends ConsumerWidget {
           ),
         ],
       ),
-      // Padding(
-      //   padding: const EdgeInsets.all(16),
-      //   child: state.maybeWhen(
-      //     orElse: () => const ProgressIndicatorWidget(),
-      //     error: (e, st) => ErrorMessageWidget(e.toString()),
-      //     data: (articuloDocumentoLista) => (articuloDocumentoLista.isNotEmpty)
-      //         ? Column(
-      //             children: [
-      //               stateOpenFile.maybeWhen(
-      //                 orElse: () => Container(),
-      //                 loading: () => const ProgressIndicatorWidget(),
-      //               ),
-      //               Expanded(
-      //                 child: ListView.builder(
-      //                   shrinkWrap: true,
-      //                   itemBuilder: (context, i) => ArticuloDocumentoTile(
-      //                     articuloDocumento: articuloDocumentoLista[i],
-      //                   ),
-      //                   itemCount: articuloDocumentoLista.length,
-      //                 ),
-      //               ),
-      //             ],
-      //           )
-      //         : const Center(child: Text('Sin resultado')),
-      //   ),
-      // ),
     );
   }
 }

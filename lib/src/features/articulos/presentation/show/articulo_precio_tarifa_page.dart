@@ -27,22 +27,24 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloPrecioTarifaList) =>
                 (articuloPrecioTarifaList.isNotEmpty)
-                    ? SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          childCount: articuloPrecioTarifaList.length,
-                          (context, i) => ArticuloPrecioTarifaTile(
-                            articuloPrecioTarifa: articuloPrecioTarifaList[i],
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: articuloPrecioTarifaList.length,
+                            (context, i) => ArticuloPrecioTarifaTile(
+                              articuloPrecioTarifa: articuloPrecioTarifaList[i],
+                            ),
                           ),
-                        ),
-                      )
+                        ))
                     : SliverFillRemaining(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -68,34 +70,37 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  articuloPrecioTarifa.tarifaDescripcion ?? '',
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      articuloPrecioTarifa.tarifaDescripcion ?? '',
+                    ),
+                    if (articuloPrecioTarifa.cantidadDesDe != 1)
+                      Text(
+                        '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesDe)}',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                  ],
                 ),
-                if (articuloPrecioTarifa.cantidadDesDe != 1)
-                  Text(
-                    '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesDe)}',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        color: Theme.of(context).textTheme.caption?.color),
-                  ),
-              ],
-            ),
+              ),
+              Text(
+                formatPrecios(
+                    precio: articuloPrecioTarifa.precio,
+                    tipoPrecio: articuloPrecioTarifa.tipoPrecio),
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                    color: Theme.of(context).textTheme.caption?.color),
+              ),
+            ],
           ),
-          Text(
-            formatPrecios(
-                precio: articuloPrecioTarifa.precio,
-                tipoPrecio: articuloPrecioTarifa.tipoPrecio),
-            style: Theme.of(context)
-                .textTheme
-                .bodyText2
-                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
-          ),
+          const Divider(),
         ],
       ),
     );

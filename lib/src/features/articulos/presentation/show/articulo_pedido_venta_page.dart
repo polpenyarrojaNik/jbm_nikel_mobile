@@ -28,22 +28,30 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloPedidoVentaLineaList) =>
                 (articuloPedidoVentaLineaList.isNotEmpty)
-                    ? SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          childCount: articuloPedidoVentaLineaList.length,
-                          (context, i) => ArticuloPedidoVentaLineaTile(
-                            pedidoVentaLinea: articuloPedidoVentaLineaList[i],
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: articuloPedidoVentaLineaList.length,
+                            (context, i) => Column(
+                              children: [
+                                ArticuloPedidoVentaLineaTile(
+                                  pedidoVentaLinea:
+                                      articuloPedidoVentaLineaList[i],
+                                ),
+                                const Divider(),
+                              ],
+                            ),
                           ),
-                        ),
-                      )
+                        ))
                     : SliverFillRemaining(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

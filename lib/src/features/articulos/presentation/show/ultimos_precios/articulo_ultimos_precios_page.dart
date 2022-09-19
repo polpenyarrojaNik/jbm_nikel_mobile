@@ -90,14 +90,16 @@ class _ArticuloUltimosPreciosPageState
           ),
           state.when(
             data: (ultimosPreciosList) => (ultimosPreciosList.isNotEmpty)
-                ? SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      childCount: ultimosPreciosList.length,
-                      (context, i) => UltimosPreciosTile(
-                        ultimosPrecios: ultimosPreciosList[i],
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: ultimosPreciosList.length,
+                        (context, i) => UltimosPreciosTile(
+                          ultimosPrecios: ultimosPreciosList[i],
+                        ),
                       ),
-                    ),
-                  )
+                    ))
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -106,10 +108,10 @@ class _ArticuloUltimosPreciosPageState
                       ],
                     ),
                   ),
-            error: (e, _) => SliverToBoxAdapter(
+            error: (e, _) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
-            loading: () => const SliverToBoxAdapter(
+            loading: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
           ),
@@ -129,46 +131,52 @@ class UltimosPreciosTile extends StatelessWidget {
     return IntrinsicHeight(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            SizedBox(
-              width: 65,
-              child: Text(
-                dateFormatter(ultimosPrecios.fecha.toLocal().toIso8601String()),
-                style: Theme.of(context).textTheme.caption?.copyWith(
-                    color: Theme.of(context).textTheme.bodyText2?.color),
-              ),
-            ),
-            const VerticalDivider(),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 65,
+                  child: Text(
+                    dateFormatter(
+                        ultimosPrecios.fecha.toLocal().toIso8601String()),
+                    style: Theme.of(context).textTheme.caption?.copyWith(
+                        color: Theme.of(context).textTheme.bodyText2?.color),
+                  ),
+                ),
+                const VerticalDivider(),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Text(
+                        formatPrecioYDescuento(
+                          precio: ultimosPrecios.precioDivisa,
+                          tipoPrecio: ultimosPrecios.tipoPrecio,
+                          descuento1: ultimosPrecios.descuento1,
+                          descuento2: ultimosPrecios.descuento2,
+                          descuento3: ultimosPrecios.descuento3,
+                        ),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                    ],
                   ),
-                  Text(
-                    formatPrecioYDescuento(
-                      precio: ultimosPrecios.precioDivisa,
-                      tipoPrecio: ultimosPrecios.tipoPrecio,
-                      descuento1: ultimosPrecios.descuento1,
-                      descuento2: ultimosPrecios.descuento2,
-                      descuento3: ultimosPrecios.descuento3,
-                    ),
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        color: Theme.of(context).textTheme.caption?.color),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+            const Divider(),
           ],
         ),
       ),

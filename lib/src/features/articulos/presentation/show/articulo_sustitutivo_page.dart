@@ -26,22 +26,24 @@ class ArticuloSustitutivoPage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloSustitutivoList) =>
                 (articuloSustitutivoList.isNotEmpty)
-                    ? SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          childCount: articuloSustitutivoList.length,
-                          (context, i) => ArticuloSustitutivoTile(
-                            articuloSustitutivo: articuloSustitutivoList[i],
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: articuloSustitutivoList.length,
+                            (context, i) => ArticuloSustitutivoTile(
+                              articuloSustitutivo: articuloSustitutivoList[i],
+                            ),
                           ),
-                        ),
-                      )
+                        ))
                     : SliverFillRemaining(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -73,6 +75,7 @@ class ArticuloSustitutivoTile extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle2),
           if (articuloSustitutivo.articuloSustitutivoDescription != null)
             Text(articuloSustitutivo.articuloSustitutivoDescription!),
+          const Divider(),
         ],
       ),
     );

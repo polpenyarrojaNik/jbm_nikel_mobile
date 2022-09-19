@@ -27,22 +27,24 @@ class ArticuloComponentePage extends ConsumerWidget {
             subtitle: description,
           ),
           state.maybeWhen(
-            orElse: () => const SliverToBoxAdapter(
+            orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverToBoxAdapter(
+            error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloComponenteList) =>
                 (articuloComponenteList.isNotEmpty)
-                    ? SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          childCount: articuloComponenteList.length,
-                          (context, i) => ArticuloComponenteTile(
-                            articuloComponente: articuloComponenteList[i],
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: articuloComponenteList.length,
+                            (context, i) => ArticuloComponenteTile(
+                              articuloComponente: articuloComponenteList[i],
+                            ),
                           ),
-                        ),
-                      )
+                        ))
                     : SliverFillRemaining(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -85,6 +87,7 @@ class ArticuloComponenteTile extends StatelessWidget {
             Text(
               articuloComponente.articuloComponenteDescripcion!,
             ),
+          const Divider(),
         ],
       ),
     );
