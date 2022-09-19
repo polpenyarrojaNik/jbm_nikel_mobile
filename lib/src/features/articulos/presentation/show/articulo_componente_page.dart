@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componen
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
@@ -18,36 +19,40 @@ class ArticuloComponentePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloComponenteListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Componentes'),
-        bottom: AppBar(
-          title: Column(
-            children: [
-              Text(articuloId),
-              Text(description, style: Theme.of(context).textTheme.bodyText2),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: 'Componentes',
+            entityId: articuloId,
+            subtitle: description,
           ),
-          automaticallyImplyLeading: false,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: state.maybeWhen(
-          orElse: () => const ProgressIndicatorWidget(),
-          error: (e, st) => ErrorMessageWidget(e.toString()),
-          data: (articuloComponenteList) => (articuloComponenteList.isNotEmpty)
-              ? ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, _) => const Divider(),
-                  itemBuilder: (context, i) => ArticuloComponenteTile(
-                    articuloComponente: articuloComponenteList[i],
-                  ),
-                  itemCount: articuloComponenteList.length,
-                )
-              : const Center(
-                  child: Text('Sin resultado'),
-                ),
-        ),
+          state.maybeWhen(
+            orElse: () => const SliverToBoxAdapter(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverToBoxAdapter(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (articuloComponenteList) =>
+                (articuloComponenteList.isNotEmpty)
+                    ? SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          childCount: articuloComponenteList.length,
+                          (context, i) => ArticuloComponenteTile(
+                            articuloComponente: articuloComponenteList[i],
+                          ),
+                        ),
+                      )
+                    : SliverFillRemaining(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text('Sin resultados'),
+                          ],
+                        ),
+                      ),
+          ),
+        ],
       ),
     );
   }

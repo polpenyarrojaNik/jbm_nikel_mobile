@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articu
 import 'package:open_file/open_file.dart';
 
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/toasts.dart';
@@ -31,44 +32,66 @@ class ArticuloDocumentoPage extends ConsumerWidget {
     final stateOpenFile = ref.watch(articuloDocumentoControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Documentos'),
-        bottom: AppBar(
-          title: Column(
-            children: [
-              Text(articuloId),
-              Text(description, style: Theme.of(context).textTheme.bodyText2),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: 'Documentos',
+            entityId: articuloId,
+            subtitle: description,
           ),
-          automaticallyImplyLeading: false,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: state.maybeWhen(
-          orElse: () => const ProgressIndicatorWidget(),
-          error: (e, st) => ErrorMessageWidget(e.toString()),
-          data: (articuloDocumentoLista) => (articuloDocumentoLista.isNotEmpty)
-              ? Column(
-                  children: [
-                    stateOpenFile.maybeWhen(
-                      orElse: () => Container(),
-                      loading: () => const ProgressIndicatorWidget(),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemBuilder: (context, i) => ArticuloDocumentoTile(
-                          articuloDocumento: articuloDocumentoLista[i],
-                        ),
-                        itemCount: articuloDocumentoLista.length,
+          state.maybeWhen(
+            orElse: () => const SliverToBoxAdapter(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverToBoxAdapter(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
+                ? SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: articuloDocumentoList.length,
+                      (context, i) => ArticuloDocumentoTile(
+                        articuloDocumento: articuloDocumentoList[i],
                       ),
                     ),
-                  ],
-                )
-              : const Center(child: Text('Sin resultado')),
-        ),
+                  )
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Sin resultados'),
+                      ],
+                    ),
+                  ),
+          ),
+        ],
       ),
+      // Padding(
+      //   padding: const EdgeInsets.all(16),
+      //   child: state.maybeWhen(
+      //     orElse: () => const ProgressIndicatorWidget(),
+      //     error: (e, st) => ErrorMessageWidget(e.toString()),
+      //     data: (articuloDocumentoLista) => (articuloDocumentoLista.isNotEmpty)
+      //         ? Column(
+      //             children: [
+      //               stateOpenFile.maybeWhen(
+      //                 orElse: () => Container(),
+      //                 loading: () => const ProgressIndicatorWidget(),
+      //               ),
+      //               Expanded(
+      //                 child: ListView.builder(
+      //                   shrinkWrap: true,
+      //                   itemBuilder: (context, i) => ArticuloDocumentoTile(
+      //                     articuloDocumento: articuloDocumentoLista[i],
+      //                   ),
+      //                   itemCount: articuloDocumentoLista.length,
+      //                 ),
+      //               ),
+      //             ],
+      //           )
+      //         : const Center(child: Text('Sin resultado')),
+      //   ),
+      // ),
     );
   }
 }

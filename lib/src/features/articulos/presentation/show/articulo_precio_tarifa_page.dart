@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_t
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
@@ -18,35 +19,40 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloPrecioTarifaListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Precios Tarifa'),
-        bottom: AppBar(
-          title: Column(
-            children: [
-              Text(articuloId),
-              Text(description, style: Theme.of(context).textTheme.bodyText2),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: 'Precios tarifa',
+            entityId: articuloId,
+            subtitle: description,
           ),
-          automaticallyImplyLeading: false,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: state.maybeWhen(
-          orElse: () => const ProgressIndicatorWidget(),
-          error: (e, st) => ErrorMessageWidget(e.toString()),
-          data: (articuloPrecioTarifaList) =>
-              (articuloPrecioTarifaList.isNotEmpty)
-                  ? ListView.separated(
-                      shrinkWrap: true,
-                      separatorBuilder: (context, _) => const Divider(),
-                      itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
-                        articuloPrecioTarifa: articuloPrecioTarifaList[i],
+          state.maybeWhen(
+            orElse: () => const SliverToBoxAdapter(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverToBoxAdapter(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (articuloPrecioTarifaList) =>
+                (articuloPrecioTarifaList.isNotEmpty)
+                    ? SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          childCount: articuloPrecioTarifaList.length,
+                          (context, i) => ArticuloPrecioTarifaTile(
+                            articuloPrecioTarifa: articuloPrecioTarifaList[i],
+                          ),
+                        ),
+                      )
+                    : SliverFillRemaining(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text('Sin resultados'),
+                          ],
+                        ),
                       ),
-                      itemCount: articuloPrecioTarifaList.length,
-                    )
-                  : const Center(child: Text('Sin resultado')),
-        ),
+          ),
+        ],
       ),
     );
   }

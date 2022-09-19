@@ -25,28 +25,31 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
             title: 'Grupos Netos',
             entityId: articuloId,
             subtitle: description,
-            searchTitle: 'Search in',
-            onChanged: (a) => {},
           ),
-          SliverToBoxAdapter(
-            child: state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloGrupoNetoList) =>
-                  (articuloGrupoNetoList.isNotEmpty)
-                      ? ListView.separated(
-                          shrinkWrap: true,
-                          // physics: const BouncingScrollPhysics(),
-                          separatorBuilder: (context, _) => const Divider(),
-                          itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-                            articuloGrupoNeto: articuloGrupoNetoList[i],
-                          ),
-                          itemCount: articuloGrupoNetoList.length,
-                        )
-                      : const Center(
-                          child: Text('Sin resultados'),
-                        ),
+          state.maybeWhen(
+            orElse: () => const SliverToBoxAdapter(
+              child: ProgressIndicatorWidget(),
             ),
+            error: (e, st) => SliverToBoxAdapter(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
+                ? SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: articuloGrupoNetoList.length,
+                      (context, i) => ArticuloGrupoNetoTile(
+                        articuloGrupoNeto: articuloGrupoNetoList[i],
+                      ),
+                    ),
+                  )
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Sin resultados'),
+                      ],
+                    ),
+                  ),
           ),
         ],
       ),

@@ -88,23 +88,29 @@ class _ArticuloUltimosPreciosPageState
               });
             },
           ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: state.when(
-                data: (ultimosPreciosLista) => (ultimosPreciosLista.isEmpty)
-                    ? const Center(child: Text('Sin resultado'))
-                    : ListView.separated(
-                        shrinkWrap: true,
-                        physics: const BouncingScrollPhysics(),
-                        separatorBuilder: (context, i) => const Divider(),
-                        itemBuilder: (context, i) => UltimosPreciosTile(
-                            ultimosPrecios: ultimosPreciosLista[i]),
-                        itemCount: ultimosPreciosLista.length,
+          state.when(
+            data: (ultimosPreciosList) => (ultimosPreciosList.isNotEmpty)
+                ? SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: ultimosPreciosList.length,
+                      (context, i) => UltimosPreciosTile(
+                        ultimosPrecios: ultimosPreciosList[i],
                       ),
-                error: (e, _) => ErrorMessageWidget(e.toString()),
-                loading: () => const ProgressIndicatorWidget(),
-              ),
+                    ),
+                  )
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Sin resultados'),
+                      ],
+                    ),
+                  ),
+            error: (e, _) => SliverToBoxAdapter(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            loading: () => const SliverToBoxAdapter(
+              child: ProgressIndicatorWidget(),
             ),
           ),
         ],
