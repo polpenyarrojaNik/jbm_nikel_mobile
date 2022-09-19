@@ -35,7 +35,6 @@ class AppDrawer extends StatelessWidget {
             onTap: () => context.goNamed(AppRoutes.articuloindex.name),
           ),
           ListTile(
-            enabled: false,
             leading: const Icon(
               Icons.person,
               size: 30,

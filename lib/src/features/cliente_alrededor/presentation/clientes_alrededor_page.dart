@@ -26,6 +26,13 @@ class ClientesAlrededorPage extends StatefulWidget {
 
 class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
   double radiusKm = 1000;
+
+  @override
+  void initState() {
+    super.initState();
+    radiusKm = 1000;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +42,9 @@ class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           GoogleMapsContainer(radiusKm: radiusKm),
-          SliderKm(onSliderChanged: onSliderChanged, radiusKm: radiusKm)
+          SliderKm(
+              onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
+              radiusKm: radiusKm)
         ],
       ),
     );
@@ -172,15 +181,17 @@ class SliderKm extends StatelessWidget {
           ),
           DecoratedBox(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.background,
               borderRadius: BorderRadius.circular(4),
               border: Border.all(width: 0.5),
             ),
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: Text(
                 '${(radiusKm / 1000).round().toString()} Km',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground),
               ),
             ),
           )

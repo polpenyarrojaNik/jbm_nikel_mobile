@@ -28,7 +28,7 @@ class SplashPage extends ConsumerWidget {
     return Scaffold(
         body: AsyncValueWidget<void>(
       value: splashPageValue,
-      data: (_) => const Center(child: Text('Initialized')),
+      data: (_) => Container(),
     ));
   }
 }

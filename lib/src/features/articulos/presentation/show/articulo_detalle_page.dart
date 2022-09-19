@@ -82,7 +82,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
             ),
           ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -102,29 +102,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
             ],
           ),
         ),
-        if (getSummaryInLocalLanguage(articulo: articulo) != null)
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Text(
-                    getSummaryInLocalLanguage(articulo: articulo)!,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () =>
-                      showAllResumenes(context: context, articulo: articulo),
-                  icon: const Icon(Icons.info),
-                  visualDensity:
-                      const VisualDensity(vertical: -4, horizontal: -4),
-                )
-              ],
-            ),
-          ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
             (articulo.subfamilia != null)
                 ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
@@ -132,6 +111,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
             style: Theme.of(context).textTheme.caption,
           ),
         ),
+        if (getSummaryInLocalLanguage(articulo: articulo) != null)
+          SummaryTextWidget(articulo: articulo),
         const MobileCustomSeparators(separatorTitle: 'Stock y Entregas'),
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -419,14 +400,6 @@ class _ArticuloInfoContainer extends StatelessWidget {
       builder: (context) => _ArticleDescriptionDialog(articulo: articulo),
     );
   }
-
-  void showAllResumenes(
-      {required BuildContext context, required Articulo articulo}) {
-    showDialog(
-      context: context,
-      builder: (context) => _ArticluloResumenDialog(articulo: articulo),
-    );
-  }
 }
 
 class _ArticleDescriptionDialog extends StatelessWidget {
@@ -450,91 +423,91 @@ class _ArticleDescriptionDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _DescriptionResumenRow(
-              title: 'Desc. ES: ',
+              title: 'ES: ',
               description: articulo.descripcionES,
             ),
             const Divider(),
             if (articulo.descripcionEN != null)
               _DescriptionResumenRow(
-                title: 'Desc. EN: ',
+                title: 'EN: ',
                 description: articulo.descripcionEN,
               ),
             if (articulo.descripcionEN != null) const Divider(),
             if (articulo.descripcionFR != null)
               _DescriptionResumenRow(
-                title: 'Desc. FR: ',
+                title: 'FR: ',
                 description: articulo.descripcionFR,
               ),
             if (articulo.descripcionFR != null) const Divider(),
             if (articulo.descripcionDE != null)
               _DescriptionResumenRow(
-                title: 'Desc. DE: ',
+                title: 'DE: ',
                 description: articulo.descripcionDE,
               ),
             if (articulo.descripcionDE != null) const Divider(),
             if (articulo.descripcionCA != null)
               _DescriptionResumenRow(
-                title: 'Desc. CA: ',
+                title: 'CA: ',
                 description: articulo.descripcionCA,
               ),
             if (articulo.descripcionCA != null) const Divider(),
             if (articulo.descripcionGB != null)
               _DescriptionResumenRow(
-                title: 'Desc. GB: ',
+                title: 'GB: ',
                 description: articulo.descripcionGB,
               ),
             if (articulo.descripcionGB != null) const Divider(),
             if (articulo.descripcionHU != null)
               _DescriptionResumenRow(
-                title: 'Desc. HU: ',
+                title: 'HU: ',
                 description: articulo.descripcionHU,
               ),
             if (articulo.descripcionHU != null) const Divider(),
             if (articulo.descripcionIT != null)
               _DescriptionResumenRow(
-                title: 'Desc. IT: ',
+                title: 'IT: ',
                 description: articulo.descripcionIT,
               ),
             if (articulo.descripcionIT != null) const Divider(),
             if (articulo.descripcionNL != null)
               _DescriptionResumenRow(
-                title: 'Desc. NL: ',
+                title: 'NL: ',
                 description: articulo.descripcionNL,
               ),
             if (articulo.descripcionNL != null) const Divider(),
             if (articulo.descripcionPL != null)
               _DescriptionResumenRow(
-                title: 'Desc. PL: ',
+                title: 'PL: ',
                 description: articulo.descripcionPL,
               ),
             if (articulo.descripcionPL != null) const Divider(),
             if (articulo.descripcionPT != null)
               _DescriptionResumenRow(
-                title: 'Desc. PT: ',
+                title: 'PT: ',
                 description: articulo.descripcionPT,
               ),
             if (articulo.descripcionPT != null) const Divider(),
             if (articulo.descripcionRO != null)
               _DescriptionResumenRow(
-                title: 'Desc. RO: ',
+                title: 'RO: ',
                 description: articulo.descripcionRO,
               ),
             if (articulo.descripcionRO != null) const Divider(),
             if (articulo.descripcionRU != null)
               _DescriptionResumenRow(
-                title: 'Desc. RU: ',
+                title: 'RU: ',
                 description: articulo.descripcionRU,
               ),
             if (articulo.descripcionRU != null) const Divider(),
             if (articulo.descripcionCN != null)
               _DescriptionResumenRow(
-                title: 'Desc. CN: ',
+                title: 'CN: ',
                 description: articulo.descripcionCN,
               ),
             if (articulo.descripcionCN != null) const Divider(),
             if (articulo.descripcionEL != null)
               _DescriptionResumenRow(
-                title: 'Desc. EL: ',
+                title: 'EL: ',
                 description: articulo.descripcionEL,
               ),
           ],
@@ -565,91 +538,91 @@ class _ArticluloResumenDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _DescriptionResumenRow(
-              title: 'Resumen ES: ',
+              title: 'ES: ',
               description: articulo.resumenES,
             ),
             const Divider(),
             if (articulo.resumenEN != null)
               _DescriptionResumenRow(
-                title: 'Resumen EN: ',
+                title: 'EN: ',
                 description: articulo.resumenEN,
               ),
             if (articulo.resumenEN != null) const Divider(),
             if (articulo.resumenFR != null)
               _DescriptionResumenRow(
-                title: 'Resumen FR: ',
+                title: 'FR: ',
                 description: articulo.resumenFR,
               ),
             if (articulo.resumenFR != null) const Divider(),
             if (articulo.resumenDE != null)
               _DescriptionResumenRow(
-                title: 'Resumen DE: ',
+                title: 'DE: ',
                 description: articulo.resumenDE,
               ),
             if (articulo.resumenDE != null) const Divider(),
             if (articulo.resumenCA != null)
               _DescriptionResumenRow(
-                title: 'Resumen CA: ',
+                title: 'CA: ',
                 description: articulo.resumenCA,
               ),
             if (articulo.resumenCA != null) const Divider(),
             if (articulo.resumenGB != null)
               _DescriptionResumenRow(
-                title: 'Resumen GB: ',
+                title: 'GB: ',
                 description: articulo.resumenGB,
               ),
             if (articulo.resumenGB != null) const Divider(),
             if (articulo.resumenHU != null)
               _DescriptionResumenRow(
-                title: 'Resumen HU: ',
+                title: 'HU: ',
                 description: articulo.resumenHU,
               ),
             if (articulo.resumenHU != null) const Divider(),
             if (articulo.resumenIT != null)
               _DescriptionResumenRow(
-                title: 'Resumen IT: ',
+                title: 'IT: ',
                 description: articulo.resumenIT,
               ),
             if (articulo.resumenIT != null) const Divider(),
             if (articulo.resumenNL != null)
               _DescriptionResumenRow(
-                title: 'Resumen NL: ',
+                title: 'NL: ',
                 description: articulo.resumenNL,
               ),
             if (articulo.resumenNL != null) const Divider(),
             if (articulo.resumenPL != null)
               _DescriptionResumenRow(
-                title: 'Resumen PL: ',
+                title: 'PL: ',
                 description: articulo.resumenPL,
               ),
             if (articulo.resumenPL != null) const Divider(),
             if (articulo.resumenPT != null)
               _DescriptionResumenRow(
-                title: 'Resumen PT: ',
+                title: 'PT: ',
                 description: articulo.resumenPT,
               ),
             if (articulo.resumenPT != null) const Divider(),
             if (articulo.resumenRO != null)
               _DescriptionResumenRow(
-                title: 'Resumen RO: ',
+                title: 'RO: ',
                 description: articulo.resumenRO,
               ),
             if (articulo.resumenRO != null) const Divider(),
             if (articulo.resumenRU != null)
               _DescriptionResumenRow(
-                title: 'Resumen RU: ',
+                title: 'RU: ',
                 description: articulo.resumenRU,
               ),
             if (articulo.resumenRU != null) const Divider(),
             if (articulo.resumenCN != null)
               _DescriptionResumenRow(
-                title: 'Resumen CN: ',
+                title: 'CN: ',
                 description: articulo.resumenCN,
               ),
             if (articulo.resumenCN != null) const Divider(),
             if (articulo.resumenEL != null)
               _DescriptionResumenRow(
-                title: 'Resumen EL: ',
+                title: 'EL: ',
                 description: articulo.resumenEL,
               ),
           ],
@@ -864,5 +837,77 @@ class _Consultas extends StatelessWidget {
         ),
       ),
     ]);
+  }
+}
+
+class SummaryTextWidget extends StatefulWidget {
+  const SummaryTextWidget({super.key, required this.articulo});
+
+  final Articulo articulo;
+
+  @override
+  State<SummaryTextWidget> createState() => _SummaryTextWidgetState();
+}
+
+class _SummaryTextWidgetState extends State<SummaryTextWidget> {
+  bool showAllText = false;
+  @override
+  void initState() {
+    super.initState();
+    showAllText = false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 16.0,
+        right: 16.0,
+        top: 16,
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Flexible(
+                child: Text(
+                  getSummaryInLocalLanguage(articulo: widget.articulo)!,
+                  overflow: (showAllText) ? null : TextOverflow.ellipsis,
+                  maxLines: (showAllText) ? null : 3,
+                ),
+              ),
+              gapW8,
+              IconButton(
+                onPressed: () => showAllResumenes(
+                    context: context, articulo: widget.articulo),
+                icon: const Icon(Icons.info),
+                visualDensity:
+                    const VisualDensity(vertical: -4, horizontal: -4),
+              )
+            ],
+          ),
+          IconButton(
+            onPressed: () => showAllSummaryText(),
+            icon: (showAllText)
+                ? const Icon(Icons.arrow_drop_up)
+                : const Icon(Icons.arrow_drop_down),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void showAllSummaryText() {
+    setState(() {
+      showAllText = !showAllText;
+    });
+  }
+
+  void showAllResumenes(
+      {required BuildContext context, required Articulo articulo}) {
+    showDialog(
+      context: context,
+      builder: (context) => _ArticluloResumenDialog(articulo: articulo),
+    );
   }
 }
