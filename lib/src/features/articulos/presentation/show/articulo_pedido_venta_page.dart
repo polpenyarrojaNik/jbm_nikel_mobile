@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_pedido_venta_linea.dart';
@@ -19,31 +20,48 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloPedidoVentaLineaListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pedidos Venta'),
-        bottom: AppBar(
-          title: Column(
-            children: [
-              Text(articuloId),
-              Text(description, style: Theme.of(context).textTheme.bodyText2),
-            ],
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: 'Pedidos de venta',
+            entityId: articuloId,
+            subtitle: description,
           ),
-          automaticallyImplyLeading: false,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: state.when(
-            data: (pedidoVentaLineaLista) => (pedidoVentaLineaLista.isEmpty)
-                ? const Center(child: Text('Sin resultado'))
-                : ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    itemBuilder: (context, i) => ArticuloPedidoVentaLineaTile(
-                        pedidoVentaLinea: pedidoVentaLineaLista[i]),
-                    itemCount: pedidoVentaLineaLista.length,
-                  ),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            loading: () => const ProgressIndicatorWidget()),
+          state.maybeWhen(
+            orElse: () => const SliverFillRemaining(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverFillRemaining(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (articuloPedidoVentaLineaList) =>
+                (articuloPedidoVentaLineaList.isNotEmpty)
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: articuloPedidoVentaLineaList.length,
+                            (context, i) => Column(
+                              children: [
+                                ArticuloPedidoVentaLineaTile(
+                                  pedidoVentaLinea:
+                                      articuloPedidoVentaLineaList[i],
+                                ),
+                                const Divider(),
+                              ],
+                            ),
+                          ),
+                        ))
+                    : SliverFillRemaining(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text('Sin resultados'),
+                          ],
+                        ),
+                      ),
+          ),
+        ],
       ),
     );
   }

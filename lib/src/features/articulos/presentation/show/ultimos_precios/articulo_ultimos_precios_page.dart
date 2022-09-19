@@ -4,7 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimo
 
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
-import '../../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -67,35 +67,55 @@ class _ArticuloUltimosPreciosPageState
         .watch(articuloUltimosPreciosSearchResultsProvider(widget.articuloId));
 
     return Scaffold(
-      appBar: CustomSearchAppBar(
-        title: 'Últimos Precios',
-        searchTitle: 'Search últimos precios...',
-        onChanged: (searchText) {
-          _debouncer.run(() {
-            ref
-                .read(articuloUltimosPreciosSearchQueryStateProvider.notifier)
-                .state = searchText;
-            ref
-                .read(
-                    articuloUltimosPreciosPaginationQueryStateProvider.notifier)
-                .state = 1;
-          });
-        },
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: state.when(
-            data: (ultimosPreciosLista) => (ultimosPreciosLista.isEmpty)
-                ? const Center(child: Text('Sin resultado'))
-                : ListView.separated(
-                    controller: _scrollController,
-                    separatorBuilder: (context, i) => const Divider(),
-                    itemBuilder: (context, i) => UltimosPreciosTile(
-                        ultimosPrecios: ultimosPreciosLista[i]),
-                    itemCount: ultimosPreciosLista.length,
+      body: CustomScrollView(
+        controller: _scrollController,
+        slivers: [
+          AppBarDatosRelacionados(
+            title: 'Últimos Precios',
+            entityId: widget.articuloId,
+            subtitle: widget.description,
+            searchTitle: 'Buscar últimos precios...',
+            onChanged: (searchText) {
+              _debouncer.run(() {
+                ref
+                    .read(
+                        articuloUltimosPreciosSearchQueryStateProvider.notifier)
+                    .state = searchText;
+                ref
+                    .read(articuloUltimosPreciosPaginationQueryStateProvider
+                        .notifier)
+                    .state = 1;
+              });
+            },
+          ),
+          state.when(
+            data: (ultimosPreciosList) => (ultimosPreciosList.isNotEmpty)
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: ultimosPreciosList.length,
+                        (context, i) => UltimosPreciosTile(
+                          ultimosPrecios: ultimosPreciosList[i],
+                        ),
+                      ),
+                    ))
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text('Sin resultados'),
+                      ],
+                    ),
                   ),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            loading: () => const ProgressIndicatorWidget()),
+            error: (e, _) => SliverFillRemaining(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            loading: () => const SliverFillRemaining(
+              child: ProgressIndicatorWidget(),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -111,46 +131,52 @@ class UltimosPreciosTile extends StatelessWidget {
     return IntrinsicHeight(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            SizedBox(
-              width: 65,
-              child: Text(
-                dateFormatter(ultimosPrecios.fecha.toLocal().toIso8601String()),
-                style: Theme.of(context).textTheme.caption?.copyWith(
-                    color: Theme.of(context).textTheme.bodyText2?.color),
-              ),
-            ),
-            const VerticalDivider(),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 65,
+                  child: Text(
+                    dateFormatter(
+                        ultimosPrecios.fecha.toLocal().toIso8601String()),
+                    style: Theme.of(context).textTheme.caption?.copyWith(
+                        color: Theme.of(context).textTheme.bodyText2?.color),
+                  ),
+                ),
+                const VerticalDivider(),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Text(
+                        formatPrecioYDescuento(
+                          precio: ultimosPrecios.precioDivisa,
+                          tipoPrecio: ultimosPrecios.tipoPrecio,
+                          descuento1: ultimosPrecios.descuento1,
+                          descuento2: ultimosPrecios.descuento2,
+                          descuento3: ultimosPrecios.descuento3,
+                        ),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                    ],
                   ),
-                  Text(
-                    formatPrecioYDescuento(
-                      precio: ultimosPrecios.precioDivisa,
-                      tipoPrecio: ultimosPrecios.tipoPrecio,
-                      descuento1: ultimosPrecios.descuento1,
-                      descuento2: ultimosPrecios.descuento2,
-                      descuento3: ultimosPrecios.descuento3,
-                    ),
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        color: Theme.of(context).textTheme.caption?.color),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+            const Divider(),
           ],
         ),
       ),
