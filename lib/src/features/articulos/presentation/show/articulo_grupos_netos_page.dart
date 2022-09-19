@@ -45,7 +45,7 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
                   itemCount: articuloGrupoNetoList.length,
                 )
               : const Center(
-                  child: Text('No results'),
+                  child: Text('Sin resultados'),
                 ),
         ),
       ),
