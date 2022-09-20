@@ -3,34 +3,58 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_precio_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
-class ClientePrecioNetoContainer extends ConsumerWidget {
-  const ClientePrecioNetoContainer({super.key, required this.clienteId});
+class ClientePrecioNetoPage extends ConsumerWidget {
+  const ClientePrecioNetoPage(
+      {super.key, required this.clienteId, required this.nombreCliente});
 
   final String clienteId;
 
+  final String? nombreCliente;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clientePrecioNetoProvider(clienteId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (clientePrecioNetoList) => (clientePrecioNetoList.isEmpty)
-            ? Center(child: Text(S.of(context).sinResultados))
-            : ListView.separated(
-                physics: const NeverScrollableScrollPhysics(),
-                separatorBuilder: (context, _) => const Divider(),
-                itemBuilder: (context, i) => ClientePrecioNetoTile(
-                  clientePrecioNeto: clientePrecioNetoList[i],
-                ),
-                itemCount: clientePrecioNetoList.length,
-              ),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: S.of(context).cliente_show_clientePrecioNeto_titulo,
+            entityId: clienteId,
+            subtitle: nombreCliente,
+          ),
+          state.maybeWhen(
+            orElse: () => const SliverFillRemaining(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverFillRemaining(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (clientePrecioNetoList) => (clientePrecioNetoList.isNotEmpty)
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: clientePrecioNetoList.length,
+                        (context, i) => ClientePrecioNetoTile(
+                          clientePrecioNeto: clientePrecioNetoList[i],
+                        ),
+                      ),
+                    ))
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(S.of(context).sinResultados),
+                      ],
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }

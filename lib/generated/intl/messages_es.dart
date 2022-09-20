@@ -126,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" Buscar clientes..."),
         "cliente_index_titulo":
             MessageLookupByLibrary.simpleMessage("Clientes"),
+        "cliente_show_clienteAdjunto_titulo":
+            MessageLookupByLibrary.simpleMessage("Adjuntos"),
         "cliente_show_clienteArticulosTop_titulo":
             MessageLookupByLibrary.simpleMessage("Top 150"),
         "cliente_show_clienteContacto_email":
@@ -140,8 +142,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Teléfono 1"),
         "cliente_show_clienteContacto_phone2":
             MessageLookupByLibrary.simpleMessage("Teléfono 2"),
+        "cliente_show_clienteContacto_titulo":
+            MessageLookupByLibrary.simpleMessage("Contactos"),
         "cliente_show_clienteDescuento_desDe":
             MessageLookupByLibrary.simpleMessage("Desde"),
+        "cliente_show_clienteDescuento_titulo":
+            MessageLookupByLibrary.simpleMessage("Descuentos"),
+        "cliente_show_clienteDetalleVentasArticulo_titulo":
+            MessageLookupByLibrary.simpleMessage("Ventas artículos"),
+        "cliente_show_clienteDetalle_analisis":
+            MessageLookupByLibrary.simpleMessage("Análisis"),
         "cliente_show_clienteDetalle_bonificacion":
             MessageLookupByLibrary.simpleMessage("Bonificación"),
         "cliente_show_clienteDetalle_centralCompras":
@@ -154,8 +164,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Concedido fecha"),
         "cliente_show_clienteDetalle_concedidoJBM":
             MessageLookupByLibrary.simpleMessage("Concedido JBM"),
+        "cliente_show_clienteDetalle_consultas":
+            MessageLookupByLibrary.simpleMessage("Consultas"),
         "cliente_show_clienteDetalle_datosGenerales":
             MessageLookupByLibrary.simpleMessage("Datos generales"),
+        "cliente_show_clienteDetalle_datosRelacionados":
+            MessageLookupByLibrary.simpleMessage("Datos relacionados"),
         "cliente_show_clienteDetalle_descuentoGeneral":
             MessageLookupByLibrary.simpleMessage("Descuento general"),
         "cliente_show_clienteDetalle_descuentoPP":
@@ -232,18 +246,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas año anterior"),
         "cliente_show_clienteDetalle_ventasHace2Anos":
             MessageLookupByLibrary.simpleMessage("Ventas hace 2 años"),
-        "cliente_show_clienteDetalle_vtasArt":
-            MessageLookupByLibrary.simpleMessage("Vtas. Art"),
-        "cliente_show_clienteDetalle_vtasMes":
-            MessageLookupByLibrary.simpleMessage("Vtas. Mes"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDireccion_titulo":
+            MessageLookupByLibrary.simpleMessage("Direcciones"),
+        "cliente_show_clienteGrupoNeto_titulo":
+            MessageLookupByLibrary.simpleMessage("Grupos Netos"),
         "cliente_show_clientePagosPendientes_vencidoJBM":
             MessageLookupByLibrary.simpleMessage("Vencido JBM"),
         "cliente_show_clientePrecioNeto_desDe":
             MessageLookupByLibrary.simpleMessage("Desde"),
-        "cliente_show_clientePrecioNeto_precio":
-            MessageLookupByLibrary.simpleMessage("Precio"),
+        "cliente_show_clientePrecioNeto_titulo":
+            MessageLookupByLibrary.simpleMessage("Precios Netos"),
+        "cliente_show_clienteRappel_titulo":
+            MessageLookupByLibrary.simpleMessage("Rappels"),
+        "cliente_show_clienteVentasMes_titulo":
+            MessageLookupByLibrary.simpleMessage("Ventas Mes"),
         "commonWidgets_appDrawer_ajustes":
             MessageLookupByLibrary.simpleMessage("Ajustes"),
         "commonWidgets_appDrawer_articulos":

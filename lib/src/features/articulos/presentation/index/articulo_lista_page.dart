@@ -9,7 +9,6 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/routing/app_router.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_state_provider.dart';
 
@@ -97,8 +96,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
                     itemCount: articuloList.length,
                     itemBuilder: (context, i) => ArticuloListaTile(
                       articulo: articuloList[i],
-                      appRoute: AppRoutes.articuloshow,
-                      clienteId: null,
                     ),
                   ),
           ),

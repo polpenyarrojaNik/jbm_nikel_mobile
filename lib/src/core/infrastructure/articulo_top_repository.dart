@@ -6,8 +6,10 @@ import '../../features/cliente/domain/articulo_top.dart';
 
 final articuloTopRepositoryProvider =
     Provider.autoDispose<ArticuloTopRepository>(
-  // * Override this in the main method
-  (ref) => throw UnimplementedError(),
+  (ref) {
+    final db = ref.watch(appDatabaseProvider);
+    return ArticuloTopRepository(db);
+  },
 );
 
 final articuloTopProvider =
@@ -17,7 +19,7 @@ final articuloTopProvider =
 });
 
 class ArticuloTopRepository {
-  AppDatabase db;
+  final AppDatabase db;
 
   ArticuloTopRepository(this.db);
 

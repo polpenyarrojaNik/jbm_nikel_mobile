@@ -7,20 +7,14 @@ import '../../../../core/routing/app_router.dart';
 import '../../domain/articulo.dart';
 
 class ArticuloListaTile extends StatelessWidget {
-  const ArticuloListaTile(
-      {super.key,
-      required this.articulo,
-      required this.appRoute,
-      required this.clienteId});
+  const ArticuloListaTile({super.key, required this.articulo});
 
   final Articulo articulo;
-  final AppRoutes appRoute;
-  final String? clienteId;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => navigateToArticuloDetalPage(context, articulo.id, clienteId),
+      onTap: () => navigateToArticuloDetalPage(context, articulo.id),
       child: Container(
         color: Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -56,13 +50,9 @@ class ArticuloListaTile extends StatelessWidget {
     );
   }
 
-  void navigateToArticuloDetalPage(
-      BuildContext context, String id, String? clienteId) {
+  void navigateToArticuloDetalPage(BuildContext context, String id) {
     final params = {'articuloId': articulo.id};
 
-    if (clienteId != null) {
-      params.addAll({'clienteId': clienteId});
-    }
-    context.goNamed(appRoute.name, params: params);
+    context.goNamed(AppRoutes.articuloshow.name, params: params);
   }
 }

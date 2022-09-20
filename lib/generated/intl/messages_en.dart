@@ -125,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" Search customers..."),
         "cliente_index_titulo":
             MessageLookupByLibrary.simpleMessage("Customer"),
+        "cliente_show_clienteAdjunto_titulo":
+            MessageLookupByLibrary.simpleMessage("Attachments"),
         "cliente_show_clienteArticulosTop_titulo":
             MessageLookupByLibrary.simpleMessage("Top 150"),
         "cliente_show_clienteContacto_email":
@@ -139,8 +141,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Phone 1"),
         "cliente_show_clienteContacto_phone2":
             MessageLookupByLibrary.simpleMessage("Phone 2"),
+        "cliente_show_clienteContacto_titulo":
+            MessageLookupByLibrary.simpleMessage("Contacts"),
         "cliente_show_clienteDescuento_desDe":
             MessageLookupByLibrary.simpleMessage("Since"),
+        "cliente_show_clienteDescuento_titulo":
+            MessageLookupByLibrary.simpleMessage("Discounts"),
+        "cliente_show_clienteDetalleVentasArticulo_titulo":
+            MessageLookupByLibrary.simpleMessage("Articles sales"),
+        "cliente_show_clienteDetalle_analisis":
+            MessageLookupByLibrary.simpleMessage("Analysis"),
         "cliente_show_clienteDetalle_bonificacion":
             MessageLookupByLibrary.simpleMessage("Bonus"),
         "cliente_show_clienteDetalle_centralCompras":
@@ -153,8 +163,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Granted date"),
         "cliente_show_clienteDetalle_concedidoJBM":
             MessageLookupByLibrary.simpleMessage("Granted JBM"),
+        "cliente_show_clienteDetalle_consultas":
+            MessageLookupByLibrary.simpleMessage("Consultas"),
         "cliente_show_clienteDetalle_datosGenerales":
             MessageLookupByLibrary.simpleMessage("General data"),
+        "cliente_show_clienteDetalle_datosRelacionados":
+            MessageLookupByLibrary.simpleMessage("Datos relacionados"),
         "cliente_show_clienteDetalle_descuentoGeneral":
             MessageLookupByLibrary.simpleMessage("General discount"),
         "cliente_show_clienteDetalle_descuentoPP":
@@ -231,12 +245,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last year sales"),
         "cliente_show_clienteDetalle_ventasHace2Anos":
             MessageLookupByLibrary.simpleMessage("Two years ago sales"),
-        "cliente_show_clienteDetalle_vtasArt":
-            MessageLookupByLibrary.simpleMessage("Article sales"),
-        "cliente_show_clienteDetalle_vtasMes":
-            MessageLookupByLibrary.simpleMessage("Month sales"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDireccion_titulo":
+            MessageLookupByLibrary.simpleMessage("Addresses"),
+        "cliente_show_clienteGrupoNeto_titulo":
+            MessageLookupByLibrary.simpleMessage("Net groups"),
         "cliente_show_clientePagosPendientes_vencInicial":
             MessageLookupByLibrary.simpleMessage("Init Expiration"),
         "cliente_show_clientePagosPendientes_vencidoJBM":
@@ -245,8 +259,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pending Payments"),
         "cliente_show_clientePrecioNeto_desDe":
             MessageLookupByLibrary.simpleMessage("Since"),
-        "cliente_show_clientePrecioNeto_precio":
-            MessageLookupByLibrary.simpleMessage("Price"),
+        "cliente_show_clientePrecioNeto_titulo":
+            MessageLookupByLibrary.simpleMessage("Net prices"),
+        "cliente_show_clienteRappel_titulo":
+            MessageLookupByLibrary.simpleMessage("Rappels"),
+        "cliente_show_clienteVentasMes_titulo":
+            MessageLookupByLibrary.simpleMessage("Month sales"),
         "commonWidgets_appDrawer_ajustes":
             MessageLookupByLibrary.simpleMessage("Settings"),
         "commonWidgets_appDrawer_articulos":

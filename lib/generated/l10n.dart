@@ -730,21 +730,21 @@ class S {
     );
   }
 
-  /// `Article sales`
-  String get cliente_show_clienteDetalle_vtasArt {
+  /// `Articles sales`
+  String get cliente_show_clienteDetalleVentasArticulo_titulo {
     return Intl.message(
-      'Article sales',
-      name: 'cliente_show_clienteDetalle_vtasArt',
+      'Articles sales',
+      name: 'cliente_show_clienteDetalleVentasArticulo_titulo',
       desc: '',
       args: [],
     );
   }
 
   /// `Month sales`
-  String get cliente_show_clienteDetalle_vtasMes {
+  String get cliente_show_clienteVentasMes_titulo {
     return Intl.message(
       'Month sales',
-      name: 'cliente_show_clienteDetalle_vtasMes',
+      name: 'cliente_show_clienteVentasMes_titulo',
       desc: '',
       args: [],
     );
@@ -1200,6 +1200,96 @@ class S {
     );
   }
 
+  /// `Analysis`
+  String get cliente_show_clienteDetalle_analisis {
+    return Intl.message(
+      'Analysis',
+      name: 'cliente_show_clienteDetalle_analisis',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Datos relacionados`
+  String get cliente_show_clienteDetalle_datosRelacionados {
+    return Intl.message(
+      'Datos relacionados',
+      name: 'cliente_show_clienteDetalle_datosRelacionados',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consultas`
+  String get cliente_show_clienteDetalle_consultas {
+    return Intl.message(
+      'Consultas',
+      name: 'cliente_show_clienteDetalle_consultas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contacts`
+  String get cliente_show_clienteContacto_titulo {
+    return Intl.message(
+      'Contacts',
+      name: 'cliente_show_clienteContacto_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attachments`
+  String get cliente_show_clienteAdjunto_titulo {
+    return Intl.message(
+      'Attachments',
+      name: 'cliente_show_clienteAdjunto_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Addresses`
+  String get cliente_show_clienteDireccion_titulo {
+    return Intl.message(
+      'Addresses',
+      name: 'cliente_show_clienteDireccion_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Net groups`
+  String get cliente_show_clienteGrupoNeto_titulo {
+    return Intl.message(
+      'Net groups',
+      name: 'cliente_show_clienteGrupoNeto_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rappels`
+  String get cliente_show_clienteRappel_titulo {
+    return Intl.message(
+      'Rappels',
+      name: 'cliente_show_clienteRappel_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discounts`
+  String get cliente_show_clienteDescuento_titulo {
+    return Intl.message(
+      'Discounts',
+      name: 'cliente_show_clienteDescuento_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Since`
   String get cliente_show_clienteDescuento_desDe {
     return Intl.message(
@@ -1220,11 +1310,11 @@ class S {
     );
   }
 
-  /// `Price`
-  String get cliente_show_clientePrecioNeto_precio {
+  /// `Net prices`
+  String get cliente_show_clientePrecioNeto_titulo {
     return Intl.message(
-      'Price',
-      name: 'cliente_show_clientePrecioNeto_precio',
+      'Net prices',
+      name: 'cliente_show_clientePrecioNeto_titulo',
       desc: '',
       args: [],
     );

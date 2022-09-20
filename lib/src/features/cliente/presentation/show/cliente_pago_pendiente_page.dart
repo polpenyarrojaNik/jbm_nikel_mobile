@@ -4,34 +4,59 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_rep
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_pago_pendiente.dart';
 
 class ClientePagoPendientePage extends ConsumerWidget {
-  const ClientePagoPendientePage({super.key, required this.clienteId});
+  const ClientePagoPendientePage(
+      {super.key, required this.clienteId, required this.nombreCliente});
 
   final String clienteId;
+  final String? nombreCliente;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clientePendientePagoProvider(clienteId));
 
     return Scaffold(
-      appBar: AppBar(
-          title: Text(S.of(context).cliente_show_clientePendientePago_titulo)),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: state.when(
-            data: (_) => (_.isEmpty)
-                ? Center(child: Text(S.of(context).sinResultados))
-                : ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, i) =>
-                        ClientePagoPendienteTile(clientePagoPendiente: _[i]),
-                    itemCount: _.length),
-            error: (e, __) => ErrorMessageWidget(e.toString()),
-            loading: () => const ProgressIndicatorWidget()),
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: S.of(context).cliente_show_clientePendientePago_titulo,
+            entityId: clienteId,
+            subtitle: nombreCliente,
+          ),
+          state.maybeWhen(
+            orElse: () => const SliverFillRemaining(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverFillRemaining(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (clientepagosPendientesList) => (clientepagosPendientesList
+                    .isNotEmpty)
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: clientepagosPendientesList.length,
+                        (context, i) => ClientePagoPendienteTile(
+                          clientePagoPendiente: clientepagosPendientesList[i],
+                        ),
+                      ),
+                    ))
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(S.of(context).sinResultados),
+                      ],
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }

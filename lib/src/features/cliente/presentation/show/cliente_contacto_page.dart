@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -9,28 +10,52 @@ import '../../../../core/presentation/common_widgets/row_field_text_detail.dart'
 import '../../domain/cliente_contacto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
-class ClienteContactoContainer extends ConsumerWidget {
-  const ClienteContactoContainer({super.key, required this.clienteId});
+class ClienteContactoPage extends ConsumerWidget {
+  const ClienteContactoPage(
+      {super.key, required this.clienteId, required this.nombreCliente});
 
   final String clienteId;
+  final String? nombreCliente;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteContactoProvider(clienteId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (clienteContactoList) => (clienteContactoList.isEmpty)
-            ? Center(child: Text(S.of(context).sinResultados))
-            : ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, i) => ClienteContactoTile(
-                  clienteContacto: clienteContactoList[i],
-                ),
-                itemCount: clienteContactoList.length,
-              ),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: S.of(context).cliente_show_clienteContacto_titulo,
+            entityId: clienteId,
+            subtitle: nombreCliente,
+          ),
+          state.maybeWhen(
+            orElse: () => const SliverFillRemaining(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverFillRemaining(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
+                ? SliverPadding(
+                    padding: const EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: clienteContactoList.length,
+                        (context, i) => ClienteContactoTile(
+                          clienteContacto: clienteContactoList[i],
+                        ),
+                      ),
+                    ))
+                : SliverFillRemaining(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(S.of(context).sinResultados),
+                      ],
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }

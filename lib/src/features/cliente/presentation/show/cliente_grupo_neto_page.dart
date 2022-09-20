@@ -2,33 +2,59 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_grupo_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
-class ClienteGrupoNetoContainer extends ConsumerWidget {
-  const ClienteGrupoNetoContainer({super.key, required this.clienteId});
+class ClienteGrupoNetoPage extends ConsumerWidget {
+  const ClienteGrupoNetoPage(
+      {super.key, required this.clienteId, required this.nombreCliente});
 
   final String clienteId;
+  final String? nombreCliente;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteGrupoNetoProvider(clienteId));
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: state.maybeWhen(
-        orElse: () => const ProgressIndicatorWidget(),
-        error: (e, st) => ErrorMessageWidget(e.toString()),
-        data: (clienteGrupoNetoList) => (clienteGrupoNetoList.isEmpty)
-            ? Center(child: Text(S.of(context).sinResultados))
-            : ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, i) => ClienteGrupoNetoTile(
-                  clienteGrupoNeto: clienteGrupoNetoList[i],
-                ),
-                itemCount: clienteGrupoNetoList.length,
-              ),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          AppBarDatosRelacionados(
+            title: S.of(context).cliente_show_clienteGrupoNeto_titulo,
+            entityId: clienteId,
+            subtitle: nombreCliente,
+          ),
+          state.maybeWhen(
+            orElse: () => const SliverFillRemaining(
+              child: ProgressIndicatorWidget(),
+            ),
+            error: (e, st) => SliverFillRemaining(
+              child: ErrorMessageWidget(e.toString()),
+            ),
+            data: (clienteGruposNetosList) =>
+                (clienteGruposNetosList.isNotEmpty)
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            childCount: clienteGruposNetosList.length,
+                            (context, i) => ClienteGrupoNetoTile(
+                              clienteGrupoNeto: clienteGruposNetosList[i],
+                            ),
+                          ),
+                        ))
+                    : SliverFillRemaining(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).sinResultados),
+                          ],
+                        ),
+                      ),
+          ),
+        ],
       ),
     );
   }
