@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
-import '../../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../../generated/l10n.dart';
+import '../../../core/presentation/common_widgets/app_drawer.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -12,7 +13,9 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(
+          S.of(context).settings_titulo,
+        ),
         actions: [
           Consumer(
             builder: (context, ref, child) => IconButton(

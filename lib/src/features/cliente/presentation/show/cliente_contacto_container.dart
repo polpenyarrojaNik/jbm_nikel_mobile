@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -22,7 +23,7 @@ class ClienteContactoContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (clienteContactoList) => (clienteContactoList.isEmpty)
-            ? const Center(child: Text('No Results'))
+            ? Center(child: Text(S.of(context).sinResultados))
             : ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) => ClienteContactoTile(
@@ -58,29 +59,36 @@ class ClienteContactoTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RowFieldTextDetalle(
-                fieldTitleValue: 'Id', value: clienteContacto.clienteId),
+                fieldTitleValue: S.of(context).cliente_show_clienteContacto_id,
+                value: clienteContacto.clienteId),
             (clienteContacto.nombre != null &&
                     clienteContacto.nombre!.length > 35)
                 ? ColumnFieldTextDetalle(
-                    fieldTitleValue: 'Nombre',
+                    fieldTitleValue:
+                        S.of(context).cliente_show_clienteContacto_nombre,
                     value: clienteContacto.nombre ?? '')
                 : RowFieldTextDetalle(
-                    fieldTitleValue: 'Nombre',
+                    fieldTitleValue:
+                        S.of(context).cliente_show_clienteContacto_nombre,
                     value: clienteContacto.nombre ?? ''),
             RowFieldTextDetalle(
-                fieldTitleValue: 'Email', value: clienteContacto.email ?? ''),
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteContacto_email,
+                value: clienteContacto.email ?? ''),
             RowFieldTextDetalle(
-                fieldTitleValue: 'Phone 1',
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteContacto_phone1,
                 value: clienteContacto.telefono1 ?? ''),
             RowFieldTextDetalle(
-                fieldTitleValue: 'Phone 2',
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteContacto_phone2,
                 value: clienteContacto.telefono1 ?? ''),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Observaciones',
+                  S.of(context).cliente_show_clienteContacto_observaciones,
                   style: Theme.of(context).textTheme.subtitle2!.copyWith(
                       color: Theme.of(context).textTheme.caption!.color),
                 ),

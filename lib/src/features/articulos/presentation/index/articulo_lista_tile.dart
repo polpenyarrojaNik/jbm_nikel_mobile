@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../domain/articulo.dart';
@@ -35,7 +36,7 @@ class ArticuloListaTile extends StatelessWidget {
                 ),
                 if (articulo.stockDisponible != null)
                   Text(
-                    '${numberFormatCantidades(articulo.stockDisponible!)} unidades',
+                    '${numberFormatCantidades(articulo.stockDisponible!)} ${(articulo.stockDisponible == 1) ? S.of(context).unidad : S.of(context).unidades}',
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
               ],

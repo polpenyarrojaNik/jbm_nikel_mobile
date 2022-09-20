@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../routing/app_router.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -32,7 +32,7 @@ class AppDrawer extends StatelessWidget {
               MdiIcons.packageVariantClosed,
               size: 30,
             ),
-            title: const Text('Artículos'),
+            title: Text(S.of(context).commonWidgets_appDrawer_articulos),
             onTap: () => context.goNamed(AppRoutes.articuloindex.name),
           ),
           ListTile(
@@ -40,7 +40,7 @@ class AppDrawer extends StatelessWidget {
               Icons.person,
               size: 30,
             ),
-            title: const Text('Clientes'),
+            title: Text(S.of(context).commonWidgets_appDrawer_clientes),
             onTap: () => context.goNamed(AppRoutes.clienteindex.name),
           ),
           ListTile(
@@ -48,7 +48,7 @@ class AppDrawer extends StatelessWidget {
               MdiIcons.cartOutline,
               size: 30,
             ),
-            title: const Text('Pedidos'),
+            title: Text(S.of(context).commonWidgets_appDrawer_pedidos),
             onTap: () => context.goNamed(AppRoutes.salesorderindex.name),
           ),
           ListTile(
@@ -56,7 +56,7 @@ class AppDrawer extends StatelessWidget {
               Icons.group,
               size: 30,
             ),
-            title: const Text('Visitas'),
+            title: Text(S.of(context).commonWidgets_appDrawer_visitas),
             onTap: () => context.goNamed(AppRoutes.visitaindex.name),
           ),
           ListTile(
@@ -65,7 +65,7 @@ class AppDrawer extends StatelessWidget {
               MdiIcons.chartLine,
               size: 30,
             ),
-            title: const Text('KPI'),
+            title: Text(S.of(context).commonWidgets_appDrawer_kpi),
             onTap: () => context.goNamed(AppRoutes.articuloindex.name),
           ),
           ListTile(
@@ -73,7 +73,7 @@ class AppDrawer extends StatelessWidget {
               Icons.settings_outlined,
               size: 30,
             ),
-            title: const Text('Settings'),
+            title: Text(S.of(context).commonWidgets_appDrawer_ajustes),
             onTap: () => context.goNamed(AppRoutes.settings.name),
           ),
         ],

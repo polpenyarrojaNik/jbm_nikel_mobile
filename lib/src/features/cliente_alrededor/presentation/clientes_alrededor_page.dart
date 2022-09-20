@@ -12,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_cliente_alrededor_arg.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/address_text_widget.dart';
@@ -36,7 +37,7 @@ class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Clientes alrededor')),
+      appBar: AppBar(title: Text(S.of(context).cliente_alrededor_titulo)),
       body: Stack(
         fit: StackFit.expand,
         alignment: AlignmentDirectional.bottomCenter,
@@ -244,19 +245,19 @@ class ClienteAlrededorDialog extends StatelessWidget {
               pais: cliente.paisFiscal),
           const Divider(),
           RowFieldTextDetalle(
-              fieldTitleValue: 'Venta Año Actual',
+              fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
               value: (cliente.ventasAnyoActual != null)
                   ? numberFormatDecimal(cliente.ventasAnyoActual!)
                   : ''),
           const SizedBox(height: 2),
           RowFieldTextDetalle(
-              fieldTitleValue: 'Margen Año Actual',
+              fieldTitleValue: S.of(context).cliente_alrededor_margenAnoActual,
               value: (cliente.margenAnyoActual != null)
                   ? '${numberFormatDecimal(cliente.margenAnyoActual!)}%'
                   : ''),
           const SizedBox(height: 2),
           RowFieldTextDetalle(
-              fieldTitleValue: 'Porcentaje Abonos',
+              fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
               value: (cliente.porcentajeAbonos != null)
                   ? '${numberFormatDecimal(cliente.porcentajeAbonos!)}%'
                   : ''),

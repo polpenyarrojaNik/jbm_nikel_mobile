@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -21,7 +22,7 @@ class ClienteRappelContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (clienteRappelList) => (clienteRappelList.isEmpty)
-            ? const Center(child: Text('No Results'))
+            ? Center(child: Text(S.of(context).sinResultados))
             : ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, _) => const Divider(),

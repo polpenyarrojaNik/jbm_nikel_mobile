@@ -44,7 +44,7 @@ class App extends ConsumerWidget {
         );
 
         return MaterialApp.router(
-          title: 'JBM Mobile',
+          title: 'JBM Nikel Mobile',
           localizationsDelegates: const [
             S.delegate,
             GlobalMaterialLocalizations.delegate,

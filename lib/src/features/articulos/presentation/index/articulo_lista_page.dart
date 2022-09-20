@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
@@ -69,8 +70,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
-        title: 'Artículos',
-        searchTitle: 'Search artículo...',
+        title: S.of(context).articulo_index_titulo,
+        searchTitle: S.of(context).articulo_index_buscarArticulos,
         onChanged: (searchText) {
           _debouncer.run(() {
             ref.read(articulosSearchQueryStateProvider.notifier).state =

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_state.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
 import '../../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
@@ -71,10 +72,11 @@ class _ArticuloUltimosPreciosPageState
         controller: _scrollController,
         slivers: [
           AppBarDatosRelacionados(
-            title: 'Últimos Precios',
+            title: S.of(context).articulo_show_ultimosPrecios_titulo,
             entityId: widget.articuloId,
             subtitle: widget.description,
-            searchTitle: 'Buscar últimos precios...',
+            searchTitle:
+                S.of(context).articulo_show_ultimosPrecios_buscarUltimosPrecios,
             onChanged: (searchText) {
               _debouncer.run(() {
                 ref
@@ -103,8 +105,8 @@ class _ArticuloUltimosPreciosPageState
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Sin resultados'),
+                      children: [
+                        Text(S.of(context).sinResultados),
                       ],
                     ),
                   ),

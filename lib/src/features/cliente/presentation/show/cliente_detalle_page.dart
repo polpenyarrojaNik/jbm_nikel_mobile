@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_cus
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_container.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/buttons_row_bar_widget.dart';
@@ -29,7 +30,7 @@ class ClienteDetallePage extends StatelessWidget {
     final params = {'clienteId': clienteId};
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cliente detalle'),
+        title: Text(S.of(context).cliente_show_clienteDetalle_titulo),
       ),
       body: Consumer(
         builder: (context, ref, _) {
@@ -45,22 +46,27 @@ class ClienteDetallePage extends StatelessWidget {
                   ButtonsRowBarWidget(
                     textButtonsList: [
                       TextButtonWidget(
-                          titleText: 'Vtas. Mes',
+                          titleText:
+                              S.of(context).cliente_show_clienteDetalle_vtasMes,
                           entityId: clienteId,
                           appRouteValue: AppRoutes.clientesalesmes,
                           params: params),
                       TextButtonWidget(
-                          titleText: 'Vtas. Art',
+                          titleText:
+                              S.of(context).cliente_show_clienteDetalle_vtasArt,
                           entityId: clienteId,
                           appRouteValue: AppRoutes.clientesalesarticulo,
                           params: params),
                       TextButtonWidget(
-                          titleText: 'Fact. Pendientes',
+                          titleText: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_factPendientes,
                           entityId: clienteId,
                           appRouteValue: AppRoutes.clientependingpayment,
                           params: params),
                       TextButtonWidget(
-                        titleText: 'Top 150',
+                        titleText:
+                            S.of(context).cliente_show_clienteDetalle_top150,
                         entityId: clienteId,
                         appRouteValue: AppRoutes.clientetoparticulos,
                         params: params,
@@ -153,7 +159,9 @@ class ClienteGeneralData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MobileCustomSeparators(separatorTitle: 'Datos Generales'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).cliente_show_clienteDetalle_datosGenerales),
         const SizedBox(height: 5),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -175,53 +183,74 @@ class ClienteGeneralData extends StatelessWidget {
                   (cliente.nombreFiscal != null &&
                           cliente.nombreFiscal!.length > 35)
                       ? ColumnFieldTextDetalle(
-                          fieldTitleValue: 'Nombre fiscal',
+                          fieldTitleValue: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_nombreFiscal,
                           value: cliente.nombreFiscal)
                       : RowFieldTextDetalle(
-                          fieldTitleValue: 'Nombre fiscal',
+                          fieldTitleValue: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_nombreFiscal,
                           value: cliente.nombreFiscal),
                   const SizedBox(height: 2),
                   (cliente.direccionFiscal1 != null &&
                           cliente.direccionFiscal1!.length > 35)
                       ? ColumnFieldTextDetalle(
-                          fieldTitleValue: 'Dirección',
+                          fieldTitleValue: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_direccion,
                           value: cliente.direccionFiscal1 ?? '')
                       : RowFieldTextDetalle(
-                          fieldTitleValue: 'Dirección',
+                          fieldTitleValue: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_direccion,
                           value: cliente.direccionFiscal1 ?? ''),
                   const SizedBox(height: 2),
                   (cliente.direccionFiscal2 != null &&
                           cliente.direccionFiscal2!.length > 35)
                       ? ColumnFieldTextDetalle(
-                          fieldTitleValue: 'Dirección2',
+                          fieldTitleValue: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_direccion2,
                           value: cliente.direccionFiscal2 ?? '')
                       : RowFieldTextDetalle(
-                          fieldTitleValue: 'Dirección2',
+                          fieldTitleValue: S
+                              .of(context)
+                              .cliente_show_clienteDetalle_direccion2,
                           value: cliente.direccionFiscal2 ?? ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Código fiscal',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_codigoPostal,
                       value: cliente.codigoPostalFiscal ?? ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Población',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_poblacion,
                       value: cliente.poblacionFiscal ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Provincia',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_provincia,
                       value: cliente.provinciaFiscal ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'País',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_pais,
                       value: cliente.paisFiscal?.descripcion ?? ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'NIF', value: cliente.nif ?? ''),
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_nif,
+                      value: cliente.nif ?? ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Latitud',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_latitud,
                       value: cliente.latitudFiscal?.toString() ?? ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Longitud',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_longitud,
                       value: cliente.longitudFiscal?.toString() ?? ''),
                 ],
               ),
@@ -247,44 +276,60 @@ class ClienteGeneralData extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Venta Año Actual',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_ventasAnoActual,
                       value: numberFormatDecimal(cliente.ventasAnyoActual!)),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                    fieldTitleValue: 'Venta Año Anterior',
+                    fieldTitleValue: S
+                        .of(context)
+                        .cliente_show_clienteDetalle_ventasAnoAnterior,
                     value: numberFormatDecimal(cliente.ventasAnyoAnterior!),
                   ),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Ventas Hace 2 Años',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_ventasHace2Anos,
                       value: numberFormatDecimal(cliente.ventasHaceDosAnyos!)),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Porcentaje Garantias',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_porcentajeGarantias,
                       value: (cliente.porcentajeGarantias != null)
                           ? '${numberFormatDecimal(cliente.porcentajeGarantias!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Margen Año Actual',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_margenAnoActual,
                       value: (cliente.margenAnyoActual != null)
                           ? '${numberFormatDecimal(cliente.margenAnyoActual!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Margen Año Anterior',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_margenAnoAnterior,
                       value: (cliente.margenAnyoAnterior != null)
                           ? '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Margen Hace 2 Años',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_margenHace2Anos,
                       value: (cliente.margenHaceDosAnyos != null)
                           ? '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%'
                           : ''),
                   const SizedBox(height: 2),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Porcentaje Abonos',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_porcentajeAbonos,
                       value: (cliente.porcentajeAbonos != null)
                           ? '${numberFormatDecimal(cliente.porcentajeAbonos!)}%'
                           : ''),
@@ -312,10 +357,14 @@ class ClienteGeneralData extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Central compras',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_centralCompras,
                       value: cliente.centralCompras ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Web', value: cliente.urlWeb ?? ''),
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_web,
+                      value: cliente.urlWeb ?? ''),
                 ],
               ),
             ),
@@ -337,7 +386,9 @@ class ClientePricesAndOthersData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MobileCustomSeparators(separatorTitle: 'Precios & Otros'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).cliente_show_clienteDetalle_preciosYOtros),
         Padding(
           padding: const EdgeInsets.all(8),
           child: Card(
@@ -356,24 +407,34 @@ class ClientePricesAndOthersData extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Divisa',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_divisa,
                       value: cliente.divisa?.descripcion ?? ''),
                   (cliente.tarifaDescripcion != null &&
                           cliente.tarifaDescripcion!.length > 35)
                       ? ColumnFieldTextDetalle(
-                          fieldTitleValue: 'Tarifa',
+                          fieldTitleValue:
+                              S.of(context).cliente_show_clienteDetalle_tarifa,
                           value: cliente.tarifaDescripcion ?? '')
                       : RowFieldTextDetalle(
-                          fieldTitleValue: 'Tarifa',
+                          fieldTitleValue:
+                              S.of(context).cliente_show_clienteDetalle_tarifa,
                           value: cliente.tarifaDescripcion ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Descuento general',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_descuentoGeneral,
                       value: cliente.descripcionDescuentoGeneral ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Método cálculo precios',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_metodoCalculoPrecio,
                       value: cliente.tipoCalucloPrecio),
-                  const RowFieldTextDetalle(
-                      fieldTitleValue: 'Ritmo Visitaas', value: '¿?'),
+                  RowFieldTextDetalle(
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_ritmoVisitas,
+                      value: '¿?'),
                 ],
               ),
             ),
@@ -394,7 +455,9 @@ class ClienteFacturationDataContainer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MobileCustomSeparators(separatorTitle: 'Facturación'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).cliente_show_clienteDetalle_facturacion),
         Padding(
           padding: const EdgeInsets.all(8),
           child: Card(
@@ -413,13 +476,18 @@ class ClienteFacturationDataContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Plazo de Cobro',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_plazoDeCobro,
                       value: cliente.plazoDeCobro?.descripcion ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Método de Cobro',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_metodoDeCobro,
                       value: cliente.metodoDeCobro?.descripcion ?? ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Descuento P.P',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_descuentoPP,
                       value: numberFormatDecimal(cliente.descuentoProntoPago)),
                 ],
               ),
@@ -452,7 +520,8 @@ class ClienteRiskContainer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MobileCustomSeparators(separatorTitle: 'Riesgos'),
+        MobileCustomSeparators(
+            separatorTitle: S.of(context).cliente_show_clienteDetalle_riesgos),
         const SizedBox(height: 8),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -472,10 +541,14 @@ class ClienteRiskContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Concedido JBM',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_concedidoJBM,
                       value: cliente.riesgoConcedidoInterno.toString()),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Concedido Fecha',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_concedidoFecha,
                       value: (cliente.riesgoConcedidoInternoDate != null)
                           ? dateFormatter(cliente.riesgoConcedidoInternoDate!
                               .toLocal()
@@ -505,10 +578,13 @@ class ClienteRiskContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Concedido COFACE',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_concedidoCOFACE,
                       value: numberFormatDecimal(cliente.riesgoConcedidoCoafe)),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Fecha COFACE',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_fechaCOFACE,
                       value: (cliente.riesgoConcedidoCoafeFecha != null)
                           ? cliente.riesgoConcedidoCoafeFecha!
                               .toLocal()
@@ -537,32 +613,44 @@ class ClienteRiskContainer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const RowFieldTextDetalle(
-                      fieldTitleValue: 'Riesgo Actual', value: '¿?'),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Riesgo Concedido',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_riesgoActual,
+                      value: '¿?'),
+                  RowFieldTextDetalle(
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_riesgoConcedido,
                       value: (cliente.riesgoConcedido != null)
                           ? numberFormatDecimal(cliente.riesgoConcedido!)
                           : ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Pdte. Cobro Vencido',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_pdteCobroVencido,
                       value: (cliente.riesgoPendienteCobroVencido != null)
                           ? numberFormatDecimal(
                               cliente.riesgoPendienteCobroVencido!)
                           : ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Pdte. Cobro No vencido',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_pdteCobroNoVencido,
                       value: (cliente.riesgoPendienteCobroNoVencido != null)
                           ? numberFormatDecimal(
                               cliente.riesgoPendienteCobroNoVencido!)
                           : ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Pdte. Servir',
+                      fieldTitleValue:
+                          S.of(context).cliente_show_clienteDetalle_pdteServir,
                       value: (cliente.riesgoPendienteServir != null)
                           ? numberFormatDecimal(cliente.riesgoPendienteServir!)
                           : ''),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Riesgo Concedido',
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_pdteFacturar,
                       value: (cliente.riesgoPendienteFacturar != null)
                           ? numberFormatDecimal(
                               cliente.riesgoPendienteFacturar!)

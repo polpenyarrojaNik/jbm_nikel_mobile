@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_mess
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/infrastructure/sync_service.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
@@ -71,8 +72,8 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
-        title: 'Pedidos de venta',
-        searchTitle: 'Buscar pedidos...',
+        title: S.of(context).pedido_index_titulo,
+        searchTitle: S.of(context).pedido_index_buscarPedidos,
         onChanged: (searchText) => _debouncer.run(
           () {
             ref.read(pedidosSearchQueryStateProvider.notifier).state =
@@ -89,7 +90,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
             loading: () => const ProgressIndicatorWidget(),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             data: (pedidoVentaList) => (pedidoVentaList.isEmpty)
-                ? const Center(child: Text('Sin resultados'))
+                ? Center(child: Text(S.of(context).sinResultados))
                 : ListView.separated(
                     separatorBuilder: (context, i) => const Divider(),
                     physics: const AlwaysScrollableScrollPhysics(),

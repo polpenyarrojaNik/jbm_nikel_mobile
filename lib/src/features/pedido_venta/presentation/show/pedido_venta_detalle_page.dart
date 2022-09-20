@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_valu
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/pedido_venta_linea_tile.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -22,7 +23,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pedido venta detalle'),
+        title: Text(S.of(context).pedido_show_pedidoVentaDetalle_titulo),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
@@ -172,10 +173,12 @@ class PedidoVentaInfoContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Status',
+                      fieldTitleValue:
+                          S.of(context).pedido_show_pedidoVentaDetalle_estado,
                       value: pedidoVenta.pedidoVentaEstado.descripcion),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Date',
+                      fieldTitleValue:
+                          S.of(context).pedido_show_pedidoVentaDetalle_fecha,
                       value: dateFormatter(pedidoVenta.pedidoVentaDate
                           .toLocal()
                           .toIso8601String())),
@@ -205,13 +208,17 @@ class PedidoVentaInfoContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Base Imponible',
+                      fieldTitleValue: S
+                          .of(context)
+                          .pedido_show_pedidoVentaDetalle_baseImponible,
                       value: pedidoVenta.baseImponible.toString()),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Importe IVA (${pedidoVenta.iva}%)',
+                      fieldTitleValue:
+                          '${S.of(context).pedido_show_pedidoVentaDetalle_importeIva} (${pedidoVenta.iva}%)',
                       value: pedidoVenta.importeIva.toString()),
                   RowFieldTextDetalle(
-                      fieldTitleValue: 'Total',
+                      fieldTitleValue:
+                          S.of(context).pedido_show_pedidoVentaDetalle_total,
                       value: pedidoVenta.total.toString()),
                 ],
               ),
@@ -234,12 +241,14 @@ class PedidoVentaLineaContainer extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const MobileCustomSeparators(separatorTitle: 'Lineas'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).pedido_show_pedidoVentaDetalle_lineas),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: state.when(
             data: (pedidoVentaLineaList) => (pedidoVentaLineaList.isEmpty)
-                ? const Center(child: Text('No results'))
+                ? Center(child: Text(S.of(context).sinResultados))
                 : Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,

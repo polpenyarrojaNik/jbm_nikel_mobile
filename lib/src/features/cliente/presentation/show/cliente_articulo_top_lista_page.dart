@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/infrastructure/articulo_top_repository.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -18,7 +19,7 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Top 150'),
+        title: Text(S.of(context).cliente_show_clienteArticulosTop_titulo),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),

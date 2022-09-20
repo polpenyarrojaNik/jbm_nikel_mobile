@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_documento_controller.dart';
 import 'package:open_file/open_file.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -34,7 +35,7 @@ class ArticuloDocumentoPage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: 'Documentos',
+            title: S.of(context).articulo_show_articuloDocumentos_titulo,
             entityId: articuloId,
             subtitle: description,
           ),
@@ -60,8 +61,8 @@ class ArticuloDocumentoPage extends ConsumerWidget {
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Sin resultados'),
+                      children: [
+                        Text(S.of(context).sinResultados),
                       ],
                     ),
                   ),

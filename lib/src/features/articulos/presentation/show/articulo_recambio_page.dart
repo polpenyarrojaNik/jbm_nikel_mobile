@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -77,7 +78,7 @@ class ArticuloRecambioTile extends StatelessWidget {
               Text(articuloRecambio.id,
                   style: Theme.of(context).textTheme.subtitle2),
               Text(
-                '${numberFormatCantidades(articuloRecambio.cantidad)} ${((articuloRecambio.cantidad) != 1) ? 'unidades' : 'unidad'}',
+                '${numberFormatCantidades(articuloRecambio.cantidad)} ${((articuloRecambio.cantidad) != 1) ? S.of(context).unidades : S.of(context).unidad}',
                 style: Theme.of(context).textTheme.bodyText2?.copyWith(
                     color: Theme.of(context).textTheme.caption?.color),
               ),

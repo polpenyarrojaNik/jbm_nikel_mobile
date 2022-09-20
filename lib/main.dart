@@ -33,7 +33,7 @@ void main() async {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.red,
-          title: const Text('An error occurred'),
+          title: const Text('Ha ocurrido un error'),
         ),
         body: Center(child: Text(detalles.toString())),
       );

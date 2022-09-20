@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -21,7 +22,7 @@ class ClientePrecioNetoContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (clientePrecioNetoList) => (clientePrecioNetoList.isEmpty)
-            ? const Center(child: Text('No Results'))
+            ? Center(child: Text(S.of(context).sinResultados))
             : ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, _) => const Divider(),
@@ -65,16 +66,18 @@ class ClientePrecioNetoTile extends StatelessWidget {
                   children: [
                     Text(clientePrecioNeto.articuloId,
                         style: Theme.of(context).textTheme.subtitle2),
-                    Text(
-                        '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesDe)} unidad/es',
-                        style: Theme.of(context).textTheme.subtitle2),
+                    if (clientePrecioNeto.cantidadDesDe != 1)
+                      Text(
+                          '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesDe)}',
+                          style: Theme.of(context).textTheme.subtitle2),
                   ],
                 ),
                 const Spacer(),
-                Text(
-                  'Precio: ${numberFormatDecimal(clientePrecioNeto.precio)}x ${clientePrecioNeto.tipoPrecio?.toString() ?? '1'}',
-                  style: Theme.of(context).textTheme.caption,
-                ),
+                //TODO Decomentar
+                // Text(
+                //   formatPrecios(precio: clientePrecioNeto.precio, tipoPrecio: clientePrecioNeto.tipoPrecio),
+                //   style: Theme.of(context).textTheme.caption,
+                // ),
               ],
             ),
           ),

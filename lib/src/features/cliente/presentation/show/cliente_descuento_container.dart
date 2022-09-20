@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -21,7 +22,7 @@ class ClienteDescuentoContainer extends ConsumerWidget {
         orElse: () => const ProgressIndicatorWidget(),
         error: (e, st) => ErrorMessageWidget(e.toString()),
         data: (clienteDescuentoList) => (clienteDescuentoList.isEmpty)
-            ? const Center(child: Text('No Results'))
+            ? Center(child: Text(S.of(context).sinResultados))
             : ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, i) => ClienteDescuentoTile(
@@ -69,7 +70,7 @@ class ClienteDescuentoTile extends StatelessWidget {
                 '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
                 style: Theme.of(context).textTheme.caption),
             Text(
-                'Des de unidad/es ${numberFormatCantidades(clienteDescuento.cantidadDesDe)}',
+                '${S.of(context).cliente_show_clienteDescuento_desDe} ${numberFormatCantidades(clienteDescuento.cantidadDesDe)} ${(clienteDescuento.cantidadDesDe == 1) ? S.of(context).unidad : S.of(context).unidades}',
                 style: Theme.of(context).textTheme.headline6),
           ],
         ),

@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
@@ -72,8 +73,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
-        title: 'Cliente',
-        searchTitle: 'Search Cliente...',
+        title: S.of(context).cliente_index_titulo,
+        searchTitle: S.of(context).cliente_index_buscarClientes,
         onChanged: (searchText) => _debouncer.run(
           () {
             ref.read(clientesSearchQueryStateProvider.notifier).state =

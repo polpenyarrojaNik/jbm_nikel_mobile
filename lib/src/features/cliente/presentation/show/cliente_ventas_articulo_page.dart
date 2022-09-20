@@ -10,7 +10,7 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vtas. Artículo'),
+        title: Text('Vtas. Artículo'),
       ),
       body: const Padding(
           padding: EdgeInsets.all(8),

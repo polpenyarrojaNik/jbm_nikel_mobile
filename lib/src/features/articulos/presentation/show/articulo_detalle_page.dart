@@ -10,6 +10,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_i
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -25,7 +26,7 @@ class ArticuloDetallePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Articulo detalle'),
+        title: Text(S.of(context).articulo_show_articuloDetalle_titulo),
       ),
       body: Consumer(
         builder: (context, ref, _) {
@@ -113,7 +114,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
         ),
         if (getSummaryInLocalLanguage(articulo: articulo) != null)
           SummaryTextWidget(articulo: articulo),
-        const MobileCustomSeparators(separatorTitle: 'Stock y Entregas'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).articulo_show_articuloDetalle_stockYEntregas),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -124,9 +127,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: ColumnFieldTextDetalle(
-                      fieldTitleValue: 'Stock',
+                      fieldTitleValue: S.of(context).stock,
                       value:
-                          '${numberFormatCantidades(articulo.stockDisponible!)} unidades'),
+                          '${numberFormatCantidades(articulo.stockDisponible!)} ${S.of(context).unidades}'),
                 ),
               Expanded(
                 flex: 2,
@@ -138,7 +141,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Entrega 1',
+                            S
+                                .of(context)
+                                .articulo_show_articuloDetalle_entrega1,
                             style: Theme.of(context)
                                 .textTheme
                                 .subtitle2!
@@ -154,7 +159,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           if (articulo.comprasEntregaCantidad2 != null &&
                               articulo.comprasEntregaCantidad2 != 0)
                             Text(
-                              'Entrega 2',
+                              S
+                                  .of(context)
+                                  .articulo_show_articuloDetalle_entrega2,
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
@@ -170,7 +177,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           if (articulo.comprasEntregaCantidad3 != null &&
                               articulo.comprasEntregaCantidad3 != 0)
                             Text(
-                              'Entrega 3',
+                              S
+                                  .of(context)
+                                  .articulo_show_articuloDetalle_entrega3,
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
@@ -186,7 +195,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           if (articulo.comprasEntregaCantidadMas3 != null &&
                               articulo.comprasEntregaCantidadMas3 != 0)
                             Text(
-                              '+',
+                              S.of(context).articulo_show_articuloDetalle_mas,
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
@@ -266,37 +275,46 @@ class _ArticuloInfoContainer extends StatelessWidget {
             ],
           ),
         ),
-        const MobileCustomSeparators(separatorTitle: 'Datos logística'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).articulo_show_articuloDetalle_datosLogistica),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Cantidad subcaja',
+                  fieldTitleValue: S
+                      .of(context)
+                      .articulo_show_articuloDetalle_cantidadSubcaja,
                   value:
-                      '${numberFormatCantidades(articulo.unidadesSubcaja)} ${(articulo.unidadesSubcaja != 1) ? 'unidades' : 'unidad'}'),
+                      '${numberFormatCantidades(articulo.unidadesSubcaja)} ${(articulo.unidadesSubcaja != 1) ? S.of(context).unidades : S.of(context).unidad}'),
               ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Cantidad caja',
+                  fieldTitleValue:
+                      S.of(context).articulo_show_articuloDetalle_cantidadCaja,
                   value:
-                      '${numberFormatCantidades(articulo.unidadesCaja)} ${(articulo.unidadesCaja != 1) ? 'unidades' : 'unidad'}'),
+                      '${numberFormatCantidades(articulo.unidadesCaja)} ${(articulo.unidadesCaja != 1) ? S.of(context).unidades : S.of(context).unidad}'),
               ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Cantidad palet',
+                  fieldTitleValue:
+                      S.of(context).articulo_show_articuloDetalle_cantidadPalet,
                   value:
-                      '${numberFormatCantidades(articulo.unidadesPalet)} ${(articulo.unidadesPalet != 1) ? 'unidades' : 'unidad'}'),
+                      '${numberFormatCantidades(articulo.unidadesPalet)} ${(articulo.unidadesPalet != 1) ? S.of(context).unidades : S.of(context).unidad}'),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                      fieldTitleValue: 'Peso',
-                      value: '${numberFormatCantidades(articulo.pesoKg)} kg',
+                      fieldTitleValue:
+                          S.of(context).articulo_show_articuloDetalle_peso,
+                      value:
+                          '${numberFormatCantidades(articulo.pesoKg)} ${S.of(context).articulo_show_articuloDetalle_kg}',
                     ),
                   ),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Medidas',
+                        fieldTitleValue:
+                            S.of(context).articulo_show_articuloDetalle_medidas,
                         value:
                             '${numberFormatCantidades(articulo.altoCm)} cm x ${numberFormatCantidades(articulo.largoCm)} cm x ${numberFormatCantidades(articulo.anchoCm)} cm'),
                   ),
@@ -305,7 +323,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
             ],
           ),
         ),
-        const MobileCustomSeparators(separatorTitle: 'Otros datos'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).articulo_show_articuloDetalle_otrosDatos),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -317,14 +337,18 @@ class _ArticuloInfoContainer extends StatelessWidget {
                   if (articulo.paginaEnCatalgo != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Página en catalogo',
+                        fieldTitleValue: S
+                            .of(context)
+                            .articulo_show_articuloDetalle_paginaEnCatalogo,
                         value: Text(articulo.paginaEnCatalgo!),
                       ),
                     ),
                   if (articulo.paginaEnCatalgo2 != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Página 2ªEdición',
+                        fieldTitleValue: S
+                            .of(context)
+                            .articulo_show_articuloDetalle_pagina2Edicion,
                         value: Text(articulo.paginaEnCatalgo2!),
                       ),
                     ),
@@ -338,7 +362,10 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Flexible(child: Text('En Catálogo')),
+                        Flexible(
+                            child: Text(S
+                                .of(context)
+                                .articulo_show_articuloDetalle_enCatalogo)),
                         Checkbox(
                           visualDensity:
                               const VisualDensity(vertical: -4, horizontal: -4),
@@ -353,7 +380,10 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Flexible(child: Text('Descatalogado')),
+                        Flexible(
+                            child: Text(S
+                                .of(context)
+                                .articulo_show_articuloDetalle_descatalogadoCompras)),
                         Checkbox(
                           visualDensity:
                               const VisualDensity(vertical: -4, horizontal: -4),
@@ -372,11 +402,14 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Flexible(child: Text('Activo Web')),
+                        Flexible(
+                            child: Text(S
+                                .of(context)
+                                .articulo_show_articuloDetalle_activoWeb)),
                         Checkbox(
                           visualDensity:
                               const VisualDensity(vertical: -4, horizontal: -4),
-                          value: articulo.activoApp,
+                          value: articulo.activoWeb,
                           onChanged: null,
                         )
                       ],
@@ -709,8 +742,11 @@ class _ArticuloImageCarrouselState
                         fit: BoxFit.contain,
                         'assets/image-placeholder.png',
                       ),
-                      errorWidget: (context, error, _) =>
-                          const Center(child: Text('No disponible')),
+                      errorWidget: (context, error, _) => Center(
+                        child: Text(S
+                            .of(context)
+                            .articulo_show_articuloDetalle_noDisponible),
+                      ),
                       height: 175,
                       width: 400,
                       fit: BoxFit.contain,
@@ -750,9 +786,11 @@ class _DatosRelacionados extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const MobileCustomSeparators(separatorTitle: 'Datos relacionados'),
+        MobileCustomSeparators(
+            separatorTitle:
+                S.of(context).articulo_show_articuloDetalle_datosRelacionados),
         DatosExtraRow(
-          title: 'Precios Tarifa',
+          title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.articulopreciotarifa.name,
             params: params,
@@ -761,7 +799,7 @@ class _DatosRelacionados extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: 'Grupos Netos',
+          title: S.of(context).articulo_show_articuloGruposNetos_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.articulogruponeto.name,
             params: params,
@@ -770,7 +808,7 @@ class _DatosRelacionados extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: 'Componentes',
+          title: S.of(context).articulo_show_articuloComponentes_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.articulocomponente.name,
             params: params,
@@ -779,7 +817,7 @@ class _DatosRelacionados extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: 'Recambios',
+          title: S.of(context).articulo_show_articuloRecambio_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.articulorecambio.name,
             params: params,
@@ -788,7 +826,7 @@ class _DatosRelacionados extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: 'Articulos Sustitutivos',
+          title: S.of(context).articulo_show_articuloSustitutivo_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.articulosustitutivo.name,
             params: params,
@@ -809,9 +847,11 @@ class _Consultas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const MobileCustomSeparators(separatorTitle: 'Consultas'),
+      MobileCustomSeparators(
+          separatorTitle:
+              S.of(context).articulo_show_articuloDetalle_consultas),
       DatosExtraRow(
-        title: 'Pedidos Venta',
+        title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
         navigationTo: () => context.goNamed(
           AppRoutes.articulosalesorder.name,
           params: params,
@@ -820,7 +860,7 @@ class _Consultas extends StatelessWidget {
       ),
       const Divider(),
       DatosExtraRow(
-        title: 'Últimos Precios',
+        title: S.of(context).articulo_show_ultimosPrecios_titulo,
         navigationTo: () => context.goNamed(
           AppRoutes.articuloultimoprecio.name,
           params: params,
@@ -829,7 +869,7 @@ class _Consultas extends StatelessWidget {
       ),
       const Divider(),
       DatosExtraRow(
-        title: 'Documentos',
+        title: S.of(context).articulo_show_articuloDocumentos_titulo,
         navigationTo: () => context.goNamed(
           AppRoutes.articulodocumento.name,
           params: params,
@@ -868,6 +908,7 @@ class _SummaryTextWidgetState extends State<SummaryTextWidget> {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
                 child: Text(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta_linea.dart';
 
@@ -59,7 +60,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  '${numberFormatCantidades(pedidoVentaLinea.cantidad)} unidades',
+                                  '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${(pedidoVentaLinea.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
                                   style: Theme.of(context).textTheme.subtitle2,
                                 ),
                               ],

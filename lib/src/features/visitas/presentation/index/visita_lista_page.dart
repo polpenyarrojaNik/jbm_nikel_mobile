@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_sea
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_state.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -60,8 +61,8 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
-        title: 'Visitas',
-        searchTitle: 'Buscar visitas...',
+        title: S.of(context).visita_index_titulo,
+        searchTitle: S.of(context).visita_index_buscarVisitas,
         onChanged: (searchText) => _debouncer.run(
           () {
             ref.read(visitasSearchQueryStateProvider.notifier).state =
@@ -78,7 +79,10 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
             loading: () => const ProgressIndicatorWidget(),
             error: (e, _) => ErrorMessageWidget(e.toString()),
             data: (visitasList) => (visitasList.isEmpty)
-                ? const Center(child: Text('Sin resultados'))
+                ? Center(
+                    child: Text(
+                    S.of(context).sinResultados,
+                  ))
                 : ListView.separated(
                     separatorBuilder: (context, i) => const Divider(),
                     physics: const AlwaysScrollableScrollPhysics(),

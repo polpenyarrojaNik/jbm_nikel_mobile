@@ -23,7 +23,7 @@ import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
 import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.dart';
-import '../../features/settings/presentation/setting/settings_page.dart';
+import '../../features/settings/presentation/settings_page.dart';
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';

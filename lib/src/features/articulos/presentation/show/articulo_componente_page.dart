@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -22,7 +23,7 @@ class ArticuloComponentePage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: 'Componentes',
+            title: S.of(context).articulo_show_articuloComponentes_titulo,
             entityId: articuloId,
             subtitle: description,
           ),
@@ -48,8 +49,8 @@ class ArticuloComponentePage extends ConsumerWidget {
                     : SliverFillRemaining(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text('Sin resultados'),
+                          children: [
+                            Text(S.of(context).sinResultados),
                           ],
                         ),
                       ),
@@ -78,7 +79,7 @@ class ArticuloComponenteTile extends StatelessWidget {
               Text(articuloComponente.articuloComponenteId,
                   style: Theme.of(context).textTheme.subtitle2),
               Text(
-                  '${numberFormatCantidades(articuloComponente.cantidad)} ${((articuloComponente.cantidad) != 1) ? 'unidades' : 'unidad'}',
+                  '${numberFormatCantidades(articuloComponente.cantidad)} ${((articuloComponente.cantidad) != 1) ? S.of(context).unidades : S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodyText2?.copyWith(
                       color: Theme.of(context).textTheme.caption?.color)),
             ],

@@ -50,6 +50,46 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `An error occurred`
+  String get haOcurridoUnError {
+    return Intl.message(
+      'An error occurred',
+      name: 'haOcurridoUnError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `units`
+  String get unidades {
+    return Intl.message(
+      'units',
+      name: 'unidades',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `unit`
+  String get unidad {
+    return Intl.message(
+      'unit',
+      name: 'unidad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stock`
+  String get stock {
+    return Intl.message(
+      'Stock',
+      name: 'stock',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No Results`
   String get sinResultados {
     return Intl.message(
@@ -121,10 +161,10 @@ class S {
   }
 
   /// `Go Home`
-  String get commonWidgets_emptyPlaceholfer_irAIncio {
+  String get commonWidgets_emptyPlaceholder_irAIncio {
     return Intl.message(
       'Go Home',
-      name: 'commonWidgets_emptyPlaceholfer_irAIncio',
+      name: 'commonWidgets_emptyPlaceholder_irAIncio',
       desc: '',
       args: [],
     );
@@ -160,41 +200,31 @@ class S {
     );
   }
 
-  /// `Stock`
-  String get articulo_show_articuloComponente_stock {
+  /// `Article detail`
+  String get articulo_show_articuloDetalle_titulo {
     return Intl.message(
-      'Stock',
-      name: 'articulo_show_articuloComponente_stock',
+      'Article detail',
+      name: 'articulo_show_articuloDetalle_titulo',
       desc: '',
       args: [],
     );
   }
 
-  /// `Stock`
-  String get articulo_show_articuloComponenteIncluded_stock {
+  /// `Datos generales`
+  String get articulo_show_articuloDetalle_datosGenerales {
     return Intl.message(
-      'Stock',
-      name: 'articulo_show_articuloComponenteIncluded_stock',
+      'Datos generales',
+      name: 'articulo_show_articuloDetalle_datosGenerales',
       desc: '',
       args: [],
     );
   }
 
-  /// `Sales orders`
-  String get articulo_show_articuloDetalle_pedVentas {
+  /// `Queries`
+  String get articulo_show_articuloDetalle_consultas {
     return Intl.message(
-      'Sales orders',
-      name: 'articulo_show_articuloDetalle_pedVentas',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Last prices`
-  String get articulo_show_articuloDetalle_ultimosPrecios {
-    return Intl.message(
-      'Last prices',
-      name: 'articulo_show_articuloDetalle_ultimosPrecios',
+      'Queries',
+      name: 'articulo_show_articuloDetalle_consultas',
       desc: '',
       args: [],
     );
@@ -205,16 +235,6 @@ class S {
     return Intl.message(
       'Stock y Entregas',
       name: 'articulo_show_articuloDetalle_stockYEntregas',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Stock`
-  String get articulo_show_articuloDetalle_stock {
-    return Intl.message(
-      'Stock',
-      name: 'articulo_show_articuloDetalle_stock',
       desc: '',
       args: [],
     );
@@ -300,7 +320,15 @@ class S {
     );
   }
 
-  // skipped getter for the 'articulo_show_articuloDetalle_+' key
+  /// `+`
+  String get articulo_show_articuloDetalle_mas {
+    return Intl.message(
+      '+',
+      name: 'articulo_show_articuloDetalle_mas',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Subbox quantity`
   String get articulo_show_articuloDetalle_cantidadSubcaja {
@@ -332,6 +360,26 @@ class S {
     );
   }
 
+  /// `Weight`
+  String get articulo_show_articuloDetalle_peso {
+    return Intl.message(
+      'Weight',
+      name: 'articulo_show_articuloDetalle_peso',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `kg`
+  String get articulo_show_articuloDetalle_kg {
+    return Intl.message(
+      'kg',
+      name: 'articulo_show_articuloDetalle_kg',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Measures`
   String get articulo_show_articuloDetalle_medidas {
     return Intl.message(
@@ -352,7 +400,25 @@ class S {
     );
   }
 
-  // skipped getter for the 'articulo_show_articuloDetalle_pagCatalogo/2ªEdi' key
+  /// `Page in catalogue`
+  String get articulo_show_articuloDetalle_paginaEnCatalogo {
+    return Intl.message(
+      'Page in catalogue',
+      name: 'articulo_show_articuloDetalle_paginaEnCatalogo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Page 2nd edition`
+  String get articulo_show_articuloDetalle_pagina2Edicion {
+    return Intl.message(
+      'Page 2nd edition',
+      name: 'articulo_show_articuloDetalle_pagina2Edicion',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Active web`
   String get articulo_show_articuloDetalle_activoWeb {
@@ -404,51 +470,141 @@ class S {
     );
   }
 
+  /// `Not available`
+  String get articulo_show_articuloDetalle_noDisponible {
+    return Intl.message(
+      'Not available',
+      name: 'articulo_show_articuloDetalle_noDisponible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Related data`
+  String get articulo_show_articuloDetalle_datosRelacionados {
+    return Intl.message(
+      'Related data',
+      name: 'articulo_show_articuloDetalle_datosRelacionados',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate Prices`
+  String get articulo_show_articuloPreciosTarifa_titulo {
+    return Intl.message(
+      'Rate Prices',
+      name: 'articulo_show_articuloPreciosTarifa_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Net groups`
+  String get articulo_show_articuloGruposNetos_titulo {
+    return Intl.message(
+      'Net groups',
+      name: 'articulo_show_articuloGruposNetos_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Components`
+  String get articulo_show_articuloComponentes_titulo {
+    return Intl.message(
+      'Components',
+      name: 'articulo_show_articuloComponentes_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spare`
+  String get articulo_show_articuloRecambio_titulo {
+    return Intl.message(
+      'Spare',
+      name: 'articulo_show_articuloRecambio_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Substitute Artiicles`
+  String get articulo_show_articuloSustitutivo_titulo {
+    return Intl.message(
+      'Substitute Artiicles',
+      name: 'articulo_show_articuloSustitutivo_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Documents`
+  String get articulo_show_articuloDocumentos_titulo {
+    return Intl.message(
+      'Documents',
+      name: 'articulo_show_articuloDocumentos_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last prices`
-  String get articulo_show_lastPrices_titulo {
+  String get articulo_show_ultimosPrecios_titulo {
     return Intl.message(
       'Last prices',
-      name: 'articulo_show_lastPrices_titulo',
+      name: 'articulo_show_ultimosPrecios_titulo',
       desc: '',
       args: [],
     );
   }
 
   /// `Price`
-  String get articulo_show_lastPrices_precio {
+  String get articulo_show_ultimosPrecios_precio {
     return Intl.message(
       'Price',
-      name: 'articulo_show_lastPrices_precio',
+      name: 'articulo_show_ultimosPrecios_precio',
       desc: '',
       args: [],
     );
   }
 
-  /// `Order`
-  String get articulo_show_articuloPedidoVenta_pedido {
+  /// `Search...`
+  String get articulo_show_ultimosPrecios_buscarUltimosPrecios {
     return Intl.message(
-      'Order',
-      name: 'articulo_show_articuloPedidoVenta_pedido',
+      'Search...',
+      name: 'articulo_show_ultimosPrecios_buscarUltimosPrecios',
       desc: '',
       args: [],
     );
   }
 
-  /// `LOGIN TITLE`
+  /// `Sales orders`
+  String get articulo_show_articuloPedidoVenta_titulo {
+    return Intl.message(
+      'Sales orders',
+      name: 'articulo_show_articuloPedidoVenta_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to`
   String get auth_loginPage_titulo {
     return Intl.message(
-      'LOGIN TITLE',
+      'Welcome to',
       name: 'auth_loginPage_titulo',
       desc: '',
       args: [],
     );
   }
 
-  /// `This field not be empty`
-  String get auth_loginPage_noPuedeEstarVacio {
+  /// `Required field`
+  String get auth_loginPage_requerido {
     return Intl.message(
-      'This field not be empty',
-      name: 'auth_loginPage_noPuedeEstarVacio',
+      'Required field',
+      name: 'auth_loginPage_requerido',
       desc: '',
       args: [],
     );
@@ -464,7 +620,15 @@ class S {
     );
   }
 
-  // skipped getter for the 'auth_loginPage_contraseña' key
+  /// `Password`
+  String get auth_loginPage_contrasena {
+    return Intl.message(
+      'Password',
+      name: 'auth_loginPage_contrasena',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Log in`
   String get auth_loginPage_iniciarSesion {
@@ -491,6 +655,56 @@ class S {
     return Intl.message(
       ' Search customers...',
       name: 'cliente_index_buscarClientes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Id`
+  String get cliente_show_clienteContacto_id {
+    return Intl.message(
+      'Id',
+      name: 'cliente_show_clienteContacto_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get cliente_show_clienteContacto_nombre {
+    return Intl.message(
+      'Name',
+      name: 'cliente_show_clienteContacto_nombre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get cliente_show_clienteContacto_email {
+    return Intl.message(
+      'Email',
+      name: 'cliente_show_clienteContacto_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone 1`
+  String get cliente_show_clienteContacto_phone1 {
+    return Intl.message(
+      'Phone 1',
+      name: 'cliente_show_clienteContacto_phone1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone 2`
+  String get cliente_show_clienteContacto_phone2 {
+    return Intl.message(
+      'Phone 2',
+      name: 'cliente_show_clienteContacto_phone2',
       desc: '',
       args: [],
     );
@@ -666,33 +880,81 @@ class S {
     );
   }
 
-  // skipped getter for the 'cliente_show_clienteDetalle_ventasAñoActual' key
-
-  // skipped getter for the 'cliente_show_clienteDetalle_ventasAñoAnterior' key
-
-  // skipped getter for the 'cliente_show_clienteDetalle_ventasHace2Años' key
-
-  /// `Warranty percentage`
-  String get cliente_show_clienteDetalle_porcentajeGarantiass {
+  /// `Current year sales`
+  String get cliente_show_clienteDetalle_ventasAnoActual {
     return Intl.message(
-      'Warranty percentage',
-      name: 'cliente_show_clienteDetalle_porcentajeGarantiass',
+      'Current year sales',
+      name: 'cliente_show_clienteDetalle_ventasAnoActual',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the 'cliente_show_clienteDetalle_margenAñoActual' key
+  /// `Last year sales`
+  String get cliente_show_clienteDetalle_ventasAnoAnterior {
+    return Intl.message(
+      'Last year sales',
+      name: 'cliente_show_clienteDetalle_ventasAnoAnterior',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'cliente_show_clienteDetalle_margenAñoAnterior' key
+  /// `Two years ago sales`
+  String get cliente_show_clienteDetalle_ventasHace2Anos {
+    return Intl.message(
+      'Two years ago sales',
+      name: 'cliente_show_clienteDetalle_ventasHace2Anos',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'cliente_show_clienteDetalle_margenHace2Años' key
+  /// `Warranty percentage`
+  String get cliente_show_clienteDetalle_porcentajeGarantias {
+    return Intl.message(
+      'Warranty percentage',
+      name: 'cliente_show_clienteDetalle_porcentajeGarantias',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current year margin`
+  String get cliente_show_clienteDetalle_margenAnoActual {
+    return Intl.message(
+      'Current year margin',
+      name: 'cliente_show_clienteDetalle_margenAnoActual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last year margin`
+  String get cliente_show_clienteDetalle_margenAnoAnterior {
+    return Intl.message(
+      'Last year margin',
+      name: 'cliente_show_clienteDetalle_margenAnoAnterior',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Two years ago margin`
+  String get cliente_show_clienteDetalle_margenHace2Anos {
+    return Intl.message(
+      'Two years ago margin',
+      name: 'cliente_show_clienteDetalle_margenHace2Anos',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Payment percentage`
-  String get cliente_show_clienteDetalle_PorcentajeAbonos {
+  String get cliente_show_clienteDetalle_porcentajeAbonos {
     return Intl.message(
       'Payment percentage',
-      name: 'cliente_show_clienteDetalle_PorcentajeAbonos',
+      name: 'cliente_show_clienteDetalle_porcentajeAbonos',
       desc: '',
       args: [],
     );
@@ -718,7 +980,15 @@ class S {
     );
   }
 
-  // skipped getter for the 'cliente_show_clienteDetalle_precios&Otros' key
+  /// `Prices & Others`
+  String get cliente_show_clienteDetalle_preciosYOtros {
+    return Intl.message(
+      'Prices & Others',
+      name: 'cliente_show_clienteDetalle_preciosYOtros',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Valuta`
   String get cliente_show_clienteDetalle_divisa {
@@ -765,6 +1035,16 @@ class S {
     return Intl.message(
       'Price calculation type',
       name: 'cliente_show_clienteDetalle_metodoCalculoPrecio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `¿Ritmo visitas(sem)?`
+  String get cliente_show_clienteDetalle_ritmoVisitas {
+    return Intl.message(
+      '¿Ritmo visitas(sem)?',
+      name: 'cliente_show_clienteDetalle_ritmoVisitas',
       desc: '',
       args: [],
     );
@@ -910,6 +1190,16 @@ class S {
     );
   }
 
+  /// `Pending to facturate`
+  String get cliente_show_clienteDetalle_pdteFacturar {
+    return Intl.message(
+      'Pending to facturate',
+      name: 'cliente_show_clienteDetalle_pdteFacturar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Since`
   String get cliente_show_clienteDescuento_desDe {
     return Intl.message(
@@ -950,6 +1240,26 @@ class S {
     );
   }
 
+  /// `JBM expirated`
+  String get cliente_show_clientePagosPendientes_vencidoJBM {
+    return Intl.message(
+      'JBM expirated',
+      name: 'cliente_show_clientePagosPendientes_vencidoJBM',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Init Expiration`
+  String get cliente_show_clientePagosPendientes_vencInicial {
+    return Intl.message(
+      'Init Expiration',
+      name: 'cliente_show_clientePagosPendientes_vencInicial',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Top 150`
   String get cliente_show_clienteArticulosTop_titulo {
     return Intl.message(
@@ -970,9 +1280,25 @@ class S {
     );
   }
 
-  // skipped getter for the 'cliente_alrededor_ventasAñoActual' key
+  /// `Current year sales`
+  String get cliente_alrededor_ventasAnoActual {
+    return Intl.message(
+      'Current year sales',
+      name: 'cliente_alrededor_ventasAnoActual',
+      desc: '',
+      args: [],
+    );
+  }
 
-  // skipped getter for the 'cliente_alrededor_margenAñoActual' key
+  /// `Current year margin`
+  String get cliente_alrededor_margenAnoActual {
+    return Intl.message(
+      'Current year margin',
+      name: 'cliente_alrededor_margenAnoActual',
+      desc: '',
+      args: [],
+    );
+  }
 
   /// `Payment percentage`
   String get cliente_alrededor_porcentajeAbonos {
@@ -985,100 +1311,100 @@ class S {
   }
 
   /// `Sales orders`
-  String get salesorder_index_titulo {
+  String get pedido_index_titulo {
     return Intl.message(
       'Sales orders',
-      name: 'salesorder_index_titulo',
+      name: 'pedido_index_titulo',
       desc: '',
       args: [],
     );
   }
 
   /// `Search sales orders...`
-  String get salesorder_index_buscarPedidos {
+  String get pedido_index_buscarPedidos {
     return Intl.message(
       'Search sales orders...',
-      name: 'salesorder_index_buscarPedidos',
+      name: 'pedido_index_buscarPedidos',
       desc: '',
       args: [],
     );
   }
 
   /// `Sales order detail`
-  String get salesorder_show_pedidoVentaDetalle_titulo {
+  String get pedido_show_pedidoVentaDetalle_titulo {
     return Intl.message(
       'Sales order detail',
-      name: 'salesorder_show_pedidoVentaDetalle_titulo',
+      name: 'pedido_show_pedidoVentaDetalle_titulo',
       desc: '',
       args: [],
     );
   }
 
   /// `Status`
-  String get salesorder_show_pedidoVentaDetalle_estado {
+  String get pedido_show_pedidoVentaDetalle_estado {
     return Intl.message(
       'Status',
-      name: 'salesorder_show_pedidoVentaDetalle_estado',
+      name: 'pedido_show_pedidoVentaDetalle_estado',
       desc: '',
       args: [],
     );
   }
 
   /// `Date`
-  String get salesorder_show_pedidoVentaDetalle_fecha {
+  String get pedido_show_pedidoVentaDetalle_fecha {
     return Intl.message(
       'Date',
-      name: 'salesorder_show_pedidoVentaDetalle_fecha',
+      name: 'pedido_show_pedidoVentaDetalle_fecha',
       desc: '',
       args: [],
     );
   }
 
   /// `Tax base`
-  String get salesorder_show_pedidoVentaDetalle_baseImponible {
+  String get pedido_show_pedidoVentaDetalle_baseImponible {
     return Intl.message(
       'Tax base',
-      name: 'salesorder_show_pedidoVentaDetalle_baseImponible',
+      name: 'pedido_show_pedidoVentaDetalle_baseImponible',
       desc: '',
       args: [],
     );
   }
 
   /// `Amount IVA`
-  String get salesorder_show_pedidoVentaDetalle_importeIva {
+  String get pedido_show_pedidoVentaDetalle_importeIva {
     return Intl.message(
       'Amount IVA',
-      name: 'salesorder_show_pedidoVentaDetalle_importeIva',
+      name: 'pedido_show_pedidoVentaDetalle_importeIva',
       desc: '',
       args: [],
     );
   }
 
   /// `Total`
-  String get salesorder_show_pedidoVentaDetalle_total {
+  String get pedido_show_pedidoVentaDetalle_total {
     return Intl.message(
       'Total',
-      name: 'salesorder_show_pedidoVentaDetalle_total',
+      name: 'pedido_show_pedidoVentaDetalle_total',
       desc: '',
       args: [],
     );
   }
 
   /// `Lines`
-  String get salesorder_show_pedidoVentaDetalle_lineas {
+  String get pedido_show_pedidoVentaDetalle_lineas {
     return Intl.message(
       'Lines',
-      name: 'salesorder_show_pedidoVentaDetalle_lineas',
+      name: 'pedido_show_pedidoVentaDetalle_lineas',
       desc: '',
       args: [],
     );
   }
 
   /// `Price`
-  String get salesorder_show_pedidoVentaDetalle_precio {
+  String get pedido_show_pedidoVentaDetalle_precio {
     return Intl.message(
       'Price',
-      name: 'salesorder_show_pedidoVentaDetalle_precio',
+      name: 'pedido_show_pedidoVentaDetalle_precio',
       desc: '',
       args: [],
     );
@@ -1119,6 +1445,16 @@ class S {
     return Intl.message(
       'Visits',
       name: 'visita_index_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search visits...`
+  String get visita_index_buscarVisitas {
+    return Intl.message(
+      'Search visits...',
+      name: 'visita_index_buscarVisitas',
       desc: '',
       args: [],
     );

@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/primary_bu
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -66,11 +67,11 @@ class LoginPageState extends ConsumerState<LoginPage> {
                   ),
                   gapH48,
                   Text(
-                    'Bienvenido a',
+                    S.of(context).auth_loginPage_titulo,
                     style: Theme.of(context).textTheme.headline5!,
                   ),
                   Text(
-                    'Nikel Mobile',
+                    'JBM Nikel Mobile',
                     style: Theme.of(context)
                         .textTheme
                         .headline4!
@@ -85,26 +86,29 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       ValidationMessage.required: (error) => 'Requerido'
                     },
                     textInputAction: TextInputAction.next,
-                    decoration: AppDecoration.loginField('Usuario'),
+                    decoration: AppDecoration.loginField(
+                        S.of(context).auth_loginPage_usuario),
                   ),
                   gapH16,
                   ReactiveTextField<String>(
                     formControlName: 'contrasenya',
                     obscureText: true,
                     validationMessages: {
-                      ValidationMessage.required: (error) => 'Requerido'
+                      ValidationMessage.required: (error) =>
+                          S.of(context).auth_loginPage_requerido
                     },
                     textInputAction: TextInputAction.done,
                     onSubmitted: (_) => _submit(form, ref),
                     decoration: AppDecoration.loginField(
-                      'Contraseña',
+                      S.of(context).auth_loginPage_contrasena,
                     ),
                   ),
                   gapH32,
                   state.maybeWhen(
                     orElse: () {
                       return PrimaryButton(
-                          onPressed: () => _submit(form, ref), text: 'Login');
+                          onPressed: () => _submit(form, ref),
+                          text: S.of(context).auth_loginPage_iniciarSesion);
                     },
                     loading: () => const ProgressIndicatorWidget(),
                   ),

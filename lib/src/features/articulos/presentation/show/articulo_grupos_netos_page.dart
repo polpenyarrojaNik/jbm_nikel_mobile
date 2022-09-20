@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -22,7 +23,7 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: 'Grupos Netos',
+            title: S.of(context).articulo_show_articuloGruposNetos_titulo,
             entityId: articuloId,
             subtitle: description,
           ),
@@ -47,8 +48,8 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Sin resultados'),
+                      children: [
+                        Text(S.of(context).sinResultados),
                       ],
                     ),
                   ),

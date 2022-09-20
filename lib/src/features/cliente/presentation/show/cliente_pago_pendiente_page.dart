@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -17,12 +18,13 @@ class ClientePagoPendientePage extends ConsumerWidget {
     final state = ref.watch(clientePendientePagoProvider(clienteId));
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Pending Payments')),
+      appBar: AppBar(
+          title: Text(S.of(context).cliente_show_clientePendientePago_titulo)),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: state.when(
             data: (_) => (_.isEmpty)
-                ? const Center(child: Text('No Results'))
+                ? Center(child: Text(S.of(context).sinResultados))
                 : ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, i) =>
@@ -117,7 +119,10 @@ class ClientePagoPendienteTile extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text('Vencido JMB',
+                            Text(
+                                S
+                                    .of(context)
+                                    .cliente_show_clientePagosPendientes_vencidoJBM,
                                 style: Theme.of(context).textTheme.caption),
                             Checkbox(
                                 visualDensity: const VisualDensity(
@@ -128,7 +133,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
                         ),
                         if (clientePagoPendiente.fechaExpiracionInicial != null)
                           Text(
-                            'Venc. Inicial ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
+                            '${S.of(context).cliente_show_clientePagosPendientes_vencInicial} ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
                             style: Theme.of(context).textTheme.caption,
                           ),
                       ],

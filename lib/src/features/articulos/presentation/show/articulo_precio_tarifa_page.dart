@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -22,7 +23,7 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: 'Precios tarifa',
+            title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
             entityId: articuloId,
             subtitle: description,
           ),
@@ -48,8 +49,8 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
                     : SliverFillRemaining(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Text('Sin resultados'),
+                          children: [
+                            Text(S.of(context).sinResultados),
                           ],
                         ),
                       ),
