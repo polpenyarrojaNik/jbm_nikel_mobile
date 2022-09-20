@@ -120,16 +120,12 @@ class ClienteRepository {
       ]);
 
       if (searchText != null) {
-        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-            ((_db.clienteTable.nombreCliente.like('%$searchText%') |
-                    _db.clienteTable.nombreCliente
-                        .like('%${searchText.toUpperCase()}%')) |
-                (_db.clienteTable.poblacionFiscal.like('%$searchText%') |
-                    _db.clienteTable.poblacionFiscal
-                        .like('%${searchText.toUpperCase()}%')) |
-                (_db.clienteTable.provinciaFiscal.like('%$searchText%') |
-                    _db.clienteTable.provinciaFiscal
-                        .like('%${searchText.toUpperCase()}%'))));
+        query.where(
+          _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+              (_db.clienteTable.nombreCliente.like('%$searchText%') |
+                  _db.clienteTable.poblacionFiscal.like('%$searchText%') |
+                  _db.clienteTable.provinciaFiscal.like('%$searchText%')),
+        );
       } else {
         query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
       }

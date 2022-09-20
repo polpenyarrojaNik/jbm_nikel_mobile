@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
+import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/pedido_venta.dart';
@@ -15,12 +16,21 @@ final pedidoVentaRepositoryProvider =
   },
 );
 
-final pedidoVentaListaStreamProvider =
-    StreamProvider.autoDispose<List<PedidoVenta>>((ref) async* {
-  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  yield* pedidoVentaRepository.watchPedidoVentaLista(usuarioId: usuario!.id);
-});
+final pedidosSearchProvider =
+    FutureProvider.autoDispose.family<List<PedidoVenta>, DefaultListParams>(
+  (ref, defaultListParams) async {
+    print('Searching: ${defaultListParams.searchText}');
+    final usuario =
+        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+
+    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+    return pedidoVentaRepository.getPedidoVentaLista(
+        usuarioId: usuario!.id,
+        page: defaultListParams.page,
+        searchText: defaultListParams.searchText);
+  },
+  // cacheTime: const Duration(seconds: 60),
+);
 
 final pedidoVentaProvider = FutureProvider.autoDispose
     .family<PedidoVenta, String>((ref, pedidoVentaId) {
@@ -35,13 +45,17 @@ final pedidoVentaLineaProvider = FutureProvider.autoDispose
       pedidoVentaId: pedidoVentaId);
 });
 
+const pageSize = 100;
+
 class PedidoVentaRepository {
   final AppDatabase _db;
 
   PedidoVentaRepository(this._db);
 
-  Stream<List<PedidoVenta>> watchPedidoVentaLista(
-      {required String usuarioId, String? searchText}) {
+  Future<List<PedidoVenta>> getPedidoVentaLista(
+      {required String usuarioId,
+      required int page,
+      required String searchText}) {
     try {
       final query = _db.select(_db.pedidoVentaTable).join([
         innerJoin(
@@ -58,20 +72,20 @@ class PedidoVentaRepository {
                 .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
       ]);
 
-      if (searchText != null) {
+      if (searchText != '') {
         query.where(
           _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-              (_db.pedidoVentaTable.pedidoVentaId.like(searchText) |
-                  _db.pedidoVentaTable.nombreCliente.like(searchText) |
-                  _db.pedidoVentaTable.clienteId.like(searchText) |
-                  _db.pedidoVentaTable.poblacion.like(searchText) |
-                  _db.pedidoVentaTable.codigoPostal.like(searchText) |
-                  _db.pedidoVentaTable.provincia.like(searchText)),
+              (_db.pedidoVentaTable.pedidoVentaId.like('%$searchText%') |
+                  _db.pedidoVentaTable.nombreCliente.like('%$searchText%') |
+                  _db.pedidoVentaTable.clienteId.like('%$searchText%') |
+                  _db.pedidoVentaTable.poblacion.like('%$searchText%') |
+                  _db.pedidoVentaTable.codigoPostal.like('%$searchText%') |
+                  _db.pedidoVentaTable.provincia.like('%$searchText%')),
         );
       } else {
-        query.where(_db.pedidoVentaTable.deleted.equals('N') &
-            _db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
       }
+      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
 
       query.orderBy([OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate)]);
 
@@ -85,7 +99,7 @@ class PedidoVentaRepository {
             pais: paisDTO?.toDomain(),
             divisa: divisaDTO.toDomain(),
             pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
-      }).watch();
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

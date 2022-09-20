@@ -17,6 +17,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
@@ -141,7 +142,6 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
 final articuloUltimosPreciosSearchProvider = FutureProvider.autoDispose
     .family<List<EstadisticasUltimosPrecios>, DefaultListParams>(
   (ref, defaultListParams) async {
-    await Future.delayed(const Duration(milliseconds: 500));
     final usuario =
         await ref.watch(usuarioServiceProvider).getSignedInUsuario();
 
@@ -154,6 +154,11 @@ final articuloUltimosPreciosSearchProvider = FutureProvider.autoDispose
   },
   // cacheTime: const Duration(seconds: 60),
 );
+
+final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
+  final syncRepository = ref.watch(syncServiceProvider);
+  return syncRepository.syncArticulos();
+});
 
 const pageSize = 100;
 

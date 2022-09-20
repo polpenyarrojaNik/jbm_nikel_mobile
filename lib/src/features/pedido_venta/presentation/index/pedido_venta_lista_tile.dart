@@ -17,48 +17,56 @@ class PedidoVentaListaTile extends StatelessWidget {
           params: {'id': pedidoVenta.pedidoVentaId}),
       child: Container(
         color: Colors.transparent,
-        child: Card(
-          clipBehavior: Clip.hardEdge,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4), // if you need this
-            side: BorderSide(
-              color: Colors.grey.withOpacity(0.2),
-              width: 1,
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(pedidoVenta.pedidoVentaId),
-                    Text(dateFormatter(pedidoVenta.pedidoVentaDate
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(pedidoVenta.pedidoVentaId,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  Text(
+                    dateFormatter(pedidoVenta.pedidoVentaDate
                         .toLocal()
-                        .toIso8601String())),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente ?? ''}',
-                      ),
+                        .toIso8601String()),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 2),
+              Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente ?? ''}',
                     ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(pedidoVenta.baseImponible.toString()),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          formatCodigoPostalAndPoblacion(
+                              codigoPostal: pedidoVenta.codigoPostal,
+                              poblacion: pedidoVenta.poblacion),
+                          style: Theme.of(context).textTheme.caption),
+                      Text(
+                          formatProvinciaAndPais(
+                              province: pedidoVenta.provincia,
+                              pais: pedidoVenta.pais),
+                          style: Theme.of(context).textTheme.caption),
+                    ],
+                  ),
+                  Text(pedidoVenta.baseImponible.toString()),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 
 import '../../../../core/helpers/debouncer.dart';
@@ -78,27 +79,37 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
           });
         },
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-        child: state.when(
-          loading: () => const ProgressIndicatorWidget(),
-          error: (e, _) => ErrorMessageWidget(e.toString()),
-          data: (articuloList) => (articuloList.isEmpty)
-              ? Container()
-              : ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: articuloList.length,
-                  itemBuilder: (context, i) => ArticuloListaTile(
-                    articulo: articuloList[i],
-                    appRoute: AppRoutes.articuloshow,
-                    clienteId: null,
+      body: RefreshIndicator(
+        onRefresh: () => refreshArticleDb(ref),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+          child: state.when(
+            loading: () => const ProgressIndicatorWidget(),
+            error: (e, _) => ErrorMessageWidget(e.toString()),
+            data: (articuloList) => (articuloList.isEmpty)
+                ? Container()
+                : ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    shrinkWrap: true,
+                    controller: _scrollController,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: articuloList.length,
+                    itemBuilder: (context, i) => ArticuloListaTile(
+                      articulo: articuloList[i],
+                      appRoute: AppRoutes.articuloshow,
+                      clienteId: null,
+                    ),
                   ),
-                ),
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> refreshArticleDb(WidgetRef ref) async {
+    await ref.read(syncServiceProvider).syncAllArticulosRelacionados();
+
+    ref.read(articulosSearchQueryStateProvider.notifier).state = '';
+    ref.read(articulosPaginationQueryStateProvider.notifier).state = 1;
   }
 }

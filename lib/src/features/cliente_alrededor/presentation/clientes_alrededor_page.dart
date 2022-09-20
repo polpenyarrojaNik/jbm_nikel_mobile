@@ -52,6 +52,7 @@ class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
 
   void onSliderChanged(double value) {
     setState(() {
+      value = (value == 0) ? 1 : value;
       radiusKm = value * 1000;
     });
   }
@@ -174,9 +175,9 @@ class SliderKm extends StatelessWidget {
         children: [
           Slider(
             value: radiusKm / 1000,
-            min: 1,
-            max: 10,
-            divisions: 9,
+            min: 0,
+            max: 100,
+            divisions: 20,
             onChanged: (value) => onSliderChanged(value),
           ),
           DecoratedBox(

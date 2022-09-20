@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 
@@ -73,34 +74,37 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       appBar: CustomSearchAppBar(
         title: 'Cliente',
         searchTitle: 'Search Cliente...',
-        onChanged: (searchText) {
-          _debouncer.run(() {
+        onChanged: (searchText) => _debouncer.run(
+          () {
             ref.read(clientesSearchQueryStateProvider.notifier).state =
                 searchText;
             ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
-          });
-        },
+          },
+        ),
         addActionButton: IconButton(
           onPressed: () => navigateToClientesAlrededor(context),
           icon: const Icon(Icons.near_me_outlined),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: state.when(
-          loading: () => const ProgressIndicatorWidget(),
-          error: (e, _) => ErrorMessageWidget(e.toString()),
-          data: (clienteList) => (clienteList.isEmpty)
-              ? Container()
-              : ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: clienteList.length,
-                  itemBuilder: (context, i) =>
-                      ClienteListaTile(cliente: clienteList[i]),
-                ),
+      body: RefreshIndicator(
+        onRefresh: () => syncCustomerDb(ref),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: state.when(
+            loading: () => const ProgressIndicatorWidget(),
+            error: (e, _) => ErrorMessageWidget(e.toString()),
+            data: (clienteList) => (clienteList.isEmpty)
+                ? Container()
+                : ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    shrinkWrap: true,
+                    controller: _scrollController,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: clienteList.length,
+                    itemBuilder: (context, i) =>
+                        ClienteListaTile(cliente: clienteList[i]),
+                  ),
+          ),
         ),
       ),
     );
@@ -110,5 +114,12 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     context.goNamed(
       AppRoutes.clientealrededor.name,
     );
+  }
+
+  Future<void> syncCustomerDb(WidgetRef ref) async {
+    await ref.read(syncServiceProvider).syncAllClientesRelacionados();
+
+    ref.read(clientesSearchQueryStateProvider.notifier).state = '';
+    ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
   }
 }

@@ -19,7 +19,7 @@ class SplashPageController extends StateNotifier<AsyncValue<void>> {
       state = const AsyncLoading();
       await _syncService.initDatabaBase();
       try {
-        await _syncService.syncArticulo();
+        await _syncService.syncArticulos();
         await _syncService.syncClientes();
       } catch (e) {
         log.info(e.toString());

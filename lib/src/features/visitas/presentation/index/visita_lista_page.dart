@@ -20,22 +20,33 @@ class VisitaListaPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Visitas'),
       ),
-      body: ListView.builder(
-        shrinkWrap: true,
-        controller: scrollController,
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: state.when(
-          loading: () => 1,
-          data: (_) => _.length,
-          error: (_, __) => 1,
-        ),
-        itemBuilder: (context, i) => state.when(
-          error: (_, __) =>
-              Text((_ is AppException) ? _.details.message : _.toString()),
-          loading: () => const ProgressIndicatorWidget(),
-          data: (_) => VisitaListaTile(visita: _[i]),
+      body: RefreshIndicator(
+        onRefresh: () => refreshVisitsDB(),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ListView.separated(
+            shrinkWrap: true,
+            controller: scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
+            itemCount: state.when(
+              loading: () => 1,
+              data: (_) => _.length,
+              error: (_, __) => 1,
+            ),
+            separatorBuilder: (context, i) => const Divider(),
+            itemBuilder: (context, i) => state.when(
+              error: (_, __) =>
+                  Text((_ is AppException) ? _.details.message : _.toString()),
+              loading: () => const ProgressIndicatorWidget(),
+              data: (_) => VisitaListaTile(visita: _[i]),
+            ),
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> refreshVisitsDB() async {
+    // await ref.read();
   }
 }

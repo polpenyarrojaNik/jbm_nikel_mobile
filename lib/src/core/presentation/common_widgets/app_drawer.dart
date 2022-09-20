@@ -43,7 +43,6 @@ class AppDrawer extends StatelessWidget {
             onTap: () => context.goNamed(AppRoutes.clienteindex.name),
           ),
           ListTile(
-            enabled: false,
             leading: const Icon(
               MdiIcons.packageVariantClosed,
               size: 30,
