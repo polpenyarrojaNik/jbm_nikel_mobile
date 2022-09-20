@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -44,16 +45,15 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(
-              MdiIcons.packageVariantClosed,
+              MdiIcons.cartOutline,
               size: 30,
             ),
             title: const Text('Pedidos'),
             onTap: () => context.goNamed(AppRoutes.salesorderindex.name),
           ),
           ListTile(
-            enabled: false,
             leading: const Icon(
-              MdiIcons.packageVariantClosed,
+              Icons.group,
               size: 30,
             ),
             title: const Text('Visitas'),
@@ -62,7 +62,7 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             enabled: false,
             leading: const Icon(
-              MdiIcons.packageVariantClosed,
+              MdiIcons.chartLine,
               size: 30,
             ),
             title: const Text('KPI'),

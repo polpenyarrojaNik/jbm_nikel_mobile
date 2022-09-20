@@ -37,7 +37,6 @@ import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../exceptions/app_exception.dart';
-import '../helpers/formatters.dart';
 import '../presentation/app.dart';
 import 'database.dart';
 import 'divisa_dto.dart';
@@ -215,6 +214,7 @@ class SyncService {
 
   Future<void> syncAllVisitasRelacionados() async {
     await syncVisitas();
+    await syncAllAuxiliares();
   }
 
   Future<void> syncAllAuxiliares() async {

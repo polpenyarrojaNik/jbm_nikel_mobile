@@ -16,7 +16,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'FECHA') required DateTime fecha,
     @JsonKey(name: 'NUM_EMPL') required String numEmpl,
-    @JsonKey(name: 'CONTACTOO') String? contacto,
+    @JsonKey(name: 'CONTACTO') String? contacto,
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
@@ -71,7 +71,7 @@ class VisitaTable extends Table {
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   DateTimeColumn get fecha => dateTime().named('FECHA')();
   TextColumn get numEmpl => text().named('NUM_EMPL')();
-  TextColumn get contacto => text().nullable().named('CONTACTOO')();
+  TextColumn get contacto => text().nullable().named('CONTACTO')();
   TextColumn get resumen => text().nullable().named('RESUMEN')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();

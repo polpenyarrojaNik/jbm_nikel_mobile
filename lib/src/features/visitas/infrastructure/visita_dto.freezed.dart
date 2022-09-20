@@ -28,7 +28,7 @@ mixin _$VisitaDTO {
   DateTime get fecha => throw _privateConstructorUsedError;
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CONTACTOO')
+  @JsonKey(name: 'CONTACTO')
   String? get contacto => throw _privateConstructorUsedError;
   @JsonKey(name: 'RESUMEN')
   String? get resumen => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ abstract class $VisitaDTOCopyWith<$Res> {
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'FECHA') DateTime fecha,
       @JsonKey(name: 'NUM_EMPL') String numEmpl,
-      @JsonKey(name: 'CONTACTOO') String? contacto,
+      @JsonKey(name: 'CONTACTO') String? contacto,
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
@@ -141,7 +141,7 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'FECHA') DateTime fecha,
       @JsonKey(name: 'NUM_EMPL') String numEmpl,
-      @JsonKey(name: 'CONTACTOO') String? contacto,
+      @JsonKey(name: 'CONTACTO') String? contacto,
       @JsonKey(name: 'RESUMEN') String? resumen,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
@@ -225,7 +225,7 @@ class _$_VisitaDTO extends _VisitaDTO {
       @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'FECHA') required this.fecha,
       @JsonKey(name: 'NUM_EMPL') required this.numEmpl,
-      @JsonKey(name: 'CONTACTOO') this.contacto,
+      @JsonKey(name: 'CONTACTO') this.contacto,
       @JsonKey(name: 'RESUMEN') this.resumen,
       @JsonKey(name: 'LATITUD') required this.latitud,
       @JsonKey(name: 'LONGITUD') required this.longitud,
@@ -249,7 +249,7 @@ class _$_VisitaDTO extends _VisitaDTO {
   @JsonKey(name: 'NUM_EMPL')
   final String numEmpl;
   @override
-  @JsonKey(name: 'CONTACTOO')
+  @JsonKey(name: 'CONTACTO')
   final String? contacto;
   @override
   @JsonKey(name: 'RESUMEN')
@@ -324,7 +324,7 @@ abstract class _VisitaDTO extends VisitaDTO {
       @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
       @JsonKey(name: 'FECHA') required final DateTime fecha,
       @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
-      @JsonKey(name: 'CONTACTOO') final String? contacto,
+      @JsonKey(name: 'CONTACTO') final String? contacto,
       @JsonKey(name: 'RESUMEN') final String? resumen,
       @JsonKey(name: 'LATITUD') required final double latitud,
       @JsonKey(name: 'LONGITUD') required final double longitud,
@@ -348,7 +348,7 @@ abstract class _VisitaDTO extends VisitaDTO {
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl;
   @override
-  @JsonKey(name: 'CONTACTOO')
+  @JsonKey(name: 'CONTACTO')
   String? get contacto;
   @override
   @JsonKey(name: 'RESUMEN')

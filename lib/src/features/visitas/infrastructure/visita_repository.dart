@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
+import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../domain/visita.dart';
@@ -16,13 +17,20 @@ final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
   },
 );
 
-final visitaListaStreamProvider =
-    StreamProvider.autoDispose<List<Visita>>((ref) async* {
-  final visitaRepository = ref.watch(visitaRepositoryProvider);
-  final usuarioService = ref.watch(usuarioServiceProvider);
-  final usuario = await usuarioService.getSignedInUsuario();
-  yield* visitaRepository.watchVisitaList(usuarioId: usuario!.id);
-});
+final visitasSearchProvider =
+    FutureProvider.autoDispose.family<List<Visita>, DefaultListParams>(
+  (ref, defaultListParams) async {
+    print('Searching: ${defaultListParams.searchText}');
+    final usuario =
+        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+
+    final visitaRepository = ref.watch(visitaRepositoryProvider);
+    return visitaRepository.getVisitaList(
+        usuarioId: usuario!.id,
+        page: defaultListParams.page,
+        searchText: defaultListParams.searchText);
+  },
+);
 
 final visitaProvider =
     FutureProvider.autoDispose.family<Visita, String>((ref, visitaId) {
@@ -31,28 +39,43 @@ final visitaProvider =
 });
 
 class VisitaRepository {
-  AppDatabase db;
-  Dio dio;
+  final AppDatabase _db;
+  final Dio _dio;
 
-  VisitaRepository(this.db, this.dio);
+  VisitaRepository(this._db, this._dio);
 
-  Stream<List<Visita>> watchVisitaList({required String usuarioId}) {
+  Future<List<Visita>> getVisitaList(
+      {required String usuarioId,
+      required int page,
+      required String searchText}) {
     try {
-      final query = db.select(db.visitaTable).join([
-        innerJoin(db.clienteUsuarioTable,
-            db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id))
+      final query = _db.select(_db.visitaTable).join([
+        innerJoin(
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.visitaTable.clienteId),
+        )
       ]);
 
-      query.where(db.visitaTable.deleted.equals('N') &
-          db.clienteUsuarioTable.clienteId.equals(usuarioId));
+      if (searchText != '') {
+        query.where(
+          _db.clienteUsuarioTable.clienteId.equals(usuarioId) &
+              (_db.visitaTable.resumen.like('%$searchText%') |
+                  _db.visitaTable.clienteId.like('%$searchText%') |
+                  _db.visitaTable.contacto.like('%$searchText%')),
+        );
+      } else {
+        query.where(_db.clienteUsuarioTable.clienteId.equals(usuarioId));
+      }
+
       query.orderBy([
-        OrderingTerm.desc(db.visitaTable.fecha),
+        OrderingTerm.desc(_db.visitaTable.fecha),
       ]);
 
       return query.map((row) {
-        final visitaDTO = row.readTable(db.visitaTable);
+        final visitaDTO = row.readTable(_db.visitaTable);
         return visitaDTO.toDomain();
-      }).watch();
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -61,7 +84,7 @@ class VisitaRepository {
   Future<Visita> getVisitaById({required String visitaId}) async {
     try {
       final query =
-          (db.select(db.visitaTable)..where((t) => t.id.equals(visitaId)));
+          (_db.select(_db.visitaTable)..where((t) => t.id.equals(visitaId)));
 
       return query.asyncMap((row) async {
         return row.toDomain();

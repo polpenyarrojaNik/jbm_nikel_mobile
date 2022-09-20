@@ -72,7 +72,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
         title: 'Pedidos de venta',
-        searchTitle: 'Search Pedidos...',
+        searchTitle: 'Buscar pedidos...',
         onChanged: (searchText) => _debouncer.run(
           () {
             ref.read(pedidosSearchQueryStateProvider.notifier).state =

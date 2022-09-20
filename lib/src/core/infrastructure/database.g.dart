@@ -12679,7 +12679,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (fecha != null) 'FECHA': fecha,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
-      if (contacto != null) 'CONTACTOO': contacto,
+      if (contacto != null) 'CONTACTO': contacto,
       if (resumen != null) 'RESUMEN': resumen,
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
@@ -12729,7 +12729,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       map['NUM_EMPL'] = Variable<String>(numEmpl.value);
     }
     if (contacto.present) {
-      map['CONTACTOO'] = Variable<String>(contacto.value);
+      map['CONTACTO'] = Variable<String>(contacto.value);
     }
     if (resumen.present) {
       map['RESUMEN'] = Variable<String>(resumen.value);
@@ -12796,7 +12796,7 @@ class $VisitaTableTable extends VisitaTable
   final VerificationMeta _contactoMeta = const VerificationMeta('contacto');
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
-      'CONTACTOO', aliasedName, true,
+      'CONTACTO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _resumenMeta = const VerificationMeta('resumen');
   @override
@@ -12872,9 +12872,9 @@ class $VisitaTableTable extends VisitaTable
     } else if (isInserting) {
       context.missing(_numEmplMeta);
     }
-    if (data.containsKey('CONTACTOO')) {
+    if (data.containsKey('CONTACTO')) {
       context.handle(_contactoMeta,
-          contacto.isAcceptableOrUnknown(data['CONTACTOO']!, _contactoMeta));
+          contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta));
     }
     if (data.containsKey('RESUMEN')) {
       context.handle(_resumenMeta,
@@ -12922,7 +12922,7 @@ class $VisitaTableTable extends VisitaTable
       numEmpl: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTOO']),
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
       resumen: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
       latitud: attachedDatabase.options.types

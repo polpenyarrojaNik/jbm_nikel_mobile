@@ -29,7 +29,6 @@ final pedidosSearchProvider =
         page: defaultListParams.page,
         searchText: defaultListParams.searchText);
   },
-  // cacheTime: const Duration(seconds: 60),
 );
 
 final pedidoVentaProvider = FutureProvider.autoDispose
