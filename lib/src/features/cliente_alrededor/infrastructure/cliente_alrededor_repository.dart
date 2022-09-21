@@ -25,14 +25,14 @@ final ubicacionActualProvider = FutureProvider.autoDispose<Position>((ref) {
   return clientesAlrededorRepository.getUbicacionActual();
 });
 
-final clientesAlrededorListStream = StreamProvider.autoDispose
+final clientesAlrededorListStream = FutureProvider.autoDispose
     .family<List<Cliente>, GetClienteAlrededorArg>(
-        (ref, clienteAlrededorArg) async* {
+        (ref, clienteAlrededorArg) async {
   final clientesAlrededorRepository =
       ref.watch(clientesAlrededorRepositoryProvider);
   final usuarioService = ref.watch(usuarioServiceProvider);
   final usuario = await usuarioService.getSignedInUsuario();
-  yield* clientesAlrededorRepository.getClientesAlrededorLista(
+  return clientesAlrededorRepository.getClientesAlrededorLista(
       usuarioId: usuario!.id, clienteAlrededorArg: clienteAlrededorArg);
 });
 
@@ -50,7 +50,7 @@ class ClienteAlrededorRepository {
     }
   }
 
-  Stream<List<Cliente>> getClientesAlrededorLista(
+  Future<List<Cliente>> getClientesAlrededorLista(
       {required String usuarioId,
       required GetClienteAlrededorArg clienteAlrededorArg}) {
     try {
@@ -74,11 +74,12 @@ class ClienteAlrededorRepository {
         from CLIENTES c
         INNER JOIN CLIENTES_USUARIO u ON c.cliente_id = u.cliente_id
         INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
-        WHERE c.latitud_fiscal is not null AND c.longitud_fiscal is not null AND(
+        WHERE u.USUARIO_ID = :usuarioId AND c.latitud_fiscal is not null AND c.longitud_fiscal is not null AND(
           SELECT (12742 * ASIN(SQRT(0.5 - COS((c.latitud_fiscal - :latitud) * :p) /2 + COS(:latitud * :p) * COS(c.latitud_fiscal * :p) * (1 - COS((c.longitud_fiscal - :longitud) * :p)) / 2)))
           as distanceKm
           ) < :radiusKm
           ''', variables: [
+        Variable.withString(usuarioId),
         Variable.withReal(clienteAlrededorArg.position.latitude),
         Variable.withReal(0.017453292519943295),
         Variable.withReal(clienteAlrededorArg.position.longitude),
@@ -94,9 +95,6 @@ class ClienteAlrededorRepository {
         final paisDTO =
             (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
 
-        // final metodoDeCobroDTO = row.readTableOrNull(db.metodoDeCobroTable);
-        // final plazoDeCobroDTO = row.readTableOrNull(db.plazoDeCobroTable);
-
         final cliente = clienteDTO.toDomain(
           paisFiscal: paisDTO?.toDomain(),
           divisa: null,
@@ -104,7 +102,7 @@ class ClienteAlrededorRepository {
           plazoDeCobro: null,
         );
         return cliente;
-      }).watch();
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

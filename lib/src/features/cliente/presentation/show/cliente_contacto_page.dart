@@ -6,7 +6,7 @@ import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_contacto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -25,8 +25,7 @@ class ClienteContactoPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clienteContacto_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -68,65 +67,66 @@ class ClienteContactoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            RowFieldTextDetalle(
-                fieldTitleValue: S.of(context).cliente_show_clienteContacto_id,
-                value: clienteContacto.clienteId),
-            (clienteContacto.nombre != null &&
-                    clienteContacto.nombre!.length > 35)
-                ? ColumnFieldTextDetalle(
-                    fieldTitleValue:
-                        S.of(context).cliente_show_clienteContacto_nombre,
-                    value: clienteContacto.nombre ?? '')
-                : RowFieldTextDetalle(
-                    fieldTitleValue:
-                        S.of(context).cliente_show_clienteContacto_nombre,
-                    value: clienteContacto.nombre ?? ''),
-            RowFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_show_clienteContacto_email,
-                value: clienteContacto.email ?? ''),
-            RowFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_show_clienteContacto_phone1,
-                value: clienteContacto.telefono1 ?? ''),
-            RowFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_show_clienteContacto_phone2,
-                value: clienteContacto.telefono1 ?? ''),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  S.of(context).cliente_show_clienteContacto_observaciones,
-                  style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                      color: Theme.of(context).textTheme.caption!.color),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (clienteContacto.nombre != null)
+                Row(
+                  children: [
+                    Flexible(
+                      child: Text(clienteContacto.nombre!),
+                    ),
+                  ],
                 ),
-                Flexible(
-                  child: Text(
-                    clienteContacto.observaciones ?? '',
-                  ),
+              if (clienteContacto.email != null)
+                Row(
+                  children: [
+                    Icon(Icons.email,
+                        color: Theme.of(context).textTheme.caption?.color,
+                        size: 12),
+                    gapW4,
+                    Text(clienteContacto.email!,
+                        style: Theme.of(context).textTheme.caption),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              if (clienteContacto.telefono1 != null)
+                Row(
+                  children: [
+                    Icon(Icons.phone,
+                        color: Theme.of(context).textTheme.caption?.color,
+                        size: 12),
+                    gapW4,
+                    Text(clienteContacto.telefono1!,
+                        style: Theme.of(context).textTheme.caption),
+                  ],
+                ),
+              if (clienteContacto.telefono2 != null)
+                Row(
+                  children: [
+                    Icon(Icons.phone,
+                        color: Theme.of(context).textTheme.caption?.color,
+                        size: 12),
+                    gapW4,
+                    Text(clienteContacto.telefono2!,
+                        style: Theme.of(context).textTheme.caption),
+                  ],
+                ),
+              if (clienteContacto.observaciones != null)
+                ColumnFieldTextDetalle(
+                    fieldTitleValue: S
+                        .of(context)
+                        .cliente_show_clienteContacto_observaciones,
+                    value: clienteContacto.observaciones!),
+            ],
+          ),
         ),
-      ),
+        const Divider(),
+      ],
     );
   }
 }

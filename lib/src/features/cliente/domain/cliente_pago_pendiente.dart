@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
 
 import 'metodo_cobro.dart';
 
@@ -15,7 +16,7 @@ class ClientePagoPendiente with _$ClientePagoPendiente {
       DateTime? fechaExpiracion,
       MetodoDeCobro? metodoDeCobro,
       String? estadoCobroId,
-      double? importe,
+      Money? importe,
       DateTime? fechaExpiracionInicial,
       bool? vencidoJBM,
       required DateTime lastUpdated,

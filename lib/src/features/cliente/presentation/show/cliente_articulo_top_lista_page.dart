@@ -24,8 +24,8 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clienteArticulosTop_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -40,8 +40,13 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
                     sliver: SliverList(
                       delegate: SliverChildBuilderDelegate(
                         childCount: topArticulosList.length,
-                        (context, i) => ArticuloListaTile(
-                          articulo: topArticulosList[i].articulo,
+                        (context, i) => Column(
+                          children: [
+                            ArticuloListaTile(
+                              articulo: topArticulosList[i].articulo,
+                            ),
+                            const Divider(),
+                          ],
                         ),
                       ),
                     ))

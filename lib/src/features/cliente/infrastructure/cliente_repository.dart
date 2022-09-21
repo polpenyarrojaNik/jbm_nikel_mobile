@@ -243,11 +243,18 @@ class ClienteRepository {
   Future<List<ClientePrecioNeto>> getClientePrecioNetoById(
       {required String clienteId}) {
     try {
-      final query = (_db.select(_db.clientePrecioNetoTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
+      final query = _db.select(_db.clientePrecioNetoTable).join([
+        innerJoin(
+            _db.clienteTable,
+            _db.clienteTable.id
+                .equalsExp(_db.clientePrecioNetoTable.clienteId)),
+      ]);
+      query.where(_db.clienteTable.id.equals(clienteId));
 
       return query.map((row) {
-        return row.toDomain();
+        final clienteDTO = row.readTable(_db.clienteTable);
+        final precioNetoDTO = row.readTable(_db.clientePrecioNetoTable);
+        return precioNetoDTO.toDomain(divisaId: clienteDTO.divisaId);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -285,15 +292,26 @@ class ClienteRepository {
   Future<List<ClientePagoPendiente>> getClientePagoPendienteById(
       {required String clienteId}) {
     try {
-      final query = (_db.select(_db.clientePagoPendienteTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
+      final query = _db.select(_db.clientePagoPendienteTable).join([
+        innerJoin(
+            _db.clienteTable,
+            _db.clienteTable.id
+                .equalsExp(_db.clientePagoPendienteTable.clienteId)),
+      ]);
+
+      query.where(_db.clienteTable.id.equals(clienteId));
 
       return query.asyncMap((row) async {
+        final clienteDTO = row.readTable(_db.clienteTable);
+
         final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
-              ..where((t) => t.id.equals(row.metodoDeCobroId ?? '')))
+              ..where((t) => t.id.equals(clienteDTO.metodoDeCobroId ?? '')))
             .getSingleOrNull();
 
-        return row.toDomain(metodoDeCobro: metodoDeCobroDTO?.toDomain());
+        final pagosPendienteDTO = row.readTable(_db.clientePagoPendienteTable);
+        return pagosPendienteDTO.toDomain(
+            metodoDeCobro: metodoDeCobroDTO?.toDomain(),
+            divisaId: clienteDTO.divisaId);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

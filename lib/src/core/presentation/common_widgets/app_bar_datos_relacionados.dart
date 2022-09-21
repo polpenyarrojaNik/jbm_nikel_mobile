@@ -51,9 +51,10 @@ class _AppBarDatosRelacionadosState extends State<AppBarDatosRelacionados> {
         ),
       ),
       actions: [
-        IconButton(
-            onPressed: () => changeSearchValue(),
-            icon: (isSearching) ? searchIcon : icon),
+        if (widget.onChanged != null)
+          IconButton(
+              onPressed: () => changeSearchValue(),
+              icon: (isSearching) ? searchIcon : icon),
       ],
       title: (isSearching)
           ? SearchListTile(

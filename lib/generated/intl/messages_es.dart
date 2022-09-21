@@ -152,6 +152,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas artículos"),
         "cliente_show_clienteDetalle_analisis":
             MessageLookupByLibrary.simpleMessage("Análisis"),
+        "cliente_show_clienteDetalle_anoActual":
+            MessageLookupByLibrary.simpleMessage("Actual"),
+        "cliente_show_clienteDetalle_anoAnterior":
+            MessageLookupByLibrary.simpleMessage("Anterior"),
         "cliente_show_clienteDetalle_bonificacion":
             MessageLookupByLibrary.simpleMessage("Bonificación"),
         "cliente_show_clienteDetalle_centralCompras":
@@ -186,18 +190,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Facturación"),
         "cliente_show_clienteDetalle_fechaCOFACE":
             MessageLookupByLibrary.simpleMessage("Fecha COFACE"),
+        "cliente_show_clienteDetalle_hace2Anos":
+            MessageLookupByLibrary.simpleMessage("Hace 2 años"),
         "cliente_show_clienteDetalle_latitud":
             MessageLookupByLibrary.simpleMessage("Latitud"),
         "cliente_show_clienteDetalle_longitud":
             MessageLookupByLibrary.simpleMessage("Longitud"),
-        "cliente_show_clienteDetalle_margenAnoActual":
-            MessageLookupByLibrary.simpleMessage("Margen año actual"),
-        "cliente_show_clienteDetalle_margenAnoAnterior":
-            MessageLookupByLibrary.simpleMessage("Margen año anterior"),
-        "cliente_show_clienteDetalle_margenHace2Anos":
-            MessageLookupByLibrary.simpleMessage("Margen hace 2 años"),
+        "cliente_show_clienteDetalle_margen":
+            MessageLookupByLibrary.simpleMessage("Mergen"),
         "cliente_show_clienteDetalle_metodoCalculoPrecio":
             MessageLookupByLibrary.simpleMessage("Método cálculo precio"),
+        "cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion":
+            MessageLookupByLibrary.simpleMessage("Mejores precios"),
+        "cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion":
+            MessageLookupByLibrary.simpleMessage("Precios netos"),
         "cliente_show_clienteDetalle_metodoDeCobro":
             MessageLookupByLibrary.simpleMessage("Método de cobro"),
         "cliente_show_clienteDetalle_nif":
@@ -240,18 +246,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cliente detalle"),
         "cliente_show_clienteDetalle_top150":
             MessageLookupByLibrary.simpleMessage("Top 150"),
-        "cliente_show_clienteDetalle_ventasAnoActual":
-            MessageLookupByLibrary.simpleMessage("Ventas año actual"),
-        "cliente_show_clienteDetalle_ventasAnoAnterior":
-            MessageLookupByLibrary.simpleMessage("Ventas año anterior"),
-        "cliente_show_clienteDetalle_ventasHace2Anos":
-            MessageLookupByLibrary.simpleMessage("Ventas hace 2 años"),
+        "cliente_show_clienteDetalle_ventas":
+            MessageLookupByLibrary.simpleMessage("Ventas"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
         "cliente_show_clienteDireccion_titulo":
             MessageLookupByLibrary.simpleMessage("Direcciones"),
         "cliente_show_clienteGrupoNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Grupos Netos"),
+        "cliente_show_clientePagosPendientes_titulo":
+            MessageLookupByLibrary.simpleMessage("Pagos Pendietes"),
         "cliente_show_clientePagosPendientes_vencidoJBM":
             MessageLookupByLibrary.simpleMessage("Vencido JBM"),
         "cliente_show_clientePrecioNeto_desDe":

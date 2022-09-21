@@ -24,8 +24,8 @@ class ClienteAdjuntoPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clienteAdjunto_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(

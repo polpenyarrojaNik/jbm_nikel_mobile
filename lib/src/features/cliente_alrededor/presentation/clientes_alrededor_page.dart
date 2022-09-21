@@ -178,7 +178,6 @@ class SliderKm extends StatelessWidget {
             value: radiusKm / 1000,
             min: 0,
             max: 100,
-            divisions: 20,
             onChanged: (value) => onSliderChanged(value),
           ),
           DecoratedBox(

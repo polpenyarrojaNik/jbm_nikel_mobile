@@ -23,8 +23,8 @@ class ClienteGrupoNetoPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clienteGrupoNeto_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -67,47 +67,19 @@ class ClienteGrupoNetoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: IntrinsicHeight(
-        child: Row(
-          children: [
-            Container(
-              width: 100,
-              color: Theme.of(context).colorScheme.surface,
-              padding: const EdgeInsets.all(4.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(clienteGrupoNeto.grupoNetoId),
-                ],
-              ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(clienteGrupoNeto.grupoNetoId),
+          if (clienteGrupoNeto.grupoNetoDescripcion != null)
+            Text(
+              clienteGrupoNeto.grupoNetoDescripcion!,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
-            Flexible(
-              child: Container(
-                height: 60,
-                padding: const EdgeInsets.all(6.5),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      clienteGrupoNeto.grupoNetoDescripcion ?? '',
-                      style: Theme.of(context).textTheme.subtitle2,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          const Divider(),
+        ],
       ),
     );
   }

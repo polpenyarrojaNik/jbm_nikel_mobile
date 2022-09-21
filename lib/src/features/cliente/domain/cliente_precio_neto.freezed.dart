@@ -19,7 +19,7 @@ mixin _$ClientePrecioNeto {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   double get cantidadDesDe => throw _privateConstructorUsedError;
-  double get precio => throw _privateConstructorUsedError;
+  Money get precio => throw _privateConstructorUsedError;
   double? get tipoPrecio => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $ClientePrecioNetoCopyWith<$Res> {
       {String clienteId,
       String articuloId,
       double cantidadDesDe,
-      double precio,
+      Money precio,
       double? tipoPrecio,
       DateTime lastUpdated,
       bool deleted});
@@ -79,7 +79,7 @@ class _$ClientePrecioNetoCopyWithImpl<$Res>
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -107,7 +107,7 @@ abstract class _$$_ClientePrecioNetoCopyWith<$Res>
       {String clienteId,
       String articuloId,
       double cantidadDesDe,
-      double precio,
+      Money precio,
       double? tipoPrecio,
       DateTime lastUpdated,
       bool deleted});
@@ -150,7 +150,7 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   @override
   final double cantidadDesDe;
   @override
-  final double precio;
+  final Money precio;
   @override
   final double? tipoPrecio;
   @override
@@ -241,7 +241,7 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
       {required final String clienteId,
       required final String articuloId,
       required final double cantidadDesDe,
-      required final double precio,
+      required final Money precio,
       final double? tipoPrecio,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClientePrecioNeto;
@@ -254,7 +254,7 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   @override
   double get cantidadDesDe;
   @override
-  double get precio;
+  Money get precio;
   @override
   double? get tipoPrecio;
   @override

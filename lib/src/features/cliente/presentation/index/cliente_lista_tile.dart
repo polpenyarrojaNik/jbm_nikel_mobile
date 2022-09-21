@@ -23,24 +23,23 @@ class ClienteListaTile extends StatelessWidget {
           children: [
             if (cliente.nombreCliente != null)
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
                     child: Text(
-                      cliente.nombreCliente!,
+                      '#${cliente.id} ${cliente.nombreCliente!}',
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                   ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.errorContainer,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    // child: Text(cliente)
+                  )
                 ],
               ),
-            Row(
-              children: [
-                Flexible(
-                  child: Text(
-                    '#${cliente.id} ${cliente.nombreFiscal ?? ''}',
-                  ),
-                ),
-              ],
-            ),
             AddressTextWidget(
                 codigoPostal: cliente.codigoPostalFiscal,
                 poblacion: cliente.poblacionFiscal,

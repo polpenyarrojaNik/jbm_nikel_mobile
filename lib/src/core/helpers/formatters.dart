@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:money2/money2.dart';
 
+import '../../../generated/l10n.dart';
 import '../../features/articulos/domain/articulo.dart';
 
 String dateFormatter(String dateStr, {bool allDay = false}) {
@@ -217,4 +218,16 @@ String? getSummaryInLocalLanguage({required Articulo articulo}) {
   //   return articulo.resumenES;
   // }
   return null;
+}
+
+String getTipoCalculoPrecioDescripcion(
+    {required BuildContext context, required String tipoCalucloPrecio}) {
+  if (tipoCalucloPrecio == 'M') {
+    return S
+        .of(context)
+        .cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion;
+  }
+  return S
+      .of(context)
+      .cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion;
 }

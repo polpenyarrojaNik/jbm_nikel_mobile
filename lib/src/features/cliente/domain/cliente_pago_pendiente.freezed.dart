@@ -23,7 +23,7 @@ mixin _$ClientePagoPendiente {
   DateTime? get fechaExpiracion => throw _privateConstructorUsedError;
   MetodoDeCobro? get metodoDeCobro => throw _privateConstructorUsedError;
   String? get estadoCobroId => throw _privateConstructorUsedError;
-  double? get importe => throw _privateConstructorUsedError;
+  Money? get importe => throw _privateConstructorUsedError;
   DateTime? get fechaExpiracionInicial => throw _privateConstructorUsedError;
   bool? get vencidoJBM => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $ClientePagoPendienteCopyWith<$Res> {
       DateTime? fechaExpiracion,
       MetodoDeCobro? metodoDeCobro,
       String? estadoCobroId,
-      double? importe,
+      Money? importe,
       DateTime? fechaExpiracionInicial,
       bool? vencidoJBM,
       DateTime lastUpdated,
@@ -112,7 +112,7 @@ class _$ClientePagoPendienteCopyWithImpl<$Res>
       importe: importe == freezed
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       fechaExpiracionInicial: fechaExpiracionInicial == freezed
           ? _value.fechaExpiracionInicial
           : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
@@ -159,7 +159,7 @@ abstract class _$$_ClientePagoPendienteCopyWith<$Res>
       DateTime? fechaExpiracion,
       MetodoDeCobro? metodoDeCobro,
       String? estadoCobroId,
-      double? importe,
+      Money? importe,
       DateTime? fechaExpiracionInicial,
       bool? vencidoJBM,
       DateTime lastUpdated,
@@ -227,7 +227,7 @@ class __$$_ClientePagoPendienteCopyWithImpl<$Res>
       importe: importe == freezed
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       fechaExpiracionInicial: fechaExpiracionInicial == freezed
           ? _value.fechaExpiracionInicial
           : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
@@ -281,7 +281,7 @@ class _$_ClientePagoPendiente extends _ClientePagoPendiente {
   @override
   final String? estadoCobroId;
   @override
-  final double? importe;
+  final Money? importe;
   @override
   final DateTime? fechaExpiracionInicial;
   @override
@@ -354,7 +354,7 @@ abstract class _ClientePagoPendiente extends ClientePagoPendiente {
       final DateTime? fechaExpiracion,
       final MetodoDeCobro? metodoDeCobro,
       final String? estadoCobroId,
-      final double? importe,
+      final Money? importe,
       final DateTime? fechaExpiracionInicial,
       final bool? vencidoJBM,
       required final DateTime lastUpdated,
@@ -376,7 +376,7 @@ abstract class _ClientePagoPendiente extends ClientePagoPendiente {
   @override
   String? get estadoCobroId;
   @override
-  double? get importe;
+  Money? get importe;
   @override
   DateTime? get fechaExpiracionInicial;
   @override

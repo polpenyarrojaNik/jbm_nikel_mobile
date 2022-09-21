@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -61,7 +63,18 @@ class _ClienteInfoContainer extends StatelessWidget {
         _ClienteHeader(cliente: cliente),
         _ClienteAnalisis(cliente: cliente),
         _ClientePreciosAndOtros(cliente: cliente),
-        _ClienteRiesgosContainer(cliente: cliente),
+        if ((cliente.riesgoConcedidoInterno != 0) ||
+            (cliente.riesgoConcedidoCoafe != 0) ||
+            (cliente.riesgoConcedido != null && cliente.riesgoConcedido != 0) ||
+            (cliente.riesgoPendienteCobroVencido != null &&
+                cliente.riesgoPendienteCobroVencido != 0) ||
+            (cliente.riesgoPendienteCobroNoVencido != null &&
+                cliente.riesgoPendienteCobroNoVencido != 0) ||
+            (cliente.riesgoPendienteServir != null &&
+                cliente.riesgoPendienteServir != 0) ||
+            (cliente.riesgoPendienteFacturar != null &&
+                cliente.riesgoPendienteFacturar != 0))
+          _ClienteRiesgosContainer(cliente: cliente),
       ],
     );
   }
@@ -76,119 +89,102 @@ class _ClienteHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Card(
-        // clipBehavior: Clip.hardEdge,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4), // if you need this
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.2),
-            width: 1,
-          ),
-        ),
-        child: Column(
-          children: [
-            if (cliente.centralCompras != null)
-              Container(
-                color: Theme.of(context)
-                    .colorScheme
-                    .surfaceVariant
-                    .withOpacity(0.5),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (cliente.nombreCliente != null)
+            Text(
+              '#${cliente.id} ${cliente.nombreCliente!}',
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
+          if (cliente.nombreFiscal != null)
+            Text(
+              cliente.nombreFiscal!,
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+          gapH4,
+          if (cliente.direccionFiscal1 != null)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flexible(
-                        child: Text(
-                          cliente.centralCompras!,
-                          style: Theme.of(context).textTheme.bodyText2!,
-                        ),
+                      Text(
+                        cliente.direccionFiscal1!,
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
                       ),
+                      Text(
+                        formatCodigoPostalAndPoblacion(
+                          codigoPostal: cliente.codigoPostalFiscal,
+                          poblacion: cliente.poblacionFiscal,
+                        ),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                      Text(
+                        formatProvinciaAndPais(
+                            province: cliente.provinciaFiscal,
+                            pais: cliente.paisFiscal),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      )
                     ],
                   ),
                 ),
-              ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (cliente.nif != null)
-                    Text(
-                      cliente.nif!,
+                if (cliente.latitudFiscal != null &&
+                    cliente.longitudFiscal != null)
+                  gapW8,
+                if (cliente.latitudFiscal != null &&
+                    cliente.longitudFiscal != null)
+                  IconButton(
+                    onPressed: () => navigateToGoogleMapsAddress(
+                      cliente.nombreFiscal,
+                      cliente.latitudFiscal,
+                      cliente.longitudFiscal,
                     ),
-                  if (cliente.nombreCliente != null)
-                    Text(
-                      cliente.nombreCliente!,
-                      style: Theme.of(context).textTheme.subtitle2,
-                    ),
-                  if (cliente.nombreFiscal != null)
-                    Text(
-                      '#${cliente.id} ${cliente.nombreFiscal!}',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                  gapH8,
-                  if (cliente.direccionFiscal1 != null)
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              cliente.direccionFiscal1!,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color),
-                            ),
-                            Text(
-                              formatCodigoPostalAndPoblacion(
-                                codigoPostal: cliente.codigoPostalFiscal,
-                                poblacion: cliente.poblacionFiscal,
-                              ),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color),
-                            ),
-                            Text(
-                              formatProvinciaAndPais(
-                                  province: cliente.provinciaFiscal,
-                                  pais: cliente.paisFiscal),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color),
-                            )
-                          ],
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(MdiIcons.googleMaps),
-                        )
-                      ],
-                    ),
-                ],
-              ),
+                    icon: const Icon(MdiIcons.googleMaps),
+                  )
+              ],
             ),
-          ],
-        ),
+          gapH8,
+          if (cliente.nif != null)
+            ColumnFieldTextDetalle(
+                fieldTitleValue: S.of(context).cliente_show_clienteDetalle_nif,
+                value: cliente.nif!),
+          if (cliente.centralCompras != null)
+            ColumnFieldTextDetalle(
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteDetalle_centralCompras,
+                value: cliente.centralCompras!),
+        ],
       ),
     );
+  }
+
+  void navigateToGoogleMapsAddress(
+      String? nombreFiscal, double? latitude, double? longitude) async {
+    if (latitude != null && longitude != null) {
+      final isAvailable = await MapLauncher.isMapAvailable(MapType.google);
+      if (isAvailable ?? false) {
+        await MapLauncher.showMarker(
+          mapType: MapType.google,
+          coords: Coords(latitude, longitude),
+          title: 'Titulo',
+        );
+      } else {
+        final isAvailable = await MapLauncher.isMapAvailable(MapType.apple);
+        if (isAvailable ?? false) {
+          await MapLauncher.showMarker(
+            mapType: MapType.apple,
+            coords: Coords(latitude, longitude),
+            title: nombreFiscal ?? '',
+          );
+        }
+      }
+    }
   }
 }
 
@@ -210,74 +206,164 @@ class _ClienteAnalisis extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                S.of(context).cliente_show_clienteDetalle_ventas,
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    color: Theme.of(context).textTheme.caption!.color),
+              ),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   if (cliente.ventasAnyoActual != null)
                     Expanded(
-                      child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_ventasAnoActual,
-                        value: numberFormatDecimal(cliente.ventasAnyoActual!),
+                      child: Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_anoActual,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            numberFormatDecimal(cliente.ventasAnyoActual!),
+                          ),
+                        ],
                       ),
                     ),
                   if (cliente.ventasAnyoAnterior != null)
                     Expanded(
-                      child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_ventasAnoAnterior,
-                        value: numberFormatDecimal(cliente.ventasAnyoAnterior!),
+                      child: Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_anoAnterior,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            numberFormatDecimal(cliente.ventasAnyoAnterior!),
+                          ),
+                        ],
+                      ),
+                    ),
+                  if (cliente.ventasHaceDosAnyos != null)
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_hace2Anos,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            numberFormatDecimal(cliente.ventasHaceDosAnyos!),
+                          ),
+                        ],
                       ),
                     ),
                 ],
               ),
-              if (cliente.ventasHaceDosAnyos != null) gapH4,
-              if (cliente.ventasHaceDosAnyos != null)
-                ColumnFieldTextDetalle(
-                    fieldTitleValue: S
-                        .of(context)
-                        .cliente_show_clienteDetalle_ventasHace2Anos,
-                    value: numberFormatDecimal(cliente.ventasHaceDosAnyos!)),
               if (cliente.margenAnyoActual != null &&
                   cliente.margenAnyoAnterior != null &&
                   cliente.margenHaceDosAnyos != null)
                 const Divider(),
+              Text(
+                S.of(context).cliente_show_clienteDetalle_margen,
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    color: Theme.of(context).textTheme.caption!.color),
+              ),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   if (cliente.margenAnyoActual != null)
                     Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_margenAnoActual,
-                          value: (cliente.margenAnyoActual != null)
-                              ? '${numberFormatDecimal(cliente.margenAnyoActual!)}%'
-                              : ''),
+                      child: Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_anoActual,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            numberFormatDecimal(cliente.margenAnyoActual!),
+                          ),
+                        ],
+                      ),
                     ),
                   if (cliente.margenAnyoAnterior != null)
                     Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_margenAnoAnterior,
-                          value: (cliente.margenAnyoAnterior != null)
-                              ? '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%'
-                              : ''),
+                      child: Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_anoAnterior,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            numberFormatDecimal(cliente.margenAnyoAnterior!),
+                          ),
+                        ],
+                      ),
+                    ),
+                  if (cliente.margenHaceDosAnyos != null)
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_hace2Anos,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            numberFormatDecimal(cliente.margenHaceDosAnyos!),
+                          ),
+                        ],
+                      ),
                     ),
                 ],
               ),
-              if (cliente.margenHaceDosAnyos != null) gapH4,
-              if (cliente.margenHaceDosAnyos != null)
-                ColumnFieldTextDetalle(
-                    fieldTitleValue: S
-                        .of(context)
-                        .cliente_show_clienteDetalle_margenHace2Anos,
-                    value: (cliente.margenHaceDosAnyos != null)
-                        ? '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%'
-                        : ''),
               if (cliente.porcentajeGarantias != null &&
                   cliente.porcentajeAbonos != null)
                 const Divider(),
@@ -315,7 +401,7 @@ class _ClienteAnalisis extends StatelessWidget {
 }
 
 class _ClientePreciosAndOtros extends StatelessWidget {
-  const _ClientePreciosAndOtros({super.key, required this.cliente});
+  const _ClientePreciosAndOtros({required this.cliente});
 
   final Cliente cliente;
 
@@ -349,13 +435,21 @@ class _ClientePreciosAndOtros extends StatelessWidget {
                     fieldTitleValue: S
                         .of(context)
                         .cliente_show_clienteDetalle_descuentoGeneral,
-                    value: cliente.descripcionDescuentoGeneral ?? ''),
+                    value: cliente.descripcionDescuentoGeneral!),
+              gapH4,
+              ColumnFieldTextDetalle(
+                  fieldTitleValue:
+                      S.of(context).cliente_show_clienteDetalle_descuentoPP,
+                  value:
+                      '${numberFormatDecimal(cliente.descuentoProntoPago)}%'),
               gapH4,
               ColumnFieldTextDetalle(
                   fieldTitleValue: S
                       .of(context)
                       .cliente_show_clienteDetalle_metodoCalculoPrecio,
-                  value: cliente.tipoCalucloPrecio),
+                  value: getTipoCalculoPrecioDescripcion(
+                      context: context,
+                      tipoCalucloPrecio: cliente.tipoCalucloPrecio)),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -378,12 +472,6 @@ class _ClientePreciosAndOtros extends StatelessWidget {
                     ),
                 ],
               ),
-              gapH4,
-              ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).cliente_show_clienteDetalle_descuentoPP,
-                  value:
-                      '${numberFormatDecimal(cliente.descuentoProntoPago)}%'),
             ],
           ),
         ),
@@ -412,15 +500,14 @@ class _ClienteRiesgosContainer extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.riesgoConcedidoInterno != 0)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_concedidoJBM,
-                        value: cliente.riesgoConcedidoInterno.toString(),
-                      ),
+                  Expanded(
+                    child: ColumnFieldTextDetalle(
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_concedidoJBM,
+                      value: cliente.riesgoConcedidoInterno.toString(),
                     ),
+                  ),
                   if (cliente.riesgoConcedidoInternoDate != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
@@ -434,19 +521,18 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                     ),
                 ],
               ),
-              if (cliente.riesgoConcedidoCoafe != 0) const Divider(),
+              const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.riesgoConcedidoCoafe != 0)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_concedidoCOFACE,
-                          value: numberFormatDecimal(
-                              cliente.riesgoConcedidoCoafe)),
-                    ),
+                  Expanded(
+                    child: ColumnFieldTextDetalle(
+                        fieldTitleValue: S
+                            .of(context)
+                            .cliente_show_clienteDetalle_concedidoCOFACE,
+                        value:
+                            numberFormatDecimal(cliente.riesgoConcedidoCoafe)),
+                  ),
                   if (cliente.riesgoConcedidoCoafeFecha != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
@@ -459,30 +545,22 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                     ),
                 ],
               ),
-              if (cliente.riesgoConcedido != null &&
-                  cliente.riesgoConcedido != 0)
-                const Divider(),
-              if (cliente.riesgoConcedido != null &&
-                  cliente.riesgoConcedido != 0)
+              if (cliente.riesgoConcedido != null) const Divider(),
+              if (cliente.riesgoConcedido != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue:
                       S.of(context).cliente_show_clienteDetalle_riesgoConcedido,
                   value: numberFormatDecimal(cliente.riesgoConcedido!),
                 ),
-              if ((cliente.riesgoPendienteCobroVencido != null &&
-                      cliente.riesgoPendienteCobroVencido != 0) ||
-                  (cliente.riesgoPendienteCobroNoVencido != null &&
-                      cliente.riesgoPendienteCobroNoVencido != 0) ||
-                  (cliente.riesgoPendienteServir != null &&
-                      cliente.riesgoPendienteServir != 0) ||
-                  (cliente.riesgoPendienteFacturar != null &&
-                      cliente.riesgoPendienteFacturar != 0))
+              if ((cliente.riesgoPendienteCobroVencido != null) ||
+                  (cliente.riesgoPendienteCobroNoVencido != null) ||
+                  (cliente.riesgoPendienteServir != null) ||
+                  (cliente.riesgoPendienteFacturar != null))
                 const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.riesgoPendienteCobroVencido != null &&
-                      cliente.riesgoPendienteCobroVencido != 0)
+                  if (cliente.riesgoPendienteCobroVencido != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
                           fieldTitleValue: S
@@ -491,8 +569,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           value: numberFormatDecimal(
                               cliente.riesgoPendienteCobroVencido!)),
                     ),
-                  if (cliente.riesgoPendienteCobroNoVencido != null &&
-                      cliente.riesgoPendienteCobroNoVencido != 0)
+                  if (cliente.riesgoPendienteCobroNoVencido != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
                           fieldTitleValue: S
@@ -503,16 +580,13 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                     ),
                 ],
               ),
-              if ((cliente.riesgoPendienteServir != null &&
-                      cliente.riesgoPendienteServir != 0) ||
-                  (cliente.riesgoPendienteFacturar != null &&
-                      cliente.riesgoPendienteFacturar != 0))
+              if ((cliente.riesgoPendienteServir != null) ||
+                  (cliente.riesgoPendienteFacturar != null))
                 gapH4,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.riesgoPendienteServir != null &&
-                      cliente.riesgoPendienteServir != 0)
+                  if (cliente.riesgoPendienteServir != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
                           fieldTitleValue: S
@@ -521,8 +595,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           value: numberFormatDecimal(
                               cliente.riesgoPendienteServir!)),
                     ),
-                  if (cliente.riesgoPendienteFacturar != null &&
-                      cliente.riesgoPendienteFacturar != 0)
+                  if (cliente.riesgoPendienteFacturar != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
                           fieldTitleValue: S

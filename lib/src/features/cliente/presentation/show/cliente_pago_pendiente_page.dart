@@ -7,6 +7,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_pago_pendiente.dart';
 
 class ClientePagoPendientePage extends ConsumerWidget {
@@ -24,9 +25,9 @@ class ClientePagoPendientePage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clientePendientePago_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            title: S.of(context).cliente_show_clientePagosPendientes_titulo,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -35,15 +36,15 @@ class ClientePagoPendientePage extends ConsumerWidget {
             error: (e, st) => SliverFillRemaining(
               child: ErrorMessageWidget(e.toString()),
             ),
-            data: (clientepagosPendientesList) => (clientepagosPendientesList
+            data: (clientePagosPendientesList) => (clientePagosPendientesList
                     .isNotEmpty)
                 ? SliverPadding(
                     padding: const EdgeInsets.all(16),
                     sliver: SliverList(
                       delegate: SliverChildBuilderDelegate(
-                        childCount: clientepagosPendientesList.length,
+                        childCount: clientePagosPendientesList.length,
                         (context, i) => ClientePagoPendienteTile(
-                          clientePagoPendiente: clientepagosPendientesList[i],
+                          clientePagoPendiente: clientePagosPendientesList[i],
                         ),
                       ),
                     ))
@@ -70,92 +71,69 @@ class ClientePagoPendienteTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 90,
-              color: Theme.of(context).colorScheme.surface,
-              padding: const EdgeInsets.all(4.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(clientePagoPendiente.efectoId,
-                      style: Theme.of(context).textTheme.caption),
-                  const Spacer(),
-                  Text(clientePagoPendiente.estadoCobroId ?? ''),
-                ],
-              ),
+    return Column(
+      children: [
+        IntrinsicHeight(
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+            decoration: BoxDecoration(
+              color: (clientePagoPendiente.vencidoJBM ?? false)
+                  ? Theme.of(context).colorScheme.errorContainer
+                  : null,
+              borderRadius: BorderRadius.circular(4),
             ),
-            Flexible(
-              child: Container(
-                height: 100,
-                padding: const EdgeInsets.all(6.5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          clientePagoPendiente.facutaId ?? '',
-                          style: Theme.of(context).textTheme.subtitle2,
-                        ),
-                        Text(
-                          (clientePagoPendiente.importe != null)
-                              ? numberFormatDecimal(
-                                  clientePagoPendiente.importe!)
-                              : '',
-                          style: Theme.of(context).textTheme.subtitle2,
-                        ),
-                      ],
-                    ),
-                    if (clientePagoPendiente.fechaFactura != null)
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 90,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
                       Text(
-                          dateFormatter(clientePagoPendiente.fechaFactura!
-                              .toLocal()
-                              .toIso8601String()),
-                          style: Theme.of(context).textTheme.caption),
-                    const Spacer(),
-                    Row(
-                      children: [
-                        Icon(Icons.credit_card,
-                            size: 12,
-                            color: Theme.of(context).textTheme.caption?.color),
+                        clientePagoPendiente.efectoId,
+                      ),
+                      if (clientePagoPendiente.fechaFactura != null)
                         Text(
-                          clientePagoPendiente.metodoDeCobro?.descripcion ?? '',
-                          style: Theme.of(context).textTheme.caption,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            dateFormatter(clientePagoPendiente.fechaFactura!
+                                .toLocal()
+                                .toIso8601String()),
+                            style: Theme.of(context).textTheme.caption),
+                      const Spacer(),
+                      if (clientePagoPendiente.estadoCobroId != null)
+                        Text(clientePagoPendiente.estadoCobroId!),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: SizedBox(
+                    height: 60,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                                S
-                                    .of(context)
-                                    .cliente_show_clientePagosPendientes_vencidoJBM,
-                                style: Theme.of(context).textTheme.caption),
-                            Checkbox(
-                                visualDensity: const VisualDensity(
-                                    vertical: -4, horizontal: -4),
-                                value: clientePagoPendiente.vencidoJBM!,
-                                onChanged: null),
-                          ],
-                        ),
+                        if (clientePagoPendiente.facutaId != null)
+                          Text(
+                            clientePagoPendiente.facutaId!,
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
+                        if (clientePagoPendiente.metodoDeCobro != null)
+                          Row(
+                            children: [
+                              Icon(Icons.credit_card,
+                                  size: 12,
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color),
+                              gapW4,
+                              Text(
+                                clientePagoPendiente.metodoDeCobro!.descripcion,
+                                style: Theme.of(context).textTheme.caption,
+                              ),
+                            ],
+                          ),
+                        const Spacer(),
                         if (clientePagoPendiente.fechaExpiracionInicial != null)
                           Text(
                             '${S.of(context).cliente_show_clientePagosPendientes_vencInicial} ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
@@ -163,13 +141,20 @@ class ClientePagoPendienteTile extends StatelessWidget {
                           ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                if (clientePagoPendiente.importe != null)
+                  Text(
+                    formatPrecios(
+                        precio: clientePagoPendiente.importe!,
+                        tipoPrecio: null),
+                  ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
+        const Divider(),
+      ],
     );
   }
 }

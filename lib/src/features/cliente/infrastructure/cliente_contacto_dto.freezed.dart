@@ -22,7 +22,7 @@ ClienteContactoDTO _$ClienteContactoDTOFromJson(Map<String, dynamic> json) {
 mixin _$ClienteContactoDTO {
   @JsonKey(name: 'CLIENTE_ID')
   String get clienteId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CONTACTOO_ID')
+  @JsonKey(name: 'CONTACTO_ID')
   String get contactoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ abstract class $ClienteContactoDTOCopyWith<$Res> {
       _$ClienteContactoDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTOO_ID') String contactoId,
+      @JsonKey(name: 'CONTACTO_ID') String contactoId,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones,
       @JsonKey(name: 'NOMBRE') String? nombre,
       @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -149,7 +149,7 @@ abstract class _$$_ClienteContactoDTOCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTOO_ID') String contactoId,
+      @JsonKey(name: 'CONTACTO_ID') String contactoId,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones,
       @JsonKey(name: 'NOMBRE') String? nombre,
       @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -240,7 +240,7 @@ class __$$_ClienteContactoDTOCopyWithImpl<$Res>
 class _$_ClienteContactoDTO extends _ClienteContactoDTO {
   const _$_ClienteContactoDTO(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'CONTACTOO_ID') required this.contactoId,
+      @JsonKey(name: 'CONTACTO_ID') required this.contactoId,
       @JsonKey(name: 'OBSERVACIONES') this.observaciones,
       @JsonKey(name: 'NOMBRE') this.nombre,
       @JsonKey(name: 'APELLIDO1') this.apellido1,
@@ -259,7 +259,7 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
   @JsonKey(name: 'CLIENTE_ID')
   final String clienteId;
   @override
-  @JsonKey(name: 'CONTACTOO_ID')
+  @JsonKey(name: 'CONTACTO_ID')
   final String contactoId;
   @override
   @JsonKey(name: 'OBSERVACIONES')
@@ -348,7 +348,7 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
 abstract class _ClienteContactoDTO extends ClienteContactoDTO {
   const factory _ClienteContactoDTO(
       {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'CONTACTOO_ID') required final String contactoId,
+      @JsonKey(name: 'CONTACTO_ID') required final String contactoId,
       @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
       @JsonKey(name: 'NOMBRE') final String? nombre,
       @JsonKey(name: 'APELLIDO1') final String? apellido1,
@@ -367,7 +367,7 @@ abstract class _ClienteContactoDTO extends ClienteContactoDTO {
   @JsonKey(name: 'CLIENTE_ID')
   String get clienteId;
   @override
-  @JsonKey(name: 'CONTACTOO_ID')
+  @JsonKey(name: 'CONTACTO_ID')
   String get contactoId;
   @override
   @JsonKey(name: 'OBSERVACIONES')

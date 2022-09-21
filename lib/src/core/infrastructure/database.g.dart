@@ -7027,7 +7027,7 @@ class ClienteContactoTableCompanion
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (contactoId != null) 'CONTACTOO_ID': contactoId,
+      if (contactoId != null) 'CONTACTO_ID': contactoId,
       if (observaciones != null) 'OBSERVACIONES': observaciones,
       if (nombre != null) 'NOMBRE': nombre,
       if (apellido1 != null) 'APELLIDO1': apellido1,
@@ -7074,7 +7074,7 @@ class ClienteContactoTableCompanion
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
     if (contactoId.present) {
-      map['CONTACTOO_ID'] = Variable<String>(contactoId.value);
+      map['CONTACTO_ID'] = Variable<String>(contactoId.value);
     }
     if (observaciones.present) {
       map['OBSERVACIONES'] = Variable<String>(observaciones.value);
@@ -7139,7 +7139,7 @@ class $ClienteContactoTableTable extends ClienteContactoTable
   final VerificationMeta _contactoIdMeta = const VerificationMeta('contactoId');
   @override
   late final GeneratedColumn<String> contactoId = GeneratedColumn<String>(
-      'CONTACTOO_ID', aliasedName, false,
+      'CONTACTO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _observacionesMeta =
       const VerificationMeta('observaciones');
@@ -7205,9 +7205,9 @@ class $ClienteContactoTableTable extends ClienteContactoTable
         deleted
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOOS';
+  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOS';
   @override
-  String get actualTableName => 'CLIENTES_CONTACTOOS';
+  String get actualTableName => 'CLIENTES_CONTACTOS';
   @override
   VerificationContext validateIntegrity(Insertable<ClienteContactoDTO> instance,
       {bool isInserting = false}) {
@@ -7219,11 +7219,11 @@ class $ClienteContactoTableTable extends ClienteContactoTable
     } else if (isInserting) {
       context.missing(_clienteIdMeta);
     }
-    if (data.containsKey('CONTACTOO_ID')) {
+    if (data.containsKey('CONTACTO_ID')) {
       context.handle(
           _contactoIdMeta,
           contactoId.isAcceptableOrUnknown(
-              data['CONTACTOO_ID']!, _contactoIdMeta));
+              data['CONTACTO_ID']!, _contactoIdMeta));
     } else if (isInserting) {
       context.missing(_contactoIdMeta);
     }
@@ -7281,7 +7281,7 @@ class $ClienteContactoTableTable extends ClienteContactoTable
       clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       contactoId: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTOO_ID'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO_ID'])!,
       observaciones: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
       nombre: attachedDatabase.options.types

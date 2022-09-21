@@ -10,7 +10,7 @@ _$_ClienteContactoDTO _$$_ClienteContactoDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ClienteContactoDTO(
       clienteId: json['CLIENTE_ID'] as String,
-      contactoId: json['CONTACTOO_ID'] as String,
+      contactoId: json['CONTACTO_ID'] as String,
       observaciones: json['OBSERVACIONES'] as String?,
       nombre: json['NOMBRE'] as String?,
       apellido1: json['APELLIDO1'] as String?,
@@ -26,7 +26,7 @@ Map<String, dynamic> _$$_ClienteContactoDTOToJson(
         _$_ClienteContactoDTO instance) =>
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
-      'CONTACTOO_ID': instance.contactoId,
+      'CONTACTO_ID': instance.contactoId,
       'OBSERVACIONES': instance.observaciones,
       'NOMBRE': instance.nombre,
       'APELLIDO1': instance.apellido1,

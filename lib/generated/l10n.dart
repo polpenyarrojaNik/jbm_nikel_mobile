@@ -880,31 +880,51 @@ class S {
     );
   }
 
-  /// `Current year sales`
-  String get cliente_show_clienteDetalle_ventasAnoActual {
+  /// `Sales`
+  String get cliente_show_clienteDetalle_ventas {
     return Intl.message(
-      'Current year sales',
-      name: 'cliente_show_clienteDetalle_ventasAnoActual',
+      'Sales',
+      name: 'cliente_show_clienteDetalle_ventas',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last year sales`
-  String get cliente_show_clienteDetalle_ventasAnoAnterior {
+  /// `Margin`
+  String get cliente_show_clienteDetalle_margen {
     return Intl.message(
-      'Last year sales',
-      name: 'cliente_show_clienteDetalle_ventasAnoAnterior',
+      'Margin',
+      name: 'cliente_show_clienteDetalle_margen',
       desc: '',
       args: [],
     );
   }
 
-  /// `Two years ago sales`
-  String get cliente_show_clienteDetalle_ventasHace2Anos {
+  /// `Current year`
+  String get cliente_show_clienteDetalle_anoActual {
     return Intl.message(
-      'Two years ago sales',
-      name: 'cliente_show_clienteDetalle_ventasHace2Anos',
+      'Current year',
+      name: 'cliente_show_clienteDetalle_anoActual',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last year`
+  String get cliente_show_clienteDetalle_anoAnterior {
+    return Intl.message(
+      'Last year',
+      name: 'cliente_show_clienteDetalle_anoAnterior',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Two years ago`
+  String get cliente_show_clienteDetalle_hace2Anos {
+    return Intl.message(
+      'Two years ago',
+      name: 'cliente_show_clienteDetalle_hace2Anos',
       desc: '',
       args: [],
     );
@@ -915,36 +935,6 @@ class S {
     return Intl.message(
       'Warranty percentage',
       name: 'cliente_show_clienteDetalle_porcentajeGarantias',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Current year margin`
-  String get cliente_show_clienteDetalle_margenAnoActual {
-    return Intl.message(
-      'Current year margin',
-      name: 'cliente_show_clienteDetalle_margenAnoActual',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Last year margin`
-  String get cliente_show_clienteDetalle_margenAnoAnterior {
-    return Intl.message(
-      'Last year margin',
-      name: 'cliente_show_clienteDetalle_margenAnoAnterior',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Two years ago margin`
-  String get cliente_show_clienteDetalle_margenHace2Anos {
-    return Intl.message(
-      'Two years ago margin',
-      name: 'cliente_show_clienteDetalle_margenHace2Anos',
       desc: '',
       args: [],
     );
@@ -1035,6 +1025,30 @@ class S {
     return Intl.message(
       'Price calculation type',
       name: 'cliente_show_clienteDetalle_metodoCalculoPrecio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Best price`
+  String
+      get cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion {
+    return Intl.message(
+      'Best price',
+      name:
+          'cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Net prices`
+  String
+      get cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion {
+    return Intl.message(
+      'Net prices',
+      name:
+          'cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion',
       desc: '',
       args: [],
     );
@@ -1321,10 +1335,10 @@ class S {
   }
 
   /// `Pending Payments`
-  String get cliente_show_clientePendientePago_titulo {
+  String get cliente_show_clientePagosPendientes_titulo {
     return Intl.message(
       'Pending Payments',
-      name: 'cliente_show_clientePendientePago_titulo',
+      name: 'cliente_show_clientePagosPendientes_titulo',
       desc: '',
       args: [],
     );

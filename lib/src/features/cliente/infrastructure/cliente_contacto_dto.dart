@@ -15,7 +15,7 @@ class ClienteContactoDTO
   const ClienteContactoDTO._();
   const factory ClienteContactoDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'CONTACTOO_ID') required String contactoId,
+    @JsonKey(name: 'CONTACTO_ID') required String contactoId,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
     @JsonKey(name: 'NOMBRE') String? nombre,
     @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -76,13 +76,13 @@ class ClienteContactoDTO
 @UseRowClass(ClienteContactoDTO)
 class ClienteContactoTable extends Table {
   @override
-  String get tableName => 'CLIENTES_CONTACTOOS';
+  String get tableName => 'CLIENTES_CONTACTOS';
 
   @override
   Set<Column> get primaryKey => {clienteId, contactoId};
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
-  TextColumn get contactoId => text().named('CONTACTOO_ID')();
+  TextColumn get contactoId => text().named('CONTACTO_ID')();
   TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
   TextColumn get nombre => text().nullable().named('NOMBRE')();
   TextColumn get apellido1 => text().nullable().named('APELLIDO1')();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
@@ -24,8 +25,7 @@ class ClienteDireccionesPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clienteDireccion_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -67,46 +67,35 @@ class ClienteDireccionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: IntrinsicHeight(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 90,
-              color: Theme.of(context).colorScheme.surface,
-              padding: const EdgeInsets.all(4.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(clienteDireccion.direccionId),
-                  const Spacer(),
-                  const Text('¿Tipo?'),
-                ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 50,
+                child: Text(
+                  clienteDireccion.direccionId,
+                ),
               ),
-            ),
-            Flexible(
-              child: Container(
-                height: 100,
-                padding: const EdgeInsets.all(6.5),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(clienteDireccion.nombre ?? '',
-                        style: Theme.of(context).textTheme.subtitle2),
-                    const Spacer(),
-                    Text(
-                      clienteDireccion.direccion1 ?? '',
-                      style: Theme.of(context).textTheme.caption!,
-                    ),
+                    if (clienteDireccion.nombre != null)
+                      Text(
+                        clienteDireccion.nombre!,
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ),
+                    gapH4,
+                    if (clienteDireccion.direccion1 != null)
+                      Text(
+                        clienteDireccion.direccion1!,
+                        style: Theme.of(context).textTheme.caption!,
+                      ),
                     Text(
                         formatCodigoPostalAndPoblacion(
                           codigoPostal: clienteDireccion.codigoPostal,
@@ -126,9 +115,10 @@ class ClienteDireccionTile extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+          const Divider(),
+        ],
       ),
     );
   }

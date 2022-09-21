@@ -24,8 +24,8 @@ class ClienteDescuentoPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clienteDescuento_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -67,39 +67,35 @@ class ClienteDescuentoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(clienteDescuento.articuloId,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  Text(
+                      '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
+                      style: Theme.of(context).textTheme.caption),
+                  if (clienteDescuento.cantidadDesDe != 1)
+                    Text(
+                        '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesDe)} ${S.of(context).unidades}',
+                        style: Theme.of(context).textTheme.headline6),
+                ],
+              ),
+              Text(
+                '${numberFormatCantidades(clienteDescuento.descuento)}%',
+              ),
+            ],
+          ),
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(clienteDescuento.articuloId,
-                    style: Theme.of(context).textTheme.subtitle2),
-                Text('${numberFormatCantidades(clienteDescuento.descuento)}%',
-                    style: Theme.of(context).textTheme.subtitle2),
-              ],
-            ),
-            Text(
-                '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
-                style: Theme.of(context).textTheme.caption),
-            Text(
-                '${S.of(context).cliente_show_clienteDescuento_desDe} ${numberFormatCantidades(clienteDescuento.cantidadDesDe)} ${(clienteDescuento.cantidadDesDe == 1) ? S.of(context).unidad : S.of(context).unidades}',
-                style: Theme.of(context).textTheme.headline6),
-          ],
-        ),
-      ),
+        const Divider(),
+      ],
     );
   }
 }

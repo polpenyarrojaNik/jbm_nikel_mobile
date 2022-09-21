@@ -24,8 +24,8 @@ class ClientePrecioNetoPage extends ConsumerWidget {
         slivers: [
           AppBarDatosRelacionados(
             title: S.of(context).cliente_show_clientePrecioNeto_titulo,
-            entityId: clienteId,
-            subtitle: nombreCliente,
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
           ),
           state.maybeWhen(
             orElse: () => const SliverFillRemaining(
@@ -67,43 +67,33 @@ class ClientePrecioNetoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4), // if you need this
-        side: BorderSide(
-          color: Colors.grey.withOpacity(0.2),
-          width: 1,
-        ),
-      ),
-      child: IntrinsicHeight(
-        child: Flexible(
-          child: Container(
-            height: 50,
-            padding: const EdgeInsets.all(6.5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(clientePrecioNeto.articuloId,
+    return IntrinsicHeight(
+      child: Flexible(
+        child: Container(
+          height: 50,
+          padding: const EdgeInsets.all(6.5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(clientePrecioNeto.articuloId,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  if (clientePrecioNeto.cantidadDesDe != 1)
+                    Text(
+                        '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesDe)}',
                         style: Theme.of(context).textTheme.subtitle2),
-                    if (clientePrecioNeto.cantidadDesDe != 1)
-                      Text(
-                          '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesDe)}',
-                          style: Theme.of(context).textTheme.subtitle2),
-                  ],
-                ),
-                const Spacer(),
-                //TODO Decomentar
-                // Text(
-                //   formatPrecios(precio: clientePrecioNeto.precio, tipoPrecio: clientePrecioNeto.tipoPrecio),
-                //   style: Theme.of(context).textTheme.caption,
-                // ),
-              ],
-            ),
+                ],
+              ),
+              const Spacer(),
+              Text(
+                formatPrecios(
+                    precio: clientePrecioNeto.precio,
+                    tipoPrecio: clientePrecioNeto.tipoPrecio),
+                style: Theme.of(context).textTheme.caption,
+              ),
+            ],
           ),
         ),
       ),
