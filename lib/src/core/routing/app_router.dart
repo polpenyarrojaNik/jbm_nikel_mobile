@@ -23,7 +23,7 @@ import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_articulo_top_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_detalle_page.dart';
 import '../../features/cliente/presentation/show/cliente_grupo_neto_page.dart';
-import '../../features/cliente/presentation/show/cliente_pago_pendiente_page.dart';
+import '../../features/cliente/presentation/show/cliente_factura_pendiente_page.dart';
 import '../../features/cliente/presentation/show/cliente_rappel_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_articulo_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
@@ -88,7 +88,6 @@ final routerNotifierProvider = Provider<GoRouter>((ref) {
     redirect: router._redirectLogic,
     routes: router._routes,
     errorBuilder: (context, state) => const NotFoundScreen(),
-    urlPathStrategy: UrlPathStrategy.path,
   );
 });
 
@@ -102,7 +101,7 @@ class RouterNotifier extends ChangeNotifier {
     );
   }
 
-  String? _redirectLogic(GoRouterState state) {
+  String? _redirectLogic(BuildContext context, GoRouterState state) {
     final usuario = _ref.read(usuarioNotifierProvider);
 
     final areWeInLoginPage = state.location == '/login';
@@ -155,7 +154,7 @@ class RouterNotifier extends ChangeNotifier {
 
                     return MaterialPage(
                       key: state.pageKey,
-                      child: ClienteVentasMonthPage(
+                      child: ClienteVentasMesPage(
                           clienteId: clienteId, nombreCliente: nombreCliente),
                     );
                   },

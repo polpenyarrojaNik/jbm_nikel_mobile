@@ -41,24 +41,23 @@ class MetodoDeCobroDTO
   MetodoDeCobro toDomain() {
     return MetodoDeCobro(
         id: id,
-        descripcion: getDescription(),
+        descripcionES: descripcionES,
+        descripcionEN: descripcionEN,
+        descripcionFR: descripcionFR,
+        descripcionDE: descripcionDE,
+        descripcionCA: descripcionCA,
+        descripcionGB: descripcionGB,
+        descripcionHU: descripcionHU,
+        descripcionIT: descripcionIT,
+        descripcionNL: descripcionNL,
+        descripcionPL: descripcionPL,
+        descripcionPT: descripcionPT,
+        descripcionRO: descripcionRO,
+        descripcionRU: descripcionRU,
+        descripcionCN: descripcionCN,
+        descripcionEL: descripcionEL,
         lastUpdate: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
-  }
-
-  String getDescription() {
-    if (descripcionEN != null) {
-      return descripcionEN!;
-    } else if (descripcionFR != null) {
-      return descripcionFR!;
-    } else if (descripcionDE != null) {
-      return descripcionDE!;
-    } else if (descripcionGB != null) {
-      return descripcionGB!;
-    } else if (descripcionCA != null) {
-      return descripcionCA!;
-    }
-    return descripcionES;
   }
 
   @override

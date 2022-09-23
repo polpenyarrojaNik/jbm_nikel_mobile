@@ -22,10 +22,12 @@ import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_dto.dart';
+import '../../features/cliente/infrastructure/cliente_estado_potencial_dto.dart';
 import '../../features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_pago_pendiente_dto.dart';
 import '../../features/cliente/infrastructure/cliente_precio_neto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_rappel_dto.dart';
+import '../../features/cliente/infrastructure/cliente_tipo_potencial_dto.dart';
 import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
@@ -57,6 +59,8 @@ const localDatabaseName = 'jbm.sqlite';
   ClientePagoPendienteTable,
   ClientePrecioNetoTable,
   ClienteRappelTable,
+  ClienteEstadoPotencialTable,
+  ClienteTipoPotencialTable,
   ArticuloTopTable,
   ArticuloTable,
   ArticuloComponenteTable,

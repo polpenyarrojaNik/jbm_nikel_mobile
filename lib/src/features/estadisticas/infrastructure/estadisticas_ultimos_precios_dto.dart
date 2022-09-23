@@ -18,6 +18,7 @@ class EstadisticasUltimosPreciosDTO
   const factory EstadisticasUltimosPreciosDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
+    @JsonKey(name: 'LINEA') required int linea,
     @JsonKey(name: 'FECHA') required DateTime fecha,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
@@ -37,6 +38,7 @@ class EstadisticasUltimosPreciosDTO
       clienteId: clienteId,
       nombreCliente: nombreCliente,
       articuloId: articuloId,
+      linea: linea,
       fecha: fecha,
       precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
       divisaId: divisaId,
@@ -54,6 +56,7 @@ class EstadisticasUltimosPreciosDTO
     return EstadisticasUltimosPreciosTableCompanion(
       clienteId: Value(clienteId),
       articuloId: Value(articuloId),
+      linea: Value(linea),
       fecha: Value(fecha),
       precioDivisa: Value(precioDivisa),
       divisaId: Value(divisaId),
@@ -76,16 +79,12 @@ class EstadisticasUltimosPreciosTable extends Table {
   Set<Column> get primaryKey => {
         clienteId,
         articuloId,
-        fecha,
-        precioDivisa,
-        tipoPrecio,
-        descuento1,
-        descuento2,
-        descuento3
+        linea,
       };
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
+  IntColumn get linea => integer().named('LINEA')();
   DateTimeColumn get fecha => dateTime().named('FECHA')();
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
   RealColumn get tipoPrecio => real().named('TIPO_PRECIO')();

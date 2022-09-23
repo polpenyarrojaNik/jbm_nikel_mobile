@@ -731,10 +731,50 @@ class S {
   }
 
   /// `Articles sales`
-  String get cliente_show_clienteDetalleVentasArticulo_titulo {
+  String get cliente_show_clienteVentasArticulo_titulo {
     return Intl.message(
       'Articles sales',
-      name: 'cliente_show_clienteDetalleVentasArticulo_titulo',
+      name: 'cliente_show_clienteVentasArticulo_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get cliente_show_clienteVentasArticulo_importe {
+    return Intl.message(
+      'Amount',
+      name: 'cliente_show_clienteVentasArticulo_importe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get cliente_show_clienteVentasArticulo_cantidad {
+    return Intl.message(
+      'Quantity',
+      name: 'cliente_show_clienteVentasArticulo_cantidad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Article`
+  String get cliente_show_clienteVentasArticulo_articulo {
+    return Intl.message(
+      'Article',
+      name: 'cliente_show_clienteVentasArticulo_articulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get cliente_show_clienteVentasArticulo_description {
+    return Intl.message(
+      'Description',
+      name: 'cliente_show_clienteVentasArticulo_description',
       desc: '',
       args: [],
     );
@@ -745,6 +785,16 @@ class S {
     return Intl.message(
       'Month sales',
       name: 'cliente_show_clienteVentasMes_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Month`
+  String get cliente_show_clienteVentasMes_mes {
+    return Intl.message(
+      'Month',
+      name: 'cliente_show_clienteVentasMes_mes',
       desc: '',
       args: [],
     );
@@ -970,11 +1020,11 @@ class S {
     );
   }
 
-  /// `Prices & Others`
-  String get cliente_show_clienteDetalle_preciosYOtros {
+  /// `Prices & Payment Methods`
+  String get cliente_show_clienteDetalle_preciosYFormaDePago {
     return Intl.message(
-      'Prices & Others',
-      name: 'cliente_show_clienteDetalle_preciosYOtros',
+      'Prices & Payment Methods',
+      name: 'cliente_show_clienteDetalle_preciosYFormaDePago',
       desc: '',
       args: [],
     );
@@ -1264,10 +1314,10 @@ class S {
     );
   }
 
-  /// `Addresses`
+  /// `Shipping Addresses`
   String get cliente_show_clienteDireccion_titulo {
     return Intl.message(
-      'Addresses',
+      'Shipping Addresses',
       name: 'cliente_show_clienteDireccion_titulo',
       desc: '',
       args: [],
@@ -1335,30 +1385,70 @@ class S {
   }
 
   /// `Pending Payments`
-  String get cliente_show_clientePagosPendientes_titulo {
+  String get cliente_show_clienteFacturasPendientes_titulo {
     return Intl.message(
       'Pending Payments',
-      name: 'cliente_show_clientePagosPendientes_titulo',
+      name: 'cliente_show_clienteFacturasPendientes_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending`
+  String get cliente_show_clienteFacturasPendientes_estadoPendiente {
+    return Intl.message(
+      'Pending',
+      name: 'cliente_show_clienteFacturasPendientes_estadoPendiente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Charged`
+  String get cliente_show_clienteFacturasPendientes_estadoCobrado {
+    return Intl.message(
+      'Charged',
+      name: 'cliente_show_clienteFacturasPendientes_estadoCobrado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unpaid`
+  String get cliente_show_clienteFacturasPendientes_estadoImpagado {
+    return Intl.message(
+      'Unpaid',
+      name: 'cliente_show_clienteFacturasPendientes_estadoImpagado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Returned`
+  String get cliente_show_clienteFacturasPendientes_estadoDevuelto {
+    return Intl.message(
+      'Returned',
+      name: 'cliente_show_clienteFacturasPendientes_estadoDevuelto',
       desc: '',
       args: [],
     );
   }
 
   /// `JBM expirated`
-  String get cliente_show_clientePagosPendientes_vencidoJBM {
+  String get cliente_show_clienteFacturasPendientes_vencidoJBM {
     return Intl.message(
       'JBM expirated',
-      name: 'cliente_show_clientePagosPendientes_vencidoJBM',
+      name: 'cliente_show_clienteFacturasPendientes_vencidoJBM',
       desc: '',
       args: [],
     );
   }
 
   /// `Init Expiration`
-  String get cliente_show_clientePagosPendientes_vencInicial {
+  String get cliente_show_clienteFacturasPendientes_vencInicial {
     return Intl.message(
       'Init Expiration',
-      name: 'cliente_show_clientePagosPendientes_vencInicial',
+      name: 'cliente_show_clienteFacturasPendientes_vencInicial',
       desc: '',
       args: [],
     );

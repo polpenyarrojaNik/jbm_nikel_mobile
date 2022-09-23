@@ -1,0 +1,47 @@
+import 'dart:io';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
+
+import '../../../../core/exceptions/app_exception.dart';
+import '../../infrastructure/cliente_repository.dart';
+part 'cliente_adjunto_controller.freezed.dart';
+
+@freezed
+class ClienteAdjuntoState with _$ClienteAdjuntoState {
+  const ClienteAdjuntoState._();
+  const factory ClienteAdjuntoState.initial() = _Initial;
+  const factory ClienteAdjuntoState.loading() = _Loading;
+  const factory ClienteAdjuntoState.data(File? file) = _Data;
+  const factory ClienteAdjuntoState.error(
+    String failure,
+  ) = _Error;
+}
+
+final clienteAdjuntoControllerProvider = StateNotifierProvider.autoDispose<
+    ClienteAdjuntoController, ClienteAdjuntoState>(
+  (ref) => ClienteAdjuntoController(ref),
+);
+
+class ClienteAdjuntoController extends StateNotifier<ClienteAdjuntoState> {
+  final Ref _ref;
+
+  ClienteAdjuntoController(this._ref)
+      : super(const ClienteAdjuntoState.initial());
+
+  Future<void> getAttachmentFile({required String path}) async {
+    try {
+      state = const ClienteAdjuntoState.loading();
+      final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
+
+      final file = await _ref.read(clienteRepositoryProvider).getDocumentFile(
+          path: path, provisionalToken: user!.provisionalToken);
+      state = ClienteAdjuntoState.data(file);
+    } on AppException catch (e) {
+      state = ClienteAdjuntoState.error(e.details.message);
+    } catch (e) {
+      rethrow;
+    }
+  }
+}

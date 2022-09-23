@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -62,19 +61,8 @@ class _ClienteInfoContainer extends StatelessWidget {
       children: [
         _ClienteHeader(cliente: cliente),
         _ClienteAnalisis(cliente: cliente),
-        _ClientePreciosAndOtros(cliente: cliente),
-        if ((cliente.riesgoConcedidoInterno != 0) ||
-            (cliente.riesgoConcedidoCoafe != 0) ||
-            (cliente.riesgoConcedido != null && cliente.riesgoConcedido != 0) ||
-            (cliente.riesgoPendienteCobroVencido != null &&
-                cliente.riesgoPendienteCobroVencido != 0) ||
-            (cliente.riesgoPendienteCobroNoVencido != null &&
-                cliente.riesgoPendienteCobroNoVencido != 0) ||
-            (cliente.riesgoPendienteServir != null &&
-                cliente.riesgoPendienteServir != 0) ||
-            (cliente.riesgoPendienteFacturar != null &&
-                cliente.riesgoPendienteFacturar != 0))
-          _ClienteRiesgosContainer(cliente: cliente),
+        _ClientePreciosAndFormaDePago(cliente: cliente),
+        _ClienteRiesgosContainer(cliente: cliente),
       ],
     );
   }
@@ -92,11 +80,34 @@ class _ClienteHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (cliente.nombreCliente != null)
-            Text(
-              '#${cliente.id} ${cliente.nombreCliente!}',
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              if (cliente.nombreCliente != null)
+                Flexible(
+                  child: Text(
+                    '#${cliente.id} ${cliente.nombreCliente!}',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ),
+              if (cliente.clientePotencial ?? false)
+                Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.errorContainer,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      getClienteEstadoPotencialInLocalLanguage(
+                          estadoPotencial: cliente.clienteEstadoPotencial),
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                  ),
+                )
+            ],
+          ),
+          gapH8,
           if (cliente.nombreFiscal != null)
             Text(
               cliente.nombreFiscal!,
@@ -172,7 +183,7 @@ class _ClienteHeader extends StatelessWidget {
         await MapLauncher.showMarker(
           mapType: MapType.google,
           coords: Coords(latitude, longitude),
-          title: 'Titulo',
+          title: nombreFiscal ?? '',
         );
       } else {
         final isAvailable = await MapLauncher.isMapAvailable(MapType.apple);
@@ -232,7 +243,9 @@ class _ClienteAnalisis extends StatelessWidget {
                                           .caption!
                                           .color)),
                           Text(
-                            numberFormatDecimal(cliente.ventasAnyoActual!),
+                            formatPrecios(
+                                precio: cliente.ventasAnyoActual!,
+                                tipoPrecio: null),
                           ),
                         ],
                       ),
@@ -254,7 +267,9 @@ class _ClienteAnalisis extends StatelessWidget {
                                           .caption!
                                           .color)),
                           Text(
-                            numberFormatDecimal(cliente.ventasAnyoAnterior!),
+                            formatPrecios(
+                                precio: cliente.ventasAnyoAnterior!,
+                                tipoPrecio: null),
                           ),
                         ],
                       ),
@@ -276,7 +291,9 @@ class _ClienteAnalisis extends StatelessWidget {
                                           .caption!
                                           .color)),
                           Text(
-                            numberFormatDecimal(cliente.ventasHaceDosAnyos!),
+                            formatPrecios(
+                                precio: cliente.ventasHaceDosAnyos!,
+                                tipoPrecio: null),
                           ),
                         ],
                       ),
@@ -313,7 +330,7 @@ class _ClienteAnalisis extends StatelessWidget {
                                           .caption!
                                           .color)),
                           Text(
-                            numberFormatDecimal(cliente.margenAnyoActual!),
+                            '${numberFormatDecimal(cliente.margenAnyoActual!)}%',
                           ),
                         ],
                       ),
@@ -335,7 +352,7 @@ class _ClienteAnalisis extends StatelessWidget {
                                           .caption!
                                           .color)),
                           Text(
-                            numberFormatDecimal(cliente.margenAnyoAnterior!),
+                            '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%',
                           ),
                         ],
                       ),
@@ -357,7 +374,7 @@ class _ClienteAnalisis extends StatelessWidget {
                                           .caption!
                                           .color)),
                           Text(
-                            numberFormatDecimal(cliente.margenHaceDosAnyos!),
+                            '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%',
                           ),
                         ],
                       ),
@@ -400,8 +417,8 @@ class _ClienteAnalisis extends StatelessWidget {
   }
 }
 
-class _ClientePreciosAndOtros extends StatelessWidget {
-  const _ClientePreciosAndOtros({required this.cliente});
+class _ClientePreciosAndFormaDePago extends StatelessWidget {
+  const _ClientePreciosAndFormaDePago({required this.cliente});
 
   final Cliente cliente;
 
@@ -412,7 +429,7 @@ class _ClientePreciosAndOtros extends StatelessWidget {
       children: [
         MobileCustomSeparators(
             separatorTitle:
-                S.of(context).cliente_show_clienteDetalle_preciosYOtros),
+                S.of(context).cliente_show_clienteDetalle_preciosYFormaDePago),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -460,15 +477,18 @@ class _ClientePreciosAndOtros extends StatelessWidget {
                           fieldTitleValue: S
                               .of(context)
                               .cliente_show_clienteDetalle_plazoDeCobro,
-                          value: cliente.plazoDeCobro?.descripcion),
+                          value: getPlazoCorboInLocalLanguage(
+                              plazoDeCobro: cliente.plazoDeCobro!)),
                     ),
                   if (cliente.metodoDeCobro != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_metodoDeCobro,
-                          value: cliente.metodoDeCobro?.descripcion),
+                        fieldTitleValue: S
+                            .of(context)
+                            .cliente_show_clienteDetalle_metodoDeCobro,
+                        value: getMetodoCobroInLocalLanguage(
+                            metodoDeCobro: cliente.metodoDeCobro!),
+                      ),
                     ),
                 ],
               ),
@@ -494,121 +514,212 @@ class _ClienteRiesgosContainer extends StatelessWidget {
             separatorTitle: S.of(context).cliente_show_clienteDetalle_riesgos),
         Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: ColumnFieldTextDetalle(
-                      fieldTitleValue: S
-                          .of(context)
-                          .cliente_show_clienteDetalle_concedidoJBM,
-                      value: cliente.riesgoConcedidoInterno.toString(),
-                    ),
-                  ),
-                  if (cliente.riesgoConcedidoInternoDate != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_concedidoFecha,
-                        value: dateFormatter(cliente.riesgoConcedidoInternoDate!
-                            .toLocal()
-                            .toIso8601String()),
+          child: IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_riesgoActual,
+                            style:
+                                Theme.of(context).textTheme.subtitle2!.copyWith(
+                                      color: (cliente.riesgoActual >
+                                              cliente.riesgoConcedido!)
+                                          ? Theme.of(context).colorScheme.error
+                                          : Theme.of(context)
+                                              .textTheme
+                                              .caption!
+                                              .color,
+                                    ),
+                          ),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoActual, tipoPrecio: null),
+                          ),
+                        ],
                       ),
-                    ),
-                ],
-              ),
-              const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_concedidoCOFACE,
-                        value:
-                            numberFormatDecimal(cliente.riesgoConcedidoCoafe)),
+                      gapH12,
+                      Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_pdteCobroVencido,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoPendienteCobroVencido!,
+                                tipoPrecio: null),
+                          ),
+                        ],
+                      ),
+                      gapH8,
+                      Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_pdteCobroNoVencido,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoPendienteCobroNoVencido!,
+                                tipoPrecio: null),
+                          ),
+                        ],
+                      ),
+                      gapH8,
+                      Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_pdteServir,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoPendienteServir!,
+                                tipoPrecio: null),
+                          ),
+                        ],
+                      ),
+                      gapH8,
+                      Column(
+                        children: [
+                          Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_pdteFacturar,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoPendienteFacturar!,
+                                tipoPrecio: null),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  if (cliente.riesgoConcedidoCoafeFecha != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_fechaCOFACE,
-                          value: cliente.riesgoConcedidoCoafeFecha!
-                              .toLocal()
-                              .toIso8601String()),
-                    ),
-                ],
-              ),
-              if (cliente.riesgoConcedido != null) const Divider(),
-              if (cliente.riesgoConcedido != null)
-                ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).cliente_show_clienteDetalle_riesgoConcedido,
-                  value: numberFormatDecimal(cliente.riesgoConcedido!),
                 ),
-              if ((cliente.riesgoPendienteCobroVencido != null) ||
-                  (cliente.riesgoPendienteCobroNoVencido != null) ||
-                  (cliente.riesgoPendienteServir != null) ||
-                  (cliente.riesgoPendienteFacturar != null))
-                const Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (cliente.riesgoPendienteCobroVencido != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_pdteCobroVencido,
-                          value: numberFormatDecimal(
-                              cliente.riesgoPendienteCobroVencido!)),
-                    ),
-                  if (cliente.riesgoPendienteCobroNoVencido != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_pdteCobroNoVencido,
-                          value: numberFormatDecimal(
-                              cliente.riesgoPendienteCobroNoVencido!)),
-                    ),
-                ],
-              ),
-              if ((cliente.riesgoPendienteServir != null) ||
-                  (cliente.riesgoPendienteFacturar != null))
-                gapH4,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  if (cliente.riesgoPendienteServir != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_pdteServir,
-                          value: numberFormatDecimal(
-                              cliente.riesgoPendienteServir!)),
-                    ),
-                  if (cliente.riesgoPendienteFacturar != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_pdteFacturar,
-                          value: numberFormatDecimal(
-                              cliente.riesgoPendienteFacturar!)),
-                    ),
-                ],
-              ),
-            ],
+                const VerticalDivider(width: 24),
+                Expanded(
+                  child: Column(
+                    children: [
+                      if (cliente.riesgoConcedido != null)
+                        Column(
+                          children: [
+                            Text(
+                                S
+                                    .of(context)
+                                    .cliente_show_clienteDetalle_riesgoConcedido,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .caption!
+                                            .color)),
+                            Text(
+                              formatPrecios(
+                                  precio: cliente.riesgoConcedidoInterno,
+                                  tipoPrecio: null),
+                            ),
+                          ],
+                        ),
+                      gapH12,
+                      Column(
+                        children: [
+                          Text('JBM',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoConcedidoInterno,
+                                tipoPrecio: null),
+                          ),
+                          if (cliente.riesgoConcedidoInternoDate != null)
+                            Text(
+                              dateFormatter(cliente.riesgoConcedidoInternoDate!
+                                  .toLocal()
+                                  .toIso8601String()),
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                        ],
+                      ),
+                      gapH8,
+                      Column(
+                        children: [
+                          Text('COFACE',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color)),
+                          Text(
+                            formatPrecios(
+                                precio: cliente.riesgoConcedidoCoafe,
+                                tipoPrecio: null),
+                          ),
+                          if (cliente.riesgoConcedidoCoafeFecha != null)
+                            Text(
+                              dateFormatter(cliente.riesgoConcedidoCoafeFecha!
+                                  .toLocal()
+                                  .toIso8601String()),
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
+        )
       ],
     );
   }
@@ -717,7 +828,7 @@ class _Consultas extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: S.of(context).cliente_show_clienteDetalleVentasArticulo_titulo,
+          title: S.of(context).cliente_show_clienteVentasArticulo_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.clienteventasarticulo.name,
             params: params,
@@ -726,7 +837,7 @@ class _Consultas extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: S.of(context).cliente_show_clienteDetalle_factPendientes,
+          title: S.of(context).cliente_show_clienteFacturasPendientes_titulo,
           navigationTo: () => context.goNamed(
             AppRoutes.clientefactpendientes.name,
             params: params,

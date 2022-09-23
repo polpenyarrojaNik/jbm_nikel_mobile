@@ -1,11 +1,15 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
+import 'package:money2/money2.dart';
 
 import '../../../core/domain/pais.dart';
 import '../../../core/domain/divisa.dart';
 import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/database.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
+import '../domain/cliente_estado_potencial.dart';
+import '../domain/cliente_tipo_potencial.dart';
 import '../domain/metodo_cobro.dart';
 import '../domain/plazo_cobro.dart';
 import '../domain/cliente.dart';
@@ -73,6 +77,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'RIESGO_PDTE_FACTURAR_CLIENTE')
         double? riesgoPendienteFacturar,
     @JsonKey(name: 'OBSERVACIONES_INTERNAS') String? obvservacionesInternas,
+    @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
+    @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
+    @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -85,6 +92,8 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     required Divisa? divisa,
     required MetodoDeCobro? metodoDeCobro,
     required PlazoDeCobro? plazoDeCobro,
+    required ClienteTipoPotencial? clienteTipoPotencial,
+    required ClienteEstadoPotencial? clienteEstadoPotencial,
   }) {
     return Cliente(
       id: id,
@@ -102,9 +111,12 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       empresaId: empresaId,
       ivaEspecial: ivaEspecial,
       extentoIva: extentoIva,
-      ventasAnyoActual: ventasAnyoActual,
-      ventasAnyoAnterior: ventasAnyoAnterior,
-      ventasHaceDosAnyos: ventasHaceDosAnyos,
+      ventasAnyoActual:
+          ventasAnyoActual?.parseMoney(ventasAnyoActual!, divisaId),
+      ventasAnyoAnterior:
+          ventasAnyoAnterior?.parseMoney(ventasAnyoAnterior!, divisaId),
+      ventasHaceDosAnyos:
+          ventasHaceDosAnyos?.parseMoney(ventasHaceDosAnyos!, divisaId),
       margenAnyoActual: margenAnyoActual,
       margenAnyoAnterior: margenAnyoAnterior,
       margenHaceDosAnyos: margenHaceDosAnyos,
@@ -121,16 +133,31 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       plazoDeCobro: plazoDeCobro,
       metodoDeCobro: metodoDeCobro,
       descuentoProntoPago: descuentoProntoPago,
-      riesgoConcedidoInterno: riesgoConcedidoInterno,
+      riesgoConcedidoInterno:
+          riesgoConcedidoInterno.parseMoney(riesgoConcedidoInterno, divisaId),
       riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
-      riesgoConcedidoCoafe: riesgoConcedidoCoafe,
+      riesgoConcedidoCoafe:
+          riesgoConcedidoCoafe.parseMoney(riesgoConcedidoCoafe, divisaId),
       riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
-      riesgoConcedido: riesgoConcedido,
-      riesgoPendienteCobroVencido: riesgoPendienteCobroVencido,
-      riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido,
-      riesgoPendienteServir: riesgoPendienteServir,
-      riesgoPendienteFacturar: riesgoPendienteFacturar,
+      riesgoActual: calculateRiesgoActual(
+          riesgoPendienteCobroVencido,
+          riesgoPendienteCobroNoVencido,
+          riesgoPendienteServir,
+          riesgoPendienteFacturar,
+          divisaId),
+      riesgoConcedido: riesgoConcedido?.parseMoney(riesgoConcedido!, divisaId),
+      riesgoPendienteCobroVencido: riesgoPendienteCobroVencido?.parseMoney(
+          riesgoPendienteCobroVencido!, divisaId),
+      riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido?.parseMoney(
+          riesgoPendienteCobroNoVencido!, divisaId),
+      riesgoPendienteServir:
+          riesgoPendienteServir?.parseMoney(riesgoPendienteServir!, divisaId),
+      riesgoPendienteFacturar: riesgoPendienteFacturar?.parseMoney(
+          riesgoPendienteFacturar!, divisaId),
       obvservacionesInternas: obvservacionesInternas,
+      clientePotencial: (clientePotencial == 'S') ? true : false,
+      clienteEstadoPotencial: clienteEstadoPotencial,
+      clienteTipoPotencial: clienteTipoPotencial,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -154,8 +181,10 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       empresaId: Value(empresaId),
       ivaEspecial: Value(ivaEspecial),
       ventasAnyoActual: Value(ventasAnyoActual),
+      ventasAnyoAnterior: Value(ventasAnyoAnterior),
       ventasHaceDosAnyos: Value(ventasHaceDosAnyos),
-      margenAnyoAnterior: Value(ventasHaceDosAnyos),
+      margenAnyoActual: Value(margenAnyoActual),
+      margenAnyoAnterior: Value(margenAnyoAnterior),
       margenHaceDosAnyos: Value(margenHaceDosAnyos),
       porcentajeAbonos: Value(porcentajeAbonos),
       porcentajeGarantias: Value(porcentajeGarantias),
@@ -180,9 +209,26 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       riesgoPendienteServir: Value(riesgoPendienteServir),
       riesgoPendienteFacturar: Value(riesgoPendienteFacturar),
       obvservacionesInternas: Value(obvservacionesInternas),
+      clientePotencial: Value(clientePotencial),
+      clienteEstadoPotencialId: Value(clienteEstadoPotencialId),
+      clienteTipoPotencialId: Value(clienteTipoPotencialId),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
+  }
+
+  Money calculateRiesgoActual(
+      double? riesgoPendienteCobroVencido,
+      double? riesgoPendienteCobroNoVencido,
+      double? riesgoPendienteServir,
+      double? riesgoPendienteFacturar,
+      String? divisaId) {
+    double amount = 0;
+    amount += (riesgoPendienteCobroVencido ?? 0) +
+        (riesgoPendienteCobroNoVencido ?? 0) +
+        (riesgoPendienteServir ?? 0) +
+        (riesgoPendienteFacturar ?? 0);
+    return amount.parseMoney(amount, divisaId);
   }
 }
 
@@ -273,6 +319,12 @@ class ClienteTable extends Table {
       real().nullable().named('RIESGO_PDTE_FACTURAR_CLIENTE')();
   TextColumn get obvservacionesInternas =>
       text().nullable().named('OBSERVACIONES_INTERNAS')();
+  TextColumn get clientePotencial =>
+      text().nullable().named('CLIENTE_POTENCIAL')();
+  TextColumn get clienteEstadoPotencialId =>
+      text().nullable().named('ESTADO_POTENCIAL_ID')();
+  TextColumn get clienteTipoPotencialId =>
+      text().nullable().named('TIPO_POTENCIAL_ID')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

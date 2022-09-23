@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_adjunto_controller.dart';
+import 'package:open_file/open_file.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_adjunto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -18,6 +21,14 @@ class ClienteAdjuntoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<ClienteAdjuntoState>(clienteAdjuntoControllerProvider,
+        (_, state) {
+      state.when(
+          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+          error: (error) => showToast(error.toString(), context),
+          loading: () => showToast('Abriendo Archivo....', context),
+          initial: () => null);
+    });
     final state = ref.watch(clienteAdjuntoProvider(clienteId));
     return Scaffold(
       body: CustomScrollView(
@@ -68,7 +79,10 @@ class ClienteAdjuntoTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: () => openFile(
+          clienteId: clienteAdjunto.clienteId,
+          nombreAdjunto: clienteAdjunto.nombreAdjunto,
+          ref: ref),
       child: Card(
         // clipBehavior: Clip.hardEdge,
         elevation: 0,
@@ -100,5 +114,14 @@ class ClienteAdjuntoTile extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void openFile(
+      {required String clienteId,
+      required String nombreAdjunto,
+      required WidgetRef ref}) {
+    ref
+        .read(clienteAdjuntoControllerProvider.notifier)
+        .getAttachmentFile(path: '$clienteId/$nombreAdjunto');
   }
 }

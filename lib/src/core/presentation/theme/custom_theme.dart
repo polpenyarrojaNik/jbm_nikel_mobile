@@ -134,7 +134,7 @@ class CustomTheme {
       ).copyWith(
           subtitle2: GoogleFonts.montserrat(
                   textStyle: ThemeData.light().textTheme.subtitle2)
-              .copyWith(fontWeight: FontWeight.w700)),
+              .copyWith(fontWeight: FontWeight.w600)),
     );
   }
 
@@ -153,7 +153,10 @@ class CustomTheme {
       useMaterial3: true,
       textTheme: GoogleFonts.montserratTextTheme(
         ThemeData.dark().textTheme,
-      ),
+      ).copyWith(
+          subtitle2: GoogleFonts.montserrat(
+                  textStyle: ThemeData.dark().textTheme.subtitle2)
+              .copyWith(fontWeight: FontWeight.w600)),
     );
   }
 }

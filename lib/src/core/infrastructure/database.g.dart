@@ -3927,6 +3927,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<double?> riesgoPendienteServir;
   final Value<double?> riesgoPendienteFacturar;
   final Value<String?> obvservacionesInternas;
+  final Value<String?> clientePotencial;
+  final Value<String?> clienteEstadoPotencialId;
+  final Value<String?> clienteTipoPotencialId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ClienteTableCompanion({
@@ -3974,6 +3977,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.riesgoPendienteServir = const Value.absent(),
     this.riesgoPendienteFacturar = const Value.absent(),
     this.obvservacionesInternas = const Value.absent(),
+    this.clientePotencial = const Value.absent(),
+    this.clienteEstadoPotencialId = const Value.absent(),
+    this.clienteTipoPotencialId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -4022,6 +4028,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.riesgoPendienteServir = const Value.absent(),
     this.riesgoPendienteFacturar = const Value.absent(),
     this.obvservacionesInternas = const Value.absent(),
+    this.clientePotencial = const Value.absent(),
+    this.clienteEstadoPotencialId = const Value.absent(),
+    this.clienteTipoPotencialId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
@@ -4076,6 +4085,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<double>? riesgoPendienteServir,
     Expression<double>? riesgoPendienteFacturar,
     Expression<String>? obvservacionesInternas,
+    Expression<String>? clientePotencial,
+    Expression<String>? clienteEstadoPotencialId,
+    Expression<String>? clienteTipoPotencialId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -4141,6 +4153,11 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         'RIESGO_PDTE_FACTURAR_CLIENTE': riesgoPendienteFacturar,
       if (obvservacionesInternas != null)
         'OBSERVACIONES_INTERNAS': obvservacionesInternas,
+      if (clientePotencial != null) 'CLIENTE_POTENCIAL': clientePotencial,
+      if (clienteEstadoPotencialId != null)
+        'ESTADO_POTENCIAL_ID': clienteEstadoPotencialId,
+      if (clienteTipoPotencialId != null)
+        'TIPO_POTENCIAL_ID': clienteTipoPotencialId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -4191,6 +4208,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<double?>? riesgoPendienteServir,
       Value<double?>? riesgoPendienteFacturar,
       Value<String?>? obvservacionesInternas,
+      Value<String?>? clientePotencial,
+      Value<String?>? clienteEstadoPotencialId,
+      Value<String?>? clienteTipoPotencialId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ClienteTableCompanion(
@@ -4247,6 +4267,11 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           riesgoPendienteFacturar ?? this.riesgoPendienteFacturar,
       obvservacionesInternas:
           obvservacionesInternas ?? this.obvservacionesInternas,
+      clientePotencial: clientePotencial ?? this.clientePotencial,
+      clienteEstadoPotencialId:
+          clienteEstadoPotencialId ?? this.clienteEstadoPotencialId,
+      clienteTipoPotencialId:
+          clienteTipoPotencialId ?? this.clienteTipoPotencialId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -4398,6 +4423,16 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       map['OBSERVACIONES_INTERNAS'] =
           Variable<String>(obvservacionesInternas.value);
     }
+    if (clientePotencial.present) {
+      map['CLIENTE_POTENCIAL'] = Variable<String>(clientePotencial.value);
+    }
+    if (clienteEstadoPotencialId.present) {
+      map['ESTADO_POTENCIAL_ID'] =
+          Variable<String>(clienteEstadoPotencialId.value);
+    }
+    if (clienteTipoPotencialId.present) {
+      map['TIPO_POTENCIAL_ID'] = Variable<String>(clienteTipoPotencialId.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -4455,6 +4490,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('riesgoPendienteServir: $riesgoPendienteServir, ')
           ..write('riesgoPendienteFacturar: $riesgoPendienteFacturar, ')
           ..write('obvservacionesInternas: $obvservacionesInternas, ')
+          ..write('clientePotencial: $clientePotencial, ')
+          ..write('clienteEstadoPotencialId: $clienteEstadoPotencialId, ')
+          ..write('clienteTipoPotencialId: $clienteTipoPotencialId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -4738,6 +4776,24 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> obvservacionesInternas =
       GeneratedColumn<String>('OBSERVACIONES_INTERNAS', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _clientePotencialMeta =
+      const VerificationMeta('clientePotencial');
+  @override
+  late final GeneratedColumn<String> clientePotencial = GeneratedColumn<String>(
+      'CLIENTE_POTENCIAL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _clienteEstadoPotencialIdMeta =
+      const VerificationMeta('clienteEstadoPotencialId');
+  @override
+  late final GeneratedColumn<String> clienteEstadoPotencialId =
+      GeneratedColumn<String>('ESTADO_POTENCIAL_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _clienteTipoPotencialIdMeta =
+      const VerificationMeta('clienteTipoPotencialId');
+  @override
+  late final GeneratedColumn<String> clienteTipoPotencialId =
+      GeneratedColumn<String>('TIPO_POTENCIAL_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -4797,6 +4853,9 @@ class $ClienteTableTable extends ClienteTable
         riesgoPendienteServir,
         riesgoPendienteFacturar,
         obvservacionesInternas,
+        clientePotencial,
+        clienteEstadoPotencialId,
+        clienteTipoPotencialId,
         lastUpdated,
         deleted
       ];
@@ -5079,6 +5138,24 @@ class $ClienteTableTable extends ClienteTable
           obvservacionesInternas.isAcceptableOrUnknown(
               data['OBSERVACIONES_INTERNAS']!, _obvservacionesInternasMeta));
     }
+    if (data.containsKey('CLIENTE_POTENCIAL')) {
+      context.handle(
+          _clientePotencialMeta,
+          clientePotencial.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL']!, _clientePotencialMeta));
+    }
+    if (data.containsKey('ESTADO_POTENCIAL_ID')) {
+      context.handle(
+          _clienteEstadoPotencialIdMeta,
+          clienteEstadoPotencialId.isAcceptableOrUnknown(
+              data['ESTADO_POTENCIAL_ID']!, _clienteEstadoPotencialIdMeta));
+    }
+    if (data.containsKey('TIPO_POTENCIAL_ID')) {
+      context.handle(
+          _clienteTipoPotencialIdMeta,
+          clienteTipoPotencialId.isAcceptableOrUnknown(
+              data['TIPO_POTENCIAL_ID']!, _clienteTipoPotencialIdMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -5199,6 +5276,12 @@ class $ClienteTableTable extends ClienteTable
       obvservacionesInternas: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}OBSERVACIONES_INTERNAS']),
+      clientePotencial: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}CLIENTE_POTENCIAL']),
+      clienteEstadoPotencialId: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ESTADO_POTENCIAL_ID']),
+      clienteTipoPotencialId: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}TIPO_POTENCIAL_ID']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -8594,6 +8677,1084 @@ class $ClienteRappelTableTable extends ClienteRappelTable
   @override
   $ClienteRappelTableTable createAlias(String alias) {
     return $ClienteRappelTableTable(attachedDatabase, alias);
+  }
+}
+
+class ClienteEstadoPotencialTableCompanion
+    extends UpdateCompanion<ClienteEstadoPotencialDTO> {
+  final Value<String> id;
+  final Value<String?> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const ClienteEstadoPotencialTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  ClienteEstadoPotencialTableCompanion.insert({
+    required String id,
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : id = Value(id),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<ClienteEstadoPotencialDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'ESTADO_POTENCIAL_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  ClienteEstadoPotencialTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String?>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return ClienteEstadoPotencialTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['ESTADO_POTENCIAL_ID'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ClienteEstadoPotencialTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
+    with
+        TableInfo<$ClienteEstadoPotencialTableTable,
+            ClienteEstadoPotencialDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ClienteEstadoPotencialTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'ESTADO_POTENCIAL_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'CLIENTES_ESTADOS_POTENCIAL';
+  @override
+  String get actualTableName => 'CLIENTES_ESTADOS_POTENCIAL';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<ClienteEstadoPotencialDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('ESTADO_POTENCIAL_ID')) {
+      context.handle(_idMeta,
+          id.isAcceptableOrUnknown(data['ESTADO_POTENCIAL_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ClienteEstadoPotencialDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ClienteEstadoPotencialDTO(
+      id: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}ESTADO_POTENCIAL_ID'])!,
+      descripcionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES']),
+      descripcionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descripcionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $ClienteEstadoPotencialTableTable createAlias(String alias) {
+    return $ClienteEstadoPotencialTableTable(attachedDatabase, alias);
+  }
+}
+
+class ClienteTipoPotencialTableCompanion
+    extends UpdateCompanion<ClienteTipoPotencialDTO> {
+  final Value<String> id;
+  final Value<String?> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const ClienteTipoPotencialTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  ClienteTipoPotencialTableCompanion.insert({
+    required String id,
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : id = Value(id),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<ClienteTipoPotencialDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'TIPO_POTENCIAL_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  ClienteTipoPotencialTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String?>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return ClienteTipoPotencialTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['TIPO_POTENCIAL_ID'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ClienteTipoPotencialTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
+    with TableInfo<$ClienteTipoPotencialTableTable, ClienteTipoPotencialDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ClienteTipoPotencialTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'TIPO_POTENCIAL_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'CLIENTES_TIPOS_POTENCIAL';
+  @override
+  String get actualTableName => 'CLIENTES_TIPOS_POTENCIAL';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<ClienteTipoPotencialDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('TIPO_POTENCIAL_ID')) {
+      context.handle(_idMeta,
+          id.isAcceptableOrUnknown(data['TIPO_POTENCIAL_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ClienteTipoPotencialDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ClienteTipoPotencialDTO(
+      id: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}TIPO_POTENCIAL_ID'])!,
+      descripcionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES']),
+      descripcionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descripcionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $ClienteTipoPotencialTableTable createAlias(String alias) {
+    return $ClienteTipoPotencialTableTable(attachedDatabase, alias);
   }
 }
 
@@ -12244,6 +13405,7 @@ class EstadisticasUltimosPreciosTableCompanion
     extends UpdateCompanion<EstadisticasUltimosPreciosDTO> {
   final Value<String> clienteId;
   final Value<String> articuloId;
+  final Value<int> linea;
   final Value<DateTime> fecha;
   final Value<double> precioDivisa;
   final Value<double> tipoPrecio;
@@ -12256,6 +13418,7 @@ class EstadisticasUltimosPreciosTableCompanion
   const EstadisticasUltimosPreciosTableCompanion({
     this.clienteId = const Value.absent(),
     this.articuloId = const Value.absent(),
+    this.linea = const Value.absent(),
     this.fecha = const Value.absent(),
     this.precioDivisa = const Value.absent(),
     this.tipoPrecio = const Value.absent(),
@@ -12269,6 +13432,7 @@ class EstadisticasUltimosPreciosTableCompanion
   EstadisticasUltimosPreciosTableCompanion.insert({
     required String clienteId,
     required String articuloId,
+    required int linea,
     required DateTime fecha,
     required double precioDivisa,
     required double tipoPrecio,
@@ -12280,6 +13444,7 @@ class EstadisticasUltimosPreciosTableCompanion
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
         articuloId = Value(articuloId),
+        linea = Value(linea),
         fecha = Value(fecha),
         precioDivisa = Value(precioDivisa),
         tipoPrecio = Value(tipoPrecio),
@@ -12291,6 +13456,7 @@ class EstadisticasUltimosPreciosTableCompanion
   static Insertable<EstadisticasUltimosPreciosDTO> custom({
     Expression<String>? clienteId,
     Expression<String>? articuloId,
+    Expression<int>? linea,
     Expression<DateTime>? fecha,
     Expression<double>? precioDivisa,
     Expression<double>? tipoPrecio,
@@ -12304,6 +13470,7 @@ class EstadisticasUltimosPreciosTableCompanion
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (linea != null) 'LINEA': linea,
       if (fecha != null) 'FECHA': fecha,
       if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
@@ -12319,6 +13486,7 @@ class EstadisticasUltimosPreciosTableCompanion
   EstadisticasUltimosPreciosTableCompanion copyWith(
       {Value<String>? clienteId,
       Value<String>? articuloId,
+      Value<int>? linea,
       Value<DateTime>? fecha,
       Value<double>? precioDivisa,
       Value<double>? tipoPrecio,
@@ -12331,6 +13499,7 @@ class EstadisticasUltimosPreciosTableCompanion
     return EstadisticasUltimosPreciosTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       articuloId: articuloId ?? this.articuloId,
+      linea: linea ?? this.linea,
       fecha: fecha ?? this.fecha,
       precioDivisa: precioDivisa ?? this.precioDivisa,
       tipoPrecio: tipoPrecio ?? this.tipoPrecio,
@@ -12351,6 +13520,9 @@ class EstadisticasUltimosPreciosTableCompanion
     }
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    }
+    if (linea.present) {
+      map['LINEA'] = Variable<int>(linea.value);
     }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
@@ -12387,6 +13559,7 @@ class EstadisticasUltimosPreciosTableCompanion
     return (StringBuffer('EstadisticasUltimosPreciosTableCompanion(')
           ..write('clienteId: $clienteId, ')
           ..write('articuloId: $articuloId, ')
+          ..write('linea: $linea, ')
           ..write('fecha: $fecha, ')
           ..write('precioDivisa: $precioDivisa, ')
           ..write('tipoPrecio: $tipoPrecio, ')
@@ -12420,6 +13593,11 @@ class $EstadisticasUltimosPreciosTableTable
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _lineaMeta = const VerificationMeta('linea');
+  @override
+  late final GeneratedColumn<int> linea = GeneratedColumn<int>(
+      'LINEA', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
   final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
@@ -12473,6 +13651,7 @@ class $EstadisticasUltimosPreciosTableTable
   List<GeneratedColumn> get $columns => [
         clienteId,
         articuloId,
+        linea,
         fecha,
         precioDivisa,
         tipoPrecio,
@@ -12506,6 +13685,12 @@ class $EstadisticasUltimosPreciosTableTable
               data['ARTICULO_ID']!, _articuloIdMeta));
     } else if (isInserting) {
       context.missing(_articuloIdMeta);
+    }
+    if (data.containsKey('LINEA')) {
+      context.handle(
+          _lineaMeta, linea.isAcceptableOrUnknown(data['LINEA']!, _lineaMeta));
+    } else if (isInserting) {
+      context.missing(_lineaMeta);
     }
     if (data.containsKey('FECHA')) {
       context.handle(
@@ -12575,16 +13760,7 @@ class $EstadisticasUltimosPreciosTableTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {
-        clienteId,
-        articuloId,
-        fecha,
-        precioDivisa,
-        tipoPrecio,
-        descuento1,
-        descuento2,
-        descuento3
-      };
+  Set<GeneratedColumn> get $primaryKey => {clienteId, articuloId, linea};
   @override
   EstadisticasUltimosPreciosDTO map(Map<String, dynamic> data,
       {String? tablePrefix}) {
@@ -12594,6 +13770,8 @@ class $EstadisticasUltimosPreciosTableTable
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      linea: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}LINEA'])!,
       fecha: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
       precioDivisa: attachedDatabase.options.types
@@ -12977,6 +14155,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $ClientePrecioNetoTableTable(this);
   late final $ClienteRappelTableTable clienteRappelTable =
       $ClienteRappelTableTable(this);
+  late final $ClienteEstadoPotencialTableTable clienteEstadoPotencialTable =
+      $ClienteEstadoPotencialTableTable(this);
+  late final $ClienteTipoPotencialTableTable clienteTipoPotencialTable =
+      $ClienteTipoPotencialTableTable(this);
   late final $ArticuloTopTableTable articuloTopTable =
       $ArticuloTopTableTable(this);
   late final $ArticuloTableTable articuloTable = $ArticuloTableTable(this);
@@ -13022,6 +14204,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         clientePagoPendienteTable,
         clientePrecioNetoTable,
         clienteRappelTable,
+        clienteEstadoPotencialTable,
+        clienteTipoPotencialTable,
         articuloTopTable,
         articuloTable,
         articuloComponenteTable,

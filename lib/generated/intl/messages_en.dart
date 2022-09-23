@@ -147,8 +147,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Since"),
         "cliente_show_clienteDescuento_titulo":
             MessageLookupByLibrary.simpleMessage("Discounts"),
-        "cliente_show_clienteDetalleVentasArticulo_titulo":
-            MessageLookupByLibrary.simpleMessage("Articles sales"),
         "cliente_show_clienteDetalle_analisis":
             MessageLookupByLibrary.simpleMessage("Analysis"),
         "cliente_show_clienteDetalle_anoActual":
@@ -227,8 +225,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Payment percentage"),
         "cliente_show_clienteDetalle_porcentajeGarantias":
             MessageLookupByLibrary.simpleMessage("Warranty percentage"),
-        "cliente_show_clienteDetalle_preciosYOtros":
-            MessageLookupByLibrary.simpleMessage("Prices & Others"),
+        "cliente_show_clienteDetalle_preciosYFormaDePago":
+            MessageLookupByLibrary.simpleMessage("Prices & Payment Methods"),
         "cliente_show_clienteDetalle_provincia":
             MessageLookupByLibrary.simpleMessage("State"),
         "cliente_show_clienteDetalle_riesgoActual":
@@ -250,21 +248,41 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
         "cliente_show_clienteDireccion_titulo":
-            MessageLookupByLibrary.simpleMessage("Addresses"),
+            MessageLookupByLibrary.simpleMessage("Shipping Addresses"),
+        "cliente_show_clienteFacturasPendientes_estadoCobrado":
+            MessageLookupByLibrary.simpleMessage("Charged"),
+        "cliente_show_clienteFacturasPendientes_estadoDevuelto":
+            MessageLookupByLibrary.simpleMessage("Returned"),
+        "cliente_show_clienteFacturasPendientes_estadoImpagado":
+            MessageLookupByLibrary.simpleMessage("Unpaid"),
+        "cliente_show_clienteFacturasPendientes_estadoPendiente":
+            MessageLookupByLibrary.simpleMessage("Pending"),
+        "cliente_show_clienteFacturasPendientes_titulo":
+            MessageLookupByLibrary.simpleMessage("Pending Payments"),
+        "cliente_show_clienteFacturasPendientes_vencInicial":
+            MessageLookupByLibrary.simpleMessage("Init Expiration"),
+        "cliente_show_clienteFacturasPendientes_vencidoJBM":
+            MessageLookupByLibrary.simpleMessage("JBM expirated"),
         "cliente_show_clienteGrupoNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Net groups"),
-        "cliente_show_clientePagosPendientes_titulo":
-            MessageLookupByLibrary.simpleMessage("Pending Payments"),
-        "cliente_show_clientePagosPendientes_vencInicial":
-            MessageLookupByLibrary.simpleMessage("Init Expiration"),
-        "cliente_show_clientePagosPendientes_vencidoJBM":
-            MessageLookupByLibrary.simpleMessage("JBM expirated"),
         "cliente_show_clientePrecioNeto_desDe":
             MessageLookupByLibrary.simpleMessage("Since"),
         "cliente_show_clientePrecioNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Net prices"),
         "cliente_show_clienteRappel_titulo":
             MessageLookupByLibrary.simpleMessage("Rappels"),
+        "cliente_show_clienteVentasArticulo_articulo":
+            MessageLookupByLibrary.simpleMessage("Article"),
+        "cliente_show_clienteVentasArticulo_cantidad":
+            MessageLookupByLibrary.simpleMessage("Quantity"),
+        "cliente_show_clienteVentasArticulo_description":
+            MessageLookupByLibrary.simpleMessage("Description"),
+        "cliente_show_clienteVentasArticulo_importe":
+            MessageLookupByLibrary.simpleMessage("Amount"),
+        "cliente_show_clienteVentasArticulo_titulo":
+            MessageLookupByLibrary.simpleMessage("Articles sales"),
+        "cliente_show_clienteVentasMes_mes":
+            MessageLookupByLibrary.simpleMessage("Month"),
         "cliente_show_clienteVentasMes_titulo":
             MessageLookupByLibrary.simpleMessage("Month sales"),
         "commonWidgets_appDrawer_ajustes":

@@ -6,6 +6,10 @@ import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
 import '../../features/articulos/domain/articulo.dart';
+import '../../features/cliente/domain/cliente_estado_potencial.dart';
+import '../../features/cliente/domain/cliente_tipo_potencial.dart';
+import '../../features/cliente/domain/metodo_cobro.dart';
+import '../../features/cliente/domain/plazo_cobro.dart';
 
 String dateFormatter(String dateStr, {bool allDay = false}) {
   DateTime date;
@@ -19,6 +23,12 @@ String dateFormatter(String dateStr, {bool allDay = false}) {
   date = DateTime.parse(dateStr);
 
   return formatter.format(date);
+}
+
+String getMonthFromInt(int month) {
+  final formatter = DateFormat.MMM(Intl.getCurrentLocale());
+
+  return formatter.format(DateTime(0, month));
 }
 
 String numberFormatDecimal(double number) {
@@ -188,35 +198,30 @@ String? getSummaryInLocalLanguage({required Articulo articulo}) {
   } else if (currentLocale == 'en' && articulo.resumenEN != null) {
     return articulo.resumenEN!;
   }
-  //else if (currentLocale == 'fr' && articulo.resumenFR != null) {
-  //   return articulo.resumenFR!;
-  // } else if (currentLocale == 'de' && articulo.resumenDE != null) {
-  //   return articulo.resumenDE!;
-  // } else if (currentLocale == 'ca' && articulo.resumenCA != null) {
-  //   return articulo.resumenCA!;
-  // } else if (currentLocale == 'gb' && articulo.resumenGB != null) {
-  //   return articulo.resumenGB!;
-  // } else if (currentLocale == 'hu' && articulo.resumenHU != null) {
-  //   return articulo.resumenHU!;
-  // } else if (currentLocale == 'it' && articulo.resumenIT != null) {
-  //   return articulo.resumenIT!;
-  // } else if (currentLocale == 'nl' && articulo.resumenNL != null) {
-  //   return articulo.resumenNL!;
-  // } else if (currentLocale == 'pl' && articulo.resumenPL != null) {
-  //   return articulo.resumenPL!;
-  // } else if (currentLocale == 'pt' && articulo.resumenPT != null) {
-  //   return articulo.resumenPT!;
-  // } else if (currentLocale == 'ro' && articulo.resumenRO != null) {
-  //   return articulo.resumenRO!;
-  // } else if (currentLocale == 'ru' && articulo.resumenRU != null) {
-  //   return articulo.resumenRU!;
-  // } else if (currentLocale == 'cn' && articulo.resumenCN != null) {
-  //   return articulo.resumenCN!;
-  // } else if (currentLocale == 'el' && articulo.resumenEL != null) {
-  //   return articulo.resumenEL!;
-  // } else if (articulo.resumenES != null) {
-  //   return articulo.resumenES;
-  // }
+  return null;
+}
+
+String? getPlazoCorboInLocalLanguage({required PlazoDeCobro plazoDeCobro}) {
+  final currentLocale = Intl.getCurrentLocale();
+  print(currentLocale);
+
+  if (currentLocale == 'es') {
+    return plazoDeCobro.descripcionES;
+  } else if (currentLocale == 'en' && plazoDeCobro.descripcionEN != null) {
+    return plazoDeCobro.descripcionEN!;
+  }
+  return null;
+}
+
+String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
+  final currentLocale = Intl.getCurrentLocale();
+  print(currentLocale);
+
+  if (currentLocale == 'es') {
+    return metodoDeCobro.descripcionES;
+  } else if (currentLocale == 'en' && metodoDeCobro.descripcionEN != null) {
+    return metodoDeCobro.descripcionEN!;
+  }
   return null;
 }
 
@@ -230,4 +235,49 @@ String getTipoCalculoPrecioDescripcion(
   return S
       .of(context)
       .cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion;
+}
+
+String getEstadoCobroFactura(
+    {required BuildContext context, required String estadoCobro}) {
+  if (estadoCobro == 'P') {
+    return S.of(context).cliente_show_clienteFacturasPendientes_estadoPendiente;
+  } else if (estadoCobro == 'C') {
+    return S.of(context).cliente_show_clienteFacturasPendientes_estadoCobrado;
+  } else if (estadoCobro == 'I') {
+    return S.of(context).cliente_show_clienteFacturasPendientes_estadoImpagado;
+  } else if (estadoCobro == 'D') {
+    return S.of(context).cliente_show_clienteFacturasPendientes_estadoDevuelto;
+  } else {
+    return 'Undefinded';
+  }
+}
+
+String getClienteEstadoPotencialInLocalLanguage(
+    {required ClienteEstadoPotencial? estadoPotencial}) {
+  final currentLocale = Intl.getCurrentLocale();
+
+  if (estadoPotencial != null) {
+    if (currentLocale == 'es' && estadoPotencial.descripcionES != null) {
+      return estadoPotencial.descripcionES!;
+    } else if (currentLocale == 'en' && estadoPotencial.descripcionEN != null) {
+      return estadoPotencial.descripcionEN!;
+    }
+  }
+
+  return 'Potencial';
+}
+
+String? getClienteTipoPotencialInLocalLanguage(
+    {required ClienteTipoPotencial? tipoPotencial}) {
+  final currentLocale = Intl.getCurrentLocale();
+
+  if (tipoPotencial != null) {
+    if (currentLocale == 'es' && tipoPotencial.descripcionES != null) {
+      return tipoPotencial.descripcionES;
+    } else if (currentLocale == 'en' && tipoPotencial.descripcionEN != null) {
+      return tipoPotencial.descripcionEN!;
+    } else {}
+  }
+
+  return null;
 }

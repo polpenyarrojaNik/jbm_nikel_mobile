@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
@@ -31,13 +32,21 @@ class ClienteListaTile extends StatelessWidget {
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.errorContainer,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    // child: Text(cliente)
-                  )
+                  if (cliente.clientePotencial ?? false)
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.errorContainer,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          getClienteEstadoPotencialInLocalLanguage(
+                              estadoPotencial: cliente.clienteEstadoPotencial),
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ),
+                    )
                 ],
               ),
             AddressTextWidget(

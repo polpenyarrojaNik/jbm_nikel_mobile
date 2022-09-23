@@ -25,7 +25,7 @@ class ClientePagoPendientePage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clientePagosPendientes_titulo,
+            title: S.of(context).cliente_show_clienteFacturasPendientes_titulo,
             entityId: '#$clienteId ${nombreCliente ?? ''}',
             subtitle: null,
           ),
@@ -84,70 +84,59 @@ class ClientePagoPendienteTile extends StatelessWidget {
             ),
             child: Row(
               children: [
-                SizedBox(
-                  width: 90,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    if (clientePagoPendiente.facutaId != null)
                       Text(
-                        clientePagoPendiente.efectoId,
+                        clientePagoPendiente.facutaId!,
                       ),
+                    const Spacer(),
+                    if (clientePagoPendiente.estadoCobroId != null)
+                      Text(
+                          getEstadoCobroFactura(
+                              context: context,
+                              estadoCobro: clientePagoPendiente.estadoCobroId!),
+                          style: Theme.of(context).textTheme.caption),
+                  ],
+                ),
+                const VerticalDivider(),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (clientePagoPendiente.fechaExpiracion != null)
+                        Text(
+                          'F. Vcto ${dateFormatter(clientePagoPendiente.fechaExpiracion!.toLocal().toIso8601String())}',
+                        ),
+                      if (clientePagoPendiente.fechaFactura != null) gapH4,
                       if (clientePagoPendiente.fechaFactura != null)
                         Text(
-                            dateFormatter(clientePagoPendiente.fechaFactura!
-                                .toLocal()
-                                .toIso8601String()),
+                            'F.Factura: ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
                             style: Theme.of(context).textTheme.caption),
-                      const Spacer(),
-                      if (clientePagoPendiente.estadoCobroId != null)
-                        Text(clientePagoPendiente.estadoCobroId!),
+                      if (clientePagoPendiente.fechaExpiracionInicial != null)
+                        gapH4,
+                      if (clientePagoPendiente.fechaExpiracionInicial != null)
+                        Text(
+                          'F.Vcto original ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
+                          style: Theme.of(context).textTheme.caption,
+                        ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: SizedBox(
-                    height: 60,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (clientePagoPendiente.facutaId != null)
-                          Text(
-                            clientePagoPendiente.facutaId!,
-                            style: Theme.of(context).textTheme.subtitle2,
-                          ),
-                        if (clientePagoPendiente.metodoDeCobro != null)
-                          Row(
-                            children: [
-                              Icon(Icons.credit_card,
-                                  size: 12,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .caption
-                                      ?.color),
-                              gapW4,
-                              Text(
-                                clientePagoPendiente.metodoDeCobro!.descripcion,
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ],
-                          ),
-                        const Spacer(),
-                        if (clientePagoPendiente.fechaExpiracionInicial != null)
-                          Text(
-                            '${S.of(context).cliente_show_clientePagosPendientes_vencInicial} ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                      ],
-                    ),
-                  ),
-                ),
+                const VerticalDivider(),
                 if (clientePagoPendiente.importe != null)
-                  Text(
-                    formatPrecios(
+                  SizedBox(
+                    width: 70,
+                    child: Text(
+                      formatPrecios(
                         precio: clientePagoPendiente.importe!,
-                        tipoPrecio: null),
+                        tipoPrecio: null,
+                      ),
+                      textAlign: TextAlign.end,
+                    ),
                   ),
               ],
             ),

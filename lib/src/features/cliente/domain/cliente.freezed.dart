@@ -31,9 +31,9 @@ mixin _$Cliente {
   String get empresaId => throw _privateConstructorUsedError;
   double? get ivaEspecial => throw _privateConstructorUsedError;
   String? get extentoIva => throw _privateConstructorUsedError;
-  double? get ventasAnyoActual => throw _privateConstructorUsedError;
-  double? get ventasAnyoAnterior => throw _privateConstructorUsedError;
-  double? get ventasHaceDosAnyos => throw _privateConstructorUsedError;
+  Money? get ventasAnyoActual => throw _privateConstructorUsedError;
+  Money? get ventasAnyoAnterior => throw _privateConstructorUsedError;
+  Money? get ventasHaceDosAnyos => throw _privateConstructorUsedError;
   double? get margenAnyoActual => throw _privateConstructorUsedError;
   double? get margenAnyoAnterior => throw _privateConstructorUsedError;
   double? get margenHaceDosAnyos => throw _privateConstructorUsedError;
@@ -50,18 +50,24 @@ mixin _$Cliente {
   PlazoDeCobro? get plazoDeCobro => throw _privateConstructorUsedError;
   MetodoDeCobro? get metodoDeCobro => throw _privateConstructorUsedError;
   double get descuentoProntoPago => throw _privateConstructorUsedError;
-  double get riesgoConcedidoInterno => throw _privateConstructorUsedError;
+  Money get riesgoConcedidoInterno => throw _privateConstructorUsedError;
   DateTime? get riesgoConcedidoInternoDate =>
       throw _privateConstructorUsedError;
-  double get riesgoConcedidoCoafe => throw _privateConstructorUsedError;
+  Money get riesgoConcedidoCoafe => throw _privateConstructorUsedError;
   DateTime? get riesgoConcedidoCoafeFecha => throw _privateConstructorUsedError;
-  double? get riesgoConcedido => throw _privateConstructorUsedError;
-  double? get riesgoPendienteCobroVencido => throw _privateConstructorUsedError;
-  double? get riesgoPendienteCobroNoVencido =>
+  Money get riesgoActual => throw _privateConstructorUsedError;
+  Money? get riesgoConcedido => throw _privateConstructorUsedError;
+  Money? get riesgoPendienteCobroVencido => throw _privateConstructorUsedError;
+  Money? get riesgoPendienteCobroNoVencido =>
       throw _privateConstructorUsedError;
-  double? get riesgoPendienteServir => throw _privateConstructorUsedError;
-  double? get riesgoPendienteFacturar => throw _privateConstructorUsedError;
+  Money? get riesgoPendienteServir => throw _privateConstructorUsedError;
+  Money? get riesgoPendienteFacturar => throw _privateConstructorUsedError;
   String? get obvservacionesInternas => throw _privateConstructorUsedError;
+  bool? get clientePotencial => throw _privateConstructorUsedError;
+  ClienteEstadoPotencial? get clienteEstadoPotencial =>
+      throw _privateConstructorUsedError;
+  ClienteTipoPotencial? get clienteTipoPotencial =>
+      throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -89,9 +95,9 @@ abstract class $ClienteCopyWith<$Res> {
       String empresaId,
       double? ivaEspecial,
       String? extentoIva,
-      double? ventasAnyoActual,
-      double? ventasAnyoAnterior,
-      double? ventasHaceDosAnyos,
+      Money? ventasAnyoActual,
+      Money? ventasAnyoAnterior,
+      Money? ventasHaceDosAnyos,
       double? margenAnyoActual,
       double? margenAnyoAnterior,
       double? margenHaceDosAnyos,
@@ -108,16 +114,20 @@ abstract class $ClienteCopyWith<$Res> {
       PlazoDeCobro? plazoDeCobro,
       MetodoDeCobro? metodoDeCobro,
       double descuentoProntoPago,
-      double riesgoConcedidoInterno,
+      Money riesgoConcedidoInterno,
       DateTime? riesgoConcedidoInternoDate,
-      double riesgoConcedidoCoafe,
+      Money riesgoConcedidoCoafe,
       DateTime? riesgoConcedidoCoafeFecha,
-      double? riesgoConcedido,
-      double? riesgoPendienteCobroVencido,
-      double? riesgoPendienteCobroNoVencido,
-      double? riesgoPendienteServir,
-      double? riesgoPendienteFacturar,
+      Money riesgoActual,
+      Money? riesgoConcedido,
+      Money? riesgoPendienteCobroVencido,
+      Money? riesgoPendienteCobroNoVencido,
+      Money? riesgoPendienteServir,
+      Money? riesgoPendienteFacturar,
       String? obvservacionesInternas,
+      bool? clientePotencial,
+      ClienteEstadoPotencial? clienteEstadoPotencial,
+      ClienteTipoPotencial? clienteTipoPotencial,
       DateTime lastUpdated,
       bool deleted});
 
@@ -125,6 +135,8 @@ abstract class $ClienteCopyWith<$Res> {
   $DivisaCopyWith<$Res>? get divisa;
   $PlazoDeCobroCopyWith<$Res>? get plazoDeCobro;
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro;
+  $ClienteEstadoPotencialCopyWith<$Res>? get clienteEstadoPotencial;
+  $ClienteTipoPotencialCopyWith<$Res>? get clienteTipoPotencial;
 }
 
 /// @nodoc
@@ -175,12 +187,16 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
     Object? riesgoConcedidoInternoDate = freezed,
     Object? riesgoConcedidoCoafe = freezed,
     Object? riesgoConcedidoCoafeFecha = freezed,
+    Object? riesgoActual = freezed,
     Object? riesgoConcedido = freezed,
     Object? riesgoPendienteCobroVencido = freezed,
     Object? riesgoPendienteCobroNoVencido = freezed,
     Object? riesgoPendienteServir = freezed,
     Object? riesgoPendienteFacturar = freezed,
     Object? obvservacionesInternas = freezed,
+    Object? clientePotencial = freezed,
+    Object? clienteEstadoPotencial = freezed,
+    Object? clienteTipoPotencial = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -248,15 +264,15 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       ventasAnyoAnterior: ventasAnyoAnterior == freezed
           ? _value.ventasAnyoAnterior
           : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       ventasHaceDosAnyos: ventasHaceDosAnyos == freezed
           ? _value.ventasHaceDosAnyos
           : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -324,7 +340,7 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       riesgoConcedidoInterno: riesgoConcedidoInterno == freezed
           ? _value.riesgoConcedidoInterno
           : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       riesgoConcedidoInternoDate: riesgoConcedidoInternoDate == freezed
           ? _value.riesgoConcedidoInternoDate
           : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
@@ -332,35 +348,51 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       riesgoConcedidoCoafe: riesgoConcedidoCoafe == freezed
           ? _value.riesgoConcedidoCoafe
           : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha == freezed
           ? _value.riesgoConcedidoCoafeFecha
           : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      riesgoActual: riesgoActual == freezed
+          ? _value.riesgoActual
+          : riesgoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
       riesgoConcedido: riesgoConcedido == freezed
           ? _value.riesgoConcedido
           : riesgoConcedido // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteCobroVencido: riesgoPendienteCobroVencido == freezed
           ? _value.riesgoPendienteCobroVencido
           : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido == freezed
           ? _value.riesgoPendienteCobroNoVencido
           : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteServir: riesgoPendienteServir == freezed
           ? _value.riesgoPendienteServir
           : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteFacturar: riesgoPendienteFacturar == freezed
           ? _value.riesgoPendienteFacturar
           : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       obvservacionesInternas: obvservacionesInternas == freezed
           ? _value.obvservacionesInternas
           : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
               as String?,
+      clientePotencial: clientePotencial == freezed
+          ? _value.clientePotencial
+          : clientePotencial // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      clienteEstadoPotencial: clienteEstadoPotencial == freezed
+          ? _value.clienteEstadoPotencial
+          : clienteEstadoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteEstadoPotencial?,
+      clienteTipoPotencial: clienteTipoPotencial == freezed
+          ? _value.clienteTipoPotencial
+          : clienteTipoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteTipoPotencial?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -415,6 +447,30 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       return _then(_value.copyWith(metodoDeCobro: value));
     });
   }
+
+  @override
+  $ClienteEstadoPotencialCopyWith<$Res>? get clienteEstadoPotencial {
+    if (_value.clienteEstadoPotencial == null) {
+      return null;
+    }
+
+    return $ClienteEstadoPotencialCopyWith<$Res>(_value.clienteEstadoPotencial!,
+        (value) {
+      return _then(_value.copyWith(clienteEstadoPotencial: value));
+    });
+  }
+
+  @override
+  $ClienteTipoPotencialCopyWith<$Res>? get clienteTipoPotencial {
+    if (_value.clienteTipoPotencial == null) {
+      return null;
+    }
+
+    return $ClienteTipoPotencialCopyWith<$Res>(_value.clienteTipoPotencial!,
+        (value) {
+      return _then(_value.copyWith(clienteTipoPotencial: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -439,9 +495,9 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       String empresaId,
       double? ivaEspecial,
       String? extentoIva,
-      double? ventasAnyoActual,
-      double? ventasAnyoAnterior,
-      double? ventasHaceDosAnyos,
+      Money? ventasAnyoActual,
+      Money? ventasAnyoAnterior,
+      Money? ventasHaceDosAnyos,
       double? margenAnyoActual,
       double? margenAnyoAnterior,
       double? margenHaceDosAnyos,
@@ -458,16 +514,20 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       PlazoDeCobro? plazoDeCobro,
       MetodoDeCobro? metodoDeCobro,
       double descuentoProntoPago,
-      double riesgoConcedidoInterno,
+      Money riesgoConcedidoInterno,
       DateTime? riesgoConcedidoInternoDate,
-      double riesgoConcedidoCoafe,
+      Money riesgoConcedidoCoafe,
       DateTime? riesgoConcedidoCoafeFecha,
-      double? riesgoConcedido,
-      double? riesgoPendienteCobroVencido,
-      double? riesgoPendienteCobroNoVencido,
-      double? riesgoPendienteServir,
-      double? riesgoPendienteFacturar,
+      Money riesgoActual,
+      Money? riesgoConcedido,
+      Money? riesgoPendienteCobroVencido,
+      Money? riesgoPendienteCobroNoVencido,
+      Money? riesgoPendienteServir,
+      Money? riesgoPendienteFacturar,
       String? obvservacionesInternas,
+      bool? clientePotencial,
+      ClienteEstadoPotencial? clienteEstadoPotencial,
+      ClienteTipoPotencial? clienteTipoPotencial,
       DateTime lastUpdated,
       bool deleted});
 
@@ -479,6 +539,10 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
   $PlazoDeCobroCopyWith<$Res>? get plazoDeCobro;
   @override
   $MetodoDeCobroCopyWith<$Res>? get metodoDeCobro;
+  @override
+  $ClienteEstadoPotencialCopyWith<$Res>? get clienteEstadoPotencial;
+  @override
+  $ClienteTipoPotencialCopyWith<$Res>? get clienteTipoPotencial;
 }
 
 /// @nodoc
@@ -530,12 +594,16 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
     Object? riesgoConcedidoInternoDate = freezed,
     Object? riesgoConcedidoCoafe = freezed,
     Object? riesgoConcedidoCoafeFecha = freezed,
+    Object? riesgoActual = freezed,
     Object? riesgoConcedido = freezed,
     Object? riesgoPendienteCobroVencido = freezed,
     Object? riesgoPendienteCobroNoVencido = freezed,
     Object? riesgoPendienteServir = freezed,
     Object? riesgoPendienteFacturar = freezed,
     Object? obvservacionesInternas = freezed,
+    Object? clientePotencial = freezed,
+    Object? clienteEstadoPotencial = freezed,
+    Object? clienteTipoPotencial = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -603,15 +671,15 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       ventasAnyoAnterior: ventasAnyoAnterior == freezed
           ? _value.ventasAnyoAnterior
           : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       ventasHaceDosAnyos: ventasHaceDosAnyos == freezed
           ? _value.ventasHaceDosAnyos
           : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -679,7 +747,7 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       riesgoConcedidoInterno: riesgoConcedidoInterno == freezed
           ? _value.riesgoConcedidoInterno
           : riesgoConcedidoInterno // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       riesgoConcedidoInternoDate: riesgoConcedidoInternoDate == freezed
           ? _value.riesgoConcedidoInternoDate
           : riesgoConcedidoInternoDate // ignore: cast_nullable_to_non_nullable
@@ -687,35 +755,51 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       riesgoConcedidoCoafe: riesgoConcedidoCoafe == freezed
           ? _value.riesgoConcedidoCoafe
           : riesgoConcedidoCoafe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha == freezed
           ? _value.riesgoConcedidoCoafeFecha
           : riesgoConcedidoCoafeFecha // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      riesgoActual: riesgoActual == freezed
+          ? _value.riesgoActual
+          : riesgoActual // ignore: cast_nullable_to_non_nullable
+              as Money,
       riesgoConcedido: riesgoConcedido == freezed
           ? _value.riesgoConcedido
           : riesgoConcedido // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteCobroVencido: riesgoPendienteCobroVencido == freezed
           ? _value.riesgoPendienteCobroVencido
           : riesgoPendienteCobroVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido == freezed
           ? _value.riesgoPendienteCobroNoVencido
           : riesgoPendienteCobroNoVencido // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteServir: riesgoPendienteServir == freezed
           ? _value.riesgoPendienteServir
           : riesgoPendienteServir // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       riesgoPendienteFacturar: riesgoPendienteFacturar == freezed
           ? _value.riesgoPendienteFacturar
           : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       obvservacionesInternas: obvservacionesInternas == freezed
           ? _value.obvservacionesInternas
           : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
               as String?,
+      clientePotencial: clientePotencial == freezed
+          ? _value.clientePotencial
+          : clientePotencial // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      clienteEstadoPotencial: clienteEstadoPotencial == freezed
+          ? _value.clienteEstadoPotencial
+          : clienteEstadoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteEstadoPotencial?,
+      clienteTipoPotencial: clienteTipoPotencial == freezed
+          ? _value.clienteTipoPotencial
+          : clienteTipoPotencial // ignore: cast_nullable_to_non_nullable
+              as ClienteTipoPotencial?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -770,12 +854,16 @@ class _$_Cliente extends _Cliente {
       this.riesgoConcedidoInternoDate,
       required this.riesgoConcedidoCoafe,
       this.riesgoConcedidoCoafeFecha,
+      required this.riesgoActual,
       this.riesgoConcedido,
       this.riesgoPendienteCobroVencido,
       this.riesgoPendienteCobroNoVencido,
       this.riesgoPendienteServir,
       this.riesgoPendienteFacturar,
       this.obvservacionesInternas,
+      this.clientePotencial,
+      this.clienteEstadoPotencial,
+      this.clienteTipoPotencial,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -811,11 +899,11 @@ class _$_Cliente extends _Cliente {
   @override
   final String? extentoIva;
   @override
-  final double? ventasAnyoActual;
+  final Money? ventasAnyoActual;
   @override
-  final double? ventasAnyoAnterior;
+  final Money? ventasAnyoAnterior;
   @override
-  final double? ventasHaceDosAnyos;
+  final Money? ventasHaceDosAnyos;
   @override
   final double? margenAnyoActual;
   @override
@@ -849,25 +937,33 @@ class _$_Cliente extends _Cliente {
   @override
   final double descuentoProntoPago;
   @override
-  final double riesgoConcedidoInterno;
+  final Money riesgoConcedidoInterno;
   @override
   final DateTime? riesgoConcedidoInternoDate;
   @override
-  final double riesgoConcedidoCoafe;
+  final Money riesgoConcedidoCoafe;
   @override
   final DateTime? riesgoConcedidoCoafeFecha;
   @override
-  final double? riesgoConcedido;
+  final Money riesgoActual;
   @override
-  final double? riesgoPendienteCobroVencido;
+  final Money? riesgoConcedido;
   @override
-  final double? riesgoPendienteCobroNoVencido;
+  final Money? riesgoPendienteCobroVencido;
   @override
-  final double? riesgoPendienteServir;
+  final Money? riesgoPendienteCobroNoVencido;
   @override
-  final double? riesgoPendienteFacturar;
+  final Money? riesgoPendienteServir;
+  @override
+  final Money? riesgoPendienteFacturar;
   @override
   final String? obvservacionesInternas;
+  @override
+  final bool? clientePotencial;
+  @override
+  final ClienteEstadoPotencial? clienteEstadoPotencial;
+  @override
+  final ClienteTipoPotencial? clienteTipoPotencial;
   @override
   final DateTime lastUpdated;
   @override
@@ -875,7 +971,7 @@ class _$_Cliente extends _Cliente {
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, ivaEspecial: $ivaEspecial, extentoIva: $extentoIva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, ivaEspecial: $ivaEspecial, extentoIva: $extentoIva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -955,6 +1051,8 @@ class _$_Cliente extends _Cliente {
             const DeepCollectionEquality().equals(
                 other.riesgoConcedidoCoafeFecha, riesgoConcedidoCoafeFecha) &&
             const DeepCollectionEquality()
+                .equals(other.riesgoActual, riesgoActual) &&
+            const DeepCollectionEquality()
                 .equals(other.riesgoConcedido, riesgoConcedido) &&
             const DeepCollectionEquality().equals(
                 other.riesgoPendienteCobroVencido,
@@ -968,8 +1066,10 @@ class _$_Cliente extends _Cliente {
                 other.riesgoPendienteFacturar, riesgoPendienteFacturar) &&
             const DeepCollectionEquality()
                 .equals(other.obvservacionesInternas, obvservacionesInternas) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
+            const DeepCollectionEquality().equals(other.clientePotencial, clientePotencial) &&
+            const DeepCollectionEquality().equals(other.clienteEstadoPotencial, clienteEstadoPotencial) &&
+            const DeepCollectionEquality().equals(other.clienteTipoPotencial, clienteTipoPotencial) &&
+            const DeepCollectionEquality().equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
 
@@ -1014,12 +1114,16 @@ class _$_Cliente extends _Cliente {
         const DeepCollectionEquality().hash(riesgoConcedidoInternoDate),
         const DeepCollectionEquality().hash(riesgoConcedidoCoafe),
         const DeepCollectionEquality().hash(riesgoConcedidoCoafeFecha),
+        const DeepCollectionEquality().hash(riesgoActual),
         const DeepCollectionEquality().hash(riesgoConcedido),
         const DeepCollectionEquality().hash(riesgoPendienteCobroVencido),
         const DeepCollectionEquality().hash(riesgoPendienteCobroNoVencido),
         const DeepCollectionEquality().hash(riesgoPendienteServir),
         const DeepCollectionEquality().hash(riesgoPendienteFacturar),
         const DeepCollectionEquality().hash(obvservacionesInternas),
+        const DeepCollectionEquality().hash(clientePotencial),
+        const DeepCollectionEquality().hash(clienteEstadoPotencial),
+        const DeepCollectionEquality().hash(clienteTipoPotencial),
         const DeepCollectionEquality().hash(lastUpdated),
         const DeepCollectionEquality().hash(deleted)
       ]);
@@ -1047,9 +1151,9 @@ abstract class _Cliente extends Cliente {
       required final String empresaId,
       final double? ivaEspecial,
       final String? extentoIva,
-      final double? ventasAnyoActual,
-      final double? ventasAnyoAnterior,
-      final double? ventasHaceDosAnyos,
+      final Money? ventasAnyoActual,
+      final Money? ventasAnyoAnterior,
+      final Money? ventasHaceDosAnyos,
       final double? margenAnyoActual,
       final double? margenAnyoAnterior,
       final double? margenHaceDosAnyos,
@@ -1066,16 +1170,20 @@ abstract class _Cliente extends Cliente {
       final PlazoDeCobro? plazoDeCobro,
       final MetodoDeCobro? metodoDeCobro,
       required final double descuentoProntoPago,
-      required final double riesgoConcedidoInterno,
+      required final Money riesgoConcedidoInterno,
       final DateTime? riesgoConcedidoInternoDate,
-      required final double riesgoConcedidoCoafe,
+      required final Money riesgoConcedidoCoafe,
       final DateTime? riesgoConcedidoCoafeFecha,
-      final double? riesgoConcedido,
-      final double? riesgoPendienteCobroVencido,
-      final double? riesgoPendienteCobroNoVencido,
-      final double? riesgoPendienteServir,
-      final double? riesgoPendienteFacturar,
+      required final Money riesgoActual,
+      final Money? riesgoConcedido,
+      final Money? riesgoPendienteCobroVencido,
+      final Money? riesgoPendienteCobroNoVencido,
+      final Money? riesgoPendienteServir,
+      final Money? riesgoPendienteFacturar,
       final String? obvservacionesInternas,
+      final bool? clientePotencial,
+      final ClienteEstadoPotencial? clienteEstadoPotencial,
+      final ClienteTipoPotencial? clienteTipoPotencial,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_Cliente;
   const _Cliente._() : super._();
@@ -1111,11 +1219,11 @@ abstract class _Cliente extends Cliente {
   @override
   String? get extentoIva;
   @override
-  double? get ventasAnyoActual;
+  Money? get ventasAnyoActual;
   @override
-  double? get ventasAnyoAnterior;
+  Money? get ventasAnyoAnterior;
   @override
-  double? get ventasHaceDosAnyos;
+  Money? get ventasHaceDosAnyos;
   @override
   double? get margenAnyoActual;
   @override
@@ -1149,25 +1257,33 @@ abstract class _Cliente extends Cliente {
   @override
   double get descuentoProntoPago;
   @override
-  double get riesgoConcedidoInterno;
+  Money get riesgoConcedidoInterno;
   @override
   DateTime? get riesgoConcedidoInternoDate;
   @override
-  double get riesgoConcedidoCoafe;
+  Money get riesgoConcedidoCoafe;
   @override
   DateTime? get riesgoConcedidoCoafeFecha;
   @override
-  double? get riesgoConcedido;
+  Money get riesgoActual;
   @override
-  double? get riesgoPendienteCobroVencido;
+  Money? get riesgoConcedido;
   @override
-  double? get riesgoPendienteCobroNoVencido;
+  Money? get riesgoPendienteCobroVencido;
   @override
-  double? get riesgoPendienteServir;
+  Money? get riesgoPendienteCobroNoVencido;
   @override
-  double? get riesgoPendienteFacturar;
+  Money? get riesgoPendienteServir;
+  @override
+  Money? get riesgoPendienteFacturar;
   @override
   String? get obvservacionesInternas;
+  @override
+  bool? get clientePotencial;
+  @override
+  ClienteEstadoPotencial? get clienteEstadoPotencial;
+  @override
+  ClienteTipoPotencial? get clienteTipoPotencial;
   @override
   DateTime get lastUpdated;
   @override

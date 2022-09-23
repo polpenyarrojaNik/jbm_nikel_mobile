@@ -6,7 +6,6 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_rappel.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -73,25 +72,30 @@ class ClienteRappelTile extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 50,
-                child: Text(
-                  '#${clienteRappel.rappelId}',
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(clienteRappel.descripcion,
-                        style: Theme.of(context).textTheme.subtitle2),
-                    Row(
-                      children: [
+          child: IntrinsicHeight(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 90,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          dateFormatter(clienteRappel.fechaDesDe
+                              .toLocal()
+                              .toIso8601String()),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color)),
+                      if (clienteRappel.fechaHasta != null) const Spacer(),
+                      if (clienteRappel.fechaHasta != null)
                         Text(
-                            dateFormatter(clienteRappel.fechaDesDe
+                            dateFormatter(clienteRappel.fechaHasta!
                                 .toLocal()
                                 .toIso8601String()),
                             style: Theme.of(context)
@@ -102,37 +106,20 @@ class ClienteRappelTile extends StatelessWidget {
                                         .textTheme
                                         .caption
                                         ?.color)),
-                        gapW4,
-                        Text('-',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color)),
-                        gapW4,
-                        Text(
-                            (clienteRappel.fechaHasta != null)
-                                ? dateFormatter(clienteRappel.fechaHasta!
-                                    .toLocal()
-                                    .toIso8601String())
-                                : '',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color)),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(clienteRappel.descripcion,
+                          style: Theme.of(context).textTheme.subtitle2),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         const Divider(),

@@ -2,7 +2,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/divisa.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/plazo_cobro.dart';
+import 'package:money2/money2.dart';
 
+import 'cliente_estado_potencial.dart';
+import 'cliente_tipo_potencial.dart';
 import 'metodo_cobro.dart';
 
 part 'cliente.freezed.dart';
@@ -26,9 +29,9 @@ class Cliente with _$Cliente {
       required String empresaId,
       double? ivaEspecial,
       String? extentoIva,
-      double? ventasAnyoActual,
-      double? ventasAnyoAnterior,
-      double? ventasHaceDosAnyos,
+      Money? ventasAnyoActual,
+      Money? ventasAnyoAnterior,
+      Money? ventasHaceDosAnyos,
       double? margenAnyoActual,
       double? margenAnyoAnterior,
       double? margenHaceDosAnyos,
@@ -45,16 +48,20 @@ class Cliente with _$Cliente {
       PlazoDeCobro? plazoDeCobro,
       MetodoDeCobro? metodoDeCobro,
       required double descuentoProntoPago,
-      required double riesgoConcedidoInterno,
+      required Money riesgoConcedidoInterno,
       DateTime? riesgoConcedidoInternoDate,
-      required double riesgoConcedidoCoafe,
+      required Money riesgoConcedidoCoafe,
       DateTime? riesgoConcedidoCoafeFecha,
-      double? riesgoConcedido,
-      double? riesgoPendienteCobroVencido,
-      double? riesgoPendienteCobroNoVencido,
-      double? riesgoPendienteServir,
-      double? riesgoPendienteFacturar,
+      required Money riesgoActual,
+      Money? riesgoConcedido,
+      Money? riesgoPendienteCobroVencido,
+      Money? riesgoPendienteCobroNoVencido,
+      Money? riesgoPendienteServir,
+      Money? riesgoPendienteFacturar,
       String? obvservacionesInternas,
+      bool? clientePotencial,
+      ClienteEstadoPotencial? clienteEstadoPotencial,
+      ClienteTipoPotencial? clienteTipoPotencial,
       required DateTime lastUpdated,
       required bool deleted}) = _Cliente;
 }

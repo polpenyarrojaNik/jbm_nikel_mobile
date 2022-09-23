@@ -80,9 +80,9 @@ class ClienteAlrededorRepository {
           ) < :radiusKm
           ''', variables: [
         Variable.withString(usuarioId),
-        Variable.withReal(clienteAlrededorArg.position.latitude),
+        Variable.withReal(clienteAlrededorArg.latLng.latitude),
         Variable.withReal(0.017453292519943295),
-        Variable.withReal(clienteAlrededorArg.position.longitude),
+        Variable.withReal(clienteAlrededorArg.latLng.longitude),
         Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
       ], readsFrom: {
         db.clienteTable,
@@ -100,6 +100,8 @@ class ClienteAlrededorRepository {
           divisa: null,
           metodoDeCobro: null,
           plazoDeCobro: null,
+          clienteEstadoPotencial: null,
+          clienteTipoPotencial: null,
         );
         return cliente;
       }).get();

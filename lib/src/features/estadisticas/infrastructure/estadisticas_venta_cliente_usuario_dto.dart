@@ -2,10 +2,6 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
-import '../../articulos/domain/articulo.dart';
-import '../../cliente/domain/cliente.dart';
-import '../domain/estadisticas_venta_cliente_usuario.dart';
-
 part 'estadisticas_venta_cliente_usuario_dto.freezed.dart';
 part 'estadisticas_venta_cliente_usuario_dto.g.dart';
 
@@ -31,21 +27,6 @@ class EstadisticasVentaClienteUsuarioDTO
   factory EstadisticasVentaClienteUsuarioDTO.fromJson(
           Map<String, dynamic> json) =>
       _$EstadisticasVentaClienteUsuarioDTOFromJson(json);
-
-  EstadisticasVentaClienteUsuario toDomain(
-      {required Cliente cliente, required Articulo articulo}) {
-    return EstadisticasVentaClienteUsuario(
-      anyo: anyo,
-      mes: mes,
-      cliente: cliente,
-      articulo: articulo,
-      unidades: unidades,
-      importe: importe,
-      coste: coste,
-      lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
-    );
-  }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {

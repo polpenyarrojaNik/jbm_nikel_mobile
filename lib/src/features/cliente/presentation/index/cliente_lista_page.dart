@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -39,8 +40,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
       if (canLoadNextPage && metrics.pixels >= limit) {
         canLoadNextPage = false;
-        page++;
-        ref.read(clientesPaginationQueryStateProvider.notifier).state = page;
+        ref.read(clientesPaginationQueryStateProvider.notifier).state =
+            page + 1;
       }
     });
   }
@@ -61,13 +62,27 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<int>(
+      clientesPaginationQueryStateProvider,
+      (_, numPage) {
+        page = numPage;
+      },
+    );
     ref.listen<AsyncValue>(
       clientesSearchResultsProvider,
       (_, state) {
-        canLoadNextPage = true;
+        state.whenData((value) {
+          if (value is List<Cliente> && value.length == page * 100) {
+            canLoadNextPage = true;
+          } else {
+            canLoadNextPage = false;
+          }
+        });
+
         state.showAlertDialogOnError(context);
       },
     );
+
     final state = ref.watch(clientesSearchResultsProvider);
 
     return Scaffold(

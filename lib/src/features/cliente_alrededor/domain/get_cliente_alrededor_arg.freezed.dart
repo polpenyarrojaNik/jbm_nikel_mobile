@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GetClienteAlrededorArg {
-  Position get position => throw _privateConstructorUsedError;
+  LatLng get latLng => throw _privateConstructorUsedError;
   double get radiusDistance => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +29,7 @@ abstract class $GetClienteAlrededorArgCopyWith<$Res> {
   factory $GetClienteAlrededorArgCopyWith(GetClienteAlrededorArg value,
           $Res Function(GetClienteAlrededorArg) then) =
       _$GetClienteAlrededorArgCopyWithImpl<$Res>;
-  $Res call({Position position, double radiusDistance});
+  $Res call({LatLng latLng, double radiusDistance});
 }
 
 /// @nodoc
@@ -43,14 +43,14 @@ class _$GetClienteAlrededorArgCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? position = freezed,
+    Object? latLng = freezed,
     Object? radiusDistance = freezed,
   }) {
     return _then(_value.copyWith(
-      position: position == freezed
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as Position,
+      latLng: latLng == freezed
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng,
       radiusDistance: radiusDistance == freezed
           ? _value.radiusDistance
           : radiusDistance // ignore: cast_nullable_to_non_nullable
@@ -66,7 +66,7 @@ abstract class _$$_GetClienteAlrededorArgCopyWith<$Res>
           $Res Function(_$_GetClienteAlrededorArg) then) =
       __$$_GetClienteAlrededorArgCopyWithImpl<$Res>;
   @override
-  $Res call({Position position, double radiusDistance});
+  $Res call({LatLng latLng, double radiusDistance});
 }
 
 /// @nodoc
@@ -83,14 +83,14 @@ class __$$_GetClienteAlrededorArgCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? position = freezed,
+    Object? latLng = freezed,
     Object? radiusDistance = freezed,
   }) {
     return _then(_$_GetClienteAlrededorArg(
-      position: position == freezed
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as Position,
+      latLng: latLng == freezed
+          ? _value.latLng
+          : latLng // ignore: cast_nullable_to_non_nullable
+              as LatLng,
       radiusDistance: radiusDistance == freezed
           ? _value.radiusDistance
           : radiusDistance // ignore: cast_nullable_to_non_nullable
@@ -103,17 +103,17 @@ class __$$_GetClienteAlrededorArgCopyWithImpl<$Res>
 
 class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
   const _$_GetClienteAlrededorArg(
-      {required this.position, required this.radiusDistance})
+      {required this.latLng, required this.radiusDistance})
       : super._();
 
   @override
-  final Position position;
+  final LatLng latLng;
   @override
   final double radiusDistance;
 
   @override
   String toString() {
-    return 'GetClienteAlrededorArg(position: $position, radiusDistance: $radiusDistance)';
+    return 'GetClienteAlrededorArg(latLng: $latLng, radiusDistance: $radiusDistance)';
   }
 
   @override
@@ -121,7 +121,7 @@ class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetClienteAlrededorArg &&
-            const DeepCollectionEquality().equals(other.position, position) &&
+            const DeepCollectionEquality().equals(other.latLng, latLng) &&
             const DeepCollectionEquality()
                 .equals(other.radiusDistance, radiusDistance));
   }
@@ -129,7 +129,7 @@ class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(position),
+      const DeepCollectionEquality().hash(latLng),
       const DeepCollectionEquality().hash(radiusDistance));
 
   @JsonKey(ignore: true)
@@ -141,12 +141,12 @@ class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
 
 abstract class _GetClienteAlrededorArg extends GetClienteAlrededorArg {
   const factory _GetClienteAlrededorArg(
-      {required final Position position,
+      {required final LatLng latLng,
       required final double radiusDistance}) = _$_GetClienteAlrededorArg;
   const _GetClienteAlrededorArg._() : super._();
 
   @override
-  Position get position;
+  LatLng get latLng;
   @override
   double get radiusDistance;
   @override

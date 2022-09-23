@@ -148,8 +148,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Desde"),
         "cliente_show_clienteDescuento_titulo":
             MessageLookupByLibrary.simpleMessage("Descuentos"),
-        "cliente_show_clienteDetalleVentasArticulo_titulo":
-            MessageLookupByLibrary.simpleMessage("Ventas artículos"),
         "cliente_show_clienteDetalle_analisis":
             MessageLookupByLibrary.simpleMessage("Análisis"),
         "cliente_show_clienteDetalle_anoActual":
@@ -185,7 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_divisa":
             MessageLookupByLibrary.simpleMessage("Divisa"),
         "cliente_show_clienteDetalle_factPendientes":
-            MessageLookupByLibrary.simpleMessage("Fact. pedientes"),
+            MessageLookupByLibrary.simpleMessage("Fact. pendientes"),
         "cliente_show_clienteDetalle_facturacion":
             MessageLookupByLibrary.simpleMessage("Facturación"),
         "cliente_show_clienteDetalle_fechaCOFACE":
@@ -197,7 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_longitud":
             MessageLookupByLibrary.simpleMessage("Longitud"),
         "cliente_show_clienteDetalle_margen":
-            MessageLookupByLibrary.simpleMessage("Mergen"),
+            MessageLookupByLibrary.simpleMessage("Margen"),
         "cliente_show_clienteDetalle_metodoCalculoPrecio":
             MessageLookupByLibrary.simpleMessage("Método cálculo precio"),
         "cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion":
@@ -228,8 +226,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Porcentaje abonos"),
         "cliente_show_clienteDetalle_porcentajeGarantias":
             MessageLookupByLibrary.simpleMessage("Porcentaje garantias"),
-        "cliente_show_clienteDetalle_preciosYOtros":
-            MessageLookupByLibrary.simpleMessage("Precios & Otros"),
+        "cliente_show_clienteDetalle_preciosYFormaDePago":
+            MessageLookupByLibrary.simpleMessage("Precios & Formas de pago"),
         "cliente_show_clienteDetalle_provincia":
             MessageLookupByLibrary.simpleMessage("Provincia"),
         "cliente_show_clienteDetalle_riesgoActual":
@@ -251,19 +249,41 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
         "cliente_show_clienteDireccion_titulo":
-            MessageLookupByLibrary.simpleMessage("Direcciones"),
+            MessageLookupByLibrary.simpleMessage("Direcciones envío"),
+        "cliente_show_clienteFacturasPendientes_estadoCobrado":
+            MessageLookupByLibrary.simpleMessage("Cobrado"),
+        "cliente_show_clienteFacturasPendientes_estadoDevuelto":
+            MessageLookupByLibrary.simpleMessage("Devuelto"),
+        "cliente_show_clienteFacturasPendientes_estadoImpagado":
+            MessageLookupByLibrary.simpleMessage("Impagado"),
+        "cliente_show_clienteFacturasPendientes_estadoPendiente":
+            MessageLookupByLibrary.simpleMessage("Pendiente"),
+        "cliente_show_clienteFacturasPendientes_titulo":
+            MessageLookupByLibrary.simpleMessage("Facturas Pendietes"),
+        "cliente_show_clienteFacturasPendientes_vencInicial":
+            MessageLookupByLibrary.simpleMessage("Venc. Inicial"),
+        "cliente_show_clienteFacturasPendientes_vencidoJBM":
+            MessageLookupByLibrary.simpleMessage("Vencido JBM"),
         "cliente_show_clienteGrupoNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Grupos Netos"),
-        "cliente_show_clientePagosPendientes_titulo":
-            MessageLookupByLibrary.simpleMessage("Pagos Pendietes"),
-        "cliente_show_clientePagosPendientes_vencidoJBM":
-            MessageLookupByLibrary.simpleMessage("Vencido JBM"),
         "cliente_show_clientePrecioNeto_desDe":
             MessageLookupByLibrary.simpleMessage("Desde"),
         "cliente_show_clientePrecioNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Precios Netos"),
         "cliente_show_clienteRappel_titulo":
             MessageLookupByLibrary.simpleMessage("Rappels"),
+        "cliente_show_clienteVentasArticulo_articulo":
+            MessageLookupByLibrary.simpleMessage("Artículo"),
+        "cliente_show_clienteVentasArticulo_cantidad":
+            MessageLookupByLibrary.simpleMessage("Cantidad"),
+        "cliente_show_clienteVentasArticulo_description":
+            MessageLookupByLibrary.simpleMessage("Descripción"),
+        "cliente_show_clienteVentasArticulo_importe":
+            MessageLookupByLibrary.simpleMessage("Importe"),
+        "cliente_show_clienteVentasArticulo_titulo":
+            MessageLookupByLibrary.simpleMessage("Ventas artículos"),
+        "cliente_show_clienteVentasMes_mes":
+            MessageLookupByLibrary.simpleMessage("Mes"),
         "cliente_show_clienteVentasMes_titulo":
             MessageLookupByLibrary.simpleMessage("Ventas Mes"),
         "commonWidgets_appDrawer_ajustes":

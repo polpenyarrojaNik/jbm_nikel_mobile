@@ -11,6 +11,7 @@ _$_EstadisticasUltimosPreciosDTO _$$_EstadisticasUltimosPreciosDTOFromJson(
     _$_EstadisticasUltimosPreciosDTO(
       clienteId: json['CLIENTE_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
+      linea: json['LINEA'] as int,
       fecha: DateTime.parse(json['FECHA'] as String),
       precioDivisa: (json['PRECIO_DIVISA'] as num).toDouble(),
       divisaId: json['DIVISA_ID'] as String,
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$_EstadisticasUltimosPreciosDTOToJson(
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'ARTICULO_ID': instance.articuloId,
+      'LINEA': instance.linea,
       'FECHA': instance.fecha.toIso8601String(),
       'PRECIO_DIVISA': instance.precioDivisa,
       'DIVISA_ID': instance.divisaId,

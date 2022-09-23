@@ -110,6 +110,12 @@ mixin _$ClienteDTO {
   double? get riesgoPendienteFacturar => throw _privateConstructorUsedError;
   @JsonKey(name: 'OBSERVACIONES_INTERNAS')
   String? get obvservacionesInternas => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_POTENCIAL')
+  String? get clientePotencial => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+  String? get clienteEstadoPotencialId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TIPO_POTENCIAL_ID')
+  String? get clienteTipoPotencialId => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -215,6 +221,12 @@ abstract class $ClienteDTOCopyWith<$Res> {
           double? riesgoPendienteFacturar,
       @JsonKey(name: 'OBSERVACIONES_INTERNAS')
           String? obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL')
+          String? clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+          String? clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID')
+          String? clienteTipoPotencialId,
       @JsonKey(name: 'LAST_UPDATED')
           DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -275,6 +287,9 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
     Object? riesgoPendienteServir = freezed,
     Object? riesgoPendienteFacturar = freezed,
     Object? obvservacionesInternas = freezed,
+    Object? clientePotencial = freezed,
+    Object? clienteEstadoPotencialId = freezed,
+    Object? clienteTipoPotencialId = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -455,6 +470,18 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
           ? _value.obvservacionesInternas
           : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
               as String?,
+      clientePotencial: clientePotencial == freezed
+          ? _value.clientePotencial
+          : clientePotencial // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteEstadoPotencialId: clienteEstadoPotencialId == freezed
+          ? _value.clienteEstadoPotencialId
+          : clienteEstadoPotencialId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteTipoPotencialId: clienteTipoPotencialId == freezed
+          ? _value.clienteTipoPotencialId
+          : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -563,6 +590,12 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
           double? riesgoPendienteFacturar,
       @JsonKey(name: 'OBSERVACIONES_INTERNAS')
           String? obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL')
+          String? clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+          String? clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID')
+          String? clienteTipoPotencialId,
       @JsonKey(name: 'LAST_UPDATED')
           DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -625,6 +658,9 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
     Object? riesgoPendienteServir = freezed,
     Object? riesgoPendienteFacturar = freezed,
     Object? obvservacionesInternas = freezed,
+    Object? clientePotencial = freezed,
+    Object? clienteEstadoPotencialId = freezed,
+    Object? clienteTipoPotencialId = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -805,6 +841,18 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
           ? _value.obvservacionesInternas
           : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
               as String?,
+      clientePotencial: clientePotencial == freezed
+          ? _value.clientePotencial
+          : clientePotencial // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteEstadoPotencialId: clienteEstadoPotencialId == freezed
+          ? _value.clienteEstadoPotencialId
+          : clienteEstadoPotencialId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteTipoPotencialId: clienteTipoPotencialId == freezed
+          ? _value.clienteTipoPotencialId
+          : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -909,6 +957,12 @@ class _$_ClienteDTO extends _ClienteDTO {
           this.riesgoPendienteFacturar,
       @JsonKey(name: 'OBSERVACIONES_INTERNAS')
           this.obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL')
+          this.clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+          this.clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID')
+          this.clienteTipoPotencialId,
       @JsonKey(name: 'LAST_UPDATED')
           required this.lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -1051,6 +1105,15 @@ class _$_ClienteDTO extends _ClienteDTO {
   @JsonKey(name: 'OBSERVACIONES_INTERNAS')
   final String? obvservacionesInternas;
   @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL')
+  final String? clientePotencial;
+  @override
+  @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+  final String? clienteEstadoPotencialId;
+  @override
+  @JsonKey(name: 'TIPO_POTENCIAL_ID')
+  final String? clienteTipoPotencialId;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -1059,7 +1122,7 @@ class _$_ClienteDTO extends _ClienteDTO {
 
   @override
   String toString() {
-    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, ivaEspecial: $ivaEspecial, extentoIva: $extentoIva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, ivaEspecial: $ivaEspecial, extentoIva: $extentoIva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1153,7 +1216,10 @@ class _$_ClienteDTO extends _ClienteDTO {
             const DeepCollectionEquality()
                 .equals(other.obvservacionesInternas, obvservacionesInternas) &&
             const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
+                .equals(other.clientePotencial, clientePotencial) &&
+            const DeepCollectionEquality().equals(other.clienteEstadoPotencialId, clienteEstadoPotencialId) &&
+            const DeepCollectionEquality().equals(other.clienteTipoPotencialId, clienteTipoPotencialId) &&
+            const DeepCollectionEquality().equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
 
@@ -1205,6 +1271,9 @@ class _$_ClienteDTO extends _ClienteDTO {
         const DeepCollectionEquality().hash(riesgoPendienteServir),
         const DeepCollectionEquality().hash(riesgoPendienteFacturar),
         const DeepCollectionEquality().hash(obvservacionesInternas),
+        const DeepCollectionEquality().hash(clientePotencial),
+        const DeepCollectionEquality().hash(clienteEstadoPotencialId),
+        const DeepCollectionEquality().hash(clienteTipoPotencialId),
         const DeepCollectionEquality().hash(lastUpdated),
         const DeepCollectionEquality().hash(deleted)
       ]);
@@ -1312,6 +1381,12 @@ abstract class _ClienteDTO extends ClienteDTO {
           final double? riesgoPendienteFacturar,
       @JsonKey(name: 'OBSERVACIONES_INTERNAS')
           final String? obvservacionesInternas,
+      @JsonKey(name: 'CLIENTE_POTENCIAL')
+          final String? clientePotencial,
+      @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+          final String? clienteEstadoPotencialId,
+      @JsonKey(name: 'TIPO_POTENCIAL_ID')
+          final String? clienteTipoPotencialId,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -1453,6 +1528,15 @@ abstract class _ClienteDTO extends ClienteDTO {
   @override
   @JsonKey(name: 'OBSERVACIONES_INTERNAS')
   String? get obvservacionesInternas;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL')
+  String? get clientePotencial;
+  @override
+  @JsonKey(name: 'ESTADO_POTENCIAL_ID')
+  String? get clienteEstadoPotencialId;
+  @override
+  @JsonKey(name: 'TIPO_POTENCIAL_ID')
+  String? get clienteTipoPotencialId;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

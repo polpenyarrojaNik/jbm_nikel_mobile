@@ -62,6 +62,9 @@ _$_ClienteDTO _$$_ClienteDTOFromJson(Map<String, dynamic> json) =>
       riesgoPendienteFacturar:
           (json['RIESGO_PDTE_FACTURAR_CLIENTE'] as num?)?.toDouble(),
       obvservacionesInternas: json['OBSERVACIONES_INTERNAS'] as String?,
+      clientePotencial: json['CLIENTE_POTENCIAL'] as String?,
+      clienteEstadoPotencialId: json['ESTADO_POTENCIAL_ID'] as String?,
+      clienteTipoPotencialId: json['TIPO_POTENCIAL_ID'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -115,6 +118,9 @@ Map<String, dynamic> _$$_ClienteDTOToJson(_$_ClienteDTO instance) =>
       'RIESGO_PDTE_SERVIR_CLIENTE': instance.riesgoPendienteServir,
       'RIESGO_PDTE_FACTURAR_CLIENTE': instance.riesgoPendienteFacturar,
       'OBSERVACIONES_INTERNAS': instance.obvservacionesInternas,
+      'CLIENTE_POTENCIAL': instance.clientePotencial,
+      'ESTADO_POTENCIAL_ID': instance.clienteEstadoPotencialId,
+      'TIPO_POTENCIAL_ID': instance.clienteTipoPotencialId,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

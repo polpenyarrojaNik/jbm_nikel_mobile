@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
-import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -72,61 +72,161 @@ class ClienteContactoTile extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (clienteContacto.nombre != null)
-                Row(
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
-                      child: Text(clienteContacto.nombre!),
+                    if (clienteContacto.nombre != null)
+                      Row(
+                        children: [
+                          Text(clienteContacto.nombre!),
+                        ],
+                      ),
+                    if (clienteContacto.email != null)
+                      Row(
+                        children: [
+                          Icon(Icons.email,
+                              color: Theme.of(context).textTheme.caption?.color,
+                              size: 14),
+                          gapW4,
+                          Text(
+                            clienteContacto.email!,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption
+                                        ?.color),
+                          ),
+                        ],
+                      ),
+                    if (clienteContacto.telefono1 != null)
+                      Row(
+                        children: [
+                          Icon(Icons.phone,
+                              color: Theme.of(context).textTheme.caption?.color,
+                              size: 14),
+                          gapW4,
+                          Text(
+                            clienteContacto.telefono1!,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption
+                                        ?.color),
+                          ),
+                        ],
+                      ),
+                    if (clienteContacto.telefono2 != null)
+                      Row(
+                        children: [
+                          Icon(Icons.phone,
+                              color: Theme.of(context).textTheme.caption?.color,
+                              size: 14),
+                          gapW4,
+                          Text(
+                            clienteContacto.telefono2!,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption
+                                        ?.color),
+                          ),
+                        ],
+                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (clienteContacto.email != null)
+                          ContactButtons(
+                            icon: Icons.email,
+                            onPressFunction: () =>
+                                navigateToEmailApp(clienteContacto.email!),
+                          ),
+                        if (clienteContacto.telefono1 != null) gapW12,
+                        if (clienteContacto.telefono1 != null)
+                          ContactButtons(
+                            icon: Icons.phone,
+                            onPressFunction: () =>
+                                openPhoneCall(clienteContacto.telefono1!),
+                          ),
+                        if (clienteContacto.telefono2 != null) gapW12,
+                        if (clienteContacto.telefono2 != null)
+                          ContactButtons(
+                            icon: Icons.phone,
+                            onPressFunction: () =>
+                                openPhoneCall(clienteContacto.telefono2!),
+                          ),
+                      ],
                     ),
                   ],
                 ),
-              if (clienteContacto.email != null)
-                Row(
-                  children: [
-                    Icon(Icons.email,
-                        color: Theme.of(context).textTheme.caption?.color,
-                        size: 12),
-                    gapW4,
-                    Text(clienteContacto.email!,
-                        style: Theme.of(context).textTheme.caption),
-                  ],
-                ),
-              if (clienteContacto.telefono1 != null)
-                Row(
-                  children: [
-                    Icon(Icons.phone,
-                        color: Theme.of(context).textTheme.caption?.color,
-                        size: 12),
-                    gapW4,
-                    Text(clienteContacto.telefono1!,
-                        style: Theme.of(context).textTheme.caption),
-                  ],
-                ),
-              if (clienteContacto.telefono2 != null)
-                Row(
-                  children: [
-                    Icon(Icons.phone,
-                        color: Theme.of(context).textTheme.caption?.color,
-                        size: 12),
-                    gapW4,
-                    Text(clienteContacto.telefono2!,
-                        style: Theme.of(context).textTheme.caption),
-                  ],
-                ),
-              if (clienteContacto.observaciones != null)
-                ColumnFieldTextDetalle(
-                    fieldTitleValue: S
-                        .of(context)
-                        .cliente_show_clienteContacto_observaciones,
-                    value: clienteContacto.observaciones!),
+              ),
             ],
           ),
         ),
         const Divider(),
       ],
+    );
+  }
+
+  void openPhoneCall(String phone) async {
+    final Uri params = Uri(
+      scheme: 'tel',
+      path: phone,
+    );
+    await launchUrl(params, mode: LaunchMode.externalApplication);
+  }
+
+  void navigateToEmailApp(String contactEmail) async {
+    final Uri params = Uri(
+      scheme: 'mailto',
+      path: contactEmail,
+    );
+    await launchUrl(params, mode: LaunchMode.externalApplication);
+  }
+}
+
+class ContactButtons extends StatelessWidget {
+  const ContactButtons({
+    super.key,
+    required this.icon,
+    required this.onPressFunction,
+  });
+
+  final IconData icon;
+  final Function() onPressFunction;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 60,
+      child: ElevatedButton(
+        onPressed: () => onPressFunction(),
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                Theme.of(context).colorScheme.primaryContainer)),
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              color: Theme.of(context).colorScheme.secondary,
+              size: 18,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

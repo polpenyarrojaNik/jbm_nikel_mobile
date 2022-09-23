@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
@@ -18,14 +17,15 @@ import '../../../core/helpers/formatters.dart';
 import '../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../core/presentation/common_widgets/row_field_text_detail.dart';
 
-class ClientesAlrededorPage extends StatefulWidget {
+class ClientesAlrededorPage extends ConsumerStatefulWidget {
   const ClientesAlrededorPage({super.key});
 
   @override
-  State<ClientesAlrededorPage> createState() => _ClientesAlrededorPageState();
+  ConsumerState<ClientesAlrededorPage> createState() =>
+      _ClientesAlrededorPageState();
 }
 
-class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
+class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   double radiusKm = 1000;
 
   @override
@@ -36,17 +36,32 @@ class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(ubicacionActualProvider);
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).cliente_alrededor_titulo)),
-      body: Stack(
-        fit: StackFit.expand,
-        alignment: AlignmentDirectional.bottomCenter,
-        children: [
-          GoogleMapsContainer(radiusKm: radiusKm),
-          SliderKm(
-              onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
-              radiusKm: radiusKm)
-        ],
+      body: state.when(
+        data: (position) => Stack(
+          fit: StackFit.expand,
+          alignment: AlignmentDirectional.bottomCenter,
+          children: [
+            GoogleMapsContainer(
+              radiusKm: radiusKm,
+              currentLatLng: LatLng(position.latitude, position.longitude),
+            ),
+            SliderKm(
+                onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
+                radiusKm: radiusKm)
+          ],
+        ),
+        loading: () => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            CircularProgressIndicator(),
+            Text('Cargando Mapa'),
+          ],
+        ),
+        error: (e, _) => ErrorMessageWidget(
+            (e is AppException) ? e.details.message : e.toString()),
       ),
     );
   }
@@ -60,9 +75,11 @@ class _ClientesAlrededorPageState extends State<ClientesAlrededorPage> {
 }
 
 class GoogleMapsContainer extends ConsumerStatefulWidget {
-  const GoogleMapsContainer({super.key, required this.radiusKm});
+  const GoogleMapsContainer(
+      {super.key, required this.radiusKm, required this.currentLatLng});
 
   final double radiusKm;
+  final LatLng currentLatLng;
 
   @override
   ConsumerState<GoogleMapsContainer> createState() =>
@@ -71,51 +88,53 @@ class GoogleMapsContainer extends ConsumerStatefulWidget {
 
 class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
   GoogleMapController? mapController;
+  LatLng? mapLatLng;
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
   }
 
   @override
+  void initState() {
+    super.initState();
+    mapLatLng = widget.currentLatLng;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final state = ref.watch(ubicacionActualProvider);
-    return state.when(
-      data: (position) {
-        final stateMarkers = ref.watch(clientesAlrededorListStream(
-            GetClienteAlrededorArg(
-                position: position, radiusDistance: widget.radiusKm)));
-        final circle = createCircleInCurrentPosition(
-            context: context,
-            position: position,
-            radiusInMeters: widget.radiusKm);
+    final stateMarkers = ref.watch(clientesAlrededorListStream(
+        GetClienteAlrededorArg(
+            latLng: mapLatLng!, radiusDistance: widget.radiusKm)));
+    final circle = createCircleInCurrentPosition(
+        context: context, latlng: mapLatLng!, radiusInMeters: widget.radiusKm);
 
-        if (mapController != null) {
-          mapController!.animateCamera(
-            CameraUpdate.newLatLngZoom(
-              LatLng(position.latitude, position.longitude),
-              getZoomLevel(circle),
-            ),
-          );
-        }
+    if (mapController != null) {
+      mapController!.animateCamera(
+        CameraUpdate.newLatLngZoom(
+          mapLatLng!,
+          getZoomLevel(circle),
+        ),
+      );
+    }
 
-        return GoogleMap(
-          mapType: MapType.normal,
-          onMapCreated: _onMapCreated,
-          myLocationEnabled: true,
-          markers: stateMarkers.maybeWhen(
-              orElse: () => const <Marker>{},
-              data: (clienteList) => createMarkerSet(clienteList)),
-          circles: <Circle>{circle},
-          initialCameraPosition: CameraPosition(
-            target: LatLng(position.latitude, position.longitude),
-            zoom: getZoomLevel(circle),
-          ),
-        );
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (e, _) => ErrorMessageWidget(
-          (e is AppException) ? e.details.message : e.toString()),
-    );
+    return GoogleMap(
+        mapType: MapType.normal,
+        onMapCreated: _onMapCreated,
+        myLocationEnabled: true,
+        markers: stateMarkers.maybeWhen(
+          orElse: () => const <Marker>{},
+          data: (clientesAlrededorList) =>
+              setMarkerList(clientesAlrededorList: clientesAlrededorList),
+        ),
+        circles: <Circle>{circle},
+        onLongPress: (newLatLng) => setState(() {
+              mapLatLng = newLatLng;
+            }),
+        onCameraMove: (cameraPosition) => isMyCurrentPosition(cameraPosition),
+        initialCameraPosition: CameraPosition(
+          target: widget.currentLatLng,
+          zoom: getZoomLevel(circle),
+        ));
   }
 
   double getZoomLevel(Circle circle) {
@@ -128,20 +147,20 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
 
   Circle createCircleInCurrentPosition(
       {required BuildContext context,
-      required Position position,
+      required LatLng latlng,
       required double radiusInMeters}) {
     return Circle(
       circleId: const CircleId('currentPosition'),
-      center: LatLng(position.latitude, position.longitude),
+      center: latlng,
       radius: radiusInMeters,
-      fillColor: Theme.of(context).primaryColor.withOpacity(0.25),
+      fillColor: Colors.blue.withOpacity(0.25),
       strokeWidth: 1,
-      strokeColor: Theme.of(context).primaryColorDark,
+      strokeColor: Theme.of(context).colorScheme.onTertiaryContainer,
     );
   }
 
-  Set<Marker> createMarkerSet(List<Cliente> clienteList) {
-    return clienteList
+  Set<Marker> createMarkerSet(List<Cliente> clientesAlrededorList) {
+    return clientesAlrededorList
         .map(
           (c) => Marker(
             markerId: MarkerId(c.id),
@@ -156,6 +175,34 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
           ),
         )
         .toSet();
+  }
+
+  void isMyCurrentPosition(CameraPosition cameraPosition) {
+    if (cameraPosition.target.latitude.toStringAsFixed(4) ==
+            widget.currentLatLng.latitude.toStringAsFixed(4) &&
+        cameraPosition.target.longitude.toStringAsFixed(4) ==
+            widget.currentLatLng.longitude.toStringAsFixed(4)) {
+      setState(() {
+        mapLatLng = widget.currentLatLng;
+      });
+    }
+  }
+
+  Set<Marker> setMarkerList({required List<Cliente> clientesAlrededorList}) {
+    final markerList = createMarkerSet(clientesAlrededorList);
+
+    if (mapLatLng!.latitude.toStringAsFixed(4) !=
+            widget.currentLatLng.latitude.toStringAsFixed(4) &&
+        mapLatLng!.longitude.toStringAsFixed(4) !=
+            widget.currentLatLng.longitude.toStringAsFixed(4)) {
+      markerList.add(
+        Marker(
+          markerId: const MarkerId('userPositionSelected'),
+          position: mapLatLng!,
+        ),
+      );
+    }
+    return markerList;
   }
 }
 
@@ -246,7 +293,8 @@ class ClienteAlrededorDialog extends StatelessWidget {
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
               value: (cliente.ventasAnyoActual != null)
-                  ? numberFormatDecimal(cliente.ventasAnyoActual!)
+                  ? formatPrecios(
+                      precio: cliente.ventasAnyoActual!, tipoPrecio: null)
                   : ''),
           const SizedBox(height: 2),
           RowFieldTextDetalle(
