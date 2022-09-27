@@ -57,12 +57,12 @@ class SyncService {
   final AppDatabase _db;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/sync/db-datetime',
   );
 
   static final remoteInitDatabaseEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/sync/init-db',
   );
 
@@ -753,7 +753,7 @@ class SyncService {
     try {
       final response = await _dio.getUri(
         Uri.http(
-          dotenv.get('URL', fallback: 'localhost:3001'),
+          dotenv.get('URLTEST', fallback: 'localhost:3001'),
           apiPath,
           query,
         ),

@@ -7,12 +7,12 @@ class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
       required this.title,
       required this.searchTitle,
       required this.onChanged,
-      this.addActionButton});
+      this.actionButtons});
 
   final String title;
   final String searchTitle;
   final Function(String searchText) onChanged;
-  final IconButton? addActionButton;
+  final List<IconButton>? actionButtons;
 
   @override
   State<CustomSearchAppBar> createState() => _CustomSearchAppBarState();
@@ -25,7 +25,6 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
   bool isSearching = false;
   final Icon icon = const Icon(Icons.search);
   final Icon searchIcon = const Icon(Icons.close);
-
   final String searchText = '';
 
   @override
@@ -35,12 +34,7 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
           ? SearchListTile(
               searchTitle: widget.searchTitle, onChanged: widget.onChanged)
           : Text(widget.title),
-      actions: [
-        IconButton(
-            onPressed: () => changeSearchValue(),
-            icon: (isSearching) ? searchIcon : icon),
-        if (widget.addActionButton != null) widget.addActionButton!
-      ],
+      actions: getListActionButtons(widget.actionButtons),
     );
   }
 
@@ -49,6 +43,22 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
       isSearching = !isSearching;
       widget.onChanged('');
     });
+  }
+
+  List<IconButton> getListActionButtons(List<IconButton>? actionButtons) {
+    final searchIconButton = IconButton(
+        onPressed: () => changeSearchValue(),
+        icon: (isSearching) ? searchIcon : icon);
+
+    if (actionButtons != null) {
+      List<IconButton> buttons = [searchIconButton];
+
+      for (var i = 0; i < actionButtons.length; i++) {
+        buttons.add(actionButtons[i]);
+      }
+      return buttons;
+    }
+    return [searchIconButton];
   }
 }
 
@@ -62,10 +72,11 @@ class SearchListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
-      leading: const Icon(
-        Icons.search,
-        size: 28,
-      ),
+      visualDensity: const VisualDensity(horizontal: -4),
+      // leading: const Icon(
+      //   Icons.search,
+      //   size: 28,
+      // ),
       title: TextField(
         decoration: InputDecoration(
           hintText: searchTitle,

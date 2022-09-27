@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DefaultListParams {
   int get page => throw _privateConstructorUsedError;
   String get searchText => throw _privateConstructorUsedError;
+  bool? get searchPotenciales => throw _privateConstructorUsedError;
   String? get entityId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,8 @@ abstract class $DefaultListParamsCopyWith<$Res> {
   factory $DefaultListParamsCopyWith(
           DefaultListParams value, $Res Function(DefaultListParams) then) =
       _$DefaultListParamsCopyWithImpl<$Res>;
-  $Res call({int page, String searchText, String? entityId});
+  $Res call(
+      {int page, String searchText, bool? searchPotenciales, String? entityId});
 }
 
 /// @nodoc
@@ -46,6 +48,7 @@ class _$DefaultListParamsCopyWithImpl<$Res>
   $Res call({
     Object? page = freezed,
     Object? searchText = freezed,
+    Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -57,6 +60,10 @@ class _$DefaultListParamsCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      searchPotenciales: searchPotenciales == freezed
+          ? _value.searchPotenciales
+          : searchPotenciales // ignore: cast_nullable_to_non_nullable
+              as bool?,
       entityId: entityId == freezed
           ? _value.entityId
           : entityId // ignore: cast_nullable_to_non_nullable
@@ -72,7 +79,8 @@ abstract class _$$_DefaultListParamsCopyWith<$Res>
           $Res Function(_$_DefaultListParams) then) =
       __$$_DefaultListParamsCopyWithImpl<$Res>;
   @override
-  $Res call({int page, String searchText, String? entityId});
+  $Res call(
+      {int page, String searchText, bool? searchPotenciales, String? entityId});
 }
 
 /// @nodoc
@@ -90,6 +98,7 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
   $Res call({
     Object? page = freezed,
     Object? searchText = freezed,
+    Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
     return _then(_$_DefaultListParams(
@@ -101,6 +110,10 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      searchPotenciales: searchPotenciales == freezed
+          ? _value.searchPotenciales
+          : searchPotenciales // ignore: cast_nullable_to_non_nullable
+              as bool?,
       entityId: entityId == freezed
           ? _value.entityId
           : entityId // ignore: cast_nullable_to_non_nullable
@@ -113,7 +126,10 @@ class __$$_DefaultListParamsCopyWithImpl<$Res>
 
 class _$_DefaultListParams extends _DefaultListParams {
   const _$_DefaultListParams(
-      {required this.page, required this.searchText, this.entityId})
+      {required this.page,
+      required this.searchText,
+      this.searchPotenciales,
+      this.entityId})
       : super._();
 
   @override
@@ -121,11 +137,13 @@ class _$_DefaultListParams extends _DefaultListParams {
   @override
   final String searchText;
   @override
+  final bool? searchPotenciales;
+  @override
   final String? entityId;
 
   @override
   String toString() {
-    return 'DefaultListParams(page: $page, searchText: $searchText, entityId: $entityId)';
+    return 'DefaultListParams(page: $page, searchText: $searchText, searchPotenciales: $searchPotenciales, entityId: $entityId)';
   }
 
   @override
@@ -136,6 +154,8 @@ class _$_DefaultListParams extends _DefaultListParams {
             const DeepCollectionEquality().equals(other.page, page) &&
             const DeepCollectionEquality()
                 .equals(other.searchText, searchText) &&
+            const DeepCollectionEquality()
+                .equals(other.searchPotenciales, searchPotenciales) &&
             const DeepCollectionEquality().equals(other.entityId, entityId));
   }
 
@@ -144,6 +164,7 @@ class _$_DefaultListParams extends _DefaultListParams {
       runtimeType,
       const DeepCollectionEquality().hash(page),
       const DeepCollectionEquality().hash(searchText),
+      const DeepCollectionEquality().hash(searchPotenciales),
       const DeepCollectionEquality().hash(entityId));
 
   @JsonKey(ignore: true)
@@ -157,6 +178,7 @@ abstract class _DefaultListParams extends DefaultListParams {
   const factory _DefaultListParams(
       {required final int page,
       required final String searchText,
+      final bool? searchPotenciales,
       final String? entityId}) = _$_DefaultListParams;
   const _DefaultListParams._() : super._();
 
@@ -164,6 +186,8 @@ abstract class _DefaultListParams extends DefaultListParams {
   int get page;
   @override
   String get searchText;
+  @override
+  bool? get searchPotenciales;
   @override
   String? get entityId;
   @override

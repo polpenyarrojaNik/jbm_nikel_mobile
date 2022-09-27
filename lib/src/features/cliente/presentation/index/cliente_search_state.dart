@@ -14,11 +14,19 @@ final clientesPaginationQueryStateProvider =
   return 1;
 });
 
+final clientesPotencialesQueryStateProvider =
+    StateProvider.autoDispose<bool>((ref) {
+  return false;
+});
+
 final clientesSearchResultsProvider =
     FutureProvider.autoDispose<List<Cliente>>((ref) async {
   final searchQuery = ref.watch(clientesSearchQueryStateProvider);
   final paginationQuery = ref.watch(clientesPaginationQueryStateProvider);
-  return ref.watch(clienteListaSearchProvider(
-          DefaultListParams(page: paginationQuery, searchText: searchQuery))
+  final potencialesQuery = ref.watch(clientesPotencialesQueryStateProvider);
+  return ref.watch(clienteListaSearchProvider(DefaultListParams(
+          page: paginationQuery,
+          searchText: searchQuery,
+          searchPotenciales: potencialesQuery))
       .future);
 });

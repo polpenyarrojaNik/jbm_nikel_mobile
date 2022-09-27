@@ -39,9 +39,11 @@ final clienteListaSearchProvider = FutureProvider.autoDispose
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return clienteRepository.getClienteLista(
-      usuarioId: usuario!.id,
-      page: defaultListParams.page,
-      searchText: defaultListParams.searchText);
+    usuarioId: usuario!.id,
+    page: defaultListParams.page,
+    searchText: defaultListParams.searchText,
+    searchPotenciales: defaultListParams.searchPotenciales!,
+  );
 });
 
 final clienteProvider =
@@ -124,7 +126,8 @@ class ClienteRepository {
   Future<List<Cliente>> getClienteLista(
       {required String usuarioId,
       required int page,
-      String? searchText}) async {
+      String? searchText,
+      required bool searchPotenciales}) async {
     try {
       if (page == 1) {
         clientes.clear();
@@ -163,6 +166,10 @@ class ClienteRepository {
         );
       } else {
         query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      }
+
+      if (searchPotenciales) {
+        query.where(_db.clienteTable.clientePotencial.equals('S'));
       }
 
       query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
@@ -432,7 +439,7 @@ class ClienteRepository {
       final query = {'CLIENTE_ID': clienteId};
       final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
           requestUri: Uri.http(
-            dotenv.get('URL', fallback: 'localhost:3001'),
+            dotenv.get('URLTEST', fallback: 'localhost:3001'),
             'api/v1/online/cliente/adjuntos',
             query,
           ),
@@ -488,7 +495,7 @@ class ClienteRepository {
         final query = {'PATH': path};
         final data = await _remoteGetAttachment(
             requestUri: Uri.http(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'api/v1/online/adjunto/doc',
               query,
             ),

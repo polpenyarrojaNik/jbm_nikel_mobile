@@ -28,6 +28,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   int page = 1;
+  bool searchClientesPotenciales = false;
   bool canLoadNextPage = false;
 
   @override
@@ -97,10 +98,21 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
             ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
           },
         ),
-        addActionButton: IconButton(
-          onPressed: () => navigateToClientesAlrededor(context),
-          icon: const Icon(Icons.near_me_outlined),
-        ),
+        actionButtons: [
+          IconButton(
+            onPressed: () => filterClientesPotenciales(context),
+            icon: Icon(
+              Icons.abc,
+              color: (searchClientesPotenciales)
+                  ? Theme.of(context).colorScheme.surfaceTint
+                  : null,
+            ),
+          ),
+          IconButton(
+            onPressed: () => navigateToClientesAlrededor(context),
+            icon: const Icon(Icons.near_me_outlined),
+          ),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () => syncCustomerDb(ref),
@@ -137,5 +149,12 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
     ref.read(clientesSearchQueryStateProvider.notifier).state = '';
     ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+  }
+
+  void filterClientesPotenciales(BuildContext context) {
+    searchClientesPotenciales = !searchClientesPotenciales;
+    ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+    ref.read(clientesPotencialesQueryStateProvider.notifier).state =
+        searchClientesPotenciales;
   }
 }
