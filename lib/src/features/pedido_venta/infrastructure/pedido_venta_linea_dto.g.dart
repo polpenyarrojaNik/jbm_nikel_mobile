@@ -20,6 +20,8 @@ _$_PedidoVentaLineaDTO _$$_PedidoVentaLineaDTOFromJson(
       descuento1: (json['DESCUENTO1'] as num).toDouble(),
       descuento2: (json['DESCUENTO2'] as num).toDouble(),
       descuento3: (json['DESCUENTO3'] as num).toDouble(),
+      pedidoLineaIdComponente: json['PEDIDO_LINEA_ID_COMPONENTE'] as String?,
+      importeLinea: (json['TOTAL_LINEA'] as num?)?.toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String,
     );
@@ -38,6 +40,8 @@ Map<String, dynamic> _$$_PedidoVentaLineaDTOToJson(
       'DESCUENTO1': instance.descuento1,
       'DESCUENTO2': instance.descuento2,
       'DESCUENTO3': instance.descuento3,
+      'PEDIDO_LINEA_ID_COMPONENTE': instance.pedidoLineaIdComponente,
+      'TOTAL_LINEA': instance.importeLinea,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

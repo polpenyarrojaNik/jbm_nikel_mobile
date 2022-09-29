@@ -210,14 +210,20 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
                       clienteVentasArticuloList[i].articuloId,
                     ),
                     const VerticalDivider(),
-                    Flexible(
-                      child: Text(
-                        clienteVentasArticuloList[i].descripcion,
-                        style: Theme.of(context).textTheme.caption,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
+                    if (getClienteVentasArticuloDescripcionInLocalLanguage(
+                            clienteVentasArticulo:
+                                clienteVentasArticuloList[i]) !=
+                        null)
+                      Flexible(
+                        child: Text(
+                          getClienteVentasArticuloDescripcionInLocalLanguage(
+                              clienteVentasArticulo:
+                                  clienteVentasArticuloList[i])!,
+                          style: Theme.of(context).textTheme.caption,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

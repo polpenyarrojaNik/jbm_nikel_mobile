@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/default_list_params.dart';
 
+import '../../../../core/domain/cliente_id_nombre.dart';
 import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -17,6 +18,11 @@ final clientesPaginationQueryStateProvider =
 final clientesPotencialesQueryStateProvider =
     StateProvider.autoDispose<bool>((ref) {
   return false;
+});
+
+final clienteFromVisitaStateProvider =
+    StateProvider.autoDispose<ClienteIdNombre?>((ref) {
+  return null;
 });
 
 final clientesSearchResultsProvider =

@@ -45,6 +45,7 @@ final pedidoVentaLineaProvider = FutureProvider.autoDispose
 });
 
 const pageSize = 100;
+List<PedidoVenta> pedidoVentaList = [];
 
 class PedidoVentaRepository {
   final AppDatabase _db;
@@ -54,16 +55,19 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getPedidoVentaLista(
       {required String usuarioId,
       required int page,
-      required String searchText}) {
+      required String searchText}) async {
+    if (page == 1) {
+      pedidoVentaList.clear();
+    }
     try {
       final query = _db.select(_db.pedidoVentaTable).join([
         innerJoin(
             _db.clienteUsuarioTable,
             _db.clienteUsuarioTable.clienteId
                 .equalsExp(_db.pedidoVentaTable.clienteId)),
-        innerJoin(_db.paisTable,
+        leftOuterJoin(_db.paisTable,
             _db.paisTable.id.equalsExp(_db.pedidoVentaTable.paisId)),
-        innerJoin(_db.divisaTable,
+        leftOuterJoin(_db.divisaTable,
             _db.divisaTable.id.equalsExp(_db.pedidoVentaTable.divisaId)),
         innerJoin(
             _db.pedidoVentaEstadoTable,
@@ -86,9 +90,12 @@ class PedidoVentaRepository {
       }
       query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
 
-      query.orderBy([OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate)]);
+      query.orderBy([
+        OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate),
+        OrderingTerm.asc(_db.pedidoVentaTable.pedidoVentaId)
+      ]);
 
-      return query.asyncMap((row) async {
+      final pedidosDeVenta = await query.asyncMap((row) async {
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
         final paisDTO = row.readTableOrNull(_db.paisTable);
         final divisaDTO = row.readTable(_db.divisaTable);
@@ -99,6 +106,8 @@ class PedidoVentaRepository {
             divisa: divisaDTO.toDomain(),
             pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
       }).get();
+      pedidoVentaList.addAll(pedidosDeVenta);
+      return pedidoVentaList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -149,7 +158,7 @@ class PedidoVentaRepository {
       query
           .where(_db.pedidoVentaLineaTable.pedidoVentaId.equals(pedidoVentaId));
 
-      return query.asyncMap((row) async {
+      return query.map((row) {
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
         final pedidoVentaLineaDTO = row.readTable(_db.pedidoVentaLineaTable);
         return pedidoVentaLineaDTO.toDomain(divisaId: pedidoVentaDTO.divisaId);

@@ -42,6 +42,10 @@ mixin _$PedidoVentaLineaDTO {
   double get descuento2 => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCUENTO3')
   double get descuento3 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+  String? get pedidoLineaIdComponente => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TOTAL_LINEA')
+  double? get importeLinea => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -59,19 +63,36 @@ abstract class $PedidoVentaLineaDTOCopyWith<$Res> {
           PedidoVentaLineaDTO value, $Res Function(PedidoVentaLineaDTO) then) =
       _$PedidoVentaLineaDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-      @JsonKey(name: 'PEDIDO_LINEA_ID') String id,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION') String? articuloDescription,
-      @JsonKey(name: 'CANTIDAD') double cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-      @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
-      @JsonKey(name: 'DESCUENTO1') double descuento1,
-      @JsonKey(name: 'DESCUENTO2') double descuento2,
-      @JsonKey(name: 'DESCUENTO3') double descuento3,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      {@JsonKey(name: 'EMPRESA_ID')
+          String empresaId,
+      @JsonKey(name: 'PEDIDO_ID')
+          String pedidoVentaId,
+      @JsonKey(name: 'PEDIDO_LINEA_ID')
+          String id,
+      @JsonKey(name: 'ARTICULO_ID')
+          String articuloId,
+      @JsonKey(name: 'ARTICULO_DESCRIPCION')
+          String? articuloDescription,
+      @JsonKey(name: 'CANTIDAD')
+          double cantidad,
+      @JsonKey(name: 'PRECIO_DIVISA')
+          double precioDivisa,
+      @JsonKey(name: 'TIPO_PRECIO')
+          double? tipoPrecio,
+      @JsonKey(name: 'DESCUENTO1')
+          double descuento1,
+      @JsonKey(name: 'DESCUENTO2')
+          double descuento2,
+      @JsonKey(name: 'DESCUENTO3')
+          double descuento3,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+          String? pedidoLineaIdComponente,
+      @JsonKey(name: 'TOTAL_LINEA')
+          double? importeLinea,
+      @JsonKey(name: 'LAST_UPDATED')
+          DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          String deleted});
 }
 
 /// @nodoc
@@ -96,6 +117,8 @@ class _$PedidoVentaLineaDTOCopyWithImpl<$Res>
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
     Object? descuento3 = freezed,
+    Object? pedidoLineaIdComponente = freezed,
+    Object? importeLinea = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -144,6 +167,14 @@ class _$PedidoVentaLineaDTOCopyWithImpl<$Res>
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
+      pedidoLineaIdComponente: pedidoLineaIdComponente == freezed
+          ? _value.pedidoLineaIdComponente
+          : pedidoLineaIdComponente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      importeLinea: importeLinea == freezed
+          ? _value.importeLinea
+          : importeLinea // ignore: cast_nullable_to_non_nullable
+              as double?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -164,19 +195,36 @@ abstract class _$$_PedidoVentaLineaDTOCopyWith<$Res>
       __$$_PedidoVentaLineaDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'EMPRESA_ID') String empresaId,
-      @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
-      @JsonKey(name: 'PEDIDO_LINEA_ID') String id,
-      @JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'ARTICULO_DESCRIPCION') String? articuloDescription,
-      @JsonKey(name: 'CANTIDAD') double cantidad,
-      @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-      @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
-      @JsonKey(name: 'DESCUENTO1') double descuento1,
-      @JsonKey(name: 'DESCUENTO2') double descuento2,
-      @JsonKey(name: 'DESCUENTO3') double descuento3,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      {@JsonKey(name: 'EMPRESA_ID')
+          String empresaId,
+      @JsonKey(name: 'PEDIDO_ID')
+          String pedidoVentaId,
+      @JsonKey(name: 'PEDIDO_LINEA_ID')
+          String id,
+      @JsonKey(name: 'ARTICULO_ID')
+          String articuloId,
+      @JsonKey(name: 'ARTICULO_DESCRIPCION')
+          String? articuloDescription,
+      @JsonKey(name: 'CANTIDAD')
+          double cantidad,
+      @JsonKey(name: 'PRECIO_DIVISA')
+          double precioDivisa,
+      @JsonKey(name: 'TIPO_PRECIO')
+          double? tipoPrecio,
+      @JsonKey(name: 'DESCUENTO1')
+          double descuento1,
+      @JsonKey(name: 'DESCUENTO2')
+          double descuento2,
+      @JsonKey(name: 'DESCUENTO3')
+          double descuento3,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+          String? pedidoLineaIdComponente,
+      @JsonKey(name: 'TOTAL_LINEA')
+          double? importeLinea,
+      @JsonKey(name: 'LAST_UPDATED')
+          DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          String deleted});
 }
 
 /// @nodoc
@@ -203,6 +251,8 @@ class __$$_PedidoVentaLineaDTOCopyWithImpl<$Res>
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
     Object? descuento3 = freezed,
+    Object? pedidoLineaIdComponente = freezed,
+    Object? importeLinea = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -251,6 +301,14 @@ class __$$_PedidoVentaLineaDTOCopyWithImpl<$Res>
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
+      pedidoLineaIdComponente: pedidoLineaIdComponente == freezed
+          ? _value.pedidoLineaIdComponente
+          : pedidoLineaIdComponente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      importeLinea: importeLinea == freezed
+          ? _value.importeLinea
+          : importeLinea // ignore: cast_nullable_to_non_nullable
+              as double?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -278,6 +336,8 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
       @JsonKey(name: 'DESCUENTO1') required this.descuento1,
       @JsonKey(name: 'DESCUENTO2') required this.descuento2,
       @JsonKey(name: 'DESCUENTO3') required this.descuento3,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE') this.pedidoLineaIdComponente,
+      @JsonKey(name: 'TOTAL_LINEA') this.importeLinea,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') required this.deleted})
       : super._();
@@ -319,6 +379,12 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
   @JsonKey(name: 'DESCUENTO3')
   final double descuento3;
   @override
+  @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+  final String? pedidoLineaIdComponente;
+  @override
+  @JsonKey(name: 'TOTAL_LINEA')
+  final double? importeLinea;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -327,7 +393,7 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
 
   @override
   String toString() {
-    return 'PedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -354,6 +420,10 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
                 .equals(other.descuento2, descuento2) &&
             const DeepCollectionEquality()
                 .equals(other.descuento3, descuento3) &&
+            const DeepCollectionEquality().equals(
+                other.pedidoLineaIdComponente, pedidoLineaIdComponente) &&
+            const DeepCollectionEquality()
+                .equals(other.importeLinea, importeLinea) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
@@ -374,6 +444,8 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
       const DeepCollectionEquality().hash(descuento1),
       const DeepCollectionEquality().hash(descuento2),
       const DeepCollectionEquality().hash(descuento3),
+      const DeepCollectionEquality().hash(pedidoLineaIdComponente),
+      const DeepCollectionEquality().hash(importeLinea),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
 
@@ -415,6 +487,10 @@ abstract class _PedidoVentaLineaDTO extends PedidoVentaLineaDTO {
           required final double descuento2,
       @JsonKey(name: 'DESCUENTO3')
           required final double descuento3,
+      @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+          final String? pedidoLineaIdComponente,
+      @JsonKey(name: 'TOTAL_LINEA')
+          final double? importeLinea,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -457,6 +533,12 @@ abstract class _PedidoVentaLineaDTO extends PedidoVentaLineaDTO {
   @override
   @JsonKey(name: 'DESCUENTO3')
   double get descuento3;
+  @override
+  @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+  String? get pedidoLineaIdComponente;
+  @override
+  @JsonKey(name: 'TOTAL_LINEA')
+  double? get importeLinea;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

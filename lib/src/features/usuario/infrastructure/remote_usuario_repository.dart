@@ -19,11 +19,11 @@ class RemoteUsuarioRepository {
   RemoteUsuarioRepository(this._dio);
 
   static final authorizationEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/login',
   );
   static final renewTokenEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/renew-token',
   );
 

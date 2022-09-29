@@ -2398,6 +2398,8 @@ class PedidoVentaLineaTableCompanion
   final Value<double> descuento1;
   final Value<double> descuento2;
   final Value<double> descuento3;
+  final Value<String?> pedidoLineaIdComponente;
+  final Value<double?> importeLinea;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const PedidoVentaLineaTableCompanion({
@@ -2412,6 +2414,8 @@ class PedidoVentaLineaTableCompanion
     this.descuento1 = const Value.absent(),
     this.descuento2 = const Value.absent(),
     this.descuento3 = const Value.absent(),
+    this.pedidoLineaIdComponente = const Value.absent(),
+    this.importeLinea = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -2427,6 +2431,8 @@ class PedidoVentaLineaTableCompanion
     required double descuento1,
     required double descuento2,
     required double descuento3,
+    this.pedidoLineaIdComponente = const Value.absent(),
+    this.importeLinea = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : empresaId = Value(empresaId),
@@ -2451,6 +2457,8 @@ class PedidoVentaLineaTableCompanion
     Expression<double>? descuento1,
     Expression<double>? descuento2,
     Expression<double>? descuento3,
+    Expression<String>? pedidoLineaIdComponente,
+    Expression<double>? importeLinea,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -2467,6 +2475,9 @@ class PedidoVentaLineaTableCompanion
       if (descuento1 != null) 'DESCUENTO1': descuento1,
       if (descuento2 != null) 'DESCUENTO2': descuento2,
       if (descuento3 != null) 'DESCUENTO3': descuento3,
+      if (pedidoLineaIdComponente != null)
+        'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
+      if (importeLinea != null) 'TOTAL_LINEA': importeLinea,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -2484,6 +2495,8 @@ class PedidoVentaLineaTableCompanion
       Value<double>? descuento1,
       Value<double>? descuento2,
       Value<double>? descuento3,
+      Value<String?>? pedidoLineaIdComponente,
+      Value<double?>? importeLinea,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return PedidoVentaLineaTableCompanion(
@@ -2498,6 +2511,9 @@ class PedidoVentaLineaTableCompanion
       descuento1: descuento1 ?? this.descuento1,
       descuento2: descuento2 ?? this.descuento2,
       descuento3: descuento3 ?? this.descuento3,
+      pedidoLineaIdComponente:
+          pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
+      importeLinea: importeLinea ?? this.importeLinea,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -2539,6 +2555,13 @@ class PedidoVentaLineaTableCompanion
     if (descuento3.present) {
       map['DESCUENTO3'] = Variable<double>(descuento3.value);
     }
+    if (pedidoLineaIdComponente.present) {
+      map['PEDIDO_LINEA_ID_COMPONENTE'] =
+          Variable<String>(pedidoLineaIdComponente.value);
+    }
+    if (importeLinea.present) {
+      map['TOTAL_LINEA'] = Variable<double>(importeLinea.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -2562,6 +2585,8 @@ class PedidoVentaLineaTableCompanion
           ..write('descuento1: $descuento1, ')
           ..write('descuento2: $descuento2, ')
           ..write('descuento3: $descuento3, ')
+          ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
+          ..write('importeLinea: $importeLinea, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -2633,6 +2658,18 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _pedidoLineaIdComponenteMeta =
+      const VerificationMeta('pedidoLineaIdComponente');
+  @override
+  late final GeneratedColumn<String> pedidoLineaIdComponente =
+      GeneratedColumn<String>('PEDIDO_LINEA_ID_COMPONENTE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _importeLineaMeta =
+      const VerificationMeta('importeLinea');
+  @override
+  late final GeneratedColumn<double> importeLinea = GeneratedColumn<double>(
+      'TOTAL_LINEA', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -2659,6 +2696,8 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         descuento1,
         descuento2,
         descuento3,
+        pedidoLineaIdComponente,
+        importeLinea,
         lastUpdated,
         deleted
       ];
@@ -2750,6 +2789,19 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     } else if (isInserting) {
       context.missing(_descuento3Meta);
     }
+    if (data.containsKey('PEDIDO_LINEA_ID_COMPONENTE')) {
+      context.handle(
+          _pedidoLineaIdComponenteMeta,
+          pedidoLineaIdComponente.isAcceptableOrUnknown(
+              data['PEDIDO_LINEA_ID_COMPONENTE']!,
+              _pedidoLineaIdComponenteMeta));
+    }
+    if (data.containsKey('TOTAL_LINEA')) {
+      context.handle(
+          _importeLineaMeta,
+          importeLinea.isAcceptableOrUnknown(
+              data['TOTAL_LINEA']!, _importeLineaMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -2793,6 +2845,11 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO2'])!,
       descuento3: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
+      pedidoLineaIdComponente: attachedDatabase.options.types.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}PEDIDO_LINEA_ID_COMPONENTE']),
+      importeLinea: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TOTAL_LINEA']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -13808,6 +13865,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String?> resumen;
   final Value<double> latitud;
   final Value<double> longitud;
+  final Value<String?> visitaAppId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const VisitaTableCompanion({
@@ -13819,6 +13877,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.resumen = const Value.absent(),
     this.latitud = const Value.absent(),
     this.longitud = const Value.absent(),
+    this.visitaAppId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -13831,6 +13890,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.resumen = const Value.absent(),
     required double latitud,
     required double longitud,
+    this.visitaAppId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
@@ -13849,6 +13909,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     Expression<String>? resumen,
     Expression<double>? latitud,
     Expression<double>? longitud,
+    Expression<String>? visitaAppId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -13861,6 +13922,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       if (resumen != null) 'RESUMEN': resumen,
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
+      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -13875,6 +13937,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       Value<String?>? resumen,
       Value<double>? latitud,
       Value<double>? longitud,
+      Value<String?>? visitaAppId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return VisitaTableCompanion(
@@ -13886,6 +13949,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       resumen: resumen ?? this.resumen,
       latitud: latitud ?? this.latitud,
       longitud: longitud ?? this.longitud,
+      visitaAppId: visitaAppId ?? this.visitaAppId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13918,6 +13982,9 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     if (longitud.present) {
       map['LONGITUD'] = Variable<double>(longitud.value);
     }
+    if (visitaAppId.present) {
+      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -13938,6 +14005,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
           ..write('resumen: $resumen, ')
           ..write('latitud: $latitud, ')
           ..write('longitud: $longitud, ')
+          ..write('visitaAppId: $visitaAppId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13991,6 +14059,12 @@ class $VisitaTableTable extends VisitaTable
   late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _visitaAppIdMeta =
+      const VerificationMeta('visitaAppId');
+  @override
+  late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
+      'COD_VISITA_APP', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -14014,6 +14088,7 @@ class $VisitaTableTable extends VisitaTable
         resumen,
         latitud,
         longitud,
+        visitaAppId,
         lastUpdated,
         deleted
       ];
@@ -14070,6 +14145,12 @@ class $VisitaTableTable extends VisitaTable
     } else if (isInserting) {
       context.missing(_longitudMeta);
     }
+    if (data.containsKey('COD_VISITA_APP')) {
+      context.handle(
+          _visitaAppIdMeta,
+          visitaAppId.isAcceptableOrUnknown(
+              data['COD_VISITA_APP']!, _visitaAppIdMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -14107,6 +14188,8 @@ class $VisitaTableTable extends VisitaTable
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
       longitud: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
+      visitaAppId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -14117,6 +14200,352 @@ class $VisitaTableTable extends VisitaTable
   @override
   $VisitaTableTable createAlias(String alias) {
     return $VisitaTableTable(attachedDatabase, alias);
+  }
+}
+
+class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
+  final Value<String> visitaAppId;
+  final Value<String> clienteId;
+  final Value<DateTime> fecha;
+  final Value<String> numEmpl;
+  final Value<String?> contacto;
+  final Value<String?> resumen;
+  final Value<double> latitud;
+  final Value<double> longitud;
+  final Value<String> enviada;
+  final Value<String> tratada;
+  final Value<String?> errorSyncMessage;
+  const VisitaLocalTableCompanion({
+    this.visitaAppId = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.numEmpl = const Value.absent(),
+    this.contacto = const Value.absent(),
+    this.resumen = const Value.absent(),
+    this.latitud = const Value.absent(),
+    this.longitud = const Value.absent(),
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
+  });
+  VisitaLocalTableCompanion.insert({
+    required String visitaAppId,
+    required String clienteId,
+    required DateTime fecha,
+    required String numEmpl,
+    this.contacto = const Value.absent(),
+    this.resumen = const Value.absent(),
+    required double latitud,
+    required double longitud,
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
+  })  : visitaAppId = Value(visitaAppId),
+        clienteId = Value(clienteId),
+        fecha = Value(fecha),
+        numEmpl = Value(numEmpl),
+        latitud = Value(latitud),
+        longitud = Value(longitud);
+  static Insertable<VisitaLocalDTO> custom({
+    Expression<String>? visitaAppId,
+    Expression<String>? clienteId,
+    Expression<DateTime>? fecha,
+    Expression<String>? numEmpl,
+    Expression<String>? contacto,
+    Expression<String>? resumen,
+    Expression<double>? latitud,
+    Expression<double>? longitud,
+    Expression<String>? enviada,
+    Expression<String>? tratada,
+    Expression<String>? errorSyncMessage,
+  }) {
+    return RawValuesInsertable({
+      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (fecha != null) 'FECHA': fecha,
+      if (numEmpl != null) 'NUM_EMPL': numEmpl,
+      if (contacto != null) 'CONTACTO': contacto,
+      if (resumen != null) 'RESUMEN': resumen,
+      if (latitud != null) 'LATITUD': latitud,
+      if (longitud != null) 'LONGITUD': longitud,
+      if (enviada != null) 'ENVIADA': enviada,
+      if (tratada != null) 'TRATADA': tratada,
+      if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
+    });
+  }
+
+  VisitaLocalTableCompanion copyWith(
+      {Value<String>? visitaAppId,
+      Value<String>? clienteId,
+      Value<DateTime>? fecha,
+      Value<String>? numEmpl,
+      Value<String?>? contacto,
+      Value<String?>? resumen,
+      Value<double>? latitud,
+      Value<double>? longitud,
+      Value<String>? enviada,
+      Value<String>? tratada,
+      Value<String?>? errorSyncMessage}) {
+    return VisitaLocalTableCompanion(
+      visitaAppId: visitaAppId ?? this.visitaAppId,
+      clienteId: clienteId ?? this.clienteId,
+      fecha: fecha ?? this.fecha,
+      numEmpl: numEmpl ?? this.numEmpl,
+      contacto: contacto ?? this.contacto,
+      resumen: resumen ?? this.resumen,
+      latitud: latitud ?? this.latitud,
+      longitud: longitud ?? this.longitud,
+      enviada: enviada ?? this.enviada,
+      tratada: tratada ?? this.tratada,
+      errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (visitaAppId.present) {
+      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
+    }
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
+    }
+    if (numEmpl.present) {
+      map['NUM_EMPL'] = Variable<String>(numEmpl.value);
+    }
+    if (contacto.present) {
+      map['CONTACTO'] = Variable<String>(contacto.value);
+    }
+    if (resumen.present) {
+      map['RESUMEN'] = Variable<String>(resumen.value);
+    }
+    if (latitud.present) {
+      map['LATITUD'] = Variable<double>(latitud.value);
+    }
+    if (longitud.present) {
+      map['LONGITUD'] = Variable<double>(longitud.value);
+    }
+    if (enviada.present) {
+      map['ENVIADA'] = Variable<String>(enviada.value);
+    }
+    if (tratada.present) {
+      map['TRATADA'] = Variable<String>(tratada.value);
+    }
+    if (errorSyncMessage.present) {
+      map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('VisitaLocalTableCompanion(')
+          ..write('visitaAppId: $visitaAppId, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('fecha: $fecha, ')
+          ..write('numEmpl: $numEmpl, ')
+          ..write('contacto: $contacto, ')
+          ..write('resumen: $resumen, ')
+          ..write('latitud: $latitud, ')
+          ..write('longitud: $longitud, ')
+          ..write('enviada: $enviada, ')
+          ..write('tratada: $tratada, ')
+          ..write('errorSyncMessage: $errorSyncMessage')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $VisitaLocalTableTable extends VisitaLocalTable
+    with TableInfo<$VisitaLocalTableTable, VisitaLocalDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $VisitaLocalTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _visitaAppIdMeta =
+      const VerificationMeta('visitaAppId');
+  @override
+  late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
+      'COD_VISITA_APP', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  @override
+  late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
+      'FECHA', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _numEmplMeta = const VerificationMeta('numEmpl');
+  @override
+  late final GeneratedColumn<String> numEmpl = GeneratedColumn<String>(
+      'NUM_EMPL', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _contactoMeta = const VerificationMeta('contacto');
+  @override
+  late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
+      'CONTACTO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _resumenMeta = const VerificationMeta('resumen');
+  @override
+  late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
+      'RESUMEN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
+  @override
+  late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
+      'LATITUD', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _longitudMeta = const VerificationMeta('longitud');
+  @override
+  late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
+      'LONGITUD', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _enviadaMeta = const VerificationMeta('enviada');
+  @override
+  late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
+      'ENVIADA', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  final VerificationMeta _tratadaMeta = const VerificationMeta('tratada');
+  @override
+  late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
+      'TRATADA', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  final VerificationMeta _errorSyncMessageMeta =
+      const VerificationMeta('errorSyncMessage');
+  @override
+  late final GeneratedColumn<String> errorSyncMessage = GeneratedColumn<String>(
+      'ERROR_SYNC', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        visitaAppId,
+        clienteId,
+        fecha,
+        numEmpl,
+        contacto,
+        resumen,
+        latitud,
+        longitud,
+        enviada,
+        tratada,
+        errorSyncMessage
+      ];
+  @override
+  String get aliasedName => _alias ?? 'VISITAS_LOCAL_IMP';
+  @override
+  String get actualTableName => 'VISITAS_LOCAL_IMP';
+  @override
+  VerificationContext validateIntegrity(Insertable<VisitaLocalDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('COD_VISITA_APP')) {
+      context.handle(
+          _visitaAppIdMeta,
+          visitaAppId.isAcceptableOrUnknown(
+              data['COD_VISITA_APP']!, _visitaAppIdMeta));
+    } else if (isInserting) {
+      context.missing(_visitaAppIdMeta);
+    }
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('FECHA')) {
+      context.handle(
+          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+    } else if (isInserting) {
+      context.missing(_fechaMeta);
+    }
+    if (data.containsKey('NUM_EMPL')) {
+      context.handle(_numEmplMeta,
+          numEmpl.isAcceptableOrUnknown(data['NUM_EMPL']!, _numEmplMeta));
+    } else if (isInserting) {
+      context.missing(_numEmplMeta);
+    }
+    if (data.containsKey('CONTACTO')) {
+      context.handle(_contactoMeta,
+          contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta));
+    }
+    if (data.containsKey('RESUMEN')) {
+      context.handle(_resumenMeta,
+          resumen.isAcceptableOrUnknown(data['RESUMEN']!, _resumenMeta));
+    }
+    if (data.containsKey('LATITUD')) {
+      context.handle(_latitudMeta,
+          latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta));
+    } else if (isInserting) {
+      context.missing(_latitudMeta);
+    }
+    if (data.containsKey('LONGITUD')) {
+      context.handle(_longitudMeta,
+          longitud.isAcceptableOrUnknown(data['LONGITUD']!, _longitudMeta));
+    } else if (isInserting) {
+      context.missing(_longitudMeta);
+    }
+    if (data.containsKey('ENVIADA')) {
+      context.handle(_enviadaMeta,
+          enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
+    }
+    if (data.containsKey('TRATADA')) {
+      context.handle(_tratadaMeta,
+          tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta));
+    }
+    if (data.containsKey('ERROR_SYNC')) {
+      context.handle(
+          _errorSyncMessageMeta,
+          errorSyncMessage.isAcceptableOrUnknown(
+              data['ERROR_SYNC']!, _errorSyncMessageMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {visitaAppId};
+  @override
+  VisitaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return VisitaLocalDTO(
+      visitaAppId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP'])!,
+      clienteId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      fecha: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      numEmpl: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
+      contacto: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
+      resumen: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
+      latitud: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
+      longitud: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
+      enviada: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
+      tratada: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
+      errorSyncMessage: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ERROR_SYNC']),
+    );
+  }
+
+  @override
+  $VisitaLocalTableTable createAlias(String alias) {
+    return $VisitaLocalTableTable(attachedDatabase, alias);
   }
 }
 
@@ -14181,6 +14610,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       estadisticasUltimosPreciosTable =
       $EstadisticasUltimosPreciosTableTable(this);
   late final $VisitaTableTable visitaTable = $VisitaTableTable(this);
+  late final $VisitaLocalTableTable visitaLocalTable =
+      $VisitaLocalTableTable(this);
   @override
   Iterable<TableInfo<Table, dynamic>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -14216,7 +14647,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         articuloGrupoNetoTable,
         estadisticasClienteUsuarioVentasTable,
         estadisticasUltimosPreciosTable,
-        visitaTable
+        visitaTable,
+        visitaLocalTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -20,6 +20,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
+    @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _VisitaDTO;
@@ -27,10 +28,14 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
   factory VisitaDTO.fromJson(Map<String, dynamic> json) =>
       _$VisitaDTOFromJson(json);
 
-  Visita toDomain() {
+  Visita toDomain(
+      {required String? nombreCliente,
+      bool? enviada = true,
+      bool? tratada = true}) {
     return Visita(
       id: id,
       clienteId: clienteId,
+      nombreCliente: nombreCliente,
       fecha: fecha,
       numEmpl: numEmpl,
       contacto: contacto,
@@ -38,7 +43,10 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       latitud: latitud,
       longitud: longitud,
       lastUpdated: lastUpdated,
+      visitaAppId: visitaAppId,
       deleted: (deleted == 'S') ? true : false,
+      enviada: enviada!,
+      tratada: tratada!,
     );
   }
 
@@ -53,6 +61,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       resumen: Value(resumen),
       latitud: Value(latitud),
       longitud: Value(longitud),
+      visitaAppId: Value(visitaAppId),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -75,6 +84,7 @@ class VisitaTable extends Table {
   TextColumn get resumen => text().nullable().named('RESUMEN')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
+  TextColumn get visitaAppId => text().nullable().named('COD_VISITA_APP')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

@@ -59,15 +59,15 @@ class AppDrawer extends StatelessWidget {
             title: Text(S.of(context).commonWidgets_appDrawer_visitas),
             onTap: () => context.goNamed(AppRoutes.visitaindex.name),
           ),
-          ListTile(
-            enabled: false,
-            leading: const Icon(
-              MdiIcons.chartLine,
-              size: 30,
-            ),
-            title: Text(S.of(context).commonWidgets_appDrawer_kpi),
-            onTap: () => context.goNamed(AppRoutes.articuloindex.name),
-          ),
+          // ListTile(
+          //   enabled: false,
+          //   leading: const Icon(
+          //     MdiIcons.chartLine,
+          //     size: 30,
+          //   ),
+          //   title: Text(S.of(context).commonWidgets_appDrawer_kpi),
+          //   onTap: () => context.goNamed(AppRoutes.articuloindex.name),
+          // ),
           ListTile(
             leading: const Icon(
               Icons.settings_outlined,

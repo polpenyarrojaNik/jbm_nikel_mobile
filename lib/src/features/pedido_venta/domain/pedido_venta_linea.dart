@@ -19,6 +19,8 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     required double descuento1,
     required double descuento2,
     required double descuento3,
+    String? pedidoLineaIdComponente,
+    Money? importeLinea,
     required DateTime lastUpdated,
     required bool deleted,
   }) = _PedidoVentaLinea;

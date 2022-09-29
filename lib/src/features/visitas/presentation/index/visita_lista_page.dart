@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_tile.dart';
@@ -10,6 +11,7 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_router.dart';
 
 class VisitaListaPage extends ConsumerStatefulWidget {
   const VisitaListaPage({super.key});
@@ -81,8 +83,9 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
             data: (visitasList) => (visitasList.isEmpty)
                 ? Center(
                     child: Text(
-                    S.of(context).sinResultados,
-                  ))
+                      S.of(context).sinResultados,
+                    ),
+                  )
                 : ListView.separated(
                     separatorBuilder: (context, i) => const Divider(),
                     physics: const AlwaysScrollableScrollPhysics(),
@@ -95,13 +98,20 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => navigateToCreateVisitas(),
+      ),
     );
   }
 
   Future<void> refreshVisitsDB(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllVisitasRelacionados();
 
-    ref.read(visitasSearchQueryStateProvider.notifier).state = '';
     ref.read(visitasPaginationQueryStateProvider.notifier).state = 1;
+  }
+
+  void navigateToCreateVisitas() {
+    context.goNamed(AppRoutes.visitanew.name);
   }
 }

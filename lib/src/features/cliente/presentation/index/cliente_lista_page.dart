@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/cliente_id_nombre.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -17,7 +18,9 @@ import '../../../../core/routing/app_router.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
-  const ClienteListaPage({super.key});
+  const ClienteListaPage({super.key, required this.isSearchClienteFromVisita});
+
+  final bool isSearchClienteFromVisita;
 
   @override
   ConsumerState<ClienteListaPage> createState() => _ClienteListPageState();
@@ -87,7 +90,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     final state = ref.watch(clientesSearchResultsProvider);
 
     return Scaffold(
-      drawer: const AppDrawer(),
+      drawer: (!widget.isSearchClienteFromVisita) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
         title: S.of(context).cliente_index_titulo,
         searchTitle: S.of(context).cliente_index_buscarClientes,
@@ -108,10 +111,11 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                   : null,
             ),
           ),
-          IconButton(
-            onPressed: () => navigateToClientesAlrededor(context),
-            icon: const Icon(Icons.near_me_outlined),
-          ),
+          if (!widget.isSearchClienteFromVisita)
+            IconButton(
+              onPressed: () => navigateToClientesAlrededor(context),
+              icon: const Icon(Icons.near_me_outlined),
+            ),
         ],
       ),
       body: RefreshIndicator(
@@ -129,13 +133,36 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                     controller: _scrollController,
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: clienteList.length,
-                    itemBuilder: (context, i) =>
-                        ClienteListaTile(cliente: clienteList[i]),
+                    itemBuilder: (context, i) => GestureDetector(
+                      onTap: () => (!widget.isSearchClienteFromVisita)
+                          ? navigateToClienteDetalle(
+                              context: context, clienteId: clienteList[i].id)
+                          : selectClienteFromVisitaPage(
+                              context: context, cliente: clienteList[i]),
+                      child: ClienteListaTile(
+                        cliente: clienteList[i],
+                      ),
+                    ),
                   ),
           ),
         ),
       ),
     );
+  }
+
+  void navigateToClienteDetalle(
+      {required BuildContext context, required String clienteId}) {
+    context.goNamed(
+      AppRoutes.clienteshow.name,
+      params: {'clienteId': clienteId},
+    );
+  }
+
+  void selectClienteFromVisitaPage(
+      {required BuildContext context, required Cliente cliente}) {
+    ref.read(clienteFromVisitaStateProvider.notifier).state =
+        ClienteIdNombre(id: cliente.id, nombreCliente: cliente.nombreCliente);
+    context.pop();
   }
 
   void navigateToClientesAlrededor(BuildContext context) {
@@ -147,8 +174,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   Future<void> syncCustomerDb(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllClientesRelacionados();
 
-    ref.read(clientesSearchQueryStateProvider.notifier).state = '';
-    ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+    ref.refresh(clientesSearchQueryStateProvider);
   }
 
   void filterClientesPotenciales(BuildContext context) {

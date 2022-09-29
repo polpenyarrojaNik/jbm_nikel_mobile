@@ -309,6 +309,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sales orders"),
         "pedido_show_pedidoVentaDetalle_baseImponible":
             MessageLookupByLibrary.simpleMessage("Tax base"),
+        "pedido_show_pedidoVentaDetalle_dto":
+            MessageLookupByLibrary.simpleMessage("Disc."),
         "pedido_show_pedidoVentaDetalle_estado":
             MessageLookupByLibrary.simpleMessage("Status"),
         "pedido_show_pedidoVentaDetalle_fecha":
@@ -332,10 +334,33 @@ class MessageLookup extends MessageLookupByLibrary {
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "unidad": MessageLookupByLibrary.simpleMessage("unit"),
         "unidades": MessageLookupByLibrary.simpleMessage("units"),
+        "visita_enviada": MessageLookupByLibrary.simpleMessage("Enviada"),
         "visita_index_buscarVisitas":
             MessageLookupByLibrary.simpleMessage("Search visits..."),
         "visita_index_titulo": MessageLookupByLibrary.simpleMessage("Visits"),
+        "visita_noEnviada": MessageLookupByLibrary.simpleMessage("No enviada"),
         "visita_show_visitaDetalle_titulo":
-            MessageLookupByLibrary.simpleMessage("Visit detail")
+            MessageLookupByLibrary.simpleMessage("Visit detail"),
+        "visitas_edit_saved": MessageLookupByLibrary.simpleMessage("Saved"),
+        "visitas_edit_visitaEditar_cliente":
+            MessageLookupByLibrary.simpleMessage("Customer"),
+        "visitas_edit_visitaEditar_contacto":
+            MessageLookupByLibrary.simpleMessage("Contact"),
+        "visitas_edit_visitaEditar_errorValidarFormulario":
+            MessageLookupByLibrary.simpleMessage("Error validating form"),
+        "visitas_edit_visitaEditar_fecha":
+            MessageLookupByLibrary.simpleMessage("Date"),
+        "visitas_edit_visitaEditar_resumen":
+            MessageLookupByLibrary.simpleMessage("Summary"),
+        "visitas_edit_visitaEditar_saved":
+            MessageLookupByLibrary.simpleMessage("Saved"),
+        "visitas_edit_visitaEditar_titleEditar":
+            MessageLookupByLibrary.simpleMessage("Edit visit"),
+        "visitas_edit_visitaEditar_titleNueva":
+            MessageLookupByLibrary.simpleMessage("New visit"),
+        "visitas_show_visitaDetalle_contacto":
+            MessageLookupByLibrary.simpleMessage("Contact"),
+        "visitas_show_visitaDetalle_resumen":
+            MessageLookupByLibrary.simpleMessage("Summary")
       };
 }

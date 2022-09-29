@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:jbm_nikel_mobile/generated/l10n.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dio_interceptor.dart';
 
@@ -50,6 +51,7 @@ class App extends ConsumerWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
+            FormBuilderLocalizations.delegate,
           ],
           supportedLocales: S.delegate.supportedLocales,
           debugShowCheckedModeBanner: false,

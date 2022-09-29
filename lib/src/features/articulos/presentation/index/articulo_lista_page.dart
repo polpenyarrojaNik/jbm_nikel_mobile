@@ -107,7 +107,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   Future<void> refreshArticleDb(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllArticulosRelacionados();
 
-    ref.read(articulosSearchQueryStateProvider.notifier).state = '';
-    ref.read(articulosPaginationQueryStateProvider.notifier).state = 1;
+    ref.refresh(articulosSearchResultsProvider);
   }
 }

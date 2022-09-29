@@ -27,8 +27,14 @@ class _AppBarDatosRelacionadosState extends State<AppBarDatosRelacionados> {
   bool isSearching = false;
   final Icon icon = const Icon(Icons.search);
   final Icon searchIcon = const Icon(Icons.close);
-
+  final focusNode = FocusNode();
   final String searchText = '';
+
+  @override
+  void dispose() {
+    super.dispose();
+    focusNode.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +64,7 @@ class _AppBarDatosRelacionadosState extends State<AppBarDatosRelacionados> {
       ],
       title: (isSearching)
           ? SearchListTile(
+              focusNode: focusNode,
               onChanged: widget.onChanged!,
               searchTitle: widget.searchTitle!,
             )

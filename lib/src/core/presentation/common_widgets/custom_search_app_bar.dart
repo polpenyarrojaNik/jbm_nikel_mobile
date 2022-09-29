@@ -27,12 +27,23 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
   final Icon searchIcon = const Icon(Icons.close);
   final String searchText = '';
 
+  final focusNode = FocusNode();
+
+  @override
+  void dispose() {
+    super.dispose();
+    focusNode.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: (isSearching)
           ? SearchListTile(
-              searchTitle: widget.searchTitle, onChanged: widget.onChanged)
+              searchTitle: widget.searchTitle,
+              onChanged: widget.onChanged,
+              focusNode: focusNode,
+            )
           : Text(widget.title),
       actions: getListActionButtons(widget.actionButtons),
     );
@@ -43,6 +54,9 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
       isSearching = !isSearching;
       widget.onChanged('');
     });
+    if (isSearching) {
+      focusNode.requestFocus();
+    }
   }
 
   List<IconButton> getListActionButtons(List<IconButton>? actionButtons) {
@@ -64,10 +78,14 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
 
 class SearchListTile extends ConsumerWidget {
   const SearchListTile(
-      {super.key, required this.searchTitle, required this.onChanged});
+      {super.key,
+      required this.searchTitle,
+      required this.onChanged,
+      required this.focusNode});
 
   final String searchTitle;
   final Function(String searchText) onChanged;
+  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -78,6 +96,7 @@ class SearchListTile extends ConsumerWidget {
       //   size: 28,
       // ),
       title: TextField(
+        focusNode: focusNode,
         decoration: InputDecoration(
           hintText: searchTitle,
           hintStyle: const TextStyle(

@@ -26,6 +26,9 @@ class PedidoVentaLineaDTO
     @JsonKey(name: 'DESCUENTO1') required double descuento1,
     @JsonKey(name: 'DESCUENTO2') required double descuento2,
     @JsonKey(name: 'DESCUENTO3') required double descuento3,
+    @JsonKey(name: 'PEDIDO_LINEA_ID_COMPONENTE')
+        String? pedidoLineaIdComponente,
+    @JsonKey(name: 'TOTAL_LINEA') double? importeLinea,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') required String deleted,
   }) = _PedidoVentaLineaDTO;
@@ -47,6 +50,10 @@ class PedidoVentaLineaDTO
         descuento1: descuento1,
         descuento2: descuento2,
         descuento3: descuento3,
+        pedidoLineaIdComponente: pedidoLineaIdComponente,
+        importeLinea: (importeLinea != null)
+            ? importeLinea!.parseMoney(importeLinea!, divisaId)
+            : null,
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
   }
@@ -65,6 +72,8 @@ class PedidoVentaLineaDTO
       descuento1: Value(descuento1),
       descuento2: Value(descuento2),
       descuento3: Value(descuento3),
+      pedidoLineaIdComponente: Value(pedidoLineaIdComponente),
+      importeLinea: Value(importeLinea),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -85,6 +94,9 @@ class PedidoVentaLineaTable extends Table {
   RealColumn get descuento1 => real().named('DESCUENTO1')();
   RealColumn get descuento2 => real().named('DESCUENTO2')();
   RealColumn get descuento3 => real().named('DESCUENTO3')();
+  TextColumn get pedidoLineaIdComponente =>
+      text().nullable().named('PEDIDO_LINEA_ID_COMPONENTE')();
+  RealColumn get importeLinea => real().nullable().named('TOTAL_LINEA')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

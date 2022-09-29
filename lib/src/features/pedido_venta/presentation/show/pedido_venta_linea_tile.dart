@@ -15,94 +15,95 @@ class PedidoVentaLineaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.transparent,
-      child: Card(
-        clipBehavior: Clip.hardEdge,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4), // if you need this
-          side: BorderSide(
-            color: Colors.grey.withOpacity(
-              0.2,
+      padding: const EdgeInsets.all(4),
+      color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
+          ? Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5)
+          : Colors.transparent,
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 80,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(pedidoVentaLinea.pedidoVentaId,
+                      style: Theme.of(context).textTheme.caption),
+                  Text(pedidoVentaLinea.id),
+                ],
+              ),
             ),
-            width: 1,
-          ),
-        ),
-        child: IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 90,
-                color: Theme.of(context).colorScheme.surface,
-                padding: const EdgeInsets.all(4.0),
+            Flexible(
+              child: SizedBox(
+                height: 90,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(pedidoVentaLinea.pedidoVentaId,
-                        style: Theme.of(context).textTheme.caption),
-                    Text(pedidoVentaLinea.id),
-                  ],
-                ),
-              ),
-              Flexible(
-                child: Container(
-                  height: 100,
-                  padding: const EdgeInsets.all(6.5),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(pedidoVentaLinea.articuloId,
-                                style: Theme.of(context).textTheme.subtitle2),
-                            Row(
-                              children: [
-                                Text(
-                                  '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${(pedidoVentaLinea.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
-                                  style: Theme.of(context).textTheme.subtitle2,
-                                ),
-                              ],
-                            ),
-                          ]),
-                      Text(
-                        pedidoVentaLinea.articuloDescription!,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.caption,
-                      ),
-                      const Spacer(),
-                      Row(
+                    Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(
-                            formatPrecioYDescuento(
-                              precio: pedidoVentaLinea.precioDivisa,
-                              tipoPrecio: pedidoVentaLinea.tipoPrecio,
-                              descuento1: pedidoVentaLinea.descuento1,
-                              descuento2: pedidoVentaLinea.descuento2,
-                              descuento3: pedidoVentaLinea.descuento3,
-                            ),
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: const [
+                          Text(pedidoVentaLinea.articuloId,
+                              style: Theme.of(context).textTheme.subtitle2),
+                          Row(
+                            children: [
                               Text(
-                                'X',
+                                '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${(pedidoVentaLinea.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                                style: Theme.of(context).textTheme.subtitle2,
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ]),
+                    Text(
+                      pedidoVentaLinea.articuloDescription!,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecios(
+                                precio: pedidoVentaLinea.precioDivisa,
+                                tipoPrecio: pedidoVentaLinea.tipoPrecio,
+                              )}',
+                              style: Theme.of(context).textTheme.caption,
+                            ),
+                            if (pedidoVentaLinea.descuento1 != 0 ||
+                                pedidoVentaLinea.descuento2 != 0 ||
+                                pedidoVentaLinea.descuento3 != 0)
+                              Text(
+                                '${S.of(context).pedido_show_pedidoVentaDetalle_dto}: ${dtoText(
+                                  pedidoVentaLinea.descuento1,
+                                  pedidoVentaLinea.descuento2,
+                                  pedidoVentaLinea.descuento3,
+                                )}',
+                                style: Theme.of(context).textTheme.caption,
+                              ),
+                          ],
+                        ),
+                        if (pedidoVentaLinea.importeLinea != null)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                pedidoVentaLinea.importeLinea.toString(),
+                              ),
+                            ],
+                          ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

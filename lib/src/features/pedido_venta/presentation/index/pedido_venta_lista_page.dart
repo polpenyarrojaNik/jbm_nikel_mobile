@@ -108,8 +108,6 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
   Future<void> syncSalesOrderDB(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllPedidosRelacionados();
-
-    ref.read(pedidosSearchQueryStateProvider.notifier).state = '';
-    ref.read(pedidosPaginationQueryStateProvider.notifier).state = 1;
+    ref.invalidate(pedidosSearchResultsProvider);
   }
 }

@@ -17,7 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ClienteVentasArticulo {
   String get articuloId => throw _privateConstructorUsedError;
-  String get descripcion => throw _privateConstructorUsedError;
+  String? get descripcionES => throw _privateConstructorUsedError;
+  String? get descripcionEN => throw _privateConstructorUsedError;
+  String? get descripcionFR => throw _privateConstructorUsedError;
+  String? get descripcionDE => throw _privateConstructorUsedError;
+  String? get descripcionCA => throw _privateConstructorUsedError;
+  String? get descripcionGB => throw _privateConstructorUsedError;
+  String? get descripcionHU => throw _privateConstructorUsedError;
+  String? get descripcionIT => throw _privateConstructorUsedError;
+  String? get descripcionNL => throw _privateConstructorUsedError;
+  String? get descripcionPL => throw _privateConstructorUsedError;
+  String? get descripcionPT => throw _privateConstructorUsedError;
+  String? get descripcionRO => throw _privateConstructorUsedError;
+  String? get descripcionRU => throw _privateConstructorUsedError;
+  String? get descripcionCN => throw _privateConstructorUsedError;
+  String? get descripcionEL => throw _privateConstructorUsedError;
   Money get importeAnyo => throw _privateConstructorUsedError;
   Money get importeAnyo_1 => throw _privateConstructorUsedError;
   Money get importeAnyo_2 => throw _privateConstructorUsedError;
@@ -41,7 +55,21 @@ abstract class $ClienteVentasArticuloCopyWith<$Res> {
       _$ClienteVentasArticuloCopyWithImpl<$Res>;
   $Res call(
       {String articuloId,
-      String descripcion,
+      String? descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
       Money importeAnyo,
       Money importeAnyo_1,
       Money importeAnyo_2,
@@ -66,7 +94,21 @@ class _$ClienteVentasArticuloCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articuloId = freezed,
-    Object? descripcion = freezed,
+    Object? descripcionES = freezed,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
     Object? importeAnyo = freezed,
     Object? importeAnyo_1 = freezed,
     Object? importeAnyo_2 = freezed,
@@ -83,10 +125,66 @@ class _$ClienteVentasArticuloCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
+      descripcionES: descripcionES == freezed
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEN: descripcionEN == freezed
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: descripcionFR == freezed
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: descripcionDE == freezed
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: descripcionCA == freezed
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: descripcionGB == freezed
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: descripcionHU == freezed
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: descripcionIT == freezed
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: descripcionNL == freezed
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: descripcionPL == freezed
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: descripcionPT == freezed
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: descripcionRO == freezed
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: descripcionRU == freezed
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: descripcionCN == freezed
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: descripcionEL == freezed
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
       importeAnyo: importeAnyo == freezed
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
@@ -140,7 +238,21 @@ abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
   @override
   $Res call(
       {String articuloId,
-      String descripcion,
+      String? descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL,
       Money importeAnyo,
       Money importeAnyo_1,
       Money importeAnyo_2,
@@ -168,7 +280,21 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articuloId = freezed,
-    Object? descripcion = freezed,
+    Object? descripcionES = freezed,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
     Object? importeAnyo = freezed,
     Object? importeAnyo_1 = freezed,
     Object? importeAnyo_2 = freezed,
@@ -185,10 +311,66 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
-          ? _value.descripcion
-          : descripcion // ignore: cast_nullable_to_non_nullable
-              as String,
+      descripcionES: descripcionES == freezed
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEN: descripcionEN == freezed
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: descripcionFR == freezed
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: descripcionDE == freezed
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: descripcionCA == freezed
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: descripcionGB == freezed
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: descripcionHU == freezed
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: descripcionIT == freezed
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: descripcionNL == freezed
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: descripcionPL == freezed
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: descripcionPT == freezed
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: descripcionRO == freezed
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: descripcionRU == freezed
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: descripcionCN == freezed
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: descripcionEL == freezed
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
       importeAnyo: importeAnyo == freezed
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
@@ -238,7 +420,21 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
 class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   const _$_ClienteVentasArticulo(
       {required this.articuloId,
-      required this.descripcion,
+      this.descripcionES,
+      this.descripcionEN,
+      this.descripcionFR,
+      this.descripcionDE,
+      this.descripcionCA,
+      this.descripcionGB,
+      this.descripcionHU,
+      this.descripcionIT,
+      this.descripcionNL,
+      this.descripcionPL,
+      this.descripcionPT,
+      this.descripcionRO,
+      this.descripcionRU,
+      this.descripcionCN,
+      this.descripcionEL,
       required this.importeAnyo,
       required this.importeAnyo_1,
       required this.importeAnyo_2,
@@ -254,7 +450,35 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   @override
   final String articuloId;
   @override
-  final String descripcion;
+  final String? descripcionES;
+  @override
+  final String? descripcionEN;
+  @override
+  final String? descripcionFR;
+  @override
+  final String? descripcionDE;
+  @override
+  final String? descripcionCA;
+  @override
+  final String? descripcionGB;
+  @override
+  final String? descripcionHU;
+  @override
+  final String? descripcionIT;
+  @override
+  final String? descripcionNL;
+  @override
+  final String? descripcionPL;
+  @override
+  final String? descripcionPT;
+  @override
+  final String? descripcionRO;
+  @override
+  final String? descripcionRU;
+  @override
+  final String? descripcionCN;
+  @override
+  final String? descripcionEL;
   @override
   final Money importeAnyo;
   @override
@@ -278,7 +502,7 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
 
   @override
   String toString() {
-    return 'ClienteVentasArticulo(articuloId: $articuloId, descripcion: $descripcion, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
+    return 'ClienteVentasArticulo(articuloId: $articuloId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
   }
 
   @override
@@ -289,7 +513,35 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
+                .equals(other.descripcionES, descripcionES) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionEN, descripcionEN) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionFR, descripcionFR) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionDE, descripcionDE) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionCA, descripcionCA) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionGB, descripcionGB) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionHU, descripcionHU) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionIT, descripcionIT) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionNL, descripcionNL) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionPL, descripcionPL) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionPT, descripcionPT) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionRO, descripcionRO) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionRU, descripcionRU) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionCN, descripcionCN) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcionEL, descripcionEL) &&
             const DeepCollectionEquality()
                 .equals(other.importeAnyo, importeAnyo) &&
             const DeepCollectionEquality()
@@ -313,20 +565,35 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(importeAnyo),
-      const DeepCollectionEquality().hash(importeAnyo_1),
-      const DeepCollectionEquality().hash(importeAnyo_2),
-      const DeepCollectionEquality().hash(importeAnyo_3),
-      const DeepCollectionEquality().hash(importeAnyo_4),
-      const DeepCollectionEquality().hash(cantidadAnyo),
-      const DeepCollectionEquality().hash(cantidadAnyo_1),
-      const DeepCollectionEquality().hash(cantidadAnyo_2),
-      const DeepCollectionEquality().hash(cantidadAnyo_3),
-      const DeepCollectionEquality().hash(cantidadAnyo_4));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(articuloId),
+        const DeepCollectionEquality().hash(descripcionES),
+        const DeepCollectionEquality().hash(descripcionEN),
+        const DeepCollectionEquality().hash(descripcionFR),
+        const DeepCollectionEquality().hash(descripcionDE),
+        const DeepCollectionEquality().hash(descripcionCA),
+        const DeepCollectionEquality().hash(descripcionGB),
+        const DeepCollectionEquality().hash(descripcionHU),
+        const DeepCollectionEquality().hash(descripcionIT),
+        const DeepCollectionEquality().hash(descripcionNL),
+        const DeepCollectionEquality().hash(descripcionPL),
+        const DeepCollectionEquality().hash(descripcionPT),
+        const DeepCollectionEquality().hash(descripcionRO),
+        const DeepCollectionEquality().hash(descripcionRU),
+        const DeepCollectionEquality().hash(descripcionCN),
+        const DeepCollectionEquality().hash(descripcionEL),
+        const DeepCollectionEquality().hash(importeAnyo),
+        const DeepCollectionEquality().hash(importeAnyo_1),
+        const DeepCollectionEquality().hash(importeAnyo_2),
+        const DeepCollectionEquality().hash(importeAnyo_3),
+        const DeepCollectionEquality().hash(importeAnyo_4),
+        const DeepCollectionEquality().hash(cantidadAnyo),
+        const DeepCollectionEquality().hash(cantidadAnyo_1),
+        const DeepCollectionEquality().hash(cantidadAnyo_2),
+        const DeepCollectionEquality().hash(cantidadAnyo_3),
+        const DeepCollectionEquality().hash(cantidadAnyo_4)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -338,7 +605,21 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
 abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
   const factory _ClienteVentasArticulo(
       {required final String articuloId,
-      required final String descripcion,
+      final String? descripcionES,
+      final String? descripcionEN,
+      final String? descripcionFR,
+      final String? descripcionDE,
+      final String? descripcionCA,
+      final String? descripcionGB,
+      final String? descripcionHU,
+      final String? descripcionIT,
+      final String? descripcionNL,
+      final String? descripcionPL,
+      final String? descripcionPT,
+      final String? descripcionRO,
+      final String? descripcionRU,
+      final String? descripcionCN,
+      final String? descripcionEL,
       required final Money importeAnyo,
       required final Money importeAnyo_1,
       required final Money importeAnyo_2,
@@ -354,7 +635,35 @@ abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
   @override
   String get articuloId;
   @override
-  String get descripcion;
+  String? get descripcionES;
+  @override
+  String? get descripcionEN;
+  @override
+  String? get descripcionFR;
+  @override
+  String? get descripcionDE;
+  @override
+  String? get descripcionCA;
+  @override
+  String? get descripcionGB;
+  @override
+  String? get descripcionHU;
+  @override
+  String? get descripcionIT;
+  @override
+  String? get descripcionNL;
+  @override
+  String? get descripcionPL;
+  @override
+  String? get descripcionPT;
+  @override
+  String? get descripcionRO;
+  @override
+  String? get descripcionRU;
+  @override
+  String? get descripcionCN;
+  @override
+  String? get descripcionEL;
   @override
   Money get importeAnyo;
   @override

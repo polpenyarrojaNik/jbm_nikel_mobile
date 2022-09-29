@@ -1604,6 +1604,16 @@ class S {
     );
   }
 
+  /// `Disc.`
+  String get pedido_show_pedidoVentaDetalle_dto {
+    return Intl.message(
+      'Disc.',
+      name: 'pedido_show_pedidoVentaDetalle_dto',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sync done successfully`
   String get settings_sincronicacionRealizadaConExito {
     return Intl.message(
@@ -1644,6 +1654,26 @@ class S {
     );
   }
 
+  /// `Enviada`
+  String get visita_enviada {
+    return Intl.message(
+      'Enviada',
+      name: 'visita_enviada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No enviada`
+  String get visita_noEnviada {
+    return Intl.message(
+      'No enviada',
+      name: 'visita_noEnviada',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Search visits...`
   String get visita_index_buscarVisitas {
     return Intl.message(
@@ -1659,6 +1689,116 @@ class S {
     return Intl.message(
       'Visit detail',
       name: 'visita_show_visitaDetalle_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get visitas_show_visitaDetalle_contacto {
+    return Intl.message(
+      'Contact',
+      name: 'visitas_show_visitaDetalle_contacto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summary`
+  String get visitas_show_visitaDetalle_resumen {
+    return Intl.message(
+      'Summary',
+      name: 'visitas_show_visitaDetalle_resumen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saved`
+  String get visitas_edit_saved {
+    return Intl.message(
+      'Saved',
+      name: 'visitas_edit_saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New visit`
+  String get visitas_edit_visitaEditar_titleNueva {
+    return Intl.message(
+      'New visit',
+      name: 'visitas_edit_visitaEditar_titleNueva',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit visit`
+  String get visitas_edit_visitaEditar_titleEditar {
+    return Intl.message(
+      'Edit visit',
+      name: 'visitas_edit_visitaEditar_titleEditar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error validating form`
+  String get visitas_edit_visitaEditar_errorValidarFormulario {
+    return Intl.message(
+      'Error validating form',
+      name: 'visitas_edit_visitaEditar_errorValidarFormulario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get visitas_edit_visitaEditar_fecha {
+    return Intl.message(
+      'Date',
+      name: 'visitas_edit_visitaEditar_fecha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get visitas_edit_visitaEditar_contacto {
+    return Intl.message(
+      'Contact',
+      name: 'visitas_edit_visitaEditar_contacto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summary`
+  String get visitas_edit_visitaEditar_resumen {
+    return Intl.message(
+      'Summary',
+      name: 'visitas_edit_visitaEditar_resumen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer`
+  String get visitas_edit_visitaEditar_cliente {
+    return Intl.message(
+      'Customer',
+      name: 'visitas_edit_visitaEditar_cliente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saved`
+  String get visitas_edit_visitaEditar_saved {
+    return Intl.message(
+      'Saved',
+      name: 'visitas_edit_visitaEditar_saved',
       desc: '',
       args: [],
     );

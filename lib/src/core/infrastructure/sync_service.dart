@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -12,6 +13,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -35,7 +37,9 @@ import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
+import '../../features/usuario/domain/usuario.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
+import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../exceptions/app_exception.dart';
 import '../presentation/app.dart';
 import 'database.dart';
@@ -49,12 +53,14 @@ final syncServiceProvider = Provider.autoDispose<SyncService>(
   (ref) => SyncService(
     ref.watch(appDatabaseProvider),
     ref.watch(dioProvider),
+    ref.watch(usuarioNotifierProvider)!,
   ),
 );
 
 class SyncService {
   final Dio _dio;
   final AppDatabase _db;
+  final Usuario _usuario;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     dotenv.get('URLTEST', fallback: 'localhost:3001'),
@@ -66,7 +72,7 @@ class SyncService {
     '/api/v1/sync/init-db',
   );
 
-  SyncService(this._db, this._dio);
+  SyncService(this._db, this._dio, this._usuario);
 
   Future<void> initDatabaBase() async {
     try {
@@ -79,6 +85,8 @@ class SyncService {
       }
     } on AppException catch (e) {
       log.severe(e.details);
+      rethrow;
+    } catch (e) {
       rethrow;
     }
   }
@@ -141,6 +149,8 @@ class SyncService {
             e.response?.data['message'] ??
             'Internet Error',
       );
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -213,7 +223,9 @@ class SyncService {
   }
 
   Future<void> syncAllVisitasRelacionados() async {
+    await enviarVisitasNoEnviadas();
     await syncVisitas();
+    await checkVisitasTratadas();
     await syncAllAuxiliares();
   }
 
@@ -798,6 +810,104 @@ class SyncService {
           ''').getSingle();
 
       return DateTime.parse(query.data['MAX_DATE']);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> enviarVisitasNoEnviadas() async {
+    try {
+      final visitasNoEnviadas = await getVisitasNoEnviadas();
+      for (var i = 0; i < visitasNoEnviadas.length; i++) {
+        final visitaLocalEnviada = await _remoteCreateVisita(
+            visitasNoEnviadas[i], _usuario.provisionalToken);
+        await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() async {
+    try {
+      return (_db.select(_db.visitaLocalTable)
+            ..where((tbl) => tbl.enviada.equals('N')))
+          .get();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<VisitaLocalDTO> _remoteCreateVisita(
+      VisitaLocalDTO visitaLocalDto, String provisionalToken) async {
+    try {
+      final requestUri = Uri.http(
+        dotenv.get('URLTEST', fallback: 'localhost:3001'),
+        'api/v1/online/visitas',
+      );
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+        data: jsonEncode(visitaLocalDto.toJson()),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
+
+        return VisitaLocalDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } on DioError catch (e) {
+      String? errorDetalle;
+      final responseErrorJson = (e.response?.data is List<int>)
+          ? e.response?.statusMessage
+          : e.response?.data['detalle'] ?? e.response?.data['message'];
+      if (responseErrorJson != null) {
+        errorDetalle = responseErrorJson;
+
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
+      } else {
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> updateVisitaInDB(
+      {required VisitaLocalDTO visitaLocalDto}) async {
+    try {
+      await _db.update(_db.visitaLocalTable).replace(visitaLocalDto);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> checkVisitasTratadas() async {
+    try {
+      final query = _db.select(_db.visitaLocalTable).join([
+        innerJoin(
+            _db.visitaTable,
+            _db.visitaTable.visitaAppId
+                .equalsExp(_db.visitaLocalTable.visitaAppId))
+      ]);
+
+      query.where(_db.visitaLocalTable.tratada.equals('N'));
+
+      final visitasNoTratadasDTO =
+          await query.map((row) => row.readTable(_db.visitaLocalTable)).get();
+
+      for (var i = 0; i < visitasNoTratadasDTO.length; i++) {
+        _db
+            .update(_db.visitaLocalTable)
+            .write(const VisitaLocalTableCompanion(tratada: Value('S')));
+      }
     } catch (e) {
       rethrow;
     }

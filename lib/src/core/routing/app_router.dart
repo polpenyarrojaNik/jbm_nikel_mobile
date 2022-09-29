@@ -34,6 +34,7 @@ import '../../features/settings/presentation/settings_page.dart';
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
+import '../../features/visitas/domain/visita_id_is_local_param.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
@@ -74,6 +75,7 @@ enum AppRoutes {
   visitaindex,
   visitashow,
   visitaedit,
+  visitasearchcliente,
   visitanew,
   kpisindex,
   settings,
@@ -127,7 +129,8 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: AppRoutes.clienteindex.name,
           path: '/clientes',
-          builder: (context, state) => const ClienteListaPage(),
+          builder: (context, state) =>
+              const ClienteListaPage(isSearchClienteFromVisita: false),
           routes: [
             GoRoute(
               path: 'alrededor',
@@ -484,34 +487,46 @@ class RouterNotifier extends ChangeNotifier {
           builder: (context, state) => const VisitaListaPage(),
           routes: [
             GoRoute(
-              name: AppRoutes.visitashow.name,
-              path: ':visitaId',
-              pageBuilder: (context, state) {
-                final visitaId = state.params['id']!;
-                return MaterialPage(
-                  key: state.pageKey,
-                  child: VisitaDetallePage(visitaId: visitaId),
-                );
-              },
-            ),
+                name: AppRoutes.visitanew.name,
+                path: 'new',
+                pageBuilder: (context, state) => MaterialPage(
+                      key: state.pageKey,
+                      fullscreenDialog: true,
+                      child: VisitaEditPage(id: null),
+                    ),
+                routes: [
+                  GoRoute(
+                    name: AppRoutes.visitasearchcliente.name,
+                    path: 'search_clientes',
+                    builder: (context, state) =>
+                        const ClienteListaPage(isSearchClienteFromVisita: true),
+                  ),
+                ]),
             GoRoute(
-              name: AppRoutes.visitanew.name,
-              path: 'new',
+              name: AppRoutes.visitashow.name,
+              path: ':id',
               pageBuilder: (context, state) {
+                final id = state.params['id']!;
+                final isLocal = state.extra as bool;
                 return MaterialPage(
                   key: state.pageKey,
-                  child: VisitaEditPage(),
+                  child: VisitaDetallePage(
+                    visitaIdIsLocalParam:
+                        VisitaIdIsLocalParam(id: id, isLocal: isLocal),
+                  ),
                 );
               },
             ),
             GoRoute(
               name: AppRoutes.visitaedit.name,
-              path: 'edit',
+              path: ':id/edit',
               pageBuilder: (context, state) {
-                final visitaId = state.params['id']!;
+                final id = state.params['id']!;
+
                 return MaterialPage(
+                  fullscreenDialog: true,
                   key: state.pageKey,
-                  child: VisitaEditPage(visitaId: visitaId),
+                  child: VisitaEditPage(id: id),
                 );
               },
             ),

@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'visita_dto.dart';
+part of 'visita_local_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
-      id: json['VISITA_ID'] as String,
+_$_VisitaLocalDTO _$$_VisitaLocalDTOFromJson(Map<String, dynamic> json) =>
+    _$_VisitaLocalDTO(
+      visitaAppId: json['COD_VISITA_APP'] as String?,
       clienteId: json['CLIENTE_ID'] as String,
       fecha: DateTime.parse(json['FECHA'] as String),
       numEmpl: json['NUM_EMPL'] as String,
@@ -15,14 +16,14 @@ _$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
       resumen: json['RESUMEN'] as String?,
       latitud: (json['LATITUD'] as num).toDouble(),
       longitud: (json['LONGITUD'] as num).toDouble(),
-      visitaAppId: json['COD_VISITA_APP'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
+      enviada: json['ENVIADA'] as String? ?? 'N',
+      tratada: json['TRATADA'] as String? ?? 'N',
+      errorSyncMessage: json['ERROR_SYNC'] as String?,
     );
 
-Map<String, dynamic> _$$_VisitaDTOToJson(_$_VisitaDTO instance) =>
+Map<String, dynamic> _$$_VisitaLocalDTOToJson(_$_VisitaLocalDTO instance) =>
     <String, dynamic>{
-      'VISITA_ID': instance.id,
+      'COD_VISITA_APP': instance.visitaAppId,
       'CLIENTE_ID': instance.clienteId,
       'FECHA': instance.fecha.toIso8601String(),
       'NUM_EMPL': instance.numEmpl,
@@ -30,7 +31,7 @@ Map<String, dynamic> _$$_VisitaDTOToJson(_$_VisitaDTO instance) =>
       'RESUMEN': instance.resumen,
       'LATITUD': instance.latitud,
       'LONGITUD': instance.longitud,
-      'COD_VISITA_APP': instance.visitaAppId,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
+      'ENVIADA': instance.enviada,
+      'TRATADA': instance.tratada,
+      'ERROR_SYNC': instance.errorSyncMessage,
     };

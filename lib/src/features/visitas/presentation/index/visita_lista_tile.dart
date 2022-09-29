@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/chip_container.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/visita.dart';
 
 class VisitaListaTile extends StatelessWidget {
@@ -13,11 +15,13 @@ class VisitaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          navigateToVisitaDetalle(context: context, visitaId: visita.id),
+      onTap: () => navigateToVisitaDetalle(
+        context: context,
+        id: (visita.tratada) ? visita.id! : visita.visitaAppId!,
+        isLocal: !visita.tratada,
+      ),
       child: Container(
         color: Colors.transparent,
-        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,11 +31,28 @@ class VisitaListaTile extends StatelessWidget {
                 Text(
                   dateFormatter(visita.fecha.toLocal().toIso8601String()),
                 ),
+                if (getStatusVisitaText(
+                        context, visita.enviada, visita.tratada) !=
+                    null)
+                  ChipContainer(
+                    text: getStatusVisitaText(
+                        context, visita.enviada, visita.tratada)!,
+                    color: getStatusVisitaColor(
+                        context, visita.enviada, visita.tratada),
+                  ),
               ],
             ),
             Text(
-              visita.id,
+              '#${visita.clienteId} ${(visita.nombreCliente != null) ? visita.nombreCliente : ''}',
+              style: Theme.of(context).textTheme.subtitle2,
             ),
+            gapH8,
+            if (visita.resumen != null)
+              Text(
+                visita.resumen!,
+                maxLines: 3,
+                style: Theme.of(context).textTheme.caption,
+              ),
           ],
         ),
       ),
@@ -39,7 +60,10 @@ class VisitaListaTile extends StatelessWidget {
   }
 
   void navigateToVisitaDetalle(
-      {required BuildContext context, required String visitaId}) {
-    context.goNamed(AppRoutes.visitashow.name, params: {'visitaId': visitaId});
+      {required BuildContext context,
+      required String id,
+      required bool isLocal}) {
+    context.goNamed(AppRoutes.visitashow.name,
+        params: {'id': id}, extra: isLocal);
   }
 }

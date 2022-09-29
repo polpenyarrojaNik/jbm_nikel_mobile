@@ -29,6 +29,8 @@ mixin _$AppException {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +44,8 @@ mixin _$AppException {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,8 @@ mixin _$AppException {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -73,6 +79,8 @@ mixin _$AppException {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +94,8 @@ mixin _$AppException {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +109,8 @@ mixin _$AppException {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -207,6 +219,8 @@ class _$RestApiFailure implements RestApiFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return restApiFailure(errorCode, errorMessage);
   }
@@ -223,6 +237,8 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return restApiFailure?.call(errorCode, errorMessage);
   }
@@ -239,6 +255,8 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (restApiFailure != null) {
@@ -263,6 +281,8 @@ class _$RestApiFailure implements RestApiFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return restApiFailure(this);
   }
@@ -279,6 +299,8 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return restApiFailure?.call(this);
   }
@@ -295,6 +317,8 @@ class _$RestApiFailure implements RestApiFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (restApiFailure != null) {
@@ -392,6 +416,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return authLocalFailure(errorMessage);
   }
@@ -408,6 +434,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return authLocalFailure?.call(errorMessage);
   }
@@ -424,6 +452,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (authLocalFailure != null) {
@@ -448,6 +478,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return authLocalFailure(this);
   }
@@ -464,6 +496,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return authLocalFailure?.call(this);
   }
@@ -480,6 +514,8 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (authLocalFailure != null) {
@@ -577,6 +613,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return fetchLocalDataFailure(errorMessage);
   }
@@ -593,6 +631,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return fetchLocalDataFailure?.call(errorMessage);
   }
@@ -609,6 +649,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (fetchLocalDataFailure != null) {
@@ -633,6 +675,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return fetchLocalDataFailure(this);
   }
@@ -649,6 +693,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return fetchLocalDataFailure?.call(this);
   }
@@ -665,6 +711,8 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (fetchLocalDataFailure != null) {
@@ -764,6 +812,8 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return createFileInCacheFailure(errorMessage);
   }
@@ -780,6 +830,8 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return createFileInCacheFailure?.call(errorMessage);
   }
@@ -796,6 +848,8 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (createFileInCacheFailure != null) {
@@ -820,6 +874,8 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return createFileInCacheFailure(this);
   }
@@ -836,6 +892,8 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return createFileInCacheFailure?.call(this);
   }
@@ -852,6 +910,8 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (createFileInCacheFailure != null) {
@@ -958,6 +1018,8 @@ class _$SyncFailure implements SyncFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return syncFailure(tableToSync, errorMessage);
   }
@@ -974,6 +1036,8 @@ class _$SyncFailure implements SyncFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return syncFailure?.call(tableToSync, errorMessage);
   }
@@ -990,6 +1054,8 @@ class _$SyncFailure implements SyncFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (syncFailure != null) {
@@ -1014,6 +1080,8 @@ class _$SyncFailure implements SyncFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return syncFailure(this);
   }
@@ -1030,6 +1098,8 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return syncFailure?.call(this);
   }
@@ -1046,6 +1116,8 @@ class _$SyncFailure implements SyncFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (syncFailure != null) {
@@ -1119,6 +1191,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return clienteNotFound();
   }
@@ -1135,6 +1209,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return clienteNotFound?.call();
   }
@@ -1151,6 +1227,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (clienteNotFound != null) {
@@ -1175,6 +1253,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return clienteNotFound(this);
   }
@@ -1191,6 +1271,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return clienteNotFound?.call(this);
   }
@@ -1207,6 +1289,8 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (clienteNotFound != null) {
@@ -1274,6 +1358,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return articuloNotFound();
   }
@@ -1290,6 +1376,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return articuloNotFound?.call();
   }
@@ -1306,6 +1394,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (articuloNotFound != null) {
@@ -1330,6 +1420,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return articuloNotFound(this);
   }
@@ -1346,6 +1438,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return articuloNotFound?.call(this);
   }
@@ -1362,6 +1456,8 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (articuloNotFound != null) {
@@ -1431,6 +1527,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return pedidoVentaNotFound();
   }
@@ -1447,6 +1545,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return pedidoVentaNotFound?.call();
   }
@@ -1463,6 +1563,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (pedidoVentaNotFound != null) {
@@ -1487,6 +1589,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return pedidoVentaNotFound(this);
   }
@@ -1503,6 +1607,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return pedidoVentaNotFound?.call(this);
   }
@@ -1519,6 +1625,8 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (pedidoVentaNotFound != null) {
@@ -1612,6 +1720,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     required TResult Function() articuloNotFound,
     required TResult Function() pedidoVentaNotFound,
     required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
   }) {
     return pedidoVentaDeleteFailure(errorMessage);
   }
@@ -1628,6 +1738,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
   }) {
     return pedidoVentaDeleteFailure?.call(errorMessage);
   }
@@ -1644,6 +1756,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function()? articuloNotFound,
     TResult Function()? pedidoVentaNotFound,
     TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
     required TResult orElse(),
   }) {
     if (pedidoVentaDeleteFailure != null) {
@@ -1668,6 +1782,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
         pedidoVentaNotFound,
     required TResult Function(PedidoVentaDeleteFailure value)
         pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
   }) {
     return pedidoVentaDeleteFailure(this);
   }
@@ -1684,6 +1800,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
   }) {
     return pedidoVentaDeleteFailure?.call(this);
   }
@@ -1700,6 +1818,8 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
     TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
     TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
     required TResult orElse(),
   }) {
     if (pedidoVentaDeleteFailure != null) {
@@ -1717,4 +1837,365 @@ abstract class PedidoVentaDeleteFailure implements AppException {
   @JsonKey(ignore: true)
   _$$PedidoVentaDeleteFailureCopyWith<_$PedidoVentaDeleteFailure>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InsertDataFailureCopyWith<$Res> {
+  factory _$$InsertDataFailureCopyWith(
+          _$InsertDataFailure value, $Res Function(_$InsertDataFailure) then) =
+      __$$InsertDataFailureCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$InsertDataFailureCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res>
+    implements _$$InsertDataFailureCopyWith<$Res> {
+  __$$InsertDataFailureCopyWithImpl(
+      _$InsertDataFailure _value, $Res Function(_$InsertDataFailure) _then)
+      : super(_value, (v) => _then(v as _$InsertDataFailure));
+
+  @override
+  _$InsertDataFailure get _value => super._value as _$InsertDataFailure;
+
+  @override
+  $Res call({
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_$InsertDataFailure(
+      errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InsertDataFailure implements InsertDataFailure {
+  const _$InsertDataFailure(this.errorMessage);
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'AppException.insertDataFailure(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InsertDataFailure &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$InsertDataFailureCopyWith<_$InsertDataFailure> get copyWith =>
+      __$$InsertDataFailureCopyWithImpl<_$InsertDataFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int errorCode, String errorMessage)
+        restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
+    required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
+    required TResult Function(String tableToSync, String errorMessage)
+        syncFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
+  }) {
+    return insertDataFailure(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
+  }) {
+    return insertDataFailure?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
+    required TResult orElse(),
+  }) {
+    if (insertDataFailure != null) {
+      return insertDataFailure(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
+    required TResult Function(FetchLocalDataFailure value)
+        fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
+    required TResult Function(SyncFailure value) syncFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
+  }) {
+    return insertDataFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
+  }) {
+    return insertDataFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
+    required TResult orElse(),
+  }) {
+    if (insertDataFailure != null) {
+      return insertDataFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InsertDataFailure implements AppException {
+  const factory InsertDataFailure(final String errorMessage) =
+      _$InsertDataFailure;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$InsertDataFailureCopyWith<_$InsertDataFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NotConnectionFailureCopyWith<$Res> {
+  factory _$$NotConnectionFailureCopyWith(_$NotConnectionFailure value,
+          $Res Function(_$NotConnectionFailure) then) =
+      __$$NotConnectionFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NotConnectionFailureCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res>
+    implements _$$NotConnectionFailureCopyWith<$Res> {
+  __$$NotConnectionFailureCopyWithImpl(_$NotConnectionFailure _value,
+      $Res Function(_$NotConnectionFailure) _then)
+      : super(_value, (v) => _then(v as _$NotConnectionFailure));
+
+  @override
+  _$NotConnectionFailure get _value => super._value as _$NotConnectionFailure;
+}
+
+/// @nodoc
+
+class _$NotConnectionFailure implements NotConnectionFailure {
+  const _$NotConnectionFailure();
+
+  @override
+  String toString() {
+    return 'AppException.notConnection()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NotConnectionFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int errorCode, String errorMessage)
+        restApiFailure,
+    required TResult Function(String errorMessage) authLocalFailure,
+    required TResult Function(String errorMessage) fetchLocalDataFailure,
+    required TResult Function(String errorMessage) createFileInCacheFailure,
+    required TResult Function(String tableToSync, String errorMessage)
+        syncFailure,
+    required TResult Function() clienteNotFound,
+    required TResult Function() articuloNotFound,
+    required TResult Function() pedidoVentaNotFound,
+    required TResult Function(String errorMessage) pedidoVentaDeleteFailure,
+    required TResult Function(String errorMessage) insertDataFailure,
+    required TResult Function() notConnection,
+  }) {
+    return notConnection();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
+  }) {
+    return notConnection?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult Function(String errorMessage)? authLocalFailure,
+    TResult Function(String errorMessage)? fetchLocalDataFailure,
+    TResult Function(String errorMessage)? createFileInCacheFailure,
+    TResult Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult Function()? clienteNotFound,
+    TResult Function()? articuloNotFound,
+    TResult Function()? pedidoVentaNotFound,
+    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult Function(String errorMessage)? insertDataFailure,
+    TResult Function()? notConnection,
+    required TResult orElse(),
+  }) {
+    if (notConnection != null) {
+      return notConnection();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RestApiFailure value) restApiFailure,
+    required TResult Function(AuthLocalFailure value) authLocalFailure,
+    required TResult Function(FetchLocalDataFailure value)
+        fetchLocalDataFailure,
+    required TResult Function(CreateFileInCahceFailure value)
+        createFileInCacheFailure,
+    required TResult Function(SyncFailure value) syncFailure,
+    required TResult Function(ClienteNotFoundFailure value) clienteNotFound,
+    required TResult Function(ArticuloNotFoundFailure value) articuloNotFound,
+    required TResult Function(PedidoVentaNotFoundFailure value)
+        pedidoVentaNotFound,
+    required TResult Function(PedidoVentaDeleteFailure value)
+        pedidoVentaDeleteFailure,
+    required TResult Function(InsertDataFailure value) insertDataFailure,
+    required TResult Function(NotConnectionFailure value) notConnection,
+  }) {
+    return notConnection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
+  }) {
+    return notConnection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RestApiFailure value)? restApiFailure,
+    TResult Function(AuthLocalFailure value)? authLocalFailure,
+    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult Function(SyncFailure value)? syncFailure,
+    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult Function(InsertDataFailure value)? insertDataFailure,
+    TResult Function(NotConnectionFailure value)? notConnection,
+    required TResult orElse(),
+  }) {
+    if (notConnection != null) {
+      return notConnection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NotConnectionFailure implements AppException {
+  const factory NotConnectionFailure() = _$NotConnectionFailure;
 }

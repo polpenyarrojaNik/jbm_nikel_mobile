@@ -8,6 +8,7 @@ import '../../../generated/l10n.dart';
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/cliente_estado_potencial.dart';
 import '../../features/cliente/domain/cliente_tipo_potencial.dart';
+import '../../features/cliente/domain/cliente_ventas_articulo.dart';
 import '../../features/cliente/domain/metodo_cobro.dart';
 import '../../features/cliente/domain/plazo_cobro.dart';
 
@@ -159,33 +160,7 @@ String getDescriptionInLocalLanguage({required Articulo articulo}) {
   } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
     return articulo.descripcionEN!;
   }
-  //  else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
-  //   return articulo.descripcionFR!;
-  // } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
-  //   return articulo.descripcionDE!;
-  // } else if (currentLocale == 'ca' && articulo.descripcionCA != null) {
-  //   return articulo.descripcionCA!;
-  // } else if (currentLocale == 'gb' && articulo.descripcionGB != null) {
-  //   return articulo.descripcionGB!;
-  // } else if (currentLocale == 'hu' && articulo.descripcionHU != null) {
-  //   return articulo.descripcionHU!;
-  // } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
-  //   return articulo.descripcionIT!;
-  // } else if (currentLocale == 'nl' && articulo.descripcionNL != null) {
-  //   return articulo.descripcionNL!;
-  // } else if (currentLocale == 'pl' && articulo.descripcionPL != null) {
-  //   return articulo.descripcionPL!;
-  // } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
-  //   return articulo.descripcionPT!;
-  // } else if (currentLocale == 'ro' && articulo.descripcionRO != null) {
-  //   return articulo.descripcionRO!;
-  // } else if (currentLocale == 'ru' && articulo.descripcionRU != null) {
-  //   return articulo.descripcionRU!;
-  // } else if (currentLocale == 'cn' && articulo.descripcionCN != null) {
-  //   return articulo.descripcionCN!;
-  // } else if (currentLocale == 'el' && articulo.descripcionEL != null) {
-  //   return articulo.descripcionEL!;
-  //}
+
   return articulo.descripcionES;
 }
 
@@ -280,4 +255,38 @@ String? getClienteTipoPotencialInLocalLanguage(
   }
 
   return null;
+}
+
+String? getClienteVentasArticuloDescripcionInLocalLanguage(
+    {required ClienteVentasArticulo clienteVentasArticulo}) {
+  final currentLocale = Intl.getCurrentLocale();
+
+  if (currentLocale == 'es' && clienteVentasArticulo.descripcionES != null) {
+    return clienteVentasArticulo.descripcionES!;
+  } else if (currentLocale == 'en' &&
+      clienteVentasArticulo.descripcionEN != null) {
+    return clienteVentasArticulo.descripcionEN!;
+  }
+
+  return null;
+}
+
+Color? getStatusVisitaColor(BuildContext context, bool enviada, bool tratada) {
+  if (tratada) {
+    return null;
+  } else if (enviada) {
+    return Theme.of(context).colorScheme.secondaryContainer;
+  } else {
+    return Theme.of(context).colorScheme.errorContainer;
+  }
+}
+
+String? getStatusVisitaText(BuildContext context, bool enviada, bool tratada) {
+  if (tratada) {
+    return null;
+  } else if (enviada) {
+    return S.of(context).visita_enviada;
+  } else {
+    return S.of(context).visita_noEnviada;
+  }
 }

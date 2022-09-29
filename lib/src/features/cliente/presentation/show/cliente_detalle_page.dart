@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -91,20 +92,10 @@ class _ClienteHeader extends StatelessWidget {
                   ),
                 ),
               if (cliente.clientePotencial ?? false)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.errorContainer,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      getClienteEstadoPotencialInLocalLanguage(
-                          estadoPotencial: cliente.clienteEstadoPotencial),
-                      style: Theme.of(context).textTheme.caption,
-                    ),
-                  ),
-                )
+                ChipContainer(
+                    text: getClienteEstadoPotencialInLocalLanguage(
+                        estadoPotencial: cliente.clienteEstadoPotencial),
+                    color: Theme.of(context).colorScheme.errorContainer),
             ],
           ),
           gapH8,

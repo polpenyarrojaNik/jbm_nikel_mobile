@@ -36,6 +36,7 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
+import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import 'familia_dto.dart';
 
 part 'database.g.dart';
@@ -74,6 +75,7 @@ const localDatabaseName = 'jbm.sqlite';
   FamiliaTable,
   SubfamiliaTable,
   VisitaTable,
+  VisitaLocalTable,
   MetodoDeCobroTable,
   PlazoDeCobroTable,
   PaisTable,

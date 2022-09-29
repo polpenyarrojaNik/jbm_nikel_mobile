@@ -30,6 +30,11 @@ class AppException with _$AppException {
 
   const factory AppException.pedidoVentaDeleteFailure(String errorMessage) =
       PedidoVentaDeleteFailure;
+
+  const factory AppException.insertDataFailure(String errorMessage) =
+      InsertDataFailure;
+
+  const factory AppException.notConnection() = NotConnectionFailure;
 }
 
 class AppExceptionData {
@@ -80,6 +85,14 @@ extension AppExceptionDetalles on AppException {
       pedidoVentaDeleteFailure: (errorMessage) => AppExceptionData(
         'sales-order-delete-failure',
         'Error deleting Ventas order $errorMessage',
+      ),
+      insertDataFailure: (errorMessage) => AppExceptionData(
+        'insert-data--failure',
+        'Error inserting data in db:  $errorMessage',
+      ),
+      notConnection: () => AppExceptionData(
+        'insert-data--failure',
+        'No connection to cloud.',
       ),
     );
   }
