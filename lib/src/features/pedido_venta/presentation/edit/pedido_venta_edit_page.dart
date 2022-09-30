@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
@@ -14,8 +17,11 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../../cliente/domain/cliente.dart';
+import '../../../cliente/presentation/index/cliente_search_state.dart';
 import '../../domain/pedido_venta.dart';
+import '../../domain/pedido_venta_linea.dart';
 import 'ask_pop_alert_dialog.dart';
+import 'icon_stepper.dart';
 
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
   PedidoVentaEditPage({super.key, String? id, bool? isNew})
@@ -44,6 +50,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   Widget build(BuildContext context) {
     final state =
         ref.watch(visitaEditPageControllerProvider(pedidoVentaIdLocalParam!));
+
     ref.listen<PedidoVentaEditPageControllerState>(
       visitaEditPageControllerProvider(pedidoVentaIdLocalParam!),
       (__, state) {
@@ -85,6 +92,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       body: state.when(
         loading: () => const ProgressIndicatorWidget(),
         data: (pedidoVenta) => PedidoVentaEditForm(
+          isNew: widget.isNew,
           pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
           pedidoVenta: pedidoVenta,
         ),
@@ -92,16 +100,19 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           (error is AppException) ? error.details.message : error.toString(),
         ),
         saved: (pedidoVenta) => PedidoVentaEditForm(
+          isNew: widget.isNew,
           pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
           pedidoVenta: pedidoVenta,
         ),
         saving: (pedidoVenta) => PedidoVentaEditForm(
+          isNew: widget.isNew,
           pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
           pedidoVenta: pedidoVenta,
         ),
         savedError:
             (PedidoVenta pedidoVenta, Object error, StackTrace? stackTrace) =>
                 PedidoVentaEditForm(
+          isNew: widget.isNew,
           pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
           pedidoVenta: pedidoVenta,
         ),
@@ -111,36 +122,56 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   }
 }
 
-class PedidoVentaEditForm extends StatefulWidget {
+class PedidoVentaEditForm extends ConsumerStatefulWidget {
   const PedidoVentaEditForm(
       {super.key,
+      required this.isNew,
       required this.pedidoVentaIdLocalParam,
       required this.pedidoVenta});
 
+  final bool isNew;
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final PedidoVenta? pedidoVenta;
 
   @override
-  State<PedidoVentaEditForm> createState() => _PedidoVentaEditFormState();
+  ConsumerState<PedidoVentaEditForm> createState() =>
+      _PedidoVentaEditFormState();
 }
 
-class _PedidoVentaEditFormState extends State<PedidoVentaEditForm> {
+class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
   int _currentStep = 0;
   Cliente? _cliente;
+  final List<PedidoVentaLinea> pedidoVentaLineaList = [];
 
   @override
   void initState() {
     super.initState();
-    if (widget.pedidoVenta != null) {
-      setFormInitalValues(widget.pedidoVenta!);
-    }
+    _currentStep = (widget.pedidoVenta != null) ? 1 : 0;
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.pedidoVenta != null) {
+      ref.listen<AsyncValue<Cliente>>(
+          clienteProvider(widget.pedidoVenta!.clienteId!), (_, state) {
+        state.whenData(
+          (cliente) => setState(() {
+            _cliente = cliente;
+          }),
+        );
+      });
+    }
+
     return WillPopScope(
       onWillPop: () async => _askIfUserPop(context),
-      child: Container(),
+      child: IconStepper(
+        currentStep: _currentStep,
+        steps: getSteps(),
+        type: IconStepperType.horizontal,
+        onStepContinue: () => continued(),
+        onStepCancel: (_currentStep <= 0) ? null : () => cancel(),
+        onStepTapped: (value) => tapped(value),
+      ),
     );
   }
 
@@ -209,7 +240,140 @@ class _PedidoVentaEditFormState extends State<PedidoVentaEditForm> {
   }
 
   void setFormInitalValues(PedidoVenta pedidoVenta) {
-    // _cliente = Cliente.createFromPedidoVenta(pedidoVenta);
     setState(() {});
+  }
+
+  void setClientes(PedidoVenta? pedidoVenta) {
+    final stateCliente = ref.watch(clienteProvider('22143'));
+
+    stateCliente.whenData((cliente) => _cliente = cliente);
+    setState(() {});
+  }
+
+  List<IconStep> getSteps() {
+    return [
+      IconStep(
+        icon: Icons.account_circle,
+        content: StepSelectClienteContent(
+          cliente: _cliente,
+          isNew: widget.isNew,
+          clearPedidoVentaLista: () =>
+              setState(() => pedidoVentaLineaList.clear()),
+          clienteValueSetter: (value) => setState(() => _cliente = value),
+        ),
+        state: _currentStep >= 0
+            ? (_currentStep == 0
+                ? IconStepState.editing
+                : IconStepState.complete)
+            : IconStepState.disabled,
+        isActive: _currentStep >= 0,
+      ),
+    ];
+  }
+}
+
+class StepSelectClienteContent extends ConsumerStatefulWidget {
+  const StepSelectClienteContent(
+      {super.key,
+      required this.cliente,
+      required this.isNew,
+      required this.clienteValueSetter,
+      required this.clearPedidoVentaLista});
+
+  final Cliente? cliente;
+  final bool isNew;
+  final Function(Cliente cliente) clienteValueSetter;
+  final Function() clearPedidoVentaLista;
+
+  @override
+  ConsumerState<StepSelectClienteContent> createState() =>
+      _StepSelectClienteContentState();
+}
+
+class _StepSelectClienteContentState
+    extends ConsumerState<StepSelectClienteContent> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => navigateToSelectCliente(context, widget.isNew));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
+      if (state != null) {
+        widget.clienteValueSetter(state);
+        widget.clearPedidoVentaLista();
+      }
+    });
+    if (widget.cliente == null) {
+      return Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: TextButton(
+                onPressed: () => navigateToSelectCliente(context, widget.isNew),
+                child: const Text(
+                  'Seleccione un cliente',
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    } else {
+      return ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: GestureDetector(
+              onTap: () => navigateToSelectCliente(context, widget.isNew),
+              child: Card(
+                //clipBehavior: Clip.hardEdge,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4), // if you need this
+                  side: BorderSide(
+                    color: Colors.grey.withOpacity(
+                      0.2,
+                    ),
+                    width: 1,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: ClienteListaTile(
+                          cliente: widget.cliente!,
+                        ),
+                      ),
+                      gapW4,
+                      Icon(
+                        Icons.navigate_next,
+                        color: Theme.of(context).textTheme.caption!.color,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+  }
+
+  void navigateToSelectCliente(BuildContext context, bool isNew) async {
+    if (isNew) {
+      context.goNamed(AppRoutes.pedidoventanewsearchcliente.name);
+    } else {
+      return showToast(
+        'No puedes cambiar el cliente',
+        context,
+      );
+    }
   }
 }

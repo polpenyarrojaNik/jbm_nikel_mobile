@@ -71,11 +71,15 @@ enum AppRoutes {
   pedidoventaindex,
   pedidoventashow,
   pedidoventaedit,
+  pedidoventanewsearchcliente,
+  pedidoventaeditsearchcliente,
+
   pedidoventanew,
   visitaindex,
   visitashow,
   visitaedit,
-  visitasearchcliente,
+  visitanewsearchcliente,
+  visitaeditsearchcliente,
   visitanew,
   kpisindex,
   settings,
@@ -130,7 +134,7 @@ class RouterNotifier extends ChangeNotifier {
           name: AppRoutes.clienteindex.name,
           path: '/clientes',
           builder: (context, state) =>
-              const ClienteListaPage(isSearchClienteFromVisita: false),
+              const ClienteListaPage(isSearchClienteForFrom: false),
           routes: [
             GoRoute(
               path: 'alrededor',
@@ -321,6 +325,14 @@ class RouterNotifier extends ChangeNotifier {
                   child: PedidoVentaEditPage(),
                 );
               },
+              routes: [
+                GoRoute(
+                  name: AppRoutes.pedidoventanewsearchcliente.name,
+                  path: 'search_clientes',
+                  builder: (context, state) =>
+                      const ClienteListaPage(isSearchClienteForFrom: true),
+                ),
+              ],
             ),
             GoRoute(
               name: AppRoutes.pedidoventashow.name,
@@ -492,21 +504,22 @@ class RouterNotifier extends ChangeNotifier {
           builder: (context, state) => const VisitaListaPage(),
           routes: [
             GoRoute(
-                name: AppRoutes.visitanew.name,
-                path: 'new',
-                pageBuilder: (context, state) => MaterialPage(
-                      key: state.pageKey,
-                      fullscreenDialog: true,
-                      child: VisitaEditPage(id: null),
-                    ),
-                routes: [
-                  GoRoute(
-                    name: AppRoutes.visitasearchcliente.name,
-                    path: 'search_clientes',
-                    builder: (context, state) =>
-                        const ClienteListaPage(isSearchClienteFromVisita: true),
-                  ),
-                ]),
+              name: AppRoutes.visitanew.name,
+              path: 'new',
+              pageBuilder: (context, state) => MaterialPage(
+                key: state.pageKey,
+                fullscreenDialog: true,
+                child: VisitaEditPage(id: null),
+              ),
+              routes: [
+                GoRoute(
+                  name: AppRoutes.visitanewsearchcliente.name,
+                  path: 'search_clientes',
+                  builder: (context, state) =>
+                      const ClienteListaPage(isSearchClienteForFrom: true),
+                ),
+              ],
+            ),
             GoRoute(
               name: AppRoutes.visitashow.name,
               path: ':id',
@@ -534,6 +547,14 @@ class RouterNotifier extends ChangeNotifier {
                   child: VisitaEditPage(id: id),
                 );
               },
+              routes: [
+                GoRoute(
+                  name: AppRoutes.visitaeditsearchcliente.name,
+                  path: 'search_clientes',
+                  builder: (context, state) =>
+                      const ClienteListaPage(isSearchClienteForFrom: true),
+                ),
+              ],
             ),
           ],
         ),

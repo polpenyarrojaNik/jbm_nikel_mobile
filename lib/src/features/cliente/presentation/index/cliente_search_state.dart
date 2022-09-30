@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/domain/cliente_id_nombre.dart';
 import '../../domain/cliente.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -19,8 +18,7 @@ final clientesPotencialesQueryStateProvider =
   return false;
 });
 
-final clienteFromVisitaStateProvider =
-    StateProvider.autoDispose<ClienteIdNombre?>((ref) {
+final clienteForFromStateProvider = StateProvider.autoDispose<Cliente?>((ref) {
   return null;
 });
 

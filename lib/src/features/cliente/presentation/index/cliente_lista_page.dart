@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/cliente_id_nombre.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -18,9 +17,9 @@ import '../../../../core/routing/app_router.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
-  const ClienteListaPage({super.key, required this.isSearchClienteFromVisita});
+  const ClienteListaPage({super.key, required this.isSearchClienteForFrom});
 
-  final bool isSearchClienteFromVisita;
+  final bool isSearchClienteForFrom;
 
   @override
   ConsumerState<ClienteListaPage> createState() => _ClienteListPageState();
@@ -90,7 +89,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     final state = ref.watch(clientesSearchResultsProvider);
 
     return Scaffold(
-      drawer: (!widget.isSearchClienteFromVisita) ? const AppDrawer() : null,
+      drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
         title: S.of(context).cliente_index_titulo,
         searchTitle: S.of(context).cliente_index_buscarClientes,
@@ -111,7 +110,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                   : null,
             ),
           ),
-          if (!widget.isSearchClienteFromVisita)
+          if (!widget.isSearchClienteForFrom)
             IconButton(
               onPressed: () => navigateToClientesAlrededor(context),
               icon: const Icon(Icons.near_me_outlined),
@@ -134,7 +133,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: clienteList.length,
                     itemBuilder: (context, i) => GestureDetector(
-                      onTap: () => (!widget.isSearchClienteFromVisita)
+                      onTap: () => (!widget.isSearchClienteForFrom)
                           ? navigateToClienteDetalle(
                               context: context, clienteId: clienteList[i].id)
                           : selectClienteFromVisitaPage(
@@ -160,8 +159,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   void selectClienteFromVisitaPage(
       {required BuildContext context, required Cliente cliente}) {
-    ref.read(clienteFromVisitaStateProvider.notifier).state =
-        ClienteIdNombre(id: cliente.id, nombreCliente: cliente.nombreCliente);
+    ref.read(clienteForFromStateProvider.notifier).state = cliente;
     context.pop();
   }
 

@@ -13,10 +13,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/domain/cliente_id_nombre.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../cliente/domain/cliente.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../infrastructure/visita_repository.dart';
 
@@ -299,7 +299,7 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<ClienteIdNombre?>(clienteFromVisitaStateProvider, (_, state) {
+    ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
       if (state != null) {
         controller.text = setClienteValue(state.id, state.nombreCliente);
         widget.onSelectedCliente(state.id);
@@ -309,7 +309,7 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
       name: 'clienteId',
       onChanged: widget.onChanged,
       controller: controller,
-      onTap: () => openSearchClientesDialog(context),
+      onTap: () => navigateToSearchClientes(context),
       readOnly: true,
       maxLines: null,
       enabled: !widget.readOnly,
@@ -322,8 +322,8 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
     );
   }
 
-  void openSearchClientesDialog(BuildContext context) async {
-    context.goNamed(AppRoutes.visitasearchcliente.name);
+  void navigateToSearchClientes(BuildContext context) async {
+    context.goNamed(AppRoutes.pedidoventanewsearchcliente.name);
   }
 
   String setClienteValue(String clienteId, String? nombreCliente) {
