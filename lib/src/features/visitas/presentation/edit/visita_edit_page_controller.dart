@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 
-import '../../domain/visita_id_is_local_param.dart';
+import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
 part 'visita_edit_page_controller.freezed.dart';
@@ -31,7 +31,7 @@ class VisitaEditPageControllerState with _$VisitaEditPageControllerState {
 
 final visitaEditPageControllerProvider = StateNotifierProvider.autoDispose
     .family<VisitaEditPageController, VisitaEditPageControllerState,
-        VisitaIdIsLocalParam>((ref, visitaIdIsLocalParam) {
+        EntityIdIsLocalParam>((ref, visitaIdIsLocalParam) {
   return VisitaEditPageController(
     visitaRepository: ref.watch(visitaRepositoryProvider),
     visitaIdIsLocalParam: visitaIdIsLocalParam,
@@ -41,7 +41,7 @@ final visitaEditPageControllerProvider = StateNotifierProvider.autoDispose
 class VisitaEditPageController
     extends StateNotifier<VisitaEditPageControllerState> {
   final VisitaRepository visitaRepository;
-  final VisitaIdIsLocalParam visitaIdIsLocalParam;
+  final EntityIdIsLocalParam visitaIdIsLocalParam;
 
   VisitaEditPageController({
     required this.visitaIdIsLocalParam,

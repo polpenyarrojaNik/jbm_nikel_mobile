@@ -11,7 +11,7 @@ _$_PedidoVentaLineaDTO _$$_PedidoVentaLineaDTOFromJson(
     _$_PedidoVentaLineaDTO(
       empresaId: json['EMPRESA_ID'] as String,
       pedidoVentaId: json['PEDIDO_ID'] as String,
-      id: json['PEDIDO_LINEA_ID'] as String,
+      pedidoVentaLineaId: json['PEDIDO_LINEA_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
       articuloDescription: json['ARTICULO_DESCRIPCION'] as String?,
       cantidad: (json['CANTIDAD'] as num).toDouble(),
@@ -31,7 +31,7 @@ Map<String, dynamic> _$$_PedidoVentaLineaDTOToJson(
     <String, dynamic>{
       'EMPRESA_ID': instance.empresaId,
       'PEDIDO_ID': instance.pedidoVentaId,
-      'PEDIDO_LINEA_ID': instance.id,
+      'PEDIDO_LINEA_ID': instance.pedidoVentaLineaId,
       'ARTICULO_ID': instance.articuloId,
       'ARTICULO_DESCRIPCION': instance.articuloDescription,
       'CANTIDAD': instance.cantidad,

@@ -34,7 +34,7 @@ import '../../features/settings/presentation/settings_page.dart';
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/usuario/presentation/login/login_page.dart';
-import '../../features/visitas/domain/visita_id_is_local_param.dart';
+import '../domain/entity_id_is_local_param.dart';
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
@@ -60,7 +60,7 @@ enum AppRoutes {
   clientealrededorshow,
   articuloindex,
   articuloshow,
-  articulosalesorder,
+  articulopedidoventa,
   articuloultimoprecio,
   articulocomponente,
   articulogruponeto,
@@ -68,10 +68,10 @@ enum AppRoutes {
   articulorecambio,
   articulosustitutivo,
   articulodocumento,
-  salesorderindex,
-  salesordershow,
-  salesorderedit,
-  salesordernew,
+  pedidoventaindex,
+  pedidoventashow,
+  pedidoventaedit,
+  pedidoventanew,
   visitaindex,
   visitashow,
   visitaedit,
@@ -307,12 +307,12 @@ class RouterNotifier extends ChangeNotifier {
           ],
         ),
         GoRoute(
-          name: AppRoutes.salesorderindex.name,
+          name: AppRoutes.pedidoventaindex.name,
           path: '/pedidos',
           builder: (context, state) => const PedidoVentaListPage(),
           routes: [
             GoRoute(
-              name: AppRoutes.salesordernew.name,
+              name: AppRoutes.pedidoventanew.name,
               path: 'new',
               pageBuilder: (context, state) {
                 return MaterialPage(
@@ -323,18 +323,23 @@ class RouterNotifier extends ChangeNotifier {
               },
             ),
             GoRoute(
-              name: AppRoutes.salesordershow.name,
+              name: AppRoutes.pedidoventashow.name,
               path: ':id',
               pageBuilder: (context, state) {
-                final pedidoVentaId = state.params['id']!;
+                final id = state.params['id']!;
+                final isLocal = state.extra as bool;
+
                 return MaterialPage(
                   key: state.pageKey,
-                  child: PedidoVentaDetallePage(pedidoVentaId: pedidoVentaId),
+                  child: PedidoVentaDetallePage(
+                    pedidoVentaIdIsLocalParam:
+                        EntityIdIsLocalParam(id: id, isLocal: isLocal),
+                  ),
                 );
               },
               routes: [
                 GoRoute(
-                  name: AppRoutes.salesorderedit.name,
+                  name: AppRoutes.pedidoventaedit.name,
                   path: 'edit',
                   pageBuilder: (context, state) {
                     final pedidoVentaId = state.params['id']!;
@@ -342,7 +347,7 @@ class RouterNotifier extends ChangeNotifier {
                     return MaterialPage(
                       key: state.pageKey,
                       fullscreenDialog: true,
-                      child: PedidoVentaEditPage(pedidoVentaId: pedidoVentaId),
+                      child: PedidoVentaEditPage(id: pedidoVentaId),
                     );
                   },
                 ),
@@ -367,7 +372,7 @@ class RouterNotifier extends ChangeNotifier {
               },
               routes: [
                 GoRoute(
-                  name: AppRoutes.articulosalesorder.name,
+                  name: AppRoutes.articulopedidoventa.name,
                   path: 'pedidosventa',
                   pageBuilder: (context, state) {
                     final articuloId = state.params['articuloId']!;
@@ -512,7 +517,7 @@ class RouterNotifier extends ChangeNotifier {
                   key: state.pageKey,
                   child: VisitaDetallePage(
                     visitaIdIsLocalParam:
-                        VisitaIdIsLocalParam(id: id, isLocal: isLocal),
+                        EntityIdIsLocalParam(id: id, isLocal: isLocal),
                   ),
                 );
               },

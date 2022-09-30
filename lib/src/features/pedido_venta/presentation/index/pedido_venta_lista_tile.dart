@@ -13,8 +13,13 @@ class PedidoVentaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.goNamed(AppRoutes.salesordershow.name,
-          params: {'id': pedidoVenta.pedidoVentaId}),
+      onTap: () => context.goNamed(
+        AppRoutes.pedidoventashow.name,
+        params: {
+          'id': pedidoVenta.pedidoVentaId ?? pedidoVenta.pedidoVentaAppId!
+        },
+        extra: !pedidoVenta.tratada,
+      ),
       child: Container(
         color: Colors.transparent,
         child: Padding(
@@ -25,12 +30,14 @@ class PedidoVentaListaTile extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(pedidoVenta.pedidoVentaId,
+                  Text(
+                      pedidoVenta.pedidoVentaId ??
+                          pedidoVenta.pedidoVentaAppId!,
                       style: Theme.of(context).textTheme.subtitle2),
                   Text(
-                    dateFormatter(pedidoVenta.pedidoVentaDate
-                        .toLocal()
-                        .toIso8601String()),
+                    dateFormatter(
+                      pedidoVenta.pedidoVentaDate.toLocal().toIso8601String(),
+                    ),
                   ),
                 ],
               ),

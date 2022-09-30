@@ -7,9 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/cliente.dart';
@@ -30,21 +30,10 @@ final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>(
   (ref) {
     final db = ref.watch(appDatabaseProvider);
     final dio = ref.watch(dioProvider);
-    return ClienteRepository(db, dio);
+    final usuarioId = ref.watch(usuarioNotifierProvider)!.id;
+    return ClienteRepository(db, dio, usuarioId);
   },
 );
-
-final clienteListaSearchProvider = FutureProvider.autoDispose
-    .family<List<Cliente>, DefaultListParams>((ref, defaultListParams) async {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return clienteRepository.getClienteLista(
-    usuarioId: usuario!.id,
-    page: defaultListParams.page,
-    searchText: defaultListParams.searchText,
-    searchPotenciales: defaultListParams.searchPotenciales!,
-  );
-});
 
 final clienteProvider =
     FutureProvider.autoDispose.family<Cliente, String>((ref, clienteId) {
@@ -120,12 +109,12 @@ List<Cliente> clientes = [];
 class ClienteRepository {
   final AppDatabase _db;
   final Dio _dio;
+  final String usuarioId;
 
-  ClienteRepository(this._db, this._dio);
+  ClienteRepository(this._db, this._dio, this.usuarioId);
 
   Future<List<Cliente>> getClienteLista(
-      {required String usuarioId,
-      required int page,
+      {required int page,
       String? searchText,
       required bool searchPotenciales}) async {
     try {

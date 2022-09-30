@@ -26,7 +26,7 @@ class Cliente with _$Cliente {
       Pais? paisFiscal,
       double? latitudFiscal,
       double? longitudFiscal,
-      required String empresaId,
+      String? empresaId,
       double? ivaEspecial,
       String? extentoIva,
       Money? ventasAnyoActual,
@@ -62,6 +62,6 @@ class Cliente with _$Cliente {
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,
       ClienteTipoPotencial? clienteTipoPotencial,
-      required DateTime lastUpdated,
+      DateTime? lastUpdated,
       required bool deleted}) = _Cliente;
 }

@@ -25,7 +25,7 @@ mixin _$PedidoVentaLineaDTO {
   @JsonKey(name: 'PEDIDO_ID')
   String get pedidoVentaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'PEDIDO_LINEA_ID')
-  String get id => throw _privateConstructorUsedError;
+  String get pedidoVentaLineaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId => throw _privateConstructorUsedError;
   @JsonKey(name: 'ARTICULO_DESCRIPCION')
@@ -68,7 +68,7 @@ abstract class $PedidoVentaLineaDTOCopyWith<$Res> {
       @JsonKey(name: 'PEDIDO_ID')
           String pedidoVentaId,
       @JsonKey(name: 'PEDIDO_LINEA_ID')
-          String id,
+          String pedidoVentaLineaId,
       @JsonKey(name: 'ARTICULO_ID')
           String articuloId,
       @JsonKey(name: 'ARTICULO_DESCRIPCION')
@@ -108,7 +108,7 @@ class _$PedidoVentaLineaDTOCopyWithImpl<$Res>
   $Res call({
     Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
-    Object? id = freezed,
+    Object? pedidoVentaLineaId = freezed,
     Object? articuloId = freezed,
     Object? articuloDescription = freezed,
     Object? cantidad = freezed,
@@ -131,9 +131,9 @@ class _$PedidoVentaLineaDTOCopyWithImpl<$Res>
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      pedidoVentaLineaId: pedidoVentaLineaId == freezed
+          ? _value.pedidoVentaLineaId
+          : pedidoVentaLineaId // ignore: cast_nullable_to_non_nullable
               as String,
       articuloId: articuloId == freezed
           ? _value.articuloId
@@ -200,7 +200,7 @@ abstract class _$$_PedidoVentaLineaDTOCopyWith<$Res>
       @JsonKey(name: 'PEDIDO_ID')
           String pedidoVentaId,
       @JsonKey(name: 'PEDIDO_LINEA_ID')
-          String id,
+          String pedidoVentaLineaId,
       @JsonKey(name: 'ARTICULO_ID')
           String articuloId,
       @JsonKey(name: 'ARTICULO_DESCRIPCION')
@@ -242,7 +242,7 @@ class __$$_PedidoVentaLineaDTOCopyWithImpl<$Res>
   $Res call({
     Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
-    Object? id = freezed,
+    Object? pedidoVentaLineaId = freezed,
     Object? articuloId = freezed,
     Object? articuloDescription = freezed,
     Object? cantidad = freezed,
@@ -265,9 +265,9 @@ class __$$_PedidoVentaLineaDTOCopyWithImpl<$Res>
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      pedidoVentaLineaId: pedidoVentaLineaId == freezed
+          ? _value.pedidoVentaLineaId
+          : pedidoVentaLineaId // ignore: cast_nullable_to_non_nullable
               as String,
       articuloId: articuloId == freezed
           ? _value.articuloId
@@ -327,7 +327,7 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
   const _$_PedidoVentaLineaDTO(
       {@JsonKey(name: 'EMPRESA_ID') required this.empresaId,
       @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
-      @JsonKey(name: 'PEDIDO_LINEA_ID') required this.id,
+      @JsonKey(name: 'PEDIDO_LINEA_ID') required this.pedidoVentaLineaId,
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'ARTICULO_DESCRIPCION') this.articuloDescription,
       @JsonKey(name: 'CANTIDAD') required this.cantidad,
@@ -353,7 +353,7 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
   final String pedidoVentaId;
   @override
   @JsonKey(name: 'PEDIDO_LINEA_ID')
-  final String id;
+  final String pedidoVentaLineaId;
   @override
   @JsonKey(name: 'ARTICULO_ID')
   final String articuloId;
@@ -393,7 +393,7 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
 
   @override
   String toString() {
-    return 'PedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaLineaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -404,7 +404,8 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
             const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
             const DeepCollectionEquality()
                 .equals(other.pedidoVentaId, pedidoVentaId) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.pedidoVentaLineaId, pedidoVentaLineaId) &&
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
@@ -435,7 +436,7 @@ class _$_PedidoVentaLineaDTO extends _PedidoVentaLineaDTO {
       runtimeType,
       const DeepCollectionEquality().hash(empresaId),
       const DeepCollectionEquality().hash(pedidoVentaId),
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(pedidoVentaLineaId),
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(articuloDescription),
       const DeepCollectionEquality().hash(cantidad),
@@ -470,7 +471,7 @@ abstract class _PedidoVentaLineaDTO extends PedidoVentaLineaDTO {
       @JsonKey(name: 'PEDIDO_ID')
           required final String pedidoVentaId,
       @JsonKey(name: 'PEDIDO_LINEA_ID')
-          required final String id,
+          required final String pedidoVentaLineaId,
       @JsonKey(name: 'ARTICULO_ID')
           required final String articuloId,
       @JsonKey(name: 'ARTICULO_DESCRIPCION')
@@ -508,7 +509,7 @@ abstract class _PedidoVentaLineaDTO extends PedidoVentaLineaDTO {
   String get pedidoVentaId;
   @override
   @JsonKey(name: 'PEDIDO_LINEA_ID')
-  String get id;
+  String get pedidoVentaLineaId;
   @override
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId;

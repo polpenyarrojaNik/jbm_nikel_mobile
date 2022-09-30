@@ -1,10 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
-import '../../../core/domain/default_list_params.dart';
+import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
-import '../../usuario/infrastructure/usuario_service.dart';
+import '../../../core/presentation/app.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
 
@@ -12,36 +14,26 @@ final pedidoVentaRepositoryProvider =
     Provider.autoDispose<PedidoVentaRepository>(
   (ref) {
     final db = ref.watch(appDatabaseProvider);
-    return PedidoVentaRepository(db);
-  },
-);
-
-final pedidosSearchProvider =
-    FutureProvider.autoDispose.family<List<PedidoVenta>, DefaultListParams>(
-  (ref, defaultListParams) async {
-    print('Searching: ${defaultListParams.searchText}');
-    final usuario =
-        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-
-    final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-    return pedidoVentaRepository.getPedidoVentaLista(
-        usuarioId: usuario!.id,
-        page: defaultListParams.page,
-        searchText: defaultListParams.searchText);
+    final dio = ref.watch(dioProvider);
+    final usuarioId = ref.watch(usuarioNotifierProvider)!.id;
+    return PedidoVentaRepository(db, dio, usuarioId);
   },
 );
 
 final pedidoVentaProvider = FutureProvider.autoDispose
-    .family<PedidoVenta, String>((ref, pedidoVentaId) {
+    .family<PedidoVenta, EntityIdIsLocalParam>(
+        (ref, pedidoVentaIdIsLocalParam) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaById(pedidoVentaId: pedidoVentaId);
+  return pedidoVentaRepository.getPedidoVentaById(
+      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 });
 
 final pedidoVentaLineaProvider = FutureProvider.autoDispose
-    .family<List<PedidoVentaLinea>, String>((ref, pedidoVentaId) {
+    .family<List<PedidoVentaLinea>, EntityIdIsLocalParam>(
+        (ref, pedidoVentaIdIsLocalParam) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaLineaById(
-      pedidoVentaId: pedidoVentaId);
+      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 });
 
 const pageSize = 100;
@@ -49,13 +41,13 @@ List<PedidoVenta> pedidoVentaList = [];
 
 class PedidoVentaRepository {
   final AppDatabase _db;
+  final Dio _dio;
+  final String usuarioId;
 
-  PedidoVentaRepository(this._db);
+  PedidoVentaRepository(this._db, this._dio, this.usuarioId);
 
   Future<List<PedidoVenta>> getPedidoVentaLista(
-      {required String usuarioId,
-      required int page,
-      required String searchText}) async {
+      {required int page, required String searchText}) async {
     if (page == 1) {
       pedidoVentaList.clear();
     }
@@ -114,7 +106,7 @@ class PedidoVentaRepository {
   }
 
   Future<PedidoVenta> getPedidoVentaById(
-      {required String pedidoVentaId}) async {
+      {required EntityIdIsLocalParam pedidoVentaIdIsLocalParam}) async {
     try {
       final query = _db.select(_db.pedidoVentaTable).join([
         leftOuterJoin(_db.paisTable,
@@ -127,7 +119,8 @@ class PedidoVentaRepository {
                 .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId))
       ]);
 
-      query.where(_db.pedidoVentaTable.pedidoVentaId.equals(pedidoVentaId));
+      query.where(_db.pedidoVentaTable.pedidoVentaId
+          .equals(pedidoVentaIdIsLocalParam.id!));
 
       return query.asyncMap((row) async {
         final paisDTO = row.readTableOrNull(_db.paisTable);
@@ -146,7 +139,7 @@ class PedidoVentaRepository {
   }
 
   Future<List<PedidoVentaLinea>> getPedidoVentaLineaById(
-      {required String pedidoVentaId}) async {
+      {required EntityIdIsLocalParam pedidoVentaIdIsLocalParam}) async {
     try {
       final query = _db.select(_db.pedidoVentaLineaTable).join([
         innerJoin(
@@ -155,8 +148,8 @@ class PedidoVentaRepository {
                 .equalsExp(_db.pedidoVentaLineaTable.pedidoVentaId))
       ]);
 
-      query
-          .where(_db.pedidoVentaLineaTable.pedidoVentaId.equals(pedidoVentaId));
+      query.where(_db.pedidoVentaLineaTable.pedidoVentaId
+          .equals(pedidoVentaIdIsLocalParam.id!));
 
       return query.map((row) {
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
@@ -166,5 +159,13 @@ class PedidoVentaRepository {
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
+  }
+
+  Future<void> upsertPedidoVenta({required PedidoVenta pedidoVenta}) async {
+    //TODO método añadir/editar pedidoVenta.
+  }
+
+  Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
+    //TODO método eliminar pedidoVenta guardado en local.
   }
 }

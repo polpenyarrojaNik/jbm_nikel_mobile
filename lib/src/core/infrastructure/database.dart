@@ -35,6 +35,8 @@ import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import 'familia_dto.dart';
@@ -80,6 +82,8 @@ const localDatabaseName = 'jbm.sqlite';
   PlazoDeCobroTable,
   PaisTable,
   DivisaTable,
+  PedidoVentaLineaLocalTable,
+  PedidoVentaLocalTable,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
