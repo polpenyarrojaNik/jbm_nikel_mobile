@@ -17,7 +17,7 @@ class VisitaListaTile extends StatelessWidget {
     return GestureDetector(
       onTap: () => navigateToVisitaDetalle(
         context: context,
-        id: (visita.tratada) ? visita.id! : visita.visitaAppId!,
+        id: visita.id ?? visita.visitaAppId!,
         isLocal: !visita.tratada,
       ),
       child: Container(
@@ -31,13 +31,13 @@ class VisitaListaTile extends StatelessWidget {
                 Text(
                   dateFormatter(visita.fecha.toLocal().toIso8601String()),
                 ),
-                if (getStatusVisitaText(
+                if (getStatusLocalEntityText(
                         context, visita.enviada, visita.tratada) !=
                     null)
                   ChipContainer(
-                    text: getStatusVisitaText(
+                    text: getStatusLocalEntityText(
                         context, visita.enviada, visita.tratada)!,
-                    color: getStatusVisitaColor(
+                    color: getStatusLocalEntityColor(
                         context, visita.enviada, visita.tratada),
                   ),
               ],

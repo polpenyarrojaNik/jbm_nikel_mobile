@@ -22,4 +22,8 @@ class Visita with _$Visita {
     required bool tratada,
     String? errorSyncMessage,
   }) = _Visita;
+
+  bool getIsLocal() => !tratada;
+
+  bool isEditable() => (!tratada && !enviada);
 }

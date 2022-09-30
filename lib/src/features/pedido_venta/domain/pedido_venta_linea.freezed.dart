@@ -16,9 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PedidoVentaLinea {
-  String get empresaId => throw _privateConstructorUsedError;
-  String get pedidoVentaId => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String? get empresaId => throw _privateConstructorUsedError;
+  String? get pedidoVentaId => throw _privateConstructorUsedError;
+  String? get pedidoVentaLineaId => throw _privateConstructorUsedError;
+  String? get pedidoVentaAppId => throw _privateConstructorUsedError;
+  String? get pedidoVentaLineaAppId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   String? get articuloDescription => throw _privateConstructorUsedError;
   double get cantidad => throw _privateConstructorUsedError;
@@ -28,8 +30,12 @@ mixin _$PedidoVentaLinea {
   double get descuento1 => throw _privateConstructorUsedError;
   double get descuento2 => throw _privateConstructorUsedError;
   double get descuento3 => throw _privateConstructorUsedError;
+  double? get descuentoProntoPago => throw _privateConstructorUsedError;
   String? get pedidoLineaIdComponente => throw _privateConstructorUsedError;
   Money? get importeLinea => throw _privateConstructorUsedError;
+  bool? get stockDisponibleSN => throw _privateConstructorUsedError;
+  DateTime? get fechaDisponible => throw _privateConstructorUsedError;
+  double? get iva => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -44,9 +50,11 @@ abstract class $PedidoVentaLineaCopyWith<$Res> {
           PedidoVentaLinea value, $Res Function(PedidoVentaLinea) then) =
       _$PedidoVentaLineaCopyWithImpl<$Res>;
   $Res call(
-      {String empresaId,
-      String pedidoVentaId,
-      String id,
+      {String? empresaId,
+      String? pedidoVentaId,
+      String? pedidoVentaLineaId,
+      String? pedidoVentaAppId,
+      String? pedidoVentaLineaAppId,
       String articuloId,
       String? articuloDescription,
       double cantidad,
@@ -56,8 +64,12 @@ abstract class $PedidoVentaLineaCopyWith<$Res> {
       double descuento1,
       double descuento2,
       double descuento3,
+      double? descuentoProntoPago,
       String? pedidoLineaIdComponente,
       Money? importeLinea,
+      bool? stockDisponibleSN,
+      DateTime? fechaDisponible,
+      double? iva,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -75,7 +87,9 @@ class _$PedidoVentaLineaCopyWithImpl<$Res>
   $Res call({
     Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
-    Object? id = freezed,
+    Object? pedidoVentaLineaId = freezed,
+    Object? pedidoVentaAppId = freezed,
+    Object? pedidoVentaLineaAppId = freezed,
     Object? articuloId = freezed,
     Object? articuloDescription = freezed,
     Object? cantidad = freezed,
@@ -85,8 +99,12 @@ class _$PedidoVentaLineaCopyWithImpl<$Res>
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
     Object? descuento3 = freezed,
+    Object? descuentoProntoPago = freezed,
     Object? pedidoLineaIdComponente = freezed,
     Object? importeLinea = freezed,
+    Object? stockDisponibleSN = freezed,
+    Object? fechaDisponible = freezed,
+    Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -94,15 +112,23 @@ class _$PedidoVentaLineaCopyWithImpl<$Res>
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoVentaId: pedidoVentaId == freezed
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      pedidoVentaLineaId: pedidoVentaLineaId == freezed
+          ? _value.pedidoVentaLineaId
+          : pedidoVentaLineaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoVentaAppId: pedidoVentaAppId == freezed
+          ? _value.pedidoVentaAppId
+          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoVentaLineaAppId: pedidoVentaLineaAppId == freezed
+          ? _value.pedidoVentaLineaAppId
+          : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -139,6 +165,10 @@ class _$PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
+      descuentoProntoPago: descuentoProntoPago == freezed
+          ? _value.descuentoProntoPago
+          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+              as double?,
       pedidoLineaIdComponente: pedidoLineaIdComponente == freezed
           ? _value.pedidoLineaIdComponente
           : pedidoLineaIdComponente // ignore: cast_nullable_to_non_nullable
@@ -147,6 +177,18 @@ class _$PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.importeLinea
           : importeLinea // ignore: cast_nullable_to_non_nullable
               as Money?,
+      stockDisponibleSN: stockDisponibleSN == freezed
+          ? _value.stockDisponibleSN
+          : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      fechaDisponible: fechaDisponible == freezed
+          ? _value.fechaDisponible
+          : fechaDisponible // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -167,9 +209,11 @@ abstract class _$$_PedidoVentaLineaCopyWith<$Res>
       __$$_PedidoVentaLineaCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String empresaId,
-      String pedidoVentaId,
-      String id,
+      {String? empresaId,
+      String? pedidoVentaId,
+      String? pedidoVentaLineaId,
+      String? pedidoVentaAppId,
+      String? pedidoVentaLineaAppId,
       String articuloId,
       String? articuloDescription,
       double cantidad,
@@ -179,8 +223,12 @@ abstract class _$$_PedidoVentaLineaCopyWith<$Res>
       double descuento1,
       double descuento2,
       double descuento3,
+      double? descuentoProntoPago,
       String? pedidoLineaIdComponente,
       Money? importeLinea,
+      bool? stockDisponibleSN,
+      DateTime? fechaDisponible,
+      double? iva,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -200,7 +248,9 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
   $Res call({
     Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
-    Object? id = freezed,
+    Object? pedidoVentaLineaId = freezed,
+    Object? pedidoVentaAppId = freezed,
+    Object? pedidoVentaLineaAppId = freezed,
     Object? articuloId = freezed,
     Object? articuloDescription = freezed,
     Object? cantidad = freezed,
@@ -210,8 +260,12 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
     Object? descuento3 = freezed,
+    Object? descuentoProntoPago = freezed,
     Object? pedidoLineaIdComponente = freezed,
     Object? importeLinea = freezed,
+    Object? stockDisponibleSN = freezed,
+    Object? fechaDisponible = freezed,
+    Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -219,15 +273,23 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoVentaId: pedidoVentaId == freezed
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      pedidoVentaLineaId: pedidoVentaLineaId == freezed
+          ? _value.pedidoVentaLineaId
+          : pedidoVentaLineaId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoVentaAppId: pedidoVentaAppId == freezed
+          ? _value.pedidoVentaAppId
+          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pedidoVentaLineaAppId: pedidoVentaLineaAppId == freezed
+          ? _value.pedidoVentaLineaAppId
+          : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -264,6 +326,10 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
+      descuentoProntoPago: descuentoProntoPago == freezed
+          ? _value.descuentoProntoPago
+          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
+              as double?,
       pedidoLineaIdComponente: pedidoLineaIdComponente == freezed
           ? _value.pedidoLineaIdComponente
           : pedidoLineaIdComponente // ignore: cast_nullable_to_non_nullable
@@ -272,6 +338,18 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.importeLinea
           : importeLinea // ignore: cast_nullable_to_non_nullable
               as Money?,
+      stockDisponibleSN: stockDisponibleSN == freezed
+          ? _value.stockDisponibleSN
+          : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      fechaDisponible: fechaDisponible == freezed
+          ? _value.fechaDisponible
+          : fechaDisponible // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -288,9 +366,11 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
 
 class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   const _$_PedidoVentaLinea(
-      {required this.empresaId,
-      required this.pedidoVentaId,
-      required this.id,
+      {this.empresaId,
+      this.pedidoVentaId,
+      this.pedidoVentaLineaId,
+      this.pedidoVentaAppId,
+      this.pedidoVentaLineaAppId,
       required this.articuloId,
       this.articuloDescription,
       required this.cantidad,
@@ -300,18 +380,26 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
       required this.descuento1,
       required this.descuento2,
       required this.descuento3,
+      this.descuentoProntoPago,
       this.pedidoLineaIdComponente,
       this.importeLinea,
+      this.stockDisponibleSN,
+      this.fechaDisponible,
+      this.iva,
       required this.lastUpdated,
       required this.deleted})
       : super._();
 
   @override
-  final String empresaId;
+  final String? empresaId;
   @override
-  final String pedidoVentaId;
+  final String? pedidoVentaId;
   @override
-  final String id;
+  final String? pedidoVentaLineaId;
+  @override
+  final String? pedidoVentaAppId;
+  @override
+  final String? pedidoVentaLineaAppId;
   @override
   final String articuloId;
   @override
@@ -331,9 +419,17 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   @override
   final double descuento3;
   @override
+  final double? descuentoProntoPago;
+  @override
   final String? pedidoLineaIdComponente;
   @override
   final Money? importeLinea;
+  @override
+  final bool? stockDisponibleSN;
+  @override
+  final DateTime? fechaDisponible;
+  @override
+  final double? iva;
   @override
   final DateTime lastUpdated;
   @override
@@ -341,7 +437,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
 
   @override
   String toString() {
-    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, fechaDisponible: $fechaDisponible, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -352,7 +448,12 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
             const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
             const DeepCollectionEquality()
                 .equals(other.pedidoVentaId, pedidoVentaId) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.pedidoVentaLineaId, pedidoVentaLineaId) &&
+            const DeepCollectionEquality()
+                .equals(other.pedidoVentaAppId, pedidoVentaAppId) &&
+            const DeepCollectionEquality()
+                .equals(other.pedidoVentaLineaAppId, pedidoVentaLineaAppId) &&
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
@@ -369,34 +470,48 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
                 .equals(other.descuento2, descuento2) &&
             const DeepCollectionEquality()
                 .equals(other.descuento3, descuento3) &&
+            const DeepCollectionEquality()
+                .equals(other.descuentoProntoPago, descuentoProntoPago) &&
             const DeepCollectionEquality().equals(
                 other.pedidoLineaIdComponente, pedidoLineaIdComponente) &&
             const DeepCollectionEquality()
                 .equals(other.importeLinea, importeLinea) &&
+            const DeepCollectionEquality()
+                .equals(other.stockDisponibleSN, stockDisponibleSN) &&
+            const DeepCollectionEquality()
+                .equals(other.fechaDisponible, fechaDisponible) &&
+            const DeepCollectionEquality().equals(other.iva, iva) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(empresaId),
-      const DeepCollectionEquality().hash(pedidoVentaId),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(articuloDescription),
-      const DeepCollectionEquality().hash(cantidad),
-      const DeepCollectionEquality().hash(precioDivisa),
-      const DeepCollectionEquality().hash(divisaId),
-      const DeepCollectionEquality().hash(tipoPrecio),
-      const DeepCollectionEquality().hash(descuento1),
-      const DeepCollectionEquality().hash(descuento2),
-      const DeepCollectionEquality().hash(descuento3),
-      const DeepCollectionEquality().hash(pedidoLineaIdComponente),
-      const DeepCollectionEquality().hash(importeLinea),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(empresaId),
+        const DeepCollectionEquality().hash(pedidoVentaId),
+        const DeepCollectionEquality().hash(pedidoVentaLineaId),
+        const DeepCollectionEquality().hash(pedidoVentaAppId),
+        const DeepCollectionEquality().hash(pedidoVentaLineaAppId),
+        const DeepCollectionEquality().hash(articuloId),
+        const DeepCollectionEquality().hash(articuloDescription),
+        const DeepCollectionEquality().hash(cantidad),
+        const DeepCollectionEquality().hash(precioDivisa),
+        const DeepCollectionEquality().hash(divisaId),
+        const DeepCollectionEquality().hash(tipoPrecio),
+        const DeepCollectionEquality().hash(descuento1),
+        const DeepCollectionEquality().hash(descuento2),
+        const DeepCollectionEquality().hash(descuento3),
+        const DeepCollectionEquality().hash(descuentoProntoPago),
+        const DeepCollectionEquality().hash(pedidoLineaIdComponente),
+        const DeepCollectionEquality().hash(importeLinea),
+        const DeepCollectionEquality().hash(stockDisponibleSN),
+        const DeepCollectionEquality().hash(fechaDisponible),
+        const DeepCollectionEquality().hash(iva),
+        const DeepCollectionEquality().hash(lastUpdated),
+        const DeepCollectionEquality().hash(deleted)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -406,9 +521,11 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
 
 abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   const factory _PedidoVentaLinea(
-      {required final String empresaId,
-      required final String pedidoVentaId,
-      required final String id,
+      {final String? empresaId,
+      final String? pedidoVentaId,
+      final String? pedidoVentaLineaId,
+      final String? pedidoVentaAppId,
+      final String? pedidoVentaLineaAppId,
       required final String articuloId,
       final String? articuloDescription,
       required final double cantidad,
@@ -418,18 +535,26 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
       required final double descuento1,
       required final double descuento2,
       required final double descuento3,
+      final double? descuentoProntoPago,
       final String? pedidoLineaIdComponente,
       final Money? importeLinea,
+      final bool? stockDisponibleSN,
+      final DateTime? fechaDisponible,
+      final double? iva,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_PedidoVentaLinea;
   const _PedidoVentaLinea._() : super._();
 
   @override
-  String get empresaId;
+  String? get empresaId;
   @override
-  String get pedidoVentaId;
+  String? get pedidoVentaId;
   @override
-  String get id;
+  String? get pedidoVentaLineaId;
+  @override
+  String? get pedidoVentaAppId;
+  @override
+  String? get pedidoVentaLineaAppId;
   @override
   String get articuloId;
   @override
@@ -449,9 +574,17 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   @override
   double get descuento3;
   @override
+  double? get descuentoProntoPago;
+  @override
   String? get pedidoLineaIdComponente;
   @override
   Money? get importeLinea;
+  @override
+  bool? get stockDisponibleSN;
+  @override
+  DateTime? get fechaDisponible;
+  @override
+  double? get iva;
   @override
   DateTime get lastUpdated;
   @override

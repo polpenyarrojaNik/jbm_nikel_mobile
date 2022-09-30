@@ -17,7 +17,7 @@ class PedidoVentaLineaDTO
   const factory PedidoVentaLineaDTO({
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
     @JsonKey(name: 'PEDIDO_ID') required String pedidoVentaId,
-    @JsonKey(name: 'PEDIDO_LINEA_ID') required String id,
+    @JsonKey(name: 'PEDIDO_LINEA_ID') required String pedidoVentaLineaId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'ARTICULO_DESCRIPCION') String? articuloDescription,
     @JsonKey(name: 'CANTIDAD') required double cantidad,
@@ -40,7 +40,7 @@ class PedidoVentaLineaDTO
     return PedidoVentaLinea(
         empresaId: empresaId,
         pedidoVentaId: pedidoVentaId,
-        id: id,
+        pedidoVentaLineaId: pedidoVentaLineaId,
         articuloId: articuloId,
         articuloDescription: articuloDescription,
         cantidad: cantidad,
@@ -63,7 +63,7 @@ class PedidoVentaLineaDTO
     return PedidoVentaLineaTableCompanion(
       empresaId: Value(empresaId),
       pedidoVentaId: Value(pedidoVentaId),
-      id: Value(id),
+      pedidoVentaLineaId: Value(pedidoVentaLineaId),
       articuloId: Value(articuloId),
       articuloDescription: Value(articuloDescription),
       cantidad: Value(cantidad),
@@ -84,7 +84,7 @@ class PedidoVentaLineaDTO
 class PedidoVentaLineaTable extends Table {
   TextColumn get empresaId => text().named('EMPRESA_ID')();
   TextColumn get pedidoVentaId => text().named('PEDIDO_ID')();
-  TextColumn get id => text().named('PEDIDO_LINEA_ID')();
+  TextColumn get pedidoVentaLineaId => text().named('PEDIDO_LINEA_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get articuloDescription =>
       text().nullable().named('ARTICULO_DESCRIPCION')();
@@ -102,7 +102,7 @@ class PedidoVentaLineaTable extends Table {
       text().withDefault(const Constant('N')).named('DELETED')();
 
   @override
-  Set<Column> get primaryKey => {pedidoVentaId, empresaId, id};
+  Set<Column> get primaryKey => {pedidoVentaId, empresaId, pedidoVentaLineaId};
 
   @override
   String get tableName => 'PEDIDOS_LINEAS';

@@ -16,10 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PedidoVenta {
-  String get empresaId => throw _privateConstructorUsedError;
-  String get pedidoVentaId => throw _privateConstructorUsedError;
+  String? get empresaId => throw _privateConstructorUsedError;
+  String? get pedidoVentaId => throw _privateConstructorUsedError;
+  String? get pedidoVentaAppId => throw _privateConstructorUsedError;
+  String? get usuarioId => throw _privateConstructorUsedError;
   DateTime get pedidoVentaDate => throw _privateConstructorUsedError;
-  String get tipoVenta => throw _privateConstructorUsedError;
+  String? get tipoVenta => throw _privateConstructorUsedError;
   String? get clienteId => throw _privateConstructorUsedError;
   String? get direccionId => throw _privateConstructorUsedError;
   String? get nombreCliente => throw _privateConstructorUsedError;
@@ -30,15 +32,21 @@ mixin _$PedidoVenta {
   String? get provincia => throw _privateConstructorUsedError;
   Pais? get pais => throw _privateConstructorUsedError;
   Divisa get divisa => throw _privateConstructorUsedError;
+  String? get pedidoCliente => throw _privateConstructorUsedError;
+  String? get observaciones => throw _privateConstructorUsedError;
   Money? get baseImponible => throw _privateConstructorUsedError;
   Money? get importeIva => throw _privateConstructorUsedError;
   Money? get total => throw _privateConstructorUsedError;
-  PedidoVentaEstado get pedidoVentaEstado => throw _privateConstructorUsedError;
-  bool get oferta => throw _privateConstructorUsedError;
-  double get descuentoProntoPago => throw _privateConstructorUsedError;
+  PedidoVentaEstado? get pedidoVentaEstado =>
+      throw _privateConstructorUsedError;
+  bool? get oferta => throw _privateConstructorUsedError;
+  double? get descuentoProntoPago => throw _privateConstructorUsedError;
+  double? get dtoBonificacion => throw _privateConstructorUsedError;
   double get iva => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
+  bool get enviada => throw _privateConstructorUsedError;
+  bool get tratada => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PedidoVentaCopyWith<PedidoVenta> get copyWith =>
@@ -51,10 +59,12 @@ abstract class $PedidoVentaCopyWith<$Res> {
           PedidoVenta value, $Res Function(PedidoVenta) then) =
       _$PedidoVentaCopyWithImpl<$Res>;
   $Res call(
-      {String empresaId,
-      String pedidoVentaId,
+      {String? empresaId,
+      String? pedidoVentaId,
+      String? pedidoVentaAppId,
+      String? usuarioId,
       DateTime pedidoVentaDate,
-      String tipoVenta,
+      String? tipoVenta,
       String? clienteId,
       String? direccionId,
       String? nombreCliente,
@@ -65,19 +75,24 @@ abstract class $PedidoVentaCopyWith<$Res> {
       String? provincia,
       Pais? pais,
       Divisa divisa,
+      String? pedidoCliente,
+      String? observaciones,
       Money? baseImponible,
       Money? importeIva,
       Money? total,
-      PedidoVentaEstado pedidoVentaEstado,
-      bool oferta,
-      double descuentoProntoPago,
+      PedidoVentaEstado? pedidoVentaEstado,
+      bool? oferta,
+      double? descuentoProntoPago,
+      double? dtoBonificacion,
       double iva,
       DateTime lastUpdated,
-      bool deleted});
+      bool deleted,
+      bool enviada,
+      bool tratada});
 
   $PaisCopyWith<$Res>? get pais;
   $DivisaCopyWith<$Res> get divisa;
-  $PedidoVentaEstadoCopyWith<$Res> get pedidoVentaEstado;
+  $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado;
 }
 
 /// @nodoc
@@ -92,6 +107,8 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
   $Res call({
     Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
+    Object? pedidoVentaAppId = freezed,
+    Object? usuarioId = freezed,
     Object? pedidoVentaDate = freezed,
     Object? tipoVenta = freezed,
     Object? clienteId = freezed,
@@ -104,25 +121,38 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
     Object? provincia = freezed,
     Object? pais = freezed,
     Object? divisa = freezed,
+    Object? pedidoCliente = freezed,
+    Object? observaciones = freezed,
     Object? baseImponible = freezed,
     Object? importeIva = freezed,
     Object? total = freezed,
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
     Object? descuentoProntoPago = freezed,
+    Object? dtoBonificacion = freezed,
     Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
+    Object? enviada = freezed,
+    Object? tratada = freezed,
   }) {
     return _then(_value.copyWith(
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoVentaId: pedidoVentaId == freezed
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      pedidoVentaAppId: pedidoVentaAppId == freezed
+          ? _value.pedidoVentaAppId
+          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      usuarioId: usuarioId == freezed
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String?,
       pedidoVentaDate: pedidoVentaDate == freezed
           ? _value.pedidoVentaDate
           : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
@@ -130,7 +160,7 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
       tipoVenta: tipoVenta == freezed
           ? _value.tipoVenta
           : tipoVenta // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -171,6 +201,14 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
           ? _value.divisa
           : divisa // ignore: cast_nullable_to_non_nullable
               as Divisa,
+      pedidoCliente: pedidoCliente == freezed
+          ? _value.pedidoCliente
+          : pedidoCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      observaciones: observaciones == freezed
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
       baseImponible: baseImponible == freezed
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
@@ -186,15 +224,19 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
       pedidoVentaEstado: pedidoVentaEstado == freezed
           ? _value.pedidoVentaEstado
           : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaEstado,
+              as PedidoVentaEstado?,
       oferta: oferta == freezed
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       descuentoProntoPago: descuentoProntoPago == freezed
           ? _value.descuentoProntoPago
           : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      dtoBonificacion: dtoBonificacion == freezed
+          ? _value.dtoBonificacion
+          : dtoBonificacion // ignore: cast_nullable_to_non_nullable
+              as double?,
       iva: iva == freezed
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
@@ -206,6 +248,14 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      enviada: enviada == freezed
+          ? _value.enviada
+          : enviada // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tratada: tratada == freezed
+          ? _value.tratada
+          : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -229,8 +279,12 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
   }
 
   @override
-  $PedidoVentaEstadoCopyWith<$Res> get pedidoVentaEstado {
-    return $PedidoVentaEstadoCopyWith<$Res>(_value.pedidoVentaEstado, (value) {
+  $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado {
+    if (_value.pedidoVentaEstado == null) {
+      return null;
+    }
+
+    return $PedidoVentaEstadoCopyWith<$Res>(_value.pedidoVentaEstado!, (value) {
       return _then(_value.copyWith(pedidoVentaEstado: value));
     });
   }
@@ -244,10 +298,12 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       __$$_PedidoVentaCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String empresaId,
-      String pedidoVentaId,
+      {String? empresaId,
+      String? pedidoVentaId,
+      String? pedidoVentaAppId,
+      String? usuarioId,
       DateTime pedidoVentaDate,
-      String tipoVenta,
+      String? tipoVenta,
       String? clienteId,
       String? direccionId,
       String? nombreCliente,
@@ -258,22 +314,27 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       String? provincia,
       Pais? pais,
       Divisa divisa,
+      String? pedidoCliente,
+      String? observaciones,
       Money? baseImponible,
       Money? importeIva,
       Money? total,
-      PedidoVentaEstado pedidoVentaEstado,
-      bool oferta,
-      double descuentoProntoPago,
+      PedidoVentaEstado? pedidoVentaEstado,
+      bool? oferta,
+      double? descuentoProntoPago,
+      double? dtoBonificacion,
       double iva,
       DateTime lastUpdated,
-      bool deleted});
+      bool deleted,
+      bool enviada,
+      bool tratada});
 
   @override
   $PaisCopyWith<$Res>? get pais;
   @override
   $DivisaCopyWith<$Res> get divisa;
   @override
-  $PedidoVentaEstadoCopyWith<$Res> get pedidoVentaEstado;
+  $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado;
 }
 
 /// @nodoc
@@ -290,6 +351,8 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
   $Res call({
     Object? empresaId = freezed,
     Object? pedidoVentaId = freezed,
+    Object? pedidoVentaAppId = freezed,
+    Object? usuarioId = freezed,
     Object? pedidoVentaDate = freezed,
     Object? tipoVenta = freezed,
     Object? clienteId = freezed,
@@ -302,25 +365,38 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
     Object? provincia = freezed,
     Object? pais = freezed,
     Object? divisa = freezed,
+    Object? pedidoCliente = freezed,
+    Object? observaciones = freezed,
     Object? baseImponible = freezed,
     Object? importeIva = freezed,
     Object? total = freezed,
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
     Object? descuentoProntoPago = freezed,
+    Object? dtoBonificacion = freezed,
     Object? iva = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
+    Object? enviada = freezed,
+    Object? tratada = freezed,
   }) {
     return _then(_$_PedidoVenta(
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       pedidoVentaId: pedidoVentaId == freezed
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      pedidoVentaAppId: pedidoVentaAppId == freezed
+          ? _value.pedidoVentaAppId
+          : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      usuarioId: usuarioId == freezed
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String?,
       pedidoVentaDate: pedidoVentaDate == freezed
           ? _value.pedidoVentaDate
           : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
@@ -328,7 +404,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
       tipoVenta: tipoVenta == freezed
           ? _value.tipoVenta
           : tipoVenta // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -369,6 +445,14 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
           ? _value.divisa
           : divisa // ignore: cast_nullable_to_non_nullable
               as Divisa,
+      pedidoCliente: pedidoCliente == freezed
+          ? _value.pedidoCliente
+          : pedidoCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      observaciones: observaciones == freezed
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
       baseImponible: baseImponible == freezed
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
@@ -384,15 +468,19 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
       pedidoVentaEstado: pedidoVentaEstado == freezed
           ? _value.pedidoVentaEstado
           : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
-              as PedidoVentaEstado,
+              as PedidoVentaEstado?,
       oferta: oferta == freezed
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       descuentoProntoPago: descuentoProntoPago == freezed
           ? _value.descuentoProntoPago
           : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
+      dtoBonificacion: dtoBonificacion == freezed
+          ? _value.dtoBonificacion
+          : dtoBonificacion // ignore: cast_nullable_to_non_nullable
+              as double?,
       iva: iva == freezed
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
@@ -405,6 +493,14 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
+      enviada: enviada == freezed
+          ? _value.enviada
+          : enviada // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tratada: tratada == freezed
+          ? _value.tratada
+          : tratada // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -413,10 +509,12 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
 
 class _$_PedidoVenta extends _PedidoVenta {
   const _$_PedidoVenta(
-      {required this.empresaId,
-      required this.pedidoVentaId,
+      {this.empresaId,
+      this.pedidoVentaId,
+      this.pedidoVentaAppId,
+      this.usuarioId,
       required this.pedidoVentaDate,
-      required this.tipoVenta,
+      this.tipoVenta,
       this.clienteId,
       this.direccionId,
       this.nombreCliente,
@@ -427,25 +525,34 @@ class _$_PedidoVenta extends _PedidoVenta {
       this.provincia,
       this.pais,
       required this.divisa,
+      this.pedidoCliente,
+      this.observaciones,
       this.baseImponible,
       this.importeIva,
       this.total,
-      required this.pedidoVentaEstado,
-      required this.oferta,
-      required this.descuentoProntoPago,
+      this.pedidoVentaEstado,
+      this.oferta,
+      this.descuentoProntoPago,
+      this.dtoBonificacion,
       required this.iva,
       required this.lastUpdated,
-      required this.deleted})
+      required this.deleted,
+      required this.enviada,
+      required this.tratada})
       : super._();
 
   @override
-  final String empresaId;
+  final String? empresaId;
   @override
-  final String pedidoVentaId;
+  final String? pedidoVentaId;
+  @override
+  final String? pedidoVentaAppId;
+  @override
+  final String? usuarioId;
   @override
   final DateTime pedidoVentaDate;
   @override
-  final String tipoVenta;
+  final String? tipoVenta;
   @override
   final String? clienteId;
   @override
@@ -467,27 +574,37 @@ class _$_PedidoVenta extends _PedidoVenta {
   @override
   final Divisa divisa;
   @override
+  final String? pedidoCliente;
+  @override
+  final String? observaciones;
+  @override
   final Money? baseImponible;
   @override
   final Money? importeIva;
   @override
   final Money? total;
   @override
-  final PedidoVentaEstado pedidoVentaEstado;
+  final PedidoVentaEstado? pedidoVentaEstado;
   @override
-  final bool oferta;
+  final bool? oferta;
   @override
-  final double descuentoProntoPago;
+  final double? descuentoProntoPago;
+  @override
+  final double? dtoBonificacion;
   @override
   final double iva;
   @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
+  @override
+  final bool enviada;
+  @override
+  final bool tratada;
 
   @override
   String toString() {
-    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, baseImponible: $baseImponible, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, descuentoProntoPago: $descuentoProntoPago, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, baseImponible: $baseImponible, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, descuentoProntoPago: $descuentoProntoPago, dtoBonificacion: $dtoBonificacion, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada)';
   }
 
   @override
@@ -498,6 +615,9 @@ class _$_PedidoVenta extends _PedidoVenta {
             const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
             const DeepCollectionEquality()
                 .equals(other.pedidoVentaId, pedidoVentaId) &&
+            const DeepCollectionEquality()
+                .equals(other.pedidoVentaAppId, pedidoVentaAppId) &&
+            const DeepCollectionEquality().equals(other.usuarioId, usuarioId) &&
             const DeepCollectionEquality()
                 .equals(other.pedidoVentaDate, pedidoVentaDate) &&
             const DeepCollectionEquality().equals(other.tipoVenta, tipoVenta) &&
@@ -517,6 +637,10 @@ class _$_PedidoVenta extends _PedidoVenta {
             const DeepCollectionEquality().equals(other.pais, pais) &&
             const DeepCollectionEquality().equals(other.divisa, divisa) &&
             const DeepCollectionEquality()
+                .equals(other.pedidoCliente, pedidoCliente) &&
+            const DeepCollectionEquality()
+                .equals(other.observaciones, observaciones) &&
+            const DeepCollectionEquality()
                 .equals(other.baseImponible, baseImponible) &&
             const DeepCollectionEquality()
                 .equals(other.importeIva, importeIva) &&
@@ -526,10 +650,14 @@ class _$_PedidoVenta extends _PedidoVenta {
             const DeepCollectionEquality().equals(other.oferta, oferta) &&
             const DeepCollectionEquality()
                 .equals(other.descuentoProntoPago, descuentoProntoPago) &&
+            const DeepCollectionEquality()
+                .equals(other.dtoBonificacion, dtoBonificacion) &&
             const DeepCollectionEquality().equals(other.iva, iva) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            const DeepCollectionEquality().equals(other.deleted, deleted) &&
+            const DeepCollectionEquality().equals(other.enviada, enviada) &&
+            const DeepCollectionEquality().equals(other.tratada, tratada));
   }
 
   @override
@@ -537,6 +665,8 @@ class _$_PedidoVenta extends _PedidoVenta {
         runtimeType,
         const DeepCollectionEquality().hash(empresaId),
         const DeepCollectionEquality().hash(pedidoVentaId),
+        const DeepCollectionEquality().hash(pedidoVentaAppId),
+        const DeepCollectionEquality().hash(usuarioId),
         const DeepCollectionEquality().hash(pedidoVentaDate),
         const DeepCollectionEquality().hash(tipoVenta),
         const DeepCollectionEquality().hash(clienteId),
@@ -549,15 +679,20 @@ class _$_PedidoVenta extends _PedidoVenta {
         const DeepCollectionEquality().hash(provincia),
         const DeepCollectionEquality().hash(pais),
         const DeepCollectionEquality().hash(divisa),
+        const DeepCollectionEquality().hash(pedidoCliente),
+        const DeepCollectionEquality().hash(observaciones),
         const DeepCollectionEquality().hash(baseImponible),
         const DeepCollectionEquality().hash(importeIva),
         const DeepCollectionEquality().hash(total),
         const DeepCollectionEquality().hash(pedidoVentaEstado),
         const DeepCollectionEquality().hash(oferta),
         const DeepCollectionEquality().hash(descuentoProntoPago),
+        const DeepCollectionEquality().hash(dtoBonificacion),
         const DeepCollectionEquality().hash(iva),
         const DeepCollectionEquality().hash(lastUpdated),
-        const DeepCollectionEquality().hash(deleted)
+        const DeepCollectionEquality().hash(deleted),
+        const DeepCollectionEquality().hash(enviada),
+        const DeepCollectionEquality().hash(tratada)
       ]);
 
   @JsonKey(ignore: true)
@@ -568,10 +703,12 @@ class _$_PedidoVenta extends _PedidoVenta {
 
 abstract class _PedidoVenta extends PedidoVenta {
   const factory _PedidoVenta(
-      {required final String empresaId,
-      required final String pedidoVentaId,
+      {final String? empresaId,
+      final String? pedidoVentaId,
+      final String? pedidoVentaAppId,
+      final String? usuarioId,
       required final DateTime pedidoVentaDate,
-      required final String tipoVenta,
+      final String? tipoVenta,
       final String? clienteId,
       final String? direccionId,
       final String? nombreCliente,
@@ -582,25 +719,34 @@ abstract class _PedidoVenta extends PedidoVenta {
       final String? provincia,
       final Pais? pais,
       required final Divisa divisa,
+      final String? pedidoCliente,
+      final String? observaciones,
       final Money? baseImponible,
       final Money? importeIva,
       final Money? total,
-      required final PedidoVentaEstado pedidoVentaEstado,
-      required final bool oferta,
-      required final double descuentoProntoPago,
+      final PedidoVentaEstado? pedidoVentaEstado,
+      final bool? oferta,
+      final double? descuentoProntoPago,
+      final double? dtoBonificacion,
       required final double iva,
       required final DateTime lastUpdated,
-      required final bool deleted}) = _$_PedidoVenta;
+      required final bool deleted,
+      required final bool enviada,
+      required final bool tratada}) = _$_PedidoVenta;
   const _PedidoVenta._() : super._();
 
   @override
-  String get empresaId;
+  String? get empresaId;
   @override
-  String get pedidoVentaId;
+  String? get pedidoVentaId;
+  @override
+  String? get pedidoVentaAppId;
+  @override
+  String? get usuarioId;
   @override
   DateTime get pedidoVentaDate;
   @override
-  String get tipoVenta;
+  String? get tipoVenta;
   @override
   String? get clienteId;
   @override
@@ -622,23 +768,33 @@ abstract class _PedidoVenta extends PedidoVenta {
   @override
   Divisa get divisa;
   @override
+  String? get pedidoCliente;
+  @override
+  String? get observaciones;
+  @override
   Money? get baseImponible;
   @override
   Money? get importeIva;
   @override
   Money? get total;
   @override
-  PedidoVentaEstado get pedidoVentaEstado;
+  PedidoVentaEstado? get pedidoVentaEstado;
   @override
-  bool get oferta;
+  bool? get oferta;
   @override
-  double get descuentoProntoPago;
+  double? get descuentoProntoPago;
+  @override
+  double? get dtoBonificacion;
   @override
   double get iva;
   @override
   DateTime get lastUpdated;
   @override
   bool get deleted;
+  @override
+  bool get enviada;
+  @override
+  bool get tratada;
   @override
   @JsonKey(ignore: true)
   _$$_PedidoVentaCopyWith<_$_PedidoVenta> get copyWith =>

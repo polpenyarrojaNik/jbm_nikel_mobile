@@ -271,7 +271,8 @@ String? getClienteVentasArticuloDescripcionInLocalLanguage(
   return null;
 }
 
-Color? getStatusVisitaColor(BuildContext context, bool enviada, bool tratada) {
+Color? getStatusLocalEntityColor(
+    BuildContext context, bool enviada, bool tratada) {
   if (tratada) {
     return null;
   } else if (enviada) {
@@ -281,7 +282,8 @@ Color? getStatusVisitaColor(BuildContext context, bool enviada, bool tratada) {
   }
 }
 
-String? getStatusVisitaText(BuildContext context, bool enviada, bool tratada) {
+String? getStatusLocalEntityText(
+    BuildContext context, bool enviada, bool tratada) {
   if (tratada) {
     return null;
   } else if (enviada) {

@@ -2389,7 +2389,7 @@ class PedidoVentaLineaTableCompanion
     extends UpdateCompanion<PedidoVentaLineaDTO> {
   final Value<String> empresaId;
   final Value<String> pedidoVentaId;
-  final Value<String> id;
+  final Value<String> pedidoVentaLineaId;
   final Value<String> articuloId;
   final Value<String?> articuloDescription;
   final Value<double> cantidad;
@@ -2405,7 +2405,7 @@ class PedidoVentaLineaTableCompanion
   const PedidoVentaLineaTableCompanion({
     this.empresaId = const Value.absent(),
     this.pedidoVentaId = const Value.absent(),
-    this.id = const Value.absent(),
+    this.pedidoVentaLineaId = const Value.absent(),
     this.articuloId = const Value.absent(),
     this.articuloDescription = const Value.absent(),
     this.cantidad = const Value.absent(),
@@ -2422,7 +2422,7 @@ class PedidoVentaLineaTableCompanion
   PedidoVentaLineaTableCompanion.insert({
     required String empresaId,
     required String pedidoVentaId,
-    required String id,
+    required String pedidoVentaLineaId,
     required String articuloId,
     this.articuloDescription = const Value.absent(),
     required double cantidad,
@@ -2437,7 +2437,7 @@ class PedidoVentaLineaTableCompanion
     this.deleted = const Value.absent(),
   })  : empresaId = Value(empresaId),
         pedidoVentaId = Value(pedidoVentaId),
-        id = Value(id),
+        pedidoVentaLineaId = Value(pedidoVentaLineaId),
         articuloId = Value(articuloId),
         cantidad = Value(cantidad),
         precioDivisa = Value(precioDivisa),
@@ -2448,7 +2448,7 @@ class PedidoVentaLineaTableCompanion
   static Insertable<PedidoVentaLineaDTO> custom({
     Expression<String>? empresaId,
     Expression<String>? pedidoVentaId,
-    Expression<String>? id,
+    Expression<String>? pedidoVentaLineaId,
     Expression<String>? articuloId,
     Expression<String>? articuloDescription,
     Expression<double>? cantidad,
@@ -2465,7 +2465,7 @@ class PedidoVentaLineaTableCompanion
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
       if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
-      if (id != null) 'PEDIDO_LINEA_ID': id,
+      if (pedidoVentaLineaId != null) 'PEDIDO_LINEA_ID': pedidoVentaLineaId,
       if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (articuloDescription != null)
         'ARTICULO_DESCRIPCION': articuloDescription,
@@ -2486,7 +2486,7 @@ class PedidoVentaLineaTableCompanion
   PedidoVentaLineaTableCompanion copyWith(
       {Value<String>? empresaId,
       Value<String>? pedidoVentaId,
-      Value<String>? id,
+      Value<String>? pedidoVentaLineaId,
       Value<String>? articuloId,
       Value<String?>? articuloDescription,
       Value<double>? cantidad,
@@ -2502,7 +2502,7 @@ class PedidoVentaLineaTableCompanion
     return PedidoVentaLineaTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
-      id: id ?? this.id,
+      pedidoVentaLineaId: pedidoVentaLineaId ?? this.pedidoVentaLineaId,
       articuloId: articuloId ?? this.articuloId,
       articuloDescription: articuloDescription ?? this.articuloDescription,
       cantidad: cantidad ?? this.cantidad,
@@ -2528,8 +2528,8 @@ class PedidoVentaLineaTableCompanion
     if (pedidoVentaId.present) {
       map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
     }
-    if (id.present) {
-      map['PEDIDO_LINEA_ID'] = Variable<String>(id.value);
+    if (pedidoVentaLineaId.present) {
+      map['PEDIDO_LINEA_ID'] = Variable<String>(pedidoVentaLineaId.value);
     }
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
@@ -2576,7 +2576,7 @@ class PedidoVentaLineaTableCompanion
     return (StringBuffer('PedidoVentaLineaTableCompanion(')
           ..write('empresaId: $empresaId, ')
           ..write('pedidoVentaId: $pedidoVentaId, ')
-          ..write('id: $id, ')
+          ..write('pedidoVentaLineaId: $pedidoVentaLineaId, ')
           ..write('articuloId: $articuloId, ')
           ..write('articuloDescription: $articuloDescription, ')
           ..write('cantidad: $cantidad, ')
@@ -2611,11 +2611,12 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  final VerificationMeta _pedidoVentaLineaIdMeta =
+      const VerificationMeta('pedidoVentaLineaId');
   @override
-  late final GeneratedColumn<String> id = GeneratedColumn<String>(
-      'PEDIDO_LINEA_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  late final GeneratedColumn<String> pedidoVentaLineaId =
+      GeneratedColumn<String>('PEDIDO_LINEA_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
@@ -2687,7 +2688,7 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   List<GeneratedColumn> get $columns => [
         empresaId,
         pedidoVentaId,
-        id,
+        pedidoVentaLineaId,
         articuloId,
         articuloDescription,
         cantidad,
@@ -2727,9 +2728,11 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
     }
     if (data.containsKey('PEDIDO_LINEA_ID')) {
       context.handle(
-          _idMeta, id.isAcceptableOrUnknown(data['PEDIDO_LINEA_ID']!, _idMeta));
+          _pedidoVentaLineaIdMeta,
+          pedidoVentaLineaId.isAcceptableOrUnknown(
+              data['PEDIDO_LINEA_ID']!, _pedidoVentaLineaIdMeta));
     } else if (isInserting) {
-      context.missing(_idMeta);
+      context.missing(_pedidoVentaLineaIdMeta);
     }
     if (data.containsKey('ARTICULO_ID')) {
       context.handle(
@@ -2818,7 +2821,8 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {pedidoVentaId, empresaId, id};
+  Set<GeneratedColumn> get $primaryKey =>
+      {pedidoVentaId, empresaId, pedidoVentaLineaId};
   @override
   PedidoVentaLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -2827,7 +2831,7 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
       pedidoVentaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
-      id: attachedDatabase.options.types.read(
+      pedidoVentaLineaId: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}PEDIDO_LINEA_ID'])!,
       articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
@@ -14549,6 +14553,1009 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   }
 }
 
+class PedidoVentaLineaLocalTableCompanion
+    extends UpdateCompanion<PedidoVentaLineaLocalDTO> {
+  final Value<String> pedidoVentaAppId;
+  final Value<String> pedidoVentaLineaAppId;
+  final Value<String> articuloId;
+  final Value<String?> articuloDescription;
+  final Value<double> cantidad;
+  final Value<double> precioDivisa;
+  final Value<double> tipoPrecio;
+  final Value<double> descuento1;
+  final Value<double> descuento2;
+  final Value<double> descuento3;
+  final Value<double> descuentoProntoPago;
+  final Value<String> stockDisponibleSN;
+  final Value<DateTime?> fechaDisponible;
+  final Value<double> iva;
+  const PedidoVentaLineaLocalTableCompanion({
+    this.pedidoVentaAppId = const Value.absent(),
+    this.pedidoVentaLineaAppId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.articuloDescription = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.precioDivisa = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.descuento1 = const Value.absent(),
+    this.descuento2 = const Value.absent(),
+    this.descuento3 = const Value.absent(),
+    this.descuentoProntoPago = const Value.absent(),
+    this.stockDisponibleSN = const Value.absent(),
+    this.fechaDisponible = const Value.absent(),
+    this.iva = const Value.absent(),
+  });
+  PedidoVentaLineaLocalTableCompanion.insert({
+    required String pedidoVentaAppId,
+    required String pedidoVentaLineaAppId,
+    required String articuloId,
+    this.articuloDescription = const Value.absent(),
+    required double cantidad,
+    required double precioDivisa,
+    required double tipoPrecio,
+    required double descuento1,
+    required double descuento2,
+    required double descuento3,
+    required double descuentoProntoPago,
+    required String stockDisponibleSN,
+    this.fechaDisponible = const Value.absent(),
+    required double iva,
+  })  : pedidoVentaAppId = Value(pedidoVentaAppId),
+        pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
+        articuloId = Value(articuloId),
+        cantidad = Value(cantidad),
+        precioDivisa = Value(precioDivisa),
+        tipoPrecio = Value(tipoPrecio),
+        descuento1 = Value(descuento1),
+        descuento2 = Value(descuento2),
+        descuento3 = Value(descuento3),
+        descuentoProntoPago = Value(descuentoProntoPago),
+        stockDisponibleSN = Value(stockDisponibleSN),
+        iva = Value(iva);
+  static Insertable<PedidoVentaLineaLocalDTO> custom({
+    Expression<String>? pedidoVentaAppId,
+    Expression<String>? pedidoVentaLineaAppId,
+    Expression<String>? articuloId,
+    Expression<String>? articuloDescription,
+    Expression<double>? cantidad,
+    Expression<double>? precioDivisa,
+    Expression<double>? tipoPrecio,
+    Expression<double>? descuento1,
+    Expression<double>? descuento2,
+    Expression<double>? descuento3,
+    Expression<double>? descuentoProntoPago,
+    Expression<String>? stockDisponibleSN,
+    Expression<DateTime>? fechaDisponible,
+    Expression<double>? iva,
+  }) {
+    return RawValuesInsertable({
+      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
+      if (pedidoVentaLineaAppId != null) 'LIN_APP_ID': pedidoVentaLineaAppId,
+      if (articuloId != null) 'PRODUCTO_ID': articuloId,
+      if (articuloDescription != null) 'DENOMINACION': articuloDescription,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
+      if (tipoPrecio != null) 'TPRECIO': tipoPrecio,
+      if (descuento1 != null) 'DTO1': descuento1,
+      if (descuento2 != null) 'DTO2': descuento2,
+      if (descuento3 != null) 'DTO3': descuento3,
+      if (descuentoProntoPago != null) 'DTO_PP': descuentoProntoPago,
+      if (stockDisponibleSN != null) 'STOCK_DISPONIBLE_SN': stockDisponibleSN,
+      if (fechaDisponible != null) 'F_DISPONIBLE': fechaDisponible,
+      if (iva != null) 'IVA': iva,
+    });
+  }
+
+  PedidoVentaLineaLocalTableCompanion copyWith(
+      {Value<String>? pedidoVentaAppId,
+      Value<String>? pedidoVentaLineaAppId,
+      Value<String>? articuloId,
+      Value<String?>? articuloDescription,
+      Value<double>? cantidad,
+      Value<double>? precioDivisa,
+      Value<double>? tipoPrecio,
+      Value<double>? descuento1,
+      Value<double>? descuento2,
+      Value<double>? descuento3,
+      Value<double>? descuentoProntoPago,
+      Value<String>? stockDisponibleSN,
+      Value<DateTime?>? fechaDisponible,
+      Value<double>? iva}) {
+    return PedidoVentaLineaLocalTableCompanion(
+      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
+      pedidoVentaLineaAppId:
+          pedidoVentaLineaAppId ?? this.pedidoVentaLineaAppId,
+      articuloId: articuloId ?? this.articuloId,
+      articuloDescription: articuloDescription ?? this.articuloDescription,
+      cantidad: cantidad ?? this.cantidad,
+      precioDivisa: precioDivisa ?? this.precioDivisa,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      descuento1: descuento1 ?? this.descuento1,
+      descuento2: descuento2 ?? this.descuento2,
+      descuento3: descuento3 ?? this.descuento3,
+      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
+      stockDisponibleSN: stockDisponibleSN ?? this.stockDisponibleSN,
+      fechaDisponible: fechaDisponible ?? this.fechaDisponible,
+      iva: iva ?? this.iva,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (pedidoVentaAppId.present) {
+      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    }
+    if (pedidoVentaLineaAppId.present) {
+      map['LIN_APP_ID'] = Variable<String>(pedidoVentaLineaAppId.value);
+    }
+    if (articuloId.present) {
+      map['PRODUCTO_ID'] = Variable<String>(articuloId.value);
+    }
+    if (articuloDescription.present) {
+      map['DENOMINACION'] = Variable<String>(articuloDescription.value);
+    }
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<double>(cantidad.value);
+    }
+    if (precioDivisa.present) {
+      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
+    }
+    if (tipoPrecio.present) {
+      map['TPRECIO'] = Variable<double>(tipoPrecio.value);
+    }
+    if (descuento1.present) {
+      map['DTO1'] = Variable<double>(descuento1.value);
+    }
+    if (descuento2.present) {
+      map['DTO2'] = Variable<double>(descuento2.value);
+    }
+    if (descuento3.present) {
+      map['DTO3'] = Variable<double>(descuento3.value);
+    }
+    if (descuentoProntoPago.present) {
+      map['DTO_PP'] = Variable<double>(descuentoProntoPago.value);
+    }
+    if (stockDisponibleSN.present) {
+      map['STOCK_DISPONIBLE_SN'] = Variable<String>(stockDisponibleSN.value);
+    }
+    if (fechaDisponible.present) {
+      map['F_DISPONIBLE'] = Variable<DateTime>(fechaDisponible.value);
+    }
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PedidoVentaLineaLocalTableCompanion(')
+          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
+          ..write('pedidoVentaLineaAppId: $pedidoVentaLineaAppId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloDescription: $articuloDescription, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('precioDivisa: $precioDivisa, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('descuento1: $descuento1, ')
+          ..write('descuento2: $descuento2, ')
+          ..write('descuento3: $descuento3, ')
+          ..write('descuentoProntoPago: $descuentoProntoPago, ')
+          ..write('stockDisponibleSN: $stockDisponibleSN, ')
+          ..write('fechaDisponible: $fechaDisponible, ')
+          ..write('iva: $iva')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
+    with TableInfo<$PedidoVentaLineaLocalTableTable, PedidoVentaLineaLocalDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PedidoVentaLineaLocalTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _pedidoVentaAppIdMeta =
+      const VerificationMeta('pedidoVentaAppId');
+  @override
+  late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
+      'PEDIDO_APP_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _pedidoVentaLineaAppIdMeta =
+      const VerificationMeta('pedidoVentaLineaAppId');
+  @override
+  late final GeneratedColumn<String> pedidoVentaLineaAppId =
+      GeneratedColumn<String>('LIN_APP_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  @override
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
+      'PRODUCTO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _articuloDescriptionMeta =
+      const VerificationMeta('articuloDescription');
+  @override
+  late final GeneratedColumn<String> articuloDescription =
+      GeneratedColumn<String>('DENOMINACION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  @override
+  late final GeneratedColumn<double> cantidad = GeneratedColumn<double>(
+      'CANTIDAD', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _precioDivisaMeta =
+      const VerificationMeta('precioDivisa');
+  @override
+  late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
+      'PRECIO_DIVISA', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  @override
+  late final GeneratedColumn<double> tipoPrecio = GeneratedColumn<double>(
+      'TPRECIO', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _descuento1Meta = const VerificationMeta('descuento1');
+  @override
+  late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
+      'DTO1', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
+  @override
+  late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
+      'DTO2', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
+  @override
+  late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
+      'DTO3', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _descuentoProntoPagoMeta =
+      const VerificationMeta('descuentoProntoPago');
+  @override
+  late final GeneratedColumn<double> descuentoProntoPago =
+      GeneratedColumn<double>('DTO_PP', aliasedName, false,
+          type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _stockDisponibleSNMeta =
+      const VerificationMeta('stockDisponibleSN');
+  @override
+  late final GeneratedColumn<String> stockDisponibleSN =
+      GeneratedColumn<String>('STOCK_DISPONIBLE_SN', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _fechaDisponibleMeta =
+      const VerificationMeta('fechaDisponible');
+  @override
+  late final GeneratedColumn<DateTime> fechaDisponible =
+      GeneratedColumn<DateTime>('F_DISPONIBLE', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  @override
+  late final GeneratedColumn<double> iva = GeneratedColumn<double>(
+      'IVA', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        pedidoVentaAppId,
+        pedidoVentaLineaAppId,
+        articuloId,
+        articuloDescription,
+        cantidad,
+        precioDivisa,
+        tipoPrecio,
+        descuento1,
+        descuento2,
+        descuento3,
+        descuentoProntoPago,
+        stockDisponibleSN,
+        fechaDisponible,
+        iva
+      ];
+  @override
+  String get aliasedName => _alias ?? 'PEDIDOS_LINEAS_LOCAL_IMP';
+  @override
+  String get actualTableName => 'PEDIDOS_LINEAS_LOCAL_IMP';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<PedidoVentaLineaLocalDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('PEDIDO_APP_ID')) {
+      context.handle(
+          _pedidoVentaAppIdMeta,
+          pedidoVentaAppId.isAcceptableOrUnknown(
+              data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoVentaAppIdMeta);
+    }
+    if (data.containsKey('LIN_APP_ID')) {
+      context.handle(
+          _pedidoVentaLineaAppIdMeta,
+          pedidoVentaLineaAppId.isAcceptableOrUnknown(
+              data['LIN_APP_ID']!, _pedidoVentaLineaAppIdMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoVentaLineaAppIdMeta);
+    }
+    if (data.containsKey('PRODUCTO_ID')) {
+      context.handle(
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['PRODUCTO_ID']!, _articuloIdMeta));
+    } else if (isInserting) {
+      context.missing(_articuloIdMeta);
+    }
+    if (data.containsKey('DENOMINACION')) {
+      context.handle(
+          _articuloDescriptionMeta,
+          articuloDescription.isAcceptableOrUnknown(
+              data['DENOMINACION']!, _articuloDescriptionMeta));
+    }
+    if (data.containsKey('CANTIDAD')) {
+      context.handle(_cantidadMeta,
+          cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta));
+    } else if (isInserting) {
+      context.missing(_cantidadMeta);
+    }
+    if (data.containsKey('PRECIO_DIVISA')) {
+      context.handle(
+          _precioDivisaMeta,
+          precioDivisa.isAcceptableOrUnknown(
+              data['PRECIO_DIVISA']!, _precioDivisaMeta));
+    } else if (isInserting) {
+      context.missing(_precioDivisaMeta);
+    }
+    if (data.containsKey('TPRECIO')) {
+      context.handle(_tipoPrecioMeta,
+          tipoPrecio.isAcceptableOrUnknown(data['TPRECIO']!, _tipoPrecioMeta));
+    } else if (isInserting) {
+      context.missing(_tipoPrecioMeta);
+    }
+    if (data.containsKey('DTO1')) {
+      context.handle(_descuento1Meta,
+          descuento1.isAcceptableOrUnknown(data['DTO1']!, _descuento1Meta));
+    } else if (isInserting) {
+      context.missing(_descuento1Meta);
+    }
+    if (data.containsKey('DTO2')) {
+      context.handle(_descuento2Meta,
+          descuento2.isAcceptableOrUnknown(data['DTO2']!, _descuento2Meta));
+    } else if (isInserting) {
+      context.missing(_descuento2Meta);
+    }
+    if (data.containsKey('DTO3')) {
+      context.handle(_descuento3Meta,
+          descuento3.isAcceptableOrUnknown(data['DTO3']!, _descuento3Meta));
+    } else if (isInserting) {
+      context.missing(_descuento3Meta);
+    }
+    if (data.containsKey('DTO_PP')) {
+      context.handle(
+          _descuentoProntoPagoMeta,
+          descuentoProntoPago.isAcceptableOrUnknown(
+              data['DTO_PP']!, _descuentoProntoPagoMeta));
+    } else if (isInserting) {
+      context.missing(_descuentoProntoPagoMeta);
+    }
+    if (data.containsKey('STOCK_DISPONIBLE_SN')) {
+      context.handle(
+          _stockDisponibleSNMeta,
+          stockDisponibleSN.isAcceptableOrUnknown(
+              data['STOCK_DISPONIBLE_SN']!, _stockDisponibleSNMeta));
+    } else if (isInserting) {
+      context.missing(_stockDisponibleSNMeta);
+    }
+    if (data.containsKey('F_DISPONIBLE')) {
+      context.handle(
+          _fechaDisponibleMeta,
+          fechaDisponible.isAcceptableOrUnknown(
+              data['F_DISPONIBLE']!, _fechaDisponibleMeta));
+    }
+    if (data.containsKey('IVA')) {
+      context.handle(
+          _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
+    } else if (isInserting) {
+      context.missing(_ivaMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey =>
+      {pedidoVentaAppId, pedidoVentaLineaAppId};
+  @override
+  PedidoVentaLineaLocalDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PedidoVentaLineaLocalDTO(
+      pedidoVentaAppId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
+      pedidoVentaLineaAppId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}LIN_APP_ID'])!,
+      articuloId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PRODUCTO_ID'])!,
+      articuloDescription: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DENOMINACION']),
+      cantidad: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}CANTIDAD'])!,
+      precioDivisa: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
+      tipoPrecio: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TPRECIO'])!,
+      descuento1: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO1'])!,
+      descuento2: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO2'])!,
+      descuento3: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO3'])!,
+      descuentoProntoPago: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO_PP'])!,
+      stockDisponibleSN: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}STOCK_DISPONIBLE_SN'])!,
+      fechaDisponible: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}F_DISPONIBLE']),
+      iva: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
+    );
+  }
+
+  @override
+  $PedidoVentaLineaLocalTableTable createAlias(String alias) {
+    return $PedidoVentaLineaLocalTableTable(attachedDatabase, alias);
+  }
+}
+
+class PedidoVentaLocalTableCompanion
+    extends UpdateCompanion<PedidoVentaLocalDTO> {
+  final Value<String?> usuarioId;
+  final Value<String> pedidoVentaAppId;
+  final Value<DateTime> fechaAlta;
+  final Value<String> clienteId;
+  final Value<String?> nombreCliente;
+  final Value<String?> direccionId;
+  final Value<String?> direccion1;
+  final Value<String?> direccion2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
+  final Value<String?> divisaId;
+  final Value<String?> pedidoCliente;
+  final Value<String?> observaciones;
+  final Value<double> iva;
+  final Value<double> dtoBonificacion;
+  final Value<String> enviada;
+  final Value<String> tratada;
+  const PedidoVentaLocalTableCompanion({
+    this.usuarioId = const Value.absent(),
+    this.pedidoVentaAppId = const Value.absent(),
+    this.fechaAlta = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.pedidoCliente = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    this.iva = const Value.absent(),
+    this.dtoBonificacion = const Value.absent(),
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+  });
+  PedidoVentaLocalTableCompanion.insert({
+    this.usuarioId = const Value.absent(),
+    required String pedidoVentaAppId,
+    required DateTime fechaAlta,
+    required String clienteId,
+    this.nombreCliente = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.pedidoCliente = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    required double iva,
+    required double dtoBonificacion,
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+  })  : pedidoVentaAppId = Value(pedidoVentaAppId),
+        fechaAlta = Value(fechaAlta),
+        clienteId = Value(clienteId),
+        iva = Value(iva),
+        dtoBonificacion = Value(dtoBonificacion);
+  static Insertable<PedidoVentaLocalDTO> custom({
+    Expression<String>? usuarioId,
+    Expression<String>? pedidoVentaAppId,
+    Expression<DateTime>? fechaAlta,
+    Expression<String>? clienteId,
+    Expression<String>? nombreCliente,
+    Expression<String>? direccionId,
+    Expression<String>? direccion1,
+    Expression<String>? direccion2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
+    Expression<String>? divisaId,
+    Expression<String>? pedidoCliente,
+    Expression<String>? observaciones,
+    Expression<double>? iva,
+    Expression<double>? dtoBonificacion,
+    Expression<String>? enviada,
+    Expression<String>? tratada,
+  }) {
+    return RawValuesInsertable({
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
+      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
+      if (fechaAlta != null) 'FECHA_ALTA': fechaAlta,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (nombreCliente != null) 'NOMBRE_CLIENTE': nombreCliente,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (direccion1 != null) 'DIRECCION1': direccion1,
+      if (direccion2 != null) 'DIRECCION2': direccion2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (pedidoCliente != null) 'PEDIDO_CLIENTE': pedidoCliente,
+      if (observaciones != null) 'OBSERVACIONES': observaciones,
+      if (iva != null) 'IVA': iva,
+      if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
+      if (enviada != null) 'ENVIADA': enviada,
+      if (tratada != null) 'TRATADA': tratada,
+    });
+  }
+
+  PedidoVentaLocalTableCompanion copyWith(
+      {Value<String?>? usuarioId,
+      Value<String>? pedidoVentaAppId,
+      Value<DateTime>? fechaAlta,
+      Value<String>? clienteId,
+      Value<String?>? nombreCliente,
+      Value<String?>? direccionId,
+      Value<String?>? direccion1,
+      Value<String?>? direccion2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
+      Value<String?>? divisaId,
+      Value<String?>? pedidoCliente,
+      Value<String?>? observaciones,
+      Value<double>? iva,
+      Value<double>? dtoBonificacion,
+      Value<String>? enviada,
+      Value<String>? tratada}) {
+    return PedidoVentaLocalTableCompanion(
+      usuarioId: usuarioId ?? this.usuarioId,
+      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
+      fechaAlta: fechaAlta ?? this.fechaAlta,
+      clienteId: clienteId ?? this.clienteId,
+      nombreCliente: nombreCliente ?? this.nombreCliente,
+      direccionId: direccionId ?? this.direccionId,
+      direccion1: direccion1 ?? this.direccion1,
+      direccion2: direccion2 ?? this.direccion2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
+      divisaId: divisaId ?? this.divisaId,
+      pedidoCliente: pedidoCliente ?? this.pedidoCliente,
+      observaciones: observaciones ?? this.observaciones,
+      iva: iva ?? this.iva,
+      dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
+      enviada: enviada ?? this.enviada,
+      tratada: tratada ?? this.tratada,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
+    }
+    if (pedidoVentaAppId.present) {
+      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    }
+    if (fechaAlta.present) {
+      map['FECHA_ALTA'] = Variable<DateTime>(fechaAlta.value);
+    }
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (nombreCliente.present) {
+      map['NOMBRE_CLIENTE'] = Variable<String>(nombreCliente.value);
+    }
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    }
+    if (direccion1.present) {
+      map['DIRECCION1'] = Variable<String>(direccion1.value);
+    }
+    if (direccion2.present) {
+      map['DIRECCION2'] = Variable<String>(direccion2.value);
+    }
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    }
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
+    }
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
+    }
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
+    }
+    if (divisaId.present) {
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
+    }
+    if (pedidoCliente.present) {
+      map['PEDIDO_CLIENTE'] = Variable<String>(pedidoCliente.value);
+    }
+    if (observaciones.present) {
+      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
+    }
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
+    }
+    if (dtoBonificacion.present) {
+      map['DTO_BONIFICACION'] = Variable<double>(dtoBonificacion.value);
+    }
+    if (enviada.present) {
+      map['ENVIADA'] = Variable<String>(enviada.value);
+    }
+    if (tratada.present) {
+      map['TRATADA'] = Variable<String>(tratada.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PedidoVentaLocalTableCompanion(')
+          ..write('usuarioId: $usuarioId, ')
+          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
+          ..write('fechaAlta: $fechaAlta, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('nombreCliente: $nombreCliente, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('direccion1: $direccion1, ')
+          ..write('direccion2: $direccion2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('pedidoCliente: $pedidoCliente, ')
+          ..write('observaciones: $observaciones, ')
+          ..write('iva: $iva, ')
+          ..write('dtoBonificacion: $dtoBonificacion, ')
+          ..write('enviada: $enviada, ')
+          ..write('tratada: $tratada')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
+    with TableInfo<$PedidoVentaLocalTableTable, PedidoVentaLocalDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PedidoVentaLocalTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _usuarioIdMeta = const VerificationMeta('usuarioId');
+  @override
+  late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
+      'USUARIO_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _pedidoVentaAppIdMeta =
+      const VerificationMeta('pedidoVentaAppId');
+  @override
+  late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
+      'PEDIDO_APP_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _fechaAltaMeta = const VerificationMeta('fechaAlta');
+  @override
+  late final GeneratedColumn<DateTime> fechaAlta = GeneratedColumn<DateTime>(
+      'FECHA_ALTA', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _nombreClienteMeta =
+      const VerificationMeta('nombreCliente');
+  @override
+  late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
+      'NOMBRE_CLIENTE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _direccionIdMeta =
+      const VerificationMeta('direccionId');
+  @override
+  late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
+      'DIRECCION_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _direccion1Meta = const VerificationMeta('direccion1');
+  @override
+  late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
+      'DIRECCION1', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _direccion2Meta = const VerificationMeta('direccion2');
+  @override
+  late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
+      'DIRECCION2', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _codigoPostalMeta =
+      const VerificationMeta('codigoPostal');
+  @override
+  late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
+      'CODIGO_POSTAL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _poblacionMeta = const VerificationMeta('poblacion');
+  @override
+  late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
+      'POBLACION', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _provinciaMeta = const VerificationMeta('provincia');
+  @override
+  late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
+      'PROVINCIA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  @override
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
+      'PAIS_ID', aliasedName, true,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
+  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+  @override
+  late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
+      'DIVISA_ID', aliasedName, true,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
+  final VerificationMeta _pedidoClienteMeta =
+      const VerificationMeta('pedidoCliente');
+  @override
+  late final GeneratedColumn<String> pedidoCliente = GeneratedColumn<String>(
+      'PEDIDO_CLIENTE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _observacionesMeta =
+      const VerificationMeta('observaciones');
+  @override
+  late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
+      'OBSERVACIONES', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  @override
+  late final GeneratedColumn<double> iva = GeneratedColumn<double>(
+      'IVA', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _dtoBonificacionMeta =
+      const VerificationMeta('dtoBonificacion');
+  @override
+  late final GeneratedColumn<double> dtoBonificacion = GeneratedColumn<double>(
+      'DTO_BONIFICACION', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _enviadaMeta = const VerificationMeta('enviada');
+  @override
+  late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
+      'ENVIADA', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  final VerificationMeta _tratadaMeta = const VerificationMeta('tratada');
+  @override
+  late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
+      'TRATADA', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        usuarioId,
+        pedidoVentaAppId,
+        fechaAlta,
+        clienteId,
+        nombreCliente,
+        direccionId,
+        direccion1,
+        direccion2,
+        codigoPostal,
+        poblacion,
+        provincia,
+        paisId,
+        divisaId,
+        pedidoCliente,
+        observaciones,
+        iva,
+        dtoBonificacion,
+        enviada,
+        tratada
+      ];
+  @override
+  String get aliasedName => _alias ?? 'PEDIDOS_LOCAL_IMP';
+  @override
+  String get actualTableName => 'PEDIDOS_LOCAL_IMP';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<PedidoVentaLocalDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('USUARIO_ID')) {
+      context.handle(_usuarioIdMeta,
+          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+    }
+    if (data.containsKey('PEDIDO_APP_ID')) {
+      context.handle(
+          _pedidoVentaAppIdMeta,
+          pedidoVentaAppId.isAcceptableOrUnknown(
+              data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoVentaAppIdMeta);
+    }
+    if (data.containsKey('FECHA_ALTA')) {
+      context.handle(_fechaAltaMeta,
+          fechaAlta.isAcceptableOrUnknown(data['FECHA_ALTA']!, _fechaAltaMeta));
+    } else if (isInserting) {
+      context.missing(_fechaAltaMeta);
+    }
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('NOMBRE_CLIENTE')) {
+      context.handle(
+          _nombreClienteMeta,
+          nombreCliente.isAcceptableOrUnknown(
+              data['NOMBRE_CLIENTE']!, _nombreClienteMeta));
+    }
+    if (data.containsKey('DIRECCION_ID')) {
+      context.handle(
+          _direccionIdMeta,
+          direccionId.isAcceptableOrUnknown(
+              data['DIRECCION_ID']!, _direccionIdMeta));
+    }
+    if (data.containsKey('DIRECCION1')) {
+      context.handle(
+          _direccion1Meta,
+          direccion1.isAcceptableOrUnknown(
+              data['DIRECCION1']!, _direccion1Meta));
+    }
+    if (data.containsKey('DIRECCION2')) {
+      context.handle(
+          _direccion2Meta,
+          direccion2.isAcceptableOrUnknown(
+              data['DIRECCION2']!, _direccion2Meta));
+    }
+    if (data.containsKey('CODIGO_POSTAL')) {
+      context.handle(
+          _codigoPostalMeta,
+          codigoPostal.isAcceptableOrUnknown(
+              data['CODIGO_POSTAL']!, _codigoPostalMeta));
+    }
+    if (data.containsKey('POBLACION')) {
+      context.handle(_poblacionMeta,
+          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
+    }
+    if (data.containsKey('PROVINCIA')) {
+      context.handle(_provinciaMeta,
+          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
+    }
+    if (data.containsKey('PAIS_ID')) {
+      context.handle(_paisIdMeta,
+          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
+    }
+    if (data.containsKey('DIVISA_ID')) {
+      context.handle(_divisaIdMeta,
+          divisaId.isAcceptableOrUnknown(data['DIVISA_ID']!, _divisaIdMeta));
+    }
+    if (data.containsKey('PEDIDO_CLIENTE')) {
+      context.handle(
+          _pedidoClienteMeta,
+          pedidoCliente.isAcceptableOrUnknown(
+              data['PEDIDO_CLIENTE']!, _pedidoClienteMeta));
+    }
+    if (data.containsKey('OBSERVACIONES')) {
+      context.handle(
+          _observacionesMeta,
+          observaciones.isAcceptableOrUnknown(
+              data['OBSERVACIONES']!, _observacionesMeta));
+    }
+    if (data.containsKey('IVA')) {
+      context.handle(
+          _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
+    } else if (isInserting) {
+      context.missing(_ivaMeta);
+    }
+    if (data.containsKey('DTO_BONIFICACION')) {
+      context.handle(
+          _dtoBonificacionMeta,
+          dtoBonificacion.isAcceptableOrUnknown(
+              data['DTO_BONIFICACION']!, _dtoBonificacionMeta));
+    } else if (isInserting) {
+      context.missing(_dtoBonificacionMeta);
+    }
+    if (data.containsKey('ENVIADA')) {
+      context.handle(_enviadaMeta,
+          enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
+    }
+    if (data.containsKey('TRATADA')) {
+      context.handle(_tratadaMeta,
+          tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {pedidoVentaAppId};
+  @override
+  PedidoVentaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PedidoVentaLocalDTO(
+      usuarioId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID']),
+      pedidoVentaAppId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
+      clienteId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      nombreCliente: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_CLIENTE']),
+      direccionId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
+      direccion1: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
+      direccion2: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
+      codigoPostal: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
+      poblacion: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
+      provincia: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
+      paisId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      divisaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID']),
+      pedidoCliente: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_CLIENTE']),
+      observaciones: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
+      fechaAlta: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALTA'])!,
+      iva: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
+      dtoBonificacion: attachedDatabase.options.types.read(
+          DriftSqlType.double, data['${effectivePrefix}DTO_BONIFICACION'])!,
+      enviada: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
+      tratada: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
+    );
+  }
+
+  @override
+  $PedidoVentaLocalTableTable createAlias(String alias) {
+    return $PedidoVentaLocalTableTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -14612,6 +15619,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $VisitaTableTable visitaTable = $VisitaTableTable(this);
   late final $VisitaLocalTableTable visitaLocalTable =
       $VisitaLocalTableTable(this);
+  late final $PedidoVentaLineaLocalTableTable pedidoVentaLineaLocalTable =
+      $PedidoVentaLineaLocalTableTable(this);
+  late final $PedidoVentaLocalTableTable pedidoVentaLocalTable =
+      $PedidoVentaLocalTableTable(this);
   @override
   Iterable<TableInfo<Table, dynamic>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -14648,7 +15659,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         estadisticasClienteUsuarioVentasTable,
         estadisticasUltimosPreciosTable,
         visitaTable,
-        visitaLocalTable
+        visitaLocalTable,
+        pedidoVentaLineaLocalTable,
+        pedidoVentaLocalTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -7,9 +7,11 @@ part 'pedido_venta_linea.freezed.dart';
 class PedidoVentaLinea with _$PedidoVentaLinea {
   const PedidoVentaLinea._();
   const factory PedidoVentaLinea({
-    required String empresaId,
-    required String pedidoVentaId,
-    required String id,
+    String? empresaId,
+    String? pedidoVentaId,
+    String? pedidoVentaLineaId,
+    String? pedidoVentaAppId,
+    String? pedidoVentaLineaAppId,
     required String articuloId,
     String? articuloDescription,
     required double cantidad,
@@ -19,8 +21,12 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     required double descuento1,
     required double descuento2,
     required double descuento3,
+    double? descuentoProntoPago,
     String? pedidoLineaIdComponente,
     Money? importeLinea,
+    bool? stockDisponibleSN,
+    DateTime? fechaDisponible,
+    double? iva,
     required DateTime lastUpdated,
     required bool deleted,
   }) = _PedidoVentaLinea;

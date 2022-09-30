@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
@@ -11,6 +12,7 @@ import '../../../../core/infrastructure/sync_service.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_router.dart';
 
 class PedidoVentaListPage extends ConsumerStatefulWidget {
   const PedidoVentaListPage({super.key});
@@ -103,11 +105,19 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => navigateToCreatePedido(context),
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
   Future<void> syncSalesOrderDB(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllPedidosRelacionados();
     ref.invalidate(pedidosSearchResultsProvider);
+  }
+
+  void navigateToCreatePedido(BuildContext context) {
+    context.goNamed(AppRoutes.pedidoventanew.name);
   }
 }

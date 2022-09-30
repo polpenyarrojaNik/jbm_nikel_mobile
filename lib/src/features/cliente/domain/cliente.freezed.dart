@@ -28,7 +28,7 @@ mixin _$Cliente {
   Pais? get paisFiscal => throw _privateConstructorUsedError;
   double? get latitudFiscal => throw _privateConstructorUsedError;
   double? get longitudFiscal => throw _privateConstructorUsedError;
-  String get empresaId => throw _privateConstructorUsedError;
+  String? get empresaId => throw _privateConstructorUsedError;
   double? get ivaEspecial => throw _privateConstructorUsedError;
   String? get extentoIva => throw _privateConstructorUsedError;
   Money? get ventasAnyoActual => throw _privateConstructorUsedError;
@@ -68,7 +68,7 @@ mixin _$Cliente {
       throw _privateConstructorUsedError;
   ClienteTipoPotencial? get clienteTipoPotencial =>
       throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
+  DateTime? get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -92,7 +92,7 @@ abstract class $ClienteCopyWith<$Res> {
       Pais? paisFiscal,
       double? latitudFiscal,
       double? longitudFiscal,
-      String empresaId,
+      String? empresaId,
       double? ivaEspecial,
       String? extentoIva,
       Money? ventasAnyoActual,
@@ -128,7 +128,7 @@ abstract class $ClienteCopyWith<$Res> {
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,
       ClienteTipoPotencial? clienteTipoPotencial,
-      DateTime lastUpdated,
+      DateTime? lastUpdated,
       bool deleted});
 
   $PaisCopyWith<$Res>? get paisFiscal;
@@ -252,7 +252,7 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       ivaEspecial: ivaEspecial == freezed
           ? _value.ivaEspecial
           : ivaEspecial // ignore: cast_nullable_to_non_nullable
@@ -396,7 +396,7 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
@@ -492,7 +492,7 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       Pais? paisFiscal,
       double? latitudFiscal,
       double? longitudFiscal,
-      String empresaId,
+      String? empresaId,
       double? ivaEspecial,
       String? extentoIva,
       Money? ventasAnyoActual,
@@ -528,7 +528,7 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,
       ClienteTipoPotencial? clienteTipoPotencial,
-      DateTime lastUpdated,
+      DateTime? lastUpdated,
       bool deleted});
 
   @override
@@ -659,7 +659,7 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       ivaEspecial: ivaEspecial == freezed
           ? _value.ivaEspecial
           : ivaEspecial // ignore: cast_nullable_to_non_nullable
@@ -803,7 +803,7 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       deleted: deleted == freezed
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
@@ -828,7 +828,7 @@ class _$_Cliente extends _Cliente {
       this.paisFiscal,
       this.latitudFiscal,
       this.longitudFiscal,
-      required this.empresaId,
+      this.empresaId,
       this.ivaEspecial,
       this.extentoIva,
       this.ventasAnyoActual,
@@ -864,7 +864,7 @@ class _$_Cliente extends _Cliente {
       this.clientePotencial,
       this.clienteEstadoPotencial,
       this.clienteTipoPotencial,
-      required this.lastUpdated,
+      this.lastUpdated,
       required this.deleted})
       : super._();
 
@@ -893,7 +893,7 @@ class _$_Cliente extends _Cliente {
   @override
   final double? longitudFiscal;
   @override
-  final String empresaId;
+  final String? empresaId;
   @override
   final double? ivaEspecial;
   @override
@@ -965,7 +965,7 @@ class _$_Cliente extends _Cliente {
   @override
   final ClienteTipoPotencial? clienteTipoPotencial;
   @override
-  final DateTime lastUpdated;
+  final DateTime? lastUpdated;
   @override
   final bool deleted;
 
@@ -1148,7 +1148,7 @@ abstract class _Cliente extends Cliente {
       final Pais? paisFiscal,
       final double? latitudFiscal,
       final double? longitudFiscal,
-      required final String empresaId,
+      final String? empresaId,
       final double? ivaEspecial,
       final String? extentoIva,
       final Money? ventasAnyoActual,
@@ -1184,7 +1184,7 @@ abstract class _Cliente extends Cliente {
       final bool? clientePotencial,
       final ClienteEstadoPotencial? clienteEstadoPotencial,
       final ClienteTipoPotencial? clienteTipoPotencial,
-      required final DateTime lastUpdated,
+      final DateTime? lastUpdated,
       required final bool deleted}) = _$_Cliente;
   const _Cliente._() : super._();
 
@@ -1213,7 +1213,7 @@ abstract class _Cliente extends Cliente {
   @override
   double? get longitudFiscal;
   @override
-  String get empresaId;
+  String? get empresaId;
   @override
   double? get ivaEspecial;
   @override
@@ -1285,7 +1285,7 @@ abstract class _Cliente extends Cliente {
   @override
   ClienteTipoPotencial? get clienteTipoPotencial;
   @override
-  DateTime get lastUpdated;
+  DateTime? get lastUpdated;
   @override
   bool get deleted;
   @override

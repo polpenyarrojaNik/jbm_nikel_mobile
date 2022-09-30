@@ -853,7 +853,7 @@ class _Consultas extends StatelessWidget {
       DatosExtraRow(
         title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
         navigationTo: () => context.goNamed(
-          AppRoutes.articulosalesorder.name,
+          AppRoutes.articulopedidoventa.name,
           params: params,
           extra: getDescriptionInLocalLanguage(articulo: articulo),
         ),

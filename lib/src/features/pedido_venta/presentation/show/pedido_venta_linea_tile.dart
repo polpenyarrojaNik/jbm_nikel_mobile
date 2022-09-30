@@ -28,9 +28,12 @@ class PedidoVentaLineaTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(pedidoVentaLinea.pedidoVentaId,
+                  Text(
+                      pedidoVentaLinea.pedidoVentaId ??
+                          pedidoVentaLinea.pedidoVentaAppId!,
                       style: Theme.of(context).textTheme.caption),
-                  Text(pedidoVentaLinea.id),
+                  Text(pedidoVentaLinea.pedidoVentaLineaId ??
+                      pedidoVentaLinea.pedidoVentaLineaAppId!),
                 ],
               ),
             ),

@@ -10,83 +10,84 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/visita.dart';
-import '../../domain/visita_id_is_local_param.dart';
+import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../infrastructure/visita_repository.dart';
 
-class VisitaDetallePage extends StatelessWidget {
+class VisitaDetallePage extends ConsumerWidget {
   const VisitaDetallePage({super.key, required this.visitaIdIsLocalParam});
 
-  final VisitaIdIsLocalParam visitaIdIsLocalParam;
+  final EntityIdIsLocalParam visitaIdIsLocalParam;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(visitaProvider(visitaIdIsLocalParam));
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).visita_show_visitaDetalle_titulo),
-        actions: [
-          if (visitaIdIsLocalParam.isLocal)
-            IconButton(
-                onPressed: () =>
-                    navigateToEditVisita(context, visitaIdIsLocalParam.id!),
-                icon: const Icon(Icons.edit))
-        ],
+        actions: state.maybeWhen(
+            orElse: () => null,
+            data: (visita) => (visita.isEditable())
+                ? [
+                    IconButton(
+                        onPressed: () => navigateToEditVisita(
+                            context, visitaIdIsLocalParam.id!),
+                        icon: const Icon(Icons.edit))
+                  ]
+                : null),
       ),
-      body: Consumer(
-        builder: (context, ref, _) {
-          final visitaValue = ref.watch(visitaProvider(visitaIdIsLocalParam));
-          return AsyncValueWidget<Visita>(
-            value: visitaValue,
-            data: (visita) => Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: AsyncValueWidget<Visita>(
+        value: state,
+        data: (visita) => Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        dateFormatter(visita.fecha.toLocal().toIso8601String()),
-                      ),
-                      if (getStatusVisitaText(
-                              context, visita.enviada, visita.tratada) !=
-                          null)
-                        ChipContainer(
-                          text: getStatusVisitaText(
-                              context, visita.enviada, visita.tratada)!,
-                          color: getStatusVisitaColor(
-                              context, visita.enviada, visita.tratada),
-                        ),
-                    ],
+                  Text(
+                    dateFormatter(visita.fecha.toLocal().toIso8601String()),
                   ),
-                  Flexible(
-                    child: Text(
-                      '#${visita.clienteId} ${(visita.nombreCliente != null) ? visita.nombreCliente : ''}',
-                      style: Theme.of(context).textTheme.subtitle2,
+                  if (getStatusLocalEntityText(
+                          context, visita.enviada, visita.tratada) !=
+                      null)
+                    ChipContainer(
+                      text: getStatusLocalEntityText(
+                          context, visita.enviada, visita.tratada)!,
+                      color: getStatusLocalEntityColor(
+                          context, visita.enviada, visita.tratada),
                     ),
-                  ),
-                  gapH8,
-                  if (visita.resumen != null)
-                    ColumnFieldTextDetalle(
-                        fieldTitleValue:
-                            S.of(context).visitas_show_visitaDetalle_resumen,
-                        value: visita.resumen!),
-                  if (visita.contacto != null)
-                    ColumnFieldTextDetalle(
-                        fieldTitleValue:
-                            S.of(context).visitas_show_visitaDetalle_contacto,
-                        value: visita.contacto!),
-                  if (visita.errorSyncMessage != null) const Divider(),
-                  if (visita.errorSyncMessage != null)
-                    Text(
-                      visita.errorSyncMessage!,
-                      style: Theme.of(context).textTheme.caption?.copyWith(
-                          color: Theme.of(context).colorScheme.error),
-                    )
                 ],
               ),
-            ),
-          );
-        },
+              Flexible(
+                child: Text(
+                  '#${visita.clienteId} ${(visita.nombreCliente != null) ? visita.nombreCliente : ''}',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+              ),
+              gapH8,
+              if (visita.resumen != null)
+                ColumnFieldTextDetalle(
+                    fieldTitleValue:
+                        S.of(context).visitas_show_visitaDetalle_resumen,
+                    value: visita.resumen!),
+              if (visita.contacto != null)
+                ColumnFieldTextDetalle(
+                    fieldTitleValue:
+                        S.of(context).visitas_show_visitaDetalle_contacto,
+                    value: visita.contacto!),
+              if (visita.errorSyncMessage != null) const Divider(),
+              if (visita.errorSyncMessage != null)
+                Text(
+                  visita.errorSyncMessage!,
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      ?.copyWith(color: Theme.of(context).colorScheme.error),
+                )
+            ],
+          ),
+        ),
       ),
     );
   }

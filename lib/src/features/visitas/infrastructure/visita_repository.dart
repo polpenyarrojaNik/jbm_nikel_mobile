@@ -7,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
 
 import '../../../core/domain/default_list_params.dart';
@@ -15,7 +14,7 @@ import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/visita.dart';
-import '../domain/visita_id_is_local_param.dart';
+import '../../../core/domain/entity_id_is_local_param.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
   (ref) {
@@ -30,19 +29,15 @@ final visitasSearchProvider =
     FutureProvider.autoDispose.family<List<Visita>, DefaultListParams>(
   (ref, defaultListParams) async {
     print('Searching: ${defaultListParams.searchText}');
-    final usuario =
-        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
 
     final visitaRepository = ref.watch(visitaRepositoryProvider);
     return visitaRepository.getVisitaList(
-        usuarioId: usuario!.id,
-        page: defaultListParams.page,
-        searchText: defaultListParams.searchText);
+        page: defaultListParams.page, searchText: defaultListParams.searchText);
   },
 );
 
 final visitaProvider = FutureProvider.autoDispose
-    .family<Visita, VisitaIdIsLocalParam>((ref, visitaIdIsLocalParam) {
+    .family<Visita, EntityIdIsLocalParam>((ref, visitaIdIsLocalParam) {
   final visitaRepository = ref.watch(visitaRepositoryProvider);
   return visitaRepository.getVisitaById(
       visitaIdIsLocalParam: visitaIdIsLocalParam);
@@ -59,9 +54,7 @@ class VisitaRepository {
   VisitaRepository(this._db, this._dio, this._usuario);
 
   Future<List<Visita>> getVisitaList(
-      {required String usuarioId,
-      required int page,
-      required String searchText}) async {
+      {required int page, required String searchText}) async {
     try {
       if (page == 1) {
         visitasList.clear();
@@ -69,7 +62,7 @@ class VisitaRepository {
         visitasList.addAll(visitasLocal);
       }
       final visitas = await getVisitas(
-          usuarioId: usuarioId, page: page, searchText: searchText);
+          usuarioId: _usuario!.id, page: page, searchText: searchText);
 
       visitasList.addAll(visitas);
       return visitasList;
@@ -79,7 +72,7 @@ class VisitaRepository {
   }
 
   Future<Visita> getVisitaById(
-      {required VisitaIdIsLocalParam visitaIdIsLocalParam}) async {
+      {required EntityIdIsLocalParam visitaIdIsLocalParam}) async {
     try {
       if (!visitaIdIsLocalParam.isLocal) {
         return getVisita(visitaId: visitaIdIsLocalParam.id!);
@@ -145,9 +138,11 @@ class VisitaRepository {
   Future<VisitaLocalDTO> _remoteCreateVisita(
       VisitaLocalDTO visitaLocalDto) async {
     try {
+      final json = jsonEncode(visitaLocalDto.toJson());
+      print(json);
       final requestUri = Uri.http(
         dotenv.get('URLTEST', fallback: 'localhost:3001'),
-        'api/v1/online/visita',
+        'api/v1/online/visitas',
       );
 
       final response = await _dio.postUri(
@@ -205,6 +200,7 @@ class VisitaRepository {
     ]);
 
     query.orderBy([
+      OrderingTerm.asc(_db.visitaLocalTable.enviada),
       OrderingTerm.desc(_db.visitaLocalTable.fecha),
     ]);
 

@@ -8,6 +8,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_cus
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/pedido_venta_linea_tile.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -17,32 +18,34 @@ import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 class PedidoVentaDetallePage extends StatelessWidget {
-  const PedidoVentaDetallePage({super.key, required this.pedidoVentaId});
+  const PedidoVentaDetallePage(
+      {super.key, required this.pedidoVentaIdIsLocalParam});
 
-  final String pedidoVentaId;
+  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            '${S.of(context).pedido_show_pedidoVentaDetalle_titulo} $pedidoVentaId'),
+            '${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${pedidoVentaIdIsLocalParam.id}'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () => context.goNamed(
-              AppRoutes.salesorderedit.name,
-              params: {
-                'id': pedidoVentaId,
-              },
+          if (pedidoVentaIdIsLocalParam.isLocal)
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () => context.goNamed(
+                AppRoutes.pedidoventaedit.name,
+                params: {
+                  'id': pedidoVentaIdIsLocalParam.id!,
+                },
+              ),
             ),
-          ),
         ],
       ),
       body: Consumer(
         builder: (context, ref, _) {
           final pedidoVentaValue =
-              ref.watch(pedidoVentaProvider(pedidoVentaId));
+              ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
 
           return AsyncValueWidget<PedidoVenta>(
             value: pedidoVentaValue,
@@ -62,7 +65,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
                     ),
                   ),
                   PedidoVentaLineaContainer(
-                      pedidoVentaId: pedidoVenta.pedidoVentaId)
+                      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam)
                 ],
               ),
             ),
@@ -94,8 +97,14 @@ class ClienteInfoContainer extends StatelessWidget {
                 ),
               ),
               ChipContainer(
-                text: pedidoVenta.pedidoVentaEstado.descripcion,
-                color: Theme.of(context).colorScheme.secondaryContainer,
+                text: (pedidoVenta.tratada)
+                    ? pedidoVenta.pedidoVentaEstado!.descripcion
+                    : getStatusLocalEntityText(
+                        context, pedidoVenta.enviada, pedidoVenta.tratada)!,
+                color: (pedidoVenta.tratada)
+                    ? Theme.of(context).colorScheme.secondaryContainer
+                    : getStatusLocalEntityColor(
+                        context, pedidoVenta.enviada, pedidoVenta.tratada)!,
               )
             ],
           ),
@@ -172,13 +181,15 @@ class PedidoVentaInfoContainer extends StatelessWidget {
 }
 
 class PedidoVentaLineaContainer extends ConsumerWidget {
-  const PedidoVentaLineaContainer({super.key, required this.pedidoVentaId});
+  const PedidoVentaLineaContainer(
+      {super.key, required this.pedidoVentaIdIsLocalParam});
 
-  final String pedidoVentaId;
+  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(pedidoVentaLineaProvider(pedidoVentaId));
+    final state =
+        ref.watch(pedidoVentaLineaProvider(pedidoVentaIdIsLocalParam));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

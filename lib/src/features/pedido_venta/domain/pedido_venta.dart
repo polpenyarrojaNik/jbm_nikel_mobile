@@ -10,10 +10,12 @@ part 'pedido_venta.freezed.dart';
 class PedidoVenta with _$PedidoVenta {
   const PedidoVenta._();
   const factory PedidoVenta({
-    required String empresaId,
-    required String pedidoVentaId,
+    String? empresaId,
+    String? pedidoVentaId,
+    String? pedidoVentaAppId,
+    String? usuarioId,
     required DateTime pedidoVentaDate,
-    required String tipoVenta,
+    String? tipoVenta,
     String? clienteId,
     String? direccionId,
     String? nombreCliente,
@@ -24,14 +26,19 @@ class PedidoVenta with _$PedidoVenta {
     String? provincia,
     Pais? pais,
     required Divisa divisa,
+    String? pedidoCliente,
+    String? observaciones,
     Money? baseImponible,
     Money? importeIva,
     Money? total,
-    required PedidoVentaEstado pedidoVentaEstado,
-    required bool oferta,
-    required double descuentoProntoPago,
+    PedidoVentaEstado? pedidoVentaEstado,
+    bool? oferta,
+    double? descuentoProntoPago,
+    double? dtoBonificacion,
     required double iva,
     required DateTime lastUpdated,
     required bool deleted,
+    required bool enviada,
+    required bool tratada,
   }) = _PedidoVenta;
 }

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita_id_is_local_param.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/entity_id_is_local_param.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/visita_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_state.dart';
 import 'package:uuid/uuid.dart';
@@ -33,11 +33,11 @@ class VisitaEditPage extends ConsumerStatefulWidget {
 }
 
 class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
-  VisitaIdIsLocalParam? visitaIdLocalParam;
+  EntityIdIsLocalParam? visitaIdLocalParam;
 
   final formKey = GlobalKey<FormBuilderState>();
   bool isValid = false;
-  String? clienteId = '';
+  String? clienteId;
 
   void onSelectedCliente(String selectedClienteId) {
     setState(() {
@@ -61,7 +61,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   void initState() {
     super.initState();
     //TODO Cambiar isLocal si se puede editar una visita no local.
-    visitaIdLocalParam = VisitaIdIsLocalParam(
+    visitaIdLocalParam = EntityIdIsLocalParam(
         id: (widget.isNew) ? null : widget.id, isLocal: true);
   }
 
@@ -78,13 +78,19 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           ref.invalidate(visitasSearchResultsProvider);
           context.showSuccessBar(
               content: Text(S.of(context).visitas_edit_visitaEditar_saved));
-          context.goNamed(
-            AppRoutes.visitashow.name,
-            params: {
-              'id': (visita.id != null) ? visita.id! : visita.visitaAppId!
-            },
-            extra: visitaIdLocalParam!.isLocal,
-          );
+          if (widget.isNew) {
+            context.goNamed(
+              AppRoutes.visitaindex.name,
+            );
+          } else {
+            context.goNamed(
+              AppRoutes.visitashow.name,
+              params: {
+                'id': (visita.id != null) ? visita.id! : visita.visitaAppId!
+              },
+              extra: visitaIdLocalParam!.isLocal,
+            );
+          }
         },
         deleted: () => context.goNamed(
           AppRoutes.visitaindex.name,
@@ -283,19 +289,22 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   @override
   void initState() {
     super.initState();
-    controller.text = (widget.visita != null)
-        ? setClienteValue(
-            widget.visita!.clienteId, widget.visita?.nombreCliente)
-        : '';
+    if (widget.visita != null) {
+      controller.text = setClienteValue(
+          widget.visita!.clienteId, widget.visita?.nombreCliente);
+      Future.microtask(
+          () => widget.onSelectedCliente(widget.visita!.clienteId));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<ClienteIdNombre?>(
-        clienteFromVisitaStateProvider,
-        (_, state) => (state != null)
-            ? controller.text = setClienteValue(state.id, state.nombreCliente)
-            : {});
+    ref.listen<ClienteIdNombre?>(clienteFromVisitaStateProvider, (_, state) {
+      if (state != null) {
+        controller.text = setClienteValue(state.id, state.nombreCliente);
+        widget.onSelectedCliente(state.id);
+      }
+    });
     return FormBuilderTextField(
       name: 'clienteId',
       onChanged: widget.onChanged,
@@ -318,7 +327,6 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   }
 
   String setClienteValue(String clienteId, String? nombreCliente) {
-    widget.onSelectedCliente(clienteId);
     return (nombreCliente != null)
         ? '#$clienteId $nombreCliente'
         : '#$clienteId';

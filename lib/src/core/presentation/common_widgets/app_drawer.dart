@@ -49,7 +49,7 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_pedidos),
-            onTap: () => context.goNamed(AppRoutes.salesorderindex.name),
+            onTap: () => context.goNamed(AppRoutes.pedidoventaindex.name),
           ),
           ListTile(
             leading: const Icon(
