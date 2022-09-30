@@ -221,22 +221,22 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
   void saveForm() async {}
 
   void selectClienteValidate() {
-    // if (_customer != null) {
-    //   setState(() => _currentStep += 1);
-    // } else {
-    showToast(
-      'Seleccione un cliente para continuar.',
-      context,
-    );
-    // }
+    if (_cliente != null) {
+      setState(() => _currentStep += 1);
+    } else {
+      showToast(
+        'Seleccione un cliente para continuar.',
+        context,
+      );
+    }
   }
 
   void selectLineasValidate() {
-    // if (salesOrderLineList.isNotEmpty) {
-    //   setState(() => _currentStep += 1);
-    // } else {
-    showToast('Añade alguna línea al pedido', context);
-    // }
+    if (pedidoVentaLineaList.isNotEmpty) {
+      setState(() => _currentStep += 1);
+    } else {
+      showToast('Añade alguna línea al pedido', context);
+    }
   }
 
   void setFormInitalValues(PedidoVenta pedidoVenta) {
