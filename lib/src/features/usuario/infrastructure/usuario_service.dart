@@ -36,6 +36,7 @@ class UsuarioService {
       username,
       password,
     );
+
     await _localUsuarioRepository.save(usuarioDTO);
     return usuarioDTO.toDomain();
   }

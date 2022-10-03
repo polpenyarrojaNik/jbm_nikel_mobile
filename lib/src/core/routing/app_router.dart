@@ -328,7 +328,7 @@ class RouterNotifier extends ChangeNotifier {
               routes: [
                 GoRoute(
                   name: AppRoutes.pedidoventanewsearchcliente.name,
-                  path: 'search_clientes',
+                  path: 'search_clientes_pedidos',
                   builder: (context, state) =>
                       const ClienteListaPage(isSearchClienteForFrom: true),
                 ),
@@ -514,7 +514,7 @@ class RouterNotifier extends ChangeNotifier {
               routes: [
                 GoRoute(
                   name: AppRoutes.visitanewsearchcliente.name,
-                  path: 'search_clientes',
+                  path: 'search_clientes_visitas',
                   builder: (context, state) =>
                       const ClienteListaPage(isSearchClienteForFrom: true),
                 ),
@@ -550,7 +550,7 @@ class RouterNotifier extends ChangeNotifier {
               routes: [
                 GoRoute(
                   name: AppRoutes.visitaeditsearchcliente.name,
-                  path: 'search_clientes',
+                  path: 'search_clientes_visitas',
                   builder: (context, state) =>
                       const ClienteListaPage(isSearchClienteForFrom: true),
                 ),

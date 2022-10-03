@@ -323,7 +323,7 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   }
 
   void navigateToSearchClientes(BuildContext context) async {
-    context.goNamed(AppRoutes.pedidoventanewsearchcliente.name);
+    context.goNamed(AppRoutes.visitanewsearchcliente.name);
   }
 
   String setClienteValue(String clienteId, String? nombreCliente) {
