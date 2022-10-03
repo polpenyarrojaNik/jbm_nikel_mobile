@@ -45,7 +45,7 @@ class VisitaController extends StateNotifier<AsyncValue<List<Visita>>> {
           page: page, searchText: searchQuery);
       state = AsyncValue.data(visitaList);
     } catch (e, stack) {
-      state = AsyncValue.error(e, stackTrace: stack);
+      state = AsyncValue.error(e, stack);
     }
   }
 }

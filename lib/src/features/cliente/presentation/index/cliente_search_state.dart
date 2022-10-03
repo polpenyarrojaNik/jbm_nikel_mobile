@@ -61,7 +61,7 @@ class ClienteController extends StateNotifier<AsyncValue<List<Cliente>>> {
           searchPotenciales: searchPotenciales);
       state = AsyncValue.data(clienteList);
     } catch (e, stack) {
-      state = AsyncValue.error(e, stackTrace: stack);
+      state = AsyncValue.error(e, stack);
     }
   }
 }

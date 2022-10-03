@@ -48,7 +48,7 @@ class ArticuloController extends StateNotifier<AsyncValue<List<Articulo>>> {
       );
       state = AsyncValue.data(articuloList);
     } catch (e, stack) {
-      state = AsyncValue.error(e, stackTrace: stack);
+      state = AsyncValue.error(e, stack);
     }
   }
 }

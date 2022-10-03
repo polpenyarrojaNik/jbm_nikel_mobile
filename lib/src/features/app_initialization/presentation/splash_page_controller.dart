@@ -27,8 +27,8 @@ class SplashPageController extends StateNotifier<AsyncValue<void>> {
       // await _syncService.syncPedidos();
 
       state = const AsyncData(null);
-    } on AppException catch (e) {
-      state = AsyncError(e.details.message);
+    } on AppException catch (e, stackTrace) {
+      state = AsyncError(e.details.message, stackTrace);
     } catch (e) {
       rethrow;
     }

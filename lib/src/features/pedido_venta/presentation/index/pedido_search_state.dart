@@ -47,7 +47,7 @@ class PedidoVentaController
           page: page, searchText: searchQuery);
       state = AsyncValue.data(pedidoVentaList);
     } catch (e, stack) {
-      state = AsyncValue.error(e, stackTrace: stack);
+      state = AsyncValue.error(e, stack);
     }
   }
 }
