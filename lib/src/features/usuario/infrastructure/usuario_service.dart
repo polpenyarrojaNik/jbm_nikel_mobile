@@ -35,6 +35,7 @@ class UsuarioService {
     final usuarioDTO = await _remoteUsuarioRepository.signIn(
       username,
       password,
+      username.contains('@'),
     );
 
     await _localUsuarioRepository.save(usuarioDTO);

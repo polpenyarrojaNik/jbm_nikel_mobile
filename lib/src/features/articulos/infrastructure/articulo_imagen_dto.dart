@@ -19,15 +19,15 @@ class ArticuloImagenDTO with _$ArticuloImagenDTO {
   factory ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloImagenDTOFromJson(json);
 
-  ArticuloImagen toDomain() {
+  ArticuloImagen toDomain({required bool test}) {
     return ArticuloImagen(
         articuloId: articuloId,
         nombreArchivo: nombreArchivo,
         pathArchivo: pathArchivo,
-        url: getImageUrl(articuloId, nombreArchivo));
+        url: getImageUrl(articuloId, nombreArchivo, test));
   }
 
-  String getImageUrl(String articuloId, String nombreArchivo) {
-    return 'http://${dotenv.get('URLTEST', fallback: 'localhost:3001')}/api/v1/online/adjunto/img?PATH=$articuloId/$nombreArchivo';
+  String getImageUrl(String articuloId, String nombreArchivo, bool test) {
+    return 'http://${dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/img?PATH=$articuloId/$nombreArchivo';
   }
 }

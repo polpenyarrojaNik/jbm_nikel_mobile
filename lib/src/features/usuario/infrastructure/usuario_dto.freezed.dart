@@ -32,6 +32,8 @@ mixin _$UsuarioDTO {
   String get provisionalToken => throw _privateConstructorUsedError;
   @JsonKey(name: 'REFRESH_TOKEN')
   String? get refreshToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TEST')
+  String get test => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -50,7 +52,8 @@ abstract class $UsuarioDTOCopyWith<$Res> {
       @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
       @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken});
+      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
+      @JsonKey(name: 'TEST') String test});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$UsuarioDTOCopyWithImpl<$Res> implements $UsuarioDTOCopyWith<$Res> {
     Object? nombreUsuario = freezed,
     Object? provisionalToken = freezed,
     Object? refreshToken = freezed,
+    Object? test = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -95,6 +99,10 @@ class _$UsuarioDTOCopyWithImpl<$Res> implements $UsuarioDTOCopyWith<$Res> {
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      test: test == freezed
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -112,7 +120,8 @@ abstract class _$$_UsuarioDTOCopyWith<$Res>
       @JsonKey(name: 'CLAVE') String contrasenya,
       @JsonKey(name: 'NOMBRE_MOSTRAR', defaultValue: '') String? nombreUsuario,
       @JsonKey(name: 'PROVISIONAL_TOKEN') String provisionalToken,
-      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken});
+      @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
+      @JsonKey(name: 'TEST') String test});
 }
 
 /// @nodoc
@@ -133,6 +142,7 @@ class __$$_UsuarioDTOCopyWithImpl<$Res> extends _$UsuarioDTOCopyWithImpl<$Res>
     Object? nombreUsuario = freezed,
     Object? provisionalToken = freezed,
     Object? refreshToken = freezed,
+    Object? test = freezed,
   }) {
     return _then(_$_UsuarioDTO(
       id: id == freezed
@@ -159,6 +169,10 @@ class __$$_UsuarioDTOCopyWithImpl<$Res> extends _$UsuarioDTOCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
+      test: test == freezed
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -178,7 +192,9 @@ class _$_UsuarioDTO extends _UsuarioDTO {
       @JsonKey(name: 'PROVISIONAL_TOKEN')
           required this.provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN')
-          this.refreshToken})
+          this.refreshToken,
+      @JsonKey(name: 'TEST')
+          required this.test})
       : super._();
 
   factory _$_UsuarioDTO.fromJson(Map<String, dynamic> json) =>
@@ -202,10 +218,13 @@ class _$_UsuarioDTO extends _UsuarioDTO {
   @override
   @JsonKey(name: 'REFRESH_TOKEN')
   final String? refreshToken;
+  @override
+  @JsonKey(name: 'TEST')
+  final String test;
 
   @override
   String toString() {
-    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken)';
+    return 'UsuarioDTO(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, provisionalToken: $provisionalToken, refreshToken: $refreshToken, test: $test)';
   }
 
   @override
@@ -222,7 +241,8 @@ class _$_UsuarioDTO extends _UsuarioDTO {
             const DeepCollectionEquality()
                 .equals(other.provisionalToken, provisionalToken) &&
             const DeepCollectionEquality()
-                .equals(other.refreshToken, refreshToken));
+                .equals(other.refreshToken, refreshToken) &&
+            const DeepCollectionEquality().equals(other.test, test));
   }
 
   @JsonKey(ignore: true)
@@ -234,7 +254,8 @@ class _$_UsuarioDTO extends _UsuarioDTO {
       const DeepCollectionEquality().hash(contrasenya),
       const DeepCollectionEquality().hash(nombreUsuario),
       const DeepCollectionEquality().hash(provisionalToken),
-      const DeepCollectionEquality().hash(refreshToken));
+      const DeepCollectionEquality().hash(refreshToken),
+      const DeepCollectionEquality().hash(test));
 
   @JsonKey(ignore: true)
   @override
@@ -262,7 +283,9 @@ abstract class _UsuarioDTO extends UsuarioDTO {
       @JsonKey(name: 'PROVISIONAL_TOKEN')
           required final String provisionalToken,
       @JsonKey(name: 'REFRESH_TOKEN')
-          final String? refreshToken}) = _$_UsuarioDTO;
+          final String? refreshToken,
+      @JsonKey(name: 'TEST')
+          required final String test}) = _$_UsuarioDTO;
   const _UsuarioDTO._() : super._();
 
   factory _UsuarioDTO.fromJson(Map<String, dynamic> json) =
@@ -286,6 +309,9 @@ abstract class _UsuarioDTO extends UsuarioDTO {
   @override
   @JsonKey(name: 'REFRESH_TOKEN')
   String? get refreshToken;
+  @override
+  @JsonKey(name: 'TEST')
+  String get test;
   @override
   @JsonKey(ignore: true)
   _$$_UsuarioDTOCopyWith<_$_UsuarioDTO> get copyWith =>

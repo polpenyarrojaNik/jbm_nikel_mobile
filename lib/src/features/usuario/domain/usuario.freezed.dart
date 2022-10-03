@@ -22,6 +22,7 @@ mixin _$Usuario {
   String? get nombreUsuario => throw _privateConstructorUsedError;
   String? get refreshToken => throw _privateConstructorUsedError;
   String get provisionalToken => throw _privateConstructorUsedError;
+  bool get test => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UsuarioCopyWith<Usuario> get copyWith => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $UsuarioCopyWith<$Res> {
       String contrasenya,
       String? nombreUsuario,
       String? refreshToken,
-      String provisionalToken});
+      String provisionalToken,
+      bool test});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$UsuarioCopyWithImpl<$Res> implements $UsuarioCopyWith<$Res> {
     Object? nombreUsuario = freezed,
     Object? refreshToken = freezed,
     Object? provisionalToken = freezed,
+    Object? test = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -82,6 +85,10 @@ class _$UsuarioCopyWithImpl<$Res> implements $UsuarioCopyWith<$Res> {
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
               as String,
+      test: test == freezed
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -98,7 +105,8 @@ abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
       String contrasenya,
       String? nombreUsuario,
       String? refreshToken,
-      String provisionalToken});
+      String provisionalToken,
+      bool test});
 }
 
 /// @nodoc
@@ -118,6 +126,7 @@ class __$$_UsuarioCopyWithImpl<$Res> extends _$UsuarioCopyWithImpl<$Res>
     Object? nombreUsuario = freezed,
     Object? refreshToken = freezed,
     Object? provisionalToken = freezed,
+    Object? test = freezed,
   }) {
     return _then(_$_Usuario(
       id: id == freezed
@@ -144,6 +153,10 @@ class __$$_UsuarioCopyWithImpl<$Res> extends _$UsuarioCopyWithImpl<$Res>
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
               as String,
+      test: test == freezed
+          ? _value.test
+          : test // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -157,7 +170,8 @@ class _$_Usuario extends _Usuario {
       required this.contrasenya,
       this.nombreUsuario,
       this.refreshToken,
-      required this.provisionalToken})
+      required this.provisionalToken,
+      required this.test})
       : super._();
 
   @override
@@ -172,10 +186,12 @@ class _$_Usuario extends _Usuario {
   final String? refreshToken;
   @override
   final String provisionalToken;
+  @override
+  final bool test;
 
   @override
   String toString() {
-    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken)';
+    return 'Usuario(id: $id, usuario: $usuario, contrasenya: $contrasenya, nombreUsuario: $nombreUsuario, refreshToken: $refreshToken, provisionalToken: $provisionalToken, test: $test)';
   }
 
   @override
@@ -192,7 +208,8 @@ class _$_Usuario extends _Usuario {
             const DeepCollectionEquality()
                 .equals(other.refreshToken, refreshToken) &&
             const DeepCollectionEquality()
-                .equals(other.provisionalToken, provisionalToken));
+                .equals(other.provisionalToken, provisionalToken) &&
+            const DeepCollectionEquality().equals(other.test, test));
   }
 
   @override
@@ -203,7 +220,8 @@ class _$_Usuario extends _Usuario {
       const DeepCollectionEquality().hash(contrasenya),
       const DeepCollectionEquality().hash(nombreUsuario),
       const DeepCollectionEquality().hash(refreshToken),
-      const DeepCollectionEquality().hash(provisionalToken));
+      const DeepCollectionEquality().hash(provisionalToken),
+      const DeepCollectionEquality().hash(test));
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +236,8 @@ abstract class _Usuario extends Usuario {
       required final String contrasenya,
       final String? nombreUsuario,
       final String? refreshToken,
-      required final String provisionalToken}) = _$_Usuario;
+      required final String provisionalToken,
+      required final bool test}) = _$_Usuario;
   const _Usuario._() : super._();
 
   @override
@@ -233,6 +252,8 @@ abstract class _Usuario extends Usuario {
   String? get refreshToken;
   @override
   String get provisionalToken;
+  @override
+  bool get test;
   @override
   @JsonKey(ignore: true)
   _$$_UsuarioCopyWith<_$_Usuario> get copyWith =>

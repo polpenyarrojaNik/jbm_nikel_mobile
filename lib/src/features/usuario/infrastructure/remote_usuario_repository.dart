@@ -19,15 +19,23 @@ class RemoteUsuarioRepository {
   RemoteUsuarioRepository(this._dio);
 
   static final authorizationEndpoint = Uri.http(
+    dotenv.get('URL', fallback: 'localhost:3001'),
+    '/api/v1/login',
+  );
+  static final authorizationTestEndpoint = Uri.http(
     dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/login',
   );
   static final renewTokenEndpoint = Uri.http(
+    dotenv.get('URL', fallback: 'localhost:3001'),
+    '/api/v1/renew-token',
+  );
+  static final renewTokenTestEndpoint = Uri.http(
     dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/renew-token',
   );
 
-  Future<UsuarioDTO> signIn(String username, String password) async {
+  Future<UsuarioDTO> signIn(String username, String password, bool test) async {
     _dio.options = BaseOptions(
       validateStatus: (status) =>
           status != null && status >= 200 && status < 400,
@@ -35,8 +43,12 @@ class RemoteUsuarioRepository {
 
     try {
       final response = await _dio.postUri(
-        authorizationEndpoint,
-        data: {'USUARIO': username, 'CLAVE': password},
+        (test) ? authorizationTestEndpoint : authorizationEndpoint,
+        data: {
+          'USUARIO': username.replaceAll('@', ''),
+          'CLAVE': password,
+          'TEST': (test) ? 'S' : 'N'
+        },
       );
       if (response.statusCode == 200) {
         final UsuarioDTO usuarioDTO =
@@ -67,7 +79,7 @@ class RemoteUsuarioRepository {
   Future<UsuarioDTO> refresh(UsuarioDTO usuarioDTO) async {
     try {
       final response = await _dio.postUri(
-        renewTokenEndpoint,
+        (usuarioDTO.isTest) ? renewTokenTestEndpoint : renewTokenEndpoint,
         data: {'REFRESH_TOKEN': usuarioDTO.refreshToken},
       );
       if (response.statusCode == 200) {

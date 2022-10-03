@@ -37,7 +37,9 @@ class ArticuloDocumentoController
       final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
 
       final file = await _ref.read(articuloRepositoryProvider).getDocumentFile(
-          path: path, provisionalToken: user!.provisionalToken);
+          path: path,
+          provisionalToken: user!.provisionalToken,
+          test: user.test);
       state = ArticuloDocumentoState.data(file);
     } on AppException catch (e) {
       state = ArticuloDocumentoState.error(e.details.message);

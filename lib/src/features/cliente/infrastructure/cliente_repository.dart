@@ -100,7 +100,9 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return clienteRepository.getClienteAdjuntoById(
-      clienteId: clienteId, provisionalToken: usuario!.provisionalToken);
+      clienteId: clienteId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test);
 });
 
 const pageSize = 100;
@@ -423,12 +425,14 @@ class ClienteRepository {
   }
 
   Future<List<ClienteAdjunto>> getClienteAdjuntoById(
-      {required String clienteId, required String provisionalToken}) async {
+      {required String clienteId,
+      required String provisionalToken,
+      required bool test}) async {
     try {
       final query = {'CLIENTE_ID': clienteId};
       final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
           requestUri: Uri.http(
-            dotenv.get('URLTEST', fallback: 'localhost:3001'),
+            dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
             'api/v1/online/cliente/adjuntos',
             query,
           ),
@@ -478,13 +482,16 @@ class ClienteRepository {
   }
 
   Future<File?> getDocumentFile(
-      {required String path, required String provisionalToken}) async {
+      {required String path,
+      required String provisionalToken,
+      required bool test}) async {
     try {
       if (path != '') {
         final query = {'PATH': path};
         final data = await _remoteGetAttachment(
             requestUri: Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get((test) ? 'URLTEST' : 'URL',
+                  fallback: 'localhost:3001'),
               'api/v1/online/adjunto/doc',
               query,
             ),

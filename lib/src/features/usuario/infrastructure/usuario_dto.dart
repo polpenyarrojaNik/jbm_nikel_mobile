@@ -17,6 +17,7 @@ class UsuarioDTO with _$UsuarioDTO {
         required String? nombreUsuario,
     @JsonKey(name: 'PROVISIONAL_TOKEN') required String provisionalToken,
     @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
+    @JsonKey(name: 'TEST') required String test,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
@@ -27,6 +28,8 @@ class UsuarioDTO with _$UsuarioDTO {
     final expiration = this.expiration;
     return expiration != null && DateTime.now().isAfter(expiration);
   }
+
+  bool get isTest => (test == 'S') ? true : false;
 
   bool get canRefresh => refreshToken != null;
 
@@ -41,6 +44,7 @@ class UsuarioDTO with _$UsuarioDTO {
       nombreUsuario: _.nombreUsuario,
       provisionalToken: _.provisionalToken,
       refreshToken: _.refreshToken,
+      test: (_.test) ? 'S' : 'N',
     );
   }
 
@@ -52,6 +56,7 @@ class UsuarioDTO with _$UsuarioDTO {
       nombreUsuario: nombreUsuario,
       provisionalToken: provisionalToken,
       refreshToken: refreshToken,
+      test: (test == 'S') ? true : false,
     );
   }
 }

@@ -93,7 +93,8 @@ class VisitaRepository {
       final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
       await insertVisitaInDb(visitaLocalDto);
       try {
-        final visitaLocalEnviada = await _remoteCreateVisita(visitaLocalDto);
+        final visitaLocalEnviada =
+            await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
         await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
       } catch (e) {
         if (e is AppException) {
@@ -136,12 +137,12 @@ class VisitaRepository {
   }
 
   Future<VisitaLocalDTO> _remoteCreateVisita(
-      VisitaLocalDTO visitaLocalDto) async {
+      VisitaLocalDTO visitaLocalDto, bool test) async {
     try {
       final json = jsonEncode(visitaLocalDto.toJson());
       print(json);
       final requestUri = Uri.http(
-        dotenv.get('URLTEST', fallback: 'localhost:3001'),
+        dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
         'api/v1/online/visitas',
       );
 

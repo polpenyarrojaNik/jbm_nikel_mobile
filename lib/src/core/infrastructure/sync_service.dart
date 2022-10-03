@@ -63,11 +63,20 @@ class SyncService {
   final Usuario _usuario;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
+    dotenv.get('URL', fallback: 'localhost:3001'),
+    '/api/v1/sync/db-datetime',
+  );
+  static final remoteDatabaseDateTimeTestEndpoint = Uri.http(
     dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/sync/db-datetime',
   );
 
   static final remoteInitDatabaseEndpoint = Uri.http(
+    dotenv.get('URL', fallback: 'localhost:3001'),
+    '/api/v1/sync/init-db',
+  );
+
+  static final remoteInitDatabaseTestEndpoint = Uri.http(
     dotenv.get('URLTEST', fallback: 'localhost:3001'),
     '/api/v1/sync/init-db',
   );
@@ -94,7 +103,9 @@ class SyncService {
   Future<DateTime> getRemoteDatabaseDateTime() async {
     try {
       final response = await _dio.getUri(
-        remoteDatabaseDateTimeEndpoint,
+        (_usuario.test)
+            ? remoteDatabaseDateTimeTestEndpoint
+            : remoteDatabaseDateTimeEndpoint,
       );
 
       if (response.statusCode == 200) {
@@ -126,7 +137,9 @@ class SyncService {
   Future<dynamic> _getRemoteInitialDatabase() async {
     try {
       final response = await _dio.getUri(
-        remoteInitDatabaseEndpoint,
+        (_usuario.test)
+            ? remoteInitDatabaseTestEndpoint
+            : remoteInitDatabaseEndpoint,
         options: Options(
             responseType: ResponseType.bytes,
             receiveDataWhenStatusError: true,
@@ -765,7 +778,8 @@ class SyncService {
     try {
       final response = await _dio.getUri(
         Uri.http(
-          dotenv.get('URLTEST', fallback: 'localhost:3001'),
+          dotenv.get((_usuario.test) ? 'URLTEST' : 'URL',
+              fallback: 'localhost:3001'),
           apiPath,
           query,
         ),
@@ -842,7 +856,8 @@ class SyncService {
       VisitaLocalDTO visitaLocalDto, String provisionalToken) async {
     try {
       final requestUri = Uri.http(
-        dotenv.get('URLTEST', fallback: 'localhost:3001'),
+        dotenv.get((_usuario.test) ? 'URLTEST' : 'URL',
+            fallback: 'localhost:3001'),
         'api/v1/online/visitas',
       );
 

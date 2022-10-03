@@ -36,7 +36,9 @@ class ClienteAdjuntoController extends StateNotifier<ClienteAdjuntoState> {
       final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
 
       final file = await _ref.read(clienteRepositoryProvider).getDocumentFile(
-          path: path, provisionalToken: user!.provisionalToken);
+          path: path,
+          provisionalToken: user!.provisionalToken,
+          test: user.test);
       state = ClienteAdjuntoState.data(file);
     } on AppException catch (e) {
       state = ClienteAdjuntoState.error(e.details.message);

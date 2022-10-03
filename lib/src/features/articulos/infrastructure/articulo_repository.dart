@@ -102,7 +102,9 @@ final articuloImageListProvider = FutureProvider.autoDispose
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloImagenesListaById(
-      articuloId: articuloId, provisionalToken: usuario!.provisionalToken);
+      articuloId: articuloId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test);
 });
 
 final articuloDocumentListProvider = FutureProvider.autoDispose
@@ -110,7 +112,9 @@ final articuloDocumentListProvider = FutureProvider.autoDispose
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloDocumentoListById(
-      articuloId: articuloId, provisionalToken: usuario!.provisionalToken);
+      articuloId: articuloId,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test);
 });
 
 final articuloDocumentFileProvider =
@@ -118,7 +122,9 @@ final articuloDocumentFileProvider =
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getDocumentFile(
-      path: path, provisionalToken: usuario!.provisionalToken);
+      path: path,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test);
 });
 
 final articuloImageFileProvider =
@@ -127,7 +133,9 @@ final articuloImageFileProvider =
 
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getImageFile(
-      path: path, provisionalToken: usuario!.provisionalToken);
+      path: path,
+      provisionalToken: usuario!.provisionalToken,
+      test: usuario.test);
 });
 
 final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
@@ -337,12 +345,14 @@ class ArticuloRepository {
   }
 
   Future<List<ArticuloImagen>> getArticuloImagenesListaById(
-      {required String articuloId, required String provisionalToken}) async {
+      {required String articuloId,
+      required String provisionalToken,
+      required bool test}) async {
     try {
       final query = {'ARTICULO_ID': articuloId};
       final articuloImageDTOList = await _remoteGetArticuloImagen(
         requestUri: Uri.http(
-          dotenv.get('URLTEST', fallback: 'localhost:3001'),
+          dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
           'api/v1/online/articulo/imagenes',
           query,
         ),
@@ -350,19 +360,21 @@ class ArticuloRepository {
         provisionalToken: provisionalToken,
       );
 
-      return articuloImageDTOList.map((e) => e.toDomain()).toList();
+      return articuloImageDTOList.map((e) => e.toDomain(test: test)).toList();
     } catch (e) {
       rethrow;
     }
   }
 
   Future<List<ArticuloDocumento>> getArticuloDocumentoListById(
-      {required String articuloId, required String provisionalToken}) async {
+      {required String articuloId,
+      required String provisionalToken,
+      required bool test}) async {
     try {
       final query = {'ARTICULO_ID': articuloId};
       final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
         requestUri: Uri.http(
-          dotenv.get('URLTEST', fallback: 'localhost:3001'),
+          dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
           'api/v1/online/articulo/documentos',
           query,
         ),
@@ -377,13 +389,16 @@ class ArticuloRepository {
   }
 
   Future<Uint8List?> getImageFile(
-      {required String path, required String provisionalToken}) async {
+      {required String path,
+      required String provisionalToken,
+      required bool test}) async {
     try {
       if (path != '') {
         final query = {'PATH': path};
         final dataImage = await _remoteGetAttachment(
             requestUri: Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get((test) ? 'URLTEST' : 'URL',
+                  fallback: 'localhost:3001'),
               'api/v1/online/adjunto',
               query,
             ),
@@ -399,13 +414,16 @@ class ArticuloRepository {
   }
 
   Future<File?> getDocumentFile(
-      {required String path, required String provisionalToken}) async {
+      {required String path,
+      required String provisionalToken,
+      required bool test}) async {
     try {
       if (path != '') {
         final query = {'PATH': path};
         final data = await _remoteGetAttachment(
             requestUri: Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              dotenv.get((test) ? 'URLTEST' : 'URL',
+                  fallback: 'localhost:3001'),
               'api/v1/online/adjunto/doc',
               query,
             ),
