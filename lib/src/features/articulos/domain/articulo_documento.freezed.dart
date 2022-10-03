@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArticuloDocumento {
   String get articuloId => throw _privateConstructorUsedError;
   String? get nombreArchivo => throw _privateConstructorUsedError;
-  String? get pathArchivo => throw _privateConstructorUsedError;
   String get idiomaId => throw _privateConstructorUsedError;
   String? get observaciones => throw _privateConstructorUsedError;
 
@@ -35,7 +34,6 @@ abstract class $ArticuloDocumentoCopyWith<$Res> {
   $Res call(
       {String articuloId,
       String? nombreArchivo,
-      String? pathArchivo,
       String idiomaId,
       String? observaciones});
 }
@@ -53,7 +51,6 @@ class _$ArticuloDocumentoCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
-    Object? pathArchivo = freezed,
     Object? idiomaId = freezed,
     Object? observaciones = freezed,
   }) {
@@ -65,10 +62,6 @@ class _$ArticuloDocumentoCopyWithImpl<$Res>
       nombreArchivo: nombreArchivo == freezed
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pathArchivo: pathArchivo == freezed
-          ? _value.pathArchivo
-          : pathArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
       idiomaId: idiomaId == freezed
           ? _value.idiomaId
@@ -92,7 +85,6 @@ abstract class _$$_ArticuloDocumentoCopyWith<$Res>
   $Res call(
       {String articuloId,
       String? nombreArchivo,
-      String? pathArchivo,
       String idiomaId,
       String? observaciones});
 }
@@ -112,7 +104,6 @@ class __$$_ArticuloDocumentoCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
-    Object? pathArchivo = freezed,
     Object? idiomaId = freezed,
     Object? observaciones = freezed,
   }) {
@@ -124,10 +115,6 @@ class __$$_ArticuloDocumentoCopyWithImpl<$Res>
       nombreArchivo: nombreArchivo == freezed
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pathArchivo: pathArchivo == freezed
-          ? _value.pathArchivo
-          : pathArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
       idiomaId: idiomaId == freezed
           ? _value.idiomaId
@@ -147,7 +134,6 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
   const _$_ArticuloDocumento(
       {required this.articuloId,
       this.nombreArchivo,
-      this.pathArchivo,
       required this.idiomaId,
       this.observaciones})
       : super._();
@@ -157,15 +143,13 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
   @override
   final String? nombreArchivo;
   @override
-  final String? pathArchivo;
-  @override
   final String idiomaId;
   @override
   final String? observaciones;
 
   @override
   String toString() {
-    return 'ArticuloDocumento(articuloId: $articuloId, nombreArchivo: $nombreArchivo, pathArchivo: $pathArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+    return 'ArticuloDocumento(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
   }
 
   @override
@@ -177,8 +161,6 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
                 .equals(other.nombreArchivo, nombreArchivo) &&
-            const DeepCollectionEquality()
-                .equals(other.pathArchivo, pathArchivo) &&
             const DeepCollectionEquality().equals(other.idiomaId, idiomaId) &&
             const DeepCollectionEquality()
                 .equals(other.observaciones, observaciones));
@@ -189,7 +171,6 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
       runtimeType,
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(nombreArchivo),
-      const DeepCollectionEquality().hash(pathArchivo),
       const DeepCollectionEquality().hash(idiomaId),
       const DeepCollectionEquality().hash(observaciones));
 
@@ -204,7 +185,6 @@ abstract class _ArticuloDocumento extends ArticuloDocumento {
   const factory _ArticuloDocumento(
       {required final String articuloId,
       final String? nombreArchivo,
-      final String? pathArchivo,
       required final String idiomaId,
       final String? observaciones}) = _$_ArticuloDocumento;
   const _ArticuloDocumento._() : super._();
@@ -213,8 +193,6 @@ abstract class _ArticuloDocumento extends ArticuloDocumento {
   String get articuloId;
   @override
   String? get nombreArchivo;
-  @override
-  String? get pathArchivo;
   @override
   String get idiomaId;
   @override

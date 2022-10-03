@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
+import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 part 'articulo_documento_controller.freezed.dart';
 
@@ -31,15 +32,17 @@ class ArticuloDocumentoController
   ArticuloDocumentoController(this._ref)
       : super(const ArticuloDocumentoState.initial());
 
-  Future<void> getDocumentFile({required String path}) async {
+  Future<void> getDocumentFile({required AdjuntoParam adjuntoParam}) async {
     try {
       state = const ArticuloDocumentoState.loading();
       final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
 
-      final file = await _ref.read(articuloRepositoryProvider).getDocumentFile(
-          path: path,
-          provisionalToken: user!.provisionalToken,
-          test: user.test);
+      final file = await _ref
+          .read(articuloRepositoryProvider)
+          .getArticuloDocumentFile(
+              adjuntoParam: adjuntoParam,
+              provisionalToken: user!.provisionalToken,
+              test: user.test);
       state = ArticuloDocumentoState.data(file);
     } on AppException catch (e) {
       state = ArticuloDocumentoState.error(e.details.message);

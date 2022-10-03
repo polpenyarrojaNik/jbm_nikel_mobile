@@ -24,8 +24,6 @@ mixin _$ArticuloDocumentoDTO {
   String get articuloId => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String? get nombreArchivo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'PATH_ARCHIVO')
-  String? get pathArchivo => throw _privateConstructorUsedError;
   @JsonKey(name: 'IDIOMA_ID')
   String get idiomaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OBSERVACIONES')
@@ -45,7 +43,6 @@ abstract class $ArticuloDocumentoDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
-      @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones});
 }
@@ -63,7 +60,6 @@ class _$ArticuloDocumentoDTOCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
-    Object? pathArchivo = freezed,
     Object? idiomaId = freezed,
     Object? observaciones = freezed,
   }) {
@@ -75,10 +71,6 @@ class _$ArticuloDocumentoDTOCopyWithImpl<$Res>
       nombreArchivo: nombreArchivo == freezed
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pathArchivo: pathArchivo == freezed
-          ? _value.pathArchivo
-          : pathArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
       idiomaId: idiomaId == freezed
           ? _value.idiomaId
@@ -102,7 +94,6 @@ abstract class _$$_ArticuloDocumentoDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
-      @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo,
       @JsonKey(name: 'IDIOMA_ID') String idiomaId,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones});
 }
@@ -122,7 +113,6 @@ class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
-    Object? pathArchivo = freezed,
     Object? idiomaId = freezed,
     Object? observaciones = freezed,
   }) {
@@ -134,10 +124,6 @@ class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
       nombreArchivo: nombreArchivo == freezed
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      pathArchivo: pathArchivo == freezed
-          ? _value.pathArchivo
-          : pathArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
       idiomaId: idiomaId == freezed
           ? _value.idiomaId
@@ -157,7 +143,6 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
   const _$_ArticuloDocumentoDTO(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') this.nombreArchivo,
-      @JsonKey(name: 'PATH_ARCHIVO') this.pathArchivo,
       @JsonKey(name: 'IDIOMA_ID') required this.idiomaId,
       @JsonKey(name: 'OBSERVACIONES') this.observaciones})
       : super._();
@@ -172,9 +157,6 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   final String? nombreArchivo;
   @override
-  @JsonKey(name: 'PATH_ARCHIVO')
-  final String? pathArchivo;
-  @override
   @JsonKey(name: 'IDIOMA_ID')
   final String idiomaId;
   @override
@@ -183,7 +165,7 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
 
   @override
   String toString() {
-    return 'ArticuloDocumentoDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, pathArchivo: $pathArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
+    return 'ArticuloDocumentoDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, idiomaId: $idiomaId, observaciones: $observaciones)';
   }
 
   @override
@@ -195,8 +177,6 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
                 .equals(other.nombreArchivo, nombreArchivo) &&
-            const DeepCollectionEquality()
-                .equals(other.pathArchivo, pathArchivo) &&
             const DeepCollectionEquality().equals(other.idiomaId, idiomaId) &&
             const DeepCollectionEquality()
                 .equals(other.observaciones, observaciones));
@@ -208,7 +188,6 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
       runtimeType,
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(nombreArchivo),
-      const DeepCollectionEquality().hash(pathArchivo),
       const DeepCollectionEquality().hash(idiomaId),
       const DeepCollectionEquality().hash(observaciones));
 
@@ -230,7 +209,6 @@ abstract class _ArticuloDocumentoDTO extends ArticuloDocumentoDTO {
   const factory _ArticuloDocumentoDTO(
           {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
           @JsonKey(name: 'NOMBRE_ARCHIVO') final String? nombreArchivo,
-          @JsonKey(name: 'PATH_ARCHIVO') final String? pathArchivo,
           @JsonKey(name: 'IDIOMA_ID') required final String idiomaId,
           @JsonKey(name: 'OBSERVACIONES') final String? observaciones}) =
       _$_ArticuloDocumentoDTO;
@@ -245,9 +223,6 @@ abstract class _ArticuloDocumentoDTO extends ArticuloDocumentoDTO {
   @override
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String? get nombreArchivo;
-  @override
-  @JsonKey(name: 'PATH_ARCHIVO')
-  String? get pathArchivo;
   @override
   @JsonKey(name: 'IDIOMA_ID')
   String get idiomaId;

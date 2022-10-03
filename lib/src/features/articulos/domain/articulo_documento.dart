@@ -8,7 +8,6 @@ class ArticuloDocumento with _$ArticuloDocumento {
   const factory ArticuloDocumento({
     required String articuloId,
     String? nombreArchivo,
-    String? pathArchivo,
     required String idiomaId,
     String? observaciones,
   }) = _ArticuloDocumento;

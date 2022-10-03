@@ -20,6 +20,7 @@ import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/presentation/index/cliente_search_state.dart';
 import '../../domain/pedido_venta.dart';
 import '../../domain/pedido_venta_linea.dart';
+import '../../domain/seleccionar_cantidad_param.dart';
 import 'ask_pop_alert_dialog.dart';
 import 'icon_stepper.dart';
 
@@ -268,6 +269,18 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
             : IconStepState.disabled,
         isActive: _currentStep >= 0,
       ),
+      IconStep(
+        icon: Icons.account_circle,
+        content: StepArticuloListContent(
+          cliente: _cliente,
+          state: _currentStep >= 1
+              ? (_currentStep == 1
+                  ? IconStepState.editing
+                  : IconStepState.complete)
+              : IconStepState.disabled,
+          isActive: true,
+        ),
+      ),
     ];
   }
 }
@@ -375,5 +388,42 @@ class _StepSelectClienteContentState
         context,
       );
     }
+  }
+}
+
+class StepArticuloListContent extends StatefulWidget {
+  const StepArticuloListContent(
+      {super.key,
+      required this.cliente,
+      required this.state,
+      required this.isActive});
+
+  final Cliente? cliente;
+  final IconStepState state;
+  final bool isActive;
+
+  @override
+  State<StepArticuloListContent> createState() =>
+      _StepArticuloListContentState();
+}
+
+class _StepArticuloListContentState extends State<StepArticuloListContent> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() => context.goNamed(
+        AppRoutes.pedidoventaseleccionarcantidad.name,
+        extra: SeleccionarCantidadParam(
+            articuloId: '10020',
+            clienteId: widget.cliente!.id,
+            articuloPrecio: null)));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [],
+    );
   }
 }

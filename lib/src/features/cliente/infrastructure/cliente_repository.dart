@@ -10,6 +10,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adj
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/cliente.dart';
@@ -482,25 +483,27 @@ class ClienteRepository {
   }
 
   Future<File?> getDocumentFile(
-      {required String path,
+      {required AdjuntoParam adjuntoParam,
       required String provisionalToken,
       required bool test}) async {
     try {
-      if (path != '') {
-        final query = {'PATH': path};
+      if (adjuntoParam.nombreArchivo != '') {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
             requestUri: Uri.http(
               dotenv.get((test) ? 'URLTEST' : 'URL',
                   fallback: 'localhost:3001'),
-              'api/v1/online/adjunto/doc',
+              'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
               query,
             ),
             provisionalToken: provisionalToken);
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
-          print('${cahceDirectories.path}/$path');
-          final File file = await File('${cahceDirectories.path}/$path')
+          print(
+              '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+          final File file = await File(
+                  '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
           raf.writeFromSync(data);

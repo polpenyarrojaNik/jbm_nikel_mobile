@@ -11,7 +11,6 @@ _$_ArticuloDocumentoDTO _$$_ArticuloDocumentoDTOFromJson(
     _$_ArticuloDocumentoDTO(
       articuloId: json['ARTICULO_ID'] as String,
       nombreArchivo: json['NOMBRE_ARCHIVO'] as String?,
-      pathArchivo: json['PATH_ARCHIVO'] as String?,
       idiomaId: json['IDIOMA_ID'] as String,
       observaciones: json['OBSERVACIONES'] as String?,
     );
@@ -21,7 +20,6 @@ Map<String, dynamic> _$$_ArticuloDocumentoDTOToJson(
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'NOMBRE_ARCHIVO': instance.nombreArchivo,
-      'PATH_ARCHIVO': instance.pathArchivo,
       'IDIOMA_ID': instance.idiomaId,
       'OBSERVACIONES': instance.observaciones,
     };

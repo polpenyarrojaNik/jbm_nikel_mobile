@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_
 import 'package:open_file/open_file.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -120,8 +121,8 @@ class ClienteAdjuntoTile extends ConsumerWidget {
       {required String clienteId,
       required String nombreAdjunto,
       required WidgetRef ref}) {
-    ref
-        .read(clienteAdjuntoControllerProvider.notifier)
-        .getAttachmentFile(path: '$clienteId/$nombreAdjunto');
+    ref.read(clienteAdjuntoControllerProvider.notifier).getAttachmentFile(
+        adjuntoParam:
+            AdjuntoParam(id: clienteId, nombreArchivo: nombreAdjunto));
   }
 }

@@ -13,7 +13,6 @@ class ArticuloImagenDTO with _$ArticuloImagenDTO {
   const factory ArticuloImagenDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'NOMBRE_ARCHIVO') required String nombreArchivo,
-    @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo,
   }) = _ArticuloImagenDTO;
 
   factory ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =>
@@ -23,11 +22,10 @@ class ArticuloImagenDTO with _$ArticuloImagenDTO {
     return ArticuloImagen(
         articuloId: articuloId,
         nombreArchivo: nombreArchivo,
-        pathArchivo: pathArchivo,
         url: getImageUrl(articuloId, nombreArchivo, test));
   }
 
   String getImageUrl(String articuloId, String nombreArchivo, bool test) {
-    return 'http://${dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/img?PATH=$articuloId/$nombreArchivo';
+    return 'http://${dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/articulo/$articuloId/img?NOMBRE_ARCHIVO=$nombreArchivo';
   }
 }

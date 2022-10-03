@@ -10,7 +10,6 @@ _$_ArticuloImagenDTO _$$_ArticuloImagenDTOFromJson(Map<String, dynamic> json) =>
     _$_ArticuloImagenDTO(
       articuloId: json['ARTICULO_ID'] as String,
       nombreArchivo: json['NOMBRE_ARCHIVO'] as String,
-      pathArchivo: json['PATH_ARCHIVO'] as String?,
     );
 
 Map<String, dynamic> _$$_ArticuloImagenDTOToJson(
@@ -18,5 +17,4 @@ Map<String, dynamic> _$$_ArticuloImagenDTOToJson(
     <String, dynamic>{
       'ARTICULO_ID': instance.articuloId,
       'NOMBRE_ARCHIVO': instance.nombreArchivo,
-      'PATH_ARCHIVO': instance.pathArchivo,
     };

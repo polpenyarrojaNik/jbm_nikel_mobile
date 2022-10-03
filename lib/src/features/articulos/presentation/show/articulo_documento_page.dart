@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articu
 import 'package:open_file/open_file.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -99,7 +100,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
           child: Row(
             children: [
               Icon(
-                getIconoFromExtension(articuloDocumento.pathArchivo ?? ''),
+                getIconoFromExtension(articuloDocumento.nombreArchivo ?? ''),
                 color: Theme.of(context).textTheme.caption!.color,
               ),
               const SizedBox(width: 8),
@@ -118,8 +119,8 @@ class ArticuloDocumentoTile extends ConsumerWidget {
     required String? nombreArchivo,
     required WidgetRef ref,
   }) {
-    ref
-        .read(articuloDocumentoControllerProvider.notifier)
-        .getDocumentFile(path: '$articuloId/$nombreArchivo');
+    ref.read(articuloDocumentoControllerProvider.notifier).getDocumentFile(
+        adjuntoParam:
+            AdjuntoParam(id: articuloId, nombreArchivo: nombreArchivo));
   }
 }

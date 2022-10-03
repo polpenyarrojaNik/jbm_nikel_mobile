@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
+import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../infrastructure/cliente_repository.dart';
 part 'cliente_adjunto_controller.freezed.dart';
@@ -30,13 +31,13 @@ class ClienteAdjuntoController extends StateNotifier<ClienteAdjuntoState> {
   ClienteAdjuntoController(this._ref)
       : super(const ClienteAdjuntoState.initial());
 
-  Future<void> getAttachmentFile({required String path}) async {
+  Future<void> getAttachmentFile({required AdjuntoParam adjuntoParam}) async {
     try {
       state = const ClienteAdjuntoState.loading();
       final user = await _ref.read(usuarioServiceProvider).getSignedInUsuario();
 
       final file = await _ref.read(clienteRepositoryProvider).getDocumentFile(
-          path: path,
+          adjuntoParam: adjuntoParam,
           provisionalToken: user!.provisionalToken,
           test: user.test);
       state = ClienteAdjuntoState.data(file);

@@ -9,6 +9,5 @@ class ArticuloImagen with _$ArticuloImagen {
     required String articuloId,
     required String nombreArchivo,
     required String url,
-    String? pathArchivo,
   }) = _ArticuloImagen;
 }

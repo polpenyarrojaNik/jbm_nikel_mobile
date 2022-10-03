@@ -24,8 +24,6 @@ mixin _$ArticuloImagenDTO {
   String get articuloId => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String get nombreArchivo => throw _privateConstructorUsedError;
-  @JsonKey(name: 'PATH_ARCHIVO')
-  String? get pathArchivo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,8 +38,7 @@ abstract class $ArticuloImagenDTOCopyWith<$Res> {
       _$ArticuloImagenDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo,
-      @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo});
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo});
 }
 
 /// @nodoc
@@ -57,7 +54,6 @@ class _$ArticuloImagenDTOCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
-    Object? pathArchivo = freezed,
   }) {
     return _then(_value.copyWith(
       articuloId: articuloId == freezed
@@ -68,10 +64,6 @@ class _$ArticuloImagenDTOCopyWithImpl<$Res>
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String,
-      pathArchivo: pathArchivo == freezed
-          ? _value.pathArchivo
-          : pathArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -85,8 +77,7 @@ abstract class _$$_ArticuloImagenDTOCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo,
-      @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo});
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo});
 }
 
 /// @nodoc
@@ -104,7 +95,6 @@ class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? nombreArchivo = freezed,
-    Object? pathArchivo = freezed,
   }) {
     return _then(_$_ArticuloImagenDTO(
       articuloId: articuloId == freezed
@@ -115,10 +105,6 @@ class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String,
-      pathArchivo: pathArchivo == freezed
-          ? _value.pathArchivo
-          : pathArchivo // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -128,8 +114,7 @@ class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
 class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
   const _$_ArticuloImagenDTO(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreArchivo,
-      @JsonKey(name: 'PATH_ARCHIVO') this.pathArchivo})
+      @JsonKey(name: 'NOMBRE_ARCHIVO') required this.nombreArchivo})
       : super._();
 
   factory _$_ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =>
@@ -141,13 +126,10 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
   @override
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   final String nombreArchivo;
-  @override
-  @JsonKey(name: 'PATH_ARCHIVO')
-  final String? pathArchivo;
 
   @override
   String toString() {
-    return 'ArticuloImagenDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo, pathArchivo: $pathArchivo)';
+    return 'ArticuloImagenDTO(articuloId: $articuloId, nombreArchivo: $nombreArchivo)';
   }
 
   @override
@@ -158,9 +140,7 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
-                .equals(other.nombreArchivo, nombreArchivo) &&
-            const DeepCollectionEquality()
-                .equals(other.pathArchivo, pathArchivo));
+                .equals(other.nombreArchivo, nombreArchivo));
   }
 
   @JsonKey(ignore: true)
@@ -168,8 +148,7 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(nombreArchivo),
-      const DeepCollectionEquality().hash(pathArchivo));
+      const DeepCollectionEquality().hash(nombreArchivo));
 
   @JsonKey(ignore: true)
   @override
@@ -187,10 +166,10 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
 
 abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
   const factory _ArticuloImagenDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'NOMBRE_ARCHIVO') required final String nombreArchivo,
-          @JsonKey(name: 'PATH_ARCHIVO') final String? pathArchivo}) =
-      _$_ArticuloImagenDTO;
+      {@JsonKey(name: 'ARTICULO_ID')
+          required final String articuloId,
+      @JsonKey(name: 'NOMBRE_ARCHIVO')
+          required final String nombreArchivo}) = _$_ArticuloImagenDTO;
   const _ArticuloImagenDTO._() : super._();
 
   factory _ArticuloImagenDTO.fromJson(Map<String, dynamic> json) =
@@ -202,9 +181,6 @@ abstract class _ArticuloImagenDTO extends ArticuloImagenDTO {
   @override
   @JsonKey(name: 'NOMBRE_ARCHIVO')
   String get nombreArchivo;
-  @override
-  @JsonKey(name: 'PATH_ARCHIVO')
-  String? get pathArchivo;
   @override
   @JsonKey(ignore: true)
   _$$_ArticuloImagenDTOCopyWith<_$_ArticuloImagenDTO> get copyWith =>

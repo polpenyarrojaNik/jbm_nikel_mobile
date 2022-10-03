@@ -27,7 +27,9 @@ import '../../features/cliente/presentation/show/cliente_factura_pendiente_page.
 import '../../features/cliente/presentation/show/cliente_rappel_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_articulo_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
+import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
+import '../../features/pedido_venta/presentation/edit/select_quantity_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
 import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.dart';
 import '../../features/settings/presentation/settings_page.dart';
@@ -73,8 +75,8 @@ enum AppRoutes {
   pedidoventaedit,
   pedidoventanewsearchcliente,
   pedidoventaeditsearchcliente,
-
   pedidoventanew,
+  pedidoventaseleccionarcantidad,
   visitaindex,
   visitashow,
   visitaedit,
@@ -331,6 +333,19 @@ class RouterNotifier extends ChangeNotifier {
                   path: 'search_clientes_pedidos',
                   builder: (context, state) =>
                       const ClienteListaPage(isSearchClienteForFrom: true),
+                ),
+                GoRoute(
+                  name: AppRoutes.pedidoventaseleccionarcantidad.name,
+                  path: 'seleccionar_cantidad',
+                  pageBuilder: (context, state) {
+                    final seleccionarCantidadParam =
+                        state.extra as SeleccionarCantidadParam;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: SelecionarCantidadPage(
+                          seleccionarCantidadParam: seleccionarCantidadParam),
+                    );
+                  },
                 ),
               ],
             ),

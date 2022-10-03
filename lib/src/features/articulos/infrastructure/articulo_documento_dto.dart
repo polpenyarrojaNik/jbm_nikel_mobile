@@ -13,7 +13,6 @@ class ArticuloDocumentoDTO with _$ArticuloDocumentoDTO {
   const factory ArticuloDocumentoDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
-    @JsonKey(name: 'PATH_ARCHIVO') String? pathArchivo,
     @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
   }) = _ArticuloDocumentoDTO;
@@ -25,7 +24,6 @@ class ArticuloDocumentoDTO with _$ArticuloDocumentoDTO {
     return ArticuloDocumento(
       articuloId: articuloId,
       nombreArchivo: nombreArchivo,
-      pathArchivo: pathArchivo,
       idiomaId: idiomaId,
       observaciones: observaciones,
     );

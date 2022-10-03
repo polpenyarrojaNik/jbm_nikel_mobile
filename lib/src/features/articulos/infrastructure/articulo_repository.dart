@@ -15,6 +15,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../../../core/domain/adjunto_param.dart';
 import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/sync_service.dart';
@@ -117,23 +118,23 @@ final articuloDocumentListProvider = FutureProvider.autoDispose
       test: usuario.test);
 });
 
-final articuloDocumentFileProvider =
-    FutureProvider.autoDispose.family<File?, String>((ref, path) async {
+final articuloDocumentFileProvider = FutureProvider.autoDispose
+    .family<File?, AdjuntoParam>((ref, adjuntoParam) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-  return articuloRepository.getDocumentFile(
-      path: path,
+  return articuloRepository.getArticuloDocumentFile(
+      adjuntoParam: adjuntoParam,
       provisionalToken: usuario!.provisionalToken,
       test: usuario.test);
 });
 
-final articuloImageFileProvider =
-    FutureProvider.autoDispose.family<Uint8List?, String>((ref, path) async {
+final articuloImageFileProvider = FutureProvider.autoDispose
+    .family<Uint8List?, AdjuntoParam>((ref, adjuntoParam) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
 
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getImageFile(
-      path: path,
+      adjuntoParam: adjuntoParam,
       provisionalToken: usuario!.provisionalToken,
       test: usuario.test);
 });
@@ -389,17 +390,17 @@ class ArticuloRepository {
   }
 
   Future<Uint8List?> getImageFile(
-      {required String path,
+      {required AdjuntoParam adjuntoParam,
       required String provisionalToken,
       required bool test}) async {
     try {
-      if (path != '') {
-        final query = {'PATH': path};
+      if (adjuntoParam.nombreArchivo != '') {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final dataImage = await _remoteGetAttachment(
             requestUri: Uri.http(
               dotenv.get((test) ? 'URLTEST' : 'URL',
                   fallback: 'localhost:3001'),
-              'api/v1/online/adjunto',
+              'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
               query,
             ),
             provisionalToken: provisionalToken);
@@ -413,26 +414,66 @@ class ArticuloRepository {
     }
   }
 
-  Future<File?> getDocumentFile(
-      {required String path,
+  Future<File?> getArticuloDocumentFile(
+      {required AdjuntoParam adjuntoParam,
       required String provisionalToken,
       required bool test}) async {
     try {
-      if (path != '') {
-        final query = {'PATH': path};
+      if (adjuntoParam.nombreArchivo != '') {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
             requestUri: Uri.http(
               dotenv.get((test) ? 'URLTEST' : 'URL',
                   fallback: 'localhost:3001'),
-              'api/v1/online/adjunto/doc',
+              'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
               query,
             ),
             provisionalToken: provisionalToken);
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
-          print('${cahceDirectories.path}/$path');
-          final File file = await File('${cahceDirectories.path}/$path')
+          print(
+              '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+          final File file = await File(
+                  '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
+              .create(recursive: true);
+          final raf = file.openSync(mode: FileMode.write);
+          raf.writeFromSync(data);
+          await raf.close();
+          return file;
+        } catch (e) {
+          throw AppException.createFileInCacheFailure(e.toString());
+        }
+      }
+
+      return null;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<File?> getClientesDocumentFile(
+      {required AdjuntoParam adjuntoParam,
+      required String provisionalToken,
+      required bool test}) async {
+    try {
+      if (adjuntoParam.nombreArchivo != '') {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+        final data = await _remoteGetAttachment(
+            requestUri: Uri.http(
+              dotenv.get((test) ? 'URLTEST' : 'URL',
+                  fallback: 'localhost:3001'),
+              'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+              query,
+            ),
+            provisionalToken: provisionalToken);
+
+        try {
+          final cahceDirectories = await getTemporaryDirectory();
+          print(
+              '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+          final File file = await File(
+                  '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
           final raf = file.openSync(mode: FileMode.write);
           raf.writeFromSync(data);
