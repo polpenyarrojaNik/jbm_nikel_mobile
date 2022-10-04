@@ -1,13 +1,20 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
+import '../../cliente/domain/cliente.dart';
+import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
 
@@ -16,8 +23,8 @@ final pedidoVentaRepositoryProvider =
   (ref) {
     final db = ref.watch(appDatabaseProvider);
     final dio = ref.watch(dioProvider);
-    final usuarioId = ref.watch(usuarioNotifierProvider)!.id;
-    return PedidoVentaRepository(db, dio, usuarioId);
+    final usuario = ref.watch(usuarioNotifierProvider)!;
+    return PedidoVentaRepository(db, dio, usuario);
   },
 );
 
@@ -43,9 +50,9 @@ List<PedidoVenta> pedidoVentaList = [];
 class PedidoVentaRepository {
   final AppDatabase _db;
   final Dio _dio;
-  final String usuarioId;
+  final Usuario usuario;
 
-  PedidoVentaRepository(this._db, this._dio, this.usuarioId);
+  PedidoVentaRepository(this._db, this._dio, this.usuario);
 
   Future<List<PedidoVenta>> getPedidoVentaLista(
       {required int page, required String searchText}) async {
@@ -70,7 +77,7 @@ class PedidoVentaRepository {
 
       if (searchText != '') {
         query.where(
-          _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
               (_db.pedidoVentaTable.pedidoVentaId.like('%$searchText%') |
                   _db.pedidoVentaTable.nombreCliente.like('%$searchText%') |
                   _db.pedidoVentaTable.clienteId.like('%$searchText%') |
@@ -79,7 +86,7 @@ class PedidoVentaRepository {
                   _db.pedidoVentaTable.provincia.like('%$searchText%')),
         );
       } else {
-        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
       }
       query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
 
@@ -121,7 +128,7 @@ class PedidoVentaRepository {
       ]);
 
       query.where(_db.pedidoVentaTable.pedidoVentaId
-          .equals(pedidoVentaIdIsLocalParam.id!));
+          .equals(pedidoVentaIdIsLocalParam.id));
 
       return query.asyncMap((row) async {
         final paisDTO = row.readTableOrNull(_db.paisTable);
@@ -150,7 +157,7 @@ class PedidoVentaRepository {
       ]);
 
       query.where(_db.pedidoVentaLineaTable.pedidoVentaId
-          .equals(pedidoVentaIdIsLocalParam.id!));
+          .equals(pedidoVentaIdIsLocalParam.id));
 
       return query.map((row) {
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
@@ -162,8 +169,23 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<void> upsertPedidoVenta({required PedidoVenta pedidoVenta}) async {
-    //TODO método añadir/editar pedidoVenta.
+  Future<void> upsertPedidoVenta(
+      {required Cliente cliente,
+      required List<PedidoVentaLinea> pedidoVentaLineaList,
+      required String observaciones}) async {
+    try {
+      final pedidoVentaLocalDTO =
+          PedidoVentaLocalDTO.fromForm(usuario.id, cliente, observaciones);
+
+      await insertPedidoInDB(pedidoVentaLocalDTO);
+
+      final pedidoVentaLocalDTOEnviado =
+          await _remoteCreatePedidoVenta(pedidoVentaLocalDTO, usuario.test);
+
+      await updatePedidoInDB(pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
@@ -173,21 +195,101 @@ class PedidoVentaRepository {
   Future<ArticuloPrecio?> getArticuloPrecio(
       {required String articuloId,
       required String clienteId,
-      required String divisaId,
       required int cantidad}) async {
     if (cantidad == 0) {
       return null;
     }
+
+    final clienteDto = await (_db.select(_db.clienteTable)
+          ..where((t) => t.id.equals(clienteId)))
+        .getSingle();
+
+    final iva = await getIva(articuloId: articuloId, clienteId: clienteId);
     return ArticuloPrecio.crearNuevoArticuloPrecio(
-      articuloId,
-      clienteId,
-      cantidad,
-      divisaId,
-      0,
-      0,
-      0,
-      0,
-      0,
+      articuloId: articuloId,
+      clienteId: clienteId,
+      cantidad: cantidad,
+      divisaId: clienteDto.divisaId!,
+      tipoPrecio: 0,
+      nuevoPrecio: 0,
+      nuevoDescuento1: 0,
+      nuevoDescuento2: 0,
+      nuevoDescuento3: 0,
+      descuentoProntoPago: clienteDto.descuentoProntoPago,
+      iva: iva,
     );
+  }
+
+  Future<double> getIva({
+    required String articuloId,
+    required String clienteId,
+  }) async {
+    return 0.0;
+  }
+
+  Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO) async {
+    try {
+      await _db
+          .into(_db.pedidoVentaLocalTable)
+          .insertOnConflictUpdate(pedidoVentaLocalDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> updatePedidoInDB(
+      {required PedidoVentaLocalDTO pedidoVentaLocalDTO}) async {
+    try {
+      await _db.update(_db.pedidoVentaLocalTable).replace(pedidoVentaLocalDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
+      PedidoVentaLocalDTO pedidoVentaLocalDTO, bool test) async {
+    try {
+      final json = jsonEncode(pedidoVentaLocalDTO.toJson());
+      print(json);
+      final requestUri = Uri.http(
+        dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
+        'api/v1/online/pedidos',
+      );
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+        data: jsonEncode(pedidoVentaLocalDTO.toJson()),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
+
+        return PedidoVentaLocalDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } on DioError catch (e) {
+      String? errorDetalle;
+      if (e.isNoConnectionError) {
+        throw const AppException.notConnection();
+      }
+      final responseErrorJson = (e.response?.data is List<int>)
+          ? e.response?.statusMessage
+          : e.response?.data['detalle'] ?? e.response?.data['message'];
+      if (responseErrorJson != null) {
+        errorDetalle = responseErrorJson;
+
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
+      } else {
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 }

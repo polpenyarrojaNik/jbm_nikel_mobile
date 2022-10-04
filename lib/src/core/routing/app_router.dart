@@ -339,12 +339,6 @@ class RouterNotifier extends ChangeNotifier {
                       const ClienteListaPage(isSearchClienteForFrom: true),
                 ),
                 GoRoute(
-                  name: AppRoutes.pedidoventanewsearcharticulo.name,
-                  path: 'search_articulo',
-                  builder: (context, state) =>
-                      const ArticuloListaPage(isSearchArticuloForForm: true),
-                ),
-                GoRoute(
                   name: AppRoutes.pedidoventanewseleccionarcantidad.name,
                   path: 'seleccionar_cantidad',
                   pageBuilder: (context, state) {
@@ -356,6 +350,14 @@ class RouterNotifier extends ChangeNotifier {
                           seleccionarCantidadParam: seleccionarCantidadParam),
                     );
                   },
+                  routes: [
+                    GoRoute(
+                      name: AppRoutes.pedidoventanewsearcharticulo.name,
+                      path: 'search_articulo',
+                      builder: (context, state) => const ArticuloListaPage(
+                          isSearchArticuloForForm: true),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -369,8 +371,8 @@ class RouterNotifier extends ChangeNotifier {
                 return MaterialPage(
                   key: state.pageKey,
                   child: PedidoVentaDetallePage(
-                    pedidoVentaIdIsLocalParam:
-                        EntityIdIsLocalParam(id: id, isLocal: isLocal),
+                    pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
+                        id: id, isLocal: isLocal, isNew: false),
                   ),
                 );
               },
@@ -389,12 +391,6 @@ class RouterNotifier extends ChangeNotifier {
                   },
                   routes: [
                     GoRoute(
-                      name: AppRoutes.pedidoventaeditsearcharticulo.name,
-                      path: 'search_articulo',
-                      builder: (context, state) => const ArticuloListaPage(
-                          isSearchArticuloForForm: true),
-                    ),
-                    GoRoute(
                       name: AppRoutes.pedidoventaeditseleccionarcantidad.name,
                       path: 'seleccionar_cantidad',
                       pageBuilder: (context, state) {
@@ -407,6 +403,14 @@ class RouterNotifier extends ChangeNotifier {
                                   seleccionarCantidadParam),
                         );
                       },
+                      routes: [
+                        GoRoute(
+                          name: AppRoutes.pedidoventaeditsearcharticulo.name,
+                          path: 'search_articulo',
+                          builder: (context, state) => const ArticuloListaPage(
+                              isSearchArticuloForForm: true),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -578,8 +582,8 @@ class RouterNotifier extends ChangeNotifier {
                 return MaterialPage(
                   key: state.pageKey,
                   child: VisitaDetallePage(
-                    visitaIdIsLocalParam:
-                        EntityIdIsLocalParam(id: id, isLocal: isLocal),
+                    visitaIdIsLocalParam: EntityIdIsLocalParam(
+                        id: id, isLocal: isLocal, isNew: false),
                   ),
                 );
               },

@@ -122,8 +122,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   }
 
   void selectArticuloForFromPage(BuildContext context, Articulo articulo) {
-    context.pop();
     ref.read(articuloForFromStateProvider.notifier).state = articulo;
+    context.pop();
   }
 
   Future<void> refreshArticleDb(WidgetRef ref) async {

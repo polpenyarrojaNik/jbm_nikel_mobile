@@ -30,7 +30,7 @@ class VisitaDetallePage extends ConsumerWidget {
                 ? [
                     IconButton(
                         onPressed: () => navigateToEditVisita(
-                            context, visitaIdIsLocalParam.id!),
+                            context, visitaIdIsLocalParam.id),
                         icon: const Icon(Icons.edit))
                   ]
                 : null),

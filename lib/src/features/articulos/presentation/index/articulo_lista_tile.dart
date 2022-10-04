@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/routing/app_router.dart';
 import '../../domain/articulo.dart';
 
 class ArticuloListaTile extends StatelessWidget {

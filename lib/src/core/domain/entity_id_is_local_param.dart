@@ -6,7 +6,8 @@ part 'entity_id_is_local_param.freezed.dart';
 class EntityIdIsLocalParam with _$EntityIdIsLocalParam {
   const EntityIdIsLocalParam._();
   const factory EntityIdIsLocalParam({
-    String? id,
+    required String id,
     required bool isLocal,
+    required bool isNew,
   }) = _EntityIdIsLocalParam;
 }

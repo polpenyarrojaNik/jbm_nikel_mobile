@@ -7,6 +7,7 @@ import '../../../core/domain/pais.dart';
 import '../../../core/domain/divisa.dart';
 import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
+import '../../cliente/domain/cliente.dart';
 import '../domain/pedido_venta.dart';
 
 part 'pedido_venta_local_dto.freezed.dart';
@@ -64,6 +65,31 @@ class PedidoVentaLocalDTO
       dtoBonificacion: _.dtoBonificacion!,
       enviada: (_.enviada) ? 'S' : 'N',
       tratada: (_.tratada) ? 'S' : 'N',
+    );
+  }
+
+  factory PedidoVentaLocalDTO.fromForm(
+      String usuarioId, Cliente cliente, String? observaciones) {
+    return PedidoVentaLocalDTO(
+      usuarioId: usuarioId,
+      pedidoVentaAppId: _.pedidoVentaAppId!,
+      fechaAlta: DateTime.now(),
+      clienteId: cliente.id,
+      direccionId: cliente.direccionId,
+      nombreCliente: cliente.nombreCliente,
+      direccion1: cliente.direccionFiscal1,
+      direccion2: cliente.direccionFiscal2,
+      codigoPostal: cliente.codigoPostalFiscal,
+      poblacion: cliente.poblacionFiscal,
+      provincia: cliente.provinciaFiscal,
+      paisId: cliente.paisFiscal!.id,
+      pedidoCliente: _.pedidoCliente,
+      observaciones: observaciones,
+      divisaId: cliente.divisa!.id,
+      iva: _.iva,
+      dtoBonificacion: _.dtoBonificacion!,
+      enviada: 'N',
+      tratada: 'N',
     );
   }
 

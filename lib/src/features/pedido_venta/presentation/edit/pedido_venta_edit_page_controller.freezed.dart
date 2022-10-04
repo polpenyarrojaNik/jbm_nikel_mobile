@@ -19,39 +19,33 @@ mixin _$PedidoVentaEditPageControllerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
     required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
+            Cliente? cliente,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones)
+        data,
+    required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
     required TResult orElse(),
   }) =>
@@ -61,9 +55,6 @@ mixin _$PedidoVentaEditPageControllerState {
     required TResult Function(_loading value) loading,
     required TResult Function(_data value) data,
     required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
     required TResult Function(_deleted value) deleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,9 +63,6 @@ mixin _$PedidoVentaEditPageControllerState {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
   }) =>
       throw _privateConstructorUsedError;
@@ -83,9 +71,6 @@ mixin _$PedidoVentaEditPageControllerState {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
     required TResult orElse(),
   }) =>
@@ -151,13 +136,13 @@ class _$_loading extends _loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
     required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
+            Cliente? cliente,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones)
+        data,
+    required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
   }) {
     return loading();
@@ -167,13 +152,10 @@ class _$_loading extends _loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
   }) {
     return loading?.call();
@@ -183,13 +165,10 @@ class _$_loading extends _loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
     required TResult orElse(),
   }) {
@@ -205,9 +184,6 @@ class _$_loading extends _loading {
     required TResult Function(_loading value) loading,
     required TResult Function(_data value) data,
     required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
     required TResult Function(_deleted value) deleted,
   }) {
     return loading(this);
@@ -219,9 +195,6 @@ class _$_loading extends _loading {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
   }) {
     return loading?.call(this);
@@ -233,9 +206,6 @@ class _$_loading extends _loading {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
     required TResult orElse(),
   }) {
@@ -255,9 +225,13 @@ abstract class _loading extends PedidoVentaEditPageControllerState {
 abstract class _$$_dataCopyWith<$Res> {
   factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
       __$$_dataCopyWithImpl<$Res>;
-  $Res call({PedidoVenta? pedidoVentaLocal});
+  $Res call(
+      {Cliente? cliente,
+      List<PedidoVentaLinea> pedidoVentaLinea,
+      int currentStep,
+      String? observaciones});
 
-  $PedidoVentaCopyWith<$Res>? get pedidoVentaLocal;
+  $ClienteCopyWith<$Res>? get cliente;
 }
 
 /// @nodoc
@@ -272,24 +246,39 @@ class __$$_dataCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? pedidoVentaLocal = freezed,
+    Object? cliente = freezed,
+    Object? pedidoVentaLinea = freezed,
+    Object? currentStep = freezed,
+    Object? observaciones = freezed,
   }) {
     return _then(_$_data(
-      pedidoVentaLocal == freezed
-          ? _value.pedidoVentaLocal
-          : pedidoVentaLocal // ignore: cast_nullable_to_non_nullable
-              as PedidoVenta?,
+      cliente == freezed
+          ? _value.cliente
+          : cliente // ignore: cast_nullable_to_non_nullable
+              as Cliente?,
+      pedidoVentaLinea == freezed
+          ? _value._pedidoVentaLinea
+          : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
+              as List<PedidoVentaLinea>,
+      currentStep == freezed
+          ? _value.currentStep
+          : currentStep // ignore: cast_nullable_to_non_nullable
+              as int,
+      observaciones == freezed
+          ? _value.observaciones
+          : observaciones // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
   @override
-  $PedidoVentaCopyWith<$Res>? get pedidoVentaLocal {
-    if (_value.pedidoVentaLocal == null) {
+  $ClienteCopyWith<$Res>? get cliente {
+    if (_value.cliente == null) {
       return null;
     }
 
-    return $PedidoVentaCopyWith<$Res>(_value.pedidoVentaLocal!, (value) {
-      return _then(_value.copyWith(pedidoVentaLocal: value));
+    return $ClienteCopyWith<$Res>(_value.cliente!, (value) {
+      return _then(_value.copyWith(cliente: value));
     });
   }
 }
@@ -297,14 +286,28 @@ class __$$_dataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_data extends _data {
-  const _$_data(this.pedidoVentaLocal) : super._();
+  const _$_data(this.cliente, final List<PedidoVentaLinea> pedidoVentaLinea,
+      this.currentStep, this.observaciones)
+      : _pedidoVentaLinea = pedidoVentaLinea,
+        super._();
 
   @override
-  final PedidoVenta? pedidoVentaLocal;
+  final Cliente? cliente;
+  final List<PedidoVentaLinea> _pedidoVentaLinea;
+  @override
+  List<PedidoVentaLinea> get pedidoVentaLinea {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pedidoVentaLinea);
+  }
+
+  @override
+  final int currentStep;
+  @override
+  final String? observaciones;
 
   @override
   String toString() {
-    return 'PedidoVentaEditPageControllerState.data(pedidoVentaLocal: $pedidoVentaLocal)';
+    return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones)';
   }
 
   @override
@@ -312,13 +315,22 @@ class _$_data extends _data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_data &&
+            const DeepCollectionEquality().equals(other.cliente, cliente) &&
             const DeepCollectionEquality()
-                .equals(other.pedidoVentaLocal, pedidoVentaLocal));
+                .equals(other._pedidoVentaLinea, _pedidoVentaLinea) &&
+            const DeepCollectionEquality()
+                .equals(other.currentStep, currentStep) &&
+            const DeepCollectionEquality()
+                .equals(other.observaciones, observaciones));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(pedidoVentaLocal));
+      runtimeType,
+      const DeepCollectionEquality().hash(cliente),
+      const DeepCollectionEquality().hash(_pedidoVentaLinea),
+      const DeepCollectionEquality().hash(currentStep),
+      const DeepCollectionEquality().hash(observaciones));
 
   @JsonKey(ignore: true)
   @override
@@ -329,50 +341,44 @@ class _$_data extends _data {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
     required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
+            Cliente? cliente,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones)
+        data,
+    required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
   }) {
-    return data(pedidoVentaLocal);
+    return data(cliente, pedidoVentaLinea, currentStep, observaciones);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
   }) {
-    return data?.call(pedidoVentaLocal);
+    return data?.call(cliente, pedidoVentaLinea, currentStep, observaciones);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(pedidoVentaLocal);
+      return data(cliente, pedidoVentaLinea, currentStep, observaciones);
     }
     return orElse();
   }
@@ -383,9 +389,6 @@ class _$_data extends _data {
     required TResult Function(_loading value) loading,
     required TResult Function(_data value) data,
     required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
     required TResult Function(_deleted value) deleted,
   }) {
     return data(this);
@@ -397,9 +400,6 @@ class _$_data extends _data {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
   }) {
     return data?.call(this);
@@ -411,9 +411,6 @@ class _$_data extends _data {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
     required TResult orElse(),
   }) {
@@ -425,10 +422,17 @@ class _$_data extends _data {
 }
 
 abstract class _data extends PedidoVentaEditPageControllerState {
-  const factory _data(final PedidoVenta? pedidoVentaLocal) = _$_data;
+  const factory _data(
+      final Cliente? cliente,
+      final List<PedidoVentaLinea> pedidoVentaLinea,
+      final int currentStep,
+      final String? observaciones) = _$_data;
   const _data._() : super._();
 
-  PedidoVenta? get pedidoVentaLocal;
+  Cliente? get cliente;
+  List<PedidoVentaLinea> get pedidoVentaLinea;
+  int get currentStep;
+  String? get observaciones;
   @JsonKey(ignore: true)
   _$$_dataCopyWith<_$_data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -508,13 +512,13 @@ class _$_error extends _error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
     required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
+            Cliente? cliente,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones)
+        data,
+    required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
   }) {
     return error(this.error, stackTrace);
@@ -524,13 +528,10 @@ class _$_error extends _error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
   }) {
     return error?.call(this.error, stackTrace);
@@ -540,13 +541,10 @@ class _$_error extends _error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
     required TResult orElse(),
   }) {
@@ -562,9 +560,6 @@ class _$_error extends _error {
     required TResult Function(_loading value) loading,
     required TResult Function(_data value) data,
     required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
     required TResult Function(_deleted value) deleted,
   }) {
     return error(this);
@@ -576,9 +571,6 @@ class _$_error extends _error {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
   }) {
     return error?.call(this);
@@ -590,9 +582,6 @@ class _$_error extends _error {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
     required TResult orElse(),
   }) {
@@ -612,571 +601,6 @@ abstract class _error extends PedidoVentaEditPageControllerState {
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)
   _$$_errorCopyWith<_$_error> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_savedCopyWith<$Res> {
-  factory _$$_savedCopyWith(_$_saved value, $Res Function(_$_saved) then) =
-      __$$_savedCopyWithImpl<$Res>;
-  $Res call({PedidoVenta pedidoVentaLocal});
-
-  $PedidoVentaCopyWith<$Res> get pedidoVentaLocal;
-}
-
-/// @nodoc
-class __$$_savedCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
-    implements _$$_savedCopyWith<$Res> {
-  __$$_savedCopyWithImpl(_$_saved _value, $Res Function(_$_saved) _then)
-      : super(_value, (v) => _then(v as _$_saved));
-
-  @override
-  _$_saved get _value => super._value as _$_saved;
-
-  @override
-  $Res call({
-    Object? pedidoVentaLocal = freezed,
-  }) {
-    return _then(_$_saved(
-      pedidoVentaLocal == freezed
-          ? _value.pedidoVentaLocal
-          : pedidoVentaLocal // ignore: cast_nullable_to_non_nullable
-              as PedidoVenta,
-    ));
-  }
-
-  @override
-  $PedidoVentaCopyWith<$Res> get pedidoVentaLocal {
-    return $PedidoVentaCopyWith<$Res>(_value.pedidoVentaLocal, (value) {
-      return _then(_value.copyWith(pedidoVentaLocal: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_saved extends _saved {
-  const _$_saved(this.pedidoVentaLocal) : super._();
-
-  @override
-  final PedidoVenta pedidoVentaLocal;
-
-  @override
-  String toString() {
-    return 'PedidoVentaEditPageControllerState.saved(pedidoVentaLocal: $pedidoVentaLocal)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_saved &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaLocal, pedidoVentaLocal));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(pedidoVentaLocal));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_savedCopyWith<_$_saved> get copyWith =>
-      __$$_savedCopyWithImpl<_$_saved>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
-    required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
-    required TResult Function() deleted,
-  }) {
-    return saved(pedidoVentaLocal);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
-    TResult Function()? deleted,
-  }) {
-    return saved?.call(pedidoVentaLocal);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
-    TResult Function()? deleted,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved(pedidoVentaLocal);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_data value) data,
-    required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
-    required TResult Function(_deleted value) deleted,
-  }) {
-    return saved(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
-  }) {
-    return saved?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
-    required TResult orElse(),
-  }) {
-    if (saved != null) {
-      return saved(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _saved extends PedidoVentaEditPageControllerState {
-  const factory _saved(final PedidoVenta pedidoVentaLocal) = _$_saved;
-  const _saved._() : super._();
-
-  PedidoVenta get pedidoVentaLocal;
-  @JsonKey(ignore: true)
-  _$$_savedCopyWith<_$_saved> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_savingCopyWith<$Res> {
-  factory _$$_savingCopyWith(_$_saving value, $Res Function(_$_saving) then) =
-      __$$_savingCopyWithImpl<$Res>;
-  $Res call({PedidoVenta pedidoVentaLocal});
-
-  $PedidoVentaCopyWith<$Res> get pedidoVentaLocal;
-}
-
-/// @nodoc
-class __$$_savingCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
-    implements _$$_savingCopyWith<$Res> {
-  __$$_savingCopyWithImpl(_$_saving _value, $Res Function(_$_saving) _then)
-      : super(_value, (v) => _then(v as _$_saving));
-
-  @override
-  _$_saving get _value => super._value as _$_saving;
-
-  @override
-  $Res call({
-    Object? pedidoVentaLocal = freezed,
-  }) {
-    return _then(_$_saving(
-      pedidoVentaLocal == freezed
-          ? _value.pedidoVentaLocal
-          : pedidoVentaLocal // ignore: cast_nullable_to_non_nullable
-              as PedidoVenta,
-    ));
-  }
-
-  @override
-  $PedidoVentaCopyWith<$Res> get pedidoVentaLocal {
-    return $PedidoVentaCopyWith<$Res>(_value.pedidoVentaLocal, (value) {
-      return _then(_value.copyWith(pedidoVentaLocal: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_saving extends _saving {
-  const _$_saving(this.pedidoVentaLocal) : super._();
-
-  @override
-  final PedidoVenta pedidoVentaLocal;
-
-  @override
-  String toString() {
-    return 'PedidoVentaEditPageControllerState.saving(pedidoVentaLocal: $pedidoVentaLocal)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_saving &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaLocal, pedidoVentaLocal));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(pedidoVentaLocal));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_savingCopyWith<_$_saving> get copyWith =>
-      __$$_savingCopyWithImpl<_$_saving>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
-    required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
-    required TResult Function() deleted,
-  }) {
-    return saving(pedidoVentaLocal);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
-    TResult Function()? deleted,
-  }) {
-    return saving?.call(pedidoVentaLocal);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
-    TResult Function()? deleted,
-    required TResult orElse(),
-  }) {
-    if (saving != null) {
-      return saving(pedidoVentaLocal);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_data value) data,
-    required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
-    required TResult Function(_deleted value) deleted,
-  }) {
-    return saving(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
-  }) {
-    return saving?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
-    required TResult orElse(),
-  }) {
-    if (saving != null) {
-      return saving(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _saving extends PedidoVentaEditPageControllerState {
-  const factory _saving(final PedidoVenta pedidoVentaLocal) = _$_saving;
-  const _saving._() : super._();
-
-  PedidoVenta get pedidoVentaLocal;
-  @JsonKey(ignore: true)
-  _$$_savingCopyWith<_$_saving> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_savedErrorCopyWith<$Res> {
-  factory _$$_savedErrorCopyWith(
-          _$_savedError value, $Res Function(_$_savedError) then) =
-      __$$_savedErrorCopyWithImpl<$Res>;
-  $Res call(
-      {PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace});
-
-  $PedidoVentaCopyWith<$Res> get pedidoVentaLocal;
-}
-
-/// @nodoc
-class __$$_savedErrorCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
-    implements _$$_savedErrorCopyWith<$Res> {
-  __$$_savedErrorCopyWithImpl(
-      _$_savedError _value, $Res Function(_$_savedError) _then)
-      : super(_value, (v) => _then(v as _$_savedError));
-
-  @override
-  _$_savedError get _value => super._value as _$_savedError;
-
-  @override
-  $Res call({
-    Object? pedidoVentaLocal = freezed,
-    Object? error = freezed,
-    Object? stackTrace = freezed,
-  }) {
-    return _then(_$_savedError(
-      pedidoVentaLocal == freezed
-          ? _value.pedidoVentaLocal
-          : pedidoVentaLocal // ignore: cast_nullable_to_non_nullable
-              as PedidoVenta,
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
-          ? _value.stackTrace
-          : stackTrace // ignore: cast_nullable_to_non_nullable
-              as StackTrace?,
-    ));
-  }
-
-  @override
-  $PedidoVentaCopyWith<$Res> get pedidoVentaLocal {
-    return $PedidoVentaCopyWith<$Res>(_value.pedidoVentaLocal, (value) {
-      return _then(_value.copyWith(pedidoVentaLocal: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_savedError extends _savedError {
-  const _$_savedError(this.pedidoVentaLocal, this.error, {this.stackTrace})
-      : super._();
-
-  @override
-  final PedidoVenta pedidoVentaLocal;
-  @override
-  final Object error;
-  @override
-  final StackTrace? stackTrace;
-
-  @override
-  String toString() {
-    return 'PedidoVentaEditPageControllerState.savedError(pedidoVentaLocal: $pedidoVentaLocal, error: $error, stackTrace: $stackTrace)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_savedError &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaLocal, pedidoVentaLocal) &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(pedidoVentaLocal),
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(stackTrace));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_savedErrorCopyWith<_$_savedError> get copyWith =>
-      __$$_savedErrorCopyWithImpl<_$_savedError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
-    required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
-    required TResult Function() deleted,
-  }) {
-    return savedError(pedidoVentaLocal, this.error, stackTrace);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
-    TResult Function()? deleted,
-  }) {
-    return savedError?.call(pedidoVentaLocal, this.error, stackTrace);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
-    TResult Function()? deleted,
-    required TResult orElse(),
-  }) {
-    if (savedError != null) {
-      return savedError(pedidoVentaLocal, this.error, stackTrace);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
-    required TResult Function(_data value) data,
-    required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
-    required TResult Function(_deleted value) deleted,
-  }) {
-    return savedError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
-  }) {
-    return savedError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
-    required TResult orElse(),
-  }) {
-    if (savedError != null) {
-      return savedError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _savedError extends PedidoVentaEditPageControllerState {
-  const factory _savedError(
-      final PedidoVenta pedidoVentaLocal, final Object error,
-      {final StackTrace? stackTrace}) = _$_savedError;
-  const _savedError._() : super._();
-
-  PedidoVenta get pedidoVentaLocal;
-  Object get error;
-  StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
-  _$$_savedErrorCopyWith<_$_savedError> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1221,13 +645,13 @@ class _$_deleted extends _deleted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(PedidoVenta? pedidoVentaLocal) data,
-    required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saved,
-    required TResult Function(PedidoVenta pedidoVentaLocal) saving,
     required TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)
-        savedError,
+            Cliente? cliente,
+            List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep,
+            String? observaciones)
+        data,
+    required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
   }) {
     return deleted();
@@ -1237,13 +661,10 @@ class _$_deleted extends _deleted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
   }) {
     return deleted?.call();
@@ -1253,13 +674,10 @@ class _$_deleted extends _deleted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(PedidoVenta? pedidoVentaLocal)? data,
+    TResult Function(Cliente? cliente, List<PedidoVentaLinea> pedidoVentaLinea,
+            int currentStep, String? observaciones)?
+        data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saved,
-    TResult Function(PedidoVenta pedidoVentaLocal)? saving,
-    TResult Function(
-            PedidoVenta pedidoVentaLocal, Object error, StackTrace? stackTrace)?
-        savedError,
     TResult Function()? deleted,
     required TResult orElse(),
   }) {
@@ -1275,9 +693,6 @@ class _$_deleted extends _deleted {
     required TResult Function(_loading value) loading,
     required TResult Function(_data value) data,
     required TResult Function(_error value) error,
-    required TResult Function(_saved value) saved,
-    required TResult Function(_saving value) saving,
-    required TResult Function(_savedError value) savedError,
     required TResult Function(_deleted value) deleted,
   }) {
     return deleted(this);
@@ -1289,9 +704,6 @@ class _$_deleted extends _deleted {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
   }) {
     return deleted?.call(this);
@@ -1303,9 +715,6 @@ class _$_deleted extends _deleted {
     TResult Function(_loading value)? loading,
     TResult Function(_data value)? data,
     TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
     TResult Function(_deleted value)? deleted,
     required TResult orElse(),
   }) {

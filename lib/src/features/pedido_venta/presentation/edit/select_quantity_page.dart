@@ -3,12 +3,15 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_search_state_provider.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
 
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../articulos/domain/articulo.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
 class SelecionarCantidadPage extends ConsumerStatefulWidget {
@@ -26,38 +29,48 @@ class SelecionarCantidadPage extends ConsumerStatefulWidget {
 
 class _SelecionarCantidadPageState
     extends ConsumerState<SelecionarCantidadPage> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool isValid = false;
-  ArticuloPrecio? articuloPrecio;
   int totalQuantity = 0;
+  ArticuloPrecio? articuloPrecio;
+  Articulo? articulo;
 
   @override
   void initState() {
     super.initState();
-    articuloPrecio = widget.seleccionarCantidadParam.articuloPrecio;
-  }
-
-  void _onChanged(dynamic val) {
-    if (formKey.currentState!.validate()) {
-      if (!isValid) {
-        setState(() => isValid = true);
-      }
+    if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
+      setValoresInicialesActualizarLinea();
     } else {
-      if (isValid) {
-        setState(() => isValid = false);
-      }
+      Future.microtask(
+        () => context.goNamed(
+          AppRoutes.pedidoventanewsearcharticulo.name,
+          extra: widget.seleccionarCantidadParam,
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<ArticuloPrecioControllerState>(articuloPrecioProvider,
-        (_, state) {
-      state.maybeWhen(
-          orElse: () => null,
-          data: (newArticuloPrecio) =>
-              setState(() => articuloPrecio = newArticuloPrecio));
-    });
+    if (widget.seleccionarCantidadParam.articuloId != null) {
+      ref.listen<AsyncValue<Articulo>>(
+          articuloProvider(widget.seleccionarCantidadParam.articuloId!),
+          (_, state) => state
+              .whenData((value) => setArtiucloValue(newArticuloValue: value)));
+    } else {
+      ref.listen<Articulo?>(
+        articuloForFromStateProvider,
+        (_, state) => setArtiucloValue(newArticuloValue: state),
+      );
+    }
+
+    ref.listen<ArticuloPrecioControllerState>(
+      articuloPrecioProvider,
+      (_, state) {
+        state.maybeWhen(
+            orElse: () => null,
+            data: (newArticuloPrecio) =>
+                setState(() => articuloPrecio = newArticuloPrecio));
+      },
+    );
     final state = ref.watch(articuloPrecioProvider);
     return Scaffold(
       appBar: AppBar(
@@ -67,20 +80,20 @@ class _SelecionarCantidadPageState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _ArticuloInfo(
-              articuloId: widget.seleccionarCantidadParam.articuloId,
-            ),
+            if (articulo != null)
+              _ArticuloInfo(
+                articulo: articulo!,
+              ),
             _SelectQuantityFrom(
-              formKey: formKey,
               setTotalQuantity: (value) {
                 setState(() => totalQuantity = value);
                 ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
-                    articuloId: widget.seleccionarCantidadParam.articuloId,
-                    clienteId: widget.seleccionarCantidadParam.clienteId,
-                    divisaId: widget.seleccionarCantidadParam.divisaId,
-                    cantidad: totalQuantity);
+                      articuloId: articulo!.id,
+                      clienteId: widget.seleccionarCantidadParam.clienteId,
+                      cantidad: totalQuantity,
+                    );
               },
-              articuloPrecio: articuloPrecio,
+              cantidad: totalQuantity,
             ),
             const Divider(),
             state.when(
@@ -93,7 +106,6 @@ class _SelecionarCantidadPageState
               loading: () => const Center(child: CircularProgressIndicator()),
               data: (_) => (articuloPrecio != null)
                   ? _ArticuloPrecioContainer(
-                      formKey: formKey,
                       articuloPrecio: articuloPrecio!,
                     )
                   : Container(),
@@ -102,48 +114,108 @@ class _SelecionarCantidadPageState
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            (articuloPrecio != null) ? navigateToCrearPedido(context) : null,
+        onPressed: () => (articulo != null && articuloPrecio != null)
+            ? navigateToCrearPedido(context, widget.seleccionarCantidadParam,
+                articuloPrecio!, articulo!)
+            : null,
         child: const Icon(Icons.check),
       ),
     );
   }
 
-  void navigateToCrearPedido(BuildContext context) {
+  void navigateToCrearPedido(
+    BuildContext context,
+    SeleccionarCantidadParam seleccionarCantidadParam,
+    ArticuloPrecio articuloPrecio,
+    Articulo articulo,
+  ) {
+    if (seleccionarCantidadParam.posicionLineaActualizar != null) {
+      ref
+          .read(pedidoVentaEditPageControllerProvider(
+                  seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+              .notifier)
+          .updatePedidoVentaLinea(
+            pedidoVentaAppId:
+                seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+            articuloPrecio: articuloPrecio,
+            articuloDescripcion:
+                getDescriptionInLocalLanguage(articulo: articulo),
+            stockDisponibleSN: articulo.stockDisponible != null &&
+                articulo.stockDisponible! > 0,
+            posicionActualizar:
+                seleccionarCantidadParam.posicionLineaActualizar!,
+          );
+    } else {
+      ref
+          .read(pedidoVentaEditPageControllerProvider(
+                  seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+              .notifier)
+          .addPedidoVentaLinea(
+              pedidoVentaAppId:
+                  seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+              articuloPrecio: articuloPrecio,
+              articuloDescripcion:
+                  getDescriptionInLocalLanguage(articulo: articulo),
+              stockDisponibleSN: articulo.stockDisponible != null &&
+                  articulo.stockDisponible! > 0);
+    }
     context.pop();
+  }
+
+  void setArtiucloValue({Articulo? newArticuloValue}) {
+    if (newArticuloValue != null) {
+      setState(
+        () {
+          articulo = newArticuloValue;
+        },
+      );
+    }
+  }
+
+  void setValoresInicialesActualizarLinea() {
+    totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+
+    Future.microtask(
+      () => ref.read(
+        articuloProvider(widget.seleccionarCantidadParam.articuloId!),
+      ),
+    );
+
+    Future.microtask(
+      () => ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
+            articuloId: widget.seleccionarCantidadParam.articuloId!,
+            clienteId: widget.seleccionarCantidadParam.clienteId,
+            cantidad: totalQuantity,
+          ),
+    );
   }
 }
 
-class _ArticuloInfo extends ConsumerWidget {
-  const _ArticuloInfo({required this.articuloId});
+class _ArticuloInfo extends StatelessWidget {
+  const _ArticuloInfo({required this.articulo});
 
-  final String articuloId;
+  final Articulo articulo;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(articuloProvider(articuloId));
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
       color: Theme.of(context).colorScheme.secondaryContainer,
-      child: state.when(
-        data: (articulo) => Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  articulo.id,
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
-                Text(
-                  getDescriptionInLocalLanguage(articulo: articulo),
-                ),
-              ],
-            ),
-          ],
-        ),
-        error: (error, _) => ErrorMessageWidget(error.toString()),
-        loading: () => const ProgressIndicatorWidget(),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                articulo.id,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+              Text(
+                getDescriptionInLocalLanguage(articulo: articulo),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -151,32 +223,29 @@ class _ArticuloInfo extends ConsumerWidget {
 
 class _SelectQuantityFrom extends StatelessWidget {
   const _SelectQuantityFrom(
-      {required this.formKey,
-      required this.setTotalQuantity,
-      required this.articuloPrecio});
+      {required this.setTotalQuantity, required this.cantidad});
 
-  final GlobalKey<FormState> formKey;
   final void Function(int value) setTotalQuantity;
-  final ArticuloPrecio? articuloPrecio;
+  final int? cantidad;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: FormBuilder(
-        key: formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [
             FormBuilderTextField(
               name: 'cantidad',
               keyboardType: TextInputType.number,
-              initialValue: articuloPrecio?.cantidad.toString(),
+              initialValue: cantidad.toString(),
               decoration: const InputDecoration(
                 labelText: 'Cantidad',
               ),
               onChanged: (value) => setTotalQuantity(
-                  (value != null && value != '') ? int.parse(value) : 0),
+                (value != null && value != '') ? int.parse(value) : 0,
+              ),
             ),
           ],
         ),
@@ -186,11 +255,9 @@ class _SelectQuantityFrom extends StatelessWidget {
 }
 
 class _ArticuloPrecioContainer extends StatelessWidget {
-  const _ArticuloPrecioContainer(
-      {required this.articuloPrecio, required this.formKey});
+  const _ArticuloPrecioContainer({required this.articuloPrecio});
 
   final ArticuloPrecio articuloPrecio;
-  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {

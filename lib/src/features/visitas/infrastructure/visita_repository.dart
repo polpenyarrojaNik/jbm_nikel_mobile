@@ -75,9 +75,9 @@ class VisitaRepository {
       {required EntityIdIsLocalParam visitaIdIsLocalParam}) async {
     try {
       if (!visitaIdIsLocalParam.isLocal) {
-        return getVisita(visitaId: visitaIdIsLocalParam.id!);
+        return getVisita(visitaId: visitaIdIsLocalParam.id);
       } else {
-        return getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id!);
+        return getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id);
       }
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -85,7 +85,7 @@ class VisitaRepository {
   }
 
   Future<void> deleteVisita(String visitaId) async {
-    print('Delete');
+    //TODO Delete method
   }
 
   Future<void> upsertVisita(Visita visitaLocal) async {

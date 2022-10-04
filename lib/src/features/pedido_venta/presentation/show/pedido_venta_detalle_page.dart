@@ -36,7 +36,7 @@ class PedidoVentaDetallePage extends StatelessWidget {
               onPressed: () => context.goNamed(
                 AppRoutes.pedidoventaedit.name,
                 params: {
-                  'id': pedidoVentaIdIsLocalParam.id!,
+                  'id': pedidoVentaIdIsLocalParam.id,
                 },
               ),
             ),

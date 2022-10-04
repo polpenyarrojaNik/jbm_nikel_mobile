@@ -61,8 +61,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   void initState() {
     super.initState();
     //TODO Cambiar isLocal si se puede editar una visita no local.
-    visitaIdLocalParam = EntityIdIsLocalParam(
-        id: (widget.isNew) ? null : widget.id, isLocal: true);
+    visitaIdLocalParam =
+        EntityIdIsLocalParam(id: widget.id, isLocal: true, isNew: widget.isNew);
   }
 
   @override

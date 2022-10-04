@@ -34,6 +34,23 @@ class PedidoVentaLineaLocalDTO
   factory PedidoVentaLineaLocalDTO.fromJson(Map<String, dynamic> json) =>
       _$PedidoVentaLineaLocalDTOFromJson(json);
 
+  factory PedidoVentaLineaLocalDTO.fromDomain(PedidoVentaLinea _) {
+    return _PedidoVentaLineaLocalDTO(
+      pedidoVentaAppId: _.pedidoVentaAppId!,
+      pedidoVentaLineaAppId: _.pedidoVentaLineaAppId!,
+      articuloId: _.articuloId,
+      cantidad: _.cantidad,
+      precioDivisa: _.precioDivisa.amount.toDecimal().toDouble(),
+      tipoPrecio: _.tipoPrecio!,
+      descuento1: _.descuento1,
+      descuento2: _.descuento2,
+      descuento3: _.descuento3,
+      descuentoProntoPago: _.descuentoProntoPago!,
+      stockDisponibleSN: (_.stockDisponibleSN ?? false) ? 'S' : 'N',
+      iva: _.iva!,
+    );
+  }
+
   PedidoVentaLinea toDomain({required String divisaId, double? importeLinea}) {
     return PedidoVentaLinea(
         empresaId: null,

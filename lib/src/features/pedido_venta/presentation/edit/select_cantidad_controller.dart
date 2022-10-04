@@ -38,15 +38,11 @@ class ArticuloPrecioController
   Future<void> getArticuloPrecio(
       {required String articuloId,
       required String clienteId,
-      required String divisaId,
       required int cantidad}) async {
     state = const ArticuloPrecioControllerState.loading();
     try {
       final articuloPrecio = await pedidoVentaRepository.getArticuloPrecio(
-          articuloId: articuloId,
-          clienteId: clienteId,
-          divisaId: divisaId,
-          cantidad: cantidad);
+          articuloId: articuloId, clienteId: clienteId, cantidad: cantidad);
       state = ArticuloPrecioControllerState.data(articuloPrecio);
     } catch (e, stack) {
       state = ArticuloPrecioControllerState.error(e, stackTrace: stack);

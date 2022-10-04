@@ -3,7 +3,7 @@ import 'package:money2/money2.dart';
 
 extension MoneyParsing on String {
   Money parseMoney(String currencyId) {
-    final euroCurrency = Currency.create('EUR', 2,
+    final euroCurrency = Currency.create('EU', 2,
         symbol: '€', invertSeparators: true, pattern: 'S#.##0,##');
 
     Currencies().registerList(
@@ -30,7 +30,7 @@ extension MoneyParsing on String {
   }
 
   Money parseMoneyWithoutDecimal(String currencyId) {
-    final euroCurrency = Currency.create('EUR', 1,
+    final euroCurrency = Currency.create('EU', 1,
         symbol: '€', invertSeparators: true, pattern: 'S#.##0');
 
     Currencies().registerList(
@@ -59,7 +59,7 @@ extension MoneyParsing on String {
 
 extension MoneyParsingDouble on double {
   Money parseMoney(double importe, String? currencyId) {
-    final euroCurrency = Currency.create('EUR', 2,
+    final euroCurrency = Currency.create('EU', 2,
         symbol: '€', invertSeparators: true, pattern: 'S#.##0,00');
 
     Currencies().registerList(

@@ -16,8 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EntityIdIsLocalParam {
-  String? get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   bool get isLocal => throw _privateConstructorUsedError;
+  bool get isNew => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityIdIsLocalParamCopyWith<EntityIdIsLocalParam> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $EntityIdIsLocalParamCopyWith<$Res> {
   factory $EntityIdIsLocalParamCopyWith(EntityIdIsLocalParam value,
           $Res Function(EntityIdIsLocalParam) then) =
       _$EntityIdIsLocalParamCopyWithImpl<$Res>;
-  $Res call({String? id, bool isLocal});
+  $Res call({String id, bool isLocal, bool isNew});
 }
 
 /// @nodoc
@@ -45,15 +46,20 @@ class _$EntityIdIsLocalParamCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? isLocal = freezed,
+    Object? isNew = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       isLocal: isLocal == freezed
           ? _value.isLocal
           : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNew: isNew == freezed
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -66,7 +72,7 @@ abstract class _$$_EntityIdIsLocalParamCopyWith<$Res>
           $Res Function(_$_EntityIdIsLocalParam) then) =
       __$$_EntityIdIsLocalParamCopyWithImpl<$Res>;
   @override
-  $Res call({String? id, bool isLocal});
+  $Res call({String id, bool isLocal, bool isNew});
 }
 
 /// @nodoc
@@ -84,15 +90,20 @@ class __$$_EntityIdIsLocalParamCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? isLocal = freezed,
+    Object? isNew = freezed,
   }) {
     return _then(_$_EntityIdIsLocalParam(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       isLocal: isLocal == freezed
           ? _value.isLocal
           : isLocal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNew: isNew == freezed
+          ? _value.isNew
+          : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -101,16 +112,20 @@ class __$$_EntityIdIsLocalParamCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
-  const _$_EntityIdIsLocalParam({this.id, required this.isLocal}) : super._();
+  const _$_EntityIdIsLocalParam(
+      {required this.id, required this.isLocal, required this.isNew})
+      : super._();
 
   @override
-  final String? id;
+  final String id;
   @override
   final bool isLocal;
+  @override
+  final bool isNew;
 
   @override
   String toString() {
-    return 'EntityIdIsLocalParam(id: $id, isLocal: $isLocal)';
+    return 'EntityIdIsLocalParam(id: $id, isLocal: $isLocal, isNew: $isNew)';
   }
 
   @override
@@ -119,14 +134,16 @@ class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
         (other.runtimeType == runtimeType &&
             other is _$_EntityIdIsLocalParam &&
             const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.isLocal, isLocal));
+            const DeepCollectionEquality().equals(other.isLocal, isLocal) &&
+            const DeepCollectionEquality().equals(other.isNew, isNew));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(isLocal));
+      const DeepCollectionEquality().hash(isLocal),
+      const DeepCollectionEquality().hash(isNew));
 
   @JsonKey(ignore: true)
   @override
@@ -137,14 +154,17 @@ class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
 
 abstract class _EntityIdIsLocalParam extends EntityIdIsLocalParam {
   const factory _EntityIdIsLocalParam(
-      {final String? id,
-      required final bool isLocal}) = _$_EntityIdIsLocalParam;
+      {required final String id,
+      required final bool isLocal,
+      required final bool isNew}) = _$_EntityIdIsLocalParam;
   const _EntityIdIsLocalParam._() : super._();
 
   @override
-  String? get id;
+  String get id;
   @override
   bool get isLocal;
+  @override
+  bool get isNew;
   @override
   @JsonKey(ignore: true)
   _$$_EntityIdIsLocalParamCopyWith<_$_EntityIdIsLocalParam> get copyWith =>
