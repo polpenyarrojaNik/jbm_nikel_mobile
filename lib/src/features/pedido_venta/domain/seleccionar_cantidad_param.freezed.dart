@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SeleccionarCantidadParam {
   String get articuloId => throw _privateConstructorUsedError;
   String get clienteId => throw _privateConstructorUsedError;
+  String get divisaId => throw _privateConstructorUsedError;
   ArticuloPrecio? get articuloPrecio => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +32,10 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
           $Res Function(SeleccionarCantidadParam) then) =
       _$SeleccionarCantidadParamCopyWithImpl<$Res>;
   $Res call(
-      {String articuloId, String clienteId, ArticuloPrecio? articuloPrecio});
+      {String articuloId,
+      String clienteId,
+      String divisaId,
+      ArticuloPrecio? articuloPrecio});
 
   $ArticuloPrecioCopyWith<$Res>? get articuloPrecio;
 }
@@ -49,6 +53,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? clienteId = freezed,
+    Object? divisaId = freezed,
     Object? articuloPrecio = freezed,
   }) {
     return _then(_value.copyWith(
@@ -59,6 +64,10 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res>
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
       articuloPrecio: articuloPrecio == freezed
           ? _value.articuloPrecio
@@ -88,7 +97,10 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       __$$_SeleccionarCantidadParamCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String articuloId, String clienteId, ArticuloPrecio? articuloPrecio});
+      {String articuloId,
+      String clienteId,
+      String divisaId,
+      ArticuloPrecio? articuloPrecio});
 
   @override
   $ArticuloPrecioCopyWith<$Res>? get articuloPrecio;
@@ -110,6 +122,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
   $Res call({
     Object? articuloId = freezed,
     Object? clienteId = freezed,
+    Object? divisaId = freezed,
     Object? articuloPrecio = freezed,
   }) {
     return _then(_$_SeleccionarCantidadParam(
@@ -120,6 +133,10 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
+      divisaId: divisaId == freezed
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
       articuloPrecio: articuloPrecio == freezed
           ? _value.articuloPrecio
@@ -135,6 +152,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   const _$_SeleccionarCantidadParam(
       {required this.articuloId,
       required this.clienteId,
+      required this.divisaId,
       required this.articuloPrecio})
       : super._();
 
@@ -143,11 +161,13 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   final String clienteId;
   @override
+  final String divisaId;
+  @override
   final ArticuloPrecio? articuloPrecio;
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(articuloId: $articuloId, clienteId: $clienteId, articuloPrecio: $articuloPrecio)';
+    return 'SeleccionarCantidadParam(articuloId: $articuloId, clienteId: $clienteId, divisaId: $divisaId, articuloPrecio: $articuloPrecio)';
   }
 
   @override
@@ -158,6 +178,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
+            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
                 .equals(other.articuloPrecio, articuloPrecio));
   }
@@ -167,6 +188,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       runtimeType,
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(clienteId),
+      const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(articuloPrecio));
 
   @JsonKey(ignore: true)
@@ -180,6 +202,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   const factory _SeleccionarCantidadParam(
           {required final String articuloId,
           required final String clienteId,
+          required final String divisaId,
           required final ArticuloPrecio? articuloPrecio}) =
       _$_SeleccionarCantidadParam;
   const _SeleccionarCantidadParam._() : super._();
@@ -188,6 +211,8 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   String get articuloId;
   @override
   String get clienteId;
+  @override
+  String get divisaId;
   @override
   ArticuloPrecio? get articuloPrecio;
   @override

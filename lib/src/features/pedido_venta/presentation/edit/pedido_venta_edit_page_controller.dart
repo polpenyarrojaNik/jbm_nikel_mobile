@@ -30,21 +30,21 @@ class PedidoVentaEditPageControllerState
   const factory PedidoVentaEditPageControllerState.deleted() = _deleted;
 }
 
-final visitaEditPageControllerProvider = StateNotifierProvider.autoDispose
-    .family<VisitaEditPageController, PedidoVentaEditPageControllerState,
+final pedidoVentaEditPageControllerProvider = StateNotifierProvider.autoDispose
+    .family<PedidoVentaEditPageController, PedidoVentaEditPageControllerState,
         EntityIdIsLocalParam>((ref, pedidoVentaIdIsLocalParam) {
-  return VisitaEditPageController(
+  return PedidoVentaEditPageController(
     pedidoVentaRepository: ref.watch(pedidoVentaRepositoryProvider),
     pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
   );
 });
 
-class VisitaEditPageController
+class PedidoVentaEditPageController
     extends StateNotifier<PedidoVentaEditPageControllerState> {
   final PedidoVentaRepository pedidoVentaRepository;
   final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
 
-  VisitaEditPageController({
+  PedidoVentaEditPageController({
     required this.pedidoVentaIdIsLocalParam,
     required this.pedidoVentaRepository,
   }) : super(const PedidoVentaEditPageControllerState.loading()) {

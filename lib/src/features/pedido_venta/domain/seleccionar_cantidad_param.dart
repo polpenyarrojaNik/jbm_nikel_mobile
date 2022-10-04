@@ -10,6 +10,7 @@ class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
   const factory SeleccionarCantidadParam({
     required String articuloId,
     required String clienteId,
+    required String divisaId,
     required ArticuloPrecio? articuloPrecio,
   }) = _SeleccionarCantidadParam;
 }

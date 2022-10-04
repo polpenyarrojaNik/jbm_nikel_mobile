@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 
@@ -9,11 +10,15 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_router.dart';
+import '../../domain/articulo.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_state_provider.dart';
 
 class ArticuloListaPage extends ConsumerStatefulWidget {
-  const ArticuloListaPage({super.key});
+  const ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
+
+  final bool isSearchArticuloForForm;
 
   @override
   ConsumerState<ArticuloListaPage> createState() => _ArticuloListaPageState();
@@ -67,7 +72,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     final state = ref.watch(articulosSearchResultsProvider);
 
     return Scaffold(
-      drawer: const AppDrawer(),
+      drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
         title: S.of(context).articulo_index_titulo,
         searchTitle: S.of(context).articulo_index_buscarArticulos,
@@ -94,14 +99,31 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
                     controller: _scrollController,
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: articuloList.length,
-                    itemBuilder: (context, i) => ArticuloListaTile(
-                      articulo: articuloList[i],
+                    itemBuilder: (context, i) => GestureDetector(
+                      onTap: () => (!widget.isSearchArticuloForForm)
+                          ? navigateToArticuloDetalPage(
+                              context, articuloList[i].id)
+                          : selectArticuloForFromPage(context, articuloList[i]),
+                      child: ArticuloListaTile(
+                        articulo: articuloList[i],
+                      ),
                     ),
                   ),
           ),
         ),
       ),
     );
+  }
+
+  void navigateToArticuloDetalPage(BuildContext context, String id) {
+    final params = {'articuloId': id};
+
+    context.goNamed(AppRoutes.articuloshow.name, params: params);
+  }
+
+  void selectArticuloForFromPage(BuildContext context, Articulo articulo) {
+    context.pop();
+    ref.read(articuloForFromStateProvider.notifier).state = articulo;
   }
 
   Future<void> refreshArticleDb(WidgetRef ref) async {

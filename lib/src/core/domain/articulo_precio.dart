@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:money2/money2.dart';
 
 part 'articulo_precio.freezed.dart';
@@ -18,37 +19,24 @@ class ArticuloPrecio with _$ArticuloPrecio {
   }) = _ArticuloPrecio;
 
   factory ArticuloPrecio.crearNuevoArticuloPrecio(
-    ArticuloPrecio articuloPrecio,
-    String divisaID,
-    String? nuevoPrecio,
-    String? nuevoDescuento1,
-    String? nuevoDescuento2,
-    String? nuevoDescuento3,
+    String articuloId,
+    String clienteId,
+    int cantidad,
+    String divisaId,
+    int tipoPrecio,
+    double nuevoPrecio,
+    double nuevoDescuento1,
+    double nuevoDescuento2,
+    double nuevoDescuento3,
   ) =>
       ArticuloPrecio(
-        articuloId: articuloPrecio.articuloId,
-        clienteId: articuloPrecio.clienteId,
-        cantidad: articuloPrecio.cantidad,
-        precio: (nuevoPrecio != null)
-            ? (nuevoPrecio != '')
-                ? Money.parse(nuevoPrecio, code: divisaID)
-                : Money.parse('0', code: divisaID)
-            : articuloPrecio.precio,
-        descuento1: (nuevoDescuento1 != null)
-            ? (nuevoDescuento1 != '')
-                ? double.parse(nuevoDescuento1)
-                : 0
-            : articuloPrecio.descuento1,
-        descuento2: (nuevoDescuento2 != null)
-            ? (nuevoDescuento2 != '')
-                ? double.parse(nuevoDescuento2)
-                : 0
-            : articuloPrecio.descuento2,
-        descuento3: (nuevoDescuento3 != null)
-            ? (nuevoDescuento3 != '')
-                ? double.parse(nuevoDescuento3)
-                : 0
-            : articuloPrecio.descuento3,
-        tipoPrecio: articuloPrecio.tipoPrecio,
+        articuloId: articuloId,
+        clienteId: clienteId,
+        cantidad: cantidad,
+        precio: nuevoPrecio.parseMoney(nuevoPrecio, divisaId),
+        descuento1: nuevoDescuento1,
+        descuento2: nuevoDescuento2,
+        descuento3: nuevoDescuento3,
+        tipoPrecio: tipoPrecio,
       );
 }

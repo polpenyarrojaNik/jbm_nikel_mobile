@@ -13,6 +13,11 @@ final articulosPaginationQueryStateProvider =
   return 1;
 });
 
+final articuloForFromStateProvider =
+    StateProvider.autoDispose<Articulo?>((ref) {
+  return null;
+});
+
 final articulosSearchResultsProvider = StateNotifierProvider.autoDispose<
     ArticuloController, AsyncValue<List<Articulo>>>((ref) {
   final searchQuery = ref.watch(articulosSearchQueryStateProvider);

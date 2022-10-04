@@ -136,7 +136,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                       onTap: () => (!widget.isSearchClienteForFrom)
                           ? navigateToClienteDetalle(
                               context: context, clienteId: clienteList[i].id)
-                          : selectClienteFromVisitaPage(
+                          : selectClienteForFromPage(
                               context: context, cliente: clienteList[i]),
                       child: ClienteListaTile(
                         cliente: clienteList[i],
@@ -157,7 +157,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     );
   }
 
-  void selectClienteFromVisitaPage(
+  void selectClienteForFromPage(
       {required BuildContext context, required Cliente cliente}) {
     ref.read(clienteForFromStateProvider.notifier).state = cliente;
     context.pop();

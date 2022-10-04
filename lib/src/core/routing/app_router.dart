@@ -75,8 +75,12 @@ enum AppRoutes {
   pedidoventaedit,
   pedidoventanewsearchcliente,
   pedidoventaeditsearchcliente,
+  pedidoventanewsearcharticulo,
+  pedidoventaeditsearcharticulo,
   pedidoventanew,
-  pedidoventaseleccionarcantidad,
+  pedidoventanewseleccionarcantidad,
+  pedidoventaeditseleccionarcantidad,
+
   visitaindex,
   visitashow,
   visitaedit,
@@ -335,7 +339,13 @@ class RouterNotifier extends ChangeNotifier {
                       const ClienteListaPage(isSearchClienteForFrom: true),
                 ),
                 GoRoute(
-                  name: AppRoutes.pedidoventaseleccionarcantidad.name,
+                  name: AppRoutes.pedidoventanewsearcharticulo.name,
+                  path: 'search_articulo',
+                  builder: (context, state) =>
+                      const ArticuloListaPage(isSearchArticuloForForm: true),
+                ),
+                GoRoute(
+                  name: AppRoutes.pedidoventanewseleccionarcantidad.name,
                   path: 'seleccionar_cantidad',
                   pageBuilder: (context, state) {
                     final seleccionarCantidadParam =
@@ -377,6 +387,28 @@ class RouterNotifier extends ChangeNotifier {
                       child: PedidoVentaEditPage(id: pedidoVentaId),
                     );
                   },
+                  routes: [
+                    GoRoute(
+                      name: AppRoutes.pedidoventaeditsearcharticulo.name,
+                      path: 'search_articulo',
+                      builder: (context, state) => const ArticuloListaPage(
+                          isSearchArticuloForForm: true),
+                    ),
+                    GoRoute(
+                      name: AppRoutes.pedidoventaeditseleccionarcantidad.name,
+                      path: 'seleccionar_cantidad',
+                      pageBuilder: (context, state) {
+                        final seleccionarCantidadParam =
+                            state.extra as SeleccionarCantidadParam;
+                        return MaterialPage(
+                          key: state.pageKey,
+                          child: SelecionarCantidadPage(
+                              seleccionarCantidadParam:
+                                  seleccionarCantidadParam),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -385,7 +417,9 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: AppRoutes.articuloindex.name,
           path: '/articulos',
-          builder: (context, state) => const ArticuloListaPage(),
+          builder: (context, state) => const ArticuloListaPage(
+            isSearchArticuloForForm: false,
+          ),
           routes: [
             GoRoute(
               name: AppRoutes.articuloshow.name,

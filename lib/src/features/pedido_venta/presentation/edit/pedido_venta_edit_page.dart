@@ -4,18 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_search_state_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_linea_nuevo_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/slider_background.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_router.dart';
+import '../../../articulos/domain/articulo.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/presentation/index/cliente_search_state.dart';
 import '../../domain/pedido_venta.dart';
@@ -49,11 +53,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
 
   @override
   Widget build(BuildContext context) {
-    final state =
-        ref.watch(visitaEditPageControllerProvider(pedidoVentaIdLocalParam!));
+    final state = ref
+        .watch(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!));
 
     ref.listen<PedidoVentaEditPageControllerState>(
-      visitaEditPageControllerProvider(pedidoVentaIdLocalParam!),
+      pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!),
       (__, state) {
         state.maybeWhen(
           saved: (pedidoVenta) {
@@ -272,6 +276,8 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
       IconStep(
         icon: Icons.account_circle,
         content: StepArticuloListContent(
+          id: widget.pedidoVentaIdLocalParam.id,
+          isNew: widget.isNew,
           cliente: _cliente,
           state: _currentStep >= 1
               ? (_currentStep == 1
@@ -279,6 +285,7 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
                   : IconStepState.complete)
               : IconStepState.disabled,
           isActive: true,
+          pedidoVentaLineaList: pedidoVentaLineaList,
         ),
       ),
     ];
@@ -391,39 +398,117 @@ class _StepSelectClienteContentState
   }
 }
 
-class StepArticuloListContent extends StatefulWidget {
+class StepArticuloListContent extends ConsumerStatefulWidget {
   const StepArticuloListContent(
       {super.key,
+      required this.id,
+      required this.isNew,
       required this.cliente,
       required this.state,
-      required this.isActive});
+      required this.isActive,
+      required this.pedidoVentaLineaList});
 
+  final String? id;
+  final bool isNew;
   final Cliente? cliente;
   final IconStepState state;
   final bool isActive;
+  final List<PedidoVentaLinea> pedidoVentaLineaList;
 
   @override
-  State<StepArticuloListContent> createState() =>
+  ConsumerState<StepArticuloListContent> createState() =>
       _StepArticuloListContentState();
 }
 
-class _StepArticuloListContentState extends State<StepArticuloListContent> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(() => context.goNamed(
-        AppRoutes.pedidoventaseleccionarcantidad.name,
-        extra: SeleccionarCantidadParam(
-            articuloId: '10020',
-            clienteId: widget.cliente!.id,
-            articuloPrecio: null)));
-  }
-
+class _StepArticuloListContentState
+    extends ConsumerState<StepArticuloListContent> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [],
+    ref.listen<Articulo?>(
+      articuloForFromStateProvider,
+      (_, state) {
+        if (state != null) {
+          context.goNamed(
+            (widget.isNew)
+                ? AppRoutes.pedidoventanewseleccionarcantidad.name
+                : AppRoutes.pedidoventaeditseleccionarcantidad.name,
+            extra: SeleccionarCantidadParam(
+                articuloId: state.id,
+                clienteId: widget.cliente!.id,
+                divisaId: widget.cliente!.divisa!.id,
+                articuloPrecio: null),
+          );
+        }
+      },
     );
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: (widget.pedidoVentaLineaList.isNotEmpty)
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: widget.pedidoVentaLineaList.length,
+                        itemBuilder: (context, i) => GestureDetector(
+                          onTap: () => updatePedidoVentaLinea(
+                            context,
+                            widget.cliente!,
+                            widget.pedidoVentaLineaList[i],
+                            i,
+                          ),
+                          child: Dismissible(
+                            key: UniqueKey(),
+                            background: const SliderBackround(),
+                            onDismissed: (_) => deletePedidoVentaLinea(
+                                widget.pedidoVentaLineaList[i]),
+                            child: PedidoVentaLineaNuevoTile(
+                              pedidoVentaLinea: widget.pedidoVentaLineaList[i],
+                            ),
+                          ),
+                        ),
+                      )
+                    : const Center(
+                        child: Text(
+                          'Sin artículos',
+                        ),
+                      ),
+              ),
+            ),
+          ],
+        ),
+        Positioned(
+          bottom: 10,
+          right: 20,
+          child: FloatingActionButton(
+            child: const Icon(
+              Icons.add,
+            ),
+            onPressed: () => navigateToSearchArticles(
+                context, widget.cliente, widget.isNew, widget.id),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void deletePedidoVentaLinea(PedidoVentaLinea pedidoVentaLinea) {}
+
+  void updatePedidoVentaLinea(BuildContext context, Cliente cliente,
+      PedidoVentaLinea pedidoVentaLinea, int i) {}
+
+  void navigateToSearchArticles(
+      BuildContext context, Cliente? cliente, bool isNew, String? id) {
+    if (isNew) {
+      context.goNamed(AppRoutes.pedidoventanewsearcharticulo.name);
+    } else {
+      context.goNamed(
+        AppRoutes.pedidoventaeditsearcharticulo.name,
+        params: {'id': id!},
+      );
+    }
   }
 }

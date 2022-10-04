@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
+import '../../../core/domain/articulo_precio.dart';
 import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
@@ -167,5 +168,26 @@ class PedidoVentaRepository {
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
     //TODO método eliminar pedidoVenta guardado en local.
+  }
+
+  Future<ArticuloPrecio?> getArticuloPrecio(
+      {required String articuloId,
+      required String clienteId,
+      required String divisaId,
+      required int cantidad}) async {
+    if (cantidad == 0) {
+      return null;
+    }
+    return ArticuloPrecio.crearNuevoArticuloPrecio(
+      articuloId,
+      clienteId,
+      cantidad,
+      divisaId,
+      0,
+      0,
+      0,
+      0,
+      0,
+    );
   }
 }
