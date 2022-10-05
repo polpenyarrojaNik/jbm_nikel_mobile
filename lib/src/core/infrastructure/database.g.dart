@@ -15025,6 +15025,7 @@ class PedidoVentaLocalTableCompanion
   final Value<double> dtoBonificacion;
   final Value<String> enviada;
   final Value<String> tratada;
+  final Value<String?> errorSyncMessage;
   const PedidoVentaLocalTableCompanion({
     this.usuarioId = const Value.absent(),
     this.pedidoVentaAppId = const Value.absent(),
@@ -15045,6 +15046,7 @@ class PedidoVentaLocalTableCompanion
     this.dtoBonificacion = const Value.absent(),
     this.enviada = const Value.absent(),
     this.tratada = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
   });
   PedidoVentaLocalTableCompanion.insert({
     this.usuarioId = const Value.absent(),
@@ -15066,6 +15068,7 @@ class PedidoVentaLocalTableCompanion
     required double dtoBonificacion,
     this.enviada = const Value.absent(),
     this.tratada = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
         fechaAlta = Value(fechaAlta),
         clienteId = Value(clienteId),
@@ -15091,6 +15094,7 @@ class PedidoVentaLocalTableCompanion
     Expression<double>? dtoBonificacion,
     Expression<String>? enviada,
     Expression<String>? tratada,
+    Expression<String>? errorSyncMessage,
   }) {
     return RawValuesInsertable({
       if (usuarioId != null) 'USUARIO_ID': usuarioId,
@@ -15112,6 +15116,7 @@ class PedidoVentaLocalTableCompanion
       if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
       if (enviada != null) 'ENVIADA': enviada,
       if (tratada != null) 'TRATADA': tratada,
+      if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
     });
   }
 
@@ -15134,7 +15139,8 @@ class PedidoVentaLocalTableCompanion
       Value<double>? iva,
       Value<double>? dtoBonificacion,
       Value<String>? enviada,
-      Value<String>? tratada}) {
+      Value<String>? tratada,
+      Value<String?>? errorSyncMessage}) {
     return PedidoVentaLocalTableCompanion(
       usuarioId: usuarioId ?? this.usuarioId,
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
@@ -15155,6 +15161,7 @@ class PedidoVentaLocalTableCompanion
       dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
       enviada: enviada ?? this.enviada,
       tratada: tratada ?? this.tratada,
+      errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
     );
   }
 
@@ -15218,6 +15225,9 @@ class PedidoVentaLocalTableCompanion
     if (tratada.present) {
       map['TRATADA'] = Variable<String>(tratada.value);
     }
+    if (errorSyncMessage.present) {
+      map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
+    }
     return map;
   }
 
@@ -15242,7 +15252,8 @@ class PedidoVentaLocalTableCompanion
           ..write('iva: $iva, ')
           ..write('dtoBonificacion: $dtoBonificacion, ')
           ..write('enviada: $enviada, ')
-          ..write('tratada: $tratada')
+          ..write('tratada: $tratada, ')
+          ..write('errorSyncMessage: $errorSyncMessage')
           ..write(')'))
         .toString();
   }
@@ -15364,6 +15375,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
+  final VerificationMeta _errorSyncMessageMeta =
+      const VerificationMeta('errorSyncMessage');
+  @override
+  late final GeneratedColumn<String> errorSyncMessage = GeneratedColumn<String>(
+      'ERROR_SYNC', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [
         usuarioId,
@@ -15384,7 +15401,8 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
         iva,
         dtoBonificacion,
         enviada,
-        tratada
+        tratada,
+        errorSyncMessage
       ];
   @override
   String get aliasedName => _alias ?? 'PEDIDOS_LOCAL_IMP';
@@ -15500,6 +15518,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
       context.handle(_tratadaMeta,
           tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta));
     }
+    if (data.containsKey('ERROR_SYNC')) {
+      context.handle(
+          _errorSyncMessageMeta,
+          errorSyncMessage.isAcceptableOrUnknown(
+              data['ERROR_SYNC']!, _errorSyncMessageMeta));
+    }
     return context;
   }
 
@@ -15547,6 +15571,8 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
           .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
       tratada: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
+      errorSyncMessage: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ERROR_SYNC']),
     );
   }
 

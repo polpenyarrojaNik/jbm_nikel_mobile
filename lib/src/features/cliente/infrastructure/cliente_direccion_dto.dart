@@ -28,6 +28,7 @@ class ClienteDireccionDTO
     @JsonKey(name: 'PAIS_ID') String? paisId,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
+    // @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDireccionDTO;
@@ -48,6 +49,7 @@ class ClienteDireccionDTO
       pais: pais,
       latitud: latitud,
       longitud: longitud,
+      // predeterminada: (predeterminada == 'S') ? true : false,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -67,6 +69,7 @@ class ClienteDireccionDTO
       paisId: Value(paisId),
       latitud: Value(latitud),
       longitud: Value(longitud),
+      // predeterminada: Value(predeterminada),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -93,6 +96,7 @@ class ClienteDireccionTable extends Table {
       text().nullable().references(PaisTable, #id).named('PAIS_ID')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
+  // TextColumn get predeterminada => text().named('PREDETERMINADA')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

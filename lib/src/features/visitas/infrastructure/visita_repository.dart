@@ -58,7 +58,7 @@ class VisitaRepository {
     try {
       if (page == 1) {
         visitasList.clear();
-        final visitasLocal = await getVisitasLocal();
+        final visitasLocal = await getVisitasLocal(searchText: searchText);
         visitasList.addAll(visitasLocal);
       }
       final visitas = await getVisitas(
@@ -75,17 +75,18 @@ class VisitaRepository {
       {required EntityIdIsLocalParam visitaIdIsLocalParam}) async {
     try {
       if (!visitaIdIsLocalParam.isLocal) {
-        return getVisita(visitaId: visitaIdIsLocalParam.id);
+        return await getVisita(visitaId: visitaIdIsLocalParam.id);
       } else {
-        return getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id);
+        return await getVisitaLocal(visitaAppId: visitaIdIsLocalParam.id);
       }
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<void> deleteVisita(String visitaId) async {
-    //TODO Delete method
+  Future<void> deleteVisita(String visitaAppId) async {
+    (_db.delete(_db.visitaLocalTable))
+        .where((tbl) => tbl.visitaAppId.equals(visitaAppId));
   }
 
   Future<void> upsertVisita(Visita visitaLocal) async {
@@ -93,9 +94,9 @@ class VisitaRepository {
       final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
       await insertVisitaInDb(visitaLocalDto);
       try {
-        final visitaLocalEnviada =
-            await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
-        await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
+        // final visitaLocalEnviada =
+        //     await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
+        // await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
       } catch (e) {
         if (e is AppException) {
           e.maybeWhen(
@@ -192,7 +193,8 @@ class VisitaRepository {
     }
   }
 
-  Future<List<Visita>> getVisitasLocal() async {
+  Future<List<Visita>> getVisitasLocal({required String searchText}) async {
+    //TODO filtre searchtext com pedidos
     final query = _db.select(_db.visitaLocalTable).join([
       innerJoin(
         _db.clienteTable,

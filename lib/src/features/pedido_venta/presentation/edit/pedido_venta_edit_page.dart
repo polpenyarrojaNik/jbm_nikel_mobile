@@ -1,3 +1,4 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,6 +7,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_cus
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_page.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_linea_nuevo_tile.dart';
 import 'package:money2/money2.dart';
@@ -20,9 +22,13 @@ import '../../../../core/presentation/common_widgets/slider_background.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../../cliente/domain/cliente.dart';
+import '../../../cliente/domain/cliente_direccion.dart';
+import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../../cliente/presentation/index/cliente_search_state.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
+import '../../infrastructure/pedido_venta_repository.dart';
+import '../index/pedido_search_state.dart';
 import 'ask_pop_alert_dialog.dart';
 import 'icon_stepper.dart';
 
@@ -58,29 +64,26 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!),
       (__, state) {
         state.maybeWhen(
-          // saved: (pedidoVenta) {
-          //   ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
-          //   ref.invalidate(pedidosSearchResultsProvider);
-          //   context.showSuccessBar(content: const Text('Saved'));
-          //   context.goNamed(
-          //     AppRoutes.visitashow.name,
-          //     params: {
-          //       'id': (pedidoVenta.pedidoVentaId != null)
-          //           ? pedidoVenta.pedidoVentaId!
-          //           : pedidoVenta.pedidoVentaAppId!
-          //     },
-          //     extra: pedidoVentaIdLocalParam!.isLocal,
-          //   );
-          // },
+          saved: (pedidoVentaAppId) {
+            ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
+            ref.invalidate(pedidosSearchResultsProvider);
+            context.showSuccessBar(content: const Text('Saved'));
+            context.goNamed(
+              AppRoutes.pedidoventashow.name,
+              params: {'id': pedidoVentaAppId},
+              extra: pedidoVentaIdLocalParam!.isLocal,
+            );
+          },
           deleted: () => context.goNamed(
             AppRoutes.visitaindex.name,
           ),
-          // savedError: (_, error, __) => context.showErrorBar(
-          //   duration: const Duration(seconds: 5),
-          //   content: Text((error is AppException)
-          //       ? error.details.message
-          //       : error.toString()),
-          // ),
+          savedError: (_, __, ___, ____, _____, ______, error, _______) =>
+              context.showErrorBar(
+            duration: const Duration(seconds: 5),
+            content: Text((error is AppException)
+                ? error.details.message
+                : error.toString()),
+          ),
           orElse: () => null,
         );
       },
@@ -94,64 +97,81 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       ),
       body: state.when(
         loading: () => const ProgressIndicatorWidget(),
-        data: (cliente, pedidoVentaLineaList, currentStep, observaciones) =>
+        data: (
+          cliente,
+          clienteDireccion,
+          pedidoVentaLineaList,
+          currentStep,
+          observaciones,
+          pedidoCliente,
+        ) =>
             PedidoVentaEditForm(
           isNew: widget.isNew,
           pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
           cliente: cliente,
+          clienteDireccion: clienteDireccion,
           pedidoVentaLineaList: pedidoVentaLineaList,
           currentStep: currentStep,
           observaciones: observaciones,
+          pedidoCliente: pedidoCliente,
         ),
         error: (Object error, StackTrace? _) => ErrorMessageWidget(
           (error is AppException) ? error.details.message : error.toString(),
         ),
-        // saved: (pedidoVenta) => PedidoVentaEditForm(
-        //   isNew: widget.isNew,
-        //   pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
-        //   pedidoVenta: pedidoVenta,
-        // ),
-        // saving: (pedidoVenta) => PedidoVentaEditForm(
-        //   isNew: widget.isNew,
-        //   pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
-        //   pedidoVenta: pedidoVenta,
-        // ),
-        // savedError:
-        //     (PedidoVenta pedidoVenta, Object error, StackTrace? stackTrace) =>
-        //         PedidoVentaEditForm(
-        //   isNew: widget.isNew,
-        //   pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
-        //   pedidoVenta: pedidoVenta,
-        // ),
+        saved: (pedidoVentaAppId) => const ProgressIndicatorWidget(),
+        savedError: (cliente, clienteDireccion, pedidoVentaLineaList,
+                currentStep, observaciones, pedidoCliente, error, _) =>
+            PedidoVentaEditForm(
+          isNew: widget.isNew,
+          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
+          cliente: cliente,
+          clienteDireccion: clienteDireccion,
+          pedidoVentaLineaList: pedidoVentaLineaList,
+          currentStep: currentStep,
+          observaciones: observaciones,
+          pedidoCliente: pedidoCliente,
+        ),
         deleted: () => const ProgressIndicatorWidget(),
       ),
     );
   }
 }
 
-class PedidoVentaEditForm extends ConsumerWidget {
-  const PedidoVentaEditForm(
-      {super.key,
-      required this.isNew,
-      required this.pedidoVentaIdLocalParam,
-      required this.cliente,
-      required this.pedidoVentaLineaList,
-      required this.currentStep,
-      required this.observaciones});
+class PedidoVentaEditForm extends ConsumerStatefulWidget {
+  const PedidoVentaEditForm({
+    super.key,
+    required this.isNew,
+    required this.pedidoVentaIdLocalParam,
+    required this.cliente,
+    required this.clienteDireccion,
+    required this.pedidoVentaLineaList,
+    required this.currentStep,
+    required this.observaciones,
+    required this.pedidoCliente,
+  });
 
   final bool isNew;
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final Cliente? cliente;
+  final ClienteDireccion? clienteDireccion;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
   final int currentStep;
   final String? observaciones;
+  final String? pedidoCliente;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<PedidoVentaEditForm> createState() =>
+      _PedidoVentaEditFormState();
+}
+
+class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
+  @override
+  Widget build(BuildContext context) {
     ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
       if (state != null) {
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(
+                    widget.pedidoVentaIdLocalParam)
                 .notifier)
             .selectCliente(cliente: state);
       }
@@ -160,11 +180,11 @@ class PedidoVentaEditForm extends ConsumerWidget {
     return WillPopScope(
       onWillPop: () async => _askIfUserPop(context),
       child: IconStepper(
-        currentStep: currentStep,
+        currentStep: widget.currentStep,
         steps: getSteps(),
         type: IconStepperType.horizontal,
-        onStepContinue: () => continued(context, currentStep, ref),
-        onStepCancel: (currentStep <= 0) ? null : () => cancel(ref),
+        onStepContinue: () => continued(context, widget.currentStep, ref),
+        onStepCancel: (widget.currentStep <= 0) ? null : () => cancel(ref),
         onStepTapped: (value) => tapped(value, ref),
       ),
     );
@@ -191,22 +211,29 @@ class PedidoVentaEditForm extends ConsumerWidget {
         break;
       case 2:
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(
+                    widget.pedidoVentaIdLocalParam)
                 .notifier)
             .navigateToNextStep();
         break;
       case 3:
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(
+                    widget.pedidoVentaIdLocalParam)
                 .notifier)
             .upsertPedidoVenta(
-                cliente: cliente!,
-                pedidoVentaLineaList: pedidoVentaLineaList,
-                observaciones: observaciones!);
+              pedidoVentaAppId: widget.pedidoVentaIdLocalParam.id,
+              cliente: widget.cliente!,
+              clienteDireccion: widget.clienteDireccion!,
+              pedidoVentaLineaList: widget.pedidoVentaLineaList,
+              observaciones: widget.observaciones,
+              pedidoCliente: widget.pedidoCliente,
+            );
         break;
       default:
         ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(
+                    widget.pedidoVentaIdLocalParam)
                 .notifier)
             .navigateToNextStep();
     }
@@ -214,24 +241,25 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
   void cancel(WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+        .read(pedidoVentaEditPageControllerProvider(
+                widget.pedidoVentaIdLocalParam)
             .notifier)
         .navigateToPreviousStep();
   }
 
   void tapped(int value, WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+        .read(pedidoVentaEditPageControllerProvider(
+                widget.pedidoVentaIdLocalParam)
             .notifier)
         .navigateToNextStep();
   }
 
-  void saveForm() async {}
-
   void selectClienteValidate(BuildContext context, WidgetRef ref) {
-    if (cliente != null) {
+    if (widget.cliente != null) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+          .read(pedidoVentaEditPageControllerProvider(
+                  widget.pedidoVentaIdLocalParam)
               .notifier)
           .navigateToNextStep();
     } else {
@@ -243,9 +271,10 @@ class PedidoVentaEditForm extends ConsumerWidget {
   }
 
   void selectLineasValidate(BuildContext context, WidgetRef ref) {
-    if (pedidoVentaLineaList.isNotEmpty) {
+    if (widget.pedidoVentaLineaList.isNotEmpty) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+          .read(pedidoVentaEditPageControllerProvider(
+                  widget.pedidoVentaIdLocalParam)
               .notifier)
           .navigateToNextStep();
     } else {
@@ -258,56 +287,61 @@ class PedidoVentaEditForm extends ConsumerWidget {
       IconStep(
         icon: Icons.account_circle,
         content: StepSelectClienteContent(
-          cliente: cliente,
-          isNew: isNew,
+          cliente: widget.cliente,
+          clienteDireccion: widget.clienteDireccion,
+          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
+          isNew: widget.isNew,
         ),
-        state: currentStep >= 0
-            ? (currentStep == 0
+        state: widget.currentStep >= 0
+            ? (widget.currentStep == 0
                 ? IconStepState.editing
                 : IconStepState.complete)
             : IconStepState.disabled,
-        isActive: currentStep >= 0,
+        isActive: widget.currentStep >= 0,
       ),
       IconStep(
         icon: Icons.list_alt,
         content: StepArticuloListContent(
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
-          cliente: cliente,
-          state: currentStep >= 1
-              ? (currentStep == 1
+          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
+          cliente: widget.cliente,
+          state: widget.currentStep >= 1
+              ? (widget.currentStep == 1
                   ? IconStepState.editing
                   : IconStepState.complete)
               : IconStepState.disabled,
           isActive: true,
-          pedidoVentaLineaList: pedidoVentaLineaList,
+          pedidoVentaLineaList: widget.pedidoVentaLineaList,
         ),
       ),
       IconStep(
         icon: Icons.note,
         content: StepObservacionesContent(
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
-          state: currentStep >= 2
-              ? (currentStep == 2
+          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
+          state: widget.currentStep >= 2
+              ? (widget.currentStep == 2
                   ? IconStepState.editing
                   : IconStepState.complete)
               : IconStepState.disabled,
           isActive: true,
-          observaciones: observaciones,
+          observaciones: widget.observaciones,
+          pedidoCliente: widget.pedidoCliente,
         ),
       ),
       IconStep(
         icon: Icons.summarize_sharp,
         content: StepResumenContent(
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
-          state: currentStep >= 3
-              ? (currentStep == 3
+          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
+          state: widget.currentStep >= 3
+              ? (widget.currentStep == 3
                   ? IconStepState.editing
                   : IconStepState.complete)
               : IconStepState.disabled,
           isActive: true,
-          cliente: cliente,
-          pedidoVentaLineaList: pedidoVentaLineaList,
-          observaciones: observaciones,
+          cliente: widget.cliente,
+          clienteDireccion: widget.clienteDireccion,
+          pedidoVentaLineaList: widget.pedidoVentaLineaList,
+          observaciones: widget.observaciones,
+          pedidoCliente: widget.pedidoCliente,
         ),
       ),
     ];
@@ -316,9 +350,15 @@ class PedidoVentaEditForm extends ConsumerWidget {
 
 class StepSelectClienteContent extends ConsumerStatefulWidget {
   const StepSelectClienteContent(
-      {super.key, required this.cliente, required this.isNew});
+      {super.key,
+      required this.cliente,
+      required this.clienteDireccion,
+      required this.pedidoVentaIdLocalParam,
+      required this.isNew});
 
   final Cliente? cliente;
+  final ClienteDireccion? clienteDireccion;
+  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final bool isNew;
 
   @override
@@ -355,6 +395,34 @@ class _StepSelectClienteContentState
         ],
       );
     } else {
+      ref.listen<AsyncValue<List<ClienteDireccion>>>(
+          clienteDireccionProvider(widget.cliente!.id), (_, state) {
+        state.whenData((clienteDireccionesList) {
+          if (clienteDireccionesList.length == 1) {
+            ref
+                .read(pedidoVentaEditPageControllerProvider(
+                        widget.pedidoVentaIdLocalParam)
+                    .notifier)
+                .selectDireccion(clienteDireccion: clienteDireccionesList[0]);
+          }
+          //TODO descomentar
+          //  else {
+
+//  for (var i = 0; i < clienteDireccionesList.length; i++) {
+
+          // if (clienteDireccionesList[i].predeterminada) {
+          //   ref
+          //       .read(pedidoVentaEditPageControllerProvider(
+          //               widget.pedidoVentaIdLocalParam)
+          //           .notifier)
+          //       .selectDireccion(
+          //           clienteDireccion: clienteDireccionesList[i]);
+          // }
+          //   }
+          // }
+        });
+      });
+      final state = ref.watch(clienteDireccionProvider(widget.cliente!.id));
       return ListView(
         children: [
           Padding(
@@ -374,23 +442,71 @@ class _StepSelectClienteContentState
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: ClienteListaTile(
-                          cliente: widget.cliente!,
-                        ),
-                      ),
-                      gapW4,
-                      Icon(
-                        Icons.navigate_next,
-                        color: Theme.of(context).textTheme.caption!.color,
-                      )
-                    ],
+                  child: ClienteListaTile(
+                    cliente: widget.cliente!,
                   ),
                 ),
               ),
             ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const MobileCustomSeparators(separatorTitle: 'Direcciones envío'),
+              gapH16,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: GestureDetector(
+                  onTap: () => ref
+                      .read(pedidoVentaEditPageControllerProvider(
+                              widget.pedidoVentaIdLocalParam)
+                          .notifier)
+                      .selectDireccion(clienteDireccion: null),
+                  child: Container(
+                    color: (widget.clienteDireccion == null)
+                        ? Theme.of(context).colorScheme.secondaryContainer
+                        : Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: ClienteListaTile(
+                        cliente: widget.cliente!,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const Divider(),
+              state.when(
+                data: (clienteDireccionesList) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: clienteDireccionesList.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, i) => GestureDetector(
+                      onTap: () => ref
+                          .read(pedidoVentaEditPageControllerProvider(
+                                  widget.pedidoVentaIdLocalParam)
+                              .notifier)
+                          .selectDireccion(
+                              clienteDireccion: clienteDireccionesList[i]),
+                      child: Container(
+                        color: (widget.clienteDireccion != null &&
+                                widget.clienteDireccion!.direccionId ==
+                                    clienteDireccionesList[i].direccionId)
+                            ? Theme.of(context).colorScheme.secondaryContainer
+                            : null,
+                        child: ClienteDireccionTile(
+                            clienteDireccion: clienteDireccionesList[i]),
+                      ),
+                    ),
+                    separatorBuilder: (context, i) => const Divider(),
+                  ),
+                ),
+                error: (error, _) => ErrorMessageWidget(error.toString()),
+                loading: () => const ProgressIndicatorWidget(),
+              ),
+            ],
           ),
         ],
       );
@@ -409,7 +525,7 @@ class _StepSelectClienteContentState
   }
 }
 
-class StepArticuloListContent extends StatelessWidget {
+class StepArticuloListContent extends ConsumerWidget {
   const StepArticuloListContent(
       {super.key,
       required this.pedidoVentaIdLocalParam,
@@ -425,7 +541,7 @@ class StepArticuloListContent extends StatelessWidget {
   final List<PedidoVentaLinea> pedidoVentaLineaList;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
       children: [
         Column(
@@ -450,8 +566,8 @@ class StepArticuloListContent extends StatelessWidget {
                           child: Dismissible(
                             key: UniqueKey(),
                             background: const SliderBackround(),
-                            onDismissed: (_) =>
-                                deletePedidoVentaLinea(pedidoVentaLineaList[i]),
+                            onDismissed: (_) => deletePedidoVentaLinea(
+                                pedidoVentaLineaList[i], ref),
                             child: PedidoVentaLineaNuevoTile(
                               pedidoVentaLinea: pedidoVentaLineaList[i],
                             ),
@@ -482,7 +598,13 @@ class StepArticuloListContent extends StatelessWidget {
     );
   }
 
-  void deletePedidoVentaLinea(PedidoVentaLinea pedidoVentaLinea) {}
+  void deletePedidoVentaLinea(
+      PedidoVentaLinea pedidoVentaLinea, WidgetRef ref) {
+    ref
+        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .notifier)
+        .deletePedidoVentaLinea(pedidoVentaLineaToDelete: pedidoVentaLinea);
+  }
 
   void updatePedidoVentaLinea(
       BuildContext context,
@@ -533,11 +655,13 @@ class StepObservacionesContent extends ConsumerWidget {
       {super.key,
       required this.pedidoVentaIdLocalParam,
       required this.observaciones,
+      required this.pedidoCliente,
       required this.state,
       required this.isActive});
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final String? observaciones;
+  final String? pedidoCliente;
   final IconStepState state;
   final bool isActive;
 
@@ -550,6 +674,19 @@ class StepObservacionesContent extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            FormBuilderTextField(
+              name: 'pedidoCliente',
+              keyboardType: TextInputType.multiline,
+              initialValue: pedidoCliente,
+              decoration: const InputDecoration(
+                labelText: 'Pedido Cliente',
+              ),
+              onChanged: (value) => ref
+                  .read(pedidoVentaEditPageControllerProvider(
+                          pedidoVentaIdLocalParam)
+                      .notifier)
+                  .setPedidoCliente(value),
+            ),
             FormBuilderTextField(
               name: 'observaciones',
               keyboardType: TextInputType.multiline,
@@ -579,16 +716,20 @@ class StepResumenContent extends StatelessWidget {
     required this.state,
     required this.isActive,
     required this.cliente,
+    required this.clienteDireccion,
     required this.pedidoVentaLineaList,
     required this.observaciones,
+    required this.pedidoCliente,
   });
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final IconStepState state;
   final bool isActive;
   final Cliente? cliente;
+  final ClienteDireccion? clienteDireccion;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
   final String? observaciones;
+  final String? pedidoCliente;
 
   @override
   Widget build(BuildContext context) {
@@ -613,23 +754,17 @@ class StepResumenContent extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Flexible(
-                        child: ClienteListaTile(
-                          cliente: cliente!,
-                        ),
-                      ),
-                      gapW4,
-                      Icon(
-                        Icons.navigate_next,
-                        color: Theme.of(context).textTheme.caption!.color,
-                      )
-                    ],
+                  child: ClienteListaTile(
+                    cliente: cliente!,
                   ),
                 ),
               ),
               gapH8,
+              if (pedidoCliente != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: 'Pedido Cliente',
+                  value: pedidoCliente,
+                ),
               if (observaciones != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue: 'Observaciones',
@@ -637,9 +772,10 @@ class StepResumenContent extends StatelessWidget {
                 ),
               if (observaciones != null) const Divider(),
               RowFieldTextDetalle(
-                  fieldTitleValue: 'Total',
-                  value: getImporteTotal(
-                      pedidoVentaLineaList, cliente!.divisa!.id)),
+                fieldTitleValue: 'Total',
+                value:
+                    getImporteTotal(pedidoVentaLineaList, cliente!.divisa!.id),
+              ),
             ],
           ),
         ),

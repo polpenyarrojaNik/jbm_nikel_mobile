@@ -53,7 +53,7 @@ class VisitaEditPageController
   Future<void> getVisita() async {
     state = const VisitaEditPageControllerState.loading();
 
-    if (visitaIdIsLocalParam.id == null) {
+    if (visitaIdIsLocalParam.isNew) {
       state = const VisitaEditPageControllerState.data(
         null,
       );

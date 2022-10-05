@@ -28,10 +28,9 @@ class PedidoVentaLineaTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                      pedidoVentaLinea.pedidoVentaId ??
-                          pedidoVentaLinea.pedidoVentaAppId!,
-                      style: Theme.of(context).textTheme.caption),
+                  if (pedidoVentaLinea.pedidoVentaId != null)
+                    Text(pedidoVentaLinea.pedidoVentaId!,
+                        style: Theme.of(context).textTheme.caption),
                   Text(pedidoVentaLinea.pedidoVentaLineaId ??
                       pedidoVentaLinea.pedidoVentaLineaAppId!),
                 ],
@@ -39,7 +38,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
             ),
             Flexible(
               child: SizedBox(
-                height: 90,
+                height: 80,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

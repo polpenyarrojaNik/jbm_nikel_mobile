@@ -26,7 +26,8 @@ mixin _$ClienteDireccion {
   String? get provincia => throw _privateConstructorUsedError;
   Pais? get pais => throw _privateConstructorUsedError;
   double get latitud => throw _privateConstructorUsedError;
-  double get longitud => throw _privateConstructorUsedError;
+  double get longitud =>
+      throw _privateConstructorUsedError; // required bool predeterminada,
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -302,6 +303,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   final double latitud;
   @override
   final double longitud;
+// required bool predeterminada,
   @override
   final DateTime lastUpdated;
   @override
@@ -399,7 +401,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   double get latitud;
   @override
   double get longitud;
-  @override
+  @override // required bool predeterminada,
   DateTime get lastUpdated;
   @override
   bool get deleted;

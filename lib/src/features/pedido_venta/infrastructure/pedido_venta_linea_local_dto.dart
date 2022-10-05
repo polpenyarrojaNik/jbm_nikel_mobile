@@ -39,6 +39,7 @@ class PedidoVentaLineaLocalDTO
       pedidoVentaAppId: _.pedidoVentaAppId!,
       pedidoVentaLineaAppId: _.pedidoVentaLineaAppId!,
       articuloId: _.articuloId,
+      articuloDescription: _.articuloDescription,
       cantidad: _.cantidad,
       precioDivisa: _.precioDivisa.amount.toDecimal().toDouble(),
       tipoPrecio: _.tipoPrecio!,

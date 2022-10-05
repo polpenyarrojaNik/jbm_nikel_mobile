@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/routing/app_router.dart';
 import '../../domain/pedido_venta.dart';
 
@@ -43,12 +44,22 @@ class PedidoVentaListaTile extends StatelessWidget {
               ),
               const SizedBox(height: 2),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
                     child: Text(
                       '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente ?? ''}',
                     ),
                   ),
+                  if (getStatusLocalEntityText(
+                          context, pedidoVenta.enviada, pedidoVenta.tratada) !=
+                      null)
+                    ChipContainer(
+                      text: getStatusLocalEntityText(
+                          context, pedidoVenta.enviada, pedidoVenta.tratada)!,
+                      color: getStatusLocalEntityColor(
+                          context, pedidoVenta.enviada, pedidoVenta.tratada),
+                    ),
                 ],
               ),
               const SizedBox(height: 2),

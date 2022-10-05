@@ -28,6 +28,7 @@ _$_PedidoVentaLocalDTO _$$_PedidoVentaLocalDTOFromJson(
       dtoBonificacion: (json['DTO_BONIFICACION'] as num).toDouble(),
       enviada: json['ENVIADA'] as String,
       tratada: json['TRATADA'] as String,
+      errorSyncMessage: json['ERROR_SYNC'] as String?,
     );
 
 Map<String, dynamic> _$$_PedidoVentaLocalDTOToJson(
@@ -52,4 +53,5 @@ Map<String, dynamic> _$$_PedidoVentaLocalDTOToJson(
       'DTO_BONIFICACION': instance.dtoBonificacion,
       'ENVIADA': instance.enviada,
       'TRATADA': instance.tratada,
+      'ERROR_SYNC': instance.errorSyncMessage,
     };

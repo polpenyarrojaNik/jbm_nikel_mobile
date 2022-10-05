@@ -6,6 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
@@ -14,6 +15,7 @@ import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../cliente/domain/cliente.dart';
+import '../../cliente/domain/cliente_direccion.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
@@ -40,7 +42,7 @@ final pedidoVentaLineaProvider = FutureProvider.autoDispose
     .family<List<PedidoVentaLinea>, EntityIdIsLocalParam>(
         (ref, pedidoVentaIdIsLocalParam) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getPedidoVentaLineaById(
+  return pedidoVentaRepository.getPedidoVentaLineaListById(
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 });
 
@@ -58,96 +60,166 @@ class PedidoVentaRepository {
       {required int page, required String searchText}) async {
     if (page == 1) {
       pedidoVentaList.clear();
+      final pedidoVentaLocalList =
+          await getPedidosVentaLocal(searchText: searchText);
+      pedidoVentaList.addAll(pedidoVentaLocalList);
     }
     try {
-      final query = _db.select(_db.pedidoVentaTable).join([
-        innerJoin(
-            _db.clienteUsuarioTable,
-            _db.clienteUsuarioTable.clienteId
-                .equalsExp(_db.pedidoVentaTable.clienteId)),
-        leftOuterJoin(_db.paisTable,
-            _db.paisTable.id.equalsExp(_db.pedidoVentaTable.paisId)),
-        leftOuterJoin(_db.divisaTable,
-            _db.divisaTable.id.equalsExp(_db.pedidoVentaTable.divisaId)),
-        innerJoin(
-            _db.pedidoVentaEstadoTable,
-            _db.pedidoVentaEstadoTable.id
-                .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
-      ]);
-
-      if (searchText != '') {
-        query.where(
-          _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
-              (_db.pedidoVentaTable.pedidoVentaId.like('%$searchText%') |
-                  _db.pedidoVentaTable.nombreCliente.like('%$searchText%') |
-                  _db.pedidoVentaTable.clienteId.like('%$searchText%') |
-                  _db.pedidoVentaTable.poblacion.like('%$searchText%') |
-                  _db.pedidoVentaTable.codigoPostal.like('%$searchText%') |
-                  _db.pedidoVentaTable.provincia.like('%$searchText%')),
-        );
-      } else {
-        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
-      }
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
-
-      query.orderBy([
-        OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate),
-        OrderingTerm.asc(_db.pedidoVentaTable.pedidoVentaId)
-      ]);
-
-      final pedidosDeVenta = await query.asyncMap((row) async {
-        final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
-        final paisDTO = row.readTableOrNull(_db.paisTable);
-        final divisaDTO = row.readTable(_db.divisaTable);
-        final pedidoVentaEstadoDTO = row.readTable(_db.pedidoVentaEstadoTable);
-
-        return pedidoVentaDTO.toDomain(
-            pais: paisDTO?.toDomain(),
-            divisa: divisaDTO.toDomain(),
-            pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
-      }).get();
-      pedidoVentaList.addAll(pedidosDeVenta);
+      final syncPedidosVentaList =
+          await getSyncPedidoVentaList(page: page, searchText: searchText);
+      pedidoVentaList.addAll(syncPedidosVentaList);
       return pedidoVentaList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
+  Future<List<PedidoVenta>> getSyncPedidoVentaList(
+      {required int page, required String searchText}) async {
+    final query = _db.select(_db.pedidoVentaTable).join([
+      innerJoin(
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.pedidoVentaTable.clienteId)),
+      leftOuterJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.pedidoVentaTable.paisId)),
+      leftOuterJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.pedidoVentaTable.divisaId)),
+      innerJoin(
+          _db.pedidoVentaEstadoTable,
+          _db.pedidoVentaEstadoTable.id
+              .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
+    ]);
+
+    if (searchText != '') {
+      query.where(
+        _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+            (_db.pedidoVentaTable.pedidoVentaId.like('%$searchText%') |
+                _db.pedidoVentaTable.nombreCliente.like('%$searchText%') |
+                _db.pedidoVentaTable.clienteId.like('%$searchText%') |
+                _db.pedidoVentaTable.poblacion.like('%$searchText%') |
+                _db.pedidoVentaTable.codigoPostal.like('%$searchText%') |
+                _db.pedidoVentaTable.provincia.like('%$searchText%')),
+      );
+    } else {
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+    }
+    query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+
+    query.orderBy([
+      OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate),
+      OrderingTerm.asc(_db.pedidoVentaTable.pedidoVentaId)
+    ]);
+
+    return query.asyncMap((row) async {
+      final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
+      final paisDTO = row.readTableOrNull(_db.paisTable);
+      final divisaDTO = row.readTable(_db.divisaTable);
+      final pedidoVentaEstadoDTO = row.readTable(_db.pedidoVentaEstadoTable);
+
+      return pedidoVentaDTO.toDomain(
+          pais: paisDTO?.toDomain(),
+          divisa: divisaDTO.toDomain(),
+          pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
+    }).get();
+  }
+
+  Future<List<PedidoVenta>> getPedidosVentaLocal(
+      {required String searchText}) async {
+    final query = _db.select(_db.pedidoVentaLocalTable).join([
+      leftOuterJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.pedidoVentaLocalTable.paisId)),
+      leftOuterJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.pedidoVentaLocalTable.divisaId)),
+    ]);
+
+    if (searchText != '') {
+      query.where(
+        (_db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
+            _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
+            _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
+            _db.pedidoVentaLocalTable.codigoPostal.like('%$searchText%') |
+            _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
+      );
+    }
+
+    query.orderBy([
+      OrderingTerm.asc(_db.pedidoVentaLocalTable.enviada),
+      OrderingTerm.desc(_db.pedidoVentaLocalTable.fechaAlta),
+    ]);
+
+    return query.asyncMap((row) async {
+      final pedidoVentaDTO = row.readTable(_db.pedidoVentaLocalTable);
+      final paisDTO = row.readTableOrNull(_db.paisTable);
+      final divisaDTO = row.readTable(_db.divisaTable);
+
+      return pedidoVentaDTO.toDomain(
+        pais: paisDTO?.toDomain(),
+        divisa: divisaDTO.toDomain(),
+      );
+    }).get();
+  }
+
   Future<PedidoVenta> getPedidoVentaById(
       {required EntityIdIsLocalParam pedidoVentaIdIsLocalParam}) async {
     try {
-      final query = _db.select(_db.pedidoVentaTable).join([
-        leftOuterJoin(_db.paisTable,
-            _db.paisTable.id.equalsExp(_db.pedidoVentaTable.paisId)),
-        leftOuterJoin(_db.divisaTable,
-            _db.divisaTable.id.equalsExp(_db.pedidoVentaTable.divisaId)),
-        leftOuterJoin(
-            _db.pedidoVentaEstadoTable,
-            _db.pedidoVentaEstadoTable.id
-                .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId))
-      ]);
-
-      query.where(_db.pedidoVentaTable.pedidoVentaId
-          .equals(pedidoVentaIdIsLocalParam.id));
-
-      return query.asyncMap((row) async {
-        final paisDTO = row.readTableOrNull(_db.paisTable);
-        final divisaDTO = row.readTable(_db.divisaTable);
-        final pedidoVentaEstadoDTO = row.readTable(_db.pedidoVentaEstadoTable);
-        final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
-
-        return pedidoVentaDTO.toDomain(
-            pais: paisDTO?.toDomain(),
-            divisa: divisaDTO.toDomain(),
-            pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
-      }).getSingle();
+      if (!pedidoVentaIdIsLocalParam.isLocal) {
+        return await getSyncPedidoVentaById(
+            pedidoVentaId: pedidoVentaIdIsLocalParam.id);
+      } else {
+        return await getPedidoVentaLocalById(
+            pedidoVentaAppId: pedidoVentaIdIsLocalParam.id);
+      }
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<PedidoVentaLinea>> getPedidoVentaLineaById(
+  Future<PedidoVenta> getSyncPedidoVentaById(
+      {required String pedidoVentaId}) async {
+    final query = _db.select(_db.pedidoVentaTable).join([
+      leftOuterJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.pedidoVentaTable.paisId)),
+      leftOuterJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.pedidoVentaTable.divisaId)),
+      leftOuterJoin(
+          _db.pedidoVentaEstadoTable,
+          _db.pedidoVentaEstadoTable.id
+              .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId))
+    ]);
+
+    query.where(_db.pedidoVentaTable.pedidoVentaId.equals(pedidoVentaId));
+
+    return query.asyncMap((row) async {
+      final paisDTO = row.readTableOrNull(_db.paisTable);
+      final divisaDTO = row.readTable(_db.divisaTable);
+      final pedidoVentaEstadoDTO = row.readTable(_db.pedidoVentaEstadoTable);
+      final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
+
+      return pedidoVentaDTO.toDomain(
+          pais: paisDTO?.toDomain(),
+          divisa: divisaDTO.toDomain(),
+          pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
+    }).getSingle();
+  }
+
+  Future<List<PedidoVentaLinea>> getPedidoVentaLineaListById(
       {required EntityIdIsLocalParam pedidoVentaIdIsLocalParam}) async {
+    try {
+      if (!pedidoVentaIdIsLocalParam.isLocal) {
+        return await getSyncPedidoVentaLineaList(
+            pedidoVentaId: pedidoVentaIdIsLocalParam.id);
+      } else {
+        return await getLocalPedidoVentaLineaList(
+            pedidoVentaAppId: pedidoVentaIdIsLocalParam.id);
+      }
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<PedidoVentaLinea>> getSyncPedidoVentaLineaList(
+      {required String pedidoVentaId}) async {
     try {
       final query = _db.select(_db.pedidoVentaLineaTable).join([
         innerJoin(
@@ -156,8 +228,8 @@ class PedidoVentaRepository {
                 .equalsExp(_db.pedidoVentaLineaTable.pedidoVentaId))
       ]);
 
-      query.where(_db.pedidoVentaLineaTable.pedidoVentaId
-          .equals(pedidoVentaIdIsLocalParam.id));
+      query
+          .where(_db.pedidoVentaLineaTable.pedidoVentaId.equals(pedidoVentaId));
 
       return query.map((row) {
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
@@ -169,27 +241,94 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<void> upsertPedidoVenta(
-      {required Cliente cliente,
-      required List<PedidoVentaLinea> pedidoVentaLineaList,
-      required String observaciones}) async {
+  Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList(
+      {required String pedidoVentaAppId}) async {
     try {
-      final pedidoVentaLocalDTO =
-          PedidoVentaLocalDTO.fromForm(usuario.id, cliente, observaciones);
+      final query = _db.select(_db.pedidoVentaLineaLocalTable).join([
+        innerJoin(
+            _db.pedidoVentaLocalTable,
+            _db.pedidoVentaLocalTable.pedidoVentaAppId
+                .equalsExp(_db.pedidoVentaLineaLocalTable.pedidoVentaAppId))
+      ]);
 
-      await insertPedidoInDB(pedidoVentaLocalDTO);
+      query.where(_db.pedidoVentaLineaLocalTable.pedidoVentaAppId
+          .equals(pedidoVentaAppId));
 
-      final pedidoVentaLocalDTOEnviado =
-          await _remoteCreatePedidoVenta(pedidoVentaLocalDTO, usuario.test);
+      return query.map((row) {
+        final pedidoVentaLocalDTO = row.readTable(_db.pedidoVentaLocalTable);
+        final pedidoVentaLineaDTO =
+            row.readTable(_db.pedidoVentaLineaLocalTable);
+        return pedidoVentaLineaDTO.toDomain(
+            divisaId: pedidoVentaLocalDTO.divisaId!);
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
 
-      await updatePedidoInDB(pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
+  Future<void> upsertPedidoVenta({
+    required String pedidoVentaAppId,
+    required Cliente cliente,
+    required ClienteDireccion? clienteDireccion,
+    required List<PedidoVentaLinea> pedidoVentaLineaList,
+    String? observaciones,
+    String? pedidoCliente,
+  }) async {
+    try {
+      final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(pedidoVentaAppId,
+          usuario.id, cliente, clienteDireccion, pedidoCliente, observaciones);
+
+      final pedidoVentaLineaLocalDTOList = pedidoVentaLineaList
+          .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+          .toList();
+
+      await insertPedidoInDB(pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList);
+      try {
+        // final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
+        //     pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList, usuario.test);
+
+        // await updatePedidoInDB(pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
+      } catch (e) {
+        if (e is AppException) {
+          e.maybeWhen(
+              orElse: () {},
+              notConnection: () =>
+                  updateWithError(pedidoVentaLocalDTO, e.details.message),
+              restApiFailure: (error, _) =>
+                  updateWithError(pedidoVentaLocalDTO, e.details.message));
+          return;
+        }
+        rethrow;
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> updateWithError(
+      PedidoVentaLocalDTO pedidoVentaLocalDTO, String errorMessage) async {
+    try {
+      (_db.update(_db.pedidoVentaLocalTable)
+            ..where((tbl) => tbl.pedidoVentaAppId
+                .equals(pedidoVentaLocalDTO.pedidoCliente!)))
+          .write(PedidoVentaLocalTableCompanion(
+              errorSyncMessage: Value(errorMessage)));
     } catch (e) {
       rethrow;
     }
   }
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
-    //TODO método eliminar pedidoVenta guardado en local.
+    try {
+      return await _db.transaction(() async {
+        (_db.delete(_db.pedidoVentaLocalTable))
+            .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
+        (_db.delete(_db.pedidoVentaLineaLocalTable))
+            .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
+      });
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
   }
 
   Future<ArticuloPrecio?> getArticuloPrecio(
@@ -204,7 +343,9 @@ class PedidoVentaRepository {
           ..where((t) => t.id.equals(clienteId)))
         .getSingle();
 
-    final iva = await getIva(articuloId: articuloId, clienteId: clienteId);
+    final iva = await getIvaLinea(
+        articuloId: articuloId, clienteId: clienteId, fecha: DateTime.now());
+
     return ArticuloPrecio.crearNuevoArticuloPrecio(
       articuloId: articuloId,
       clienteId: clienteId,
@@ -220,18 +361,40 @@ class PedidoVentaRepository {
     );
   }
 
-  Future<double> getIva({
+  Future<double> getIvaLinea({
     required String articuloId,
     required String clienteId,
+    required DateTime fecha,
   }) async {
-    return 0.0;
+    final query =
+        (_db.select(_db.clienteTable)..where((t) => t.id.equals(clienteId)));
+
+    final clienteDTO = await query.getSingle();
+
+    if (clienteDTO.extentoIva != null && clienteDTO.extentoIva == 'S') {
+      return 0;
+    } else {
+      //TODO   Return ivaCaluclado
+
+      // return clienteDTO.ivaCalculado;
+
+      return 0;
+    }
   }
 
-  Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO) async {
+  Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO,
+      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList) async {
     try {
-      await _db
-          .into(_db.pedidoVentaLocalTable)
-          .insertOnConflictUpdate(pedidoVentaLocalDTO);
+      return await _db.transaction(() async {
+        await _db
+            .into(_db.pedidoVentaLocalTable)
+            .insertOnConflictUpdate(pedidoVentaLocalDTO);
+        for (var i = 0; i < pedidoVentaLineaLocalDTOList.length; i++) {
+          await _db
+              .into(_db.pedidoVentaLineaLocalTable)
+              .insertOnConflictUpdate(pedidoVentaLineaLocalDTOList[i]);
+        }
+      });
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -247,9 +410,16 @@ class PedidoVentaRepository {
   }
 
   Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
-      PedidoVentaLocalDTO pedidoVentaLocalDTO, bool test) async {
+      PedidoVentaLocalDTO pedidoVentaLocalDTO,
+      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
+      bool test) async {
     try {
-      final json = jsonEncode(pedidoVentaLocalDTO.toJson());
+      final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
+      final pedidoVentaLineasLocalListToJson =
+          pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
+      pedidoVentaLocalToJson
+          .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
+      final json = jsonEncode(pedidoVentaLocalToJson);
       print(json);
       final requestUri = Uri.http(
         dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
@@ -261,7 +431,7 @@ class PedidoVentaRepository {
         options: Options(
           headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
         ),
-        data: jsonEncode(pedidoVentaLocalDTO.toJson()),
+        data: jsonEncode(pedidoVentaLocalToJson),
       );
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
@@ -291,5 +461,29 @@ class PedidoVentaRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  Future<PedidoVenta> getPedidoVentaLocalById(
+      {required String pedidoVentaAppId}) async {
+    final query = _db.select(_db.pedidoVentaLocalTable).join([
+      leftOuterJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.pedidoVentaLocalTable.paisId)),
+      leftOuterJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.pedidoVentaLocalTable.divisaId)),
+    ]);
+
+    query.where(
+        _db.pedidoVentaLocalTable.pedidoVentaAppId.equals(pedidoVentaAppId));
+
+    return query.asyncMap((row) async {
+      final paisDTO = row.readTableOrNull(_db.paisTable);
+      final divisaDTO = row.readTable(_db.divisaTable);
+      final pedidoVentaDTO = row.readTable(_db.pedidoVentaLocalTable);
+
+      return pedidoVentaDTO.toDomain(
+        pais: paisDTO?.toDomain(),
+        divisa: divisaDTO.toDomain(),
+      );
+    }).getSingle();
   }
 }

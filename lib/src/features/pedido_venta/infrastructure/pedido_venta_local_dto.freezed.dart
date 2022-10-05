@@ -58,6 +58,8 @@ mixin _$PedidoVentaLocalDTO {
   String get enviada => throw _privateConstructorUsedError;
   @JsonKey(name: 'TRATADA')
   String get tratada => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ERROR_SYNC')
+  String? get errorSyncMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -89,7 +91,8 @@ abstract class $PedidoVentaLocalDTOCopyWith<$Res> {
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'DTO_BONIFICACION') double dtoBonificacion,
       @JsonKey(name: 'ENVIADA') String enviada,
-      @JsonKey(name: 'TRATADA') String tratada});
+      @JsonKey(name: 'TRATADA') String tratada,
+      @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage});
 }
 
 /// @nodoc
@@ -122,6 +125,7 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res>
     Object? dtoBonificacion = freezed,
     Object? enviada = freezed,
     Object? tratada = freezed,
+    Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
       usuarioId: usuarioId == freezed
@@ -200,6 +204,10 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res>
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as String,
+      errorSyncMessage: errorSyncMessage == freezed
+          ? _value.errorSyncMessage
+          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -230,7 +238,8 @@ abstract class _$$_PedidoVentaLocalDTOCopyWith<$Res>
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'DTO_BONIFICACION') double dtoBonificacion,
       @JsonKey(name: 'ENVIADA') String enviada,
-      @JsonKey(name: 'TRATADA') String tratada});
+      @JsonKey(name: 'TRATADA') String tratada,
+      @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage});
 }
 
 /// @nodoc
@@ -265,6 +274,7 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
     Object? dtoBonificacion = freezed,
     Object? enviada = freezed,
     Object? tratada = freezed,
+    Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_PedidoVentaLocalDTO(
       usuarioId: usuarioId == freezed
@@ -343,6 +353,10 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as String,
+      errorSyncMessage: errorSyncMessage == freezed
+          ? _value.errorSyncMessage
+          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -369,7 +383,8 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
       @JsonKey(name: 'IVA') required this.iva,
       @JsonKey(name: 'DTO_BONIFICACION') required this.dtoBonificacion,
       @JsonKey(name: 'ENVIADA') required this.enviada,
-      @JsonKey(name: 'TRATADA') required this.tratada})
+      @JsonKey(name: 'TRATADA') required this.tratada,
+      @JsonKey(name: 'ERROR_SYNC') this.errorSyncMessage})
       : super._();
 
   factory _$_PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =>
@@ -432,10 +447,13 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
   @override
   @JsonKey(name: 'TRATADA')
   final String tratada;
+  @override
+  @JsonKey(name: 'ERROR_SYNC')
+  final String? errorSyncMessage;
 
   @override
   String toString() {
-    return 'PedidoVentaLocalDTO(usuarioId: $usuarioId, pedidoVentaAppId: $pedidoVentaAppId, clienteId: $clienteId, nombreCliente: $nombreCliente, direccionId: $direccionId, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, pedidoCliente: $pedidoCliente, observaciones: $observaciones, fechaAlta: $fechaAlta, iva: $iva, dtoBonificacion: $dtoBonificacion, enviada: $enviada, tratada: $tratada)';
+    return 'PedidoVentaLocalDTO(usuarioId: $usuarioId, pedidoVentaAppId: $pedidoVentaAppId, clienteId: $clienteId, nombreCliente: $nombreCliente, direccionId: $direccionId, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, pedidoCliente: $pedidoCliente, observaciones: $observaciones, fechaAlta: $fechaAlta, iva: $iva, dtoBonificacion: $dtoBonificacion, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -470,7 +488,9 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
             const DeepCollectionEquality()
                 .equals(other.dtoBonificacion, dtoBonificacion) &&
             const DeepCollectionEquality().equals(other.enviada, enviada) &&
-            const DeepCollectionEquality().equals(other.tratada, tratada));
+            const DeepCollectionEquality().equals(other.tratada, tratada) &&
+            const DeepCollectionEquality()
+                .equals(other.errorSyncMessage, errorSyncMessage));
   }
 
   @JsonKey(ignore: true)
@@ -495,7 +515,8 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
         const DeepCollectionEquality().hash(iva),
         const DeepCollectionEquality().hash(dtoBonificacion),
         const DeepCollectionEquality().hash(enviada),
-        const DeepCollectionEquality().hash(tratada)
+        const DeepCollectionEquality().hash(tratada),
+        const DeepCollectionEquality().hash(errorSyncMessage)
       ]);
 
   @JsonKey(ignore: true)
@@ -551,7 +572,9 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
       @JsonKey(name: 'ENVIADA')
           required final String enviada,
       @JsonKey(name: 'TRATADA')
-          required final String tratada}) = _$_PedidoVentaLocalDTO;
+          required final String tratada,
+      @JsonKey(name: 'ERROR_SYNC')
+          final String? errorSyncMessage}) = _$_PedidoVentaLocalDTO;
   const _PedidoVentaLocalDTO._() : super._();
 
   factory _PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =
@@ -614,6 +637,9 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
   @override
   @JsonKey(name: 'TRATADA')
   String get tratada;
+  @override
+  @JsonKey(name: 'ERROR_SYNC')
+  String? get errorSyncMessage;
   @override
   @JsonKey(ignore: true)
   _$$_PedidoVentaLocalDTOCopyWith<_$_PedidoVentaLocalDTO> get copyWith =>

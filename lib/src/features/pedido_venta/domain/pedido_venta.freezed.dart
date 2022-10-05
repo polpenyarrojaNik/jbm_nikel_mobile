@@ -47,6 +47,7 @@ mixin _$PedidoVenta {
   bool get deleted => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
   bool get tratada => throw _privateConstructorUsedError;
+  String? get errorSyncMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PedidoVentaCopyWith<PedidoVenta> get copyWith =>
@@ -88,7 +89,8 @@ abstract class $PedidoVentaCopyWith<$Res> {
       DateTime lastUpdated,
       bool deleted,
       bool enviada,
-      bool tratada});
+      bool tratada,
+      String? errorSyncMessage});
 
   $PaisCopyWith<$Res>? get pais;
   $DivisaCopyWith<$Res> get divisa;
@@ -135,6 +137,7 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
     Object? deleted = freezed,
     Object? enviada = freezed,
     Object? tratada = freezed,
+    Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
       empresaId: empresaId == freezed
@@ -257,6 +260,10 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorSyncMessage: errorSyncMessage == freezed
+          ? _value.errorSyncMessage
+          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 
@@ -327,7 +334,8 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       DateTime lastUpdated,
       bool deleted,
       bool enviada,
-      bool tratada});
+      bool tratada,
+      String? errorSyncMessage});
 
   @override
   $PaisCopyWith<$Res>? get pais;
@@ -379,6 +387,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
     Object? deleted = freezed,
     Object? enviada = freezed,
     Object? tratada = freezed,
+    Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_PedidoVenta(
       empresaId: empresaId == freezed
@@ -501,6 +510,10 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorSyncMessage: errorSyncMessage == freezed
+          ? _value.errorSyncMessage
+          : errorSyncMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -538,7 +551,8 @@ class _$_PedidoVenta extends _PedidoVenta {
       required this.lastUpdated,
       required this.deleted,
       required this.enviada,
-      required this.tratada})
+      required this.tratada,
+      this.errorSyncMessage})
       : super._();
 
   @override
@@ -601,10 +615,12 @@ class _$_PedidoVenta extends _PedidoVenta {
   final bool enviada;
   @override
   final bool tratada;
+  @override
+  final String? errorSyncMessage;
 
   @override
   String toString() {
-    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, baseImponible: $baseImponible, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, descuentoProntoPago: $descuentoProntoPago, dtoBonificacion: $dtoBonificacion, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada)';
+    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, baseImponible: $baseImponible, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, descuentoProntoPago: $descuentoProntoPago, dtoBonificacion: $dtoBonificacion, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -657,7 +673,9 @@ class _$_PedidoVenta extends _PedidoVenta {
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted) &&
             const DeepCollectionEquality().equals(other.enviada, enviada) &&
-            const DeepCollectionEquality().equals(other.tratada, tratada));
+            const DeepCollectionEquality().equals(other.tratada, tratada) &&
+            const DeepCollectionEquality()
+                .equals(other.errorSyncMessage, errorSyncMessage));
   }
 
   @override
@@ -692,7 +710,8 @@ class _$_PedidoVenta extends _PedidoVenta {
         const DeepCollectionEquality().hash(lastUpdated),
         const DeepCollectionEquality().hash(deleted),
         const DeepCollectionEquality().hash(enviada),
-        const DeepCollectionEquality().hash(tratada)
+        const DeepCollectionEquality().hash(tratada),
+        const DeepCollectionEquality().hash(errorSyncMessage)
       ]);
 
   @JsonKey(ignore: true)
@@ -732,7 +751,8 @@ abstract class _PedidoVenta extends PedidoVenta {
       required final DateTime lastUpdated,
       required final bool deleted,
       required final bool enviada,
-      required final bool tratada}) = _$_PedidoVenta;
+      required final bool tratada,
+      final String? errorSyncMessage}) = _$_PedidoVenta;
   const _PedidoVenta._() : super._();
 
   @override
@@ -795,6 +815,8 @@ abstract class _PedidoVenta extends PedidoVenta {
   bool get enviada;
   @override
   bool get tratada;
+  @override
+  String? get errorSyncMessage;
   @override
   @JsonKey(ignore: true)
   _$$_PedidoVentaCopyWith<_$_PedidoVenta> get copyWith =>

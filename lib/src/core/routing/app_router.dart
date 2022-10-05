@@ -376,41 +376,38 @@ class RouterNotifier extends ChangeNotifier {
                   ),
                 );
               },
+            ),
+            GoRoute(
+              name: AppRoutes.pedidoventaedit.name,
+              path: ':id/edit',
+              pageBuilder: (context, state) {
+                final pedidoVentaId = state.params['id']!;
+
+                return MaterialPage(
+                  key: state.pageKey,
+                  fullscreenDialog: true,
+                  child: PedidoVentaEditPage(id: pedidoVentaId),
+                );
+              },
               routes: [
                 GoRoute(
-                  name: AppRoutes.pedidoventaedit.name,
-                  path: 'edit',
+                  name: AppRoutes.pedidoventaeditseleccionarcantidad.name,
+                  path: 'seleccionar_cantidad',
                   pageBuilder: (context, state) {
-                    final pedidoVentaId = state.params['id']!;
-
+                    final seleccionarCantidadParam =
+                        state.extra as SeleccionarCantidadParam;
                     return MaterialPage(
                       key: state.pageKey,
-                      fullscreenDialog: true,
-                      child: PedidoVentaEditPage(id: pedidoVentaId),
+                      child: SelecionarCantidadPage(
+                          seleccionarCantidadParam: seleccionarCantidadParam),
                     );
                   },
                   routes: [
                     GoRoute(
-                      name: AppRoutes.pedidoventaeditseleccionarcantidad.name,
-                      path: 'seleccionar_cantidad',
-                      pageBuilder: (context, state) {
-                        final seleccionarCantidadParam =
-                            state.extra as SeleccionarCantidadParam;
-                        return MaterialPage(
-                          key: state.pageKey,
-                          child: SelecionarCantidadPage(
-                              seleccionarCantidadParam:
-                                  seleccionarCantidadParam),
-                        );
-                      },
-                      routes: [
-                        GoRoute(
-                          name: AppRoutes.pedidoventaeditsearcharticulo.name,
-                          path: 'search_articulo',
-                          builder: (context, state) => const ArticuloListaPage(
-                              isSearchArticuloForForm: true),
-                        ),
-                      ],
+                      name: AppRoutes.pedidoventaeditsearcharticulo.name,
+                      path: 'search_articulo',
+                      builder: (context, state) => const ArticuloListaPage(
+                          isSearchArticuloForForm: true),
                     ),
                   ],
                 ),

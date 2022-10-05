@@ -41,6 +41,7 @@ import '../../features/usuario/domain/usuario.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import '../exceptions/app_exception.dart';
+import '../exceptions/get_api_error.dart';
 import '../presentation/app.dart';
 import 'database.dart';
 import 'divisa_dto.dart';
@@ -53,14 +54,14 @@ final syncServiceProvider = Provider.autoDispose<SyncService>(
   (ref) => SyncService(
     ref.watch(appDatabaseProvider),
     ref.watch(dioProvider),
-    ref.watch(usuarioNotifierProvider)!,
+    ref.watch(usuarioNotifierProvider),
   ),
 );
 
 class SyncService {
   final Dio _dio;
   final AppDatabase _db;
-  final Usuario _usuario;
+  final Usuario? _usuario;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
     dotenv.get('URL', fallback: 'localhost:3001'),
@@ -103,7 +104,7 @@ class SyncService {
   Future<DateTime> getRemoteDatabaseDateTime() async {
     try {
       final response = await _dio.getUri(
-        (_usuario.test)
+        (_usuario!.test)
             ? remoteDatabaseDateTimeTestEndpoint
             : remoteDatabaseDateTimeEndpoint,
       );
@@ -115,18 +116,8 @@ class SyncService {
         throw AppException.restApiFailure(response.statusCode ?? 500,
             response.statusMessage ?? 'Internet Error');
       }
-    } on DioError catch (e) {
-      throw AppException.restApiFailure(
-        e.response?.statusCode ?? 500,
-        e.response?.data['error']['detail'] ??
-            e.response?.data['message'] ??
-            'Internet Error',
-      );
-      // }
-      // on TimeoutException catch (e) {
-      //   throw AppException.restApiFailure(500, e.toString());
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 
@@ -137,7 +128,7 @@ class SyncService {
   Future<dynamic> _getRemoteInitialDatabase() async {
     try {
       final response = await _dio.getUri(
-        (_usuario.test)
+        (_usuario!.test)
             ? remoteInitDatabaseTestEndpoint
             : remoteInitDatabaseEndpoint,
         options: Options(
@@ -155,15 +146,8 @@ class SyncService {
         throw AppException.restApiFailure(
             response.statusCode ?? 500, response.toString());
       }
-    } on DioError catch (e) {
-      throw AppException.restApiFailure(
-        e.response?.statusCode ?? 500,
-        e.response?.data['error']['detail'] ??
-            e.response?.data['message'] ??
-            'Internet Error',
-      );
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 
@@ -778,7 +762,7 @@ class SyncService {
     try {
       final response = await _dio.getUri(
         Uri.http(
-          dotenv.get((_usuario.test) ? 'URLTEST' : 'URL',
+          dotenv.get((_usuario!.test) ? 'URLTEST' : 'URL',
               fallback: 'localhost:3001'),
           apiPath,
           query,
@@ -834,7 +818,7 @@ class SyncService {
       final visitasNoEnviadas = await getVisitasNoEnviadas();
       for (var i = 0; i < visitasNoEnviadas.length; i++) {
         final visitaLocalEnviada = await _remoteCreateVisita(
-            visitasNoEnviadas[i], _usuario.provisionalToken);
+            visitasNoEnviadas[i], _usuario!.provisionalToken);
         await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
       }
     } catch (e) {
@@ -856,7 +840,7 @@ class SyncService {
       VisitaLocalDTO visitaLocalDto, String provisionalToken) async {
     try {
       final requestUri = Uri.http(
-        dotenv.get((_usuario.test) ? 'URLTEST' : 'URL',
+        dotenv.get((_usuario!.test) ? 'URLTEST' : 'URL',
             fallback: 'localhost:3001'),
         'api/v1/online/visitas',
       );

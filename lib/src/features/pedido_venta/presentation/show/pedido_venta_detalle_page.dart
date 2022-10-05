@@ -17,60 +17,57 @@ import '../../../../core/routing/app_router.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
-class PedidoVentaDetallePage extends StatelessWidget {
+class PedidoVentaDetallePage extends ConsumerWidget {
   const PedidoVentaDetallePage(
       {super.key, required this.pedidoVentaIdIsLocalParam});
 
   final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
     return Scaffold(
       appBar: AppBar(
         title: Text(
             '${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${pedidoVentaIdIsLocalParam.id}'),
-        actions: [
-          if (pedidoVentaIdIsLocalParam.isLocal)
-            IconButton(
-              icon: const Icon(Icons.edit),
-              onPressed: () => context.goNamed(
-                AppRoutes.pedidoventaedit.name,
-                params: {
-                  'id': pedidoVentaIdIsLocalParam.id,
-                },
-              ),
-            ),
-        ],
-      ),
-      body: Consumer(
-        builder: (context, ref, _) {
-          final pedidoVentaValue =
-              ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
-
-          return AsyncValueWidget<PedidoVenta>(
-            value: pedidoVentaValue,
-            data: (pedidoVenta) => SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClienteInfoContainer(pedidoVenta: pedidoVenta),
-                        gapH12,
-                        PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
-                      ],
+        actions: state.maybeWhen(
+            orElse: () => null,
+            data: (pedidoVenta) => (pedidoVenta.isEditable())
+                ? [
+                    IconButton(
+                      icon: const Icon(Icons.edit),
+                      onPressed: () => context.goNamed(
+                        AppRoutes.pedidoventaedit.name,
+                        params: {
+                          'id': pedidoVentaIdIsLocalParam.id,
+                        },
+                      ),
                     ),
-                  ),
-                  PedidoVentaLineaContainer(
-                      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam)
-                ],
+                  ]
+                : null),
+      ),
+      body: AsyncValueWidget<PedidoVenta>(
+        value: state,
+        data: (pedidoVenta) => SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClienteInfoContainer(pedidoVenta: pedidoVenta),
+                    gapH12,
+                    PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+              PedidoVentaLineaContainer(
+                  pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam)
+            ],
+          ),
+        ),
       ),
     );
   }

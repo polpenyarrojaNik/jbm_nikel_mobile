@@ -18,6 +18,7 @@ class ClienteDireccion with _$ClienteDireccion {
       Pais? pais,
       required double latitud,
       required double longitud,
+      // required bool predeterminada,
       required DateTime lastUpdated,
       required bool deleted}) = _ClienteDireccion;
 }

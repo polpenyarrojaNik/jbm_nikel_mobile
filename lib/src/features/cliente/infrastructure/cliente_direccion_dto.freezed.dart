@@ -41,7 +41,8 @@ mixin _$ClienteDireccionDTO {
   @JsonKey(name: 'LATITUD')
   double get latitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD')
-  double get longitud => throw _privateConstructorUsedError;
+  double get longitud =>
+      throw _privateConstructorUsedError; // @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -318,6 +319,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
   @override
   @JsonKey(name: 'LONGITUD')
   final double longitud;
+// @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -440,7 +442,7 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   @override
   @JsonKey(name: 'LONGITUD')
   double get longitud;
-  @override
+  @override // @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;
   @override

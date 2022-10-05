@@ -8,6 +8,7 @@ import '../../../core/domain/divisa.dart';
 import '../../../core/infrastructure/pais_dto.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../cliente/domain/cliente.dart';
+import '../../cliente/domain/cliente_direccion.dart';
 import '../domain/pedido_venta.dart';
 
 part 'pedido_venta_local_dto.freezed.dart';
@@ -39,6 +40,7 @@ class PedidoVentaLocalDTO
     @JsonKey(name: 'DTO_BONIFICACION') required double dtoBonificacion,
     @JsonKey(name: 'ENVIADA') required String enviada,
     @JsonKey(name: 'TRATADA') required String tratada,
+    @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage,
   }) = _PedidoVentaLocalDTO;
 
   factory PedidoVentaLocalDTO.fromJson(Map<String, dynamic> json) =>
@@ -65,31 +67,40 @@ class PedidoVentaLocalDTO
       dtoBonificacion: _.dtoBonificacion!,
       enviada: (_.enviada) ? 'S' : 'N',
       tratada: (_.tratada) ? 'S' : 'N',
+      errorSyncMessage: _.errorSyncMessage,
     );
   }
 
   factory PedidoVentaLocalDTO.fromForm(
-      String usuarioId, Cliente cliente, String? observaciones) {
+      String pedidoVentaAppId,
+      String usuarioId,
+      Cliente cliente,
+      ClienteDireccion? clienteDireccion,
+      String? pedidoCliente,
+      String? observaciones) {
     return PedidoVentaLocalDTO(
       usuarioId: usuarioId,
-      pedidoVentaAppId: _.pedidoVentaAppId!,
+      pedidoVentaAppId: pedidoVentaAppId,
       fechaAlta: DateTime.now(),
       clienteId: cliente.id,
-      direccionId: cliente.direccionId,
       nombreCliente: cliente.nombreCliente,
-      direccion1: cliente.direccionFiscal1,
-      direccion2: cliente.direccionFiscal2,
-      codigoPostal: cliente.codigoPostalFiscal,
-      poblacion: cliente.poblacionFiscal,
-      provincia: cliente.provinciaFiscal,
-      paisId: cliente.paisFiscal!.id,
-      pedidoCliente: _.pedidoCliente,
+      direccionId: clienteDireccion?.direccionId,
+      direccion1: clienteDireccion?.direccion1 ?? cliente.direccionFiscal1,
+      direccion2: clienteDireccion?.direccion2 ?? cliente.direccionFiscal2,
+      codigoPostal:
+          clienteDireccion?.codigoPostal ?? cliente.codigoPostalFiscal,
+      poblacion: clienteDireccion?.poblacion ?? cliente.poblacionFiscal,
+      provincia: clienteDireccion?.provincia ?? cliente.provinciaFiscal,
+      paisId: clienteDireccion?.pais!.id ?? cliente.paisFiscal!.id,
+      pedidoCliente: pedidoCliente,
       observaciones: observaciones,
       divisaId: cliente.divisa!.id,
-      iva: _.iva,
-      dtoBonificacion: _.dtoBonificacion!,
+      // iva: cliente.iva,
+      iva: 21,
+      dtoBonificacion: 0,
       enviada: 'N',
       tratada: 'N',
+      errorSyncMessage: null,
     );
   }
 
@@ -104,10 +115,12 @@ class PedidoVentaLocalDTO
       empresaId: null,
       usuarioId: usuarioId,
       pedidoVentaId: null,
+      pedidoVentaAppId: pedidoVentaAppId,
       pedidoVentaDate: fechaAlta,
       tipoVenta: null,
       clienteId: clienteId,
       nombreCliente: nombreCliente,
+      direccionId: direccionId,
       direccionEntrga1: direccion1,
       direccionEntrga2: direccion2,
       codigoPostal: codigoPostal,
@@ -129,6 +142,7 @@ class PedidoVentaLocalDTO
       deleted: false,
       enviada: (enviada == 'S') ? true : false,
       tratada: (tratada == 'S') ? true : false,
+      errorSyncMessage: errorSyncMessage,
     );
   }
 
@@ -154,6 +168,7 @@ class PedidoVentaLocalDTO
       dtoBonificacion: Value(dtoBonificacion),
       enviada: Value(enviada),
       tratada: Value(tratada),
+      errorSyncMessage: Value(errorSyncMessage),
     ).toColumns(nullToAbsent);
   }
 }
@@ -183,6 +198,7 @@ class PedidoVentaLocalTable extends Table {
       text().withDefault(const Constant('N')).named('ENVIADA')();
   TextColumn get tratada =>
       text().withDefault(const Constant('N')).named('TRATADA')();
+  TextColumn get errorSyncMessage => text().nullable().named('ERROR_SYNC')();
 
   @override
   Set<Column> get primaryKey => {pedidoVentaAppId};

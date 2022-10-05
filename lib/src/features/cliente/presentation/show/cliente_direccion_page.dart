@@ -19,7 +19,7 @@ class ClienteDireccionesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteDireccionStreamProvider(clienteId));
+    final state = ref.watch(clienteDireccionProvider(clienteId));
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -67,8 +67,8 @@ class ClienteDireccionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+    return Container(
+      padding: const EdgeInsets.all(4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -117,7 +117,6 @@ class ClienteDireccionTile extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(),
         ],
       ),
     );

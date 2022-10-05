@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -18,6 +17,7 @@ import 'package:path_provider/path_provider.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -587,31 +587,6 @@ class ArticuloRepository {
       }
     } catch (e) {
       throw getApiError(e);
-    }
-  }
-
-  Error getApiError(Object e) {
-    if (e is DioError) {
-      if (e.response != null && e.response!.data != null) {
-        final responseStr = e.response!.data;
-        try {
-          final responseJson = jsonDecode(responseStr);
-
-          final responseErrorJson =
-              responseJson['detalle'] ?? responseJson['message'] as String?;
-
-          throw AppException.restApiFailure(
-              e.response?.statusCode ?? 400, responseErrorJson ?? '');
-        } catch (decodeError) {
-          throw AppException.restApiFailure(
-              e.response!.statusCode ?? 500, e.response?.statusMessage ?? '');
-        }
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
-    } else {
-      throw e;
     }
   }
 

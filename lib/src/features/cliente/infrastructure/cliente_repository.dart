@@ -42,7 +42,7 @@ final clienteProvider =
   return clienteRepository.getClienteById(clienteId: clienteId);
 });
 
-final clienteDireccionStreamProvider = StreamProvider.autoDispose
+final clienteDireccionProvider = FutureProvider.autoDispose
     .family<List<ClienteDireccion>, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   return clienteRepository.getClienteDireccionById(clienteId: clienteId);
@@ -251,7 +251,7 @@ class ClienteRepository {
     }
   }
 
-  Stream<List<ClienteDireccion>> getClienteDireccionById(
+  Future<List<ClienteDireccion>> getClienteDireccionById(
       {required String clienteId}) {
     try {
       final query = (_db.select(_db.clienteDireccionTable)
@@ -264,7 +264,7 @@ class ClienteRepository {
         return row.toDomain(
           pais: paisDTO?.toDomain(),
         );
-      }).watch();
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -740,5 +740,29 @@ ORDER BY IMPORTE_ANYO DESC
 ''';
     print(select);
     return select;
+  }
+
+  Future<ClienteDireccion?> getClienteDireccionByDireccionId(
+      {required String clienteId, required String? direccionId}) async {
+    try {
+      if (direccionId != null) {
+        final query = (_db.select(_db.clienteDireccionTable)
+          ..where((t) =>
+              t.clienteId.equals(clienteId) &
+              t.direccionId.equals(direccionId)));
+
+        return query.asyncMap((row) async {
+          final paisDTO = await (_db.select(_db.paisTable)
+                ..where((t) => t.id.equals(row.paisId ?? '')))
+              .getSingleOrNull();
+          return row.toDomain(
+            pais: paisDTO?.toDomain(),
+          );
+        }).getSingle();
+      }
+      return null;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 }

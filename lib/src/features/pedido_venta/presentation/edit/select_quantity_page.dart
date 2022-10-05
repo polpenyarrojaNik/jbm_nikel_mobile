@@ -29,7 +29,7 @@ class SelecionarCantidadPage extends ConsumerStatefulWidget {
 
 class _SelecionarCantidadPageState
     extends ConsumerState<SelecionarCantidadPage> {
-  int totalQuantity = 0;
+  int totalQuantity = 1;
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
 
