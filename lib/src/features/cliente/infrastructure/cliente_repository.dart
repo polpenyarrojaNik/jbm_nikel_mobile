@@ -151,11 +151,11 @@ class ClienteRepository {
 
       if (searchText != null) {
         query.where(
-          _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-                  _db.clienteTable.id.like('%$searchText%') |
-              (_db.clienteTable.nombreCliente.like('%$searchText%') |
-                  _db.clienteTable.poblacionFiscal.like('%$searchText%') |
-                  _db.clienteTable.provinciaFiscal.like('%$searchText%')),
+          (_db.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
+              (_db.clienteTable.id.like('%$searchText%') |
+                  (_db.clienteTable.nombreCliente.like('%$searchText%') |
+                      _db.clienteTable.poblacionFiscal.like('%$searchText%') |
+                      _db.clienteTable.provinciaFiscal.like('%$searchText%'))),
         );
       } else {
         query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));

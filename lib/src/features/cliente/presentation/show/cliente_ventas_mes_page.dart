@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
@@ -234,6 +235,115 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         ),
       );
     }
+
+    dataRows.add(
+      DataRow(cells: [
+        DataCell(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Center(
+                child:
+                    Text('Total', style: Theme.of(context).textTheme.subtitle2),
+              ),
+            ],
+          ),
+        ),
+        DataCell(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Center(
+                child: Text(
+                  calcularTotalAnyo(
+                      anyo: 0, clienteVentasMesList: clienteVentasMesList),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+        DataCell(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Center(
+                child: Text(
+                  calcularTotalAnyo(
+                      anyo: -1, clienteVentasMesList: clienteVentasMesList),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+        DataCell(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Center(
+                child: Text(
+                  calcularTotalAnyo(
+                      anyo: -2, clienteVentasMesList: clienteVentasMesList),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+        DataCell(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Center(
+                child: Text(
+                  calcularTotalAnyo(
+                      anyo: -3, clienteVentasMesList: clienteVentasMesList),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+        DataCell(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Center(
+                child: Text(
+                  calcularTotalAnyo(
+                      anyo: -4, clienteVentasMesList: clienteVentasMesList),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ]),
+    );
     return dataRows;
+  }
+
+  String calcularTotalAnyo(
+      {required int anyo,
+      required List<ClienteVentasMes> clienteVentasMesList}) {
+    final divisaId = clienteVentasMesList[0].importeAnyo.currency.code;
+
+    Money totalAnyo = Money.fromInt(0, code: divisaId);
+
+    for (var i = 0; i < clienteVentasMesList.length; i++) {
+      if (anyo == 0) {
+        totalAnyo += clienteVentasMesList[i].importeAnyo;
+      } else if (anyo == -1) {
+        totalAnyo += clienteVentasMesList[i].importeAnyo_1;
+      } else if (anyo == -2) {
+        totalAnyo += clienteVentasMesList[i].importeAnyo_2;
+      } else if (anyo == -3) {
+        totalAnyo += clienteVentasMesList[i].importeAnyo_3;
+      } else if (anyo == -4) {
+        totalAnyo += clienteVentasMesList[i].importeAnyo_4;
+      }
+    }
+    return totalAnyo.toString();
   }
 }

@@ -200,7 +200,8 @@ class VisitaRepository {
     final query = _db.select(_db.visitaLocalTable).join([
       innerJoin(
         _db.clienteUsuarioTable,
-        _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
+        _db.clienteUsuarioTable.clienteId
+            .equalsExp(_db.visitaLocalTable.clienteId),
       ),
       innerJoin(
         _db.clienteTable,
@@ -210,9 +211,9 @@ class VisitaRepository {
     if (searchText != '') {
       query.where(
         _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-            (_db.visitaTable.resumen.like('%$searchText%') |
-                _db.visitaTable.clienteId.like('%$searchText%') |
-                _db.visitaTable.contacto.like('%$searchText%')),
+            (_db.visitaLocalTable.resumen.like('%$searchText%') |
+                _db.visitaLocalTable.clienteId.like('%$searchText%') |
+                _db.visitaLocalTable.contacto.like('%$searchText%')),
       );
     } else {
       query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));

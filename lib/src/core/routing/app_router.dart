@@ -146,7 +146,6 @@ class RouterNotifier extends ChangeNotifier {
               path: 'alrededor',
               name: AppRoutes.clientealrededor.name,
               builder: (context, state) => const ClientesAlrededorPage(),
-              routes: [],
             ),
             GoRoute(
               name: AppRoutes.clienteshow.name,

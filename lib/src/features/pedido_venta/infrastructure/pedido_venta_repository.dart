@@ -130,7 +130,7 @@ class PedidoVentaRepository {
       innerJoin(
           _db.clienteUsuarioTable,
           _db.clienteUsuarioTable.clienteId
-              .equalsExp(_db.pedidoVentaTable.clienteId)),
+              .equalsExp(_db.pedidoVentaLocalTable.clienteId)),
       leftOuterJoin(_db.paisTable,
           _db.paisTable.id.equalsExp(_db.pedidoVentaLocalTable.paisId)),
       leftOuterJoin(_db.divisaTable,
@@ -139,12 +139,12 @@ class PedidoVentaRepository {
 
     if (searchText != '') {
       query.where(
-        (_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
-                _db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
-            _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
-            _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
-            _db.pedidoVentaLocalTable.codigoPostal.like('%$searchText%') |
-            _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
+        _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+            (_db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
+                _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
+                _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
+                _db.pedidoVentaLocalTable.codigoPostal.like('%$searchText%') |
+                _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
       );
     }
 
