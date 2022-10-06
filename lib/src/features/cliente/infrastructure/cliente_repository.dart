@@ -152,6 +152,7 @@ class ClienteRepository {
       if (searchText != null) {
         query.where(
           _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+                  _db.clienteTable.id.like('%$searchText%') |
               (_db.clienteTable.nombreCliente.like('%$searchText%') |
                   _db.clienteTable.poblacionFiscal.like('%$searchText%') |
                   _db.clienteTable.provinciaFiscal.like('%$searchText%')),
@@ -200,8 +201,6 @@ class ClienteRepository {
   Future<Cliente> getClienteById({required String clienteId}) async {
     try {
       final query = _db.select(_db.clienteTable).join([
-        innerJoin(_db.clienteUsuarioTable,
-            _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
         leftOuterJoin(_db.paisTable,
             _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
         leftOuterJoin(_db.divisaTable,

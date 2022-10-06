@@ -292,3 +292,17 @@ String? getStatusLocalEntityText(
     return S.of(context).visita_noEnviada;
   }
 }
+
+TextStyle? getTextStyleFechaEntregaByEstado(
+    {required BuildContext context, String? estado}) {
+  final defaultTextTheme = Theme.of(context).textTheme.bodyText2;
+  switch (estado) {
+    case 'E':
+      return defaultTextTheme?.copyWith(color: Colors.blue);
+    case 'B':
+      return defaultTextTheme?.copyWith(color: Colors.red);
+
+    default:
+      return null;
+  }
+}

@@ -247,21 +247,34 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   .toLocal()
                                   .toIso8601String(),
                             ),
+                            style: getTextStyleFechaEntregaByEstado(
+                                estado: articulo.comprasEntregaEstado1,
+                                context: context),
                           ),
                         if (articulo.comprasEntregaFecha1 != null) gapH8,
                         if (articulo.comprasEntregaFecha2 != null)
-                          Text(dateFormatter(
-                            articulo.comprasEntregaFecha2!
-                                .toLocal()
-                                .toIso8601String(),
-                          )),
+                          Text(
+                            dateFormatter(
+                              articulo.comprasEntregaFecha2!
+                                  .toLocal()
+                                  .toIso8601String(),
+                            ),
+                            style: getTextStyleFechaEntregaByEstado(
+                                estado: articulo.comprasEntregaEstado2,
+                                context: context),
+                          ),
                         if (articulo.comprasEntregaFecha2 != null) gapH8,
                         if (articulo.comprasEntregaFecha3 != null)
-                          Text(dateFormatter(
-                            articulo.comprasEntregaFecha3!
-                                .toLocal()
-                                .toIso8601String(),
-                          )),
+                          Text(
+                            dateFormatter(
+                              articulo.comprasEntregaFecha3!
+                                  .toLocal()
+                                  .toIso8601String(),
+                            ),
+                            style: getTextStyleFechaEntregaByEstado(
+                                estado: articulo.comprasEntregaEstado3,
+                                context: context),
+                          ),
                         if (articulo.comprasEntregaFecha3 != null) gapH8,
                         const Text(
                           '',
