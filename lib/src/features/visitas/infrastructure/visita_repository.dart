@@ -58,7 +58,8 @@ class VisitaRepository {
     try {
       if (page == 1) {
         visitasList.clear();
-        final visitasLocal = await getVisitasLocal(searchText: searchText);
+        final visitasLocal = await getVisitasLocal(
+            searchText: searchText, usuarioId: _usuario!.id);
         visitasList.addAll(visitasLocal);
       }
       final visitas = await getVisitas(
@@ -94,9 +95,9 @@ class VisitaRepository {
       final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
       await insertVisitaInDb(visitaLocalDto);
       try {
-        // final visitaLocalEnviada =
-        //     await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
-        // await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
+        final visitaLocalEnviada =
+            await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
+        await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
       } catch (e) {
         if (e is AppException) {
           e.maybeWhen(
@@ -193,15 +194,29 @@ class VisitaRepository {
     }
   }
 
-  Future<List<Visita>> getVisitasLocal({required String searchText}) async {
+  Future<List<Visita>> getVisitasLocal(
+      {required String searchText, required String usuarioId}) async {
     //TODO filtre searchtext com pedidos
     final query = _db.select(_db.visitaLocalTable).join([
+      innerJoin(
+        _db.clienteUsuarioTable,
+        _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
+      ),
       innerJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
       ),
     ]);
-
+    if (searchText != '') {
+      query.where(
+        _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+            (_db.visitaTable.resumen.like('%$searchText%') |
+                _db.visitaTable.clienteId.like('%$searchText%') |
+                _db.visitaTable.contacto.like('%$searchText%')),
+      );
+    } else {
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    }
     query.orderBy([
       OrderingTerm.asc(_db.visitaLocalTable.enviada),
       OrderingTerm.desc(_db.visitaLocalTable.fecha),

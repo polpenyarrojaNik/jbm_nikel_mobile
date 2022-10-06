@@ -127,6 +127,10 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getPedidosVentaLocal(
       {required String searchText}) async {
     final query = _db.select(_db.pedidoVentaLocalTable).join([
+      innerJoin(
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.pedidoVentaTable.clienteId)),
       leftOuterJoin(_db.paisTable,
           _db.paisTable.id.equalsExp(_db.pedidoVentaLocalTable.paisId)),
       leftOuterJoin(_db.divisaTable,
@@ -135,7 +139,8 @@ class PedidoVentaRepository {
 
     if (searchText != '') {
       query.where(
-        (_db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
+        (_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+                _db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
             _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
             _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
             _db.pedidoVentaLocalTable.codigoPostal.like('%$searchText%') |

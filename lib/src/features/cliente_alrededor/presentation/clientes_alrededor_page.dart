@@ -166,7 +166,9 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
             markerId: MarkerId(c.id),
             position: LatLng(c.latitudFiscal!, c.longitudFiscal!),
             icon: BitmapDescriptor.defaultMarkerWithHue(
-              BitmapDescriptor.hueGreen,
+              (c.clientePotencial ?? false)
+                  ? BitmapDescriptor.hueYellow
+                  : BitmapDescriptor.hueGreen,
             ),
             onTap: () => showDialog(
               context: context,

@@ -29,6 +29,7 @@ import '../domain/articulo_grupo_neto.dart';
 import '../domain/articulo_imagen.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
 import '../domain/articulo_sustitutivo.dart';
+import 'articulo_dto.dart';
 import 'articulo_imagen_dto.dart';
 import 'articulo_precio_tarifa_dto.dart';
 
@@ -183,27 +184,38 @@ class ArticuloRepository {
       if (page == 1) {
         articulos.clear();
       }
-      final query = _db.select(_db.articuloTable);
-
-      query.where((t) =>
-          t.id.like('%$searchText%') | descripcionSegunLocale(t, searchText));
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
-      query.orderBy([(t) => OrderingTerm(expression: t.id)]);
-
-      final articlesList = await query.asyncMap((row) async {
-        final familiaDTO = await (_db.select(_db.familiaTable)
-              ..where((t) => t.id.equals(row.familiaId ?? '')))
-            .getSingleOrNull();
-        final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
-              ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(
-          familia: familiaDTO?.toDomain(),
-          subfamilia: subfamiliaDTO?.toDomain(),
-        );
+      final query = await _db.customSelect('''
+          SELECT art.*
+          FROM ARTICULOS art
+          WHERE ${descripcionSegunLocale(searchText)}
+          OR art.ARTICULO_ID LIKE '%$searchText%'
+          ORDER BY CASE
+            WHEN art.ARTICULO_ID = '$searchText' THEN 1
+            ELSE 2
+          END
+          , art.ARTICULO_ID
+          LIMIT :limit OFFSET :offset
+''', variables: [
+        const Variable(pageSize),
+        Variable((page == 1) ? 0 : page * pageSize),
+      ], readsFrom: {
+        _db.articuloTable,
       }).get();
 
-      articulos.addAll(articlesList);
+      final articlesList = query.map((row) async {
+        final articuloDTO = ArticuloDTO.fromJson(row.data);
+        final familiaDTO = await (_db.select(_db.familiaTable)
+              ..where((t) => t.id.equals(row.data['FAMILIA_ID'] ?? '')))
+            .getSingleOrNull();
+        final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
+              ..where((t) => t.id.equals(row.data['SUBFAMILIA_ID'] ?? '')))
+            .getSingleOrNull();
+        return articuloDTO.toDomain(
+            familia: familiaDTO?.toDomain(),
+            subfamilia: subfamiliaDTO?.toDomain());
+      }).toList();
+
+      articulos.addAll(await Future.wait(articlesList));
 
       return articulos;
     } catch (e) {
@@ -665,58 +677,43 @@ class ArticuloRepository {
     }
   }
 
-  Expression<bool> descripcionSegunLocale(
-      $ArticuloTableTable t, String searchText) {
+  String descripcionSegunLocale(String searchText) {
     final currentLocale = Intl.getCurrentLocale();
 
+    //TODO SWITCH
+
     if (currentLocale == 'es') {
-      return t.descripcionES.like('%${searchText.toUpperCase()}%') |
-          t.descripcionES.like('%$searchText%');
+      return "art.DESCRIPCION_ES LIKE '%$searchText%'";
     } else if (currentLocale == 'en') {
-      return t.descripcionEN.like('%${searchText.toUpperCase()}%') |
-          t.descripcionEN.like('%$searchText%');
+      return "art.DESCRIPCION_EN LIKE '%$searchText%'";
     } else if (currentLocale == 'fr') {
-      return t.descripcionFR.like('%${searchText.toUpperCase()}%') |
-          t.descripcionFR.like('%$searchText%');
+      return "art.DESCRIPCION_FR LIKE '%$searchText%'";
     } else if (currentLocale == 'de') {
-      return t.descripcionDE.like('%${searchText.toUpperCase()}%') |
-          t.descripcionDE.like('%$searchText%');
+      return "art.DESCRIPCION_DE LIKE '%$searchText%'";
     } else if (currentLocale == 'ca') {
-      return t.descripcionCA.like('%${searchText.toUpperCase()}%') |
-          t.descripcionCA.like('%$searchText%');
+      return "art.DESCRIPCION_CA LIKE '%$searchText%'";
     } else if (currentLocale == 'gb') {
-      return t.descripcionGB.like('%${searchText.toUpperCase()}%') |
-          t.descripcionGB.like('%$searchText%');
+      return "art.DESCRIPCION_GB LIKE '%$searchText%'";
     } else if (currentLocale == 'hu') {
-      return t.descripcionHU.like('%${searchText.toUpperCase()}%') |
-          t.descripcionHU.like('%$searchText%');
+      return "art.DESCRIPCION_HU LIKE '%$searchText%'";
     } else if (currentLocale == 'it') {
-      return t.descripcionIT.like('%${searchText.toUpperCase()}%') |
-          t.descripcionIT.like('%$searchText%');
+      return "art.DESCRIPCION_IT LIKE '%$searchText%'";
     } else if (currentLocale == 'nl') {
-      return t.descripcionNL.like('%${searchText.toUpperCase()}%') |
-          t.descripcionNL.like('%$searchText%');
+      return "art.DESCRIPCION_NL LIKE '%$searchText%'";
     } else if (currentLocale == 'pl') {
-      return t.descripcionPL.like('%${searchText.toUpperCase()}%') |
-          t.descripcionPL.like('%$searchText%');
+      return "art.DESCRIPCION_PL LIKE '%$searchText%'";
     } else if (currentLocale == 'pt') {
-      return t.descripcionPT.like('%${searchText.toUpperCase()}%') |
-          t.descripcionPT.like('%$searchText%');
+      return "art.DESCRIPCION_PT LIKE '%$searchText%'";
     } else if (currentLocale == 'ro') {
-      return t.descripcionRO.like('%${searchText.toUpperCase()}%') |
-          t.descripcionRO.like('%$searchText%');
+      return "art.DESCRIPCION_RO LIKE '%$searchText%'";
     } else if (currentLocale == 'ru') {
-      return t.descripcionRU.like('%${searchText.toUpperCase()}%') |
-          t.descripcionRU.like('%$searchText%');
+      return "art.DESCRIPCION_RU LIKE '%$searchText%'";
     } else if (currentLocale == 'cn') {
-      return t.descripcionCN.like('%${searchText.toUpperCase()}%') |
-          t.descripcionCN.like('%$searchText%');
+      return "art.DESCRIPCION_CN LIKE '%$searchText%'";
     } else if (currentLocale == 'el') {
-      return t.descripcionEL.like('%${searchText.toUpperCase()}%') |
-          t.descripcionEL.like('%$searchText%');
+      return "art.DESCRIPCION_EL LIKE '%$searchText%'";
     } else {
-      return t.descripcionES.like('%${searchText.toUpperCase()}%') |
-          t.descripcionES.like('%$searchText%');
+      return "art.DESCRIPCION_ES LIKE '%$searchText%'";
     }
   }
 }

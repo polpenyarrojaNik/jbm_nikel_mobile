@@ -71,10 +71,10 @@ class ClienteAlrededorRepository {
           // ]);
 
           db.customSelect('''SELECT c.*, paises.*
-        from CLIENTES c
-        INNER JOIN CLIENTES_USUARIO u ON c.cliente_id = u.cliente_id
+        from CLIENTES_USUARIO cUsuario
+        INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
         INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
-        WHERE u.USUARIO_ID = :usuarioId AND c.latitud_fiscal is not null AND c.longitud_fiscal is not null AND(
+        WHERE (cUsuario.USUARIO_ID = :usuarioId AND c.latitud_fiscal is not null AND c.longitud_fiscal is not null) AND(
           SELECT (12742 * ASIN(SQRT(0.5 - COS((c.latitud_fiscal - :latitud) * :p) /2 + COS(:latitud * :p) * COS(c.latitud_fiscal * :p) * (1 - COS((c.longitud_fiscal - :longitud) * :p)) / 2)))
           as distanceKm
           ) < :radiusKm

@@ -41,6 +41,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                         params: {
                           'id': pedidoVentaIdIsLocalParam.id,
                         },
+                        extra: pedidoVentaIdIsLocalParam.isLocal,
                       ),
                     ),
                   ]

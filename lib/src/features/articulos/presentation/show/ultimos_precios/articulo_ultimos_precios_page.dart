@@ -153,8 +153,8 @@ class UltimosPreciosTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
