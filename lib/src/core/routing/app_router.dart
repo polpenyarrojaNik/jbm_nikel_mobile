@@ -146,6 +146,7 @@ class RouterNotifier extends ChangeNotifier {
               path: 'alrededor',
               name: AppRoutes.clientealrededor.name,
               builder: (context, state) => const ClientesAlrededorPage(),
+              // routes: clienteShowRoutes,
             ),
             GoRoute(
               name: AppRoutes.clienteshow.name,
@@ -157,162 +158,7 @@ class RouterNotifier extends ChangeNotifier {
                   child: ClienteDetallePage(clienteId: clienteId),
                 );
               },
-              routes: [
-                GoRoute(
-                  name: AppRoutes.clienteventasmes.name,
-                  path: 'ventas-mes',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteVentasMesPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clienteventasarticulo.name,
-                  path: 'ventas-articulo',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteVentasArticuloPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientefactpendientes.name,
-                  path: 'facturas-pendientes',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClientePagoPendientePage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientetoparticulos.name,
-                  path: 'top-articulos',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteArticulosTopListPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clienteadjuntos.name,
-                  path: 'adjuntos',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteAdjuntoPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientecontactos.name,
-                  path: 'contactos',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteContactoPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientedescuentos.name,
-                  path: 'descuentos',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteDescuentoPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientedirecciones.name,
-                  path: 'direcciones',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteDireccionesPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientepreciosnetos.name,
-                  path: 'precios-netos',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClientePrecioNetoPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clientegruposnetos.name,
-                  path: 'grupos-netos',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteGrupoNetoPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-                GoRoute(
-                  name: AppRoutes.clienterappels.name,
-                  path: 'rappels',
-                  pageBuilder: (context, state) {
-                    final clienteId = state.params['clienteId']!;
-                    final nombreCliente = state.extra as String?;
-
-                    return MaterialPage(
-                      key: state.pageKey,
-                      child: ClienteRappelPage(
-                          clienteId: clienteId, nombreCliente: nombreCliente),
-                    );
-                  },
-                ),
-              ],
+              routes: clienteShowRoutes,
             ),
           ],
         ),
@@ -618,3 +464,160 @@ class RouterNotifier extends ChangeNotifier {
         ),
       ];
 }
+
+final clienteShowRoutes = [
+  GoRoute(
+    name: AppRoutes.clienteventasmes.name,
+    path: 'ventas-mes',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteVentasMesPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clienteventasarticulo.name,
+    path: 'ventas-articulo',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteVentasArticuloPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientefactpendientes.name,
+    path: 'facturas-pendientes',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClientePagoPendientePage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientetoparticulos.name,
+    path: 'top-articulos',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteArticulosTopListPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clienteadjuntos.name,
+    path: 'adjuntos',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteAdjuntoPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientecontactos.name,
+    path: 'contactos',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteContactoPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientedescuentos.name,
+    path: 'descuentos',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteDescuentoPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientedirecciones.name,
+    path: 'direcciones',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteDireccionesPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientepreciosnetos.name,
+    path: 'precios-netos',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClientePrecioNetoPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clientegruposnetos.name,
+    path: 'grupos-netos',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteGrupoNetoPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+  GoRoute(
+    name: AppRoutes.clienterappels.name,
+    path: 'rappels',
+    pageBuilder: (context, state) {
+      final clienteId = state.params['clienteId']!;
+      final nombreCliente = state.extra as String?;
+
+      return MaterialPage(
+        key: state.pageKey,
+        child: ClienteRappelPage(
+            clienteId: clienteId, nombreCliente: nombreCliente),
+      );
+    },
+  ),
+];

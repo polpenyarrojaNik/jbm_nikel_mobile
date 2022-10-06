@@ -11,11 +11,13 @@ class ColumnFieldTextDetalle extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(fieldTitleValue,
-            style: Theme.of(context)
-                .textTheme
-                .subtitle2!
-                .copyWith(color: Theme.of(context).textTheme.caption!.color)),
+        Text(
+          fieldTitleValue,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(color: Theme.of(context).textTheme.caption!.color),
+        ),
         (value is String)
             ? Text(
                 value,
