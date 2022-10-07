@@ -30,9 +30,7 @@ class PedidoVentaEditPageControllerState
   const factory PedidoVentaEditPageControllerState.deleted() = _deleted;
   const factory PedidoVentaEditPageControllerState.saved(
       String pedidoVentaAppId) = _saved;
-  // const factory PedidoVentaEditPageControllerState.saving(
-  //   PedidoVenta pedidoVentaLocal,
-  // ) = _saving;
+
   const factory PedidoVentaEditPageControllerState.savedError(
       Cliente? cliente,
       ClienteDireccion? clienteDireccion,

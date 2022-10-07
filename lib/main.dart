@@ -35,7 +35,11 @@ void main() async {
           backgroundColor: Colors.red,
           title: const Text('Ha ocurrido un error'),
         ),
-        body: Center(child: Text(detalles.toString())),
+        body: Center(
+          child: Text(
+            detalles.toString(),
+          ),
+        ),
       );
     };
   }, (Object error, StackTrace stack) {

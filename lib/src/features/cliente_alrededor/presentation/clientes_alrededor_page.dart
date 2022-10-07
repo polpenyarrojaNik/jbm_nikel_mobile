@@ -1,12 +1,14 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_cliente_alrededor_arg.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
@@ -268,8 +270,8 @@ class ClienteAlrededorDialog extends StatelessWidget {
           ),
           gapW4,
           IconButton(
-              onPressed: () => context.goNamed(AppRoutes.clienteshow.name,
-                  params: {'clienteId': cliente.id}),
+              onPressed: () => context.router
+                  .push(ClienteDetalleRoute(clienteId: cliente.id)),
               icon: const Icon(Icons.info))
         ],
       ),

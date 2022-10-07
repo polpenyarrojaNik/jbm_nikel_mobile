@@ -22,12 +22,6 @@ class UsuarioService {
   Future<Usuario?> getSignedInUsuario() async {
     final storedCredentials = await _localUsuarioRepository.read();
 
-    // if (storedCredentials != null) {
-    //   if (storedCredentials.canRefresh && storedCredentials.isExpired) {
-    //     _localUsuarioRepository.clear();
-    //     return null;
-    //   }
-    // }
     return storedCredentials?.toDomain();
   }
 

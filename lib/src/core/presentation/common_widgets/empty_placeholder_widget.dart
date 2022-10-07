@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/primary_button.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../routing/app_router.dart';
 
 /// Placeholder widget showing a message and CTA to go back to the home screen.
 class EmptyPlaceholderWidget extends StatelessWidget {
@@ -27,7 +25,7 @@ class EmptyPlaceholderWidget extends StatelessWidget {
             ),
             gapH32,
             PrimaryButton(
-              onPressed: () => context.goNamed(AppRoutes.clienteindex.name),
+              // onPressed: () => context.goNamed(AppRoutes.clienteindex.name),
               text: S.of(context).commonWidgets_emptyPlaceholder_irAIncio,
             )
           ],

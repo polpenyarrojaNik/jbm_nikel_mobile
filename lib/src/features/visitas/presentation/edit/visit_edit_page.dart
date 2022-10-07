@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/entity_id_is_local_param.dart';
@@ -78,23 +79,10 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           ref.invalidate(visitasSearchResultsProvider);
           context.showSuccessBar(
               content: Text(S.of(context).visitas_edit_visitaEditar_saved));
-          if (widget.isNew) {
-            context.goNamed(
-              AppRoutes.visitaindex.name,
-            );
-          } else {
-            context.goNamed(
-              AppRoutes.visitashow.name,
-              params: {
-                'id': (visita.id != null) ? visita.id! : visita.visitaAppId!
-              },
-              extra: visitaIdLocalParam!.isLocal,
-            );
-          }
+
+          context.router.pop();
         },
-        deleted: () => context.goNamed(
-          AppRoutes.visitaindex.name,
-        ),
+        deleted: () => context.router.popUntilRouteWithName('/visita'),
         savedError: (_, error, __) => context.showErrorBar(
             duration: const Duration(seconds: 5),
             content: Text((error is AppException)
@@ -323,7 +311,7 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   }
 
   void navigateToSearchClientes(BuildContext context) async {
-    context.goNamed(AppRoutes.visitanewsearchcliente.name);
+    context.router.push(ClienteListaRoute(isSearchClienteForFrom: true));
   }
 
   String setClienteValue(String clienteId, String? nombreCliente) {

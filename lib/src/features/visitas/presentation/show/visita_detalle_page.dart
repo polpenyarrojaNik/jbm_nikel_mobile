@@ -1,14 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/visita.dart';
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../infrastructure/visita_repository.dart';
@@ -93,6 +93,6 @@ class VisitaDetallePage extends ConsumerWidget {
   }
 
   void navigateToEditVisita(BuildContext context, String id) {
-    context.goNamed(AppRoutes.visitaedit.name, params: {'id': id});
+    context.router.push(VisitaEditRoute(id: id));
   }
 }

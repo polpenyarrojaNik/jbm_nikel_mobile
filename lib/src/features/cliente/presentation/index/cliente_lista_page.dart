@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
 
@@ -13,7 +15,6 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
-import '../../../../core/routing/app_router.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
@@ -151,22 +152,17 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   void navigateToClienteDetalle(
       {required BuildContext context, required String clienteId}) {
-    context.goNamed(
-      AppRoutes.clienteshow.name,
-      params: {'clienteId': clienteId},
-    );
+    context.router.push(ClienteDetalleRoute(clienteId: clienteId));
   }
 
   void selectClienteForFromPage(
       {required BuildContext context, required Cliente cliente}) {
     ref.read(clienteForFromStateProvider.notifier).state = cliente;
-    context.pop();
+    context.router.pop();
   }
 
   void navigateToClientesAlrededor(BuildContext context) {
-    context.goNamed(
-      AppRoutes.clientealrededor.name,
-    );
+    context.router.push(const ClientesAlrededorRoute());
   }
 
   Future<void> syncCustomerDb(WidgetRef ref) async {

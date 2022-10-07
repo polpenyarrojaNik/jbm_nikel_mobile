@@ -13,6 +13,7 @@ import 'login_page_controller.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});
+  // final Function(bool loggedIn) onLoginCallback;
   @override
   LoginPageState createState() => LoginPageState();
 }

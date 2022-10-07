@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_state.dart';
 
@@ -11,7 +13,6 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/routing/app_router.dart';
 
 class VisitaListaPage extends ConsumerStatefulWidget {
   const VisitaListaPage({super.key});
@@ -112,6 +113,6 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
   }
 
   void navigateToCreateVisitas() {
-    context.goNamed(AppRoutes.visitanew.name);
+    context.router.push(VisitaEditRoute());
   }
 }

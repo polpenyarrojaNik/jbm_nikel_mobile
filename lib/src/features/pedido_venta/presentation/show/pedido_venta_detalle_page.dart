@@ -1,6 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
@@ -13,7 +13,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
-import '../../../../core/routing/app_router.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
@@ -36,12 +36,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                 ? [
                     IconButton(
                       icon: const Icon(Icons.edit),
-                      onPressed: () => context.goNamed(
-                        AppRoutes.pedidoventaedit.name,
-                        params: {
-                          'id': pedidoVentaIdIsLocalParam.id,
-                        },
-                        extra: pedidoVentaIdIsLocalParam.isLocal,
+                      onPressed: () => context.router.push(
+                        PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
                       ),
                     ),
                   ]
@@ -159,6 +155,16 @@ class PedidoVentaInfoContainer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (pedidoVenta.pedidoCliente != null)
+          ColumnFieldTextDetalle(
+            fieldTitleValue: 'Pedido Cliente',
+            value: pedidoVenta.pedidoCliente,
+          ),
+        if (pedidoVenta.observaciones != null)
+          ColumnFieldTextDetalle(
+            fieldTitleValue: 'Observaciones',
+            value: pedidoVenta.observaciones,
+          ),
         ColumnFieldTextDetalle(
           fieldTitleValue:
               S.of(context).pedido_show_pedidoVentaDetalle_baseImponible,
