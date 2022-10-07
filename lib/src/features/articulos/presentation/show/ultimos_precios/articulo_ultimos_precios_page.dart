@@ -152,26 +152,40 @@ class UltimosPreciosTile extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                                ),
+                                if (ultimosPrecios.cantidad != null)
+                                  Text(numberFormatCantidades(
+                                      ultimosPrecios.cantidad!.toDouble())),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                      Text(
-                        formatPrecioYDescuento(
-                          precio: ultimosPrecios.precioDivisa,
-                          tipoPrecio: ultimosPrecios.tipoPrecio,
-                          descuento1: ultimosPrecios.descuento1,
-                          descuento2: ultimosPrecios.descuento2,
-                          descuento3: ultimosPrecios.descuento3,
-                        ),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
+                          ),
+                          Text(
+                            formatPrecioYDescuento(
+                              precio: ultimosPrecios.precioDivisa,
+                              tipoPrecio: ultimosPrecios.tipoPrecio,
+                              descuento1: ultimosPrecios.descuento1,
+                              descuento2: ultimosPrecios.descuento2,
+                              descuento3: ultimosPrecios.descuento3,
+                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2
+                                ?.copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption
+                                        ?.color),
+                          ),
+                        ],
                       ),
                     ],
                   ),

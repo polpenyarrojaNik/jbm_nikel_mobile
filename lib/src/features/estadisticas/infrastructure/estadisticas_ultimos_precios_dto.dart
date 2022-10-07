@@ -19,6 +19,7 @@ class EstadisticasUltimosPreciosDTO
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'LINEA') required int linea,
+    @JsonKey(name: 'CANTIDAD') int? cantidad,
     @JsonKey(name: 'FECHA') required DateTime fecha,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
@@ -39,6 +40,7 @@ class EstadisticasUltimosPreciosDTO
       nombreCliente: nombreCliente,
       articuloId: articuloId,
       linea: linea,
+      cantidad: cantidad,
       fecha: fecha,
       precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
       divisaId: divisaId,
@@ -57,6 +59,7 @@ class EstadisticasUltimosPreciosDTO
       clienteId: Value(clienteId),
       articuloId: Value(articuloId),
       linea: Value(linea),
+      cantidad: Value(cantidad),
       fecha: Value(fecha),
       precioDivisa: Value(precioDivisa),
       divisaId: Value(divisaId),
@@ -85,6 +88,7 @@ class EstadisticasUltimosPreciosTable extends Table {
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   IntColumn get linea => integer().named('LINEA')();
+  IntColumn get cantidad => integer().nullable().named('CANTIDAD')();
   DateTimeColumn get fecha => dateTime().named('FECHA')();
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
   RealColumn get tipoPrecio => real().named('TIPO_PRECIO')();

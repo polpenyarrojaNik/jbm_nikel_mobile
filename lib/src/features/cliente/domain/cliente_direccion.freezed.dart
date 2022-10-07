@@ -26,8 +26,8 @@ mixin _$ClienteDireccion {
   String? get provincia => throw _privateConstructorUsedError;
   Pais? get pais => throw _privateConstructorUsedError;
   double get latitud => throw _privateConstructorUsedError;
-  double get longitud =>
-      throw _privateConstructorUsedError; // required bool predeterminada,
+  double get longitud => throw _privateConstructorUsedError;
+  bool get predeterminada => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -53,6 +53,7 @@ abstract class $ClienteDireccionCopyWith<$Res> {
       Pais? pais,
       double latitud,
       double longitud,
+      bool predeterminada,
       DateTime lastUpdated,
       bool deleted});
 
@@ -81,6 +82,7 @@ class _$ClienteDireccionCopyWithImpl<$Res>
     Object? pais = freezed,
     Object? latitud = freezed,
     Object? longitud = freezed,
+    Object? predeterminada = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -129,6 +131,10 @@ class _$ClienteDireccionCopyWithImpl<$Res>
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
+      predeterminada: predeterminada == freezed
+          ? _value.predeterminada
+          : predeterminada // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -171,6 +177,7 @@ abstract class _$$_ClienteDireccionCopyWith<$Res>
       Pais? pais,
       double latitud,
       double longitud,
+      bool predeterminada,
       DateTime lastUpdated,
       bool deleted});
 
@@ -202,6 +209,7 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
     Object? pais = freezed,
     Object? latitud = freezed,
     Object? longitud = freezed,
+    Object? predeterminada = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -250,6 +258,10 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
+      predeterminada: predeterminada == freezed
+          ? _value.predeterminada
+          : predeterminada // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -277,6 +289,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
       this.pais,
       required this.latitud,
       required this.longitud,
+      required this.predeterminada,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -303,7 +316,8 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   final double latitud;
   @override
   final double longitud;
-// required bool predeterminada,
+  @override
+  final bool predeterminada;
   @override
   final DateTime lastUpdated;
   @override
@@ -311,7 +325,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
 
   @override
   String toString() {
-    return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, latitud: $latitud, longitud: $longitud, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -335,6 +349,8 @@ class _$_ClienteDireccion extends _ClienteDireccion {
             const DeepCollectionEquality().equals(other.latitud, latitud) &&
             const DeepCollectionEquality().equals(other.longitud, longitud) &&
             const DeepCollectionEquality()
+                .equals(other.predeterminada, predeterminada) &&
+            const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
@@ -353,6 +369,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
       const DeepCollectionEquality().hash(pais),
       const DeepCollectionEquality().hash(latitud),
       const DeepCollectionEquality().hash(longitud),
+      const DeepCollectionEquality().hash(predeterminada),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
 
@@ -375,6 +392,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
       final Pais? pais,
       required final double latitud,
       required final double longitud,
+      required final bool predeterminada,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClienteDireccion;
   const _ClienteDireccion._() : super._();
@@ -401,7 +419,9 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   double get latitud;
   @override
   double get longitud;
-  @override // required bool predeterminada,
+  @override
+  bool get predeterminada;
+  @override
   DateTime get lastUpdated;
   @override
   bool get deleted;

@@ -20,6 +20,7 @@ _$_ClienteDireccionDTO _$$_ClienteDireccionDTOFromJson(
       paisId: json['PAIS_ID'] as String?,
       latitud: (json['LATITUD'] as num).toDouble(),
       longitud: (json['LONGITUD'] as num).toDouble(),
+      predeterminada: json['PREDETERMINADA_SN'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -38,6 +39,7 @@ Map<String, dynamic> _$$_ClienteDireccionDTOToJson(
       'PAIS_ID': instance.paisId,
       'LATITUD': instance.latitud,
       'LONGITUD': instance.longitud,
+      'PREDETERMINADA_SN': instance.predeterminada,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

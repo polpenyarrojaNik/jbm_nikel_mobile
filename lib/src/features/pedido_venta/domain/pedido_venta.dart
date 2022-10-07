@@ -10,7 +10,7 @@ part 'pedido_venta.freezed.dart';
 class PedidoVenta with _$PedidoVenta {
   const PedidoVenta._();
   const factory PedidoVenta({
-    String? empresaId,
+    required String empresaId,
     String? pedidoVentaId,
     String? pedidoVentaAppId,
     String? usuarioId,

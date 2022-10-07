@@ -59,7 +59,7 @@ class VisitaLocalDTO
         latitud: latitud,
         longitud: longitud,
         visitaAppId: visitaAppId,
-        lastUpdated: DateTime.now(),
+        lastUpdated: DateTime.now().toUtc(),
         deleted: false,
         enviada: (enviada == 'S') ? true : false,
         tratada: (tratada == 'S') ? true : false,

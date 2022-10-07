@@ -16,6 +16,7 @@ import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
+import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
@@ -154,11 +155,11 @@ class PedidoVentaRepository {
     ]);
 
     return query.asyncMap((row) async {
-      final pedidoVentaDTO = row.readTable(_db.pedidoVentaLocalTable);
+      final pedidoVentaLocalDTO = row.readTable(_db.pedidoVentaLocalTable);
       final paisDTO = row.readTableOrNull(_db.paisTable);
       final divisaDTO = row.readTable(_db.divisaTable);
 
-      return pedidoVentaDTO.toDomain(
+      return pedidoVentaLocalDTO.toDomain(
         pais: paisDTO?.toDomain(),
         divisa: divisaDTO.toDomain(),
       );
@@ -349,7 +350,7 @@ class PedidoVentaRepository {
         .getSingle();
 
     final iva = await getIvaLinea(
-        articuloId: articuloId, clienteId: clienteId, fecha: DateTime.now());
+        articuloId: articuloId, clienteDto: clienteDto, fecha: DateTime.now());
 
     return ArticuloPrecio.crearNuevoArticuloPrecio(
       articuloId: articuloId,
@@ -368,22 +369,19 @@ class PedidoVentaRepository {
 
   Future<double> getIvaLinea({
     required String articuloId,
-    required String clienteId,
+    required ClienteDTO clienteDto,
     required DateTime fecha,
   }) async {
-    final query =
-        (_db.select(_db.clienteTable)..where((t) => t.id.equals(clienteId)));
-
-    final clienteDTO = await query.getSingle();
-
-    if (clienteDTO.extentoIva != null && clienteDTO.extentoIva == 'S') {
+    if (clienteDto.iva == 0) {
       return 0;
     } else {
-      //TODO   Return ivaCaluclado
+      final queryArticuloIva = await (_db.select(_db.articuloEmpresaIvaTable)
+            ..where((t) =>
+                t.empresaId.equals(clienteDto.empresaId) &
+                t.articuloId.equals(articuloId)))
+          .getSingle();
 
-      // return clienteDTO.ivaCalculado;
-
-      return 0;
+      return queryArticuloIva.iva;
     }
   }
 

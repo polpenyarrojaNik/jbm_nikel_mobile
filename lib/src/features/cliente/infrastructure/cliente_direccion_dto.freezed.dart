@@ -41,8 +41,9 @@ mixin _$ClienteDireccionDTO {
   @JsonKey(name: 'LATITUD')
   double get latitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD')
-  double get longitud =>
-      throw _privateConstructorUsedError; // @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
+  double get longitud => throw _privateConstructorUsedError;
+  @JsonKey(name: 'PREDETERMINADA_SN')
+  String? get predeterminada => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -71,6 +72,7 @@ abstract class $ClienteDireccionDTOCopyWith<$Res> {
       @JsonKey(name: 'PAIS_ID') String? paisId,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -97,6 +99,7 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res>
     Object? paisId = freezed,
     Object? latitud = freezed,
     Object? longitud = freezed,
+    Object? predeterminada = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -145,6 +148,10 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res>
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
+      predeterminada: predeterminada == freezed
+          ? _value.predeterminada
+          : predeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -176,6 +183,7 @@ abstract class _$$_ClienteDireccionDTOCopyWith<$Res>
       @JsonKey(name: 'PAIS_ID') String? paisId,
       @JsonKey(name: 'LATITUD') double latitud,
       @JsonKey(name: 'LONGITUD') double longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -204,6 +212,7 @@ class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
     Object? paisId = freezed,
     Object? latitud = freezed,
     Object? longitud = freezed,
+    Object? predeterminada = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
   }) {
@@ -252,6 +261,10 @@ class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
+      predeterminada: predeterminada == freezed
+          ? _value.predeterminada
+          : predeterminada // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -279,6 +292,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
       @JsonKey(name: 'PAIS_ID') this.paisId,
       @JsonKey(name: 'LATITUD') required this.latitud,
       @JsonKey(name: 'LONGITUD') required this.longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') this.predeterminada,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -319,7 +333,9 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
   @override
   @JsonKey(name: 'LONGITUD')
   final double longitud;
-// @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
+  @override
+  @JsonKey(name: 'PREDETERMINADA_SN')
+  final String? predeterminada;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -329,7 +345,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
 
   @override
   String toString() {
-    return 'ClienteDireccionDTO(clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, latitud: $latitud, longitud: $longitud, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDireccionDTO(clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -353,6 +369,8 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
             const DeepCollectionEquality().equals(other.latitud, latitud) &&
             const DeepCollectionEquality().equals(other.longitud, longitud) &&
             const DeepCollectionEquality()
+                .equals(other.predeterminada, predeterminada) &&
+            const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
@@ -372,6 +390,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
       const DeepCollectionEquality().hash(paisId),
       const DeepCollectionEquality().hash(latitud),
       const DeepCollectionEquality().hash(longitud),
+      const DeepCollectionEquality().hash(predeterminada),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
 
@@ -402,6 +421,7 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
       @JsonKey(name: 'PAIS_ID') final String? paisId,
       @JsonKey(name: 'LATITUD') required final double latitud,
       @JsonKey(name: 'LONGITUD') required final double longitud,
+      @JsonKey(name: 'PREDETERMINADA_SN') final String? predeterminada,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteDireccionDTO;
   const _ClienteDireccionDTO._() : super._();
@@ -442,7 +462,10 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   @override
   @JsonKey(name: 'LONGITUD')
   double get longitud;
-  @override // @JsonKey(name: 'PREDETERMINADA') required String predeterminada,
+  @override
+  @JsonKey(name: 'PREDETERMINADA_SN')
+  String? get predeterminada;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;
   @override

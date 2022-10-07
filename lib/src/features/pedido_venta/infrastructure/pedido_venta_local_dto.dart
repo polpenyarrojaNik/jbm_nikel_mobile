@@ -23,6 +23,7 @@ class PedidoVentaLocalDTO
   const factory PedidoVentaLocalDTO({
     @JsonKey(name: 'USUARIO_ID') String? usuarioId,
     @JsonKey(name: 'PEDIDO_APP_ID') required String pedidoVentaAppId,
+    @JsonKey(name: 'EMPRESA_ID') required String empresaId,
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
     @JsonKey(name: 'DIRECCION_ID') String? direccionId,
@@ -50,6 +51,7 @@ class PedidoVentaLocalDTO
     return PedidoVentaLocalDTO(
       usuarioId: _.usuarioId,
       pedidoVentaAppId: _.pedidoVentaAppId!,
+      empresaId: _.empresaId,
       fechaAlta: _.pedidoVentaDate,
       clienteId: _.clienteId!,
       direccionId: _.direccionId,
@@ -81,7 +83,8 @@ class PedidoVentaLocalDTO
     return PedidoVentaLocalDTO(
       usuarioId: usuarioId,
       pedidoVentaAppId: pedidoVentaAppId,
-      fechaAlta: DateTime.now(),
+      empresaId: cliente.empresaId,
+      fechaAlta: DateTime.now().toUtc(),
       clienteId: cliente.id,
       nombreCliente: cliente.nombreCliente,
       direccionId: clienteDireccion?.direccionId,
@@ -95,8 +98,7 @@ class PedidoVentaLocalDTO
       pedidoCliente: pedidoCliente,
       observaciones: observaciones,
       divisaId: cliente.divisa!.id,
-      // iva: cliente.iva,
-      iva: 21,
+      iva: cliente.iva,
       dtoBonificacion: 0,
       enviada: 'N',
       tratada: 'N',
@@ -112,7 +114,7 @@ class PedidoVentaLocalDTO
     double? total,
   }) {
     return PedidoVenta(
-      empresaId: null,
+      empresaId: empresaId,
       usuarioId: usuarioId,
       pedidoVentaId: null,
       pedidoVentaAppId: pedidoVentaAppId,
@@ -138,7 +140,7 @@ class PedidoVentaLocalDTO
       pedidoVentaEstado: null,
       oferta: null,
       descuentoProntoPago: null,
-      lastUpdated: DateTime.now(),
+      lastUpdated: DateTime.now().toUtc(),
       deleted: false,
       enviada: (enviada == 'S') ? true : false,
       tratada: (tratada == 'S') ? true : false,
@@ -151,6 +153,7 @@ class PedidoVentaLocalDTO
     return PedidoVentaLocalTableCompanion(
       usuarioId: Value(usuarioId),
       pedidoVentaAppId: Value(pedidoVentaAppId),
+      empresaId: Value(empresaId),
       fechaAlta: Value(fechaAlta),
       clienteId: Value(clienteId),
       direccionId: Value(direccionId),
@@ -177,6 +180,8 @@ class PedidoVentaLocalDTO
 class PedidoVentaLocalTable extends Table {
   TextColumn get usuarioId => text().nullable().named('USUARIO_ID')();
   TextColumn get pedidoVentaAppId => text().named('PEDIDO_APP_ID')();
+  TextColumn get empresaId => text().named('EMPRESA_ID')();
+
   DateTimeColumn get fechaAlta => dateTime().named('FECHA_ALTA')();
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get nombreCliente => text().nullable().named('NOMBRE_CLIENTE')();

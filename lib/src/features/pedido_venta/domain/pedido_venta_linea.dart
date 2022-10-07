@@ -58,7 +58,7 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
       stockDisponibleSN: stockDisponibleSN,
       iva: articuloPrecio.iva,
       importeLinea: Money.parse('0', code: articuloPrecio.divisaId),
-      lastUpdated: DateTime.now(),
+      lastUpdated: DateTime.now().toUtc(),
       deleted: false,
     );
   }

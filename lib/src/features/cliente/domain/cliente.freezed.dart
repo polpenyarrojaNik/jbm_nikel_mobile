@@ -28,9 +28,8 @@ mixin _$Cliente {
   Pais? get paisFiscal => throw _privateConstructorUsedError;
   double? get latitudFiscal => throw _privateConstructorUsedError;
   double? get longitudFiscal => throw _privateConstructorUsedError;
-  String? get empresaId => throw _privateConstructorUsedError;
-  double? get ivaEspecial => throw _privateConstructorUsedError;
-  String? get extentoIva => throw _privateConstructorUsedError;
+  String get empresaId => throw _privateConstructorUsedError;
+  double get iva => throw _privateConstructorUsedError;
   Money? get ventasAnyoActual => throw _privateConstructorUsedError;
   Money? get ventasAnyoAnterior => throw _privateConstructorUsedError;
   Money? get ventasHaceDosAnyos => throw _privateConstructorUsedError;
@@ -92,9 +91,8 @@ abstract class $ClienteCopyWith<$Res> {
       Pais? paisFiscal,
       double? latitudFiscal,
       double? longitudFiscal,
-      String? empresaId,
-      double? ivaEspecial,
-      String? extentoIva,
+      String empresaId,
+      double iva,
       Money? ventasAnyoActual,
       Money? ventasAnyoAnterior,
       Money? ventasHaceDosAnyos,
@@ -162,8 +160,7 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
     Object? latitudFiscal = freezed,
     Object? longitudFiscal = freezed,
     Object? empresaId = freezed,
-    Object? ivaEspecial = freezed,
-    Object? extentoIva = freezed,
+    Object? iva = freezed,
     Object? ventasAnyoActual = freezed,
     Object? ventasAnyoAnterior = freezed,
     Object? ventasHaceDosAnyos = freezed,
@@ -252,15 +249,11 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ivaEspecial: ivaEspecial == freezed
-          ? _value.ivaEspecial
-          : ivaEspecial // ignore: cast_nullable_to_non_nullable
-              as double?,
-      extentoIva: extentoIva == freezed
-          ? _value.extentoIva
-          : extentoIva // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -492,9 +485,8 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       Pais? paisFiscal,
       double? latitudFiscal,
       double? longitudFiscal,
-      String? empresaId,
-      double? ivaEspecial,
-      String? extentoIva,
+      String empresaId,
+      double iva,
       Money? ventasAnyoActual,
       Money? ventasAnyoAnterior,
       Money? ventasHaceDosAnyos,
@@ -569,8 +561,7 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
     Object? latitudFiscal = freezed,
     Object? longitudFiscal = freezed,
     Object? empresaId = freezed,
-    Object? ivaEspecial = freezed,
-    Object? extentoIva = freezed,
+    Object? iva = freezed,
     Object? ventasAnyoActual = freezed,
     Object? ventasAnyoAnterior = freezed,
     Object? ventasHaceDosAnyos = freezed,
@@ -659,15 +650,11 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ivaEspecial: ivaEspecial == freezed
-          ? _value.ivaEspecial
-          : ivaEspecial // ignore: cast_nullable_to_non_nullable
-              as double?,
-      extentoIva: extentoIva == freezed
-          ? _value.extentoIva
-          : extentoIva // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -828,9 +815,8 @@ class _$_Cliente extends _Cliente {
       this.paisFiscal,
       this.latitudFiscal,
       this.longitudFiscal,
-      this.empresaId,
-      this.ivaEspecial,
-      this.extentoIva,
+      required this.empresaId,
+      required this.iva,
       this.ventasAnyoActual,
       this.ventasAnyoAnterior,
       this.ventasHaceDosAnyos,
@@ -893,11 +879,9 @@ class _$_Cliente extends _Cliente {
   @override
   final double? longitudFiscal;
   @override
-  final String? empresaId;
+  final String empresaId;
   @override
-  final double? ivaEspecial;
-  @override
-  final String? extentoIva;
+  final double iva;
   @override
   final Money? ventasAnyoActual;
   @override
@@ -971,7 +955,7 @@ class _$_Cliente extends _Cliente {
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, ivaEspecial: $ivaEspecial, extentoIva: $extentoIva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1002,10 +986,7 @@ class _$_Cliente extends _Cliente {
             const DeepCollectionEquality()
                 .equals(other.longitudFiscal, longitudFiscal) &&
             const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
-            const DeepCollectionEquality()
-                .equals(other.ivaEspecial, ivaEspecial) &&
-            const DeepCollectionEquality()
-                .equals(other.extentoIva, extentoIva) &&
+            const DeepCollectionEquality().equals(other.iva, iva) &&
             const DeepCollectionEquality()
                 .equals(other.ventasAnyoActual, ventasAnyoActual) &&
             const DeepCollectionEquality()
@@ -1066,8 +1047,10 @@ class _$_Cliente extends _Cliente {
                 other.riesgoPendienteFacturar, riesgoPendienteFacturar) &&
             const DeepCollectionEquality()
                 .equals(other.obvservacionesInternas, obvservacionesInternas) &&
-            const DeepCollectionEquality().equals(other.clientePotencial, clientePotencial) &&
-            const DeepCollectionEquality().equals(other.clienteEstadoPotencial, clienteEstadoPotencial) &&
+            const DeepCollectionEquality()
+                .equals(other.clientePotencial, clientePotencial) &&
+            const DeepCollectionEquality()
+                .equals(other.clienteEstadoPotencial, clienteEstadoPotencial) &&
             const DeepCollectionEquality().equals(other.clienteTipoPotencial, clienteTipoPotencial) &&
             const DeepCollectionEquality().equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
@@ -1089,8 +1072,7 @@ class _$_Cliente extends _Cliente {
         const DeepCollectionEquality().hash(latitudFiscal),
         const DeepCollectionEquality().hash(longitudFiscal),
         const DeepCollectionEquality().hash(empresaId),
-        const DeepCollectionEquality().hash(ivaEspecial),
-        const DeepCollectionEquality().hash(extentoIva),
+        const DeepCollectionEquality().hash(iva),
         const DeepCollectionEquality().hash(ventasAnyoActual),
         const DeepCollectionEquality().hash(ventasAnyoAnterior),
         const DeepCollectionEquality().hash(ventasHaceDosAnyos),
@@ -1148,9 +1130,8 @@ abstract class _Cliente extends Cliente {
       final Pais? paisFiscal,
       final double? latitudFiscal,
       final double? longitudFiscal,
-      final String? empresaId,
-      final double? ivaEspecial,
-      final String? extentoIva,
+      required final String empresaId,
+      required final double iva,
       final Money? ventasAnyoActual,
       final Money? ventasAnyoAnterior,
       final Money? ventasHaceDosAnyos,
@@ -1213,11 +1194,9 @@ abstract class _Cliente extends Cliente {
   @override
   double? get longitudFiscal;
   @override
-  String? get empresaId;
+  String get empresaId;
   @override
-  double? get ivaEspecial;
-  @override
-  String? get extentoIva;
+  double get iva;
   @override
   Money? get ventasAnyoActual;
   @override

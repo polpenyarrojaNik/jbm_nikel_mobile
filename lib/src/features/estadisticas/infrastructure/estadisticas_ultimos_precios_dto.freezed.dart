@@ -27,6 +27,8 @@ mixin _$EstadisticasUltimosPreciosDTO {
   String get articuloId => throw _privateConstructorUsedError;
   @JsonKey(name: 'LINEA')
   int get linea => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CANTIDAD')
+  int? get cantidad => throw _privateConstructorUsedError;
   @JsonKey(name: 'FECHA')
   DateTime get fecha => throw _privateConstructorUsedError;
   @JsonKey(name: 'PRECIO_DIVISA')
@@ -62,6 +64,7 @@ abstract class $EstadisticasUltimosPreciosDTOCopyWith<$Res> {
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'LINEA') int linea,
+      @JsonKey(name: 'CANTIDAD') int? cantidad,
       @JsonKey(name: 'FECHA') DateTime fecha,
       @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
       @JsonKey(name: 'DIVISA_ID') String divisaId,
@@ -87,6 +90,7 @@ class _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
     Object? clienteId = freezed,
     Object? articuloId = freezed,
     Object? linea = freezed,
+    Object? cantidad = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
     Object? divisaId = freezed,
@@ -110,6 +114,10 @@ class _$EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
           ? _value.linea
           : linea // ignore: cast_nullable_to_non_nullable
               as int,
+      cantidad: cantidad == freezed
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int?,
       fecha: fecha == freezed
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
@@ -162,6 +170,7 @@ abstract class _$$_EstadisticasUltimosPreciosDTOCopyWith<$Res>
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'LINEA') int linea,
+      @JsonKey(name: 'CANTIDAD') int? cantidad,
       @JsonKey(name: 'FECHA') DateTime fecha,
       @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
       @JsonKey(name: 'DIVISA_ID') String divisaId,
@@ -191,6 +200,7 @@ class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
     Object? clienteId = freezed,
     Object? articuloId = freezed,
     Object? linea = freezed,
+    Object? cantidad = freezed,
     Object? fecha = freezed,
     Object? precioDivisa = freezed,
     Object? divisaId = freezed,
@@ -214,6 +224,10 @@ class __$$_EstadisticasUltimosPreciosDTOCopyWithImpl<$Res>
           ? _value.linea
           : linea // ignore: cast_nullable_to_non_nullable
               as int,
+      cantidad: cantidad == freezed
+          ? _value.cantidad
+          : cantidad // ignore: cast_nullable_to_non_nullable
+              as int?,
       fecha: fecha == freezed
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
@@ -261,6 +275,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'LINEA') required this.linea,
+      @JsonKey(name: 'CANTIDAD') this.cantidad,
       @JsonKey(name: 'FECHA') required this.fecha,
       @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
       @JsonKey(name: 'DIVISA_ID') required this.divisaId,
@@ -285,6 +300,9 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
   @override
   @JsonKey(name: 'LINEA')
   final int linea;
+  @override
+  @JsonKey(name: 'CANTIDAD')
+  final int? cantidad;
   @override
   @JsonKey(name: 'FECHA')
   final DateTime fecha;
@@ -315,7 +333,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
 
   @override
   String toString() {
-    return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, linea: $linea, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasUltimosPreciosDTO(clienteId: $clienteId, articuloId: $articuloId, linea: $linea, cantidad: $cantidad, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -327,6 +345,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality().equals(other.linea, linea) &&
+            const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
             const DeepCollectionEquality().equals(other.fecha, fecha) &&
             const DeepCollectionEquality()
                 .equals(other.precioDivisa, precioDivisa) &&
@@ -351,6 +370,7 @@ class _$_EstadisticasUltimosPreciosDTO extends _EstadisticasUltimosPreciosDTO {
       const DeepCollectionEquality().hash(clienteId),
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(linea),
+      const DeepCollectionEquality().hash(cantidad),
       const DeepCollectionEquality().hash(fecha),
       const DeepCollectionEquality().hash(precioDivisa),
       const DeepCollectionEquality().hash(divisaId),
@@ -381,6 +401,7 @@ abstract class _EstadisticasUltimosPreciosDTO
           {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
           @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
           @JsonKey(name: 'LINEA') required final int linea,
+          @JsonKey(name: 'CANTIDAD') final int? cantidad,
           @JsonKey(name: 'FECHA') required final DateTime fecha,
           @JsonKey(name: 'PRECIO_DIVISA') required final double precioDivisa,
           @JsonKey(name: 'DIVISA_ID') required final String divisaId,
@@ -405,6 +426,9 @@ abstract class _EstadisticasUltimosPreciosDTO
   @override
   @JsonKey(name: 'LINEA')
   int get linea;
+  @override
+  @JsonKey(name: 'CANTIDAD')
+  int? get cantidad;
   @override
   @JsonKey(name: 'FECHA')
   DateTime get fecha;

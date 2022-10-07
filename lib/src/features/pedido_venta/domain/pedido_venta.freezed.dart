@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PedidoVenta {
-  String? get empresaId => throw _privateConstructorUsedError;
+  String get empresaId => throw _privateConstructorUsedError;
   String? get pedidoVentaId => throw _privateConstructorUsedError;
   String? get pedidoVentaAppId => throw _privateConstructorUsedError;
   String? get usuarioId => throw _privateConstructorUsedError;
@@ -60,7 +60,7 @@ abstract class $PedidoVentaCopyWith<$Res> {
           PedidoVenta value, $Res Function(PedidoVenta) then) =
       _$PedidoVentaCopyWithImpl<$Res>;
   $Res call(
-      {String? empresaId,
+      {String empresaId,
       String? pedidoVentaId,
       String? pedidoVentaAppId,
       String? usuarioId,
@@ -143,7 +143,7 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       pedidoVentaId: pedidoVentaId == freezed
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
@@ -305,7 +305,7 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       __$$_PedidoVentaCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String? empresaId,
+      {String empresaId,
       String? pedidoVentaId,
       String? pedidoVentaAppId,
       String? usuarioId,
@@ -393,7 +393,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       pedidoVentaId: pedidoVentaId == freezed
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
@@ -522,7 +522,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
 
 class _$_PedidoVenta extends _PedidoVenta {
   const _$_PedidoVenta(
-      {this.empresaId,
+      {required this.empresaId,
       this.pedidoVentaId,
       this.pedidoVentaAppId,
       this.usuarioId,
@@ -556,7 +556,7 @@ class _$_PedidoVenta extends _PedidoVenta {
       : super._();
 
   @override
-  final String? empresaId;
+  final String empresaId;
   @override
   final String? pedidoVentaId;
   @override
@@ -722,7 +722,7 @@ class _$_PedidoVenta extends _PedidoVenta {
 
 abstract class _PedidoVenta extends PedidoVenta {
   const factory _PedidoVenta(
-      {final String? empresaId,
+      {required final String empresaId,
       final String? pedidoVentaId,
       final String? pedidoVentaAppId,
       final String? usuarioId,
@@ -756,7 +756,7 @@ abstract class _PedidoVenta extends PedidoVenta {
   const _PedidoVenta._() : super._();
 
   @override
-  String? get empresaId;
+  String get empresaId;
   @override
   String? get pedidoVentaId;
   @override

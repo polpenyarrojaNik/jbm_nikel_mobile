@@ -393,28 +393,15 @@ class _StepSelectClienteContentState
       ref.listen<AsyncValue<List<ClienteDireccion>>>(
           clienteDireccionProvider(widget.cliente!.id), (_, state) {
         state.whenData((clienteDireccionesList) {
-          if (clienteDireccionesList.length == 1) {
-            ref
-                .read(pedidoVentaEditPageControllerProvider(
-                        widget.pedidoVentaIdLocalParam)
-                    .notifier)
-                .selectDireccion(clienteDireccion: clienteDireccionesList[0]);
+          for (var i = 0; i < clienteDireccionesList.length; i++) {
+            if (clienteDireccionesList[i].predeterminada) {
+              ref
+                  .read(pedidoVentaEditPageControllerProvider(
+                          widget.pedidoVentaIdLocalParam)
+                      .notifier)
+                  .selectDireccion(clienteDireccion: clienteDireccionesList[i]);
+            }
           }
-          //TODO descomentar
-//            else {
-
-//  for (var i = 0; i < clienteDireccionesList.length; i++) {
-
-//           if (clienteDireccionesList[i].predeterminada) {
-//             ref
-//                 .read(pedidoVentaEditPageControllerProvider(
-//                         widget.pedidoVentaIdLocalParam)
-//                     .notifier)
-//                 .selectDireccion(
-//                     clienteDireccion: clienteDireccionesList[i]);
-//           }
-//             }
-//           }
         });
       });
       final state = ref.watch(clienteDireccionProvider(widget.cliente!.id));

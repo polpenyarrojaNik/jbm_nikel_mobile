@@ -196,7 +196,6 @@ class VisitaRepository {
 
   Future<List<Visita>> getVisitasLocal(
       {required String searchText, required String usuarioId}) async {
-    //TODO filtre searchtext com pedidos
     final query = _db.select(_db.visitaLocalTable).join([
       innerJoin(
         _db.clienteUsuarioTable,

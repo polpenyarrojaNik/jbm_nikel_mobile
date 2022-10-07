@@ -3957,8 +3957,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<double?> latitudFiscal;
   final Value<double?> longitudFiscal;
   final Value<String> empresaId;
-  final Value<double?> ivaEspecial;
-  final Value<String?> extentoIva;
+  final Value<double> iva;
   final Value<double?> ventasAnyoActual;
   final Value<double?> ventasAnyoAnterior;
   final Value<double?> ventasHaceDosAnyos;
@@ -4007,8 +4006,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.latitudFiscal = const Value.absent(),
     this.longitudFiscal = const Value.absent(),
     this.empresaId = const Value.absent(),
-    this.ivaEspecial = const Value.absent(),
-    this.extentoIva = const Value.absent(),
+    this.iva = const Value.absent(),
     this.ventasAnyoActual = const Value.absent(),
     this.ventasAnyoAnterior = const Value.absent(),
     this.ventasHaceDosAnyos = const Value.absent(),
@@ -4058,8 +4056,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.latitudFiscal = const Value.absent(),
     this.longitudFiscal = const Value.absent(),
     required String empresaId,
-    this.ivaEspecial = const Value.absent(),
-    this.extentoIva = const Value.absent(),
+    required double iva,
     this.ventasAnyoActual = const Value.absent(),
     this.ventasAnyoAnterior = const Value.absent(),
     this.ventasHaceDosAnyos = const Value.absent(),
@@ -4096,6 +4093,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.deleted = const Value.absent(),
   })  : id = Value(id),
         empresaId = Value(empresaId),
+        iva = Value(iva),
         tipoCalucloPrecio = Value(tipoCalucloPrecio),
         descuentoProntoPago = Value(descuentoProntoPago),
         riesgoConcedidoInterno = Value(riesgoConcedidoInterno),
@@ -4115,8 +4113,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<double>? latitudFiscal,
     Expression<double>? longitudFiscal,
     Expression<String>? empresaId,
-    Expression<double>? ivaEspecial,
-    Expression<String>? extentoIva,
+    Expression<double>? iva,
     Expression<double>? ventasAnyoActual,
     Expression<double>? ventasAnyoAnterior,
     Expression<double>? ventasHaceDosAnyos,
@@ -4167,8 +4164,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       if (latitudFiscal != null) 'LATITUD_FISCAL': latitudFiscal,
       if (longitudFiscal != null) 'LONGITUD_FISCAL': longitudFiscal,
       if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (ivaEspecial != null) 'IVA_ESPECIAL': ivaEspecial,
-      if (extentoIva != null) 'IVA_EXENTO': extentoIva,
+      if (iva != null) 'IVA': iva,
       if (ventasAnyoActual != null) 'VENTAS_ANYO_ACTUAL': ventasAnyoActual,
       if (ventasAnyoAnterior != null)
         'VENTAS_ANYO_ANTERIOR': ventasAnyoAnterior,
@@ -4238,8 +4234,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<double?>? latitudFiscal,
       Value<double?>? longitudFiscal,
       Value<String>? empresaId,
-      Value<double?>? ivaEspecial,
-      Value<String?>? extentoIva,
+      Value<double>? iva,
       Value<double?>? ventasAnyoActual,
       Value<double?>? ventasAnyoAnterior,
       Value<double?>? ventasHaceDosAnyos,
@@ -4288,8 +4283,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       latitudFiscal: latitudFiscal ?? this.latitudFiscal,
       longitudFiscal: longitudFiscal ?? this.longitudFiscal,
       empresaId: empresaId ?? this.empresaId,
-      ivaEspecial: ivaEspecial ?? this.ivaEspecial,
-      extentoIva: extentoIva ?? this.extentoIva,
+      iva: iva ?? this.iva,
       ventasAnyoActual: ventasAnyoActual ?? this.ventasAnyoActual,
       ventasAnyoAnterior: ventasAnyoAnterior ?? this.ventasAnyoAnterior,
       ventasHaceDosAnyos: ventasHaceDosAnyos ?? this.ventasHaceDosAnyos,
@@ -4380,11 +4374,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (empresaId.present) {
       map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (ivaEspecial.present) {
-      map['IVA_ESPECIAL'] = Variable<double>(ivaEspecial.value);
-    }
-    if (extentoIva.present) {
-      map['IVA_EXENTO'] = Variable<String>(extentoIva.value);
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
     }
     if (ventasAnyoActual.present) {
       map['VENTAS_ANYO_ACTUAL'] = Variable<double>(ventasAnyoActual.value);
@@ -4519,8 +4510,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('latitudFiscal: $latitudFiscal, ')
           ..write('longitudFiscal: $longitudFiscal, ')
           ..write('empresaId: $empresaId, ')
-          ..write('ivaEspecial: $ivaEspecial, ')
-          ..write('extentoIva: $extentoIva, ')
+          ..write('iva: $iva, ')
           ..write('ventasAnyoActual: $ventasAnyoActual, ')
           ..write('ventasAnyoAnterior: $ventasAnyoAnterior, ')
           ..write('ventasHaceDosAnyos: $ventasHaceDosAnyos, ')
@@ -4644,17 +4634,11 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _ivaEspecialMeta =
-      const VerificationMeta('ivaEspecial');
+  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
-  late final GeneratedColumn<double> ivaEspecial = GeneratedColumn<double>(
-      'IVA_ESPECIAL', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _extentoIvaMeta = const VerificationMeta('extentoIva');
-  @override
-  late final GeneratedColumn<String> extentoIva = GeneratedColumn<String>(
-      'IVA_EXENTO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+  late final GeneratedColumn<double> iva = GeneratedColumn<double>(
+      'IVA', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _ventasAnyoActualMeta =
       const VerificationMeta('ventasAnyoActual');
   @override
@@ -4883,8 +4867,7 @@ class $ClienteTableTable extends ClienteTable
         latitudFiscal,
         longitudFiscal,
         empresaId,
-        ivaEspecial,
-        extentoIva,
+        iva,
         ventasAnyoActual,
         ventasAnyoAnterior,
         ventasHaceDosAnyos,
@@ -5005,17 +4988,11 @@ class $ClienteTableTable extends ClienteTable
     } else if (isInserting) {
       context.missing(_empresaIdMeta);
     }
-    if (data.containsKey('IVA_ESPECIAL')) {
+    if (data.containsKey('IVA')) {
       context.handle(
-          _ivaEspecialMeta,
-          ivaEspecial.isAcceptableOrUnknown(
-              data['IVA_ESPECIAL']!, _ivaEspecialMeta));
-    }
-    if (data.containsKey('IVA_EXENTO')) {
-      context.handle(
-          _extentoIvaMeta,
-          extentoIva.isAcceptableOrUnknown(
-              data['IVA_EXENTO']!, _extentoIvaMeta));
+          _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
+    } else if (isInserting) {
+      context.missing(_ivaMeta);
     }
     if (data.containsKey('VENTAS_ANYO_ACTUAL')) {
       context.handle(
@@ -5264,10 +5241,8 @@ class $ClienteTableTable extends ClienteTable
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD_FISCAL']),
       empresaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      ivaEspecial: attachedDatabase.options.types
-          .read(DriftSqlType.double, data['${effectivePrefix}IVA_ESPECIAL']),
-      extentoIva: attachedDatabase.options.types
-          .read(DriftSqlType.string, data['${effectivePrefix}IVA_EXENTO']),
+      iva: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
       ventasAnyoActual: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ACTUAL']),
       ventasAnyoAnterior: attachedDatabase.options.types.read(
@@ -7466,6 +7441,7 @@ class ClienteDireccionTableCompanion
   final Value<String?> paisId;
   final Value<double> latitud;
   final Value<double> longitud;
+  final Value<String?> predeterminada;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ClienteDireccionTableCompanion({
@@ -7480,6 +7456,7 @@ class ClienteDireccionTableCompanion
     this.paisId = const Value.absent(),
     this.latitud = const Value.absent(),
     this.longitud = const Value.absent(),
+    this.predeterminada = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -7495,6 +7472,7 @@ class ClienteDireccionTableCompanion
     this.paisId = const Value.absent(),
     required double latitud,
     required double longitud,
+    this.predeterminada = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
@@ -7514,6 +7492,7 @@ class ClienteDireccionTableCompanion
     Expression<String>? paisId,
     Expression<double>? latitud,
     Expression<double>? longitud,
+    Expression<String>? predeterminada,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -7529,6 +7508,7 @@ class ClienteDireccionTableCompanion
       if (paisId != null) 'PAIS_ID': paisId,
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
+      if (predeterminada != null) 'PREDETERMINADA_SN': predeterminada,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -7546,6 +7526,7 @@ class ClienteDireccionTableCompanion
       Value<String?>? paisId,
       Value<double>? latitud,
       Value<double>? longitud,
+      Value<String?>? predeterminada,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ClienteDireccionTableCompanion(
@@ -7560,6 +7541,7 @@ class ClienteDireccionTableCompanion
       paisId: paisId ?? this.paisId,
       latitud: latitud ?? this.latitud,
       longitud: longitud ?? this.longitud,
+      predeterminada: predeterminada ?? this.predeterminada,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -7601,6 +7583,9 @@ class ClienteDireccionTableCompanion
     if (longitud.present) {
       map['LONGITUD'] = Variable<double>(longitud.value);
     }
+    if (predeterminada.present) {
+      map['PREDETERMINADA_SN'] = Variable<String>(predeterminada.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -7624,6 +7609,7 @@ class ClienteDireccionTableCompanion
           ..write('paisId: $paisId, ')
           ..write('latitud: $latitud, ')
           ..write('longitud: $longitud, ')
+          ..write('predeterminada: $predeterminada, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -7696,6 +7682,12 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _predeterminadaMeta =
+      const VerificationMeta('predeterminada');
+  @override
+  late final GeneratedColumn<String> predeterminada = GeneratedColumn<String>(
+      'PREDETERMINADA_SN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -7722,6 +7714,7 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
         paisId,
         latitud,
         longitud,
+        predeterminada,
         lastUpdated,
         deleted
       ];
@@ -7795,6 +7788,12 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
     } else if (isInserting) {
       context.missing(_longitudMeta);
     }
+    if (data.containsKey('PREDETERMINADA_SN')) {
+      context.handle(
+          _predeterminadaMeta,
+          predeterminada.isAcceptableOrUnknown(
+              data['PREDETERMINADA_SN']!, _predeterminadaMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -7838,6 +7837,8 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
       longitud: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
+      predeterminada: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}PREDETERMINADA_SN']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -13467,6 +13468,7 @@ class EstadisticasUltimosPreciosTableCompanion
   final Value<String> clienteId;
   final Value<String> articuloId;
   final Value<int> linea;
+  final Value<int?> cantidad;
   final Value<DateTime> fecha;
   final Value<double> precioDivisa;
   final Value<double> tipoPrecio;
@@ -13480,6 +13482,7 @@ class EstadisticasUltimosPreciosTableCompanion
     this.clienteId = const Value.absent(),
     this.articuloId = const Value.absent(),
     this.linea = const Value.absent(),
+    this.cantidad = const Value.absent(),
     this.fecha = const Value.absent(),
     this.precioDivisa = const Value.absent(),
     this.tipoPrecio = const Value.absent(),
@@ -13494,6 +13497,7 @@ class EstadisticasUltimosPreciosTableCompanion
     required String clienteId,
     required String articuloId,
     required int linea,
+    this.cantidad = const Value.absent(),
     required DateTime fecha,
     required double precioDivisa,
     required double tipoPrecio,
@@ -13518,6 +13522,7 @@ class EstadisticasUltimosPreciosTableCompanion
     Expression<String>? clienteId,
     Expression<String>? articuloId,
     Expression<int>? linea,
+    Expression<int>? cantidad,
     Expression<DateTime>? fecha,
     Expression<double>? precioDivisa,
     Expression<double>? tipoPrecio,
@@ -13532,6 +13537,7 @@ class EstadisticasUltimosPreciosTableCompanion
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (linea != null) 'LINEA': linea,
+      if (cantidad != null) 'CANTIDAD': cantidad,
       if (fecha != null) 'FECHA': fecha,
       if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
@@ -13548,6 +13554,7 @@ class EstadisticasUltimosPreciosTableCompanion
       {Value<String>? clienteId,
       Value<String>? articuloId,
       Value<int>? linea,
+      Value<int?>? cantidad,
       Value<DateTime>? fecha,
       Value<double>? precioDivisa,
       Value<double>? tipoPrecio,
@@ -13561,6 +13568,7 @@ class EstadisticasUltimosPreciosTableCompanion
       clienteId: clienteId ?? this.clienteId,
       articuloId: articuloId ?? this.articuloId,
       linea: linea ?? this.linea,
+      cantidad: cantidad ?? this.cantidad,
       fecha: fecha ?? this.fecha,
       precioDivisa: precioDivisa ?? this.precioDivisa,
       tipoPrecio: tipoPrecio ?? this.tipoPrecio,
@@ -13584,6 +13592,9 @@ class EstadisticasUltimosPreciosTableCompanion
     }
     if (linea.present) {
       map['LINEA'] = Variable<int>(linea.value);
+    }
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
@@ -13621,6 +13632,7 @@ class EstadisticasUltimosPreciosTableCompanion
           ..write('clienteId: $clienteId, ')
           ..write('articuloId: $articuloId, ')
           ..write('linea: $linea, ')
+          ..write('cantidad: $cantidad, ')
           ..write('fecha: $fecha, ')
           ..write('precioDivisa: $precioDivisa, ')
           ..write('tipoPrecio: $tipoPrecio, ')
@@ -13659,6 +13671,11 @@ class $EstadisticasUltimosPreciosTableTable
   late final GeneratedColumn<int> linea = GeneratedColumn<int>(
       'LINEA', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
+  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  @override
+  late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
+      'CANTIDAD', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
@@ -13713,6 +13730,7 @@ class $EstadisticasUltimosPreciosTableTable
         clienteId,
         articuloId,
         linea,
+        cantidad,
         fecha,
         precioDivisa,
         tipoPrecio,
@@ -13752,6 +13770,10 @@ class $EstadisticasUltimosPreciosTableTable
           _lineaMeta, linea.isAcceptableOrUnknown(data['LINEA']!, _lineaMeta));
     } else if (isInserting) {
       context.missing(_lineaMeta);
+    }
+    if (data.containsKey('CANTIDAD')) {
+      context.handle(_cantidadMeta,
+          cantidad.isAcceptableOrUnknown(data['CANTIDAD']!, _cantidadMeta));
     }
     if (data.containsKey('FECHA')) {
       context.handle(
@@ -13833,6 +13855,8 @@ class $EstadisticasUltimosPreciosTableTable
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
       linea: attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}LINEA'])!,
+      cantidad: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD']),
       fecha: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
       precioDivisa: attachedDatabase.options.types
@@ -15008,6 +15032,7 @@ class PedidoVentaLocalTableCompanion
     extends UpdateCompanion<PedidoVentaLocalDTO> {
   final Value<String?> usuarioId;
   final Value<String> pedidoVentaAppId;
+  final Value<String> empresaId;
   final Value<DateTime> fechaAlta;
   final Value<String> clienteId;
   final Value<String?> nombreCliente;
@@ -15029,6 +15054,7 @@ class PedidoVentaLocalTableCompanion
   const PedidoVentaLocalTableCompanion({
     this.usuarioId = const Value.absent(),
     this.pedidoVentaAppId = const Value.absent(),
+    this.empresaId = const Value.absent(),
     this.fechaAlta = const Value.absent(),
     this.clienteId = const Value.absent(),
     this.nombreCliente = const Value.absent(),
@@ -15051,6 +15077,7 @@ class PedidoVentaLocalTableCompanion
   PedidoVentaLocalTableCompanion.insert({
     this.usuarioId = const Value.absent(),
     required String pedidoVentaAppId,
+    required String empresaId,
     required DateTime fechaAlta,
     required String clienteId,
     this.nombreCliente = const Value.absent(),
@@ -15070,6 +15097,7 @@ class PedidoVentaLocalTableCompanion
     this.tratada = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
+        empresaId = Value(empresaId),
         fechaAlta = Value(fechaAlta),
         clienteId = Value(clienteId),
         iva = Value(iva),
@@ -15077,6 +15105,7 @@ class PedidoVentaLocalTableCompanion
   static Insertable<PedidoVentaLocalDTO> custom({
     Expression<String>? usuarioId,
     Expression<String>? pedidoVentaAppId,
+    Expression<String>? empresaId,
     Expression<DateTime>? fechaAlta,
     Expression<String>? clienteId,
     Expression<String>? nombreCliente,
@@ -15099,6 +15128,7 @@ class PedidoVentaLocalTableCompanion
     return RawValuesInsertable({
       if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
       if (fechaAlta != null) 'FECHA_ALTA': fechaAlta,
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (nombreCliente != null) 'NOMBRE_CLIENTE': nombreCliente,
@@ -15123,6 +15153,7 @@ class PedidoVentaLocalTableCompanion
   PedidoVentaLocalTableCompanion copyWith(
       {Value<String?>? usuarioId,
       Value<String>? pedidoVentaAppId,
+      Value<String>? empresaId,
       Value<DateTime>? fechaAlta,
       Value<String>? clienteId,
       Value<String?>? nombreCliente,
@@ -15144,6 +15175,7 @@ class PedidoVentaLocalTableCompanion
     return PedidoVentaLocalTableCompanion(
       usuarioId: usuarioId ?? this.usuarioId,
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
+      empresaId: empresaId ?? this.empresaId,
       fechaAlta: fechaAlta ?? this.fechaAlta,
       clienteId: clienteId ?? this.clienteId,
       nombreCliente: nombreCliente ?? this.nombreCliente,
@@ -15173,6 +15205,9 @@ class PedidoVentaLocalTableCompanion
     }
     if (pedidoVentaAppId.present) {
       map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    }
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
     if (fechaAlta.present) {
       map['FECHA_ALTA'] = Variable<DateTime>(fechaAlta.value);
@@ -15236,6 +15271,7 @@ class PedidoVentaLocalTableCompanion
     return (StringBuffer('PedidoVentaLocalTableCompanion(')
           ..write('usuarioId: $usuarioId, ')
           ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
+          ..write('empresaId: $empresaId, ')
           ..write('fechaAlta: $fechaAlta, ')
           ..write('clienteId: $clienteId, ')
           ..write('nombreCliente: $nombreCliente, ')
@@ -15275,6 +15311,11 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   @override
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
       'PEDIDO_APP_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+      'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _fechaAltaMeta = const VerificationMeta('fechaAlta');
   @override
@@ -15385,6 +15426,7 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   List<GeneratedColumn> get $columns => [
         usuarioId,
         pedidoVentaAppId,
+        empresaId,
         fechaAlta,
         clienteId,
         nombreCliente,
@@ -15425,6 +15467,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
               data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
     } else if (isInserting) {
       context.missing(_pedidoVentaAppIdMeta);
+    }
+    if (data.containsKey('EMPRESA_ID')) {
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
     }
     if (data.containsKey('FECHA_ALTA')) {
       context.handle(_fechaAltaMeta,
@@ -15537,6 +15585,8 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
           .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID']),
       pedidoVentaAppId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
+      empresaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
       clienteId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       nombreCliente: attachedDatabase.options.types

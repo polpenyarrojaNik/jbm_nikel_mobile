@@ -38,8 +38,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'LATITUD_FISCAL') double? latitudFiscal,
     @JsonKey(name: 'LONGITUD_FISCAL') double? longitudFiscal,
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
-    @JsonKey(name: 'IVA_ESPECIAL') double? ivaEspecial,
-    @JsonKey(name: 'IVA_EXENTO') String? extentoIva,
+    @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double? ventasAnyoActual,
     @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double? ventasAnyoAnterior,
     @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double? ventasHaceDosAnyos,
@@ -109,8 +108,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       latitudFiscal: latitudFiscal,
       longitudFiscal: longitudFiscal,
       empresaId: empresaId,
-      ivaEspecial: ivaEspecial,
-      extentoIva: extentoIva,
+      iva: iva,
       ventasAnyoActual:
           ventasAnyoActual?.parseMoney(ventasAnyoActual!, divisaId),
       ventasAnyoAnterior:
@@ -179,7 +177,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       latitudFiscal: Value(latitudFiscal),
       longitudFiscal: Value(longitudFiscal),
       empresaId: Value(empresaId),
-      ivaEspecial: Value(ivaEspecial),
+      iva: Value(iva),
       ventasAnyoActual: Value(ventasAnyoActual),
       ventasAnyoAnterior: Value(ventasAnyoAnterior),
       ventasHaceDosAnyos: Value(ventasHaceDosAnyos),
@@ -259,8 +257,7 @@ class ClienteTable extends Table {
   RealColumn get latitudFiscal => real().nullable().named('LATITUD_FISCAL')();
   RealColumn get longitudFiscal => real().nullable().named('LONGITUD_FISCAL')();
   TextColumn get empresaId => text().named('EMPRESA_ID')();
-  RealColumn get ivaEspecial => real().nullable().named('IVA_ESPECIAL')();
-  TextColumn get extentoIva => text().nullable().named('IVA_EXENTO')();
+  RealColumn get iva => real().named('IVA')();
   RealColumn get ventasAnyoActual =>
       real().nullable().named('VENTAS_ANYO_ACTUAL')();
   RealColumn get ventasAnyoAnterior =>

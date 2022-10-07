@@ -46,10 +46,8 @@ mixin _$ClienteDTO {
   double? get longitudFiscal => throw _privateConstructorUsedError;
   @JsonKey(name: 'EMPRESA_ID')
   String get empresaId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'IVA_ESPECIAL')
-  double? get ivaEspecial => throw _privateConstructorUsedError;
-  @JsonKey(name: 'IVA_EXENTO')
-  String? get extentoIva => throw _privateConstructorUsedError;
+  @JsonKey(name: 'IVA')
+  double get iva => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
   double? get ventasAnyoActual => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
@@ -159,10 +157,8 @@ abstract class $ClienteDTOCopyWith<$Res> {
           double? longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           String empresaId,
-      @JsonKey(name: 'IVA_ESPECIAL')
-          double? ivaEspecial,
-      @JsonKey(name: 'IVA_EXENTO')
-          String? extentoIva,
+      @JsonKey(name: 'IVA')
+          double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
           double? ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
@@ -256,8 +252,7 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
     Object? latitudFiscal = freezed,
     Object? longitudFiscal = freezed,
     Object? empresaId = freezed,
-    Object? ivaEspecial = freezed,
-    Object? extentoIva = freezed,
+    Object? iva = freezed,
     Object? ventasAnyoActual = freezed,
     Object? ventasAnyoAnterior = freezed,
     Object? ventasHaceDosAnyos = freezed,
@@ -346,14 +341,10 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String,
-      ivaEspecial: ivaEspecial == freezed
-          ? _value.ivaEspecial
-          : ivaEspecial // ignore: cast_nullable_to_non_nullable
-              as double?,
-      extentoIva: extentoIva == freezed
-          ? _value.extentoIva
-          : extentoIva // ignore: cast_nullable_to_non_nullable
-              as String?,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -528,10 +519,8 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
           double? longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           String empresaId,
-      @JsonKey(name: 'IVA_ESPECIAL')
-          double? ivaEspecial,
-      @JsonKey(name: 'IVA_EXENTO')
-          String? extentoIva,
+      @JsonKey(name: 'IVA')
+          double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
           double? ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
@@ -627,8 +616,7 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
     Object? latitudFiscal = freezed,
     Object? longitudFiscal = freezed,
     Object? empresaId = freezed,
-    Object? ivaEspecial = freezed,
-    Object? extentoIva = freezed,
+    Object? iva = freezed,
     Object? ventasAnyoActual = freezed,
     Object? ventasAnyoAnterior = freezed,
     Object? ventasHaceDosAnyos = freezed,
@@ -717,14 +705,10 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String,
-      ivaEspecial: ivaEspecial == freezed
-          ? _value.ivaEspecial
-          : ivaEspecial // ignore: cast_nullable_to_non_nullable
-              as double?,
-      extentoIva: extentoIva == freezed
-          ? _value.extentoIva
-          : extentoIva // ignore: cast_nullable_to_non_nullable
-              as String?,
+      iva: iva == freezed
+          ? _value.iva
+          : iva // ignore: cast_nullable_to_non_nullable
+              as double,
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
@@ -895,10 +879,8 @@ class _$_ClienteDTO extends _ClienteDTO {
           this.longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           required this.empresaId,
-      @JsonKey(name: 'IVA_ESPECIAL')
-          this.ivaEspecial,
-      @JsonKey(name: 'IVA_EXENTO')
-          this.extentoIva,
+      @JsonKey(name: 'IVA')
+          required this.iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
           this.ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
@@ -1012,11 +994,8 @@ class _$_ClienteDTO extends _ClienteDTO {
   @JsonKey(name: 'EMPRESA_ID')
   final String empresaId;
   @override
-  @JsonKey(name: 'IVA_ESPECIAL')
-  final double? ivaEspecial;
-  @override
-  @JsonKey(name: 'IVA_EXENTO')
-  final String? extentoIva;
+  @JsonKey(name: 'IVA')
+  final double iva;
   @override
   @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
   final double? ventasAnyoActual;
@@ -1122,7 +1101,7 @@ class _$_ClienteDTO extends _ClienteDTO {
 
   @override
   String toString() {
-    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, ivaEspecial: $ivaEspecial, extentoIva: $extentoIva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1153,10 +1132,7 @@ class _$_ClienteDTO extends _ClienteDTO {
             const DeepCollectionEquality()
                 .equals(other.longitudFiscal, longitudFiscal) &&
             const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
-            const DeepCollectionEquality()
-                .equals(other.ivaEspecial, ivaEspecial) &&
-            const DeepCollectionEquality()
-                .equals(other.extentoIva, extentoIva) &&
+            const DeepCollectionEquality().equals(other.iva, iva) &&
             const DeepCollectionEquality()
                 .equals(other.ventasAnyoActual, ventasAnyoActual) &&
             const DeepCollectionEquality()
@@ -1217,8 +1193,10 @@ class _$_ClienteDTO extends _ClienteDTO {
                 .equals(other.obvservacionesInternas, obvservacionesInternas) &&
             const DeepCollectionEquality()
                 .equals(other.clientePotencial, clientePotencial) &&
-            const DeepCollectionEquality().equals(other.clienteEstadoPotencialId, clienteEstadoPotencialId) &&
-            const DeepCollectionEquality().equals(other.clienteTipoPotencialId, clienteTipoPotencialId) &&
+            const DeepCollectionEquality().equals(
+                other.clienteEstadoPotencialId, clienteEstadoPotencialId) &&
+            const DeepCollectionEquality()
+                .equals(other.clienteTipoPotencialId, clienteTipoPotencialId) &&
             const DeepCollectionEquality().equals(other.lastUpdated, lastUpdated) &&
             const DeepCollectionEquality().equals(other.deleted, deleted));
   }
@@ -1240,8 +1218,7 @@ class _$_ClienteDTO extends _ClienteDTO {
         const DeepCollectionEquality().hash(latitudFiscal),
         const DeepCollectionEquality().hash(longitudFiscal),
         const DeepCollectionEquality().hash(empresaId),
-        const DeepCollectionEquality().hash(ivaEspecial),
-        const DeepCollectionEquality().hash(extentoIva),
+        const DeepCollectionEquality().hash(iva),
         const DeepCollectionEquality().hash(ventasAnyoActual),
         const DeepCollectionEquality().hash(ventasAnyoAnterior),
         const DeepCollectionEquality().hash(ventasHaceDosAnyos),
@@ -1319,10 +1296,8 @@ abstract class _ClienteDTO extends ClienteDTO {
           final double? longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           required final String empresaId,
-      @JsonKey(name: 'IVA_ESPECIAL')
-          final double? ivaEspecial,
-      @JsonKey(name: 'IVA_EXENTO')
-          final String? extentoIva,
+      @JsonKey(name: 'IVA')
+          required final double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
           final double? ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
@@ -1436,11 +1411,8 @@ abstract class _ClienteDTO extends ClienteDTO {
   @JsonKey(name: 'EMPRESA_ID')
   String get empresaId;
   @override
-  @JsonKey(name: 'IVA_ESPECIAL')
-  double? get ivaEspecial;
-  @override
-  @JsonKey(name: 'IVA_EXENTO')
-  String? get extentoIva;
+  @JsonKey(name: 'IVA')
+  double get iva;
   @override
   @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
   double? get ventasAnyoActual;
