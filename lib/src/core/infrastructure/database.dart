@@ -14,9 +14,9 @@ import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
 import '../../features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
+import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
-import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
@@ -46,7 +46,6 @@ part 'database.g.dart';
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) => AppDatabase(),
 );
-
 const localDatabaseName = 'jbm.sqlite';
 
 @DriftDatabase(tables: [
@@ -86,17 +85,27 @@ const localDatabaseName = 'jbm.sqlite';
   PedidoVentaLocalTable,
 ])
 class AppDatabase extends _$AppDatabase {
-  AppDatabase() : super(_openConnection());
+  final String? databaseFile;
+  AppDatabase({this.databaseFile})
+      : super(
+          _openConnection(databaseFile),
+        );
 
   @override
   int get schemaVersion => 1;
 }
 
-LazyDatabase _openConnection() {
+LazyDatabase _openConnection(String? databaseFile) {
   return LazyDatabase(() async {
-    final dbFolder = await getApplicationDocumentsDirectory();
+    late File file;
+    if (databaseFile == null) {
+      final dbFolder = await getApplicationDocumentsDirectory();
 
-    final file = File(join(dbFolder.path, localDatabaseName));
+      file = File(join(dbFolder.path, localDatabaseName));
+    } else {
+      file = File(databaseFile);
+    }
+
     return NativeDatabase(file);
   });
 }

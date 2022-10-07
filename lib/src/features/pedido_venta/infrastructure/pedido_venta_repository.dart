@@ -378,13 +378,31 @@ class PedidoVentaRepository {
     if (clienteDto.iva == 0) {
       return 0;
     } else {
-      final queryArticuloIva = await (_db.select(_db.articuloEmpresaIvaTable)
-            ..where((t) =>
-                t.empresaId.equals(clienteDto.empresaId) &
-                t.articuloId.equals(articuloId)))
-          .getSingle();
+      final ivaArticuloQuery = _db.selectOnly(_db.articuloEmpresaIvaTable)
+        ..addColumns([_db.articuloEmpresaIvaTable.iva])
+        ..where(
+          _db.articuloEmpresaIvaTable.empresaId.equals(clienteDto.empresaId) &
+              _db.articuloEmpresaIvaTable.articuloId.equals(articuloId),
+        );
 
-      return queryArticuloIva.iva;
+      final ivaClienteQuery = _db.selectOnly(_db.clienteTable)
+        ..addColumns([_db.clienteTable.iva])
+        ..where(
+          _db.clienteTable.id.equals(clienteDto.id),
+        );
+
+      final ivaArticulo = (await ivaArticuloQuery.getSingleOrNull())
+          ?.read(_db.articuloEmpresaIvaTable.iva);
+      final ivaCliente =
+          (await ivaClienteQuery.getSingleOrNull())?.read(_db.clienteTable.iva);
+
+      late double iva;
+      if (ivaArticulo != null) {
+        iva = ivaArticulo;
+      } else {
+        iva = ivaCliente ?? 0;
+      }
+      return iva;
     }
   }
 

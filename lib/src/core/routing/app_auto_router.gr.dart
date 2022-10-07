@@ -284,7 +284,9 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig(SplashRoute.name, path: '/'),
+        RouteConfig('/#redirect',
+            path: '/', redirectTo: '/login', fullMatch: true),
+        RouteConfig(SplashRoute.name, path: '/splash'),
         RouteConfig(LoginRoute.name, path: '/login'),
         RouteConfig(ClienteListaRoute.name, path: '/cliente'),
         RouteConfig(ClientesAlrededorRoute.name, path: '/cliente/alrededor'),
@@ -341,7 +343,7 @@ class _$AppRouter extends RootStackRouter {
 /// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute() : super(SplashRoute.name, path: '/');
+  const SplashRoute() : super(SplashRoute.name, path: '/splash');
 
   static const String name = 'SplashRoute';
 }
