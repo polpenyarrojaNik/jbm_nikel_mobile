@@ -36,7 +36,10 @@ import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
+import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
@@ -210,7 +213,9 @@ class SyncService {
 
   Future<void> syncAllPedidosRelacionados() async {
     try {
+      await enviarPedidosNoEnviados();
       await syncPedidos();
+      await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
       await syncPedidoVentaEstado();
       await syncAllAuxiliares();
@@ -504,6 +509,50 @@ class SyncService {
       rethrow;
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<void> enviarPedidosNoEnviados() async {
+    try {
+      final pedidosNoEnviados = await getPedidosNoEnviados();
+      for (var i = 0; i < pedidosNoEnviados.length; i++) {
+        final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
+            pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId);
+        final pedidoLocalEnviado = await _remoteCreatePedidos(
+            pedidosNoEnviados[i],
+            pedidoVentaLineaDTOList
+                .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+                .toList(),
+            _usuario!.provisionalToken);
+        await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList(
+      {required String pedidoVentaAppId}) async {
+    try {
+      final query = _db.select(_db.pedidoVentaLineaLocalTable).join([
+        innerJoin(
+            _db.pedidoVentaLocalTable,
+            _db.pedidoVentaLocalTable.pedidoVentaAppId
+                .equalsExp(_db.pedidoVentaLineaLocalTable.pedidoVentaAppId))
+      ]);
+
+      query.where(_db.pedidoVentaLineaLocalTable.pedidoVentaAppId
+          .equals(pedidoVentaAppId));
+
+      return query.map((row) {
+        final pedidoVentaLocalDTO = row.readTable(_db.pedidoVentaLocalTable);
+        final pedidoVentaLineaDTO =
+            row.readTable(_db.pedidoVentaLineaLocalTable);
+        return pedidoVentaLineaDTO.toDomain(
+            divisaId: pedidoVentaLocalDTO.divisaId!);
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
@@ -836,6 +885,68 @@ class SyncService {
     }
   }
 
+  Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() async {
+    try {
+      return (_db.select(_db.pedidoVentaLocalTable)
+            ..where((tbl) => tbl.enviada.equals('N')))
+          .get();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<PedidoVentaLocalDTO> _remoteCreatePedidos(
+      PedidoVentaLocalDTO pedidoVentaLocalDto,
+      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
+      String provisionalToken) async {
+    try {
+      final pedidoVentaLocalToJson = pedidoVentaLocalDto.toJson();
+      final pedidoVentaLineasLocalListToJson =
+          pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
+      pedidoVentaLocalToJson
+          .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
+      final json = jsonEncode(pedidoVentaLocalToJson);
+      print(json);
+      final requestUri = Uri.http(
+        dotenv.get((_usuario!.test) ? 'URLTEST' : 'URL',
+            fallback: 'localhost:3001'),
+        'api/v1/online/pedidos',
+      );
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+        ),
+        data: jsonEncode(pedidoVentaLocalToJson),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
+
+        return PedidoVentaLocalDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } on DioError catch (e) {
+      String? errorDetalle;
+      final responseErrorJson = (e.response?.data is List<int>)
+          ? e.response?.statusMessage
+          : e.response?.data['detalle'] ?? e.response?.data['message'];
+      if (responseErrorJson != null) {
+        errorDetalle = responseErrorJson;
+
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, errorDetalle ?? '');
+      } else {
+        throw AppException.restApiFailure(
+            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<VisitaLocalDTO> _remoteCreateVisita(
       VisitaLocalDTO visitaLocalDto, String provisionalToken) async {
     try {
@@ -879,12 +990,46 @@ class SyncService {
     }
   }
 
+  Future<void> updatePedidoVentaInDB(
+      {required PedidoVentaLocalDTO pedidoVentaLocalDto}) async {
+    try {
+      await _db.update(_db.pedidoVentaLocalTable).replace(pedidoVentaLocalDto);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
   Future<void> updateVisitaInDB(
       {required VisitaLocalDTO visitaLocalDto}) async {
     try {
       await _db.update(_db.visitaLocalTable).replace(visitaLocalDto);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> checkPedidoVentaTratados() async {
+    try {
+      final query = _db.select(_db.pedidoVentaLocalTable).join([
+        innerJoin(
+            _db.pedidoVentaTable,
+            _db.pedidoVentaTable.pedidoVentaId
+                .equalsExp(_db.pedidoVentaLocalTable.pedidoVentaAppId))
+      ]);
+
+      query.where(_db.pedidoVentaLocalTable.tratada.equals('N'));
+
+      final pedidosNoTratadosDTO = await query
+          .map((row) => row.readTable(_db.pedidoVentaLocalTable))
+          .get();
+
+      for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
+        _db
+            .update(_db.pedidoVentaLocalTable)
+            .write(const PedidoVentaLocalTableCompanion(tratada: Value('S')));
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 

@@ -59,13 +59,14 @@ class PedidoVentaRepository {
 
   Future<List<PedidoVenta>> getPedidoVentaLista(
       {required int page, required String searchText}) async {
-    if (page == 1) {
-      pedidoVentaList.clear();
-      final pedidoVentaLocalList =
-          await getPedidosVentaLocal(searchText: searchText);
-      pedidoVentaList.addAll(pedidoVentaLocalList);
-    }
     try {
+      if (page == 1) {
+        pedidoVentaList.clear();
+        final pedidoVentaLocalList =
+            await getPedidosVentaLocal(searchText: searchText);
+        pedidoVentaList.addAll(pedidoVentaLocalList);
+      }
+
       final syncPedidosVentaList =
           await getSyncPedidoVentaList(page: page, searchText: searchText);
       pedidoVentaList.addAll(syncPedidosVentaList);
@@ -147,6 +148,8 @@ class PedidoVentaRepository {
                 _db.pedidoVentaLocalTable.codigoPostal.like('%$searchText%') |
                 _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
       );
+    } else {
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
     }
 
     query.orderBy([
