@@ -1,9 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
+import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
-import '../../../../core/routing/app_router.dart';
 import '../../domain/pedido_venta.dart';
 
 class PedidoVentaListaTile extends StatelessWidget {
@@ -14,12 +15,14 @@ class PedidoVentaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.goNamed(
-        AppRoutes.pedidoventashow.name,
-        params: {
-          'id': pedidoVenta.pedidoVentaId ?? pedidoVenta.pedidoVentaAppId!
-        },
-        extra: !pedidoVenta.tratada,
+      onTap: () => context.router.push(
+        PedidoVentaDetalleRoute(
+          pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
+            id: pedidoVenta.pedidoVentaId ?? pedidoVenta.pedidoVentaAppId!,
+            isNew: false,
+            isLocal: !pedidoVenta.tratada,
+          ),
+        ),
       ),
       child: Container(
         color: Colors.transparent,

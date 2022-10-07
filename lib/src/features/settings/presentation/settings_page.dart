@@ -29,14 +29,21 @@ class SettingsPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ColumnFieldTextDetalle(
-                fieldTitleValue: 'Usuario', value: usuario!.id),
-            ColumnFieldTextDetalle(
-                fieldTitleValue: 'Nombre usuario',
-                value: usuario.nombreUsuario),
-            if (usuario.test)
-              ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Test', value: usuario.test.toString()),
+            if (usuario != null)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ColumnFieldTextDetalle(
+                      fieldTitleValue: 'Usuario', value: usuario.id),
+                  ColumnFieldTextDetalle(
+                      fieldTitleValue: 'Nombre usuario',
+                      value: usuario.nombreUsuario),
+                  if (usuario.test)
+                    ColumnFieldTextDetalle(
+                        fieldTitleValue: 'Test',
+                        value: usuario.test.toString()),
+                ],
+              ),
             state.when(
               data: (packageInfo) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,9 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
+
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_search_state_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
@@ -11,11 +12,12 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/sel
 
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
-class SelecionarCantidadPage extends ConsumerStatefulWidget {
-  const SelecionarCantidadPage({
+class SeleccionarCantidadPage extends ConsumerStatefulWidget {
+  const SeleccionarCantidadPage({
     super.key,
     required this.seleccionarCantidadParam,
   });
@@ -23,12 +25,12 @@ class SelecionarCantidadPage extends ConsumerStatefulWidget {
   final SeleccionarCantidadParam seleccionarCantidadParam;
 
   @override
-  ConsumerState<SelecionarCantidadPage> createState() =>
+  ConsumerState<SeleccionarCantidadPage> createState() =>
       _SelecionarCantidadPageState();
 }
 
 class _SelecionarCantidadPageState
-    extends ConsumerState<SelecionarCantidadPage> {
+    extends ConsumerState<SeleccionarCantidadPage> {
   int totalQuantity = 1;
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
@@ -36,13 +38,15 @@ class _SelecionarCantidadPageState
   @override
   void initState() {
     super.initState();
+
     if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
       setValoresInicialesActualizarLinea();
     } else {
       Future.microtask(
-        () => context.goNamed(
-          AppRoutes.pedidoventanewsearcharticulo.name,
-          extra: widget.seleccionarCantidadParam,
+        () => context.router.push(
+          ArticuloListaRoute(
+            isSearchArticuloForForm: true,
+          ),
         ),
       );
     }
@@ -115,8 +119,7 @@ class _SelecionarCantidadPageState
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => (articulo != null && articuloPrecio != null)
-            ? navigateToCrearPedido(context, widget.seleccionarCantidadParam,
-                articuloPrecio!, articulo!)
+            ? navigateToCrearPedido(context, articuloPrecio!, articulo!)
             : null,
         child: const Icon(Icons.check),
       ),
@@ -125,41 +128,40 @@ class _SelecionarCantidadPageState
 
   void navigateToCrearPedido(
     BuildContext context,
-    SeleccionarCantidadParam seleccionarCantidadParam,
     ArticuloPrecio articuloPrecio,
     Articulo articulo,
   ) {
-    if (seleccionarCantidadParam.posicionLineaActualizar != null) {
+    if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
       ref
           .read(pedidoVentaEditPageControllerProvider(
-                  seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                  widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
               .notifier)
           .updatePedidoVentaLinea(
             pedidoVentaAppId:
-                seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+                widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
             articuloPrecio: articuloPrecio,
             articuloDescripcion:
                 getDescriptionInLocalLanguage(articulo: articulo),
             stockDisponibleSN: articulo.stockDisponible != null &&
                 articulo.stockDisponible! > 0,
             posicionActualizar:
-                seleccionarCantidadParam.posicionLineaActualizar!,
+                widget.seleccionarCantidadParam.posicionLineaActualizar!,
           );
     } else {
       ref
           .read(pedidoVentaEditPageControllerProvider(
-                  seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                  widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
               .notifier)
           .addPedidoVentaLinea(
               pedidoVentaAppId:
-                  seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+                  widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
               articuloPrecio: articuloPrecio,
               articuloDescripcion:
                   getDescriptionInLocalLanguage(articulo: articulo),
               stockDisponibleSN: articulo.stockDisponible != null &&
                   articulo.stockDisponible! > 0);
     }
-    context.pop();
+    context.router.pop();
   }
 
   void setArtiucloValue({Articulo? newArticuloValue}) {
@@ -169,6 +171,12 @@ class _SelecionarCantidadPageState
           articulo = newArticuloValue;
         },
       );
+
+      ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
+            articuloId: articulo!.id,
+            clienteId: widget.seleccionarCantidadParam.clienteId,
+            cantidad: totalQuantity,
+          );
     }
   }
 
@@ -179,14 +187,6 @@ class _SelecionarCantidadPageState
       () => ref.read(
         articuloProvider(widget.seleccionarCantidadParam.articuloId!),
       ),
-    );
-
-    Future.microtask(
-      () => ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
-            articuloId: widget.seleccionarCantidadParam.articuloId!,
-            clienteId: widget.seleccionarCantidadParam.clienteId,
-            cantidad: totalQuantity,
-          ),
     );
   }
 }

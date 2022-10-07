@@ -1,18 +1,19 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/datos_extra_row.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
-import '../../../../core/routing/app_router.dart';
 import '../../infrastructure/articulo_repository.dart';
 
 class ArticuloDetallePage extends StatelessWidget {
@@ -804,46 +805,51 @@ class _DatosRelacionados extends StatelessWidget {
                 S.of(context).articulo_show_articuloDetalle_datosRelacionados),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.articulopreciotarifa.name,
-            params: params,
-            extra: getDescriptionInLocalLanguage(articulo: articulo),
+          navigationTo: () => context.router.push(
+            ArticuloPrecioTarifaRoute(
+              articuloId: articulo.id,
+              description: getDescriptionInLocalLanguage(articulo: articulo),
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloGruposNetos_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.articulogruponeto.name,
-            params: params,
-            extra: getDescriptionInLocalLanguage(articulo: articulo),
+          navigationTo: () => context.router.push(
+            ArticuloGrupoNetoRoute(
+              articuloId: articulo.id,
+              description: getDescriptionInLocalLanguage(articulo: articulo),
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloComponentes_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.articulocomponente.name,
-            params: params,
-            extra: getDescriptionInLocalLanguage(articulo: articulo),
+          navigationTo: () => context.router.push(
+            ArticuloComponenteRoute(
+              articuloId: articulo.id,
+              description: getDescriptionInLocalLanguage(articulo: articulo),
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloRecambio_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.articulorecambio.name,
-            params: params,
-            extra: getDescriptionInLocalLanguage(articulo: articulo),
+          navigationTo: () => context.router.push(
+            ArticuloRecambioRoute(
+              articuloId: articulo.id,
+              description: getDescriptionInLocalLanguage(articulo: articulo),
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloSustitutivo_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.articulosustitutivo.name,
-            params: params,
-            extra: getDescriptionInLocalLanguage(articulo: articulo),
+          navigationTo: () => context.router.push(
+            ArticuloSustitutivoRoute(
+              articuloId: articulo.id,
+              description: getDescriptionInLocalLanguage(articulo: articulo),
+            ),
           ),
         ),
       ],
@@ -865,28 +871,31 @@ class _Consultas extends StatelessWidget {
               S.of(context).articulo_show_articuloDetalle_consultas),
       DatosExtraRow(
         title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
-        navigationTo: () => context.goNamed(
-          AppRoutes.articulopedidoventa.name,
-          params: params,
-          extra: getDescriptionInLocalLanguage(articulo: articulo),
+        navigationTo: () => context.router.push(
+          ArticuloPedidoVentaRoute(
+            articuloId: articulo.id,
+            description: getDescriptionInLocalLanguage(articulo: articulo),
+          ),
         ),
       ),
       const Divider(),
       DatosExtraRow(
         title: S.of(context).articulo_show_ultimosPrecios_titulo,
-        navigationTo: () => context.goNamed(
-          AppRoutes.articuloultimoprecio.name,
-          params: params,
-          extra: getDescriptionInLocalLanguage(articulo: articulo),
+        navigationTo: () => context.router.push(
+          ArticuloUltimosPreciosRoute(
+            articuloId: articulo.id,
+            description: getDescriptionInLocalLanguage(articulo: articulo),
+          ),
         ),
       ),
       const Divider(),
       DatosExtraRow(
         title: S.of(context).articulo_show_articuloDocumentos_titulo,
-        navigationTo: () => context.goNamed(
-          AppRoutes.articulodocumento.name,
-          params: params,
-          extra: getDescriptionInLocalLanguage(articulo: articulo),
+        navigationTo: () => context.router.push(
+          ArticuloDocumentoRoute(
+            articuloId: articulo.id,
+            description: getDescriptionInLocalLanguage(articulo: articulo),
+          ),
         ),
       ),
     ]);

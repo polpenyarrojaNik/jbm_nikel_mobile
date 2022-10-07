@@ -1,11 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_page.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
@@ -20,7 +22,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/slider_background.dart';
 import '../../../../core/presentation/toasts.dart';
-import '../../../../core/routing/app_router.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
@@ -66,17 +67,11 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         state.maybeWhen(
           saved: (pedidoVentaAppId) {
             ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
+            ref.invalidate(pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
             ref.invalidate(pedidosSearchResultsProvider);
-            context.showSuccessBar(content: const Text('Saved'));
-            context.goNamed(
-              AppRoutes.pedidoventashow.name,
-              params: {'id': pedidoVentaAppId},
-              extra: pedidoVentaIdLocalParam!.isLocal,
-            );
+            context.router.pop();
           },
-          deleted: () => context.goNamed(
-            AppRoutes.visitaindex.name,
-          ),
+          deleted: () => context.router.popUntilRouteWithName('/pedido'),
           savedError: (_, __, ___, ____, _____, ______, error, _______) =>
               context.showErrorBar(
             duration: const Duration(seconds: 5),
@@ -95,43 +90,43 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           (widget.isNew) ? 'Nuevo pedido' : 'Editar pedido',
         ),
       ),
-      body: state.when(
-        loading: () => const ProgressIndicatorWidget(),
-        data: (
-          cliente,
-          clienteDireccion,
-          pedidoVentaLineaList,
-          currentStep,
-          observaciones,
-          pedidoCliente,
-        ) =>
-            PedidoVentaEditForm(
-          isNew: widget.isNew,
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
-          cliente: cliente,
-          clienteDireccion: clienteDireccion,
-          pedidoVentaLineaList: pedidoVentaLineaList,
-          currentStep: currentStep,
-          observaciones: observaciones,
-          pedidoCliente: pedidoCliente,
+      body: SafeArea(
+        child: state.maybeWhen(
+          orElse: () => const ProgressIndicatorWidget(),
+          data: (
+            cliente,
+            clienteDireccion,
+            pedidoVentaLineaList,
+            currentStep,
+            observaciones,
+            pedidoCliente,
+          ) =>
+              PedidoVentaEditForm(
+            isNew: widget.isNew,
+            pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
+            cliente: cliente,
+            clienteDireccion: clienteDireccion,
+            pedidoVentaLineaList: pedidoVentaLineaList,
+            currentStep: currentStep,
+            observaciones: observaciones,
+            pedidoCliente: pedidoCliente,
+          ),
+          error: (Object error, StackTrace? _) => ErrorMessageWidget(
+            (error is AppException) ? error.details.message : error.toString(),
+          ),
+          savedError: (cliente, clienteDireccion, pedidoVentaLineaList,
+                  currentStep, observaciones, pedidoCliente, error, _) =>
+              PedidoVentaEditForm(
+            isNew: widget.isNew,
+            pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
+            cliente: cliente,
+            clienteDireccion: clienteDireccion,
+            pedidoVentaLineaList: pedidoVentaLineaList,
+            currentStep: currentStep,
+            observaciones: observaciones,
+            pedidoCliente: pedidoCliente,
+          ),
         ),
-        error: (Object error, StackTrace? _) => ErrorMessageWidget(
-          (error is AppException) ? error.details.message : error.toString(),
-        ),
-        saved: (pedidoVentaAppId) => const ProgressIndicatorWidget(),
-        savedError: (cliente, clienteDireccion, pedidoVentaLineaList,
-                currentStep, observaciones, pedidoCliente, error, _) =>
-            PedidoVentaEditForm(
-          isNew: widget.isNew,
-          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
-          cliente: cliente,
-          clienteDireccion: clienteDireccion,
-          pedidoVentaLineaList: pedidoVentaLineaList,
-          currentStep: currentStep,
-          observaciones: observaciones,
-          pedidoCliente: pedidoCliente,
-        ),
-        deleted: () => const ProgressIndicatorWidget(),
       ),
     );
   }
@@ -406,20 +401,20 @@ class _StepSelectClienteContentState
                 .selectDireccion(clienteDireccion: clienteDireccionesList[0]);
           }
           //TODO descomentar
-          //  else {
+//            else {
 
 //  for (var i = 0; i < clienteDireccionesList.length; i++) {
 
-          // if (clienteDireccionesList[i].predeterminada) {
-          //   ref
-          //       .read(pedidoVentaEditPageControllerProvider(
-          //               widget.pedidoVentaIdLocalParam)
-          //           .notifier)
-          //       .selectDireccion(
-          //           clienteDireccion: clienteDireccionesList[i]);
-          // }
-          //   }
-          // }
+//           if (clienteDireccionesList[i].predeterminada) {
+//             ref
+//                 .read(pedidoVentaEditPageControllerProvider(
+//                         widget.pedidoVentaIdLocalParam)
+//                     .notifier)
+//                 .selectDireccion(
+//                     clienteDireccion: clienteDireccionesList[i]);
+//           }
+//             }
+//           }
         });
       });
       final state = ref.watch(clienteDireccionProvider(widget.cliente!.id));
@@ -515,7 +510,9 @@ class _StepSelectClienteContentState
 
   void navigateToSelectCliente(BuildContext context, bool isNew) async {
     if (isNew) {
-      context.goNamed(AppRoutes.pedidoventanewsearchcliente.name);
+      context.router.push(
+        ClienteListaRoute(isSearchClienteForFrom: true),
+      );
     } else {
       return showToast(
         'No puedes cambiar el cliente',
@@ -619,16 +616,8 @@ class StepArticuloListContent extends ConsumerWidget {
       cantidad: pedidoVentaLinea.cantidad.toInt(),
       posicionLineaActualizar: i,
     );
-    if (pedidoVentaIdIsLocalParam.isNew) {
-      context.goNamed(AppRoutes.pedidoventanewseleccionarcantidad.name,
-          extra: seleccionarCantidadParam);
-    } else {
-      context.goNamed(
-        AppRoutes.pedidoventaeditseleccionarcantidad.name,
-        params: {'id': pedidoVentaIdIsLocalParam.id},
-        extra: seleccionarCantidadParam,
-      );
-    }
+    context.router.push(SeleccionarCantidadRoute(
+        seleccionarCantidadParam: seleccionarCantidadParam));
   }
 
   void navigateToAddArticulo(BuildContext context, String clienteId,
@@ -637,16 +626,11 @@ class StepArticuloListContent extends ConsumerWidget {
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
       clienteId: clienteId,
     );
-    if (pedidoVentaIdIsLocalParam.isNew) {
-      context.goNamed(AppRoutes.pedidoventanewseleccionarcantidad.name,
-          extra: seleccionarCantidadParam);
-    } else {
-      context.goNamed(
-        AppRoutes.pedidoventaeditseleccionarcantidad.name,
-        params: {'id': pedidoVentaIdIsLocalParam.id},
-        extra: seleccionarCantidadParam,
-      );
-    }
+    context.router.push(
+      SeleccionarCantidadRoute(
+        seleccionarCantidadParam: seleccionarCantidadParam,
+      ),
+    );
   }
 }
 
@@ -799,7 +783,9 @@ class StepResumenContent extends StatelessWidget {
       List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
     Money total = Money.parse('0', code: divisaId);
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
-      total = total + pedidoVentaLineaList[i].importeLinea!;
+      if (pedidoVentaLineaList[i].importeLinea != null) {
+        total = total + pedidoVentaLineaList[i].importeLinea!;
+      }
     }
 
     return total.toString();

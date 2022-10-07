@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -14,7 +15,7 @@ import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 
-import '../../../../core/routing/app_router.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteDetallePage extends StatelessWidget {
@@ -731,64 +732,71 @@ class _DatosRelacionados extends StatelessWidget {
                 S.of(context).cliente_show_clienteDetalle_datosRelacionados),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDireccion_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientedirecciones.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteDireccionesRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteContacto_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientecontactos.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteContactoRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clientePrecioNeto_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientepreciosnetos.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClientePrecioNetoRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteGrupoNeto_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientegruposnetos.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteGrupoNetoRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDescuento_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientedescuentos.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteDescuentoRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteRappel_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clienterappels.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteRappelRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteAdjunto_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clienteadjuntos.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteAdjuntoRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
       ],
@@ -811,37 +819,41 @@ class _Consultas extends StatelessWidget {
                 S.of(context).cliente_show_clienteDetalle_consultas),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVentasMes_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clienteventasmes.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteVentasMesRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVentasArticulo_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clienteventasarticulo.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteVentasArticuloRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteFacturasPendientes_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientefactpendientes.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClientePagoPendienteRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
         const Divider(),
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteArticulosTop_titulo,
-          navigationTo: () => context.goNamed(
-            AppRoutes.clientetoparticulos.name,
-            params: params,
-            extra: cliente.nombreCliente,
+          navigationTo: () => context.router.push(
+            ClienteArticulosTopListRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
           ),
         ),
       ],

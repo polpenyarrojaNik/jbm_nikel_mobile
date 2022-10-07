@@ -91,10 +91,6 @@ class SearchListTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       visualDensity: const VisualDensity(horizontal: -4),
-      // leading: const Icon(
-      //   Icons.search,
-      //   size: 28,
-      // ),
       title: TextField(
         focusNode: focusNode,
         decoration: InputDecoration(

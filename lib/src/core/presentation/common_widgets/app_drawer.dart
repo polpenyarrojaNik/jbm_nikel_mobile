@@ -1,9 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../routing/app_router.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({
@@ -33,7 +33,9 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_articulos),
-            onTap: () => context.goNamed(AppRoutes.articuloindex.name),
+            onTap: () => context.router.pushAndPopUntil(
+                ArticuloListaRoute(isSearchArticuloForForm: false),
+                predicate: (route) => false),
           ),
           ListTile(
             leading: const Icon(
@@ -41,7 +43,9 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_clientes),
-            onTap: () => context.goNamed(AppRoutes.clienteindex.name),
+            onTap: () => context.router.pushAndPopUntil(
+                ClienteListaRoute(isSearchClienteForFrom: false),
+                predicate: (route) => false),
           ),
           ListTile(
             leading: const Icon(
@@ -49,7 +53,9 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_pedidos),
-            onTap: () => context.goNamed(AppRoutes.pedidoventaindex.name),
+            onTap: () => context.router.pushAndPopUntil(
+                const PedidoVentaListRoute(),
+                predicate: (route) => false),
           ),
           ListTile(
             leading: const Icon(
@@ -57,7 +63,9 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_visitas),
-            onTap: () => context.goNamed(AppRoutes.visitaindex.name),
+            onTap: () => context.router.pushAndPopUntil(
+                const VisitaListaRoute(),
+                predicate: (route) => false),
           ),
           // ListTile(
           //   enabled: false,
@@ -66,7 +74,7 @@ class AppDrawer extends StatelessWidget {
           //     size: 30,
           //   ),
           //   title: Text(S.of(context).commonWidgets_appDrawer_kpi),
-          //   onTap: () => context.goNamed(AppRoutes.articuloindex.name),
+          // onTap: () => context.goNamed(AppRoutes.articuloindex.name),
           // ),
           ListTile(
             leading: const Icon(
@@ -74,7 +82,8 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_ajustes),
-            onTap: () => context.goNamed(AppRoutes.settings.name),
+            onTap: () => context.router.pushAndPopUntil(const SettingsRoute(),
+                predicate: (route) => false),
           ),
         ],
       ),

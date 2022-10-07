@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class AskPopAlertDialog extends StatelessWidget {
@@ -13,13 +14,13 @@ class AskPopAlertDialog extends StatelessWidget {
       ),
       actions: <Widget>[
         TextButton(
-          onPressed: () => Navigator.pop(context, false),
+          onPressed: () => context.router.pop(false),
           child: const Text(
             'Cancelar',
           ),
         ),
         TextButton(
-          onPressed: () => Navigator.pop(context, true),
+          onPressed: () => context.router.pop(true),
           child: const Text(
             'Aceptar',
           ),

@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:jbm_nikel_mobile/src/core/routing/app_router.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
+import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -63,7 +64,11 @@ class VisitaListaTile extends StatelessWidget {
       {required BuildContext context,
       required String id,
       required bool isLocal}) {
-    context.goNamed(AppRoutes.visitashow.name,
-        params: {'id': id}, extra: isLocal);
+    context.router.push(
+      VisitaDetalleRoute(
+        visitaIdIsLocalParam:
+            EntityIdIsLocalParam(id: id, isLocal: isLocal, isNew: false),
+      ),
+    );
   }
 }

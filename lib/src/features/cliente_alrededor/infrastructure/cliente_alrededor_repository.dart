@@ -54,23 +54,7 @@ class ClienteAlrededorRepository {
       {required String usuarioId,
       required GetClienteAlrededorArg clienteAlrededorArg}) {
     try {
-      final query =
-          // db.select(db.clienteTable).join([
-          //   innerJoin(db.clienteUsuarioTable,
-          //       db.clienteUsuarioTable.clienteId.equalsExp(db.clienteTable.id)),
-          //   innerJoin(db.paisTable,
-          //       db.paisTable.id.equalsExp(db.clienteTable.paisFiscalId)),
-          //   innerJoin(db.divisaTable,
-          //       db.divisaTable.id.equalsExp(db.clienteTable.divisaId)),
-          //   innerJoin(
-          //       db.metodoDeCobroTable,
-          //       db.metodoDeCobroTable.id
-          //           .equalsExp(db.clienteTable.metodoDeCobroId)),
-          //   innerJoin(db.plazoDeCobroTable,
-          //       db.plazoDeCobroTable.id.equalsExp(db.clienteTable.plazoDeCobroId))
-          // ]);
-
-          db.customSelect('''SELECT c.*, paises.*
+      final query = db.customSelect('''SELECT c.*, paises.*
         from CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
         INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
