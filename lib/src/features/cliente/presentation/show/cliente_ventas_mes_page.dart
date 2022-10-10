@@ -243,8 +243,8 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Center(
-                child:
-                    Text('Total', style: Theme.of(context).textTheme.subtitle2),
+                child: Text(S.of(context).cliente_show_clienteVentasMes_total,
+                    style: Theme.of(context).textTheme.subtitle2),
               ),
             ],
           ),

@@ -10,6 +10,7 @@ class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
       {required String clienteId,
       String? nombreCliente,
       required String articuloId,
+      String? descripcion,
       required int linea,
       required int? cantidad,
       required DateTime fecha,

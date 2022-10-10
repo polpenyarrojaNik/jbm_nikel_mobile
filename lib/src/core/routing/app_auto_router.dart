@@ -29,6 +29,7 @@ import '../../features/cliente/presentation/show/cliente_precio_neto_page.dart';
 import '../../features/cliente/presentation/show/cliente_rappel_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_articulo_page.dart';
 import '../../features/cliente/presentation/show/cliente_ventas_mes_page.dart';
+import '../../features/cliente/presentation/show/ultimos_precios/cliente_ultimos_precios_page.dart';
 import '../../features/cliente_alrededor/presentation/clientes_alrededor_page.dart';
 import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
@@ -45,9 +46,9 @@ part 'app_auto_router.gr.dart';
   routes: [
     AutoRoute(
       page: SplashPage,
-      path: '/',
+      path: '/splash',
     ),
-    AutoRoute(page: LoginPage, path: '/login'),
+    AutoRoute(page: LoginPage, path: '/login', initial: true),
     AutoRoute(
       page: ClienteListaPage,
       path: '/cliente',
@@ -69,6 +70,8 @@ part 'app_auto_router.gr.dart';
     AutoRoute(page: ClientePrecioNetoPage, path: '/cliente/:id/precios-netos'),
     AutoRoute(page: ClienteGrupoNetoPage, path: '/cliente/:id/grupos-netos'),
     AutoRoute(page: ClienteRappelPage, path: '/cliente/:id/rappels'),
+    AutoRoute(
+        page: ClienteUltimosPreciosPage, path: '/cliente/:id/ultimos-precios'),
     AutoRoute(page: PedidoVentaListPage, path: '/pedido'),
     AutoRoute(page: PedidoVentaDetallePage, path: '/pedido/:id'),
     AutoRoute(

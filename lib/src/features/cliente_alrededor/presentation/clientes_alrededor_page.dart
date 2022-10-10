@@ -55,12 +55,15 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
                 radiusKm: radiusKm)
           ],
         ),
-        loading: () => Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            CircularProgressIndicator(),
-            Text('Cargando Mapa'),
-          ],
+        loading: () => Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(),
+              Text(S.of(context).cliente_alrededor_cargandoMapa),
+            ],
+          ),
         ),
         error: (e, _) => ErrorMessageWidget(
             (e is AppException) ? e.details.message : e.toString()),

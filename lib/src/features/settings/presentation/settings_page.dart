@@ -34,9 +34,10 @@ class SettingsPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ColumnFieldTextDetalle(
-                      fieldTitleValue: 'Usuario', value: usuario.id),
+                      fieldTitleValue: S.of(context).settings_user,
+                      value: usuario.id),
                   ColumnFieldTextDetalle(
-                      fieldTitleValue: 'Nombre usuario',
+                      fieldTitleValue: S.of(context).settings_nombre_usuario,
                       value: usuario.nombreUsuario),
                   if (usuario.test)
                     ColumnFieldTextDetalle(
@@ -49,7 +50,7 @@ class SettingsPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ColumnFieldTextDetalle(
-                      fieldTitleValue: 'Versión',
+                      fieldTitleValue: S.of(context).settings_version,
                       value:
                           '${packageInfo.version}(${packageInfo.buildNumber})')
                 ],
@@ -75,11 +76,11 @@ class _SignoutButton extends ConsumerWidget {
       onPressed: () => logout(context, ref),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Icon(Icons.logout),
-          SizedBox(width: 5),
+        children: [
+          const Icon(Icons.logout),
+          const SizedBox(width: 5),
           Text(
-            'Cerrar sessión',
+            S.of(context).settings_cerrar_sesion,
           )
         ],
       ),

@@ -98,12 +98,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Recambios"),
         "articulo_show_articuloSustitutivo_titulo":
             MessageLookupByLibrary.simpleMessage("Artículos sustiutivos"),
-        "articulo_show_ultimosPrecios_buscarUltimosPrecios":
-            MessageLookupByLibrary.simpleMessage("Buscar..."),
-        "articulo_show_ultimosPrecios_precio":
-            MessageLookupByLibrary.simpleMessage("Precio"),
-        "articulo_show_ultimosPrecios_titulo":
-            MessageLookupByLibrary.simpleMessage("Últimos precios"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Contraseña"),
         "auth_loginPage_iniciarSesion":
@@ -114,6 +108,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Usuario"),
+        "cliente_alrededor_cargandoMapa":
+            MessageLookupByLibrary.simpleMessage("Cargando mapa"),
         "cliente_alrededor_margenAnoActual":
             MessageLookupByLibrary.simpleMessage("Margen año actual"),
         "cliente_alrededor_porcentajeAbonos":
@@ -126,6 +122,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(" Buscar clientes..."),
         "cliente_index_titulo":
             MessageLookupByLibrary.simpleMessage("Clientes"),
+        "cliente_show_clienteAdjunto_abriendoArchivo":
+            MessageLookupByLibrary.simpleMessage("Abriendo archivo..."),
         "cliente_show_clienteAdjunto_titulo":
             MessageLookupByLibrary.simpleMessage("Adjuntos"),
         "cliente_show_clienteArticulosTop_titulo":
@@ -258,6 +256,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Impagado"),
         "cliente_show_clienteFacturasPendientes_estadoPendiente":
             MessageLookupByLibrary.simpleMessage("Pendiente"),
+        "cliente_show_clienteFacturasPendientes_fFactura":
+            MessageLookupByLibrary.simpleMessage("F. factura"),
+        "cliente_show_clienteFacturasPendientes_fvcto":
+            MessageLookupByLibrary.simpleMessage("F. Vcto"),
+        "cliente_show_clienteFacturasPendientes_fvctoOriginal":
+            MessageLookupByLibrary.simpleMessage("F. Vcto. original"),
         "cliente_show_clienteFacturasPendientes_titulo":
             MessageLookupByLibrary.simpleMessage("Facturas Pendietes"),
         "cliente_show_clienteFacturasPendientes_vencInicial":
@@ -286,6 +290,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mes"),
         "cliente_show_clienteVentasMes_titulo":
             MessageLookupByLibrary.simpleMessage("Ventas Mes"),
+        "cliente_show_clienteVentasMes_total":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "commonWidgets_appDrawer_ajustes":
             MessageLookupByLibrary.simpleMessage("Ajustes"),
         "commonWidgets_appDrawer_articulos":
@@ -300,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Visitas"),
         "commonWidgets_emptyPlaceholder_irAIncio":
             MessageLookupByLibrary.simpleMessage("Ir a inicio"),
+        "commonWidgets_sliderBackground_borrar":
+            MessageLookupByLibrary.simpleMessage("Borrar"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Última sincronización"),
         "haOcurridoUnError":
@@ -319,20 +327,35 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Importe IVA"),
         "pedido_show_pedidoVentaDetalle_lineas":
             MessageLookupByLibrary.simpleMessage("Líneas"),
+        "pedido_show_pedidoVentaDetalle_pedidoCliente":
+            MessageLookupByLibrary.simpleMessage("Pedido cliente"),
         "pedido_show_pedidoVentaDetalle_precio":
             MessageLookupByLibrary.simpleMessage("Precio"),
+        "pedido_show_pedidoVentaDetalle_remarks":
+            MessageLookupByLibrary.simpleMessage("Observaciones"),
         "pedido_show_pedidoVentaDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Pedido"),
         "pedido_show_pedidoVentaDetalle_total":
             MessageLookupByLibrary.simpleMessage("Total"),
+        "settings_cerrar_sesion":
+            MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
+        "settings_nombre_usuario":
+            MessageLookupByLibrary.simpleMessage("Nombre usuario"),
         "settings_sincronicacionRealizadaConExito":
             MessageLookupByLibrary.simpleMessage(
                 "Sincronización relaizado con éxito"),
         "settings_sincronizarDatos":
             MessageLookupByLibrary.simpleMessage("Sincronizar datos"),
         "settings_titulo": MessageLookupByLibrary.simpleMessage("Ajustes"),
+        "settings_user": MessageLookupByLibrary.simpleMessage("Usuario"),
+        "settings_version": MessageLookupByLibrary.simpleMessage("Versión"),
         "sinResultados": MessageLookupByLibrary.simpleMessage("Sin resultados"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
+        "ultimosPrecios_buscarUltimosPrecios":
+            MessageLookupByLibrary.simpleMessage("Buscar..."),
+        "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Precio"),
+        "ultimosPrecios_titulo":
+            MessageLookupByLibrary.simpleMessage("Últimos precios"),
         "unidad": MessageLookupByLibrary.simpleMessage("unidad"),
         "unidades": MessageLookupByLibrary.simpleMessage("unidades"),
         "visita_enviada": MessageLookupByLibrary.simpleMessage("Enviada"),

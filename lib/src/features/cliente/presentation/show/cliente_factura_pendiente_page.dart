@@ -109,18 +109,18 @@ class ClientePagoPendienteTile extends StatelessWidget {
                     children: [
                       if (clientePagoPendiente.fechaExpiracion != null)
                         Text(
-                          'F. Vcto ${dateFormatter(clientePagoPendiente.fechaExpiracion!.toLocal().toIso8601String())}',
+                          '${S.of(context).cliente_show_clienteFacturasPendientes_fvcto} ${dateFormatter(clientePagoPendiente.fechaExpiracion!.toLocal().toIso8601String())}',
                         ),
                       if (clientePagoPendiente.fechaFactura != null) gapH4,
                       if (clientePagoPendiente.fechaFactura != null)
                         Text(
-                            'F.Factura: ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
+                            '${S.of(context).cliente_show_clienteFacturasPendientes_fFactura} ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
                             style: Theme.of(context).textTheme.caption),
                       if (clientePagoPendiente.fechaExpiracionInicial != null)
                         gapH4,
                       if (clientePagoPendiente.fechaExpiracionInicial != null)
                         Text(
-                          'F.Vcto original ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
+                          '${S.of(context).cliente_show_clienteFacturasPendientes_fvctoOriginal} ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
                           style: Theme.of(context).textTheme.caption,
                         ),
                     ],

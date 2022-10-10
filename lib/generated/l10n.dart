@@ -180,6 +180,16 @@ class S {
     );
   }
 
+  /// `Delete`
+  String get commonWidgets_sliderBackground_borrar {
+    return Intl.message(
+      'Delete',
+      name: 'commonWidgets_sliderBackground_borrar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Articles`
   String get articulo_index_titulo {
     return Intl.message(
@@ -551,30 +561,30 @@ class S {
   }
 
   /// `Last prices`
-  String get articulo_show_ultimosPrecios_titulo {
+  String get ultimosPrecios_titulo {
     return Intl.message(
       'Last prices',
-      name: 'articulo_show_ultimosPrecios_titulo',
+      name: 'ultimosPrecios_titulo',
       desc: '',
       args: [],
     );
   }
 
   /// `Price`
-  String get articulo_show_ultimosPrecios_precio {
+  String get ultimosPrecios_precio {
     return Intl.message(
       'Price',
-      name: 'articulo_show_ultimosPrecios_precio',
+      name: 'ultimosPrecios_precio',
       desc: '',
       args: [],
     );
   }
 
   /// `Search...`
-  String get articulo_show_ultimosPrecios_buscarUltimosPrecios {
+  String get ultimosPrecios_buscarUltimosPrecios {
     return Intl.message(
       'Search...',
-      name: 'articulo_show_ultimosPrecios_buscarUltimosPrecios',
+      name: 'ultimosPrecios_buscarUltimosPrecios',
       desc: '',
       args: [],
     );
@@ -785,6 +795,16 @@ class S {
     return Intl.message(
       'Month sales',
       name: 'cliente_show_clienteVentasMes_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get cliente_show_clienteVentasMes_total {
+    return Intl.message(
+      'Total',
+      name: 'cliente_show_clienteVentasMes_total',
       desc: '',
       args: [],
     );
@@ -1274,20 +1294,20 @@ class S {
     );
   }
 
-  /// `Datos relacionados`
+  /// `Related data`
   String get cliente_show_clienteDetalle_datosRelacionados {
     return Intl.message(
-      'Datos relacionados',
+      'Related data',
       name: 'cliente_show_clienteDetalle_datosRelacionados',
       desc: '',
       args: [],
     );
   }
 
-  /// `Consultas`
+  /// `Queries`
   String get cliente_show_clienteDetalle_consultas {
     return Intl.message(
-      'Consultas',
+      'Queries',
       name: 'cliente_show_clienteDetalle_consultas',
       desc: '',
       args: [],
@@ -1309,6 +1329,16 @@ class S {
     return Intl.message(
       'Attachments',
       name: 'cliente_show_clienteAdjunto_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open attachment...`
+  String get cliente_show_clienteAdjunto_abriendoArchivo {
+    return Intl.message(
+      'Open attachment...',
+      name: 'cliente_show_clienteAdjunto_abriendoArchivo',
       desc: '',
       args: [],
     );
@@ -1454,6 +1484,36 @@ class S {
     );
   }
 
+  /// `Bill date`
+  String get cliente_show_clienteFacturasPendientes_fFactura {
+    return Intl.message(
+      'Bill date',
+      name: 'cliente_show_clienteFacturasPendientes_fFactura',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expire date`
+  String get cliente_show_clienteFacturasPendientes_fvcto {
+    return Intl.message(
+      'Expire date',
+      name: 'cliente_show_clienteFacturasPendientes_fvcto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Original expire date`
+  String get cliente_show_clienteFacturasPendientes_fvctoOriginal {
+    return Intl.message(
+      'Original expire date',
+      name: 'cliente_show_clienteFacturasPendientes_fvctoOriginal',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Top 150`
   String get cliente_show_clienteArticulosTop_titulo {
     return Intl.message(
@@ -1499,6 +1559,16 @@ class S {
     return Intl.message(
       'Payment percentage',
       name: 'cliente_alrededor_porcentajeAbonos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading map`
+  String get cliente_alrededor_cargandoMapa {
+    return Intl.message(
+      'Loading map',
+      name: 'cliente_alrededor_cargandoMapa',
       desc: '',
       args: [],
     );
@@ -1594,6 +1664,26 @@ class S {
     );
   }
 
+  /// `Remarks`
+  String get pedido_show_pedidoVentaDetalle_remarks {
+    return Intl.message(
+      'Remarks',
+      name: 'pedido_show_pedidoVentaDetalle_remarks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer sales order`
+  String get pedido_show_pedidoVentaDetalle_pedidoCliente {
+    return Intl.message(
+      'Customer sales order',
+      name: 'pedido_show_pedidoVentaDetalle_pedidoCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price`
   String get pedido_show_pedidoVentaDetalle_precio {
     return Intl.message(
@@ -1609,6 +1699,46 @@ class S {
     return Intl.message(
       'Disc.',
       name: 'pedido_show_pedidoVentaDetalle_dto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out`
+  String get settings_cerrar_sesion {
+    return Intl.message(
+      'Sign out',
+      name: 'settings_cerrar_sesion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User`
+  String get settings_user {
+    return Intl.message(
+      'User',
+      name: 'settings_user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get settings_nombre_usuario {
+    return Intl.message(
+      'Username',
+      name: 'settings_nombre_usuario',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Version`
+  String get settings_version {
+    return Intl.message(
+      'Version',
+      name: 'settings_version',
       desc: '',
       args: [],
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 class SliderBackround extends StatelessWidget {
   const SliderBackround({super.key});
 
@@ -14,14 +16,14 @@ class SliderBackround extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            Icon(
+          children: [
+            const Icon(
               Icons.delete,
               color: Colors.white,
             ),
             Text(
-              'Borrar',
-              style: TextStyle(
+              S.of(context).commonWidgets_sliderBackground_borrar,
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
               ),

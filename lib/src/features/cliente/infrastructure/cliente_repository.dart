@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
@@ -11,7 +12,10 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 import 'package:path_provider/path_provider.dart';
 
 import '../../../core/domain/adjunto_param.dart';
+import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../articulos/domain/articulo.dart';
+import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
@@ -105,6 +109,22 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
       provisionalToken: usuario!.provisionalToken,
       test: usuario.test);
 });
+
+final clienteUltimosPreciosSearchProvider = FutureProvider.autoDispose
+    .family<List<EstadisticasUltimosPrecios>, DefaultListParams>(
+  (ref, defaultListParams) async {
+    final usuario =
+        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+
+    final clienteRepository = ref.watch(clienteRepositoryProvider);
+    return clienteRepository.getClienteUltimosPreciosById(
+        clienteId: defaultListParams.entityId!,
+        usuarioId: usuario!.id,
+        page: defaultListParams.page,
+        searchText: defaultListParams.searchText);
+  },
+  // cacheTime: const Duration(seconds: 60),
+);
 
 const pageSize = 100;
 List<Cliente> clientes = [];
@@ -763,5 +783,60 @@ ORDER BY IMPORTE_ANYO DESC
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
+  }
+
+  Future<List<EstadisticasUltimosPrecios>> getClienteUltimosPreciosById(
+      {required String clienteId,
+      required String usuarioId,
+      required int page,
+      required String searchText}) async {
+    try {
+      final query = _db.select(_db.estadisticasUltimosPreciosTable).join([
+        leftOuterJoin(
+            _db.articuloTable,
+            _db.articuloTable.id
+                .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
+      ]);
+
+      if (searchText != '') {
+        query.where(
+            (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
+                (_db.articuloTable.id.like('%$searchText%') |
+                    _db.articuloTable.descripcionES.like('%$searchText%')));
+      } else {
+        query.where(
+            _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
+      }
+
+      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+
+      query.orderBy(
+        [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
+      );
+
+      return query.asyncMap((row) async {
+        final lastPriceArticuloDTO =
+            row.readTable(_db.estadisticasUltimosPreciosTable);
+        final articuloDTO = row.readTable(_db.articuloTable);
+        return lastPriceArticuloDTO.toDomain(
+            descripcion: getDescriptionInLocalLanguage(
+                articulo:
+                    articuloDTO.toDomain(familia: null, subfamilia: null)));
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  String getDescriptionInLocalLanguage({required Articulo articulo}) {
+    final currentLocale = Intl.getCurrentLocale();
+
+    if (currentLocale == 'es') {
+      return articulo.descripcionES;
+    } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
+      return articulo.descripcionEN!;
+    }
+
+    return articulo.descripcionES;
   }
 }

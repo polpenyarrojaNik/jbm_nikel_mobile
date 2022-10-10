@@ -34,11 +34,13 @@ class EstadisticasUltimosPreciosDTO
   factory EstadisticasUltimosPreciosDTO.fromJson(Map<String, dynamic> json) =>
       _$EstadisticasUltimosPreciosDTOFromJson(json);
 
-  EstadisticasUltimosPrecios toDomain({required String? nombreCliente}) {
+  EstadisticasUltimosPrecios toDomain(
+      {String? nombreCliente, String? descripcion}) {
     return EstadisticasUltimosPrecios(
       clienteId: clienteId,
       nombreCliente: nombreCliente,
       articuloId: articuloId,
+      descripcion: descripcion,
       linea: linea,
       cantidad: cantidad,
       fecha: fecha,

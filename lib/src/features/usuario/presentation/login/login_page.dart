@@ -84,7 +84,8 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     formControlName: 'usuario',
                     textCapitalization: TextCapitalization.characters,
                     validationMessages: {
-                      ValidationMessage.required: (error) => 'Requerido'
+                      ValidationMessage.required: (error) =>
+                          S.of(context).auth_loginPage_requerido,
                     },
                     textInputAction: TextInputAction.next,
                     decoration: AppDecoration.loginField(
