@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_lista_page.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_pedido_venta_page.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/articulo_precio_tarifa_page.dart';
@@ -48,7 +47,11 @@ part 'app_auto_router.gr.dart';
       page: SplashPage,
       path: '/splash',
     ),
-    AutoRoute(page: LoginPage, path: '/login', initial: true),
+    AutoRoute(
+      page: LoginPage,
+      path: '/login',
+      initial: true,
+    ),
     AutoRoute(
       page: ClienteListaPage,
       path: '/cliente',
