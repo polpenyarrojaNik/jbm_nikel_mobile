@@ -61,7 +61,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                 ),
               ),
               PedidoVentaLineaContainer(
-                  pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam)
+                pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+              )
             ],
           ),
         ),
@@ -156,12 +157,14 @@ class PedidoVentaInfoContainer extends StatelessWidget {
       children: [
         if (pedidoVenta.pedidoCliente != null)
           ColumnFieldTextDetalle(
-            fieldTitleValue: 'Pedido Cliente',
+            fieldTitleValue:
+                S.of(context).pedido_show_pedidoVentaDetalle_pedidoCliente,
             value: pedidoVenta.pedidoCliente,
           ),
         if (pedidoVenta.observaciones != null)
           ColumnFieldTextDetalle(
-            fieldTitleValue: 'Observaciones',
+            fieldTitleValue:
+                S.of(context).pedido_show_pedidoVentaDetalle_remarks,
             value: pedidoVenta.observaciones,
           ),
         ColumnFieldTextDetalle(

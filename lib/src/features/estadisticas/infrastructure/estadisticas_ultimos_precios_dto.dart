@@ -39,6 +39,7 @@ class EstadisticasUltimosPreciosDTO
       clienteId: clienteId,
       nombreCliente: nombreCliente,
       articuloId: articuloId,
+      descripcion: descripcion,
       linea: linea,
       cantidad: cantidad,
       fecha: fecha,

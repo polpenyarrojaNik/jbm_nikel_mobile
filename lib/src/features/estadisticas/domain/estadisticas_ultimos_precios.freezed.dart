@@ -19,6 +19,7 @@ mixin _$EstadisticasUltimosPrecios {
   String get clienteId => throw _privateConstructorUsedError;
   String get nombreCliente => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
+  String? get descripcion => throw _privateConstructorUsedError;
   int get linea => throw _privateConstructorUsedError;
   int get cantidad => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
       {String clienteId,
       String nombreCliente,
       String articuloId,
+      String? descripcion,
       int linea,
       int cantidad,
       DateTime fecha,
@@ -72,6 +74,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
     Object? clienteId = freezed,
     Object? nombreCliente = freezed,
     Object? articuloId = freezed,
+    Object? descripcion = freezed,
     Object? linea = freezed,
     Object? cantidad = freezed,
     Object? fecha = freezed,
@@ -97,6 +100,10 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
+      descripcion: descripcion == freezed
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
       linea: linea == freezed
           ? _value.linea
           : linea // ignore: cast_nullable_to_non_nullable
@@ -157,6 +164,7 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
       {String clienteId,
       String nombreCliente,
       String articuloId,
+      String? descripcion,
       int linea,
       int cantidad,
       DateTime fecha,
@@ -188,6 +196,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
     Object? clienteId = freezed,
     Object? nombreCliente = freezed,
     Object? articuloId = freezed,
+    Object? descripcion = freezed,
     Object? linea = freezed,
     Object? cantidad = freezed,
     Object? fecha = freezed,
@@ -213,6 +222,10 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
+      descripcion: descripcion == freezed
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
       linea: linea == freezed
           ? _value.linea
           : linea // ignore: cast_nullable_to_non_nullable
@@ -268,6 +281,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
       {required this.clienteId,
       required this.nombreCliente,
       required this.articuloId,
+      this.descripcion,
       required this.linea,
       required this.cantidad,
       required this.fecha,
@@ -287,6 +301,8 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   final String nombreCliente;
   @override
   final String articuloId;
+  @override
+  final String? descripcion;
   @override
   final int linea;
   @override
@@ -312,7 +328,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 
   @override
   String toString() {
-    return 'EstadisticasUltimosPrecios(clienteId: $clienteId, nombreCliente: $nombreCliente, articuloId: $articuloId, linea: $linea, cantidad: $cantidad, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'EstadisticasUltimosPrecios(clienteId: $clienteId, nombreCliente: $nombreCliente, articuloId: $articuloId, descripcion: $descripcion, linea: $linea, cantidad: $cantidad, fecha: $fecha, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -325,6 +341,8 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
                 .equals(other.nombreCliente, nombreCliente) &&
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
+            const DeepCollectionEquality()
+                .equals(other.descripcion, descripcion) &&
             const DeepCollectionEquality().equals(other.linea, linea) &&
             const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
             const DeepCollectionEquality().equals(other.fecha, fecha) &&
@@ -350,6 +368,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
       const DeepCollectionEquality().hash(clienteId),
       const DeepCollectionEquality().hash(nombreCliente),
       const DeepCollectionEquality().hash(articuloId),
+      const DeepCollectionEquality().hash(descripcion),
       const DeepCollectionEquality().hash(linea),
       const DeepCollectionEquality().hash(cantidad),
       const DeepCollectionEquality().hash(fecha),
@@ -374,6 +393,7 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
       {required final String clienteId,
       required final String nombreCliente,
       required final String articuloId,
+      final String? descripcion,
       required final int linea,
       required final int cantidad,
       required final DateTime fecha,
@@ -393,6 +413,8 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   String get nombreCliente;
   @override
   String get articuloId;
+  @override
+  String? get descripcion;
   @override
   int get linea;
   @override

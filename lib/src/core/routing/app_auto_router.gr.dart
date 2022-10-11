@@ -142,6 +142,15 @@ class _$AppRouter extends RootStackRouter {
               clienteId: args.clienteId,
               nombreCliente: args.nombreCliente));
     },
+    ClienteUltimosPreciosRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteUltimosPreciosRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: ClienteUltimosPreciosPage(
+              key: args.key,
+              clienteId: args.clienteId,
+              nombreCliente: args.nombreCliente));
+    },
     PedidoVentaListRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const PedidoVentaListPage());
@@ -310,6 +319,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(ClienteGrupoNetoRoute.name,
             path: '/cliente/:id/grupos-netos'),
         RouteConfig(ClienteRappelRoute.name, path: '/cliente/:id/rappels'),
+        RouteConfig(ClienteUltimosPreciosRoute.name,
+            path: '/cliente/:id/ultimos-precios'),
         RouteConfig(PedidoVentaListRoute.name, path: '/pedido'),
         RouteConfig(PedidoVentaDetalleRoute.name, path: '/pedido/:id'),
         RouteConfig(PedidoVentaEditRoute.name, path: '/pedido/edit'),
@@ -734,6 +745,36 @@ class ClienteRappelRouteArgs {
   @override
   String toString() {
     return 'ClienteRappelRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteUltimosPreciosPage]
+class ClienteUltimosPreciosRoute
+    extends PageRouteInfo<ClienteUltimosPreciosRouteArgs> {
+  ClienteUltimosPreciosRoute(
+      {Key? key, required String clienteId, required String? nombreCliente})
+      : super(ClienteUltimosPreciosRoute.name,
+            path: '/cliente/:id/ultimos-precios',
+            args: ClienteUltimosPreciosRouteArgs(
+                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+
+  static const String name = 'ClienteUltimosPreciosRoute';
+}
+
+class ClienteUltimosPreciosRouteArgs {
+  const ClienteUltimosPreciosRouteArgs(
+      {this.key, required this.clienteId, required this.nombreCliente});
+
+  final Key? key;
+
+  final String clienteId;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClienteUltimosPreciosRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimos_precios/articulo_ultimos_precios_state.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/ultimos_precios/cliente_ultimos_precios_state.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../core/helpers/debouncer.dart';
@@ -8,22 +9,23 @@ import '../../../../../core/helpers/formatters.dart';
 import '../../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 
-class ArticuloUltimosPreciosPage extends ConsumerStatefulWidget {
-  const ArticuloUltimosPreciosPage(
-      {super.key, required this.articuloId, required this.description});
+class ClienteUltimosPreciosPage extends ConsumerStatefulWidget {
+  const ClienteUltimosPreciosPage(
+      {super.key, required this.clienteId, required this.nombreCliente});
 
-  final String articuloId;
-  final String description;
+  final String clienteId;
+  final String? nombreCliente;
 
   @override
-  ConsumerState<ArticuloUltimosPreciosPage> createState() =>
+  ConsumerState<ClienteUltimosPreciosPage> createState() =>
       _ArticuloUltimosPreciosPageState();
 }
 
 class _ArticuloUltimosPreciosPageState
-    extends ConsumerState<ArticuloUltimosPreciosPage> {
+    extends ConsumerState<ClienteUltimosPreciosPage> {
   final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
 
@@ -64,26 +66,26 @@ class _ArticuloUltimosPreciosPageState
 
   @override
   Widget build(BuildContext context) {
-    final state = ref
-        .watch(articuloUltimosPreciosSearchResultsProvider(widget.articuloId));
+    final state =
+        ref.watch(clienteUltimosPreciosSearchResultsProvider(widget.clienteId));
 
     return Scaffold(
       body: CustomScrollView(
         controller: _scrollController,
         slivers: [
           AppBarDatosRelacionados(
-            title: S.of(context).ultimosPrecios_titulo,
-            entityId: widget.articuloId,
-            subtitle: widget.description,
-            searchTitle: S.of(context).ultimosPrecios_buscarUltimosPrecios,
+            title: 'Últimos precios',
+            entityId: '#${widget.clienteId}',
+            subtitle: widget.nombreCliente,
+            searchTitle: 'Buscar últimos precios',
             onChanged: (searchText) {
               _debouncer.run(() {
                 ref
                     .read(
-                        articuloUltimosPreciosSearchQueryStateProvider.notifier)
+                        clienteUltimosPreciosSearchQueryStateProvider.notifier)
                     .state = searchText;
                 ref
-                    .read(articuloUltimosPreciosPaginationQueryStateProvider
+                    .read(clienteUltimosPreciosPaginationQueryStateProvider
                         .notifier)
                     .state = 1;
               });
@@ -133,58 +135,73 @@ class UltimosPreciosTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 65,
-                  child: Text(
-                    dateFormatter(
-                        ultimosPrecios.fecha.toLocal().toIso8601String()),
-                    style: Theme.of(context).textTheme.caption?.copyWith(
-                        color: Theme.of(context).textTheme.bodyText2?.color),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        dateFormatter(
+                            ultimosPrecios.fecha.toLocal().toIso8601String()),
+                        style: Theme.of(context).textTheme.caption?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodyText2?.color),
+                      ),
+                    ],
                   ),
                 ),
                 const VerticalDivider(),
                 Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  flex: 10,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Flexible(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
-                                ),
-                                Text(numberFormatCantidades(
-                                    ultimosPrecios.cantidad.toDouble())),
-                              ],
-                            ),
-                          ),
                           Text(
-                            formatPrecioYDescuento(
-                              precio: ultimosPrecios.precioDivisa,
-                              tipoPrecio: ultimosPrecios.tipoPrecio,
-                              descuento1: ultimosPrecios.descuento1,
-                              descuento2: ultimosPrecios.descuento2,
-                              descuento3: ultimosPrecios.descuento3,
-                            ),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color),
+                            ultimosPrecios.articuloId,
+                            style: Theme.of(context).textTheme.subtitle2,
                           ),
+                          if (ultimosPrecios.cantidad != null)
+                            Text(
+                              '${numberFormatCantidades(ultimosPrecios.cantidad!.toDouble())} ${(ultimosPrecios.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                            ),
                         ],
                       ),
+                      gapH8,
+                      Text(
+                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecios(
+                          precio: ultimosPrecios.precioDivisa,
+                          tipoPrecio: ultimosPrecios.tipoPrecio,
+                        )}',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                      if (ultimosPrecios.descuento1 != 0 &&
+                          ultimosPrecios.descuento2 != 0 &&
+                          ultimosPrecios.descuento3 != 0)
+                        Text(
+                          '${S.of(context).pedido_show_pedidoVentaDetalle_dto}: ${dtoText(
+                            ultimosPrecios.descuento1,
+                            ultimosPrecios.descuento2,
+                            ultimosPrecios.descuento3,
+                          )}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color),
+                        ),
                     ],
                   ),
                 ),
