@@ -169,10 +169,9 @@ class UltimosPreciosTile extends StatelessWidget {
                             ultimosPrecios.articuloId,
                             style: Theme.of(context).textTheme.subtitle2,
                           ),
-                          if (ultimosPrecios.cantidad != null)
-                            Text(
-                              '${numberFormatCantidades(ultimosPrecios.cantidad!.toDouble())} ${(ultimosPrecios.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
-                            ),
+                          Text(
+                            '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${(ultimosPrecios.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                          ),
                         ],
                       ),
                       gapH8,

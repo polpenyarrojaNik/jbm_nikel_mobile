@@ -8,7 +8,7 @@ class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
   const EstadisticasUltimosPrecios._();
   const factory EstadisticasUltimosPrecios(
       {required String clienteId,
-      required String nombreCliente,
+      String? nombreCliente,
       required String articuloId,
       String? descripcion,
       required int linea,

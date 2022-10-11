@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EstadisticasUltimosPrecios {
   String get clienteId => throw _privateConstructorUsedError;
-  String get nombreCliente => throw _privateConstructorUsedError;
+  String? get nombreCliente => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   String? get descripcion => throw _privateConstructorUsedError;
   int get linea => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
       _$EstadisticasUltimosPreciosCopyWithImpl<$Res>;
   $Res call(
       {String clienteId,
-      String nombreCliente,
+      String? nombreCliente,
       String articuloId,
       String? descripcion,
       int linea,
@@ -95,7 +95,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
   @override
   $Res call(
       {String clienteId,
-      String nombreCliente,
+      String? nombreCliente,
       String articuloId,
       String? descripcion,
       int linea,
@@ -217,7 +217,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -279,7 +279,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
 class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   const _$_EstadisticasUltimosPrecios(
       {required this.clienteId,
-      required this.nombreCliente,
+      this.nombreCliente,
       required this.articuloId,
       this.descripcion,
       required this.linea,
@@ -298,7 +298,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   @override
   final String clienteId;
   @override
-  final String nombreCliente;
+  final String? nombreCliente;
   @override
   final String articuloId;
   @override
@@ -391,7 +391,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   const factory _EstadisticasUltimosPrecios(
       {required final String clienteId,
-      required final String nombreCliente,
+      final String? nombreCliente,
       required final String articuloId,
       final String? descripcion,
       required final int linea,
@@ -410,7 +410,7 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   @override
   String get clienteId;
   @override
-  String get nombreCliente;
+  String? get nombreCliente;
   @override
   String get articuloId;
   @override

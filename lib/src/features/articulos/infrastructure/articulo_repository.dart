@@ -571,7 +571,9 @@ class ArticuloRepository {
             row.readTable(_db.estadisticasUltimosPreciosTable);
         final clienteDTO = row.readTableOrNull(_db.clienteTable);
         return lastPriceArticuloDTO.toDomain(
-            nombreCliente: clienteDTO!.nombreCliente);
+          nombreCliente: clienteDTO!.nombreCliente,
+          descripcion: '',
+        );
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
