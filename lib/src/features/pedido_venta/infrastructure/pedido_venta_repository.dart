@@ -543,6 +543,69 @@ class PedidoVentaRepository {
           );
   }
 
+  Future<Precio> getPrecioGrupoNeto({
+    required String clienteId,
+    required String aticuloId,
+    required int cantidad,
+  }) async {
+    final query = _db.select(_db.clienteGrupoNetoTable).join([
+      innerJoin(
+        _db.articuloGrupoNetoTable,
+        _db.articuloGrupoNetoTable.grupoNetoId
+            .equalsExp(_db.clienteGrupoNetoTable.grupoNetoId),
+      )
+    ])
+      ..where(
+        _db.clienteGrupoNetoTable.clienteId.equals(clienteId) &
+            _db.articuloGrupoNetoTable.articuloId.equals(aticuloId) &
+            _db.articuloGrupoNetoTable.cantidadDesde
+                .isSmallerOrEqualValue(cantidad),
+      )
+      ..orderBy([
+        OrderingTerm(
+            expression: _db.articuloGrupoNetoTable.cantidadDesde,
+            mode: OrderingMode.desc),
+      ])
+      ..limit(1);
+
+    final query2 = _db.select(_db.clienteGrupoNetoTable).join([
+      innerJoin(
+        _db.articuloGrupoNetoTable,
+        _db.articuloGrupoNetoTable.grupoNetoId
+            .equalsExp(_db.clienteGrupoNetoTable.grupoNetoId),
+      )
+    ])
+      ..where(
+        _db.clienteGrupoNetoTable.clienteId.equals(clienteId) &
+            _db.articuloGrupoNetoTable.articuloId.equals(aticuloId) &
+            _db.articuloGrupoNetoTable.cantidadDesde
+                .isSmallerOrEqualValue(cantidad),
+      );
+
+    final queryResult2 = await query2.get();
+    final min = queryResult2.reduce((a, b) {
+      final precioCurr = a.read(_db.articuloGrupoNetoTable.precio)!;
+      final precioNect = b.read(_db.articuloGrupoNetoTable.precio)!;
+      return precioCurr > precioNect ? a : b;
+    });
+
+    final queryResult = await query.getSingleOrNull();
+
+    return queryResult != null
+        ? Precio(
+            precio: (queryResult.read(_db.articuloGrupoNetoTable.precio) ?? 0)
+                .parseMoney(
+                    currencyId:
+                        queryResult.read(_db.articuloGrupoNetoTable.divisaId)),
+            tipoPrecio:
+                (queryResult.read(_db.articuloGrupoNetoTable.tipoPrecio) ?? 1),
+          )
+        : Precio(
+            precio: '0'.parseMoney(),
+            tipoPrecio: 1,
+          );
+  }
+
   Money getPrecioUnitario({
     required Money precio,
     required double tipoPrecio,
