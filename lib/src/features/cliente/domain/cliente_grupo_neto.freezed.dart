@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClienteGrupoNeto {
   String get clienteId => throw _privateConstructorUsedError;
   String get grupoNetoId => throw _privateConstructorUsedError;
-  String? get grupoNetoDescripcion => throw _privateConstructorUsedError;
+  String get grupoNetoDescripcion => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -35,7 +35,7 @@ abstract class $ClienteGrupoNetoCopyWith<$Res> {
   $Res call(
       {String clienteId,
       String grupoNetoId,
-      String? grupoNetoDescripcion,
+      String grupoNetoDescripcion,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -69,7 +69,7 @@ class _$ClienteGrupoNetoCopyWithImpl<$Res>
       grupoNetoDescripcion: grupoNetoDescripcion == freezed
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$_ClienteGrupoNetoCopyWith<$Res>
   $Res call(
       {String clienteId,
       String grupoNetoId,
-      String? grupoNetoDescripcion,
+      String grupoNetoDescripcion,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -128,7 +128,7 @@ class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
       grupoNetoDescripcion: grupoNetoDescripcion == freezed
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -147,7 +147,7 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
   const _$_ClienteGrupoNeto(
       {required this.clienteId,
       required this.grupoNetoId,
-      this.grupoNetoDescripcion,
+      required this.grupoNetoDescripcion,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -157,7 +157,7 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
   @override
   final String grupoNetoId;
   @override
-  final String? grupoNetoDescripcion;
+  final String grupoNetoDescripcion;
   @override
   final DateTime lastUpdated;
   @override
@@ -202,7 +202,7 @@ abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
   const factory _ClienteGrupoNeto(
       {required final String clienteId,
       required final String grupoNetoId,
-      final String? grupoNetoDescripcion,
+      required final String grupoNetoDescripcion,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClienteGrupoNeto;
   const _ClienteGrupoNeto._() : super._();
@@ -212,7 +212,7 @@ abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
   @override
   String get grupoNetoId;
   @override
-  String? get grupoNetoDescripcion;
+  String get grupoNetoDescripcion;
   @override
   DateTime get lastUpdated;
   @override

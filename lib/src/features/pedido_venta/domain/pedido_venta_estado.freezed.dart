@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PedidoVentaEstado {
-  double get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get descripcion => throw _privateConstructorUsedError;
   DateTime get lastUpdate => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -31,7 +31,7 @@ abstract class $PedidoVentaEstadoCopyWith<$Res> {
   factory $PedidoVentaEstadoCopyWith(
           PedidoVentaEstado value, $Res Function(PedidoVentaEstado) then) =
       _$PedidoVentaEstadoCopyWithImpl<$Res>;
-  $Res call({double id, String descripcion, DateTime lastUpdate, bool deleted});
+  $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
@@ -54,7 +54,7 @@ class _$PedidoVentaEstadoCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descripcion: descripcion == freezed
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$_PedidoVentaEstadoCopyWith<$Res>
           $Res Function(_$_PedidoVentaEstado) then) =
       __$$_PedidoVentaEstadoCopyWithImpl<$Res>;
   @override
-  $Res call({double id, String descripcion, DateTime lastUpdate, bool deleted});
+  $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_PedidoVentaEstadoCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descripcion: descripcion == freezed
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_PedidoVentaEstado extends _PedidoVentaEstado {
       : super._();
 
   @override
-  final double id;
+  final int id;
   @override
   final String descripcion;
   @override
@@ -174,14 +174,14 @@ class _$_PedidoVentaEstado extends _PedidoVentaEstado {
 
 abstract class _PedidoVentaEstado extends PedidoVentaEstado {
   const factory _PedidoVentaEstado(
-      {required final double id,
+      {required final int id,
       required final String descripcion,
       required final DateTime lastUpdate,
       required final bool deleted}) = _$_PedidoVentaEstado;
   const _PedidoVentaEstado._() : super._();
 
   @override
-  double get id;
+  int get id;
   @override
   String get descripcion;
   @override

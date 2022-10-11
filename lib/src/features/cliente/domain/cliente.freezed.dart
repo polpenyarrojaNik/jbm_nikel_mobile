@@ -17,27 +17,27 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Cliente {
   String get id => throw _privateConstructorUsedError;
-  String? get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreFiscal => throw _privateConstructorUsedError;
   String? get nif => throw _privateConstructorUsedError;
-  String? get nombreFiscal => throw _privateConstructorUsedError;
   String? get direccionFiscal1 => throw _privateConstructorUsedError;
   String? get direccionFiscal2 => throw _privateConstructorUsedError;
   String? get codigoPostalFiscal => throw _privateConstructorUsedError;
   String? get poblacionFiscal => throw _privateConstructorUsedError;
   String? get provinciaFiscal => throw _privateConstructorUsedError;
   Pais? get paisFiscal => throw _privateConstructorUsedError;
-  double? get latitudFiscal => throw _privateConstructorUsedError;
-  double? get longitudFiscal => throw _privateConstructorUsedError;
+  double get latitudFiscal => throw _privateConstructorUsedError;
+  double get longitudFiscal => throw _privateConstructorUsedError;
   String get empresaId => throw _privateConstructorUsedError;
   double get iva => throw _privateConstructorUsedError;
-  Money? get ventasAnyoActual => throw _privateConstructorUsedError;
-  Money? get ventasAnyoAnterior => throw _privateConstructorUsedError;
-  Money? get ventasHaceDosAnyos => throw _privateConstructorUsedError;
-  double? get margenAnyoActual => throw _privateConstructorUsedError;
-  double? get margenAnyoAnterior => throw _privateConstructorUsedError;
-  double? get margenHaceDosAnyos => throw _privateConstructorUsedError;
-  double? get porcentajeAbonos => throw _privateConstructorUsedError;
-  double? get porcentajeGarantias => throw _privateConstructorUsedError;
+  Money get ventasAnyoActual => throw _privateConstructorUsedError;
+  Money get ventasAnyoAnterior => throw _privateConstructorUsedError;
+  Money get ventasHaceDosAnyos => throw _privateConstructorUsedError;
+  double get margenAnyoActual => throw _privateConstructorUsedError;
+  double get margenAnyoAnterior => throw _privateConstructorUsedError;
+  double get margenHaceDosAnyos => throw _privateConstructorUsedError;
+  double get porcentajeAbonos => throw _privateConstructorUsedError;
+  double get porcentajeGarantias => throw _privateConstructorUsedError;
   String? get centralCompras => throw _privateConstructorUsedError;
   String? get urlWeb => throw _privateConstructorUsedError;
   Divisa? get divisa => throw _privateConstructorUsedError;
@@ -80,27 +80,27 @@ abstract class $ClienteCopyWith<$Res> {
       _$ClienteCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String? nombreCliente,
+      String nombreCliente,
+      String nombreFiscal,
       String? nif,
-      String? nombreFiscal,
       String? direccionFiscal1,
       String? direccionFiscal2,
       String? codigoPostalFiscal,
       String? poblacionFiscal,
       String? provinciaFiscal,
       Pais? paisFiscal,
-      double? latitudFiscal,
-      double? longitudFiscal,
+      double latitudFiscal,
+      double longitudFiscal,
       String empresaId,
       double iva,
-      Money? ventasAnyoActual,
-      Money? ventasAnyoAnterior,
-      Money? ventasHaceDosAnyos,
-      double? margenAnyoActual,
-      double? margenAnyoAnterior,
-      double? margenHaceDosAnyos,
-      double? porcentajeAbonos,
-      double? porcentajeGarantias,
+      Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
+      Money ventasHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
+      double porcentajeAbonos,
+      double porcentajeGarantias,
       String? centralCompras,
       String? urlWeb,
       Divisa? divisa,
@@ -149,8 +149,8 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? nombreCliente = freezed,
-    Object? nif = freezed,
     Object? nombreFiscal = freezed,
+    Object? nif = freezed,
     Object? direccionFiscal1 = freezed,
     Object? direccionFiscal2 = freezed,
     Object? codigoPostalFiscal = freezed,
@@ -205,14 +205,14 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nif: nif == freezed
-          ? _value.nif
-          : nif // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       nombreFiscal: nombreFiscal == freezed
           ? _value.nombreFiscal
           : nombreFiscal // ignore: cast_nullable_to_non_nullable
+              as String,
+      nif: nif == freezed
+          ? _value.nif
+          : nif // ignore: cast_nullable_to_non_nullable
               as String?,
       direccionFiscal1: direccionFiscal1 == freezed
           ? _value.direccionFiscal1
@@ -241,11 +241,11 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       latitudFiscal: latitudFiscal == freezed
           ? _value.latitudFiscal
           : latitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       longitudFiscal: longitudFiscal == freezed
           ? _value.longitudFiscal
           : longitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -257,35 +257,35 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as Money?,
+              as Money,
       ventasAnyoAnterior: ventasAnyoAnterior == freezed
           ? _value.ventasAnyoAnterior
           : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as Money?,
+              as Money,
       ventasHaceDosAnyos: ventasHaceDosAnyos == freezed
           ? _value.ventasHaceDosAnyos
           : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as Money?,
+              as Money,
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeGarantias: porcentajeGarantias == freezed
           ? _value.porcentajeGarantias
           : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       centralCompras: centralCompras == freezed
           ? _value.centralCompras
           : centralCompras // ignore: cast_nullable_to_non_nullable
@@ -474,27 +474,27 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
   @override
   $Res call(
       {String id,
-      String? nombreCliente,
+      String nombreCliente,
+      String nombreFiscal,
       String? nif,
-      String? nombreFiscal,
       String? direccionFiscal1,
       String? direccionFiscal2,
       String? codigoPostalFiscal,
       String? poblacionFiscal,
       String? provinciaFiscal,
       Pais? paisFiscal,
-      double? latitudFiscal,
-      double? longitudFiscal,
+      double latitudFiscal,
+      double longitudFiscal,
       String empresaId,
       double iva,
-      Money? ventasAnyoActual,
-      Money? ventasAnyoAnterior,
-      Money? ventasHaceDosAnyos,
-      double? margenAnyoActual,
-      double? margenAnyoAnterior,
-      double? margenHaceDosAnyos,
-      double? porcentajeAbonos,
-      double? porcentajeGarantias,
+      Money ventasAnyoActual,
+      Money ventasAnyoAnterior,
+      Money ventasHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
+      double porcentajeAbonos,
+      double porcentajeGarantias,
       String? centralCompras,
       String? urlWeb,
       Divisa? divisa,
@@ -550,8 +550,8 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? nombreCliente = freezed,
-    Object? nif = freezed,
     Object? nombreFiscal = freezed,
+    Object? nif = freezed,
     Object? direccionFiscal1 = freezed,
     Object? direccionFiscal2 = freezed,
     Object? codigoPostalFiscal = freezed,
@@ -606,14 +606,14 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
-      nif: nif == freezed
-          ? _value.nif
-          : nif // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       nombreFiscal: nombreFiscal == freezed
           ? _value.nombreFiscal
           : nombreFiscal // ignore: cast_nullable_to_non_nullable
+              as String,
+      nif: nif == freezed
+          ? _value.nif
+          : nif // ignore: cast_nullable_to_non_nullable
               as String?,
       direccionFiscal1: direccionFiscal1 == freezed
           ? _value.direccionFiscal1
@@ -642,11 +642,11 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       latitudFiscal: latitudFiscal == freezed
           ? _value.latitudFiscal
           : latitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       longitudFiscal: longitudFiscal == freezed
           ? _value.longitudFiscal
           : longitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -658,35 +658,35 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as Money?,
+              as Money,
       ventasAnyoAnterior: ventasAnyoAnterior == freezed
           ? _value.ventasAnyoAnterior
           : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as Money?,
+              as Money,
       ventasHaceDosAnyos: ventasHaceDosAnyos == freezed
           ? _value.ventasHaceDosAnyos
           : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as Money?,
+              as Money,
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeGarantias: porcentajeGarantias == freezed
           ? _value.porcentajeGarantias
           : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       centralCompras: centralCompras == freezed
           ? _value.centralCompras
           : centralCompras // ignore: cast_nullable_to_non_nullable
@@ -804,27 +804,27 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
 class _$_Cliente extends _Cliente {
   const _$_Cliente(
       {required this.id,
-      this.nombreCliente,
+      required this.nombreCliente,
+      required this.nombreFiscal,
       this.nif,
-      this.nombreFiscal,
       this.direccionFiscal1,
       this.direccionFiscal2,
       this.codigoPostalFiscal,
       this.poblacionFiscal,
       this.provinciaFiscal,
       this.paisFiscal,
-      this.latitudFiscal,
-      this.longitudFiscal,
+      required this.latitudFiscal,
+      required this.longitudFiscal,
       required this.empresaId,
       required this.iva,
-      this.ventasAnyoActual,
-      this.ventasAnyoAnterior,
-      this.ventasHaceDosAnyos,
-      this.margenAnyoActual,
-      this.margenAnyoAnterior,
-      this.margenHaceDosAnyos,
-      this.porcentajeAbonos,
-      this.porcentajeGarantias,
+      required this.ventasAnyoActual,
+      required this.ventasAnyoAnterior,
+      required this.ventasHaceDosAnyos,
+      required this.margenAnyoActual,
+      required this.margenAnyoAnterior,
+      required this.margenHaceDosAnyos,
+      required this.porcentajeAbonos,
+      required this.porcentajeGarantias,
       this.centralCompras,
       this.urlWeb,
       this.divisa,
@@ -857,11 +857,11 @@ class _$_Cliente extends _Cliente {
   @override
   final String id;
   @override
-  final String? nombreCliente;
+  final String nombreCliente;
+  @override
+  final String nombreFiscal;
   @override
   final String? nif;
-  @override
-  final String? nombreFiscal;
   @override
   final String? direccionFiscal1;
   @override
@@ -875,29 +875,29 @@ class _$_Cliente extends _Cliente {
   @override
   final Pais? paisFiscal;
   @override
-  final double? latitudFiscal;
+  final double latitudFiscal;
   @override
-  final double? longitudFiscal;
+  final double longitudFiscal;
   @override
   final String empresaId;
   @override
   final double iva;
   @override
-  final Money? ventasAnyoActual;
+  final Money ventasAnyoActual;
   @override
-  final Money? ventasAnyoAnterior;
+  final Money ventasAnyoAnterior;
   @override
-  final Money? ventasHaceDosAnyos;
+  final Money ventasHaceDosAnyos;
   @override
-  final double? margenAnyoActual;
+  final double margenAnyoActual;
   @override
-  final double? margenAnyoAnterior;
+  final double margenAnyoAnterior;
   @override
-  final double? margenHaceDosAnyos;
+  final double margenHaceDosAnyos;
   @override
-  final double? porcentajeAbonos;
+  final double porcentajeAbonos;
   @override
-  final double? porcentajeGarantias;
+  final double porcentajeGarantias;
   @override
   final String? centralCompras;
   @override
@@ -955,7 +955,7 @@ class _$_Cliente extends _Cliente {
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -966,9 +966,9 @@ class _$_Cliente extends _Cliente {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other.nombreCliente, nombreCliente) &&
-            const DeepCollectionEquality().equals(other.nif, nif) &&
             const DeepCollectionEquality()
                 .equals(other.nombreFiscal, nombreFiscal) &&
+            const DeepCollectionEquality().equals(other.nif, nif) &&
             const DeepCollectionEquality()
                 .equals(other.direccionFiscal1, direccionFiscal1) &&
             const DeepCollectionEquality()
@@ -1061,8 +1061,8 @@ class _$_Cliente extends _Cliente {
         runtimeType,
         const DeepCollectionEquality().hash(id),
         const DeepCollectionEquality().hash(nombreCliente),
-        const DeepCollectionEquality().hash(nif),
         const DeepCollectionEquality().hash(nombreFiscal),
+        const DeepCollectionEquality().hash(nif),
         const DeepCollectionEquality().hash(direccionFiscal1),
         const DeepCollectionEquality().hash(direccionFiscal2),
         const DeepCollectionEquality().hash(codigoPostalFiscal),
@@ -1119,27 +1119,27 @@ class _$_Cliente extends _Cliente {
 abstract class _Cliente extends Cliente {
   const factory _Cliente(
       {required final String id,
-      final String? nombreCliente,
+      required final String nombreCliente,
+      required final String nombreFiscal,
       final String? nif,
-      final String? nombreFiscal,
       final String? direccionFiscal1,
       final String? direccionFiscal2,
       final String? codigoPostalFiscal,
       final String? poblacionFiscal,
       final String? provinciaFiscal,
       final Pais? paisFiscal,
-      final double? latitudFiscal,
-      final double? longitudFiscal,
+      required final double latitudFiscal,
+      required final double longitudFiscal,
       required final String empresaId,
       required final double iva,
-      final Money? ventasAnyoActual,
-      final Money? ventasAnyoAnterior,
-      final Money? ventasHaceDosAnyos,
-      final double? margenAnyoActual,
-      final double? margenAnyoAnterior,
-      final double? margenHaceDosAnyos,
-      final double? porcentajeAbonos,
-      final double? porcentajeGarantias,
+      required final Money ventasAnyoActual,
+      required final Money ventasAnyoAnterior,
+      required final Money ventasHaceDosAnyos,
+      required final double margenAnyoActual,
+      required final double margenAnyoAnterior,
+      required final double margenHaceDosAnyos,
+      required final double porcentajeAbonos,
+      required final double porcentajeGarantias,
       final String? centralCompras,
       final String? urlWeb,
       final Divisa? divisa,
@@ -1172,11 +1172,11 @@ abstract class _Cliente extends Cliente {
   @override
   String get id;
   @override
-  String? get nombreCliente;
+  String get nombreCliente;
+  @override
+  String get nombreFiscal;
   @override
   String? get nif;
-  @override
-  String? get nombreFiscal;
   @override
   String? get direccionFiscal1;
   @override
@@ -1190,29 +1190,29 @@ abstract class _Cliente extends Cliente {
   @override
   Pais? get paisFiscal;
   @override
-  double? get latitudFiscal;
+  double get latitudFiscal;
   @override
-  double? get longitudFiscal;
+  double get longitudFiscal;
   @override
   String get empresaId;
   @override
   double get iva;
   @override
-  Money? get ventasAnyoActual;
+  Money get ventasAnyoActual;
   @override
-  Money? get ventasAnyoAnterior;
+  Money get ventasAnyoAnterior;
   @override
-  Money? get ventasHaceDosAnyos;
+  Money get ventasHaceDosAnyos;
   @override
-  double? get margenAnyoActual;
+  double get margenAnyoActual;
   @override
-  double? get margenAnyoAnterior;
+  double get margenAnyoAnterior;
   @override
-  double? get margenHaceDosAnyos;
+  double get margenHaceDosAnyos;
   @override
-  double? get porcentajeAbonos;
+  double get porcentajeAbonos;
   @override
-  double? get porcentajeGarantias;
+  double get porcentajeGarantias;
   @override
   String? get centralCompras;
   @override

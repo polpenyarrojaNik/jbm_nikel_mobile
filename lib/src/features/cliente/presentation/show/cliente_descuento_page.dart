@@ -82,9 +82,9 @@ class ClienteDescuentoTile extends StatelessWidget {
                   Text(
                       '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
                       style: Theme.of(context).textTheme.caption),
-                  if (clienteDescuento.cantidadDesDe != 1)
+                  if (clienteDescuento.cantidadDesde != 1)
                     Text(
-                        '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesDe)} ${S.of(context).unidades}',
+                        '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidades}',
                         style: Theme.of(context).textTheme.headline6),
                 ],
               ),

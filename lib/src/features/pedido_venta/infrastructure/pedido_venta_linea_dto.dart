@@ -19,10 +19,10 @@ class PedidoVentaLineaDTO
     @JsonKey(name: 'PEDIDO_ID') required String pedidoVentaId,
     @JsonKey(name: 'PEDIDO_LINEA_ID') required String pedidoVentaLineaId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION') String? articuloDescription,
-    @JsonKey(name: 'CANTIDAD') required double cantidad,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION') required String articuloDescription,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
     @JsonKey(name: 'DESCUENTO1') required double descuento1,
     @JsonKey(name: 'DESCUENTO2') required double descuento2,
     @JsonKey(name: 'DESCUENTO3') required double descuento3,
@@ -44,7 +44,7 @@ class PedidoVentaLineaDTO
         articuloId: articuloId,
         articuloDescription: articuloDescription,
         cantidad: cantidad,
-        precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
+        precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
         divisaId: divisaId,
         tipoPrecio: tipoPrecio,
         descuento1: descuento1,
@@ -52,7 +52,7 @@ class PedidoVentaLineaDTO
         descuento3: descuento3,
         pedidoLineaIdComponente: pedidoLineaIdComponente,
         importeLinea: (importeLinea != null)
-            ? importeLinea!.parseMoney(importeLinea!, divisaId)
+            ? importeLinea!.parseMoney(currencyId: divisaId)
             : null,
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
@@ -86,11 +86,10 @@ class PedidoVentaLineaTable extends Table {
   TextColumn get pedidoVentaId => text().named('PEDIDO_ID')();
   TextColumn get pedidoVentaLineaId => text().named('PEDIDO_LINEA_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
-  TextColumn get articuloDescription =>
-      text().nullable().named('ARTICULO_DESCRIPCION')();
-  RealColumn get cantidad => real().named('CANTIDAD')();
+  TextColumn get articuloDescription => text().named('ARTICULO_DESCRIPCION')();
+  IntColumn get cantidad => integer().named('CANTIDAD')();
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
-  RealColumn get tipoPrecio => real().nullable().named('TIPO_PRECIO')();
+  IntColumn get tipoPrecio => integer().named('TIPO_PRECIO')();
   RealColumn get descuento1 => real().named('DESCUENTO1')();
   RealColumn get descuento2 => real().named('DESCUENTO2')();
   RealColumn get descuento3 => real().named('DESCUENTO3')();

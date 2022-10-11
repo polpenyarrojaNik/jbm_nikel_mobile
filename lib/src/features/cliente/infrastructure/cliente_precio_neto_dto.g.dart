@@ -11,9 +11,9 @@ _$_ClientePrecioNetoDTO _$$_ClientePrecioNetoDTOFromJson(
     _$_ClientePrecioNetoDTO(
       clienteId: json['CLIENTE_ID'] as String,
       articuloId: json['ARTICULO_ID'] as String,
-      cantidadDesDe: (json['CANTIDAD_DESDE'] as num).toDouble(),
+      cantidadDesde: json['CANTIDAD_DESDE'] as int,
       precio: (json['PRECIO'] as num).toDouble(),
-      tipoPrecio: (json['TIPO_PRECIO'] as num?)?.toDouble(),
+      tipoPrecio: json['TIPO_PRECIO'] as int,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -23,7 +23,7 @@ Map<String, dynamic> _$$_ClientePrecioNetoDTOToJson(
     <String, dynamic>{
       'CLIENTE_ID': instance.clienteId,
       'ARTICULO_ID': instance.articuloId,
-      'CANTIDAD_DESDE': instance.cantidadDesDe,
+      'CANTIDAD_DESDE': instance.cantidadDesde,
       'PRECIO': instance.precio,
       'TIPO_PRECIO': instance.tipoPrecio,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),

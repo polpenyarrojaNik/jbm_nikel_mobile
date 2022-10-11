@@ -11,7 +11,7 @@ _$_ClienteGrupoNetoDTO _$$_ClienteGrupoNetoDTOFromJson(
     _$_ClienteGrupoNetoDTO(
       clienteId: json['CLIENTE_ID'] as String,
       grupoNetoId: json['GRUPO_NETO_ID'] as String,
-      grupoNetoDescripcion: json['GRUPO_NETO_DESCRIPCION'] as String?,
+      grupoNetoDescripcion: json['GRUPO_NETO_DESCRIPCION'] as String,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );

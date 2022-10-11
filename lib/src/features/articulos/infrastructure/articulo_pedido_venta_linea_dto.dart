@@ -16,12 +16,12 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
     @JsonKey(name: 'PEDIDO_ID') required String pedidoVentaId,
     @JsonKey(name: 'PEDIDO_LINEA_ID') required String id,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'ARTICULO_DESCRIPCION') String? articuloDescription,
-    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
-    @JsonKey(name: 'NOMRE_CLIENTE') String? nombreCliente,
-    @JsonKey(name: 'CANTIDAD') required double cantidad,
+    @JsonKey(name: 'ARTICULO_DESCRIPCION') required String articuloDescription,
+    @JsonKey(name: 'CLIENTE_ID') required String clienteId,
+    @JsonKey(name: 'NOMRE_CLIENTE') required String nombreCliente,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
-    @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
     @JsonKey(name: 'DESCUENTO1') required double descuento1,
     @JsonKey(name: 'DESCUENTO2') required double descuento2,
     @JsonKey(name: 'DESCUENTO3') required double descuento3,
@@ -42,7 +42,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
         clienteId: clienteId,
         nombreCliente: nombreCliente,
         cantidad: cantidad,
-        precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
+        precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
         divisaId: divisaId,
         tipoPrecio: tipoPrecio,
         descuento1: descuento1,
@@ -54,8 +54,8 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
 
   factory ArticuloPedidoVentaLineaDTO.fromDB(
       {required PedidoVentaLineaDTO pedidoVentaLineaDto,
-      String? clienteId,
-      String? nombreCliente}) {
+      required String clienteId,
+      required String nombreCliente}) {
     return ArticuloPedidoVentaLineaDTO(
         empresaId: pedidoVentaLineaDto.empresaId,
         pedidoVentaId: pedidoVentaLineaDto.pedidoVentaId,

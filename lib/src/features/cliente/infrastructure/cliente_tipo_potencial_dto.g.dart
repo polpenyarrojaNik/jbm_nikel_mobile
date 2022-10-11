@@ -10,7 +10,7 @@ _$_ClienteTipoPotencialDTO _$$_ClienteTipoPotencialDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ClienteTipoPotencialDTO(
       id: json['TIPO_POTENCIAL_ID'] as String,
-      descripcionES: json['DESCRIPCION_ES'] as String?,
+      descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
       descripcionFR: json['DESCRIPCION_FR'] as String?,
       descripcionDE: json['DESCRIPCION_DE'] as String?,

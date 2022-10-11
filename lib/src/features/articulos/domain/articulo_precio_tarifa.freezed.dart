@@ -18,11 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArticuloPrecioTarifa {
   String get articuloId => throw _privateConstructorUsedError;
   String get tarifaId => throw _privateConstructorUsedError;
-  String? get tarifaDescripcion => throw _privateConstructorUsedError;
-  double get cantidadDesDe => throw _privateConstructorUsedError;
+  String get tarifaDescripcion => throw _privateConstructorUsedError;
+  int get cantidadDesde => throw _privateConstructorUsedError;
   Money get precio => throw _privateConstructorUsedError;
   String get divisaId => throw _privateConstructorUsedError;
-  double? get tipoPrecio => throw _privateConstructorUsedError;
+  int get tipoPrecio => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -39,11 +39,11 @@ abstract class $ArticuloPrecioTarifaCopyWith<$Res> {
   $Res call(
       {String articuloId,
       String tarifaId,
-      String? tarifaDescripcion,
-      double cantidadDesDe,
+      String tarifaDescripcion,
+      int cantidadDesde,
       Money precio,
       String divisaId,
-      double? tipoPrecio,
+      int tipoPrecio,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -62,7 +62,7 @@ class _$ArticuloPrecioTarifaCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? precio = freezed,
     Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
@@ -81,11 +81,11 @@ class _$ArticuloPrecioTarifaCopyWithImpl<$Res>
       tarifaDescripcion: tarifaDescripcion == freezed
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ class _$ArticuloPrecioTarifaCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -120,11 +120,11 @@ abstract class _$$_ArticuloPrecioTarifaCopyWith<$Res>
   $Res call(
       {String articuloId,
       String tarifaId,
-      String? tarifaDescripcion,
-      double cantidadDesDe,
+      String tarifaDescripcion,
+      int cantidadDesde,
       Money precio,
       String divisaId,
-      double? tipoPrecio,
+      int tipoPrecio,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -145,7 +145,7 @@ class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? precio = freezed,
     Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
@@ -164,11 +164,11 @@ class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
       tarifaDescripcion: tarifaDescripcion == freezed
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -199,11 +199,11 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
   const _$_ArticuloPrecioTarifa(
       {required this.articuloId,
       required this.tarifaId,
-      this.tarifaDescripcion,
-      required this.cantidadDesDe,
+      required this.tarifaDescripcion,
+      required this.cantidadDesde,
       required this.precio,
       required this.divisaId,
-      this.tipoPrecio,
+      required this.tipoPrecio,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -213,15 +213,15 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
   @override
   final String tarifaId;
   @override
-  final String? tarifaDescripcion;
+  final String tarifaDescripcion;
   @override
-  final double cantidadDesDe;
+  final int cantidadDesde;
   @override
   final Money precio;
   @override
   final String divisaId;
   @override
-  final double? tipoPrecio;
+  final int tipoPrecio;
   @override
   final DateTime lastUpdated;
   @override
@@ -229,7 +229,7 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
 
   @override
   String toString() {
-    return 'ArticuloPrecioTarifa(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesDe: $cantidadDesDe, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloPrecioTarifa(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -243,7 +243,7 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
             const DeepCollectionEquality()
                 .equals(other.tarifaDescripcion, tarifaDescripcion) &&
             const DeepCollectionEquality()
-                .equals(other.cantidadDesDe, cantidadDesDe) &&
+                .equals(other.cantidadDesde, cantidadDesde) &&
             const DeepCollectionEquality().equals(other.precio, precio) &&
             const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
@@ -259,7 +259,7 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(tarifaId),
       const DeepCollectionEquality().hash(tarifaDescripcion),
-      const DeepCollectionEquality().hash(cantidadDesDe),
+      const DeepCollectionEquality().hash(cantidadDesde),
       const DeepCollectionEquality().hash(precio),
       const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(tipoPrecio),
@@ -277,11 +277,11 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
   const factory _ArticuloPrecioTarifa(
       {required final String articuloId,
       required final String tarifaId,
-      final String? tarifaDescripcion,
-      required final double cantidadDesDe,
+      required final String tarifaDescripcion,
+      required final int cantidadDesde,
       required final Money precio,
       required final String divisaId,
-      final double? tipoPrecio,
+      required final int tipoPrecio,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloPrecioTarifa;
   const _ArticuloPrecioTarifa._() : super._();
@@ -291,15 +291,15 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
   @override
   String get tarifaId;
   @override
-  String? get tarifaDescripcion;
+  String get tarifaDescripcion;
   @override
-  double get cantidadDesDe;
+  int get cantidadDesde;
   @override
   Money get precio;
   @override
   String get divisaId;
   @override
-  double? get tipoPrecio;
+  int get tipoPrecio;
   @override
   DateTime get lastUpdated;
   @override

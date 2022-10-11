@@ -16,7 +16,7 @@ class PedidoVentaEstadoDTO
     implements Insertable<PedidoVentaEstadoDTO> {
   const PedidoVentaEstadoDTO._();
   const factory PedidoVentaEstadoDTO({
-    @JsonKey(name: 'ESTADO_PEDIDO_ID') required double id,
+    @JsonKey(name: 'ESTADO_PEDIDO_ID') required int id,
     @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
     @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
     @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
@@ -117,7 +117,7 @@ class PedidoVentaEstadoTable extends Table {
   @override
   Set<Column> get primaryKey => {id};
 
-  RealColumn get id => real().named('ESTADO_PEDIDO_ID')();
+  IntColumn get id => integer().named('ESTADO_PEDIDO_ID')();
   TextColumn get descripcionES => text().named('DESCRIPCION_ES')();
   TextColumn get descripcionEN => text().nullable().named('DESCRIPCION_EN')();
   TextColumn get descripcionFR => text().nullable().named('DESCRIPCION_FR')();

@@ -9,11 +9,11 @@ class ArticuloGrupoNeto with _$ArticuloGrupoNeto {
   const factory ArticuloGrupoNeto(
       {required String articuloId,
       required String grupoNetoId,
-      String? grupoNetoDescripcion,
-      required double cantidadDesDe,
+      required String grupoNetoDescripcion,
+      required int cantidadDesde,
       required Money precio,
       required String divisaId,
-      double? tipoPrecio,
+      required int tipoPrecio,
       required DateTime lastUpdated,
       required bool deleted}) = _ArticuloGrupoNeto;
 }

@@ -17,14 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EstadisticasUltimosPrecios {
   String get clienteId => throw _privateConstructorUsedError;
-  String? get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   int get linea => throw _privateConstructorUsedError;
-  int? get cantidad => throw _privateConstructorUsedError;
+  int get cantidad => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
   Money get precioDivisa => throw _privateConstructorUsedError;
   String get divisaId => throw _privateConstructorUsedError;
-  double get tipoPrecio => throw _privateConstructorUsedError;
+  int get tipoPrecio => throw _privateConstructorUsedError;
   double get descuento1 => throw _privateConstructorUsedError;
   double get descuento2 => throw _privateConstructorUsedError;
   double get descuento3 => throw _privateConstructorUsedError;
@@ -43,14 +43,14 @@ abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
       _$EstadisticasUltimosPreciosCopyWithImpl<$Res>;
   $Res call(
       {String clienteId,
-      String? nombreCliente,
+      String nombreCliente,
       String articuloId,
       int linea,
-      int? cantidad,
+      int cantidad,
       DateTime fecha,
       Money precioDivisa,
       String divisaId,
-      double tipoPrecio,
+      int tipoPrecio,
       double descuento1,
       double descuento2,
       double descuento3,
@@ -92,7 +92,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       fecha: fecha == freezed
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descuento1: descuento1 == freezed
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -155,14 +155,14 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
   @override
   $Res call(
       {String clienteId,
-      String? nombreCliente,
+      String nombreCliente,
       String articuloId,
       int linea,
-      int? cantidad,
+      int cantidad,
       DateTime fecha,
       Money precioDivisa,
       String divisaId,
-      double tipoPrecio,
+      int tipoPrecio,
       double descuento1,
       double descuento2,
       double descuento3,
@@ -208,7 +208,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
@@ -220,7 +220,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       fecha: fecha == freezed
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
@@ -236,7 +236,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descuento1: descuento1 == freezed
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -266,7 +266,7 @@ class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
 class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   const _$_EstadisticasUltimosPrecios(
       {required this.clienteId,
-      this.nombreCliente,
+      required this.nombreCliente,
       required this.articuloId,
       required this.linea,
       required this.cantidad,
@@ -284,13 +284,13 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   @override
   final String clienteId;
   @override
-  final String? nombreCliente;
+  final String nombreCliente;
   @override
   final String articuloId;
   @override
   final int linea;
   @override
-  final int? cantidad;
+  final int cantidad;
   @override
   final DateTime fecha;
   @override
@@ -298,7 +298,7 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
   @override
   final String divisaId;
   @override
-  final double tipoPrecio;
+  final int tipoPrecio;
   @override
   final double descuento1;
   @override
@@ -372,14 +372,14 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
 abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   const factory _EstadisticasUltimosPrecios(
       {required final String clienteId,
-      final String? nombreCliente,
+      required final String nombreCliente,
       required final String articuloId,
       required final int linea,
-      required final int? cantidad,
+      required final int cantidad,
       required final DateTime fecha,
       required final Money precioDivisa,
       required final String divisaId,
-      required final double tipoPrecio,
+      required final int tipoPrecio,
       required final double descuento1,
       required final double descuento2,
       required final double descuento3,
@@ -390,13 +390,13 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   @override
   String get clienteId;
   @override
-  String? get nombreCliente;
+  String get nombreCliente;
   @override
   String get articuloId;
   @override
   int get linea;
   @override
-  int? get cantidad;
+  int get cantidad;
   @override
   DateTime get fecha;
   @override
@@ -404,7 +404,7 @@ abstract class _EstadisticasUltimosPrecios extends EstadisticasUltimosPrecios {
   @override
   String get divisaId;
   @override
-  double get tipoPrecio;
+  int get tipoPrecio;
   @override
   double get descuento1;
   @override

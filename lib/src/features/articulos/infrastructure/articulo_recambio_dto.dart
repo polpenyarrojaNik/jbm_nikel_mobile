@@ -18,7 +18,7 @@ class ArticuloRecambioDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'RECAMBIO_ID') required String id,
     @JsonKey(name: 'DESCRIPCION') required String descripcion,
-    @JsonKey(name: 'CANTIDAD') required double cantidad,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloRecambioDTO;
@@ -61,7 +61,7 @@ class ArticuloRecambioTable extends Table {
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get id => text().named('RECAMBIO_ID')();
   TextColumn get descripcion => text().named('DESCRIPCION')();
-  RealColumn get cantidad => real().named('CANTIDAD')();
+  IntColumn get cantidad => integer().named('CANTIDAD')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

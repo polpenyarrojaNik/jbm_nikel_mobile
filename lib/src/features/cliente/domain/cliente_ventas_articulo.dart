@@ -8,7 +8,7 @@ class ClienteVentasArticulo with _$ClienteVentasArticulo {
   const ClienteVentasArticulo._();
   const factory ClienteVentasArticulo({
     required String articuloId,
-    String? descripcionES,
+    required String descripcionES,
     String? descripcionEN,
     String? descripcionFR,
     String? descripcionDE,
@@ -28,10 +28,10 @@ class ClienteVentasArticulo with _$ClienteVentasArticulo {
     required Money importeAnyo_2,
     required Money importeAnyo_3,
     required Money importeAnyo_4,
-    required double cantidadAnyo,
-    required double cantidadAnyo_1,
-    required double cantidadAnyo_2,
-    required double cantidadAnyo_3,
-    required double cantidadAnyo_4,
+    required int cantidadAnyo,
+    required int cantidadAnyo_1,
+    required int cantidadAnyo_2,
+    required int cantidadAnyo_3,
+    required int cantidadAnyo_4,
   }) = _ClienteVentasArticulo;
 }

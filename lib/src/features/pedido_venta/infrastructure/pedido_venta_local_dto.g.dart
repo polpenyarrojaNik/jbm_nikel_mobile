@@ -13,7 +13,7 @@ _$_PedidoVentaLocalDTO _$$_PedidoVentaLocalDTOFromJson(
       pedidoVentaAppId: json['PEDIDO_APP_ID'] as String,
       empresaId: json['EMPRESA_ID'] as String,
       clienteId: json['CLIENTE_ID'] as String,
-      nombreCliente: json['NOMBRE_CLIENTE'] as String?,
+      nombreCliente: json['NOMBRE_CLIENTE'] as String,
       direccionId: json['DIRECCION_ID'] as String?,
       direccion1: json['DIRECCION1'] as String?,
       direccion2: json['DIRECCION2'] as String?,

@@ -19,11 +19,11 @@ class EstadisticasUltimosPreciosDTO
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'LINEA') required int linea,
-    @JsonKey(name: 'CANTIDAD') int? cantidad,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
     @JsonKey(name: 'FECHA') required DateTime fecha,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') required double tipoPrecio,
+    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
     @JsonKey(name: 'DESCUENTO1') required double descuento1,
     @JsonKey(name: 'DESCUENTO2') required double descuento2,
     @JsonKey(name: 'DESCUENTO3') required double descuento3,
@@ -34,7 +34,7 @@ class EstadisticasUltimosPreciosDTO
   factory EstadisticasUltimosPreciosDTO.fromJson(Map<String, dynamic> json) =>
       _$EstadisticasUltimosPreciosDTOFromJson(json);
 
-  EstadisticasUltimosPrecios toDomain({required String? nombreCliente}) {
+  EstadisticasUltimosPrecios toDomain({required String nombreCliente}) {
     return EstadisticasUltimosPrecios(
       clienteId: clienteId,
       nombreCliente: nombreCliente,
@@ -42,7 +42,7 @@ class EstadisticasUltimosPreciosDTO
       linea: linea,
       cantidad: cantidad,
       fecha: fecha,
-      precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
+      precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
       divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       descuento1: descuento1,
@@ -88,10 +88,10 @@ class EstadisticasUltimosPreciosTable extends Table {
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   IntColumn get linea => integer().named('LINEA')();
-  IntColumn get cantidad => integer().nullable().named('CANTIDAD')();
+  IntColumn get cantidad => integer().named('CANTIDAD')();
   DateTimeColumn get fecha => dateTime().named('FECHA')();
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
-  RealColumn get tipoPrecio => real().named('TIPO_PRECIO')();
+  IntColumn get tipoPrecio => integer().named('TIPO_PRECIO')();
   TextColumn get divisaId => text().named('DIVISA_ID')();
   RealColumn get descuento1 => real().named('DESCUENTO1')();
   RealColumn get descuento2 => real().named('DESCUENTO2')();

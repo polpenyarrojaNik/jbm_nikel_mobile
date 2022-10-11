@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/divisa.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/plazo_cobro.dart';
 import 'package:money2/money2.dart';
 
@@ -15,27 +15,27 @@ class Cliente with _$Cliente {
   const Cliente._();
   const factory Cliente(
       {required String id,
-      String? nombreCliente,
+      required String nombreCliente,
+      required String nombreFiscal,
       String? nif,
-      String? nombreFiscal,
       String? direccionFiscal1,
       String? direccionFiscal2,
       String? codigoPostalFiscal,
       String? poblacionFiscal,
       String? provinciaFiscal,
       Pais? paisFiscal,
-      double? latitudFiscal,
-      double? longitudFiscal,
+      required double latitudFiscal,
+      required double longitudFiscal,
       required String empresaId,
       required double iva,
-      Money? ventasAnyoActual,
-      Money? ventasAnyoAnterior,
-      Money? ventasHaceDosAnyos,
-      double? margenAnyoActual,
-      double? margenAnyoAnterior,
-      double? margenHaceDosAnyos,
-      double? porcentajeAbonos,
-      double? porcentajeGarantias,
+      required Money ventasAnyoActual,
+      required Money ventasAnyoAnterior,
+      required Money ventasHaceDosAnyos,
+      required double margenAnyoActual,
+      required double margenAnyoAnterior,
+      required double margenHaceDosAnyos,
+      required double porcentajeAbonos,
+      required double porcentajeGarantias,
       String? centralCompras,
       String? urlWeb,
       Divisa? divisa,

@@ -11,7 +11,7 @@ _$_ArticuloComponenteDTO _$$_ArticuloComponenteDTOFromJson(
     _$_ArticuloComponenteDTO(
       articuloId: json['ARTICULO_ID'] as String,
       articuloComponenteId: json['ARTICULO_COMPONENTE_ID'] as String,
-      cantidad: (json['CANTIDAD'] as num).toDouble(),
+      cantidad: json['CANTIDAD'] as int,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );

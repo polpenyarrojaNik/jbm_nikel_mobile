@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClienteDireccion {
   String get clienteId => throw _privateConstructorUsedError;
   String get direccionId => throw _privateConstructorUsedError;
-  String? get nombre => throw _privateConstructorUsedError;
+  String get nombre => throw _privateConstructorUsedError;
   String? get direccion1 => throw _privateConstructorUsedError;
   String? get direccion2 => throw _privateConstructorUsedError;
   String? get codigoPostal => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $ClienteDireccionCopyWith<$Res> {
   $Res call(
       {String clienteId,
       String direccionId,
-      String? nombre,
+      String nombre,
       String? direccion1,
       String? direccion2,
       String? codigoPostal,
@@ -98,7 +98,7 @@ class _$ClienteDireccionCopyWithImpl<$Res>
       nombre: nombre == freezed
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccion1: direccion1 == freezed
           ? _value.direccion1
           : direccion1 // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ abstract class _$$_ClienteDireccionCopyWith<$Res>
   $Res call(
       {String clienteId,
       String direccionId,
-      String? nombre,
+      String nombre,
       String? direccion1,
       String? direccion2,
       String? codigoPostal,
@@ -225,7 +225,7 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
       nombre: nombre == freezed
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccion1: direccion1 == freezed
           ? _value.direccion1
           : direccion1 // ignore: cast_nullable_to_non_nullable
@@ -280,7 +280,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   const _$_ClienteDireccion(
       {required this.clienteId,
       required this.direccionId,
-      this.nombre,
+      required this.nombre,
       this.direccion1,
       this.direccion2,
       this.codigoPostal,
@@ -299,7 +299,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   @override
   final String direccionId;
   @override
-  final String? nombre;
+  final String nombre;
   @override
   final String? direccion1;
   @override
@@ -383,7 +383,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   const factory _ClienteDireccion(
       {required final String clienteId,
       required final String direccionId,
-      final String? nombre,
+      required final String nombre,
       final String? direccion1,
       final String? direccion2,
       final String? codigoPostal,
@@ -402,7 +402,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   @override
   String get direccionId;
   @override
-  String? get nombre;
+  String get nombre;
   @override
   String? get direccion1;
   @override

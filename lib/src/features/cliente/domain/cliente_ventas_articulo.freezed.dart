@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ClienteVentasArticulo {
   String get articuloId => throw _privateConstructorUsedError;
-  String? get descripcionES => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
   String? get descripcionEN => throw _privateConstructorUsedError;
   String? get descripcionFR => throw _privateConstructorUsedError;
   String? get descripcionDE => throw _privateConstructorUsedError;
@@ -37,11 +37,11 @@ mixin _$ClienteVentasArticulo {
   Money get importeAnyo_2 => throw _privateConstructorUsedError;
   Money get importeAnyo_3 => throw _privateConstructorUsedError;
   Money get importeAnyo_4 => throw _privateConstructorUsedError;
-  double get cantidadAnyo => throw _privateConstructorUsedError;
-  double get cantidadAnyo_1 => throw _privateConstructorUsedError;
-  double get cantidadAnyo_2 => throw _privateConstructorUsedError;
-  double get cantidadAnyo_3 => throw _privateConstructorUsedError;
-  double get cantidadAnyo_4 => throw _privateConstructorUsedError;
+  int get cantidadAnyo => throw _privateConstructorUsedError;
+  int get cantidadAnyo_1 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_2 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_3 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_4 => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClienteVentasArticuloCopyWith<ClienteVentasArticulo> get copyWith =>
@@ -55,7 +55,7 @@ abstract class $ClienteVentasArticuloCopyWith<$Res> {
       _$ClienteVentasArticuloCopyWithImpl<$Res>;
   $Res call(
       {String articuloId,
-      String? descripcionES,
+      String descripcionES,
       String? descripcionEN,
       String? descripcionFR,
       String? descripcionDE,
@@ -75,11 +75,11 @@ abstract class $ClienteVentasArticuloCopyWith<$Res> {
       Money importeAnyo_2,
       Money importeAnyo_3,
       Money importeAnyo_4,
-      double cantidadAnyo,
-      double cantidadAnyo_1,
-      double cantidadAnyo_2,
-      double cantidadAnyo_3,
-      double cantidadAnyo_4});
+      int cantidadAnyo,
+      int cantidadAnyo_1,
+      int cantidadAnyo_2,
+      int cantidadAnyo_3,
+      int cantidadAnyo_4});
 }
 
 /// @nodoc
@@ -128,7 +128,7 @@ class _$ClienteVentasArticuloCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -208,23 +208,23 @@ class _$ClienteVentasArticuloCopyWithImpl<$Res>
       cantidadAnyo: cantidadAnyo == freezed
           ? _value.cantidadAnyo
           : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_1: cantidadAnyo_1 == freezed
           ? _value.cantidadAnyo_1
           : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_2: cantidadAnyo_2 == freezed
           ? _value.cantidadAnyo_2
           : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_3: cantidadAnyo_3 == freezed
           ? _value.cantidadAnyo_3
           : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_4: cantidadAnyo_4 == freezed
           ? _value.cantidadAnyo_4
           : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -238,7 +238,7 @@ abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
   @override
   $Res call(
       {String articuloId,
-      String? descripcionES,
+      String descripcionES,
       String? descripcionEN,
       String? descripcionFR,
       String? descripcionDE,
@@ -258,11 +258,11 @@ abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
       Money importeAnyo_2,
       Money importeAnyo_3,
       Money importeAnyo_4,
-      double cantidadAnyo,
-      double cantidadAnyo_1,
-      double cantidadAnyo_2,
-      double cantidadAnyo_3,
-      double cantidadAnyo_4});
+      int cantidadAnyo,
+      int cantidadAnyo_1,
+      int cantidadAnyo_2,
+      int cantidadAnyo_3,
+      int cantidadAnyo_4});
 }
 
 /// @nodoc
@@ -314,7 +314,7 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -394,23 +394,23 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
       cantidadAnyo: cantidadAnyo == freezed
           ? _value.cantidadAnyo
           : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_1: cantidadAnyo_1 == freezed
           ? _value.cantidadAnyo_1
           : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_2: cantidadAnyo_2 == freezed
           ? _value.cantidadAnyo_2
           : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_3: cantidadAnyo_3 == freezed
           ? _value.cantidadAnyo_3
           : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_4: cantidadAnyo_4 == freezed
           ? _value.cantidadAnyo_4
           : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -420,7 +420,7 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
 class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   const _$_ClienteVentasArticulo(
       {required this.articuloId,
-      this.descripcionES,
+      required this.descripcionES,
       this.descripcionEN,
       this.descripcionFR,
       this.descripcionDE,
@@ -450,7 +450,7 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   @override
   final String articuloId;
   @override
-  final String? descripcionES;
+  final String descripcionES;
   @override
   final String? descripcionEN;
   @override
@@ -490,15 +490,15 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
   @override
   final Money importeAnyo_4;
   @override
-  final double cantidadAnyo;
+  final int cantidadAnyo;
   @override
-  final double cantidadAnyo_1;
+  final int cantidadAnyo_1;
   @override
-  final double cantidadAnyo_2;
+  final int cantidadAnyo_2;
   @override
-  final double cantidadAnyo_3;
+  final int cantidadAnyo_3;
   @override
-  final double cantidadAnyo_4;
+  final int cantidadAnyo_4;
 
   @override
   String toString() {
@@ -605,7 +605,7 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
 abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
   const factory _ClienteVentasArticulo(
       {required final String articuloId,
-      final String? descripcionES,
+      required final String descripcionES,
       final String? descripcionEN,
       final String? descripcionFR,
       final String? descripcionDE,
@@ -625,17 +625,17 @@ abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
       required final Money importeAnyo_2,
       required final Money importeAnyo_3,
       required final Money importeAnyo_4,
-      required final double cantidadAnyo,
-      required final double cantidadAnyo_1,
-      required final double cantidadAnyo_2,
-      required final double cantidadAnyo_3,
-      required final double cantidadAnyo_4}) = _$_ClienteVentasArticulo;
+      required final int cantidadAnyo,
+      required final int cantidadAnyo_1,
+      required final int cantidadAnyo_2,
+      required final int cantidadAnyo_3,
+      required final int cantidadAnyo_4}) = _$_ClienteVentasArticulo;
   const _ClienteVentasArticulo._() : super._();
 
   @override
   String get articuloId;
   @override
-  String? get descripcionES;
+  String get descripcionES;
   @override
   String? get descripcionEN;
   @override
@@ -675,15 +675,15 @@ abstract class _ClienteVentasArticulo extends ClienteVentasArticulo {
   @override
   Money get importeAnyo_4;
   @override
-  double get cantidadAnyo;
+  int get cantidadAnyo;
   @override
-  double get cantidadAnyo_1;
+  int get cantidadAnyo_1;
   @override
-  double get cantidadAnyo_2;
+  int get cantidadAnyo_2;
   @override
-  double get cantidadAnyo_3;
+  int get cantidadAnyo_3;
   @override
-  double get cantidadAnyo_4;
+  int get cantidadAnyo_4;
   @override
   @JsonKey(ignore: true)
   _$$_ClienteVentasArticuloCopyWith<_$_ClienteVentasArticulo> get copyWith =>

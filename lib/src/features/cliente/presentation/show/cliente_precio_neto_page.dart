@@ -80,9 +80,9 @@ class ClientePrecioNetoTile extends StatelessWidget {
                 children: [
                   Text(clientePrecioNeto.articuloId,
                       style: Theme.of(context).textTheme.subtitle2),
-                  if (clientePrecioNeto.cantidadDesDe != 1)
+                  if (clientePrecioNeto.cantidadDesde != 1)
                     Text(
-                        '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesDe)}',
+                        '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
                         style: Theme.of(context).textTheme.subtitle2),
                 ],
               ),

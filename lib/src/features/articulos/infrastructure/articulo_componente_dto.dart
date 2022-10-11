@@ -18,7 +18,7 @@ class ArticuloComponenteDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
         required String articuloComponenteId,
-    @JsonKey(name: 'CANTIDAD') required double cantidad,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloComponenteDTO;
@@ -26,7 +26,7 @@ class ArticuloComponenteDTO
   factory ArticuloComponenteDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloComponenteDTOFromJson(json);
 
-  ArticuloComponente toDomain({String? articuloComponenteDescripcion}) {
+  ArticuloComponente toDomain({required String articuloComponenteDescripcion}) {
     return ArticuloComponente(
       articuloId: articuloId,
       articuloComponenteId: articuloComponenteId,
@@ -60,7 +60,7 @@ class ArticuloComponenteTable extends Table {
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get articuloComponenteId =>
       text().named('ARTICULO_COMPONENTE_ID')();
-  RealColumn get cantidad => real().named('CANTIDAD')();
+  IntColumn get cantidad => integer().named('CANTIDAD')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

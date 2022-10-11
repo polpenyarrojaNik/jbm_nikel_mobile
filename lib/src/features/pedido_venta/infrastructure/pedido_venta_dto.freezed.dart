@@ -29,11 +29,11 @@ mixin _$PedidoVentaDTO {
   @JsonKey(name: 'TIPO_VENTA')
   String get tipoVenta => throw _privateConstructorUsedError;
   @JsonKey(name: 'CLIENTE_ID')
-  String? get clienteId => throw _privateConstructorUsedError;
+  String get clienteId => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_ID')
   String? get direccionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_CLIENTE')
-  String? get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_ENVIO1')
   String? get direccionEntrga1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_ENVIO2')
@@ -55,7 +55,7 @@ mixin _$PedidoVentaDTO {
   @JsonKey(name: 'TOTAL')
   double get total => throw _privateConstructorUsedError;
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
-  double get pedidoVentaEstadoId => throw _privateConstructorUsedError;
+  int get pedidoVentaEstadoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OFERTA_SN')
   String get oferta => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
@@ -83,9 +83,9 @@ abstract class $PedidoVentaDTOCopyWith<$Res> {
       @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
       @JsonKey(name: 'FECHA_PEDIDO') DateTime pedidoVentaDate,
       @JsonKey(name: 'TIPO_VENTA') String tipoVenta,
-      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-      @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
+      @JsonKey(name: 'NOMBRE_CLIENTE') String nombreCliente,
       @JsonKey(name: 'DIRECCION_ENVIO1') String? direccionEntrga1,
       @JsonKey(name: 'DIRECCION_ENVIO2') String? direccionEntrga2,
       @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -96,7 +96,7 @@ abstract class $PedidoVentaDTOCopyWith<$Res> {
       @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
       @JsonKey(name: 'IMPORTE_IVA') double importeIva,
       @JsonKey(name: 'TOTAL') double total,
-      @JsonKey(name: 'ESTADO_PEDIDO_ID') double pedidoVentaEstadoId,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') String oferta,
       @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
       @JsonKey(name: 'IVA') double iva,
@@ -159,7 +159,7 @@ class _$PedidoVentaDTOCopyWithImpl<$Res>
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionId: direccionId == freezed
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
@@ -167,7 +167,7 @@ class _$PedidoVentaDTOCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionEntrga1: direccionEntrga1 == freezed
           ? _value.direccionEntrga1
           : direccionEntrga1 // ignore: cast_nullable_to_non_nullable
@@ -211,7 +211,7 @@ class _$PedidoVentaDTOCopyWithImpl<$Res>
       pedidoVentaEstadoId: pedidoVentaEstadoId == freezed
           ? _value.pedidoVentaEstadoId
           : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       oferta: oferta == freezed
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
@@ -248,9 +248,9 @@ abstract class _$$_PedidoVentaDTOCopyWith<$Res>
       @JsonKey(name: 'PEDIDO_ID') String pedidoVentaId,
       @JsonKey(name: 'FECHA_PEDIDO') DateTime pedidoVentaDate,
       @JsonKey(name: 'TIPO_VENTA') String tipoVenta,
-      @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+      @JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-      @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
+      @JsonKey(name: 'NOMBRE_CLIENTE') String nombreCliente,
       @JsonKey(name: 'DIRECCION_ENVIO1') String? direccionEntrga1,
       @JsonKey(name: 'DIRECCION_ENVIO2') String? direccionEntrga2,
       @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -261,7 +261,7 @@ abstract class _$$_PedidoVentaDTOCopyWith<$Res>
       @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
       @JsonKey(name: 'IMPORTE_IVA') double importeIva,
       @JsonKey(name: 'TOTAL') double total,
-      @JsonKey(name: 'ESTADO_PEDIDO_ID') double pedidoVentaEstadoId,
+      @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') String oferta,
       @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
       @JsonKey(name: 'IVA') double iva,
@@ -326,7 +326,7 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionId: direccionId == freezed
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
@@ -334,7 +334,7 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionEntrga1: direccionEntrga1 == freezed
           ? _value.direccionEntrga1
           : direccionEntrga1 // ignore: cast_nullable_to_non_nullable
@@ -378,7 +378,7 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
       pedidoVentaEstadoId: pedidoVentaEstadoId == freezed
           ? _value.pedidoVentaEstadoId
           : pedidoVentaEstadoId // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       oferta: oferta == freezed
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
@@ -411,9 +411,9 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
       @JsonKey(name: 'PEDIDO_ID') required this.pedidoVentaId,
       @JsonKey(name: 'FECHA_PEDIDO') required this.pedidoVentaDate,
       @JsonKey(name: 'TIPO_VENTA') required this.tipoVenta,
-      @JsonKey(name: 'CLIENTE_ID') this.clienteId,
+      @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'DIRECCION_ID') this.direccionId,
-      @JsonKey(name: 'NOMBRE_CLIENTE') this.nombreCliente,
+      @JsonKey(name: 'NOMBRE_CLIENTE') required this.nombreCliente,
       @JsonKey(name: 'DIRECCION_ENVIO1') this.direccionEntrga1,
       @JsonKey(name: 'DIRECCION_ENVIO2') this.direccionEntrga2,
       @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
@@ -449,13 +449,13 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
   final String tipoVenta;
   @override
   @JsonKey(name: 'CLIENTE_ID')
-  final String? clienteId;
+  final String clienteId;
   @override
   @JsonKey(name: 'DIRECCION_ID')
   final String? direccionId;
   @override
   @JsonKey(name: 'NOMBRE_CLIENTE')
-  final String? nombreCliente;
+  final String nombreCliente;
   @override
   @JsonKey(name: 'DIRECCION_ENVIO1')
   final String? direccionEntrga1;
@@ -488,7 +488,7 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
   final double total;
   @override
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
-  final double pedidoVentaEstadoId;
+  final int pedidoVentaEstadoId;
   @override
   @JsonKey(name: 'OFERTA_SN')
   final String oferta;
@@ -605,11 +605,11 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
       @JsonKey(name: 'TIPO_VENTA')
           required final String tipoVenta,
       @JsonKey(name: 'CLIENTE_ID')
-          final String? clienteId,
+          required final String clienteId,
       @JsonKey(name: 'DIRECCION_ID')
           final String? direccionId,
       @JsonKey(name: 'NOMBRE_CLIENTE')
-          final String? nombreCliente,
+          required final String nombreCliente,
       @JsonKey(name: 'DIRECCION_ENVIO1')
           final String? direccionEntrga1,
       @JsonKey(name: 'DIRECCION_ENVIO2')
@@ -631,7 +631,7 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
       @JsonKey(name: 'TOTAL')
           required final double total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID')
-          required final double pedidoVentaEstadoId,
+          required final int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN')
           required final String oferta,
       @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
@@ -661,13 +661,13 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
   String get tipoVenta;
   @override
   @JsonKey(name: 'CLIENTE_ID')
-  String? get clienteId;
+  String get clienteId;
   @override
   @JsonKey(name: 'DIRECCION_ID')
   String? get direccionId;
   @override
   @JsonKey(name: 'NOMBRE_CLIENTE')
-  String? get nombreCliente;
+  String get nombreCliente;
   @override
   @JsonKey(name: 'DIRECCION_ENVIO1')
   String? get direccionEntrga1;
@@ -700,7 +700,7 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
   double get total;
   @override
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
-  double get pedidoVentaEstadoId;
+  int get pedidoVentaEstadoId;
   @override
   @JsonKey(name: 'OFERTA_SN')
   String get oferta;

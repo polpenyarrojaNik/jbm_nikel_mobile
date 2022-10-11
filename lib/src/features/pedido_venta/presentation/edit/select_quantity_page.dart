@@ -2,9 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_search_state_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
@@ -142,8 +140,7 @@ class _SelecionarCantidadPageState
             articuloPrecio: articuloPrecio,
             articuloDescripcion:
                 getDescriptionInLocalLanguage(articulo: articulo),
-            stockDisponibleSN: articulo.stockDisponible != null &&
-                articulo.stockDisponible! > 0,
+            stockDisponibleSN: articulo.stockDisponible > 0,
             posicionActualizar:
                 widget.seleccionarCantidadParam.posicionLineaActualizar!,
           );
@@ -158,8 +155,7 @@ class _SelecionarCantidadPageState
               articuloPrecio: articuloPrecio,
               articuloDescripcion:
                   getDescriptionInLocalLanguage(articulo: articulo),
-              stockDisponibleSN: articulo.stockDisponible != null &&
-                  articulo.stockDisponible! > 0);
+              stockDisponibleSN: articulo.stockDisponible > 0);
     }
     context.router.pop();
   }

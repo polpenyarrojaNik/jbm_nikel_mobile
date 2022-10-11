@@ -38,7 +38,7 @@ String numberFormatDecimal(double number) {
   return formatter.format(number);
 }
 
-String numberFormatCantidades(double number) {
+String numberFormatCantidades(dynamic number) {
   NumberFormat formatter = NumberFormat.decimalPattern(Intl.getCurrentLocale());
 
   return formatter.format(number);
@@ -109,7 +109,7 @@ String getNombreArchivo(String path) {
 
 String formatPrecioYDescuento({
   required Money precio,
-  required double? tipoPrecio,
+  required int? tipoPrecio,
   required double descuento1,
   required double descuento2,
   required double descuento3,
@@ -125,7 +125,7 @@ String formatPrecioYDescuento({
   return formatPrecioYDescuento;
 }
 
-String formatPrecios({required Money precio, required double? tipoPrecio}) {
+String formatPrecios({required Money precio, required int? tipoPrecio}) {
   if (tipoPrecio == 1 || tipoPrecio == 0 || tipoPrecio == null) {
     return precio.toString();
   } else {
@@ -232,8 +232,8 @@ String getClienteEstadoPotencialInLocalLanguage(
   final currentLocale = Intl.getCurrentLocale();
 
   if (estadoPotencial != null) {
-    if (currentLocale == 'es' && estadoPotencial.descripcionES != null) {
-      return estadoPotencial.descripcionES!;
+    if (currentLocale == 'es') {
+      return estadoPotencial.descripcionES;
     } else if (currentLocale == 'en' && estadoPotencial.descripcionEN != null) {
       return estadoPotencial.descripcionEN!;
     }
@@ -247,7 +247,7 @@ String? getClienteTipoPotencialInLocalLanguage(
   final currentLocale = Intl.getCurrentLocale();
 
   if (tipoPotencial != null) {
-    if (currentLocale == 'es' && tipoPotencial.descripcionES != null) {
+    if (currentLocale == 'es') {
       return tipoPotencial.descripcionES;
     } else if (currentLocale == 'en' && tipoPotencial.descripcionEN != null) {
       return tipoPotencial.descripcionEN!;
@@ -261,8 +261,8 @@ String? getClienteVentasArticuloDescripcionInLocalLanguage(
     {required ClienteVentasArticulo clienteVentasArticulo}) {
   final currentLocale = Intl.getCurrentLocale();
 
-  if (currentLocale == 'es' && clienteVentasArticulo.descripcionES != null) {
-    return clienteVentasArticulo.descripcionES!;
+  if (currentLocale == 'es') {
+    return clienteVentasArticulo.descripcionES;
   } else if (currentLocale == 'en' &&
       clienteVentasArticulo.descripcionEN != null) {
     return clienteVentasArticulo.descripcionEN!;

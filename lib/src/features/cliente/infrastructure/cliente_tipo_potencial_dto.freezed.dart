@@ -24,7 +24,7 @@ mixin _$ClienteTipoPotencialDTO {
   @JsonKey(name: 'TIPO_POTENCIAL_ID')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_ES')
-  String? get descripcionES => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_EN')
   String? get descripcionEN => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_FR')
@@ -71,7 +71,7 @@ abstract class $ClienteTipoPotencialDTOCopyWith<$Res> {
       _$ClienteTipoPotencialDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'TIPO_POTENCIAL_ID') String id,
-      @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -128,7 +128,7 @@ class _$ClienteTipoPotencialDTOCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -206,7 +206,7 @@ abstract class _$$_ClienteTipoPotencialDTOCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'TIPO_POTENCIAL_ID') String id,
-      @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -266,7 +266,7 @@ class __$$_ClienteTipoPotencialDTOCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -340,7 +340,7 @@ class __$$_ClienteTipoPotencialDTOCopyWithImpl<$Res>
 class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
   const _$_ClienteTipoPotencialDTO(
       {@JsonKey(name: 'TIPO_POTENCIAL_ID') required this.id,
-      @JsonKey(name: 'DESCRIPCION_ES') this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
@@ -367,7 +367,7 @@ class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
   final String id;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  final String? descripcionES;
+  final String descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
   final String? descripcionEN;
@@ -504,7 +504,7 @@ class _$_ClienteTipoPotencialDTO extends _ClienteTipoPotencialDTO {
 abstract class _ClienteTipoPotencialDTO extends ClienteTipoPotencialDTO {
   const factory _ClienteTipoPotencialDTO(
           {@JsonKey(name: 'TIPO_POTENCIAL_ID') required final String id,
-          @JsonKey(name: 'DESCRIPCION_ES') final String? descripcionES,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
           @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
           @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
           @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
@@ -532,7 +532,7 @@ abstract class _ClienteTipoPotencialDTO extends ClienteTipoPotencialDTO {
   String get id;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  String? get descripcionES;
+  String get descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
   String? get descripcionEN;

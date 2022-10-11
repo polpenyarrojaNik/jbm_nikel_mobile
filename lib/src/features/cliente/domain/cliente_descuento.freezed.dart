@@ -20,7 +20,7 @@ mixin _$ClienteDescuento {
   String get articuloId => throw _privateConstructorUsedError;
   Familia get familia => throw _privateConstructorUsedError;
   Subfamilia get subfamilia => throw _privateConstructorUsedError;
-  double get cantidadDesDe => throw _privateConstructorUsedError;
+  int get cantidadDesde => throw _privateConstructorUsedError;
   double get descuento => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $ClienteDescuentoCopyWith<$Res> {
       String articuloId,
       Familia familia,
       Subfamilia subfamilia,
-      double cantidadDesDe,
+      int cantidadDesde,
       double descuento,
       DateTime lastUpdated,
       bool deleted});
@@ -64,7 +64,7 @@ class _$ClienteDescuentoCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? familia = freezed,
     Object? subfamilia = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? descuento = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -86,10 +86,10 @@ class _$ClienteDescuentoCopyWithImpl<$Res>
           ? _value.subfamilia
           : subfamilia // ignore: cast_nullable_to_non_nullable
               as Subfamilia,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       descuento: descuento == freezed
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ abstract class _$$_ClienteDescuentoCopyWith<$Res>
       String articuloId,
       Familia familia,
       Subfamilia subfamilia,
-      double cantidadDesDe,
+      int cantidadDesde,
       double descuento,
       DateTime lastUpdated,
       bool deleted});
@@ -160,7 +160,7 @@ class __$$_ClienteDescuentoCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? familia = freezed,
     Object? subfamilia = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? descuento = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -182,10 +182,10 @@ class __$$_ClienteDescuentoCopyWithImpl<$Res>
           ? _value.subfamilia
           : subfamilia // ignore: cast_nullable_to_non_nullable
               as Subfamilia,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       descuento: descuento == freezed
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
@@ -210,7 +210,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
       required this.articuloId,
       required this.familia,
       required this.subfamilia,
-      required this.cantidadDesDe,
+      required this.cantidadDesde,
       required this.descuento,
       required this.lastUpdated,
       required this.deleted})
@@ -225,7 +225,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
   @override
   final Subfamilia subfamilia;
   @override
-  final double cantidadDesDe;
+  final int cantidadDesde;
   @override
   final double descuento;
   @override
@@ -235,7 +235,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
 
   @override
   String toString() {
-    return 'ClienteDescuento(clienteId: $clienteId, articuloId: $articuloId, familia: $familia, subfamilia: $subfamilia, cantidadDesDe: $cantidadDesDe, descuento: $descuento, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDescuento(clienteId: $clienteId, articuloId: $articuloId, familia: $familia, subfamilia: $subfamilia, cantidadDesde: $cantidadDesde, descuento: $descuento, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -250,7 +250,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
             const DeepCollectionEquality()
                 .equals(other.subfamilia, subfamilia) &&
             const DeepCollectionEquality()
-                .equals(other.cantidadDesDe, cantidadDesDe) &&
+                .equals(other.cantidadDesde, cantidadDesde) &&
             const DeepCollectionEquality().equals(other.descuento, descuento) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -264,7 +264,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(familia),
       const DeepCollectionEquality().hash(subfamilia),
-      const DeepCollectionEquality().hash(cantidadDesDe),
+      const DeepCollectionEquality().hash(cantidadDesde),
       const DeepCollectionEquality().hash(descuento),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -281,7 +281,7 @@ abstract class _ClienteDescuento extends ClienteDescuento {
       required final String articuloId,
       required final Familia familia,
       required final Subfamilia subfamilia,
-      required final double cantidadDesDe,
+      required final int cantidadDesde,
       required final double descuento,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClienteDescuento;
@@ -296,7 +296,7 @@ abstract class _ClienteDescuento extends ClienteDescuento {
   @override
   Subfamilia get subfamilia;
   @override
-  double get cantidadDesDe;
+  int get cantidadDesde;
   @override
   double get descuento;
   @override

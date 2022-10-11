@@ -3,12 +3,10 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_cliente_alrededor_arg.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
@@ -166,7 +164,7 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
         .map(
           (c) => Marker(
             markerId: MarkerId(c.id),
-            position: LatLng(c.latitudFiscal!, c.longitudFiscal!),
+            position: LatLng(c.latitudFiscal, c.longitudFiscal),
             icon: BitmapDescriptor.defaultMarkerWithHue(
               (c.clientePotencial ?? false)
                   ? BitmapDescriptor.hueYellow
@@ -265,7 +263,7 @@ class ClienteAlrededorDialog extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              cliente.nombreCliente ?? '',
+              cliente.nombreCliente,
             ),
           ),
           gapW4,
@@ -296,22 +294,16 @@ class ClienteAlrededorDialog extends StatelessWidget {
           const Divider(),
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
-              value: (cliente.ventasAnyoActual != null)
-                  ? formatPrecios(
-                      precio: cliente.ventasAnyoActual!, tipoPrecio: null)
-                  : ''),
+              value: formatPrecios(
+                  precio: cliente.ventasAnyoActual, tipoPrecio: null)),
           const SizedBox(height: 2),
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_margenAnoActual,
-              value: (cliente.margenAnyoActual != null)
-                  ? '${numberFormatDecimal(cliente.margenAnyoActual!)}%'
-                  : ''),
+              value: '${numberFormatDecimal(cliente.margenAnyoActual)}%'),
           const SizedBox(height: 2),
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
-              value: (cliente.porcentajeAbonos != null)
-                  ? '${numberFormatDecimal(cliente.porcentajeAbonos!)}%'
-                  : ''),
+              value: '${numberFormatDecimal(cliente.porcentajeAbonos)}%'),
         ],
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_pago_pendiente.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
 import '../domain/metodo_cobro.dart';
 import 'metodo_cobro_dto.dart';
@@ -46,7 +46,7 @@ class ClientePagoPendienteDTO
       fechaExpiracion: fechaExpiracion,
       metodoDeCobro: metodoDeCobro,
       estadoCobroId: estadoCobroId,
-      importe: importe?.parseMoney(importe!, divisaId),
+      importe: importe?.parseMoney(currencyId: divisaId),
       fechaExpiracionInicial: fechaExpiracionInicial,
       vencidoJBM: (vencidoJBM != null) ? (vencidoJBM != 'N') : null,
       lastUpdated: lastUpdated,

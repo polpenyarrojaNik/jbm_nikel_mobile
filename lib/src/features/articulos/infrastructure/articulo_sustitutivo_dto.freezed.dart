@@ -26,7 +26,7 @@ mixin _$ArticuloSustitutivoDTO {
   @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
   String get articuloSustitutivoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'ORDEN')
-  double get orden => throw _privateConstructorUsedError;
+  int get orden => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -46,7 +46,7 @@ abstract class $ArticuloSustitutivoDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') double orden,
+      @JsonKey(name: 'ORDEN') int orden,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -80,7 +80,7 @@ class _$ArticuloSustitutivoDTOCopyWithImpl<$Res>
       orden: orden == freezed
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$_ArticuloSustitutivoDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
-      @JsonKey(name: 'ORDEN') double orden,
+      @JsonKey(name: 'ORDEN') int orden,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -140,7 +140,7 @@ class __$$_ArticuloSustitutivoDTOCopyWithImpl<$Res>
       orden: orden == freezed
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ class _$_ArticuloSustitutivoDTO extends _ArticuloSustitutivoDTO {
   final String articuloSustitutivoId;
   @override
   @JsonKey(name: 'ORDEN')
-  final double orden;
+  final int orden;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -239,7 +239,7 @@ abstract class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
       @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
           required final String articuloSustitutivoId,
       @JsonKey(name: 'ORDEN')
-          required final double orden,
+          required final int orden,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -257,7 +257,7 @@ abstract class _ArticuloSustitutivoDTO extends ArticuloSustitutivoDTO {
   String get articuloSustitutivoId;
   @override
   @JsonKey(name: 'ORDEN')
-  double get orden;
+  int get orden;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

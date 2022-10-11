@@ -29,7 +29,7 @@ mixin _$PedidoVentaLocalDTO {
   @JsonKey(name: 'CLIENTE_ID')
   String get clienteId => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_CLIENTE')
-  String? get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_ID')
   String? get direccionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION1')
@@ -79,7 +79,7 @@ abstract class $PedidoVentaLocalDTOCopyWith<$Res> {
       @JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
       @JsonKey(name: 'EMPRESA_ID') String empresaId,
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
+      @JsonKey(name: 'NOMBRE_CLIENTE') String nombreCliente,
       @JsonKey(name: 'DIRECCION_ID') String? direccionId,
       @JsonKey(name: 'DIRECCION1') String? direccion1,
       @JsonKey(name: 'DIRECCION2') String? direccion2,
@@ -151,7 +151,7 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionId: direccionId == freezed
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
@@ -232,7 +232,7 @@ abstract class _$$_PedidoVentaLocalDTOCopyWith<$Res>
       @JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
       @JsonKey(name: 'EMPRESA_ID') String empresaId,
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
+      @JsonKey(name: 'NOMBRE_CLIENTE') String nombreCliente,
       @JsonKey(name: 'DIRECCION_ID') String? direccionId,
       @JsonKey(name: 'DIRECCION1') String? direccion1,
       @JsonKey(name: 'DIRECCION2') String? direccion2,
@@ -306,7 +306,7 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionId: direccionId == freezed
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
@@ -383,7 +383,7 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
       @JsonKey(name: 'PEDIDO_APP_ID') required this.pedidoVentaAppId,
       @JsonKey(name: 'EMPRESA_ID') required this.empresaId,
       @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'NOMBRE_CLIENTE') this.nombreCliente,
+      @JsonKey(name: 'NOMBRE_CLIENTE') required this.nombreCliente,
       @JsonKey(name: 'DIRECCION_ID') this.direccionId,
       @JsonKey(name: 'DIRECCION1') this.direccion1,
       @JsonKey(name: 'DIRECCION2') this.direccion2,
@@ -419,7 +419,7 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
   final String clienteId;
   @override
   @JsonKey(name: 'NOMBRE_CLIENTE')
-  final String? nombreCliente;
+  final String nombreCliente;
   @override
   @JsonKey(name: 'DIRECCION_ID')
   final String? direccionId;
@@ -564,7 +564,7 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
       @JsonKey(name: 'CLIENTE_ID')
           required final String clienteId,
       @JsonKey(name: 'NOMBRE_CLIENTE')
-          final String? nombreCliente,
+          required final String nombreCliente,
       @JsonKey(name: 'DIRECCION_ID')
           final String? direccionId,
       @JsonKey(name: 'DIRECCION1')
@@ -616,7 +616,7 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
   String get clienteId;
   @override
   @JsonKey(name: 'NOMBRE_CLIENTE')
-  String? get nombreCliente;
+  String get nombreCliente;
   @override
   @JsonKey(name: 'DIRECCION_ID')
   String? get direccionId;

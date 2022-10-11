@@ -21,7 +21,7 @@ PedidoVentaEstadoDTO _$PedidoVentaEstadoDTOFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PedidoVentaEstadoDTO {
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
-  double get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_ES')
   String get descripcionES => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_EN')
@@ -68,7 +68,7 @@ abstract class $PedidoVentaEstadoDTOCopyWith<$Res> {
           $Res Function(PedidoVentaEstadoDTO) then) =
       _$PedidoVentaEstadoDTOCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'ESTADO_PEDIDO_ID') double id,
+      {@JsonKey(name: 'ESTADO_PEDIDO_ID') int id,
       @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
@@ -120,7 +120,7 @@ class _$PedidoVentaEstadoDTOCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
@@ -197,7 +197,7 @@ abstract class _$$_PedidoVentaEstadoDTOCopyWith<$Res>
       __$$_PedidoVentaEstadoDTOCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'ESTADO_PEDIDO_ID') double id,
+      {@JsonKey(name: 'ESTADO_PEDIDO_ID') int id,
       @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
@@ -251,7 +251,7 @@ class __$$_PedidoVentaEstadoDTOCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
@@ -348,7 +348,7 @@ class _$_PedidoVentaEstadoDTO extends _PedidoVentaEstadoDTO {
 
   @override
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
-  final double id;
+  final int id;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
   final String descripcionES;
@@ -481,7 +481,7 @@ class _$_PedidoVentaEstadoDTO extends _PedidoVentaEstadoDTO {
 
 abstract class _PedidoVentaEstadoDTO extends PedidoVentaEstadoDTO {
   const factory _PedidoVentaEstadoDTO(
-          {@JsonKey(name: 'ESTADO_PEDIDO_ID') required final double id,
+          {@JsonKey(name: 'ESTADO_PEDIDO_ID') required final int id,
           @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
           @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
           @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
@@ -506,7 +506,7 @@ abstract class _PedidoVentaEstadoDTO extends PedidoVentaEstadoDTO {
 
   @override
   @JsonKey(name: 'ESTADO_PEDIDO_ID')
-  double get id;
+  int get id;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
   String get descripcionES;

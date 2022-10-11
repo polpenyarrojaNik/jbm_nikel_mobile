@@ -1,11 +1,11 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/familia.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/familia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 
 import '../../../core/domain/subfamilia.dart';
-
 import '../../../core/infrastructure/database.dart';
 import '../domain/articulo.dart';
 
@@ -36,11 +36,11 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
     @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
     @JsonKey(name: 'FAMILIA_ID') String? familiaId,
     @JsonKey(name: 'SUBFAMILIA_ID') String? subfamiliaId,
-    @JsonKey(name: 'VENTA_MINIMO') required double ventaMinimo,
-    @JsonKey(name: 'VENTA_MULTIPLO') required double ventaMultiplo,
-    @JsonKey(name: 'UNIDADES_SUBCAJA') required double unidadesSubcaja,
-    @JsonKey(name: 'UNIDADES_CAJA') required double unidadesCaja,
-    @JsonKey(name: 'UNIDADES_PALET') required double unidadesPalet,
+    @JsonKey(name: 'VENTA_MINIMO') required int ventaMinimo,
+    @JsonKey(name: 'VENTA_MULTIPLO') required int ventaMultiplo,
+    @JsonKey(name: 'UNIDADES_SUBCAJA') required int unidadesSubcaja,
+    @JsonKey(name: 'UNIDADES_CAJA') required int unidadesCaja,
+    @JsonKey(name: 'UNIDADES_PALET') required int unidadesPalet,
     @JsonKey(name: 'ACTIVO_WEB') required String activoWeb,
     @JsonKey(name: 'ACTIVO_APP') required String activoApp,
     @JsonKey(name: 'EN_CATALOGO') required String enCatalogo,
@@ -66,17 +66,17 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
     @JsonKey(name: 'RESUMEN_RU') String? resumenRU,
     @JsonKey(name: 'RESUMEN_CN') String? resumenCN,
     @JsonKey(name: 'RESUMEN_EL') String? resumenEL,
-    @JsonKey(name: 'STOCK_DISPONIBLE') double? stockDisponible,
-    @JsonKey(name: 'VENTAS_ACTUAL') double? ventasActual,
-    @JsonKey(name: 'VENTAS_ANTERIOR') double? ventasAnterior,
+    @JsonKey(name: 'STOCK_DISPONIBLE') required int stockDisponible,
+    @JsonKey(name: 'VENTAS_ACTUAL') required double ventasActual,
+    @JsonKey(name: 'VENTAS_ANTERIOR') required double ventasAnterior,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-        double? comprasEntregaCantidad1,
+        required int comprasEntregaCantidad1,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-        double? comprasEntregaCantidad2,
+        required int comprasEntregaCantidad2,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-        double? comprasEntregaCantidad3,
+        required int comprasEntregaCantidad3,
     @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-        double? comprasEntregaCantidadMas3,
+        required int comprasEntregaCantidadMas3,
     @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1') DateTime? comprasEntregaFecha1,
     @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2') DateTime? comprasEntregaFecha2,
     @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_3') DateTime? comprasEntregaFecha3,
@@ -145,8 +145,8 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       resumenCN: resumenCN,
       resumenEL: resumenEL,
       stockDisponible: stockDisponible,
-      ventasActual: ventasActual,
-      ventasAnterior: ventasAnterior,
+      ventasActual: ventasActual.parseMoney(),
+      ventasAnterior: ventasAnterior.parseMoney(),
       comprasEntregaCantidad1: comprasEntregaCantidad1,
       comprasEntregaCantidad2: comprasEntregaCantidad2,
       comprasEntregaCantidad3: comprasEntregaCantidad3,
@@ -264,11 +264,11 @@ class ArticuloTable extends Table {
       .nullable()
       .references(SubfamiliaTable, #id)
       .named('SUBFAMILIA_ID')();
-  RealColumn get ventaMinimo => real().named('VENTA_MINIMO')();
-  RealColumn get ventaMultiplo => real().named('VENTA_MULTIPLO')();
-  RealColumn get unidadesSubcaja => real().named('UNIDADES_SUBCAJA')();
-  RealColumn get unidadesCaja => real().named('UNIDADES_CAJA')();
-  RealColumn get unidadesPalet => real().named('UNIDADES_PALET')();
+  IntColumn get ventaMinimo => integer().named('VENTA_MINIMO')();
+  IntColumn get ventaMultiplo => integer().named('VENTA_MULTIPLO')();
+  IntColumn get unidadesSubcaja => integer().named('UNIDADES_SUBCAJA')();
+  IntColumn get unidadesCaja => integer().named('UNIDADES_CAJA')();
+  IntColumn get unidadesPalet => integer().named('UNIDADES_PALET')();
   TextColumn get activoWeb => text().named('ACTIVO_WEB')();
   TextColumn get activoApp => text().named('ACTIVO_APP')();
   TextColumn get enCatalogo => text().named('EN_CATALOGO')();
@@ -296,18 +296,17 @@ class ArticuloTable extends Table {
   TextColumn get resumenRU => text().nullable().named('RESUMEN_RU')();
   TextColumn get resumenCN => text().nullable().named('RESUMEN_CN')();
   TextColumn get resumenEL => text().nullable().named('RESUMEN_EL')();
-  RealColumn get stockDisponible =>
-      real().nullable().named('STOCK_DISPONIBLE')();
-  RealColumn get ventasActual => real().nullable().named('VENTAS_ACTUAL')();
-  RealColumn get ventasAnterior => real().nullable().named('VENTAS_ANTERIOR')();
-  RealColumn get comprasEntregaCantidad1 =>
-      real().nullable().named('COMPRAS_ENTREGA_CANTIDAD_1')();
-  RealColumn get comprasEntregaCantidad2 =>
-      real().nullable().named('COMPRAS_ENTREGA_CANTIDAD_2')();
-  RealColumn get comprasEntregaCantidad3 =>
-      real().nullable().named('COMPRAS_ENTREGA_CANTIDAD_3')();
-  RealColumn get comprasEntregaCantidadMas3 =>
-      real().nullable().named('COMPRAS_ENTREGA_CANTIDAD_MAS_3')();
+  IntColumn get stockDisponible => integer().named('STOCK_DISPONIBLE')();
+  RealColumn get ventasActual => real().named('VENTAS_ACTUAL')();
+  RealColumn get ventasAnterior => real().named('VENTAS_ANTERIOR')();
+  IntColumn get comprasEntregaCantidad1 =>
+      integer().named('COMPRAS_ENTREGA_CANTIDAD_1')();
+  IntColumn get comprasEntregaCantidad2 =>
+      integer().named('COMPRAS_ENTREGA_CANTIDAD_2')();
+  IntColumn get comprasEntregaCantidad3 =>
+      integer().named('COMPRAS_ENTREGA_CANTIDAD_3')();
+  IntColumn get comprasEntregaCantidadMas3 =>
+      integer().named('COMPRAS_ENTREGA_CANTIDAD_MAS_3')();
   DateTimeColumn get comprasEntregaFecha1 =>
       dateTime().nullable().named('COMPRAS_ENTREGA_FECHA_1')();
   DateTimeColumn get comprasEntregaFecha2 =>

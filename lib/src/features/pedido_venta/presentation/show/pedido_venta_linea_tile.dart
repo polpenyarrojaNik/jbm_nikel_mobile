@@ -57,7 +57,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           ),
                         ]),
                     Text(
-                      pedidoVentaLinea.articuloDescription!,
+                      pedidoVentaLinea.articuloDescription,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.caption,

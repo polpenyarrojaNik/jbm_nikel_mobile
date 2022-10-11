@@ -26,15 +26,15 @@ mixin _$ArticuloPrecioTarifaDTO {
   @JsonKey(name: 'TARIFA_ID')
   String get tarifaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TARIFA_DESCRIPCION')
-  String? get tarifaDescripcion => throw _privateConstructorUsedError;
+  String get tarifaDescripcion => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_DESDE')
-  double get cantidadDesDe => throw _privateConstructorUsedError;
+  int get cantidadDesde => throw _privateConstructorUsedError;
   @JsonKey(name: 'PRECIO')
   double get precio => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIVISA_ID')
   String get divisaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO')
-  double? get tipoPrecio => throw _privateConstructorUsedError;
+  int get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -54,11 +54,11 @@ abstract class $ArticuloPrecioTarifaDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'TARIFA_ID') String tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-      @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') String tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'PRECIO') double precio,
       @JsonKey(name: 'DIVISA_ID') String divisaId,
-      @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -77,7 +77,7 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? precio = freezed,
     Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
@@ -96,11 +96,11 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
       tarifaDescripcion: tarifaDescripcion == freezed
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -112,7 +112,7 @@ class _$ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -135,11 +135,11 @@ abstract class _$$_ArticuloPrecioTarifaDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'TARIFA_ID') String tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-      @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') String tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'PRECIO') double precio,
       @JsonKey(name: 'DIVISA_ID') String divisaId,
-      @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+      @JsonKey(name: 'TIPO_PRECIO') int tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -161,7 +161,7 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? precio = freezed,
     Object? divisaId = freezed,
     Object? tipoPrecio = freezed,
@@ -180,11 +180,11 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
       tarifaDescripcion: tarifaDescripcion == freezed
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as String,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -196,7 +196,7 @@ class __$$_ArticuloPrecioTarifaDTOCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -215,11 +215,11 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
   const _$_ArticuloPrecioTarifaDTO(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'TARIFA_ID') required this.tarifaId,
-      @JsonKey(name: 'TARIFA_DESCRIPCION') this.tarifaDescripcion,
-      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesDe,
+      @JsonKey(name: 'TARIFA_DESCRIPCION') required this.tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
       @JsonKey(name: 'PRECIO') required this.precio,
       @JsonKey(name: 'DIVISA_ID') required this.divisaId,
-      @JsonKey(name: 'TIPO_PRECIO') this.tipoPrecio,
+      @JsonKey(name: 'TIPO_PRECIO') required this.tipoPrecio,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -235,10 +235,10 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
   final String tarifaId;
   @override
   @JsonKey(name: 'TARIFA_DESCRIPCION')
-  final String? tarifaDescripcion;
+  final String tarifaDescripcion;
   @override
   @JsonKey(name: 'CANTIDAD_DESDE')
-  final double cantidadDesDe;
+  final int cantidadDesde;
   @override
   @JsonKey(name: 'PRECIO')
   final double precio;
@@ -247,7 +247,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
   final String divisaId;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
-  final double? tipoPrecio;
+  final int tipoPrecio;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -257,7 +257,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
 
   @override
   String toString() {
-    return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesDe: $cantidadDesDe, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloPrecioTarifaDTO(articuloId: $articuloId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, cantidadDesde: $cantidadDesde, precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -271,7 +271,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
             const DeepCollectionEquality()
                 .equals(other.tarifaDescripcion, tarifaDescripcion) &&
             const DeepCollectionEquality()
-                .equals(other.cantidadDesDe, cantidadDesDe) &&
+                .equals(other.cantidadDesde, cantidadDesde) &&
             const DeepCollectionEquality().equals(other.precio, precio) &&
             const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
             const DeepCollectionEquality()
@@ -288,7 +288,7 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(tarifaId),
       const DeepCollectionEquality().hash(tarifaDescripcion),
-      const DeepCollectionEquality().hash(cantidadDesDe),
+      const DeepCollectionEquality().hash(cantidadDesde),
       const DeepCollectionEquality().hash(precio),
       const DeepCollectionEquality().hash(divisaId),
       const DeepCollectionEquality().hash(tipoPrecio),
@@ -312,16 +312,24 @@ class _$_ArticuloPrecioTarifaDTO extends _ArticuloPrecioTarifaDTO {
 
 abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   const factory _ArticuloPrecioTarifaDTO(
-          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-          @JsonKey(name: 'TARIFA_ID') required final String tarifaId,
-          @JsonKey(name: 'TARIFA_DESCRIPCION') final String? tarifaDescripcion,
-          @JsonKey(name: 'CANTIDAD_DESDE') required final double cantidadDesDe,
-          @JsonKey(name: 'PRECIO') required final double precio,
-          @JsonKey(name: 'DIVISA_ID') required final String divisaId,
-          @JsonKey(name: 'TIPO_PRECIO') final double? tipoPrecio,
-          @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-          @JsonKey(name: 'DELETED') final String deleted}) =
-      _$_ArticuloPrecioTarifaDTO;
+      {@JsonKey(name: 'ARTICULO_ID')
+          required final String articuloId,
+      @JsonKey(name: 'TARIFA_ID')
+          required final String tarifaId,
+      @JsonKey(name: 'TARIFA_DESCRIPCION')
+          required final String tarifaDescripcion,
+      @JsonKey(name: 'CANTIDAD_DESDE')
+          required final int cantidadDesde,
+      @JsonKey(name: 'PRECIO')
+          required final double precio,
+      @JsonKey(name: 'DIVISA_ID')
+          required final String divisaId,
+      @JsonKey(name: 'TIPO_PRECIO')
+          required final int tipoPrecio,
+      @JsonKey(name: 'LAST_UPDATED')
+          required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          final String deleted}) = _$_ArticuloPrecioTarifaDTO;
   const _ArticuloPrecioTarifaDTO._() : super._();
 
   factory _ArticuloPrecioTarifaDTO.fromJson(Map<String, dynamic> json) =
@@ -335,10 +343,10 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   String get tarifaId;
   @override
   @JsonKey(name: 'TARIFA_DESCRIPCION')
-  String? get tarifaDescripcion;
+  String get tarifaDescripcion;
   @override
   @JsonKey(name: 'CANTIDAD_DESDE')
-  double get cantidadDesDe;
+  int get cantidadDesde;
   @override
   @JsonKey(name: 'PRECIO')
   double get precio;
@@ -347,7 +355,7 @@ abstract class _ArticuloPrecioTarifaDTO extends ArticuloPrecioTarifaDTO {
   String get divisaId;
   @override
   @JsonKey(name: 'TIPO_PRECIO')
-  double? get tipoPrecio;
+  int get tipoPrecio;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

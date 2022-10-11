@@ -24,11 +24,10 @@ class ArticuloListaTile extends StatelessWidget {
                 articulo.id,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
-              if (articulo.stockDisponible != null)
-                Text(
-                  '${numberFormatCantidades(articulo.stockDisponible!)} ${(articulo.stockDisponible == 1) ? S.of(context).unidad : S.of(context).unidades}',
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
+              Text(
+                '${numberFormatCantidades(articulo.stockDisponible)} ${(articulo.stockDisponible == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
             ],
           ),
           Text(

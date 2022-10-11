@@ -9,7 +9,7 @@ class ClienteDireccion with _$ClienteDireccion {
   const factory ClienteDireccion(
       {required String clienteId,
       required String direccionId,
-      String? nombre,
+      required String nombre,
       String? direccion1,
       String? direccion2,
       String? codigoPostal,

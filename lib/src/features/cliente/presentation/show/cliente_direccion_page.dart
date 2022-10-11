@@ -85,11 +85,10 @@ class ClienteDireccionTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (clienteDireccion.nombre != null)
-                      Text(
-                        clienteDireccion.nombre!,
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
+                    Text(
+                      clienteDireccion.nombre,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
                     gapH4,
                     if (clienteDireccion.direccion1 != null)
                       Text(

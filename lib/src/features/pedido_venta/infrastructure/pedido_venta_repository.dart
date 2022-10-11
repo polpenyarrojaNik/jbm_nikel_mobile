@@ -1,14 +1,12 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:money2/money2.dart';
 
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/domain/entity_id_is_local_param.dart';
@@ -20,6 +18,7 @@ import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
+import '../domain/precio.dart';
 
 final pedidoVentaRepositoryProvider =
     Provider.autoDispose<PedidoVentaRepository>(
@@ -433,59 +432,59 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
-      PedidoVentaLocalDTO pedidoVentaLocalDTO,
-      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
-      bool test) async {
-    try {
-      final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
-      final pedidoVentaLineasLocalListToJson =
-          pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
-      pedidoVentaLocalToJson
-          .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
-      final json = jsonEncode(pedidoVentaLocalToJson);
-      print(json);
-      final requestUri = Uri.http(
-        dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-        'api/v1/online/pedidos',
-      );
+  // Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
+  //     PedidoVentaLocalDTO pedidoVentaLocalDTO,
+  //     List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
+  //     bool test) async {
+  //   try {
+  //     final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
+  //     final pedidoVentaLineasLocalListToJson =
+  //         pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
+  //     pedidoVentaLocalToJson
+  //         .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
+  //     final json = jsonEncode(pedidoVentaLocalToJson);
+  //     print(json);
+  //     final requestUri = Uri.http(
+  //       dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
+  //       'api/v1/online/pedidos',
+  //     );
 
-      final response = await _dio.postUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-        ),
-        data: jsonEncode(pedidoVentaLocalToJson),
-      );
-      if (response.statusCode == 200) {
-        final json = response.data['data'] as Map<String, dynamic>;
+  //     final response = await _dio.postUri(
+  //       requestUri,
+  //       options: Options(
+  //         headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+  //       ),
+  //       data: jsonEncode(pedidoVentaLocalToJson),
+  //     );
+  //     if (response.statusCode == 200) {
+  //       final json = response.data['data'] as Map<String, dynamic>;
 
-        return PedidoVentaLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
-      }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      if (e.isNoConnectionError) {
-        throw const AppException.notConnection();
-      }
-      final responseErrorJson = (e.response?.data is List<int>)
-          ? e.response?.statusMessage
-          : e.response?.data['detalle'] ?? e.response?.data['message'];
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
+  //       return PedidoVentaLocalDTO.fromJson(json);
+  //     } else {
+  //       throw AppException.restApiFailure(
+  //           response.statusCode ?? 400, response.statusMessage ?? '');
+  //     }
+  //   } on DioError catch (e) {
+  //     String? errorDetalle;
+  //     if (e.isNoConnectionError) {
+  //       throw const AppException.notConnection();
+  //     }
+  //     final responseErrorJson = (e.response?.data is List<int>)
+  //         ? e.response?.statusMessage
+  //         : e.response?.data['detalle'] ?? e.response?.data['message'];
+  //     if (responseErrorJson != null) {
+  //       errorDetalle = responseErrorJson;
 
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
+  //       throw AppException.restApiFailure(
+  //           e.response?.statusCode ?? 400, errorDetalle ?? '');
+  //     } else {
+  //       throw AppException.restApiFailure(
+  //           e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
+  //     }
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
   Future<PedidoVenta> getPedidoVentaLocalById(
       {required String pedidoVentaAppId}) async {
@@ -509,5 +508,47 @@ class PedidoVentaRepository {
         divisa: divisaDTO.toDomain(),
       );
     }).getSingle();
+  }
+
+  Future<Precio> getPrecioTarifa({
+    required String tarifaId,
+    required String articuloID,
+    required int cantidad,
+  }) async {
+    final articuloPrecioTarifaDTO =
+        await (_db.select(_db.articuloPrecioTarifaTable)
+              ..where(
+                (precioTarifa) =>
+                    precioTarifa.tarifaId.equals(tarifaId) &
+                    precioTarifa.articuloId.equals(articuloID) &
+                    precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad),
+              )
+              ..orderBy([
+                (precioTarifa) => OrderingTerm(
+                    expression: precioTarifa.cantidadDesde,
+                    mode: OrderingMode.desc),
+              ])
+              ..limit(1))
+            .getSingleOrNull();
+
+    return (articuloPrecioTarifaDTO != null)
+        ? Precio(
+            precio: articuloPrecioTarifaDTO.precio
+                .parseMoney(currencyId: articuloPrecioTarifaDTO.divisaId),
+            tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
+          )
+        : Precio(
+            precio: '0'.parseMoney(),
+            tipoPrecio: 1,
+          );
+  }
+
+  Money getPrecioUnitario({
+    required Money precio,
+    required double tipoPrecio,
+  }) {
+    return tipoPrecio != 0
+        ? precio / tipoPrecio
+        : '0'.parseMoney(currencyId: precio.currency.code);
   }
 }

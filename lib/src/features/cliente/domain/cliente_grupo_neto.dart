@@ -8,7 +8,7 @@ class ClienteGrupoNeto with _$ClienteGrupoNeto {
   const factory ClienteGrupoNeto(
       {required String clienteId,
       required String grupoNetoId,
-      String? grupoNetoDescripcion,
+      required String grupoNetoDescripcion,
       required DateTime lastUpdated,
       required bool deleted}) = _ClienteGrupoNeto;
 }

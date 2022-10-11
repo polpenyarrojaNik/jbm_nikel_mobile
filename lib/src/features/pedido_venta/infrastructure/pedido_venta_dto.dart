@@ -1,13 +1,13 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 
-import '../../../core/domain/pais.dart';
 import '../../../core/domain/divisa.dart';
-import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/domain/pais.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
+import '../../../core/infrastructure/pais_dto.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_estado.dart';
 
@@ -25,9 +25,9 @@ class PedidoVentaDTO
     @JsonKey(name: 'PEDIDO_ID') required String pedidoVentaId,
     @JsonKey(name: 'FECHA_PEDIDO') required DateTime pedidoVentaDate,
     @JsonKey(name: 'TIPO_VENTA') required String tipoVenta,
-    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+    @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'DIRECCION_ID') String? direccionId,
-    @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
+    @JsonKey(name: 'NOMBRE_CLIENTE') required String nombreCliente,
     @JsonKey(name: 'DIRECCION_ENVIO1') String? direccionEntrga1,
     @JsonKey(name: 'DIRECCION_ENVIO2') String? direccionEntrga2,
     @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -38,7 +38,7 @@ class PedidoVentaDTO
     @JsonKey(name: 'BASE_IMPONIBLE') required double baseImponible,
     @JsonKey(name: 'IMPORTE_IVA') required double importeIva,
     @JsonKey(name: 'TOTAL') required double total,
-    @JsonKey(name: 'ESTADO_PEDIDO_ID') required double pedidoVentaEstadoId,
+    @JsonKey(name: 'ESTADO_PEDIDO_ID') required int pedidoVentaEstadoId,
     @JsonKey(name: 'OFERTA_SN') required String oferta,
     @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required double descuentoProntoPago,
     @JsonKey(name: 'IVA') required double iva,
@@ -94,9 +94,9 @@ class PedidoVentaDTO
       provincia: provincia,
       pais: pais,
       divisa: divisa,
-      baseImponible: baseImponible.parseMoney(baseImponible, divisaId),
-      importeIva: importeIva.parseMoney(importeIva, divisaId),
-      total: total.parseMoney(total, divisaId),
+      baseImponible: baseImponible.parseMoney(currencyId: divisaId),
+      importeIva: importeIva.parseMoney(currencyId: divisaId),
+      total: total.parseMoney(currencyId: divisaId),
       pedidoVentaEstado: pedidoVentaEstado,
       oferta: (oferta == 'S') ? true : false,
       descuentoProntoPago: descuentoProntoPago,
@@ -145,10 +145,9 @@ class PedidoVentaTable extends Table {
       text().withLength(max: 10).named('PEDIDO_ID')();
   DateTimeColumn get pedidoVentaDate => dateTime().named('FECHA_PEDIDO')();
   TextColumn get tipoVenta => text().withLength(max: 1).named('TIPO_VENTA')();
-  TextColumn get clienteId =>
-      text().nullable().withLength(max: 6).named('CLIENTE_ID')();
+  TextColumn get clienteId => text().withLength(max: 6).named('CLIENTE_ID')();
   TextColumn get nombreCliente =>
-      text().withLength(max: 100).nullable().named('NOMRE_CLIENTE')();
+      text().withLength(max: 100).named('NOMRE_CLIENTE')();
   TextColumn get direccionId => text().nullable().named('DIRECCION_ID')();
   TextColumn get direccionEntrga1 =>
       text().withLength(max: 100).nullable().named('DIRECCION_ENVIO1')();
@@ -175,7 +174,7 @@ class PedidoVentaTable extends Table {
       real().withDefault(const Constant(0.0)).named('IMPORTE_IVA')();
   RealColumn get total =>
       real().withDefault(const Constant(0.0)).named('TOTAL')();
-  RealColumn get pedidoVentaEstadoId => real()
+  IntColumn get pedidoVentaEstadoId => integer()
       .withDefault(const Constant(0))
       .references(PedidoVentaEstadoTable, #id)
       .named('ESTADO_PEDIDO_ID')();

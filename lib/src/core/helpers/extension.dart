@@ -2,7 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:money2/money2.dart';
 
 extension MoneyParsing on String {
-  Money parseMoney(String currencyId) {
+  Money parseMoney({String? currencyId}) {
     final euroCurrency = Currency.create('EU', 2,
         symbol: '€', invertSeparators: true, pattern: 'S#.##0,##');
 
@@ -20,7 +20,9 @@ extension MoneyParsing on String {
       ],
     );
 
-    final currency = Currencies().find(currencyId) ?? euroCurrency;
+    final currency = (currencyId != null)
+        ? Currencies().find(currencyId) ?? euroCurrency
+        : euroCurrency;
 
     try {
       return Money.parseWithCurrency(this, currency);
@@ -58,7 +60,7 @@ extension MoneyParsing on String {
 }
 
 extension MoneyParsingDouble on double {
-  Money parseMoney(double importe, String? currencyId) {
+  Money parseMoney({String? currencyId}) {
     final euroCurrency = Currency.create('EU', 2,
         symbol: '€', invertSeparators: true, pattern: 'S#.##0,00');
 
@@ -82,7 +84,7 @@ extension MoneyParsingDouble on double {
 
     NumberFormat formatter = NumberFormat.decimalPattern('es');
 
-    final importeStr = formatter.format(importe);
+    final importeStr = formatter.format(this);
 
     try {
       return Money.parseWithCurrency(importeStr, currency);

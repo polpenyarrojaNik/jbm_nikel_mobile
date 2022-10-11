@@ -19,7 +19,7 @@ class ClienteDireccionDTO
   const factory ClienteDireccionDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'DIRECCION_ID') required String direccionId,
-    @JsonKey(name: 'NOMBRE') String? nombre,
+    @JsonKey(name: 'NOMBRE') required String nombre,
     @JsonKey(name: 'DIRECCION1') String? direccion1,
     @JsonKey(name: 'DIRECCION2') String? direccion2,
     @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -86,7 +86,7 @@ class ClienteDireccionTable extends Table {
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get direccionId => text().named('DIRECCION_ID')();
-  TextColumn get nombre => text().nullable().named('NOMBRE')();
+  TextColumn get nombre => text().named('NOMBRE')();
   TextColumn get direccion1 => text().nullable().named('DIRECCION1')();
   TextColumn get direccion2 => text().nullable().named('DIRECCION2')();
   TextColumn get codigoPostal => text().nullable().named('CODIGO_POSTAL')();

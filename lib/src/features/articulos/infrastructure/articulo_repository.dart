@@ -7,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
@@ -571,7 +571,7 @@ class ArticuloRepository {
             row.readTable(_db.estadisticasUltimosPreciosTable);
         final clienteDTO = row.readTableOrNull(_db.clienteTable);
         return lastPriceArticuloDTO.toDomain(
-            nombreCliente: clienteDTO?.nombreCliente);
+            nombreCliente: clienteDTO!.nombreCliente);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

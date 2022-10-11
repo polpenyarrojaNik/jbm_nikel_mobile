@@ -9,7 +9,7 @@ class ArticuloRecambio with _$ArticuloRecambio {
       {required String articuloId,
       required String id,
       required String descripcion,
-      required double cantidad,
+      required int cantidad,
       required DateTime lastUpdated,
       required bool deleted}) = _ArticuloRecambio;
 }

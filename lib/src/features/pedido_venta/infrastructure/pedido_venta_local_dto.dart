@@ -1,12 +1,12 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
-import '../../../core/domain/pais.dart';
 import '../../../core/domain/divisa.dart';
-import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/domain/pais.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
+import '../../../core/infrastructure/pais_dto.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../domain/pedido_venta.dart';
@@ -25,7 +25,7 @@ class PedidoVentaLocalDTO
     @JsonKey(name: 'PEDIDO_APP_ID') required String pedidoVentaAppId,
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'NOMBRE_CLIENTE') String? nombreCliente,
+    @JsonKey(name: 'NOMBRE_CLIENTE') required String nombreCliente,
     @JsonKey(name: 'DIRECCION_ID') String? direccionId,
     @JsonKey(name: 'DIRECCION1') String? direccion1,
     @JsonKey(name: 'DIRECCION2') String? direccion2,
@@ -134,9 +134,9 @@ class PedidoVentaLocalDTO
       observaciones: observaciones,
       iva: iva,
       dtoBonificacion: dtoBonificacion,
-      baseImponible: baseImponible?.parseMoney(baseImponible, divisaId),
-      importeIva: importeIva?.parseMoney(importeIva, divisaId),
-      total: total?.parseMoney(total, divisaId),
+      baseImponible: baseImponible?.parseMoney(currencyId: divisaId),
+      importeIva: importeIva?.parseMoney(currencyId: divisaId),
+      total: total?.parseMoney(currencyId: divisaId),
       pedidoVentaEstado: null,
       oferta: null,
       descuentoProntoPago: null,
@@ -184,7 +184,7 @@ class PedidoVentaLocalTable extends Table {
 
   DateTimeColumn get fechaAlta => dateTime().named('FECHA_ALTA')();
   TextColumn get clienteId => text().named('CLIENTE_ID')();
-  TextColumn get nombreCliente => text().nullable().named('NOMBRE_CLIENTE')();
+  TextColumn get nombreCliente => text().named('NOMBRE_CLIENTE')();
   TextColumn get direccionId => text().nullable().named('DIRECCION_ID')();
   TextColumn get direccion1 => text().nullable().named('DIRECCION1')();
   TextColumn get direccion2 => text().nullable().named('DIRECCION2')();

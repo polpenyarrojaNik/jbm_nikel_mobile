@@ -18,9 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArticuloComponente {
   String get articuloId => throw _privateConstructorUsedError;
   String get articuloComponenteId => throw _privateConstructorUsedError;
-  String? get articuloComponenteDescripcion =>
+  String get articuloComponenteDescripcion =>
       throw _privateConstructorUsedError;
-  double get cantidad => throw _privateConstructorUsedError;
+  int get cantidad => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -37,8 +37,8 @@ abstract class $ArticuloComponenteCopyWith<$Res> {
   $Res call(
       {String articuloId,
       String articuloComponenteId,
-      String? articuloComponenteDescripcion,
-      double cantidad,
+      String articuloComponenteDescripcion,
+      int cantidad,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -73,11 +73,11 @@ class _$ArticuloComponenteCopyWithImpl<$Res>
       articuloComponenteDescripcion: articuloComponenteDescripcion == freezed
           ? _value.articuloComponenteDescripcion
           : articuloComponenteDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -100,8 +100,8 @@ abstract class _$$_ArticuloComponenteCopyWith<$Res>
   $Res call(
       {String articuloId,
       String articuloComponenteId,
-      String? articuloComponenteDescripcion,
-      double cantidad,
+      String articuloComponenteDescripcion,
+      int cantidad,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -138,11 +138,11 @@ class __$$_ArticuloComponenteCopyWithImpl<$Res>
       articuloComponenteDescripcion: articuloComponenteDescripcion == freezed
           ? _value.articuloComponenteDescripcion
           : articuloComponenteDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -161,7 +161,7 @@ class _$_ArticuloComponente extends _ArticuloComponente {
   const _$_ArticuloComponente(
       {required this.articuloId,
       required this.articuloComponenteId,
-      this.articuloComponenteDescripcion,
+      required this.articuloComponenteDescripcion,
       required this.cantidad,
       required this.lastUpdated,
       required this.deleted})
@@ -172,9 +172,9 @@ class _$_ArticuloComponente extends _ArticuloComponente {
   @override
   final String articuloComponenteId;
   @override
-  final String? articuloComponenteDescripcion;
+  final String articuloComponenteDescripcion;
   @override
-  final double cantidad;
+  final int cantidad;
   @override
   final DateTime lastUpdated;
   @override
@@ -224,8 +224,8 @@ abstract class _ArticuloComponente extends ArticuloComponente {
   const factory _ArticuloComponente(
       {required final String articuloId,
       required final String articuloComponenteId,
-      final String? articuloComponenteDescripcion,
-      required final double cantidad,
+      required final String articuloComponenteDescripcion,
+      required final int cantidad,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloComponente;
   const _ArticuloComponente._() : super._();
@@ -235,9 +235,9 @@ abstract class _ArticuloComponente extends ArticuloComponente {
   @override
   String get articuloComponenteId;
   @override
-  String? get articuloComponenteDescripcion;
+  String get articuloComponenteDescripcion;
   @override
-  double get cantidad;
+  int get cantidad;
   @override
   DateTime get lastUpdated;
   @override

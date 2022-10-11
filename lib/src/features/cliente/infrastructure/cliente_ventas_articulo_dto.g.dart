@@ -10,7 +10,7 @@ _$_ClienteVentasArticuloDTO _$$_ClienteVentasArticuloDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ClienteVentasArticuloDTO(
       articuloId: json['ARTICULO_ID'] as String,
-      descripcionES: json['DESCRIPCION_ES'] as String?,
+      descripcionES: json['DESCRIPCION_ES'] as String,
       descripcionEN: json['DESCRIPCION_EN'] as String?,
       descripcionFR: json['DESCRIPCION_FR'] as String?,
       descripcionDE: json['DESCRIPCION_DE'] as String?,
@@ -30,11 +30,11 @@ _$_ClienteVentasArticuloDTO _$$_ClienteVentasArticuloDTOFromJson(
       importeAnyo_2: (json['IMPORTE_ANYO_2'] as num).toDouble(),
       importeAnyo_3: (json['IMPORTE_ANYO_3'] as num).toDouble(),
       importeAnyo_4: (json['IMPORTE_ANYO_4'] as num).toDouble(),
-      cantidadAnyo: (json['CANTIDAD_ANYO'] as num).toDouble(),
-      cantidadAnyo_1: (json['CANTIDAD_ANYO_1'] as num).toDouble(),
-      cantidadAnyo_2: (json['CANTIDAD_ANYO_2'] as num).toDouble(),
-      cantidadAnyo_3: (json['CANTIDAD_ANYO_3'] as num).toDouble(),
-      cantidadAnyo_4: (json['CANTIDAD_ANYO_4'] as num).toDouble(),
+      cantidadAnyo: json['CANTIDAD_ANYO'] as int,
+      cantidadAnyo_1: json['CANTIDAD_ANYO_1'] as int,
+      cantidadAnyo_2: json['CANTIDAD_ANYO_2'] as int,
+      cantidadAnyo_3: json['CANTIDAD_ANYO_3'] as int,
+      cantidadAnyo_4: json['CANTIDAD_ANYO_4'] as int,
     );
 
 Map<String, dynamic> _$$_ClienteVentasArticuloDTOToJson(

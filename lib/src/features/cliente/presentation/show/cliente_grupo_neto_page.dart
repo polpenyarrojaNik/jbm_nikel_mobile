@@ -73,11 +73,10 @@ class ClienteGrupoNetoTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(clienteGrupoNeto.grupoNetoId),
-          if (clienteGrupoNeto.grupoNetoDescripcion != null)
-            Text(
-              clienteGrupoNeto.grupoNetoDescripcion!,
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
+          Text(
+            clienteGrupoNeto.grupoNetoDescripcion,
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
           const Divider(),
         ],
       ),

@@ -24,7 +24,7 @@ mixin _$ClienteEstadoPotencialDTO {
   @JsonKey(name: 'ESTADO_POTENCIAL_ID')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_ES')
-  String? get descripcionES => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_EN')
   String? get descripcionEN => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_FR')
@@ -71,7 +71,7 @@ abstract class $ClienteEstadoPotencialDTOCopyWith<$Res> {
       _$ClienteEstadoPotencialDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'ESTADO_POTENCIAL_ID') String id,
-      @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -128,7 +128,7 @@ class _$ClienteEstadoPotencialDTOCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -207,7 +207,7 @@ abstract class _$$_ClienteEstadoPotencialDTOCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'ESTADO_POTENCIAL_ID') String id,
-      @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -268,7 +268,7 @@ class __$$_ClienteEstadoPotencialDTOCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -342,7 +342,7 @@ class __$$_ClienteEstadoPotencialDTOCopyWithImpl<$Res>
 class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
   const _$_ClienteEstadoPotencialDTO(
       {@JsonKey(name: 'ESTADO_POTENCIAL_ID') required this.id,
-      @JsonKey(name: 'DESCRIPCION_ES') this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
@@ -369,7 +369,7 @@ class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
   final String id;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  final String? descripcionES;
+  final String descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
   final String? descripcionEN;
@@ -505,7 +505,7 @@ class _$_ClienteEstadoPotencialDTO extends _ClienteEstadoPotencialDTO {
 abstract class _ClienteEstadoPotencialDTO extends ClienteEstadoPotencialDTO {
   const factory _ClienteEstadoPotencialDTO(
           {@JsonKey(name: 'ESTADO_POTENCIAL_ID') required final String id,
-          @JsonKey(name: 'DESCRIPCION_ES') final String? descripcionES,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcionES,
           @JsonKey(name: 'DESCRIPCION_EN') final String? descripcionEN,
           @JsonKey(name: 'DESCRIPCION_FR') final String? descripcionFR,
           @JsonKey(name: 'DESCRIPCION_DE') final String? descripcionDE,
@@ -533,7 +533,7 @@ abstract class _ClienteEstadoPotencialDTO extends ClienteEstadoPotencialDTO {
   String get id;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  String? get descripcionES;
+  String get descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
   String? get descripcionEN;

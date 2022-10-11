@@ -23,7 +23,7 @@ class ClienteDescuentoDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'FAMILIA_ID') required String familiaId,
     @JsonKey(name: 'SUBFAMILIA_ID') required String subfamiliaId,
-    @JsonKey(name: 'CANTIDAD_DESDE') required double cantidadDesDe,
+    @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'DESCUENTO') required double descuento,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
@@ -39,7 +39,7 @@ class ClienteDescuentoDTO
       articuloId: articuloId,
       familia: familia,
       subfamilia: subfamilia,
-      cantidadDesDe: cantidadDesDe,
+      cantidadDesde: cantidadDesde,
       descuento: descuento,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
@@ -53,7 +53,7 @@ class ClienteDescuentoDTO
       articuloId: Value(articuloId),
       familiaId: Value(familiaId),
       subfamiliaId: Value(subfamiliaId),
-      cantidadDesDe: Value(cantidadDesDe),
+      cantidadDesde: Value(cantidadDesde),
       descuento: Value(descuento),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
@@ -68,7 +68,7 @@ class ClienteDescuentoTable extends Table {
 
   @override
   Set<Column> get primaryKey =>
-      {clienteId, articuloId, familiaId, subfamiliaId, cantidadDesDe};
+      {clienteId, articuloId, familiaId, subfamiliaId, cantidadDesde};
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
@@ -76,7 +76,7 @@ class ClienteDescuentoTable extends Table {
       text().references(FamiliaTable, #id).named('FAMILIA_ID')();
   TextColumn get subfamiliaId =>
       text().references(SubfamiliaTable, #id).named('SUBFAMILIA_ID')();
-  RealColumn get cantidadDesDe => real().named('CANTIDAD_DESDE')();
+  IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
   RealColumn get descuento => real().named('DESCUENTO')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ClienteEstadoPotencial {
   String get id => throw _privateConstructorUsedError;
-  String? get descripcionES => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
   String? get descripcionEN => throw _privateConstructorUsedError;
   String? get descripcionFR => throw _privateConstructorUsedError;
   String? get descripcionDE => throw _privateConstructorUsedError;
@@ -47,7 +47,7 @@ abstract class $ClienteEstadoPotencialCopyWith<$Res> {
       _$ClienteEstadoPotencialCopyWithImpl<$Res>;
   $Res call(
       {String id,
-      String? descripcionES,
+      String descripcionES,
       String? descripcionEN,
       String? descripcionFR,
       String? descripcionDE,
@@ -104,7 +104,7 @@ class _$ClienteEstadoPotencialCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ abstract class _$$_ClienteEstadoPotencialCopyWith<$Res>
   @override
   $Res call(
       {String id,
-      String? descripcionES,
+      String descripcionES,
       String? descripcionEN,
       String? descripcionFR,
       String? descripcionDE,
@@ -242,7 +242,7 @@ class __$$_ClienteEstadoPotencialCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -316,7 +316,7 @@ class __$$_ClienteEstadoPotencialCopyWithImpl<$Res>
 class _$_ClienteEstadoPotencial extends _ClienteEstadoPotencial {
   const _$_ClienteEstadoPotencial(
       {required this.id,
-      this.descripcionES,
+      required this.descripcionES,
       this.descripcionEN,
       this.descripcionFR,
       this.descripcionDE,
@@ -338,7 +338,7 @@ class _$_ClienteEstadoPotencial extends _ClienteEstadoPotencial {
   @override
   final String id;
   @override
-  final String? descripcionES;
+  final String descripcionES;
   @override
   final String? descripcionEN;
   @override
@@ -450,7 +450,7 @@ class _$_ClienteEstadoPotencial extends _ClienteEstadoPotencial {
 abstract class _ClienteEstadoPotencial extends ClienteEstadoPotencial {
   const factory _ClienteEstadoPotencial(
       {required final String id,
-      final String? descripcionES,
+      required final String descripcionES,
       final String? descripcionEN,
       final String? descripcionFR,
       final String? descripcionDE,
@@ -472,7 +472,7 @@ abstract class _ClienteEstadoPotencial extends ClienteEstadoPotencial {
   @override
   String get id;
   @override
-  String? get descripcionES;
+  String get descripcionES;
   @override
   String? get descripcionEN;
   @override

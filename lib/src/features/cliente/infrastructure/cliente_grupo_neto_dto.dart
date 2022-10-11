@@ -17,7 +17,8 @@ class ClienteGrupoNetoDTO
   const factory ClienteGrupoNetoDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'GRUPO_NETO_ID') required String grupoNetoId,
-    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String? grupoNetoDescripcion,
+    @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+        required String grupoNetoDescripcion,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteGrupoNetoDTO;
@@ -58,7 +59,7 @@ class ClienteGrupoNetoTable extends Table {
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get grupoNetoId => text().named('GRUPO_NETO_ID')();
   TextColumn get grupoNetoDescripcion =>
-      text().nullable().named('GRUPO_NETO_DESCRIPCION')();
+      text().named('GRUPO_NETO_DESCRIPCION')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

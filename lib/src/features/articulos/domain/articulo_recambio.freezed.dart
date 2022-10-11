@@ -19,7 +19,7 @@ mixin _$ArticuloRecambio {
   String get articuloId => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get descripcion => throw _privateConstructorUsedError;
-  double get cantidad => throw _privateConstructorUsedError;
+  int get cantidad => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -37,7 +37,7 @@ abstract class $ArticuloRecambioCopyWith<$Res> {
       {String articuloId,
       String id,
       String descripcion,
-      double cantidad,
+      int cantidad,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -76,7 +76,7 @@ class _$ArticuloRecambioCopyWithImpl<$Res>
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -100,7 +100,7 @@ abstract class _$$_ArticuloRecambioCopyWith<$Res>
       {String articuloId,
       String id,
       String descripcion,
-      double cantidad,
+      int cantidad,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -141,7 +141,7 @@ class __$$_ArticuloRecambioCopyWithImpl<$Res>
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -173,7 +173,7 @@ class _$_ArticuloRecambio extends _ArticuloRecambio {
   @override
   final String descripcion;
   @override
-  final double cantidad;
+  final int cantidad;
   @override
   final DateTime lastUpdated;
   @override
@@ -221,7 +221,7 @@ abstract class _ArticuloRecambio extends ArticuloRecambio {
       {required final String articuloId,
       required final String id,
       required final String descripcion,
-      required final double cantidad,
+      required final int cantidad,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloRecambio;
   const _ArticuloRecambio._() : super._();
@@ -233,7 +233,7 @@ abstract class _ArticuloRecambio extends ArticuloRecambio {
   @override
   String get descripcion;
   @override
-  double get cantidad;
+  int get cantidad;
   @override
   DateTime get lastUpdated;
   @override

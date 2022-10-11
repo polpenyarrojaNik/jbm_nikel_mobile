@@ -18,9 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClientePrecioNeto {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
-  double get cantidadDesDe => throw _privateConstructorUsedError;
+  int get cantidadDesde => throw _privateConstructorUsedError;
   Money get precio => throw _privateConstructorUsedError;
-  double? get tipoPrecio => throw _privateConstructorUsedError;
+  int get tipoPrecio => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -37,9 +37,9 @@ abstract class $ClientePrecioNetoCopyWith<$Res> {
   $Res call(
       {String clienteId,
       String articuloId,
-      double cantidadDesDe,
+      int cantidadDesde,
       Money precio,
-      double? tipoPrecio,
+      int tipoPrecio,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -57,7 +57,7 @@ class _$ClientePrecioNetoCopyWithImpl<$Res>
   $Res call({
     Object? clienteId = freezed,
     Object? articuloId = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? precio = freezed,
     Object? tipoPrecio = freezed,
     Object? lastUpdated = freezed,
@@ -72,10 +72,10 @@ class _$ClientePrecioNetoCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,7 @@ class _$ClientePrecioNetoCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -106,9 +106,9 @@ abstract class _$$_ClientePrecioNetoCopyWith<$Res>
   $Res call(
       {String clienteId,
       String articuloId,
-      double cantidadDesDe,
+      int cantidadDesde,
       Money precio,
-      double? tipoPrecio,
+      int tipoPrecio,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -128,7 +128,7 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
   $Res call({
     Object? clienteId = freezed,
     Object? articuloId = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? precio = freezed,
     Object? tipoPrecio = freezed,
     Object? lastUpdated = freezed,
@@ -143,10 +143,10 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       precio: precio == freezed
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
@@ -154,7 +154,7 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -173,9 +173,9 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   const _$_ClientePrecioNeto(
       {required this.clienteId,
       required this.articuloId,
-      required this.cantidadDesDe,
+      required this.cantidadDesde,
       required this.precio,
-      this.tipoPrecio,
+      required this.tipoPrecio,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -185,11 +185,11 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   @override
   final String articuloId;
   @override
-  final double cantidadDesDe;
+  final int cantidadDesde;
   @override
   final Money precio;
   @override
-  final double? tipoPrecio;
+  final int tipoPrecio;
   @override
   final DateTime lastUpdated;
   @override
@@ -197,7 +197,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
 
   @override
   String toString() {
-    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, cantidadDesDe: $cantidadDesDe, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -209,7 +209,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
             const DeepCollectionEquality()
                 .equals(other.articuloId, articuloId) &&
             const DeepCollectionEquality()
-                .equals(other.cantidadDesDe, cantidadDesDe) &&
+                .equals(other.cantidadDesde, cantidadDesde) &&
             const DeepCollectionEquality().equals(other.precio, precio) &&
             const DeepCollectionEquality()
                 .equals(other.tipoPrecio, tipoPrecio) &&
@@ -223,7 +223,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
       runtimeType,
       const DeepCollectionEquality().hash(clienteId),
       const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(cantidadDesDe),
+      const DeepCollectionEquality().hash(cantidadDesde),
       const DeepCollectionEquality().hash(precio),
       const DeepCollectionEquality().hash(tipoPrecio),
       const DeepCollectionEquality().hash(lastUpdated),
@@ -240,9 +240,9 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   const factory _ClientePrecioNeto(
       {required final String clienteId,
       required final String articuloId,
-      required final double cantidadDesDe,
+      required final int cantidadDesde,
       required final Money precio,
-      final double? tipoPrecio,
+      required final int tipoPrecio,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClientePrecioNeto;
   const _ClientePrecioNeto._() : super._();
@@ -252,11 +252,11 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   @override
   String get articuloId;
   @override
-  double get cantidadDesDe;
+  int get cantidadDesde;
   @override
   Money get precio;
   @override
-  double? get tipoPrecio;
+  int get tipoPrecio;
   @override
   DateTime get lastUpdated;
   @override

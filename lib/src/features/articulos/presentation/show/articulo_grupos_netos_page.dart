@@ -82,13 +82,12 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
                       articuloGrupoNeto.grupoNetoId,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
-                    if (articuloGrupoNeto.grupoNetoDescripcion != null)
+                    Text(
+                      articuloGrupoNeto.grupoNetoDescripcion,
+                    ),
+                    if (articuloGrupoNeto.cantidadDesde != 1)
                       Text(
-                        articuloGrupoNeto.grupoNetoDescripcion!,
-                      ),
-                    if (articuloGrupoNeto.cantidadDesDe != 1)
-                      Text(
-                        '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesDe)}',
+                        '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)}',
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             color: Theme.of(context).textTheme.caption?.color),
                       ),

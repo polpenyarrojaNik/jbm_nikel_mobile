@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:jbm_nikel_mobile/src/core/domain/familia.dart';
+import 'package:money2/money2.dart';
 
 import '../../../core/domain/subfamilia.dart';
 
@@ -28,11 +28,11 @@ class Articulo with _$Articulo {
       String? descripcionEL,
       Familia? familia,
       Subfamilia? subfamilia,
-      required double ventaMinimo,
-      required double ventaMultiplo,
-      required double unidadesSubcaja,
-      required double unidadesCaja,
-      required double unidadesPalet,
+      required int ventaMinimo,
+      required int ventaMultiplo,
+      required int unidadesSubcaja,
+      required int unidadesCaja,
+      required int unidadesPalet,
       required bool activoWeb,
       required bool activoApp,
       required bool enCatalogo,
@@ -58,13 +58,13 @@ class Articulo with _$Articulo {
       String? resumenRU,
       String? resumenCN,
       String? resumenEL,
-      double? stockDisponible,
-      double? ventasActual,
-      double? ventasAnterior,
-      double? comprasEntregaCantidad1,
-      double? comprasEntregaCantidad2,
-      double? comprasEntregaCantidad3,
-      double? comprasEntregaCantidadMas3,
+      required int stockDisponible,
+      required Money ventasActual,
+      required Money ventasAnterior,
+      required int comprasEntregaCantidad1,
+      required int comprasEntregaCantidad2,
+      required int comprasEntregaCantidad3,
+      required int comprasEntregaCantidadMas3,
       DateTime? comprasEntregaFecha1,
       DateTime? comprasEntregaFecha2,
       DateTime? comprasEntregaFecha3,

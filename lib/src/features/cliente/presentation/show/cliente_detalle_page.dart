@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -14,7 +13,6 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
-
 import '../../../../core/routing/app_auto_router.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -85,13 +83,12 @@ class _ClienteHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (cliente.nombreCliente != null)
-                Flexible(
-                  child: Text(
-                    '#${cliente.id} ${cliente.nombreCliente!}',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
+              Flexible(
+                child: Text(
+                  '#${cliente.id} ${cliente.nombreCliente}',
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
+              ),
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
                     text: getClienteEstadoPotencialInLocalLanguage(
@@ -100,11 +97,10 @@ class _ClienteHeader extends StatelessWidget {
             ],
           ),
           gapH8,
-          if (cliente.nombreFiscal != null)
-            Text(
-              cliente.nombreFiscal!,
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
+          Text(
+            cliente.nombreFiscal,
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
           gapH4,
           if (cliente.direccionFiscal1 != null)
             Row(
@@ -137,19 +133,14 @@ class _ClienteHeader extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (cliente.latitudFiscal != null &&
-                    cliente.longitudFiscal != null)
-                  gapW8,
-                if (cliente.latitudFiscal != null &&
-                    cliente.longitudFiscal != null)
-                  IconButton(
-                    onPressed: () => navigateToGoogleMapsAddress(
-                      cliente.nombreFiscal,
-                      cliente.latitudFiscal,
-                      cliente.longitudFiscal,
-                    ),
-                    icon: const Icon(MdiIcons.googleMaps),
-                  )
+                IconButton(
+                  onPressed: () => navigateToGoogleMapsAddress(
+                    cliente.nombreFiscal,
+                    cliente.latitudFiscal,
+                    cliente.longitudFiscal,
+                  ),
+                  icon: const Icon(MdiIcons.googleMaps),
+                )
               ],
             ),
           gapH8,
@@ -218,84 +209,73 @@ class _ClienteAnalisis extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.ventasAnyoActual != null)
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_anoActual,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color)),
-                          Text(
-                            formatPrecios(
-                                precio: cliente.ventasAnyoActual!,
-                                tipoPrecio: null),
-                          ),
-                        ],
-                      ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                            S.of(context).cliente_show_clienteDetalle_anoActual,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          formatPrecios(
+                              precio: cliente.ventasAnyoActual,
+                              tipoPrecio: null),
+                        ),
+                      ],
                     ),
-                  if (cliente.ventasAnyoAnterior != null)
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_anoAnterior,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color)),
-                          Text(
-                            formatPrecios(
-                                precio: cliente.ventasAnyoAnterior!,
-                                tipoPrecio: null),
-                          ),
-                        ],
-                      ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_anoAnterior,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          formatPrecios(
+                              precio: cliente.ventasAnyoAnterior,
+                              tipoPrecio: null),
+                        ),
+                      ],
                     ),
-                  if (cliente.ventasHaceDosAnyos != null)
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_hace2Anos,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color)),
-                          Text(
-                            formatPrecios(
-                                precio: cliente.ventasHaceDosAnyos!,
-                                tipoPrecio: null),
-                          ),
-                        ],
-                      ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                            S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          formatPrecios(
+                              precio: cliente.ventasHaceDosAnyos,
+                              tipoPrecio: null),
+                        ),
+                      ],
                     ),
+                  ),
                 ],
               ),
-              if (cliente.margenAnyoActual != null &&
-                  cliente.margenAnyoAnterior != null &&
-                  cliente.margenHaceDosAnyos != null)
-                const Divider(),
               Text(
                 S.of(context).cliente_show_clienteDetalle_margen,
                 style: Theme.of(context).textTheme.subtitle2!.copyWith(
@@ -305,100 +285,86 @@ class _ClienteAnalisis extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.margenAnyoActual != null)
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_anoActual,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color)),
-                          Text(
-                            '${numberFormatDecimal(cliente.margenAnyoActual!)}%',
-                          ),
-                        ],
-                      ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                            S.of(context).cliente_show_clienteDetalle_anoActual,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          '${numberFormatDecimal(cliente.margenAnyoActual)}%',
+                        ),
+                      ],
                     ),
-                  if (cliente.margenAnyoAnterior != null)
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_anoAnterior,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color)),
-                          Text(
-                            '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%',
-                          ),
-                        ],
-                      ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_anoAnterior,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          '${numberFormatDecimal(cliente.margenAnyoAnterior)}%',
+                        ),
+                      ],
                     ),
-                  if (cliente.margenHaceDosAnyos != null)
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_hace2Anos,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color)),
-                          Text(
-                            '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%',
-                          ),
-                        ],
-                      ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                            S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          '${numberFormatDecimal(cliente.margenHaceDosAnyos)}%',
+                        ),
+                      ],
                     ),
+                  ),
                 ],
               ),
-              if (cliente.porcentajeGarantias != null &&
-                  cliente.porcentajeAbonos != null)
-                const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  if (cliente.porcentajeGarantias != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_porcentajeGarantias,
-                          value: (cliente.porcentajeGarantias != null)
-                              ? '${numberFormatDecimal(cliente.porcentajeGarantias!)}%'
-                              : ''),
-                    ),
-                  if (cliente.porcentajeAbonos != null)
-                    Expanded(
-                      child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_porcentajeAbonos,
-                          value: (cliente.porcentajeAbonos != null)
-                              ? '${numberFormatDecimal(cliente.porcentajeAbonos!)}%'
-                              : ''),
-                    ),
+                  Expanded(
+                    child: ColumnFieldTextDetalle(
+                        fieldTitleValue: S
+                            .of(context)
+                            .cliente_show_clienteDetalle_porcentajeGarantias,
+                        value:
+                            '${numberFormatDecimal(cliente.porcentajeGarantias)}%'),
+                  ),
+                  Expanded(
+                    child: ColumnFieldTextDetalle(
+                        fieldTitleValue: S
+                            .of(context)
+                            .cliente_show_clienteDetalle_porcentajeAbonos,
+                        value:
+                            '${numberFormatDecimal(cliente.porcentajeAbonos)}%'),
+                  ),
                 ],
               ),
             ],

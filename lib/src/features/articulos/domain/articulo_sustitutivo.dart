@@ -8,8 +8,8 @@ class ArticuloSustitutivo with _$ArticuloSustitutivo {
   const factory ArticuloSustitutivo(
       {required String articuloId,
       required String articuloSustitutivoId,
-      String? articuloSustitutivoDescription,
-      required double orden,
+      required String articuloSustitutivoDescription,
+      required int orden,
       required DateTime lastUpdated,
       required bool deleted}) = _ArticuloSustitutivo;
 }

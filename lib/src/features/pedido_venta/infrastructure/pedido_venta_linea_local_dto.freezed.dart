@@ -28,13 +28,13 @@ mixin _$PedidoVentaLineaLocalDTO {
   @JsonKey(name: 'PRODUCTO_ID')
   String get articuloId => throw _privateConstructorUsedError;
   @JsonKey(name: 'DENOMINACION')
-  String? get articuloDescription => throw _privateConstructorUsedError;
+  String get articuloDescription => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD')
-  double get cantidad => throw _privateConstructorUsedError;
+  int get cantidad => throw _privateConstructorUsedError;
   @JsonKey(name: 'PRECIO_DIVISA')
   double get precioDivisa => throw _privateConstructorUsedError;
   @JsonKey(name: 'TPRECIO')
-  double get tipoPrecio => throw _privateConstructorUsedError;
+  int get tipoPrecio => throw _privateConstructorUsedError;
   @JsonKey(name: 'DTO1')
   double get descuento1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'DTO2')
@@ -65,10 +65,10 @@ abstract class $PedidoVentaLineaLocalDTOCopyWith<$Res> {
       {@JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
       @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
       @JsonKey(name: 'PRODUCTO_ID') String articuloId,
-      @JsonKey(name: 'DENOMINACION') String? articuloDescription,
-      @JsonKey(name: 'CANTIDAD') double cantidad,
+      @JsonKey(name: 'DENOMINACION') String articuloDescription,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
       @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-      @JsonKey(name: 'TPRECIO') double tipoPrecio,
+      @JsonKey(name: 'TPRECIO') int tipoPrecio,
       @JsonKey(name: 'DTO1') double descuento1,
       @JsonKey(name: 'DTO2') double descuento2,
       @JsonKey(name: 'DTO3') double descuento3,
@@ -120,11 +120,11 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
       articuloDescription: articuloDescription == freezed
           ? _value.articuloDescription
           : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       precioDivisa: precioDivisa == freezed
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
@@ -132,7 +132,7 @@ class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descuento1: descuento1 == freezed
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -177,10 +177,10 @@ abstract class _$$_PedidoVentaLineaLocalDTOCopyWith<$Res>
       {@JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
       @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
       @JsonKey(name: 'PRODUCTO_ID') String articuloId,
-      @JsonKey(name: 'DENOMINACION') String? articuloDescription,
-      @JsonKey(name: 'CANTIDAD') double cantidad,
+      @JsonKey(name: 'DENOMINACION') String articuloDescription,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
       @JsonKey(name: 'PRECIO_DIVISA') double precioDivisa,
-      @JsonKey(name: 'TPRECIO') double tipoPrecio,
+      @JsonKey(name: 'TPRECIO') int tipoPrecio,
       @JsonKey(name: 'DTO1') double descuento1,
       @JsonKey(name: 'DTO2') double descuento2,
       @JsonKey(name: 'DTO3') double descuento3,
@@ -235,11 +235,11 @@ class __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
       articuloDescription: articuloDescription == freezed
           ? _value.articuloDescription
           : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       precioDivisa: precioDivisa == freezed
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
@@ -247,7 +247,7 @@ class __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       descuento1: descuento1 == freezed
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -287,7 +287,7 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
       {@JsonKey(name: 'PEDIDO_APP_ID') required this.pedidoVentaAppId,
       @JsonKey(name: 'LIN_APP_ID') required this.pedidoVentaLineaAppId,
       @JsonKey(name: 'PRODUCTO_ID') required this.articuloId,
-      @JsonKey(name: 'DENOMINACION') this.articuloDescription,
+      @JsonKey(name: 'DENOMINACION') required this.articuloDescription,
       @JsonKey(name: 'CANTIDAD') required this.cantidad,
       @JsonKey(name: 'PRECIO_DIVISA') required this.precioDivisa,
       @JsonKey(name: 'TPRECIO') required this.tipoPrecio,
@@ -314,16 +314,16 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
   final String articuloId;
   @override
   @JsonKey(name: 'DENOMINACION')
-  final String? articuloDescription;
+  final String articuloDescription;
   @override
   @JsonKey(name: 'CANTIDAD')
-  final double cantidad;
+  final int cantidad;
   @override
   @JsonKey(name: 'PRECIO_DIVISA')
   final double precioDivisa;
   @override
   @JsonKey(name: 'TPRECIO')
-  final double tipoPrecio;
+  final int tipoPrecio;
   @override
   @JsonKey(name: 'DTO1')
   final double descuento1;
@@ -426,13 +426,13 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
       @JsonKey(name: 'PRODUCTO_ID')
           required final String articuloId,
       @JsonKey(name: 'DENOMINACION')
-          final String? articuloDescription,
+          required final String articuloDescription,
       @JsonKey(name: 'CANTIDAD')
-          required final double cantidad,
+          required final int cantidad,
       @JsonKey(name: 'PRECIO_DIVISA')
           required final double precioDivisa,
       @JsonKey(name: 'TPRECIO')
-          required final double tipoPrecio,
+          required final int tipoPrecio,
       @JsonKey(name: 'DTO1')
           required final double descuento1,
       @JsonKey(name: 'DTO2')
@@ -463,16 +463,16 @@ abstract class _PedidoVentaLineaLocalDTO extends PedidoVentaLineaLocalDTO {
   String get articuloId;
   @override
   @JsonKey(name: 'DENOMINACION')
-  String? get articuloDescription;
+  String get articuloDescription;
   @override
   @JsonKey(name: 'CANTIDAD')
-  double get cantidad;
+  int get cantidad;
   @override
   @JsonKey(name: 'PRECIO_DIVISA')
   double get precioDivisa;
   @override
   @JsonKey(name: 'TPRECIO')
-  double get tipoPrecio;
+  int get tipoPrecio;
   @override
   @JsonKey(name: 'DTO1')
   double get descuento1;

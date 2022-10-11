@@ -84,10 +84,9 @@ class ArticuloComponenteTile extends StatelessWidget {
                       color: Theme.of(context).textTheme.caption?.color)),
             ],
           ),
-          if (articuloComponente.articuloComponenteDescripcion != null)
-            Text(
-              articuloComponente.articuloComponenteDescripcion!,
-            ),
+          Text(
+            articuloComponente.articuloComponenteDescripcion,
+          ),
           const Divider(),
         ],
       ),

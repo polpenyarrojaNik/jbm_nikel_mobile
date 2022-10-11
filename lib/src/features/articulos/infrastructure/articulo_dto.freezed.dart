@@ -57,15 +57,15 @@ mixin _$ArticuloDTO {
   @JsonKey(name: 'SUBFAMILIA_ID')
   String? get subfamiliaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTA_MINIMO')
-  double get ventaMinimo => throw _privateConstructorUsedError;
+  int get ventaMinimo => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTA_MULTIPLO')
-  double get ventaMultiplo => throw _privateConstructorUsedError;
+  int get ventaMultiplo => throw _privateConstructorUsedError;
   @JsonKey(name: 'UNIDADES_SUBCAJA')
-  double get unidadesSubcaja => throw _privateConstructorUsedError;
+  int get unidadesSubcaja => throw _privateConstructorUsedError;
   @JsonKey(name: 'UNIDADES_CAJA')
-  double get unidadesCaja => throw _privateConstructorUsedError;
+  int get unidadesCaja => throw _privateConstructorUsedError;
   @JsonKey(name: 'UNIDADES_PALET')
-  double get unidadesPalet => throw _privateConstructorUsedError;
+  int get unidadesPalet => throw _privateConstructorUsedError;
   @JsonKey(name: 'ACTIVO_WEB')
   String get activoWeb => throw _privateConstructorUsedError;
   @JsonKey(name: 'ACTIVO_APP')
@@ -117,19 +117,19 @@ mixin _$ArticuloDTO {
   @JsonKey(name: 'RESUMEN_EL')
   String? get resumenEL => throw _privateConstructorUsedError;
   @JsonKey(name: 'STOCK_DISPONIBLE')
-  double? get stockDisponible => throw _privateConstructorUsedError;
+  int get stockDisponible => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_ACTUAL')
-  double? get ventasActual => throw _privateConstructorUsedError;
+  double get ventasActual => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_ANTERIOR')
-  double? get ventasAnterior => throw _privateConstructorUsedError;
+  double get ventasAnterior => throw _privateConstructorUsedError;
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-  double? get comprasEntregaCantidad1 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidad1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-  double? get comprasEntregaCantidad2 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidad2 => throw _privateConstructorUsedError;
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-  double? get comprasEntregaCantidad3 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidad3 => throw _privateConstructorUsedError;
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-  double? get comprasEntregaCantidadMas3 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidadMas3 => throw _privateConstructorUsedError;
   @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
   DateTime? get comprasEntregaFecha1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
@@ -198,15 +198,15 @@ abstract class $ArticuloDTOCopyWith<$Res> {
       @JsonKey(name: 'SUBFAMILIA_ID')
           String? subfamiliaId,
       @JsonKey(name: 'VENTA_MINIMO')
-          double ventaMinimo,
+          int ventaMinimo,
       @JsonKey(name: 'VENTA_MULTIPLO')
-          double ventaMultiplo,
+          int ventaMultiplo,
       @JsonKey(name: 'UNIDADES_SUBCAJA')
-          double unidadesSubcaja,
+          int unidadesSubcaja,
       @JsonKey(name: 'UNIDADES_CAJA')
-          double unidadesCaja,
+          int unidadesCaja,
       @JsonKey(name: 'UNIDADES_PALET')
-          double unidadesPalet,
+          int unidadesPalet,
       @JsonKey(name: 'ACTIVO_WEB')
           String activoWeb,
       @JsonKey(name: 'ACTIVO_APP')
@@ -258,19 +258,19 @@ abstract class $ArticuloDTOCopyWith<$Res> {
       @JsonKey(name: 'RESUMEN_EL')
           String? resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
-          double? stockDisponible,
+          int stockDisponible,
       @JsonKey(name: 'VENTAS_ACTUAL')
-          double? ventasActual,
+          double ventasActual,
       @JsonKey(name: 'VENTAS_ANTERIOR')
-          double? ventasAnterior,
+          double ventasAnterior,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          double? comprasEntregaCantidad1,
+          int comprasEntregaCantidad1,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          double? comprasEntregaCantidad2,
+          int comprasEntregaCantidad2,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          double? comprasEntregaCantidad3,
+          int comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          double? comprasEntregaCantidadMas3,
+          int comprasEntregaCantidadMas3,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
           DateTime? comprasEntregaFecha1,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
@@ -442,23 +442,23 @@ class _$ArticuloDTOCopyWithImpl<$Res> implements $ArticuloDTOCopyWith<$Res> {
       ventaMinimo: ventaMinimo == freezed
           ? _value.ventaMinimo
           : ventaMinimo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       ventaMultiplo: ventaMultiplo == freezed
           ? _value.ventaMultiplo
           : ventaMultiplo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesSubcaja: unidadesSubcaja == freezed
           ? _value.unidadesSubcaja
           : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesCaja: unidadesCaja == freezed
           ? _value.unidadesCaja
           : unidadesCaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesPalet: unidadesPalet == freezed
           ? _value.unidadesPalet
           : unidadesPalet // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       activoWeb: activoWeb == freezed
           ? _value.activoWeb
           : activoWeb // ignore: cast_nullable_to_non_nullable
@@ -562,31 +562,31 @@ class _$ArticuloDTOCopyWithImpl<$Res> implements $ArticuloDTOCopyWith<$Res> {
       stockDisponible: stockDisponible == freezed
           ? _value.stockDisponible
           : stockDisponible // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       ventasActual: ventasActual == freezed
           ? _value.ventasActual
           : ventasActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       ventasAnterior: ventasAnterior == freezed
           ? _value.ventasAnterior
           : ventasAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       comprasEntregaCantidad1: comprasEntregaCantidad1 == freezed
           ? _value.comprasEntregaCantidad1
           : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad2: comprasEntregaCantidad2 == freezed
           ? _value.comprasEntregaCantidad2
           : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad3: comprasEntregaCantidad3 == freezed
           ? _value.comprasEntregaCantidad3
           : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidadMas3: comprasEntregaCantidadMas3 == freezed
           ? _value.comprasEntregaCantidadMas3
           : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaFecha1: comprasEntregaFecha1 == freezed
           ? _value.comprasEntregaFecha1
           : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
@@ -672,15 +672,15 @@ abstract class _$$_ArticuloDTOCopyWith<$Res>
       @JsonKey(name: 'SUBFAMILIA_ID')
           String? subfamiliaId,
       @JsonKey(name: 'VENTA_MINIMO')
-          double ventaMinimo,
+          int ventaMinimo,
       @JsonKey(name: 'VENTA_MULTIPLO')
-          double ventaMultiplo,
+          int ventaMultiplo,
       @JsonKey(name: 'UNIDADES_SUBCAJA')
-          double unidadesSubcaja,
+          int unidadesSubcaja,
       @JsonKey(name: 'UNIDADES_CAJA')
-          double unidadesCaja,
+          int unidadesCaja,
       @JsonKey(name: 'UNIDADES_PALET')
-          double unidadesPalet,
+          int unidadesPalet,
       @JsonKey(name: 'ACTIVO_WEB')
           String activoWeb,
       @JsonKey(name: 'ACTIVO_APP')
@@ -732,19 +732,19 @@ abstract class _$$_ArticuloDTOCopyWith<$Res>
       @JsonKey(name: 'RESUMEN_EL')
           String? resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
-          double? stockDisponible,
+          int stockDisponible,
       @JsonKey(name: 'VENTAS_ACTUAL')
-          double? ventasActual,
+          double ventasActual,
       @JsonKey(name: 'VENTAS_ANTERIOR')
-          double? ventasAnterior,
+          double ventasAnterior,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          double? comprasEntregaCantidad1,
+          int comprasEntregaCantidad1,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          double? comprasEntregaCantidad2,
+          int comprasEntregaCantidad2,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          double? comprasEntregaCantidad3,
+          int comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          double? comprasEntregaCantidadMas3,
+          int comprasEntregaCantidadMas3,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
           DateTime? comprasEntregaFecha1,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
@@ -918,23 +918,23 @@ class __$$_ArticuloDTOCopyWithImpl<$Res> extends _$ArticuloDTOCopyWithImpl<$Res>
       ventaMinimo: ventaMinimo == freezed
           ? _value.ventaMinimo
           : ventaMinimo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       ventaMultiplo: ventaMultiplo == freezed
           ? _value.ventaMultiplo
           : ventaMultiplo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesSubcaja: unidadesSubcaja == freezed
           ? _value.unidadesSubcaja
           : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesCaja: unidadesCaja == freezed
           ? _value.unidadesCaja
           : unidadesCaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesPalet: unidadesPalet == freezed
           ? _value.unidadesPalet
           : unidadesPalet // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       activoWeb: activoWeb == freezed
           ? _value.activoWeb
           : activoWeb // ignore: cast_nullable_to_non_nullable
@@ -1038,31 +1038,31 @@ class __$$_ArticuloDTOCopyWithImpl<$Res> extends _$ArticuloDTOCopyWithImpl<$Res>
       stockDisponible: stockDisponible == freezed
           ? _value.stockDisponible
           : stockDisponible // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       ventasActual: ventasActual == freezed
           ? _value.ventasActual
           : ventasActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       ventasAnterior: ventasAnterior == freezed
           ? _value.ventasAnterior
           : ventasAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       comprasEntregaCantidad1: comprasEntregaCantidad1 == freezed
           ? _value.comprasEntregaCantidad1
           : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad2: comprasEntregaCantidad2 == freezed
           ? _value.comprasEntregaCantidad2
           : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad3: comprasEntregaCantidad3 == freezed
           ? _value.comprasEntregaCantidad3
           : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidadMas3: comprasEntregaCantidadMas3 == freezed
           ? _value.comprasEntregaCantidadMas3
           : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaFecha1: comprasEntregaFecha1 == freezed
           ? _value.comprasEntregaFecha1
           : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
@@ -1204,19 +1204,19 @@ class _$_ArticuloDTO extends _ArticuloDTO {
       @JsonKey(name: 'RESUMEN_EL')
           this.resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
-          this.stockDisponible,
+          required this.stockDisponible,
       @JsonKey(name: 'VENTAS_ACTUAL')
-          this.ventasActual,
+          required this.ventasActual,
       @JsonKey(name: 'VENTAS_ANTERIOR')
-          this.ventasAnterior,
+          required this.ventasAnterior,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          this.comprasEntregaCantidad1,
+          required this.comprasEntregaCantidad1,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          this.comprasEntregaCantidad2,
+          required this.comprasEntregaCantidad2,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          this.comprasEntregaCantidad3,
+          required this.comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          this.comprasEntregaCantidadMas3,
+          required this.comprasEntregaCantidadMas3,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
           this.comprasEntregaFecha1,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
@@ -1296,19 +1296,19 @@ class _$_ArticuloDTO extends _ArticuloDTO {
   final String? subfamiliaId;
   @override
   @JsonKey(name: 'VENTA_MINIMO')
-  final double ventaMinimo;
+  final int ventaMinimo;
   @override
   @JsonKey(name: 'VENTA_MULTIPLO')
-  final double ventaMultiplo;
+  final int ventaMultiplo;
   @override
   @JsonKey(name: 'UNIDADES_SUBCAJA')
-  final double unidadesSubcaja;
+  final int unidadesSubcaja;
   @override
   @JsonKey(name: 'UNIDADES_CAJA')
-  final double unidadesCaja;
+  final int unidadesCaja;
   @override
   @JsonKey(name: 'UNIDADES_PALET')
-  final double unidadesPalet;
+  final int unidadesPalet;
   @override
   @JsonKey(name: 'ACTIVO_WEB')
   final String activoWeb;
@@ -1386,25 +1386,25 @@ class _$_ArticuloDTO extends _ArticuloDTO {
   final String? resumenEL;
   @override
   @JsonKey(name: 'STOCK_DISPONIBLE')
-  final double? stockDisponible;
+  final int stockDisponible;
   @override
   @JsonKey(name: 'VENTAS_ACTUAL')
-  final double? ventasActual;
+  final double ventasActual;
   @override
   @JsonKey(name: 'VENTAS_ANTERIOR')
-  final double? ventasAnterior;
+  final double ventasAnterior;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-  final double? comprasEntregaCantidad1;
+  final int comprasEntregaCantidad1;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-  final double? comprasEntregaCantidad2;
+  final int comprasEntregaCantidad2;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-  final double? comprasEntregaCantidad3;
+  final int comprasEntregaCantidad3;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-  final double? comprasEntregaCantidadMas3;
+  final int comprasEntregaCantidadMas3;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
   final DateTime? comprasEntregaFecha1;
@@ -1671,15 +1671,15 @@ abstract class _ArticuloDTO extends ArticuloDTO {
       @JsonKey(name: 'SUBFAMILIA_ID')
           final String? subfamiliaId,
       @JsonKey(name: 'VENTA_MINIMO')
-          required final double ventaMinimo,
+          required final int ventaMinimo,
       @JsonKey(name: 'VENTA_MULTIPLO')
-          required final double ventaMultiplo,
+          required final int ventaMultiplo,
       @JsonKey(name: 'UNIDADES_SUBCAJA')
-          required final double unidadesSubcaja,
+          required final int unidadesSubcaja,
       @JsonKey(name: 'UNIDADES_CAJA')
-          required final double unidadesCaja,
+          required final int unidadesCaja,
       @JsonKey(name: 'UNIDADES_PALET')
-          required final double unidadesPalet,
+          required final int unidadesPalet,
       @JsonKey(name: 'ACTIVO_WEB')
           required final String activoWeb,
       @JsonKey(name: 'ACTIVO_APP')
@@ -1731,19 +1731,19 @@ abstract class _ArticuloDTO extends ArticuloDTO {
       @JsonKey(name: 'RESUMEN_EL')
           final String? resumenEL,
       @JsonKey(name: 'STOCK_DISPONIBLE')
-          final double? stockDisponible,
+          required final int stockDisponible,
       @JsonKey(name: 'VENTAS_ACTUAL')
-          final double? ventasActual,
+          required final double ventasActual,
       @JsonKey(name: 'VENTAS_ANTERIOR')
-          final double? ventasAnterior,
+          required final double ventasAnterior,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-          final double? comprasEntregaCantidad1,
+          required final int comprasEntregaCantidad1,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-          final double? comprasEntregaCantidad2,
+          required final int comprasEntregaCantidad2,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-          final double? comprasEntregaCantidad3,
+          required final int comprasEntregaCantidad3,
       @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-          final double? comprasEntregaCantidadMas3,
+          required final int comprasEntregaCantidadMas3,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
           final DateTime? comprasEntregaFecha1,
       @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_2')
@@ -1823,19 +1823,19 @@ abstract class _ArticuloDTO extends ArticuloDTO {
   String? get subfamiliaId;
   @override
   @JsonKey(name: 'VENTA_MINIMO')
-  double get ventaMinimo;
+  int get ventaMinimo;
   @override
   @JsonKey(name: 'VENTA_MULTIPLO')
-  double get ventaMultiplo;
+  int get ventaMultiplo;
   @override
   @JsonKey(name: 'UNIDADES_SUBCAJA')
-  double get unidadesSubcaja;
+  int get unidadesSubcaja;
   @override
   @JsonKey(name: 'UNIDADES_CAJA')
-  double get unidadesCaja;
+  int get unidadesCaja;
   @override
   @JsonKey(name: 'UNIDADES_PALET')
-  double get unidadesPalet;
+  int get unidadesPalet;
   @override
   @JsonKey(name: 'ACTIVO_WEB')
   String get activoWeb;
@@ -1913,25 +1913,25 @@ abstract class _ArticuloDTO extends ArticuloDTO {
   String? get resumenEL;
   @override
   @JsonKey(name: 'STOCK_DISPONIBLE')
-  double? get stockDisponible;
+  int get stockDisponible;
   @override
   @JsonKey(name: 'VENTAS_ACTUAL')
-  double? get ventasActual;
+  double get ventasActual;
   @override
   @JsonKey(name: 'VENTAS_ANTERIOR')
-  double? get ventasAnterior;
+  double get ventasAnterior;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_1')
-  double? get comprasEntregaCantidad1;
+  int get comprasEntregaCantidad1;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_2')
-  double? get comprasEntregaCantidad2;
+  int get comprasEntregaCantidad2;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_3')
-  double? get comprasEntregaCantidad3;
+  int get comprasEntregaCantidad3;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_CANTIDAD_MAS_3')
-  double? get comprasEntregaCantidadMas3;
+  int get comprasEntregaCantidadMas3;
   @override
   @JsonKey(name: 'COMPRAS_ENTREGA_FECHA_1')
   DateTime? get comprasEntregaFecha1;

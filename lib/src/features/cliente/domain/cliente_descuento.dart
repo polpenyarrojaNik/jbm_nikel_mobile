@@ -12,7 +12,7 @@ class ClienteDescuento with _$ClienteDescuento {
       required String articuloId,
       required Familia familia,
       required Subfamilia subfamilia,
-      required double cantidadDesDe,
+      required int cantidadDesde,
       required double descuento,
       required DateTime lastUpdated,
       required bool deleted}) = _ClienteDescuento;

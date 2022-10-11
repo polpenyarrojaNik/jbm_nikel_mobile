@@ -7,7 +7,7 @@ class ClienteEstadoPotencial with _$ClienteEstadoPotencial {
   const ClienteEstadoPotencial._();
   const factory ClienteEstadoPotencial({
     required String id,
-    String? descripcionES,
+    required String descripcionES,
     String? descripcionEN,
     String? descripcionFR,
     String? descripcionDE,

@@ -80,35 +80,34 @@ class ClienteInfoContainer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (pedidoVenta.nombreCliente != null)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
-                  pedidoVenta.nombreCliente!,
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Flexible(
+              child: Text(
+                pedidoVenta.nombreCliente,
+                style: Theme.of(context).textTheme.subtitle2,
               ),
-              ChipContainer(
-                text: (pedidoVenta.tratada)
-                    ? pedidoVenta.pedidoVentaEstado!.descripcion
-                    : getStatusLocalEntityText(
-                        context, pedidoVenta.enviada, pedidoVenta.tratada)!,
-                color: (pedidoVenta.tratada)
-                    ? Theme.of(context).colorScheme.secondaryContainer
-                    : getStatusLocalEntityColor(
-                        context, pedidoVenta.enviada, pedidoVenta.tratada)!,
-              )
-            ],
-          ),
+            ),
+            ChipContainer(
+              text: (pedidoVenta.tratada)
+                  ? pedidoVenta.pedidoVentaEstado!.descripcion
+                  : getStatusLocalEntityText(
+                      context, pedidoVenta.enviada, pedidoVenta.tratada)!,
+              color: (pedidoVenta.tratada)
+                  ? Theme.of(context).colorScheme.secondaryContainer
+                  : getStatusLocalEntityColor(
+                      context, pedidoVenta.enviada, pedidoVenta.tratada)!,
+            )
+          ],
+        ),
         const SizedBox(height: 2),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
               child: Text(
-                '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente ?? ''}',
+                '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
               ),
             ),
             Text(

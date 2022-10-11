@@ -13,7 +13,7 @@ class ClienteVentasArticuloDTO with _$ClienteVentasArticuloDTO {
   const ClienteVentasArticuloDTO._();
   const factory ClienteVentasArticuloDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+    @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
     @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
     @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
     @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -33,11 +33,11 @@ class ClienteVentasArticuloDTO with _$ClienteVentasArticuloDTO {
     @JsonKey(name: 'IMPORTE_ANYO_2') required double importeAnyo_2,
     @JsonKey(name: 'IMPORTE_ANYO_3') required double importeAnyo_3,
     @JsonKey(name: 'IMPORTE_ANYO_4') required double importeAnyo_4,
-    @JsonKey(name: 'CANTIDAD_ANYO') required double cantidadAnyo,
-    @JsonKey(name: 'CANTIDAD_ANYO_1') required double cantidadAnyo_1,
-    @JsonKey(name: 'CANTIDAD_ANYO_2') required double cantidadAnyo_2,
-    @JsonKey(name: 'CANTIDAD_ANYO_3') required double cantidadAnyo_3,
-    @JsonKey(name: 'CANTIDAD_ANYO_4') required double cantidadAnyo_4,
+    @JsonKey(name: 'CANTIDAD_ANYO') required int cantidadAnyo,
+    @JsonKey(name: 'CANTIDAD_ANYO_1') required int cantidadAnyo_1,
+    @JsonKey(name: 'CANTIDAD_ANYO_2') required int cantidadAnyo_2,
+    @JsonKey(name: 'CANTIDAD_ANYO_3') required int cantidadAnyo_3,
+    @JsonKey(name: 'CANTIDAD_ANYO_4') required int cantidadAnyo_4,
   }) = _ClienteVentasArticuloDTO;
 
   factory ClienteVentasArticuloDTO.fromJson(Map<String, dynamic> json) =>
@@ -61,11 +61,11 @@ class ClienteVentasArticuloDTO with _$ClienteVentasArticuloDTO {
       descripcionRU: descripcionRU,
       descripcionCN: descripcionCN,
       descripcionEL: descripcionEL,
-      importeAnyo: importeAnyo.parseMoney(importeAnyo, 'EU'),
-      importeAnyo_1: importeAnyo_1.parseMoney(importeAnyo_1, 'EU'),
-      importeAnyo_2: importeAnyo_2.parseMoney(importeAnyo_2, 'EU'),
-      importeAnyo_3: importeAnyo_3.parseMoney(importeAnyo_3, 'EU'),
-      importeAnyo_4: importeAnyo_4.parseMoney(importeAnyo_4, 'EU'),
+      importeAnyo: importeAnyo.parseMoney(),
+      importeAnyo_1: importeAnyo_1.parseMoney(),
+      importeAnyo_2: importeAnyo_2.parseMoney(),
+      importeAnyo_3: importeAnyo_3.parseMoney(),
+      importeAnyo_4: importeAnyo_4.parseMoney(),
       cantidadAnyo: cantidadAnyo,
       cantidadAnyo_1: cantidadAnyo_1,
       cantidadAnyo_2: cantidadAnyo_2,

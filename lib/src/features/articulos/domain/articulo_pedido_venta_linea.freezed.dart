@@ -20,13 +20,13 @@ mixin _$ArticuloPedidoVentaLinea {
   String get pedidoVentaId => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
-  String? get articuloDescription => throw _privateConstructorUsedError;
-  String? get clienteId => throw _privateConstructorUsedError;
-  String? get nombreCliente => throw _privateConstructorUsedError;
-  double get cantidad => throw _privateConstructorUsedError;
+  String get articuloDescription => throw _privateConstructorUsedError;
+  String get clienteId => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
+  int get cantidad => throw _privateConstructorUsedError;
   Money get precioDivisa => throw _privateConstructorUsedError;
   String get divisaId => throw _privateConstructorUsedError;
-  double? get tipoPrecio => throw _privateConstructorUsedError;
+  int get tipoPrecio => throw _privateConstructorUsedError;
   double get descuento1 => throw _privateConstructorUsedError;
   double get descuento2 => throw _privateConstructorUsedError;
   double get descuento3 => throw _privateConstructorUsedError;
@@ -48,13 +48,13 @@ abstract class $ArticuloPedidoVentaLineaCopyWith<$Res> {
       String pedidoVentaId,
       String id,
       String articuloId,
-      String? articuloDescription,
-      String? clienteId,
-      String? nombreCliente,
-      double cantidad,
+      String articuloDescription,
+      String clienteId,
+      String nombreCliente,
+      int cantidad,
       Money precioDivisa,
       String divisaId,
-      double? tipoPrecio,
+      int tipoPrecio,
       double descuento1,
       double descuento2,
       double descuento3,
@@ -110,19 +110,19 @@ class _$ArticuloPedidoVentaLineaCopyWithImpl<$Res>
       articuloDescription: articuloDescription == freezed
           ? _value.articuloDescription
           : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       precioDivisa: precioDivisa == freezed
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
@@ -134,7 +134,7 @@ class _$ArticuloPedidoVentaLineaCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       descuento1: descuento1 == freezed
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -172,13 +172,13 @@ abstract class _$$_ArticuloPedidoVentaLineaCopyWith<$Res>
       String pedidoVentaId,
       String id,
       String articuloId,
-      String? articuloDescription,
-      String? clienteId,
-      String? nombreCliente,
-      double cantidad,
+      String articuloDescription,
+      String clienteId,
+      String nombreCliente,
+      int cantidad,
       Money precioDivisa,
       String divisaId,
-      double? tipoPrecio,
+      int tipoPrecio,
       double descuento1,
       double descuento2,
       double descuento3,
@@ -237,19 +237,19 @@ class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
       articuloDescription: articuloDescription == freezed
           ? _value.articuloDescription
           : articuloDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       clienteId: clienteId == freezed
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       precioDivisa: precioDivisa == freezed
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
@@ -261,7 +261,7 @@ class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
       tipoPrecio: tipoPrecio == freezed
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       descuento1: descuento1 == freezed
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -294,13 +294,13 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
       required this.pedidoVentaId,
       required this.id,
       required this.articuloId,
-      this.articuloDescription,
-      this.clienteId,
-      this.nombreCliente,
+      required this.articuloDescription,
+      required this.clienteId,
+      required this.nombreCliente,
       required this.cantidad,
       required this.precioDivisa,
       required this.divisaId,
-      this.tipoPrecio,
+      required this.tipoPrecio,
       required this.descuento1,
       required this.descuento2,
       required this.descuento3,
@@ -317,19 +317,19 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
   @override
   final String articuloId;
   @override
-  final String? articuloDescription;
+  final String articuloDescription;
   @override
-  final String? clienteId;
+  final String clienteId;
   @override
-  final String? nombreCliente;
+  final String nombreCliente;
   @override
-  final double cantidad;
+  final int cantidad;
   @override
   final Money precioDivisa;
   @override
   final String divisaId;
   @override
-  final double? tipoPrecio;
+  final int tipoPrecio;
   @override
   final double descuento1;
   @override
@@ -412,13 +412,13 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
       required final String pedidoVentaId,
       required final String id,
       required final String articuloId,
-      final String? articuloDescription,
-      final String? clienteId,
-      final String? nombreCliente,
-      required final double cantidad,
+      required final String articuloDescription,
+      required final String clienteId,
+      required final String nombreCliente,
+      required final int cantidad,
       required final Money precioDivisa,
       required final String divisaId,
-      final double? tipoPrecio,
+      required final int tipoPrecio,
       required final double descuento1,
       required final double descuento2,
       required final double descuento3,
@@ -435,19 +435,19 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
   @override
   String get articuloId;
   @override
-  String? get articuloDescription;
+  String get articuloDescription;
   @override
-  String? get clienteId;
+  String get clienteId;
   @override
-  String? get nombreCliente;
+  String get nombreCliente;
   @override
-  double get cantidad;
+  int get cantidad;
   @override
   Money get precioDivisa;
   @override
   String get divisaId;
   @override
-  double? get tipoPrecio;
+  int get tipoPrecio;
   @override
   double get descuento1;
   @override

@@ -3,16 +3,16 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:money2/money2.dart';
 
-import '../../../core/domain/pais.dart';
 import '../../../core/domain/divisa.dart';
-import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/domain/pais.dart';
 import '../../../core/infrastructure/database.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
+import '../../../core/infrastructure/pais_dto.dart';
+import '../domain/cliente.dart';
 import '../domain/cliente_estado_potencial.dart';
 import '../domain/cliente_tipo_potencial.dart';
 import '../domain/metodo_cobro.dart';
 import '../domain/plazo_cobro.dart';
-import '../domain/cliente.dart';
 import 'metodo_cobro_dto.dart';
 import 'plazo_cobro_dto.dart';
 
@@ -26,27 +26,27 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   const ClienteDTO._();
   const factory ClienteDTO({
     @JsonKey(name: 'CLIENTE_ID') required String id,
-    @JsonKey(name: 'NOMBRE') String? nombreCliente,
+    @JsonKey(name: 'NOMBRE') required String nombreCliente,
     @JsonKey(name: 'NIF') String? nif,
-    @JsonKey(name: 'NOMBRE_FISCAL') String? nombreFiscal,
+    @JsonKey(name: 'NOMBRE_FISCAL') required String nombreFiscal,
     @JsonKey(name: 'DIRECCION_FISCAL1') String? direccionFiscal1,
     @JsonKey(name: 'DIRECCION_FISCAL2') String? direccionFiscal2,
     @JsonKey(name: 'CODIGO_POSTAL_FISCAL') String? codigoPostalFiscal,
     @JsonKey(name: 'POBLACION_FISCAL') String? poblacionFiscal,
     @JsonKey(name: 'PAIS_ID_FISCAL') String? paisFiscalId,
     @JsonKey(name: 'PROVINCIA_FISCAL') String? provinciaFiscal,
-    @JsonKey(name: 'LATITUD_FISCAL') double? latitudFiscal,
-    @JsonKey(name: 'LONGITUD_FISCAL') double? longitudFiscal,
+    @JsonKey(name: 'LATITUD_FISCAL') required double latitudFiscal,
+    @JsonKey(name: 'LONGITUD_FISCAL') required double longitudFiscal,
     @JsonKey(name: 'EMPRESA_ID') required String empresaId,
     @JsonKey(name: 'IVA') required double iva,
-    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') double? ventasAnyoActual,
-    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') double? ventasAnyoAnterior,
-    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') double? ventasHaceDosAnyos,
-    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double? margenAnyoActual,
-    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double? margenAnyoAnterior,
-    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double? margenHaceDosAnyos,
-    @JsonKey(name: 'PORCENTAJE_ABONOS') double? porcentajeAbonos,
-    @JsonKey(name: 'PORCENTAJE_GARANTIAS') double? porcentajeGarantias,
+    @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required double ventasAnyoActual,
+    @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') required double ventasAnyoAnterior,
+    @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') required double ventasHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required double margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') required double margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') required double margenHaceDosAnyos,
+    @JsonKey(name: 'PORCENTAJE_ABONOS') required double porcentajeAbonos,
+    @JsonKey(name: 'PORCENTAJE_GARANTIAS') required double porcentajeGarantias,
     @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
     @JsonKey(name: 'URL_WEB') String? urlWeb,
     @JsonKey(name: 'DIVISA_ID') String? divisaId,
@@ -109,12 +109,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       longitudFiscal: longitudFiscal,
       empresaId: empresaId,
       iva: iva,
-      ventasAnyoActual:
-          ventasAnyoActual?.parseMoney(ventasAnyoActual!, divisaId),
-      ventasAnyoAnterior:
-          ventasAnyoAnterior?.parseMoney(ventasAnyoAnterior!, divisaId),
-      ventasHaceDosAnyos:
-          ventasHaceDosAnyos?.parseMoney(ventasHaceDosAnyos!, divisaId),
+      ventasAnyoActual: ventasAnyoActual.parseMoney(currencyId: divisaId),
+      ventasAnyoAnterior: ventasAnyoAnterior.parseMoney(currencyId: divisaId),
+      ventasHaceDosAnyos: ventasHaceDosAnyos.parseMoney(currencyId: divisaId),
       margenAnyoActual: margenAnyoActual,
       margenAnyoAnterior: margenAnyoAnterior,
       margenHaceDosAnyos: margenHaceDosAnyos,
@@ -132,10 +129,10 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       metodoDeCobro: metodoDeCobro,
       descuentoProntoPago: descuentoProntoPago,
       riesgoConcedidoInterno:
-          riesgoConcedidoInterno.parseMoney(riesgoConcedidoInterno, divisaId),
+          riesgoConcedidoInterno.parseMoney(currencyId: divisaId),
       riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
       riesgoConcedidoCoafe:
-          riesgoConcedidoCoafe.parseMoney(riesgoConcedidoCoafe, divisaId),
+          riesgoConcedidoCoafe.parseMoney(currencyId: divisaId),
       riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
       riesgoActual: calculateRiesgoActual(
           riesgoPendienteCobroVencido,
@@ -143,15 +140,15 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
           riesgoPendienteServir,
           riesgoPendienteFacturar,
           divisaId),
-      riesgoConcedido: riesgoConcedido?.parseMoney(riesgoConcedido!, divisaId),
-      riesgoPendienteCobroVencido: riesgoPendienteCobroVencido?.parseMoney(
-          riesgoPendienteCobroVencido!, divisaId),
-      riesgoPendienteCobroNoVencido: riesgoPendienteCobroNoVencido?.parseMoney(
-          riesgoPendienteCobroNoVencido!, divisaId),
+      riesgoConcedido: riesgoConcedido?.parseMoney(currencyId: divisaId),
+      riesgoPendienteCobroVencido:
+          riesgoPendienteCobroVencido?.parseMoney(currencyId: divisaId),
+      riesgoPendienteCobroNoVencido:
+          riesgoPendienteCobroNoVencido?.parseMoney(currencyId: divisaId),
       riesgoPendienteServir:
-          riesgoPendienteServir?.parseMoney(riesgoPendienteServir!, divisaId),
-      riesgoPendienteFacturar: riesgoPendienteFacturar?.parseMoney(
-          riesgoPendienteFacturar!, divisaId),
+          riesgoPendienteServir?.parseMoney(currencyId: divisaId),
+      riesgoPendienteFacturar:
+          riesgoPendienteFacturar?.parseMoney(currencyId: divisaId),
       obvservacionesInternas: obvservacionesInternas,
       clientePotencial: (clientePotencial == 'S') ? true : false,
       clienteEstadoPotencial: clienteEstadoPotencial,
@@ -226,7 +223,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
         (riesgoPendienteCobroNoVencido ?? 0) +
         (riesgoPendienteServir ?? 0) +
         (riesgoPendienteFacturar ?? 0);
-    return amount.parseMoney(amount, divisaId);
+    return amount.parseMoney(currencyId: divisaId);
   }
 }
 
@@ -239,9 +236,9 @@ class ClienteTable extends Table {
   Set<Column> get primaryKey => {id};
 
   TextColumn get id => text().named('CLIENTE_ID')();
-  TextColumn get nombreCliente => text().nullable().named('NOMBRE')();
+  TextColumn get nombreCliente => text().named('NOMBRE')();
   TextColumn get nif => text().nullable().named('NIF')();
-  TextColumn get nombreFiscal => text().nullable().named('NOMBRE_FISCAL')();
+  TextColumn get nombreFiscal => text().named('NOMBRE_FISCAL')();
   TextColumn get direccionFiscal1 =>
       text().nullable().named('DIRECCION_FISCAL1')();
   TextColumn get direccionFiscal2 =>
@@ -254,26 +251,18 @@ class ClienteTable extends Table {
       text().nullable().named('PROVINCIA_FISCAL')();
   TextColumn get paisFiscalId =>
       text().references(PaisTable, #id).nullable().named('PAIS_ID_FISCAL')();
-  RealColumn get latitudFiscal => real().nullable().named('LATITUD_FISCAL')();
-  RealColumn get longitudFiscal => real().nullable().named('LONGITUD_FISCAL')();
+  RealColumn get latitudFiscal => real().named('LATITUD_FISCAL')();
+  RealColumn get longitudFiscal => real().named('LONGITUD_FISCAL')();
   TextColumn get empresaId => text().named('EMPRESA_ID')();
   RealColumn get iva => real().named('IVA')();
-  RealColumn get ventasAnyoActual =>
-      real().nullable().named('VENTAS_ANYO_ACTUAL')();
-  RealColumn get ventasAnyoAnterior =>
-      real().nullable().named('VENTAS_ANYO_ANTERIOR')();
-  RealColumn get ventasHaceDosAnyos =>
-      real().nullable().named('VENTAS_HACE_DOS_ANYOS')();
-  RealColumn get margenAnyoActual =>
-      real().nullable().named('MARGEN_ANYO_ACTUAL')();
-  RealColumn get margenAnyoAnterior =>
-      real().nullable().named('MARGEN_ANYO_ANTERIOR')();
-  RealColumn get margenHaceDosAnyos =>
-      real().nullable().named('MARGEN_HACE_DOS_ANYOS')();
-  RealColumn get porcentajeAbonos =>
-      real().nullable().named('PORCENTAJE_ABONOS')();
-  RealColumn get porcentajeGarantias =>
-      real().nullable().named('PORCENTAJE_GARANTIAS')();
+  RealColumn get ventasAnyoActual => real().named('VENTAS_ANYO_ACTUAL')();
+  RealColumn get ventasAnyoAnterior => real().named('VENTAS_ANYO_ANTERIOR')();
+  RealColumn get ventasHaceDosAnyos => real().named('VENTAS_HACE_DOS_ANYOS')();
+  RealColumn get margenAnyoActual => real().named('MARGEN_ANYO_ACTUAL')();
+  RealColumn get margenAnyoAnterior => real().named('MARGEN_ANYO_ANTERIOR')();
+  RealColumn get margenHaceDosAnyos => real().named('MARGEN_HACE_DOS_ANYOS')();
+  RealColumn get porcentajeAbonos => real().named('PORCENTAJE_ABONOS')();
+  RealColumn get porcentajeGarantias => real().named('PORCENTAJE_GARANTIAS')();
   TextColumn get centralCompras =>
       text().nullable().named('CENTRAL_COMPRAS_NOMBRE')();
   TextColumn get urlWeb => text().nullable().named('URL_WEB')();

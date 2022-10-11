@@ -29,7 +29,7 @@ mixin _$ClienteDescuentoDTO {
   @JsonKey(name: 'SUBFAMILIA_ID')
   String get subfamiliaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_DESDE')
-  double get cantidadDesDe => throw _privateConstructorUsedError;
+  int get cantidadDesde => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCUENTO')
   double get descuento => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -53,7 +53,7 @@ abstract class $ClienteDescuentoDTOCopyWith<$Res> {
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'FAMILIA_ID') String familiaId,
       @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'DESCUENTO') double descuento,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -74,7 +74,7 @@ class _$ClienteDescuentoDTOCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? familiaId = freezed,
     Object? subfamiliaId = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? descuento = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -96,10 +96,10 @@ class _$ClienteDescuentoDTOCopyWithImpl<$Res>
           ? _value.subfamiliaId
           : subfamiliaId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       descuento: descuento == freezed
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ abstract class _$$_ClienteDescuentoDTOCopyWith<$Res>
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'FAMILIA_ID') String familiaId,
       @JsonKey(name: 'SUBFAMILIA_ID') String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') double cantidadDesDe,
+      @JsonKey(name: 'CANTIDAD_DESDE') int cantidadDesde,
       @JsonKey(name: 'DESCUENTO') double descuento,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -151,7 +151,7 @@ class __$$_ClienteDescuentoDTOCopyWithImpl<$Res>
     Object? articuloId = freezed,
     Object? familiaId = freezed,
     Object? subfamiliaId = freezed,
-    Object? cantidadDesDe = freezed,
+    Object? cantidadDesde = freezed,
     Object? descuento = freezed,
     Object? lastUpdated = freezed,
     Object? deleted = freezed,
@@ -173,10 +173,10 @@ class __$$_ClienteDescuentoDTOCopyWithImpl<$Res>
           ? _value.subfamiliaId
           : subfamiliaId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesDe: cantidadDesDe == freezed
-          ? _value.cantidadDesDe
-          : cantidadDesDe // ignore: cast_nullable_to_non_nullable
-              as double,
+      cantidadDesde: cantidadDesde == freezed
+          ? _value.cantidadDesde
+          : cantidadDesde // ignore: cast_nullable_to_non_nullable
+              as int,
       descuento: descuento == freezed
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
@@ -201,7 +201,7 @@ class _$_ClienteDescuentoDTO extends _ClienteDescuentoDTO {
       @JsonKey(name: 'ARTICULO_ID') required this.articuloId,
       @JsonKey(name: 'FAMILIA_ID') required this.familiaId,
       @JsonKey(name: 'SUBFAMILIA_ID') required this.subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesDe,
+      @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
       @JsonKey(name: 'DESCUENTO') required this.descuento,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
@@ -224,7 +224,7 @@ class _$_ClienteDescuentoDTO extends _ClienteDescuentoDTO {
   final String subfamiliaId;
   @override
   @JsonKey(name: 'CANTIDAD_DESDE')
-  final double cantidadDesDe;
+  final int cantidadDesde;
   @override
   @JsonKey(name: 'DESCUENTO')
   final double descuento;
@@ -237,7 +237,7 @@ class _$_ClienteDescuentoDTO extends _ClienteDescuentoDTO {
 
   @override
   String toString() {
-    return 'ClienteDescuentoDTO(clienteId: $clienteId, articuloId: $articuloId, familiaId: $familiaId, subfamiliaId: $subfamiliaId, cantidadDesDe: $cantidadDesDe, descuento: $descuento, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDescuentoDTO(clienteId: $clienteId, articuloId: $articuloId, familiaId: $familiaId, subfamiliaId: $subfamiliaId, cantidadDesde: $cantidadDesde, descuento: $descuento, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -252,7 +252,7 @@ class _$_ClienteDescuentoDTO extends _ClienteDescuentoDTO {
             const DeepCollectionEquality()
                 .equals(other.subfamiliaId, subfamiliaId) &&
             const DeepCollectionEquality()
-                .equals(other.cantidadDesDe, cantidadDesDe) &&
+                .equals(other.cantidadDesde, cantidadDesde) &&
             const DeepCollectionEquality().equals(other.descuento, descuento) &&
             const DeepCollectionEquality()
                 .equals(other.lastUpdated, lastUpdated) &&
@@ -267,7 +267,7 @@ class _$_ClienteDescuentoDTO extends _ClienteDescuentoDTO {
       const DeepCollectionEquality().hash(articuloId),
       const DeepCollectionEquality().hash(familiaId),
       const DeepCollectionEquality().hash(subfamiliaId),
-      const DeepCollectionEquality().hash(cantidadDesDe),
+      const DeepCollectionEquality().hash(cantidadDesde),
       const DeepCollectionEquality().hash(descuento),
       const DeepCollectionEquality().hash(lastUpdated),
       const DeepCollectionEquality().hash(deleted));
@@ -292,7 +292,7 @@ abstract class _ClienteDescuentoDTO extends ClienteDescuentoDTO {
       @JsonKey(name: 'ARTICULO_ID') required final String articuloId,
       @JsonKey(name: 'FAMILIA_ID') required final String familiaId,
       @JsonKey(name: 'SUBFAMILIA_ID') required final String subfamiliaId,
-      @JsonKey(name: 'CANTIDAD_DESDE') required final double cantidadDesDe,
+      @JsonKey(name: 'CANTIDAD_DESDE') required final int cantidadDesde,
       @JsonKey(name: 'DESCUENTO') required final double descuento,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteDescuentoDTO;
@@ -315,7 +315,7 @@ abstract class _ClienteDescuentoDTO extends ClienteDescuentoDTO {
   String get subfamiliaId;
   @override
   @JsonKey(name: 'CANTIDAD_DESDE')
-  double get cantidadDesDe;
+  int get cantidadDesde;
   @override
   @JsonKey(name: 'DESCUENTO')
   double get descuento;

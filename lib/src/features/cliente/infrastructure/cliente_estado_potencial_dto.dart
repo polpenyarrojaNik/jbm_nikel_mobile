@@ -16,7 +16,7 @@ class ClienteEstadoPotencialDTO
   const ClienteEstadoPotencialDTO._();
   const factory ClienteEstadoPotencialDTO({
     @JsonKey(name: 'ESTADO_POTENCIAL_ID') required String id,
-    @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+    @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
     @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
     @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
     @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -94,7 +94,7 @@ class ClienteEstadoPotencialTable extends Table {
   Set<Column> get primaryKey => {id};
 
   TextColumn get id => text().named('ESTADO_POTENCIAL_ID')();
-  TextColumn get descripcionES => text().nullable().named('DESCRIPCION_ES')();
+  TextColumn get descripcionES => text().named('DESCRIPCION_ES')();
   TextColumn get descripcionEN => text().nullable().named('DESCRIPCION_EN')();
   TextColumn get descripcionFR => text().nullable().named('DESCRIPCION_FR')();
   TextColumn get descripcionDE => text().nullable().named('DESCRIPCION_DE')();

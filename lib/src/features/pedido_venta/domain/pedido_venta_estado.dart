@@ -6,7 +6,7 @@ part 'pedido_venta_estado.freezed.dart';
 class PedidoVentaEstado with _$PedidoVentaEstado {
   const PedidoVentaEstado._();
   const factory PedidoVentaEstado(
-      {required double id,
+      {required int id,
       required String descripcion,
       required DateTime lastUpdate,
       required bool deleted}) = _PedidoVentaEstado;

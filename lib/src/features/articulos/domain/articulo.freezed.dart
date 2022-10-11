@@ -34,11 +34,11 @@ mixin _$Articulo {
   String? get descripcionEL => throw _privateConstructorUsedError;
   Familia? get familia => throw _privateConstructorUsedError;
   Subfamilia? get subfamilia => throw _privateConstructorUsedError;
-  double get ventaMinimo => throw _privateConstructorUsedError;
-  double get ventaMultiplo => throw _privateConstructorUsedError;
-  double get unidadesSubcaja => throw _privateConstructorUsedError;
-  double get unidadesCaja => throw _privateConstructorUsedError;
-  double get unidadesPalet => throw _privateConstructorUsedError;
+  int get ventaMinimo => throw _privateConstructorUsedError;
+  int get ventaMultiplo => throw _privateConstructorUsedError;
+  int get unidadesSubcaja => throw _privateConstructorUsedError;
+  int get unidadesCaja => throw _privateConstructorUsedError;
+  int get unidadesPalet => throw _privateConstructorUsedError;
   bool get activoWeb => throw _privateConstructorUsedError;
   bool get activoApp => throw _privateConstructorUsedError;
   bool get enCatalogo => throw _privateConstructorUsedError;
@@ -64,13 +64,13 @@ mixin _$Articulo {
   String? get resumenRU => throw _privateConstructorUsedError;
   String? get resumenCN => throw _privateConstructorUsedError;
   String? get resumenEL => throw _privateConstructorUsedError;
-  double? get stockDisponible => throw _privateConstructorUsedError;
-  double? get ventasActual => throw _privateConstructorUsedError;
-  double? get ventasAnterior => throw _privateConstructorUsedError;
-  double? get comprasEntregaCantidad1 => throw _privateConstructorUsedError;
-  double? get comprasEntregaCantidad2 => throw _privateConstructorUsedError;
-  double? get comprasEntregaCantidad3 => throw _privateConstructorUsedError;
-  double? get comprasEntregaCantidadMas3 => throw _privateConstructorUsedError;
+  int get stockDisponible => throw _privateConstructorUsedError;
+  Money get ventasActual => throw _privateConstructorUsedError;
+  Money get ventasAnterior => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidad1 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidad2 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidad3 => throw _privateConstructorUsedError;
+  int get comprasEntregaCantidadMas3 => throw _privateConstructorUsedError;
   DateTime? get comprasEntregaFecha1 => throw _privateConstructorUsedError;
   DateTime? get comprasEntregaFecha2 => throw _privateConstructorUsedError;
   DateTime? get comprasEntregaFecha3 => throw _privateConstructorUsedError;
@@ -109,11 +109,11 @@ abstract class $ArticuloCopyWith<$Res> {
       String? descripcionEL,
       Familia? familia,
       Subfamilia? subfamilia,
-      double ventaMinimo,
-      double ventaMultiplo,
-      double unidadesSubcaja,
-      double unidadesCaja,
-      double unidadesPalet,
+      int ventaMinimo,
+      int ventaMultiplo,
+      int unidadesSubcaja,
+      int unidadesCaja,
+      int unidadesPalet,
       bool activoWeb,
       bool activoApp,
       bool enCatalogo,
@@ -139,13 +139,13 @@ abstract class $ArticuloCopyWith<$Res> {
       String? resumenRU,
       String? resumenCN,
       String? resumenEL,
-      double? stockDisponible,
-      double? ventasActual,
-      double? ventasAnterior,
-      double? comprasEntregaCantidad1,
-      double? comprasEntregaCantidad2,
-      double? comprasEntregaCantidad3,
-      double? comprasEntregaCantidadMas3,
+      int stockDisponible,
+      Money ventasActual,
+      Money ventasAnterior,
+      int comprasEntregaCantidad1,
+      int comprasEntregaCantidad2,
+      int comprasEntregaCantidad3,
+      int comprasEntregaCantidadMas3,
       DateTime? comprasEntregaFecha1,
       DateTime? comprasEntregaFecha2,
       DateTime? comprasEntregaFecha3,
@@ -311,23 +311,23 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
       ventaMinimo: ventaMinimo == freezed
           ? _value.ventaMinimo
           : ventaMinimo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       ventaMultiplo: ventaMultiplo == freezed
           ? _value.ventaMultiplo
           : ventaMultiplo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesSubcaja: unidadesSubcaja == freezed
           ? _value.unidadesSubcaja
           : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesCaja: unidadesCaja == freezed
           ? _value.unidadesCaja
           : unidadesCaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesPalet: unidadesPalet == freezed
           ? _value.unidadesPalet
           : unidadesPalet // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       activoWeb: activoWeb == freezed
           ? _value.activoWeb
           : activoWeb // ignore: cast_nullable_to_non_nullable
@@ -431,31 +431,31 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
       stockDisponible: stockDisponible == freezed
           ? _value.stockDisponible
           : stockDisponible // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       ventasActual: ventasActual == freezed
           ? _value.ventasActual
           : ventasActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money,
       ventasAnterior: ventasAnterior == freezed
           ? _value.ventasAnterior
           : ventasAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money,
       comprasEntregaCantidad1: comprasEntregaCantidad1 == freezed
           ? _value.comprasEntregaCantidad1
           : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad2: comprasEntregaCantidad2 == freezed
           ? _value.comprasEntregaCantidad2
           : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad3: comprasEntregaCantidad3 == freezed
           ? _value.comprasEntregaCantidad3
           : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidadMas3: comprasEntregaCantidadMas3 == freezed
           ? _value.comprasEntregaCantidadMas3
           : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaFecha1: comprasEntregaFecha1 == freezed
           ? _value.comprasEntregaFecha1
           : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
@@ -543,11 +543,11 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
       String? descripcionEL,
       Familia? familia,
       Subfamilia? subfamilia,
-      double ventaMinimo,
-      double ventaMultiplo,
-      double unidadesSubcaja,
-      double unidadesCaja,
-      double unidadesPalet,
+      int ventaMinimo,
+      int ventaMultiplo,
+      int unidadesSubcaja,
+      int unidadesCaja,
+      int unidadesPalet,
       bool activoWeb,
       bool activoApp,
       bool enCatalogo,
@@ -573,13 +573,13 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
       String? resumenRU,
       String? resumenCN,
       String? resumenEL,
-      double? stockDisponible,
-      double? ventasActual,
-      double? ventasAnterior,
-      double? comprasEntregaCantidad1,
-      double? comprasEntregaCantidad2,
-      double? comprasEntregaCantidad3,
-      double? comprasEntregaCantidadMas3,
+      int stockDisponible,
+      Money ventasActual,
+      Money ventasAnterior,
+      int comprasEntregaCantidad1,
+      int comprasEntregaCantidad2,
+      int comprasEntregaCantidad3,
+      int comprasEntregaCantidadMas3,
       DateTime? comprasEntregaFecha1,
       DateTime? comprasEntregaFecha2,
       DateTime? comprasEntregaFecha3,
@@ -749,23 +749,23 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
       ventaMinimo: ventaMinimo == freezed
           ? _value.ventaMinimo
           : ventaMinimo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       ventaMultiplo: ventaMultiplo == freezed
           ? _value.ventaMultiplo
           : ventaMultiplo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesSubcaja: unidadesSubcaja == freezed
           ? _value.unidadesSubcaja
           : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesCaja: unidadesCaja == freezed
           ? _value.unidadesCaja
           : unidadesCaja // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       unidadesPalet: unidadesPalet == freezed
           ? _value.unidadesPalet
           : unidadesPalet // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       activoWeb: activoWeb == freezed
           ? _value.activoWeb
           : activoWeb // ignore: cast_nullable_to_non_nullable
@@ -869,31 +869,31 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
       stockDisponible: stockDisponible == freezed
           ? _value.stockDisponible
           : stockDisponible // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       ventasActual: ventasActual == freezed
           ? _value.ventasActual
           : ventasActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money,
       ventasAnterior: ventasAnterior == freezed
           ? _value.ventasAnterior
           : ventasAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money,
       comprasEntregaCantidad1: comprasEntregaCantidad1 == freezed
           ? _value.comprasEntregaCantidad1
           : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad2: comprasEntregaCantidad2 == freezed
           ? _value.comprasEntregaCantidad2
           : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidad3: comprasEntregaCantidad3 == freezed
           ? _value.comprasEntregaCantidad3
           : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaCantidadMas3: comprasEntregaCantidadMas3 == freezed
           ? _value.comprasEntregaCantidadMas3
           : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int,
       comprasEntregaFecha1: comprasEntregaFecha1 == freezed
           ? _value.comprasEntregaFecha1
           : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
@@ -986,13 +986,13 @@ class _$_Articulo extends _Articulo {
       this.resumenRU,
       this.resumenCN,
       this.resumenEL,
-      this.stockDisponible,
-      this.ventasActual,
-      this.ventasAnterior,
-      this.comprasEntregaCantidad1,
-      this.comprasEntregaCantidad2,
-      this.comprasEntregaCantidad3,
-      this.comprasEntregaCantidadMas3,
+      required this.stockDisponible,
+      required this.ventasActual,
+      required this.ventasAnterior,
+      required this.comprasEntregaCantidad1,
+      required this.comprasEntregaCantidad2,
+      required this.comprasEntregaCantidad3,
+      required this.comprasEntregaCantidadMas3,
       this.comprasEntregaFecha1,
       this.comprasEntregaFecha2,
       this.comprasEntregaFecha3,
@@ -1041,15 +1041,15 @@ class _$_Articulo extends _Articulo {
   @override
   final Subfamilia? subfamilia;
   @override
-  final double ventaMinimo;
+  final int ventaMinimo;
   @override
-  final double ventaMultiplo;
+  final int ventaMultiplo;
   @override
-  final double unidadesSubcaja;
+  final int unidadesSubcaja;
   @override
-  final double unidadesCaja;
+  final int unidadesCaja;
   @override
-  final double unidadesPalet;
+  final int unidadesPalet;
   @override
   final bool activoWeb;
   @override
@@ -1101,19 +1101,19 @@ class _$_Articulo extends _Articulo {
   @override
   final String? resumenEL;
   @override
-  final double? stockDisponible;
+  final int stockDisponible;
   @override
-  final double? ventasActual;
+  final Money ventasActual;
   @override
-  final double? ventasAnterior;
+  final Money ventasAnterior;
   @override
-  final double? comprasEntregaCantidad1;
+  final int comprasEntregaCantidad1;
   @override
-  final double? comprasEntregaCantidad2;
+  final int comprasEntregaCantidad2;
   @override
-  final double? comprasEntregaCantidad3;
+  final int comprasEntregaCantidad3;
   @override
-  final double? comprasEntregaCantidadMas3;
+  final int comprasEntregaCantidadMas3;
   @override
   final DateTime? comprasEntregaFecha1;
   @override
@@ -1344,11 +1344,11 @@ abstract class _Articulo extends Articulo {
       final String? descripcionEL,
       final Familia? familia,
       final Subfamilia? subfamilia,
-      required final double ventaMinimo,
-      required final double ventaMultiplo,
-      required final double unidadesSubcaja,
-      required final double unidadesCaja,
-      required final double unidadesPalet,
+      required final int ventaMinimo,
+      required final int ventaMultiplo,
+      required final int unidadesSubcaja,
+      required final int unidadesCaja,
+      required final int unidadesPalet,
       required final bool activoWeb,
       required final bool activoApp,
       required final bool enCatalogo,
@@ -1374,13 +1374,13 @@ abstract class _Articulo extends Articulo {
       final String? resumenRU,
       final String? resumenCN,
       final String? resumenEL,
-      final double? stockDisponible,
-      final double? ventasActual,
-      final double? ventasAnterior,
-      final double? comprasEntregaCantidad1,
-      final double? comprasEntregaCantidad2,
-      final double? comprasEntregaCantidad3,
-      final double? comprasEntregaCantidadMas3,
+      required final int stockDisponible,
+      required final Money ventasActual,
+      required final Money ventasAnterior,
+      required final int comprasEntregaCantidad1,
+      required final int comprasEntregaCantidad2,
+      required final int comprasEntregaCantidad3,
+      required final int comprasEntregaCantidadMas3,
       final DateTime? comprasEntregaFecha1,
       final DateTime? comprasEntregaFecha2,
       final DateTime? comprasEntregaFecha3,
@@ -1429,15 +1429,15 @@ abstract class _Articulo extends Articulo {
   @override
   Subfamilia? get subfamilia;
   @override
-  double get ventaMinimo;
+  int get ventaMinimo;
   @override
-  double get ventaMultiplo;
+  int get ventaMultiplo;
   @override
-  double get unidadesSubcaja;
+  int get unidadesSubcaja;
   @override
-  double get unidadesCaja;
+  int get unidadesCaja;
   @override
-  double get unidadesPalet;
+  int get unidadesPalet;
   @override
   bool get activoWeb;
   @override
@@ -1489,19 +1489,19 @@ abstract class _Articulo extends Articulo {
   @override
   String? get resumenEL;
   @override
-  double? get stockDisponible;
+  int get stockDisponible;
   @override
-  double? get ventasActual;
+  Money get ventasActual;
   @override
-  double? get ventasAnterior;
+  Money get ventasAnterior;
   @override
-  double? get comprasEntregaCantidad1;
+  int get comprasEntregaCantidad1;
   @override
-  double? get comprasEntregaCantidad2;
+  int get comprasEntregaCantidad2;
   @override
-  double? get comprasEntregaCantidad3;
+  int get comprasEntregaCantidad3;
   @override
-  double? get comprasEntregaCantidadMas3;
+  int get comprasEntregaCantidadMas3;
   @override
   DateTime? get comprasEntregaFecha1;
   @override

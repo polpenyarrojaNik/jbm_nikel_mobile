@@ -18,10 +18,10 @@ class PedidoVentaLineaLocalDTO
     @JsonKey(name: 'PEDIDO_APP_ID') required String pedidoVentaAppId,
     @JsonKey(name: 'LIN_APP_ID') required String pedidoVentaLineaAppId,
     @JsonKey(name: 'PRODUCTO_ID') required String articuloId,
-    @JsonKey(name: 'DENOMINACION') String? articuloDescription,
-    @JsonKey(name: 'CANTIDAD') required double cantidad,
+    @JsonKey(name: 'DENOMINACION') required String articuloDescription,
+    @JsonKey(name: 'CANTIDAD') required int cantidad,
     @JsonKey(name: 'PRECIO_DIVISA') required double precioDivisa,
-    @JsonKey(name: 'TPRECIO') required double tipoPrecio,
+    @JsonKey(name: 'TPRECIO') required int tipoPrecio,
     @JsonKey(name: 'DTO1') required double descuento1,
     @JsonKey(name: 'DTO2') required double descuento2,
     @JsonKey(name: 'DTO3') required double descuento3,
@@ -42,7 +42,7 @@ class PedidoVentaLineaLocalDTO
       articuloDescription: _.articuloDescription,
       cantidad: _.cantidad,
       precioDivisa: _.precioDivisa.amount.toDecimal().toDouble(),
-      tipoPrecio: _.tipoPrecio!,
+      tipoPrecio: _.tipoPrecio,
       descuento1: _.descuento1,
       descuento2: _.descuento2,
       descuento3: _.descuento3,
@@ -62,7 +62,7 @@ class PedidoVentaLineaLocalDTO
         articuloId: articuloId,
         articuloDescription: articuloDescription,
         cantidad: cantidad,
-        precioDivisa: precioDivisa.parseMoney(precioDivisa, divisaId),
+        precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
         divisaId: divisaId,
         tipoPrecio: tipoPrecio,
         descuento1: descuento1,
@@ -70,7 +70,7 @@ class PedidoVentaLineaLocalDTO
         descuento3: descuento3,
         descuentoProntoPago: descuentoProntoPago,
         pedidoLineaIdComponente: null,
-        importeLinea: importeLinea?.parseMoney(importeLinea, divisaId),
+        importeLinea: importeLinea?.parseMoney(currencyId: divisaId),
         stockDisponibleSN: (stockDisponibleSN == 'S') ? true : false,
         fechaDisponible: fechaDisponible,
         iva: iva,
@@ -104,11 +104,10 @@ class PedidoVentaLineaLocalTable extends Table {
   TextColumn get pedidoVentaAppId => text().named('PEDIDO_APP_ID')();
   TextColumn get pedidoVentaLineaAppId => text().named('LIN_APP_ID')();
   TextColumn get articuloId => text().named('PRODUCTO_ID')();
-  TextColumn get articuloDescription =>
-      text().nullable().named('DENOMINACION')();
-  RealColumn get cantidad => real().named('CANTIDAD')();
+  TextColumn get articuloDescription => text().named('DENOMINACION')();
+  IntColumn get cantidad => integer().named('CANTIDAD')();
   RealColumn get precioDivisa => real().named('PRECIO_DIVISA')();
-  RealColumn get tipoPrecio => real().named('TPRECIO')();
+  IntColumn get tipoPrecio => integer().named('TPRECIO')();
   RealColumn get descuento1 => real().named('DTO1')();
   RealColumn get descuento2 => real().named('DTO2')();
   RealColumn get descuento3 => real().named('DTO3')();

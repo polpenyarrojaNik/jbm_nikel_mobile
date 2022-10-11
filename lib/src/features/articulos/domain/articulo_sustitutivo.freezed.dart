@@ -18,9 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArticuloSustitutivo {
   String get articuloId => throw _privateConstructorUsedError;
   String get articuloSustitutivoId => throw _privateConstructorUsedError;
-  String? get articuloSustitutivoDescription =>
+  String get articuloSustitutivoDescription =>
       throw _privateConstructorUsedError;
-  double get orden => throw _privateConstructorUsedError;
+  int get orden => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -37,8 +37,8 @@ abstract class $ArticuloSustitutivoCopyWith<$Res> {
   $Res call(
       {String articuloId,
       String articuloSustitutivoId,
-      String? articuloSustitutivoDescription,
-      double orden,
+      String articuloSustitutivoDescription,
+      int orden,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -73,11 +73,11 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res>
       articuloSustitutivoDescription: articuloSustitutivoDescription == freezed
           ? _value.articuloSustitutivoDescription
           : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       orden: orden == freezed
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -100,8 +100,8 @@ abstract class _$$_ArticuloSustitutivoCopyWith<$Res>
   $Res call(
       {String articuloId,
       String articuloSustitutivoId,
-      String? articuloSustitutivoDescription,
-      double orden,
+      String articuloSustitutivoDescription,
+      int orden,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -138,11 +138,11 @@ class __$$_ArticuloSustitutivoCopyWithImpl<$Res>
       articuloSustitutivoDescription: articuloSustitutivoDescription == freezed
           ? _value.articuloSustitutivoDescription
           : articuloSustitutivoDescription // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       orden: orden == freezed
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -161,7 +161,7 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
   const _$_ArticuloSustitutivo(
       {required this.articuloId,
       required this.articuloSustitutivoId,
-      this.articuloSustitutivoDescription,
+      required this.articuloSustitutivoDescription,
       required this.orden,
       required this.lastUpdated,
       required this.deleted})
@@ -172,9 +172,9 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
   @override
   final String articuloSustitutivoId;
   @override
-  final String? articuloSustitutivoDescription;
+  final String articuloSustitutivoDescription;
   @override
-  final double orden;
+  final int orden;
   @override
   final DateTime lastUpdated;
   @override
@@ -224,8 +224,8 @@ abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
   const factory _ArticuloSustitutivo(
       {required final String articuloId,
       required final String articuloSustitutivoId,
-      final String? articuloSustitutivoDescription,
-      required final double orden,
+      required final String articuloSustitutivoDescription,
+      required final int orden,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloSustitutivo;
   const _ArticuloSustitutivo._() : super._();
@@ -235,9 +235,9 @@ abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
   @override
   String get articuloSustitutivoId;
   @override
-  String? get articuloSustitutivoDescription;
+  String get articuloSustitutivoDescription;
   @override
-  double get orden;
+  int get orden;
   @override
   DateTime get lastUpdated;
   @override

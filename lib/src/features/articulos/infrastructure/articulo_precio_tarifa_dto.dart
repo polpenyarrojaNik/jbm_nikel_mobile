@@ -18,11 +18,11 @@ class ArticuloPrecioTarifaDTO
   const factory ArticuloPrecioTarifaDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'TARIFA_ID') required String tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-    @JsonKey(name: 'CANTIDAD_DESDE') required double cantidadDesDe,
+    @JsonKey(name: 'TARIFA_DESCRIPCION') required String tarifaDescripcion,
+    @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'PRECIO') required double precio,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
-    @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloPrecioTarifaDTO;
@@ -35,8 +35,8 @@ class ArticuloPrecioTarifaDTO
       articuloId: articuloId,
       tarifaId: tarifaId,
       tarifaDescripcion: tarifaDescripcion,
-      cantidadDesDe: cantidadDesDe,
-      precio: precio.parseMoney(precio, divisaId),
+      cantidadDesde: cantidadDesde,
+      precio: precio.parseMoney(currencyId: divisaId),
       divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,
@@ -50,7 +50,7 @@ class ArticuloPrecioTarifaDTO
       articuloId: Value(articuloId),
       tarifaId: Value(tarifaId),
       tarifaDescripcion: Value(tarifaDescripcion),
-      cantidadDesDe: Value(cantidadDesDe),
+      cantidadDesde: Value(cantidadDesde),
       precio: Value(precio),
       divisaId: Value(divisaId),
       tipoPrecio: Value(tipoPrecio),
@@ -66,16 +66,15 @@ class ArticuloPrecioTarifaTable extends Table {
   String get tableName => 'ARTICULOS_TARIFA_PRECIO';
 
   @override
-  Set<Column> get primaryKey => {articuloId, tarifaId, cantidadDesDe};
+  Set<Column> get primaryKey => {articuloId, tarifaId, cantidadDesde};
 
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get tarifaId => text().named('TARIFA_ID')();
-  TextColumn get tarifaDescripcion =>
-      text().nullable().named('TARIFA_DESCRIPCION')();
-  RealColumn get cantidadDesDe => real().named('CANTIDAD_DESDE')();
+  TextColumn get tarifaDescripcion => text().named('TARIFA_DESCRIPCION')();
+  IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
   RealColumn get precio => real().named('PRECIO')();
   TextColumn get divisaId => text().named('DIVISA_ID')();
-  RealColumn get tipoPrecio => real().nullable().named('TIPO_PRECIO')();
+  IntColumn get tipoPrecio => integer().named('TIPO_PRECIO')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

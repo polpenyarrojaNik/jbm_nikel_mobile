@@ -51,7 +51,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                 children: [
                   Flexible(
                     child: Text(
-                      '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente ?? ''}',
+                      '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
                     ),
                   ),
                   if (getStatusLocalEntityText(

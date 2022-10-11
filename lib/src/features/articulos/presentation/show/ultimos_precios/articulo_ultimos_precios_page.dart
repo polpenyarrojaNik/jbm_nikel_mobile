@@ -160,11 +160,10 @@ class UltimosPreciosTile extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente ?? ''}',
+                                  '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
                                 ),
-                                if (ultimosPrecios.cantidad != null)
-                                  Text(numberFormatCantidades(
-                                      ultimosPrecios.cantidad!.toDouble())),
+                                Text(numberFormatCantidades(
+                                    ultimosPrecios.cantidad.toDouble())),
                               ],
                             ),
                           ),

@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClienteVentaArticulo {
   double get clienteId => throw _privateConstructorUsedError;
   double get mes => throw _privateConstructorUsedError;
-  double get importe => throw _privateConstructorUsedError;
-  double get coste => throw _privateConstructorUsedError;
+  Money get importe => throw _privateConstructorUsedError;
+  Money get coste => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClienteVentaArticuloCopyWith<ClienteVentaArticulo> get copyWith =>
@@ -31,7 +31,7 @@ abstract class $ClienteVentaArticuloCopyWith<$Res> {
   factory $ClienteVentaArticuloCopyWith(ClienteVentaArticulo value,
           $Res Function(ClienteVentaArticulo) then) =
       _$ClienteVentaArticuloCopyWithImpl<$Res>;
-  $Res call({double clienteId, double mes, double importe, double coste});
+  $Res call({double clienteId, double mes, Money importe, Money coste});
 }
 
 /// @nodoc
@@ -62,11 +62,11 @@ class _$ClienteVentaArticuloCopyWithImpl<$Res>
       importe: importe == freezed
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       coste: coste == freezed
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
     ));
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$_ClienteVentaArticuloCopyWith<$Res>
           $Res Function(_$_ClienteVentaArticulo) then) =
       __$$_ClienteVentaArticuloCopyWithImpl<$Res>;
   @override
-  $Res call({double clienteId, double mes, double importe, double coste});
+  $Res call({double clienteId, double mes, Money importe, Money coste});
 }
 
 /// @nodoc
@@ -111,11 +111,11 @@ class __$$_ClienteVentaArticuloCopyWithImpl<$Res>
       importe: importe == freezed
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
       coste: coste == freezed
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
-              as double,
+              as Money,
     ));
   }
 }
@@ -135,9 +135,9 @@ class _$_ClienteVentaArticulo extends _ClienteVentaArticulo {
   @override
   final double mes;
   @override
-  final double importe;
+  final Money importe;
   @override
-  final double coste;
+  final Money coste;
 
   @override
   String toString() {
@@ -174,8 +174,8 @@ abstract class _ClienteVentaArticulo extends ClienteVentaArticulo {
   const factory _ClienteVentaArticulo(
       {required final double clienteId,
       required final double mes,
-      required final double importe,
-      required final double coste}) = _$_ClienteVentaArticulo;
+      required final Money importe,
+      required final Money coste}) = _$_ClienteVentaArticulo;
   const _ClienteVentaArticulo._() : super._();
 
   @override
@@ -183,9 +183,9 @@ abstract class _ClienteVentaArticulo extends ClienteVentaArticulo {
   @override
   double get mes;
   @override
-  double get importe;
+  Money get importe;
   @override
-  double get coste;
+  Money get coste;
   @override
   @JsonKey(ignore: true)
   _$$_ClienteVentaArticuloCopyWith<_$_ClienteVentaArticulo> get copyWith =>

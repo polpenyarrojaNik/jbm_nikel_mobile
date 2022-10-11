@@ -11,11 +11,11 @@ _$_ArticuloPrecioTarifaDTO _$$_ArticuloPrecioTarifaDTOFromJson(
     _$_ArticuloPrecioTarifaDTO(
       articuloId: json['ARTICULO_ID'] as String,
       tarifaId: json['TARIFA_ID'] as String,
-      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
-      cantidadDesDe: (json['CANTIDAD_DESDE'] as num).toDouble(),
+      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String,
+      cantidadDesde: json['CANTIDAD_DESDE'] as int,
       precio: (json['PRECIO'] as num).toDouble(),
       divisaId: json['DIVISA_ID'] as String,
-      tipoPrecio: (json['TIPO_PRECIO'] as num?)?.toDouble(),
+      tipoPrecio: json['TIPO_PRECIO'] as int,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -26,7 +26,7 @@ Map<String, dynamic> _$$_ArticuloPrecioTarifaDTOToJson(
       'ARTICULO_ID': instance.articuloId,
       'TARIFA_ID': instance.tarifaId,
       'TARIFA_DESCRIPCION': instance.tarifaDescripcion,
-      'CANTIDAD_DESDE': instance.cantidadDesDe,
+      'CANTIDAD_DESDE': instance.cantidadDesde,
       'PRECIO': instance.precio,
       'DIVISA_ID': instance.divisaId,
       'TIPO_PRECIO': instance.tipoPrecio,

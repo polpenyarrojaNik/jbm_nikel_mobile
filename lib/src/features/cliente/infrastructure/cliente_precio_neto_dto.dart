@@ -18,9 +18,9 @@ class ClientePrecioNetoDTO
   const factory ClientePrecioNetoDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'CANTIDAD_DESDE') required double cantidadDesDe,
+    @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'PRECIO') required double precio,
-    @JsonKey(name: 'TIPO_PRECIO') double? tipoPrecio,
+    @JsonKey(name: 'TIPO_PRECIO') required int tipoPrecio,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClientePrecioNetoDTO;
@@ -32,8 +32,8 @@ class ClientePrecioNetoDTO
     return ClientePrecioNeto(
       clienteId: clienteId,
       articuloId: articuloId,
-      cantidadDesDe: cantidadDesDe,
-      precio: precio.parseMoney(precio, divisaId),
+      cantidadDesde: cantidadDesde,
+      precio: precio.parseMoney(currencyId: divisaId),
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
@@ -45,7 +45,7 @@ class ClientePrecioNetoDTO
     return ClientePrecioNetoTableCompanion(
       clienteId: Value(clienteId),
       articuloId: Value(articuloId),
-      cantidadDesDe: Value(cantidadDesDe),
+      cantidadDesde: Value(cantidadDesde),
       precio: Value(precio),
       tipoPrecio: Value(tipoPrecio),
       lastUpdated: Value(lastUpdated),
@@ -60,13 +60,13 @@ class ClientePrecioNetoTable extends Table {
   String get tableName => 'CLIENTES_PRECIOS_NETOS';
 
   @override
-  Set<Column> get primaryKey => {clienteId, articuloId, cantidadDesDe};
+  Set<Column> get primaryKey => {clienteId, articuloId, cantidadDesde};
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get articuloId => text().named('ARTICULO_ID')();
-  RealColumn get cantidadDesDe => real().named('CANTIDAD_DESDE')();
+  IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
   RealColumn get precio => real().named('PRECIO')();
-  RealColumn get tipoPrecio => real().nullable().named('TIPO_PRECIO')();
+  IntColumn get tipoPrecio => integer().named('TIPO_PRECIO')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

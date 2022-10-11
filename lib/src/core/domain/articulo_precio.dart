@@ -38,7 +38,7 @@ class ArticuloPrecio with _$ArticuloPrecio {
         articuloId: articuloId,
         clienteId: clienteId,
         cantidad: cantidad,
-        precio: nuevoPrecio.parseMoney(nuevoPrecio, divisaId),
+        precio: nuevoPrecio.parseMoney(currencyId: divisaId),
         divisaId: divisaId,
         descuento1: nuevoDescuento1,
         descuento2: nuevoDescuento2,

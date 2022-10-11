@@ -25,7 +25,7 @@ mixin _$ClienteGrupoNetoDTO {
   @JsonKey(name: 'GRUPO_NETO_ID')
   String get grupoNetoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-  String? get grupoNetoDescripcion => throw _privateConstructorUsedError;
+  String get grupoNetoDescripcion => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -45,7 +45,7 @@ abstract class $ClienteGrupoNetoDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
-      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String? grupoNetoDescripcion,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -79,7 +79,7 @@ class _$ClienteGrupoNetoDTOCopyWithImpl<$Res>
       grupoNetoDescripcion: grupoNetoDescripcion == freezed
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -102,7 +102,7 @@ abstract class _$$_ClienteGrupoNetoDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
-      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String? grupoNetoDescripcion,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -138,7 +138,7 @@ class __$$_ClienteGrupoNetoDTOCopyWithImpl<$Res>
       grupoNetoDescripcion: grupoNetoDescripcion == freezed
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -155,11 +155,16 @@ class __$$_ClienteGrupoNetoDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
   const _$_ClienteGrupoNetoDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'GRUPO_NETO_ID') required this.grupoNetoId,
-      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') this.grupoNetoDescripcion,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      {@JsonKey(name: 'CLIENTE_ID')
+          required this.clienteId,
+      @JsonKey(name: 'GRUPO_NETO_ID')
+          required this.grupoNetoId,
+      @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
+          required this.grupoNetoDescripcion,
+      @JsonKey(name: 'LAST_UPDATED')
+          required this.lastUpdated,
+      @JsonKey(name: 'DELETED')
+          this.deleted = 'N'})
       : super._();
 
   factory _$_ClienteGrupoNetoDTO.fromJson(Map<String, dynamic> json) =>
@@ -173,7 +178,7 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
   final String grupoNetoId;
   @override
   @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-  final String? grupoNetoDescripcion;
+  final String grupoNetoDescripcion;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -232,7 +237,7 @@ abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
       @JsonKey(name: 'GRUPO_NETO_ID')
           required final String grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-          final String? grupoNetoDescripcion,
+          required final String grupoNetoDescripcion,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -250,7 +255,7 @@ abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
   String get grupoNetoId;
   @override
   @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
-  String? get grupoNetoDescripcion;
+  String get grupoNetoDescripcion;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

@@ -9,11 +9,11 @@ class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
   const factory ArticuloPrecioTarifa(
       {required String articuloId,
       required String tarifaId,
-      String? tarifaDescripcion,
-      required double cantidadDesDe,
+      required String tarifaDescripcion,
+      required int cantidadDesde,
       required Money precio,
       required String divisaId,
-      double? tipoPrecio,
+      required int tipoPrecio,
       required DateTime lastUpdated,
       required bool deleted}) = _ArticuloPrecioTarifa;
 }

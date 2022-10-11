@@ -81,11 +81,11 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      articuloPrecioTarifa.tarifaDescripcion ?? '',
+                      articuloPrecioTarifa.tarifaDescripcion,
                     ),
-                    if (articuloPrecioTarifa.cantidadDesDe != 1)
+                    if (articuloPrecioTarifa.cantidadDesde != 1)
                       Text(
-                        '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesDe)}',
+                        '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)}',
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             color: Theme.of(context).textTheme.caption?.color),
                       ),

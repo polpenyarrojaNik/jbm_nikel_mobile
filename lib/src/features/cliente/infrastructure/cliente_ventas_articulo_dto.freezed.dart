@@ -24,7 +24,7 @@ mixin _$ClienteVentasArticuloDTO {
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_ES')
-  String? get descripcionES => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_EN')
   String? get descripcionEN => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCRIPCION_FR')
@@ -64,15 +64,15 @@ mixin _$ClienteVentasArticuloDTO {
   @JsonKey(name: 'IMPORTE_ANYO_4')
   double get importeAnyo_4 => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_ANYO')
-  double get cantidadAnyo => throw _privateConstructorUsedError;
+  int get cantidadAnyo => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_ANYO_1')
-  double get cantidadAnyo_1 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_ANYO_2')
-  double get cantidadAnyo_2 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_2 => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_ANYO_3')
-  double get cantidadAnyo_3 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_3 => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD_ANYO_4')
-  double get cantidadAnyo_4 => throw _privateConstructorUsedError;
+  int get cantidadAnyo_4 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -87,7 +87,7 @@ abstract class $ClienteVentasArticuloDTOCopyWith<$Res> {
       _$ClienteVentasArticuloDTOCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -107,11 +107,11 @@ abstract class $ClienteVentasArticuloDTOCopyWith<$Res> {
       @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
       @JsonKey(name: 'IMPORTE_ANYO_3') double importeAnyo_3,
       @JsonKey(name: 'IMPORTE_ANYO_4') double importeAnyo_4,
-      @JsonKey(name: 'CANTIDAD_ANYO') double cantidadAnyo,
-      @JsonKey(name: 'CANTIDAD_ANYO_1') double cantidadAnyo_1,
-      @JsonKey(name: 'CANTIDAD_ANYO_2') double cantidadAnyo_2,
-      @JsonKey(name: 'CANTIDAD_ANYO_3') double cantidadAnyo_3,
-      @JsonKey(name: 'CANTIDAD_ANYO_4') double cantidadAnyo_4});
+      @JsonKey(name: 'CANTIDAD_ANYO') int cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') int cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') int cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') int cantidadAnyo_3,
+      @JsonKey(name: 'CANTIDAD_ANYO_4') int cantidadAnyo_4});
 }
 
 /// @nodoc
@@ -160,7 +160,7 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -240,23 +240,23 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<$Res>
       cantidadAnyo: cantidadAnyo == freezed
           ? _value.cantidadAnyo
           : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_1: cantidadAnyo_1 == freezed
           ? _value.cantidadAnyo_1
           : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_2: cantidadAnyo_2 == freezed
           ? _value.cantidadAnyo_2
           : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_3: cantidadAnyo_3 == freezed
           ? _value.cantidadAnyo_3
           : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_4: cantidadAnyo_4 == freezed
           ? _value.cantidadAnyo_4
           : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -271,7 +271,7 @@ abstract class _$$_ClienteVentasArticuloDTOCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') String? descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
@@ -291,11 +291,11 @@ abstract class _$$_ClienteVentasArticuloDTOCopyWith<$Res>
       @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
       @JsonKey(name: 'IMPORTE_ANYO_3') double importeAnyo_3,
       @JsonKey(name: 'IMPORTE_ANYO_4') double importeAnyo_4,
-      @JsonKey(name: 'CANTIDAD_ANYO') double cantidadAnyo,
-      @JsonKey(name: 'CANTIDAD_ANYO_1') double cantidadAnyo_1,
-      @JsonKey(name: 'CANTIDAD_ANYO_2') double cantidadAnyo_2,
-      @JsonKey(name: 'CANTIDAD_ANYO_3') double cantidadAnyo_3,
-      @JsonKey(name: 'CANTIDAD_ANYO_4') double cantidadAnyo_4});
+      @JsonKey(name: 'CANTIDAD_ANYO') int cantidadAnyo,
+      @JsonKey(name: 'CANTIDAD_ANYO_1') int cantidadAnyo_1,
+      @JsonKey(name: 'CANTIDAD_ANYO_2') int cantidadAnyo_2,
+      @JsonKey(name: 'CANTIDAD_ANYO_3') int cantidadAnyo_3,
+      @JsonKey(name: 'CANTIDAD_ANYO_4') int cantidadAnyo_4});
 }
 
 /// @nodoc
@@ -347,7 +347,7 @@ class __$$_ClienteVentasArticuloDTOCopyWithImpl<$Res>
       descripcionES: descripcionES == freezed
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       descripcionEN: descripcionEN == freezed
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
@@ -427,23 +427,23 @@ class __$$_ClienteVentasArticuloDTOCopyWithImpl<$Res>
       cantidadAnyo: cantidadAnyo == freezed
           ? _value.cantidadAnyo
           : cantidadAnyo // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_1: cantidadAnyo_1 == freezed
           ? _value.cantidadAnyo_1
           : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_2: cantidadAnyo_2 == freezed
           ? _value.cantidadAnyo_2
           : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_3: cantidadAnyo_3 == freezed
           ? _value.cantidadAnyo_3
           : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       cantidadAnyo_4: cantidadAnyo_4 == freezed
           ? _value.cantidadAnyo_4
           : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
     ));
   }
 }
@@ -453,7 +453,7 @@ class __$$_ClienteVentasArticuloDTOCopyWithImpl<$Res>
 class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
   const _$_ClienteVentasArticuloDTO(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') this.descripcionES,
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
       @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
@@ -488,7 +488,7 @@ class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
   final String articuloId;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  final String? descripcionES;
+  final String descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
   final String? descripcionEN;
@@ -548,19 +548,19 @@ class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
   final double importeAnyo_4;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO')
-  final double cantidadAnyo;
+  final int cantidadAnyo;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_1')
-  final double cantidadAnyo_1;
+  final int cantidadAnyo_1;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_2')
-  final double cantidadAnyo_2;
+  final int cantidadAnyo_2;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_3')
-  final double cantidadAnyo_3;
+  final int cantidadAnyo_3;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_4')
-  final double cantidadAnyo_4;
+  final int cantidadAnyo_4;
 
   @override
   String toString() {
@@ -677,7 +677,7 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
       {@JsonKey(name: 'ARTICULO_ID')
           required final String articuloId,
       @JsonKey(name: 'DESCRIPCION_ES')
-          final String? descripcionES,
+          required final String descripcionES,
       @JsonKey(name: 'DESCRIPCION_EN')
           final String? descripcionEN,
       @JsonKey(name: 'DESCRIPCION_FR')
@@ -717,15 +717,15 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
       @JsonKey(name: 'IMPORTE_ANYO_4')
           required final double importeAnyo_4,
       @JsonKey(name: 'CANTIDAD_ANYO')
-          required final double cantidadAnyo,
+          required final int cantidadAnyo,
       @JsonKey(name: 'CANTIDAD_ANYO_1')
-          required final double cantidadAnyo_1,
+          required final int cantidadAnyo_1,
       @JsonKey(name: 'CANTIDAD_ANYO_2')
-          required final double cantidadAnyo_2,
+          required final int cantidadAnyo_2,
       @JsonKey(name: 'CANTIDAD_ANYO_3')
-          required final double cantidadAnyo_3,
+          required final int cantidadAnyo_3,
       @JsonKey(name: 'CANTIDAD_ANYO_4')
-          required final double cantidadAnyo_4}) = _$_ClienteVentasArticuloDTO;
+          required final int cantidadAnyo_4}) = _$_ClienteVentasArticuloDTO;
   const _ClienteVentasArticuloDTO._() : super._();
 
   factory _ClienteVentasArticuloDTO.fromJson(Map<String, dynamic> json) =
@@ -736,7 +736,7 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
   String get articuloId;
   @override
   @JsonKey(name: 'DESCRIPCION_ES')
-  String? get descripcionES;
+  String get descripcionES;
   @override
   @JsonKey(name: 'DESCRIPCION_EN')
   String? get descripcionEN;
@@ -796,19 +796,19 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
   double get importeAnyo_4;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO')
-  double get cantidadAnyo;
+  int get cantidadAnyo;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_1')
-  double get cantidadAnyo_1;
+  int get cantidadAnyo_1;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_2')
-  double get cantidadAnyo_2;
+  int get cantidadAnyo_2;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_3')
-  double get cantidadAnyo_3;
+  int get cantidadAnyo_3;
   @override
   @JsonKey(name: 'CANTIDAD_ANYO_4')
-  double get cantidadAnyo_4;
+  int get cantidadAnyo_4;
   @override
   @JsonKey(ignore: true)
   _$$_ClienteVentasArticuloDTOCopyWith<_$_ClienteVentasArticuloDTO>

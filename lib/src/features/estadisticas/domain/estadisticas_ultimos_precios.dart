@@ -8,14 +8,14 @@ class EstadisticasUltimosPrecios with _$EstadisticasUltimosPrecios {
   const EstadisticasUltimosPrecios._();
   const factory EstadisticasUltimosPrecios(
       {required String clienteId,
-      String? nombreCliente,
+      required String nombreCliente,
       required String articuloId,
       required int linea,
-      required int? cantidad,
+      required int cantidad,
       required DateTime fecha,
       required Money precioDivisa,
       required String divisaId,
-      required double tipoPrecio,
+      required int tipoPrecio,
       required double descuento1,
       required double descuento2,
       required double descuento3,

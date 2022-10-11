@@ -18,7 +18,7 @@ class ArticuloSustitutivoDTO
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO')
         required String articuloSustitutivoId,
-    @JsonKey(name: 'ORDEN') required double orden,
+    @JsonKey(name: 'ORDEN') required int orden,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloSustitutivoDTO;
@@ -27,7 +27,7 @@ class ArticuloSustitutivoDTO
       _$ArticuloSustitutivoDTOFromJson(json);
 
   ArticuloSustitutivo toDomain(
-      {required String? articuloSustitutivoDescripcion}) {
+      {required String articuloSustitutivoDescripcion}) {
     return ArticuloSustitutivo(
       articuloId: articuloId,
       articuloSustitutivoId: articuloSustitutivoId,
@@ -61,7 +61,7 @@ class ArticuloSustitutivoTable extends Table {
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get articuloSustitutivoId =>
       text().named('ARTICULO_ID_SUSTITUTIVO')();
-  RealColumn get orden => real().named('ORDEN')();
+  IntColumn get orden => integer().named('ORDEN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

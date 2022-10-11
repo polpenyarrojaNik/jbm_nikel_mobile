@@ -12,7 +12,7 @@ _$_ArticuloRecambioDTO _$$_ArticuloRecambioDTOFromJson(
       articuloId: json['ARTICULO_ID'] as String,
       id: json['RECAMBIO_ID'] as String,
       descripcion: json['DESCRIPCION'] as String,
-      cantidad: (json['CANTIDAD'] as num).toDouble(),
+      cantidad: json['CANTIDAD'] as int,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );

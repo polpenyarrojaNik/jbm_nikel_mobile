@@ -74,8 +74,7 @@ class ArticuloSustitutivoTile extends StatelessWidget {
         children: [
           Text(articuloSustitutivo.articuloSustitutivoId,
               style: Theme.of(context).textTheme.subtitle2),
-          if (articuloSustitutivo.articuloSustitutivoDescription != null)
-            Text(articuloSustitutivo.articuloSustitutivoDescription!),
+          Text(articuloSustitutivo.articuloSustitutivoDescription),
           const Divider(),
         ],
       ),

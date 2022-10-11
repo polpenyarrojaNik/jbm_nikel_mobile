@@ -26,7 +26,7 @@ mixin _$ArticuloComponenteDTO {
   @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
   String get articuloComponenteId => throw _privateConstructorUsedError;
   @JsonKey(name: 'CANTIDAD')
-  double get cantidad => throw _privateConstructorUsedError;
+  int get cantidad => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -46,7 +46,7 @@ abstract class $ArticuloComponenteDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'ARTICULO_COMPONENTE_ID') String articuloComponenteId,
-      @JsonKey(name: 'CANTIDAD') double cantidad,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -80,7 +80,7 @@ class _$ArticuloComponenteDTOCopyWithImpl<$Res>
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$_ArticuloComponenteDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'ARTICULO_COMPONENTE_ID') String articuloComponenteId,
-      @JsonKey(name: 'CANTIDAD') double cantidad,
+      @JsonKey(name: 'CANTIDAD') int cantidad,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -140,7 +140,7 @@ class __$$_ArticuloComponenteDTOCopyWithImpl<$Res>
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ class _$_ArticuloComponenteDTO extends _ArticuloComponenteDTO {
   final String articuloComponenteId;
   @override
   @JsonKey(name: 'CANTIDAD')
-  final double cantidad;
+  final int cantidad;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
@@ -239,7 +239,7 @@ abstract class _ArticuloComponenteDTO extends ArticuloComponenteDTO {
       @JsonKey(name: 'ARTICULO_COMPONENTE_ID')
           required final String articuloComponenteId,
       @JsonKey(name: 'CANTIDAD')
-          required final double cantidad,
+          required final int cantidad,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -257,7 +257,7 @@ abstract class _ArticuloComponenteDTO extends ArticuloComponenteDTO {
   String get articuloComponenteId;
   @override
   @JsonKey(name: 'CANTIDAD')
-  double get cantidad;
+  int get cantidad;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

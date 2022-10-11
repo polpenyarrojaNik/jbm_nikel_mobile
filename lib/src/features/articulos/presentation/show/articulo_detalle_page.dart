@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
@@ -124,20 +123,18 @@ class _ArticuloInfoContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (articulo.stockDisponible != null)
-                Expanded(
-                  flex: 1,
-                  child: ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).stock,
-                      value:
-                          '${numberFormatCantidades(articulo.stockDisponible!)} ${S.of(context).unidades}'),
-                ),
+              Expanded(
+                flex: 1,
+                child: ColumnFieldTextDetalle(
+                    fieldTitleValue: S.of(context).stock,
+                    value:
+                        '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidades}'),
+              ),
               Expanded(
                 flex: 2,
                 child: Row(
                   children: [
-                    if (articulo.comprasEntregaCantidad1 != null &&
-                        articulo.comprasEntregaCantidad1 != 0)
+                    if (articulo.comprasEntregaCantidad1 != 0)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -154,11 +151,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                         .caption!
                                         .color),
                           ),
-                          if (articulo.comprasEntregaCantidad1 != null &&
-                              articulo.comprasEntregaCantidad1 != 0)
-                            gapH8,
-                          if (articulo.comprasEntregaCantidad2 != null &&
-                              articulo.comprasEntregaCantidad2 != 0)
+                          if (articulo.comprasEntregaCantidad1 != 0) gapH8,
+                          if (articulo.comprasEntregaCantidad2 != 0)
                             Text(
                               S
                                   .of(context)
@@ -172,11 +166,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                           .caption!
                                           .color),
                             ),
-                          if (articulo.comprasEntregaCantidad2 != null &&
-                              articulo.comprasEntregaCantidad2 != 0)
-                            gapH8,
-                          if (articulo.comprasEntregaCantidad3 != null &&
-                              articulo.comprasEntregaCantidad3 != 0)
+                          if (articulo.comprasEntregaCantidad2 != 0) gapH8,
+                          if (articulo.comprasEntregaCantidad3 != 0)
                             Text(
                               S
                                   .of(context)
@@ -190,11 +181,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                           .caption!
                                           .color),
                             ),
-                          if (articulo.comprasEntregaCantidad3 != null &&
-                              articulo.comprasEntregaCantidad3 != 0)
-                            gapH8,
-                          if (articulo.comprasEntregaCantidadMas3 != null &&
-                              articulo.comprasEntregaCantidadMas3 != 0)
+                          if (articulo.comprasEntregaCantidad3 != 0) gapH8,
+                          if (articulo.comprasEntregaCantidadMas3 != 0)
                             Text(
                               S.of(context).articulo_show_articuloDetalle_mas,
                               style: Theme.of(context)
@@ -211,31 +199,21 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     const Spacer(),
                     Column(
                       children: [
-                        if (articulo.comprasEntregaCantidad1 != null &&
-                            articulo.comprasEntregaCantidad1 != 0)
-                          Text(numberFormatDecimal(
-                              articulo.comprasEntregaCantidad1!)),
-                        if (articulo.comprasEntregaCantidad1 != null &&
-                            articulo.comprasEntregaCantidad1 != 0)
-                          gapH8,
-                        if (articulo.comprasEntregaCantidad2 != null &&
-                            articulo.comprasEntregaCantidad2 != 0)
-                          Text(numberFormatDecimal(
-                              articulo.comprasEntregaCantidad2!)),
-                        if (articulo.comprasEntregaCantidad2 != null &&
-                            articulo.comprasEntregaCantidad2 != 0)
-                          gapH8,
-                        if (articulo.comprasEntregaCantidad3 != null &&
-                            articulo.comprasEntregaCantidad3 != 0)
-                          Text(numberFormatDecimal(
-                              articulo.comprasEntregaCantidad3!)),
-                        if (articulo.comprasEntregaCantidad3 != null &&
-                            articulo.comprasEntregaCantidad3 != 0)
-                          gapH8,
-                        if (articulo.comprasEntregaCantidadMas3 != null &&
-                            articulo.comprasEntregaCantidadMas3 != 0)
-                          Text(numberFormatDecimal(
-                              articulo.comprasEntregaCantidadMas3!)),
+                        if (articulo.comprasEntregaCantidad1 != 0)
+                          Text(numberFormatCantidades(
+                              articulo.comprasEntregaCantidad1)),
+                        if (articulo.comprasEntregaCantidad1 != 0) gapH8,
+                        if (articulo.comprasEntregaCantidad2 != 0)
+                          Text(numberFormatCantidades(
+                              articulo.comprasEntregaCantidad2)),
+                        if (articulo.comprasEntregaCantidad2 != 0) gapH8,
+                        if (articulo.comprasEntregaCantidad3 != 0)
+                          Text(numberFormatCantidades(
+                              articulo.comprasEntregaCantidad3)),
+                        if (articulo.comprasEntregaCantidad3 != 0) gapH8,
+                        if (articulo.comprasEntregaCantidadMas3 != 0)
+                          Text(numberFormatCantidades(
+                              articulo.comprasEntregaCantidadMas3)),
                       ],
                     ),
                     const Spacer(),

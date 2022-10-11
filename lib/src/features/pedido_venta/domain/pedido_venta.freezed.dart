@@ -24,7 +24,7 @@ mixin _$PedidoVenta {
   String? get tipoVenta => throw _privateConstructorUsedError;
   String? get clienteId => throw _privateConstructorUsedError;
   String? get direccionId => throw _privateConstructorUsedError;
-  String? get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
   String? get direccionEntrga1 => throw _privateConstructorUsedError;
   String? get direccionEntrga2 => throw _privateConstructorUsedError;
   String? get codigoPostal => throw _privateConstructorUsedError;
@@ -68,7 +68,7 @@ abstract class $PedidoVentaCopyWith<$Res> {
       String? tipoVenta,
       String? clienteId,
       String? direccionId,
-      String? nombreCliente,
+      String nombreCliente,
       String? direccionEntrga1,
       String? direccionEntrga2,
       String? codigoPostal,
@@ -175,7 +175,7 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionEntrga1: direccionEntrga1 == freezed
           ? _value.direccionEntrga1
           : direccionEntrga1 // ignore: cast_nullable_to_non_nullable
@@ -313,7 +313,7 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       String? tipoVenta,
       String? clienteId,
       String? direccionId,
-      String? nombreCliente,
+      String nombreCliente,
       String? direccionEntrga1,
       String? direccionEntrga2,
       String? codigoPostal,
@@ -425,7 +425,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionEntrga1: direccionEntrga1 == freezed
           ? _value.direccionEntrga1
           : direccionEntrga1 // ignore: cast_nullable_to_non_nullable
@@ -530,7 +530,7 @@ class _$_PedidoVenta extends _PedidoVenta {
       this.tipoVenta,
       this.clienteId,
       this.direccionId,
-      this.nombreCliente,
+      required this.nombreCliente,
       this.direccionEntrga1,
       this.direccionEntrga2,
       this.codigoPostal,
@@ -572,7 +572,7 @@ class _$_PedidoVenta extends _PedidoVenta {
   @override
   final String? direccionId;
   @override
-  final String? nombreCliente;
+  final String nombreCliente;
   @override
   final String? direccionEntrga1;
   @override
@@ -730,7 +730,7 @@ abstract class _PedidoVenta extends PedidoVenta {
       final String? tipoVenta,
       final String? clienteId,
       final String? direccionId,
-      final String? nombreCliente,
+      required final String nombreCliente,
       final String? direccionEntrga1,
       final String? direccionEntrga2,
       final String? codigoPostal,
@@ -772,7 +772,7 @@ abstract class _PedidoVenta extends PedidoVenta {
   @override
   String? get direccionId;
   @override
-  String? get nombreCliente;
+  String get nombreCliente;
   @override
   String? get direccionEntrga1;
   @override

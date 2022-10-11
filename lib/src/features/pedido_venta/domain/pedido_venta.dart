@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/divisa.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
 import 'package:money2/money2.dart';
 
@@ -18,7 +18,7 @@ class PedidoVenta with _$PedidoVenta {
     String? tipoVenta,
     String? clienteId,
     String? direccionId,
-    String? nombreCliente,
+    required String nombreCliente,
     String? direccionEntrga1,
     String? direccionEntrga2,
     String? codigoPostal,

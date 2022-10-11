@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:money2/money2.dart';
 
 part 'cliente_venta_articulo.freezed.dart';
 
@@ -8,7 +9,7 @@ class ClienteVentaArticulo with _$ClienteVentaArticulo {
   const factory ClienteVentaArticulo({
     required double clienteId,
     required double mes,
-    required double importe,
-    required double coste,
+    required Money importe,
+    required Money coste,
   }) = _ClienteVentaArticulo;
 }

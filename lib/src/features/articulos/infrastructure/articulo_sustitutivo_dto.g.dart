@@ -11,7 +11,7 @@ _$_ArticuloSustitutivoDTO _$$_ArticuloSustitutivoDTOFromJson(
     _$_ArticuloSustitutivoDTO(
       articuloId: json['ARTICULO_ID'] as String,
       articuloSustitutivoId: json['ARTICULO_ID_SUSTITUTIVO'] as String,
-      orden: (json['ORDEN'] as num).toDouble(),
+      orden: json['ORDEN'] as int,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );

@@ -23,11 +23,11 @@ mixin _$ClienteDTO {
   @JsonKey(name: 'CLIENTE_ID')
   String get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE')
-  String? get nombreCliente => throw _privateConstructorUsedError;
+  String get nombreCliente => throw _privateConstructorUsedError;
   @JsonKey(name: 'NIF')
   String? get nif => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_FISCAL')
-  String? get nombreFiscal => throw _privateConstructorUsedError;
+  String get nombreFiscal => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_FISCAL1')
   String? get direccionFiscal1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION_FISCAL2')
@@ -41,29 +41,29 @@ mixin _$ClienteDTO {
   @JsonKey(name: 'PROVINCIA_FISCAL')
   String? get provinciaFiscal => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD_FISCAL')
-  double? get latitudFiscal => throw _privateConstructorUsedError;
+  double get latitudFiscal => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD_FISCAL')
-  double? get longitudFiscal => throw _privateConstructorUsedError;
+  double get longitudFiscal => throw _privateConstructorUsedError;
   @JsonKey(name: 'EMPRESA_ID')
   String get empresaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'IVA')
   double get iva => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-  double? get ventasAnyoActual => throw _privateConstructorUsedError;
+  double get ventasAnyoActual => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-  double? get ventasAnyoAnterior => throw _privateConstructorUsedError;
+  double get ventasAnyoAnterior => throw _privateConstructorUsedError;
   @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-  double? get ventasHaceDosAnyos => throw _privateConstructorUsedError;
+  double get ventasHaceDosAnyos => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-  double? get margenAnyoActual => throw _privateConstructorUsedError;
+  double get margenAnyoActual => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-  double? get margenAnyoAnterior => throw _privateConstructorUsedError;
+  double get margenAnyoAnterior => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-  double? get margenHaceDosAnyos => throw _privateConstructorUsedError;
+  double get margenHaceDosAnyos => throw _privateConstructorUsedError;
   @JsonKey(name: 'PORCENTAJE_ABONOS')
-  double? get porcentajeAbonos => throw _privateConstructorUsedError;
+  double get porcentajeAbonos => throw _privateConstructorUsedError;
   @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-  double? get porcentajeGarantias => throw _privateConstructorUsedError;
+  double get porcentajeGarantias => throw _privateConstructorUsedError;
   @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
   String? get centralCompras => throw _privateConstructorUsedError;
   @JsonKey(name: 'URL_WEB')
@@ -134,11 +134,11 @@ abstract class $ClienteDTOCopyWith<$Res> {
       {@JsonKey(name: 'CLIENTE_ID')
           String id,
       @JsonKey(name: 'NOMBRE')
-          String? nombreCliente,
+          String nombreCliente,
       @JsonKey(name: 'NIF')
           String? nif,
       @JsonKey(name: 'NOMBRE_FISCAL')
-          String? nombreFiscal,
+          String nombreFiscal,
       @JsonKey(name: 'DIRECCION_FISCAL1')
           String? direccionFiscal1,
       @JsonKey(name: 'DIRECCION_FISCAL2')
@@ -152,29 +152,29 @@ abstract class $ClienteDTOCopyWith<$Res> {
       @JsonKey(name: 'PROVINCIA_FISCAL')
           String? provinciaFiscal,
       @JsonKey(name: 'LATITUD_FISCAL')
-          double? latitudFiscal,
+          double latitudFiscal,
       @JsonKey(name: 'LONGITUD_FISCAL')
-          double? longitudFiscal,
+          double longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           String empresaId,
       @JsonKey(name: 'IVA')
           double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          double? ventasAnyoActual,
+          double ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          double? ventasAnyoAnterior,
+          double ventasAnyoAnterior,
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          double? ventasHaceDosAnyos,
+          double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          double? margenAnyoActual,
+          double margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          double? margenAnyoAnterior,
+          double margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          double? margenHaceDosAnyos,
+          double margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
-          double? porcentajeAbonos,
+          double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          double? porcentajeGarantias,
+          double porcentajeGarantias,
       @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
           String? centralCompras,
       @JsonKey(name: 'URL_WEB')
@@ -296,7 +296,7 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       nif: nif == freezed
           ? _value.nif
           : nif // ignore: cast_nullable_to_non_nullable
@@ -304,7 +304,7 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
       nombreFiscal: nombreFiscal == freezed
           ? _value.nombreFiscal
           : nombreFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionFiscal1: direccionFiscal1 == freezed
           ? _value.direccionFiscal1
           : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
@@ -332,11 +332,11 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
       latitudFiscal: latitudFiscal == freezed
           ? _value.latitudFiscal
           : latitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       longitudFiscal: longitudFiscal == freezed
           ? _value.longitudFiscal
           : longitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -348,35 +348,35 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       ventasAnyoAnterior: ventasAnyoAnterior == freezed
           ? _value.ventasAnyoAnterior
           : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       ventasHaceDosAnyos: ventasHaceDosAnyos == freezed
           ? _value.ventasHaceDosAnyos
           : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeGarantias: porcentajeGarantias == freezed
           ? _value.porcentajeGarantias
           : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       centralCompras: centralCompras == freezed
           ? _value.centralCompras
           : centralCompras // ignore: cast_nullable_to_non_nullable
@@ -496,11 +496,11 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
       {@JsonKey(name: 'CLIENTE_ID')
           String id,
       @JsonKey(name: 'NOMBRE')
-          String? nombreCliente,
+          String nombreCliente,
       @JsonKey(name: 'NIF')
           String? nif,
       @JsonKey(name: 'NOMBRE_FISCAL')
-          String? nombreFiscal,
+          String nombreFiscal,
       @JsonKey(name: 'DIRECCION_FISCAL1')
           String? direccionFiscal1,
       @JsonKey(name: 'DIRECCION_FISCAL2')
@@ -514,29 +514,29 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
       @JsonKey(name: 'PROVINCIA_FISCAL')
           String? provinciaFiscal,
       @JsonKey(name: 'LATITUD_FISCAL')
-          double? latitudFiscal,
+          double latitudFiscal,
       @JsonKey(name: 'LONGITUD_FISCAL')
-          double? longitudFiscal,
+          double longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           String empresaId,
       @JsonKey(name: 'IVA')
           double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          double? ventasAnyoActual,
+          double ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          double? ventasAnyoAnterior,
+          double ventasAnyoAnterior,
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          double? ventasHaceDosAnyos,
+          double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          double? margenAnyoActual,
+          double margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          double? margenAnyoAnterior,
+          double margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          double? margenHaceDosAnyos,
+          double margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
-          double? porcentajeAbonos,
+          double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          double? porcentajeGarantias,
+          double porcentajeGarantias,
       @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
           String? centralCompras,
       @JsonKey(name: 'URL_WEB')
@@ -660,7 +660,7 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
       nombreCliente: nombreCliente == freezed
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       nif: nif == freezed
           ? _value.nif
           : nif // ignore: cast_nullable_to_non_nullable
@@ -668,7 +668,7 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
       nombreFiscal: nombreFiscal == freezed
           ? _value.nombreFiscal
           : nombreFiscal // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccionFiscal1: direccionFiscal1 == freezed
           ? _value.direccionFiscal1
           : direccionFiscal1 // ignore: cast_nullable_to_non_nullable
@@ -696,11 +696,11 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
       latitudFiscal: latitudFiscal == freezed
           ? _value.latitudFiscal
           : latitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       longitudFiscal: longitudFiscal == freezed
           ? _value.longitudFiscal
           : longitudFiscal // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       empresaId: empresaId == freezed
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
@@ -712,35 +712,35 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
       ventasAnyoActual: ventasAnyoActual == freezed
           ? _value.ventasAnyoActual
           : ventasAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       ventasAnyoAnterior: ventasAnyoAnterior == freezed
           ? _value.ventasAnyoAnterior
           : ventasAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       ventasHaceDosAnyos: ventasHaceDosAnyos == freezed
           ? _value.ventasHaceDosAnyos
           : ventasHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeGarantias: porcentajeGarantias == freezed
           ? _value.porcentajeGarantias
           : porcentajeGarantias // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       centralCompras: centralCompras == freezed
           ? _value.centralCompras
           : centralCompras // ignore: cast_nullable_to_non_nullable
@@ -856,11 +856,11 @@ class _$_ClienteDTO extends _ClienteDTO {
       {@JsonKey(name: 'CLIENTE_ID')
           required this.id,
       @JsonKey(name: 'NOMBRE')
-          this.nombreCliente,
+          required this.nombreCliente,
       @JsonKey(name: 'NIF')
           this.nif,
       @JsonKey(name: 'NOMBRE_FISCAL')
-          this.nombreFiscal,
+          required this.nombreFiscal,
       @JsonKey(name: 'DIRECCION_FISCAL1')
           this.direccionFiscal1,
       @JsonKey(name: 'DIRECCION_FISCAL2')
@@ -874,29 +874,29 @@ class _$_ClienteDTO extends _ClienteDTO {
       @JsonKey(name: 'PROVINCIA_FISCAL')
           this.provinciaFiscal,
       @JsonKey(name: 'LATITUD_FISCAL')
-          this.latitudFiscal,
+          required this.latitudFiscal,
       @JsonKey(name: 'LONGITUD_FISCAL')
-          this.longitudFiscal,
+          required this.longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           required this.empresaId,
       @JsonKey(name: 'IVA')
           required this.iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          this.ventasAnyoActual,
+          required this.ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          this.ventasAnyoAnterior,
+          required this.ventasAnyoAnterior,
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          this.ventasHaceDosAnyos,
+          required this.ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          this.margenAnyoActual,
+          required this.margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          this.margenAnyoAnterior,
+          required this.margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          this.margenHaceDosAnyos,
+          required this.margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
-          this.porcentajeAbonos,
+          required this.porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          this.porcentajeGarantias,
+          required this.porcentajeGarantias,
       @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
           this.centralCompras,
       @JsonKey(name: 'URL_WEB')
@@ -959,13 +959,13 @@ class _$_ClienteDTO extends _ClienteDTO {
   final String id;
   @override
   @JsonKey(name: 'NOMBRE')
-  final String? nombreCliente;
+  final String nombreCliente;
   @override
   @JsonKey(name: 'NIF')
   final String? nif;
   @override
   @JsonKey(name: 'NOMBRE_FISCAL')
-  final String? nombreFiscal;
+  final String nombreFiscal;
   @override
   @JsonKey(name: 'DIRECCION_FISCAL1')
   final String? direccionFiscal1;
@@ -986,10 +986,10 @@ class _$_ClienteDTO extends _ClienteDTO {
   final String? provinciaFiscal;
   @override
   @JsonKey(name: 'LATITUD_FISCAL')
-  final double? latitudFiscal;
+  final double latitudFiscal;
   @override
   @JsonKey(name: 'LONGITUD_FISCAL')
-  final double? longitudFiscal;
+  final double longitudFiscal;
   @override
   @JsonKey(name: 'EMPRESA_ID')
   final String empresaId;
@@ -998,28 +998,28 @@ class _$_ClienteDTO extends _ClienteDTO {
   final double iva;
   @override
   @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-  final double? ventasAnyoActual;
+  final double ventasAnyoActual;
   @override
   @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-  final double? ventasAnyoAnterior;
+  final double ventasAnyoAnterior;
   @override
   @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-  final double? ventasHaceDosAnyos;
+  final double ventasHaceDosAnyos;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-  final double? margenAnyoActual;
+  final double margenAnyoActual;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-  final double? margenAnyoAnterior;
+  final double margenAnyoAnterior;
   @override
   @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-  final double? margenHaceDosAnyos;
+  final double margenHaceDosAnyos;
   @override
   @JsonKey(name: 'PORCENTAJE_ABONOS')
-  final double? porcentajeAbonos;
+  final double porcentajeAbonos;
   @override
   @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-  final double? porcentajeGarantias;
+  final double porcentajeGarantias;
   @override
   @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
   final String? centralCompras;
@@ -1273,11 +1273,11 @@ abstract class _ClienteDTO extends ClienteDTO {
       {@JsonKey(name: 'CLIENTE_ID')
           required final String id,
       @JsonKey(name: 'NOMBRE')
-          final String? nombreCliente,
+          required final String nombreCliente,
       @JsonKey(name: 'NIF')
           final String? nif,
       @JsonKey(name: 'NOMBRE_FISCAL')
-          final String? nombreFiscal,
+          required final String nombreFiscal,
       @JsonKey(name: 'DIRECCION_FISCAL1')
           final String? direccionFiscal1,
       @JsonKey(name: 'DIRECCION_FISCAL2')
@@ -1291,29 +1291,29 @@ abstract class _ClienteDTO extends ClienteDTO {
       @JsonKey(name: 'PROVINCIA_FISCAL')
           final String? provinciaFiscal,
       @JsonKey(name: 'LATITUD_FISCAL')
-          final double? latitudFiscal,
+          required final double latitudFiscal,
       @JsonKey(name: 'LONGITUD_FISCAL')
-          final double? longitudFiscal,
+          required final double longitudFiscal,
       @JsonKey(name: 'EMPRESA_ID')
           required final String empresaId,
       @JsonKey(name: 'IVA')
           required final double iva,
       @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-          final double? ventasAnyoActual,
+          required final double ventasAnyoActual,
       @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-          final double? ventasAnyoAnterior,
+          required final double ventasAnyoAnterior,
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-          final double? ventasHaceDosAnyos,
+          required final double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          final double? margenAnyoActual,
+          required final double margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          final double? margenAnyoAnterior,
+          required final double margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          final double? margenHaceDosAnyos,
+          required final double margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
-          final double? porcentajeAbonos,
+          required final double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-          final double? porcentajeGarantias,
+          required final double porcentajeGarantias,
       @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
           final String? centralCompras,
       @JsonKey(name: 'URL_WEB')
@@ -1376,13 +1376,13 @@ abstract class _ClienteDTO extends ClienteDTO {
   String get id;
   @override
   @JsonKey(name: 'NOMBRE')
-  String? get nombreCliente;
+  String get nombreCliente;
   @override
   @JsonKey(name: 'NIF')
   String? get nif;
   @override
   @JsonKey(name: 'NOMBRE_FISCAL')
-  String? get nombreFiscal;
+  String get nombreFiscal;
   @override
   @JsonKey(name: 'DIRECCION_FISCAL1')
   String? get direccionFiscal1;
@@ -1403,10 +1403,10 @@ abstract class _ClienteDTO extends ClienteDTO {
   String? get provinciaFiscal;
   @override
   @JsonKey(name: 'LATITUD_FISCAL')
-  double? get latitudFiscal;
+  double get latitudFiscal;
   @override
   @JsonKey(name: 'LONGITUD_FISCAL')
-  double? get longitudFiscal;
+  double get longitudFiscal;
   @override
   @JsonKey(name: 'EMPRESA_ID')
   String get empresaId;
@@ -1415,28 +1415,28 @@ abstract class _ClienteDTO extends ClienteDTO {
   double get iva;
   @override
   @JsonKey(name: 'VENTAS_ANYO_ACTUAL')
-  double? get ventasAnyoActual;
+  double get ventasAnyoActual;
   @override
   @JsonKey(name: 'VENTAS_ANYO_ANTERIOR')
-  double? get ventasAnyoAnterior;
+  double get ventasAnyoAnterior;
   @override
   @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
-  double? get ventasHaceDosAnyos;
+  double get ventasHaceDosAnyos;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-  double? get margenAnyoActual;
+  double get margenAnyoActual;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-  double? get margenAnyoAnterior;
+  double get margenAnyoAnterior;
   @override
   @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-  double? get margenHaceDosAnyos;
+  double get margenHaceDosAnyos;
   @override
   @JsonKey(name: 'PORCENTAJE_ABONOS')
-  double? get porcentajeAbonos;
+  double get porcentajeAbonos;
   @override
   @JsonKey(name: 'PORCENTAJE_GARANTIAS')
-  double? get porcentajeGarantias;
+  double get porcentajeGarantias;
   @override
   @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE')
   String? get centralCompras;

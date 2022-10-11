@@ -21,8 +21,8 @@ mixin _$EstadisticasVentaClienteUsuario {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   double? get unidades => throw _privateConstructorUsedError;
-  double? get importe => throw _privateConstructorUsedError;
-  double? get coste => throw _privateConstructorUsedError;
+  Money? get importe => throw _privateConstructorUsedError;
+  Money? get coste => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -43,8 +43,8 @@ abstract class $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
       String clienteId,
       String articuloId,
       double? unidades,
-      double? importe,
-      double? coste,
+      Money? importe,
+      Money? coste,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -94,11 +94,11 @@ class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
       importe: importe == freezed
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       coste: coste == freezed
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -125,8 +125,8 @@ abstract class _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res>
       String clienteId,
       String articuloId,
       double? unidades,
-      double? importe,
-      double? coste,
+      Money? importe,
+      Money? coste,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -180,11 +180,11 @@ class __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
       importe: importe == freezed
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       coste: coste == freezed
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as Money?,
       lastUpdated: lastUpdated == freezed
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -224,9 +224,9 @@ class _$_EstadisticasVentaClienteUsuario
   @override
   final double? unidades;
   @override
-  final double? importe;
+  final Money? importe;
   @override
-  final double? coste;
+  final Money? coste;
   @override
   final DateTime lastUpdated;
   @override
@@ -284,8 +284,8 @@ abstract class _EstadisticasVentaClienteUsuario
       required final String clienteId,
       required final String articuloId,
       final double? unidades,
-      final double? importe,
-      final double? coste,
+      final Money? importe,
+      final Money? coste,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_EstadisticasVentaClienteUsuario;
   const _EstadisticasVentaClienteUsuario._() : super._();
@@ -301,9 +301,9 @@ abstract class _EstadisticasVentaClienteUsuario
   @override
   double? get unidades;
   @override
-  double? get importe;
+  Money? get importe;
   @override
-  double? get coste;
+  Money? get coste;
   @override
   DateTime get lastUpdated;
   @override

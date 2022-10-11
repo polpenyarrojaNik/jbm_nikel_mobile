@@ -25,7 +25,7 @@ mixin _$ClienteDireccionDTO {
   @JsonKey(name: 'DIRECCION_ID')
   String get direccionId => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE')
-  String? get nombre => throw _privateConstructorUsedError;
+  String get nombre => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION1')
   String? get direccion1 => throw _privateConstructorUsedError;
   @JsonKey(name: 'DIRECCION2')
@@ -63,7 +63,7 @@ abstract class $ClienteDireccionDTOCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'DIRECCION_ID') String direccionId,
-      @JsonKey(name: 'NOMBRE') String? nombre,
+      @JsonKey(name: 'NOMBRE') String nombre,
       @JsonKey(name: 'DIRECCION1') String? direccion1,
       @JsonKey(name: 'DIRECCION2') String? direccion2,
       @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -115,7 +115,7 @@ class _$ClienteDireccionDTOCopyWithImpl<$Res>
       nombre: nombre == freezed
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccion1: direccion1 == freezed
           ? _value.direccion1
           : direccion1 // ignore: cast_nullable_to_non_nullable
@@ -174,7 +174,7 @@ abstract class _$$_ClienteDireccionDTOCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'DIRECCION_ID') String direccionId,
-      @JsonKey(name: 'NOMBRE') String? nombre,
+      @JsonKey(name: 'NOMBRE') String nombre,
       @JsonKey(name: 'DIRECCION1') String? direccion1,
       @JsonKey(name: 'DIRECCION2') String? direccion2,
       @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -228,7 +228,7 @@ class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
       nombre: nombre == freezed
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       direccion1: direccion1 == freezed
           ? _value.direccion1
           : direccion1 // ignore: cast_nullable_to_non_nullable
@@ -283,7 +283,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
   const _$_ClienteDireccionDTO(
       {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
       @JsonKey(name: 'DIRECCION_ID') required this.direccionId,
-      @JsonKey(name: 'NOMBRE') this.nombre,
+      @JsonKey(name: 'NOMBRE') required this.nombre,
       @JsonKey(name: 'DIRECCION1') this.direccion1,
       @JsonKey(name: 'DIRECCION2') this.direccion2,
       @JsonKey(name: 'CODIGO_POSTAL') this.codigoPostal,
@@ -308,7 +308,7 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
   final String direccionId;
   @override
   @JsonKey(name: 'NOMBRE')
-  final String? nombre;
+  final String nombre;
   @override
   @JsonKey(name: 'DIRECCION1')
   final String? direccion1;
@@ -412,7 +412,7 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   const factory _ClienteDireccionDTO(
       {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
       @JsonKey(name: 'DIRECCION_ID') required final String direccionId,
-      @JsonKey(name: 'NOMBRE') final String? nombre,
+      @JsonKey(name: 'NOMBRE') required final String nombre,
       @JsonKey(name: 'DIRECCION1') final String? direccion1,
       @JsonKey(name: 'DIRECCION2') final String? direccion2,
       @JsonKey(name: 'CODIGO_POSTAL') final String? codigoPostal,
@@ -437,7 +437,7 @@ abstract class _ClienteDireccionDTO extends ClienteDireccionDTO {
   String get direccionId;
   @override
   @JsonKey(name: 'NOMBRE')
-  String? get nombre;
+  String get nombre;
   @override
   @JsonKey(name: 'DIRECCION1')
   String? get direccion1;
