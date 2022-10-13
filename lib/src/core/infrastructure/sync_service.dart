@@ -834,19 +834,8 @@ class SyncService {
         throw AppException.restApiFailure(
             response.statusCode ?? 500, response.toString());
       }
-    } on DioError catch (e) {
-      if (e.isNoConnectionError) {
-        return const RemoteResponse.noConnection();
-      } else {
-        throw AppException.restApiFailure(
-          e.response?.statusCode ?? 500,
-          e.response?.data['error']['detail'] ??
-              e.response?.data['message'] ??
-              'Internet Error',
-        );
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 
@@ -929,22 +918,8 @@ class SyncService {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson = (e.response?.data is List<int>)
-          ? e.response?.statusMessage
-          : e.response?.data['detalle'] ?? e.response?.data['message'];
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
-
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 
@@ -972,22 +947,8 @@ class SyncService {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson = (e.response?.data is List<int>)
-          ? e.response?.statusMessage
-          : e.response?.data['detalle'] ?? e.response?.data['message'];
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
-
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 

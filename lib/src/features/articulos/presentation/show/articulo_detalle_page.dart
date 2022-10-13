@@ -112,11 +112,13 @@ class _ArticuloInfoContainer extends StatelessWidget {
             style: Theme.of(context).textTheme.caption,
           ),
         ),
+        gapH8,
         if (getSummaryInLocalLanguage(articulo: articulo) != null)
           SummaryTextWidget(articulo: articulo),
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).articulo_show_articuloDetalle_stockYEntregas),
+          separatorTitle:
+              S.of(context).articulo_show_articuloDetalle_stockYEntregas,
+        ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -268,8 +270,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
           ),
         ),
         MobileCustomSeparators(
-            separatorTitle:
-                S.of(context).articulo_show_articuloDetalle_datosLogistica),
+          separatorTitle:
+              S.of(context).articulo_show_articuloDetalle_datosLogistica,
+        ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -670,13 +673,17 @@ class _DescriptionResumenRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(title,
-            style: Theme.of(context).textTheme.caption?.copyWith(
-                color: Theme.of(context).textTheme.bodyText2?.color)),
+        Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .caption
+              ?.copyWith(color: Theme.of(context).textTheme.bodyText2?.color),
+        ),
         gapW4,
         Flexible(
-            child:
-                Text(description!, style: Theme.of(context).textTheme.caption)),
+          child: Text(description!, style: Theme.of(context).textTheme.caption),
+        ),
       ],
     );
   }
@@ -746,8 +753,9 @@ class _ArticuloImageCarrouselState
                   ),
                 ),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: indicators(articuloImagenes.length, activePage))
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: indicators(articuloImagenes.length, activePage),
+                )
               ],
             ),
         error: (error, _) => Container(),
@@ -755,16 +763,29 @@ class _ArticuloImageCarrouselState
   }
 
   List<Widget> indicators(imagesLength, currentIndex) {
-    return List<Widget>.generate(imagesLength, (index) {
-      return Container(
-        margin: const EdgeInsets.all(3),
-        width: 10,
-        height: 10,
-        decoration: BoxDecoration(
-            color: currentIndex == index ? Colors.black : Colors.black26,
-            shape: BoxShape.circle),
-      );
-    });
+    return List<Widget>.generate(
+      imagesLength,
+      (index) {
+        return Container(
+          margin: const EdgeInsets.all(3),
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(
+              color: currentIndex == index
+                  ? _isDark()
+                      ? Colors.white
+                      : Colors.black
+                  : _isDark()
+                      ? Colors.white54
+                      : Colors.black26,
+              shape: BoxShape.circle),
+        );
+      },
+    );
+  }
+
+  bool _isDark() {
+    return Theme.of(context).brightness == Brightness.dark;
   }
 }
 
