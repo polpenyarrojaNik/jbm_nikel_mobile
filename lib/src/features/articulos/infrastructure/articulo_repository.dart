@@ -652,40 +652,40 @@ class ArticuloRepository {
   String descripcionSegunLocale(String searchText) {
     final currentLocale = Intl.getCurrentLocale();
 
-    //TODO SWITCH
+    switch (currentLocale) {
+      case 'es':
+        return "art.DESCRIPCION_ES LIKE '%$searchText%'";
+      case 'en':
+        return "art.DESCRIPCION_EN LIKE '%$searchText%'";
+      case 'fr':
+        return "art.DESCRIPCION_FR LIKE '%$searchText%'";
+      case 'de':
+        return "art.DESCRIPCION_EN LIKE '%$searchText%'";
+      case 'ca':
+        return "art.DESCRIPCION_DE LIKE '%$searchText%'";
+      case 'gb':
+        return "art.DESCRIPCION_GB LIKE '%$searchText%'";
+      case 'hu':
+        return "art.DESCRIPCION_HU LIKE '%$searchText%'";
+      case 'it':
+        return "art.DESCRIPCION_IT LIKE '%$searchText%'";
+      case 'nl':
+        return "art.DESCRIPCION_NL LIKE '%$searchText%'";
+      case 'pl':
+        return "art.DESCRIPCION_PL LIKE '%$searchText%'";
+      case 'pt':
+        return "art.DESCRIPCION_PT LIKE '%$searchText%'";
+      case 'ro':
+        return "art.DESCRIPCION_RO LIKE '%$searchText%'";
+      case 'ru':
+        return "art.DESCRIPCION_RU LIKE '%$searchText%'";
+      case 'cn':
+        return "art.DESCRIPCION_CN LIKE '%$searchText%'";
+      case 'el':
+        return "art.DESCRIPCION_EL LIKE '%$searchText%'";
 
-    if (currentLocale == 'es') {
-      return "art.DESCRIPCION_ES LIKE '%$searchText%'";
-    } else if (currentLocale == 'en') {
-      return "art.DESCRIPCION_EN LIKE '%$searchText%'";
-    } else if (currentLocale == 'fr') {
-      return "art.DESCRIPCION_FR LIKE '%$searchText%'";
-    } else if (currentLocale == 'de') {
-      return "art.DESCRIPCION_DE LIKE '%$searchText%'";
-    } else if (currentLocale == 'ca') {
-      return "art.DESCRIPCION_CA LIKE '%$searchText%'";
-    } else if (currentLocale == 'gb') {
-      return "art.DESCRIPCION_GB LIKE '%$searchText%'";
-    } else if (currentLocale == 'hu') {
-      return "art.DESCRIPCION_HU LIKE '%$searchText%'";
-    } else if (currentLocale == 'it') {
-      return "art.DESCRIPCION_IT LIKE '%$searchText%'";
-    } else if (currentLocale == 'nl') {
-      return "art.DESCRIPCION_NL LIKE '%$searchText%'";
-    } else if (currentLocale == 'pl') {
-      return "art.DESCRIPCION_PL LIKE '%$searchText%'";
-    } else if (currentLocale == 'pt') {
-      return "art.DESCRIPCION_PT LIKE '%$searchText%'";
-    } else if (currentLocale == 'ro') {
-      return "art.DESCRIPCION_RO LIKE '%$searchText%'";
-    } else if (currentLocale == 'ru') {
-      return "art.DESCRIPCION_RU LIKE '%$searchText%'";
-    } else if (currentLocale == 'cn') {
-      return "art.DESCRIPCION_CN LIKE '%$searchText%'";
-    } else if (currentLocale == 'el') {
-      return "art.DESCRIPCION_EL LIKE '%$searchText%'";
-    } else {
-      return "art.DESCRIPCION_ES LIKE '%$searchText%'";
+      default:
+        return "art.DESCRIPCION_ES LIKE '%$searchText%'";
     }
   }
 }

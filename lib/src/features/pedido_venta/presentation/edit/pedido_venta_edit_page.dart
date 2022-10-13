@@ -432,8 +432,19 @@ class _StepSelectClienteContentState
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ClienteListaTile(
-                    cliente: widget.cliente!,
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: ClienteListaTile(
+                          cliente: widget.cliente!,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () =>
+                            navigateToSelectCliente(context, widget.isNew),
+                        icon: const Icon(Icons.navigate_next_outlined),
+                      )
+                    ],
                   ),
                 ),
               ),

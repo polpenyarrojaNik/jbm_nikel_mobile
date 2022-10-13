@@ -44,17 +44,20 @@ class _SelecionarCantidadPageState
   @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue<Articulo>>(
-        articuloProvider(widget.seleccionarCantidadParam.articuloId),
-        (_, state) => state
-            .whenData((value) => setArtiucloValue(newArticuloValue: value)));
+      articuloProvider(widget.seleccionarCantidadParam.articuloId),
+      (_, state) => state.whenData(
+        (value) => setArtiucloValue(newArticuloValue: value),
+      ),
+    );
 
     ref.listen<ArticuloPrecioControllerState>(
       articuloPrecioProvider,
       (_, state) {
         state.maybeWhen(
-            orElse: () => null,
-            data: (newArticuloPrecio) =>
-                setState(() => articuloPrecio = newArticuloPrecio));
+          orElse: () => null,
+          data: (newArticuloPrecio) =>
+              setState(() => articuloPrecio = newArticuloPrecio),
+        );
       },
     );
     final state = ref.watch(articuloPrecioProvider);
@@ -221,7 +224,8 @@ class _SelectQuantityFrom extends StatelessWidget {
           children: [
             FormBuilderTextField(
               name: 'cantidad',
-              keyboardType: TextInputType.number,
+              autofocus: true,
+              keyboardType: TextInputType.name,
               initialValue: cantidad.toString(),
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
@@ -256,7 +260,6 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_precio,
             ),
-            onChanged: (value) {},
           ),
           FormBuilderTextField(
             name: 'dto1',
@@ -265,7 +268,6 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
             ),
-            onChanged: (value) {},
           ),
           FormBuilderTextField(
             name: 'dto2',
@@ -274,7 +276,6 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
             ),
-            onChanged: (value) {},
           ),
           FormBuilderTextField(
             name: 'dto3',
@@ -283,7 +284,6 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
             ),
-            onChanged: (value) {},
           ),
         ],
       ),
