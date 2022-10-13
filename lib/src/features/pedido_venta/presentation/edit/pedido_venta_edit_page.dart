@@ -15,6 +15,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/ped
 import 'package:money2/money2.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
@@ -87,7 +88,9 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          (widget.isNew) ? 'Nuevo pedido' : 'Editar pedido',
+          (widget.isNew)
+              ? S.of(context).pedido_edit_pedidoEdit_nuevoPedido
+              : S.of(context).pedido_edit_pedidoEdit_editarPedido,
         ),
       ),
       body: SafeArea(
@@ -273,7 +276,7 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
               .notifier)
           .navigateToNextStep();
     } else {
-      showToast('Añade alguna línea al pedido', context);
+      showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
     }
   }
 
@@ -381,8 +384,8 @@ class _StepSelectClienteContentState
               padding: const EdgeInsets.all(24.0),
               child: TextButton(
                 onPressed: () => navigateToSelectCliente(context, widget.isNew),
-                child: const Text(
-                  'Seleccione un cliente',
+                child: Text(
+                  S.of(context).pedido_edit_pedidoEdit_seleccioneCliente,
                 ),
               ),
             ),
@@ -434,7 +437,9 @@ class _StepSelectClienteContentState
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const MobileCustomSeparators(separatorTitle: 'Direcciones envío'),
+              MobileCustomSeparators(
+                  separatorTitle:
+                      S.of(context).pedido_edit_pedidoEdit_direccionesEnvio),
               gapH16,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -502,7 +507,7 @@ class _StepSelectClienteContentState
       );
     } else {
       return showToast(
-        'No puedes cambiar el cliente',
+        S.of(context).pedido_edit_pedidoEdit_noPuedesCambiarCliente,
         context,
       );
     }
@@ -558,9 +563,9 @@ class StepArticuloListContent extends ConsumerWidget {
                           ),
                         ),
                       )
-                    : const Center(
+                    : Center(
                         child: Text(
-                          'Sin artículos',
+                          S.of(context).pedido_edit_pedidoEdit_sinArticulos,
                         ),
                       ),
               ),
@@ -649,8 +654,8 @@ class StepObservacionesContent extends ConsumerWidget {
               name: 'pedidoCliente',
               keyboardType: TextInputType.multiline,
               initialValue: pedidoCliente,
-              decoration: const InputDecoration(
-                labelText: 'Pedido Cliente',
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_pedidoEdit_pedidoCliente,
               ),
               onChanged: (value) => ref
                   .read(pedidoVentaEditPageControllerProvider(
@@ -664,8 +669,8 @@ class StepObservacionesContent extends ConsumerWidget {
               maxLines: null,
               minLines: 3,
               initialValue: observaciones,
-              decoration: const InputDecoration(
-                labelText: 'Observaciones',
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_pedidoEdit_observaciones,
               ),
               onChanged: (value) => ref
                   .read(pedidoVentaEditPageControllerProvider(
@@ -733,24 +738,27 @@ class StepResumenContent extends StatelessWidget {
               gapH8,
               if (pedidoCliente != null)
                 ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Pedido Cliente',
+                  fieldTitleValue:
+                      S.of(context).pedido_edit_pedidoEdit_pedidoCliente,
                   value: pedidoCliente,
                 ),
               if (observaciones != null)
                 ColumnFieldTextDetalle(
-                  fieldTitleValue: 'Observaciones',
+                  fieldTitleValue:
+                      S.of(context).pedido_edit_pedidoEdit_observaciones,
                   value: observaciones,
                 ),
               if (observaciones != null) const Divider(),
               RowFieldTextDetalle(
-                fieldTitleValue: 'Total',
+                fieldTitleValue: S.of(context).pedido_edit_pedidoEdit_total,
                 value:
                     getImporteTotal(pedidoVentaLineaList, cliente!.divisa!.id),
               ),
             ],
           ),
         ),
-        const MobileCustomSeparators(separatorTitle: 'Líneas'),
+        MobileCustomSeparators(
+            separatorTitle: S.of(context).pedido_edit_pedidoEdit_lineas),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView.separated(

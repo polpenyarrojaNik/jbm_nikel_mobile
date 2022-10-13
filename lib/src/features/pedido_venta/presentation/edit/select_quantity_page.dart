@@ -8,6 +8,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/artic
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
@@ -76,7 +77,8 @@ class _SelecionarCantidadPageState
     final state = ref.watch(articuloPrecioProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Seleccionar una cantidad'),
+        title:
+            Text(S.of(context).pedido_edit_selectQuantity_seleccionarCantidad),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -236,8 +238,8 @@ class _SelectQuantityFrom extends StatelessWidget {
               name: 'cantidad',
               keyboardType: TextInputType.number,
               initialValue: cantidad.toString(),
-              decoration: const InputDecoration(
-                labelText: 'Cantidad',
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
               ),
               onChanged: (value) => setTotalQuantity(
                 (value != null && value != '') ? int.parse(value) : 0,
@@ -266,8 +268,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             name: 'precio',
             keyboardType: TextInputType.number,
             initialValue: articuloPrecio.precio.amount.toString(),
-            decoration: const InputDecoration(
-              labelText: 'Precio',
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_precio,
             ),
             onChanged: (value) {},
           ),
@@ -275,8 +277,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             name: 'dto1',
             keyboardType: TextInputType.number,
             initialValue: articuloPrecio.descuento1.toString(),
-            decoration: const InputDecoration(
-              labelText: 'Descuento 1',
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
             ),
             onChanged: (value) {},
           ),
@@ -284,8 +286,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             name: 'dto2',
             keyboardType: TextInputType.number,
             initialValue: articuloPrecio.descuento2.toString(),
-            decoration: const InputDecoration(
-              labelText: 'Descuento 2',
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
             ),
             onChanged: (value) {},
           ),
@@ -293,8 +295,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             name: 'dto3',
             keyboardType: TextInputType.number,
             initialValue: articuloPrecio.descuento3.toString(),
-            decoration: const InputDecoration(
-              labelText: 'Descuento 3',
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
             ),
             onChanged: (value) {},
           ),

@@ -1704,6 +1704,236 @@ class S {
     );
   }
 
+  /// `Attention:`
+  String get pedido_edit_askPopAlertDialog_atencion {
+    return Intl.message(
+      'Attention:',
+      name: 'pedido_edit_askPopAlertDialog_atencion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to close that sales order?`
+  String get pedido_edit_askPopAlertDialog_seguroQuieresSales {
+    return Intl.message(
+      'Are you sure to close that sales order?',
+      name: 'pedido_edit_askPopAlertDialog_seguroQuieresSales',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get pedido_edit_askPopAlertDialog_cancelar {
+    return Intl.message(
+      'Cancel',
+      name: 'pedido_edit_askPopAlertDialog_cancelar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Accept`
+  String get pedido_edit_askPopAlertDialog_aceptar {
+    return Intl.message(
+      'Accept',
+      name: 'pedido_edit_askPopAlertDialog_aceptar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New sales order`
+  String get pedido_edit_pedidoEdit_nuevoPedido {
+    return Intl.message(
+      'New sales order',
+      name: 'pedido_edit_pedidoEdit_nuevoPedido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit sales order`
+  String get pedido_edit_pedidoEdit_editarPedido {
+    return Intl.message(
+      'Edit sales order',
+      name: 'pedido_edit_pedidoEdit_editarPedido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add many line into sales order`
+  String get pedido_edit_pedidoEdit_anadeAlgunaLinea {
+    return Intl.message(
+      'Add many line into sales order',
+      name: 'pedido_edit_pedidoEdit_anadeAlgunaLinea',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select a client`
+  String get pedido_edit_pedidoEdit_seleccioneCliente {
+    return Intl.message(
+      'Select a client',
+      name: 'pedido_edit_pedidoEdit_seleccioneCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping addresess`
+  String get pedido_edit_pedidoEdit_direccionesEnvio {
+    return Intl.message(
+      'Shipping addresess',
+      name: 'pedido_edit_pedidoEdit_direccionesEnvio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can't change the client`
+  String get pedido_edit_pedidoEdit_noPuedesCambiarCliente {
+    return Intl.message(
+      'Can\'t change the client',
+      name: 'pedido_edit_pedidoEdit_noPuedesCambiarCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No articles`
+  String get pedido_edit_pedidoEdit_sinArticulos {
+    return Intl.message(
+      'No articles',
+      name: 'pedido_edit_pedidoEdit_sinArticulos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer sales order`
+  String get pedido_edit_pedidoEdit_pedidoCliente {
+    return Intl.message(
+      'Customer sales order',
+      name: 'pedido_edit_pedidoEdit_pedidoCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remarks`
+  String get pedido_edit_pedidoEdit_observaciones {
+    return Intl.message(
+      'Remarks',
+      name: 'pedido_edit_pedidoEdit_observaciones',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get pedido_edit_pedidoEdit_total {
+    return Intl.message(
+      'Total',
+      name: 'pedido_edit_pedidoEdit_total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lines`
+  String get pedido_edit_pedidoEdit_lineas {
+    return Intl.message(
+      'Lines',
+      name: 'pedido_edit_pedidoEdit_lineas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price:`
+  String get pedido_edit_lineaNuevoTile_precio {
+    return Intl.message(
+      'Price:',
+      name: 'pedido_edit_lineaNuevoTile_precio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disc.:`
+  String get pedido_edit_lineaNuevoTile_dto {
+    return Intl.message(
+      'Disc.:',
+      name: 'pedido_edit_lineaNuevoTile_dto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select quantity`
+  String get pedido_edit_selectQuantity_seleccionarCantidad {
+    return Intl.message(
+      'Select quantity',
+      name: 'pedido_edit_selectQuantity_seleccionarCantidad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get pedido_edit_selectQuantity_cantidad {
+    return Intl.message(
+      'Quantity',
+      name: 'pedido_edit_selectQuantity_cantidad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get pedido_edit_selectQuantity_precio {
+    return Intl.message(
+      'Price',
+      name: 'pedido_edit_selectQuantity_precio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount 1`
+  String get pedido_edit_selectQuantity_descuneto1 {
+    return Intl.message(
+      'Discount 1',
+      name: 'pedido_edit_selectQuantity_descuneto1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount 2`
+  String get pedido_edit_selectQuantity_descuneto2 {
+    return Intl.message(
+      'Discount 2',
+      name: 'pedido_edit_selectQuantity_descuneto2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount 3`
+  String get pedido_edit_selectQuantity_descuneto3 {
+    return Intl.message(
+      'Discount 3',
+      name: 'pedido_edit_selectQuantity_descuneto3',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign out`
   String get settings_cerrar_sesion {
     return Intl.message(

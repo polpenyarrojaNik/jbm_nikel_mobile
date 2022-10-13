@@ -311,6 +311,54 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last sync"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
+        "pedido_edit_askPopAlertDialog_aceptar":
+            MessageLookupByLibrary.simpleMessage("Accept"),
+        "pedido_edit_askPopAlertDialog_atencion":
+            MessageLookupByLibrary.simpleMessage("Attention:"),
+        "pedido_edit_askPopAlertDialog_cancelar":
+            MessageLookupByLibrary.simpleMessage("Cancel"),
+        "pedido_edit_askPopAlertDialog_seguroQuieresSales":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure to close that sales order?"),
+        "pedido_edit_lineaNuevoTile_dto":
+            MessageLookupByLibrary.simpleMessage("Disc.:"),
+        "pedido_edit_lineaNuevoTile_precio":
+            MessageLookupByLibrary.simpleMessage("Price:"),
+        "pedido_edit_pedidoEdit_anadeAlgunaLinea":
+            MessageLookupByLibrary.simpleMessage(
+                "Add many line into sales order"),
+        "pedido_edit_pedidoEdit_direccionesEnvio":
+            MessageLookupByLibrary.simpleMessage("Shipping addresess"),
+        "pedido_edit_pedidoEdit_editarPedido":
+            MessageLookupByLibrary.simpleMessage("Edit sales order"),
+        "pedido_edit_pedidoEdit_lineas":
+            MessageLookupByLibrary.simpleMessage("Lines"),
+        "pedido_edit_pedidoEdit_noPuedesCambiarCliente":
+            MessageLookupByLibrary.simpleMessage("Can\'t change the client"),
+        "pedido_edit_pedidoEdit_nuevoPedido":
+            MessageLookupByLibrary.simpleMessage("New sales order"),
+        "pedido_edit_pedidoEdit_observaciones":
+            MessageLookupByLibrary.simpleMessage("Remarks"),
+        "pedido_edit_pedidoEdit_pedidoCliente":
+            MessageLookupByLibrary.simpleMessage("Customer sales order"),
+        "pedido_edit_pedidoEdit_seleccioneCliente":
+            MessageLookupByLibrary.simpleMessage("Select a client"),
+        "pedido_edit_pedidoEdit_sinArticulos":
+            MessageLookupByLibrary.simpleMessage("No articles"),
+        "pedido_edit_pedidoEdit_total":
+            MessageLookupByLibrary.simpleMessage("Total"),
+        "pedido_edit_selectQuantity_cantidad":
+            MessageLookupByLibrary.simpleMessage("Quantity"),
+        "pedido_edit_selectQuantity_descuneto1":
+            MessageLookupByLibrary.simpleMessage("Discount 1"),
+        "pedido_edit_selectQuantity_descuneto2":
+            MessageLookupByLibrary.simpleMessage("Discount 2"),
+        "pedido_edit_selectQuantity_descuneto3":
+            MessageLookupByLibrary.simpleMessage("Discount 3"),
+        "pedido_edit_selectQuantity_precio":
+            MessageLookupByLibrary.simpleMessage("Price"),
+        "pedido_edit_selectQuantity_seleccionarCantidad":
+            MessageLookupByLibrary.simpleMessage("Select quantity"),
         "pedido_index_buscarPedidos":
             MessageLookupByLibrary.simpleMessage("Search sales orders..."),
         "pedido_index_titulo":

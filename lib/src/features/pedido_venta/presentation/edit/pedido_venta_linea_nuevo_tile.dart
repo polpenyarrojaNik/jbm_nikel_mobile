@@ -56,7 +56,7 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Precio: ${formatPrecios(
+                              '${S.of(context).pedido_edit_lineaNuevoTile_precio} ${formatPrecios(
                                 precio: pedidoVentaLinea.precioDivisa,
                                 tipoPrecio: pedidoVentaLinea.tipoPrecio,
                               )}',
@@ -66,7 +66,7 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                                 pedidoVentaLinea.descuento2 != 0 ||
                                 pedidoVentaLinea.descuento3 != 0)
                               Text(
-                                'Dto.: ${dtoText(
+                                '${S.of(context).pedido_edit_lineaNuevoTile_dto} ${dtoText(
                                   pedidoVentaLinea.descuento1,
                                   pedidoVentaLinea.descuento2,
                                   pedidoVentaLinea.descuento3,
