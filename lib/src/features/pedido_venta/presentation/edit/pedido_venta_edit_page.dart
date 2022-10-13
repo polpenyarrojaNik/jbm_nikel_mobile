@@ -222,7 +222,7 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
             .upsertPedidoVenta(
               pedidoVentaAppId: widget.pedidoVentaIdLocalParam.id,
               cliente: widget.cliente!,
-              clienteDireccion: widget.clienteDireccion!,
+              clienteDireccion: widget.clienteDireccion,
               pedidoVentaLineaList: widget.pedidoVentaLineaList,
               observaciones: widget.observaciones,
               pedidoCliente: widget.pedidoCliente,
@@ -397,12 +397,15 @@ class _StepSelectClienteContentState
           clienteDireccionProvider(widget.cliente!.id), (_, state) {
         state.whenData((clienteDireccionesList) {
           for (var i = 0; i < clienteDireccionesList.length; i++) {
-            if (clienteDireccionesList[i].predeterminada) {
-              ref
-                  .read(pedidoVentaEditPageControllerProvider(
-                          widget.pedidoVentaIdLocalParam)
-                      .notifier)
-                  .selectDireccion(clienteDireccion: clienteDireccionesList[i]);
+            if (widget.isNew) {
+              if (clienteDireccionesList[i].predeterminada) {
+                ref
+                    .read(pedidoVentaEditPageControllerProvider(
+                            widget.pedidoVentaIdLocalParam)
+                        .notifier)
+                    .selectDireccion(
+                        clienteDireccion: clienteDireccionesList[i]);
+              }
             }
           }
         });
