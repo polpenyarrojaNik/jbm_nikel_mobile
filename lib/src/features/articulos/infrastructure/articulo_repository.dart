@@ -252,11 +252,7 @@ class ArticuloRepository {
         ..where((t) => t.articuloId.equals(articuloId)));
 
       return query.asyncMap((row) async {
-        final articuloComponente =
-            await getArticuloById(articuloId: row.articuloComponenteId);
-        return row.toDomain(
-            articuloComponenteDescripcion:
-                getDescriptionInLocalLanguage(articulo: articuloComponente));
+        return row.toDomain();
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -350,7 +346,8 @@ class ArticuloRepository {
             await getArticuloById(articuloId: row.articuloSustitutivoId);
         return row.toDomain(
             articuloSustitutivoDescripcion:
-                getDescriptionInLocalLanguage(articulo: articuloSustitutivo));
+                getDescriptionArticuloInLocalLanguage(
+                    articulo: articuloSustitutivo));
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -623,21 +620,8 @@ class ArticuloRepository {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson =
-          e.response?.data['detalle'] ?? e.response?.data['message'] as String?;
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
-
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 
@@ -660,22 +644,8 @@ class ArticuloRepository {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson = (e.response?.data is List<int>)
-          ? e.response?.statusMessage
-          : e.response?.data['detalle'] ?? e.response?.data['message'];
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
-
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 

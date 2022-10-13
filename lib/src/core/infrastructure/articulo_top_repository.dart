@@ -3,6 +3,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/articulo_top.dart';
+import '../exceptions/app_exception.dart';
 
 final articuloTopRepositoryProvider =
     Provider.autoDispose<ArticuloTopRepository>(
@@ -24,29 +25,38 @@ class ArticuloTopRepository {
   ArticuloTopRepository(this.db);
 
   Future<List<ArticuloTop>> getArticuloTopList() async {
-    final query = (db.select(db.articuloTopTable));
+    try {
+      final query = (db.select(db.articuloTopTable));
 
-    return query.asyncMap((row) async {
-      final articulo = await getArticuloById(articuloId: row.articuloId);
-      return row.toDomain(articulo: articulo);
-    }).get();
+      return query.asyncMap((row) async {
+        print(row.articuloId);
+        final articulo = await getArticuloById(articuloId: row.articuloId);
+        return row.toDomain(articulo: articulo);
+      }).get();
+    } on AppException {
+      rethrow;
+    }
   }
 
   Future<Articulo> getArticuloById({required String articuloId}) async {
-    final query =
-        (db.select(db.articuloTable)..where((t) => t.id.equals(articuloId)));
+    try {
+      final query =
+          (db.select(db.articuloTable)..where((t) => t.id.equals(articuloId)));
 
-    return query.asyncMap((row) async {
-      final familiaDTO = await (db.select(db.familiaTable)
-            ..where((t) => t.id.equals(row.familiaId ?? '')))
-          .getSingleOrNull();
-      final subfamiliaDTO = await (db.select(db.subfamiliaTable)
-            ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
-          .getSingleOrNull();
-      return row.toDomain(
-        familia: familiaDTO?.toDomain(),
-        subfamilia: subfamiliaDTO?.toDomain(),
-      );
-    }).getSingle();
+      return query.asyncMap((row) async {
+        final familiaDTO = await (db.select(db.familiaTable)
+              ..where((t) => t.id.equals(row.familiaId ?? '')))
+            .getSingleOrNull();
+        final subfamiliaDTO = await (db.select(db.subfamiliaTable)
+              ..where((t) => t.id.equals(row.subfamiliaId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(
+          familia: familiaDTO?.toDomain(),
+          subfamilia: subfamiliaDTO?.toDomain(),
+        );
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 }

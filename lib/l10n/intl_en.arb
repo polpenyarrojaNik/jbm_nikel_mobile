@@ -4,6 +4,7 @@
   "unidad": "unit",
   "stock": "Stock",
   "sinResultados": "No Results",
+  "sincConexion": "Not connection",
   "commonWidgets_appDrawer_clientes": "Customer",
   "commonWidgets_appDrawer_articulos": "Articles",
   "commonWidgets_appDrawer_pedidos": "Sales orders",

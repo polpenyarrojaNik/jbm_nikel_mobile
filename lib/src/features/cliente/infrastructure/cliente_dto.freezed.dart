@@ -55,11 +55,11 @@ mixin _$ClienteDTO {
   @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
   double get ventasHaceDosAnyos => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-  double get margenAnyoActual => throw _privateConstructorUsedError;
+  double? get margenAnyoActual => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-  double get margenAnyoAnterior => throw _privateConstructorUsedError;
+  double? get margenAnyoAnterior => throw _privateConstructorUsedError;
   @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-  double get margenHaceDosAnyos => throw _privateConstructorUsedError;
+  double? get margenHaceDosAnyos => throw _privateConstructorUsedError;
   @JsonKey(name: 'PORCENTAJE_ABONOS')
   double get porcentajeAbonos => throw _privateConstructorUsedError;
   @JsonKey(name: 'PORCENTAJE_GARANTIAS')
@@ -166,11 +166,11 @@ abstract class $ClienteDTOCopyWith<$Res> {
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
           double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          double margenAnyoActual,
+          double? margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          double margenAnyoAnterior,
+          double? margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          double margenHaceDosAnyos,
+          double? margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
           double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
@@ -360,15 +360,15 @@ class _$ClienteDTOCopyWithImpl<$Res> implements $ClienteDTOCopyWith<$Res> {
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -528,11 +528,11 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
           double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          double margenAnyoActual,
+          double? margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          double margenAnyoAnterior,
+          double? margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          double margenHaceDosAnyos,
+          double? margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
           double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
@@ -724,15 +724,15 @@ class __$$_ClienteDTOCopyWithImpl<$Res> extends _$ClienteDTOCopyWithImpl<$Res>
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -888,11 +888,11 @@ class _$_ClienteDTO extends _ClienteDTO {
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
           required this.ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          required this.margenAnyoActual,
+          this.margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          required this.margenAnyoAnterior,
+          this.margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          required this.margenHaceDosAnyos,
+          this.margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
           required this.porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
@@ -1007,13 +1007,13 @@ class _$_ClienteDTO extends _ClienteDTO {
   final double ventasHaceDosAnyos;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-  final double margenAnyoActual;
+  final double? margenAnyoActual;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-  final double margenAnyoAnterior;
+  final double? margenAnyoAnterior;
   @override
   @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-  final double margenHaceDosAnyos;
+  final double? margenHaceDosAnyos;
   @override
   @JsonKey(name: 'PORCENTAJE_ABONOS')
   final double porcentajeAbonos;
@@ -1305,11 +1305,11 @@ abstract class _ClienteDTO extends ClienteDTO {
       @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS')
           required final double ventasHaceDosAnyos,
       @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-          required final double margenAnyoActual,
+          final double? margenAnyoActual,
       @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-          required final double margenAnyoAnterior,
+          final double? margenAnyoAnterior,
       @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-          required final double margenHaceDosAnyos,
+          final double? margenHaceDosAnyos,
       @JsonKey(name: 'PORCENTAJE_ABONOS')
           required final double porcentajeAbonos,
       @JsonKey(name: 'PORCENTAJE_GARANTIAS')
@@ -1424,13 +1424,13 @@ abstract class _ClienteDTO extends ClienteDTO {
   double get ventasHaceDosAnyos;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ACTUAL')
-  double get margenAnyoActual;
+  double? get margenAnyoActual;
   @override
   @JsonKey(name: 'MARGEN_ANYO_ANTERIOR')
-  double get margenAnyoAnterior;
+  double? get margenAnyoAnterior;
   @override
   @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS')
-  double get margenHaceDosAnyos;
+  double? get margenHaceDosAnyos;
   @override
   @JsonKey(name: 'PORCENTAJE_ABONOS')
   double get porcentajeAbonos;

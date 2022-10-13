@@ -3970,9 +3970,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<double> ventasAnyoActual;
   final Value<double> ventasAnyoAnterior;
   final Value<double> ventasHaceDosAnyos;
-  final Value<double> margenAnyoActual;
-  final Value<double> margenAnyoAnterior;
-  final Value<double> margenHaceDosAnyos;
+  final Value<double?> margenAnyoActual;
+  final Value<double?> margenAnyoAnterior;
+  final Value<double?> margenHaceDosAnyos;
   final Value<double> porcentajeAbonos;
   final Value<double> porcentajeGarantias;
   final Value<String?> centralCompras;
@@ -4069,9 +4069,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     required double ventasAnyoActual,
     required double ventasAnyoAnterior,
     required double ventasHaceDosAnyos,
-    required double margenAnyoActual,
-    required double margenAnyoAnterior,
-    required double margenHaceDosAnyos,
+    this.margenAnyoActual = const Value.absent(),
+    this.margenAnyoAnterior = const Value.absent(),
+    this.margenHaceDosAnyos = const Value.absent(),
     required double porcentajeAbonos,
     required double porcentajeGarantias,
     this.centralCompras = const Value.absent(),
@@ -4110,9 +4110,6 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         ventasAnyoActual = Value(ventasAnyoActual),
         ventasAnyoAnterior = Value(ventasAnyoAnterior),
         ventasHaceDosAnyos = Value(ventasHaceDosAnyos),
-        margenAnyoActual = Value(margenAnyoActual),
-        margenAnyoAnterior = Value(margenAnyoAnterior),
-        margenHaceDosAnyos = Value(margenHaceDosAnyos),
         porcentajeAbonos = Value(porcentajeAbonos),
         porcentajeGarantias = Value(porcentajeGarantias),
         tipoCalucloPrecio = Value(tipoCalucloPrecio),
@@ -4259,9 +4256,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<double>? ventasAnyoActual,
       Value<double>? ventasAnyoAnterior,
       Value<double>? ventasHaceDosAnyos,
-      Value<double>? margenAnyoActual,
-      Value<double>? margenAnyoAnterior,
-      Value<double>? margenHaceDosAnyos,
+      Value<double?>? margenAnyoActual,
+      Value<double?>? margenAnyoAnterior,
+      Value<double?>? margenHaceDosAnyos,
       Value<double>? porcentajeAbonos,
       Value<double>? porcentajeGarantias,
       Value<String?>? centralCompras,
@@ -4682,20 +4679,20 @@ class $ClienteTableTable extends ClienteTable
       const VerificationMeta('margenAnyoActual');
   @override
   late final GeneratedColumn<double> margenAnyoActual = GeneratedColumn<double>(
-      'MARGEN_ANYO_ACTUAL', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
+      'MARGEN_ANYO_ACTUAL', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _margenAnyoAnteriorMeta =
       const VerificationMeta('margenAnyoAnterior');
   @override
   late final GeneratedColumn<double> margenAnyoAnterior =
-      GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, false,
-          type: DriftSqlType.double, requiredDuringInsert: true);
+      GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _margenHaceDosAnyosMeta =
       const VerificationMeta('margenHaceDosAnyos');
   @override
   late final GeneratedColumn<double> margenHaceDosAnyos =
-      GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, false,
-          type: DriftSqlType.double, requiredDuringInsert: true);
+      GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
   final VerificationMeta _porcentajeAbonosMeta =
       const VerificationMeta('porcentajeAbonos');
   @override
@@ -5052,24 +5049,18 @@ class $ClienteTableTable extends ClienteTable
           _margenAnyoActualMeta,
           margenAnyoActual.isAcceptableOrUnknown(
               data['MARGEN_ANYO_ACTUAL']!, _margenAnyoActualMeta));
-    } else if (isInserting) {
-      context.missing(_margenAnyoActualMeta);
     }
     if (data.containsKey('MARGEN_ANYO_ANTERIOR')) {
       context.handle(
           _margenAnyoAnteriorMeta,
           margenAnyoAnterior.isAcceptableOrUnknown(
               data['MARGEN_ANYO_ANTERIOR']!, _margenAnyoAnteriorMeta));
-    } else if (isInserting) {
-      context.missing(_margenAnyoAnteriorMeta);
     }
     if (data.containsKey('MARGEN_HACE_DOS_ANYOS')) {
       context.handle(
           _margenHaceDosAnyosMeta,
           margenHaceDosAnyos.isAcceptableOrUnknown(
               data['MARGEN_HACE_DOS_ANYOS']!, _margenHaceDosAnyosMeta));
-    } else if (isInserting) {
-      context.missing(_margenHaceDosAnyosMeta);
     }
     if (data.containsKey('PORCENTAJE_ABONOS')) {
       context.handle(
@@ -5296,12 +5287,11 @@ class $ClienteTableTable extends ClienteTable
           DriftSqlType.double,
           data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS'])!,
       margenAnyoActual: attachedDatabase.options.types.read(
-          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL'])!,
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL']),
       margenAnyoAnterior: attachedDatabase.options.types.read(
-          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR'])!,
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR']),
       margenHaceDosAnyos: attachedDatabase.options.types.read(
-          DriftSqlType.double,
-          data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS'])!,
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS']),
       porcentajeAbonos: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_ABONOS'])!,
       porcentajeGarantias: attachedDatabase.options.types.read(
@@ -11802,12 +11792,42 @@ class ArticuloComponenteTableCompanion
   final Value<String> articuloId;
   final Value<String> articuloComponenteId;
   final Value<int> cantidad;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ArticuloComponenteTableCompanion({
     this.articuloId = const Value.absent(),
     this.articuloComponenteId = const Value.absent(),
     this.cantidad = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -11815,16 +11835,47 @@ class ArticuloComponenteTableCompanion
     required String articuloId,
     required String articuloComponenteId,
     required int cantidad,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
         articuloComponenteId = Value(articuloComponenteId),
         cantidad = Value(cantidad),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
   static Insertable<ArticuloComponenteDTO> custom({
     Expression<String>? articuloId,
     Expression<String>? articuloComponenteId,
     Expression<int>? cantidad,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -11833,6 +11884,21 @@ class ArticuloComponenteTableCompanion
       if (articuloComponenteId != null)
         'ARTICULO_COMPONENTE_ID': articuloComponenteId,
       if (cantidad != null) 'CANTIDAD': cantidad,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -11842,12 +11908,42 @@ class ArticuloComponenteTableCompanion
       {Value<String>? articuloId,
       Value<String>? articuloComponenteId,
       Value<int>? cantidad,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ArticuloComponenteTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       articuloComponenteId: articuloComponenteId ?? this.articuloComponenteId,
       cantidad: cantidad ?? this.cantidad,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -11866,6 +11962,51 @@ class ArticuloComponenteTableCompanion
     if (cantidad.present) {
       map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -11881,6 +12022,21 @@ class ArticuloComponenteTableCompanion
           ..write('articuloId: $articuloId, ')
           ..write('articuloComponenteId: $articuloComponenteId, ')
           ..write('cantidad: $cantidad, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -11910,6 +12066,96 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
+  final VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -11924,8 +12170,28 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
-  List<GeneratedColumn> get $columns =>
-      [articuloId, articuloComponenteId, cantidad, lastUpdated, deleted];
+  List<GeneratedColumn> get $columns => [
+        articuloId,
+        articuloComponenteId,
+        cantidad,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
   @override
   String get aliasedName => _alias ?? 'ARTICULOS_COMPONENTES';
   @override
@@ -11958,6 +12224,98 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
     } else if (isInserting) {
       context.missing(_cantidadMeta);
     }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -11986,6 +12344,36 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
           data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
       cantidad: attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
+      descripcionES: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descripcionPT: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types

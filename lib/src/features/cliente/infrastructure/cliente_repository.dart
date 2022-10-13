@@ -5,6 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
@@ -483,21 +484,8 @@ class ClienteRepository {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson =
-          e.response?.data['detalle'] ?? e.response?.data['message'] as String?;
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
-
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 
@@ -558,22 +546,8 @@ class ClienteRepository {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
-    } on DioError catch (e) {
-      String? errorDetalle;
-      final responseErrorJson = (e.response?.data is List<int>)
-          ? e.response?.statusMessage
-          : e.response?.data['detalle'] ?? e.response?.data['message'];
-      if (responseErrorJson != null) {
-        errorDetalle = responseErrorJson;
-
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, errorDetalle ?? '');
-      } else {
-        throw AppException.restApiFailure(
-            e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 

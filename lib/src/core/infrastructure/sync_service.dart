@@ -738,6 +738,7 @@ class SyncService {
           orElse: () {},
           withNewData: (data, maxPage, totalRows) async {
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
+            print('Values to sync in $apiPath: ${tableValueDTOList.length}');
             for (var i = 0; i < tableValueDTOList.length; i++) {
               final tableValue = tableValueDTOList[i];
 

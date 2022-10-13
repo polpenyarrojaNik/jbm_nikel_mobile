@@ -84,9 +84,8 @@ class ArticuloComponenteTile extends StatelessWidget {
                       color: Theme.of(context).textTheme.caption?.color)),
             ],
           ),
-          Text(
-            articuloComponente.articuloComponenteDescripcion,
-          ),
+          Text(getDescriptionArticuloComponenteInLocalLanguage(
+              articulo: articuloComponente)),
           const Divider(),
         ],
       ),

@@ -92,16 +92,18 @@ class ClienteContactoTile extends StatelessWidget {
                               color: Theme.of(context).textTheme.caption?.color,
                               size: 14),
                           gapW4,
-                          Text(
-                            clienteContacto.email!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color),
+                          Flexible(
+                            child: Text(
+                              clienteContacto.email!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption
+                                          ?.color),
+                            ),
                           ),
                         ],
                       ),

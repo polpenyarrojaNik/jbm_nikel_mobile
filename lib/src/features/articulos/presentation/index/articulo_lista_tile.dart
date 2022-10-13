@@ -31,7 +31,7 @@ class ArticuloListaTile extends StatelessWidget {
             ],
           ),
           Text(
-            getDescriptionInLocalLanguage(articulo: articulo),
+            getDescriptionArticuloInLocalLanguage(articulo: articulo),
           ),
           Text(
             (articulo.subfamilia != null)

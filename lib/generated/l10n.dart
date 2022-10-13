@@ -100,6 +100,16 @@ class S {
     );
   }
 
+  /// `Not connection`
+  String get sincConexion {
+    return Intl.message(
+      'Not connection',
+      name: 'sincConexion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Customer`
   String get commonWidgets_appDrawer_clientes {
     return Intl.message(

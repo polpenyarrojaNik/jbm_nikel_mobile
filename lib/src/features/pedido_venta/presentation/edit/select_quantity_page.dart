@@ -141,7 +141,7 @@ class _SelecionarCantidadPageState
                 widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
             articuloPrecio: articuloPrecio,
             articuloDescripcion:
-                getDescriptionInLocalLanguage(articulo: articulo),
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
             stockDisponibleSN: articulo.stockDisponible > 0,
             posicionActualizar:
                 widget.seleccionarCantidadParam.posicionLineaActualizar!,
@@ -156,7 +156,7 @@ class _SelecionarCantidadPageState
                   widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
               articuloPrecio: articuloPrecio,
               articuloDescripcion:
-                  getDescriptionInLocalLanguage(articulo: articulo),
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
               stockDisponibleSN: articulo.stockDisponible > 0);
     }
     context.router.pop();
@@ -209,7 +209,7 @@ class _ArticuloInfo extends StatelessWidget {
                 style: Theme.of(context).textTheme.subtitle2,
               ),
               Text(
-                getDescriptionInLocalLanguage(articulo: articulo),
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
               ),
             ],
           ),

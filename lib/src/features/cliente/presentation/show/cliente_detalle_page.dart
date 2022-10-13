@@ -282,70 +282,81 @@ class _ClienteAnalisis extends StatelessWidget {
                     color: Theme.of(context).textTheme.caption!.color),
               ),
               gapH8,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                            S.of(context).cliente_show_clienteDetalle_anoActual,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          '${numberFormatDecimal(cliente.margenAnyoActual)}%',
+              if (cliente.margenAnyoActual != null &&
+                  cliente.margenAnyoAnterior != null &&
+                  cliente.margenHaceDosAnyos != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    if (cliente.margenAnyoActual != null)
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                                S
+                                    .of(context)
+                                    .cliente_show_clienteDetalle_anoActual,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .caption!
+                                            .color)),
+                            Text(
+                              '${numberFormatDecimal(cliente.margenAnyoActual!)}%',
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                            S
-                                .of(context)
-                                .cliente_show_clienteDetalle_anoAnterior,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          '${numberFormatDecimal(cliente.margenAnyoAnterior)}%',
+                      ),
+                    if (cliente.margenAnyoAnterior != null)
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                                S
+                                    .of(context)
+                                    .cliente_show_clienteDetalle_anoAnterior,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .caption!
+                                            .color)),
+                            Text(
+                              '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%',
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                            S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          '${numberFormatDecimal(cliente.margenHaceDosAnyos)}%',
+                      ),
+                    if (cliente.margenHaceDosAnyos != null)
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(
+                              S
+                                  .of(context)
+                                  .cliente_show_clienteDetalle_hace2Anos,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption!
+                                          .color),
+                            ),
+                            Text(
+                              '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%',
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                      ),
+                  ],
+                ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

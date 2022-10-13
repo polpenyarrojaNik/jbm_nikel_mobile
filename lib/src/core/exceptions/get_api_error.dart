@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 
 import 'app_exception.dart';
 
@@ -20,6 +21,8 @@ Error getApiError(Object e) {
         throw AppException.restApiFailure(
             e.response!.statusCode ?? 500, e.response?.statusMessage ?? '');
       }
+    } else if (e.isNoConnectionError) {
+      throw const AppException.notConnection();
     } else {
       throw AppException.restApiFailure(
           e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');

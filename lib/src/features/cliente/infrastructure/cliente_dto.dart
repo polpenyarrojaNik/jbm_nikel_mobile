@@ -42,9 +42,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'VENTAS_ANYO_ACTUAL') required double ventasAnyoActual,
     @JsonKey(name: 'VENTAS_ANYO_ANTERIOR') required double ventasAnyoAnterior,
     @JsonKey(name: 'VENTAS_HACE_DOS_ANYOS') required double ventasHaceDosAnyos,
-    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') required double margenAnyoActual,
-    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') required double margenAnyoAnterior,
-    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') required double margenHaceDosAnyos,
+    @JsonKey(name: 'MARGEN_ANYO_ACTUAL') double? margenAnyoActual,
+    @JsonKey(name: 'MARGEN_ANYO_ANTERIOR') double? margenAnyoAnterior,
+    @JsonKey(name: 'MARGEN_HACE_DOS_ANYOS') double? margenHaceDosAnyos,
     @JsonKey(name: 'PORCENTAJE_ABONOS') required double porcentajeAbonos,
     @JsonKey(name: 'PORCENTAJE_GARANTIAS') required double porcentajeGarantias,
     @JsonKey(name: 'CENTRAL_COMPRAS_NOMBRE') String? centralCompras,
@@ -258,9 +258,12 @@ class ClienteTable extends Table {
   RealColumn get ventasAnyoActual => real().named('VENTAS_ANYO_ACTUAL')();
   RealColumn get ventasAnyoAnterior => real().named('VENTAS_ANYO_ANTERIOR')();
   RealColumn get ventasHaceDosAnyos => real().named('VENTAS_HACE_DOS_ANYOS')();
-  RealColumn get margenAnyoActual => real().named('MARGEN_ANYO_ACTUAL')();
-  RealColumn get margenAnyoAnterior => real().named('MARGEN_ANYO_ANTERIOR')();
-  RealColumn get margenHaceDosAnyos => real().named('MARGEN_HACE_DOS_ANYOS')();
+  RealColumn get margenAnyoActual =>
+      real().nullable().named('MARGEN_ANYO_ACTUAL')();
+  RealColumn get margenAnyoAnterior =>
+      real().nullable().named('MARGEN_ANYO_ANTERIOR')();
+  RealColumn get margenHaceDosAnyos =>
+      real().nullable().named('MARGEN_HACE_DOS_ANYOS')();
   RealColumn get porcentajeAbonos => real().named('PORCENTAJE_ABONOS')();
   RealColumn get porcentajeGarantias => real().named('PORCENTAJE_GARANTIAS')();
   TextColumn get centralCompras =>

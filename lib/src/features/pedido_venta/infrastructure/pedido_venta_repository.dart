@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
@@ -11,6 +14,7 @@ import 'package:money2/money2.dart';
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/presentation/app.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
@@ -292,10 +296,10 @@ class PedidoVentaRepository {
 
       await insertPedidoInDB(pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList);
       try {
-        // final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
-        //     pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList, usuario.test);
+        final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
+            pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList, usuario.test);
 
-        // await updatePedidoInDB(pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
+        await updatePedidoInDB(pedidoVentaLocalDTO: pedidoVentaLocalDTOEnviado);
       } catch (e) {
         if (e is AppException) {
           e.maybeWhen(
@@ -432,59 +436,42 @@ class PedidoVentaRepository {
     }
   }
 
-  // Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
-  //     PedidoVentaLocalDTO pedidoVentaLocalDTO,
-  //     List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
-  //     bool test) async {
-  //   try {
-  //     final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
-  //     final pedidoVentaLineasLocalListToJson =
-  //         pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
-  //     pedidoVentaLocalToJson
-  //         .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
-  //     final json = jsonEncode(pedidoVentaLocalToJson);
-  //     print(json);
-  //     final requestUri = Uri.http(
-  //       dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-  //       'api/v1/online/pedidos',
-  //     );
+  Future<PedidoVentaLocalDTO> _remoteCreatePedidoVenta(
+      PedidoVentaLocalDTO pedidoVentaLocalDTO,
+      List<PedidoVentaLineaLocalDTO> pedidoVentaLineaDTOList,
+      bool test) async {
+    try {
+      final pedidoVentaLocalToJson = pedidoVentaLocalDTO.toJson();
+      final pedidoVentaLineasLocalListToJson =
+          pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
+      pedidoVentaLocalToJson
+          .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
+      final json = jsonEncode(pedidoVentaLocalToJson);
+      print(json);
+      final requestUri = Uri.http(
+        dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
+        'api/v1/online/pedidos',
+      );
 
-  //     final response = await _dio.postUri(
-  //       requestUri,
-  //       options: Options(
-  //         headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-  //       ),
-  //       data: jsonEncode(pedidoVentaLocalToJson),
-  //     );
-  //     if (response.statusCode == 200) {
-  //       final json = response.data['data'] as Map<String, dynamic>;
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+        data: jsonEncode(pedidoVentaLocalToJson),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
 
-  //       return PedidoVentaLocalDTO.fromJson(json);
-  //     } else {
-  //       throw AppException.restApiFailure(
-  //           response.statusCode ?? 400, response.statusMessage ?? '');
-  //     }
-  //   } on DioError catch (e) {
-  //     String? errorDetalle;
-  //     if (e.isNoConnectionError) {
-  //       throw const AppException.notConnection();
-  //     }
-  //     final responseErrorJson = (e.response?.data is List<int>)
-  //         ? e.response?.statusMessage
-  //         : e.response?.data['detalle'] ?? e.response?.data['message'];
-  //     if (responseErrorJson != null) {
-  //       errorDetalle = responseErrorJson;
-
-  //       throw AppException.restApiFailure(
-  //           e.response?.statusCode ?? 400, errorDetalle ?? '');
-  //     } else {
-  //       throw AppException.restApiFailure(
-  //           e.response?.statusCode ?? 400, e.response?.statusMessage ?? '');
-  //     }
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
+        return PedidoVentaLocalDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
 
   Future<PedidoVenta> getPedidoVentaLocalById(
       {required String pedidoVentaAppId}) async {

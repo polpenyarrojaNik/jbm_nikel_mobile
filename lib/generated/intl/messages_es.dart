@@ -399,6 +399,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_user": MessageLookupByLibrary.simpleMessage("Usuario"),
         "settings_version": MessageLookupByLibrary.simpleMessage("Versión"),
         "sinResultados": MessageLookupByLibrary.simpleMessage("Sin resultados"),
+        "sincConexion": MessageLookupByLibrary.simpleMessage("Sin conexión"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Buscar..."),

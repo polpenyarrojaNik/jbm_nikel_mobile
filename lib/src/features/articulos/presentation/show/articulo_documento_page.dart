@@ -6,6 +6,7 @@ import 'package:open_file/open_file.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
+import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -44,9 +45,23 @@ class ArticuloDocumentoPage extends ConsumerWidget {
             orElse: () => const SliverFillRemaining(
               child: ProgressIndicatorWidget(),
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
+            error: (e, st) {
+              if (e is AppException) {
+                return e.maybeWhen(
+                  orElse: () => SliverFillRemaining(
+                    child: ErrorMessageWidget(e.toString()),
+                  ),
+                  notConnection: () => SliverFillRemaining(
+                    child: Center(
+                      child: Text(S.of(context).sincConexion),
+                    ),
+                  ),
+                );
+              }
+              return SliverFillRemaining(
+                child: ErrorMessageWidget(e.toString()),
+              );
+            },
             data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
                 ? SliverPadding(
                     padding: const EdgeInsets.all(16),

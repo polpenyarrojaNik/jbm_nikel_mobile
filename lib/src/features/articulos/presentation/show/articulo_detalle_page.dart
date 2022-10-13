@@ -89,7 +89,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  getDescriptionInLocalLanguage(articulo: articulo),
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
               ),
@@ -786,7 +786,8 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.router.push(
             ArticuloPrecioTarifaRoute(
               articuloId: articulo.id,
-              description: getDescriptionInLocalLanguage(articulo: articulo),
+              description:
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
             ),
           ),
         ),
@@ -796,7 +797,8 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.router.push(
             ArticuloGrupoNetoRoute(
               articuloId: articulo.id,
-              description: getDescriptionInLocalLanguage(articulo: articulo),
+              description:
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
             ),
           ),
         ),
@@ -806,7 +808,8 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.router.push(
             ArticuloComponenteRoute(
               articuloId: articulo.id,
-              description: getDescriptionInLocalLanguage(articulo: articulo),
+              description:
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
             ),
           ),
         ),
@@ -816,7 +819,8 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.router.push(
             ArticuloRecambioRoute(
               articuloId: articulo.id,
-              description: getDescriptionInLocalLanguage(articulo: articulo),
+              description:
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
             ),
           ),
         ),
@@ -826,7 +830,8 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.router.push(
             ArticuloSustitutivoRoute(
               articuloId: articulo.id,
-              description: getDescriptionInLocalLanguage(articulo: articulo),
+              description:
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
             ),
           ),
         ),
@@ -852,7 +857,8 @@ class _Consultas extends StatelessWidget {
         navigationTo: () => context.router.push(
           ArticuloPedidoVentaRoute(
             articuloId: articulo.id,
-            description: getDescriptionInLocalLanguage(articulo: articulo),
+            description:
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
           ),
         ),
       ),
@@ -862,7 +868,8 @@ class _Consultas extends StatelessWidget {
         navigationTo: () => context.router.push(
           ArticuloUltimosPreciosRoute(
             articuloId: articulo.id,
-            description: getDescriptionInLocalLanguage(articulo: articulo),
+            description:
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
           ),
         ),
       ),
@@ -872,7 +879,8 @@ class _Consultas extends StatelessWidget {
         navigationTo: () => context.router.push(
           ArticuloDocumentoRoute(
             articuloId: articulo.id,
-            description: getDescriptionInLocalLanguage(articulo: articulo),
+            description:
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
           ),
         ),
       ),

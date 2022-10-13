@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
 import 'package:money2/money2.dart';
 
 import '../../../generated/l10n.dart';
@@ -152,7 +153,20 @@ String dtoText(
   return dtoText;
 }
 
-String getDescriptionInLocalLanguage({required Articulo articulo}) {
+String getDescriptionArticuloInLocalLanguage({required Articulo articulo}) {
+  final currentLocale = Intl.getCurrentLocale();
+
+  if (currentLocale == 'es') {
+    return articulo.descripcionES;
+  } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
+    return articulo.descripcionEN!;
+  }
+
+  return articulo.descripcionES;
+}
+
+String getDescriptionArticuloComponenteInLocalLanguage(
+    {required ArticuloComponente articulo}) {
   final currentLocale = Intl.getCurrentLocale();
 
   if (currentLocale == 'es') {

@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
+import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/common_widgets/async_value_widget.dart';
 
 class SplashPage extends ConsumerWidget {
@@ -21,8 +21,16 @@ class SplashPage extends ConsumerWidget {
           ArticuloListaRoute(isSearchArticuloForForm: false),
         ),
         error: (e, _) {
-          showToast(e.toString(), context);
-          ref.read(usuarioNotifierProvider.notifier).signOut();
+          if (e is AppException) {
+            e.maybeWhen(
+                orElse: () {},
+                notConnection: () => context.router.replace(
+                      ArticuloListaRoute(isSearchArticuloForForm: false),
+                    ));
+            showToast(e.toString(), context);
+          } else {
+            showToast(e.toString(), context);
+          }
         },
       );
     });

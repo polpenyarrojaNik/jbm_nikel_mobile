@@ -7,6 +7,7 @@ class AppException with _$AppException {
   // Global
   const factory AppException.restApiFailure(
       int errorCode, String errorMessage) = RestApiFailure;
+
   const factory AppException.authLocalFailure(String errorMessage) =
       AuthLocalFailure;
   const factory AppException.fetchLocalDataFailure(String errorMessage) =
