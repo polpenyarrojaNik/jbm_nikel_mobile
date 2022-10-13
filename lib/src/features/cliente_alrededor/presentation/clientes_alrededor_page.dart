@@ -26,12 +26,12 @@ class ClientesAlrededorPage extends ConsumerStatefulWidget {
 }
 
 class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
-  double radiusKm = 1000;
+  double radiusKm = 10000;
 
   @override
   void initState() {
     super.initState();
-    radiusKm = 1000;
+    radiusKm = 10000;
   }
 
   @override
@@ -105,9 +105,12 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final stateMarkers = ref.watch(clientesAlrededorListStream(
+    final stateMarkers = ref.watch(
+      clientesAlrededorListStream(
         GetClienteAlrededorArg(
-            latLng: mapLatLng!, radiusDistance: widget.radiusKm)));
+            latLng: mapLatLng!, radiusDistance: widget.radiusKm),
+      ),
+    );
     final circle = createCircleInCurrentPosition(
         context: context, latlng: mapLatLng!, radiusInMeters: widget.radiusKm);
 
@@ -271,9 +274,10 @@ class ClienteAlrededorDialog extends StatelessWidget {
           ),
           gapW4,
           IconButton(
-              onPressed: () => context.router
-                  .push(ClienteDetalleRoute(clienteId: cliente.id)),
-              icon: const Icon(Icons.info))
+            onPressed: () =>
+                context.router.push(ClienteDetalleRoute(clienteId: cliente.id)),
+            icon: const Icon(Icons.info),
+          )
         ],
       ),
       content: Column(

@@ -23,6 +23,8 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/slider_background.dart';
 import '../../../../core/presentation/toasts.dart';
+import '../../../articulos/domain/articulo.dart';
+import '../../../articulos/presentation/index/articulo_search_state_provider.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
@@ -300,7 +302,7 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
       IconStep(
         icon: Icons.list_alt,
         content: StepArticuloListContent(
-          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
+          pedidoVentaIdIsLocalParam: widget.pedidoVentaIdLocalParam,
           cliente: widget.cliente,
           state: widget.currentStep >= 1
               ? (widget.currentStep == 1
@@ -520,13 +522,13 @@ class _StepSelectClienteContentState
 class StepArticuloListContent extends ConsumerWidget {
   const StepArticuloListContent(
       {super.key,
-      required this.pedidoVentaIdLocalParam,
+      required this.pedidoVentaIdIsLocalParam,
       required this.cliente,
       required this.state,
       required this.isActive,
       required this.pedidoVentaLineaList});
 
-  final EntityIdIsLocalParam pedidoVentaIdLocalParam;
+  final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
   final Cliente? cliente;
   final IconStepState state;
   final bool isActive;
@@ -534,6 +536,14 @@ class StepArticuloListContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<Articulo?>(
+      articuloForFromStateProvider,
+      (_, state) => setArtiucloValue(
+          context: context,
+          clienteId: cliente!.id,
+          pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+          newArticuloValue: state),
+    );
     return Stack(
       children: [
         Column(
@@ -553,7 +563,7 @@ class StepArticuloListContent extends ConsumerWidget {
                             cliente!.id,
                             pedidoVentaLineaList[i],
                             i,
-                            pedidoVentaIdLocalParam,
+                            pedidoVentaIdIsLocalParam,
                           ),
                           child: Dismissible(
                             key: UniqueKey(),
@@ -583,7 +593,7 @@ class StepArticuloListContent extends ConsumerWidget {
               Icons.add,
             ),
             onPressed: () => navigateToAddArticulo(
-                context, cliente!.id, pedidoVentaIdLocalParam),
+                context, cliente!.id, pedidoVentaIdIsLocalParam),
           ),
         ),
       ],
@@ -593,7 +603,7 @@ class StepArticuloListContent extends ConsumerWidget {
   void deletePedidoVentaLinea(
       PedidoVentaLinea pedidoVentaLinea, WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdIsLocalParam)
             .notifier)
         .deletePedidoVentaLinea(pedidoVentaLineaToDelete: pedidoVentaLinea);
   }
@@ -617,15 +627,29 @@ class StepArticuloListContent extends ConsumerWidget {
 
   void navigateToAddArticulo(BuildContext context, String clienteId,
       EntityIdIsLocalParam pedidoVentaIdIsLocalParam) {
-    final seleccionarCantidadParam = SeleccionarCantidadParam(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
-      clienteId: clienteId,
-    );
     context.router.push(
-      SeleccionarCantidadRoute(
-        seleccionarCantidadParam: seleccionarCantidadParam,
-      ),
+      ArticuloListaRoute(isSearchArticuloForForm: true),
     );
+  }
+
+  void setArtiucloValue(
+      {required BuildContext context,
+      required String clienteId,
+      required EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+      Articulo? newArticuloValue}) {
+    if (newArticuloValue != null) {
+      final seleccionarCantidadParam = SeleccionarCantidadParam(
+        pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+        clienteId: clienteId,
+        articuloId: newArticuloValue.id,
+      );
+
+      context.router.push(
+        SeleccionarCantidadRoute(
+          seleccionarCantidadParam: seleccionarCantidadParam,
+        ),
+      );
+    }
   }
 }
 

@@ -4,14 +4,12 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_search_state_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
-import '../../../../core/routing/app_auto_router.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
@@ -40,30 +38,15 @@ class _SelecionarCantidadPageState
 
     if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
       setValoresInicialesActualizarLinea();
-    } else {
-      Future.microtask(
-        () => context.router.push(
-          ArticuloListaRoute(
-            isSearchArticuloForForm: true,
-          ),
-        ),
-      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.seleccionarCantidadParam.articuloId != null) {
-      ref.listen<AsyncValue<Articulo>>(
-          articuloProvider(widget.seleccionarCantidadParam.articuloId!),
-          (_, state) => state
-              .whenData((value) => setArtiucloValue(newArticuloValue: value)));
-    } else {
-      ref.listen<Articulo?>(
-        articuloForFromStateProvider,
-        (_, state) => setArtiucloValue(newArticuloValue: state),
-      );
-    }
+    ref.listen<AsyncValue<Articulo>>(
+        articuloProvider(widget.seleccionarCantidadParam.articuloId),
+        (_, state) => state
+            .whenData((value) => setArtiucloValue(newArticuloValue: value)));
 
     ref.listen<ArticuloPrecioControllerState>(
       articuloPrecioProvider,
@@ -179,11 +162,13 @@ class _SelecionarCantidadPageState
   }
 
   void setValoresInicialesActualizarLinea() {
-    totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+    if (widget.seleccionarCantidadParam.cantidad != null) {
+      totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+    }
 
     Future.microtask(
       () => ref.read(
-        articuloProvider(widget.seleccionarCantidadParam.articuloId!),
+        articuloProvider(widget.seleccionarCantidadParam.articuloId),
       ),
     );
   }

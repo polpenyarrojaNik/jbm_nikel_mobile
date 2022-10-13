@@ -19,7 +19,7 @@ mixin _$SeleccionarCantidadParam {
   EntityIdIsLocalParam get pedidoVentaIdIsLocalParam =>
       throw _privateConstructorUsedError;
   String get clienteId => throw _privateConstructorUsedError;
-  String? get articuloId => throw _privateConstructorUsedError;
+  String get articuloId => throw _privateConstructorUsedError;
   int? get cantidad => throw _privateConstructorUsedError;
   int? get posicionLineaActualizar => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
   $Res call(
       {EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
       String clienteId,
-      String? articuloId,
+      String articuloId,
       int? cantidad,
       int? posicionLineaActualizar});
 
@@ -72,7 +72,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res>
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
@@ -104,7 +104,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
   $Res call(
       {EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
       String clienteId,
-      String? articuloId,
+      String articuloId,
       int? cantidad,
       int? posicionLineaActualizar});
 
@@ -144,7 +144,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
       articuloId: articuloId == freezed
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       cantidad: cantidad == freezed
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
@@ -163,7 +163,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   const _$_SeleccionarCantidadParam(
       {required this.pedidoVentaIdIsLocalParam,
       required this.clienteId,
-      this.articuloId,
+      required this.articuloId,
       this.cantidad,
       this.posicionLineaActualizar})
       : super._();
@@ -173,7 +173,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   final String clienteId;
   @override
-  final String? articuloId;
+  final String articuloId;
   @override
   final int? cantidad;
   @override
@@ -219,7 +219,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   const factory _SeleccionarCantidadParam(
       {required final EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
       required final String clienteId,
-      final String? articuloId,
+      required final String articuloId,
       final int? cantidad,
       final int? posicionLineaActualizar}) = _$_SeleccionarCantidadParam;
   const _SeleccionarCantidadParam._() : super._();
@@ -229,7 +229,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   @override
   String get clienteId;
   @override
-  String? get articuloId;
+  String get articuloId;
   @override
   int? get cantidad;
   @override
