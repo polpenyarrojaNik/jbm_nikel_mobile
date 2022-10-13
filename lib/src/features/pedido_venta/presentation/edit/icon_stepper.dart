@@ -461,9 +461,11 @@ class _IconStepperState extends State<IconStepper>
                 }),
                 backgroundColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
-                  return _isDark() || states.contains(MaterialState.disabled)
+                  return states.contains(MaterialState.disabled)
                       ? null
-                      : colorScheme.primary;
+                      : _isDark()
+                          ? colorScheme.onPrimary
+                          : colorScheme.primary;
                 }),
                 shape: MaterialStateProperty.all<OutlinedBorder>(buttonShape),
               ),
@@ -479,15 +481,17 @@ class _IconStepperState extends State<IconStepper>
                     (Set<MaterialState> states) {
                   return states.contains(MaterialState.disabled)
                       ? null
-                      : (_isDark()
+                      : _isDark()
                           ? colorScheme.onSurface
-                          : colorScheme.onPrimary);
+                          : colorScheme.onPrimary;
                 }),
                 backgroundColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
-                  return _isDark() || states.contains(MaterialState.disabled)
+                  return states.contains(MaterialState.disabled)
                       ? null
-                      : colorScheme.primary;
+                      : _isDark()
+                          ? colorScheme.onPrimary
+                          : colorScheme.primary;
                 }),
                 shape: MaterialStateProperty.all<OutlinedBorder>(buttonShape),
               ),

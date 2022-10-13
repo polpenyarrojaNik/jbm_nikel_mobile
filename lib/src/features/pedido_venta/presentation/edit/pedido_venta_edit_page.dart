@@ -314,7 +314,7 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
         ),
       ),
       IconStep(
-        icon: Icons.note,
+        icon: Icons.more_horiz,
         content: StepObservacionesContent(
           pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
           state: widget.currentStep >= 2
@@ -328,7 +328,7 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
         ),
       ),
       IconStep(
-        icon: Icons.summarize_sharp,
+        icon: Icons.summarize,
         content: StepResumenContent(
           pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
           state: widget.currentStep >= 3

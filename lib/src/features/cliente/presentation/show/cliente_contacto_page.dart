@@ -80,11 +80,7 @@ class ClienteContactoTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (clienteContacto.nombre != null)
-                      Row(
-                        children: [
-                          Text(clienteContacto.nombre!),
-                        ],
-                      ),
+                      Text(clienteContacto.nombre!),
                     if (clienteContacto.email != null)
                       Row(
                         children: [
@@ -114,16 +110,18 @@ class ClienteContactoTile extends StatelessWidget {
                               color: Theme.of(context).textTheme.caption?.color,
                               size: 14),
                           gapW4,
-                          Text(
-                            clienteContacto.telefono1!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color),
+                          Flexible(
+                            child: Text(
+                              clienteContacto.telefono1!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption
+                                          ?.color),
+                            ),
                           ),
                         ],
                       ),
@@ -147,33 +145,34 @@ class ClienteContactoTile extends StatelessWidget {
                           ),
                         ],
                       ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (clienteContacto.email != null)
-                          ContactButtons(
-                            icon: Icons.email,
-                            onPressFunction: () =>
-                                navigateToEmailApp(clienteContacto.email!),
-                          ),
-                        if (clienteContacto.telefono1 != null) gapW12,
-                        if (clienteContacto.telefono1 != null)
-                          ContactButtons(
-                            icon: Icons.phone,
-                            onPressFunction: () =>
-                                openPhoneCall(clienteContacto.telefono1!),
-                          ),
-                        if (clienteContacto.telefono2 != null) gapW12,
-                        if (clienteContacto.telefono2 != null)
-                          ContactButtons(
-                            icon: Icons.phone,
-                            onPressFunction: () =>
-                                openPhoneCall(clienteContacto.telefono2!),
-                          ),
-                      ],
-                    ),
                   ],
                 ),
+              ),
+              gapW12,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  if (clienteContacto.email != null)
+                    ContactButtons(
+                      icon: Icons.email,
+                      onPressFunction: () =>
+                          navigateToEmailApp(clienteContacto.email!),
+                    ),
+                  if (clienteContacto.telefono1 != null) gapW12,
+                  if (clienteContacto.telefono1 != null)
+                    ContactButtons(
+                      icon: Icons.phone,
+                      onPressFunction: () =>
+                          openPhoneCall(clienteContacto.telefono1!),
+                    ),
+                  if (clienteContacto.telefono2 != null) gapW12,
+                  if (clienteContacto.telefono2 != null)
+                    ContactButtons(
+                      icon: Icons.phone,
+                      onPressFunction: () =>
+                          openPhoneCall(clienteContacto.telefono2!),
+                    ),
+                ],
               ),
             ],
           ),
@@ -232,3 +231,147 @@ class ContactButtons extends StatelessWidget {
     );
   }
 }
+
+
+
+// class ClienteContactoTile extends StatelessWidget {
+//   const ClienteContactoTile({super.key, required this.clienteContacto});
+
+//   final ClienteContacto clienteContacto;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.symmetric(vertical: 4.0),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Flexible(
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     if (clienteContacto.nombre != null)
+//                       Row(
+//                         children: [
+//                           Text(clienteContacto.nombre!),
+//                         ],
+//                       ),
+//                     if (clienteContacto.email != null)
+//                       Row(
+//                         children: [
+//                           Icon(Icons.email,
+//                               color: Theme.of(context).textTheme.caption?.color,
+//                               size: 14),
+//                           gapW4,
+//                           Flexible(
+//                             child: Text(
+//                               clienteContacto.email!,
+//                               style: Theme.of(context)
+//                                   .textTheme
+//                                   .bodyText2
+//                                   ?.copyWith(
+//                                       color: Theme.of(context)
+//                                           .textTheme
+//                                           .caption
+//                                           ?.color),
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     if (clienteContacto.telefono1 != null)
+//                       Row(
+//                         children: [
+//                           Icon(Icons.phone,
+//                               color: Theme.of(context).textTheme.caption?.color,
+//                               size: 14),
+//                           gapW4,
+//                           Text(
+//                             clienteContacto.telefono1!,
+//                             style: Theme.of(context)
+//                                 .textTheme
+//                                 .bodyText2
+//                                 ?.copyWith(
+//                                     color: Theme.of(context)
+//                                         .textTheme
+//                                         .caption
+//                                         ?.color),
+//                           ),
+//                         ],
+//                       ),
+//                     if (clienteContacto.telefono2 != null)
+//                       Row(
+//                         children: [
+//                           Icon(Icons.phone,
+//                               color: Theme.of(context).textTheme.caption?.color,
+//                               size: 14),
+//                           gapW4,
+//                           Text(
+//                             clienteContacto.telefono2!,
+//                             style: Theme.of(context)
+//                                 .textTheme
+//                                 .bodyText2
+//                                 ?.copyWith(
+//                                     color: Theme.of(context)
+//                                         .textTheme
+//                                         .caption
+//                                         ?.color),
+//                           ),
+//                         ],
+//                       ),
+//                     Row(
+//                       mainAxisAlignment: MainAxisAlignment.center,
+//                       children: [
+//                         if (clienteContacto.email != null)
+//                           ContactButtons(
+//                             icon: Icons.email,
+//                             onPressFunction: () =>
+//                                 navigateToEmailApp(clienteContacto.email!),
+//                           ),
+//                         if (clienteContacto.telefono1 != null) gapW12,
+//                         if (clienteContacto.telefono1 != null)
+//                           ContactButtons(
+//                             icon: Icons.phone,
+//                             onPressFunction: () =>
+//                                 openPhoneCall(clienteContacto.telefono1!),
+//                           ),
+//                         if (clienteContacto.telefono2 != null) gapW12,
+//                         if (clienteContacto.telefono2 != null)
+//                           ContactButtons(
+//                             icon: Icons.phone,
+//                             onPressFunction: () =>
+//                                 openPhoneCall(clienteContacto.telefono2!),
+//                           ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//         const Divider(),
+//       ],
+//     );
+//   }
+
+//   void openPhoneCall(String phone) async {
+//     final Uri params = Uri(
+//       scheme: 'tel',
+//       path: phone,
+//     );
+//     await launchUrl(params, mode: LaunchMode.externalApplication);
+//   }
+
+//   void navigateToEmailApp(String contactEmail) async {
+//     final Uri params = Uri(
+//       scheme: 'mailto',
+//       path: contactEmail,
+//     );
+//     await launchUrl(params, mode: LaunchMode.externalApplication);
+//   }
+// }
+
+
