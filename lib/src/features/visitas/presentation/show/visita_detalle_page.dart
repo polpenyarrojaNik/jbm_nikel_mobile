@@ -48,13 +48,13 @@ class VisitaDetallePage extends ConsumerWidget {
                   Text(
                     dateFormatter(visita.fecha.toLocal().toIso8601String()),
                   ),
-                  if (getStatusLocalEntityText(
+                  if (getEstadoVisitaLocal(
                           context, visita.enviada, visita.tratada) !=
                       null)
                     ChipContainer(
-                      text: getStatusLocalEntityText(
+                      text: getEstadoVisitaLocal(
                           context, visita.enviada, visita.tratada)!,
-                      color: getStatusLocalEntityColor(
+                      color: getColorEstadoVisitaLocal(
                           context, visita.enviada, visita.tratada),
                     ),
                 ],

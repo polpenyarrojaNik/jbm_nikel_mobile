@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../generated/l10n.dart';
+import '../theme/app_sizes.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({
@@ -19,12 +22,24 @@ class AppDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surfaceVariant,
             ),
-            child: Text(
-              'JBM Nikel Mobile',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5!
-                  .copyWith(fontWeight: FontWeight.bold),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'JBM Nikel Mobile',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline5!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                gapH4,
+                Consumer(
+                  builder: (context, ref, _) {
+                    final state = ref.watch(usuarioNotifierProvider);
+                    return Text(state?.nombreUsuario ?? '');
+                  },
+                ),
+              ],
             ),
           ),
           ListTile(

@@ -361,9 +361,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Precio"),
         "pedido_edit_selectQuantity_seleccionarCantidad":
             MessageLookupByLibrary.simpleMessage("Seleccionar cantidad"),
+        "pedido_enviado": MessageLookupByLibrary.simpleMessage("Enviado"),
         "pedido_index_buscarPedidos":
             MessageLookupByLibrary.simpleMessage("Buscar pedidos..."),
         "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedidos"),
+        "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("No enviado"),
         "pedido_show_pedidoVentaDetalle_baseImponible":
             MessageLookupByLibrary.simpleMessage("Base imponible"),
         "pedido_show_pedidoVentaDetalle_dto":

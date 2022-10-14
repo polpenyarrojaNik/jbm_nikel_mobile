@@ -359,10 +359,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Price"),
         "pedido_edit_selectQuantity_seleccionarCantidad":
             MessageLookupByLibrary.simpleMessage("Select quantity"),
+        "pedido_enviado": MessageLookupByLibrary.simpleMessage("Sent"),
         "pedido_index_buscarPedidos":
             MessageLookupByLibrary.simpleMessage("Search sales orders..."),
         "pedido_index_titulo":
             MessageLookupByLibrary.simpleMessage("Sales orders"),
+        "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Not sent"),
         "pedido_show_pedidoVentaDetalle_baseImponible":
             MessageLookupByLibrary.simpleMessage("Tax base"),
         "pedido_show_pedidoVentaDetalle_dto":
@@ -406,11 +408,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last prices"),
         "unidad": MessageLookupByLibrary.simpleMessage("unit"),
         "unidades": MessageLookupByLibrary.simpleMessage("units"),
-        "visita_enviada": MessageLookupByLibrary.simpleMessage("Enviada"),
+        "visita_enviada": MessageLookupByLibrary.simpleMessage("Sent"),
         "visita_index_buscarVisitas":
             MessageLookupByLibrary.simpleMessage("Search visits..."),
         "visita_index_titulo": MessageLookupByLibrary.simpleMessage("Visits"),
-        "visita_noEnviada": MessageLookupByLibrary.simpleMessage("No enviada"),
+        "visita_noEnviada": MessageLookupByLibrary.simpleMessage("Not sent"),
         "visita_show_visitaDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Visit detail"),
         "visitas_edit_saved": MessageLookupByLibrary.simpleMessage("Saved"),

@@ -4,7 +4,6 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/chip_container.dart';
 import '../../domain/pedido_venta.dart';
 
 class PedidoVentaListaTile extends StatelessWidget {
@@ -24,70 +23,98 @@ class PedidoVentaListaTile extends StatelessWidget {
           ),
         ),
       ),
-      child: Container(
-        color: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                      pedidoVenta.pedidoVentaId ??
-                          pedidoVenta.pedidoVentaAppId!,
-                      style: Theme.of(context).textTheme.subtitle2),
-                  Text(
-                    dateFormatter(
-                      pedidoVenta.pedidoVentaDate.toLocal().toIso8601String(),
+      child: IntrinsicHeight(
+        child: Container(
+          color: Colors.transparent,
+          child: SizedBox(
+            height: 90,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  width: 8,
+                  color: pedidoVentaEstadoColor(
+                    pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
+                  ),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 2.5, horizontal: 5),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          pedidoVenta.pedidoVentaId ?? 'Provisional',
+                        ),
+                        Text(
+                          dateFormatter(
+                            pedidoVenta.pedidoVentaDate
+                                .toLocal()
+                                .toIso8601String(),
+                          ),
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                        const Spacer(),
+                        Text(
+                          ((pedidoVenta.pedidoVentaEstado != null))
+                              ? pedidoVenta.pedidoVentaEstado!.descripcion
+                              : getEstadoPedidoLocal(context,
+                                  pedidoVenta.enviada, pedidoVenta.tratada)!,
+                          style: Theme.of(context).textTheme.caption,
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Text(
-                      '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
+                ),
+                Expanded(
+                  flex: 9,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
+                        ),
+                        const Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              formatCodigoPostalAndPoblacion(
+                                  codigoPostal: pedidoVenta.codigoPostal,
+                                  poblacion: pedidoVenta.poblacion),
+                              style: Theme.of(context).textTheme.caption,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                                formatProvinciaAndPais(
+                                    province: pedidoVenta.provincia,
+                                    pais: pedidoVenta.pais),
+                                style: Theme.of(context).textTheme.caption),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  if (getStatusLocalEntityText(
-                          context, pedidoVenta.enviada, pedidoVenta.tratada) !=
-                      null)
-                    ChipContainer(
-                      text: getStatusLocalEntityText(
-                          context, pedidoVenta.enviada, pedidoVenta.tratada)!,
-                      color: getStatusLocalEntityColor(
-                          context, pedidoVenta.enviada, pedidoVenta.tratada),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(pedidoVenta.baseImponible.toString()),
+                      ],
                     ),
-                ],
-              ),
-              const SizedBox(height: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          formatCodigoPostalAndPoblacion(
-                              codigoPostal: pedidoVenta.codigoPostal,
-                              poblacion: pedidoVenta.poblacion),
-                          style: Theme.of(context).textTheme.caption),
-                      Text(
-                          formatProvinciaAndPais(
-                              province: pedidoVenta.provincia,
-                              pais: pedidoVenta.pais),
-                          style: Theme.of(context).textTheme.caption),
-                    ],
                   ),
-                  Text(pedidoVenta.baseImponible.toString()),
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

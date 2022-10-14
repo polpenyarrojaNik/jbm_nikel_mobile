@@ -91,14 +91,13 @@ class ClienteInfoContainer extends StatelessWidget {
               ),
             ),
             ChipContainer(
-              text: (pedidoVenta.tratada)
+              text: (pedidoVenta.pedidoVentaEstado != null)
                   ? pedidoVenta.pedidoVentaEstado!.descripcion
-                  : getStatusLocalEntityText(
+                  : getEstadoPedidoLocal(
                       context, pedidoVenta.enviada, pedidoVenta.tratada)!,
-              color: (pedidoVenta.tratada)
-                  ? Theme.of(context).colorScheme.secondaryContainer
-                  : getStatusLocalEntityColor(
-                      context, pedidoVenta.enviada, pedidoVenta.tratada)!,
+              color: pedidoVentaEstadoColor(
+                  pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
+                  opacidad: 0.25),
             )
           ],
         ),

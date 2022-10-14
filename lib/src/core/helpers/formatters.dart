@@ -285,7 +285,7 @@ String? getClienteVentasArticuloDescripcionInLocalLanguage(
   return null;
 }
 
-Color? getStatusLocalEntityColor(
+Color? getColorEstadoVisitaLocal(
     BuildContext context, bool enviada, bool tratada) {
   if (tratada) {
     return null;
@@ -296,14 +296,23 @@ Color? getStatusLocalEntityColor(
   }
 }
 
-String? getStatusLocalEntityText(
-    BuildContext context, bool enviada, bool tratada) {
+String? getEstadoVisitaLocal(BuildContext context, bool enviada, bool tratada) {
   if (tratada) {
     return null;
   } else if (enviada) {
     return S.of(context).visita_enviada;
   } else {
     return S.of(context).visita_noEnviada;
+  }
+}
+
+String? getEstadoPedidoLocal(BuildContext context, bool enviada, bool tratada) {
+  if (tratada) {
+    return null;
+  } else if (enviada) {
+    return S.of(context).pedido_enviado;
+  } else {
+    return S.of(context).pedido_noEnviado;
   }
 }
 
@@ -318,5 +327,30 @@ TextStyle? getTextStyleFechaEntregaByEstado(
 
     default:
       return null;
+  }
+}
+
+Color pedidoVentaEstadoColor({
+  int? pedidoVentaEstadoId,
+  double? opacidad,
+}) {
+  switch (pedidoVentaEstadoId) {
+    case 0: // Introducido
+      return Colors.grey.withOpacity(opacidad ?? 1);
+    case 1: //Servido Parcial
+      return Colors.lightGreen.withOpacity(opacidad ?? 1);
+    case 2: //  Servido
+      return Colors.green.withOpacity(opacidad ?? 1);
+    case 3: //Anulado
+      return Colors.red.withOpacity(opacidad ?? 1);
+    case 4: // Oferta
+      return Colors.orange.withOpacity(opacidad ?? 1);
+    case 98: //En preparación
+      return Colors.yellow.shade300.withOpacity(opacidad ?? 1);
+    case 99: //Liberado
+      return Colors.yellow.shade700.withOpacity(opacidad ?? 1);
+
+    default:
+      return Colors.red.withOpacity(opacidad ?? 1);
   }
 }

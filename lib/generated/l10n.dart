@@ -1944,6 +1944,26 @@ class S {
     );
   }
 
+  /// `Sent`
+  String get pedido_enviado {
+    return Intl.message(
+      'Sent',
+      name: 'pedido_enviado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not sent`
+  String get pedido_noEnviado {
+    return Intl.message(
+      'Not sent',
+      name: 'pedido_noEnviado',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sign out`
   String get settings_cerrar_sesion {
     return Intl.message(
@@ -2024,20 +2044,20 @@ class S {
     );
   }
 
-  /// `Enviada`
+  /// `Sent`
   String get visita_enviada {
     return Intl.message(
-      'Enviada',
+      'Sent',
       name: 'visita_enviada',
       desc: '',
       args: [],
     );
   }
 
-  /// `No enviada`
+  /// `Not sent`
   String get visita_noEnviada {
     return Intl.message(
-      'No enviada',
+      'Not sent',
       name: 'visita_noEnviada',
       desc: '',
       args: [],

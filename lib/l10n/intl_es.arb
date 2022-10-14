@@ -188,6 +188,8 @@
   "pedido_edit_selectQuantity_descuneto1": "Descuento 1",
   "pedido_edit_selectQuantity_descuneto2": "Descuento 2",
   "pedido_edit_selectQuantity_descuneto3": "Descuento 3",
+  "pedido_enviado": "Enviado",
+  "pedido_noEnviado": "No enviado",
   "settings_cerrar_sesion": "Cerrar sesión",
   "settings_user": "Usuario",
   "settings_nombre_usuario": "Nombre usuario",
