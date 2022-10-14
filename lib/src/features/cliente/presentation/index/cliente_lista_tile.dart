@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../domain/cliente.dart';
@@ -27,6 +28,7 @@ class ClienteListaTile extends StatelessWidget {
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
               ),
+              if (cliente.clientePotencial ?? false) gapW12,
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
                   text: getClienteEstadoPotencialInLocalLanguage(

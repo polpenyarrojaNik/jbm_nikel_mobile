@@ -29,7 +29,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            '${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${pedidoVentaIdIsLocalParam.id}'),
+            '${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoVentaIdIsLocalParam.isLocal) ? 'Provisional' : pedidoVentaIdIsLocalParam.id}'),
         actions: state.maybeWhen(
             orElse: () => null,
             data: (pedidoVenta) => (pedidoVenta.isEditable())

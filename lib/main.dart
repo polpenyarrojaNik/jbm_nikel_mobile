@@ -10,40 +10,45 @@ import 'package:logging/logging.dart';
 import 'src/core/presentation/app.dart';
 
 void main() async {
-  await runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  await runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
 
-    Logger.root.level = Level.ALL; // defaults to Level.INFO
-    Logger.root.onRecord.listen((record) =>
-        print('${record.level.name}: ${record.time}: ${record.message}'));
+      Logger.root.level = Level.ALL; // defaults to Level.INFO
+      Logger.root.onRecord.listen((record) =>
+          print('${record.level.name}: ${record.time}: ${record.message}'));
 
-    await dotenv.load();
+      await dotenv.load();
 
-    runApp(ProviderScope(
-      observers: [
-        RiverpodLogger(),
-      ],
-      child: App(),
-    ));
-
-    FlutterError.onError = (FlutterErrorDetails detalles) {
-      FlutterError.presentError(detalles);
-    };
-    ErrorWidget.builder = (FlutterErrorDetails detalles) {
-      return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.red,
-          title: const Text('Ha ocurrido un error'),
-        ),
-        body: Center(
-          child: Text(
-            detalles.toString(),
-          ),
+      runApp(
+        ProviderScope(
+          observers: [
+            RiverpodLogger(),
+          ],
+          child: App(),
         ),
       );
-    };
-  }, (Object error, StackTrace stack) {
-    log.severe(error, stack);
-    exit(1);
-  });
+
+      FlutterError.onError = (FlutterErrorDetails detalles) {
+        FlutterError.presentError(detalles);
+      };
+      ErrorWidget.builder = (FlutterErrorDetails detalles) {
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.red,
+            title: const Text('Ha ocurrido un error'),
+          ),
+          body: Center(
+            child: Text(
+              detalles.toString(),
+            ),
+          ),
+        );
+      };
+    },
+    (Object error, StackTrace stack) {
+      log.severe(error, stack);
+      exit(1);
+    },
+  );
 }

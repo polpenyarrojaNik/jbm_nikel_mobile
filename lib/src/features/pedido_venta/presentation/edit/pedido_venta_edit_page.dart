@@ -747,8 +747,7 @@ class StepResumenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -801,6 +800,7 @@ class StepResumenContent extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: ListView.separated(
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, i) => PedidoVentaLineaNuevoTile(
               pedidoVentaLinea: pedidoVentaLineaList[i],
             ),

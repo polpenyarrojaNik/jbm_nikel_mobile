@@ -82,6 +82,7 @@ class _ClienteHeader extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Flexible(
                 child: Text(
@@ -89,6 +90,7 @@ class _ClienteHeader extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
+              if (cliente.clientePotencial ?? false) gapW8,
               if (cliente.clientePotencial ?? false)
                 ChipContainer(
                     text: getClienteEstadoPotencialInLocalLanguage(

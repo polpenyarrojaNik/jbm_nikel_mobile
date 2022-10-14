@@ -41,12 +41,15 @@ class PedidoVentaListaTile extends StatelessWidget {
                   flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 2.5, horizontal: 5),
+                        vertical: 2.5, horizontal: 4),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           pedidoVenta.pedidoVentaId ?? 'Provisional',
+                          style: Theme.of(context).textTheme.caption?.copyWith(
+                              color:
+                                  Theme.of(context).textTheme.bodyText2?.color),
                         ),
                         Text(
                           dateFormatter(
@@ -71,12 +74,15 @@ class PedidoVentaListaTile extends StatelessWidget {
                 Expanded(
                   flex: 9,
                   child: Padding(
-                    padding: const EdgeInsets.all(4),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 2.5, horizontal: 4),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         const Spacer(),
                         Column(
