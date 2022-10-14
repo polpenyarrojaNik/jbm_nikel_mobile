@@ -196,6 +196,7 @@
   "settings_version": "Version",
   "settings_sincronicacionRealizadaConExito": "Sync done successfully",
   "settings_titulo": "Settings",
+  "settings_reemplazarBaseDeDatos": "Replace database",
   "settings_sincronizarDatos": "Sync data",
   "visita_index_titulo": "Visits",
   "visita_enviada": "Sent",

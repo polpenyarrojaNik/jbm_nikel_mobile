@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/settings/presentation/settings_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 import '../../../../generated/l10n.dart';
@@ -16,7 +17,8 @@ class SettingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioNotifierProvider);
-    final state = ref.watch(packageInfoProvider);
+    final statePackageInfo = ref.watch(packageInfoProvider);
+    final state = ref.watch(settingPageControllerProvider);
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
@@ -25,45 +27,73 @@ class SettingsPage extends ConsumerWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (usuario != null)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).settings_user,
-                      value: usuario.id),
-                  ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).settings_nombre_usuario,
-                      value: usuario.nombreUsuario),
-                  if (usuario.test)
-                    ColumnFieldTextDetalle(
-                        fieldTitleValue: 'Test',
-                        value: usuario.test.toString()),
-                ],
-              ),
-            state.when(
-              data: (packageInfo) => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ColumnFieldTextDetalle(
-                      fieldTitleValue: S.of(context).settings_version,
-                      value:
-                          '${packageInfo.version}(${packageInfo.buildNumber})')
-                ],
-              ),
-              error: (e, _) => ErrorMessageWidget(e.toString()),
-              loading: () => const ProgressIndicatorWidget(),
-            ),
-            gapH16,
-            const _SignoutButton()
-          ],
-        ),
+          padding: const EdgeInsets.all(16.0),
+          child: state.maybeWhen(
+              orElse: () => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (usuario != null)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ColumnFieldTextDetalle(
+                                fieldTitleValue: S.of(context).settings_user,
+                                value: usuario.id),
+                            ColumnFieldTextDetalle(
+                                fieldTitleValue:
+                                    S.of(context).settings_nombre_usuario,
+                                value: usuario.nombreUsuario),
+                            if (usuario.test)
+                              ColumnFieldTextDetalle(
+                                  fieldTitleValue: 'Test',
+                                  value: usuario.test.toString()),
+                          ],
+                        ),
+                      statePackageInfo.when(
+                        data: (packageInfo) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ColumnFieldTextDetalle(
+                                fieldTitleValue: S.of(context).settings_version,
+                                value:
+                                    '${packageInfo.version} (${packageInfo.buildNumber})')
+                          ],
+                        ),
+                        error: (e, _) => ErrorMessageWidget(e.toString()),
+                        loading: () => const ProgressIndicatorWidget(),
+                      ),
+                      gapH16,
+                      const _ActualizarArchivoBaseDeDatosButton(),
+                      const _SignoutButton()
+                    ],
+                  ),
+              loading: () => const ProgressIndicatorWidget())),
+    );
+  }
+}
+
+class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
+  const _ActualizarArchivoBaseDeDatosButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ElevatedButton(
+      onPressed: () => replaceDatabase(ref),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.refresh),
+          const SizedBox(width: 5),
+          Text(
+            S.of(context).settings_reemplazarBaseDeDatos,
+          )
+        ],
       ),
     );
+  }
+
+  void replaceDatabase(WidgetRef ref) {
+    ref.read(settingPageControllerProvider.notifier).replaceDatabase();
   }
 }
 

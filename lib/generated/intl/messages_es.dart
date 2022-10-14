@@ -392,6 +392,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "settings_nombre_usuario":
             MessageLookupByLibrary.simpleMessage("Nombre usuario"),
+        "settings_reemplazarBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage("Reemplazar base de datos"),
         "settings_sincronicacionRealizadaConExito":
             MessageLookupByLibrary.simpleMessage(
                 "Sincronización relaizado con éxito"),

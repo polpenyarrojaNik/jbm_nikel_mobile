@@ -89,12 +89,38 @@ class SyncService {
   Future<void> initDatabaBase() async {
     try {
       final Directory directory = await getApplicationDocumentsDirectory();
-      print(directory);
+
       if (!await _databaseFileExist(directory: directory)) {
         final data = await _getRemoteInitialDatabase();
 
         await _saveLocalInitialDatabase(directory: directory, data: data);
       }
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteDatabaBase() async {
+    try {
+      final Directory directory = await getApplicationDocumentsDirectory();
+      if (await _databaseFileExist(directory: directory)) {
+        File((join(directory.path, localDatabaseName))).deleteSync();
+      }
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> replaceDatabase() async {
+    try {
+      await deleteDatabaBase();
+      await initDatabaBase();
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -161,16 +187,22 @@ class SyncService {
       final temporalyDirectory = await getTemporaryDirectory();
       final File file =
           File((join(temporalyDirectory.path, localDatabaseName)));
-      final raf = file.openSync(mode: FileMode.write);
-      raf.writeFromSync(data);
+      print('Created');
 
+      final raf = file.openSync(mode: FileMode.write);
+      print('Oppened');
+
+      raf.writeFromSync(data);
+      print('Writted');
       await ZipFile.extractToDirectory(
           zipFile: file, destinationDir: directory);
-      file.deleteSync(recursive: true);
+      print('Extract');
+
+      file.deleteSync();
     } catch (e) {
       rethrow;
     } finally {
-      raf?.close();
+      await raf?.close();
     }
   }
 

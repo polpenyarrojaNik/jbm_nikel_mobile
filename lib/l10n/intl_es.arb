@@ -197,6 +197,7 @@
   "settings_sincronicacionRealizadaConExito": "Sincronización relaizado con éxito",
   "settings_titulo": "Ajustes",
   "settings_sincronizarDatos": "Sincronizar datos",
+  "settings_reemplazarBaseDeDatos": "Reemplazar base de datos",
   "visita_index_titulo": "Visitas",
   "visita_index_buscarVisitas": "Buscar visitas...",
   "visita_enviada": "Enviada",

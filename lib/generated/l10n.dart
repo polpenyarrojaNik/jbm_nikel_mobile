@@ -2024,6 +2024,16 @@ class S {
     );
   }
 
+  /// `Replace database`
+  String get settings_reemplazarBaseDeDatos {
+    return Intl.message(
+      'Replace database',
+      name: 'settings_reemplazarBaseDeDatos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sync data`
   String get settings_sincronizarDatos {
     return Intl.message(

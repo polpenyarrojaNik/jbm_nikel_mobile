@@ -391,6 +391,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "settings_nombre_usuario":
             MessageLookupByLibrary.simpleMessage("Username"),
+        "settings_reemplazarBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage("Replace database"),
         "settings_sincronicacionRealizadaConExito":
             MessageLookupByLibrary.simpleMessage("Sync done successfully"),
         "settings_sincronizarDatos":

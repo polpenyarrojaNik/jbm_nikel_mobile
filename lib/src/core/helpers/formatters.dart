@@ -228,16 +228,27 @@ String getTipoCalculoPrecioDescripcion(
 
 String getEstadoCobroFactura(
     {required BuildContext context, required String estadoCobro}) {
-  if (estadoCobro == 'P') {
-    return S.of(context).cliente_show_clienteFacturasPendientes_estadoPendiente;
-  } else if (estadoCobro == 'C') {
-    return S.of(context).cliente_show_clienteFacturasPendientes_estadoCobrado;
-  } else if (estadoCobro == 'I') {
-    return S.of(context).cliente_show_clienteFacturasPendientes_estadoImpagado;
-  } else if (estadoCobro == 'D') {
-    return S.of(context).cliente_show_clienteFacturasPendientes_estadoDevuelto;
-  } else {
-    return 'Undefinded';
+  switch (estadoCobro) {
+    case 'P':
+      return S
+          .of(context)
+          .cliente_show_clienteFacturasPendientes_estadoPendiente;
+
+    case 'C':
+      return S.of(context).cliente_show_clienteFacturasPendientes_estadoCobrado;
+
+    case 'I':
+      return S
+          .of(context)
+          .cliente_show_clienteFacturasPendientes_estadoImpagado;
+
+    case 'D':
+      return S
+          .of(context)
+          .cliente_show_clienteFacturasPendientes_estadoDevuelto;
+
+    default:
+      return 'Undefinded';
   }
 }
 
@@ -265,7 +276,7 @@ String? getClienteTipoPotencialInLocalLanguage(
       return tipoPotencial.descripcionES;
     } else if (currentLocale == 'en' && tipoPotencial.descripcionEN != null) {
       return tipoPotencial.descripcionEN!;
-    } else {}
+    }
   }
 
   return null;
