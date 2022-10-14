@@ -11,6 +11,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/articulo_documento.dart';
 
@@ -118,7 +119,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
                 getIconoFromExtension(articuloDocumento.nombreArchivo ?? ''),
                 color: Theme.of(context).textTheme.caption!.color,
               ),
-              const SizedBox(width: 8),
+              gapW8,
               Flexible(
                 child: Text(articuloDocumento.nombreArchivo ?? ''),
               ),

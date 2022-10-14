@@ -370,7 +370,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 50),
+                  gapW48,
                   Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -410,7 +410,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 50),
+                  gapW48,
                   const Spacer(),
                 ],
               ),

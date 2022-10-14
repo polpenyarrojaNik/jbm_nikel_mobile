@@ -36,9 +36,10 @@ class SplashPage extends ConsumerWidget {
     });
     final splashPageValue = ref.watch(splashPageControllerProvider);
     return Scaffold(
-        body: AsyncValueWidget<void>(
-      value: splashPageValue,
-      data: (_) => Container(),
-    ));
+      body: AsyncValueWidget<void>(
+        value: splashPageValue,
+        data: (_) => Container(),
+      ),
+    );
   }
 }

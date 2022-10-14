@@ -10,6 +10,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_adjunto.dart';
 import '../../infrastructure/cliente_repository.dart';
@@ -117,7 +118,7 @@ class ClienteAdjuntoTile extends ConsumerWidget {
                 getIconoFromExtension(clienteAdjunto.nombreAdjunto),
                 color: Theme.of(context).textTheme.caption!.color,
               ),
-              const SizedBox(width: 8),
+              gapW8,
               Flexible(child: Text(clienteAdjunto.nombreAdjunto)),
             ],
           ),

@@ -101,7 +101,7 @@ class ClienteInfoContainer extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 2),
+        gapH4,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

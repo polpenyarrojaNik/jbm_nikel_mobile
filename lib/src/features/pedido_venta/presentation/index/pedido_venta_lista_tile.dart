@@ -108,7 +108,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(4),
                     child: Column(
