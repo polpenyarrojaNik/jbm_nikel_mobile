@@ -104,7 +104,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
       child: Card(
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4), // if you need this
+          borderRadius: BorderRadius.circular(4),
           side: BorderSide(
             color: Colors.grey.withOpacity(0.2),
             width: 1,

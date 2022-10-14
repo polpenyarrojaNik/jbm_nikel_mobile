@@ -101,10 +101,9 @@ class ClienteAdjuntoTile extends ConsumerWidget {
           nombreAdjunto: clienteAdjunto.nombreAdjunto,
           ref: ref),
       child: Card(
-        // clipBehavior: Clip.hardEdge,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4), // if you need this
+          borderRadius: BorderRadius.circular(4),
           side: BorderSide(
             color: Colors.grey.withOpacity(0.2),
             width: 1,
@@ -112,10 +111,7 @@ class ClienteAdjuntoTile extends ConsumerWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child:
-              // state.when(
-              //   data: (file) =>
-              Row(
+          child: Row(
             children: [
               Icon(
                 getIconoFromExtension(clienteAdjunto.nombreAdjunto),
@@ -125,9 +121,6 @@ class ClienteAdjuntoTile extends ConsumerWidget {
               Flexible(child: Text(clienteAdjunto.nombreAdjunto)),
             ],
           ),
-          // error: (e, _) => ErrorMessageWidget(e.toString()),
-          // loading: () => const ProgressIndicatorWidget(),
-          // ),
         ),
       ),
     );

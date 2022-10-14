@@ -51,7 +51,6 @@ final articulosSearchProvider =
     return articuloRepository.getArticuloLista(
         page: defaultListParams.page, searchText: defaultListParams.searchText);
   },
-  // cacheTime: const Duration(seconds: 60),
 );
 
 final articuloProvider =
@@ -162,7 +161,6 @@ final articuloUltimosPreciosSearchProvider = FutureProvider.autoDispose
         page: defaultListParams.page,
         searchText: defaultListParams.searchText);
   },
-  // cacheTime: const Duration(seconds: 60),
 );
 
 final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {

@@ -26,9 +26,6 @@ class AppDecoration {
   static InputDecoration mailFieldDecoration(String text) => InputDecoration(
         contentPadding: const EdgeInsets.all(5),
         labelText: text,
-        // border: const OutlineInputBorder(
-        //   borderSide: BorderSide(),
-        // ),
       );
 
   static BoxDecoration loadingPedidoVentaTile = BoxDecoration(
