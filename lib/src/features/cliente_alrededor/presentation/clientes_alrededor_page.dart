@@ -49,8 +49,9 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
               currentLatLng: LatLng(position.latitude, position.longitude),
             ),
             SliderKm(
-                onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
-                radiusKm: radiusKm)
+              onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
+              radiusKm: radiusKm,
+            )
           ],
         ),
         loading: () => Center(
@@ -124,23 +125,24 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
     }
 
     return GoogleMap(
-        mapType: MapType.normal,
-        onMapCreated: _onMapCreated,
-        myLocationEnabled: true,
-        markers: stateMarkers.maybeWhen(
-          orElse: () => const <Marker>{},
-          data: (clientesAlrededorList) =>
-              setMarkerList(clientesAlrededorList: clientesAlrededorList),
-        ),
-        circles: <Circle>{circle},
-        onLongPress: (newLatLng) => setState(() {
-              mapLatLng = newLatLng;
-            }),
-        onCameraMove: (cameraPosition) => isMyCurrentPosition(cameraPosition),
-        initialCameraPosition: CameraPosition(
-          target: widget.currentLatLng,
-          zoom: getZoomLevel(circle),
-        ));
+      mapType: MapType.normal,
+      onMapCreated: _onMapCreated,
+      myLocationEnabled: true,
+      markers: stateMarkers.maybeWhen(
+        orElse: () => const <Marker>{},
+        data: (clientesAlrededorList) =>
+            setMarkerList(clientesAlrededorList: clientesAlrededorList),
+      ),
+      circles: <Circle>{circle},
+      onLongPress: (newLatLng) => setState(() {
+        mapLatLng = newLatLng;
+      }),
+      onCameraMove: (cameraPosition) => isMyCurrentPosition(cameraPosition),
+      initialCameraPosition: CameraPosition(
+        target: widget.currentLatLng,
+        zoom: getZoomLevel(circle),
+      ),
+    );
   }
 
   double getZoomLevel(Circle circle) {
@@ -230,6 +232,9 @@ class SliderKm extends StatelessWidget {
       child: Column(
         children: [
           Slider(
+            activeColor: _isDark(context)
+                ? Theme.of(context).colorScheme.primaryContainer
+                : Theme.of(context).colorScheme.primary,
             value: radiusKm / 1000,
             min: 0,
             max: 100,
@@ -254,6 +259,10 @@ class SliderKm extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool _isDark(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
   }
 }
 

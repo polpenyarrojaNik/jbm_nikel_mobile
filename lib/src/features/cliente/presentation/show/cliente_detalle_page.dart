@@ -200,163 +200,16 @@ class _ClienteAnalisis extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                S.of(context).cliente_show_clienteDetalle_ventas,
-                style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    color: Theme.of(context).textTheme.caption!.color),
-              ),
-              gapH8,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                            S.of(context).cliente_show_clienteDetalle_anoActual,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          formatPrecios(
-                              precio: cliente.ventasAnyoActual,
-                              tipoPrecio: null),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                            S
-                                .of(context)
-                                .cliente_show_clienteDetalle_anoAnterior,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          formatPrecios(
-                              precio: cliente.ventasAnyoAnterior,
-                              tipoPrecio: null),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                            S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          formatPrecios(
-                              precio: cliente.ventasHaceDosAnyos,
-                              tipoPrecio: null),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Text(
-                S.of(context).cliente_show_clienteDetalle_margen,
-                style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    color: Theme.of(context).textTheme.caption!.color),
-              ),
-              gapH8,
-              if (cliente.margenAnyoActual != null &&
-                  cliente.margenAnyoAnterior != null &&
+              _VentasRowWidget(cliente: cliente),
+              if (cliente.margenAnyoActual != null ||
+                  cliente.margenAnyoAnterior != null ||
                   cliente.margenHaceDosAnyos != null)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (cliente.margenAnyoActual != null)
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text(
-                                S
-                                    .of(context)
-                                    .cliente_show_clienteDetalle_anoActual,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .color)),
-                            Text(
-                              '${numberFormatDecimal(cliente.margenAnyoActual!)}%',
-                            ),
-                          ],
-                        ),
-                      ),
-                    if (cliente.margenAnyoAnterior != null)
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text(
-                                S
-                                    .of(context)
-                                    .cliente_show_clienteDetalle_anoAnterior,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText2!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .textTheme
-                                            .caption!
-                                            .color)),
-                            Text(
-                              '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%',
-                            ),
-                          ],
-                        ),
-                      ),
-                    if (cliente.margenHaceDosAnyos != null)
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Text(
-                              S
-                                  .of(context)
-                                  .cliente_show_clienteDetalle_hace2Anos,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption!
-                                          .color),
-                            ),
-                            Text(
-                              '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%',
-                            ),
-                          ],
-                        ),
-                      ),
-                  ],
-                ),
+                gapH8,
+              if (cliente.margenAnyoActual != null ||
+                  cliente.margenAnyoAnterior != null ||
+                  cliente.margenHaceDosAnyos != null)
+                _MargenRowWidget(cliente: cliente),
+              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -380,6 +233,171 @@ class _ClienteAnalisis extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class _VentasRowWidget extends StatelessWidget {
+  const _VentasRowWidget({
+    required this.cliente,
+  });
+
+  final Cliente cliente;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).cliente_show_clienteDetalle_ventas,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(color: Theme.of(context).textTheme.caption!.color),
+        ),
+        gapH4,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).cliente_show_clienteDetalle_anoActual,
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                          color: Theme.of(context).textTheme.caption!.color)),
+                  Text(
+                    formatPrecios(
+                        precio: cliente.ventasAnyoActual, tipoPrecio: null),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                          color: Theme.of(context).textTheme.caption!.color)),
+                  Text(
+                    formatPrecios(
+                        precio: cliente.ventasAnyoAnterior, tipoPrecio: null),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                          color: Theme.of(context).textTheme.caption!.color)),
+                  Text(
+                    formatPrecios(
+                        precio: cliente.ventasHaceDosAnyos, tipoPrecio: null),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _MargenRowWidget extends StatelessWidget {
+  const _MargenRowWidget({
+    required this.cliente,
+  });
+
+  final Cliente cliente;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).cliente_show_clienteDetalle_margen,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle2!
+              .copyWith(color: Theme.of(context).textTheme.caption!.color),
+        ),
+        gapH4,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: (cliente.margenAnyoActual != null)
+                  ? Column(
+                      children: [
+                        Text(
+                            S.of(context).cliente_show_clienteDetalle_anoActual,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          '${numberFormatDecimal(cliente.margenAnyoActual!)}%',
+                        ),
+                      ],
+                    )
+                  : Container(),
+            ),
+            Expanded(
+              child: (cliente.margenAnyoAnterior != null)
+                  ? Column(
+                      children: [
+                        Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_anoAnterior,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color)),
+                        Text(
+                          '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%',
+                        ),
+                      ],
+                    )
+                  : Container(),
+            ),
+            Expanded(
+              child: (cliente.margenHaceDosAnyos != null)
+                  ? Column(
+                      children: [
+                        Text(
+                          S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2!
+                              .copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption!
+                                      .color),
+                        ),
+                        Text(
+                          '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%',
+                        ),
+                      ],
+                    )
+                  : Container(),
+            ),
+          ],
         ),
       ],
     );

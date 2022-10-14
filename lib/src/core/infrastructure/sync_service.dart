@@ -7,7 +7,6 @@ import 'package:drift/drift.dart';
 import 'package:flutter_archive/flutter_archive.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';

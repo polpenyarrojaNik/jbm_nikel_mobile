@@ -28,6 +28,7 @@ final ubicacionActualProvider = FutureProvider.autoDispose<Position>((ref) {
 final clientesAlrededorListStream = FutureProvider.autoDispose
     .family<List<Cliente>, GetClienteAlrededorArg>(
         (ref, clienteAlrededorArg) async {
+  print('Radius distance: ${clienteAlrededorArg.radiusDistance}');
   final clientesAlrededorRepository =
       ref.watch(clientesAlrededorRepositoryProvider);
   final usuarioService = ref.watch(usuarioServiceProvider);
