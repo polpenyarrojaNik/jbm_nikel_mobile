@@ -16130,6 +16130,296 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   }
 }
 
+class DescuentoGeneralTableCompanion
+    extends UpdateCompanion<DescuentoGeneralDTO> {
+  final Value<String> descuentoGeneralId;
+  final Value<String> articuloId;
+  final Value<String> familiaId;
+  final Value<String> subfamiliaId;
+  final Value<int> cantidadDesde;
+  final Value<double> descuento;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DescuentoGeneralTableCompanion({
+    this.descuentoGeneralId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    this.cantidadDesde = const Value.absent(),
+    this.descuento = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DescuentoGeneralTableCompanion.insert({
+    required String descuentoGeneralId,
+    required String articuloId,
+    required String familiaId,
+    required String subfamiliaId,
+    required int cantidadDesde,
+    required double descuento,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : descuentoGeneralId = Value(descuentoGeneralId),
+        articuloId = Value(articuloId),
+        familiaId = Value(familiaId),
+        subfamiliaId = Value(subfamiliaId),
+        cantidadDesde = Value(cantidadDesde),
+        descuento = Value(descuento),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DescuentoGeneralDTO> custom({
+    Expression<String>? descuentoGeneralId,
+    Expression<String>? articuloId,
+    Expression<String>? familiaId,
+    Expression<String>? subfamiliaId,
+    Expression<int>? cantidadDesde,
+    Expression<double>? descuento,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (descuentoGeneralId != null)
+        'DESCUENTO_GENERAL_ID': descuentoGeneralId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
+      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
+      if (descuento != null) 'DESCUENTO': descuento,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DescuentoGeneralTableCompanion copyWith(
+      {Value<String>? descuentoGeneralId,
+      Value<String>? articuloId,
+      Value<String>? familiaId,
+      Value<String>? subfamiliaId,
+      Value<int>? cantidadDesde,
+      Value<double>? descuento,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DescuentoGeneralTableCompanion(
+      descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
+      articuloId: articuloId ?? this.articuloId,
+      familiaId: familiaId ?? this.familiaId,
+      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
+      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
+      descuento: descuento ?? this.descuento,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (descuentoGeneralId.present) {
+      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneralId.value);
+    }
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    }
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
+    }
+    if (subfamiliaId.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
+    }
+    if (cantidadDesde.present) {
+      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
+    }
+    if (descuento.present) {
+      map['DESCUENTO'] = Variable<double>(descuento.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DescuentoGeneralTableCompanion(')
+          ..write('descuentoGeneralId: $descuentoGeneralId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('subfamiliaId: $subfamiliaId, ')
+          ..write('cantidadDesde: $cantidadDesde, ')
+          ..write('descuento: $descuento, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DescuentoGeneralTableTable extends DescuentoGeneralTable
+    with TableInfo<$DescuentoGeneralTableTable, DescuentoGeneralDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DescuentoGeneralTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _descuentoGeneralIdMeta =
+      const VerificationMeta('descuentoGeneralId');
+  @override
+  late final GeneratedColumn<String> descuentoGeneralId =
+      GeneratedColumn<String>('DESCUENTO_GENERAL_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  @override
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
+      'ARTICULO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
+  @override
+  late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
+      'FAMILIA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _subfamiliaIdMeta =
+      const VerificationMeta('subfamiliaId');
+  @override
+  late final GeneratedColumn<String> subfamiliaId = GeneratedColumn<String>(
+      'SUBFAMILIA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _cantidadDesdeMeta =
+      const VerificationMeta('cantidadDesde');
+  @override
+  late final GeneratedColumn<int> cantidadDesde = GeneratedColumn<int>(
+      'CANTIDAD_DESDE', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  final VerificationMeta _descuentoMeta = const VerificationMeta('descuento');
+  @override
+  late final GeneratedColumn<double> descuento = GeneratedColumn<double>(
+      'DESCUENTO', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  final VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        descuentoGeneralId,
+        articuloId,
+        familiaId,
+        subfamiliaId,
+        cantidadDesde,
+        descuento,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'DESCUENTO_GENERAL';
+  @override
+  String get actualTableName => 'DESCUENTO_GENERAL';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<DescuentoGeneralDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('DESCUENTO_GENERAL_ID')) {
+      context.handle(
+          _descuentoGeneralIdMeta,
+          descuentoGeneralId.isAcceptableOrUnknown(
+              data['DESCUENTO_GENERAL_ID']!, _descuentoGeneralIdMeta));
+    } else if (isInserting) {
+      context.missing(_descuentoGeneralIdMeta);
+    }
+    if (data.containsKey('ARTICULO_ID')) {
+      context.handle(
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
+    } else if (isInserting) {
+      context.missing(_articuloIdMeta);
+    }
+    if (data.containsKey('FAMILIA_ID')) {
+      context.handle(_familiaIdMeta,
+          familiaId.isAcceptableOrUnknown(data['FAMILIA_ID']!, _familiaIdMeta));
+    } else if (isInserting) {
+      context.missing(_familiaIdMeta);
+    }
+    if (data.containsKey('SUBFAMILIA_ID')) {
+      context.handle(
+          _subfamiliaIdMeta,
+          subfamiliaId.isAcceptableOrUnknown(
+              data['SUBFAMILIA_ID']!, _subfamiliaIdMeta));
+    } else if (isInserting) {
+      context.missing(_subfamiliaIdMeta);
+    }
+    if (data.containsKey('CANTIDAD_DESDE')) {
+      context.handle(
+          _cantidadDesdeMeta,
+          cantidadDesde.isAcceptableOrUnknown(
+              data['CANTIDAD_DESDE']!, _cantidadDesdeMeta));
+    } else if (isInserting) {
+      context.missing(_cantidadDesdeMeta);
+    }
+    if (data.containsKey('DESCUENTO')) {
+      context.handle(_descuentoMeta,
+          descuento.isAcceptableOrUnknown(data['DESCUENTO']!, _descuentoMeta));
+    } else if (isInserting) {
+      context.missing(_descuentoMeta);
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey =>
+      {descuentoGeneralId, articuloId, familiaId, subfamiliaId};
+  @override
+  DescuentoGeneralDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DescuentoGeneralDTO(
+      descuentoGeneralId: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}DESCUENTO_GENERAL_ID'])!,
+      articuloId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      familiaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
+      subfamiliaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
+      cantidadDesde: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
+      descuento: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO'])!,
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $DescuentoGeneralTableTable createAlias(String alias) {
+    return $DescuentoGeneralTableTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -16197,6 +16487,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $PedidoVentaLineaLocalTableTable(this);
   late final $PedidoVentaLocalTableTable pedidoVentaLocalTable =
       $PedidoVentaLocalTableTable(this);
+  late final $DescuentoGeneralTableTable descuentoGeneralTable =
+      $DescuentoGeneralTableTable(this);
   @override
   Iterable<TableInfo<Table, dynamic>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -16235,7 +16527,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         visitaTable,
         visitaLocalTable,
         pedidoVentaLineaLocalTable,
-        pedidoVentaLocalTable
+        pedidoVentaLocalTable,
+        descuentoGeneralTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -17,6 +17,7 @@ import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
+import '../../features/articulos/infrastructure/descuento_general_dto.dart';
 import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
@@ -83,6 +84,7 @@ const localDatabaseName = 'jbm.sqlite';
   DivisaTable,
   PedidoVentaLineaLocalTable,
   PedidoVentaLocalTable,
+  DescuentoGeneralTable,
 ])
 class AppDatabase extends _$AppDatabase {
   final String? databaseFile;

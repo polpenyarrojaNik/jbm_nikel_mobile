@@ -22,6 +22,7 @@ import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
+import '../../features/articulos/infrastructure/descuento_general_dto.dart';
 import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
@@ -218,6 +219,7 @@ class SyncService {
       await syncUltimosPrecios();
       await syncFamilias();
       await syncSubfamilias();
+      await syncDescuentoGeneral();
       await syncAllAuxiliares();
     } catch (e) {
       rethrow;
@@ -1045,6 +1047,21 @@ class SyncService {
             .update(_db.visitaLocalTable)
             .write(const VisitaLocalTableCompanion(tratada: Value('S')));
       }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncDescuentoGeneral() async {
+    try {
+      await _syncTable(
+        apiPath: '/articulos/descuento-general',
+        tableInfo: _db.descuentoGeneralTable,
+        fromJson: (e) => DescuentoGeneralDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
     } catch (e) {
       rethrow;
     }
