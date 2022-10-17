@@ -2,6 +2,8 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/descuento_general_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_descuento_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_precio_neto_dto.dart';
@@ -114,5 +116,28 @@ final kClientePrecioNetoDTO = ClientePrecioNetoDTO(
   cantidadDesde: 1,
   precio: 5,
   tipoPrecio: 1,
+  lastUpdated: kDateTime,
+);
+
+const kDescuentoGeneralId = 'DESGEN01';
+const kFamiliaId = 'FAM01';
+const kSubfamiliaId = 'SUBFAM01';
+final kDescuentoGeneralDTO = DescuentoGeneralDTO(
+  descuentoGeneralId: kDescuentoGeneralId,
+  articuloId: kArticuloId,
+  familiaId: kFamiliaId,
+  subfamiliaId: kSubfamiliaId,
+  cantidadDesde: 1,
+  descuento: 0,
+  lastUpdated: kDateTime,
+);
+
+final kClienteDescuentoDTO = ClienteDescuentoDTO(
+  clienteId: kClienteId,
+  articuloId: kArticuloId,
+  familiaId: kFamiliaId,
+  subfamiliaId: kSubfamiliaId,
+  cantidadDesde: 1,
+  descuento: 0,
   lastUpdated: kDateTime,
 );

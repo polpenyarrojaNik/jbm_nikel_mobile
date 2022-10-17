@@ -204,7 +204,7 @@ class _$_DescuentoGeneralDTO extends _DescuentoGeneralDTO {
       @JsonKey(name: 'CANTIDAD_DESDE') required this.cantidadDesde,
       @JsonKey(name: 'DESCUENTO') required this.descuento,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') required this.deleted})
+      @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
 
   factory _$_DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =>
@@ -304,7 +304,7 @@ abstract class _DescuentoGeneralDTO extends DescuentoGeneralDTO {
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
-          required final String deleted}) = _$_DescuentoGeneralDTO;
+          final String deleted}) = _$_DescuentoGeneralDTO;
   const _DescuentoGeneralDTO._() : super._();
 
   factory _DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =

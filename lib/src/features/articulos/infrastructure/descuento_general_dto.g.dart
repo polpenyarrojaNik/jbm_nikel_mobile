@@ -16,7 +16,7 @@ _$_DescuentoGeneralDTO _$$_DescuentoGeneralDTOFromJson(
       cantidadDesde: json['CANTIDAD_DESDE'] as int,
       descuento: (json['DESCUENTO'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String,
+      deleted: json['DELETED'] as String? ?? 'N',
     );
 
 Map<String, dynamic> _$$_DescuentoGeneralDTOToJson(

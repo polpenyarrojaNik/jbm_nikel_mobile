@@ -619,6 +619,268 @@ class PedidoVentaRepository {
           );
   }
 
+  Future<double> getDescuentoGeneral({
+    required String articuloId,
+    required String descuentoGeneralId,
+    required int cantidad,
+  }) async {
+    TypedResult? queryResult;
+    // Coincide articulo, familia y subfamilia
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+            _db.articuloTable,
+            _db.articuloTable.id
+                    .equalsExp(_db.descuentoGeneralTable.articuloId) &
+                _db.articuloTable.familiaId
+                    .equalsExp(_db.descuentoGeneralTable.familiaId) &
+                _db.articuloTable.subfamiliaId
+                    .equalsExp(_db.descuentoGeneralTable.subfamiliaId),
+            useColumns: false),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+    // Coincide articulo, familia
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+          _db.articuloTable,
+          _db.articuloTable.id.equalsExp(_db.descuentoGeneralTable.articuloId) &
+              _db.articuloTable.familiaId
+                  .equalsExp(_db.descuentoGeneralTable.familiaId),
+        ),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId) &
+                _db.descuentoGeneralTable.subfamiliaId.equals('*'),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+
+    // Coincide familia, subfamilia
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+          _db.articuloTable,
+          _db.articuloTable.familiaId
+                  .equalsExp(_db.descuentoGeneralTable.familiaId) &
+              _db.articuloTable.subfamiliaId
+                  .equalsExp(_db.descuentoGeneralTable.subfamiliaId),
+        ),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId) &
+                _db.descuentoGeneralTable.articuloId.equals('*'),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+
+    // Coincide articulo, subfamilia
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+          _db.articuloTable,
+          _db.articuloTable.id.equalsExp(_db.descuentoGeneralTable.articuloId) &
+              _db.articuloTable.subfamiliaId
+                  .equalsExp(_db.descuentoGeneralTable.subfamiliaId),
+        ),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId) &
+                _db.descuentoGeneralTable.familiaId.equals('*'),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+
+    // Coincide articulo
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+            _db.articuloTable,
+            _db.articuloTable.id
+                .equalsExp(_db.descuentoGeneralTable.articuloId)),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId) &
+                _db.descuentoGeneralTable.familiaId.equals('*') &
+                _db.descuentoGeneralTable.subfamiliaId.equals('*'),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+
+    // Coincide subfamilia
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+            _db.articuloTable,
+            _db.articuloTable.subfamiliaId
+                .equalsExp(_db.descuentoGeneralTable.subfamiliaId)),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId) &
+                _db.descuentoGeneralTable.articuloId.equals('*') &
+                _db.descuentoGeneralTable.familiaId.equals('*'),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+
+    // Coincide familia
+    queryResult = await (_db.select(_db.descuentoGeneralTable).join(
+      [
+        innerJoin(
+            _db.articuloTable,
+            _db.articuloTable.familiaId
+                .equalsExp(_db.descuentoGeneralTable.familiaId)),
+      ],
+    )
+          ..where(
+            _db.descuentoGeneralTable.descuentoGeneralId
+                    .equals(descuentoGeneralId) &
+                _db.articuloTable.id.equals(articuloId) &
+                _db.descuentoGeneralTable.articuloId.equals('*') &
+                _db.descuentoGeneralTable.subfamiliaId.equals('*'),
+          )
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.descuentoGeneralTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult != null) {
+      final descuento =
+          queryResult.read(_db.descuentoGeneralTable.descuento) ?? 0;
+      return descuento;
+    }
+
+    // Coincide codigo descuento
+    final queryResult2 = await (_db.select(_db.descuentoGeneralTable)
+          ..where(
+            (tbl) =>
+                tbl.descuentoGeneralId.equals(descuentoGeneralId) &
+                tbl.articuloId.equals('*') &
+                tbl.familiaId.equals('*') &
+                tbl.subfamiliaId.equals('*'),
+          )
+          ..orderBy(
+            [
+              (tbl) => OrderingTerm(
+                  expression: tbl.cantidadDesde, mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
+
+    if (queryResult2 != null) {
+      final descuento = queryResult2.descuento;
+      return descuento;
+    }
+
+    return 0.0;
+  }
+
   Money getPrecioUnitario({
     required Money precio,
     required int tipoPrecio,

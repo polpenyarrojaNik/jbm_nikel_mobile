@@ -21,7 +21,7 @@ class DescuentoGeneralDTO
     @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'DESCUENTO') required double descuento,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') required String deleted,
+    @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _DescuentoGeneralDTO;
 
   factory DescuentoGeneralDTO.fromJson(Map<String, dynamic> json) =>

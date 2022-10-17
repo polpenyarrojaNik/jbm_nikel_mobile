@@ -29,6 +29,7 @@ void main() {
     await db.delete(db.clienteGrupoNetoTable).go();
     await db.delete(db.articuloGrupoNetoTable).go();
     await db.delete(db.clientePrecioNetoTable).go();
+    await db.delete(db.descuentoGeneralTable).go();
   });
 
   tearDown(() async {
@@ -279,37 +280,230 @@ void main() {
             precio: Money.parse('15', code: 'EU'),
             tipoPrecio: 1,
           ),
-          reason: 'Precio para 7 unidads debe ser 15€');
+          reason: 'Precio para 7 unidades debe ser 15€');
     });
     group('getDescuentoGeneral', () {
+      setUp(() async {
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+              cantidadDesde: 1,
+              descuento: 1,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: '*',
+              cantidadDesde: 1,
+              descuento: 2,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: '*',
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+              cantidadDesde: 1,
+              descuento: 3,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: '*',
+              subfamiliaId: kSubfamiliaId,
+              cantidadDesde: 1,
+              descuento: 4,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: '*',
+              subfamiliaId: '*',
+              cantidadDesde: 1,
+              descuento: 5,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: '*',
+              familiaId: '*',
+              subfamiliaId: kSubfamiliaId,
+              cantidadDesde: 1,
+              descuento: 6,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: '*',
+              familiaId: kFamiliaId,
+              subfamiliaId: '*',
+              cantidadDesde: 1,
+              descuento: 7,
+            ));
+
+        await db
+            .into(db.descuentoGeneralTable)
+            .insert(kDescuentoGeneralDTO.copyWith(
+              articuloId: '*',
+              familiaId: '*',
+              subfamiliaId: '*',
+              cantidadDesde: 1,
+              descuento: 8,
+            ));
+      });
+
       test(
           'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia X, subfamilia X',
           () async {
-        await db.into(db.articuloTable).insert(kArticuloDTO);
-        //   await db.into(db.clienteDescuentoTable).insert(kArticuloDTO);
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: kArticuloId,
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 1.0);
+      });
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia X, subfamilia *',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: kArticuloId,
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 2.0);
+      });
+
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia *',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: '-',
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 3.0);
       });
       test(
           'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia X',
-          () async {});
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: '-',
+              subfamiliaId: kSubfamiliaId,
+            ));
 
-      test(
-          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia X',
-          () async {});
-      test(
-          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia X',
-          () async {});
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: kArticuloId,
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 4.0);
+      });
       test(
           'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia *',
-          () async {});
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: '-',
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: kArticuloId,
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 5.0);
+      });
       test(
           'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo *, familia *, subfamilia X',
-          () async {});
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: '-',
+              subfamiliaId: kSubfamiliaId,
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: '-',
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 6.0);
+      });
       test(
           'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo *, familia X, subfamilia *',
-          () async {});
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: kFamiliaId,
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: '-',
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 7.0);
+      });
       test(
           'getDescuentoGeneral PARAM: codigoDescuento; DATOS: articulo *, familia *, subfamilia *',
-          () async {});
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: '-',
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoGeneral(
+          articuloId: kArticuloId,
+          descuentoGeneralId: kDescuentoGeneralId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 8.0);
+      });
     });
+
+    group('getDescuentoCliente', () {});
   });
 }
