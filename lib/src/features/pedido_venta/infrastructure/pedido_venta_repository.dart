@@ -499,7 +499,7 @@ class PedidoVentaRepository {
 
   Future<Precio> getPrecioTarifa({
     required String tarifaId,
-    required String articuloID,
+    required String articuloId,
     required int cantidad,
   }) async {
     final articuloPrecioTarifaDTO =
@@ -507,7 +507,7 @@ class PedidoVentaRepository {
               ..where(
                 (precioTarifa) =>
                     precioTarifa.tarifaId.equals(tarifaId) &
-                    precioTarifa.articuloId.equals(articuloID) &
+                    precioTarifa.articuloId.equals(articuloId) &
                     precioTarifa.cantidadDesde.isSmallerOrEqualValue(cantidad),
               )
               ..orderBy([
@@ -532,7 +532,7 @@ class PedidoVentaRepository {
 
   Future<Precio> getPrecioGrupoNeto({
     required String clienteId,
-    required String aticuloId,
+    required String articuloId,
     required int cantidad,
   }) async {
     final query = _db.select(_db.clienteGrupoNetoTable).join([
@@ -544,48 +544,74 @@ class PedidoVentaRepository {
     ])
       ..where(
         _db.clienteGrupoNetoTable.clienteId.equals(clienteId) &
-            _db.articuloGrupoNetoTable.articuloId.equals(aticuloId) &
-            _db.articuloGrupoNetoTable.cantidadDesde
-                .isSmallerOrEqualValue(cantidad),
-      )
-      ..orderBy([
-        OrderingTerm(
-            expression: _db.articuloGrupoNetoTable.cantidadDesde,
-            mode: OrderingMode.desc),
-      ])
-      ..limit(1);
-
-    final query2 = _db.select(_db.clienteGrupoNetoTable).join([
-      innerJoin(
-        _db.articuloGrupoNetoTable,
-        _db.articuloGrupoNetoTable.grupoNetoId
-            .equalsExp(_db.clienteGrupoNetoTable.grupoNetoId),
-      )
-    ])
-      ..where(
-        _db.clienteGrupoNetoTable.clienteId.equals(clienteId) &
-            _db.articuloGrupoNetoTable.articuloId.equals(aticuloId) &
+            _db.articuloGrupoNetoTable.articuloId.equals(articuloId) &
             _db.articuloGrupoNetoTable.cantidadDesde
                 .isSmallerOrEqualValue(cantidad),
       );
 
-    final queryResult2 = await query2.get();
-    final min = queryResult2.reduce((a, b) {
-      final precioCurr = a.read(_db.articuloGrupoNetoTable.precio)!;
-      final precioNect = b.read(_db.articuloGrupoNetoTable.precio)!;
-      return precioCurr > precioNect ? a : b;
+    final queryResult = await query.get();
+
+    final minResult = queryResult.reduce((a, b) {
+      final precioA = a.read(_db.articuloGrupoNetoTable.precio)!;
+      final tipoPrecioA = a.read(_db.articuloGrupoNetoTable.tipoPrecio)!;
+      final divisaA = a.read(_db.articuloGrupoNetoTable.divisaId)!;
+      final precioB = b.read(_db.articuloGrupoNetoTable.precio)!;
+      final divisaB = b.read(_db.articuloGrupoNetoTable.divisaId)!;
+      final tipoPrecioB = b.read(_db.articuloGrupoNetoTable.tipoPrecio)!;
+      return getPrecioUnitario(
+                precio: precioA.parseMoney(currencyId: divisaA),
+                tipoPrecio: tipoPrecioA,
+              ) <
+              getPrecioUnitario(
+                precio: precioB.parseMoney(currencyId: divisaB),
+                tipoPrecio: tipoPrecioB,
+              )
+          ? a
+          : b;
     });
+    return Precio(
+      precio: (minResult.read(_db.articuloGrupoNetoTable.precio) ?? 0)
+          .parseMoney(
+              currencyId: minResult.read(_db.articuloGrupoNetoTable.divisaId)),
+      tipoPrecio: (minResult.read(_db.articuloGrupoNetoTable.tipoPrecio) ?? 1),
+    );
+  }
 
-    final queryResult = await query.getSingleOrNull();
+  Future<Precio> getPrecioClienteNeto({
+    required String clienteId,
+    required String articuloId,
+    required int cantidad,
+  }) async {
+    final queryResult = await (_db.select(_db.clientePrecioNetoTable).join(
+      [
+        innerJoin(
+          _db.clienteTable,
+          _db.clienteTable.id.equalsExp(_db.clientePrecioNetoTable.clienteId),
+        ),
+      ],
+    )
+          ..where(_db.clientePrecioNetoTable.clienteId.equals(clienteId) &
+              _db.clientePrecioNetoTable.articuloId.equals(articuloId) &
+              _db.clientePrecioNetoTable.cantidadDesde
+                  .isSmallerOrEqualValue(cantidad))
+          ..orderBy(
+            [
+              OrderingTerm(
+                  expression: _db.clientePrecioNetoTable.cantidadDesde,
+                  mode: OrderingMode.desc)
+            ],
+          )
+          ..limit(1))
+        .getSingleOrNull();
 
-    return queryResult != null
+    return (queryResult != null)
         ? Precio(
-            precio: (queryResult.read(_db.articuloGrupoNetoTable.precio) ?? 0)
+            precio: queryResult
+                .read(_db.clientePrecioNetoTable.precio)!
                 .parseMoney(
-                    currencyId:
-                        queryResult.read(_db.articuloGrupoNetoTable.divisaId)),
+                    currencyId: queryResult.read(_db.clienteTable.divisaId)),
             tipoPrecio:
-                (queryResult.read(_db.articuloGrupoNetoTable.tipoPrecio) ?? 1),
+                queryResult.read(_db.clientePrecioNetoTable.tipoPrecio)!,
           )
         : Precio(
             precio: '0'.parseMoney(),
@@ -595,7 +621,7 @@ class PedidoVentaRepository {
 
   Money getPrecioUnitario({
     required Money precio,
-    required double tipoPrecio,
+    required int tipoPrecio,
   }) {
     return tipoPrecio != 0
         ? precio / tipoPrecio

@@ -1,433 +1,433 @@
 CREATE OR REPLACE PACKAGE BODY tarifa_venta_pkg AS
-  FUNCTION get_precio_unitario (i_precio IN NUMBER
-                               ,i_tpreu  IN VARCHAR2)
-    RETURN NUMBER AS
-    l_precio_unitario NUMBER (18, 6);
-  BEGIN
-    CASE i_tpreu
-      WHEN 'U' THEN
-        l_precio_unitario := i_precio;
-      WHEN 'C' THEN
-        l_precio_unitario := i_precio / 100;
-      WHEN 'M' THEN
-        l_precio_unitario := i_precio / 1000;
-      ELSE
-        l_precio_unitario := 0;
-    END CASE;
+  -- FUNCTION get_precio_unitario (i_precio IN NUMBER
+  --                              ,i_tpreu  IN VARCHAR2)
+  --   RETURN NUMBER AS
+  --   l_precio_unitario NUMBER (18, 6);
+  -- BEGIN
+  --   CASE i_tpreu
+  --     WHEN 'U' THEN
+  --       l_precio_unitario := i_precio;
+  --     WHEN 'C' THEN
+  --       l_precio_unitario := i_precio / 100;
+  --     WHEN 'M' THEN
+  --       l_precio_unitario := i_precio / 1000;
+  --     ELSE
+  --       l_precio_unitario := 0;
+  --   END CASE;
 
-    RETURN NVL (l_precio_unitario, 0);
-  END get_precio_unitario;
+  --   RETURN NVL (l_precio_unitario, 0);
+  -- END get_precio_unitario;
 
-  FUNCTION get_tarifa_derivada_precio (i_operacion       IN VARCHAR2
-                                      ,i_tipo_redondeo   IN VARCHAR2
-                                      ,i_decimales       IN NUMBER
-                                      ,i_factor          IN VARCHAR2
-                                      ,i_precio_articulo IN NUMBER)
-    RETURN NUMBER AS
-    l_precio_articulo            tarifa_articulo.precio%TYPE;
-    l_precio_con_tarifa_derivada tarifa_articulo.precio%TYPE;
-    l_operacion                  tarifa.operacion%TYPE;
-    l_tipo_redondeo              tarifa.tipo_redondeo%TYPE;
-    l_decimales                  tarifa.decimales%TYPE;
-    l_factor                     tarifa.factor%TYPE;
-  BEGIN
-    l_precio_articulo := i_precio_articulo;
+  -- FUNCTION get_tarifa_derivada_precio (i_operacion       IN VARCHAR2
+  --                                     ,i_tipo_redondeo   IN VARCHAR2
+  --                                     ,i_decimales       IN NUMBER
+  --                                     ,i_factor          IN VARCHAR2
+  --                                     ,i_precio_articulo IN NUMBER)
+  --   RETURN NUMBER AS
+  --   l_precio_articulo            tarifa_articulo.precio%TYPE;
+  --   l_precio_con_tarifa_derivada tarifa_articulo.precio%TYPE;
+  --   l_operacion                  tarifa.operacion%TYPE;
+  --   l_tipo_redondeo              tarifa.tipo_redondeo%TYPE;
+  --   l_decimales                  tarifa.decimales%TYPE;
+  --   l_factor                     tarifa.factor%TYPE;
+  -- BEGIN
+  --   l_precio_articulo := i_precio_articulo;
 
-    l_operacion := i_operacion;
-    l_tipo_redondeo := i_tipo_redondeo;
-    l_decimales := i_decimales;
-    l_factor := i_factor;
+  --   l_operacion := i_operacion;
+  --   l_tipo_redondeo := i_tipo_redondeo;
+  --   l_decimales := i_decimales;
+  --   l_factor := i_factor;
 
-    CASE
-      WHEN l_operacion = '*'
-       AND l_tipo_redondeo = 'A' THEN
-        l_precio_con_tarifa_derivada := CEIL (l_precio_articulo * l_factor);
-      WHEN l_operacion = '*'
-       AND l_tipo_redondeo = 'N' THEN
-        l_precio_con_tarifa_derivada :=
-          ROUND (l_precio_articulo * l_factor
-                ,l_decimales);
-      WHEN l_operacion = '/'
-       AND l_tipo_redondeo = 'A' THEN
-        l_precio_con_tarifa_derivada := CEIL (l_precio_articulo / l_factor);
-      WHEN l_operacion = '/'
-       AND l_tipo_redondeo = 'N' THEN
-        l_precio_con_tarifa_derivada :=
-          ROUND (l_precio_articulo / l_factor
-                ,l_decimales);
-    END CASE;
+  --   CASE
+  --     WHEN l_operacion = '*'
+  --      AND l_tipo_redondeo = 'A' THEN
+  --       l_precio_con_tarifa_derivada := CEIL (l_precio_articulo * l_factor);
+  --     WHEN l_operacion = '*'
+  --      AND l_tipo_redondeo = 'N' THEN
+  --       l_precio_con_tarifa_derivada :=
+  --         ROUND (l_precio_articulo * l_factor
+  --               ,l_decimales);
+  --     WHEN l_operacion = '/'
+  --      AND l_tipo_redondeo = 'A' THEN
+  --       l_precio_con_tarifa_derivada := CEIL (l_precio_articulo / l_factor);
+  --     WHEN l_operacion = '/'
+  --      AND l_tipo_redondeo = 'N' THEN
+  --       l_precio_con_tarifa_derivada :=
+  --         ROUND (l_precio_articulo / l_factor
+  --               ,l_decimales);
+  --   END CASE;
 
-    RETURN NVL (l_precio_con_tarifa_derivada, 0);
-  END get_tarifa_derivada_precio;
+  --   RETURN NVL (l_precio_con_tarifa_derivada, 0);
+  -- END get_tarifa_derivada_precio;
 
-  FUNCTION get_precio_unitario_tarifa (i_cod_tarifa IN VARCHAR2
-                                      ,i_cod_divisa IN VARCHAR2
-                                      ,i_cod_art    IN VARCHAR2
-                                      ,i_fecha      IN DATE
-                                      ,i_cantidad   IN NUMBER)
-    RETURN NUMBER AS
-    l_tpreu  tarifa_articulo.tpreu%TYPE;
-    l_precio tarifa_articulo.precio%TYPE;
-  BEGIN
-    get_precio_tarifa (i_cod_tarifa => i_cod_tarifa
-                      ,i_cod_divisa => i_cod_divisa
-                      ,i_cod_art    => i_cod_art
-                      ,i_fecha      => i_fecha
-                      ,i_cantidad   => i_cantidad
-                      ,o_precio     => l_precio
-                      ,o_tpreu      => l_tpreu);
-    RETURN get_precio_unitario (i_precio => l_precio
-                               ,i_tpreu  => l_tpreu);
-  END get_precio_unitario_tarifa;
+--   FUNCTION get_precio_unitario_tarifa (i_cod_tarifa IN VARCHAR2
+--                                       ,i_cod_divisa IN VARCHAR2
+--                                       ,i_cod_art    IN VARCHAR2
+--                                       ,i_fecha      IN DATE
+--                                       ,i_cantidad   IN NUMBER)
+--     RETURN NUMBER AS
+--     l_tpreu  tarifa_articulo.tpreu%TYPE;
+--     l_precio tarifa_articulo.precio%TYPE;
+--   BEGIN
+--     get_precio_tarifa (i_cod_tarifa => i_cod_tarifa
+--                       ,i_cod_divisa => i_cod_divisa
+--                       ,i_cod_art    => i_cod_art
+--                       ,i_fecha      => i_fecha
+--                       ,i_cantidad   => i_cantidad
+--                       ,o_precio     => l_precio
+--                       ,o_tpreu      => l_tpreu);
+--     RETURN get_precio_unitario (i_precio => l_precio
+--                                ,i_tpreu  => l_tpreu);
+--   END get_precio_unitario_tarifa;
 
-  FUNCTION get_precio_tarifa_derivada (i_cod_tarifa  IN VARCHAR2
-                                      ,i_cod_art     IN VARCHAR2
-                                      ,i_fecha       IN DATE
-                                      ,i_cantidad    IN NUMBER
-                                      ,i_tpreu       IN VARCHAR2
-                                      ,i_fecha_desde IN DATE DEFAULT TO_DATE ('1900-01-01'
-                                                                             ,'YYYY-MM-DD'))
-    RETURN NUMBER AS
-    l_cod_tarifa             tarifa_articulo_t.cod_tarifa%TYPE;
-    l_cod_art                tarifa_articulo_t.cod_art%TYPE;
-    l_fecha_desde            tarifa_articulo_t.fecha_desde%TYPE;
-    l_cantidad_desde         tarifa_articulo_t.cantidad_desde%TYPE;
-    l_precio                 tarifa_articulo_t.precio%TYPE;
-    l_tpreu                  tarifa_articulo_t.tpreu%TYPE;
-    l_cod_tarifa_derivada    tarifa_t.cod_tarifa_derivada%TYPE;
-    l_factor                 tarifa_t.factor%TYPE;
-    l_operacion              tarifa_t.operacion%TYPE;
-    l_tipo_redondeo          tarifa_t.tipo_redondeo%TYPE;
-    l_decimales              tarifa_t.decimales%TYPE;
+--   FUNCTION get_precio_tarifa_derivada (i_cod_tarifa  IN VARCHAR2
+--                                       ,i_cod_art     IN VARCHAR2
+--                                       ,i_fecha       IN DATE
+--                                       ,i_cantidad    IN NUMBER
+--                                       ,i_tpreu       IN VARCHAR2
+--                                       ,i_fecha_desde IN DATE DEFAULT TO_DATE ('1900-01-01'
+--                                                                              ,'YYYY-MM-DD'))
+--     RETURN NUMBER AS
+--     l_cod_tarifa             tarifa_articulo_t.cod_tarifa%TYPE;
+--     l_cod_art                tarifa_articulo_t.cod_art%TYPE;
+--     l_fecha_desde            tarifa_articulo_t.fecha_desde%TYPE;
+--     l_cantidad_desde         tarifa_articulo_t.cantidad_desde%TYPE;
+--     l_precio                 tarifa_articulo_t.precio%TYPE;
+--     l_tpreu                  tarifa_articulo_t.tpreu%TYPE;
+--     l_cod_tarifa_derivada    tarifa_t.cod_tarifa_derivada%TYPE;
+--     l_factor                 tarifa_t.factor%TYPE;
+--     l_operacion              tarifa_t.operacion%TYPE;
+--     l_tipo_redondeo          tarifa_t.tipo_redondeo%TYPE;
+--     l_decimales              tarifa_t.decimales%TYPE;
 
-    l_precio_tarifa          NUMBER (18, 6);
-    l_precio_tarifa_unitario NUMBER (18, 6);
-    l_precio_tarifa_padre    NUMBER (18, 6);
-  BEGIN
-    SELECT tarifa.cod_tarifa_derivada
-          ,tarifa.factor
-          ,tarifa.operacion
-          ,tarifa.tipo_redondeo
-          ,tarifa.decimales
-      INTO l_cod_tarifa_derivada
-          ,l_factor
-          ,l_operacion
-          ,l_tipo_redondeo
-          ,l_decimales
-      FROM tarifa
-     WHERE tarifa.cod_tarifa = i_cod_tarifa;
+--     l_precio_tarifa          NUMBER (18, 6);
+--     l_precio_tarifa_unitario NUMBER (18, 6);
+--     l_precio_tarifa_padre    NUMBER (18, 6);
+--   BEGIN
+--     SELECT tarifa.cod_tarifa_derivada
+--           ,tarifa.factor
+--           ,tarifa.operacion
+--           ,tarifa.tipo_redondeo
+--           ,tarifa.decimales
+--       INTO l_cod_tarifa_derivada
+--           ,l_factor
+--           ,l_operacion
+--           ,l_tipo_redondeo
+--           ,l_decimales
+--       FROM tarifa
+--      WHERE tarifa.cod_tarifa = i_cod_tarifa;
 
-    BEGIN
-        SELECT cod_tarifa
-              ,cod_art
-              ,fecha_desde
-              ,cantidad_desde
-              ,precio
-              ,tpreu
-          INTO l_cod_tarifa
-              ,l_cod_art
-              ,l_fecha_desde
-              ,l_cantidad_desde
-              ,l_precio
-              ,l_tpreu
-          FROM tarifa_articulo
-         WHERE cod_tarifa = i_cod_tarifa
-           AND cod_art = i_cod_art
-           AND fecha_desde >= NVL (i_fecha_desde
-                                  ,TO_DATE ('1900-01-01'
-                                           ,'YYYY-MM-DD'))
-           AND fecha_desde <= i_fecha
-           AND cantidad_desde <= i_cantidad
-      ORDER BY fecha_desde DESC
-              ,cantidad_desde DESC
-         FETCH NEXT 1 ROWS ONLY;
-    EXCEPTION
-      WHEN NO_DATA_FOUND THEN
-        l_precio := 0;
-        l_tpreu := 'U';
-        l_fecha_desde := i_fecha_desde;
-    END;
+--     BEGIN
+--         SELECT cod_tarifa
+--               ,cod_art
+--               ,fecha_desde
+--               ,cantidad_desde
+--               ,precio
+--               ,tpreu
+--           INTO l_cod_tarifa
+--               ,l_cod_art
+--               ,l_fecha_desde
+--               ,l_cantidad_desde
+--               ,l_precio
+--               ,l_tpreu
+--           FROM tarifa_articulo
+--          WHERE cod_tarifa = i_cod_tarifa
+--            AND cod_art = i_cod_art
+--            AND fecha_desde >= NVL (i_fecha_desde
+--                                   ,TO_DATE ('1900-01-01'
+--                                            ,'YYYY-MM-DD'))
+--            AND fecha_desde <= i_fecha
+--            AND cantidad_desde <= i_cantidad
+--       ORDER BY fecha_desde DESC
+--               ,cantidad_desde DESC
+--          FETCH NEXT 1 ROWS ONLY;
+--     EXCEPTION
+--       WHEN NO_DATA_FOUND THEN
+--         l_precio := 0;
+--         l_tpreu := 'U';
+--         l_fecha_desde := i_fecha_desde;
+--     END;
 
---    DBMS_OUTPUT.put_line (   'TARIFA: '
---                          || i_cod_tarifa
---                          || ' PRECIO: '
---                          || NVL (l_precio, 0)
---                          || ' FECHA_DESDE: '
---                          || TO_CHAR (l_fecha_desde
---                                     ,'YYYY-MM-DD')
---                          || ' TARIFA DERIVADA: '
---                          || l_cod_tarifa_derivada);
+-- --    DBMS_OUTPUT.put_line (   'TARIFA: '
+-- --                          || i_cod_tarifa
+-- --                          || ' PRECIO: '
+-- --                          || NVL (l_precio, 0)
+-- --                          || ' FECHA_DESDE: '
+-- --                          || TO_CHAR (l_fecha_desde
+-- --                                     ,'YYYY-MM-DD')
+-- --                          || ' TARIFA DERIVADA: '
+-- --                          || l_cod_tarifa_derivada);
 
-    CASE
-      WHEN l_cod_tarifa_derivada IS NULL THEN
-        l_precio_tarifa_unitario :=
-            l_precio
-          / CASE l_tpreu
-              WHEN 'M' THEN 1000
-              WHEN 'C' THEN 100
-              ELSE 1
-            END;
+--     CASE
+--       WHEN l_cod_tarifa_derivada IS NULL THEN
+--         l_precio_tarifa_unitario :=
+--             l_precio
+--           / CASE l_tpreu
+--               WHEN 'M' THEN 1000
+--               WHEN 'C' THEN 100
+--               ELSE 1
+--             END;
 
-        l_precio_tarifa :=
-            l_precio_tarifa_unitario
-          * CASE i_tpreu
-              WHEN 'M' THEN 1000
-              WHEN 'C' THEN 100
-              ELSE 1
-            END;
-      ELSE
-        l_precio_tarifa_padre :=
-          tarifa_venta_pkg.get_precio_tarifa_derivada (i_cod_tarifa  => l_cod_tarifa_derivada
-                                                      ,i_cod_art     => i_cod_art
-                                                      ,i_fecha       => i_fecha
-                                                      ,i_cantidad    => i_cantidad
-                                                      ,i_tpreu       => i_tpreu
-                                                      ,i_fecha_desde => l_fecha_desde);
+--         l_precio_tarifa :=
+--             l_precio_tarifa_unitario
+--           * CASE i_tpreu
+--               WHEN 'M' THEN 1000
+--               WHEN 'C' THEN 100
+--               ELSE 1
+--             END;
+--       ELSE
+--         l_precio_tarifa_padre :=
+--           tarifa_venta_pkg.get_precio_tarifa_derivada (i_cod_tarifa  => l_cod_tarifa_derivada
+--                                                       ,i_cod_art     => i_cod_art
+--                                                       ,i_fecha       => i_fecha
+--                                                       ,i_cantidad    => i_cantidad
+--                                                       ,i_tpreu       => i_tpreu
+--                                                       ,i_fecha_desde => l_fecha_desde);
 
-        IF l_precio_tarifa_padre <> 0 THEN
-          CASE l_operacion
-            WHEN '*' THEN
-              l_precio_tarifa := l_precio_tarifa_padre * l_factor;
-            ELSE
-              l_precio_tarifa := l_precio_tarifa_padre / l_factor;
-          END CASE;
+--         IF l_precio_tarifa_padre <> 0 THEN
+--           CASE l_operacion
+--             WHEN '*' THEN
+--               l_precio_tarifa := l_precio_tarifa_padre * l_factor;
+--             ELSE
+--               l_precio_tarifa := l_precio_tarifa_padre / l_factor;
+--           END CASE;
 
-          CASE
-            WHEN l_tipo_redondeo = 'A' THEN
-              l_precio_tarifa :=
-                ROUND (  l_precio_tarifa
-                       + (  5
-                          / POWER (10
-                                  ,l_decimales + 1))
-                      ,l_decimales);
-            ELSE
-              l_precio_tarifa :=
-                ROUND (l_precio_tarifa
-                      ,l_decimales);
-          END CASE;
-        ELSE
-          l_precio_tarifa_unitario :=
-              l_precio
-            / CASE l_tpreu
-                WHEN 'M' THEN 1000
-                WHEN 'C' THEN 100
-                ELSE 1
-              END;
+--           CASE
+--             WHEN l_tipo_redondeo = 'A' THEN
+--               l_precio_tarifa :=
+--                 ROUND (  l_precio_tarifa
+--                        + (  5
+--                           / POWER (10
+--                                   ,l_decimales + 1))
+--                       ,l_decimales);
+--             ELSE
+--               l_precio_tarifa :=
+--                 ROUND (l_precio_tarifa
+--                       ,l_decimales);
+--           END CASE;
+--         ELSE
+--           l_precio_tarifa_unitario :=
+--               l_precio
+--             / CASE l_tpreu
+--                 WHEN 'M' THEN 1000
+--                 WHEN 'C' THEN 100
+--                 ELSE 1
+--               END;
 
-          l_precio_tarifa :=
-              l_precio_tarifa_unitario
-            * CASE i_tpreu
-                WHEN 'M' THEN 1000
-                WHEN 'C' THEN 100
-                ELSE 1
-              END;
-        END IF;
-    END CASE;
+--           l_precio_tarifa :=
+--               l_precio_tarifa_unitario
+--             * CASE i_tpreu
+--                 WHEN 'M' THEN 1000
+--                 WHEN 'C' THEN 100
+--                 ELSE 1
+--               END;
+--         END IF;
+--     END CASE;
 
---    DBMS_OUTPUT.put_line ('*TARIFA: ' || i_cod_tarifa || ' PRECIO: ' || NVL (l_precio_tarifa, 0));
-    RETURN NVL (l_precio_tarifa, 0);
-  END get_precio_tarifa_derivada;
+-- --    DBMS_OUTPUT.put_line ('*TARIFA: ' || i_cod_tarifa || ' PRECIO: ' || NVL (l_precio_tarifa, 0));
+--     RETURN NVL (l_precio_tarifa, 0);
+--   END get_precio_tarifa_derivada;
 
-  FUNCTION get_fecha_tarifa (i_cod_tarifa IN VARCHAR2
-                            ,i_cod_art    IN VARCHAR2)
-    RETURN DATE AS
-    l_fecha_desde DATE;
-  BEGIN
-    SELECT MAX (fecha_desde)
-      INTO l_fecha_desde
-      FROM (    SELECT fecha_desde
-                  FROM (  SELECT tarifa_articulo.cod_tarifa
-                                ,tarifa_articulo.cod_art
-                                ,tarifa.cod_tarifa_derivada
-                                ,MAX (tarifa_articulo.fecha_desde) fecha_desde
-                            FROM tarifa
-                                 INNER JOIN tarifa_articulo ON tarifa_articulo.cod_tarifa = tarifa.cod_tarifa
-                        GROUP BY tarifa_articulo.cod_tarifa
-                                ,tarifa_articulo.cod_art
-                                ,tarifa.cod_tarifa_derivada) temp
-            START WITH temp.cod_tarifa = i_cod_tarifa
-                   AND temp.cod_art = i_cod_art
-            CONNECT BY PRIOR temp.cod_tarifa_derivada = temp.cod_tarifa
-                   AND PRIOR temp.cod_art = temp.cod_art);
+  -- FUNCTION get_fecha_tarifa (i_cod_tarifa IN VARCHAR2
+  --                           ,i_cod_art    IN VARCHAR2)
+  --   RETURN DATE AS
+  --   l_fecha_desde DATE;
+  -- BEGIN
+  --   SELECT MAX (fecha_desde)
+  --     INTO l_fecha_desde
+  --     FROM (    SELECT fecha_desde
+  --                 FROM (  SELECT tarifa_articulo.cod_tarifa
+  --                               ,tarifa_articulo.cod_art
+  --                               ,tarifa.cod_tarifa_derivada
+  --                               ,MAX (tarifa_articulo.fecha_desde) fecha_desde
+  --                           FROM tarifa
+  --                                INNER JOIN tarifa_articulo ON tarifa_articulo.cod_tarifa = tarifa.cod_tarifa
+  --                       GROUP BY tarifa_articulo.cod_tarifa
+  --                               ,tarifa_articulo.cod_art
+  --                               ,tarifa.cod_tarifa_derivada) temp
+  --           START WITH temp.cod_tarifa = i_cod_tarifa
+  --                  AND temp.cod_art = i_cod_art
+  --           CONNECT BY PRIOR temp.cod_tarifa_derivada = temp.cod_tarifa
+  --                  AND PRIOR temp.cod_art = temp.cod_art);
 
-    RETURN l_fecha_desde;
-  END;
+  --   RETURN l_fecha_desde;
+  -- END;
 
-  PROCEDURE get_precio_tarifa (i_cod_tarifa IN     VARCHAR2
-                              ,i_cod_divisa IN     VARCHAR2
-                              ,i_cod_art    IN     VARCHAR2
-                              ,i_fecha      IN     DATE
-                              ,i_cantidad   IN     NUMBER
-                              ,o_precio        OUT NUMBER
-                              ,o_tpreu         OUT VARCHAR2) AS
-    CURSOR tarifas_derivadas_cur IS
-          SELECT tarifa.cod_tarifa
-                ,tarifa.factor
-                ,tarifa.operacion
-                ,tarifa.tipo_redondeo
-                ,tarifa.decimales
-            FROM tarifa
-      START WITH tarifa.cod_tarifa = i_cod_tarifa
-             AND tarifa.cod_divisa = i_cod_divisa
-      CONNECT BY PRIOR tarifa.cod_tarifa_derivada = tarifa.cod_tarifa
-        ORDER BY LEVEL DESC;
+  -- PROCEDURE get_precio_tarifa (i_cod_tarifa IN     VARCHAR2
+  --                             ,i_cod_divisa IN     VARCHAR2
+  --                             ,i_cod_art    IN     VARCHAR2
+  --                             ,i_fecha      IN     DATE
+  --                             ,i_cantidad   IN     NUMBER
+  --                             ,o_precio        OUT NUMBER
+  --                             ,o_tpreu         OUT VARCHAR2) AS
+  --   CURSOR tarifas_derivadas_cur IS
+  --         SELECT tarifa.cod_tarifa
+  --               ,tarifa.factor
+  --               ,tarifa.operacion
+  --               ,tarifa.tipo_redondeo
+  --               ,tarifa.decimales
+  --           FROM tarifa
+  --     START WITH tarifa.cod_tarifa = i_cod_tarifa
+  --            AND tarifa.cod_divisa = i_cod_divisa
+  --     CONNECT BY PRIOR tarifa.cod_tarifa_derivada = tarifa.cod_tarifa
+  --       ORDER BY LEVEL DESC;
 
-    l_fecha_desde tarifa_articulo.fecha_desde%TYPE;
-    l_tpreu_ant   tarifa_articulo.tpreu%TYPE;
-    l_precio_ant  tarifa_articulo.precio%TYPE;
-  BEGIN
-    /*AGAFAVA LA DATA PER CADA TARIFA EN CONTES D'AGAFAR LA DATA MÉS GRAN DE LA TARIFA PRINCIPAL O DERIVADA.*/
-    SELECT MAX (tarifa_articulo.fecha_desde)
-      INTO l_fecha_desde
-      FROM tarifa_articulo
-     WHERE tarifa_articulo.cod_tarifa IN (    SELECT tarifa.cod_tarifa
-                                                FROM tarifa
-                                          START WITH tarifa.cod_tarifa = i_cod_tarifa
-                                                 AND tarifa.cod_divisa = i_cod_divisa
-                                          CONNECT BY PRIOR tarifa.cod_tarifa_derivada = tarifa.cod_tarifa)
-       AND tarifa_articulo.cod_art = i_cod_art
-       AND tarifa_articulo.fecha_desde < i_fecha;
+  --   l_fecha_desde tarifa_articulo.fecha_desde%TYPE;
+  --   l_tpreu_ant   tarifa_articulo.tpreu%TYPE;
+  --   l_precio_ant  tarifa_articulo.precio%TYPE;
+  -- BEGIN
+  --   /*AGAFAVA LA DATA PER CADA TARIFA EN CONTES D'AGAFAR LA DATA MÉS GRAN DE LA TARIFA PRINCIPAL O DERIVADA.*/
+  --   SELECT MAX (tarifa_articulo.fecha_desde)
+  --     INTO l_fecha_desde
+  --     FROM tarifa_articulo
+  --    WHERE tarifa_articulo.cod_tarifa IN (    SELECT tarifa.cod_tarifa
+  --                                               FROM tarifa
+  --                                         START WITH tarifa.cod_tarifa = i_cod_tarifa
+  --                                                AND tarifa.cod_divisa = i_cod_divisa
+  --                                         CONNECT BY PRIOR tarifa.cod_tarifa_derivada = tarifa.cod_tarifa)
+  --      AND tarifa_articulo.cod_art = i_cod_art
+  --      AND tarifa_articulo.fecha_desde < i_fecha;
 
-   <<tarifas>>
-    FOR tarifas_derivadas_rec IN tarifas_derivadas_cur LOOP
-      BEGIN
-        /*   SELECT MAX (tarifa_articulo.fecha_desde)
-             INTO l_fecha_desde
-             FROM tarifa_articulo
-            WHERE     tarifa_articulo.cod_tarifa = tarifas_derivadas_rec.cod_tarifa
-                  AND tarifa_articulo.cod_art = i_cod_art
-                  AND tarifa_articulo.fecha_desde < i_fecha;*/
+  --  <<tarifas>>
+  --   FOR tarifas_derivadas_rec IN tarifas_derivadas_cur LOOP
+  --     BEGIN
+  --       /*   SELECT MAX (tarifa_articulo.fecha_desde)
+  --            INTO l_fecha_desde
+  --            FROM tarifa_articulo
+  --           WHERE     tarifa_articulo.cod_tarifa = tarifas_derivadas_rec.cod_tarifa
+  --                 AND tarifa_articulo.cod_art = i_cod_art
+  --                 AND tarifa_articulo.fecha_desde < i_fecha;*/
 
-        SELECT tpreu
-              ,precio
-          INTO o_tpreu
-              ,o_precio
-          FROM (  SELECT tarifa_articulo.tpreu
-                        ,tarifa_articulo.precio
-                    FROM tarifa_articulo
-                   WHERE tarifa_articulo.cod_tarifa = tarifas_derivadas_rec.cod_tarifa
-                     AND tarifa_articulo.cod_art = i_cod_art
-                     AND tarifa_articulo.fecha_desde = l_fecha_desde
-                     AND tarifa_articulo.cantidad_desde <= i_cantidad
-                ORDER BY tarifa_articulo.cantidad_desde DESC)
-         WHERE ROWNUM = 1;
-      EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-          IF l_precio_ant IS NOT NULL THEN
-            o_tpreu := l_tpreu_ant;
-            o_precio :=
-              tarifa_venta_pkg.get_tarifa_derivada_precio (i_operacion       => tarifas_derivadas_rec.operacion
-                                                          ,i_tipo_redondeo   => tarifas_derivadas_rec.tipo_redondeo
-                                                          ,i_decimales       => tarifas_derivadas_rec.decimales
-                                                          ,i_factor          => tarifas_derivadas_rec.factor
-                                                          ,i_precio_articulo => l_precio_ant);
-          END IF;
-      END;
+  --       SELECT tpreu
+  --             ,precio
+  --         INTO o_tpreu
+  --             ,o_precio
+  --         FROM (  SELECT tarifa_articulo.tpreu
+  --                       ,tarifa_articulo.precio
+  --                   FROM tarifa_articulo
+  --                  WHERE tarifa_articulo.cod_tarifa = tarifas_derivadas_rec.cod_tarifa
+  --                    AND tarifa_articulo.cod_art = i_cod_art
+  --                    AND tarifa_articulo.fecha_desde = l_fecha_desde
+  --                    AND tarifa_articulo.cantidad_desde <= i_cantidad
+  --               ORDER BY tarifa_articulo.cantidad_desde DESC)
+  --        WHERE ROWNUM = 1;
+  --     EXCEPTION
+  --       WHEN NO_DATA_FOUND THEN
+  --         IF l_precio_ant IS NOT NULL THEN
+  --           o_tpreu := l_tpreu_ant;
+  --           o_precio :=
+  --             tarifa_venta_pkg.get_tarifa_derivada_precio (i_operacion       => tarifas_derivadas_rec.operacion
+  --                                                         ,i_tipo_redondeo   => tarifas_derivadas_rec.tipo_redondeo
+  --                                                         ,i_decimales       => tarifas_derivadas_rec.decimales
+  --                                                         ,i_factor          => tarifas_derivadas_rec.factor
+  --                                                         ,i_precio_articulo => l_precio_ant);
+  --         END IF;
+  --     END;
 
-      l_tpreu_ant := o_tpreu;
-      l_precio_ant := o_precio;
-    END LOOP tarifas;
+  --     l_tpreu_ant := o_tpreu;
+  --     l_precio_ant := o_precio;
+  --   END LOOP tarifas;
 
-    o_tpreu := NVL (o_tpreu, 'U');
-    o_precio := NVL (o_precio, 0);
-  END get_precio_tarifa;
+  --   o_tpreu := NVL (o_tpreu, 'U');
+  --   o_precio := NVL (o_precio, 0);
+  -- END get_precio_tarifa;
 
-  PROCEDURE get_precio_grupo_netos (i_cod_cli    IN     VARCHAR2
-                                   ,i_cod_divisa IN     VARCHAR2
-                                   ,i_cod_art    IN     VARCHAR2
-                                   ,i_fecha      IN     DATE
-                                   ,i_cantidad   IN     NUMBER
-                                   ,o_precio        OUT NUMBER
-                                   ,o_tpreu         OUT VARCHAR2) AS
-  BEGIN
-    BEGIN
-      SELECT precio
-            ,tpreu
-        INTO o_precio
-            ,o_tpreu
-        FROM (  SELECT grupo_netos_det.precio
-                      ,grupo_netos_det.tpreu
-                  FROM grupo_netos_det
-                       INNER JOIN
-                       (  SELECT grupo_netos_det.cod_grupo_neto
-                                ,grupo_netos_det.cod_art
-                                ,MAX (grupo_netos_det.fecha_desde) fecha_desde
-                            FROM cliente_grupo_netos
-                                 INNER JOIN grupo_netos ON grupo_netos.cod_grupo_neto = cliente_grupo_netos.cod_grupo_neto
-                                 INNER JOIN grupo_netos_det ON grupo_netos_det.cod_grupo_neto = grupo_netos.cod_grupo_neto
-                           WHERE cliente_grupo_netos.cod_cli = i_cod_cli
-                             AND grupo_netos.cod_divisa = i_cod_divisa
-                             AND grupo_netos_det.cod_art = i_cod_art
-                             AND grupo_netos_det.fecha_desde < i_fecha
-                             AND (grupo_netos_det.fecha_fin > i_fecha
-                               OR grupo_netos_det.fecha_fin IS NULL)
-                             AND grupo_netos.activo_sn = 'S'
-                        GROUP BY grupo_netos_det.cod_grupo_neto
-                                ,grupo_netos_det.cod_art) grupo_netos_det_vigente
-                         ON grupo_netos_det.cod_grupo_neto = grupo_netos_det_vigente.cod_grupo_neto
-                        AND grupo_netos_det.cod_art = grupo_netos_det_vigente.cod_art
-                        AND grupo_netos_det.fecha_desde = grupo_netos_det_vigente.fecha_desde
-                 WHERE grupo_netos_det.cantidad_desde <= i_cantidad
-              ORDER BY tarifa_venta_pkg.get_precio_unitario (i_precio => grupo_netos_det.precio
-                                                            ,i_tpreu  => grupo_netos_det.tpreu) ASC)
-       WHERE ROWNUM = 1;
-    EXCEPTION
-      WHEN NO_DATA_FOUND THEN
-        o_tpreu := 'U';
-        o_precio := 0;
-    END;
+  -- PROCEDURE get_precio_grupo_netos (i_cod_cli    IN     VARCHAR2
+  --                                  ,i_cod_divisa IN     VARCHAR2
+  --                                  ,i_cod_art    IN     VARCHAR2
+  --                                  ,i_fecha      IN     DATE
+  --                                  ,i_cantidad   IN     NUMBER
+  --                                  ,o_precio        OUT NUMBER
+  --                                  ,o_tpreu         OUT VARCHAR2) AS
+  -- BEGIN
+  --   BEGIN
+  --     SELECT precio
+  --           ,tpreu
+  --       INTO o_precio
+  --           ,o_tpreu
+  --       FROM (  SELECT grupo_netos_det.precio
+  --                     ,grupo_netos_det.tpreu
+  --                 FROM grupo_netos_det
+  --                      INNER JOIN
+  --                      (  SELECT grupo_netos_det.cod_grupo_neto
+  --                               ,grupo_netos_det.cod_art
+  --                               ,MAX (grupo_netos_det.fecha_desde) fecha_desde
+  --                           FROM cliente_grupo_netos
+  --                                INNER JOIN grupo_netos ON grupo_netos.cod_grupo_neto = cliente_grupo_netos.cod_grupo_neto
+  --                                INNER JOIN grupo_netos_det ON grupo_netos_det.cod_grupo_neto = grupo_netos.cod_grupo_neto
+  --                          WHERE cliente_grupo_netos.cod_cli = i_cod_cli
+  --                            AND grupo_netos.cod_divisa = i_cod_divisa
+  --                            AND grupo_netos_det.cod_art = i_cod_art
+  --                            AND grupo_netos_det.fecha_desde < i_fecha
+  --                            AND (grupo_netos_det.fecha_fin > i_fecha
+  --                              OR grupo_netos_det.fecha_fin IS NULL)
+  --                            AND grupo_netos.activo_sn = 'S'
+  --                       GROUP BY grupo_netos_det.cod_grupo_neto
+  --                               ,grupo_netos_det.cod_art) grupo_netos_det_vigente
+  --                        ON grupo_netos_det.cod_grupo_neto = grupo_netos_det_vigente.cod_grupo_neto
+  --                       AND grupo_netos_det.cod_art = grupo_netos_det_vigente.cod_art
+  --                       AND grupo_netos_det.fecha_desde = grupo_netos_det_vigente.fecha_desde
+  --                WHERE grupo_netos_det.cantidad_desde <= i_cantidad
+  --             ORDER BY tarifa_venta_pkg.get_precio_unitario (i_precio => grupo_netos_det.precio
+  --                                                           ,i_tpreu  => grupo_netos_det.tpreu) ASC)
+  --      WHERE ROWNUM = 1;
+  --   EXCEPTION
+  --     WHEN NO_DATA_FOUND THEN
+  --       o_tpreu := 'U';
+  --       o_precio := 0;
+  --   END;
 
-    o_tpreu := NVL (o_tpreu, 'U');
-    o_precio := NVL (o_precio, 0);
-  END get_precio_grupo_netos;
+  --   o_tpreu := NVL (o_tpreu, 'U');
+  --   o_precio := NVL (o_precio, 0);
+  -- END get_precio_grupo_netos;
 
-  PROCEDURE get_precio_cliente_neto (i_cod_cli    IN     VARCHAR2
-                                    ,i_cod_divisa IN     VARCHAR2
-                                    ,i_cod_art    IN     VARCHAR2
-                                    ,i_fecha      IN     DATE
-                                    ,i_cantidad   IN     NUMBER
-                                    ,o_precio        OUT NUMBER
-                                    ,o_tpreu         OUT VARCHAR2) AS
-    l_fecha_desde tarifa_articulo.fecha_desde%TYPE;
-  BEGIN
-    BEGIN
-      SELECT MAX (TRUNC (cliente_precio_neto.fecha_desde))
-        INTO l_fecha_desde
-        FROM cliente_precio_neto
-             INNER JOIN cliente ON cliente.cod_cli = cliente_precio_neto.cod_cli
-       WHERE (cliente_precio_neto.cod_cli = i_cod_cli)
-         AND cliente.cod_divisa = i_cod_divisa
-         AND cliente_precio_neto.cod_art = i_cod_art
-         AND cliente_precio_neto.fecha_desde < i_fecha
-         AND (TRUNC (cliente_precio_neto.fecha_fin) > TRUNC (i_fecha)
-           OR cliente_precio_neto.fecha_fin IS NULL);
+  -- PROCEDURE get_precio_cliente_neto (i_cod_cli    IN     VARCHAR2
+  --                                   ,i_cod_divisa IN     VARCHAR2
+  --                                   ,i_cod_art    IN     VARCHAR2
+  --                                   ,i_fecha      IN     DATE
+  --                                   ,i_cantidad   IN     NUMBER
+  --                                   ,o_precio        OUT NUMBER
+  --                                   ,o_tpreu         OUT VARCHAR2) AS
+  --   l_fecha_desde tarifa_articulo.fecha_desde%TYPE;
+  -- BEGIN
+  --   BEGIN
+  --     SELECT MAX (TRUNC (cliente_precio_neto.fecha_desde))
+  --       INTO l_fecha_desde
+  --       FROM cliente_precio_neto
+  --            INNER JOIN cliente ON cliente.cod_cli = cliente_precio_neto.cod_cli
+  --      WHERE (cliente_precio_neto.cod_cli = i_cod_cli)
+  --        AND cliente.cod_divisa = i_cod_divisa
+  --        AND cliente_precio_neto.cod_art = i_cod_art
+  --        AND cliente_precio_neto.fecha_desde < i_fecha
+  --        AND (TRUNC (cliente_precio_neto.fecha_fin) > TRUNC (i_fecha)
+  --          OR cliente_precio_neto.fecha_fin IS NULL);
 
-      SELECT tpreu
-            ,precio
-        INTO o_tpreu
-            ,o_precio
-        FROM (  SELECT cliente_precio_neto.tpreu
-                      ,cliente_precio_neto.precio
-                  FROM cliente_precio_neto
-                       INNER JOIN cliente ON cliente.cod_cli = cliente_precio_neto.cod_cli
-                 WHERE (cliente_precio_neto.cod_cli = i_cod_cli)
-                   AND cliente.cod_divisa = i_cod_divisa
-                   AND cliente_precio_neto.cod_art = i_cod_art
-                   AND TRUNC (cliente_precio_neto.fecha_desde) = l_fecha_desde
-                   AND (TRUNC (cliente_precio_neto.fecha_fin) > TRUNC (l_fecha_desde)
-                     OR cliente_precio_neto.fecha_fin IS NULL)
-                   AND cliente_precio_neto.cantidad_desde <= i_cantidad
-              ORDER BY cliente_precio_neto.cantidad_desde DESC)
-       WHERE ROWNUM = 1;
-    EXCEPTION
-      WHEN NO_DATA_FOUND THEN
-        o_tpreu := 'U';
-        o_precio := 0;
-    END;
+  --     SELECT tpreu
+  --           ,precio
+  --       INTO o_tpreu
+  --           ,o_precio
+  --       FROM (  SELECT cliente_precio_neto.tpreu
+  --                     ,cliente_precio_neto.precio
+  --                 FROM cliente_precio_neto
+  --                      INNER JOIN cliente ON cliente.cod_cli = cliente_precio_neto.cod_cli
+  --                WHERE (cliente_precio_neto.cod_cli = i_cod_cli)
+  --                  AND cliente.cod_divisa = i_cod_divisa
+  --                  AND cliente_precio_neto.cod_art = i_cod_art
+  --                  AND TRUNC (cliente_precio_neto.fecha_desde) = l_fecha_desde
+  --                  AND (TRUNC (cliente_precio_neto.fecha_fin) > TRUNC (l_fecha_desde)
+  --                    OR cliente_precio_neto.fecha_fin IS NULL)
+  --                  AND cliente_precio_neto.cantidad_desde <= i_cantidad
+  --             ORDER BY cliente_precio_neto.cantidad_desde DESC)
+  --      WHERE ROWNUM = 1;
+  --   EXCEPTION
+  --     WHEN NO_DATA_FOUND THEN
+  --       o_tpreu := 'U';
+  --       o_precio := 0;
+  --   END;
 
-    o_tpreu := NVL (o_tpreu, 'U');
-    o_precio := NVL (o_precio, 0);
-  END get_precio_cliente_neto;
+  --   o_tpreu := NVL (o_tpreu, 'U');
+  --   o_precio := NVL (o_precio, 0);
+  -- END get_precio_cliente_neto;
 
   FUNCTION get_descuento_general (i_cod_art         IN VARCHAR2
                                  ,i_cod_dto_general IN VARCHAR2

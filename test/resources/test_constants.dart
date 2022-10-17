@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_precio_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 
 const kTestDatabaseFile = 'test/resources/jbm.sqlite';
@@ -104,5 +105,14 @@ final kClienteGrupoNetoDTO = ClienteGrupoNetoDTO(
   clienteId: kClienteId,
   grupoNetoId: kGrupoNetoId,
   grupoNetoDescripcion: 'Grupo Neto Test 01',
+  lastUpdated: kDateTime,
+);
+
+final kClientePrecioNetoDTO = ClientePrecioNetoDTO(
+  clienteId: kClienteId,
+  articuloId: kArticuloId,
+  cantidadDesde: 1,
+  precio: 5,
+  tipoPrecio: 1,
   lastUpdated: kDateTime,
 );

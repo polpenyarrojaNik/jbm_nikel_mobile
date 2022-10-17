@@ -22,15 +22,16 @@ void main() {
       dio,
       kUsuario,
     );
-  });
-
-  tearDown(() async {
     await db.delete(db.clienteTable).go();
     await db.delete(db.articuloTable).go();
     await db.delete(db.articuloEmpresaIvaTable).go();
     await db.delete(db.articuloPrecioTarifaTable).go();
     await db.delete(db.clienteGrupoNetoTable).go();
     await db.delete(db.articuloGrupoNetoTable).go();
+    await db.delete(db.clientePrecioNetoTable).go();
+  });
+
+  tearDown(() async {
     await db.close();
   });
 
@@ -118,7 +119,7 @@ void main() {
 
       expect(
           await pedidoVentaRepository.getPrecioTarifa(
-            articuloID: kArticuloId,
+            articuloId: kArticuloId,
             tarifaId: kTarifaId,
             cantidad: 2,
           ),
@@ -130,7 +131,7 @@ void main() {
 
       expect(
           await pedidoVentaRepository.getPrecioTarifa(
-            articuloID: kArticuloId,
+            articuloId: kArticuloId,
             tarifaId: kTarifaId,
             cantidad: 10,
           ),
@@ -142,7 +143,7 @@ void main() {
 
       expect(
           await pedidoVentaRepository.getPrecioTarifa(
-            articuloID: kArticuloId,
+            articuloId: kArticuloId,
             tarifaId: kTarifaId,
             cantidad: 0,
           ),
@@ -153,83 +154,162 @@ void main() {
           reason: 'Precio para 0 unidades debe ser 0€');
     });
 
-    test('getPrecioGrupoNeto devuelve el precio neto escalado precio',
+    group('getPrecioGrupoNeto', () {
+      test('getPrecioGrupoNeto devuelve el precio neto escalado precio',
+          () async {
+        await db.into(db.clienteTable).insert(kClienteDTO);
+        await db.into(db.clienteGrupoNetoTable).insert(kClienteGrupoNetoDTO);
+        await db
+            .into(db.clienteGrupoNetoTable)
+            .insert(kClienteGrupoNetoDTO.copyWith(grupoNetoId: 'GN02'));
+        await db
+            .into(db.articuloGrupoNetoTable)
+            .insert(kArticuloGrupoNetoDTO.copyWith(
+              cantidadDesde: 1,
+              precio: 5,
+            ));
+        await db
+            .into(db.articuloGrupoNetoTable)
+            .insert(kArticuloGrupoNetoDTO.copyWith(
+              cantidadDesde: 10,
+              precio: 15,
+            ));
+
+        final precioGrupoNeto = await pedidoVentaRepository.getPrecioGrupoNeto(
+          clienteId: kClienteId,
+          articuloId: kArticuloId,
+          cantidad: 1,
+        );
+
+        expect(
+            precioGrupoNeto,
+            Precio(
+              precio: Money.parse('5', code: 'EU'),
+              tipoPrecio: 1,
+            ),
+            reason: 'Precio para 1 unidads debe ser 5€');
+      });
+
+      test(
+          'getPrecioGrupoNeto devuelve el precio neto más bajo de todas las tarifas',
+          () async {
+        await db.into(db.clienteTable).insert(kClienteDTO);
+        await db.into(db.clienteGrupoNetoTable).insert(kClienteGrupoNetoDTO);
+        await db
+            .into(db.clienteGrupoNetoTable)
+            .insert(kClienteGrupoNetoDTO.copyWith(grupoNetoId: 'GN02'));
+        await db
+            .into(db.articuloGrupoNetoTable)
+            .insert(kArticuloGrupoNetoDTO.copyWith(
+              cantidadDesde: 1,
+              precio: 5,
+            ));
+        await db
+            .into(db.articuloGrupoNetoTable)
+            .insert(kArticuloGrupoNetoDTO.copyWith(
+              cantidadDesde: 10,
+              precio: 15,
+            ));
+
+        await db
+            .into(db.articuloGrupoNetoTable)
+            .insert(kArticuloGrupoNetoDTO.copyWith(
+              grupoNetoId: 'GN02',
+              cantidadDesde: 1,
+              precio: 300,
+              tipoPrecio: 100,
+            ));
+
+        final precioGrupoNeto = await pedidoVentaRepository.getPrecioGrupoNeto(
+          clienteId: kClienteId,
+          articuloId: kArticuloId,
+          cantidad: 20,
+        );
+
+        expect(
+            precioGrupoNeto,
+            Precio(
+              precio: Money.parse('300', code: 'EU'),
+              tipoPrecio: 100,
+            ),
+            reason: 'Precio para 20 unidads debe ser 3€');
+      });
+    });
+
+    test('getPrecioClienteNeto devuelve el precio neto del cliente más bajo',
         () async {
       await db.into(db.clienteTable).insert(kClienteDTO);
-      await db.into(db.clienteGrupoNetoTable).insert(kClienteGrupoNetoDTO);
       await db
-          .into(db.clienteGrupoNetoTable)
-          .insert(kClienteGrupoNetoDTO.copyWith(grupoNetoId: 'GN02'));
-      await db
-          .into(db.articuloGrupoNetoTable)
-          .insert(kArticuloGrupoNetoDTO.copyWith(
+          .into(db.clientePrecioNetoTable)
+          .insert(kClientePrecioNetoDTO.copyWith(
             cantidadDesde: 1,
-            precio: 5,
-          ));
-      await db
-          .into(db.articuloGrupoNetoTable)
-          .insert(kArticuloGrupoNetoDTO.copyWith(
-            cantidadDesde: 10,
             precio: 15,
           ));
+      await db
+          .into(db.clientePrecioNetoTable)
+          .insert(kClientePrecioNetoDTO.copyWith(
+            cantidadDesde: 10,
+            precio: 5,
+          ));
 
-      final precioGrupoNeto = await pedidoVentaRepository.getPrecioGrupoNeto(
+      final precioGrupoNeto20 =
+          await pedidoVentaRepository.getPrecioClienteNeto(
         clienteId: kClienteId,
-        aticuloId: kArticuloId,
-        cantidad: 1,
+        articuloId: kArticuloId,
+        cantidad: 20,
       );
 
       expect(
-          precioGrupoNeto,
+          precioGrupoNeto20,
           Precio(
             precio: Money.parse('5', code: 'EU'),
             tipoPrecio: 1,
           ),
-          reason: 'Precio para 1 unidads debe ser 5€');
-    });
+          reason: 'Precio para 20 unidads debe ser 5€');
 
-    test(
-        'getPrecioGrupoNeto devuelve el precio neto más bajo de todas las tarifas',
-        () async {
-      await db.into(db.clienteTable).insert(kClienteDTO);
-      await db.into(db.clienteGrupoNetoTable).insert(kClienteGrupoNetoDTO);
-      await db
-          .into(db.clienteGrupoNetoTable)
-          .insert(kClienteGrupoNetoDTO.copyWith(grupoNetoId: 'GN02'));
-      await db
-          .into(db.articuloGrupoNetoTable)
-          .insert(kArticuloGrupoNetoDTO.copyWith(
-            cantidadDesde: 1,
-            precio: 5,
-          ));
-      await db
-          .into(db.articuloGrupoNetoTable)
-          .insert(kArticuloGrupoNetoDTO.copyWith(
-            cantidadDesde: 10,
-            precio: 15,
-          ));
-
-      await db
-          .into(db.articuloGrupoNetoTable)
-          .insert(kArticuloGrupoNetoDTO.copyWith(
-            grupoNetoId: 'GN02',
-            cantidadDesde: 1,
-            precio: 3,
-          ));
-
-      final precioGrupoNeto = await pedidoVentaRepository.getPrecioGrupoNeto(
+      final precioGrupoNeto7 = await pedidoVentaRepository.getPrecioClienteNeto(
         clienteId: kClienteId,
-        aticuloId: kArticuloId,
-        cantidad: 1,
+        articuloId: kArticuloId,
+        cantidad: 7,
       );
 
       expect(
-          precioGrupoNeto,
+          precioGrupoNeto7,
           Precio(
-            precio: Money.parse('3', code: 'EU'),
+            precio: Money.parse('15', code: 'EU'),
             tipoPrecio: 1,
           ),
-          reason: 'Precio para 1 unidads debe ser 5€');
+          reason: 'Precio para 7 unidads debe ser 15€');
+    });
+    group('getDescuentoGeneral', () {
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia X, subfamilia X',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO);
+        //   await db.into(db.clienteDescuentoTable).insert(kArticuloDTO);
+      });
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia X',
+          () async {});
+
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia X',
+          () async {});
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia X',
+          () async {});
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo X, familia *, subfamilia *',
+          () async {});
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo *, familia *, subfamilia X',
+          () async {});
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento, articulo; DATOS: articulo *, familia X, subfamilia *',
+          () async {});
+      test(
+          'getDescuentoGeneral PARAM: codigoDescuento; DATOS: articulo *, familia *, subfamilia *',
+          () async {});
     });
   });
 }
