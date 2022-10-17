@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 class ColumnFieldTextDetalle extends StatelessWidget {
   const ColumnFieldTextDetalle(
@@ -23,9 +24,7 @@ class ColumnFieldTextDetalle extends StatelessWidget {
                 value,
               )
             : value,
-        const SizedBox(
-          height: 5,
-        ),
+        gapH4,
       ],
     );
   }

@@ -294,14 +294,14 @@ class ClienteAlrededorDialog extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('#${cliente.id} ${cliente.nombreFiscal}'),
-          const SizedBox(height: 2),
+          gapH2,
           Text(
             cliente.direccionFiscal1 ?? '',
             style: Theme.of(context).textTheme.bodyText2!.copyWith(
                   color: Theme.of(context).textTheme.caption!.color,
                 ),
           ),
-          const SizedBox(height: 2),
+          gapH2,
           AddressTextWidget(
               codigoPostal: cliente.codigoPostalFiscal,
               poblacion: cliente.poblacionFiscal,
@@ -312,13 +312,13 @@ class ClienteAlrededorDialog extends StatelessWidget {
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
               value: formatPrecios(
                   precio: cliente.ventasAnyoActual, tipoPrecio: null)),
-          if (cliente.margenAnyoActual != null) const SizedBox(height: 2),
+          if (cliente.margenAnyoActual != null) gapH2,
           if (cliente.margenAnyoActual != null)
             RowFieldTextDetalle(
                 fieldTitleValue:
                     S.of(context).cliente_alrededor_margenAnoActual,
                 value: '${numberFormatDecimal(cliente.margenAnyoActual!)}%'),
-          const SizedBox(height: 2),
+          gapH2,
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
               value: '${numberFormatDecimal(cliente.porcentajeAbonos)}%'),
