@@ -619,6 +619,14 @@ class PedidoVentaRepository {
           );
   }
 
+  Future<double> getDescuentoCliente({
+    required String articuloId,
+    required String clienteId,
+    required int cantidad,
+  }) async {
+    return 0;
+  }
+
   Future<double> getDescuentoGeneral({
     required String articuloId,
     required String descuentoGeneralId,

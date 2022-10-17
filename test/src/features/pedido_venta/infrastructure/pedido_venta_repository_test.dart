@@ -22,17 +22,11 @@ void main() {
       dio,
       kUsuario,
     );
-    await db.delete(db.clienteTable).go();
-    await db.delete(db.articuloTable).go();
-    await db.delete(db.articuloEmpresaIvaTable).go();
-    await db.delete(db.articuloPrecioTarifaTable).go();
-    await db.delete(db.clienteGrupoNetoTable).go();
-    await db.delete(db.articuloGrupoNetoTable).go();
-    await db.delete(db.clientePrecioNetoTable).go();
-    await db.delete(db.descuentoGeneralTable).go();
+    await cleanDatabase(db);
   });
 
   tearDown(() async {
+    await cleanDatabase(db);
     await db.close();
   });
 
@@ -504,6 +498,222 @@ void main() {
       });
     });
 
-    group('getDescuentoCliente', () {});
+    group('getDescuentoCliente', () {
+      setUp(() async {
+        await db.into(db.clienteTable).insert(kClienteDTO);
+
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+              descuento: 1,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: '*',
+              descuento: 2,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: '*',
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+              descuento: 3,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: '*',
+              subfamiliaId: kSubfamiliaId,
+              descuento: 4,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: kArticuloId,
+              familiaId: '*',
+              subfamiliaId: '*',
+              descuento: 5,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: '*',
+              familiaId: '*',
+              subfamiliaId: kSubfamiliaId,
+              descuento: 6,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: '*',
+              familiaId: kFamiliaId,
+              subfamiliaId: '*',
+              descuento: 7,
+            ));
+        await db
+            .into(db.clienteDescuentoTable)
+            .insert(kClienteDescuentoDTO.copyWith(
+              articuloId: '*',
+              familiaId: '*',
+              subfamiliaId: '*',
+              descuento: 8,
+            ));
+      });
+      test(
+          'getDescuentoCliente 1 PARAM: clienteId, articuloId; DATOS: articulo X, familia X, subfamilia X',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+            ));
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: kArticuloId,
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 1.0);
+      });
+      test(
+          'getDescuentoCliente 2 PARAM: clienteId, articuloId; DATOS: articulo X, familia X, subfamilia *',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: kFamiliaId,
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: kArticuloId,
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 2.0);
+      });
+      test(
+          'getDescuentoCliente 3 PARAM: clienteId, articuloId; DATOS: articulo *, familia X, subfamilia X',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: kFamiliaId,
+              subfamiliaId: kSubfamiliaId,
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: '-',
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 3.0);
+      });
+      test(
+          'getDescuentoCliente 4 PARAM: clienteId, articuloId; DATOS: articulo X, familia *, subfamilia X',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: '-',
+              subfamiliaId: kSubfamiliaId,
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: kArticuloId,
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 4.0);
+      });
+      test(
+          'getDescuentoCliente 5 PARAM: clienteId, articuloId; DATOS: articulo X, familia *, subfamilia *',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: kArticuloId,
+              familiaId: '-',
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: kArticuloId,
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 5.0);
+      });
+      test(
+          'getDescuentoCliente 6 PARAM: clienteId, articuloId; DATOS: articulo *, familia *, subfamilia X',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: '-',
+              subfamiliaId: kSubfamiliaId,
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: '-',
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 6.0);
+      });
+      test(
+          'getDescuentoCliente 7 PARAM: clienteId, articuloId; DATOS: articulo *, familia X, subfamilia *',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: kFamiliaId,
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: '-',
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 7.0);
+      });
+      test(
+          'getDescuentoCliente 8 PARAM: clienteId, articuloId; DATOS: articulo *, familia *, subfamilia *',
+          () async {
+        await db.into(db.articuloTable).insert(kArticuloDTO.copyWith(
+              id: '-',
+              familiaId: '-',
+              subfamiliaId: '-',
+            ));
+
+        final descuento = await pedidoVentaRepository.getDescuentoCliente(
+          articuloId: '-',
+          clienteId: kClienteId,
+          cantidad: 1,
+        );
+
+        expect(descuento, 8.0);
+      });
+    });
   });
+}
+
+Future<void> cleanDatabase(AppDatabase db) async {
+  await db.delete(db.clienteTable).go();
+  await db.delete(db.articuloTable).go();
+  await db.delete(db.articuloEmpresaIvaTable).go();
+  await db.delete(db.articuloPrecioTarifaTable).go();
+  await db.delete(db.clienteGrupoNetoTable).go();
+  await db.delete(db.articuloGrupoNetoTable).go();
+  await db.delete(db.clientePrecioNetoTable).go();
+  await db.delete(db.descuentoGeneralTable).go();
+  await db.delete(db.clienteDescuentoTable).go();
 }
