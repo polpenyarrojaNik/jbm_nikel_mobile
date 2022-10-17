@@ -203,14 +203,8 @@ class _ClienteAnalisis extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _VentasRowWidget(cliente: cliente),
-              if (cliente.margenAnyoActual != null ||
-                  cliente.margenAnyoAnterior != null ||
-                  cliente.margenHaceDosAnyos != null)
-                gapH8,
-              if (cliente.margenAnyoActual != null ||
-                  cliente.margenAnyoAnterior != null ||
-                  cliente.margenHaceDosAnyos != null)
-                _MargenRowWidget(cliente: cliente),
+              gapH8,
+              _MargenRowWidget(cliente: cliente),
               gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -334,71 +328,40 @@ class _MargenRowWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
-              child: (cliente.margenAnyoActual != null)
-                  ? Column(
-                      children: [
-                        Text(
-                            S.of(context).cliente_show_clienteDetalle_anoActual,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          '${numberFormatDecimal(cliente.margenAnyoActual!)}%',
-                        ),
-                      ],
-                    )
-                  : Container(),
-            ),
+                child: Column(
+              children: [
+                Text(S.of(context).cliente_show_clienteDetalle_anoActual,
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Theme.of(context).textTheme.caption!.color)),
+                Text(
+                  '${numberFormatDecimal(cliente.margenAnyoActual)}%',
+                ),
+              ],
+            )),
             Expanded(
-              child: (cliente.margenAnyoAnterior != null)
-                  ? Column(
-                      children: [
-                        Text(
-                            S
-                                .of(context)
-                                .cliente_show_clienteDetalle_anoAnterior,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2!
-                                .copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption!
-                                        .color)),
-                        Text(
-                          '${numberFormatDecimal(cliente.margenAnyoAnterior!)}%',
-                        ),
-                      ],
-                    )
-                  : Container(),
-            ),
+                child: Column(
+              children: [
+                Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Theme.of(context).textTheme.caption!.color)),
+                Text(
+                  '${numberFormatDecimal(cliente.margenAnyoAnterior)}%',
+                ),
+              ],
+            )),
             Expanded(
-              child: (cliente.margenHaceDosAnyos != null)
-                  ? Column(
-                      children: [
-                        Text(
-                          S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2!
-                              .copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .caption!
-                                      .color),
-                        ),
-                        Text(
-                          '${numberFormatDecimal(cliente.margenHaceDosAnyos!)}%',
-                        ),
-                      ],
-                    )
-                  : Container(),
-            ),
+                child: Column(
+              children: [
+                Text(
+                  S.of(context).cliente_show_clienteDetalle_hace2Anos,
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Theme.of(context).textTheme.caption!.color),
+                ),
+                Text(
+                  '${numberFormatDecimal(cliente.margenHaceDosAnyos)}%',
+                ),
+              ],
+            )),
           ],
         ),
       ],

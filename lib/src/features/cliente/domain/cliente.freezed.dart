@@ -33,9 +33,9 @@ mixin _$Cliente {
   Money get ventasAnyoActual => throw _privateConstructorUsedError;
   Money get ventasAnyoAnterior => throw _privateConstructorUsedError;
   Money get ventasHaceDosAnyos => throw _privateConstructorUsedError;
-  double? get margenAnyoActual => throw _privateConstructorUsedError;
-  double? get margenAnyoAnterior => throw _privateConstructorUsedError;
-  double? get margenHaceDosAnyos => throw _privateConstructorUsedError;
+  double get margenAnyoActual => throw _privateConstructorUsedError;
+  double get margenAnyoAnterior => throw _privateConstructorUsedError;
+  double get margenHaceDosAnyos => throw _privateConstructorUsedError;
   double get porcentajeAbonos => throw _privateConstructorUsedError;
   double get porcentajeGarantias => throw _privateConstructorUsedError;
   String? get centralCompras => throw _privateConstructorUsedError;
@@ -96,9 +96,9 @@ abstract class $ClienteCopyWith<$Res> {
       Money ventasAnyoActual,
       Money ventasAnyoAnterior,
       Money ventasHaceDosAnyos,
-      double? margenAnyoActual,
-      double? margenAnyoAnterior,
-      double? margenHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
       double porcentajeAbonos,
       double porcentajeGarantias,
       String? centralCompras,
@@ -269,15 +269,15 @@ class _$ClienteCopyWithImpl<$Res> implements $ClienteCopyWith<$Res> {
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -490,9 +490,9 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       Money ventasAnyoActual,
       Money ventasAnyoAnterior,
       Money ventasHaceDosAnyos,
-      double? margenAnyoActual,
-      double? margenAnyoAnterior,
-      double? margenHaceDosAnyos,
+      double margenAnyoActual,
+      double margenAnyoAnterior,
+      double margenHaceDosAnyos,
       double porcentajeAbonos,
       double porcentajeGarantias,
       String? centralCompras,
@@ -670,15 +670,15 @@ class __$$_ClienteCopyWithImpl<$Res> extends _$ClienteCopyWithImpl<$Res>
       margenAnyoActual: margenAnyoActual == freezed
           ? _value.margenAnyoActual
           : margenAnyoActual // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenAnyoAnterior: margenAnyoAnterior == freezed
           ? _value.margenAnyoAnterior
           : margenAnyoAnterior // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       margenHaceDosAnyos: margenHaceDosAnyos == freezed
           ? _value.margenHaceDosAnyos
           : margenHaceDosAnyos // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
       porcentajeAbonos: porcentajeAbonos == freezed
           ? _value.porcentajeAbonos
           : porcentajeAbonos // ignore: cast_nullable_to_non_nullable
@@ -820,9 +820,9 @@ class _$_Cliente extends _Cliente {
       required this.ventasAnyoActual,
       required this.ventasAnyoAnterior,
       required this.ventasHaceDosAnyos,
-      this.margenAnyoActual,
-      this.margenAnyoAnterior,
-      this.margenHaceDosAnyos,
+      required this.margenAnyoActual,
+      required this.margenAnyoAnterior,
+      required this.margenHaceDosAnyos,
       required this.porcentajeAbonos,
       required this.porcentajeGarantias,
       this.centralCompras,
@@ -889,11 +889,11 @@ class _$_Cliente extends _Cliente {
   @override
   final Money ventasHaceDosAnyos;
   @override
-  final double? margenAnyoActual;
+  final double margenAnyoActual;
   @override
-  final double? margenAnyoAnterior;
+  final double margenAnyoAnterior;
   @override
-  final double? margenHaceDosAnyos;
+  final double margenHaceDosAnyos;
   @override
   final double porcentajeAbonos;
   @override
@@ -1135,9 +1135,9 @@ abstract class _Cliente extends Cliente {
       required final Money ventasAnyoActual,
       required final Money ventasAnyoAnterior,
       required final Money ventasHaceDosAnyos,
-      final double? margenAnyoActual,
-      final double? margenAnyoAnterior,
-      final double? margenHaceDosAnyos,
+      required final double margenAnyoActual,
+      required final double margenAnyoAnterior,
+      required final double margenHaceDosAnyos,
       required final double porcentajeAbonos,
       required final double porcentajeGarantias,
       final String? centralCompras,
@@ -1204,11 +1204,11 @@ abstract class _Cliente extends Cliente {
   @override
   Money get ventasHaceDosAnyos;
   @override
-  double? get margenAnyoActual;
+  double get margenAnyoActual;
   @override
-  double? get margenAnyoAnterior;
+  double get margenAnyoAnterior;
   @override
-  double? get margenHaceDosAnyos;
+  double get margenHaceDosAnyos;
   @override
   double get porcentajeAbonos;
   @override

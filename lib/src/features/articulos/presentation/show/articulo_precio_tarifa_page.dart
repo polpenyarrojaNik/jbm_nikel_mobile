@@ -80,9 +80,10 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      articuloPrecioTarifa.tarifaDescripcion,
-                    ),
+                    if (articuloPrecioTarifa.tarifaDescripcion != null)
+                      Text(
+                        articuloPrecioTarifa.tarifaDescripcion!,
+                      ),
                     if (articuloPrecioTarifa.cantidadDesde != 1)
                       Text(
                         '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)}',

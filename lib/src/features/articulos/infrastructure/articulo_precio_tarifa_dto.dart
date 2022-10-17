@@ -18,7 +18,7 @@ class ArticuloPrecioTarifaDTO
   const factory ArticuloPrecioTarifaDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
     @JsonKey(name: 'TARIFA_ID') required String tarifaId,
-    @JsonKey(name: 'TARIFA_DESCRIPCION') required String tarifaDescripcion,
+    @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
     @JsonKey(name: 'CANTIDAD_DESDE') required int cantidadDesde,
     @JsonKey(name: 'PRECIO') required double precio,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
@@ -70,7 +70,8 @@ class ArticuloPrecioTarifaTable extends Table {
 
   TextColumn get articuloId => text().named('ARTICULO_ID')();
   TextColumn get tarifaId => text().named('TARIFA_ID')();
-  TextColumn get tarifaDescripcion => text().named('TARIFA_DESCRIPCION')();
+  TextColumn get tarifaDescripcion =>
+      text().nullable().named('TARIFA_DESCRIPCION')();
   IntColumn get cantidadDesde => integer().named('CANTIDAD_DESDE')();
   RealColumn get precio => real().named('PRECIO')();
   TextColumn get divisaId => text().named('DIVISA_ID')();

@@ -312,12 +312,10 @@ class ClienteAlrededorDialog extends StatelessWidget {
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
               value: formatPrecios(
                   precio: cliente.ventasAnyoActual, tipoPrecio: null)),
-          if (cliente.margenAnyoActual != null) gapH2,
-          if (cliente.margenAnyoActual != null)
-            RowFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_alrededor_margenAnoActual,
-                value: '${numberFormatDecimal(cliente.margenAnyoActual!)}%'),
+          gapH2,
+          RowFieldTextDetalle(
+              fieldTitleValue: S.of(context).cliente_alrededor_margenAnoActual,
+              value: '${numberFormatDecimal(cliente.margenAnyoActual)}%'),
           gapH2,
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,

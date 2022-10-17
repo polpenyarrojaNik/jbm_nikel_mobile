@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArticuloPrecioTarifa {
   String get articuloId => throw _privateConstructorUsedError;
   String get tarifaId => throw _privateConstructorUsedError;
-  String get tarifaDescripcion => throw _privateConstructorUsedError;
+  String? get tarifaDescripcion => throw _privateConstructorUsedError;
   int get cantidadDesde => throw _privateConstructorUsedError;
   Money get precio => throw _privateConstructorUsedError;
   String get divisaId => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $ArticuloPrecioTarifaCopyWith<$Res> {
   $Res call(
       {String articuloId,
       String tarifaId,
-      String tarifaDescripcion,
+      String? tarifaDescripcion,
       int cantidadDesde,
       Money precio,
       String divisaId,
@@ -81,7 +81,7 @@ class _$ArticuloPrecioTarifaCopyWithImpl<$Res>
       tarifaDescripcion: tarifaDescripcion == freezed
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       cantidadDesde: cantidadDesde == freezed
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$_ArticuloPrecioTarifaCopyWith<$Res>
   $Res call(
       {String articuloId,
       String tarifaId,
-      String tarifaDescripcion,
+      String? tarifaDescripcion,
       int cantidadDesde,
       Money precio,
       String divisaId,
@@ -164,7 +164,7 @@ class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
       tarifaDescripcion: tarifaDescripcion == freezed
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       cantidadDesde: cantidadDesde == freezed
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
@@ -199,7 +199,7 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
   const _$_ArticuloPrecioTarifa(
       {required this.articuloId,
       required this.tarifaId,
-      required this.tarifaDescripcion,
+      this.tarifaDescripcion,
       required this.cantidadDesde,
       required this.precio,
       required this.divisaId,
@@ -213,7 +213,7 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
   @override
   final String tarifaId;
   @override
-  final String tarifaDescripcion;
+  final String? tarifaDescripcion;
   @override
   final int cantidadDesde;
   @override
@@ -277,7 +277,7 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
   const factory _ArticuloPrecioTarifa(
       {required final String articuloId,
       required final String tarifaId,
-      required final String tarifaDescripcion,
+      final String? tarifaDescripcion,
       required final int cantidadDesde,
       required final Money precio,
       required final String divisaId,
@@ -291,7 +291,7 @@ abstract class _ArticuloPrecioTarifa extends ArticuloPrecioTarifa {
   @override
   String get tarifaId;
   @override
-  String get tarifaDescripcion;
+  String? get tarifaDescripcion;
   @override
   int get cantidadDesde;
   @override

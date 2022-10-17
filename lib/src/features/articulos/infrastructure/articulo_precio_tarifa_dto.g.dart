@@ -11,7 +11,7 @@ _$_ArticuloPrecioTarifaDTO _$$_ArticuloPrecioTarifaDTOFromJson(
     _$_ArticuloPrecioTarifaDTO(
       articuloId: json['ARTICULO_ID'] as String,
       tarifaId: json['TARIFA_ID'] as String,
-      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String,
+      tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
       cantidadDesde: json['CANTIDAD_DESDE'] as int,
       precio: (json['PRECIO'] as num).toDouble(),
       divisaId: json['DIVISA_ID'] as String,

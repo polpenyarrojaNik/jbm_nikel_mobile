@@ -3970,9 +3970,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<double> ventasAnyoActual;
   final Value<double> ventasAnyoAnterior;
   final Value<double> ventasHaceDosAnyos;
-  final Value<double?> margenAnyoActual;
-  final Value<double?> margenAnyoAnterior;
-  final Value<double?> margenHaceDosAnyos;
+  final Value<double> margenAnyoActual;
+  final Value<double> margenAnyoAnterior;
+  final Value<double> margenHaceDosAnyos;
   final Value<double> porcentajeAbonos;
   final Value<double> porcentajeGarantias;
   final Value<String?> centralCompras;
@@ -4069,9 +4069,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     required double ventasAnyoActual,
     required double ventasAnyoAnterior,
     required double ventasHaceDosAnyos,
-    this.margenAnyoActual = const Value.absent(),
-    this.margenAnyoAnterior = const Value.absent(),
-    this.margenHaceDosAnyos = const Value.absent(),
+    required double margenAnyoActual,
+    required double margenAnyoAnterior,
+    required double margenHaceDosAnyos,
     required double porcentajeAbonos,
     required double porcentajeGarantias,
     this.centralCompras = const Value.absent(),
@@ -4110,6 +4110,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         ventasAnyoActual = Value(ventasAnyoActual),
         ventasAnyoAnterior = Value(ventasAnyoAnterior),
         ventasHaceDosAnyos = Value(ventasHaceDosAnyos),
+        margenAnyoActual = Value(margenAnyoActual),
+        margenAnyoAnterior = Value(margenAnyoAnterior),
+        margenHaceDosAnyos = Value(margenHaceDosAnyos),
         porcentajeAbonos = Value(porcentajeAbonos),
         porcentajeGarantias = Value(porcentajeGarantias),
         tipoCalucloPrecio = Value(tipoCalucloPrecio),
@@ -4256,9 +4259,9 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<double>? ventasAnyoActual,
       Value<double>? ventasAnyoAnterior,
       Value<double>? ventasHaceDosAnyos,
-      Value<double?>? margenAnyoActual,
-      Value<double?>? margenAnyoAnterior,
-      Value<double?>? margenHaceDosAnyos,
+      Value<double>? margenAnyoActual,
+      Value<double>? margenAnyoAnterior,
+      Value<double>? margenHaceDosAnyos,
       Value<double>? porcentajeAbonos,
       Value<double>? porcentajeGarantias,
       Value<String?>? centralCompras,
@@ -4679,20 +4682,20 @@ class $ClienteTableTable extends ClienteTable
       const VerificationMeta('margenAnyoActual');
   @override
   late final GeneratedColumn<double> margenAnyoActual = GeneratedColumn<double>(
-      'MARGEN_ANYO_ACTUAL', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      'MARGEN_ANYO_ACTUAL', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _margenAnyoAnteriorMeta =
       const VerificationMeta('margenAnyoAnterior');
   @override
   late final GeneratedColumn<double> margenAnyoAnterior =
-      GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+      GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, false,
+          type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _margenHaceDosAnyosMeta =
       const VerificationMeta('margenHaceDosAnyos');
   @override
   late final GeneratedColumn<double> margenHaceDosAnyos =
-      GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+      GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, false,
+          type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _porcentajeAbonosMeta =
       const VerificationMeta('porcentajeAbonos');
   @override
@@ -5049,18 +5052,24 @@ class $ClienteTableTable extends ClienteTable
           _margenAnyoActualMeta,
           margenAnyoActual.isAcceptableOrUnknown(
               data['MARGEN_ANYO_ACTUAL']!, _margenAnyoActualMeta));
+    } else if (isInserting) {
+      context.missing(_margenAnyoActualMeta);
     }
     if (data.containsKey('MARGEN_ANYO_ANTERIOR')) {
       context.handle(
           _margenAnyoAnteriorMeta,
           margenAnyoAnterior.isAcceptableOrUnknown(
               data['MARGEN_ANYO_ANTERIOR']!, _margenAnyoAnteriorMeta));
+    } else if (isInserting) {
+      context.missing(_margenAnyoAnteriorMeta);
     }
     if (data.containsKey('MARGEN_HACE_DOS_ANYOS')) {
       context.handle(
           _margenHaceDosAnyosMeta,
           margenHaceDosAnyos.isAcceptableOrUnknown(
               data['MARGEN_HACE_DOS_ANYOS']!, _margenHaceDosAnyosMeta));
+    } else if (isInserting) {
+      context.missing(_margenHaceDosAnyosMeta);
     }
     if (data.containsKey('PORCENTAJE_ABONOS')) {
       context.handle(
@@ -5287,11 +5296,12 @@ class $ClienteTableTable extends ClienteTable
           DriftSqlType.double,
           data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS'])!,
       margenAnyoActual: attachedDatabase.options.types.read(
-          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL']),
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL'])!,
       margenAnyoAnterior: attachedDatabase.options.types.read(
-          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR']),
+          DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR'])!,
       margenHaceDosAnyos: attachedDatabase.options.types.read(
-          DriftSqlType.double, data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS']),
+          DriftSqlType.double,
+          data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS'])!,
       porcentajeAbonos: attachedDatabase.options.types.read(
           DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_ABONOS'])!,
       porcentajeGarantias: attachedDatabase.options.types.read(
@@ -13014,7 +13024,7 @@ class ArticuloPrecioTarifaTableCompanion
     extends UpdateCompanion<ArticuloPrecioTarifaDTO> {
   final Value<String> articuloId;
   final Value<String> tarifaId;
-  final Value<String> tarifaDescripcion;
+  final Value<String?> tarifaDescripcion;
   final Value<int> cantidadDesde;
   final Value<double> precio;
   final Value<String> divisaId;
@@ -13035,7 +13045,7 @@ class ArticuloPrecioTarifaTableCompanion
   ArticuloPrecioTarifaTableCompanion.insert({
     required String articuloId,
     required String tarifaId,
-    required String tarifaDescripcion,
+    this.tarifaDescripcion = const Value.absent(),
     required int cantidadDesde,
     required double precio,
     required String divisaId,
@@ -13044,7 +13054,6 @@ class ArticuloPrecioTarifaTableCompanion
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
         tarifaId = Value(tarifaId),
-        tarifaDescripcion = Value(tarifaDescripcion),
         cantidadDesde = Value(cantidadDesde),
         precio = Value(precio),
         divisaId = Value(divisaId),
@@ -13077,7 +13086,7 @@ class ArticuloPrecioTarifaTableCompanion
   ArticuloPrecioTarifaTableCompanion copyWith(
       {Value<String>? articuloId,
       Value<String>? tarifaId,
-      Value<String>? tarifaDescripcion,
+      Value<String?>? tarifaDescripcion,
       Value<int>? cantidadDesde,
       Value<double>? precio,
       Value<String>? divisaId,
@@ -13167,8 +13176,8 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
       const VerificationMeta('tarifaDescripcion');
   @override
   late final GeneratedColumn<String> tarifaDescripcion =
-      GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, false,
-          type: DriftSqlType.string, requiredDuringInsert: true);
+      GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
@@ -13244,8 +13253,6 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
           _tarifaDescripcionMeta,
           tarifaDescripcion.isAcceptableOrUnknown(
               data['TARIFA_DESCRIPCION']!, _tarifaDescripcionMeta));
-    } else if (isInserting) {
-      context.missing(_tarifaDescripcionMeta);
     }
     if (data.containsKey('CANTIDAD_DESDE')) {
       context.handle(
@@ -13302,7 +13309,7 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
       tarifaId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID'])!,
       tarifaDescripcion: attachedDatabase.options.types.read(
-          DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION'])!,
+          DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
       cantidadDesde: attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
       precio: attachedDatabase.options.types

@@ -9,7 +9,7 @@ class ArticuloPrecioTarifa with _$ArticuloPrecioTarifa {
   const factory ArticuloPrecioTarifa(
       {required String articuloId,
       required String tarifaId,
-      required String tarifaDescripcion,
+      String? tarifaDescripcion,
       required int cantidadDesde,
       required Money precio,
       required String divisaId,
