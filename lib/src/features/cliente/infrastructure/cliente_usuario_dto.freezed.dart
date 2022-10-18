@@ -39,7 +39,8 @@ mixin _$ClienteUsuarioDTO {
 abstract class $ClienteUsuarioDTOCopyWith<$Res> {
   factory $ClienteUsuarioDTOCopyWith(
           ClienteUsuarioDTO value, $Res Function(ClienteUsuarioDTO) then) =
-      _$ClienteUsuarioDTOCopyWithImpl<$Res>;
+      _$ClienteUsuarioDTOCopyWithImpl<$Res, ClienteUsuarioDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'USUARIO_ID') String usuarioId,
@@ -48,39 +49,41 @@ abstract class $ClienteUsuarioDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteUsuarioDTOCopyWithImpl<$Res>
+class _$ClienteUsuarioDTOCopyWithImpl<$Res, $Val extends ClienteUsuarioDTO>
     implements $ClienteUsuarioDTOCopyWith<$Res> {
   _$ClienteUsuarioDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteUsuarioDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteUsuarioDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? usuarioId = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? usuarioId = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      usuarioId: usuarioId == freezed
+      usuarioId: null == usuarioId
           ? _value.usuarioId
           : usuarioId // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -91,6 +94,7 @@ abstract class _$$_ClienteUsuarioDTOCopyWith<$Res>
           $Res Function(_$_ClienteUsuarioDTO) then) =
       __$$_ClienteUsuarioDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'USUARIO_ID') String usuarioId,
@@ -100,36 +104,34 @@ abstract class _$$_ClienteUsuarioDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteUsuarioDTOCopyWithImpl<$Res>
-    extends _$ClienteUsuarioDTOCopyWithImpl<$Res>
+    extends _$ClienteUsuarioDTOCopyWithImpl<$Res, _$_ClienteUsuarioDTO>
     implements _$$_ClienteUsuarioDTOCopyWith<$Res> {
   __$$_ClienteUsuarioDTOCopyWithImpl(
       _$_ClienteUsuarioDTO _value, $Res Function(_$_ClienteUsuarioDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteUsuarioDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteUsuarioDTO get _value => super._value as _$_ClienteUsuarioDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? usuarioId = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? usuarioId = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteUsuarioDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      usuarioId: usuarioId == freezed
+      usuarioId: null == usuarioId
           ? _value.usuarioId
           : usuarioId // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -173,24 +175,23 @@ class _$_ClienteUsuarioDTO extends _ClienteUsuarioDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteUsuarioDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.usuarioId, usuarioId) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.usuarioId, usuarioId) ||
+                other.usuarioId == usuarioId) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(usuarioId),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode =>
+      Object.hash(runtimeType, clienteId, usuarioId, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteUsuarioDTOCopyWith<_$_ClienteUsuarioDTO> get copyWith =>
       __$$_ClienteUsuarioDTOCopyWithImpl<_$_ClienteUsuarioDTO>(
           this, _$identity);

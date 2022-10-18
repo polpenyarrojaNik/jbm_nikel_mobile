@@ -34,18 +34,22 @@ mixin _$JBMHeaders {
 abstract class $JBMHeadersCopyWith<$Res> {
   factory $JBMHeadersCopyWith(
           JBMHeaders value, $Res Function(JBMHeaders) then) =
-      _$JBMHeadersCopyWithImpl<$Res>;
+      _$JBMHeadersCopyWithImpl<$Res, JBMHeaders>;
+  @useResult
   $Res call({String? etag, int? maxPage, int? totalRows});
 }
 
 /// @nodoc
-class _$JBMHeadersCopyWithImpl<$Res> implements $JBMHeadersCopyWith<$Res> {
+class _$JBMHeadersCopyWithImpl<$Res, $Val extends JBMHeaders>
+    implements $JBMHeadersCopyWith<$Res> {
   _$JBMHeadersCopyWithImpl(this._value, this._then);
 
-  final JBMHeaders _value;
   // ignore: unused_field
-  final $Res Function(JBMHeaders) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? etag = freezed,
@@ -53,19 +57,19 @@ class _$JBMHeadersCopyWithImpl<$Res> implements $JBMHeadersCopyWith<$Res> {
     Object? totalRows = freezed,
   }) {
     return _then(_value.copyWith(
-      etag: etag == freezed
+      etag: freezed == etag
           ? _value.etag
           : etag // ignore: cast_nullable_to_non_nullable
               as String?,
-      maxPage: maxPage == freezed
+      maxPage: freezed == maxPage
           ? _value.maxPage
           : maxPage // ignore: cast_nullable_to_non_nullable
               as int?,
-      totalRows: totalRows == freezed
+      totalRows: freezed == totalRows
           ? _value.totalRows
           : totalRows // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,19 +80,19 @@ abstract class _$$_JBMHeadersCopyWith<$Res>
           _$_JBMHeaders value, $Res Function(_$_JBMHeaders) then) =
       __$$_JBMHeadersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? etag, int? maxPage, int? totalRows});
 }
 
 /// @nodoc
-class __$$_JBMHeadersCopyWithImpl<$Res> extends _$JBMHeadersCopyWithImpl<$Res>
+class __$$_JBMHeadersCopyWithImpl<$Res>
+    extends _$JBMHeadersCopyWithImpl<$Res, _$_JBMHeaders>
     implements _$$_JBMHeadersCopyWith<$Res> {
   __$$_JBMHeadersCopyWithImpl(
       _$_JBMHeaders _value, $Res Function(_$_JBMHeaders) _then)
-      : super(_value, (v) => _then(v as _$_JBMHeaders));
+      : super(_value, _then);
 
-  @override
-  _$_JBMHeaders get _value => super._value as _$_JBMHeaders;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? etag = freezed,
@@ -96,15 +100,15 @@ class __$$_JBMHeadersCopyWithImpl<$Res> extends _$JBMHeadersCopyWithImpl<$Res>
     Object? totalRows = freezed,
   }) {
     return _then(_$_JBMHeaders(
-      etag: etag == freezed
+      etag: freezed == etag
           ? _value.etag
           : etag // ignore: cast_nullable_to_non_nullable
               as String?,
-      maxPage: maxPage == freezed
+      maxPage: freezed == maxPage
           ? _value.maxPage
           : maxPage // ignore: cast_nullable_to_non_nullable
               as int?,
-      totalRows: totalRows == freezed
+      totalRows: freezed == totalRows
           ? _value.totalRows
           : totalRows // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -137,21 +141,19 @@ class _$_JBMHeaders extends _JBMHeaders {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_JBMHeaders &&
-            const DeepCollectionEquality().equals(other.etag, etag) &&
-            const DeepCollectionEquality().equals(other.maxPage, maxPage) &&
-            const DeepCollectionEquality().equals(other.totalRows, totalRows));
+            (identical(other.etag, etag) || other.etag == etag) &&
+            (identical(other.maxPage, maxPage) || other.maxPage == maxPage) &&
+            (identical(other.totalRows, totalRows) ||
+                other.totalRows == totalRows));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(etag),
-      const DeepCollectionEquality().hash(maxPage),
-      const DeepCollectionEquality().hash(totalRows));
+  int get hashCode => Object.hash(runtimeType, etag, maxPage, totalRows);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_JBMHeadersCopyWith<_$_JBMHeaders> get copyWith =>
       __$$_JBMHeadersCopyWithImpl<_$_JBMHeaders>(this, _$identity);
 

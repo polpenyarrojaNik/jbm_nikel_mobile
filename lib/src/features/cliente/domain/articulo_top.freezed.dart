@@ -29,46 +29,51 @@ mixin _$ArticuloTop {
 abstract class $ArticuloTopCopyWith<$Res> {
   factory $ArticuloTopCopyWith(
           ArticuloTop value, $Res Function(ArticuloTop) then) =
-      _$ArticuloTopCopyWithImpl<$Res>;
+      _$ArticuloTopCopyWithImpl<$Res, ArticuloTop>;
+  @useResult
   $Res call({Articulo articulo, DateTime lastUpdated, bool deleted});
 
   $ArticuloCopyWith<$Res> get articulo;
 }
 
 /// @nodoc
-class _$ArticuloTopCopyWithImpl<$Res> implements $ArticuloTopCopyWith<$Res> {
+class _$ArticuloTopCopyWithImpl<$Res, $Val extends ArticuloTop>
+    implements $ArticuloTopCopyWith<$Res> {
   _$ArticuloTopCopyWithImpl(this._value, this._then);
 
-  final ArticuloTop _value;
   // ignore: unused_field
-  final $Res Function(ArticuloTop) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articulo = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articulo = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articulo: articulo == freezed
+      articulo: null == articulo
           ? _value.articulo
           : articulo // ignore: cast_nullable_to_non_nullable
               as Articulo,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ArticuloCopyWith<$Res> get articulo {
     return $ArticuloCopyWith<$Res>(_value.articulo, (value) {
-      return _then(_value.copyWith(articulo: value));
+      return _then(_value.copyWith(articulo: value) as $Val);
     });
   }
 }
@@ -80,6 +85,7 @@ abstract class _$$_ArticuloTopCopyWith<$Res>
           _$_ArticuloTop value, $Res Function(_$_ArticuloTop) then) =
       __$$_ArticuloTopCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Articulo articulo, DateTime lastUpdated, bool deleted});
 
   @override
@@ -87,31 +93,30 @@ abstract class _$$_ArticuloTopCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArticuloTopCopyWithImpl<$Res> extends _$ArticuloTopCopyWithImpl<$Res>
+class __$$_ArticuloTopCopyWithImpl<$Res>
+    extends _$ArticuloTopCopyWithImpl<$Res, _$_ArticuloTop>
     implements _$$_ArticuloTopCopyWith<$Res> {
   __$$_ArticuloTopCopyWithImpl(
       _$_ArticuloTop _value, $Res Function(_$_ArticuloTop) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloTop));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloTop get _value => super._value as _$_ArticuloTop;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articulo = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articulo = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloTop(
-      articulo: articulo == freezed
+      articulo: null == articulo
           ? _value.articulo
           : articulo // ignore: cast_nullable_to_non_nullable
               as Articulo,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -145,21 +150,19 @@ class _$_ArticuloTop extends _ArticuloTop {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloTop &&
-            const DeepCollectionEquality().equals(other.articulo, articulo) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articulo, articulo) ||
+                other.articulo == articulo) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articulo),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, articulo, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloTopCopyWith<_$_ArticuloTop> get copyWith =>
       __$$_ArticuloTopCopyWithImpl<_$_ArticuloTop>(this, _$identity);
 }

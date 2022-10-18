@@ -16,17 +16,15 @@ void main() {
 
   setUp(() async {
     final Dio dio = Dio();
-    db = AppDatabase(databaseFile: kTestDatabaseFile);
+    db = AppDatabase(test: true);
     pedidoVentaRepository = PedidoVentaRepository(
       db,
       dio,
       kUsuario,
     );
-    await cleanDatabase(db);
   });
 
   tearDown(() async {
-    await cleanDatabase(db);
     await db.close();
   });
 
@@ -41,10 +39,10 @@ void main() {
             .insert(kArticuloEmpresaIvaDTO.copyWith(iva: 21));
         await db.into(db.clienteTable).insert(clienteDTO);
 
-        final iva = await pedidoVentaRepository.getIvaLinea(
-            articuloId: kArticuloId,
-            clienteDto: clienteDTO,
-            fecha: DateTime(2022, 09, 30));
+        final iva = await pedidoVentaRepository.getIvaClienteArticulo(
+          articuloId: kArticuloId,
+          clienteDto: clienteDTO,
+        );
         expect(iva, 21);
       });
       test('getIvaLinea Cliente IVA 21, Articulo IVA 4 devuelve IVA 4',
@@ -57,10 +55,9 @@ void main() {
             .insert(kArticuloEmpresaIvaDTO.copyWith(iva: 4));
         await db.into(db.clienteTable).insert(clienteDTO);
 
-        final iva = await pedidoVentaRepository.getIvaLinea(
+        final iva = await pedidoVentaRepository.getIvaClienteArticulo(
           articuloId: kArticuloId,
           clienteDto: clienteDTO,
-          fecha: kDateTime,
         );
         expect(iva, 4);
       });
@@ -74,10 +71,9 @@ void main() {
             .insert(kArticuloEmpresaIvaDTO.copyWith(iva: 21));
         await db.into(db.clienteTable).insert(clienteDTO);
 
-        final iva = await pedidoVentaRepository.getIvaLinea(
+        final iva = await pedidoVentaRepository.getIvaClienteArticulo(
           articuloId: kArticuloId,
           clienteDto: clienteDTO,
-          fecha: kDateTime,
         );
         expect(iva, 0);
       });
@@ -704,16 +700,4 @@ void main() {
       });
     });
   });
-}
-
-Future<void> cleanDatabase(AppDatabase db) async {
-  await db.delete(db.clienteTable).go();
-  await db.delete(db.articuloTable).go();
-  await db.delete(db.articuloEmpresaIvaTable).go();
-  await db.delete(db.articuloPrecioTarifaTable).go();
-  await db.delete(db.clienteGrupoNetoTable).go();
-  await db.delete(db.articuloGrupoNetoTable).go();
-  await db.delete(db.clientePrecioNetoTable).go();
-  await db.delete(db.descuentoGeneralTable).go();
-  await db.delete(db.clienteDescuentoTable).go();
 }

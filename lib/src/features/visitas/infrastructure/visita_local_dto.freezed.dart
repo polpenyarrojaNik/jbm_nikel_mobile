@@ -53,7 +53,8 @@ mixin _$VisitaLocalDTO {
 abstract class $VisitaLocalDTOCopyWith<$Res> {
   factory $VisitaLocalDTOCopyWith(
           VisitaLocalDTO value, $Res Function(VisitaLocalDTO) then) =
-      _$VisitaLocalDTOCopyWithImpl<$Res>;
+      _$VisitaLocalDTOCopyWithImpl<$Res, VisitaLocalDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
@@ -69,74 +70,76 @@ abstract class $VisitaLocalDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VisitaLocalDTOCopyWithImpl<$Res>
+class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
     implements $VisitaLocalDTOCopyWith<$Res> {
   _$VisitaLocalDTOCopyWithImpl(this._value, this._then);
 
-  final VisitaLocalDTO _value;
   // ignore: unused_field
-  final $Res Function(VisitaLocalDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? visitaAppId = freezed,
-    Object? clienteId = freezed,
-    Object? fecha = freezed,
-    Object? numEmpl = freezed,
+    Object? clienteId = null,
+    Object? fecha = null,
+    Object? numEmpl = null,
     Object? contacto = freezed,
     Object? resumen = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
-    Object? enviada = freezed,
-    Object? tratada = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
+    Object? enviada = null,
+    Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      visitaAppId: visitaAppId == freezed
+      visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      numEmpl: numEmpl == freezed
+      numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: contacto == freezed
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumen: resumen == freezed
+      resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      enviada: enviada == freezed
+      enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as String,
-      tratada: tratada == freezed
+      tratada: null == tratada
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as String,
-      errorSyncMessage: errorSyncMessage == freezed
+      errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -147,6 +150,7 @@ abstract class _$$_VisitaLocalDTOCopyWith<$Res>
           _$_VisitaLocalDTO value, $Res Function(_$_VisitaLocalDTO) then) =
       __$$_VisitaLocalDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
@@ -163,71 +167,69 @@ abstract class _$$_VisitaLocalDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_VisitaLocalDTOCopyWithImpl<$Res>
-    extends _$VisitaLocalDTOCopyWithImpl<$Res>
+    extends _$VisitaLocalDTOCopyWithImpl<$Res, _$_VisitaLocalDTO>
     implements _$$_VisitaLocalDTOCopyWith<$Res> {
   __$$_VisitaLocalDTOCopyWithImpl(
       _$_VisitaLocalDTO _value, $Res Function(_$_VisitaLocalDTO) _then)
-      : super(_value, (v) => _then(v as _$_VisitaLocalDTO));
+      : super(_value, _then);
 
-  @override
-  _$_VisitaLocalDTO get _value => super._value as _$_VisitaLocalDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? visitaAppId = freezed,
-    Object? clienteId = freezed,
-    Object? fecha = freezed,
-    Object? numEmpl = freezed,
+    Object? clienteId = null,
+    Object? fecha = null,
+    Object? numEmpl = null,
     Object? contacto = freezed,
     Object? resumen = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
-    Object? enviada = freezed,
-    Object? tratada = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
+    Object? enviada = null,
+    Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_VisitaLocalDTO(
-      visitaAppId: visitaAppId == freezed
+      visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      numEmpl: numEmpl == freezed
+      numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: contacto == freezed
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumen: resumen == freezed
+      resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      enviada: enviada == freezed
+      enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as String,
-      tratada: tratada == freezed
+      tratada: null == tratada
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as String,
-      errorSyncMessage: errorSyncMessage == freezed
+      errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -299,39 +301,43 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VisitaLocalDTO &&
-            const DeepCollectionEquality()
-                .equals(other.visitaAppId, visitaAppId) &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.fecha, fecha) &&
-            const DeepCollectionEquality().equals(other.numEmpl, numEmpl) &&
-            const DeepCollectionEquality().equals(other.contacto, contacto) &&
-            const DeepCollectionEquality().equals(other.resumen, resumen) &&
-            const DeepCollectionEquality().equals(other.latitud, latitud) &&
-            const DeepCollectionEquality().equals(other.longitud, longitud) &&
-            const DeepCollectionEquality().equals(other.enviada, enviada) &&
-            const DeepCollectionEquality().equals(other.tratada, tratada) &&
-            const DeepCollectionEquality()
-                .equals(other.errorSyncMessage, errorSyncMessage));
+            (identical(other.visitaAppId, visitaAppId) ||
+                other.visitaAppId == visitaAppId) &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
+            (identical(other.contacto, contacto) ||
+                other.contacto == contacto) &&
+            (identical(other.resumen, resumen) || other.resumen == resumen) &&
+            (identical(other.latitud, latitud) || other.latitud == latitud) &&
+            (identical(other.longitud, longitud) ||
+                other.longitud == longitud) &&
+            (identical(other.enviada, enviada) || other.enviada == enviada) &&
+            (identical(other.tratada, tratada) || other.tratada == tratada) &&
+            (identical(other.errorSyncMessage, errorSyncMessage) ||
+                other.errorSyncMessage == errorSyncMessage));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(visitaAppId),
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(fecha),
-      const DeepCollectionEquality().hash(numEmpl),
-      const DeepCollectionEquality().hash(contacto),
-      const DeepCollectionEquality().hash(resumen),
-      const DeepCollectionEquality().hash(latitud),
-      const DeepCollectionEquality().hash(longitud),
-      const DeepCollectionEquality().hash(enviada),
-      const DeepCollectionEquality().hash(tratada),
-      const DeepCollectionEquality().hash(errorSyncMessage));
+      visitaAppId,
+      clienteId,
+      fecha,
+      numEmpl,
+      contacto,
+      resumen,
+      latitud,
+      longitud,
+      enviada,
+      tratada,
+      errorSyncMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VisitaLocalDTOCopyWith<_$_VisitaLocalDTO> get copyWith =>
       __$$_VisitaLocalDTOCopyWithImpl<_$_VisitaLocalDTO>(this, _$identity);
 

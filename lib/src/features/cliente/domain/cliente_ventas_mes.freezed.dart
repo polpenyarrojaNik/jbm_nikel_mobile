@@ -32,7 +32,8 @@ mixin _$ClienteVentasMes {
 abstract class $ClienteVentasMesCopyWith<$Res> {
   factory $ClienteVentasMesCopyWith(
           ClienteVentasMes value, $Res Function(ClienteVentasMes) then) =
-      _$ClienteVentasMesCopyWithImpl<$Res>;
+      _$ClienteVentasMesCopyWithImpl<$Res, ClienteVentasMes>;
+  @useResult
   $Res call(
       {int mes,
       Money importeAnyo,
@@ -43,49 +44,51 @@ abstract class $ClienteVentasMesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteVentasMesCopyWithImpl<$Res>
+class _$ClienteVentasMesCopyWithImpl<$Res, $Val extends ClienteVentasMes>
     implements $ClienteVentasMesCopyWith<$Res> {
   _$ClienteVentasMesCopyWithImpl(this._value, this._then);
 
-  final ClienteVentasMes _value;
   // ignore: unused_field
-  final $Res Function(ClienteVentasMes) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mes = freezed,
-    Object? importeAnyo = freezed,
-    Object? importeAnyo_1 = freezed,
-    Object? importeAnyo_2 = freezed,
-    Object? importeAnyo_3 = freezed,
-    Object? importeAnyo_4 = freezed,
+    Object? mes = null,
+    Object? importeAnyo = null,
+    Object? importeAnyo_1 = null,
+    Object? importeAnyo_2 = null,
+    Object? importeAnyo_3 = null,
+    Object? importeAnyo_4 = null,
   }) {
     return _then(_value.copyWith(
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as int,
-      importeAnyo: importeAnyo == freezed
+      importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_1: importeAnyo_1 == freezed
+      importeAnyo_1: null == importeAnyo_1
           ? _value.importeAnyo_1
           : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_2: importeAnyo_2 == freezed
+      importeAnyo_2: null == importeAnyo_2
           ? _value.importeAnyo_2
           : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_3: importeAnyo_3 == freezed
+      importeAnyo_3: null == importeAnyo_3
           ? _value.importeAnyo_3
           : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_4: importeAnyo_4 == freezed
+      importeAnyo_4: null == importeAnyo_4
           ? _value.importeAnyo_4
           : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
               as Money,
-    ));
+    ) as $Val);
   }
 }
 
@@ -96,6 +99,7 @@ abstract class _$$_ClienteVentasMesCopyWith<$Res>
           _$_ClienteVentasMes value, $Res Function(_$_ClienteVentasMes) then) =
       __$$_ClienteVentasMesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int mes,
       Money importeAnyo,
@@ -107,46 +111,44 @@ abstract class _$$_ClienteVentasMesCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteVentasMesCopyWithImpl<$Res>
-    extends _$ClienteVentasMesCopyWithImpl<$Res>
+    extends _$ClienteVentasMesCopyWithImpl<$Res, _$_ClienteVentasMes>
     implements _$$_ClienteVentasMesCopyWith<$Res> {
   __$$_ClienteVentasMesCopyWithImpl(
       _$_ClienteVentasMes _value, $Res Function(_$_ClienteVentasMes) _then)
-      : super(_value, (v) => _then(v as _$_ClienteVentasMes));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteVentasMes get _value => super._value as _$_ClienteVentasMes;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mes = freezed,
-    Object? importeAnyo = freezed,
-    Object? importeAnyo_1 = freezed,
-    Object? importeAnyo_2 = freezed,
-    Object? importeAnyo_3 = freezed,
-    Object? importeAnyo_4 = freezed,
+    Object? mes = null,
+    Object? importeAnyo = null,
+    Object? importeAnyo_1 = null,
+    Object? importeAnyo_2 = null,
+    Object? importeAnyo_3 = null,
+    Object? importeAnyo_4 = null,
   }) {
     return _then(_$_ClienteVentasMes(
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as int,
-      importeAnyo: importeAnyo == freezed
+      importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_1: importeAnyo_1 == freezed
+      importeAnyo_1: null == importeAnyo_1
           ? _value.importeAnyo_1
           : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_2: importeAnyo_2 == freezed
+      importeAnyo_2: null == importeAnyo_2
           ? _value.importeAnyo_2
           : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_3: importeAnyo_3 == freezed
+      importeAnyo_3: null == importeAnyo_3
           ? _value.importeAnyo_3
           : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_4: importeAnyo_4 == freezed
+      importeAnyo_4: null == importeAnyo_4
           ? _value.importeAnyo_4
           : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
               as Money,
@@ -189,31 +191,26 @@ class _$_ClienteVentasMes extends _ClienteVentasMes {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteVentasMes &&
-            const DeepCollectionEquality().equals(other.mes, mes) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo, importeAnyo) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_1, importeAnyo_1) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_2, importeAnyo_2) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_3, importeAnyo_3) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_4, importeAnyo_4));
+            (identical(other.mes, mes) || other.mes == mes) &&
+            (identical(other.importeAnyo, importeAnyo) ||
+                other.importeAnyo == importeAnyo) &&
+            (identical(other.importeAnyo_1, importeAnyo_1) ||
+                other.importeAnyo_1 == importeAnyo_1) &&
+            (identical(other.importeAnyo_2, importeAnyo_2) ||
+                other.importeAnyo_2 == importeAnyo_2) &&
+            (identical(other.importeAnyo_3, importeAnyo_3) ||
+                other.importeAnyo_3 == importeAnyo_3) &&
+            (identical(other.importeAnyo_4, importeAnyo_4) ||
+                other.importeAnyo_4 == importeAnyo_4));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(mes),
-      const DeepCollectionEquality().hash(importeAnyo),
-      const DeepCollectionEquality().hash(importeAnyo_1),
-      const DeepCollectionEquality().hash(importeAnyo_2),
-      const DeepCollectionEquality().hash(importeAnyo_3),
-      const DeepCollectionEquality().hash(importeAnyo_4));
+  int get hashCode => Object.hash(runtimeType, mes, importeAnyo, importeAnyo_1,
+      importeAnyo_2, importeAnyo_3, importeAnyo_4);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteVentasMesCopyWith<_$_ClienteVentasMes> get copyWith =>
       __$$_ClienteVentasMesCopyWithImpl<_$_ClienteVentasMes>(this, _$identity);
 }

@@ -30,44 +30,48 @@ mixin _$ClienteVentaArticulo {
 abstract class $ClienteVentaArticuloCopyWith<$Res> {
   factory $ClienteVentaArticuloCopyWith(ClienteVentaArticulo value,
           $Res Function(ClienteVentaArticulo) then) =
-      _$ClienteVentaArticuloCopyWithImpl<$Res>;
+      _$ClienteVentaArticuloCopyWithImpl<$Res, ClienteVentaArticulo>;
+  @useResult
   $Res call({double clienteId, double mes, Money importe, Money coste});
 }
 
 /// @nodoc
-class _$ClienteVentaArticuloCopyWithImpl<$Res>
+class _$ClienteVentaArticuloCopyWithImpl<$Res,
+        $Val extends ClienteVentaArticulo>
     implements $ClienteVentaArticuloCopyWith<$Res> {
   _$ClienteVentaArticuloCopyWithImpl(this._value, this._then);
 
-  final ClienteVentaArticulo _value;
   // ignore: unused_field
-  final $Res Function(ClienteVentaArticulo) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? mes = freezed,
-    Object? importe = freezed,
-    Object? coste = freezed,
+    Object? clienteId = null,
+    Object? mes = null,
+    Object? importe = null,
+    Object? coste = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as double,
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as double,
-      importe: importe == freezed
+      importe: null == importe
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
               as Money,
-      coste: coste == freezed
+      coste: null == coste
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
               as Money,
-    ));
+    ) as $Val);
   }
 }
 
@@ -78,41 +82,40 @@ abstract class _$$_ClienteVentaArticuloCopyWith<$Res>
           $Res Function(_$_ClienteVentaArticulo) then) =
       __$$_ClienteVentaArticuloCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({double clienteId, double mes, Money importe, Money coste});
 }
 
 /// @nodoc
 class __$$_ClienteVentaArticuloCopyWithImpl<$Res>
-    extends _$ClienteVentaArticuloCopyWithImpl<$Res>
+    extends _$ClienteVentaArticuloCopyWithImpl<$Res, _$_ClienteVentaArticulo>
     implements _$$_ClienteVentaArticuloCopyWith<$Res> {
   __$$_ClienteVentaArticuloCopyWithImpl(_$_ClienteVentaArticulo _value,
       $Res Function(_$_ClienteVentaArticulo) _then)
-      : super(_value, (v) => _then(v as _$_ClienteVentaArticulo));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteVentaArticulo get _value => super._value as _$_ClienteVentaArticulo;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? mes = freezed,
-    Object? importe = freezed,
-    Object? coste = freezed,
+    Object? clienteId = null,
+    Object? mes = null,
+    Object? importe = null,
+    Object? coste = null,
   }) {
     return _then(_$_ClienteVentaArticulo(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as double,
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as double,
-      importe: importe == freezed
+      importe: null == importe
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
               as Money,
-      coste: coste == freezed
+      coste: null == coste
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
               as Money,
@@ -149,22 +152,19 @@ class _$_ClienteVentaArticulo extends _ClienteVentaArticulo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteVentaArticulo &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.mes, mes) &&
-            const DeepCollectionEquality().equals(other.importe, importe) &&
-            const DeepCollectionEquality().equals(other.coste, coste));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.mes, mes) || other.mes == mes) &&
+            (identical(other.importe, importe) || other.importe == importe) &&
+            (identical(other.coste, coste) || other.coste == coste));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(mes),
-      const DeepCollectionEquality().hash(importe),
-      const DeepCollectionEquality().hash(coste));
+  int get hashCode => Object.hash(runtimeType, clienteId, mes, importe, coste);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteVentaArticuloCopyWith<_$_ClienteVentaArticulo> get copyWith =>
       __$$_ClienteVentaArticuloCopyWithImpl<_$_ClienteVentaArticulo>(
           this, _$identity);

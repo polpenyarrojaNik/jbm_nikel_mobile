@@ -69,7 +69,8 @@ mixin _$SubfamiliaDTO {
 abstract class $SubfamiliaDTOCopyWith<$Res> {
   factory $SubfamiliaDTOCopyWith(
           SubfamiliaDTO value, $Res Function(SubfamiliaDTO) then) =
-      _$SubfamiliaDTOCopyWithImpl<$Res>;
+      _$SubfamiliaDTOCopyWithImpl<$Res, SubfamiliaDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'SUBFAMILIA_ID') String id,
       @JsonKey(name: 'FAMILIA_ID') String familiaId,
@@ -93,19 +94,21 @@ abstract class $SubfamiliaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SubfamiliaDTOCopyWithImpl<$Res>
+class _$SubfamiliaDTOCopyWithImpl<$Res, $Val extends SubfamiliaDTO>
     implements $SubfamiliaDTOCopyWith<$Res> {
   _$SubfamiliaDTOCopyWithImpl(this._value, this._then);
 
-  final SubfamiliaDTO _value;
   // ignore: unused_field
-  final $Res Function(SubfamiliaDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? familiaId = freezed,
-    Object? descripcionES = freezed,
+    Object? id = null,
+    Object? familiaId = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -120,87 +123,87 @@ class _$SubfamiliaDTOCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      familiaId: familiaId == freezed
+      familiaId: null == familiaId
           ? _value.familiaId
           : familiaId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -211,6 +214,7 @@ abstract class _$$_SubfamiliaDTOCopyWith<$Res>
           _$_SubfamiliaDTO value, $Res Function(_$_SubfamiliaDTO) then) =
       __$$_SubfamiliaDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'SUBFAMILIA_ID') String id,
       @JsonKey(name: 'FAMILIA_ID') String familiaId,
@@ -235,20 +239,18 @@ abstract class _$$_SubfamiliaDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_SubfamiliaDTOCopyWithImpl<$Res>
-    extends _$SubfamiliaDTOCopyWithImpl<$Res>
+    extends _$SubfamiliaDTOCopyWithImpl<$Res, _$_SubfamiliaDTO>
     implements _$$_SubfamiliaDTOCopyWith<$Res> {
   __$$_SubfamiliaDTOCopyWithImpl(
       _$_SubfamiliaDTO _value, $Res Function(_$_SubfamiliaDTO) _then)
-      : super(_value, (v) => _then(v as _$_SubfamiliaDTO));
+      : super(_value, _then);
 
-  @override
-  _$_SubfamiliaDTO get _value => super._value as _$_SubfamiliaDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? familiaId = freezed,
-    Object? descripcionES = freezed,
+    Object? id = null,
+    Object? familiaId = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -263,83 +265,83 @@ class __$$_SubfamiliaDTOCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_SubfamiliaDTO(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      familiaId: familiaId == freezed
+      familiaId: null == familiaId
           ? _value.familiaId
           : familiaId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -443,70 +445,72 @@ class _$_SubfamiliaDTO extends _SubfamiliaDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SubfamiliaDTO &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.familiaId, familiaId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionES, descripcionES) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEN, descripcionEN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionFR, descripcionFR) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionDE, descripcionDE) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCA, descripcionCA) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionGB, descripcionGB) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionHU, descripcionHU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionIT, descripcionIT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionNL, descripcionNL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPL, descripcionPL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPT, descripcionPT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRO, descripcionRO) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRU, descripcionRU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCN, descripcionCN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEL, descripcionEL) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.familiaId, familiaId) ||
+                other.familiaId == familiaId) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPL, descripcionPL) ||
+                other.descripcionPL == descripcionPL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(familiaId),
-        const DeepCollectionEquality().hash(descripcionES),
-        const DeepCollectionEquality().hash(descripcionEN),
-        const DeepCollectionEquality().hash(descripcionFR),
-        const DeepCollectionEquality().hash(descripcionDE),
-        const DeepCollectionEquality().hash(descripcionCA),
-        const DeepCollectionEquality().hash(descripcionGB),
-        const DeepCollectionEquality().hash(descripcionHU),
-        const DeepCollectionEquality().hash(descripcionIT),
-        const DeepCollectionEquality().hash(descripcionNL),
-        const DeepCollectionEquality().hash(descripcionPL),
-        const DeepCollectionEquality().hash(descripcionPT),
-        const DeepCollectionEquality().hash(descripcionRO),
-        const DeepCollectionEquality().hash(descripcionRU),
-        const DeepCollectionEquality().hash(descripcionCN),
-        const DeepCollectionEquality().hash(descripcionEL),
-        const DeepCollectionEquality().hash(lastUpdated),
-        const DeepCollectionEquality().hash(deleted)
+        id,
+        familiaId,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SubfamiliaDTOCopyWith<_$_SubfamiliaDTO> get copyWith =>
       __$$_SubfamiliaDTOCopyWithImpl<_$_SubfamiliaDTO>(this, _$identity);
 

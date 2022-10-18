@@ -30,7 +30,8 @@ mixin _$ArticuloDocumento {
 abstract class $ArticuloDocumentoCopyWith<$Res> {
   factory $ArticuloDocumentoCopyWith(
           ArticuloDocumento value, $Res Function(ArticuloDocumento) then) =
-      _$ArticuloDocumentoCopyWithImpl<$Res>;
+      _$ArticuloDocumentoCopyWithImpl<$Res, ArticuloDocumento>;
+  @useResult
   $Res call(
       {String articuloId,
       String? nombreArchivo,
@@ -39,39 +40,41 @@ abstract class $ArticuloDocumentoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloDocumentoCopyWithImpl<$Res>
+class _$ArticuloDocumentoCopyWithImpl<$Res, $Val extends ArticuloDocumento>
     implements $ArticuloDocumentoCopyWith<$Res> {
   _$ArticuloDocumentoCopyWithImpl(this._value, this._then);
 
-  final ArticuloDocumento _value;
   // ignore: unused_field
-  final $Res Function(ArticuloDocumento) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
+    Object? articuloId = null,
     Object? nombreArchivo = freezed,
-    Object? idiomaId = freezed,
+    Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: freezed == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
-      idiomaId: idiomaId == freezed
+      idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_ArticuloDocumentoCopyWith<$Res>
           $Res Function(_$_ArticuloDocumento) then) =
       __$$_ArticuloDocumentoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String articuloId,
       String? nombreArchivo,
@@ -91,36 +95,34 @@ abstract class _$$_ArticuloDocumentoCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloDocumentoCopyWithImpl<$Res>
-    extends _$ArticuloDocumentoCopyWithImpl<$Res>
+    extends _$ArticuloDocumentoCopyWithImpl<$Res, _$_ArticuloDocumento>
     implements _$$_ArticuloDocumentoCopyWith<$Res> {
   __$$_ArticuloDocumentoCopyWithImpl(
       _$_ArticuloDocumento _value, $Res Function(_$_ArticuloDocumento) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloDocumento));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloDocumento get _value => super._value as _$_ArticuloDocumento;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
+    Object? articuloId = null,
     Object? nombreArchivo = freezed,
-    Object? idiomaId = freezed,
+    Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
     return _then(_$_ArticuloDocumento(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: freezed == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
-      idiomaId: idiomaId == freezed
+      idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -157,25 +159,23 @@ class _$_ArticuloDocumento extends _ArticuloDocumento {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloDocumento &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreArchivo, nombreArchivo) &&
-            const DeepCollectionEquality().equals(other.idiomaId, idiomaId) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo) &&
+            (identical(other.idiomaId, idiomaId) ||
+                other.idiomaId == idiomaId) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(nombreArchivo),
-      const DeepCollectionEquality().hash(idiomaId),
-      const DeepCollectionEquality().hash(observaciones));
+      runtimeType, articuloId, nombreArchivo, idiomaId, observaciones);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloDocumentoCopyWith<_$_ArticuloDocumento> get copyWith =>
       __$$_ArticuloDocumentoCopyWithImpl<_$_ArticuloDocumento>(
           this, _$identity);

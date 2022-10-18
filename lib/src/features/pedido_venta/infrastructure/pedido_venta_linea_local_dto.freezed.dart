@@ -60,7 +60,8 @@ mixin _$PedidoVentaLineaLocalDTO {
 abstract class $PedidoVentaLineaLocalDTOCopyWith<$Res> {
   factory $PedidoVentaLineaLocalDTOCopyWith(PedidoVentaLineaLocalDTO value,
           $Res Function(PedidoVentaLineaLocalDTO) then) =
-      _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res>;
+      _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res, PedidoVentaLineaLocalDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
       @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
@@ -79,89 +80,92 @@ abstract class $PedidoVentaLineaLocalDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
+class _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
+        $Val extends PedidoVentaLineaLocalDTO>
     implements $PedidoVentaLineaLocalDTOCopyWith<$Res> {
   _$PedidoVentaLineaLocalDTOCopyWithImpl(this._value, this._then);
 
-  final PedidoVentaLineaLocalDTO _value;
   // ignore: unused_field
-  final $Res Function(PedidoVentaLineaLocalDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaAppId = freezed,
-    Object? pedidoVentaLineaAppId = freezed,
-    Object? articuloId = freezed,
-    Object? articuloDescription = freezed,
-    Object? cantidad = freezed,
-    Object? precioDivisa = freezed,
-    Object? tipoPrecio = freezed,
-    Object? descuento1 = freezed,
-    Object? descuento2 = freezed,
-    Object? descuento3 = freezed,
-    Object? descuentoProntoPago = freezed,
-    Object? stockDisponibleSN = freezed,
+    Object? pedidoVentaAppId = null,
+    Object? pedidoVentaLineaAppId = null,
+    Object? articuloId = null,
+    Object? articuloDescription = null,
+    Object? cantidad = null,
+    Object? precioDivisa = null,
+    Object? tipoPrecio = null,
+    Object? descuento1 = null,
+    Object? descuento2 = null,
+    Object? descuento3 = null,
+    Object? descuentoProntoPago = null,
+    Object? stockDisponibleSN = null,
     Object? fechaDisponible = freezed,
-    Object? iva = freezed,
+    Object? iva = null,
   }) {
     return _then(_value.copyWith(
-      pedidoVentaAppId: pedidoVentaAppId == freezed
+      pedidoVentaAppId: null == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
               as String,
-      pedidoVentaLineaAppId: pedidoVentaLineaAppId == freezed
+      pedidoVentaLineaAppId: null == pedidoVentaLineaAppId
           ? _value.pedidoVentaLineaAppId
           : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloDescription: articuloDescription == freezed
+      articuloDescription: null == articuloDescription
           ? _value.articuloDescription
           : articuloDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      precioDivisa: precioDivisa == freezed
+      precioDivisa: null == precioDivisa
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
               as double,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento1: descuento1 == freezed
+      descuento1: null == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento2: descuento2 == freezed
+      descuento2: null == descuento2
           ? _value.descuento2
           : descuento2 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento3: descuento3 == freezed
+      descuento3: null == descuento3
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuentoProntoPago: descuentoProntoPago == freezed
+      descuentoProntoPago: null == descuentoProntoPago
           ? _value.descuentoProntoPago
           : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
               as double,
-      stockDisponibleSN: stockDisponibleSN == freezed
+      stockDisponibleSN: null == stockDisponibleSN
           ? _value.stockDisponibleSN
           : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
               as String,
-      fechaDisponible: fechaDisponible == freezed
+      fechaDisponible: freezed == fechaDisponible
           ? _value.fechaDisponible
           : fechaDisponible // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      iva: iva == freezed
+      iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -173,6 +177,7 @@ abstract class _$$_PedidoVentaLineaLocalDTOCopyWith<$Res>
           $Res Function(_$_PedidoVentaLineaLocalDTO) then) =
       __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'PEDIDO_APP_ID') String pedidoVentaAppId,
       @JsonKey(name: 'LIN_APP_ID') String pedidoVentaLineaAppId,
@@ -192,87 +197,85 @@ abstract class _$$_PedidoVentaLineaLocalDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
-    extends _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res>
+    extends _$PedidoVentaLineaLocalDTOCopyWithImpl<$Res,
+        _$_PedidoVentaLineaLocalDTO>
     implements _$$_PedidoVentaLineaLocalDTOCopyWith<$Res> {
   __$$_PedidoVentaLineaLocalDTOCopyWithImpl(_$_PedidoVentaLineaLocalDTO _value,
       $Res Function(_$_PedidoVentaLineaLocalDTO) _then)
-      : super(_value, (v) => _then(v as _$_PedidoVentaLineaLocalDTO));
+      : super(_value, _then);
 
-  @override
-  _$_PedidoVentaLineaLocalDTO get _value =>
-      super._value as _$_PedidoVentaLineaLocalDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaAppId = freezed,
-    Object? pedidoVentaLineaAppId = freezed,
-    Object? articuloId = freezed,
-    Object? articuloDescription = freezed,
-    Object? cantidad = freezed,
-    Object? precioDivisa = freezed,
-    Object? tipoPrecio = freezed,
-    Object? descuento1 = freezed,
-    Object? descuento2 = freezed,
-    Object? descuento3 = freezed,
-    Object? descuentoProntoPago = freezed,
-    Object? stockDisponibleSN = freezed,
+    Object? pedidoVentaAppId = null,
+    Object? pedidoVentaLineaAppId = null,
+    Object? articuloId = null,
+    Object? articuloDescription = null,
+    Object? cantidad = null,
+    Object? precioDivisa = null,
+    Object? tipoPrecio = null,
+    Object? descuento1 = null,
+    Object? descuento2 = null,
+    Object? descuento3 = null,
+    Object? descuentoProntoPago = null,
+    Object? stockDisponibleSN = null,
     Object? fechaDisponible = freezed,
-    Object? iva = freezed,
+    Object? iva = null,
   }) {
     return _then(_$_PedidoVentaLineaLocalDTO(
-      pedidoVentaAppId: pedidoVentaAppId == freezed
+      pedidoVentaAppId: null == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
               as String,
-      pedidoVentaLineaAppId: pedidoVentaLineaAppId == freezed
+      pedidoVentaLineaAppId: null == pedidoVentaLineaAppId
           ? _value.pedidoVentaLineaAppId
           : pedidoVentaLineaAppId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloDescription: articuloDescription == freezed
+      articuloDescription: null == articuloDescription
           ? _value.articuloDescription
           : articuloDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      precioDivisa: precioDivisa == freezed
+      precioDivisa: null == precioDivisa
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
               as double,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento1: descuento1 == freezed
+      descuento1: null == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento2: descuento2 == freezed
+      descuento2: null == descuento2
           ? _value.descuento2
           : descuento2 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento3: descuento3 == freezed
+      descuento3: null == descuento3
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuentoProntoPago: descuentoProntoPago == freezed
+      descuentoProntoPago: null == descuentoProntoPago
           ? _value.descuentoProntoPago
           : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
               as double,
-      stockDisponibleSN: stockDisponibleSN == freezed
+      stockDisponibleSN: null == stockDisponibleSN
           ? _value.stockDisponibleSN
           : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
               as String,
-      fechaDisponible: fechaDisponible == freezed
+      fechaDisponible: freezed == fechaDisponible
           ? _value.fechaDisponible
           : fechaDisponible // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      iva: iva == freezed
+      iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
@@ -356,55 +359,57 @@ class _$_PedidoVentaLineaLocalDTO extends _PedidoVentaLineaLocalDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PedidoVentaLineaLocalDTO &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaAppId, pedidoVentaAppId) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaLineaAppId, pedidoVentaLineaAppId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloDescription, articuloDescription) &&
-            const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
-            const DeepCollectionEquality()
-                .equals(other.precioDivisa, precioDivisa) &&
-            const DeepCollectionEquality()
-                .equals(other.tipoPrecio, tipoPrecio) &&
-            const DeepCollectionEquality()
-                .equals(other.descuento1, descuento1) &&
-            const DeepCollectionEquality()
-                .equals(other.descuento2, descuento2) &&
-            const DeepCollectionEquality()
-                .equals(other.descuento3, descuento3) &&
-            const DeepCollectionEquality()
-                .equals(other.descuentoProntoPago, descuentoProntoPago) &&
-            const DeepCollectionEquality()
-                .equals(other.stockDisponibleSN, stockDisponibleSN) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaDisponible, fechaDisponible) &&
-            const DeepCollectionEquality().equals(other.iva, iva));
+            (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
+                other.pedidoVentaAppId == pedidoVentaAppId) &&
+            (identical(other.pedidoVentaLineaAppId, pedidoVentaLineaAppId) ||
+                other.pedidoVentaLineaAppId == pedidoVentaLineaAppId) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.articuloDescription, articuloDescription) ||
+                other.articuloDescription == articuloDescription) &&
+            (identical(other.cantidad, cantidad) ||
+                other.cantidad == cantidad) &&
+            (identical(other.precioDivisa, precioDivisa) ||
+                other.precioDivisa == precioDivisa) &&
+            (identical(other.tipoPrecio, tipoPrecio) ||
+                other.tipoPrecio == tipoPrecio) &&
+            (identical(other.descuento1, descuento1) ||
+                other.descuento1 == descuento1) &&
+            (identical(other.descuento2, descuento2) ||
+                other.descuento2 == descuento2) &&
+            (identical(other.descuento3, descuento3) ||
+                other.descuento3 == descuento3) &&
+            (identical(other.descuentoProntoPago, descuentoProntoPago) ||
+                other.descuentoProntoPago == descuentoProntoPago) &&
+            (identical(other.stockDisponibleSN, stockDisponibleSN) ||
+                other.stockDisponibleSN == stockDisponibleSN) &&
+            (identical(other.fechaDisponible, fechaDisponible) ||
+                other.fechaDisponible == fechaDisponible) &&
+            (identical(other.iva, iva) || other.iva == iva));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(pedidoVentaAppId),
-      const DeepCollectionEquality().hash(pedidoVentaLineaAppId),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(articuloDescription),
-      const DeepCollectionEquality().hash(cantidad),
-      const DeepCollectionEquality().hash(precioDivisa),
-      const DeepCollectionEquality().hash(tipoPrecio),
-      const DeepCollectionEquality().hash(descuento1),
-      const DeepCollectionEquality().hash(descuento2),
-      const DeepCollectionEquality().hash(descuento3),
-      const DeepCollectionEquality().hash(descuentoProntoPago),
-      const DeepCollectionEquality().hash(stockDisponibleSN),
-      const DeepCollectionEquality().hash(fechaDisponible),
-      const DeepCollectionEquality().hash(iva));
+      pedidoVentaAppId,
+      pedidoVentaLineaAppId,
+      articuloId,
+      articuloDescription,
+      cantidad,
+      precioDivisa,
+      tipoPrecio,
+      descuento1,
+      descuento2,
+      descuento3,
+      descuentoProntoPago,
+      stockDisponibleSN,
+      fechaDisponible,
+      iva);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PedidoVentaLineaLocalDTOCopyWith<_$_PedidoVentaLineaLocalDTO>
       get copyWith => __$$_PedidoVentaLineaLocalDTOCopyWithImpl<
           _$_PedidoVentaLineaLocalDTO>(this, _$identity);

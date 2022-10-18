@@ -31,7 +31,8 @@ mixin _$Usuario {
 /// @nodoc
 abstract class $UsuarioCopyWith<$Res> {
   factory $UsuarioCopyWith(Usuario value, $Res Function(Usuario) then) =
-      _$UsuarioCopyWithImpl<$Res>;
+      _$UsuarioCopyWithImpl<$Res, Usuario>;
+  @useResult
   $Res call(
       {String id,
       String usuario,
@@ -43,53 +44,56 @@ abstract class $UsuarioCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UsuarioCopyWithImpl<$Res> implements $UsuarioCopyWith<$Res> {
+class _$UsuarioCopyWithImpl<$Res, $Val extends Usuario>
+    implements $UsuarioCopyWith<$Res> {
   _$UsuarioCopyWithImpl(this._value, this._then);
 
-  final Usuario _value;
   // ignore: unused_field
-  final $Res Function(Usuario) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? usuario = freezed,
-    Object? contrasenya = freezed,
+    Object? id = null,
+    Object? usuario = null,
+    Object? contrasenya = null,
     Object? nombreUsuario = freezed,
     Object? refreshToken = freezed,
-    Object? provisionalToken = freezed,
-    Object? test = freezed,
+    Object? provisionalToken = null,
+    Object? test = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      usuario: usuario == freezed
+      usuario: null == usuario
           ? _value.usuario
           : usuario // ignore: cast_nullable_to_non_nullable
               as String,
-      contrasenya: contrasenya == freezed
+      contrasenya: null == contrasenya
           ? _value.contrasenya
           : contrasenya // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreUsuario: nombreUsuario == freezed
+      nombreUsuario: freezed == nombreUsuario
           ? _value.nombreUsuario
           : nombreUsuario // ignore: cast_nullable_to_non_nullable
               as String?,
-      refreshToken: refreshToken == freezed
+      refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      provisionalToken: provisionalToken == freezed
+      provisionalToken: null == provisionalToken
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
               as String,
-      test: test == freezed
+      test: null == test
           ? _value.test
           : test // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -99,6 +103,7 @@ abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
           _$_Usuario value, $Res Function(_$_Usuario) then) =
       __$$_UsuarioCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String usuario,
@@ -110,50 +115,49 @@ abstract class _$$_UsuarioCopyWith<$Res> implements $UsuarioCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UsuarioCopyWithImpl<$Res> extends _$UsuarioCopyWithImpl<$Res>
+class __$$_UsuarioCopyWithImpl<$Res>
+    extends _$UsuarioCopyWithImpl<$Res, _$_Usuario>
     implements _$$_UsuarioCopyWith<$Res> {
   __$$_UsuarioCopyWithImpl(_$_Usuario _value, $Res Function(_$_Usuario) _then)
-      : super(_value, (v) => _then(v as _$_Usuario));
+      : super(_value, _then);
 
-  @override
-  _$_Usuario get _value => super._value as _$_Usuario;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? usuario = freezed,
-    Object? contrasenya = freezed,
+    Object? id = null,
+    Object? usuario = null,
+    Object? contrasenya = null,
     Object? nombreUsuario = freezed,
     Object? refreshToken = freezed,
-    Object? provisionalToken = freezed,
-    Object? test = freezed,
+    Object? provisionalToken = null,
+    Object? test = null,
   }) {
     return _then(_$_Usuario(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      usuario: usuario == freezed
+      usuario: null == usuario
           ? _value.usuario
           : usuario // ignore: cast_nullable_to_non_nullable
               as String,
-      contrasenya: contrasenya == freezed
+      contrasenya: null == contrasenya
           ? _value.contrasenya
           : contrasenya // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreUsuario: nombreUsuario == freezed
+      nombreUsuario: freezed == nombreUsuario
           ? _value.nombreUsuario
           : nombreUsuario // ignore: cast_nullable_to_non_nullable
               as String?,
-      refreshToken: refreshToken == freezed
+      refreshToken: freezed == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      provisionalToken: provisionalToken == freezed
+      provisionalToken: null == provisionalToken
           ? _value.provisionalToken
           : provisionalToken // ignore: cast_nullable_to_non_nullable
               as String,
-      test: test == freezed
+      test: null == test
           ? _value.test
           : test // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -199,32 +203,26 @@ class _$_Usuario extends _Usuario {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Usuario &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.usuario, usuario) &&
-            const DeepCollectionEquality()
-                .equals(other.contrasenya, contrasenya) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreUsuario, nombreUsuario) &&
-            const DeepCollectionEquality()
-                .equals(other.refreshToken, refreshToken) &&
-            const DeepCollectionEquality()
-                .equals(other.provisionalToken, provisionalToken) &&
-            const DeepCollectionEquality().equals(other.test, test));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.usuario, usuario) || other.usuario == usuario) &&
+            (identical(other.contrasenya, contrasenya) ||
+                other.contrasenya == contrasenya) &&
+            (identical(other.nombreUsuario, nombreUsuario) ||
+                other.nombreUsuario == nombreUsuario) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken) &&
+            (identical(other.provisionalToken, provisionalToken) ||
+                other.provisionalToken == provisionalToken) &&
+            (identical(other.test, test) || other.test == test));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(usuario),
-      const DeepCollectionEquality().hash(contrasenya),
-      const DeepCollectionEquality().hash(nombreUsuario),
-      const DeepCollectionEquality().hash(refreshToken),
-      const DeepCollectionEquality().hash(provisionalToken),
-      const DeepCollectionEquality().hash(test));
+  int get hashCode => Object.hash(runtimeType, id, usuario, contrasenya,
+      nombreUsuario, refreshToken, provisionalToken, test);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UsuarioCopyWith<_$_Usuario> get copyWith =>
       __$$_UsuarioCopyWithImpl<_$_Usuario>(this, _$identity);
 }

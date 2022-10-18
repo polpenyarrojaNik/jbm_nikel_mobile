@@ -26,10 +26,10 @@ mixin _$ArticuloPrecioControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,10 +51,10 @@ mixin _$ArticuloPrecioControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(_error value)? error,
+    TResult? Function(_data value)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,17 +73,20 @@ abstract class $ArticuloPrecioControllerStateCopyWith<$Res> {
   factory $ArticuloPrecioControllerStateCopyWith(
           ArticuloPrecioControllerState value,
           $Res Function(ArticuloPrecioControllerState) then) =
-      _$ArticuloPrecioControllerStateCopyWithImpl<$Res>;
+      _$ArticuloPrecioControllerStateCopyWithImpl<$Res,
+          ArticuloPrecioControllerState>;
 }
 
 /// @nodoc
-class _$ArticuloPrecioControllerStateCopyWithImpl<$Res>
+class _$ArticuloPrecioControllerStateCopyWithImpl<$Res,
+        $Val extends ArticuloPrecioControllerState>
     implements $ArticuloPrecioControllerStateCopyWith<$Res> {
   _$ArticuloPrecioControllerStateCopyWithImpl(this._value, this._then);
 
-  final ArticuloPrecioControllerState _value;
   // ignore: unused_field
-  final $Res Function(ArticuloPrecioControllerState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -95,13 +98,10 @@ abstract class _$$_loadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_loadingCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res>
+    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_loading>
     implements _$$_loadingCopyWith<$Res> {
   __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
-      : super(_value, (v) => _then(v as _$_loading));
-
-  @override
-  _$_loading get _value => super._value as _$_loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -137,10 +137,10 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
   }) {
     return loading?.call();
   }
@@ -174,10 +174,10 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(_error value)? error,
+    TResult? Function(_data value)? data,
   }) {
     return loading?.call(this);
   }
@@ -212,13 +212,10 @@ abstract class _$$_initialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_initialCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res>
+    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_initial>
     implements _$$_initialCopyWith<$Res> {
   __$$_initialCopyWithImpl(_$_initial _value, $Res Function(_$_initial) _then)
-      : super(_value, (v) => _then(v as _$_initial));
-
-  @override
-  _$_initial get _value => super._value as _$_initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -254,10 +251,10 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
   }) {
     return initial?.call();
   }
@@ -291,10 +288,10 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(_error value)? error,
+    TResult? Function(_data value)? data,
   }) {
     return initial?.call(this);
   }
@@ -324,30 +321,26 @@ abstract class _initial extends ArticuloPrecioControllerState {
 abstract class _$$_errorCopyWith<$Res> {
   factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
       __$$_errorCopyWithImpl<$Res>;
+  @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
 class __$$_errorCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res>
+    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_error>
     implements _$$_errorCopyWith<$Res> {
   __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
-      : super(_value, (v) => _then(v as _$_error));
+      : super(_value, _then);
 
-  @override
-  _$_error get _value => super._value as _$_error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
     Object? stackTrace = freezed,
   }) {
     return _then(_$_error(
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
           ? _value.stackTrace
           : stackTrace // ignore: cast_nullable_to_non_nullable
               as StackTrace?,
@@ -376,18 +369,17 @@ class _$_error extends _error {
         (other.runtimeType == runtimeType &&
             other is _$_error &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(stackTrace));
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_errorCopyWith<_$_error> get copyWith =>
       __$$_errorCopyWithImpl<_$_error>(this, _$identity);
 
@@ -405,10 +397,10 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
   }) {
     return error?.call(this.error, stackTrace);
   }
@@ -442,10 +434,10 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(_error value)? error,
+    TResult? Function(_data value)? data,
   }) {
     return error?.call(this);
   }
@@ -482,6 +474,7 @@ abstract class _error extends ArticuloPrecioControllerState {
 abstract class _$$_dataCopyWith<$Res> {
   factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
       __$$_dataCopyWithImpl<$Res>;
+  @useResult
   $Res call({ArticuloPrecio? articuloPrecio});
 
   $ArticuloPrecioCopyWith<$Res>? get articuloPrecio;
@@ -489,20 +482,18 @@ abstract class _$$_dataCopyWith<$Res> {
 
 /// @nodoc
 class __$$_dataCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res>
+    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_data>
     implements _$$_dataCopyWith<$Res> {
   __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
-      : super(_value, (v) => _then(v as _$_data));
+      : super(_value, _then);
 
-  @override
-  _$_data get _value => super._value as _$_data;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? articuloPrecio = freezed,
   }) {
     return _then(_$_data(
-      articuloPrecio == freezed
+      freezed == articuloPrecio
           ? _value.articuloPrecio
           : articuloPrecio // ignore: cast_nullable_to_non_nullable
               as ArticuloPrecio?,
@@ -510,6 +501,7 @@ class __$$_dataCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ArticuloPrecioCopyWith<$Res>? get articuloPrecio {
     if (_value.articuloPrecio == null) {
       return null;
@@ -539,16 +531,16 @@ class _$_data extends _data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_data &&
-            const DeepCollectionEquality()
-                .equals(other.articuloPrecio, articuloPrecio));
+            (identical(other.articuloPrecio, articuloPrecio) ||
+                other.articuloPrecio == articuloPrecio));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(articuloPrecio));
+  int get hashCode => Object.hash(runtimeType, articuloPrecio);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_dataCopyWith<_$_data> get copyWith =>
       __$$_dataCopyWithImpl<_$_data>(this, _$identity);
 
@@ -566,10 +558,10 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function()? initial,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
   }) {
     return data?.call(articuloPrecio);
   }
@@ -603,10 +595,10 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_initial value)? initial,
-    TResult Function(_error value)? error,
-    TResult Function(_data value)? data,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(_error value)? error,
+    TResult? Function(_data value)? data,
   }) {
     return data?.call(this);
   }

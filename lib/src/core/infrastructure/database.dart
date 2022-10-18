@@ -88,10 +88,9 @@ const localDatabaseName = 'jbm.sqlite';
 ])
 class AppDatabase extends _$AppDatabase {
   final String? databaseFile;
-  AppDatabase({this.databaseFile})
-      : super(
-          _openConnection(databaseFile),
-        );
+  final bool test;
+  AppDatabase({this.databaseFile, this.test = false})
+      : super(test ? NativeDatabase.memory() : _openConnection(databaseFile));
 
   @override
   int get schemaVersion => 1;

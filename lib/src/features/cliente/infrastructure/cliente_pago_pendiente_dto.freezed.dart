@@ -56,7 +56,8 @@ mixin _$ClientePagoPendienteDTO {
 abstract class $ClientePagoPendienteDTOCopyWith<$Res> {
   factory $ClientePagoPendienteDTOCopyWith(ClientePagoPendienteDTO value,
           $Res Function(ClientePagoPendienteDTO) then) =
-      _$ClientePagoPendienteDTOCopyWithImpl<$Res>;
+      _$ClientePagoPendienteDTOCopyWithImpl<$Res, ClientePagoPendienteDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID')
           String clienteId,
@@ -85,18 +86,21 @@ abstract class $ClientePagoPendienteDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClientePagoPendienteDTOCopyWithImpl<$Res>
+class _$ClientePagoPendienteDTOCopyWithImpl<$Res,
+        $Val extends ClientePagoPendienteDTO>
     implements $ClientePagoPendienteDTOCopyWith<$Res> {
   _$ClientePagoPendienteDTOCopyWithImpl(this._value, this._then);
 
-  final ClientePagoPendienteDTO _value;
   // ignore: unused_field
-  final $Res Function(ClientePagoPendienteDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? efectoId = freezed,
+    Object? clienteId = null,
+    Object? efectoId = null,
     Object? facutaId = freezed,
     Object? fechaFactura = freezed,
     Object? fechaExpiracion = freezed,
@@ -105,59 +109,59 @@ class _$ClientePagoPendienteDTOCopyWithImpl<$Res>
     Object? importe = freezed,
     Object? fechaExpiracionInicial = freezed,
     Object? vencidoJBM = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      efectoId: efectoId == freezed
+      efectoId: null == efectoId
           ? _value.efectoId
           : efectoId // ignore: cast_nullable_to_non_nullable
               as String,
-      facutaId: facutaId == freezed
+      facutaId: freezed == facutaId
           ? _value.facutaId
           : facutaId // ignore: cast_nullable_to_non_nullable
               as String?,
-      fechaFactura: fechaFactura == freezed
+      fechaFactura: freezed == fechaFactura
           ? _value.fechaFactura
           : fechaFactura // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      fechaExpiracion: fechaExpiracion == freezed
+      fechaExpiracion: freezed == fechaExpiracion
           ? _value.fechaExpiracion
           : fechaExpiracion // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      metodoDeCobroId: metodoDeCobroId == freezed
+      metodoDeCobroId: freezed == metodoDeCobroId
           ? _value.metodoDeCobroId
           : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
               as String?,
-      estadoCobroId: estadoCobroId == freezed
+      estadoCobroId: freezed == estadoCobroId
           ? _value.estadoCobroId
           : estadoCobroId // ignore: cast_nullable_to_non_nullable
               as String?,
-      importe: importe == freezed
+      importe: freezed == importe
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
               as double?,
-      fechaExpiracionInicial: fechaExpiracionInicial == freezed
+      fechaExpiracionInicial: freezed == fechaExpiracionInicial
           ? _value.fechaExpiracionInicial
           : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      vencidoJBM: vencidoJBM == freezed
+      vencidoJBM: freezed == vencidoJBM
           ? _value.vencidoJBM
           : vencidoJBM // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -168,6 +172,7 @@ abstract class _$$_ClientePagoPendienteDTOCopyWith<$Res>
           $Res Function(_$_ClientePagoPendienteDTO) then) =
       __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID')
           String clienteId,
@@ -197,20 +202,18 @@ abstract class _$$_ClientePagoPendienteDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>
-    extends _$ClientePagoPendienteDTOCopyWithImpl<$Res>
+    extends _$ClientePagoPendienteDTOCopyWithImpl<$Res,
+        _$_ClientePagoPendienteDTO>
     implements _$$_ClientePagoPendienteDTOCopyWith<$Res> {
   __$$_ClientePagoPendienteDTOCopyWithImpl(_$_ClientePagoPendienteDTO _value,
       $Res Function(_$_ClientePagoPendienteDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClientePagoPendienteDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClientePagoPendienteDTO get _value =>
-      super._value as _$_ClientePagoPendienteDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? efectoId = freezed,
+    Object? clienteId = null,
+    Object? efectoId = null,
     Object? facutaId = freezed,
     Object? fechaFactura = freezed,
     Object? fechaExpiracion = freezed,
@@ -219,55 +222,55 @@ class __$$_ClientePagoPendienteDTOCopyWithImpl<$Res>
     Object? importe = freezed,
     Object? fechaExpiracionInicial = freezed,
     Object? vencidoJBM = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClientePagoPendienteDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      efectoId: efectoId == freezed
+      efectoId: null == efectoId
           ? _value.efectoId
           : efectoId // ignore: cast_nullable_to_non_nullable
               as String,
-      facutaId: facutaId == freezed
+      facutaId: freezed == facutaId
           ? _value.facutaId
           : facutaId // ignore: cast_nullable_to_non_nullable
               as String?,
-      fechaFactura: fechaFactura == freezed
+      fechaFactura: freezed == fechaFactura
           ? _value.fechaFactura
           : fechaFactura // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      fechaExpiracion: fechaExpiracion == freezed
+      fechaExpiracion: freezed == fechaExpiracion
           ? _value.fechaExpiracion
           : fechaExpiracion // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      metodoDeCobroId: metodoDeCobroId == freezed
+      metodoDeCobroId: freezed == metodoDeCobroId
           ? _value.metodoDeCobroId
           : metodoDeCobroId // ignore: cast_nullable_to_non_nullable
               as String?,
-      estadoCobroId: estadoCobroId == freezed
+      estadoCobroId: freezed == estadoCobroId
           ? _value.estadoCobroId
           : estadoCobroId // ignore: cast_nullable_to_non_nullable
               as String?,
-      importe: importe == freezed
+      importe: freezed == importe
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
               as double?,
-      fechaExpiracionInicial: fechaExpiracionInicial == freezed
+      fechaExpiracionInicial: freezed == fechaExpiracionInicial
           ? _value.fechaExpiracionInicial
           : fechaExpiracionInicial // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      vencidoJBM: vencidoJBM == freezed
+      vencidoJBM: freezed == vencidoJBM
           ? _value.vencidoJBM
           : vencidoJBM // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -343,46 +346,50 @@ class _$_ClientePagoPendienteDTO extends _ClientePagoPendienteDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClientePagoPendienteDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.efectoId, efectoId) &&
-            const DeepCollectionEquality().equals(other.facutaId, facutaId) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaFactura, fechaFactura) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaExpiracion, fechaExpiracion) &&
-            const DeepCollectionEquality()
-                .equals(other.metodoDeCobroId, metodoDeCobroId) &&
-            const DeepCollectionEquality()
-                .equals(other.estadoCobroId, estadoCobroId) &&
-            const DeepCollectionEquality().equals(other.importe, importe) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaExpiracionInicial, fechaExpiracionInicial) &&
-            const DeepCollectionEquality()
-                .equals(other.vencidoJBM, vencidoJBM) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.efectoId, efectoId) ||
+                other.efectoId == efectoId) &&
+            (identical(other.facutaId, facutaId) ||
+                other.facutaId == facutaId) &&
+            (identical(other.fechaFactura, fechaFactura) ||
+                other.fechaFactura == fechaFactura) &&
+            (identical(other.fechaExpiracion, fechaExpiracion) ||
+                other.fechaExpiracion == fechaExpiracion) &&
+            (identical(other.metodoDeCobroId, metodoDeCobroId) ||
+                other.metodoDeCobroId == metodoDeCobroId) &&
+            (identical(other.estadoCobroId, estadoCobroId) ||
+                other.estadoCobroId == estadoCobroId) &&
+            (identical(other.importe, importe) || other.importe == importe) &&
+            (identical(other.fechaExpiracionInicial, fechaExpiracionInicial) ||
+                other.fechaExpiracionInicial == fechaExpiracionInicial) &&
+            (identical(other.vencidoJBM, vencidoJBM) ||
+                other.vencidoJBM == vencidoJBM) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(efectoId),
-      const DeepCollectionEquality().hash(facutaId),
-      const DeepCollectionEquality().hash(fechaFactura),
-      const DeepCollectionEquality().hash(fechaExpiracion),
-      const DeepCollectionEquality().hash(metodoDeCobroId),
-      const DeepCollectionEquality().hash(estadoCobroId),
-      const DeepCollectionEquality().hash(importe),
-      const DeepCollectionEquality().hash(fechaExpiracionInicial),
-      const DeepCollectionEquality().hash(vencidoJBM),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      clienteId,
+      efectoId,
+      facutaId,
+      fechaFactura,
+      fechaExpiracion,
+      metodoDeCobroId,
+      estadoCobroId,
+      importe,
+      fechaExpiracionInicial,
+      vencidoJBM,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClientePagoPendienteDTOCopyWith<_$_ClientePagoPendienteDTO>
       get copyWith =>
           __$$_ClientePagoPendienteDTOCopyWithImpl<_$_ClientePagoPendienteDTO>(

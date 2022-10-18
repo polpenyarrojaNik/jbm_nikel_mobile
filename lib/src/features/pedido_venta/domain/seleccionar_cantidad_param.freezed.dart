@@ -32,7 +32,8 @@ mixin _$SeleccionarCantidadParam {
 abstract class $SeleccionarCantidadParamCopyWith<$Res> {
   factory $SeleccionarCantidadParamCopyWith(SeleccionarCantidadParam value,
           $Res Function(SeleccionarCantidadParam) then) =
-      _$SeleccionarCantidadParamCopyWithImpl<$Res>;
+      _$SeleccionarCantidadParamCopyWithImpl<$Res, SeleccionarCantidadParam>;
+  @useResult
   $Res call(
       {EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
       String clienteId,
@@ -44,51 +45,55 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SeleccionarCantidadParamCopyWithImpl<$Res>
+class _$SeleccionarCantidadParamCopyWithImpl<$Res,
+        $Val extends SeleccionarCantidadParam>
     implements $SeleccionarCantidadParamCopyWith<$Res> {
   _$SeleccionarCantidadParamCopyWithImpl(this._value, this._then);
 
-  final SeleccionarCantidadParam _value;
   // ignore: unused_field
-  final $Res Function(SeleccionarCantidadParam) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaIdIsLocalParam = freezed,
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
+    Object? pedidoVentaIdIsLocalParam = null,
+    Object? clienteId = null,
+    Object? articuloId = null,
     Object? cantidad = freezed,
     Object? posicionLineaActualizar = freezed,
   }) {
     return _then(_value.copyWith(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam == freezed
+      pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
           ? _value.pedidoVentaIdIsLocalParam
           : pedidoVentaIdIsLocalParam // ignore: cast_nullable_to_non_nullable
               as EntityIdIsLocalParam,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidad: cantidad == freezed
+      cantidad: freezed == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
-      posicionLineaActualizar: posicionLineaActualizar == freezed
+      posicionLineaActualizar: freezed == posicionLineaActualizar
           ? _value.posicionLineaActualizar
           : posicionLineaActualizar // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam {
     return $EntityIdIsLocalParamCopyWith<$Res>(_value.pedidoVentaIdIsLocalParam,
         (value) {
-      return _then(_value.copyWith(pedidoVentaIdIsLocalParam: value));
+      return _then(_value.copyWith(pedidoVentaIdIsLocalParam: value) as $Val);
     });
   }
 }
@@ -101,6 +106,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
           $Res Function(_$_SeleccionarCantidadParam) then) =
       __$$_SeleccionarCantidadParamCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
       String clienteId,
@@ -114,42 +120,40 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
 
 /// @nodoc
 class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
-    extends _$SeleccionarCantidadParamCopyWithImpl<$Res>
+    extends _$SeleccionarCantidadParamCopyWithImpl<$Res,
+        _$_SeleccionarCantidadParam>
     implements _$$_SeleccionarCantidadParamCopyWith<$Res> {
   __$$_SeleccionarCantidadParamCopyWithImpl(_$_SeleccionarCantidadParam _value,
       $Res Function(_$_SeleccionarCantidadParam) _then)
-      : super(_value, (v) => _then(v as _$_SeleccionarCantidadParam));
+      : super(_value, _then);
 
-  @override
-  _$_SeleccionarCantidadParam get _value =>
-      super._value as _$_SeleccionarCantidadParam;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaIdIsLocalParam = freezed,
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
+    Object? pedidoVentaIdIsLocalParam = null,
+    Object? clienteId = null,
+    Object? articuloId = null,
     Object? cantidad = freezed,
     Object? posicionLineaActualizar = freezed,
   }) {
     return _then(_$_SeleccionarCantidadParam(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam == freezed
+      pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
           ? _value.pedidoVentaIdIsLocalParam
           : pedidoVentaIdIsLocalParam // ignore: cast_nullable_to_non_nullable
               as EntityIdIsLocalParam,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidad: cantidad == freezed
+      cantidad: freezed == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
-      posicionLineaActualizar: posicionLineaActualizar == freezed
+      posicionLineaActualizar: freezed == posicionLineaActualizar
           ? _value.posicionLineaActualizar
           : posicionLineaActualizar // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -189,27 +193,27 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SeleccionarCantidadParam &&
-            const DeepCollectionEquality().equals(
-                other.pedidoVentaIdIsLocalParam, pedidoVentaIdIsLocalParam) &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
-            const DeepCollectionEquality().equals(
-                other.posicionLineaActualizar, posicionLineaActualizar));
+            (identical(other.pedidoVentaIdIsLocalParam,
+                    pedidoVentaIdIsLocalParam) ||
+                other.pedidoVentaIdIsLocalParam == pedidoVentaIdIsLocalParam) &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.cantidad, cantidad) ||
+                other.cantidad == cantidad) &&
+            (identical(
+                    other.posicionLineaActualizar, posicionLineaActualizar) ||
+                other.posicionLineaActualizar == posicionLineaActualizar));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(pedidoVentaIdIsLocalParam),
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(cantidad),
-      const DeepCollectionEquality().hash(posicionLineaActualizar));
+  int get hashCode => Object.hash(runtimeType, pedidoVentaIdIsLocalParam,
+      clienteId, articuloId, cantidad, posicionLineaActualizar);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SeleccionarCantidadParamCopyWith<_$_SeleccionarCantidadParam>
       get copyWith => __$$_SeleccionarCantidadParamCopyWithImpl<
           _$_SeleccionarCantidadParam>(this, _$identity);

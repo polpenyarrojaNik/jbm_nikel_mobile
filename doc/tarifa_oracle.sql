@@ -429,143 +429,143 @@ CREATE OR REPLACE PACKAGE BODY tarifa_venta_pkg AS
   --   o_precio := NVL (o_precio, 0);
   -- END get_precio_cliente_neto;
 
-  FUNCTION get_descuento_general (i_cod_art         IN VARCHAR2
-                                 ,i_cod_dto_general IN VARCHAR2
-                                 ,i_fecha           IN DATE)
-    RETURN NUMBER AS
-    l_descuento descuento_general_det_t.descuento%TYPE;
-  BEGIN
-    BEGIN
-      SELECT descuento
-        INTO l_descuento
-        FROM (  SELECT rn
-                      ,prioridad
-                      ,fecha_desde
-                      ,descuento
-                  FROM (SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,1 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun
-                                 ON artcomun.cod_art = descuento_general_det.cod_art
-                                AND artcomun.familia = descuento_general_det.familia
-                                AND artcomun.subfamilia = descuento_general_det.subfamilia
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,2 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun
-                                 ON artcomun.cod_art = descuento_general_det.cod_art
-                                AND artcomun.familia = descuento_general_det.familia
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.subfamilia = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,3 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun
-                                 ON artcomun.familia = descuento_general_det.familia
-                                AND artcomun.subfamilia = descuento_general_det.subfamilia
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.cod_art = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,4 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun
-                                 ON artcomun.cod_art = descuento_general_det.cod_art
-                                AND artcomun.subfamilia = descuento_general_det.subfamilia
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.familia = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,5 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun ON artcomun.cod_art = descuento_general_det.cod_art
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.subfamilia = '*'
-                           AND descuento_general_det.familia = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,6 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun ON artcomun.subfamilia = descuento_general_det.subfamilia
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.cod_art = '*'
-                           AND descuento_general_det.familia = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,7 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                               INNER JOIN artcomun ON artcomun.familia = descuento_general_det.familia
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND artcomun.cod_art = i_cod_art
-                           AND descuento_general_det.cod_art = '*'
-                           AND descuento_general_det.subfamilia = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL)
-                        UNION ALL
-                        SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
-                              ,8 prioridad
-                              ,descuento_general_det.fecha_desde
-                              ,descuento_general_det.descuento
-                          FROM descuento_general_det
-                         WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
-                           AND descuento_general_det.cod_art = '*'
-                           AND descuento_general_det.familia = '*'
-                           AND descuento_general_det.subfamilia = '*'
-                           AND descuento_general_det.fecha_desde <= i_fecha
-                           AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
-                             OR (descuento_general_det.fecha_fin) IS NULL))
-                 WHERE rn = 1
-              ORDER BY prioridad ASC)
-       WHERE ROWNUM = 1;
-    EXCEPTION
-      WHEN NO_DATA_FOUND THEN
-        l_descuento := 0;
-    END;
+  -- FUNCTION get_descuento_general (i_cod_art         IN VARCHAR2
+  --                                ,i_cod_dto_general IN VARCHAR2
+  --                                ,i_fecha           IN DATE)
+  --   RETURN NUMBER AS
+  --   l_descuento descuento_general_det_t.descuento%TYPE;
+  -- BEGIN
+  --   BEGIN
+  --     SELECT descuento
+  --       INTO l_descuento
+  --       FROM (  SELECT rn
+  --                     ,prioridad
+  --                     ,fecha_desde
+  --                     ,descuento
+  --                 FROM (SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,1 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun
+  --                                ON artcomun.cod_art = descuento_general_det.cod_art
+  --                               AND artcomun.familia = descuento_general_det.familia
+  --                               AND artcomun.subfamilia = descuento_general_det.subfamilia
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,2 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun
+  --                                ON artcomun.cod_art = descuento_general_det.cod_art
+  --                               AND artcomun.familia = descuento_general_det.familia
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.subfamilia = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,3 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun
+  --                                ON artcomun.familia = descuento_general_det.familia
+  --                               AND artcomun.subfamilia = descuento_general_det.subfamilia
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.cod_art = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,4 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun
+  --                                ON artcomun.cod_art = descuento_general_det.cod_art
+  --                               AND artcomun.subfamilia = descuento_general_det.subfamilia
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.familia = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,5 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun ON artcomun.cod_art = descuento_general_det.cod_art
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.subfamilia = '*'
+  --                          AND descuento_general_det.familia = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,6 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun ON artcomun.subfamilia = descuento_general_det.subfamilia
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.cod_art = '*'
+  --                          AND descuento_general_det.familia = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,7 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                              INNER JOIN artcomun ON artcomun.familia = descuento_general_det.familia
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND artcomun.cod_art = i_cod_art
+  --                          AND descuento_general_det.cod_art = '*'
+  --                          AND descuento_general_det.subfamilia = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL)
+  --                       UNION ALL
+  --                       SELECT ROW_NUMBER () OVER (ORDER BY descuento_general_det.fecha_desde DESC) rn
+  --                             ,8 prioridad
+  --                             ,descuento_general_det.fecha_desde
+  --                             ,descuento_general_det.descuento
+  --                         FROM descuento_general_det
+  --                        WHERE descuento_general_det.cod_dto_general = i_cod_dto_general
+  --                          AND descuento_general_det.cod_art = '*'
+  --                          AND descuento_general_det.familia = '*'
+  --                          AND descuento_general_det.subfamilia = '*'
+  --                          AND descuento_general_det.fecha_desde <= i_fecha
+  --                          AND (TRUNC (descuento_general_det.fecha_fin) >= TRUNC (i_fecha)
+  --                            OR (descuento_general_det.fecha_fin) IS NULL))
+  --                WHERE rn = 1
+  --             ORDER BY prioridad ASC)
+  --      WHERE ROWNUM = 1;
+  --   EXCEPTION
+  --     WHEN NO_DATA_FOUND THEN
+  --       l_descuento := 0;
+  --   END;
 
-    RETURN NVL (l_descuento, 0);
-  END get_descuento_general;
+  --   RETURN NVL (l_descuento, 0);
+  -- END get_descuento_general;
 
   FUNCTION get_descuento_cliente_descuento (i_cod_art IN VARCHAR2
                                            ,i_cod_cli IN VARCHAR2
@@ -578,93 +578,93 @@ CREATE OR REPLACE PACKAGE BODY tarifa_venta_pkg AS
         INTO l_descuento
         FROM (  SELECT fecha_desde
                       ,descuento
-                  FROM (SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun
-                                 ON artcomun.cod_art = cliente_descuento.cod_art
-                                AND artcomun.familia = cliente_descuento.familia
-                                AND artcomun.subfamilia = cliente_descuento.subfamilia
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
+                  -- FROM (SELECT cliente_descuento.fecha_desde
+                  --             ,cliente_descuento.descuento
+                  --         FROM cliente_descuento
+                  --              INNER JOIN artcomun
+                  --                ON artcomun.cod_art = cliente_descuento.cod_art
+                  --               AND artcomun.familia = cliente_descuento.familia
+                  --               AND artcomun.subfamilia = cliente_descuento.subfamilia
+                  --        WHERE cliente_descuento.cod_cli = i_cod_cli
+                  --          AND artcomun.cod_art = i_cod_art
+                  --          AND cliente_descuento.fecha_desde <= i_fecha
+                  --          AND (cliente_descuento.fecha_fin >= i_fecha
+                  --            OR cliente_descuento.fecha_fin IS NULL)
                         UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun
-                                 ON artcomun.cod_art = cliente_descuento.cod_art
-                                AND artcomun.familia = cliente_descuento.familia
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.subfamilia = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
+                        -- SELECT cliente_descuento.fecha_desde
+                        --       ,cliente_descuento.descuento
+                        --   FROM cliente_descuento
+                        --        INNER JOIN artcomun
+                        --          ON artcomun.cod_art = cliente_descuento.cod_art
+                        --         AND artcomun.familia = cliente_descuento.familia
+                        --  WHERE cliente_descuento.cod_cli = i_cod_cli
+                        --    AND artcomun.cod_art = i_cod_art
+                        --    AND cliente_descuento.subfamilia = '*'
+                        --    AND cliente_descuento.fecha_desde <= i_fecha
+                        --    AND (cliente_descuento.fecha_fin >= i_fecha
+                        --      OR cliente_descuento.fecha_fin IS NULL)
                         UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun
-                                 ON artcomun.familia = cliente_descuento.familia
-                                AND artcomun.subfamilia = cliente_descuento.subfamilia
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.cod_art = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
+                        -- SELECT cliente_descuento.fecha_desde
+                        --       ,cliente_descuento.descuento
+                        --   FROM cliente_descuento
+                        --        INNER JOIN artcomun
+                        --          ON artcomun.familia = cliente_descuento.familia
+                        --         AND artcomun.subfamilia = cliente_descuento.subfamilia
+                        --  WHERE cliente_descuento.cod_cli = i_cod_cli
+                        --    AND artcomun.cod_art = i_cod_art
+                        --    AND cliente_descuento.cod_art = '*'
+                        --    AND cliente_descuento.fecha_desde <= i_fecha
+                        --    AND (cliente_descuento.fecha_fin >= i_fecha
+                        --      OR cliente_descuento.fecha_fin IS NULL)
                         UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun
-                                 ON artcomun.cod_art = cliente_descuento.cod_art
-                                AND artcomun.subfamilia = cliente_descuento.subfamilia
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.familia = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
+                        -- SELECT cliente_descuento.fecha_desde
+                        --       ,cliente_descuento.descuento
+                        --   FROM cliente_descuento
+                        --        INNER JOIN artcomun
+                        --          ON artcomun.cod_art = cliente_descuento.cod_art
+                        --         AND artcomun.subfamilia = cliente_descuento.subfamilia
+                        --  WHERE cliente_descuento.cod_cli = i_cod_cli
+                        --    AND artcomun.cod_art = i_cod_art
+                        --    AND cliente_descuento.familia = '*'
+                        --    AND cliente_descuento.fecha_desde <= i_fecha
+                        --    AND (cliente_descuento.fecha_fin >= i_fecha
+                        --      OR cliente_descuento.fecha_fin IS NULL)
+                        -- UNION ALL
+                        -- SELECT cliente_descuento.fecha_desde
+                        --       ,cliente_descuento.descuento
+                        --   FROM cliente_descuento
+                        --        INNER JOIN artcomun ON artcomun.cod_art = cliente_descuento.cod_art
+                        --  WHERE cliente_descuento.cod_cli = i_cod_cli
+                        --    AND artcomun.cod_art = i_cod_art
+                        --    AND cliente_descuento.subfamilia = '*'
+                        --    AND cliente_descuento.familia = '*'
+                        --    AND cliente_descuento.fecha_desde <= i_fecha
+                        --    AND (cliente_descuento.fecha_fin >= i_fecha
+                        --      OR cliente_descuento.fecha_fin IS NULL)
                         UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun ON artcomun.cod_art = cliente_descuento.cod_art
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.subfamilia = '*'
-                           AND cliente_descuento.familia = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
-                        UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun ON artcomun.subfamilia = cliente_descuento.subfamilia
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.cod_art = '*'
-                           AND cliente_descuento.familia = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
-                        UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                               INNER JOIN artcomun ON artcomun.familia = cliente_descuento.familia
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND artcomun.cod_art = i_cod_art
-                           AND cliente_descuento.cod_art = '*'
-                           AND cliente_descuento.subfamilia = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL)
+                        -- SELECT cliente_descuento.fecha_desde
+                        --       ,cliente_descuento.descuento
+                        --   FROM cliente_descuento
+                        --        INNER JOIN artcomun ON artcomun.subfamilia = cliente_descuento.subfamilia
+                        --  WHERE cliente_descuento.cod_cli = i_cod_cli
+                        --    AND artcomun.cod_art = i_cod_art
+                        --    AND cliente_descuento.cod_art = '*'
+                        --    AND cliente_descuento.familia = '*'
+                        --    AND cliente_descuento.fecha_desde <= i_fecha
+                        --    AND (cliente_descuento.fecha_fin >= i_fecha
+                        --      OR cliente_descuento.fecha_fin IS NULL)
+                        -- UNION ALL
+                        -- SELECT cliente_descuento.fecha_desde
+                        --       ,cliente_descuento.descuento
+                        --   FROM cliente_descuento
+                        --        INNER JOIN artcomun ON artcomun.familia = cliente_descuento.familia
+                        --  WHERE cliente_descuento.cod_cli = i_cod_cli
+                        --    AND artcomun.cod_art = i_cod_art
+                        --    AND cliente_descuento.cod_art = '*'
+                        --    AND cliente_descuento.subfamilia = '*'
+                        --    AND cliente_descuento.fecha_desde <= i_fecha
+                        --    AND (cliente_descuento.fecha_fin >= i_fecha
+                        --      OR cliente_descuento.fecha_fin IS NULL)
                         UNION ALL
                         SELECT cliente_descuento.fecha_desde
                               ,cliente_descuento.descuento

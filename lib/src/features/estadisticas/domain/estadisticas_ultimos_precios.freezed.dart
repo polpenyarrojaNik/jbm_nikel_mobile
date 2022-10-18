@@ -41,7 +41,9 @@ mixin _$EstadisticasUltimosPrecios {
 abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
   factory $EstadisticasUltimosPreciosCopyWith(EstadisticasUltimosPrecios value,
           $Res Function(EstadisticasUltimosPrecios) then) =
-      _$EstadisticasUltimosPreciosCopyWithImpl<$Res>;
+      _$EstadisticasUltimosPreciosCopyWithImpl<$Res,
+          EstadisticasUltimosPrecios>;
+  @useResult
   $Res call(
       {String clienteId,
       String? nombreCliente,
@@ -61,94 +63,97 @@ abstract class $EstadisticasUltimosPreciosCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
+class _$EstadisticasUltimosPreciosCopyWithImpl<$Res,
+        $Val extends EstadisticasUltimosPrecios>
     implements $EstadisticasUltimosPreciosCopyWith<$Res> {
   _$EstadisticasUltimosPreciosCopyWithImpl(this._value, this._then);
 
-  final EstadisticasUltimosPrecios _value;
   // ignore: unused_field
-  final $Res Function(EstadisticasUltimosPrecios) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
+    Object? clienteId = null,
     Object? nombreCliente = freezed,
-    Object? articuloId = freezed,
+    Object? articuloId = null,
     Object? descripcion = freezed,
-    Object? linea = freezed,
-    Object? cantidad = freezed,
-    Object? fecha = freezed,
-    Object? precioDivisa = freezed,
-    Object? divisaId = freezed,
-    Object? tipoPrecio = freezed,
-    Object? descuento1 = freezed,
-    Object? descuento2 = freezed,
-    Object? descuento3 = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? linea = null,
+    Object? cantidad = null,
+    Object? fecha = null,
+    Object? precioDivisa = null,
+    Object? divisaId = null,
+    Object? tipoPrecio = null,
+    Object? descuento1 = null,
+    Object? descuento2 = null,
+    Object? descuento3 = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreCliente: nombreCliente == freezed
+      nombreCliente: freezed == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: freezed == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      linea: linea == freezed
+      linea: null == linea
           ? _value.linea
           : linea // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      precioDivisa: precioDivisa == freezed
+      precioDivisa: null == precioDivisa
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
               as Money,
-      divisaId: divisaId == freezed
+      divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento1: descuento1 == freezed
+      descuento1: null == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento2: descuento2 == freezed
+      descuento2: null == descuento2
           ? _value.descuento2
           : descuento2 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento3: descuento3 == freezed
+      descuento3: null == descuento3
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -160,6 +165,7 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
           $Res Function(_$_EstadisticasUltimosPrecios) then) =
       __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String clienteId,
       String? nombreCliente,
@@ -180,93 +186,91 @@ abstract class _$$_EstadisticasUltimosPreciosCopyWith<$Res>
 
 /// @nodoc
 class __$$_EstadisticasUltimosPreciosCopyWithImpl<$Res>
-    extends _$EstadisticasUltimosPreciosCopyWithImpl<$Res>
+    extends _$EstadisticasUltimosPreciosCopyWithImpl<$Res,
+        _$_EstadisticasUltimosPrecios>
     implements _$$_EstadisticasUltimosPreciosCopyWith<$Res> {
   __$$_EstadisticasUltimosPreciosCopyWithImpl(
       _$_EstadisticasUltimosPrecios _value,
       $Res Function(_$_EstadisticasUltimosPrecios) _then)
-      : super(_value, (v) => _then(v as _$_EstadisticasUltimosPrecios));
+      : super(_value, _then);
 
-  @override
-  _$_EstadisticasUltimosPrecios get _value =>
-      super._value as _$_EstadisticasUltimosPrecios;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
+    Object? clienteId = null,
     Object? nombreCliente = freezed,
-    Object? articuloId = freezed,
+    Object? articuloId = null,
     Object? descripcion = freezed,
-    Object? linea = freezed,
-    Object? cantidad = freezed,
-    Object? fecha = freezed,
-    Object? precioDivisa = freezed,
-    Object? divisaId = freezed,
-    Object? tipoPrecio = freezed,
-    Object? descuento1 = freezed,
-    Object? descuento2 = freezed,
-    Object? descuento3 = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? linea = null,
+    Object? cantidad = null,
+    Object? fecha = null,
+    Object? precioDivisa = null,
+    Object? divisaId = null,
+    Object? tipoPrecio = null,
+    Object? descuento1 = null,
+    Object? descuento2 = null,
+    Object? descuento3 = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_EstadisticasUltimosPrecios(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreCliente: nombreCliente == freezed
+      nombreCliente: freezed == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: freezed == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      linea: linea == freezed
+      linea: null == linea
           ? _value.linea
           : linea // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      precioDivisa: precioDivisa == freezed
+      precioDivisa: null == precioDivisa
           ? _value.precioDivisa
           : precioDivisa // ignore: cast_nullable_to_non_nullable
               as Money,
-      divisaId: divisaId == freezed
+      divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento1: descuento1 == freezed
+      descuento1: null == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento2: descuento2 == freezed
+      descuento2: null == descuento2
           ? _value.descuento2
           : descuento2 // ignore: cast_nullable_to_non_nullable
               as double,
-      descuento3: descuento3 == freezed
+      descuento3: null == descuento3
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -336,53 +340,57 @@ class _$_EstadisticasUltimosPrecios extends _EstadisticasUltimosPrecios {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EstadisticasUltimosPrecios &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreCliente, nombreCliente) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality().equals(other.linea, linea) &&
-            const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
-            const DeepCollectionEquality().equals(other.fecha, fecha) &&
-            const DeepCollectionEquality()
-                .equals(other.precioDivisa, precioDivisa) &&
-            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
-            const DeepCollectionEquality()
-                .equals(other.tipoPrecio, tipoPrecio) &&
-            const DeepCollectionEquality()
-                .equals(other.descuento1, descuento1) &&
-            const DeepCollectionEquality()
-                .equals(other.descuento2, descuento2) &&
-            const DeepCollectionEquality()
-                .equals(other.descuento3, descuento3) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.nombreCliente, nombreCliente) ||
+                other.nombreCliente == nombreCliente) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.linea, linea) || other.linea == linea) &&
+            (identical(other.cantidad, cantidad) ||
+                other.cantidad == cantidad) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.precioDivisa, precioDivisa) ||
+                other.precioDivisa == precioDivisa) &&
+            (identical(other.divisaId, divisaId) ||
+                other.divisaId == divisaId) &&
+            (identical(other.tipoPrecio, tipoPrecio) ||
+                other.tipoPrecio == tipoPrecio) &&
+            (identical(other.descuento1, descuento1) ||
+                other.descuento1 == descuento1) &&
+            (identical(other.descuento2, descuento2) ||
+                other.descuento2 == descuento2) &&
+            (identical(other.descuento3, descuento3) ||
+                other.descuento3 == descuento3) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(nombreCliente),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(linea),
-      const DeepCollectionEquality().hash(cantidad),
-      const DeepCollectionEquality().hash(fecha),
-      const DeepCollectionEquality().hash(precioDivisa),
-      const DeepCollectionEquality().hash(divisaId),
-      const DeepCollectionEquality().hash(tipoPrecio),
-      const DeepCollectionEquality().hash(descuento1),
-      const DeepCollectionEquality().hash(descuento2),
-      const DeepCollectionEquality().hash(descuento3),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      clienteId,
+      nombreCliente,
+      articuloId,
+      descripcion,
+      linea,
+      cantidad,
+      fecha,
+      precioDivisa,
+      divisaId,
+      tipoPrecio,
+      descuento1,
+      descuento2,
+      descuento3,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EstadisticasUltimosPreciosCopyWith<_$_EstadisticasUltimosPrecios>
       get copyWith => __$$_EstadisticasUltimosPreciosCopyWithImpl<
           _$_EstadisticasUltimosPrecios>(this, _$identity);

@@ -39,7 +39,8 @@ mixin _$ArticuloDocumentoDTO {
 abstract class $ArticuloDocumentoDTOCopyWith<$Res> {
   factory $ArticuloDocumentoDTOCopyWith(ArticuloDocumentoDTO value,
           $Res Function(ArticuloDocumentoDTO) then) =
-      _$ArticuloDocumentoDTOCopyWithImpl<$Res>;
+      _$ArticuloDocumentoDTOCopyWithImpl<$Res, ArticuloDocumentoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
@@ -48,39 +49,42 @@ abstract class $ArticuloDocumentoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloDocumentoDTOCopyWithImpl<$Res>
+class _$ArticuloDocumentoDTOCopyWithImpl<$Res,
+        $Val extends ArticuloDocumentoDTO>
     implements $ArticuloDocumentoDTOCopyWith<$Res> {
   _$ArticuloDocumentoDTOCopyWithImpl(this._value, this._then);
 
-  final ArticuloDocumentoDTO _value;
   // ignore: unused_field
-  final $Res Function(ArticuloDocumentoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
+    Object? articuloId = null,
     Object? nombreArchivo = freezed,
-    Object? idiomaId = freezed,
+    Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: freezed == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
-      idiomaId: idiomaId == freezed
+      idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -91,6 +95,7 @@ abstract class _$$_ArticuloDocumentoDTOCopyWith<$Res>
           $Res Function(_$_ArticuloDocumentoDTO) then) =
       __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
@@ -100,36 +105,34 @@ abstract class _$$_ArticuloDocumentoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloDocumentoDTOCopyWithImpl<$Res>
-    extends _$ArticuloDocumentoDTOCopyWithImpl<$Res>
+    extends _$ArticuloDocumentoDTOCopyWithImpl<$Res, _$_ArticuloDocumentoDTO>
     implements _$$_ArticuloDocumentoDTOCopyWith<$Res> {
   __$$_ArticuloDocumentoDTOCopyWithImpl(_$_ArticuloDocumentoDTO _value,
       $Res Function(_$_ArticuloDocumentoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloDocumentoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloDocumentoDTO get _value => super._value as _$_ArticuloDocumentoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
+    Object? articuloId = null,
     Object? nombreArchivo = freezed,
-    Object? idiomaId = freezed,
+    Object? idiomaId = null,
     Object? observaciones = freezed,
   }) {
     return _then(_$_ArticuloDocumentoDTO(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: freezed == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
-      idiomaId: idiomaId == freezed
+      idiomaId: null == idiomaId
           ? _value.idiomaId
           : idiomaId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -173,26 +176,24 @@ class _$_ArticuloDocumentoDTO extends _ArticuloDocumentoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloDocumentoDTO &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreArchivo, nombreArchivo) &&
-            const DeepCollectionEquality().equals(other.idiomaId, idiomaId) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo) &&
+            (identical(other.idiomaId, idiomaId) ||
+                other.idiomaId == idiomaId) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(nombreArchivo),
-      const DeepCollectionEquality().hash(idiomaId),
-      const DeepCollectionEquality().hash(observaciones));
+      runtimeType, articuloId, nombreArchivo, idiomaId, observaciones);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloDocumentoDTOCopyWith<_$_ArticuloDocumentoDTO> get copyWith =>
       __$$_ArticuloDocumentoDTOCopyWithImpl<_$_ArticuloDocumentoDTO>(
           this, _$identity);

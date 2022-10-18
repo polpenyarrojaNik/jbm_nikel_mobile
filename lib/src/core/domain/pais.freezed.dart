@@ -29,7 +29,8 @@ mixin _$Pais {
 /// @nodoc
 abstract class $PaisCopyWith<$Res> {
   factory $PaisCopyWith(Pais value, $Res Function(Pais) then) =
-      _$PaisCopyWithImpl<$Res>;
+      _$PaisCopyWithImpl<$Res, Pais>;
+  @useResult
   $Res call(
       {String id,
       String? isoCode,
@@ -39,43 +40,46 @@ abstract class $PaisCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PaisCopyWithImpl<$Res> implements $PaisCopyWith<$Res> {
+class _$PaisCopyWithImpl<$Res, $Val extends Pais>
+    implements $PaisCopyWith<$Res> {
   _$PaisCopyWithImpl(this._value, this._then);
 
-  final Pais _value;
   // ignore: unused_field
-  final $Res Function(Pais) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? isoCode = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      isoCode: isoCode == freezed
+      isoCode: freezed == isoCode
           ? _value.isoCode
           : isoCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -84,6 +88,7 @@ abstract class _$$_PaisCopyWith<$Res> implements $PaisCopyWith<$Res> {
   factory _$$_PaisCopyWith(_$_Pais value, $Res Function(_$_Pais) then) =
       __$$_PaisCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String? isoCode,
@@ -93,40 +98,38 @@ abstract class _$$_PaisCopyWith<$Res> implements $PaisCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PaisCopyWithImpl<$Res> extends _$PaisCopyWithImpl<$Res>
+class __$$_PaisCopyWithImpl<$Res> extends _$PaisCopyWithImpl<$Res, _$_Pais>
     implements _$$_PaisCopyWith<$Res> {
   __$$_PaisCopyWithImpl(_$_Pais _value, $Res Function(_$_Pais) _then)
-      : super(_value, (v) => _then(v as _$_Pais));
+      : super(_value, _then);
 
-  @override
-  _$_Pais get _value => super._value as _$_Pais;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? isoCode = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_$_Pais(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      isoCode: isoCode == freezed
+      isoCode: freezed == isoCode
           ? _value.isoCode
           : isoCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -166,26 +169,22 @@ class _$_Pais extends _Pais {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Pais &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.isoCode, isoCode) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdate, lastUpdate) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isoCode, isoCode) || other.isoCode == isoCode) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.lastUpdate, lastUpdate) ||
+                other.lastUpdate == lastUpdate) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(isoCode),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(lastUpdate),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode =>
+      Object.hash(runtimeType, id, isoCode, descripcion, lastUpdate, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PaisCopyWith<_$_Pais> get copyWith =>
       __$$_PaisCopyWithImpl<_$_Pais>(this, _$identity);
 }

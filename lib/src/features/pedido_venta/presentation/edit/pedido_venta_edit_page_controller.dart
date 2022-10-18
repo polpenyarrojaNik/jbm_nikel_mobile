@@ -1,5 +1,5 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_linea.dart';
 
@@ -239,16 +239,22 @@ class PedidoVentaEditPageController
 
   Future<void> addPedidoVentaLinea(
       {required String pedidoVentaAppId,
-      required ArticuloPrecio articuloPrecio,
+      required String articuloId,
       required String articuloDescripcion,
+      required int cantidad,
+      required ArticuloPrecio articuloPrecio,
+      required double descuentoProntoPago,
       required bool stockDisponibleSN}) async {
     final newPedidoVentaLinea = PedidoVentaLinea.newPedidoVentaLinea(
-        pedidoVentaAppId: pedidoVentaAppId,
-        lineaAppId:
-            (pedidoVentaLineaList.length + 1).toString().padLeft(3, '0'),
-        articuloPrecio: articuloPrecio,
-        articuloDescripcion: articuloDescripcion,
-        stockDisponibleSN: stockDisponibleSN);
+      pedidoVentaAppId: pedidoVentaAppId,
+      lineaAppId: (pedidoVentaLineaList.length + 1).toString().padLeft(3, '0'),
+      articuloId: articuloId,
+      articuloDescripcion: articuloDescripcion,
+      cantidad: cantidad,
+      articuloPrecio: articuloPrecio,
+      descuentoProntoPago: descuentoProntoPago,
+      stockDisponibleSN: stockDisponibleSN,
+    );
 
     pedidoVentaLineaList.add(newPedidoVentaLinea);
 
@@ -264,16 +270,23 @@ class PedidoVentaEditPageController
 
   Future<void> updatePedidoVentaLinea(
       {required String pedidoVentaAppId,
-      required ArticuloPrecio articuloPrecio,
+      required String articuloId,
       required String articuloDescripcion,
+      required int cantidad,
+      required ArticuloPrecio articuloPrecio,
+      required double descuentoProntoPago,
       required bool stockDisponibleSN,
       required int posicionActualizar}) async {
     final newPedidoVentaLinea = PedidoVentaLinea.newPedidoVentaLinea(
-        pedidoVentaAppId: pedidoVentaAppId,
-        lineaAppId: (posicionActualizar + 1).toString().padLeft(3, '0'),
-        articuloPrecio: articuloPrecio,
-        articuloDescripcion: articuloDescripcion,
-        stockDisponibleSN: stockDisponibleSN);
+      pedidoVentaAppId: pedidoVentaAppId,
+      lineaAppId: (posicionActualizar + 1).toString().padLeft(3, '0'),
+      articuloId: articuloId,
+      articuloDescripcion: articuloDescripcion,
+      cantidad: cantidad,
+      articuloPrecio: articuloPrecio,
+      descuentoProntoPago: descuentoProntoPago,
+      stockDisponibleSN: stockDisponibleSN,
+    );
 
     pedidoVentaLineaList[posicionActualizar] = newPedidoVentaLinea;
 

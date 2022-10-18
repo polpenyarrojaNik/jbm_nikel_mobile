@@ -43,7 +43,8 @@ mixin _$ClienteVentasMesDTO {
 abstract class $ClienteVentasMesDTOCopyWith<$Res> {
   factory $ClienteVentasMesDTOCopyWith(
           ClienteVentasMesDTO value, $Res Function(ClienteVentasMesDTO) then) =
-      _$ClienteVentasMesDTOCopyWithImpl<$Res>;
+      _$ClienteVentasMesDTOCopyWithImpl<$Res, ClienteVentasMesDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'MES') int mes,
       @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
@@ -54,49 +55,51 @@ abstract class $ClienteVentasMesDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteVentasMesDTOCopyWithImpl<$Res>
+class _$ClienteVentasMesDTOCopyWithImpl<$Res, $Val extends ClienteVentasMesDTO>
     implements $ClienteVentasMesDTOCopyWith<$Res> {
   _$ClienteVentasMesDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteVentasMesDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteVentasMesDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mes = freezed,
-    Object? importeAnyo = freezed,
-    Object? importeAnyo_1 = freezed,
-    Object? importeAnyo_2 = freezed,
-    Object? importeAnyo_3 = freezed,
-    Object? importeAnyo_4 = freezed,
+    Object? mes = null,
+    Object? importeAnyo = null,
+    Object? importeAnyo_1 = null,
+    Object? importeAnyo_2 = null,
+    Object? importeAnyo_3 = null,
+    Object? importeAnyo_4 = null,
   }) {
     return _then(_value.copyWith(
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as int,
-      importeAnyo: importeAnyo == freezed
+      importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_1: importeAnyo_1 == freezed
+      importeAnyo_1: null == importeAnyo_1
           ? _value.importeAnyo_1
           : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_2: importeAnyo_2 == freezed
+      importeAnyo_2: null == importeAnyo_2
           ? _value.importeAnyo_2
           : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_3: importeAnyo_3 == freezed
+      importeAnyo_3: null == importeAnyo_3
           ? _value.importeAnyo_3
           : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_4: importeAnyo_4 == freezed
+      importeAnyo_4: null == importeAnyo_4
           ? _value.importeAnyo_4
           : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -107,6 +110,7 @@ abstract class _$$_ClienteVentasMesDTOCopyWith<$Res>
           $Res Function(_$_ClienteVentasMesDTO) then) =
       __$$_ClienteVentasMesDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'MES') int mes,
       @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
@@ -118,46 +122,44 @@ abstract class _$$_ClienteVentasMesDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteVentasMesDTOCopyWithImpl<$Res>
-    extends _$ClienteVentasMesDTOCopyWithImpl<$Res>
+    extends _$ClienteVentasMesDTOCopyWithImpl<$Res, _$_ClienteVentasMesDTO>
     implements _$$_ClienteVentasMesDTOCopyWith<$Res> {
   __$$_ClienteVentasMesDTOCopyWithImpl(_$_ClienteVentasMesDTO _value,
       $Res Function(_$_ClienteVentasMesDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteVentasMesDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteVentasMesDTO get _value => super._value as _$_ClienteVentasMesDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mes = freezed,
-    Object? importeAnyo = freezed,
-    Object? importeAnyo_1 = freezed,
-    Object? importeAnyo_2 = freezed,
-    Object? importeAnyo_3 = freezed,
-    Object? importeAnyo_4 = freezed,
+    Object? mes = null,
+    Object? importeAnyo = null,
+    Object? importeAnyo_1 = null,
+    Object? importeAnyo_2 = null,
+    Object? importeAnyo_3 = null,
+    Object? importeAnyo_4 = null,
   }) {
     return _then(_$_ClienteVentasMesDTO(
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as int,
-      importeAnyo: importeAnyo == freezed
+      importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_1: importeAnyo_1 == freezed
+      importeAnyo_1: null == importeAnyo_1
           ? _value.importeAnyo_1
           : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_2: importeAnyo_2 == freezed
+      importeAnyo_2: null == importeAnyo_2
           ? _value.importeAnyo_2
           : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_3: importeAnyo_3 == freezed
+      importeAnyo_3: null == importeAnyo_3
           ? _value.importeAnyo_3
           : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
               as double,
-      importeAnyo_4: importeAnyo_4 == freezed
+      importeAnyo_4: null == importeAnyo_4
           ? _value.importeAnyo_4
           : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
               as double,
@@ -209,32 +211,27 @@ class _$_ClienteVentasMesDTO extends _ClienteVentasMesDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteVentasMesDTO &&
-            const DeepCollectionEquality().equals(other.mes, mes) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo, importeAnyo) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_1, importeAnyo_1) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_2, importeAnyo_2) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_3, importeAnyo_3) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_4, importeAnyo_4));
+            (identical(other.mes, mes) || other.mes == mes) &&
+            (identical(other.importeAnyo, importeAnyo) ||
+                other.importeAnyo == importeAnyo) &&
+            (identical(other.importeAnyo_1, importeAnyo_1) ||
+                other.importeAnyo_1 == importeAnyo_1) &&
+            (identical(other.importeAnyo_2, importeAnyo_2) ||
+                other.importeAnyo_2 == importeAnyo_2) &&
+            (identical(other.importeAnyo_3, importeAnyo_3) ||
+                other.importeAnyo_3 == importeAnyo_3) &&
+            (identical(other.importeAnyo_4, importeAnyo_4) ||
+                other.importeAnyo_4 == importeAnyo_4));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(mes),
-      const DeepCollectionEquality().hash(importeAnyo),
-      const DeepCollectionEquality().hash(importeAnyo_1),
-      const DeepCollectionEquality().hash(importeAnyo_2),
-      const DeepCollectionEquality().hash(importeAnyo_3),
-      const DeepCollectionEquality().hash(importeAnyo_4));
+  int get hashCode => Object.hash(runtimeType, mes, importeAnyo, importeAnyo_1,
+      importeAnyo_2, importeAnyo_3, importeAnyo_4);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteVentasMesDTOCopyWith<_$_ClienteVentasMesDTO> get copyWith =>
       __$$_ClienteVentasMesDTOCopyWithImpl<_$_ClienteVentasMesDTO>(
           this, _$identity);

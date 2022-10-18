@@ -35,17 +35,17 @@ mixin _$AppException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,17 +85,17 @@ mixin _$AppException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -120,16 +120,18 @@ mixin _$AppException {
 abstract class $AppExceptionCopyWith<$Res> {
   factory $AppExceptionCopyWith(
           AppException value, $Res Function(AppException) then) =
-      _$AppExceptionCopyWithImpl<$Res>;
+      _$AppExceptionCopyWithImpl<$Res, AppException>;
 }
 
 /// @nodoc
-class _$AppExceptionCopyWithImpl<$Res> implements $AppExceptionCopyWith<$Res> {
+class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
+    implements $AppExceptionCopyWith<$Res> {
   _$AppExceptionCopyWithImpl(this._value, this._then);
 
-  final AppException _value;
   // ignore: unused_field
-  final $Res Function(AppException) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -137,31 +139,30 @@ abstract class _$$RestApiFailureCopyWith<$Res> {
   factory _$$RestApiFailureCopyWith(
           _$RestApiFailure value, $Res Function(_$RestApiFailure) then) =
       __$$RestApiFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({int errorCode, String errorMessage});
 }
 
 /// @nodoc
 class __$$RestApiFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$RestApiFailure>
     implements _$$RestApiFailureCopyWith<$Res> {
   __$$RestApiFailureCopyWithImpl(
       _$RestApiFailure _value, $Res Function(_$RestApiFailure) _then)
-      : super(_value, (v) => _then(v as _$RestApiFailure));
+      : super(_value, _then);
 
-  @override
-  _$RestApiFailure get _value => super._value as _$RestApiFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorCode = freezed,
-    Object? errorMessage = freezed,
+    Object? errorCode = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$RestApiFailure(
-      errorCode == freezed
+      null == errorCode
           ? _value.errorCode
           : errorCode // ignore: cast_nullable_to_non_nullable
               as int,
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -189,19 +190,18 @@ class _$RestApiFailure implements RestApiFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RestApiFailure &&
-            const DeepCollectionEquality().equals(other.errorCode, errorCode) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorCode, errorCode) ||
+                other.errorCode == errorCode) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(errorCode),
-      const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, errorCode, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$RestApiFailureCopyWith<_$RestApiFailure> get copyWith =>
       __$$RestApiFailureCopyWithImpl<_$RestApiFailure>(this, _$identity);
 
@@ -228,17 +228,17 @@ class _$RestApiFailure implements RestApiFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return restApiFailure?.call(errorCode, errorMessage);
   }
@@ -290,17 +290,17 @@ class _$RestApiFailure implements RestApiFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return restApiFailure?.call(this);
   }
@@ -344,26 +344,25 @@ abstract class _$$AuthLocalFailureCopyWith<$Res> {
   factory _$$AuthLocalFailureCopyWith(
           _$AuthLocalFailure value, $Res Function(_$AuthLocalFailure) then) =
       __$$AuthLocalFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
 class __$$AuthLocalFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$AuthLocalFailure>
     implements _$$AuthLocalFailureCopyWith<$Res> {
   __$$AuthLocalFailureCopyWithImpl(
       _$AuthLocalFailure _value, $Res Function(_$AuthLocalFailure) _then)
-      : super(_value, (v) => _then(v as _$AuthLocalFailure));
+      : super(_value, _then);
 
-  @override
-  _$AuthLocalFailure get _value => super._value as _$AuthLocalFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$AuthLocalFailure(
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -389,16 +388,16 @@ class _$AuthLocalFailure implements AuthLocalFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthLocalFailure &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$AuthLocalFailureCopyWith<_$AuthLocalFailure> get copyWith =>
       __$$AuthLocalFailureCopyWithImpl<_$AuthLocalFailure>(this, _$identity);
 
@@ -425,17 +424,17 @@ class _$AuthLocalFailure implements AuthLocalFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return authLocalFailure?.call(errorMessage);
   }
@@ -487,17 +486,17 @@ class _$AuthLocalFailure implements AuthLocalFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return authLocalFailure?.call(this);
   }
@@ -540,26 +539,25 @@ abstract class _$$FetchLocalDataFailureCopyWith<$Res> {
   factory _$$FetchLocalDataFailureCopyWith(_$FetchLocalDataFailure value,
           $Res Function(_$FetchLocalDataFailure) then) =
       __$$FetchLocalDataFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
 class __$$FetchLocalDataFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$FetchLocalDataFailure>
     implements _$$FetchLocalDataFailureCopyWith<$Res> {
   __$$FetchLocalDataFailureCopyWithImpl(_$FetchLocalDataFailure _value,
       $Res Function(_$FetchLocalDataFailure) _then)
-      : super(_value, (v) => _then(v as _$FetchLocalDataFailure));
+      : super(_value, _then);
 
-  @override
-  _$FetchLocalDataFailure get _value => super._value as _$FetchLocalDataFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$FetchLocalDataFailure(
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -585,16 +583,16 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchLocalDataFailure &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$FetchLocalDataFailureCopyWith<_$FetchLocalDataFailure> get copyWith =>
       __$$FetchLocalDataFailureCopyWithImpl<_$FetchLocalDataFailure>(
           this, _$identity);
@@ -622,17 +620,17 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return fetchLocalDataFailure?.call(errorMessage);
   }
@@ -684,17 +682,17 @@ class _$FetchLocalDataFailure implements FetchLocalDataFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return fetchLocalDataFailure?.call(this);
   }
@@ -737,27 +735,25 @@ abstract class _$$CreateFileInCahceFailureCopyWith<$Res> {
   factory _$$CreateFileInCahceFailureCopyWith(_$CreateFileInCahceFailure value,
           $Res Function(_$CreateFileInCahceFailure) then) =
       __$$CreateFileInCahceFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
 class __$$CreateFileInCahceFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$CreateFileInCahceFailure>
     implements _$$CreateFileInCahceFailureCopyWith<$Res> {
   __$$CreateFileInCahceFailureCopyWithImpl(_$CreateFileInCahceFailure _value,
       $Res Function(_$CreateFileInCahceFailure) _then)
-      : super(_value, (v) => _then(v as _$CreateFileInCahceFailure));
+      : super(_value, _then);
 
-  @override
-  _$CreateFileInCahceFailure get _value =>
-      super._value as _$CreateFileInCahceFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$CreateFileInCahceFailure(
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -783,16 +779,16 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateFileInCahceFailure &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$CreateFileInCahceFailureCopyWith<_$CreateFileInCahceFailure>
       get copyWith =>
           __$$CreateFileInCahceFailureCopyWithImpl<_$CreateFileInCahceFailure>(
@@ -821,17 +817,17 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return createFileInCacheFailure?.call(errorMessage);
   }
@@ -883,17 +879,17 @@ class _$CreateFileInCahceFailure implements CreateFileInCahceFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return createFileInCacheFailure?.call(this);
   }
@@ -936,30 +932,30 @@ abstract class _$$SyncFailureCopyWith<$Res> {
   factory _$$SyncFailureCopyWith(
           _$SyncFailure value, $Res Function(_$SyncFailure) then) =
       __$$SyncFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({String tableToSync, String errorMessage});
 }
 
 /// @nodoc
-class __$$SyncFailureCopyWithImpl<$Res> extends _$AppExceptionCopyWithImpl<$Res>
+class __$$SyncFailureCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$SyncFailure>
     implements _$$SyncFailureCopyWith<$Res> {
   __$$SyncFailureCopyWithImpl(
       _$SyncFailure _value, $Res Function(_$SyncFailure) _then)
-      : super(_value, (v) => _then(v as _$SyncFailure));
+      : super(_value, _then);
 
-  @override
-  _$SyncFailure get _value => super._value as _$SyncFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tableToSync = freezed,
-    Object? errorMessage = freezed,
+    Object? tableToSync = null,
+    Object? errorMessage = null,
   }) {
     return _then(_$SyncFailure(
-      tableToSync == freezed
+      null == tableToSync
           ? _value.tableToSync
           : tableToSync // ignore: cast_nullable_to_non_nullable
               as String,
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -987,20 +983,18 @@ class _$SyncFailure implements SyncFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SyncFailure &&
-            const DeepCollectionEquality()
-                .equals(other.tableToSync, tableToSync) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.tableToSync, tableToSync) ||
+                other.tableToSync == tableToSync) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(tableToSync),
-      const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, tableToSync, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SyncFailureCopyWith<_$SyncFailure> get copyWith =>
       __$$SyncFailureCopyWithImpl<_$SyncFailure>(this, _$identity);
 
@@ -1027,17 +1021,17 @@ class _$SyncFailure implements SyncFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return syncFailure?.call(tableToSync, errorMessage);
   }
@@ -1089,17 +1083,17 @@ class _$SyncFailure implements SyncFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return syncFailure?.call(this);
   }
@@ -1147,15 +1141,11 @@ abstract class _$$ClienteNotFoundFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$ClienteNotFoundFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$ClienteNotFoundFailure>
     implements _$$ClienteNotFoundFailureCopyWith<$Res> {
   __$$ClienteNotFoundFailureCopyWithImpl(_$ClienteNotFoundFailure _value,
       $Res Function(_$ClienteNotFoundFailure) _then)
-      : super(_value, (v) => _then(v as _$ClienteNotFoundFailure));
-
-  @override
-  _$ClienteNotFoundFailure get _value =>
-      super._value as _$ClienteNotFoundFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1200,17 +1190,17 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return clienteNotFound?.call();
   }
@@ -1262,17 +1252,17 @@ class _$ClienteNotFoundFailure implements ClienteNotFoundFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return clienteNotFound?.call(this);
   }
@@ -1313,15 +1303,11 @@ abstract class _$$ArticuloNotFoundFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$ArticuloNotFoundFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$ArticuloNotFoundFailure>
     implements _$$ArticuloNotFoundFailureCopyWith<$Res> {
   __$$ArticuloNotFoundFailureCopyWithImpl(_$ArticuloNotFoundFailure _value,
       $Res Function(_$ArticuloNotFoundFailure) _then)
-      : super(_value, (v) => _then(v as _$ArticuloNotFoundFailure));
-
-  @override
-  _$ArticuloNotFoundFailure get _value =>
-      super._value as _$ArticuloNotFoundFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1367,17 +1353,17 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return articuloNotFound?.call();
   }
@@ -1429,17 +1415,17 @@ class _$ArticuloNotFoundFailure implements ArticuloNotFoundFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return articuloNotFound?.call(this);
   }
@@ -1481,16 +1467,12 @@ abstract class _$$PedidoVentaNotFoundFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$PedidoVentaNotFoundFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$PedidoVentaNotFoundFailure>
     implements _$$PedidoVentaNotFoundFailureCopyWith<$Res> {
   __$$PedidoVentaNotFoundFailureCopyWithImpl(
       _$PedidoVentaNotFoundFailure _value,
       $Res Function(_$PedidoVentaNotFoundFailure) _then)
-      : super(_value, (v) => _then(v as _$PedidoVentaNotFoundFailure));
-
-  @override
-  _$PedidoVentaNotFoundFailure get _value =>
-      super._value as _$PedidoVentaNotFoundFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1536,17 +1518,17 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return pedidoVentaNotFound?.call();
   }
@@ -1598,17 +1580,17 @@ class _$PedidoVentaNotFoundFailure implements PedidoVentaNotFoundFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return pedidoVentaNotFound?.call(this);
   }
@@ -1645,27 +1627,25 @@ abstract class _$$PedidoVentaDeleteFailureCopyWith<$Res> {
   factory _$$PedidoVentaDeleteFailureCopyWith(_$PedidoVentaDeleteFailure value,
           $Res Function(_$PedidoVentaDeleteFailure) then) =
       __$$PedidoVentaDeleteFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
 class __$$PedidoVentaDeleteFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$PedidoVentaDeleteFailure>
     implements _$$PedidoVentaDeleteFailureCopyWith<$Res> {
   __$$PedidoVentaDeleteFailureCopyWithImpl(_$PedidoVentaDeleteFailure _value,
       $Res Function(_$PedidoVentaDeleteFailure) _then)
-      : super(_value, (v) => _then(v as _$PedidoVentaDeleteFailure));
+      : super(_value, _then);
 
-  @override
-  _$PedidoVentaDeleteFailure get _value =>
-      super._value as _$PedidoVentaDeleteFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$PedidoVentaDeleteFailure(
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1691,16 +1671,16 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PedidoVentaDeleteFailure &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$PedidoVentaDeleteFailureCopyWith<_$PedidoVentaDeleteFailure>
       get copyWith =>
           __$$PedidoVentaDeleteFailureCopyWithImpl<_$PedidoVentaDeleteFailure>(
@@ -1729,17 +1709,17 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return pedidoVentaDeleteFailure?.call(errorMessage);
   }
@@ -1791,17 +1771,17 @@ class _$PedidoVentaDeleteFailure implements PedidoVentaDeleteFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return pedidoVentaDeleteFailure?.call(this);
   }
@@ -1844,26 +1824,25 @@ abstract class _$$InsertDataFailureCopyWith<$Res> {
   factory _$$InsertDataFailureCopyWith(
           _$InsertDataFailure value, $Res Function(_$InsertDataFailure) then) =
       __$$InsertDataFailureCopyWithImpl<$Res>;
+  @useResult
   $Res call({String errorMessage});
 }
 
 /// @nodoc
 class __$$InsertDataFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$InsertDataFailure>
     implements _$$InsertDataFailureCopyWith<$Res> {
   __$$InsertDataFailureCopyWithImpl(
       _$InsertDataFailure _value, $Res Function(_$InsertDataFailure) _then)
-      : super(_value, (v) => _then(v as _$InsertDataFailure));
+      : super(_value, _then);
 
-  @override
-  _$InsertDataFailure get _value => super._value as _$InsertDataFailure;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$InsertDataFailure(
-      errorMessage == freezed
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1889,16 +1868,16 @@ class _$InsertDataFailure implements InsertDataFailure {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InsertDataFailure &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage));
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+  int get hashCode => Object.hash(runtimeType, errorMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$InsertDataFailureCopyWith<_$InsertDataFailure> get copyWith =>
       __$$InsertDataFailureCopyWithImpl<_$InsertDataFailure>(this, _$identity);
 
@@ -1925,17 +1904,17 @@ class _$InsertDataFailure implements InsertDataFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return insertDataFailure?.call(errorMessage);
   }
@@ -1987,17 +1966,17 @@ class _$InsertDataFailure implements InsertDataFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return insertDataFailure?.call(this);
   }
@@ -2044,14 +2023,11 @@ abstract class _$$NotConnectionFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$$NotConnectionFailureCopyWithImpl<$Res>
-    extends _$AppExceptionCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$NotConnectionFailure>
     implements _$$NotConnectionFailureCopyWith<$Res> {
   __$$NotConnectionFailureCopyWithImpl(_$NotConnectionFailure _value,
       $Res Function(_$NotConnectionFailure) _then)
-      : super(_value, (v) => _then(v as _$NotConnectionFailure));
-
-  @override
-  _$NotConnectionFailure get _value => super._value as _$NotConnectionFailure;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -2096,17 +2072,17 @@ class _$NotConnectionFailure implements NotConnectionFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int errorCode, String errorMessage)? restApiFailure,
-    TResult Function(String errorMessage)? authLocalFailure,
-    TResult Function(String errorMessage)? fetchLocalDataFailure,
-    TResult Function(String errorMessage)? createFileInCacheFailure,
-    TResult Function(String tableToSync, String errorMessage)? syncFailure,
-    TResult Function()? clienteNotFound,
-    TResult Function()? articuloNotFound,
-    TResult Function()? pedidoVentaNotFound,
-    TResult Function(String errorMessage)? pedidoVentaDeleteFailure,
-    TResult Function(String errorMessage)? insertDataFailure,
-    TResult Function()? notConnection,
+    TResult? Function(int errorCode, String errorMessage)? restApiFailure,
+    TResult? Function(String errorMessage)? authLocalFailure,
+    TResult? Function(String errorMessage)? fetchLocalDataFailure,
+    TResult? Function(String errorMessage)? createFileInCacheFailure,
+    TResult? Function(String tableToSync, String errorMessage)? syncFailure,
+    TResult? Function()? clienteNotFound,
+    TResult? Function()? articuloNotFound,
+    TResult? Function()? pedidoVentaNotFound,
+    TResult? Function(String errorMessage)? pedidoVentaDeleteFailure,
+    TResult? Function(String errorMessage)? insertDataFailure,
+    TResult? Function()? notConnection,
   }) {
     return notConnection?.call();
   }
@@ -2158,17 +2134,17 @@ class _$NotConnectionFailure implements NotConnectionFailure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(RestApiFailure value)? restApiFailure,
-    TResult Function(AuthLocalFailure value)? authLocalFailure,
-    TResult Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
-    TResult Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
-    TResult Function(SyncFailure value)? syncFailure,
-    TResult Function(ClienteNotFoundFailure value)? clienteNotFound,
-    TResult Function(ArticuloNotFoundFailure value)? articuloNotFound,
-    TResult Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
-    TResult Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
-    TResult Function(InsertDataFailure value)? insertDataFailure,
-    TResult Function(NotConnectionFailure value)? notConnection,
+    TResult? Function(RestApiFailure value)? restApiFailure,
+    TResult? Function(AuthLocalFailure value)? authLocalFailure,
+    TResult? Function(FetchLocalDataFailure value)? fetchLocalDataFailure,
+    TResult? Function(CreateFileInCahceFailure value)? createFileInCacheFailure,
+    TResult? Function(SyncFailure value)? syncFailure,
+    TResult? Function(ClienteNotFoundFailure value)? clienteNotFound,
+    TResult? Function(ArticuloNotFoundFailure value)? articuloNotFound,
+    TResult? Function(PedidoVentaNotFoundFailure value)? pedidoVentaNotFound,
+    TResult? Function(PedidoVentaDeleteFailure value)? pedidoVentaDeleteFailure,
+    TResult? Function(InsertDataFailure value)? insertDataFailure,
+    TResult? Function(NotConnectionFailure value)? notConnection,
   }) {
     return notConnection?.call(this);
   }

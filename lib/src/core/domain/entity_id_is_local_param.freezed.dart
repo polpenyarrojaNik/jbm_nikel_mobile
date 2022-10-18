@@ -29,39 +29,43 @@ mixin _$EntityIdIsLocalParam {
 abstract class $EntityIdIsLocalParamCopyWith<$Res> {
   factory $EntityIdIsLocalParamCopyWith(EntityIdIsLocalParam value,
           $Res Function(EntityIdIsLocalParam) then) =
-      _$EntityIdIsLocalParamCopyWithImpl<$Res>;
+      _$EntityIdIsLocalParamCopyWithImpl<$Res, EntityIdIsLocalParam>;
+  @useResult
   $Res call({String id, bool isLocal, bool isNew});
 }
 
 /// @nodoc
-class _$EntityIdIsLocalParamCopyWithImpl<$Res>
+class _$EntityIdIsLocalParamCopyWithImpl<$Res,
+        $Val extends EntityIdIsLocalParam>
     implements $EntityIdIsLocalParamCopyWith<$Res> {
   _$EntityIdIsLocalParamCopyWithImpl(this._value, this._then);
 
-  final EntityIdIsLocalParam _value;
   // ignore: unused_field
-  final $Res Function(EntityIdIsLocalParam) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? isLocal = freezed,
-    Object? isNew = freezed,
+    Object? id = null,
+    Object? isLocal = null,
+    Object? isNew = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      isLocal: isLocal == freezed
+      isLocal: null == isLocal
           ? _value.isLocal
           : isLocal // ignore: cast_nullable_to_non_nullable
               as bool,
-      isNew: isNew == freezed
+      isNew: null == isNew
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,36 +76,35 @@ abstract class _$$_EntityIdIsLocalParamCopyWith<$Res>
           $Res Function(_$_EntityIdIsLocalParam) then) =
       __$$_EntityIdIsLocalParamCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, bool isLocal, bool isNew});
 }
 
 /// @nodoc
 class __$$_EntityIdIsLocalParamCopyWithImpl<$Res>
-    extends _$EntityIdIsLocalParamCopyWithImpl<$Res>
+    extends _$EntityIdIsLocalParamCopyWithImpl<$Res, _$_EntityIdIsLocalParam>
     implements _$$_EntityIdIsLocalParamCopyWith<$Res> {
   __$$_EntityIdIsLocalParamCopyWithImpl(_$_EntityIdIsLocalParam _value,
       $Res Function(_$_EntityIdIsLocalParam) _then)
-      : super(_value, (v) => _then(v as _$_EntityIdIsLocalParam));
+      : super(_value, _then);
 
-  @override
-  _$_EntityIdIsLocalParam get _value => super._value as _$_EntityIdIsLocalParam;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? isLocal = freezed,
-    Object? isNew = freezed,
+    Object? id = null,
+    Object? isLocal = null,
+    Object? isNew = null,
   }) {
     return _then(_$_EntityIdIsLocalParam(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      isLocal: isLocal == freezed
+      isLocal: null == isLocal
           ? _value.isLocal
           : isLocal // ignore: cast_nullable_to_non_nullable
               as bool,
-      isNew: isNew == freezed
+      isNew: null == isNew
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -133,20 +136,17 @@ class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EntityIdIsLocalParam &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.isLocal, isLocal) &&
-            const DeepCollectionEquality().equals(other.isNew, isNew));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.isLocal, isLocal) || other.isLocal == isLocal) &&
+            (identical(other.isNew, isNew) || other.isNew == isNew));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(isLocal),
-      const DeepCollectionEquality().hash(isNew));
+  int get hashCode => Object.hash(runtimeType, id, isLocal, isNew);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EntityIdIsLocalParamCopyWith<_$_EntityIdIsLocalParam> get copyWith =>
       __$$_EntityIdIsLocalParamCopyWithImpl<_$_EntityIdIsLocalParam>(
           this, _$identity);

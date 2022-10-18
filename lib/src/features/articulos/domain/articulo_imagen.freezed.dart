@@ -29,39 +29,42 @@ mixin _$ArticuloImagen {
 abstract class $ArticuloImagenCopyWith<$Res> {
   factory $ArticuloImagenCopyWith(
           ArticuloImagen value, $Res Function(ArticuloImagen) then) =
-      _$ArticuloImagenCopyWithImpl<$Res>;
+      _$ArticuloImagenCopyWithImpl<$Res, ArticuloImagen>;
+  @useResult
   $Res call({String articuloId, String nombreArchivo, String url});
 }
 
 /// @nodoc
-class _$ArticuloImagenCopyWithImpl<$Res>
+class _$ArticuloImagenCopyWithImpl<$Res, $Val extends ArticuloImagen>
     implements $ArticuloImagenCopyWith<$Res> {
   _$ArticuloImagenCopyWithImpl(this._value, this._then);
 
-  final ArticuloImagen _value;
   // ignore: unused_field
-  final $Res Function(ArticuloImagen) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? nombreArchivo = freezed,
-    Object? url = freezed,
+    Object? articuloId = null,
+    Object? nombreArchivo = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: null == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,36 +75,35 @@ abstract class _$$_ArticuloImagenCopyWith<$Res>
           _$_ArticuloImagen value, $Res Function(_$_ArticuloImagen) then) =
       __$$_ArticuloImagenCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String articuloId, String nombreArchivo, String url});
 }
 
 /// @nodoc
 class __$$_ArticuloImagenCopyWithImpl<$Res>
-    extends _$ArticuloImagenCopyWithImpl<$Res>
+    extends _$ArticuloImagenCopyWithImpl<$Res, _$_ArticuloImagen>
     implements _$$_ArticuloImagenCopyWith<$Res> {
   __$$_ArticuloImagenCopyWithImpl(
       _$_ArticuloImagen _value, $Res Function(_$_ArticuloImagen) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloImagen));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloImagen get _value => super._value as _$_ArticuloImagen;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? nombreArchivo = freezed,
-    Object? url = freezed,
+    Object? articuloId = null,
+    Object? nombreArchivo = null,
+    Object? url = null,
   }) {
     return _then(_$_ArticuloImagen(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: null == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
@@ -135,22 +137,19 @@ class _$_ArticuloImagen extends _ArticuloImagen {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloImagen &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreArchivo, nombreArchivo) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(nombreArchivo),
-      const DeepCollectionEquality().hash(url));
+  int get hashCode => Object.hash(runtimeType, articuloId, nombreArchivo, url);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloImagenCopyWith<_$_ArticuloImagen> get copyWith =>
       __$$_ArticuloImagenCopyWithImpl<_$_ArticuloImagen>(this, _$identity);
 }

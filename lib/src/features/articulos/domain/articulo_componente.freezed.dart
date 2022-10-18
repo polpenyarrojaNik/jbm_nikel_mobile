@@ -46,7 +46,8 @@ mixin _$ArticuloComponente {
 abstract class $ArticuloComponenteCopyWith<$Res> {
   factory $ArticuloComponenteCopyWith(
           ArticuloComponente value, $Res Function(ArticuloComponente) then) =
-      _$ArticuloComponenteCopyWithImpl<$Res>;
+      _$ArticuloComponenteCopyWithImpl<$Res, ArticuloComponente>;
+  @useResult
   $Res call(
       {String articuloId,
       String articuloComponenteId,
@@ -71,19 +72,21 @@ abstract class $ArticuloComponenteCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloComponenteCopyWithImpl<$Res>
+class _$ArticuloComponenteCopyWithImpl<$Res, $Val extends ArticuloComponente>
     implements $ArticuloComponenteCopyWith<$Res> {
   _$ArticuloComponenteCopyWithImpl(this._value, this._then);
 
-  final ArticuloComponente _value;
   // ignore: unused_field
-  final $Res Function(ArticuloComponente) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? articuloComponenteId = freezed,
-    Object? descripcionES = freezed,
+    Object? articuloId = null,
+    Object? articuloComponenteId = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -98,92 +101,92 @@ class _$ArticuloComponenteCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? cantidad = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? cantidad = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloComponenteId: articuloComponenteId == freezed
+      articuloComponenteId: null == articuloComponenteId
           ? _value.articuloComponenteId
           : articuloComponenteId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -194,6 +197,7 @@ abstract class _$$_ArticuloComponenteCopyWith<$Res>
           $Res Function(_$_ArticuloComponente) then) =
       __$$_ArticuloComponenteCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String articuloId,
       String articuloComponenteId,
@@ -219,20 +223,18 @@ abstract class _$$_ArticuloComponenteCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloComponenteCopyWithImpl<$Res>
-    extends _$ArticuloComponenteCopyWithImpl<$Res>
+    extends _$ArticuloComponenteCopyWithImpl<$Res, _$_ArticuloComponente>
     implements _$$_ArticuloComponenteCopyWith<$Res> {
   __$$_ArticuloComponenteCopyWithImpl(
       _$_ArticuloComponente _value, $Res Function(_$_ArticuloComponente) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloComponente));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloComponente get _value => super._value as _$_ArticuloComponente;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? articuloComponenteId = freezed,
-    Object? descripcionES = freezed,
+    Object? articuloId = null,
+    Object? articuloComponenteId = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -247,88 +249,88 @@ class __$$_ArticuloComponenteCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? cantidad = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? cantidad = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloComponente(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloComponenteId: articuloComponenteId == freezed
+      articuloComponenteId: null == articuloComponenteId
           ? _value.articuloComponenteId
           : articuloComponenteId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -413,73 +415,75 @@ class _$_ArticuloComponente extends _ArticuloComponente {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloComponente &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloComponenteId, articuloComponenteId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionES, descripcionES) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEN, descripcionEN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionFR, descripcionFR) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionDE, descripcionDE) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCA, descripcionCA) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionGB, descripcionGB) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionHU, descripcionHU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionIT, descripcionIT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionNL, descripcionNL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPL, descripcionPL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPT, descripcionPT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRO, descripcionRO) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRU, descripcionRU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCN, descripcionCN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEL, descripcionEL) &&
-            const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.articuloComponenteId, articuloComponenteId) ||
+                other.articuloComponenteId == articuloComponenteId) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPL, descripcionPL) ||
+                other.descripcionPL == descripcionPL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL) &&
+            (identical(other.cantidad, cantidad) ||
+                other.cantidad == cantidad) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(articuloId),
-        const DeepCollectionEquality().hash(articuloComponenteId),
-        const DeepCollectionEquality().hash(descripcionES),
-        const DeepCollectionEquality().hash(descripcionEN),
-        const DeepCollectionEquality().hash(descripcionFR),
-        const DeepCollectionEquality().hash(descripcionDE),
-        const DeepCollectionEquality().hash(descripcionCA),
-        const DeepCollectionEquality().hash(descripcionGB),
-        const DeepCollectionEquality().hash(descripcionHU),
-        const DeepCollectionEquality().hash(descripcionIT),
-        const DeepCollectionEquality().hash(descripcionNL),
-        const DeepCollectionEquality().hash(descripcionPL),
-        const DeepCollectionEquality().hash(descripcionPT),
-        const DeepCollectionEquality().hash(descripcionRO),
-        const DeepCollectionEquality().hash(descripcionRU),
-        const DeepCollectionEquality().hash(descripcionCN),
-        const DeepCollectionEquality().hash(descripcionEL),
-        const DeepCollectionEquality().hash(cantidad),
-        const DeepCollectionEquality().hash(lastUpdated),
-        const DeepCollectionEquality().hash(deleted)
+        articuloId,
+        articuloComponenteId,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        cantidad,
+        lastUpdated,
+        deleted
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloComponenteCopyWith<_$_ArticuloComponente> get copyWith =>
       __$$_ArticuloComponenteCopyWithImpl<_$_ArticuloComponente>(
           this, _$identity);

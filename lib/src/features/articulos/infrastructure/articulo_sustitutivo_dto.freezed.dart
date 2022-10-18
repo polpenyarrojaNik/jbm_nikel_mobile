@@ -42,7 +42,8 @@ mixin _$ArticuloSustitutivoDTO {
 abstract class $ArticuloSustitutivoDTOCopyWith<$Res> {
   factory $ArticuloSustitutivoDTOCopyWith(ArticuloSustitutivoDTO value,
           $Res Function(ArticuloSustitutivoDTO) then) =
-      _$ArticuloSustitutivoDTOCopyWithImpl<$Res>;
+      _$ArticuloSustitutivoDTOCopyWithImpl<$Res, ArticuloSustitutivoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
@@ -52,44 +53,47 @@ abstract class $ArticuloSustitutivoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloSustitutivoDTOCopyWithImpl<$Res>
+class _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
+        $Val extends ArticuloSustitutivoDTO>
     implements $ArticuloSustitutivoDTOCopyWith<$Res> {
   _$ArticuloSustitutivoDTOCopyWithImpl(this._value, this._then);
 
-  final ArticuloSustitutivoDTO _value;
   // ignore: unused_field
-  final $Res Function(ArticuloSustitutivoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? articuloSustitutivoId = freezed,
-    Object? orden = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? articuloSustitutivoId = null,
+    Object? orden = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloSustitutivoId: articuloSustitutivoId == freezed
+      articuloSustitutivoId: null == articuloSustitutivoId
           ? _value.articuloSustitutivoId
           : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
               as String,
-      orden: orden == freezed
+      orden: null == orden
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -100,6 +104,7 @@ abstract class _$$_ArticuloSustitutivoDTOCopyWith<$Res>
           $Res Function(_$_ArticuloSustitutivoDTO) then) =
       __$$_ArticuloSustitutivoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'ARTICULO_ID_SUSTITUTIVO') String articuloSustitutivoId,
@@ -110,42 +115,40 @@ abstract class _$$_ArticuloSustitutivoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloSustitutivoDTOCopyWithImpl<$Res>
-    extends _$ArticuloSustitutivoDTOCopyWithImpl<$Res>
+    extends _$ArticuloSustitutivoDTOCopyWithImpl<$Res,
+        _$_ArticuloSustitutivoDTO>
     implements _$$_ArticuloSustitutivoDTOCopyWith<$Res> {
   __$$_ArticuloSustitutivoDTOCopyWithImpl(_$_ArticuloSustitutivoDTO _value,
       $Res Function(_$_ArticuloSustitutivoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloSustitutivoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloSustitutivoDTO get _value =>
-      super._value as _$_ArticuloSustitutivoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? articuloSustitutivoId = freezed,
-    Object? orden = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? articuloSustitutivoId = null,
+    Object? orden = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloSustitutivoDTO(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloSustitutivoId: articuloSustitutivoId == freezed
+      articuloSustitutivoId: null == articuloSustitutivoId
           ? _value.articuloSustitutivoId
           : articuloSustitutivoId // ignore: cast_nullable_to_non_nullable
               as String,
-      orden: orden == freezed
+      orden: null == orden
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -198,28 +201,24 @@ class _$_ArticuloSustitutivoDTO extends _ArticuloSustitutivoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloSustitutivoDTO &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloSustitutivoId, articuloSustitutivoId) &&
-            const DeepCollectionEquality().equals(other.orden, orden) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.articuloSustitutivoId, articuloSustitutivoId) ||
+                other.articuloSustitutivoId == articuloSustitutivoId) &&
+            (identical(other.orden, orden) || other.orden == orden) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(articuloSustitutivoId),
-      const DeepCollectionEquality().hash(orden),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, articuloId,
+      articuloSustitutivoId, orden, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloSustitutivoDTOCopyWith<_$_ArticuloSustitutivoDTO> get copyWith =>
       __$$_ArticuloSustitutivoDTOCopyWithImpl<_$_ArticuloSustitutivoDTO>(
           this, _$identity);

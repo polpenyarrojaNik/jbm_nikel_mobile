@@ -67,7 +67,8 @@ mixin _$MetodoDeCobroDTO {
 abstract class $MetodoDeCobroDTOCopyWith<$Res> {
   factory $MetodoDeCobroDTOCopyWith(
           MetodoDeCobroDTO value, $Res Function(MetodoDeCobroDTO) then) =
-      _$MetodoDeCobroDTOCopyWithImpl<$Res>;
+      _$MetodoDeCobroDTOCopyWithImpl<$Res, MetodoDeCobroDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'METODO_COBRO_ID') String id,
       @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
@@ -90,18 +91,20 @@ abstract class $MetodoDeCobroDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MetodoDeCobroDTOCopyWithImpl<$Res>
+class _$MetodoDeCobroDTOCopyWithImpl<$Res, $Val extends MetodoDeCobroDTO>
     implements $MetodoDeCobroDTOCopyWith<$Res> {
   _$MetodoDeCobroDTOCopyWithImpl(this._value, this._then);
 
-  final MetodoDeCobroDTO _value;
   // ignore: unused_field
-  final $Res Function(MetodoDeCobroDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcionES = freezed,
+    Object? id = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -116,83 +119,83 @@ class _$MetodoDeCobroDTOCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -203,6 +206,7 @@ abstract class _$$_MetodoDeCobroDTOCopyWith<$Res>
           _$_MetodoDeCobroDTO value, $Res Function(_$_MetodoDeCobroDTO) then) =
       __$$_MetodoDeCobroDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'METODO_COBRO_ID') String id,
       @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
@@ -226,19 +230,17 @@ abstract class _$$_MetodoDeCobroDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_MetodoDeCobroDTOCopyWithImpl<$Res>
-    extends _$MetodoDeCobroDTOCopyWithImpl<$Res>
+    extends _$MetodoDeCobroDTOCopyWithImpl<$Res, _$_MetodoDeCobroDTO>
     implements _$$_MetodoDeCobroDTOCopyWith<$Res> {
   __$$_MetodoDeCobroDTOCopyWithImpl(
       _$_MetodoDeCobroDTO _value, $Res Function(_$_MetodoDeCobroDTO) _then)
-      : super(_value, (v) => _then(v as _$_MetodoDeCobroDTO));
+      : super(_value, _then);
 
-  @override
-  _$_MetodoDeCobroDTO get _value => super._value as _$_MetodoDeCobroDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcionES = freezed,
+    Object? id = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -253,79 +255,79 @@ class __$$_MetodoDeCobroDTOCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_MetodoDeCobroDTO(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -425,67 +427,68 @@ class _$_MetodoDeCobroDTO extends _MetodoDeCobroDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MetodoDeCobroDTO &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionES, descripcionES) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEN, descripcionEN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionFR, descripcionFR) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionDE, descripcionDE) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCA, descripcionCA) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionGB, descripcionGB) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionHU, descripcionHU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionIT, descripcionIT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionNL, descripcionNL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPL, descripcionPL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPT, descripcionPT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRO, descripcionRO) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRU, descripcionRU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCN, descripcionCN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEL, descripcionEL) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPL, descripcionPL) ||
+                other.descripcionPL == descripcionPL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(descripcionES),
-      const DeepCollectionEquality().hash(descripcionEN),
-      const DeepCollectionEquality().hash(descripcionFR),
-      const DeepCollectionEquality().hash(descripcionDE),
-      const DeepCollectionEquality().hash(descripcionCA),
-      const DeepCollectionEquality().hash(descripcionGB),
-      const DeepCollectionEquality().hash(descripcionHU),
-      const DeepCollectionEquality().hash(descripcionIT),
-      const DeepCollectionEquality().hash(descripcionNL),
-      const DeepCollectionEquality().hash(descripcionPL),
-      const DeepCollectionEquality().hash(descripcionPT),
-      const DeepCollectionEquality().hash(descripcionRO),
-      const DeepCollectionEquality().hash(descripcionRU),
-      const DeepCollectionEquality().hash(descripcionCN),
-      const DeepCollectionEquality().hash(descripcionEL),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      id,
+      descripcionES,
+      descripcionEN,
+      descripcionFR,
+      descripcionDE,
+      descripcionCA,
+      descripcionGB,
+      descripcionHU,
+      descripcionIT,
+      descripcionNL,
+      descripcionPL,
+      descripcionPT,
+      descripcionRO,
+      descripcionRU,
+      descripcionCN,
+      descripcionEL,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MetodoDeCobroDTOCopyWith<_$_MetodoDeCobroDTO> get copyWith =>
       __$$_MetodoDeCobroDTOCopyWithImpl<_$_MetodoDeCobroDTO>(this, _$identity);
 

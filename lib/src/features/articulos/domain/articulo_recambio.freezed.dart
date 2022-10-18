@@ -32,7 +32,8 @@ mixin _$ArticuloRecambio {
 abstract class $ArticuloRecambioCopyWith<$Res> {
   factory $ArticuloRecambioCopyWith(
           ArticuloRecambio value, $Res Function(ArticuloRecambio) then) =
-      _$ArticuloRecambioCopyWithImpl<$Res>;
+      _$ArticuloRecambioCopyWithImpl<$Res, ArticuloRecambio>;
+  @useResult
   $Res call(
       {String articuloId,
       String id,
@@ -43,49 +44,51 @@ abstract class $ArticuloRecambioCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloRecambioCopyWithImpl<$Res>
+class _$ArticuloRecambioCopyWithImpl<$Res, $Val extends ArticuloRecambio>
     implements $ArticuloRecambioCopyWith<$Res> {
   _$ArticuloRecambioCopyWithImpl(this._value, this._then);
 
-  final ArticuloRecambio _value;
   // ignore: unused_field
-  final $Res Function(ArticuloRecambio) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? id = freezed,
-    Object? descripcion = freezed,
-    Object? cantidad = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? id = null,
+    Object? descripcion = null,
+    Object? cantidad = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -96,6 +99,7 @@ abstract class _$$_ArticuloRecambioCopyWith<$Res>
           _$_ArticuloRecambio value, $Res Function(_$_ArticuloRecambio) then) =
       __$$_ArticuloRecambioCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String articuloId,
       String id,
@@ -107,46 +111,44 @@ abstract class _$$_ArticuloRecambioCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloRecambioCopyWithImpl<$Res>
-    extends _$ArticuloRecambioCopyWithImpl<$Res>
+    extends _$ArticuloRecambioCopyWithImpl<$Res, _$_ArticuloRecambio>
     implements _$$_ArticuloRecambioCopyWith<$Res> {
   __$$_ArticuloRecambioCopyWithImpl(
       _$_ArticuloRecambio _value, $Res Function(_$_ArticuloRecambio) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloRecambio));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloRecambio get _value => super._value as _$_ArticuloRecambio;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? id = freezed,
-    Object? descripcion = freezed,
-    Object? cantidad = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? id = null,
+    Object? descripcion = null,
+    Object? cantidad = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloRecambio(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidad: cantidad == freezed
+      cantidad: null == cantidad
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -189,29 +191,25 @@ class _$_ArticuloRecambio extends _ArticuloRecambio {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloRecambio &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality().equals(other.cantidad, cantidad) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.cantidad, cantidad) ||
+                other.cantidad == cantidad) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(cantidad),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      runtimeType, articuloId, id, descripcion, cantidad, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloRecambioCopyWith<_$_ArticuloRecambio> get copyWith =>
       __$$_ArticuloRecambioCopyWithImpl<_$_ArticuloRecambio>(this, _$identity);
 }

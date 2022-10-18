@@ -28,33 +28,37 @@ mixin _$AdjuntoParam {
 abstract class $AdjuntoParamCopyWith<$Res> {
   factory $AdjuntoParamCopyWith(
           AdjuntoParam value, $Res Function(AdjuntoParam) then) =
-      _$AdjuntoParamCopyWithImpl<$Res>;
+      _$AdjuntoParamCopyWithImpl<$Res, AdjuntoParam>;
+  @useResult
   $Res call({String id, String? nombreArchivo});
 }
 
 /// @nodoc
-class _$AdjuntoParamCopyWithImpl<$Res> implements $AdjuntoParamCopyWith<$Res> {
+class _$AdjuntoParamCopyWithImpl<$Res, $Val extends AdjuntoParam>
+    implements $AdjuntoParamCopyWith<$Res> {
   _$AdjuntoParamCopyWithImpl(this._value, this._then);
 
-  final AdjuntoParam _value;
   // ignore: unused_field
-  final $Res Function(AdjuntoParam) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? nombreArchivo = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: freezed == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,31 +69,30 @@ abstract class _$$_AdjuntoParamCopyWith<$Res>
           _$_AdjuntoParam value, $Res Function(_$_AdjuntoParam) then) =
       __$$_AdjuntoParamCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String? nombreArchivo});
 }
 
 /// @nodoc
 class __$$_AdjuntoParamCopyWithImpl<$Res>
-    extends _$AdjuntoParamCopyWithImpl<$Res>
+    extends _$AdjuntoParamCopyWithImpl<$Res, _$_AdjuntoParam>
     implements _$$_AdjuntoParamCopyWith<$Res> {
   __$$_AdjuntoParamCopyWithImpl(
       _$_AdjuntoParam _value, $Res Function(_$_AdjuntoParam) _then)
-      : super(_value, (v) => _then(v as _$_AdjuntoParam));
+      : super(_value, _then);
 
-  @override
-  _$_AdjuntoParam get _value => super._value as _$_AdjuntoParam;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? nombreArchivo = freezed,
   }) {
     return _then(_$_AdjuntoParam(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: freezed == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -118,19 +121,17 @@ class _$_AdjuntoParam extends _AdjuntoParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AdjuntoParam &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreArchivo, nombreArchivo));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(nombreArchivo));
+  int get hashCode => Object.hash(runtimeType, id, nombreArchivo);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AdjuntoParamCopyWith<_$_AdjuntoParam> get copyWith =>
       __$$_AdjuntoParamCopyWithImpl<_$_AdjuntoParam>(this, _$identity);
 }

@@ -44,8 +44,8 @@ mixin _$PedidoVentaEditPageControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -53,10 +53,10 @@ mixin _$PedidoVentaEditPageControllerState {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -107,12 +107,12 @@ mixin _$PedidoVentaEditPageControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -133,17 +133,20 @@ abstract class $PedidoVentaEditPageControllerStateCopyWith<$Res> {
   factory $PedidoVentaEditPageControllerStateCopyWith(
           PedidoVentaEditPageControllerState value,
           $Res Function(PedidoVentaEditPageControllerState) then) =
-      _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>;
+      _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+          PedidoVentaEditPageControllerState>;
 }
 
 /// @nodoc
-class _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
+class _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+        $Val extends PedidoVentaEditPageControllerState>
     implements $PedidoVentaEditPageControllerStateCopyWith<$Res> {
   _$PedidoVentaEditPageControllerStateCopyWithImpl(this._value, this._then);
 
-  final PedidoVentaEditPageControllerState _value;
   // ignore: unused_field
-  final $Res Function(PedidoVentaEditPageControllerState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -155,13 +158,10 @@ abstract class _$$_loadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_loadingCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$_loading>
     implements _$$_loadingCopyWith<$Res> {
   __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
-      : super(_value, (v) => _then(v as _$_loading));
-
-  @override
-  _$_loading get _value => super._value as _$_loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -215,8 +215,8 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -224,10 +224,10 @@ class _$_loading extends _loading {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -290,12 +290,12 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) {
     return loading?.call(this);
   }
@@ -327,6 +327,7 @@ abstract class _loading extends PedidoVentaEditPageControllerState {
 abstract class _$$_dataCopyWith<$Res> {
   factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
       __$$_dataCopyWithImpl<$Res>;
+  @useResult
   $Res call(
       {Cliente? cliente,
       ClienteDireccion? clienteDireccion,
@@ -341,45 +342,43 @@ abstract class _$$_dataCopyWith<$Res> {
 
 /// @nodoc
 class __$$_dataCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$_data>
     implements _$$_dataCopyWith<$Res> {
   __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
-      : super(_value, (v) => _then(v as _$_data));
+      : super(_value, _then);
 
-  @override
-  _$_data get _value => super._value as _$_data;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? cliente = freezed,
     Object? clienteDireccion = freezed,
-    Object? pedidoVentaLinea = freezed,
-    Object? currentStep = freezed,
+    Object? pedidoVentaLinea = null,
+    Object? currentStep = null,
     Object? observaciones = freezed,
     Object? pedidoCliente = freezed,
   }) {
     return _then(_$_data(
-      cliente == freezed
+      freezed == cliente
           ? _value.cliente
           : cliente // ignore: cast_nullable_to_non_nullable
               as Cliente?,
-      clienteDireccion == freezed
+      freezed == clienteDireccion
           ? _value.clienteDireccion
           : clienteDireccion // ignore: cast_nullable_to_non_nullable
               as ClienteDireccion?,
-      pedidoVentaLinea == freezed
+      null == pedidoVentaLinea
           ? _value._pedidoVentaLinea
           : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
               as List<PedidoVentaLinea>,
-      currentStep == freezed
+      null == currentStep
           ? _value.currentStep
           : currentStep // ignore: cast_nullable_to_non_nullable
               as int,
-      observaciones == freezed
+      freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoCliente == freezed
+      freezed == pedidoCliente
           ? _value.pedidoCliente
           : pedidoCliente // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -387,6 +386,7 @@ class __$$_dataCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ClienteCopyWith<$Res>? get cliente {
     if (_value.cliente == null) {
       return null;
@@ -398,6 +398,7 @@ class __$$_dataCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ClienteDireccionCopyWith<$Res>? get clienteDireccion {
     if (_value.clienteDireccion == null) {
       return null;
@@ -450,31 +451,32 @@ class _$_data extends _data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_data &&
-            const DeepCollectionEquality().equals(other.cliente, cliente) &&
-            const DeepCollectionEquality()
-                .equals(other.clienteDireccion, clienteDireccion) &&
+            (identical(other.cliente, cliente) || other.cliente == cliente) &&
+            (identical(other.clienteDireccion, clienteDireccion) ||
+                other.clienteDireccion == clienteDireccion) &&
             const DeepCollectionEquality()
                 .equals(other._pedidoVentaLinea, _pedidoVentaLinea) &&
-            const DeepCollectionEquality()
-                .equals(other.currentStep, currentStep) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoCliente, pedidoCliente));
+            (identical(other.currentStep, currentStep) ||
+                other.currentStep == currentStep) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones) &&
+            (identical(other.pedidoCliente, pedidoCliente) ||
+                other.pedidoCliente == pedidoCliente));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(cliente),
-      const DeepCollectionEquality().hash(clienteDireccion),
+      cliente,
+      clienteDireccion,
       const DeepCollectionEquality().hash(_pedidoVentaLinea),
-      const DeepCollectionEquality().hash(currentStep),
-      const DeepCollectionEquality().hash(observaciones),
-      const DeepCollectionEquality().hash(pedidoCliente));
+      currentStep,
+      observaciones,
+      pedidoCliente);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_dataCopyWith<_$_data> get copyWith =>
       __$$_dataCopyWithImpl<_$_data>(this, _$identity);
 
@@ -511,8 +513,8 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -520,10 +522,10 @@ class _$_data extends _data {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -588,12 +590,12 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) {
     return data?.call(this);
   }
@@ -640,30 +642,26 @@ abstract class _data extends PedidoVentaEditPageControllerState {
 abstract class _$$_errorCopyWith<$Res> {
   factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
       __$$_errorCopyWithImpl<$Res>;
+  @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
 class __$$_errorCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$_error>
     implements _$$_errorCopyWith<$Res> {
   __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
-      : super(_value, (v) => _then(v as _$_error));
+      : super(_value, _then);
 
-  @override
-  _$_error get _value => super._value as _$_error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
     Object? stackTrace = freezed,
   }) {
     return _then(_$_error(
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
           ? _value.stackTrace
           : stackTrace // ignore: cast_nullable_to_non_nullable
               as StackTrace?,
@@ -692,18 +690,17 @@ class _$_error extends _error {
         (other.runtimeType == runtimeType &&
             other is _$_error &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(stackTrace));
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_errorCopyWith<_$_error> get copyWith =>
       __$$_errorCopyWithImpl<_$_error>(this, _$identity);
 
@@ -739,8 +736,8 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -748,10 +745,10 @@ class _$_error extends _error {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -814,12 +811,12 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) {
     return error?.call(this);
   }
@@ -863,13 +860,10 @@ abstract class _$$_deletedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_deletedCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$_deleted>
     implements _$$_deletedCopyWith<$Res> {
   __$$_deletedCopyWithImpl(_$_deleted _value, $Res Function(_$_deleted) _then)
-      : super(_value, (v) => _then(v as _$_deleted));
-
-  @override
-  _$_deleted get _value => super._value as _$_deleted;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -923,8 +917,8 @@ class _$_deleted extends _deleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -932,10 +926,10 @@ class _$_deleted extends _deleted {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -998,12 +992,12 @@ class _$_deleted extends _deleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) {
     return deleted?.call(this);
   }
@@ -1035,25 +1029,24 @@ abstract class _deleted extends PedidoVentaEditPageControllerState {
 abstract class _$$_savedCopyWith<$Res> {
   factory _$$_savedCopyWith(_$_saved value, $Res Function(_$_saved) then) =
       __$$_savedCopyWithImpl<$Res>;
+  @useResult
   $Res call({String pedidoVentaAppId});
 }
 
 /// @nodoc
 class __$$_savedCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res, _$_saved>
     implements _$$_savedCopyWith<$Res> {
   __$$_savedCopyWithImpl(_$_saved _value, $Res Function(_$_saved) _then)
-      : super(_value, (v) => _then(v as _$_saved));
+      : super(_value, _then);
 
-  @override
-  _$_saved get _value => super._value as _$_saved;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pedidoVentaAppId = freezed,
+    Object? pedidoVentaAppId = null,
   }) {
     return _then(_$_saved(
-      pedidoVentaAppId == freezed
+      null == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1079,16 +1072,16 @@ class _$_saved extends _saved {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_saved &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaAppId, pedidoVentaAppId));
+            (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
+                other.pedidoVentaAppId == pedidoVentaAppId));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(pedidoVentaAppId));
+  int get hashCode => Object.hash(runtimeType, pedidoVentaAppId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_savedCopyWith<_$_saved> get copyWith =>
       __$$_savedCopyWithImpl<_$_saved>(this, _$identity);
 
@@ -1124,8 +1117,8 @@ class _$_saved extends _saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -1133,10 +1126,10 @@ class _$_saved extends _saved {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -1199,12 +1192,12 @@ class _$_saved extends _saved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) {
     return saved?.call(this);
   }
@@ -1242,6 +1235,7 @@ abstract class _$$_savedErrorCopyWith<$Res> {
   factory _$$_savedErrorCopyWith(
           _$_savedError value, $Res Function(_$_savedError) then) =
       __$$_savedErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call(
       {Cliente? cliente,
       ClienteDireccion? clienteDireccion,
@@ -1258,56 +1252,51 @@ abstract class _$$_savedErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_savedErrorCopyWithImpl<$Res>
-    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res>
-    implements _$$_savedErrorCopyWith<$Res> {
+    extends _$PedidoVentaEditPageControllerStateCopyWithImpl<$Res,
+        _$_savedError> implements _$$_savedErrorCopyWith<$Res> {
   __$$_savedErrorCopyWithImpl(
       _$_savedError _value, $Res Function(_$_savedError) _then)
-      : super(_value, (v) => _then(v as _$_savedError));
+      : super(_value, _then);
 
-  @override
-  _$_savedError get _value => super._value as _$_savedError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? cliente = freezed,
     Object? clienteDireccion = freezed,
-    Object? pedidoVentaLinea = freezed,
-    Object? currentStep = freezed,
+    Object? pedidoVentaLinea = null,
+    Object? currentStep = null,
     Object? observaciones = freezed,
     Object? pedidoCliente = freezed,
-    Object? error = freezed,
+    Object? error = null,
     Object? stackTrace = freezed,
   }) {
     return _then(_$_savedError(
-      cliente == freezed
+      freezed == cliente
           ? _value.cliente
           : cliente // ignore: cast_nullable_to_non_nullable
               as Cliente?,
-      clienteDireccion == freezed
+      freezed == clienteDireccion
           ? _value.clienteDireccion
           : clienteDireccion // ignore: cast_nullable_to_non_nullable
               as ClienteDireccion?,
-      pedidoVentaLinea == freezed
+      null == pedidoVentaLinea
           ? _value._pedidoVentaLinea
           : pedidoVentaLinea // ignore: cast_nullable_to_non_nullable
               as List<PedidoVentaLinea>,
-      currentStep == freezed
+      null == currentStep
           ? _value.currentStep
           : currentStep // ignore: cast_nullable_to_non_nullable
               as int,
-      observaciones == freezed
+      freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoCliente == freezed
+      freezed == pedidoCliente
           ? _value.pedidoCliente
           : pedidoCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
           ? _value.stackTrace
           : stackTrace // ignore: cast_nullable_to_non_nullable
               as StackTrace?,
@@ -1315,6 +1304,7 @@ class __$$_savedErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ClienteCopyWith<$Res>? get cliente {
     if (_value.cliente == null) {
       return null;
@@ -1326,6 +1316,7 @@ class __$$_savedErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ClienteDireccionCopyWith<$Res>? get clienteDireccion {
     if (_value.clienteDireccion == null) {
       return null;
@@ -1384,36 +1375,37 @@ class _$_savedError extends _savedError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_savedError &&
-            const DeepCollectionEquality().equals(other.cliente, cliente) &&
-            const DeepCollectionEquality()
-                .equals(other.clienteDireccion, clienteDireccion) &&
+            (identical(other.cliente, cliente) || other.cliente == cliente) &&
+            (identical(other.clienteDireccion, clienteDireccion) ||
+                other.clienteDireccion == clienteDireccion) &&
             const DeepCollectionEquality()
                 .equals(other._pedidoVentaLinea, _pedidoVentaLinea) &&
-            const DeepCollectionEquality()
-                .equals(other.currentStep, currentStep) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoCliente, pedidoCliente) &&
+            (identical(other.currentStep, currentStep) ||
+                other.currentStep == currentStep) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones) &&
+            (identical(other.pedidoCliente, pedidoCliente) ||
+                other.pedidoCliente == pedidoCliente) &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(cliente),
-      const DeepCollectionEquality().hash(clienteDireccion),
+      cliente,
+      clienteDireccion,
       const DeepCollectionEquality().hash(_pedidoVentaLinea),
-      const DeepCollectionEquality().hash(currentStep),
-      const DeepCollectionEquality().hash(observaciones),
-      const DeepCollectionEquality().hash(pedidoCliente),
+      currentStep,
+      observaciones,
+      pedidoCliente,
       const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(stackTrace));
+      stackTrace);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_savedErrorCopyWith<_$_savedError> get copyWith =>
       __$$_savedErrorCopyWithImpl<_$_savedError>(this, _$identity);
 
@@ -1450,8 +1442,8 @@ class _$_savedError extends _savedError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
+    TResult? Function()? loading,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -1459,10 +1451,10 @@ class _$_savedError extends _savedError {
             String? observaciones,
             String? pedidoCliente)?
         data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
-    TResult Function(
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? deleted,
+    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
             List<PedidoVentaLinea> pedidoVentaLinea,
@@ -1527,12 +1519,12 @@ class _$_savedError extends _savedError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_deleted value)? deleted,
-    TResult Function(_saved value)? saved,
-    TResult Function(_savedError value)? savedError,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_deleted value)? deleted,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_savedError value)? savedError,
   }) {
     return savedError?.call(this);
   }

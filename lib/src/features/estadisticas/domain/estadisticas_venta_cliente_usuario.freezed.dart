@@ -36,7 +36,9 @@ abstract class $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
   factory $EstadisticasVentaClienteUsuarioCopyWith(
           EstadisticasVentaClienteUsuario value,
           $Res Function(EstadisticasVentaClienteUsuario) then) =
-      _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>;
+      _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
+          EstadisticasVentaClienteUsuario>;
+  @useResult
   $Res call(
       {double anyo,
       double mes,
@@ -50,64 +52,67 @@ abstract class $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
+class _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
+        $Val extends EstadisticasVentaClienteUsuario>
     implements $EstadisticasVentaClienteUsuarioCopyWith<$Res> {
   _$EstadisticasVentaClienteUsuarioCopyWithImpl(this._value, this._then);
 
-  final EstadisticasVentaClienteUsuario _value;
   // ignore: unused_field
-  final $Res Function(EstadisticasVentaClienteUsuario) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? anyo = freezed,
-    Object? mes = freezed,
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
+    Object? anyo = null,
+    Object? mes = null,
+    Object? clienteId = null,
+    Object? articuloId = null,
     Object? unidades = freezed,
     Object? importe = freezed,
     Object? coste = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      anyo: anyo == freezed
+      anyo: null == anyo
           ? _value.anyo
           : anyo // ignore: cast_nullable_to_non_nullable
               as double,
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as double,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      unidades: unidades == freezed
+      unidades: freezed == unidades
           ? _value.unidades
           : unidades // ignore: cast_nullable_to_non_nullable
               as double?,
-      importe: importe == freezed
+      importe: freezed == importe
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
               as Money?,
-      coste: coste == freezed
+      coste: freezed == coste
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
               as Money?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -119,6 +124,7 @@ abstract class _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res>
           $Res Function(_$_EstadisticasVentaClienteUsuario) then) =
       __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {double anyo,
       double mes,
@@ -133,63 +139,61 @@ abstract class _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res>
 
 /// @nodoc
 class __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
-    extends _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res>
+    extends _$EstadisticasVentaClienteUsuarioCopyWithImpl<$Res,
+        _$_EstadisticasVentaClienteUsuario>
     implements _$$_EstadisticasVentaClienteUsuarioCopyWith<$Res> {
   __$$_EstadisticasVentaClienteUsuarioCopyWithImpl(
       _$_EstadisticasVentaClienteUsuario _value,
       $Res Function(_$_EstadisticasVentaClienteUsuario) _then)
-      : super(_value, (v) => _then(v as _$_EstadisticasVentaClienteUsuario));
+      : super(_value, _then);
 
-  @override
-  _$_EstadisticasVentaClienteUsuario get _value =>
-      super._value as _$_EstadisticasVentaClienteUsuario;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? anyo = freezed,
-    Object? mes = freezed,
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
+    Object? anyo = null,
+    Object? mes = null,
+    Object? clienteId = null,
+    Object? articuloId = null,
     Object? unidades = freezed,
     Object? importe = freezed,
     Object? coste = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_EstadisticasVentaClienteUsuario(
-      anyo: anyo == freezed
+      anyo: null == anyo
           ? _value.anyo
           : anyo // ignore: cast_nullable_to_non_nullable
               as double,
-      mes: mes == freezed
+      mes: null == mes
           ? _value.mes
           : mes // ignore: cast_nullable_to_non_nullable
               as double,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      unidades: unidades == freezed
+      unidades: freezed == unidades
           ? _value.unidades
           : unidades // ignore: cast_nullable_to_non_nullable
               as double?,
-      importe: importe == freezed
+      importe: freezed == importe
           ? _value.importe
           : importe // ignore: cast_nullable_to_non_nullable
               as Money?,
-      coste: coste == freezed
+      coste: freezed == coste
           ? _value.coste
           : coste // ignore: cast_nullable_to_non_nullable
               as Money?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -242,34 +246,28 @@ class _$_EstadisticasVentaClienteUsuario
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EstadisticasVentaClienteUsuario &&
-            const DeepCollectionEquality().equals(other.anyo, anyo) &&
-            const DeepCollectionEquality().equals(other.mes, mes) &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.unidades, unidades) &&
-            const DeepCollectionEquality().equals(other.importe, importe) &&
-            const DeepCollectionEquality().equals(other.coste, coste) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.anyo, anyo) || other.anyo == anyo) &&
+            (identical(other.mes, mes) || other.mes == mes) &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.unidades, unidades) ||
+                other.unidades == unidades) &&
+            (identical(other.importe, importe) || other.importe == importe) &&
+            (identical(other.coste, coste) || other.coste == coste) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(anyo),
-      const DeepCollectionEquality().hash(mes),
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(unidades),
-      const DeepCollectionEquality().hash(importe),
-      const DeepCollectionEquality().hash(coste),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, anyo, mes, clienteId, articuloId,
+      unidades, importe, coste, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EstadisticasVentaClienteUsuarioCopyWith<
           _$_EstadisticasVentaClienteUsuario>
       get copyWith => __$$_EstadisticasVentaClienteUsuarioCopyWithImpl<

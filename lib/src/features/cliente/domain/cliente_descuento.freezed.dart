@@ -34,7 +34,8 @@ mixin _$ClienteDescuento {
 abstract class $ClienteDescuentoCopyWith<$Res> {
   factory $ClienteDescuentoCopyWith(
           ClienteDescuento value, $Res Function(ClienteDescuento) then) =
-      _$ClienteDescuentoCopyWithImpl<$Res>;
+      _$ClienteDescuentoCopyWithImpl<$Res, ClienteDescuento>;
+  @useResult
   $Res call(
       {String clienteId,
       String articuloId,
@@ -50,72 +51,76 @@ abstract class $ClienteDescuentoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteDescuentoCopyWithImpl<$Res>
+class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
     implements $ClienteDescuentoCopyWith<$Res> {
   _$ClienteDescuentoCopyWithImpl(this._value, this._then);
 
-  final ClienteDescuento _value;
   // ignore: unused_field
-  final $Res Function(ClienteDescuento) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
-    Object? familia = freezed,
-    Object? subfamilia = freezed,
-    Object? cantidadDesde = freezed,
-    Object? descuento = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? articuloId = null,
+    Object? familia = null,
+    Object? subfamilia = null,
+    Object? cantidadDesde = null,
+    Object? descuento = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      familia: familia == freezed
+      familia: null == familia
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
               as Familia,
-      subfamilia: subfamilia == freezed
+      subfamilia: null == subfamilia
           ? _value.subfamilia
           : subfamilia // ignore: cast_nullable_to_non_nullable
               as Subfamilia,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento: descuento == freezed
+      descuento: null == descuento
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FamiliaCopyWith<$Res> get familia {
     return $FamiliaCopyWith<$Res>(_value.familia, (value) {
-      return _then(_value.copyWith(familia: value));
+      return _then(_value.copyWith(familia: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SubfamiliaCopyWith<$Res> get subfamilia {
     return $SubfamiliaCopyWith<$Res>(_value.subfamilia, (value) {
-      return _then(_value.copyWith(subfamilia: value));
+      return _then(_value.copyWith(subfamilia: value) as $Val);
     });
   }
 }
@@ -127,6 +132,7 @@ abstract class _$$_ClienteDescuentoCopyWith<$Res>
           _$_ClienteDescuento value, $Res Function(_$_ClienteDescuento) then) =
       __$$_ClienteDescuentoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String clienteId,
       String articuloId,
@@ -145,56 +151,54 @@ abstract class _$$_ClienteDescuentoCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteDescuentoCopyWithImpl<$Res>
-    extends _$ClienteDescuentoCopyWithImpl<$Res>
+    extends _$ClienteDescuentoCopyWithImpl<$Res, _$_ClienteDescuento>
     implements _$$_ClienteDescuentoCopyWith<$Res> {
   __$$_ClienteDescuentoCopyWithImpl(
       _$_ClienteDescuento _value, $Res Function(_$_ClienteDescuento) _then)
-      : super(_value, (v) => _then(v as _$_ClienteDescuento));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteDescuento get _value => super._value as _$_ClienteDescuento;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
-    Object? familia = freezed,
-    Object? subfamilia = freezed,
-    Object? cantidadDesde = freezed,
-    Object? descuento = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? articuloId = null,
+    Object? familia = null,
+    Object? subfamilia = null,
+    Object? cantidadDesde = null,
+    Object? descuento = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteDescuento(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      familia: familia == freezed
+      familia: null == familia
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
               as Familia,
-      subfamilia: subfamilia == freezed
+      subfamilia: null == subfamilia
           ? _value.subfamilia
           : subfamilia // ignore: cast_nullable_to_non_nullable
               as Subfamilia,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento: descuento == freezed
+      descuento: null == descuento
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -243,34 +247,29 @@ class _$_ClienteDescuento extends _ClienteDescuento {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteDescuento &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.familia, familia) &&
-            const DeepCollectionEquality()
-                .equals(other.subfamilia, subfamilia) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadDesde, cantidadDesde) &&
-            const DeepCollectionEquality().equals(other.descuento, descuento) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.familia, familia) || other.familia == familia) &&
+            (identical(other.subfamilia, subfamilia) ||
+                other.subfamilia == subfamilia) &&
+            (identical(other.cantidadDesde, cantidadDesde) ||
+                other.cantidadDesde == cantidadDesde) &&
+            (identical(other.descuento, descuento) ||
+                other.descuento == descuento) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(familia),
-      const DeepCollectionEquality().hash(subfamilia),
-      const DeepCollectionEquality().hash(cantidadDesde),
-      const DeepCollectionEquality().hash(descuento),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, articuloId, familia,
+      subfamilia, cantidadDesde, descuento, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteDescuentoCopyWith<_$_ClienteDescuento> get copyWith =>
       __$$_ClienteDescuentoCopyWithImpl<_$_ClienteDescuento>(this, _$identity);
 }
