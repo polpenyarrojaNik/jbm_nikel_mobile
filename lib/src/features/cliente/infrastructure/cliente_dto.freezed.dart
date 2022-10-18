@@ -75,7 +75,7 @@ mixin _$ClienteDTO {
   @JsonKey(name: 'TARIFA_DESCRIPCION')
   String? get tarifaDescripcion => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-  String? get descuentoGeneral => throw _privateConstructorUsedError;
+  String? get descuentoGeneralId => throw _privateConstructorUsedError;
   @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
   String? get descripcionDescuentoGeneral => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_CALCULO_PRECIO')
@@ -187,7 +187,7 @@ abstract class $ClienteDTOCopyWith<$Res> {
       @JsonKey(name: 'TARIFA_DESCRIPCION')
           String? tarifaDescripcion,
       @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          String? descuentoGeneral,
+          String? descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
           String? descripcionDescuentoGeneral,
       @JsonKey(name: 'TIPO_CALCULO_PRECIO')
@@ -270,7 +270,7 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
     Object? divisaId = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? descuentoGeneral = freezed,
+    Object? descuentoGeneralId = freezed,
     Object? descripcionDescuentoGeneral = freezed,
     Object? tipoCalucloPrecio = null,
     Object? plazoDeCobroId = freezed,
@@ -401,9 +401,9 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      descuentoGeneral: freezed == descuentoGeneral
-          ? _value.descuentoGeneral
-          : descuentoGeneral // ignore: cast_nullable_to_non_nullable
+      descuentoGeneralId: freezed == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
               as String?,
       descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
           ? _value.descripcionDescuentoGeneral
@@ -553,7 +553,7 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
       @JsonKey(name: 'TARIFA_DESCRIPCION')
           String? tarifaDescripcion,
       @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          String? descuentoGeneral,
+          String? descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
           String? descripcionDescuentoGeneral,
       @JsonKey(name: 'TIPO_CALCULO_PRECIO')
@@ -634,7 +634,7 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
     Object? divisaId = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? descuentoGeneral = freezed,
+    Object? descuentoGeneralId = freezed,
     Object? descripcionDescuentoGeneral = freezed,
     Object? tipoCalucloPrecio = null,
     Object? plazoDeCobroId = freezed,
@@ -765,9 +765,9 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      descuentoGeneral: freezed == descuentoGeneral
-          ? _value.descuentoGeneral
-          : descuentoGeneral // ignore: cast_nullable_to_non_nullable
+      descuentoGeneralId: freezed == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
               as String?,
       descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
           ? _value.descripcionDescuentoGeneral
@@ -912,7 +912,7 @@ class _$_ClienteDTO extends _ClienteDTO {
       @JsonKey(name: 'TARIFA_DESCRIPCION')
           this.tarifaDescripcion,
       @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          this.descuentoGeneral,
+          this.descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
           this.descripcionDescuentoGeneral,
       @JsonKey(name: 'TIPO_CALCULO_PRECIO')
@@ -1041,7 +1041,7 @@ class _$_ClienteDTO extends _ClienteDTO {
   final String? tarifaDescripcion;
   @override
   @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-  final String? descuentoGeneral;
+  final String? descuentoGeneralId;
   @override
   @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
   final String? descripcionDescuentoGeneral;
@@ -1105,7 +1105,7 @@ class _$_ClienteDTO extends _ClienteDTO {
 
   @override
   String toString() {
-    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1163,8 +1163,8 @@ class _$_ClienteDTO extends _ClienteDTO {
                 other.tarifaId == tarifaId) &&
             (identical(other.tarifaDescripcion, tarifaDescripcion) ||
                 other.tarifaDescripcion == tarifaDescripcion) &&
-            (identical(other.descuentoGeneral, descuentoGeneral) ||
-                other.descuentoGeneral == descuentoGeneral) &&
+            (identical(other.descuentoGeneralId, descuentoGeneralId) ||
+                other.descuentoGeneralId == descuentoGeneralId) &&
             (identical(other.descripcionDescuentoGeneral, descripcionDescuentoGeneral) ||
                 other.descripcionDescuentoGeneral ==
                     descripcionDescuentoGeneral) &&
@@ -1235,7 +1235,7 @@ class _$_ClienteDTO extends _ClienteDTO {
         divisaId,
         tarifaId,
         tarifaDescripcion,
-        descuentoGeneral,
+        descuentoGeneralId,
         descripcionDescuentoGeneral,
         tipoCalucloPrecio,
         plazoDeCobroId,
@@ -1329,7 +1329,7 @@ abstract class _ClienteDTO extends ClienteDTO {
       @JsonKey(name: 'TARIFA_DESCRIPCION')
           final String? tarifaDescripcion,
       @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-          final String? descuentoGeneral,
+          final String? descuentoGeneralId,
       @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
           final String? descripcionDescuentoGeneral,
       @JsonKey(name: 'TIPO_CALCULO_PRECIO')
@@ -1458,7 +1458,7 @@ abstract class _ClienteDTO extends ClienteDTO {
   String? get tarifaDescripcion;
   @override
   @JsonKey(name: 'DESCUENTO_GENERAL_ID')
-  String? get descuentoGeneral;
+  String? get descuentoGeneralId;
   @override
   @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
   String? get descripcionDescuentoGeneral;

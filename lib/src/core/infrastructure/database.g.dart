@@ -3980,7 +3980,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> divisaId;
   final Value<String?> tarifaId;
   final Value<String?> tarifaDescripcion;
-  final Value<String?> descuentoGeneral;
+  final Value<String?> descuentoGeneralId;
   final Value<String?> descripcionDescuentoGeneral;
   final Value<String> tipoCalucloPrecio;
   final Value<String?> plazoDeCobroId;
@@ -4029,7 +4029,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.divisaId = const Value.absent(),
     this.tarifaId = const Value.absent(),
     this.tarifaDescripcion = const Value.absent(),
-    this.descuentoGeneral = const Value.absent(),
+    this.descuentoGeneralId = const Value.absent(),
     this.descripcionDescuentoGeneral = const Value.absent(),
     this.tipoCalucloPrecio = const Value.absent(),
     this.plazoDeCobroId = const Value.absent(),
@@ -4079,7 +4079,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.divisaId = const Value.absent(),
     this.tarifaId = const Value.absent(),
     this.tarifaDescripcion = const Value.absent(),
-    this.descuentoGeneral = const Value.absent(),
+    this.descuentoGeneralId = const Value.absent(),
     this.descripcionDescuentoGeneral = const Value.absent(),
     required String tipoCalucloPrecio,
     this.plazoDeCobroId = const Value.absent(),
@@ -4148,7 +4148,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? divisaId,
     Expression<String>? tarifaId,
     Expression<String>? tarifaDescripcion,
-    Expression<String>? descuentoGeneral,
+    Expression<String>? descuentoGeneralId,
     Expression<String>? descripcionDescuentoGeneral,
     Expression<String>? tipoCalucloPrecio,
     Expression<String>? plazoDeCobroId,
@@ -4204,7 +4204,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       if (divisaId != null) 'DIVISA_ID': divisaId,
       if (tarifaId != null) 'TARIFA_ID': tarifaId,
       if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
-      if (descuentoGeneral != null) 'DESCUENTO_GENERAL_ID': descuentoGeneral,
+      if (descuentoGeneralId != null)
+        'DESCUENTO_GENERAL_ID': descuentoGeneralId,
       if (descripcionDescuentoGeneral != null)
         'DESCUENTO_GENERAL_DESCRIPCION': descripcionDescuentoGeneral,
       if (tipoCalucloPrecio != null) 'TIPO_CALCULO_PRECIO': tipoCalucloPrecio,
@@ -4269,7 +4270,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? divisaId,
       Value<String?>? tarifaId,
       Value<String?>? tarifaDescripcion,
-      Value<String?>? descuentoGeneral,
+      Value<String?>? descuentoGeneralId,
       Value<String?>? descripcionDescuentoGeneral,
       Value<String>? tipoCalucloPrecio,
       Value<String?>? plazoDeCobroId,
@@ -4318,7 +4319,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       divisaId: divisaId ?? this.divisaId,
       tarifaId: tarifaId ?? this.tarifaId,
       tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
-      descuentoGeneral: descuentoGeneral ?? this.descuentoGeneral,
+      descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
       descripcionDescuentoGeneral:
           descripcionDescuentoGeneral ?? this.descripcionDescuentoGeneral,
       tipoCalucloPrecio: tipoCalucloPrecio ?? this.tipoCalucloPrecio,
@@ -4437,8 +4438,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (tarifaDescripcion.present) {
       map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
     }
-    if (descuentoGeneral.present) {
-      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneral.value);
+    if (descuentoGeneralId.present) {
+      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneralId.value);
     }
     if (descripcionDescuentoGeneral.present) {
       map['DESCUENTO_GENERAL_DESCRIPCION'] =
@@ -4545,7 +4546,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('divisaId: $divisaId, ')
           ..write('tarifaId: $tarifaId, ')
           ..write('tarifaDescripcion: $tarifaDescripcion, ')
-          ..write('descuentoGeneral: $descuentoGeneral, ')
+          ..write('descuentoGeneralId: $descuentoGeneralId, ')
           ..write('descripcionDescuentoGeneral: $descripcionDescuentoGeneral, ')
           ..write('tipoCalucloPrecio: $tipoCalucloPrecio, ')
           ..write('plazoDeCobroId: $plazoDeCobroId, ')
@@ -4737,12 +4738,12 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> tarifaDescripcion =
       GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descuentoGeneralMeta =
-      const VerificationMeta('descuentoGeneral');
+  final VerificationMeta _descuentoGeneralIdMeta =
+      const VerificationMeta('descuentoGeneralId');
   @override
-  late final GeneratedColumn<String> descuentoGeneral = GeneratedColumn<String>(
-      'DESCUENTO_GENERAL_ID', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+  late final GeneratedColumn<String> descuentoGeneralId =
+      GeneratedColumn<String>('DESCUENTO_GENERAL_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _descripcionDescuentoGeneralMeta =
       const VerificationMeta('descripcionDescuentoGeneral');
   @override
@@ -4902,7 +4903,7 @@ class $ClienteTableTable extends ClienteTable
         divisaId,
         tarifaId,
         tarifaDescripcion,
-        descuentoGeneral,
+        descuentoGeneralId,
         descripcionDescuentoGeneral,
         tipoCalucloPrecio,
         plazoDeCobroId,
@@ -5113,9 +5114,9 @@ class $ClienteTableTable extends ClienteTable
     }
     if (data.containsKey('DESCUENTO_GENERAL_ID')) {
       context.handle(
-          _descuentoGeneralMeta,
-          descuentoGeneral.isAcceptableOrUnknown(
-              data['DESCUENTO_GENERAL_ID']!, _descuentoGeneralMeta));
+          _descuentoGeneralIdMeta,
+          descuentoGeneralId.isAcceptableOrUnknown(
+              data['DESCUENTO_GENERAL_ID']!, _descuentoGeneralIdMeta));
     }
     if (data.containsKey('DESCUENTO_GENERAL_DESCRIPCION')) {
       context.handle(
@@ -5316,7 +5317,7 @@ class $ClienteTableTable extends ClienteTable
           .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID']),
       tarifaDescripcion: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      descuentoGeneral: attachedDatabase.options.types.read(
+      descuentoGeneralId: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}DESCUENTO_GENERAL_ID']),
       descripcionDescuentoGeneral: attachedDatabase.options.types.read(
           DriftSqlType.string,

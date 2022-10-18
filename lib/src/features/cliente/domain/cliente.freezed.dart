@@ -43,7 +43,7 @@ mixin _$Cliente {
   Divisa? get divisa => throw _privateConstructorUsedError;
   String? get tarifaId => throw _privateConstructorUsedError;
   String? get tarifaDescripcion => throw _privateConstructorUsedError;
-  String? get descuentoGeneral => throw _privateConstructorUsedError;
+  String? get descuentoGeneralId => throw _privateConstructorUsedError;
   String? get descripcionDescuentoGeneral => throw _privateConstructorUsedError;
   String get tipoCalucloPrecio => throw _privateConstructorUsedError;
   PlazoDeCobro? get plazoDeCobro => throw _privateConstructorUsedError;
@@ -107,7 +107,7 @@ abstract class $ClienteCopyWith<$Res> {
       Divisa? divisa,
       String? tarifaId,
       String? tarifaDescripcion,
-      String? descuentoGeneral,
+      String? descuentoGeneralId,
       String? descripcionDescuentoGeneral,
       String tipoCalucloPrecio,
       PlazoDeCobro? plazoDeCobro,
@@ -178,7 +178,7 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? divisa = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? descuentoGeneral = freezed,
+    Object? descuentoGeneralId = freezed,
     Object? descripcionDescuentoGeneral = freezed,
     Object? tipoCalucloPrecio = null,
     Object? plazoDeCobro = freezed,
@@ -310,9 +310,9 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      descuentoGeneral: freezed == descuentoGeneral
-          ? _value.descuentoGeneral
-          : descuentoGeneral // ignore: cast_nullable_to_non_nullable
+      descuentoGeneralId: freezed == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
               as String?,
       descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
           ? _value.descripcionDescuentoGeneral
@@ -511,7 +511,7 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       Divisa? divisa,
       String? tarifaId,
       String? tarifaDescripcion,
-      String? descuentoGeneral,
+      String? descuentoGeneralId,
       String? descripcionDescuentoGeneral,
       String tipoCalucloPrecio,
       PlazoDeCobro? plazoDeCobro,
@@ -585,7 +585,7 @@ class __$$_ClienteCopyWithImpl<$Res>
     Object? divisa = freezed,
     Object? tarifaId = freezed,
     Object? tarifaDescripcion = freezed,
-    Object? descuentoGeneral = freezed,
+    Object? descuentoGeneralId = freezed,
     Object? descripcionDescuentoGeneral = freezed,
     Object? tipoCalucloPrecio = null,
     Object? plazoDeCobro = freezed,
@@ -717,9 +717,9 @@ class __$$_ClienteCopyWithImpl<$Res>
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      descuentoGeneral: freezed == descuentoGeneral
-          ? _value.descuentoGeneral
-          : descuentoGeneral // ignore: cast_nullable_to_non_nullable
+      descuentoGeneralId: freezed == descuentoGeneralId
+          ? _value.descuentoGeneralId
+          : descuentoGeneralId // ignore: cast_nullable_to_non_nullable
               as String?,
       descripcionDescuentoGeneral: freezed == descripcionDescuentoGeneral
           ? _value.descripcionDescuentoGeneral
@@ -840,7 +840,7 @@ class _$_Cliente extends _Cliente {
       this.divisa,
       this.tarifaId,
       this.tarifaDescripcion,
-      this.descuentoGeneral,
+      this.descuentoGeneralId,
       this.descripcionDescuentoGeneral,
       required this.tipoCalucloPrecio,
       this.plazoDeCobro,
@@ -919,7 +919,7 @@ class _$_Cliente extends _Cliente {
   @override
   final String? tarifaDescripcion;
   @override
-  final String? descuentoGeneral;
+  final String? descuentoGeneralId;
   @override
   final String? descripcionDescuentoGeneral;
   @override
@@ -965,7 +965,7 @@ class _$_Cliente extends _Cliente {
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneral: $descuentoGeneral, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalucloPrecio: $tipoCalucloPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1022,8 +1022,8 @@ class _$_Cliente extends _Cliente {
                 other.tarifaId == tarifaId) &&
             (identical(other.tarifaDescripcion, tarifaDescripcion) ||
                 other.tarifaDescripcion == tarifaDescripcion) &&
-            (identical(other.descuentoGeneral, descuentoGeneral) ||
-                other.descuentoGeneral == descuentoGeneral) &&
+            (identical(other.descuentoGeneralId, descuentoGeneralId) ||
+                other.descuentoGeneralId == descuentoGeneralId) &&
             (identical(other.descripcionDescuentoGeneral, descripcionDescuentoGeneral) ||
                 other.descripcionDescuentoGeneral ==
                     descripcionDescuentoGeneral) &&
@@ -1095,7 +1095,7 @@ class _$_Cliente extends _Cliente {
         divisa,
         tarifaId,
         tarifaDescripcion,
-        descuentoGeneral,
+        descuentoGeneralId,
         descripcionDescuentoGeneral,
         tipoCalucloPrecio,
         plazoDeCobro,
@@ -1155,7 +1155,7 @@ abstract class _Cliente extends Cliente {
       final Divisa? divisa,
       final String? tarifaId,
       final String? tarifaDescripcion,
-      final String? descuentoGeneral,
+      final String? descuentoGeneralId,
       final String? descripcionDescuentoGeneral,
       required final String tipoCalucloPrecio,
       final PlazoDeCobro? plazoDeCobro,
@@ -1234,7 +1234,7 @@ abstract class _Cliente extends Cliente {
   @override
   String? get tarifaDescripcion;
   @override
-  String? get descuentoGeneral;
+  String? get descuentoGeneralId;
   @override
   String? get descripcionDescuentoGeneral;
   @override

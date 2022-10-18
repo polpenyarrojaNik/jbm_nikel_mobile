@@ -41,7 +41,7 @@ class Cliente with _$Cliente {
       Divisa? divisa,
       String? tarifaId,
       String? tarifaDescripcion,
-      String? descuentoGeneral,
+      String? descuentoGeneralId,
       String? descripcionDescuentoGeneral,
       required String tipoCalucloPrecio,
       PlazoDeCobro? plazoDeCobro,

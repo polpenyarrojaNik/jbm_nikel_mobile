@@ -35,7 +35,7 @@ _$_ClienteDTO _$$_ClienteDTOFromJson(Map<String, dynamic> json) =>
       divisaId: json['DIVISA_ID'] as String?,
       tarifaId: json['TARIFA_ID'] as String?,
       tarifaDescripcion: json['TARIFA_DESCRIPCION'] as String?,
-      descuentoGeneral: json['DESCUENTO_GENERAL_ID'] as String?,
+      descuentoGeneralId: json['DESCUENTO_GENERAL_ID'] as String?,
       descripcionDescuentoGeneral:
           json['DESCUENTO_GENERAL_DESCRIPCION'] as String?,
       tipoCalucloPrecio: json['TIPO_CALCULO_PRECIO'] as String,
@@ -97,7 +97,7 @@ Map<String, dynamic> _$$_ClienteDTOToJson(_$_ClienteDTO instance) =>
       'DIVISA_ID': instance.divisaId,
       'TARIFA_ID': instance.tarifaId,
       'TARIFA_DESCRIPCION': instance.tarifaDescripcion,
-      'DESCUENTO_GENERAL_ID': instance.descuentoGeneral,
+      'DESCUENTO_GENERAL_ID': instance.descuentoGeneralId,
       'DESCUENTO_GENERAL_DESCRIPCION': instance.descripcionDescuentoGeneral,
       'TIPO_CALCULO_PRECIO': instance.tipoCalucloPrecio,
       'PLAZO_COBRO_ID': instance.plazoDeCobroId,
