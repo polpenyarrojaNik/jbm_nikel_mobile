@@ -200,7 +200,7 @@ class SyncService {
     }
   }
 
-  Future<void> syncAllArticulosRelacionados() async {
+  Future<void> syncAllArticulosRelacionados({bool? syncAuxTables}) async {
     try {
       await syncArticulos();
       await syncArticuloEmpresasIva();
@@ -213,13 +213,13 @@ class SyncService {
       await syncFamilias();
       await syncSubfamilias();
       await syncDescuentoGeneral();
-      await syncAllAuxiliares();
+      if (syncAuxTables ?? false) await syncAllAuxiliares();
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> syncAllClientesRelacionados() async {
+  Future<void> syncAllClientesRelacionados({bool? syncAuxTables}) async {
     try {
       await syncClientes();
       await syncTopArticulos();
@@ -231,30 +231,30 @@ class SyncService {
       await syncClientesPagosPendients();
       await syncClientesRappels();
       await syncClientesUsuario();
-      await syncAllAuxiliares();
+      if (syncAuxTables ?? false) await syncAllAuxiliares();
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> syncAllPedidosRelacionados() async {
+  Future<void> syncAllPedidosRelacionados({bool? syncAuxTables}) async {
     try {
       await enviarPedidosNoEnviados();
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
       await syncPedidoVentaEstado();
-      await syncAllAuxiliares();
+      if (syncAuxTables ?? false) await syncAllAuxiliares();
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> syncAllVisitasRelacionados() async {
+  Future<void> syncAllVisitasRelacionados({bool? syncAuxTables}) async {
     await enviarVisitasNoEnviadas();
     await syncVisitas();
     await checkVisitasTratadas();
-    await syncAllAuxiliares();
+    if (syncAuxTables ?? false) await syncAllAuxiliares();
   }
 
   Future<void> syncAllAuxiliares() async {

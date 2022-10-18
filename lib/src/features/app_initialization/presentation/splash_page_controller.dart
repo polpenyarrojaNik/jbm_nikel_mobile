@@ -42,16 +42,16 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
       state =
           const SplashControllerState.data(SplashProgress.downloadedDatabase);
 
-      await _syncService.syncAllArticulosRelacionados();
+      await _syncService.syncAllArticulosRelacionados(syncAuxTables: false);
       state = const SplashControllerState.data(SplashProgress.syncArticulos);
 
-      await _syncService.syncAllClientesRelacionados();
+      await _syncService.syncAllClientesRelacionados(syncAuxTables: false);
       state = const SplashControllerState.data(SplashProgress.syncClientes);
 
-      await _syncService.syncAllPedidosRelacionados();
+      await _syncService.syncAllPedidosRelacionados(syncAuxTables: false);
       state = const SplashControllerState.data(SplashProgress.syncPedidos);
 
-      await _syncService.syncAllVisitasRelacionados();
+      await _syncService.syncAllVisitasRelacionados(syncAuxTables: false);
       state = const SplashControllerState.data(SplashProgress.syncVisitas);
 
       await _syncService.syncAllAuxiliares();
