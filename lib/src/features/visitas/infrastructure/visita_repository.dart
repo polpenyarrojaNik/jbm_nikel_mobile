@@ -8,6 +8,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -35,6 +36,12 @@ final visitasSearchProvider =
         page: defaultListParams.page, searchText: defaultListParams.searchText);
   },
 );
+
+final visitaLastSyncDateProvider =
+    FutureProvider.autoDispose<DateTime>((ref) async {
+  final visitaRepository = ref.watch(visitaRepositoryProvider);
+  return visitaRepository.getLastSyncDate();
+});
 
 final visitaProvider = FutureProvider.autoDispose
     .family<Visita, EntityIdIsLocalParam>((ref, visitaIdIsLocalParam) {
@@ -299,5 +306,16 @@ class VisitaRepository {
       final visitaDTO = row.readTable(_db.visitaLocalTable);
       return visitaDTO.toDomain(nombreCliente: clienteDTO.nombreCliente);
     }).getSingle();
+  }
+
+  Future<DateTime> getLastSyncDate() async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+      final dateUTCString =
+          sharedPreferences.getString(visitaFechaUltimaSyncKey) as String;
+      return DateTime.parse(dateUTCString);
+    } catch (e) {
+      rethrow;
+    }
   }
 }

@@ -12,7 +12,10 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
+import '../../infrastructure/visita_repository.dart';
 
 class VisitaListaPage extends ConsumerStatefulWidget {
   const VisitaListaPage({super.key});
@@ -60,6 +63,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(visitasSearchResultsProvider);
+    final stateLasySyncDate = ref.watch(visitaLastSyncDateProvider);
 
     return Scaffold(
       drawer: const AppDrawer(),
@@ -76,26 +80,34 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshVisitsDB(ref),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: state.when(
-            loading: () => const ProgressIndicatorWidget(),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            data: (visitasList) => (visitasList.isEmpty)
-                ? Center(
-                    child: Text(
-                      S.of(context).sinResultados,
-                    ),
-                  )
-                : ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    controller: _scrollController,
-                    itemCount: visitasList.length,
-                    itemBuilder: (context, i) =>
-                        VisitaListaTile(visita: visitasList[i]),
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              stateLasySyncDate.when(
+                  data: (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                  error: (_, __) => Container(),
+                  loading: () => const ProgressIndicatorWidget()),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: state.when(
+                  loading: () => const ProgressIndicatorWidget(),
+                  error: (e, _) => ErrorMessageWidget(e.toString()),
+                  data: (visitasList) => (visitasList.isEmpty)
+                      ? const SinResultadosWidget()
+                      : ListView.separated(
+                          separatorBuilder: (context, i) => const Divider(),
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          controller: _scrollController,
+                          itemCount: visitasList.length,
+                          itemBuilder: (context, i) =>
+                              VisitaListaTile(visita: visitasList[i]),
+                        ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

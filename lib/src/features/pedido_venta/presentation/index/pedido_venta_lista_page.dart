@@ -13,7 +13,10 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/infrastructure/sync_service.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
+import '../../infrastructure/pedido_venta_repository.dart';
 
 class PedidoVentaListPage extends ConsumerStatefulWidget {
   const PedidoVentaListPage({super.key});
@@ -72,6 +75,8 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
     final state = ref.watch(pedidosSearchResultsProvider);
 
+    final stateLasySyncDate = ref.watch(pedidoVentaLastSyncDateProvider);
+
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
@@ -87,22 +92,34 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => syncSalesOrderDB(ref),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: state.when(
-            loading: () => const ProgressIndicatorWidget(),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            data: (pedidoVentaList) => (pedidoVentaList.isEmpty)
-                ? Center(child: Text(S.of(context).sinResultados))
-                : ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    controller: _scrollController,
-                    itemCount: pedidoVentaList.length,
-                    itemBuilder: (context, i) =>
-                        PedidoVentaListaTile(pedidoVenta: pedidoVentaList[i]),
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              stateLasySyncDate.when(
+                  data: (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                  error: (_, __) => Container(),
+                  loading: () => const ProgressIndicatorWidget()),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: state.when(
+                  loading: () => const ProgressIndicatorWidget(),
+                  error: (e, _) => ErrorMessageWidget(e.toString()),
+                  data: (pedidoVentaList) => (pedidoVentaList.isEmpty)
+                      ? const SinResultadosWidget()
+                      : ListView.separated(
+                          separatorBuilder: (context, i) => const Divider(),
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          controller: _scrollController,
+                          itemCount: pedidoVentaList.length,
+                          itemBuilder: (context, i) => PedidoVentaListaTile(
+                              pedidoVenta: pedidoVentaList[i]),
+                        ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

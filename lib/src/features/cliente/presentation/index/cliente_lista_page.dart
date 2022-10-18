@@ -13,8 +13,11 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
+import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
+import '../../infrastructure/cliente_repository.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
@@ -88,6 +91,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     );
 
     final state = ref.watch(clientesSearchResultsProvider);
+    final stateLasySyncDate = ref.watch(clienteLastSyncDateProvider);
 
     return Scaffold(
       drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
@@ -120,30 +124,43 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => syncCustomerDb(ref),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: state.when(
-            loading: () => const ProgressIndicatorWidget(),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            data: (clienteList) => (clienteList.isEmpty)
-                ? Container()
-                : ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    shrinkWrap: true,
-                    controller: _scrollController,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: clienteList.length,
-                    itemBuilder: (context, i) => GestureDetector(
-                      onTap: () => (!widget.isSearchClienteForFrom)
-                          ? navigateToClienteDetalle(
-                              context: context, clienteId: clienteList[i].id)
-                          : selectClienteForFromPage(
-                              context: context, cliente: clienteList[i]),
-                      child: ClienteListaTile(
-                        cliente: clienteList[i],
-                      ),
-                    ),
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              stateLasySyncDate.when(
+                  data: (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                  error: (_, __) => Container(),
+                  loading: () => const ProgressIndicatorWidget()),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: state.when(
+                  loading: () => const ProgressIndicatorWidget(),
+                  error: (e, _) => ErrorMessageWidget(e.toString()),
+                  data: (clienteList) => (clienteList.isEmpty)
+                      ? const SinResultadosWidget()
+                      : ListView.separated(
+                          separatorBuilder: (context, i) => const Divider(),
+                          shrinkWrap: true,
+                          controller: _scrollController,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: clienteList.length,
+                          itemBuilder: (context, i) => GestureDetector(
+                            onTap: () => (!widget.isSearchClienteForFrom)
+                                ? navigateToClienteDetalle(
+                                    context: context,
+                                    clienteId: clienteList[i].id)
+                                : selectClienteForFromPage(
+                                    context: context, cliente: clienteList[i]),
+                            child: ClienteListaTile(
+                              cliente: clienteList[i],
+                            ),
+                          ),
+                        ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

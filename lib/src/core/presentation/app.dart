@@ -16,6 +16,10 @@ import 'theme/custom_theme.dart';
 final dioProvider = Provider((ref) => Dio());
 final dioForAuthProvider = Provider((ref) => Dio());
 final flutterSecureStorage = Provider((ref) => const FlutterSecureStorage());
+const articuloFechaUltimaSyncKey = 'ARTICULO_ULTIMA_SYNC';
+const clienteFechaUltimaSyncKey = 'CLIENTE_ULTIMA_SYNC';
+const pedidoVentaFechaUltimaSyncKey = 'PEDIDO_ULTIMA_SYNC';
+const visitaFechaUltimaSyncKey = 'VISITA_ULTIMA_SYNC';
 
 class App extends ConsumerWidget {
   App({super.key});

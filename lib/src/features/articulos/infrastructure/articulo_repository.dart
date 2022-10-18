@@ -13,6 +13,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_pedido_venta_linea_dto.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/domain/default_list_params.dart';
@@ -52,6 +53,12 @@ final articulosSearchProvider =
         page: defaultListParams.page, searchText: defaultListParams.searchText);
   },
 );
+
+final articuloLastSyncDateProvider =
+    FutureProvider.autoDispose<DateTime>((ref) async {
+  final articuloRepository = ref.watch(articuloRepositoryProvider);
+  return articuloRepository.getLastSyncDate();
+});
 
 final articuloProvider =
     FutureProvider.autoDispose.family<Articulo, String>((ref, articuloId) {
@@ -684,6 +691,17 @@ class ArticuloRepository {
 
       default:
         return "art.DESCRIPCION_ES LIKE '%$searchText%'";
+    }
+  }
+
+  Future<DateTime> getLastSyncDate() async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+      final dateUTCString =
+          sharedPreferences.getString(articuloFechaUltimaSyncKey) as String;
+      return DateTime.parse(dateUTCString);
+    } catch (e) {
+      rethrow;
     }
   }
 }

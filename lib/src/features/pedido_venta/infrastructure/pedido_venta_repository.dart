@@ -10,6 +10,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:money2/money2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/domain/entity_id_is_local_param.dart';
@@ -40,6 +41,12 @@ final pedidoVentaProvider = FutureProvider.autoDispose
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaById(
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+});
+
+final pedidoVentaLastSyncDateProvider =
+    FutureProvider.autoDispose<DateTime>((ref) async {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getLastSyncDate();
 });
 
 final pedidoVentaLineaProvider = FutureProvider.autoDispose
@@ -896,5 +903,16 @@ class PedidoVentaRepository {
     return tipoPrecio != 0
         ? precio / tipoPrecio
         : '0'.parseMoney(currencyId: precio.currency.code);
+  }
+
+  Future<DateTime> getLastSyncDate() async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+      final dateUTCString =
+          sharedPreferences.getString(pedidoVentaFechaUltimaSyncKey) as String;
+      return DateTime.parse(dateUTCString);
+    } catch (e) {
+      rethrow;
+    }
   }
 }

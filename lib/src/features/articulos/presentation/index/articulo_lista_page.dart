@@ -4,7 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/last_sync_date_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/sin_resultados_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -72,6 +75,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     );
     final state = ref.watch(articulosSearchResultsProvider);
 
+    final stateLasySyncDate = ref.watch(articuloLastSyncDateProvider);
+
     return Scaffold(
       drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
@@ -87,29 +92,42 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshArticleDb(ref),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-          child: state.when(
-            loading: () => const ProgressIndicatorWidget(),
-            error: (e, _) => ErrorMessageWidget(e.toString()),
-            data: (articuloList) => (articuloList.isEmpty)
-                ? Container()
-                : ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    shrinkWrap: true,
-                    controller: _scrollController,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: articuloList.length,
-                    itemBuilder: (context, i) => GestureDetector(
-                      onTap: () => (!widget.isSearchArticuloForForm)
-                          ? navigateToArticuloDetalPage(
-                              context, articuloList[i].id)
-                          : selectArticuloForFromPage(context, articuloList[i]),
-                      child: ArticuloListaTile(
-                        articulo: articuloList[i],
-                      ),
-                    ),
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              stateLasySyncDate.when(
+                  data: (fechaUltimaSync) =>
+                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                  error: (_, __) => Container(),
+                  loading: () => const ProgressIndicatorWidget()),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: state.when(
+                  loading: () => const ProgressIndicatorWidget(),
+                  error: (e, _) => ErrorMessageWidget(e.toString()),
+                  data: (articuloList) => (articuloList.isEmpty)
+                      ? const SinResultadosWidget()
+                      : ListView.separated(
+                          separatorBuilder: (context, i) => const Divider(),
+                          shrinkWrap: true,
+                          controller: _scrollController,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: articuloList.length,
+                          itemBuilder: (context, i) => GestureDetector(
+                            onTap: () => (!widget.isSearchArticuloForForm)
+                                ? navigateToArticuloDetalPage(
+                                    context, articuloList[i].id)
+                                : selectArticuloForFromPage(
+                                    context, articuloList[i]),
+                            child: ArticuloListaTile(
+                              articulo: articuloList[i],
+                            ),
+                          ),
+                        ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

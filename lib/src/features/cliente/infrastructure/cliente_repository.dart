@@ -11,6 +11,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/domain/default_list_params.dart';
@@ -45,6 +46,12 @@ final clienteProvider =
     FutureProvider.autoDispose.family<Cliente, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   return clienteRepository.getClienteById(clienteId: clienteId);
+});
+
+final clienteLastSyncDateProvider =
+    FutureProvider.autoDispose<DateTime>((ref) async {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getLastSyncDate();
 });
 
 final clienteDireccionProvider = FutureProvider.autoDispose
@@ -812,5 +819,16 @@ ORDER BY IMPORTE_ANYO DESC
     }
 
     return articulo.descripcionES;
+  }
+
+  Future<DateTime> getLastSyncDate() async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+      final dateUTCString =
+          sharedPreferences.getString(clienteFechaUltimaSyncKey) as String;
+      return DateTime.parse(dateUTCString);
+    } catch (e) {
+      rethrow;
+    }
   }
 }

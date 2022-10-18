@@ -15,6 +15,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
@@ -274,6 +275,7 @@ class SyncService {
         tableInfo: _db.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
+      await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -394,6 +396,7 @@ class SyncService {
         tableInfo: _db.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
+      await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -588,6 +591,7 @@ class SyncService {
         tableInfo: _db.pedidoVentaTable,
         fromJson: (e) => PedidoVentaDTO.fromJson(e),
       );
+      await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -633,6 +637,7 @@ class SyncService {
         tableInfo: _db.visitaTable,
         fromJson: (e) => VisitaDTO.fromJson(e),
       );
+      await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -1054,6 +1059,16 @@ class SyncService {
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences.setString(
+          entityKey, DateTime.now().toUtc().toIso8601String());
     } catch (e) {
       rethrow;
     }

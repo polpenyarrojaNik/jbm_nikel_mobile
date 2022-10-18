@@ -10,7 +10,7 @@ class UltimaSyncDateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
+      padding: const EdgeInsets.only(top: 8.0, right: 16),
       child: Text(
           '${S.of(context).commonWidgets_ultimaSincronizacion}: ${dateFormatter(ultimaSyncDate.toLocal().toIso8601String(), allDay: true)}',
           textAlign: TextAlign.end,
