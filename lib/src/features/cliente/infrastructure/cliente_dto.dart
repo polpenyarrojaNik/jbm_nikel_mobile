@@ -55,7 +55,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
     @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
         String? descripcionDescuentoGeneral,
-    @JsonKey(name: 'TIPO_CALCULO_PRECIO') required String tipoCalucloPrecio,
+    @JsonKey(name: 'TIPO_CALCULO_PRECIO') required String tipoCalculoPrecio,
     @JsonKey(name: 'PLAZO_COBRO_ID') String? plazoDeCobroId,
     @JsonKey(name: 'METODO_COBRO_ID') String? metodoDeCobroId,
     @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required double descuentoProntoPago,
@@ -124,7 +124,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       tarifaDescripcion: tarifaDescripcion,
       descuentoGeneralId: descuentoGeneralId,
       descripcionDescuentoGeneral: descripcionDescuentoGeneral,
-      tipoCalucloPrecio: tipoCalucloPrecio,
+      tipoCalculoPrecio: tipoCalculoPrecio,
       plazoDeCobro: plazoDeCobro,
       metodoDeCobro: metodoDeCobro,
       descuentoProntoPago: descuentoProntoPago,
@@ -190,7 +190,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       tarifaDescripcion: Value(tarifaDescripcion),
       descuentoGeneralId: Value(descuentoGeneralId),
       descripcionDescuentoGeneral: Value(descripcionDescuentoGeneral),
-      tipoCalucloPrecio: Value(tipoCalucloPrecio),
+      tipoCalculoPrecio: Value(tipoCalculoPrecio),
       plazoDeCobroId: Value(plazoDeCobroId),
       metodoDeCobroId: Value(metodoDeCobroId),
       descuentoProntoPago: Value(descuentoProntoPago),
@@ -275,7 +275,7 @@ class ClienteTable extends Table {
       text().nullable().named('DESCUENTO_GENERAL_ID')();
   TextColumn get descripcionDescuentoGeneral =>
       text().nullable().named('DESCUENTO_GENERAL_DESCRIPCION')();
-  TextColumn get tipoCalucloPrecio => text().named('TIPO_CALCULO_PRECIO')();
+  TextColumn get tipoCalculoPrecio => text().named('TIPO_CALCULO_PRECIO')();
   TextColumn get plazoDeCobroId => text()
       .references(PlazoDeCobroTable, #id)
       .nullable()
