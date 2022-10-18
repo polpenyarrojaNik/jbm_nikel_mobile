@@ -354,29 +354,131 @@ class PedidoVentaRepository {
       {required String articuloId,
       required String clienteId,
       required int cantidad}) async {
+    Money precio = (0.0).parseMoney(currencyId: 'EU');
+    Precio precioNeto = Precio(
+      precio: (0.0).parseMoney(currencyId: 'EU'),
+      tipoPrecio: 1,
+    );
+    String divisaId = 'EU';
+    double descuento1 = 0.0;
+    double descuento2 = 0.0;
+    double descuento3 = 0.0;
+    double descuento = 0.0;
+
+    int tipoPrecio = 1;
+    double iva = 0.0;
+
     final clienteDto = await (_db.select(_db.clienteTable)
           ..where((t) => t.id.equals(clienteId)))
         .getSingleOrNull();
 
     if (clienteDto != null) {
-      final divisaId = clienteDto.divisaId ?? 'EU';
-      final tarifaId = clienteDto.tarifaId;
-      final descuentoGeneralId = clienteDto.descuentoGeneralId;
-      final tipoCalucloPrecio = clienteDto.tipoCalucloPrecio;
-      final iva = await getIvaClienteArticulo(
+      divisaId = clienteDto.divisaId ?? 'EU';
+      iva = await getIvaClienteArticulo(
         articuloId: articuloId,
         clienteDto: clienteDto,
       );
+
+      final tarifaId = clienteDto.tarifaId;
+      final descuentoGeneralId = clienteDto.descuentoGeneralId;
+      final tipoCalculoPrecio = clienteDto.tipoCalucloPrecio;
+
+      final precioTarifa = (tarifaId != null)
+          ? await getPrecioTarifa(
+              tarifaId: tarifaId,
+              articuloId: articuloId,
+              cantidad: cantidad,
+            )
+          : Precio(
+              precio: (0.0).parseMoney(currencyId: divisaId), tipoPrecio: 1);
+
+      final precioNetoCliente = await getPrecioClienteNeto(
+        clienteId: clienteId,
+        articuloId: articuloId,
+        cantidad: cantidad,
+      );
+
+      final precioGrupoNetos = await getPrecioGrupoNeto(
+        clienteId: clienteId,
+        articuloId: articuloId,
+        cantidad: cantidad,
+      );
+
+      final descuentoGeneral = descuentoGeneralId != null
+          ? await getDescuentoGeneral(
+              articuloId: articuloId,
+              descuentoGeneralId: descuentoGeneralId,
+              cantidad: cantidad,
+            )
+          : 0.0;
+      final descuentoCliente = await getDescuentoCliente(
+        articuloId: articuloId,
+        clienteId: clienteId,
+        cantidad: cantidad,
+      );
+
+      descuento = (descuentoGeneral > descuentoCliente)
+          ? descuentoGeneral
+          : descuentoCliente;
+
+// Precio Neto Tarifa
+      final precioNetoTarifa = Precio(
+        precio: precioTarifa.precio * ((100 * descuento1) / 100),
+        tipoPrecio: precioTarifa.tipoPrecio,
+      );
+
+      final precioNetoTarifaUnitario = getPrecioUnitario(
+        precio: precioNetoTarifa.precio,
+        tipoPrecio: precioNetoTarifa.tipoPrecio,
+      );
+
+      // Precio Neto Cliente
+      final precioNetoClienteUnitario = getPrecioUnitario(
+        precio: precioNetoCliente.precio,
+        tipoPrecio: precioNetoCliente.tipoPrecio,
+      );
+
+      // Precio Grupos Netos
+      final precioGrupoNetosUnitario = getPrecioUnitario(
+        precio: precioGrupoNetos.precio,
+        tipoPrecio: precioGrupoNetos.tipoPrecio,
+      );
+
+      // Cálculo precio neto
+      precioNeto = (precioGrupoNetosUnitario.isZero ||
+              (!precioNetoClienteUnitario.isZero &&
+                  precioNetoClienteUnitario <= precioGrupoNetosUnitario))
+          ? precioNetoCliente
+          : precioGrupoNetos;
+
+      final precioNetoUnitario = getPrecioUnitario(
+        precio: precioNeto.precio,
+        tipoPrecio: precioNeto.tipoPrecio,
+      );
+      // Determinamos si cogemos precios netos o tarifa + descuento, pero comprobando si queremos que coja mejor precio cliente o precio neto cliente (cliente_t.tipo_calculo_precio)
+      if ((precioNetoUnitario.isZero ||
+              (!precioNetoTarifaUnitario.isZero &&
+                  precioNetoTarifaUnitario <= precioNetoUnitario)) &&
+          (tipoCalculoPrecio != 'N' ||
+              (precioNeto.precio.isZero && tipoCalculoPrecio == 'N'))) {
+        precio = precioTarifa.precio;
+        tipoPrecio = precioTarifa.tipoPrecio;
+        descuento1 = descuento;
+      } else {
+        precio = precioNeto.precio;
+        tipoPrecio = precioNeto.tipoPrecio;
+        descuento1 = 0;
+      }
     }
 
     return ArticuloPrecio(
-      precio: (0.0).parseMoney(currencyId: 'EU'),
-      divisaId: 'EU',
-      tipoPrecio: 1,
-      descuento1: 0.0,
-      descuento2: 0.0,
-      descuento3: 0.0,
-      iva: 0.0,
+      precio: precio,
+      divisaId: divisaId,
+      tipoPrecio: tipoPrecio,
+      descuento1: descuento1,
+      descuento2: descuento2,
+      descuento3: descuento3,
+      iva: iva,
     );
   }
 
