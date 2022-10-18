@@ -16,9 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArticuloPrecio {
-  Money get precio => throw _privateConstructorUsedError;
+  Precio get precio => throw _privateConstructorUsedError;
   String get divisaId => throw _privateConstructorUsedError;
-  int get tipoPrecio => throw _privateConstructorUsedError;
   double get descuento1 => throw _privateConstructorUsedError;
   double get descuento2 => throw _privateConstructorUsedError;
   double get descuento3 => throw _privateConstructorUsedError;
@@ -36,13 +35,14 @@ abstract class $ArticuloPrecioCopyWith<$Res> {
       _$ArticuloPrecioCopyWithImpl<$Res, ArticuloPrecio>;
   @useResult
   $Res call(
-      {Money precio,
+      {Precio precio,
       String divisaId,
-      int tipoPrecio,
       double descuento1,
       double descuento2,
       double descuento3,
       double iva});
+
+  $PrecioCopyWith<$Res> get precio;
 }
 
 /// @nodoc
@@ -60,7 +60,6 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
   $Res call({
     Object? precio = null,
     Object? divisaId = null,
-    Object? tipoPrecio = null,
     Object? descuento1 = null,
     Object? descuento2 = null,
     Object? descuento3 = null,
@@ -70,15 +69,11 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
       precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Precio,
       divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
       descuento1: null == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -97,6 +92,14 @@ class _$ArticuloPrecioCopyWithImpl<$Res, $Val extends ArticuloPrecio>
               as double,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PrecioCopyWith<$Res> get precio {
+    return $PrecioCopyWith<$Res>(_value.precio, (value) {
+      return _then(_value.copyWith(precio: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -108,13 +111,15 @@ abstract class _$$_ArticuloPrecioCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Money precio,
+      {Precio precio,
       String divisaId,
-      int tipoPrecio,
       double descuento1,
       double descuento2,
       double descuento3,
       double iva});
+
+  @override
+  $PrecioCopyWith<$Res> get precio;
 }
 
 /// @nodoc
@@ -130,7 +135,6 @@ class __$$_ArticuloPrecioCopyWithImpl<$Res>
   $Res call({
     Object? precio = null,
     Object? divisaId = null,
-    Object? tipoPrecio = null,
     Object? descuento1 = null,
     Object? descuento2 = null,
     Object? descuento3 = null,
@@ -140,15 +144,11 @@ class __$$_ArticuloPrecioCopyWithImpl<$Res>
       precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
-              as Money,
+              as Precio,
       divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: null == tipoPrecio
-          ? _value.tipoPrecio
-          : tipoPrecio // ignore: cast_nullable_to_non_nullable
-              as int,
       descuento1: null == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -175,7 +175,6 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
   const _$_ArticuloPrecio(
       {required this.precio,
       required this.divisaId,
-      required this.tipoPrecio,
       required this.descuento1,
       required this.descuento2,
       required this.descuento3,
@@ -183,11 +182,9 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
       : super._();
 
   @override
-  final Money precio;
+  final Precio precio;
   @override
   final String divisaId;
-  @override
-  final int tipoPrecio;
   @override
   final double descuento1;
   @override
@@ -199,7 +196,7 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
 
   @override
   String toString() {
-    return 'ArticuloPrecio(precio: $precio, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, iva: $iva)';
+    return 'ArticuloPrecio(precio: $precio, divisaId: $divisaId, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, iva: $iva)';
   }
 
   @override
@@ -210,8 +207,6 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
             (identical(other.precio, precio) || other.precio == precio) &&
             (identical(other.divisaId, divisaId) ||
                 other.divisaId == divisaId) &&
-            (identical(other.tipoPrecio, tipoPrecio) ||
-                other.tipoPrecio == tipoPrecio) &&
             (identical(other.descuento1, descuento1) ||
                 other.descuento1 == descuento1) &&
             (identical(other.descuento2, descuento2) ||
@@ -222,8 +217,8 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, precio, divisaId, tipoPrecio,
-      descuento1, descuento2, descuento3, iva);
+  int get hashCode => Object.hash(
+      runtimeType, precio, divisaId, descuento1, descuento2, descuento3, iva);
 
   @JsonKey(ignore: true)
   @override
@@ -234,9 +229,8 @@ class _$_ArticuloPrecio extends _ArticuloPrecio {
 
 abstract class _ArticuloPrecio extends ArticuloPrecio {
   const factory _ArticuloPrecio(
-      {required final Money precio,
+      {required final Precio precio,
       required final String divisaId,
-      required final int tipoPrecio,
       required final double descuento1,
       required final double descuento2,
       required final double descuento3,
@@ -244,11 +238,9 @@ abstract class _ArticuloPrecio extends ArticuloPrecio {
   const _ArticuloPrecio._() : super._();
 
   @override
-  Money get precio;
+  Precio get precio;
   @override
   String get divisaId;
-  @override
-  int get tipoPrecio;
   @override
   double get descuento1;
   @override

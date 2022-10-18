@@ -144,9 +144,9 @@ class _SelecionarCantidadPageState
       articuloDescription:
           getDescriptionArticuloInLocalLanguage(articulo: articulo),
       cantidad: totalQuantity,
-      precioDivisa: articuloPrecio.precio,
+      precioDivisa: articuloPrecio.precio.precio,
       divisaId: articuloPrecio.divisaId,
-      tipoPrecio: articuloPrecio.tipoPrecio,
+      tipoPrecio: articuloPrecio.precio.tipoPrecio,
       descuento1: articuloPrecio.descuento1,
       descuento2: articuloPrecio.descuento2,
       descuento3: articuloPrecio.descuento3,
@@ -297,7 +297,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
           FormBuilderTextField(
             name: 'precio',
             keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.precio.amount.toString(),
+            initialValue: articuloPrecio.precio.precio.amount.toString(),
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_precio,
             ),

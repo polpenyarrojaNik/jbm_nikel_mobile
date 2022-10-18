@@ -381,7 +381,7 @@ class PedidoVentaRepository {
 
       final tarifaId = clienteDto.tarifaId;
       final descuentoGeneralId = clienteDto.descuentoGeneralId;
-      final tipoCalculoPrecio = clienteDto.tipoCalucloPrecio;
+      final tipoCalculoPrecio = clienteDto.tipoCalculoPrecio;
 
       final precioTarifa = (tarifaId != null)
           ? await getPrecioTarifa(
@@ -472,9 +472,8 @@ class PedidoVentaRepository {
     }
 
     return ArticuloPrecio(
-      precio: precio,
+      precio: Precio(precio: precio, tipoPrecio: tipoPrecio),
       divisaId: divisaId,
-      tipoPrecio: tipoPrecio,
       descuento1: descuento1,
       descuento2: descuento2,
       descuento3: descuento3,
