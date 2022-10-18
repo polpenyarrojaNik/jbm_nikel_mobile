@@ -12,6 +12,8 @@ class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     required String clienteId,
     required String articuloId,
     int? cantidad,
-    int? posicionLineaActualizar,
+    required int posicionLinea,
   }) = _SeleccionarCantidadParam;
+
+  bool isUpdatingLinea() => cantidad != null;
 }

@@ -215,8 +215,8 @@ String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
 }
 
 String getTipoCalculoPrecioDescripcion(
-    {required BuildContext context, required String tipoCalucloPrecio}) {
-  if (tipoCalucloPrecio == 'M') {
+    {required BuildContext context, required String tipoCalculoPrecio}) {
+  if (tipoCalculoPrecio == 'M') {
     return S
         .of(context)
         .cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion;

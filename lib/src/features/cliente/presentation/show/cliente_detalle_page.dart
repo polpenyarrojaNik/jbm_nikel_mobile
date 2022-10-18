@@ -418,7 +418,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                       .cliente_show_clienteDetalle_metodoCalculoPrecio,
                   value: getTipoCalculoPrecioDescripcion(
                       context: context,
-                      tipoCalucloPrecio: cliente.tipoCalucloPrecio)),
+                      tipoCalculoPrecio: cliente.tipoCalculoPrecio)),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

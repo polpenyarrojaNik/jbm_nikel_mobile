@@ -630,7 +630,7 @@ class StepArticuloListContent extends ConsumerWidget {
       clienteId: clienteId,
       articuloId: pedidoVentaLinea.articuloId,
       cantidad: pedidoVentaLinea.cantidad.toInt(),
-      posicionLineaActualizar: i,
+      posicionLinea: i,
     );
     context.router.push(SeleccionarCantidadRoute(
         seleccionarCantidadParam: seleccionarCantidadParam));
@@ -653,6 +653,7 @@ class StepArticuloListContent extends ConsumerWidget {
         pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
         clienteId: clienteId,
         articuloId: newArticuloValue.id,
+        posicionLinea: pedidoVentaLineaList.length,
       );
 
       context.router.push(

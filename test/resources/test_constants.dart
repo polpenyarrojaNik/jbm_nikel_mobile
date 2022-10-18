@@ -24,7 +24,7 @@ final kClienteDTO = ClienteDTO(
   empresaId: kEmpresaId,
   iva: 0,
   divisaId: kDivisaId,
-  tipoCalucloPrecio: 'M',
+  tipoCalculoPrecio: 'M',
   descuentoProntoPago: 0,
   riesgoConcedidoInterno: 150000.0,
   riesgoConcedidoCoafe: 0.0,

@@ -7,12 +7,14 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
+import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
+import '../../domain/pedido_venta_linea.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
 class SeleccionarCantidadPage extends ConsumerStatefulWidget {
@@ -39,7 +41,7 @@ class _SelecionarCantidadPageState
   void initState() {
     super.initState();
 
-    if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
+    if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
       setValoresInicialesActualizarLinea();
     }
   }
@@ -129,23 +131,41 @@ class _SelecionarCantidadPageState
     Articulo articulo,
     Cliente cliente,
   ) {
-    if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
+    final linea = PedidoVentaLinea(
+      empresaId: null,
+      pedidoVentaId: null,
+      pedidoVentaLineaId: null,
+      pedidoVentaAppId:
+          widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+      pedidoVentaLineaAppId: (widget.seleccionarCantidadParam.posicionLinea + 1)
+          .toString()
+          .padLeft(3, '0'),
+      articuloId: articulo.id,
+      articuloDescription:
+          getDescriptionArticuloInLocalLanguage(articulo: articulo),
+      cantidad: totalQuantity,
+      precioDivisa: articuloPrecio.precio,
+      divisaId: articuloPrecio.divisaId,
+      tipoPrecio: articuloPrecio.tipoPrecio,
+      descuento1: articuloPrecio.descuento1,
+      descuento2: articuloPrecio.descuento2,
+      descuento3: articuloPrecio.descuento3,
+      descuentoProntoPago: cliente.descuentoProntoPago,
+      stockDisponibleSN: articulo.stockDisponible > 0,
+      iva: articuloPrecio.iva,
+      importeLinea: Money.parse('0', code: articuloPrecio.divisaId),
+      lastUpdated: DateTime.now().toUtc(),
+      deleted: false,
+    );
+
+    if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
       ref
           .read(pedidoVentaEditPageControllerProvider(
                   widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
               .notifier)
           .updatePedidoVentaLinea(
-            pedidoVentaAppId:
-                widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
-            articuloPrecio: articuloPrecio,
-            articuloDescripcion:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            stockDisponibleSN: articulo.stockDisponible > 0,
-            posicionActualizar:
-                widget.seleccionarCantidadParam.posicionLineaActualizar!,
-            articuloId: articulo.id,
-            cantidad: totalQuantity,
-            descuentoProntoPago: cliente.descuentoProntoPago,
+            pedidoVentaLinea: linea,
+            posicionActualizar: widget.seleccionarCantidadParam.posicionLinea,
           );
     } else {
       ref
@@ -153,15 +173,7 @@ class _SelecionarCantidadPageState
                   widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
               .notifier)
           .addPedidoVentaLinea(
-            pedidoVentaAppId:
-                widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
-            articuloPrecio: articuloPrecio,
-            articuloId: articulo.id,
-            cantidad: totalQuantity,
-            articuloDescripcion:
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-            stockDisponibleSN: articulo.stockDisponible > 0,
-            descuentoProntoPago: cliente.descuentoProntoPago,
+            newLinea: linea,
           );
     }
     context.router.pop();

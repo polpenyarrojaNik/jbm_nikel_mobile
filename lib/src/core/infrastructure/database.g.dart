@@ -3982,7 +3982,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> tarifaDescripcion;
   final Value<String?> descuentoGeneralId;
   final Value<String?> descripcionDescuentoGeneral;
-  final Value<String> tipoCalucloPrecio;
+  final Value<String> tipoCalculoPrecio;
   final Value<String?> plazoDeCobroId;
   final Value<String?> metodoDeCobroId;
   final Value<double> descuentoProntoPago;
@@ -4031,7 +4031,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.tarifaDescripcion = const Value.absent(),
     this.descuentoGeneralId = const Value.absent(),
     this.descripcionDescuentoGeneral = const Value.absent(),
-    this.tipoCalucloPrecio = const Value.absent(),
+    this.tipoCalculoPrecio = const Value.absent(),
     this.plazoDeCobroId = const Value.absent(),
     this.metodoDeCobroId = const Value.absent(),
     this.descuentoProntoPago = const Value.absent(),
@@ -4081,7 +4081,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.tarifaDescripcion = const Value.absent(),
     this.descuentoGeneralId = const Value.absent(),
     this.descripcionDescuentoGeneral = const Value.absent(),
-    required String tipoCalucloPrecio,
+    required String tipoCalculoPrecio,
     this.plazoDeCobroId = const Value.absent(),
     this.metodoDeCobroId = const Value.absent(),
     required double descuentoProntoPago,
@@ -4115,7 +4115,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         margenHaceDosAnyos = Value(margenHaceDosAnyos),
         porcentajeAbonos = Value(porcentajeAbonos),
         porcentajeGarantias = Value(porcentajeGarantias),
-        tipoCalucloPrecio = Value(tipoCalucloPrecio),
+        tipoCalculoPrecio = Value(tipoCalculoPrecio),
         descuentoProntoPago = Value(descuentoProntoPago),
         riesgoConcedidoInterno = Value(riesgoConcedidoInterno),
         riesgoConcedidoCoafe = Value(riesgoConcedidoCoafe),
@@ -4150,7 +4150,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? tarifaDescripcion,
     Expression<String>? descuentoGeneralId,
     Expression<String>? descripcionDescuentoGeneral,
-    Expression<String>? tipoCalucloPrecio,
+    Expression<String>? tipoCalculoPrecio,
     Expression<String>? plazoDeCobroId,
     Expression<String>? metodoDeCobroId,
     Expression<double>? descuentoProntoPago,
@@ -4208,7 +4208,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         'DESCUENTO_GENERAL_ID': descuentoGeneralId,
       if (descripcionDescuentoGeneral != null)
         'DESCUENTO_GENERAL_DESCRIPCION': descripcionDescuentoGeneral,
-      if (tipoCalucloPrecio != null) 'TIPO_CALCULO_PRECIO': tipoCalucloPrecio,
+      if (tipoCalculoPrecio != null) 'TIPO_CALCULO_PRECIO': tipoCalculoPrecio,
       if (plazoDeCobroId != null) 'PLAZO_COBRO_ID': plazoDeCobroId,
       if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
       if (descuentoProntoPago != null)
@@ -4272,7 +4272,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? tarifaDescripcion,
       Value<String?>? descuentoGeneralId,
       Value<String?>? descripcionDescuentoGeneral,
-      Value<String>? tipoCalucloPrecio,
+      Value<String>? tipoCalculoPrecio,
       Value<String?>? plazoDeCobroId,
       Value<String?>? metodoDeCobroId,
       Value<double>? descuentoProntoPago,
@@ -4322,7 +4322,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
       descripcionDescuentoGeneral:
           descripcionDescuentoGeneral ?? this.descripcionDescuentoGeneral,
-      tipoCalucloPrecio: tipoCalucloPrecio ?? this.tipoCalucloPrecio,
+      tipoCalculoPrecio: tipoCalculoPrecio ?? this.tipoCalculoPrecio,
       plazoDeCobroId: plazoDeCobroId ?? this.plazoDeCobroId,
       metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
       descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
@@ -4445,8 +4445,8 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       map['DESCUENTO_GENERAL_DESCRIPCION'] =
           Variable<String>(descripcionDescuentoGeneral.value);
     }
-    if (tipoCalucloPrecio.present) {
-      map['TIPO_CALCULO_PRECIO'] = Variable<String>(tipoCalucloPrecio.value);
+    if (tipoCalculoPrecio.present) {
+      map['TIPO_CALCULO_PRECIO'] = Variable<String>(tipoCalculoPrecio.value);
     }
     if (plazoDeCobroId.present) {
       map['PLAZO_COBRO_ID'] = Variable<String>(plazoDeCobroId.value);
@@ -4548,7 +4548,7 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('tarifaDescripcion: $tarifaDescripcion, ')
           ..write('descuentoGeneralId: $descuentoGeneralId, ')
           ..write('descripcionDescuentoGeneral: $descripcionDescuentoGeneral, ')
-          ..write('tipoCalucloPrecio: $tipoCalucloPrecio, ')
+          ..write('tipoCalculoPrecio: $tipoCalculoPrecio, ')
           ..write('plazoDeCobroId: $plazoDeCobroId, ')
           ..write('metodoDeCobroId: $metodoDeCobroId, ')
           ..write('descuentoProntoPago: $descuentoProntoPago, ')
@@ -4751,10 +4751,10 @@ class $ClienteTableTable extends ClienteTable
       GeneratedColumn<String>(
           'DESCUENTO_GENERAL_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _tipoCalucloPrecioMeta =
-      const VerificationMeta('tipoCalucloPrecio');
+  final VerificationMeta _tipoCalculoPrecioMeta =
+      const VerificationMeta('tipoCalculoPrecio');
   @override
-  late final GeneratedColumn<String> tipoCalucloPrecio =
+  late final GeneratedColumn<String> tipoCalculoPrecio =
       GeneratedColumn<String>('TIPO_CALCULO_PRECIO', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
   final VerificationMeta _plazoDeCobroIdMeta =
@@ -4905,7 +4905,7 @@ class $ClienteTableTable extends ClienteTable
         tarifaDescripcion,
         descuentoGeneralId,
         descripcionDescuentoGeneral,
-        tipoCalucloPrecio,
+        tipoCalculoPrecio,
         plazoDeCobroId,
         metodoDeCobroId,
         descuentoProntoPago,
@@ -5127,11 +5127,11 @@ class $ClienteTableTable extends ClienteTable
     }
     if (data.containsKey('TIPO_CALCULO_PRECIO')) {
       context.handle(
-          _tipoCalucloPrecioMeta,
-          tipoCalucloPrecio.isAcceptableOrUnknown(
-              data['TIPO_CALCULO_PRECIO']!, _tipoCalucloPrecioMeta));
+          _tipoCalculoPrecioMeta,
+          tipoCalculoPrecio.isAcceptableOrUnknown(
+              data['TIPO_CALCULO_PRECIO']!, _tipoCalculoPrecioMeta));
     } else if (isInserting) {
-      context.missing(_tipoCalucloPrecioMeta);
+      context.missing(_tipoCalculoPrecioMeta);
     }
     if (data.containsKey('PLAZO_COBRO_ID')) {
       context.handle(
@@ -5322,7 +5322,7 @@ class $ClienteTableTable extends ClienteTable
       descripcionDescuentoGeneral: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}DESCUENTO_GENERAL_DESCRIPCION']),
-      tipoCalucloPrecio: attachedDatabase.options.types.read(
+      tipoCalculoPrecio: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}TIPO_CALCULO_PRECIO'])!,
       plazoDeCobroId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID']),

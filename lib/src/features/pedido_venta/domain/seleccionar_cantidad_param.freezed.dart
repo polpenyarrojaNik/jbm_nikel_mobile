@@ -21,7 +21,7 @@ mixin _$SeleccionarCantidadParam {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   int? get cantidad => throw _privateConstructorUsedError;
-  int? get posicionLineaActualizar => throw _privateConstructorUsedError;
+  int get posicionLinea => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SeleccionarCantidadParamCopyWith<SeleccionarCantidadParam> get copyWith =>
@@ -39,7 +39,7 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       String clienteId,
       String articuloId,
       int? cantidad,
-      int? posicionLineaActualizar});
+      int posicionLinea});
 
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
 }
@@ -62,7 +62,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
-    Object? posicionLineaActualizar = freezed,
+    Object? posicionLinea = null,
   }) {
     return _then(_value.copyWith(
       pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
@@ -81,10 +81,10 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
-      posicionLineaActualizar: freezed == posicionLineaActualizar
-          ? _value.posicionLineaActualizar
-          : posicionLineaActualizar // ignore: cast_nullable_to_non_nullable
-              as int?,
+      posicionLinea: null == posicionLinea
+          ? _value.posicionLinea
+          : posicionLinea // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -112,7 +112,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       String clienteId,
       String articuloId,
       int? cantidad,
-      int? posicionLineaActualizar});
+      int posicionLinea});
 
   @override
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
@@ -134,7 +134,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
-    Object? posicionLineaActualizar = freezed,
+    Object? posicionLinea = null,
   }) {
     return _then(_$_SeleccionarCantidadParam(
       pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
@@ -153,10 +153,10 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
-      posicionLineaActualizar: freezed == posicionLineaActualizar
-          ? _value.posicionLineaActualizar
-          : posicionLineaActualizar // ignore: cast_nullable_to_non_nullable
-              as int?,
+      posicionLinea: null == posicionLinea
+          ? _value.posicionLinea
+          : posicionLinea // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -169,7 +169,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       required this.clienteId,
       required this.articuloId,
       this.cantidad,
-      this.posicionLineaActualizar})
+      required this.posicionLinea})
       : super._();
 
   @override
@@ -181,11 +181,11 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   final int? cantidad;
   @override
-  final int? posicionLineaActualizar;
+  final int posicionLinea;
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, posicionLineaActualizar: $posicionLineaActualizar)';
+    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, posicionLinea: $posicionLinea)';
   }
 
   @override
@@ -202,14 +202,13 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
                 other.articuloId == articuloId) &&
             (identical(other.cantidad, cantidad) ||
                 other.cantidad == cantidad) &&
-            (identical(
-                    other.posicionLineaActualizar, posicionLineaActualizar) ||
-                other.posicionLineaActualizar == posicionLineaActualizar));
+            (identical(other.posicionLinea, posicionLinea) ||
+                other.posicionLinea == posicionLinea));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, pedidoVentaIdIsLocalParam,
-      clienteId, articuloId, cantidad, posicionLineaActualizar);
+      clienteId, articuloId, cantidad, posicionLinea);
 
   @JsonKey(ignore: true)
   @override
@@ -225,7 +224,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
       required final String clienteId,
       required final String articuloId,
       final int? cantidad,
-      final int? posicionLineaActualizar}) = _$_SeleccionarCantidadParam;
+      required final int posicionLinea}) = _$_SeleccionarCantidadParam;
   const _SeleccionarCantidadParam._() : super._();
 
   @override
@@ -237,7 +236,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   @override
   int? get cantidad;
   @override
-  int? get posicionLineaActualizar;
+  int get posicionLinea;
   @override
   @JsonKey(ignore: true)
   _$$_SeleccionarCantidadParamCopyWith<_$_SeleccionarCantidadParam>
