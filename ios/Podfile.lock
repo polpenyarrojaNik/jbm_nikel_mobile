@@ -2,9 +2,6 @@ PODS:
   - better_open_file (0.0.1):
     - Flutter
   - Flutter (1.0.0)
-  - flutter_archive (0.0.1):
-    - Flutter
-    - ZIPFoundation (= 0.9.13)
   - flutter_secure_storage (3.3.1):
     - Flutter
   - FMDB (2.7.5):
@@ -46,12 +43,10 @@ PODS:
     - sqlite3/rtree
   - url_launcher_ios (0.0.1):
     - Flutter
-  - ZIPFoundation (0.9.13)
 
 DEPENDENCIES:
   - better_open_file (from `.symlinks/plugins/better_open_file/ios`)
   - Flutter (from `Flutter`)
-  - flutter_archive (from `.symlinks/plugins/flutter_archive/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
@@ -67,15 +62,12 @@ SPEC REPOS:
     - FMDB
     - GoogleMaps
     - sqlite3
-    - ZIPFoundation
 
 EXTERNAL SOURCES:
   better_open_file:
     :path: ".symlinks/plugins/better_open_file/ios"
   Flutter:
     :path: Flutter
-  flutter_archive:
-    :path: ".symlinks/plugins/flutter_archive/ios"
   flutter_secure_storage:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
   geolocator_apple:
@@ -98,7 +90,6 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   better_open_file: 03cf320415d4d3f46b6e00adc4a567d76c1a399d
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_archive: 1805fdd3a695fd284b43edb53dc35ca843fb761c
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
@@ -111,7 +102,6 @@ SPEC CHECKSUMS:
   sqlite3: 50117e9e063a9ef2b865f7bdf2f2601e5d368e9a
   sqlite3_flutter_libs: c6ab7f23670a98fef45a137159452004bc552168
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
-  ZIPFoundation: ae5b4b813d216d3bf0a148773267fff14bd51d37
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
 

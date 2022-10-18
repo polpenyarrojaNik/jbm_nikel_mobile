@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
-import 'package:flutter_archive/flutter_archive.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
@@ -182,28 +182,20 @@ class SyncService {
 
   Future<void> _saveLocalInitialDatabase(
       {required Directory directory, required List<int> data}) async {
-    RandomAccessFile? raf;
-
     try {
-      final temporalyDirectory = await getTemporaryDirectory();
-      final File file =
-          File((join(temporalyDirectory.path, localDatabaseName)));
-      print('Created');
-
-      final raf = file.openSync(mode: FileMode.write);
-      print('Oppened');
-
-      raf.writeFromSync(data);
-      print('Writted');
-      await ZipFile.extractToDirectory(
-          zipFile: file, destinationDir: directory);
-      print('Extract');
-
-      file.deleteSync();
+      final archive = ZipDecoder().decodeBytes(data);
+      for (final file in archive) {
+        if (file.isFile && !file.name.contains('MACOSX')) {
+          final data = file.content as List<int>;
+          print('Direcotry: ${directory.path}');
+          print('File: ${file.name}');
+          final databaseFile = File('${directory.path}/${file.name}');
+          databaseFile.writeAsBytesSync(data);
+        }
+        file.clear();
+      }
     } catch (e) {
       rethrow;
-    } finally {
-      await raf?.close();
     }
   }
 

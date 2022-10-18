@@ -22,10 +22,11 @@ class SplashPageController extends StateNotifier<AsyncValue<void>> {
         rethrow;
       }
 
-      await _syncService.syncArticulos();
-      await _syncService.syncClientes();
-      await _syncService.syncPedidos();
-      await _syncService.syncPedidoVentaLinea();
+      await _syncService.syncAllArticulosRelacionados();
+      await _syncService.syncAllClientesRelacionados();
+      await _syncService.syncAllPedidosRelacionados();
+      await _syncService.syncAllVisitasRelacionados();
+      await _syncService.syncAllAuxiliares();
 
       state = const AsyncData(null);
     } on AppException catch (e, stackTrace) {
