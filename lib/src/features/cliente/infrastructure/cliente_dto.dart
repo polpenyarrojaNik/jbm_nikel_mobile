@@ -52,7 +52,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'DIVISA_ID') String? divisaId,
     @JsonKey(name: 'TARIFA_ID') String? tarifaId,
     @JsonKey(name: 'TARIFA_DESCRIPCION') String? tarifaDescripcion,
-    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneral,
+    @JsonKey(name: 'DESCUENTO_GENERAL_ID') String? descuentoGeneralId,
     @JsonKey(name: 'DESCUENTO_GENERAL_DESCRIPCION')
         String? descripcionDescuentoGeneral,
     @JsonKey(name: 'TIPO_CALCULO_PRECIO') required String tipoCalucloPrecio,
@@ -122,7 +122,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       divisa: divisa,
       tarifaId: tarifaId,
       tarifaDescripcion: tarifaDescripcion,
-      descuentoGeneral: descuentoGeneral,
+      descuentoGeneralId: descuentoGeneralId,
       descripcionDescuentoGeneral: descripcionDescuentoGeneral,
       tipoCalucloPrecio: tipoCalucloPrecio,
       plazoDeCobro: plazoDeCobro,
@@ -188,7 +188,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       divisaId: Value(divisaId),
       tarifaId: Value(tarifaId),
       tarifaDescripcion: Value(tarifaDescripcion),
-      descuentoGeneral: Value(descuentoGeneral),
+      descuentoGeneralId: Value(descuentoGeneralId),
       descripcionDescuentoGeneral: Value(descripcionDescuentoGeneral),
       tipoCalucloPrecio: Value(tipoCalucloPrecio),
       plazoDeCobroId: Value(plazoDeCobroId),
@@ -271,7 +271,7 @@ class ClienteTable extends Table {
   TextColumn get tarifaId => text().nullable().named('TARIFA_ID')();
   TextColumn get tarifaDescripcion =>
       text().nullable().named('TARIFA_DESCRIPCION')();
-  TextColumn get descuentoGeneral =>
+  TextColumn get descuentoGeneralId =>
       text().nullable().named('DESCUENTO_GENERAL_ID')();
   TextColumn get descripcionDescuentoGeneral =>
       text().nullable().named('DESCUENTO_GENERAL_DESCRIPCION')();

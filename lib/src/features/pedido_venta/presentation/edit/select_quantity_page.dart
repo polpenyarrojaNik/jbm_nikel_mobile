@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
 
@@ -11,6 +12,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../articulos/domain/articulo.dart';
+import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
 class SeleccionarCantidadPage extends ConsumerStatefulWidget {
@@ -31,6 +33,7 @@ class _SelecionarCantidadPageState
   int totalQuantity = 1;
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
+  Cliente? cliente;
 
   @override
   void initState() {
@@ -47,6 +50,12 @@ class _SelecionarCantidadPageState
       articuloProvider(widget.seleccionarCantidadParam.articuloId),
       (_, state) => state.whenData(
         (value) => setArtiucloValue(newArticuloValue: value),
+      ),
+    );
+    ref.listen<AsyncValue<Cliente>>(
+      clienteProvider(widget.seleccionarCantidadParam.clienteId),
+      (_, state) => state.whenData(
+        (value) => setClienteValue(newClienteValue: value),
       ),
     );
 
@@ -104,9 +113,11 @@ class _SelecionarCantidadPageState
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => (articulo != null && articuloPrecio != null)
-            ? navigateToCrearPedido(context, articuloPrecio!, articulo!)
-            : null,
+        onPressed: () =>
+            (articulo != null && articuloPrecio != null && cliente != null)
+                ? navigateToCrearPedido(
+                    context, articuloPrecio!, articulo!, cliente!)
+                : null,
         child: const Icon(Icons.check),
       ),
     );
@@ -116,6 +127,7 @@ class _SelecionarCantidadPageState
     BuildContext context,
     ArticuloPrecio articuloPrecio,
     Articulo articulo,
+    Cliente cliente,
   ) {
     if (widget.seleccionarCantidadParam.posicionLineaActualizar != null) {
       ref
@@ -131,6 +143,9 @@ class _SelecionarCantidadPageState
             stockDisponibleSN: articulo.stockDisponible > 0,
             posicionActualizar:
                 widget.seleccionarCantidadParam.posicionLineaActualizar!,
+            articuloId: articulo.id,
+            cantidad: totalQuantity,
+            descuentoProntoPago: cliente.descuentoProntoPago,
           );
     } else {
       ref
@@ -138,12 +153,16 @@ class _SelecionarCantidadPageState
                   widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
               .notifier)
           .addPedidoVentaLinea(
-              pedidoVentaAppId:
-                  widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
-              articuloPrecio: articuloPrecio,
-              articuloDescripcion:
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-              stockDisponibleSN: articulo.stockDisponible > 0);
+            pedidoVentaAppId:
+                widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+            articuloPrecio: articuloPrecio,
+            articuloId: articulo.id,
+            cantidad: totalQuantity,
+            articuloDescripcion:
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
+            stockDisponibleSN: articulo.stockDisponible > 0,
+            descuentoProntoPago: cliente.descuentoProntoPago,
+          );
     }
     context.router.pop();
   }
@@ -161,6 +180,16 @@ class _SelecionarCantidadPageState
             clienteId: widget.seleccionarCantidadParam.clienteId,
             cantidad: totalQuantity,
           );
+    }
+  }
+
+  void setClienteValue({Cliente? newClienteValue}) {
+    if (newClienteValue != null) {
+      setState(
+        () {
+          cliente = newClienteValue;
+        },
+      );
     }
   }
 

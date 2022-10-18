@@ -398,8 +398,8 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                     fieldTitleValue:
                         S.of(context).cliente_show_clienteDetalle_tarifa,
                     value: cliente.tarifaDescripcion ?? ''),
-              if (cliente.descuentoGeneral != null) gapH4,
-              if (cliente.descuentoGeneral != null)
+              if (cliente.descripcionDescuentoGeneral != null) gapH4,
+              if (cliente.descripcionDescuentoGeneral != null)
                 ColumnFieldTextDetalle(
                     fieldTitleValue: S
                         .of(context)
