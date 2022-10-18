@@ -39,7 +39,8 @@ mixin _$Visita {
 /// @nodoc
 abstract class $VisitaCopyWith<$Res> {
   factory $VisitaCopyWith(Visita value, $Res Function(Visita) then) =
-      _$VisitaCopyWithImpl<$Res>;
+      _$VisitaCopyWithImpl<$Res, Visita>;
+  @useResult
   $Res call(
       {String? id,
       String clienteId,
@@ -59,93 +60,96 @@ abstract class $VisitaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VisitaCopyWithImpl<$Res> implements $VisitaCopyWith<$Res> {
+class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
+    implements $VisitaCopyWith<$Res> {
   _$VisitaCopyWithImpl(this._value, this._then);
 
-  final Visita _value;
   // ignore: unused_field
-  final $Res Function(Visita) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? clienteId = freezed,
+    Object? clienteId = null,
     Object? nombreCliente = freezed,
-    Object? fecha = freezed,
-    Object? numEmpl = freezed,
+    Object? fecha = null,
+    Object? numEmpl = null,
     Object? contacto = freezed,
     Object? resumen = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
     Object? visitaAppId = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
-    Object? enviada = freezed,
-    Object? tratada = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
+    Object? enviada = null,
+    Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreCliente: nombreCliente == freezed
+      nombreCliente: freezed == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      numEmpl: numEmpl == freezed
+      numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: contacto == freezed
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumen: resumen == freezed
+      resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      visitaAppId: visitaAppId == freezed
+      visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      enviada: enviada == freezed
+      enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as bool,
-      tratada: tratada == freezed
+      tratada: null == tratada
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorSyncMessage: errorSyncMessage == freezed
+      errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -154,6 +158,7 @@ abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
   factory _$$_VisitaCopyWith(_$_Visita value, $Res Function(_$_Visita) then) =
       __$$_VisitaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? id,
       String clienteId,
@@ -173,90 +178,89 @@ abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VisitaCopyWithImpl<$Res> extends _$VisitaCopyWithImpl<$Res>
+class __$$_VisitaCopyWithImpl<$Res>
+    extends _$VisitaCopyWithImpl<$Res, _$_Visita>
     implements _$$_VisitaCopyWith<$Res> {
   __$$_VisitaCopyWithImpl(_$_Visita _value, $Res Function(_$_Visita) _then)
-      : super(_value, (v) => _then(v as _$_Visita));
+      : super(_value, _then);
 
-  @override
-  _$_Visita get _value => super._value as _$_Visita;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? clienteId = freezed,
+    Object? clienteId = null,
     Object? nombreCliente = freezed,
-    Object? fecha = freezed,
-    Object? numEmpl = freezed,
+    Object? fecha = null,
+    Object? numEmpl = null,
     Object? contacto = freezed,
     Object? resumen = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
     Object? visitaAppId = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
-    Object? enviada = freezed,
-    Object? tratada = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
+    Object? enviada = null,
+    Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_Visita(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreCliente: nombreCliente == freezed
+      nombreCliente: freezed == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      numEmpl: numEmpl == freezed
+      numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: contacto == freezed
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumen: resumen == freezed
+      resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      visitaAppId: visitaAppId == freezed
+      visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      enviada: enviada == freezed
+      enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as bool,
-      tratada: tratada == freezed
+      tratada: null == tratada
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorSyncMessage: errorSyncMessage == freezed
+      errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -326,48 +330,52 @@ class _$_Visita extends _Visita {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Visita &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreCliente, nombreCliente) &&
-            const DeepCollectionEquality().equals(other.fecha, fecha) &&
-            const DeepCollectionEquality().equals(other.numEmpl, numEmpl) &&
-            const DeepCollectionEquality().equals(other.contacto, contacto) &&
-            const DeepCollectionEquality().equals(other.resumen, resumen) &&
-            const DeepCollectionEquality().equals(other.latitud, latitud) &&
-            const DeepCollectionEquality().equals(other.longitud, longitud) &&
-            const DeepCollectionEquality()
-                .equals(other.visitaAppId, visitaAppId) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted) &&
-            const DeepCollectionEquality().equals(other.enviada, enviada) &&
-            const DeepCollectionEquality().equals(other.tratada, tratada) &&
-            const DeepCollectionEquality()
-                .equals(other.errorSyncMessage, errorSyncMessage));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.nombreCliente, nombreCliente) ||
+                other.nombreCliente == nombreCliente) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
+            (identical(other.contacto, contacto) ||
+                other.contacto == contacto) &&
+            (identical(other.resumen, resumen) || other.resumen == resumen) &&
+            (identical(other.latitud, latitud) || other.latitud == latitud) &&
+            (identical(other.longitud, longitud) ||
+                other.longitud == longitud) &&
+            (identical(other.visitaAppId, visitaAppId) ||
+                other.visitaAppId == visitaAppId) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted) &&
+            (identical(other.enviada, enviada) || other.enviada == enviada) &&
+            (identical(other.tratada, tratada) || other.tratada == tratada) &&
+            (identical(other.errorSyncMessage, errorSyncMessage) ||
+                other.errorSyncMessage == errorSyncMessage));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(nombreCliente),
-      const DeepCollectionEquality().hash(fecha),
-      const DeepCollectionEquality().hash(numEmpl),
-      const DeepCollectionEquality().hash(contacto),
-      const DeepCollectionEquality().hash(resumen),
-      const DeepCollectionEquality().hash(latitud),
-      const DeepCollectionEquality().hash(longitud),
-      const DeepCollectionEquality().hash(visitaAppId),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted),
-      const DeepCollectionEquality().hash(enviada),
-      const DeepCollectionEquality().hash(tratada),
-      const DeepCollectionEquality().hash(errorSyncMessage));
+      id,
+      clienteId,
+      nombreCliente,
+      fecha,
+      numEmpl,
+      contacto,
+      resumen,
+      latitud,
+      longitud,
+      visitaAppId,
+      lastUpdated,
+      deleted,
+      enviada,
+      tratada,
+      errorSyncMessage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VisitaCopyWith<_$_Visita> get copyWith =>
       __$$_VisitaCopyWithImpl<_$_Visita>(this, _$identity);
 }

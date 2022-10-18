@@ -19,342 +19,516 @@ class _$AppRouter extends RootStackRouter {
   final Map<String, PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const SplashPage());
+        routeData: routeData,
+        child: const SplashPage(),
+      );
     },
     LoginRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const LoginPage());
+        routeData: routeData,
+        child: const LoginPage(),
+      );
     },
     ClienteListaRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteListaRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteListaPage(
-              key: args.key,
-              isSearchClienteForFrom: args.isSearchClienteForFrom));
+        routeData: routeData,
+        child: ClienteListaPage(
+          key: args.key,
+          isSearchClienteForFrom: args.isSearchClienteForFrom,
+        ),
+      );
     },
     ClientesAlrededorRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const ClientesAlrededorPage());
+        routeData: routeData,
+        child: const ClientesAlrededorPage(),
+      );
     },
     ClienteDetalleRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteDetalleRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteDetallePage(key: args.key, clienteId: args.clienteId));
+        routeData: routeData,
+        child: ClienteDetallePage(
+          key: args.key,
+          clienteId: args.clienteId,
+        ),
+      );
     },
     ClienteVentasMesRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteVentasMesRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteVentasMesPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteVentasMesPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteVentasArticuloRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteVentasArticuloRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteVentasArticuloPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteVentasArticuloPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClientePagoPendienteRoute.name: (routeData) {
       final args = routeData.argsAs<ClientePagoPendienteRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClientePagoPendientePage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClientePagoPendientePage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteArticulosTopListRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteArticulosTopListRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteArticulosTopListPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteArticulosTopListPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteAdjuntoRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteAdjuntoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteAdjuntoPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteAdjuntoPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteContactoRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteContactoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteContactoPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteContactoPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteDescuentoRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteDescuentoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteDescuentoPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteDescuentoPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteDireccionesRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteDireccionesRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteDireccionesPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteDireccionesPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClientePrecioNetoRoute.name: (routeData) {
       final args = routeData.argsAs<ClientePrecioNetoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClientePrecioNetoPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClientePrecioNetoPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteGrupoNetoRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteGrupoNetoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteGrupoNetoPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteGrupoNetoPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteRappelRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteRappelRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteRappelPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteRappelPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     ClienteUltimosPreciosRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteUltimosPreciosRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ClienteUltimosPreciosPage(
-              key: args.key,
-              clienteId: args.clienteId,
-              nombreCliente: args.nombreCliente));
+        routeData: routeData,
+        child: ClienteUltimosPreciosPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
     },
     PedidoVentaListRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const PedidoVentaListPage());
+        routeData: routeData,
+        child: const PedidoVentaListPage(),
+      );
     },
     PedidoVentaDetalleRoute.name: (routeData) {
       final args = routeData.argsAs<PedidoVentaDetalleRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: PedidoVentaDetallePage(
-              key: args.key,
-              pedidoVentaIdIsLocalParam: args.pedidoVentaIdIsLocalParam));
+        routeData: routeData,
+        child: PedidoVentaDetallePage(
+          key: args.key,
+          pedidoVentaIdIsLocalParam: args.pedidoVentaIdIsLocalParam,
+        ),
+      );
     },
     PedidoVentaEditRoute.name: (routeData) {
       final args = routeData.argsAs<PedidoVentaEditRouteArgs>(
           orElse: () => const PedidoVentaEditRouteArgs());
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: PedidoVentaEditPage(
-              key: args.key, id: args.id, isNew: args.isNew),
-          fullscreenDialog: true);
+        routeData: routeData,
+        child: PedidoVentaEditPage(
+          key: args.key,
+          id: args.id,
+          isNew: args.isNew,
+        ),
+        fullscreenDialog: true,
+      );
     },
     SeleccionarCantidadRoute.name: (routeData) {
       final args = routeData.argsAs<SeleccionarCantidadRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: SeleccionarCantidadPage(
-              key: args.key,
-              seleccionarCantidadParam: args.seleccionarCantidadParam));
+        routeData: routeData,
+        child: SeleccionarCantidadPage(
+          key: args.key,
+          seleccionarCantidadParam: args.seleccionarCantidadParam,
+        ),
+      );
     },
     ArticuloListaRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloListaRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloListaPage(
-              key: args.key,
-              isSearchArticuloForForm: args.isSearchArticuloForForm));
+        routeData: routeData,
+        child: ArticuloListaPage(
+          key: args.key,
+          isSearchArticuloForForm: args.isSearchArticuloForForm,
+        ),
+      );
     },
     ArticuloDetalleRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloDetalleRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              ArticuloDetallePage(key: args.key, articuloId: args.articuloId));
+        routeData: routeData,
+        child: ArticuloDetallePage(
+          key: args.key,
+          articuloId: args.articuloId,
+        ),
+      );
     },
     ArticuloPedidoVentaRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloPedidoVentaRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloPedidoVentaPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloPedidoVentaPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloUltimosPreciosRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloUltimosPreciosRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloUltimosPreciosPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloUltimosPreciosPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloComponenteRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloComponenteRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloComponentePage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloComponentePage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloGrupoNetoRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloGrupoNetoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloGrupoNetoPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloGrupoNetoPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloPrecioTarifaRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloPrecioTarifaRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloPrecioTarifaPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloPrecioTarifaPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloRecambioRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloRecambioRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloRecambioPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloRecambioPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloSustitutivoRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloSustitutivoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloSustitutivoPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloSustitutivoPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     ArticuloDocumentoRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloDocumentoRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ArticuloDocumentoPage(
-              key: args.key,
-              articuloId: args.articuloId,
-              description: args.description));
+        routeData: routeData,
+        child: ArticuloDocumentoPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
     },
     VisitaListaRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const VisitaListaPage());
+        routeData: routeData,
+        child: const VisitaListaPage(),
+      );
     },
     VisitaDetalleRoute.name: (routeData) {
       final args = routeData.argsAs<VisitaDetalleRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: VisitaDetallePage(
-              key: args.key, visitaIdIsLocalParam: args.visitaIdIsLocalParam));
+        routeData: routeData,
+        child: VisitaDetallePage(
+          key: args.key,
+          visitaIdIsLocalParam: args.visitaIdIsLocalParam,
+        ),
+      );
     },
     VisitaEditRoute.name: (routeData) {
       final args = routeData.argsAs<VisitaEditRouteArgs>(
           orElse: () => const VisitaEditRouteArgs());
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: VisitaEditPage(key: args.key, id: args.id, isNew: args.isNew));
+        routeData: routeData,
+        child: VisitaEditPage(
+          key: args.key,
+          id: args.id,
+          isNew: args.isNew,
+        ),
+      );
     },
     SettingsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const SettingsPage());
-    }
+        routeData: routeData,
+        child: const SettingsPage(),
+      );
+    },
   };
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig('/#redirect',
-            path: '/', redirectTo: '/login', fullMatch: true),
-        RouteConfig(SplashRoute.name, path: '/splash'),
-        RouteConfig(LoginRoute.name, path: '/login'),
-        RouteConfig(ClienteListaRoute.name, path: '/cliente'),
-        RouteConfig(ClientesAlrededorRoute.name, path: '/cliente/alrededor'),
-        RouteConfig(ClienteDetalleRoute.name, path: '/cliente/:id'),
-        RouteConfig(ClienteVentasMesRoute.name,
-            path: '/cliente/:id/ventas-mes'),
-        RouteConfig(ClienteVentasArticuloRoute.name,
-            path: '/cliente/:id/ventas-articulo'),
-        RouteConfig(ClientePagoPendienteRoute.name,
-            path: '/cliente/:id/facturas_pendientes'),
-        RouteConfig(ClienteArticulosTopListRoute.name,
-            path: '/cliente/:id/top-articulos'),
-        RouteConfig(ClienteAdjuntoRoute.name, path: '/cliente/:id/adjuntos'),
-        RouteConfig(ClienteContactoRoute.name, path: '/cliente/:id/contactos'),
-        RouteConfig(ClienteDescuentoRoute.name,
-            path: '/cliente/:id/descuentos'),
-        RouteConfig(ClienteDireccionesRoute.name,
-            path: '/cliente/:id/direcciones'),
-        RouteConfig(ClientePrecioNetoRoute.name,
-            path: '/cliente/:id/precios-netos'),
-        RouteConfig(ClienteGrupoNetoRoute.name,
-            path: '/cliente/:id/grupos-netos'),
-        RouteConfig(ClienteRappelRoute.name, path: '/cliente/:id/rappels'),
-        RouteConfig(ClienteUltimosPreciosRoute.name,
-            path: '/cliente/:id/ultimos-precios'),
-        RouteConfig(PedidoVentaListRoute.name, path: '/pedido'),
-        RouteConfig(PedidoVentaDetalleRoute.name, path: '/pedido/:id'),
-        RouteConfig(PedidoVentaEditRoute.name, path: '/pedido/edit'),
-        RouteConfig(SeleccionarCantidadRoute.name,
-            path: 'pedido/edit/seleccionar_cantidad'),
-        RouteConfig(ArticuloListaRoute.name, path: '/articulo'),
-        RouteConfig(ArticuloDetalleRoute.name, path: '/articulo/:id'),
-        RouteConfig(ArticuloPedidoVentaRoute.name,
-            path: '/articulo/:id/pedido-venta'),
-        RouteConfig(ArticuloUltimosPreciosRoute.name,
-            path: '/articulo/:id/ultimos-precios'),
-        RouteConfig(ArticuloComponenteRoute.name,
-            path: '/articulo/:id/componentes'),
-        RouteConfig(ArticuloGrupoNetoRoute.name,
-            path: '/articulo/:id/grupos-netos'),
-        RouteConfig(ArticuloPrecioTarifaRoute.name,
-            path: '/articulo/:id/precio-tarifa'),
-        RouteConfig(ArticuloRecambioRoute.name,
-            path: '/articulo/:id/recambios'),
-        RouteConfig(ArticuloSustitutivoRoute.name,
-            path: '/articulo/:id/sustitutivos'),
-        RouteConfig(ArticuloDocumentoRoute.name,
-            path: '/articulo/:id/documentos'),
-        RouteConfig(VisitaListaRoute.name, path: '/visita'),
-        RouteConfig(VisitaDetalleRoute.name, path: '/visita/:id'),
-        RouteConfig(VisitaEditRoute.name, path: '/visita/edit'),
-        RouteConfig(SettingsRoute.name, path: '/settings')
+        RouteConfig(
+          '/#redirect',
+          path: '/',
+          redirectTo: '/login',
+          fullMatch: true,
+        ),
+        RouteConfig(
+          SplashRoute.name,
+          path: '/splash',
+        ),
+        RouteConfig(
+          LoginRoute.name,
+          path: '/login',
+        ),
+        RouteConfig(
+          ClienteListaRoute.name,
+          path: '/cliente',
+        ),
+        RouteConfig(
+          ClientesAlrededorRoute.name,
+          path: '/cliente/alrededor',
+        ),
+        RouteConfig(
+          ClienteDetalleRoute.name,
+          path: '/cliente/:id',
+        ),
+        RouteConfig(
+          ClienteVentasMesRoute.name,
+          path: '/cliente/:id/ventas-mes',
+        ),
+        RouteConfig(
+          ClienteVentasArticuloRoute.name,
+          path: '/cliente/:id/ventas-articulo',
+        ),
+        RouteConfig(
+          ClientePagoPendienteRoute.name,
+          path: '/cliente/:id/facturas_pendientes',
+        ),
+        RouteConfig(
+          ClienteArticulosTopListRoute.name,
+          path: '/cliente/:id/top-articulos',
+        ),
+        RouteConfig(
+          ClienteAdjuntoRoute.name,
+          path: '/cliente/:id/adjuntos',
+        ),
+        RouteConfig(
+          ClienteContactoRoute.name,
+          path: '/cliente/:id/contactos',
+        ),
+        RouteConfig(
+          ClienteDescuentoRoute.name,
+          path: '/cliente/:id/descuentos',
+        ),
+        RouteConfig(
+          ClienteDireccionesRoute.name,
+          path: '/cliente/:id/direcciones',
+        ),
+        RouteConfig(
+          ClientePrecioNetoRoute.name,
+          path: '/cliente/:id/precios-netos',
+        ),
+        RouteConfig(
+          ClienteGrupoNetoRoute.name,
+          path: '/cliente/:id/grupos-netos',
+        ),
+        RouteConfig(
+          ClienteRappelRoute.name,
+          path: '/cliente/:id/rappels',
+        ),
+        RouteConfig(
+          ClienteUltimosPreciosRoute.name,
+          path: '/cliente/:id/ultimos-precios',
+        ),
+        RouteConfig(
+          PedidoVentaListRoute.name,
+          path: '/pedido',
+        ),
+        RouteConfig(
+          PedidoVentaDetalleRoute.name,
+          path: '/pedido/:id',
+        ),
+        RouteConfig(
+          PedidoVentaEditRoute.name,
+          path: '/pedido/edit',
+        ),
+        RouteConfig(
+          SeleccionarCantidadRoute.name,
+          path: 'pedido/edit/seleccionar_cantidad',
+        ),
+        RouteConfig(
+          ArticuloListaRoute.name,
+          path: '/articulo',
+        ),
+        RouteConfig(
+          ArticuloDetalleRoute.name,
+          path: '/articulo/:id',
+        ),
+        RouteConfig(
+          ArticuloPedidoVentaRoute.name,
+          path: '/articulo/:id/pedido-venta',
+        ),
+        RouteConfig(
+          ArticuloUltimosPreciosRoute.name,
+          path: '/articulo/:id/ultimos-precios',
+        ),
+        RouteConfig(
+          ArticuloComponenteRoute.name,
+          path: '/articulo/:id/componentes',
+        ),
+        RouteConfig(
+          ArticuloGrupoNetoRoute.name,
+          path: '/articulo/:id/grupos-netos',
+        ),
+        RouteConfig(
+          ArticuloPrecioTarifaRoute.name,
+          path: '/articulo/:id/precio-tarifa',
+        ),
+        RouteConfig(
+          ArticuloRecambioRoute.name,
+          path: '/articulo/:id/recambios',
+        ),
+        RouteConfig(
+          ArticuloSustitutivoRoute.name,
+          path: '/articulo/:id/sustitutivos',
+        ),
+        RouteConfig(
+          ArticuloDocumentoRoute.name,
+          path: '/articulo/:id/documentos',
+        ),
+        RouteConfig(
+          VisitaListaRoute.name,
+          path: '/visita',
+        ),
+        RouteConfig(
+          VisitaDetalleRoute.name,
+          path: '/visita/:id',
+        ),
+        RouteConfig(
+          VisitaEditRoute.name,
+          path: '/visita/edit',
+        ),
+        RouteConfig(
+          SettingsRoute.name,
+          path: '/settings',
+        ),
       ];
 }
 
 /// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute() : super(SplashRoute.name, path: '/splash');
+  const SplashRoute()
+      : super(
+          SplashRoute.name,
+          path: '/splash',
+        );
 
   static const String name = 'SplashRoute';
 }
@@ -362,7 +536,11 @@ class SplashRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [LoginPage]
 class LoginRoute extends PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login');
+  const LoginRoute()
+      : super(
+          LoginRoute.name,
+          path: '/login',
+        );
 
   static const String name = 'LoginRoute';
 }
@@ -370,17 +548,26 @@ class LoginRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [ClienteListaPage]
 class ClienteListaRoute extends PageRouteInfo<ClienteListaRouteArgs> {
-  ClienteListaRoute({Key? key, required bool isSearchClienteForFrom})
-      : super(ClienteListaRoute.name,
-            path: '/cliente',
-            args: ClienteListaRouteArgs(
-                key: key, isSearchClienteForFrom: isSearchClienteForFrom));
+  ClienteListaRoute({
+    Key? key,
+    required bool isSearchClienteForFrom,
+  }) : super(
+          ClienteListaRoute.name,
+          path: '/cliente',
+          args: ClienteListaRouteArgs(
+            key: key,
+            isSearchClienteForFrom: isSearchClienteForFrom,
+          ),
+        );
 
   static const String name = 'ClienteListaRoute';
 }
 
 class ClienteListaRouteArgs {
-  const ClienteListaRouteArgs({this.key, required this.isSearchClienteForFrom});
+  const ClienteListaRouteArgs({
+    this.key,
+    required this.isSearchClienteForFrom,
+  });
 
   final Key? key;
 
@@ -396,7 +583,10 @@ class ClienteListaRouteArgs {
 /// [ClientesAlrededorPage]
 class ClientesAlrededorRoute extends PageRouteInfo<void> {
   const ClientesAlrededorRoute()
-      : super(ClientesAlrededorRoute.name, path: '/cliente/alrededor');
+      : super(
+          ClientesAlrededorRoute.name,
+          path: '/cliente/alrededor',
+        );
 
   static const String name = 'ClientesAlrededorRoute';
 }
@@ -404,16 +594,26 @@ class ClientesAlrededorRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [ClienteDetallePage]
 class ClienteDetalleRoute extends PageRouteInfo<ClienteDetalleRouteArgs> {
-  ClienteDetalleRoute({Key? key, required String clienteId})
-      : super(ClienteDetalleRoute.name,
-            path: '/cliente/:id',
-            args: ClienteDetalleRouteArgs(key: key, clienteId: clienteId));
+  ClienteDetalleRoute({
+    Key? key,
+    required String clienteId,
+  }) : super(
+          ClienteDetalleRoute.name,
+          path: '/cliente/:id',
+          args: ClienteDetalleRouteArgs(
+            key: key,
+            clienteId: clienteId,
+          ),
+        );
 
   static const String name = 'ClienteDetalleRoute';
 }
 
 class ClienteDetalleRouteArgs {
-  const ClienteDetalleRouteArgs({this.key, required this.clienteId});
+  const ClienteDetalleRouteArgs({
+    this.key,
+    required this.clienteId,
+  });
 
   final Key? key;
 
@@ -428,19 +628,29 @@ class ClienteDetalleRouteArgs {
 /// generated route for
 /// [ClienteVentasMesPage]
 class ClienteVentasMesRoute extends PageRouteInfo<ClienteVentasMesRouteArgs> {
-  ClienteVentasMesRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteVentasMesRoute.name,
-            path: '/cliente/:id/ventas-mes',
-            args: ClienteVentasMesRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteVentasMesRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteVentasMesRoute.name,
+          path: '/cliente/:id/ventas-mes',
+          args: ClienteVentasMesRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteVentasMesRoute';
 }
 
 class ClienteVentasMesRouteArgs {
-  const ClienteVentasMesRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteVentasMesRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -458,19 +668,29 @@ class ClienteVentasMesRouteArgs {
 /// [ClienteVentasArticuloPage]
 class ClienteVentasArticuloRoute
     extends PageRouteInfo<ClienteVentasArticuloRouteArgs> {
-  ClienteVentasArticuloRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteVentasArticuloRoute.name,
-            path: '/cliente/:id/ventas-articulo',
-            args: ClienteVentasArticuloRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteVentasArticuloRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteVentasArticuloRoute.name,
+          path: '/cliente/:id/ventas-articulo',
+          args: ClienteVentasArticuloRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteVentasArticuloRoute';
 }
 
 class ClienteVentasArticuloRouteArgs {
-  const ClienteVentasArticuloRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteVentasArticuloRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -488,19 +708,29 @@ class ClienteVentasArticuloRouteArgs {
 /// [ClientePagoPendientePage]
 class ClientePagoPendienteRoute
     extends PageRouteInfo<ClientePagoPendienteRouteArgs> {
-  ClientePagoPendienteRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClientePagoPendienteRoute.name,
-            path: '/cliente/:id/facturas_pendientes',
-            args: ClientePagoPendienteRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClientePagoPendienteRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClientePagoPendienteRoute.name,
+          path: '/cliente/:id/facturas_pendientes',
+          args: ClientePagoPendienteRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClientePagoPendienteRoute';
 }
 
 class ClientePagoPendienteRouteArgs {
-  const ClientePagoPendienteRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClientePagoPendienteRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -518,19 +748,29 @@ class ClientePagoPendienteRouteArgs {
 /// [ClienteArticulosTopListPage]
 class ClienteArticulosTopListRoute
     extends PageRouteInfo<ClienteArticulosTopListRouteArgs> {
-  ClienteArticulosTopListRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteArticulosTopListRoute.name,
-            path: '/cliente/:id/top-articulos',
-            args: ClienteArticulosTopListRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteArticulosTopListRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteArticulosTopListRoute.name,
+          path: '/cliente/:id/top-articulos',
+          args: ClienteArticulosTopListRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteArticulosTopListRoute';
 }
 
 class ClienteArticulosTopListRouteArgs {
-  const ClienteArticulosTopListRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteArticulosTopListRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -547,19 +787,29 @@ class ClienteArticulosTopListRouteArgs {
 /// generated route for
 /// [ClienteAdjuntoPage]
 class ClienteAdjuntoRoute extends PageRouteInfo<ClienteAdjuntoRouteArgs> {
-  ClienteAdjuntoRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteAdjuntoRoute.name,
-            path: '/cliente/:id/adjuntos',
-            args: ClienteAdjuntoRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteAdjuntoRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteAdjuntoRoute.name,
+          path: '/cliente/:id/adjuntos',
+          args: ClienteAdjuntoRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteAdjuntoRoute';
 }
 
 class ClienteAdjuntoRouteArgs {
-  const ClienteAdjuntoRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteAdjuntoRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -576,19 +826,29 @@ class ClienteAdjuntoRouteArgs {
 /// generated route for
 /// [ClienteContactoPage]
 class ClienteContactoRoute extends PageRouteInfo<ClienteContactoRouteArgs> {
-  ClienteContactoRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteContactoRoute.name,
-            path: '/cliente/:id/contactos',
-            args: ClienteContactoRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteContactoRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteContactoRoute.name,
+          path: '/cliente/:id/contactos',
+          args: ClienteContactoRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteContactoRoute';
 }
 
 class ClienteContactoRouteArgs {
-  const ClienteContactoRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteContactoRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -605,19 +865,29 @@ class ClienteContactoRouteArgs {
 /// generated route for
 /// [ClienteDescuentoPage]
 class ClienteDescuentoRoute extends PageRouteInfo<ClienteDescuentoRouteArgs> {
-  ClienteDescuentoRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteDescuentoRoute.name,
-            path: '/cliente/:id/descuentos',
-            args: ClienteDescuentoRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteDescuentoRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteDescuentoRoute.name,
+          path: '/cliente/:id/descuentos',
+          args: ClienteDescuentoRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteDescuentoRoute';
 }
 
 class ClienteDescuentoRouteArgs {
-  const ClienteDescuentoRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteDescuentoRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -635,19 +905,29 @@ class ClienteDescuentoRouteArgs {
 /// [ClienteDireccionesPage]
 class ClienteDireccionesRoute
     extends PageRouteInfo<ClienteDireccionesRouteArgs> {
-  ClienteDireccionesRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteDireccionesRoute.name,
-            path: '/cliente/:id/direcciones',
-            args: ClienteDireccionesRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteDireccionesRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteDireccionesRoute.name,
+          path: '/cliente/:id/direcciones',
+          args: ClienteDireccionesRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteDireccionesRoute';
 }
 
 class ClienteDireccionesRouteArgs {
-  const ClienteDireccionesRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteDireccionesRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -664,19 +944,29 @@ class ClienteDireccionesRouteArgs {
 /// generated route for
 /// [ClientePrecioNetoPage]
 class ClientePrecioNetoRoute extends PageRouteInfo<ClientePrecioNetoRouteArgs> {
-  ClientePrecioNetoRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClientePrecioNetoRoute.name,
-            path: '/cliente/:id/precios-netos',
-            args: ClientePrecioNetoRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClientePrecioNetoRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClientePrecioNetoRoute.name,
+          path: '/cliente/:id/precios-netos',
+          args: ClientePrecioNetoRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClientePrecioNetoRoute';
 }
 
 class ClientePrecioNetoRouteArgs {
-  const ClientePrecioNetoRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClientePrecioNetoRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -693,19 +983,29 @@ class ClientePrecioNetoRouteArgs {
 /// generated route for
 /// [ClienteGrupoNetoPage]
 class ClienteGrupoNetoRoute extends PageRouteInfo<ClienteGrupoNetoRouteArgs> {
-  ClienteGrupoNetoRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteGrupoNetoRoute.name,
-            path: '/cliente/:id/grupos-netos',
-            args: ClienteGrupoNetoRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteGrupoNetoRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteGrupoNetoRoute.name,
+          path: '/cliente/:id/grupos-netos',
+          args: ClienteGrupoNetoRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteGrupoNetoRoute';
 }
 
 class ClienteGrupoNetoRouteArgs {
-  const ClienteGrupoNetoRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteGrupoNetoRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -722,19 +1022,29 @@ class ClienteGrupoNetoRouteArgs {
 /// generated route for
 /// [ClienteRappelPage]
 class ClienteRappelRoute extends PageRouteInfo<ClienteRappelRouteArgs> {
-  ClienteRappelRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteRappelRoute.name,
-            path: '/cliente/:id/rappels',
-            args: ClienteRappelRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteRappelRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteRappelRoute.name,
+          path: '/cliente/:id/rappels',
+          args: ClienteRappelRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteRappelRoute';
 }
 
 class ClienteRappelRouteArgs {
-  const ClienteRappelRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteRappelRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -752,19 +1062,29 @@ class ClienteRappelRouteArgs {
 /// [ClienteUltimosPreciosPage]
 class ClienteUltimosPreciosRoute
     extends PageRouteInfo<ClienteUltimosPreciosRouteArgs> {
-  ClienteUltimosPreciosRoute(
-      {Key? key, required String clienteId, required String? nombreCliente})
-      : super(ClienteUltimosPreciosRoute.name,
-            path: '/cliente/:id/ultimos-precios',
-            args: ClienteUltimosPreciosRouteArgs(
-                key: key, clienteId: clienteId, nombreCliente: nombreCliente));
+  ClienteUltimosPreciosRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteUltimosPreciosRoute.name,
+          path: '/cliente/:id/ultimos-precios',
+          args: ClienteUltimosPreciosRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
 
   static const String name = 'ClienteUltimosPreciosRoute';
 }
 
 class ClienteUltimosPreciosRouteArgs {
-  const ClienteUltimosPreciosRouteArgs(
-      {this.key, required this.clienteId, required this.nombreCliente});
+  const ClienteUltimosPreciosRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
 
   final Key? key;
 
@@ -782,7 +1102,10 @@ class ClienteUltimosPreciosRouteArgs {
 /// [PedidoVentaListPage]
 class PedidoVentaListRoute extends PageRouteInfo<void> {
   const PedidoVentaListRoute()
-      : super(PedidoVentaListRoute.name, path: '/pedido');
+      : super(
+          PedidoVentaListRoute.name,
+          path: '/pedido',
+        );
 
   static const String name = 'PedidoVentaListRoute';
 }
@@ -791,20 +1114,26 @@ class PedidoVentaListRoute extends PageRouteInfo<void> {
 /// [PedidoVentaDetallePage]
 class PedidoVentaDetalleRoute
     extends PageRouteInfo<PedidoVentaDetalleRouteArgs> {
-  PedidoVentaDetalleRoute(
-      {Key? key, required EntityIdIsLocalParam pedidoVentaIdIsLocalParam})
-      : super(PedidoVentaDetalleRoute.name,
-            path: '/pedido/:id',
-            args: PedidoVentaDetalleRouteArgs(
-                key: key,
-                pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam));
+  PedidoVentaDetalleRoute({
+    Key? key,
+    required EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+  }) : super(
+          PedidoVentaDetalleRoute.name,
+          path: '/pedido/:id',
+          args: PedidoVentaDetalleRouteArgs(
+            key: key,
+            pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+          ),
+        );
 
   static const String name = 'PedidoVentaDetalleRoute';
 }
 
 class PedidoVentaDetalleRouteArgs {
-  const PedidoVentaDetalleRouteArgs(
-      {this.key, required this.pedidoVentaIdIsLocalParam});
+  const PedidoVentaDetalleRouteArgs({
+    this.key,
+    required this.pedidoVentaIdIsLocalParam,
+  });
 
   final Key? key;
 
@@ -819,16 +1148,29 @@ class PedidoVentaDetalleRouteArgs {
 /// generated route for
 /// [PedidoVentaEditPage]
 class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
-  PedidoVentaEditRoute({Key? key, String? id, bool? isNew})
-      : super(PedidoVentaEditRoute.name,
-            path: '/pedido/edit',
-            args: PedidoVentaEditRouteArgs(key: key, id: id, isNew: isNew));
+  PedidoVentaEditRoute({
+    Key? key,
+    String? id,
+    bool? isNew,
+  }) : super(
+          PedidoVentaEditRoute.name,
+          path: '/pedido/edit',
+          args: PedidoVentaEditRouteArgs(
+            key: key,
+            id: id,
+            isNew: isNew,
+          ),
+        );
 
   static const String name = 'PedidoVentaEditRoute';
 }
 
 class PedidoVentaEditRouteArgs {
-  const PedidoVentaEditRouteArgs({this.key, this.id, this.isNew});
+  const PedidoVentaEditRouteArgs({
+    this.key,
+    this.id,
+    this.isNew,
+  });
 
   final Key? key;
 
@@ -846,19 +1188,26 @@ class PedidoVentaEditRouteArgs {
 /// [SeleccionarCantidadPage]
 class SeleccionarCantidadRoute
     extends PageRouteInfo<SeleccionarCantidadRouteArgs> {
-  SeleccionarCantidadRoute(
-      {Key? key, required SeleccionarCantidadParam seleccionarCantidadParam})
-      : super(SeleccionarCantidadRoute.name,
-            path: 'pedido/edit/seleccionar_cantidad',
-            args: SeleccionarCantidadRouteArgs(
-                key: key, seleccionarCantidadParam: seleccionarCantidadParam));
+  SeleccionarCantidadRoute({
+    Key? key,
+    required SeleccionarCantidadParam seleccionarCantidadParam,
+  }) : super(
+          SeleccionarCantidadRoute.name,
+          path: 'pedido/edit/seleccionar_cantidad',
+          args: SeleccionarCantidadRouteArgs(
+            key: key,
+            seleccionarCantidadParam: seleccionarCantidadParam,
+          ),
+        );
 
   static const String name = 'SeleccionarCantidadRoute';
 }
 
 class SeleccionarCantidadRouteArgs {
-  const SeleccionarCantidadRouteArgs(
-      {this.key, required this.seleccionarCantidadParam});
+  const SeleccionarCantidadRouteArgs({
+    this.key,
+    required this.seleccionarCantidadParam,
+  });
 
   final Key? key;
 
@@ -873,18 +1222,26 @@ class SeleccionarCantidadRouteArgs {
 /// generated route for
 /// [ArticuloListaPage]
 class ArticuloListaRoute extends PageRouteInfo<ArticuloListaRouteArgs> {
-  ArticuloListaRoute({Key? key, required bool isSearchArticuloForForm})
-      : super(ArticuloListaRoute.name,
-            path: '/articulo',
-            args: ArticuloListaRouteArgs(
-                key: key, isSearchArticuloForForm: isSearchArticuloForForm));
+  ArticuloListaRoute({
+    Key? key,
+    required bool isSearchArticuloForForm,
+  }) : super(
+          ArticuloListaRoute.name,
+          path: '/articulo',
+          args: ArticuloListaRouteArgs(
+            key: key,
+            isSearchArticuloForForm: isSearchArticuloForForm,
+          ),
+        );
 
   static const String name = 'ArticuloListaRoute';
 }
 
 class ArticuloListaRouteArgs {
-  const ArticuloListaRouteArgs(
-      {this.key, required this.isSearchArticuloForForm});
+  const ArticuloListaRouteArgs({
+    this.key,
+    required this.isSearchArticuloForForm,
+  });
 
   final Key? key;
 
@@ -899,16 +1256,26 @@ class ArticuloListaRouteArgs {
 /// generated route for
 /// [ArticuloDetallePage]
 class ArticuloDetalleRoute extends PageRouteInfo<ArticuloDetalleRouteArgs> {
-  ArticuloDetalleRoute({Key? key, required String articuloId})
-      : super(ArticuloDetalleRoute.name,
-            path: '/articulo/:id',
-            args: ArticuloDetalleRouteArgs(key: key, articuloId: articuloId));
+  ArticuloDetalleRoute({
+    Key? key,
+    required String articuloId,
+  }) : super(
+          ArticuloDetalleRoute.name,
+          path: '/articulo/:id',
+          args: ArticuloDetalleRouteArgs(
+            key: key,
+            articuloId: articuloId,
+          ),
+        );
 
   static const String name = 'ArticuloDetalleRoute';
 }
 
 class ArticuloDetalleRouteArgs {
-  const ArticuloDetalleRouteArgs({this.key, required this.articuloId});
+  const ArticuloDetalleRouteArgs({
+    this.key,
+    required this.articuloId,
+  });
 
   final Key? key;
 
@@ -924,19 +1291,29 @@ class ArticuloDetalleRouteArgs {
 /// [ArticuloPedidoVentaPage]
 class ArticuloPedidoVentaRoute
     extends PageRouteInfo<ArticuloPedidoVentaRouteArgs> {
-  ArticuloPedidoVentaRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloPedidoVentaRoute.name,
-            path: '/articulo/:id/pedido-venta',
-            args: ArticuloPedidoVentaRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloPedidoVentaRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloPedidoVentaRoute.name,
+          path: '/articulo/:id/pedido-venta',
+          args: ArticuloPedidoVentaRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloPedidoVentaRoute';
 }
 
 class ArticuloPedidoVentaRouteArgs {
-  const ArticuloPedidoVentaRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloPedidoVentaRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -954,19 +1331,29 @@ class ArticuloPedidoVentaRouteArgs {
 /// [ArticuloUltimosPreciosPage]
 class ArticuloUltimosPreciosRoute
     extends PageRouteInfo<ArticuloUltimosPreciosRouteArgs> {
-  ArticuloUltimosPreciosRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloUltimosPreciosRoute.name,
-            path: '/articulo/:id/ultimos-precios',
-            args: ArticuloUltimosPreciosRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloUltimosPreciosRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloUltimosPreciosRoute.name,
+          path: '/articulo/:id/ultimos-precios',
+          args: ArticuloUltimosPreciosRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloUltimosPreciosRoute';
 }
 
 class ArticuloUltimosPreciosRouteArgs {
-  const ArticuloUltimosPreciosRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloUltimosPreciosRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -984,19 +1371,29 @@ class ArticuloUltimosPreciosRouteArgs {
 /// [ArticuloComponentePage]
 class ArticuloComponenteRoute
     extends PageRouteInfo<ArticuloComponenteRouteArgs> {
-  ArticuloComponenteRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloComponenteRoute.name,
-            path: '/articulo/:id/componentes',
-            args: ArticuloComponenteRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloComponenteRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloComponenteRoute.name,
+          path: '/articulo/:id/componentes',
+          args: ArticuloComponenteRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloComponenteRoute';
 }
 
 class ArticuloComponenteRouteArgs {
-  const ArticuloComponenteRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloComponenteRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -1013,19 +1410,29 @@ class ArticuloComponenteRouteArgs {
 /// generated route for
 /// [ArticuloGrupoNetoPage]
 class ArticuloGrupoNetoRoute extends PageRouteInfo<ArticuloGrupoNetoRouteArgs> {
-  ArticuloGrupoNetoRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloGrupoNetoRoute.name,
-            path: '/articulo/:id/grupos-netos',
-            args: ArticuloGrupoNetoRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloGrupoNetoRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloGrupoNetoRoute.name,
+          path: '/articulo/:id/grupos-netos',
+          args: ArticuloGrupoNetoRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloGrupoNetoRoute';
 }
 
 class ArticuloGrupoNetoRouteArgs {
-  const ArticuloGrupoNetoRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloGrupoNetoRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -1043,19 +1450,29 @@ class ArticuloGrupoNetoRouteArgs {
 /// [ArticuloPrecioTarifaPage]
 class ArticuloPrecioTarifaRoute
     extends PageRouteInfo<ArticuloPrecioTarifaRouteArgs> {
-  ArticuloPrecioTarifaRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloPrecioTarifaRoute.name,
-            path: '/articulo/:id/precio-tarifa',
-            args: ArticuloPrecioTarifaRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloPrecioTarifaRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloPrecioTarifaRoute.name,
+          path: '/articulo/:id/precio-tarifa',
+          args: ArticuloPrecioTarifaRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloPrecioTarifaRoute';
 }
 
 class ArticuloPrecioTarifaRouteArgs {
-  const ArticuloPrecioTarifaRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloPrecioTarifaRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -1072,19 +1489,29 @@ class ArticuloPrecioTarifaRouteArgs {
 /// generated route for
 /// [ArticuloRecambioPage]
 class ArticuloRecambioRoute extends PageRouteInfo<ArticuloRecambioRouteArgs> {
-  ArticuloRecambioRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloRecambioRoute.name,
-            path: '/articulo/:id/recambios',
-            args: ArticuloRecambioRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloRecambioRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloRecambioRoute.name,
+          path: '/articulo/:id/recambios',
+          args: ArticuloRecambioRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloRecambioRoute';
 }
 
 class ArticuloRecambioRouteArgs {
-  const ArticuloRecambioRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloRecambioRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -1102,19 +1529,29 @@ class ArticuloRecambioRouteArgs {
 /// [ArticuloSustitutivoPage]
 class ArticuloSustitutivoRoute
     extends PageRouteInfo<ArticuloSustitutivoRouteArgs> {
-  ArticuloSustitutivoRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloSustitutivoRoute.name,
-            path: '/articulo/:id/sustitutivos',
-            args: ArticuloSustitutivoRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloSustitutivoRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloSustitutivoRoute.name,
+          path: '/articulo/:id/sustitutivos',
+          args: ArticuloSustitutivoRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloSustitutivoRoute';
 }
 
 class ArticuloSustitutivoRouteArgs {
-  const ArticuloSustitutivoRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloSustitutivoRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -1131,19 +1568,29 @@ class ArticuloSustitutivoRouteArgs {
 /// generated route for
 /// [ArticuloDocumentoPage]
 class ArticuloDocumentoRoute extends PageRouteInfo<ArticuloDocumentoRouteArgs> {
-  ArticuloDocumentoRoute(
-      {Key? key, required String articuloId, required String description})
-      : super(ArticuloDocumentoRoute.name,
-            path: '/articulo/:id/documentos',
-            args: ArticuloDocumentoRouteArgs(
-                key: key, articuloId: articuloId, description: description));
+  ArticuloDocumentoRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloDocumentoRoute.name,
+          path: '/articulo/:id/documentos',
+          args: ArticuloDocumentoRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
 
   static const String name = 'ArticuloDocumentoRoute';
 }
 
 class ArticuloDocumentoRouteArgs {
-  const ArticuloDocumentoRouteArgs(
-      {this.key, required this.articuloId, required this.description});
+  const ArticuloDocumentoRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
 
   final Key? key;
 
@@ -1160,7 +1607,11 @@ class ArticuloDocumentoRouteArgs {
 /// generated route for
 /// [VisitaListaPage]
 class VisitaListaRoute extends PageRouteInfo<void> {
-  const VisitaListaRoute() : super(VisitaListaRoute.name, path: '/visita');
+  const VisitaListaRoute()
+      : super(
+          VisitaListaRoute.name,
+          path: '/visita',
+        );
 
   static const String name = 'VisitaListaRoute';
 }
@@ -1168,18 +1619,26 @@ class VisitaListaRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [VisitaDetallePage]
 class VisitaDetalleRoute extends PageRouteInfo<VisitaDetalleRouteArgs> {
-  VisitaDetalleRoute(
-      {Key? key, required EntityIdIsLocalParam visitaIdIsLocalParam})
-      : super(VisitaDetalleRoute.name,
-            path: '/visita/:id',
-            args: VisitaDetalleRouteArgs(
-                key: key, visitaIdIsLocalParam: visitaIdIsLocalParam));
+  VisitaDetalleRoute({
+    Key? key,
+    required EntityIdIsLocalParam visitaIdIsLocalParam,
+  }) : super(
+          VisitaDetalleRoute.name,
+          path: '/visita/:id',
+          args: VisitaDetalleRouteArgs(
+            key: key,
+            visitaIdIsLocalParam: visitaIdIsLocalParam,
+          ),
+        );
 
   static const String name = 'VisitaDetalleRoute';
 }
 
 class VisitaDetalleRouteArgs {
-  const VisitaDetalleRouteArgs({this.key, required this.visitaIdIsLocalParam});
+  const VisitaDetalleRouteArgs({
+    this.key,
+    required this.visitaIdIsLocalParam,
+  });
 
   final Key? key;
 
@@ -1194,16 +1653,29 @@ class VisitaDetalleRouteArgs {
 /// generated route for
 /// [VisitaEditPage]
 class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
-  VisitaEditRoute({Key? key, String? id, bool? isNew})
-      : super(VisitaEditRoute.name,
-            path: '/visita/edit',
-            args: VisitaEditRouteArgs(key: key, id: id, isNew: isNew));
+  VisitaEditRoute({
+    Key? key,
+    String? id,
+    bool? isNew,
+  }) : super(
+          VisitaEditRoute.name,
+          path: '/visita/edit',
+          args: VisitaEditRouteArgs(
+            key: key,
+            id: id,
+            isNew: isNew,
+          ),
+        );
 
   static const String name = 'VisitaEditRoute';
 }
 
 class VisitaEditRouteArgs {
-  const VisitaEditRouteArgs({this.key, this.id, this.isNew});
+  const VisitaEditRouteArgs({
+    this.key,
+    this.id,
+    this.isNew,
+  });
 
   final Key? key;
 
@@ -1220,7 +1692,11 @@ class VisitaEditRouteArgs {
 /// generated route for
 /// [SettingsPage]
 class SettingsRoute extends PageRouteInfo<void> {
-  const SettingsRoute() : super(SettingsRoute.name, path: '/settings');
+  const SettingsRoute()
+      : super(
+          SettingsRoute.name,
+          path: '/settings',
+        );
 
   static const String name = 'SettingsRoute';
 }

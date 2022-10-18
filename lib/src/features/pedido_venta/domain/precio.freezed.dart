@@ -26,33 +26,37 @@ mixin _$Precio {
 /// @nodoc
 abstract class $PrecioCopyWith<$Res> {
   factory $PrecioCopyWith(Precio value, $Res Function(Precio) then) =
-      _$PrecioCopyWithImpl<$Res>;
+      _$PrecioCopyWithImpl<$Res, Precio>;
+  @useResult
   $Res call({Money precio, int tipoPrecio});
 }
 
 /// @nodoc
-class _$PrecioCopyWithImpl<$Res> implements $PrecioCopyWith<$Res> {
+class _$PrecioCopyWithImpl<$Res, $Val extends Precio>
+    implements $PrecioCopyWith<$Res> {
   _$PrecioCopyWithImpl(this._value, this._then);
 
-  final Precio _value;
   // ignore: unused_field
-  final $Res Function(Precio) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? precio = freezed,
-    Object? tipoPrecio = freezed,
+    Object? precio = null,
+    Object? tipoPrecio = null,
   }) {
     return _then(_value.copyWith(
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as Money,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -61,29 +65,29 @@ abstract class _$$_PrecioCopyWith<$Res> implements $PrecioCopyWith<$Res> {
   factory _$$_PrecioCopyWith(_$_Precio value, $Res Function(_$_Precio) then) =
       __$$_PrecioCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Money precio, int tipoPrecio});
 }
 
 /// @nodoc
-class __$$_PrecioCopyWithImpl<$Res> extends _$PrecioCopyWithImpl<$Res>
+class __$$_PrecioCopyWithImpl<$Res>
+    extends _$PrecioCopyWithImpl<$Res, _$_Precio>
     implements _$$_PrecioCopyWith<$Res> {
   __$$_PrecioCopyWithImpl(_$_Precio _value, $Res Function(_$_Precio) _then)
-      : super(_value, (v) => _then(v as _$_Precio));
+      : super(_value, _then);
 
-  @override
-  _$_Precio get _value => super._value as _$_Precio;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? precio = freezed,
-    Object? tipoPrecio = freezed,
+    Object? precio = null,
+    Object? tipoPrecio = null,
   }) {
     return _then(_$_Precio(
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as Money,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
@@ -111,19 +115,17 @@ class _$_Precio extends _Precio {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Precio &&
-            const DeepCollectionEquality().equals(other.precio, precio) &&
-            const DeepCollectionEquality()
-                .equals(other.tipoPrecio, tipoPrecio));
+            (identical(other.precio, precio) || other.precio == precio) &&
+            (identical(other.tipoPrecio, tipoPrecio) ||
+                other.tipoPrecio == tipoPrecio));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(precio),
-      const DeepCollectionEquality().hash(tipoPrecio));
+  int get hashCode => Object.hash(runtimeType, precio, tipoPrecio);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PrecioCopyWith<_$_Precio> get copyWith =>
       __$$_PrecioCopyWithImpl<_$_Precio>(this, _$identity);
 }

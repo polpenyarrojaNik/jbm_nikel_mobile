@@ -31,7 +31,8 @@ mixin _$Subfamilia {
 abstract class $SubfamiliaCopyWith<$Res> {
   factory $SubfamiliaCopyWith(
           Subfamilia value, $Res Function(Subfamilia) then) =
-      _$SubfamiliaCopyWithImpl<$Res>;
+      _$SubfamiliaCopyWithImpl<$Res, Subfamilia>;
+  @useResult
   $Res call(
       {String id,
       String familiaId,
@@ -41,43 +42,46 @@ abstract class $SubfamiliaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SubfamiliaCopyWithImpl<$Res> implements $SubfamiliaCopyWith<$Res> {
+class _$SubfamiliaCopyWithImpl<$Res, $Val extends Subfamilia>
+    implements $SubfamiliaCopyWith<$Res> {
   _$SubfamiliaCopyWithImpl(this._value, this._then);
 
-  final Subfamilia _value;
   // ignore: unused_field
-  final $Res Function(Subfamilia) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? familiaId = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? id = null,
+    Object? familiaId = null,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      familiaId: familiaId == freezed
+      familiaId: null == familiaId
           ? _value.familiaId
           : familiaId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -88,6 +92,7 @@ abstract class _$$_SubfamiliaCopyWith<$Res>
           _$_Subfamilia value, $Res Function(_$_Subfamilia) then) =
       __$$_SubfamiliaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String familiaId,
@@ -97,41 +102,40 @@ abstract class _$$_SubfamiliaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubfamiliaCopyWithImpl<$Res> extends _$SubfamiliaCopyWithImpl<$Res>
+class __$$_SubfamiliaCopyWithImpl<$Res>
+    extends _$SubfamiliaCopyWithImpl<$Res, _$_Subfamilia>
     implements _$$_SubfamiliaCopyWith<$Res> {
   __$$_SubfamiliaCopyWithImpl(
       _$_Subfamilia _value, $Res Function(_$_Subfamilia) _then)
-      : super(_value, (v) => _then(v as _$_Subfamilia));
+      : super(_value, _then);
 
-  @override
-  _$_Subfamilia get _value => super._value as _$_Subfamilia;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? familiaId = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? id = null,
+    Object? familiaId = null,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_$_Subfamilia(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      familiaId: familiaId == freezed
+      familiaId: null == familiaId
           ? _value.familiaId
           : familiaId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -171,26 +175,23 @@ class _$_Subfamilia extends _Subfamilia {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Subfamilia &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.familiaId, familiaId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdate, lastUpdate) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.familiaId, familiaId) ||
+                other.familiaId == familiaId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.lastUpdate, lastUpdate) ||
+                other.lastUpdate == lastUpdate) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(familiaId),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(lastUpdate),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode =>
+      Object.hash(runtimeType, id, familiaId, descripcion, lastUpdate, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SubfamiliaCopyWith<_$_Subfamilia> get copyWith =>
       __$$_SubfamiliaCopyWithImpl<_$_Subfamilia>(this, _$identity);
 }

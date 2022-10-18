@@ -31,7 +31,8 @@ mixin _$Divisa {
 /// @nodoc
 abstract class $DivisaCopyWith<$Res> {
   factory $DivisaCopyWith(Divisa value, $Res Function(Divisa) then) =
-      _$DivisaCopyWithImpl<$Res>;
+      _$DivisaCopyWithImpl<$Res, Divisa>;
+  @useResult
   $Res call(
       {String id,
       String abv,
@@ -43,53 +44,56 @@ abstract class $DivisaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DivisaCopyWithImpl<$Res> implements $DivisaCopyWith<$Res> {
+class _$DivisaCopyWithImpl<$Res, $Val extends Divisa>
+    implements $DivisaCopyWith<$Res> {
   _$DivisaCopyWithImpl(this._value, this._then);
 
-  final Divisa _value;
   // ignore: unused_field
-  final $Res Function(Divisa) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? abv = freezed,
+    Object? id = null,
+    Object? abv = null,
     Object? simbolo = freezed,
     Object? redondeo = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      abv: abv == freezed
+      abv: null == abv
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as String,
-      simbolo: simbolo == freezed
+      simbolo: freezed == simbolo
           ? _value.simbolo
           : simbolo // ignore: cast_nullable_to_non_nullable
               as String?,
-      redondeo: redondeo == freezed
+      redondeo: freezed == redondeo
           ? _value.redondeo
           : redondeo // ignore: cast_nullable_to_non_nullable
               as double?,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -98,6 +102,7 @@ abstract class _$$_DivisaCopyWith<$Res> implements $DivisaCopyWith<$Res> {
   factory _$$_DivisaCopyWith(_$_Divisa value, $Res Function(_$_Divisa) then) =
       __$$_DivisaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String abv,
@@ -109,50 +114,49 @@ abstract class _$$_DivisaCopyWith<$Res> implements $DivisaCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DivisaCopyWithImpl<$Res> extends _$DivisaCopyWithImpl<$Res>
+class __$$_DivisaCopyWithImpl<$Res>
+    extends _$DivisaCopyWithImpl<$Res, _$_Divisa>
     implements _$$_DivisaCopyWith<$Res> {
   __$$_DivisaCopyWithImpl(_$_Divisa _value, $Res Function(_$_Divisa) _then)
-      : super(_value, (v) => _then(v as _$_Divisa));
+      : super(_value, _then);
 
-  @override
-  _$_Divisa get _value => super._value as _$_Divisa;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? abv = freezed,
+    Object? id = null,
+    Object? abv = null,
     Object? simbolo = freezed,
     Object? redondeo = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_$_Divisa(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      abv: abv == freezed
+      abv: null == abv
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as String,
-      simbolo: simbolo == freezed
+      simbolo: freezed == simbolo
           ? _value.simbolo
           : simbolo // ignore: cast_nullable_to_non_nullable
               as String?,
-      redondeo: redondeo == freezed
+      redondeo: freezed == redondeo
           ? _value.redondeo
           : redondeo // ignore: cast_nullable_to_non_nullable
               as double?,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -198,30 +202,25 @@ class _$_Divisa extends _Divisa {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Divisa &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.abv, abv) &&
-            const DeepCollectionEquality().equals(other.simbolo, simbolo) &&
-            const DeepCollectionEquality().equals(other.redondeo, redondeo) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdate, lastUpdate) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.abv, abv) || other.abv == abv) &&
+            (identical(other.simbolo, simbolo) || other.simbolo == simbolo) &&
+            (identical(other.redondeo, redondeo) ||
+                other.redondeo == redondeo) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.lastUpdate, lastUpdate) ||
+                other.lastUpdate == lastUpdate) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(abv),
-      const DeepCollectionEquality().hash(simbolo),
-      const DeepCollectionEquality().hash(redondeo),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(lastUpdate),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, id, abv, simbolo, redondeo,
+      descripcion, lastUpdate, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DivisaCopyWith<_$_Divisa> get copyWith =>
       __$$_DivisaCopyWithImpl<_$_Divisa>(this, _$identity);
 }

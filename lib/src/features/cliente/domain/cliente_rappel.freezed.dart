@@ -33,7 +33,8 @@ mixin _$ClienteRappel {
 abstract class $ClienteRappelCopyWith<$Res> {
   factory $ClienteRappelCopyWith(
           ClienteRappel value, $Res Function(ClienteRappel) then) =
-      _$ClienteRappelCopyWithImpl<$Res>;
+      _$ClienteRappelCopyWithImpl<$Res, ClienteRappel>;
+  @useResult
   $Res call(
       {String clienteId,
       String rappelId,
@@ -45,54 +46,56 @@ abstract class $ClienteRappelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteRappelCopyWithImpl<$Res>
+class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
     implements $ClienteRappelCopyWith<$Res> {
   _$ClienteRappelCopyWithImpl(this._value, this._then);
 
-  final ClienteRappel _value;
   // ignore: unused_field
-  final $Res Function(ClienteRappel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? rappelId = freezed,
-    Object? descripcion = freezed,
-    Object? fechaDesDe = freezed,
+    Object? clienteId = null,
+    Object? rappelId = null,
+    Object? descripcion = null,
+    Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      rappelId: rappelId == freezed
+      rappelId: null == rappelId
           ? _value.rappelId
           : rappelId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      fechaDesDe: fechaDesDe == freezed
+      fechaDesDe: null == fechaDesDe
           ? _value.fechaDesDe
           : fechaDesDe // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      fechaHasta: fechaHasta == freezed
+      fechaHasta: freezed == fechaHasta
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -103,6 +106,7 @@ abstract class _$$_ClienteRappelCopyWith<$Res>
           _$_ClienteRappel value, $Res Function(_$_ClienteRappel) then) =
       __$$_ClienteRappelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String clienteId,
       String rappelId,
@@ -115,51 +119,49 @@ abstract class _$$_ClienteRappelCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteRappelCopyWithImpl<$Res>
-    extends _$ClienteRappelCopyWithImpl<$Res>
+    extends _$ClienteRappelCopyWithImpl<$Res, _$_ClienteRappel>
     implements _$$_ClienteRappelCopyWith<$Res> {
   __$$_ClienteRappelCopyWithImpl(
       _$_ClienteRappel _value, $Res Function(_$_ClienteRappel) _then)
-      : super(_value, (v) => _then(v as _$_ClienteRappel));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteRappel get _value => super._value as _$_ClienteRappel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? rappelId = freezed,
-    Object? descripcion = freezed,
-    Object? fechaDesDe = freezed,
+    Object? clienteId = null,
+    Object? rappelId = null,
+    Object? descripcion = null,
+    Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteRappel(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      rappelId: rappelId == freezed
+      rappelId: null == rappelId
           ? _value.rappelId
           : rappelId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      fechaDesDe: fechaDesDe == freezed
+      fechaDesDe: null == fechaDesDe
           ? _value.fechaDesDe
           : fechaDesDe // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      fechaHasta: fechaHasta == freezed
+      fechaHasta: freezed == fechaHasta
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -205,32 +207,28 @@ class _$_ClienteRappel extends _ClienteRappel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteRappel &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.rappelId, rappelId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaDesDe, fechaDesDe) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaHasta, fechaHasta) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.rappelId, rappelId) ||
+                other.rappelId == rappelId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.fechaDesDe, fechaDesDe) ||
+                other.fechaDesDe == fechaDesDe) &&
+            (identical(other.fechaHasta, fechaHasta) ||
+                other.fechaHasta == fechaHasta) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(rappelId),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(fechaDesDe),
-      const DeepCollectionEquality().hash(fechaHasta),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
+      fechaDesDe, fechaHasta, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteRappelCopyWith<_$_ClienteRappel> get copyWith =>
       __$$_ClienteRappelCopyWithImpl<_$_ClienteRappel>(this, _$identity);
 }

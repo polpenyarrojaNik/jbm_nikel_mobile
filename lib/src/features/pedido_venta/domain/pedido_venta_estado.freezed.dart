@@ -30,44 +30,47 @@ mixin _$PedidoVentaEstado {
 abstract class $PedidoVentaEstadoCopyWith<$Res> {
   factory $PedidoVentaEstadoCopyWith(
           PedidoVentaEstado value, $Res Function(PedidoVentaEstado) then) =
-      _$PedidoVentaEstadoCopyWithImpl<$Res>;
+      _$PedidoVentaEstadoCopyWithImpl<$Res, PedidoVentaEstado>;
+  @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
-class _$PedidoVentaEstadoCopyWithImpl<$Res>
+class _$PedidoVentaEstadoCopyWithImpl<$Res, $Val extends PedidoVentaEstado>
     implements $PedidoVentaEstadoCopyWith<$Res> {
   _$PedidoVentaEstadoCopyWithImpl(this._value, this._then);
 
-  final PedidoVentaEstado _value;
   // ignore: unused_field
-  final $Res Function(PedidoVentaEstado) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? id = null,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -78,41 +81,40 @@ abstract class _$$_PedidoVentaEstadoCopyWith<$Res>
           $Res Function(_$_PedidoVentaEstado) then) =
       __$$_PedidoVentaEstadoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
 class __$$_PedidoVentaEstadoCopyWithImpl<$Res>
-    extends _$PedidoVentaEstadoCopyWithImpl<$Res>
+    extends _$PedidoVentaEstadoCopyWithImpl<$Res, _$_PedidoVentaEstado>
     implements _$$_PedidoVentaEstadoCopyWith<$Res> {
   __$$_PedidoVentaEstadoCopyWithImpl(
       _$_PedidoVentaEstado _value, $Res Function(_$_PedidoVentaEstado) _then)
-      : super(_value, (v) => _then(v as _$_PedidoVentaEstado));
+      : super(_value, _then);
 
-  @override
-  _$_PedidoVentaEstado get _value => super._value as _$_PedidoVentaEstado;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? id = null,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_$_PedidoVentaEstado(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -149,24 +151,21 @@ class _$_PedidoVentaEstado extends _PedidoVentaEstado {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PedidoVentaEstado &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdate, lastUpdate) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.lastUpdate, lastUpdate) ||
+                other.lastUpdate == lastUpdate) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(lastUpdate),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode =>
+      Object.hash(runtimeType, id, descripcion, lastUpdate, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PedidoVentaEstadoCopyWith<_$_PedidoVentaEstado> get copyWith =>
       __$$_PedidoVentaEstadoCopyWithImpl<_$_PedidoVentaEstado>(
           this, _$identity);

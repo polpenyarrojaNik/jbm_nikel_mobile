@@ -28,43 +28,47 @@ mixin _$Familia {
 /// @nodoc
 abstract class $FamiliaCopyWith<$Res> {
   factory $FamiliaCopyWith(Familia value, $Res Function(Familia) then) =
-      _$FamiliaCopyWithImpl<$Res>;
+      _$FamiliaCopyWithImpl<$Res, Familia>;
+  @useResult
   $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
-class _$FamiliaCopyWithImpl<$Res> implements $FamiliaCopyWith<$Res> {
+class _$FamiliaCopyWithImpl<$Res, $Val extends Familia>
+    implements $FamiliaCopyWith<$Res> {
   _$FamiliaCopyWithImpl(this._value, this._then);
 
-  final Familia _value;
   // ignore: unused_field
-  final $Res Function(Familia) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? id = null,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -74,39 +78,39 @@ abstract class _$$_FamiliaCopyWith<$Res> implements $FamiliaCopyWith<$Res> {
           _$_Familia value, $Res Function(_$_Familia) then) =
       __$$_FamiliaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String id, String descripcion, DateTime lastUpdate, bool deleted});
 }
 
 /// @nodoc
-class __$$_FamiliaCopyWithImpl<$Res> extends _$FamiliaCopyWithImpl<$Res>
+class __$$_FamiliaCopyWithImpl<$Res>
+    extends _$FamiliaCopyWithImpl<$Res, _$_Familia>
     implements _$$_FamiliaCopyWith<$Res> {
   __$$_FamiliaCopyWithImpl(_$_Familia _value, $Res Function(_$_Familia) _then)
-      : super(_value, (v) => _then(v as _$_Familia));
+      : super(_value, _then);
 
-  @override
-  _$_Familia get _value => super._value as _$_Familia;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcion = freezed,
-    Object? lastUpdate = freezed,
-    Object? deleted = freezed,
+    Object? id = null,
+    Object? descripcion = null,
+    Object? lastUpdate = null,
+    Object? deleted = null,
   }) {
     return _then(_$_Familia(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdate: lastUpdate == freezed
+      lastUpdate: null == lastUpdate
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -143,24 +147,21 @@ class _$_Familia extends _Familia {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Familia &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdate, lastUpdate) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.lastUpdate, lastUpdate) ||
+                other.lastUpdate == lastUpdate) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(lastUpdate),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode =>
+      Object.hash(runtimeType, id, descripcion, lastUpdate, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FamiliaCopyWith<_$_Familia> get copyWith =>
       __$$_FamiliaCopyWithImpl<_$_Familia>(this, _$identity);
 }

@@ -52,7 +52,8 @@ mixin _$ClienteVentasArticulo {
 abstract class $ClienteVentasArticuloCopyWith<$Res> {
   factory $ClienteVentasArticuloCopyWith(ClienteVentasArticulo value,
           $Res Function(ClienteVentasArticulo) then) =
-      _$ClienteVentasArticuloCopyWithImpl<$Res>;
+      _$ClienteVentasArticuloCopyWithImpl<$Res, ClienteVentasArticulo>;
+  @useResult
   $Res call(
       {String articuloId,
       String descripcionES,
@@ -83,18 +84,21 @@ abstract class $ClienteVentasArticuloCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteVentasArticuloCopyWithImpl<$Res>
+class _$ClienteVentasArticuloCopyWithImpl<$Res,
+        $Val extends ClienteVentasArticulo>
     implements $ClienteVentasArticuloCopyWith<$Res> {
   _$ClienteVentasArticuloCopyWithImpl(this._value, this._then);
 
-  final ClienteVentasArticulo _value;
   // ignore: unused_field
-  final $Res Function(ClienteVentasArticulo) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? descripcionES = freezed,
+    Object? articuloId = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -109,123 +113,123 @@ class _$ClienteVentasArticuloCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? importeAnyo = freezed,
-    Object? importeAnyo_1 = freezed,
-    Object? importeAnyo_2 = freezed,
-    Object? importeAnyo_3 = freezed,
-    Object? importeAnyo_4 = freezed,
-    Object? cantidadAnyo = freezed,
-    Object? cantidadAnyo_1 = freezed,
-    Object? cantidadAnyo_2 = freezed,
-    Object? cantidadAnyo_3 = freezed,
-    Object? cantidadAnyo_4 = freezed,
+    Object? importeAnyo = null,
+    Object? importeAnyo_1 = null,
+    Object? importeAnyo_2 = null,
+    Object? importeAnyo_3 = null,
+    Object? importeAnyo_4 = null,
+    Object? cantidadAnyo = null,
+    Object? cantidadAnyo_1 = null,
+    Object? cantidadAnyo_2 = null,
+    Object? cantidadAnyo_3 = null,
+    Object? cantidadAnyo_4 = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      importeAnyo: importeAnyo == freezed
+      importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_1: importeAnyo_1 == freezed
+      importeAnyo_1: null == importeAnyo_1
           ? _value.importeAnyo_1
           : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_2: importeAnyo_2 == freezed
+      importeAnyo_2: null == importeAnyo_2
           ? _value.importeAnyo_2
           : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_3: importeAnyo_3 == freezed
+      importeAnyo_3: null == importeAnyo_3
           ? _value.importeAnyo_3
           : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_4: importeAnyo_4 == freezed
+      importeAnyo_4: null == importeAnyo_4
           ? _value.importeAnyo_4
           : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
               as Money,
-      cantidadAnyo: cantidadAnyo == freezed
+      cantidadAnyo: null == cantidadAnyo
           ? _value.cantidadAnyo
           : cantidadAnyo // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_1: cantidadAnyo_1 == freezed
+      cantidadAnyo_1: null == cantidadAnyo_1
           ? _value.cantidadAnyo_1
           : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_2: cantidadAnyo_2 == freezed
+      cantidadAnyo_2: null == cantidadAnyo_2
           ? _value.cantidadAnyo_2
           : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_3: cantidadAnyo_3 == freezed
+      cantidadAnyo_3: null == cantidadAnyo_3
           ? _value.cantidadAnyo_3
           : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_4: cantidadAnyo_4 == freezed
+      cantidadAnyo_4: null == cantidadAnyo_4
           ? _value.cantidadAnyo_4
           : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -236,6 +240,7 @@ abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
           $Res Function(_$_ClienteVentasArticulo) then) =
       __$$_ClienteVentasArticuloCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String articuloId,
       String descripcionES,
@@ -267,20 +272,17 @@ abstract class _$$_ClienteVentasArticuloCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
-    extends _$ClienteVentasArticuloCopyWithImpl<$Res>
+    extends _$ClienteVentasArticuloCopyWithImpl<$Res, _$_ClienteVentasArticulo>
     implements _$$_ClienteVentasArticuloCopyWith<$Res> {
   __$$_ClienteVentasArticuloCopyWithImpl(_$_ClienteVentasArticulo _value,
       $Res Function(_$_ClienteVentasArticulo) _then)
-      : super(_value, (v) => _then(v as _$_ClienteVentasArticulo));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteVentasArticulo get _value =>
-      super._value as _$_ClienteVentasArticulo;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? descripcionES = freezed,
+    Object? articuloId = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -295,119 +297,119 @@ class __$$_ClienteVentasArticuloCopyWithImpl<$Res>
     Object? descripcionRU = freezed,
     Object? descripcionCN = freezed,
     Object? descripcionEL = freezed,
-    Object? importeAnyo = freezed,
-    Object? importeAnyo_1 = freezed,
-    Object? importeAnyo_2 = freezed,
-    Object? importeAnyo_3 = freezed,
-    Object? importeAnyo_4 = freezed,
-    Object? cantidadAnyo = freezed,
-    Object? cantidadAnyo_1 = freezed,
-    Object? cantidadAnyo_2 = freezed,
-    Object? cantidadAnyo_3 = freezed,
-    Object? cantidadAnyo_4 = freezed,
+    Object? importeAnyo = null,
+    Object? importeAnyo_1 = null,
+    Object? importeAnyo_2 = null,
+    Object? importeAnyo_3 = null,
+    Object? importeAnyo_4 = null,
+    Object? cantidadAnyo = null,
+    Object? cantidadAnyo_1 = null,
+    Object? cantidadAnyo_2 = null,
+    Object? cantidadAnyo_3 = null,
+    Object? cantidadAnyo_4 = null,
   }) {
     return _then(_$_ClienteVentasArticulo(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      importeAnyo: importeAnyo == freezed
+      importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_1: importeAnyo_1 == freezed
+      importeAnyo_1: null == importeAnyo_1
           ? _value.importeAnyo_1
           : importeAnyo_1 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_2: importeAnyo_2 == freezed
+      importeAnyo_2: null == importeAnyo_2
           ? _value.importeAnyo_2
           : importeAnyo_2 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_3: importeAnyo_3 == freezed
+      importeAnyo_3: null == importeAnyo_3
           ? _value.importeAnyo_3
           : importeAnyo_3 // ignore: cast_nullable_to_non_nullable
               as Money,
-      importeAnyo_4: importeAnyo_4 == freezed
+      importeAnyo_4: null == importeAnyo_4
           ? _value.importeAnyo_4
           : importeAnyo_4 // ignore: cast_nullable_to_non_nullable
               as Money,
-      cantidadAnyo: cantidadAnyo == freezed
+      cantidadAnyo: null == cantidadAnyo
           ? _value.cantidadAnyo
           : cantidadAnyo // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_1: cantidadAnyo_1 == freezed
+      cantidadAnyo_1: null == cantidadAnyo_1
           ? _value.cantidadAnyo_1
           : cantidadAnyo_1 // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_2: cantidadAnyo_2 == freezed
+      cantidadAnyo_2: null == cantidadAnyo_2
           ? _value.cantidadAnyo_2
           : cantidadAnyo_2 // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_3: cantidadAnyo_3 == freezed
+      cantidadAnyo_3: null == cantidadAnyo_3
           ? _value.cantidadAnyo_3
           : cantidadAnyo_3 // ignore: cast_nullable_to_non_nullable
               as int,
-      cantidadAnyo_4: cantidadAnyo_4 == freezed
+      cantidadAnyo_4: null == cantidadAnyo_4
           ? _value.cantidadAnyo_4
           : cantidadAnyo_4 // ignore: cast_nullable_to_non_nullable
               as int,
@@ -510,93 +512,94 @@ class _$_ClienteVentasArticulo extends _ClienteVentasArticulo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteVentasArticulo &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionES, descripcionES) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEN, descripcionEN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionFR, descripcionFR) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionDE, descripcionDE) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCA, descripcionCA) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionGB, descripcionGB) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionHU, descripcionHU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionIT, descripcionIT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionNL, descripcionNL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPL, descripcionPL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPT, descripcionPT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRO, descripcionRO) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRU, descripcionRU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCN, descripcionCN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEL, descripcionEL) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo, importeAnyo) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_1, importeAnyo_1) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_2, importeAnyo_2) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_3, importeAnyo_3) &&
-            const DeepCollectionEquality()
-                .equals(other.importeAnyo_4, importeAnyo_4) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadAnyo, cantidadAnyo) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadAnyo_1, cantidadAnyo_1) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadAnyo_2, cantidadAnyo_2) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadAnyo_3, cantidadAnyo_3) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadAnyo_4, cantidadAnyo_4));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPL, descripcionPL) ||
+                other.descripcionPL == descripcionPL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL) &&
+            (identical(other.importeAnyo, importeAnyo) ||
+                other.importeAnyo == importeAnyo) &&
+            (identical(other.importeAnyo_1, importeAnyo_1) ||
+                other.importeAnyo_1 == importeAnyo_1) &&
+            (identical(other.importeAnyo_2, importeAnyo_2) ||
+                other.importeAnyo_2 == importeAnyo_2) &&
+            (identical(other.importeAnyo_3, importeAnyo_3) ||
+                other.importeAnyo_3 == importeAnyo_3) &&
+            (identical(other.importeAnyo_4, importeAnyo_4) ||
+                other.importeAnyo_4 == importeAnyo_4) &&
+            (identical(other.cantidadAnyo, cantidadAnyo) ||
+                other.cantidadAnyo == cantidadAnyo) &&
+            (identical(other.cantidadAnyo_1, cantidadAnyo_1) ||
+                other.cantidadAnyo_1 == cantidadAnyo_1) &&
+            (identical(other.cantidadAnyo_2, cantidadAnyo_2) ||
+                other.cantidadAnyo_2 == cantidadAnyo_2) &&
+            (identical(other.cantidadAnyo_3, cantidadAnyo_3) ||
+                other.cantidadAnyo_3 == cantidadAnyo_3) &&
+            (identical(other.cantidadAnyo_4, cantidadAnyo_4) ||
+                other.cantidadAnyo_4 == cantidadAnyo_4));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(articuloId),
-        const DeepCollectionEquality().hash(descripcionES),
-        const DeepCollectionEquality().hash(descripcionEN),
-        const DeepCollectionEquality().hash(descripcionFR),
-        const DeepCollectionEquality().hash(descripcionDE),
-        const DeepCollectionEquality().hash(descripcionCA),
-        const DeepCollectionEquality().hash(descripcionGB),
-        const DeepCollectionEquality().hash(descripcionHU),
-        const DeepCollectionEquality().hash(descripcionIT),
-        const DeepCollectionEquality().hash(descripcionNL),
-        const DeepCollectionEquality().hash(descripcionPL),
-        const DeepCollectionEquality().hash(descripcionPT),
-        const DeepCollectionEquality().hash(descripcionRO),
-        const DeepCollectionEquality().hash(descripcionRU),
-        const DeepCollectionEquality().hash(descripcionCN),
-        const DeepCollectionEquality().hash(descripcionEL),
-        const DeepCollectionEquality().hash(importeAnyo),
-        const DeepCollectionEquality().hash(importeAnyo_1),
-        const DeepCollectionEquality().hash(importeAnyo_2),
-        const DeepCollectionEquality().hash(importeAnyo_3),
-        const DeepCollectionEquality().hash(importeAnyo_4),
-        const DeepCollectionEquality().hash(cantidadAnyo),
-        const DeepCollectionEquality().hash(cantidadAnyo_1),
-        const DeepCollectionEquality().hash(cantidadAnyo_2),
-        const DeepCollectionEquality().hash(cantidadAnyo_3),
-        const DeepCollectionEquality().hash(cantidadAnyo_4)
+        articuloId,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        importeAnyo,
+        importeAnyo_1,
+        importeAnyo_2,
+        importeAnyo_3,
+        importeAnyo_4,
+        cantidadAnyo,
+        cantidadAnyo_1,
+        cantidadAnyo_2,
+        cantidadAnyo_3,
+        cantidadAnyo_4
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteVentasArticuloCopyWith<_$_ClienteVentasArticulo> get copyWith =>
       __$$_ClienteVentasArticuloCopyWithImpl<_$_ClienteVentasArticulo>(
           this, _$identity);

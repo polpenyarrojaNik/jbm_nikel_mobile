@@ -49,7 +49,8 @@ mixin _$ArticuloGrupoNetoDTO {
 abstract class $ArticuloGrupoNetoDTOCopyWith<$Res> {
   factory $ArticuloGrupoNetoDTOCopyWith(ArticuloGrupoNetoDTO value,
           $Res Function(ArticuloGrupoNetoDTO) then) =
-      _$ArticuloGrupoNetoDTOCopyWithImpl<$Res>;
+      _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, ArticuloGrupoNetoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
@@ -63,64 +64,67 @@ abstract class $ArticuloGrupoNetoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res>
+class _$ArticuloGrupoNetoDTOCopyWithImpl<$Res,
+        $Val extends ArticuloGrupoNetoDTO>
     implements $ArticuloGrupoNetoDTOCopyWith<$Res> {
   _$ArticuloGrupoNetoDTOCopyWithImpl(this._value, this._then);
 
-  final ArticuloGrupoNetoDTO _value;
   // ignore: unused_field
-  final $Res Function(ArticuloGrupoNetoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? grupoNetoId = freezed,
-    Object? grupoNetoDescripcion = freezed,
-    Object? cantidadDesde = freezed,
-    Object? precio = freezed,
-    Object? divisaId = freezed,
-    Object? tipoPrecio = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? grupoNetoId = null,
+    Object? grupoNetoDescripcion = null,
+    Object? cantidadDesde = null,
+    Object? precio = null,
+    Object? divisaId = null,
+    Object? tipoPrecio = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoId: grupoNetoId == freezed
+      grupoNetoId: null == grupoNetoId
           ? _value.grupoNetoId
           : grupoNetoId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoDescripcion: grupoNetoDescripcion == freezed
+      grupoNetoDescripcion: null == grupoNetoDescripcion
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
-      divisaId: divisaId == freezed
+      divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -131,6 +135,7 @@ abstract class _$$_ArticuloGrupoNetoDTOCopyWith<$Res>
           $Res Function(_$_ArticuloGrupoNetoDTO) then) =
       __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
@@ -145,61 +150,59 @@ abstract class _$$_ArticuloGrupoNetoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloGrupoNetoDTOCopyWithImpl<$Res>
-    extends _$ArticuloGrupoNetoDTOCopyWithImpl<$Res>
+    extends _$ArticuloGrupoNetoDTOCopyWithImpl<$Res, _$_ArticuloGrupoNetoDTO>
     implements _$$_ArticuloGrupoNetoDTOCopyWith<$Res> {
   __$$_ArticuloGrupoNetoDTOCopyWithImpl(_$_ArticuloGrupoNetoDTO _value,
       $Res Function(_$_ArticuloGrupoNetoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloGrupoNetoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloGrupoNetoDTO get _value => super._value as _$_ArticuloGrupoNetoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? grupoNetoId = freezed,
-    Object? grupoNetoDescripcion = freezed,
-    Object? cantidadDesde = freezed,
-    Object? precio = freezed,
-    Object? divisaId = freezed,
-    Object? tipoPrecio = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? grupoNetoId = null,
+    Object? grupoNetoDescripcion = null,
+    Object? cantidadDesde = null,
+    Object? precio = null,
+    Object? divisaId = null,
+    Object? tipoPrecio = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloGrupoNetoDTO(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoId: grupoNetoId == freezed
+      grupoNetoId: null == grupoNetoId
           ? _value.grupoNetoId
           : grupoNetoId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoDescripcion: grupoNetoDescripcion == freezed
+      grupoNetoDescripcion: null == grupoNetoDescripcion
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
-      divisaId: divisaId == freezed
+      divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -272,39 +275,41 @@ class _$_ArticuloGrupoNetoDTO extends _ArticuloGrupoNetoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloGrupoNetoDTO &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.grupoNetoId, grupoNetoId) &&
-            const DeepCollectionEquality()
-                .equals(other.grupoNetoDescripcion, grupoNetoDescripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadDesde, cantidadDesde) &&
-            const DeepCollectionEquality().equals(other.precio, precio) &&
-            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
-            const DeepCollectionEquality()
-                .equals(other.tipoPrecio, tipoPrecio) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.grupoNetoId, grupoNetoId) ||
+                other.grupoNetoId == grupoNetoId) &&
+            (identical(other.grupoNetoDescripcion, grupoNetoDescripcion) ||
+                other.grupoNetoDescripcion == grupoNetoDescripcion) &&
+            (identical(other.cantidadDesde, cantidadDesde) ||
+                other.cantidadDesde == cantidadDesde) &&
+            (identical(other.precio, precio) || other.precio == precio) &&
+            (identical(other.divisaId, divisaId) ||
+                other.divisaId == divisaId) &&
+            (identical(other.tipoPrecio, tipoPrecio) ||
+                other.tipoPrecio == tipoPrecio) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(grupoNetoId),
-      const DeepCollectionEquality().hash(grupoNetoDescripcion),
-      const DeepCollectionEquality().hash(cantidadDesde),
-      const DeepCollectionEquality().hash(precio),
-      const DeepCollectionEquality().hash(divisaId),
-      const DeepCollectionEquality().hash(tipoPrecio),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      articuloId,
+      grupoNetoId,
+      grupoNetoDescripcion,
+      cantidadDesde,
+      precio,
+      divisaId,
+      tipoPrecio,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloGrupoNetoDTOCopyWith<_$_ArticuloGrupoNetoDTO> get copyWith =>
       __$$_ArticuloGrupoNetoDTOCopyWithImpl<_$_ArticuloGrupoNetoDTO>(
           this, _$identity);

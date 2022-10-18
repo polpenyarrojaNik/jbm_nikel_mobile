@@ -35,7 +35,8 @@ mixin _$ClienteContacto {
 abstract class $ClienteContactoCopyWith<$Res> {
   factory $ClienteContactoCopyWith(
           ClienteContacto value, $Res Function(ClienteContacto) then) =
-      _$ClienteContactoCopyWithImpl<$Res>;
+      _$ClienteContactoCopyWithImpl<$Res, ClienteContacto>;
+  @useResult
   $Res call(
       {String clienteId,
       String contactoId,
@@ -49,64 +50,66 @@ abstract class $ClienteContactoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteContactoCopyWithImpl<$Res>
+class _$ClienteContactoCopyWithImpl<$Res, $Val extends ClienteContacto>
     implements $ClienteContactoCopyWith<$Res> {
   _$ClienteContactoCopyWithImpl(this._value, this._then);
 
-  final ClienteContacto _value;
   // ignore: unused_field
-  final $Res Function(ClienteContacto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? contactoId = freezed,
+    Object? clienteId = null,
+    Object? contactoId = null,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? telefono1 = freezed,
     Object? telefono2 = freezed,
     Object? email = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: contactoId == freezed
+      contactoId: null == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      nombre: nombre == freezed
+      nombre: freezed == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono1: telefono1 == freezed
+      telefono1: freezed == telefono1
           ? _value.telefono1
           : telefono1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono2: telefono2 == freezed
+      telefono2: freezed == telefono2
           ? _value.telefono2
           : telefono2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -117,6 +120,7 @@ abstract class _$$_ClienteContactoCopyWith<$Res>
           _$_ClienteContacto value, $Res Function(_$_ClienteContacto) then) =
       __$$_ClienteContactoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String clienteId,
       String contactoId,
@@ -131,61 +135,59 @@ abstract class _$$_ClienteContactoCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteContactoCopyWithImpl<$Res>
-    extends _$ClienteContactoCopyWithImpl<$Res>
+    extends _$ClienteContactoCopyWithImpl<$Res, _$_ClienteContacto>
     implements _$$_ClienteContactoCopyWith<$Res> {
   __$$_ClienteContactoCopyWithImpl(
       _$_ClienteContacto _value, $Res Function(_$_ClienteContacto) _then)
-      : super(_value, (v) => _then(v as _$_ClienteContacto));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteContacto get _value => super._value as _$_ClienteContacto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? contactoId = freezed,
+    Object? clienteId = null,
+    Object? contactoId = null,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? telefono1 = freezed,
     Object? telefono2 = freezed,
     Object? email = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteContacto(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: contactoId == freezed
+      contactoId: null == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      nombre: nombre == freezed
+      nombre: freezed == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono1: telefono1 == freezed
+      telefono1: freezed == telefono1
           ? _value.telefono1
           : telefono1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono2: telefono2 == freezed
+      telefono2: freezed == telefono2
           ? _value.telefono2
           : telefono2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -237,35 +239,30 @@ class _$_ClienteContacto extends _ClienteContacto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteContacto &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.contactoId, contactoId) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones) &&
-            const DeepCollectionEquality().equals(other.nombre, nombre) &&
-            const DeepCollectionEquality().equals(other.telefono1, telefono1) &&
-            const DeepCollectionEquality().equals(other.telefono2, telefono2) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.contactoId, contactoId) ||
+                other.contactoId == contactoId) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones) &&
+            (identical(other.nombre, nombre) || other.nombre == nombre) &&
+            (identical(other.telefono1, telefono1) ||
+                other.telefono1 == telefono1) &&
+            (identical(other.telefono2, telefono2) ||
+                other.telefono2 == telefono2) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(contactoId),
-      const DeepCollectionEquality().hash(observaciones),
-      const DeepCollectionEquality().hash(nombre),
-      const DeepCollectionEquality().hash(telefono1),
-      const DeepCollectionEquality().hash(telefono2),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, contactoId,
+      observaciones, nombre, telefono1, telefono2, email, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteContactoCopyWith<_$_ClienteContacto> get copyWith =>
       __$$_ClienteContactoCopyWithImpl<_$_ClienteContacto>(this, _$identity);
 }

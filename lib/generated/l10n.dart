@@ -200,6 +200,66 @@ class S {
     );
   }
 
+  /// `Downloading database...`
+  String get splash_descargandoBaseDeDatos {
+    return Intl.message(
+      'Downloading database...',
+      name: 'splash_descargandoBaseDeDatos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synchronizing articles...`
+  String get splash_articulos {
+    return Intl.message(
+      'Synchronizing articles...',
+      name: 'splash_articulos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synchronizing customers...`
+  String get splash_clientes {
+    return Intl.message(
+      'Synchronizing customers...',
+      name: 'splash_clientes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synchronizing sales orders...`
+  String get splash_pedidos {
+    return Intl.message(
+      'Synchronizing sales orders...',
+      name: 'splash_pedidos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synchronizing visits...`
+  String get splash_visitas {
+    return Intl.message(
+      'Synchronizing visits...',
+      name: 'splash_visitas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synchronizing others...`
+  String get splash_otras {
+    return Intl.message(
+      'Synchronizing others...',
+      name: 'splash_otras',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Articles`
   String get articulo_index_titulo {
     return Intl.message(

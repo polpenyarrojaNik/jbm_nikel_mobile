@@ -28,34 +28,37 @@ mixin _$ClienteAdjunto {
 abstract class $ClienteAdjuntoCopyWith<$Res> {
   factory $ClienteAdjuntoCopyWith(
           ClienteAdjunto value, $Res Function(ClienteAdjunto) then) =
-      _$ClienteAdjuntoCopyWithImpl<$Res>;
+      _$ClienteAdjuntoCopyWithImpl<$Res, ClienteAdjunto>;
+  @useResult
   $Res call({String clienteId, String nombreAdjunto});
 }
 
 /// @nodoc
-class _$ClienteAdjuntoCopyWithImpl<$Res>
+class _$ClienteAdjuntoCopyWithImpl<$Res, $Val extends ClienteAdjunto>
     implements $ClienteAdjuntoCopyWith<$Res> {
   _$ClienteAdjuntoCopyWithImpl(this._value, this._then);
 
-  final ClienteAdjunto _value;
   // ignore: unused_field
-  final $Res Function(ClienteAdjunto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? nombreAdjunto = freezed,
+    Object? clienteId = null,
+    Object? nombreAdjunto = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreAdjunto: nombreAdjunto == freezed
+      nombreAdjunto: null == nombreAdjunto
           ? _value.nombreAdjunto
           : nombreAdjunto // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,31 +69,30 @@ abstract class _$$_ClienteAdjuntoCopyWith<$Res>
           _$_ClienteAdjunto value, $Res Function(_$_ClienteAdjunto) then) =
       __$$_ClienteAdjuntoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String clienteId, String nombreAdjunto});
 }
 
 /// @nodoc
 class __$$_ClienteAdjuntoCopyWithImpl<$Res>
-    extends _$ClienteAdjuntoCopyWithImpl<$Res>
+    extends _$ClienteAdjuntoCopyWithImpl<$Res, _$_ClienteAdjunto>
     implements _$$_ClienteAdjuntoCopyWith<$Res> {
   __$$_ClienteAdjuntoCopyWithImpl(
       _$_ClienteAdjunto _value, $Res Function(_$_ClienteAdjunto) _then)
-      : super(_value, (v) => _then(v as _$_ClienteAdjunto));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteAdjunto get _value => super._value as _$_ClienteAdjunto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? nombreAdjunto = freezed,
+    Object? clienteId = null,
+    Object? nombreAdjunto = null,
   }) {
     return _then(_$_ClienteAdjunto(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreAdjunto: nombreAdjunto == freezed
+      nombreAdjunto: null == nombreAdjunto
           ? _value.nombreAdjunto
           : nombreAdjunto // ignore: cast_nullable_to_non_nullable
               as String,
@@ -120,19 +122,18 @@ class _$_ClienteAdjunto extends _ClienteAdjunto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteAdjunto &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreAdjunto, nombreAdjunto));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.nombreAdjunto, nombreAdjunto) ||
+                other.nombreAdjunto == nombreAdjunto));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(nombreAdjunto));
+  int get hashCode => Object.hash(runtimeType, clienteId, nombreAdjunto);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteAdjuntoCopyWith<_$_ClienteAdjunto> get copyWith =>
       __$$_ClienteAdjuntoCopyWithImpl<_$_ClienteAdjunto>(this, _$identity);
 }

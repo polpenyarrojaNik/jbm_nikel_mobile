@@ -52,7 +52,8 @@ mixin _$VisitaDTO {
 /// @nodoc
 abstract class $VisitaDTOCopyWith<$Res> {
   factory $VisitaDTOCopyWith(VisitaDTO value, $Res Function(VisitaDTO) then) =
-      _$VisitaDTOCopyWithImpl<$Res>;
+      _$VisitaDTOCopyWithImpl<$Res, VisitaDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'VISITA_ID') String id,
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
@@ -68,73 +69,76 @@ abstract class $VisitaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VisitaDTOCopyWithImpl<$Res> implements $VisitaDTOCopyWith<$Res> {
+class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
+    implements $VisitaDTOCopyWith<$Res> {
   _$VisitaDTOCopyWithImpl(this._value, this._then);
 
-  final VisitaDTO _value;
   // ignore: unused_field
-  final $Res Function(VisitaDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? clienteId = freezed,
-    Object? fecha = freezed,
-    Object? numEmpl = freezed,
+    Object? id = null,
+    Object? clienteId = null,
+    Object? fecha = null,
+    Object? numEmpl = null,
     Object? contacto = freezed,
     Object? resumen = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
     Object? visitaAppId = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      numEmpl: numEmpl == freezed
+      numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: contacto == freezed
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumen: resumen == freezed
+      resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      visitaAppId: visitaAppId == freezed
+      visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -144,6 +148,7 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
           _$_VisitaDTO value, $Res Function(_$_VisitaDTO) then) =
       __$$_VisitaDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'VISITA_ID') String id,
       @JsonKey(name: 'CLIENTE_ID') String clienteId,
@@ -159,71 +164,70 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VisitaDTOCopyWithImpl<$Res> extends _$VisitaDTOCopyWithImpl<$Res>
+class __$$_VisitaDTOCopyWithImpl<$Res>
+    extends _$VisitaDTOCopyWithImpl<$Res, _$_VisitaDTO>
     implements _$$_VisitaDTOCopyWith<$Res> {
   __$$_VisitaDTOCopyWithImpl(
       _$_VisitaDTO _value, $Res Function(_$_VisitaDTO) _then)
-      : super(_value, (v) => _then(v as _$_VisitaDTO));
+      : super(_value, _then);
 
-  @override
-  _$_VisitaDTO get _value => super._value as _$_VisitaDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? clienteId = freezed,
-    Object? fecha = freezed,
-    Object? numEmpl = freezed,
+    Object? id = null,
+    Object? clienteId = null,
+    Object? fecha = null,
+    Object? numEmpl = null,
     Object? contacto = freezed,
     Object? resumen = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
     Object? visitaAppId = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_VisitaDTO(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      fecha: fecha == freezed
+      fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      numEmpl: numEmpl == freezed
+      numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: contacto == freezed
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumen: resumen == freezed
+      resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      visitaAppId: visitaAppId == freezed
+      visitaAppId: freezed == visitaAppId
           ? _value.visitaAppId
           : visitaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -295,39 +299,32 @@ class _$_VisitaDTO extends _VisitaDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VisitaDTO &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.fecha, fecha) &&
-            const DeepCollectionEquality().equals(other.numEmpl, numEmpl) &&
-            const DeepCollectionEquality().equals(other.contacto, contacto) &&
-            const DeepCollectionEquality().equals(other.resumen, resumen) &&
-            const DeepCollectionEquality().equals(other.latitud, latitud) &&
-            const DeepCollectionEquality().equals(other.longitud, longitud) &&
-            const DeepCollectionEquality()
-                .equals(other.visitaAppId, visitaAppId) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
+            (identical(other.contacto, contacto) ||
+                other.contacto == contacto) &&
+            (identical(other.resumen, resumen) || other.resumen == resumen) &&
+            (identical(other.latitud, latitud) || other.latitud == latitud) &&
+            (identical(other.longitud, longitud) ||
+                other.longitud == longitud) &&
+            (identical(other.visitaAppId, visitaAppId) ||
+                other.visitaAppId == visitaAppId) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(fecha),
-      const DeepCollectionEquality().hash(numEmpl),
-      const DeepCollectionEquality().hash(contacto),
-      const DeepCollectionEquality().hash(resumen),
-      const DeepCollectionEquality().hash(latitud),
-      const DeepCollectionEquality().hash(longitud),
-      const DeepCollectionEquality().hash(visitaAppId),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, id, clienteId, fecha, numEmpl,
+      contacto, resumen, latitud, longitud, visitaAppId, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VisitaDTOCopyWith<_$_VisitaDTO> get copyWith =>
       __$$_VisitaDTOCopyWithImpl<_$_VisitaDTO>(this, _$identity);
 

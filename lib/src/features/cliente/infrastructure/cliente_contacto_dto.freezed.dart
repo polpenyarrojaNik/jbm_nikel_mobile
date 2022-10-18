@@ -53,7 +53,8 @@ mixin _$ClienteContactoDTO {
 abstract class $ClienteContactoDTOCopyWith<$Res> {
   factory $ClienteContactoDTOCopyWith(
           ClienteContactoDTO value, $Res Function(ClienteContactoDTO) then) =
-      _$ClienteContactoDTOCopyWithImpl<$Res>;
+      _$ClienteContactoDTOCopyWithImpl<$Res, ClienteContactoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'CONTACTO_ID') String contactoId,
@@ -69,18 +70,20 @@ abstract class $ClienteContactoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteContactoDTOCopyWithImpl<$Res>
+class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
     implements $ClienteContactoDTOCopyWith<$Res> {
   _$ClienteContactoDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteContactoDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteContactoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? contactoId = freezed,
+    Object? clienteId = null,
+    Object? contactoId = null,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? apellido1 = freezed,
@@ -88,55 +91,55 @@ class _$ClienteContactoDTOCopyWithImpl<$Res>
     Object? telefono1 = freezed,
     Object? telefono2 = freezed,
     Object? email = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: contactoId == freezed
+      contactoId: null == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      nombre: nombre == freezed
+      nombre: freezed == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
               as String?,
-      apellido1: apellido1 == freezed
+      apellido1: freezed == apellido1
           ? _value.apellido1
           : apellido1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      apellido2: apellido2 == freezed
+      apellido2: freezed == apellido2
           ? _value.apellido2
           : apellido2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono1: telefono1 == freezed
+      telefono1: freezed == telefono1
           ? _value.telefono1
           : telefono1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono2: telefono2 == freezed
+      telefono2: freezed == telefono2
           ? _value.telefono2
           : telefono2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -147,6 +150,7 @@ abstract class _$$_ClienteContactoDTOCopyWith<$Res>
           $Res Function(_$_ClienteContactoDTO) then) =
       __$$_ClienteContactoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'CONTACTO_ID') String contactoId,
@@ -163,19 +167,17 @@ abstract class _$$_ClienteContactoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteContactoDTOCopyWithImpl<$Res>
-    extends _$ClienteContactoDTOCopyWithImpl<$Res>
+    extends _$ClienteContactoDTOCopyWithImpl<$Res, _$_ClienteContactoDTO>
     implements _$$_ClienteContactoDTOCopyWith<$Res> {
   __$$_ClienteContactoDTOCopyWithImpl(
       _$_ClienteContactoDTO _value, $Res Function(_$_ClienteContactoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteContactoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteContactoDTO get _value => super._value as _$_ClienteContactoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? contactoId = freezed,
+    Object? clienteId = null,
+    Object? contactoId = null,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? apellido1 = freezed,
@@ -183,51 +185,51 @@ class __$$_ClienteContactoDTOCopyWithImpl<$Res>
     Object? telefono1 = freezed,
     Object? telefono2 = freezed,
     Object? email = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteContactoDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: contactoId == freezed
+      contactoId: null == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
               as String,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      nombre: nombre == freezed
+      nombre: freezed == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
               as String?,
-      apellido1: apellido1 == freezed
+      apellido1: freezed == apellido1
           ? _value.apellido1
           : apellido1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      apellido2: apellido2 == freezed
+      apellido2: freezed == apellido2
           ? _value.apellido2
           : apellido2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono1: telefono1 == freezed
+      telefono1: freezed == telefono1
           ? _value.telefono1
           : telefono1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      telefono2: telefono2 == freezed
+      telefono2: freezed == telefono2
           ? _value.telefono2
           : telefono2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -299,40 +301,46 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteContactoDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.contactoId, contactoId) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones) &&
-            const DeepCollectionEquality().equals(other.nombre, nombre) &&
-            const DeepCollectionEquality().equals(other.apellido1, apellido1) &&
-            const DeepCollectionEquality().equals(other.apellido2, apellido2) &&
-            const DeepCollectionEquality().equals(other.telefono1, telefono1) &&
-            const DeepCollectionEquality().equals(other.telefono2, telefono2) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.contactoId, contactoId) ||
+                other.contactoId == contactoId) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones) &&
+            (identical(other.nombre, nombre) || other.nombre == nombre) &&
+            (identical(other.apellido1, apellido1) ||
+                other.apellido1 == apellido1) &&
+            (identical(other.apellido2, apellido2) ||
+                other.apellido2 == apellido2) &&
+            (identical(other.telefono1, telefono1) ||
+                other.telefono1 == telefono1) &&
+            (identical(other.telefono2, telefono2) ||
+                other.telefono2 == telefono2) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(contactoId),
-      const DeepCollectionEquality().hash(observaciones),
-      const DeepCollectionEquality().hash(nombre),
-      const DeepCollectionEquality().hash(apellido1),
-      const DeepCollectionEquality().hash(apellido2),
-      const DeepCollectionEquality().hash(telefono1),
-      const DeepCollectionEquality().hash(telefono2),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      clienteId,
+      contactoId,
+      observaciones,
+      nombre,
+      apellido1,
+      apellido2,
+      telefono1,
+      telefono2,
+      email,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteContactoDTOCopyWith<_$_ClienteContactoDTO> get copyWith =>
       __$$_ClienteContactoDTOCopyWithImpl<_$_ClienteContactoDTO>(
           this, _$identity);

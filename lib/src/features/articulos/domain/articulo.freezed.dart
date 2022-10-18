@@ -89,7 +89,8 @@ mixin _$Articulo {
 /// @nodoc
 abstract class $ArticuloCopyWith<$Res> {
   factory $ArticuloCopyWith(Articulo value, $Res Function(Articulo) then) =
-      _$ArticuloCopyWithImpl<$Res>;
+      _$ArticuloCopyWithImpl<$Res, Articulo>;
+  @useResult
   $Res call(
       {String id,
       String descripcionES,
@@ -161,17 +162,20 @@ abstract class $ArticuloCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
+class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
+    implements $ArticuloCopyWith<$Res> {
   _$ArticuloCopyWithImpl(this._value, this._then);
 
-  final Articulo _value;
   // ignore: unused_field
-  final $Res Function(Articulo) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcionES = freezed,
+    Object? id = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -188,21 +192,21 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
     Object? descripcionEL = freezed,
     Object? familia = freezed,
     Object? subfamilia = freezed,
-    Object? ventaMinimo = freezed,
-    Object? ventaMultiplo = freezed,
-    Object? unidadesSubcaja = freezed,
-    Object? unidadesCaja = freezed,
-    Object? unidadesPalet = freezed,
-    Object? activoWeb = freezed,
-    Object? activoApp = freezed,
-    Object? enCatalogo = freezed,
-    Object? descatalogado = freezed,
+    Object? ventaMinimo = null,
+    Object? ventaMultiplo = null,
+    Object? unidadesSubcaja = null,
+    Object? unidadesCaja = null,
+    Object? unidadesPalet = null,
+    Object? activoWeb = null,
+    Object? activoApp = null,
+    Object? enCatalogo = null,
+    Object? descatalogado = null,
     Object? paginaEnCatalgo = freezed,
     Object? paginaEnCatalgo2 = freezed,
-    Object? pesoKg = freezed,
-    Object? largoCm = freezed,
-    Object? anchoCm = freezed,
-    Object? altoCm = freezed,
+    Object? pesoKg = null,
+    Object? largoCm = null,
+    Object? anchoCm = null,
+    Object? altoCm = null,
     Object? resumenES = freezed,
     Object? resumenEN = freezed,
     Object? resumenFR = freezed,
@@ -218,13 +222,13 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
     Object? resumenRU = freezed,
     Object? resumenCN = freezed,
     Object? resumenEL = freezed,
-    Object? stockDisponible = freezed,
-    Object? ventasActual = freezed,
-    Object? ventasAnterior = freezed,
-    Object? comprasEntregaCantidad1 = freezed,
-    Object? comprasEntregaCantidad2 = freezed,
-    Object? comprasEntregaCantidad3 = freezed,
-    Object? comprasEntregaCantidadMas3 = freezed,
+    Object? stockDisponible = null,
+    Object? ventasActual = null,
+    Object? ventasAnterior = null,
+    Object? comprasEntregaCantidad1 = null,
+    Object? comprasEntregaCantidad2 = null,
+    Object? comprasEntregaCantidad3 = null,
+    Object? comprasEntregaCantidadMas3 = null,
     Object? comprasEntregaFecha1 = freezed,
     Object? comprasEntregaFecha2 = freezed,
     Object? comprasEntregaFecha3 = freezed,
@@ -232,288 +236,290 @@ class _$ArticuloCopyWithImpl<$Res> implements $ArticuloCopyWith<$Res> {
     Object? comprasEntregaEstado2 = freezed,
     Object? comprasEntregaEstado3 = freezed,
     Object? imagenPrincipal = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      familia: familia == freezed
+      familia: freezed == familia
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
               as Familia?,
-      subfamilia: subfamilia == freezed
+      subfamilia: freezed == subfamilia
           ? _value.subfamilia
           : subfamilia // ignore: cast_nullable_to_non_nullable
               as Subfamilia?,
-      ventaMinimo: ventaMinimo == freezed
+      ventaMinimo: null == ventaMinimo
           ? _value.ventaMinimo
           : ventaMinimo // ignore: cast_nullable_to_non_nullable
               as int,
-      ventaMultiplo: ventaMultiplo == freezed
+      ventaMultiplo: null == ventaMultiplo
           ? _value.ventaMultiplo
           : ventaMultiplo // ignore: cast_nullable_to_non_nullable
               as int,
-      unidadesSubcaja: unidadesSubcaja == freezed
+      unidadesSubcaja: null == unidadesSubcaja
           ? _value.unidadesSubcaja
           : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
               as int,
-      unidadesCaja: unidadesCaja == freezed
+      unidadesCaja: null == unidadesCaja
           ? _value.unidadesCaja
           : unidadesCaja // ignore: cast_nullable_to_non_nullable
               as int,
-      unidadesPalet: unidadesPalet == freezed
+      unidadesPalet: null == unidadesPalet
           ? _value.unidadesPalet
           : unidadesPalet // ignore: cast_nullable_to_non_nullable
               as int,
-      activoWeb: activoWeb == freezed
+      activoWeb: null == activoWeb
           ? _value.activoWeb
           : activoWeb // ignore: cast_nullable_to_non_nullable
               as bool,
-      activoApp: activoApp == freezed
+      activoApp: null == activoApp
           ? _value.activoApp
           : activoApp // ignore: cast_nullable_to_non_nullable
               as bool,
-      enCatalogo: enCatalogo == freezed
+      enCatalogo: null == enCatalogo
           ? _value.enCatalogo
           : enCatalogo // ignore: cast_nullable_to_non_nullable
               as bool,
-      descatalogado: descatalogado == freezed
+      descatalogado: null == descatalogado
           ? _value.descatalogado
           : descatalogado // ignore: cast_nullable_to_non_nullable
               as bool,
-      paginaEnCatalgo: paginaEnCatalgo == freezed
+      paginaEnCatalgo: freezed == paginaEnCatalgo
           ? _value.paginaEnCatalgo
           : paginaEnCatalgo // ignore: cast_nullable_to_non_nullable
               as String?,
-      paginaEnCatalgo2: paginaEnCatalgo2 == freezed
+      paginaEnCatalgo2: freezed == paginaEnCatalgo2
           ? _value.paginaEnCatalgo2
           : paginaEnCatalgo2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      pesoKg: pesoKg == freezed
+      pesoKg: null == pesoKg
           ? _value.pesoKg
           : pesoKg // ignore: cast_nullable_to_non_nullable
               as double,
-      largoCm: largoCm == freezed
+      largoCm: null == largoCm
           ? _value.largoCm
           : largoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      anchoCm: anchoCm == freezed
+      anchoCm: null == anchoCm
           ? _value.anchoCm
           : anchoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      altoCm: altoCm == freezed
+      altoCm: null == altoCm
           ? _value.altoCm
           : altoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      resumenES: resumenES == freezed
+      resumenES: freezed == resumenES
           ? _value.resumenES
           : resumenES // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenEN: resumenEN == freezed
+      resumenEN: freezed == resumenEN
           ? _value.resumenEN
           : resumenEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenFR: resumenFR == freezed
+      resumenFR: freezed == resumenFR
           ? _value.resumenFR
           : resumenFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenDE: resumenDE == freezed
+      resumenDE: freezed == resumenDE
           ? _value.resumenDE
           : resumenDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenCA: resumenCA == freezed
+      resumenCA: freezed == resumenCA
           ? _value.resumenCA
           : resumenCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenGB: resumenGB == freezed
+      resumenGB: freezed == resumenGB
           ? _value.resumenGB
           : resumenGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenHU: resumenHU == freezed
+      resumenHU: freezed == resumenHU
           ? _value.resumenHU
           : resumenHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenIT: resumenIT == freezed
+      resumenIT: freezed == resumenIT
           ? _value.resumenIT
           : resumenIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenNL: resumenNL == freezed
+      resumenNL: freezed == resumenNL
           ? _value.resumenNL
           : resumenNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenPL: resumenPL == freezed
+      resumenPL: freezed == resumenPL
           ? _value.resumenPL
           : resumenPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenPT: resumenPT == freezed
+      resumenPT: freezed == resumenPT
           ? _value.resumenPT
           : resumenPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenRO: resumenRO == freezed
+      resumenRO: freezed == resumenRO
           ? _value.resumenRO
           : resumenRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenRU: resumenRU == freezed
+      resumenRU: freezed == resumenRU
           ? _value.resumenRU
           : resumenRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenCN: resumenCN == freezed
+      resumenCN: freezed == resumenCN
           ? _value.resumenCN
           : resumenCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenEL: resumenEL == freezed
+      resumenEL: freezed == resumenEL
           ? _value.resumenEL
           : resumenEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      stockDisponible: stockDisponible == freezed
+      stockDisponible: null == stockDisponible
           ? _value.stockDisponible
           : stockDisponible // ignore: cast_nullable_to_non_nullable
               as int,
-      ventasActual: ventasActual == freezed
+      ventasActual: null == ventasActual
           ? _value.ventasActual
           : ventasActual // ignore: cast_nullable_to_non_nullable
               as Money,
-      ventasAnterior: ventasAnterior == freezed
+      ventasAnterior: null == ventasAnterior
           ? _value.ventasAnterior
           : ventasAnterior // ignore: cast_nullable_to_non_nullable
               as Money,
-      comprasEntregaCantidad1: comprasEntregaCantidad1 == freezed
+      comprasEntregaCantidad1: null == comprasEntregaCantidad1
           ? _value.comprasEntregaCantidad1
           : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaCantidad2: comprasEntregaCantidad2 == freezed
+      comprasEntregaCantidad2: null == comprasEntregaCantidad2
           ? _value.comprasEntregaCantidad2
           : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaCantidad3: comprasEntregaCantidad3 == freezed
+      comprasEntregaCantidad3: null == comprasEntregaCantidad3
           ? _value.comprasEntregaCantidad3
           : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaCantidadMas3: comprasEntregaCantidadMas3 == freezed
+      comprasEntregaCantidadMas3: null == comprasEntregaCantidadMas3
           ? _value.comprasEntregaCantidadMas3
           : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaFecha1: comprasEntregaFecha1 == freezed
+      comprasEntregaFecha1: freezed == comprasEntregaFecha1
           ? _value.comprasEntregaFecha1
           : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      comprasEntregaFecha2: comprasEntregaFecha2 == freezed
+      comprasEntregaFecha2: freezed == comprasEntregaFecha2
           ? _value.comprasEntregaFecha2
           : comprasEntregaFecha2 // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      comprasEntregaFecha3: comprasEntregaFecha3 == freezed
+      comprasEntregaFecha3: freezed == comprasEntregaFecha3
           ? _value.comprasEntregaFecha3
           : comprasEntregaFecha3 // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      comprasEntregaEstado1: comprasEntregaEstado1 == freezed
+      comprasEntregaEstado1: freezed == comprasEntregaEstado1
           ? _value.comprasEntregaEstado1
           : comprasEntregaEstado1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      comprasEntregaEstado2: comprasEntregaEstado2 == freezed
+      comprasEntregaEstado2: freezed == comprasEntregaEstado2
           ? _value.comprasEntregaEstado2
           : comprasEntregaEstado2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      comprasEntregaEstado3: comprasEntregaEstado3 == freezed
+      comprasEntregaEstado3: freezed == comprasEntregaEstado3
           ? _value.comprasEntregaEstado3
           : comprasEntregaEstado3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      imagenPrincipal: imagenPrincipal == freezed
+      imagenPrincipal: freezed == imagenPrincipal
           ? _value.imagenPrincipal
           : imagenPrincipal // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FamiliaCopyWith<$Res>? get familia {
     if (_value.familia == null) {
       return null;
     }
 
     return $FamiliaCopyWith<$Res>(_value.familia!, (value) {
-      return _then(_value.copyWith(familia: value));
+      return _then(_value.copyWith(familia: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SubfamiliaCopyWith<$Res>? get subfamilia {
     if (_value.subfamilia == null) {
       return null;
     }
 
     return $SubfamiliaCopyWith<$Res>(_value.subfamilia!, (value) {
-      return _then(_value.copyWith(subfamilia: value));
+      return _then(_value.copyWith(subfamilia: value) as $Val);
     });
   }
 }
@@ -524,6 +530,7 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
           _$_Articulo value, $Res Function(_$_Articulo) then) =
       __$$_ArticuloCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String descripcionES,
@@ -597,19 +604,18 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
+class __$$_ArticuloCopyWithImpl<$Res>
+    extends _$ArticuloCopyWithImpl<$Res, _$_Articulo>
     implements _$$_ArticuloCopyWith<$Res> {
   __$$_ArticuloCopyWithImpl(
       _$_Articulo _value, $Res Function(_$_Articulo) _then)
-      : super(_value, (v) => _then(v as _$_Articulo));
+      : super(_value, _then);
 
-  @override
-  _$_Articulo get _value => super._value as _$_Articulo;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? descripcionES = freezed,
+    Object? id = null,
+    Object? descripcionES = null,
     Object? descripcionEN = freezed,
     Object? descripcionFR = freezed,
     Object? descripcionDE = freezed,
@@ -626,21 +632,21 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
     Object? descripcionEL = freezed,
     Object? familia = freezed,
     Object? subfamilia = freezed,
-    Object? ventaMinimo = freezed,
-    Object? ventaMultiplo = freezed,
-    Object? unidadesSubcaja = freezed,
-    Object? unidadesCaja = freezed,
-    Object? unidadesPalet = freezed,
-    Object? activoWeb = freezed,
-    Object? activoApp = freezed,
-    Object? enCatalogo = freezed,
-    Object? descatalogado = freezed,
+    Object? ventaMinimo = null,
+    Object? ventaMultiplo = null,
+    Object? unidadesSubcaja = null,
+    Object? unidadesCaja = null,
+    Object? unidadesPalet = null,
+    Object? activoWeb = null,
+    Object? activoApp = null,
+    Object? enCatalogo = null,
+    Object? descatalogado = null,
     Object? paginaEnCatalgo = freezed,
     Object? paginaEnCatalgo2 = freezed,
-    Object? pesoKg = freezed,
-    Object? largoCm = freezed,
-    Object? anchoCm = freezed,
-    Object? altoCm = freezed,
+    Object? pesoKg = null,
+    Object? largoCm = null,
+    Object? anchoCm = null,
+    Object? altoCm = null,
     Object? resumenES = freezed,
     Object? resumenEN = freezed,
     Object? resumenFR = freezed,
@@ -656,13 +662,13 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
     Object? resumenRU = freezed,
     Object? resumenCN = freezed,
     Object? resumenEL = freezed,
-    Object? stockDisponible = freezed,
-    Object? ventasActual = freezed,
-    Object? ventasAnterior = freezed,
-    Object? comprasEntregaCantidad1 = freezed,
-    Object? comprasEntregaCantidad2 = freezed,
-    Object? comprasEntregaCantidad3 = freezed,
-    Object? comprasEntregaCantidadMas3 = freezed,
+    Object? stockDisponible = null,
+    Object? ventasActual = null,
+    Object? ventasAnterior = null,
+    Object? comprasEntregaCantidad1 = null,
+    Object? comprasEntregaCantidad2 = null,
+    Object? comprasEntregaCantidad3 = null,
+    Object? comprasEntregaCantidadMas3 = null,
     Object? comprasEntregaFecha1 = freezed,
     Object? comprasEntregaFecha2 = freezed,
     Object? comprasEntregaFecha3 = freezed,
@@ -670,263 +676,263 @@ class __$$_ArticuloCopyWithImpl<$Res> extends _$ArticuloCopyWithImpl<$Res>
     Object? comprasEntregaEstado2 = freezed,
     Object? comprasEntregaEstado3 = freezed,
     Object? imagenPrincipal = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_Articulo(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: descripcionES == freezed
+      descripcionES: null == descripcionES
           ? _value.descripcionES
           : descripcionES // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: descripcionEN == freezed
+      descripcionEN: freezed == descripcionEN
           ? _value.descripcionEN
           : descripcionEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionFR: descripcionFR == freezed
+      descripcionFR: freezed == descripcionFR
           ? _value.descripcionFR
           : descripcionFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionDE: descripcionDE == freezed
+      descripcionDE: freezed == descripcionDE
           ? _value.descripcionDE
           : descripcionDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCA: descripcionCA == freezed
+      descripcionCA: freezed == descripcionCA
           ? _value.descripcionCA
           : descripcionCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionGB: descripcionGB == freezed
+      descripcionGB: freezed == descripcionGB
           ? _value.descripcionGB
           : descripcionGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionHU: descripcionHU == freezed
+      descripcionHU: freezed == descripcionHU
           ? _value.descripcionHU
           : descripcionHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionIT: descripcionIT == freezed
+      descripcionIT: freezed == descripcionIT
           ? _value.descripcionIT
           : descripcionIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionNL: descripcionNL == freezed
+      descripcionNL: freezed == descripcionNL
           ? _value.descripcionNL
           : descripcionNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPL: descripcionPL == freezed
+      descripcionPL: freezed == descripcionPL
           ? _value.descripcionPL
           : descripcionPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionPT: descripcionPT == freezed
+      descripcionPT: freezed == descripcionPT
           ? _value.descripcionPT
           : descripcionPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRO: descripcionRO == freezed
+      descripcionRO: freezed == descripcionRO
           ? _value.descripcionRO
           : descripcionRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionRU: descripcionRU == freezed
+      descripcionRU: freezed == descripcionRU
           ? _value.descripcionRU
           : descripcionRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionCN: descripcionCN == freezed
+      descripcionCN: freezed == descripcionCN
           ? _value.descripcionCN
           : descripcionCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      descripcionEL: descripcionEL == freezed
+      descripcionEL: freezed == descripcionEL
           ? _value.descripcionEL
           : descripcionEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      familia: familia == freezed
+      familia: freezed == familia
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
               as Familia?,
-      subfamilia: subfamilia == freezed
+      subfamilia: freezed == subfamilia
           ? _value.subfamilia
           : subfamilia // ignore: cast_nullable_to_non_nullable
               as Subfamilia?,
-      ventaMinimo: ventaMinimo == freezed
+      ventaMinimo: null == ventaMinimo
           ? _value.ventaMinimo
           : ventaMinimo // ignore: cast_nullable_to_non_nullable
               as int,
-      ventaMultiplo: ventaMultiplo == freezed
+      ventaMultiplo: null == ventaMultiplo
           ? _value.ventaMultiplo
           : ventaMultiplo // ignore: cast_nullable_to_non_nullable
               as int,
-      unidadesSubcaja: unidadesSubcaja == freezed
+      unidadesSubcaja: null == unidadesSubcaja
           ? _value.unidadesSubcaja
           : unidadesSubcaja // ignore: cast_nullable_to_non_nullable
               as int,
-      unidadesCaja: unidadesCaja == freezed
+      unidadesCaja: null == unidadesCaja
           ? _value.unidadesCaja
           : unidadesCaja // ignore: cast_nullable_to_non_nullable
               as int,
-      unidadesPalet: unidadesPalet == freezed
+      unidadesPalet: null == unidadesPalet
           ? _value.unidadesPalet
           : unidadesPalet // ignore: cast_nullable_to_non_nullable
               as int,
-      activoWeb: activoWeb == freezed
+      activoWeb: null == activoWeb
           ? _value.activoWeb
           : activoWeb // ignore: cast_nullable_to_non_nullable
               as bool,
-      activoApp: activoApp == freezed
+      activoApp: null == activoApp
           ? _value.activoApp
           : activoApp // ignore: cast_nullable_to_non_nullable
               as bool,
-      enCatalogo: enCatalogo == freezed
+      enCatalogo: null == enCatalogo
           ? _value.enCatalogo
           : enCatalogo // ignore: cast_nullable_to_non_nullable
               as bool,
-      descatalogado: descatalogado == freezed
+      descatalogado: null == descatalogado
           ? _value.descatalogado
           : descatalogado // ignore: cast_nullable_to_non_nullable
               as bool,
-      paginaEnCatalgo: paginaEnCatalgo == freezed
+      paginaEnCatalgo: freezed == paginaEnCatalgo
           ? _value.paginaEnCatalgo
           : paginaEnCatalgo // ignore: cast_nullable_to_non_nullable
               as String?,
-      paginaEnCatalgo2: paginaEnCatalgo2 == freezed
+      paginaEnCatalgo2: freezed == paginaEnCatalgo2
           ? _value.paginaEnCatalgo2
           : paginaEnCatalgo2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      pesoKg: pesoKg == freezed
+      pesoKg: null == pesoKg
           ? _value.pesoKg
           : pesoKg // ignore: cast_nullable_to_non_nullable
               as double,
-      largoCm: largoCm == freezed
+      largoCm: null == largoCm
           ? _value.largoCm
           : largoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      anchoCm: anchoCm == freezed
+      anchoCm: null == anchoCm
           ? _value.anchoCm
           : anchoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      altoCm: altoCm == freezed
+      altoCm: null == altoCm
           ? _value.altoCm
           : altoCm // ignore: cast_nullable_to_non_nullable
               as double,
-      resumenES: resumenES == freezed
+      resumenES: freezed == resumenES
           ? _value.resumenES
           : resumenES // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenEN: resumenEN == freezed
+      resumenEN: freezed == resumenEN
           ? _value.resumenEN
           : resumenEN // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenFR: resumenFR == freezed
+      resumenFR: freezed == resumenFR
           ? _value.resumenFR
           : resumenFR // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenDE: resumenDE == freezed
+      resumenDE: freezed == resumenDE
           ? _value.resumenDE
           : resumenDE // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenCA: resumenCA == freezed
+      resumenCA: freezed == resumenCA
           ? _value.resumenCA
           : resumenCA // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenGB: resumenGB == freezed
+      resumenGB: freezed == resumenGB
           ? _value.resumenGB
           : resumenGB // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenHU: resumenHU == freezed
+      resumenHU: freezed == resumenHU
           ? _value.resumenHU
           : resumenHU // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenIT: resumenIT == freezed
+      resumenIT: freezed == resumenIT
           ? _value.resumenIT
           : resumenIT // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenNL: resumenNL == freezed
+      resumenNL: freezed == resumenNL
           ? _value.resumenNL
           : resumenNL // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenPL: resumenPL == freezed
+      resumenPL: freezed == resumenPL
           ? _value.resumenPL
           : resumenPL // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenPT: resumenPT == freezed
+      resumenPT: freezed == resumenPT
           ? _value.resumenPT
           : resumenPT // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenRO: resumenRO == freezed
+      resumenRO: freezed == resumenRO
           ? _value.resumenRO
           : resumenRO // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenRU: resumenRU == freezed
+      resumenRU: freezed == resumenRU
           ? _value.resumenRU
           : resumenRU // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenCN: resumenCN == freezed
+      resumenCN: freezed == resumenCN
           ? _value.resumenCN
           : resumenCN // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumenEL: resumenEL == freezed
+      resumenEL: freezed == resumenEL
           ? _value.resumenEL
           : resumenEL // ignore: cast_nullable_to_non_nullable
               as String?,
-      stockDisponible: stockDisponible == freezed
+      stockDisponible: null == stockDisponible
           ? _value.stockDisponible
           : stockDisponible // ignore: cast_nullable_to_non_nullable
               as int,
-      ventasActual: ventasActual == freezed
+      ventasActual: null == ventasActual
           ? _value.ventasActual
           : ventasActual // ignore: cast_nullable_to_non_nullable
               as Money,
-      ventasAnterior: ventasAnterior == freezed
+      ventasAnterior: null == ventasAnterior
           ? _value.ventasAnterior
           : ventasAnterior // ignore: cast_nullable_to_non_nullable
               as Money,
-      comprasEntregaCantidad1: comprasEntregaCantidad1 == freezed
+      comprasEntregaCantidad1: null == comprasEntregaCantidad1
           ? _value.comprasEntregaCantidad1
           : comprasEntregaCantidad1 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaCantidad2: comprasEntregaCantidad2 == freezed
+      comprasEntregaCantidad2: null == comprasEntregaCantidad2
           ? _value.comprasEntregaCantidad2
           : comprasEntregaCantidad2 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaCantidad3: comprasEntregaCantidad3 == freezed
+      comprasEntregaCantidad3: null == comprasEntregaCantidad3
           ? _value.comprasEntregaCantidad3
           : comprasEntregaCantidad3 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaCantidadMas3: comprasEntregaCantidadMas3 == freezed
+      comprasEntregaCantidadMas3: null == comprasEntregaCantidadMas3
           ? _value.comprasEntregaCantidadMas3
           : comprasEntregaCantidadMas3 // ignore: cast_nullable_to_non_nullable
               as int,
-      comprasEntregaFecha1: comprasEntregaFecha1 == freezed
+      comprasEntregaFecha1: freezed == comprasEntregaFecha1
           ? _value.comprasEntregaFecha1
           : comprasEntregaFecha1 // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      comprasEntregaFecha2: comprasEntregaFecha2 == freezed
+      comprasEntregaFecha2: freezed == comprasEntregaFecha2
           ? _value.comprasEntregaFecha2
           : comprasEntregaFecha2 // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      comprasEntregaFecha3: comprasEntregaFecha3 == freezed
+      comprasEntregaFecha3: freezed == comprasEntregaFecha3
           ? _value.comprasEntregaFecha3
           : comprasEntregaFecha3 // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      comprasEntregaEstado1: comprasEntregaEstado1 == freezed
+      comprasEntregaEstado1: freezed == comprasEntregaEstado1
           ? _value.comprasEntregaEstado1
           : comprasEntregaEstado1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      comprasEntregaEstado2: comprasEntregaEstado2 == freezed
+      comprasEntregaEstado2: freezed == comprasEntregaEstado2
           ? _value.comprasEntregaEstado2
           : comprasEntregaEstado2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      comprasEntregaEstado3: comprasEntregaEstado3 == freezed
+      comprasEntregaEstado3: freezed == comprasEntregaEstado3
           ? _value.comprasEntregaEstado3
           : comprasEntregaEstado3 // ignore: cast_nullable_to_non_nullable
               as String?,
-      imagenPrincipal: imagenPrincipal == freezed
+      imagenPrincipal: freezed == imagenPrincipal
           ? _value.imagenPrincipal
           : imagenPrincipal // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1143,183 +1149,187 @@ class _$_Articulo extends _Articulo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Articulo &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionES, descripcionES) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEN, descripcionEN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionFR, descripcionFR) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionDE, descripcionDE) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCA, descripcionCA) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionGB, descripcionGB) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionHU, descripcionHU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionIT, descripcionIT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionNL, descripcionNL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPL, descripcionPL) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionPT, descripcionPT) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRO, descripcionRO) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionRU, descripcionRU) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionCN, descripcionCN) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcionEL, descripcionEL) &&
-            const DeepCollectionEquality().equals(other.familia, familia) &&
-            const DeepCollectionEquality()
-                .equals(other.subfamilia, subfamilia) &&
-            const DeepCollectionEquality()
-                .equals(other.ventaMinimo, ventaMinimo) &&
-            const DeepCollectionEquality()
-                .equals(other.ventaMultiplo, ventaMultiplo) &&
-            const DeepCollectionEquality()
-                .equals(other.unidadesSubcaja, unidadesSubcaja) &&
-            const DeepCollectionEquality()
-                .equals(other.unidadesCaja, unidadesCaja) &&
-            const DeepCollectionEquality()
-                .equals(other.unidadesPalet, unidadesPalet) &&
-            const DeepCollectionEquality().equals(other.activoWeb, activoWeb) &&
-            const DeepCollectionEquality().equals(other.activoApp, activoApp) &&
-            const DeepCollectionEquality()
-                .equals(other.enCatalogo, enCatalogo) &&
-            const DeepCollectionEquality()
-                .equals(other.descatalogado, descatalogado) &&
-            const DeepCollectionEquality()
-                .equals(other.paginaEnCatalgo, paginaEnCatalgo) &&
-            const DeepCollectionEquality()
-                .equals(other.paginaEnCatalgo2, paginaEnCatalgo2) &&
-            const DeepCollectionEquality().equals(other.pesoKg, pesoKg) &&
-            const DeepCollectionEquality().equals(other.largoCm, largoCm) &&
-            const DeepCollectionEquality().equals(other.anchoCm, anchoCm) &&
-            const DeepCollectionEquality().equals(other.altoCm, altoCm) &&
-            const DeepCollectionEquality().equals(other.resumenES, resumenES) &&
-            const DeepCollectionEquality().equals(other.resumenEN, resumenEN) &&
-            const DeepCollectionEquality().equals(other.resumenFR, resumenFR) &&
-            const DeepCollectionEquality().equals(other.resumenDE, resumenDE) &&
-            const DeepCollectionEquality().equals(other.resumenCA, resumenCA) &&
-            const DeepCollectionEquality().equals(other.resumenGB, resumenGB) &&
-            const DeepCollectionEquality().equals(other.resumenHU, resumenHU) &&
-            const DeepCollectionEquality().equals(other.resumenIT, resumenIT) &&
-            const DeepCollectionEquality().equals(other.resumenNL, resumenNL) &&
-            const DeepCollectionEquality().equals(other.resumenPL, resumenPL) &&
-            const DeepCollectionEquality().equals(other.resumenPT, resumenPT) &&
-            const DeepCollectionEquality().equals(other.resumenRO, resumenRO) &&
-            const DeepCollectionEquality().equals(other.resumenRU, resumenRU) &&
-            const DeepCollectionEquality().equals(other.resumenCN, resumenCN) &&
-            const DeepCollectionEquality().equals(other.resumenEL, resumenEL) &&
-            const DeepCollectionEquality()
-                .equals(other.stockDisponible, stockDisponible) &&
-            const DeepCollectionEquality()
-                .equals(other.ventasActual, ventasActual) &&
-            const DeepCollectionEquality()
-                .equals(other.ventasAnterior, ventasAnterior) &&
-            const DeepCollectionEquality().equals(
-                other.comprasEntregaCantidad1, comprasEntregaCantidad1) &&
-            const DeepCollectionEquality().equals(
-                other.comprasEntregaCantidad2, comprasEntregaCantidad2) &&
-            const DeepCollectionEquality().equals(
-                other.comprasEntregaCantidad3, comprasEntregaCantidad3) &&
-            const DeepCollectionEquality().equals(
-                other.comprasEntregaCantidadMas3, comprasEntregaCantidadMas3) &&
-            const DeepCollectionEquality()
-                .equals(other.comprasEntregaFecha1, comprasEntregaFecha1) &&
-            const DeepCollectionEquality()
-                .equals(other.comprasEntregaFecha2, comprasEntregaFecha2) &&
-            const DeepCollectionEquality()
-                .equals(other.comprasEntregaFecha3, comprasEntregaFecha3) &&
-            const DeepCollectionEquality()
-                .equals(other.comprasEntregaEstado1, comprasEntregaEstado1) &&
-            const DeepCollectionEquality()
-                .equals(other.comprasEntregaEstado2, comprasEntregaEstado2) &&
-            const DeepCollectionEquality()
-                .equals(other.comprasEntregaEstado3, comprasEntregaEstado3) &&
-            const DeepCollectionEquality()
-                .equals(other.imagenPrincipal, imagenPrincipal) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPL, descripcionPL) ||
+                other.descripcionPL == descripcionPL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL) &&
+            (identical(other.familia, familia) || other.familia == familia) &&
+            (identical(other.subfamilia, subfamilia) ||
+                other.subfamilia == subfamilia) &&
+            (identical(other.ventaMinimo, ventaMinimo) ||
+                other.ventaMinimo == ventaMinimo) &&
+            (identical(other.ventaMultiplo, ventaMultiplo) ||
+                other.ventaMultiplo == ventaMultiplo) &&
+            (identical(other.unidadesSubcaja, unidadesSubcaja) ||
+                other.unidadesSubcaja == unidadesSubcaja) &&
+            (identical(other.unidadesCaja, unidadesCaja) ||
+                other.unidadesCaja == unidadesCaja) &&
+            (identical(other.unidadesPalet, unidadesPalet) ||
+                other.unidadesPalet == unidadesPalet) &&
+            (identical(other.activoWeb, activoWeb) ||
+                other.activoWeb == activoWeb) &&
+            (identical(other.activoApp, activoApp) ||
+                other.activoApp == activoApp) &&
+            (identical(other.enCatalogo, enCatalogo) ||
+                other.enCatalogo == enCatalogo) &&
+            (identical(other.descatalogado, descatalogado) ||
+                other.descatalogado == descatalogado) &&
+            (identical(other.paginaEnCatalgo, paginaEnCatalgo) ||
+                other.paginaEnCatalgo == paginaEnCatalgo) &&
+            (identical(other.paginaEnCatalgo2, paginaEnCatalgo2) ||
+                other.paginaEnCatalgo2 == paginaEnCatalgo2) &&
+            (identical(other.pesoKg, pesoKg) || other.pesoKg == pesoKg) &&
+            (identical(other.largoCm, largoCm) || other.largoCm == largoCm) &&
+            (identical(other.anchoCm, anchoCm) || other.anchoCm == anchoCm) &&
+            (identical(other.altoCm, altoCm) || other.altoCm == altoCm) &&
+            (identical(other.resumenES, resumenES) ||
+                other.resumenES == resumenES) &&
+            (identical(other.resumenEN, resumenEN) ||
+                other.resumenEN == resumenEN) &&
+            (identical(other.resumenFR, resumenFR) ||
+                other.resumenFR == resumenFR) &&
+            (identical(other.resumenDE, resumenDE) ||
+                other.resumenDE == resumenDE) &&
+            (identical(other.resumenCA, resumenCA) ||
+                other.resumenCA == resumenCA) &&
+            (identical(other.resumenGB, resumenGB) ||
+                other.resumenGB == resumenGB) &&
+            (identical(other.resumenHU, resumenHU) ||
+                other.resumenHU == resumenHU) &&
+            (identical(other.resumenIT, resumenIT) ||
+                other.resumenIT == resumenIT) &&
+            (identical(other.resumenNL, resumenNL) ||
+                other.resumenNL == resumenNL) &&
+            (identical(other.resumenPL, resumenPL) ||
+                other.resumenPL == resumenPL) &&
+            (identical(other.resumenPT, resumenPT) ||
+                other.resumenPT == resumenPT) &&
+            (identical(other.resumenRO, resumenRO) ||
+                other.resumenRO == resumenRO) &&
+            (identical(other.resumenRU, resumenRU) ||
+                other.resumenRU == resumenRU) &&
+            (identical(other.resumenCN, resumenCN) ||
+                other.resumenCN == resumenCN) &&
+            (identical(other.resumenEL, resumenEL) ||
+                other.resumenEL == resumenEL) &&
+            (identical(other.stockDisponible, stockDisponible) ||
+                other.stockDisponible == stockDisponible) &&
+            (identical(other.ventasActual, ventasActual) || other.ventasActual == ventasActual) &&
+            (identical(other.ventasAnterior, ventasAnterior) || other.ventasAnterior == ventasAnterior) &&
+            (identical(other.comprasEntregaCantidad1, comprasEntregaCantidad1) || other.comprasEntregaCantidad1 == comprasEntregaCantidad1) &&
+            (identical(other.comprasEntregaCantidad2, comprasEntregaCantidad2) || other.comprasEntregaCantidad2 == comprasEntregaCantidad2) &&
+            (identical(other.comprasEntregaCantidad3, comprasEntregaCantidad3) || other.comprasEntregaCantidad3 == comprasEntregaCantidad3) &&
+            (identical(other.comprasEntregaCantidadMas3, comprasEntregaCantidadMas3) || other.comprasEntregaCantidadMas3 == comprasEntregaCantidadMas3) &&
+            (identical(other.comprasEntregaFecha1, comprasEntregaFecha1) || other.comprasEntregaFecha1 == comprasEntregaFecha1) &&
+            (identical(other.comprasEntregaFecha2, comprasEntregaFecha2) || other.comprasEntregaFecha2 == comprasEntregaFecha2) &&
+            (identical(other.comprasEntregaFecha3, comprasEntregaFecha3) || other.comprasEntregaFecha3 == comprasEntregaFecha3) &&
+            (identical(other.comprasEntregaEstado1, comprasEntregaEstado1) || other.comprasEntregaEstado1 == comprasEntregaEstado1) &&
+            (identical(other.comprasEntregaEstado2, comprasEntregaEstado2) || other.comprasEntregaEstado2 == comprasEntregaEstado2) &&
+            (identical(other.comprasEntregaEstado3, comprasEntregaEstado3) || other.comprasEntregaEstado3 == comprasEntregaEstado3) &&
+            (identical(other.imagenPrincipal, imagenPrincipal) || other.imagenPrincipal == imagenPrincipal) &&
+            (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(descripcionES),
-        const DeepCollectionEquality().hash(descripcionEN),
-        const DeepCollectionEquality().hash(descripcionFR),
-        const DeepCollectionEquality().hash(descripcionDE),
-        const DeepCollectionEquality().hash(descripcionCA),
-        const DeepCollectionEquality().hash(descripcionGB),
-        const DeepCollectionEquality().hash(descripcionHU),
-        const DeepCollectionEquality().hash(descripcionIT),
-        const DeepCollectionEquality().hash(descripcionNL),
-        const DeepCollectionEquality().hash(descripcionPL),
-        const DeepCollectionEquality().hash(descripcionPT),
-        const DeepCollectionEquality().hash(descripcionRO),
-        const DeepCollectionEquality().hash(descripcionRU),
-        const DeepCollectionEquality().hash(descripcionCN),
-        const DeepCollectionEquality().hash(descripcionEL),
-        const DeepCollectionEquality().hash(familia),
-        const DeepCollectionEquality().hash(subfamilia),
-        const DeepCollectionEquality().hash(ventaMinimo),
-        const DeepCollectionEquality().hash(ventaMultiplo),
-        const DeepCollectionEquality().hash(unidadesSubcaja),
-        const DeepCollectionEquality().hash(unidadesCaja),
-        const DeepCollectionEquality().hash(unidadesPalet),
-        const DeepCollectionEquality().hash(activoWeb),
-        const DeepCollectionEquality().hash(activoApp),
-        const DeepCollectionEquality().hash(enCatalogo),
-        const DeepCollectionEquality().hash(descatalogado),
-        const DeepCollectionEquality().hash(paginaEnCatalgo),
-        const DeepCollectionEquality().hash(paginaEnCatalgo2),
-        const DeepCollectionEquality().hash(pesoKg),
-        const DeepCollectionEquality().hash(largoCm),
-        const DeepCollectionEquality().hash(anchoCm),
-        const DeepCollectionEquality().hash(altoCm),
-        const DeepCollectionEquality().hash(resumenES),
-        const DeepCollectionEquality().hash(resumenEN),
-        const DeepCollectionEquality().hash(resumenFR),
-        const DeepCollectionEquality().hash(resumenDE),
-        const DeepCollectionEquality().hash(resumenCA),
-        const DeepCollectionEquality().hash(resumenGB),
-        const DeepCollectionEquality().hash(resumenHU),
-        const DeepCollectionEquality().hash(resumenIT),
-        const DeepCollectionEquality().hash(resumenNL),
-        const DeepCollectionEquality().hash(resumenPL),
-        const DeepCollectionEquality().hash(resumenPT),
-        const DeepCollectionEquality().hash(resumenRO),
-        const DeepCollectionEquality().hash(resumenRU),
-        const DeepCollectionEquality().hash(resumenCN),
-        const DeepCollectionEquality().hash(resumenEL),
-        const DeepCollectionEquality().hash(stockDisponible),
-        const DeepCollectionEquality().hash(ventasActual),
-        const DeepCollectionEquality().hash(ventasAnterior),
-        const DeepCollectionEquality().hash(comprasEntregaCantidad1),
-        const DeepCollectionEquality().hash(comprasEntregaCantidad2),
-        const DeepCollectionEquality().hash(comprasEntregaCantidad3),
-        const DeepCollectionEquality().hash(comprasEntregaCantidadMas3),
-        const DeepCollectionEquality().hash(comprasEntregaFecha1),
-        const DeepCollectionEquality().hash(comprasEntregaFecha2),
-        const DeepCollectionEquality().hash(comprasEntregaFecha3),
-        const DeepCollectionEquality().hash(comprasEntregaEstado1),
-        const DeepCollectionEquality().hash(comprasEntregaEstado2),
-        const DeepCollectionEquality().hash(comprasEntregaEstado3),
-        const DeepCollectionEquality().hash(imagenPrincipal),
-        const DeepCollectionEquality().hash(lastUpdated),
-        const DeepCollectionEquality().hash(deleted)
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        familia,
+        subfamilia,
+        ventaMinimo,
+        ventaMultiplo,
+        unidadesSubcaja,
+        unidadesCaja,
+        unidadesPalet,
+        activoWeb,
+        activoApp,
+        enCatalogo,
+        descatalogado,
+        paginaEnCatalgo,
+        paginaEnCatalgo2,
+        pesoKg,
+        largoCm,
+        anchoCm,
+        altoCm,
+        resumenES,
+        resumenEN,
+        resumenFR,
+        resumenDE,
+        resumenCA,
+        resumenGB,
+        resumenHU,
+        resumenIT,
+        resumenNL,
+        resumenPL,
+        resumenPT,
+        resumenRO,
+        resumenRU,
+        resumenCN,
+        resumenEL,
+        stockDisponible,
+        ventasActual,
+        ventasAnterior,
+        comprasEntregaCantidad1,
+        comprasEntregaCantidad2,
+        comprasEntregaCantidad3,
+        comprasEntregaCantidadMas3,
+        comprasEntregaFecha1,
+        comprasEntregaFecha2,
+        comprasEntregaFecha3,
+        comprasEntregaEstado1,
+        comprasEntregaEstado2,
+        comprasEntregaEstado3,
+        imagenPrincipal,
+        lastUpdated,
+        deleted
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloCopyWith<_$_Articulo> get copyWith =>
       __$$_ArticuloCopyWithImpl<_$_Articulo>(this, _$identity);
 }

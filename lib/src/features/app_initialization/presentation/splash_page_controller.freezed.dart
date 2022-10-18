@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'select_cantidad_controller.dart';
+part of 'splash_page_controller.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,35 +15,35 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ArticuloPrecioControllerState {
+mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(ArticuloPrecio? articuloPrecio) data,
+    required TResult Function(SplashProgress progressValue) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function(SplashProgress progressValue)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult Function(SplashProgress progressValue)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
+    required TResult Function(_downloadDatabase value) downloadDatabase,
     required TResult Function(_initial value) initial,
     required TResult Function(_error value) error,
     required TResult Function(_data value) data,
@@ -51,7 +51,7 @@ mixin _$ArticuloPrecioControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_downloadDatabase value)? downloadDatabase,
     TResult? Function(_initial value)? initial,
     TResult? Function(_error value)? error,
     TResult? Function(_data value)? data,
@@ -59,7 +59,7 @@ mixin _$ArticuloPrecioControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
+    TResult Function(_downloadDatabase value)? downloadDatabase,
     TResult Function(_initial value)? initial,
     TResult Function(_error value)? error,
     TResult Function(_data value)? data,
@@ -69,19 +69,17 @@ mixin _$ArticuloPrecioControllerState {
 }
 
 /// @nodoc
-abstract class $ArticuloPrecioControllerStateCopyWith<$Res> {
-  factory $ArticuloPrecioControllerStateCopyWith(
-          ArticuloPrecioControllerState value,
-          $Res Function(ArticuloPrecioControllerState) then) =
-      _$ArticuloPrecioControllerStateCopyWithImpl<$Res,
-          ArticuloPrecioControllerState>;
+abstract class $SplashControllerStateCopyWith<$Res> {
+  factory $SplashControllerStateCopyWith(SplashControllerState value,
+          $Res Function(SplashControllerState) then) =
+      _$SplashControllerStateCopyWithImpl<$Res, SplashControllerState>;
 }
 
 /// @nodoc
-class _$ArticuloPrecioControllerStateCopyWithImpl<$Res,
-        $Val extends ArticuloPrecioControllerState>
-    implements $ArticuloPrecioControllerStateCopyWith<$Res> {
-  _$ArticuloPrecioControllerStateCopyWithImpl(this._value, this._then);
+class _$SplashControllerStateCopyWithImpl<$Res,
+        $Val extends SplashControllerState>
+    implements $SplashControllerStateCopyWith<$Res> {
+  _$SplashControllerStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,34 +88,35 @@ class _$ArticuloPrecioControllerStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_loadingCopyWith<$Res> {
-  factory _$$_loadingCopyWith(
-          _$_loading value, $Res Function(_$_loading) then) =
-      __$$_loadingCopyWithImpl<$Res>;
+abstract class _$$_downloadDatabaseCopyWith<$Res> {
+  factory _$$_downloadDatabaseCopyWith(
+          _$_downloadDatabase value, $Res Function(_$_downloadDatabase) then) =
+      __$$_downloadDatabaseCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_loadingCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_loading>
-    implements _$$_loadingCopyWith<$Res> {
-  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+class __$$_downloadDatabaseCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$_downloadDatabase>
+    implements _$$_downloadDatabaseCopyWith<$Res> {
+  __$$_downloadDatabaseCopyWithImpl(
+      _$_downloadDatabase _value, $Res Function(_$_downloadDatabase) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_loading extends _loading {
-  const _$_loading() : super._();
+class _$_downloadDatabase extends _downloadDatabase {
+  const _$_downloadDatabase() : super._();
 
   @override
   String toString() {
-    return 'ArticuloPrecioControllerState.loading()';
+    return 'SplashControllerState.downloadDatabase()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_loading);
+        (other.runtimeType == runtimeType && other is _$_downloadDatabase);
   }
 
   @override
@@ -126,36 +125,36 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(ArticuloPrecio? articuloPrecio) data,
+    required TResult Function(SplashProgress progressValue) data,
   }) {
-    return loading();
+    return downloadDatabase();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function(SplashProgress progressValue)? data,
   }) {
-    return loading?.call();
+    return downloadDatabase?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult Function(SplashProgress progressValue)? data,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading();
+    if (downloadDatabase != null) {
+      return downloadDatabase();
     }
     return orElse();
   }
@@ -163,44 +162,44 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
+    required TResult Function(_downloadDatabase value) downloadDatabase,
     required TResult Function(_initial value) initial,
     required TResult Function(_error value) error,
     required TResult Function(_data value) data,
   }) {
-    return loading(this);
+    return downloadDatabase(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_downloadDatabase value)? downloadDatabase,
     TResult? Function(_initial value)? initial,
     TResult? Function(_error value)? error,
     TResult? Function(_data value)? data,
   }) {
-    return loading?.call(this);
+    return downloadDatabase?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
+    TResult Function(_downloadDatabase value)? downloadDatabase,
     TResult Function(_initial value)? initial,
     TResult Function(_error value)? error,
     TResult Function(_data value)? data,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    if (downloadDatabase != null) {
+      return downloadDatabase(this);
     }
     return orElse();
   }
 }
 
-abstract class _loading extends ArticuloPrecioControllerState {
-  const factory _loading() = _$_loading;
-  const _loading._() : super._();
+abstract class _downloadDatabase extends SplashControllerState {
+  const factory _downloadDatabase() = _$_downloadDatabase;
+  const _downloadDatabase._() : super._();
 }
 
 /// @nodoc
@@ -212,7 +211,7 @@ abstract class _$$_initialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_initialCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_initial>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$_initial>
     implements _$$_initialCopyWith<$Res> {
   __$$_initialCopyWithImpl(_$_initial _value, $Res Function(_$_initial) _then)
       : super(_value, _then);
@@ -225,7 +224,7 @@ class _$_initial extends _initial {
 
   @override
   String toString() {
-    return 'ArticuloPrecioControllerState.initial()';
+    return 'SplashControllerState.initial()';
   }
 
   @override
@@ -240,10 +239,10 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(ArticuloPrecio? articuloPrecio) data,
+    required TResult Function(SplashProgress progressValue) data,
   }) {
     return initial();
   }
@@ -251,10 +250,10 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function(SplashProgress progressValue)? data,
   }) {
     return initial?.call();
   }
@@ -262,10 +261,10 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult Function(SplashProgress progressValue)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -277,7 +276,7 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
+    required TResult Function(_downloadDatabase value) downloadDatabase,
     required TResult Function(_initial value) initial,
     required TResult Function(_error value) error,
     required TResult Function(_data value) data,
@@ -288,7 +287,7 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_downloadDatabase value)? downloadDatabase,
     TResult? Function(_initial value)? initial,
     TResult? Function(_error value)? error,
     TResult? Function(_data value)? data,
@@ -299,7 +298,7 @@ class _$_initial extends _initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
+    TResult Function(_downloadDatabase value)? downloadDatabase,
     TResult Function(_initial value)? initial,
     TResult Function(_error value)? error,
     TResult Function(_data value)? data,
@@ -312,7 +311,7 @@ class _$_initial extends _initial {
   }
 }
 
-abstract class _initial extends ArticuloPrecioControllerState {
+abstract class _initial extends SplashControllerState {
   const factory _initial() = _$_initial;
   const _initial._() : super._();
 }
@@ -327,7 +326,7 @@ abstract class _$$_errorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_errorCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_error>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$_error>
     implements _$$_errorCopyWith<$Res> {
   __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
       : super(_value, _then);
@@ -360,7 +359,7 @@ class _$_error extends _error {
 
   @override
   String toString() {
-    return 'ArticuloPrecioControllerState.error(error: $error, stackTrace: $stackTrace)';
+    return 'SplashControllerState.error(error: $error, stackTrace: $stackTrace)';
   }
 
   @override
@@ -386,10 +385,10 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(ArticuloPrecio? articuloPrecio) data,
+    required TResult Function(SplashProgress progressValue) data,
   }) {
     return error(this.error, stackTrace);
   }
@@ -397,10 +396,10 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function(SplashProgress progressValue)? data,
   }) {
     return error?.call(this.error, stackTrace);
   }
@@ -408,10 +407,10 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult Function(SplashProgress progressValue)? data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -423,7 +422,7 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
+    required TResult Function(_downloadDatabase value) downloadDatabase,
     required TResult Function(_initial value) initial,
     required TResult Function(_error value) error,
     required TResult Function(_data value) data,
@@ -434,7 +433,7 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_downloadDatabase value)? downloadDatabase,
     TResult? Function(_initial value)? initial,
     TResult? Function(_error value)? error,
     TResult? Function(_data value)? data,
@@ -445,7 +444,7 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
+    TResult Function(_downloadDatabase value)? downloadDatabase,
     TResult Function(_initial value)? initial,
     TResult Function(_error value)? error,
     TResult Function(_data value)? data,
@@ -458,7 +457,7 @@ class _$_error extends _error {
   }
 }
 
-abstract class _error extends ArticuloPrecioControllerState {
+abstract class _error extends SplashControllerState {
   const factory _error(final Object error, {final StackTrace? stackTrace}) =
       _$_error;
   const _error._() : super._();
@@ -475,14 +474,12 @@ abstract class _$$_dataCopyWith<$Res> {
   factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
       __$$_dataCopyWithImpl<$Res>;
   @useResult
-  $Res call({ArticuloPrecio? articuloPrecio});
-
-  $ArticuloPrecioCopyWith<$Res>? get articuloPrecio;
+  $Res call({SplashProgress progressValue});
 }
 
 /// @nodoc
 class __$$_dataCopyWithImpl<$Res>
-    extends _$ArticuloPrecioControllerStateCopyWithImpl<$Res, _$_data>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$_data>
     implements _$$_dataCopyWith<$Res> {
   __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
       : super(_value, _then);
@@ -490,40 +487,28 @@ class __$$_dataCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloPrecio = freezed,
+    Object? progressValue = null,
   }) {
     return _then(_$_data(
-      freezed == articuloPrecio
-          ? _value.articuloPrecio
-          : articuloPrecio // ignore: cast_nullable_to_non_nullable
-              as ArticuloPrecio?,
+      null == progressValue
+          ? _value.progressValue
+          : progressValue // ignore: cast_nullable_to_non_nullable
+              as SplashProgress,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ArticuloPrecioCopyWith<$Res>? get articuloPrecio {
-    if (_value.articuloPrecio == null) {
-      return null;
-    }
-
-    return $ArticuloPrecioCopyWith<$Res>(_value.articuloPrecio!, (value) {
-      return _then(_value.copyWith(articuloPrecio: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_data extends _data {
-  const _$_data(this.articuloPrecio) : super._();
+  const _$_data(this.progressValue) : super._();
 
   @override
-  final ArticuloPrecio? articuloPrecio;
+  final SplashProgress progressValue;
 
   @override
   String toString() {
-    return 'ArticuloPrecioControllerState.data(articuloPrecio: $articuloPrecio)';
+    return 'SplashControllerState.data(progressValue: $progressValue)';
   }
 
   @override
@@ -531,12 +516,12 @@ class _$_data extends _data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_data &&
-            (identical(other.articuloPrecio, articuloPrecio) ||
-                other.articuloPrecio == articuloPrecio));
+            (identical(other.progressValue, progressValue) ||
+                other.progressValue == progressValue));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, articuloPrecio);
+  int get hashCode => Object.hash(runtimeType, progressValue);
 
   @JsonKey(ignore: true)
   @override
@@ -547,36 +532,36 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loading,
+    required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(ArticuloPrecio? articuloPrecio) data,
+    required TResult Function(SplashProgress progressValue) data,
   }) {
-    return data(articuloPrecio);
+    return data(progressValue);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
+    TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult? Function(SplashProgress progressValue)? data,
   }) {
-    return data?.call(articuloPrecio);
+    return data?.call(progressValue);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
+    TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(ArticuloPrecio? articuloPrecio)? data,
+    TResult Function(SplashProgress progressValue)? data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(articuloPrecio);
+      return data(progressValue);
     }
     return orElse();
   }
@@ -584,7 +569,7 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_loading value) loading,
+    required TResult Function(_downloadDatabase value) downloadDatabase,
     required TResult Function(_initial value) initial,
     required TResult Function(_error value) error,
     required TResult Function(_data value) data,
@@ -595,7 +580,7 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_downloadDatabase value)? downloadDatabase,
     TResult? Function(_initial value)? initial,
     TResult? Function(_error value)? error,
     TResult? Function(_data value)? data,
@@ -606,7 +591,7 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
+    TResult Function(_downloadDatabase value)? downloadDatabase,
     TResult Function(_initial value)? initial,
     TResult Function(_error value)? error,
     TResult Function(_data value)? data,
@@ -619,11 +604,11 @@ class _$_data extends _data {
   }
 }
 
-abstract class _data extends ArticuloPrecioControllerState {
-  const factory _data(final ArticuloPrecio? articuloPrecio) = _$_data;
+abstract class _data extends SplashControllerState {
+  const factory _data(final SplashProgress progressValue) = _$_data;
   const _data._() : super._();
 
-  ArticuloPrecio? get articuloPrecio;
+  SplashProgress get progressValue;
   @JsonKey(ignore: true)
   _$$_dataCopyWith<_$_data> get copyWith => throw _privateConstructorUsedError;
 }

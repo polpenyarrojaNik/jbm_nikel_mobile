@@ -47,7 +47,8 @@ mixin _$ClienteDescuentoDTO {
 abstract class $ClienteDescuentoDTOCopyWith<$Res> {
   factory $ClienteDescuentoDTOCopyWith(
           ClienteDescuentoDTO value, $Res Function(ClienteDescuentoDTO) then) =
-      _$ClienteDescuentoDTOCopyWithImpl<$Res>;
+      _$ClienteDescuentoDTOCopyWithImpl<$Res, ClienteDescuentoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
@@ -60,59 +61,61 @@ abstract class $ClienteDescuentoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteDescuentoDTOCopyWithImpl<$Res>
+class _$ClienteDescuentoDTOCopyWithImpl<$Res, $Val extends ClienteDescuentoDTO>
     implements $ClienteDescuentoDTOCopyWith<$Res> {
   _$ClienteDescuentoDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteDescuentoDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteDescuentoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
-    Object? familiaId = freezed,
-    Object? subfamiliaId = freezed,
-    Object? cantidadDesde = freezed,
-    Object? descuento = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? articuloId = null,
+    Object? familiaId = null,
+    Object? subfamiliaId = null,
+    Object? cantidadDesde = null,
+    Object? descuento = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      familiaId: familiaId == freezed
+      familiaId: null == familiaId
           ? _value.familiaId
           : familiaId // ignore: cast_nullable_to_non_nullable
               as String,
-      subfamiliaId: subfamiliaId == freezed
+      subfamiliaId: null == subfamiliaId
           ? _value.subfamiliaId
           : subfamiliaId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento: descuento == freezed
+      descuento: null == descuento
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -123,6 +126,7 @@ abstract class _$$_ClienteDescuentoDTOCopyWith<$Res>
           $Res Function(_$_ClienteDescuentoDTO) then) =
       __$$_ClienteDescuentoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
@@ -136,56 +140,54 @@ abstract class _$$_ClienteDescuentoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteDescuentoDTOCopyWithImpl<$Res>
-    extends _$ClienteDescuentoDTOCopyWithImpl<$Res>
+    extends _$ClienteDescuentoDTOCopyWithImpl<$Res, _$_ClienteDescuentoDTO>
     implements _$$_ClienteDescuentoDTOCopyWith<$Res> {
   __$$_ClienteDescuentoDTOCopyWithImpl(_$_ClienteDescuentoDTO _value,
       $Res Function(_$_ClienteDescuentoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteDescuentoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteDescuentoDTO get _value => super._value as _$_ClienteDescuentoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
-    Object? familiaId = freezed,
-    Object? subfamiliaId = freezed,
-    Object? cantidadDesde = freezed,
-    Object? descuento = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? articuloId = null,
+    Object? familiaId = null,
+    Object? subfamiliaId = null,
+    Object? cantidadDesde = null,
+    Object? descuento = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteDescuentoDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      familiaId: familiaId == freezed
+      familiaId: null == familiaId
           ? _value.familiaId
           : familiaId // ignore: cast_nullable_to_non_nullable
               as String,
-      subfamiliaId: subfamiliaId == freezed
+      subfamiliaId: null == subfamiliaId
           ? _value.subfamiliaId
           : subfamiliaId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      descuento: descuento == freezed
+      descuento: null == descuento
           ? _value.descuento
           : descuento // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -245,35 +247,31 @@ class _$_ClienteDescuentoDTO extends _ClienteDescuentoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteDescuentoDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.familiaId, familiaId) &&
-            const DeepCollectionEquality()
-                .equals(other.subfamiliaId, subfamiliaId) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadDesde, cantidadDesde) &&
-            const DeepCollectionEquality().equals(other.descuento, descuento) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.familiaId, familiaId) ||
+                other.familiaId == familiaId) &&
+            (identical(other.subfamiliaId, subfamiliaId) ||
+                other.subfamiliaId == subfamiliaId) &&
+            (identical(other.cantidadDesde, cantidadDesde) ||
+                other.cantidadDesde == cantidadDesde) &&
+            (identical(other.descuento, descuento) ||
+                other.descuento == descuento) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(familiaId),
-      const DeepCollectionEquality().hash(subfamiliaId),
-      const DeepCollectionEquality().hash(cantidadDesde),
-      const DeepCollectionEquality().hash(descuento),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, articuloId, familiaId,
+      subfamiliaId, cantidadDesde, descuento, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteDescuentoDTOCopyWith<_$_ClienteDescuentoDTO> get copyWith =>
       __$$_ClienteDescuentoDTOCopyWithImpl<_$_ClienteDescuentoDTO>(
           this, _$identity);

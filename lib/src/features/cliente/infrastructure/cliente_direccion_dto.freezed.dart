@@ -59,7 +59,8 @@ mixin _$ClienteDireccionDTO {
 abstract class $ClienteDireccionDTOCopyWith<$Res> {
   factory $ClienteDireccionDTOCopyWith(
           ClienteDireccionDTO value, $Res Function(ClienteDireccionDTO) then) =
-      _$ClienteDireccionDTOCopyWithImpl<$Res>;
+      _$ClienteDireccionDTOCopyWithImpl<$Res, ClienteDireccionDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'DIRECCION_ID') String direccionId,
@@ -78,89 +79,91 @@ abstract class $ClienteDireccionDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteDireccionDTOCopyWithImpl<$Res>
+class _$ClienteDireccionDTOCopyWithImpl<$Res, $Val extends ClienteDireccionDTO>
     implements $ClienteDireccionDTOCopyWith<$Res> {
   _$ClienteDireccionDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteDireccionDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteDireccionDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? direccionId = freezed,
-    Object? nombre = freezed,
+    Object? clienteId = null,
+    Object? direccionId = null,
+    Object? nombre = null,
     Object? direccion1 = freezed,
     Object? direccion2 = freezed,
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? paisId = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
     Object? predeterminada = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      direccionId: direccionId == freezed
+      direccionId: null == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombre: nombre == freezed
+      nombre: null == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
               as String,
-      direccion1: direccion1 == freezed
+      direccion1: freezed == direccion1
           ? _value.direccion1
           : direccion1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      direccion2: direccion2 == freezed
+      direccion2: freezed == direccion2
           ? _value.direccion2
           : direccion2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      codigoPostal: codigoPostal == freezed
+      codigoPostal: freezed == codigoPostal
           ? _value.codigoPostal
           : codigoPostal // ignore: cast_nullable_to_non_nullable
               as String?,
-      poblacion: poblacion == freezed
+      poblacion: freezed == poblacion
           ? _value.poblacion
           : poblacion // ignore: cast_nullable_to_non_nullable
               as String?,
-      provincia: provincia == freezed
+      provincia: freezed == provincia
           ? _value.provincia
           : provincia // ignore: cast_nullable_to_non_nullable
               as String?,
-      paisId: paisId == freezed
+      paisId: freezed == paisId
           ? _value.paisId
           : paisId // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      predeterminada: predeterminada == freezed
+      predeterminada: freezed == predeterminada
           ? _value.predeterminada
           : predeterminada // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -171,6 +174,7 @@ abstract class _$$_ClienteDireccionDTOCopyWith<$Res>
           $Res Function(_$_ClienteDireccionDTO) then) =
       __$$_ClienteDireccionDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'DIRECCION_ID') String direccionId,
@@ -190,86 +194,84 @@ abstract class _$$_ClienteDireccionDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteDireccionDTOCopyWithImpl<$Res>
-    extends _$ClienteDireccionDTOCopyWithImpl<$Res>
+    extends _$ClienteDireccionDTOCopyWithImpl<$Res, _$_ClienteDireccionDTO>
     implements _$$_ClienteDireccionDTOCopyWith<$Res> {
   __$$_ClienteDireccionDTOCopyWithImpl(_$_ClienteDireccionDTO _value,
       $Res Function(_$_ClienteDireccionDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteDireccionDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteDireccionDTO get _value => super._value as _$_ClienteDireccionDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? direccionId = freezed,
-    Object? nombre = freezed,
+    Object? clienteId = null,
+    Object? direccionId = null,
+    Object? nombre = null,
     Object? direccion1 = freezed,
     Object? direccion2 = freezed,
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? paisId = freezed,
-    Object? latitud = freezed,
-    Object? longitud = freezed,
+    Object? latitud = null,
+    Object? longitud = null,
     Object? predeterminada = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteDireccionDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      direccionId: direccionId == freezed
+      direccionId: null == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombre: nombre == freezed
+      nombre: null == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
               as String,
-      direccion1: direccion1 == freezed
+      direccion1: freezed == direccion1
           ? _value.direccion1
           : direccion1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      direccion2: direccion2 == freezed
+      direccion2: freezed == direccion2
           ? _value.direccion2
           : direccion2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      codigoPostal: codigoPostal == freezed
+      codigoPostal: freezed == codigoPostal
           ? _value.codigoPostal
           : codigoPostal // ignore: cast_nullable_to_non_nullable
               as String?,
-      poblacion: poblacion == freezed
+      poblacion: freezed == poblacion
           ? _value.poblacion
           : poblacion // ignore: cast_nullable_to_non_nullable
               as String?,
-      provincia: provincia == freezed
+      provincia: freezed == provincia
           ? _value.provincia
           : provincia // ignore: cast_nullable_to_non_nullable
               as String?,
-      paisId: paisId == freezed
+      paisId: freezed == paisId
           ? _value.paisId
           : paisId // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitud: latitud == freezed
+      latitud: null == latitud
           ? _value.latitud
           : latitud // ignore: cast_nullable_to_non_nullable
               as double,
-      longitud: longitud == freezed
+      longitud: null == longitud
           ? _value.longitud
           : longitud // ignore: cast_nullable_to_non_nullable
               as double,
-      predeterminada: predeterminada == freezed
+      predeterminada: freezed == predeterminada
           ? _value.predeterminada
           : predeterminada // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -353,49 +355,54 @@ class _$_ClienteDireccionDTO extends _ClienteDireccionDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteDireccionDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.direccionId, direccionId) &&
-            const DeepCollectionEquality().equals(other.nombre, nombre) &&
-            const DeepCollectionEquality()
-                .equals(other.direccion1, direccion1) &&
-            const DeepCollectionEquality()
-                .equals(other.direccion2, direccion2) &&
-            const DeepCollectionEquality()
-                .equals(other.codigoPostal, codigoPostal) &&
-            const DeepCollectionEquality().equals(other.poblacion, poblacion) &&
-            const DeepCollectionEquality().equals(other.provincia, provincia) &&
-            const DeepCollectionEquality().equals(other.paisId, paisId) &&
-            const DeepCollectionEquality().equals(other.latitud, latitud) &&
-            const DeepCollectionEquality().equals(other.longitud, longitud) &&
-            const DeepCollectionEquality()
-                .equals(other.predeterminada, predeterminada) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.direccionId, direccionId) ||
+                other.direccionId == direccionId) &&
+            (identical(other.nombre, nombre) || other.nombre == nombre) &&
+            (identical(other.direccion1, direccion1) ||
+                other.direccion1 == direccion1) &&
+            (identical(other.direccion2, direccion2) ||
+                other.direccion2 == direccion2) &&
+            (identical(other.codigoPostal, codigoPostal) ||
+                other.codigoPostal == codigoPostal) &&
+            (identical(other.poblacion, poblacion) ||
+                other.poblacion == poblacion) &&
+            (identical(other.provincia, provincia) ||
+                other.provincia == provincia) &&
+            (identical(other.paisId, paisId) || other.paisId == paisId) &&
+            (identical(other.latitud, latitud) || other.latitud == latitud) &&
+            (identical(other.longitud, longitud) ||
+                other.longitud == longitud) &&
+            (identical(other.predeterminada, predeterminada) ||
+                other.predeterminada == predeterminada) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(direccionId),
-      const DeepCollectionEquality().hash(nombre),
-      const DeepCollectionEquality().hash(direccion1),
-      const DeepCollectionEquality().hash(direccion2),
-      const DeepCollectionEquality().hash(codigoPostal),
-      const DeepCollectionEquality().hash(poblacion),
-      const DeepCollectionEquality().hash(provincia),
-      const DeepCollectionEquality().hash(paisId),
-      const DeepCollectionEquality().hash(latitud),
-      const DeepCollectionEquality().hash(longitud),
-      const DeepCollectionEquality().hash(predeterminada),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      clienteId,
+      direccionId,
+      nombre,
+      direccion1,
+      direccion2,
+      codigoPostal,
+      poblacion,
+      provincia,
+      paisId,
+      latitud,
+      longitud,
+      predeterminada,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteDireccionDTOCopyWith<_$_ClienteDireccionDTO> get copyWith =>
       __$$_ClienteDireccionDTOCopyWithImpl<_$_ClienteDireccionDTO>(
           this, _$identity);

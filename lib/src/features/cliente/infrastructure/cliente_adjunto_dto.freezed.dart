@@ -35,36 +35,39 @@ mixin _$ClienteAdjuntoDTO {
 abstract class $ClienteAdjuntoDTOCopyWith<$Res> {
   factory $ClienteAdjuntoDTOCopyWith(
           ClienteAdjuntoDTO value, $Res Function(ClienteAdjuntoDTO) then) =
-      _$ClienteAdjuntoDTOCopyWithImpl<$Res>;
+      _$ClienteAdjuntoDTOCopyWithImpl<$Res, ClienteAdjuntoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreAdjunto});
 }
 
 /// @nodoc
-class _$ClienteAdjuntoDTOCopyWithImpl<$Res>
+class _$ClienteAdjuntoDTOCopyWithImpl<$Res, $Val extends ClienteAdjuntoDTO>
     implements $ClienteAdjuntoDTOCopyWith<$Res> {
   _$ClienteAdjuntoDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteAdjuntoDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteAdjuntoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? nombreAdjunto = freezed,
+    Object? clienteId = null,
+    Object? nombreAdjunto = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreAdjunto: nombreAdjunto == freezed
+      nombreAdjunto: null == nombreAdjunto
           ? _value.nombreAdjunto
           : nombreAdjunto // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_ClienteAdjuntoDTOCopyWith<$Res>
           $Res Function(_$_ClienteAdjuntoDTO) then) =
       __$$_ClienteAdjuntoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreAdjunto});
@@ -82,26 +86,24 @@ abstract class _$$_ClienteAdjuntoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteAdjuntoDTOCopyWithImpl<$Res>
-    extends _$ClienteAdjuntoDTOCopyWithImpl<$Res>
+    extends _$ClienteAdjuntoDTOCopyWithImpl<$Res, _$_ClienteAdjuntoDTO>
     implements _$$_ClienteAdjuntoDTOCopyWith<$Res> {
   __$$_ClienteAdjuntoDTOCopyWithImpl(
       _$_ClienteAdjuntoDTO _value, $Res Function(_$_ClienteAdjuntoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteAdjuntoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteAdjuntoDTO get _value => super._value as _$_ClienteAdjuntoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? nombreAdjunto = freezed,
+    Object? clienteId = null,
+    Object? nombreAdjunto = null,
   }) {
     return _then(_$_ClienteAdjuntoDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreAdjunto: nombreAdjunto == freezed
+      nombreAdjunto: null == nombreAdjunto
           ? _value.nombreAdjunto
           : nombreAdjunto // ignore: cast_nullable_to_non_nullable
               as String,
@@ -137,20 +139,19 @@ class _$_ClienteAdjuntoDTO extends _ClienteAdjuntoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteAdjuntoDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreAdjunto, nombreAdjunto));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.nombreAdjunto, nombreAdjunto) ||
+                other.nombreAdjunto == nombreAdjunto));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(nombreAdjunto));
+  int get hashCode => Object.hash(runtimeType, clienteId, nombreAdjunto);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteAdjuntoDTOCopyWith<_$_ClienteAdjuntoDTO> get copyWith =>
       __$$_ClienteAdjuntoDTOCopyWithImpl<_$_ClienteAdjuntoDTO>(
           this, _$identity);

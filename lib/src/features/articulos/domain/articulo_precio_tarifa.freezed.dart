@@ -35,7 +35,8 @@ mixin _$ArticuloPrecioTarifa {
 abstract class $ArticuloPrecioTarifaCopyWith<$Res> {
   factory $ArticuloPrecioTarifaCopyWith(ArticuloPrecioTarifa value,
           $Res Function(ArticuloPrecioTarifa) then) =
-      _$ArticuloPrecioTarifaCopyWithImpl<$Res>;
+      _$ArticuloPrecioTarifaCopyWithImpl<$Res, ArticuloPrecioTarifa>;
+  @useResult
   $Res call(
       {String articuloId,
       String tarifaId,
@@ -49,64 +50,67 @@ abstract class $ArticuloPrecioTarifaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloPrecioTarifaCopyWithImpl<$Res>
+class _$ArticuloPrecioTarifaCopyWithImpl<$Res,
+        $Val extends ArticuloPrecioTarifa>
     implements $ArticuloPrecioTarifaCopyWith<$Res> {
   _$ArticuloPrecioTarifaCopyWithImpl(this._value, this._then);
 
-  final ArticuloPrecioTarifa _value;
   // ignore: unused_field
-  final $Res Function(ArticuloPrecioTarifa) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? tarifaId = freezed,
+    Object? articuloId = null,
+    Object? tarifaId = null,
     Object? tarifaDescripcion = freezed,
-    Object? cantidadDesde = freezed,
-    Object? precio = freezed,
-    Object? divisaId = freezed,
-    Object? tipoPrecio = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? cantidadDesde = null,
+    Object? precio = null,
+    Object? divisaId = null,
+    Object? tipoPrecio = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      tarifaId: tarifaId == freezed
+      tarifaId: null == tarifaId
           ? _value.tarifaId
           : tarifaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tarifaDescripcion: tarifaDescripcion == freezed
+      tarifaDescripcion: freezed == tarifaDescripcion
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as Money,
-      divisaId: divisaId == freezed
+      divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -117,6 +121,7 @@ abstract class _$$_ArticuloPrecioTarifaCopyWith<$Res>
           $Res Function(_$_ArticuloPrecioTarifa) then) =
       __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String articuloId,
       String tarifaId,
@@ -131,61 +136,59 @@ abstract class _$$_ArticuloPrecioTarifaCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloPrecioTarifaCopyWithImpl<$Res>
-    extends _$ArticuloPrecioTarifaCopyWithImpl<$Res>
+    extends _$ArticuloPrecioTarifaCopyWithImpl<$Res, _$_ArticuloPrecioTarifa>
     implements _$$_ArticuloPrecioTarifaCopyWith<$Res> {
   __$$_ArticuloPrecioTarifaCopyWithImpl(_$_ArticuloPrecioTarifa _value,
       $Res Function(_$_ArticuloPrecioTarifa) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloPrecioTarifa));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloPrecioTarifa get _value => super._value as _$_ArticuloPrecioTarifa;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? tarifaId = freezed,
+    Object? articuloId = null,
+    Object? tarifaId = null,
     Object? tarifaDescripcion = freezed,
-    Object? cantidadDesde = freezed,
-    Object? precio = freezed,
-    Object? divisaId = freezed,
-    Object? tipoPrecio = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? cantidadDesde = null,
+    Object? precio = null,
+    Object? divisaId = null,
+    Object? tipoPrecio = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloPrecioTarifa(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      tarifaId: tarifaId == freezed
+      tarifaId: null == tarifaId
           ? _value.tarifaId
           : tarifaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tarifaDescripcion: tarifaDescripcion == freezed
+      tarifaDescripcion: freezed == tarifaDescripcion
           ? _value.tarifaDescripcion
           : tarifaDescripcion // ignore: cast_nullable_to_non_nullable
               as String?,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as Money,
-      divisaId: divisaId == freezed
+      divisaId: null == divisaId
           ? _value.divisaId
           : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -237,37 +240,40 @@ class _$_ArticuloPrecioTarifa extends _ArticuloPrecioTarifa {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloPrecioTarifa &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.tarifaId, tarifaId) &&
-            const DeepCollectionEquality()
-                .equals(other.tarifaDescripcion, tarifaDescripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadDesde, cantidadDesde) &&
-            const DeepCollectionEquality().equals(other.precio, precio) &&
-            const DeepCollectionEquality().equals(other.divisaId, divisaId) &&
-            const DeepCollectionEquality()
-                .equals(other.tipoPrecio, tipoPrecio) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.tarifaId, tarifaId) ||
+                other.tarifaId == tarifaId) &&
+            (identical(other.tarifaDescripcion, tarifaDescripcion) ||
+                other.tarifaDescripcion == tarifaDescripcion) &&
+            (identical(other.cantidadDesde, cantidadDesde) ||
+                other.cantidadDesde == cantidadDesde) &&
+            (identical(other.precio, precio) || other.precio == precio) &&
+            (identical(other.divisaId, divisaId) ||
+                other.divisaId == divisaId) &&
+            (identical(other.tipoPrecio, tipoPrecio) ||
+                other.tipoPrecio == tipoPrecio) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(tarifaId),
-      const DeepCollectionEquality().hash(tarifaDescripcion),
-      const DeepCollectionEquality().hash(cantidadDesde),
-      const DeepCollectionEquality().hash(precio),
-      const DeepCollectionEquality().hash(divisaId),
-      const DeepCollectionEquality().hash(tipoPrecio),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      articuloId,
+      tarifaId,
+      tarifaDescripcion,
+      cantidadDesde,
+      precio,
+      divisaId,
+      tipoPrecio,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloPrecioTarifaCopyWith<_$_ArticuloPrecioTarifa> get copyWith =>
       __$$_ArticuloPrecioTarifaCopyWithImpl<_$_ArticuloPrecioTarifa>(
           this, _$identity);

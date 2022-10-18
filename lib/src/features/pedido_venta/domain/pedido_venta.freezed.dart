@@ -58,7 +58,8 @@ mixin _$PedidoVenta {
 abstract class $PedidoVentaCopyWith<$Res> {
   factory $PedidoVentaCopyWith(
           PedidoVenta value, $Res Function(PedidoVenta) then) =
-      _$PedidoVentaCopyWithImpl<$Res>;
+      _$PedidoVentaCopyWithImpl<$Res, PedidoVenta>;
+  @useResult
   $Res call(
       {String empresaId,
       String? pedidoVentaId,
@@ -98,31 +99,34 @@ abstract class $PedidoVentaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
+class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
+    implements $PedidoVentaCopyWith<$Res> {
   _$PedidoVentaCopyWithImpl(this._value, this._then);
 
-  final PedidoVenta _value;
   // ignore: unused_field
-  final $Res Function(PedidoVenta) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? empresaId = freezed,
+    Object? empresaId = null,
     Object? pedidoVentaId = freezed,
     Object? pedidoVentaAppId = freezed,
     Object? usuarioId = freezed,
-    Object? pedidoVentaDate = freezed,
+    Object? pedidoVentaDate = null,
     Object? tipoVenta = freezed,
     Object? clienteId = freezed,
     Object? direccionId = freezed,
-    Object? nombreCliente = freezed,
+    Object? nombreCliente = null,
     Object? direccionEntrga1 = freezed,
     Object? direccionEntrga2 = freezed,
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? pais = freezed,
-    Object? divisa = freezed,
+    Object? divisa = null,
     Object? pedidoCliente = freezed,
     Object? observaciones = freezed,
     Object? baseImponible = freezed,
@@ -132,167 +136,170 @@ class _$PedidoVentaCopyWithImpl<$Res> implements $PedidoVentaCopyWith<$Res> {
     Object? oferta = freezed,
     Object? descuentoProntoPago = freezed,
     Object? dtoBonificacion = freezed,
-    Object? iva = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
-    Object? enviada = freezed,
-    Object? tratada = freezed,
+    Object? iva = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
+    Object? enviada = null,
+    Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
-      empresaId: empresaId == freezed
+      empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String,
-      pedidoVentaId: pedidoVentaId == freezed
+      pedidoVentaId: freezed == pedidoVentaId
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoVentaAppId: pedidoVentaAppId == freezed
+      pedidoVentaAppId: freezed == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      usuarioId: usuarioId == freezed
+      usuarioId: freezed == usuarioId
           ? _value.usuarioId
           : usuarioId // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoVentaDate: pedidoVentaDate == freezed
+      pedidoVentaDate: null == pedidoVentaDate
           ? _value.pedidoVentaDate
           : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      tipoVenta: tipoVenta == freezed
+      tipoVenta: freezed == tipoVenta
           ? _value.tipoVenta
           : tipoVenta // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: clienteId == freezed
+      clienteId: freezed == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String?,
-      direccionId: direccionId == freezed
+      direccionId: freezed == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
               as String?,
-      nombreCliente: nombreCliente == freezed
+      nombreCliente: null == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
               as String,
-      direccionEntrga1: direccionEntrga1 == freezed
+      direccionEntrga1: freezed == direccionEntrga1
           ? _value.direccionEntrga1
           : direccionEntrga1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      direccionEntrga2: direccionEntrga2 == freezed
+      direccionEntrga2: freezed == direccionEntrga2
           ? _value.direccionEntrga2
           : direccionEntrga2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      codigoPostal: codigoPostal == freezed
+      codigoPostal: freezed == codigoPostal
           ? _value.codigoPostal
           : codigoPostal // ignore: cast_nullable_to_non_nullable
               as String?,
-      poblacion: poblacion == freezed
+      poblacion: freezed == poblacion
           ? _value.poblacion
           : poblacion // ignore: cast_nullable_to_non_nullable
               as String?,
-      provincia: provincia == freezed
+      provincia: freezed == provincia
           ? _value.provincia
           : provincia // ignore: cast_nullable_to_non_nullable
               as String?,
-      pais: pais == freezed
+      pais: freezed == pais
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
               as Pais?,
-      divisa: divisa == freezed
+      divisa: null == divisa
           ? _value.divisa
           : divisa // ignore: cast_nullable_to_non_nullable
               as Divisa,
-      pedidoCliente: pedidoCliente == freezed
+      pedidoCliente: freezed == pedidoCliente
           ? _value.pedidoCliente
           : pedidoCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      baseImponible: baseImponible == freezed
+      baseImponible: freezed == baseImponible
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
               as Money?,
-      importeIva: importeIva == freezed
+      importeIva: freezed == importeIva
           ? _value.importeIva
           : importeIva // ignore: cast_nullable_to_non_nullable
               as Money?,
-      total: total == freezed
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as Money?,
-      pedidoVentaEstado: pedidoVentaEstado == freezed
+      pedidoVentaEstado: freezed == pedidoVentaEstado
           ? _value.pedidoVentaEstado
           : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
               as PedidoVentaEstado?,
-      oferta: oferta == freezed
+      oferta: freezed == oferta
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as bool?,
-      descuentoProntoPago: descuentoProntoPago == freezed
+      descuentoProntoPago: freezed == descuentoProntoPago
           ? _value.descuentoProntoPago
           : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
               as double?,
-      dtoBonificacion: dtoBonificacion == freezed
+      dtoBonificacion: freezed == dtoBonificacion
           ? _value.dtoBonificacion
           : dtoBonificacion // ignore: cast_nullable_to_non_nullable
               as double?,
-      iva: iva == freezed
+      iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      enviada: enviada == freezed
+      enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as bool,
-      tratada: tratada == freezed
+      tratada: null == tratada
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorSyncMessage: errorSyncMessage == freezed
+      errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaisCopyWith<$Res>? get pais {
     if (_value.pais == null) {
       return null;
     }
 
     return $PaisCopyWith<$Res>(_value.pais!, (value) {
-      return _then(_value.copyWith(pais: value));
+      return _then(_value.copyWith(pais: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $DivisaCopyWith<$Res> get divisa {
     return $DivisaCopyWith<$Res>(_value.divisa, (value) {
-      return _then(_value.copyWith(divisa: value));
+      return _then(_value.copyWith(divisa: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PedidoVentaEstadoCopyWith<$Res>? get pedidoVentaEstado {
     if (_value.pedidoVentaEstado == null) {
       return null;
     }
 
     return $PedidoVentaEstadoCopyWith<$Res>(_value.pedidoVentaEstado!, (value) {
-      return _then(_value.copyWith(pedidoVentaEstado: value));
+      return _then(_value.copyWith(pedidoVentaEstado: value) as $Val);
     });
   }
 }
@@ -304,6 +311,7 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
           _$_PedidoVenta value, $Res Function(_$_PedidoVenta) then) =
       __$$_PedidoVentaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String empresaId,
       String? pedidoVentaId,
@@ -346,33 +354,32 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
+class __$$_PedidoVentaCopyWithImpl<$Res>
+    extends _$PedidoVentaCopyWithImpl<$Res, _$_PedidoVenta>
     implements _$$_PedidoVentaCopyWith<$Res> {
   __$$_PedidoVentaCopyWithImpl(
       _$_PedidoVenta _value, $Res Function(_$_PedidoVenta) _then)
-      : super(_value, (v) => _then(v as _$_PedidoVenta));
+      : super(_value, _then);
 
-  @override
-  _$_PedidoVenta get _value => super._value as _$_PedidoVenta;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? empresaId = freezed,
+    Object? empresaId = null,
     Object? pedidoVentaId = freezed,
     Object? pedidoVentaAppId = freezed,
     Object? usuarioId = freezed,
-    Object? pedidoVentaDate = freezed,
+    Object? pedidoVentaDate = null,
     Object? tipoVenta = freezed,
     Object? clienteId = freezed,
     Object? direccionId = freezed,
-    Object? nombreCliente = freezed,
+    Object? nombreCliente = null,
     Object? direccionEntrga1 = freezed,
     Object? direccionEntrga2 = freezed,
     Object? codigoPostal = freezed,
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? pais = freezed,
-    Object? divisa = freezed,
+    Object? divisa = null,
     Object? pedidoCliente = freezed,
     Object? observaciones = freezed,
     Object? baseImponible = freezed,
@@ -382,135 +389,135 @@ class __$$_PedidoVentaCopyWithImpl<$Res> extends _$PedidoVentaCopyWithImpl<$Res>
     Object? oferta = freezed,
     Object? descuentoProntoPago = freezed,
     Object? dtoBonificacion = freezed,
-    Object? iva = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
-    Object? enviada = freezed,
-    Object? tratada = freezed,
+    Object? iva = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
+    Object? enviada = null,
+    Object? tratada = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_PedidoVenta(
-      empresaId: empresaId == freezed
+      empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String,
-      pedidoVentaId: pedidoVentaId == freezed
+      pedidoVentaId: freezed == pedidoVentaId
           ? _value.pedidoVentaId
           : pedidoVentaId // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoVentaAppId: pedidoVentaAppId == freezed
+      pedidoVentaAppId: freezed == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
               as String?,
-      usuarioId: usuarioId == freezed
+      usuarioId: freezed == usuarioId
           ? _value.usuarioId
           : usuarioId // ignore: cast_nullable_to_non_nullable
               as String?,
-      pedidoVentaDate: pedidoVentaDate == freezed
+      pedidoVentaDate: null == pedidoVentaDate
           ? _value.pedidoVentaDate
           : pedidoVentaDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      tipoVenta: tipoVenta == freezed
+      tipoVenta: freezed == tipoVenta
           ? _value.tipoVenta
           : tipoVenta // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: clienteId == freezed
+      clienteId: freezed == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String?,
-      direccionId: direccionId == freezed
+      direccionId: freezed == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
               as String?,
-      nombreCliente: nombreCliente == freezed
+      nombreCliente: null == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
               as String,
-      direccionEntrga1: direccionEntrga1 == freezed
+      direccionEntrga1: freezed == direccionEntrga1
           ? _value.direccionEntrga1
           : direccionEntrga1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      direccionEntrga2: direccionEntrga2 == freezed
+      direccionEntrga2: freezed == direccionEntrga2
           ? _value.direccionEntrga2
           : direccionEntrga2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      codigoPostal: codigoPostal == freezed
+      codigoPostal: freezed == codigoPostal
           ? _value.codigoPostal
           : codigoPostal // ignore: cast_nullable_to_non_nullable
               as String?,
-      poblacion: poblacion == freezed
+      poblacion: freezed == poblacion
           ? _value.poblacion
           : poblacion // ignore: cast_nullable_to_non_nullable
               as String?,
-      provincia: provincia == freezed
+      provincia: freezed == provincia
           ? _value.provincia
           : provincia // ignore: cast_nullable_to_non_nullable
               as String?,
-      pais: pais == freezed
+      pais: freezed == pais
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
               as Pais?,
-      divisa: divisa == freezed
+      divisa: null == divisa
           ? _value.divisa
           : divisa // ignore: cast_nullable_to_non_nullable
               as Divisa,
-      pedidoCliente: pedidoCliente == freezed
+      pedidoCliente: freezed == pedidoCliente
           ? _value.pedidoCliente
           : pedidoCliente // ignore: cast_nullable_to_non_nullable
               as String?,
-      observaciones: observaciones == freezed
+      observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
-      baseImponible: baseImponible == freezed
+      baseImponible: freezed == baseImponible
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
               as Money?,
-      importeIva: importeIva == freezed
+      importeIva: freezed == importeIva
           ? _value.importeIva
           : importeIva // ignore: cast_nullable_to_non_nullable
               as Money?,
-      total: total == freezed
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as Money?,
-      pedidoVentaEstado: pedidoVentaEstado == freezed
+      pedidoVentaEstado: freezed == pedidoVentaEstado
           ? _value.pedidoVentaEstado
           : pedidoVentaEstado // ignore: cast_nullable_to_non_nullable
               as PedidoVentaEstado?,
-      oferta: oferta == freezed
+      oferta: freezed == oferta
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as bool?,
-      descuentoProntoPago: descuentoProntoPago == freezed
+      descuentoProntoPago: freezed == descuentoProntoPago
           ? _value.descuentoProntoPago
           : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
               as double?,
-      dtoBonificacion: dtoBonificacion == freezed
+      dtoBonificacion: freezed == dtoBonificacion
           ? _value.dtoBonificacion
           : dtoBonificacion // ignore: cast_nullable_to_non_nullable
               as double?,
-      iva: iva == freezed
+      iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-      enviada: enviada == freezed
+      enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as bool,
-      tratada: tratada == freezed
+      tratada: null == tratada
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorSyncMessage: errorSyncMessage == freezed
+      errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -628,94 +635,101 @@ class _$_PedidoVenta extends _PedidoVenta {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PedidoVenta &&
-            const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaId, pedidoVentaId) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaAppId, pedidoVentaAppId) &&
-            const DeepCollectionEquality().equals(other.usuarioId, usuarioId) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaDate, pedidoVentaDate) &&
-            const DeepCollectionEquality().equals(other.tipoVenta, tipoVenta) &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.direccionId, direccionId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreCliente, nombreCliente) &&
-            const DeepCollectionEquality()
-                .equals(other.direccionEntrga1, direccionEntrga1) &&
-            const DeepCollectionEquality()
-                .equals(other.direccionEntrga2, direccionEntrga2) &&
-            const DeepCollectionEquality()
-                .equals(other.codigoPostal, codigoPostal) &&
-            const DeepCollectionEquality().equals(other.poblacion, poblacion) &&
-            const DeepCollectionEquality().equals(other.provincia, provincia) &&
-            const DeepCollectionEquality().equals(other.pais, pais) &&
-            const DeepCollectionEquality().equals(other.divisa, divisa) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoCliente, pedidoCliente) &&
-            const DeepCollectionEquality()
-                .equals(other.observaciones, observaciones) &&
-            const DeepCollectionEquality()
-                .equals(other.baseImponible, baseImponible) &&
-            const DeepCollectionEquality()
-                .equals(other.importeIva, importeIva) &&
-            const DeepCollectionEquality().equals(other.total, total) &&
-            const DeepCollectionEquality()
-                .equals(other.pedidoVentaEstado, pedidoVentaEstado) &&
-            const DeepCollectionEquality().equals(other.oferta, oferta) &&
-            const DeepCollectionEquality()
-                .equals(other.descuentoProntoPago, descuentoProntoPago) &&
-            const DeepCollectionEquality()
-                .equals(other.dtoBonificacion, dtoBonificacion) &&
-            const DeepCollectionEquality().equals(other.iva, iva) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted) &&
-            const DeepCollectionEquality().equals(other.enviada, enviada) &&
-            const DeepCollectionEquality().equals(other.tratada, tratada) &&
-            const DeepCollectionEquality()
-                .equals(other.errorSyncMessage, errorSyncMessage));
+            (identical(other.empresaId, empresaId) ||
+                other.empresaId == empresaId) &&
+            (identical(other.pedidoVentaId, pedidoVentaId) ||
+                other.pedidoVentaId == pedidoVentaId) &&
+            (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
+                other.pedidoVentaAppId == pedidoVentaAppId) &&
+            (identical(other.usuarioId, usuarioId) ||
+                other.usuarioId == usuarioId) &&
+            (identical(other.pedidoVentaDate, pedidoVentaDate) ||
+                other.pedidoVentaDate == pedidoVentaDate) &&
+            (identical(other.tipoVenta, tipoVenta) ||
+                other.tipoVenta == tipoVenta) &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.direccionId, direccionId) ||
+                other.direccionId == direccionId) &&
+            (identical(other.nombreCliente, nombreCliente) ||
+                other.nombreCliente == nombreCliente) &&
+            (identical(other.direccionEntrga1, direccionEntrga1) ||
+                other.direccionEntrga1 == direccionEntrga1) &&
+            (identical(other.direccionEntrga2, direccionEntrga2) ||
+                other.direccionEntrga2 == direccionEntrga2) &&
+            (identical(other.codigoPostal, codigoPostal) ||
+                other.codigoPostal == codigoPostal) &&
+            (identical(other.poblacion, poblacion) ||
+                other.poblacion == poblacion) &&
+            (identical(other.provincia, provincia) ||
+                other.provincia == provincia) &&
+            (identical(other.pais, pais) || other.pais == pais) &&
+            (identical(other.divisa, divisa) || other.divisa == divisa) &&
+            (identical(other.pedidoCliente, pedidoCliente) ||
+                other.pedidoCliente == pedidoCliente) &&
+            (identical(other.observaciones, observaciones) ||
+                other.observaciones == observaciones) &&
+            (identical(other.baseImponible, baseImponible) ||
+                other.baseImponible == baseImponible) &&
+            (identical(other.importeIva, importeIva) ||
+                other.importeIva == importeIva) &&
+            (identical(other.total, total) || other.total == total) &&
+            (identical(other.pedidoVentaEstado, pedidoVentaEstado) ||
+                other.pedidoVentaEstado == pedidoVentaEstado) &&
+            (identical(other.oferta, oferta) || other.oferta == oferta) &&
+            (identical(other.descuentoProntoPago, descuentoProntoPago) ||
+                other.descuentoProntoPago == descuentoProntoPago) &&
+            (identical(other.dtoBonificacion, dtoBonificacion) ||
+                other.dtoBonificacion == dtoBonificacion) &&
+            (identical(other.iva, iva) || other.iva == iva) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted) &&
+            (identical(other.enviada, enviada) || other.enviada == enviada) &&
+            (identical(other.tratada, tratada) || other.tratada == tratada) &&
+            (identical(other.errorSyncMessage, errorSyncMessage) ||
+                other.errorSyncMessage == errorSyncMessage));
   }
 
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(empresaId),
-        const DeepCollectionEquality().hash(pedidoVentaId),
-        const DeepCollectionEquality().hash(pedidoVentaAppId),
-        const DeepCollectionEquality().hash(usuarioId),
-        const DeepCollectionEquality().hash(pedidoVentaDate),
-        const DeepCollectionEquality().hash(tipoVenta),
-        const DeepCollectionEquality().hash(clienteId),
-        const DeepCollectionEquality().hash(direccionId),
-        const DeepCollectionEquality().hash(nombreCliente),
-        const DeepCollectionEquality().hash(direccionEntrga1),
-        const DeepCollectionEquality().hash(direccionEntrga2),
-        const DeepCollectionEquality().hash(codigoPostal),
-        const DeepCollectionEquality().hash(poblacion),
-        const DeepCollectionEquality().hash(provincia),
-        const DeepCollectionEquality().hash(pais),
-        const DeepCollectionEquality().hash(divisa),
-        const DeepCollectionEquality().hash(pedidoCliente),
-        const DeepCollectionEquality().hash(observaciones),
-        const DeepCollectionEquality().hash(baseImponible),
-        const DeepCollectionEquality().hash(importeIva),
-        const DeepCollectionEquality().hash(total),
-        const DeepCollectionEquality().hash(pedidoVentaEstado),
-        const DeepCollectionEquality().hash(oferta),
-        const DeepCollectionEquality().hash(descuentoProntoPago),
-        const DeepCollectionEquality().hash(dtoBonificacion),
-        const DeepCollectionEquality().hash(iva),
-        const DeepCollectionEquality().hash(lastUpdated),
-        const DeepCollectionEquality().hash(deleted),
-        const DeepCollectionEquality().hash(enviada),
-        const DeepCollectionEquality().hash(tratada),
-        const DeepCollectionEquality().hash(errorSyncMessage)
+        empresaId,
+        pedidoVentaId,
+        pedidoVentaAppId,
+        usuarioId,
+        pedidoVentaDate,
+        tipoVenta,
+        clienteId,
+        direccionId,
+        nombreCliente,
+        direccionEntrga1,
+        direccionEntrga2,
+        codigoPostal,
+        poblacion,
+        provincia,
+        pais,
+        divisa,
+        pedidoCliente,
+        observaciones,
+        baseImponible,
+        importeIva,
+        total,
+        pedidoVentaEstado,
+        oferta,
+        descuentoProntoPago,
+        dtoBonificacion,
+        iva,
+        lastUpdated,
+        deleted,
+        enviada,
+        tratada,
+        errorSyncMessage
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PedidoVentaCopyWith<_$_PedidoVenta> get copyWith =>
       __$$_PedidoVentaCopyWithImpl<_$_PedidoVenta>(this, _$identity);
 }

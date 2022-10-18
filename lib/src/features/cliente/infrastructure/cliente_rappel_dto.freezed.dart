@@ -45,7 +45,8 @@ mixin _$ClienteRappelDTO {
 abstract class $ClienteRappelDTOCopyWith<$Res> {
   factory $ClienteRappelDTOCopyWith(
           ClienteRappelDTO value, $Res Function(ClienteRappelDTO) then) =
-      _$ClienteRappelDTOCopyWithImpl<$Res>;
+      _$ClienteRappelDTOCopyWithImpl<$Res, ClienteRappelDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'RAPPEL_ID') String rappelId,
@@ -57,54 +58,56 @@ abstract class $ClienteRappelDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteRappelDTOCopyWithImpl<$Res>
+class _$ClienteRappelDTOCopyWithImpl<$Res, $Val extends ClienteRappelDTO>
     implements $ClienteRappelDTOCopyWith<$Res> {
   _$ClienteRappelDTOCopyWithImpl(this._value, this._then);
 
-  final ClienteRappelDTO _value;
   // ignore: unused_field
-  final $Res Function(ClienteRappelDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? rappelId = freezed,
-    Object? descripcion = freezed,
-    Object? fechaDesDe = freezed,
+    Object? clienteId = null,
+    Object? rappelId = null,
+    Object? descripcion = null,
+    Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      rappelId: rappelId == freezed
+      rappelId: null == rappelId
           ? _value.rappelId
           : rappelId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      fechaDesDe: fechaDesDe == freezed
+      fechaDesDe: null == fechaDesDe
           ? _value.fechaDesDe
           : fechaDesDe // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      fechaHasta: fechaHasta == freezed
+      fechaHasta: freezed == fechaHasta
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -115,6 +118,7 @@ abstract class _$$_ClienteRappelDTOCopyWith<$Res>
           _$_ClienteRappelDTO value, $Res Function(_$_ClienteRappelDTO) then) =
       __$$_ClienteRappelDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'RAPPEL_ID') String rappelId,
@@ -127,51 +131,49 @@ abstract class _$$_ClienteRappelDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteRappelDTOCopyWithImpl<$Res>
-    extends _$ClienteRappelDTOCopyWithImpl<$Res>
+    extends _$ClienteRappelDTOCopyWithImpl<$Res, _$_ClienteRappelDTO>
     implements _$$_ClienteRappelDTOCopyWith<$Res> {
   __$$_ClienteRappelDTOCopyWithImpl(
       _$_ClienteRappelDTO _value, $Res Function(_$_ClienteRappelDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClienteRappelDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteRappelDTO get _value => super._value as _$_ClienteRappelDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? rappelId = freezed,
-    Object? descripcion = freezed,
-    Object? fechaDesDe = freezed,
+    Object? clienteId = null,
+    Object? rappelId = null,
+    Object? descripcion = null,
+    Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteRappelDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      rappelId: rappelId == freezed
+      rappelId: null == rappelId
           ? _value.rappelId
           : rappelId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcion: descripcion == freezed
+      descripcion: null == descripcion
           ? _value.descripcion
           : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      fechaDesDe: fechaDesDe == freezed
+      fechaDesDe: null == fechaDesDe
           ? _value.fechaDesDe
           : fechaDesDe // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      fechaHasta: fechaHasta == freezed
+      fechaHasta: freezed == fechaHasta
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -227,33 +229,29 @@ class _$_ClienteRappelDTO extends _ClienteRappelDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteRappelDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality().equals(other.rappelId, rappelId) &&
-            const DeepCollectionEquality()
-                .equals(other.descripcion, descripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaDesDe, fechaDesDe) &&
-            const DeepCollectionEquality()
-                .equals(other.fechaHasta, fechaHasta) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.rappelId, rappelId) ||
+                other.rappelId == rappelId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.fechaDesDe, fechaDesDe) ||
+                other.fechaDesDe == fechaDesDe) &&
+            (identical(other.fechaHasta, fechaHasta) ||
+                other.fechaHasta == fechaHasta) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(rappelId),
-      const DeepCollectionEquality().hash(descripcion),
-      const DeepCollectionEquality().hash(fechaDesDe),
-      const DeepCollectionEquality().hash(fechaHasta),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
+      fechaDesDe, fechaHasta, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteRappelDTOCopyWith<_$_ClienteRappelDTO> get copyWith =>
       __$$_ClienteRappelDTOCopyWithImpl<_$_ClienteRappelDTO>(this, _$identity);
 

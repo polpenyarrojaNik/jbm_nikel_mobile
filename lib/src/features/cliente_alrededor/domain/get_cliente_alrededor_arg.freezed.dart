@@ -28,34 +28,38 @@ mixin _$GetClienteAlrededorArg {
 abstract class $GetClienteAlrededorArgCopyWith<$Res> {
   factory $GetClienteAlrededorArgCopyWith(GetClienteAlrededorArg value,
           $Res Function(GetClienteAlrededorArg) then) =
-      _$GetClienteAlrededorArgCopyWithImpl<$Res>;
+      _$GetClienteAlrededorArgCopyWithImpl<$Res, GetClienteAlrededorArg>;
+  @useResult
   $Res call({LatLng latLng, double radiusDistance});
 }
 
 /// @nodoc
-class _$GetClienteAlrededorArgCopyWithImpl<$Res>
+class _$GetClienteAlrededorArgCopyWithImpl<$Res,
+        $Val extends GetClienteAlrededorArg>
     implements $GetClienteAlrededorArgCopyWith<$Res> {
   _$GetClienteAlrededorArgCopyWithImpl(this._value, this._then);
 
-  final GetClienteAlrededorArg _value;
   // ignore: unused_field
-  final $Res Function(GetClienteAlrededorArg) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? latLng = freezed,
-    Object? radiusDistance = freezed,
+    Object? latLng = null,
+    Object? radiusDistance = null,
   }) {
     return _then(_value.copyWith(
-      latLng: latLng == freezed
+      latLng: null == latLng
           ? _value.latLng
           : latLng // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      radiusDistance: radiusDistance == freezed
+      radiusDistance: null == radiusDistance
           ? _value.radiusDistance
           : radiusDistance // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,32 +70,31 @@ abstract class _$$_GetClienteAlrededorArgCopyWith<$Res>
           $Res Function(_$_GetClienteAlrededorArg) then) =
       __$$_GetClienteAlrededorArgCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({LatLng latLng, double radiusDistance});
 }
 
 /// @nodoc
 class __$$_GetClienteAlrededorArgCopyWithImpl<$Res>
-    extends _$GetClienteAlrededorArgCopyWithImpl<$Res>
+    extends _$GetClienteAlrededorArgCopyWithImpl<$Res,
+        _$_GetClienteAlrededorArg>
     implements _$$_GetClienteAlrededorArgCopyWith<$Res> {
   __$$_GetClienteAlrededorArgCopyWithImpl(_$_GetClienteAlrededorArg _value,
       $Res Function(_$_GetClienteAlrededorArg) _then)
-      : super(_value, (v) => _then(v as _$_GetClienteAlrededorArg));
+      : super(_value, _then);
 
-  @override
-  _$_GetClienteAlrededorArg get _value =>
-      super._value as _$_GetClienteAlrededorArg;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? latLng = freezed,
-    Object? radiusDistance = freezed,
+    Object? latLng = null,
+    Object? radiusDistance = null,
   }) {
     return _then(_$_GetClienteAlrededorArg(
-      latLng: latLng == freezed
+      latLng: null == latLng
           ? _value.latLng
           : latLng // ignore: cast_nullable_to_non_nullable
               as LatLng,
-      radiusDistance: radiusDistance == freezed
+      radiusDistance: null == radiusDistance
           ? _value.radiusDistance
           : radiusDistance // ignore: cast_nullable_to_non_nullable
               as double,
@@ -121,19 +124,17 @@ class _$_GetClienteAlrededorArg extends _GetClienteAlrededorArg {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetClienteAlrededorArg &&
-            const DeepCollectionEquality().equals(other.latLng, latLng) &&
-            const DeepCollectionEquality()
-                .equals(other.radiusDistance, radiusDistance));
+            (identical(other.latLng, latLng) || other.latLng == latLng) &&
+            (identical(other.radiusDistance, radiusDistance) ||
+                other.radiusDistance == radiusDistance));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(latLng),
-      const DeepCollectionEquality().hash(radiusDistance));
+  int get hashCode => Object.hash(runtimeType, latLng, radiusDistance);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GetClienteAlrededorArgCopyWith<_$_GetClienteAlrededorArg> get copyWith =>
       __$$_GetClienteAlrededorArgCopyWithImpl<_$_GetClienteAlrededorArg>(
           this, _$identity);

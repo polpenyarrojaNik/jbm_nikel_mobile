@@ -31,7 +31,8 @@ mixin _$ArticuloEmpresaIva {
 abstract class $ArticuloEmpresaIvaCopyWith<$Res> {
   factory $ArticuloEmpresaIvaCopyWith(
           ArticuloEmpresaIva value, $Res Function(ArticuloEmpresaIva) then) =
-      _$ArticuloEmpresaIvaCopyWithImpl<$Res>;
+      _$ArticuloEmpresaIvaCopyWithImpl<$Res, ArticuloEmpresaIva>;
+  @useResult
   $Res call(
       {String articuloId,
       String empresaId,
@@ -41,44 +42,46 @@ abstract class $ArticuloEmpresaIvaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArticuloEmpresaIvaCopyWithImpl<$Res>
+class _$ArticuloEmpresaIvaCopyWithImpl<$Res, $Val extends ArticuloEmpresaIva>
     implements $ArticuloEmpresaIvaCopyWith<$Res> {
   _$ArticuloEmpresaIvaCopyWithImpl(this._value, this._then);
 
-  final ArticuloEmpresaIva _value;
   // ignore: unused_field
-  final $Res Function(ArticuloEmpresaIva) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? empresaId = freezed,
-    Object? iva = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? empresaId = null,
+    Object? iva = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      empresaId: empresaId == freezed
+      empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String,
-      iva: iva == freezed
+      iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,6 +92,7 @@ abstract class _$$_ArticuloEmpresaIvaCopyWith<$Res>
           $Res Function(_$_ArticuloEmpresaIva) then) =
       __$$_ArticuloEmpresaIvaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String articuloId,
       String empresaId,
@@ -99,41 +103,39 @@ abstract class _$$_ArticuloEmpresaIvaCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloEmpresaIvaCopyWithImpl<$Res>
-    extends _$ArticuloEmpresaIvaCopyWithImpl<$Res>
+    extends _$ArticuloEmpresaIvaCopyWithImpl<$Res, _$_ArticuloEmpresaIva>
     implements _$$_ArticuloEmpresaIvaCopyWith<$Res> {
   __$$_ArticuloEmpresaIvaCopyWithImpl(
       _$_ArticuloEmpresaIva _value, $Res Function(_$_ArticuloEmpresaIva) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloEmpresaIva));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloEmpresaIva get _value => super._value as _$_ArticuloEmpresaIva;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? empresaId = freezed,
-    Object? iva = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? articuloId = null,
+    Object? empresaId = null,
+    Object? iva = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ArticuloEmpresaIva(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      empresaId: empresaId == freezed
+      empresaId: null == empresaId
           ? _value.empresaId
           : empresaId // ignore: cast_nullable_to_non_nullable
               as String,
-      iva: iva == freezed
+      iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -173,26 +175,23 @@ class _$_ArticuloEmpresaIva extends _ArticuloEmpresaIva {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloEmpresaIva &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality().equals(other.empresaId, empresaId) &&
-            const DeepCollectionEquality().equals(other.iva, iva) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.empresaId, empresaId) ||
+                other.empresaId == empresaId) &&
+            (identical(other.iva, iva) || other.iva == iva) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(empresaId),
-      const DeepCollectionEquality().hash(iva),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+      runtimeType, articuloId, empresaId, iva, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloEmpresaIvaCopyWith<_$_ArticuloEmpresaIva> get copyWith =>
       __$$_ArticuloEmpresaIvaCopyWithImpl<_$_ArticuloEmpresaIva>(
           this, _$identity);

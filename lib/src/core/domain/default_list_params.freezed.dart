@@ -30,45 +30,48 @@ mixin _$DefaultListParams {
 abstract class $DefaultListParamsCopyWith<$Res> {
   factory $DefaultListParamsCopyWith(
           DefaultListParams value, $Res Function(DefaultListParams) then) =
-      _$DefaultListParamsCopyWithImpl<$Res>;
+      _$DefaultListParamsCopyWithImpl<$Res, DefaultListParams>;
+  @useResult
   $Res call(
       {int page, String searchText, bool? searchPotenciales, String? entityId});
 }
 
 /// @nodoc
-class _$DefaultListParamsCopyWithImpl<$Res>
+class _$DefaultListParamsCopyWithImpl<$Res, $Val extends DefaultListParams>
     implements $DefaultListParamsCopyWith<$Res> {
   _$DefaultListParamsCopyWithImpl(this._value, this._then);
 
-  final DefaultListParams _value;
   // ignore: unused_field
-  final $Res Function(DefaultListParams) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? page = freezed,
-    Object? searchText = freezed,
+    Object? page = null,
+    Object? searchText = null,
     Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
     return _then(_value.copyWith(
-      page: page == freezed
+      page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
-      searchText: searchText == freezed
+      searchText: null == searchText
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
-      searchPotenciales: searchPotenciales == freezed
+      searchPotenciales: freezed == searchPotenciales
           ? _value.searchPotenciales
           : searchPotenciales // ignore: cast_nullable_to_non_nullable
               as bool?,
-      entityId: entityId == freezed
+      entityId: freezed == entityId
           ? _value.entityId
           : entityId // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -79,42 +82,41 @@ abstract class _$$_DefaultListParamsCopyWith<$Res>
           $Res Function(_$_DefaultListParams) then) =
       __$$_DefaultListParamsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int page, String searchText, bool? searchPotenciales, String? entityId});
 }
 
 /// @nodoc
 class __$$_DefaultListParamsCopyWithImpl<$Res>
-    extends _$DefaultListParamsCopyWithImpl<$Res>
+    extends _$DefaultListParamsCopyWithImpl<$Res, _$_DefaultListParams>
     implements _$$_DefaultListParamsCopyWith<$Res> {
   __$$_DefaultListParamsCopyWithImpl(
       _$_DefaultListParams _value, $Res Function(_$_DefaultListParams) _then)
-      : super(_value, (v) => _then(v as _$_DefaultListParams));
+      : super(_value, _then);
 
-  @override
-  _$_DefaultListParams get _value => super._value as _$_DefaultListParams;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? page = freezed,
-    Object? searchText = freezed,
+    Object? page = null,
+    Object? searchText = null,
     Object? searchPotenciales = freezed,
     Object? entityId = freezed,
   }) {
     return _then(_$_DefaultListParams(
-      page: page == freezed
+      page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
-      searchText: searchText == freezed
+      searchText: null == searchText
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
-      searchPotenciales: searchPotenciales == freezed
+      searchPotenciales: freezed == searchPotenciales
           ? _value.searchPotenciales
           : searchPotenciales // ignore: cast_nullable_to_non_nullable
               as bool?,
-      entityId: entityId == freezed
+      entityId: freezed == entityId
           ? _value.entityId
           : entityId // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -151,24 +153,22 @@ class _$_DefaultListParams extends _DefaultListParams {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DefaultListParams &&
-            const DeepCollectionEquality().equals(other.page, page) &&
-            const DeepCollectionEquality()
-                .equals(other.searchText, searchText) &&
-            const DeepCollectionEquality()
-                .equals(other.searchPotenciales, searchPotenciales) &&
-            const DeepCollectionEquality().equals(other.entityId, entityId));
+            (identical(other.page, page) || other.page == page) &&
+            (identical(other.searchText, searchText) ||
+                other.searchText == searchText) &&
+            (identical(other.searchPotenciales, searchPotenciales) ||
+                other.searchPotenciales == searchPotenciales) &&
+            (identical(other.entityId, entityId) ||
+                other.entityId == entityId));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(page),
-      const DeepCollectionEquality().hash(searchText),
-      const DeepCollectionEquality().hash(searchPotenciales),
-      const DeepCollectionEquality().hash(entityId));
+  int get hashCode =>
+      Object.hash(runtimeType, page, searchText, searchPotenciales, entityId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DefaultListParamsCopyWith<_$_DefaultListParams> get copyWith =>
       __$$_DefaultListParamsCopyWithImpl<_$_DefaultListParams>(
           this, _$identity);

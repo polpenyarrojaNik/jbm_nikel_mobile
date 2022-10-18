@@ -31,14 +31,14 @@ mixin _$VisitaEditPageControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,13 +67,13 @@ mixin _$VisitaEditPageControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -95,17 +95,20 @@ abstract class $VisitaEditPageControllerStateCopyWith<$Res> {
   factory $VisitaEditPageControllerStateCopyWith(
           VisitaEditPageControllerState value,
           $Res Function(VisitaEditPageControllerState) then) =
-      _$VisitaEditPageControllerStateCopyWithImpl<$Res>;
+      _$VisitaEditPageControllerStateCopyWithImpl<$Res,
+          VisitaEditPageControllerState>;
 }
 
 /// @nodoc
-class _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+class _$VisitaEditPageControllerStateCopyWithImpl<$Res,
+        $Val extends VisitaEditPageControllerState>
     implements $VisitaEditPageControllerStateCopyWith<$Res> {
   _$VisitaEditPageControllerStateCopyWithImpl(this._value, this._then);
 
-  final VisitaEditPageControllerState _value;
   // ignore: unused_field
-  final $Res Function(VisitaEditPageControllerState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -117,13 +120,10 @@ abstract class _$$_loadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_loadingCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_loading>
     implements _$$_loadingCopyWith<$Res> {
   __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
-      : super(_value, (v) => _then(v as _$_loading));
-
-  @override
-  _$_loading get _value => super._value as _$_loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -164,14 +164,14 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return loading?.call();
   }
@@ -212,13 +212,13 @@ class _$_loading extends _loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return loading?.call(this);
   }
@@ -251,6 +251,7 @@ abstract class _loading extends VisitaEditPageControllerState {
 abstract class _$$_dataCopyWith<$Res> {
   factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
       __$$_dataCopyWithImpl<$Res>;
+  @useResult
   $Res call({Visita? visitaLocal});
 
   $VisitaCopyWith<$Res>? get visitaLocal;
@@ -258,20 +259,18 @@ abstract class _$$_dataCopyWith<$Res> {
 
 /// @nodoc
 class __$$_dataCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_data>
     implements _$$_dataCopyWith<$Res> {
   __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
-      : super(_value, (v) => _then(v as _$_data));
+      : super(_value, _then);
 
-  @override
-  _$_data get _value => super._value as _$_data;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? visitaLocal = freezed,
   }) {
     return _then(_$_data(
-      visitaLocal == freezed
+      freezed == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
               as Visita?,
@@ -279,6 +278,7 @@ class __$$_dataCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res>? get visitaLocal {
     if (_value.visitaLocal == null) {
       return null;
@@ -308,16 +308,16 @@ class _$_data extends _data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_data &&
-            const DeepCollectionEquality()
-                .equals(other.visitaLocal, visitaLocal));
+            (identical(other.visitaLocal, visitaLocal) ||
+                other.visitaLocal == visitaLocal));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(visitaLocal));
+  int get hashCode => Object.hash(runtimeType, visitaLocal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_dataCopyWith<_$_data> get copyWith =>
       __$$_dataCopyWithImpl<_$_data>(this, _$identity);
 
@@ -340,14 +340,14 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return data?.call(visitaLocal);
   }
@@ -388,13 +388,13 @@ class _$_data extends _data {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return data?.call(this);
   }
@@ -431,30 +431,26 @@ abstract class _data extends VisitaEditPageControllerState {
 abstract class _$$_errorCopyWith<$Res> {
   factory _$$_errorCopyWith(_$_error value, $Res Function(_$_error) then) =
       __$$_errorCopyWithImpl<$Res>;
+  @useResult
   $Res call({Object error, StackTrace? stackTrace});
 }
 
 /// @nodoc
 class __$$_errorCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_error>
     implements _$$_errorCopyWith<$Res> {
   __$$_errorCopyWithImpl(_$_error _value, $Res Function(_$_error) _then)
-      : super(_value, (v) => _then(v as _$_error));
+      : super(_value, _then);
 
-  @override
-  _$_error get _value => super._value as _$_error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
     Object? stackTrace = freezed,
   }) {
     return _then(_$_error(
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
           ? _value.stackTrace
           : stackTrace // ignore: cast_nullable_to_non_nullable
               as StackTrace?,
@@ -483,18 +479,17 @@ class _$_error extends _error {
         (other.runtimeType == runtimeType &&
             other is _$_error &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(stackTrace));
+      runtimeType, const DeepCollectionEquality().hash(error), stackTrace);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_errorCopyWith<_$_error> get copyWith =>
       __$$_errorCopyWithImpl<_$_error>(this, _$identity);
 
@@ -517,14 +512,14 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return error?.call(this.error, stackTrace);
   }
@@ -565,13 +560,13 @@ class _$_error extends _error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return error?.call(this);
   }
@@ -611,6 +606,7 @@ abstract class _error extends VisitaEditPageControllerState {
 abstract class _$$_savedCopyWith<$Res> {
   factory _$$_savedCopyWith(_$_saved value, $Res Function(_$_saved) then) =
       __$$_savedCopyWithImpl<$Res>;
+  @useResult
   $Res call({Visita visitaLocal});
 
   $VisitaCopyWith<$Res> get visitaLocal;
@@ -618,20 +614,18 @@ abstract class _$$_savedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_savedCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_saved>
     implements _$$_savedCopyWith<$Res> {
   __$$_savedCopyWithImpl(_$_saved _value, $Res Function(_$_saved) _then)
-      : super(_value, (v) => _then(v as _$_saved));
+      : super(_value, _then);
 
-  @override
-  _$_saved get _value => super._value as _$_saved;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? visitaLocal = freezed,
+    Object? visitaLocal = null,
   }) {
     return _then(_$_saved(
-      visitaLocal == freezed
+      null == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
               as Visita,
@@ -639,6 +633,7 @@ class __$$_savedCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res> get visitaLocal {
     return $VisitaCopyWith<$Res>(_value.visitaLocal, (value) {
       return _then(_value.copyWith(visitaLocal: value));
@@ -664,16 +659,16 @@ class _$_saved extends _saved {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_saved &&
-            const DeepCollectionEquality()
-                .equals(other.visitaLocal, visitaLocal));
+            (identical(other.visitaLocal, visitaLocal) ||
+                other.visitaLocal == visitaLocal));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(visitaLocal));
+  int get hashCode => Object.hash(runtimeType, visitaLocal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_savedCopyWith<_$_saved> get copyWith =>
       __$$_savedCopyWithImpl<_$_saved>(this, _$identity);
 
@@ -696,14 +691,14 @@ class _$_saved extends _saved {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return saved?.call(visitaLocal);
   }
@@ -744,13 +739,13 @@ class _$_saved extends _saved {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return saved?.call(this);
   }
@@ -788,6 +783,7 @@ abstract class _saved extends VisitaEditPageControllerState {
 abstract class _$$_savingCopyWith<$Res> {
   factory _$$_savingCopyWith(_$_saving value, $Res Function(_$_saving) then) =
       __$$_savingCopyWithImpl<$Res>;
+  @useResult
   $Res call({Visita visitaLocal});
 
   $VisitaCopyWith<$Res> get visitaLocal;
@@ -795,20 +791,18 @@ abstract class _$$_savingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_savingCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_saving>
     implements _$$_savingCopyWith<$Res> {
   __$$_savingCopyWithImpl(_$_saving _value, $Res Function(_$_saving) _then)
-      : super(_value, (v) => _then(v as _$_saving));
+      : super(_value, _then);
 
-  @override
-  _$_saving get _value => super._value as _$_saving;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? visitaLocal = freezed,
+    Object? visitaLocal = null,
   }) {
     return _then(_$_saving(
-      visitaLocal == freezed
+      null == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
               as Visita,
@@ -816,6 +810,7 @@ class __$$_savingCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res> get visitaLocal {
     return $VisitaCopyWith<$Res>(_value.visitaLocal, (value) {
       return _then(_value.copyWith(visitaLocal: value));
@@ -841,16 +836,16 @@ class _$_saving extends _saving {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_saving &&
-            const DeepCollectionEquality()
-                .equals(other.visitaLocal, visitaLocal));
+            (identical(other.visitaLocal, visitaLocal) ||
+                other.visitaLocal == visitaLocal));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(visitaLocal));
+  int get hashCode => Object.hash(runtimeType, visitaLocal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_savingCopyWith<_$_saving> get copyWith =>
       __$$_savingCopyWithImpl<_$_saving>(this, _$identity);
 
@@ -873,14 +868,14 @@ class _$_saving extends _saving {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return saving?.call(visitaLocal);
   }
@@ -921,13 +916,13 @@ class _$_saving extends _saving {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return saving?.call(this);
   }
@@ -966,6 +961,7 @@ abstract class _$$_savedErrorCopyWith<$Res> {
   factory _$$_savedErrorCopyWith(
           _$_savedError value, $Res Function(_$_savedError) then) =
       __$$_savedErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({Visita visitaLocal, Object error, StackTrace? stackTrace});
 
   $VisitaCopyWith<$Res> get visitaLocal;
@@ -973,31 +969,26 @@ abstract class _$$_savedErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_savedErrorCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_savedError>
     implements _$$_savedErrorCopyWith<$Res> {
   __$$_savedErrorCopyWithImpl(
       _$_savedError _value, $Res Function(_$_savedError) _then)
-      : super(_value, (v) => _then(v as _$_savedError));
+      : super(_value, _then);
 
-  @override
-  _$_savedError get _value => super._value as _$_savedError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? visitaLocal = freezed,
-    Object? error = freezed,
+    Object? visitaLocal = null,
+    Object? error = null,
     Object? stackTrace = freezed,
   }) {
     return _then(_$_savedError(
-      visitaLocal == freezed
+      null == visitaLocal
           ? _value.visitaLocal
           : visitaLocal // ignore: cast_nullable_to_non_nullable
               as Visita,
-      error == freezed
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Object,
-      stackTrace: stackTrace == freezed
+      null == error ? _value.error : error,
+      stackTrace: freezed == stackTrace
           ? _value.stackTrace
           : stackTrace // ignore: cast_nullable_to_non_nullable
               as StackTrace?,
@@ -1005,6 +996,7 @@ class __$$_savedErrorCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $VisitaCopyWith<$Res> get visitaLocal {
     return $VisitaCopyWith<$Res>(_value.visitaLocal, (value) {
       return _then(_value.copyWith(visitaLocal: value));
@@ -1035,22 +1027,20 @@ class _$_savedError extends _savedError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_savedError &&
-            const DeepCollectionEquality()
-                .equals(other.visitaLocal, visitaLocal) &&
+            (identical(other.visitaLocal, visitaLocal) ||
+                other.visitaLocal == visitaLocal) &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality()
-                .equals(other.stackTrace, stackTrace));
+            (identical(other.stackTrace, stackTrace) ||
+                other.stackTrace == stackTrace));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(visitaLocal),
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(stackTrace));
+  int get hashCode => Object.hash(runtimeType, visitaLocal,
+      const DeepCollectionEquality().hash(error), stackTrace);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_savedErrorCopyWith<_$_savedError> get copyWith =>
       __$$_savedErrorCopyWithImpl<_$_savedError>(this, _$identity);
 
@@ -1073,14 +1063,14 @@ class _$_savedError extends _savedError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return savedError?.call(visitaLocal, this.error, stackTrace);
   }
@@ -1121,13 +1111,13 @@ class _$_savedError extends _savedError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return savedError?.call(this);
   }
@@ -1173,13 +1163,10 @@ abstract class _$$_deletedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_deletedCopyWithImpl<$Res>
-    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res>
+    extends _$VisitaEditPageControllerStateCopyWithImpl<$Res, _$_deleted>
     implements _$$_deletedCopyWith<$Res> {
   __$$_deletedCopyWithImpl(_$_deleted _value, $Res Function(_$_deleted) _then)
-      : super(_value, (v) => _then(v as _$_deleted));
-
-  @override
-  _$_deleted get _value => super._value as _$_deleted;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1220,14 +1207,14 @@ class _$_deleted extends _deleted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(Visita? visitaLocal)? data,
-    TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(Visita visitaLocal)? saved,
-    TResult Function(Visita visitaLocal)? saving,
-    TResult Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
+    TResult? Function()? loading,
+    TResult? Function(Visita? visitaLocal)? data,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function(Visita visitaLocal)? saved,
+    TResult? Function(Visita visitaLocal)? saving,
+    TResult? Function(Visita visitaLocal, Object error, StackTrace? stackTrace)?
         savedError,
-    TResult Function()? deleted,
+    TResult? Function()? deleted,
   }) {
     return deleted?.call();
   }
@@ -1268,13 +1255,13 @@ class _$_deleted extends _deleted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_loading value)? loading,
-    TResult Function(_data value)? data,
-    TResult Function(_error value)? error,
-    TResult Function(_saved value)? saved,
-    TResult Function(_saving value)? saving,
-    TResult Function(_savedError value)? savedError,
-    TResult Function(_deleted value)? deleted,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_data value)? data,
+    TResult? Function(_error value)? error,
+    TResult? Function(_saved value)? saved,
+    TResult? Function(_saving value)? saving,
+    TResult? Function(_savedError value)? savedError,
+    TResult? Function(_deleted value)? deleted,
   }) {
     return deleted?.call(this);
   }

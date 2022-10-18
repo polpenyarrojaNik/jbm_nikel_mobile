@@ -45,7 +45,8 @@ mixin _$ClientePrecioNetoDTO {
 abstract class $ClientePrecioNetoDTOCopyWith<$Res> {
   factory $ClientePrecioNetoDTOCopyWith(ClientePrecioNetoDTO value,
           $Res Function(ClientePrecioNetoDTO) then) =
-      _$ClientePrecioNetoDTOCopyWithImpl<$Res>;
+      _$ClientePrecioNetoDTOCopyWithImpl<$Res, ClientePrecioNetoDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
@@ -57,54 +58,57 @@ abstract class $ClientePrecioNetoDTOCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClientePrecioNetoDTOCopyWithImpl<$Res>
+class _$ClientePrecioNetoDTOCopyWithImpl<$Res,
+        $Val extends ClientePrecioNetoDTO>
     implements $ClientePrecioNetoDTOCopyWith<$Res> {
   _$ClientePrecioNetoDTOCopyWithImpl(this._value, this._then);
 
-  final ClientePrecioNetoDTO _value;
   // ignore: unused_field
-  final $Res Function(ClientePrecioNetoDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
-    Object? cantidadDesde = freezed,
-    Object? precio = freezed,
-    Object? tipoPrecio = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? articuloId = null,
+    Object? cantidadDesde = null,
+    Object? precio = null,
+    Object? tipoPrecio = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -115,6 +119,7 @@ abstract class _$$_ClientePrecioNetoDTOCopyWith<$Res>
           $Res Function(_$_ClientePrecioNetoDTO) then) =
       __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'ARTICULO_ID') String articuloId,
@@ -127,51 +132,49 @@ abstract class _$$_ClientePrecioNetoDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClientePrecioNetoDTOCopyWithImpl<$Res>
-    extends _$ClientePrecioNetoDTOCopyWithImpl<$Res>
+    extends _$ClientePrecioNetoDTOCopyWithImpl<$Res, _$_ClientePrecioNetoDTO>
     implements _$$_ClientePrecioNetoDTOCopyWith<$Res> {
   __$$_ClientePrecioNetoDTOCopyWithImpl(_$_ClientePrecioNetoDTO _value,
       $Res Function(_$_ClientePrecioNetoDTO) _then)
-      : super(_value, (v) => _then(v as _$_ClientePrecioNetoDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ClientePrecioNetoDTO get _value => super._value as _$_ClientePrecioNetoDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? articuloId = freezed,
-    Object? cantidadDesde = freezed,
-    Object? precio = freezed,
-    Object? tipoPrecio = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? articuloId = null,
+    Object? cantidadDesde = null,
+    Object? precio = null,
+    Object? tipoPrecio = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClientePrecioNetoDTO(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      cantidadDesde: cantidadDesde == freezed
+      cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
           : cantidadDesde // ignore: cast_nullable_to_non_nullable
               as int,
-      precio: precio == freezed
+      precio: null == precio
           ? _value.precio
           : precio // ignore: cast_nullable_to_non_nullable
               as double,
-      tipoPrecio: tipoPrecio == freezed
+      tipoPrecio: null == tipoPrecio
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as String,
@@ -227,33 +230,28 @@ class _$_ClientePrecioNetoDTO extends _ClientePrecioNetoDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClientePrecioNetoDTO &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.cantidadDesde, cantidadDesde) &&
-            const DeepCollectionEquality().equals(other.precio, precio) &&
-            const DeepCollectionEquality()
-                .equals(other.tipoPrecio, tipoPrecio) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.cantidadDesde, cantidadDesde) ||
+                other.cantidadDesde == cantidadDesde) &&
+            (identical(other.precio, precio) || other.precio == precio) &&
+            (identical(other.tipoPrecio, tipoPrecio) ||
+                other.tipoPrecio == tipoPrecio) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(cantidadDesde),
-      const DeepCollectionEquality().hash(precio),
-      const DeepCollectionEquality().hash(tipoPrecio),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, articuloId,
+      cantidadDesde, precio, tipoPrecio, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClientePrecioNetoDTOCopyWith<_$_ClientePrecioNetoDTO> get copyWith =>
       __$$_ClientePrecioNetoDTOCopyWithImpl<_$_ClientePrecioNetoDTO>(
           this, _$identity);

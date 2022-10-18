@@ -31,7 +31,8 @@ mixin _$ClienteGrupoNeto {
 abstract class $ClienteGrupoNetoCopyWith<$Res> {
   factory $ClienteGrupoNetoCopyWith(
           ClienteGrupoNeto value, $Res Function(ClienteGrupoNeto) then) =
-      _$ClienteGrupoNetoCopyWithImpl<$Res>;
+      _$ClienteGrupoNetoCopyWithImpl<$Res, ClienteGrupoNeto>;
+  @useResult
   $Res call(
       {String clienteId,
       String grupoNetoId,
@@ -41,44 +42,46 @@ abstract class $ClienteGrupoNetoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteGrupoNetoCopyWithImpl<$Res>
+class _$ClienteGrupoNetoCopyWithImpl<$Res, $Val extends ClienteGrupoNeto>
     implements $ClienteGrupoNetoCopyWith<$Res> {
   _$ClienteGrupoNetoCopyWithImpl(this._value, this._then);
 
-  final ClienteGrupoNeto _value;
   // ignore: unused_field
-  final $Res Function(ClienteGrupoNeto) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? grupoNetoId = freezed,
-    Object? grupoNetoDescripcion = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? grupoNetoId = null,
+    Object? grupoNetoDescripcion = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_value.copyWith(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoId: grupoNetoId == freezed
+      grupoNetoId: null == grupoNetoId
           ? _value.grupoNetoId
           : grupoNetoId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoDescripcion: grupoNetoDescripcion == freezed
+      grupoNetoDescripcion: null == grupoNetoDescripcion
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -89,6 +92,7 @@ abstract class _$$_ClienteGrupoNetoCopyWith<$Res>
           _$_ClienteGrupoNeto value, $Res Function(_$_ClienteGrupoNeto) then) =
       __$$_ClienteGrupoNetoCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String clienteId,
       String grupoNetoId,
@@ -99,41 +103,39 @@ abstract class _$$_ClienteGrupoNetoCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
-    extends _$ClienteGrupoNetoCopyWithImpl<$Res>
+    extends _$ClienteGrupoNetoCopyWithImpl<$Res, _$_ClienteGrupoNeto>
     implements _$$_ClienteGrupoNetoCopyWith<$Res> {
   __$$_ClienteGrupoNetoCopyWithImpl(
       _$_ClienteGrupoNeto _value, $Res Function(_$_ClienteGrupoNeto) _then)
-      : super(_value, (v) => _then(v as _$_ClienteGrupoNeto));
+      : super(_value, _then);
 
-  @override
-  _$_ClienteGrupoNeto get _value => super._value as _$_ClienteGrupoNeto;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? clienteId = freezed,
-    Object? grupoNetoId = freezed,
-    Object? grupoNetoDescripcion = freezed,
-    Object? lastUpdated = freezed,
-    Object? deleted = freezed,
+    Object? clienteId = null,
+    Object? grupoNetoId = null,
+    Object? grupoNetoDescripcion = null,
+    Object? lastUpdated = null,
+    Object? deleted = null,
   }) {
     return _then(_$_ClienteGrupoNeto(
-      clienteId: clienteId == freezed
+      clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoId: grupoNetoId == freezed
+      grupoNetoId: null == grupoNetoId
           ? _value.grupoNetoId
           : grupoNetoId // ignore: cast_nullable_to_non_nullable
               as String,
-      grupoNetoDescripcion: grupoNetoDescripcion == freezed
+      grupoNetoDescripcion: null == grupoNetoDescripcion
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdated: lastUpdated == freezed
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      deleted: deleted == freezed
+      deleted: null == deleted
           ? _value.deleted
           : deleted // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -173,27 +175,24 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteGrupoNeto &&
-            const DeepCollectionEquality().equals(other.clienteId, clienteId) &&
-            const DeepCollectionEquality()
-                .equals(other.grupoNetoId, grupoNetoId) &&
-            const DeepCollectionEquality()
-                .equals(other.grupoNetoDescripcion, grupoNetoDescripcion) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.deleted, deleted));
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
+            (identical(other.grupoNetoId, grupoNetoId) ||
+                other.grupoNetoId == grupoNetoId) &&
+            (identical(other.grupoNetoDescripcion, grupoNetoDescripcion) ||
+                other.grupoNetoDescripcion == grupoNetoDescripcion) &&
+            (identical(other.lastUpdated, lastUpdated) ||
+                other.lastUpdated == lastUpdated) &&
+            (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clienteId),
-      const DeepCollectionEquality().hash(grupoNetoId),
-      const DeepCollectionEquality().hash(grupoNetoDescripcion),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(deleted));
+  int get hashCode => Object.hash(runtimeType, clienteId, grupoNetoId,
+      grupoNetoDescripcion, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClienteGrupoNetoCopyWith<_$_ClienteGrupoNeto> get copyWith =>
       __$$_ClienteGrupoNetoCopyWithImpl<_$_ClienteGrupoNeto>(this, _$identity);
 }

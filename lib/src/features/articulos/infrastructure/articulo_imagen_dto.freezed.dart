@@ -35,36 +35,39 @@ mixin _$ArticuloImagenDTO {
 abstract class $ArticuloImagenDTOCopyWith<$Res> {
   factory $ArticuloImagenDTOCopyWith(
           ArticuloImagenDTO value, $Res Function(ArticuloImagenDTO) then) =
-      _$ArticuloImagenDTOCopyWithImpl<$Res>;
+      _$ArticuloImagenDTOCopyWithImpl<$Res, ArticuloImagenDTO>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo});
 }
 
 /// @nodoc
-class _$ArticuloImagenDTOCopyWithImpl<$Res>
+class _$ArticuloImagenDTOCopyWithImpl<$Res, $Val extends ArticuloImagenDTO>
     implements $ArticuloImagenDTOCopyWith<$Res> {
   _$ArticuloImagenDTOCopyWithImpl(this._value, this._then);
 
-  final ArticuloImagenDTO _value;
   // ignore: unused_field
-  final $Res Function(ArticuloImagenDTO) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? nombreArchivo = freezed,
+    Object? articuloId = null,
+    Object? nombreArchivo = null,
   }) {
     return _then(_value.copyWith(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: null == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_ArticuloImagenDTOCopyWith<$Res>
           $Res Function(_$_ArticuloImagenDTO) then) =
       __$$_ArticuloImagenDTOCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
       @JsonKey(name: 'NOMBRE_ARCHIVO') String nombreArchivo});
@@ -82,26 +86,24 @@ abstract class _$$_ArticuloImagenDTOCopyWith<$Res>
 
 /// @nodoc
 class __$$_ArticuloImagenDTOCopyWithImpl<$Res>
-    extends _$ArticuloImagenDTOCopyWithImpl<$Res>
+    extends _$ArticuloImagenDTOCopyWithImpl<$Res, _$_ArticuloImagenDTO>
     implements _$$_ArticuloImagenDTOCopyWith<$Res> {
   __$$_ArticuloImagenDTOCopyWithImpl(
       _$_ArticuloImagenDTO _value, $Res Function(_$_ArticuloImagenDTO) _then)
-      : super(_value, (v) => _then(v as _$_ArticuloImagenDTO));
+      : super(_value, _then);
 
-  @override
-  _$_ArticuloImagenDTO get _value => super._value as _$_ArticuloImagenDTO;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articuloId = freezed,
-    Object? nombreArchivo = freezed,
+    Object? articuloId = null,
+    Object? nombreArchivo = null,
   }) {
     return _then(_$_ArticuloImagenDTO(
-      articuloId: articuloId == freezed
+      articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      nombreArchivo: nombreArchivo == freezed
+      nombreArchivo: null == nombreArchivo
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String,
@@ -137,21 +139,19 @@ class _$_ArticuloImagenDTO extends _ArticuloImagenDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloImagenDTO &&
-            const DeepCollectionEquality()
-                .equals(other.articuloId, articuloId) &&
-            const DeepCollectionEquality()
-                .equals(other.nombreArchivo, nombreArchivo));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(articuloId),
-      const DeepCollectionEquality().hash(nombreArchivo));
+  int get hashCode => Object.hash(runtimeType, articuloId, nombreArchivo);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArticuloImagenDTOCopyWith<_$_ArticuloImagenDTO> get copyWith =>
       __$$_ArticuloImagenDTOCopyWithImpl<_$_ArticuloImagenDTO>(
           this, _$identity);
