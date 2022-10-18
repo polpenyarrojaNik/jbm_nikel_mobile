@@ -1,36 +1,63 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../domain/splash_progress.dart';
 
-final splashPageControllerProvider =
-    StateNotifierProvider.autoDispose<SplashPageController, AsyncValue<void>>(
-        (ref) => SplashPageController(ref.watch(syncServiceProvider)));
+part 'splash_page_controller.freezed.dart';
 
-class SplashPageController extends StateNotifier<AsyncValue<void>> {
+final splashPageControllerProvider = StateNotifierProvider.autoDispose<
+        SplashPageController, SplashControllerState>(
+    (ref) => SplashPageController(ref.watch(syncServiceProvider)));
+
+@freezed
+class SplashControllerState with _$SplashControllerState {
+  const SplashControllerState._();
+  const factory SplashControllerState.downloadDatabase() = _downloadDatabase;
+
+  const factory SplashControllerState.initial() = _initial;
+  const factory SplashControllerState.error(Object error,
+      {StackTrace? stackTrace}) = _error;
+  const factory SplashControllerState.data(SplashProgress progressValue) =
+      _data;
+}
+
+class SplashPageController extends StateNotifier<SplashControllerState> {
   final SyncService _syncService;
-  SplashPageController(this._syncService) : super(const AsyncData(null)) {
+  SplashPageController(this._syncService)
+      : super(const SplashControllerState.initial()) {
     initializeApp();
   }
 
   Future<void> initializeApp() async {
     try {
-      state = const AsyncLoading();
+      state = const SplashControllerState.downloadDatabase();
       try {
         await _syncService.initDatabaBase();
       } catch (e) {
         rethrow;
       }
 
-      await _syncService.syncAllArticulosRelacionados();
-      await _syncService.syncAllClientesRelacionados();
-      await _syncService.syncAllPedidosRelacionados();
-      await _syncService.syncAllVisitasRelacionados();
-      await _syncService.syncAllAuxiliares();
+      state =
+          const SplashControllerState.data(SplashProgress.downloadedDatabase);
 
-      state = const AsyncData(null);
+      await _syncService.syncAllArticulosRelacionados();
+      state = const SplashControllerState.data(SplashProgress.syncArticulos);
+
+      await _syncService.syncAllClientesRelacionados();
+      state = const SplashControllerState.data(SplashProgress.syncClientes);
+
+      await _syncService.syncAllPedidosRelacionados();
+      state = const SplashControllerState.data(SplashProgress.syncPedidos);
+
+      await _syncService.syncAllVisitasRelacionados();
+      state = const SplashControllerState.data(SplashProgress.syncVisitas);
+
+      await _syncService.syncAllAuxiliares();
+      state = const SplashControllerState.data(SplashProgress.syncAuxiliar);
     } on AppException catch (e, stackTrace) {
-      state = AsyncError(e, stackTrace);
+      state = SplashControllerState.error(e, stackTrace: stackTrace);
     } catch (e) {
       rethrow;
     }

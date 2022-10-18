@@ -404,6 +404,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_version": MessageLookupByLibrary.simpleMessage("Versión"),
         "sinResultados": MessageLookupByLibrary.simpleMessage("Sin resultados"),
         "sincConexion": MessageLookupByLibrary.simpleMessage("Sin conexión"),
+        "splash_articulos":
+            MessageLookupByLibrary.simpleMessage("Sincronizando artículos..."),
+        "splash_clientes":
+            MessageLookupByLibrary.simpleMessage("Sincronizando clientes..."),
+        "splash_descargandoBaseDeDatos": MessageLookupByLibrary.simpleMessage(
+            "Descargando base de datos..."),
+        "splash_otras":
+            MessageLookupByLibrary.simpleMessage("Sincronizando otros..."),
+        "splash_pedidos":
+            MessageLookupByLibrary.simpleMessage("Sincronizando pedidos..."),
+        "splash_visitas":
+            MessageLookupByLibrary.simpleMessage("Sincronizando visitas..."),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Buscar..."),
