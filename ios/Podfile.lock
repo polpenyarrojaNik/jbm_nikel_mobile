@@ -1,4 +1,6 @@
 PODS:
+  - better_open_file (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - flutter_archive (0.0.1):
     - Flutter
@@ -20,8 +22,6 @@ PODS:
     - GoogleMaps/Base
   - map_launcher (0.0.1):
     - Flutter
-  - open_file (0.0.1):
-    - Flutter
   - package_info_plus (0.4.5):
     - Flutter
   - path_provider_ios (0.0.1):
@@ -29,22 +29,19 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - sqlite3 (3.39.1):
-    - sqlite3/common (= 3.39.1)
-  - sqlite3/common (3.39.1)
-  - sqlite3/fts5 (3.39.1):
+  - sqlite3 (3.39.3):
+    - sqlite3/common (= 3.39.3)
+  - sqlite3/common (3.39.3)
+  - sqlite3/fts5 (3.39.3):
     - sqlite3/common
-  - sqlite3/json1 (3.39.1):
+  - sqlite3/perf-threadsafe (3.39.3):
     - sqlite3/common
-  - sqlite3/perf-threadsafe (3.39.1):
-    - sqlite3/common
-  - sqlite3/rtree (3.39.1):
+  - sqlite3/rtree (3.39.3):
     - sqlite3/common
   - sqlite3_flutter_libs (0.0.1):
     - Flutter
-    - sqlite3 (~> 3.39.0)
+    - sqlite3 (~> 3.39.3)
     - sqlite3/fts5
-    - sqlite3/json1
     - sqlite3/perf-threadsafe
     - sqlite3/rtree
   - url_launcher_ios (0.0.1):
@@ -52,13 +49,13 @@ PODS:
   - ZIPFoundation (0.9.13)
 
 DEPENDENCIES:
+  - better_open_file (from `.symlinks/plugins/better_open_file/ios`)
   - Flutter (from `Flutter`)
   - flutter_archive (from `.symlinks/plugins/flutter_archive/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - map_launcher (from `.symlinks/plugins/map_launcher/ios`)
-  - open_file (from `.symlinks/plugins/open_file/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
@@ -73,6 +70,8 @@ SPEC REPOS:
     - ZIPFoundation
 
 EXTERNAL SOURCES:
+  better_open_file:
+    :path: ".symlinks/plugins/better_open_file/ios"
   Flutter:
     :path: Flutter
   flutter_archive:
@@ -85,8 +84,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_maps_flutter_ios/ios"
   map_launcher:
     :path: ".symlinks/plugins/map_launcher/ios"
-  open_file:
-    :path: ".symlinks/plugins/open_file/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_ios:
@@ -99,6 +96,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
+  better_open_file: 03cf320415d4d3f46b6e00adc4a567d76c1a399d
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_archive: 1805fdd3a695fd284b43edb53dc35ca843fb761c
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
@@ -107,12 +105,11 @@ SPEC CHECKSUMS:
   google_maps_flutter_ios: 66201f392bf62d500f07670a30488a247b9bb5b9
   GoogleMaps: 20d7b12be49a14287f797e88e0e31bc4156aaeb4
   map_launcher: e325db1261d029ff33e08e03baccffe09593ffea
-  open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  sqlite3: fc4df309ad953d4a0767b8ba8a9bd044b17580e1
-  sqlite3_flutter_libs: f2619ae5df7f92e8bc330243073c815ee061e033
+  sqlite3: 50117e9e063a9ef2b865f7bdf2f2601e5d368e9a
+  sqlite3_flutter_libs: c6ab7f23670a98fef45a137159452004bc552168
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   ZIPFoundation: ae5b4b813d216d3bf0a148773267fff14bd51d37
 

@@ -1,7 +1,7 @@
+import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_adjunto_controller.dart';
-import 'package:open_file/open_file.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';

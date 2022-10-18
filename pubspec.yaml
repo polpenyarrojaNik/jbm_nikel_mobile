@@ -13,50 +13,50 @@ dependencies:
     sdk: flutter
   dio: ^4.0.6
   flutter_riverpod: ^2.0.1
-  freezed_annotation: ^2.1.0
-  json_annotation: ^4.6.0
-  jwt_decoder: ^2.0.1
-  path: ^1.8.2
-  path_provider: ^2.0.11
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
+  jwt_decoder: ^2.0.0
+  path: ^1.8.0
+  path_provider: ^2.0.0
   intl: ^0.17.0
-  drift: 2.1.0
-  logging: ^1.0.2
+  drift: ^2.0.0
+  logging: ^1.1.0
   uuid: ^3.0.6
   money2: ^3.1.2
-  sqlite3_flutter_libs: 0.5.8
+  sqlite3_flutter_libs: ^0.5.0
   flutter_dotenv: ^5.0.2
-  flash: ^2.0.3+3
-  material_design_icons_flutter: ^5.0.6996
+  flash: ^2.0.5
+  material_design_icons_flutter: ^5.0.0
   flutter_secure_storage: ^6.0.0
   reactive_forms: ^14.1.0
-  flutter_form_builder: ^7.6.0
+  flutter_form_builder: ^7.7.0
   form_builder_validators: ^8.3.0
-  font_awesome_flutter: ^10.1.0
-  open_file: ^3.1.0
+  font_awesome_flutter: ^10.2.0
+  better_open_file: ^3.6.0
   google_maps_flutter: ^2.2.0
-  geolocator: ^9.0.1
+  geolocator: ^9.0.0
   google_fonts: ^3.0.1
   material_color_utilities:
   dynamic_color: ^1.5.4
-  cached_network_image: ^3.2.2
+  cached_network_image: ^3.2.0
   flutter_archive: ^5.0.0
   map_launcher: ^2.4.0
-  url_launcher: ^6.1.5
-  package_info_plus: ^1.4.2
-  auto_route: ^5.0.1
+  url_launcher: ^6.1.0
+  package_info_plus:
+  auto_route: ^5.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
-  build_runner: ^2.2.0
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.0
   flutter_launcher_icons: ^0.10.0
-  freezed: ^2.1.0+1
-  json_serializable: ^6.3.1
-  drift_dev: ^2.1.0
-  built_value_generator: ^8.4.1
-  dependency_validator: 3.2.2
-  auto_route_generator: ^5.0.2
+  freezed: ^2.2.0
+  json_serializable: ^6.5.0
+  drift_dev: ^2.0.0
+  built_value_generator: ^8.0.0
+  dependency_validator: ^3.2.0
+  auto_route_generator: ^5.0.0
 
 flutter_icons:
   android: true
