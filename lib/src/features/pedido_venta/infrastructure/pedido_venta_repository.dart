@@ -360,6 +360,9 @@ class PedidoVentaRepository {
 
     if (clienteDto != null) {
       final divisaId = clienteDto.divisaId ?? 'EU';
+      final tarifaId = clienteDto.tarifaId;
+      final descuentoGeneralId = clienteDto.descuentoGeneralId;
+      final tipoCalucloPrecio = clienteDto.tipoCalucloPrecio;
       final iva = await getIvaClienteArticulo(
         articuloId: articuloId,
         clienteDto: clienteDto,
