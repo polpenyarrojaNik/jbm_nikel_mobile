@@ -559,6 +559,24 @@ class StepArticuloListContent extends ConsumerWidget {
       children: [
         Column(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Total pedido'),
+                  Text(
+                    ref
+                        .read(pedidoVentaRepositoryProvider)
+                        .getImporteTotal(
+                            pedidoVentaLineaList, cliente!.divisa!.id)
+                        .toString(),
+                    style: Theme.of(context).textTheme.subtitle2,
+                  )
+                ],
+              ),
+            ),
+            const Divider(),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
@@ -630,6 +648,8 @@ class StepArticuloListContent extends ConsumerWidget {
       clienteId: clienteId,
       articuloId: pedidoVentaLinea.articuloId,
       cantidad: pedidoVentaLinea.cantidad.toInt(),
+      descuento1: pedidoVentaLinea.descuento1,
+      descuento2: pedidoVentaLinea.descuento2,
       posicionLinea: i,
     );
     context.router.push(SeleccionarCantidadRoute(
@@ -724,7 +744,7 @@ class StepObservacionesContent extends ConsumerWidget {
   }
 }
 
-class StepResumenContent extends StatelessWidget {
+class StepResumenContent extends ConsumerWidget {
   const StepResumenContent({
     super.key,
     required this.pedidoVentaIdLocalParam,
@@ -747,7 +767,7 @@ class StepResumenContent extends StatelessWidget {
   final String? pedidoCliente;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       children: [
         Padding(
@@ -789,8 +809,10 @@ class StepResumenContent extends StatelessWidget {
               if (observaciones != null) const Divider(),
               RowFieldTextDetalle(
                 fieldTitleValue: S.of(context).pedido_edit_pedidoEdit_total,
-                value:
-                    getImporteTotal(pedidoVentaLineaList, cliente!.divisa!.id),
+                value: ref
+                    .read(pedidoVentaRepositoryProvider)
+                    .getImporteTotal(pedidoVentaLineaList, cliente!.divisa!.id)
+                    .toString(),
               ),
             ],
           ),
@@ -811,17 +833,5 @@ class StepResumenContent extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String getImporteTotal(
-      List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
-    Money total = Money.parse('0', code: divisaId);
-    for (var i = 0; i < pedidoVentaLineaList.length; i++) {
-      if (pedidoVentaLineaList[i].importeLinea != null) {
-        total = total + pedidoVentaLineaList[i].importeLinea!;
-      }
-    }
-
-    return total.toString();
   }
 }

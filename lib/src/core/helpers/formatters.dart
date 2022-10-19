@@ -145,10 +145,10 @@ String dtoText(
     dtoText += '$descuento1%';
   }
   if (descuento2 != 0) {
-    dtoText += (dtoText.isNotEmpty) ? ' - $descuento2%' : '$descuento2%';
+    dtoText += (dtoText.isNotEmpty) ? ' + $descuento2%' : '$descuento2%';
   }
   if (descuento3 != 0) {
-    dtoText += (dtoText.isNotEmpty) ? ' - $descuento3%' : '$descuento3%';
+    dtoText += (dtoText.isNotEmpty) ? '+- $descuento3%' : '$descuento3%';
   }
   return dtoText;
 }

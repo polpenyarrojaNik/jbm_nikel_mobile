@@ -58,6 +58,12 @@ final pedidoVentaLineaProvider = FutureProvider.autoDispose
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 });
 
+final getStockDisponibleProvider =
+    FutureProvider.autoDispose.family<int, String>((ref, articuloId) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getStockActual(articuloId: articuloId);
+});
+
 const pageSize = 100;
 List<PedidoVenta> pedidoVentaList = [];
 
@@ -283,6 +289,18 @@ class PedidoVentaRepository {
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getStockActual({required String articuloId}) async {
+    try {
+      final query = await (_db.select(_db.articuloTable)
+            ..where((tbl) => tbl.id.equals(articuloId)))
+          .getSingle();
+
+      return query.stockDisponible;
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -1361,6 +1379,18 @@ class PedidoVentaRepository {
     final importeDescuento = importeLinea * descuentoEquivalente;
 
     return importeLinea - importeDescuento;
+  }
+
+  Money getImporteTotal(
+      List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
+    Money total = Money.parse('0', code: divisaId);
+    for (var i = 0; i < pedidoVentaLineaList.length; i++) {
+      if (pedidoVentaLineaList[i].importeLinea != null) {
+        total = total + pedidoVentaLineaList[i].importeLinea!;
+      }
+    }
+
+    return total;
   }
 
   Future<DateTime> getLastSyncDate() async {
