@@ -699,5 +699,73 @@ void main() {
         expect(descuento, 8.0);
       });
     });
+    test('roundDouble', () {
+      expect(pedidoVentaRepository.roundDouble(0.123, 2), 0.12,
+          reason: '0.123 round to 2 dec');
+      expect(pedidoVentaRepository.roundDouble(0.129, 2), 0.13,
+          reason: '0.129 round to 2 dec');
+      expect(pedidoVentaRepository.roundDouble(0.125, 2), 0.13,
+          reason: '0.125 round to 2 dec');
+      expect(pedidoVentaRepository.roundDouble(0.120, 2), 0.12,
+          reason: '0.120 round to 2 dec');
+    });
+
+    test('getTotalLinea', () {
+      expect(
+          pedidoVentaRepository.getTotalLinea(
+            cantidad: 10,
+            precio: Precio(
+              precio: 1.toMoney(),
+              tipoPrecio: 1,
+            ),
+            descuento1: 0,
+            descuento2: 0,
+            descuento3: 0,
+          ),
+          10.toMoney(),
+          reason: 'Q: 10 Precio: 1€ x1 = 10€');
+
+      expect(
+          pedidoVentaRepository.getTotalLinea(
+            cantidad: 10,
+            precio: Precio(
+              precio: 100.toMoney(),
+              tipoPrecio: 100,
+            ),
+            descuento1: 0,
+            descuento2: 0,
+            descuento3: 0,
+          ),
+          10.toMoney(),
+          reason: 'Q: 10 Precio: 100€ x100 = 10€');
+
+      expect(
+          pedidoVentaRepository.getTotalLinea(
+            cantidad: 1,
+            precio: Precio(
+              precio: 10.toMoney(),
+              tipoPrecio: 1,
+            ),
+            descuento1: 50,
+            descuento2: 0,
+            descuento3: 0,
+          ),
+          5.toMoney(),
+          reason: 'Q: 1 Precio: 10€ x1 - 50% = 5€');
+
+      expect(
+          pedidoVentaRepository.getTotalLinea(
+            cantidad: 1,
+            precio: Precio(
+              precio: 100.toMoney(),
+              tipoPrecio: 1,
+            ),
+            descuento1: 50,
+            descuento2: 50,
+            descuento3: 0,
+          ),
+          25.toMoney(),
+          reason: 'Q: 1 Precio: 100€ x1 +50% +50% = 25€');
+    });
   });
 }
