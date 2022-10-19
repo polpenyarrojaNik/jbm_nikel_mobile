@@ -393,7 +393,7 @@ class PedidoVentaRepository {
 
     if (clienteDto != null) {
       divisaId = clienteDto.divisaId ?? 'EU';
-      iva = await getIvaClienteArticulo(
+      iva = await _getIvaClienteArticulo(
         articuloId: articuloId,
         clienteDto: clienteDto,
       );
@@ -403,33 +403,33 @@ class PedidoVentaRepository {
       final tipoCalculoPrecio = clienteDto.tipoCalculoPrecio;
 
       final precioTarifa = (tarifaId != null)
-          ? await getPrecioTarifa(
+          ? await _getPrecioTarifa(
               tarifaId: tarifaId,
               articuloId: articuloId,
               cantidad: cantidad,
             )
           : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
 
-      final precioNetoCliente = await getPrecioClienteNeto(
+      final precioNetoCliente = await _getPrecioClienteNeto(
         clienteId: clienteId,
         articuloId: articuloId,
         cantidad: cantidad,
       );
 
-      final precioGrupoNetos = await getPrecioGrupoNeto(
+      final precioGrupoNetos = await _getPrecioGrupoNeto(
         clienteId: clienteId,
         articuloId: articuloId,
         cantidad: cantidad,
       );
 
       final descuentoGeneral = descuentoGeneralId != null
-          ? await getDescuentoGeneral(
+          ? await _getDescuentoGeneral(
               articuloId: articuloId,
               descuentoGeneralId: descuentoGeneralId,
               cantidad: cantidad,
             )
           : 0.0;
-      final descuentoCliente = await getDescuentoCliente(
+      final descuentoCliente = await _getDescuentoCliente(
         articuloId: articuloId,
         clienteId: clienteId,
         cantidad: cantidad,
@@ -441,23 +441,23 @@ class PedidoVentaRepository {
 
 // Precio Neto Tarifa
       final precioNetoTarifa = Precio(
-        precio: precioTarifa.precio * ((100 * descuento1) / 100),
+        precio: precioTarifa.precio * (descuento / 100),
         tipoPrecio: precioTarifa.tipoPrecio,
       );
 
-      final precioNetoTarifaUnitario = getPrecioUnitario(
+      final precioNetoTarifaUnitario = _getPrecioUnitario(
         precio: precioNetoTarifa.precio,
         tipoPrecio: precioNetoTarifa.tipoPrecio,
       );
 
       // Precio Neto Cliente
-      final precioNetoClienteUnitario = getPrecioUnitario(
+      final precioNetoClienteUnitario = _getPrecioUnitario(
         precio: precioNetoCliente.precio,
         tipoPrecio: precioNetoCliente.tipoPrecio,
       );
 
       // Precio Grupos Netos
-      final precioGrupoNetosUnitario = getPrecioUnitario(
+      final precioGrupoNetosUnitario = _getPrecioUnitario(
         precio: precioGrupoNetos.precio,
         tipoPrecio: precioGrupoNetos.tipoPrecio,
       );
@@ -469,23 +469,37 @@ class PedidoVentaRepository {
           ? precioNetoCliente
           : precioGrupoNetos;
 
-      final precioNetoUnitario = getPrecioUnitario(
+      final precioNetoUnitario = _getPrecioUnitario(
         precio: precioNeto.precio,
         tipoPrecio: precioNeto.tipoPrecio,
       );
       // Determinamos si cogemos precios netos o tarifa + descuento, pero comprobando si queremos que coja mejor precio cliente o precio neto cliente (cliente_t.tipo_calculo_precio)
-      if ((precioNetoUnitario.isZero ||
-              (!precioNetoTarifaUnitario.isZero &&
-                  precioNetoTarifaUnitario <= precioNetoUnitario)) &&
-          (tipoCalculoPrecio != 'N' ||
-              (precioNeto.precio.isZero && tipoCalculoPrecio == 'N'))) {
-        precio = precioTarifa.precio;
-        tipoPrecio = precioTarifa.tipoPrecio;
-        descuento1 = descuento;
+      // N: Normal
+      // M: Mejor
+
+      if (tipoCalculoPrecio == 'N') {
+        if (precioNetoUnitario.isZero) {
+          precio = precioTarifa.precio;
+          tipoPrecio = precioTarifa.tipoPrecio;
+          descuento1 = descuento;
+        } else {
+          precio = precioNeto.precio;
+          tipoPrecio = precioNeto.tipoPrecio;
+          descuento1 = 0;
+        }
       } else {
-        precio = precioNeto.precio;
-        tipoPrecio = precioNeto.tipoPrecio;
-        descuento1 = 0;
+        if (precioNetoUnitario.isZero ||
+            (precioNetoTarifaUnitario.isPositive &&
+                precioNetoUnitario.isPositive &&
+                precioNetoTarifaUnitario <= precioNetoUnitario)) {
+          precio = precioTarifa.precio;
+          tipoPrecio = precioTarifa.tipoPrecio;
+          descuento1 = descuento;
+        } else {
+          precio = precioNeto.precio;
+          tipoPrecio = precioNeto.tipoPrecio;
+          descuento1 = 0;
+        }
       }
     }
 
@@ -499,7 +513,7 @@ class PedidoVentaRepository {
     );
   }
 
-  Future<double> getIvaClienteArticulo({
+  Future<double> _getIvaClienteArticulo({
     required String articuloId,
     required ClienteDTO clienteDto,
   }) async {
@@ -622,7 +636,7 @@ class PedidoVentaRepository {
     }).getSingle();
   }
 
-  Future<Precio> getPrecioTarifa({
+  Future<Precio> _getPrecioTarifa({
     required String tarifaId,
     required String articuloId,
     required int cantidad,
@@ -655,7 +669,7 @@ class PedidoVentaRepository {
           );
   }
 
-  Future<Precio> getPrecioGrupoNeto({
+  Future<Precio> _getPrecioGrupoNeto({
     required String clienteId,
     required String articuloId,
     required int cantidad,
@@ -688,11 +702,11 @@ class PedidoVentaRepository {
       final precioB = b.read(_db.articuloGrupoNetoTable.precio)!;
       final divisaB = b.read(_db.articuloGrupoNetoTable.divisaId)!;
       final tipoPrecioB = b.read(_db.articuloGrupoNetoTable.tipoPrecio)!;
-      return getPrecioUnitario(
+      return _getPrecioUnitario(
                 precio: precioA.toMoney(currencyId: divisaA),
                 tipoPrecio: tipoPrecioA,
               ) <
-              getPrecioUnitario(
+              _getPrecioUnitario(
                 precio: precioB.toMoney(currencyId: divisaB),
                 tipoPrecio: tipoPrecioB,
               )
@@ -706,7 +720,7 @@ class PedidoVentaRepository {
     );
   }
 
-  Future<Precio> getPrecioClienteNeto({
+  Future<Precio> _getPrecioClienteNeto({
     required String clienteId,
     required String articuloId,
     required int cantidad,
@@ -748,7 +762,7 @@ class PedidoVentaRepository {
           );
   }
 
-  Future<double> getDescuentoCliente({
+  Future<double> _getDescuentoCliente({
     required String articuloId,
     required String clienteId,
     required int cantidad,
@@ -1039,7 +1053,7 @@ class PedidoVentaRepository {
     return 0.0;
   }
 
-  Future<double> getDescuentoGeneral({
+  Future<double> _getDescuentoGeneral({
     required String articuloId,
     required String descuentoGeneralId,
     required int cantidad,
@@ -1301,7 +1315,7 @@ class PedidoVentaRepository {
     return 0.0;
   }
 
-  Money getPrecioUnitario({
+  Money _getPrecioUnitario({
     required Money precio,
     required int tipoPrecio,
   }) {
@@ -1310,45 +1324,17 @@ class PedidoVentaRepository {
         : 0.toMoney(currencyId: precio.currency.code);
   }
 
-/*
-  FUNCTION get_importe_linea (i_cantidad        IN NUMBER
-                             ,i_precio_unitario IN NUMBER)
-    RETURN NUMBER
-    DETERMINISTIC AS
-    l_importe_linea NUMBER (18, 6);
-  BEGIN
-    l_importe_linea :=
-      ROUND (NVL (i_cantidad, 0) * NVL (i_precio_unitario, 0)
-            ,2);
-    RETURN l_importe_linea;
-  END get_importe_linea;
-
-   l_precio_unitario :=
-          importes_pkg.get_precio_unitario (i_precio => :new.precio_art_ped
-                                           ,i_tpreu  => :new.tpreu);
-        l_dto_equivalente :=
-          importes_pkg.get_dto_equivalente (i_dto1 => :new.dto1
-                                           ,i_dto2 => :new.dto2
-                                           ,i_dto3 => :new.dto3);
-        l_importe_linea :=
-          importes_pkg.get_importe_linea (i_cantidad        => :new.cant_art_ped
-                                         ,i_precio_unitario => l_precio_unitario);
-        l_importe_descuentos :=
-          ROUND (l_importe_linea * l_dto_equivalente
-                ,2);
-        l_total_bruto := l_importe_linea - l_importe_descuentos;
-*/
-  double roundDouble(double value, int places) {
+  double _roundDouble(double value, int places) {
     num mod = pow(10.0, places);
     return ((value * mod).round().toDouble() / mod);
   }
 
-  double getDescuentoEquivalente({
+  double _getDescuentoEquivalente({
     required double descuento1,
     double descuento2 = 0,
     double descuento3 = 0,
   }) {
-    return roundDouble(
+    return _roundDouble(
         1 -
             ((1 - (descuento1 / 100)) *
                 (1 - (descuento2 / 100)) *
@@ -1363,12 +1349,12 @@ class PedidoVentaRepository {
     double descuento2 = 0,
     double descuento3 = 0,
   }) {
-    final precioUnitario = getPrecioUnitario(
+    final precioUnitario = _getPrecioUnitario(
       precio: precio.precio,
       tipoPrecio: precio.tipoPrecio,
     );
 
-    final descuentoEquivalente = getDescuentoEquivalente(
+    final descuentoEquivalente = _getDescuentoEquivalente(
       descuento1: descuento1,
       descuento2: descuento2,
       descuento3: descuento3,
