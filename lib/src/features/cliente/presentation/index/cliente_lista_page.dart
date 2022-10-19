@@ -96,6 +96,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     return Scaffold(
       drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
+        isSearchingFirst: widget.isSearchClienteForFrom,
         title: S.of(context).cliente_index_titulo,
         searchTitle: S.of(context).cliente_index_buscarClientes,
         onChanged: (searchText) => _debouncer.run(
@@ -124,16 +125,16 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => syncCustomerDb(ref),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              stateLasySyncDate.when(
-                  data: (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                  error: (_, __) => Container(),
-                  loading: () => const ProgressIndicatorWidget()),
-              Padding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            stateLasySyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget()),
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: state.when(
                   loading: () => const ProgressIndicatorWidget(),
@@ -144,7 +145,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                           separatorBuilder: (context, i) => const Divider(),
                           shrinkWrap: true,
                           controller: _scrollController,
-                          physics: const NeverScrollableScrollPhysics(),
+                          physics: const AlwaysScrollableScrollPhysics(),
                           itemCount: clienteList.length,
                           itemBuilder: (context, i) => GestureDetector(
                             onTap: () => (!widget.isSearchClienteForFrom)
@@ -160,8 +161,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                         ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

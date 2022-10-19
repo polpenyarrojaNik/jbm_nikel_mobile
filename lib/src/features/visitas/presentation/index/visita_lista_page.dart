@@ -68,6 +68,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
+        isSearchingFirst: false,
         title: S.of(context).visita_index_titulo,
         searchTitle: S.of(context).visita_index_buscarVisitas,
         onChanged: (searchText) => _debouncer.run(
@@ -80,16 +81,16 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshVisitsDB(ref),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              stateLasySyncDate.when(
-                  data: (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                  error: (_, __) => Container(),
-                  loading: () => const ProgressIndicatorWidget()),
-              Padding(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            stateLasySyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget()),
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: state.when(
                   loading: () => const ProgressIndicatorWidget(),
@@ -98,17 +99,17 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
                       ? const SinResultadosWidget()
                       : ListView.separated(
                           separatorBuilder: (context, i) => const Divider(),
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
                           controller: _scrollController,
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          shrinkWrap: true,
                           itemCount: visitasList.length,
                           itemBuilder: (context, i) =>
                               VisitaListaTile(visita: visitasList[i]),
                         ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

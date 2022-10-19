@@ -230,17 +230,19 @@ class _ArticuloInfo extends StatelessWidget {
       color: Theme.of(context).colorScheme.secondaryContainer,
       child: Row(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                articulo.id,
-                style: Theme.of(context).textTheme.subtitle2,
-              ),
-              Text(
-                getDescriptionArticuloInLocalLanguage(articulo: articulo),
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  articulo.id,
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+                Text(
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -266,7 +268,7 @@ class _SelectQuantityFrom extends StatelessWidget {
             FormBuilderTextField(
               name: 'cantidad',
               autofocus: true,
-              keyboardType: TextInputType.name,
+              keyboardType: TextInputType.number,
               initialValue: cantidad.toString(),
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_cantidad,

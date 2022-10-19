@@ -6,11 +6,13 @@ class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
       {super.key,
       required this.title,
       required this.searchTitle,
+      required this.isSearchingFirst,
       required this.onChanged,
       this.actionButtons});
 
   final String title;
   final String searchTitle;
+  final bool isSearchingFirst;
   final Function(String searchText) onChanged;
   final List<IconButton>? actionButtons;
 
@@ -28,6 +30,15 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
   final String searchText = '';
 
   final focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    isSearching = widget.isSearchingFirst;
+    if (isSearching) {
+      focusNode.requestFocus();
+    }
+  }
 
   @override
   void dispose() {
