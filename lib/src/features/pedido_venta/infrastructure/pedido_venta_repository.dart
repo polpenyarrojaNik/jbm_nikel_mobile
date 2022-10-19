@@ -354,9 +354,9 @@ class PedidoVentaRepository {
       {required String articuloId,
       required String clienteId,
       required int cantidad}) async {
-    Money precio = (0.0).parseMoney(currencyId: 'EU');
+    Money precio = 0.toMoney();
     Precio precioNeto = Precio(
-      precio: (0.0).parseMoney(currencyId: 'EU'),
+      precio: 0.toMoney(),
       tipoPrecio: 1,
     );
     String divisaId = 'EU';
@@ -389,8 +389,7 @@ class PedidoVentaRepository {
               articuloId: articuloId,
               cantidad: cantidad,
             )
-          : Precio(
-              precio: (0.0).parseMoney(currencyId: divisaId), tipoPrecio: 1);
+          : Precio(precio: 0.toMoney(currencyId: divisaId), tipoPrecio: 1);
 
       final precioNetoCliente = await getPrecioClienteNeto(
         clienteId: clienteId,
@@ -628,11 +627,11 @@ class PedidoVentaRepository {
     return (articuloPrecioTarifaDTO != null)
         ? Precio(
             precio: articuloPrecioTarifaDTO.precio
-                .parseMoney(currencyId: articuloPrecioTarifaDTO.divisaId),
+                .toMoney(currencyId: articuloPrecioTarifaDTO.divisaId),
             tipoPrecio: articuloPrecioTarifaDTO.tipoPrecio,
           )
         : Precio(
-            precio: '0'.parseMoney(),
+            precio: 0.toMoney(),
             tipoPrecio: 1,
           );
   }
@@ -659,7 +658,7 @@ class PedidoVentaRepository {
     final queryResult = await query.get();
     if (queryResult.isEmpty) {
       return Precio(
-        precio: (0.0).parseMoney(currencyId: 'EU'),
+        precio: 0.toMoney(),
         tipoPrecio: 1,
       );
     }
@@ -671,20 +670,19 @@ class PedidoVentaRepository {
       final divisaB = b.read(_db.articuloGrupoNetoTable.divisaId)!;
       final tipoPrecioB = b.read(_db.articuloGrupoNetoTable.tipoPrecio)!;
       return getPrecioUnitario(
-                precio: precioA.parseMoney(currencyId: divisaA),
+                precio: precioA.toMoney(currencyId: divisaA),
                 tipoPrecio: tipoPrecioA,
               ) <
               getPrecioUnitario(
-                precio: precioB.parseMoney(currencyId: divisaB),
+                precio: precioB.toMoney(currencyId: divisaB),
                 tipoPrecio: tipoPrecioB,
               )
           ? a
           : b;
     });
     return Precio(
-      precio: (minResult.read(_db.articuloGrupoNetoTable.precio) ?? 0)
-          .parseMoney(
-              currencyId: minResult.read(_db.articuloGrupoNetoTable.divisaId)),
+      precio: (minResult.read(_db.articuloGrupoNetoTable.precio) ?? 0).toMoney(
+          currencyId: minResult.read(_db.articuloGrupoNetoTable.divisaId)),
       tipoPrecio: (minResult.read(_db.articuloGrupoNetoTable.tipoPrecio) ?? 1),
     );
   }
@@ -720,13 +718,13 @@ class PedidoVentaRepository {
         ? Precio(
             precio: queryResult
                 .read(_db.clientePrecioNetoTable.precio)!
-                .parseMoney(
+                .toMoney(
                     currencyId: queryResult.read(_db.clienteTable.divisaId)),
             tipoPrecio:
                 queryResult.read(_db.clientePrecioNetoTable.tipoPrecio)!,
           )
         : Precio(
-            precio: '0'.parseMoney(),
+            precio: 0.toMoney(),
             tipoPrecio: 1,
           );
   }
@@ -1290,7 +1288,11 @@ class PedidoVentaRepository {
   }) {
     return tipoPrecio != 0
         ? precio / tipoPrecio
-        : '0'.parseMoney(currencyId: precio.currency.code);
+        : 0.toMoney(currencyId: precio.currency.code);
+  }
+
+  Money getTotalLinea() {
+    return 0.toMoney();
   }
 
   Future<DateTime> getLastSyncDate() async {

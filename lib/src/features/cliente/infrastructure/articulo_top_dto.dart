@@ -26,8 +26,8 @@ class ArticuloTopDTO with _$ArticuloTopDTO {
     return ArticuloTop(
       articuloId: articuloId,
       descripcion: descripcion,
-      ventasTotal: ventasTotal.parseMoney(currencyId: divisaId),
-      ventasCliente: ventasCliente.parseMoney(currencyId: divisaId),
+      ventasTotal: ventasTotal.toMoney(currencyId: divisaId),
+      ventasCliente: ventasCliente.toMoney(currencyId: divisaId),
     );
   }
 }

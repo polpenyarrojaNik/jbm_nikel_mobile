@@ -26,11 +26,11 @@ class ClienteVentasMesDTO with _$ClienteVentasMesDTO {
   ClienteVentasMes toDomain() {
     return ClienteVentasMes(
       mes: mes,
-      importeAnyo: importeAnyo.parseMoney(),
-      importeAnyo_1: importeAnyo_1.parseMoney(),
-      importeAnyo_2: importeAnyo_2.parseMoney(),
-      importeAnyo_3: importeAnyo_3.parseMoney(),
-      importeAnyo_4: importeAnyo_4.parseMoney(),
+      importeAnyo: importeAnyo.toMoney(),
+      importeAnyo_1: importeAnyo_1.toMoney(),
+      importeAnyo_2: importeAnyo_2.toMoney(),
+      importeAnyo_3: importeAnyo_3.toMoney(),
+      importeAnyo_4: importeAnyo_4.toMoney(),
     );
   }
 }
