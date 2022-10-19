@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
@@ -1291,8 +1292,75 @@ class PedidoVentaRepository {
         : 0.toMoney(currencyId: precio.currency.code);
   }
 
-  Money getTotalLinea() {
-    return 0.toMoney();
+/*
+  FUNCTION get_importe_linea (i_cantidad        IN NUMBER
+                             ,i_precio_unitario IN NUMBER)
+    RETURN NUMBER
+    DETERMINISTIC AS
+    l_importe_linea NUMBER (18, 6);
+  BEGIN
+    l_importe_linea :=
+      ROUND (NVL (i_cantidad, 0) * NVL (i_precio_unitario, 0)
+            ,2);
+    RETURN l_importe_linea;
+  END get_importe_linea;
+
+   l_precio_unitario :=
+          importes_pkg.get_precio_unitario (i_precio => :new.precio_art_ped
+                                           ,i_tpreu  => :new.tpreu);
+        l_dto_equivalente :=
+          importes_pkg.get_dto_equivalente (i_dto1 => :new.dto1
+                                           ,i_dto2 => :new.dto2
+                                           ,i_dto3 => :new.dto3);
+        l_importe_linea :=
+          importes_pkg.get_importe_linea (i_cantidad        => :new.cant_art_ped
+                                         ,i_precio_unitario => l_precio_unitario);
+        l_importe_descuentos :=
+          ROUND (l_importe_linea * l_dto_equivalente
+                ,2);
+        l_total_bruto := l_importe_linea - l_importe_descuentos;
+*/
+  double roundDouble(double value, int places) {
+    num mod = pow(10.0, places);
+    return ((value * mod).round().toDouble() / mod);
+  }
+
+  double getDescuentoEquivalente({
+    required double descuento1,
+    double descuento2 = 0,
+    double descuento3 = 0,
+  }) {
+    return roundDouble(
+        1 -
+            ((1 - (descuento1 / 100)) *
+                (1 - (descuento2 / 100)) *
+                (1 - (descuento3 / 100))),
+        4);
+  }
+
+  Money getTotalLinea({
+    required Precio precio,
+    required int cantidad,
+    double descuento1 = 0,
+    double descuento2 = 0,
+    double descuento3 = 0,
+  }) {
+    final precioUnitario = getPrecioUnitario(
+      precio: precio.precio,
+      tipoPrecio: precio.tipoPrecio,
+    );
+
+    final descuentoEquivalente = getDescuentoEquivalente(
+      descuento1: descuento1,
+      descuento2: descuento2,
+      descuento3: descuento3,
+    );
+
+    final importeLinea = precioUnitario * cantidad;
+
+    final importeDescuento = importeLinea * descuentoEquivalente;
+
+    return importeLinea - importeDescuento;
   }
 
   Future<DateTime> getLastSyncDate() async {
