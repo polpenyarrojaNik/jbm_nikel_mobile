@@ -657,7 +657,12 @@ class PedidoVentaRepository {
       );
 
     final queryResult = await query.get();
-
+    if (queryResult.isEmpty) {
+      return Precio(
+        precio: (0.0).parseMoney(currencyId: 'EU'),
+        tipoPrecio: 1,
+      );
+    }
     final minResult = queryResult.reduce((a, b) {
       final precioA = a.read(_db.articuloGrupoNetoTable.precio)!;
       final tipoPrecioA = a.read(_db.articuloGrupoNetoTable.tipoPrecio)!;
