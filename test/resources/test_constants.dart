@@ -1,3 +1,5 @@
+import 'package:jbm_nikel_mobile/src/core/domain/articulo_precio.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
@@ -7,6 +9,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_des
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_grupo_neto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_precio_neto_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/precio.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 
 const kTestDatabaseFile = 'test/resources/jbm.sqlite';
@@ -22,7 +25,7 @@ final kClienteDTO = ClienteDTO(
   nombreFiscal: 'Nombre Cliente Test',
   nombreCliente: 'Nombre Fiscal Cliente Test',
   empresaId: kEmpresaId,
-  iva: 0,
+  iva: 21,
   divisaId: kDivisaId,
   tipoCalculoPrecio: 'M',
   descuentoProntoPago: 0,
@@ -70,7 +73,7 @@ final kArticuloDTO = ArticuloDTO(
 final kArticuloEmpresaIvaDTO = ArticuloEmpresaIvaDTO(
   articuloId: kArticuloId,
   empresaId: kEmpresaId,
-  iva: 0,
+  iva: 21,
   lastUpdated: kDateTime,
 );
 
@@ -140,4 +143,16 @@ final kClienteDescuentoDTO = ClienteDescuentoDTO(
   cantidadDesde: 1,
   descuento: 0,
   lastUpdated: kDateTime,
+);
+
+final kArticuloPrecio0 = ArticuloPrecio(
+  precio: Precio(
+    precio: 0.toMoney(),
+    tipoPrecio: 1,
+  ),
+  divisaId: kDivisaId,
+  descuento1: 0,
+  descuento2: 0,
+  descuento3: 0,
+  iva: 0,
 );
