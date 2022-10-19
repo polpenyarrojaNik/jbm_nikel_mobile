@@ -33,6 +33,9 @@ class SeleccionarCantidadPage extends ConsumerStatefulWidget {
 class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
   int totalQuantity = 1;
+  double descuento1 = 0;
+  double descuento2 = 0;
+
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
   Cliente? cliente;
@@ -107,7 +110,14 @@ class _SelecionarCantidadPageState
               loading: () => const Center(child: CircularProgressIndicator()),
               data: (_) => (articuloPrecio != null)
                   ? _ArticuloPrecioContainer(
-                      articuloPrecio: articuloPrecio!,
+                      precio: articuloPrecio!.precio.precio,
+                      descuento1: descuento1,
+                      descuento2: descuento2,
+                      descuento3: articuloPrecio!.descuento3,
+                      setDescuento1: (value) =>
+                          setState(() => descuento1 = value),
+                      setDescuento2: (value) =>
+                          setState(() => descuento2 = value),
                     )
                   : Container(),
             )
@@ -147,8 +157,8 @@ class _SelecionarCantidadPageState
       precioDivisa: articuloPrecio.precio.precio,
       divisaId: articuloPrecio.divisaId,
       tipoPrecio: articuloPrecio.precio.tipoPrecio,
-      descuento1: articuloPrecio.descuento1,
-      descuento2: articuloPrecio.descuento2,
+      descuento1: descuento1,
+      descuento2: descuento2,
       descuento3: articuloPrecio.descuento3,
       descuentoProntoPago: cliente.descuentoProntoPago,
       stockDisponibleSN: articulo.stockDisponible > 0,
@@ -206,9 +216,9 @@ class _SelecionarCantidadPageState
   }
 
   void setValoresInicialesActualizarLinea() {
-    if (widget.seleccionarCantidadParam.cantidad != null) {
-      totalQuantity = widget.seleccionarCantidadParam.cantidad!;
-    }
+    totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+    descuento1 = widget.seleccionarCantidadParam.descuento1!;
+    descuento2 = widget.seleccionarCantidadParam.descuento2!;
 
     Future.microtask(
       () => ref.read(
@@ -285,9 +295,20 @@ class _SelectQuantityFrom extends StatelessWidget {
 }
 
 class _ArticuloPrecioContainer extends StatelessWidget {
-  const _ArticuloPrecioContainer({required this.articuloPrecio});
+  const _ArticuloPrecioContainer(
+      {required this.precio,
+      required this.descuento1,
+      required this.descuento2,
+      required this.descuento3,
+      required this.setDescuento1,
+      required this.setDescuento2});
 
-  final ArticuloPrecio articuloPrecio;
+  final Money precio;
+  final double descuento1;
+  final double descuento2;
+  final double descuento3;
+  final void Function(double value) setDescuento1;
+  final void Function(double value) setDescuento2;
 
   @override
   Widget build(BuildContext context) {
@@ -298,32 +319,37 @@ class _ArticuloPrecioContainer extends StatelessWidget {
         children: [
           FormBuilderTextField(
             name: 'precio',
+            readOnly: true,
             keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.precio.precio.amount.toString(),
+            initialValue:
+                numberFormatDecimal(precio.amount.toDecimal().toDouble()),
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_precio,
             ),
           ),
           FormBuilderTextField(
-            name: 'dto1',
-            keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.descuento1.toString(),
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-            ),
-          ),
+              name: 'dto1',
+              keyboardType: TextInputType.number,
+              initialValue: descuento1.toString(),
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
+              ),
+              onChanged: (value) => setDescuento1(
+                  (value != null && value != '') ? double.parse(value) : 0)),
           FormBuilderTextField(
-            name: 'dto2',
-            keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.descuento2.toString(),
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
-            ),
-          ),
+              name: 'dto2',
+              keyboardType: TextInputType.number,
+              initialValue: descuento2.toString(),
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
+              ),
+              onChanged: (value) => setDescuento2(
+                  (value != null && value != '') ? double.parse(value) : 0)),
           FormBuilderTextField(
             name: 'dto3',
+            readOnly: true,
             keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.descuento3.toString(),
+            initialValue: descuento3.toString(),
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
             ),

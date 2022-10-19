@@ -12,6 +12,8 @@ class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     required String clienteId,
     required String articuloId,
     int? cantidad,
+    double? descuento1,
+    double? descuento2,
     required int posicionLinea,
   }) = _SeleccionarCantidadParam;
 
