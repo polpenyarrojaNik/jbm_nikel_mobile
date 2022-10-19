@@ -80,6 +80,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: CustomSearchAppBar(
+        isSearchingFirst: false,
         title: S.of(context).pedido_index_titulo,
         searchTitle: S.of(context).pedido_index_buscarPedidos,
         onChanged: (searchText) => _debouncer.run(
@@ -92,35 +93,39 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => syncSalesOrderDB(ref),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              stateLasySyncDate.when(
-                  data: (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                  error: (_, __) => Container(),
-                  loading: () => const ProgressIndicatorWidget()),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            stateLasySyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget()),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 16.0,
+                  bottom: 16,
+                  right: 16,
+                ),
                 child: state.when(
                   loading: () => const ProgressIndicatorWidget(),
                   error: (e, _) => ErrorMessageWidget(e.toString()),
                   data: (pedidoVentaList) => (pedidoVentaList.isEmpty)
                       ? const SinResultadosWidget()
                       : ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
                           controller: _scrollController,
+                          separatorBuilder: (context, i) => const Divider(),
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          shrinkWrap: true,
                           itemCount: pedidoVentaList.length,
                           itemBuilder: (context, i) => PedidoVentaListaTile(
                               pedidoVenta: pedidoVentaList[i]),
                         ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

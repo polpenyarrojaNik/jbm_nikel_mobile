@@ -80,6 +80,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     return Scaffold(
       drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
+        isSearchingFirst: widget.isSearchArticuloForForm,
         title: S.of(context).articulo_index_titulo,
         searchTitle: S.of(context).articulo_index_buscarArticulos,
         onChanged: (searchText) {
@@ -92,16 +93,16 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () => refreshArticleDb(ref),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              stateLasySyncDate.when(
-                  data: (fechaUltimaSync) =>
-                      UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                  error: (_, __) => Container(),
-                  loading: () => const ProgressIndicatorWidget()),
-              Padding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            stateLasySyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget()),
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: state.when(
                   loading: () => const ProgressIndicatorWidget(),
@@ -112,7 +113,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
                           separatorBuilder: (context, i) => const Divider(),
                           shrinkWrap: true,
                           controller: _scrollController,
-                          physics: const NeverScrollableScrollPhysics(),
+                          physics: const AlwaysScrollableScrollPhysics(),
                           itemCount: articuloList.length,
                           itemBuilder: (context, i) => GestureDetector(
                             onTap: () => (!widget.isSearchArticuloForForm)
@@ -127,8 +128,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
                         ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
