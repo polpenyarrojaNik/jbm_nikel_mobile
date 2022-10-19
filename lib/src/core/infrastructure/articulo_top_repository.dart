@@ -1,5 +1,7 @@
+import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/articulo_top_dto.dart';
 
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/articulo_top.dart';
@@ -13,10 +15,10 @@ final articuloTopRepositoryProvider =
   },
 );
 
-final articuloTopProvider =
-    FutureProvider.autoDispose<List<ArticuloTop>>((ref) {
+final articuloTopProvider = FutureProvider.family
+    .autoDispose<List<ArticuloTop>, String>((ref, clienteId) {
   final articuloTopRepository = ref.watch(articuloTopRepositoryProvider);
-  return articuloTopRepository.getArticuloTopList();
+  return articuloTopRepository.getArticuloTopList(clienteId: clienteId);
 });
 
 class ArticuloTopRepository {
@@ -24,15 +26,39 @@ class ArticuloTopRepository {
 
   ArticuloTopRepository(this.db);
 
-  Future<List<ArticuloTop>> getArticuloTopList() async {
+  Future<List<ArticuloTop>> getArticuloTopList(
+      {required String clienteId}) async {
     try {
-      final query = (db.select(db.articuloTopTable));
+      final query = await db.customSelect('''
+          SELECT estadisticas_articulos_top.ARTICULO_ID
+, ARTICULOS.DESCRIPCION_ES
+,IFNULL((SELECT SUM (estadisticas_venta.importe)
+FROM estadisticas_venta
+WHERE estadisticas_venta.articulo_id = estadisticas_articulos_top.articulo_id
+AND estadisticas_venta.anyo = strftime('%Y', DATE(DATE(),'-12 month'))
+AND estadisticas_venta.mes = strftime('%m',DATE(DATE(),'-12 month')))
+ ,0) VENTAS_TOTAL
+,IFNULL((SELECT SUM (estadisticas_venta.importe)
+FROM estadisticas_venta
+WHERE estadisticas_venta.articulo_id = estadisticas_articulos_top.articulo_id
+AND estadisticas_venta.cliente_id = :clienteId
+AND estadisticas_venta.anyo = strftime('%Y', DATE(DATE(),'-12 month'))
+AND estadisticas_venta.mes = strftime('%m', DATE(DATE(),'-12 month'))
+),0) VENTAS_CLIENTE
+, (SELECT DIVISA_ID FROM CLIENTES WHERE cliente_id = '7982') DIVISA_ID
+FROM estadisticas_articulos_top
+INNER JOIN ARTICULOS ON ARTICULOS.articulo_id = ESTADISTICAS_ARTICULOS_TOP.ARTICULO_ID
 
-      return query.asyncMap((row) async {
-        print(row.articuloId);
-        final articulo = await getArticuloById(articuloId: row.articuloId);
-        return row.toDomain(articulo: articulo);
+''', variables: [
+        Variable(clienteId),
+      ], readsFrom: {
+        db.estadisticasArticulosTopTable,
+        db.estadisticasClienteUsuarioVentasTable
       }).get();
+
+      return query
+          .map((row) => ArticuloTopDTO.fromJson(row.data).toDomain())
+          .toList();
     } on AppException {
       rethrow;
     }

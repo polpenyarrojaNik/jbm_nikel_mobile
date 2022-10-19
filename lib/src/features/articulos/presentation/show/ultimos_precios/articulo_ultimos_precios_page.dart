@@ -8,6 +8,7 @@ import '../../../../../core/helpers/formatters.dart';
 import '../../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 
 class ArticuloUltimosPreciosPage extends ConsumerStatefulWidget {
@@ -137,54 +138,67 @@ class UltimosPreciosTile extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 65,
-                  child: Text(
-                    dateFormatter(
-                        ultimosPrecios.fecha.toLocal().toIso8601String()),
-                    style: Theme.of(context).textTheme.caption?.copyWith(
-                        color: Theme.of(context).textTheme.bodyText2?.color),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        dateFormatter(
+                            ultimosPrecios.fecha.toLocal().toIso8601String()),
+                        style: Theme.of(context).textTheme.caption?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodyText2?.color),
+                      ),
+                    ],
                   ),
                 ),
                 const VerticalDivider(),
                 Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  flex: 10,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Flexible(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
-                                ),
-                                Text(numberFormatCantidades(
-                                    ultimosPrecios.cantidad.toDouble())),
-                              ],
+                            child: Text(
+                              '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
                             ),
                           ),
                           Text(
-                            formatPrecioYDescuento(
-                              precio: ultimosPrecios.precioDivisa,
-                              tipoPrecio: ultimosPrecios.tipoPrecio,
-                              descuento1: ultimosPrecios.descuento1,
-                              descuento2: ultimosPrecios.descuento2,
-                              descuento3: ultimosPrecios.descuento3,
-                            ),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color),
-                          ),
+                              '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${(ultimosPrecios.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}'),
                         ],
                       ),
+                      gapH8,
+                      Text(
+                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecios(
+                          precio: ultimosPrecios.precioDivisa,
+                          tipoPrecio: ultimosPrecios.tipoPrecio,
+                        )}',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                      if (ultimosPrecios.descuento1 != 0 &&
+                          ultimosPrecios.descuento2 != 0 &&
+                          ultimosPrecios.descuento3 != 0)
+                        Text(
+                          '${S.of(context).pedido_show_pedidoVentaDetalle_dto}: ${dtoText(
+                            ultimosPrecios.descuento1,
+                            ultimosPrecios.descuento2,
+                            ultimosPrecios.descuento3,
+                          )}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color),
+                        ),
                     ],
                   ),
                 ),

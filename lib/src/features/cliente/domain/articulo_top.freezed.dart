@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArticuloTop {
-  Articulo get articulo => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
+  String get articuloId => throw _privateConstructorUsedError;
+  String get descripcion => throw _privateConstructorUsedError;
+  Money get ventasTotal => throw _privateConstructorUsedError;
+  Money get ventasCliente => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ArticuloTopCopyWith<ArticuloTop> get copyWith =>
@@ -31,9 +32,11 @@ abstract class $ArticuloTopCopyWith<$Res> {
           ArticuloTop value, $Res Function(ArticuloTop) then) =
       _$ArticuloTopCopyWithImpl<$Res, ArticuloTop>;
   @useResult
-  $Res call({Articulo articulo, DateTime lastUpdated, bool deleted});
-
-  $ArticuloCopyWith<$Res> get articulo;
+  $Res call(
+      {String articuloId,
+      String descripcion,
+      Money ventasTotal,
+      Money ventasCliente});
 }
 
 /// @nodoc
@@ -49,32 +52,29 @@ class _$ArticuloTopCopyWithImpl<$Res, $Val extends ArticuloTop>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articulo = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
+    Object? articuloId = null,
+    Object? descripcion = null,
+    Object? ventasTotal = null,
+    Object? ventasCliente = null,
   }) {
     return _then(_value.copyWith(
-      articulo: null == articulo
-          ? _value.articulo
-          : articulo // ignore: cast_nullable_to_non_nullable
-              as Articulo,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      ventasTotal: null == ventasTotal
+          ? _value.ventasTotal
+          : ventasTotal // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasCliente: null == ventasCliente
+          ? _value.ventasCliente
+          : ventasCliente // ignore: cast_nullable_to_non_nullable
+              as Money,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ArticuloCopyWith<$Res> get articulo {
-    return $ArticuloCopyWith<$Res>(_value.articulo, (value) {
-      return _then(_value.copyWith(articulo: value) as $Val);
-    });
   }
 }
 
@@ -86,10 +86,11 @@ abstract class _$$_ArticuloTopCopyWith<$Res>
       __$$_ArticuloTopCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Articulo articulo, DateTime lastUpdated, bool deleted});
-
-  @override
-  $ArticuloCopyWith<$Res> get articulo;
+  $Res call(
+      {String articuloId,
+      String descripcion,
+      Money ventasTotal,
+      Money ventasCliente});
 }
 
 /// @nodoc
@@ -103,23 +104,28 @@ class __$$_ArticuloTopCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articulo = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
+    Object? articuloId = null,
+    Object? descripcion = null,
+    Object? ventasTotal = null,
+    Object? ventasCliente = null,
   }) {
     return _then(_$_ArticuloTop(
-      articulo: null == articulo
-          ? _value.articulo
-          : articulo // ignore: cast_nullable_to_non_nullable
-              as Articulo,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as bool,
+      articuloId: null == articuloId
+          ? _value.articuloId
+          : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      ventasTotal: null == ventasTotal
+          ? _value.ventasTotal
+          : ventasTotal // ignore: cast_nullable_to_non_nullable
+              as Money,
+      ventasCliente: null == ventasCliente
+          ? _value.ventasCliente
+          : ventasCliente // ignore: cast_nullable_to_non_nullable
+              as Money,
     ));
   }
 }
@@ -128,21 +134,24 @@ class __$$_ArticuloTopCopyWithImpl<$Res>
 
 class _$_ArticuloTop extends _ArticuloTop {
   const _$_ArticuloTop(
-      {required this.articulo,
-      required this.lastUpdated,
-      required this.deleted})
+      {required this.articuloId,
+      required this.descripcion,
+      required this.ventasTotal,
+      required this.ventasCliente})
       : super._();
 
   @override
-  final Articulo articulo;
+  final String articuloId;
   @override
-  final DateTime lastUpdated;
+  final String descripcion;
   @override
-  final bool deleted;
+  final Money ventasTotal;
+  @override
+  final Money ventasCliente;
 
   @override
   String toString() {
-    return 'ArticuloTop(articulo: $articulo, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloTop(articuloId: $articuloId, descripcion: $descripcion, ventasTotal: $ventasTotal, ventasCliente: $ventasCliente)';
   }
 
   @override
@@ -150,15 +159,19 @@ class _$_ArticuloTop extends _ArticuloTop {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArticuloTop &&
-            (identical(other.articulo, articulo) ||
-                other.articulo == articulo) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
+            (identical(other.articuloId, articuloId) ||
+                other.articuloId == articuloId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.ventasTotal, ventasTotal) ||
+                other.ventasTotal == ventasTotal) &&
+            (identical(other.ventasCliente, ventasCliente) ||
+                other.ventasCliente == ventasCliente));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, articulo, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+      runtimeType, articuloId, descripcion, ventasTotal, ventasCliente);
 
   @JsonKey(ignore: true)
   @override
@@ -169,17 +182,20 @@ class _$_ArticuloTop extends _ArticuloTop {
 
 abstract class _ArticuloTop extends ArticuloTop {
   const factory _ArticuloTop(
-      {required final Articulo articulo,
-      required final DateTime lastUpdated,
-      required final bool deleted}) = _$_ArticuloTop;
+      {required final String articuloId,
+      required final String descripcion,
+      required final Money ventasTotal,
+      required final Money ventasCliente}) = _$_ArticuloTop;
   const _ArticuloTop._() : super._();
 
   @override
-  Articulo get articulo;
+  String get articuloId;
   @override
-  DateTime get lastUpdated;
+  String get descripcion;
   @override
-  bool get deleted;
+  Money get ventasTotal;
+  @override
+  Money get ventasCliente;
   @override
   @JsonKey(ignore: true)
   _$$_ArticuloTopCopyWith<_$_ArticuloTop> get copyWith =>

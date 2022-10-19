@@ -146,6 +146,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   Future<void> refreshArticleDb(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllArticulosRelacionados();
 
+    ref.refresh(articuloLastSyncDateProvider);
+
     ref.refresh(articulosSearchResultsProvider);
   }
 }
