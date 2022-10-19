@@ -77,9 +77,11 @@ class ClienteDireccionTile extends StatelessWidget {
             children: [
               SizedBox(
                 width: 50,
-                child: Text(
-                  clienteDireccion.direccionId,
-                ),
+                child: (clienteDireccion.direccionId != null)
+                    ? Text(
+                        clienteDireccion.direccionId!,
+                      )
+                    : null,
               ),
               Expanded(
                 child: Column(

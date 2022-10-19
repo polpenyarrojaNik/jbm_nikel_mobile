@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ClienteDireccion {
   String get clienteId => throw _privateConstructorUsedError;
-  String get direccionId => throw _privateConstructorUsedError;
+  String? get direccionId => throw _privateConstructorUsedError;
   String get nombre => throw _privateConstructorUsedError;
   String? get direccion1 => throw _privateConstructorUsedError;
   String? get direccion2 => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $ClienteDireccionCopyWith<$Res> {
   @useResult
   $Res call(
       {String clienteId,
-      String direccionId,
+      String? direccionId,
       String nombre,
       String? direccion1,
       String? direccion2,
@@ -75,7 +75,7 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
   @override
   $Res call({
     Object? clienteId = null,
-    Object? direccionId = null,
+    Object? direccionId = freezed,
     Object? nombre = null,
     Object? direccion1 = freezed,
     Object? direccion2 = freezed,
@@ -94,10 +94,10 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      direccionId: null == direccionId
+      direccionId: freezed == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nombre: null == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
@@ -172,7 +172,7 @@ abstract class _$$_ClienteDireccionCopyWith<$Res>
   @useResult
   $Res call(
       {String clienteId,
-      String direccionId,
+      String? direccionId,
       String nombre,
       String? direccion1,
       String? direccion2,
@@ -202,7 +202,7 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clienteId = null,
-    Object? direccionId = null,
+    Object? direccionId = freezed,
     Object? nombre = null,
     Object? direccion1 = freezed,
     Object? direccion2 = freezed,
@@ -221,10 +221,10 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      direccionId: null == direccionId
+      direccionId: freezed == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nombre: null == nombre
           ? _value.nombre
           : nombre // ignore: cast_nullable_to_non_nullable
@@ -300,7 +300,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   @override
   final String clienteId;
   @override
-  final String direccionId;
+  final String? direccionId;
   @override
   final String nombre;
   @override
@@ -390,7 +390,7 @@ class _$_ClienteDireccion extends _ClienteDireccion {
 abstract class _ClienteDireccion extends ClienteDireccion {
   const factory _ClienteDireccion(
       {required final String clienteId,
-      required final String direccionId,
+      required final String? direccionId,
       required final String nombre,
       final String? direccion1,
       final String? direccion2,
@@ -408,7 +408,7 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   @override
   String get clienteId;
   @override
-  String get direccionId;
+  String? get direccionId;
   @override
   String get nombre;
   @override

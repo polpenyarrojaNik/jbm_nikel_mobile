@@ -279,12 +279,13 @@ class ClienteRepository {
   }
 
   Future<List<ClienteDireccion>> getClienteDireccionById(
-      {required String clienteId}) {
+      {required String clienteId}) async {
     try {
-      final query = (_db.select(_db.clienteDireccionTable)
+      final queryDirecciones = (_db.select(_db.clienteDireccionTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.asyncMap((row) async {
+      final clientesDireccionList =
+          await queryDirecciones.asyncMap((row) async {
         final paisDTO = await (_db.select(_db.paisTable)
               ..where((t) => t.id.equals(row.paisId ?? '')))
             .getSingleOrNull();
@@ -292,6 +293,25 @@ class ClienteRepository {
           pais: paisDTO?.toDomain(),
         );
       }).get();
+
+      final cliente = await getClienteById(clienteId: clienteId);
+      clientesDireccionList.add(ClienteDireccion(
+          clienteId: clienteId,
+          direccionId: null,
+          nombre: cliente.nombreCliente,
+          latitud: cliente.latitudFiscal,
+          longitud: cliente.longitudFiscal,
+          direccion1: cliente.direccionFiscal1,
+          direccion2: cliente.direccionFiscal2,
+          codigoPostal: cliente.codigoPostalFiscal,
+          poblacion: cliente.poblacionFiscal,
+          provincia: cliente.provinciaFiscal,
+          pais: cliente.paisFiscal,
+          predeterminada: false,
+          lastUpdated: cliente.lastUpdated!,
+          deleted: cliente.deleted));
+
+      return clientesDireccionList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

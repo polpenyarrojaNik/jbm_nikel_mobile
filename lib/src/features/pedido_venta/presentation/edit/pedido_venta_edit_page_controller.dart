@@ -126,7 +126,7 @@ class PedidoVentaEditPageController
   Future<void> upsertPedidoVenta(
       {required String pedidoVentaAppId,
       required Cliente cliente,
-      required ClienteDireccion? clienteDireccion,
+      required ClienteDireccion clienteDireccion,
       required List<PedidoVentaLinea> pedidoVentaLineaList,
       String? observaciones,
       String? pedidoCliente}) async {
@@ -170,7 +170,7 @@ class PedidoVentaEditPageController
   }
 
   Future<void> navigateToNextStep() async {
-    _currentStep = (_currentStep < 3) ? _currentStep + 1 : _currentStep;
+    _currentStep = (_currentStep < 4) ? _currentStep + 1 : _currentStep;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
       _clienteDireccion,
