@@ -42,7 +42,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
         clienteId: clienteId,
         nombreCliente: nombreCliente,
         cantidad: cantidad,
-        precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
+        precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
         divisaId: divisaId,
         tipoPrecio: tipoPrecio,
         descuento1: descuento1,

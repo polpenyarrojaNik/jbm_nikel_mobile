@@ -36,7 +36,7 @@ class ArticuloPrecioTarifaDTO
       tarifaId: tarifaId,
       tarifaDescripcion: tarifaDescripcion,
       cantidadDesde: cantidadDesde,
-      precio: precio.parseMoney(currencyId: divisaId),
+      precio: precio.toMoney(currencyId: divisaId),
       divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,

@@ -33,7 +33,7 @@ class ClientePrecioNetoDTO
       clienteId: clienteId,
       articuloId: articuloId,
       cantidadDesde: cantidadDesde,
-      precio: precio.parseMoney(currencyId: divisaId),
+      precio: precio.toMoney(currencyId: divisaId),
       tipoPrecio: tipoPrecio,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,

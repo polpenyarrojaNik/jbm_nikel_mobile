@@ -46,7 +46,7 @@ class EstadisticasUltimosPreciosDTO
       linea: linea,
       cantidad: cantidad,
       fecha: fecha,
-      precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
+      precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
       divisaId: divisaId,
       tipoPrecio: tipoPrecio,
       descuento1: descuento1,

@@ -82,16 +82,16 @@ void main() {
     test('getPrecioUnitario devuelve el precio unitario', () {
       expect(
           pedidoVentaRepository.getPrecioUnitario(
-              precio: '1000'.parseMoney(), tipoPrecio: 1),
-          '1000'.parseMoney());
+              precio: '1000'.toMoney(), tipoPrecio: 1),
+          '1000'.toMoney());
       expect(
           pedidoVentaRepository.getPrecioUnitario(
-              precio: '1000'.parseMoney(), tipoPrecio: 100),
-          '10'.parseMoney());
+              precio: '1000'.toMoney(), tipoPrecio: 100),
+          '10'.toMoney());
       expect(
           pedidoVentaRepository.getPrecioUnitario(
-              precio: '1000'.parseMoney(), tipoPrecio: 1000),
-          '1'.parseMoney());
+              precio: '1000'.toMoney(), tipoPrecio: 1000),
+          '1'.toMoney());
     });
 
     test('getPrecioTarifa devuelve el precio de la tarifa', () async {

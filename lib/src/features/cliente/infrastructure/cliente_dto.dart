@@ -109,9 +109,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       longitudFiscal: longitudFiscal,
       empresaId: empresaId,
       iva: iva,
-      ventasAnyoActual: ventasAnyoActual.parseMoney(currencyId: divisaId),
-      ventasAnyoAnterior: ventasAnyoAnterior.parseMoney(currencyId: divisaId),
-      ventasHaceDosAnyos: ventasHaceDosAnyos.parseMoney(currencyId: divisaId),
+      ventasAnyoActual: ventasAnyoActual.toMoney(currencyId: divisaId),
+      ventasAnyoAnterior: ventasAnyoAnterior.toMoney(currencyId: divisaId),
+      ventasHaceDosAnyos: ventasHaceDosAnyos.toMoney(currencyId: divisaId),
       margenAnyoActual: margenAnyoActual,
       margenAnyoAnterior: margenAnyoAnterior,
       margenHaceDosAnyos: margenHaceDosAnyos,
@@ -129,10 +129,9 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       metodoDeCobro: metodoDeCobro,
       descuentoProntoPago: descuentoProntoPago,
       riesgoConcedidoInterno:
-          riesgoConcedidoInterno.parseMoney(currencyId: divisaId),
+          riesgoConcedidoInterno.toMoney(currencyId: divisaId),
       riesgoConcedidoInternoDate: riesgoConcedidoInternoDate,
-      riesgoConcedidoCoafe:
-          riesgoConcedidoCoafe.parseMoney(currencyId: divisaId),
+      riesgoConcedidoCoafe: riesgoConcedidoCoafe.toMoney(currencyId: divisaId),
       riesgoConcedidoCoafeFecha: riesgoConcedidoCoafeFecha,
       riesgoActual: calculateRiesgoActual(
           riesgoPendienteCobroVencido,
@@ -140,15 +139,15 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
           riesgoPendienteServir,
           riesgoPendienteFacturar,
           divisaId),
-      riesgoConcedido: riesgoConcedido?.parseMoney(currencyId: divisaId),
+      riesgoConcedido: riesgoConcedido?.toMoney(currencyId: divisaId),
       riesgoPendienteCobroVencido:
-          riesgoPendienteCobroVencido?.parseMoney(currencyId: divisaId),
+          riesgoPendienteCobroVencido?.toMoney(currencyId: divisaId),
       riesgoPendienteCobroNoVencido:
-          riesgoPendienteCobroNoVencido?.parseMoney(currencyId: divisaId),
+          riesgoPendienteCobroNoVencido?.toMoney(currencyId: divisaId),
       riesgoPendienteServir:
-          riesgoPendienteServir?.parseMoney(currencyId: divisaId),
+          riesgoPendienteServir?.toMoney(currencyId: divisaId),
       riesgoPendienteFacturar:
-          riesgoPendienteFacturar?.parseMoney(currencyId: divisaId),
+          riesgoPendienteFacturar?.toMoney(currencyId: divisaId),
       obvservacionesInternas: obvservacionesInternas,
       clientePotencial: (clientePotencial == 'S') ? true : false,
       clienteEstadoPotencial: clienteEstadoPotencial,
@@ -223,7 +222,7 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
         (riesgoPendienteCobroNoVencido ?? 0) +
         (riesgoPendienteServir ?? 0) +
         (riesgoPendienteFacturar ?? 0);
-    return amount.parseMoney(currencyId: divisaId);
+    return amount.toMoney(currencyId: divisaId);
   }
 }
 

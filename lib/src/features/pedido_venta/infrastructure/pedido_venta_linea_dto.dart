@@ -44,7 +44,7 @@ class PedidoVentaLineaDTO
         articuloId: articuloId,
         articuloDescription: articuloDescription,
         cantidad: cantidad,
-        precioDivisa: precioDivisa.parseMoney(currencyId: divisaId),
+        precioDivisa: precioDivisa.toMoney(currencyId: divisaId),
         divisaId: divisaId,
         tipoPrecio: tipoPrecio,
         descuento1: descuento1,
@@ -52,7 +52,7 @@ class PedidoVentaLineaDTO
         descuento3: descuento3,
         pedidoLineaIdComponente: pedidoLineaIdComponente,
         importeLinea: (importeLinea != null)
-            ? importeLinea!.parseMoney(currencyId: divisaId)
+            ? importeLinea!.toMoney(currencyId: divisaId)
             : null,
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);

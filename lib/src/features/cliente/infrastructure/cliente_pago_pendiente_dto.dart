@@ -46,7 +46,7 @@ class ClientePagoPendienteDTO
       fechaExpiracion: fechaExpiracion,
       metodoDeCobro: metodoDeCobro,
       estadoCobroId: estadoCobroId,
-      importe: importe?.parseMoney(currencyId: divisaId),
+      importe: importe?.toMoney(currencyId: divisaId),
       fechaExpiracionInicial: fechaExpiracionInicial,
       vencidoJBM: (vencidoJBM != null) ? (vencidoJBM != 'N') : null,
       lastUpdated: lastUpdated,
