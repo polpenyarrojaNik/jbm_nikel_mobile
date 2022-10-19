@@ -5,9 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/select_cantidad_controller.dart';
-import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
@@ -15,6 +15,7 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../domain/pedido_venta_linea.dart';
+import '../../domain/precio.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 
 class SeleccionarCantidadPage extends ConsumerStatefulWidget {
@@ -32,7 +33,12 @@ class SeleccionarCantidadPage extends ConsumerStatefulWidget {
 
 class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
+  final formKey = GlobalKey<FormBuilderState>();
+
   int totalQuantity = 1;
+  double descuento1 = 0;
+  double descuento2 = 0;
+
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
   Cliente? cliente;
@@ -40,7 +46,6 @@ class _SelecionarCantidadPageState
   @override
   void initState() {
     super.initState();
-
     if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
       setValoresInicialesActualizarLinea();
     }
@@ -67,7 +72,7 @@ class _SelecionarCantidadPageState
         state.maybeWhen(
           orElse: () => null,
           data: (newArticuloPrecio) =>
-              setState(() => articuloPrecio = newArticuloPrecio),
+              setArticuloPrecioValue(newArticuloPrecio),
         );
       },
     );
@@ -81,36 +86,81 @@ class _SelecionarCantidadPageState
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (articulo != null)
-              _ArticuloInfo(
-                articulo: articulo!,
-              ),
-            _SelectQuantityFrom(
-              setTotalQuantity: (value) {
-                setState(() => totalQuantity = value);
-                ref.read(articuloPrecioProvider.notifier).getArticuloPrecio(
-                      articuloId: articulo!.id,
-                      clienteId: widget.seleccionarCantidadParam.clienteId,
-                      cantidad: totalQuantity,
-                    );
-              },
-              cantidad: totalQuantity,
-            ),
-            const Divider(),
-            state.when(
-              initial: () => Container(),
-              error: (error, _) => Center(
-                child: ErrorMessageWidget(
-                  error.toString(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (articulo != null)
+                  _ArticuloInfo(
+                    articulo: articulo!,
+                  ),
+                if (articulo != null)
+                  _SelectQuantityFrom(
+                    formKey: formKey,
+                    setTotalQuantity: (value) {
+                      setState(() => totalQuantity = value);
+                      ref
+                          .read(articuloPrecioProvider.notifier)
+                          .getArticuloPrecio(
+                            articuloId: articulo!.id,
+                            clienteId:
+                                widget.seleccionarCantidadParam.clienteId,
+                            cantidad: totalQuantity,
+                          );
+                    },
+                    cantidad: totalQuantity,
+                    ventaMinimo: articulo!.ventaMinimo,
+                    ventaMultiplo: articulo!.ventaMultiplo,
+                  ),
+                const Divider(),
+                state.when(
+                  initial: () => Container(),
+                  error: (error, _) => Center(
+                    child: ErrorMessageWidget(
+                      error.toString(),
+                    ),
+                  ),
+                  loading: () =>
+                      const Center(child: CircularProgressIndicator()),
+                  data: (_) => (articuloPrecio != null)
+                      ? _ArticuloPrecioContainer(
+                          precio: articuloPrecio!.precio,
+                          descuento1: descuento1,
+                          descuento2: descuento2,
+                          descuento3: articuloPrecio!.descuento3,
+                          setDescuento1: (value) =>
+                              setState(() => descuento1 = value),
+                          setDescuento2: (value) =>
+                              setState(() => descuento2 = value),
+                        )
+                      : Container(),
                 ),
-              ),
-              loading: () => const Center(child: CircularProgressIndicator()),
-              data: (_) => (articuloPrecio != null)
-                  ? _ArticuloPrecioContainer(
-                      articuloPrecio: articuloPrecio!,
-                    )
-                  : Container(),
-            )
+                if (articuloPrecio != null) const Divider(),
+                if (articuloPrecio != null)
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Importe línea',
+                        ),
+                        Text(
+                          ref
+                              .read(pedidoVentaRepositoryProvider)
+                              .getTotalLinea(
+                                  precio: articuloPrecio!.precio,
+                                  cantidad: totalQuantity,
+                                  descuento1: descuento1,
+                                  descuento2: descuento2,
+                                  descuento3: articuloPrecio!.descuento3)
+                              .toString(),
+                          style: Theme.of(context).textTheme.subtitle2,
+                        )
+                      ],
+                    ),
+                  ),
+              ],
+            ),
           ],
         ),
       ),
@@ -131,52 +181,60 @@ class _SelecionarCantidadPageState
     Articulo articulo,
     Cliente cliente,
   ) {
-    final linea = PedidoVentaLinea(
-      empresaId: null,
-      pedidoVentaId: null,
-      pedidoVentaLineaId: null,
-      pedidoVentaAppId:
-          widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
-      pedidoVentaLineaAppId: (widget.seleccionarCantidadParam.posicionLinea + 1)
-          .toString()
-          .padLeft(3, '0'),
-      articuloId: articulo.id,
-      articuloDescription:
-          getDescriptionArticuloInLocalLanguage(articulo: articulo),
-      cantidad: totalQuantity,
-      precioDivisa: articuloPrecio.precio.precio,
-      divisaId: articuloPrecio.divisaId,
-      tipoPrecio: articuloPrecio.precio.tipoPrecio,
-      descuento1: articuloPrecio.descuento1,
-      descuento2: articuloPrecio.descuento2,
-      descuento3: articuloPrecio.descuento3,
-      descuentoProntoPago: cliente.descuentoProntoPago,
-      stockDisponibleSN: articulo.stockDisponible > 0,
-      iva: articuloPrecio.iva,
-      importeLinea: Money.parse('0', code: articuloPrecio.divisaId),
-      lastUpdated: DateTime.now().toUtc(),
-      deleted: false,
-    );
+    if (formKey.currentState!.saveAndValidate()) {
+      final linea = PedidoVentaLinea(
+        empresaId: null,
+        pedidoVentaId: null,
+        pedidoVentaLineaId: null,
+        pedidoVentaAppId:
+            widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam.id,
+        pedidoVentaLineaAppId:
+            (widget.seleccionarCantidadParam.posicionLinea + 1)
+                .toString()
+                .padLeft(3, '0'),
+        articuloId: articulo.id,
+        articuloDescription:
+            getDescriptionArticuloInLocalLanguage(articulo: articulo),
+        cantidad: totalQuantity,
+        precioDivisa: articuloPrecio.precio.precio,
+        divisaId: articuloPrecio.divisaId,
+        tipoPrecio: articuloPrecio.precio.tipoPrecio,
+        descuento1: descuento1,
+        descuento2: descuento2,
+        descuento3: articuloPrecio.descuento3,
+        descuentoProntoPago: cliente.descuentoProntoPago,
+        stockDisponibleSN: articulo.stockDisponible > 0,
+        iva: articuloPrecio.iva,
+        importeLinea: ref.read(pedidoVentaRepositoryProvider).getTotalLinea(
+            precio: articuloPrecio.precio,
+            cantidad: totalQuantity,
+            descuento1: descuento1,
+            descuento2: descuento2,
+            descuento3: articuloPrecio.descuento3),
+        lastUpdated: DateTime.now().toUtc(),
+        deleted: false,
+      );
 
-    if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-      ref
-          .read(pedidoVentaEditPageControllerProvider(
-                  widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
-              .notifier)
-          .updatePedidoVentaLinea(
-            pedidoVentaLinea: linea,
-            posicionActualizar: widget.seleccionarCantidadParam.posicionLinea,
-          );
-    } else {
-      ref
-          .read(pedidoVentaEditPageControllerProvider(
-                  widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
-              .notifier)
-          .addPedidoVentaLinea(
-            newLinea: linea,
-          );
+      if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
+        ref
+            .read(pedidoVentaEditPageControllerProvider(
+                    widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                .notifier)
+            .updatePedidoVentaLinea(
+              pedidoVentaLinea: linea,
+              posicionActualizar: widget.seleccionarCantidadParam.posicionLinea,
+            );
+      } else {
+        ref
+            .read(pedidoVentaEditPageControllerProvider(
+                    widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                .notifier)
+            .addPedidoVentaLinea(
+              newLinea: linea,
+            );
+      }
+      context.router.pop();
     }
-    context.router.pop();
   }
 
   void setArtiucloValue({Articulo? newArticuloValue}) {
@@ -184,6 +242,7 @@ class _SelecionarCantidadPageState
       setState(
         () {
           articulo = newArticuloValue;
+          totalQuantity = newArticuloValue.ventaMinimo;
         },
       );
 
@@ -206,15 +265,29 @@ class _SelecionarCantidadPageState
   }
 
   void setValoresInicialesActualizarLinea() {
-    if (widget.seleccionarCantidadParam.cantidad != null) {
-      totalQuantity = widget.seleccionarCantidadParam.cantidad!;
-    }
+    totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+    descuento1 = widget.seleccionarCantidadParam.descuento1!;
+    descuento2 = widget.seleccionarCantidadParam.descuento2!;
 
     Future.microtask(
       () => ref.read(
         articuloProvider(widget.seleccionarCantidadParam.articuloId),
       ),
     );
+  }
+
+  setArticuloPrecioValue(ArticuloPrecio? newArticuloPrecio) {
+    if (newArticuloPrecio != null) {
+      setState(() {
+        articuloPrecio = newArticuloPrecio;
+        if (descuento1 == 0) {
+          descuento1 = newArticuloPrecio.descuento1;
+        }
+        if (descuento2 == 0) {
+          descuento2 = newArticuloPrecio.descuento2;
+        }
+      });
+    }
   }
 }
 
@@ -241,6 +314,10 @@ class _ArticuloInfo extends StatelessWidget {
                 Text(
                   getDescriptionArticuloInLocalLanguage(articulo: articulo),
                 ),
+                Text(
+                  'Stock disponible: ${articulo.stockDisponible}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
               ],
             ),
           ),
@@ -252,16 +329,24 @@ class _ArticuloInfo extends StatelessWidget {
 
 class _SelectQuantityFrom extends StatelessWidget {
   const _SelectQuantityFrom(
-      {required this.setTotalQuantity, required this.cantidad});
+      {required this.formKey,
+      required this.setTotalQuantity,
+      required this.cantidad,
+      required this.ventaMinimo,
+      required this.ventaMultiplo});
 
   final void Function(int value) setTotalQuantity;
+  final GlobalKey<FormBuilderState> formKey;
   final int? cantidad;
+  final int ventaMinimo;
+  final int ventaMultiplo;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: FormBuilder(
+        key: formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           children: [
@@ -273,6 +358,7 @@ class _SelectQuantityFrom extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
               ),
+              validator: (value) => validateQuantity(value),
               onChanged: (value) => setTotalQuantity(
                 (value != null && value != '') ? int.parse(value) : 0,
               ),
@@ -282,12 +368,54 @@ class _SelectQuantityFrom extends StatelessWidget {
       ),
     );
   }
+
+  String? validateQuantity(String? quantityStr) {
+    if (quantityStr != null && quantityStr != '') {
+      final quantity = int.parse(quantityStr);
+      if (quantity != 0) {
+        if (quantity < ventaMinimo) {
+          setTotalQuantity(ventaMinimo);
+          return 'Venta minimo = $ventaMinimo';
+        } else if (quantity % ventaMultiplo != 0) {
+          setTotalQuantity(setMultiploMasCercano(quantity, ventaMultiplo));
+          return 'Ha de ser múltiplo de $ventaMultiplo';
+        } else {
+          return null;
+        }
+      } else {
+        return 'No 0';
+      }
+    } else {
+      return 'No empty';
+    }
+  }
+
+  int setMultiploMasCercano(int quantity, int ventaMultiplo) {
+    int nuevaCantidad = 0;
+    for (int i = 0; i < ventaMultiplo; i++) {
+      if ((quantity + i) % ventaMultiplo == 0) {
+        nuevaCantidad = quantity + i;
+      }
+    }
+    return nuevaCantidad;
+  }
 }
 
 class _ArticuloPrecioContainer extends StatelessWidget {
-  const _ArticuloPrecioContainer({required this.articuloPrecio});
+  const _ArticuloPrecioContainer(
+      {required this.precio,
+      required this.descuento1,
+      required this.descuento2,
+      required this.descuento3,
+      required this.setDescuento1,
+      required this.setDescuento2});
 
-  final ArticuloPrecio articuloPrecio;
+  final Precio precio;
+  final double descuento1;
+  final double descuento2;
+  final double descuento3;
+  final void Function(double value) setDescuento1;
+  final void Function(double value) setDescuento2;
 
   @override
   Widget build(BuildContext context) {
@@ -298,32 +426,40 @@ class _ArticuloPrecioContainer extends StatelessWidget {
         children: [
           FormBuilderTextField(
             name: 'precio',
+            readOnly: true,
             keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.precio.precio.amount.toString(),
+            initialValue: numberFormatDecimal(
+                precio.precio.amount.toDecimal().toDouble()),
             decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_precio,
-            ),
+                labelText: S.of(context).pedido_edit_selectQuantity_precio,
+                suffix: Text(
+                  'x${precio.tipoPrecio}',
+                  style: Theme.of(context).textTheme.caption,
+                )),
           ),
           FormBuilderTextField(
-            name: 'dto1',
-            keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.descuento1.toString(),
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-            ),
-          ),
+              name: 'dto1',
+              keyboardType: TextInputType.number,
+              initialValue: descuento1.toString(),
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
+              ),
+              onChanged: (value) => setDescuento1(
+                  (value != null && value != '') ? double.parse(value) : 0)),
           FormBuilderTextField(
-            name: 'dto2',
-            keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.descuento2.toString(),
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
-            ),
-          ),
+              name: 'dto2',
+              keyboardType: TextInputType.number,
+              initialValue: descuento2.toString(),
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
+              ),
+              onChanged: (value) => setDescuento2(
+                  (value != null && value != '') ? double.parse(value) : 0)),
           FormBuilderTextField(
             name: 'dto3',
+            readOnly: true,
             keyboardType: TextInputType.number,
-            initialValue: articuloPrecio.descuento3.toString(),
+            initialValue: descuento3.toString(),
             decoration: InputDecoration(
               labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
             ),

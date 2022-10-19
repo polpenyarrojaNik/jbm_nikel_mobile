@@ -21,6 +21,8 @@ mixin _$SeleccionarCantidadParam {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   int? get cantidad => throw _privateConstructorUsedError;
+  double? get descuento1 => throw _privateConstructorUsedError;
+  double? get descuento2 => throw _privateConstructorUsedError;
   int get posicionLinea => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,6 +41,8 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       String clienteId,
       String articuloId,
       int? cantidad,
+      double? descuento1,
+      double? descuento2,
       int posicionLinea});
 
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
@@ -62,6 +66,8 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
+    Object? descuento1 = freezed,
+    Object? descuento2 = freezed,
     Object? posicionLinea = null,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +87,14 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
+      descuento1: freezed == descuento1
+          ? _value.descuento1
+          : descuento1 // ignore: cast_nullable_to_non_nullable
+              as double?,
+      descuento2: freezed == descuento2
+          ? _value.descuento2
+          : descuento2 // ignore: cast_nullable_to_non_nullable
+              as double?,
       posicionLinea: null == posicionLinea
           ? _value.posicionLinea
           : posicionLinea // ignore: cast_nullable_to_non_nullable
@@ -112,6 +126,8 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       String clienteId,
       String articuloId,
       int? cantidad,
+      double? descuento1,
+      double? descuento2,
       int posicionLinea});
 
   @override
@@ -134,6 +150,8 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
+    Object? descuento1 = freezed,
+    Object? descuento2 = freezed,
     Object? posicionLinea = null,
   }) {
     return _then(_$_SeleccionarCantidadParam(
@@ -153,6 +171,14 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
+      descuento1: freezed == descuento1
+          ? _value.descuento1
+          : descuento1 // ignore: cast_nullable_to_non_nullable
+              as double?,
+      descuento2: freezed == descuento2
+          ? _value.descuento2
+          : descuento2 // ignore: cast_nullable_to_non_nullable
+              as double?,
       posicionLinea: null == posicionLinea
           ? _value.posicionLinea
           : posicionLinea // ignore: cast_nullable_to_non_nullable
@@ -169,6 +195,8 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       required this.clienteId,
       required this.articuloId,
       this.cantidad,
+      this.descuento1,
+      this.descuento2,
       required this.posicionLinea})
       : super._();
 
@@ -181,11 +209,15 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   final int? cantidad;
   @override
+  final double? descuento1;
+  @override
+  final double? descuento2;
+  @override
   final int posicionLinea;
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, posicionLinea: $posicionLinea)';
+    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, descuento1: $descuento1, descuento2: $descuento2, posicionLinea: $posicionLinea)';
   }
 
   @override
@@ -202,13 +234,17 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
                 other.articuloId == articuloId) &&
             (identical(other.cantidad, cantidad) ||
                 other.cantidad == cantidad) &&
+            (identical(other.descuento1, descuento1) ||
+                other.descuento1 == descuento1) &&
+            (identical(other.descuento2, descuento2) ||
+                other.descuento2 == descuento2) &&
             (identical(other.posicionLinea, posicionLinea) ||
                 other.posicionLinea == posicionLinea));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, pedidoVentaIdIsLocalParam,
-      clienteId, articuloId, cantidad, posicionLinea);
+      clienteId, articuloId, cantidad, descuento1, descuento2, posicionLinea);
 
   @JsonKey(ignore: true)
   @override
@@ -224,6 +260,8 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
       required final String clienteId,
       required final String articuloId,
       final int? cantidad,
+      final double? descuento1,
+      final double? descuento2,
       required final int posicionLinea}) = _$_SeleccionarCantidadParam;
   const _SeleccionarCantidadParam._() : super._();
 
@@ -235,6 +273,10 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   String get articuloId;
   @override
   int? get cantidad;
+  @override
+  double? get descuento1;
+  @override
+  double? get descuento2;
   @override
   int get posicionLinea;
   @override

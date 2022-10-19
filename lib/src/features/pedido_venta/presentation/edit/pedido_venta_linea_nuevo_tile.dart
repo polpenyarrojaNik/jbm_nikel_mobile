@@ -22,7 +22,7 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
           children: [
             Flexible(
               child: SizedBox(
-                height: 75,
+                height: 100,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
