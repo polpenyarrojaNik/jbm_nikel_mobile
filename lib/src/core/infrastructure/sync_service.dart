@@ -271,7 +271,7 @@ class SyncService {
   Future<void> syncArticulos() async {
     try {
       await _syncTable(
-        apiPath: '/articulos',
+        apiPath: 'articulos',
         tableInfo: _db.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
@@ -287,7 +287,7 @@ class SyncService {
   Future<void> syncArticuloEmpresasIva() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/empresa-iva',
+        apiPath: 'articulos/empresa-iva',
         tableInfo: _db.articuloEmpresaIvaTable,
         fromJson: (e) => ArticuloEmpresaIvaDTO.fromJson(e),
       );
@@ -302,7 +302,7 @@ class SyncService {
   Future<void> syncArticuloComponentes() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/componentes',
+        apiPath: 'articulos/componentes',
         tableInfo: _db.articuloComponenteTable,
         fromJson: (e) => ArticuloComponenteDTO.fromJson(e),
       );
@@ -317,7 +317,7 @@ class SyncService {
   Future<void> syncArticuloGruposNetos() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/grupos-netos',
+        apiPath: 'articulos/grupos-netos',
         tableInfo: _db.articuloGrupoNetoTable,
         fromJson: (e) => ArticuloGrupoNetoDTO.fromJson(e),
       );
@@ -332,7 +332,7 @@ class SyncService {
   Future<void> syncArticuloTarifaPrecio() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/precios-tarifa',
+        apiPath: 'articulos/precios-tarifa',
         tableInfo: _db.articuloPrecioTarifaTable,
         fromJson: (e) => ArticuloPrecioTarifaDTO.fromJson(e),
       );
@@ -362,7 +362,7 @@ class SyncService {
   Future<void> syncArticuloSustitutivo() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/sustitutivos',
+        apiPath: 'articulos/sustitutivos',
         tableInfo: _db.articuloSustitutivoTable,
         fromJson: (e) => ArticuloSustitutivoDTO.fromJson(e),
       );
@@ -377,7 +377,7 @@ class SyncService {
   Future<void> syncUltimosPrecios() async {
     try {
       await _syncTable(
-        apiPath: '/estadisticas/ultimos-precios-cliente-articulo',
+        apiPath: 'estadisticas/ultimos-precios-cliente-articulo',
         tableInfo: _db.estadisticasUltimosPreciosTable,
         fromJson: (e) => EstadisticasUltimosPreciosDTO.fromJson(e),
       );
@@ -392,7 +392,7 @@ class SyncService {
   Future<void> syncClientes() async {
     try {
       await _syncTable(
-        apiPath: '/clientes',
+        apiPath: 'clientes',
         tableInfo: _db.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
@@ -408,7 +408,7 @@ class SyncService {
   Future<void> syncClientesUsuario() async {
     try {
       await _syncTable(
-        apiPath: '/clientes-usuario',
+        apiPath: 'clientes-usuario',
         tableInfo: _db.clienteUsuarioTable,
         fromJson: (e) => ClienteUsuarioDTO.fromJson(e),
       );
@@ -423,7 +423,7 @@ class SyncService {
   Future<void> syncClienteDirecciones() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/direcciones',
+        apiPath: 'clientes/direcciones',
         tableInfo: _db.clienteDireccionTable,
         fromJson: (e) => ClienteDireccionDTO.fromJson(e),
       );
@@ -438,7 +438,7 @@ class SyncService {
   Future<void> syncClienteContactos() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/contactos',
+        apiPath: 'clientes/contactos',
         tableInfo: _db.clienteContactoTable,
         fromJson: (e) => ClienteContactoDTO.fromJson(e),
       );
@@ -453,7 +453,7 @@ class SyncService {
   Future<void> syncClienteDescuentos() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/descuentos',
+        apiPath: 'clientes/descuentos',
         tableInfo: _db.clienteDescuentoTable,
         fromJson: (e) => ClienteDescuentoDTO.fromJson(e),
       );
@@ -468,7 +468,7 @@ class SyncService {
   Future<void> syncClienteGruposNetos() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/grupos-netos',
+        apiPath: 'clientes/grupos-netos',
         tableInfo: _db.clienteGrupoNetoTable,
         fromJson: (e) => ClienteGrupoNetoDTO.fromJson(e),
       );
@@ -483,7 +483,7 @@ class SyncService {
   Future<void> syncClientePreciosNetos() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/precios-netos',
+        apiPath: 'clientes/precios-netos',
         tableInfo: _db.clientePrecioNetoTable,
         fromJson: (e) => ClientePrecioNetoDTO.fromJson(e),
       );
@@ -498,7 +498,7 @@ class SyncService {
   Future<void> syncClientesPagosPendients() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/pagos-pendientes',
+        apiPath: 'clientes/pagos-pendientes',
         tableInfo: _db.clientePagoPendienteTable,
         fromJson: (e) => ClientePagoPendienteDTO.fromJson(e),
       );
@@ -513,7 +513,7 @@ class SyncService {
   Future<void> syncClientesRappels() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/rappels',
+        apiPath: 'clientes/rappels',
         tableInfo: _db.clienteRappelTable,
         fromJson: (e) => ClienteRappelDTO.fromJson(e),
       );
@@ -528,7 +528,7 @@ class SyncService {
   Future<void> syncTopArticulos() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/articulos-top',
+        apiPath: 'clientes/articulos-top',
         tableInfo: _db.articuloTopTable,
         fromJson: (e) => ArticuloTopDTO.fromJson(e),
       );
@@ -587,7 +587,7 @@ class SyncService {
   Future<void> syncPedidos() async {
     try {
       await _syncTable(
-        apiPath: '/pedidos',
+        apiPath: 'pedidos',
         tableInfo: _db.pedidoVentaTable,
         fromJson: (e) => PedidoVentaDTO.fromJson(e),
       );
@@ -603,7 +603,7 @@ class SyncService {
   Future<void> syncPedidoVentaLinea() async {
     try {
       await _syncTable(
-        apiPath: '/pedidos/detalle',
+        apiPath: 'pedidos/detalle',
         tableInfo: _db.pedidoVentaLineaTable,
         fromJson: (e) => PedidoVentaLineaDTO.fromJson(e),
       );
@@ -618,7 +618,7 @@ class SyncService {
   Future<void> syncPedidoVentaEstado() async {
     try {
       await _syncTable(
-        apiPath: '/pedidos/estados',
+        apiPath: 'pedidos/estados',
         tableInfo: _db.pedidoVentaEstadoTable,
         fromJson: (e) => PedidoVentaEstadoDTO.fromJson(e),
       );
@@ -633,7 +633,7 @@ class SyncService {
   Future<void> syncVisitas() async {
     try {
       await _syncTable(
-        apiPath: '/visitas',
+        apiPath: 'visitas',
         tableInfo: _db.visitaTable,
         fromJson: (e) => VisitaDTO.fromJson(e),
       );
@@ -649,7 +649,7 @@ class SyncService {
   Future<void> syncPaises() async {
     try {
       await _syncTable(
-        apiPath: '/paises',
+        apiPath: 'paises',
         tableInfo: _db.paisTable,
         fromJson: (e) => PaisDTO.fromJson(e),
       );
@@ -664,7 +664,7 @@ class SyncService {
   Future<void> syncDivisas() async {
     try {
       await _syncTable(
-        apiPath: '/divisa',
+        apiPath: 'divisa',
         tableInfo: _db.divisaTable,
         fromJson: (e) => DivisaDTO.fromJson(e),
       );
@@ -694,7 +694,7 @@ class SyncService {
   Future<void> syncMetodoCobro() async {
     try {
       await _syncTable(
-        apiPath: '/metodos-cobro',
+        apiPath: 'metodos-cobro',
         tableInfo: _db.metodoDeCobroTable,
         fromJson: (e) => MetodoDeCobroDTO.fromJson(e),
       );
@@ -709,7 +709,7 @@ class SyncService {
   Future<void> syncFamilias() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/familia',
+        apiPath: 'articulos/familia',
         tableInfo: _db.familiaTable,
         fromJson: (e) => FamiliaDTO.fromJson(e),
       );
@@ -724,7 +724,7 @@ class SyncService {
   Future<void> syncSubfamilias() async {
     try {
       await _syncTable(
-        apiPath: '/articulos/subfamilia',
+        apiPath: 'articulos/subfamilia',
         tableInfo: _db.subfamiliaTable,
         fromJson: (e) => SubfamiliaDTO.fromJson(e),
       );
@@ -760,7 +760,7 @@ class SyncService {
             totalRows: totalRows);
 
         final remotePageItems = await _getRemoteData(
-            apiPath: '/api/v1/sync/$apiPath',
+            apiPath: 'api/v1/sync/$apiPath',
             query: query,
             jsonDataSelector: (json) => json['data'] as List<dynamic>);
 
@@ -840,14 +840,18 @@ class SyncService {
     required List<dynamic> Function(dynamic json) jsonDataSelector,
   }) async {
     try {
-      final response = await _dio.getUri(
-        Uri.http(
-          dotenv.get((_usuario!.test) ? 'URLTEST' : 'URL',
-              fallback: 'localhost:3001'),
-          apiPath,
-          query,
-        ),
+      final uri = Uri.https(
+        dotenv.get('URL'),
+        apiPath,
+        query,
       );
+      final testUri = Uri.http(
+        dotenv.get('URLTEST', fallback: 'localhost:3001'),
+        apiPath,
+        query,
+      );
+
+      final response = await _dio.getUri(!(_usuario!.test) ? uri : testUri);
 
       if (response.statusCode == 200) {
         final convertedDate = jsonDataSelector(response.data)

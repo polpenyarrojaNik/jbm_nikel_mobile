@@ -26,7 +26,7 @@ class App extends ConsumerWidget {
 
   final settings = ThemeSettings(
     sourceColor: const Color(0xFF0D6E00),
-    themeMode: ThemeMode.system,
+    themeMode: ThemeMode.light,
   );
 
   @override

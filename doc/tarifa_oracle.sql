@@ -665,18 +665,18 @@ CREATE OR REPLACE PACKAGE BODY tarifa_venta_pkg AS
                         --    AND cliente_descuento.fecha_desde <= i_fecha
                         --    AND (cliente_descuento.fecha_fin >= i_fecha
                         --      OR cliente_descuento.fecha_fin IS NULL)
-                        UNION ALL
-                        SELECT cliente_descuento.fecha_desde
-                              ,cliente_descuento.descuento
-                          FROM cliente_descuento
-                         WHERE cliente_descuento.cod_cli = i_cod_cli
-                           AND cliente_descuento.cod_art = '*'
-                           AND cliente_descuento.familia = '*'
-                           AND cliente_descuento.subfamilia = '*'
-                           AND cliente_descuento.fecha_desde <= i_fecha
-                           AND (cliente_descuento.fecha_fin >= i_fecha
-                             OR cliente_descuento.fecha_fin IS NULL))
-              ORDER BY fecha_desde DESC)
+              --           UNION ALL
+              --           SELECT cliente_descuento.fecha_desde
+              --                 ,cliente_descuento.descuento
+              --             FROM cliente_descuento
+              --            WHERE cliente_descuento.cod_cli = i_cod_cli
+              --              AND cliente_descuento.cod_art = '*'
+              --              AND cliente_descuento.familia = '*'
+              --              AND cliente_descuento.subfamilia = '*'
+              --              AND cliente_descuento.fecha_desde <= i_fecha
+              --              AND (cliente_descuento.fecha_fin >= i_fecha
+              --                OR cliente_descuento.fecha_fin IS NULL))
+              -- ORDER BY fecha_desde DESC)
        WHERE ROWNUM = 1;
     EXCEPTION
       WHEN NO_DATA_FOUND THEN
@@ -686,24 +686,24 @@ CREATE OR REPLACE PACKAGE BODY tarifa_venta_pkg AS
     RETURN NVL (l_descuento, 0);
   END get_descuento_cliente_descuento;
 
-  FUNCTION get_descuento_fuente_pedido (i_cod_cli      IN VARCHAR2
-                                       ,i_cod_fuen_ped IN VARCHAR2)
-    RETURN NUMBER AS
-    l_descuento cliente_descuento_t.descuento%TYPE;
-  BEGIN
-    BEGIN
-      SELECT cliente_descuento_fuen_ped.descuento
-        INTO l_descuento
-        FROM cliente_descuento_fuen_ped
-       WHERE cliente_descuento_fuen_ped.cod_cli = i_cod_cli
-         AND cliente_descuento_fuen_ped.cod_fuen_ped = i_cod_fuen_ped;
-    EXCEPTION
-      WHEN NO_DATA_FOUND THEN
-        l_descuento := 0;
-    END;
+  -- FUNCTION get_descuento_fuente_pedido (i_cod_cli      IN VARCHAR2
+  --                                      ,i_cod_fuen_ped IN VARCHAR2)
+  --   RETURN NUMBER AS
+  --   l_descuento cliente_descuento_t.descuento%TYPE;
+  -- BEGIN
+  --   BEGIN
+  --     SELECT cliente_descuento_fuen_ped.descuento
+  --       INTO l_descuento
+  --       FROM cliente_descuento_fuen_ped
+  --      WHERE cliente_descuento_fuen_ped.cod_cli = i_cod_cli
+  --        AND cliente_descuento_fuen_ped.cod_fuen_ped = i_cod_fuen_ped;
+  --   EXCEPTION
+  --     WHEN NO_DATA_FOUND THEN
+  --       l_descuento := 0;
+  --   END;
 
-    RETURN NVL (l_descuento, 0);
-  END get_descuento_fuente_pedido;
+  --   RETURN NVL (l_descuento, 0);
+  -- END get_descuento_fuente_pedido;
 
   PROCEDURE get_precio_venta (i_cod_art              IN     VARCHAR2
                              ,i_cod_cli              IN     VARCHAR2
