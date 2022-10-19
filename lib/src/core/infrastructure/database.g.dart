@@ -9883,22 +9883,23 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
   }
 }
 
-class ArticuloTopTableCompanion extends UpdateCompanion<ArticuloTopDTO> {
+class EstadisticasArticulosTopTableCompanion
+    extends UpdateCompanion<EstadisitcasArticulosTopDTO> {
   final Value<String> articuloId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloTopTableCompanion({
+  const EstadisticasArticulosTopTableCompanion({
     this.articuloId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloTopTableCompanion.insert({
+  EstadisticasArticulosTopTableCompanion.insert({
     required String articuloId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloTopDTO> custom({
+  static Insertable<EstadisitcasArticulosTopDTO> custom({
     Expression<String>? articuloId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
@@ -9910,11 +9911,11 @@ class ArticuloTopTableCompanion extends UpdateCompanion<ArticuloTopDTO> {
     });
   }
 
-  ArticuloTopTableCompanion copyWith(
+  EstadisticasArticulosTopTableCompanion copyWith(
       {Value<String>? articuloId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloTopTableCompanion(
+    return EstadisticasArticulosTopTableCompanion(
       articuloId: articuloId ?? this.articuloId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -9938,7 +9939,7 @@ class ArticuloTopTableCompanion extends UpdateCompanion<ArticuloTopDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloTopTableCompanion(')
+    return (StringBuffer('EstadisticasArticulosTopTableCompanion(')
           ..write('articuloId: $articuloId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -9947,12 +9948,14 @@ class ArticuloTopTableCompanion extends UpdateCompanion<ArticuloTopDTO> {
   }
 }
 
-class $ArticuloTopTableTable extends ArticuloTopTable
-    with TableInfo<$ArticuloTopTableTable, ArticuloTopDTO> {
+class $EstadisticasArticulosTopTableTable extends EstadisticasArticulosTopTable
+    with
+        TableInfo<$EstadisticasArticulosTopTableTable,
+            EstadisitcasArticulosTopDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ArticuloTopTableTable(this.attachedDatabase, [this._alias]);
+  $EstadisticasArticulosTopTableTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
@@ -9978,7 +9981,8 @@ class $ArticuloTopTableTable extends ArticuloTopTable
   @override
   String get actualTableName => 'ESTADISTICAS_ARTICULOS_TOP';
   @override
-  VerificationContext validateIntegrity(Insertable<ArticuloTopDTO> instance,
+  VerificationContext validateIntegrity(
+      Insertable<EstadisitcasArticulosTopDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -10008,9 +10012,10 @@ class $ArticuloTopTableTable extends ArticuloTopTable
   @override
   Set<GeneratedColumn> get $primaryKey => {articuloId};
   @override
-  ArticuloTopDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+  EstadisitcasArticulosTopDTO map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ArticuloTopDTO(
+    return EstadisitcasArticulosTopDTO(
       articuloId: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
       lastUpdated: attachedDatabase.options.types
@@ -10021,8 +10026,8 @@ class $ArticuloTopTableTable extends ArticuloTopTable
   }
 
   @override
-  $ArticuloTopTableTable createAlias(String alias) {
-    return $ArticuloTopTableTable(attachedDatabase, alias);
+  $EstadisticasArticulosTopTableTable createAlias(String alias) {
+    return $EstadisticasArticulosTopTableTable(attachedDatabase, alias);
   }
 }
 
@@ -16460,8 +16465,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $ClienteEstadoPotencialTableTable(this);
   late final $ClienteTipoPotencialTableTable clienteTipoPotencialTable =
       $ClienteTipoPotencialTableTable(this);
-  late final $ArticuloTopTableTable articuloTopTable =
-      $ArticuloTopTableTable(this);
+  late final $EstadisticasArticulosTopTableTable estadisticasArticulosTopTable =
+      $EstadisticasArticulosTopTableTable(this);
   late final $ArticuloTableTable articuloTable = $ArticuloTableTable(this);
   late final $ArticuloComponenteTableTable articuloComponenteTable =
       $ArticuloComponenteTableTable(this);
@@ -16515,7 +16520,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         clienteRappelTable,
         clienteEstadoPotencialTable,
         clienteTipoPotencialTable,
-        articuloTopTable,
+        estadisticasArticulosTopTable,
         articuloTable,
         articuloComponenteTable,
         articuloEmpresaIvaTable,

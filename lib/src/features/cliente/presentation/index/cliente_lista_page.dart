@@ -184,6 +184,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   Future<void> syncCustomerDb(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllClientesRelacionados();
+    ref.refresh(clienteLastSyncDateProvider);
 
     ref.refresh(clientesSearchQueryStateProvider);
   }

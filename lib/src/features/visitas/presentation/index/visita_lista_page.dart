@@ -120,6 +120,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
 
   Future<void> refreshVisitsDB(WidgetRef ref) async {
     await ref.read(syncServiceProvider).syncAllVisitasRelacionados();
+    ref.refresh(visitaLastSyncDateProvider);
 
     ref.invalidate(visitasSearchResultsProvider);
   }

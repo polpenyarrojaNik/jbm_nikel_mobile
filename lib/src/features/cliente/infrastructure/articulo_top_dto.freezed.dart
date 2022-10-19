@@ -22,10 +22,14 @@ ArticuloTopDTO _$ArticuloTopDTOFromJson(Map<String, dynamic> json) {
 mixin _$ArticuloTopDTO {
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DELETED')
-  String get deleted => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION_ES')
+  String get descripcion => throw _privateConstructorUsedError;
+  @JsonKey(name: 'VENTAS_TOTAL')
+  double get ventasTotal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'VENTAS_CLIENTE')
+  double get ventasCliente => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,8 +45,10 @@ abstract class $ArticuloTopDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcion,
+      @JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,
+      @JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,
+      @JsonKey(name: 'DIVISA_ID') String divisaId});
 }
 
 /// @nodoc
@@ -59,21 +65,31 @@ class _$ArticuloTopDTOCopyWithImpl<$Res, $Val extends ArticuloTopDTO>
   @override
   $Res call({
     Object? articuloId = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
+    Object? descripcion = null,
+    Object? ventasTotal = null,
+    Object? ventasCliente = null,
+    Object? divisaId = null,
   }) {
     return _then(_value.copyWith(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      ventasTotal: null == ventasTotal
+          ? _value.ventasTotal
+          : ventasTotal // ignore: cast_nullable_to_non_nullable
+              as double,
+      ventasCliente: null == ventasCliente
+          ? _value.ventasCliente
+          : ventasCliente // ignore: cast_nullable_to_non_nullable
+              as double,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -89,8 +105,10 @@ abstract class _$$_ArticuloTopDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      @JsonKey(name: 'DESCRIPCION_ES') String descripcion,
+      @JsonKey(name: 'VENTAS_TOTAL') double ventasTotal,
+      @JsonKey(name: 'VENTAS_CLIENTE') double ventasCliente,
+      @JsonKey(name: 'DIVISA_ID') String divisaId});
 }
 
 /// @nodoc
@@ -105,21 +123,31 @@ class __$$_ArticuloTopDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articuloId = null,
-    Object? lastUpdated = null,
-    Object? deleted = null,
+    Object? descripcion = null,
+    Object? ventasTotal = null,
+    Object? ventasCliente = null,
+    Object? divisaId = null,
   }) {
     return _then(_$_ArticuloTopDTO(
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String,
+      ventasTotal: null == ventasTotal
+          ? _value.ventasTotal
+          : ventasTotal // ignore: cast_nullable_to_non_nullable
+              as double,
+      ventasCliente: null == ventasCliente
+          ? _value.ventasCliente
+          : ventasCliente // ignore: cast_nullable_to_non_nullable
+              as double,
+      divisaId: null == divisaId
+          ? _value.divisaId
+          : divisaId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -130,8 +158,10 @@ class __$$_ArticuloTopDTOCopyWithImpl<$Res>
 class _$_ArticuloTopDTO extends _ArticuloTopDTO {
   const _$_ArticuloTopDTO(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcion,
+      @JsonKey(name: 'VENTAS_TOTAL') required this.ventasTotal,
+      @JsonKey(name: 'VENTAS_CLIENTE') required this.ventasCliente,
+      @JsonKey(name: 'DIVISA_ID') required this.divisaId})
       : super._();
 
   factory _$_ArticuloTopDTO.fromJson(Map<String, dynamic> json) =>
@@ -141,15 +171,21 @@ class _$_ArticuloTopDTO extends _ArticuloTopDTO {
   @JsonKey(name: 'ARTICULO_ID')
   final String articuloId;
   @override
-  @JsonKey(name: 'LAST_UPDATED')
-  final DateTime lastUpdated;
+  @JsonKey(name: 'DESCRIPCION_ES')
+  final String descripcion;
   @override
-  @JsonKey(name: 'DELETED')
-  final String deleted;
+  @JsonKey(name: 'VENTAS_TOTAL')
+  final double ventasTotal;
+  @override
+  @JsonKey(name: 'VENTAS_CLIENTE')
+  final double ventasCliente;
+  @override
+  @JsonKey(name: 'DIVISA_ID')
+  final String divisaId;
 
   @override
   String toString() {
-    return 'ArticuloTopDTO(articuloId: $articuloId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloTopDTO(articuloId: $articuloId, descripcion: $descripcion, ventasTotal: $ventasTotal, ventasCliente: $ventasCliente, divisaId: $divisaId)';
   }
 
   @override
@@ -159,15 +195,20 @@ class _$_ArticuloTopDTO extends _ArticuloTopDTO {
             other is _$_ArticuloTopDTO &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
+            (identical(other.ventasTotal, ventasTotal) ||
+                other.ventasTotal == ventasTotal) &&
+            (identical(other.ventasCliente, ventasCliente) ||
+                other.ventasCliente == ventasCliente) &&
+            (identical(other.divisaId, divisaId) ||
+                other.divisaId == divisaId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, articuloId, lastUpdated, deleted);
+  int get hashCode => Object.hash(runtimeType, articuloId, descripcion,
+      ventasTotal, ventasCliente, divisaId);
 
   @JsonKey(ignore: true)
   @override
@@ -185,9 +226,12 @@ class _$_ArticuloTopDTO extends _ArticuloTopDTO {
 
 abstract class _ArticuloTopDTO extends ArticuloTopDTO {
   const factory _ArticuloTopDTO(
-      {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ArticuloTopDTO;
+          {@JsonKey(name: 'ARTICULO_ID') required final String articuloId,
+          @JsonKey(name: 'DESCRIPCION_ES') required final String descripcion,
+          @JsonKey(name: 'VENTAS_TOTAL') required final double ventasTotal,
+          @JsonKey(name: 'VENTAS_CLIENTE') required final double ventasCliente,
+          @JsonKey(name: 'DIVISA_ID') required final String divisaId}) =
+      _$_ArticuloTopDTO;
   const _ArticuloTopDTO._() : super._();
 
   factory _ArticuloTopDTO.fromJson(Map<String, dynamic> json) =
@@ -197,11 +241,17 @@ abstract class _ArticuloTopDTO extends ArticuloTopDTO {
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId;
   @override
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated;
+  @JsonKey(name: 'DESCRIPCION_ES')
+  String get descripcion;
   @override
-  @JsonKey(name: 'DELETED')
-  String get deleted;
+  @JsonKey(name: 'VENTAS_TOTAL')
+  double get ventasTotal;
+  @override
+  @JsonKey(name: 'VENTAS_CLIENTE')
+  double get ventasCliente;
+  @override
+  @JsonKey(name: 'DIVISA_ID')
+  String get divisaId;
   @override
   @JsonKey(ignore: true)
   _$$_ArticuloTopDTOCopyWith<_$_ArticuloTopDTO> get copyWith =>

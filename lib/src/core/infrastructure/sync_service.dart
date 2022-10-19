@@ -24,7 +24,6 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
-import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -36,6 +35,7 @@ import '../../features/cliente/infrastructure/cliente_rappel_dto.dart';
 import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
+import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
@@ -76,6 +76,15 @@ class SyncService {
     '/api/v1/sync/db-datetime',
   );
 
+  static final remoteInitialDatabaseDateTimeEndpoint = Uri.http(
+    dotenv.get('URL', fallback: 'localhost:3001'),
+    '/api/v1/sync/init-db-date',
+  );
+  static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
+    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    '/api/v1/sync/init-db-date',
+  );
+
   static final remoteInitDatabaseEndpoint = Uri.http(
     dotenv.get('URL', fallback: 'localhost:3001'),
     '/api/v1/sync/init-db',
@@ -96,6 +105,8 @@ class SyncService {
         final data = await _getRemoteInitialDatabase();
 
         await _saveLocalInitialDatabase(directory: directory, data: data);
+
+        await _saveLastSyncDatesInPreferences();
       }
     } on AppException catch (e) {
       log.severe(e.details);
@@ -529,8 +540,8 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: '/clientes/articulos-top',
-        tableInfo: _db.articuloTopTable,
-        fromJson: (e) => ArticuloTopDTO.fromJson(e),
+        tableInfo: _db.estadisticasArticulosTopTable,
+        fromJson: (e) => EstadisitcasArticulosTopDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.severe(e.details);
@@ -1067,10 +1078,48 @@ class SyncService {
   Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
+
       await sharedPreferences.setString(
           entityKey, DateTime.now().toUtc().toIso8601String());
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<void> _saveLastSyncDatesInPreferences() async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
+
+      final initialDatabaseDate = await _getRemoteInitialDatabaseDate();
+      await sharedPreferences.setString(
+          articuloFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
+      await sharedPreferences.setString(
+          clienteFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
+      await sharedPreferences.setString(
+          pedidoVentaFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
+      await sharedPreferences.setString(
+          visitaFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<DateTime> _getRemoteInitialDatabaseDate() async {
+    try {
+      final response = await _dio.getUri(
+        (_usuario!.test)
+            ? remoteInitialDatabaseDateTimeTestEndpoint
+            : remoteInitialDatabaseDateTimeEndpoint,
+      );
+
+      if (response.statusCode == 200) {
+        return DateTime.parse(response.data['data']);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 500, response.toString());
+      }
+    } catch (e) {
+      throw getApiError(e);
     }
   }
 }

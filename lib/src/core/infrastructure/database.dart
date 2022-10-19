@@ -18,7 +18,6 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
-import '../../features/cliente/infrastructure/articulo_top_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -32,6 +31,7 @@ import '../../features/cliente/infrastructure/cliente_tipo_potencial_dto.dart';
 import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
+import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
@@ -64,7 +64,7 @@ const localDatabaseName = 'jbm.sqlite';
   ClienteRappelTable,
   ClienteEstadoPotencialTable,
   ClienteTipoPotencialTable,
-  ArticuloTopTable,
+  EstadisticasArticulosTopTable,
   ArticuloTable,
   ArticuloComponenteTable,
   ArticuloEmpresaIvaTable,

@@ -1,8 +1,6 @@
-import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 
-import '../../../core/infrastructure/database.dart';
-import '../../articulos/domain/articulo.dart';
 import '../domain/articulo_top.dart';
 
 part 'articulo_top_dto.freezed.dart';
@@ -11,47 +9,25 @@ part 'articulo_top_dto.g.dart';
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ArticuloTopDTO
-    with _$ArticuloTopDTO
-    implements Insertable<ArticuloTopDTO> {
+class ArticuloTopDTO with _$ArticuloTopDTO {
   const ArticuloTopDTO._();
   const factory ArticuloTopDTO({
     @JsonKey(name: 'ARTICULO_ID') required String articuloId,
-    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'DELETED') @Default('N') String deleted,
+    @JsonKey(name: 'DESCRIPCION_ES') required String descripcion,
+    @JsonKey(name: 'VENTAS_TOTAL') required double ventasTotal,
+    @JsonKey(name: 'VENTAS_CLIENTE') required double ventasCliente,
+    @JsonKey(name: 'DIVISA_ID') required String divisaId,
   }) = _ArticuloTopDTO;
 
   factory ArticuloTopDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloTopDTOFromJson(json);
 
-  ArticuloTop toDomain({required Articulo articulo}) {
+  ArticuloTop toDomain() {
     return ArticuloTop(
-      articulo: articulo,
-      lastUpdated: lastUpdated,
-      deleted: (deleted == 'S') ? true : false,
+      articuloId: articuloId,
+      descripcion: descripcion,
+      ventasTotal: ventasTotal.parseMoney(currencyId: divisaId),
+      ventasCliente: ventasCliente.parseMoney(currencyId: divisaId),
     );
   }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    return ArticuloTopTableCompanion(
-      articuloId: Value(articuloId),
-      lastUpdated: Value(lastUpdated),
-      deleted: Value(deleted),
-    ).toColumns(nullToAbsent);
-  }
-}
-
-@UseRowClass(ArticuloTopDTO)
-class ArticuloTopTable extends Table {
-  @override
-  String get tableName => 'ESTADISTICAS_ARTICULOS_TOP';
-
-  @override
-  Set<Column> get primaryKey => {articuloId};
-
-  TextColumn get articuloId => text().named('ARTICULO_ID')();
-  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
-  TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('DELETED')();
 }
