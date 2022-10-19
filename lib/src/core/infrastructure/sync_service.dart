@@ -539,7 +539,7 @@ class SyncService {
   Future<void> syncTopArticulos() async {
     try {
       await _syncTable(
-        apiPath: '/clientes/articulos-top',
+        apiPath: 'clientes/articulos-top',
         tableInfo: _db.estadisticasArticulosTopTable,
         fromJson: (e) => EstadisitcasArticulosTopDTO.fromJson(e),
       );
