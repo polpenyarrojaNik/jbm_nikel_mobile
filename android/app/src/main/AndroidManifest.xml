@@ -6,7 +6,7 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 
-  <application android:label="JBM Nikel Mobile" android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
+  <application android:label="Nikel Mobile" android:name="${applicationName}" android:icon="@mipmap/ic_launcher">
 
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyC6DV_VKkLDYTwg0MXnBuOB_P6fglAx5uE"/>
 

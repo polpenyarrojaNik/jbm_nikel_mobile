@@ -141,7 +141,7 @@ class _SelecionarCantidadPageState
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'Importe línea',
                         ),
                         Text(
