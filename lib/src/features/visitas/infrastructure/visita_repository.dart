@@ -150,10 +150,15 @@ class VisitaRepository {
     try {
       final json = jsonEncode(visitaLocalDto.toJson());
       print(json);
-      final requestUri = Uri.http(
-        dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-        'api/v1/online/visitas',
-      );
+      final requestUri = (test)
+          ? Uri.http(
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'api/v1/online/visitas',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/visitas',
+            );
 
       final response = await _dio.postUri(
         requestUri,

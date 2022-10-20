@@ -366,11 +366,17 @@ class ArticuloRepository {
     try {
       final query = {'ARTICULO_ID': articuloId};
       final articuloImageDTOList = await _remoteGetArticuloImagen(
-        requestUri: Uri.http(
-          dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-          'api/v1/online/articulo/imagenes',
-          query,
-        ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/imagenes',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/imagenes',
+                query,
+              ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: provisionalToken,
       );
@@ -388,11 +394,17 @@ class ArticuloRepository {
     try {
       final query = {'ARTICULO_ID': articuloId};
       final articuloDocumentoDTOList = await _remoteGetArticuloDocumentos(
-        requestUri: Uri.http(
-          dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-          'api/v1/online/articulo/documentos',
-          query,
-        ),
+        requestUri: (test)
+            ? Uri.http(
+                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/documentos',
+                query,
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/articulo/documentos',
+                query,
+              ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,
         provisionalToken: provisionalToken,
       );
@@ -411,12 +423,17 @@ class ArticuloRepository {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final dataImage = await _remoteGetAttachment(
-            requestUri: Uri.http(
-              dotenv.get((test) ? 'URLTEST' : 'URL',
-                  fallback: 'localhost:3001'),
-              'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
-              query,
-            ),
+            requestUri: (test)
+                ? Uri.http(
+                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
+                    query,
+                  )
+                : Uri.https(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/img',
+                    query,
+                  ),
             provisionalToken: provisionalToken);
 
         return Uint8List.fromList((dataImage));
@@ -436,12 +453,17 @@ class ArticuloRepository {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: Uri.http(
-              dotenv.get((test) ? 'URLTEST' : 'URL',
-                  fallback: 'localhost:3001'),
-              'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
-              query,
-            ),
+            requestUri: (test)
+                ? Uri.http(
+                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
+                    query,
+                  )
+                : Uri.https(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/articulo/${adjuntoParam.id}/doc',
+                    query,
+                  ),
             provisionalToken: provisionalToken);
 
         try {
@@ -474,12 +496,17 @@ class ArticuloRepository {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: Uri.http(
-              dotenv.get((test) ? 'URLTEST' : 'URL',
-                  fallback: 'localhost:3001'),
-              'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-              query,
-            ),
+            requestUri: (test)
+                ? Uri.http(
+                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                    query,
+                  )
+                : Uri.https(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                    query,
+                  ),
             provisionalToken: provisionalToken);
 
         try {

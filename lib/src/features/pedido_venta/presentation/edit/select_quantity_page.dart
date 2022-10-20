@@ -55,6 +55,8 @@ class _SelecionarCantidadPageState
     quanitityController.text = totalQuantity.toString();
     descuento1Controller.text = numberFormatCantidades(descuento1);
     descuento2Controller.text = numberFormatCantidades(descuento2);
+    quanitityController.selection = TextSelection(
+        baseOffset: 0, extentOffset: quanitityController.text.length);
   }
 
   @override

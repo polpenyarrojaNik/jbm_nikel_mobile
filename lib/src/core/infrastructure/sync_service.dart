@@ -942,11 +942,15 @@ class SyncService {
           .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
       final json = jsonEncode(pedidoVentaLocalToJson);
       print(json);
-      final requestUri = Uri.http(
-        dotenv.get((_usuario!.test) ? 'URLTEST' : 'URL',
-            fallback: 'localhost:3001'),
-        'api/v1/online/pedidos',
-      );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'api/v1/online/pedidos',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/pedidos',
+            );
 
       final response = await _dio.postUri(
         requestUri,
@@ -971,11 +975,15 @@ class SyncService {
   Future<VisitaLocalDTO> _remoteCreateVisita(
       VisitaLocalDTO visitaLocalDto, String provisionalToken) async {
     try {
-      final requestUri = Uri.http(
-        dotenv.get((_usuario!.test) ? 'URLTEST' : 'URL',
-            fallback: 'localhost:3001'),
-        'api/v1/online/visitas',
-      );
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'api/v1/online/visitas',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/visitas',
+            );
 
       final response = await _dio.postUri(
         requestUri,

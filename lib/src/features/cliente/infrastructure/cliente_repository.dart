@@ -479,11 +479,17 @@ class ClienteRepository {
     try {
       final query = {'CLIENTE_ID': clienteId};
       final clienteAdjuntoDTOList = await _remoteGetClienteAdjunto(
-          requestUri: Uri.http(
-            dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-            'api/v1/online/cliente/adjuntos',
-            query,
-          ),
+          requestUri: (test)
+              ? Uri.http(
+                  dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                  'api/v1/online/cliente/adjuntos',
+                  query,
+                )
+              : Uri.https(
+                  dotenv.get('URL', fallback: 'localhost:3001'),
+                  'api/v1/online/cliente/adjuntos',
+                  query,
+                ),
           jsonDataSelector: (json) => json['data'] as List<dynamic>,
           provisionalToken: provisionalToken);
 
@@ -524,12 +530,17 @@ class ClienteRepository {
       if (adjuntoParam.nombreArchivo != '') {
         final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
         final data = await _remoteGetAttachment(
-            requestUri: Uri.http(
-              dotenv.get((test) ? 'URLTEST' : 'URL',
-                  fallback: 'localhost:3001'),
-              'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
-              query,
-            ),
+            requestUri: (test)
+                ? Uri.http(
+                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                    query,
+                  )
+                : Uri.https(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/cliente/${adjuntoParam.id}',
+                    query,
+                  ),
             provisionalToken: provisionalToken);
 
         try {

@@ -587,10 +587,15 @@ class PedidoVentaRepository {
           .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
       final json = jsonEncode(pedidoVentaLocalToJson);
       print(json);
-      final requestUri = Uri.http(
-        dotenv.get((test) ? 'URLTEST' : 'URL', fallback: 'localhost:3001'),
-        'api/v1/online/pedidos',
-      );
+      final requestUri = (test)
+          ? Uri.http(
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'api/v1/online/pedidos',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/pedidos',
+            );
 
       final response = await _dio.postUri(
         requestUri,
