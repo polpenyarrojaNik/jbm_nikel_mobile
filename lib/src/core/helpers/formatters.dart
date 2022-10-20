@@ -146,12 +146,12 @@ String dtoText(
   }
   if (descuento2 != 0) {
     dtoText += (dtoText.isNotEmpty)
-        ? ' + ${numberFormatCantidades(descuento2)}%'
+        ? ' - ${numberFormatCantidades(descuento2)}%'
         : '${numberFormatCantidades(descuento2)}%';
   }
   if (descuento3 != 0) {
     dtoText += (dtoText.isNotEmpty)
-        ? '+ ${numberFormatCantidades(descuento3)}%'
+        ? '- ${numberFormatCantidades(descuento3)}%'
         : '${numberFormatCantidades(descuento3)}%';
   }
   return dtoText;

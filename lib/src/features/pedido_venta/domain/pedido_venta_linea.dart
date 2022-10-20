@@ -30,4 +30,6 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     required DateTime lastUpdated,
     required bool deleted,
   }) = _PedidoVentaLinea;
+
+  bool isComponente() => pedidoLineaIdComponente != null;
 }

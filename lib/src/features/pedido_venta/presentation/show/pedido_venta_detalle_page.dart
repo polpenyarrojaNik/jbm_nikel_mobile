@@ -12,6 +12,7 @@ import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_venta.dart';
@@ -166,17 +167,17 @@ class PedidoVentaInfoContainer extends StatelessWidget {
                 S.of(context).pedido_show_pedidoVentaDetalle_remarks,
             value: pedidoVenta.observaciones,
           ),
-        ColumnFieldTextDetalle(
+        RowFieldTextDetalle(
           fieldTitleValue:
               S.of(context).pedido_show_pedidoVentaDetalle_baseImponible,
           value: pedidoVenta.baseImponible.toString(),
         ),
-        ColumnFieldTextDetalle(
+        RowFieldTextDetalle(
           fieldTitleValue:
               '${S.of(context).pedido_show_pedidoVentaDetalle_importeIva} (${pedidoVenta.iva}%)',
           value: pedidoVenta.importeIva.toString(),
         ),
-        ColumnFieldTextDetalle(
+        RowFieldTextDetalle(
           fieldTitleValue: S.of(context).pedido_show_pedidoVentaDetalle_total,
           value: pedidoVenta.total.toString(),
         ),

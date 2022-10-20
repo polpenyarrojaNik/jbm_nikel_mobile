@@ -20,11 +20,19 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Flexible(
+            SizedBox(
+              width: 50,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(pedidoVentaLinea.pedidoVentaLineaAppId!),
+                ],
+              ),
+            ),
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -50,30 +58,18 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${S.of(context).pedido_edit_lineaNuevoTile_precio} ${formatPrecios(
-                              precio: pedidoVentaLinea.precioDivisa,
-                              tipoPrecio: pedidoVentaLinea.tipoPrecio,
-                            )}',
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                          if (pedidoVentaLinea.descuento1 != 0 ||
-                              pedidoVentaLinea.descuento2 != 0 ||
-                              pedidoVentaLinea.descuento3 != 0)
-                            Text(
-                              '${S.of(context).pedido_edit_lineaNuevoTile_dto} ${dtoText(
-                                pedidoVentaLinea.descuento1,
-                                pedidoVentaLinea.descuento2,
-                                pedidoVentaLinea.descuento3,
-                              )}',
-                              style: Theme.of(context).textTheme.caption,
-                            ),
-                        ],
+                      Text(
+                        '${S.of(context).pedido_edit_lineaNuevoTile_precio} ${formatPrecioYDescuento(
+                          precio: pedidoVentaLinea.precioDivisa,
+                          tipoPrecio: pedidoVentaLinea.tipoPrecio,
+                          descuento1: pedidoVentaLinea.descuento1,
+                          descuento2: pedidoVentaLinea.descuento2,
+                          descuento3: pedidoVentaLinea.descuento3,
+                        )}',
+                        style: Theme.of(context).textTheme.caption,
                       ),
-                      if (pedidoVentaLinea.importeLinea != null)
+                      if (pedidoVentaLinea.importeLinea != null &&
+                          !pedidoVentaLinea.isComponente())
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [

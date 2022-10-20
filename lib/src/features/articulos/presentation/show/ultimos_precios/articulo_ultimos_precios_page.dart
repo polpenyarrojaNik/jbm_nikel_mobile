@@ -174,31 +174,15 @@ class UltimosPreciosTile extends StatelessWidget {
                       ),
                       gapH8,
                       Text(
-                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecios(
+                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecioYDescuento(
                           precio: ultimosPrecios.precioDivisa,
                           tipoPrecio: ultimosPrecios.tipoPrecio,
+                          descuento1: ultimosPrecios.descuento1,
+                          descuento2: ultimosPrecios.descuento2,
+                          descuento3: ultimosPrecios.descuento3,
                         )}',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
+                        style: Theme.of(context).textTheme.caption,
                       ),
-                      if (ultimosPrecios.descuento1 != 0 &&
-                          ultimosPrecios.descuento2 != 0 &&
-                          ultimosPrecios.descuento3 != 0)
-                        Text(
-                          '${S.of(context).pedido_show_pedidoVentaDetalle_dto}: ${dtoText(
-                            ultimosPrecios.descuento1,
-                            ultimosPrecios.descuento2,
-                            ultimosPrecios.descuento3,
-                          )}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .caption
-                                      ?.color),
-                        ),
                     ],
                   ),
                 ),

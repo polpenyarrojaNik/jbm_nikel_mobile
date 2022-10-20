@@ -32,7 +32,6 @@ class PedidoVentaListaTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  padding: const EdgeInsets.only(left: 8),
                   width: 8,
                   color: pedidoVentaEstadoColor(
                     pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,

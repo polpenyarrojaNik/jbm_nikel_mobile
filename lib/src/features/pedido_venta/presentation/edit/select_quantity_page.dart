@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -37,7 +36,7 @@ class _SelecionarCantidadPageState
   final formKeyCantidad = GlobalKey<FormBuilderState>();
   final quanitityController = TextEditingController();
   final descuento1Controller = TextEditingController();
-  final descuento2Controller = TextEditingController();
+  // final descuento2Controller = TextEditingController();
   int totalQuantity = 1;
   double descuento1 = 0;
   double descuento2 = 0;
@@ -54,7 +53,7 @@ class _SelecionarCantidadPageState
     }
     quanitityController.text = totalQuantity.toString();
     descuento1Controller.text = numberFormatCantidades(descuento1);
-    descuento2Controller.text = numberFormatCantidades(descuento2);
+    // descuento2Controller.text = numberFormatCantidades(descuento2);
     quanitityController.selection = TextSelection(
         baseOffset: 0, extentOffset: quanitityController.text.length);
   }
@@ -134,7 +133,7 @@ class _SelecionarCantidadPageState
                       ? _ArticuloPrecioContainer(
                           precio: articuloPrecio!.precio,
                           descuento1Controller: descuento1Controller,
-                          descuento2Controller: descuento2Controller,
+                          // descuento2Controller: descuento2Controller,
                           descuento2: descuento2,
                           descuento3: articuloPrecio!.descuento3,
                           setDescuento1: (value) =>
@@ -428,7 +427,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
   const _ArticuloPrecioContainer({
     required this.precio,
     required this.descuento1Controller,
-    required this.descuento2Controller,
+    // required this.descuento2Controller,
     required this.descuento2,
     required this.descuento3,
     required this.setDescuento1,
@@ -441,7 +440,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
   final void Function(double value) setDescuento1;
   final void Function(double value) setDescuento2;
   final TextEditingController descuento1Controller;
-  final TextEditingController descuento2Controller;
+  // final TextEditingController descuento2Controller;
 
   @override
   Widget build(BuildContext context) {
@@ -486,41 +485,41 @@ class _ArticuloPrecioContainer extends StatelessWidget {
               extentOffset: descuento1Controller.text.length,
             ),
           ),
-          FormBuilderTextField(
-            name: 'dto2',
-            keyboardType: TextInputType.number,
-            controller: descuento2Controller,
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
-            ),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                final dto2Value = double.tryParse(value.replaceAll(',', '.'));
-                print(dto2Value);
-                if (dto2Value != null) {
-                  setDescuento2(dto2Value);
-                }
-              } else {
-                setDescuento2(0);
-              }
-            },
-            validator: FormBuilderValidators.compose([
-              FormBuilderValidators.required(),
-            ]),
-            onTap: () => descuento1Controller.selection = TextSelection(
-              baseOffset: 0,
-              extentOffset: descuento1Controller.text.length,
-            ),
-          ),
-          FormBuilderTextField(
-            name: 'dto3',
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            initialValue: descuento3.toString(),
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
-            ),
-          ),
+          // FormBuilderTextField(
+          //   name: 'dto2',
+          //   keyboardType: TextInputType.number,
+          //   controller: descuento2Controller,
+          //   decoration: InputDecoration(
+          //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
+          //   ),
+          //   onChanged: (value) {
+          //     if (value != null && value.isNotEmpty) {
+          //       final dto2Value = double.tryParse(value.replaceAll(',', '.'));
+          //       print(dto2Value);
+          //       if (dto2Value != null) {
+          //         setDescuento2(dto2Value);
+          //       }
+          //     } else {
+          //       setDescuento2(0);
+          //     }
+          //   },
+          //   validator: FormBuilderValidators.compose([
+          //     FormBuilderValidators.required(),
+          //   ]),
+          //   onTap: () => descuento1Controller.selection = TextSelection(
+          //     baseOffset: 0,
+          //     extentOffset: descuento1Controller.text.length,
+          //   ),
+          // ),
+          // FormBuilderTextField(
+          //   name: 'dto3',
+          //   readOnly: true,
+          //   keyboardType: TextInputType.number,
+          //   initialValue: descuento3.toString(),
+          //   decoration: InputDecoration(
+          //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
+          //   ),
+          // ),
         ],
       ),
     );
