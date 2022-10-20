@@ -215,7 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_nombreFiscal":
             MessageLookupByLibrary.simpleMessage("Nombre fiscal"),
         "cliente_show_clienteDetalle_pais":
-            MessageLookupByLibrary.simpleMessage("Pais"),
+            MessageLookupByLibrary.simpleMessage("País"),
         "cliente_show_clienteDetalle_pdteCobroNoVencido":
             MessageLookupByLibrary.simpleMessage("Pdte. Cobro No Vencido"),
         "cliente_show_clienteDetalle_pdteCobroVencido":
@@ -242,8 +242,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Riesgo concedido"),
         "cliente_show_clienteDetalle_riesgos":
             MessageLookupByLibrary.simpleMessage("Riesgos"),
-        "cliente_show_clienteDetalle_ritmoVisitas":
-            MessageLookupByLibrary.simpleMessage("¿Ritmo visitas(sem)?"),
         "cliente_show_clienteDetalle_tarifa":
             MessageLookupByLibrary.simpleMessage("Tarifa"),
         "cliente_show_clienteDetalle_titulo":
@@ -378,7 +376,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_edit_selectQuantity_stockDisponible":
             MessageLookupByLibrary.simpleMessage("Stock disponible:"),
         "pedido_edit_selectQuantity_tieneQueSerMultiploDe":
-            MessageLookupByLibrary.simpleMessage("Tiene que ser multiplo de"),
+            MessageLookupByLibrary.simpleMessage("Tiene que ser múltiplo de"),
         "pedido_enviado": MessageLookupByLibrary.simpleMessage("Enviado"),
         "pedido_index_buscarPedidos":
             MessageLookupByLibrary.simpleMessage("Buscar pedidos..."),

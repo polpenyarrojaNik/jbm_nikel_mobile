@@ -1184,16 +1184,6 @@ class S {
     );
   }
 
-  /// `¿Ritmo visitas(sem)?`
-  String get cliente_show_clienteDetalle_ritmoVisitas {
-    return Intl.message(
-      '¿Ritmo visitas(sem)?',
-      name: 'cliente_show_clienteDetalle_ritmoVisitas',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Billing`
   String get cliente_show_clienteDetalle_facturacion {
     return Intl.message(

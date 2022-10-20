@@ -112,7 +112,6 @@
   "cliente_show_clienteDetalle_metodoCalculoPrecio": "Price calculation type",
   "cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion": "Best price",
   "cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion": "Net prices",
-  "cliente_show_clienteDetalle_ritmoVisitas": "¿Ritmo visitas(sem)?",
   "cliente_show_clienteDetalle_facturacion": "Billing",
   "cliente_show_clienteDetalle_plazoDeCobro": "Collection term ",
   "cliente_show_clienteDetalle_metodoDeCobro": "Collection method",
