@@ -136,7 +136,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   }
 }
 
-class PedidoVentaEditForm extends ConsumerStatefulWidget {
+class PedidoVentaEditForm extends ConsumerWidget {
   const PedidoVentaEditForm({
     super.key,
     required this.isNew,
@@ -159,18 +159,11 @@ class PedidoVentaEditForm extends ConsumerStatefulWidget {
   final String? pedidoCliente;
 
   @override
-  ConsumerState<PedidoVentaEditForm> createState() =>
-      _PedidoVentaEditFormState();
-}
-
-class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<Cliente?>(clienteForFromStateProvider, (_, state) {
       if (state != null) {
         ref
-            .read(pedidoVentaEditPageControllerProvider(
-                    widget.pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
                 .notifier)
             .selectCliente(cliente: state);
       }
@@ -179,11 +172,11 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
     return WillPopScope(
       onWillPop: () async => _askIfUserPop(context),
       child: IconStepper(
-        currentStep: widget.currentStep,
+        currentStep: currentStep,
         steps: getSteps(),
         type: IconStepperType.horizontal,
-        onStepContinue: () => continued(context, widget.currentStep, ref),
-        onStepCancel: (widget.currentStep <= 0) ? null : () => cancel(ref),
+        onStepContinue: () => continued(context, currentStep, ref),
+        onStepCancel: (currentStep <= 0) ? null : () => cancel(ref),
         onStepTapped: (value) => tapped(value, ref),
       ),
     );
@@ -213,29 +206,26 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
         break;
       case 3:
         ref
-            .read(pedidoVentaEditPageControllerProvider(
-                    widget.pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
                 .notifier)
             .navigateToNextStep();
         break;
       case 4:
         ref
-            .read(pedidoVentaEditPageControllerProvider(
-                    widget.pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
                 .notifier)
             .upsertPedidoVenta(
-              pedidoVentaAppId: widget.pedidoVentaIdLocalParam.id,
-              cliente: widget.cliente!,
-              clienteDireccion: widget.clienteDireccion!,
-              pedidoVentaLineaList: widget.pedidoVentaLineaList,
-              observaciones: widget.observaciones,
-              pedidoCliente: widget.pedidoCliente,
+              pedidoVentaAppId: pedidoVentaIdLocalParam.id,
+              cliente: cliente!,
+              clienteDireccion: clienteDireccion!,
+              pedidoVentaLineaList: pedidoVentaLineaList,
+              observaciones: observaciones,
+              pedidoCliente: pedidoCliente,
             );
         break;
       default:
         ref
-            .read(pedidoVentaEditPageControllerProvider(
-                    widget.pedidoVentaIdLocalParam)
+            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
                 .notifier)
             .navigateToNextStep();
     }
@@ -243,25 +233,22 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
 
   void cancel(WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(
-                widget.pedidoVentaIdLocalParam)
+        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
             .notifier)
         .navigateToPreviousStep();
   }
 
   void tapped(int value, WidgetRef ref) {
     ref
-        .read(pedidoVentaEditPageControllerProvider(
-                widget.pedidoVentaIdLocalParam)
+        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
             .notifier)
         .navigateToNextStep();
   }
 
   void selectClienteValidate(BuildContext context, WidgetRef ref) {
-    if (widget.cliente != null) {
+    if (cliente != null) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(
-                  widget.pedidoVentaIdLocalParam)
+          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
               .notifier)
           .navigateToNextStep();
     } else {
@@ -273,10 +260,9 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
   }
 
   void selectClienteDireccionValidate(BuildContext context, WidgetRef ref) {
-    if (widget.clienteDireccion != null) {
+    if (clienteDireccion != null) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(
-                  widget.pedidoVentaIdLocalParam)
+          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
               .notifier)
           .navigateToNextStep();
     } else {
@@ -288,10 +274,9 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
   }
 
   void selectLineasValidate(BuildContext context, WidgetRef ref) {
-    if (widget.pedidoVentaLineaList.isNotEmpty) {
+    if (pedidoVentaLineaList.isNotEmpty) {
       ref
-          .read(pedidoVentaEditPageControllerProvider(
-                  widget.pedidoVentaIdLocalParam)
+          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
               .notifier)
           .navigateToNextStep();
     } else {
@@ -304,27 +289,27 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
       IconStep(
         icon: Icons.account_circle,
         content: StepSelectClienteContent(
-          cliente: widget.cliente,
-          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
-          isNew: widget.isNew,
+          cliente: cliente,
+          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
+          isNew: isNew,
         ),
-        state: (widget.currentStep >= 0)
-            ? (widget.currentStep == 0
+        state: (currentStep >= 0)
+            ? (currentStep == 0
                 ? IconStepState.editing
                 : IconStepState.complete)
             : IconStepState.disabled,
-        isActive: widget.currentStep >= 0,
+        isActive: currentStep >= 0,
       ),
       IconStep(
         icon: Icons.location_on,
         content: StepSelectClienteDireccionContent(
-          cliente: widget.cliente,
-          clienteDireccion: widget.clienteDireccion,
-          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
-          isNew: widget.isNew,
+          cliente: cliente,
+          clienteDireccion: clienteDireccion,
+          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
+          isNew: isNew,
         ),
-        state: (widget.currentStep >= 1)
-            ? (widget.currentStep == 1)
+        state: (currentStep >= 1)
+            ? (currentStep == 1)
                 ? IconStepState.editing
                 : IconStepState.complete
             : IconStepState.disabled,
@@ -333,47 +318,47 @@ class _PedidoVentaEditFormState extends ConsumerState<PedidoVentaEditForm> {
       IconStep(
         icon: Icons.list_alt,
         content: StepArticuloListContent(
-          pedidoVentaIdIsLocalParam: widget.pedidoVentaIdLocalParam,
-          cliente: widget.cliente,
-          state: (widget.currentStep >= 2)
-              ? (widget.currentStep == 2)
-                  ? IconStepState.editing
-                  : IconStepState.complete
-              : IconStepState.disabled,
-          isActive: true,
-          pedidoVentaLineaList: widget.pedidoVentaLineaList,
+          pedidoVentaIdIsLocalParam: pedidoVentaIdLocalParam,
+          cliente: cliente,
+          pedidoVentaLineaList: pedidoVentaLineaList,
         ),
+        state: (currentStep >= 2)
+            ? (currentStep == 2)
+                ? IconStepState.editing
+                : IconStepState.complete
+            : IconStepState.disabled,
+        isActive: true,
       ),
       IconStep(
         icon: Icons.more_horiz,
         content: StepObservacionesContent(
-          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
-          state: (widget.currentStep >= 3)
-              ? (widget.currentStep == 3)
-                  ? IconStepState.editing
-                  : IconStepState.complete
-              : IconStepState.disabled,
-          isActive: true,
-          observaciones: widget.observaciones,
-          pedidoCliente: widget.pedidoCliente,
+          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
+          observaciones: observaciones,
+          pedidoCliente: pedidoCliente,
         ),
+        state: (currentStep >= 3)
+            ? (currentStep == 3)
+                ? IconStepState.editing
+                : IconStepState.complete
+            : IconStepState.disabled,
+        isActive: true,
       ),
       IconStep(
         icon: Icons.summarize,
         content: StepResumenContent(
-          pedidoVentaIdLocalParam: widget.pedidoVentaIdLocalParam,
-          state: widget.currentStep >= 4
-              ? (widget.currentStep == 4)
-                  ? IconStepState.editing
-                  : IconStepState.complete
-              : IconStepState.disabled,
-          isActive: true,
-          cliente: widget.cliente,
-          clienteDireccion: widget.clienteDireccion,
-          pedidoVentaLineaList: widget.pedidoVentaLineaList,
-          observaciones: widget.observaciones,
-          pedidoCliente: widget.pedidoCliente,
+          pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
+          cliente: cliente,
+          clienteDireccion: clienteDireccion,
+          pedidoVentaLineaList: pedidoVentaLineaList,
+          observaciones: observaciones,
+          pedidoCliente: pedidoCliente,
         ),
+        state: currentStep >= 4
+            ? (currentStep == 4)
+                ? IconStepState.editing
+                : IconStepState.complete
+            : IconStepState.disabled,
+        isActive: true,
       ),
     ];
   }
@@ -554,14 +539,10 @@ class StepArticuloListContent extends ConsumerWidget {
       {super.key,
       required this.pedidoVentaIdIsLocalParam,
       required this.cliente,
-      required this.state,
-      required this.isActive,
       required this.pedidoVentaLineaList});
 
   final EntityIdIsLocalParam pedidoVentaIdIsLocalParam;
   final Cliente? cliente;
-  final IconStepState state;
-  final bool isActive;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
 
   @override
@@ -705,19 +686,16 @@ class StepArticuloListContent extends ConsumerWidget {
 }
 
 class StepObservacionesContent extends ConsumerWidget {
-  const StepObservacionesContent(
-      {super.key,
-      required this.pedidoVentaIdLocalParam,
-      required this.observaciones,
-      required this.pedidoCliente,
-      required this.state,
-      required this.isActive});
+  const StepObservacionesContent({
+    super.key,
+    required this.pedidoVentaIdLocalParam,
+    required this.observaciones,
+    required this.pedidoCliente,
+  });
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final String? observaciones;
   final String? pedidoCliente;
-  final IconStepState state;
-  final bool isActive;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -767,8 +745,6 @@ class StepResumenContent extends ConsumerWidget {
   const StepResumenContent({
     super.key,
     required this.pedidoVentaIdLocalParam,
-    required this.state,
-    required this.isActive,
     required this.cliente,
     required this.clienteDireccion,
     required this.pedidoVentaLineaList,
@@ -777,8 +753,7 @@ class StepResumenContent extends ConsumerWidget {
   });
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
-  final IconStepState state;
-  final bool isActive;
+
   final Cliente? cliente;
   final ClienteDireccion? clienteDireccion;
   final List<PedidoVentaLinea> pedidoVentaLineaList;
