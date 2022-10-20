@@ -60,20 +60,10 @@ class S {
     );
   }
 
-  /// `units`
-  String get unidades {
-    return Intl.message(
-      'units',
-      name: 'unidades',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `unit`
+  /// `pc.`
   String get unidad {
     return Intl.message(
-      'unit',
+      'pc.',
       name: 'unidad',
       desc: '',
       args: [],

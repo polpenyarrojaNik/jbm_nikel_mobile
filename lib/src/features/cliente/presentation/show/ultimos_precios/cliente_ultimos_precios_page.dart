@@ -170,7 +170,7 @@ class UltimosPreciosTile extends StatelessWidget {
                             style: Theme.of(context).textTheme.subtitle2,
                           ),
                           Text(
-                            '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${(ultimosPrecios.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                            '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}',
                           ),
                         ],
                       ),

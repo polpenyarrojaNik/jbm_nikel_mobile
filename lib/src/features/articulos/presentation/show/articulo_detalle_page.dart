@@ -130,7 +130,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 child: ColumnFieldTextDetalle(
                     fieldTitleValue: S.of(context).stock,
                     value:
-                        '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidades}'),
+                        '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}'),
               ),
               Expanded(
                 flex: 2,
@@ -283,17 +283,17 @@ class _ArticuloInfoContainer extends StatelessWidget {
                       .of(context)
                       .articulo_show_articuloDetalle_cantidadSubcaja,
                   value:
-                      '${numberFormatCantidades(articulo.unidadesSubcaja)} ${(articulo.unidadesSubcaja != 1) ? S.of(context).unidades : S.of(context).unidad}'),
+                      '${numberFormatCantidades(articulo.unidadesSubcaja)} ${S.of(context).unidad}'),
               ColumnFieldTextDetalle(
                   fieldTitleValue:
                       S.of(context).articulo_show_articuloDetalle_cantidadCaja,
                   value:
-                      '${numberFormatCantidades(articulo.unidadesCaja)} ${(articulo.unidadesCaja != 1) ? S.of(context).unidades : S.of(context).unidad}'),
+                      '${numberFormatCantidades(articulo.unidadesCaja)} ${S.of(context).unidad}'),
               ColumnFieldTextDetalle(
                   fieldTitleValue:
                       S.of(context).articulo_show_articuloDetalle_cantidadPalet,
                   value:
-                      '${numberFormatCantidades(articulo.unidadesPalet)} ${(articulo.unidadesPalet != 1) ? S.of(context).unidades : S.of(context).unidad}'),
+                      '${numberFormatCantidades(articulo.unidadesPalet)} ${S.of(context).unidad}'),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

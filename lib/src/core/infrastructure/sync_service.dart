@@ -106,7 +106,12 @@ class SyncService {
 
         await _saveLocalInitialDatabase(directory: directory, data: data);
 
-        await _saveLastSyncDatesInPreferences();
+        await _saveDataInPreferences();
+      } else {
+        if (_db.schemaVersion != await getSchemaVersionFromPreferences()) {
+          await deleteDatabaBase();
+          await initDatabaBase();
+        }
       }
     } on AppException catch (e) {
       log.severe(e.details);
@@ -1098,7 +1103,7 @@ class SyncService {
     }
   }
 
-  Future<void> _saveLastSyncDatesInPreferences() async {
+  Future<void> _saveDataInPreferences() async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
 
@@ -1111,6 +1116,7 @@ class SyncService {
           pedidoVentaFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
       await sharedPreferences.setString(
           visitaFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
+      await sharedPreferences.setInt(dbSchemaVersionKey, _db.schemaVersion);
     } catch (e) {
       rethrow;
     }
@@ -1133,5 +1139,12 @@ class SyncService {
     } catch (e) {
       throw getApiError(e);
     }
+  }
+
+  Future<int?> getSchemaVersionFromPreferences() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    return sharedPreferences.getInt(dbSchemaVersionKey);
   }
 }

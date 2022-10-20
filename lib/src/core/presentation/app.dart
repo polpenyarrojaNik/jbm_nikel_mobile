@@ -20,6 +20,7 @@ const articuloFechaUltimaSyncKey = 'ARTICULO_ULTIMA_SYNC';
 const clienteFechaUltimaSyncKey = 'CLIENTE_ULTIMA_SYNC';
 const pedidoVentaFechaUltimaSyncKey = 'PEDIDO_ULTIMA_SYNC';
 const visitaFechaUltimaSyncKey = 'VISITA_ULTIMA_SYNC';
+const dbSchemaVersionKey = 'DB_SCHEMA_VERSION';
 
 class App extends ConsumerWidget {
   App({super.key});

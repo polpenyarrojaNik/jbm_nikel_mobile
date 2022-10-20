@@ -25,7 +25,7 @@ class ArticuloListaTile extends StatelessWidget {
                 style: Theme.of(context).textTheme.subtitle2,
               ),
               Text(
-                '${numberFormatCantidades(articulo.stockDisponible)} ${(articulo.stockDisponible == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}',
                 style: Theme.of(context).textTheme.subtitle2,
               ),
             ],

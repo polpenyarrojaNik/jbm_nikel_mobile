@@ -113,7 +113,7 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${((pedidoVentaLinea.cantidad) != 1) ? S.of(context).unidades : S.of(context).unidad}',
+                        '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                         style: Theme.of(context).textTheme.bodyText2?.copyWith(
                             color: Theme.of(context).textTheme.caption?.color),
                       ),

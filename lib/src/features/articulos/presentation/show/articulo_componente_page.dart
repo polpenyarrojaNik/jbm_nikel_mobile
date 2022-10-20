@@ -79,7 +79,7 @@ class ArticuloComponenteTile extends StatelessWidget {
               Text(articuloComponente.articuloComponenteId,
                   style: Theme.of(context).textTheme.subtitle2),
               Text(
-                  '${numberFormatCantidades(articuloComponente.cantidad)} ${((articuloComponente.cantidad) != 1) ? S.of(context).unidades : S.of(context).unidad}',
+                  '${numberFormatCantidades(articuloComponente.cantidad)} ${S.of(context).unidad}',
                   style: Theme.of(context).textTheme.bodyText2?.copyWith(
                       color: Theme.of(context).textTheme.caption?.color)),
             ],

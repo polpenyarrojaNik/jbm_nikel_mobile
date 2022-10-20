@@ -78,7 +78,7 @@ class ArticuloRecambioTile extends StatelessWidget {
               Text(articuloRecambio.id,
                   style: Theme.of(context).textTheme.subtitle2),
               Text(
-                '${numberFormatCantidades(articuloRecambio.cantidad)} ${((articuloRecambio.cantidad) != 1) ? S.of(context).unidades : S.of(context).unidad}',
+                '${numberFormatCantidades(articuloRecambio.cantidad)} ${S.of(context).unidad}',
                 style: Theme.of(context).textTheme.bodyText2?.copyWith(
                     color: Theme.of(context).textTheme.caption?.color),
               ),

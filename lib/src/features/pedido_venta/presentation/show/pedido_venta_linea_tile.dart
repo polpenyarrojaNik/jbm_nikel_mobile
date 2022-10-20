@@ -16,9 +16,6 @@ class PedidoVentaLineaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(4),
-      color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
-          ? Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.5)
-          : Colors.transparent,
       child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +47,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${(pedidoVentaLinea.cantidad == 1) ? S.of(context).unidad : S.of(context).unidades}',
+                                '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                                 style: Theme.of(context).textTheme.subtitle2,
                               ),
                             ],
