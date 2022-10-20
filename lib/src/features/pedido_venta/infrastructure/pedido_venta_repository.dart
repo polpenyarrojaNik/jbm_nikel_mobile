@@ -178,10 +178,13 @@ class PedidoVentaRepository {
       final pedidoVentaLocalDTO = row.readTable(_db.pedidoVentaLocalTable);
       final paisDTO = row.readTableOrNull(_db.paisTable);
       final divisaDTO = row.readTable(_db.divisaTable);
+      final pedidoVentaLineaList = await getLocalPedidoVentaLineaList(
+          pedidoVentaAppId: pedidoVentaLocalDTO.pedidoVentaAppId);
 
       return pedidoVentaLocalDTO.toDomain(
         pais: paisDTO?.toDomain(),
         divisa: divisaDTO.toDomain(),
+        baseImponible: getBaseImponible(pedidoVentaLineaList, divisaDTO.id),
       );
     }).get();
   }
@@ -223,9 +226,10 @@ class PedidoVentaRepository {
       final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
 
       return pedidoVentaDTO.toDomain(
-          pais: paisDTO?.toDomain(),
-          divisa: divisaDTO.toDomain(),
-          pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
+        pais: paisDTO?.toDomain(),
+        divisa: divisaDTO.toDomain(),
+        pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain(),
+      );
     }).getSingle();
   }
 
@@ -285,7 +289,13 @@ class PedidoVentaRepository {
         final pedidoVentaLineaDTO =
             row.readTable(_db.pedidoVentaLineaLocalTable);
         return pedidoVentaLineaDTO.toDomain(
-            divisaId: pedidoVentaLocalDTO.divisaId!);
+            divisaId: pedidoVentaLocalDTO.divisaId!,
+            importeLinea: getTotalLinea(
+                precio: Precio(
+                    precio: pedidoVentaLineaDTO.precioDivisa
+                        .toMoney(currencyId: pedidoVentaLocalDTO.divisaId!),
+                    tipoPrecio: pedidoVentaLineaDTO.tipoPrecio),
+                cantidad: pedidoVentaLineaDTO.cantidad));
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -633,10 +643,20 @@ class PedidoVentaRepository {
       final paisDTO = row.readTableOrNull(_db.paisTable);
       final divisaDTO = row.readTable(_db.divisaTable);
       final pedidoVentaDTO = row.readTable(_db.pedidoVentaLocalTable);
+      final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
+          pedidoVentaAppId: pedidoVentaAppId);
+
+      final importeBaseImponible =
+          getBaseImponible(pedidoVentaLineas, divisaDTO.id);
+      final importeIva =
+          getImporteIva(importeBaseImponible, pedidoVentaDTO.iva);
 
       return pedidoVentaDTO.toDomain(
         pais: paisDTO?.toDomain(),
         divisa: divisaDTO.toDomain(),
+        baseImponible: importeBaseImponible,
+        importeIva: importeIva,
+        total: importeBaseImponible + importeIva,
       );
     }).getSingle();
   }
@@ -1372,7 +1392,7 @@ class PedidoVentaRepository {
     return importeLinea - importeDescuento;
   }
 
-  Money getImporteTotal(
+  Money getBaseImponible(
       List<PedidoVentaLinea> pedidoVentaLineaList, String divisaId) {
     Money total = Money.parse('0', code: divisaId);
     for (var i = 0; i < pedidoVentaLineaList.length; i++) {
@@ -1393,5 +1413,9 @@ class PedidoVentaRepository {
     } catch (e) {
       rethrow;
     }
+  }
+
+  Money getImporteIva(Money importeBaseImponible, double iva) {
+    return (importeBaseImponible * iva) / 100;
   }
 }

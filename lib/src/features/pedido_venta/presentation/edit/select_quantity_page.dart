@@ -12,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/sel
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/articulo_precio.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../articulos/domain/articulo.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../domain/pedido_venta_linea.dart';
@@ -251,7 +252,9 @@ class _SelecionarCantidadPageState
       setState(
         () {
           articulo = newArticuloValue;
-          totalQuantity = newArticuloValue.ventaMinimo;
+          if (!widget.seleccionarCantidadParam.isUpdatingLinea()) {
+            totalQuantity = newArticuloValue.ventaMinimo;
+          }
         },
       );
 
@@ -291,45 +294,64 @@ class _SelecionarCantidadPageState
         articuloPrecio = newArticuloPrecio;
         if (descuento1 == 0) {
           descuento1 = newArticuloPrecio.descuento1;
+          descuento1Controller.text = numberFormatCantidades(descuento1);
         }
         if (descuento2 == 0) {
           descuento2 = newArticuloPrecio.descuento2;
+          // descuento2Controller.text = numberFormatCantidades(descuento2);
+
         }
       });
     }
   }
 }
 
-class _ArticuloInfo extends StatelessWidget {
+class _ArticuloInfo extends ConsumerWidget {
   const _ArticuloInfo({required this.articulo});
 
   final Articulo articulo;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(articuloSustitutivoListProvider(articulo.id));
     return Container(
       padding: const EdgeInsets.all(16),
       color: Theme.of(context).colorScheme.secondaryContainer,
-      child: Row(
+      child: Column(
         children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  articulo.id,
-                  style: Theme.of(context).textTheme.subtitle2,
+          Row(
+            children: [
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      articulo.id,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                    Text(
+                      getDescriptionArticuloInLocalLanguage(articulo: articulo),
+                    ),
+                    Text(
+                      'Stock disponible: ${articulo.stockDisponible}',
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                  ],
                 ),
-                Text(
-                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
-                ),
-                Text(
-                  'Stock disponible: ${articulo.stockDisponible}',
-                  style: Theme.of(context).textTheme.caption,
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
+          // state.when(
+          //   data: (articuloSustitutivoList) => ListView.builder(
+          //     shrinkWrap: true,
+          //     physics: const NeverScrollableScrollPhysics(),
+          //     itemBuilder: (context, i) =>
+          //         Text(articuloSustitutivoList[i].articuloSustitutivoId),
+          //     itemCount: articuloSustitutivoList.length,
+          //   ),
+          //   error: (error, _) => ErrorMessageWidget(error.toString()),
+          //   loading: () => const ProgressIndicatorWidget(),
+          // )
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:money2/money2.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
@@ -108,9 +108,9 @@ class PedidoVentaLocalDTO
   PedidoVenta toDomain({
     required Pais? pais,
     required Divisa divisa,
-    double? baseImponible,
-    double? importeIva,
-    double? total,
+    Money? baseImponible,
+    Money? importeIva,
+    Money? total,
   }) {
     return PedidoVenta(
       empresaId: empresaId,
@@ -133,9 +133,9 @@ class PedidoVentaLocalDTO
       observaciones: observaciones,
       iva: iva,
       dtoBonificacion: dtoBonificacion,
-      baseImponible: baseImponible?.toMoney(currencyId: divisaId),
-      importeIva: importeIva?.toMoney(currencyId: divisaId),
-      total: total?.toMoney(currencyId: divisaId),
+      baseImponible: baseImponible,
+      importeIva: importeIva,
+      total: total,
       pedidoVentaEstado: null,
       oferta: null,
       descuentoProntoPago: null,

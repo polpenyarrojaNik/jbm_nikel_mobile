@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:money2/money2.dart';
 
 import '../domain/pedido_venta_linea.dart';
 
@@ -52,7 +53,7 @@ class PedidoVentaLineaLocalDTO
     );
   }
 
-  PedidoVentaLinea toDomain({required String divisaId, double? importeLinea}) {
+  PedidoVentaLinea toDomain({required String divisaId, Money? importeLinea}) {
     return PedidoVentaLinea(
         empresaId: null,
         pedidoVentaId: null,
@@ -70,7 +71,7 @@ class PedidoVentaLineaLocalDTO
         descuento3: descuento3,
         descuentoProntoPago: descuentoProntoPago,
         pedidoLineaIdComponente: null,
-        importeLinea: importeLinea?.toMoney(currencyId: divisaId),
+        importeLinea: importeLinea,
         stockDisponibleSN: (stockDisponibleSN == 'S') ? true : false,
         fechaDisponible: fechaDisponible,
         iva: iva,

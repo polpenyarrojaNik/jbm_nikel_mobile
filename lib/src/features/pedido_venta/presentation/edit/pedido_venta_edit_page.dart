@@ -567,7 +567,7 @@ class StepArticuloListContent extends ConsumerWidget {
                   Text(
                     ref
                         .read(pedidoVentaRepositoryProvider)
-                        .getImporteTotal(
+                        .getBaseImponible(
                             pedidoVentaLineaList, cliente!.divisa!.id)
                         .toString(),
                     style: Theme.of(context).textTheme.subtitle2,
@@ -804,7 +804,7 @@ class StepResumenContent extends ConsumerWidget {
                 fieldTitleValue: S.of(context).pedido_edit_pedidoEdit_total,
                 value: ref
                     .read(pedidoVentaRepositoryProvider)
-                    .getImporteTotal(pedidoVentaLineaList, cliente!.divisa!.id)
+                    .getBaseImponible(pedidoVentaLineaList, cliente!.divisa!.id)
                     .toString(),
               ),
             ],

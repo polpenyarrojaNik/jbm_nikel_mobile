@@ -118,9 +118,9 @@ String formatPrecioYDescuento({
   String formatPrecioYDescuento =
       formatPrecios(precio: precio, tipoPrecio: tipoPrecio);
 
-  if (descuento1 != 0 && descuento2 != 0 && descuento3 != 0) {
+  if (descuento1 != 0 || descuento2 != 0 || descuento3 != 0) {
     formatPrecioYDescuento +=
-        '  ${dtoText(descuento1, descuento2, descuento3)}';
+        '  - ${dtoText(descuento1, descuento2, descuento3)}';
   }
 
   return formatPrecioYDescuento;
