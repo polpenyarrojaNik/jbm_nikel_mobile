@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -33,8 +34,10 @@ class SeleccionarCantidadPage extends ConsumerStatefulWidget {
 
 class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
-  final formKey = GlobalKey<FormBuilderState>();
-
+  final formKeyCantidad = GlobalKey<FormBuilderState>();
+  final quanitityController = TextEditingController();
+  final descuento1Controller = TextEditingController();
+  final descuento2Controller = TextEditingController();
   int totalQuantity = 1;
   double descuento1 = 0;
   double descuento2 = 0;
@@ -49,6 +52,9 @@ class _SelecionarCantidadPageState
     if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
       setValoresInicialesActualizarLinea();
     }
+    quanitityController.text = totalQuantity.toString();
+    descuento1Controller.text = numberFormatCantidades(descuento1);
+    descuento2Controller.text = numberFormatCantidades(descuento2);
   }
 
   @override
@@ -95,7 +101,8 @@ class _SelecionarCantidadPageState
                   ),
                 if (articulo != null)
                   _SelectQuantityFrom(
-                    formKey: formKey,
+                    formKey: formKeyCantidad,
+                    quanitityController: quanitityController,
                     setTotalQuantity: (value) {
                       setState(() => totalQuantity = value);
                       ref
@@ -124,7 +131,8 @@ class _SelecionarCantidadPageState
                   data: (_) => (articuloPrecio != null)
                       ? _ArticuloPrecioContainer(
                           precio: articuloPrecio!.precio,
-                          descuento1: descuento1,
+                          descuento1Controller: descuento1Controller,
+                          descuento2Controller: descuento2Controller,
                           descuento2: descuento2,
                           descuento3: articuloPrecio!.descuento3,
                           setDescuento1: (value) =>
@@ -181,7 +189,7 @@ class _SelecionarCantidadPageState
     Articulo articulo,
     Cliente cliente,
   ) {
-    if (formKey.currentState!.saveAndValidate()) {
+    if (formKeyCantidad.currentState!.saveAndValidate()) {
       final linea = PedidoVentaLinea(
         empresaId: null,
         pedidoVentaId: null,
@@ -331,12 +339,14 @@ class _SelectQuantityFrom extends StatelessWidget {
   const _SelectQuantityFrom(
       {required this.formKey,
       required this.setTotalQuantity,
+      required this.quanitityController,
       required this.cantidad,
       required this.ventaMinimo,
       required this.ventaMultiplo});
 
   final void Function(int value) setTotalQuantity;
   final GlobalKey<FormBuilderState> formKey;
+  final TextEditingController quanitityController;
   final int? cantidad;
   final int ventaMinimo;
   final int ventaMultiplo;
@@ -354,13 +364,24 @@ class _SelectQuantityFrom extends StatelessWidget {
               name: 'cantidad',
               autofocus: true,
               keyboardType: TextInputType.number,
-              initialValue: cantidad.toString(),
+              controller: quanitityController,
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
               ),
               validator: (value) => validateQuantity(value),
-              onChanged: (value) => setTotalQuantity(
-                (value != null && value != '') ? int.parse(value) : 0,
+              onChanged: (value) {
+                if (value != null && value.isNotEmpty) {
+                  final totalQuantity = int.tryParse(value);
+                  if (totalQuantity != null) {
+                    setTotalQuantity(totalQuantity);
+                  }
+                } else {
+                  setTotalQuantity(0);
+                }
+              },
+              onTap: () => quanitityController.selection = TextSelection(
+                baseOffset: 0,
+                extentOffset: quanitityController.text.length,
               ),
             ),
           ],
@@ -378,7 +399,7 @@ class _SelectQuantityFrom extends StatelessWidget {
           return 'Venta minimo = $ventaMinimo';
         } else if (quantity % ventaMultiplo != 0) {
           setTotalQuantity(setMultiploMasCercano(quantity, ventaMultiplo));
-          return 'Ha de ser múltiplo de $ventaMultiplo';
+          return 'Tiene que ser múltiplo de $ventaMultiplo';
         } else {
           return null;
         }
@@ -402,20 +423,23 @@ class _SelectQuantityFrom extends StatelessWidget {
 }
 
 class _ArticuloPrecioContainer extends StatelessWidget {
-  const _ArticuloPrecioContainer(
-      {required this.precio,
-      required this.descuento1,
-      required this.descuento2,
-      required this.descuento3,
-      required this.setDescuento1,
-      required this.setDescuento2});
+  const _ArticuloPrecioContainer({
+    required this.precio,
+    required this.descuento1Controller,
+    required this.descuento2Controller,
+    required this.descuento2,
+    required this.descuento3,
+    required this.setDescuento1,
+    required this.setDescuento2,
+  });
 
   final Precio precio;
-  final double descuento1;
   final double descuento2;
   final double descuento3;
   final void Function(double value) setDescuento1;
   final void Function(double value) setDescuento2;
+  final TextEditingController descuento1Controller;
+  final TextEditingController descuento2Controller;
 
   @override
   Widget build(BuildContext context) {
@@ -438,23 +462,54 @@ class _ArticuloPrecioContainer extends StatelessWidget {
                 )),
           ),
           FormBuilderTextField(
-              name: 'dto1',
-              keyboardType: TextInputType.number,
-              initialValue: descuento1.toString(),
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-              ),
-              onChanged: (value) => setDescuento1(
-                  (value != null && value != '') ? double.parse(value) : 0)),
+            name: 'dto1',
+            keyboardType: TextInputType.number,
+            controller: descuento1Controller,
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
+            ),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                final dto1Value = double.tryParse(value.replaceAll(',', '.'));
+                print(dto1Value);
+                if (dto1Value != null) {
+                  setDescuento1(dto1Value);
+                }
+              } else {
+                setDescuento1(0);
+              }
+            },
+            onTap: () => descuento1Controller.selection = TextSelection(
+              baseOffset: 0,
+              extentOffset: descuento1Controller.text.length,
+            ),
+          ),
           FormBuilderTextField(
-              name: 'dto2',
-              keyboardType: TextInputType.number,
-              initialValue: descuento2.toString(),
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
-              ),
-              onChanged: (value) => setDescuento2(
-                  (value != null && value != '') ? double.parse(value) : 0)),
+            name: 'dto2',
+            keyboardType: TextInputType.number,
+            controller: descuento2Controller,
+            decoration: InputDecoration(
+              labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
+            ),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                final dto2Value = double.tryParse(value.replaceAll(',', '.'));
+                print(dto2Value);
+                if (dto2Value != null) {
+                  setDescuento2(dto2Value);
+                }
+              } else {
+                setDescuento2(0);
+              }
+            },
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
+            onTap: () => descuento1Controller.selection = TextSelection(
+              baseOffset: 0,
+              extentOffset: descuento1Controller.text.length,
+            ),
+          ),
           FormBuilderTextField(
             name: 'dto3',
             readOnly: true,
