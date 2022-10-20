@@ -1584,6 +1584,46 @@ class S {
     );
   }
 
+  /// `Article`
+  String get cliente_show_clienteArticulosTop_articulo {
+    return Intl.message(
+      'Article',
+      name: 'cliente_show_clienteArticulosTop_articulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get cliente_show_clienteArticulosTop_descripcion {
+    return Intl.message(
+      'Description',
+      name: 'cliente_show_clienteArticulosTop_descripcion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total sales`
+  String get cliente_show_clienteArticulosTop_ventasTotal {
+    return Intl.message(
+      'Total sales',
+      name: 'cliente_show_clienteArticulosTop_ventasTotal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer sales`
+  String get cliente_show_clienteArticulosTop_ventasCliente {
+    return Intl.message(
+      'Customer sales',
+      name: 'cliente_show_clienteArticulosTop_ventasCliente',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Towards clients `
   String get cliente_alrededor_titulo {
     return Intl.message(
@@ -1894,11 +1934,11 @@ class S {
     );
   }
 
-  /// `Total`
-  String get pedido_edit_pedidoEdit_total {
+  /// `Total líneas`
+  String get pedido_edit_pedidoEdit_totalLineas {
     return Intl.message(
-      'Total',
-      name: 'pedido_edit_pedidoEdit_total',
+      'Total líneas',
+      name: 'pedido_edit_pedidoEdit_totalLineas',
       desc: '',
       args: [],
     );
@@ -1989,6 +2029,66 @@ class S {
     return Intl.message(
       'Discount 3',
       name: 'pedido_edit_selectQuantity_descuneto3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount line`
+  String get pedido_edit_selectQuantity_importeLinea {
+    return Intl.message(
+      'Amount line',
+      name: 'pedido_edit_selectQuantity_importeLinea',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available stock:`
+  String get pedido_edit_selectQuantity_stockDisponible {
+    return Intl.message(
+      'Available stock:',
+      name: 'pedido_edit_selectQuantity_stockDisponible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Substitute articles:`
+  String get pedido_edit_selectQuantity_artiuclosSustitutivos {
+    return Intl.message(
+      'Substitute articles:',
+      name: 'pedido_edit_selectQuantity_artiuclosSustitutivos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Minimum`
+  String get pedido_edit_selectQuantity_minimo {
+    return Intl.message(
+      'Minimum',
+      name: 'pedido_edit_selectQuantity_minimo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Must be multiple of`
+  String get pedido_edit_selectQuantity_tieneQueSerMultiploDe {
+    return Intl.message(
+      'Must be multiple of',
+      name: 'pedido_edit_selectQuantity_tieneQueSerMultiploDe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Must not be empty`
+  String get pedido_edit_selectQuantity_noPuedeEstarVacio {
+    return Intl.message(
+      'Must not be empty',
+      name: 'pedido_edit_selectQuantity_noPuedeEstarVacio',
       desc: '',
       args: [],
     );

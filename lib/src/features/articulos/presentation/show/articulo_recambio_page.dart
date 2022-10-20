@@ -48,8 +48,8 @@ class ArticuloRecambioPage extends ConsumerWidget {
                 : SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text('Sin resultados'),
+                      children: [
+                        Text(S.of(context).sinResultados),
                       ],
                     ),
                   ),

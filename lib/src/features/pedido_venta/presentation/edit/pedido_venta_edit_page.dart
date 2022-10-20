@@ -563,7 +563,7 @@ class StepArticuloListContent extends ConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Total pedido'),
+                  Text(S.of(context).pedido_edit_pedidoEdit_totalLineas),
                   Text(
                     ref
                         .read(pedidoVentaRepositoryProvider)
@@ -801,7 +801,8 @@ class StepResumenContent extends ConsumerWidget {
                 ),
               if (observaciones != null) const Divider(),
               RowFieldTextDetalle(
-                fieldTitleValue: S.of(context).pedido_edit_pedidoEdit_total,
+                fieldTitleValue:
+                    S.of(context).pedido_edit_pedidoEdit_totalLineas,
                 value: ref
                     .read(pedidoVentaRepositoryProvider)
                     .getBaseImponible(pedidoVentaLineaList, cliente!.divisa!.id)

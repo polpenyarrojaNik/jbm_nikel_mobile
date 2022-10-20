@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_sustitutivo.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
@@ -151,8 +152,8 @@ class _SelecionarCantidadPageState
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Importe línea',
+                        Text(
+                          S.of(context).pedido_edit_selectQuantity_importeLinea,
                         ),
                         Text(
                           ref
@@ -317,44 +318,58 @@ class _ArticuloInfo extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       color: Theme.of(context).colorScheme.secondaryContainer,
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            children: [
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       articulo.id,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     Text(
-                      getDescriptionArticuloInLocalLanguage(articulo: articulo),
-                    ),
-                    Text(
-                      'Stock disponible: ${articulo.stockDisponible}',
+                      '${S.of(context).pedido_edit_selectQuantity_stockDisponible} ${articulo.stockDisponible}',
                       style: Theme.of(context).textTheme.caption,
                     ),
                   ],
                 ),
-              ),
-            ],
+                Text(
+                  getDescriptionArticuloInLocalLanguage(articulo: articulo),
+                ),
+                state.when(
+                  data: (articuloSustitutivoList) => (articuloSustitutivoList
+                          .isNotEmpty)
+                      ? Text(
+                          '${S.of(context).pedido_edit_selectQuantity_artiuclosSustitutivos} ${getStringArticulosSusitotutivos(articuloSustitutivoList)}')
+                      : Container(),
+                  error: (error, _) => ErrorMessageWidget(error.toString()),
+                  loading: () => const ProgressIndicatorWidget(),
+                )
+              ],
+            ),
           ),
-          // state.when(
-          //   data: (articuloSustitutivoList) => ListView.builder(
-          //     shrinkWrap: true,
-          //     physics: const NeverScrollableScrollPhysics(),
-          //     itemBuilder: (context, i) =>
-          //         Text(articuloSustitutivoList[i].articuloSustitutivoId),
-          //     itemCount: articuloSustitutivoList.length,
-          //   ),
-          //   error: (error, _) => ErrorMessageWidget(error.toString()),
-          //   loading: () => const ProgressIndicatorWidget(),
-          // )
         ],
       ),
     );
+  }
+
+  String getStringArticulosSusitotutivos(
+      List<ArticuloSustitutivo> articuloSustitutivoList) {
+    String sustitutivoStr = '';
+
+    for (var i = 0; i < articuloSustitutivoList.length; i++) {
+      if (sustitutivoStr.isNotEmpty) {
+        sustitutivoStr += ', ';
+      }
+
+      sustitutivoStr += articuloSustitutivoList[i].articuloSustitutivoId;
+    }
+
+    return sustitutivoStr;
   }
 }
 
@@ -391,7 +406,7 @@ class _SelectQuantityFrom extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_cantidad,
               ),
-              validator: (value) => validateQuantity(value),
+              validator: (value) => validateQuantity(context, value),
               onChanged: (value) {
                 if (value != null && value.isNotEmpty) {
                   final totalQuantity = int.tryParse(value);
@@ -413,24 +428,20 @@ class _SelectQuantityFrom extends StatelessWidget {
     );
   }
 
-  String? validateQuantity(String? quantityStr) {
+  String? validateQuantity(BuildContext context, String? quantityStr) {
     if (quantityStr != null && quantityStr != '') {
       final quantity = int.parse(quantityStr);
-      if (quantity != 0) {
-        if (quantity < ventaMinimo) {
-          setTotalQuantity(ventaMinimo);
-          return 'Venta minimo = $ventaMinimo';
-        } else if (quantity % ventaMultiplo != 0) {
-          setTotalQuantity(setMultiploMasCercano(quantity, ventaMultiplo));
-          return 'Tiene que ser múltiplo de $ventaMultiplo';
-        } else {
-          return null;
-        }
+      if (quantity < ventaMinimo) {
+        setTotalQuantity(ventaMinimo);
+        return '${S.of(context).pedido_edit_selectQuantity_minimo} $ventaMinimo ${S.of(context).unidad}';
+      } else if (quantity % ventaMultiplo != 0) {
+        setTotalQuantity(setMultiploMasCercano(quantity, ventaMultiplo));
+        return '${S.of(context).pedido_edit_selectQuantity_tieneQueSerMultiploDe} $ventaMultiplo';
       } else {
-        return 'No 0';
+        return null;
       }
     } else {
-      return 'No empty';
+      return S.of(context).pedido_edit_selectQuantity_noPuedeEstarVacio;
     }
   }
 

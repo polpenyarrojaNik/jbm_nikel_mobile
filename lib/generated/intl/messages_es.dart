@@ -126,8 +126,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Abriendo archivo..."),
         "cliente_show_clienteAdjunto_titulo":
             MessageLookupByLibrary.simpleMessage("Adjuntos"),
+        "cliente_show_clienteArticulosTop_articulo":
+            MessageLookupByLibrary.simpleMessage("Artículo"),
+        "cliente_show_clienteArticulosTop_descripcion":
+            MessageLookupByLibrary.simpleMessage("Descripción"),
         "cliente_show_clienteArticulosTop_titulo":
             MessageLookupByLibrary.simpleMessage("Top 150"),
+        "cliente_show_clienteArticulosTop_ventasCliente":
+            MessageLookupByLibrary.simpleMessage("Ventas cliente"),
+        "cliente_show_clienteArticulosTop_ventasTotal":
+            MessageLookupByLibrary.simpleMessage("Ventas total"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
         "cliente_show_clienteContacto_id":
@@ -347,8 +355,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Seleccione un cliente"),
         "pedido_edit_pedidoEdit_sinArticulos":
             MessageLookupByLibrary.simpleMessage("Sin artículos"),
-        "pedido_edit_pedidoEdit_total":
-            MessageLookupByLibrary.simpleMessage("Total"),
+        "pedido_edit_selectQuantity_artiuclosSustitutivos":
+            MessageLookupByLibrary.simpleMessage("Artículos sustitutivos:"),
         "pedido_edit_selectQuantity_cantidad":
             MessageLookupByLibrary.simpleMessage("Cantidad"),
         "pedido_edit_selectQuantity_descuneto1":
@@ -357,10 +365,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Descuento 2"),
         "pedido_edit_selectQuantity_descuneto3":
             MessageLookupByLibrary.simpleMessage("Descuento 3"),
+        "pedido_edit_selectQuantity_importeLinea":
+            MessageLookupByLibrary.simpleMessage("Importe línea"),
+        "pedido_edit_selectQuantity_minimo":
+            MessageLookupByLibrary.simpleMessage("Mínimo"),
+        "pedido_edit_selectQuantity_noPuedeEstarVacio":
+            MessageLookupByLibrary.simpleMessage("No puede estar vacío"),
         "pedido_edit_selectQuantity_precio":
             MessageLookupByLibrary.simpleMessage("Precio"),
         "pedido_edit_selectQuantity_seleccionarCantidad":
             MessageLookupByLibrary.simpleMessage("Seleccionar cantidad"),
+        "pedido_edit_selectQuantity_stockDisponible":
+            MessageLookupByLibrary.simpleMessage("Stock disponible:"),
+        "pedido_edit_selectQuantity_tieneQueSerMultiploDe":
+            MessageLookupByLibrary.simpleMessage("Tiene que ser multiplo de"),
         "pedido_enviado": MessageLookupByLibrary.simpleMessage("Enviado"),
         "pedido_index_buscarPedidos":
             MessageLookupByLibrary.simpleMessage("Buscar pedidos..."),
