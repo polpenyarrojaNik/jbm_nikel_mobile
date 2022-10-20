@@ -87,25 +87,25 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
 
   List<DataColumn> _createColumns() {
     return [
-      DataColumn(
+      const DataColumn(
         label: Expanded(
           child: Text('Articulo', textAlign: TextAlign.center),
         ),
         numeric: false,
       ),
-      DataColumn(
+      const DataColumn(
         label: Expanded(
           child: Text('Descripcion', textAlign: TextAlign.center),
         ),
         numeric: false,
       ),
-      DataColumn(
+      const DataColumn(
         label: Expanded(
           child: Text('Ventas Total', textAlign: TextAlign.center),
         ),
         numeric: false,
       ),
-      DataColumn(
+      const DataColumn(
         label: Expanded(
           child: Text('Ventas Cliente', textAlign: TextAlign.center),
         ),
