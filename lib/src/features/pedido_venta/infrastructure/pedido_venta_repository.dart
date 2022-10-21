@@ -454,9 +454,9 @@ class PedidoVentaRepository {
           ? descuentoGeneral
           : descuentoCliente;
 
-// Precio Neto Tarifa
+      // Precio Neto Tarifa
       final precioNetoTarifa = Precio(
-        precio: precioTarifa.precio * (descuento / 100),
+        precio: precioTarifa.precio * ((100 - descuento) / 100),
         tipoPrecio: precioTarifa.tipoPrecio,
       );
 
@@ -1430,7 +1430,7 @@ class PedidoVentaRepository {
   Money getImporteIva(Money importeBaseImponible, double iva) {
     final importeIve =
         (importeBaseImponible.amount * Fixed.fromNum(iva, scale: 2)) /
-            Fixed.fromNum(100, scale: 0);
+            Fixed.fromNum(100, scale: 2);
 
     return Money.fromFixedWithCurrency(
       importeIve,
