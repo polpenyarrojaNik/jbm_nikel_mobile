@@ -440,5 +440,21 @@ void main() {
           25.toMoney(),
           reason: 'Q: 1 Precio: 100€ x1 +50% +50% = 25€');
     });
+
+    test('getTotalLinea Redondeo', () {
+      expect(
+          pedidoVentaRepository.getTotalLinea(
+            cantidad: 1,
+            precio: Precio(
+              precio: 170.toMoney(),
+              tipoPrecio: 1,
+            ),
+            descuento1: 4.6,
+            descuento2: 0,
+            descuento3: 0,
+          ),
+          (162.18).toMoney(),
+          reason: 'Q: 1 Precio: 170€ x1 - 4,6% = 162,18€');
+    });
   });
 }

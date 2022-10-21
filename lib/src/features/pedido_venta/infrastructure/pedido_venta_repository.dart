@@ -1350,7 +1350,9 @@ class PedidoVentaRepository {
     required int tipoPrecio,
   }) {
     return tipoPrecio != 0
-        ? precio / tipoPrecio
+        ? Money.fromFixedWithCurrency(
+            precio.amount / Fixed.fromNum(tipoPrecio, scale: 0),
+            precio.currency)
         : 0.toMoney(currencyId: precio.currency.code);
   }
 
@@ -1359,17 +1361,19 @@ class PedidoVentaRepository {
     return ((value * mod).round().toDouble() / mod);
   }
 
-  double _getDescuentoEquivalente({
+  Fixed _getDescuentoEquivalente({
     required double descuento1,
     double descuento2 = 0,
     double descuento3 = 0,
   }) {
-    return _roundDouble(
-        1 -
-            ((1 - (descuento1 / 100)) *
-                (1 - (descuento2 / 100)) *
-                (1 - (descuento3 / 100))),
-        4);
+    return Fixed.fromNum(
+        _roundDouble(
+            1 -
+                ((1 - (descuento1 / 100)) *
+                    (1 - (descuento2 / 100)) *
+                    (1 - (descuento3 / 100))),
+            6),
+        scale: 6);
   }
 
   Money getTotalLinea({
@@ -1392,7 +1396,10 @@ class PedidoVentaRepository {
 
     final importeLinea = precioUnitario * cantidad;
 
-    final importeDescuento = importeLinea * descuentoEquivalente;
+    final importeDescuento = Money.fromFixedWithCurrency(
+      importeLinea.amount * descuentoEquivalente,
+      importeLinea.currency,
+    );
 
     return importeLinea - importeDescuento;
   }
@@ -1421,6 +1428,13 @@ class PedidoVentaRepository {
   }
 
   Money getImporteIva(Money importeBaseImponible, double iva) {
-    return (importeBaseImponible * iva) / 100;
+    final importeIve =
+        (importeBaseImponible.amount * Fixed.fromNum(iva, scale: 2)) /
+            Fixed.fromNum(100, scale: 0);
+
+    return Money.fromFixedWithCurrency(
+      importeIve,
+      importeBaseImponible.currency,
+    );
   }
 }
