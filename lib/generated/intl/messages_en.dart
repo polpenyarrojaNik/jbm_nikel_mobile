@@ -393,6 +393,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Date"),
         "pedido_show_pedidoVentaDetalle_importeIva":
             MessageLookupByLibrary.simpleMessage("Amount IVA"),
+        "pedido_show_pedidoVentaDetalle_importePortes":
+            MessageLookupByLibrary.simpleMessage("Transport costs"),
         "pedido_show_pedidoVentaDetalle_lineas":
             MessageLookupByLibrary.simpleMessage("Lines"),
         "pedido_show_pedidoVentaDetalle_pedidoCliente":
@@ -405,6 +407,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sales order detail"),
         "pedido_show_pedidoVentaDetalle_total":
             MessageLookupByLibrary.simpleMessage("Total"),
+        "pedido_show_pedidoVentaDetalle_totalLineas":
+            MessageLookupByLibrary.simpleMessage("Total lines"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "settings_nombre_usuario":

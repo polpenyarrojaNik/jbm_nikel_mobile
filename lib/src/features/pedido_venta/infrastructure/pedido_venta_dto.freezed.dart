@@ -50,6 +50,10 @@ mixin _$PedidoVentaDTO {
   String get divisaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'BASE_IMPONIBLE')
   double get baseImponible => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TOTAL_LINEAS')
+  double get totalLineas => throw _privateConstructorUsedError;
+  @JsonKey(name: 'IMPORTE_PORTES')
+  double get importePortes => throw _privateConstructorUsedError;
   @JsonKey(name: 'IMPORTE_IVA')
   double get importeIva => throw _privateConstructorUsedError;
   @JsonKey(name: 'TOTAL')
@@ -58,8 +62,6 @@ mixin _$PedidoVentaDTO {
   int get pedidoVentaEstadoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OFERTA_SN')
   String get oferta => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-  double get descuentoProntoPago => throw _privateConstructorUsedError;
   @JsonKey(name: 'IVA')
   double get iva => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
@@ -95,11 +97,12 @@ abstract class $PedidoVentaDTOCopyWith<$Res> {
       @JsonKey(name: 'PAIS_ID') String? paisId,
       @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
+      @JsonKey(name: 'TOTAL_LINEAS') double totalLineas,
+      @JsonKey(name: 'IMPORTE_PORTES') double importePortes,
       @JsonKey(name: 'IMPORTE_IVA') double importeIva,
       @JsonKey(name: 'TOTAL') double total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') String oferta,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -133,11 +136,12 @@ class _$PedidoVentaDTOCopyWithImpl<$Res, $Val extends PedidoVentaDTO>
     Object? paisId = freezed,
     Object? divisaId = null,
     Object? baseImponible = null,
+    Object? totalLineas = null,
+    Object? importePortes = null,
     Object? importeIva = null,
     Object? total = null,
     Object? pedidoVentaEstadoId = null,
     Object? oferta = null,
-    Object? descuentoProntoPago = null,
     Object? iva = null,
     Object? lastUpdated = null,
     Object? deleted = null,
@@ -203,6 +207,14 @@ class _$PedidoVentaDTOCopyWithImpl<$Res, $Val extends PedidoVentaDTO>
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
               as double,
+      totalLineas: null == totalLineas
+          ? _value.totalLineas
+          : totalLineas // ignore: cast_nullable_to_non_nullable
+              as double,
+      importePortes: null == importePortes
+          ? _value.importePortes
+          : importePortes // ignore: cast_nullable_to_non_nullable
+              as double,
       importeIva: null == importeIva
           ? _value.importeIva
           : importeIva // ignore: cast_nullable_to_non_nullable
@@ -219,10 +231,6 @@ class _$PedidoVentaDTOCopyWithImpl<$Res, $Val extends PedidoVentaDTO>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as String,
-      descuentoProntoPago: null == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
       iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
@@ -263,11 +271,12 @@ abstract class _$$_PedidoVentaDTOCopyWith<$Res>
       @JsonKey(name: 'PAIS_ID') String? paisId,
       @JsonKey(name: 'DIVISA_ID') String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') double baseImponible,
+      @JsonKey(name: 'TOTAL_LINEAS') double totalLineas,
+      @JsonKey(name: 'IMPORTE_PORTES') double importePortes,
       @JsonKey(name: 'IMPORTE_IVA') double importeIva,
       @JsonKey(name: 'TOTAL') double total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') String oferta,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') double descuentoProntoPago,
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
@@ -299,11 +308,12 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
     Object? paisId = freezed,
     Object? divisaId = null,
     Object? baseImponible = null,
+    Object? totalLineas = null,
+    Object? importePortes = null,
     Object? importeIva = null,
     Object? total = null,
     Object? pedidoVentaEstadoId = null,
     Object? oferta = null,
-    Object? descuentoProntoPago = null,
     Object? iva = null,
     Object? lastUpdated = null,
     Object? deleted = null,
@@ -369,6 +379,14 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
               as double,
+      totalLineas: null == totalLineas
+          ? _value.totalLineas
+          : totalLineas // ignore: cast_nullable_to_non_nullable
+              as double,
+      importePortes: null == importePortes
+          ? _value.importePortes
+          : importePortes // ignore: cast_nullable_to_non_nullable
+              as double,
       importeIva: null == importeIva
           ? _value.importeIva
           : importeIva // ignore: cast_nullable_to_non_nullable
@@ -385,10 +403,6 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as String,
-      descuentoProntoPago: null == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double,
       iva: null == iva
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
@@ -424,11 +438,12 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
       @JsonKey(name: 'PAIS_ID') this.paisId,
       @JsonKey(name: 'DIVISA_ID') required this.divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE') required this.baseImponible,
+      @JsonKey(name: 'TOTAL_LINEAS') required this.totalLineas,
+      @JsonKey(name: 'IMPORTE_PORTES') required this.importePortes,
       @JsonKey(name: 'IMPORTE_IVA') required this.importeIva,
       @JsonKey(name: 'TOTAL') required this.total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') required this.pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') required this.oferta,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required this.descuentoProntoPago,
       @JsonKey(name: 'IVA') required this.iva,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') required this.deleted})
@@ -483,6 +498,12 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
   @JsonKey(name: 'BASE_IMPONIBLE')
   final double baseImponible;
   @override
+  @JsonKey(name: 'TOTAL_LINEAS')
+  final double totalLineas;
+  @override
+  @JsonKey(name: 'IMPORTE_PORTES')
+  final double importePortes;
+  @override
   @JsonKey(name: 'IMPORTE_IVA')
   final double importeIva;
   @override
@@ -495,9 +516,6 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
   @JsonKey(name: 'OFERTA_SN')
   final String oferta;
   @override
-  @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-  final double descuentoProntoPago;
-  @override
   @JsonKey(name: 'IVA')
   final double iva;
   @override
@@ -509,7 +527,7 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
 
   @override
   String toString() {
-    return 'PedidoVentaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, baseImponible: $baseImponible, importeIva: $importeIva, total: $total, pedidoVentaEstadoId: $pedidoVentaEstadoId, oferta: $oferta, descuentoProntoPago: $descuentoProntoPago, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, baseImponible: $baseImponible, totalLineas: $totalLineas, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstadoId: $pedidoVentaEstadoId, oferta: $oferta, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -546,14 +564,16 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
                 other.divisaId == divisaId) &&
             (identical(other.baseImponible, baseImponible) ||
                 other.baseImponible == baseImponible) &&
+            (identical(other.totalLineas, totalLineas) ||
+                other.totalLineas == totalLineas) &&
+            (identical(other.importePortes, importePortes) ||
+                other.importePortes == importePortes) &&
             (identical(other.importeIva, importeIva) ||
                 other.importeIva == importeIva) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.pedidoVentaEstadoId, pedidoVentaEstadoId) ||
                 other.pedidoVentaEstadoId == pedidoVentaEstadoId) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
-            (identical(other.descuentoProntoPago, descuentoProntoPago) ||
-                other.descuentoProntoPago == descuentoProntoPago) &&
             (identical(other.iva, iva) || other.iva == iva) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
@@ -579,11 +599,12 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
         paisId,
         divisaId,
         baseImponible,
+        totalLineas,
+        importePortes,
         importeIva,
         total,
         pedidoVentaEstadoId,
         oferta,
-        descuentoProntoPago,
         iva,
         lastUpdated,
         deleted
@@ -635,6 +656,10 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
           required final String divisaId,
       @JsonKey(name: 'BASE_IMPONIBLE')
           required final double baseImponible,
+      @JsonKey(name: 'TOTAL_LINEAS')
+          required final double totalLineas,
+      @JsonKey(name: 'IMPORTE_PORTES')
+          required final double importePortes,
       @JsonKey(name: 'IMPORTE_IVA')
           required final double importeIva,
       @JsonKey(name: 'TOTAL')
@@ -643,8 +668,6 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
           required final int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN')
           required final String oferta,
-      @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-          required final double descuentoProntoPago,
       @JsonKey(name: 'IVA')
           required final double iva,
       @JsonKey(name: 'LAST_UPDATED')
@@ -702,6 +725,12 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
   @JsonKey(name: 'BASE_IMPONIBLE')
   double get baseImponible;
   @override
+  @JsonKey(name: 'TOTAL_LINEAS')
+  double get totalLineas;
+  @override
+  @JsonKey(name: 'IMPORTE_PORTES')
+  double get importePortes;
+  @override
   @JsonKey(name: 'IMPORTE_IVA')
   double get importeIva;
   @override
@@ -713,9 +742,6 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
   @override
   @JsonKey(name: 'OFERTA_SN')
   String get oferta;
-  @override
-  @JsonKey(name: 'DESCUENTO_PRONTO_PAGO')
-  double get descuentoProntoPago;
   @override
   @JsonKey(name: 'IVA')
   double get iva;

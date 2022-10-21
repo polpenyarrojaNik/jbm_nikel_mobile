@@ -1724,6 +1724,26 @@ class S {
     );
   }
 
+  /// `Total lines`
+  String get pedido_show_pedidoVentaDetalle_totalLineas {
+    return Intl.message(
+      'Total lines',
+      name: 'pedido_show_pedidoVentaDetalle_totalLineas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Transport costs`
+  String get pedido_show_pedidoVentaDetalle_importePortes {
+    return Intl.message(
+      'Transport costs',
+      name: 'pedido_show_pedidoVentaDetalle_importePortes',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Amount IVA`
   String get pedido_show_pedidoVentaDetalle_importeIva {
     return Intl.message(

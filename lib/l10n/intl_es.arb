@@ -166,6 +166,8 @@
   "pedido_show_pedidoVentaDetalle_estado": "Estado",
   "pedido_show_pedidoVentaDetalle_fecha": "Fecha",
   "pedido_show_pedidoVentaDetalle_baseImponible": "Base imponible",
+  "pedido_show_pedidoVentaDetalle_totalLineas": "Total líneas",
+  "pedido_show_pedidoVentaDetalle_importePortes": "Importe portes",
   "pedido_show_pedidoVentaDetalle_importeIva": "Importe IVA",
   "pedido_show_pedidoVentaDetalle_total": "Total",
   "pedido_show_pedidoVentaDetalle_lineas": "Líneas",

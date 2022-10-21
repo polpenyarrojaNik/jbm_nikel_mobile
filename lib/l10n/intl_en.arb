@@ -166,6 +166,8 @@
   "pedido_show_pedidoVentaDetalle_estado": "Status",
   "pedido_show_pedidoVentaDetalle_fecha": "Date",
   "pedido_show_pedidoVentaDetalle_baseImponible": "Tax base",
+  "pedido_show_pedidoVentaDetalle_totalLineas": "Total lines",
+  "pedido_show_pedidoVentaDetalle_importePortes": "Transport costs",
   "pedido_show_pedidoVentaDetalle_importeIva": "Amount IVA",
   "pedido_show_pedidoVentaDetalle_total": "Total",
   "pedido_show_pedidoVentaDetalle_lineas": "Lines",

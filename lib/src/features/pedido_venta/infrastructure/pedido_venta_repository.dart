@@ -291,11 +291,16 @@ class PedidoVentaRepository {
         return pedidoVentaLineaDTO.toDomain(
             divisaId: pedidoVentaLocalDTO.divisaId!,
             importeLinea: getTotalLinea(
-                precio: Precio(
-                    precio: pedidoVentaLineaDTO.precioDivisa
-                        .toMoney(currencyId: pedidoVentaLocalDTO.divisaId!),
-                    tipoPrecio: pedidoVentaLineaDTO.tipoPrecio),
-                cantidad: pedidoVentaLineaDTO.cantidad));
+              precio: Precio(
+                precio: pedidoVentaLineaDTO.precioDivisa
+                    .toMoney(currencyId: pedidoVentaLocalDTO.divisaId!),
+                tipoPrecio: pedidoVentaLineaDTO.tipoPrecio,
+              ),
+              cantidad: pedidoVentaLineaDTO.cantidad,
+              descuento1: pedidoVentaLineaDTO.descuento1,
+              descuento2: pedidoVentaLineaDTO.descuento2,
+              descuento3: pedidoVentaLineaDTO.descuento3,
+            ));
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

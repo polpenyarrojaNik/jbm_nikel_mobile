@@ -36,11 +36,12 @@ class PedidoVentaDTO
     @JsonKey(name: 'PAIS_ID') String? paisId,
     @JsonKey(name: 'DIVISA_ID') required String divisaId,
     @JsonKey(name: 'BASE_IMPONIBLE') required double baseImponible,
+    @JsonKey(name: 'TOTAL_LINEAS') required double totalLineas,
+    @JsonKey(name: 'IMPORTE_PORTES') required double importePortes,
     @JsonKey(name: 'IMPORTE_IVA') required double importeIva,
     @JsonKey(name: 'TOTAL') required double total,
     @JsonKey(name: 'ESTADO_PEDIDO_ID') required int pedidoVentaEstadoId,
     @JsonKey(name: 'OFERTA_SN') required String oferta,
-    @JsonKey(name: 'DESCUENTO_PRONTO_PAGO') required double descuentoProntoPago,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') required String deleted,
@@ -96,10 +97,11 @@ class PedidoVentaDTO
       divisa: divisa,
       baseImponible: baseImponible.toMoney(currencyId: divisaId),
       importeIva: importeIva.toMoney(currencyId: divisaId),
+      importePortes: importePortes.toMoney(currencyId: divisaId),
+      totalLineas: totalLineas.toMoney(currencyId: divisaId),
       total: total.toMoney(currencyId: divisaId),
       pedidoVentaEstado: pedidoVentaEstado,
       oferta: (oferta == 'S') ? true : false,
-      descuentoProntoPago: descuentoProntoPago,
       iva: iva,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
@@ -126,11 +128,12 @@ class PedidoVentaDTO
       paisId: Value(paisId),
       divisaId: Value(divisaId),
       baseImponible: Value(baseImponible),
+      importePortes: Value(importePortes),
+      totalLineas: Value(totalLineas),
       importeIva: Value(importeIva),
       total: Value(total),
       pedidoVentaEstadoId: Value(pedidoVentaEstadoId),
       oferta: Value(oferta),
-      descuentoProntoPago: Value(descuentoProntoPago),
       iva: Value(iva),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
@@ -170,6 +173,10 @@ class PedidoVentaTable extends Table {
       .named('DIVISA_ID')();
   RealColumn get baseImponible =>
       real().withDefault(const Constant(0.0)).named('BASE_IMPONIBLE')();
+  RealColumn get totalLineas =>
+      real().withDefault(const Constant(0.0)).named('TOTAL_LINEAS')();
+  RealColumn get importePortes =>
+      real().withDefault(const Constant(0.0)).named('IMPORTE_PORTES')();
   RealColumn get importeIva =>
       real().withDefault(const Constant(0.0)).named('IMPORTE_IVA')();
   RealColumn get total =>
@@ -180,8 +187,6 @@ class PedidoVentaTable extends Table {
       .named('ESTADO_PEDIDO_ID')();
   TextColumn get oferta =>
       text().withDefault(const Constant('N')).named('OFERTA_SN')();
-  RealColumn get descuentoProntoPago =>
-      real().withDefault(const Constant(0.0)).named('DESCUENTO_PRONTO_PAGO')();
   RealColumn get iva => real().withDefault(const Constant(0.0)).named('IVA')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

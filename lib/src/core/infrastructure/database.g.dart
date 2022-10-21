@@ -1705,11 +1705,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
   final Value<String?> paisId;
   final Value<String> divisaId;
   final Value<double> baseImponible;
+  final Value<double> totalLineas;
+  final Value<double> importePortes;
   final Value<double> importeIva;
   final Value<double> total;
   final Value<int> pedidoVentaEstadoId;
   final Value<String> oferta;
-  final Value<double> descuentoProntoPago;
   final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
@@ -1729,11 +1730,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.paisId = const Value.absent(),
     this.divisaId = const Value.absent(),
     this.baseImponible = const Value.absent(),
+    this.totalLineas = const Value.absent(),
+    this.importePortes = const Value.absent(),
     this.importeIva = const Value.absent(),
     this.total = const Value.absent(),
     this.pedidoVentaEstadoId = const Value.absent(),
     this.oferta = const Value.absent(),
-    this.descuentoProntoPago = const Value.absent(),
     this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
@@ -1754,11 +1756,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.paisId = const Value.absent(),
     required String divisaId,
     this.baseImponible = const Value.absent(),
+    this.totalLineas = const Value.absent(),
+    this.importePortes = const Value.absent(),
     this.importeIva = const Value.absent(),
     this.total = const Value.absent(),
     this.pedidoVentaEstadoId = const Value.absent(),
     this.oferta = const Value.absent(),
-    this.descuentoProntoPago = const Value.absent(),
     this.iva = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
@@ -1786,11 +1789,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     Expression<String>? paisId,
     Expression<String>? divisaId,
     Expression<double>? baseImponible,
+    Expression<double>? totalLineas,
+    Expression<double>? importePortes,
     Expression<double>? importeIva,
     Expression<double>? total,
     Expression<int>? pedidoVentaEstadoId,
     Expression<String>? oferta,
-    Expression<double>? descuentoProntoPago,
     Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
@@ -1811,12 +1815,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       if (paisId != null) 'PAIS_ID': paisId,
       if (divisaId != null) 'DIVISA_ID': divisaId,
       if (baseImponible != null) 'BASE_IMPONIBLE': baseImponible,
+      if (totalLineas != null) 'TOTAL_LINEAS': totalLineas,
+      if (importePortes != null) 'IMPORTE_PORTES': importePortes,
       if (importeIva != null) 'IMPORTE_IVA': importeIva,
       if (total != null) 'TOTAL': total,
       if (pedidoVentaEstadoId != null) 'ESTADO_PEDIDO_ID': pedidoVentaEstadoId,
       if (oferta != null) 'OFERTA_SN': oferta,
-      if (descuentoProntoPago != null)
-        'DESCUENTO_PRONTO_PAGO': descuentoProntoPago,
       if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
@@ -1839,11 +1843,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       Value<String?>? paisId,
       Value<String>? divisaId,
       Value<double>? baseImponible,
+      Value<double>? totalLineas,
+      Value<double>? importePortes,
       Value<double>? importeIva,
       Value<double>? total,
       Value<int>? pedidoVentaEstadoId,
       Value<String>? oferta,
-      Value<double>? descuentoProntoPago,
       Value<double>? iva,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
@@ -1863,11 +1868,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       paisId: paisId ?? this.paisId,
       divisaId: divisaId ?? this.divisaId,
       baseImponible: baseImponible ?? this.baseImponible,
+      totalLineas: totalLineas ?? this.totalLineas,
+      importePortes: importePortes ?? this.importePortes,
       importeIva: importeIva ?? this.importeIva,
       total: total ?? this.total,
       pedidoVentaEstadoId: pedidoVentaEstadoId ?? this.pedidoVentaEstadoId,
       oferta: oferta ?? this.oferta,
-      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
       iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -1922,6 +1928,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     if (baseImponible.present) {
       map['BASE_IMPONIBLE'] = Variable<double>(baseImponible.value);
     }
+    if (totalLineas.present) {
+      map['TOTAL_LINEAS'] = Variable<double>(totalLineas.value);
+    }
+    if (importePortes.present) {
+      map['IMPORTE_PORTES'] = Variable<double>(importePortes.value);
+    }
     if (importeIva.present) {
       map['IMPORTE_IVA'] = Variable<double>(importeIva.value);
     }
@@ -1933,10 +1945,6 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     }
     if (oferta.present) {
       map['OFERTA_SN'] = Variable<String>(oferta.value);
-    }
-    if (descuentoProntoPago.present) {
-      map['DESCUENTO_PRONTO_PAGO'] =
-          Variable<double>(descuentoProntoPago.value);
     }
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
@@ -1968,11 +1976,12 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
           ..write('paisId: $paisId, ')
           ..write('divisaId: $divisaId, ')
           ..write('baseImponible: $baseImponible, ')
+          ..write('totalLineas: $totalLineas, ')
+          ..write('importePortes: $importePortes, ')
           ..write('importeIva: $importeIva, ')
           ..write('total: $total, ')
           ..write('pedidoVentaEstadoId: $pedidoVentaEstadoId, ')
           ..write('oferta: $oferta, ')
-          ..write('descuentoProntoPago: $descuentoProntoPago, ')
           ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -2098,6 +2107,22 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
+  final VerificationMeta _totalLineasMeta =
+      const VerificationMeta('totalLineas');
+  @override
+  late final GeneratedColumn<double> totalLineas = GeneratedColumn<double>(
+      'TOTAL_LINEAS', aliasedName, false,
+      type: DriftSqlType.double,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0.0));
+  final VerificationMeta _importePortesMeta =
+      const VerificationMeta('importePortes');
+  @override
+  late final GeneratedColumn<double> importePortes = GeneratedColumn<double>(
+      'IMPORTE_PORTES', aliasedName, false,
+      type: DriftSqlType.double,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(0.0));
   final VerificationMeta _importeIvaMeta = const VerificationMeta('importeIva');
   @override
   late final GeneratedColumn<double> importeIva = GeneratedColumn<double>(
@@ -2128,14 +2153,6 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _descuentoProntoPagoMeta =
-      const VerificationMeta('descuentoProntoPago');
-  @override
-  late final GeneratedColumn<double> descuentoProntoPago =
-      GeneratedColumn<double>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
-          type: DriftSqlType.double,
-          requiredDuringInsert: false,
-          defaultValue: const Constant(0.0));
   final VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
@@ -2173,11 +2190,12 @@ class $PedidoVentaTableTable extends PedidoVentaTable
         paisId,
         divisaId,
         baseImponible,
+        totalLineas,
+        importePortes,
         importeIva,
         total,
         pedidoVentaEstadoId,
         oferta,
-        descuentoProntoPago,
         iva,
         lastUpdated,
         deleted
@@ -2281,6 +2299,18 @@ class $PedidoVentaTableTable extends PedidoVentaTable
           baseImponible.isAcceptableOrUnknown(
               data['BASE_IMPONIBLE']!, _baseImponibleMeta));
     }
+    if (data.containsKey('TOTAL_LINEAS')) {
+      context.handle(
+          _totalLineasMeta,
+          totalLineas.isAcceptableOrUnknown(
+              data['TOTAL_LINEAS']!, _totalLineasMeta));
+    }
+    if (data.containsKey('IMPORTE_PORTES')) {
+      context.handle(
+          _importePortesMeta,
+          importePortes.isAcceptableOrUnknown(
+              data['IMPORTE_PORTES']!, _importePortesMeta));
+    }
     if (data.containsKey('IMPORTE_IVA')) {
       context.handle(
           _importeIvaMeta,
@@ -2300,12 +2330,6 @@ class $PedidoVentaTableTable extends PedidoVentaTable
     if (data.containsKey('OFERTA_SN')) {
       context.handle(_ofertaMeta,
           oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta));
-    }
-    if (data.containsKey('DESCUENTO_PRONTO_PAGO')) {
-      context.handle(
-          _descuentoProntoPagoMeta,
-          descuentoProntoPago.isAcceptableOrUnknown(
-              data['DESCUENTO_PRONTO_PAGO']!, _descuentoProntoPagoMeta));
     }
     if (data.containsKey('IVA')) {
       context.handle(
@@ -2362,6 +2386,10 @@ class $PedidoVentaTableTable extends PedidoVentaTable
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
       baseImponible: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}BASE_IMPONIBLE'])!,
+      totalLineas: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}TOTAL_LINEAS'])!,
+      importePortes: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_PORTES'])!,
       importeIva: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_IVA'])!,
       total: attachedDatabase.options.types
@@ -2370,9 +2398,6 @@ class $PedidoVentaTableTable extends PedidoVentaTable
           .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
       oferta: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
-      descuentoProntoPago: attachedDatabase.options.types.read(
-          DriftSqlType.double,
-          data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'])!,
       iva: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
       lastUpdated: attachedDatabase.options.types

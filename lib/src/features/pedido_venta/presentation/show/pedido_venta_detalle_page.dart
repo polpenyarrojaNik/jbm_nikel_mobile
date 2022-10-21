@@ -169,6 +169,16 @@ class PedidoVentaInfoContainer extends StatelessWidget {
           ),
         RowFieldTextDetalle(
           fieldTitleValue:
+              S.of(context).pedido_show_pedidoVentaDetalle_totalLineas,
+          value: pedidoVenta.totalLineas.toString(),
+        ),
+        RowFieldTextDetalle(
+          fieldTitleValue:
+              S.of(context).pedido_show_pedidoVentaDetalle_importePortes,
+          value: pedidoVenta.importePortes.toString(),
+        ),
+        RowFieldTextDetalle(
+          fieldTitleValue:
               S.of(context).pedido_show_pedidoVentaDetalle_baseImponible,
           value: pedidoVenta.baseImponible.toString(),
         ),

@@ -34,13 +34,14 @@ mixin _$PedidoVenta {
   Divisa get divisa => throw _privateConstructorUsedError;
   String? get pedidoCliente => throw _privateConstructorUsedError;
   String? get observaciones => throw _privateConstructorUsedError;
+  Money? get totalLineas => throw _privateConstructorUsedError;
   Money? get baseImponible => throw _privateConstructorUsedError;
+  Money? get importePortes => throw _privateConstructorUsedError;
   Money? get importeIva => throw _privateConstructorUsedError;
   Money? get total => throw _privateConstructorUsedError;
   PedidoVentaEstado? get pedidoVentaEstado =>
       throw _privateConstructorUsedError;
   bool? get oferta => throw _privateConstructorUsedError;
-  double? get descuentoProntoPago => throw _privateConstructorUsedError;
   double? get dtoBonificacion => throw _privateConstructorUsedError;
   double get iva => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
@@ -79,12 +80,13 @@ abstract class $PedidoVentaCopyWith<$Res> {
       Divisa divisa,
       String? pedidoCliente,
       String? observaciones,
+      Money? totalLineas,
       Money? baseImponible,
+      Money? importePortes,
       Money? importeIva,
       Money? total,
       PedidoVentaEstado? pedidoVentaEstado,
       bool? oferta,
-      double? descuentoProntoPago,
       double? dtoBonificacion,
       double iva,
       DateTime lastUpdated,
@@ -129,12 +131,13 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     Object? divisa = null,
     Object? pedidoCliente = freezed,
     Object? observaciones = freezed,
+    Object? totalLineas = freezed,
     Object? baseImponible = freezed,
+    Object? importePortes = freezed,
     Object? importeIva = freezed,
     Object? total = freezed,
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
-    Object? descuentoProntoPago = freezed,
     Object? dtoBonificacion = freezed,
     Object? iva = null,
     Object? lastUpdated = null,
@@ -216,9 +219,17 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
+      totalLineas: freezed == totalLineas
+          ? _value.totalLineas
+          : totalLineas // ignore: cast_nullable_to_non_nullable
+              as Money?,
       baseImponible: freezed == baseImponible
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      importePortes: freezed == importePortes
+          ? _value.importePortes
+          : importePortes // ignore: cast_nullable_to_non_nullable
               as Money?,
       importeIva: freezed == importeIva
           ? _value.importeIva
@@ -236,10 +247,6 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as bool?,
-      descuentoProntoPago: freezed == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double?,
       dtoBonificacion: freezed == dtoBonificacion
           ? _value.dtoBonificacion
           : dtoBonificacion // ignore: cast_nullable_to_non_nullable
@@ -331,12 +338,13 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       Divisa divisa,
       String? pedidoCliente,
       String? observaciones,
+      Money? totalLineas,
       Money? baseImponible,
+      Money? importePortes,
       Money? importeIva,
       Money? total,
       PedidoVentaEstado? pedidoVentaEstado,
       bool? oferta,
-      double? descuentoProntoPago,
       double? dtoBonificacion,
       double iva,
       DateTime lastUpdated,
@@ -382,12 +390,13 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
     Object? divisa = null,
     Object? pedidoCliente = freezed,
     Object? observaciones = freezed,
+    Object? totalLineas = freezed,
     Object? baseImponible = freezed,
+    Object? importePortes = freezed,
     Object? importeIva = freezed,
     Object? total = freezed,
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
-    Object? descuentoProntoPago = freezed,
     Object? dtoBonificacion = freezed,
     Object? iva = null,
     Object? lastUpdated = null,
@@ -469,9 +478,17 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
               as String?,
+      totalLineas: freezed == totalLineas
+          ? _value.totalLineas
+          : totalLineas // ignore: cast_nullable_to_non_nullable
+              as Money?,
       baseImponible: freezed == baseImponible
           ? _value.baseImponible
           : baseImponible // ignore: cast_nullable_to_non_nullable
+              as Money?,
+      importePortes: freezed == importePortes
+          ? _value.importePortes
+          : importePortes // ignore: cast_nullable_to_non_nullable
               as Money?,
       importeIva: freezed == importeIva
           ? _value.importeIva
@@ -489,10 +506,6 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as bool?,
-      descuentoProntoPago: freezed == descuentoProntoPago
-          ? _value.descuentoProntoPago
-          : descuentoProntoPago // ignore: cast_nullable_to_non_nullable
-              as double?,
       dtoBonificacion: freezed == dtoBonificacion
           ? _value.dtoBonificacion
           : dtoBonificacion // ignore: cast_nullable_to_non_nullable
@@ -547,12 +560,13 @@ class _$_PedidoVenta extends _PedidoVenta {
       required this.divisa,
       this.pedidoCliente,
       this.observaciones,
+      this.totalLineas,
       this.baseImponible,
+      this.importePortes,
       this.importeIva,
       this.total,
       this.pedidoVentaEstado,
       this.oferta,
-      this.descuentoProntoPago,
       this.dtoBonificacion,
       required this.iva,
       required this.lastUpdated,
@@ -599,7 +613,11 @@ class _$_PedidoVenta extends _PedidoVenta {
   @override
   final String? observaciones;
   @override
+  final Money? totalLineas;
+  @override
   final Money? baseImponible;
+  @override
+  final Money? importePortes;
   @override
   final Money? importeIva;
   @override
@@ -608,8 +626,6 @@ class _$_PedidoVenta extends _PedidoVenta {
   final PedidoVentaEstado? pedidoVentaEstado;
   @override
   final bool? oferta;
-  @override
-  final double? descuentoProntoPago;
   @override
   final double? dtoBonificacion;
   @override
@@ -627,7 +643,7 @@ class _$_PedidoVenta extends _PedidoVenta {
 
   @override
   String toString() {
-    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, baseImponible: $baseImponible, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, descuentoProntoPago: $descuentoProntoPago, dtoBonificacion: $dtoBonificacion, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, totalLineas: $totalLineas, baseImponible: $baseImponible, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, dtoBonificacion: $dtoBonificacion, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -669,16 +685,18 @@ class _$_PedidoVenta extends _PedidoVenta {
                 other.pedidoCliente == pedidoCliente) &&
             (identical(other.observaciones, observaciones) ||
                 other.observaciones == observaciones) &&
+            (identical(other.totalLineas, totalLineas) ||
+                other.totalLineas == totalLineas) &&
             (identical(other.baseImponible, baseImponible) ||
                 other.baseImponible == baseImponible) &&
+            (identical(other.importePortes, importePortes) ||
+                other.importePortes == importePortes) &&
             (identical(other.importeIva, importeIva) ||
                 other.importeIva == importeIva) &&
             (identical(other.total, total) || other.total == total) &&
             (identical(other.pedidoVentaEstado, pedidoVentaEstado) ||
                 other.pedidoVentaEstado == pedidoVentaEstado) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
-            (identical(other.descuentoProntoPago, descuentoProntoPago) ||
-                other.descuentoProntoPago == descuentoProntoPago) &&
             (identical(other.dtoBonificacion, dtoBonificacion) ||
                 other.dtoBonificacion == dtoBonificacion) &&
             (identical(other.iva, iva) || other.iva == iva) &&
@@ -712,12 +730,13 @@ class _$_PedidoVenta extends _PedidoVenta {
         divisa,
         pedidoCliente,
         observaciones,
+        totalLineas,
         baseImponible,
+        importePortes,
         importeIva,
         total,
         pedidoVentaEstado,
         oferta,
-        descuentoProntoPago,
         dtoBonificacion,
         iva,
         lastUpdated,
@@ -754,12 +773,13 @@ abstract class _PedidoVenta extends PedidoVenta {
       required final Divisa divisa,
       final String? pedidoCliente,
       final String? observaciones,
+      final Money? totalLineas,
       final Money? baseImponible,
+      final Money? importePortes,
       final Money? importeIva,
       final Money? total,
       final PedidoVentaEstado? pedidoVentaEstado,
       final bool? oferta,
-      final double? descuentoProntoPago,
       final double? dtoBonificacion,
       required final double iva,
       required final DateTime lastUpdated,
@@ -806,7 +826,11 @@ abstract class _PedidoVenta extends PedidoVenta {
   @override
   String? get observaciones;
   @override
+  Money? get totalLineas;
+  @override
   Money? get baseImponible;
+  @override
+  Money? get importePortes;
   @override
   Money? get importeIva;
   @override
@@ -815,8 +839,6 @@ abstract class _PedidoVenta extends PedidoVenta {
   PedidoVentaEstado? get pedidoVentaEstado;
   @override
   bool? get oferta;
-  @override
-  double? get descuentoProntoPago;
   @override
   double? get dtoBonificacion;
   @override
