@@ -151,7 +151,7 @@ String dtoText(
   }
   if (descuento3 != 0) {
     dtoText += (dtoText.isNotEmpty)
-        ? '- ${numberFormatCantidades(descuento3)}%'
+        ? ' - ${numberFormatCantidades(descuento3)}%'
         : '${numberFormatCantidades(descuento3)}%';
   }
   return dtoText;

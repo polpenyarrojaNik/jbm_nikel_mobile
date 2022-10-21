@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_sustitutivo.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -93,7 +94,7 @@ class _SelecionarCantidadPageState
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -332,7 +333,7 @@ class _ArticuloInfo extends ConsumerWidget {
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
                     Text(
-                      '${S.of(context).pedido_edit_selectQuantity_stockDisponible} ${articulo.stockDisponible}',
+                      '${S.of(context).pedido_edit_selectQuantity_stockDisponible} ${articulo.stockDisponible} ${S.of(context).unidad}',
                       style: Theme.of(context).textTheme.caption,
                     ),
                   ],
@@ -397,6 +398,7 @@ class _SelectQuantityFrom extends StatelessWidget {
         key: formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             FormBuilderTextField(
               name: 'cantidad',
@@ -422,6 +424,9 @@ class _SelectQuantityFrom extends StatelessWidget {
                 extentOffset: quanitityController.text.length,
               ),
             ),
+            gapH4,
+            Text('Múltiplo x$ventaMultiplo ${S.of(context).unidad}',
+                style: Theme.of(context).textTheme.caption),
           ],
         ),
       ),
@@ -500,8 +505,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             keyboardType: TextInputType.number,
             controller: descuento1Controller,
             decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-            ),
+                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
+                suffix: Text('%', style: Theme.of(context).textTheme.caption)),
             onChanged: (value) {
               if (value != null && value.isNotEmpty) {
                 final dto1Value = double.tryParse(value.replaceAll(',', '.'));
@@ -524,6 +529,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
           //   controller: descuento2Controller,
           //   decoration: InputDecoration(
           //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
+          // suffix: Text('%', style: Theme.of(context).textTheme.caption)
+
           //   ),
           //   onChanged: (value) {
           //     if (value != null && value.isNotEmpty) {
@@ -551,6 +558,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
           //   initialValue: descuento3.toString(),
           //   decoration: InputDecoration(
           //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
+          // suffix: Text('%', style: Theme.of(context).textTheme.caption)
+
           //   ),
           // ),
         ],
