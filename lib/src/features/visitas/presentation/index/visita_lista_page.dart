@@ -83,7 +83,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
       body: RefreshIndicator(
         onRefresh: () => refreshVisitsDB(ref),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             stateLasySyncDate.when(
                 data: (fechaUltimaSync) =>
