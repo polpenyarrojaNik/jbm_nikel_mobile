@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/articulo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
+// part 'articulo_search_state_provider.freezed.dart';
+
 final articulosSearchQueryStateProvider =
     StateProvider.autoDispose<String>((ref) {
   return '';
@@ -21,39 +23,58 @@ final articuloForFromStateProvider =
 final articulosSearchResultsProvider = StateNotifierProvider.autoDispose<
     ArticuloController, AsyncValue<List<Articulo>>>((ref) {
   final searchQuery = ref.watch(articulosSearchQueryStateProvider);
-  final paginationQuery = ref.watch(articulosPaginationQueryStateProvider);
   final articuloRepository = ref.watch(articuloRepositoryProvider);
 
   return ArticuloController(
     searchQuery: searchQuery,
-    page: paginationQuery,
     articuloRepository: articuloRepository,
   );
 });
 
 class ArticuloController extends StateNotifier<AsyncValue<List<Articulo>>> {
   final String searchQuery;
-  final int page;
+  // final int page;
   final ArticuloRepository articuloRepository;
 
   ArticuloController(
       {required this.searchQuery,
-      required this.page,
+      // required this.page,
       required this.articuloRepository})
       : super(const AsyncValue.loading()) {
     getArticuloLista();
   }
 
+  int currentPage = 1;
+
   Future<void> getArticuloLista() async {
     state = const AsyncValue.loading();
     try {
-      final articuloList = await articuloRepository.getArticuloLista(
-        page: page,
+      final articuloListResult = await articuloRepository.getArticuloLista(
+        page: currentPage,
         searchText: searchQuery,
       );
-      state = AsyncValue.data(articuloList);
+
+      state = AsyncValue.data(articuloListResult);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
     }
   }
+
+  Future<void> getNextPage() async {
+    currentPage = currentPage + 1;
+    getArticuloLista();
+  }
 }
+
+// @freezed
+// class ArticuloListControllerState with _$ArticuloListControllerState {
+//   const ArticuloListControllerState._();
+//   const factory ArticuloListControllerState.loading(
+//       List<Articulo> articuloList, int itemPage) = _loading;
+
+//   const factory ArticuloListControllerState.error(
+//           List<Articulo> articuloList, Object error, {StackTrace? stackTrace}) =
+//       _error;
+//   const factory ArticuloListControllerState.data(List<Articulo> articuloList) =
+//       _data;
+// }

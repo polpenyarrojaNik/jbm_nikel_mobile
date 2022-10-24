@@ -16,36 +16,44 @@ final visitasPaginationQueryStateProvider =
 final visitasSearchResultsProvider = StateNotifierProvider.autoDispose<
     VisitaController, AsyncValue<List<Visita>>>((ref) {
   final searchQuery = ref.watch(visitasSearchQueryStateProvider);
-  final paginationQuery = ref.watch(visitasPaginationQueryStateProvider);
+  // final paginationQuery = ref.watch(visitasPaginationQueryStateProvider);
   final visitaRepository = ref.watch(visitaRepositoryProvider);
 
   return VisitaController(
-      visitaRepository: visitaRepository,
-      page: paginationQuery,
-      searchQuery: searchQuery);
+    visitaRepository: visitaRepository,
+    // page: paginationQuery,
+    searchQuery: searchQuery,
+  );
 });
 
 class VisitaController extends StateNotifier<AsyncValue<List<Visita>>> {
   final String searchQuery;
-  final int page;
+  // final int page;
   final VisitaRepository visitaRepository;
 
   VisitaController(
       {required this.searchQuery,
-      required this.page,
+      // required this.page,
       required this.visitaRepository})
       : super(const AsyncValue.loading()) {
     getVisitaList();
   }
 
+  int currentPage = 1;
+
   Future<void> getVisitaList() async {
     state = const AsyncValue.loading();
     try {
       final visitaList = await visitaRepository.getVisitaList(
-          page: page, searchText: searchQuery);
+          page: currentPage, searchText: searchQuery);
       state = AsyncValue.data(visitaList);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
     }
+  }
+
+  Future<void> getNextPage() async {
+    currentPage = currentPage + 1;
+    getVisitaList();
   }
 }

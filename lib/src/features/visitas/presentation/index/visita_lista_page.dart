@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_state.dart';
 
@@ -14,7 +15,6 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
 import '../../infrastructure/visita_repository.dart';
 
 class VisitaListaPage extends ConsumerStatefulWidget {
@@ -29,6 +29,8 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   int page = 1;
+  String searchText = '';
+
   bool canLoadNextPage = false;
   @override
   void initState() {
@@ -41,7 +43,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
       if (canLoadNextPage && metrics.pixels >= limit) {
         canLoadNextPage = false;
         page++;
-        ref.read(visitasPaginationQueryStateProvider.notifier).state = page;
+        ref.read(visitasSearchResultsProvider.notifier).getNextPage();
       }
     });
   }
@@ -75,7 +77,6 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
           () {
             ref.read(visitasSearchQueryStateProvider.notifier).state =
                 searchText;
-            ref.read(visitasPaginationQueryStateProvider.notifier).state = 1;
           },
         ),
       ),
@@ -92,20 +93,25 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: state.when(
-                  loading: () => const ProgressIndicatorWidget(),
-                  error: (e, _) => ErrorMessageWidget(e.toString()),
-                  data: (visitasList) => (visitasList.isEmpty)
-                      ? const SinResultadosWidget()
-                      : ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          controller: _scrollController,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: visitasList.length,
-                          itemBuilder: (context, i) =>
-                              VisitaListaTile(visita: visitasList[i]),
-                        ),
+                child: ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
+                  controller: _scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: state.when(
+                    data: (visitaList) => visitaList.length,
+                    loading: () => 1,
+                    error: (error, _) => 1,
+                  ),
+                  itemBuilder: (context, i) => state.when(
+                    data: (visitaList) => state.isRefreshing
+                        ? const VisitaListShimmer()
+                        : VisitaListaTile(
+                            visita: visitaList[i],
+                          ),
+                    loading: () => const VisitaListShimmer(),
+                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                  ),
                 ),
               ),
             ),

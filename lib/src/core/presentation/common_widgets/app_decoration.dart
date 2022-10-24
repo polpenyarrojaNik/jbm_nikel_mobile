@@ -37,4 +37,9 @@ class AppDecoration {
       const Color.fromARGB(255, 154, 187, 214).withOpacity(0.5);
   static Color errorColorGrey =
       const Color.fromARGB(255, 237, 175, 171).withOpacity(0.5);
+
+  static BoxDecoration loadingTile = BoxDecoration(
+    color: Colors.grey,
+    borderRadius: BorderRadius.circular(4),
+  );
 }

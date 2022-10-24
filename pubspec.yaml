@@ -45,6 +45,7 @@ dependencies:
   package_info_plus: ^3.0.1
   auto_route: ^5.0.0
   shared_preferences: ^2.0.15
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

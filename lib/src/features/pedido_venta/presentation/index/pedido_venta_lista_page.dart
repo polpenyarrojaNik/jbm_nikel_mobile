@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
+
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_shimmer.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -15,7 +16,6 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 class PedidoVentaListPage extends ConsumerStatefulWidget {
@@ -30,7 +30,6 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
 
-  int page = 1;
   bool canLoadNextPage = false;
 
   @override
@@ -43,8 +42,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
       if (canLoadNextPage && metrics.pixels >= limit) {
         canLoadNextPage = false;
-        page++;
-        ref.read(pedidosPaginationQueryStateProvider.notifier).state = page;
+        ref.read(pedidosSearchResultsProvider.notifier).getNextPage();
       }
     });
   }
@@ -87,7 +85,6 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
           () {
             ref.read(pedidosSearchQueryStateProvider.notifier).state =
                 searchText;
-            ref.read(pedidosPaginationQueryStateProvider.notifier).state = 1;
           },
         ),
       ),
@@ -109,20 +106,25 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
                   bottom: 16,
                   right: 16,
                 ),
-                child: state.when(
-                  loading: () => const ProgressIndicatorWidget(),
-                  error: (e, _) => ErrorMessageWidget(e.toString()),
-                  data: (pedidoVentaList) => (pedidoVentaList.isEmpty)
-                      ? const SinResultadosWidget()
-                      : ListView.separated(
-                          controller: _scrollController,
-                          separatorBuilder: (context, i) => const Divider(),
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: pedidoVentaList.length,
-                          itemBuilder: (context, i) => PedidoVentaListaTile(
-                              pedidoVenta: pedidoVentaList[i]),
-                        ),
+                child: ListView.separated(
+                  controller: _scrollController,
+                  separatorBuilder: (context, i) => const Divider(),
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: state.when(
+                    data: (pedidoVentaList) => pedidoVentaList.length,
+                    loading: () => 1,
+                    error: (error, _) => 1,
+                  ),
+                  itemBuilder: (context, i) => state.when(
+                    data: (pedidoVentaList) => state.isRefreshing
+                        ? const PedidoVentaShimmer()
+                        : PedidoVentaListaTile(
+                            pedidoVenta: pedidoVentaList[i],
+                          ),
+                    loading: () => const PedidoVentaShimmer(),
+                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                  ),
                 ),
               ),
             ),

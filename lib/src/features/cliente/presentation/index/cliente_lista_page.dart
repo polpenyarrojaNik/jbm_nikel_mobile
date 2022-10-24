@@ -16,8 +16,8 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
-import '../../../../core/presentation/common_widgets/sin_resultados_widget.dart';
 import '../../infrastructure/cliente_repository.dart';
+import 'cliente_list_shimmer.dart';
 import 'cliente_lista_tile.dart';
 
 class ClienteListaPage extends ConsumerStatefulWidget {
@@ -33,7 +33,6 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
 
-  int page = 1;
   bool searchClientesPotenciales = false;
   bool canLoadNextPage = false;
 
@@ -47,8 +46,8 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
       if (canLoadNextPage && metrics.pixels >= limit) {
         canLoadNextPage = false;
-        ref.read(clientesPaginationQueryStateProvider.notifier).state =
-            page + 1;
+
+        ref.read(clientesSearchResultsProvider.notifier).getNextPage();
       }
     });
   }
@@ -69,30 +68,15 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<int>(
-      clientesPaginationQueryStateProvider,
-      (_, numPage) {
-        page = numPage;
-      },
-    );
-    ref.listen<AsyncValue>(
-      clientesSearchResultsProvider,
-      (_, state) {
-        state.whenData((value) {
-          if (value is List<Cliente> && value.length == page * 100) {
-            canLoadNextPage = true;
-          } else {
-            canLoadNextPage = false;
-          }
-        });
-
-        state.showAlertDialogOnError(context);
-      },
-    );
-
     final state = ref.watch(clientesSearchResultsProvider);
     final stateLasySyncDate = ref.watch(clienteLastSyncDateProvider);
+    ref.listen<AsyncValue>(clientesSearchResultsProvider, (_, state) {
+      state.whenData(
+        (_) => canLoadNextPage = true,
+      );
 
+      state.showAlertDialogOnError(context);
+    });
     return Scaffold(
       drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
@@ -103,7 +87,6 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
           () {
             ref.read(clientesSearchQueryStateProvider.notifier).state =
                 searchText;
-            ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
           },
         ),
         actionButtons: [
@@ -136,18 +119,20 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: state.when(
-                  loading: () => const ProgressIndicatorWidget(),
-                  error: (e, _) => ErrorMessageWidget(e.toString()),
-                  data: (clienteList) => (clienteList.isEmpty)
-                      ? const SinResultadosWidget()
-                      : ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          shrinkWrap: true,
-                          controller: _scrollController,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemCount: clienteList.length,
-                          itemBuilder: (context, i) => GestureDetector(
+                child: ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
+                  shrinkWrap: true,
+                  controller: _scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: state.when(
+                    data: (clienteList) => clienteList.length,
+                    loading: () => 1,
+                    error: (error, _) => 1,
+                  ),
+                  itemBuilder: (context, i) => state.when(
+                    data: (clienteList) => state.isRefreshing
+                        ? const ClienteListShimmer()
+                        : GestureDetector(
                             onTap: () => (!widget.isSearchClienteForFrom)
                                 ? navigateToClienteDetalle(
                                     context: context,
@@ -158,7 +143,9 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                               cliente: clienteList[i],
                             ),
                           ),
-                        ),
+                    loading: () => const ClienteListShimmer(),
+                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                  ),
                 ),
               ),
             ),

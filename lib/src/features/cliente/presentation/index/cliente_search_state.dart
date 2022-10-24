@@ -25,43 +25,51 @@ final clienteForFromStateProvider = StateProvider.autoDispose<Cliente?>((ref) {
 final clientesSearchResultsProvider = StateNotifierProvider.autoDispose<
     ClienteController, AsyncValue<List<Cliente>>>((ref) {
   final searchQuery = ref.watch(clientesSearchQueryStateProvider);
-  final paginationQuery = ref.watch(clientesPaginationQueryStateProvider);
+  // final paginationQuery = ref.watch(clientesPaginationQueryStateProvider);
   final potencialesQuery = ref.watch(clientesPotencialesQueryStateProvider);
 
   final clienteRepository = ref.watch(clienteRepositoryProvider);
 
   return ClienteController(
-      clienteRepository: clienteRepository,
-      page: paginationQuery,
-      searchQuery: searchQuery,
-      searchPotenciales: potencialesQuery);
+    clienteRepository: clienteRepository,
+    // page: paginationQuery,
+    searchQuery: searchQuery,
+    searchPotenciales: potencialesQuery,
+  );
 });
 
 class ClienteController extends StateNotifier<AsyncValue<List<Cliente>>> {
   final String searchQuery;
-  final int page;
+  // final int page;
   final bool searchPotenciales;
   final ClienteRepository clienteRepository;
 
   ClienteController(
       {required this.searchQuery,
-      required this.page,
+      // required this.page,
       required this.searchPotenciales,
       required this.clienteRepository})
       : super(const AsyncValue.loading()) {
     getClienteLista();
   }
 
+  int currentPage = 1;
+
   Future<void> getClienteLista() async {
     state = const AsyncValue.loading();
     try {
       final clienteList = await clienteRepository.getClienteLista(
-          page: page,
+          page: currentPage,
           searchText: searchQuery,
           searchPotenciales: searchPotenciales);
       state = AsyncValue.data(clienteList);
     } catch (e, stack) {
       state = AsyncValue.error(e, stack);
     }
+  }
+
+  Future<void> getNextPage() async {
+    currentPage = currentPage + 1;
+    getClienteLista();
   }
 }

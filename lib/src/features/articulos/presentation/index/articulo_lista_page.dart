@@ -5,9 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/last_sync_date_widget.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/sin_resultados_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -30,7 +30,6 @@ class ArticuloListaPage extends ConsumerStatefulWidget {
 
 class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   final _scrollController = ScrollController();
-  int page = 1;
   bool canLoadNextPage = false;
   final _debouncer = Debouncer(milliseconds: 500);
 
@@ -44,8 +43,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
 
       if (canLoadNextPage && metrics.pixels >= limit) {
         canLoadNextPage = false;
-        page++;
-        ref.read(articulosPaginationQueryStateProvider.notifier).state = page;
+        ref.read(articulosSearchResultsProvider.notifier).getNextPage();
       }
     });
   }
@@ -66,17 +64,17 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
 
   @override
   Widget build(BuildContext context) {
+    final stateLasySyncDate = ref.watch(articuloLastSyncDateProvider);
+    final state = ref.watch(articulosSearchResultsProvider);
     ref.listen<AsyncValue>(
       articulosSearchResultsProvider,
       (_, state) {
-        canLoadNextPage = true;
+        state.whenData((value) {
+          canLoadNextPage = true;
+        });
         state.showAlertDialogOnError(context);
       },
     );
-    final state = ref.watch(articulosSearchResultsProvider);
-
-    final stateLasySyncDate = ref.watch(articuloLastSyncDateProvider);
-
     return Scaffold(
       drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
@@ -87,7 +85,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
           _debouncer.run(() {
             ref.read(articulosSearchQueryStateProvider.notifier).state =
                 searchText;
-            ref.read(articulosPaginationQueryStateProvider.notifier).state = 1;
           });
         },
       ),
@@ -104,18 +101,20 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: state.when(
-                  loading: () => const ProgressIndicatorWidget(),
-                  error: (e, _) => ErrorMessageWidget(e.toString()),
-                  data: (articuloList) => (articuloList.isEmpty)
-                      ? const SinResultadosWidget()
-                      : ListView.separated(
-                          separatorBuilder: (context, i) => const Divider(),
-                          shrinkWrap: true,
-                          controller: _scrollController,
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemCount: articuloList.length,
-                          itemBuilder: (context, i) => GestureDetector(
+                child: ListView.separated(
+                  separatorBuilder: (context, i) => const Divider(),
+                  shrinkWrap: true,
+                  controller: _scrollController,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: state.when(
+                    data: (articuloList) => articuloList.length,
+                    loading: () => 1,
+                    error: (error, _) => 1,
+                  ),
+                  itemBuilder: (context, i) => state.when(
+                    data: (articuloList) => state.isRefreshing
+                        ? const ArticuloListShimmer()
+                        : GestureDetector(
                             onTap: () => (!widget.isSearchArticuloForForm)
                                 ? navigateToArticuloDetalPage(
                                     context, articuloList[i].id)
@@ -125,7 +124,9 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
                               articulo: articuloList[i],
                             ),
                           ),
-                        ),
+                    loading: () => const ArticuloListShimmer(),
+                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                  ),
                 ),
               ),
             ),
