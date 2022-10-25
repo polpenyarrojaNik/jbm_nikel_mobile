@@ -1,11 +1,15 @@
+import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_rappel_controller.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_rappel.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -18,6 +22,14 @@ class ClienteRappelPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<ClienteRappelControllerState>(clienteRappelControllerProvider,
+        (_, state) {
+      state.when(
+          data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+          error: (error) => showToast(error.toString(), context),
+          loading: () => showToast('Abriendo Archivo....', context),
+          initial: () => null);
+    });
     final state = ref.watch(clienteRappelProvider(clienteId));
     return Scaffold(
       body: CustomScrollView(
@@ -60,42 +72,35 @@ class ClienteRappelPage extends ConsumerWidget {
   }
 }
 
-class ClienteRappelTile extends StatelessWidget {
+class ClienteRappelTile extends ConsumerWidget {
   const ClienteRappelTile({super.key, required this.clienteRappel});
 
   final ClienteRappel clienteRappel;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: IntrinsicHeight(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 90,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                          dateFormatter(clienteRappel.fechaDesDe
-                              .toLocal()
-                              .toIso8601String()),
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .caption
-                                      ?.color)),
-                      if (clienteRappel.fechaHasta != null) const Spacer(),
-                      if (clienteRappel.fechaHasta != null)
+  Widget build(BuildContext context, WidgetRef ref) {
+    return GestureDetector(
+      onTap: () => (clienteRappel.nombreArchivo != null)
+          ? openFile(
+              rappelId: clienteRappel.rappelId,
+              nombreArchivo: clienteRappel.nombreArchivo!,
+              ref: ref)
+          : null,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 90,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                         Text(
-                            dateFormatter(clienteRappel.fechaHasta!
+                            dateFormatter(clienteRappel.fechaDesDe
                                 .toLocal()
                                 .toIso8601String()),
                             style: Theme.of(context)
@@ -106,24 +111,47 @@ class ClienteRappelTile extends StatelessWidget {
                                         .textTheme
                                         .caption
                                         ?.color)),
-                    ],
+                        if (clienteRappel.fechaHasta != null) const Spacer(),
+                        if (clienteRappel.fechaHasta != null)
+                          Text(
+                              dateFormatter(clienteRappel.fechaHasta!
+                                  .toLocal()
+                                  .toIso8601String()),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption
+                                          ?.color)),
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(clienteRappel.descripcion,
-                          style: Theme.of(context).textTheme.subtitle2),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(clienteRappel.descripcion,
+                            style: Theme.of(context).textTheme.subtitle2),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        const Divider(),
-      ],
+          const Divider(),
+        ],
+      ),
     );
+  }
+
+  void openFile(
+      {required String rappelId,
+      required String nombreArchivo,
+      required WidgetRef ref}) {
+    ref.read(clienteRappelControllerProvider.notifier).getRappelDocumentFile(
+        adjuntoParam: AdjuntoParam(id: rappelId, nombreArchivo: nombreArchivo));
   }
 }

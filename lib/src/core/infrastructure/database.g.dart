@@ -8577,6 +8577,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
   final Value<String> descripcion;
   final Value<DateTime> fechaDesDe;
   final Value<DateTime?> fechaHasta;
+  final Value<String?> nombreArchivo;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ClienteRappelTableCompanion({
@@ -8585,6 +8586,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     this.descripcion = const Value.absent(),
     this.fechaDesDe = const Value.absent(),
     this.fechaHasta = const Value.absent(),
+    this.nombreArchivo = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -8594,6 +8596,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     required String descripcion,
     required DateTime fechaDesDe,
     this.fechaHasta = const Value.absent(),
+    this.nombreArchivo = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
@@ -8607,6 +8610,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     Expression<String>? descripcion,
     Expression<DateTime>? fechaDesDe,
     Expression<DateTime>? fechaHasta,
+    Expression<String>? nombreArchivo,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -8616,6 +8620,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
       if (descripcion != null) 'DESCRIPCION': descripcion,
       if (fechaDesDe != null) 'FECHA_DESDE': fechaDesDe,
       if (fechaHasta != null) 'FECHA_HASTA': fechaHasta,
+      if (nombreArchivo != null) 'NOMBRE_ARCHIVO': nombreArchivo,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -8627,6 +8632,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
       Value<String>? descripcion,
       Value<DateTime>? fechaDesDe,
       Value<DateTime?>? fechaHasta,
+      Value<String?>? nombreArchivo,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ClienteRappelTableCompanion(
@@ -8635,6 +8641,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
       descripcion: descripcion ?? this.descripcion,
       fechaDesDe: fechaDesDe ?? this.fechaDesDe,
       fechaHasta: fechaHasta ?? this.fechaHasta,
+      nombreArchivo: nombreArchivo ?? this.nombreArchivo,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8658,6 +8665,9 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     if (fechaHasta.present) {
       map['FECHA_HASTA'] = Variable<DateTime>(fechaHasta.value);
     }
+    if (nombreArchivo.present) {
+      map['NOMBRE_ARCHIVO'] = Variable<String>(nombreArchivo.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -8675,6 +8685,7 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
           ..write('descripcion: $descripcion, ')
           ..write('fechaDesDe: $fechaDesDe, ')
           ..write('fechaHasta: $fechaHasta, ')
+          ..write('nombreArchivo: $nombreArchivo, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -8714,6 +8725,12 @@ class $ClienteRappelTableTable extends ClienteRappelTable
   late final GeneratedColumn<DateTime> fechaHasta = GeneratedColumn<DateTime>(
       'FECHA_HASTA', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  final VerificationMeta _nombreArchivoMeta =
+      const VerificationMeta('nombreArchivo');
+  @override
+  late final GeneratedColumn<String> nombreArchivo = GeneratedColumn<String>(
+      'NOMBRE_ARCHIVO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -8734,6 +8751,7 @@ class $ClienteRappelTableTable extends ClienteRappelTable
         descripcion,
         fechaDesDe,
         fechaHasta,
+        nombreArchivo,
         lastUpdated,
         deleted
       ];
@@ -8780,6 +8798,12 @@ class $ClienteRappelTableTable extends ClienteRappelTable
           fechaHasta.isAcceptableOrUnknown(
               data['FECHA_HASTA']!, _fechaHastaMeta));
     }
+    if (data.containsKey('NOMBRE_ARCHIVO')) {
+      context.handle(
+          _nombreArchivoMeta,
+          nombreArchivo.isAcceptableOrUnknown(
+              data['NOMBRE_ARCHIVO']!, _nombreArchivoMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -8811,6 +8835,8 @@ class $ClienteRappelTableTable extends ClienteRappelTable
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_DESDE'])!,
       fechaHasta: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_HASTA']),
+      nombreArchivo: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_ARCHIVO']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types

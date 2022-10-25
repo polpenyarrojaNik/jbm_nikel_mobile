@@ -21,6 +21,7 @@ mixin _$ClienteRappel {
   String get descripcion => throw _privateConstructorUsedError;
   DateTime get fechaDesDe => throw _privateConstructorUsedError;
   DateTime? get fechaHasta => throw _privateConstructorUsedError;
+  String? get nombreArchivo => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -41,6 +42,7 @@ abstract class $ClienteRappelCopyWith<$Res> {
       String descripcion,
       DateTime fechaDesDe,
       DateTime? fechaHasta,
+      String? nombreArchivo,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -63,6 +65,7 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
     Object? descripcion = null,
     Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
+    Object? nombreArchivo = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -87,6 +90,10 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -113,6 +120,7 @@ abstract class _$$_ClienteRappelCopyWith<$Res>
       String descripcion,
       DateTime fechaDesDe,
       DateTime? fechaHasta,
+      String? nombreArchivo,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -133,6 +141,7 @@ class __$$_ClienteRappelCopyWithImpl<$Res>
     Object? descripcion = null,
     Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
+    Object? nombreArchivo = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -157,6 +166,10 @@ class __$$_ClienteRappelCopyWithImpl<$Res>
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -178,6 +191,7 @@ class _$_ClienteRappel extends _ClienteRappel {
       required this.descripcion,
       required this.fechaDesDe,
       this.fechaHasta,
+      this.nombreArchivo,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -193,13 +207,15 @@ class _$_ClienteRappel extends _ClienteRappel {
   @override
   final DateTime? fechaHasta;
   @override
+  final String? nombreArchivo;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -217,6 +233,8 @@ class _$_ClienteRappel extends _ClienteRappel {
                 other.fechaDesDe == fechaDesDe) &&
             (identical(other.fechaHasta, fechaHasta) ||
                 other.fechaHasta == fechaHasta) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -224,7 +242,7 @@ class _$_ClienteRappel extends _ClienteRappel {
 
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
-      fechaDesDe, fechaHasta, lastUpdated, deleted);
+      fechaDesDe, fechaHasta, nombreArchivo, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -240,6 +258,7 @@ abstract class _ClienteRappel extends ClienteRappel {
       required final String descripcion,
       required final DateTime fechaDesDe,
       final DateTime? fechaHasta,
+      final String? nombreArchivo,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClienteRappel;
   const _ClienteRappel._() : super._();
@@ -254,6 +273,8 @@ abstract class _ClienteRappel extends ClienteRappel {
   DateTime get fechaDesDe;
   @override
   DateTime? get fechaHasta;
+  @override
+  String? get nombreArchivo;
   @override
   DateTime get lastUpdated;
   @override

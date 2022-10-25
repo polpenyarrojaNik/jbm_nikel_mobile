@@ -30,6 +30,8 @@ mixin _$ClienteRappelDTO {
   DateTime get fechaDesDe => throw _privateConstructorUsedError;
   @JsonKey(name: 'FECHA_HASTA')
   DateTime? get fechaHasta => throw _privateConstructorUsedError;
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  String? get nombreArchivo => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -53,6 +55,7 @@ abstract class $ClienteRappelDTOCopyWith<$Res> {
       @JsonKey(name: 'DESCRIPCION') String descripcion,
       @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesDe,
       @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -75,6 +78,7 @@ class _$ClienteRappelDTOCopyWithImpl<$Res, $Val extends ClienteRappelDTO>
     Object? descripcion = null,
     Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
+    Object? nombreArchivo = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -99,6 +103,10 @@ class _$ClienteRappelDTOCopyWithImpl<$Res, $Val extends ClienteRappelDTO>
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -125,6 +133,7 @@ abstract class _$$_ClienteRappelDTOCopyWith<$Res>
       @JsonKey(name: 'DESCRIPCION') String descripcion,
       @JsonKey(name: 'FECHA_DESDE') DateTime fechaDesDe,
       @JsonKey(name: 'FECHA_HASTA') DateTime? fechaHasta,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -145,6 +154,7 @@ class __$$_ClienteRappelDTOCopyWithImpl<$Res>
     Object? descripcion = null,
     Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
+    Object? nombreArchivo = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -169,6 +179,10 @@ class __$$_ClienteRappelDTOCopyWithImpl<$Res>
           ? _value.fechaHasta
           : fechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      nombreArchivo: freezed == nombreArchivo
+          ? _value.nombreArchivo
+          : nombreArchivo // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -190,6 +204,7 @@ class _$_ClienteRappelDTO extends _ClienteRappelDTO {
       @JsonKey(name: 'DESCRIPCION') required this.descripcion,
       @JsonKey(name: 'FECHA_DESDE') required this.fechaDesDe,
       @JsonKey(name: 'FECHA_HASTA') required this.fechaHasta,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') this.nombreArchivo,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
       @JsonKey(name: 'DELETED') this.deleted = 'N'})
       : super._();
@@ -213,6 +228,9 @@ class _$_ClienteRappelDTO extends _ClienteRappelDTO {
   @JsonKey(name: 'FECHA_HASTA')
   final DateTime? fechaHasta;
   @override
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  final String? nombreArchivo;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -221,7 +239,7 @@ class _$_ClienteRappelDTO extends _ClienteRappelDTO {
 
   @override
   String toString() {
-    return 'ClienteRappelDTO(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteRappelDTO(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -239,6 +257,8 @@ class _$_ClienteRappelDTO extends _ClienteRappelDTO {
                 other.fechaDesDe == fechaDesDe) &&
             (identical(other.fechaHasta, fechaHasta) ||
                 other.fechaHasta == fechaHasta) &&
+            (identical(other.nombreArchivo, nombreArchivo) ||
+                other.nombreArchivo == nombreArchivo) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -247,7 +267,7 @@ class _$_ClienteRappelDTO extends _ClienteRappelDTO {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
-      fechaDesDe, fechaHasta, lastUpdated, deleted);
+      fechaDesDe, fechaHasta, nombreArchivo, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -270,6 +290,7 @@ abstract class _ClienteRappelDTO extends ClienteRappelDTO {
       @JsonKey(name: 'DESCRIPCION') required final String descripcion,
       @JsonKey(name: 'FECHA_DESDE') required final DateTime fechaDesDe,
       @JsonKey(name: 'FECHA_HASTA') required final DateTime? fechaHasta,
+      @JsonKey(name: 'NOMBRE_ARCHIVO') final String? nombreArchivo,
       @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteRappelDTO;
   const _ClienteRappelDTO._() : super._();
@@ -292,6 +313,9 @@ abstract class _ClienteRappelDTO extends ClienteRappelDTO {
   @override
   @JsonKey(name: 'FECHA_HASTA')
   DateTime? get fechaHasta;
+  @override
+  @JsonKey(name: 'NOMBRE_ARCHIVO')
+  String? get nombreArchivo;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

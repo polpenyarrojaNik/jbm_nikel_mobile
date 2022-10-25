@@ -49,11 +49,12 @@ part 'database.g.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) {
-    DatabaseConnection connection = DatabaseConnection.delayed(() async {
-      final isolate = await _createDriftIsolate();
-      return await isolate.connect();
-    }());
-    return AppDatabase.connect(connection, false);
+    // DatabaseConnection connection = DatabaseConnection.delayed(() async {
+    //   final isolate = await _createDriftIsolate();
+    //   return await isolate.connect();
+    // }());
+    // return AppDatabase.connect(connection, false);
+    return AppDatabase();
   },
 );
 const localDatabaseName = 'jbm.sqlite';
@@ -102,7 +103,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.connect(super.connection, this.test) : super.connect();
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 }
 
 LazyDatabase _openConnection() {

@@ -565,6 +565,49 @@ class ClienteRepository {
     }
   }
 
+  Future<File?> getRappelDocumentFile(
+      {required AdjuntoParam adjuntoParam,
+      required String provisionalToken,
+      required bool test}) async {
+    try {
+      if (adjuntoParam.nombreArchivo != '') {
+        final query = {'NOMBRE_ARCHIVO': adjuntoParam.nombreArchivo};
+        final data = await _remoteGetAttachment(
+            requestUri: (test)
+                ? Uri.http(
+                    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
+                    query,
+                  )
+                : Uri.https(
+                    dotenv.get('URL', fallback: 'localhost:3001'),
+                    'api/v1/online/adjunto/rappel/${adjuntoParam.id}',
+                    query,
+                  ),
+            provisionalToken: provisionalToken);
+
+        try {
+          final cahceDirectories = await getTemporaryDirectory();
+          print(
+              '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+          final File file = await File(
+                  '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
+              .create(recursive: true);
+          final raf = file.openSync(mode: FileMode.write);
+          raf.writeFromSync(data);
+          await raf.close();
+          return file;
+        } catch (e) {
+          throw AppException.createFileInCacheFailure(e.toString());
+        }
+      }
+
+      return null;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<List<int>> _remoteGetAttachment({
     required Uri requestUri,
     required String provisionalToken,

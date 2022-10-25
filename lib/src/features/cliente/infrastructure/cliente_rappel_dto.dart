@@ -20,6 +20,7 @@ class ClienteRappelDTO
     @JsonKey(name: 'DESCRIPCION') required String descripcion,
     @JsonKey(name: 'FECHA_DESDE') required DateTime fechaDesDe,
     @JsonKey(name: 'FECHA_HASTA') required DateTime? fechaHasta,
+    @JsonKey(name: 'NOMBRE_ARCHIVO') String? nombreArchivo,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteRappelDTO;
@@ -34,6 +35,7 @@ class ClienteRappelDTO
       descripcion: descripcion,
       fechaDesDe: fechaDesDe,
       fechaHasta: fechaHasta,
+      nombreArchivo: nombreArchivo,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -47,6 +49,7 @@ class ClienteRappelDTO
       descripcion: Value(descripcion),
       fechaDesDe: Value(fechaDesDe),
       fechaHasta: Value(fechaHasta),
+      nombreArchivo: Value(nombreArchivo),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -66,6 +69,7 @@ class ClienteRappelTable extends Table {
   TextColumn get descripcion => text().named('DESCRIPCION')();
   DateTimeColumn get fechaDesDe => dateTime().named('FECHA_DESDE')();
   DateTimeColumn get fechaHasta => dateTime().nullable().named('FECHA_HASTA')();
+  TextColumn get nombreArchivo => text().nullable().named('NOMBRE_ARCHIVO')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

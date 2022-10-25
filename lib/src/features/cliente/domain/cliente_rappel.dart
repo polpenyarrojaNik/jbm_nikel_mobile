@@ -11,6 +11,7 @@ class ClienteRappel with _$ClienteRappel {
       required String descripcion,
       required DateTime fechaDesDe,
       DateTime? fechaHasta,
+      String? nombreArchivo,
       required DateTime lastUpdated,
       required bool deleted}) = _ClienteRappel;
 }
