@@ -86,62 +86,76 @@ class ClienteRappelTile extends ConsumerWidget {
               nombreArchivo: clienteRappel.nombreArchivo!,
               ref: ref)
           : null,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: IntrinsicHeight(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 90,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            dateFormatter(clienteRappel.fechaDesDe
-                                .toLocal()
-                                .toIso8601String()),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color)),
-                        if (clienteRappel.fechaHasta != null) const Spacer(),
-                        if (clienteRappel.fechaHasta != null)
-                          Text(
-                              dateFormatter(clienteRappel.fechaHasta!
-                                  .toLocal()
-                                  .toIso8601String()),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color)),
-                      ],
-                    ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 90,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                                dateFormatter(clienteRappel.fechaDesDe
+                                    .toLocal()
+                                    .toIso8601String()),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2
+                                    ?.copyWith(
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .caption
+                                            ?.color)),
+                            if (clienteRappel.fechaHasta != null)
+                              const Spacer(),
+                            if (clienteRappel.fechaHasta != null)
+                              Text(
+                                  dateFormatter(clienteRappel.fechaHasta!
+                                      .toLocal()
+                                      .toIso8601String()),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText2
+                                      ?.copyWith(
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .caption
+                                              ?.color)),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(clienteRappel.descripcion,
+                                style: Theme.of(context).textTheme.subtitle2),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(clienteRappel.descripcion,
-                            style: Theme.of(context).textTheme.subtitle2),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+              const Divider(),
+            ],
           ),
-          const Divider(),
+          IconButton(
+              onPressed: () => (clienteRappel.nombreArchivo != null)
+                  ? openFile(
+                      rappelId: clienteRappel.rappelId,
+                      nombreArchivo: clienteRappel.nombreArchivo!,
+                      ref: ref)
+                  : null,
+              icon: const Icon(Icons.navigate_next_outlined))
         ],
       ),
     );
