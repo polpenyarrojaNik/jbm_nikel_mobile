@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:isolate';
 
 import 'package:drift/drift.dart';
+import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
@@ -41,11 +43,18 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import 'familia_dto.dart';
+import 'package:path/path.dart' as p;
 
 part 'database.g.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>(
-  (ref) => AppDatabase(),
+  (ref) {
+    DatabaseConnection connection = DatabaseConnection.delayed(() async {
+      final isolate = await _createDriftIsolate();
+      return await isolate.connect();
+    }());
+    return AppDatabase.connect(connection, false);
+  },
 );
 const localDatabaseName = 'jbm.sqlite';
 
@@ -87,26 +96,61 @@ const localDatabaseName = 'jbm.sqlite';
   DescuentoGeneralTable,
 ])
 class AppDatabase extends _$AppDatabase {
-  final String? databaseFile;
   final bool test;
-  AppDatabase({this.databaseFile, this.test = false})
-      : super(test ? NativeDatabase.memory() : _openConnection(databaseFile));
+  AppDatabase({this.test = false}) : super(_openConnection());
+
+  AppDatabase.connect(super.connection, this.test) : super.connect();
 
   @override
   int get schemaVersion => 2;
 }
 
-LazyDatabase _openConnection(String? databaseFile) {
+LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     late File file;
-    if (databaseFile == null) {
-      final dbFolder = await getApplicationDocumentsDirectory();
+    // if (databaseFile == null) {
+    final dbFolder = await getApplicationDocumentsDirectory();
 
-      file = File(join(dbFolder.path, localDatabaseName));
-    } else {
-      file = File(databaseFile);
-    }
+    file = File(join(dbFolder.path, localDatabaseName));
+    // }
+    //  else {
+    //   file = File(databaseFile);
+    // }
 
     return NativeDatabase(file);
   });
+}
+
+Future<DriftIsolate> _createDriftIsolate() async {
+  final dir = await getApplicationDocumentsDirectory();
+  final path = p.join(dir.path, localDatabaseName);
+  final receivePort = ReceivePort();
+
+  await Isolate.spawn(
+    _startBackground,
+    _IsolateRequest(receivePort.sendPort, path),
+  );
+
+  // ReceivePort will receive the DriftIsolate from background isolate, send by _startBackground
+  return await receivePort.first as DriftIsolate;
+}
+
+void _startBackground(_IsolateRequest request) {
+  // at this moment this process is already on another Isolate. To create a database from file the path should be
+  // passed from request
+  final executor = NativeDatabase(File(request.targetPath));
+  // this is already a background isolate, so there is no need to create another, like in DriftIsolate.spawn() method.
+  // Using DriftIsolate.inCurrent() allows to run executor on current thread
+  final driftIsolate = DriftIsolate.inCurrent(
+    () => DatabaseConnection(executor),
+  );
+  // send back created DriftIsolate to main thread through SendPort
+  request.sendDriftIsolate.send(driftIsolate);
+}
+
+class _IsolateRequest {
+  final SendPort sendDriftIsolate;
+  final String targetPath;
+
+  _IsolateRequest(this.sendDriftIsolate, this.targetPath);
 }
