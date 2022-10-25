@@ -95,6 +95,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                   ReactiveTextField<String>(
                     formControlName: 'contrasenya',
                     obscureText: true,
+                    textCapitalization: TextCapitalization.characters,
                     validationMessages: {
                       ValidationMessage.required: (error) =>
                           S.of(context).auth_loginPage_requerido

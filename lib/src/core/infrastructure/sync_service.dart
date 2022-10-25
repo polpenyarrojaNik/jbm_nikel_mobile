@@ -783,7 +783,9 @@ class SyncService {
         await remotePageItems.maybeWhen(
           orElse: () {},
           withNewData: (data, maxPage, totalRows) async {
+            print(DateTime.now());
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
+            print(DateTime.now());
             print('Values to sync in $apiPath: ${tableValueDTOList.length}');
             for (var i = 0; i < tableValueDTOList.length; i++) {
               final tableValue = tableValueDTOList[i];
@@ -794,6 +796,7 @@ class SyncService {
                 await upsertTable(tableInfo: tableInfo, dto: tableValue);
               }
             }
+            print(DateTime.now());
 
             isNextPageAvailable = page < maxPage;
             totalRows = totalRows;
