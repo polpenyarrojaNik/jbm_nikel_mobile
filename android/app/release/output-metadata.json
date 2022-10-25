@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "es.nikel.jbm.jbm_nikel_mobile",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 7,
+      "versionName": "1.0.1",
+      "outputFile": "app-release.apk"
+    }
+  ]
+}
