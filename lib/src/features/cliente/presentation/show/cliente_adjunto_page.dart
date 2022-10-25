@@ -29,7 +29,9 @@ class ClienteAdjuntoPage extends ConsumerWidget {
       state.when(
           data: (file) => (file != null) ? OpenFile.open(file.path) : null,
           error: (error) => showToast(error.toString(), context),
-          loading: () => showToast('Abriendo Archivo....', context),
+          loading: () => showToast(
+              S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+              context),
           initial: () => null);
     });
     final state = ref.watch(clienteAdjuntoProvider(clienteId));

@@ -27,7 +27,9 @@ class ClienteRappelPage extends ConsumerWidget {
       state.when(
           data: (file) => (file != null) ? OpenFile.open(file.path) : null,
           error: (error) => showToast(error.toString(), context),
-          loading: () => showToast('Abriendo Archivo....', context),
+          loading: () => showToast(
+              S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
+              context),
           initial: () => null);
     });
     final state = ref.watch(clienteRappelProvider(clienteId));
@@ -128,15 +130,23 @@ class ClienteRappelTile extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(clienteRappel.descripcion,
-                            style: Theme.of(context).textTheme.subtitle2),
-                      ],
+                  Text(clienteRappel.descripcion,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  const Spacer(),
+                  IconButton(
+                    visualDensity:
+                        const VisualDensity(horizontal: -4, vertical: -4),
+                    onPressed: () => (clienteRappel.nombreArchivo != null)
+                        ? openFile(
+                            rappelId: clienteRappel.rappelId,
+                            nombreArchivo: clienteRappel.nombreArchivo!,
+                            ref: ref)
+                        : null,
+                    icon: const Icon(
+                      Icons.navigate_next_outlined,
+                      size: 16,
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
