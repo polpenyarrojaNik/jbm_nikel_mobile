@@ -49,12 +49,12 @@ part 'database.g.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) {
-    // DatabaseConnection connection = DatabaseConnection.delayed(() async {
-    //   final isolate = await _createDriftIsolate();
-    //   return await isolate.connect();
-    // }());
-    // return AppDatabase.connect(connection, false);
-    return AppDatabase();
+    DatabaseConnection connection = DatabaseConnection.delayed(() async {
+      final isolate = await _createDriftIsolate();
+      return await isolate.connect();
+    }());
+    return AppDatabase.connect(connection, false);
+    // return AppDatabase();
   },
 );
 const localDatabaseName = 'jbm.sqlite';
