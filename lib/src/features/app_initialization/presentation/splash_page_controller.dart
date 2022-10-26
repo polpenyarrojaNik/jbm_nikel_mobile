@@ -64,8 +64,10 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
         await _syncService.syncAllVisitasRelacionados(syncAuxTables: false);
       }
       state = const SplashControllerState.data(SplashProgress.syncVisitas);
-
-      await _syncService.syncAllAuxiliares();
+      if (await sincronizarValoresPorTiempo(
+          preferenceKey: visitaFechaUltimaSyncKey)) {
+        await _syncService.syncAllAuxiliares();
+      }
       state = const SplashControllerState.data(SplashProgress.syncAuxiliar);
     } on AppException catch (e, stackTrace) {
       state = SplashControllerState.error(e, stackTrace: stackTrace);
@@ -79,7 +81,7 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
     final sharedPreferences = await SharedPreferences.getInstance();
     final dateUTCString = sharedPreferences.getString(preferenceKey) as String;
     final lastSyncDateUTC =
-        DateTime.parse(dateUTCString).add(const Duration(minutes: 15));
+        DateTime.parse(dateUTCString).add(const Duration(minutes: 30));
     print(lastSyncDateUTC.isBefore(DateTime.now().toUtc()));
     return lastSyncDateUTC.isBefore(DateTime.now().toUtc());
   }
