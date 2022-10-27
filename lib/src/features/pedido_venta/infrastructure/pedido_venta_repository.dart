@@ -44,6 +44,13 @@ final pedidoVentaProvider = FutureProvider.autoDispose
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 });
 
+final deletePedidoVentaProvider =
+    FutureProvider.autoDispose.family<void, String>((ref, pedidoVentaAppId) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.deletePedidoVenta(
+      pedidoVentaAppId: pedidoVentaAppId);
+});
+
 final pedidoVentaLastSyncDateProvider =
     FutureProvider.autoDispose<DateTime>((ref) async {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);

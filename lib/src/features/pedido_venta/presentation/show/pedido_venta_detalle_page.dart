@@ -14,9 +14,11 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
+import '../index/pedido_search_state.dart';
 
 class PedidoVentaDetallePage extends ConsumerWidget {
   const PedidoVentaDetallePage(
@@ -27,6 +29,7 @@ class PedidoVentaDetallePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -40,6 +43,15 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                       onPressed: () => context.router.push(
                         PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
                       ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        ref.read(deletePedidoVentaProvider(
+                            pedidoVentaIdIsLocalParam.id));
+                        ref.invalidate(pedidosSearchResultsProvider);
+                        context.router.pop();
+                      },
                     ),
                   ]
                 : null),

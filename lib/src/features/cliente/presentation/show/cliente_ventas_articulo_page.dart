@@ -100,6 +100,14 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
       ),
       DataColumn(
         label: Expanded(
+          child: Text(
+              S.of(context).cliente_show_clienteVentasArticulo_description,
+              textAlign: TextAlign.center),
+        ),
+        numeric: true,
+      ),
+      DataColumn(
+        label: Expanded(
           child: Center(
               child: Text(
                   '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${DateTime.now().year.toString()}',
@@ -201,33 +209,29 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
       dataRows.add(
         DataRow(
           cells: [
-            DataCell(IntrinsicHeight(
-              child: SizedBox(
-                width: 300,
-                child: Row(
-                  children: [
-                    Text(
-                      clienteVentasArticuloList[i].articuloId,
-                    ),
-                    const VerticalDivider(),
-                    if (getClienteVentasArticuloDescripcionInLocalLanguage(
-                            clienteVentasArticulo:
-                                clienteVentasArticuloList[i]) !=
-                        null)
-                      Flexible(
-                        child: Text(
-                          getClienteVentasArticuloDescripcionInLocalLanguage(
-                              clienteVentasArticulo:
-                                  clienteVentasArticuloList[i])!,
-                          style: Theme.of(context).textTheme.caption,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                  ],
-                ),
+            DataCell(
+              Text(
+                clienteVentasArticuloList[i].articuloId,
               ),
-            )),
+            ),
+            DataCell(
+              SizedBox(
+                width: 300,
+                child: Flexible(
+                    child: Text(
+                  (getClienteVentasArticuloDescripcionInLocalLanguage(
+                              clienteVentasArticulo:
+                                  clienteVentasArticuloList[i]) !=
+                          null)
+                      ? getClienteVentasArticuloDescripcionInLocalLanguage(
+                          clienteVentasArticulo: clienteVentasArticuloList[i])!
+                      : '',
+                  style: Theme.of(context).textTheme.caption,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                )),
+              ),
+            ),
             DataCell(
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
