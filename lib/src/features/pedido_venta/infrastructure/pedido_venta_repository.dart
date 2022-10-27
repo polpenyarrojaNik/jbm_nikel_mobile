@@ -166,6 +166,7 @@ class PedidoVentaRepository {
     if (searchText != '') {
       query.where(
         _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+            _db.pedidoVentaLocalTable.tratada.equals('N') &
             (_db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
                 _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
                 _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
@@ -173,7 +174,8 @@ class PedidoVentaRepository {
                 _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
       );
     } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+          _db.pedidoVentaLocalTable.tratada.equals('N'));
     }
 
     query.orderBy([
