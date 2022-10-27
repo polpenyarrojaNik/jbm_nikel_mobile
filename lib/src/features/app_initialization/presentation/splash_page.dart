@@ -164,11 +164,16 @@ class SyncProgressItem extends StatelessWidget {
                   Icons.check_circle,
                   color: Colors.green,
                 )
-              : const SizedBox(
-                  height: 25,
-                  width: 25,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
+              : ((currentSplashProgress.value + 1) < splashProgressItem.value)
+                  ? const Icon(
+                      Icons.remove_circle,
+                      color: Colors.orange,
+                    )
+                  : const SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
         ],
       ),
     );
