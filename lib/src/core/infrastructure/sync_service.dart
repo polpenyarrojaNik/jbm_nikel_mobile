@@ -1033,7 +1033,7 @@ class SyncService {
       final query = _db.select(_db.pedidoVentaLocalTable).join([
         innerJoin(
             _db.pedidoVentaTable,
-            _db.pedidoVentaTable.pedidoVentaId
+            _db.pedidoVentaTable.pedidoVentaAppId
                 .equalsExp(_db.pedidoVentaLocalTable.pedidoVentaAppId))
       ]);
 

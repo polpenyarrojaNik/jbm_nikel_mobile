@@ -42,6 +42,7 @@ class PedidoVentaDTO
     @JsonKey(name: 'TOTAL') required double total,
     @JsonKey(name: 'ESTADO_PEDIDO_ID') required int pedidoVentaEstadoId,
     @JsonKey(name: 'OFERTA_SN') required String oferta,
+    @JsonKey(name: 'PEDIDO_APP_ID') String? pedidoVentaAppId,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') required String deleted,
@@ -103,6 +104,7 @@ class PedidoVentaDTO
       pedidoVentaEstado: pedidoVentaEstado,
       oferta: (oferta == 'S') ? true : false,
       iva: iva,
+      pedidoVentaAppId: pedidoVentaAppId,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
       enviada: true,
@@ -133,6 +135,7 @@ class PedidoVentaDTO
       importeIva: Value(importeIva),
       total: Value(total),
       pedidoVentaEstadoId: Value(pedidoVentaEstadoId),
+      pedidoVentaAppId: Value(pedidoVentaAppId),
       oferta: Value(oferta),
       iva: Value(iva),
       lastUpdated: Value(lastUpdated),
@@ -187,6 +190,7 @@ class PedidoVentaTable extends Table {
       .named('ESTADO_PEDIDO_ID')();
   TextColumn get oferta =>
       text().withDefault(const Constant('N')).named('OFERTA_SN')();
+  TextColumn get pedidoVentaAppId => text().nullable().named('PEDIDO_APP_ID')();
   RealColumn get iva => real().withDefault(const Constant(0.0)).named('IVA')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>

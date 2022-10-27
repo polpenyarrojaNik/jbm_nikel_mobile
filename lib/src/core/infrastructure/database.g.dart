@@ -1711,6 +1711,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
   final Value<double> total;
   final Value<int> pedidoVentaEstadoId;
   final Value<String> oferta;
+  final Value<String?> pedidoVentaAppId;
   final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
@@ -1736,6 +1737,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.total = const Value.absent(),
     this.pedidoVentaEstadoId = const Value.absent(),
     this.oferta = const Value.absent(),
+    this.pedidoVentaAppId = const Value.absent(),
     this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
@@ -1762,6 +1764,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.total = const Value.absent(),
     this.pedidoVentaEstadoId = const Value.absent(),
     this.oferta = const Value.absent(),
+    this.pedidoVentaAppId = const Value.absent(),
     this.iva = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
@@ -1795,6 +1798,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     Expression<double>? total,
     Expression<int>? pedidoVentaEstadoId,
     Expression<String>? oferta,
+    Expression<String>? pedidoVentaAppId,
     Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
@@ -1821,6 +1825,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       if (total != null) 'TOTAL': total,
       if (pedidoVentaEstadoId != null) 'ESTADO_PEDIDO_ID': pedidoVentaEstadoId,
       if (oferta != null) 'OFERTA_SN': oferta,
+      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
       if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
@@ -1849,6 +1854,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       Value<double>? total,
       Value<int>? pedidoVentaEstadoId,
       Value<String>? oferta,
+      Value<String?>? pedidoVentaAppId,
       Value<double>? iva,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
@@ -1874,6 +1880,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       total: total ?? this.total,
       pedidoVentaEstadoId: pedidoVentaEstadoId ?? this.pedidoVentaEstadoId,
       oferta: oferta ?? this.oferta,
+      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
       iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
@@ -1946,6 +1953,9 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     if (oferta.present) {
       map['OFERTA_SN'] = Variable<String>(oferta.value);
     }
+    if (pedidoVentaAppId.present) {
+      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    }
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
     }
@@ -1982,6 +1992,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
           ..write('total: $total, ')
           ..write('pedidoVentaEstadoId: $pedidoVentaEstadoId, ')
           ..write('oferta: $oferta, ')
+          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
           ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
@@ -2153,6 +2164,12 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
+  final VerificationMeta _pedidoVentaAppIdMeta =
+      const VerificationMeta('pedidoVentaAppId');
+  @override
+  late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
+      'PEDIDO_APP_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
@@ -2196,6 +2213,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
         total,
         pedidoVentaEstadoId,
         oferta,
+        pedidoVentaAppId,
         iva,
         lastUpdated,
         deleted
@@ -2331,6 +2349,12 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       context.handle(_ofertaMeta,
           oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta));
     }
+    if (data.containsKey('PEDIDO_APP_ID')) {
+      context.handle(
+          _pedidoVentaAppIdMeta,
+          pedidoVentaAppId.isAcceptableOrUnknown(
+              data['PEDIDO_APP_ID']!, _pedidoVentaAppIdMeta));
+    }
     if (data.containsKey('IVA')) {
       context.handle(
           _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
@@ -2398,6 +2422,8 @@ class $PedidoVentaTableTable extends PedidoVentaTable
           .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
       oferta: attachedDatabase.options.types
           .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
+      pedidoVentaAppId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID']),
       iva: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
       lastUpdated: attachedDatabase.options.types

@@ -36,6 +36,7 @@ class PedidoVenta with _$PedidoVenta {
     PedidoVentaEstado? pedidoVentaEstado,
     bool? oferta,
     double? dtoBonificacion,
+    String? pedidoAppId,
     required double iva,
     required DateTime lastUpdated,
     required bool deleted,

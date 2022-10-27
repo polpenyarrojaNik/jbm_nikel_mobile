@@ -63,4 +63,9 @@ class Cliente with _$Cliente {
       ClienteTipoPotencial? clienteTipoPotencial,
       DateTime? lastUpdated,
       required bool deleted}) = _Cliente;
+
+  bool isActivo() {
+    return (ventasAnyoActual + ventasAnyoAnterior) !=
+        Money.parse('0', code: divisa!.id);
+  }
 }
