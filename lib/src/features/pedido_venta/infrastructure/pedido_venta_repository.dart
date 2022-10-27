@@ -380,12 +380,12 @@ class PedidoVentaRepository {
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
     try {
-      return await _db.transaction(() async {
-        (_db.delete(_db.pedidoVentaLocalTable))
-            .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
-        (_db.delete(_db.pedidoVentaLineaLocalTable))
-            .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
-      });
+      _db
+          .delete(_db.pedidoVentaLocalTable)
+          .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
+      _db
+          .delete(_db.pedidoVentaLineaLocalTable)
+          .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }

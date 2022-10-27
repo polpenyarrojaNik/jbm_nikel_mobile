@@ -14,7 +14,6 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
-import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
@@ -123,9 +122,11 @@ class ClienteInfoContainer extends StatelessWidget {
                 '#${pedidoVenta.clienteId} ${pedidoVenta.nombreCliente}',
               ),
             ),
+            gapW12,
             Text(
               dateFormatter(
                 pedidoVenta.pedidoVentaDate.toLocal().toIso8601String(),
+                allDay: true,
               ),
             ),
           ],

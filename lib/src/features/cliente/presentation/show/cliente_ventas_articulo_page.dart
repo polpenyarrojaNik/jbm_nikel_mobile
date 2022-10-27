@@ -210,26 +210,42 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
         DataRow(
           cells: [
             DataCell(
-              Text(
-                clienteVentasArticuloList[i].articuloId,
+              SizedBox(
+                width: 75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        clienteVentasArticuloList[i].articuloId,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             DataCell(
               SizedBox(
                 width: 300,
-                child: Flexible(
-                    child: Text(
-                  (getClienteVentasArticuloDescripcionInLocalLanguage(
-                              clienteVentasArticulo:
-                                  clienteVentasArticuloList[i]) !=
-                          null)
-                      ? getClienteVentasArticuloDescripcionInLocalLanguage(
-                          clienteVentasArticulo: clienteVentasArticuloList[i])!
-                      : '',
-                  style: Theme.of(context).textTheme.caption,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                )),
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        (getClienteVentasArticuloDescripcionInLocalLanguage(
+                                    clienteVentasArticulo:
+                                        clienteVentasArticuloList[i]) !=
+                                null)
+                            ? getClienteVentasArticuloDescripcionInLocalLanguage(
+                                clienteVentasArticulo:
+                                    clienteVentasArticuloList[i])!
+                            : '',
+                        style: Theme.of(context).textTheme.caption,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             DataCell(
