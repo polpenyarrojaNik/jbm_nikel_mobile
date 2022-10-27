@@ -69,6 +69,13 @@ class VentasArticuloDataTable extends StatefulWidget {
 class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
   List<DataColumn> columns = [];
   List<DataRow> rows = [];
+  int selectedRow = -1;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedRow = -1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +89,8 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
             horizontalMargin: 16,
             columns: _createColumns(),
             rows: _createDataRows(
-                clienteVentasArticuloList: widget.clienteVentasArticuloList),
+              clienteVentasArticuloList: widget.clienteVentasArticuloList,
+            ),
           ),
         ),
       ),
@@ -208,6 +216,10 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
     for (var i = 0; i < clienteVentasArticuloList.length; i++) {
       dataRows.add(
         DataRow(
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
+          selected: selectedRow == i,
           cells: [
             DataCell(
               SizedBox(

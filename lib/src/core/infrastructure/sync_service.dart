@@ -178,12 +178,13 @@ class SyncService {
             ? remoteInitDatabaseTestEndpoint
             : remoteInitDatabaseEndpoint,
         options: Options(
-            responseType: ResponseType.bytes,
-            receiveDataWhenStatusError: true,
-            followRedirects: false,
-            validateStatus: (status) {
-              return status! < 500;
-            }),
+          responseType: ResponseType.bytes,
+          receiveDataWhenStatusError: true,
+          followRedirects: false,
+          validateStatus: (status) {
+            return status! < 500;
+          },
+        ),
       );
 
       if (response.statusCode == 200) {
@@ -771,7 +772,7 @@ class SyncService {
       while (isNextPageAvailable) {
         final query = _getAPIQuery(
             page: page,
-            dateFrom: ultimaFechaSync.toUtc(),
+            dateFrom: ultimaFechaSync?.toUtc(),
             dateTo: remoteDatabaseDateTime.toUtc(),
             totalRows: totalRows);
 
@@ -889,14 +890,18 @@ class SyncService {
     }
   }
 
-  Future<DateTime> getLastUpdatedDate(
+  Future<DateTime?> getLastUpdatedDate(
       {required TableInfo<Table, dynamic> tableInfo}) async {
     try {
       final query = await _db.customSelect(
           ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
           ''').getSingle();
 
-      return DateTime.parse(query.data['MAX_DATE']);
+      if (query.data['MAX_DATE'] != null) {
+        return DateTime.parse(query.data['MAX_DATE']);
+      } else {
+        return null;
+      }
     } catch (e) {
       rethrow;
     }
