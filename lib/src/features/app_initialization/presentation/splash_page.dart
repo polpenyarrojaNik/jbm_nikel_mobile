@@ -33,14 +33,12 @@ class SplashPage extends ConsumerWidget {
           error: (e, _) {
             if (e is AppException) {
               e.maybeWhen(
-                  orElse: () {},
-                  notConnection: () => context.router.replace(
-                        ArticuloListaRoute(isSearchArticuloForForm: false),
-                      ));
-              showToast(e.toString(), context);
-            } else {
-              showToast(e.toString(), context);
+                orElse: () => context.router.replace(
+                  ArticuloListaRoute(isSearchArticuloForForm: false),
+                ),
+              );
             }
+            showToast(e.toString(), context);
           },
         );
       },
@@ -61,12 +59,44 @@ class SplashPage extends ConsumerWidget {
             ],
           ),
           initial: () => Container(),
-          error: (e, _) => ErrorMessageWidget(e.toString()),
+          error: (e, _) => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ErrorMessageWidget(e.toString()),
+              const _ReintentarSyncButton(),
+            ],
+          ),
           data: (splashProgress) =>
               SyncProgressList(currentSplashProgress: splashProgress),
         ),
       ),
     );
+  }
+}
+
+class _ReintentarSyncButton extends ConsumerWidget {
+  const _ReintentarSyncButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ElevatedButton(
+      onPressed: () => reintantarSync(ref),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.refresh),
+          const SizedBox(width: 5),
+          Text(
+            S.of(context).settings_reemplazarBaseDeDatos,
+          )
+        ],
+      ),
+    );
+  }
+
+  void reintantarSync(WidgetRef ref) {
+    ref.read(splashPageControllerProvider.notifier).initializeApp();
   }
 }
 
@@ -134,11 +164,16 @@ class SyncProgressItem extends StatelessWidget {
                   Icons.check_circle,
                   color: Colors.green,
                 )
-              : const SizedBox(
-                  height: 25,
-                  width: 25,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
+              : ((currentSplashProgress.value + 1) < splashProgressItem.value)
+                  ? const Icon(
+                      Icons.remove_circle,
+                      color: Colors.orange,
+                    )
+                  : const SizedBox(
+                      height: 25,
+                      width: 25,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
         ],
       ),
     );

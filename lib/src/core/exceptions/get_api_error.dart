@@ -8,16 +8,24 @@ import 'app_exception.dart';
 Error getApiError(Object e) {
   if (e is DioError) {
     if (e.response != null && e.response!.data != null) {
-      final responseStr = e.response!.data;
+      final responseData = e.response!.data;
       try {
-        final responseJson = jsonDecode(responseStr);
+        Map<String, dynamic> responseJson;
+        if (responseData is String) {
+          responseJson = jsonDecode(responseData);
+        } else {
+          responseJson = responseData['error'];
+        }
 
         final responseErrorJson =
-            responseJson['detalle'] ?? responseJson['message'] as String?;
+            responseJson['detail'] ?? responseJson['message'] as String?;
 
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400, responseErrorJson ?? '');
       } catch (decodeError) {
+        if (decodeError is AppException) {
+          rethrow;
+        }
         throw AppException.restApiFailure(
             e.response!.statusCode ?? 500, e.response?.statusMessage ?? '');
       }

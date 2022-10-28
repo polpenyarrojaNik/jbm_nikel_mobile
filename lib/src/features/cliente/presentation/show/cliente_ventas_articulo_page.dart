@@ -69,6 +69,13 @@ class VentasArticuloDataTable extends StatefulWidget {
 class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
   List<DataColumn> columns = [];
   List<DataRow> rows = [];
+  int selectedRow = -1;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedRow = -1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +89,8 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
             horizontalMargin: 16,
             columns: _createColumns(),
             rows: _createDataRows(
-                clienteVentasArticuloList: widget.clienteVentasArticuloList),
+              clienteVentasArticuloList: widget.clienteVentasArticuloList,
+            ),
           ),
         ),
       ),
@@ -94,6 +102,14 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
       DataColumn(
         label: Expanded(
           child: Text(S.of(context).cliente_show_clienteVentasArticulo_articulo,
+              textAlign: TextAlign.center),
+        ),
+        numeric: true,
+      ),
+      DataColumn(
+        label: Expanded(
+          child: Text(
+              S.of(context).cliente_show_clienteVentasArticulo_description,
               textAlign: TextAlign.center),
         ),
         numeric: true,
@@ -200,34 +216,50 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
     for (var i = 0; i < clienteVentasArticuloList.length; i++) {
       dataRows.add(
         DataRow(
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
+          selected: selectedRow == i,
           cells: [
-            DataCell(IntrinsicHeight(
-              child: SizedBox(
-                width: 300,
+            DataCell(
+              SizedBox(
+                width: 75,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      clienteVentasArticuloList[i].articuloId,
-                    ),
-                    const VerticalDivider(),
-                    if (getClienteVentasArticuloDescripcionInLocalLanguage(
-                            clienteVentasArticulo:
-                                clienteVentasArticuloList[i]) !=
-                        null)
-                      Flexible(
-                        child: Text(
-                          getClienteVentasArticuloDescripcionInLocalLanguage(
-                              clienteVentasArticulo:
-                                  clienteVentasArticuloList[i])!,
-                          style: Theme.of(context).textTheme.caption,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                    Flexible(
+                      child: Text(
+                        clienteVentasArticuloList[i].articuloId,
                       ),
+                    ),
                   ],
                 ),
               ),
-            )),
+            ),
+            DataCell(
+              SizedBox(
+                width: 300,
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        (getClienteVentasArticuloDescripcionInLocalLanguage(
+                                    clienteVentasArticulo:
+                                        clienteVentasArticuloList[i]) !=
+                                null)
+                            ? getClienteVentasArticuloDescripcionInLocalLanguage(
+                                clienteVentasArticulo:
+                                    clienteVentasArticuloList[i])!
+                            : '',
+                        style: Theme.of(context).textTheme.caption,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             DataCell(
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,

@@ -44,6 +44,13 @@ final pedidoVentaProvider = FutureProvider.autoDispose
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 });
 
+final deletePedidoVentaProvider =
+    FutureProvider.autoDispose.family<void, String>((ref, pedidoVentaAppId) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.deletePedidoVenta(
+      pedidoVentaAppId: pedidoVentaAppId);
+});
+
 final pedidoVentaLastSyncDateProvider =
     FutureProvider.autoDispose<DateTime>((ref) async {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
@@ -159,6 +166,7 @@ class PedidoVentaRepository {
     if (searchText != '') {
       query.where(
         _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+            _db.pedidoVentaLocalTable.tratada.equals('N') &
             (_db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
                 _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
                 _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
@@ -166,7 +174,8 @@ class PedidoVentaRepository {
                 _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
       );
     } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+          _db.pedidoVentaLocalTable.tratada.equals('N'));
     }
 
     query.orderBy([
@@ -373,12 +382,12 @@ class PedidoVentaRepository {
 
   Future<void> deletePedidoVenta({required String pedidoVentaAppId}) async {
     try {
-      return await _db.transaction(() async {
-        (_db.delete(_db.pedidoVentaLocalTable))
-            .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
-        (_db.delete(_db.pedidoVentaLineaLocalTable))
-            .where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId));
-      });
+      await (_db.delete(_db.pedidoVentaLocalTable)
+            ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+          .go();
+      await (_db.delete(_db.pedidoVentaLineaLocalTable)
+            ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+          .go();
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
