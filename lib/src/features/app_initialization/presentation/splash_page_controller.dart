@@ -5,13 +5,15 @@ import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/log_repository.dart';
 import '../domain/splash_progress.dart';
 
 part 'splash_page_controller.freezed.dart';
 
 final splashPageControllerProvider = StateNotifierProvider.autoDispose<
         SplashPageController, SplashControllerState>(
-    (ref) => SplashPageController(ref.watch(syncServiceProvider)));
+    (ref) => SplashPageController(
+        ref.watch(syncServiceProvider), ref.watch(logRepositoryProvider)));
 
 @freezed
 class SplashControllerState with _$SplashControllerState {
@@ -27,7 +29,8 @@ class SplashControllerState with _$SplashControllerState {
 
 class SplashPageController extends StateNotifier<SplashControllerState> {
   final SyncService _syncService;
-  SplashPageController(this._syncService)
+  final LogRepository _logRepository;
+  SplashPageController(this._syncService, this._logRepository)
       : super(const SplashControllerState.initial()) {
     initializeApp();
   }
@@ -35,6 +38,7 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
   Future<void> initializeApp() async {
     try {
       state = const SplashControllerState.downloadDatabase();
+      _logRepository.insetLog(level: 'I', message: 'Inizialize App');
       try {
         await _syncService.initDatabaBase();
       } catch (e) {
