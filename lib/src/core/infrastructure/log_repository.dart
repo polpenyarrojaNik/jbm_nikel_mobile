@@ -11,16 +11,19 @@ import '../../features/usuario/domain/usuario.dart';
 import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../presentation/app.dart';
+import 'database.dart';
 
 final logRepositoryProvider = Provider.autoDispose<LogRepository>(
   (ref) => LogRepository(
     ref.watch(dioProvider),
+    ref.watch(appDatabaseProvider),
     ref.watch(usuarioNotifierProvider),
   ),
 );
 
 class LogRepository {
   final Dio dio;
+  final AppDatabase db;
   final Usuario? usuario;
 
   static final remoteLogEndpoint = Uri.http(
@@ -32,29 +35,61 @@ class LogRepository {
     '/api/v1/online/log',
   );
 
-  LogRepository(this.dio, this.usuario);
+  LogRepository(this.dio, this.db, this.usuario);
 
   Future<void> insetLog(
       {required String level, required String message, String? error}) async {
     final packageInfo = await PackageInfo.fromPlatform();
 
     final log = Log(
-        level: level,
-        message: message,
-        appId: packageInfo.packageName,
-        appBuild: packageInfo.buildNumber,
-        appBuildName: packageInfo.appName,
-        userId: usuario!.id);
+      level: level,
+      message: message,
+      appId: packageInfo.packageName,
+      appBuild: packageInfo.buildNumber,
+      appBuildName: packageInfo.appName,
+      userId: usuario!.id,
+      timestamp: DateTime.now().toUtc(),
+    );
 
     final logDto = LogDTO.fromDomain(log);
 
-    final json = jsonEncode(logDto.toJson());
+    try {
+      await db.into(db.logTable).insert(logDto);
+      await syncLogs();
+    } catch (e) {
+      print(e);
+    }
+  }
 
-    print(json);
+  Future<void> syncLogs() async {
+    try {
+      final logsDtoList = await getLogsFromDb();
 
+      for (var i = 0; i < logsDtoList.length; i++) {
+        final responseLogDto = await remotePostLogs(logDto: logsDtoList[i]);
+        await deleteLogInLocalDb(logId: responseLogDto.id!);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<List<LogDTO>> getLogsFromDb() async {
+    try {
+      final logsDto = await db.select(db.logTable).get();
+      return logsDto;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<LogDTO> remotePostLogs({required LogDTO logDto}) async {
     try {
       final requestUri =
           (usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
+
+      final json = jsonEncode(logDto.toJson());
+      print(json);
 
       final response = await dio.postUri(
         requestUri,
@@ -66,14 +101,21 @@ class LogRepository {
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
 
-        final logDtoResponse = LogDTO.fromJson(json);
-        print(logDtoResponse);
+        return LogDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
       }
     } catch (e) {
-      print(e);
+      rethrow;
+    }
+  }
+
+  Future<void> deleteLogInLocalDb({required int logId}) async {
+    try {
+      await (db.delete(db.logTable)..where((tbl) => tbl.id.equals(logId))).go();
+    } catch (e) {
+      rethrow;
     }
   }
 }

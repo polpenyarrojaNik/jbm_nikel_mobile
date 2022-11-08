@@ -5,12 +5,17 @@ part 'log.freezed.dart';
 @freezed
 class Log with _$Log {
   const Log._();
-  const factory Log(
-      {required String level,
-      required String message,
-      String? error,
-      required String appId,
-      required String appBuild,
-      required String appBuildName,
-      required String userId}) = _Log;
+  const factory Log({
+    int? id,
+    required String level,
+    required String message,
+    String? error,
+    required String appId,
+    required String appBuild,
+    required String appBuildName,
+    required String userId,
+    String? userEmail,
+    String? userName,
+    required DateTime timestamp,
+  }) = _Log;
 }

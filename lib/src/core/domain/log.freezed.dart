@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Log {
+  int? get id => throw _privateConstructorUsedError;
   String get level => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
@@ -23,6 +24,9 @@ mixin _$Log {
   String get appBuild => throw _privateConstructorUsedError;
   String get appBuildName => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
+  String? get userEmail => throw _privateConstructorUsedError;
+  String? get userName => throw _privateConstructorUsedError;
+  DateTime get timestamp => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LogCopyWith<Log> get copyWith => throw _privateConstructorUsedError;
@@ -34,13 +38,17 @@ abstract class $LogCopyWith<$Res> {
       _$LogCopyWithImpl<$Res, Log>;
   @useResult
   $Res call(
-      {String level,
+      {int? id,
+      String level,
       String message,
       String? error,
       String appId,
       String appBuild,
       String appBuildName,
-      String userId});
+      String userId,
+      String? userEmail,
+      String? userName,
+      DateTime timestamp});
 }
 
 /// @nodoc
@@ -55,6 +63,7 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? level = null,
     Object? message = null,
     Object? error = freezed,
@@ -62,8 +71,15 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
     Object? appBuild = null,
     Object? appBuildName = null,
     Object? userId = null,
+    Object? userEmail = freezed,
+    Object? userName = freezed,
+    Object? timestamp = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -92,6 +108,18 @@ class _$LogCopyWithImpl<$Res, $Val extends Log> implements $LogCopyWith<$Res> {
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -103,13 +131,17 @@ abstract class _$$_LogCopyWith<$Res> implements $LogCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String level,
+      {int? id,
+      String level,
       String message,
       String? error,
       String appId,
       String appBuild,
       String appBuildName,
-      String userId});
+      String userId,
+      String? userEmail,
+      String? userName,
+      DateTime timestamp});
 }
 
 /// @nodoc
@@ -121,6 +153,7 @@ class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? level = null,
     Object? message = null,
     Object? error = freezed,
@@ -128,8 +161,15 @@ class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
     Object? appBuild = null,
     Object? appBuildName = null,
     Object? userId = null,
+    Object? userEmail = freezed,
+    Object? userName = freezed,
+    Object? timestamp = null,
   }) {
     return _then(_$_Log(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -158,6 +198,18 @@ class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -166,15 +218,21 @@ class __$$_LogCopyWithImpl<$Res> extends _$LogCopyWithImpl<$Res, _$_Log>
 
 class _$_Log extends _Log {
   const _$_Log(
-      {required this.level,
+      {this.id,
+      required this.level,
       required this.message,
       this.error,
       required this.appId,
       required this.appBuild,
       required this.appBuildName,
-      required this.userId})
+      required this.userId,
+      this.userEmail,
+      this.userName,
+      required this.timestamp})
       : super._();
 
+  @override
+  final int? id;
   @override
   final String level;
   @override
@@ -189,10 +247,16 @@ class _$_Log extends _Log {
   final String appBuildName;
   @override
   final String userId;
+  @override
+  final String? userEmail;
+  @override
+  final String? userName;
+  @override
+  final DateTime timestamp;
 
   @override
   String toString() {
-    return 'Log(level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId)';
+    return 'Log(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
   }
 
   @override
@@ -200,6 +264,7 @@ class _$_Log extends _Log {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Log &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.level, level) || other.level == level) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error) &&
@@ -208,12 +273,18 @@ class _$_Log extends _Log {
                 other.appBuild == appBuild) &&
             (identical(other.appBuildName, appBuildName) ||
                 other.appBuildName == appBuildName) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, level, message, error, appId,
-      appBuild, appBuildName, userId);
+  int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
+      appBuild, appBuildName, userId, userEmail, userName, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -224,15 +295,21 @@ class _$_Log extends _Log {
 
 abstract class _Log extends Log {
   const factory _Log(
-      {required final String level,
+      {final int? id,
+      required final String level,
       required final String message,
       final String? error,
       required final String appId,
       required final String appBuild,
       required final String appBuildName,
-      required final String userId}) = _$_Log;
+      required final String userId,
+      final String? userEmail,
+      final String? userName,
+      required final DateTime timestamp}) = _$_Log;
   const _Log._() : super._();
 
+  @override
+  int? get id;
   @override
   String get level;
   @override
@@ -247,6 +324,12 @@ abstract class _Log extends Log {
   String get appBuildName;
   @override
   String get userId;
+  @override
+  String? get userEmail;
+  @override
+  String? get userName;
+  @override
+  DateTime get timestamp;
   @override
   @JsonKey(ignore: true)
   _$$_LogCopyWith<_$_Log> get copyWith => throw _privateConstructorUsedError;

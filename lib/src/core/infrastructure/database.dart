@@ -45,6 +45,8 @@ import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import 'familia_dto.dart';
 import 'package:path/path.dart' as p;
 
+import 'log_dto.dart';
+
 part 'database.g.dart';
 
 final appDatabaseProvider = Provider<AppDatabase>(
@@ -95,6 +97,7 @@ const localDatabaseName = 'jbm.sqlite';
   PedidoVentaLineaLocalTable,
   PedidoVentaLocalTable,
   DescuentoGeneralTable,
+  LogTable,
 ])
 class AppDatabase extends _$AppDatabase {
   final bool test;
@@ -103,7 +106,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.connect(super.connection, this.test) : super.connect();
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 }
 
 LazyDatabase _openConnection() {

@@ -51,7 +51,7 @@ import 'database.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
 import 'jbm_headers.dart';
-import 'log.dart';
+import 'logger.dart';
 import 'remote_response.dart';
 
 final syncServiceProvider = Provider.autoDispose<SyncService>(
@@ -1151,5 +1151,26 @@ class SyncService {
         await SharedPreferences.getInstance();
 
     return sharedPreferences.getInt(dbSchemaVersionKey);
+  }
+
+  Future<void> syncAllTable() async {
+    if (await sincronizarValoresPorTiempo(
+        preferenceKey: articuloFechaUltimaSyncKey)) {
+      await syncAllArticulosRelacionados();
+      await syncAllClientesRelacionados();
+      await syncAllPedidosRelacionados();
+      await syncAllVisitasRelacionados();
+      await syncAllAuxiliares();
+    }
+  }
+
+  Future<bool> sincronizarValoresPorTiempo(
+      {required String preferenceKey}) async {
+    final sharedPreferences = await SharedPreferences.getInstance();
+    final dateUTCString = sharedPreferences.getString(preferenceKey) as String;
+    final lastSyncDateUTC =
+        DateTime.parse(dateUTCString).add(const Duration(minutes: 30));
+    print(lastSyncDateUTC.isBefore(DateTime.now().toUtc()));
+    return lastSyncDateUTC.isBefore(DateTime.now().toUtc());
   }
 }

@@ -20,6 +20,8 @@ LogDTO _$LogDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LogDTO {
+  @JsonKey(name: 'ID')
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'LOG_LEVEL')
   String get level => throw _privateConstructorUsedError;
   @JsonKey(name: 'LOG_MESSAGE')
@@ -34,6 +36,12 @@ mixin _$LogDTO {
   String get appBuildName => throw _privateConstructorUsedError;
   @JsonKey(name: 'USER_ID')
   String get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'USER_EMAIL')
+  String? get userEmail => throw _privateConstructorUsedError;
+  @JsonKey(name: 'USER_NAME')
+  String? get userName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TIMESTAMP')
+  DateTime get timestamp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,13 +54,17 @@ abstract class $LogDTOCopyWith<$Res> {
       _$LogDTOCopyWithImpl<$Res, LogDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'LOG_LEVEL') String level,
+      {@JsonKey(name: 'ID') int? id,
+      @JsonKey(name: 'LOG_LEVEL') String level,
       @JsonKey(name: 'LOG_MESSAGE') String message,
       @JsonKey(name: 'LOG_ERROR') String? error,
       @JsonKey(name: 'APP_ID') String appId,
       @JsonKey(name: 'APP_BUILD') String appBuild,
       @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
-      @JsonKey(name: 'USER_ID') String userId});
+      @JsonKey(name: 'USER_ID') String userId,
+      @JsonKey(name: 'USER_EMAIL') String? userEmail,
+      @JsonKey(name: 'USER_NAME') String? userName,
+      @JsonKey(name: 'TIMESTAMP') DateTime timestamp});
 }
 
 /// @nodoc
@@ -68,6 +80,7 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? level = null,
     Object? message = null,
     Object? error = freezed,
@@ -75,8 +88,15 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
     Object? appBuild = null,
     Object? appBuildName = null,
     Object? userId = null,
+    Object? userEmail = freezed,
+    Object? userName = freezed,
+    Object? timestamp = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -105,6 +125,18 @@ class _$LogDTOCopyWithImpl<$Res, $Val extends LogDTO>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -116,13 +148,17 @@ abstract class _$$_LogDTOCopyWith<$Res> implements $LogDTOCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'LOG_LEVEL') String level,
+      {@JsonKey(name: 'ID') int? id,
+      @JsonKey(name: 'LOG_LEVEL') String level,
       @JsonKey(name: 'LOG_MESSAGE') String message,
       @JsonKey(name: 'LOG_ERROR') String? error,
       @JsonKey(name: 'APP_ID') String appId,
       @JsonKey(name: 'APP_BUILD') String appBuild,
       @JsonKey(name: 'APP_BUILD_NAME') String appBuildName,
-      @JsonKey(name: 'USER_ID') String userId});
+      @JsonKey(name: 'USER_ID') String userId,
+      @JsonKey(name: 'USER_EMAIL') String? userEmail,
+      @JsonKey(name: 'USER_NAME') String? userName,
+      @JsonKey(name: 'TIMESTAMP') DateTime timestamp});
 }
 
 /// @nodoc
@@ -135,6 +171,7 @@ class __$$_LogDTOCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? level = null,
     Object? message = null,
     Object? error = freezed,
@@ -142,8 +179,15 @@ class __$$_LogDTOCopyWithImpl<$Res>
     Object? appBuild = null,
     Object? appBuildName = null,
     Object? userId = null,
+    Object? userEmail = freezed,
+    Object? userName = freezed,
+    Object? timestamp = null,
   }) {
     return _then(_$_LogDTO(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       level: null == level
           ? _value.level
           : level // ignore: cast_nullable_to_non_nullable
@@ -172,6 +216,18 @@ class __$$_LogDTOCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      userEmail: freezed == userEmail
+          ? _value.userEmail
+          : userEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userName: freezed == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -180,18 +236,25 @@ class __$$_LogDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LogDTO extends _LogDTO {
   const _$_LogDTO(
-      {@JsonKey(name: 'LOG_LEVEL') required this.level,
+      {@JsonKey(name: 'ID') required this.id,
+      @JsonKey(name: 'LOG_LEVEL') required this.level,
       @JsonKey(name: 'LOG_MESSAGE') required this.message,
       @JsonKey(name: 'LOG_ERROR') this.error,
       @JsonKey(name: 'APP_ID') required this.appId,
       @JsonKey(name: 'APP_BUILD') required this.appBuild,
       @JsonKey(name: 'APP_BUILD_NAME') required this.appBuildName,
-      @JsonKey(name: 'USER_ID') required this.userId})
+      @JsonKey(name: 'USER_ID') required this.userId,
+      @JsonKey(name: 'USER_EMAIL') this.userEmail,
+      @JsonKey(name: 'USER_NAME') this.userName,
+      @JsonKey(name: 'TIMESTAMP') required this.timestamp})
       : super._();
 
   factory _$_LogDTO.fromJson(Map<String, dynamic> json) =>
       _$$_LogDTOFromJson(json);
 
+  @override
+  @JsonKey(name: 'ID')
+  final int? id;
   @override
   @JsonKey(name: 'LOG_LEVEL')
   final String level;
@@ -213,10 +276,19 @@ class _$_LogDTO extends _LogDTO {
   @override
   @JsonKey(name: 'USER_ID')
   final String userId;
+  @override
+  @JsonKey(name: 'USER_EMAIL')
+  final String? userEmail;
+  @override
+  @JsonKey(name: 'USER_NAME')
+  final String? userName;
+  @override
+  @JsonKey(name: 'TIMESTAMP')
+  final DateTime timestamp;
 
   @override
   String toString() {
-    return 'LogDTO(level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId)';
+    return 'LogDTO(id: $id, level: $level, message: $message, error: $error, appId: $appId, appBuild: $appBuild, appBuildName: $appBuildName, userId: $userId, userEmail: $userEmail, userName: $userName, timestamp: $timestamp)';
   }
 
   @override
@@ -224,6 +296,7 @@ class _$_LogDTO extends _LogDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LogDTO &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.level, level) || other.level == level) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.error, error) || other.error == error) &&
@@ -232,13 +305,19 @@ class _$_LogDTO extends _LogDTO {
                 other.appBuild == appBuild) &&
             (identical(other.appBuildName, appBuildName) ||
                 other.appBuildName == appBuildName) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.userEmail, userEmail) ||
+                other.userEmail == userEmail) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, level, message, error, appId,
-      appBuild, appBuildName, userId);
+  int get hashCode => Object.hash(runtimeType, id, level, message, error, appId,
+      appBuild, appBuildName, userId, userEmail, userName, timestamp);
 
   @JsonKey(ignore: true)
   @override
@@ -256,17 +335,25 @@ class _$_LogDTO extends _LogDTO {
 
 abstract class _LogDTO extends LogDTO {
   const factory _LogDTO(
-      {@JsonKey(name: 'LOG_LEVEL') required final String level,
-      @JsonKey(name: 'LOG_MESSAGE') required final String message,
-      @JsonKey(name: 'LOG_ERROR') final String? error,
-      @JsonKey(name: 'APP_ID') required final String appId,
-      @JsonKey(name: 'APP_BUILD') required final String appBuild,
-      @JsonKey(name: 'APP_BUILD_NAME') required final String appBuildName,
-      @JsonKey(name: 'USER_ID') required final String userId}) = _$_LogDTO;
+          {@JsonKey(name: 'ID') required final int? id,
+          @JsonKey(name: 'LOG_LEVEL') required final String level,
+          @JsonKey(name: 'LOG_MESSAGE') required final String message,
+          @JsonKey(name: 'LOG_ERROR') final String? error,
+          @JsonKey(name: 'APP_ID') required final String appId,
+          @JsonKey(name: 'APP_BUILD') required final String appBuild,
+          @JsonKey(name: 'APP_BUILD_NAME') required final String appBuildName,
+          @JsonKey(name: 'USER_ID') required final String userId,
+          @JsonKey(name: 'USER_EMAIL') final String? userEmail,
+          @JsonKey(name: 'USER_NAME') final String? userName,
+          @JsonKey(name: 'TIMESTAMP') required final DateTime timestamp}) =
+      _$_LogDTO;
   const _LogDTO._() : super._();
 
   factory _LogDTO.fromJson(Map<String, dynamic> json) = _$_LogDTO.fromJson;
 
+  @override
+  @JsonKey(name: 'ID')
+  int? get id;
   @override
   @JsonKey(name: 'LOG_LEVEL')
   String get level;
@@ -288,6 +375,15 @@ abstract class _LogDTO extends LogDTO {
   @override
   @JsonKey(name: 'USER_ID')
   String get userId;
+  @override
+  @JsonKey(name: 'USER_EMAIL')
+  String? get userEmail;
+  @override
+  @JsonKey(name: 'USER_NAME')
+  String? get userName;
+  @override
+  @JsonKey(name: 'TIMESTAMP')
+  DateTime get timestamp;
   @override
   @JsonKey(ignore: true)
   _$$_LogDTOCopyWith<_$_LogDTO> get copyWith =>
