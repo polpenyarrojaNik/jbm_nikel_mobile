@@ -68,30 +68,30 @@ class SyncService {
   final Usuario? _usuario;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    'jbm-api.nikel.es',
     '/api/v1/sync/db-datetime',
   );
   static final remoteDatabaseDateTimeTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    'jbm-api-test.nikel.es:8080',
     '/api/v1/sync/db-datetime',
   );
 
   static final remoteInitialDatabaseDateTimeEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    'jbm-api.nikel.es',
     '/api/v1/sync/init-db-date',
   );
   static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    'jbm-api-test.nikel.es:8080',
     '/api/v1/sync/init-db-date',
   );
 
   static final remoteInitDatabaseEndpoint = Uri.http(
-    dotenv.get('URL', fallback: 'localhost:3001'),
+    'jbm-api.nikel.es',
     '/api/v1/sync/init-db',
   );
 
   static final remoteInitDatabaseTestEndpoint = Uri.http(
-    dotenv.get('URLTEST', fallback: 'localhost:3001'),
+    'jbm-api-test.nikel.es:8080',
     '/api/v1/sync/init-db',
   );
 
@@ -292,7 +292,7 @@ class SyncService {
         tableInfo: _db.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
-      await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
+      // await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -413,7 +413,7 @@ class SyncService {
         tableInfo: _db.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
-      await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
+      // await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -608,7 +608,7 @@ class SyncService {
         tableInfo: _db.pedidoVentaTable,
         fromJson: (e) => PedidoVentaDTO.fromJson(e),
       );
-      await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
+      // await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -654,7 +654,7 @@ class SyncService {
         tableInfo: _db.visitaTable,
         fromJson: (e) => VisitaDTO.fromJson(e),
       );
-      await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
+      // await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -858,17 +858,20 @@ class SyncService {
   }) async {
     try {
       final uri = Uri.https(
-        dotenv.get('URL'),
+        'jbm-api.nikel.es',
         apiPath,
         query,
       );
       final testUri = Uri.http(
-        dotenv.get('URLTEST', fallback: 'localhost:3001'),
+        'jbm-api-test.nikel.es:8080',
         apiPath,
         query,
       );
 
-      final response = await _dio.getUri(!(_usuario!.test) ? uri : testUri);
+      final response = await _dio.getUri(!(_usuario!.test) ? uri : testUri,
+          options: Options(
+            headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+          ));
 
       if (response.statusCode == 200) {
         final convertedDate = jsonDataSelector(response.data)
@@ -1097,16 +1100,16 @@ class SyncService {
     }
   }
 
-  Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
-    try {
-      final sharedPreferences = await SharedPreferences.getInstance();
+  // Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
+  //   try {
+  //     final sharedPreferences = await SharedPreferences.getInstance();
 
-      await sharedPreferences.setString(
-          entityKey, DateTime.now().toUtc().toIso8601String());
-    } catch (e) {
-      rethrow;
-    }
-  }
+  //     await sharedPreferences.setString(
+  //         entityKey, DateTime.now().toUtc().toIso8601String());
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 
   Future<void> _saveDataInPreferences() async {
     try {
@@ -1154,14 +1157,14 @@ class SyncService {
   }
 
   Future<void> syncAllTable() async {
-    if (await sincronizarValoresPorTiempo(
-        preferenceKey: articuloFechaUltimaSyncKey)) {
-      await syncAllArticulosRelacionados();
-      await syncAllClientesRelacionados();
-      await syncAllPedidosRelacionados();
-      await syncAllVisitasRelacionados();
-      await syncAllAuxiliares();
-    }
+    // if (await sincronizarValoresPorTiempo(
+    //     preferenceKey: 'ARTICULO_ULTIMA_SYNC')) {
+    await syncAllArticulosRelacionados();
+    await syncAllClientesRelacionados();
+    await syncAllPedidosRelacionados();
+    await syncAllVisitasRelacionados();
+    await syncAllAuxiliares();
+    // }
   }
 
   Future<bool> sincronizarValoresPorTiempo(

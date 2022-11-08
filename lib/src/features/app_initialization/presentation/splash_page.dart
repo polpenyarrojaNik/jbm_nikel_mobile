@@ -1,15 +1,28 @@
+import 'dart:io';
+import 'dart:isolate';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:dio/dio.dart';
+import 'package:drift/drift.dart' as drift;
+import 'package:drift/isolate.dart';
+import 'package:drift/native.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
 import '../domain/splash_progress.dart';
 
@@ -23,8 +36,10 @@ class SplashPage extends ConsumerWidget {
       (_, state) {
         state.maybeWhen(
           orElse: () {},
-          data: (splashProgress) {
+          data: (splashProgress) async {
             if (splashProgress.value == 99) {
+              final user = ref.read(usuarioNotifierProvider);
+              compute(syncInBackground, [user, isolateConnectPort]);
               context.router.replace(
                 ArticuloListaRoute(isSearchArticuloForForm: false),
               );
@@ -72,6 +87,23 @@ class SplashPage extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+void syncInBackground(List<dynamic> args) async {
+  try {
+    final isolateSendPort = args[1] as SendPort;
+    final isolate = DriftIsolate.fromConnectPort(isolateSendPort);
+    isolateSendPort.send(isolate.connectPort);
+    final connection = await isolate.connect();
+    final database = AppDatabase.connect(connection, false);
+    final SyncService syncService = SyncService(database, Dio(), args[0]);
+
+    await syncService.syncAllTable();
+
+    print('----------ISOLATE FINISHED-----------');
+  } catch (e) {
+    print(e);
   }
 }
 

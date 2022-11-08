@@ -49,14 +49,16 @@ import 'log_dto.dart';
 
 part 'database.g.dart';
 
+SendPort? isolateConnectPort;
+
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) {
     DatabaseConnection connection = DatabaseConnection.delayed(() async {
       final isolate = await _createDriftIsolate();
+      isolateConnectPort = isolate.connectPort;
       return await isolate.connect();
     }());
     return AppDatabase.connect(connection, false);
-    // return AppDatabase();
   },
 );
 const localDatabaseName = 'jbm.sqlite';
@@ -131,15 +133,14 @@ Future<DriftIsolate> _createDriftIsolate() async {
   final receivePort = ReceivePort();
 
   await Isolate.spawn(
-    _startBackground,
-    _IsolateRequest(receivePort.sendPort, path),
-  );
+      _startBackground, IsolateRequest(receivePort.sendPort, path),
+      debugName: 'DB Isolate');
 
   // ReceivePort will receive the DriftIsolate from background isolate, send by _startBackground
   return await receivePort.first as DriftIsolate;
 }
 
-void _startBackground(_IsolateRequest request) {
+void _startBackground(IsolateRequest request) {
   // at this moment this process is already on another Isolate. To create a database from file the path should be
   // passed from request
   final executor = NativeDatabase(File(request.targetPath));
@@ -152,9 +153,9 @@ void _startBackground(_IsolateRequest request) {
   request.sendDriftIsolate.send(driftIsolate);
 }
 
-class _IsolateRequest {
+class IsolateRequest {
   final SendPort sendDriftIsolate;
   final String targetPath;
 
-  _IsolateRequest(this.sendDriftIsolate, this.targetPath);
+  IsolateRequest(this.sendDriftIsolate, this.targetPath);
 }
