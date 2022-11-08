@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/logger.dart';
 import 'package:logging/logging.dart';
 
 import 'src/core/presentation/app.dart';

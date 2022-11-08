@@ -16503,6 +16503,371 @@ class $DescuentoGeneralTableTable extends DescuentoGeneralTable
   }
 }
 
+class LogTableCompanion extends UpdateCompanion<LogDTO> {
+  final Value<int> id;
+  final Value<String> level;
+  final Value<String> message;
+  final Value<String?> error;
+  final Value<String?> stackTrace;
+  final Value<String> appId;
+  final Value<String> appBuild;
+  final Value<String> appBuildName;
+  final Value<String> userId;
+  final Value<String?> userEmail;
+  final Value<String?> userName;
+  final Value<DateTime> timestamp;
+  const LogTableCompanion({
+    this.id = const Value.absent(),
+    this.level = const Value.absent(),
+    this.message = const Value.absent(),
+    this.error = const Value.absent(),
+    this.stackTrace = const Value.absent(),
+    this.appId = const Value.absent(),
+    this.appBuild = const Value.absent(),
+    this.appBuildName = const Value.absent(),
+    this.userId = const Value.absent(),
+    this.userEmail = const Value.absent(),
+    this.userName = const Value.absent(),
+    this.timestamp = const Value.absent(),
+  });
+  LogTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String level,
+    required String message,
+    this.error = const Value.absent(),
+    this.stackTrace = const Value.absent(),
+    required String appId,
+    required String appBuild,
+    required String appBuildName,
+    required String userId,
+    this.userEmail = const Value.absent(),
+    this.userName = const Value.absent(),
+    required DateTime timestamp,
+  })  : level = Value(level),
+        message = Value(message),
+        appId = Value(appId),
+        appBuild = Value(appBuild),
+        appBuildName = Value(appBuildName),
+        userId = Value(userId),
+        timestamp = Value(timestamp);
+  static Insertable<LogDTO> custom({
+    Expression<int>? id,
+    Expression<String>? level,
+    Expression<String>? message,
+    Expression<String>? error,
+    Expression<String>? stackTrace,
+    Expression<String>? appId,
+    Expression<String>? appBuild,
+    Expression<String>? appBuildName,
+    Expression<String>? userId,
+    Expression<String>? userEmail,
+    Expression<String>? userName,
+    Expression<DateTime>? timestamp,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'ID': id,
+      if (level != null) 'LOG_LEVEL': level,
+      if (message != null) 'LOG_MESSAGE': message,
+      if (error != null) 'LOG_ERROR': error,
+      if (stackTrace != null) 'LOG_STACK_TRACE': stackTrace,
+      if (appId != null) 'APP_ID': appId,
+      if (appBuild != null) 'APP_BUILD': appBuild,
+      if (appBuildName != null) 'APP_BUILD_NAME': appBuildName,
+      if (userId != null) 'USER_ID': userId,
+      if (userEmail != null) 'USER_EMAIL': userEmail,
+      if (userName != null) 'USER_NAME': userName,
+      if (timestamp != null) 'TIMESTAMP': timestamp,
+    });
+  }
+
+  LogTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? level,
+      Value<String>? message,
+      Value<String?>? error,
+      Value<String?>? stackTrace,
+      Value<String>? appId,
+      Value<String>? appBuild,
+      Value<String>? appBuildName,
+      Value<String>? userId,
+      Value<String?>? userEmail,
+      Value<String?>? userName,
+      Value<DateTime>? timestamp}) {
+    return LogTableCompanion(
+      id: id ?? this.id,
+      level: level ?? this.level,
+      message: message ?? this.message,
+      error: error ?? this.error,
+      stackTrace: stackTrace ?? this.stackTrace,
+      appId: appId ?? this.appId,
+      appBuild: appBuild ?? this.appBuild,
+      appBuildName: appBuildName ?? this.appBuildName,
+      userId: userId ?? this.userId,
+      userEmail: userEmail ?? this.userEmail,
+      userName: userName ?? this.userName,
+      timestamp: timestamp ?? this.timestamp,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['ID'] = Variable<int>(id.value);
+    }
+    if (level.present) {
+      map['LOG_LEVEL'] = Variable<String>(level.value);
+    }
+    if (message.present) {
+      map['LOG_MESSAGE'] = Variable<String>(message.value);
+    }
+    if (error.present) {
+      map['LOG_ERROR'] = Variable<String>(error.value);
+    }
+    if (stackTrace.present) {
+      map['LOG_STACK_TRACE'] = Variable<String>(stackTrace.value);
+    }
+    if (appId.present) {
+      map['APP_ID'] = Variable<String>(appId.value);
+    }
+    if (appBuild.present) {
+      map['APP_BUILD'] = Variable<String>(appBuild.value);
+    }
+    if (appBuildName.present) {
+      map['APP_BUILD_NAME'] = Variable<String>(appBuildName.value);
+    }
+    if (userId.present) {
+      map['USER_ID'] = Variable<String>(userId.value);
+    }
+    if (userEmail.present) {
+      map['USER_EMAIL'] = Variable<String>(userEmail.value);
+    }
+    if (userName.present) {
+      map['USER_NAME'] = Variable<String>(userName.value);
+    }
+    if (timestamp.present) {
+      map['TIMESTAMP'] = Variable<DateTime>(timestamp.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LogTableCompanion(')
+          ..write('id: $id, ')
+          ..write('level: $level, ')
+          ..write('message: $message, ')
+          ..write('error: $error, ')
+          ..write('stackTrace: $stackTrace, ')
+          ..write('appId: $appId, ')
+          ..write('appBuild: $appBuild, ')
+          ..write('appBuildName: $appBuildName, ')
+          ..write('userId: $userId, ')
+          ..write('userEmail: $userEmail, ')
+          ..write('userName: $userName, ')
+          ..write('timestamp: $timestamp')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LogTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'ID', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
+  final VerificationMeta _levelMeta = const VerificationMeta('level');
+  @override
+  late final GeneratedColumn<String> level = GeneratedColumn<String>(
+      'LOG_LEVEL', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _messageMeta = const VerificationMeta('message');
+  @override
+  late final GeneratedColumn<String> message = GeneratedColumn<String>(
+      'LOG_MESSAGE', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _errorMeta = const VerificationMeta('error');
+  @override
+  late final GeneratedColumn<String> error = GeneratedColumn<String>(
+      'LOG_ERROR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _stackTraceMeta = const VerificationMeta('stackTrace');
+  @override
+  late final GeneratedColumn<String> stackTrace = GeneratedColumn<String>(
+      'LOG_STACK_TRACE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _appIdMeta = const VerificationMeta('appId');
+  @override
+  late final GeneratedColumn<String> appId = GeneratedColumn<String>(
+      'APP_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _appBuildMeta = const VerificationMeta('appBuild');
+  @override
+  late final GeneratedColumn<String> appBuild = GeneratedColumn<String>(
+      'APP_BUILD', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _appBuildNameMeta =
+      const VerificationMeta('appBuildName');
+  @override
+  late final GeneratedColumn<String> appBuildName = GeneratedColumn<String>(
+      'APP_BUILD_NAME', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _userIdMeta = const VerificationMeta('userId');
+  @override
+  late final GeneratedColumn<String> userId = GeneratedColumn<String>(
+      'USER_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _userEmailMeta = const VerificationMeta('userEmail');
+  @override
+  late final GeneratedColumn<String> userEmail = GeneratedColumn<String>(
+      'USER_EMAIL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _userNameMeta = const VerificationMeta('userName');
+  @override
+  late final GeneratedColumn<String> userName = GeneratedColumn<String>(
+      'USER_NAME', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _timestampMeta = const VerificationMeta('timestamp');
+  @override
+  late final GeneratedColumn<DateTime> timestamp = GeneratedColumn<DateTime>(
+      'TIMESTAMP', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        level,
+        message,
+        error,
+        stackTrace,
+        appId,
+        appBuild,
+        appBuildName,
+        userId,
+        userEmail,
+        userName,
+        timestamp
+      ];
+  @override
+  String get aliasedName => _alias ?? 'LOG';
+  @override
+  String get actualTableName => 'LOG';
+  @override
+  VerificationContext validateIntegrity(Insertable<LogDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('ID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['ID']!, _idMeta));
+    }
+    if (data.containsKey('LOG_LEVEL')) {
+      context.handle(_levelMeta,
+          level.isAcceptableOrUnknown(data['LOG_LEVEL']!, _levelMeta));
+    } else if (isInserting) {
+      context.missing(_levelMeta);
+    }
+    if (data.containsKey('LOG_MESSAGE')) {
+      context.handle(_messageMeta,
+          message.isAcceptableOrUnknown(data['LOG_MESSAGE']!, _messageMeta));
+    } else if (isInserting) {
+      context.missing(_messageMeta);
+    }
+    if (data.containsKey('LOG_ERROR')) {
+      context.handle(_errorMeta,
+          error.isAcceptableOrUnknown(data['LOG_ERROR']!, _errorMeta));
+    }
+    if (data.containsKey('LOG_STACK_TRACE')) {
+      context.handle(
+          _stackTraceMeta,
+          stackTrace.isAcceptableOrUnknown(
+              data['LOG_STACK_TRACE']!, _stackTraceMeta));
+    }
+    if (data.containsKey('APP_ID')) {
+      context.handle(
+          _appIdMeta, appId.isAcceptableOrUnknown(data['APP_ID']!, _appIdMeta));
+    } else if (isInserting) {
+      context.missing(_appIdMeta);
+    }
+    if (data.containsKey('APP_BUILD')) {
+      context.handle(_appBuildMeta,
+          appBuild.isAcceptableOrUnknown(data['APP_BUILD']!, _appBuildMeta));
+    } else if (isInserting) {
+      context.missing(_appBuildMeta);
+    }
+    if (data.containsKey('APP_BUILD_NAME')) {
+      context.handle(
+          _appBuildNameMeta,
+          appBuildName.isAcceptableOrUnknown(
+              data['APP_BUILD_NAME']!, _appBuildNameMeta));
+    } else if (isInserting) {
+      context.missing(_appBuildNameMeta);
+    }
+    if (data.containsKey('USER_ID')) {
+      context.handle(_userIdMeta,
+          userId.isAcceptableOrUnknown(data['USER_ID']!, _userIdMeta));
+    } else if (isInserting) {
+      context.missing(_userIdMeta);
+    }
+    if (data.containsKey('USER_EMAIL')) {
+      context.handle(_userEmailMeta,
+          userEmail.isAcceptableOrUnknown(data['USER_EMAIL']!, _userEmailMeta));
+    }
+    if (data.containsKey('USER_NAME')) {
+      context.handle(_userNameMeta,
+          userName.isAcceptableOrUnknown(data['USER_NAME']!, _userNameMeta));
+    }
+    if (data.containsKey('TIMESTAMP')) {
+      context.handle(_timestampMeta,
+          timestamp.isAcceptableOrUnknown(data['TIMESTAMP']!, _timestampMeta));
+    } else if (isInserting) {
+      context.missing(_timestampMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LogDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LogDTO(
+      id: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
+      level: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}LOG_LEVEL'])!,
+      message: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}LOG_MESSAGE'])!,
+      error: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}LOG_ERROR']),
+      appId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}APP_ID'])!,
+      appBuild: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD'])!,
+      appBuildName: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD_NAME'])!,
+      userId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}USER_ID'])!,
+      userEmail: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}USER_EMAIL']),
+      userName: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}USER_NAME']),
+      timestamp: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}TIMESTAMP'])!,
+    );
+  }
+
+  @override
+  $LogTableTable createAlias(String alias) {
+    return $LogTableTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -16572,6 +16937,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $PedidoVentaLocalTableTable(this);
   late final $DescuentoGeneralTableTable descuentoGeneralTable =
       $DescuentoGeneralTableTable(this);
+  late final $LogTableTable logTable = $LogTableTable(this);
   @override
   Iterable<TableInfo<Table, dynamic>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -16611,7 +16977,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         visitaLocalTable,
         pedidoVentaLineaLocalTable,
         pedidoVentaLocalTable,
-        descuentoGeneralTable
+        descuentoGeneralTable,
+        logTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -105,12 +105,20 @@ class __$$_downloadDatabaseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_downloadDatabase extends _downloadDatabase {
+class _$_downloadDatabase extends _downloadDatabase
+    with DiagnosticableTreeMixin {
   const _$_downloadDatabase() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashControllerState.downloadDatabase()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'));
   }
 
   @override
@@ -219,12 +227,19 @@ class __$$_initialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_initial extends _initial {
+class _$_initial extends _initial with DiagnosticableTreeMixin {
   const _$_initial() : super._();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashControllerState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'SplashControllerState.initial'));
   }
 
   @override
@@ -349,7 +364,7 @@ class __$$_errorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_error extends _error {
+class _$_error extends _error with DiagnosticableTreeMixin {
   const _$_error(this.error, {this.stackTrace}) : super._();
 
   @override
@@ -358,8 +373,17 @@ class _$_error extends _error {
   final StackTrace? stackTrace;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashControllerState.error(error: $error, stackTrace: $stackTrace)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SplashControllerState.error'))
+      ..add(DiagnosticsProperty('error', error))
+      ..add(DiagnosticsProperty('stackTrace', stackTrace));
   }
 
   @override
@@ -500,15 +524,23 @@ class __$$_dataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_data extends _data {
+class _$_data extends _data with DiagnosticableTreeMixin {
   const _$_data(this.progressValue) : super._();
 
   @override
   final SplashProgress progressValue;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SplashControllerState.data(progressValue: $progressValue)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SplashControllerState.data'))
+      ..add(DiagnosticsProperty('progressValue', progressValue));
   }
 
   @override
