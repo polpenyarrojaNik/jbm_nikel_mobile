@@ -21,7 +21,7 @@ mixin _$SplashControllerState {
     required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(SplashProgress progressValue) data,
+    required TResult Function() data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$SplashControllerState {
     TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(SplashProgress progressValue)? data,
+    TResult? Function()? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$SplashControllerState {
     TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(SplashProgress progressValue)? data,
+    TResult Function()? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,7 +136,7 @@ class _$_downloadDatabase extends _downloadDatabase
     required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(SplashProgress progressValue) data,
+    required TResult Function() data,
   }) {
     return downloadDatabase();
   }
@@ -147,7 +147,7 @@ class _$_downloadDatabase extends _downloadDatabase
     TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(SplashProgress progressValue)? data,
+    TResult? Function()? data,
   }) {
     return downloadDatabase?.call();
   }
@@ -158,7 +158,7 @@ class _$_downloadDatabase extends _downloadDatabase
     TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(SplashProgress progressValue)? data,
+    TResult Function()? data,
     required TResult orElse(),
   }) {
     if (downloadDatabase != null) {
@@ -257,7 +257,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
     required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(SplashProgress progressValue) data,
+    required TResult Function() data,
   }) {
     return initial();
   }
@@ -268,7 +268,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
     TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(SplashProgress progressValue)? data,
+    TResult? Function()? data,
   }) {
     return initial?.call();
   }
@@ -279,7 +279,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
     TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(SplashProgress progressValue)? data,
+    TResult Function()? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -412,7 +412,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
     required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(SplashProgress progressValue) data,
+    required TResult Function() data,
   }) {
     return error(this.error, stackTrace);
   }
@@ -423,7 +423,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
     TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(SplashProgress progressValue)? data,
+    TResult? Function()? data,
   }) {
     return error?.call(this.error, stackTrace);
   }
@@ -434,7 +434,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
     TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(SplashProgress progressValue)? data,
+    TResult Function()? data,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -497,8 +497,6 @@ abstract class _error extends SplashControllerState {
 abstract class _$$_dataCopyWith<$Res> {
   factory _$$_dataCopyWith(_$_data value, $Res Function(_$_data) then) =
       __$$_dataCopyWithImpl<$Res>;
-  @useResult
-  $Res call({SplashProgress progressValue});
 }
 
 /// @nodoc
@@ -507,59 +505,32 @@ class __$$_dataCopyWithImpl<$Res>
     implements _$$_dataCopyWith<$Res> {
   __$$_dataCopyWithImpl(_$_data _value, $Res Function(_$_data) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? progressValue = null,
-  }) {
-    return _then(_$_data(
-      null == progressValue
-          ? _value.progressValue
-          : progressValue // ignore: cast_nullable_to_non_nullable
-              as SplashProgress,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_data extends _data with DiagnosticableTreeMixin {
-  const _$_data(this.progressValue) : super._();
-
-  @override
-  final SplashProgress progressValue;
+  const _$_data() : super._();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.data(progressValue: $progressValue)';
+    return 'SplashControllerState.data()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SplashControllerState.data'))
-      ..add(DiagnosticsProperty('progressValue', progressValue));
+    properties.add(DiagnosticsProperty('type', 'SplashControllerState.data'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_data &&
-            (identical(other.progressValue, progressValue) ||
-                other.progressValue == progressValue));
+        (other.runtimeType == runtimeType && other is _$_data);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, progressValue);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_dataCopyWith<_$_data> get copyWith =>
-      __$$_dataCopyWithImpl<_$_data>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -567,9 +538,9 @@ class _$_data extends _data with DiagnosticableTreeMixin {
     required TResult Function() downloadDatabase,
     required TResult Function() initial,
     required TResult Function(Object error, StackTrace? stackTrace) error,
-    required TResult Function(SplashProgress progressValue) data,
+    required TResult Function() data,
   }) {
-    return data(progressValue);
+    return data();
   }
 
   @override
@@ -578,9 +549,9 @@ class _$_data extends _data with DiagnosticableTreeMixin {
     TResult? Function()? downloadDatabase,
     TResult? Function()? initial,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
-    TResult? Function(SplashProgress progressValue)? data,
+    TResult? Function()? data,
   }) {
-    return data?.call(progressValue);
+    return data?.call();
   }
 
   @override
@@ -589,11 +560,11 @@ class _$_data extends _data with DiagnosticableTreeMixin {
     TResult Function()? downloadDatabase,
     TResult Function()? initial,
     TResult Function(Object error, StackTrace? stackTrace)? error,
-    TResult Function(SplashProgress progressValue)? data,
+    TResult Function()? data,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(progressValue);
+      return data();
     }
     return orElse();
   }
@@ -637,10 +608,6 @@ class _$_data extends _data with DiagnosticableTreeMixin {
 }
 
 abstract class _data extends SplashControllerState {
-  const factory _data(final SplashProgress progressValue) = _$_data;
+  const factory _data() = _$_data;
   const _data._() : super._();
-
-  SplashProgress get progressValue;
-  @JsonKey(ignore: true)
-  _$$_dataCopyWith<_$_data> get copyWith => throw _privateConstructorUsedError;
 }

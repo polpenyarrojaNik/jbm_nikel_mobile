@@ -1,17 +1,26 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dio/dio.dart';
+import 'package:drift/isolate.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_isolate/flutter_isolate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
-
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../generated/l10n.dart';
+import '../../../core/domain/isolate_args.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
-import '../domain/splash_progress.dart';
+import '../domain/sync_progress.dart';
 
 class SplashPage extends ConsumerWidget {
   const SplashPage({super.key});
@@ -23,12 +32,13 @@ class SplashPage extends ConsumerWidget {
       (_, state) {
         state.maybeWhen(
           orElse: () {},
-          data: (splashProgress) {
-            if (splashProgress.value == 99) {
-              context.router.replace(
-                ArticuloListaRoute(isSearchArticuloForForm: false),
-              );
-            }
+          data: () async {
+            final user = ref.read(usuarioNotifierProvider);
+            compute(syncInBackground, IsolateArgs(user!, isolateConnectPort!))
+                .then((syncProgress) => updateSyncDates(syncProgress));
+            context.router.replace(
+              ArticuloListaRoute(isSearchArticuloForForm: false),
+            );
           },
           error: (e, _) {
             if (e is AppException) {
@@ -67,11 +77,55 @@ class SplashPage extends ConsumerWidget {
               const _ReintentarSyncButton(),
             ],
           ),
-          data: (splashProgress) =>
-              SyncProgressList(currentSplashProgress: splashProgress),
+          data: () => Container(),
         ),
       ),
     );
+  }
+
+  void updateSyncDates(SyncProgress syncProgress) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    final finishSyncDate = DateTime.now().toUtc();
+
+    if (syncProgress.index > 0) {
+      await sharedPreferences.setString(
+          articuloFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+
+      if (syncProgress.index > 1) {
+        await sharedPreferences.setString(
+            clienteFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+      }
+
+      if (syncProgress.index > 2) {
+        await sharedPreferences.setString(
+            pedidoVentaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+      }
+      if (syncProgress.index > 3) {
+        await sharedPreferences.setString(
+            visitaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+      }
+    }
+  }
+
+  Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
+    try {
+      final isolateSendPort = isolateArgs.isolateSendPort;
+      final isolate = DriftIsolate.fromConnectPort(isolateSendPort);
+      isolateSendPort.send(isolate.connectPort);
+      final connection = await isolate.connect();
+      final database = AppDatabase.connect(connection, false);
+      final SyncService syncService =
+          SyncService(database, Dio(), isolateArgs.usuario);
+
+      return syncService.syncAllTable();
+
+      print('----------ISOLATE FINISHED-----------');
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
   }
 }
 
@@ -97,85 +151,5 @@ class _ReintentarSyncButton extends ConsumerWidget {
 
   void reintantarSync(WidgetRef ref) {
     ref.read(splashPageControllerProvider.notifier).initializeApp();
-  }
-}
-
-class SyncProgressList extends StatelessWidget {
-  const SyncProgressList({super.key, required this.currentSplashProgress});
-
-  final SplashProgress currentSplashProgress;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        SyncProgressItem(
-            title: S.of(context).splash_articulos,
-            currentSplashProgress: currentSplashProgress,
-            splashProgressItem: SplashProgress.syncArticulos),
-        const Divider(),
-        SyncProgressItem(
-            title: S.of(context).splash_clientes,
-            currentSplashProgress: currentSplashProgress,
-            splashProgressItem: SplashProgress.syncClientes),
-        const Divider(),
-        SyncProgressItem(
-            title: S.of(context).splash_pedidos,
-            currentSplashProgress: currentSplashProgress,
-            splashProgressItem: SplashProgress.syncPedidos),
-        const Divider(),
-        SyncProgressItem(
-            title: S.of(context).splash_visitas,
-            currentSplashProgress: currentSplashProgress,
-            splashProgressItem: SplashProgress.syncVisitas),
-        const Divider(),
-        SyncProgressItem(
-            title: S.of(context).splash_otras,
-            currentSplashProgress: currentSplashProgress,
-            splashProgressItem: SplashProgress.syncAuxiliar)
-      ],
-    );
-  }
-}
-
-class SyncProgressItem extends StatelessWidget {
-  const SyncProgressItem(
-      {super.key,
-      required this.title,
-      required this.currentSplashProgress,
-      required this.splashProgressItem});
-
-  final String title;
-  final SplashProgress currentSplashProgress;
-  final SplashProgress splashProgressItem;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title),
-          (currentSplashProgress.value != 0 &&
-                  currentSplashProgress.value >= splashProgressItem.value)
-              ? const Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                )
-              : ((currentSplashProgress.value + 1) < splashProgressItem.value)
-                  ? const Icon(
-                      Icons.remove_circle,
-                      color: Colors.orange,
-                    )
-                  : const SizedBox(
-                      height: 25,
-                      width: 25,
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    ),
-        ],
-      ),
-    );
   }
 }

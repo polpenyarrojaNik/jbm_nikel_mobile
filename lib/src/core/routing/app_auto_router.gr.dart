@@ -323,6 +323,17 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ArticuloVentasMesRoute.name: (routeData) {
+      final args = routeData.argsAs<ArticuloVentasMesRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ArticuloVentasMesPage(
+          key: args.key,
+          articuloId: args.articuloId,
+          descripcion: args.descripcion,
+        ),
+      );
+    },
     ArticuloDocumentoRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloDocumentoRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -497,6 +508,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ArticuloSustitutivoRoute.name,
           path: '/articulo/:id/sustitutivos',
+        ),
+        RouteConfig(
+          ArticuloVentasMesRoute.name,
+          path: '/articulo/:id/ventas-mes',
         ),
         RouteConfig(
           ArticuloDocumentoRoute.name,
@@ -1562,6 +1577,45 @@ class ArticuloSustitutivoRouteArgs {
   @override
   String toString() {
     return 'ArticuloSustitutivoRouteArgs{key: $key, articuloId: $articuloId, description: $description}';
+  }
+}
+
+/// generated route for
+/// [ArticuloVentasMesPage]
+class ArticuloVentasMesRoute extends PageRouteInfo<ArticuloVentasMesRouteArgs> {
+  ArticuloVentasMesRoute({
+    Key? key,
+    required String articuloId,
+    required String descripcion,
+  }) : super(
+          ArticuloVentasMesRoute.name,
+          path: '/articulo/:id/ventas-mes',
+          args: ArticuloVentasMesRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            descripcion: descripcion,
+          ),
+        );
+
+  static const String name = 'ArticuloVentasMesRoute';
+}
+
+class ArticuloVentasMesRouteArgs {
+  const ArticuloVentasMesRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.descripcion,
+  });
+
+  final Key? key;
+
+  final String articuloId;
+
+  final String descripcion;
+
+  @override
+  String toString() {
+    return 'ArticuloVentasMesRouteArgs{key: $key, articuloId: $articuloId, descripcion: $descripcion}';
   }
 }
 

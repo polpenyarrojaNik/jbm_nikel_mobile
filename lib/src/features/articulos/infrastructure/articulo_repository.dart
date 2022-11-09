@@ -30,9 +30,11 @@ import '../domain/articulo_grupo_neto.dart';
 import '../domain/articulo_imagen.dart';
 import '../domain/articulo_pedido_venta_linea.dart';
 import '../domain/articulo_sustitutivo.dart';
+import '../domain/articulo_ventas_mes.dart';
 import 'articulo_dto.dart';
 import 'articulo_imagen_dto.dart';
 import 'articulo_precio_tarifa_dto.dart';
+import 'articulo_ventas_mes_dto.dart';
 
 List<Articulo> articulos = [];
 
@@ -169,6 +171,12 @@ final articuloUltimosPreciosSearchProvider = FutureProvider.autoDispose
         searchText: defaultListParams.searchText);
   },
 );
+
+final articuloVentasMesProvider = FutureProvider.autoDispose
+    .family<List<ArticuloVentasMes>, String>((ref, articuloId) {
+  final articuloRepository = ref.watch(articuloRepositoryProvider);
+  return articuloRepository.getVentasMesById(articuloId: articuloId);
+});
 
 final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
   final syncRepository = ref.watch(syncServiceProvider);
@@ -607,6 +615,100 @@ class ArticuloRepository {
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
+  }
+
+  Future<List<ArticuloVentasMes>> getVentasMesById(
+      {required String articuloId}) async {
+    try {
+      final query =
+          await _db.customSelect(_getVentasMesCustomSelect(), variables: [
+        Variable(articuloId),
+      ], readsFrom: {
+        _db.estadisticasClienteUsuarioVentasTable,
+      }).get();
+
+      return query.map((row) {
+        print(row.data);
+        return ArticuloVentasMesDTO.fromJson(row.data).toDomain();
+      }).toList();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  String _getVentasMesCustomSelect() {
+    String select = '''
+SELECT mes MES
+        , SUM(unidades_anyo_0) UNIDADES_ANYO
+        , SUM(unidades_anyo_1) UNIDADES_ANYO_1
+        , SUM(unidades_anyo_2) UNIDADES_ANYO_2
+        , SUM(unidades_anyo_3) UNIDADES_ANYO_3
+        , SUM(unidades_anyo_4) UNIDADES_ANYO_4
+FROM (  
+  ''';
+    for (var mes = 1; mes <= 12; mes++) {
+      if (mes != 1) {
+        select += ' UNION ALL ';
+      }
+
+      select += '''
+        SELECT $mes mes
+                , SUM(unidades) unidades_anyo_0
+                , 0 unidades_anyo_1
+                , 0 unidades_anyo_2
+                , 0 unidades_anyo_3
+                , 0 unidades_anyo_4
+    FROM estadisticas_venta WHERE articulo_id = :articuloId
+      AND anyo = strftime('%Y' ,DATE())
+      AND mes = $mes
+  UNION ALL
+    SELECT $mes mes
+                , 0 unidades_anyo_0
+                , SUM(unidades) unidades_anyo_1
+                , 0 unidades_anyo_2
+                , 0 unidades_anyo_3
+                , 0 unidades_anyo_4
+    FROM estadisticas_venta WHERE articulo_id = :articuloId
+      AND anyo = strftime('%Y' ,DATE()) - 1
+      AND mes = $mes
+  UNION ALL
+    SELECT $mes mes
+                , 0 unidades_anyo_0
+                , 0 unidades_anyo_1
+                , SUM(unidades) unidades_anyo_2
+                , 0 unidades_anyo_3
+                , 0 unidades_anyo_4
+    FROM estadisticas_venta WHERE articulo_id = :articuloId
+      AND anyo = strftime('%Y' ,DATE()) - 2
+      AND mes = $mes
+  UNION ALL
+    SELECT $mes mes
+                , 0 unidades_anyo_0
+                , 0 unidades_anyo_1
+                , 0 unidades_anyo_2
+                , SUM(unidades) unidades_anyo_3
+                , 0 unidades_anyo_4
+    FROM estadisticas_venta WHERE articulo_id = :articuloId
+      AND anyo = strftime('%Y' ,DATE()) - 3
+      AND mes = $mes
+   UNION ALL
+      SELECT $mes mes
+                , 0 unidades_anyo_0
+                , 0 unidades_anyo_1
+                , 0 unidades_anyo_2
+                , 0 unidades_anyo_3
+                , SUM(unidades) unidades_anyo_4
+    FROM estadisticas_venta WHERE articulo_id = :articuloId
+      AND anyo = strftime('%Y' ,DATE()) - 4
+      AND mes = $mes
+''';
+    }
+    select += '''
+)
+GROUP BY mes
+''';
+    print(select);
+    return select;
   }
 
   Future<List<ArticuloImagenDTO>> _remoteGetArticuloImagen({

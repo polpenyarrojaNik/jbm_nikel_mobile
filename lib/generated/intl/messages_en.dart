@@ -98,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Spare"),
         "articulo_show_articuloSustitutivo_titulo":
             MessageLookupByLibrary.simpleMessage("Substitute Artiicles"),
+        "articulo_show_articuloVentasMes_titulo":
+            MessageLookupByLibrary.simpleMessage("Month sales"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Password"),
         "auth_loginPage_iniciarSesion":

@@ -5,7 +5,6 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/log_repository.dart';
-import '../domain/splash_progress.dart';
 
 part 'splash_page_controller.freezed.dart';
 
@@ -22,8 +21,7 @@ class SplashControllerState with _$SplashControllerState {
   const factory SplashControllerState.initial() = _initial;
   const factory SplashControllerState.error(Object error,
       {StackTrace? stackTrace}) = _error;
-  const factory SplashControllerState.data(SplashProgress progressValue) =
-      _data;
+  const factory SplashControllerState.data() = _data;
 }
 
 class SplashPageController extends StateNotifier<SplashControllerState> {
@@ -45,10 +43,7 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
         rethrow;
       }
 
-      state =
-          const SplashControllerState.data(SplashProgress.downloadedDatabase);
-
-      state = const SplashControllerState.data(SplashProgress.syncAuxiliar);
+      state = const SplashControllerState.data();
     } on AppException catch (e, stackTrace) {
       state = SplashControllerState.error(e, stackTrace: stackTrace);
     } catch (e) {

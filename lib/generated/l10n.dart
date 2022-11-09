@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  /// `Month sales`
+  String get articulo_show_articuloVentasMes_titulo {
+    return Intl.message(
+      'Month sales',
+      name: 'articulo_show_articuloVentasMes_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last prices`
   String get ultimosPrecios_titulo {
     return Intl.message(

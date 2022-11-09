@@ -2,6 +2,8 @@ PODS:
   - better_open_file (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - flutter_isolate (0.0.1):
+    - Flutter
   - flutter_secure_storage (3.3.1):
     - Flutter
   - FMDB (2.7.5):
@@ -49,6 +51,7 @@ PODS:
 DEPENDENCIES:
   - better_open_file (from `.symlinks/plugins/better_open_file/ios`)
   - Flutter (from `Flutter`)
+  - flutter_isolate (from `.symlinks/plugins/flutter_isolate/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
@@ -71,6 +74,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/better_open_file/ios"
   Flutter:
     :path: Flutter
+  flutter_isolate:
+    :path: ".symlinks/plugins/flutter_isolate/ios"
   flutter_secure_storage:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
   geolocator_apple:
@@ -95,6 +100,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   better_open_file: 03cf320415d4d3f46b6e00adc4a567d76c1a399d
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_isolate: 0edf5081826d071adf21759d1eb10ff5c24503b5
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
