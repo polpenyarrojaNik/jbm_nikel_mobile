@@ -75,7 +75,7 @@ class PedidoVentaLineaLocalDTO
         stockDisponibleSN: (stockDisponibleSN == 'S') ? true : false,
         fechaDisponible: fechaDisponible,
         iva: iva,
-        cantidadServida: 0,
+        cantidadPendiente: cantidad,
         lastUpdated: DateTime.now().toUtc(),
         deleted: false);
   }

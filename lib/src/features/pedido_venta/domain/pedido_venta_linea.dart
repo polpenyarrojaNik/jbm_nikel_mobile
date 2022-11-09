@@ -27,7 +27,7 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     bool? stockDisponibleSN,
     DateTime? fechaDisponible,
     double? iva,
-    required int cantidadServida,
+    required int cantidadPendiente,
     required DateTime lastUpdated,
     required bool deleted,
   }) = _PedidoVentaLinea;

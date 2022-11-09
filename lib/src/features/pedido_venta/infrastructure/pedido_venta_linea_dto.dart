@@ -55,7 +55,7 @@ class PedidoVentaLineaDTO
         importeLinea: (importeLinea != null)
             ? importeLinea!.toMoney(currencyId: divisaId)
             : null,
-        cantidadServida: cantidadServida,
+        cantidadPendiente: cantidad - cantidadServida,
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
   }

@@ -262,6 +262,10 @@ class PedidoVentaRepository {
 
       query.where(_db.pedidoAlbaranTable.pedidoVentaId.equals(pedidoVentaId));
 
+      query.orderBy([
+        OrderingTerm.desc(_db.pedidoAlbaranTable.fechaAlbaran),
+      ]);
+
       return query.map((row) {
         final pedidoVentaAlbaranDTO = row.readTable(_db.pedidoAlbaranTable);
         return pedidoVentaAlbaranDTO.toDomain();

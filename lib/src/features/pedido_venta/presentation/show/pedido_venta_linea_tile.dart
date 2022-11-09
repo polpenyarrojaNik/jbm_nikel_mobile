@@ -99,9 +99,9 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           ),
                       ],
                     ),
-                  if (pedidoVentaLinea.cantidadServida != 0)
+                  if (pedidoVentaLinea.cantidadPendiente != 0)
                     Text(
-                      'Cantidad servida: ${pedidoVentaLinea.cantidadServida}',
+                      'Cantidad pendiente: ${pedidoVentaLinea.cantidadPendiente} ${S.of(context).unidad}',
                       style: Theme.of(context).textTheme.caption,
                     )
                 ],
