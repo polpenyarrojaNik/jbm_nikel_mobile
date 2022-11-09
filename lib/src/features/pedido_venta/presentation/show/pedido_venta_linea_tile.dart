@@ -99,6 +99,11 @@ class PedidoVentaLineaTile extends StatelessWidget {
                           ),
                       ],
                     ),
+                  if (pedidoVentaLinea.cantidadServida != 0)
+                    Text(
+                      'Cantidad servida: ${pedidoVentaLinea.cantidadServida}',
+                      style: Theme.of(context).textTheme.caption,
+                    )
                 ],
               ),
             ),

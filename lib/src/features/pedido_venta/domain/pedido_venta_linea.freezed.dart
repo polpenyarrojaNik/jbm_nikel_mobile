@@ -36,6 +36,7 @@ mixin _$PedidoVentaLinea {
   bool? get stockDisponibleSN => throw _privateConstructorUsedError;
   DateTime? get fechaDisponible => throw _privateConstructorUsedError;
   double? get iva => throw _privateConstructorUsedError;
+  int get cantidadServida => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -71,6 +72,7 @@ abstract class $PedidoVentaLineaCopyWith<$Res> {
       bool? stockDisponibleSN,
       DateTime? fechaDisponible,
       double? iva,
+      int cantidadServida,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -108,6 +110,7 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
     Object? stockDisponibleSN = freezed,
     Object? fechaDisponible = freezed,
     Object? iva = freezed,
+    Object? cantidadServida = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -192,6 +195,10 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double?,
+      cantidadServida: null == cantidadServida
+          ? _value.cantidadServida
+          : cantidadServida // ignore: cast_nullable_to_non_nullable
+              as int,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -233,6 +240,7 @@ abstract class _$$_PedidoVentaLineaCopyWith<$Res>
       bool? stockDisponibleSN,
       DateTime? fechaDisponible,
       double? iva,
+      int cantidadServida,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -268,6 +276,7 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
     Object? stockDisponibleSN = freezed,
     Object? fechaDisponible = freezed,
     Object? iva = freezed,
+    Object? cantidadServida = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -352,6 +361,10 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.iva
           : iva // ignore: cast_nullable_to_non_nullable
               as double?,
+      cantidadServida: null == cantidadServida
+          ? _value.cantidadServida
+          : cantidadServida // ignore: cast_nullable_to_non_nullable
+              as int,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -388,6 +401,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
       this.stockDisponibleSN,
       this.fechaDisponible,
       this.iva,
+      required this.cantidadServida,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -433,13 +447,15 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   @override
   final double? iva;
   @override
+  final int cantidadServida;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, fechaDisponible: $fechaDisponible, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, fechaDisponible: $fechaDisponible, iva: $iva, cantidadServida: $cantidadServida, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -487,6 +503,8 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
             (identical(other.fechaDisponible, fechaDisponible) ||
                 other.fechaDisponible == fechaDisponible) &&
             (identical(other.iva, iva) || other.iva == iva) &&
+            (identical(other.cantidadServida, cantidadServida) ||
+                other.cantidadServida == cantidadServida) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -515,6 +533,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
         stockDisponibleSN,
         fechaDisponible,
         iva,
+        cantidadServida,
         lastUpdated,
         deleted
       ]);
@@ -548,6 +567,7 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
       final bool? stockDisponibleSN,
       final DateTime? fechaDisponible,
       final double? iva,
+      required final int cantidadServida,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_PedidoVentaLinea;
   const _PedidoVentaLinea._() : super._();
@@ -592,6 +612,8 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   DateTime? get fechaDisponible;
   @override
   double? get iva;
+  @override
+  int get cantidadServida;
   @override
   DateTime get lastUpdated;
   @override

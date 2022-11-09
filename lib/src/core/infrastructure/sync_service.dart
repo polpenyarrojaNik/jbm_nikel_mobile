@@ -39,6 +39,7 @@ import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
+import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
@@ -261,6 +262,7 @@ class SyncService {
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
+      await syncPedidoVentaAlbaran();
       await syncPedidoVentaEstado();
       if (syncAuxTables ?? false) await syncAllAuxiliares();
     } catch (e) {
@@ -624,6 +626,21 @@ class SyncService {
         apiPath: 'pedidos/detalle',
         tableInfo: _db.pedidoVentaLineaTable,
         fromJson: (e) => PedidoVentaLineaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncPedidoVentaAlbaran() async {
+    try {
+      await _syncTable(
+        apiPath: 'pedidos/albaranes',
+        tableInfo: _db.pedidoAlbaranTable,
+        fromJson: (e) => PedidoAlbaranDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.severe(e.details);

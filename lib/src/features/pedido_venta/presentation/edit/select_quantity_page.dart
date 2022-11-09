@@ -223,6 +223,7 @@ class _SelecionarCantidadPageState
             descuento1: descuento1,
             descuento2: descuento2,
             descuento3: articuloPrecio.descuento3),
+        cantidadServida: 0,
         lastUpdated: DateTime.now().toUtc(),
         deleted: false,
       );

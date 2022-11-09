@@ -68,6 +68,9 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                   children: [
                     ClienteInfoContainer(pedidoVenta: pedidoVenta),
                     gapH12,
+                    if (!pedidoVenta.getIsLocal())
+                      AlbaranesContainer(
+                          pedidoVentaId: pedidoVenta.pedidoVentaId!),
                     PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
                   ],
                 ),
@@ -206,6 +209,43 @@ class PedidoVentaInfoContainer extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class AlbaranesContainer extends ConsumerWidget {
+  const AlbaranesContainer({super.key, required this.pedidoVentaId});
+
+  final String pedidoVentaId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(pedidoVentaAlbaranProvider(pedidoVentaId));
+    return state.when(
+        data: (albaranes) => ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: albaranes.length,
+              separatorBuilder: (context, i) => const Divider(),
+              itemBuilder: (context, i) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RowFieldTextDetalle(
+                      fieldTitleValue: 'Albarán',
+                      value: albaranes[i].albaranId),
+                  RowFieldTextDetalle(
+                      fieldTitleValue: 'Fecha',
+                      value: dateFormatter(
+                          albaranes[i].fechaAlbaran.toLocal().toIso8601String(),
+                          allDay: true)),
+                  if (albaranes[i].trackId != null)
+                    RowFieldTextDetalle(
+                        fieldTitleValue: 'Tracking',
+                        value: albaranes[i].trackId),
+                ],
+              ),
+            ),
+        error: (error, _) => ErrorMessageWidget(error.toString()),
+        loading: () => const Center(child: CircularProgressIndicator()));
   }
 }
 

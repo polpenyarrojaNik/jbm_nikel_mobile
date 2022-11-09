@@ -35,6 +35,7 @@ import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
@@ -98,6 +99,7 @@ const localDatabaseName = 'jbm.sqlite';
   DivisaTable,
   PedidoVentaLineaLocalTable,
   PedidoVentaLocalTable,
+  PedidoAlbaranTable,
   DescuentoGeneralTable,
   LogTable,
 ])
@@ -108,7 +110,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.connect(super.connection, this.test) : super.connect();
 
   @override
-  int get schemaVersion => 6;
+  int get schemaVersion => 7;
 }
 
 LazyDatabase _openConnection() {

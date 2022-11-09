@@ -328,6 +328,7 @@ class PedidoVentaEditPageController
         stockDisponibleSN: pedidoVentaLineaList[i].stockDisponibleSN,
         iva: pedidoVentaLineaList[i].iva,
         importeLinea: pedidoVentaLineaList[i].importeLinea,
+        cantidadServida: pedidoVentaLineaList[i].cantidadServida,
         lastUpdated: pedidoVentaLineaList[i].lastUpdated,
         deleted: pedidoVentaLineaList[i].deleted,
       );

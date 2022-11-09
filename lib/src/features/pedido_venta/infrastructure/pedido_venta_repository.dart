@@ -22,6 +22,7 @@ import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/domain/usuario.dart';
+import '../domain/pedido_albaran.dart';
 import '../domain/pedido_venta.dart';
 import '../domain/pedido_venta_linea.dart';
 import '../domain/precio.dart';
@@ -42,6 +43,13 @@ final pedidoVentaProvider = FutureProvider.autoDispose
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaById(
       pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+});
+
+final pedidoVentaAlbaranProvider = FutureProvider.autoDispose
+    .family<List<PedidoAlbaran>, String>((ref, pedidoVentaId) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getPedidoVentaAlbaranListById(
+      pedidoVentaId: pedidoVentaId);
 });
 
 final deletePedidoVentaProvider =
@@ -240,6 +248,27 @@ class PedidoVentaRepository {
         pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain(),
       );
     }).getSingle();
+  }
+
+  Future<List<PedidoAlbaran>> getPedidoVentaAlbaranListById(
+      {required String pedidoVentaId}) async {
+    try {
+      final query = _db.select(_db.pedidoAlbaranTable).join([
+        innerJoin(
+            _db.pedidoVentaTable,
+            _db.pedidoVentaTable.pedidoVentaId
+                .equalsExp(_db.pedidoAlbaranTable.pedidoVentaId))
+      ]);
+
+      query.where(_db.pedidoAlbaranTable.pedidoVentaId.equals(pedidoVentaId));
+
+      return query.map((row) {
+        final pedidoVentaAlbaranDTO = row.readTable(_db.pedidoAlbaranTable);
+        return pedidoVentaAlbaranDTO.toDomain();
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
   }
 
   Future<List<PedidoVentaLinea>> getPedidoVentaLineaListById(

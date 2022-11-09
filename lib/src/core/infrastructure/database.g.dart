@@ -2454,6 +2454,7 @@ class PedidoVentaLineaTableCompanion
   final Value<double> descuento3;
   final Value<String?> pedidoLineaIdComponente;
   final Value<double?> importeLinea;
+  final Value<int> cantidadServida;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const PedidoVentaLineaTableCompanion({
@@ -2470,6 +2471,7 @@ class PedidoVentaLineaTableCompanion
     this.descuento3 = const Value.absent(),
     this.pedidoLineaIdComponente = const Value.absent(),
     this.importeLinea = const Value.absent(),
+    this.cantidadServida = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -2487,6 +2489,7 @@ class PedidoVentaLineaTableCompanion
     required double descuento3,
     this.pedidoLineaIdComponente = const Value.absent(),
     this.importeLinea = const Value.absent(),
+    required int cantidadServida,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : empresaId = Value(empresaId),
@@ -2500,6 +2503,7 @@ class PedidoVentaLineaTableCompanion
         descuento1 = Value(descuento1),
         descuento2 = Value(descuento2),
         descuento3 = Value(descuento3),
+        cantidadServida = Value(cantidadServida),
         lastUpdated = Value(lastUpdated);
   static Insertable<PedidoVentaLineaDTO> custom({
     Expression<String>? empresaId,
@@ -2515,6 +2519,7 @@ class PedidoVentaLineaTableCompanion
     Expression<double>? descuento3,
     Expression<String>? pedidoLineaIdComponente,
     Expression<double>? importeLinea,
+    Expression<int>? cantidadServida,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -2534,6 +2539,7 @@ class PedidoVentaLineaTableCompanion
       if (pedidoLineaIdComponente != null)
         'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
       if (importeLinea != null) 'TOTAL_LINEA': importeLinea,
+      if (cantidadServida != null) 'CANTIDAD_SERVIDA': cantidadServida,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -2553,6 +2559,7 @@ class PedidoVentaLineaTableCompanion
       Value<double>? descuento3,
       Value<String?>? pedidoLineaIdComponente,
       Value<double?>? importeLinea,
+      Value<int>? cantidadServida,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return PedidoVentaLineaTableCompanion(
@@ -2570,6 +2577,7 @@ class PedidoVentaLineaTableCompanion
       pedidoLineaIdComponente:
           pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
       importeLinea: importeLinea ?? this.importeLinea,
+      cantidadServida: cantidadServida ?? this.cantidadServida,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -2618,6 +2626,9 @@ class PedidoVentaLineaTableCompanion
     if (importeLinea.present) {
       map['TOTAL_LINEA'] = Variable<double>(importeLinea.value);
     }
+    if (cantidadServida.present) {
+      map['CANTIDAD_SERVIDA'] = Variable<int>(cantidadServida.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -2643,6 +2654,7 @@ class PedidoVentaLineaTableCompanion
           ..write('descuento3: $descuento3, ')
           ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
           ..write('importeLinea: $importeLinea, ')
+          ..write('cantidadServida: $cantidadServida, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -2727,6 +2739,12 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   late final GeneratedColumn<double> importeLinea = GeneratedColumn<double>(
       'TOTAL_LINEA', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
+  final VerificationMeta _cantidadServidaMeta =
+      const VerificationMeta('cantidadServida');
+  @override
+  late final GeneratedColumn<int> cantidadServida = GeneratedColumn<int>(
+      'CANTIDAD_SERVIDA', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -2755,6 +2773,7 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
         descuento3,
         pedidoLineaIdComponente,
         importeLinea,
+        cantidadServida,
         lastUpdated,
         deleted
       ];
@@ -2865,6 +2884,14 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
           importeLinea.isAcceptableOrUnknown(
               data['TOTAL_LINEA']!, _importeLineaMeta));
     }
+    if (data.containsKey('CANTIDAD_SERVIDA')) {
+      context.handle(
+          _cantidadServidaMeta,
+          cantidadServida.isAcceptableOrUnknown(
+              data['CANTIDAD_SERVIDA']!, _cantidadServidaMeta));
+    } else if (isInserting) {
+      context.missing(_cantidadServidaMeta);
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -2914,6 +2941,8 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
           data['${effectivePrefix}PEDIDO_LINEA_ID_COMPONENTE']),
       importeLinea: attachedDatabase.options.types
           .read(DriftSqlType.double, data['${effectivePrefix}TOTAL_LINEA']),
+      cantidadServida: attachedDatabase.options.types
+          .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_SERVIDA'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -16213,6 +16242,281 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   }
 }
 
+class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
+  final Value<String> empresaId;
+  final Value<String> pedidoVentaId;
+  final Value<String> albaranId;
+  final Value<DateTime> fechaAlbaran;
+  final Value<String?> agencia;
+  final Value<String?> trackId;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const PedidoAlbaranTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.pedidoVentaId = const Value.absent(),
+    this.albaranId = const Value.absent(),
+    this.fechaAlbaran = const Value.absent(),
+    this.agencia = const Value.absent(),
+    this.trackId = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  PedidoAlbaranTableCompanion.insert({
+    required String empresaId,
+    required String pedidoVentaId,
+    required String albaranId,
+    required DateTime fechaAlbaran,
+    this.agencia = const Value.absent(),
+    this.trackId = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : empresaId = Value(empresaId),
+        pedidoVentaId = Value(pedidoVentaId),
+        albaranId = Value(albaranId),
+        fechaAlbaran = Value(fechaAlbaran),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<PedidoAlbaranDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? pedidoVentaId,
+    Expression<String>? albaranId,
+    Expression<DateTime>? fechaAlbaran,
+    Expression<String>? agencia,
+    Expression<String>? trackId,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
+      if (albaranId != null) 'ALBARAN_ID': albaranId,
+      if (fechaAlbaran != null) 'FECHA_ALBARAN': fechaAlbaran,
+      if (agencia != null) 'AGENCIA': agencia,
+      if (trackId != null) 'TRACK_ID': trackId,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  PedidoAlbaranTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? pedidoVentaId,
+      Value<String>? albaranId,
+      Value<DateTime>? fechaAlbaran,
+      Value<String?>? agencia,
+      Value<String?>? trackId,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return PedidoAlbaranTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
+      albaranId: albaranId ?? this.albaranId,
+      fechaAlbaran: fechaAlbaran ?? this.fechaAlbaran,
+      agencia: agencia ?? this.agencia,
+      trackId: trackId ?? this.trackId,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    }
+    if (pedidoVentaId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
+    }
+    if (albaranId.present) {
+      map['ALBARAN_ID'] = Variable<String>(albaranId.value);
+    }
+    if (fechaAlbaran.present) {
+      map['FECHA_ALBARAN'] = Variable<DateTime>(fechaAlbaran.value);
+    }
+    if (agencia.present) {
+      map['AGENCIA'] = Variable<String>(agencia.value);
+    }
+    if (trackId.present) {
+      map['TRACK_ID'] = Variable<String>(trackId.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PedidoAlbaranTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('pedidoVentaId: $pedidoVentaId, ')
+          ..write('albaranId: $albaranId, ')
+          ..write('fechaAlbaran: $fechaAlbaran, ')
+          ..write('agencia: $agencia, ')
+          ..write('trackId: $trackId, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $PedidoAlbaranTableTable extends PedidoAlbaranTable
+    with TableInfo<$PedidoAlbaranTableTable, PedidoAlbaranDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PedidoAlbaranTableTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+      'EMPRESA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _pedidoVentaIdMeta =
+      const VerificationMeta('pedidoVentaId');
+  @override
+  late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
+      'PEDIDO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _albaranIdMeta = const VerificationMeta('albaranId');
+  @override
+  late final GeneratedColumn<String> albaranId = GeneratedColumn<String>(
+      'ALBARAN_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _fechaAlbaranMeta =
+      const VerificationMeta('fechaAlbaran');
+  @override
+  late final GeneratedColumn<DateTime> fechaAlbaran = GeneratedColumn<DateTime>(
+      'FECHA_ALBARAN', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _agenciaMeta = const VerificationMeta('agencia');
+  @override
+  late final GeneratedColumn<String> agencia = GeneratedColumn<String>(
+      'AGENCIA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _trackIdMeta = const VerificationMeta('trackId');
+  @override
+  late final GeneratedColumn<String> trackId = GeneratedColumn<String>(
+      'TRACK_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        empresaId,
+        pedidoVentaId,
+        albaranId,
+        fechaAlbaran,
+        agencia,
+        trackId,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'PEDIDOS_ALBARANES';
+  @override
+  String get actualTableName => 'PEDIDOS_ALBARANES';
+  @override
+  VerificationContext validateIntegrity(Insertable<PedidoAlbaranDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('EMPRESA_ID')) {
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('PEDIDO_ID')) {
+      context.handle(
+          _pedidoVentaIdMeta,
+          pedidoVentaId.isAcceptableOrUnknown(
+              data['PEDIDO_ID']!, _pedidoVentaIdMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoVentaIdMeta);
+    }
+    if (data.containsKey('ALBARAN_ID')) {
+      context.handle(_albaranIdMeta,
+          albaranId.isAcceptableOrUnknown(data['ALBARAN_ID']!, _albaranIdMeta));
+    } else if (isInserting) {
+      context.missing(_albaranIdMeta);
+    }
+    if (data.containsKey('FECHA_ALBARAN')) {
+      context.handle(
+          _fechaAlbaranMeta,
+          fechaAlbaran.isAcceptableOrUnknown(
+              data['FECHA_ALBARAN']!, _fechaAlbaranMeta));
+    } else if (isInserting) {
+      context.missing(_fechaAlbaranMeta);
+    }
+    if (data.containsKey('AGENCIA')) {
+      context.handle(_agenciaMeta,
+          agencia.isAcceptableOrUnknown(data['AGENCIA']!, _agenciaMeta));
+    }
+    if (data.containsKey('TRACK_ID')) {
+      context.handle(_trackIdMeta,
+          trackId.isAcceptableOrUnknown(data['TRACK_ID']!, _trackIdMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {pedidoVentaId, empresaId, albaranId};
+  @override
+  PedidoAlbaranDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PedidoAlbaranDTO(
+      empresaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      pedidoVentaId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
+      albaranId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}ALBARAN_ID'])!,
+      fechaAlbaran: attachedDatabase.options.types.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALBARAN'])!,
+      agencia: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}AGENCIA']),
+      trackId: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}TRACK_ID']),
+      lastUpdated: attachedDatabase.options.types
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.options.types
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $PedidoAlbaranTableTable createAlias(String alias) {
+    return $PedidoAlbaranTableTable(attachedDatabase, alias);
+  }
+}
+
 class DescuentoGeneralTableCompanion
     extends UpdateCompanion<DescuentoGeneralDTO> {
   final Value<String> descuentoGeneralId;
@@ -16935,6 +17239,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $PedidoVentaLineaLocalTableTable(this);
   late final $PedidoVentaLocalTableTable pedidoVentaLocalTable =
       $PedidoVentaLocalTableTable(this);
+  late final $PedidoAlbaranTableTable pedidoAlbaranTable =
+      $PedidoAlbaranTableTable(this);
   late final $DescuentoGeneralTableTable descuentoGeneralTable =
       $DescuentoGeneralTableTable(this);
   late final $LogTableTable logTable = $LogTableTable(this);
@@ -16977,6 +17283,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         visitaLocalTable,
         pedidoVentaLineaLocalTable,
         pedidoVentaLocalTable,
+        pedidoAlbaranTable,
         descuentoGeneralTable,
         logTable
       ];
