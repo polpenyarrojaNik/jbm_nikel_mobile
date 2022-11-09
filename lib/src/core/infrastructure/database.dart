@@ -108,7 +108,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.connect(super.connection, this.test) : super.connect();
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 }
 
 LazyDatabase _openConnection() {
