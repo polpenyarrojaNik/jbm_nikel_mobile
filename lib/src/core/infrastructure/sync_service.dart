@@ -1165,7 +1165,6 @@ class SyncService {
       splashProgress = SyncProgress.syncArticulos;
       await syncAllClientesRelacionados();
       splashProgress = SyncProgress.syncClientes;
-      throw '';
       await syncAllPedidosRelacionados();
       splashProgress = SyncProgress.syncPedidos;
       await syncAllVisitasRelacionados();
@@ -1175,6 +1174,7 @@ class SyncService {
 
       return splashProgress;
     } catch (e) {
+      print(e);
       return splashProgress;
     }
   }
