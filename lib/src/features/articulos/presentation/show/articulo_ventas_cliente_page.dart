@@ -221,7 +221,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('#${articuloVentasClienteList[i].clienteId}'),
-                    gapW8,
+                    gapW12,
                     Flexible(
                       child: Text(
                         articuloVentasClienteList[i].nombreCliente,
