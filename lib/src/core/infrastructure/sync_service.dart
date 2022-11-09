@@ -9,6 +9,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/app_initialization/domain/sync_progress.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
@@ -1156,24 +1157,25 @@ class SyncService {
     return sharedPreferences.getInt(dbSchemaVersionKey);
   }
 
-  Future<void> syncAllTable() async {
-    // if (await sincronizarValoresPorTiempo(
-    //     preferenceKey: 'ARTICULO_ULTIMA_SYNC')) {
-    await syncAllArticulosRelacionados();
-    await syncAllClientesRelacionados();
-    await syncAllPedidosRelacionados();
-    await syncAllVisitasRelacionados();
-    await syncAllAuxiliares();
-    // }
-  }
+  Future<SyncProgress> syncAllTable() async {
+    SyncProgress splashProgress = SyncProgress.downloadedDatabase;
 
-  Future<bool> sincronizarValoresPorTiempo(
-      {required String preferenceKey}) async {
-    final sharedPreferences = await SharedPreferences.getInstance();
-    final dateUTCString = sharedPreferences.getString(preferenceKey) as String;
-    final lastSyncDateUTC =
-        DateTime.parse(dateUTCString).add(const Duration(minutes: 30));
-    print(lastSyncDateUTC.isBefore(DateTime.now().toUtc()));
-    return lastSyncDateUTC.isBefore(DateTime.now().toUtc());
+    try {
+      await syncAllArticulosRelacionados();
+      splashProgress = SyncProgress.syncArticulos;
+      await syncAllClientesRelacionados();
+      splashProgress = SyncProgress.syncClientes;
+      throw '';
+      await syncAllPedidosRelacionados();
+      splashProgress = SyncProgress.syncPedidos;
+      await syncAllVisitasRelacionados();
+      splashProgress = SyncProgress.syncVisitas;
+      await syncAllAuxiliares();
+      splashProgress = SyncProgress.syncAuxiliar;
+
+      return splashProgress;
+    } catch (e) {
+      return splashProgress;
+    }
   }
 }
