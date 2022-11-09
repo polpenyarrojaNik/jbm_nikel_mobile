@@ -18,6 +18,7 @@ import '../../features/articulos/presentation/show/articulo_detalle_page.dart';
 import '../../features/articulos/presentation/show/articulo_documento_page.dart';
 import '../../features/articulos/presentation/show/articulo_grupos_netos_page.dart';
 import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
+import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_page.dart';
@@ -98,6 +99,7 @@ part 'app_auto_router.gr.dart';
     AutoRoute(page: ArticuloRecambioPage, path: '/articulo/:id/recambios'),
     AutoRoute(
         page: ArticuloSustitutivoPage, path: '/articulo/:id/sustitutivos'),
+    AutoRoute(page: ArticuloVentasMesPage, path: '/articulo/:id/ventas-mes'),
     AutoRoute(page: ArticuloDocumentoPage, path: '/articulo/:id/documentos'),
     AutoRoute(page: VisitaListaPage, path: '/visita'),
     AutoRoute(page: VisitaDetallePage, path: '/visita/:id'),

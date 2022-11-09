@@ -1,11 +1,8 @@
-import 'dart:io';
 import 'dart:isolate';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
-import 'package:drift/drift.dart' as drift;
 import 'package:drift/isolate.dart';
-import 'package:drift/native.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,9 +14,6 @@ import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/sync_service.dart';

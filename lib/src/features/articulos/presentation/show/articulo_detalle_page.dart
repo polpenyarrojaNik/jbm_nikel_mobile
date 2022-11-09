@@ -885,6 +885,17 @@ class _Consultas extends StatelessWidget {
       ),
       const Divider(),
       DatosExtraRow(
+        title: S.of(context).articulo_show_articuloVentasMes_titulo,
+        navigationTo: () => context.router.push(
+          ArticuloVentasMesRoute(
+            articuloId: articulo.id,
+            descripcion:
+                getDescriptionArticuloInLocalLanguage(articulo: articulo),
+          ),
+        ),
+      ),
+      const Divider(),
+      DatosExtraRow(
         title: S.of(context).ultimosPrecios_titulo,
         navigationTo: () => context.router.push(
           ArticuloUltimosPreciosRoute(
