@@ -620,11 +620,71 @@ class S {
     );
   }
 
+  /// `Customers sales`
+  String get articulo_show_articuloVentasCliente_titulo {
+    return Intl.message(
+      'Customers sales',
+      name: 'articulo_show_articuloVentasCliente_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get articulo_show_articuloVentasArticulo_importe {
+    return Intl.message(
+      'Amount',
+      name: 'articulo_show_articuloVentasArticulo_importe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity`
+  String get articulo_show_articuloVentasArticulo_cantidad {
+    return Intl.message(
+      'Quantity',
+      name: 'articulo_show_articuloVentasArticulo_cantidad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Customer`
+  String get articulo_show_articuloVentasArticulo_cliente {
+    return Intl.message(
+      'Customer',
+      name: 'articulo_show_articuloVentasArticulo_cliente',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Month sales`
   String get articulo_show_articuloVentasMes_titulo {
     return Intl.message(
       'Month sales',
       name: 'articulo_show_articuloVentasMes_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get articulo_show_articuloVentasMes_total {
+    return Intl.message(
+      'Total',
+      name: 'articulo_show_articuloVentasMes_total',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Month`
+  String get articulo_show_articuloVentasMes_mes {
+    return Intl.message(
+      'Month',
+      name: 'articulo_show_articuloVentasMes_mes',
       desc: '',
       args: [],
     );

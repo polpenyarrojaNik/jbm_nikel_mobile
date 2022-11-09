@@ -23,7 +23,7 @@ class ArticuloVentasMesPage extends ConsumerWidget {
       body: CustomScrollView(
         slivers: [
           AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteVentasMes_titulo,
+            title: S.of(context).articulo_show_articuloVentasMes_titulo,
             entityId: articuloId,
             subtitle: descripcion,
           ),
@@ -90,7 +90,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     return [
       DataColumn(
         label: Expanded(
-          child: Text(S.of(context).cliente_show_clienteVentasMes_mes,
+          child: Text(S.of(context).articulo_show_articuloVentasMes_mes,
               textAlign: TextAlign.center),
         ),
         numeric: true,
@@ -242,7 +242,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Center(
-                child: Text(S.of(context).cliente_show_clienteVentasMes_total,
+                child: Text(S.of(context).articulo_show_articuloVentasMes_total,
                     style: Theme.of(context).textTheme.subtitle2),
               ),
             ],

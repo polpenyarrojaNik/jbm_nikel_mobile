@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:drift/isolate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_isolate/flutter_isolate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
@@ -119,9 +118,9 @@ class SplashPage extends ConsumerWidget {
       final SyncService syncService =
           SyncService(database, Dio(), isolateArgs.usuario);
 
-      return syncService.syncAllTable();
-
       print('----------ISOLATE FINISHED-----------');
+
+      return syncService.syncAllTable();
     } catch (e) {
       print(e);
       rethrow;

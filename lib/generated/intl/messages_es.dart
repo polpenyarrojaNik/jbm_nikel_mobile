@@ -98,8 +98,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Recambios"),
         "articulo_show_articuloSustitutivo_titulo":
             MessageLookupByLibrary.simpleMessage("Artículos sustiutivos"),
+        "articulo_show_articuloVentasArticulo_cantidad":
+            MessageLookupByLibrary.simpleMessage("Cantidad"),
+        "articulo_show_articuloVentasArticulo_cliente":
+            MessageLookupByLibrary.simpleMessage("Cliente"),
+        "articulo_show_articuloVentasArticulo_importe":
+            MessageLookupByLibrary.simpleMessage("Importe"),
+        "articulo_show_articuloVentasCliente_titulo":
+            MessageLookupByLibrary.simpleMessage("Ventas clientes"),
+        "articulo_show_articuloVentasMes_mes":
+            MessageLookupByLibrary.simpleMessage("Mes"),
         "articulo_show_articuloVentasMes_titulo":
-            MessageLookupByLibrary.simpleMessage("Ventas mes"),
+            MessageLookupByLibrary.simpleMessage("Ventas Mes"),
+        "articulo_show_articuloVentasMes_total":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Contraseña"),
         "auth_loginPage_iniciarSesion":

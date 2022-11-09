@@ -98,8 +98,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Spare"),
         "articulo_show_articuloSustitutivo_titulo":
             MessageLookupByLibrary.simpleMessage("Substitute Artiicles"),
+        "articulo_show_articuloVentasArticulo_cantidad":
+            MessageLookupByLibrary.simpleMessage("Quantity"),
+        "articulo_show_articuloVentasArticulo_cliente":
+            MessageLookupByLibrary.simpleMessage("Customer"),
+        "articulo_show_articuloVentasArticulo_importe":
+            MessageLookupByLibrary.simpleMessage("Amount"),
+        "articulo_show_articuloVentasCliente_titulo":
+            MessageLookupByLibrary.simpleMessage("Customers sales"),
+        "articulo_show_articuloVentasMes_mes":
+            MessageLookupByLibrary.simpleMessage("Month"),
         "articulo_show_articuloVentasMes_titulo":
             MessageLookupByLibrary.simpleMessage("Month sales"),
+        "articulo_show_articuloVentasMes_total":
+            MessageLookupByLibrary.simpleMessage("Total"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Password"),
         "auth_loginPage_iniciarSesion":

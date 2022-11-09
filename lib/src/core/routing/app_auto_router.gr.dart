@@ -334,6 +334,17 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ArticuloVentasClienteRoute.name: (routeData) {
+      final args = routeData.argsAs<ArticuloVentasClienteRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ArticuloVentasClientePage(
+          key: args.key,
+          articuloId: args.articuloId,
+          description: args.description,
+        ),
+      );
+    },
     ArticuloDocumentoRoute.name: (routeData) {
       final args = routeData.argsAs<ArticuloDocumentoRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -512,6 +523,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ArticuloVentasMesRoute.name,
           path: '/articulo/:id/ventas-mes',
+        ),
+        RouteConfig(
+          ArticuloVentasClienteRoute.name,
+          path: '/articulo/:id/ventas-cliente',
         ),
         RouteConfig(
           ArticuloDocumentoRoute.name,
@@ -1616,6 +1631,46 @@ class ArticuloVentasMesRouteArgs {
   @override
   String toString() {
     return 'ArticuloVentasMesRouteArgs{key: $key, articuloId: $articuloId, descripcion: $descripcion}';
+  }
+}
+
+/// generated route for
+/// [ArticuloVentasClientePage]
+class ArticuloVentasClienteRoute
+    extends PageRouteInfo<ArticuloVentasClienteRouteArgs> {
+  ArticuloVentasClienteRoute({
+    Key? key,
+    required String articuloId,
+    required String description,
+  }) : super(
+          ArticuloVentasClienteRoute.name,
+          path: '/articulo/:id/ventas-cliente',
+          args: ArticuloVentasClienteRouteArgs(
+            key: key,
+            articuloId: articuloId,
+            description: description,
+          ),
+        );
+
+  static const String name = 'ArticuloVentasClienteRoute';
+}
+
+class ArticuloVentasClienteRouteArgs {
+  const ArticuloVentasClienteRouteArgs({
+    this.key,
+    required this.articuloId,
+    required this.description,
+  });
+
+  final Key? key;
+
+  final String articuloId;
+
+  final String description;
+
+  @override
+  String toString() {
+    return 'ArticuloVentasClienteRouteArgs{key: $key, articuloId: $articuloId, description: $description}';
   }
 }
 
