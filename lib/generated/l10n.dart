@@ -1354,6 +1354,16 @@ class S {
     );
   }
 
+  /// `Exeeded risk`
+  String get cliente_show_clienteDetalle_riesgoExcedido {
+    return Intl.message(
+      'Exeeded risk',
+      name: 'cliente_show_clienteDetalle_riesgoExcedido',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Granted risk`
   String get cliente_show_clienteDetalle_riesgoConcedido {
     return Intl.message(

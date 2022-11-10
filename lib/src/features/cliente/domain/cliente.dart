@@ -57,6 +57,7 @@ class Cliente with _$Cliente {
       Money? riesgoPendienteCobroNoVencido,
       Money? riesgoPendienteServir,
       Money? riesgoPendienteFacturar,
+      required Money riesgoExcedido,
       String? obvservacionesInternas,
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,

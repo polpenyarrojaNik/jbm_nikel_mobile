@@ -129,6 +129,7 @@
   "cliente_show_clienteDetalle_concedidoCOFACE": "Granted COFACE",
   "cliente_show_clienteDetalle_fechaCOFACE": "COFACE date",
   "cliente_show_clienteDetalle_riesgoActual": "Current risk",
+  "cliente_show_clienteDetalle_riesgoExcedido": "Exeeded risk",
   "cliente_show_clienteDetalle_riesgoConcedido": "Granted risk",
   "cliente_show_clienteDetalle_pdteCobroVencido": "Pending Collection Due",
   "cliente_show_clienteDetalle_pdteCobroNoVencido": "Pending Collection No Due",

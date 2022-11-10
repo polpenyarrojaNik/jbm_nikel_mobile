@@ -129,6 +129,7 @@
   "cliente_show_clienteDetalle_concedidoCOFACE": "Concedido COFACE",
   "cliente_show_clienteDetalle_fechaCOFACE": "Fecha COFACE",
   "cliente_show_clienteDetalle_riesgoActual": "Riesgo actual",
+  "cliente_show_clienteDetalle_riesgoExcedido": "Riesgo excedido",
   "cliente_show_clienteDetalle_riesgoConcedido": "Riesgo concedido",
   "cliente_show_clienteDetalle_pdteCobroVencido": "Pdte. Cobro Vencido",
   "cliente_show_clienteDetalle_pdteCobroNoVencido": "Pdte. Cobro No Vencido",

@@ -635,7 +635,7 @@ class ClienteRepository {
         requestUri,
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},
-          responseType: ResponseType.bytes,
+          // responseType: ResponseType.bytes,
           receiveDataWhenStatusError: true,
         ),
       );

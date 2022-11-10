@@ -218,18 +218,6 @@ String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
   return null;
 }
 
-String getTipoCalculoPrecioDescripcion(
-    {required BuildContext context, required String tipoCalculoPrecio}) {
-  if (tipoCalculoPrecio == 'M') {
-    return S
-        .of(context)
-        .cliente_show_clienteDetalle_metodoCalculoPrecioMejorPrecioDescripcion;
-  }
-  return S
-      .of(context)
-      .cliente_show_clienteDetalle_metodoCalculoPrecioPreciosNetosDescripcion;
-}
-
 String getEstadoCobroFactura(
     {required BuildContext context, required String estadoCobro}) {
   switch (estadoCobro) {

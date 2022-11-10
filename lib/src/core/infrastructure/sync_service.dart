@@ -11,6 +11,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/domain/sync_progress.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
@@ -250,6 +251,7 @@ class SyncService {
       await syncClientesPagosPendients();
       await syncClientesRappels();
       await syncClientesUsuario();
+      await syncVentasUsuario();
       if (syncAuxTables ?? false) await syncAllAuxiliares();
     } catch (e) {
       rethrow;
@@ -409,6 +411,21 @@ class SyncService {
     }
   }
 
+  Future<void> syncVentasUsuario() async {
+    try {
+      await _syncTable(
+        apiPath: 'estadisticas/ventas-usuario',
+        tableInfo: _db.estadisticasClienteUsuarioVentasTable,
+        fromJson: (e) => EstadisticasVentaClienteUsuarioDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.severe(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncClientes() async {
     try {
       await _syncTable(
@@ -533,7 +550,7 @@ class SyncService {
   Future<void> syncClientesRappels() async {
     try {
       await _syncTable(
-        apiPath: 'clientes/rappels',
+        apiPath: 'v2/clientes/rappels',
         tableInfo: _db.clienteRappelTable,
         fromJson: (e) => ClienteRappelDTO.fromJson(e),
       );
@@ -623,7 +640,7 @@ class SyncService {
   Future<void> syncPedidoVentaLinea() async {
     try {
       await _syncTable(
-        apiPath: 'pedidos/detalle',
+        apiPath: 'v2/pedidos/detalle',
         tableInfo: _db.pedidoVentaLineaTable,
         fromJson: (e) => PedidoVentaLineaDTO.fromJson(e),
       );

@@ -61,6 +61,7 @@ mixin _$Cliente {
       throw _privateConstructorUsedError;
   Money? get riesgoPendienteServir => throw _privateConstructorUsedError;
   Money? get riesgoPendienteFacturar => throw _privateConstructorUsedError;
+  Money get riesgoExcedido => throw _privateConstructorUsedError;
   String? get obvservacionesInternas => throw _privateConstructorUsedError;
   bool? get clientePotencial => throw _privateConstructorUsedError;
   ClienteEstadoPotencial? get clienteEstadoPotencial =>
@@ -123,6 +124,7 @@ abstract class $ClienteCopyWith<$Res> {
       Money? riesgoPendienteCobroNoVencido,
       Money? riesgoPendienteServir,
       Money? riesgoPendienteFacturar,
+      Money riesgoExcedido,
       String? obvservacionesInternas,
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,
@@ -194,6 +196,7 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
     Object? riesgoPendienteCobroNoVencido = freezed,
     Object? riesgoPendienteServir = freezed,
     Object? riesgoPendienteFacturar = freezed,
+    Object? riesgoExcedido = null,
     Object? obvservacionesInternas = freezed,
     Object? clientePotencial = freezed,
     Object? clienteEstadoPotencial = freezed,
@@ -374,6 +377,10 @@ class _$ClienteCopyWithImpl<$Res, $Val extends Cliente>
           ? _value.riesgoPendienteFacturar
           : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
               as Money?,
+      riesgoExcedido: null == riesgoExcedido
+          ? _value.riesgoExcedido
+          : riesgoExcedido // ignore: cast_nullable_to_non_nullable
+              as Money,
       obvservacionesInternas: freezed == obvservacionesInternas
           ? _value.obvservacionesInternas
           : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
@@ -527,6 +534,7 @@ abstract class _$$_ClienteCopyWith<$Res> implements $ClienteCopyWith<$Res> {
       Money? riesgoPendienteCobroNoVencido,
       Money? riesgoPendienteServir,
       Money? riesgoPendienteFacturar,
+      Money riesgoExcedido,
       String? obvservacionesInternas,
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,
@@ -601,6 +609,7 @@ class __$$_ClienteCopyWithImpl<$Res>
     Object? riesgoPendienteCobroNoVencido = freezed,
     Object? riesgoPendienteServir = freezed,
     Object? riesgoPendienteFacturar = freezed,
+    Object? riesgoExcedido = null,
     Object? obvservacionesInternas = freezed,
     Object? clientePotencial = freezed,
     Object? clienteEstadoPotencial = freezed,
@@ -781,6 +790,10 @@ class __$$_ClienteCopyWithImpl<$Res>
           ? _value.riesgoPendienteFacturar
           : riesgoPendienteFacturar // ignore: cast_nullable_to_non_nullable
               as Money?,
+      riesgoExcedido: null == riesgoExcedido
+          ? _value.riesgoExcedido
+          : riesgoExcedido // ignore: cast_nullable_to_non_nullable
+              as Money,
       obvservacionesInternas: freezed == obvservacionesInternas
           ? _value.obvservacionesInternas
           : obvservacionesInternas // ignore: cast_nullable_to_non_nullable
@@ -856,6 +869,7 @@ class _$_Cliente extends _Cliente {
       this.riesgoPendienteCobroNoVencido,
       this.riesgoPendienteServir,
       this.riesgoPendienteFacturar,
+      required this.riesgoExcedido,
       this.obvservacionesInternas,
       this.clientePotencial,
       this.clienteEstadoPotencial,
@@ -951,6 +965,8 @@ class _$_Cliente extends _Cliente {
   @override
   final Money? riesgoPendienteFacturar;
   @override
+  final Money riesgoExcedido;
+  @override
   final String? obvservacionesInternas;
   @override
   final bool? clientePotencial;
@@ -965,7 +981,7 @@ class _$_Cliente extends _Cliente {
 
   @override
   String toString() {
-    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Cliente(id: $id, nombreCliente: $nombreCliente, nombreFiscal: $nombreFiscal, nif: $nif, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, provinciaFiscal: $provinciaFiscal, paisFiscal: $paisFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisa: $divisa, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobro: $plazoDeCobro, metodoDeCobro: $metodoDeCobro, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoActual: $riesgoActual, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, riesgoExcedido: $riesgoExcedido, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencial: $clienteEstadoPotencial, clienteTipoPotencial: $clienteTipoPotencial, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1057,6 +1073,7 @@ class _$_Cliente extends _Cliente {
             (identical(other.riesgoPendienteServir, riesgoPendienteServir) ||
                 other.riesgoPendienteServir == riesgoPendienteServir) &&
             (identical(other.riesgoPendienteFacturar, riesgoPendienteFacturar) || other.riesgoPendienteFacturar == riesgoPendienteFacturar) &&
+            (identical(other.riesgoExcedido, riesgoExcedido) || other.riesgoExcedido == riesgoExcedido) &&
             (identical(other.obvservacionesInternas, obvservacionesInternas) || other.obvservacionesInternas == obvservacionesInternas) &&
             (identical(other.clientePotencial, clientePotencial) || other.clientePotencial == clientePotencial) &&
             (identical(other.clienteEstadoPotencial, clienteEstadoPotencial) || other.clienteEstadoPotencial == clienteEstadoPotencial) &&
@@ -1111,6 +1128,7 @@ class _$_Cliente extends _Cliente {
         riesgoPendienteCobroNoVencido,
         riesgoPendienteServir,
         riesgoPendienteFacturar,
+        riesgoExcedido,
         obvservacionesInternas,
         clientePotencial,
         clienteEstadoPotencial,
@@ -1171,6 +1189,7 @@ abstract class _Cliente extends Cliente {
       final Money? riesgoPendienteCobroNoVencido,
       final Money? riesgoPendienteServir,
       final Money? riesgoPendienteFacturar,
+      required final Money riesgoExcedido,
       final String? obvservacionesInternas,
       final bool? clientePotencial,
       final ClienteEstadoPotencial? clienteEstadoPotencial,
@@ -1265,6 +1284,8 @@ abstract class _Cliente extends Cliente {
   Money? get riesgoPendienteServir;
   @override
   Money? get riesgoPendienteFacturar;
+  @override
+  Money get riesgoExcedido;
   @override
   String? get obvservacionesInternas;
   @override

@@ -253,6 +253,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Current risk"),
         "cliente_show_clienteDetalle_riesgoConcedido":
             MessageLookupByLibrary.simpleMessage("Granted risk"),
+        "cliente_show_clienteDetalle_riesgoExcedido":
+            MessageLookupByLibrary.simpleMessage("Exeeded risk"),
         "cliente_show_clienteDetalle_riesgos":
             MessageLookupByLibrary.simpleMessage("Risks"),
         "cliente_show_clienteDetalle_tarifa":

@@ -204,8 +204,6 @@ class _ClienteAnalisis extends StatelessWidget {
             children: [
               _VentasRowWidget(cliente: cliente),
               gapH8,
-              _MargenRowWidget(cliente: cliente),
-              gapH8,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -304,71 +302,6 @@ class _VentasRowWidget extends StatelessWidget {
   }
 }
 
-class _MargenRowWidget extends StatelessWidget {
-  const _MargenRowWidget({
-    required this.cliente,
-  });
-
-  final Cliente cliente;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          S.of(context).cliente_show_clienteDetalle_margen,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2!
-              .copyWith(color: Theme.of(context).textTheme.caption!.color),
-        ),
-        gapH4,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-                child: Column(
-              children: [
-                Text(S.of(context).cliente_show_clienteDetalle_anoActual,
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        color: Theme.of(context).textTheme.caption!.color)),
-                Text(
-                  '${numberFormatDecimal(cliente.margenAnyoActual)}%',
-                ),
-              ],
-            )),
-            Expanded(
-                child: Column(
-              children: [
-                Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        color: Theme.of(context).textTheme.caption!.color)),
-                Text(
-                  '${numberFormatDecimal(cliente.margenAnyoAnterior)}%',
-                ),
-              ],
-            )),
-            Expanded(
-                child: Column(
-              children: [
-                Text(
-                  S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: Theme.of(context).textTheme.caption!.color),
-                ),
-                Text(
-                  '${numberFormatDecimal(cliente.margenHaceDosAnyos)}%',
-                ),
-              ],
-            )),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
 class _ClientePreciosAndFormaDePago extends StatelessWidget {
   const _ClientePreciosAndFormaDePago({required this.cliente});
 
@@ -411,14 +344,6 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                       S.of(context).cliente_show_clienteDetalle_descuentoPP,
                   value:
                       '${numberFormatDecimal(cliente.descuentoProntoPago)}%'),
-              gapH4,
-              ColumnFieldTextDetalle(
-                  fieldTitleValue: S
-                      .of(context)
-                      .cliente_show_clienteDetalle_metodoCalculoPrecio,
-                  value: getTipoCalculoPrecioDescripcion(
-                      context: context,
-                      tipoCalculoPrecio: cliente.tipoCalculoPrecio)),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -479,16 +404,14 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                             S
                                 .of(context)
                                 .cliente_show_clienteDetalle_riesgoActual,
-                            style:
-                                Theme.of(context).textTheme.subtitle2!.copyWith(
-                                      color: (cliente.riesgoActual >
-                                              cliente.riesgoConcedido!)
-                                          ? Theme.of(context).colorScheme.error
-                                          : Theme.of(context)
-                                              .textTheme
-                                              .caption!
-                                              .color,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color),
                           ),
                           Text(
                             formatPrecios(
@@ -496,25 +419,68 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      gapH12,
-                      Column(
-                        children: [
-                          Text(
+                      if (!cliente.riesgoExcedido.isZero) gapH8,
+                      if (!cliente.riesgoExcedido.isZero)
+                        Column(
+                          children: [
+                            Text(
                               S
                                   .of(context)
-                                  .cliente_show_clienteDetalle_pdteCobroVencido,
+                                  .cliente_show_clienteDetalle_riesgoExcedido,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .subtitle2!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
                                           .caption!
-                                          .color)),
+                                          .color),
+                            ),
+                            Text(
+                              formatPrecios(
+                                precio: cliente.riesgoExcedido,
+                                tipoPrecio: null,
+                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2!
+                                  .copyWith(
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      gapH12,
+                      Column(
+                        children: [
+                          Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteDetalle_pdteCobroVencido,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText2!
+                                .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .caption!
+                                        .color),
+                          ),
                           Text(
                             formatPrecios(
-                                precio: cliente.riesgoPendienteCobroVencido!,
-                                tipoPrecio: null),
+                              precio: cliente.riesgoPendienteCobroVencido!,
+                              tipoPrecio: null,
+                            ),
+                            style: (!cliente
+                                    .riesgoPendienteCobroVencido!.isZero)
+                                ? Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.error,
+                                    )
+                                : Theme.of(context).textTheme.bodyText2,
                           ),
                         ],
                       ),
@@ -608,7 +574,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                             .color)),
                             Text(
                               formatPrecios(
-                                  precio: cliente.riesgoConcedidoInterno,
+                                  precio: cliente.riesgoConcedido!,
                                   tipoPrecio: null),
                             ),
                           ],
