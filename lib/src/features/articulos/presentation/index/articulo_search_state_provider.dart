@@ -53,6 +53,7 @@ class ArticuloController extends StateNotifier<AsyncValue<List<Articulo>>> {
         page: currentPage,
         searchText: searchQuery,
       );
+      print('Current page: $currentPage');
 
       state = AsyncValue.data(articuloListResult);
     } catch (e, stack) {
@@ -65,16 +66,3 @@ class ArticuloController extends StateNotifier<AsyncValue<List<Articulo>>> {
     getArticuloLista();
   }
 }
-
-// @freezed
-// class ArticuloListControllerState with _$ArticuloListControllerState {
-//   const ArticuloListControllerState._();
-//   const factory ArticuloListControllerState.loading(
-//       List<Articulo> articuloList, int itemPage) = _loading;
-
-//   const factory ArticuloListControllerState.error(
-//           List<Articulo> articuloList, Object error, {StackTrace? stackTrace}) =
-//       _error;
-//   const factory ArticuloListControllerState.data(List<Articulo> articuloList) =
-//       _data;
-// }

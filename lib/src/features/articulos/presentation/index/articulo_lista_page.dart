@@ -99,34 +99,32 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
                 error: (_, __) => Container(),
                 loading: () => const ProgressIndicatorWidget()),
             Expanded(
-              child: Padding(
+              child: ListView.separated(
+                separatorBuilder: (context, i) => const Divider(),
+                shrinkWrap: true,
                 padding: const EdgeInsets.all(16.0),
-                child: ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: state.when(
-                    data: (articuloList) => articuloList.length,
-                    loading: () => 1,
-                    error: (error, _) => 1,
-                  ),
-                  itemBuilder: (context, i) => state.when(
-                    data: (articuloList) => state.isRefreshing
-                        ? const ArticuloListShimmer()
-                        : GestureDetector(
-                            onTap: () => (!widget.isSearchArticuloForForm)
-                                ? navigateToArticuloDetalPage(
-                                    context, articuloList[i].id)
-                                : selectArticuloForFromPage(
-                                    context, articuloList[i]),
-                            child: ArticuloListaTile(
-                              articulo: articuloList[i],
-                            ),
+                controller: _scrollController,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: state.when(
+                  data: (articuloList) => articuloList.length,
+                  loading: () => 1,
+                  error: (error, _) => 1,
+                ),
+                itemBuilder: (context, i) => state.when(
+                  data: (articuloList) => state.isRefreshing
+                      ? const ArticuloListShimmer()
+                      : GestureDetector(
+                          onTap: () => (!widget.isSearchArticuloForForm)
+                              ? navigateToArticuloDetalPage(
+                                  context, articuloList[i].id)
+                              : selectArticuloForFromPage(
+                                  context, articuloList[i]),
+                          child: ArticuloListaTile(
+                            articulo: articuloList[i],
                           ),
-                    loading: () => const ArticuloListShimmer(),
-                    error: (error, _) => ErrorMessageWidget(error.toString()),
-                  ),
+                        ),
+                  loading: () => const ArticuloListShimmer(),
+                  error: (error, _) => ErrorMessageWidget(error.toString()),
                 ),
               ),
             ),
