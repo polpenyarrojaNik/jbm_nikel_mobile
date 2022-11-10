@@ -164,7 +164,7 @@ class ClienteRepository {
 
   Future<List<Cliente>> getClienteLista(
       {required int page,
-      String? searchText,
+      required String searchText,
       required bool searchPotenciales}) async {
     try {
       if (page == 1) {
@@ -195,16 +195,29 @@ class ClienteRepository {
                 .equalsExp(_db.clienteTable.clienteEstadoPotencialId))
       ]);
 
-      if (searchText != null) {
-        query.where(
-          (_db.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
-              (_db.clienteTable.id.like('%$searchText%') |
-                  (_db.clienteTable.nombreCliente.like('%$searchText%') |
-                      _db.clienteTable.poblacionFiscal.like('%$searchText%') |
-                      _db.clienteTable.provinciaFiscal.like('%$searchText%'))),
-        );
-      } else {
-        query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+
+      if (searchText != '') {
+        final busqueda = searchText.split(' ');
+        Expression<bool>? predicate;
+        for (var i = 0; i < busqueda.length; i++) {
+          if (predicate == null) {
+            predicate = ((_db.clienteTable.id.like('%${busqueda[i]}%') |
+                (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                    _db.clienteTable.poblacionFiscal.like('%${busqueda[i]}%') |
+                    _db.clienteTable.provinciaFiscal
+                        .like('%${busqueda[i]}%'))));
+          } else {
+            predicate = predicate &
+                ((_db.clienteTable.id.like('%${busqueda[i]}%') |
+                    (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                        _db.clienteTable.poblacionFiscal
+                            .like('%${busqueda[i]}%') |
+                        _db.clienteTable.provinciaFiscal
+                            .like('%${busqueda[i]}%'))));
+          }
+        }
+        query.where(predicate!);
       }
 
       if (searchPotenciales) {
@@ -635,7 +648,7 @@ class ClienteRepository {
         requestUri,
         options: Options(
           headers: {'authorization': 'Bearer $provisionalToken'},
-          // responseType: ResponseType.bytes,
+          responseType: ResponseType.bytes,
           receiveDataWhenStatusError: true,
         ),
       );
