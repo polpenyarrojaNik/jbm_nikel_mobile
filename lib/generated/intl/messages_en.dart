@@ -397,6 +397,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_titulo":
             MessageLookupByLibrary.simpleMessage("Sales orders"),
         "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Not sent"),
+        "pedido_show_pedidoVentaDetalle_albaranes":
+            MessageLookupByLibrary.simpleMessage("Delivery notes"),
         "pedido_show_pedidoVentaDetalle_baseImponible":
             MessageLookupByLibrary.simpleMessage("Tax base"),
         "pedido_show_pedidoVentaDetalle_dto":
@@ -423,6 +425,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total"),
         "pedido_show_pedidoVentaDetalle_totalLineas":
             MessageLookupByLibrary.simpleMessage("Total lines"),
+        "pedido_show_pedidoVentaLineas_cantidadPendiente":
+            MessageLookupByLibrary.simpleMessage("Pending quantity"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "settings_nombre_usuario":

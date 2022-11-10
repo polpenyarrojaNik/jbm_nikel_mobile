@@ -227,7 +227,7 @@ class AlbaranesContainer extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Albaranes',
+                    S.of(context).pedido_show_pedidoVentaDetalle_albaranes,
                     style: Theme.of(context).textTheme.subtitle2!.copyWith(
                         color: Theme.of(context).textTheme.caption!.color),
                   ),

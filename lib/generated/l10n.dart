@@ -1834,6 +1834,16 @@ class S {
     );
   }
 
+  /// `Delivery notes`
+  String get pedido_show_pedidoVentaDetalle_albaranes {
+    return Intl.message(
+      'Delivery notes',
+      name: 'pedido_show_pedidoVentaDetalle_albaranes',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lines`
   String get pedido_show_pedidoVentaDetalle_lineas {
     return Intl.message(
@@ -1879,6 +1889,16 @@ class S {
     return Intl.message(
       'Disc.',
       name: 'pedido_show_pedidoVentaDetalle_dto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pending quantity`
+  String get pedido_show_pedidoVentaLineas_cantidadPendiente {
+    return Intl.message(
+      'Pending quantity',
+      name: 'pedido_show_pedidoVentaLineas_cantidadPendiente',
       desc: '',
       args: [],
     );
