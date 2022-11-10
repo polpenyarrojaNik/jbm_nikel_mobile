@@ -62,16 +62,17 @@ class PedidoVentaDetallePage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ClienteInfoContainer(pedidoVenta: pedidoVenta),
                     gapH12,
+                    PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
+                    if (!pedidoVenta.getIsLocal()) gapH12,
                     if (!pedidoVenta.getIsLocal())
                       AlbaranesContainer(
                           pedidoVentaId: pedidoVenta.pedidoVentaId!),
-                    PedidoVentaInfoContainer(pedidoVenta: pedidoVenta),
                   ],
                 ),
               ),
@@ -221,29 +222,57 @@ class AlbaranesContainer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaAlbaranProvider(pedidoVentaId));
     return state.when(
-        data: (albaranes) => ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: albaranes.length,
-              separatorBuilder: (context, i) => const Divider(),
-              itemBuilder: (context, i) => Column(
+        data: (albaranes) => (albaranes.isNotEmpty)
+            ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RowFieldTextDetalle(
-                      fieldTitleValue: 'Albarán',
-                      value: albaranes[i].albaranId),
-                  RowFieldTextDetalle(
-                      fieldTitleValue: 'Fecha',
-                      value: dateFormatter(
-                          albaranes[i].fechaAlbaran.toLocal().toIso8601String(),
-                          allDay: true)),
-                  if (albaranes[i].trackId != null)
-                    RowFieldTextDetalle(
-                        fieldTitleValue: 'Tracking',
-                        value: albaranes[i].trackId),
+                  Text(
+                    'Albaranes',
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Theme.of(context).textTheme.caption!.color),
+                  ),
+                  gapH4,
+                  ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: albaranes.length,
+                    separatorBuilder: (context, i) => const Divider(),
+                    itemBuilder: (context, i) => Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(albaranes[i].albaranId),
+                            Text(
+                                dateFormatter(
+                                    albaranes[i]
+                                        .fechaAlbaran
+                                        .toLocal()
+                                        .toIso8601String(),
+                                    allDay: true),
+                                style: Theme.of(context).textTheme.caption),
+                          ],
+                        ),
+                        if (albaranes[i].trackId != null ||
+                            albaranes[i].agencia != null)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              if (albaranes[i].trackId != null)
+                                Text(albaranes[i].trackId!,
+                                    style: Theme.of(context).textTheme.caption),
+                              if (albaranes[i].agencia != null)
+                                Text(albaranes[i].agencia!,
+                                    style: Theme.of(context).textTheme.caption),
+                            ],
+                          ),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-            ),
+              )
+            : Container(),
         error: (error, _) => ErrorMessageWidget(error.toString()),
         loading: () => const Center(child: CircularProgressIndicator()));
   }
