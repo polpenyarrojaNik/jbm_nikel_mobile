@@ -289,6 +289,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("JBM expirated"),
         "cliente_show_clienteGrupoNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Net groups"),
+        "cliente_show_clientePedidos_titulo":
+            MessageLookupByLibrary.simpleMessage("Sales orders"),
         "cliente_show_clientePrecioNeto_desDe":
             MessageLookupByLibrary.simpleMessage("Since"),
         "cliente_show_clientePrecioNeto_titulo":
@@ -311,6 +313,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Month sales"),
         "cliente_show_clienteVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
+        "cliente_show_clienteVisitas_titulo":
+            MessageLookupByLibrary.simpleMessage("Visits"),
         "commonWidgets_appDrawer_ajustes":
             MessageLookupByLibrary.simpleMessage("Settings"),
         "commonWidgets_appDrawer_articulos":

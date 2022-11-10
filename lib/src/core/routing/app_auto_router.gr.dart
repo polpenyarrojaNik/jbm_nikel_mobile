@@ -176,6 +176,28 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ClienteVisitasRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteVisitasRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteVisitasPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
+    },
+    ClientePedidosRoute.name: (routeData) {
+      final args = routeData.argsAs<ClientePedidosRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClientePedidosPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          nombreCliente: args.nombreCliente,
+        ),
+      );
+    },
     ClienteUltimosPreciosRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteUltimosPreciosRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -463,6 +485,14 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ClienteRappelRoute.name,
           path: '/cliente/:id/rappels',
+        ),
+        RouteConfig(
+          ClienteVisitasRoute.name,
+          path: '/cliente/:id/visitas',
+        ),
+        RouteConfig(
+          ClientePedidosRoute.name,
+          path: '/cliente/:id/pedidos',
         ),
         RouteConfig(
           ClienteUltimosPreciosRoute.name,
@@ -1085,6 +1115,84 @@ class ClienteRappelRouteArgs {
   @override
   String toString() {
     return 'ClienteRappelRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteVisitasPage]
+class ClienteVisitasRoute extends PageRouteInfo<ClienteVisitasRouteArgs> {
+  ClienteVisitasRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClienteVisitasRoute.name,
+          path: '/cliente/:id/visitas',
+          args: ClienteVisitasRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
+
+  static const String name = 'ClienteVisitasRoute';
+}
+
+class ClienteVisitasRouteArgs {
+  const ClienteVisitasRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClienteVisitasRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClientePedidosPage]
+class ClientePedidosRoute extends PageRouteInfo<ClientePedidosRouteArgs> {
+  ClientePedidosRoute({
+    Key? key,
+    required String clienteId,
+    required String? nombreCliente,
+  }) : super(
+          ClientePedidosRoute.name,
+          path: '/cliente/:id/pedidos',
+          args: ClientePedidosRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            nombreCliente: nombreCliente,
+          ),
+        );
+
+  static const String name = 'ClientePedidosRoute';
+}
+
+class ClientePedidosRouteArgs {
+  const ClientePedidosRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.nombreCliente,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  final String? nombreCliente;
+
+  @override
+  String toString() {
+    return 'ClientePedidosRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
   }
 }
 

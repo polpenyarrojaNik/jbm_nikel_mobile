@@ -18,7 +18,11 @@ import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../articulos/domain/articulo.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
+import '../../pedido_venta/domain/pedido_venta.dart';
+import '../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
+import '../../visitas/domain/visita.dart';
+import '../../visitas/infrastructure/visita_repository.dart';
 import '../domain/cliente.dart';
 import '../domain/cliente_adjunto.dart';
 import '../domain/cliente_contacto.dart';
@@ -57,6 +61,7 @@ final clienteLastSyncDateProvider =
 final clienteDireccionProvider = FutureProvider.autoDispose
     .family<List<ClienteDireccion>, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
+
   return clienteRepository.getClienteDireccionById(clienteId: clienteId);
 });
 
@@ -106,6 +111,19 @@ final clienteVentasArticuloProvider = FutureProvider.autoDispose
     .family<List<ClienteVentasArticulo>, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   return clienteRepository.getVentasArticuloById(clienteId: clienteId);
+});
+
+final clienteVisitasProvider =
+    FutureProvider.autoDispose.family<List<Visita>, String>((ref, clienteId) {
+  final visitaRepository = ref.watch(visitaRepositoryProvider);
+  return visitaRepository.getVisitaListByCliente(clienteId: clienteId);
+});
+
+final clientePedidosProvider = FutureProvider.autoDispose
+    .family<List<PedidoVenta>, String>((ref, clienteId) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getPedidoVentaListaByCliente(
+      clienteId: clienteId);
 });
 
 final clienteAdjuntoProvider = FutureProvider.autoDispose
@@ -903,6 +921,61 @@ ORDER BY IMPORTE_ANYO DESC
       return DateTime.parse(dateUTCString);
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<List<Visita>> getVisitasByClienteId(
+      {required String clienteId}) async {
+    try {
+      final List<Visita> visitas = [];
+      final visitasList = await _getVisitasById(clienteId: clienteId);
+      final visitasLocalList = await _getVisitasLocalById(clienteId: clienteId);
+
+      visitas.addAll(visitasList);
+
+      visitas.addAll(visitasLocalList);
+
+      return visitas;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<Visita>> _getVisitasById({required String clienteId}) async {
+    try {
+      final query = _db.select(_db.visitaTable).join([
+        innerJoin(_db.clienteTable,
+            _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId))
+      ]);
+
+      query.where(_db.visitaTable.clienteId.equals(clienteId));
+
+      return query.map((row) {
+        final visitaDTO = row.readTable(_db.visitaTable);
+        final clienteDto = row.readTable(_db.clienteTable);
+        return visitaDTO.toDomain(nombreCliente: clienteDto.nombreCliente);
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<Visita>> _getVisitasLocalById({required String clienteId}) async {
+    try {
+      final query = _db.select(_db.visitaLocalTable).join([
+        innerJoin(_db.clienteTable,
+            _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId))
+      ]);
+
+      query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
+
+      return query.map((row) {
+        final visitaDTO = row.readTable(_db.visitaLocalTable);
+        final clienteDto = row.readTable(_db.clienteTable);
+        return visitaDTO.toDomain(nombreCliente: clienteDto.nombreCliente);
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 }

@@ -90,17 +90,19 @@ class PedidoVentaRepository {
   PedidoVentaRepository(this._db, this._dio, this.usuario);
 
   Future<List<PedidoVenta>> getPedidoVentaLista(
-      {required int page, required String searchText}) async {
+      {required int page,
+      required String searchText,
+      String? clienteId}) async {
     try {
       if (page == 1) {
         pedidoVentaList.clear();
-        final pedidoVentaLocalList =
-            await getPedidosVentaLocal(searchText: searchText);
+        final pedidoVentaLocalList = await getPedidosVentaLocal(
+            searchText: searchText, clienteId: clienteId);
         pedidoVentaList.addAll(pedidoVentaLocalList);
       }
 
-      final syncPedidosVentaList =
-          await getSyncPedidoVentaList(page: page, searchText: searchText);
+      final syncPedidosVentaList = await getSyncPedidoVentaList(
+          page: page, searchText: searchText, clienteId: clienteId);
       pedidoVentaList.addAll(syncPedidosVentaList);
       return pedidoVentaList;
     } catch (e) {
@@ -108,8 +110,27 @@ class PedidoVentaRepository {
     }
   }
 
+  Future<List<PedidoVenta>> getPedidoVentaListaByCliente(
+      {required String clienteId}) async {
+    try {
+      final List<PedidoVenta> pedidoVentaListByCliente = [];
+      final pedidoVentaLocalList =
+          await getPedidosVentaLocal(searchText: '', clienteId: clienteId);
+      pedidoVentaListByCliente.addAll(pedidoVentaLocalList);
+
+      final syncPedidosVentaList = await getSyncPedidoVentaList(
+          page: 0, searchText: '', clienteId: clienteId);
+      pedidoVentaListByCliente.addAll(syncPedidosVentaList);
+      return pedidoVentaListByCliente;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
   Future<List<PedidoVenta>> getSyncPedidoVentaList(
-      {required int page, required String searchText}) async {
+      {required int page,
+      required String searchText,
+      String? clienteId}) async {
     final query = _db.select(_db.pedidoVentaTable).join([
       innerJoin(
           _db.clienteUsuarioTable,
@@ -138,7 +159,14 @@ class PedidoVentaRepository {
     } else {
       query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
     }
-    query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+
+    if (clienteId != null) {
+      query.where(_db.pedidoVentaTable.clienteId.equals(clienteId));
+    }
+
+    if (page > 0) {
+      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+    }
 
     query.orderBy([
       OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate),
@@ -159,7 +187,7 @@ class PedidoVentaRepository {
   }
 
   Future<List<PedidoVenta>> getPedidosVentaLocal(
-      {required String searchText}) async {
+      {required String searchText, String? clienteId}) async {
     final query = _db.select(_db.pedidoVentaLocalTable).join([
       innerJoin(
           _db.clienteUsuarioTable,
@@ -184,6 +212,10 @@ class PedidoVentaRepository {
     } else {
       query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
           _db.pedidoVentaLocalTable.tratada.equals('N'));
+    }
+
+    if (clienteId != null) {
+      query.where(_db.pedidoVentaLocalTable.clienteId.equals(clienteId));
     }
 
     query.orderBy([

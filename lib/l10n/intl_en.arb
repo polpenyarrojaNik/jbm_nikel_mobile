@@ -137,6 +137,8 @@
   "cliente_show_clienteDetalle_analisis": "Analysis",
   "cliente_show_clienteDetalle_datosRelacionados": "Related data",
   "cliente_show_clienteDetalle_consultas": "Queries",
+  "cliente_show_clienteVisitas_titulo": "Visits",
+  "cliente_show_clientePedidos_titulo": "Sales orders",
   "cliente_show_clienteContacto_titulo": "Contacts",
   "cliente_show_clienteAdjunto_titulo": "Attachments",
   "cliente_show_clienteAdjunto_abriendoArchivo": "Open attachment...",

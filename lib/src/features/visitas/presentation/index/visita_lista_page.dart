@@ -107,8 +107,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
                     data: (visitaList) => state.isRefreshing
                         ? const VisitaListShimmer()
                         : VisitaListaTile(
-                            visita: visitaList[i],
-                          ),
+                            visita: visitaList[i], navigatedFromCliente: false),
                     loading: () => const VisitaListShimmer(),
                     error: (error, _) => ErrorMessageWidget(error.toString()),
                   ),

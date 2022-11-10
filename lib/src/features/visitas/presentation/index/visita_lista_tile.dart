@@ -9,18 +9,22 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/visita.dart';
 
 class VisitaListaTile extends StatelessWidget {
-  const VisitaListaTile({super.key, required this.visita});
+  const VisitaListaTile(
+      {super.key, required this.visita, required this.navigatedFromCliente});
 
   final Visita visita;
+  final bool navigatedFromCliente;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => navigateToVisitaDetalle(
-        context: context,
-        id: visita.id ?? visita.visitaAppId!,
-        isLocal: !visita.tratada,
-      ),
+      onTap: () => (!navigatedFromCliente)
+          ? navigateToVisitaDetalle(
+              context: context,
+              id: visita.id ?? visita.visitaAppId!,
+              isLocal: !visita.tratada,
+            )
+          : null,
       child: Container(
         color: Colors.transparent,
         child: Column(

@@ -290,6 +290,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vencido JBM"),
         "cliente_show_clienteGrupoNeto_titulo":
             MessageLookupByLibrary.simpleMessage("Grupos Netos"),
+        "cliente_show_clientePedidos_titulo":
+            MessageLookupByLibrary.simpleMessage("Pedidos"),
         "cliente_show_clientePrecioNeto_desDe":
             MessageLookupByLibrary.simpleMessage("Desde"),
         "cliente_show_clientePrecioNeto_titulo":
@@ -312,6 +314,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas Mes"),
         "cliente_show_clienteVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
+        "cliente_show_clienteVisitas_titulo":
+            MessageLookupByLibrary.simpleMessage("Visitas"),
         "commonWidgets_appDrawer_ajustes":
             MessageLookupByLibrary.simpleMessage("Ajustes"),
         "commonWidgets_appDrawer_articulos":

@@ -7,22 +7,28 @@ import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta.dart';
 
 class PedidoVentaListaTile extends StatelessWidget {
-  const PedidoVentaListaTile({super.key, required this.pedidoVenta});
+  const PedidoVentaListaTile(
+      {super.key,
+      required this.pedidoVenta,
+      required this.navigatedFromCliente});
 
   final PedidoVenta pedidoVenta;
-
+  final bool navigatedFromCliente;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(
-        PedidoVentaDetalleRoute(
-          pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
-            id: pedidoVenta.pedidoVentaId ?? pedidoVenta.pedidoVentaAppId!,
-            isNew: false,
-            isLocal: !pedidoVenta.tratada,
-          ),
-        ),
-      ),
+      onTap: () => (!navigatedFromCliente)
+          ? context.router.push(
+              PedidoVentaDetalleRoute(
+                pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
+                  id: pedidoVenta.pedidoVentaId ??
+                      pedidoVenta.pedidoVentaAppId!,
+                  isNew: false,
+                  isLocal: !pedidoVenta.tratada,
+                ),
+              ),
+            )
+          : null,
       child: IntrinsicHeight(
         child: Container(
           color: Colors.transparent,

@@ -60,13 +60,17 @@ class VisitaRepository {
 
   VisitaRepository(this._db, this._dio, this._usuario);
 
-  Future<List<Visita>> getVisitaList(
-      {required int page, required String searchText}) async {
+  Future<List<Visita>> getVisitaList({
+    required int page,
+    required String searchText,
+  }) async {
     try {
       if (page == 1) {
         visitasList.clear();
         final visitasLocal = await getVisitasLocal(
-            searchText: searchText, usuarioId: _usuario!.id);
+          searchText: searchText,
+          usuarioId: _usuario!.id,
+        );
         visitasList.addAll(visitasLocal);
       }
       final visitas = await getVisitas(
@@ -74,6 +78,28 @@ class VisitaRepository {
 
       visitasList.addAll(visitas);
       return visitasList;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<Visita>> getVisitaListByCliente({
+    required String clienteId,
+  }) async {
+    try {
+      final List<Visita> vistiasListByCliente = [];
+      final visitasLocal = await getVisitasLocal(
+        searchText: '',
+        usuarioId: _usuario!.id,
+        clienteId: clienteId,
+      );
+      vistiasListByCliente.addAll(visitasLocal);
+
+      final visitas =
+          await getVisitas(usuarioId: _usuario!.id, page: 0, searchText: '');
+
+      vistiasListByCliente.addAll(visitas);
+      return vistiasListByCliente;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -207,7 +233,9 @@ class VisitaRepository {
   }
 
   Future<List<Visita>> getVisitasLocal(
-      {required String searchText, required String usuarioId}) async {
+      {required String searchText,
+      required String usuarioId,
+      String? clienteId}) async {
     final query = _db.select(_db.visitaLocalTable).join([
       innerJoin(
         _db.clienteUsuarioTable,
@@ -229,6 +257,10 @@ class VisitaRepository {
     } else {
       query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
     }
+
+    if (clienteId != null) {
+      query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
+    }
     query.orderBy([
       OrderingTerm.asc(_db.visitaLocalTable.enviada),
       OrderingTerm.desc(_db.visitaLocalTable.fecha),
@@ -244,7 +276,8 @@ class VisitaRepository {
   Future<List<Visita>> getVisitas(
       {required String usuarioId,
       required int page,
-      required String searchText}) async {
+      required String searchText,
+      String? clienteId}) async {
     final query = _db.select(_db.visitaTable).join([
       innerJoin(
         _db.clienteTable,
@@ -265,6 +298,14 @@ class VisitaRepository {
       );
     } else {
       query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    }
+
+    if (clienteId != null) {
+      query.where(_db.visitaTable.clienteId.equals(clienteId));
+    }
+
+    if (page > 0) {
+      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
     }
 
     query.orderBy([

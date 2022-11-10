@@ -121,6 +121,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
                         ? const PedidoVentaShimmer()
                         : PedidoVentaListaTile(
                             pedidoVenta: pedidoVentaList[i],
+                            navigatedFromCliente: false,
                           ),
                     loading: () => const PedidoVentaShimmer(),
                     error: (error, _) => ErrorMessageWidget(error.toString()),
