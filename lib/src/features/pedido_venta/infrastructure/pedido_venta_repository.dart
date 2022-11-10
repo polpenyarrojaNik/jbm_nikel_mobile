@@ -420,7 +420,7 @@ class PedidoVentaRepository {
   Future<void> upsertPedidoVenta({
     required String pedidoVentaAppId,
     required Cliente cliente,
-    required ClienteDireccion clienteDireccion,
+    required ClienteDireccion? clienteDireccion,
     required List<PedidoVentaLinea> pedidoVentaLineaList,
     String? observaciones,
     String? pedidoCliente,

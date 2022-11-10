@@ -325,23 +325,6 @@ class ClienteRepository {
         );
       }).get();
 
-      final cliente = await getClienteById(clienteId: clienteId);
-      clientesDireccionList.add(ClienteDireccion(
-          clienteId: clienteId,
-          direccionId: null,
-          nombre: cliente.nombreCliente,
-          latitud: cliente.latitudFiscal,
-          longitud: cliente.longitudFiscal,
-          direccion1: cliente.direccionFiscal1,
-          direccion2: cliente.direccionFiscal2,
-          codigoPostal: cliente.codigoPostalFiscal,
-          poblacion: cliente.poblacionFiscal,
-          provincia: cliente.provinciaFiscal,
-          pais: cliente.paisFiscal,
-          predeterminada: false,
-          lastUpdated: cliente.lastUpdated!,
-          deleted: cliente.deleted));
-
       return clientesDireccionList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

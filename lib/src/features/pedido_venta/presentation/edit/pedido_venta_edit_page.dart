@@ -216,7 +216,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
             .upsertPedidoVenta(
               pedidoVentaAppId: pedidoVentaIdLocalParam.id,
               cliente: cliente!,
-              clienteDireccion: clienteDireccion!,
+              clienteDireccion: clienteDireccion,
               pedidoVentaLineaList: pedidoVentaLineaList,
               observaciones: observaciones,
               pedidoCliente: pedidoCliente,
@@ -259,17 +259,10 @@ class PedidoVentaEditForm extends ConsumerWidget {
   }
 
   void selectClienteDireccionValidate(BuildContext context, WidgetRef ref) {
-    if (clienteDireccion != null) {
-      ref
-          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-              .notifier)
-          .navigateToNextStep();
-    } else {
-      showToast(
-        'Seleccione una dirección para continuar.',
-        context,
-      );
-    }
+    ref
+        .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+            .notifier)
+        .navigateToNextStep();
   }
 
   void selectLineasValidate(BuildContext context, WidgetRef ref) {
@@ -513,7 +506,12 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
                 .read(pedidoVentaEditPageControllerProvider(
                         pedidoVentaIdLocalParam)
                     .notifier)
-                .selectDireccion(clienteDireccion: clienteDireccionesList[i]),
+                .selectDireccion(
+                    clienteDireccion: (clienteDireccion != null &&
+                            clienteDireccion!.direccionId ==
+                                clienteDireccionesList[i].direccionId)
+                        ? null
+                        : clienteDireccionesList[i]),
             child: Container(
               color: (clienteDireccion != null &&
                       clienteDireccion!.direccionId ==
