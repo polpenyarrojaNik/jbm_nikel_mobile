@@ -247,15 +247,24 @@ class VisitaRepository {
         _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
       ),
     ]);
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+
     if (searchText != '') {
-      query.where(
-        _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-            (_db.visitaLocalTable.resumen.like('%$searchText%') |
-                _db.visitaLocalTable.clienteId.like('%$searchText%') |
-                _db.visitaLocalTable.contacto.like('%$searchText%')),
-      );
-    } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate = (_db.visitaLocalTable.resumen.like('%$searchText%') |
+              _db.visitaLocalTable.clienteId.like('%$searchText%') |
+              _db.visitaLocalTable.contacto.like('%$searchText%'));
+        } else {
+          predicate = predicate &
+              (_db.visitaLocalTable.resumen.like('%$searchText%') |
+                  _db.visitaLocalTable.clienteId.like('%$searchText%') |
+                  _db.visitaLocalTable.contacto.like('%$searchText%'));
+        }
+      }
+      query.where(predicate!);
     }
 
     if (clienteId != null) {
@@ -289,15 +298,24 @@ class VisitaRepository {
       )
     ]);
 
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+
     if (searchText != '') {
-      query.where(
-        _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-            (_db.visitaTable.resumen.like('%$searchText%') |
-                _db.visitaTable.clienteId.like('%$searchText%') |
-                _db.visitaTable.contacto.like('%$searchText%')),
-      );
-    } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate = (_db.visitaTable.resumen.like('%$searchText%') |
+              _db.visitaTable.clienteId.like('%$searchText%') |
+              _db.visitaTable.contacto.like('%$searchText%'));
+        } else {
+          predicate = predicate &
+              (_db.visitaTable.resumen.like('%$searchText%') |
+                  _db.visitaTable.clienteId.like('%$searchText%') |
+                  _db.visitaTable.contacto.like('%$searchText%'));
+        }
+      }
+      query.where(predicate!);
     }
 
     if (clienteId != null) {
