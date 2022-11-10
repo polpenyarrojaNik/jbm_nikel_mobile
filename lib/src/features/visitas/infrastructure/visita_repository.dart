@@ -247,7 +247,8 @@ class VisitaRepository {
         _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
       ),
     ]);
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+        _db.visitaLocalTable.tratada.equals('N'));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
