@@ -146,18 +146,29 @@ class PedidoVentaRepository {
               .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
     ]);
 
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+
     if (searchText != '') {
-      query.where(
-        _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
-            (_db.pedidoVentaTable.pedidoVentaId.like('%$searchText%') |
-                _db.pedidoVentaTable.nombreCliente.like('%$searchText%') |
-                _db.pedidoVentaTable.clienteId.like('%$searchText%') |
-                _db.pedidoVentaTable.poblacion.like('%$searchText%') |
-                _db.pedidoVentaTable.codigoPostal.like('%$searchText%') |
-                _db.pedidoVentaTable.provincia.like('%$searchText%')),
-      );
-    } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate =
+              (_db.pedidoVentaTable.nombreCliente.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
+        } else {
+          predicate = predicate &
+              ((_db.pedidoVentaTable.nombreCliente.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.provincia.like('%${busqueda[i]}%')));
+        }
+      }
+      query.where(predicate!);
     }
 
     if (clienteId != null) {
@@ -199,19 +210,32 @@ class PedidoVentaRepository {
           _db.divisaTable.id.equalsExp(_db.pedidoVentaLocalTable.divisaId)),
     ]);
 
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+        _db.pedidoVentaLocalTable.tratada.equals('N'));
+
     if (searchText != '') {
-      query.where(
-        _db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
-            _db.pedidoVentaLocalTable.tratada.equals('N') &
-            (_db.pedidoVentaLocalTable.nombreCliente.like('%$searchText%') |
-                _db.pedidoVentaLocalTable.clienteId.like('%$searchText%') |
-                _db.pedidoVentaLocalTable.poblacion.like('%$searchText%') |
-                _db.pedidoVentaLocalTable.codigoPostal.like('%$searchText%') |
-                _db.pedidoVentaLocalTable.provincia.like('%$searchText%')),
-      );
-    } else {
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
-          _db.pedidoVentaLocalTable.tratada.equals('N'));
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate = (_db.pedidoVentaLocalTable.nombreCliente
+                  .like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.clienteId.like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.poblacion.like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.codigoPostal.like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.provincia.like('%${busqueda[i]}%'));
+        } else {
+          predicate = predicate &
+              (_db.pedidoVentaLocalTable.nombreCliente
+                      .like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.clienteId.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.poblacion.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.codigoPostal
+                      .like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.provincia.like('%${busqueda[i]}%'));
+        }
+      }
+      query.where(predicate!);
     }
 
     if (clienteId != null) {
