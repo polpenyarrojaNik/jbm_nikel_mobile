@@ -130,8 +130,15 @@ class ClienteRappelTile extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  Text(clienteRappel.descripcion,
-                      style: Theme.of(context).textTheme.subtitle2),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(clienteRappel.descripcion,
+                          style: Theme.of(context).textTheme.subtitle2),
+                      Text(clienteRappel.firmado ? 'Firmado' : 'Sin firmar',
+                          style: Theme.of(context).textTheme.caption),
+                    ],
+                  ),
                   const Spacer(),
                   IconButton(
                     visualDensity:

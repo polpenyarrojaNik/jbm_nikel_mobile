@@ -774,16 +774,6 @@ class _Consultas extends StatelessWidget {
         ),
         const Divider(),
         DatosExtraRow(
-          title: S.of(context).ultimosPrecios_titulo,
-          navigationTo: () => context.router.push(
-            ClienteUltimosPreciosRoute(
-              clienteId: cliente.id,
-              nombreCliente: cliente.nombreCliente,
-            ),
-          ),
-        ),
-        const Divider(),
-        DatosExtraRow(
           title: S.of(context).cliente_show_clientePedidos_titulo,
           navigationTo: () => context.router.push(
             ClientePedidosRoute(
@@ -797,6 +787,16 @@ class _Consultas extends StatelessWidget {
           title: S.of(context).cliente_show_clienteVisitas_titulo,
           navigationTo: () => context.router.push(
             ClienteVisitasRoute(
+              clienteId: cliente.id,
+              nombreCliente: cliente.nombreCliente,
+            ),
+          ),
+        ),
+        const Divider(),
+        DatosExtraRow(
+          title: S.of(context).ultimosPrecios_titulo,
+          navigationTo: () => context.router.push(
+            ClienteUltimosPreciosRoute(
               clienteId: cliente.id,
               nombreCliente: cliente.nombreCliente,
             ),
