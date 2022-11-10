@@ -22,6 +22,7 @@ mixin _$ClienteRappel {
   DateTime get fechaDesDe => throw _privateConstructorUsedError;
   DateTime? get fechaHasta => throw _privateConstructorUsedError;
   String? get nombreArchivo => throw _privateConstructorUsedError;
+  bool get firmado => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -43,6 +44,7 @@ abstract class $ClienteRappelCopyWith<$Res> {
       DateTime fechaDesDe,
       DateTime? fechaHasta,
       String? nombreArchivo,
+      bool firmado,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -66,6 +68,7 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
     Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
     Object? nombreArchivo = freezed,
+    Object? firmado = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -94,6 +97,10 @@ class _$ClienteRappelCopyWithImpl<$Res, $Val extends ClienteRappel>
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
+      firmado: null == firmado
+          ? _value.firmado
+          : firmado // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -121,6 +128,7 @@ abstract class _$$_ClienteRappelCopyWith<$Res>
       DateTime fechaDesDe,
       DateTime? fechaHasta,
       String? nombreArchivo,
+      bool firmado,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -142,6 +150,7 @@ class __$$_ClienteRappelCopyWithImpl<$Res>
     Object? fechaDesDe = null,
     Object? fechaHasta = freezed,
     Object? nombreArchivo = freezed,
+    Object? firmado = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -170,6 +179,10 @@ class __$$_ClienteRappelCopyWithImpl<$Res>
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
+      firmado: null == firmado
+          ? _value.firmado
+          : firmado // ignore: cast_nullable_to_non_nullable
+              as bool,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -192,6 +205,7 @@ class _$_ClienteRappel extends _ClienteRappel {
       required this.fechaDesDe,
       this.fechaHasta,
       this.nombreArchivo,
+      required this.firmado,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -209,13 +223,15 @@ class _$_ClienteRappel extends _ClienteRappel {
   @override
   final String? nombreArchivo;
   @override
+  final bool firmado;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteRappel(clienteId: $clienteId, rappelId: $rappelId, descripcion: $descripcion, fechaDesDe: $fechaDesDe, fechaHasta: $fechaHasta, nombreArchivo: $nombreArchivo, firmado: $firmado, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -235,6 +251,7 @@ class _$_ClienteRappel extends _ClienteRappel {
                 other.fechaHasta == fechaHasta) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
                 other.nombreArchivo == nombreArchivo) &&
+            (identical(other.firmado, firmado) || other.firmado == firmado) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -242,7 +259,7 @@ class _$_ClienteRappel extends _ClienteRappel {
 
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, rappelId, descripcion,
-      fechaDesDe, fechaHasta, nombreArchivo, lastUpdated, deleted);
+      fechaDesDe, fechaHasta, nombreArchivo, firmado, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -259,6 +276,7 @@ abstract class _ClienteRappel extends ClienteRappel {
       required final DateTime fechaDesDe,
       final DateTime? fechaHasta,
       final String? nombreArchivo,
+      required final bool firmado,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClienteRappel;
   const _ClienteRappel._() : super._();
@@ -275,6 +293,8 @@ abstract class _ClienteRappel extends ClienteRappel {
   DateTime? get fechaHasta;
   @override
   String? get nombreArchivo;
+  @override
+  bool get firmado;
   @override
   DateTime get lastUpdated;
   @override

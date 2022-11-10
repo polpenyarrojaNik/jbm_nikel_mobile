@@ -16,6 +16,7 @@ _$_ClienteRappelDTO _$$_ClienteRappelDTOFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['FECHA_HASTA'] as String),
       nombreArchivo: json['NOMBRE_ARCHIVO'] as String?,
+      firmado: json['FIRMADO'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$_ClienteRappelDTOToJson(_$_ClienteRappelDTO instance) =>
       'FECHA_DESDE': instance.fechaDesDe.toIso8601String(),
       'FECHA_HASTA': instance.fechaHasta?.toIso8601String(),
       'NOMBRE_ARCHIVO': instance.nombreArchivo,
+      'FIRMADO': instance.firmado,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };
