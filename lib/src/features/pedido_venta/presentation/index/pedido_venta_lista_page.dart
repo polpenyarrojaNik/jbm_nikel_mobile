@@ -92,7 +92,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         actionButtons: [
           IconButton(
             onPressed: () => searchFilterByEstado(),
-            icon: Icon(Icons.filter_alt,
+            icon: Icon(Icons.filter_list,
                 color: (filteredStatus != null)
                     ? Theme.of(context).colorScheme.surfaceTint
                     : null),
