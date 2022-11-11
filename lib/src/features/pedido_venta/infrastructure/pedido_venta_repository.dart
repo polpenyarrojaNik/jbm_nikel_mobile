@@ -24,6 +24,7 @@ import '../../cliente/infrastructure/cliente_dto.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/pedido_albaran.dart';
 import '../domain/pedido_venta.dart';
+import '../domain/pedido_venta_estado.dart';
 import '../domain/pedido_venta_linea.dart';
 import '../domain/precio.dart';
 
@@ -50,6 +51,12 @@ final pedidoVentaAlbaranProvider = FutureProvider.autoDispose
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
   return pedidoVentaRepository.getPedidoVentaAlbaranListById(
       pedidoVentaId: pedidoVentaId);
+});
+
+final pedidoVentaEstadoProvider =
+    FutureProvider.autoDispose<List<PedidoVentaEstado>>((ref) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getPedidoVentaEstadoList();
 });
 
 final deletePedidoVentaProvider =
@@ -92,17 +99,23 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getPedidoVentaLista(
       {required int page,
       required String searchText,
+      required PedidoVentaEstado? pedidoVentaEstado,
       String? clienteId}) async {
     try {
       if (page == 1) {
         pedidoVentaList.clear();
         final pedidoVentaLocalList = await getPedidosVentaLocal(
-            searchText: searchText, clienteId: clienteId);
+            searchText: searchText,
+            clienteId: clienteId,
+            pedidoVentaEstado: pedidoVentaEstado);
         pedidoVentaList.addAll(pedidoVentaLocalList);
       }
 
       final syncPedidosVentaList = await getSyncPedidoVentaList(
-          page: page, searchText: searchText, clienteId: clienteId);
+          page: page,
+          searchText: searchText,
+          clienteId: clienteId,
+          pedidoVentaEstado: pedidoVentaEstado);
       pedidoVentaList.addAll(syncPedidosVentaList);
       return pedidoVentaList;
     } catch (e) {
@@ -114,12 +127,15 @@ class PedidoVentaRepository {
       {required String clienteId}) async {
     try {
       final List<PedidoVenta> pedidoVentaListByCliente = [];
-      final pedidoVentaLocalList =
-          await getPedidosVentaLocal(searchText: '', clienteId: clienteId);
+      final pedidoVentaLocalList = await getPedidosVentaLocal(
+          searchText: '', clienteId: clienteId, pedidoVentaEstado: null);
       pedidoVentaListByCliente.addAll(pedidoVentaLocalList);
 
       final syncPedidosVentaList = await getSyncPedidoVentaList(
-          page: 0, searchText: '', clienteId: clienteId);
+          page: 0,
+          searchText: '',
+          clienteId: clienteId,
+          pedidoVentaEstado: null);
       pedidoVentaListByCliente.addAll(syncPedidosVentaList);
       return pedidoVentaListByCliente;
     } catch (e) {
@@ -130,6 +146,7 @@ class PedidoVentaRepository {
   Future<List<PedidoVenta>> getSyncPedidoVentaList(
       {required int page,
       required String searchText,
+      required PedidoVentaEstado? pedidoVentaEstado,
       String? clienteId}) async {
     final query = _db.select(_db.pedidoVentaTable).join([
       innerJoin(
@@ -147,6 +164,11 @@ class PedidoVentaRepository {
     ]);
 
     query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+
+    if (pedidoVentaEstado != null) {
+      query.where(_db.pedidoVentaTable.pedidoVentaEstadoId
+          .equals(pedidoVentaEstado.id));
+    }
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -197,8 +219,11 @@ class PedidoVentaRepository {
     }).get();
   }
 
-  Future<List<PedidoVenta>> getPedidosVentaLocal(
-      {required String searchText, String? clienteId}) async {
+  Future<List<PedidoVenta>> getPedidosVentaLocal({
+    required String searchText,
+    String? clienteId,
+    required PedidoVentaEstado? pedidoVentaEstado,
+  }) async {
     final query = _db.select(_db.pedidoVentaLocalTable).join([
       innerJoin(
           _db.clienteUsuarioTable,
@@ -400,6 +425,16 @@ class PedidoVentaRepository {
               descuento3: pedidoVentaLineaDTO.descuento3,
             ));
       }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<PedidoVentaEstado>> getPedidoVentaEstadoList() async {
+    try {
+      final query = await _db.select(_db.pedidoVentaEstadoTable).get();
+
+      return query.map((e) => e.toDomain()).toList();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

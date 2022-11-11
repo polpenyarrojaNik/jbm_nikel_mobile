@@ -1774,6 +1774,46 @@ class S {
     );
   }
 
+  /// `Reset`
+  String get pedido_index_reset {
+    return Intl.message(
+      'Reset',
+      name: 'pedido_index_reset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get pedido_index_filtrar {
+    return Intl.message(
+      'Filter',
+      name: 'pedido_index_filtrar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filters`
+  String get pedido_index_filtros {
+    return Intl.message(
+      'Filters',
+      name: 'pedido_index_filtros',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Status`
+  String get pedido_index_estados {
+    return Intl.message(
+      'Status',
+      name: 'pedido_index_estados',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Search sales orders...`
   String get pedido_index_buscarPedidos {
     return Intl.message(

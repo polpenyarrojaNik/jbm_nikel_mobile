@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_shimmer.dart';
@@ -29,7 +31,7 @@ class PedidoVentaListPage extends ConsumerStatefulWidget {
 class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
-
+  PedidoVentaEstado? filteredStatus;
   bool canLoadNextPage = false;
 
   @override
@@ -87,6 +89,15 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
                 searchText;
           },
         ),
+        actionButtons: [
+          IconButton(
+            onPressed: () => searchFilterByEstado(),
+            icon: Icon(Icons.filter_alt,
+                color: (filteredStatus != null)
+                    ? Theme.of(context).colorScheme.surfaceTint
+                    : null),
+          ),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () => syncSalesOrderDB(ref),
@@ -150,5 +161,109 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     context.router.push(
       PedidoVentaEditRoute(id: null),
     );
+  }
+
+  void searchFilterByEstado() async {
+    final filterEstado = await showDialog(
+      context: context,
+      builder: (context) => PedidoVentaFilterDialog(
+        filteredStatus: filteredStatus,
+      ),
+    ) as PedidoVentaEstado?;
+
+    filteredStatus = filterEstado;
+
+    ref.read(pedidoVentaEstadoQueryStateProvider.notifier).state = filterEstado;
+  }
+}
+
+class PedidoVentaFilterDialog extends ConsumerStatefulWidget {
+  const PedidoVentaFilterDialog({super.key, required this.filteredStatus});
+
+  final PedidoVentaEstado? filteredStatus;
+
+  @override
+  ConsumerState<PedidoVentaFilterDialog> createState() =>
+      _PedidoVentaFilterDialogState();
+}
+
+class _PedidoVentaFilterDialogState
+    extends ConsumerState<PedidoVentaFilterDialog> {
+  PedidoVentaEstado? newFilterStatus;
+
+  @override
+  void initState() {
+    super.initState();
+    newFilterStatus = widget.filteredStatus;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(pedidoVentaEstadoProvider);
+    return AlertDialog(
+      title: Center(
+        child: Text(S.of(context).pedido_index_filtros),
+      ),
+      content: state.when(
+          data: (pedidoVentaEstadoList) => FormBuilderRadioGroup(
+                decoration: InputDecoration(
+                  labelText: S.of(context).pedido_index_estados,
+                  border: InputBorder.none,
+                ),
+                name: 'filter_estados',
+                options: showFieldOption(context, pedidoVentaEstadoList),
+                initialValue: widget.filteredStatus ?? pedidoVentaEstadoList[0],
+                onChanged: (newFilterValue) =>
+                    changeFilterValue(filterValue: newFilterValue),
+              ),
+          error: (err, _) => ErrorMessageWidget(err.toString()),
+          loading: () => const ProgressIndicatorWidget()),
+      actions: [
+        MaterialButton(
+          color: Theme.of(context).colorScheme.secondary,
+          onPressed: () => resetFilter(context, ref),
+          child: Text(
+            S.of(context).pedido_index_reset,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+        MaterialButton(
+          color: Theme.of(context).colorScheme.secondary,
+          onPressed: () => applyFilters(context, ref),
+          child: Text(
+            S.of(context).pedido_index_filtrar,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+      ],
+    );
+  }
+
+  List<FormBuilderFieldOption<Object>> showFieldOption(
+      BuildContext context, List<PedidoVentaEstado> pedidoVentaEstadoList) {
+    final List<FormBuilderFieldOption<Object>> fieldOptions = [];
+    for (final pedidoVentaEstado in pedidoVentaEstadoList) {
+      fieldOptions.add(
+        FormBuilderFieldOption(
+          value: pedidoVentaEstado,
+          child: Text(pedidoVentaEstado.descripcion),
+        ),
+      );
+    }
+    return fieldOptions;
+  }
+
+  void resetFilter(BuildContext context, WidgetRef ref) {
+    context.router.pop(null);
+  }
+
+  void applyFilters(BuildContext context, WidgetRef ref) {
+    context.router.pop(newFilterStatus);
+  }
+
+  void changeFilterValue({Object? filterValue}) {
+    setState(() {
+      newFilterStatus = (filterValue as PedidoVentaEstado?);
+    });
   }
 }
