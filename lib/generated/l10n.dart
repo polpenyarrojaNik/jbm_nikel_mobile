@@ -2104,10 +2104,20 @@ class S {
     );
   }
 
-  /// `Total líneas`
+  /// `Available stock:`
+  String get pedido_edit_pedidoEdit_stockDisponible {
+    return Intl.message(
+      'Available stock:',
+      name: 'pedido_edit_pedidoEdit_stockDisponible',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total lines`
   String get pedido_edit_pedidoEdit_totalLineas {
     return Intl.message(
-      'Total líneas',
+      'Total lines',
       name: 'pedido_edit_pedidoEdit_totalLineas',
       desc: '',
       args: [],

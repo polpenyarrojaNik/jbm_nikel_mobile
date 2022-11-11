@@ -80,6 +80,10 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                         ),
                     ],
                   ),
+                  Text(
+                    '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
+                    style: Theme.of(context).textTheme.caption,
+                  )
                 ],
               ),
             ),

@@ -371,8 +371,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Select a client"),
         "pedido_edit_pedidoEdit_sinArticulos":
             MessageLookupByLibrary.simpleMessage("No articles"),
+        "pedido_edit_pedidoEdit_stockDisponible":
+            MessageLookupByLibrary.simpleMessage("Available stock:"),
         "pedido_edit_pedidoEdit_totalLineas":
-            MessageLookupByLibrary.simpleMessage("Total líneas"),
+            MessageLookupByLibrary.simpleMessage("Total lines"),
         "pedido_edit_selectQuantity_artiuclosSustitutivos":
             MessageLookupByLibrary.simpleMessage("Substitute articles:"),
         "pedido_edit_selectQuantity_cantidad":

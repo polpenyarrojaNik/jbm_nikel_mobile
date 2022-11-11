@@ -25,6 +25,7 @@ class PedidoVentaLinea with _$PedidoVentaLinea {
     String? pedidoLineaIdComponente,
     Money? importeLinea,
     bool? stockDisponibleSN,
+    int? stockDisponible,
     DateTime? fechaDisponible,
     double? iva,
     required int cantidadPendiente,

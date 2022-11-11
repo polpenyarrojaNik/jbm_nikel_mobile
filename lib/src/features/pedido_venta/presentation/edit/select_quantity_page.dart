@@ -215,6 +215,7 @@ class _SelecionarCantidadPageState
         descuento2: descuento2,
         descuento3: articuloPrecio.descuento3,
         descuentoProntoPago: cliente.descuentoProntoPago,
+        stockDisponible: articulo.stockDisponible,
         stockDisponibleSN: articulo.stockDisponible > 0,
         iva: articuloPrecio.iva,
         importeLinea: ref.read(pedidoVentaRepositoryProvider).getTotalLinea(

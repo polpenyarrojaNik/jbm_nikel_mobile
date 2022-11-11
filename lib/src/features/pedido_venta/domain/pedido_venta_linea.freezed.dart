@@ -34,6 +34,7 @@ mixin _$PedidoVentaLinea {
   String? get pedidoLineaIdComponente => throw _privateConstructorUsedError;
   Money? get importeLinea => throw _privateConstructorUsedError;
   bool? get stockDisponibleSN => throw _privateConstructorUsedError;
+  int? get stockDisponible => throw _privateConstructorUsedError;
   DateTime? get fechaDisponible => throw _privateConstructorUsedError;
   double? get iva => throw _privateConstructorUsedError;
   int get cantidadPendiente => throw _privateConstructorUsedError;
@@ -70,6 +71,7 @@ abstract class $PedidoVentaLineaCopyWith<$Res> {
       String? pedidoLineaIdComponente,
       Money? importeLinea,
       bool? stockDisponibleSN,
+      int? stockDisponible,
       DateTime? fechaDisponible,
       double? iva,
       int cantidadPendiente,
@@ -108,6 +110,7 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
     Object? pedidoLineaIdComponente = freezed,
     Object? importeLinea = freezed,
     Object? stockDisponibleSN = freezed,
+    Object? stockDisponible = freezed,
     Object? fechaDisponible = freezed,
     Object? iva = freezed,
     Object? cantidadPendiente = null,
@@ -187,6 +190,10 @@ class _$PedidoVentaLineaCopyWithImpl<$Res, $Val extends PedidoVentaLinea>
           ? _value.stockDisponibleSN
           : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
               as bool?,
+      stockDisponible: freezed == stockDisponible
+          ? _value.stockDisponible
+          : stockDisponible // ignore: cast_nullable_to_non_nullable
+              as int?,
       fechaDisponible: freezed == fechaDisponible
           ? _value.fechaDisponible
           : fechaDisponible // ignore: cast_nullable_to_non_nullable
@@ -238,6 +245,7 @@ abstract class _$$_PedidoVentaLineaCopyWith<$Res>
       String? pedidoLineaIdComponente,
       Money? importeLinea,
       bool? stockDisponibleSN,
+      int? stockDisponible,
       DateTime? fechaDisponible,
       double? iva,
       int cantidadPendiente,
@@ -274,6 +282,7 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
     Object? pedidoLineaIdComponente = freezed,
     Object? importeLinea = freezed,
     Object? stockDisponibleSN = freezed,
+    Object? stockDisponible = freezed,
     Object? fechaDisponible = freezed,
     Object? iva = freezed,
     Object? cantidadPendiente = null,
@@ -353,6 +362,10 @@ class __$$_PedidoVentaLineaCopyWithImpl<$Res>
           ? _value.stockDisponibleSN
           : stockDisponibleSN // ignore: cast_nullable_to_non_nullable
               as bool?,
+      stockDisponible: freezed == stockDisponible
+          ? _value.stockDisponible
+          : stockDisponible // ignore: cast_nullable_to_non_nullable
+              as int?,
       fechaDisponible: freezed == fechaDisponible
           ? _value.fechaDisponible
           : fechaDisponible // ignore: cast_nullable_to_non_nullable
@@ -399,6 +412,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
       this.pedidoLineaIdComponente,
       this.importeLinea,
       this.stockDisponibleSN,
+      this.stockDisponible,
       this.fechaDisponible,
       this.iva,
       required this.cantidadPendiente,
@@ -443,6 +457,8 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
   @override
   final bool? stockDisponibleSN;
   @override
+  final int? stockDisponible;
+  @override
   final DateTime? fechaDisponible;
   @override
   final double? iva;
@@ -455,7 +471,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
 
   @override
   String toString() {
-    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, fechaDisponible: $fechaDisponible, iva: $iva, cantidadPendiente: $cantidadPendiente, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaLineaId: $pedidoVentaLineaId, pedidoVentaAppId: $pedidoVentaAppId, pedidoVentaLineaAppId: $pedidoVentaLineaAppId, articuloId: $articuloId, articuloDescription: $articuloDescription, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, descuentoProntoPago: $descuentoProntoPago, pedidoLineaIdComponente: $pedidoLineaIdComponente, importeLinea: $importeLinea, stockDisponibleSN: $stockDisponibleSN, stockDisponible: $stockDisponible, fechaDisponible: $fechaDisponible, iva: $iva, cantidadPendiente: $cantidadPendiente, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -500,6 +516,8 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
                 other.importeLinea == importeLinea) &&
             (identical(other.stockDisponibleSN, stockDisponibleSN) ||
                 other.stockDisponibleSN == stockDisponibleSN) &&
+            (identical(other.stockDisponible, stockDisponible) ||
+                other.stockDisponible == stockDisponible) &&
             (identical(other.fechaDisponible, fechaDisponible) ||
                 other.fechaDisponible == fechaDisponible) &&
             (identical(other.iva, iva) || other.iva == iva) &&
@@ -531,6 +549,7 @@ class _$_PedidoVentaLinea extends _PedidoVentaLinea {
         pedidoLineaIdComponente,
         importeLinea,
         stockDisponibleSN,
+        stockDisponible,
         fechaDisponible,
         iva,
         cantidadPendiente,
@@ -565,6 +584,7 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
       final String? pedidoLineaIdComponente,
       final Money? importeLinea,
       final bool? stockDisponibleSN,
+      final int? stockDisponible,
       final DateTime? fechaDisponible,
       final double? iva,
       required final int cantidadPendiente,
@@ -608,6 +628,8 @@ abstract class _PedidoVentaLinea extends PedidoVentaLinea {
   Money? get importeLinea;
   @override
   bool? get stockDisponibleSN;
+  @override
+  int? get stockDisponible;
   @override
   DateTime? get fechaDisponible;
   @override
