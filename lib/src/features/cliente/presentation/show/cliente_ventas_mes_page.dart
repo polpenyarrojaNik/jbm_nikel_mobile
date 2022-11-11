@@ -1,9 +1,11 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/bar_data.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -36,16 +38,28 @@ class ClienteVentasMesPage extends ConsumerWidget {
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
-                ? SliverFillRemaining(
-                    child: VentasMesDataTable(
-                        clienteVentasMesList: clienteVentasMesList),
+                ? SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        VentasMesDataTable(
+                            clienteVentasMesList: clienteVentasMesList),
+                        SizedBox(
+                          height: 400,
+                          child: GraficaVentasMes(
+                              clienteVentasMesList: clienteVentasMesList),
+                        ),
+                      ],
+                    ),
                   )
                 : SliverFillRemaining(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).sinResultados),
+                        ],
+                      ),
                     ),
                   ),
           ),
@@ -71,18 +85,12 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: DataTable(
-            horizontalMargin: 16,
-            columns: _createColumns(),
-            rows: _createDataRows(
-                clienteVentasMesList: widget.clienteVentasMesList),
-          ),
-        ),
+      scrollDirection: Axis.horizontal,
+      child: DataTable(
+        horizontalMargin: 16,
+        columns: _createColumns(),
+        rows:
+            _createDataRows(clienteVentasMesList: widget.clienteVentasMesList),
       ),
     );
   }
@@ -345,5 +353,181 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       }
     }
     return totalAnyo.toString();
+  }
+}
+
+class GraficaVentasMes extends StatefulWidget {
+  const GraficaVentasMes({super.key, required this.clienteVentasMesList});
+
+  final List<ClienteVentasMes> clienteVentasMesList;
+
+  @override
+  State<GraficaVentasMes> createState() => _GraficaVentasMesState();
+}
+
+class _GraficaVentasMesState extends State<GraficaVentasMes> {
+  List<BarDataClientesMes> dataList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    setDataListFromVentasMes(widget.clienteVentasMesList);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('ddddd');
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 32.0),
+                child: BarChart(
+                  BarChartData(
+                    alignment: BarChartAlignment.spaceBetween,
+                    borderData: FlBorderData(
+                      show: true,
+                      border: const Border.symmetric(
+                        horizontal: BorderSide(
+                          color: Color(0xFFececec),
+                        ),
+                      ),
+                    ),
+                    titlesData: FlTitlesData(
+                      show: true,
+                      rightTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          interval: 1,
+                          getTitlesWidget: (value, meta) =>
+                              getYTitles(widget.clienteVentasMesList, value),
+                          // reservedSize: 50,
+                        ),
+                      ),
+                      topTitles: AxisTitles(),
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (value, meta) => getTiltlesMeses(
+                              widget.clienteVentasMesList, value),
+                        ),
+                      ),
+                    ),
+                    gridData: FlGridData(
+                      show: true,
+                      drawVerticalLine: false,
+                      getDrawingHorizontalLine: (value) => FlLine(
+                        color: const Color(0xFFececec),
+                        strokeWidth: 1,
+                      ),
+                    ),
+                    barGroups: dataList.asMap().entries.map((e) {
+                      final index = e.key;
+                      final data = e.value;
+                      return generateBarGroup(
+                        index,
+                        data.color,
+                        data.value,
+                        data.shadowValue,
+                      );
+                    }).toList(),
+                    maxY: getMaxYValue(widget.clienteVentasMesList),
+                    minY: 0,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  void setDataListFromVentasMes(List<ClienteVentasMes> clienteVentasMesList) {
+    for (var i = 0; i < clienteVentasMesList.length; i++) {
+      dataList.add(BarDataClientesMes(
+          Colors.green,
+          clienteVentasMesList[i].importeAnyo,
+          clienteVentasMesList[i].importeAnyo_1));
+    }
+  }
+
+  Widget getTiltlesMeses(
+      List<ClienteVentasMes> clienteVentasMesList, double value) {
+    print(getMonthFromInt(clienteVentasMesList[value.toInt()].mes));
+    return Text(clienteVentasMesList[value.toInt()].mes.toString());
+  }
+
+  Widget getYTitles(List<ClienteVentasMes> clienteVentasMesList, double value) {
+    String valueString = '';
+    if (value != 1 &&
+        value % (getMaxYValue(clienteVentasMesList) / 7).round() == 0) {
+      valueString = value.toStringAsFixed(0);
+    }
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+      child: Text(
+        valueString,
+        style: TextStyle(
+          color: Color(Colors.white.value),
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+        ),
+      ),
+    );
+  }
+
+  double getMaxYValue(List<ClienteVentasMes> clienteVentasMesList) {
+    double maxY = 0;
+    for (var i = 0; i < clienteVentasMesList.length; i++) {
+      if (maxY <
+          clienteVentasMesList[i].importeAnyo.amount.toDecimal().toDouble()) {
+        maxY =
+            clienteVentasMesList[i].importeAnyo.amount.toDecimal().toDouble();
+      }
+      if (maxY <
+          clienteVentasMesList[i].importeAnyo_1.amount.toDecimal().toDouble()) {
+        maxY =
+            clienteVentasMesList[i].importeAnyo_1.amount.toDecimal().toDouble();
+      }
+    }
+
+    if (maxY > 14) {
+      if (maxY % (maxY / 7).round() == 0) {
+        return maxY.roundToDouble();
+      }
+      for (int i = maxY.round();; i++) {
+        if (i % (maxY / 8).round() == 0) {
+          return i.toDouble();
+        }
+      }
+    }
+    return 14;
+  }
+
+  BarChartGroupData generateBarGroup(
+    int x,
+    Color color,
+    Money value,
+    Money shadowValue,
+  ) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: value.amount.toDecimal().toDouble(),
+          color: color,
+          width: 6,
+        ),
+        BarChartRodData(
+          toY: shadowValue.amount.toDecimal().toDouble(),
+          color: const Color(0xFFCCCCCC),
+          width: 6,
+        ),
+      ],
+    );
   }
 }

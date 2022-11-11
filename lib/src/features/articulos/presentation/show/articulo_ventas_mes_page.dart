@@ -1,8 +1,10 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/bar_data.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -35,9 +37,18 @@ class ArticuloVentasMesPage extends ConsumerWidget {
               child: ErrorMessageWidget(e.toString()),
             ),
             data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
-                ? SliverFillRemaining(
-                    child: VentasMesDataTable(
-                        articuloVentasMesList: articuloVentasMesList),
+                ? SliverToBoxAdapter(
+                    child: Column(
+                      children: [
+                        VentasMesDataTable(
+                            articuloVentasMesList: articuloVentasMesList),
+                        SizedBox(
+                          height: 400,
+                          child: GraficaVentasMes(
+                              articuloVentasMesList: articuloVentasMesList),
+                        ),
+                      ],
+                    ),
                   )
                 : SliverFillRemaining(
                     child: Column(
@@ -342,5 +353,176 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       }
     }
     return totalAnyo.toString();
+  }
+}
+
+class GraficaVentasMes extends StatefulWidget {
+  const GraficaVentasMes({super.key, required this.articuloVentasMesList});
+
+  final List<ArticuloVentasMes> articuloVentasMesList;
+
+  @override
+  State<GraficaVentasMes> createState() => _GraficaVentasMesState();
+}
+
+class _GraficaVentasMesState extends State<GraficaVentasMes> {
+  List<BarDataArticulosMes> dataList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    setDataListFromVentasMes(widget.articuloVentasMesList);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 32.0),
+                child: BarChart(
+                  BarChartData(
+                    alignment: BarChartAlignment.spaceBetween,
+                    borderData: FlBorderData(
+                      show: true,
+                      border: const Border.symmetric(
+                        horizontal: BorderSide(
+                          color: Color(0xFFececec),
+                        ),
+                      ),
+                    ),
+                    titlesData: FlTitlesData(
+                      show: true,
+                      rightTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (value, meta) =>
+                              getYTitles(widget.articuloVentasMesList, value),
+                          // reservedSize: 50,
+                        ),
+                      ),
+                      topTitles: AxisTitles(),
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (value, meta) => getTiltlesMeses(
+                              widget.articuloVentasMesList, value),
+                        ),
+                      ),
+                    ),
+                    gridData: FlGridData(
+                      show: true,
+                      drawVerticalLine: false,
+                      getDrawingHorizontalLine: (value) => FlLine(
+                        color: const Color(0xFFececec),
+                        strokeWidth: 1,
+                      ),
+                    ),
+                    barGroups: dataList.asMap().entries.map((e) {
+                      final index = e.key;
+                      final data = e.value;
+                      return generateBarGroup(
+                        index,
+                        data.color,
+                        data.value,
+                        data.shadowValue,
+                      );
+                    }).toList(),
+                    maxY: getMaxYValue(widget.articuloVentasMesList),
+                    minY: 0,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  void setDataListFromVentasMes(List<ArticuloVentasMes> articuloVentasMesList) {
+    for (var i = 0; i < articuloVentasMesList.length; i++) {
+      dataList.add(BarDataArticulosMes(
+          Colors.green,
+          articuloVentasMesList[i].unidadesAnyo,
+          articuloVentasMesList[i].unidadesAnyo_1));
+    }
+  }
+
+  Widget getTiltlesMeses(
+      List<ArticuloVentasMes> articuloVentasMesList, double value) {
+    print(getMonthFromInt(articuloVentasMesList[value.toInt()].mes));
+    return Text(articuloVentasMesList[value.toInt()].mes.toString());
+  }
+
+  Widget getYTitles(
+      List<ArticuloVentasMes> articuloVentasMesList, double value) {
+    String valueString = '';
+    if (value != 1 &&
+        value % (getMaxYValue(articuloVentasMesList) / 7).round() == 0) {
+      valueString = value.toStringAsFixed(0);
+    }
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+      child: Text(
+        valueString,
+        style: TextStyle(
+          color: Color(Colors.white.value),
+          fontWeight: FontWeight.bold,
+          fontSize: 12,
+        ),
+      ),
+    );
+  }
+
+  double getMaxYValue(List<ArticuloVentasMes> articuloVentasMesList) {
+    double maxY = 0;
+    for (var i = 0; i < articuloVentasMesList.length; i++) {
+      if (maxY < articuloVentasMesList[i].unidadesAnyo.toDouble()) {
+        maxY = articuloVentasMesList[i].unidadesAnyo.toDouble();
+      }
+      if (maxY < articuloVentasMesList[i].unidadesAnyo_1.toDouble()) {
+        maxY = articuloVentasMesList[i].unidadesAnyo_1.toDouble();
+      }
+    }
+
+    if (maxY > 14) {
+      if (maxY % (maxY / 7).round() == 0) {
+        return maxY.roundToDouble();
+      }
+      for (int i = maxY.round();; i++) {
+        if (i % (maxY / 7).round() == 0) {
+          return i.toDouble();
+        }
+      }
+    }
+    return 14;
+  }
+
+  BarChartGroupData generateBarGroup(
+    int x,
+    Color color,
+    int value,
+    int shadowValue,
+  ) {
+    return BarChartGroupData(
+      x: x,
+      barRods: [
+        BarChartRodData(
+          toY: value.toDouble(),
+          color: color,
+          width: 6,
+        ),
+        BarChartRodData(
+          toY: shadowValue.toDouble(),
+          color: const Color(0xFFCCCCCC),
+          width: 6,
+        ),
+      ],
+    );
   }
 }
