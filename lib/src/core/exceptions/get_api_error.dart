@@ -13,6 +13,9 @@ Error getApiError(Object e) {
         Map<String, dynamic> responseJson;
         if (responseData is String) {
           responseJson = jsonDecode(responseData);
+        } else if (responseData is List<int>) {
+          throw AppException.restApiFailure(
+              e.response?.statusCode ?? 400, utf8.decode(responseData));
         } else {
           responseJson = responseData['error'];
         }
