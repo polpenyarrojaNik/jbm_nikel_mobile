@@ -558,16 +558,23 @@ class ArticuloRepository {
         innerJoin(
             _db.clienteUsuarioTable,
             _db.clienteUsuarioTable.clienteId
-                .equalsExp(_db.pedidoVentaTable.clienteId))
+                .equalsExp(_db.pedidoVentaTable.clienteId)),
+        leftOuterJoin(
+            _db.pedidoVentaEstadoTable,
+            _db.pedidoVentaEstadoTable.id
+                .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
       ]);
 
       query.where((_db.pedidoVentaLineaTable.articuloId.equals(articuloId) &
-          _db.clienteUsuarioTable.usuarioId.equals(usuarioId)));
+          _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          (_db.pedidoVentaEstadoTable.id.equals(0) |
+              _db.pedidoVentaEstadoTable.id.equals(1) |
+              _db.pedidoVentaEstadoTable.id.equals(98) |
+              _db.pedidoVentaEstadoTable.id.equals(99))));
 
       return query.asyncMap((row) async {
         final pedidoVentaLineaDTO = row.readTable(_db.pedidoVentaLineaTable);
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
-
         return ArticuloPedidoVentaLineaDTO.fromDB(
                 pedidoVentaLineaDto: pedidoVentaLineaDTO,
                 clienteId: pedidoVentaDTO.clienteId,
