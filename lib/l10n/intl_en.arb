@@ -161,6 +161,7 @@
   "cliente_show_clienteFacturasPendientes_fvcto": "Expire date",
   "cliente_show_clienteFacturasPendientes_fvctoOriginal": "Original expire date",
   "cliente_show_clienteArticulosTop_titulo": "Top 150",
+  "cliente_show_clienteArticulosTop_num": "Num.",
   "cliente_show_clienteArticulosTop_articulo": "Article",
   "cliente_show_clienteArticulosTop_descripcion": "Description",
   "cliente_show_clienteArticulosTop_ventasTotal": "Total sales",

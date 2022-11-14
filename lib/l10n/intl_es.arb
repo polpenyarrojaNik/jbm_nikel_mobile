@@ -161,6 +161,7 @@
   "cliente_show_clienteFacturasPendientes_fvcto": "F. Vcto",
   "cliente_show_clienteFacturasPendientes_fvctoOriginal": "F. Vcto. original",
   "cliente_show_clienteArticulosTop_titulo": "Top 150",
+  "cliente_show_clienteArticulosTop_num": "Núm.",
   "cliente_show_clienteArticulosTop_articulo": "Artículo",
   "cliente_show_clienteArticulosTop_descripcion": "Descripción",
   "cliente_show_clienteArticulosTop_ventasTotal": "Ventas total",

@@ -1674,6 +1674,16 @@ class S {
     );
   }
 
+  /// `Num.`
+  String get cliente_show_clienteArticulosTop_num {
+    return Intl.message(
+      'Num.',
+      name: 'cliente_show_clienteArticulosTop_num',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Article`
   String get cliente_show_clienteArticulosTop_articulo {
     return Intl.message(

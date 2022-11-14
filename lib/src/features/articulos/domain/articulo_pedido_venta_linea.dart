@@ -21,6 +21,7 @@ class ArticuloPedidoVentaLinea with _$ArticuloPedidoVentaLinea {
     required double descuento1,
     required double descuento2,
     required double descuento3,
+    required DateTime fechaPedido,
     required DateTime lastUpdated,
     required bool deleted,
   }) = _ArticuloPedidoVentaLinea;

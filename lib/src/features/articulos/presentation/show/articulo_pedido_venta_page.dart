@@ -102,10 +102,21 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Flexible(
-                    child: Text(
-                        '#${pedidoVentaLinea.clienteId} ${pedidoVentaLinea.nombreCliente}',
-                        style: Theme.of(context).textTheme.subtitle2),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                            '#${pedidoVentaLinea.clienteId} ${pedidoVentaLinea.nombreCliente}',
+                            style: Theme.of(context).textTheme.subtitle2),
+                      ),
+                      Text(
+                          dateFormatter(pedidoVentaLinea.fechaPedido
+                              .toLocal()
+                              .toIso8601String()),
+                          style: Theme.of(context).textTheme.caption)
+                    ],
                   ),
                   gapH4,
                   Row(

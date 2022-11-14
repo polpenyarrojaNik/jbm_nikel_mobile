@@ -32,7 +32,8 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
   factory ArticuloPedidoVentaLineaDTO.fromJson(Map<String, dynamic> json) =>
       _$ArticuloPedidoVentaLineaDTOFromJson(json);
 
-  ArticuloPedidoVentaLinea toDomain({required String divisaId}) {
+  ArticuloPedidoVentaLinea toDomain(
+      {required String divisaId, required DateTime fechaPedido}) {
     return ArticuloPedidoVentaLinea(
         empresaId: empresaId,
         pedidoVentaId: pedidoVentaId,
@@ -48,6 +49,7 @@ class ArticuloPedidoVentaLineaDTO with _$ArticuloPedidoVentaLineaDTO {
         descuento1: descuento1,
         descuento2: descuento2,
         descuento3: descuento3,
+        fechaPedido: fechaPedido,
         lastUpdated: lastUpdated,
         deleted: (deleted == 'S') ? true : false);
   }

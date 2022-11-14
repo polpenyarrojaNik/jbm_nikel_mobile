@@ -30,6 +30,7 @@ mixin _$ArticuloPedidoVentaLinea {
   double get descuento1 => throw _privateConstructorUsedError;
   double get descuento2 => throw _privateConstructorUsedError;
   double get descuento3 => throw _privateConstructorUsedError;
+  DateTime get fechaPedido => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -59,6 +60,7 @@ abstract class $ArticuloPedidoVentaLineaCopyWith<$Res> {
       double descuento1,
       double descuento2,
       double descuento3,
+      DateTime fechaPedido,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -91,6 +93,7 @@ class _$ArticuloPedidoVentaLineaCopyWithImpl<$Res,
     Object? descuento1 = null,
     Object? descuento2 = null,
     Object? descuento3 = null,
+    Object? fechaPedido = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -151,6 +154,10 @@ class _$ArticuloPedidoVentaLineaCopyWithImpl<$Res,
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
+      fechaPedido: null == fechaPedido
+          ? _value.fechaPedido
+          : fechaPedido // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -187,6 +194,7 @@ abstract class _$$_ArticuloPedidoVentaLineaCopyWith<$Res>
       double descuento1,
       double descuento2,
       double descuento3,
+      DateTime fechaPedido,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -217,6 +225,7 @@ class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
     Object? descuento1 = null,
     Object? descuento2 = null,
     Object? descuento3 = null,
+    Object? fechaPedido = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -277,6 +286,10 @@ class __$$_ArticuloPedidoVentaLineaCopyWithImpl<$Res>
           ? _value.descuento3
           : descuento3 // ignore: cast_nullable_to_non_nullable
               as double,
+      fechaPedido: null == fechaPedido
+          ? _value.fechaPedido
+          : fechaPedido // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -307,6 +320,7 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
       required this.descuento1,
       required this.descuento2,
       required this.descuento3,
+      required this.fechaPedido,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -340,13 +354,15 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
   @override
   final double descuento3;
   @override
+  final DateTime fechaPedido;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'ArticuloPedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, clienteId: $clienteId, nombreCliente: $nombreCliente, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloPedidoVentaLinea(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, id: $id, articuloId: $articuloId, articuloDescription: $articuloDescription, clienteId: $clienteId, nombreCliente: $nombreCliente, cantidad: $cantidad, precioDivisa: $precioDivisa, divisaId: $divisaId, tipoPrecio: $tipoPrecio, descuento1: $descuento1, descuento2: $descuento2, descuento3: $descuento3, fechaPedido: $fechaPedido, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -381,6 +397,8 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
                 other.descuento2 == descuento2) &&
             (identical(other.descuento3, descuento3) ||
                 other.descuento3 == descuento3) &&
+            (identical(other.fechaPedido, fechaPedido) ||
+                other.fechaPedido == fechaPedido) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -403,6 +421,7 @@ class _$_ArticuloPedidoVentaLinea extends _ArticuloPedidoVentaLinea {
       descuento1,
       descuento2,
       descuento3,
+      fechaPedido,
       lastUpdated,
       deleted);
 
@@ -430,6 +449,7 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
       required final double descuento1,
       required final double descuento2,
       required final double descuento3,
+      required final DateTime fechaPedido,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloPedidoVentaLinea;
   const _ArticuloPedidoVentaLinea._() : super._();
@@ -462,6 +482,8 @@ abstract class _ArticuloPedidoVentaLinea extends ArticuloPedidoVentaLinea {
   double get descuento2;
   @override
   double get descuento3;
+  @override
+  DateTime get fechaPedido;
   @override
   DateTime get lastUpdated;
   @override

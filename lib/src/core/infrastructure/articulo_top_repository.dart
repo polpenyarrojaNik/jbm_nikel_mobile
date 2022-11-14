@@ -48,7 +48,7 @@ AND estadisticas_venta.mes = strftime('%m', DATE(DATE(),'-12 month'))
 , (SELECT DIVISA_ID FROM CLIENTES WHERE cliente_id = '7982') DIVISA_ID
 FROM estadisticas_articulos_top
 INNER JOIN ARTICULOS ON ARTICULOS.articulo_id = ESTADISTICAS_ARTICULOS_TOP.ARTICULO_ID
-
+ORDER BY VENTAS_TOTAL DESC
 ''', variables: [
         Variable(clienteId),
       ], readsFrom: {

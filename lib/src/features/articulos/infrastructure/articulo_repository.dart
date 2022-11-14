@@ -572,14 +572,18 @@ class ArticuloRepository {
               _db.pedidoVentaEstadoTable.id.equals(98) |
               _db.pedidoVentaEstadoTable.id.equals(99))));
 
+      query.orderBy([OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate)]);
+
       return query.asyncMap((row) async {
         final pedidoVentaLineaDTO = row.readTable(_db.pedidoVentaLineaTable);
         final pedidoVentaDTO = row.readTable(_db.pedidoVentaTable);
         return ArticuloPedidoVentaLineaDTO.fromDB(
-                pedidoVentaLineaDto: pedidoVentaLineaDTO,
-                clienteId: pedidoVentaDTO.clienteId,
-                nombreCliente: pedidoVentaDTO.nombreCliente)
-            .toDomain(divisaId: pedidoVentaDTO.divisaId);
+          pedidoVentaLineaDto: pedidoVentaLineaDTO,
+          clienteId: pedidoVentaDTO.clienteId,
+          nombreCliente: pedidoVentaDTO.nombreCliente,
+        ).toDomain(
+            divisaId: pedidoVentaDTO.divisaId,
+            fechaPedido: pedidoVentaDTO.pedidoVentaDate);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

@@ -89,9 +89,14 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
     return [
       DataColumn(
         label: Expanded(
-          child: Text(S.of(context).cliente_show_clienteArticulosTop_articulo,
+          child: Text(S.of(context).cliente_show_clienteArticulosTop_num,
               textAlign: TextAlign.center),
         ),
+        numeric: true,
+      ),
+      DataColumn(
+        label: Text(S.of(context).cliente_show_clienteArticulosTop_articulo,
+            textAlign: TextAlign.center),
         numeric: false,
       ),
       DataColumn(
@@ -133,9 +138,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Center(
-                    child: Text(
-                      articulosTopList[i].articuloId,
-                    ),
+                    child: Text((i + 1).toString()),
                   ),
                 ],
               ),
@@ -146,10 +149,26 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
                 children: [
                   Center(
                     child: Text(
-                      articulosTopList[i].descripcion,
+                      articulosTopList[i].articuloId,
                     ),
                   ),
                 ],
+              ),
+            ),
+            DataCell(
+              SizedBox(
+                width: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        articulosTopList[i].descripcion,
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             DataCell(

@@ -144,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Artículo"),
         "cliente_show_clienteArticulosTop_descripcion":
             MessageLookupByLibrary.simpleMessage("Descripción"),
+        "cliente_show_clienteArticulosTop_num":
+            MessageLookupByLibrary.simpleMessage("Núm."),
         "cliente_show_clienteArticulosTop_titulo":
             MessageLookupByLibrary.simpleMessage("Top 150"),
         "cliente_show_clienteArticulosTop_ventasCliente":
