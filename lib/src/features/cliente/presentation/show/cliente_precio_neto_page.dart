@@ -67,36 +67,43 @@ class ClientePrecioNetoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Flexible(
-        child: Container(
-          height: 50,
-          padding: const EdgeInsets.all(6.5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        IntrinsicHeight(
+          child: Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(clientePrecioNeto.articuloId,
-                      style: Theme.of(context).textTheme.subtitle2),
-                  if (clientePrecioNeto.cantidadDesde != 1)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(clientePrecioNeto.articuloId,
+                            style: Theme.of(context).textTheme.subtitle2),
+                        if (clientePrecioNeto.cantidadDesde != 1)
+                          Text(
+                            '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
+                      ],
+                    ),
+                    const Spacer(),
                     Text(
-                        '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
-                        style: Theme.of(context).textTheme.subtitle2),
-                ],
-              ),
-              const Spacer(),
-              Text(
-                formatPrecios(
-                    precio: clientePrecioNeto.precio,
-                    tipoPrecio: clientePrecioNeto.tipoPrecio),
-                style: Theme.of(context).textTheme.caption,
+                      formatPrecios(
+                          precio: clientePrecioNeto.precio,
+                          tipoPrecio: clientePrecioNeto.tipoPrecio),
+                      style: Theme.of(context).textTheme.caption,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
         ),
-      ),
+        const Divider(),
+      ],
     );
   }
 }
