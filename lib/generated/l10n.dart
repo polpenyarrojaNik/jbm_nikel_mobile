@@ -2274,6 +2274,16 @@ class S {
     );
   }
 
+  /// `Multiple`
+  String get pedido_edit_selectQuantity_multiplo {
+    return Intl.message(
+      'Multiple',
+      name: 'pedido_edit_selectQuantity_multiplo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sent`
   String get pedido_enviado {
     return Intl.message(

@@ -239,7 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_pdteServir":
             MessageLookupByLibrary.simpleMessage("Pdte. Servir"),
         "cliente_show_clienteDetalle_plazoDeCobro":
-            MessageLookupByLibrary.simpleMessage("Plazo de corbo"),
+            MessageLookupByLibrary.simpleMessage("Plazo de cobro"),
         "cliente_show_clienteDetalle_poblacion":
             MessageLookupByLibrary.simpleMessage("Población"),
         "cliente_show_clienteDetalle_porcentajeAbonos":
@@ -391,6 +391,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Importe línea"),
         "pedido_edit_selectQuantity_minimo":
             MessageLookupByLibrary.simpleMessage("Mínimo"),
+        "pedido_edit_selectQuantity_multiplo":
+            MessageLookupByLibrary.simpleMessage("Múltiplo"),
         "pedido_edit_selectQuantity_noPuedeEstarVacio":
             MessageLookupByLibrary.simpleMessage("No puede estar vacío"),
         "pedido_edit_selectQuantity_precio":

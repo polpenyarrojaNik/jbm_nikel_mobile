@@ -389,6 +389,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Amount line"),
         "pedido_edit_selectQuantity_minimo":
             MessageLookupByLibrary.simpleMessage("Minimum"),
+        "pedido_edit_selectQuantity_multiplo":
+            MessageLookupByLibrary.simpleMessage("Multiple"),
         "pedido_edit_selectQuantity_noPuedeEstarVacio":
             MessageLookupByLibrary.simpleMessage("Must not be empty"),
         "pedido_edit_selectQuantity_precio":

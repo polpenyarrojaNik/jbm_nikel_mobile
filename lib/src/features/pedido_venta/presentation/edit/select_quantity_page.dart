@@ -44,6 +44,7 @@ class _SelecionarCantidadPageState
   double descuento1 = 0;
   double descuento2 = 0;
 
+  String? articuloId;
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
   Cliente? cliente;
@@ -51,9 +52,8 @@ class _SelecionarCantidadPageState
   @override
   void initState() {
     super.initState();
-    if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-      setValoresInicialesActualizarLinea();
-    }
+    setValoresIniciales();
+
     quanitityController.text = totalQuantity.toString();
     descuento1Controller.text = numberFormatCantidades(descuento1);
     // descuento2Controller.text = numberFormatCantidades(descuento2);
@@ -64,7 +64,7 @@ class _SelecionarCantidadPageState
   @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue<Articulo>>(
-      articuloProvider(widget.seleccionarCantidadParam.articuloId),
+      articuloProvider(articuloId!),
       (_, state) => state.whenData(
         (value) => setArtiucloValue(newArticuloValue: value),
       ),
@@ -102,6 +102,10 @@ class _SelecionarCantidadPageState
                 if (articulo != null)
                   _ArticuloInfo(
                     articulo: articulo!,
+                    setArticuloSustitutivo: (articuloSusititutivoId) =>
+                        setState(
+                      () => articuloId = articuloSusititutivoId,
+                    ),
                   ),
                 if (articulo != null)
                   _SelectQuantityFrom(
@@ -280,16 +284,14 @@ class _SelecionarCantidadPageState
     }
   }
 
-  void setValoresInicialesActualizarLinea() {
-    totalQuantity = widget.seleccionarCantidadParam.cantidad!;
-    descuento1 = widget.seleccionarCantidadParam.descuento1!;
-    descuento2 = widget.seleccionarCantidadParam.descuento2!;
+  void setValoresIniciales() {
+    articuloId = widget.seleccionarCantidadParam.articuloId;
 
-    Future.microtask(
-      () => ref.read(
-        articuloProvider(widget.seleccionarCantidadParam.articuloId),
-      ),
-    );
+    if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
+      totalQuantity = widget.seleccionarCantidadParam.cantidad!;
+      descuento1 = widget.seleccionarCantidadParam.descuento1!;
+      descuento2 = widget.seleccionarCantidadParam.descuento2!;
+    }
   }
 
   setArticuloPrecioValue(ArticuloPrecio? newArticuloPrecio) {
@@ -311,13 +313,16 @@ class _SelecionarCantidadPageState
 }
 
 class _ArticuloInfo extends ConsumerWidget {
-  const _ArticuloInfo({required this.articulo});
+  const _ArticuloInfo(
+      {required this.articulo, required this.setArticuloSustitutivo});
 
   final Articulo articulo;
+  final Function(String articuloSusititutivoId) setArticuloSustitutivo;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloSustitutivoListProvider(articulo.id));
+
     return Container(
       padding: const EdgeInsets.all(16),
       color: Theme.of(context).colorScheme.secondaryContainer,
@@ -346,8 +351,41 @@ class _ArticuloInfo extends ConsumerWidget {
                 state.when(
                   data: (articuloSustitutivoList) => (articuloSustitutivoList
                           .isNotEmpty)
-                      ? Text(
-                          '${S.of(context).pedido_edit_selectQuantity_artiuclosSustitutivos} ${getStringArticulosSusitotutivos(articuloSustitutivoList)}')
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(S
+                                .of(context)
+                                .pedido_edit_selectQuantity_artiuclosSustitutivos),
+                            gapH4,
+                            SizedBox(
+                              height: 20,
+                              child: ListView.separated(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, i) => GestureDetector(
+                                  onTap: () => setArticuloSustitutivo(
+                                      articuloSustitutivoList[i]
+                                          .articuloSustitutivoId),
+                                  child: Text(
+                                    articuloSustitutivoList[i]
+                                        .articuloSustitutivoId,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyText2
+                                        ?.copyWith(
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                  ),
+                                ),
+                                separatorBuilder: (context, i) =>
+                                    const Text(','),
+                                itemCount: articuloSustitutivoList.length,
+                              ),
+                            ),
+                          ],
+                        )
                       : Container(),
                   error: (error, _) => ErrorMessageWidget(error.toString()),
                   loading: () => const ProgressIndicatorWidget(),
@@ -427,7 +465,8 @@ class _SelectQuantityFrom extends StatelessWidget {
               ),
             ),
             gapH4,
-            Text('Múltiplo x$ventaMultiplo ${S.of(context).unidad}',
+            Text(
+                '${S.of(context).pedido_edit_selectQuantity_multiplo} x$ventaMultiplo ${S.of(context).unidad}',
                 style: Theme.of(context).textTheme.caption),
           ],
         ),

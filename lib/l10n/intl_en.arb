@@ -221,6 +221,7 @@
   "pedido_edit_selectQuantity_minimo": "Minimum",
   "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Must be multiple of",
   "pedido_edit_selectQuantity_noPuedeEstarVacio": "Must not be empty",
+  "pedido_edit_selectQuantity_multiplo": "Multiple",
   "pedido_enviado": "Sent",
   "pedido_noEnviado": "Not sent",
   "settings_cerrar_sesion": "Sign out",
