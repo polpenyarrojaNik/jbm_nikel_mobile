@@ -78,8 +78,7 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_visitas),
-            onTap: () => context.router.pushAndPopUntil(
-                const VisitaListaRoute(),
+            onTap: () => context.router.pushAndPopUntil(VisitaListaRoute(),
                 predicate: (route) => false),
           ),
           // ListTile(

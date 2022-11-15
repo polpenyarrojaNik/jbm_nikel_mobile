@@ -86,10 +86,9 @@ final getStockDisponibleProvider =
   return pedidoVentaRepository.getStockActual(articuloId: articuloId);
 });
 
-const pageSize = 100;
-List<PedidoVenta> pedidoVentaList = [];
-
 class PedidoVentaRepository {
+  static const pageSize = 100;
+
   final AppDatabase _db;
   final Dio _dio;
   final Usuario usuario;
@@ -102,12 +101,14 @@ class PedidoVentaRepository {
       required PedidoVentaEstado? pedidoVentaEstado,
       String? clienteId}) async {
     try {
-      if (page == 1) {
-        pedidoVentaList.clear();
+      final List<PedidoVenta> pedidoVentaList = [];
+
+      if (page == 0) {
         final pedidoVentaLocalList = await getPedidosVentaLocal(
             searchText: searchText,
             clienteId: clienteId,
             pedidoVentaEstado: pedidoVentaEstado);
+
         pedidoVentaList.addAll(pedidoVentaLocalList);
       }
 
@@ -118,6 +119,26 @@ class PedidoVentaRepository {
           pedidoVentaEstado: pedidoVentaEstado);
       pedidoVentaList.addAll(syncPedidosVentaList);
       return pedidoVentaList;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getPedidoVentaCountList(
+      {required String searchText,
+      required PedidoVentaEstado? pedidoVentaEstado,
+      String? clienteId}) async {
+    try {
+      final pedidoVentaLocalCountList = await getPedidosVentaLocalCountList(
+          searchText: searchText,
+          clienteId: clienteId,
+          pedidoVentaEstado: pedidoVentaEstado);
+
+      final syncPedidosVentaCountList = await getSyncPedidoVentaCountList(
+          searchText: searchText,
+          clienteId: clienteId,
+          pedidoVentaEstado: pedidoVentaEstado);
+      return pedidoVentaLocalCountList + syncPedidosVentaCountList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -197,9 +218,7 @@ class PedidoVentaRepository {
       query.where(_db.pedidoVentaTable.clienteId.equals(clienteId));
     }
 
-    if (page > 0) {
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
-    }
+    query.limit(pageSize, offset: page * pageSize);
 
     query.orderBy([
       OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate),
@@ -217,6 +236,66 @@ class PedidoVentaRepository {
           divisa: divisaDTO.toDomain(),
           pedidoVentaEstado: pedidoVentaEstadoDTO.toDomain());
     }).get();
+  }
+
+  Future<int> getSyncPedidoVentaCountList(
+      {required String searchText,
+      required PedidoVentaEstado? pedidoVentaEstado,
+      String? clienteId}) async {
+    final countExp = _db.pedidoVentaTable.pedidoVentaId.count();
+
+    final query = _db.selectOnly(_db.pedidoVentaTable).join([
+      innerJoin(
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.pedidoVentaTable.clienteId)),
+      leftOuterJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.pedidoVentaTable.paisId)),
+      leftOuterJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.pedidoVentaTable.divisaId)),
+      innerJoin(
+          _db.pedidoVentaEstadoTable,
+          _db.pedidoVentaEstadoTable.id
+              .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
+    ]);
+
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id));
+
+    if (pedidoVentaEstado != null) {
+      query.where(_db.pedidoVentaTable.pedidoVentaEstadoId
+          .equals(pedidoVentaEstado.id));
+    }
+
+    if (searchText != '') {
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate =
+              (_db.pedidoVentaTable.nombreCliente.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
+        } else {
+          predicate = predicate &
+              ((_db.pedidoVentaTable.nombreCliente.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaTable.provincia.like('%${busqueda[i]}%')));
+        }
+      }
+      query.where(predicate!);
+    }
+
+    if (clienteId != null) {
+      query.where(_db.pedidoVentaTable.clienteId.equals(clienteId));
+    }
+    query.addColumns([countExp]);
+
+    final count = await query.map((row) => row.read(countExp)).getSingle();
+    return count ?? 0;
   }
 
   Future<List<PedidoVenta>> getPedidosVentaLocal({
@@ -285,6 +364,62 @@ class PedidoVentaRepository {
         baseImponible: getBaseImponible(pedidoVentaLineaList, divisaDTO.id),
       );
     }).get();
+  }
+
+  Future<int> getPedidosVentaLocalCountList({
+    required String searchText,
+    String? clienteId,
+    required PedidoVentaEstado? pedidoVentaEstado,
+  }) async {
+    final countExp = _db.pedidoVentaLocalTable.pedidoVentaAppId.count();
+
+    final query = _db.select(_db.pedidoVentaLocalTable).join([
+      innerJoin(
+          _db.clienteUsuarioTable,
+          _db.clienteUsuarioTable.clienteId
+              .equalsExp(_db.pedidoVentaLocalTable.clienteId)),
+      leftOuterJoin(_db.paisTable,
+          _db.paisTable.id.equalsExp(_db.pedidoVentaLocalTable.paisId)),
+      leftOuterJoin(_db.divisaTable,
+          _db.divisaTable.id.equalsExp(_db.pedidoVentaLocalTable.divisaId)),
+    ]);
+
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuario.id) &
+        _db.pedidoVentaLocalTable.tratada.equals('N'));
+
+    if (searchText != '') {
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate = (_db.pedidoVentaLocalTable.nombreCliente
+                  .like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.clienteId.like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.poblacion.like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.codigoPostal.like('%${busqueda[i]}%') |
+              _db.pedidoVentaLocalTable.provincia.like('%${busqueda[i]}%'));
+        } else {
+          predicate = predicate &
+              (_db.pedidoVentaLocalTable.nombreCliente
+                      .like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.clienteId.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.poblacion.like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.codigoPostal
+                      .like('%${busqueda[i]}%') |
+                  _db.pedidoVentaLocalTable.provincia.like('%${busqueda[i]}%'));
+        }
+      }
+      query.where(predicate!);
+    }
+
+    if (clienteId != null) {
+      query.where(_db.pedidoVentaLocalTable.clienteId.equals(clienteId));
+    }
+
+    query.addColumns([countExp]);
+
+    final count = await query.map((row) => row.read(countExp)).getSingle();
+    return count ?? 0;
   }
 
   Future<PedidoVenta> getPedidoVentaById(

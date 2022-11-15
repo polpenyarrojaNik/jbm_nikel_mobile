@@ -26,11 +26,11 @@ import '../../../articulos/presentation/index/articulo_search_controller.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
-import '../../../cliente/presentation/index/cliente_search_state.dart';
+import '../../../cliente/presentation/index/cliente_search_controller.dart';
 import '../../domain/pedido_venta_linea.dart';
 import '../../domain/seleccionar_cantidad_param.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
-import '../index/pedido_search_state.dart';
+import '../index/pedido_search_controller.dart';
 import 'ask_pop_alert_dialog.dart';
 import 'icon_stepper.dart';
 
@@ -69,7 +69,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
           saved: (pedidoVentaAppId) {
             ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
             ref.invalidate(pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
-            ref.invalidate(pedidosSearchResultsProvider);
+            ref.invalidate(pedidoVentaIndexScreenControllerProvider);
             context.router.pop();
           },
           deleted: () => context.router.popUntilRouteWithName('/pedido'),

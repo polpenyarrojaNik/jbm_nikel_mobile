@@ -7,64 +7,23 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_sea
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_tile.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_state.dart';
+import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../infrastructure/visita_repository.dart';
 
-class VisitaListaPage extends ConsumerStatefulWidget {
-  const VisitaListaPage({super.key});
+class VisitaListaPage extends ConsumerWidget {
+  VisitaListaPage({super.key});
 
-  @override
-  ConsumerState<VisitaListaPage> createState() => _VisitaListaPageState();
-}
-
-class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
-  final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
 
-  int page = 1;
-  String searchText = '';
-
-  bool canLoadNextPage = false;
   @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_dismissOnScreenKeyboard);
-    _scrollController.addListener(() {
-      final metrics = _scrollController.position;
-      final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
-
-      if (canLoadNextPage && metrics.pixels >= limit) {
-        canLoadNextPage = false;
-        page++;
-        ref.read(visitasSearchResultsProvider.notifier).getNextPage();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.removeListener(_dismissOnScreenKeyboard);
-    super.dispose();
-  }
-
-  // When the search text field gets the focus, the keyboard appears on mobile.
-  // This method is used to dismiss the keyboard when the user scrolls.
-  void _dismissOnScreenKeyboard() {
-    if (FocusScope.of(context).hasFocus) {
-      FocusScope.of(context).unfocus();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final state = ref.watch(visitasSearchResultsProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stateVisitaListCount = ref.watch(visitaIndexScreenControllerProvider);
     final stateLasySyncDate = ref.watch(visitaLastSyncDateProvider);
 
     return Scaffold(
@@ -93,23 +52,22 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: state.when(
-                    data: (visitaList) => visitaList.length,
-                    loading: () => 1,
-                    error: (error, _) => 1,
-                  ),
-                  itemBuilder: (context, i) => state.when(
-                    data: (visitaList) => state.isRefreshing
-                        ? const VisitaListShimmer()
-                        : VisitaListaTile(
-                            visita: visitaList[i], navigatedFromCliente: false),
-                    loading: () => const VisitaListShimmer(),
-                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                child: stateVisitaListCount.maybeWhen(
+                  orElse: () => const ProgressIndicatorWidget(),
+                  data: (count) => ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: count,
+                    itemBuilder: (context, i) => ref
+                        .watch(VisitaIndexScreenPaginatedControllerProvider(
+                            page: (i ~/ VisitaRepository.pageSize)))
+                        .maybeWhen(
+                          orElse: () => const VisitaListShimmer(),
+                          data: (visitaList) => VisitaListaTile(
+                              visita: visitaList[i % VisitaRepository.pageSize],
+                              navigatedFromCliente: false),
+                        ),
                   ),
                 ),
               ),
@@ -119,7 +77,7 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => navigateToCreateVisitas(),
+        onPressed: () => navigateToCreateVisitas(context),
       ),
     );
   }
@@ -128,10 +86,10 @@ class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
     await ref.read(syncServiceProvider).syncAllVisitasRelacionados();
     ref.refresh(visitaLastSyncDateProvider);
 
-    ref.invalidate(visitasSearchResultsProvider);
+    ref.invalidate(visitaIndexScreenControllerProvider);
   }
 
-  void navigateToCreateVisitas() {
+  void navigateToCreateVisitas(BuildContext context) {
     context.router.push(VisitaEditRoute());
   }
 }

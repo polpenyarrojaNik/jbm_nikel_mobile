@@ -7,7 +7,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_valu
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_state.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_venta_shimmer.dart';
 
@@ -29,51 +29,18 @@ class PedidoVentaListPage extends ConsumerStatefulWidget {
 }
 
 class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
-  final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
   PedidoVentaEstado? filteredStatus;
-  bool canLoadNextPage = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_dismissOnScreenKeyboard);
-    _scrollController.addListener(() {
-      final metrics = _scrollController.position;
-      final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
-
-      if (canLoadNextPage && metrics.pixels >= limit) {
-        canLoadNextPage = false;
-        ref.read(pedidosSearchResultsProvider.notifier).getNextPage();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.removeListener(_dismissOnScreenKeyboard);
-    super.dispose();
-  }
-
-  // When the search text field gets the focus, the keyboard appears on mobile.
-  // This method is used to dismiss the keyboard when the user scrolls.
-  void _dismissOnScreenKeyboard() {
-    if (FocusScope.of(context).hasFocus) {
-      FocusScope.of(context).unfocus();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     ref.listen<AsyncValue>(
-      pedidosSearchResultsProvider,
-      (_, state) {
-        canLoadNextPage = true;
-        state.showAlertDialogOnError(context);
-      },
+      pedidoVentaIndexScreenControllerProvider,
+      (_, state) => state.showAlertDialogOnError(context),
     );
 
-    final state = ref.watch(pedidosSearchResultsProvider);
+    final statePedidoVentaCount =
+        ref.watch(pedidoVentaIndexScreenControllerProvider);
 
     final stateLasySyncDate = ref.watch(pedidoVentaLastSyncDateProvider);
 
@@ -117,25 +84,25 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
                   bottom: 16,
                   right: 16,
                 ),
-                child: ListView.separated(
-                  controller: _scrollController,
-                  separatorBuilder: (context, i) => const Divider(),
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: state.when(
-                    data: (pedidoVentaList) => pedidoVentaList.length,
-                    loading: () => 1,
-                    error: (error, _) => 1,
-                  ),
-                  itemBuilder: (context, i) => state.when(
-                    data: (pedidoVentaList) => state.isRefreshing
-                        ? const PedidoVentaShimmer()
-                        : PedidoVentaListaTile(
-                            pedidoVenta: pedidoVentaList[i],
+                child: statePedidoVentaCount.maybeWhen(
+                  orElse: () => const ProgressIndicatorWidget(),
+                  data: (count) => ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: count,
+                    itemBuilder: (context, i) => ref
+                        .watch(
+                            PedidoVentaIndexScreenPaginatedControllerProvider(
+                                page: (i ~/ PedidoVentaRepository.pageSize)))
+                        .maybeWhen(
+                          orElse: () => const PedidoVentaShimmer(),
+                          data: (pedidoVentaList) => PedidoVentaListaTile(
+                            pedidoVenta: pedidoVentaList[
+                                i % PedidoVentaRepository.pageSize],
                             navigatedFromCliente: false,
                           ),
-                    loading: () => const PedidoVentaShimmer(),
-                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                        ),
                   ),
                 ),
               ),
@@ -154,7 +121,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     await ref.read(syncServiceProvider).syncAllPedidosRelacionados();
     ref.refresh(pedidoVentaLastSyncDateProvider);
 
-    ref.invalidate(pedidosSearchResultsProvider);
+    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
   }
 
   void navigateToCreatePedido(BuildContext context) {

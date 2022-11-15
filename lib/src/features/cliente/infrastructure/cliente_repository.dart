@@ -152,10 +152,9 @@ final clienteUltimosPreciosSearchProvider = FutureProvider.autoDispose
   // cacheTime: const Duration(seconds: 60),
 );
 
-const pageSize = 100;
-List<Cliente> clientes = [];
-
 class ClienteRepository {
+  static const pageSize = 100;
+
   final AppDatabase _db;
   final Dio _dio;
   final String usuarioId;
@@ -167,9 +166,6 @@ class ClienteRepository {
       required String searchText,
       required bool searchPotenciales}) async {
     try {
-      if (page == 1) {
-        clientes.clear();
-      }
       final query = _db.select(_db.clienteTable).join([
         innerJoin(_db.clienteUsuarioTable,
             _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
@@ -224,7 +220,7 @@ class ClienteRepository {
         query.where(_db.clienteTable.clientePotencial.equals('S'));
       }
 
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+      query.limit(pageSize, offset: page * pageSize);
       query.orderBy([
         OrderingTerm.asc(_db.clienteTable.nombreCliente),
         OrderingTerm.asc(_db.clienteTable.id)
@@ -250,8 +246,73 @@ class ClienteRepository {
           clienteTipoPotencial: clienteTipoPotencialDTO?.toDomain(),
         );
       }).get();
-      clientes.addAll(clienteList);
-      return clientes;
+      return clienteList;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getClienteCountList(
+      {required String searchText, required bool searchPotenciales}) async {
+    try {
+      final countExp = _db.clienteTable.id.count();
+
+      final query = _db.selectOnly(_db.clienteTable).join([
+        innerJoin(_db.clienteUsuarioTable,
+            _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
+        leftOuterJoin(_db.paisTable,
+            _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
+        leftOuterJoin(_db.divisaTable,
+            _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
+        leftOuterJoin(
+            _db.metodoDeCobroTable,
+            _db.metodoDeCobroTable.id
+                .equalsExp(_db.clienteTable.metodoDeCobroId)),
+        leftOuterJoin(
+            _db.plazoDeCobroTable,
+            _db.plazoDeCobroTable.id
+                .equalsExp(_db.clienteTable.plazoDeCobroId)),
+        leftOuterJoin(
+            _db.clienteTipoPotencialTable,
+            _db.clienteTipoPotencialTable.id
+                .equalsExp(_db.clienteTable.clienteTipoPotencialId)),
+        leftOuterJoin(
+            _db.clienteEstadoPotencialTable,
+            _db.clienteEstadoPotencialTable.id
+                .equalsExp(_db.clienteTable.clienteEstadoPotencialId))
+      ]);
+      query.addColumns([countExp]);
+      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+
+      if (searchText != '') {
+        final busqueda = searchText.split(' ');
+        Expression<bool>? predicate;
+        for (var i = 0; i < busqueda.length; i++) {
+          if (predicate == null) {
+            predicate = ((_db.clienteTable.id.like('%${busqueda[i]}%') |
+                (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                    _db.clienteTable.poblacionFiscal.like('%${busqueda[i]}%') |
+                    _db.clienteTable.provinciaFiscal
+                        .like('%${busqueda[i]}%'))));
+          } else {
+            predicate = predicate &
+                ((_db.clienteTable.id.like('%${busqueda[i]}%') |
+                    (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                        _db.clienteTable.poblacionFiscal
+                            .like('%${busqueda[i]}%') |
+                        _db.clienteTable.provinciaFiscal
+                            .like('%${busqueda[i]}%'))));
+          }
+        }
+        query.where(predicate!);
+      }
+
+      if (searchPotenciales) {
+        query.where(_db.clienteTable.clientePotencial.equals('S'));
+      }
+
+      final count = await query.map((row) => row.read(countExp)).getSingle();
+      return count ?? 0;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

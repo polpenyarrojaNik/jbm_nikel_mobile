@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_valu
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/chip_container.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/pedido_venta_linea_tile.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -17,7 +18,6 @@ import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
-import '../index/pedido_search_state.dart';
 
 class PedidoVentaDetallePage extends ConsumerWidget {
   const PedidoVentaDetallePage(
@@ -48,7 +48,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                       onPressed: () {
                         ref.read(deletePedidoVentaProvider(
                             pedidoVentaIdIsLocalParam.id));
-                        ref.invalidate(pedidosSearchResultsProvider);
+                        ref.invalidate(
+                            pedidoVentaIndexScreenControllerProvider);
                         context.router.pop();
                       },
                     ),

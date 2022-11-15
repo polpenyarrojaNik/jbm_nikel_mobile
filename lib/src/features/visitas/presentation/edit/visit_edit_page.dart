@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/entity_id_is_local_param.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/edit/visita_edit_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_search_state.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -20,6 +19,7 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../cliente/domain/cliente.dart';
 import '../../../usuario/application/usuario_notifier.dart';
 import '../../infrastructure/visita_repository.dart';
+import '../index/visita_search_controller.dart';
 
 class VisitaEditPage extends ConsumerStatefulWidget {
   VisitaEditPage({super.key, String? id, bool? isNew})
@@ -75,7 +75,7 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
       state.maybeWhen(
         saved: (visita) {
           ref.invalidate(visitaProvider(visitaIdLocalParam!));
-          ref.invalidate(visitasSearchResultsProvider);
+          ref.invalidate(visitaIndexScreenControllerProvider);
           context.showSuccessBar(
               content: Text(S.of(context).visitas_edit_visitaEditar_saved));
 

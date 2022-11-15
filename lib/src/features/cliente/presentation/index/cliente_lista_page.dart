@@ -6,13 +6,12 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_state.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_search_controller.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
@@ -30,53 +29,19 @@ class ClienteListaPage extends ConsumerStatefulWidget {
 }
 
 class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
-  final _scrollController = ScrollController();
   final _debouncer = Debouncer(milliseconds: 500);
 
   bool searchClientesPotenciales = false;
-  bool canLoadNextPage = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_dismissOnScreenKeyboard);
-    _scrollController.addListener(() {
-      final metrics = _scrollController.position;
-      final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
-
-      if (canLoadNextPage && metrics.pixels >= limit) {
-        canLoadNextPage = false;
-
-        ref.read(clientesSearchResultsProvider.notifier).getNextPage();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.removeListener(_dismissOnScreenKeyboard);
-    super.dispose();
-  }
-
-  // When the search text field gets the focus, the keyboard appears on mobile.
-  // This method is used to dismiss the keyboard when the user scrolls.
-  void _dismissOnScreenKeyboard() {
-    if (FocusScope.of(context).hasFocus) {
-      FocusScope.of(context).unfocus();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(clientesSearchResultsProvider);
+    final stateClienteListCount =
+        ref.watch(clienteIndexScreenControllerProvider);
     final stateLasySyncDate = ref.watch(clienteLastSyncDateProvider);
-    ref.listen<AsyncValue>(clientesSearchResultsProvider, (_, state) {
-      state.whenData(
-        (_) => canLoadNextPage = true,
-      );
-
-      state.showAlertDialogOnError(context);
-    });
+    ref.listen<AsyncValue>(
+      clienteIndexScreenControllerProvider,
+      (_, state) => state.showAlertDialogOnError(context),
+    );
     return Scaffold(
       drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
@@ -119,32 +84,35 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: state.when(
-                    data: (clienteList) => clienteList.length,
-                    loading: () => 1,
-                    error: (error, _) => 1,
-                  ),
-                  itemBuilder: (context, i) => state.when(
-                    data: (clienteList) => state.isRefreshing
-                        ? const ClienteListShimmer()
-                        : GestureDetector(
+                child: stateClienteListCount.maybeWhen(
+                  orElse: () => const ProgressIndicatorWidget(),
+                  data: (count) => ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    shrinkWrap: true,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: count,
+                    itemBuilder: (context, i) => ref
+                        .watch(ClienteIndexScreenPaginatedControllerProvider(
+                            page: (i ~/ ClienteRepository.pageSize)))
+                        .maybeWhen(
+                          orElse: () => const ClienteListShimmer(),
+                          data: (clienteList) => GestureDetector(
                             onTap: () => (!widget.isSearchClienteForFrom)
                                 ? navigateToClienteDetalle(
                                     context: context,
-                                    clienteId: clienteList[i].id)
+                                    clienteId: clienteList[
+                                            i % ClienteRepository.pageSize]
+                                        .id)
                                 : selectClienteForFromPage(
-                                    context: context, cliente: clienteList[i]),
+                                    context: context,
+                                    cliente: clienteList[
+                                        i % ClienteRepository.pageSize]),
                             child: ClienteListaTile(
-                              cliente: clienteList[i],
+                              cliente:
+                                  clienteList[i % ClienteRepository.pageSize],
                             ),
                           ),
-                    loading: () => const ClienteListShimmer(),
-                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                        ),
                   ),
                 ),
               ),
@@ -174,12 +142,12 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     await ref.read(syncServiceProvider).syncAllClientesRelacionados();
     ref.refresh(clienteLastSyncDateProvider);
 
-    ref.refresh(clientesSearchQueryStateProvider);
+    ref.refresh(clienteIndexScreenControllerProvider);
   }
 
   void filterClientesPotenciales(BuildContext context) {
     searchClientesPotenciales = !searchClientesPotenciales;
-    ref.read(clientesPaginationQueryStateProvider.notifier).state = 1;
+
     ref.read(clientesPotencialesQueryStateProvider.notifier).state =
         searchClientesPotenciales;
   }

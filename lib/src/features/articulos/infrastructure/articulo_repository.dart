@@ -46,16 +46,6 @@ final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   },
 );
 
-final articulosSearchProvider =
-    FutureProvider.autoDispose.family<List<Articulo>, DefaultListParams>(
-  (ref, defaultListParams) async {
-    print('Searching: ${defaultListParams.searchText}');
-    final articuloRepository = ref.watch(articuloRepositoryProvider);
-    return articuloRepository.getArticuloLista(
-        page: defaultListParams.page, searchText: defaultListParams.searchText);
-  },
-);
-
 final articuloLastSyncDateProvider =
     FutureProvider.autoDispose<DateTime>((ref) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
@@ -214,7 +204,7 @@ class ArticuloRepository {
           LIMIT :limit OFFSET :offset
 ''', variables: [
         const Variable(pageSize),
-        Variable((page == 1) ? 0 : page * pageSize),
+        Variable(page * pageSize),
       ], readsFrom: {
         _db.articuloTable,
       }).get();

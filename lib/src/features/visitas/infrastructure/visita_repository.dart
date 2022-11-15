@@ -10,7 +10,6 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/domain/usuario.dart';
@@ -23,17 +22,6 @@ final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
     final dio = ref.watch(dioProvider);
     final user = ref.watch(usuarioNotifierProvider);
     return VisitaRepository(db, dio, user);
-  },
-);
-
-final visitasSearchProvider =
-    FutureProvider.autoDispose.family<List<Visita>, DefaultListParams>(
-  (ref, defaultListParams) async {
-    print('Searching: ${defaultListParams.searchText}');
-
-    final visitaRepository = ref.watch(visitaRepositoryProvider);
-    return visitaRepository.getVisitaList(
-        page: defaultListParams.page, searchText: defaultListParams.searchText);
   },
 );
 
@@ -50,10 +38,8 @@ final visitaProvider = FutureProvider.autoDispose
       visitaIdIsLocalParam: visitaIdIsLocalParam);
 });
 
-const pageSize = 100;
-List<Visita> visitasList = [];
-
 class VisitaRepository {
+  static const pageSize = 100;
   final AppDatabase _db;
   final Dio _dio;
   final Usuario? _usuario;
@@ -65,19 +51,37 @@ class VisitaRepository {
     required String searchText,
   }) async {
     try {
-      if (page == 1) {
-        visitasList.clear();
+      final List<Visita> visitas = [];
+      if (page == 0) {
         final visitasLocal = await getVisitasLocal(
           searchText: searchText,
           usuarioId: _usuario!.id,
         );
-        visitasList.addAll(visitasLocal);
+        visitas.addAll(visitasLocal);
       }
-      final visitas = await getVisitas(
+      final visitasSync = await getVisitas(
           usuarioId: _usuario!.id, page: page, searchText: searchText);
 
-      visitasList.addAll(visitas);
-      return visitasList;
+      visitas.addAll(visitasSync);
+      return visitas;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getVisitasCountList({
+    required String searchText,
+  }) async {
+    try {
+      final visitasLocalCount = await getVisitasLocalCount(
+        searchText: searchText,
+        usuarioId: _usuario!.id,
+      );
+
+      final visitasSyncCount = await getVisitasCount(
+          usuarioId: _usuario!.id, searchText: searchText);
+
+      return visitasLocalCount + visitasSyncCount;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -283,6 +287,53 @@ class VisitaRepository {
     }).get();
   }
 
+  Future<int> getVisitasLocalCount(
+      {required String searchText,
+      required String usuarioId,
+      String? clienteId}) async {
+    final countExp = _db.visitaTable.id.count();
+
+    final query = _db.selectOnly(_db.visitaLocalTable).join([
+      innerJoin(
+        _db.clienteUsuarioTable,
+        _db.clienteUsuarioTable.clienteId
+            .equalsExp(_db.visitaLocalTable.clienteId),
+      ),
+      innerJoin(
+        _db.clienteTable,
+        _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
+      ),
+    ]);
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+        _db.visitaLocalTable.tratada.equals('N'));
+
+    if (searchText != '') {
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate = (_db.visitaLocalTable.resumen.like('%$searchText%') |
+              _db.visitaLocalTable.clienteId.like('%$searchText%') |
+              _db.visitaLocalTable.contacto.like('%$searchText%'));
+        } else {
+          predicate = predicate &
+              (_db.visitaLocalTable.resumen.like('%$searchText%') |
+                  _db.visitaLocalTable.clienteId.like('%$searchText%') |
+                  _db.visitaLocalTable.contacto.like('%$searchText%'));
+        }
+      }
+      query.where(predicate!);
+    }
+
+    if (clienteId != null) {
+      query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
+    }
+    query.addColumns([countExp]);
+
+    final count = await query.map((row) => row.read(countExp)).getSingle();
+    return count ?? 0;
+  }
+
   Future<List<Visita>> getVisitas(
       {required String usuarioId,
       required int page,
@@ -323,9 +374,7 @@ class VisitaRepository {
       query.where(_db.visitaTable.clienteId.equals(clienteId));
     }
 
-    if (page > 0) {
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
-    }
+    query.limit(pageSize, offset: page * pageSize);
 
     query.orderBy([
       OrderingTerm.desc(_db.visitaTable.fecha),
@@ -337,6 +386,53 @@ class VisitaRepository {
       final visitaDTO = row.readTable(_db.visitaTable);
       return visitaDTO.toDomain(nombreCliente: clienteDTO.nombreCliente);
     }).get();
+  }
+
+  Future<int> getVisitasCount(
+      {required String usuarioId,
+      required String searchText,
+      String? clienteId}) async {
+    final countExp = _db.visitaTable.id.count();
+
+    final query = _db.selectOnly(_db.visitaTable).join([
+      innerJoin(
+        _db.clienteTable,
+        _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
+      ),
+      innerJoin(
+        _db.clienteUsuarioTable,
+        _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
+      )
+    ]);
+
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+
+    query.addColumns([countExp]);
+
+    if (searchText != '') {
+      final busqueda = searchText.split(' ');
+      Expression<bool>? predicate;
+      for (var i = 0; i < busqueda.length; i++) {
+        if (predicate == null) {
+          predicate = (_db.visitaTable.resumen.like('%$searchText%') |
+              _db.visitaTable.clienteId.like('%$searchText%') |
+              _db.visitaTable.contacto.like('%$searchText%'));
+        } else {
+          predicate = predicate &
+              (_db.visitaTable.resumen.like('%$searchText%') |
+                  _db.visitaTable.clienteId.like('%$searchText%') |
+                  _db.visitaTable.contacto.like('%$searchText%'));
+        }
+      }
+      query.where(predicate!);
+    }
+
+    if (clienteId != null) {
+      query.where(_db.visitaTable.clienteId.equals(clienteId));
+    }
+
+    final count = await query.map((row) => row.read(countExp)).getSingle();
+    return count ?? 0;
   }
 
   Future<Visita> getVisita({required String visitaId}) async {

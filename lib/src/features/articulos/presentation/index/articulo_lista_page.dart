@@ -70,14 +70,20 @@ class ArticuloListaPage extends ConsumerWidget {
                     itemCount: count,
                     itemBuilder: (context, i) => ref
                         .watch(ArticuloIndexScreenPaginatedControllerProvider(
-                            page: (i ~/ ArticuloRepository.pageSize) + 1))
+                            page: i ~/ ArticuloRepository.pageSize))
                         .maybeWhen(
                           data: (articuloList) => GestureDetector(
                             onTap: () => (!isSearchArticuloForForm)
                                 ? navigateToArticuloDetalPage(
-                                    context, articuloList[i].id)
+                                    context,
+                                    articuloList[
+                                            i % ArticuloRepository.pageSize]
+                                        .id)
                                 : selectArticuloForFromPage(
-                                    context, ref, articuloList[i]),
+                                    context,
+                                    ref,
+                                    articuloList[
+                                        i % ArticuloRepository.pageSize]),
                             child: ArticuloListaTile(
                               articulo:
                                   articuloList[i % ArticuloRepository.pageSize],
