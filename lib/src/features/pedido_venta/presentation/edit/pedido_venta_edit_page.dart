@@ -22,7 +22,7 @@ import '../../../../core/presentation/common_widgets/row_field_text_detail.dart'
 import '../../../../core/presentation/common_widgets/slider_background.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../../articulos/domain/articulo.dart';
-import '../../../articulos/presentation/index/articulo_search_state_provider.dart';
+import '../../../articulos/presentation/index/articulo_search_controller.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';

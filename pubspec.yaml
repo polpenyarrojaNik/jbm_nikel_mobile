@@ -13,6 +13,7 @@ dependencies:
     sdk: flutter
   dio: ^4.0.6
   flutter_riverpod: ^2.1.1
+  riverpod_annotation: ^1.0.6
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
   jwt_decoder: ^2.0.0
@@ -60,6 +61,7 @@ dev_dependencies:
   built_value_generator: ^8.0.0
   dependency_validator: ^3.2.0
   auto_route_generator: ^5.0.0
+  riverpod_generator: ^1.0.6
 
 flutter_icons:
   android: true

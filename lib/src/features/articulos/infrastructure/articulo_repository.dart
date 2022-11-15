@@ -38,8 +38,6 @@ import 'articulo_precio_tarifa_dto.dart';
 import 'articulo_ventas_cliente_dto.dart';
 import 'articulo_ventas_mes_dto.dart';
 
-List<Articulo> articulos = [];
-
 final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   (ref) {
     final db = ref.watch(appDatabaseProvider);
@@ -191,9 +189,9 @@ final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
   return syncRepository.syncArticulos();
 });
 
-const pageSize = 100;
-
 class ArticuloRepository {
+  static const pageSize = 100;
+
   final AppDatabase _db;
   final Dio _dio;
 
@@ -202,9 +200,7 @@ class ArticuloRepository {
   Future<List<Articulo>> getArticuloLista(
       {required int page, required String searchText}) async {
     try {
-      if (page == 1) {
-        articulos.clear();
-      }
+      final List<Articulo> articulos = [];
       final query = await _db.customSelect('''
           SELECT art.*
           FROM ARTICULOS art
@@ -236,9 +232,30 @@ class ArticuloRepository {
             subfamilia: subfamiliaDTO?.toDomain());
       }).toList();
 
-      articulos.addAll(await Future.wait(articlesList));
+      for (var i = 0; i < articlesList.length; i++) {
+        articulos.add(await articlesList[i]);
+      }
 
       return articulos;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getArticuloCountList({required String searchText}) async {
+    try {
+      final query = await _db.customSelect('''
+          SELECT COUNT(*) as COUNT
+          FROM ARTICULOS art
+          WHERE ${descripcionSegunLocale(searchText)}
+          OR art.ARTICULO_ID LIKE '%$searchText%'
+''', readsFrom: {
+        _db.articuloTable,
+      }).getSingle();
+
+      final count = query.data['COUNT'] as int?;
+
+      return count ?? 0;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

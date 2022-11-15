@@ -13,72 +13,33 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo.dart';
 import 'articulo_lista_tile.dart';
-import 'articulo_search_state_provider.dart';
+import 'articulo_search_controller.dart';
 
-class ArticuloListaPage extends ConsumerStatefulWidget {
-  const ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
+class ArticuloListaPage extends ConsumerWidget {
+  ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
 
   final bool isSearchArticuloForForm;
 
-  @override
-  ConsumerState<ArticuloListaPage> createState() => _ArticuloListaPageState();
-}
-
-class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
-  final _scrollController = ScrollController();
-  bool canLoadNextPage = false;
   final _debouncer = Debouncer(milliseconds: 500);
 
   @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(_dismissOnScreenKeyboard);
-    _scrollController.addListener(() {
-      final metrics = _scrollController.position;
-      final limit = metrics.maxScrollExtent - metrics.viewportDimension / 3;
-
-      if (canLoadNextPage && metrics.pixels >= limit) {
-        canLoadNextPage = false;
-        ref.read(articulosSearchResultsProvider.notifier).getNextPage();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _scrollController.removeListener(_dismissOnScreenKeyboard);
-    super.dispose();
-  }
-
-  // When the search text field gets the focus, the keyboard appears on mobile.
-  // This method is used to dismiss the keyboard when the user scrolls.
-  void _dismissOnScreenKeyboard() {
-    if (FocusScope.of(context).hasFocus) {
-      FocusScope.of(context).unfocus();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final stateLasySyncDate = ref.watch(articuloLastSyncDateProvider);
-    final state = ref.watch(articulosSearchResultsProvider);
     ref.listen<AsyncValue>(
-      articulosSearchResultsProvider,
-      (_, state) {
-        state.whenData((value) {
-          canLoadNextPage = true;
-        });
-        state.showAlertDialogOnError(context);
-      },
+      articuloIndexScreenControllerProvider,
+      (_, state) => state.showAlertDialogOnError(context),
     );
+
+    final stateArticuloListCount =
+        ref.watch(articuloIndexScreenControllerProvider);
+
     return Scaffold(
-      drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
+      drawer: (!isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
-        isSearchingFirst: widget.isSearchArticuloForForm,
+        isSearchingFirst: isSearchArticuloForForm,
         title: S.of(context).articulo_index_titulo,
         searchTitle: S.of(context).articulo_index_buscarArticulos,
         onChanged: (searchText) {
@@ -101,32 +62,31 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: ListView.separated(
-                  separatorBuilder: (context, i) => const Divider(),
-                  shrinkWrap: true,
-                  controller: _scrollController,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  itemCount: state.when(
-                    data: (articuloList) => articuloList.length,
-                    loading: () => 1,
-                    error: (error, _) => 1,
-                  ),
-                  itemBuilder: (context, i) => state.when(
-                    data: (articuloList) => state.isRefreshing
-                        ? const ArticuloListShimmer()
-                        : GestureDetector(
-                            onTap: () => (!widget.isSearchArticuloForForm)
+                child: stateArticuloListCount.maybeWhen(
+                  data: (count) => ListView.separated(
+                    separatorBuilder: (context, i) => const Divider(),
+                    shrinkWrap: true,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: count,
+                    itemBuilder: (context, i) => ref
+                        .watch(ArticuloIndexScreenPaginatedControllerProvider(
+                            page: (i ~/ ArticuloRepository.pageSize) + 1))
+                        .maybeWhen(
+                          data: (articuloList) => GestureDetector(
+                            onTap: () => (!isSearchArticuloForForm)
                                 ? navigateToArticuloDetalPage(
                                     context, articuloList[i].id)
                                 : selectArticuloForFromPage(
-                                    context, articuloList[i]),
+                                    context, ref, articuloList[i]),
                             child: ArticuloListaTile(
-                              articulo: articuloList[i],
+                              articulo:
+                                  articuloList[i % ArticuloRepository.pageSize],
                             ),
                           ),
-                    loading: () => const ArticuloListShimmer(),
-                    error: (error, _) => ErrorMessageWidget(error.toString()),
+                          orElse: () => const ArticuloListShimmer(),
+                        ),
                   ),
+                  orElse: () => const ProgressIndicatorWidget(),
                 ),
               ),
             ),
@@ -140,7 +100,8 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     context.router.push(ArticuloDetalleRoute(articuloId: id));
   }
 
-  void selectArticuloForFromPage(BuildContext context, Articulo articulo) {
+  void selectArticuloForFromPage(
+      BuildContext context, WidgetRef ref, Articulo articulo) {
     ref.read(articuloForFromStateProvider.notifier).state = articulo;
     context.router.pop();
   }
@@ -150,6 +111,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
 
     ref.refresh(articuloLastSyncDateProvider);
 
-    ref.refresh(articulosSearchResultsProvider);
+    ref.refresh(articuloIndexScreenControllerProvider);
   }
 }
