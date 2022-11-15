@@ -8,6 +8,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/last_sync_
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
+import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -36,6 +37,8 @@ class ArticuloListaPage extends ConsumerWidget {
     final stateArticuloListCount =
         ref.watch(articuloIndexScreenControllerProvider);
 
+    final stateSync = ref.watch(syncNotifierProvider);
+
     return Scaffold(
       drawer: (!isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
@@ -54,6 +57,13 @@ class ArticuloListaPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            stateSync.maybeWhen(
+                orElse: () => Container(),
+                synchronized: () {
+                  print('Syncrhonized');
+                  return Container();
+                },
+                synchronizing: () => const ProgressIndicatorWidget()),
             stateLasySyncDate.when(
                 data: (fechaUltimaSync) =>
                     UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),

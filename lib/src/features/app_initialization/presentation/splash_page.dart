@@ -1,25 +1,16 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dio/dio.dart';
-import 'package:drift/isolate.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
-import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import '../../../../generated/l10n.dart';
-import '../../../core/domain/isolate_args.dart';
 import '../../../core/exceptions/app_exception.dart';
-import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
-import '../domain/sync_progress.dart';
 
 class SplashPage extends ConsumerWidget {
   const SplashPage({super.key});
@@ -31,10 +22,8 @@ class SplashPage extends ConsumerWidget {
       (_, state) {
         state.maybeWhen(
           orElse: () {},
-          data: () async {
-            final user = ref.read(usuarioNotifierProvider);
-            compute(syncInBackground, IsolateArgs(user!, isolateConnectPort!))
-                .then((syncProgress) => updateSyncDates(syncProgress));
+          data: () {
+            ref.read(syncNotifierProvider.notifier).syncAllInCompute();
             context.router.replace(
               ArticuloListaRoute(isSearchArticuloForForm: false),
             );
@@ -80,51 +69,6 @@ class SplashPage extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  void updateSyncDates(SyncProgress syncProgress) async {
-    final SharedPreferences sharedPreferences =
-        await SharedPreferences.getInstance();
-
-    final finishSyncDate = DateTime.now().toUtc();
-
-    if (syncProgress.index > 0) {
-      await sharedPreferences.setString(
-          articuloFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-
-      if (syncProgress.index > 1) {
-        await sharedPreferences.setString(
-            clienteFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-      }
-
-      if (syncProgress.index > 2) {
-        await sharedPreferences.setString(
-            pedidoVentaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-      }
-      if (syncProgress.index > 3) {
-        await sharedPreferences.setString(
-            visitaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-      }
-    }
-  }
-
-  Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
-    try {
-      final isolateSendPort = isolateArgs.isolateSendPort;
-      final isolate = DriftIsolate.fromConnectPort(isolateSendPort);
-      isolateSendPort.send(isolate.connectPort);
-      final connection = await isolate.connect();
-      final database = AppDatabase.connect(connection, false);
-      final SyncService syncService =
-          SyncService(database, Dio(), isolateArgs.usuario);
-
-      print('----------ISOLATE FINISHED-----------');
-
-      return syncService.syncAllTable();
-    } catch (e) {
-      print(e);
-      rethrow;
-    }
   }
 }
 
