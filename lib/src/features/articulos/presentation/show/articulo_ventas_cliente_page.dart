@@ -70,6 +70,18 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
   List<DataColumn> columns = [];
   List<DataRow> rows = [];
   int selectedRow = -1;
+  int _currentSortColumn = 0;
+  bool _sortAsc = true;
+  bool isCantAnyoAsc = true;
+  bool isCantAnyo1Asc = true;
+  bool isCantAnyo2Asc = true;
+  bool isCantAnyo3Asc = true;
+  bool isCantAnyo4Asc = true;
+  bool isImporteAnyoAsc = true;
+  bool isImporteAnyo1Asc = true;
+  bool isImporteAnyo2Asc = true;
+  bool isImporteAnyo3Asc = true;
+  bool isImporteAnyo4Asc = true;
 
   @override
   void initState() {
@@ -86,8 +98,10 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: DataTable(
+            sortColumnIndex: _currentSortColumn,
+            sortAscending: _sortAsc,
             horizontalMargin: 16,
-            columns: _createColumns(),
+            columns: _createColumns(widget.articuloVentasClienteList),
             rows: _createDataRows(
               articuloVentasClienteList: widget.articuloVentasClienteList,
             ),
@@ -97,7 +111,8 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
     );
   }
 
-  List<DataColumn> _createColumns() {
+  List<DataColumn> _createColumns(
+      List<ArticuloVentasCliente> articuloVentasClienteList) {
     return [
       DataColumn(
         label: Expanded(
@@ -115,6 +130,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isCantAnyoAsc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.cantidadAnyo.compareTo(a.cantidadAnyo));
+            } else {
+              _sortAsc = false;
+              isCantAnyoAsc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.cantidadAnyo.compareTo(b.cantidadAnyo));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -126,6 +157,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
           ),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isCantAnyo1Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.cantidadAnyo_1.compareTo(a.cantidadAnyo_1));
+            } else {
+              _sortAsc = false;
+              isCantAnyo1Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.cantidadAnyo_1.compareTo(b.cantidadAnyo_1));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -135,6 +182,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isCantAnyo2Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.cantidadAnyo_2.compareTo(a.cantidadAnyo_2));
+            } else {
+              _sortAsc = false;
+              isCantAnyo2Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.cantidadAnyo_2.compareTo(b.cantidadAnyo_2));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -144,6 +207,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isCantAnyo3Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.cantidadAnyo_3.compareTo(a.cantidadAnyo_3));
+            } else {
+              _sortAsc = false;
+              isCantAnyo3Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.cantidadAnyo_3.compareTo(b.cantidadAnyo_3));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -153,6 +232,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isCantAnyo4Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.cantidadAnyo_4.compareTo(a.cantidadAnyo_4));
+            } else {
+              _sortAsc = false;
+              isCantAnyo4Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.cantidadAnyo_4.compareTo(b.cantidadAnyo_4));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -162,6 +257,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isImporteAnyoAsc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.importeAnyo.compareTo(a.importeAnyo));
+            } else {
+              _sortAsc = false;
+              isImporteAnyoAsc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.importeAnyo.compareTo(b.importeAnyo));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -173,6 +284,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
           ),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isImporteAnyo1Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.importeAnyo_1.compareTo(a.importeAnyo_1));
+            } else {
+              _sortAsc = false;
+              isImporteAnyo1Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.importeAnyo_1.compareTo(b.importeAnyo_1));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Center(
@@ -180,6 +307,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                 '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 2).toString()}',
                 textAlign: TextAlign.center)),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isImporteAnyo2Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.importeAnyo_2.compareTo(a.importeAnyo_2));
+            } else {
+              _sortAsc = false;
+              isImporteAnyo2Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.importeAnyo_2.compareTo(b.importeAnyo_2));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -189,6 +332,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isImporteAnyo3Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.importeAnyo_3.compareTo(a.importeAnyo_3));
+            } else {
+              _sortAsc = false;
+              isImporteAnyo3Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.importeAnyo_3.compareTo(b.importeAnyo_3));
+            }
+          });
+        },
       ),
       DataColumn(
         label: Expanded(
@@ -198,6 +357,22 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                   textAlign: TextAlign.center)),
         ),
         numeric: false,
+        onSort: (i, sortAscending) {
+          setState(() {
+            _currentSortColumn = i;
+            if (_sortAsc == false) {
+              _sortAsc = true;
+              isImporteAnyo4Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => b.importeAnyo_4.compareTo(a.importeAnyo_4));
+            } else {
+              _sortAsc = false;
+              isImporteAnyo4Asc = _sortAsc;
+              articuloVentasClienteList
+                  .sort((a, b) => a.importeAnyo_4.compareTo(b.importeAnyo_4));
+            }
+          });
+        },
       ),
     ];
   }

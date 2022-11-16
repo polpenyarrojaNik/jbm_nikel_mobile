@@ -77,6 +77,7 @@ class VentasMesDataTable extends StatefulWidget {
 class _VentasMesDataTableState extends State<VentasMesDataTable> {
   List<DataColumn> columns = [];
   List<DataRow> rows = [];
+  int selectedRow = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +159,10 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
     for (var i = 0; i < articuloVentasMesList.length; i++) {
       dataRows.add(
         DataRow(
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
+          selected: selectedRow == i,
           cells: [
             DataCell(
               Row(

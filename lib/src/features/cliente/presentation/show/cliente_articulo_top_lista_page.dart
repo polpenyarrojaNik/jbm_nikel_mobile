@@ -66,6 +66,7 @@ class ArticulosTopDataTable extends StatefulWidget {
 class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
   List<DataColumn> columns = [];
   List<DataRow> rows = [];
+  int selectedRow = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +133,10 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
     for (var i = 0; i < articulosTopList.length; i++) {
       dataRows.add(
         DataRow(
+          onLongPress: () => setState(() {
+            selectedRow = i;
+          }),
+          selected: selectedRow == i,
           cells: [
             DataCell(
               Row(
