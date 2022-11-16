@@ -33,7 +33,7 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
 
     await compute(syncInBackground, IsolateArgs(user, isolateConnectPort!));
 
-    state = state = const SyncControllerState.synchronized();
+    state = const SyncControllerState.synchronized();
   }
 }
 

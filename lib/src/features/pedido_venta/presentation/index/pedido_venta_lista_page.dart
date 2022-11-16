@@ -18,6 +18,7 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 
 class PedidoVentaListPage extends ConsumerStatefulWidget {
@@ -43,6 +44,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         ref.watch(pedidoVentaIndexScreenControllerProvider);
 
     final stateLasySyncDate = ref.watch(pedidoVentaLastSyncDateProvider);
+    final stateSync = ref.watch(syncNotifierProvider);
 
     return Scaffold(
       drawer: const AppDrawer(),
@@ -66,48 +68,17 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
           ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: () => syncSalesOrderDB(ref),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            stateLasySyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget()),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 8,
-                  top: 16.0,
-                  bottom: 16,
-                  right: 16,
-                ),
-                child: statePedidoVentaCount.maybeWhen(
-                  orElse: () => const ProgressIndicatorWidget(),
-                  data: (count) => ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: count,
-                    itemBuilder: (context, i) => ref
-                        .watch(
-                            PedidoVentaIndexScreenPaginatedControllerProvider(
-                                page: (i ~/ PedidoVentaRepository.pageSize)))
-                        .maybeWhen(
-                          orElse: () => const PedidoVentaShimmer(),
-                          data: (pedidoVentaList) => PedidoVentaListaTile(
-                            pedidoVenta: pedidoVentaList[
-                                i % PedidoVentaRepository.pageSize],
-                            navigatedFromCliente: false,
-                          ),
-                        ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+      body: stateSync.maybeWhen(
+        orElse: () => pedidosListViewWidget(
+            stateLasySyncDate: stateLasySyncDate,
+            statePedidoVentaCount: statePedidoVentaCount,
+            ref: ref),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncSalesOrderDB(ref),
+          child: pedidosListViewWidget(
+              stateLasySyncDate: stateLasySyncDate,
+              statePedidoVentaCount: statePedidoVentaCount,
+              ref: ref),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -141,6 +112,63 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     filteredStatus = filterEstado;
 
     ref.read(pedidoVentaEstadoQueryStateProvider.notifier).state = filterEstado;
+  }
+}
+
+class pedidosListViewWidget extends StatelessWidget {
+  const pedidosListViewWidget({
+    Key? key,
+    required this.stateLasySyncDate,
+    required this.statePedidoVentaCount,
+    required this.ref,
+  }) : super(key: key);
+
+  final AsyncValue<DateTime> stateLasySyncDate;
+  final AsyncValue<int> statePedidoVentaCount;
+  final WidgetRef ref;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        stateLasySyncDate.when(
+            data: (fechaUltimaSync) =>
+                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+            error: (_, __) => Container(),
+            loading: () => const ProgressIndicatorWidget()),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 8,
+              top: 16.0,
+              bottom: 16,
+              right: 16,
+            ),
+            child: statePedidoVentaCount.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              data: (count) => ListView.separated(
+                separatorBuilder: (context, i) => const Divider(),
+                physics: const AlwaysScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: count,
+                itemBuilder: (context, i) => ref
+                    .watch(PedidoVentaIndexScreenPaginatedControllerProvider(
+                        page: (i ~/ PedidoVentaRepository.pageSize)))
+                    .maybeWhen(
+                      orElse: () => const PedidoVentaShimmer(),
+                      data: (pedidoVentaList) => PedidoVentaListaTile(
+                        pedidoVenta:
+                            pedidoVentaList[i % PedidoVentaRepository.pageSize],
+                        navigatedFromCliente: false,
+                      ),
+                    ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 

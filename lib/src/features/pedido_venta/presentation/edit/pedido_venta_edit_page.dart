@@ -500,7 +500,6 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
         child: ListView.separated(
           shrinkWrap: true,
           itemCount: clienteDireccionesList.length,
-          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, i) => GestureDetector(
             onTap: () => ref
                 .read(pedidoVentaEditPageControllerProvider(

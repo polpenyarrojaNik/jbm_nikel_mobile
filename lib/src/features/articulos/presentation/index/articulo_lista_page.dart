@@ -45,70 +45,67 @@ class ArticuloListaPage extends ConsumerWidget {
         isSearchingFirst: isSearchArticuloForForm,
         title: S.of(context).articulo_index_titulo,
         searchTitle: S.of(context).articulo_index_buscarArticulos,
-        onChanged: (searchText) {
-          _debouncer.run(() {
-            ref.read(articulosSearchQueryStateProvider.notifier).state =
-                searchText;
-          });
-        },
-      ),
-      body: RefreshIndicator(
-        onRefresh: () => refreshArticleDb(ref),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            stateSync.maybeWhen(
-                orElse: () => Container(),
-                synchronized: () {
-                  print('Syncrhonized');
-                  return Container();
-                },
-                synchronizing: () => const ProgressIndicatorWidget()),
-            stateLasySyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget()),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: stateArticuloListCount.maybeWhen(
-                  data: (count) => ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    shrinkWrap: true,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: count,
-                    itemBuilder: (context, i) => ref
-                        .watch(ArticuloIndexScreenPaginatedControllerProvider(
-                            page: i ~/ ArticuloRepository.pageSize))
-                        .maybeWhen(
-                          data: (articuloList) => GestureDetector(
-                            onTap: () => (!isSearchArticuloForForm)
-                                ? navigateToArticuloDetalPage(
-                                    context,
-                                    articuloList[
-                                            i % ArticuloRepository.pageSize]
-                                        .id)
-                                : selectArticuloForFromPage(
-                                    context,
-                                    ref,
-                                    articuloList[
-                                        i % ArticuloRepository.pageSize]),
-                            child: ArticuloListaTile(
-                              articulo:
-                                  articuloList[i % ArticuloRepository.pageSize],
-                            ),
-                          ),
-                          orElse: () => const ArticuloListShimmer(),
-                        ),
-                  ),
-                  orElse: () => const ProgressIndicatorWidget(),
-                ),
-              ),
-            ),
-          ],
+        onChanged: (searchText) => _debouncer.run(
+          () => ref.read(articulosSearchQueryStateProvider.notifier).state =
+              searchText,
         ),
       ),
+      body: stateSync.maybeWhen(
+        orElse: () => articleListViewWidget(
+            stateLasySyncDate, stateArticuloListCount, ref),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => refreshArticleDb(ref),
+          child: articleListViewWidget(
+              stateLasySyncDate, stateArticuloListCount, ref),
+        ),
+      ),
+    );
+  }
+
+  Column articleListViewWidget(AsyncValue<DateTime> stateLasySyncDate,
+      AsyncValue<int> stateArticuloListCount, WidgetRef ref) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        stateLasySyncDate.when(
+            data: (fechaUltimaSync) =>
+                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+            error: (_, __) => Container(),
+            loading: () => const ProgressIndicatorWidget()),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: stateArticuloListCount.maybeWhen(
+              data: (count) => ListView.separated(
+                separatorBuilder: (context, i) => const Divider(),
+                shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: count,
+                itemBuilder: (context, i) => ref
+                    .watch(ArticuloIndexScreenPaginatedControllerProvider(
+                        page: i ~/ ArticuloRepository.pageSize))
+                    .maybeWhen(
+                      data: (articuloList) => GestureDetector(
+                        onTap: () => (!isSearchArticuloForForm)
+                            ? navigateToArticuloDetalPage(
+                                context,
+                                articuloList[i % ArticuloRepository.pageSize]
+                                    .id)
+                            : selectArticuloForFromPage(context, ref,
+                                articuloList[i % ArticuloRepository.pageSize]),
+                        child: ArticuloListaTile(
+                          articulo:
+                              articuloList[i % ArticuloRepository.pageSize],
+                        ),
+                      ),
+                      orElse: () => const ArticuloListShimmer(),
+                    ),
+              ),
+              orElse: () => const ProgressIndicatorWidget(),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

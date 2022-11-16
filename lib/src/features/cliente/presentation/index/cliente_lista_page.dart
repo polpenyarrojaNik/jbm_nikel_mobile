@@ -15,6 +15,7 @@ import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart'
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
+import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
 import 'cliente_lista_tile.dart';
@@ -42,6 +43,9 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       clienteIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
+
+    final stateSync = ref.watch(syncNotifierProvider);
+
     return Scaffold(
       drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
@@ -71,55 +75,64 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
             ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: () => syncCustomerDb(ref),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            stateLasySyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget()),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: stateClienteListCount.maybeWhen(
-                  orElse: () => const ProgressIndicatorWidget(),
-                  data: (count) => ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    shrinkWrap: true,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: count,
-                    itemBuilder: (context, i) => ref
-                        .watch(ClienteIndexScreenPaginatedControllerProvider(
-                            page: (i ~/ ClienteRepository.pageSize)))
-                        .maybeWhen(
-                          orElse: () => const ClienteListShimmer(),
-                          data: (clienteList) => GestureDetector(
-                            onTap: () => (!widget.isSearchClienteForFrom)
-                                ? navigateToClienteDetalle(
-                                    context: context,
-                                    clienteId: clienteList[
-                                            i % ClienteRepository.pageSize]
-                                        .id)
-                                : selectClienteForFromPage(
-                                    context: context,
-                                    cliente: clienteList[
-                                        i % ClienteRepository.pageSize]),
-                            child: ClienteListaTile(
-                              cliente:
-                                  clienteList[i % ClienteRepository.pageSize],
-                            ),
-                          ),
-                        ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+      body: stateSync.maybeWhen(
+        orElse: () =>
+            clientesListViewWidget(stateLasySyncDate, stateClienteListCount),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => syncCustomerDb(ref),
+          child:
+              clientesListViewWidget(stateLasySyncDate, stateClienteListCount),
         ),
       ),
+    );
+  }
+
+  Column clientesListViewWidget(AsyncValue<DateTime> stateLasySyncDate,
+      AsyncValue<int> stateClienteListCount) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        stateLasySyncDate.when(
+            data: (fechaUltimaSync) =>
+                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+            error: (_, __) => Container(),
+            loading: () => const ProgressIndicatorWidget()),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: stateClienteListCount.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              data: (count) => ListView.separated(
+                separatorBuilder: (context, i) => const Divider(),
+                shrinkWrap: true,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemCount: count,
+                itemBuilder: (context, i) => ref
+                    .watch(ClienteIndexScreenPaginatedControllerProvider(
+                        page: (i ~/ ClienteRepository.pageSize)))
+                    .maybeWhen(
+                      orElse: () => const ClienteListShimmer(),
+                      data: (clienteList) => GestureDetector(
+                        onTap: () => (!widget.isSearchClienteForFrom)
+                            ? navigateToClienteDetalle(
+                                context: context,
+                                clienteId:
+                                    clienteList[i % ClienteRepository.pageSize]
+                                        .id)
+                            : selectClienteForFromPage(
+                                context: context,
+                                cliente: clienteList[
+                                    i % ClienteRepository.pageSize]),
+                        child: ClienteListaTile(
+                          cliente: clienteList[i % ClienteRepository.pageSize],
+                        ),
+                      ),
+                    ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 

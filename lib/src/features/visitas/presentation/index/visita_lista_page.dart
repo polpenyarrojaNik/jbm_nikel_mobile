@@ -14,6 +14,7 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/visita_repository.dart';
 
 class VisitaListaPage extends ConsumerWidget {
@@ -25,6 +26,8 @@ class VisitaListaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stateVisitaListCount = ref.watch(visitaIndexScreenControllerProvider);
     final stateLasySyncDate = ref.watch(visitaLastSyncDateProvider);
+
+    final stateSync = ref.watch(syncNotifierProvider);
 
     return Scaffold(
       drawer: const AppDrawer(),
@@ -39,46 +42,56 @@ class VisitaListaPage extends ConsumerWidget {
           },
         ),
       ),
-      body: RefreshIndicator(
-        onRefresh: () => refreshVisitsDB(ref),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            stateLasySyncDate.when(
-                data: (fechaUltimaSync) =>
-                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-                error: (_, __) => Container(),
-                loading: () => const ProgressIndicatorWidget()),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: stateVisitaListCount.maybeWhen(
-                  orElse: () => const ProgressIndicatorWidget(),
-                  data: (count) => ListView.separated(
-                    separatorBuilder: (context, i) => const Divider(),
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: count,
-                    itemBuilder: (context, i) => ref
-                        .watch(VisitaIndexScreenPaginatedControllerProvider(
-                            page: (i ~/ VisitaRepository.pageSize)))
-                        .maybeWhen(
-                          orElse: () => const VisitaListShimmer(),
-                          data: (visitaList) => VisitaListaTile(
-                              visita: visitaList[i % VisitaRepository.pageSize],
-                              navigatedFromCliente: false),
-                        ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+      body: stateSync.maybeWhen(
+        orElse: () =>
+            visitaListViewWidget(stateLasySyncDate, stateVisitaListCount, ref),
+        synchronized: () => RefreshIndicator(
+          onRefresh: () => refreshVisitsDB(ref),
+          child: visitaListViewWidget(
+              stateLasySyncDate, stateVisitaListCount, ref),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () => navigateToCreateVisitas(context),
       ),
+    );
+  }
+
+  Column visitaListViewWidget(AsyncValue<DateTime> stateLasySyncDate,
+      AsyncValue<int> stateVisitaListCount, WidgetRef ref) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        stateLasySyncDate.when(
+            data: (fechaUltimaSync) =>
+                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+            error: (_, __) => Container(),
+            loading: () => const ProgressIndicatorWidget()),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: stateVisitaListCount.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              data: (count) => ListView.separated(
+                separatorBuilder: (context, i) => const Divider(),
+                physics: const AlwaysScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: count,
+                itemBuilder: (context, i) => ref
+                    .watch(VisitaIndexScreenPaginatedControllerProvider(
+                        page: (i ~/ VisitaRepository.pageSize)))
+                    .maybeWhen(
+                      orElse: () => const VisitaListShimmer(),
+                      data: (visitaList) => VisitaListaTile(
+                          visita: visitaList[i % VisitaRepository.pageSize],
+                          navigatedFromCliente: false),
+                    ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
