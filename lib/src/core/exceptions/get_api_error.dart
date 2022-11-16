@@ -14,8 +14,13 @@ Error getApiError(Object e) {
         if (responseData is String) {
           responseJson = jsonDecode(responseData);
         } else if (responseData is List<int>) {
+          final errorString = utf8.decode(responseData);
+
+          if (errorString.contains('no such file or directory')) {
+            throw const AppException.noSuchFileOrDirectory();
+          }
           throw AppException.restApiFailure(
-              e.response?.statusCode ?? 400, utf8.decode(responseData));
+              e.response?.statusCode ?? 400, errorString);
         } else {
           responseJson = responseData['error'];
         }

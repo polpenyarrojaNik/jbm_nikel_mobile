@@ -36,6 +36,8 @@ class AppException with _$AppException {
       InsertDataFailure;
 
   const factory AppException.notConnection() = NotConnectionFailure;
+
+  const factory AppException.noSuchFileOrDirectory() = ArchivoNoEncontrado;
 }
 
 class AppExceptionData {
@@ -73,27 +75,31 @@ extension AppExceptionDetalles on AppException {
       ),
       clienteNotFound: () => AppExceptionData(
         'cliente-not-found',
-        'Cliente not found',
+        'Customer not found',
       ),
       articuloNotFound: () => AppExceptionData(
         'articulo-not-found',
-        'Articulo not found',
+        'Article not found',
       ),
       pedidoVentaNotFound: () => AppExceptionData(
         'sales-order-not-found',
-        'Ventas order not found',
+        'Sales order not found',
       ),
       pedidoVentaDeleteFailure: (errorMessage) => AppExceptionData(
         'sales-order-delete-failure',
-        'Error deleting Ventas order $errorMessage',
+        'Error deleting sales order $errorMessage',
       ),
       insertDataFailure: (errorMessage) => AppExceptionData(
         'insert-data--failure',
         'Error inserting data in db:  $errorMessage',
       ),
       notConnection: () => AppExceptionData(
-        'insert-data--failure',
+        'connection--failure',
         'No connection to cloud.',
+      ),
+      noSuchFileOrDirectory: () => AppExceptionData(
+        'open-file--failure',
+        'File not found.',
       ),
     );
   }
