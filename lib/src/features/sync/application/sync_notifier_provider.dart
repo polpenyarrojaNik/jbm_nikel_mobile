@@ -31,9 +31,38 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
   Future<void> syncAllInCompute() async {
     state = const SyncControllerState.synchronizing();
 
-    await compute(syncInBackground, IsolateArgs(user, isolateConnectPort!));
+    final syncProgress =
+        await compute(syncInBackground, IsolateArgs(user, isolateConnectPort!));
+
+    await updateSyncDates(syncProgress);
 
     state = const SyncControllerState.synchronized();
+  }
+
+  Future<void> updateSyncDates(SyncProgress syncProgress) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    final finishSyncDate = DateTime.now().toUtc();
+
+    if (syncProgress.index > 0) {
+      await sharedPreferences.setString(
+          articuloFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+
+      if (syncProgress.index > 1) {
+        await sharedPreferences.setString(
+            clienteFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+      }
+
+      if (syncProgress.index > 2) {
+        await sharedPreferences.setString(
+            pedidoVentaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+      }
+      if (syncProgress.index > 3) {
+        await sharedPreferences.setString(
+            visitaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
+      }
+    }
   }
 }
 
@@ -43,7 +72,7 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
     final SyncService syncService =
         SyncService(database, Dio(), isolateArgs.user);
 
-    return syncService.syncAllTable();
+    return await syncService.syncAllTable();
   } catch (e) {
     print(e);
     rethrow;
@@ -56,32 +85,6 @@ Future<AppDatabase> createDatabaseConnection(IsolateArgs isolateArgs) async {
   isolateSendPort.send(isolate.connectPort);
   final connection = await isolate.connect();
   return AppDatabase.connect(connection, false);
-}
-
-void updateSyncDates(SyncProgress syncProgress) async {
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
-
-  final finishSyncDate = DateTime.now().toUtc();
-
-  if (syncProgress.index > 0) {
-    await sharedPreferences.setString(
-        articuloFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-
-    if (syncProgress.index > 1) {
-      await sharedPreferences.setString(
-          clienteFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-    }
-
-    if (syncProgress.index > 2) {
-      await sharedPreferences.setString(
-          pedidoVentaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-    }
-    if (syncProgress.index > 3) {
-      await sharedPreferences.setString(
-          visitaFechaUltimaSyncKey, finishSyncDate.toIso8601String());
-    }
-  }
 }
 
 @freezed

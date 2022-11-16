@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_sustitutivo.dart';
@@ -38,9 +39,10 @@ class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
   final formKeyCantidad = GlobalKey<FormBuilderState>();
   final quanitityController = TextEditingController();
+  final precioController = TextEditingController();
   final descuento1Controller = TextEditingController();
-  // final descuento2Controller = TextEditingController();
   int totalQuantity = 1;
+  double precio = 0;
   double descuento1 = 0;
   double descuento2 = 0;
 
@@ -53,7 +55,7 @@ class _SelecionarCantidadPageState
   void initState() {
     super.initState();
     setValoresIniciales();
-
+    precioController.text = numberFormatDecimal(precio);
     quanitityController.text = totalQuantity.toString();
     descuento1Controller.text = numberFormatCantidades(descuento1);
     // descuento2Controller.text = numberFormatCantidades(descuento2);
@@ -138,11 +140,13 @@ class _SelecionarCantidadPageState
                       const Center(child: CircularProgressIndicator()),
                   data: (_) => (articuloPrecio != null)
                       ? _ArticuloPrecioContainer(
-                          precio: articuloPrecio!.precio,
+                          precio: precio,
+                          tipoPrecio: articuloPrecio!.precio.tipoPrecio,
+                          precioController: precioController,
                           descuento1Controller: descuento1Controller,
-                          // descuento2Controller: descuento2Controller,
                           descuento2: descuento2,
                           descuento3: articuloPrecio!.descuento3,
+                          setPrecio: (value) => setState(() => precio = value),
                           setDescuento1: (value) =>
                               setState(() => descuento1 = value),
                           setDescuento2: (value) =>
@@ -164,7 +168,11 @@ class _SelecionarCantidadPageState
                           ref
                               .read(pedidoVentaRepositoryProvider)
                               .getTotalLinea(
-                                  precio: articuloPrecio!.precio,
+                                  precio: Precio(
+                                      precio: precio.toMoney(
+                                          currencyId: articuloPrecio!.divisaId),
+                                      tipoPrecio:
+                                          articuloPrecio!.precio.tipoPrecio),
                                   cantidad: totalQuantity,
                                   descuento1: descuento1,
                                   descuento2: descuento2,
@@ -212,22 +220,25 @@ class _SelecionarCantidadPageState
         articuloDescription:
             getDescriptionArticuloInLocalLanguage(articulo: articulo),
         cantidad: totalQuantity,
-        precioDivisa: articuloPrecio.precio.precio,
+        precioDivisa: precio.toMoney(currencyId: articuloPrecio.divisaId),
         divisaId: articuloPrecio.divisaId,
         tipoPrecio: articuloPrecio.precio.tipoPrecio,
         descuento1: descuento1,
-        descuento2: descuento2,
+        descuento2: articuloPrecio.descuento2,
         descuento3: articuloPrecio.descuento3,
         descuentoProntoPago: cliente.descuentoProntoPago,
         stockDisponible: articulo.stockDisponible,
         stockDisponibleSN: articulo.stockDisponible > 0,
         iva: articuloPrecio.iva,
         importeLinea: ref.read(pedidoVentaRepositoryProvider).getTotalLinea(
-            precio: articuloPrecio.precio,
-            cantidad: totalQuantity,
-            descuento1: descuento1,
-            descuento2: descuento2,
-            descuento3: articuloPrecio.descuento3),
+              precio: Precio(
+                  precio: precio.toMoney(currencyId: articuloPrecio.divisaId),
+                  tipoPrecio: articuloPrecio.precio.tipoPrecio),
+              cantidad: totalQuantity,
+              descuento1: descuento1,
+              descuento2: articuloPrecio.descuento2,
+              descuento3: articuloPrecio.descuento3,
+            ),
         cantidadPendiente: totalQuantity,
         lastUpdated: DateTime.now().toUtc(),
         deleted: false,
@@ -298,15 +309,16 @@ class _SelecionarCantidadPageState
     if (newArticuloPrecio != null) {
       setState(() {
         articuloPrecio = newArticuloPrecio;
-        if (descuento1 == 0) {
-          descuento1 = newArticuloPrecio.descuento1;
-          descuento1Controller.text = numberFormatCantidades(descuento1);
-        }
-        if (descuento2 == 0) {
-          descuento2 = newArticuloPrecio.descuento2;
-          // descuento2Controller.text = numberFormatCantidades(descuento2);
 
-        }
+        precio = newArticuloPrecio.precio.precio.amount.toDecimal().toDouble();
+        precioController.text = numberFormatDecimal(
+            newArticuloPrecio.precio.precio.amount.toDecimal().toDouble());
+
+        descuento1 = newArticuloPrecio.descuento1;
+        descuento1Controller.text = numberFormatCantidades(descuento1);
+
+        descuento2 = newArticuloPrecio.descuento2;
+        // descuento2Controller.text = numberFormatCantidades(descuento2);
       });
     }
   }
@@ -505,21 +517,25 @@ class _SelectQuantityFrom extends StatelessWidget {
 class _ArticuloPrecioContainer extends StatelessWidget {
   const _ArticuloPrecioContainer({
     required this.precio,
+    required this.tipoPrecio,
+    required this.precioController,
     required this.descuento1Controller,
-    // required this.descuento2Controller,
     required this.descuento2,
     required this.descuento3,
+    required this.setPrecio,
     required this.setDescuento1,
     required this.setDescuento2,
   });
 
-  final Precio precio;
+  final double precio;
+  final int tipoPrecio;
   final double descuento2;
   final double descuento3;
+  final void Function(double value) setPrecio;
   final void Function(double value) setDescuento1;
   final void Function(double value) setDescuento2;
+  final TextEditingController precioController;
   final TextEditingController descuento1Controller;
-  // final TextEditingController descuento2Controller;
 
   @override
   Widget build(BuildContext context) {
@@ -530,24 +546,38 @@ class _ArticuloPrecioContainer extends StatelessWidget {
         children: [
           FormBuilderTextField(
             name: 'precio',
-            readOnly: true,
-            keyboardType: TextInputType.number,
-            initialValue: numberFormatDecimal(
-                precio.precio.amount.toDecimal().toDouble()),
+            controller: precioController,
             decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_precio,
-                suffix: Text(
-                  'x${precio.tipoPrecio}',
-                  style: Theme.of(context).textTheme.caption,
-                )),
+              labelText: S.of(context).pedido_edit_selectQuantity_precio,
+              suffix: Text(
+                'x$tipoPrecio',
+                style: Theme.of(context).textTheme.caption,
+              ),
+            ),
+            onChanged: (value) {
+              if (value != null && value.isNotEmpty) {
+                final precioValue = double.tryParse(value.replaceAll(',', '.'));
+                print(precioValue);
+                if (precioValue != null) {
+                  setPrecio(precioValue);
+                }
+              } else {
+                setPrecio(0);
+              }
+            },
+            onTap: () => precioController.selection = TextSelection(
+              baseOffset: 0,
+              extentOffset: precioController.text.length,
+            ),
           ),
           FormBuilderTextField(
             name: 'dto1',
             keyboardType: TextInputType.number,
             controller: descuento1Controller,
             decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-                suffix: Text('%', style: Theme.of(context).textTheme.caption)),
+              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
+              suffix: Text('%', style: Theme.of(context).textTheme.caption),
+            ),
             onChanged: (value) {
               if (value != null && value.isNotEmpty) {
                 final dto1Value = double.tryParse(value.replaceAll(',', '.'));

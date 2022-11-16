@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_shimmer.dart';
@@ -24,10 +25,12 @@ class VisitaListaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateVisitaListCount = ref.watch(visitaIndexScreenControllerProvider);
-    final stateLasySyncDate = ref.watch(visitaLastSyncDateProvider);
-
     final stateSync = ref.watch(syncNotifierProvider);
+
+    ref.listen<AsyncValue>(
+      visitaIndexScreenControllerProvider,
+      (_, state) => state.showAlertDialogOnError(context),
+    );
 
     return Scaffold(
       drawer: const AppDrawer(),
@@ -43,12 +46,10 @@ class VisitaListaPage extends ConsumerWidget {
         ),
       ),
       body: stateSync.maybeWhen(
-        orElse: () =>
-            visitaListViewWidget(stateLasySyncDate, stateVisitaListCount, ref),
+        orElse: () => VisitaListViewWidget(stateSync: stateSync, ref: ref),
         synchronized: () => RefreshIndicator(
           onRefresh: () => refreshVisitsDB(ref),
-          child: visitaListViewWidget(
-              stateLasySyncDate, stateVisitaListCount, ref),
+          child: VisitaListViewWidget(stateSync: stateSync, ref: ref),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -58,16 +59,46 @@ class VisitaListaPage extends ConsumerWidget {
     );
   }
 
-  Column visitaListViewWidget(AsyncValue<DateTime> stateLasySyncDate,
-      AsyncValue<int> stateVisitaListCount, WidgetRef ref) {
+  Future<void> refreshVisitsDB(WidgetRef ref) async {
+    await ref.read(syncServiceProvider).syncAllVisitasRelacionados();
+    ref.refresh(visitaLastSyncDateProvider);
+
+    ref.invalidate(visitaIndexScreenControllerProvider);
+  }
+
+  void navigateToCreateVisitas(BuildContext context) {
+    context.router.push(VisitaEditRoute());
+  }
+}
+
+class VisitaListViewWidget extends StatelessWidget {
+  const VisitaListViewWidget({
+    super.key,
+    required this.stateSync,
+    required this.ref,
+  });
+
+  final SyncControllerState stateSync;
+  final WidgetRef ref;
+
+  @override
+  Widget build(BuildContext context) {
+    final stateVisitaListCount = ref.watch(visitaIndexScreenControllerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        stateLasySyncDate.when(
-            data: (fechaUltimaSync) =>
-                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-            error: (_, __) => Container(),
-            loading: () => const ProgressIndicatorWidget()),
+        stateSync.maybeWhen(
+          orElse: () => const LinearProgressIndicator(),
+          synchronized: () {
+            final stateLastSyncDate = ref.watch(visitaLastSyncDateProvider);
+
+            return stateLastSyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget());
+          },
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -93,16 +124,5 @@ class VisitaListaPage extends ConsumerWidget {
         ),
       ],
     );
-  }
-
-  Future<void> refreshVisitsDB(WidgetRef ref) async {
-    await ref.read(syncServiceProvider).syncAllVisitasRelacionados();
-    ref.refresh(visitaLastSyncDateProvider);
-
-    ref.invalidate(visitaIndexScreenControllerProvider);
-  }
-
-  void navigateToCreateVisitas(BuildContext context) {
-    context.router.push(VisitaEditRoute());
   }
 }

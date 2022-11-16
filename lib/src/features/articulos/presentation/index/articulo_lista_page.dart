@@ -28,16 +28,12 @@ class ArticuloListaPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stateLasySyncDate = ref.watch(articuloLastSyncDateProvider);
+    final stateSync = ref.watch(syncNotifierProvider);
+
     ref.listen<AsyncValue>(
       articuloIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
-
-    final stateArticuloListCount =
-        ref.watch(articuloIndexScreenControllerProvider);
-
-    final stateSync = ref.watch(syncNotifierProvider);
 
     return Scaffold(
       drawer: (!isSearchArticuloForForm) ? const AppDrawer() : null,
@@ -51,27 +47,62 @@ class ArticuloListaPage extends ConsumerWidget {
         ),
       ),
       body: stateSync.maybeWhen(
-        orElse: () => articleListViewWidget(
-            stateLasySyncDate, stateArticuloListCount, ref),
+        orElse: () => ArticleListViewWidget(
+            stateSync: stateSync,
+            ref: ref,
+            isSearchArticuloForForm: isSearchArticuloForForm),
         synchronized: () => RefreshIndicator(
           onRefresh: () => refreshArticleDb(ref),
-          child: articleListViewWidget(
-              stateLasySyncDate, stateArticuloListCount, ref),
+          child: ArticleListViewWidget(
+              stateSync: stateSync,
+              ref: ref,
+              isSearchArticuloForForm: isSearchArticuloForForm),
         ),
       ),
     );
   }
 
-  Column articleListViewWidget(AsyncValue<DateTime> stateLasySyncDate,
-      AsyncValue<int> stateArticuloListCount, WidgetRef ref) {
+  Future<void> refreshArticleDb(WidgetRef ref) async {
+    await ref.read(syncServiceProvider).syncAllArticulosRelacionados();
+
+    ref.refresh(articuloLastSyncDateProvider);
+
+    ref.refresh(articuloIndexScreenControllerProvider);
+  }
+}
+
+class ArticleListViewWidget extends StatelessWidget {
+  const ArticleListViewWidget({
+    super.key,
+    required this.stateSync,
+    required this.ref,
+    required this.isSearchArticuloForForm,
+  });
+
+  final SyncControllerState stateSync;
+  final WidgetRef ref;
+  final bool isSearchArticuloForForm;
+
+  @override
+  Widget build(BuildContext context) {
+    final stateArticuloListCount =
+        ref.watch(articuloIndexScreenControllerProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        stateLasySyncDate.when(
-            data: (fechaUltimaSync) =>
-                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-            error: (_, __) => Container(),
-            loading: () => const ProgressIndicatorWidget()),
+        stateSync.maybeWhen(
+          orElse: () => const LinearProgressIndicator(),
+          synchronized: () {
+            final stateLastSyncDate = ref.watch(articuloLastSyncDateProvider);
+
+            return stateLastSyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget());
+          },
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -117,13 +148,5 @@ class ArticuloListaPage extends ConsumerWidget {
       BuildContext context, WidgetRef ref, Articulo articulo) {
     ref.read(articuloForFromStateProvider.notifier).state = articulo;
     context.router.pop();
-  }
-
-  Future<void> refreshArticleDb(WidgetRef ref) async {
-    await ref.read(syncServiceProvider).syncAllArticulosRelacionados();
-
-    ref.refresh(articuloLastSyncDateProvider);
-
-    ref.refresh(articuloIndexScreenControllerProvider);
   }
 }

@@ -36,15 +36,12 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
 
   @override
   Widget build(BuildContext context) {
-    final stateClienteListCount =
-        ref.watch(clienteIndexScreenControllerProvider);
-    final stateLasySyncDate = ref.watch(clienteLastSyncDateProvider);
+    final stateSync = ref.watch(syncNotifierProvider);
+
     ref.listen<AsyncValue>(
       clienteIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
-
-    final stateSync = ref.watch(syncNotifierProvider);
 
     return Scaffold(
       drawer: (!widget.isSearchClienteForFrom) ? const AppDrawer() : null,
@@ -76,27 +73,71 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
         ],
       ),
       body: stateSync.maybeWhen(
-        orElse: () =>
-            clientesListViewWidget(stateLasySyncDate, stateClienteListCount),
+        orElse: () => ClientesListViewWidget(
+            stateSync: stateSync,
+            ref: ref,
+            isSearchClienteForFrom: widget.isSearchClienteForFrom),
         synchronized: () => RefreshIndicator(
           onRefresh: () => syncCustomerDb(ref),
-          child:
-              clientesListViewWidget(stateLasySyncDate, stateClienteListCount),
+          child: ClientesListViewWidget(
+              stateSync: stateSync,
+              ref: ref,
+              isSearchClienteForFrom: widget.isSearchClienteForFrom),
         ),
       ),
     );
   }
 
-  Column clientesListViewWidget(AsyncValue<DateTime> stateLasySyncDate,
-      AsyncValue<int> stateClienteListCount) {
+  void filterClientesPotenciales(BuildContext context) {
+    searchClientesPotenciales = !searchClientesPotenciales;
+
+    ref.read(clientesPotencialesQueryStateProvider.notifier).state =
+        searchClientesPotenciales;
+  }
+
+  void navigateToClientesAlrededor(BuildContext context) {
+    context.router.push(const ClientesAlrededorRoute());
+  }
+
+  Future<void> syncCustomerDb(WidgetRef ref) async {
+    await ref.read(syncServiceProvider).syncAllClientesRelacionados();
+    ref.refresh(clienteLastSyncDateProvider);
+
+    ref.refresh(clienteIndexScreenControllerProvider);
+  }
+}
+
+class ClientesListViewWidget extends StatelessWidget {
+  const ClientesListViewWidget({
+    super.key,
+    required this.stateSync,
+    required this.ref,
+    required this.isSearchClienteForFrom,
+  });
+
+  final SyncControllerState stateSync;
+  final WidgetRef ref;
+  final bool isSearchClienteForFrom;
+
+  @override
+  Widget build(BuildContext context) {
+    final stateClienteListCount =
+        ref.watch(clienteIndexScreenControllerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        stateLasySyncDate.when(
-            data: (fechaUltimaSync) =>
-                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-            error: (_, __) => Container(),
-            loading: () => const ProgressIndicatorWidget()),
+        stateSync.maybeWhen(
+          orElse: () => const LinearProgressIndicator(),
+          synchronized: () {
+            final stateLastSyncDate = ref.watch(clienteLastSyncDateProvider);
+
+            return stateLastSyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget());
+          },
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -113,7 +154,7 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
                     .maybeWhen(
                       orElse: () => const ClienteListShimmer(),
                       data: (clienteList) => GestureDetector(
-                        onTap: () => (!widget.isSearchClienteForFrom)
+                        onTap: () => (!isSearchClienteForFrom)
                             ? navigateToClienteDetalle(
                                 context: context,
                                 clienteId:
@@ -145,23 +186,5 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
       {required BuildContext context, required Cliente cliente}) {
     ref.read(clienteForFromStateProvider.notifier).state = cliente;
     context.router.pop();
-  }
-
-  void navigateToClientesAlrededor(BuildContext context) {
-    context.router.push(const ClientesAlrededorRoute());
-  }
-
-  Future<void> syncCustomerDb(WidgetRef ref) async {
-    await ref.read(syncServiceProvider).syncAllClientesRelacionados();
-    ref.refresh(clienteLastSyncDateProvider);
-
-    ref.refresh(clienteIndexScreenControllerProvider);
-  }
-
-  void filterClientesPotenciales(BuildContext context) {
-    searchClientesPotenciales = !searchClientesPotenciales;
-
-    ref.read(clientesPotencialesQueryStateProvider.notifier).state =
-        searchClientesPotenciales;
   }
 }

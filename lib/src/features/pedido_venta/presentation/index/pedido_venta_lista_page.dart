@@ -35,16 +35,12 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
 
   @override
   Widget build(BuildContext context) {
+    final stateSync = ref.watch(syncNotifierProvider);
+
     ref.listen<AsyncValue>(
       pedidoVentaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),
     );
-
-    final statePedidoVentaCount =
-        ref.watch(pedidoVentaIndexScreenControllerProvider);
-
-    final stateLasySyncDate = ref.watch(pedidoVentaLastSyncDateProvider);
-    final stateSync = ref.watch(syncNotifierProvider);
 
     return Scaffold(
       drawer: const AppDrawer(),
@@ -69,16 +65,10 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
         ],
       ),
       body: stateSync.maybeWhen(
-        orElse: () => pedidosListViewWidget(
-            stateLasySyncDate: stateLasySyncDate,
-            statePedidoVentaCount: statePedidoVentaCount,
-            ref: ref),
+        orElse: () => PedidosListViewWidget(stateSync: stateSync, ref: ref),
         synchronized: () => RefreshIndicator(
           onRefresh: () => syncSalesOrderDB(ref),
-          child: pedidosListViewWidget(
-              stateLasySyncDate: stateLasySyncDate,
-              statePedidoVentaCount: statePedidoVentaCount,
-              ref: ref),
+          child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -115,28 +105,37 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   }
 }
 
-class pedidosListViewWidget extends StatelessWidget {
-  const pedidosListViewWidget({
-    Key? key,
-    required this.stateLasySyncDate,
-    required this.statePedidoVentaCount,
+class PedidosListViewWidget extends StatelessWidget {
+  const PedidosListViewWidget({
+    super.key,
+    required this.stateSync,
     required this.ref,
-  }) : super(key: key);
+  });
 
-  final AsyncValue<DateTime> stateLasySyncDate;
-  final AsyncValue<int> statePedidoVentaCount;
+  final SyncControllerState stateSync;
   final WidgetRef ref;
 
   @override
   Widget build(BuildContext context) {
+    final statePedidoVentaCount =
+        ref.watch(pedidoVentaIndexScreenControllerProvider);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        stateLasySyncDate.when(
-            data: (fechaUltimaSync) =>
-                UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
-            error: (_, __) => Container(),
-            loading: () => const ProgressIndicatorWidget()),
+        stateSync.maybeWhen(
+          orElse: () => const LinearProgressIndicator(),
+          synchronized: () {
+            final stateLastSyncDate =
+                ref.watch(pedidoVentaLastSyncDateProvider);
+
+            return stateLastSyncDate.when(
+                data: (fechaUltimaSync) =>
+                    UltimaSyncDateWidget(ultimaSyncDate: fechaUltimaSync),
+                error: (_, __) => Container(),
+                loading: () => const ProgressIndicatorWidget());
+          },
+        ),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(

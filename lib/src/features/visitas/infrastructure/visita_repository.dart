@@ -291,7 +291,7 @@ class VisitaRepository {
       {required String searchText,
       required String usuarioId,
       String? clienteId}) async {
-    final countExp = _db.visitaTable.id.count();
+    final countExp = _db.visitaLocalTable.visitaAppId.count();
 
     final query = _db.selectOnly(_db.visitaLocalTable).join([
       innerJoin(
