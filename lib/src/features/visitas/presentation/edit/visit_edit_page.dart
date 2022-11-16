@@ -76,6 +76,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
         saved: (visita) {
           ref.invalidate(visitaProvider(visitaIdLocalParam!));
           ref.invalidate(visitaIndexScreenControllerProvider);
+          ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
+
           context.showSuccessBar(
               content: Text(S.of(context).visitas_edit_visitaEditar_saved));
 

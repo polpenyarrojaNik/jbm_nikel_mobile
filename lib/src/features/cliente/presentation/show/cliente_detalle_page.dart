@@ -27,6 +27,11 @@ class ClienteDetallePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteDetalle_titulo),
+        actions: [
+          IconButton(
+              onPressed: () => navigateToCreatePedido(context, clienteId),
+              icon: const Icon(Icons.shopping_cart_outlined)),
+        ],
       ),
       body: Consumer(
         builder: (context, ref, _) {
@@ -46,6 +51,11 @@ class ClienteDetallePage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  void navigateToCreatePedido(BuildContext context, String clienteId) {
+    context.router.push(PedidoVentaEditRoute(
+        isNew: true, createPedidoFromClienteId: clienteId));
   }
 }
 

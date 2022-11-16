@@ -23,6 +23,7 @@ mixin _$SeleccionarCantidadParam {
   int? get cantidad => throw _privateConstructorUsedError;
   double? get descuento1 => throw _privateConstructorUsedError;
   double? get descuento2 => throw _privateConstructorUsedError;
+  bool? get createdFromCliente => throw _privateConstructorUsedError;
   int get posicionLinea => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -43,6 +44,7 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       int? cantidad,
       double? descuento1,
       double? descuento2,
+      bool? createdFromCliente,
       int posicionLinea});
 
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
@@ -68,6 +70,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? cantidad = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
+    Object? createdFromCliente = freezed,
     Object? posicionLinea = null,
   }) {
     return _then(_value.copyWith(
@@ -95,6 +98,10 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
           ? _value.descuento2
           : descuento2 // ignore: cast_nullable_to_non_nullable
               as double?,
+      createdFromCliente: freezed == createdFromCliente
+          ? _value.createdFromCliente
+          : createdFromCliente // ignore: cast_nullable_to_non_nullable
+              as bool?,
       posicionLinea: null == posicionLinea
           ? _value.posicionLinea
           : posicionLinea // ignore: cast_nullable_to_non_nullable
@@ -128,6 +135,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       int? cantidad,
       double? descuento1,
       double? descuento2,
+      bool? createdFromCliente,
       int posicionLinea});
 
   @override
@@ -152,6 +160,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? cantidad = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
+    Object? createdFromCliente = freezed,
     Object? posicionLinea = null,
   }) {
     return _then(_$_SeleccionarCantidadParam(
@@ -179,6 +188,10 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
           ? _value.descuento2
           : descuento2 // ignore: cast_nullable_to_non_nullable
               as double?,
+      createdFromCliente: freezed == createdFromCliente
+          ? _value.createdFromCliente
+          : createdFromCliente // ignore: cast_nullable_to_non_nullable
+              as bool?,
       posicionLinea: null == posicionLinea
           ? _value.posicionLinea
           : posicionLinea // ignore: cast_nullable_to_non_nullable
@@ -197,6 +210,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       this.cantidad,
       this.descuento1,
       this.descuento2,
+      this.createdFromCliente,
       required this.posicionLinea})
       : super._();
 
@@ -213,11 +227,13 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   final double? descuento2;
   @override
+  final bool? createdFromCliente;
+  @override
   final int posicionLinea;
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, descuento1: $descuento1, descuento2: $descuento2, posicionLinea: $posicionLinea)';
+    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea)';
   }
 
   @override
@@ -238,13 +254,23 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
                 other.descuento1 == descuento1) &&
             (identical(other.descuento2, descuento2) ||
                 other.descuento2 == descuento2) &&
+            (identical(other.createdFromCliente, createdFromCliente) ||
+                other.createdFromCliente == createdFromCliente) &&
             (identical(other.posicionLinea, posicionLinea) ||
                 other.posicionLinea == posicionLinea));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pedidoVentaIdIsLocalParam,
-      clienteId, articuloId, cantidad, descuento1, descuento2, posicionLinea);
+  int get hashCode => Object.hash(
+      runtimeType,
+      pedidoVentaIdIsLocalParam,
+      clienteId,
+      articuloId,
+      cantidad,
+      descuento1,
+      descuento2,
+      createdFromCliente,
+      posicionLinea);
 
   @JsonKey(ignore: true)
   @override
@@ -262,6 +288,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
       final int? cantidad,
       final double? descuento1,
       final double? descuento2,
+      final bool? createdFromCliente,
       required final int posicionLinea}) = _$_SeleccionarCantidadParam;
   const _SeleccionarCantidadParam._() : super._();
 
@@ -277,6 +304,8 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   double? get descuento1;
   @override
   double? get descuento2;
+  @override
+  bool? get createdFromCliente;
   @override
   int get posicionLinea;
   @override

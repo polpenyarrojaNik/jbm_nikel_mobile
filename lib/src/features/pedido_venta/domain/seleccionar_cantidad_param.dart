@@ -14,6 +14,7 @@ class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     int? cantidad,
     double? descuento1,
     double? descuento2,
+    bool? createdFromCliente,
     required int posicionLinea,
   }) = _SeleccionarCantidadParam;
 

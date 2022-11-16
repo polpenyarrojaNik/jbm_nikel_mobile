@@ -76,6 +76,10 @@ class PedidoVentaEditPageController
     state = const PedidoVentaEditPageControllerState.loading();
 
     if (pedidoVentaIdIsLocalParam.isNew) {
+      if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
+        _cliente = await clienteRepository.getClienteById(
+            clienteId: pedidoVentaIdIsLocalParam.createPedidoFromClienteId!);
+      }
       state = PedidoVentaEditPageControllerState.data(
         _cliente,
         _clienteDireccion,

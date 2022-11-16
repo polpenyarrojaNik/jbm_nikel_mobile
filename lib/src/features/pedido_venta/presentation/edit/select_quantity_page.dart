@@ -65,16 +65,23 @@ class _SelecionarCantidadPageState
 
   @override
   Widget build(BuildContext context) {
+    if (widget.seleccionarCantidadParam.createdFromCliente ?? false) {
+      final clienteState =
+          ref.watch(clienteProvider(widget.seleccionarCantidadParam.clienteId));
+      clienteState.whenData((value) => setClienteValue(newClienteValue: value));
+    } else {
+      ref.listen<AsyncValue<Cliente>>(
+        clienteProvider(widget.seleccionarCantidadParam.clienteId),
+        (_, state) => state.whenData(
+          (value) => setClienteValue(newClienteValue: value),
+        ),
+      );
+    }
+
     ref.listen<AsyncValue<Articulo>>(
       articuloProvider(articuloId!),
       (_, state) => state.whenData(
         (value) => setArtiucloValue(newArticuloValue: value),
-      ),
-    );
-    ref.listen<AsyncValue<Cliente>>(
-      clienteProvider(widget.seleccionarCantidadParam.clienteId),
-      (_, state) => state.whenData(
-        (value) => setClienteValue(newClienteValue: value),
       ),
     );
 

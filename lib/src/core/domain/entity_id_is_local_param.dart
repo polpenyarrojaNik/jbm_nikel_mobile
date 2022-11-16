@@ -9,5 +9,6 @@ class EntityIdIsLocalParam with _$EntityIdIsLocalParam {
     required String id,
     required bool isLocal,
     required bool isNew,
+    String? createPedidoFromClienteId,
   }) = _EntityIdIsLocalParam;
 }

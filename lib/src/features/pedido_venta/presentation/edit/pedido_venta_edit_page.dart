@@ -35,12 +35,14 @@ import 'ask_pop_alert_dialog.dart';
 import 'icon_stepper.dart';
 
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
-  PedidoVentaEditPage({super.key, String? id, bool? isNew})
+  PedidoVentaEditPage(
+      {super.key, String? id, bool? isNew, this.createPedidoFromClienteId})
       : id = id ?? const Uuid().v4(),
         isNew = id == null ? true : false;
 
   final String id;
   final bool isNew;
+  final String? createPedidoFromClienteId;
 
   @override
   ConsumerState<PedidoVentaEditPage> createState() =>
@@ -53,8 +55,12 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
   @override
   void initState() {
     super.initState();
-    pedidoVentaIdLocalParam =
-        EntityIdIsLocalParam(id: widget.id, isLocal: true, isNew: widget.isNew);
+    pedidoVentaIdLocalParam = EntityIdIsLocalParam(
+      id: widget.id,
+      isLocal: true,
+      isNew: widget.isNew,
+      createPedidoFromClienteId: widget.createPedidoFromClienteId,
+    );
   }
 
   @override
@@ -67,8 +73,12 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       (__, state) {
         state.maybeWhen(
           saved: (pedidoVentaAppId) {
-            ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
-            ref.invalidate(pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
+            if (!widget.isNew) {
+              ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
+              ref.invalidate(
+                  pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
+            }
+            ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
             ref.invalidate(pedidoVentaIndexScreenControllerProvider);
             context.router.pop();
           },
@@ -640,14 +650,15 @@ class StepArticuloListContent extends ConsumerWidget {
       int i,
       EntityIdIsLocalParam pedidoVentaIdIsLocalParam) {
     final seleccionarCantidadParam = SeleccionarCantidadParam(
-      pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
-      clienteId: clienteId,
-      articuloId: pedidoVentaLinea.articuloId,
-      cantidad: pedidoVentaLinea.cantidad.toInt(),
-      descuento1: pedidoVentaLinea.descuento1,
-      descuento2: pedidoVentaLinea.descuento2,
-      posicionLinea: i,
-    );
+        pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+        clienteId: clienteId,
+        articuloId: pedidoVentaLinea.articuloId,
+        cantidad: pedidoVentaLinea.cantidad.toInt(),
+        descuento1: pedidoVentaLinea.descuento1,
+        descuento2: pedidoVentaLinea.descuento2,
+        posicionLinea: i,
+        createdFromCliente:
+            pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null);
     context.router.push(SeleccionarCantidadRoute(
         seleccionarCantidadParam: seleccionarCantidadParam));
   }
@@ -670,6 +681,8 @@ class StepArticuloListContent extends ConsumerWidget {
         clienteId: clienteId,
         articuloId: newArticuloValue.id,
         posicionLinea: pedidoVentaLineaList.length,
+        createdFromCliente:
+            pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null,
       );
 
       context.router.push(

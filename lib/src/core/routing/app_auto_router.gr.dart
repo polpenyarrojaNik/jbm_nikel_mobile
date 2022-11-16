@@ -234,6 +234,7 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           id: args.id,
           isNew: args.isNew,
+          createPedidoFromClienteId: args.createPedidoFromClienteId,
         ),
         fullscreenDialog: true,
       );
@@ -1292,6 +1293,7 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
     Key? key,
     String? id,
     bool? isNew,
+    String? createPedidoFromClienteId,
   }) : super(
           PedidoVentaEditRoute.name,
           path: '/pedido/edit',
@@ -1299,6 +1301,7 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
             key: key,
             id: id,
             isNew: isNew,
+            createPedidoFromClienteId: createPedidoFromClienteId,
           ),
         );
 
@@ -1310,6 +1313,7 @@ class PedidoVentaEditRouteArgs {
     this.key,
     this.id,
     this.isNew,
+    this.createPedidoFromClienteId,
   });
 
   final Key? key;
@@ -1318,9 +1322,11 @@ class PedidoVentaEditRouteArgs {
 
   final bool? isNew;
 
+  final String? createPedidoFromClienteId;
+
   @override
   String toString() {
-    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, isNew: $isNew}';
+    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, isNew: $isNew, createPedidoFromClienteId: $createPedidoFromClienteId}';
   }
 }
 
