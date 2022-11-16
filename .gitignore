@@ -32,6 +32,7 @@ lib/generated_plugin_registrant.dart
 **/android/key.properties
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+**/android/release/
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -310,4 +311,9 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+
+
+
+#BabelEdit
+babelEdit/
 
