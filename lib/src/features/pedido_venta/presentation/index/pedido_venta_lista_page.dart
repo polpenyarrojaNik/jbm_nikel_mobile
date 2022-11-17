@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
-
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_estado.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/index/pedido_search_controller.dart';
@@ -82,7 +82,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
     await ref
         .read(syncServiceProvider)
         .syncAllPedidosRelacionados(isInMainThread: true);
-    ref.refresh(pedidoVentaLastSyncDateProvider);
+    ref.invalidate(pedidoVentaLastSyncDateProvider);
 
     ref.invalidate(pedidoVentaIndexScreenControllerProvider);
   }
@@ -138,33 +138,26 @@ class PedidosListViewWidget extends StatelessWidget {
                 loading: () => const ProgressIndicatorWidget());
           },
         ),
+        gapH8,
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 8,
-              top: 16.0,
-              bottom: 16,
-              right: 16,
-            ),
-            child: statePedidoVentaCount.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              data: (count) => ListView.separated(
-                separatorBuilder: (context, i) => const Divider(),
-                physics: const AlwaysScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: count,
-                itemBuilder: (context, i) => ref
-                    .watch(PedidoVentaIndexScreenPaginatedControllerProvider(
-                        page: (i ~/ PedidoVentaRepository.pageSize)))
-                    .maybeWhen(
-                      orElse: () => const PedidoVentaShimmer(),
-                      data: (pedidoVentaList) => PedidoVentaListaTile(
-                        pedidoVenta:
-                            pedidoVentaList[i % PedidoVentaRepository.pageSize],
-                        navigatedFromCliente: false,
-                      ),
+          child: statePedidoVentaCount.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              physics: const AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(PedidoVentaIndexScreenPaginatedControllerProvider(
+                      page: (i ~/ PedidoVentaRepository.pageSize)))
+                  .maybeWhen(
+                    orElse: () => const PedidoVentaShimmer(),
+                    data: (pedidoVentaList) => PedidoVentaListaTile(
+                      pedidoVenta:
+                          pedidoVentaList[i % PedidoVentaRepository.pageSize],
+                      navigatedFromCliente: false,
                     ),
-              ),
+                  ),
             ),
           ),
         ),

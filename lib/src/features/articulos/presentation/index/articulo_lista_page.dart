@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/last_sync_date_widget.dart';
@@ -15,6 +14,7 @@ import '../../../../core/helpers/debouncer.dart';
 import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_controller.dart';
@@ -67,9 +67,9 @@ class ArticuloListaPage extends ConsumerWidget {
         .read(syncServiceProvider)
         .syncAllArticulosRelacionados(isInMainThread: true);
 
-    ref.refresh(articuloLastSyncDateProvider);
+    ref.invalidate(articuloLastSyncDateProvider);
 
-    ref.refresh(articuloIndexScreenControllerProvider);
+    ref.invalidate(articuloIndexScreenControllerProvider);
   }
 }
 
@@ -105,37 +105,32 @@ class ArticleListViewWidget extends StatelessWidget {
                 loading: () => const ProgressIndicatorWidget());
           },
         ),
+        gapH8,
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: stateArticuloListCount.maybeWhen(
-              data: (count) => ListView.separated(
-                separatorBuilder: (context, i) => const Divider(),
-                shrinkWrap: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: count,
-                itemBuilder: (context, i) => ref
-                    .watch(ArticuloIndexScreenPaginatedControllerProvider(
-                        page: i ~/ ArticuloRepository.pageSize))
-                    .maybeWhen(
-                      data: (articuloList) => GestureDetector(
-                        onTap: () => (!isSearchArticuloForForm)
-                            ? navigateToArticuloDetalPage(
-                                context,
-                                articuloList[i % ArticuloRepository.pageSize]
-                                    .id)
-                            : selectArticuloForFromPage(context, ref,
-                                articuloList[i % ArticuloRepository.pageSize]),
-                        child: ArticuloListaTile(
-                          articulo:
-                              articuloList[i % ArticuloRepository.pageSize],
-                        ),
+          child: stateArticuloListCount.maybeWhen(
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              shrinkWrap: true,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(ArticuloIndexScreenPaginatedControllerProvider(
+                      page: i ~/ ArticuloRepository.pageSize))
+                  .maybeWhen(
+                    data: (articuloList) => GestureDetector(
+                      onTap: () => (!isSearchArticuloForForm)
+                          ? navigateToArticuloDetalPage(context,
+                              articuloList[i % ArticuloRepository.pageSize].id)
+                          : selectArticuloForFromPage(context, ref,
+                              articuloList[i % ArticuloRepository.pageSize]),
+                      child: ArticuloListaTile(
+                        articulo: articuloList[i % ArticuloRepository.pageSize],
                       ),
-                      orElse: () => const ArticuloListShimmer(),
                     ),
-              ),
-              orElse: () => const ProgressIndicatorWidget(),
+                    orElse: () => const ArticuloListShimmer(),
+                  ),
             ),
+            orElse: () => const ProgressIndicatorWidget(),
           ),
         ),
       ],
