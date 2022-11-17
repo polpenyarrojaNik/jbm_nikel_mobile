@@ -63,7 +63,9 @@ class ArticuloListaPage extends ConsumerWidget {
   }
 
   Future<void> refreshArticleDb(WidgetRef ref) async {
-    await ref.read(syncServiceProvider).syncAllArticulosRelacionados();
+    await ref
+        .read(syncServiceProvider)
+        .syncAllArticulosRelacionados(isInMainThread: true);
 
     ref.refresh(articuloLastSyncDateProvider);
 

@@ -100,7 +100,9 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   }
 
   Future<void> syncCustomerDb(WidgetRef ref) async {
-    await ref.read(syncServiceProvider).syncAllClientesRelacionados();
+    await ref
+        .read(syncServiceProvider)
+        .syncAllClientesRelacionados(isInMainThread: true);
     ref.refresh(clienteLastSyncDateProvider);
 
     ref.refresh(clienteIndexScreenControllerProvider);

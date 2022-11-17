@@ -220,7 +220,8 @@ class SyncService {
     }
   }
 
-  Future<void> syncAllArticulosRelacionados({bool? syncAuxTables}) async {
+  Future<void> syncAllArticulosRelacionados(
+      {required bool isInMainThread}) async {
     try {
       await syncArticulos();
       await syncArticuloEmpresasIva();
@@ -233,13 +234,17 @@ class SyncService {
       await syncFamilias();
       await syncSubfamilias();
       await syncDescuentoGeneral();
-      if (syncAuxTables ?? false) await syncAllAuxiliares();
+      if (isInMainThread) {
+        await syncAllAuxiliares();
+        await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
+      }
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> syncAllClientesRelacionados({bool? syncAuxTables}) async {
+  Future<void> syncAllClientesRelacionados(
+      {required bool isInMainThread}) async {
     try {
       await syncClientes();
       await syncTopArticulos();
@@ -252,13 +257,17 @@ class SyncService {
       await syncClientesRappels();
       await syncClientesUsuario();
       await syncVentasUsuario();
-      if (syncAuxTables ?? false) await syncAllAuxiliares();
+      if (isInMainThread) {
+        await syncAllAuxiliares();
+        await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
+      }
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> syncAllPedidosRelacionados({bool? syncAuxTables}) async {
+  Future<void> syncAllPedidosRelacionados(
+      {required bool isInMainThread}) async {
     try {
       await enviarPedidosNoEnviados();
       await syncPedidos();
@@ -266,17 +275,24 @@ class SyncService {
       await syncPedidoVentaLinea();
       await syncPedidoVentaAlbaran();
       await syncPedidoVentaEstado();
-      if (syncAuxTables ?? false) await syncAllAuxiliares();
+      if (isInMainThread) {
+        await syncAllAuxiliares();
+        await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
+      }
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> syncAllVisitasRelacionados({bool? syncAuxTables}) async {
+  Future<void> syncAllVisitasRelacionados(
+      {required bool isInMainThread}) async {
     await enviarVisitasNoEnviadas();
     await syncVisitas();
     await checkVisitasTratadas();
-    if (syncAuxTables ?? false) await syncAllAuxiliares();
+    if (isInMainThread) {
+      await syncAllAuxiliares();
+      await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
+    }
   }
 
   Future<void> syncAllAuxiliares() async {
@@ -297,7 +313,6 @@ class SyncService {
         tableInfo: _db.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
-      // await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.severe(e.details);
       rethrow;
@@ -1135,16 +1150,16 @@ class SyncService {
     }
   }
 
-  // Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
-  //   try {
-  //     final sharedPreferences = await SharedPreferences.getInstance();
+  Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
+    try {
+      final sharedPreferences = await SharedPreferences.getInstance();
 
-  //     await sharedPreferences.setString(
-  //         entityKey, DateTime.now().toUtc().toIso8601String());
-  //   } catch (e) {
-  //     rethrow;
-  //   }
-  // }
+      await sharedPreferences.setString(
+          entityKey, DateTime.now().toUtc().toIso8601String());
+    } catch (e) {
+      rethrow;
+    }
+  }
 
   Future<void> _saveDataInPreferences() async {
     try {
@@ -1195,13 +1210,13 @@ class SyncService {
     SyncProgress splashProgress = SyncProgress.downloadedDatabase;
 
     try {
-      await syncAllArticulosRelacionados();
+      await syncAllArticulosRelacionados(isInMainThread: false);
       splashProgress = SyncProgress.syncArticulos;
-      await syncAllClientesRelacionados();
+      await syncAllClientesRelacionados(isInMainThread: false);
       splashProgress = SyncProgress.syncClientes;
-      await syncAllPedidosRelacionados();
+      await syncAllPedidosRelacionados(isInMainThread: false);
       splashProgress = SyncProgress.syncPedidos;
-      await syncAllVisitasRelacionados();
+      await syncAllVisitasRelacionados(isInMainThread: false);
       splashProgress = SyncProgress.syncVisitas;
       await syncAllAuxiliares();
       splashProgress = SyncProgress.syncAuxiliar;

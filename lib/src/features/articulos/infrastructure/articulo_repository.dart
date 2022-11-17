@@ -576,14 +576,16 @@ class ArticuloRepository {
 
       query.where((_db.pedidoVentaLineaTable.articuloId.equals(articuloId) &
           _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-          _db.pedidoVentaLineaTable.cantidad
-              .isBiggerThan(_db.pedidoVentaLineaTable.cantidadServida) &
-          (_db.pedidoVentaEstadoTable.id.equals(0) |
-              _db.pedidoVentaEstadoTable.id.equals(1) |
-              _db.pedidoVentaEstadoTable.id.equals(98) |
-              _db.pedidoVentaEstadoTable.id.equals(99))));
+          (_db.pedidoVentaLineaTable.cantidad -
+                  _db.pedidoVentaLineaTable.cantidadServida)
+              .isBiggerThanValue(0) &
+          _db.pedidoVentaEstadoTable.id.isIn([0, 1, 98, 99])));
 
-      query.orderBy([OrderingTerm.desc(_db.pedidoVentaTable.pedidoVentaDate)]);
+      query.orderBy([
+        OrderingTerm.asc(_db.pedidoVentaTable.pedidoVentaDate),
+        OrderingTerm.asc(_db.pedidoVentaTable.pedidoVentaId),
+        OrderingTerm.asc(_db.pedidoVentaLineaTable.pedidoVentaLineaId)
+      ]);
 
       return query.asyncMap((row) async {
         final pedidoVentaLineaDTO = row.readTable(_db.pedidoVentaLineaTable);

@@ -60,7 +60,9 @@ class VisitaListaPage extends ConsumerWidget {
   }
 
   Future<void> refreshVisitsDB(WidgetRef ref) async {
-    await ref.read(syncServiceProvider).syncAllVisitasRelacionados();
+    await ref
+        .read(syncServiceProvider)
+        .syncAllVisitasRelacionados(isInMainThread: true);
     ref.refresh(visitaLastSyncDateProvider);
 
     ref.invalidate(visitaIndexScreenControllerProvider);
