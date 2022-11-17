@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
-
 import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/app_initialization/presentation/splash_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
+
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
@@ -51,7 +51,7 @@ class SplashPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const ProgressIndicatorWidget(),
-              gapH8,
+              gapH32,
               Text(S.of(context).splash_descargandoBaseDeDatos),
             ],
           ),

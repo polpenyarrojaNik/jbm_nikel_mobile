@@ -464,7 +464,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "splash_clientes":
             MessageLookupByLibrary.simpleMessage("Synchronizing customers..."),
         "splash_descargandoBaseDeDatos": MessageLookupByLibrary.simpleMessage(
-            "Downloading initial database...\nThis process is done only once and can take several minutes depending on your Internet connection."),
+            "Downloading initial database...\n\nThis process is done only once and can take several minutes depending on your Internet connection."),
         "splash_otras":
             MessageLookupByLibrary.simpleMessage("Synchronizing others..."),
         "splash_pedidos": MessageLookupByLibrary.simpleMessage(
