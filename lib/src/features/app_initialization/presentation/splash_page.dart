@@ -43,7 +43,6 @@ class SplashPage extends ConsumerWidget {
     );
     final state = ref.watch(splashPageControllerProvider);
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: state.when(

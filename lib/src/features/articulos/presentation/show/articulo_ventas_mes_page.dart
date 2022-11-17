@@ -2,11 +2,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_ventas_mes.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -38,16 +40,23 @@ class ArticuloVentasMesPage extends ConsumerWidget {
             ),
             data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
                 ? SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        VentasMesDataTable(
-                            articuloVentasMesList: articuloVentasMesList),
-                        SizedBox(
-                          height: 400,
-                          child: GraficaVentasMes(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          VentasMesDataTable(
                               articuloVentasMesList: articuloVentasMesList),
-                        ),
-                      ],
+                          gapH16,
+                          const LeyendaWidget(),
+                          gapH16,
+                          SizedBox(
+                            height: 400,
+                            child: GraficaVentasMes(
+                                articuloVentasMesList: articuloVentasMesList),
+                          ),
+                        ],
+                      ),
                     ),
                   )
                 : SliverFillRemaining(
@@ -85,14 +94,11 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       scrollDirection: Axis.vertical,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: DataTable(
-            horizontalMargin: 16,
-            columns: _createColumns(),
-            rows: _createDataRows(
-                articuloVentasMesList: widget.articuloVentasMesList),
-          ),
+        child: DataTable(
+          horizontalMargin: 16,
+          columns: _createColumns(),
+          rows: _createDataRows(
+              articuloVentasMesList: widget.articuloVentasMesList),
         ),
       ),
     );
@@ -357,7 +363,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         totalAnyo += articuloVentasMesList[i].unidadesAnyo_4;
       }
     }
-    return totalAnyo.toString();
+    return numberFormatCantidades(totalAnyo);
   }
 }
 
@@ -387,59 +393,58 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32.0),
-                child: BarChart(
-                  BarChartData(
-                    alignment: BarChartAlignment.spaceBetween,
-                    borderData: FlBorderData(
-                      show: true,
-                      border: const Border.symmetric(
-                        horizontal: BorderSide(
-                          color: Color(0xFFececec),
-                        ),
+              child: BarChart(
+                BarChartData(
+                  alignment: BarChartAlignment.spaceBetween,
+                  borderData: FlBorderData(
+                    show: true,
+                    border: const Border.symmetric(
+                      horizontal: BorderSide(
+                        color: Color(0xFFececec),
                       ),
                     ),
-                    titlesData: FlTitlesData(
-                      show: true,
-                      rightTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (value, meta) =>
-                              getYTitles(widget.articuloVentasMesList, value),
-                          // reservedSize: 50,
-                        ),
-                      ),
-                      topTitles: AxisTitles(),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (value, meta) => getTiltlesMeses(
-                              widget.articuloVentasMesList, value),
-                        ),
-                      ),
-                    ),
-                    gridData: FlGridData(
-                      show: true,
-                      drawVerticalLine: false,
-                      getDrawingHorizontalLine: (value) => FlLine(
-                        color: const Color(0xFFececec),
-                        strokeWidth: 1,
-                      ),
-                    ),
-                    barGroups: dataList.asMap().entries.map((e) {
-                      final index = e.key;
-                      final data = e.value;
-                      return generateBarGroup(
-                        index,
-                        data.color,
-                        data.value,
-                        data.shadowValue,
-                      );
-                    }).toList(),
-                    maxY: getMaxYValue(widget.articuloVentasMesList),
-                    minY: 0,
                   ),
+                  titlesData: FlTitlesData(
+                    show: true,
+                    rightTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        interval: 1,
+                        showTitles: true,
+                        getTitlesWidget: (value, meta) =>
+                            getYTitles(widget.articuloVentasMesList, value),
+                        // reservedSize: 50,
+                      ),
+                    ),
+                    topTitles: AxisTitles(),
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        interval: 1,
+                        showTitles: true,
+                        getTitlesWidget: (value, meta) => getTiltlesMeses(
+                            widget.articuloVentasMesList, value),
+                      ),
+                    ),
+                  ),
+                  gridData: FlGridData(
+                    show: true,
+                    drawVerticalLine: false,
+                    getDrawingHorizontalLine: (value) => FlLine(
+                      color: const Color(0xFFececec),
+                      strokeWidth: 1,
+                    ),
+                  ),
+                  barGroups: dataList.asMap().entries.map((e) {
+                    final index = e.key;
+                    final data = e.value;
+                    return generateBarGroup(
+                      index,
+                      data.color,
+                      data.value,
+                      data.shadowValue,
+                    );
+                  }).toList(),
+                  maxY: getMaxYValue(widget.articuloVentasMesList),
+                  minY: 0,
                 ),
               ),
             ),
@@ -468,7 +473,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       List<ArticuloVentasMes> articuloVentasMesList, double value) {
     String valueString = '';
     if (value != 1 &&
-        value % (getMaxYValue(articuloVentasMesList) / 7).round() == 0) {
+        value % (getMaxYValue(articuloVentasMesList) / 9).round() == 0) {
       valueString = value.toStringAsFixed(0);
     }
     return Padding(
@@ -495,17 +500,17 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       }
     }
 
-    if (maxY > 14) {
-      if (maxY % (maxY / 7).round() == 0) {
+    if (maxY > 18) {
+      if (maxY % (maxY / 9).round() == 0) {
         return maxY.roundToDouble();
       }
       for (int i = maxY.round();; i++) {
-        if (i % (maxY / 7).round() == 0) {
+        if (i % (maxY / 9).round() == 0) {
           return i.toDouble();
         }
       }
     }
-    return 14;
+    return 18;
   }
 
   BarChartGroupData generateBarGroup(

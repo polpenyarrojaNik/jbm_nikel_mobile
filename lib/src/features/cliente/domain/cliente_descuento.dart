@@ -10,6 +10,7 @@ class ClienteDescuento with _$ClienteDescuento {
   const factory ClienteDescuento(
       {required String clienteId,
       required String articuloId,
+      required String? descripcion,
       required Familia familia,
       required Subfamilia subfamilia,
       required int cantidadDesde,

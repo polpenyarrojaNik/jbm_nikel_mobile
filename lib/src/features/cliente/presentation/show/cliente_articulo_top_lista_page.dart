@@ -139,13 +139,8 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
           selected: selectedRow == i,
           cells: [
             DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text((i + 1).toString()),
-                  ),
-                ],
+              Center(
+                child: Text((i + 1).toString()),
               ),
             ),
             DataCell(

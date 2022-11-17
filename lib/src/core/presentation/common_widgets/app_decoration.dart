@@ -42,4 +42,9 @@ class AppDecoration {
     color: Colors.grey,
     borderRadius: BorderRadius.circular(4),
   );
+
+  static BoxDecoration kpiLegend(Color color) => BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(4),
+      );
 }

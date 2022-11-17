@@ -6,6 +6,7 @@ import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_descuento.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -74,20 +75,32 @@ class ClienteDescuentoTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(clienteDescuento.articuloId,
-                      style: Theme.of(context).textTheme.subtitle2),
-                  Text(
-                      '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
-                      style: Theme.of(context).textTheme.caption),
-                  if (clienteDescuento.cantidadDesde != 1)
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                        '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
-                        style: Theme.of(context).textTheme.headline6),
-                ],
+                        (clienteDescuento.articuloId != '*')
+                            ? clienteDescuento.articuloId
+                            : S.of(context).articulo_todos,
+                        style: Theme.of(context).textTheme.subtitle2),
+                    if (clienteDescuento.descripcion != null)
+                      Text(
+                        clienteDescuento.descripcion!,
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    Text(
+                        '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
+                        style: Theme.of(context).textTheme.caption),
+                  ],
+                ),
               ),
+              gapW4,
+              if (clienteDescuento.cantidadDesde != 1)
+                Text(
+                    '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
+                    style: Theme.of(context).textTheme.caption),
+              if (clienteDescuento.cantidadDesde != 1) gapW8,
               Text(
                 '${numberFormatCantidades(clienteDescuento.descuento)}%',
               ),

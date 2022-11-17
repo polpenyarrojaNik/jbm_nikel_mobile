@@ -109,9 +109,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloVentasMes_mes":
             MessageLookupByLibrary.simpleMessage("Mes"),
         "articulo_show_articuloVentasMes_titulo":
-            MessageLookupByLibrary.simpleMessage("Ventas Mes"),
+            MessageLookupByLibrary.simpleMessage("Ventas Mes (ud.)"),
         "articulo_show_articuloVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
+        "articulo_todos": MessageLookupByLibrary.simpleMessage("Todos"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Contraseña"),
         "auth_loginPage_iniciarSesion":
@@ -311,11 +312,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteVentasArticulo_importe":
             MessageLookupByLibrary.simpleMessage("Importe"),
         "cliente_show_clienteVentasArticulo_titulo":
-            MessageLookupByLibrary.simpleMessage("Ventas artículos"),
+            MessageLookupByLibrary.simpleMessage("Ventas artículos (ud.)"),
         "cliente_show_clienteVentasMes_mes":
             MessageLookupByLibrary.simpleMessage("Mes"),
         "cliente_show_clienteVentasMes_titulo":
-            MessageLookupByLibrary.simpleMessage("Ventas Mes"),
+            MessageLookupByLibrary.simpleMessage("Ventas Mes (ud.)"),
         "cliente_show_clienteVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
         "cliente_show_clienteVisitas_titulo":
@@ -465,7 +466,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "splash_clientes":
             MessageLookupByLibrary.simpleMessage("Sincronizando clientes..."),
         "splash_descargandoBaseDeDatos": MessageLookupByLibrary.simpleMessage(
-            "Descargando base de datos..."),
+            "Descargando base de datos inicial...\nEste proceso se realizará solamente una vez y puede durar varios minutos en función de su conexión a Internet."),
         "splash_otras":
             MessageLookupByLibrary.simpleMessage("Sincronizando otros..."),
         "splash_pedidos":

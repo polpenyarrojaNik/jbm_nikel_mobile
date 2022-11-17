@@ -99,8 +99,11 @@ class VisitaRepository {
       );
       vistiasListByCliente.addAll(visitasLocal);
 
-      final visitas =
-          await getVisitas(usuarioId: _usuario!.id, page: 0, searchText: '');
+      final visitas = await getVisitas(
+          usuarioId: _usuario!.id,
+          page: 0,
+          searchText: '',
+          clienteId: clienteId);
 
       vistiasListByCliente.addAll(visitas);
       return vistiasListByCliente;

@@ -9,6 +9,7 @@ class ClientePrecioNeto with _$ClientePrecioNeto {
   const factory ClientePrecioNeto(
       {required String clienteId,
       required String articuloId,
+      required String descripcion,
       required int cantidadDesde,
       required Money precio,
       required int tipoPrecio,

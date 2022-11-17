@@ -413,6 +413,12 @@ class ClienteRepository {
         ..where((t) => t.clienteId.equals(clienteId)));
 
       return query.asyncMap((row) async {
+        final articuloDto = (row.articuloId != '*')
+            ? await (_db.select(_db.articuloTable)
+                  ..where((t) => t.id.equals(row.articuloId)))
+                .getSingle()
+            : null;
+
         final familiaDTO = await (_db.select(_db.familiaTable)
               ..where((t) => t.id.equals(row.familiaId)))
             .getSingle();
@@ -420,8 +426,14 @@ class ClienteRepository {
               ..where((t) => t.id.equals(row.subfamiliaId)))
             .getSingle();
         return row.toDomain(
-            familia: familiaDTO.toDomain(),
-            subfamilia: subfamiliaDTO.toDomain());
+          descripcion: (articuloDto != null)
+              ? getDescriptionInLocalLanguage(
+                  articulo:
+                      articuloDto.toDomain(familia: null, subfamilia: null))
+              : null,
+          familia: familiaDTO.toDomain(),
+          subfamilia: subfamiliaDTO.toDomain(),
+        );
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -436,13 +448,25 @@ class ClienteRepository {
             _db.clienteTable,
             _db.clienteTable.id
                 .equalsExp(_db.clientePrecioNetoTable.clienteId)),
+        innerJoin(
+            _db.articuloTable,
+            _db.articuloTable.id
+                .equalsExp(_db.clientePrecioNetoTable.articuloId)),
       ]);
       query.where(_db.clienteTable.id.equals(clienteId));
 
       return query.map((row) {
         final clienteDTO = row.readTable(_db.clienteTable);
+        final articulo = row
+            .readTable(_db.articuloTable)
+            .toDomain(familia: null, subfamilia: null);
+
         final precioNetoDTO = row.readTable(_db.clientePrecioNetoTable);
-        return precioNetoDTO.toDomain(divisaId: clienteDTO.divisaId);
+        return precioNetoDTO.toDomain(
+            divisaId: clienteDTO.divisaId,
+            descripcion: getDescriptionInLocalLanguage(
+              articulo: articulo,
+            ));
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

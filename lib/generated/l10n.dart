@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Downloading database...`
+  /// `Downloading initial database...\nThis process is done only once and can take several minutes depending on your Internet connection.`
   String get splash_descargandoBaseDeDatos {
     return Intl.message(
-      'Downloading database...',
+      'Downloading initial database...\nThis process is done only once and can take several minutes depending on your Internet connection.',
       name: 'splash_descargandoBaseDeDatos',
       desc: '',
       args: [],
@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `All`
+  String get articulo_todos {
+    return Intl.message(
+      'All',
+      name: 'articulo_todos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Articles`
   String get articulo_index_titulo {
     return Intl.message(
@@ -280,10 +290,10 @@ class S {
     );
   }
 
-  /// `Datos generales`
+  /// `General data`
   String get articulo_show_articuloDetalle_datosGenerales {
     return Intl.message(
-      'Datos generales',
+      'General data',
       name: 'articulo_show_articuloDetalle_datosGenerales',
       desc: '',
       args: [],
@@ -300,20 +310,20 @@ class S {
     );
   }
 
-  /// `Stock y Entregas`
+  /// `Stock & deliveries∫`
   String get articulo_show_articuloDetalle_stockYEntregas {
     return Intl.message(
-      'Stock y Entregas',
+      'Stock & deliveries∫',
       name: 'articulo_show_articuloDetalle_stockYEntregas',
       desc: '',
       args: [],
     );
   }
 
-  /// `Logístic data`
+  /// `Logistic data`
   String get articulo_show_articuloDetalle_datosLogistica {
     return Intl.message(
-      'Logístic data',
+      'Logistic data',
       name: 'articulo_show_articuloDetalle_datosLogistica',
       desc: '',
       args: [],
@@ -660,10 +670,10 @@ class S {
     );
   }
 
-  /// `Month sales`
+  /// `Monthly sales (pc.)`
   String get articulo_show_articuloVentasMes_titulo {
     return Intl.message(
-      'Month sales',
+      'Monthly sales (pc.)',
       name: 'articulo_show_articuloVentasMes_titulo',
       desc: '',
       args: [],
@@ -870,10 +880,10 @@ class S {
     );
   }
 
-  /// `Articles sales`
+  /// `Articles sales (pc.)`
   String get cliente_show_clienteVentasArticulo_titulo {
     return Intl.message(
-      'Articles sales',
+      'Articles sales (pc.)',
       name: 'cliente_show_clienteVentasArticulo_titulo',
       desc: '',
       args: [],
@@ -920,10 +930,10 @@ class S {
     );
   }
 
-  /// `Month sales`
+  /// `Monthly sales (pc.)`
   String get cliente_show_clienteVentasMes_titulo {
     return Intl.message(
-      'Month sales',
+      'Monthly sales (pc.)',
       name: 'cliente_show_clienteVentasMes_titulo',
       desc: '',
       args: [],
@@ -1140,10 +1150,10 @@ class S {
     );
   }
 
-  /// `Payment percentage`
+  /// `Returns percentage`
   String get cliente_show_clienteDetalle_porcentajeAbonos {
     return Intl.message(
-      'Payment percentage',
+      'Returns percentage',
       name: 'cliente_show_clienteDetalle_porcentajeAbonos',
       desc: '',
       args: [],
@@ -1284,10 +1294,10 @@ class S {
     );
   }
 
-  /// `P.P. Discount`
+  /// `Early payment discount`
   String get cliente_show_clienteDetalle_descuentoPP {
     return Intl.message(
-      'P.P. Discount',
+      'Early payment discount',
       name: 'cliente_show_clienteDetalle_descuentoPP',
       desc: '',
       args: [],
@@ -1404,10 +1414,10 @@ class S {
     );
   }
 
-  /// `Pending to facturate`
+  /// `Pending to invoice`
   String get cliente_show_clienteDetalle_pdteFacturar {
     return Intl.message(
-      'Pending to facturate',
+      'Pending to invoice',
       name: 'cliente_show_clienteDetalle_pdteFacturar',
       desc: '',
       args: [],

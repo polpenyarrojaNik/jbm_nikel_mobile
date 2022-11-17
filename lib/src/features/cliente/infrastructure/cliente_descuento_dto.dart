@@ -33,10 +33,13 @@ class ClienteDescuentoDTO
       _$ClienteDescuentoDTOFromJson(json);
 
   ClienteDescuento toDomain(
-      {required Familia familia, required Subfamilia subfamilia}) {
+      {required Familia familia,
+      required Subfamilia subfamilia,
+      required String? descripcion}) {
     return ClienteDescuento(
       clienteId: clienteId,
       articuloId: articuloId,
+      descripcion: descripcion,
       familia: familia,
       subfamilia: subfamilia,
       cantidadDesde: cantidadDesde,

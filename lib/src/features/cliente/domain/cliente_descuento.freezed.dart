@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClienteDescuento {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
+  String? get descripcion => throw _privateConstructorUsedError;
   Familia get familia => throw _privateConstructorUsedError;
   Subfamilia get subfamilia => throw _privateConstructorUsedError;
   int get cantidadDesde => throw _privateConstructorUsedError;
@@ -39,6 +40,7 @@ abstract class $ClienteDescuentoCopyWith<$Res> {
   $Res call(
       {String clienteId,
       String articuloId,
+      String? descripcion,
       Familia familia,
       Subfamilia subfamilia,
       int cantidadDesde,
@@ -65,6 +67,7 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
   $Res call({
     Object? clienteId = null,
     Object? articuloId = null,
+    Object? descripcion = freezed,
     Object? familia = null,
     Object? subfamilia = null,
     Object? cantidadDesde = null,
@@ -81,6 +84,10 @@ class _$ClienteDescuentoCopyWithImpl<$Res, $Val extends ClienteDescuento>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
+      descripcion: freezed == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
       familia: null == familia
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
@@ -136,6 +143,7 @@ abstract class _$$_ClienteDescuentoCopyWith<$Res>
   $Res call(
       {String clienteId,
       String articuloId,
+      String? descripcion,
       Familia familia,
       Subfamilia subfamilia,
       int cantidadDesde,
@@ -162,6 +170,7 @@ class __$$_ClienteDescuentoCopyWithImpl<$Res>
   $Res call({
     Object? clienteId = null,
     Object? articuloId = null,
+    Object? descripcion = freezed,
     Object? familia = null,
     Object? subfamilia = null,
     Object? cantidadDesde = null,
@@ -178,6 +187,10 @@ class __$$_ClienteDescuentoCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
+      descripcion: freezed == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
+              as String?,
       familia: null == familia
           ? _value.familia
           : familia // ignore: cast_nullable_to_non_nullable
@@ -212,6 +225,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
   const _$_ClienteDescuento(
       {required this.clienteId,
       required this.articuloId,
+      required this.descripcion,
       required this.familia,
       required this.subfamilia,
       required this.cantidadDesde,
@@ -224,6 +238,8 @@ class _$_ClienteDescuento extends _ClienteDescuento {
   final String clienteId;
   @override
   final String articuloId;
+  @override
+  final String? descripcion;
   @override
   final Familia familia;
   @override
@@ -239,7 +255,7 @@ class _$_ClienteDescuento extends _ClienteDescuento {
 
   @override
   String toString() {
-    return 'ClienteDescuento(clienteId: $clienteId, articuloId: $articuloId, familia: $familia, subfamilia: $subfamilia, cantidadDesde: $cantidadDesde, descuento: $descuento, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDescuento(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, familia: $familia, subfamilia: $subfamilia, cantidadDesde: $cantidadDesde, descuento: $descuento, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -251,6 +267,8 @@ class _$_ClienteDescuento extends _ClienteDescuento {
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
             (identical(other.familia, familia) || other.familia == familia) &&
             (identical(other.subfamilia, subfamilia) ||
                 other.subfamilia == subfamilia) &&
@@ -264,8 +282,17 @@ class _$_ClienteDescuento extends _ClienteDescuento {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, articuloId, familia,
-      subfamilia, cantidadDesde, descuento, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      clienteId,
+      articuloId,
+      descripcion,
+      familia,
+      subfamilia,
+      cantidadDesde,
+      descuento,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -278,6 +305,7 @@ abstract class _ClienteDescuento extends ClienteDescuento {
   const factory _ClienteDescuento(
       {required final String clienteId,
       required final String articuloId,
+      required final String? descripcion,
       required final Familia familia,
       required final Subfamilia subfamilia,
       required final int cantidadDesde,
@@ -290,6 +318,8 @@ abstract class _ClienteDescuento extends ClienteDescuento {
   String get clienteId;
   @override
   String get articuloId;
+  @override
+  String? get descripcion;
   @override
   Familia get familia;
   @override

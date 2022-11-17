@@ -558,15 +558,17 @@ class ArticuloRepository {
       {required String articuloId, required String usuarioId}) async {
     try {
       final query = _db.select(_db.pedidoVentaLineaTable).join([
-        leftOuterJoin(
+        innerJoin(
             _db.pedidoVentaTable,
-            _db.pedidoVentaTable.pedidoVentaId
-                .equalsExp(_db.pedidoVentaLineaTable.pedidoVentaId)),
+            (_db.pedidoVentaTable.pedidoVentaId
+                    .equalsExp(_db.pedidoVentaLineaTable.pedidoVentaId) &
+                _db.pedidoVentaTable.empresaId
+                    .equalsExp(_db.pedidoVentaLineaTable.empresaId))),
         innerJoin(
             _db.clienteUsuarioTable,
             _db.clienteUsuarioTable.clienteId
                 .equalsExp(_db.pedidoVentaTable.clienteId)),
-        leftOuterJoin(
+        innerJoin(
             _db.pedidoVentaEstadoTable,
             _db.pedidoVentaEstadoTable.id
                 .equalsExp(_db.pedidoVentaTable.pedidoVentaEstadoId)),
@@ -574,6 +576,8 @@ class ArticuloRepository {
 
       query.where((_db.pedidoVentaLineaTable.articuloId.equals(articuloId) &
           _db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          _db.pedidoVentaLineaTable.cantidad
+              .isBiggerThan(_db.pedidoVentaLineaTable.cantidadServida) &
           (_db.pedidoVentaEstadoTable.id.equals(0) |
               _db.pedidoVentaEstadoTable.id.equals(1) |
               _db.pedidoVentaEstadoTable.id.equals(98) |

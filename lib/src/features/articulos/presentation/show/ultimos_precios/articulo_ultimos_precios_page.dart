@@ -163,25 +163,28 @@ class UltimosPreciosTile extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Flexible(
-                            child: Text(
-                              '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
-                            ),
+                          Text(
+                            '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecioYDescuento(
+                              precio: ultimosPrecios.precioDivisa,
+                              tipoPrecio: ultimosPrecios.tipoPrecio,
+                              descuento1: ultimosPrecios.descuento1,
+                              descuento2: ultimosPrecios.descuento2,
+                              descuento3: ultimosPrecios.descuento3,
+                            )}',
+                            style: Theme.of(context).textTheme.subtitle2,
                           ),
                           Text(
                               '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}'),
                         ],
                       ),
                       gapH8,
-                      Text(
-                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecioYDescuento(
-                          precio: ultimosPrecios.precioDivisa,
-                          tipoPrecio: ultimosPrecios.tipoPrecio,
-                          descuento1: ultimosPrecios.descuento1,
-                          descuento2: ultimosPrecios.descuento2,
-                          descuento3: ultimosPrecios.descuento3,
-                        )}',
-                        style: Theme.of(context).textTheme.caption,
+                      Row(
+                        children: [
+                          Text(
+                            '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
+                            style: Theme.of(context).textTheme.caption,
+                          ),
+                        ],
                       ),
                     ],
                   ),

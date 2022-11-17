@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ClientePrecioNeto {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
+  String get descripcion => throw _privateConstructorUsedError;
   int get cantidadDesde => throw _privateConstructorUsedError;
   Money get precio => throw _privateConstructorUsedError;
   int get tipoPrecio => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $ClientePrecioNetoCopyWith<$Res> {
   $Res call(
       {String clienteId,
       String articuloId,
+      String descripcion,
       int cantidadDesde,
       Money precio,
       int tipoPrecio,
@@ -60,6 +62,7 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
   $Res call({
     Object? clienteId = null,
     Object? articuloId = null,
+    Object? descripcion = null,
     Object? cantidadDesde = null,
     Object? precio = null,
     Object? tipoPrecio = null,
@@ -74,6 +77,10 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
       cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
@@ -110,6 +117,7 @@ abstract class _$$_ClientePrecioNetoCopyWith<$Res>
   $Res call(
       {String clienteId,
       String articuloId,
+      String descripcion,
       int cantidadDesde,
       Money precio,
       int tipoPrecio,
@@ -130,6 +138,7 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
   $Res call({
     Object? clienteId = null,
     Object? articuloId = null,
+    Object? descripcion = null,
     Object? cantidadDesde = null,
     Object? precio = null,
     Object? tipoPrecio = null,
@@ -144,6 +153,10 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
       articuloId: null == articuloId
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
       cantidadDesde: null == cantidadDesde
           ? _value.cantidadDesde
@@ -175,6 +188,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   const _$_ClientePrecioNeto(
       {required this.clienteId,
       required this.articuloId,
+      required this.descripcion,
       required this.cantidadDesde,
       required this.precio,
       required this.tipoPrecio,
@@ -186,6 +200,8 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   final String clienteId;
   @override
   final String articuloId;
+  @override
+  final String descripcion;
   @override
   final int cantidadDesde;
   @override
@@ -199,7 +215,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
 
   @override
   String toString() {
-    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -211,6 +227,8 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
                 other.clienteId == clienteId) &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
             (identical(other.cantidadDesde, cantidadDesde) ||
                 other.cantidadDesde == cantidadDesde) &&
             (identical(other.precio, precio) || other.precio == precio) &&
@@ -223,7 +241,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
 
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, articuloId,
-      cantidadDesde, precio, tipoPrecio, lastUpdated, deleted);
+      descripcion, cantidadDesde, precio, tipoPrecio, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -237,6 +255,7 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   const factory _ClientePrecioNeto(
       {required final String clienteId,
       required final String articuloId,
+      required final String descripcion,
       required final int cantidadDesde,
       required final Money precio,
       required final int tipoPrecio,
@@ -248,6 +267,8 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   String get clienteId;
   @override
   String get articuloId;
+  @override
+  String get descripcion;
   @override
   int get cantidadDesde;
   @override

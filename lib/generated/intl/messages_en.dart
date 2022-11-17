@@ -43,9 +43,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloDetalle_consultas":
             MessageLookupByLibrary.simpleMessage("Queries"),
         "articulo_show_articuloDetalle_datosGenerales":
-            MessageLookupByLibrary.simpleMessage("Datos generales"),
+            MessageLookupByLibrary.simpleMessage("General data"),
         "articulo_show_articuloDetalle_datosLogistica":
-            MessageLookupByLibrary.simpleMessage("Logístic data"),
+            MessageLookupByLibrary.simpleMessage("Logistic data"),
         "articulo_show_articuloDetalle_datosRelacionados":
             MessageLookupByLibrary.simpleMessage("Related data"),
         "articulo_show_articuloDetalle_descatalogadoCompras":
@@ -81,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Summary"),
         "articulo_show_articuloDetalle_stockYEntregas":
-            MessageLookupByLibrary.simpleMessage("Stock y Entregas"),
+            MessageLookupByLibrary.simpleMessage("Stock & deliveries∫"),
         "articulo_show_articuloDetalle_subfamilia":
             MessageLookupByLibrary.simpleMessage("Subfamily"),
         "articulo_show_articuloDetalle_titulo":
@@ -109,9 +109,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloVentasMes_mes":
             MessageLookupByLibrary.simpleMessage("Month"),
         "articulo_show_articuloVentasMes_titulo":
-            MessageLookupByLibrary.simpleMessage("Month sales"),
+            MessageLookupByLibrary.simpleMessage("Monthly sales (pc.)"),
         "articulo_show_articuloVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
+        "articulo_todos": MessageLookupByLibrary.simpleMessage("All"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Password"),
         "auth_loginPage_iniciarSesion":
@@ -196,7 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_descuentoGeneral":
             MessageLookupByLibrary.simpleMessage("General discount"),
         "cliente_show_clienteDetalle_descuentoPP":
-            MessageLookupByLibrary.simpleMessage("P.P. Discount"),
+            MessageLookupByLibrary.simpleMessage("Early payment discount"),
         "cliente_show_clienteDetalle_direccion":
             MessageLookupByLibrary.simpleMessage("Address"),
         "cliente_show_clienteDetalle_direccion2":
@@ -236,7 +237,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_pdteCobroVencido":
             MessageLookupByLibrary.simpleMessage("Pending Collection Due"),
         "cliente_show_clienteDetalle_pdteFacturar":
-            MessageLookupByLibrary.simpleMessage("Pending to facturate"),
+            MessageLookupByLibrary.simpleMessage("Pending to invoice"),
         "cliente_show_clienteDetalle_pdteServir":
             MessageLookupByLibrary.simpleMessage("Pending to serve"),
         "cliente_show_clienteDetalle_plazoDeCobro":
@@ -244,7 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteDetalle_poblacion":
             MessageLookupByLibrary.simpleMessage("City"),
         "cliente_show_clienteDetalle_porcentajeAbonos":
-            MessageLookupByLibrary.simpleMessage("Payment percentage"),
+            MessageLookupByLibrary.simpleMessage("Returns percentage"),
         "cliente_show_clienteDetalle_porcentajeGarantias":
             MessageLookupByLibrary.simpleMessage("Warranty percentage"),
         "cliente_show_clienteDetalle_preciosYFormaDePago":
@@ -310,11 +311,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "cliente_show_clienteVentasArticulo_importe":
             MessageLookupByLibrary.simpleMessage("Amount"),
         "cliente_show_clienteVentasArticulo_titulo":
-            MessageLookupByLibrary.simpleMessage("Articles sales"),
+            MessageLookupByLibrary.simpleMessage("Articles sales (pc.)"),
         "cliente_show_clienteVentasMes_mes":
             MessageLookupByLibrary.simpleMessage("Month"),
         "cliente_show_clienteVentasMes_titulo":
-            MessageLookupByLibrary.simpleMessage("Month sales"),
+            MessageLookupByLibrary.simpleMessage("Monthly sales (pc.)"),
         "cliente_show_clienteVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
         "cliente_show_clienteVisitas_titulo":
@@ -462,8 +463,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Synchronizing articles..."),
         "splash_clientes":
             MessageLookupByLibrary.simpleMessage("Synchronizing customers..."),
-        "splash_descargandoBaseDeDatos":
-            MessageLookupByLibrary.simpleMessage("Downloading database..."),
+        "splash_descargandoBaseDeDatos": MessageLookupByLibrary.simpleMessage(
+            "Downloading initial database...\nThis process is done only once and can take several minutes depending on your Internet connection."),
         "splash_otras":
             MessageLookupByLibrary.simpleMessage("Synchronizing others..."),
         "splash_pedidos": MessageLookupByLibrary.simpleMessage(

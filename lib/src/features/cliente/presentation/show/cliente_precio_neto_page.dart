@@ -70,34 +70,32 @@ class ClientePrecioNetoTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        IntrinsicHeight(
-          child: Row(
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(clientePrecioNeto.articuloId,
-                            style: Theme.of(context).textTheme.subtitle2),
-                        if (clientePrecioNeto.cantidadDesde != 1)
-                          Text(
-                            '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
-                            style: Theme.of(context).textTheme.subtitle2,
-                          ),
-                      ],
-                    ),
-                    const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(clientePrecioNeto.articuloId,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  const Spacer(),
+                  if (clientePrecioNeto.cantidadDesde != 1)
                     Text(
-                      formatPrecios(
-                          precio: clientePrecioNeto.precio,
-                          tipoPrecio: clientePrecioNeto.tipoPrecio),
-                      style: Theme.of(context).textTheme.caption,
+                      '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
                     ),
-                  ],
-                ),
+                  Text(
+                    formatPrecios(
+                        precio: clientePrecioNeto.precio,
+                        tipoPrecio: clientePrecioNeto.tipoPrecio),
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                ],
+              ),
+              Text(
+                clientePrecioNeto.descripcion,
+                style: Theme.of(context).textTheme.caption,
               ),
             ],
           ),

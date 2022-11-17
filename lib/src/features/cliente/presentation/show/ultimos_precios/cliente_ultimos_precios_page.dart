@@ -166,7 +166,13 @@ class UltimosPreciosTile extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            ultimosPrecios.articuloId,
+                            '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecioYDescuento(
+                              precio: ultimosPrecios.precioDivisa,
+                              tipoPrecio: ultimosPrecios.tipoPrecio,
+                              descuento1: ultimosPrecios.descuento1,
+                              descuento2: ultimosPrecios.descuento2,
+                              descuento3: ultimosPrecios.descuento3,
+                            )}',
                             style: Theme.of(context).textTheme.subtitle2,
                           ),
                           Text(
@@ -175,15 +181,22 @@ class UltimosPreciosTile extends StatelessWidget {
                         ],
                       ),
                       gapH8,
-                      Text(
-                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecioYDescuento(
-                          precio: ultimosPrecios.precioDivisa,
-                          tipoPrecio: ultimosPrecios.tipoPrecio,
-                          descuento1: ultimosPrecios.descuento1,
-                          descuento2: ultimosPrecios.descuento2,
-                          descuento3: ultimosPrecios.descuento3,
-                        )}',
-                        style: Theme.of(context).textTheme.caption,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            ultimosPrecios.articuloId,
+                            style: Theme.of(context).textTheme.caption,
+                          ),
+                          if (ultimosPrecios.descripcion != null) gapW8,
+                          if (ultimosPrecios.descripcion != null)
+                            Flexible(
+                              child: Text(
+                                ultimosPrecios.descripcion!,
+                                style: Theme.of(context).textTheme.caption,
+                              ),
+                            )
+                        ],
                       ),
                     ],
                   ),
