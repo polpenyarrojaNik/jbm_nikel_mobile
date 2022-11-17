@@ -26,8 +26,10 @@ class PedidoVentaLineaTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (!pedidoVentaLinea.isComponente())
-                    Text(pedidoVentaLinea.pedidoVentaLineaId ??
-                        pedidoVentaLinea.pedidoVentaLineaAppId!),
+                    Text(
+                      pedidoVentaLinea.pedidoVentaLineaId ??
+                          pedidoVentaLinea.pedidoVentaLineaAppId!,
+                    ),
                 ],
               ),
             ),

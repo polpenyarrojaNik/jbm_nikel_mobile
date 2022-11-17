@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -38,6 +39,7 @@ class SeleccionarCantidadPage extends ConsumerStatefulWidget {
 class _SelecionarCantidadPageState
     extends ConsumerState<SeleccionarCantidadPage> {
   final formKeyCantidad = GlobalKey<FormBuilderState>();
+  final formKeyArticuloPrecio = GlobalKey<FormBuilderState>();
   final quanitityController = TextEditingController();
   final precioController = TextEditingController();
   final descuento1Controller = TextEditingController();
@@ -50,6 +52,8 @@ class _SelecionarCantidadPageState
   ArticuloPrecio? articuloPrecio;
   Articulo? articulo;
   Cliente? cliente;
+
+  bool initialLoadingData = true;
 
   @override
   void initState() {
@@ -147,6 +151,7 @@ class _SelecionarCantidadPageState
                       const Center(child: CircularProgressIndicator()),
                   data: (_) => (articuloPrecio != null)
                       ? _ArticuloPrecioContainer(
+                          formKey: formKeyArticuloPrecio,
                           precio: precio,
                           tipoPrecio: articuloPrecio!.precio.tipoPrecio,
                           precioController: precioController,
@@ -196,11 +201,10 @@ class _SelecionarCantidadPageState
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            (articulo != null && articuloPrecio != null && cliente != null)
-                ? navigateToCrearPedido(
-                    context, articuloPrecio!, articulo!, cliente!)
-                : null,
+        onPressed: () => (articulo != null && cliente != null)
+            ? navigateToCrearPedido(
+                context, articuloPrecio!, articulo!, cliente!)
+            : null,
         child: const Icon(Icons.check),
       ),
     );
@@ -212,7 +216,8 @@ class _SelecionarCantidadPageState
     Articulo articulo,
     Cliente cliente,
   ) {
-    if (formKeyCantidad.currentState!.saveAndValidate()) {
+    if (formKeyCantidad.currentState!.saveAndValidate() &&
+        formKeyArticuloPrecio.currentState!.saveAndValidate()) {
       final linea = PedidoVentaLinea(
         empresaId: null,
         pedidoVentaId: null,
@@ -309,6 +314,7 @@ class _SelecionarCantidadPageState
       totalQuantity = widget.seleccionarCantidadParam.cantidad!;
       descuento1 = widget.seleccionarCantidadParam.descuento1!;
       descuento2 = widget.seleccionarCantidadParam.descuento2!;
+      precio = widget.seleccionarCantidadParam.precio!;
     }
   }
 
@@ -317,15 +323,20 @@ class _SelecionarCantidadPageState
       setState(() {
         articuloPrecio = newArticuloPrecio;
 
-        precio = newArticuloPrecio.precio.precio.amount.toDecimal().toDouble();
-        precioController.text = numberFormatDecimal(
-            newArticuloPrecio.precio.precio.amount.toDecimal().toDouble());
+        if (!widget.seleccionarCantidadParam.isUpdatingLinea() ||
+            !initialLoadingData) {
+          precio =
+              newArticuloPrecio.precio.precio.amount.toDecimal().toDouble();
+          precioController.text = numberFormatDecimal(
+              newArticuloPrecio.precio.precio.amount.toDecimal().toDouble());
 
-        descuento1 = newArticuloPrecio.descuento1;
-        descuento1Controller.text = numberFormatCantidades(descuento1);
+          descuento1 = newArticuloPrecio.descuento1;
+          descuento1Controller.text = numberFormatCantidades(descuento1);
 
-        descuento2 = newArticuloPrecio.descuento2;
-        // descuento2Controller.text = numberFormatCantidades(descuento2);
+          descuento2 = newArticuloPrecio.descuento2;
+          // descuento2Controller.text = numberFormatCantidades(descuento2);
+        }
+        initialLoadingData = false;
       });
     }
   }
@@ -523,6 +534,7 @@ class _SelectQuantityFrom extends StatelessWidget {
 
 class _ArticuloPrecioContainer extends StatelessWidget {
   const _ArticuloPrecioContainer({
+    required this.formKey,
     required this.precio,
     required this.tipoPrecio,
     required this.precioController,
@@ -543,104 +555,116 @@ class _ArticuloPrecioContainer extends StatelessWidget {
   final void Function(double value) setDescuento2;
   final TextEditingController precioController;
   final TextEditingController descuento1Controller;
+  final GlobalKey<FormBuilderState> formKey;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          FormBuilderTextField(
-            name: 'precio',
-            controller: precioController,
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_precio,
-              suffix: Text(
-                'x$tipoPrecio',
-                style: Theme.of(context).textTheme.caption,
+      child: FormBuilder(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FormBuilderTextField(
+              name: 'precio',
+              controller: precioController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_precio,
+                suffix: Text(
+                  'x$tipoPrecio',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+              ]),
+              onChanged: (value) {
+                if (value != null && value.isNotEmpty) {
+                  final precioValue =
+                      double.tryParse(value.replaceAll(',', '.'));
+                  print(precioValue);
+                  if (precioValue != null) {
+                    setPrecio(precioValue);
+                  }
+                } else {
+                  setPrecio(0);
+                }
+              },
+              onTap: () => precioController.selection = TextSelection(
+                baseOffset: 0,
+                extentOffset: precioController.text.length,
               ),
             ),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                final precioValue = double.tryParse(value.replaceAll(',', '.'));
-                print(precioValue);
-                if (precioValue != null) {
-                  setPrecio(precioValue);
+            FormBuilderTextField(
+              name: 'dto1',
+              keyboardType: TextInputType.number,
+              controller: descuento1Controller,
+              decoration: InputDecoration(
+                labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
+                suffix: Text('%', style: Theme.of(context).textTheme.caption),
+              ),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(),
+              ]),
+              onChanged: (value) {
+                if (value != null && value.isNotEmpty) {
+                  final dto1Value = double.tryParse(value.replaceAll(',', '.'));
+                  print(dto1Value);
+                  if (dto1Value != null) {
+                    setDescuento1(dto1Value);
+                  }
+                } else {
+                  setDescuento1(0);
                 }
-              } else {
-                setPrecio(0);
-              }
-            },
-            onTap: () => precioController.selection = TextSelection(
-              baseOffset: 0,
-              extentOffset: precioController.text.length,
+              },
+              onTap: () => descuento1Controller.selection = TextSelection(
+                baseOffset: 0,
+                extentOffset: descuento1Controller.text.length,
+              ),
             ),
-          ),
-          FormBuilderTextField(
-            name: 'dto1',
-            keyboardType: TextInputType.number,
-            controller: descuento1Controller,
-            decoration: InputDecoration(
-              labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-              suffix: Text('%', style: Theme.of(context).textTheme.caption),
-            ),
-            onChanged: (value) {
-              if (value != null && value.isNotEmpty) {
-                final dto1Value = double.tryParse(value.replaceAll(',', '.'));
-                print(dto1Value);
-                if (dto1Value != null) {
-                  setDescuento1(dto1Value);
-                }
-              } else {
-                setDescuento1(0);
-              }
-            },
-            onTap: () => descuento1Controller.selection = TextSelection(
-              baseOffset: 0,
-              extentOffset: descuento1Controller.text.length,
-            ),
-          ),
-          // FormBuilderTextField(
-          //   name: 'dto2',
-          //   keyboardType: TextInputType.number,
-          //   controller: descuento2Controller,
-          //   decoration: InputDecoration(
-          //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
-          // suffix: Text('%', style: Theme.of(context).textTheme.caption)
+            // FormBuilderTextField(
+            //   name: 'dto2',
+            //   keyboardType: TextInputType.number,
+            //   controller: descuento2Controller,
+            //   decoration: InputDecoration(
+            //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
+            // suffix: Text('%', style: Theme.of(context).textTheme.caption)
 
-          //   ),
-          //   onChanged: (value) {
-          //     if (value != null && value.isNotEmpty) {
-          //       final dto2Value = double.tryParse(value.replaceAll(',', '.'));
-          //       print(dto2Value);
-          //       if (dto2Value != null) {
-          //         setDescuento2(dto2Value);
-          //       }
-          //     } else {
-          //       setDescuento2(0);
-          //     }
-          //   },
-          //   validator: FormBuilderValidators.compose([
-          //     FormBuilderValidators.required(),
-          //   ]),
-          //   onTap: () => descuento1Controller.selection = TextSelection(
-          //     baseOffset: 0,
-          //     extentOffset: descuento1Controller.text.length,
-          //   ),
-          // ),
-          // FormBuilderTextField(
-          //   name: 'dto3',
-          //   readOnly: true,
-          //   keyboardType: TextInputType.number,
-          //   initialValue: descuento3.toString(),
-          //   decoration: InputDecoration(
-          //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
-          // suffix: Text('%', style: Theme.of(context).textTheme.caption)
+            //   ),
+            //   onChanged: (value) {
+            //     if (value != null && value.isNotEmpty) {
+            //       final dto2Value = double.tryParse(value.replaceAll(',', '.'));
+            //       print(dto2Value);
+            //       if (dto2Value != null) {
+            //         setDescuento2(dto2Value);
+            //       }
+            //     } else {
+            //       setDescuento2(0);
+            //     }
+            //   },
+            //   validator: FormBuilderValidators.compose([
+            //     FormBuilderValidators.required(),
+            //   ]),
+            //   onTap: () => descuento1Controller.selection = TextSelection(
+            //     baseOffset: 0,
+            //     extentOffset: descuento1Controller.text.length,
+            //   ),
+            // ),
+            // FormBuilderTextField(
+            //   name: 'dto3',
+            //   readOnly: true,
+            //   keyboardType: TextInputType.number,
+            //   initialValue: descuento3.toString(),
+            //   decoration: InputDecoration(
+            //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
+            // suffix: Text('%', style: Theme.of(context).textTheme.caption)
 
-          //   ),
-          // ),
-        ],
+            //   ),
+            // ),
+          ],
+        ),
       ),
     );
   }

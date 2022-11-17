@@ -652,6 +652,7 @@ class StepArticuloListContent extends ConsumerWidget {
     final seleccionarCantidadParam = SeleccionarCantidadParam(
         pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
         clienteId: clienteId,
+        precio: pedidoVentaLinea.precioDivisa.amount.toDecimal().toDouble(),
         articuloId: pedidoVentaLinea.articuloId,
         cantidad: pedidoVentaLinea.cantidad.toInt(),
         descuento1: pedidoVentaLinea.descuento1,

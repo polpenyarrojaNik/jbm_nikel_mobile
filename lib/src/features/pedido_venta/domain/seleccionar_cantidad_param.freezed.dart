@@ -21,6 +21,7 @@ mixin _$SeleccionarCantidadParam {
   String get clienteId => throw _privateConstructorUsedError;
   String get articuloId => throw _privateConstructorUsedError;
   int? get cantidad => throw _privateConstructorUsedError;
+  double? get precio => throw _privateConstructorUsedError;
   double? get descuento1 => throw _privateConstructorUsedError;
   double? get descuento2 => throw _privateConstructorUsedError;
   bool? get createdFromCliente => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       String clienteId,
       String articuloId,
       int? cantidad,
+      double? precio,
       double? descuento1,
       double? descuento2,
       bool? createdFromCliente,
@@ -68,6 +70,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
+    Object? precio = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
     Object? createdFromCliente = freezed,
@@ -90,6 +93,10 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
+      precio: freezed == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as double?,
       descuento1: freezed == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -133,6 +140,7 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       String clienteId,
       String articuloId,
       int? cantidad,
+      double? precio,
       double? descuento1,
       double? descuento2,
       bool? createdFromCliente,
@@ -158,6 +166,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? articuloId = null,
     Object? cantidad = freezed,
+    Object? precio = freezed,
     Object? descuento1 = freezed,
     Object? descuento2 = freezed,
     Object? createdFromCliente = freezed,
@@ -180,6 +189,10 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
           ? _value.cantidad
           : cantidad // ignore: cast_nullable_to_non_nullable
               as int?,
+      precio: freezed == precio
+          ? _value.precio
+          : precio // ignore: cast_nullable_to_non_nullable
+              as double?,
       descuento1: freezed == descuento1
           ? _value.descuento1
           : descuento1 // ignore: cast_nullable_to_non_nullable
@@ -208,6 +221,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       required this.clienteId,
       required this.articuloId,
       this.cantidad,
+      this.precio,
       this.descuento1,
       this.descuento2,
       this.createdFromCliente,
@@ -223,6 +237,8 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   @override
   final int? cantidad;
   @override
+  final double? precio;
+  @override
   final double? descuento1;
   @override
   final double? descuento2;
@@ -233,7 +249,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea)';
+    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea)';
   }
 
   @override
@@ -250,6 +266,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
                 other.articuloId == articuloId) &&
             (identical(other.cantidad, cantidad) ||
                 other.cantidad == cantidad) &&
+            (identical(other.precio, precio) || other.precio == precio) &&
             (identical(other.descuento1, descuento1) ||
                 other.descuento1 == descuento1) &&
             (identical(other.descuento2, descuento2) ||
@@ -267,6 +284,7 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       clienteId,
       articuloId,
       cantidad,
+      precio,
       descuento1,
       descuento2,
       createdFromCliente,
@@ -286,6 +304,7 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
       required final String clienteId,
       required final String articuloId,
       final int? cantidad,
+      final double? precio,
       final double? descuento1,
       final double? descuento2,
       final bool? createdFromCliente,
@@ -300,6 +319,8 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   String get articuloId;
   @override
   int? get cantidad;
+  @override
+  double? get precio;
   @override
   double? get descuento1;
   @override
