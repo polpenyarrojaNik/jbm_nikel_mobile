@@ -27,19 +27,18 @@ class ArticuloVentasMesPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).articulo_show_articuloVentasMes_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: descripcion,
-            ),
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloVentasMesList) => (articuloVentasMesList
-                      .isNotEmpty)
-                  ? Column(
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: descripcion,
+          ),
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
+                ? Expanded(
+                    child: ListView(
                       children: [
                         VentasMesDataTable(
                             articuloVentasMesList: articuloVentasMesList),
@@ -53,16 +52,16 @@ class ArticuloVentasMesPage extends ConsumerWidget {
                         gapH16,
                         const LeyendaWidget(),
                       ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
                     ),
-            ),
-          ],
-        ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

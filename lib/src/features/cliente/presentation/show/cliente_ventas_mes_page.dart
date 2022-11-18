@@ -28,19 +28,19 @@ class ClienteVentasMesPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteVentasMes_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
-                  ? Column(
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
+                ? Expanded(
+                    child: ListView(
                       children: [
                         VentasMesDataTable(
                           clienteVentasMesList: clienteVentasMesList,
@@ -55,19 +55,19 @@ class ClienteVentasMesPage extends ConsumerWidget {
                         gapH8,
                         const LeyendaWidget(),
                       ],
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
                     ),
-            ),
-          ],
-        ),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(S.of(context).sinResultados),
+                      ],
+                    ),
+                  ),
+          ),
+        ],
       ),
     );
   }

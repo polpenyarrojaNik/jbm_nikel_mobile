@@ -23,37 +23,35 @@ class ClienteGrupoNetoPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteGrupoNeto_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteGruposNetosList) =>
-                  (clienteGruposNetosList.isNotEmpty)
-                      ? ListView.separated(
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteGruposNetosList) =>
+                (clienteGruposNetosList.isNotEmpty)
+                    ? Expanded(
+                        child: ListView.separated(
                           itemCount: clienteGruposNetosList.length,
                           itemBuilder: (context, i) => ClienteGrupoNetoTile(
                             clienteGrupoNeto: clienteGruposNetosList[i],
                           ),
                           separatorBuilder: (context, i) => const Divider(),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
                         ),
-            ),
-          ],
-        ),
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).sinResultados),
+                        ],
+                      ),
+          ),
+        ],
       ),
     );
   }

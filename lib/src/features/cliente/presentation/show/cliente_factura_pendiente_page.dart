@@ -26,37 +26,35 @@ class ClientePagoPendientePage extends ConsumerWidget {
         title:
             Text(S.of(context).cliente_show_clienteFacturasPendientes_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clientePagosPendientesList) =>
-                  (clientePagosPendientesList.isNotEmpty)
-                      ? ListView.separated(
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clientePagosPendientesList) =>
+                (clientePagosPendientesList.isNotEmpty)
+                    ? Expanded(
+                        child: ListView.separated(
                           itemCount: clientePagosPendientesList.length,
                           itemBuilder: (context, i) => ClientePagoPendienteTile(
                             clientePagoPendiente: clientePagosPendientesList[i],
                           ),
                           separatorBuilder: (context, i) => const Divider(),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
                         ),
-            ),
-          ],
-        ),
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).sinResultados),
+                        ],
+                      ),
+          ),
+        ],
       ),
     );
   }

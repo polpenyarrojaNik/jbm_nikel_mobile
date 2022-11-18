@@ -24,29 +24,27 @@ class ArticuloVentasClientePage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).articulo_show_articuloVentasCliente_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: description,
-            ),
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloVentasClienteList) =>
-                  (articuloVentasClienteList.isNotEmpty)
-                      ? VentasClienteDataTable(
-                          articuloVentasClienteList: articuloVentasClienteList)
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
-                        ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: description,
+          ),
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (articuloVentasClienteList) =>
+                (articuloVentasClienteList.isNotEmpty)
+                    ? VentasClienteDataTable(
+                        articuloVentasClienteList: articuloVentasClienteList)
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).sinResultados),
+                        ],
+                      ),
+          ),
+        ],
       ),
     );
   }
@@ -87,17 +85,19 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Expanded(
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          sortColumnIndex: _currentSortColumn,
-          sortAscending: _sortAsc,
-          horizontalMargin: 16,
-          columns: _createColumns(widget.articuloVentasClienteList),
-          rows: _createDataRows(
-            articuloVentasClienteList: widget.articuloVentasClienteList,
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            sortColumnIndex: _currentSortColumn,
+            sortAscending: _sortAsc,
+            horizontalMargin: 16,
+            columns: _createColumns(widget.articuloVentasClienteList),
+            rows: _createDataRows(
+              articuloVentasClienteList: widget.articuloVentasClienteList,
+            ),
           ),
         ),
       ),

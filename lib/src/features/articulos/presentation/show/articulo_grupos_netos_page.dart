@@ -24,37 +24,34 @@ class ArticuloGrupoNetoPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).articulo_show_articuloGruposNetos_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: description,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloGrupoNetoList) =>
-                  (articuloGrupoNetoList.isNotEmpty)
-                      ? ListView.separated(
-                          shrinkWrap: true,
-                          itemCount: articuloGrupoNetoList.length,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, i) => ArticuloGrupoNetoTile(
-                            articuloGrupoNeto: articuloGrupoNetoList[i],
-                          ),
-                          separatorBuilder: (context, i) => const Divider(),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
-                        ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: description,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (articuloGrupoNetoList) => (articuloGrupoNetoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: articuloGrupoNetoList.length,
+                      itemBuilder: (context, i) => ArticuloGrupoNetoTile(
+                        articuloGrupoNeto: articuloGrupoNetoList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

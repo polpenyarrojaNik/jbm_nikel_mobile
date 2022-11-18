@@ -24,28 +24,26 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteArticulosTop_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articulosTopList) => (articulosTopList.isNotEmpty)
-                  ? ArticulosTopDataTable(articulosTopList: articulosTopList)
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (articulosTopList) => (articulosTopList.isNotEmpty)
+                ? ArticulosTopDataTable(articulosTopList: articulosTopList)
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }
@@ -67,14 +65,16 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Expanded(
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          horizontalMargin: 16,
-          columns: _createColumns(),
-          rows: _createDataRows(articulosTopList: widget.articulosTopList),
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            horizontalMargin: 16,
+            columns: _createColumns(),
+            rows: _createDataRows(articulosTopList: widget.articulosTopList),
+          ),
         ),
       ),
     );

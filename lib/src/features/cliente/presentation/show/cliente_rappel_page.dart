@@ -38,36 +38,34 @@ class ClienteRappelPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteRappel_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteRappelList) => (clienteRappelList.isNotEmpty)
-                  ? ListView.separated(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteRappelList) => (clienteRappelList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
                       itemCount: clienteRappelList.length,
                       itemBuilder: (context, i) => ClienteRappelTile(
                         clienteRappel: clienteRappelList[i],
                       ),
                       separatorBuilder: (context, i) => const Divider(),
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
                     ),
-            ),
-          ],
-        ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

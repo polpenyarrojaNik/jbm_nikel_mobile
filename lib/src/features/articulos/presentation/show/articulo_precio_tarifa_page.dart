@@ -24,37 +24,35 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).articulo_show_articuloPreciosTarifa_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: description,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloPrecioTarifaList) =>
-                  (articuloPrecioTarifaList.isNotEmpty)
-                      ? ListView.separated(
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: description,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (articuloPrecioTarifaList) =>
+                (articuloPrecioTarifaList.isNotEmpty)
+                    ? Expanded(
+                        child: ListView.separated(
                           itemCount: articuloPrecioTarifaList.length,
                           itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
                             articuloPrecioTarifa: articuloPrecioTarifaList[i],
                           ),
                           separatorBuilder: (context, i) => const Divider(),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
                         ),
-            ),
-          ],
-        ),
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).sinResultados),
+                        ],
+                      ),
+          ),
+        ],
       ),
     );
   }
