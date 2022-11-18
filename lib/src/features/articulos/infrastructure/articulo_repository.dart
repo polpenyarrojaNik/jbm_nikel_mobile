@@ -475,8 +475,7 @@ class ArticuloRepository {
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
-          print(
-              '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+
           final File file = await File(
                   '${cahceDirectories.path}/articulo/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
@@ -518,8 +517,7 @@ class ArticuloRepository {
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
-          print(
-              '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+
           final File file = await File(
                   '${cahceDirectories.path}/clientes/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
@@ -681,7 +679,6 @@ class ArticuloRepository {
       }).get();
 
       return query.map((row) {
-        print(row.data);
         return ArticuloVentasMesDTO.fromJson(row.data).toDomain();
       }).toList();
     } catch (e) {
@@ -700,7 +697,6 @@ class ArticuloRepository {
       }).get();
 
       return query.map((row) {
-        print(row.data);
         return ArticuloVentasClienteDTO.fromJson(row.data).toDomain();
       }).toList();
     } catch (e) {
@@ -779,7 +775,7 @@ FROM (
 )
 GROUP BY mes
 ''';
-    print(select);
+
     return select;
   }
 
@@ -888,7 +884,7 @@ WHERE CLIENTE_ID IS NOT NULL
 GROUP BY CLIENTE_ID, NOMBRE
 ORDER BY IMPORTE_ANYO DESC
 ''';
-    print(select);
+
     return select;
   }
 

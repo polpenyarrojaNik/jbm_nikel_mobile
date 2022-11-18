@@ -7,20 +7,16 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/app_initialization/domain/sync_progress.dart';
-import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../core/infrastructure/pais_dto.dart';
+import '../../core/infrastructure/subfamilia_dto.dart';
+import '../../features/app_initialization/domain/sync_progress.dart';
 import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
 import '../../features/articulos/infrastructure/articulo_dto.dart';
+import '../../features/articulos/infrastructure/articulo_empresa_iva_dto.dart';
 import '../../features/articulos/infrastructure/articulo_grupo_neto_dto.dart';
 import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart';
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
@@ -39,14 +35,19 @@ import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
+import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
 import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
 import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
+import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
+import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
+import '../application/log_service.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../presentation/app.dart';
@@ -54,7 +55,6 @@ import 'database.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
 import 'jbm_headers.dart';
-import 'logger.dart';
 import 'remote_response.dart';
 
 final syncServiceProvider = Provider.autoDispose<SyncService>(
@@ -117,7 +117,7 @@ class SyncService {
         }
       }
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -131,7 +131,7 @@ class SyncService {
         File((join(directory.path, localDatabaseName))).deleteSync();
       }
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -143,7 +143,7 @@ class SyncService {
       await deleteDatabaBase();
       await initDatabaBase();
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -208,8 +208,8 @@ class SyncService {
       for (final file in archive) {
         if (file.isFile && !file.name.contains('MACOSX')) {
           final data = file.content as List<int>;
-          print('Direcotry: ${directory.path}');
-          print('File: ${file.name}');
+          log.i('Direcotry: ${directory.path}');
+          log.i('File: ${file.name}');
           final databaseFile = File('${directory.path}/${file.name}');
           databaseFile.writeAsBytesSync(data);
         }
@@ -314,7 +314,7 @@ class SyncService {
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -329,7 +329,7 @@ class SyncService {
         fromJson: (e) => ArticuloEmpresaIvaDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -344,7 +344,7 @@ class SyncService {
         fromJson: (e) => ArticuloComponenteDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -359,7 +359,7 @@ class SyncService {
         fromJson: (e) => ArticuloGrupoNetoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -374,7 +374,7 @@ class SyncService {
         fromJson: (e) => ArticuloPrecioTarifaDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -389,7 +389,7 @@ class SyncService {
         fromJson: (e) => ArticuloRecambioDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -404,7 +404,7 @@ class SyncService {
         fromJson: (e) => ArticuloSustitutivoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -419,7 +419,7 @@ class SyncService {
         fromJson: (e) => EstadisticasUltimosPreciosDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -434,7 +434,7 @@ class SyncService {
         fromJson: (e) => EstadisticasVentaClienteUsuarioDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -450,7 +450,7 @@ class SyncService {
       );
       // await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -465,7 +465,7 @@ class SyncService {
         fromJson: (e) => ClienteUsuarioDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -480,7 +480,7 @@ class SyncService {
         fromJson: (e) => ClienteDireccionDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -495,7 +495,7 @@ class SyncService {
         fromJson: (e) => ClienteContactoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -510,7 +510,7 @@ class SyncService {
         fromJson: (e) => ClienteDescuentoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -525,7 +525,7 @@ class SyncService {
         fromJson: (e) => ClienteGrupoNetoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -540,7 +540,7 @@ class SyncService {
         fromJson: (e) => ClientePrecioNetoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -555,7 +555,7 @@ class SyncService {
         fromJson: (e) => ClientePagoPendienteDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -570,7 +570,7 @@ class SyncService {
         fromJson: (e) => ClienteRappelDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -585,7 +585,7 @@ class SyncService {
         fromJson: (e) => EstadisitcasArticulosTopDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -645,7 +645,7 @@ class SyncService {
       );
       // await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -660,7 +660,7 @@ class SyncService {
         fromJson: (e) => PedidoVentaLineaDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -675,7 +675,7 @@ class SyncService {
         fromJson: (e) => PedidoAlbaranDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -690,7 +690,7 @@ class SyncService {
         fromJson: (e) => PedidoVentaEstadoDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -706,7 +706,7 @@ class SyncService {
       );
       // await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -721,7 +721,7 @@ class SyncService {
         fromJson: (e) => PaisDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -736,7 +736,7 @@ class SyncService {
         fromJson: (e) => DivisaDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -751,7 +751,7 @@ class SyncService {
         fromJson: (e) => PlazoDeCobroDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -766,7 +766,7 @@ class SyncService {
         fromJson: (e) => MetodoDeCobroDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -781,7 +781,7 @@ class SyncService {
         fromJson: (e) => FamiliaDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -796,7 +796,7 @@ class SyncService {
         fromJson: (e) => SubfamiliaDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -817,7 +817,7 @@ class SyncService {
 
       final ultimaFechaSync = await getLastUpdatedDate(tableInfo: tableInfo);
 
-      print('SYNC: $apiPath');
+      log.i('SYNC: $apiPath');
 
       while (isNextPageAvailable) {
         final query = _getAPIQuery(
@@ -835,7 +835,7 @@ class SyncService {
           orElse: () {},
           withNewData: (data, maxPage, totalRows) async {
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
-            print('Values to sync in $apiPath: ${tableValueDTOList.length}');
+
             for (var i = 0; i < tableValueDTOList.length; i++) {
               final tableValue = tableValueDTOList[i];
 
@@ -853,7 +853,7 @@ class SyncService {
         );
       }
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -1003,8 +1003,7 @@ class SyncService {
           pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
       pedidoVentaLocalToJson
           .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
-      final json = jsonEncode(pedidoVentaLocalToJson);
-      print(json);
+
       final requestUri = (_usuario!.test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
@@ -1143,7 +1142,7 @@ class SyncService {
         fromJson: (e) => DescuentoGeneralDTO.fromJson(e),
       );
     } on AppException catch (e) {
-      log.severe(e.details);
+      log.e(e.details);
       rethrow;
     } catch (e) {
       rethrow;
@@ -1223,7 +1222,6 @@ class SyncService {
 
       return splashProgress;
     } catch (e) {
-      print(e);
       return splashProgress;
     }
   }

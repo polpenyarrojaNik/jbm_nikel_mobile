@@ -527,7 +527,6 @@ class ClienteRepository {
       }).get();
 
       return query.map((row) {
-        print(row.data);
         return ClienteVentasMesDTO.fromJson(row.data).toDomain();
       }).toList();
     } catch (e) {
@@ -546,7 +545,6 @@ class ClienteRepository {
       }).get();
 
       return query.map((row) {
-        print(row.data);
         return ClienteVentasArticuloDTO.fromJson(row.data).toDomain();
       }).toList();
     } catch (e) {
@@ -627,8 +625,7 @@ class ClienteRepository {
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
-          print(
-              '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+
           final File file = await File(
                   '${cahceDirectories.path}/cliente/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
@@ -670,8 +667,7 @@ class ClienteRepository {
 
         try {
           final cahceDirectories = await getTemporaryDirectory();
-          print(
-              '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}');
+
           final File file = await File(
                   '${cahceDirectories.path}/rappel/${adjuntoParam.id}/${adjuntoParam.nombreArchivo}')
               .create(recursive: true);
@@ -785,7 +781,7 @@ FROM (
 )
 GROUP BY mes
 ''';
-    print(select);
+
     return select;
   }
 
@@ -894,7 +890,7 @@ WHERE ARTICULO_ID IS NOT NULL
 GROUP BY ARTICULO_ID, DESCRIPCION_ES
 ORDER BY IMPORTE_ANYO DESC
 ''';
-    print(select);
+
     return select;
   }
 

@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/custom_search_app_bar.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/presentation/index/visita_lista_tile.dart';
@@ -63,7 +63,7 @@ class VisitaListaPage extends ConsumerWidget {
     await ref
         .read(syncServiceProvider)
         .syncAllVisitasRelacionados(isInMainThread: true);
-    ref.refresh(visitaLastSyncDateProvider);
+    ref.invalidate(visitaLastSyncDateProvider);
 
     ref.invalidate(visitaIndexScreenControllerProvider);
   }
@@ -101,26 +101,24 @@ class VisitaListViewWidget extends StatelessWidget {
                 loading: () => const ProgressIndicatorWidget());
           },
         ),
+        gapH8,
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: stateVisitaListCount.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              data: (count) => ListView.separated(
-                separatorBuilder: (context, i) => const Divider(),
-                physics: const AlwaysScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: count,
-                itemBuilder: (context, i) => ref
-                    .watch(VisitaIndexScreenPaginatedControllerProvider(
-                        page: (i ~/ VisitaRepository.pageSize)))
-                    .maybeWhen(
-                      orElse: () => const VisitaListShimmer(),
-                      data: (visitaList) => VisitaListaTile(
-                          visita: visitaList[i % VisitaRepository.pageSize],
-                          navigatedFromCliente: false),
-                    ),
-              ),
+          child: stateVisitaListCount.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              physics: const AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(VisitaIndexScreenPaginatedControllerProvider(
+                      page: (i ~/ VisitaRepository.pageSize)))
+                  .maybeWhen(
+                    orElse: () => const VisitaListShimmer(),
+                    data: (visitaList) => VisitaListaTile(
+                        visita: visitaList[i % VisitaRepository.pageSize],
+                        navigatedFromCliente: false),
+                  ),
             ),
           ),
         ),

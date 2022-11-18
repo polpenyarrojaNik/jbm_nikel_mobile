@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_ui.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
@@ -14,7 +13,7 @@ import '../../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/last_sync_date_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_list_shimmer.dart';
@@ -103,9 +102,9 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
     await ref
         .read(syncServiceProvider)
         .syncAllClientesRelacionados(isInMainThread: true);
-    ref.refresh(clienteLastSyncDateProvider);
+    ref.invalidate(clienteLastSyncDateProvider);
 
-    ref.refresh(clienteIndexScreenControllerProvider);
+    ref.invalidate(clienteIndexScreenControllerProvider);
   }
 }
 
@@ -140,38 +139,36 @@ class ClientesListViewWidget extends StatelessWidget {
                 loading: () => const ProgressIndicatorWidget());
           },
         ),
+        gapH8,
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: stateClienteListCount.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              data: (count) => ListView.separated(
-                separatorBuilder: (context, i) => const Divider(),
-                shrinkWrap: true,
-                physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: count,
-                itemBuilder: (context, i) => ref
-                    .watch(ClienteIndexScreenPaginatedControllerProvider(
-                        page: (i ~/ ClienteRepository.pageSize)))
-                    .maybeWhen(
-                      orElse: () => const ClienteListShimmer(),
-                      data: (clienteList) => GestureDetector(
-                        onTap: () => (!isSearchClienteForFrom)
-                            ? navigateToClienteDetalle(
-                                context: context,
-                                clienteId:
-                                    clienteList[i % ClienteRepository.pageSize]
-                                        .id)
-                            : selectClienteForFromPage(
-                                context: context,
-                                cliente: clienteList[
-                                    i % ClienteRepository.pageSize]),
-                        child: ClienteListaTile(
-                          cliente: clienteList[i % ClienteRepository.pageSize],
-                        ),
+          child: stateClienteListCount.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            data: (count) => ListView.separated(
+              separatorBuilder: (context, i) => const Divider(),
+              shrinkWrap: true,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: count,
+              itemBuilder: (context, i) => ref
+                  .watch(ClienteIndexScreenPaginatedControllerProvider(
+                      page: (i ~/ ClienteRepository.pageSize)))
+                  .maybeWhen(
+                    orElse: () => const ClienteListShimmer(),
+                    data: (clienteList) => GestureDetector(
+                      onTap: () => (!isSearchClienteForFrom)
+                          ? navigateToClienteDetalle(
+                              context: context,
+                              clienteId:
+                                  clienteList[i % ClienteRepository.pageSize]
+                                      .id)
+                          : selectClienteForFromPage(
+                              context: context,
+                              cliente:
+                                  clienteList[i % ClienteRepository.pageSize]),
+                      child: ClienteListaTile(
+                        cliente: clienteList[i % ClienteRepository.pageSize],
                       ),
                     ),
-              ),
+                  ),
             ),
           ),
         ),

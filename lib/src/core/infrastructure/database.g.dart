@@ -2101,7 +2101,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 3),
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
+      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
   final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
@@ -2109,7 +2109,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 2),
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
+      defaultConstraints: 'REFERENCES "DIVISAS" ("DIVISA_ID")');
   final VerificationMeta _baseImponibleMeta =
       const VerificationMeta('baseImponible');
   @override
@@ -2155,7 +2155,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       'ESTADO_PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PEDIDOS_ESTADOS (ESTADO_PEDIDO_ID)',
+      defaultConstraints: 'REFERENCES "PEDIDOS_ESTADOS" ("ESTADO_PEDIDO_ID")',
       defaultValue: const Constant(0));
   final VerificationMeta _ofertaMeta = const VerificationMeta('oferta');
   @override
@@ -4718,7 +4718,7 @@ class $ClienteTableTable extends ClienteTable
       'PAIS_ID_FISCAL', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
+      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
   final VerificationMeta _latitudFiscalMeta =
       const VerificationMeta('latitudFiscal');
   @override
@@ -4806,7 +4806,7 @@ class $ClienteTableTable extends ClienteTable
       'DIVISA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
+      defaultConstraints: 'REFERENCES "DIVISAS" ("DIVISA_ID")');
   final VerificationMeta _tarifaIdMeta = const VerificationMeta('tarifaId');
   @override
   late final GeneratedColumn<String> tarifaId = GeneratedColumn<String>(
@@ -4844,7 +4844,7 @@ class $ClienteTableTable extends ClienteTable
       'PLAZO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PLAZOS_COBRO (PLAZO_COBRO_ID)');
+      defaultConstraints: 'REFERENCES "PLAZOS_COBRO" ("PLAZO_COBRO_ID")');
   final VerificationMeta _metodoDeCobroIdMeta =
       const VerificationMeta('metodoDeCobroId');
   @override
@@ -4852,7 +4852,7 @@ class $ClienteTableTable extends ClienteTable
       'METODO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
+      defaultConstraints: 'REFERENCES "METODOS_COBRO" ("METODO_COBRO_ID")');
   final VerificationMeta _descuentoProntoPagoMeta =
       const VerificationMeta('descuentoProntoPago');
   @override
@@ -7078,7 +7078,7 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES FAMILIAS (FAMILIA_ID)');
+      defaultConstraints: 'REFERENCES "FAMILIAS" ("FAMILIA_ID")');
   final VerificationMeta _subfamiliaIdMeta =
       const VerificationMeta('subfamiliaId');
   @override
@@ -7086,7 +7086,7 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
       'SUBFAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)');
+      defaultConstraints: 'REFERENCES "SUBFAMILIAS" ("SUBFAMILIA_ID")');
   final VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
@@ -7803,7 +7803,7 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
+      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
   final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
   @override
   late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
@@ -8194,7 +8194,7 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
       'METODO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES METODOS_COBRO (METODO_COBRO_ID)');
+      defaultConstraints: 'REFERENCES "METODOS_COBRO" ("METODO_COBRO_ID")');
   final VerificationMeta _estadoCobroIdMeta =
       const VerificationMeta('estadoCobroId');
   @override
@@ -11050,7 +11050,7 @@ class $ArticuloTableTable extends ArticuloTable
       'FAMILIA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES FAMILIAS (FAMILIA_ID)');
+      defaultConstraints: 'REFERENCES "FAMILIAS" ("FAMILIA_ID")');
   final VerificationMeta _subfamiliaIdMeta =
       const VerificationMeta('subfamiliaId');
   @override
@@ -11058,7 +11058,7 @@ class $ArticuloTableTable extends ArticuloTable
       'SUBFAMILIA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)');
+      defaultConstraints: 'REFERENCES "SUBFAMILIAS" ("SUBFAMILIA_ID")');
   final VerificationMeta _ventaMinimoMeta =
       const VerificationMeta('ventaMinimo');
   @override
@@ -16002,14 +16002,14 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES PAISES (PAIS_ID)');
+      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
   final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES DIVISAS (DIVISA_ID)');
+      defaultConstraints: 'REFERENCES "DIVISAS" ("DIVISA_ID")');
   final VerificationMeta _pedidoClienteMeta =
       const VerificationMeta('pedidoCliente');
   @override

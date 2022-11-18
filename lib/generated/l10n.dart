@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Downloading initial database...\nThis process is done only once and can take several minutes depending on your Internet connection.`
+  /// `Downloading initial database...\n\nThis process is done only once and can take several minutes depending on your Internet connection.`
   String get splash_descargandoBaseDeDatos {
     return Intl.message(
-      'Downloading initial database...\nThis process is done only once and can take several minutes depending on your Internet connection.',
+      'Downloading initial database...\n\nThis process is done only once and can take several minutes depending on your Internet connection.',
       name: 'splash_descargandoBaseDeDatos',
       desc: '',
       args: [],

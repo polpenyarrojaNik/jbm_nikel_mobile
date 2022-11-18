@@ -31,6 +31,7 @@ class PedidoVentaListaTile extends StatelessWidget {
           : null,
       child: IntrinsicHeight(
         child: Container(
+          padding: const EdgeInsets.only(right: 16.0),
           color: Colors.transparent,
           child: SizedBox(
             height: 90,
