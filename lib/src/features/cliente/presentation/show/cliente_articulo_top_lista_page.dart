@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/infrastructure/articulo_top_repository.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_top.dart';
@@ -72,6 +72,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
           scrollDirection: Axis.horizontal,
           child: DataTable(
             horizontalMargin: 16,
+            columnSpacing: 16,
             columns: _createColumns(),
             rows: _createDataRows(articulosTopList: widget.articulosTopList),
           ),
@@ -91,14 +92,14 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
       ),
       DataColumn(
         label: Text(S.of(context).cliente_show_clienteArticulosTop_articulo,
-            textAlign: TextAlign.center),
+            textAlign: TextAlign.left),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
           child: Text(
               S.of(context).cliente_show_clienteArticulosTop_descripcion,
-              textAlign: TextAlign.center),
+              textAlign: TextAlign.left),
         ),
         numeric: false,
       ),
@@ -106,7 +107,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
         label: Expanded(
           child: Text(
               S.of(context).cliente_show_clienteArticulosTop_ventasTotal,
-              textAlign: TextAlign.center),
+              textAlign: TextAlign.right),
         ),
         numeric: false,
       ),
@@ -114,7 +115,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
         label: Expanded(
           child: Text(
               S.of(context).cliente_show_clienteArticulosTop_ventasCliente,
-              textAlign: TextAlign.center),
+              textAlign: TextAlign.right),
         ),
         numeric: false,
       ),
@@ -141,9 +142,11 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Center(
+                  SizedBox(
+                    width: 50,
                     child: Text(
                       articulosTopList[i].articuloId,
+                      style: Theme.of(context).textTheme.caption,
                     ),
                   ),
                 ],
@@ -167,11 +170,12 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
             ),
             DataCell(
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Center(
                     child: Text(
                       articulosTopList[i].ventasTotal.toString(),
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],
@@ -179,11 +183,12 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
             ),
             DataCell(
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Center(
                     child: Text(
                       articulosTopList[i].ventasCliente.toString(),
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],

@@ -6,8 +6,8 @@ import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -93,6 +93,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       scrollDirection: Axis.horizontal,
       child: DataTable(
         horizontalMargin: 16,
+        columnSpacing: 16,
         columns: _createColumns(),
         rows:
             _createDataRows(clienteVentasMesList: widget.clienteVentasMesList),

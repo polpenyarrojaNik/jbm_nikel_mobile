@@ -89,6 +89,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         scrollDirection: Axis.horizontal,
         child: DataTable(
           horizontalMargin: 16,
+          columnSpacing: 16,
           columns: _createColumns(),
           rows: _createDataRows(
               articuloVentasMesList: widget.articuloVentasMesList),

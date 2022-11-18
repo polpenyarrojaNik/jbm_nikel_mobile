@@ -101,13 +101,14 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                            '#${pedidoVentaLinea.clienteId} ${pedidoVentaLinea.nombreCliente}',
-                            style: Theme.of(context).textTheme.subtitle2),
+                          '#${pedidoVentaLinea.clienteId} ${pedidoVentaLinea.nombreCliente}',
+                          style: Theme.of(context).textTheme.subtitle2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
+                      gapW16,
                       Text(
                         '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
                       ),
                     ],
                   ),
@@ -117,10 +118,10 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                          dateFormatter(pedidoVentaLinea.fechaPedido
-                              .toLocal()
-                              .toIso8601String()),
-                          style: Theme.of(context).textTheme.caption),
+                        dateFormatter(pedidoVentaLinea.fechaPedido
+                            .toLocal()
+                            .toIso8601String()),
+                      ),
                       Text(
                         formatPrecioYDescuento(
                           precio: pedidoVentaLinea.precioDivisa,
@@ -129,8 +130,6 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                           descuento2: pedidoVentaLinea.descuento2,
                           descuento3: pedidoVentaLinea.descuento3,
                         ),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
                       ),
                     ],
                   ),

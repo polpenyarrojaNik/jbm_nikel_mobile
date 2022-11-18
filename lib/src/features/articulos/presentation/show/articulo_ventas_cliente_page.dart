@@ -4,8 +4,8 @@ import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_ventas_cliente.dart';
 import '../../infrastructure/articulo_repository.dart';
@@ -94,6 +94,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
             sortColumnIndex: _currentSortColumn,
             sortAscending: _sortAsc,
             horizontalMargin: 16,
+            columnSpacing: 16,
             columns: _createColumns(widget.articuloVentasClienteList),
             rows: _createDataRows(
               articuloVentasClienteList: widget.articuloVentasClienteList,
@@ -388,12 +389,12 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text('#${articuloVentasClienteList[i].clienteId}'),
-                    gapW12,
+                    Text('[${articuloVentasClienteList[i].clienteId}]'),
+                    gapW8,
                     Flexible(
                       child: Text(
                         articuloVentasClienteList[i].nombreCliente,
-                        style: Theme.of(context).textTheme.caption,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
