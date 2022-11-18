@@ -49,19 +49,17 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
           });
         },
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: description,
-            ),
-            gapH8,
-            stateClienteUltimosPreciosListCount.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              data: (count) => ListView.separated(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: description,
+          ),
+          gapH8,
+          stateClienteUltimosPreciosListCount.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            data: (count) => Expanded(
+              child: ListView.separated(
                 itemCount: count,
                 itemBuilder: (context, i) => ref
                     .watch(
@@ -79,11 +77,11 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
                     ),
                 separatorBuilder: (context, i) => const Divider(),
               ),
-              error: (e, _) => ErrorMessageWidget(e.toString()),
-              loading: () => const ProgressIndicatorWidget(),
             ),
-          ],
-        ),
+            error: (e, _) => ErrorMessageWidget(e.toString()),
+            loading: () => const ProgressIndicatorWidget(),
+          ),
+        ],
       ),
     );
   }
@@ -96,66 +94,54 @@ class _UltimosPreciosTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Padding(
-        padding: listPadding,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    dateFormatter(
-                        ultimosPrecios.fecha.toLocal().toIso8601String()),
-                    style: Theme.of(context).textTheme.caption?.copyWith(
-                        color: Theme.of(context).textTheme.bodyText2?.color),
-                  ),
-                ],
+    return Padding(
+      padding: listPadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                '#${ultimosPrecios.clienteId}',
+                style: Theme.of(context).textTheme.caption,
               ),
-            ),
-            const VerticalDivider(),
-            Expanded(
-              flex: 10,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${S.of(context).pedido_show_pedidoVentaDetalle_precio}: ${formatPrecioYDescuento(
-                          precio: ultimosPrecios.precioDivisa,
-                          tipoPrecio: ultimosPrecios.tipoPrecio,
-                          descuento1: ultimosPrecios.descuento1,
-                          descuento2: ultimosPrecios.descuento2,
-                          descuento3: ultimosPrecios.descuento3,
-                        )}',
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
-                      Text(
-                          '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}'),
-                    ],
-                  ),
-                  gapH8,
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          '#${ultimosPrecios.clienteId} ${ultimosPrecios.nombreCliente}',
-                          style: Theme.of(context).textTheme.caption,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+              gapW16,
+              Flexible(
+                child: Text(
+                  '${ultimosPrecios.nombreCliente}',
+                  style: Theme.of(context).textTheme.caption,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                dateFormatter(ultimosPrecios.fecha.toLocal().toIso8601String()),
+              ),
+              gapW16,
+              Text(
+                  '${numberFormatCantidades(ultimosPrecios.cantidad.toDouble())} ${S.of(context).unidad}'),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                formatPrecioYDescuento(
+                  precio: ultimosPrecios.precioDivisa,
+                  tipoPrecio: ultimosPrecios.tipoPrecio,
+                  descuento1: ultimosPrecios.descuento1,
+                  descuento2: ultimosPrecios.descuento2,
+                  descuento3: ultimosPrecios.descuento3,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
