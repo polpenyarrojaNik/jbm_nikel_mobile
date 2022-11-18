@@ -111,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(""),
         "articulo_show_articuloVentasMes_total":
             MessageLookupByLibrary.simpleMessage(""),
+        "articulo_todos": MessageLookupByLibrary.simpleMessage(""),
         "auth_loginPage_contrasena": MessageLookupByLibrary.simpleMessage(""),
         "auth_loginPage_iniciarSesion":
             MessageLookupByLibrary.simpleMessage(""),

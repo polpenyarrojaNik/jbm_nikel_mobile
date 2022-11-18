@@ -202,20 +202,20 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     Column(
                       children: [
                         if (articulo.comprasEntregaCantidad1 != 0)
-                          Text(numberFormatCantidades(
-                              articulo.comprasEntregaCantidad1)),
+                          Text(
+                              '${numberFormatCantidades(articulo.comprasEntregaCantidad1)} ${S.of(context).unidad}'),
                         if (articulo.comprasEntregaCantidad1 != 0) gapH8,
                         if (articulo.comprasEntregaCantidad2 != 0)
-                          Text(numberFormatCantidades(
-                              articulo.comprasEntregaCantidad2)),
+                          Text(
+                              '${numberFormatCantidades(articulo.comprasEntregaCantidad2)}  ${S.of(context).unidad}'),
                         if (articulo.comprasEntregaCantidad2 != 0) gapH8,
                         if (articulo.comprasEntregaCantidad3 != 0)
-                          Text(numberFormatCantidades(
-                              articulo.comprasEntregaCantidad3)),
+                          Text(
+                              '${numberFormatCantidades(articulo.comprasEntregaCantidad3)}  ${S.of(context).unidad}'),
                         if (articulo.comprasEntregaCantidad3 != 0) gapH8,
                         if (articulo.comprasEntregaCantidadMas3 != 0)
-                          Text(numberFormatCantidades(
-                              articulo.comprasEntregaCantidadMas3)),
+                          Text(
+                              '${numberFormatCantidades(articulo.comprasEntregaCantidadMas3)}  ${S.of(context).unidad}'),
                       ],
                     ),
                     const Spacer(),

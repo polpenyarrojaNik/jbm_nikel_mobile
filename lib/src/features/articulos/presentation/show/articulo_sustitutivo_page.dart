@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_sustitutivo.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -19,42 +20,40 @@ class ArticuloSustitutivoPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloSustitutivoListProvider(articuloId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).articulo_show_articuloSustitutivo_titulo,
-            entityId: articuloId,
-            subtitle: description,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).articulo_show_articuloSustitutivo_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: articuloId,
+              subtitle: description,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (articuloSustitutivoList) =>
-                (articuloSustitutivoList.isNotEmpty)
-                    ? SliverPadding(
-                        padding: const EdgeInsets.all(16),
-                        sliver: SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            childCount: articuloSustitutivoList.length,
-                            (context, i) => ArticuloSustitutivoTile(
-                              articuloSustitutivo: articuloSustitutivoList[i],
-                            ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (articuloSustitutivoList) =>
+                  (articuloSustitutivoList.isNotEmpty)
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: articuloSustitutivoList.length,
+                          itemBuilder: (context, i) => ArticuloSustitutivoTile(
+                            articuloSustitutivo: articuloSustitutivoList[i],
                           ),
-                        ))
-                    : SliverFillRemaining(
-                        child: Column(
+                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                      : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).sinResultados),
                           ],
                         ),
-                      ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,14 +67,13 @@ class ArticuloSustitutivoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(articuloSustitutivo.articuloSustitutivoId,
               style: Theme.of(context).textTheme.subtitle2),
           Text(articuloSustitutivo.articuloSustitutivoDescription),
-          const Divider(),
         ],
       ),
     );

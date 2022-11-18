@@ -4,7 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_ventas_cliente.dart';
@@ -21,36 +21,32 @@ class ArticuloVentasClientePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloVentasClienteProvider(articuloId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).articulo_show_articuloVentasCliente_titulo,
-            entityId: articuloId,
-            subtitle: description,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).articulo_show_articuloVentasCliente_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: articuloId,
+              subtitle: description,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (articuloVentasClienteList) =>
+                  (articuloVentasClienteList.isNotEmpty)
+                      ? VentasClienteDataTable(
+                          articuloVentasClienteList: articuloVentasClienteList)
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).sinResultados),
+                          ],
+                        ),
             ),
-            data: (articuloVentasClienteList) => (articuloVentasClienteList
-                    .isNotEmpty)
-                ? SliverToBoxAdapter(
-                    child: VentasClienteDataTable(
-                        articuloVentasClienteList: articuloVentasClienteList),
-                  )
-                : SliverFillRemaining(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-                  ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -95,16 +91,13 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       scrollDirection: Axis.vertical,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: DataTable(
-            sortColumnIndex: _currentSortColumn,
-            sortAscending: _sortAsc,
-            horizontalMargin: 16,
-            columns: _createColumns(widget.articuloVentasClienteList),
-            rows: _createDataRows(
-              articuloVentasClienteList: widget.articuloVentasClienteList,
-            ),
+        child: DataTable(
+          sortColumnIndex: _currentSortColumn,
+          sortAscending: _sortAsc,
+          horizontalMargin: 16,
+          columns: _createColumns(widget.articuloVentasClienteList),
+          rows: _createDataRows(
+            articuloVentasClienteList: widget.articuloVentasClienteList,
           ),
         ),
       ),

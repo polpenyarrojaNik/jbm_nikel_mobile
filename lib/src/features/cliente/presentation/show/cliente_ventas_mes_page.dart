@@ -6,7 +6,7 @@ import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -25,44 +25,37 @@ class ClienteVentasMesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteVentasMesProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteVentasMes_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteVentasMes_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
-                ? SliverToBoxAdapter(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          VentasMesDataTable(
-                            clienteVentasMesList: clienteVentasMesList,
-                          ),
-                          gapH16,
-                          const LeyendaWidget(),
-                          gapH16,
-                          SizedBox(
-                            height: 420,
-                            child: GraficaVentasMes(
-                                clienteVentasMesList: clienteVentasMesList),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                : SliverFillRemaining(
-                    child: Padding(
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
+                  ? Column(
+                      children: [
+                        VentasMesDataTable(
+                          clienteVentasMesList: clienteVentasMesList,
+                        ),
+                        gapH16,
+                        SizedBox(
+                          height: 420,
+                          child: GraficaVentasMes(
+                              clienteVentasMesList: clienteVentasMesList),
+                        ),
+                        gapH8,
+                        const LeyendaWidget(),
+                      ],
+                    )
+                  : Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -71,9 +64,9 @@ class ClienteVentasMesPage extends ConsumerWidget {
                         ],
                       ),
                     ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -397,64 +390,61 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: BarChart(
-                BarChartData(
-                  alignment: BarChartAlignment.spaceBetween,
-                  borderData: FlBorderData(
-                    show: true,
-                    border: const Border.symmetric(
-                      horizontal: BorderSide(
-                        color: Color(0xFFececec),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: BarChart(
+                  BarChartData(
+                    alignment: BarChartAlignment.spaceBetween,
+                    borderData: FlBorderData(
+                      show: true,
+                      border: const Border.symmetric(
+                        horizontal: BorderSide(
+                          color: Color(0xFFececec),
+                        ),
                       ),
                     ),
-                  ),
-                  titlesData: FlTitlesData(
-                    show: true,
-                    rightTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (value, meta) =>
-                            getYTitles(widget.clienteVentasMesList, value),
-                        // reservedSize: 50,
+                    titlesData: FlTitlesData(
+                      topTitles:
+                          AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                      rightTitles:
+                          AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          getTitlesWidget: (value, meta) => getTiltlesMeses(
+                              widget.clienteVentasMesList, value),
+                        ),
                       ),
                     ),
-                    topTitles: AxisTitles(),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (value, meta) =>
-                            getTiltlesMeses(widget.clienteVentasMesList, value),
+                    gridData: FlGridData(
+                      show: true,
+                      drawVerticalLine: false,
+                      getDrawingHorizontalLine: (value) => FlLine(
+                        color: const Color(0xFFececec),
+                        strokeWidth: 1,
                       ),
                     ),
+                    barGroups: dataList.asMap().entries.map((e) {
+                      final index = e.key;
+                      final data = e.value;
+                      return generateBarGroup(
+                        index,
+                        data.color,
+                        data.value,
+                        data.shadowValue,
+                      );
+                    }).toList(),
+                    maxY: getMaxYValue(widget.clienteVentasMesList),
+                    minY: 0,
                   ),
-                  gridData: FlGridData(
-                    show: true,
-                    drawVerticalLine: false,
-                    getDrawingHorizontalLine: (value) => FlLine(
-                      color: const Color(0xFFececec),
-                      strokeWidth: 1,
-                    ),
-                  ),
-                  barGroups: dataList.asMap().entries.map((e) {
-                    final index = e.key;
-                    final data = e.value;
-                    return generateBarGroup(
-                      index,
-                      data.color,
-                      data.value,
-                      data.shadowValue,
-                    );
-                  }).toList(),
-                  maxY: getMaxYValue(widget.clienteVentasMesList),
-                  minY: 0,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
@@ -485,11 +475,10 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
       child: Text(
         valueString,
-        style: TextStyle(
-          color: Color(Colors.white.value),
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-        ),
+        style: Theme.of(context)
+            .textTheme
+            .bodyText2
+            ?.copyWith(fontSize: Theme.of(context).textTheme.caption?.fontSize),
       ),
     );
   }

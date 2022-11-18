@@ -81,7 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Summary"),
         "articulo_show_articuloDetalle_stockYEntregas":
-            MessageLookupByLibrary.simpleMessage("Stock & deliveries∫"),
+            MessageLookupByLibrary.simpleMessage("Stock & deliveries"),
         "articulo_show_articuloDetalle_subfamilia":
             MessageLookupByLibrary.simpleMessage("Subfamily"),
         "articulo_show_articuloDetalle_titulo":

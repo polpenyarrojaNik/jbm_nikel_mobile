@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../pedido_venta/presentation/index/pedido_venta_lista_tile.dart';
@@ -19,43 +20,43 @@ class ClientePedidosPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clientePedidosProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clientePedidos_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clientePedidos_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clientePedidoVentaList) =>
-                (clientePedidoVentaList.isNotEmpty)
-                    ? SliverToBoxAdapter(
-                        child: ListView.separated(
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.all(16),
-                          itemBuilder: (context, i) => PedidoVentaListaTile(
-                              pedidoVenta: clientePedidoVentaList[i],
-                              navigatedFromCliente: true),
-                          separatorBuilder: (context, i) => const Divider(),
-                          itemCount: clientePedidoVentaList.length,
-                        ),
-                      )
-                    : SliverFillRemaining(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
-                        ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clientePedidoVentaList) => (clientePedidoVentaList
+                      .isNotEmpty)
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, i) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: PedidoVentaListaTile(
+                            pedidoVenta: clientePedidoVentaList[i],
+                            navigatedFromCliente: true),
                       ),
-          ),
-        ],
+                      separatorBuilder: (context, i) => const Divider(),
+                      itemCount: clientePedidoVentaList.length,
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(S.of(context).sinResultados),
+                      ],
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }

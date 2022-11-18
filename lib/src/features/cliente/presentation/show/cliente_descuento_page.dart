@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -21,41 +21,39 @@ class ClienteDescuentoPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteDescuentoProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteDescuento_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteDescuento_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clienteDescuentoList) => (clienteDescuentoList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: clienteDescuentoList.length,
-                        (context, i) => ClienteDescuentoTile(
-                          clienteDescuento: clienteDescuentoList[i],
-                        ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clienteDescuentoList) => (clienteDescuentoList.isNotEmpty)
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: clienteDescuentoList.length,
+                      itemBuilder: (context, i) => ClienteDescuentoTile(
+                        clienteDescuento: clienteDescuentoList[i],
                       ),
-                    ))
-                : SliverFillRemaining(
-                    child: Column(
+                      separatorBuilder: (context, i) => const Divider(),
+                    )
+                  : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).sinResultados),
                       ],
                     ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,47 +66,42 @@ class ClienteDescuentoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                        (clienteDescuento.articuloId != '*')
-                            ? clienteDescuento.articuloId
-                            : S.of(context).articulo_todos,
-                        style: Theme.of(context).textTheme.subtitle2),
-                    if (clienteDescuento.descripcion != null)
-                      Text(
-                        clienteDescuento.descripcion!,
-                        style: Theme.of(context).textTheme.caption,
-                      ),
-                    Text(
-                        '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
-                        style: Theme.of(context).textTheme.caption),
-                  ],
-                ),
-              ),
-              gapW4,
-              if (clienteDescuento.cantidadDesde != 1)
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Text(
-                    '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
+                    (clienteDescuento.articuloId != '*')
+                        ? clienteDescuento.articuloId
+                        : S.of(context).articulo_todos,
+                    style: Theme.of(context).textTheme.subtitle2),
+                if (clienteDescuento.descripcion != null)
+                  Text(
+                    clienteDescuento.descripcion!,
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                Text(
+                    '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
                     style: Theme.of(context).textTheme.caption),
-              if (clienteDescuento.cantidadDesde != 1) gapW8,
-              Text(
-                '${numberFormatCantidades(clienteDescuento.descuento)}%',
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        const Divider(),
-      ],
+          gapW4,
+          if (clienteDescuento.cantidadDesde != 1)
+            Text(
+                '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
+                style: Theme.of(context).textTheme.caption),
+          if (clienteDescuento.cantidadDesde != 1) gapW8,
+          Text(
+            '${numberFormatCantidades(clienteDescuento.descuento)}%',
+          ),
+        ],
+      ),
     );
   }
 }

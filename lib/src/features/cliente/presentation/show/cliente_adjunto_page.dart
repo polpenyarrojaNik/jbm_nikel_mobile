@@ -7,7 +7,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -36,56 +36,49 @@ class ClienteAdjuntoPage extends ConsumerWidget {
     });
     final state = ref.watch(clienteAdjuntoProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteAdjunto_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteAdjunto_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) {
-              if (e is AppException) {
-                return e.maybeWhen(
-                  orElse: () => SliverFillRemaining(
-                    child: ErrorMessageWidget(e.toString()),
-                  ),
-                  notConnection: () => SliverFillRemaining(
-                    child: Center(
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) {
+                if (e is AppException) {
+                  return e.maybeWhen(
+                    orElse: () => ErrorMessageWidget(e.toString()),
+                    notConnection: () => Center(
                       child: Text(S.of(context).sincConexion),
                     ),
-                  ),
-                );
-              }
+                  );
+                }
 
-              return SliverFillRemaining(
-                child: ErrorMessageWidget(e.toString()),
-              );
-            },
-            data: (clienteAdjuntoList) => (clienteAdjuntoList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: clienteAdjuntoList.length,
-                        (context, i) => ClienteAdjuntoTile(
-                          clienteAdjunto: clienteAdjuntoList[i],
-                        ),
+                return ErrorMessageWidget(e.toString());
+              },
+              data: (clienteAdjuntoList) => (clienteAdjuntoList.isNotEmpty)
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: clienteAdjuntoList.length,
+                      itemBuilder: (context, i) => ClienteAdjuntoTile(
+                        clienteAdjunto: clienteAdjuntoList[i],
                       ),
-                    ))
-                : SliverFillRemaining(
-                    child: Column(
+                    )
+                  : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).sinResultados),
                       ],
                     ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -98,31 +91,34 @@ class ClienteAdjuntoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () => openFile(
-          clienteId: clienteAdjunto.clienteId,
-          nombreAdjunto: clienteAdjunto.nombreAdjunto,
-          ref: ref),
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.2),
-            width: 1,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: GestureDetector(
+        onTap: () => openFile(
+            clienteId: clienteAdjunto.clienteId,
+            nombreAdjunto: clienteAdjunto.nombreAdjunto,
+            ref: ref),
+        child: Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+            side: BorderSide(
+              color: Colors.grey.withOpacity(0.2),
+              width: 1,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Icon(
-                getIconoFromExtension(clienteAdjunto.nombreAdjunto),
-                color: Theme.of(context).textTheme.caption!.color,
-              ),
-              gapW8,
-              Flexible(child: Text(clienteAdjunto.nombreAdjunto)),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Icon(
+                  getIconoFromExtension(clienteAdjunto.nombreAdjunto),
+                  color: Theme.of(context).textTheme.caption!.color,
+                ),
+                gapW8,
+                Flexible(child: Text(clienteAdjunto.nombreAdjunto)),
+              ],
+            ),
           ),
         ),
       ),

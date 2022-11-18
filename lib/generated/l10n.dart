@@ -310,10 +310,10 @@ class S {
     );
   }
 
-  /// `Stock & deliveries∫`
+  /// `Stock & deliveries`
   String get articulo_show_articuloDetalle_stockYEntregas {
     return Intl.message(
-      'Stock & deliveries∫',
+      'Stock & deliveries',
       name: 'articulo_show_articuloDetalle_stockYEntregas',
       desc: '',
       args: [],

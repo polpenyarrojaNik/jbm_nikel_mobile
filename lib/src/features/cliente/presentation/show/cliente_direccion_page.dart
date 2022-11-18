@@ -4,7 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_direccion.dart';
@@ -21,40 +21,38 @@ class ClienteDireccionesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteDireccionProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteDireccion_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteDireccion_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clienteDireccionList) => (clienteDireccionList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: clienteDireccionList.length,
-                        (context, i) => ClienteDireccionTile(
-                          clienteDireccion: clienteDireccionList[i],
-                        ),
-                      ),
-                    ))
-                : SliverFillRemaining(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-                  ),
-          ),
-        ],
+            gapH8,
+            state.maybeWhen(
+                orElse: () => const ProgressIndicatorWidget(),
+                error: (e, st) => ErrorMessageWidget(e.toString()),
+                data: (clienteDireccionList) =>
+                    (clienteDireccionList.isNotEmpty)
+                        ? ListView.separated(
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            itemCount: clienteDireccionList.length,
+                            itemBuilder: (context, i) => ClienteDireccionTile(
+                              clienteDireccion: clienteDireccionList[i],
+                            ),
+                            separatorBuilder: (context, i) => const Divider(),
+                          )
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(S.of(context).sinResultados),
+                            ],
+                          )),
+          ],
+        ),
       ),
     );
   }
@@ -68,7 +66,7 @@ class ClienteDireccionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

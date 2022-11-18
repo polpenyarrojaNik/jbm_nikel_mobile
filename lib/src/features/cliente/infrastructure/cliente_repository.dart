@@ -14,7 +14,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/adjunto_param.dart';
-import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../articulos/domain/articulo.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -135,22 +134,6 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
       provisionalToken: usuario!.provisionalToken,
       test: usuario.test);
 });
-
-final clienteUltimosPreciosSearchProvider = FutureProvider.autoDispose
-    .family<List<EstadisticasUltimosPrecios>, DefaultListParams>(
-  (ref, defaultListParams) async {
-    final usuario =
-        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-
-    final clienteRepository = ref.watch(clienteRepositoryProvider);
-    return clienteRepository.getClienteUltimosPreciosById(
-        clienteId: defaultListParams.entityId!,
-        usuarioId: usuario!.id,
-        page: defaultListParams.page,
-        searchText: defaultListParams.searchText);
-  },
-  // cacheTime: const Duration(seconds: 60),
-);
 
 class ClienteRepository {
   static const pageSize = 100;
@@ -939,9 +922,8 @@ ORDER BY IMPORTE_ANYO DESC
     }
   }
 
-  Future<List<EstadisticasUltimosPrecios>> getClienteUltimosPreciosById(
+  Future<List<EstadisticasUltimosPrecios>> getClienteUltimosPreciosList(
       {required String clienteId,
-      required String usuarioId,
       required int page,
       required String searchText}) async {
     try {
@@ -962,7 +944,7 @@ ORDER BY IMPORTE_ANYO DESC
             _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
       }
 
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+      query.limit(pageSize, offset: page * pageSize);
 
       query.orderBy(
         [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
@@ -971,12 +953,43 @@ ORDER BY IMPORTE_ANYO DESC
       return query.asyncMap((row) async {
         final lastPriceArticuloDTO =
             row.readTable(_db.estadisticasUltimosPreciosTable);
-        final articuloDTO = row.readTable(_db.articuloTable);
+        final articuloDTO = row.readTableOrNull(_db.articuloTable);
         return lastPriceArticuloDTO.toDomain(
             descripcion: getDescriptionInLocalLanguage(
                 articulo:
-                    articuloDTO.toDomain(familia: null, subfamilia: null)));
+                    articuloDTO!.toDomain(familia: null, subfamilia: null)));
       }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getClienteUltimosPreciosCountList(
+      {required String clienteId, required String searchText}) async {
+    try {
+      final countExp = _db.estadisticasUltimosPreciosTable.clienteId.count();
+
+      final query = _db.selectOnly(_db.estadisticasUltimosPreciosTable).join([
+        leftOuterJoin(
+            _db.articuloTable,
+            _db.articuloTable.id
+                .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
+      ]);
+
+      if (searchText != '') {
+        query.where(
+            (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
+                (_db.articuloTable.id.like('%$searchText%') |
+                    _db.articuloTable.descripcionES.like('%$searchText%')));
+      } else {
+        query.where(
+            _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
+      }
+
+      query.addColumns([countExp]);
+
+      final count = await query.map((row) => row.read(countExp)).getSingle();
+      return count ?? 0;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

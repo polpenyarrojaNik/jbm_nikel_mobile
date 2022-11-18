@@ -6,9 +6,10 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
 import '../../domain/cliente_rappel.dart';
 import '../../infrastructure/cliente_repository.dart';
@@ -34,41 +35,39 @@ class ClienteRappelPage extends ConsumerWidget {
     });
     final state = ref.watch(clienteRappelProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteRappel_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteRappel_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clienteRappelList) => (clienteRappelList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: clienteRappelList.length,
-                        (context, i) => ClienteRappelTile(
-                          clienteRappel: clienteRappelList[i],
-                        ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clienteRappelList) => (clienteRappelList.isNotEmpty)
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: clienteRappelList.length,
+                      itemBuilder: (context, i) => ClienteRappelTile(
+                        clienteRappel: clienteRappelList[i],
                       ),
-                    ))
-                : SliverFillRemaining(
-                    child: Column(
+                      separatorBuilder: (context, i) => const Divider(),
+                    )
+                  : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).sinResultados),
                       ],
                     ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -88,78 +87,66 @@ class ClienteRappelTile extends ConsumerWidget {
               nombreArchivo: clienteRappel.nombreArchivo!,
               ref: ref)
           : null,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: IntrinsicHeight(
-              child: Row(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: IntrinsicHeight(
+          child: Row(
+            children: [
+              SizedBox(
+                width: 90,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        dateFormatter(clienteRappel.fechaDesDe
+                            .toLocal()
+                            .toIso8601String()),
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color)),
+                    if (clienteRappel.fechaHasta != null) const Spacer(),
+                    if (clienteRappel.fechaHasta != null)
+                      Text(
+                          dateFormatter(clienteRappel.fechaHasta!
+                              .toLocal()
+                              .toIso8601String()),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color)),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: 90,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            dateFormatter(clienteRappel.fechaDesDe
-                                .toLocal()
-                                .toIso8601String()),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color)),
-                        if (clienteRappel.fechaHasta != null) const Spacer(),
-                        if (clienteRappel.fechaHasta != null)
-                          Text(
-                              dateFormatter(clienteRappel.fechaHasta!
-                                  .toLocal()
-                                  .toIso8601String()),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color)),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(clienteRappel.descripcion,
-                          style: Theme.of(context).textTheme.subtitle2),
-                      Text(clienteRappel.firmado ? 'Firmado' : 'Sin firmar',
-                          style: Theme.of(context).textTheme.caption),
-                    ],
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    visualDensity:
-                        const VisualDensity(horizontal: -4, vertical: -4),
-                    onPressed: () => (clienteRappel.nombreArchivo != null)
-                        ? openFile(
-                            rappelId: clienteRappel.rappelId,
-                            nombreArchivo: clienteRappel.nombreArchivo!,
-                            ref: ref)
-                        : null,
-                    icon: const Icon(
-                      Icons.navigate_next_outlined,
-                      size: 16,
-                    ),
-                  )
+                  Text(clienteRappel.descripcion,
+                      style: Theme.of(context).textTheme.subtitle2),
+                  Text(clienteRappel.firmado ? 'Firmado' : 'Sin firmar',
+                      style: Theme.of(context).textTheme.caption),
                 ],
               ),
-            ),
+              const Spacer(),
+              IconButton(
+                visualDensity:
+                    const VisualDensity(horizontal: -4, vertical: -4),
+                onPressed: () => (clienteRappel.nombreArchivo != null)
+                    ? openFile(
+                        rappelId: clienteRappel.rappelId,
+                        nombreArchivo: clienteRappel.nombreArchivo!,
+                        ref: ref)
+                    : null,
+                icon: const Icon(
+                  Icons.navigate_next_outlined,
+                  size: 16,
+                ),
+              )
+            ],
           ),
-          const Divider(),
-        ],
+        ),
       ),
     );
   }

@@ -8,7 +8,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -37,56 +37,51 @@ class ArticuloDocumentoPage extends ConsumerWidget {
     final state = ref.watch(articuloDocumentListProvider(articuloId));
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).articulo_show_articuloDocumentos_titulo,
-            entityId: articuloId,
-            subtitle: description,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).articulo_show_articuloDocumentos_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: articuloId,
+              subtitle: description,
             ),
-            error: (e, st) {
-              if (e is AppException) {
-                return e.maybeWhen(
-                  orElse: () => SliverFillRemaining(
-                    child: ErrorMessageWidget(e.toString()),
-                  ),
-                  notConnection: () => SliverFillRemaining(
-                    child: Center(
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) {
+                if (e is AppException) {
+                  return e.maybeWhen(
+                    orElse: () => ErrorMessageWidget(
+                      e.toString(),
+                    ),
+                    notConnection: () => Center(
                       child: Text(S.of(context).sincConexion),
                     ),
-                  ),
-                );
-              }
-              return SliverFillRemaining(
-                child: ErrorMessageWidget(e.toString()),
-              );
-            },
-            data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: articuloDocumentoList.length,
-                        (context, i) => ArticuloDocumentoTile(
-                          articuloDocumento: articuloDocumentoList[i],
+                  );
+                }
+                return ErrorMessageWidget(e.toString());
+              },
+              data: (articuloDocumentoList) =>
+                  (articuloDocumentoList.isNotEmpty)
+                      ? ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: articuloDocumentoList.length,
+                          itemBuilder: (context, i) => ArticuloDocumentoTile(
+                            articuloDocumento: articuloDocumentoList[i],
+                          ),
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).sinResultados),
+                          ],
                         ),
-                      ),
-                    ),
-                  )
-                : SliverFillRemaining(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -99,33 +94,36 @@ class ArticuloDocumentoTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () => openFile(
-          articuloId: articuloDocumento.articuloId,
-          nombreArchivo: articuloDocumento.nombreArchivo,
-          ref: ref),
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-          side: BorderSide(
-            color: Colors.grey.withOpacity(0.2),
-            width: 1,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: GestureDetector(
+        onTap: () => openFile(
+            articuloId: articuloDocumento.articuloId,
+            nombreArchivo: articuloDocumento.nombreArchivo,
+            ref: ref),
+        child: Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+            side: BorderSide(
+              color: Colors.grey.withOpacity(0.2),
+              width: 1,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Icon(
-                getIconoFromExtension(articuloDocumento.nombreArchivo ?? ''),
-                color: Theme.of(context).textTheme.caption!.color,
-              ),
-              gapW8,
-              Flexible(
-                child: Text(articuloDocumento.nombreArchivo ?? ''),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Icon(
+                  getIconoFromExtension(articuloDocumento.nombreArchivo ?? ''),
+                  color: Theme.of(context).textTheme.caption!.color,
+                ),
+                gapW8,
+                Flexible(
+                  child: Text(articuloDocumento.nombreArchivo ?? ''),
+                ),
+              ],
+            ),
           ),
         ),
       ),

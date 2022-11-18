@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_precio_neto.dart';
 import '../../infrastructure/cliente_repository.dart';
 
@@ -20,41 +21,40 @@ class ClientePrecioNetoPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clientePrecioNetoProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clientePrecioNeto_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clientePrecioNeto_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clientePrecioNetoList) => (clientePrecioNetoList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: clientePrecioNetoList.length,
-                        (context, i) => ClientePrecioNetoTile(
-                          clientePrecioNeto: clientePrecioNetoList[i],
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clientePrecioNetoList) =>
+                  (clientePrecioNetoList.isNotEmpty)
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: clientePrecioNetoList.length,
+                          itemBuilder: (context, i) => ClientePrecioNetoTile(
+                            clientePrecioNeto: clientePrecioNetoList[i],
+                          ),
+                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).sinResultados),
+                          ],
                         ),
-                      ),
-                    ))
-                : SliverFillRemaining(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -67,41 +67,35 @@ class ClientePrecioNetoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(clientePrecioNeto.articuloId,
-                      style: Theme.of(context).textTheme.subtitle2),
-                  const Spacer(),
-                  if (clientePrecioNeto.cantidadDesde != 1)
-                    Text(
-                      '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
-                    ),
-                  Text(
-                    formatPrecios(
-                        precio: clientePrecioNeto.precio,
-                        tipoPrecio: clientePrecioNeto.tipoPrecio),
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                ],
-              ),
+              Text(clientePrecioNeto.articuloId,
+                  style: Theme.of(context).textTheme.subtitle2),
+              const Spacer(),
+              if (clientePrecioNeto.cantidadDesde != 1)
+                Text(
+                  '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
+                ),
               Text(
-                clientePrecioNeto.descripcion,
+                formatPrecios(
+                    precio: clientePrecioNeto.precio,
+                    tipoPrecio: clientePrecioNeto.tipoPrecio),
                 style: Theme.of(context).textTheme.caption,
               ),
             ],
           ),
-        ),
-        const Divider(),
-      ],
+          Text(
+            clientePrecioNeto.descripcion,
+            style: Theme.of(context).textTheme.caption,
+          ),
+        ],
+      ),
     );
   }
 }

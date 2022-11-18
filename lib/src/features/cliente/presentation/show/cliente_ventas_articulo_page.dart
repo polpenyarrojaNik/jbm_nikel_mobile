@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_ventas_articulo.dart';
@@ -20,36 +21,33 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteVentasArticuloProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteVentasArticulo_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteVentasArticulo_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clienteVentasArticuloList) =>
+                  (clienteVentasArticuloList.isNotEmpty)
+                      ? VentasArticuloDataTable(
+                          clienteVentasArticuloList: clienteVentasArticuloList)
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(S.of(context).sinResultados),
+                          ],
+                        ),
             ),
-            data: (clienteVentasArticuloList) => (clienteVentasArticuloList
-                    .isNotEmpty)
-                ? SliverToBoxAdapter(
-                    child: VentasArticuloDataTable(
-                        clienteVentasArticuloList: clienteVentasArticuloList),
-                  )
-                : SliverFillRemaining(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-                  ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -95,16 +93,13 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
       scrollDirection: Axis.vertical,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: DataTable(
-            sortColumnIndex: _currentSortColumn,
-            sortAscending: _sortAsc,
-            horizontalMargin: 16,
-            columns: _createColumns(widget.clienteVentasArticuloList),
-            rows: _createDataRows(
-              clienteVentasArticuloList: widget.clienteVentasArticuloList,
-            ),
+        child: DataTable(
+          sortColumnIndex: _currentSortColumn,
+          sortAscending: _sortAsc,
+          horizontalMargin: 16,
+          columns: _createColumns(widget.clienteVentasArticuloList),
+          rows: _createDataRows(
+            clienteVentasArticuloList: widget.clienteVentasArticuloList,
           ),
         ),
       ),

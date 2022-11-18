@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_grupo_neto.dart';
@@ -19,42 +20,40 @@ class ClienteGrupoNetoPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteGrupoNetoProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteGrupoNeto_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteGrupoNeto_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clienteGruposNetosList) =>
-                (clienteGruposNetosList.isNotEmpty)
-                    ? SliverPadding(
-                        padding: const EdgeInsets.all(16),
-                        sliver: SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            childCount: clienteGruposNetosList.length,
-                            (context, i) => ClienteGrupoNetoTile(
-                              clienteGrupoNeto: clienteGruposNetosList[i],
-                            ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clienteGruposNetosList) =>
+                  (clienteGruposNetosList.isNotEmpty)
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: clienteGruposNetosList.length,
+                          itemBuilder: (context, i) => ClienteGrupoNetoTile(
+                            clienteGrupoNeto: clienteGruposNetosList[i],
                           ),
-                        ))
-                    : SliverFillRemaining(
-                        child: Column(
+                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                      : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).sinResultados),
                           ],
                         ),
-                      ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -68,7 +67,7 @@ class ClienteGrupoNetoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -77,7 +76,6 @@ class ClienteGrupoNetoTile extends StatelessWidget {
             clienteGrupoNeto.grupoNetoDescripcion,
             style: Theme.of(context).textTheme.subtitle2,
           ),
-          const Divider(),
         ],
       ),
     );

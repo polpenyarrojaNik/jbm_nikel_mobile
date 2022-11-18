@@ -5,9 +5,10 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 
 class ArticuloPrecioTarifaPage extends ConsumerWidget {
   const ArticuloPrecioTarifaPage(
@@ -20,42 +21,40 @@ class ArticuloPrecioTarifaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloPrecioTarifaListProvider(articuloId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
-            entityId: articuloId,
-            subtitle: description,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).articulo_show_articuloPreciosTarifa_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: articuloId,
+              subtitle: description,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (articuloPrecioTarifaList) =>
-                (articuloPrecioTarifaList.isNotEmpty)
-                    ? SliverPadding(
-                        padding: const EdgeInsets.all(16),
-                        sliver: SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            childCount: articuloPrecioTarifaList.length,
-                            (context, i) => ArticuloPrecioTarifaTile(
-                              articuloPrecioTarifa: articuloPrecioTarifaList[i],
-                            ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (articuloPrecioTarifaList) =>
+                  (articuloPrecioTarifaList.isNotEmpty)
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: articuloPrecioTarifaList.length,
+                          itemBuilder: (context, i) => ArticuloPrecioTarifaTile(
+                            articuloPrecioTarifa: articuloPrecioTarifaList[i],
                           ),
-                        ))
-                    : SliverFillRemaining(
-                        child: Column(
+                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                      : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).sinResultados),
                           ],
                         ),
-                      ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -70,39 +69,36 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Column(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (articuloPrecioTarifa.tarifaDescripcion != null)
-                      Text(
-                        articuloPrecioTarifa.tarifaDescripcion!,
-                      ),
-                    if (articuloPrecioTarifa.cantidadDesde != 1)
-                      Text(
-                        '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)}',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
-                      ),
-                  ],
-                ),
-              ),
-              Text(
-                formatPrecios(
-                    precio: articuloPrecioTarifa.precio,
-                    tipoPrecio: articuloPrecioTarifa.tipoPrecio),
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    color: Theme.of(context).textTheme.caption?.color),
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (articuloPrecioTarifa.tarifaDescripcion != null)
+                  Text(
+                    articuloPrecioTarifa.tarifaDescripcion!,
+                  ),
+                if (articuloPrecioTarifa.cantidadDesde != 1)
+                  Text(
+                    '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)}',
+                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                        color: Theme.of(context).textTheme.caption?.color),
+                  ),
+              ],
+            ),
           ),
-          const Divider(),
+          Text(
+            formatPrecios(
+                precio: articuloPrecioTarifa.precio,
+                tipoPrecio: articuloPrecioTarifa.tipoPrecio),
+            style: Theme.of(context)
+                .textTheme
+                .bodyText2
+                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
+          ),
         ],
       ),
     );

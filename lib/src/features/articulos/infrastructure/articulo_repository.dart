@@ -16,7 +16,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/adjunto_param.dart';
-import '../../../core/domain/default_list_params.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/exceptions/get_api_error.dart';
 import '../../../core/infrastructure/sync_service.dart';
@@ -146,21 +145,6 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
   return articuloRepository.getArticuloPedidoVentaById(
       articuloId: articuloId, usuarioId: usuario!.id);
 });
-
-final articuloUltimosPreciosSearchProvider = FutureProvider.autoDispose
-    .family<List<EstadisticasUltimosPrecios>, DefaultListParams>(
-  (ref, defaultListParams) async {
-    final usuario =
-        await ref.watch(usuarioServiceProvider).getSignedInUsuario();
-
-    final articuloRepository = ref.watch(articuloRepositoryProvider);
-    return articuloRepository.getArticuloUltimosPreciosById(
-        articuloId: defaultListParams.entityId!,
-        usuarioId: usuario!.id,
-        page: defaultListParams.page,
-        searchText: defaultListParams.searchText);
-  },
-);
 
 final articuloVentasMesProvider = FutureProvider.autoDispose
     .family<List<ArticuloVentasMes>, String>((ref, articuloId) {
@@ -603,7 +587,7 @@ class ArticuloRepository {
     }
   }
 
-  Future<List<EstadisticasUltimosPrecios>> getArticuloUltimosPreciosById(
+  Future<List<EstadisticasUltimosPrecios>> getArticuloUltimosPreciosList(
       {required String articuloId,
       required String usuarioId,
       required int page,
@@ -629,7 +613,7 @@ class ArticuloRepository {
                   _db.clienteTable.nombreFiscal.like('%$searchText%') |
                   _db.clienteTable.nombreFiscal
                       .like('%${searchText.toUpperCase()}%')));
-      query.limit(pageSize, offset: (page == 1) ? 0 : (page * pageSize));
+      query.limit(pageSize, offset: page * pageSize);
 
       query.orderBy(
         [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
@@ -644,6 +628,43 @@ class ArticuloRepository {
           descripcion: '',
         );
       }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<int> getArticuloUltimosPreciosCountList(
+      {required String articuloId,
+      required String usuarioId,
+      required String searchText}) async {
+    try {
+      final countExp = _db.estadisticasUltimosPreciosTable.articuloId.count();
+
+      final query = _db.select(_db.estadisticasUltimosPreciosTable).join([
+        innerJoin(
+            _db.clienteUsuarioTable,
+            _db.clienteUsuarioTable.clienteId
+                .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId)),
+        leftOuterJoin(
+            _db.clienteTable,
+            _db.clienteTable.id
+                .equalsExp(_db.estadisticasUltimosPreciosTable.clienteId)),
+      ]);
+      query.where(
+          (_db.estadisticasUltimosPreciosTable.articuloId.equals(articuloId) &
+                  _db.clienteUsuarioTable.usuarioId.equals(usuarioId)) &
+              (_db.clienteTable.nombreCliente.like('%$searchText%') |
+                  _db.clienteTable.nombreCliente
+                      .like('%${searchText.toUpperCase()}%') |
+                  _db.clienteTable.id.like('%$searchText%') |
+                  _db.clienteTable.nombreFiscal.like('%$searchText%') |
+                  _db.clienteTable.nombreFiscal
+                      .like('%${searchText.toUpperCase()}%')));
+
+      query.addColumns([countExp]);
+
+      final count = await query.map((row) => row.read(countExp)).getSingle();
+      return count ?? 0;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

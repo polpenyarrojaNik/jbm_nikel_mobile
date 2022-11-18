@@ -5,7 +5,7 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_pedido_venta_linea.dart';
@@ -21,48 +21,43 @@ class ArticuloPedidoVentaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloPedidoVentaLineaListProvider(articuloId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
-            entityId: articuloId,
-            subtitle: description,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).articulo_show_articuloPedidoVenta_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: articuloId,
+              subtitle: description,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (articuloPedidoVentaLineaList) =>
-                (articuloPedidoVentaLineaList.isNotEmpty)
-                    ? SliverPadding(
-                        padding: const EdgeInsets.all(16),
-                        sliver: SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            childCount: articuloPedidoVentaLineaList.length,
-                            (context, i) => Column(
-                              children: [
-                                ArticuloPedidoVentaLineaTile(
-                                  pedidoVentaLinea:
-                                      articuloPedidoVentaLineaList[i],
-                                ),
-                                const Divider(),
-                              ],
-                            ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(
+                e.toString(),
+              ),
+              data: (articuloPedidoVentaLineaList) =>
+                  (articuloPedidoVentaLineaList.isNotEmpty)
+                      ? ListView.separated(
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: articuloPedidoVentaLineaList.length,
+                          itemBuilder: (context, i) =>
+                              ArticuloPedidoVentaLineaTile(
+                            pedidoVentaLinea: articuloPedidoVentaLineaList[i],
                           ),
-                        ))
-                    : SliverFillRemaining(
-                        child: Column(
+                          separatorBuilder: (context, i) => const Divider(),
+                        )
+                      : Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).sinResultados),
                           ],
                         ),
-                      ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -80,7 +75,7 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

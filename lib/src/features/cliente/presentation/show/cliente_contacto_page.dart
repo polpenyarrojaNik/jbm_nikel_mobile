@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
@@ -21,40 +21,38 @@ class ClienteContactoPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteContactoProvider(clienteId));
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteContacto_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteContacto_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
-                ? SliverPadding(
-                    padding: const EdgeInsets.all(16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: clienteContactoList.length,
-                        (context, i) => ClienteContactoTile(
-                          clienteContacto: clienteContactoList[i],
-                        ),
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
+                  ? ListView.separated(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: clienteContactoList.length,
+                      itemBuilder: (context, i) => ClienteContactoTile(
+                        clienteContacto: clienteContactoList[i],
                       ),
-                    ))
-                : SliverFillRemaining(
-                    child: Column(
+                      separatorBuilder: (context, i) => const Divider(),
+                    )
+                  : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).sinResultados),
                       ],
                     ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -67,118 +65,106 @@ class ClienteContactoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (clienteContacto.nombre != null)
+                  Text(clienteContacto.nombre!),
+                if (clienteContacto.email != null)
+                  Row(
+                    children: [
+                      Icon(Icons.email,
+                          color: Theme.of(context).textTheme.caption?.color,
+                          size: 14),
+                      gapW4,
+                      Flexible(
+                        child: Text(
+                          clienteContacto.email!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color),
+                        ),
+                      ),
+                    ],
+                  ),
+                if (clienteContacto.telefono1 != null)
+                  Row(
+                    children: [
+                      Icon(Icons.phone,
+                          color: Theme.of(context).textTheme.caption?.color,
+                          size: 14),
+                      gapW4,
+                      Flexible(
+                        child: Text(
+                          clienteContacto.telefono1!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              ?.copyWith(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      ?.color),
+                        ),
+                      ),
+                    ],
+                  ),
+                if (clienteContacto.telefono2 != null)
+                  Row(
+                    children: [
+                      Icon(Icons.phone,
+                          color: Theme.of(context).textTheme.caption?.color,
+                          size: 14),
+                      gapW4,
+                      Text(
+                        clienteContacto.telefono2!,
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
+          ),
+          gapW12,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (clienteContacto.nombre != null)
-                      Text(clienteContacto.nombre!),
-                    if (clienteContacto.email != null)
-                      Row(
-                        children: [
-                          Icon(Icons.email,
-                              color: Theme.of(context).textTheme.caption?.color,
-                              size: 14),
-                          gapW4,
-                          Flexible(
-                            child: Text(
-                              clienteContacto.email!,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color),
-                            ),
-                          ),
-                        ],
-                      ),
-                    if (clienteContacto.telefono1 != null)
-                      Row(
-                        children: [
-                          Icon(Icons.phone,
-                              color: Theme.of(context).textTheme.caption?.color,
-                              size: 14),
-                          gapW4,
-                          Flexible(
-                            child: Text(
-                              clienteContacto.telefono1!,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2
-                                  ?.copyWith(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .caption
-                                          ?.color),
-                            ),
-                          ),
-                        ],
-                      ),
-                    if (clienteContacto.telefono2 != null)
-                      Row(
-                        children: [
-                          Icon(Icons.phone,
-                              color: Theme.of(context).textTheme.caption?.color,
-                              size: 14),
-                          gapW4,
-                          Text(
-                            clienteContacto.telefono2!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                ?.copyWith(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .caption
-                                        ?.color),
-                          ),
-                        ],
-                      ),
-                  ],
+              if (clienteContacto.email != null)
+                ContactButtons(
+                  icon: Icons.email,
+                  onPressFunction: () =>
+                      navigateToEmailApp(clienteContacto.email!),
                 ),
-              ),
-              gapW12,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  if (clienteContacto.email != null)
-                    ContactButtons(
-                      icon: Icons.email,
-                      onPressFunction: () =>
-                          navigateToEmailApp(clienteContacto.email!),
-                    ),
-                  if (clienteContacto.telefono1 != null) gapW12,
-                  if (clienteContacto.telefono1 != null)
-                    ContactButtons(
-                      icon: Icons.phone,
-                      onPressFunction: () =>
-                          openPhoneCall(clienteContacto.telefono1!),
-                    ),
-                  if (clienteContacto.telefono2 != null) gapW12,
-                  if (clienteContacto.telefono2 != null)
-                    ContactButtons(
-                      icon: Icons.phone,
-                      onPressFunction: () =>
-                          openPhoneCall(clienteContacto.telefono2!),
-                    ),
-                ],
-              ),
+              if (clienteContacto.telefono1 != null) gapW12,
+              if (clienteContacto.telefono1 != null)
+                ContactButtons(
+                  icon: Icons.phone,
+                  onPressFunction: () =>
+                      openPhoneCall(clienteContacto.telefono1!),
+                ),
+              if (clienteContacto.telefono2 != null) gapW12,
+              if (clienteContacto.telefono2 != null)
+                ContactButtons(
+                  icon: Icons.phone,
+                  onPressFunction: () =>
+                      openPhoneCall(clienteContacto.telefono2!),
+                ),
             ],
           ),
-        ),
-        const Divider(),
-      ],
+        ],
+      ),
     );
   }
 

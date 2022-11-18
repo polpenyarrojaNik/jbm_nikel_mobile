@@ -3,9 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/infrastructure/articulo_top_repository.dart';
-import '../../../../core/presentation/common_widgets/app_bar_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo_top.dart';
 
 class ClienteArticulosTopListPage extends ConsumerWidget {
@@ -20,35 +21,31 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
     final state = ref.watch(articuloTopProvider(clienteId));
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          AppBarDatosRelacionados(
-            title: S.of(context).cliente_show_clienteArticulosTop_titulo,
-            entityId: '#$clienteId ${nombreCliente ?? ''}',
-            subtitle: null,
-          ),
-          state.maybeWhen(
-            orElse: () => const SliverFillRemaining(
-              child: ProgressIndicatorWidget(),
+      appBar: AppBar(
+        title: Text(S.of(context).cliente_show_clienteArticulosTop_titulo),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeaderDatosRelacionados(
+              entityId: '#$clienteId ${nombreCliente ?? ''}',
+              subtitle: null,
             ),
-            error: (e, st) => SliverFillRemaining(
-              child: ErrorMessageWidget(e.toString()),
-            ),
-            data: (articulosTopList) => (articulosTopList.isNotEmpty)
-                ? SliverFillRemaining(
-                    child: ArticulosTopDataTable(
-                        articulosTopList: articulosTopList),
-                  )
-                : SliverFillRemaining(
-                    child: Column(
+            gapH8,
+            state.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              error: (e, st) => ErrorMessageWidget(e.toString()),
+              data: (articulosTopList) => (articulosTopList.isNotEmpty)
+                  ? ArticulosTopDataTable(articulosTopList: articulosTopList)
+                  : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(S.of(context).sinResultados),
                       ],
                     ),
-                  ),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -74,13 +71,10 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
       scrollDirection: Axis.vertical,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: DataTable(
-            horizontalMargin: 16,
-            columns: _createColumns(),
-            rows: _createDataRows(articulosTopList: widget.articulosTopList),
-          ),
+        child: DataTable(
+          horizontalMargin: 16,
+          columns: _createColumns(),
+          rows: _createDataRows(articulosTopList: widget.articulosTopList),
         ),
       ),
     );
