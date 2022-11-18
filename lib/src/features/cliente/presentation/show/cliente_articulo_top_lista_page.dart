@@ -65,14 +65,16 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Expanded(
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          horizontalMargin: 16,
-          columns: _createColumns(),
-          rows: _createDataRows(articulosTopList: widget.articulosTopList),
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            horizontalMargin: 16,
+            columns: _createColumns(),
+            rows: _createDataRows(articulosTopList: widget.articulosTopList),
+          ),
         ),
       ),
     );

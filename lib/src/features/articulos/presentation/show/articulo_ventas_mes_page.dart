@@ -37,20 +37,22 @@ class ArticuloVentasMesPage extends ConsumerWidget {
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
             data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
-                ? Column(
-                    children: [
-                      VentasMesDataTable(
-                          articuloVentasMesList: articuloVentasMesList),
-                      gapH16,
-                      Container(
-                        height: 420,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: GraficaVentasMes(
+                ? Expanded(
+                    child: ListView(
+                      children: [
+                        VentasMesDataTable(
                             articuloVentasMesList: articuloVentasMesList),
-                      ),
-                      gapH16,
-                      const LeyendaWidget(),
-                    ],
+                        gapH16,
+                        Container(
+                          height: 420,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: GraficaVentasMes(
+                              articuloVentasMesList: articuloVentasMesList),
+                        ),
+                        gapH16,
+                        const LeyendaWidget(),
+                      ],
+                    ),
                   )
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -85,17 +85,19 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Expanded(
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          sortColumnIndex: _currentSortColumn,
-          sortAscending: _sortAsc,
-          horizontalMargin: 16,
-          columns: _createColumns(widget.articuloVentasClienteList),
-          rows: _createDataRows(
-            articuloVentasClienteList: widget.articuloVentasClienteList,
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            sortColumnIndex: _currentSortColumn,
+            sortAscending: _sortAsc,
+            horizontalMargin: 16,
+            columns: _createColumns(widget.articuloVentasClienteList),
+            rows: _createDataRows(
+              articuloVentasClienteList: widget.articuloVentasClienteList,
+            ),
           ),
         ),
       ),

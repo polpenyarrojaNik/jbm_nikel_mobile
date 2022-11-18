@@ -24,30 +24,28 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteVentasArticulo_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteVentasArticuloList) =>
-                  (clienteVentasArticuloList.isNotEmpty)
-                      ? VentasArticuloDataTable(
-                          clienteVentasArticuloList: clienteVentasArticuloList)
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
-                        ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteVentasArticuloList) =>
+                (clienteVentasArticuloList.isNotEmpty)
+                    ? VentasArticuloDataTable(
+                        clienteVentasArticuloList: clienteVentasArticuloList)
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(S.of(context).sinResultados),
+                        ],
+                      ),
+          ),
+        ],
       ),
     );
   }
@@ -89,17 +87,19 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Expanded(
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          sortColumnIndex: _currentSortColumn,
-          sortAscending: _sortAsc,
-          horizontalMargin: 16,
-          columns: _createColumns(widget.clienteVentasArticuloList),
-          rows: _createDataRows(
-            clienteVentasArticuloList: widget.clienteVentasArticuloList,
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(
+            sortColumnIndex: _currentSortColumn,
+            sortAscending: _sortAsc,
+            horizontalMargin: 16,
+            columns: _createColumns(widget.clienteVentasArticuloList),
+            rows: _createDataRows(
+              clienteVentasArticuloList: widget.clienteVentasArticuloList,
+            ),
           ),
         ),
       ),

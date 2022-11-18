@@ -39,21 +39,23 @@ class ClienteVentasMesPage extends ConsumerWidget {
             orElse: () => const ProgressIndicatorWidget(),
             error: (e, st) => ErrorMessageWidget(e.toString()),
             data: (clienteVentasMesList) => (clienteVentasMesList.isNotEmpty)
-                ? Column(
-                    children: [
-                      VentasMesDataTable(
-                        clienteVentasMesList: clienteVentasMesList,
-                      ),
-                      gapH16,
-                      Container(
-                        height: 420,
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: GraficaVentasMes(
-                            clienteVentasMesList: clienteVentasMesList),
-                      ),
-                      gapH8,
-                      const LeyendaWidget(),
-                    ],
+                ? Expanded(
+                    child: ListView(
+                      children: [
+                        VentasMesDataTable(
+                          clienteVentasMesList: clienteVentasMesList,
+                        ),
+                        gapH16,
+                        Container(
+                          height: 420,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: GraficaVentasMes(
+                              clienteVentasMesList: clienteVentasMesList),
+                        ),
+                        gapH8,
+                        const LeyendaWidget(),
+                      ],
+                    ),
                   )
                 : Padding(
                     padding: const EdgeInsets.all(16.0),
