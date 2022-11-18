@@ -360,11 +360,13 @@ class VisitaRepository {
         if (predicate == null) {
           predicate = (_db.visitaTable.resumen.like('%$searchText%') |
               _db.visitaTable.clienteId.like('%$searchText%') |
+              _db.clienteTable.nombreCliente.like('%$searchText%') |
               _db.visitaTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
               (_db.visitaTable.resumen.like('%$searchText%') |
                   _db.visitaTable.clienteId.like('%$searchText%') |
+                  _db.clienteTable.nombreCliente.like('%$searchText%') |
                   _db.visitaTable.contacto.like('%$searchText%'));
         }
       }
