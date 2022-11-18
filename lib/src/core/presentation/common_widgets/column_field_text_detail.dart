@@ -9,23 +9,23 @@ class ColumnFieldTextDetalle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          fieldTitleValue,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2!
-              .copyWith(color: Theme.of(context).textTheme.caption!.color),
-        ),
-        (value is String)
-            ? Text(
-                value,
-              )
-            : value,
-        gapH4,
-      ],
-    );
+    return value != null
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                fieldTitleValue,
+                style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                    color: Theme.of(context).textTheme.caption!.color),
+              ),
+              (value is String)
+                  ? Text(
+                      value,
+                    )
+                  : value,
+              gapH4,
+            ],
+          )
+        : Container();
   }
 }

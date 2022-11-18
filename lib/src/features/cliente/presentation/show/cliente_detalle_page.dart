@@ -206,7 +206,7 @@ class _ClienteAnalisis extends StatelessWidget {
       children: [
         MobileCustomSeparators(
             separatorTitle: S.of(context).cliente_show_clienteDetalle_analisis),
-        gapH4,
+        gapH8,
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -666,6 +666,7 @@ class _DatosRelacionados extends StatelessWidget {
         MobileCustomSeparators(
             separatorTitle:
                 S.of(context).cliente_show_clienteDetalle_datosRelacionados),
+        gapH8,
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteDireccion_titulo,
           navigationTo: () => context.router.push(
@@ -735,6 +736,7 @@ class _DatosRelacionados extends StatelessWidget {
             ),
           ),
         ),
+        gapH8,
       ],
     );
   }
@@ -753,6 +755,7 @@ class _Consultas extends StatelessWidget {
         MobileCustomSeparators(
             separatorTitle:
                 S.of(context).cliente_show_clienteDetalle_consultas),
+        gapH8,
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteVentasMes_titulo,
           navigationTo: () => context.router.push(

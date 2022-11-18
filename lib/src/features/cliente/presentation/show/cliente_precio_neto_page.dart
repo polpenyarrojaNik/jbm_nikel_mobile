@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_precio_neto.dart';
@@ -68,31 +68,45 @@ class ClientePrecioNetoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: listPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(clientePrecioNeto.articuloId,
-                  style: Theme.of(context).textTheme.subtitle2),
+              Text(
+                clientePrecioNeto.articuloId,
+              ),
               const Spacer(),
-              if (clientePrecioNeto.cantidadDesde != 1)
-                Text(
-                  '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)}',
-                ),
               Text(
                 formatPrecios(
                     precio: clientePrecioNeto.precio,
                     tipoPrecio: clientePrecioNeto.tipoPrecio),
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      color: Theme.of(context).textTheme.caption?.color,
+                    ),
               ),
             ],
           ),
-          Text(
-            clientePrecioNeto.descripcion,
-            style: Theme.of(context).textTheme.caption,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  clientePrecioNeto.descripcion,
+                  style: Theme.of(context).textTheme.caption,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              if (clientePrecioNeto.cantidadDesde != 1) const Spacer(),
+              if (clientePrecioNeto.cantidadDesde != 1)
+                Text(
+                  '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)} ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      color: Theme.of(context).textTheme.caption?.color),
+                ),
+            ],
           ),
         ],
       ),

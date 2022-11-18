@@ -36,3 +36,5 @@ const gapH24 = SizedBox(height: Sizes.p24);
 const gapH32 = SizedBox(height: Sizes.p32);
 const gapH48 = SizedBox(height: Sizes.p48);
 const gapH64 = SizedBox(height: Sizes.p64);
+
+const listPadding = EdgeInsets.symmetric(horizontal: 16, vertical: 8);

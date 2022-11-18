@@ -310,10 +310,10 @@ class S {
     );
   }
 
-  /// `Stock & deliveries∫`
+  /// `Stock & deliveries`
   String get articulo_show_articuloDetalle_stockYEntregas {
     return Intl.message(
-      'Stock & deliveries∫',
+      'Stock & deliveries',
       name: 'articulo_show_articuloDetalle_stockYEntregas',
       desc: '',
       args: [],
@@ -2559,6 +2559,36 @@ class S {
     return Intl.message(
       'Saved',
       name: 'visitas_edit_visitaEditar_saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Artículo`
+  String get articulo {
+    return Intl.message(
+      'Artículo',
+      name: 'articulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Familia`
+  String get familia {
+    return Intl.message(
+      'Familia',
+      name: 'familia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subfamilia`
+  String get subfamilia {
+    return Intl.message(
+      'Subfamilia',
+      name: 'subfamilia',
       desc: '',
       args: [],
     );

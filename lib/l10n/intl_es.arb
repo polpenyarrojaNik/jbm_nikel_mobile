@@ -249,5 +249,8 @@
   "visitas_edit_visitaEditar_contacto": "Contacto",
   "visitas_edit_visitaEditar_resumen": "Resumen",
   "visitas_edit_visitaEditar_cliente": "Cliente",
-  "visitas_edit_visitaEditar_saved": "Saved"
+  "visitas_edit_visitaEditar_saved": "Saved",
+  "articulo": "Article",
+  "familia": "Family",
+  "subfamilia": "Subfamily"
 }

@@ -6,8 +6,8 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/presentation/toasts.dart';
@@ -88,7 +88,7 @@ class ClienteRappelTile extends ConsumerWidget {
               ref: ref)
           : null,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: listPadding,
         child: IntrinsicHeight(
           child: Row(
             children: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/articulo.dart';
 
 class ArticuloListaTile extends StatelessWidget {
@@ -13,7 +14,7 @@ class ArticuloListaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: listPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

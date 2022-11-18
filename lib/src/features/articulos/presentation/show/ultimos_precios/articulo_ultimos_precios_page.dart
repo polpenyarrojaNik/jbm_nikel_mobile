@@ -7,8 +7,8 @@ import 'package:jbm_nikel_mobile/src/features/articulos/presentation/show/ultimo
 import '../../../../../../generated/l10n.dart';
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
-import '../../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../estadisticas/domain/estadisticas_ultimos_precios.dart';
@@ -98,7 +98,7 @@ class _UltimosPreciosTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: listPadding,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

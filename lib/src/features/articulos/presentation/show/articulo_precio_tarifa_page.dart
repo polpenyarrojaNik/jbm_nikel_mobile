@@ -5,8 +5,8 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 
@@ -69,7 +69,7 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: listPadding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -83,7 +83,7 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
                   ),
                 if (articuloPrecioTarifa.cantidadDesde != 1)
                   Text(
-                    '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)}',
+                    '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)} ${S.of(context).unidad}',
                     style: Theme.of(context).textTheme.bodyText2?.copyWith(
                         color: Theme.of(context).textTheme.caption?.color),
                   ),

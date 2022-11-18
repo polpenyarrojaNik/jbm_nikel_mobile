@@ -93,7 +93,7 @@ class UltimosPreciosTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: listPadding,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -804,6 +804,7 @@ class _DatosRelacionados extends StatelessWidget {
         MobileCustomSeparators(
             separatorTitle:
                 S.of(context).articulo_show_articuloDetalle_datosRelacionados),
+        gapH8,
         DatosExtraRow(
           title: S.of(context).articulo_show_articuloPreciosTarifa_titulo,
           navigationTo: () => context.router.push(
@@ -858,6 +859,7 @@ class _DatosRelacionados extends StatelessWidget {
             ),
           ),
         ),
+        gapH8,
       ],
     );
   }
@@ -875,6 +877,7 @@ class _Consultas extends StatelessWidget {
       MobileCustomSeparators(
           separatorTitle:
               S.of(context).articulo_show_articuloDetalle_consultas),
+      gapH8,
       DatosExtraRow(
         title: S.of(context).articulo_show_articuloPedidoVenta_titulo,
         navigationTo: () => context.router.push(

@@ -26,7 +26,7 @@ class VisitaListaTile extends StatelessWidget {
             )
           : null,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: listPadding,
         color: Colors.transparent,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

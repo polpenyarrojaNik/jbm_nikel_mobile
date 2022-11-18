@@ -6,8 +6,8 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_ventas_mes.dart';
@@ -50,7 +50,7 @@ class ArticuloVentasMesPage extends ConsumerWidget {
                           child: GraficaVentasMes(
                               articuloVentasMesList: articuloVentasMesList),
                         ),
-                        gapH8,
+                        gapH16,
                         const LeyendaWidget(),
                       ],
                     )

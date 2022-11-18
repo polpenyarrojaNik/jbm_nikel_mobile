@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_descuento.dart';
@@ -67,38 +67,49 @@ class ClienteDescuentoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: listPadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                    (clienteDescuento.articuloId != '*')
-                        ? clienteDescuento.articuloId
-                        : S.of(context).articulo_todos,
-                    style: Theme.of(context).textTheme.subtitle2),
-                if (clienteDescuento.descripcion != null)
-                  Text(
-                    clienteDescuento.descripcion!,
-                    style: Theme.of(context).textTheme.caption,
-                  ),
-                Text(
-                    '${clienteDescuento.familia.descripcion}/${clienteDescuento.subfamilia.descripcion}',
-                    style: Theme.of(context).textTheme.caption),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  '${S.of(context).articulo}: ${(clienteDescuento.articuloId != '*') ? clienteDescuento.articuloId : S.of(context).articulo_todos} ${(clienteDescuento.descripcion != null) ? clienteDescuento.descripcion : ''}',
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              gapW16,
+              Text(
+                '${numberFormatCantidades(clienteDescuento.descuento)}%',
+              ),
+            ],
           ),
-          gapW4,
-          if (clienteDescuento.cantidadDesde != 1)
-            Text(
-                '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.caption),
-          if (clienteDescuento.cantidadDesde != 1) gapW8,
-          Text(
-            '${numberFormatCantidades(clienteDescuento.descuento)}%',
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  '${S.of(context).familia}: ${clienteDescuento.familia.descripcion}',
+                ),
+              ),
+              if (clienteDescuento.cantidadDesde != 1) gapW16,
+              if (clienteDescuento.cantidadDesde != 1)
+                Text(
+                  '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      color: Theme.of(context).textTheme.caption?.color),
+                ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '${S.of(context).subfamilia}: ${clienteDescuento.subfamilia.descripcion}',
+              ),
+            ],
           ),
         ],
       ),

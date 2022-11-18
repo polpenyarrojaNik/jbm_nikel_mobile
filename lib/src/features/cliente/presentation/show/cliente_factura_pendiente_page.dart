@@ -4,8 +4,8 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_rep
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../domain/cliente_pago_pendiente.dart';
@@ -72,7 +72,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
+        padding: listPadding,
         decoration: BoxDecoration(
           color: (clientePagoPendiente.vencidoJBM ?? false)
               ? Theme.of(context).colorScheme.errorContainer

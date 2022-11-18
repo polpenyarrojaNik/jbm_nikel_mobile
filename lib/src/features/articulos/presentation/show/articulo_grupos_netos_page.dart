@@ -68,38 +68,41 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: listPadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  articuloGrupoNeto.grupoNetoId,
-                  style: Theme.of(context).textTheme.subtitle2,
-                ),
-                Text(
-                  articuloGrupoNeto.grupoNetoDescripcion,
-                ),
-                if (articuloGrupoNeto.cantidadDesde != 1)
-                  Text(
-                    '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)}',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        color: Theme.of(context).textTheme.caption?.color),
-                  ),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                articuloGrupoNeto.grupoNetoId,
+              ),
+              Text(
+                formatPrecios(
+                    precio: articuloGrupoNeto.precio,
+                    tipoPrecio: articuloGrupoNeto.tipoPrecio),
+                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      color: Theme.of(context).textTheme.caption?.color,
+                    ),
+              ),
+            ],
           ),
-          Text(
-            formatPrecios(
-                precio: articuloGrupoNeto.precio,
-                tipoPrecio: articuloGrupoNeto.tipoPrecio),
-            style: Theme.of(context)
-                .textTheme
-                .bodyText2
-                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                articuloGrupoNeto.grupoNetoDescripcion,
+                style: Theme.of(context).textTheme.caption,
+              ),
+              if (articuloGrupoNeto.cantidadDesde != 1) const Spacer(),
+              if (articuloGrupoNeto.cantidadDesde != 1)
+                Text(
+                  '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
+                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      color: Theme.of(context).textTheme.caption?.color),
+                ),
+            ],
           ),
         ],
       ),

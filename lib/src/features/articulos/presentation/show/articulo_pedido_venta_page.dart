@@ -5,8 +5,8 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
-import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
+import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/articulo_pedido_venta_linea.dart';
 
@@ -75,7 +75,7 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return IntrinsicHeight(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: listPadding,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -107,10 +107,10 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                             style: Theme.of(context).textTheme.subtitle2),
                       ),
                       Text(
-                          dateFormatter(pedidoVentaLinea.fechaPedido
-                              .toLocal()
-                              .toIso8601String()),
-                          style: Theme.of(context).textTheme.caption)
+                        '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            color: Theme.of(context).textTheme.caption?.color),
+                      ),
                     ],
                   ),
                   gapH4,
@@ -119,10 +119,10 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
-                      ),
+                          dateFormatter(pedidoVentaLinea.fechaPedido
+                              .toLocal()
+                              .toIso8601String()),
+                          style: Theme.of(context).textTheme.caption),
                       Text(
                         formatPrecioYDescuento(
                           precio: pedidoVentaLinea.precioDivisa,

@@ -31,7 +31,7 @@ class PedidoVentaListaTile extends StatelessWidget {
           : null,
       child: IntrinsicHeight(
         child: Container(
-          padding: const EdgeInsets.only(right: 16.0),
+          padding: const EdgeInsets.only(right: 16),
           color: Colors.transparent,
           child: SizedBox(
             height: 90,
@@ -47,8 +47,8 @@ class PedidoVentaListaTile extends StatelessWidget {
                 Expanded(
                   flex: 4,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 2.5, horizontal: 4),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -81,7 +81,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                 Expanded(
                   flex: 9,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 2.5),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -116,7 +116,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                 Expanded(
                   flex: 4,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 2.5),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
