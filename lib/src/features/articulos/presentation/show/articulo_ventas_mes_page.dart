@@ -465,7 +465,6 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
 
   Widget getTiltlesMeses(
       List<ArticuloVentasMes> articuloVentasMesList, double value) {
-    print(getMonthFromInt(articuloVentasMesList[value.toInt()].mes));
     return Text(articuloVentasMesList[value.toInt()].mes.toString());
   }
 

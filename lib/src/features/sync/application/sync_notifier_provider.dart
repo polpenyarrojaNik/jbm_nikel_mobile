@@ -74,7 +74,6 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
 
     return await syncService.syncAllTable();
   } catch (e) {
-    print(e);
     rethrow;
   }
 }

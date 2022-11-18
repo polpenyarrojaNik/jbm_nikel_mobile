@@ -868,8 +868,7 @@ class PedidoVentaRepository {
           pedidoVentaLineaDTOList.map((e) => e.toJson()).toList();
       pedidoVentaLocalToJson
           .addAll({'PEDIDO_VENTA_LINEAS': pedidoVentaLineasLocalListToJson});
-      final json = jsonEncode(pedidoVentaLocalToJson);
-      print(json);
+
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),

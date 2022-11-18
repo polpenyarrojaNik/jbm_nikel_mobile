@@ -584,7 +584,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
                 if (value != null && value.isNotEmpty) {
                   final precioValue =
                       double.tryParse(value.replaceAll(',', '.'));
-                  print(precioValue);
+
                   if (precioValue != null) {
                     setPrecio(precioValue);
                   }
@@ -611,7 +611,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
               onChanged: (value) {
                 if (value != null && value.isNotEmpty) {
                   final dto1Value = double.tryParse(value.replaceAll(',', '.'));
-                  print(dto1Value);
+
                   if (dto1Value != null) {
                     setDescuento1(dto1Value);
                   }
@@ -624,45 +624,6 @@ class _ArticuloPrecioContainer extends StatelessWidget {
                 extentOffset: descuento1Controller.text.length,
               ),
             ),
-            // FormBuilderTextField(
-            //   name: 'dto2',
-            //   keyboardType: TextInputType.number,
-            //   controller: descuento2Controller,
-            //   decoration: InputDecoration(
-            //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto2,
-            // suffix: Text('%', style: Theme.of(context).textTheme.caption)
-
-            //   ),
-            //   onChanged: (value) {
-            //     if (value != null && value.isNotEmpty) {
-            //       final dto2Value = double.tryParse(value.replaceAll(',', '.'));
-            //       print(dto2Value);
-            //       if (dto2Value != null) {
-            //         setDescuento2(dto2Value);
-            //       }
-            //     } else {
-            //       setDescuento2(0);
-            //     }
-            //   },
-            //   validator: FormBuilderValidators.compose([
-            //     FormBuilderValidators.required(),
-            //   ]),
-            //   onTap: () => descuento1Controller.selection = TextSelection(
-            //     baseOffset: 0,
-            //     extentOffset: descuento1Controller.text.length,
-            //   ),
-            // ),
-            // FormBuilderTextField(
-            //   name: 'dto3',
-            //   readOnly: true,
-            //   keyboardType: TextInputType.number,
-            //   initialValue: descuento3.toString(),
-            //   decoration: InputDecoration(
-            //     labelText: S.of(context).pedido_edit_selectQuantity_descuneto3,
-            // suffix: Text('%', style: Theme.of(context).textTheme.caption)
-
-            //   ),
-            // ),
           ],
         ),
       ),

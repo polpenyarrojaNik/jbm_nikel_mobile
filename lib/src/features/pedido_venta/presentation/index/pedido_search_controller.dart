@@ -37,7 +37,6 @@ class PedidoVentaIndexScreenPaginatedController
 
   @override
   Future<List<PedidoVenta>> build({required int page}) {
-    print('Page: $page');
     return ref.read(pedidoVentaRepositoryProvider).getPedidoVentaLista(
           page: page,
           searchText: ref.watch(pedidosSearchQueryStateProvider),

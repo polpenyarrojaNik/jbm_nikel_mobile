@@ -4,9 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/logger.dart';
-import 'package:logging/logging.dart';
 
+import 'src/core/application/log_service.dart';
 import 'src/core/presentation/app.dart';
 
 void main() async {
@@ -14,17 +13,11 @@ void main() async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
 
-      Logger.root.level = Level.ALL;
-      Logger.root.onRecord.listen((record) =>
-          print('${record.level.name}: ${record.time}: ${record.message}'));
-
       await dotenv.load();
 
       runApp(
         ProviderScope(
-          observers: [
-            RiverpodLogger(),
-          ],
+          observers: [RiverpodLogger()],
           child: App(),
         ),
       );
@@ -47,7 +40,7 @@ void main() async {
       };
     },
     (Object error, StackTrace stack) {
-      log.severe(error, stack);
+      log.e(error, stack);
       exit(1);
     },
   );

@@ -3,15 +3,16 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/log_dto.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
+import '../application/log_service.dart';
 import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../presentation/app.dart';
 import 'database.dart';
+import 'log_dto.dart';
 
 final logRepositoryProvider = Provider.autoDispose<LogRepository>(
   (ref) => LogRepository(
@@ -41,7 +42,7 @@ class LogRepository {
       {required String level, required String message, String? error}) async {
     final packageInfo = await PackageInfo.fromPlatform();
 
-    final log = Log(
+    final appLog = Log(
       level: level,
       message: message,
       appId: packageInfo.packageName,
@@ -51,13 +52,13 @@ class LogRepository {
       timestamp: DateTime.now().toUtc(),
     );
 
-    final logDto = LogDTO.fromDomain(log);
+    final logDto = LogDTO.fromDomain(appLog);
 
     try {
       await db.into(db.logTable).insert(logDto);
       await syncLogs();
     } catch (e) {
-      print(e);
+      log.e(e);
     }
   }
 
@@ -70,7 +71,7 @@ class LogRepository {
         await deleteLogInLocalDb(logId: responseLogDto.id!);
       }
     } catch (e) {
-      print(e);
+      log.e(e);
     }
   }
 
@@ -87,9 +88,6 @@ class LogRepository {
     try {
       final requestUri =
           (usuario!.test) ? remoteLogTestEndpoint : remoteLogEndpoint;
-
-      final json = jsonEncode(logDto.toJson());
-      print(json);
 
       final response = await dio.postUri(
         requestUri,

@@ -10,11 +10,11 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/presentation/app.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/visita.dart';
-import '../../../core/domain/entity_id_is_local_param.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
   (ref) {
@@ -181,8 +181,6 @@ class VisitaRepository {
   Future<VisitaLocalDTO> _remoteCreateVisita(
       VisitaLocalDTO visitaLocalDto, bool test) async {
     try {
-      final json = jsonEncode(visitaLocalDto.toJson());
-      print(json);
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),

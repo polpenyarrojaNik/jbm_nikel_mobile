@@ -184,7 +184,6 @@ String getDescriptionArticuloComponenteInLocalLanguage(
 
 String? getSummaryInLocalLanguage({required Articulo articulo}) {
   final currentLocale = Intl.getCurrentLocale();
-  print(currentLocale);
 
   if (currentLocale == 'es' && articulo.resumenES != null) {
     return articulo.resumenES!;
@@ -196,7 +195,6 @@ String? getSummaryInLocalLanguage({required Articulo articulo}) {
 
 String? getPlazoCorboInLocalLanguage({required PlazoDeCobro plazoDeCobro}) {
   final currentLocale = Intl.getCurrentLocale();
-  print(currentLocale);
 
   if (currentLocale == 'es') {
     return plazoDeCobro.descripcionES;
@@ -208,7 +206,6 @@ String? getPlazoCorboInLocalLanguage({required PlazoDeCobro plazoDeCobro}) {
 
 String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
   final currentLocale = Intl.getCurrentLocale();
-  print(currentLocale);
 
   if (currentLocale == 'es') {
     return metodoDeCobro.descripcionES;

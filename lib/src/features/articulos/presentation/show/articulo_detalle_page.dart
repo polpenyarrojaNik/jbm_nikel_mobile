@@ -349,7 +349,9 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     ),
                 ],
               ),
-              const Divider(),
+              if (articulo.paginaEnCatalgo != null ||
+                  articulo.paginaEnCatalgo2 != null)
+                const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
