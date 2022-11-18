@@ -924,12 +924,12 @@ ORDER BY IMPORTE_ANYO DESC
       required String searchText}) async {
     try {
       final query = _db.select(_db.estadisticasUltimosPreciosTable).join([
-        leftOuterJoin(
+        innerJoin(
             _db.articuloTable,
             _db.articuloTable.id
                 .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
       ]);
-
+// TODO buscar en todos los idiomas
       if (searchText != '') {
         query.where(
             (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
@@ -966,7 +966,7 @@ ORDER BY IMPORTE_ANYO DESC
       final countExp = _db.estadisticasUltimosPreciosTable.clienteId.count();
 
       final query = _db.selectOnly(_db.estadisticasUltimosPreciosTable).join([
-        leftOuterJoin(
+        innerJoin(
             _db.articuloTable,
             _db.articuloTable.id
                 .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),

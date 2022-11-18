@@ -47,19 +47,17 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
           });
         },
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId',
-              subtitle: nombreCliente,
-            ),
-            gapH8,
-            stateClienteUltimosPreciosListCount.maybeWhen(
-                orElse: () => const ProgressIndicatorWidget(),
-                data: (count) => ListView.separated(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId',
+            subtitle: nombreCliente,
+          ),
+          gapH8,
+          stateClienteUltimosPreciosListCount.maybeWhen(
+              orElse: () => const ProgressIndicatorWidget(),
+              data: (count) => Expanded(
+                    child: ListView.separated(
                       itemCount: count,
                       itemBuilder: (context, i) => ref
                           .watch(
@@ -76,9 +74,9 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
                             ),
                           ),
                       separatorBuilder: (context, i) => const Divider(),
-                    )),
-          ],
-        ),
+                    ),
+                  )),
+        ],
       ),
     );
   }
