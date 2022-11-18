@@ -37,28 +37,29 @@ class ArticuloVentasMesPage extends ConsumerWidget {
             state.maybeWhen(
               orElse: () => const ProgressIndicatorWidget(),
               error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloVentasMesList) =>
-                  (articuloVentasMesList.isNotEmpty)
-                      ? Column(
-                          children: [
-                            VentasMesDataTable(
-                                articuloVentasMesList: articuloVentasMesList),
-                            gapH16,
-                            SizedBox(
-                              height: 420,
-                              child: GraficaVentasMes(
-                                  articuloVentasMesList: articuloVentasMesList),
-                            ),
-                            gapH8,
-                            const LeyendaWidget(),
-                          ],
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
+              data: (articuloVentasMesList) => (articuloVentasMesList
+                      .isNotEmpty)
+                  ? Column(
+                      children: [
+                        VentasMesDataTable(
+                            articuloVentasMesList: articuloVentasMesList),
+                        gapH16,
+                        Container(
+                          height: 420,
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: GraficaVentasMes(
+                              articuloVentasMesList: articuloVentasMesList),
                         ),
+                        gapH8,
+                        const LeyendaWidget(),
+                      ],
+                    )
+                  : Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(S.of(context).sinResultados),
+                      ],
+                    ),
             ),
           ],
         ),
@@ -382,71 +383,61 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: BarChart(
-                  BarChartData(
-                    alignment: BarChartAlignment.spaceBetween,
-                    borderData: FlBorderData(
-                      show: true,
-                      border: const Border.symmetric(
-                        horizontal: BorderSide(
-                          color: Color(0xFFececec),
-                        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: BarChart(
+                BarChartData(
+                  alignment: BarChartAlignment.spaceBetween,
+                  borderData: FlBorderData(
+                    border: const Border.symmetric(
+                      horizontal: BorderSide(
+                        color: Color(0xFFececec),
                       ),
                     ),
-                    titlesData: FlTitlesData(
-                      topTitles:
-                          AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                      rightTitles:
-                          AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          interval: 1,
-                          showTitles: true,
-                          getTitlesWidget: (value, meta) =>
-                              getYTitles(widget.articuloVentasMesList, value),
-                          // reservedSize: 50,
-                        ),
-                      ),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          interval: 1,
-                          showTitles: true,
-                          getTitlesWidget: (value, meta) => getTiltlesMeses(
-                              widget.articuloVentasMesList, value),
-                        ),
-                      ),
-                    ),
-                    gridData: FlGridData(
-                      show: true,
-                      drawVerticalLine: false,
-                      getDrawingHorizontalLine: (value) => FlLine(
-                        color: const Color(0xFFececec),
-                        strokeWidth: 1,
-                      ),
-                    ),
-                    barGroups: dataList.asMap().entries.map((e) {
-                      final index = e.key;
-                      final data = e.value;
-                      return generateBarGroup(
-                        index,
-                        data.color,
-                        data.value,
-                        data.shadowValue,
-                      );
-                    }).toList(),
-                    maxY: getMaxYValue(widget.articuloVentasMesList),
-                    minY: 0,
                   ),
+                  titlesData: FlTitlesData(
+                    topTitles:
+                        AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    rightTitles:
+                        AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    leftTitles: AxisTitles(
+                      sideTitles:
+                          SideTitles(showTitles: true, reservedSize: 50),
+                    ),
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        showTitles: true,
+                        getTitlesWidget: (value, meta) => getTiltlesMeses(
+                            widget.articuloVentasMesList, value),
+                      ),
+                    ),
+                  ),
+                  gridData: FlGridData(
+                    show: true,
+                    drawVerticalLine: false,
+                    getDrawingHorizontalLine: (value) => FlLine(
+                      color: const Color(0xFFececec),
+                      strokeWidth: 1,
+                    ),
+                  ),
+                  barGroups: dataList.asMap().entries.map((e) {
+                    final index = e.key;
+                    final data = e.value;
+                    return generateBarGroup(
+                      index,
+                      data.color,
+                      data.value,
+                      data.shadowValue,
+                    );
+                  }).toList(),
+                  maxY: getMaxYValue(widget.articuloVentasMesList),
+                  minY: 0,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

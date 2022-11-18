@@ -51,7 +51,7 @@ abstract class _$PedidoVentaIndexScreenController
 }
 
 String $PedidoVentaIndexScreenPaginatedControllerHash() =>
-    r'8b4ebe2efa4398c9cb2c5bd2560c10ed1ce0d485';
+    r'98ec005bc9b56d783b01ce8ae8e34de3b1c13043';
 
 /// See also [PedidoVentaIndexScreenPaginatedController].
 class PedidoVentaIndexScreenPaginatedControllerProvider
