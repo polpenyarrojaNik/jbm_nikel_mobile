@@ -24,35 +24,33 @@ class ClienteContactoPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteContacto_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
-                  ? ListView.separated(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteContactoList) => (clienteContactoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
                       itemCount: clienteContactoList.length,
                       itemBuilder: (context, i) => ClienteContactoTile(
                         clienteContacto: clienteContactoList[i],
                       ),
                       separatorBuilder: (context, i) => const Divider(),
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
                     ),
-            ),
-          ],
-        ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

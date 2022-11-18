@@ -25,36 +25,34 @@ class ClienteVisitasPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteVisitas_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteVisitasList) => (clienteVisitasList.isNotEmpty)
-                  ? ListView.separated(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteVisitasList) => (clienteVisitasList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
                       itemBuilder: (context, i) => ClienteVisitaListaTile(
                           visita: clienteVisitasList[i],
                           navigatedFromCliente: true),
                       separatorBuilder: (context, i) => const Divider(),
                       itemCount: clienteVisitasList.length,
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
                     ),
-            ),
-          ],
-        ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

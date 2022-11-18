@@ -49,19 +49,17 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
           });
         },
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: description,
-            ),
-            gapH8,
-            stateClienteUltimosPreciosListCount.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              data: (count) => ListView.separated(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: description,
+          ),
+          gapH8,
+          stateClienteUltimosPreciosListCount.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            data: (count) => Expanded(
+              child: ListView.separated(
                 itemCount: count,
                 itemBuilder: (context, i) => ref
                     .watch(
@@ -79,11 +77,11 @@ class ArticuloUltimosPreciosPage extends ConsumerWidget {
                     ),
                 separatorBuilder: (context, i) => const Divider(),
               ),
-              error: (e, _) => ErrorMessageWidget(e.toString()),
-              loading: () => const ProgressIndicatorWidget(),
             ),
-          ],
-        ),
+            error: (e, _) => ErrorMessageWidget(e.toString()),
+            loading: () => const ProgressIndicatorWidget(),
+          ),
+        ],
       ),
     );
   }

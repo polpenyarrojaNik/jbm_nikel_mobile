@@ -24,37 +24,34 @@ class ClientePrecioNetoPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clientePrecioNeto_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clientePrecioNetoList) =>
-                  (clientePrecioNetoList.isNotEmpty)
-                      ? ListView.separated(
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: clientePrecioNetoList.length,
-                          itemBuilder: (context, i) => ClientePrecioNetoTile(
-                            clientePrecioNeto: clientePrecioNetoList[i],
-                          ),
-                          separatorBuilder: (context, i) => const Divider(),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
-                        ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clientePrecioNetoList) => (clientePrecioNetoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clientePrecioNetoList.length,
+                      itemBuilder: (context, i) => ClientePrecioNetoTile(
+                        clientePrecioNeto: clientePrecioNetoList[i],
+                      ),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

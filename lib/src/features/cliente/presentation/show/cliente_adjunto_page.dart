@@ -39,46 +39,44 @@ class ClienteAdjuntoPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteAdjunto_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: '#$clienteId ${nombreCliente ?? ''}',
-              subtitle: null,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) {
-                if (e is AppException) {
-                  return e.maybeWhen(
-                    orElse: () => ErrorMessageWidget(e.toString()),
-                    notConnection: () => Center(
-                      child: Text(S.of(context).sincConexion),
-                    ),
-                  );
-                }
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: '#$clienteId ${nombreCliente ?? ''}',
+            subtitle: null,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) {
+              if (e is AppException) {
+                return e.maybeWhen(
+                  orElse: () => ErrorMessageWidget(e.toString()),
+                  notConnection: () => Center(
+                    child: Text(S.of(context).sincConexion),
+                  ),
+                );
+              }
 
-                return ErrorMessageWidget(e.toString());
-              },
-              data: (clienteAdjuntoList) => (clienteAdjuntoList.isNotEmpty)
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
+              return ErrorMessageWidget(e.toString());
+            },
+            data: (clienteAdjuntoList) => (clienteAdjuntoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.builder(
                       itemCount: clienteAdjuntoList.length,
                       itemBuilder: (context, i) => ClienteAdjuntoTile(
                         clienteAdjunto: clienteAdjuntoList[i],
                       ),
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
                     ),
-            ),
-          ],
-        ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

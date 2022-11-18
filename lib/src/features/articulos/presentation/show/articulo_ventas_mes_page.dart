@@ -27,42 +27,39 @@ class ArticuloVentasMesPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).articulo_show_articuloVentasMes_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: descripcion,
-            ),
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (articuloVentasMesList) => (articuloVentasMesList
-                      .isNotEmpty)
-                  ? Column(
-                      children: [
-                        VentasMesDataTable(
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: descripcion,
+          ),
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (articuloVentasMesList) => (articuloVentasMesList.isNotEmpty)
+                ? Column(
+                    children: [
+                      VentasMesDataTable(
+                          articuloVentasMesList: articuloVentasMesList),
+                      gapH16,
+                      Container(
+                        height: 420,
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: GraficaVentasMes(
                             articuloVentasMesList: articuloVentasMesList),
-                        gapH16,
-                        Container(
-                          height: 420,
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: GraficaVentasMes(
-                              articuloVentasMesList: articuloVentasMesList),
-                        ),
-                        gapH16,
-                        const LeyendaWidget(),
-                      ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    ),
-            ),
-          ],
-        ),
+                      ),
+                      gapH16,
+                      const LeyendaWidget(),
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }

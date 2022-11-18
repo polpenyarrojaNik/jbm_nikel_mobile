@@ -40,48 +40,45 @@ class ArticuloDocumentoPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.of(context).articulo_show_articuloDocumentos_titulo),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderDatosRelacionados(
-              entityId: articuloId,
-              subtitle: description,
-            ),
-            gapH8,
-            state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) {
-                if (e is AppException) {
-                  return e.maybeWhen(
-                    orElse: () => ErrorMessageWidget(
-                      e.toString(),
+      body: Column(
+        children: [
+          HeaderDatosRelacionados(
+            entityId: articuloId,
+            subtitle: description,
+          ),
+          gapH8,
+          state.maybeWhen(
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) {
+              if (e is AppException) {
+                return e.maybeWhen(
+                  orElse: () => ErrorMessageWidget(
+                    e.toString(),
+                  ),
+                  notConnection: () => Center(
+                    child: Text(S.of(context).sincConexion),
+                  ),
+                );
+              }
+              return ErrorMessageWidget(e.toString());
+            },
+            data: (articuloDocumentoList) => (articuloDocumentoList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.builder(
+                      itemCount: articuloDocumentoList.length,
+                      itemBuilder: (context, i) => ArticuloDocumentoTile(
+                        articuloDocumento: articuloDocumentoList[i],
+                      ),
                     ),
-                    notConnection: () => Center(
-                      child: Text(S.of(context).sincConexion),
-                    ),
-                  );
-                }
-                return ErrorMessageWidget(e.toString());
-              },
-              data: (articuloDocumentoList) =>
-                  (articuloDocumentoList.isNotEmpty)
-                      ? ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: articuloDocumentoList.length,
-                          itemBuilder: (context, i) => ArticuloDocumentoTile(
-                            articuloDocumento: articuloDocumentoList[i],
-                          ),
-                        )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(S.of(context).sinResultados),
-                          ],
-                        ),
-            ),
-          ],
-        ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
+        ],
       ),
     );
   }
