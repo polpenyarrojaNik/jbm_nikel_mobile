@@ -16,7 +16,7 @@ void main() {
 
   setUp(() async {
     final Dio dio = Dio();
-    db = AppDatabase(test: true);
+    db = AppDatabase.test();
     pedidoVentaRepository = PedidoVentaRepository(
       db,
       dio,

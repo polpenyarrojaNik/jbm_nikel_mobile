@@ -9,7 +9,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/divisa_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
 import '../../features/articulos/infrastructure/articulo_componente_dto.dart';
@@ -44,8 +44,6 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
 import 'familia_dto.dart';
-import 'package:path/path.dart' as p;
-
 import 'log_dto.dart';
 
 part 'database.g.dart';
@@ -59,7 +57,9 @@ final appDatabaseProvider = Provider<AppDatabase>(
       isolateConnectPort = isolate.connectPort;
       return await isolate.connect();
     }());
-    return AppDatabase.connect(connection, false);
+    final database = AppDatabase.connect(connection);
+    ref.onDispose(() => database.close());
+    return database;
   },
 );
 const localDatabaseName = 'jbm.sqlite';
@@ -105,28 +105,14 @@ const localDatabaseName = 'jbm.sqlite';
 ])
 class AppDatabase extends _$AppDatabase {
   final bool test;
-  AppDatabase({this.test = false}) : super(_openConnection());
-
-  AppDatabase.connect(super.connection, this.test) : super.connect();
-
+  AppDatabase.connect(super.connection)
+      : test = false,
+        super.connect();
+  AppDatabase.test()
+      : test = true,
+        super(NativeDatabase.memory());
   @override
   int get schemaVersion => 8;
-}
-
-LazyDatabase _openConnection() {
-  return LazyDatabase(() async {
-    late File file;
-    // if (databaseFile == null) {
-    final dbFolder = await getApplicationDocumentsDirectory();
-
-    file = File(join(dbFolder.path, localDatabaseName));
-    // }
-    //  else {
-    //   file = File(databaseFile);
-    // }
-
-    return NativeDatabase(file);
-  });
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

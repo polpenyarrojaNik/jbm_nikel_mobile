@@ -83,7 +83,7 @@ Future<AppDatabase> createDatabaseConnection(IsolateArgs isolateArgs) async {
   final isolate = DriftIsolate.fromConnectPort(isolateSendPort);
   isolateSendPort.send(isolate.connectPort);
   final connection = await isolate.connect();
-  return AppDatabase.connect(connection, false);
+  return AppDatabase.connect(connection);
 }
 
 @freezed
