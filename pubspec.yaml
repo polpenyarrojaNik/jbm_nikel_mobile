@@ -28,6 +28,7 @@ dependencies:
   font_awesome_flutter: ^10.2.0
   form_builder_validators: ^8.3.0
   freezed_annotation: ^2.2.0
+  data_table_2: ^2.3.8
   geolocator: ^9.0.0
   google_fonts: ^3.0.1
   google_maps_flutter: ^2.2.0
