@@ -90,10 +90,12 @@ class _VentasArticuloDataTableState
                   orElse: () => [0],
                   data: (clienteVentasArticuloList) => [25, 50, 100]),
               rowsPerPage: state.maybeWhen(
-                orElse: () => 0,
+                orElse: () => 1,
                 data: (clienteVentasArticuloList) =>
                     (clienteVentasArticuloList.length < 25)
-                        ? clienteVentasArticuloList.length
+                        ? (clienteVentasArticuloList.isEmpty)
+                            ? 1
+                            : clienteVentasArticuloList.length
                         : 25,
               ),
               columns: _createColumns(clienteVentasArticuloList),

@@ -434,7 +434,7 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
                       data.shadowValue,
                     );
                   }).toList(),
-                  // maxY: getMaxYValue(widget.clienteVentasMesList),
+                  maxY: getMaxYValue(widget.clienteVentasMesList),
                   minY: 0,
                 ),
               ),
