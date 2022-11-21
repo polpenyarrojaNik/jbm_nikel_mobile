@@ -90,14 +90,16 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         scrollDirection: Axis.vertical,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: DataTable(
-            sortColumnIndex: _currentSortColumn,
-            sortAscending: _sortAsc,
-            horizontalMargin: 16,
-            columnSpacing: 16,
-            columns: _createColumns(widget.articuloVentasClienteList),
-            rows: _createDataRows(
-              articuloVentasClienteList: widget.articuloVentasClienteList,
+          child: Center(
+            child: DataTable(
+              sortColumnIndex: _currentSortColumn,
+              sortAscending: _sortAsc,
+              horizontalMargin: 16,
+              columnSpacing: 16,
+              columns: _createColumns(widget.articuloVentasClienteList),
+              rows: _createDataRows(
+                articuloVentasClienteList: widget.articuloVentasClienteList,
+              ),
             ),
           ),
         ),
@@ -112,16 +114,15 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         label: Expanded(
           child: Text(
               S.of(context).articulo_show_articuloVentasArticulo_cliente,
-              textAlign: TextAlign.center),
+              textAlign: TextAlign.left),
         ),
         numeric: true,
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${DateTime.now().year.toString()}',
-                  textAlign: TextAlign.center)),
+          child: Text(
+              '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${DateTime.now().year.toString()}',
+              textAlign: TextAlign.right),
         ),
         numeric: false,
         onSort: (i, sortAscending) {
@@ -143,11 +144,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-            child: Text(
-              '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 1).toString()}',
-              textAlign: TextAlign.center,
-            ),
+          child: Text(
+            '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 1).toString()}',
+            textAlign: TextAlign.right,
           ),
         ),
         numeric: false,
@@ -170,11 +169,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 2).toString()}',
-                  textAlign: TextAlign.center)),
-        ),
+            child: Text(
+                '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 2).toString()}',
+                textAlign: TextAlign.right)),
         numeric: false,
         onSort: (i, sortAscending) {
           setState(() {
@@ -195,11 +192,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 3).toString()}',
-                  textAlign: TextAlign.center)),
-        ),
+            child: Text(
+                '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 3).toString()}',
+                textAlign: TextAlign.right)),
         numeric: false,
         onSort: (i, sortAscending) {
           setState(() {
@@ -220,10 +215,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 4).toString()}',
-                  textAlign: TextAlign.center)),
+          child: Text(
+              '${S.of(context).articulo_show_articuloVentasArticulo_cantidad}\n${(DateTime.now().year - 4).toString()}',
+              textAlign: TextAlign.right),
         ),
         numeric: false,
         onSort: (i, sortAscending) {
@@ -245,10 +239,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${DateTime.now().year.toString()}',
-                  textAlign: TextAlign.center)),
+          child: Text(
+              '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${DateTime.now().year.toString()}',
+              textAlign: TextAlign.right),
         ),
         numeric: false,
         onSort: (i, sortAscending) {
@@ -270,11 +263,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-            child: Text(
-              '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 1).toString()}',
-              textAlign: TextAlign.center,
-            ),
+          child: Text(
+            '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 1).toString()}',
+            textAlign: TextAlign.right,
           ),
         ),
         numeric: false,
@@ -296,10 +287,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
         },
       ),
       DataColumn(
-        label: Center(
-            child: Text(
-                '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 2).toString()}',
-                textAlign: TextAlign.center)),
+        label: Text(
+            '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 2).toString()}',
+            textAlign: TextAlign.right),
         numeric: false,
         onSort: (i, sortAscending) {
           setState(() {
@@ -320,10 +310,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 3).toString()}',
-                  textAlign: TextAlign.center)),
+          child: Text(
+              '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 3).toString()}',
+              textAlign: TextAlign.right),
         ),
         numeric: false,
         onSort: (i, sortAscending) {
@@ -345,10 +334,9 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
-                  '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 4).toString()}',
-                  textAlign: TextAlign.center)),
+          child: Text(
+              '${S.of(context).articulo_show_articuloVentasArticulo_importe}\n${(DateTime.now().year - 4).toString()}',
+              textAlign: TextAlign.right),
         ),
         numeric: false,
         onSort: (i, sortAscending) {

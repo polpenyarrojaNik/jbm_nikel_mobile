@@ -96,10 +96,6 @@ class _VentasArticuloDataTableState
                         ? clienteVentasArticuloList.length
                         : 25,
               ),
-              // onPageChanged: (_) => setState(() {
-              //   print('Page: ${(_ % 50)}');
-              //   page = (_ % 50);
-              // }),
               columns: _createColumns(clienteVentasArticuloList),
               source: _ClienteVentasArticuloDataList(clienteVentasArticuloList,
                   selectedRow, (_) => setState(() => selectedRow = _), context),
@@ -431,141 +427,113 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                    numberFormatCantidades(
-                      clienteVentasArticuloList[i].cantidadAnyo,
-                    ),
+                Text(
+                  numberFormatCantidades(
+                    clienteVentasArticuloList[i].cantidadAnyo,
                   ),
+                  textAlign: TextAlign.right,
                 ),
               ],
             ),
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                      numberFormatCantidades(
-                        clienteVentasArticuloList[i].cantidadAnyo_1,
-                      ),
-                      textAlign: TextAlign.right),
+                Text(
+                    numberFormatCantidades(
+                      clienteVentasArticuloList[i].cantidadAnyo_1,
+                    ),
+                    textAlign: TextAlign.right),
+              ],
+            ),
+          ),
+          DataCell(
+            Row(
+              children: [
+                Text(
+                    numberFormatCantidades(
+                      clienteVentasArticuloList[i].cantidadAnyo_2,
+                    ),
+                    textAlign: TextAlign.right),
+              ],
+            ),
+          ),
+          DataCell(
+            Row(
+              children: [
+                Text(
+                    numberFormatCantidades(
+                      clienteVentasArticuloList[i].cantidadAnyo_3,
+                    ),
+                    textAlign: TextAlign.right),
+              ],
+            ),
+          ),
+          DataCell(
+            Row(
+              children: [
+                Text(
+                  numberFormatCantidades(
+                    clienteVentasArticuloList[i].cantidadAnyo_4,
+                  ),
+                  textAlign: TextAlign.right,
                 ),
               ],
             ),
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                      numberFormatCantidades(
-                        clienteVentasArticuloList[i].cantidadAnyo_2,
-                      ),
-                      textAlign: TextAlign.right),
-                ),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Center(
-                  child: Text(
-                      numberFormatCantidades(
-                        clienteVentasArticuloList[i].cantidadAnyo_3,
-                      ),
-                      textAlign: TextAlign.right),
-                ),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Center(
-                  child: Text(
-                      numberFormatCantidades(
-                        clienteVentasArticuloList[i].cantidadAnyo_4,
-                      ),
-                      textAlign: TextAlign.right),
-                ),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Center(
-                  child: Text(
+                Text(
                     formatPrecios(
                         precio: clienteVentasArticuloList[i].importeAnyo,
                         tipoPrecio: null),
-                  ),
-                ),
+                    textAlign: TextAlign.right),
               ],
             ),
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                      formatPrecios(
-                          precio: clienteVentasArticuloList[i].importeAnyo_1,
-                          tipoPrecio: null),
-                      textAlign: TextAlign.right),
-                ),
+                Text(
+                    formatPrecios(
+                        precio: clienteVentasArticuloList[i].importeAnyo_1,
+                        tipoPrecio: null),
+                    textAlign: TextAlign.right),
               ],
             ),
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                      formatPrecios(
-                          precio: clienteVentasArticuloList[i].importeAnyo_2,
-                          tipoPrecio: null),
-                      textAlign: TextAlign.right),
-                ),
+                Text(
+                    formatPrecios(
+                        precio: clienteVentasArticuloList[i].importeAnyo_2,
+                        tipoPrecio: null),
+                    textAlign: TextAlign.right),
               ],
             ),
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                      formatPrecios(
-                          precio: clienteVentasArticuloList[i].importeAnyo_3,
-                          tipoPrecio: null),
-                      textAlign: TextAlign.right),
-                ),
+                Text(
+                    formatPrecios(
+                        precio: clienteVentasArticuloList[i].importeAnyo_3,
+                        tipoPrecio: null),
+                    textAlign: TextAlign.right),
               ],
             ),
           ),
           DataCell(
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Center(
-                  child: Text(
-                      formatPrecios(
-                          precio: clienteVentasArticuloList[i].importeAnyo_4,
-                          tipoPrecio: null),
-                      textAlign: TextAlign.right),
-                ),
+                Text(
+                    formatPrecios(
+                        precio: clienteVentasArticuloList[i].importeAnyo_4,
+                        tipoPrecio: null),
+                    textAlign: TextAlign.right),
               ],
             ),
           ),

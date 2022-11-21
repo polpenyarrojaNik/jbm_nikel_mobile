@@ -83,8 +83,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Center(
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(
@@ -103,7 +102,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       DataColumn(
         label: Expanded(
           child: Text(S.of(context).articulo_show_articuloVentasMes_mes,
-              textAlign: TextAlign.center),
+              textAlign: TextAlign.left),
         ),
         numeric: true,
       ),
@@ -111,7 +110,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         label: Expanded(
           child: Center(
               child: Text(DateTime.now().year.toString(),
-                  textAlign: TextAlign.center)),
+                  textAlign: TextAlign.right)),
         ),
         numeric: false,
       ),
@@ -120,7 +119,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
           child: Center(
               child: Text(
             (DateTime.now().year - 1).toString(),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.right,
           )),
         ),
         numeric: false,
@@ -129,7 +128,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         label: Expanded(
           child: Center(
               child: Text((DateTime.now().year - 2).toString(),
-                  textAlign: TextAlign.center)),
+                  textAlign: TextAlign.right)),
         ),
         numeric: false,
       ),
@@ -137,7 +136,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         label: Expanded(
           child: Center(
               child: Text((DateTime.now().year - 3).toString(),
-                  textAlign: TextAlign.center)),
+                  textAlign: TextAlign.right)),
         ),
         numeric: false,
       ),
@@ -145,7 +144,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
         label: Expanded(
           child: Center(
               child: Text((DateTime.now().year - 4).toString(),
-                  textAlign: TextAlign.center)),
+                  textAlign: TextAlign.right)),
         ),
         numeric: false,
       ),

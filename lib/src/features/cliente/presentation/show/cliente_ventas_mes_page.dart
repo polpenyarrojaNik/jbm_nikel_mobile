@@ -91,12 +91,14 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: DataTable(
-        horizontalMargin: 16,
-        columnSpacing: 16,
-        columns: _createColumns(),
-        rows:
-            _createDataRows(clienteVentasMesList: widget.clienteVentasMesList),
+      child: Center(
+        child: DataTable(
+          horizontalMargin: 16,
+          columnSpacing: 16,
+          columns: _createColumns(),
+          rows: _createDataRows(
+              clienteVentasMesList: widget.clienteVentasMesList),
+        ),
       ),
     );
   }
@@ -106,53 +108,43 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
       DataColumn(
         label: Expanded(
           child: Text(S.of(context).cliente_show_clienteVentasMes_mes,
-              textAlign: TextAlign.center),
+              textAlign: TextAlign.left),
         ),
         numeric: true,
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
             child: Text(DateTime.now().year.toString(),
-                textAlign: TextAlign.center),
-          ),
-        ),
+                textAlign: TextAlign.right)),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-              child: Text(
+          child: Text(
             (DateTime.now().year - 1).toString(),
-            textAlign: TextAlign.center,
-          )),
-        ),
-        numeric: false,
-      ),
-      DataColumn(
-        label: Expanded(
-          child: Center(
-            child: Text((DateTime.now().year - 2).toString(),
-                textAlign: TextAlign.center),
+            textAlign: TextAlign.right,
           ),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-            child: Text((DateTime.now().year - 3).toString(),
-                textAlign: TextAlign.center),
-          ),
+          child: Text((DateTime.now().year - 2).toString(),
+              textAlign: TextAlign.right),
         ),
         numeric: false,
       ),
       DataColumn(
         label: Expanded(
-          child: Center(
-            child: Text((DateTime.now().year - 4).toString(),
-                textAlign: TextAlign.center),
-          ),
+          child: Text((DateTime.now().year - 3).toString(),
+              textAlign: TextAlign.right),
+        ),
+        numeric: false,
+      ),
+      DataColumn(
+        label: Expanded(
+          child: Text((DateTime.now().year - 4).toString(),
+              textAlign: TextAlign.right),
         ),
         numeric: false,
       ),
