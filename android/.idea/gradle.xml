@@ -15,14 +15,14 @@
             <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7/android" />
             <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-6.0.0/android" />
             <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_android-4.1.4/android" />
-            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_android-2.3.2/android" />
+            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_android-2.3.3/android" />
             <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/map_launcher-2.4.0/android" />
-            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus-3.0.1/android" />
-            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.20/android" />
+            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/package_info_plus-3.0.2/android" />
+            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.21/android" />
             <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_android-2.0.14/android" />
-            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.1.0+1/android" />
-            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/sqlite3_flutter_libs-0.5.10/android" />
-            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_android-6.0.19/android" />
+            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.2.0+3/android" />
+            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/sqlite3_flutter_libs-0.5.11+1/android" />
+            <option value="/Applications/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_android-6.0.21/android" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>
