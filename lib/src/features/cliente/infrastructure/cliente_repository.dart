@@ -106,12 +106,6 @@ final clienteVentasMesProvider = FutureProvider.autoDispose
   return clienteRepository.getVentasMesById(clienteId: clienteId);
 });
 
-final clienteVentasArticuloProvider = FutureProvider.autoDispose
-    .family<List<ClienteVentasArticulo>, String>((ref, clienteId) {
-  final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getVentasArticuloById(clienteId: clienteId);
-});
-
 final clienteVisitasProvider =
     FutureProvider.autoDispose.family<List<Visita>, String>((ref, clienteId) {
   final visitaRepository = ref.watch(visitaRepositoryProvider);
@@ -137,6 +131,7 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
 
 class ClienteRepository {
   static const pageSize = 100;
+  static const clienteVentasArticuloPageSize = 50;
 
   final AppDatabase _db;
   final Dio _dio;
@@ -534,7 +529,7 @@ class ClienteRepository {
     }
   }
 
-  Future<List<ClienteVentasArticulo>> getVentasArticuloById(
+  Future<List<ClienteVentasArticulo>> getClienteVentasArticuloList(
       {required String clienteId}) async {
     try {
       final query =
@@ -888,7 +883,6 @@ FROM (
 )
 WHERE ARTICULO_ID IS NOT NULL
 GROUP BY ARTICULO_ID, DESCRIPCION_ES
-ORDER BY IMPORTE_ANYO DESC
 ''';
 
     return select;

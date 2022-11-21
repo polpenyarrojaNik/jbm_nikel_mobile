@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
-import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_ventas_articulo.dart';
-import '../../infrastructure/cliente_repository.dart';
+import 'cliente_ventas_articulo_controller.dart';
 
-class ClienteVentasArticuloPage extends ConsumerWidget {
+class ClienteVentasArticuloPage extends StatelessWidget {
   const ClienteVentasArticuloPage(
       {super.key, required this.clienteId, required this.nombreCliente});
 
@@ -18,8 +17,7 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
   final String? nombreCliente;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteVentasArticuloProvider(clienteId));
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).cliente_show_clienteVentasArticulo_titulo),
@@ -31,38 +29,25 @@ class ClienteVentasArticuloPage extends ConsumerWidget {
             subtitle: null,
           ),
           gapH8,
-          state.maybeWhen(
-            orElse: () => const ProgressIndicatorWidget(),
-            error: (e, st) => ErrorMessageWidget(e.toString()),
-            data: (clienteVentasArticuloList) =>
-                (clienteVentasArticuloList.isNotEmpty)
-                    ? VentasArticuloDataTable(
-                        clienteVentasArticuloList: clienteVentasArticuloList)
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(S.of(context).sinResultados),
-                        ],
-                      ),
-          ),
+          VentasArticuloDataTable(clienteId: clienteId)
         ],
       ),
     );
   }
 }
 
-class VentasArticuloDataTable extends StatefulWidget {
-  const VentasArticuloDataTable(
-      {super.key, required this.clienteVentasArticuloList});
+class VentasArticuloDataTable extends ConsumerStatefulWidget {
+  const VentasArticuloDataTable({super.key, required this.clienteId});
 
-  final List<ClienteVentasArticulo> clienteVentasArticuloList;
+  final String clienteId;
 
   @override
-  State<VentasArticuloDataTable> createState() =>
+  ConsumerState<VentasArticuloDataTable> createState() =>
       _VentasArticuloDataTableState();
 }
 
-class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
+class _VentasArticuloDataTableState
+    extends ConsumerState<VentasArticuloDataTable> {
   List<DataColumn> columns = [];
   List<DataRow> rows = [];
   int selectedRow = -1;
@@ -87,22 +72,40 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(
+        clienteVentasArticuloIndexScreenPaginatedControllerProvider(
+            clienteId: widget.clienteId));
     return Expanded(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: DataTable(
-            sortColumnIndex: _currentSortColumn,
-            sortAscending: _sortAsc,
-            horizontalMargin: 16,
-            columnSpacing: 16,
-            columns: _createColumns(widget.clienteVentasArticuloList),
-            rows: _createDataRows(
-              clienteVentasArticuloList: widget.clienteVentasArticuloList,
+      child: ListView(
+        children: [
+          state.maybeWhen(
+            orElse: () => const CircularProgressIndicator(),
+            error: (error, _) => ErrorMessageWidget(error.toString()),
+            data: (clienteVentasArticuloList) => PaginatedDataTable(
+              sortColumnIndex: _currentSortColumn,
+              sortAscending: _sortAsc,
+              horizontalMargin: 16,
+              columnSpacing: 16,
+              availableRowsPerPage: state.maybeWhen(
+                  orElse: () => [0],
+                  data: (clienteVentasArticuloList) => [25, 50, 100]),
+              rowsPerPage: state.maybeWhen(
+                orElse: () => 0,
+                data: (clienteVentasArticuloList) =>
+                    (clienteVentasArticuloList.length < 25)
+                        ? clienteVentasArticuloList.length
+                        : 25,
+              ),
+              // onPageChanged: (_) => setState(() {
+              //   print('Page: ${(_ % 50)}');
+              //   page = (_ % 50);
+              // }),
+              columns: _createColumns(clienteVentasArticuloList),
+              source: _ClienteVentasArticuloDataList(clienteVentasArticuloList,
+                  selectedRow, (_) => setState(() => selectedRow = _), context),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -368,202 +371,213 @@ class _VentasArticuloDataTableState extends State<VentasArticuloDataTable> {
       ),
     ];
   }
+}
 
-  List<DataRow> _createDataRows(
-      {required List<ClienteVentasArticulo> clienteVentasArticuloList}) {
-    final List<DataRow> dataRows = [];
+class _ClienteVentasArticuloDataList extends DataTableSource {
+  final List<ClienteVentasArticulo> clienteVentasArticuloList;
 
-    for (var i = 0; i < clienteVentasArticuloList.length; i++) {
-      dataRows.add(
-        DataRow(
-          onLongPress: () => setState(() {
-            selectedRow = i;
-          }),
-          selected: selectedRow == i,
-          cells: [
-            DataCell(
-              SizedBox(
-                width: 75,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        clienteVentasArticuloList[i].articuloId,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            DataCell(
-              SizedBox(
-                width: 300,
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        (getClienteVentasArticuloDescripcionInLocalLanguage(
-                                    clienteVentasArticulo:
-                                        clienteVentasArticuloList[i]) !=
-                                null)
-                            ? getClienteVentasArticuloDescripcionInLocalLanguage(
-                                clienteVentasArticulo:
-                                    clienteVentasArticuloList[i])!
-                            : '',
-                        style: Theme.of(context).textTheme.caption,
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+  final Function(int) changedSelectedRowFunction;
+
+  final int selectedRow;
+
+  final BuildContext context;
+
+  _ClienteVentasArticuloDataList(this.clienteVentasArticuloList,
+      this.selectedRow, this.changedSelectedRowFunction, this.context);
+
+  @override
+  DataRow? getRow(int i) => DataRow(
+        selected: selectedRow == i,
+        onLongPress: () => changedSelectedRowFunction(i),
+        cells: [
+          DataCell(
+            SizedBox(
+              width: 75,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Center(
+                  Flexible(
                     child: Text(
+                      clienteVentasArticuloList[i].articuloId,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          DataCell(
+            SizedBox(
+              width: 300,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: Text(
+                      (getClienteVentasArticuloDescripcionInLocalLanguage(
+                                  clienteVentasArticulo:
+                                      clienteVentasArticuloList[i]) !=
+                              null)
+                          ? getClienteVentasArticuloDescripcionInLocalLanguage(
+                              clienteVentasArticulo:
+                                  clienteVentasArticuloList[i])!
+                          : '',
+                      style: Theme.of(context).textTheme.caption,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    numberFormatCantidades(
+                      clienteVentasArticuloList[i].cantidadAnyo,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
                       numberFormatCantidades(
-                        clienteVentasArticuloList[i].cantidadAnyo,
+                        clienteVentasArticuloList[i].cantidadAnyo_1,
                       ),
-                    ),
-                  ),
-                ],
-              ),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          clienteVentasArticuloList[i].cantidadAnyo_1,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                      numberFormatCantidades(
+                        clienteVentasArticuloList[i].cantidadAnyo_2,
+                      ),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          clienteVentasArticuloList[i].cantidadAnyo_2,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                      numberFormatCantidades(
+                        clienteVentasArticuloList[i].cantidadAnyo_3,
+                      ),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          clienteVentasArticuloList[i].cantidadAnyo_3,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                      numberFormatCantidades(
+                        clienteVentasArticuloList[i].cantidadAnyo_4,
+                      ),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          clienteVentasArticuloList[i].cantidadAnyo_4,
-                        ),
-                        textAlign: TextAlign.right),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                    formatPrecios(
+                        precio: clienteVentasArticuloList[i].importeAnyo,
+                        tipoPrecio: null),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
                       formatPrecios(
-                          precio: clienteVentasArticuloList[i].importeAnyo,
+                          precio: clienteVentasArticuloList[i].importeAnyo_1,
                           tipoPrecio: null),
-                    ),
-                  ),
-                ],
-              ),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: clienteVentasArticuloList[i].importeAnyo_1,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                      formatPrecios(
+                          precio: clienteVentasArticuloList[i].importeAnyo_2,
+                          tipoPrecio: null),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: clienteVentasArticuloList[i].importeAnyo_2,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                      formatPrecios(
+                          precio: clienteVentasArticuloList[i].importeAnyo_3,
+                          tipoPrecio: null),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: clienteVentasArticuloList[i].importeAnyo_3,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
+          ),
+          DataCell(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Center(
+                  child: Text(
+                      formatPrecios(
+                          precio: clienteVentasArticuloList[i].importeAnyo_4,
+                          tipoPrecio: null),
+                      textAlign: TextAlign.right),
+                ),
+              ],
             ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: clienteVentasArticuloList[i].importeAnyo_4,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       );
-    }
-    return dataRows;
-  }
+
+  @override
+  bool get isRowCountApproximate => false;
+
+  @override
+  int get rowCount => clienteVentasArticuloList.length;
+
+  @override
+  int get selectedRowCount => selectedRow;
 }
