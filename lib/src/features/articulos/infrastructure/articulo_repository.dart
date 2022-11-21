@@ -972,28 +972,9 @@ ORDER BY IMPORTE_ANYO DESC
         return "art.DESCRIPCION_FR LIKE '%$searchText%'";
       case 'de':
         return "art.DESCRIPCION_EN LIKE '%$searchText%'";
-      case 'ca':
-        return "art.DESCRIPCION_DE LIKE '%$searchText%'";
-      case 'gb':
-        return "art.DESCRIPCION_GB LIKE '%$searchText%'";
-      case 'hu':
-        return "art.DESCRIPCION_HU LIKE '%$searchText%'";
+
       case 'it':
         return "art.DESCRIPCION_IT LIKE '%$searchText%'";
-      case 'nl':
-        return "art.DESCRIPCION_NL LIKE '%$searchText%'";
-      case 'pl':
-        return "art.DESCRIPCION_PL LIKE '%$searchText%'";
-      case 'pt':
-        return "art.DESCRIPCION_PT LIKE '%$searchText%'";
-      case 'ro':
-        return "art.DESCRIPCION_RO LIKE '%$searchText%'";
-      case 'ru':
-        return "art.DESCRIPCION_RU LIKE '%$searchText%'";
-      case 'cn':
-        return "art.DESCRIPCION_CN LIKE '%$searchText%'";
-      case 'el':
-        return "art.DESCRIPCION_EL LIKE '%$searchText%'";
 
       default:
         return "art.DESCRIPCION_ES LIKE '%$searchText%'";
