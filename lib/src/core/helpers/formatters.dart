@@ -164,6 +164,12 @@ String getDescriptionArticuloInLocalLanguage({required Articulo articulo}) {
     return articulo.descripcionES;
   } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
     return articulo.descripcionEN!;
+  } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
+    return articulo.descripcionDE!;
+  } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
+    return articulo.descripcionFR!;
+  } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
+    return articulo.descripcionIT!;
   }
 
   return articulo.descripcionES;
@@ -177,6 +183,12 @@ String getDescriptionArticuloComponenteInLocalLanguage(
     return articulo.descripcionES;
   } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
     return articulo.descripcionEN!;
+  } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
+    return articulo.descripcionDE!;
+  } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
+    return articulo.descripcionFR!;
+  } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
+    return articulo.descripcionIT!;
   }
 
   return articulo.descripcionES;
@@ -189,6 +201,12 @@ String? getSummaryInLocalLanguage({required Articulo articulo}) {
     return articulo.resumenES!;
   } else if (currentLocale == 'en' && articulo.resumenEN != null) {
     return articulo.resumenEN!;
+  } else if (currentLocale == 'de' && articulo.descripcionDE != null) {
+    return articulo.descripcionDE!;
+  } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
+    return articulo.descripcionFR!;
+  } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
+    return articulo.descripcionIT!;
   }
   return null;
 }
@@ -200,8 +218,14 @@ String? getPlazoCorboInLocalLanguage({required PlazoDeCobro plazoDeCobro}) {
     return plazoDeCobro.descripcionES;
   } else if (currentLocale == 'en' && plazoDeCobro.descripcionEN != null) {
     return plazoDeCobro.descripcionEN!;
+  } else if (currentLocale == 'de' && plazoDeCobro.descripcionDE != null) {
+    return plazoDeCobro.descripcionDE!;
+  } else if (currentLocale == 'fr' && plazoDeCobro.descripcionFR != null) {
+    return plazoDeCobro.descripcionFR!;
+  } else if (currentLocale == 'it' && plazoDeCobro.descripcionIT != null) {
+    return plazoDeCobro.descripcionIT!;
   }
-  return null;
+  return plazoDeCobro.descripcionES;
 }
 
 String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
@@ -211,7 +235,14 @@ String? getMetodoCobroInLocalLanguage({required MetodoDeCobro metodoDeCobro}) {
     return metodoDeCobro.descripcionES;
   } else if (currentLocale == 'en' && metodoDeCobro.descripcionEN != null) {
     return metodoDeCobro.descripcionEN!;
+  } else if (currentLocale == 'de' && metodoDeCobro.descripcionDE != null) {
+    return metodoDeCobro.descripcionDE!;
+  } else if (currentLocale == 'fr' && metodoDeCobro.descripcionFR != null) {
+    return metodoDeCobro.descripcionFR!;
+  } else if (currentLocale == 'it' && metodoDeCobro.descripcionIT != null) {
+    return metodoDeCobro.descripcionIT!;
   }
+
   return null;
 }
 
@@ -250,6 +281,12 @@ String getClienteEstadoPotencialInLocalLanguage(
       return estadoPotencial.descripcionES;
     } else if (currentLocale == 'en' && estadoPotencial.descripcionEN != null) {
       return estadoPotencial.descripcionEN!;
+    } else if (currentLocale == 'de' && estadoPotencial.descripcionDE != null) {
+      return estadoPotencial.descripcionDE!;
+    } else if (currentLocale == 'fr' && estadoPotencial.descripcionFR != null) {
+      return estadoPotencial.descripcionFR!;
+    } else if (currentLocale == 'it' && estadoPotencial.descripcionIT != null) {
+      return estadoPotencial.descripcionIT!;
     }
   }
 
@@ -265,6 +302,12 @@ String? getClienteTipoPotencialInLocalLanguage(
       return tipoPotencial.descripcionES;
     } else if (currentLocale == 'en' && tipoPotencial.descripcionEN != null) {
       return tipoPotencial.descripcionEN!;
+    } else if (currentLocale == 'de' && tipoPotencial.descripcionDE != null) {
+      return tipoPotencial.descripcionDE!;
+    } else if (currentLocale == 'fr' && tipoPotencial.descripcionFR != null) {
+      return tipoPotencial.descripcionFR!;
+    } else if (currentLocale == 'it' && tipoPotencial.descripcionIT != null) {
+      return tipoPotencial.descripcionIT!;
     }
   }
 
@@ -280,6 +323,15 @@ String? getClienteVentasArticuloDescripcionInLocalLanguage(
   } else if (currentLocale == 'en' &&
       clienteVentasArticulo.descripcionEN != null) {
     return clienteVentasArticulo.descripcionEN!;
+  } else if (currentLocale == 'de' &&
+      clienteVentasArticulo.descripcionDE != null) {
+    return clienteVentasArticulo.descripcionDE!;
+  } else if (currentLocale == 'fr' &&
+      clienteVentasArticulo.descripcionFR != null) {
+    return clienteVentasArticulo.descripcionFR!;
+  } else if (currentLocale == 'it' &&
+      clienteVentasArticulo.descripcionIT != null) {
+    return clienteVentasArticulo.descripcionIT!;
   }
 
   return null;

@@ -928,7 +928,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION_ES
         query.where(
             (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
                 (_db.articuloTable.id.like('%$searchText%') |
-                    _db.articuloTable.descripcionES.like('%$searchText%')));
+                    _filtrarPorDescripcion(searchText)));
       } else {
         query.where(
             _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
@@ -1060,6 +1060,24 @@ GROUP BY ARTICULO_ID, DESCRIPCION_ES
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Expression<bool> _filtrarPorDescripcion(String searchText) {
+    final currentLocale = Intl.getCurrentLocale();
+
+    if (currentLocale == 'es') {
+      return _db.articuloTable.descripcionES.equals('%$searchText%');
+    } else if (currentLocale == 'en') {
+      return _db.articuloTable.descripcionEN.equals('%$searchText%');
+    } else if (currentLocale == 'de') {
+      return _db.articuloTable.descripcionDE.equals('%$searchText%');
+    } else if (currentLocale == 'fr') {
+      return _db.articuloTable.descripcionFR.equals('%$searchText%');
+    } else if (currentLocale == 'it') {
+      return _db.articuloTable.descripcionIT.equals('%$searchText%');
+    } else {
+      return _db.articuloTable.descripcionES.equals('%$searchText%');
     }
   }
 }
