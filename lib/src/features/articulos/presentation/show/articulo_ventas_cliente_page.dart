@@ -382,6 +382,7 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
                     Flexible(
                       child: Text(
                         articuloVentasClienteList[i].nombreCliente,
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -393,12 +394,71 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Center(
-                    child: Text(
+                  Text(
                       numberFormatCantidades(
                         articuloVentasClienteList[i].cantidadAnyo,
                       ),
-                    ),
+                      textAlign: TextAlign.right),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                      numberFormatCantidades(
+                        articuloVentasClienteList[i].cantidadAnyo_1,
+                      ),
+                      textAlign: TextAlign.right),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                      numberFormatCantidades(
+                        articuloVentasClienteList[i].cantidadAnyo_2,
+                      ),
+                      textAlign: TextAlign.right),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                      numberFormatCantidades(
+                        articuloVentasClienteList[i].cantidadAnyo_3,
+                      ),
+                      textAlign: TextAlign.right),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                      numberFormatCantidades(
+                        articuloVentasClienteList[i].cantidadAnyo_4,
+                      ),
+                      textAlign: TextAlign.right),
+                ],
+              ),
+            ),
+            DataCell(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    formatPrecios(
+                        precio: articuloVentasClienteList[i].importeAnyo,
+                        tipoPrecio: null),
+                    textAlign: TextAlign.right,
                   ),
                 ],
               ),
@@ -407,69 +467,11 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          articuloVentasClienteList[i].cantidadAnyo_1,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          articuloVentasClienteList[i].cantidadAnyo_2,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          articuloVentasClienteList[i].cantidadAnyo_3,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        numberFormatCantidades(
-                          articuloVentasClienteList[i].cantidadAnyo_4,
-                        ),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
+                  Text(
                       formatPrecios(
-                          precio: articuloVentasClienteList[i].importeAnyo,
+                          precio: articuloVentasClienteList[i].importeAnyo_1,
                           tipoPrecio: null),
-                    ),
-                  ),
+                      textAlign: TextAlign.right),
                 ],
               ),
             ),
@@ -477,13 +479,11 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: articuloVentasClienteList[i].importeAnyo_1,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
+                  Text(
+                      formatPrecios(
+                          precio: articuloVentasClienteList[i].importeAnyo_2,
+                          tipoPrecio: null),
+                      textAlign: TextAlign.right),
                 ],
               ),
             ),
@@ -491,13 +491,11 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: articuloVentasClienteList[i].importeAnyo_2,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
+                  Text(
+                      formatPrecios(
+                          precio: articuloVentasClienteList[i].importeAnyo_3,
+                          tipoPrecio: null),
+                      textAlign: TextAlign.right),
                 ],
               ),
             ),
@@ -505,27 +503,11 @@ class _VentasClienteDataTableState extends State<VentasClienteDataTable> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: articuloVentasClienteList[i].importeAnyo_3,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
-                ],
-              ),
-            ),
-            DataCell(
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(
-                        formatPrecios(
-                            precio: articuloVentasClienteList[i].importeAnyo_4,
-                            tipoPrecio: null),
-                        textAlign: TextAlign.right),
-                  ),
+                  Text(
+                      formatPrecios(
+                          precio: articuloVentasClienteList[i].importeAnyo_4,
+                          tipoPrecio: null),
+                      textAlign: TextAlign.right),
                 ],
               ),
             ),
