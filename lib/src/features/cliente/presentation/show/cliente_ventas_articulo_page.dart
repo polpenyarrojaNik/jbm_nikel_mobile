@@ -427,6 +427,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   numberFormatCantidades(
@@ -439,6 +440,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     numberFormatCantidades(
@@ -450,6 +452,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     numberFormatCantidades(
@@ -461,6 +464,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     numberFormatCantidades(
@@ -472,6 +476,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   numberFormatCantidades(
@@ -484,6 +489,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     formatPrecios(
@@ -495,6 +501,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     formatPrecios(
@@ -506,6 +513,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     formatPrecios(
@@ -517,6 +525,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     formatPrecios(
@@ -528,6 +537,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                     formatPrecios(
