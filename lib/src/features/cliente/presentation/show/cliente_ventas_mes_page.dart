@@ -89,9 +89,9 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Center(
+    return Center(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: DataTable(
           horizontalMargin: 16,
           columnSpacing: 16,
