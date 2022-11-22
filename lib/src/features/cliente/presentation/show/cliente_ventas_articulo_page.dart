@@ -1,3 +1,4 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
@@ -6,6 +7,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
+import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_ventas_articulo.dart';
 import 'cliente_ventas_articulo_controller.dart';
 
@@ -76,64 +78,48 @@ class _VentasArticuloDataTableState
         clienteVentasArticuloIndexScreenPaginatedControllerProvider(
             clienteId: widget.clienteId));
     return Expanded(
-      child: ListView(
-        children: [
-          state.maybeWhen(
-            orElse: () => const CircularProgressIndicator(),
-            error: (error, _) => ErrorMessageWidget(error.toString()),
-            data: (clienteVentasArticuloList) => PaginatedDataTable(
-              sortColumnIndex: _currentSortColumn,
-              sortAscending: _sortAsc,
-              horizontalMargin: 16,
-              columnSpacing: 16,
-              availableRowsPerPage: state.maybeWhen(
-                  orElse: () => [0],
-                  data: (clienteVentasArticuloList) => [25, 50, 100]),
-              rowsPerPage: state.maybeWhen(
-                orElse: () => 1,
-                data: (clienteVentasArticuloList) =>
-                    (clienteVentasArticuloList.length < 25)
-                        ? (clienteVentasArticuloList.isEmpty)
-                            ? 1
-                            : clienteVentasArticuloList.length
-                        : 25,
-              ),
-              columns: _createColumns(clienteVentasArticuloList),
-              source: _ClienteVentasArticuloDataList(clienteVentasArticuloList,
-                  selectedRow, (_) => setState(() => selectedRow = _), context),
-            ),
-          ),
-        ],
+      child: state.maybeWhen(
+        orElse: () => const ProgressIndicatorWidget(),
+        error: (error, _) => ErrorMessageWidget(error.toString()),
+        data: (clienteVentasArticuloList) => PaginatedDataTable2(
+          sortColumnIndex: _currentSortColumn,
+          sortAscending: _sortAsc,
+          horizontalMargin: 12,
+          columnSpacing: 12,
+          autoRowsToHeight: true,
+          minWidth: 1500,
+          lmRatio: 2,
+          smRatio: 0.7,
+          fit: FlexFit.tight,
+          columns: _createColumns(clienteVentasArticuloList),
+          source: _ClienteVentasArticuloDataList(clienteVentasArticuloList,
+              selectedRow, (_) => setState(() => selectedRow = _), context),
+        ),
       ),
     );
   }
 
-  List<DataColumn> _createColumns(
+  List<DataColumn2> _createColumns(
       List<ClienteVentasArticulo> clienteVentasArticuloList) {
     return [
-      DataColumn(
-        label: Expanded(
-          child: Text(S.of(context).cliente_show_clienteVentasArticulo_articulo,
-              textAlign: TextAlign.left),
-        ),
-        numeric: true,
+      DataColumn2(
+        label: Text(S.of(context).cliente_show_clienteVentasArticulo_articulo,
+            textAlign: TextAlign.left),
+        size: ColumnSize.S,
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              S.of(context).cliente_show_clienteVentasArticulo_description,
-              textAlign: TextAlign.left),
-        ),
-        numeric: true,
+      DataColumn2(
+        label: Text(
+            S.of(context).cliente_show_clienteVentasArticulo_description,
+            textAlign: TextAlign.left),
+        size: ColumnSize.L,
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-            '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${DateTime.now().year.toString()}',
-            textAlign: TextAlign.right,
-          ),
+      DataColumn2(
+        label: Text(
+          '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${DateTime.now().year.toString()}',
+          textAlign: TextAlign.right,
         ),
-        numeric: false,
+        size: ColumnSize.M,
+        numeric: true,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -151,14 +137,13 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-            '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 1).toString()}',
-            textAlign: TextAlign.right,
-          ),
+      DataColumn2(
+        label: Text(
+          '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 1).toString()}',
+          textAlign: TextAlign.right,
         ),
-        numeric: false,
+        size: ColumnSize.M,
+        numeric: true,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -176,13 +161,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 2).toString()}',
-              textAlign: TextAlign.right),
-        ),
-        numeric: false,
+      DataColumn2(
+        label: Text(
+            '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 2).toString()}',
+            textAlign: TextAlign.right),
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -200,13 +184,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 3).toString()}',
-              textAlign: TextAlign.right),
-        ),
-        numeric: false,
+      DataColumn2(
+        label: Text(
+            '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 3).toString()}',
+            textAlign: TextAlign.right),
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -224,13 +207,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 4).toString()}',
-              textAlign: TextAlign.right),
-        ),
-        numeric: false,
+      DataColumn2(
+        label: Text(
+            '${S.of(context).cliente_show_clienteVentasArticulo_cantidad}\n${(DateTime.now().year - 4).toString()}',
+            textAlign: TextAlign.right),
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -248,13 +230,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${DateTime.now().year.toString()}',
-              textAlign: TextAlign.right),
-        ),
-        numeric: false,
+      DataColumn2(
+        label: Text(
+            '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${DateTime.now().year.toString()}',
+            textAlign: TextAlign.right),
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -272,14 +253,13 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-            '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 1).toString()}',
-            textAlign: TextAlign.right,
-          ),
+      DataColumn2(
+        label: Text(
+          '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 1).toString()}',
+          textAlign: TextAlign.right,
         ),
-        numeric: false,
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -297,11 +277,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
+      DataColumn2(
         label: Text(
             '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 2).toString()}',
             textAlign: TextAlign.right),
-        numeric: false,
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -319,13 +300,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 3).toString()}',
-              textAlign: TextAlign.right),
-        ),
-        numeric: false,
+      DataColumn2(
+        label: Text(
+            '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 3).toString()}',
+            textAlign: TextAlign.right),
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -343,13 +323,12 @@ class _VentasArticuloDataTableState
           });
         },
       ),
-      DataColumn(
-        label: Expanded(
-          child: Text(
-              '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 4).toString()}',
-              textAlign: TextAlign.right),
-        ),
-        numeric: false,
+      DataColumn2(
+        label: Text(
+            '${S.of(context).cliente_show_clienteVentasArticulo_importe}\n${(DateTime.now().year - 4).toString()}',
+            textAlign: TextAlign.right),
+        numeric: true,
+        size: ColumnSize.M,
         onSort: (i, sortAscending) {
           setState(() {
             _currentSortColumn = i;
@@ -389,104 +368,59 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
         onLongPress: () => changedSelectedRowFunction(i),
         cells: [
           DataCell(
-            SizedBox(
-              width: 75,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Flexible(
-                    child: Text(
-                      clienteVentasArticuloList[i].articuloId,
-                    ),
-                  ),
-                ],
+            Text(
+              clienteVentasArticuloList[i].articuloId,
+            ),
+          ),
+          DataCell(
+            Text(
+              (getClienteVentasArticuloDescripcionInLocalLanguage(
+                          clienteVentasArticulo:
+                              clienteVentasArticuloList[i]) !=
+                      null)
+                  ? getClienteVentasArticuloDescripcionInLocalLanguage(
+                      clienteVentasArticulo: clienteVentasArticuloList[i])!
+                  : '',
+              style: Theme.of(context).textTheme.caption,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          DataCell(
+            Text(
+              numberFormatCantidades(
+                clienteVentasArticuloList[i].cantidadAnyo,
               ),
+              textAlign: TextAlign.right,
             ),
           ),
           DataCell(
-            SizedBox(
-              width: 300,
-              child: Row(
-                children: [
-                  Flexible(
-                    child: Text(
-                      (getClienteVentasArticuloDescripcionInLocalLanguage(
-                                  clienteVentasArticulo:
-                                      clienteVentasArticuloList[i]) !=
-                              null)
-                          ? getClienteVentasArticuloDescripcionInLocalLanguage(
-                              clienteVentasArticulo:
-                                  clienteVentasArticuloList[i])!
-                          : '',
-                      style: Theme.of(context).textTheme.caption,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
+            Text(
+                numberFormatCantidades(
+                  clienteVentasArticuloList[i].cantidadAnyo_1,
+                ),
+                textAlign: TextAlign.right),
+          ),
+          DataCell(
+            Text(
+                numberFormatCantidades(
+                  clienteVentasArticuloList[i].cantidadAnyo_2,
+                ),
+                textAlign: TextAlign.right),
+          ),
+          DataCell(
+            Text(
+                numberFormatCantidades(
+                  clienteVentasArticuloList[i].cantidadAnyo_3,
+                ),
+                textAlign: TextAlign.right),
+          ),
+          DataCell(
+            Text(
+              numberFormatCantidades(
+                clienteVentasArticuloList[i].cantidadAnyo_4,
               ),
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  numberFormatCantidades(
-                    clienteVentasArticuloList[i].cantidadAnyo,
-                  ),
-                  textAlign: TextAlign.right,
-                ),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                    numberFormatCantidades(
-                      clienteVentasArticuloList[i].cantidadAnyo_1,
-                    ),
-                    textAlign: TextAlign.right),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                    numberFormatCantidades(
-                      clienteVentasArticuloList[i].cantidadAnyo_2,
-                    ),
-                    textAlign: TextAlign.right),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                    numberFormatCantidades(
-                      clienteVentasArticuloList[i].cantidadAnyo_3,
-                    ),
-                    textAlign: TextAlign.right),
-              ],
-            ),
-          ),
-          DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  numberFormatCantidades(
-                    clienteVentasArticuloList[i].cantidadAnyo_4,
-                  ),
-                  textAlign: TextAlign.right,
-                ),
-              ],
+              textAlign: TextAlign.right,
             ),
           ),
           DataCell(
@@ -502,16 +436,11 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
             ),
           ),
           DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                    formatPrecios(
-                        precio: clienteVentasArticuloList[i].importeAnyo_1,
-                        tipoPrecio: null),
-                    textAlign: TextAlign.right),
-              ],
-            ),
+            Text(
+                formatPrecios(
+                    precio: clienteVentasArticuloList[i].importeAnyo_1,
+                    tipoPrecio: null),
+                textAlign: TextAlign.right),
           ),
           DataCell(
             Row(
@@ -538,16 +467,11 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
             ),
           ),
           DataCell(
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                    formatPrecios(
-                        precio: clienteVentasArticuloList[i].importeAnyo_4,
-                        tipoPrecio: null),
-                    textAlign: TextAlign.right),
-              ],
-            ),
+            Text(
+                formatPrecios(
+                    precio: clienteVentasArticuloList[i].importeAnyo_4,
+                    tipoPrecio: null),
+                textAlign: TextAlign.right),
           ),
         ],
       );
