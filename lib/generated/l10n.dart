@@ -1464,6 +1464,26 @@ class S {
     );
   }
 
+  /// `Commercial 1`
+  String get cliente_show_clienteDetalle_comercial1 {
+    return Intl.message(
+      'Commercial 1',
+      name: 'cliente_show_clienteDetalle_comercial1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commercial 2`
+  String get cliente_show_clienteDetalle_comercial2 {
+    return Intl.message(
+      'Commercial 2',
+      name: 'cliente_show_clienteDetalle_comercial2',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Visits`
   String get cliente_show_clienteVisitas_titulo {
     return Intl.message(

@@ -19,6 +19,7 @@ class ClienteGrupoNetoDTO
     @JsonKey(name: 'GRUPO_NETO_ID') required String grupoNetoId,
     @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
         required String grupoNetoDescripcion,
+    @JsonKey(name: 'DTO_ADICIONAL') required double dtoAdicional,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteGrupoNetoDTO;
@@ -31,6 +32,7 @@ class ClienteGrupoNetoDTO
       clienteId: clienteId,
       grupoNetoId: grupoNetoId,
       grupoNetoDescripcion: grupoNetoDescripcion,
+      dtoAdicional: dtoAdicional,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -42,6 +44,7 @@ class ClienteGrupoNetoDTO
       clienteId: Value(clienteId),
       grupoNetoId: Value(grupoNetoId),
       grupoNetoDescripcion: Value(grupoNetoDescripcion),
+      dtoAdicional: Value(dtoAdicional),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -60,6 +63,7 @@ class ClienteGrupoNetoTable extends Table {
   TextColumn get grupoNetoId => text().named('GRUPO_NETO_ID')();
   TextColumn get grupoNetoDescripcion =>
       text().named('GRUPO_NETO_DESCRIPCION')();
+  RealColumn get dtoAdicional => real().named('DTO_ADICIONAL')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

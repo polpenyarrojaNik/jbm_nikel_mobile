@@ -22,6 +22,7 @@ mixin _$ClientePrecioNeto {
   int get cantidadDesde => throw _privateConstructorUsedError;
   Money get precio => throw _privateConstructorUsedError;
   int get tipoPrecio => throw _privateConstructorUsedError;
+  double get dtoAdicional => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -43,6 +44,7 @@ abstract class $ClientePrecioNetoCopyWith<$Res> {
       int cantidadDesde,
       Money precio,
       int tipoPrecio,
+      double dtoAdicional,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -66,6 +68,7 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
     Object? cantidadDesde = null,
     Object? precio = null,
     Object? tipoPrecio = null,
+    Object? dtoAdicional = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -94,6 +97,10 @@ class _$ClientePrecioNetoCopyWithImpl<$Res, $Val extends ClientePrecioNeto>
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -121,6 +128,7 @@ abstract class _$$_ClientePrecioNetoCopyWith<$Res>
       int cantidadDesde,
       Money precio,
       int tipoPrecio,
+      double dtoAdicional,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -142,6 +150,7 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
     Object? cantidadDesde = null,
     Object? precio = null,
     Object? tipoPrecio = null,
+    Object? dtoAdicional = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -170,6 +179,10 @@ class __$$_ClientePrecioNetoCopyWithImpl<$Res>
           ? _value.tipoPrecio
           : tipoPrecio // ignore: cast_nullable_to_non_nullable
               as int,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -192,6 +205,7 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
       required this.cantidadDesde,
       required this.precio,
       required this.tipoPrecio,
+      required this.dtoAdicional,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -209,13 +223,15 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
   @override
   final int tipoPrecio;
   @override
+  final double dtoAdicional;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClientePrecioNeto(clienteId: $clienteId, articuloId: $articuloId, descripcion: $descripcion, cantidadDesde: $cantidadDesde, precio: $precio, tipoPrecio: $tipoPrecio, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -234,14 +250,25 @@ class _$_ClientePrecioNeto extends _ClientePrecioNeto {
             (identical(other.precio, precio) || other.precio == precio) &&
             (identical(other.tipoPrecio, tipoPrecio) ||
                 other.tipoPrecio == tipoPrecio) &&
+            (identical(other.dtoAdicional, dtoAdicional) ||
+                other.dtoAdicional == dtoAdicional) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, articuloId,
-      descripcion, cantidadDesde, precio, tipoPrecio, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      clienteId,
+      articuloId,
+      descripcion,
+      cantidadDesde,
+      precio,
+      tipoPrecio,
+      dtoAdicional,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -259,6 +286,7 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
       required final int cantidadDesde,
       required final Money precio,
       required final int tipoPrecio,
+      required final double dtoAdicional,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClientePrecioNeto;
   const _ClientePrecioNeto._() : super._();
@@ -275,6 +303,8 @@ abstract class _ClientePrecioNeto extends ClientePrecioNeto {
   Money get precio;
   @override
   int get tipoPrecio;
+  @override
+  double get dtoAdicional;
   @override
   DateTime get lastUpdated;
   @override

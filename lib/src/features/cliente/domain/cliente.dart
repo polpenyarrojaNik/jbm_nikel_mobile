@@ -62,6 +62,11 @@ class Cliente with _$Cliente {
       bool? clientePotencial,
       ClienteEstadoPotencial? clienteEstadoPotencial,
       ClienteTipoPotencial? clienteTipoPotencial,
+      String? representante1Id,
+      String? representante1Nombre,
+      String? representante2Id,
+      String? representante2Nombre,
+
       DateTime? lastUpdated,
       required bool deleted}) = _Cliente;
 

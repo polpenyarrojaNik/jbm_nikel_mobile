@@ -444,7 +444,7 @@ class SyncService {
   Future<void> syncClientes() async {
     try {
       await _syncTable(
-        apiPath: 'clientes',
+        apiPath: 'v2/clientes',
         tableInfo: _db.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
@@ -520,7 +520,7 @@ class SyncService {
   Future<void> syncClienteGruposNetos() async {
     try {
       await _syncTable(
-        apiPath: 'clientes/grupos-netos',
+        apiPath: 'v2/clientes/grupos-netos',
         tableInfo: _db.clienteGrupoNetoTable,
         fromJson: (e) => ClienteGrupoNetoDTO.fromJson(e),
       );
@@ -535,7 +535,7 @@ class SyncService {
   Future<void> syncClientePreciosNetos() async {
     try {
       await _syncTable(
-        apiPath: 'clientes/precios-netos',
+        apiPath: 'v2/clientes/precios-netos',
         tableInfo: _db.clientePrecioNetoTable,
         fromJson: (e) => ClientePrecioNetoDTO.fromJson(e),
       );

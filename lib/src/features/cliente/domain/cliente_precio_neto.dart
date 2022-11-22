@@ -13,6 +13,7 @@ class ClientePrecioNeto with _$ClientePrecioNeto {
       required int cantidadDesde,
       required Money precio,
       required int tipoPrecio,
+      required double dtoAdicional,
       required DateTime lastUpdated,
       required bool deleted}) = _ClientePrecioNeto;
 }

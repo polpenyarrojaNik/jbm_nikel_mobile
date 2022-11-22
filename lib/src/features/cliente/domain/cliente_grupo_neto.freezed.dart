@@ -19,6 +19,7 @@ mixin _$ClienteGrupoNeto {
   String get clienteId => throw _privateConstructorUsedError;
   String get grupoNetoId => throw _privateConstructorUsedError;
   String get grupoNetoDescripcion => throw _privateConstructorUsedError;
+  double get dtoAdicional => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -37,6 +38,7 @@ abstract class $ClienteGrupoNetoCopyWith<$Res> {
       {String clienteId,
       String grupoNetoId,
       String grupoNetoDescripcion,
+      double dtoAdicional,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -57,6 +59,7 @@ class _$ClienteGrupoNetoCopyWithImpl<$Res, $Val extends ClienteGrupoNeto>
     Object? clienteId = null,
     Object? grupoNetoId = null,
     Object? grupoNetoDescripcion = null,
+    Object? dtoAdicional = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -73,6 +76,10 @@ class _$ClienteGrupoNetoCopyWithImpl<$Res, $Val extends ClienteGrupoNeto>
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -97,6 +104,7 @@ abstract class _$$_ClienteGrupoNetoCopyWith<$Res>
       {String clienteId,
       String grupoNetoId,
       String grupoNetoDescripcion,
+      double dtoAdicional,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -115,6 +123,7 @@ class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? grupoNetoId = null,
     Object? grupoNetoDescripcion = null,
+    Object? dtoAdicional = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -131,6 +140,10 @@ class __$$_ClienteGrupoNetoCopyWithImpl<$Res>
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -150,6 +163,7 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
       {required this.clienteId,
       required this.grupoNetoId,
       required this.grupoNetoDescripcion,
+      required this.dtoAdicional,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -161,13 +175,15 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
   @override
   final String grupoNetoDescripcion;
   @override
+  final double dtoAdicional;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'ClienteGrupoNeto(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteGrupoNeto(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -181,6 +197,8 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
                 other.grupoNetoId == grupoNetoId) &&
             (identical(other.grupoNetoDescripcion, grupoNetoDescripcion) ||
                 other.grupoNetoDescripcion == grupoNetoDescripcion) &&
+            (identical(other.dtoAdicional, dtoAdicional) ||
+                other.dtoAdicional == dtoAdicional) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -188,7 +206,7 @@ class _$_ClienteGrupoNeto extends _ClienteGrupoNeto {
 
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, grupoNetoId,
-      grupoNetoDescripcion, lastUpdated, deleted);
+      grupoNetoDescripcion, dtoAdicional, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -202,6 +220,7 @@ abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
       {required final String clienteId,
       required final String grupoNetoId,
       required final String grupoNetoDescripcion,
+      required final double dtoAdicional,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ClienteGrupoNeto;
   const _ClienteGrupoNeto._() : super._();
@@ -212,6 +231,8 @@ abstract class _ClienteGrupoNeto extends ClienteGrupoNeto {
   String get grupoNetoId;
   @override
   String get grupoNetoDescripcion;
+  @override
+  double get dtoAdicional;
   @override
   DateTime get lastUpdated;
   @override

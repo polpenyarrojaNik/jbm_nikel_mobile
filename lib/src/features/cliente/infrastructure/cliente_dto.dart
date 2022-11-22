@@ -79,6 +79,10 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
     @JsonKey(name: 'CLIENTE_POTENCIAL') String? clientePotencial,
     @JsonKey(name: 'ESTADO_POTENCIAL_ID') String? clienteEstadoPotencialId,
     @JsonKey(name: 'TIPO_POTENCIAL_ID') String? clienteTipoPotencialId,
+    @JsonKey(name: 'REPRESENTANTE1_ID') String? representante1Id,
+    @JsonKey(name: 'REPRESENTANTE1_NOMBRE') String? representante1Nombre,
+    @JsonKey(name: 'REPRESENTANTE2_ID') String? representante2Id,
+    @JsonKey(name: 'REPRESENTANTE2_NOMBRE') String? representante2Nombre,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ClienteDTO;
@@ -153,6 +157,10 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       clientePotencial: (clientePotencial == 'S') ? true : false,
       clienteEstadoPotencial: clienteEstadoPotencial,
       clienteTipoPotencial: clienteTipoPotencial,
+      representante1Id: representante1Id,
+      representante1Nombre: representante1Nombre,
+      representante2Id: representante2Id,
+      representante2Nombre: representante2Nombre,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -207,6 +215,10 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       clientePotencial: Value(clientePotencial),
       clienteEstadoPotencialId: Value(clienteEstadoPotencialId),
       clienteTipoPotencialId: Value(clienteTipoPotencialId),
+      representante1Id: Value(representante1Id),
+      representante1Nombre: Value(representante1Nombre),
+      representante2Id: Value(representante2Id),
+      representante2Nombre: Value(representante2Nombre),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -330,6 +342,14 @@ class ClienteTable extends Table {
       text().nullable().named('ESTADO_POTENCIAL_ID')();
   TextColumn get clienteTipoPotencialId =>
       text().nullable().named('TIPO_POTENCIAL_ID')();
+  TextColumn get representante1Id =>
+      text().nullable().named('REPRESENTANTE1_ID')();
+  TextColumn get representante1Nombre =>
+      text().nullable().named('REPRESENTANTE1_NOMBRE')();
+  TextColumn get representante2Id =>
+      text().nullable().named('REPRESENTANTE2_ID')();
+  TextColumn get representante2Nombre =>
+      text().nullable().named('REPRESENTANTE2_NOMBRE')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

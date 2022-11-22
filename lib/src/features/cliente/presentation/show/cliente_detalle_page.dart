@@ -162,9 +162,22 @@ class _ClienteHeader extends StatelessWidget {
                 value: cliente.nif!),
           if (cliente.centralCompras != null)
             ColumnFieldTextDetalle(
-                fieldTitleValue:
-                    S.of(context).cliente_show_clienteDetalle_centralCompras,
-                value: cliente.centralCompras!),
+              fieldTitleValue:
+                  S.of(context).cliente_show_clienteDetalle_centralCompras,
+              value: cliente.centralCompras!,
+            ),
+          if (cliente.representante1Nombre != null)
+            ColumnFieldTextDetalle(
+              fieldTitleValue:
+                  S.of(context).cliente_show_clienteDetalle_comercial1,
+              value: cliente.representante1Nombre!,
+            ),
+          if (cliente.representante2Nombre != null)
+            ColumnFieldTextDetalle(
+              fieldTitleValue:
+                  S.of(context).cliente_show_clienteDetalle_comercial2,
+              value: cliente.representante2Nombre!,
+            ),
         ],
       ),
     );

@@ -4079,6 +4079,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   final Value<String?> clientePotencial;
   final Value<String?> clienteEstadoPotencialId;
   final Value<String?> clienteTipoPotencialId;
+  final Value<String?> representante1Id;
+  final Value<String?> representante1Nombre;
+  final Value<String?> representante2Id;
+  final Value<String?> representante2Nombre;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ClienteTableCompanion({
@@ -4128,6 +4132,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.clientePotencial = const Value.absent(),
     this.clienteEstadoPotencialId = const Value.absent(),
     this.clienteTipoPotencialId = const Value.absent(),
+    this.representante1Id = const Value.absent(),
+    this.representante1Nombre = const Value.absent(),
+    this.representante2Id = const Value.absent(),
+    this.representante2Nombre = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -4178,6 +4186,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     this.clientePotencial = const Value.absent(),
     this.clienteEstadoPotencialId = const Value.absent(),
     this.clienteTipoPotencialId = const Value.absent(),
+    this.representante1Id = const Value.absent(),
+    this.representante1Nombre = const Value.absent(),
+    this.representante2Id = const Value.absent(),
+    this.representante2Nombre = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
@@ -4247,6 +4259,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     Expression<String>? clientePotencial,
     Expression<String>? clienteEstadoPotencialId,
     Expression<String>? clienteTipoPotencialId,
+    Expression<String>? representante1Id,
+    Expression<String>? representante1Nombre,
+    Expression<String>? representante2Id,
+    Expression<String>? representante2Nombre,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -4317,6 +4333,12 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
         'ESTADO_POTENCIAL_ID': clienteEstadoPotencialId,
       if (clienteTipoPotencialId != null)
         'TIPO_POTENCIAL_ID': clienteTipoPotencialId,
+      if (representante1Id != null) 'REPRESENTANTE1_ID': representante1Id,
+      if (representante1Nombre != null)
+        'REPRESENTANTE1_NOMBRE': representante1Nombre,
+      if (representante2Id != null) 'REPRESENTANTE2_ID': representante2Id,
+      if (representante2Nombre != null)
+        'REPRESENTANTE2_NOMBRE': representante2Nombre,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -4369,6 +4391,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
       Value<String?>? clientePotencial,
       Value<String?>? clienteEstadoPotencialId,
       Value<String?>? clienteTipoPotencialId,
+      Value<String?>? representante1Id,
+      Value<String?>? representante1Nombre,
+      Value<String?>? representante2Id,
+      Value<String?>? representante2Nombre,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ClienteTableCompanion(
@@ -4429,6 +4455,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           clienteEstadoPotencialId ?? this.clienteEstadoPotencialId,
       clienteTipoPotencialId:
           clienteTipoPotencialId ?? this.clienteTipoPotencialId,
+      representante1Id: representante1Id ?? this.representante1Id,
+      representante1Nombre: representante1Nombre ?? this.representante1Nombre,
+      representante2Id: representante2Id ?? this.representante2Id,
+      representante2Nombre: representante2Nombre ?? this.representante2Nombre,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -4587,6 +4617,20 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
     if (clienteTipoPotencialId.present) {
       map['TIPO_POTENCIAL_ID'] = Variable<String>(clienteTipoPotencialId.value);
     }
+    if (representante1Id.present) {
+      map['REPRESENTANTE1_ID'] = Variable<String>(representante1Id.value);
+    }
+    if (representante1Nombre.present) {
+      map['REPRESENTANTE1_NOMBRE'] =
+          Variable<String>(representante1Nombre.value);
+    }
+    if (representante2Id.present) {
+      map['REPRESENTANTE2_ID'] = Variable<String>(representante2Id.value);
+    }
+    if (representante2Nombre.present) {
+      map['REPRESENTANTE2_NOMBRE'] =
+          Variable<String>(representante2Nombre.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -4646,6 +4690,10 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
           ..write('clientePotencial: $clientePotencial, ')
           ..write('clienteEstadoPotencialId: $clienteEstadoPotencialId, ')
           ..write('clienteTipoPotencialId: $clienteTipoPotencialId, ')
+          ..write('representante1Id: $representante1Id, ')
+          ..write('representante1Nombre: $representante1Nombre, ')
+          ..write('representante2Id: $representante2Id, ')
+          ..write('representante2Nombre: $representante2Nombre, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -4941,6 +4989,30 @@ class $ClienteTableTable extends ClienteTable
   late final GeneratedColumn<String> clienteTipoPotencialId =
       GeneratedColumn<String>('TIPO_POTENCIAL_ID', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _representante1IdMeta =
+      const VerificationMeta('representante1Id');
+  @override
+  late final GeneratedColumn<String> representante1Id = GeneratedColumn<String>(
+      'REPRESENTANTE1_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _representante1NombreMeta =
+      const VerificationMeta('representante1Nombre');
+  @override
+  late final GeneratedColumn<String> representante1Nombre =
+      GeneratedColumn<String>('REPRESENTANTE1_NOMBRE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _representante2IdMeta =
+      const VerificationMeta('representante2Id');
+  @override
+  late final GeneratedColumn<String> representante2Id = GeneratedColumn<String>(
+      'REPRESENTANTE2_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  final VerificationMeta _representante2NombreMeta =
+      const VerificationMeta('representante2Nombre');
+  @override
+  late final GeneratedColumn<String> representante2Nombre =
+      GeneratedColumn<String>('REPRESENTANTE2_NOMBRE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -5002,6 +5074,10 @@ class $ClienteTableTable extends ClienteTable
         clientePotencial,
         clienteEstadoPotencialId,
         clienteTipoPotencialId,
+        representante1Id,
+        representante1Nombre,
+        representante2Id,
+        representante2Nombre,
         lastUpdated,
         deleted
       ];
@@ -5320,6 +5396,30 @@ class $ClienteTableTable extends ClienteTable
           clienteTipoPotencialId.isAcceptableOrUnknown(
               data['TIPO_POTENCIAL_ID']!, _clienteTipoPotencialIdMeta));
     }
+    if (data.containsKey('REPRESENTANTE1_ID')) {
+      context.handle(
+          _representante1IdMeta,
+          representante1Id.isAcceptableOrUnknown(
+              data['REPRESENTANTE1_ID']!, _representante1IdMeta));
+    }
+    if (data.containsKey('REPRESENTANTE1_NOMBRE')) {
+      context.handle(
+          _representante1NombreMeta,
+          representante1Nombre.isAcceptableOrUnknown(
+              data['REPRESENTANTE1_NOMBRE']!, _representante1NombreMeta));
+    }
+    if (data.containsKey('REPRESENTANTE2_ID')) {
+      context.handle(
+          _representante2IdMeta,
+          representante2Id.isAcceptableOrUnknown(
+              data['REPRESENTANTE2_ID']!, _representante2IdMeta));
+    }
+    if (data.containsKey('REPRESENTANTE2_NOMBRE')) {
+      context.handle(
+          _representante2NombreMeta,
+          representante2Nombre.isAcceptableOrUnknown(
+              data['REPRESENTANTE2_NOMBRE']!, _representante2NombreMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -5446,6 +5546,14 @@ class $ClienteTableTable extends ClienteTable
           DriftSqlType.string, data['${effectivePrefix}ESTADO_POTENCIAL_ID']),
       clienteTipoPotencialId: attachedDatabase.options.types.read(
           DriftSqlType.string, data['${effectivePrefix}TIPO_POTENCIAL_ID']),
+      representante1Id: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE1_ID']),
+      representante1Nombre: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE1_NOMBRE']),
+      representante2Id: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE2_ID']),
+      representante2Nombre: attachedDatabase.options.types.read(
+          DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE2_NOMBRE']),
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -5631,12 +5739,14 @@ class ClienteGrupoNetoTableCompanion
   final Value<String> clienteId;
   final Value<String> grupoNetoId;
   final Value<String> grupoNetoDescripcion;
+  final Value<double> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ClienteGrupoNetoTableCompanion({
     this.clienteId = const Value.absent(),
     this.grupoNetoId = const Value.absent(),
     this.grupoNetoDescripcion = const Value.absent(),
+    this.dtoAdicional = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -5644,16 +5754,19 @@ class ClienteGrupoNetoTableCompanion
     required String clienteId,
     required String grupoNetoId,
     required String grupoNetoDescripcion,
+    required double dtoAdicional,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
         grupoNetoId = Value(grupoNetoId),
         grupoNetoDescripcion = Value(grupoNetoDescripcion),
+        dtoAdicional = Value(dtoAdicional),
         lastUpdated = Value(lastUpdated);
   static Insertable<ClienteGrupoNetoDTO> custom({
     Expression<String>? clienteId,
     Expression<String>? grupoNetoId,
     Expression<String>? grupoNetoDescripcion,
+    Expression<double>? dtoAdicional,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -5662,6 +5775,7 @@ class ClienteGrupoNetoTableCompanion
       if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
       if (grupoNetoDescripcion != null)
         'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
+      if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -5671,12 +5785,14 @@ class ClienteGrupoNetoTableCompanion
       {Value<String>? clienteId,
       Value<String>? grupoNetoId,
       Value<String>? grupoNetoDescripcion,
+      Value<double>? dtoAdicional,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ClienteGrupoNetoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
       grupoNetoId: grupoNetoId ?? this.grupoNetoId,
       grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
+      dtoAdicional: dtoAdicional ?? this.dtoAdicional,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -5695,6 +5811,9 @@ class ClienteGrupoNetoTableCompanion
       map['GRUPO_NETO_DESCRIPCION'] =
           Variable<String>(grupoNetoDescripcion.value);
     }
+    if (dtoAdicional.present) {
+      map['DTO_ADICIONAL'] = Variable<double>(dtoAdicional.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -5710,6 +5829,7 @@ class ClienteGrupoNetoTableCompanion
           ..write('clienteId: $clienteId, ')
           ..write('grupoNetoId: $grupoNetoId, ')
           ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
+          ..write('dtoAdicional: $dtoAdicional, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -5740,6 +5860,12 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
   late final GeneratedColumn<String> grupoNetoDescripcion =
       GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
+  final VerificationMeta _dtoAdicionalMeta =
+      const VerificationMeta('dtoAdicional');
+  @override
+  late final GeneratedColumn<double> dtoAdicional = GeneratedColumn<double>(
+      'DTO_ADICIONAL', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -5754,8 +5880,14 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
-  List<GeneratedColumn> get $columns =>
-      [clienteId, grupoNetoId, grupoNetoDescripcion, lastUpdated, deleted];
+  List<GeneratedColumn> get $columns => [
+        clienteId,
+        grupoNetoId,
+        grupoNetoDescripcion,
+        dtoAdicional,
+        lastUpdated,
+        deleted
+      ];
   @override
   String get aliasedName => _alias ?? 'CLIENTES_GRUPOS_NETOS';
   @override
@@ -5788,6 +5920,14 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
     } else if (isInserting) {
       context.missing(_grupoNetoDescripcionMeta);
     }
+    if (data.containsKey('DTO_ADICIONAL')) {
+      context.handle(
+          _dtoAdicionalMeta,
+          dtoAdicional.isAcceptableOrUnknown(
+              data['DTO_ADICIONAL']!, _dtoAdicionalMeta));
+    } else if (isInserting) {
+      context.missing(_dtoAdicionalMeta);
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -5816,6 +5956,8 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
       grupoNetoDescripcion: attachedDatabase.options.types.read(
           DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'])!,
+      dtoAdicional: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO_ADICIONAL'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types
@@ -8374,6 +8516,7 @@ class ClientePrecioNetoTableCompanion
   final Value<int> cantidadDesde;
   final Value<double> precio;
   final Value<int> tipoPrecio;
+  final Value<double> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ClientePrecioNetoTableCompanion({
@@ -8382,6 +8525,7 @@ class ClientePrecioNetoTableCompanion
     this.cantidadDesde = const Value.absent(),
     this.precio = const Value.absent(),
     this.tipoPrecio = const Value.absent(),
+    this.dtoAdicional = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -8391,6 +8535,7 @@ class ClientePrecioNetoTableCompanion
     required int cantidadDesde,
     required double precio,
     required int tipoPrecio,
+    required double dtoAdicional,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
@@ -8398,6 +8543,7 @@ class ClientePrecioNetoTableCompanion
         cantidadDesde = Value(cantidadDesde),
         precio = Value(precio),
         tipoPrecio = Value(tipoPrecio),
+        dtoAdicional = Value(dtoAdicional),
         lastUpdated = Value(lastUpdated);
   static Insertable<ClientePrecioNetoDTO> custom({
     Expression<String>? clienteId,
@@ -8405,6 +8551,7 @@ class ClientePrecioNetoTableCompanion
     Expression<int>? cantidadDesde,
     Expression<double>? precio,
     Expression<int>? tipoPrecio,
+    Expression<double>? dtoAdicional,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -8414,6 +8561,7 @@ class ClientePrecioNetoTableCompanion
       if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
       if (precio != null) 'PRECIO': precio,
       if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -8425,6 +8573,7 @@ class ClientePrecioNetoTableCompanion
       Value<int>? cantidadDesde,
       Value<double>? precio,
       Value<int>? tipoPrecio,
+      Value<double>? dtoAdicional,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ClientePrecioNetoTableCompanion(
@@ -8433,6 +8582,7 @@ class ClientePrecioNetoTableCompanion
       cantidadDesde: cantidadDesde ?? this.cantidadDesde,
       precio: precio ?? this.precio,
       tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      dtoAdicional: dtoAdicional ?? this.dtoAdicional,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8456,6 +8606,9 @@ class ClientePrecioNetoTableCompanion
     if (tipoPrecio.present) {
       map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
+    if (dtoAdicional.present) {
+      map['DTO_ADICIONAL'] = Variable<double>(dtoAdicional.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -8473,6 +8626,7 @@ class ClientePrecioNetoTableCompanion
           ..write('cantidadDesde: $cantidadDesde, ')
           ..write('precio: $precio, ')
           ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('dtoAdicional: $dtoAdicional, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -8512,6 +8666,12 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
+  final VerificationMeta _dtoAdicionalMeta =
+      const VerificationMeta('dtoAdicional');
+  @override
+  late final GeneratedColumn<double> dtoAdicional = GeneratedColumn<double>(
+      'DTO_ADICIONAL', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
   final VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -8532,6 +8692,7 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
         cantidadDesde,
         precio,
         tipoPrecio,
+        dtoAdicional,
         lastUpdated,
         deleted
       ];
@@ -8581,6 +8742,14 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
     } else if (isInserting) {
       context.missing(_tipoPrecioMeta);
     }
+    if (data.containsKey('DTO_ADICIONAL')) {
+      context.handle(
+          _dtoAdicionalMeta,
+          dtoAdicional.isAcceptableOrUnknown(
+              data['DTO_ADICIONAL']!, _dtoAdicionalMeta));
+    } else if (isInserting) {
+      context.missing(_dtoAdicionalMeta);
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -8613,6 +8782,8 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
       tipoPrecio: attachedDatabase.options.types
           .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
+      dtoAdicional: attachedDatabase.options.types
+          .read(DriftSqlType.double, data['${effectivePrefix}DTO_ADICIONAL'])!,
       lastUpdated: attachedDatabase.options.types
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.options.types

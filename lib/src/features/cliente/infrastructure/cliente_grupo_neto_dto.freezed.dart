@@ -26,6 +26,8 @@ mixin _$ClienteGrupoNetoDTO {
   String get grupoNetoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
   String get grupoNetoDescripcion => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DTO_ADICIONAL')
+  double get dtoAdicional => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -47,6 +49,7 @@ abstract class $ClienteGrupoNetoDTOCopyWith<$Res> {
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -67,6 +70,7 @@ class _$ClienteGrupoNetoDTOCopyWithImpl<$Res, $Val extends ClienteGrupoNetoDTO>
     Object? clienteId = null,
     Object? grupoNetoId = null,
     Object? grupoNetoDescripcion = null,
+    Object? dtoAdicional = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -83,6 +87,10 @@ class _$ClienteGrupoNetoDTOCopyWithImpl<$Res, $Val extends ClienteGrupoNetoDTO>
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -107,6 +115,7 @@ abstract class _$$_ClienteGrupoNetoDTOCopyWith<$Res>
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
       @JsonKey(name: 'GRUPO_NETO_ID') String grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION') String grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL') double dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
       @JsonKey(name: 'DELETED') String deleted});
 }
@@ -125,6 +134,7 @@ class __$$_ClienteGrupoNetoDTOCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? grupoNetoId = null,
     Object? grupoNetoDescripcion = null,
+    Object? dtoAdicional = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -141,6 +151,10 @@ class __$$_ClienteGrupoNetoDTOCopyWithImpl<$Res>
           ? _value.grupoNetoDescripcion
           : grupoNetoDescripcion // ignore: cast_nullable_to_non_nullable
               as String,
+      dtoAdicional: null == dtoAdicional
+          ? _value.dtoAdicional
+          : dtoAdicional // ignore: cast_nullable_to_non_nullable
+              as double,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -163,6 +177,8 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
           required this.grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
           required this.grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL')
+          required this.dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED')
           required this.lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -182,6 +198,9 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
   @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
   final String grupoNetoDescripcion;
   @override
+  @JsonKey(name: 'DTO_ADICIONAL')
+  final double dtoAdicional;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -190,7 +209,7 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
 
   @override
   String toString() {
-    return 'ClienteGrupoNetoDTO(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteGrupoNetoDTO(clienteId: $clienteId, grupoNetoId: $grupoNetoId, grupoNetoDescripcion: $grupoNetoDescripcion, dtoAdicional: $dtoAdicional, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -204,6 +223,8 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
                 other.grupoNetoId == grupoNetoId) &&
             (identical(other.grupoNetoDescripcion, grupoNetoDescripcion) ||
                 other.grupoNetoDescripcion == grupoNetoDescripcion) &&
+            (identical(other.dtoAdicional, dtoAdicional) ||
+                other.dtoAdicional == dtoAdicional) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -212,7 +233,7 @@ class _$_ClienteGrupoNetoDTO extends _ClienteGrupoNetoDTO {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, clienteId, grupoNetoId,
-      grupoNetoDescripcion, lastUpdated, deleted);
+      grupoNetoDescripcion, dtoAdicional, lastUpdated, deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -237,6 +258,8 @@ abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
           required final String grupoNetoId,
       @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
           required final String grupoNetoDescripcion,
+      @JsonKey(name: 'DTO_ADICIONAL')
+          required final double dtoAdicional,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -255,6 +278,9 @@ abstract class _ClienteGrupoNetoDTO extends ClienteGrupoNetoDTO {
   @override
   @JsonKey(name: 'GRUPO_NETO_DESCRIPCION')
   String get grupoNetoDescripcion;
+  @override
+  @JsonKey(name: 'DTO_ADICIONAL')
+  double get dtoAdicional;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

@@ -110,6 +110,7 @@ final kClienteGrupoNetoDTO = ClienteGrupoNetoDTO(
   clienteId: kClienteId,
   grupoNetoId: kGrupoNetoId,
   grupoNetoDescripcion: 'Grupo Neto Test 01',
+  dtoAdicional: 0,
   lastUpdated: kDateTime,
 );
 
@@ -119,6 +120,7 @@ final kClientePrecioNetoDTO = ClientePrecioNetoDTO(
   cantidadDesde: 1,
   precio: 5,
   tipoPrecio: 1,
+  dtoAdicional: 0,
   lastUpdated: kDateTime,
 );
 

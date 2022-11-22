@@ -949,7 +949,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
             _db.articuloTable.id
                 .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
       ]);
-// TODO buscar en todos los idiomas
       if (searchText != '') {
         query.where(
             (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId) &

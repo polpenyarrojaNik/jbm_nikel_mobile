@@ -140,6 +140,8 @@
   "cliente_show_clienteDetalle_datosRelacionados": "Datos relacionados",
   "cliente_show_clienteDetalle_consultas": "Consultas",
   "cliente_show_clienteDetalle_analisis": "Análisis",
+  "cliente_show_clienteDetalle_comercial1": "Comercial 1",
+  "cliente_show_clienteDetalle_comercial2": "Comercial 2",
   "cliente_show_clienteVisitas_titulo": "Visitas",
   "cliente_show_clientePedidos_titulo": "Pedidos",
   "cliente_show_clienteContacto_titulo": "Contactos",

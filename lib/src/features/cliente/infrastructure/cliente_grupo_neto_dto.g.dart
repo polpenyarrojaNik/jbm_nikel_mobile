@@ -12,6 +12,7 @@ _$_ClienteGrupoNetoDTO _$$_ClienteGrupoNetoDTOFromJson(
       clienteId: json['CLIENTE_ID'] as String,
       grupoNetoId: json['GRUPO_NETO_ID'] as String,
       grupoNetoDescripcion: json['GRUPO_NETO_DESCRIPCION'] as String,
+      dtoAdicional: (json['DTO_ADICIONAL'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$_ClienteGrupoNetoDTOToJson(
       'CLIENTE_ID': instance.clienteId,
       'GRUPO_NETO_ID': instance.grupoNetoId,
       'GRUPO_NETO_DESCRIPCION': instance.grupoNetoDescripcion,
+      'DTO_ADICIONAL': instance.dtoAdicional,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

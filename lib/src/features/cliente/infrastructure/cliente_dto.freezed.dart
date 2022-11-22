@@ -114,6 +114,14 @@ mixin _$ClienteDTO {
   String? get clienteEstadoPotencialId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_POTENCIAL_ID')
   String? get clienteTipoPotencialId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'REPRESENTANTE1_ID')
+  String? get representante1Id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+  String? get representante1Nombre => throw _privateConstructorUsedError;
+  @JsonKey(name: 'REPRESENTANTE2_ID')
+  String? get representante2Id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+  String? get representante2Nombre => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -224,6 +232,14 @@ abstract class $ClienteDTOCopyWith<$Res> {
           String? clienteEstadoPotencialId,
       @JsonKey(name: 'TIPO_POTENCIAL_ID')
           String? clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID')
+          String? representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+          String? representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID')
+          String? representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+          String? representante2Nombre,
       @JsonKey(name: 'LAST_UPDATED')
           DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -289,6 +305,10 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
     Object? clientePotencial = freezed,
     Object? clienteEstadoPotencialId = freezed,
     Object? clienteTipoPotencialId = freezed,
+    Object? representante1Id = freezed,
+    Object? representante1Nombre = freezed,
+    Object? representante2Id = freezed,
+    Object? representante2Nombre = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -477,6 +497,22 @@ class _$ClienteDTOCopyWithImpl<$Res, $Val extends ClienteDTO>
           ? _value.clienteTipoPotencialId
           : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
               as String?,
+      representante1Id: freezed == representante1Id
+          ? _value.representante1Id
+          : representante1Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante1Nombre: freezed == representante1Nombre
+          ? _value.representante1Nombre
+          : representante1Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Id: freezed == representante2Id
+          ? _value.representante2Id
+          : representante2Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Nombre: freezed == representante2Nombre
+          ? _value.representante2Nombre
+          : representante2Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -590,6 +626,14 @@ abstract class _$$_ClienteDTOCopyWith<$Res>
           String? clienteEstadoPotencialId,
       @JsonKey(name: 'TIPO_POTENCIAL_ID')
           String? clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID')
+          String? representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+          String? representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID')
+          String? representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+          String? representante2Nombre,
       @JsonKey(name: 'LAST_UPDATED')
           DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -653,6 +697,10 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
     Object? clientePotencial = freezed,
     Object? clienteEstadoPotencialId = freezed,
     Object? clienteTipoPotencialId = freezed,
+    Object? representante1Id = freezed,
+    Object? representante1Nombre = freezed,
+    Object? representante2Id = freezed,
+    Object? representante2Nombre = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -841,6 +889,22 @@ class __$$_ClienteDTOCopyWithImpl<$Res>
           ? _value.clienteTipoPotencialId
           : clienteTipoPotencialId // ignore: cast_nullable_to_non_nullable
               as String?,
+      representante1Id: freezed == representante1Id
+          ? _value.representante1Id
+          : representante1Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante1Nombre: freezed == representante1Nombre
+          ? _value.representante1Nombre
+          : representante1Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Id: freezed == representante2Id
+          ? _value.representante2Id
+          : representante2Id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      representante2Nombre: freezed == representante2Nombre
+          ? _value.representante2Nombre
+          : representante2Nombre // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -949,6 +1013,14 @@ class _$_ClienteDTO extends _ClienteDTO {
           this.clienteEstadoPotencialId,
       @JsonKey(name: 'TIPO_POTENCIAL_ID')
           this.clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID')
+          this.representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+          this.representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID')
+          this.representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+          this.representante2Nombre,
       @JsonKey(name: 'LAST_UPDATED')
           required this.lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -1097,6 +1169,18 @@ class _$_ClienteDTO extends _ClienteDTO {
   @JsonKey(name: 'TIPO_POTENCIAL_ID')
   final String? clienteTipoPotencialId;
   @override
+  @JsonKey(name: 'REPRESENTANTE1_ID')
+  final String? representante1Id;
+  @override
+  @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+  final String? representante1Nombre;
+  @override
+  @JsonKey(name: 'REPRESENTANTE2_ID')
+  final String? representante2Id;
+  @override
+  @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+  final String? representante2Nombre;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -1105,7 +1189,7 @@ class _$_ClienteDTO extends _ClienteDTO {
 
   @override
   String toString() {
-    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteDTO(id: $id, nombreCliente: $nombreCliente, nif: $nif, nombreFiscal: $nombreFiscal, direccionFiscal1: $direccionFiscal1, direccionFiscal2: $direccionFiscal2, codigoPostalFiscal: $codigoPostalFiscal, poblacionFiscal: $poblacionFiscal, paisFiscalId: $paisFiscalId, provinciaFiscal: $provinciaFiscal, latitudFiscal: $latitudFiscal, longitudFiscal: $longitudFiscal, empresaId: $empresaId, iva: $iva, ventasAnyoActual: $ventasAnyoActual, ventasAnyoAnterior: $ventasAnyoAnterior, ventasHaceDosAnyos: $ventasHaceDosAnyos, margenAnyoActual: $margenAnyoActual, margenAnyoAnterior: $margenAnyoAnterior, margenHaceDosAnyos: $margenHaceDosAnyos, porcentajeAbonos: $porcentajeAbonos, porcentajeGarantias: $porcentajeGarantias, centralCompras: $centralCompras, urlWeb: $urlWeb, divisaId: $divisaId, tarifaId: $tarifaId, tarifaDescripcion: $tarifaDescripcion, descuentoGeneralId: $descuentoGeneralId, descripcionDescuentoGeneral: $descripcionDescuentoGeneral, tipoCalculoPrecio: $tipoCalculoPrecio, plazoDeCobroId: $plazoDeCobroId, metodoDeCobroId: $metodoDeCobroId, descuentoProntoPago: $descuentoProntoPago, riesgoConcedidoInterno: $riesgoConcedidoInterno, riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, riesgoConcedidoCoafe: $riesgoConcedidoCoafe, riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, riesgoConcedido: $riesgoConcedido, riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, riesgoPendienteServir: $riesgoPendienteServir, riesgoPendienteFacturar: $riesgoPendienteFacturar, obvservacionesInternas: $obvservacionesInternas, clientePotencial: $clientePotencial, clienteEstadoPotencialId: $clienteEstadoPotencialId, clienteTipoPotencialId: $clienteTipoPotencialId, representante1Id: $representante1Id, representante1Nombre: $representante1Nombre, representante2Id: $representante2Id, representante2Nombre: $representante2Nombre, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1200,6 +1284,10 @@ class _$_ClienteDTO extends _ClienteDTO {
             (identical(other.clientePotencial, clientePotencial) || other.clientePotencial == clientePotencial) &&
             (identical(other.clienteEstadoPotencialId, clienteEstadoPotencialId) || other.clienteEstadoPotencialId == clienteEstadoPotencialId) &&
             (identical(other.clienteTipoPotencialId, clienteTipoPotencialId) || other.clienteTipoPotencialId == clienteTipoPotencialId) &&
+            (identical(other.representante1Id, representante1Id) || other.representante1Id == representante1Id) &&
+            (identical(other.representante1Nombre, representante1Nombre) || other.representante1Nombre == representante1Nombre) &&
+            (identical(other.representante2Id, representante2Id) || other.representante2Id == representante2Id) &&
+            (identical(other.representante2Nombre, representante2Nombre) || other.representante2Nombre == representante2Nombre) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1254,6 +1342,10 @@ class _$_ClienteDTO extends _ClienteDTO {
         clientePotencial,
         clienteEstadoPotencialId,
         clienteTipoPotencialId,
+        representante1Id,
+        representante1Nombre,
+        representante2Id,
+        representante2Nombre,
         lastUpdated,
         deleted
       ]);
@@ -1366,6 +1458,14 @@ abstract class _ClienteDTO extends ClienteDTO {
           final String? clienteEstadoPotencialId,
       @JsonKey(name: 'TIPO_POTENCIAL_ID')
           final String? clienteTipoPotencialId,
+      @JsonKey(name: 'REPRESENTANTE1_ID')
+          final String? representante1Id,
+      @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+          final String? representante1Nombre,
+      @JsonKey(name: 'REPRESENTANTE2_ID')
+          final String? representante2Id,
+      @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+          final String? representante2Nombre,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -1513,6 +1613,18 @@ abstract class _ClienteDTO extends ClienteDTO {
   @override
   @JsonKey(name: 'TIPO_POTENCIAL_ID')
   String? get clienteTipoPotencialId;
+  @override
+  @JsonKey(name: 'REPRESENTANTE1_ID')
+  String? get representante1Id;
+  @override
+  @JsonKey(name: 'REPRESENTANTE1_NOMBRE')
+  String? get representante1Nombre;
+  @override
+  @JsonKey(name: 'REPRESENTANTE2_ID')
+  String? get representante2Id;
+  @override
+  @JsonKey(name: 'REPRESENTANTE2_NOMBRE')
+  String? get representante2Nombre;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

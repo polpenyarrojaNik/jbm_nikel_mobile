@@ -123,6 +123,8 @@
   "cliente_show_clienteDetalle_top150": "Top 150",
   "cliente_show_clienteDetalle_ventas": "Ventes",
   "cliente_show_clienteDetalle_web": "Web",
+  "cliente_show_clienteDetalle_comercial1": "Commerciale 1",
+  "cliente_show_clienteDetalle_comercial2": "Commerciale 2",
   "cliente_show_clienteDireccion_titulo": "Adresse d'envoi",
   "cliente_show_clienteFacturasPendientes_estadoCobrado": "Payer",
   "cliente_show_clienteFacturasPendientes_estadoDevuelto": "Revenu",

@@ -183,6 +183,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Central d\'achat"),
         "cliente_show_clienteDetalle_codigoPostal":
             MessageLookupByLibrary.simpleMessage("Code postal"),
+        "cliente_show_clienteDetalle_comercial1":
+            MessageLookupByLibrary.simpleMessage("Commerciale 1"),
+        "cliente_show_clienteDetalle_comercial2":
+            MessageLookupByLibrary.simpleMessage("Commerciale 2"),
         "cliente_show_clienteDetalle_concedidoCOFACE":
             MessageLookupByLibrary.simpleMessage("Coface accordé"),
         "cliente_show_clienteDetalle_concedidoFecha":

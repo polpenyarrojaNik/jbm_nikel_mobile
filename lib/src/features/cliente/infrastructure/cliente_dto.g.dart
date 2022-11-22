@@ -64,6 +64,10 @@ _$_ClienteDTO _$$_ClienteDTOFromJson(Map<String, dynamic> json) =>
       clientePotencial: json['CLIENTE_POTENCIAL'] as String?,
       clienteEstadoPotencialId: json['ESTADO_POTENCIAL_ID'] as String?,
       clienteTipoPotencialId: json['TIPO_POTENCIAL_ID'] as String?,
+      representante1Id: json['REPRESENTANTE1_ID'] as String?,
+      representante1Nombre: json['REPRESENTANTE1_NOMBRE'] as String?,
+      representante2Id: json['REPRESENTANTE2_ID'] as String?,
+      representante2Nombre: json['REPRESENTANTE2_NOMBRE'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -119,6 +123,10 @@ Map<String, dynamic> _$$_ClienteDTOToJson(_$_ClienteDTO instance) =>
       'CLIENTE_POTENCIAL': instance.clientePotencial,
       'ESTADO_POTENCIAL_ID': instance.clienteEstadoPotencialId,
       'TIPO_POTENCIAL_ID': instance.clienteTipoPotencialId,
+      'REPRESENTANTE1_ID': instance.representante1Id,
+      'REPRESENTANTE1_NOMBRE': instance.representante1Nombre,
+      'REPRESENTANTE2_ID': instance.representante2Id,
+      'REPRESENTANTE2_NOMBRE': instance.representante2Nombre,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };
