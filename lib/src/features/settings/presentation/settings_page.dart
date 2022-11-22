@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_fie
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/presentation/settings_page_controller.dart';
+import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 import '../../../../generated/l10n.dart';
@@ -19,6 +20,13 @@ class SettingsPage extends ConsumerWidget {
     final usuario = ref.watch(usuarioNotifierProvider);
     final statePackageInfo = ref.watch(packageInfoProvider);
     final state = ref.watch(settingPageControllerProvider);
+
+    ref.listen<AsyncValue>(settingPageControllerProvider, (_, state) {
+      state.maybeWhen(
+        orElse: () {},
+        data: (_) => ref.read(syncNotifierProvider.notifier).syncAllInCompute(),
+      );
+    });
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(

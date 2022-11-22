@@ -907,7 +907,6 @@ FROM (
     INNER JOIN articulos art ON ventas.articulo_id = art.articulo_id
     WHERE ventas.cliente_id = :clienteId
     AND ventas.anyo = strftime('%Y' ,DATE()) - 4
-)
 WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%' OR DESCRIPCION LIKE '%$searchText%')
 GROUP BY ARTICULO_ID, DESCRIPCION
 ''';
