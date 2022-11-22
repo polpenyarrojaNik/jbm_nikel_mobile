@@ -83,6 +83,7 @@
   "cliente_show_clienteContacto_observaciones": "Remarks",
   "cliente_show_clienteDetalle_titulo": "Customer detail",
   "cliente_show_clienteVentasArticulo_titulo": "Articles sales (pc.)",
+  "cliente_show_clienteVentasArticulo_buscar": "Search article...",
   "cliente_show_clienteVentasArticulo_importe": "Amount",
   "cliente_show_clienteVentasArticulo_cantidad": "Quantity",
   "cliente_show_clienteVentasArticulo_articulo": "Article",

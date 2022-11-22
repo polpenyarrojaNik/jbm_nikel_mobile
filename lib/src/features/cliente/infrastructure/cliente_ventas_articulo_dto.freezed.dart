@@ -23,36 +23,8 @@ ClienteVentasArticuloDTO _$ClienteVentasArticuloDTOFromJson(
 mixin _$ClienteVentasArticuloDTO {
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_ES')
-  String get descripcionES => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_EN')
-  String? get descripcionEN => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_FR')
-  String? get descripcionFR => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_DE')
-  String? get descripcionDE => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_CA')
-  String? get descripcionCA => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_GB')
-  String? get descripcionGB => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_HU')
-  String? get descripcionHU => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_IT')
-  String? get descripcionIT => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_NL')
-  String? get descripcionNL => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descripcionPL => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_PT')
-  String? get descripcionPT => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_RO')
-  String? get descripcionRO => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_RU')
-  String? get descripcionRU => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_CN')
-  String? get descripcionCN => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DESCRIPCION_EL')
-  String? get descripcionEL => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCRIPCION')
+  String get descripcion => throw _privateConstructorUsedError;
   @JsonKey(name: 'IMPORTE_ANYO')
   double get importeAnyo => throw _privateConstructorUsedError;
   @JsonKey(name: 'IMPORTE_ANYO_1')
@@ -88,21 +60,7 @@ abstract class $ClienteVentasArticuloDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'DESCRIPCION') String descripcion,
       @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
       @JsonKey(name: 'IMPORTE_ANYO_1') double importeAnyo_1,
       @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
@@ -130,21 +88,7 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<$Res,
   @override
   $Res call({
     Object? articuloId = null,
-    Object? descripcionES = null,
-    Object? descripcionEN = freezed,
-    Object? descripcionFR = freezed,
-    Object? descripcionDE = freezed,
-    Object? descripcionCA = freezed,
-    Object? descripcionGB = freezed,
-    Object? descripcionHU = freezed,
-    Object? descripcionIT = freezed,
-    Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
-    Object? descripcionPT = freezed,
-    Object? descripcionRO = freezed,
-    Object? descripcionRU = freezed,
-    Object? descripcionCN = freezed,
-    Object? descripcionEL = freezed,
+    Object? descripcion = null,
     Object? importeAnyo = null,
     Object? importeAnyo_1 = null,
     Object? importeAnyo_2 = null,
@@ -161,66 +105,10 @@ class _$ClienteVentasArticuloDTOCopyWithImpl<$Res,
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
       importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
@@ -276,21 +164,7 @@ abstract class _$$_ClienteVentasArticuloDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'ARTICULO_ID') String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') String? descripcionEL,
+      @JsonKey(name: 'DESCRIPCION') String descripcion,
       @JsonKey(name: 'IMPORTE_ANYO') double importeAnyo,
       @JsonKey(name: 'IMPORTE_ANYO_1') double importeAnyo_1,
       @JsonKey(name: 'IMPORTE_ANYO_2') double importeAnyo_2,
@@ -316,21 +190,7 @@ class __$$_ClienteVentasArticuloDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? articuloId = null,
-    Object? descripcionES = null,
-    Object? descripcionEN = freezed,
-    Object? descripcionFR = freezed,
-    Object? descripcionDE = freezed,
-    Object? descripcionCA = freezed,
-    Object? descripcionGB = freezed,
-    Object? descripcionHU = freezed,
-    Object? descripcionIT = freezed,
-    Object? descripcionNL = freezed,
-    Object? descripcionPL = freezed,
-    Object? descripcionPT = freezed,
-    Object? descripcionRO = freezed,
-    Object? descripcionRU = freezed,
-    Object? descripcionCN = freezed,
-    Object? descripcionEL = freezed,
+    Object? descripcion = null,
     Object? importeAnyo = null,
     Object? importeAnyo_1 = null,
     Object? importeAnyo_2 = null,
@@ -347,66 +207,10 @@ class __$$_ClienteVentasArticuloDTOCopyWithImpl<$Res>
           ? _value.articuloId
           : articuloId // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionES: null == descripcionES
-          ? _value.descripcionES
-          : descripcionES // ignore: cast_nullable_to_non_nullable
+      descripcion: null == descripcion
+          ? _value.descripcion
+          : descripcion // ignore: cast_nullable_to_non_nullable
               as String,
-      descripcionEN: freezed == descripcionEN
-          ? _value.descripcionEN
-          : descripcionEN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionFR: freezed == descripcionFR
-          ? _value.descripcionFR
-          : descripcionFR // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionDE: freezed == descripcionDE
-          ? _value.descripcionDE
-          : descripcionDE // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCA: freezed == descripcionCA
-          ? _value.descripcionCA
-          : descripcionCA // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionGB: freezed == descripcionGB
-          ? _value.descripcionGB
-          : descripcionGB // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionHU: freezed == descripcionHU
-          ? _value.descripcionHU
-          : descripcionHU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionIT: freezed == descripcionIT
-          ? _value.descripcionIT
-          : descripcionIT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionNL: freezed == descripcionNL
-          ? _value.descripcionNL
-          : descripcionNL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPL: freezed == descripcionPL
-          ? _value.descripcionPL
-          : descripcionPL // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionPT: freezed == descripcionPT
-          ? _value.descripcionPT
-          : descripcionPT // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRO: freezed == descripcionRO
-          ? _value.descripcionRO
-          : descripcionRO // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionRU: freezed == descripcionRU
-          ? _value.descripcionRU
-          : descripcionRU // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionCN: freezed == descripcionCN
-          ? _value.descripcionCN
-          : descripcionCN // ignore: cast_nullable_to_non_nullable
-              as String?,
-      descripcionEL: freezed == descripcionEL
-          ? _value.descripcionEL
-          : descripcionEL // ignore: cast_nullable_to_non_nullable
-              as String?,
       importeAnyo: null == importeAnyo
           ? _value.importeAnyo
           : importeAnyo // ignore: cast_nullable_to_non_nullable
@@ -456,21 +260,7 @@ class __$$_ClienteVentasArticuloDTOCopyWithImpl<$Res>
 class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
   const _$_ClienteVentasArticuloDTO(
       {@JsonKey(name: 'ARTICULO_ID') required this.articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES') required this.descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN') this.descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR') this.descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE') this.descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA') this.descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB') this.descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU') this.descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT') this.descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL') this.descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL') this.descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT') this.descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO') this.descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU') this.descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN') this.descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL') this.descripcionEL,
+      @JsonKey(name: 'DESCRIPCION') required this.descripcion,
       @JsonKey(name: 'IMPORTE_ANYO') required this.importeAnyo,
       @JsonKey(name: 'IMPORTE_ANYO_1') required this.importeAnyo_1,
       @JsonKey(name: 'IMPORTE_ANYO_2') required this.importeAnyo_2,
@@ -490,50 +280,8 @@ class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
   @JsonKey(name: 'ARTICULO_ID')
   final String articuloId;
   @override
-  @JsonKey(name: 'DESCRIPCION_ES')
-  final String descripcionES;
-  @override
-  @JsonKey(name: 'DESCRIPCION_EN')
-  final String? descripcionEN;
-  @override
-  @JsonKey(name: 'DESCRIPCION_FR')
-  final String? descripcionFR;
-  @override
-  @JsonKey(name: 'DESCRIPCION_DE')
-  final String? descripcionDE;
-  @override
-  @JsonKey(name: 'DESCRIPCION_CA')
-  final String? descripcionCA;
-  @override
-  @JsonKey(name: 'DESCRIPCION_GB')
-  final String? descripcionGB;
-  @override
-  @JsonKey(name: 'DESCRIPCION_HU')
-  final String? descripcionHU;
-  @override
-  @JsonKey(name: 'DESCRIPCION_IT')
-  final String? descripcionIT;
-  @override
-  @JsonKey(name: 'DESCRIPCION_NL')
-  final String? descripcionNL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PL')
-  final String? descripcionPL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PT')
-  final String? descripcionPT;
-  @override
-  @JsonKey(name: 'DESCRIPCION_RO')
-  final String? descripcionRO;
-  @override
-  @JsonKey(name: 'DESCRIPCION_RU')
-  final String? descripcionRU;
-  @override
-  @JsonKey(name: 'DESCRIPCION_CN')
-  final String? descripcionCN;
-  @override
-  @JsonKey(name: 'DESCRIPCION_EL')
-  final String? descripcionEL;
+  @JsonKey(name: 'DESCRIPCION')
+  final String descripcion;
   @override
   @JsonKey(name: 'IMPORTE_ANYO')
   final double importeAnyo;
@@ -567,7 +315,7 @@ class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
 
   @override
   String toString() {
-    return 'ClienteVentasArticuloDTO(articuloId: $articuloId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
+    return 'ClienteVentasArticuloDTO(articuloId: $articuloId, descripcion: $descripcion, importeAnyo: $importeAnyo, importeAnyo_1: $importeAnyo_1, importeAnyo_2: $importeAnyo_2, importeAnyo_3: $importeAnyo_3, importeAnyo_4: $importeAnyo_4, cantidadAnyo: $cantidadAnyo, cantidadAnyo_1: $cantidadAnyo_1, cantidadAnyo_2: $cantidadAnyo_2, cantidadAnyo_3: $cantidadAnyo_3, cantidadAnyo_4: $cantidadAnyo_4)';
   }
 
   @override
@@ -577,36 +325,8 @@ class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
             other is _$_ClienteVentasArticuloDTO &&
             (identical(other.articuloId, articuloId) ||
                 other.articuloId == articuloId) &&
-            (identical(other.descripcionES, descripcionES) ||
-                other.descripcionES == descripcionES) &&
-            (identical(other.descripcionEN, descripcionEN) ||
-                other.descripcionEN == descripcionEN) &&
-            (identical(other.descripcionFR, descripcionFR) ||
-                other.descripcionFR == descripcionFR) &&
-            (identical(other.descripcionDE, descripcionDE) ||
-                other.descripcionDE == descripcionDE) &&
-            (identical(other.descripcionCA, descripcionCA) ||
-                other.descripcionCA == descripcionCA) &&
-            (identical(other.descripcionGB, descripcionGB) ||
-                other.descripcionGB == descripcionGB) &&
-            (identical(other.descripcionHU, descripcionHU) ||
-                other.descripcionHU == descripcionHU) &&
-            (identical(other.descripcionIT, descripcionIT) ||
-                other.descripcionIT == descripcionIT) &&
-            (identical(other.descripcionNL, descripcionNL) ||
-                other.descripcionNL == descripcionNL) &&
-            (identical(other.descripcionPL, descripcionPL) ||
-                other.descripcionPL == descripcionPL) &&
-            (identical(other.descripcionPT, descripcionPT) ||
-                other.descripcionPT == descripcionPT) &&
-            (identical(other.descripcionRO, descripcionRO) ||
-                other.descripcionRO == descripcionRO) &&
-            (identical(other.descripcionRU, descripcionRU) ||
-                other.descripcionRU == descripcionRU) &&
-            (identical(other.descripcionCN, descripcionCN) ||
-                other.descripcionCN == descripcionCN) &&
-            (identical(other.descripcionEL, descripcionEL) ||
-                other.descripcionEL == descripcionEL) &&
+            (identical(other.descripcion, descripcion) ||
+                other.descripcion == descripcion) &&
             (identical(other.importeAnyo, importeAnyo) ||
                 other.importeAnyo == importeAnyo) &&
             (identical(other.importeAnyo_1, importeAnyo_1) ||
@@ -631,35 +351,20 @@ class _$_ClienteVentasArticuloDTO extends _ClienteVentasArticuloDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        articuloId,
-        descripcionES,
-        descripcionEN,
-        descripcionFR,
-        descripcionDE,
-        descripcionCA,
-        descripcionGB,
-        descripcionHU,
-        descripcionIT,
-        descripcionNL,
-        descripcionPL,
-        descripcionPT,
-        descripcionRO,
-        descripcionRU,
-        descripcionCN,
-        descripcionEL,
-        importeAnyo,
-        importeAnyo_1,
-        importeAnyo_2,
-        importeAnyo_3,
-        importeAnyo_4,
-        cantidadAnyo,
-        cantidadAnyo_1,
-        cantidadAnyo_2,
-        cantidadAnyo_3,
-        cantidadAnyo_4
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      articuloId,
+      descripcion,
+      importeAnyo,
+      importeAnyo_1,
+      importeAnyo_2,
+      importeAnyo_3,
+      importeAnyo_4,
+      cantidadAnyo,
+      cantidadAnyo_1,
+      cantidadAnyo_2,
+      cantidadAnyo_3,
+      cantidadAnyo_4);
 
   @JsonKey(ignore: true)
   @override
@@ -680,36 +385,8 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
   const factory _ClienteVentasArticuloDTO(
       {@JsonKey(name: 'ARTICULO_ID')
           required final String articuloId,
-      @JsonKey(name: 'DESCRIPCION_ES')
-          required final String descripcionES,
-      @JsonKey(name: 'DESCRIPCION_EN')
-          final String? descripcionEN,
-      @JsonKey(name: 'DESCRIPCION_FR')
-          final String? descripcionFR,
-      @JsonKey(name: 'DESCRIPCION_DE')
-          final String? descripcionDE,
-      @JsonKey(name: 'DESCRIPCION_CA')
-          final String? descripcionCA,
-      @JsonKey(name: 'DESCRIPCION_GB')
-          final String? descripcionGB,
-      @JsonKey(name: 'DESCRIPCION_HU')
-          final String? descripcionHU,
-      @JsonKey(name: 'DESCRIPCION_IT')
-          final String? descripcionIT,
-      @JsonKey(name: 'DESCRIPCION_NL')
-          final String? descripcionNL,
-      @JsonKey(name: 'DESCRIPCION_PL')
-          final String? descripcionPL,
-      @JsonKey(name: 'DESCRIPCION_PT')
-          final String? descripcionPT,
-      @JsonKey(name: 'DESCRIPCION_RO')
-          final String? descripcionRO,
-      @JsonKey(name: 'DESCRIPCION_RU')
-          final String? descripcionRU,
-      @JsonKey(name: 'DESCRIPCION_CN')
-          final String? descripcionCN,
-      @JsonKey(name: 'DESCRIPCION_EL')
-          final String? descripcionEL,
+      @JsonKey(name: 'DESCRIPCION')
+          required final String descripcion,
       @JsonKey(name: 'IMPORTE_ANYO')
           required final double importeAnyo,
       @JsonKey(name: 'IMPORTE_ANYO_1')
@@ -739,50 +416,8 @@ abstract class _ClienteVentasArticuloDTO extends ClienteVentasArticuloDTO {
   @JsonKey(name: 'ARTICULO_ID')
   String get articuloId;
   @override
-  @JsonKey(name: 'DESCRIPCION_ES')
-  String get descripcionES;
-  @override
-  @JsonKey(name: 'DESCRIPCION_EN')
-  String? get descripcionEN;
-  @override
-  @JsonKey(name: 'DESCRIPCION_FR')
-  String? get descripcionFR;
-  @override
-  @JsonKey(name: 'DESCRIPCION_DE')
-  String? get descripcionDE;
-  @override
-  @JsonKey(name: 'DESCRIPCION_CA')
-  String? get descripcionCA;
-  @override
-  @JsonKey(name: 'DESCRIPCION_GB')
-  String? get descripcionGB;
-  @override
-  @JsonKey(name: 'DESCRIPCION_HU')
-  String? get descripcionHU;
-  @override
-  @JsonKey(name: 'DESCRIPCION_IT')
-  String? get descripcionIT;
-  @override
-  @JsonKey(name: 'DESCRIPCION_NL')
-  String? get descripcionNL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PL')
-  String? get descripcionPL;
-  @override
-  @JsonKey(name: 'DESCRIPCION_PT')
-  String? get descripcionPT;
-  @override
-  @JsonKey(name: 'DESCRIPCION_RO')
-  String? get descripcionRO;
-  @override
-  @JsonKey(name: 'DESCRIPCION_RU')
-  String? get descripcionRU;
-  @override
-  @JsonKey(name: 'DESCRIPCION_CN')
-  String? get descripcionCN;
-  @override
-  @JsonKey(name: 'DESCRIPCION_EL')
-  String? get descripcionEL;
+  @JsonKey(name: 'DESCRIPCION')
+  String get descripcion;
   @override
   @JsonKey(name: 'IMPORTE_ANYO')
   double get importeAnyo;

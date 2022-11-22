@@ -83,6 +83,7 @@
   "cliente_show_clienteContacto_observaciones": "Observaciones",
   "cliente_show_clienteDetalle_titulo": "Cliente detalle",
   "cliente_show_clienteVentasArticulo_titulo": "Ventas artículos (ud.)",
+  "cliente_show_clienteVentasArticulo_buscar": "Buscar artículo...",
   "cliente_show_clienteVentasArticulo_importe": "Importe",
   "cliente_show_clienteVentasArticulo_cantidad": "Cantidad",
   "cliente_show_clienteVentasArticulo_articulo": "Artículo",

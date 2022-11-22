@@ -306,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Remise de fin d\'année"),
         "cliente_show_clienteVentasArticulo_articulo":
             MessageLookupByLibrary.simpleMessage("Article"),
+        "cliente_show_clienteVentasArticulo_buscar":
+            MessageLookupByLibrary.simpleMessage("Chercher article..."),
         "cliente_show_clienteVentasArticulo_cantidad":
             MessageLookupByLibrary.simpleMessage("Quantité"),
         "cliente_show_clienteVentasArticulo_description":

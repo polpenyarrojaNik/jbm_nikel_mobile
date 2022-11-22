@@ -9,7 +9,6 @@ import '../../../generated/l10n.dart';
 import '../../features/articulos/domain/articulo.dart';
 import '../../features/cliente/domain/cliente_estado_potencial.dart';
 import '../../features/cliente/domain/cliente_tipo_potencial.dart';
-import '../../features/cliente/domain/cliente_ventas_articulo.dart';
 import '../../features/cliente/domain/metodo_cobro.dart';
 import '../../features/cliente/domain/plazo_cobro.dart';
 
@@ -309,29 +308,6 @@ String? getClienteTipoPotencialInLocalLanguage(
     } else if (currentLocale == 'it' && tipoPotencial.descripcionIT != null) {
       return tipoPotencial.descripcionIT!;
     }
-  }
-
-  return null;
-}
-
-String? getClienteVentasArticuloDescripcionInLocalLanguage(
-    {required ClienteVentasArticulo clienteVentasArticulo}) {
-  final currentLocale = Intl.getCurrentLocale();
-
-  if (currentLocale == 'es') {
-    return clienteVentasArticulo.descripcionES;
-  } else if (currentLocale == 'en' &&
-      clienteVentasArticulo.descripcionEN != null) {
-    return clienteVentasArticulo.descripcionEN!;
-  } else if (currentLocale == 'de' &&
-      clienteVentasArticulo.descripcionDE != null) {
-    return clienteVentasArticulo.descripcionDE!;
-  } else if (currentLocale == 'fr' &&
-      clienteVentasArticulo.descripcionFR != null) {
-    return clienteVentasArticulo.descripcionFR!;
-  } else if (currentLocale == 'it' &&
-      clienteVentasArticulo.descripcionIT != null) {
-    return clienteVentasArticulo.descripcionIT!;
   }
 
   return null;

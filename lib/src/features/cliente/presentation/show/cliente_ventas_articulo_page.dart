@@ -1,28 +1,41 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/debouncer.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../domain/cliente_ventas_articulo.dart';
 import 'cliente_ventas_articulo_controller.dart';
 
-class ClienteVentasArticuloPage extends StatelessWidget {
-  const ClienteVentasArticuloPage(
+class ClienteVentasArticuloPage extends ConsumerWidget {
+  ClienteVentasArticuloPage(
       {super.key, required this.clienteId, required this.nombreCliente});
 
   final String clienteId;
   final String? nombreCliente;
 
+  final _debouncer = Debouncer(milliseconds: 500);
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clienteVentasArticulo_titulo),
+      appBar: CustomSearchAppBar(
+        isSearchingFirst: false,
+        title: S.of(context).cliente_show_clienteVentasArticulo_titulo,
+        searchTitle: S.of(context).cliente_show_clienteVentasArticulo_buscar,
+        onChanged: (searchText) => _debouncer.run(
+          () {
+            ref
+                .read(clienteVentasArticuloSearchQueryStateProvider.notifier)
+                .state = searchText;
+          },
+        ),
       ),
       body: Column(
         children: [
@@ -374,13 +387,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           ),
           DataCell(
             Text(
-              (getClienteVentasArticuloDescripcionInLocalLanguage(
-                          clienteVentasArticulo:
-                              clienteVentasArticuloList[i]) !=
-                      null)
-                  ? getClienteVentasArticuloDescripcionInLocalLanguage(
-                      clienteVentasArticulo: clienteVentasArticuloList[i])!
-                  : '',
+              clienteVentasArticuloList[i].descripcion,
               style: Theme.of(context).textTheme.caption,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,

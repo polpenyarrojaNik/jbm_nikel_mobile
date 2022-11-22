@@ -30,7 +30,7 @@ class _SystemHash {
 }
 
 String $ClienteVentasArticuloIndexScreenPaginatedControllerHash() =>
-    r'80a951a2205d0b332d2abbbfc83e1f84588d38cf';
+    r'1893290fa7827b98c106fef93e4838df08c82313';
 
 /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
 class ClienteVentasArticuloIndexScreenPaginatedControllerProvider

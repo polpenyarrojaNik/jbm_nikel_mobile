@@ -530,10 +530,12 @@ class ClienteRepository {
   }
 
   Future<List<ClienteVentasArticulo>> getClienteVentasArticuloList(
-      {required String clienteId}) async {
+      {required String clienteId, required String searchText}) async {
     try {
-      final query =
-          await _db.customSelect(_getVentasArticuloCustomSelect(), variables: [
+      final idioma = Intl.getCurrentLocale();
+      final query = await _db
+          .customSelect(_getVentasArticuloCustomSelect(searchText), variables: [
+        Variable(idioma),
         Variable(clienteId),
       ], readsFrom: {
         _db.estadisticasClienteUsuarioVentasTable,
@@ -780,10 +782,10 @@ GROUP BY mes
     return select;
   }
 
-  String _getVentasArticuloCustomSelect() {
+  String _getVentasArticuloCustomSelect(String searchText) {
     String select = '''
 SELECT ARTICULO_ID
-        , DESCRIPCION_ES DESCRIPCION_ES
+        , DESCRIPCION
         , SUM(importe_anyo_0) IMPORTE_ANYO
         , SUM(importe_anyo_1) IMPORTE_ANYO_1
         , SUM(importe_anyo_2) IMPORTE_ANYO_2
@@ -796,7 +798,12 @@ SELECT ARTICULO_ID
         , SUM(unidades_anyo_4) CANTIDAD_ANYO_4
 FROM (  
         SELECT ventas.ARTICULO_ID
-                , art.descripcion_ES
+                , case :idioma when 'es' then art.descripcion_ES
+                  when 'de' then IFNULL(art.descripcion_DE,  art.descripcion_ES)
+                  when 'en' then IFNULL(art.descripcion_EN,  art.descripcion_ES)
+                  when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
+                  when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
+                  else art.descripcion_ES end DESCRIPCION
                 , ventas.importe importe_anyo_0
                 , 0 importe_anyo_1
                 , 0 importe_anyo_2
@@ -813,7 +820,12 @@ FROM (
       AND ventas.anyo = strftime('%Y' ,DATE())
   UNION ALL
     SELECT ventas.ARTICULO_ID
-                ,art.descripcion_ES
+                , case :idioma when 'es' then art.descripcion_ES
+                  when 'de' then IFNULL(art.descripcion_DE,  art.descripcion_ES)
+                  when 'en' then IFNULL(art.descripcion_EN,  art.descripcion_ES)
+                  when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
+                  when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
+                  else art.descripcion_ES end DESCRIPCION
                 , 0 importe_anyo_0
                 , ventas.importe importe_anyo_1
                 , 0 importe_anyo_2
@@ -830,7 +842,12 @@ FROM (
       AND ventas.anyo = strftime('%Y' ,DATE()) - 1
   UNION ALL
     SELECT ventas.ARTICULO_ID
-                ,art.descripcion_ES
+                , case :idioma when 'es' then art.descripcion_ES
+                  when 'de' then IFNULL(art.descripcion_DE,  art.descripcion_ES)
+                  when 'en' then IFNULL(art.descripcion_EN,  art.descripcion_ES)
+                  when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
+                  when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
+                  else art.descripcion_ES end DESCRIPCION
                 , 0 importe_anyo_0
                 , 0 importe_anyo_1
                 , ventas.importe importe_anyo_2
@@ -847,7 +864,12 @@ FROM (
     AND ventas.anyo = strftime('%Y' ,DATE()) - 2
   UNION ALL
     SELECT ventas.ARTICULO_ID
-                ,art.descripcion_ES
+                , case :idioma when 'es' then art.descripcion_ES
+                  when 'de' then IFNULL(art.descripcion_DE,  art.descripcion_ES)
+                  when 'en' then IFNULL(art.descripcion_EN,  art.descripcion_ES)
+                  when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
+                  when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
+                  else art.descripcion_ES end DESCRIPCION
                 , 0 importe_anyo_0
                 , 0 importe_anyo_1
                 , 0 importe_anyo_2
@@ -865,7 +887,12 @@ FROM (
 
   UNION ALL
     SELECT ventas.ARTICULO_ID
-                ,art.descripcion_ES
+                , case :idioma when 'es' then art.descripcion_ES
+                  when 'de' then IFNULL(art.descripcion_DE,  art.descripcion_ES)
+                  when 'en' then IFNULL(art.descripcion_EN,  art.descripcion_ES)
+                  when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
+                  when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
+                  else art.descripcion_ES end DESCRIPCION
                 , 0 importe_anyo_0
                 , 0 importe_anyo_1
                 , 0 importe_anyo_2
@@ -881,8 +908,8 @@ FROM (
     WHERE ventas.cliente_id = :clienteId
     AND ventas.anyo = strftime('%Y' ,DATE()) - 4
 )
-WHERE ARTICULO_ID IS NOT NULL
-GROUP BY ARTICULO_ID, DESCRIPCION_ES
+WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%' OR DESCRIPCION LIKE '%$searchText%')
+GROUP BY ARTICULO_ID, DESCRIPCION
 ''';
 
     return select;

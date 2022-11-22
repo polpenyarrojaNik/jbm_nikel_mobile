@@ -890,6 +890,16 @@ class S {
     );
   }
 
+  /// `Search article...`
+  String get cliente_show_clienteVentasArticulo_buscar {
+    return Intl.message(
+      'Search article...',
+      name: 'cliente_show_clienteVentasArticulo_buscar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Amount`
   String get cliente_show_clienteVentasArticulo_importe {
     return Intl.message(
