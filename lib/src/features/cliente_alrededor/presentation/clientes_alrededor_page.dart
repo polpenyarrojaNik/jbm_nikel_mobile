@@ -307,6 +307,18 @@ class ClienteAlrededorDialog extends StatelessWidget {
               poblacion: cliente.poblacionFiscal,
               provincia: cliente.provinciaFiscal,
               pais: cliente.paisFiscal),
+          if (cliente.representante1Nombre != null) gapH2,
+          if (cliente.representante1Nombre != null)
+            RowFieldTextDetalle(
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteDetalle_comercial1,
+                value: cliente.representante1Nombre!),
+          if (cliente.representante1Nombre != null) gapH2,
+          if (cliente.representante2Nombre != null)
+            RowFieldTextDetalle(
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteDetalle_comercial2,
+                value: cliente.representante2Nombre),
           const Divider(),
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,

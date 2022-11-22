@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/isolate_args.dart';
@@ -19,14 +20,17 @@ final syncNotifierProvider =
     StateNotifierProvider<SyncNotifier, SyncControllerState>(
   (ref) {
     final user = ref.watch(usuarioNotifierProvider);
+    final userService = ref.watch(usuarioServiceProvider);
 
-    return SyncNotifier(user!);
+    return SyncNotifier(user!, userService);
   },
 );
 
 class SyncNotifier extends StateNotifier<SyncControllerState> {
   final Usuario user;
-  SyncNotifier(this.user) : super(const SyncControllerState.initial());
+  final UsuarioService usuarioService;
+  SyncNotifier(this.user, this.usuarioService)
+      : super(const SyncControllerState.initial());
 
   Future<void> syncAllInCompute() async {
     state = const SyncControllerState.synchronizing();
