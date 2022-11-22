@@ -926,9 +926,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION_ES
 // TODO buscar en todos los idiomas
       if (searchText != '') {
         query.where(
-            (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
-                (_db.articuloTable.id.like('%$searchText%') |
-                    _filtrarPorDescripcion(searchText)));
+            (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId) &
+                (_db.articuloTable.id.contains(searchText) |
+                    _filtrarPorDescripcion(searchText))));
       } else {
         query.where(
             _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
@@ -960,7 +960,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION_ES
       final countExp = _db.estadisticasUltimosPreciosTable.clienteId.count();
 
       final query = _db.selectOnly(_db.estadisticasUltimosPreciosTable).join([
-        innerJoin(
+        leftOuterJoin(
             _db.articuloTable,
             _db.articuloTable.id
                 .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
@@ -969,8 +969,8 @@ GROUP BY ARTICULO_ID, DESCRIPCION_ES
       if (searchText != '') {
         query.where(
             (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
-                (_db.articuloTable.id.like('%$searchText%') |
-                    _db.articuloTable.descripcionES.like('%$searchText%')));
+                (_db.articuloTable.id.contains(searchText) |
+                    _filtrarPorDescripcion(searchText)));
       } else {
         query.where(
             _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
@@ -1067,17 +1067,17 @@ GROUP BY ARTICULO_ID, DESCRIPCION_ES
     final currentLocale = Intl.getCurrentLocale();
 
     if (currentLocale == 'es') {
-      return _db.articuloTable.descripcionES.equals('%$searchText%');
+      return _db.articuloTable.descripcionES.contains(searchText);
     } else if (currentLocale == 'en') {
-      return _db.articuloTable.descripcionEN.equals('%$searchText%');
+      return _db.articuloTable.descripcionEN.contains(searchText);
     } else if (currentLocale == 'de') {
-      return _db.articuloTable.descripcionDE.equals('%$searchText%');
+      return _db.articuloTable.descripcionDE.contains(searchText);
     } else if (currentLocale == 'fr') {
-      return _db.articuloTable.descripcionFR.equals('%$searchText%');
+      return _db.articuloTable.descripcionFR.contains(searchText);
     } else if (currentLocale == 'it') {
-      return _db.articuloTable.descripcionIT.equals('%$searchText%');
+      return _db.articuloTable.descripcionIT.contains(searchText);
     } else {
-      return _db.articuloTable.descripcionES.equals('%$searchText%');
+      return _db.articuloTable.descripcionES.contains(searchText);
     }
   }
 }

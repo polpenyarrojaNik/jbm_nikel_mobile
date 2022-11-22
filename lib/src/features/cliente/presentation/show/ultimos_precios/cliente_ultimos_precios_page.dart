@@ -8,6 +8,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/ultimos_
 import '../../../../../../generated/l10n.dart';
 import '../../../../../core/helpers/debouncer.dart';
 import '../../../../../core/helpers/formatters.dart';
+import '../../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../../core/presentation/theme/app_sizes.dart';
@@ -55,35 +56,38 @@ class ClienteUltimosPreciosPage extends ConsumerWidget {
           ),
           gapH8,
           stateClienteUltimosPreciosListCount.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              data: (count) => Expanded(
-                    child: ListView.separated(
-                      itemCount: count,
-                      itemBuilder: (context, i) => ref
-                          .watch(
-                            ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
-                              clienteId: clienteId,
-                              page: (i ~/ ClienteRepository.pageSize),
-                            ),
-                          )
-                          .maybeWhen(
-                            orElse: () => const ArticuloListShimmer(),
-                            data: (ultimosPreciosList) => UltimosPreciosTile(
-                              ultimosPrecios: ultimosPreciosList[
-                                  i % ClienteRepository.pageSize],
-                            ),
-                          ),
-                      separatorBuilder: (context, i) => const Divider(),
+            orElse: () => const ProgressIndicatorWidget(),
+            data: (count) => Expanded(
+              child: ListView.separated(
+                itemCount: count,
+                itemBuilder: (context, i) => ref
+                    .watch(
+                      ClienteUltimosPreciosIndexScreenPaginatedControllerProvider(
+                        clienteId: clienteId,
+                        page: (i ~/ ClienteRepository.pageSize),
+                      ),
+                    )
+                    .maybeWhen(
+                      orElse: () => const ArticuloListShimmer(),
+                      data: (ultimosPreciosList) => _UltimosPreciosTile(
+                        ultimosPrecios:
+                            ultimosPreciosList[i % ClienteRepository.pageSize],
+                      ),
                     ),
-                  )),
+                separatorBuilder: (context, i) => const Divider(),
+              ),
+            ),
+            error: (e, _) => ErrorMessageWidget(e.toString()),
+            loading: () => const ProgressIndicatorWidget(),
+          ),
         ],
       ),
     );
   }
 }
 
-class UltimosPreciosTile extends StatelessWidget {
-  const UltimosPreciosTile({super.key, required this.ultimosPrecios});
+class _UltimosPreciosTile extends StatelessWidget {
+  const _UltimosPreciosTile({required this.ultimosPrecios});
 
   final EstadisticasUltimosPrecios ultimosPrecios;
 
