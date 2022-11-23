@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
-import 'package:jbm_nikel_mobile/src/features/settings/presentation/settings_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../core/helpers/database_helper.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -19,14 +20,8 @@ class SettingsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final usuario = ref.watch(usuarioNotifierProvider);
     final statePackageInfo = ref.watch(packageInfoProvider);
-    final state = ref.watch(settingPageControllerProvider);
+    final stateSync = ref.watch(syncNotifierProvider);
 
-    ref.listen<AsyncValue>(settingPageControllerProvider, (_, state) {
-      state.maybeWhen(
-        orElse: () {},
-        data: (_) => ref.read(syncNotifierProvider.notifier).syncAllInCompute(),
-      );
-    });
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
@@ -35,47 +30,51 @@ class SettingsPage extends ConsumerWidget {
         ),
       ),
       body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: state.maybeWhen(
-              orElse: () => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (usuario != null)
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ColumnFieldTextDetalle(
-                                fieldTitleValue: S.of(context).settings_user,
-                                value: usuario.id),
-                            ColumnFieldTextDetalle(
-                                fieldTitleValue:
-                                    S.of(context).settings_nombre_usuario,
-                                value: usuario.nombreUsuario),
-                            if (usuario.test)
-                              ColumnFieldTextDetalle(
-                                  fieldTitleValue: 'Test',
-                                  value: usuario.test.toString()),
-                          ],
-                        ),
-                      statePackageInfo.when(
-                        data: (packageInfo) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ColumnFieldTextDetalle(
-                                fieldTitleValue: S.of(context).settings_version,
-                                value:
-                                    '${packageInfo.version} (${packageInfo.buildNumber})')
-                          ],
-                        ),
-                        error: (e, _) => ErrorMessageWidget(e.toString()),
-                        loading: () => const ProgressIndicatorWidget(),
-                      ),
-                      gapH16,
-                      const _ActualizarArchivoBaseDeDatosButton(),
-                      const _SignoutButton()
-                    ],
-                  ),
-              loading: () => const ProgressIndicatorWidget())),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (usuario != null)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ColumnFieldTextDetalle(
+                      fieldTitleValue: S.of(context).settings_user,
+                      value: usuario.id),
+                  ColumnFieldTextDetalle(
+                      fieldTitleValue: S.of(context).settings_nombre_usuario,
+                      value: usuario.nombreUsuario),
+                  if (usuario.test)
+                    ColumnFieldTextDetalle(
+                        fieldTitleValue: 'Test',
+                        value: usuario.test.toString()),
+                ],
+              ),
+            statePackageInfo.when(
+              data: (packageInfo) => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ColumnFieldTextDetalle(
+                      fieldTitleValue: S.of(context).settings_version,
+                      value:
+                          '${packageInfo.version} (${packageInfo.buildNumber})')
+                ],
+              ),
+              error: (e, _) => ErrorMessageWidget(e.toString()),
+              loading: () => const ProgressIndicatorWidget(),
+            ),
+            gapH16,
+            stateSync.maybeWhen(
+              orElse: () => Container(),
+              synchronized: () => const _ActualizarArchivoBaseDeDatosButton(),
+            ),
+            stateSync.maybeWhen(
+              orElse: () => Container(),
+              synchronized: () => const _SignoutButton(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -86,7 +85,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      onPressed: () => replaceDatabase(ref),
+      onPressed: () => deleteDatabase(ref),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -100,8 +99,10 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
     );
   }
 
-  void replaceDatabase(WidgetRef ref) {
-    ref.read(settingPageControllerProvider.notifier).replaceDatabase();
+  void deleteDatabase(WidgetRef ref) async {
+    ref.invalidate(appDatabaseProvider);
+    await deleteLocalDatabase();
+    await ref.read(usuarioNotifierProvider.notifier).signOut();
   }
 }
 
@@ -125,7 +126,7 @@ class _SignoutButton extends ConsumerWidget {
     );
   }
 
-  void logout(BuildContext context, WidgetRef ref) {
-    ref.read(usuarioNotifierProvider.notifier).signOut();
+  void logout(BuildContext context, WidgetRef ref) async {
+    await ref.read(usuarioNotifierProvider.notifier).signOut();
   }
 }

@@ -199,6 +199,7 @@
   "pedido_index_filtros": "Filtres",
   "pedido_index_reset": "Redémarrer",
   "pedido_index_titulo": "Commandes",
+  "pedido_index_provisional": "Provisoire",
   "pedido_noEnviado": "Pas envoyé",
   "pedido_show_pedidoVentaDetalle_albaranes": "Bons de livraisons",
   "pedido_show_pedidoVentaDetalle_baseImponible": "Taxe base",

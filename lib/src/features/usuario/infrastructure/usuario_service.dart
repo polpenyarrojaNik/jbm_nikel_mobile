@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/local_usuario_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/remote_usuario_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../domain/usuario.dart';
 
@@ -37,7 +38,8 @@ class UsuarioService {
   }
 
   Future<void> signOut() async {
-    _localUsuarioRepository.clear();
+    await _localUsuarioRepository.clear();
+    // await clearSharedPreference();
   }
 
   Future<Usuario?> refresh() async {
@@ -53,5 +55,12 @@ class UsuarioService {
     } catch (e) {
       return null;
     }
+  }
+
+  Future<void> clearSharedPreference() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+
+    sharedPreferences.clear();
   }
 }

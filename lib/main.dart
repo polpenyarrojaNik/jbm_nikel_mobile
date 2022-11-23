@@ -40,7 +40,7 @@ void main() async {
       };
     },
     (Object error, StackTrace stack) {
-      log.e(error, stack);
+      print(error);
       exit(1);
     },
   );

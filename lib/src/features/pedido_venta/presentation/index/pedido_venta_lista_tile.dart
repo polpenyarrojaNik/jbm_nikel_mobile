@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta.dart';
@@ -34,7 +35,7 @@ class PedidoVentaListaTile extends StatelessWidget {
           padding: const EdgeInsets.only(right: 16),
           color: Colors.transparent,
           child: SizedBox(
-            height: 90,
+            height: 100,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -45,7 +46,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 4,
+                  flex: 5,
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -53,7 +54,8 @@ class PedidoVentaListaTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          pedidoVenta.pedidoVentaId ?? 'Provisional',
+                          pedidoVenta.pedidoVentaId ??
+                              S.of(context).pedido_index_provisional,
                           style: Theme.of(context).textTheme.caption?.copyWith(
                               color:
                                   Theme.of(context).textTheme.bodyText2?.color),
@@ -79,7 +81,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 9,
+                  flex: 10,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Column(
@@ -114,7 +116,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  flex: 4,
+                  flex: 5,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Column(

@@ -1864,6 +1864,16 @@ class S {
     );
   }
 
+  /// `Provisional`
+  String get pedido_index_provisional {
+    return Intl.message(
+      'Provisional',
+      name: 'pedido_index_provisional',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Search sales orders...`
   String get pedido_index_buscarPedidos {
     return Intl.message(

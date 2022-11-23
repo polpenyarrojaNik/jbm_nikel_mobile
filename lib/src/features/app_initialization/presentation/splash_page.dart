@@ -10,6 +10,8 @@ import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_pro
 
 import '../../../../generated/l10n.dart';
 import '../../../core/exceptions/app_exception.dart';
+
+import '../../../core/infrastructure/log_repository.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
 
 class SplashPage extends ConsumerWidget {
@@ -22,12 +24,20 @@ class SplashPage extends ConsumerWidget {
       (_, state) {
         state.maybeWhen(
           orElse: () {},
-          data: () {
+          data: () async {
+            await ref
+                .read(logRepositoryProvider)
+                .insetLog(level: 'I', message: 'Inizialize App');
             ref.read(syncNotifierProvider.notifier).syncAllInCompute();
             context.router.replace(
               ArticuloListaRoute(isSearchArticuloForForm: false),
             );
           },
+          // notInitialized: () async {
+          //   ref.invalidate(appDatabaseProvider);
+          //   await deleteLocalDatabase();
+          //   ref.read(usuarioNotifierProvider.notifier).signOut();
+          // },
           error: (e, _) {
             if (e is AppException) {
               e.maybeWhen(
@@ -45,7 +55,7 @@ class SplashPage extends ConsumerWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: state.when(
+        child: state.maybeWhen(
           downloadDatabase: () => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +65,7 @@ class SplashPage extends ConsumerWidget {
               Text(S.of(context).splash_descargandoBaseDeDatos),
             ],
           ),
-          initial: () => Container(),
+          orElse: () => Container(),
           error: (e, _) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

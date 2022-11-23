@@ -180,6 +180,7 @@
   "pedido_index_filtrar": "Filter",
   "pedido_index_filtros": "Filters",
   "pedido_index_estados": "Status",
+  "pedido_index_provisional": "Provisional",
   "pedido_index_buscarPedidos": "Search sales orders...",
   "pedido_show_pedidoVentaDetalle_titulo": "Sales order detail",
   "pedido_show_pedidoVentaDetalle_estado": "Status",

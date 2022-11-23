@@ -180,6 +180,7 @@
   "pedido_index_filtrar": "Filtrar",
   "pedido_index_filtros": "Filtros",
   "pedido_index_estados": "Estados",
+  "pedido_index_provisional": "Provisional",
   "pedido_index_buscarPedidos": "Buscar pedidos...",
   "pedido_show_pedidoVentaDetalle_titulo": "Pedido",
   "pedido_show_pedidoVentaDetalle_estado": "Estado",

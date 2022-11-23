@@ -1,17 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/init_database_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
-import '../../../core/infrastructure/log_repository.dart';
 
 part 'splash_page_controller.freezed.dart';
 
 final splashPageControllerProvider = StateNotifierProvider.autoDispose<
         SplashPageController, SplashControllerState>(
-    (ref) => SplashPageController(
-        ref.watch(syncServiceProvider), ref.watch(logRepositoryProvider)));
+    (ref) => SplashPageController(ref.watch(initDatabaseServiceProvider)));
 
 @freezed
 class SplashControllerState with _$SplashControllerState {
@@ -19,16 +17,17 @@ class SplashControllerState with _$SplashControllerState {
   const factory SplashControllerState.downloadDatabase() = _downloadDatabase;
 
   const factory SplashControllerState.initial() = _initial;
+  const factory SplashControllerState.notDownloaded() = _notDownloaded;
+
   const factory SplashControllerState.error(Object error,
       {StackTrace? stackTrace}) = _error;
   const factory SplashControllerState.data() = _data;
 }
 
 class SplashPageController extends StateNotifier<SplashControllerState> {
-  final SyncService _syncService;
-  final LogRepository _logRepository;
+  final InitDatabaseService _initDatabaseService;
 
-  SplashPageController(this._syncService, this._logRepository)
+  SplashPageController(this._initDatabaseService)
       : super(const SplashControllerState.initial()) {
     initializeApp();
   }
@@ -37,8 +36,7 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
     try {
       state = const SplashControllerState.downloadDatabase();
       try {
-        await _syncService.initDatabaBase();
-        await _logRepository.insetLog(level: 'I', message: 'Inizialize App');
+        await _initDatabaseService.downloadInitDatabase();
       } catch (e) {
         rethrow;
       }

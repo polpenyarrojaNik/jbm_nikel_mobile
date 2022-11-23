@@ -43,6 +43,7 @@ import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
+
 import 'familia_dto.dart';
 import 'log_dto.dart';
 
@@ -53,12 +54,20 @@ SendPort? isolateConnectPort;
 final appDatabaseProvider = Provider<AppDatabase>(
   (ref) {
     DatabaseConnection connection = DatabaseConnection.delayed(() async {
-      final isolate = await _createDriftIsolate();
-      isolateConnectPort = isolate.connectPort;
+      late DriftIsolate isolate;
+      if (isolateConnectPort != null) {
+        isolate = DriftIsolate.fromConnectPort(isolateConnectPort!);
+      } else {
+        isolate = await _createDriftIsolate();
+
+        isolateConnectPort = isolate.connectPort;
+      }
       return await isolate.connect();
     }());
     final database = AppDatabase.connect(connection);
-    ref.onDispose(() => database.close());
+    ref.onDispose(
+      () => database.close(),
+    );
     return database;
   },
 );
@@ -105,6 +114,7 @@ const localDatabaseName = 'jbm.sqlite';
 ])
 class AppDatabase extends _$AppDatabase {
   final bool test;
+
   AppDatabase.connect(super.connection)
       : test = false,
         super.connect();
@@ -136,6 +146,7 @@ void _startBackground(IsolateRequest request) {
   // Using DriftIsolate.inCurrent() allows to run executor on current thread
   final driftIsolate = DriftIsolate.inCurrent(
     () => DatabaseConnection(executor),
+    killIsolateWhenDone: true,
   );
   // send back created DriftIsolate to main thread through SendPort
   request.sendDriftIsolate.send(driftIsolate);
