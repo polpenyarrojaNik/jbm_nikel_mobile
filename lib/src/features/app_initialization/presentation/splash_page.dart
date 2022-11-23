@@ -33,16 +33,11 @@ class SplashPage extends ConsumerWidget {
               ArticuloListaRoute(isSearchArticuloForForm: false),
             );
           },
-          // notInitialized: () async {
-          //   ref.invalidate(appDatabaseProvider);
-          //   await deleteLocalDatabase();
-          //   ref.read(usuarioNotifierProvider.notifier).signOut();
-          // },
           error: (e, _) {
             if (e is AppException) {
               e.maybeWhen(
                 orElse: () => context.router.replace(
-                  ArticuloListaRoute(isSearchArticuloForForm: false),
+                  const LoginRoute(),
                 ),
               );
             }

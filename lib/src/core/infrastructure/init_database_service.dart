@@ -83,9 +83,6 @@ class InitDatabaseService {
           responseType: ResponseType.bytes,
           receiveDataWhenStatusError: true,
           followRedirects: false,
-          validateStatus: (status) {
-            return status! < 500;
-          },
         ),
       );
 
