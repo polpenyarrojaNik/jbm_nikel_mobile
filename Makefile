@@ -64,5 +64,5 @@ build_ios_mobile: get_pub create_icons build_runner commit
 	@flutter build ios --release
 
 deploy_ios_mobile: build_ios_mobile
-	@open ./build/ios/archive/Runner.xcarchive
+	@open ./build/ios/iphoneos/Runner.app
 	

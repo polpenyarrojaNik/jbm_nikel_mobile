@@ -2,10 +2,6 @@
 
 part of 'database.dart';
 
-// **************************************************************************
-// DriftDatabaseGenerator
-// **************************************************************************
-
 // ignore_for_file: type=lint
 class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
   final Value<String> id;
@@ -254,113 +250,115 @@ class $PaisTableTable extends PaisTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PaisTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _isoCodeMeta = const VerificationMeta('isoCode');
+  static const VerificationMeta _isoCodeMeta =
+      const VerificationMeta('isoCode');
   @override
   late final GeneratedColumn<String> isoCode = GeneratedColumn<String>(
       'CODIGO_ISO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -521,43 +519,43 @@ class $PaisTableTable extends PaisTable
   PaisDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PaisDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID'])!,
-      isoCode: attachedDatabase.options.types
+      isoCode: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_ISO']),
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -838,123 +836,126 @@ class $DivisaTableTable extends DivisaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $DivisaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _abvMeta = const VerificationMeta('abv');
+  static const VerificationMeta _abvMeta = const VerificationMeta('abv');
   @override
   late final GeneratedColumn<String> abv = GeneratedColumn<String>(
       'ABREVIACION', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _simboloMeta = const VerificationMeta('simbolo');
+  static const VerificationMeta _simboloMeta =
+      const VerificationMeta('simbolo');
   @override
   late final GeneratedColumn<String> simbolo = GeneratedColumn<String>(
       'SIMBOLO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _redondeoMeta = const VerificationMeta('redondeo');
+  static const VerificationMeta _redondeoMeta =
+      const VerificationMeta('redondeo');
   @override
   late final GeneratedColumn<double> redondeo = GeneratedColumn<double>(
       'REDONDEO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -1127,47 +1128,47 @@ class $DivisaTableTable extends DivisaTable
   DivisaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DivisaDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
-      abv: attachedDatabase.options.types
+      abv: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ABREVIACION'])!,
-      simbolo: attachedDatabase.options.types
+      simbolo: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}SIMBOLO']),
-      redondeo: attachedDatabase.options.types
+      redondeo: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}REDONDEO']),
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -1403,102 +1404,103 @@ class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaEstadoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'ESTADO_PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: false);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -1646,39 +1648,39 @@ class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
   PedidoVentaEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaEstadoDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -2007,14 +2009,15 @@ class $PedidoVentaTableTable extends PedidoVentaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 2),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _pedidoVentaIdMeta =
+  static const VerificationMeta _pedidoVentaIdMeta =
       const VerificationMeta('pedidoVentaId');
   @override
   late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
@@ -2022,27 +2025,29 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 10),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _pedidoVentaDateMeta =
+  static const VerificationMeta _pedidoVentaDateMeta =
       const VerificationMeta('pedidoVentaDate');
   @override
   late final GeneratedColumn<DateTime> pedidoVentaDate =
       GeneratedColumn<DateTime>('FECHA_PEDIDO', aliasedName, false,
           type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _tipoVentaMeta = const VerificationMeta('tipoVenta');
+  static const VerificationMeta _tipoVentaMeta =
+      const VerificationMeta('tipoVenta');
   @override
   late final GeneratedColumn<String> tipoVenta = GeneratedColumn<String>(
       'TIPO_VENTA', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 1),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 6),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _nombreClienteMeta =
+  static const VerificationMeta _nombreClienteMeta =
       const VerificationMeta('nombreCliente');
   @override
   late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
@@ -2050,13 +2055,13 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  final VerificationMeta _direccionIdMeta =
+  static const VerificationMeta _direccionIdMeta =
       const VerificationMeta('direccionId');
   @override
   late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _direccionEntrga1Meta =
+  static const VerificationMeta _direccionEntrga1Meta =
       const VerificationMeta('direccionEntrga1');
   @override
   late final GeneratedColumn<String> direccionEntrga1 = GeneratedColumn<String>(
@@ -2064,7 +2069,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _direccionEntrga2Meta =
+  static const VerificationMeta _direccionEntrga2Meta =
       const VerificationMeta('direccionEntrga2');
   @override
   late final GeneratedColumn<String> direccionEntrga2 = GeneratedColumn<String>(
@@ -2072,7 +2077,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _codigoPostalMeta =
+  static const VerificationMeta _codigoPostalMeta =
       const VerificationMeta('codigoPostal');
   @override
   late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
@@ -2080,37 +2085,42 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 10),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _poblacionMeta = const VerificationMeta('poblacion');
+  static const VerificationMeta _poblacionMeta =
+      const VerificationMeta('poblacion');
   @override
   late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 60),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _provinciaMeta = const VerificationMeta('provincia');
+  static const VerificationMeta _provinciaMeta =
+      const VerificationMeta('provincia');
   @override
   late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 50),
       type: DriftSqlType.string,
       requiredDuringInsert: false);
-  final VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 3),
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
-  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES PAISES (PAIS_ID)'));
+  static const VerificationMeta _divisaIdMeta =
+      const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
       additionalChecks: GeneratedColumn.checkTextLength(maxTextLength: 2),
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES "DIVISAS" ("DIVISA_ID")');
-  final VerificationMeta _baseImponibleMeta =
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES DIVISAS (DIVISA_ID)'));
+  static const VerificationMeta _baseImponibleMeta =
       const VerificationMeta('baseImponible');
   @override
   late final GeneratedColumn<double> baseImponible = GeneratedColumn<double>(
@@ -2118,7 +2128,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _totalLineasMeta =
+  static const VerificationMeta _totalLineasMeta =
       const VerificationMeta('totalLineas');
   @override
   late final GeneratedColumn<double> totalLineas = GeneratedColumn<double>(
@@ -2126,7 +2136,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _importePortesMeta =
+  static const VerificationMeta _importePortesMeta =
       const VerificationMeta('importePortes');
   @override
   late final GeneratedColumn<double> importePortes = GeneratedColumn<double>(
@@ -2134,56 +2144,59 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _importeIvaMeta = const VerificationMeta('importeIva');
+  static const VerificationMeta _importeIvaMeta =
+      const VerificationMeta('importeIva');
   @override
   late final GeneratedColumn<double> importeIva = GeneratedColumn<double>(
       'IMPORTE_IVA', aliasedName, false,
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _totalMeta = const VerificationMeta('total');
+  static const VerificationMeta _totalMeta = const VerificationMeta('total');
   @override
   late final GeneratedColumn<double> total = GeneratedColumn<double>(
       'TOTAL', aliasedName, false,
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _pedidoVentaEstadoIdMeta =
+  static const VerificationMeta _pedidoVentaEstadoIdMeta =
       const VerificationMeta('pedidoVentaEstadoId');
   @override
   late final GeneratedColumn<int> pedidoVentaEstadoId = GeneratedColumn<int>(
       'ESTADO_PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "PEDIDOS_ESTADOS" ("ESTADO_PEDIDO_ID")',
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES PEDIDOS_ESTADOS (ESTADO_PEDIDO_ID)'),
       defaultValue: const Constant(0));
-  final VerificationMeta _ofertaMeta = const VerificationMeta('oferta');
+  static const VerificationMeta _ofertaMeta = const VerificationMeta('oferta');
   @override
   late final GeneratedColumn<String> oferta = GeneratedColumn<String>(
       'OFERTA_SN', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _pedidoVentaAppIdMeta =
+  static const VerificationMeta _pedidoVentaAppIdMeta =
       const VerificationMeta('pedidoVentaAppId');
   @override
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
       'PEDIDO_APP_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
       type: DriftSqlType.double,
       requiredDuringInsert: false,
       defaultValue: const Constant(0.0));
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -2380,55 +2393,55 @@ class $PedidoVentaTableTable extends PedidoVentaTable
   PedidoVentaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaDTO(
-      empresaId: attachedDatabase.options.types
+      empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      pedidoVentaId: attachedDatabase.options.types
+      pedidoVentaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
-      pedidoVentaDate: attachedDatabase.options.types
+      pedidoVentaDate: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_PEDIDO'])!,
-      tipoVenta: attachedDatabase.options.types
+      tipoVenta: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TIPO_VENTA'])!,
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      direccionId: attachedDatabase.options.types
+      direccionId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
-      nombreCliente: attachedDatabase.options.types
+      nombreCliente: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMRE_CLIENTE'])!,
-      direccionEntrga1: attachedDatabase.options.types.read(
+      direccionEntrga1: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_ENVIO1']),
-      direccionEntrga2: attachedDatabase.options.types.read(
+      direccionEntrga2: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_ENVIO2']),
-      codigoPostal: attachedDatabase.options.types
+      codigoPostal: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      poblacion: attachedDatabase.options.types
+      poblacion: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      provincia: attachedDatabase.options.types
+      provincia: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      paisId: attachedDatabase.options.types
+      paisId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      divisaId: attachedDatabase.options.types
+      divisaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
-      baseImponible: attachedDatabase.options.types
+      baseImponible: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}BASE_IMPONIBLE'])!,
-      totalLineas: attachedDatabase.options.types
+      totalLineas: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}TOTAL_LINEAS'])!,
-      importePortes: attachedDatabase.options.types
+      importePortes: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_PORTES'])!,
-      importeIva: attachedDatabase.options.types
+      importeIva: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE_IVA'])!,
-      total: attachedDatabase.options.types
+      total: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}TOTAL'])!,
-      pedidoVentaEstadoId: attachedDatabase.options.types
+      pedidoVentaEstadoId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
-      oferta: attachedDatabase.options.types
+      oferta: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
-      pedidoVentaAppId: attachedDatabase.options.types
+      pedidoVentaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID']),
-      iva: attachedDatabase.options.types
+      iva: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -2668,90 +2681,98 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaLineaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _pedidoVentaIdMeta =
+  static const VerificationMeta _pedidoVentaIdMeta =
       const VerificationMeta('pedidoVentaId');
   @override
   late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _pedidoVentaLineaIdMeta =
+  static const VerificationMeta _pedidoVentaLineaIdMeta =
       const VerificationMeta('pedidoVentaLineaId');
   @override
   late final GeneratedColumn<String> pedidoVentaLineaId =
       GeneratedColumn<String>('PEDIDO_LINEA_ID', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloDescriptionMeta =
+  static const VerificationMeta _articuloDescriptionMeta =
       const VerificationMeta('articuloDescription');
   @override
   late final GeneratedColumn<String> articuloDescription =
       GeneratedColumn<String>('ARTICULO_DESCRIPCION', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  static const VerificationMeta _cantidadMeta =
+      const VerificationMeta('cantidad');
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _precioDivisaMeta =
+  static const VerificationMeta _precioDivisaMeta =
       const VerificationMeta('precioDivisa');
   @override
   late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  static const VerificationMeta _tipoPrecioMeta =
+      const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _descuento1Meta = const VerificationMeta('descuento1');
+  static const VerificationMeta _descuento1Meta =
+      const VerificationMeta('descuento1');
   @override
   late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
+  static const VerificationMeta _descuento2Meta =
+      const VerificationMeta('descuento2');
   @override
   late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
       'DESCUENTO2', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
+  static const VerificationMeta _descuento3Meta =
+      const VerificationMeta('descuento3');
   @override
   late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _pedidoLineaIdComponenteMeta =
+  static const VerificationMeta _pedidoLineaIdComponenteMeta =
       const VerificationMeta('pedidoLineaIdComponente');
   @override
   late final GeneratedColumn<String> pedidoLineaIdComponente =
       GeneratedColumn<String>('PEDIDO_LINEA_ID_COMPONENTE', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _importeLineaMeta =
+  static const VerificationMeta _importeLineaMeta =
       const VerificationMeta('importeLinea');
   @override
   late final GeneratedColumn<double> importeLinea = GeneratedColumn<double>(
       'TOTAL_LINEA', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _cantidadServidaMeta =
+  static const VerificationMeta _cantidadServidaMeta =
       const VerificationMeta('cantidadServida');
   @override
   late final GeneratedColumn<int> cantidadServida = GeneratedColumn<int>(
       'CANTIDAD_SERVIDA', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -2914,38 +2935,38 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   PedidoVentaLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaLineaDTO(
-      empresaId: attachedDatabase.options.types
+      empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      pedidoVentaId: attachedDatabase.options.types
+      pedidoVentaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
-      pedidoVentaLineaId: attachedDatabase.options.types.read(
+      pedidoVentaLineaId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PEDIDO_LINEA_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      articuloDescription: attachedDatabase.options.types.read(
+      articuloDescription: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ARTICULO_DESCRIPCION'])!,
-      cantidad: attachedDatabase.options.types
+      cantidad: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
-      precioDivisa: attachedDatabase.options.types
+      precioDivisa: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
-      tipoPrecio: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
-      descuento1: attachedDatabase.options.types
+      descuento1: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
-      descuento2: attachedDatabase.options.types
+      descuento2: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO2'])!,
-      descuento3: attachedDatabase.options.types
+      descuento3: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
-      pedidoLineaIdComponente: attachedDatabase.options.types.read(
+      pedidoLineaIdComponente: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}PEDIDO_LINEA_ID_COMPONENTE']),
-      importeLinea: attachedDatabase.options.types
+      importeLinea: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}TOTAL_LINEA']),
-      cantidadServida: attachedDatabase.options.types
+      cantidadServida: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_SERVIDA'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -3192,108 +3213,109 @@ class $PlazoDeCobroTableTable extends PlazoDeCobroTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PlazoDeCobroTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'PLAZO_COBRO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -3449,41 +3471,41 @@ class $PlazoDeCobroTableTable extends PlazoDeCobroTable
   PlazoDeCobroDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PlazoDeCobroDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -3730,108 +3752,109 @@ class $MetodoDeCobroTableTable extends MetodoDeCobroTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $MetodoDeCobroTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'METODO_COBRO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -3987,41 +4010,41 @@ class $MetodoDeCobroTableTable extends MetodoDeCobroTable
   MetodoDeCobroDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return MetodoDeCobroDTO(
-      id: attachedDatabase.options.types.read(
+      id: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -4707,319 +4730,327 @@ class $ClienteTableTable extends ClienteTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _nombreClienteMeta =
+  static const VerificationMeta _nombreClienteMeta =
       const VerificationMeta('nombreCliente');
   @override
   late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
       'NOMBRE', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _nifMeta = const VerificationMeta('nif');
+  static const VerificationMeta _nifMeta = const VerificationMeta('nif');
   @override
   late final GeneratedColumn<String> nif = GeneratedColumn<String>(
       'NIF', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _nombreFiscalMeta =
+  static const VerificationMeta _nombreFiscalMeta =
       const VerificationMeta('nombreFiscal');
   @override
   late final GeneratedColumn<String> nombreFiscal = GeneratedColumn<String>(
       'NOMBRE_FISCAL', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _direccionFiscal1Meta =
+  static const VerificationMeta _direccionFiscal1Meta =
       const VerificationMeta('direccionFiscal1');
   @override
   late final GeneratedColumn<String> direccionFiscal1 = GeneratedColumn<String>(
       'DIRECCION_FISCAL1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _direccionFiscal2Meta =
+  static const VerificationMeta _direccionFiscal2Meta =
       const VerificationMeta('direccionFiscal2');
   @override
   late final GeneratedColumn<String> direccionFiscal2 = GeneratedColumn<String>(
       'DIRECCION_FISCAL2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _codigoPostalFiscalMeta =
+  static const VerificationMeta _codigoPostalFiscalMeta =
       const VerificationMeta('codigoPostalFiscal');
   @override
   late final GeneratedColumn<String> codigoPostalFiscal =
       GeneratedColumn<String>('CODIGO_POSTAL_FISCAL', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _poblacionFiscalMeta =
+  static const VerificationMeta _poblacionFiscalMeta =
       const VerificationMeta('poblacionFiscal');
   @override
   late final GeneratedColumn<String> poblacionFiscal = GeneratedColumn<String>(
       'POBLACION_FISCAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _provinciaFiscalMeta =
+  static const VerificationMeta _provinciaFiscalMeta =
       const VerificationMeta('provinciaFiscal');
   @override
   late final GeneratedColumn<String> provinciaFiscal = GeneratedColumn<String>(
       'PROVINCIA_FISCAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _paisFiscalIdMeta =
+  static const VerificationMeta _paisFiscalIdMeta =
       const VerificationMeta('paisFiscalId');
   @override
   late final GeneratedColumn<String> paisFiscalId = GeneratedColumn<String>(
       'PAIS_ID_FISCAL', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
-  final VerificationMeta _latitudFiscalMeta =
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES PAISES (PAIS_ID)'));
+  static const VerificationMeta _latitudFiscalMeta =
       const VerificationMeta('latitudFiscal');
   @override
   late final GeneratedColumn<double> latitudFiscal = GeneratedColumn<double>(
       'LATITUD_FISCAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _longitudFiscalMeta =
+  static const VerificationMeta _longitudFiscalMeta =
       const VerificationMeta('longitudFiscal');
   @override
   late final GeneratedColumn<double> longitudFiscal = GeneratedColumn<double>(
       'LONGITUD_FISCAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _ventasAnyoActualMeta =
+  static const VerificationMeta _ventasAnyoActualMeta =
       const VerificationMeta('ventasAnyoActual');
   @override
   late final GeneratedColumn<double> ventasAnyoActual = GeneratedColumn<double>(
       'VENTAS_ANYO_ACTUAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _ventasAnyoAnteriorMeta =
+  static const VerificationMeta _ventasAnyoAnteriorMeta =
       const VerificationMeta('ventasAnyoAnterior');
   @override
   late final GeneratedColumn<double> ventasAnyoAnterior =
       GeneratedColumn<double>('VENTAS_ANYO_ANTERIOR', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _ventasHaceDosAnyosMeta =
+  static const VerificationMeta _ventasHaceDosAnyosMeta =
       const VerificationMeta('ventasHaceDosAnyos');
   @override
   late final GeneratedColumn<double> ventasHaceDosAnyos =
       GeneratedColumn<double>('VENTAS_HACE_DOS_ANYOS', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _margenAnyoActualMeta =
+  static const VerificationMeta _margenAnyoActualMeta =
       const VerificationMeta('margenAnyoActual');
   @override
   late final GeneratedColumn<double> margenAnyoActual = GeneratedColumn<double>(
       'MARGEN_ANYO_ACTUAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _margenAnyoAnteriorMeta =
+  static const VerificationMeta _margenAnyoAnteriorMeta =
       const VerificationMeta('margenAnyoAnterior');
   @override
   late final GeneratedColumn<double> margenAnyoAnterior =
       GeneratedColumn<double>('MARGEN_ANYO_ANTERIOR', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _margenHaceDosAnyosMeta =
+  static const VerificationMeta _margenHaceDosAnyosMeta =
       const VerificationMeta('margenHaceDosAnyos');
   @override
   late final GeneratedColumn<double> margenHaceDosAnyos =
       GeneratedColumn<double>('MARGEN_HACE_DOS_ANYOS', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _porcentajeAbonosMeta =
+  static const VerificationMeta _porcentajeAbonosMeta =
       const VerificationMeta('porcentajeAbonos');
   @override
   late final GeneratedColumn<double> porcentajeAbonos = GeneratedColumn<double>(
       'PORCENTAJE_ABONOS', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _porcentajeGarantiasMeta =
+  static const VerificationMeta _porcentajeGarantiasMeta =
       const VerificationMeta('porcentajeGarantias');
   @override
   late final GeneratedColumn<double> porcentajeGarantias =
       GeneratedColumn<double>('PORCENTAJE_GARANTIAS', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _centralComprasMeta =
+  static const VerificationMeta _centralComprasMeta =
       const VerificationMeta('centralCompras');
   @override
   late final GeneratedColumn<String> centralCompras = GeneratedColumn<String>(
       'CENTRAL_COMPRAS_NOMBRE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _urlWebMeta = const VerificationMeta('urlWeb');
+  static const VerificationMeta _urlWebMeta = const VerificationMeta('urlWeb');
   @override
   late final GeneratedColumn<String> urlWeb = GeneratedColumn<String>(
       'URL_WEB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+  static const VerificationMeta _divisaIdMeta =
+      const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "DIVISAS" ("DIVISA_ID")');
-  final VerificationMeta _tarifaIdMeta = const VerificationMeta('tarifaId');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES DIVISAS (DIVISA_ID)'));
+  static const VerificationMeta _tarifaIdMeta =
+      const VerificationMeta('tarifaId');
   @override
   late final GeneratedColumn<String> tarifaId = GeneratedColumn<String>(
       'TARIFA_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _tarifaDescripcionMeta =
+  static const VerificationMeta _tarifaDescripcionMeta =
       const VerificationMeta('tarifaDescripcion');
   @override
   late final GeneratedColumn<String> tarifaDescripcion =
       GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descuentoGeneralIdMeta =
+  static const VerificationMeta _descuentoGeneralIdMeta =
       const VerificationMeta('descuentoGeneralId');
   @override
   late final GeneratedColumn<String> descuentoGeneralId =
       GeneratedColumn<String>('DESCUENTO_GENERAL_ID', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDescuentoGeneralMeta =
+  static const VerificationMeta _descripcionDescuentoGeneralMeta =
       const VerificationMeta('descripcionDescuentoGeneral');
   @override
   late final GeneratedColumn<String> descripcionDescuentoGeneral =
       GeneratedColumn<String>(
           'DESCUENTO_GENERAL_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _tipoCalculoPrecioMeta =
+  static const VerificationMeta _tipoCalculoPrecioMeta =
       const VerificationMeta('tipoCalculoPrecio');
   @override
   late final GeneratedColumn<String> tipoCalculoPrecio =
       GeneratedColumn<String>('TIPO_CALCULO_PRECIO', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _plazoDeCobroIdMeta =
+  static const VerificationMeta _plazoDeCobroIdMeta =
       const VerificationMeta('plazoDeCobroId');
   @override
   late final GeneratedColumn<String> plazoDeCobroId = GeneratedColumn<String>(
       'PLAZO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "PLAZOS_COBRO" ("PLAZO_COBRO_ID")');
-  final VerificationMeta _metodoDeCobroIdMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES PLAZOS_COBRO (PLAZO_COBRO_ID)'));
+  static const VerificationMeta _metodoDeCobroIdMeta =
       const VerificationMeta('metodoDeCobroId');
   @override
   late final GeneratedColumn<String> metodoDeCobroId = GeneratedColumn<String>(
       'METODO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "METODOS_COBRO" ("METODO_COBRO_ID")');
-  final VerificationMeta _descuentoProntoPagoMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES METODOS_COBRO (METODO_COBRO_ID)'));
+  static const VerificationMeta _descuentoProntoPagoMeta =
       const VerificationMeta('descuentoProntoPago');
   @override
   late final GeneratedColumn<double> descuentoProntoPago =
       GeneratedColumn<double>('DESCUENTO_PRONTO_PAGO', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _riesgoConcedidoInternoMeta =
+  static const VerificationMeta _riesgoConcedidoInternoMeta =
       const VerificationMeta('riesgoConcedidoInterno');
   @override
   late final GeneratedColumn<double> riesgoConcedidoInterno =
       GeneratedColumn<double>('RIESGO_CONCEDIDO_INTERNO', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _riesgoConcedidoInternoDateMeta =
+  static const VerificationMeta _riesgoConcedidoInternoDateMeta =
       const VerificationMeta('riesgoConcedidoInternoDate');
   @override
   late final GeneratedColumn<DateTime> riesgoConcedidoInternoDate =
       GeneratedColumn<DateTime>(
           'RIESGO_CONCEDIDO_INTERNO_FECHA', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _riesgoConcedidoCoafeMeta =
+  static const VerificationMeta _riesgoConcedidoCoafeMeta =
       const VerificationMeta('riesgoConcedidoCoafe');
   @override
   late final GeneratedColumn<double> riesgoConcedidoCoafe =
       GeneratedColumn<double>('RIESGO_CONCEDIDO_COFACE', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _riesgoConcedidoCoafeFechaMeta =
+  static const VerificationMeta _riesgoConcedidoCoafeFechaMeta =
       const VerificationMeta('riesgoConcedidoCoafeFecha');
   @override
   late final GeneratedColumn<DateTime> riesgoConcedidoCoafeFecha =
       GeneratedColumn<DateTime>(
           'RIESGO_CONCEDIDO_COFACE_FECHA', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _riesgoConcedidoMeta =
+  static const VerificationMeta _riesgoConcedidoMeta =
       const VerificationMeta('riesgoConcedido');
   @override
   late final GeneratedColumn<double> riesgoConcedido = GeneratedColumn<double>(
       'RIESGO_CONCEDIDO', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riesgoPendienteCobroVencidoMeta =
+  static const VerificationMeta _riesgoPendienteCobroVencidoMeta =
       const VerificationMeta('riesgoPendienteCobroVencido');
   @override
   late final GeneratedColumn<double> riesgoPendienteCobroVencido =
       GeneratedColumn<double>(
           'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riesgoPendienteCobroNoVencidoMeta =
+  static const VerificationMeta _riesgoPendienteCobroNoVencidoMeta =
       const VerificationMeta('riesgoPendienteCobroNoVencido');
   @override
   late final GeneratedColumn<double> riesgoPendienteCobroNoVencido =
       GeneratedColumn<double>(
           'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riesgoPendienteServirMeta =
+  static const VerificationMeta _riesgoPendienteServirMeta =
       const VerificationMeta('riesgoPendienteServir');
   @override
   late final GeneratedColumn<double> riesgoPendienteServir =
       GeneratedColumn<double>('RIESGO_PDTE_SERVIR_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _riesgoPendienteFacturarMeta =
+  static const VerificationMeta _riesgoPendienteFacturarMeta =
       const VerificationMeta('riesgoPendienteFacturar');
   @override
   late final GeneratedColumn<double> riesgoPendienteFacturar =
       GeneratedColumn<double>('RIESGO_PDTE_FACTURAR_CLIENTE', aliasedName, true,
           type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _obvservacionesInternasMeta =
+  static const VerificationMeta _obvservacionesInternasMeta =
       const VerificationMeta('obvservacionesInternas');
   @override
   late final GeneratedColumn<String> obvservacionesInternas =
       GeneratedColumn<String>('OBSERVACIONES_INTERNAS', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _clientePotencialMeta =
+  static const VerificationMeta _clientePotencialMeta =
       const VerificationMeta('clientePotencial');
   @override
   late final GeneratedColumn<String> clientePotencial = GeneratedColumn<String>(
       'CLIENTE_POTENCIAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _clienteEstadoPotencialIdMeta =
+  static const VerificationMeta _clienteEstadoPotencialIdMeta =
       const VerificationMeta('clienteEstadoPotencialId');
   @override
   late final GeneratedColumn<String> clienteEstadoPotencialId =
       GeneratedColumn<String>('ESTADO_POTENCIAL_ID', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _clienteTipoPotencialIdMeta =
+  static const VerificationMeta _clienteTipoPotencialIdMeta =
       const VerificationMeta('clienteTipoPotencialId');
   @override
   late final GeneratedColumn<String> clienteTipoPotencialId =
       GeneratedColumn<String>('TIPO_POTENCIAL_ID', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _representante1IdMeta =
+  static const VerificationMeta _representante1IdMeta =
       const VerificationMeta('representante1Id');
   @override
   late final GeneratedColumn<String> representante1Id = GeneratedColumn<String>(
       'REPRESENTANTE1_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _representante1NombreMeta =
+  static const VerificationMeta _representante1NombreMeta =
       const VerificationMeta('representante1Nombre');
   @override
   late final GeneratedColumn<String> representante1Nombre =
       GeneratedColumn<String>('REPRESENTANTE1_NOMBRE', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _representante2IdMeta =
+  static const VerificationMeta _representante2IdMeta =
       const VerificationMeta('representante2Id');
   @override
   late final GeneratedColumn<String> representante2Id = GeneratedColumn<String>(
       'REPRESENTANTE2_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _representante2NombreMeta =
+  static const VerificationMeta _representante2NombreMeta =
       const VerificationMeta('representante2Nombre');
   @override
   late final GeneratedColumn<String> representante2Nombre =
       GeneratedColumn<String>('REPRESENTANTE2_NOMBRE', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -5441,122 +5472,120 @@ class $ClienteTableTable extends ClienteTable
   ClienteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      nombreCliente: attachedDatabase.options.types
+      nombreCliente: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE'])!,
-      nif: attachedDatabase.options.types
+      nif: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NIF']),
-      nombreFiscal: attachedDatabase.options.types
+      nombreFiscal: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_FISCAL'])!,
-      direccionFiscal1: attachedDatabase.options.types.read(
+      direccionFiscal1: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_FISCAL1']),
-      direccionFiscal2: attachedDatabase.options.types.read(
+      direccionFiscal2: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}DIRECCION_FISCAL2']),
-      codigoPostalFiscal: attachedDatabase.options.types.read(
+      codigoPostalFiscal: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL_FISCAL']),
-      poblacionFiscal: attachedDatabase.options.types.read(
+      poblacionFiscal: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}POBLACION_FISCAL']),
-      paisFiscalId: attachedDatabase.options.types
+      paisFiscalId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID_FISCAL']),
-      provinciaFiscal: attachedDatabase.options.types.read(
+      provinciaFiscal: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PROVINCIA_FISCAL']),
-      latitudFiscal: attachedDatabase.options.types
+      latitudFiscal: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD_FISCAL'])!,
-      longitudFiscal: attachedDatabase.options.types.read(
+      longitudFiscal: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}LONGITUD_FISCAL'])!,
-      empresaId: attachedDatabase.options.types
+      empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      iva: attachedDatabase.options.types
+      iva: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
-      ventasAnyoActual: attachedDatabase.options.types.read(
+      ventasAnyoActual: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ACTUAL'])!,
-      ventasAnyoAnterior: attachedDatabase.options.types.read(
+      ventasAnyoAnterior: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_ANYO_ANTERIOR'])!,
-      ventasHaceDosAnyos: attachedDatabase.options.types.read(
-          DriftSqlType.double,
+      ventasHaceDosAnyos: attachedDatabase.typeMapping.read(DriftSqlType.double,
           data['${effectivePrefix}VENTAS_HACE_DOS_ANYOS'])!,
-      margenAnyoActual: attachedDatabase.options.types.read(
+      margenAnyoActual: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ACTUAL'])!,
-      margenAnyoAnterior: attachedDatabase.options.types.read(
+      margenAnyoAnterior: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}MARGEN_ANYO_ANTERIOR'])!,
-      margenHaceDosAnyos: attachedDatabase.options.types.read(
-          DriftSqlType.double,
+      margenHaceDosAnyos: attachedDatabase.typeMapping.read(DriftSqlType.double,
           data['${effectivePrefix}MARGEN_HACE_DOS_ANYOS'])!,
-      porcentajeAbonos: attachedDatabase.options.types.read(
+      porcentajeAbonos: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_ABONOS'])!,
-      porcentajeGarantias: attachedDatabase.options.types.read(
+      porcentajeGarantias: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}PORCENTAJE_GARANTIAS'])!,
-      centralCompras: attachedDatabase.options.types.read(DriftSqlType.string,
+      centralCompras: attachedDatabase.typeMapping.read(DriftSqlType.string,
           data['${effectivePrefix}CENTRAL_COMPRAS_NOMBRE']),
-      urlWeb: attachedDatabase.options.types
+      urlWeb: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}URL_WEB']),
-      divisaId: attachedDatabase.options.types
+      divisaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID']),
-      tarifaId: attachedDatabase.options.types
+      tarifaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID']),
-      tarifaDescripcion: attachedDatabase.options.types.read(
+      tarifaDescripcion: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      descuentoGeneralId: attachedDatabase.options.types.read(
+      descuentoGeneralId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}DESCUENTO_GENERAL_ID']),
-      descripcionDescuentoGeneral: attachedDatabase.options.types.read(
+      descripcionDescuentoGeneral: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}DESCUENTO_GENERAL_DESCRIPCION']),
-      tipoCalculoPrecio: attachedDatabase.options.types.read(
+      tipoCalculoPrecio: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}TIPO_CALCULO_PRECIO'])!,
-      plazoDeCobroId: attachedDatabase.options.types
+      plazoDeCobroId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PLAZO_COBRO_ID']),
-      metodoDeCobroId: attachedDatabase.options.types
+      metodoDeCobroId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID']),
-      descuentoProntoPago: attachedDatabase.options.types.read(
+      descuentoProntoPago: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}DESCUENTO_PRONTO_PAGO'])!,
-      riesgoConcedidoInterno: attachedDatabase.options.types.read(
+      riesgoConcedidoInterno: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO'])!,
-      riesgoConcedidoInternoDate: attachedDatabase.options.types.read(
+      riesgoConcedidoInternoDate: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}RIESGO_CONCEDIDO_INTERNO_FECHA']),
-      riesgoConcedidoCoafe: attachedDatabase.options.types.read(
+      riesgoConcedidoCoafe: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE'])!,
-      riesgoConcedidoCoafeFecha: attachedDatabase.options.types.read(
+      riesgoConcedidoCoafeFecha: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}RIESGO_CONCEDIDO_COFACE_FECHA']),
-      riesgoConcedido: attachedDatabase.options.types.read(
+      riesgoConcedido: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}RIESGO_CONCEDIDO']),
-      riesgoPendienteCobroVencido: attachedDatabase.options.types.read(
+      riesgoPendienteCobroVencido: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_COBRO_VENCIDO_CLIENTE']),
-      riesgoPendienteCobroNoVencido: attachedDatabase.options.types.read(
+      riesgoPendienteCobroNoVencido: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE']),
-      riesgoPendienteServir: attachedDatabase.options.types.read(
+      riesgoPendienteServir: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_SERVIR_CLIENTE']),
-      riesgoPendienteFacturar: attachedDatabase.options.types.read(
+      riesgoPendienteFacturar: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}RIESGO_PDTE_FACTURAR_CLIENTE']),
-      obvservacionesInternas: attachedDatabase.options.types.read(
+      obvservacionesInternas: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}OBSERVACIONES_INTERNAS']),
-      clientePotencial: attachedDatabase.options.types.read(
+      clientePotencial: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}CLIENTE_POTENCIAL']),
-      clienteEstadoPotencialId: attachedDatabase.options.types.read(
+      clienteEstadoPotencialId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ESTADO_POTENCIAL_ID']),
-      clienteTipoPotencialId: attachedDatabase.options.types.read(
+      clienteTipoPotencialId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}TIPO_POTENCIAL_ID']),
-      representante1Id: attachedDatabase.options.types.read(
+      representante1Id: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE1_ID']),
-      representante1Nombre: attachedDatabase.options.types.read(
+      representante1Nombre: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE1_NOMBRE']),
-      representante2Id: attachedDatabase.options.types.read(
+      representante2Id: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE2_ID']),
-      representante2Nombre: attachedDatabase.options.types.read(
+      representante2Nombre: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}REPRESENTANTE2_NOMBRE']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -5649,23 +5678,26 @@ class $ClienteUsuarioTableTable extends ClienteUsuarioTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteUsuarioTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _usuarioIdMeta = const VerificationMeta('usuarioId');
+  static const VerificationMeta _usuarioIdMeta =
+      const VerificationMeta('usuarioId');
   @override
   late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
       'USUARIO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -5717,13 +5749,13 @@ class $ClienteUsuarioTableTable extends ClienteUsuarioTable
   ClienteUsuarioDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteUsuarioDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      usuarioId: attachedDatabase.options.types
+      usuarioId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -5843,36 +5875,38 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteGrupoNetoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _grupoNetoIdMeta =
+  static const VerificationMeta _grupoNetoIdMeta =
       const VerificationMeta('grupoNetoId');
   @override
   late final GeneratedColumn<String> grupoNetoId = GeneratedColumn<String>(
       'GRUPO_NETO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _grupoNetoDescripcionMeta =
+  static const VerificationMeta _grupoNetoDescripcionMeta =
       const VerificationMeta('grupoNetoDescripcion');
   @override
   late final GeneratedColumn<String> grupoNetoDescripcion =
       GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _dtoAdicionalMeta =
+  static const VerificationMeta _dtoAdicionalMeta =
       const VerificationMeta('dtoAdicional');
   @override
   late final GeneratedColumn<double> dtoAdicional = GeneratedColumn<double>(
       'DTO_ADICIONAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -5949,18 +5983,18 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
   ClienteGrupoNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteGrupoNetoDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      grupoNetoId: attachedDatabase.options.types
+      grupoNetoId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}GRUPO_NETO_ID'])!,
-      grupoNetoDescripcion: attachedDatabase.options.types.read(
+      grupoNetoDescripcion: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'])!,
-      dtoAdicional: attachedDatabase.options.types
+      dtoAdicional: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO_ADICIONAL'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -6207,108 +6241,109 @@ class $FamiliaTableTable extends FamiliaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $FamiliaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -6464,41 +6499,41 @@ class $FamiliaTableTable extends FamiliaTable
   FamiliaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return FamiliaDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -6757,113 +6792,115 @@ class $SubfamiliaTableTable extends SubfamiliaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $SubfamiliaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
+  static const VerificationMeta _familiaIdMeta =
+      const VerificationMeta('familiaId');
   @override
   late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -7026,43 +7063,43 @@ class $SubfamiliaTableTable extends SubfamiliaTable
   SubfamiliaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return SubfamiliaDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      familiaId: attachedDatabase.options.types
+      familiaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -7204,49 +7241,56 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteDescuentoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
+  static const VerificationMeta _familiaIdMeta =
+      const VerificationMeta('familiaId');
   @override
   late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES "FAMILIAS" ("FAMILIA_ID")');
-  final VerificationMeta _subfamiliaIdMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES FAMILIAS (FAMILIA_ID)'));
+  static const VerificationMeta _subfamiliaIdMeta =
       const VerificationMeta('subfamiliaId');
   @override
   late final GeneratedColumn<String> subfamiliaId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: true,
-      defaultConstraints: 'REFERENCES "SUBFAMILIAS" ("SUBFAMILIA_ID")');
-  final VerificationMeta _cantidadDesdeMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)'));
+  static const VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
   late final GeneratedColumn<int> cantidadDesde = GeneratedColumn<int>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _descuentoMeta = const VerificationMeta('descuento');
+  static const VerificationMeta _descuentoMeta =
+      const VerificationMeta('descuento');
   @override
   late final GeneratedColumn<double> descuento = GeneratedColumn<double>(
       'DESCUENTO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -7338,21 +7382,21 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
   ClienteDescuentoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteDescuentoDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      familiaId: attachedDatabase.options.types
+      familiaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      subfamiliaId: attachedDatabase.options.types
+      subfamiliaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      cantidadDesde: attachedDatabase.options.types
+      cantidadDesde: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      descuento: attachedDatabase.options.types
+      descuento: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -7523,59 +7567,66 @@ class $ClienteContactoTableTable extends ClienteContactoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteContactoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _contactoIdMeta = const VerificationMeta('contactoId');
+  static const VerificationMeta _contactoIdMeta =
+      const VerificationMeta('contactoId');
   @override
   late final GeneratedColumn<String> contactoId = GeneratedColumn<String>(
       'CONTACTO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _observacionesMeta =
+  static const VerificationMeta _observacionesMeta =
       const VerificationMeta('observaciones');
   @override
   late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
       'OBSERVACIONES', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
       'NOMBRE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _apellido1Meta = const VerificationMeta('apellido1');
+  static const VerificationMeta _apellido1Meta =
+      const VerificationMeta('apellido1');
   @override
   late final GeneratedColumn<String> apellido1 = GeneratedColumn<String>(
       'APELLIDO1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _apellido2Meta = const VerificationMeta('apellido2');
+  static const VerificationMeta _apellido2Meta =
+      const VerificationMeta('apellido2');
   @override
   late final GeneratedColumn<String> apellido2 = GeneratedColumn<String>(
       'APELLIDO2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _telefono1Meta = const VerificationMeta('telefono1');
+  static const VerificationMeta _telefono1Meta =
+      const VerificationMeta('telefono1');
   @override
   late final GeneratedColumn<String> telefono1 = GeneratedColumn<String>(
       'TELEFONO1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _telefono2Meta = const VerificationMeta('telefono2');
+  static const VerificationMeta _telefono2Meta =
+      const VerificationMeta('telefono2');
   @override
   late final GeneratedColumn<String> telefono2 = GeneratedColumn<String>(
       'TELEFONO2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _emailMeta = const VerificationMeta('email');
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
   @override
   late final GeneratedColumn<String> email = GeneratedColumn<String>(
       'EMAIL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -7670,27 +7721,27 @@ class $ClienteContactoTableTable extends ClienteContactoTable
   ClienteContactoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteContactoDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      contactoId: attachedDatabase.options.types
+      contactoId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO_ID'])!,
-      observaciones: attachedDatabase.options.types
+      observaciones: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
-      nombre: attachedDatabase.options.types
+      nombre: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
-      apellido1: attachedDatabase.options.types
+      apellido1: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO1']),
-      apellido2: attachedDatabase.options.types
+      apellido2: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO2']),
-      telefono1: attachedDatabase.options.types
+      telefono1: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO1']),
-      telefono2: attachedDatabase.options.types
+      telefono2: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO2']),
-      email: attachedDatabase.options.types
+      email: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMAIL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -7897,78 +7948,87 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteDireccionTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _direccionIdMeta =
+  static const VerificationMeta _direccionIdMeta =
       const VerificationMeta('direccionId');
   @override
   late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
       'NOMBRE', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _direccion1Meta = const VerificationMeta('direccion1');
+  static const VerificationMeta _direccion1Meta =
+      const VerificationMeta('direccion1');
   @override
   late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
       'DIRECCION1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _direccion2Meta = const VerificationMeta('direccion2');
+  static const VerificationMeta _direccion2Meta =
+      const VerificationMeta('direccion2');
   @override
   late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
       'DIRECCION2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _codigoPostalMeta =
+  static const VerificationMeta _codigoPostalMeta =
       const VerificationMeta('codigoPostal');
   @override
   late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
       'CODIGO_POSTAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _poblacionMeta = const VerificationMeta('poblacion');
+  static const VerificationMeta _poblacionMeta =
+      const VerificationMeta('poblacion');
   @override
   late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _provinciaMeta = const VerificationMeta('provincia');
+  static const VerificationMeta _provinciaMeta =
+      const VerificationMeta('provincia');
   @override
   late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
-  final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES PAISES (PAIS_ID)'));
+  static const VerificationMeta _latitudMeta =
+      const VerificationMeta('latitud');
   @override
   late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _longitudMeta = const VerificationMeta('longitud');
+  static const VerificationMeta _longitudMeta =
+      const VerificationMeta('longitud');
   @override
   late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _predeterminadaMeta =
+  static const VerificationMeta _predeterminadaMeta =
       const VerificationMeta('predeterminada');
   @override
   late final GeneratedColumn<String> predeterminada = GeneratedColumn<String>(
       'PREDETERMINADA_SN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -8091,33 +8151,33 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   ClienteDireccionDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteDireccionDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      direccionId: attachedDatabase.options.types
+      direccionId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID'])!,
-      nombre: attachedDatabase.options.types
+      nombre: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE'])!,
-      direccion1: attachedDatabase.options.types
+      direccion1: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
-      direccion2: attachedDatabase.options.types
+      direccion2: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
-      codigoPostal: attachedDatabase.options.types
+      codigoPostal: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      poblacion: attachedDatabase.options.types
+      poblacion: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      provincia: attachedDatabase.options.types
+      provincia: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      paisId: attachedDatabase.options.types
+      paisId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      latitud: attachedDatabase.options.types
+      latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitud: attachedDatabase.options.types
+      longitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
-      predeterminada: attachedDatabase.options.types.read(
+      predeterminada: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PREDETERMINADA_SN']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -8302,70 +8362,77 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClientePagoPendienteTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _efectoIdMeta = const VerificationMeta('efectoId');
+  static const VerificationMeta _efectoIdMeta =
+      const VerificationMeta('efectoId');
   @override
   late final GeneratedColumn<String> efectoId = GeneratedColumn<String>(
       'EFECTO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _facutaIdMeta = const VerificationMeta('facutaId');
+  static const VerificationMeta _facutaIdMeta =
+      const VerificationMeta('facutaId');
   @override
   late final GeneratedColumn<String> facutaId = GeneratedColumn<String>(
       'FACTURA_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _fechaFacturaMeta =
+  static const VerificationMeta _fechaFacturaMeta =
       const VerificationMeta('fechaFactura');
   @override
   late final GeneratedColumn<DateTime> fechaFactura = GeneratedColumn<DateTime>(
       'FECHA_FACTURA', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _fechaExpiracionMeta =
+  static const VerificationMeta _fechaExpiracionMeta =
       const VerificationMeta('fechaExpiracion');
   @override
   late final GeneratedColumn<DateTime> fechaExpiracion =
       GeneratedColumn<DateTime>('FECHA_VENCIMIENTO', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _metodoDeCobroIdMeta =
+  static const VerificationMeta _metodoDeCobroIdMeta =
       const VerificationMeta('metodoDeCobroId');
   @override
   late final GeneratedColumn<String> metodoDeCobroId = GeneratedColumn<String>(
       'METODO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "METODOS_COBRO" ("METODO_COBRO_ID")');
-  final VerificationMeta _estadoCobroIdMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES METODOS_COBRO (METODO_COBRO_ID)'));
+  static const VerificationMeta _estadoCobroIdMeta =
       const VerificationMeta('estadoCobroId');
   @override
   late final GeneratedColumn<String> estadoCobroId = GeneratedColumn<String>(
       'ESTADO_COBRO_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _importeMeta = const VerificationMeta('importe');
+  static const VerificationMeta _importeMeta =
+      const VerificationMeta('importe');
   @override
   late final GeneratedColumn<double> importe = GeneratedColumn<double>(
       'IMPORTE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _fechaExpiracionInicialMeta =
+  static const VerificationMeta _fechaExpiracionInicialMeta =
       const VerificationMeta('fechaExpiracionInicial');
   @override
   late final GeneratedColumn<DateTime> fechaExpiracionInicial =
       GeneratedColumn<DateTime>('FECHA_VENCIMIENTO_INICIAL', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _vencidoJBMMeta = const VerificationMeta('vencidoJBM');
+  static const VerificationMeta _vencidoJBMMeta =
+      const VerificationMeta('vencidoJBM');
   @override
   late final GeneratedColumn<String> vencidoJBM = GeneratedColumn<String>(
       'VENCIDO_JBM', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -8475,30 +8542,30 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClientePagoPendienteDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      efectoId: attachedDatabase.options.types
+      efectoId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EFECTO_ID'])!,
-      facutaId: attachedDatabase.options.types
+      facutaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FACTURA_ID']),
-      fechaFactura: attachedDatabase.options.types
+      fechaFactura: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_FACTURA']),
-      fechaExpiracion: attachedDatabase.options.types.read(
+      fechaExpiracion: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime, data['${effectivePrefix}FECHA_VENCIMIENTO']),
-      metodoDeCobroId: attachedDatabase.options.types
+      metodoDeCobroId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}METODO_COBRO_ID']),
-      estadoCobroId: attachedDatabase.options.types
+      estadoCobroId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ESTADO_COBRO_ID']),
-      importe: attachedDatabase.options.types
+      importe: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE']),
-      fechaExpiracionInicial: attachedDatabase.options.types.read(
+      fechaExpiracionInicial: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}FECHA_VENCIMIENTO_INICIAL']),
-      vencidoJBM: attachedDatabase.options.types
+      vencidoJBM: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}VENCIDO_JBM']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -8640,45 +8707,49 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClientePrecioNetoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadDesdeMeta =
+  static const VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
   late final GeneratedColumn<int> cantidadDesde = GeneratedColumn<int>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _precioMeta = const VerificationMeta('precio');
+  static const VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
   late final GeneratedColumn<double> precio = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  static const VerificationMeta _tipoPrecioMeta =
+      const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _dtoAdicionalMeta =
+  static const VerificationMeta _dtoAdicionalMeta =
       const VerificationMeta('dtoAdicional');
   @override
   late final GeneratedColumn<double> dtoAdicional = GeneratedColumn<double>(
       'DTO_ADICIONAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -8772,21 +8843,21 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
   ClientePrecioNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClientePrecioNetoDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      cantidadDesde: attachedDatabase.options.types
+      cantidadDesde: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      precio: attachedDatabase.options.types
+      precio: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
-      tipoPrecio: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
-      dtoAdicional: attachedDatabase.options.types
+      dtoAdicional: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO_ADICIONAL'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -8936,50 +9007,56 @@ class $ClienteRappelTableTable extends ClienteRappelTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteRappelTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _rappelIdMeta = const VerificationMeta('rappelId');
+  static const VerificationMeta _rappelIdMeta =
+      const VerificationMeta('rappelId');
   @override
   late final GeneratedColumn<String> rappelId = GeneratedColumn<String>(
       'RAPPEL_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionMeta =
+  static const VerificationMeta _descripcionMeta =
       const VerificationMeta('descripcion');
   @override
   late final GeneratedColumn<String> descripcion = GeneratedColumn<String>(
       'DESCRIPCION', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _fechaDesDeMeta = const VerificationMeta('fechaDesDe');
+  static const VerificationMeta _fechaDesDeMeta =
+      const VerificationMeta('fechaDesDe');
   @override
   late final GeneratedColumn<DateTime> fechaDesDe = GeneratedColumn<DateTime>(
       'FECHA_DESDE', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _fechaHastaMeta = const VerificationMeta('fechaHasta');
+  static const VerificationMeta _fechaHastaMeta =
+      const VerificationMeta('fechaHasta');
   @override
   late final GeneratedColumn<DateTime> fechaHasta = GeneratedColumn<DateTime>(
       'FECHA_HASTA', aliasedName, true,
       type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _nombreArchivoMeta =
+  static const VerificationMeta _nombreArchivoMeta =
       const VerificationMeta('nombreArchivo');
   @override
   late final GeneratedColumn<String> nombreArchivo = GeneratedColumn<String>(
       'NOMBRE_ARCHIVO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _firmadoMeta = const VerificationMeta('firmado');
+  static const VerificationMeta _firmadoMeta =
+      const VerificationMeta('firmado');
   @override
   late final GeneratedColumn<String> firmado = GeneratedColumn<String>(
       'FIRMADO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -9072,23 +9149,23 @@ class $ClienteRappelTableTable extends ClienteRappelTable
   ClienteRappelDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteRappelDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      rappelId: attachedDatabase.options.types
+      rappelId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RAPPEL_ID'])!,
-      descripcion: attachedDatabase.options.types
+      descripcion: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
-      fechaDesDe: attachedDatabase.options.types
+      fechaDesDe: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_DESDE'])!,
-      fechaHasta: attachedDatabase.options.types
+      fechaHasta: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_HASTA']),
-      nombreArchivo: attachedDatabase.options.types
+      nombreArchivo: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_ARCHIVO']),
-      firmado: attachedDatabase.options.types
+      firmado: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FIRMADO']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -9338,108 +9415,109 @@ class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteEstadoPotencialTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ESTADO_POTENCIAL_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -9597,41 +9675,41 @@ class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteEstadoPotencialDTO(
-      id: attachedDatabase.options.types.read(
+      id: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ESTADO_POTENCIAL_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -9879,108 +9957,109 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ClienteTipoPotencialTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'TIPO_POTENCIAL_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -10138,41 +10217,41 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ClienteTipoPotencialDTO(
-      id: attachedDatabase.options.types.read(
+      id: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}TIPO_POTENCIAL_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -10256,18 +10335,20 @@ class $EstadisticasArticulosTopTableTable extends EstadisticasArticulosTopTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $EstadisticasArticulosTopTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -10316,11 +10397,11 @@ class $EstadisticasArticulosTopTableTable extends EstadisticasArticulosTopTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EstadisitcasArticulosTopDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -11120,365 +11201,389 @@ class $ArticuloTableTable extends ArticuloTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
+  static const VerificationMeta _familiaIdMeta =
+      const VerificationMeta('familiaId');
   @override
   late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "FAMILIAS" ("FAMILIA_ID")');
-  final VerificationMeta _subfamiliaIdMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES FAMILIAS (FAMILIA_ID)'));
+  static const VerificationMeta _subfamiliaIdMeta =
       const VerificationMeta('subfamiliaId');
   @override
   late final GeneratedColumn<String> subfamiliaId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "SUBFAMILIAS" ("SUBFAMILIA_ID")');
-  final VerificationMeta _ventaMinimoMeta =
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'REFERENCES SUBFAMILIAS (SUBFAMILIA_ID)'));
+  static const VerificationMeta _ventaMinimoMeta =
       const VerificationMeta('ventaMinimo');
   @override
   late final GeneratedColumn<int> ventaMinimo = GeneratedColumn<int>(
       'VENTA_MINIMO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _ventaMultiploMeta =
+  static const VerificationMeta _ventaMultiploMeta =
       const VerificationMeta('ventaMultiplo');
   @override
   late final GeneratedColumn<int> ventaMultiplo = GeneratedColumn<int>(
       'VENTA_MULTIPLO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _unidadesSubcajaMeta =
+  static const VerificationMeta _unidadesSubcajaMeta =
       const VerificationMeta('unidadesSubcaja');
   @override
   late final GeneratedColumn<int> unidadesSubcaja = GeneratedColumn<int>(
       'UNIDADES_SUBCAJA', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _unidadesCajaMeta =
+  static const VerificationMeta _unidadesCajaMeta =
       const VerificationMeta('unidadesCaja');
   @override
   late final GeneratedColumn<int> unidadesCaja = GeneratedColumn<int>(
       'UNIDADES_CAJA', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _unidadesPaletMeta =
+  static const VerificationMeta _unidadesPaletMeta =
       const VerificationMeta('unidadesPalet');
   @override
   late final GeneratedColumn<int> unidadesPalet = GeneratedColumn<int>(
       'UNIDADES_PALET', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _activoWebMeta = const VerificationMeta('activoWeb');
+  static const VerificationMeta _activoWebMeta =
+      const VerificationMeta('activoWeb');
   @override
   late final GeneratedColumn<String> activoWeb = GeneratedColumn<String>(
       'ACTIVO_WEB', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _activoAppMeta = const VerificationMeta('activoApp');
+  static const VerificationMeta _activoAppMeta =
+      const VerificationMeta('activoApp');
   @override
   late final GeneratedColumn<String> activoApp = GeneratedColumn<String>(
       'ACTIVO_APP', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _enCatalogoMeta = const VerificationMeta('enCatalogo');
+  static const VerificationMeta _enCatalogoMeta =
+      const VerificationMeta('enCatalogo');
   @override
   late final GeneratedColumn<String> enCatalogo = GeneratedColumn<String>(
       'EN_CATALOGO', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descatalogadoMeta =
+  static const VerificationMeta _descatalogadoMeta =
       const VerificationMeta('descatalogado');
   @override
   late final GeneratedColumn<String> descatalogado = GeneratedColumn<String>(
       'DESCATALOGADO', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _paginaEnCatalgoMeta =
+  static const VerificationMeta _paginaEnCatalgoMeta =
       const VerificationMeta('paginaEnCatalgo');
   @override
   late final GeneratedColumn<String> paginaEnCatalgo = GeneratedColumn<String>(
       'PAGINA_EN_CATALOGO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _paginaEnCatalgo2Meta =
+  static const VerificationMeta _paginaEnCatalgo2Meta =
       const VerificationMeta('paginaEnCatalgo2');
   @override
   late final GeneratedColumn<String> paginaEnCatalgo2 = GeneratedColumn<String>(
       'PAGINA_EN_CATALOGO2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _pesoKgMeta = const VerificationMeta('pesoKg');
+  static const VerificationMeta _pesoKgMeta = const VerificationMeta('pesoKg');
   @override
   late final GeneratedColumn<double> pesoKg = GeneratedColumn<double>(
       'PESO_KG', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _largoCmMeta = const VerificationMeta('largoCm');
+  static const VerificationMeta _largoCmMeta =
+      const VerificationMeta('largoCm');
   @override
   late final GeneratedColumn<double> largoCm = GeneratedColumn<double>(
       'LARGO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _anchoCmMeta = const VerificationMeta('anchoCm');
+  static const VerificationMeta _anchoCmMeta =
+      const VerificationMeta('anchoCm');
   @override
   late final GeneratedColumn<double> anchoCm = GeneratedColumn<double>(
       'ANCHO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _altoCmMeta = const VerificationMeta('altoCm');
+  static const VerificationMeta _altoCmMeta = const VerificationMeta('altoCm');
   @override
   late final GeneratedColumn<double> altoCm = GeneratedColumn<double>(
       'ALTO_CM', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _resumenESMeta = const VerificationMeta('resumenES');
+  static const VerificationMeta _resumenESMeta =
+      const VerificationMeta('resumenES');
   @override
   late final GeneratedColumn<String> resumenES = GeneratedColumn<String>(
       'RESUMEN_ES', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenENMeta = const VerificationMeta('resumenEN');
+  static const VerificationMeta _resumenENMeta =
+      const VerificationMeta('resumenEN');
   @override
   late final GeneratedColumn<String> resumenEN = GeneratedColumn<String>(
       'RESUMEN_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenFRMeta = const VerificationMeta('resumenFR');
+  static const VerificationMeta _resumenFRMeta =
+      const VerificationMeta('resumenFR');
   @override
   late final GeneratedColumn<String> resumenFR = GeneratedColumn<String>(
       'RESUMEN_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenDEMeta = const VerificationMeta('resumenDE');
+  static const VerificationMeta _resumenDEMeta =
+      const VerificationMeta('resumenDE');
   @override
   late final GeneratedColumn<String> resumenDE = GeneratedColumn<String>(
       'RESUMEN_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenCAMeta = const VerificationMeta('resumenCA');
+  static const VerificationMeta _resumenCAMeta =
+      const VerificationMeta('resumenCA');
   @override
   late final GeneratedColumn<String> resumenCA = GeneratedColumn<String>(
       'RESUMEN_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenGBMeta = const VerificationMeta('resumenGB');
+  static const VerificationMeta _resumenGBMeta =
+      const VerificationMeta('resumenGB');
   @override
   late final GeneratedColumn<String> resumenGB = GeneratedColumn<String>(
       'RESUMEN_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenHUMeta = const VerificationMeta('resumenHU');
+  static const VerificationMeta _resumenHUMeta =
+      const VerificationMeta('resumenHU');
   @override
   late final GeneratedColumn<String> resumenHU = GeneratedColumn<String>(
       'RESUMEN_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenITMeta = const VerificationMeta('resumenIT');
+  static const VerificationMeta _resumenITMeta =
+      const VerificationMeta('resumenIT');
   @override
   late final GeneratedColumn<String> resumenIT = GeneratedColumn<String>(
       'RESUMEN_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenNLMeta = const VerificationMeta('resumenNL');
+  static const VerificationMeta _resumenNLMeta =
+      const VerificationMeta('resumenNL');
   @override
   late final GeneratedColumn<String> resumenNL = GeneratedColumn<String>(
       'RESUMEN_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenPLMeta = const VerificationMeta('resumenPL');
+  static const VerificationMeta _resumenPLMeta =
+      const VerificationMeta('resumenPL');
   @override
   late final GeneratedColumn<String> resumenPL = GeneratedColumn<String>(
       'RESUMEN_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenPTMeta = const VerificationMeta('resumenPT');
+  static const VerificationMeta _resumenPTMeta =
+      const VerificationMeta('resumenPT');
   @override
   late final GeneratedColumn<String> resumenPT = GeneratedColumn<String>(
       'RESUMEN_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenROMeta = const VerificationMeta('resumenRO');
+  static const VerificationMeta _resumenROMeta =
+      const VerificationMeta('resumenRO');
   @override
   late final GeneratedColumn<String> resumenRO = GeneratedColumn<String>(
       'RESUMEN_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenRUMeta = const VerificationMeta('resumenRU');
+  static const VerificationMeta _resumenRUMeta =
+      const VerificationMeta('resumenRU');
   @override
   late final GeneratedColumn<String> resumenRU = GeneratedColumn<String>(
       'RESUMEN_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenCNMeta = const VerificationMeta('resumenCN');
+  static const VerificationMeta _resumenCNMeta =
+      const VerificationMeta('resumenCN');
   @override
   late final GeneratedColumn<String> resumenCN = GeneratedColumn<String>(
       'RESUMEN_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenELMeta = const VerificationMeta('resumenEL');
+  static const VerificationMeta _resumenELMeta =
+      const VerificationMeta('resumenEL');
   @override
   late final GeneratedColumn<String> resumenEL = GeneratedColumn<String>(
       'RESUMEN_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _stockDisponibleMeta =
+  static const VerificationMeta _stockDisponibleMeta =
       const VerificationMeta('stockDisponible');
   @override
   late final GeneratedColumn<int> stockDisponible = GeneratedColumn<int>(
       'STOCK_DISPONIBLE', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _ventasActualMeta =
+  static const VerificationMeta _ventasActualMeta =
       const VerificationMeta('ventasActual');
   @override
   late final GeneratedColumn<double> ventasActual = GeneratedColumn<double>(
       'VENTAS_ACTUAL', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _ventasAnteriorMeta =
+  static const VerificationMeta _ventasAnteriorMeta =
       const VerificationMeta('ventasAnterior');
   @override
   late final GeneratedColumn<double> ventasAnterior = GeneratedColumn<double>(
       'VENTAS_ANTERIOR', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _comprasEntregaCantidad1Meta =
+  static const VerificationMeta _comprasEntregaCantidad1Meta =
       const VerificationMeta('comprasEntregaCantidad1');
   @override
   late final GeneratedColumn<int> comprasEntregaCantidad1 =
       GeneratedColumn<int>('COMPRAS_ENTREGA_CANTIDAD_1', aliasedName, false,
           type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _comprasEntregaCantidad2Meta =
+  static const VerificationMeta _comprasEntregaCantidad2Meta =
       const VerificationMeta('comprasEntregaCantidad2');
   @override
   late final GeneratedColumn<int> comprasEntregaCantidad2 =
       GeneratedColumn<int>('COMPRAS_ENTREGA_CANTIDAD_2', aliasedName, false,
           type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _comprasEntregaCantidad3Meta =
+  static const VerificationMeta _comprasEntregaCantidad3Meta =
       const VerificationMeta('comprasEntregaCantidad3');
   @override
   late final GeneratedColumn<int> comprasEntregaCantidad3 =
       GeneratedColumn<int>('COMPRAS_ENTREGA_CANTIDAD_3', aliasedName, false,
           type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _comprasEntregaCantidadMas3Meta =
+  static const VerificationMeta _comprasEntregaCantidadMas3Meta =
       const VerificationMeta('comprasEntregaCantidadMas3');
   @override
   late final GeneratedColumn<int> comprasEntregaCantidadMas3 =
       GeneratedColumn<int>('COMPRAS_ENTREGA_CANTIDAD_MAS_3', aliasedName, false,
           type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _comprasEntregaFecha1Meta =
+  static const VerificationMeta _comprasEntregaFecha1Meta =
       const VerificationMeta('comprasEntregaFecha1');
   @override
   late final GeneratedColumn<DateTime> comprasEntregaFecha1 =
       GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_1', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _comprasEntregaFecha2Meta =
+  static const VerificationMeta _comprasEntregaFecha2Meta =
       const VerificationMeta('comprasEntregaFecha2');
   @override
   late final GeneratedColumn<DateTime> comprasEntregaFecha2 =
       GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_2', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _comprasEntregaFecha3Meta =
+  static const VerificationMeta _comprasEntregaFecha3Meta =
       const VerificationMeta('comprasEntregaFecha3');
   @override
   late final GeneratedColumn<DateTime> comprasEntregaFecha3 =
       GeneratedColumn<DateTime>('COMPRAS_ENTREGA_FECHA_3', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _comprasEntregaEstado1Meta =
+  static const VerificationMeta _comprasEntregaEstado1Meta =
       const VerificationMeta('comprasEntregaEstado1');
   @override
   late final GeneratedColumn<String> comprasEntregaEstado1 =
       GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_1', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _comprasEntregaEstado2Meta =
+  static const VerificationMeta _comprasEntregaEstado2Meta =
       const VerificationMeta('comprasEntregaEstado2');
   @override
   late final GeneratedColumn<String> comprasEntregaEstado2 =
       GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_2', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _comprasEntregaEstado3Meta =
+  static const VerificationMeta _comprasEntregaEstado3Meta =
       const VerificationMeta('comprasEntregaEstado3');
   @override
   late final GeneratedColumn<String> comprasEntregaEstado3 =
       GeneratedColumn<String>('COMPRAS_ENTREGA_ESTADO_3', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _imagenPrincipalMeta =
+  static const VerificationMeta _imagenPrincipalMeta =
       const VerificationMeta('imagenPrincipal');
   @override
   late final GeneratedColumn<String> imagenPrincipal = GeneratedColumn<String>(
       'IMAGEN_PRINCIPAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -11956,143 +12061,143 @@ class $ArticuloTableTable extends ArticuloTable
   ArticuloDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      familiaId: attachedDatabase.options.types
+      familiaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID']),
-      subfamiliaId: attachedDatabase.options.types
+      subfamiliaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID']),
-      ventaMinimo: attachedDatabase.options.types
+      ventaMinimo: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}VENTA_MINIMO'])!,
-      ventaMultiplo: attachedDatabase.options.types
+      ventaMultiplo: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}VENTA_MULTIPLO'])!,
-      unidadesSubcaja: attachedDatabase.options.types
+      unidadesSubcaja: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}UNIDADES_SUBCAJA'])!,
-      unidadesCaja: attachedDatabase.options.types
+      unidadesCaja: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}UNIDADES_CAJA'])!,
-      unidadesPalet: attachedDatabase.options.types
+      unidadesPalet: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}UNIDADES_PALET'])!,
-      activoWeb: attachedDatabase.options.types
+      activoWeb: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ACTIVO_WEB'])!,
-      activoApp: attachedDatabase.options.types
+      activoApp: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ACTIVO_APP'])!,
-      enCatalogo: attachedDatabase.options.types
+      enCatalogo: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EN_CATALOGO'])!,
-      descatalogado: attachedDatabase.options.types
+      descatalogado: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCATALOGADO'])!,
-      paginaEnCatalgo: attachedDatabase.options.types.read(
+      paginaEnCatalgo: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PAGINA_EN_CATALOGO']),
-      paginaEnCatalgo2: attachedDatabase.options.types.read(
+      paginaEnCatalgo2: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}PAGINA_EN_CATALOGO2']),
-      pesoKg: attachedDatabase.options.types
+      pesoKg: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PESO_KG'])!,
-      largoCm: attachedDatabase.options.types
+      largoCm: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LARGO_CM'])!,
-      anchoCm: attachedDatabase.options.types
+      anchoCm: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}ANCHO_CM'])!,
-      altoCm: attachedDatabase.options.types
+      altoCm: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}ALTO_CM'])!,
-      resumenES: attachedDatabase.options.types
+      resumenES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_ES']),
-      resumenEN: attachedDatabase.options.types
+      resumenEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_EN']),
-      resumenFR: attachedDatabase.options.types
+      resumenFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_FR']),
-      resumenDE: attachedDatabase.options.types
+      resumenDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_DE']),
-      resumenCA: attachedDatabase.options.types
+      resumenCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_CA']),
-      resumenGB: attachedDatabase.options.types
+      resumenGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_GB']),
-      resumenHU: attachedDatabase.options.types
+      resumenHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_HU']),
-      resumenIT: attachedDatabase.options.types
+      resumenIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_IT']),
-      resumenNL: attachedDatabase.options.types
+      resumenNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_NL']),
-      resumenPL: attachedDatabase.options.types
+      resumenPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_PL']),
-      resumenPT: attachedDatabase.options.types
+      resumenPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_PT']),
-      resumenRO: attachedDatabase.options.types
+      resumenRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_RO']),
-      resumenRU: attachedDatabase.options.types
+      resumenRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_RU']),
-      resumenCN: attachedDatabase.options.types
+      resumenCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_CN']),
-      resumenEL: attachedDatabase.options.types
+      resumenEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN_EL']),
-      stockDisponible: attachedDatabase.options.types
+      stockDisponible: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}STOCK_DISPONIBLE'])!,
-      ventasActual: attachedDatabase.options.types
+      ventasActual: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}VENTAS_ACTUAL'])!,
-      ventasAnterior: attachedDatabase.options.types.read(
+      ventasAnterior: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}VENTAS_ANTERIOR'])!,
-      comprasEntregaCantidad1: attachedDatabase.options.types.read(
+      comprasEntregaCantidad1: attachedDatabase.typeMapping.read(
           DriftSqlType.int,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_1'])!,
-      comprasEntregaCantidad2: attachedDatabase.options.types.read(
+      comprasEntregaCantidad2: attachedDatabase.typeMapping.read(
           DriftSqlType.int,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_2'])!,
-      comprasEntregaCantidad3: attachedDatabase.options.types.read(
+      comprasEntregaCantidad3: attachedDatabase.typeMapping.read(
           DriftSqlType.int,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_3'])!,
-      comprasEntregaCantidadMas3: attachedDatabase.options.types.read(
+      comprasEntregaCantidadMas3: attachedDatabase.typeMapping.read(
           DriftSqlType.int,
           data['${effectivePrefix}COMPRAS_ENTREGA_CANTIDAD_MAS_3'])!,
-      comprasEntregaFecha1: attachedDatabase.options.types.read(
+      comprasEntregaFecha1: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_1']),
-      comprasEntregaFecha2: attachedDatabase.options.types.read(
+      comprasEntregaFecha2: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_2']),
-      comprasEntregaFecha3: attachedDatabase.options.types.read(
+      comprasEntregaFecha3: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime,
           data['${effectivePrefix}COMPRAS_ENTREGA_FECHA_3']),
-      comprasEntregaEstado1: attachedDatabase.options.types.read(
+      comprasEntregaEstado1: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_1']),
-      comprasEntregaEstado2: attachedDatabase.options.types.read(
+      comprasEntregaEstado2: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_2']),
-      comprasEntregaEstado3: attachedDatabase.options.types.read(
+      comprasEntregaEstado3: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_3']),
-      imagenPrincipal: attachedDatabase.options.types.read(
+      imagenPrincipal: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}IMAGEN_PRINCIPAL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -12366,119 +12471,122 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloComponenteTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloComponenteIdMeta =
+  static const VerificationMeta _articuloComponenteIdMeta =
       const VerificationMeta('articuloComponenteId');
   @override
   late final GeneratedColumn<String> articuloComponenteId =
       GeneratedColumn<String>('ARTICULO_COMPONENTE_ID', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  static const VerificationMeta _cantidadMeta =
+      const VerificationMeta('cantidad');
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _descripcionESMeta =
+  static const VerificationMeta _descripcionESMeta =
       const VerificationMeta('descripcionES');
   @override
   late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
       'DESCRIPCION_ES', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionENMeta =
+  static const VerificationMeta _descripcionENMeta =
       const VerificationMeta('descripcionEN');
   @override
   late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
       'DESCRIPCION_EN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionFRMeta =
+  static const VerificationMeta _descripcionFRMeta =
       const VerificationMeta('descripcionFR');
   @override
   late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
       'DESCRIPCION_FR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionDEMeta =
+  static const VerificationMeta _descripcionDEMeta =
       const VerificationMeta('descripcionDE');
   @override
   late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
       'DESCRIPCION_DE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCAMeta =
+  static const VerificationMeta _descripcionCAMeta =
       const VerificationMeta('descripcionCA');
   @override
   late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
       'DESCRIPCION_CA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionGBMeta =
+  static const VerificationMeta _descripcionGBMeta =
       const VerificationMeta('descripcionGB');
   @override
   late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
       'DESCRIPCION_GB', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionHUMeta =
+  static const VerificationMeta _descripcionHUMeta =
       const VerificationMeta('descripcionHU');
   @override
   late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
       'DESCRIPCION_HU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionITMeta =
+  static const VerificationMeta _descripcionITMeta =
       const VerificationMeta('descripcionIT');
   @override
   late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
       'DESCRIPCION_IT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionNLMeta =
+  static const VerificationMeta _descripcionNLMeta =
       const VerificationMeta('descripcionNL');
   @override
   late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
       'DESCRIPCION_NL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPLMeta =
+  static const VerificationMeta _descripcionPLMeta =
       const VerificationMeta('descripcionPL');
   @override
   late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
       'DESCRIPCION_PL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionPTMeta =
+  static const VerificationMeta _descripcionPTMeta =
       const VerificationMeta('descripcionPT');
   @override
   late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
       'DESCRIPCION_PT', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionROMeta =
+  static const VerificationMeta _descripcionROMeta =
       const VerificationMeta('descripcionRO');
   @override
   late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
       'DESCRIPCION_RO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionRUMeta =
+  static const VerificationMeta _descripcionRUMeta =
       const VerificationMeta('descripcionRU');
   @override
   late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
       'DESCRIPCION_RU', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionCNMeta =
+  static const VerificationMeta _descripcionCNMeta =
       const VerificationMeta('descripcionCN');
   @override
   late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
       'DESCRIPCION_CN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _descripcionELMeta =
+  static const VerificationMeta _descripcionELMeta =
       const VerificationMeta('descripcionEL');
   @override
   late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
       'DESCRIPCION_EL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -12653,46 +12761,46 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
   ArticuloComponenteDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloComponenteDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      articuloComponenteId: attachedDatabase.options.types.read(
+      articuloComponenteId: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_COMPONENTE_ID'])!,
-      cantidad: attachedDatabase.options.types
+      cantidad: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
-      descripcionES: attachedDatabase.options.types
+      descripcionES: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
-      descripcionEN: attachedDatabase.options.types
+      descripcionEN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
-      descripcionFR: attachedDatabase.options.types
+      descripcionFR: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
-      descripcionDE: attachedDatabase.options.types
+      descripcionDE: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
-      descripcionCA: attachedDatabase.options.types
+      descripcionCA: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
-      descripcionGB: attachedDatabase.options.types
+      descripcionGB: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
-      descripcionHU: attachedDatabase.options.types
+      descripcionHU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
-      descripcionIT: attachedDatabase.options.types
+      descripcionIT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
-      descripcionNL: attachedDatabase.options.types
+      descripcionNL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
-      descripcionPL: attachedDatabase.options.types
+      descripcionPL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
-      descripcionPT: attachedDatabase.options.types
+      descripcionPT: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
-      descripcionRO: attachedDatabase.options.types
+      descripcionRO: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
-      descripcionRU: attachedDatabase.options.types
+      descripcionRU: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
-      descripcionCN: attachedDatabase.options.types
+      descripcionCN: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
-      descripcionEL: attachedDatabase.options.types
+      descripcionEL: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -12798,28 +12906,31 @@ class $ArticuloEmpresaIvaTableTable extends ArticuloEmpresaIvaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloEmpresaIvaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -12880,15 +12991,15 @@ class $ArticuloEmpresaIvaTableTable extends ArticuloEmpresaIvaTable
   ArticuloEmpresaIvaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloEmpresaIvaDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      empresaId: attachedDatabase.options.types
+      empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      iva: attachedDatabase.options.types
+      iva: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -13006,34 +13117,37 @@ class $ArticuloRecambioTableTable extends ArticuloRecambioTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloRecambioTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'RECAMBIO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descripcionMeta =
+  static const VerificationMeta _descripcionMeta =
       const VerificationMeta('descripcion');
   @override
   late final GeneratedColumn<String> descripcion = GeneratedColumn<String>(
       'DESCRIPCION', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  static const VerificationMeta _cantidadMeta =
+      const VerificationMeta('cantidad');
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -13102,17 +13216,17 @@ class $ArticuloRecambioTableTable extends ArticuloRecambioTable
   ArticuloRecambioDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloRecambioDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RECAMBIO_ID'])!,
-      descripcion: attachedDatabase.options.types
+      descripcion: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION'])!,
-      cantidad: attachedDatabase.options.types
+      cantidad: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -13221,29 +13335,31 @@ class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloSustitutivoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloSustitutivoIdMeta =
+  static const VerificationMeta _articuloSustitutivoIdMeta =
       const VerificationMeta('articuloSustitutivoId');
   @override
   late final GeneratedColumn<String> articuloSustitutivoId =
       GeneratedColumn<String>('ARTICULO_ID_SUSTITUTIVO', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _ordenMeta = const VerificationMeta('orden');
+  static const VerificationMeta _ordenMeta = const VerificationMeta('orden');
   @override
   late final GeneratedColumn<int> orden = GeneratedColumn<int>(
       'ORDEN', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -13306,16 +13422,16 @@ class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
   ArticuloSustitutivoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloSustitutivoDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      articuloSustitutivoId: attachedDatabase.options.types.read(
+      articuloSustitutivoId: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}ARTICULO_ID_SUSTITUTIVO'])!,
-      orden: attachedDatabase.options.types
+      orden: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}ORDEN'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -13468,50 +13584,55 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloPrecioTarifaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _tarifaIdMeta = const VerificationMeta('tarifaId');
+  static const VerificationMeta _tarifaIdMeta =
+      const VerificationMeta('tarifaId');
   @override
   late final GeneratedColumn<String> tarifaId = GeneratedColumn<String>(
       'TARIFA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _tarifaDescripcionMeta =
+  static const VerificationMeta _tarifaDescripcionMeta =
       const VerificationMeta('tarifaDescripcion');
   @override
   late final GeneratedColumn<String> tarifaDescripcion =
       GeneratedColumn<String>('TARIFA_DESCRIPCION', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _cantidadDesdeMeta =
+  static const VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
   late final GeneratedColumn<int> cantidadDesde = GeneratedColumn<int>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _precioMeta = const VerificationMeta('precio');
+  static const VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
   late final GeneratedColumn<double> precio = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+  static const VerificationMeta _divisaIdMeta =
+      const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  static const VerificationMeta _tipoPrecioMeta =
+      const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -13610,23 +13731,23 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloPrecioTarifaDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      tarifaId: attachedDatabase.options.types
+      tarifaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TARIFA_ID'])!,
-      tarifaDescripcion: attachedDatabase.options.types.read(
+      tarifaDescripcion: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}TARIFA_DESCRIPCION']),
-      cantidadDesde: attachedDatabase.options.types
+      cantidadDesde: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      precio: attachedDatabase.options.types
+      precio: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
-      divisaId: attachedDatabase.options.types
+      divisaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
-      tipoPrecio: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -13782,51 +13903,55 @@ class $ArticuloGrupoNetoTableTable extends ArticuloGrupoNetoTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ArticuloGrupoNetoTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _grupoNetoIdMeta =
+  static const VerificationMeta _grupoNetoIdMeta =
       const VerificationMeta('grupoNetoId');
   @override
   late final GeneratedColumn<String> grupoNetoId = GeneratedColumn<String>(
       'GRUPO_NETO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _grupoNetoDescripcionMeta =
+  static const VerificationMeta _grupoNetoDescripcionMeta =
       const VerificationMeta('grupoNetoDescripcion');
   @override
   late final GeneratedColumn<String> grupoNetoDescripcion =
       GeneratedColumn<String>('GRUPO_NETO_DESCRIPCION', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadDesdeMeta =
+  static const VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
   late final GeneratedColumn<int> cantidadDesde = GeneratedColumn<int>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _precioMeta = const VerificationMeta('precio');
+  static const VerificationMeta _precioMeta = const VerificationMeta('precio');
   @override
   late final GeneratedColumn<double> precio = GeneratedColumn<double>(
       'PRECIO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+  static const VerificationMeta _divisaIdMeta =
+      const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  static const VerificationMeta _tipoPrecioMeta =
+      const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -13929,24 +14054,24 @@ class $ArticuloGrupoNetoTableTable extends ArticuloGrupoNetoTable
   ArticuloGrupoNetoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return ArticuloGrupoNetoDTO(
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      grupoNetoId: attachedDatabase.options.types
+      grupoNetoId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}GRUPO_NETO_ID'])!,
-      grupoNetoDescripcion: attachedDatabase.options.types.read(
+      grupoNetoDescripcion: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}GRUPO_NETO_DESCRIPCION'])!,
-      cantidadDesde: attachedDatabase.options.types
+      cantidadDesde: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      precio: attachedDatabase.options.types
+      precio: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO'])!,
-      divisaId: attachedDatabase.options.types
+      divisaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
-      tipoPrecio: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -14101,48 +14226,53 @@ class $EstadisticasClienteUsuarioVentasTableTable
   final String? _alias;
   $EstadisticasClienteUsuarioVentasTableTable(this.attachedDatabase,
       [this._alias]);
-  final VerificationMeta _anyoMeta = const VerificationMeta('anyo');
+  static const VerificationMeta _anyoMeta = const VerificationMeta('anyo');
   @override
   late final GeneratedColumn<double> anyo = GeneratedColumn<double>(
       'ANYO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _mesMeta = const VerificationMeta('mes');
+  static const VerificationMeta _mesMeta = const VerificationMeta('mes');
   @override
   late final GeneratedColumn<double> mes = GeneratedColumn<double>(
       'MES', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _unidadesMeta = const VerificationMeta('unidades');
+  static const VerificationMeta _unidadesMeta =
+      const VerificationMeta('unidades');
   @override
   late final GeneratedColumn<double> unidades = GeneratedColumn<double>(
       'UNIDADES', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _importeMeta = const VerificationMeta('importe');
+  static const VerificationMeta _importeMeta =
+      const VerificationMeta('importe');
   @override
   late final GeneratedColumn<double> importe = GeneratedColumn<double>(
       'IMPORTE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _costeMeta = const VerificationMeta('coste');
+  static const VerificationMeta _costeMeta = const VerificationMeta('coste');
   @override
   late final GeneratedColumn<double> coste = GeneratedColumn<double>(
       'COSTE', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -14231,23 +14361,23 @@ class $EstadisticasClienteUsuarioVentasTableTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EstadisticasVentaClienteUsuarioDTO(
-      anyo: attachedDatabase.options.types
+      anyo: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}ANYO'])!,
-      mes: attachedDatabase.options.types
+      mes: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}MES'])!,
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      unidades: attachedDatabase.options.types
+      unidades: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}UNIDADES']),
-      importe: attachedDatabase.options.types
+      importe: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IMPORTE']),
-      coste: attachedDatabase.options.types
+      coste: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}COSTE']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -14452,69 +14582,78 @@ class $EstadisticasUltimosPreciosTableTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $EstadisticasUltimosPreciosTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _lineaMeta = const VerificationMeta('linea');
+  static const VerificationMeta _lineaMeta = const VerificationMeta('linea');
   @override
   late final GeneratedColumn<int> linea = GeneratedColumn<int>(
       'LINEA', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  static const VerificationMeta _cantidadMeta =
+      const VerificationMeta('cantidad');
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _precioDivisaMeta =
+  static const VerificationMeta _precioDivisaMeta =
       const VerificationMeta('precioDivisa');
   @override
   late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  static const VerificationMeta _tipoPrecioMeta =
+      const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TIPO_PRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+  static const VerificationMeta _divisaIdMeta =
+      const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _descuento1Meta = const VerificationMeta('descuento1');
+  static const VerificationMeta _descuento1Meta =
+      const VerificationMeta('descuento1');
   @override
   late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
       'DESCUENTO1', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
+  static const VerificationMeta _descuento2Meta =
+      const VerificationMeta('descuento2');
   @override
   late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
       'DESCUENTO2', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
+  static const VerificationMeta _descuento3Meta =
+      const VerificationMeta('descuento3');
   @override
   late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
       'DESCUENTO3', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -14647,31 +14786,31 @@ class $EstadisticasUltimosPreciosTableTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return EstadisticasUltimosPreciosDTO(
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      linea: attachedDatabase.options.types
+      linea: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}LINEA'])!,
-      cantidad: attachedDatabase.options.types
+      cantidad: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
-      fecha: attachedDatabase.options.types
+      fecha: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      precioDivisa: attachedDatabase.options.types
+      precioDivisa: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
-      divisaId: attachedDatabase.options.types
+      divisaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID'])!,
-      tipoPrecio: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}TIPO_PRECIO'])!,
-      descuento1: attachedDatabase.options.types
+      descuento1: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO1'])!,
-      descuento2: attachedDatabase.options.types
+      descuento2: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO2'])!,
-      descuento3: attachedDatabase.options.types
+      descuento3: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO3'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -14845,59 +14984,66 @@ class $VisitaTableTable extends VisitaTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $VisitaTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'VISITA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _numEmplMeta = const VerificationMeta('numEmpl');
+  static const VerificationMeta _numEmplMeta =
+      const VerificationMeta('numEmpl');
   @override
   late final GeneratedColumn<String> numEmpl = GeneratedColumn<String>(
       'NUM_EMPL', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _contactoMeta = const VerificationMeta('contacto');
+  static const VerificationMeta _contactoMeta =
+      const VerificationMeta('contacto');
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
       'CONTACTO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenMeta = const VerificationMeta('resumen');
+  static const VerificationMeta _resumenMeta =
+      const VerificationMeta('resumen');
   @override
   late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
       'RESUMEN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
+  static const VerificationMeta _latitudMeta =
+      const VerificationMeta('latitud');
   @override
   late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _longitudMeta = const VerificationMeta('longitud');
+  static const VerificationMeta _longitudMeta =
+      const VerificationMeta('longitud');
   @override
   late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _visitaAppIdMeta =
+  static const VerificationMeta _visitaAppIdMeta =
       const VerificationMeta('visitaAppId');
   @override
   late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
       'COD_VISITA_APP', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -14998,27 +15144,27 @@ class $VisitaTableTable extends VisitaTable
   VisitaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}VISITA_ID'])!,
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      fecha: attachedDatabase.options.types
+      fecha: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      numEmpl: attachedDatabase.options.types
+      numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
-      contacto: attachedDatabase.options.types
+      contacto: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
-      resumen: attachedDatabase.options.types
+      resumen: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
-      latitud: attachedDatabase.options.types
+      latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitud: attachedDatabase.options.types
+      longitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
-      visitaAppId: attachedDatabase.options.types
+      visitaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -15191,62 +15337,70 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $VisitaLocalTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _visitaAppIdMeta =
+  static const VerificationMeta _visitaAppIdMeta =
       const VerificationMeta('visitaAppId');
   @override
   late final GeneratedColumn<String> visitaAppId = GeneratedColumn<String>(
       'COD_VISITA_APP', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _numEmplMeta = const VerificationMeta('numEmpl');
+  static const VerificationMeta _numEmplMeta =
+      const VerificationMeta('numEmpl');
   @override
   late final GeneratedColumn<String> numEmpl = GeneratedColumn<String>(
       'NUM_EMPL', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _contactoMeta = const VerificationMeta('contacto');
+  static const VerificationMeta _contactoMeta =
+      const VerificationMeta('contacto');
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
       'CONTACTO', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _resumenMeta = const VerificationMeta('resumen');
+  static const VerificationMeta _resumenMeta =
+      const VerificationMeta('resumen');
   @override
   late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
       'RESUMEN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _latitudMeta = const VerificationMeta('latitud');
+  static const VerificationMeta _latitudMeta =
+      const VerificationMeta('latitud');
   @override
   late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
       'LATITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _longitudMeta = const VerificationMeta('longitud');
+  static const VerificationMeta _longitudMeta =
+      const VerificationMeta('longitud');
   @override
   late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
       'LONGITUD', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _enviadaMeta = const VerificationMeta('enviada');
+  static const VerificationMeta _enviadaMeta =
+      const VerificationMeta('enviada');
   @override
   late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
       'ENVIADA', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _tratadaMeta = const VerificationMeta('tratada');
+  static const VerificationMeta _tratadaMeta =
+      const VerificationMeta('tratada');
   @override
   late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
       'TRATADA', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _errorSyncMessageMeta =
+  static const VerificationMeta _errorSyncMessageMeta =
       const VerificationMeta('errorSyncMessage');
   @override
   late final GeneratedColumn<String> errorSyncMessage = GeneratedColumn<String>(
@@ -15344,27 +15498,27 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   VisitaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return VisitaLocalDTO(
-      visitaAppId: attachedDatabase.options.types
+      visitaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP'])!,
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      fecha: attachedDatabase.options.types
+      fecha: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
-      numEmpl: attachedDatabase.options.types
+      numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
-      contacto: attachedDatabase.options.types
+      contacto: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
-      resumen: attachedDatabase.options.types
+      resumen: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
-      latitud: attachedDatabase.options.types
+      latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitud: attachedDatabase.options.types
+      longitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
-      enviada: attachedDatabase.options.types
+      enviada: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
-      tratada: attachedDatabase.options.types
+      tratada: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
-      errorSyncMessage: attachedDatabase.options.types
+      errorSyncMessage: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ERROR_SYNC']),
     );
   }
@@ -15579,79 +15733,85 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaLineaLocalTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _pedidoVentaAppIdMeta =
+  static const VerificationMeta _pedidoVentaAppIdMeta =
       const VerificationMeta('pedidoVentaAppId');
   @override
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
       'PEDIDO_APP_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _pedidoVentaLineaAppIdMeta =
+  static const VerificationMeta _pedidoVentaLineaAppIdMeta =
       const VerificationMeta('pedidoVentaLineaAppId');
   @override
   late final GeneratedColumn<String> pedidoVentaLineaAppId =
       GeneratedColumn<String>('LIN_APP_ID', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'PRODUCTO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloDescriptionMeta =
+  static const VerificationMeta _articuloDescriptionMeta =
       const VerificationMeta('articuloDescription');
   @override
   late final GeneratedColumn<String> articuloDescription =
       GeneratedColumn<String>('DENOMINACION', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadMeta = const VerificationMeta('cantidad');
+  static const VerificationMeta _cantidadMeta =
+      const VerificationMeta('cantidad');
   @override
   late final GeneratedColumn<int> cantidad = GeneratedColumn<int>(
       'CANTIDAD', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _precioDivisaMeta =
+  static const VerificationMeta _precioDivisaMeta =
       const VerificationMeta('precioDivisa');
   @override
   late final GeneratedColumn<double> precioDivisa = GeneratedColumn<double>(
       'PRECIO_DIVISA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _tipoPrecioMeta = const VerificationMeta('tipoPrecio');
+  static const VerificationMeta _tipoPrecioMeta =
+      const VerificationMeta('tipoPrecio');
   @override
   late final GeneratedColumn<int> tipoPrecio = GeneratedColumn<int>(
       'TPRECIO', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _descuento1Meta = const VerificationMeta('descuento1');
+  static const VerificationMeta _descuento1Meta =
+      const VerificationMeta('descuento1');
   @override
   late final GeneratedColumn<double> descuento1 = GeneratedColumn<double>(
       'DTO1', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuento2Meta = const VerificationMeta('descuento2');
+  static const VerificationMeta _descuento2Meta =
+      const VerificationMeta('descuento2');
   @override
   late final GeneratedColumn<double> descuento2 = GeneratedColumn<double>(
       'DTO2', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuento3Meta = const VerificationMeta('descuento3');
+  static const VerificationMeta _descuento3Meta =
+      const VerificationMeta('descuento3');
   @override
   late final GeneratedColumn<double> descuento3 = GeneratedColumn<double>(
       'DTO3', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _descuentoProntoPagoMeta =
+  static const VerificationMeta _descuentoProntoPagoMeta =
       const VerificationMeta('descuentoProntoPago');
   @override
   late final GeneratedColumn<double> descuentoProntoPago =
       GeneratedColumn<double>('DTO_PP', aliasedName, false,
           type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _stockDisponibleSNMeta =
+  static const VerificationMeta _stockDisponibleSNMeta =
       const VerificationMeta('stockDisponibleSN');
   @override
   late final GeneratedColumn<String> stockDisponibleSN =
       GeneratedColumn<String>('STOCK_DISPONIBLE_SN', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _fechaDisponibleMeta =
+  static const VerificationMeta _fechaDisponibleMeta =
       const VerificationMeta('fechaDisponible');
   @override
   late final GeneratedColumn<DateTime> fechaDisponible =
       GeneratedColumn<DateTime>('F_DISPONIBLE', aliasedName, true,
           type: DriftSqlType.dateTime, requiredDuringInsert: false);
-  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
@@ -15792,33 +15952,33 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
       {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaLineaLocalDTO(
-      pedidoVentaAppId: attachedDatabase.options.types
+      pedidoVentaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
-      pedidoVentaLineaAppId: attachedDatabase.options.types
+      pedidoVentaLineaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}LIN_APP_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PRODUCTO_ID'])!,
-      articuloDescription: attachedDatabase.options.types
+      articuloDescription: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DENOMINACION'])!,
-      cantidad: attachedDatabase.options.types
+      cantidad: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD'])!,
-      precioDivisa: attachedDatabase.options.types
+      precioDivisa: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}PRECIO_DIVISA'])!,
-      tipoPrecio: attachedDatabase.options.types
+      tipoPrecio: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}TPRECIO'])!,
-      descuento1: attachedDatabase.options.types
+      descuento1: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO1'])!,
-      descuento2: attachedDatabase.options.types
+      descuento2: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO2'])!,
-      descuento3: attachedDatabase.options.types
+      descuento3: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO3'])!,
-      descuentoProntoPago: attachedDatabase.options.types
+      descuentoProntoPago: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DTO_PP'])!,
-      stockDisponibleSN: attachedDatabase.options.types.read(
+      stockDisponibleSN: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}STOCK_DISPONIBLE_SN'])!,
-      fechaDisponible: attachedDatabase.options.types
+      fechaDisponible: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}F_DISPONIBLE']),
-      iva: attachedDatabase.options.types
+      iva: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
     );
   }
@@ -16103,122 +16263,135 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoVentaLocalTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _usuarioIdMeta = const VerificationMeta('usuarioId');
+  static const VerificationMeta _usuarioIdMeta =
+      const VerificationMeta('usuarioId');
   @override
   late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
       'USUARIO_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _pedidoVentaAppIdMeta =
+  static const VerificationMeta _pedidoVentaAppIdMeta =
       const VerificationMeta('pedidoVentaAppId');
   @override
   late final GeneratedColumn<String> pedidoVentaAppId = GeneratedColumn<String>(
       'PEDIDO_APP_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _fechaAltaMeta = const VerificationMeta('fechaAlta');
+  static const VerificationMeta _fechaAltaMeta =
+      const VerificationMeta('fechaAlta');
   @override
   late final GeneratedColumn<DateTime> fechaAlta = GeneratedColumn<DateTime>(
       'FECHA_ALTA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _clienteIdMeta = const VerificationMeta('clienteId');
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
       'CLIENTE_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _nombreClienteMeta =
+  static const VerificationMeta _nombreClienteMeta =
       const VerificationMeta('nombreCliente');
   @override
   late final GeneratedColumn<String> nombreCliente = GeneratedColumn<String>(
       'NOMBRE_CLIENTE', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _direccionIdMeta =
+  static const VerificationMeta _direccionIdMeta =
       const VerificationMeta('direccionId');
   @override
   late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
       'DIRECCION_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _direccion1Meta = const VerificationMeta('direccion1');
+  static const VerificationMeta _direccion1Meta =
+      const VerificationMeta('direccion1');
   @override
   late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
       'DIRECCION1', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _direccion2Meta = const VerificationMeta('direccion2');
+  static const VerificationMeta _direccion2Meta =
+      const VerificationMeta('direccion2');
   @override
   late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
       'DIRECCION2', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _codigoPostalMeta =
+  static const VerificationMeta _codigoPostalMeta =
       const VerificationMeta('codigoPostal');
   @override
   late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
       'CODIGO_POSTAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _poblacionMeta = const VerificationMeta('poblacion');
+  static const VerificationMeta _poblacionMeta =
+      const VerificationMeta('poblacion');
   @override
   late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
       'POBLACION', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _provinciaMeta = const VerificationMeta('provincia');
+  static const VerificationMeta _provinciaMeta =
+      const VerificationMeta('provincia');
   @override
   late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
       'PROVINCIA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
   @override
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "PAISES" ("PAIS_ID")');
-  final VerificationMeta _divisaIdMeta = const VerificationMeta('divisaId');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES PAISES (PAIS_ID)'));
+  static const VerificationMeta _divisaIdMeta =
+      const VerificationMeta('divisaId');
   @override
   late final GeneratedColumn<String> divisaId = GeneratedColumn<String>(
       'DIVISA_ID', aliasedName, true,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: 'REFERENCES "DIVISAS" ("DIVISA_ID")');
-  final VerificationMeta _pedidoClienteMeta =
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES DIVISAS (DIVISA_ID)'));
+  static const VerificationMeta _pedidoClienteMeta =
       const VerificationMeta('pedidoCliente');
   @override
   late final GeneratedColumn<String> pedidoCliente = GeneratedColumn<String>(
       'PEDIDO_CLIENTE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _observacionesMeta =
+  static const VerificationMeta _observacionesMeta =
       const VerificationMeta('observaciones');
   @override
   late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
       'OBSERVACIONES', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _ivaMeta = const VerificationMeta('iva');
+  static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
       'IVA', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _dtoBonificacionMeta =
+  static const VerificationMeta _dtoBonificacionMeta =
       const VerificationMeta('dtoBonificacion');
   @override
   late final GeneratedColumn<double> dtoBonificacion = GeneratedColumn<double>(
       'DTO_BONIFICACION', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _enviadaMeta = const VerificationMeta('enviada');
+  static const VerificationMeta _enviadaMeta =
+      const VerificationMeta('enviada');
   @override
   late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
       'ENVIADA', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _tratadaMeta = const VerificationMeta('tratada');
+  static const VerificationMeta _tratadaMeta =
+      const VerificationMeta('tratada');
   @override
   late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
       'TRATADA', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  final VerificationMeta _errorSyncMessageMeta =
+  static const VerificationMeta _errorSyncMessageMeta =
       const VerificationMeta('errorSyncMessage');
   @override
   late final GeneratedColumn<String> errorSyncMessage = GeneratedColumn<String>(
@@ -16385,47 +16558,47 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   PedidoVentaLocalDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoVentaLocalDTO(
-      usuarioId: attachedDatabase.options.types
+      usuarioId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID']),
-      pedidoVentaAppId: attachedDatabase.options.types
+      pedidoVentaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID'])!,
-      empresaId: attachedDatabase.options.types
+      empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      clienteId: attachedDatabase.options.types
+      clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
-      nombreCliente: attachedDatabase.options.types
+      nombreCliente: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE_CLIENTE'])!,
-      direccionId: attachedDatabase.options.types
+      direccionId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
-      direccion1: attachedDatabase.options.types
+      direccion1: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
-      direccion2: attachedDatabase.options.types
+      direccion2: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
-      codigoPostal: attachedDatabase.options.types
+      codigoPostal: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
-      poblacion: attachedDatabase.options.types
+      poblacion: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
-      provincia: attachedDatabase.options.types
+      provincia: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
-      paisId: attachedDatabase.options.types
+      paisId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      divisaId: attachedDatabase.options.types
+      divisaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIVISA_ID']),
-      pedidoCliente: attachedDatabase.options.types
+      pedidoCliente: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_CLIENTE']),
-      observaciones: attachedDatabase.options.types
+      observaciones: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
-      fechaAlta: attachedDatabase.options.types
+      fechaAlta: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALTA'])!,
-      iva: attachedDatabase.options.types
+      iva: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}IVA'])!,
-      dtoBonificacion: attachedDatabase.options.types.read(
+      dtoBonificacion: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}DTO_BONIFICACION'])!,
-      enviada: attachedDatabase.options.types
+      enviada: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
-      tratada: attachedDatabase.options.types
+      tratada: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
-      errorSyncMessage: attachedDatabase.options.types
+      errorSyncMessage: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ERROR_SYNC']),
     );
   }
@@ -16564,45 +16737,50 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $PedidoAlbaranTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _empresaIdMeta = const VerificationMeta('empresaId');
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
   @override
   late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
       'EMPRESA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _pedidoVentaIdMeta =
+  static const VerificationMeta _pedidoVentaIdMeta =
       const VerificationMeta('pedidoVentaId');
   @override
   late final GeneratedColumn<String> pedidoVentaId = GeneratedColumn<String>(
       'PEDIDO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _albaranIdMeta = const VerificationMeta('albaranId');
+  static const VerificationMeta _albaranIdMeta =
+      const VerificationMeta('albaranId');
   @override
   late final GeneratedColumn<String> albaranId = GeneratedColumn<String>(
       'ALBARAN_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _fechaAlbaranMeta =
+  static const VerificationMeta _fechaAlbaranMeta =
       const VerificationMeta('fechaAlbaran');
   @override
   late final GeneratedColumn<DateTime> fechaAlbaran = GeneratedColumn<DateTime>(
       'FECHA_ALBARAN', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _agenciaMeta = const VerificationMeta('agencia');
+  static const VerificationMeta _agenciaMeta =
+      const VerificationMeta('agencia');
   @override
   late final GeneratedColumn<String> agencia = GeneratedColumn<String>(
       'AGENCIA', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _trackIdMeta = const VerificationMeta('trackId');
+  static const VerificationMeta _trackIdMeta =
+      const VerificationMeta('trackId');
   @override
   late final GeneratedColumn<String> trackId = GeneratedColumn<String>(
       'TRACK_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -16686,21 +16864,21 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
   PedidoAlbaranDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return PedidoAlbaranDTO(
-      empresaId: attachedDatabase.options.types
+      empresaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
-      pedidoVentaId: attachedDatabase.options.types
+      pedidoVentaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_ID'])!,
-      albaranId: attachedDatabase.options.types
+      albaranId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ALBARAN_ID'])!,
-      fechaAlbaran: attachedDatabase.options.types.read(
+      fechaAlbaran: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALBARAN'])!,
-      agencia: attachedDatabase.options.types
+      agencia: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}AGENCIA']),
-      trackId: attachedDatabase.options.types
+      trackId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}TRACK_ID']),
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -16843,46 +17021,50 @@ class $DescuentoGeneralTableTable extends DescuentoGeneralTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $DescuentoGeneralTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _descuentoGeneralIdMeta =
+  static const VerificationMeta _descuentoGeneralIdMeta =
       const VerificationMeta('descuentoGeneralId');
   @override
   late final GeneratedColumn<String> descuentoGeneralId =
       GeneratedColumn<String>('DESCUENTO_GENERAL_ID', aliasedName, false,
           type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _articuloIdMeta = const VerificationMeta('articuloId');
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
   @override
   late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
       'ARTICULO_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _familiaIdMeta = const VerificationMeta('familiaId');
+  static const VerificationMeta _familiaIdMeta =
+      const VerificationMeta('familiaId');
   @override
   late final GeneratedColumn<String> familiaId = GeneratedColumn<String>(
       'FAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _subfamiliaIdMeta =
+  static const VerificationMeta _subfamiliaIdMeta =
       const VerificationMeta('subfamiliaId');
   @override
   late final GeneratedColumn<String> subfamiliaId = GeneratedColumn<String>(
       'SUBFAMILIA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _cantidadDesdeMeta =
+  static const VerificationMeta _cantidadDesdeMeta =
       const VerificationMeta('cantidadDesde');
   @override
   late final GeneratedColumn<int> cantidadDesde = GeneratedColumn<int>(
       'CANTIDAD_DESDE', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
-  final VerificationMeta _descuentoMeta = const VerificationMeta('descuento');
+  static const VerificationMeta _descuentoMeta =
+      const VerificationMeta('descuento');
   @override
   late final GeneratedColumn<double> descuento = GeneratedColumn<double>(
       'DESCUENTO', aliasedName, false,
       type: DriftSqlType.double, requiredDuringInsert: true);
-  final VerificationMeta _lastUpdatedMeta =
+  static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
   late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
       'LAST_UPDATED', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  final VerificationMeta _deletedMeta = const VerificationMeta('deleted');
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
   @override
   late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
       'DELETED', aliasedName, false,
@@ -16976,21 +17158,21 @@ class $DescuentoGeneralTableTable extends DescuentoGeneralTable
   DescuentoGeneralDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return DescuentoGeneralDTO(
-      descuentoGeneralId: attachedDatabase.options.types.read(
+      descuentoGeneralId: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}DESCUENTO_GENERAL_ID'])!,
-      articuloId: attachedDatabase.options.types
+      articuloId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
-      familiaId: attachedDatabase.options.types
+      familiaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}FAMILIA_ID'])!,
-      subfamiliaId: attachedDatabase.options.types
+      subfamiliaId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}SUBFAMILIA_ID'])!,
-      cantidadDesde: attachedDatabase.options.types
+      cantidadDesde: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}CANTIDAD_DESDE'])!,
-      descuento: attachedDatabase.options.types
+      descuento: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}DESCUENTO'])!,
-      lastUpdated: attachedDatabase.options.types
+      lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
-      deleted: attachedDatabase.options.types
+      deleted: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
     );
   }
@@ -17174,65 +17356,73 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $LogTableTable(this.attachedDatabase, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'ID', aliasedName, false,
+      hasAutoIncrement: true,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
-      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
-  final VerificationMeta _levelMeta = const VerificationMeta('level');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _levelMeta = const VerificationMeta('level');
   @override
   late final GeneratedColumn<String> level = GeneratedColumn<String>(
       'LOG_LEVEL', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _messageMeta = const VerificationMeta('message');
+  static const VerificationMeta _messageMeta =
+      const VerificationMeta('message');
   @override
   late final GeneratedColumn<String> message = GeneratedColumn<String>(
       'LOG_MESSAGE', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _errorMeta = const VerificationMeta('error');
+  static const VerificationMeta _errorMeta = const VerificationMeta('error');
   @override
   late final GeneratedColumn<String> error = GeneratedColumn<String>(
       'LOG_ERROR', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _stackTraceMeta = const VerificationMeta('stackTrace');
+  static const VerificationMeta _stackTraceMeta =
+      const VerificationMeta('stackTrace');
   @override
   late final GeneratedColumn<String> stackTrace = GeneratedColumn<String>(
       'LOG_STACK_TRACE', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _appIdMeta = const VerificationMeta('appId');
+  static const VerificationMeta _appIdMeta = const VerificationMeta('appId');
   @override
   late final GeneratedColumn<String> appId = GeneratedColumn<String>(
       'APP_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _appBuildMeta = const VerificationMeta('appBuild');
+  static const VerificationMeta _appBuildMeta =
+      const VerificationMeta('appBuild');
   @override
   late final GeneratedColumn<String> appBuild = GeneratedColumn<String>(
       'APP_BUILD', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _appBuildNameMeta =
+  static const VerificationMeta _appBuildNameMeta =
       const VerificationMeta('appBuildName');
   @override
   late final GeneratedColumn<String> appBuildName = GeneratedColumn<String>(
       'APP_BUILD_NAME', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _userIdMeta = const VerificationMeta('userId');
+  static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
   @override
   late final GeneratedColumn<String> userId = GeneratedColumn<String>(
       'USER_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  final VerificationMeta _userEmailMeta = const VerificationMeta('userEmail');
+  static const VerificationMeta _userEmailMeta =
+      const VerificationMeta('userEmail');
   @override
   late final GeneratedColumn<String> userEmail = GeneratedColumn<String>(
       'USER_EMAIL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _userNameMeta = const VerificationMeta('userName');
+  static const VerificationMeta _userNameMeta =
+      const VerificationMeta('userName');
   @override
   late final GeneratedColumn<String> userName = GeneratedColumn<String>(
       'USER_NAME', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  final VerificationMeta _timestampMeta = const VerificationMeta('timestamp');
+  static const VerificationMeta _timestampMeta =
+      const VerificationMeta('timestamp');
   @override
   late final GeneratedColumn<DateTime> timestamp = GeneratedColumn<DateTime>(
       'TIMESTAMP', aliasedName, false,
@@ -17335,27 +17525,27 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   LogDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return LogDTO(
-      id: attachedDatabase.options.types
+      id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
-      level: attachedDatabase.options.types
+      level: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}LOG_LEVEL'])!,
-      message: attachedDatabase.options.types
+      message: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}LOG_MESSAGE'])!,
-      error: attachedDatabase.options.types
+      error: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}LOG_ERROR']),
-      appId: attachedDatabase.options.types
+      appId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}APP_ID'])!,
-      appBuild: attachedDatabase.options.types
+      appBuild: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD'])!,
-      appBuildName: attachedDatabase.options.types
+      appBuildName: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}APP_BUILD_NAME'])!,
-      userId: attachedDatabase.options.types
+      userId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USER_ID'])!,
-      userEmail: attachedDatabase.options.types
+      userEmail: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USER_EMAIL']),
-      userName: attachedDatabase.options.types
+      userName: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}USER_NAME']),
-      timestamp: attachedDatabase.options.types
+      timestamp: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}TIMESTAMP'])!,
     );
   }
@@ -17439,7 +17629,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       $DescuentoGeneralTableTable(this);
   late final $LogTableTable logTable = $LogTableTable(this);
   @override
-  Iterable<TableInfo<Table, dynamic>> get allTables =>
+  Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [
