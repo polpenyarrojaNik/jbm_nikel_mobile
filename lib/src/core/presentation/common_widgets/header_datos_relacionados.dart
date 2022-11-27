@@ -13,19 +13,24 @@ class HeaderDatosRelacionados extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
       color: Theme.of(context).colorScheme.secondaryContainer,
-      child: Row(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(entityId, style: Theme.of(context).textTheme.subtitle2),
-              if (subtitle != null)
-                Text(subtitle!, style: Theme.of(context).textTheme.bodyText2),
-            ],
+          Text(
+            entityId,
+            style: Theme.of(context).textTheme.subtitle2,
+            overflow: TextOverflow.ellipsis,
           ),
+          if (subtitle != null)
+            Text(
+              subtitle!,
+              style: Theme.of(context).textTheme.bodyText2,
+              overflow: TextOverflow.ellipsis,
+            ),
         ],
       ),
     );

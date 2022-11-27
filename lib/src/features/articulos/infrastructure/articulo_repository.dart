@@ -147,15 +147,23 @@ final articuloPedidoVentaLineaListProvider = FutureProvider.autoDispose
 });
 
 final articuloVentasMesProvider = FutureProvider.autoDispose
-    .family<List<ArticuloVentasMes>, String>((ref, articuloId) {
+    .family<List<ArticuloVentasMes>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getVentasMesById(articuloId: articuloId);
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+  return articuloRepository.getVentasMesById(
+    articuloId: articuloId,
+    usuarioId: usuario!.id,
+  );
 });
 
 final articuloVentasClienteProvider = FutureProvider.autoDispose
-    .family<List<ArticuloVentasCliente>, String>((ref, articuloId) {
+    .family<List<ArticuloVentasCliente>, String>((ref, articuloId) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
-  return articuloRepository.getVentasClienteById(articuloId: articuloId);
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+  return articuloRepository.getVentasClienteById(
+    articuloId: articuloId,
+    usuarioId: usuario!.id,
+  );
 });
 
 final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
@@ -271,19 +279,21 @@ class ArticuloRepository {
     }
   }
 
-  Future<List<ArticuloPrecioTarifa>> getArticuloPrecioTarifaListaById(
-      {required String articuloId, required String usuarioId}) async {
+  Future<List<ArticuloPrecioTarifa>> getArticuloPrecioTarifaListaById({
+    required String articuloId,
+    required String usuarioId,
+  }) async {
     try {
       final query = await _db.customSelect('''
-      SELECT *
-  FROM ${_db.articuloPrecioTarifaTable.tableName}
- WHERE EXISTS
-         (SELECT TARIFA_ID
-            FROM ${_db.clienteTable.tableName}
-                 INNER JOIN ${_db.clienteUsuarioTable.tableName} ON clientes_usuario.cliente_id = CLIENTES.cliente_id
-           WHERE CLIENTES.TARIFA_ID = ARTICULOS_TARIFA_PRECIO.TARIFA_ID
-             AND clientes_usuario.usuario_id = :usuarioId)
-   AND ARTICULOS_TARIFA_PRECIO.articulo_id = :articuloId;
+SELECT *
+  FROM ARTICULOS_TARIFA_PRECIO
+ WHERE ARTICULOS_TARIFA_PRECIO.TARIFA_ID 
+       IN (SELECT DISTINCT CLIENTES.TARIFA_ID
+                      FROM CLIENTES
+                INNER JOIN CLIENTES_USUARIO
+                        ON CLIENTES_USUARIO.CLIENTE_ID = CLIENTES.CLIENTE_ID
+                       AND CLIENTES_USUARIO.USUARIO_ID = :usuarioId)
+       AND ARTICULOS_TARIFA_PRECIO.ARTICULO_ID = :articuloId;
 ''', variables: [
         Variable(usuarioId),
         Variable(articuloId),
@@ -668,12 +678,15 @@ class ArticuloRepository {
     }
   }
 
-  Future<List<ArticuloVentasMes>> getVentasMesById(
-      {required String articuloId}) async {
+  Future<List<ArticuloVentasMes>> getVentasMesById({
+    required String articuloId,
+    required String usuarioId,
+  }) async {
     try {
       final query =
           await _db.customSelect(_getVentasMesCustomSelect(), variables: [
         Variable(articuloId),
+        Variable(usuarioId),
       ], readsFrom: {
         _db.estadisticasClienteUsuarioVentasTable,
       }).get();
@@ -686,19 +699,22 @@ class ArticuloRepository {
     }
   }
 
-  Future<List<ArticuloVentasCliente>> getVentasClienteById(
-      {required String articuloId}) async {
+  Future<List<ArticuloVentasCliente>> getVentasClienteById({
+    required String articuloId,
+    required String usuarioId,
+  }) async {
     try {
       final query =
           await _db.customSelect(_getVentasClienteCustomSelect(), variables: [
         Variable(articuloId),
+        Variable(usuarioId)
       ], readsFrom: {
         _db.estadisticasClienteUsuarioVentasTable,
       }).get();
 
-      return query.map((row) {
-        return ArticuloVentasClienteDTO.fromJson(row.data).toDomain();
-      }).toList();
+      return query
+          .map((row) => ArticuloVentasClienteDTO.fromJson(row.data).toDomain())
+          .toList();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -720,55 +736,85 @@ FROM (
       }
 
       select += '''
-        SELECT $mes mes
-                , SUM(unidades) unidades_anyo_0
-                , 0 unidades_anyo_1
-                , 0 unidades_anyo_2
-                , 0 unidades_anyo_3
-                , 0 unidades_anyo_4
-    FROM estadisticas_venta WHERE articulo_id = :articuloId
-      AND anyo = strftime('%Y' ,DATE())
-      AND mes = $mes
-  UNION ALL
-    SELECT $mes mes
-                , 0 unidades_anyo_0
-                , SUM(unidades) unidades_anyo_1
-                , 0 unidades_anyo_2
-                , 0 unidades_anyo_3
-                , 0 unidades_anyo_4
-    FROM estadisticas_venta WHERE articulo_id = :articuloId
-      AND anyo = strftime('%Y' ,DATE()) - 1
-      AND mes = $mes
-  UNION ALL
-    SELECT $mes mes
-                , 0 unidades_anyo_0
-                , 0 unidades_anyo_1
-                , SUM(unidades) unidades_anyo_2
-                , 0 unidades_anyo_3
-                , 0 unidades_anyo_4
-    FROM estadisticas_venta WHERE articulo_id = :articuloId
-      AND anyo = strftime('%Y' ,DATE()) - 2
-      AND mes = $mes
-  UNION ALL
-    SELECT $mes mes
-                , 0 unidades_anyo_0
-                , 0 unidades_anyo_1
-                , 0 unidades_anyo_2
-                , SUM(unidades) unidades_anyo_3
-                , 0 unidades_anyo_4
-    FROM estadisticas_venta WHERE articulo_id = :articuloId
-      AND anyo = strftime('%Y' ,DATE()) - 3
-      AND mes = $mes
-   UNION ALL
-      SELECT $mes mes
-                , 0 unidades_anyo_0
-                , 0 unidades_anyo_1
-                , 0 unidades_anyo_2
-                , 0 unidades_anyo_3
-                , SUM(unidades) unidades_anyo_4
-    FROM estadisticas_venta WHERE articulo_id = :articuloId
-      AND anyo = strftime('%Y' ,DATE()) - 4
-      AND mes = $mes
+SELECT $mes          mes,
+       Sum(unidades) unidades_anyo_0,
+       0             unidades_anyo_1,
+       0             unidades_anyo_2,
+       0             unidades_anyo_3,
+       0             unidades_anyo_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date())
+       AND mes = $mes
+       AND EXISTS (SELECT *
+                   FROM   clientes_usuario
+                   WHERE  clientes_usuario.cliente_id =
+                          estadisticas_venta.cliente_id
+                          AND clientes_usuario.usuario_id = :usuarioId)
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_0,
+       Sum(unidades) unidades_anyo_1,
+       0             unidades_anyo_2,
+       0             unidades_anyo_3,
+       0             unidades_anyo_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 1
+       AND mes = $mes
+       AND EXISTS (SELECT *
+                   FROM   clientes_usuario
+                   WHERE  clientes_usuario.cliente_id =
+                          estadisticas_venta.cliente_id
+                          AND clientes_usuario.usuario_id = :usuarioId)
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_0,
+       0             unidades_anyo_1,
+       Sum(unidades) unidades_anyo_2,
+       0             unidades_anyo_3,
+       0             unidades_anyo_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 2
+       AND mes = $mes
+       AND EXISTS (SELECT *
+                   FROM   clientes_usuario
+                   WHERE  clientes_usuario.cliente_id =
+                          estadisticas_venta.cliente_id
+                          AND clientes_usuario.usuario_id = :usuarioId)
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_0,
+       0             unidades_anyo_1,
+       0             unidades_anyo_2,
+       Sum(unidades) unidades_anyo_3,
+       0             unidades_anyo_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 3
+       AND mes = $mes
+       AND EXISTS (SELECT *
+                   FROM   clientes_usuario
+                   WHERE  clientes_usuario.cliente_id =
+                          estadisticas_venta.cliente_id
+                          AND clientes_usuario.usuario_id = :usuarioId)
+UNION ALL
+SELECT $mes          mes,
+       0             unidades_anyo_0,
+       0             unidades_anyo_1,
+       0             unidades_anyo_2,
+       0             unidades_anyo_3,
+       Sum(unidades) unidades_anyo_4
+FROM   estadisticas_venta
+WHERE  articulo_id = :articuloId
+       AND anyo = Strftime('%Y', Date()) - 4
+       AND mes = $mes
+       AND EXISTS (SELECT *
+                   FROM   clientes_usuario
+                   WHERE  clientes_usuario.cliente_id =
+                          estadisticas_venta.cliente_id
+                          AND clientes_usuario.usuario_id = :usuarioId) 
 ''';
     }
     select += '''
@@ -781,108 +827,136 @@ GROUP BY mes
 
   String _getVentasClienteCustomSelect() {
     String select = '''
-SELECT CLIENTE_ID
-        , NOMBRE
-        , SUM(importe_anyo_0) IMPORTE_ANYO
-        , SUM(importe_anyo_1) IMPORTE_ANYO_1
-        , SUM(importe_anyo_2) IMPORTE_ANYO_2
-        , SUM(importe_anyo_3) IMPORTE_ANYO_3
-        , SUM(importe_anyo_4) IMPORTE_ANYO_4
-        , SUM(unidades_anyo_0) CANTIDAD_ANYO
-        , SUM(unidades_anyo_1) CANTIDAD_ANYO_1
-        , SUM(unidades_anyo_2) CANTIDAD_ANYO_2
-        , SUM(unidades_anyo_3) CANTIDAD_ANYO_3
-        , SUM(unidades_anyo_4) CANTIDAD_ANYO_4
-FROM (  
-        SELECT ventas.CLIENTE_ID
-                , cli.NOMBRE NOMBRE
-                , ventas.importe importe_anyo_0
-                , 0 importe_anyo_1
-                , 0 importe_anyo_2
-                , 0 importe_anyo_3
-                , 0 importe_anyo_4
-                , ventas.unidades unidades_anyo_0
-                , 0 unidades_anyo_1
-                , 0 unidades_anyo_2 
-                , 0 unidades_anyo_3
-                , 0 unidades_anyo_4              
-    FROM estadisticas_venta ventas
-      INNER JOIN clientes cli ON ventas.cliente_id = cli.cliente_id
-    WHERE ventas.articulo_id = :articuloId
-      AND ventas.anyo = strftime('%Y' ,DATE())
-  UNION ALL
-    SELECT ventas.CLIENTE_ID
-                , cli.NOMBRE NOMBRE
-                , 0 importe_anyo_0
-                , ventas.importe importe_anyo_1
-                , 0 importe_anyo_2
-                , 0 importe_anyo_3
-                , 0 importe_anyo_4
-                , 0 unidades_anyo_0
-                , ventas.unidades unidades_anyo_1
-                , 0 unidades_anyo_2
-                , 0 unidades_anyo_3
-                , 0 unidades_anyo_4   
-    FROM estadisticas_venta ventas
-    INNER JOIN clientes cli ON ventas.cliente_id = cli.cliente_id
-    WHERE ventas.articulo_id = :articuloId
-      AND ventas.anyo = strftime('%Y' ,DATE()) - 1
-  UNION ALL
-    SELECT ventas.CLIENTE_ID
-                , cli.NOMBRE NOMBRE
-                , 0 importe_anyo_0
-                , 0 importe_anyo_1
-                , ventas.importe importe_anyo_2
-                , 0 importe_anyo_3
-                , 0 importe_anyo_4
-                , 0 unidades_anyo_0
-                , 0 unidades_anyo_1
-                , ventas.unidades unidades_anyo_2
-                , 0 unidades_anyo_3
-                , 0 unidades_anyo_4   
-    FROM estadisticas_venta ventas
-    INNER JOIN clientes cli ON ventas.cliente_id = cli.cliente_id
-    WHERE ventas.articulo_id = :articuloId
-    AND ventas.anyo = strftime('%Y' ,DATE()) - 2
-  UNION ALL
-    SELECT ventas.CLIENTE_ID
-                , cli.NOMBRE NOMBRE
-                , 0 importe_anyo_0
-                , 0 importe_anyo_1
-                , 0 importe_anyo_2
-                , ventas.importe importe_anyo_3
-                , 0 importe_anyo_4
-                , 0 unidades_anyo_0
-                , 0 unidades_anyo_1
-                , 0 unidades_anyo_2
-                , ventas.unidades unidades_anyo_3
-                , 0 unidades_anyo_4   
-    FROM estadisticas_venta ventas
-    INNER JOIN clientes cli ON ventas.cliente_id = cli.cliente_id
-    WHERE ventas.articulo_id = :articuloId
-    AND ventas.anyo = strftime('%Y' ,DATE()) - 3
-
-  UNION ALL
-    SELECT ventas.CLIENTE_ID
-                , cli.NOMBRE NOMBRE
-                , 0 importe_anyo_0
-                , 0 importe_anyo_1
-                , 0 importe_anyo_2
-                , 0 importe_anyo_3
-                , ventas.importe importe_anyo_4
-                , 0 unidades_anyo_0
-                , 0 unidades_anyo_1
-                , 0 unidades_anyo_2
-                , 0 unidades_anyo_3
-                , ventas.unidades unidades_anyo_4   
-    FROM estadisticas_venta ventas
-    INNER JOIN clientes cli ON ventas.cliente_id = cli.cliente_id
-    WHERE ventas.articulo_id = :articuloId
-    AND ventas.anyo = strftime('%Y' ,DATE()) - 4
-)
-WHERE CLIENTE_ID IS NOT NULL
-GROUP BY CLIENTE_ID, NOMBRE
-ORDER BY IMPORTE_ANYO DESC
+SELECT CLIENTE_ID,
+       NOMBRE,
+       SUM(IMPORTE_ANYO_0)  IMPORTE_ANYO,
+       SUM(IMPORTE_ANYO_1)  IMPORTE_ANYO_1,
+       SUM(IMPORTE_ANYO_2)  IMPORTE_ANYO_2,
+       SUM(IMPORTE_ANYO_3)  IMPORTE_ANYO_3,
+       SUM(IMPORTE_ANYO_4)  IMPORTE_ANYO_4,
+       SUM(UNIDADES_ANYO_0) CANTIDAD_ANYO,
+       SUM(UNIDADES_ANYO_1) CANTIDAD_ANYO_1,
+       SUM(UNIDADES_ANYO_2) CANTIDAD_ANYO_2,
+       SUM(UNIDADES_ANYO_3) CANTIDAD_ANYO_3,
+       SUM(UNIDADES_ANYO_4) CANTIDAD_ANYO_4
+FROM   (SELECT VENTAS.CLIENTE_ID,
+               CLI.NOMBRE      NOMBRE,
+               VENTAS.IMPORTE  IMPORTE_ANYO_0,
+               0               IMPORTE_ANYO_1,
+               0               IMPORTE_ANYO_2,
+               0               IMPORTE_ANYO_3,
+               0               IMPORTE_ANYO_4,
+               VENTAS.UNIDADES UNIDADES_ANYO_0,
+               0               UNIDADES_ANYO_1,
+               0               UNIDADES_ANYO_2,
+               0               UNIDADES_ANYO_3,
+               0               UNIDADES_ANYO_4
+        FROM   ESTADISTICAS_VENTA VENTAS
+               INNER JOIN CLIENTES CLI
+                       ON VENTAS.CLIENTE_ID = CLI.CLIENTE_ID
+        WHERE  VENTAS.ARTICULO_ID = :ARTICULOID
+               AND VENTAS.ANYO = STRFTIME('%Y', DATE())
+               AND EXISTS (SELECT *
+                           FROM   CLIENTES_USUARIO
+                           WHERE  CLIENTES_USUARIO.CLIENTE_ID =
+                                  VENTAS.CLIENTE_ID
+                                  AND CLIENTES_USUARIO.USUARIO_ID = :USUARIOID)
+        UNION ALL
+        SELECT VENTAS.CLIENTE_ID,
+               CLI.NOMBRE      NOMBRE,
+               0               IMPORTE_ANYO_0,
+               VENTAS.IMPORTE  IMPORTE_ANYO_1,
+               0               IMPORTE_ANYO_2,
+               0               IMPORTE_ANYO_3,
+               0               IMPORTE_ANYO_4,
+               0               UNIDADES_ANYO_0,
+               VENTAS.UNIDADES UNIDADES_ANYO_1,
+               0               UNIDADES_ANYO_2,
+               0               UNIDADES_ANYO_3,
+               0               UNIDADES_ANYO_4
+        FROM   ESTADISTICAS_VENTA VENTAS
+               INNER JOIN CLIENTES CLI
+                       ON VENTAS.CLIENTE_ID = CLI.CLIENTE_ID
+        WHERE  VENTAS.ARTICULO_ID = :ARTICULOID
+               AND VENTAS.ANYO = STRFTIME('%Y', DATE()) - 1
+               AND EXISTS (SELECT *
+                           FROM   CLIENTES_USUARIO
+                           WHERE  CLIENTES_USUARIO.CLIENTE_ID =
+                                  VENTAS.CLIENTE_ID
+                                  AND CLIENTES_USUARIO.USUARIO_ID = :USUARIOID)
+        UNION ALL
+        SELECT VENTAS.CLIENTE_ID,
+               CLI.NOMBRE      NOMBRE,
+               0               IMPORTE_ANYO_0,
+               0               IMPORTE_ANYO_1,
+               VENTAS.IMPORTE  IMPORTE_ANYO_2,
+               0               IMPORTE_ANYO_3,
+               0               IMPORTE_ANYO_4,
+               0               UNIDADES_ANYO_0,
+               0               UNIDADES_ANYO_1,
+               VENTAS.UNIDADES UNIDADES_ANYO_2,
+               0               UNIDADES_ANYO_3,
+               0               UNIDADES_ANYO_4
+        FROM   ESTADISTICAS_VENTA VENTAS
+               INNER JOIN CLIENTES CLI
+                       ON VENTAS.CLIENTE_ID = CLI.CLIENTE_ID
+        WHERE  VENTAS.ARTICULO_ID = :ARTICULOID
+               AND VENTAS.ANYO = STRFTIME('%Y', DATE()) - 2
+               AND EXISTS (SELECT *
+                           FROM   CLIENTES_USUARIO
+                           WHERE  CLIENTES_USUARIO.CLIENTE_ID =
+                                  VENTAS.CLIENTE_ID
+                                  AND CLIENTES_USUARIO.USUARIO_ID = :USUARIOID)
+        UNION ALL
+        SELECT VENTAS.CLIENTE_ID,
+               CLI.NOMBRE      NOMBRE,
+               0               IMPORTE_ANYO_0,
+               0               IMPORTE_ANYO_1,
+               0               IMPORTE_ANYO_2,
+               VENTAS.IMPORTE  IMPORTE_ANYO_3,
+               0               IMPORTE_ANYO_4,
+               0               UNIDADES_ANYO_0,
+               0               UNIDADES_ANYO_1,
+               0               UNIDADES_ANYO_2,
+               VENTAS.UNIDADES UNIDADES_ANYO_3,
+               0               UNIDADES_ANYO_4
+        FROM   ESTADISTICAS_VENTA VENTAS
+               INNER JOIN CLIENTES CLI
+                       ON VENTAS.CLIENTE_ID = CLI.CLIENTE_ID
+        WHERE  VENTAS.ARTICULO_ID = :ARTICULOID
+               AND VENTAS.ANYO = STRFTIME('%Y', DATE()) - 3
+               AND EXISTS (SELECT *
+                           FROM   CLIENTES_USUARIO
+                           WHERE  CLIENTES_USUARIO.CLIENTE_ID =
+                                  VENTAS.CLIENTE_ID
+                                  AND CLIENTES_USUARIO.USUARIO_ID = :USUARIOID)
+        UNION ALL
+        SELECT VENTAS.CLIENTE_ID,
+               CLI.NOMBRE      NOMBRE,
+               0               IMPORTE_ANYO_0,
+               0               IMPORTE_ANYO_1,
+               0               IMPORTE_ANYO_2,
+               0               IMPORTE_ANYO_3,
+               VENTAS.IMPORTE  IMPORTE_ANYO_4,
+               0               UNIDADES_ANYO_0,
+               0               UNIDADES_ANYO_1,
+               0               UNIDADES_ANYO_2,
+               0               UNIDADES_ANYO_3,
+               VENTAS.UNIDADES UNIDADES_ANYO_4
+        FROM   ESTADISTICAS_VENTA VENTAS
+               INNER JOIN CLIENTES CLI
+                       ON VENTAS.CLIENTE_ID = CLI.CLIENTE_ID
+        WHERE  VENTAS.ARTICULO_ID = :ARTICULOID
+               AND VENTAS.ANYO = STRFTIME('%Y', DATE()) - 4
+               AND EXISTS (SELECT *
+                           FROM   CLIENTES_USUARIO
+                           WHERE  CLIENTES_USUARIO.CLIENTE_ID =
+                                  VENTAS.CLIENTE_ID
+                                  AND CLIENTES_USUARIO.USUARIO_ID = :USUARIOID))
+WHERE  CLIENTE_ID IS NOT NULL
+GROUP  BY CLIENTE_ID,
+          NOMBRE
+ORDER  BY IMPORTE_ANYO DESC 
 ''';
 
     return select;
