@@ -74,6 +74,7 @@ commit_version:
 build_ios_mobile: format lint get_pub create_icons build_runner bump_build_number commit_version
 	@echo "╠  Building the iOS app"
 	@flutter build ipa
+	@open ./build/ios/ipa
 
 deploy_ios_mobile: build_ios_mobile
 	@open ./build/ios/iphoneos/Runner.app
