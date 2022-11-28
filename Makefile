@@ -1,4 +1,6 @@
 .PHONY: all run_dev_web run_dev_mobile run_unit clean upgrade lint format build_dev_mobile help 
+EXTRACT_VERSION_NUMBER = $(shell grep 'version: ' pubspec.yaml | sed 's/version: //')
+SET_VERSION_NUMBER = $(eval VERSION_NUMBER=$(EXTRACT_VERSION_NUMBER))
 
 all: lint format run_dev_mobile
 
@@ -16,7 +18,7 @@ help: ## This help dialog.
 
 run_unit: ## Runs unit tests
 	@echo "╠ Running the tests"
-	# @flutter test || (echo "Error while running tests"; exit 1)
+	@flutter test || (echo "Error while running tests"; exit 1)
 
 clean: ## Cleans the environment
 	@echo "╠ Cleaning the project..."
@@ -33,7 +35,7 @@ lint: ## Lints the code
 
 create_icons: ## Create App icons
 	@echo "╠ Creating icons..."
-	# @flutter pub run flutter_launcher_icons:main
+	@flutter pub run flutter_launcher_icons:main
 
 build_runner: ## Generates automatic code
 	@echo "╠ Creating generated code..."
@@ -59,9 +61,19 @@ run_mobile: ## Runs the mobile application in dev
 	@echo "╠ Running the app"
 	@flutter run
 
-build_ios_mobile: get_pub create_icons build_runner commit
-	@echo "╠  Building the app"
-	@flutter build ios --release
+bump_build_number:	# Bump build number
+	@perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.($$2+1).$$3.($$4+1)/e' pubspec.yaml
+	$(SET_VERSION_NUMBER)
+	@echo $(VERSION_NUMBER)
+	@echo "╠ Bump build number $(VERSION_NUMBER)"
+
+commit_version:
+	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
+	@git push origin main
+
+build_ios_mobile: format lint get_pub create_icons build_runner bump_build_number commit_version
+	@echo "╠  Building the iOS app"
+	@flutter build ipa
 
 deploy_ios_mobile: build_ios_mobile
 	@open ./build/ios/iphoneos/Runner.app

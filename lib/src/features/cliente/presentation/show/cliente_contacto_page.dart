@@ -216,8 +216,6 @@ class ContactButtons extends StatelessWidget {
   }
 }
 
-
-
 // class ClienteContactoTile extends StatelessWidget {
 //   const ClienteContactoTile({super.key, required this.clienteContacto});
 
@@ -357,5 +355,3 @@ class ContactButtons extends StatelessWidget {
 //     await launchUrl(params, mode: LaunchMode.externalApplication);
 //   }
 // }
-
-

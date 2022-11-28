@@ -119,10 +119,6 @@ class AppRouter extends _$AppRouter {
   // AppRouter({required super.routeGuard});
 }
 
-
-
-
-
 // class RouteGuard extends AutoRedirectGuard {
 //   final WidgetRef ref;
 //   RouteGuard(this.ref) {
