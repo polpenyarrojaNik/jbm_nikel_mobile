@@ -72,10 +72,13 @@ commit_version:
 	@echo "Commit $(VERSION_NUMBER)"
 	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
 	@git push origin main
+tag_version:
+	$(SET_VERSION_NUMBER)
+	@echo "Tag $(VERSION_NUMBER)"
 	@git tag -a $(VERSION_NUMBER) -m "Bump version to $(VERSION_NUMBER)"
 	@git push origin --tags
 
-deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version
+deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
 	@echo "╠  Building the iOS app"
 	@flutter build ipa
 	@flutter build appbundle
