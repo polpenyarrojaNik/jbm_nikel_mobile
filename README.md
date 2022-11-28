@@ -41,12 +41,15 @@ make upgrade
 
 ```
 
-### Build iOS
+### Deploy iOS
 
 ```sh
 make build_ios_mobile
 
 ```
+
+Drag and drop the "build/ios/ipa/*.ipa" bundle into the Apple Transport macOS app
+<https://apps.apple.com/us/app/transporter/id1450874784>
 
 ### Build and watch automatic code generation
 
@@ -69,7 +72,7 @@ flutter pub run flutter_launcher_icons:main
 
 ```
 
-### Problems compiling SQLLite
+### Problems compiling SQLite after upgrade pubspec SQLite
 
 1. Go to /ios folder inside your Project.
 2. Delete Podfile.lock (YourPoject/ios/Podfile.lock)
