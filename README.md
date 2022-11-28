@@ -41,15 +41,16 @@ make upgrade
 
 ```
 
-### Deploy iOS
+### Deploy Mobile
 
 ```sh
-make deploy_mobile-ios
+make deploy_mobile
 
 ```
 
-Drag and drop the "build/ios/ipa/*.ipa" bundle into the Apple Transport macOS app
-<https://apps.apple.com/us/app/transporter/id1450874784>
+Drag and drop the "build/ios/ipa/jbm_nikel_mobile.ipa" bundle into the Apple Transport macOS app <https://apps.apple.com/us/app/transporter/id1450874784>
+
+Upload the "build/app/outputs/bundle/release/app-release.aab" to Google Play Store
 
 ### Build and watch automatic code generation
 

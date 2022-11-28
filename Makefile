@@ -75,13 +75,7 @@ tag_version:
 	@git tag -a $(VERSION_NUMBER) -m "v$(VERSION_NUMBER)"
 	@git push origin --tags
 
-deploy_mobile_ios: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
+deploy_mobile: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
 	@echo "╠  Building the iOS app"
 	@flutter build ipa
-
-deploy_mobile_android:
-	@echo "╠  Building the Android app"
 	@flutter build appbundle
-
-deploy: deploy_mobile_ios deploy_mobile_android
-	@open ./build/ios/ipa
