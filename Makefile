@@ -68,6 +68,7 @@ bump_build_number:	# Bump build number
 	@echo "╠ Bump build number $(VERSION_NUMBER)"
 
 commit_version:
+	$(SET_VERSION_NUMBER)
 	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
 	@git push origin main
 	@git tag -a $(VERSION_NUMBER) -m "Bump version to $(VERSION_NUMBER)"
