@@ -1,4 +1,5 @@
 .PHONY: all run_dev_web run_dev_mobile run_unit clean upgrade lint format build_dev_mobile help 
+
 EXTRACT_VERSION_NUMBER = $(shell grep 'version: ' pubspec.yaml | sed 's/version: //')
 SET_VERSION_NUMBER = $(eval VERSION_NUMBER=$(EXTRACT_VERSION_NUMBER))
 
@@ -64,25 +65,23 @@ run_mobile: ## Runs the mobile application in dev
 bump_build_number:	# Bump build number
 	@perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.($$2+1).$$3.($$4+1)/e' pubspec.yaml
 	$(SET_VERSION_NUMBER)
-	@echo $(VERSION_NUMBER)
-	@echo "╠ Bump build number $(VERSION_NUMBER)"
-
-commit_version:
-	$(SET_VERSION_NUMBER)
-	@echo "Commit $(VERSION_NUMBER)"
 	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
 	@git push origin main
+	@echo "╠ Bump build number $(VERSION_NUMBER)"
+
 tag_version:
 	$(SET_VERSION_NUMBER)
-	@echo "Tag $(VERSION_NUMBER)"
-	@git tag -a $(VERSION_NUMBER) -m "Bump version to $(VERSION_NUMBER)"
+	@echo "Tag version $(VERSION_NUMBER)"
+	@git tag -a $(VERSION_NUMBER) -m "v$(VERSION_NUMBER)"
 	@git push origin --tags
 
-deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
+deploy_mobile_ios: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
 	@echo "╠  Building the iOS app"
 	@flutter build ipa
-	@flutter build appbundle
-	@open ./build/ios/ipa
 
-deploy_mobile-android:
+deploy_mobile_android:
+	@echo "╠  Building the Android app"
 	@flutter build appbundle
+
+deploy: deploy_mobile_ios deploy_mobile_android
+	@open ./build/ios/ipa
