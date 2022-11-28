@@ -44,7 +44,7 @@ make upgrade
 ### Deploy iOS
 
 ```sh
-make build_ios_mobile
+make deploy_mobile-ios
 
 ```
 

@@ -70,12 +70,14 @@ bump_build_number:	# Bump build number
 commit_version:
 	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
 	@git push origin main
+	@git tag -a $(VERSION_NUMBER) -m "Bump version to $(VERSION_NUMBER)"
+	@git push origin $(VERSION_NUMBER)
 
-build_ios_mobile: format lint get_pub create_icons build_runner bump_build_number commit_version
+deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version
 	@echo "╠  Building the iOS app"
 	@flutter build ipa
+	@flutter build appbundle
 	@open ./build/ios/ipa
 
-deploy_ios_mobile: build_ios_mobile
-	@open ./build/ios/iphoneos/Runner.app
-	
+deploy_mobile-android:
+	@flutter build appbundle
