@@ -81,7 +81,6 @@ tag_version:
 deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
 	@echo "╠  Building the iOS app"
 	@flutter build ipa
-	@flutter build appbundle
 	@open ./build/ios/ipa
 
 deploy_mobile-android:
