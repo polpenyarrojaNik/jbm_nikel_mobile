@@ -69,10 +69,11 @@ bump_build_number:	# Bump build number
 
 commit_version:
 	$(SET_VERSION_NUMBER)
+	@echo "Commit $(VERSION_NUMBER)"
 	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
 	@git push origin main
 	@git tag -a $(VERSION_NUMBER) -m "Bump version to $(VERSION_NUMBER)"
-	@git push origin $(VERSION_NUMBER)
+	@git push origin --tags
 
 deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version
 	@echo "╠  Building the iOS app"
