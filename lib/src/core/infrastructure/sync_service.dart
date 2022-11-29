@@ -994,7 +994,8 @@ class SyncService {
                 .equalsExp(_db.visitaLocalTable.visitaAppId))
       ]);
 
-      query.where(_db.visitaLocalTable.tratada.equals('N'));
+      query.where(_db.visitaTable.visitaAppId.isNotNull() &
+          _db.visitaLocalTable.tratada.equals('N'));
 
       final visitasNoTratadasDTO =
           await query.map((row) => row.readTable(_db.visitaLocalTable)).get();
