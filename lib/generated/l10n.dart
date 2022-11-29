@@ -2504,6 +2504,46 @@ class S {
     );
   }
 
+  /// `Name`
+  String get visitas_show_visitaDetalle_nombre {
+    return Intl.message(
+      'Name',
+      name: 'visitas_show_visitaDetalle_nombre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get visitas_show_visitaDetalle_email {
+    return Intl.message(
+      'Email',
+      name: 'visitas_show_visitaDetalle_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get visitas_show_visitaDetalle_telefono {
+    return Intl.message(
+      'Phone',
+      name: 'visitas_show_visitaDetalle_telefono',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provisional customer`
+  String get visitas_show_visitaDetalle_clienteProvisional {
+    return Intl.message(
+      'Provisional customer',
+      name: 'visitas_show_visitaDetalle_clienteProvisional',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Summary`
   String get visitas_show_visitaDetalle_resumen {
     return Intl.message(
@@ -2569,6 +2609,46 @@ class S {
     return Intl.message(
       'Contact',
       name: 'visitas_edit_visitaEditar_contacto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get visitas_edit_visitaEditar_nombre {
+    return Intl.message(
+      'Name',
+      name: 'visitas_edit_visitaEditar_nombre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get visitas_edit_visitaEditar_email {
+    return Intl.message(
+      'Email',
+      name: 'visitas_edit_visitaEditar_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get visitas_edit_visitaEditar_telefono {
+    return Intl.message(
+      'Phone',
+      name: 'visitas_edit_visitaEditar_telefono',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provisional customer`
+  String get visitas_edit_visitaEditar_clienteProvisional {
+    return Intl.message(
+      'Provisional customer',
+      name: 'visitas_edit_visitaEditar_clienteProvisional',
       desc: '',
       args: [],
     );

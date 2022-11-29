@@ -248,10 +248,18 @@
   "visitas_edit_visitaEditar_errorValidarFormulario": "Une érreur est survenue en validant le formulaire",
   "visitas_edit_visitaEditar_fecha": "Date",
   "visitas_edit_visitaEditar_resumen": "Résumé",
+  "visitas_edit_visitaEditar_nombre": "Nom",
+  "visitas_edit_visitaEditar_email": "Email",
+  "visitas_edit_visitaEditar_telefono": "Téléphone",
+  "visitas_edit_visitaEditar_clienteProvisional": "Client provisoire",
   "visitas_edit_visitaEditar_saved": "Sauvegarder",
   "visitas_edit_visitaEditar_titleEditar": "Éditer la visite",
   "visitas_edit_visitaEditar_titleNueva": "Nouvelle visite",
   "visitas_show_visitaDetalle_contacto": "Contact",
   "visitas_show_visitaDetalle_resumen": "Résumé",
+  "visitas_show_visitaDetalle_nombre": "Nom",
+  "visitas_show_visitaDetalle_email": "Email",
+  "visitas_show_visitaDetalle_telefono": "Téléphone",
+  "visitas_show_visitaDetalle_clienteProvisional": "Client provisoire",
   "articulo_todos": "Toute"
 }

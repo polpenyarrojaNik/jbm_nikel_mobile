@@ -49,7 +49,7 @@ class VisitaListaTile extends StatelessWidget {
               ],
             ),
             Text(
-              '#${visita.clienteId} ${(visita.nombreCliente != null) ? visita.nombreCliente : ''}',
+              visita.getNombreMostrar(),
               style: Theme.of(context).textTheme.subtitle2,
             ),
             gapH8,

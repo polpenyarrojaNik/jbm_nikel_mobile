@@ -14823,10 +14823,14 @@ class $EstadisticasUltimosPreciosTableTable
 
 class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String> id;
-  final Value<String> clienteId;
   final Value<DateTime> fecha;
+  final Value<String?> clienteId;
+  final Value<String> isClienteProvisional;
+  final Value<String?> clienteProvisionalNombre;
+  final Value<String?> clienteProvisionalEmail;
+  final Value<String?> clienteProvisionalTelefono;
   final Value<String> numEmpl;
-  final Value<String?> contacto;
+  final Value<String> contacto;
   final Value<String?> resumen;
   final Value<double> latitud;
   final Value<double> longitud;
@@ -14835,8 +14839,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String> deleted;
   const VisitaTableCompanion({
     this.id = const Value.absent(),
-    this.clienteId = const Value.absent(),
     this.fecha = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.isClienteProvisional = const Value.absent(),
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
     this.numEmpl = const Value.absent(),
     this.contacto = const Value.absent(),
     this.resumen = const Value.absent(),
@@ -14848,10 +14856,14 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   });
   VisitaTableCompanion.insert({
     required String id,
-    required String clienteId,
     required DateTime fecha,
+    this.clienteId = const Value.absent(),
+    required String isClienteProvisional,
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
     required String numEmpl,
-    this.contacto = const Value.absent(),
+    required String contacto,
     this.resumen = const Value.absent(),
     required double latitud,
     required double longitud,
@@ -14859,16 +14871,21 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        clienteId = Value(clienteId),
         fecha = Value(fecha),
+        isClienteProvisional = Value(isClienteProvisional),
         numEmpl = Value(numEmpl),
+        contacto = Value(contacto),
         latitud = Value(latitud),
         longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
   static Insertable<VisitaDTO> custom({
     Expression<String>? id,
-    Expression<String>? clienteId,
     Expression<DateTime>? fecha,
+    Expression<String>? clienteId,
+    Expression<String>? isClienteProvisional,
+    Expression<String>? clienteProvisionalNombre,
+    Expression<String>? clienteProvisionalEmail,
+    Expression<String>? clienteProvisionalTelefono,
     Expression<String>? numEmpl,
     Expression<String>? contacto,
     Expression<String>? resumen,
@@ -14880,8 +14897,16 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'VISITA_ID': id,
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (fecha != null) 'FECHA': fecha,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (isClienteProvisional != null)
+        'CLIENTE_POTENCIAL_SN': isClienteProvisional,
+      if (clienteProvisionalNombre != null)
+        'CLIENTE_POTENCIAL_NOMBRE': clienteProvisionalNombre,
+      if (clienteProvisionalEmail != null)
+        'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
+      if (clienteProvisionalTelefono != null)
+        'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
       if (contacto != null) 'CONTACTO': contacto,
       if (resumen != null) 'RESUMEN': resumen,
@@ -14895,10 +14920,14 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
 
   VisitaTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? clienteId,
       Value<DateTime>? fecha,
+      Value<String?>? clienteId,
+      Value<String>? isClienteProvisional,
+      Value<String?>? clienteProvisionalNombre,
+      Value<String?>? clienteProvisionalEmail,
+      Value<String?>? clienteProvisionalTelefono,
       Value<String>? numEmpl,
-      Value<String?>? contacto,
+      Value<String>? contacto,
       Value<String?>? resumen,
       Value<double>? latitud,
       Value<double>? longitud,
@@ -14907,8 +14936,15 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       Value<String>? deleted}) {
     return VisitaTableCompanion(
       id: id ?? this.id,
-      clienteId: clienteId ?? this.clienteId,
       fecha: fecha ?? this.fecha,
+      clienteId: clienteId ?? this.clienteId,
+      isClienteProvisional: isClienteProvisional ?? this.isClienteProvisional,
+      clienteProvisionalNombre:
+          clienteProvisionalNombre ?? this.clienteProvisionalNombre,
+      clienteProvisionalEmail:
+          clienteProvisionalEmail ?? this.clienteProvisionalEmail,
+      clienteProvisionalTelefono:
+          clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
       numEmpl: numEmpl ?? this.numEmpl,
       contacto: contacto ?? this.contacto,
       resumen: resumen ?? this.resumen,
@@ -14926,11 +14962,27 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     if (id.present) {
       map['VISITA_ID'] = Variable<String>(id.value);
     }
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
+    }
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (fecha.present) {
-      map['FECHA'] = Variable<DateTime>(fecha.value);
+    if (isClienteProvisional.present) {
+      map['CLIENTE_POTENCIAL_SN'] =
+          Variable<String>(isClienteProvisional.value);
+    }
+    if (clienteProvisionalNombre.present) {
+      map['CLIENTE_POTENCIAL_NOMBRE'] =
+          Variable<String>(clienteProvisionalNombre.value);
+    }
+    if (clienteProvisionalEmail.present) {
+      map['CLIENTE_POTENCIAL_EMAIL'] =
+          Variable<String>(clienteProvisionalEmail.value);
+    }
+    if (clienteProvisionalTelefono.present) {
+      map['CLIENTE_POTENCIAL_TELEFONO'] =
+          Variable<String>(clienteProvisionalTelefono.value);
     }
     if (numEmpl.present) {
       map['NUM_EMPL'] = Variable<String>(numEmpl.value);
@@ -14963,8 +15015,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   String toString() {
     return (StringBuffer('VisitaTableCompanion(')
           ..write('id: $id, ')
-          ..write('clienteId: $clienteId, ')
           ..write('fecha: $fecha, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('isClienteProvisional: $isClienteProvisional, ')
+          ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
+          ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
+          ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
           ..write('numEmpl: $numEmpl, ')
           ..write('contacto: $contacto, ')
           ..write('resumen: $resumen, ')
@@ -14989,17 +15045,41 @@ class $VisitaTableTable extends VisitaTable
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'VISITA_ID', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _clienteIdMeta =
-      const VerificationMeta('clienteId');
-  @override
-  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
       'FECHA', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _isClienteProvisionalMeta =
+      const VerificationMeta('isClienteProvisional');
+  @override
+  late final GeneratedColumn<String> isClienteProvisional =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_SN', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _clienteProvisionalNombreMeta =
+      const VerificationMeta('clienteProvisionalNombre');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalNombre =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_NOMBRE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalEmailMeta =
+      const VerificationMeta('clienteProvisionalEmail');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalEmail =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_EMAIL', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalTelefonoMeta =
+      const VerificationMeta('clienteProvisionalTelefono');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalTelefono =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_TELEFONO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _numEmplMeta =
       const VerificationMeta('numEmpl');
   @override
@@ -15010,8 +15090,8 @@ class $VisitaTableTable extends VisitaTable
       const VerificationMeta('contacto');
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
-      'CONTACTO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+      'CONTACTO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _resumenMeta =
       const VerificationMeta('resumen');
   @override
@@ -15053,8 +15133,12 @@ class $VisitaTableTable extends VisitaTable
   @override
   List<GeneratedColumn> get $columns => [
         id,
-        clienteId,
         fecha,
+        clienteId,
+        isClienteProvisional,
+        clienteProvisionalNombre,
+        clienteProvisionalEmail,
+        clienteProvisionalTelefono,
         numEmpl,
         contacto,
         resumen,
@@ -15079,17 +15163,43 @@ class $VisitaTableTable extends VisitaTable
     } else if (isInserting) {
       context.missing(_idMeta);
     }
-    if (data.containsKey('CLIENTE_ID')) {
-      context.handle(_clienteIdMeta,
-          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
-    } else if (isInserting) {
-      context.missing(_clienteIdMeta);
-    }
     if (data.containsKey('FECHA')) {
       context.handle(
           _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
     } else if (isInserting) {
       context.missing(_fechaMeta);
+    }
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_SN')) {
+      context.handle(
+          _isClienteProvisionalMeta,
+          isClienteProvisional.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_SN']!, _isClienteProvisionalMeta));
+    } else if (isInserting) {
+      context.missing(_isClienteProvisionalMeta);
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_NOMBRE')) {
+      context.handle(
+          _clienteProvisionalNombreMeta,
+          clienteProvisionalNombre.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_NOMBRE']!,
+              _clienteProvisionalNombreMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_EMAIL')) {
+      context.handle(
+          _clienteProvisionalEmailMeta,
+          clienteProvisionalEmail.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_EMAIL']!, _clienteProvisionalEmailMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_TELEFONO')) {
+      context.handle(
+          _clienteProvisionalTelefonoMeta,
+          clienteProvisionalTelefono.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_TELEFONO']!,
+              _clienteProvisionalTelefonoMeta));
     }
     if (data.containsKey('NUM_EMPL')) {
       context.handle(_numEmplMeta,
@@ -15100,6 +15210,8 @@ class $VisitaTableTable extends VisitaTable
     if (data.containsKey('CONTACTO')) {
       context.handle(_contactoMeta,
           contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta));
+    } else if (isInserting) {
+      context.missing(_contactoMeta);
     }
     if (data.containsKey('RESUMEN')) {
       context.handle(_resumenMeta,
@@ -15146,14 +15258,25 @@ class $VisitaTableTable extends VisitaTable
     return VisitaDTO(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}VISITA_ID'])!,
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       fecha: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID']),
+      isClienteProvisional: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}CLIENTE_POTENCIAL_SN'])!,
+      clienteProvisionalNombre: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_NOMBRE']),
+      clienteProvisionalEmail: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_EMAIL']),
+      clienteProvisionalTelefono: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO']),
       numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO'])!,
       resumen: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
       latitud: attachedDatabase.typeMapping
@@ -15177,10 +15300,14 @@ class $VisitaTableTable extends VisitaTable
 
 class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   final Value<String> visitaAppId;
-  final Value<String> clienteId;
+  final Value<String?> clienteId;
+  final Value<String> isClienteProvisional;
+  final Value<String?> clienteProvisionalNombre;
+  final Value<String?> clienteProvisionalEmail;
+  final Value<String?> clienteProvisionalTelefono;
   final Value<DateTime> fecha;
   final Value<String> numEmpl;
-  final Value<String?> contacto;
+  final Value<String> contacto;
   final Value<String?> resumen;
   final Value<double> latitud;
   final Value<double> longitud;
@@ -15190,6 +15317,10 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   const VisitaLocalTableCompanion({
     this.visitaAppId = const Value.absent(),
     this.clienteId = const Value.absent(),
+    this.isClienteProvisional = const Value.absent(),
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
     this.fecha = const Value.absent(),
     this.numEmpl = const Value.absent(),
     this.contacto = const Value.absent(),
@@ -15202,10 +15333,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   });
   VisitaLocalTableCompanion.insert({
     required String visitaAppId,
-    required String clienteId,
+    this.clienteId = const Value.absent(),
+    required String isClienteProvisional,
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
     required DateTime fecha,
     required String numEmpl,
-    this.contacto = const Value.absent(),
+    required String contacto,
     this.resumen = const Value.absent(),
     required double latitud,
     required double longitud,
@@ -15213,14 +15348,19 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.tratada = const Value.absent(),
     this.errorSyncMessage = const Value.absent(),
   })  : visitaAppId = Value(visitaAppId),
-        clienteId = Value(clienteId),
+        isClienteProvisional = Value(isClienteProvisional),
         fecha = Value(fecha),
         numEmpl = Value(numEmpl),
+        contacto = Value(contacto),
         latitud = Value(latitud),
         longitud = Value(longitud);
   static Insertable<VisitaLocalDTO> custom({
     Expression<String>? visitaAppId,
     Expression<String>? clienteId,
+    Expression<String>? isClienteProvisional,
+    Expression<String>? clienteProvisionalNombre,
+    Expression<String>? clienteProvisionalEmail,
+    Expression<String>? clienteProvisionalTelefono,
     Expression<DateTime>? fecha,
     Expression<String>? numEmpl,
     Expression<String>? contacto,
@@ -15234,6 +15374,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     return RawValuesInsertable({
       if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
       if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (isClienteProvisional != null)
+        'CLIENTE_POTENCIAL_SN': isClienteProvisional,
+      if (clienteProvisionalNombre != null)
+        'CLIENTE_POTENCIAL_NOMBRE': clienteProvisionalNombre,
+      if (clienteProvisionalEmail != null)
+        'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
+      if (clienteProvisionalTelefono != null)
+        'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
       if (fecha != null) 'FECHA': fecha,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
       if (contacto != null) 'CONTACTO': contacto,
@@ -15248,10 +15396,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
 
   VisitaLocalTableCompanion copyWith(
       {Value<String>? visitaAppId,
-      Value<String>? clienteId,
+      Value<String?>? clienteId,
+      Value<String>? isClienteProvisional,
+      Value<String?>? clienteProvisionalNombre,
+      Value<String?>? clienteProvisionalEmail,
+      Value<String?>? clienteProvisionalTelefono,
       Value<DateTime>? fecha,
       Value<String>? numEmpl,
-      Value<String?>? contacto,
+      Value<String>? contacto,
       Value<String?>? resumen,
       Value<double>? latitud,
       Value<double>? longitud,
@@ -15261,6 +15413,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     return VisitaLocalTableCompanion(
       visitaAppId: visitaAppId ?? this.visitaAppId,
       clienteId: clienteId ?? this.clienteId,
+      isClienteProvisional: isClienteProvisional ?? this.isClienteProvisional,
+      clienteProvisionalNombre:
+          clienteProvisionalNombre ?? this.clienteProvisionalNombre,
+      clienteProvisionalEmail:
+          clienteProvisionalEmail ?? this.clienteProvisionalEmail,
+      clienteProvisionalTelefono:
+          clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
       fecha: fecha ?? this.fecha,
       numEmpl: numEmpl ?? this.numEmpl,
       contacto: contacto ?? this.contacto,
@@ -15281,6 +15440,22 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     }
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (isClienteProvisional.present) {
+      map['CLIENTE_POTENCIAL_SN'] =
+          Variable<String>(isClienteProvisional.value);
+    }
+    if (clienteProvisionalNombre.present) {
+      map['CLIENTE_POTENCIAL_NOMBRE'] =
+          Variable<String>(clienteProvisionalNombre.value);
+    }
+    if (clienteProvisionalEmail.present) {
+      map['CLIENTE_POTENCIAL_EMAIL'] =
+          Variable<String>(clienteProvisionalEmail.value);
+    }
+    if (clienteProvisionalTelefono.present) {
+      map['CLIENTE_POTENCIAL_TELEFONO'] =
+          Variable<String>(clienteProvisionalTelefono.value);
     }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
@@ -15317,6 +15492,10 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     return (StringBuffer('VisitaLocalTableCompanion(')
           ..write('visitaAppId: $visitaAppId, ')
           ..write('clienteId: $clienteId, ')
+          ..write('isClienteProvisional: $isClienteProvisional, ')
+          ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
+          ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
+          ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
           ..write('fecha: $fecha, ')
           ..write('numEmpl: $numEmpl, ')
           ..write('contacto: $contacto, ')
@@ -15347,8 +15526,32 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       const VerificationMeta('clienteId');
   @override
   late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
-      'CLIENTE_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      'CLIENTE_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _isClienteProvisionalMeta =
+      const VerificationMeta('isClienteProvisional');
+  @override
+  late final GeneratedColumn<String> isClienteProvisional =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_SN', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _clienteProvisionalNombreMeta =
+      const VerificationMeta('clienteProvisionalNombre');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalNombre =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_NOMBRE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalEmailMeta =
+      const VerificationMeta('clienteProvisionalEmail');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalEmail =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_EMAIL', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalTelefonoMeta =
+      const VerificationMeta('clienteProvisionalTelefono');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalTelefono =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_TELEFONO', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
@@ -15364,8 +15567,8 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       const VerificationMeta('contacto');
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
-      'CONTACTO', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+      'CONTACTO', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _resumenMeta =
       const VerificationMeta('resumen');
   @override
@@ -15410,6 +15613,10 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   List<GeneratedColumn> get $columns => [
         visitaAppId,
         clienteId,
+        isClienteProvisional,
+        clienteProvisionalNombre,
+        clienteProvisionalEmail,
+        clienteProvisionalTelefono,
         fecha,
         numEmpl,
         contacto,
@@ -15440,8 +15647,34 @@ class $VisitaLocalTableTable extends VisitaLocalTable
     if (data.containsKey('CLIENTE_ID')) {
       context.handle(_clienteIdMeta,
           clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_SN')) {
+      context.handle(
+          _isClienteProvisionalMeta,
+          isClienteProvisional.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_SN']!, _isClienteProvisionalMeta));
     } else if (isInserting) {
-      context.missing(_clienteIdMeta);
+      context.missing(_isClienteProvisionalMeta);
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_NOMBRE')) {
+      context.handle(
+          _clienteProvisionalNombreMeta,
+          clienteProvisionalNombre.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_NOMBRE']!,
+              _clienteProvisionalNombreMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_EMAIL')) {
+      context.handle(
+          _clienteProvisionalEmailMeta,
+          clienteProvisionalEmail.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_EMAIL']!, _clienteProvisionalEmailMeta));
+    }
+    if (data.containsKey('CLIENTE_POTENCIAL_TELEFONO')) {
+      context.handle(
+          _clienteProvisionalTelefonoMeta,
+          clienteProvisionalTelefono.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_TELEFONO']!,
+              _clienteProvisionalTelefonoMeta));
     }
     if (data.containsKey('FECHA')) {
       context.handle(
@@ -15458,6 +15691,8 @@ class $VisitaLocalTableTable extends VisitaLocalTable
     if (data.containsKey('CONTACTO')) {
       context.handle(_contactoMeta,
           contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta));
+    } else if (isInserting) {
+      context.missing(_contactoMeta);
     }
     if (data.containsKey('RESUMEN')) {
       context.handle(_resumenMeta,
@@ -15500,14 +15735,25 @@ class $VisitaLocalTableTable extends VisitaLocalTable
     return VisitaLocalDTO(
       visitaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}COD_VISITA_APP'])!,
-      clienteId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       fecha: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID']),
+      isClienteProvisional: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}CLIENTE_POTENCIAL_SN'])!,
+      clienteProvisionalNombre: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_NOMBRE']),
+      clienteProvisionalEmail: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_EMAIL']),
+      clienteProvisionalTelefono: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO']),
       numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO'])!,
       resumen: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
       latitud: attachedDatabase.typeMapping

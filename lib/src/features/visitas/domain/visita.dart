@@ -7,11 +7,15 @@ class Visita with _$Visita {
   const Visita._();
   const factory Visita({
     String? id,
-    required String clienteId,
+    String? clienteId,
     String? nombreCliente,
+    required bool isClienteProvisional,
+    String? clienteProvisionalNombre,
+    String? clienteProvisionalEmail,
+    String? clienteProvisionalTelefono,
     required DateTime fecha,
     required String numEmpl,
-    String? contacto,
+    required String contacto,
     String? resumen,
     required double latitud,
     required double longitud,
@@ -26,4 +30,8 @@ class Visita with _$Visita {
   bool getIsLocal() => !tratada;
 
   bool isEditable() => (!tratada && !enviada);
+
+  String getNombreMostrar() => isClienteProvisional
+      ? clienteProvisionalNombre!
+      : '#$clienteId ${(nombreCliente != null) ? nombreCliente : ''}';
 }

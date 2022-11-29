@@ -17,11 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Visita {
   String? get id => throw _privateConstructorUsedError;
-  String get clienteId => throw _privateConstructorUsedError;
+  String? get clienteId => throw _privateConstructorUsedError;
   String? get nombreCliente => throw _privateConstructorUsedError;
+  bool get isClienteProvisional => throw _privateConstructorUsedError;
+  String? get clienteProvisionalNombre => throw _privateConstructorUsedError;
+  String? get clienteProvisionalEmail => throw _privateConstructorUsedError;
+  String? get clienteProvisionalTelefono => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
   String get numEmpl => throw _privateConstructorUsedError;
-  String? get contacto => throw _privateConstructorUsedError;
+  String get contacto => throw _privateConstructorUsedError;
   String? get resumen => throw _privateConstructorUsedError;
   double get latitud => throw _privateConstructorUsedError;
   double get longitud => throw _privateConstructorUsedError;
@@ -43,11 +47,15 @@ abstract class $VisitaCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String clienteId,
+      String? clienteId,
       String? nombreCliente,
+      bool isClienteProvisional,
+      String? clienteProvisionalNombre,
+      String? clienteProvisionalEmail,
+      String? clienteProvisionalTelefono,
       DateTime fecha,
       String numEmpl,
-      String? contacto,
+      String contacto,
       String? resumen,
       double latitud,
       double longitud,
@@ -73,11 +81,15 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
   @override
   $Res call({
     Object? id = freezed,
-    Object? clienteId = null,
+    Object? clienteId = freezed,
     Object? nombreCliente = freezed,
+    Object? isClienteProvisional = null,
+    Object? clienteProvisionalNombre = freezed,
+    Object? clienteProvisionalEmail = freezed,
+    Object? clienteProvisionalTelefono = freezed,
     Object? fecha = null,
     Object? numEmpl = null,
-    Object? contacto = freezed,
+    Object? contacto = null,
     Object? resumen = freezed,
     Object? latitud = null,
     Object? longitud = null,
@@ -93,13 +105,29 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: null == clienteId
+      clienteId: freezed == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nombreCliente: freezed == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isClienteProvisional: null == isClienteProvisional
+          ? _value.isClienteProvisional
+          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clienteProvisionalNombre: freezed == clienteProvisionalNombre
+          ? _value.clienteProvisionalNombre
+          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalEmail: freezed == clienteProvisionalEmail
+          ? _value.clienteProvisionalEmail
+          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
+          ? _value.clienteProvisionalTelefono
+          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
               as String?,
       fecha: null == fecha
           ? _value.fecha
@@ -109,10 +137,10 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: freezed == contacto
+      contacto: null == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
@@ -161,11 +189,15 @@ abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String clienteId,
+      String? clienteId,
       String? nombreCliente,
+      bool isClienteProvisional,
+      String? clienteProvisionalNombre,
+      String? clienteProvisionalEmail,
+      String? clienteProvisionalTelefono,
       DateTime fecha,
       String numEmpl,
-      String? contacto,
+      String contacto,
       String? resumen,
       double latitud,
       double longitud,
@@ -188,11 +220,15 @@ class __$$_VisitaCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? clienteId = null,
+    Object? clienteId = freezed,
     Object? nombreCliente = freezed,
+    Object? isClienteProvisional = null,
+    Object? clienteProvisionalNombre = freezed,
+    Object? clienteProvisionalEmail = freezed,
+    Object? clienteProvisionalTelefono = freezed,
     Object? fecha = null,
     Object? numEmpl = null,
-    Object? contacto = freezed,
+    Object? contacto = null,
     Object? resumen = freezed,
     Object? latitud = null,
     Object? longitud = null,
@@ -208,13 +244,29 @@ class __$$_VisitaCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clienteId: null == clienteId
+      clienteId: freezed == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       nombreCliente: freezed == nombreCliente
           ? _value.nombreCliente
           : nombreCliente // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isClienteProvisional: null == isClienteProvisional
+          ? _value.isClienteProvisional
+          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clienteProvisionalNombre: freezed == clienteProvisionalNombre
+          ? _value.clienteProvisionalNombre
+          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalEmail: freezed == clienteProvisionalEmail
+          ? _value.clienteProvisionalEmail
+          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
+          ? _value.clienteProvisionalTelefono
+          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
               as String?,
       fecha: null == fecha
           ? _value.fecha
@@ -224,10 +276,10 @@ class __$$_VisitaCopyWithImpl<$Res>
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: freezed == contacto
+      contacto: null == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
@@ -273,11 +325,15 @@ class __$$_VisitaCopyWithImpl<$Res>
 class _$_Visita extends _Visita {
   const _$_Visita(
       {this.id,
-      required this.clienteId,
+      this.clienteId,
       this.nombreCliente,
+      required this.isClienteProvisional,
+      this.clienteProvisionalNombre,
+      this.clienteProvisionalEmail,
+      this.clienteProvisionalTelefono,
       required this.fecha,
       required this.numEmpl,
-      this.contacto,
+      required this.contacto,
       this.resumen,
       required this.latitud,
       required this.longitud,
@@ -292,15 +348,23 @@ class _$_Visita extends _Visita {
   @override
   final String? id;
   @override
-  final String clienteId;
+  final String? clienteId;
   @override
   final String? nombreCliente;
+  @override
+  final bool isClienteProvisional;
+  @override
+  final String? clienteProvisionalNombre;
+  @override
+  final String? clienteProvisionalEmail;
+  @override
+  final String? clienteProvisionalTelefono;
   @override
   final DateTime fecha;
   @override
   final String numEmpl;
   @override
-  final String? contacto;
+  final String contacto;
   @override
   final String? resumen;
   @override
@@ -322,7 +386,7 @@ class _$_Visita extends _Visita {
 
   @override
   String toString() {
-    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, resumen: $resumen, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, resumen: $resumen, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -335,6 +399,18 @@ class _$_Visita extends _Visita {
                 other.clienteId == clienteId) &&
             (identical(other.nombreCliente, nombreCliente) ||
                 other.nombreCliente == nombreCliente) &&
+            (identical(other.isClienteProvisional, isClienteProvisional) ||
+                other.isClienteProvisional == isClienteProvisional) &&
+            (identical(
+                    other.clienteProvisionalNombre, clienteProvisionalNombre) ||
+                other.clienteProvisionalNombre == clienteProvisionalNombre) &&
+            (identical(
+                    other.clienteProvisionalEmail, clienteProvisionalEmail) ||
+                other.clienteProvisionalEmail == clienteProvisionalEmail) &&
+            (identical(other.clienteProvisionalTelefono,
+                    clienteProvisionalTelefono) ||
+                other.clienteProvisionalTelefono ==
+                    clienteProvisionalTelefono) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
             (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
             (identical(other.contacto, contacto) ||
@@ -355,23 +431,28 @@ class _$_Visita extends _Visita {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      clienteId,
-      nombreCliente,
-      fecha,
-      numEmpl,
-      contacto,
-      resumen,
-      latitud,
-      longitud,
-      visitaAppId,
-      lastUpdated,
-      deleted,
-      enviada,
-      tratada,
-      errorSyncMessage);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        clienteId,
+        nombreCliente,
+        isClienteProvisional,
+        clienteProvisionalNombre,
+        clienteProvisionalEmail,
+        clienteProvisionalTelefono,
+        fecha,
+        numEmpl,
+        contacto,
+        resumen,
+        latitud,
+        longitud,
+        visitaAppId,
+        lastUpdated,
+        deleted,
+        enviada,
+        tratada,
+        errorSyncMessage
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -383,11 +464,15 @@ class _$_Visita extends _Visita {
 abstract class _Visita extends Visita {
   const factory _Visita(
       {final String? id,
-      required final String clienteId,
+      final String? clienteId,
       final String? nombreCliente,
+      required final bool isClienteProvisional,
+      final String? clienteProvisionalNombre,
+      final String? clienteProvisionalEmail,
+      final String? clienteProvisionalTelefono,
       required final DateTime fecha,
       required final String numEmpl,
-      final String? contacto,
+      required final String contacto,
       final String? resumen,
       required final double latitud,
       required final double longitud,
@@ -402,15 +487,23 @@ abstract class _Visita extends Visita {
   @override
   String? get id;
   @override
-  String get clienteId;
+  String? get clienteId;
   @override
   String? get nombreCliente;
+  @override
+  bool get isClienteProvisional;
+  @override
+  String? get clienteProvisionalNombre;
+  @override
+  String? get clienteProvisionalEmail;
+  @override
+  String? get clienteProvisionalTelefono;
   @override
   DateTime get fecha;
   @override
   String get numEmpl;
   @override
-  String? get contacto;
+  String get contacto;
   @override
   String? get resumen;
   @override

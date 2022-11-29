@@ -39,10 +39,17 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   final formKey = GlobalKey<FormBuilderState>();
   bool isValid = false;
   String? clienteId;
+  bool isClientePotencial = false;
 
   void onSelectedCliente(String selectedClienteId) {
     setState(() {
       clienteId = selectedClienteId;
+    });
+  }
+
+  void onChangeClientePotencial(bool newVale) {
+    setState(() {
+      isClientePotencial = newVale;
     });
   }
 
@@ -73,11 +80,12 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
     ref.listen<VisitaEditPageControllerState>(
         visitaEditPageControllerProvider(visitaIdLocalParam!), (__, state) {
       state.maybeWhen(
+        data: (visita) =>
+            isClientePotencial = visita?.isClienteProvisional ?? false,
         saved: (visita) {
           ref.invalidate(visitaProvider(visitaIdLocalParam!));
           ref.invalidate(visitaIndexScreenControllerProvider);
           ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
-
           context.showSuccessBar(
               content: Text(S.of(context).visitas_edit_visitaEditar_saved));
 
@@ -113,14 +121,18 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
         padding: const EdgeInsets.all(16),
         child: state.when(
           loading: () => const ProgressIndicatorWidget(),
-          data: (visita) => _VisitaForm(
-            formKey: formKey,
-            visita: visita,
-            onChanged: _onChanged,
-            onSelectedCliente: onSelectedCliente,
-            readOnly: false,
-            isNew: widget.isNew,
-          ),
+          data: (visita) {
+            return _VisitaForm(
+              formKey: formKey,
+              visita: visita,
+              onChanged: _onChanged,
+              onSelectedCliente: onSelectedCliente,
+              onChangeClientePotencial: onChangeClientePotencial,
+              isClienteProvisional: isClientePotencial,
+              readOnly: false,
+              isNew: widget.isNew,
+            );
+          },
           error: (Object error, StackTrace? _) => ErrorMessageWidget(
             (error is AppException) ? error.details.message : error.toString(),
           ),
@@ -129,6 +141,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             visita: visita,
             onChanged: _onChanged,
             onSelectedCliente: onSelectedCliente,
+            onChangeClientePotencial: onChangeClientePotencial,
+            isClienteProvisional: isClientePotencial,
             readOnly: false,
             isNew: widget.isNew,
           ),
@@ -137,6 +151,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             visita: visita,
             onChanged: _onChanged,
             onSelectedCliente: onSelectedCliente,
+            onChangeClientePotencial: onChangeClientePotencial,
+            isClienteProvisional: isClientePotencial,
             readOnly: true,
             isNew: widget.isNew,
           ),
@@ -146,6 +162,8 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             visita: visita,
             onChanged: _onChanged,
             onSelectedCliente: onSelectedCliente,
+            onChangeClientePotencial: onChangeClientePotencial,
+            isClienteProvisional: isClientePotencial,
             readOnly: false,
             isNew: widget.isNew,
           ),
@@ -162,11 +180,21 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           .upsertVisita(
             visitaLocal: Visita(
               id: null,
-              clienteId: clienteId!,
               fecha: (formKey.currentState!.value['fecha'] as DateTime).toUtc(),
+              clienteId: clienteId,
+              isClienteProvisional: isClientePotencial,
+              clienteProvisionalNombre: isClientePotencial
+                  ? formKey.currentState!.value['nombre'] as String
+                  : null,
+              clienteProvisionalEmail: isClientePotencial
+                  ? formKey.currentState!.value['email'] as String?
+                  : null,
+              clienteProvisionalTelefono: isClientePotencial
+                  ? formKey.currentState!.value['telefono'] as String?
+                  : null,
               numEmpl: ref.read(usuarioNotifierProvider)!.id,
               resumen: formKey.currentState!.value['resumen'] as String,
-              contacto: formKey.currentState!.value['contacto'] as String?,
+              contacto: formKey.currentState!.value['contacto'] as String,
               latitud: 0,
               longitud: 0,
               visitaAppId: widget.id,
@@ -189,6 +217,8 @@ class _VisitaForm extends StatelessWidget {
     required this.formKey,
     required this.onChanged,
     required this.onSelectedCliente,
+    required this.onChangeClientePotencial,
+    required this.isClienteProvisional,
     required this.visita,
     required this.readOnly,
     required this.isNew,
@@ -196,6 +226,8 @@ class _VisitaForm extends StatelessWidget {
   final GlobalKey<FormBuilderState> formKey;
   final void Function(dynamic) onChanged;
   final void Function(String clienteId) onSelectedCliente;
+  final void Function(bool newValue) onChangeClientePotencial;
+  final bool isClienteProvisional;
   final Visita? visita;
   final bool readOnly;
   final bool isNew;
@@ -207,12 +239,28 @@ class _VisitaForm extends StatelessWidget {
       autovalidateMode: AutovalidateMode.disabled,
       child: Column(
         children: [
-          _SelectClienteWidget(
-            onChanged: onChanged,
-            visita: visita,
-            readOnly: readOnly,
-            onSelectedCliente: onSelectedCliente,
+          FormBuilderSwitch(
+            name: 'cliente_provisional',
+            title: Text(
+                S.of(context).visitas_edit_visitaEditar_clienteProvisional),
+            onChanged: (newValue) => onChangeClientePotencial(newValue!),
+            initialValue: visita?.isClienteProvisional ?? isClienteProvisional,
           ),
+          if (isClienteProvisional)
+            _ClienteProvisionalContainer(
+              formKey: formKey,
+              onChanged: onChanged,
+              visita: visita,
+              readOnly: readOnly,
+              onChangeClientePotencial: onChangeClientePotencial,
+            ),
+          if (!isClienteProvisional)
+            _SelectClienteWidget(
+              onChanged: onChanged,
+              visita: visita,
+              readOnly: readOnly,
+              onSelectedCliente: onSelectedCliente,
+            ),
           FormBuilderDateTimePicker(
             name: 'fecha',
             onChanged: onChanged,
@@ -231,6 +279,9 @@ class _VisitaForm extends StatelessWidget {
             onChanged: onChanged,
             initialValue: visita?.contacto,
             enabled: !readOnly,
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.required(),
+            ]),
             decoration: InputDecoration(
               labelText: S.of(context).visitas_edit_visitaEditar_contacto,
             ),
@@ -250,6 +301,64 @@ class _VisitaForm extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ClienteProvisionalContainer extends StatelessWidget {
+  const _ClienteProvisionalContainer(
+      {required this.formKey,
+      required this.onChanged,
+      required this.onChangeClientePotencial,
+      required this.visita,
+      required this.readOnly});
+
+  final void Function(dynamic) onChanged;
+  final GlobalKey<FormBuilderState> formKey;
+  final void Function(bool newValue) onChangeClientePotencial;
+  final Visita? visita;
+  final bool readOnly;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        FormBuilderTextField(
+          name: 'nombre',
+          onChanged: onChanged,
+          initialValue: visita?.clienteProvisionalNombre,
+          enabled: !readOnly,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_nombre,
+          ),
+        ),
+        FormBuilderTextField(
+          name: 'email',
+          onChanged: onChanged,
+          initialValue: visita?.clienteProvisionalEmail,
+          enabled: !readOnly,
+          keyboardType: TextInputType.emailAddress,
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.email(),
+          ]),
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_email,
+          ),
+        ),
+        FormBuilderTextField(
+          name: 'telefono',
+          onChanged: onChanged,
+          initialValue: visita?.clienteProvisionalTelefono,
+          enabled: !readOnly,
+          keyboardType: TextInputType.phone,
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.numeric(),
+          ]),
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_telefono,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -278,11 +387,11 @@ class _SelectClienteWidgetState extends ConsumerState<_SelectClienteWidget> {
   @override
   void initState() {
     super.initState();
-    if (widget.visita != null) {
+    if (widget.visita != null && widget.visita!.clienteId != null) {
       controller.text = setClienteValue(
-          widget.visita!.clienteId, widget.visita?.nombreCliente);
+          widget.visita!.clienteId!, widget.visita?.nombreCliente);
       Future.microtask(
-          () => widget.onSelectedCliente(widget.visita!.clienteId));
+          () => widget.onSelectedCliente(widget.visita!.clienteId!));
     }
   }
 

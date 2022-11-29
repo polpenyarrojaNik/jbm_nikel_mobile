@@ -65,6 +65,8 @@ class VisitaListaPage extends ConsumerWidget {
         .syncAllVisitasRelacionados(isInMainThread: true);
     ref.invalidate(visitaLastSyncDateProvider);
 
+    ref.invalidate(visitaIndexScreenPaginatedControllerProvider);
+
     ref.invalidate(visitaIndexScreenControllerProvider);
   }
 

@@ -61,21 +61,34 @@ class VisitaDetallePage extends ConsumerWidget {
               ),
               Flexible(
                 child: Text(
-                  '#${visita.clienteId} ${(visita.nombreCliente != null) ? visita.nombreCliente : ''}',
+                  visita.getNombreMostrar(),
                   style: Theme.of(context).textTheme.subtitle2,
                 ),
               ),
+              if (visita.clienteProvisionalEmail != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue:
+                      S.of(context).visitas_show_visitaDetalle_email,
+                  value: visita.clienteProvisionalEmail!,
+                ),
+              if (visita.clienteProvisionalTelefono != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue:
+                      S.of(context).visitas_show_visitaDetalle_telefono,
+                  value: visita.clienteProvisionalTelefono!,
+                ),
               gapH8,
               if (visita.resumen != null)
                 ColumnFieldTextDetalle(
-                    fieldTitleValue:
-                        S.of(context).visitas_show_visitaDetalle_resumen,
-                    value: visita.resumen!),
-              if (visita.contacto != null)
-                ColumnFieldTextDetalle(
-                    fieldTitleValue:
-                        S.of(context).visitas_show_visitaDetalle_contacto,
-                    value: visita.contacto!),
+                  fieldTitleValue:
+                      S.of(context).visitas_show_visitaDetalle_resumen,
+                  value: visita.resumen!,
+                ),
+              ColumnFieldTextDetalle(
+                fieldTitleValue:
+                    S.of(context).visitas_show_visitaDetalle_contacto,
+                value: visita.contacto,
+              ),
               if (visita.errorSyncMessage != null) const Divider(),
               if (visita.errorSyncMessage != null)
                 Text(

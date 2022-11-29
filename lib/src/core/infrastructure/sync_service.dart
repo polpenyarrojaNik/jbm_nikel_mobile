@@ -575,7 +575,7 @@ class SyncService {
   Future<void> syncVisitas() async {
     try {
       await _syncTable(
-        apiPath: 'visitas',
+        apiPath: 'v2/visitas',
         tableInfo: _db.visitaTable,
         fromJson: (e) => VisitaDTO.fromJson(e),
       );

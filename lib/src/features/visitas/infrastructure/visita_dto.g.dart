@@ -8,10 +8,14 @@ part of 'visita_dto.dart';
 
 _$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
       id: json['VISITA_ID'] as String,
-      clienteId: json['CLIENTE_ID'] as String,
       fecha: DateTime.parse(json['FECHA'] as String),
+      clienteId: json['CLIENTE_ID'] as String?,
+      isClienteProvisional: json['CLIENTE_POTENCIAL_SN'] as String,
+      clienteProvisionalNombre: json['CLIENTE_POTENCIAL_NOMBRE'] as String?,
+      clienteProvisionalEmail: json['CLIENTE_POTENCIAL_EMAIL'] as String?,
+      clienteProvisionalTelefono: json['CLIENTE_POTENCIAL_TELEFONO'] as String?,
       numEmpl: json['NUM_EMPL'] as String,
-      contacto: json['CONTACTO'] as String?,
+      contacto: json['CONTACTO'] as String,
       resumen: json['RESUMEN'] as String?,
       latitud: (json['LATITUD'] as num).toDouble(),
       longitud: (json['LONGITUD'] as num).toDouble(),
@@ -23,8 +27,12 @@ _$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
 Map<String, dynamic> _$$_VisitaDTOToJson(_$_VisitaDTO instance) =>
     <String, dynamic>{
       'VISITA_ID': instance.id,
-      'CLIENTE_ID': instance.clienteId,
       'FECHA': instance.fecha.toIso8601String(),
+      'CLIENTE_ID': instance.clienteId,
+      'CLIENTE_POTENCIAL_SN': instance.isClienteProvisional,
+      'CLIENTE_POTENCIAL_NOMBRE': instance.clienteProvisionalNombre,
+      'CLIENTE_POTENCIAL_EMAIL': instance.clienteProvisionalEmail,
+      'CLIENTE_POTENCIAL_TELEFONO': instance.clienteProvisionalTelefono,
       'NUM_EMPL': instance.numEmpl,
       'CONTACTO': instance.contacto,
       'RESUMEN': instance.resumen,

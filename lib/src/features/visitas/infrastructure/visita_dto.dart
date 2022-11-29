@@ -13,10 +13,15 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
   const VisitaDTO._();
   const factory VisitaDTO({
     @JsonKey(name: 'VISITA_ID') required String id,
-    @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'FECHA') required DateTime fecha,
+    @JsonKey(name: 'CLIENTE_ID') String? clienteId,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_SN') required String isClienteProvisional,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE') String? clienteProvisionalNombre,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+        String? clienteProvisionalTelefono,
     @JsonKey(name: 'NUM_EMPL') required String numEmpl,
-    @JsonKey(name: 'CONTACTO') String? contacto,
+    @JsonKey(name: 'CONTACTO') required String contacto,
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
@@ -34,9 +39,13 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       bool? tratada = true}) {
     return Visita(
       id: id,
+      fecha: fecha,
       clienteId: clienteId,
       nombreCliente: nombreCliente,
-      fecha: fecha,
+      isClienteProvisional: (isClienteProvisional == 'S') ? true : false,
+      clienteProvisionalNombre: clienteProvisionalNombre,
+      clienteProvisionalEmail: clienteProvisionalEmail,
+      clienteProvisionalTelefono: clienteProvisionalTelefono,
       numEmpl: numEmpl,
       contacto: contacto,
       resumen: resumen,
@@ -54,8 +63,12 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     return VisitaTableCompanion(
       id: Value(id),
-      clienteId: Value(clienteId),
       fecha: Value(fecha),
+      clienteId: Value(clienteId),
+      isClienteProvisional: Value(isClienteProvisional),
+      clienteProvisionalNombre: Value(clienteProvisionalNombre),
+      clienteProvisionalEmail: Value(clienteProvisionalEmail),
+      clienteProvisionalTelefono: Value(clienteProvisionalTelefono),
       numEmpl: Value(numEmpl),
       contacto: Value(contacto),
       resumen: Value(resumen),
@@ -77,10 +90,17 @@ class VisitaTable extends Table {
   Set<Column> get primaryKey => {id};
 
   TextColumn get id => text().named('VISITA_ID')();
-  TextColumn get clienteId => text().named('CLIENTE_ID')();
   DateTimeColumn get fecha => dateTime().named('FECHA')();
+  TextColumn get clienteId => text().nullable().named('CLIENTE_ID')();
+  TextColumn get isClienteProvisional => text().named('CLIENTE_POTENCIAL_SN')();
+  TextColumn get clienteProvisionalNombre =>
+      text().nullable().named('CLIENTE_POTENCIAL_NOMBRE')();
+  TextColumn get clienteProvisionalEmail =>
+      text().nullable().named('CLIENTE_POTENCIAL_EMAIL')();
+  TextColumn get clienteProvisionalTelefono =>
+      text().nullable().named('CLIENTE_POTENCIAL_TELEFONO')();
   TextColumn get numEmpl => text().named('NUM_EMPL')();
-  TextColumn get contacto => text().nullable().named('CONTACTO')();
+  TextColumn get contacto => text().named('CONTACTO')();
   TextColumn get resumen => text().nullable().named('RESUMEN')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();

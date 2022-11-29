@@ -178,6 +178,7 @@ class ClienteRepository {
           if (predicate == null) {
             predicate = ((_db.clienteTable.id.like('%${busqueda[i]}%') |
                 (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                    _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
                     _db.clienteTable.poblacionFiscal.like('%${busqueda[i]}%') |
                     _db.clienteTable.provinciaFiscal
                         .like('%${busqueda[i]}%'))));
@@ -185,6 +186,7 @@ class ClienteRepository {
             predicate = predicate &
                 ((_db.clienteTable.id.like('%${busqueda[i]}%') |
                     (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                        _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
                         _db.clienteTable.poblacionFiscal
                             .like('%${busqueda[i]}%') |
                         _db.clienteTable.provinciaFiscal
@@ -269,6 +271,7 @@ class ClienteRepository {
           if (predicate == null) {
             predicate = ((_db.clienteTable.id.like('%${busqueda[i]}%') |
                 (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                    _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
                     _db.clienteTable.poblacionFiscal.like('%${busqueda[i]}%') |
                     _db.clienteTable.provinciaFiscal
                         .like('%${busqueda[i]}%'))));
@@ -276,6 +279,7 @@ class ClienteRepository {
             predicate = predicate &
                 ((_db.clienteTable.id.like('%${busqueda[i]}%') |
                     (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                        _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
                         _db.clienteTable.poblacionFiscal
                             .like('%${busqueda[i]}%') |
                         _db.clienteTable.provinciaFiscal

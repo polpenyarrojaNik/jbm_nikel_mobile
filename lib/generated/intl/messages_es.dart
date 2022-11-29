@@ -501,24 +501,40 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_edit_saved": MessageLookupByLibrary.simpleMessage("Guardado"),
         "visitas_edit_visitaEditar_cliente":
             MessageLookupByLibrary.simpleMessage("Cliente"),
+        "visitas_edit_visitaEditar_clienteProvisional":
+            MessageLookupByLibrary.simpleMessage("Cliente provisional"),
         "visitas_edit_visitaEditar_contacto":
             MessageLookupByLibrary.simpleMessage("Contacto"),
+        "visitas_edit_visitaEditar_email":
+            MessageLookupByLibrary.simpleMessage("Email"),
         "visitas_edit_visitaEditar_errorValidarFormulario":
             MessageLookupByLibrary.simpleMessage(
                 "Error validando el formulario"),
         "visitas_edit_visitaEditar_fecha":
             MessageLookupByLibrary.simpleMessage("Fecha"),
+        "visitas_edit_visitaEditar_nombre":
+            MessageLookupByLibrary.simpleMessage("Nombre"),
         "visitas_edit_visitaEditar_resumen":
             MessageLookupByLibrary.simpleMessage("Resumen"),
         "visitas_edit_visitaEditar_saved":
             MessageLookupByLibrary.simpleMessage("Saved"),
+        "visitas_edit_visitaEditar_telefono":
+            MessageLookupByLibrary.simpleMessage("Teléfono"),
         "visitas_edit_visitaEditar_titleEditar":
             MessageLookupByLibrary.simpleMessage("Editar visita"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nueva visita"),
+        "visitas_show_visitaDetalle_clienteProvisional":
+            MessageLookupByLibrary.simpleMessage("Cliente provisional"),
         "visitas_show_visitaDetalle_contacto":
             MessageLookupByLibrary.simpleMessage("Contacto"),
+        "visitas_show_visitaDetalle_email":
+            MessageLookupByLibrary.simpleMessage("Email"),
+        "visitas_show_visitaDetalle_nombre":
+            MessageLookupByLibrary.simpleMessage("Nombre"),
         "visitas_show_visitaDetalle_resumen":
-            MessageLookupByLibrary.simpleMessage("Resumen")
+            MessageLookupByLibrary.simpleMessage("Resumen"),
+        "visitas_show_visitaDetalle_telefono":
+            MessageLookupByLibrary.simpleMessage("Teléfono")
       };
 }

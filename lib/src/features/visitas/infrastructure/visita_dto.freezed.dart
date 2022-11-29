@@ -22,14 +22,22 @@ VisitaDTO _$VisitaDTOFromJson(Map<String, dynamic> json) {
 mixin _$VisitaDTO {
   @JsonKey(name: 'VISITA_ID')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CLIENTE_ID')
-  String get clienteId => throw _privateConstructorUsedError;
   @JsonKey(name: 'FECHA')
   DateTime get fecha => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_ID')
+  String? get clienteId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+  String get isClienteProvisional => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+  String? get clienteProvisionalNombre => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+  String? get clienteProvisionalEmail => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+  String? get clienteProvisionalTelefono => throw _privateConstructorUsedError;
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl => throw _privateConstructorUsedError;
   @JsonKey(name: 'CONTACTO')
-  String? get contacto => throw _privateConstructorUsedError;
+  String get contacto => throw _privateConstructorUsedError;
   @JsonKey(name: 'RESUMEN')
   String? get resumen => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD')
@@ -55,17 +63,36 @@ abstract class $VisitaDTOCopyWith<$Res> {
       _$VisitaDTOCopyWithImpl<$Res, VisitaDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'VISITA_ID') String id,
-      @JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'FECHA') DateTime fecha,
-      @JsonKey(name: 'NUM_EMPL') String numEmpl,
-      @JsonKey(name: 'CONTACTO') String? contacto,
-      @JsonKey(name: 'RESUMEN') String? resumen,
-      @JsonKey(name: 'LATITUD') double latitud,
-      @JsonKey(name: 'LONGITUD') double longitud,
-      @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      {@JsonKey(name: 'VISITA_ID')
+          String id,
+      @JsonKey(name: 'FECHA')
+          DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID')
+          String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+          String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+          String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+          String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+          String? clienteProvisionalTelefono,
+      @JsonKey(name: 'NUM_EMPL')
+          String numEmpl,
+      @JsonKey(name: 'CONTACTO')
+          String contacto,
+      @JsonKey(name: 'RESUMEN')
+          String? resumen,
+      @JsonKey(name: 'LATITUD')
+          double latitud,
+      @JsonKey(name: 'LONGITUD')
+          double longitud,
+      @JsonKey(name: 'COD_VISITA_APP')
+          String? visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED')
+          DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          String deleted});
 }
 
 /// @nodoc
@@ -82,10 +109,14 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
   @override
   $Res call({
     Object? id = null,
-    Object? clienteId = null,
     Object? fecha = null,
+    Object? clienteId = freezed,
+    Object? isClienteProvisional = null,
+    Object? clienteProvisionalNombre = freezed,
+    Object? clienteProvisionalEmail = freezed,
+    Object? clienteProvisionalTelefono = freezed,
     Object? numEmpl = null,
-    Object? contacto = freezed,
+    Object? contacto = null,
     Object? resumen = freezed,
     Object? latitud = null,
     Object? longitud = null,
@@ -98,22 +129,38 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
       fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      clienteId: freezed == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isClienteProvisional: null == isClienteProvisional
+          ? _value.isClienteProvisional
+          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+              as String,
+      clienteProvisionalNombre: freezed == clienteProvisionalNombre
+          ? _value.clienteProvisionalNombre
+          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalEmail: freezed == clienteProvisionalEmail
+          ? _value.clienteProvisionalEmail
+          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
+          ? _value.clienteProvisionalTelefono
+          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: freezed == contacto
+      contacto: null == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
@@ -150,17 +197,36 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'VISITA_ID') String id,
-      @JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'FECHA') DateTime fecha,
-      @JsonKey(name: 'NUM_EMPL') String numEmpl,
-      @JsonKey(name: 'CONTACTO') String? contacto,
-      @JsonKey(name: 'RESUMEN') String? resumen,
-      @JsonKey(name: 'LATITUD') double latitud,
-      @JsonKey(name: 'LONGITUD') double longitud,
-      @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      {@JsonKey(name: 'VISITA_ID')
+          String id,
+      @JsonKey(name: 'FECHA')
+          DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID')
+          String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+          String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+          String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+          String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+          String? clienteProvisionalTelefono,
+      @JsonKey(name: 'NUM_EMPL')
+          String numEmpl,
+      @JsonKey(name: 'CONTACTO')
+          String contacto,
+      @JsonKey(name: 'RESUMEN')
+          String? resumen,
+      @JsonKey(name: 'LATITUD')
+          double latitud,
+      @JsonKey(name: 'LONGITUD')
+          double longitud,
+      @JsonKey(name: 'COD_VISITA_APP')
+          String? visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED')
+          DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          String deleted});
 }
 
 /// @nodoc
@@ -175,10 +241,14 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? clienteId = null,
     Object? fecha = null,
+    Object? clienteId = freezed,
+    Object? isClienteProvisional = null,
+    Object? clienteProvisionalNombre = freezed,
+    Object? clienteProvisionalEmail = freezed,
+    Object? clienteProvisionalTelefono = freezed,
     Object? numEmpl = null,
-    Object? contacto = freezed,
+    Object? contacto = null,
     Object? resumen = freezed,
     Object? latitud = null,
     Object? longitud = null,
@@ -191,22 +261,38 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      clienteId: null == clienteId
-          ? _value.clienteId
-          : clienteId // ignore: cast_nullable_to_non_nullable
-              as String,
       fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      clienteId: freezed == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isClienteProvisional: null == isClienteProvisional
+          ? _value.isClienteProvisional
+          : isClienteProvisional // ignore: cast_nullable_to_non_nullable
+              as String,
+      clienteProvisionalNombre: freezed == clienteProvisionalNombre
+          ? _value.clienteProvisionalNombre
+          : clienteProvisionalNombre // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalEmail: freezed == clienteProvisionalEmail
+          ? _value.clienteProvisionalEmail
+          : clienteProvisionalEmail // ignore: cast_nullable_to_non_nullable
+              as String?,
+      clienteProvisionalTelefono: freezed == clienteProvisionalTelefono
+          ? _value.clienteProvisionalTelefono
+          : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
+              as String?,
       numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: freezed == contacto
+      contacto: null == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
@@ -239,17 +325,36 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VisitaDTO extends _VisitaDTO {
   const _$_VisitaDTO(
-      {@JsonKey(name: 'VISITA_ID') required this.id,
-      @JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'FECHA') required this.fecha,
-      @JsonKey(name: 'NUM_EMPL') required this.numEmpl,
-      @JsonKey(name: 'CONTACTO') this.contacto,
-      @JsonKey(name: 'RESUMEN') this.resumen,
-      @JsonKey(name: 'LATITUD') required this.latitud,
-      @JsonKey(name: 'LONGITUD') required this.longitud,
-      @JsonKey(name: 'COD_VISITA_APP') this.visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+      {@JsonKey(name: 'VISITA_ID')
+          required this.id,
+      @JsonKey(name: 'FECHA')
+          required this.fecha,
+      @JsonKey(name: 'CLIENTE_ID')
+          this.clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+          required this.isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+          this.clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+          this.clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+          this.clienteProvisionalTelefono,
+      @JsonKey(name: 'NUM_EMPL')
+          required this.numEmpl,
+      @JsonKey(name: 'CONTACTO')
+          required this.contacto,
+      @JsonKey(name: 'RESUMEN')
+          this.resumen,
+      @JsonKey(name: 'LATITUD')
+          required this.latitud,
+      @JsonKey(name: 'LONGITUD')
+          required this.longitud,
+      @JsonKey(name: 'COD_VISITA_APP')
+          this.visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED')
+          required this.lastUpdated,
+      @JsonKey(name: 'DELETED')
+          this.deleted = 'N'})
       : super._();
 
   factory _$_VisitaDTO.fromJson(Map<String, dynamic> json) =>
@@ -259,17 +364,29 @@ class _$_VisitaDTO extends _VisitaDTO {
   @JsonKey(name: 'VISITA_ID')
   final String id;
   @override
-  @JsonKey(name: 'CLIENTE_ID')
-  final String clienteId;
-  @override
   @JsonKey(name: 'FECHA')
   final DateTime fecha;
+  @override
+  @JsonKey(name: 'CLIENTE_ID')
+  final String? clienteId;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+  final String isClienteProvisional;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+  final String? clienteProvisionalNombre;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+  final String? clienteProvisionalEmail;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+  final String? clienteProvisionalTelefono;
   @override
   @JsonKey(name: 'NUM_EMPL')
   final String numEmpl;
   @override
   @JsonKey(name: 'CONTACTO')
-  final String? contacto;
+  final String contacto;
   @override
   @JsonKey(name: 'RESUMEN')
   final String? resumen;
@@ -291,7 +408,7 @@ class _$_VisitaDTO extends _VisitaDTO {
 
   @override
   String toString() {
-    return 'VisitaDTO(id: $id, clienteId: $clienteId, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, resumen: $resumen, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'VisitaDTO(id: $id, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, numEmpl: $numEmpl, contacto: $contacto, resumen: $resumen, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -300,9 +417,21 @@ class _$_VisitaDTO extends _VisitaDTO {
         (other.runtimeType == runtimeType &&
             other is _$_VisitaDTO &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
-            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.isClienteProvisional, isClienteProvisional) ||
+                other.isClienteProvisional == isClienteProvisional) &&
+            (identical(
+                    other.clienteProvisionalNombre, clienteProvisionalNombre) ||
+                other.clienteProvisionalNombre == clienteProvisionalNombre) &&
+            (identical(
+                    other.clienteProvisionalEmail, clienteProvisionalEmail) ||
+                other.clienteProvisionalEmail == clienteProvisionalEmail) &&
+            (identical(other.clienteProvisionalTelefono,
+                    clienteProvisionalTelefono) ||
+                other.clienteProvisionalTelefono ==
+                    clienteProvisionalTelefono) &&
             (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
             (identical(other.contacto, contacto) ||
                 other.contacto == contacto) &&
@@ -319,8 +448,23 @@ class _$_VisitaDTO extends _VisitaDTO {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, clienteId, fecha, numEmpl,
-      contacto, resumen, latitud, longitud, visitaAppId, lastUpdated, deleted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      fecha,
+      clienteId,
+      isClienteProvisional,
+      clienteProvisionalNombre,
+      clienteProvisionalEmail,
+      clienteProvisionalTelefono,
+      numEmpl,
+      contacto,
+      resumen,
+      latitud,
+      longitud,
+      visitaAppId,
+      lastUpdated,
+      deleted);
 
   @JsonKey(ignore: true)
   @override
@@ -338,17 +482,36 @@ class _$_VisitaDTO extends _VisitaDTO {
 
 abstract class _VisitaDTO extends VisitaDTO {
   const factory _VisitaDTO(
-      {@JsonKey(name: 'VISITA_ID') required final String id,
-      @JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'FECHA') required final DateTime fecha,
-      @JsonKey(name: 'NUM_EMPL') required final String numEmpl,
-      @JsonKey(name: 'CONTACTO') final String? contacto,
-      @JsonKey(name: 'RESUMEN') final String? resumen,
-      @JsonKey(name: 'LATITUD') required final double latitud,
-      @JsonKey(name: 'LONGITUD') required final double longitud,
-      @JsonKey(name: 'COD_VISITA_APP') final String? visitaAppId,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_VisitaDTO;
+      {@JsonKey(name: 'VISITA_ID')
+          required final String id,
+      @JsonKey(name: 'FECHA')
+          required final DateTime fecha,
+      @JsonKey(name: 'CLIENTE_ID')
+          final String? clienteId,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+          required final String isClienteProvisional,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+          final String? clienteProvisionalNombre,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+          final String? clienteProvisionalEmail,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+          final String? clienteProvisionalTelefono,
+      @JsonKey(name: 'NUM_EMPL')
+          required final String numEmpl,
+      @JsonKey(name: 'CONTACTO')
+          required final String contacto,
+      @JsonKey(name: 'RESUMEN')
+          final String? resumen,
+      @JsonKey(name: 'LATITUD')
+          required final double latitud,
+      @JsonKey(name: 'LONGITUD')
+          required final double longitud,
+      @JsonKey(name: 'COD_VISITA_APP')
+          final String? visitaAppId,
+      @JsonKey(name: 'LAST_UPDATED')
+          required final DateTime lastUpdated,
+      @JsonKey(name: 'DELETED')
+          final String deleted}) = _$_VisitaDTO;
   const _VisitaDTO._() : super._();
 
   factory _VisitaDTO.fromJson(Map<String, dynamic> json) =
@@ -358,17 +521,29 @@ abstract class _VisitaDTO extends VisitaDTO {
   @JsonKey(name: 'VISITA_ID')
   String get id;
   @override
-  @JsonKey(name: 'CLIENTE_ID')
-  String get clienteId;
-  @override
   @JsonKey(name: 'FECHA')
   DateTime get fecha;
+  @override
+  @JsonKey(name: 'CLIENTE_ID')
+  String? get clienteId;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_SN')
+  String get isClienteProvisional;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_NOMBRE')
+  String? get clienteProvisionalNombre;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL')
+  String? get clienteProvisionalEmail;
+  @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
+  String? get clienteProvisionalTelefono;
   @override
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl;
   @override
   @JsonKey(name: 'CONTACTO')
-  String? get contacto;
+  String get contacto;
   @override
   @JsonKey(name: 'RESUMEN')
   String? get resumen;

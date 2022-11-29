@@ -133,7 +133,10 @@ class VisitaRepository {
   Future<void> upsertVisita(Visita visitaLocal) async {
     try {
       final visitaLocalDto = VisitaLocalDTO.fromDomain(visitaLocal);
+      final json = jsonEncode(visitaLocalDto.toJson());
+      print(json);
       await insertVisitaInDb(visitaLocalDto);
+
       try {
         final visitaLocalEnviada =
             await _remoteCreateVisita(visitaLocalDto, _usuario!.test);
@@ -184,11 +187,11 @@ class VisitaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/visitas',
+              'api/v1/online/v2/visitas',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/visitas',
+              'api/v1/online/v2/visitas',
             );
 
       final response = await _dio.postUri(
@@ -242,18 +245,20 @@ class VisitaRepository {
       required String usuarioId,
       String? clienteId}) async {
     final query = _db.select(_db.visitaLocalTable).join([
-      innerJoin(
+      leftOuterJoin(
         _db.clienteUsuarioTable,
         _db.clienteUsuarioTable.clienteId
             .equalsExp(_db.visitaLocalTable.clienteId),
       ),
-      innerJoin(
+      leftOuterJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
       ),
     ]);
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-        _db.visitaLocalTable.tratada.equals('N'));
+    query.where(_db.visitaLocalTable.tratada.equals('N') &
+        (_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+            (_db.visitaLocalTable.numEmpl.equals(usuarioId) &
+                _db.visitaLocalTable.clienteId.isNull())));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -262,11 +267,23 @@ class VisitaRepository {
         if (predicate == null) {
           predicate = (_db.visitaLocalTable.resumen.like('%$searchText%') |
               _db.visitaLocalTable.clienteId.like('%$searchText%') |
+              _db.visitaLocalTable.clienteProvisionalNombre
+                  .like('%$searchText%') |
+              _db.visitaLocalTable.clienteProvisionalEmail
+                  .like('%$searchText%') |
+              _db.visitaLocalTable.clienteProvisionalTelefono
+                  .like('%$searchText%') |
               _db.visitaLocalTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
               (_db.visitaLocalTable.resumen.like('%$searchText%') |
                   _db.visitaLocalTable.clienteId.like('%$searchText%') |
+                  _db.visitaLocalTable.clienteProvisionalNombre
+                      .like('%$searchText%') |
+                  _db.visitaLocalTable.clienteProvisionalEmail
+                      .like('%$searchText%') |
+                  _db.visitaLocalTable.clienteProvisionalTelefono
+                      .like('%$searchText%') |
                   _db.visitaLocalTable.contacto.like('%$searchText%'));
         }
       }
@@ -276,15 +293,17 @@ class VisitaRepository {
     if (clienteId != null) {
       query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
     }
+
+    query.groupBy([_db.visitaLocalTable.visitaAppId]);
     query.orderBy([
       OrderingTerm.asc(_db.visitaLocalTable.enviada),
       OrderingTerm.desc(_db.visitaLocalTable.fecha),
     ]);
 
     return query.map((row) {
-      final clienteDTO = row.readTable(_db.clienteTable);
+      final clienteDTO = row.readTableOrNull(_db.clienteTable);
       final visitaLocalDTO = row.readTable(_db.visitaLocalTable);
-      return visitaLocalDTO.toDomain(nombreCliente: clienteDTO.nombreCliente);
+      return visitaLocalDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
     }).get();
   }
 
@@ -295,18 +314,20 @@ class VisitaRepository {
     final countExp = _db.visitaLocalTable.visitaAppId.count();
 
     final query = _db.selectOnly(_db.visitaLocalTable).join([
-      innerJoin(
-        _db.clienteUsuarioTable,
-        _db.clienteUsuarioTable.clienteId
-            .equalsExp(_db.visitaLocalTable.clienteId),
-      ),
-      innerJoin(
+      leftOuterJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
       ),
+      leftOuterJoin(
+        _db.clienteUsuarioTable,
+        _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
+      )
     ]);
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) &
-        _db.visitaLocalTable.tratada.equals('N'));
+
+    query.where(_db.visitaLocalTable.tratada.equals('N') &
+        (_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+            (_db.visitaLocalTable.numEmpl.equals(usuarioId) &
+                _db.visitaLocalTable.clienteId.isNull())));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -315,11 +336,23 @@ class VisitaRepository {
         if (predicate == null) {
           predicate = (_db.visitaLocalTable.resumen.like('%$searchText%') |
               _db.visitaLocalTable.clienteId.like('%$searchText%') |
+              _db.visitaLocalTable.clienteProvisionalNombre
+                  .like('%$searchText%') |
+              _db.visitaLocalTable.clienteProvisionalEmail
+                  .like('%$searchText%') |
+              _db.visitaLocalTable.clienteProvisionalTelefono
+                  .like('%$searchText%') |
               _db.visitaLocalTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
               (_db.visitaLocalTable.resumen.like('%$searchText%') |
                   _db.visitaLocalTable.clienteId.like('%$searchText%') |
+                  _db.visitaLocalTable.clienteProvisionalNombre
+                      .like('%$searchText%') |
+                  _db.visitaLocalTable.clienteProvisionalEmail
+                      .like('%$searchText%') |
+                  _db.visitaLocalTable.clienteProvisionalTelefono
+                      .like('%$searchText%') |
                   _db.visitaLocalTable.contacto.like('%$searchText%'));
         }
       }
@@ -329,6 +362,7 @@ class VisitaRepository {
     if (clienteId != null) {
       query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
     }
+
     query.addColumns([countExp]);
 
     final count = await query.map((row) => row.read(countExp)).getSingle();
@@ -341,17 +375,19 @@ class VisitaRepository {
       required String searchText,
       String? clienteId}) async {
     final query = _db.select(_db.visitaTable).join([
-      innerJoin(
+      leftOuterJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
       ),
-      innerJoin(
+      leftOuterJoin(
         _db.clienteUsuarioTable,
         _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
       )
     ]);
 
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+        (_db.visitaTable.numEmpl.equals(usuarioId) &
+            _db.visitaTable.clienteId.isNull()));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -361,12 +397,21 @@ class VisitaRepository {
           predicate = (_db.visitaTable.resumen.like('%$searchText%') |
               _db.visitaTable.clienteId.like('%$searchText%') |
               _db.clienteTable.nombreCliente.like('%$searchText%') |
+              _db.visitaTable.clienteProvisionalNombre.like('%$searchText%') |
+              _db.visitaTable.clienteProvisionalEmail.like('%$searchText%') |
+              _db.visitaTable.clienteProvisionalTelefono.like('%$searchText%') |
               _db.visitaTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
               (_db.visitaTable.resumen.like('%$searchText%') |
                   _db.visitaTable.clienteId.like('%$searchText%') |
                   _db.clienteTable.nombreCliente.like('%$searchText%') |
+                  _db.visitaTable.clienteProvisionalNombre
+                      .like('%$searchText%') |
+                  _db.visitaTable.clienteProvisionalEmail
+                      .like('%$searchText%') |
+                  _db.visitaTable.clienteProvisionalTelefono
+                      .like('%$searchText%') |
                   _db.visitaTable.contacto.like('%$searchText%'));
         }
       }
@@ -384,10 +429,10 @@ class VisitaRepository {
     ]);
 
     return query.asyncMap((row) async {
-      final clienteDTO = row.readTable(_db.clienteTable);
+      final clienteDTO = row.readTableOrNull(_db.clienteTable);
 
       final visitaDTO = row.readTable(_db.visitaTable);
-      return visitaDTO.toDomain(nombreCliente: clienteDTO.nombreCliente);
+      return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
     }).get();
   }
 
@@ -398,19 +443,19 @@ class VisitaRepository {
     final countExp = _db.visitaTable.id.count();
 
     final query = _db.selectOnly(_db.visitaTable).join([
-      innerJoin(
+      leftOuterJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
       ),
-      innerJoin(
+      leftOuterJoin(
         _db.clienteUsuarioTable,
         _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
       )
     ]);
 
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
-
-    query.addColumns([countExp]);
+    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+        (_db.visitaTable.numEmpl.equals(usuarioId) &
+            _db.visitaTable.clienteId.isNull()));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -419,11 +464,20 @@ class VisitaRepository {
         if (predicate == null) {
           predicate = (_db.visitaTable.resumen.like('%$searchText%') |
               _db.visitaTable.clienteId.like('%$searchText%') |
+              _db.visitaTable.clienteProvisionalNombre.like('%$searchText%') |
+              _db.visitaTable.clienteProvisionalEmail.like('%$searchText%') |
+              _db.visitaTable.clienteProvisionalTelefono.like('%$searchText%') |
               _db.visitaTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
               (_db.visitaTable.resumen.like('%$searchText%') |
                   _db.visitaTable.clienteId.like('%$searchText%') |
+                  _db.visitaTable.clienteProvisionalNombre
+                      .like('%$searchText%') |
+                  _db.visitaTable.clienteProvisionalEmail
+                      .like('%$searchText%') |
+                  _db.visitaTable.clienteProvisionalTelefono
+                      .like('%$searchText%') |
                   _db.visitaTable.contacto.like('%$searchText%'));
         }
       }
@@ -434,13 +488,15 @@ class VisitaRepository {
       query.where(_db.visitaTable.clienteId.equals(clienteId));
     }
 
+    query.addColumns([countExp]);
+
     final count = await query.map((row) => row.read(countExp)).getSingle();
     return count ?? 0;
   }
 
   Future<Visita> getVisita({required String visitaId}) async {
     final query = _db.select(_db.visitaTable).join([
-      innerJoin(
+      leftOuterJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
       )
@@ -448,16 +504,16 @@ class VisitaRepository {
     query.where(_db.visitaTable.id.equals(visitaId));
 
     return query.asyncMap((row) async {
-      final clienteDTO = row.readTable(_db.clienteTable);
+      final clienteDTO = row.readTableOrNull(_db.clienteTable);
 
       final visitaDTO = row.readTable(_db.visitaTable);
-      return visitaDTO.toDomain(nombreCliente: clienteDTO.nombreCliente);
+      return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
     }).getSingle();
   }
 
   Future<Visita> getVisitaLocal({required String visitaAppId}) async {
     final query = _db.select(_db.visitaLocalTable).join([
-      innerJoin(
+      leftOuterJoin(
         _db.clienteTable,
         _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
       )
@@ -465,10 +521,10 @@ class VisitaRepository {
     query.where(_db.visitaLocalTable.visitaAppId.equals(visitaAppId));
 
     return query.asyncMap((row) async {
-      final clienteDTO = row.readTable(_db.clienteTable);
+      final clienteDTO = row.readTableOrNull(_db.clienteTable);
 
       final visitaDTO = row.readTable(_db.visitaLocalTable);
-      return visitaDTO.toDomain(nombreCliente: clienteDTO.nombreCliente);
+      return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
     }).getSingle();
   }
 
