@@ -34,22 +34,30 @@ flutter packages pub run build_runner watch --delete-conflicting-outputs
 
 ## Code Snippets
 
-### Upgrade pubspec.yaml
+### Major Upgrade pubspec.yaml
 
 ```sh
-make upgrade
+make pub_major_upgrade
 
 ```
 
-### Deploy iOS
+### Deploy Mobile
 
 ```sh
-make deploy_mobile-ios
+make deploy_mobile
 
 ```
 
-Drag and drop the "build/ios/ipa/*.ipa" bundle into the Apple Transport macOS app
-<https://apps.apple.com/us/app/transporter/id1450874784>
+Testing: Nos updates version, only build, but cannot be submitted as final release, only on TestFlight.
+
+```sh
+make deploy_mobile_Test
+
+```
+
+Drag and drop the "build/ios/ipa/jbm_nikel_mobile.ipa" bundle into the Apple Transport macOS app <https://apps.apple.com/us/app/transporter/id1450874784>
+
+Upload the "build/app/outputs/bundle/release/app-release.aab" to Google Play Store
 
 ### Build and watch automatic code generation
 
@@ -57,32 +65,3 @@ Drag and drop the "build/ios/ipa/*.ipa" bundle into the Apple Transport macOS ap
 flutter pub run build_runner watch --delete-conflicting-outputs
 
 ```
-
-### Code coverage
-
-```sh
-flutter test --coverage
-
-```
-
-### Generate App Icons
-
-```sh
-flutter pub run flutter_launcher_icons:main
-
-```
-
-### Problems compiling SQLite after upgrade pubspec SQLite
-
-1. Go to /ios folder inside your Project.
-2. Delete Podfile.lock (YourPoject/ios/Podfile.lock)
-3. ```pod repo remove trunk```
-4. ```sudo arch -x86_64 gem install ffi```
-5. ```arch -x86_64 pod install --repo-update```
-6. now go to the podfile at line just uncomment the line and make it similar like below.
-   ```platform :ios, '12.0'```
-7. ```arch -x86_64 pod install --repo-update```
-8. ```flutter clean```
-9. ```flutter pub upgrade```
-10. ```flutter pub run build_runner build --delete-conflicting-outputs```
-11. ```flutter run```

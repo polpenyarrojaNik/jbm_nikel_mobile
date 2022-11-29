@@ -1,9 +1,9 @@
-.PHONY: all run_dev_web run_dev_mobile run_unit clean upgrade lint format build_dev_mobile help 
+.PHONY: all run_unit clean format lint create_icons build_runner pub_get pub_major_version sqlite_patch pub_upgrade bump_version_number bump_build_number tag_version deploy_mobile deploy_mobile_test help 
+
 EXTRACT_VERSION_NUMBER = $(shell grep 'version: ' pubspec.yaml | sed 's/version: //')
 SET_VERSION_NUMBER = $(eval VERSION_NUMBER=$(EXTRACT_VERSION_NUMBER))
 
-all: lint format run_dev_mobile
-
+all: lint format
 # Adding a help file: https://gist.github.com/prwhite/8168133#gistcomment-1313022
 help: ## This help dialog.
 	@IFS=$$'\n' ; \
@@ -35,53 +35,52 @@ lint: ## Lints the code
 
 create_icons: ## Create App icons
 	@echo "╠ Creating icons..."
-	@flutter pub run flutter_launcher_icons:main
+	@flutter pub run flutter_launcher_icons
 
 build_runner: ## Generates automatic code
 	@echo "╠ Creating generated code..."
 	@flutter pub run build_runner clean
 	@flutter pub run build_runner build --delete-conflicting-outputs
 
-get_pub: clean ## Getting pubspec dependencies
+pub_get: clean ## Getting pubspec dependencies
 	@echo "╠ Upgrading dependencies..."
 	@flutter pub get
 
-upgrade_pub: clean ## Upgrades pubspec dependencies
+pub_major_upgrade: clean ## Upgrades pubspec dependencies
 	@echo "╠ Upgrading dependencies..."
 	@flutter pub upgrade --major-versions
 
-upgrade: upgrade_pub create_icons build_runner ## Upgrades dependencies
+sqlite_patch: ## SQLite patch macOS after upgrading SQLite
+	cd ./ios/; \
+	pod repo remove trunk;  \
+	sudo arch -x86_64 gem install ffi;  \
+	arch -x86_64 pod install --repo-update
 
-commit: format lint run_unit
-	@echo "╠ Committing..."
-	git add .
-	git commit
-
-run_mobile: ## Runs the mobile application in dev
-	@echo "╠ Running the app"
-	@flutter run
-
-bump_build_number:	# Bump build number
+pub_upgrade: pub_major_upgrade sqlite_patch pub_get build_runner create_icons  ## Upgrades dependencies
+bump_version_number:	## Bump build number
 	@perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.($$2+1).$$3.($$4+1)/e' pubspec.yaml
 	$(SET_VERSION_NUMBER)
-	@echo $(VERSION_NUMBER)
-	@echo "╠ Bump build number $(VERSION_NUMBER)"
-
-commit_version:
-	$(SET_VERSION_NUMBER)
-	@echo "Commit $(VERSION_NUMBER)"
 	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
 	@git push origin main
-tag_version:
+	@echo "╠ Bump build number $(VERSION_NUMBER)"
+bump_build_number:	## Bump build number
+	@perl -i -pe 's/^(version:\s+\d+\.\d+\.)(\d+)(\+)(\d+)$$/$$1.$$2.$$3.($$4+1)/e' pubspec.yaml
 	$(SET_VERSION_NUMBER)
-	@echo "Tag $(VERSION_NUMBER)"
-	@git tag -a $(VERSION_NUMBER) -m "Bump version to $(VERSION_NUMBER)"
+	@git commit -m "Bump version to $(VERSION_NUMBER)" pubspec.yaml
+	@git push origin main
+	@echo "╠ Bump build number $(VERSION_NUMBER)"
+tag_version: ## Tag version
+	$(SET_VERSION_NUMBER)
+	@echo "Tag version $(VERSION_NUMBER)"
+	@git tag -a $(VERSION_NUMBER) -m "v$(VERSION_NUMBER)"
 	@git push origin --tags
 
-deploy_mobile-ios: format lint get_pub create_icons build_runner bump_build_number commit_version tag_version
-	@echo "╠  Building the iOS app"
+deploy_mobile: format lint get_pub create_icons build_runner bump_version_number tag_version ## Deploy iOS and Android release
+	@echo "╠  Building the iOS/Android app"
 	@flutter build ipa
-	@open ./build/ios/ipa
+	@flutter build appbundle
 
-deploy_mobile-android:
+deploy_mobile_test: format lint get_pub create_icons build_runner bump_build_number tag_version ## Deploy iOS and Android release for testing
+	@echo "╠  Building the iOS/Android app"
+	@flutter build ipa
 	@flutter build appbundle

@@ -1,7 +1,7 @@
 name: jbm_nikel_mobile
 description: JBM Nikel Mobile
 publish_to: "none"
-version: 1.0.27+47
+version: 1.0.27+49
 
 environment:
   sdk: ">=2.17.5 <3.0.0"
@@ -71,6 +71,12 @@ flutter_icons:
   image_path: "assets/app_icons/1x/photokits_app_icon_1024x1024.png"
   adaptive_icon_background: "#000000"
   adaptive_icon_foreground: "assets/app_icons/1x/photokits_app_icon_1024x1024.png"
+  web:
+    generate: false
+  windows:
+    generate: false
+  macos:
+    generate: false
 
 flutter:
   uses-material-design: true
