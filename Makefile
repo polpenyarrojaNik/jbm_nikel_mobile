@@ -75,12 +75,12 @@ tag_version: ## Tag version
 	@git tag -a $(VERSION_NUMBER) -m "v$(VERSION_NUMBER)"
 	@git push origin --tags
 
-deploy_mobile: format lint get_pub create_icons build_runner bump_version_number tag_version ## Deploy iOS and Android release
+deploy_mobile: format lint pub_get create_icons build_runner bump_version_number tag_version ## Deploy iOS and Android release
 	@echo "╠  Building the iOS/Android app"
 	@flutter build ipa
 	@flutter build appbundle
 
-deploy_mobile_test: format lint get_pub create_icons build_runner bump_build_number tag_version ## Deploy iOS and Android release for testing
+deploy_mobile_test: format lint pub_get create_icons build_runner bump_build_number tag_version ## Deploy iOS and Android release for testing
 	@echo "╠  Building the iOS/Android app"
 	@flutter build ipa
 	@flutter build appbundle
