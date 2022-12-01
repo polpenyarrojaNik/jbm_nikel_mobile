@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
@@ -8,6 +9,7 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
+import 'package:new_version_plus/new_version_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -19,15 +21,39 @@ import '../../domain/articulo.dart';
 import 'articulo_lista_tile.dart';
 import 'articulo_search_controller.dart';
 
-class ArticuloListaPage extends ConsumerWidget {
+class ArticuloListaPage extends ConsumerStatefulWidget {
   ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
 
   final bool isSearchArticuloForForm;
 
+  @override
+  ConsumerState<ArticuloListaPage> createState() => _ArticuloListaPageState();
+}
+
+class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void initState() {
+    super.initState();
+    final locale = CountryCodes.getDeviceLocale();
+
+    final newVersion = NewVersionPlus(
+        iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
+        androidId: 'es.nikel.jbm.jbm_nikel_mobile',
+        iOSAppStoreCountry: locale?.countryCode);
+
+    basicStatusCheck(newVersion);
+  }
+
+  basicStatusCheck(NewVersionPlus newVersion) async {
+    newVersion.showAlertIfNecessary(
+      context: context,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
 
     ref.listen<AsyncValue>(
@@ -36,9 +62,9 @@ class ArticuloListaPage extends ConsumerWidget {
     );
 
     return Scaffold(
-      drawer: (!isSearchArticuloForForm) ? const AppDrawer() : null,
+      drawer: (!widget.isSearchArticuloForForm) ? const AppDrawer() : null,
       appBar: CustomSearchAppBar(
-        isSearchingFirst: isSearchArticuloForForm,
+        isSearchingFirst: widget.isSearchArticuloForForm,
         title: S.of(context).articulo_index_titulo,
         searchTitle: S.of(context).articulo_index_buscarArticulos,
         onChanged: (searchText) => _debouncer.run(
@@ -50,13 +76,13 @@ class ArticuloListaPage extends ConsumerWidget {
         orElse: () => ArticleListViewWidget(
             stateSync: stateSync,
             ref: ref,
-            isSearchArticuloForForm: isSearchArticuloForForm),
+            isSearchArticuloForForm: widget.isSearchArticuloForForm),
         synchronized: () => RefreshIndicator(
           onRefresh: () => refreshArticleDb(ref),
           child: ArticleListViewWidget(
               stateSync: stateSync,
               ref: ref,
-              isSearchArticuloForForm: isSearchArticuloForForm),
+              isSearchArticuloForForm: widget.isSearchArticuloForForm),
         ),
       ),
     );

@@ -1,7 +1,9 @@
+import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/primary_button.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:new_version_plus/new_version_plus.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -27,6 +29,25 @@ class LoginPageState extends ConsumerState<LoginPage> {
         ),
         'contrasenya': ['', Validators.required],
       });
+
+  @override
+  void initState() {
+    super.initState();
+    final locale = CountryCodes.getDeviceLocale();
+
+    final newVersion = NewVersionPlus(
+        iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
+        androidId: 'es.nikel.jbm.jbm_nikel_mobile',
+        iOSAppStoreCountry: locale?.countryCode);
+
+    basicStatusCheck(newVersion);
+  }
+
+  basicStatusCheck(NewVersionPlus newVersion) async {
+    newVersion.showAlertIfNecessary(
+      context: context,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

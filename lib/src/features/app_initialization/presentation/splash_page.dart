@@ -14,11 +14,16 @@ import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/log_repository.dart';
 import '../../../core/presentation/theme/app_sizes.dart';
 
-class SplashPage extends ConsumerWidget {
+class SplashPage extends ConsumerStatefulWidget {
   const SplashPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends ConsumerState<SplashPage> {
+  @override
+  Widget build(BuildContext context) {
     ref.listen<SplashControllerState>(
       splashPageControllerProvider,
       (_, state) {
