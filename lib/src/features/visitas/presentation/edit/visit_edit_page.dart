@@ -192,9 +192,16 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
               clienteProvisionalTelefono: isClientePotencial
                   ? formKey.currentState!.value['telefono'] as String?
                   : null,
+              clienteProvisionalPoblacion: isClientePotencial
+                  ? formKey.currentState!.value['poblacion'] as String?
+                  : null,
               numEmpl: ref.read(usuarioNotifierProvider)!.id,
               resumen: formKey.currentState!.value['resumen'] as String,
               contacto: formKey.currentState!.value['contacto'] as String,
+              atendidoPor:
+                  formKey.currentState!.value['atendidoPor'] as String?,
+              marcasCompetencia:
+                  formKey.currentState!.value['marcasCompetencia'] as String?,
               latitud: 0,
               longitud: 0,
               visitaAppId: widget.id,
@@ -287,6 +294,15 @@ class _VisitaForm extends StatelessWidget {
             ),
           ),
           FormBuilderTextField(
+            name: 'atendidoPor',
+            onChanged: onChanged,
+            initialValue: visita?.atendidoPor,
+            enabled: !readOnly,
+            decoration: InputDecoration(
+              labelText: S.of(context).visitas_edit_visitaEditar_atendidoPor,
+            ),
+          ),
+          FormBuilderTextField(
             name: 'resumen',
             onChanged: onChanged,
             initialValue: visita?.resumen,
@@ -297,7 +313,20 @@ class _VisitaForm extends StatelessWidget {
               FormBuilderValidators.required(),
             ]),
             decoration: InputDecoration(
-                labelText: S.of(context).visitas_edit_visitaEditar_resumen),
+              labelText: S.of(context).visitas_edit_visitaEditar_resumen,
+            ),
+          ),
+          FormBuilderTextField(
+            name: 'marcasCompetencia',
+            onChanged: onChanged,
+            initialValue: visita?.marcasCompetencia,
+            maxLines: null,
+            minLines: 4,
+            enabled: !readOnly,
+            decoration: InputDecoration(
+              labelText:
+                  S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
+            ),
           ),
         ],
       ),
@@ -356,6 +385,15 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           ]),
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_telefono,
+          ),
+        ),
+        FormBuilderTextField(
+          name: 'poblacion',
+          onChanged: onChanged,
+          initialValue: visita?.clienteProvisionalPoblacion,
+          enabled: !readOnly,
+          decoration: InputDecoration(
+            labelText: S.of(context).visitas_edit_visitaEditar_poblacion,
           ),
         ),
       ],

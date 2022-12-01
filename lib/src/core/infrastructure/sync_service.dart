@@ -575,11 +575,10 @@ class SyncService {
   Future<void> syncVisitas() async {
     try {
       await _syncTable(
-        apiPath: 'v2/visitas',
+        apiPath: 'visitas',
         tableInfo: _db.visitaTable,
         fromJson: (e) => VisitaDTO.fromJson(e),
       );
-      // await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
     } on AppException catch (e) {
       log.e(e.details);
       rethrow;

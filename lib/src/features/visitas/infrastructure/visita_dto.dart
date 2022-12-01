@@ -20,9 +20,13 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     @JsonKey(name: 'CLIENTE_POTENCIAL_EMAIL') String? clienteProvisionalEmail,
     @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
         String? clienteProvisionalTelefono,
+    @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+        String? clienteProvisionalPoblacion,
     @JsonKey(name: 'NUM_EMPL') required String numEmpl,
     @JsonKey(name: 'CONTACTO') required String contacto,
+    @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
     @JsonKey(name: 'RESUMEN') String? resumen,
+    @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
     @JsonKey(name: 'LATITUD') required double latitud,
     @JsonKey(name: 'LONGITUD') required double longitud,
     @JsonKey(name: 'COD_VISITA_APP') String? visitaAppId,
@@ -46,9 +50,12 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       clienteProvisionalNombre: clienteProvisionalNombre,
       clienteProvisionalEmail: clienteProvisionalEmail,
       clienteProvisionalTelefono: clienteProvisionalTelefono,
+      clienteProvisionalPoblacion: clienteProvisionalPoblacion,
       numEmpl: numEmpl,
       contacto: contacto,
+      atendidoPor: atendidoPor,
       resumen: resumen,
+      marcasCompetencia: marcasCompetencia,
       latitud: latitud,
       longitud: longitud,
       lastUpdated: lastUpdated,
@@ -69,9 +76,12 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
       clienteProvisionalNombre: Value(clienteProvisionalNombre),
       clienteProvisionalEmail: Value(clienteProvisionalEmail),
       clienteProvisionalTelefono: Value(clienteProvisionalTelefono),
+      clienteProvisionalPoblacion: Value(clienteProvisionalPoblacion),
       numEmpl: Value(numEmpl),
       contacto: Value(contacto),
+      atendidoPor: Value(atendidoPor),
       resumen: Value(resumen),
+      marcasCompetencia: Value(marcasCompetencia),
       latitud: Value(latitud),
       longitud: Value(longitud),
       visitaAppId: Value(visitaAppId),
@@ -99,9 +109,14 @@ class VisitaTable extends Table {
       text().nullable().named('CLIENTE_POTENCIAL_EMAIL')();
   TextColumn get clienteProvisionalTelefono =>
       text().nullable().named('CLIENTE_POTENCIAL_TELEFONO')();
+  TextColumn get clienteProvisionalPoblacion =>
+      text().nullable().named('CLIENTE_POTENCIAL_POBLACION')();
   TextColumn get numEmpl => text().named('NUM_EMPL')();
   TextColumn get contacto => text().named('CONTACTO')();
+  TextColumn get atendidoPor => text().nullable().named('ATENDIDO_POR')();
   TextColumn get resumen => text().nullable().named('RESUMEN')();
+  TextColumn get marcasCompetencia =>
+      text().nullable().named('MARCAS_COMPETENCIA')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
   TextColumn get visitaAppId => text().nullable().named('COD_VISITA_APP')();

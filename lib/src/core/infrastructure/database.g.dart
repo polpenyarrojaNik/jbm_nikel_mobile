@@ -14829,9 +14829,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String?> clienteProvisionalNombre;
   final Value<String?> clienteProvisionalEmail;
   final Value<String?> clienteProvisionalTelefono;
+  final Value<String?> clienteProvisionalPoblacion;
   final Value<String> numEmpl;
   final Value<String> contacto;
+  final Value<String?> atendidoPor;
   final Value<String?> resumen;
+  final Value<String?> marcasCompetencia;
   final Value<double> latitud;
   final Value<double> longitud;
   final Value<String?> visitaAppId;
@@ -14845,9 +14848,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.clienteProvisionalNombre = const Value.absent(),
     this.clienteProvisionalEmail = const Value.absent(),
     this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
     this.numEmpl = const Value.absent(),
     this.contacto = const Value.absent(),
+    this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
     this.latitud = const Value.absent(),
     this.longitud = const Value.absent(),
     this.visitaAppId = const Value.absent(),
@@ -14862,9 +14868,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.clienteProvisionalNombre = const Value.absent(),
     this.clienteProvisionalEmail = const Value.absent(),
     this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
     required String numEmpl,
     required String contacto,
+    this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
     required double latitud,
     required double longitud,
     this.visitaAppId = const Value.absent(),
@@ -14886,9 +14895,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     Expression<String>? clienteProvisionalNombre,
     Expression<String>? clienteProvisionalEmail,
     Expression<String>? clienteProvisionalTelefono,
+    Expression<String>? clienteProvisionalPoblacion,
     Expression<String>? numEmpl,
     Expression<String>? contacto,
+    Expression<String>? atendidoPor,
     Expression<String>? resumen,
+    Expression<String>? marcasCompetencia,
     Expression<double>? latitud,
     Expression<double>? longitud,
     Expression<String>? visitaAppId,
@@ -14907,9 +14919,13 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
         'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
       if (clienteProvisionalTelefono != null)
         'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
+      if (clienteProvisionalPoblacion != null)
+        'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
       if (contacto != null) 'CONTACTO': contacto,
+      if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
       if (resumen != null) 'RESUMEN': resumen,
+      if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
       if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
@@ -14926,9 +14942,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       Value<String?>? clienteProvisionalNombre,
       Value<String?>? clienteProvisionalEmail,
       Value<String?>? clienteProvisionalTelefono,
+      Value<String?>? clienteProvisionalPoblacion,
       Value<String>? numEmpl,
       Value<String>? contacto,
+      Value<String?>? atendidoPor,
       Value<String?>? resumen,
+      Value<String?>? marcasCompetencia,
       Value<double>? latitud,
       Value<double>? longitud,
       Value<String?>? visitaAppId,
@@ -14945,9 +14964,13 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
           clienteProvisionalEmail ?? this.clienteProvisionalEmail,
       clienteProvisionalTelefono:
           clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
+      clienteProvisionalPoblacion:
+          clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
       numEmpl: numEmpl ?? this.numEmpl,
       contacto: contacto ?? this.contacto,
+      atendidoPor: atendidoPor ?? this.atendidoPor,
       resumen: resumen ?? this.resumen,
+      marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
       latitud: latitud ?? this.latitud,
       longitud: longitud ?? this.longitud,
       visitaAppId: visitaAppId ?? this.visitaAppId,
@@ -14984,14 +15007,24 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       map['CLIENTE_POTENCIAL_TELEFONO'] =
           Variable<String>(clienteProvisionalTelefono.value);
     }
+    if (clienteProvisionalPoblacion.present) {
+      map['CLIENTE_POTENCIAL_POBLACION'] =
+          Variable<String>(clienteProvisionalPoblacion.value);
+    }
     if (numEmpl.present) {
       map['NUM_EMPL'] = Variable<String>(numEmpl.value);
     }
     if (contacto.present) {
       map['CONTACTO'] = Variable<String>(contacto.value);
     }
+    if (atendidoPor.present) {
+      map['ATENDIDO_POR'] = Variable<String>(atendidoPor.value);
+    }
     if (resumen.present) {
       map['RESUMEN'] = Variable<String>(resumen.value);
+    }
+    if (marcasCompetencia.present) {
+      map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
     }
     if (latitud.present) {
       map['LATITUD'] = Variable<double>(latitud.value);
@@ -15021,9 +15054,12 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
           ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
           ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
           ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
+          ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
           ..write('numEmpl: $numEmpl, ')
           ..write('contacto: $contacto, ')
+          ..write('atendidoPor: $atendidoPor, ')
           ..write('resumen: $resumen, ')
+          ..write('marcasCompetencia: $marcasCompetencia, ')
           ..write('latitud: $latitud, ')
           ..write('longitud: $longitud, ')
           ..write('visitaAppId: $visitaAppId, ')
@@ -15080,6 +15116,12 @@ class $VisitaTableTable extends VisitaTable
   late final GeneratedColumn<String> clienteProvisionalTelefono =
       GeneratedColumn<String>('CLIENTE_POTENCIAL_TELEFONO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalPoblacionMeta =
+      const VerificationMeta('clienteProvisionalPoblacion');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalPoblacion =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_POBLACION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _numEmplMeta =
       const VerificationMeta('numEmpl');
   @override
@@ -15092,12 +15134,24 @@ class $VisitaTableTable extends VisitaTable
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
       'CONTACTO', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _atendidoPorMeta =
+      const VerificationMeta('atendidoPor');
+  @override
+  late final GeneratedColumn<String> atendidoPor = GeneratedColumn<String>(
+      'ATENDIDO_POR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _resumenMeta =
       const VerificationMeta('resumen');
   @override
   late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
       'RESUMEN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _marcasCompetenciaMeta =
+      const VerificationMeta('marcasCompetencia');
+  @override
+  late final GeneratedColumn<String> marcasCompetencia =
+      GeneratedColumn<String>('MARCAS_COMPETENCIA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _latitudMeta =
       const VerificationMeta('latitud');
   @override
@@ -15139,9 +15193,12 @@ class $VisitaTableTable extends VisitaTable
         clienteProvisionalNombre,
         clienteProvisionalEmail,
         clienteProvisionalTelefono,
+        clienteProvisionalPoblacion,
         numEmpl,
         contacto,
+        atendidoPor,
         resumen,
+        marcasCompetencia,
         latitud,
         longitud,
         visitaAppId,
@@ -15201,6 +15258,13 @@ class $VisitaTableTable extends VisitaTable
               data['CLIENTE_POTENCIAL_TELEFONO']!,
               _clienteProvisionalTelefonoMeta));
     }
+    if (data.containsKey('CLIENTE_POTENCIAL_POBLACION')) {
+      context.handle(
+          _clienteProvisionalPoblacionMeta,
+          clienteProvisionalPoblacion.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_POBLACION']!,
+              _clienteProvisionalPoblacionMeta));
+    }
     if (data.containsKey('NUM_EMPL')) {
       context.handle(_numEmplMeta,
           numEmpl.isAcceptableOrUnknown(data['NUM_EMPL']!, _numEmplMeta));
@@ -15213,9 +15277,21 @@ class $VisitaTableTable extends VisitaTable
     } else if (isInserting) {
       context.missing(_contactoMeta);
     }
+    if (data.containsKey('ATENDIDO_POR')) {
+      context.handle(
+          _atendidoPorMeta,
+          atendidoPor.isAcceptableOrUnknown(
+              data['ATENDIDO_POR']!, _atendidoPorMeta));
+    }
     if (data.containsKey('RESUMEN')) {
       context.handle(_resumenMeta,
           resumen.isAcceptableOrUnknown(data['RESUMEN']!, _resumenMeta));
+    }
+    if (data.containsKey('MARCAS_COMPETENCIA')) {
+      context.handle(
+          _marcasCompetenciaMeta,
+          marcasCompetencia.isAcceptableOrUnknown(
+              data['MARCAS_COMPETENCIA']!, _marcasCompetenciaMeta));
     }
     if (data.containsKey('LATITUD')) {
       context.handle(_latitudMeta,
@@ -15273,12 +15349,19 @@ class $VisitaTableTable extends VisitaTable
       clienteProvisionalTelefono: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO']),
+      clienteProvisionalPoblacion: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_POBLACION']),
       numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO'])!,
+      atendidoPor: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ATENDIDO_POR']),
       resumen: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
+      marcasCompetencia: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}MARCAS_COMPETENCIA']),
       latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
       longitud: attachedDatabase.typeMapping
@@ -15305,10 +15388,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
   final Value<String?> clienteProvisionalNombre;
   final Value<String?> clienteProvisionalEmail;
   final Value<String?> clienteProvisionalTelefono;
+  final Value<String?> clienteProvisionalPoblacion;
   final Value<DateTime> fecha;
   final Value<String> numEmpl;
   final Value<String> contacto;
+  final Value<String?> atendidoPor;
   final Value<String?> resumen;
+  final Value<String?> marcasCompetencia;
   final Value<double> latitud;
   final Value<double> longitud;
   final Value<String> enviada;
@@ -15321,10 +15407,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.clienteProvisionalNombre = const Value.absent(),
     this.clienteProvisionalEmail = const Value.absent(),
     this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
     this.fecha = const Value.absent(),
     this.numEmpl = const Value.absent(),
     this.contacto = const Value.absent(),
+    this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
     this.latitud = const Value.absent(),
     this.longitud = const Value.absent(),
     this.enviada = const Value.absent(),
@@ -15338,10 +15427,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     this.clienteProvisionalNombre = const Value.absent(),
     this.clienteProvisionalEmail = const Value.absent(),
     this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
     required DateTime fecha,
     required String numEmpl,
     required String contacto,
+    this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
     required double latitud,
     required double longitud,
     this.enviada = const Value.absent(),
@@ -15361,10 +15453,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     Expression<String>? clienteProvisionalNombre,
     Expression<String>? clienteProvisionalEmail,
     Expression<String>? clienteProvisionalTelefono,
+    Expression<String>? clienteProvisionalPoblacion,
     Expression<DateTime>? fecha,
     Expression<String>? numEmpl,
     Expression<String>? contacto,
+    Expression<String>? atendidoPor,
     Expression<String>? resumen,
+    Expression<String>? marcasCompetencia,
     Expression<double>? latitud,
     Expression<double>? longitud,
     Expression<String>? enviada,
@@ -15382,10 +15477,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
         'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
       if (clienteProvisionalTelefono != null)
         'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
+      if (clienteProvisionalPoblacion != null)
+        'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
       if (fecha != null) 'FECHA': fecha,
       if (numEmpl != null) 'NUM_EMPL': numEmpl,
       if (contacto != null) 'CONTACTO': contacto,
+      if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
       if (resumen != null) 'RESUMEN': resumen,
+      if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
       if (latitud != null) 'LATITUD': latitud,
       if (longitud != null) 'LONGITUD': longitud,
       if (enviada != null) 'ENVIADA': enviada,
@@ -15401,10 +15500,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       Value<String?>? clienteProvisionalNombre,
       Value<String?>? clienteProvisionalEmail,
       Value<String?>? clienteProvisionalTelefono,
+      Value<String?>? clienteProvisionalPoblacion,
       Value<DateTime>? fecha,
       Value<String>? numEmpl,
       Value<String>? contacto,
+      Value<String?>? atendidoPor,
       Value<String?>? resumen,
+      Value<String?>? marcasCompetencia,
       Value<double>? latitud,
       Value<double>? longitud,
       Value<String>? enviada,
@@ -15420,10 +15522,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
           clienteProvisionalEmail ?? this.clienteProvisionalEmail,
       clienteProvisionalTelefono:
           clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
+      clienteProvisionalPoblacion:
+          clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
       fecha: fecha ?? this.fecha,
       numEmpl: numEmpl ?? this.numEmpl,
       contacto: contacto ?? this.contacto,
+      atendidoPor: atendidoPor ?? this.atendidoPor,
       resumen: resumen ?? this.resumen,
+      marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
       latitud: latitud ?? this.latitud,
       longitud: longitud ?? this.longitud,
       enviada: enviada ?? this.enviada,
@@ -15457,6 +15563,10 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
       map['CLIENTE_POTENCIAL_TELEFONO'] =
           Variable<String>(clienteProvisionalTelefono.value);
     }
+    if (clienteProvisionalPoblacion.present) {
+      map['CLIENTE_POTENCIAL_POBLACION'] =
+          Variable<String>(clienteProvisionalPoblacion.value);
+    }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
     }
@@ -15466,8 +15576,14 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
     if (contacto.present) {
       map['CONTACTO'] = Variable<String>(contacto.value);
     }
+    if (atendidoPor.present) {
+      map['ATENDIDO_POR'] = Variable<String>(atendidoPor.value);
+    }
     if (resumen.present) {
       map['RESUMEN'] = Variable<String>(resumen.value);
+    }
+    if (marcasCompetencia.present) {
+      map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
     }
     if (latitud.present) {
       map['LATITUD'] = Variable<double>(latitud.value);
@@ -15496,10 +15612,13 @@ class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
           ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
           ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
           ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
+          ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
           ..write('fecha: $fecha, ')
           ..write('numEmpl: $numEmpl, ')
           ..write('contacto: $contacto, ')
+          ..write('atendidoPor: $atendidoPor, ')
           ..write('resumen: $resumen, ')
+          ..write('marcasCompetencia: $marcasCompetencia, ')
           ..write('latitud: $latitud, ')
           ..write('longitud: $longitud, ')
           ..write('enviada: $enviada, ')
@@ -15552,6 +15671,12 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   late final GeneratedColumn<String> clienteProvisionalTelefono =
       GeneratedColumn<String>('CLIENTE_POTENCIAL_TELEFONO', aliasedName, true,
           type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _clienteProvisionalPoblacionMeta =
+      const VerificationMeta('clienteProvisionalPoblacion');
+  @override
+  late final GeneratedColumn<String> clienteProvisionalPoblacion =
+      GeneratedColumn<String>('CLIENTE_POTENCIAL_POBLACION', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
   @override
   late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
@@ -15569,12 +15694,24 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
       'CONTACTO', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _atendidoPorMeta =
+      const VerificationMeta('atendidoPor');
+  @override
+  late final GeneratedColumn<String> atendidoPor = GeneratedColumn<String>(
+      'ATENDIDO_POR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _resumenMeta =
       const VerificationMeta('resumen');
   @override
   late final GeneratedColumn<String> resumen = GeneratedColumn<String>(
       'RESUMEN', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _marcasCompetenciaMeta =
+      const VerificationMeta('marcasCompetencia');
+  @override
+  late final GeneratedColumn<String> marcasCompetencia =
+      GeneratedColumn<String>('MARCAS_COMPETENCIA', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _latitudMeta =
       const VerificationMeta('latitud');
   @override
@@ -15617,10 +15754,13 @@ class $VisitaLocalTableTable extends VisitaLocalTable
         clienteProvisionalNombre,
         clienteProvisionalEmail,
         clienteProvisionalTelefono,
+        clienteProvisionalPoblacion,
         fecha,
         numEmpl,
         contacto,
+        atendidoPor,
         resumen,
+        marcasCompetencia,
         latitud,
         longitud,
         enviada,
@@ -15676,6 +15816,13 @@ class $VisitaLocalTableTable extends VisitaLocalTable
               data['CLIENTE_POTENCIAL_TELEFONO']!,
               _clienteProvisionalTelefonoMeta));
     }
+    if (data.containsKey('CLIENTE_POTENCIAL_POBLACION')) {
+      context.handle(
+          _clienteProvisionalPoblacionMeta,
+          clienteProvisionalPoblacion.isAcceptableOrUnknown(
+              data['CLIENTE_POTENCIAL_POBLACION']!,
+              _clienteProvisionalPoblacionMeta));
+    }
     if (data.containsKey('FECHA')) {
       context.handle(
           _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
@@ -15694,9 +15841,21 @@ class $VisitaLocalTableTable extends VisitaLocalTable
     } else if (isInserting) {
       context.missing(_contactoMeta);
     }
+    if (data.containsKey('ATENDIDO_POR')) {
+      context.handle(
+          _atendidoPorMeta,
+          atendidoPor.isAcceptableOrUnknown(
+              data['ATENDIDO_POR']!, _atendidoPorMeta));
+    }
     if (data.containsKey('RESUMEN')) {
       context.handle(_resumenMeta,
           resumen.isAcceptableOrUnknown(data['RESUMEN']!, _resumenMeta));
+    }
+    if (data.containsKey('MARCAS_COMPETENCIA')) {
+      context.handle(
+          _marcasCompetenciaMeta,
+          marcasCompetencia.isAcceptableOrUnknown(
+              data['MARCAS_COMPETENCIA']!, _marcasCompetenciaMeta));
     }
     if (data.containsKey('LATITUD')) {
       context.handle(_latitudMeta,
@@ -15750,12 +15909,19 @@ class $VisitaLocalTableTable extends VisitaLocalTable
       clienteProvisionalTelefono: attachedDatabase.typeMapping.read(
           DriftSqlType.string,
           data['${effectivePrefix}CLIENTE_POTENCIAL_TELEFONO']),
+      clienteProvisionalPoblacion: attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}CLIENTE_POTENCIAL_POBLACION']),
       numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO'])!,
+      atendidoPor: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ATENDIDO_POR']),
       resumen: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}RESUMEN']),
+      marcasCompetencia: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}MARCAS_COMPETENCIA']),
       latitud: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
       longitud: attachedDatabase.typeMapping

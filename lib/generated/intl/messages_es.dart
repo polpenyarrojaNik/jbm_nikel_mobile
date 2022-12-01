@@ -499,6 +499,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "visita_show_visitaDetalle_titulo":
             MessageLookupByLibrary.simpleMessage("Detalle visita"),
         "visitas_edit_saved": MessageLookupByLibrary.simpleMessage("Guardado"),
+        "visitas_edit_visitaEditar_atendidoPor":
+            MessageLookupByLibrary.simpleMessage("Atendido por"),
         "visitas_edit_visitaEditar_cliente":
             MessageLookupByLibrary.simpleMessage("Cliente"),
         "visitas_edit_visitaEditar_clienteProvisional":
@@ -512,8 +514,12 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Error validando el formulario"),
         "visitas_edit_visitaEditar_fecha":
             MessageLookupByLibrary.simpleMessage("Fecha"),
+        "visitas_edit_visitaEditar_marcasCompetencia":
+            MessageLookupByLibrary.simpleMessage("Marcas competencia"),
         "visitas_edit_visitaEditar_nombre":
             MessageLookupByLibrary.simpleMessage("Nombre"),
+        "visitas_edit_visitaEditar_poblacion":
+            MessageLookupByLibrary.simpleMessage("Población"),
         "visitas_edit_visitaEditar_resumen":
             MessageLookupByLibrary.simpleMessage("Resumen"),
         "visitas_edit_visitaEditar_saved":
@@ -524,14 +530,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar visita"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nueva visita"),
+        "visitas_show_visitaDetalle_atendidoPor":
+            MessageLookupByLibrary.simpleMessage("Atendido por"),
         "visitas_show_visitaDetalle_clienteProvisional":
             MessageLookupByLibrary.simpleMessage("Cliente provisional"),
         "visitas_show_visitaDetalle_contacto":
             MessageLookupByLibrary.simpleMessage("Contacto"),
         "visitas_show_visitaDetalle_email":
             MessageLookupByLibrary.simpleMessage("Email"),
+        "visitas_show_visitaDetalle_marcasCompetencia":
+            MessageLookupByLibrary.simpleMessage("Marcas competencia"),
         "visitas_show_visitaDetalle_nombre":
             MessageLookupByLibrary.simpleMessage("Nombre"),
+        "visitas_show_visitaDetalle_poblacion":
+            MessageLookupByLibrary.simpleMessage("Población"),
         "visitas_show_visitaDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Resumen"),
         "visitas_show_visitaDetalle_telefono":

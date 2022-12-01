@@ -23,10 +23,13 @@ mixin _$Visita {
   String? get clienteProvisionalNombre => throw _privateConstructorUsedError;
   String? get clienteProvisionalEmail => throw _privateConstructorUsedError;
   String? get clienteProvisionalTelefono => throw _privateConstructorUsedError;
+  String? get clienteProvisionalPoblacion => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
   String get numEmpl => throw _privateConstructorUsedError;
   String get contacto => throw _privateConstructorUsedError;
+  String? get atendidoPor => throw _privateConstructorUsedError;
   String? get resumen => throw _privateConstructorUsedError;
+  String? get marcasCompetencia => throw _privateConstructorUsedError;
   double get latitud => throw _privateConstructorUsedError;
   double get longitud => throw _privateConstructorUsedError;
   String? get visitaAppId => throw _privateConstructorUsedError;
@@ -53,10 +56,13 @@ abstract class $VisitaCopyWith<$Res> {
       String? clienteProvisionalNombre,
       String? clienteProvisionalEmail,
       String? clienteProvisionalTelefono,
+      String? clienteProvisionalPoblacion,
       DateTime fecha,
       String numEmpl,
       String contacto,
+      String? atendidoPor,
       String? resumen,
+      String? marcasCompetencia,
       double latitud,
       double longitud,
       String? visitaAppId,
@@ -87,10 +93,13 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     Object? clienteProvisionalNombre = freezed,
     Object? clienteProvisionalEmail = freezed,
     Object? clienteProvisionalTelefono = freezed,
+    Object? clienteProvisionalPoblacion = freezed,
     Object? fecha = null,
     Object? numEmpl = null,
     Object? contacto = null,
+    Object? atendidoPor = freezed,
     Object? resumen = freezed,
+    Object? marcasCompetencia = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? visitaAppId = freezed,
@@ -129,6 +138,10 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.clienteProvisionalTelefono
           : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
               as String?,
+      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
+          ? _value.clienteProvisionalPoblacion
+          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
       fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
@@ -141,9 +154,17 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String,
+      atendidoPor: freezed == atendidoPor
+          ? _value.atendidoPor
+          : atendidoPor // ignore: cast_nullable_to_non_nullable
+              as String?,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      marcasCompetencia: freezed == marcasCompetencia
+          ? _value.marcasCompetencia
+          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
       latitud: null == latitud
           ? _value.latitud
@@ -195,10 +216,13 @@ abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
       String? clienteProvisionalNombre,
       String? clienteProvisionalEmail,
       String? clienteProvisionalTelefono,
+      String? clienteProvisionalPoblacion,
       DateTime fecha,
       String numEmpl,
       String contacto,
+      String? atendidoPor,
       String? resumen,
+      String? marcasCompetencia,
       double latitud,
       double longitud,
       String? visitaAppId,
@@ -226,10 +250,13 @@ class __$$_VisitaCopyWithImpl<$Res>
     Object? clienteProvisionalNombre = freezed,
     Object? clienteProvisionalEmail = freezed,
     Object? clienteProvisionalTelefono = freezed,
+    Object? clienteProvisionalPoblacion = freezed,
     Object? fecha = null,
     Object? numEmpl = null,
     Object? contacto = null,
+    Object? atendidoPor = freezed,
     Object? resumen = freezed,
+    Object? marcasCompetencia = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? visitaAppId = freezed,
@@ -268,6 +295,10 @@ class __$$_VisitaCopyWithImpl<$Res>
           ? _value.clienteProvisionalTelefono
           : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
               as String?,
+      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
+          ? _value.clienteProvisionalPoblacion
+          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
       fecha: null == fecha
           ? _value.fecha
           : fecha // ignore: cast_nullable_to_non_nullable
@@ -280,9 +311,17 @@ class __$$_VisitaCopyWithImpl<$Res>
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String,
+      atendidoPor: freezed == atendidoPor
+          ? _value.atendidoPor
+          : atendidoPor // ignore: cast_nullable_to_non_nullable
+              as String?,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      marcasCompetencia: freezed == marcasCompetencia
+          ? _value.marcasCompetencia
+          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
       latitud: null == latitud
           ? _value.latitud
@@ -331,10 +370,13 @@ class _$_Visita extends _Visita {
       this.clienteProvisionalNombre,
       this.clienteProvisionalEmail,
       this.clienteProvisionalTelefono,
+      this.clienteProvisionalPoblacion,
       required this.fecha,
       required this.numEmpl,
       required this.contacto,
+      this.atendidoPor,
       this.resumen,
+      this.marcasCompetencia,
       required this.latitud,
       required this.longitud,
       this.visitaAppId,
@@ -360,13 +402,19 @@ class _$_Visita extends _Visita {
   @override
   final String? clienteProvisionalTelefono;
   @override
+  final String? clienteProvisionalPoblacion;
+  @override
   final DateTime fecha;
   @override
   final String numEmpl;
   @override
   final String contacto;
   @override
+  final String? atendidoPor;
+  @override
   final String? resumen;
+  @override
+  final String? marcasCompetencia;
   @override
   final double latitud;
   @override
@@ -386,7 +434,7 @@ class _$_Visita extends _Visita {
 
   @override
   String toString() {
-    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, resumen: $resumen, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'Visita(id: $id, clienteId: $clienteId, nombreCliente: $nombreCliente, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, fecha: $fecha, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, visitaAppId: $visitaAppId, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -404,18 +452,25 @@ class _$_Visita extends _Visita {
             (identical(
                     other.clienteProvisionalNombre, clienteProvisionalNombre) ||
                 other.clienteProvisionalNombre == clienteProvisionalNombre) &&
-            (identical(
-                    other.clienteProvisionalEmail, clienteProvisionalEmail) ||
+            (identical(other.clienteProvisionalEmail, clienteProvisionalEmail) ||
                 other.clienteProvisionalEmail == clienteProvisionalEmail) &&
             (identical(other.clienteProvisionalTelefono,
                     clienteProvisionalTelefono) ||
                 other.clienteProvisionalTelefono ==
                     clienteProvisionalTelefono) &&
+            (identical(other.clienteProvisionalPoblacion,
+                    clienteProvisionalPoblacion) ||
+                other.clienteProvisionalPoblacion ==
+                    clienteProvisionalPoblacion) &&
             (identical(other.fecha, fecha) || other.fecha == fecha) &&
             (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
             (identical(other.contacto, contacto) ||
                 other.contacto == contacto) &&
+            (identical(other.atendidoPor, atendidoPor) ||
+                other.atendidoPor == atendidoPor) &&
             (identical(other.resumen, resumen) || other.resumen == resumen) &&
+            (identical(other.marcasCompetencia, marcasCompetencia) ||
+                other.marcasCompetencia == marcasCompetencia) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
             (identical(other.longitud, longitud) ||
                 other.longitud == longitud) &&
@@ -440,10 +495,13 @@ class _$_Visita extends _Visita {
         clienteProvisionalNombre,
         clienteProvisionalEmail,
         clienteProvisionalTelefono,
+        clienteProvisionalPoblacion,
         fecha,
         numEmpl,
         contacto,
+        atendidoPor,
         resumen,
+        marcasCompetencia,
         latitud,
         longitud,
         visitaAppId,
@@ -470,10 +528,13 @@ abstract class _Visita extends Visita {
       final String? clienteProvisionalNombre,
       final String? clienteProvisionalEmail,
       final String? clienteProvisionalTelefono,
+      final String? clienteProvisionalPoblacion,
       required final DateTime fecha,
       required final String numEmpl,
       required final String contacto,
+      final String? atendidoPor,
       final String? resumen,
+      final String? marcasCompetencia,
       required final double latitud,
       required final double longitud,
       final String? visitaAppId,
@@ -499,13 +560,19 @@ abstract class _Visita extends Visita {
   @override
   String? get clienteProvisionalTelefono;
   @override
+  String? get clienteProvisionalPoblacion;
+  @override
   DateTime get fecha;
   @override
   String get numEmpl;
   @override
   String get contacto;
   @override
+  String? get atendidoPor;
+  @override
   String? get resumen;
+  @override
+  String? get marcasCompetencia;
   @override
   double get latitud;
   @override

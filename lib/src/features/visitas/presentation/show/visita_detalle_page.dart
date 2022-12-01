@@ -29,9 +29,10 @@ class VisitaDetallePage extends ConsumerWidget {
             data: (visita) => (visita.isEditable())
                 ? [
                     IconButton(
-                        onPressed: () => navigateToEditVisita(
-                            context, visitaIdIsLocalParam.id),
-                        icon: const Icon(Icons.edit))
+                      onPressed: () => navigateToEditVisita(
+                          context, visitaIdIsLocalParam.id),
+                      icon: const Icon(Icons.edit),
+                    )
                   ]
                 : null),
       ),
@@ -77,6 +78,12 @@ class VisitaDetallePage extends ConsumerWidget {
                       S.of(context).visitas_show_visitaDetalle_telefono,
                   value: visita.clienteProvisionalTelefono!,
                 ),
+              if (visita.clienteProvisionalPoblacion != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue:
+                      S.of(context).visitas_show_visitaDetalle_poblacion,
+                  value: visita.clienteProvisionalPoblacion!,
+                ),
               gapH8,
               if (visita.resumen != null)
                 ColumnFieldTextDetalle(
@@ -89,6 +96,25 @@ class VisitaDetallePage extends ConsumerWidget {
                     S.of(context).visitas_show_visitaDetalle_contacto,
                 value: visita.contacto,
               ),
+              if (visita.resumen != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue:
+                      S.of(context).visitas_show_visitaDetalle_contacto,
+                  value: visita.contacto,
+                ),
+              if (visita.atendidoPor != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue:
+                      S.of(context).visitas_show_visitaDetalle_atendidoPor,
+                  value: visita.atendidoPor,
+                ),
+              if (visita.marcasCompetencia != null)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: S
+                      .of(context)
+                      .visitas_show_visitaDetalle_marcasCompetencia,
+                  value: visita.marcasCompetencia,
+                ),
               if (visita.errorSyncMessage != null) const Divider(),
               if (visita.errorSyncMessage != null)
                 Text(

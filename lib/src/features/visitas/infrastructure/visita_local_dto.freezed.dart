@@ -34,12 +34,18 @@ mixin _$VisitaLocalDTO {
   String? get clienteProvisionalEmail => throw _privateConstructorUsedError;
   @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
   String? get clienteProvisionalTelefono => throw _privateConstructorUsedError;
+  @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+  String? get clienteProvisionalPoblacion => throw _privateConstructorUsedError;
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl => throw _privateConstructorUsedError;
   @JsonKey(name: 'CONTACTO')
   String get contacto => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ATENDIDO_POR')
+  String? get atendidoPor => throw _privateConstructorUsedError;
   @JsonKey(name: 'RESUMEN')
   String? get resumen => throw _privateConstructorUsedError;
+  @JsonKey(name: 'MARCAS_COMPETENCIA')
+  String? get marcasCompetencia => throw _privateConstructorUsedError;
   @JsonKey(name: 'LATITUD')
   double get latitud => throw _privateConstructorUsedError;
   @JsonKey(name: 'LONGITUD')
@@ -78,12 +84,18 @@ abstract class $VisitaLocalDTOCopyWith<$Res> {
           String? clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
           String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+          String? clienteProvisionalPoblacion,
       @JsonKey(name: 'NUM_EMPL')
           String numEmpl,
       @JsonKey(name: 'CONTACTO')
           String contacto,
+      @JsonKey(name: 'ATENDIDO_POR')
+          String? atendidoPor,
       @JsonKey(name: 'RESUMEN')
           String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA')
+          String? marcasCompetencia,
       @JsonKey(name: 'LATITUD')
           double latitud,
       @JsonKey(name: 'LONGITUD')
@@ -116,9 +128,12 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
     Object? clienteProvisionalNombre = freezed,
     Object? clienteProvisionalEmail = freezed,
     Object? clienteProvisionalTelefono = freezed,
+    Object? clienteProvisionalPoblacion = freezed,
     Object? numEmpl = null,
     Object? contacto = null,
+    Object? atendidoPor = freezed,
     Object? resumen = freezed,
+    Object? marcasCompetencia = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? enviada = null,
@@ -154,6 +169,10 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
           ? _value.clienteProvisionalTelefono
           : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
               as String?,
+      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
+          ? _value.clienteProvisionalPoblacion
+          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
       numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
@@ -162,9 +181,17 @@ class _$VisitaLocalDTOCopyWithImpl<$Res, $Val extends VisitaLocalDTO>
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String,
+      atendidoPor: freezed == atendidoPor
+          ? _value.atendidoPor
+          : atendidoPor // ignore: cast_nullable_to_non_nullable
+              as String?,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      marcasCompetencia: freezed == marcasCompetencia
+          ? _value.marcasCompetencia
+          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
       latitud: null == latitud
           ? _value.latitud
@@ -213,12 +240,18 @@ abstract class _$$_VisitaLocalDTOCopyWith<$Res>
           String? clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
           String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+          String? clienteProvisionalPoblacion,
       @JsonKey(name: 'NUM_EMPL')
           String numEmpl,
       @JsonKey(name: 'CONTACTO')
           String contacto,
+      @JsonKey(name: 'ATENDIDO_POR')
+          String? atendidoPor,
       @JsonKey(name: 'RESUMEN')
           String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA')
+          String? marcasCompetencia,
       @JsonKey(name: 'LATITUD')
           double latitud,
       @JsonKey(name: 'LONGITUD')
@@ -249,9 +282,12 @@ class __$$_VisitaLocalDTOCopyWithImpl<$Res>
     Object? clienteProvisionalNombre = freezed,
     Object? clienteProvisionalEmail = freezed,
     Object? clienteProvisionalTelefono = freezed,
+    Object? clienteProvisionalPoblacion = freezed,
     Object? numEmpl = null,
     Object? contacto = null,
+    Object? atendidoPor = freezed,
     Object? resumen = freezed,
+    Object? marcasCompetencia = freezed,
     Object? latitud = null,
     Object? longitud = null,
     Object? enviada = null,
@@ -287,6 +323,10 @@ class __$$_VisitaLocalDTOCopyWithImpl<$Res>
           ? _value.clienteProvisionalTelefono
           : clienteProvisionalTelefono // ignore: cast_nullable_to_non_nullable
               as String?,
+      clienteProvisionalPoblacion: freezed == clienteProvisionalPoblacion
+          ? _value.clienteProvisionalPoblacion
+          : clienteProvisionalPoblacion // ignore: cast_nullable_to_non_nullable
+              as String?,
       numEmpl: null == numEmpl
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
@@ -295,9 +335,17 @@ class __$$_VisitaLocalDTOCopyWithImpl<$Res>
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
               as String,
+      atendidoPor: freezed == atendidoPor
+          ? _value.atendidoPor
+          : atendidoPor // ignore: cast_nullable_to_non_nullable
+              as String?,
       resumen: freezed == resumen
           ? _value.resumen
           : resumen // ignore: cast_nullable_to_non_nullable
+              as String?,
+      marcasCompetencia: freezed == marcasCompetencia
+          ? _value.marcasCompetencia
+          : marcasCompetencia // ignore: cast_nullable_to_non_nullable
               as String?,
       latitud: null == latitud
           ? _value.latitud
@@ -341,12 +389,18 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
           this.clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
           this.clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+          this.clienteProvisionalPoblacion,
       @JsonKey(name: 'NUM_EMPL')
           required this.numEmpl,
       @JsonKey(name: 'CONTACTO')
           required this.contacto,
+      @JsonKey(name: 'ATENDIDO_POR')
+          this.atendidoPor,
       @JsonKey(name: 'RESUMEN')
           this.resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA')
+          this.marcasCompetencia,
       @JsonKey(name: 'LATITUD')
           required this.latitud,
       @JsonKey(name: 'LONGITUD')
@@ -384,14 +438,23 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
   @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
   final String? clienteProvisionalTelefono;
   @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+  final String? clienteProvisionalPoblacion;
+  @override
   @JsonKey(name: 'NUM_EMPL')
   final String numEmpl;
   @override
   @JsonKey(name: 'CONTACTO')
   final String contacto;
   @override
+  @JsonKey(name: 'ATENDIDO_POR')
+  final String? atendidoPor;
+  @override
   @JsonKey(name: 'RESUMEN')
   final String? resumen;
+  @override
+  @JsonKey(name: 'MARCAS_COMPETENCIA')
+  final String? marcasCompetencia;
   @override
   @JsonKey(name: 'LATITUD')
   final double latitud;
@@ -410,7 +473,7 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
 
   @override
   String toString() {
-    return 'VisitaLocalDTO(visitaAppId: $visitaAppId, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, numEmpl: $numEmpl, contacto: $contacto, resumen: $resumen, latitud: $latitud, longitud: $longitud, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'VisitaLocalDTO(visitaAppId: $visitaAppId, fecha: $fecha, clienteId: $clienteId, isClienteProvisional: $isClienteProvisional, clienteProvisionalNombre: $clienteProvisionalNombre, clienteProvisionalEmail: $clienteProvisionalEmail, clienteProvisionalTelefono: $clienteProvisionalTelefono, clienteProvisionalPoblacion: $clienteProvisionalPoblacion, numEmpl: $numEmpl, contacto: $contacto, atendidoPor: $atendidoPor, resumen: $resumen, marcasCompetencia: $marcasCompetencia, latitud: $latitud, longitud: $longitud, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -435,10 +498,18 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
                     clienteProvisionalTelefono) ||
                 other.clienteProvisionalTelefono ==
                     clienteProvisionalTelefono) &&
+            (identical(other.clienteProvisionalPoblacion,
+                    clienteProvisionalPoblacion) ||
+                other.clienteProvisionalPoblacion ==
+                    clienteProvisionalPoblacion) &&
             (identical(other.numEmpl, numEmpl) || other.numEmpl == numEmpl) &&
             (identical(other.contacto, contacto) ||
                 other.contacto == contacto) &&
+            (identical(other.atendidoPor, atendidoPor) ||
+                other.atendidoPor == atendidoPor) &&
             (identical(other.resumen, resumen) || other.resumen == resumen) &&
+            (identical(other.marcasCompetencia, marcasCompetencia) ||
+                other.marcasCompetencia == marcasCompetencia) &&
             (identical(other.latitud, latitud) || other.latitud == latitud) &&
             (identical(other.longitud, longitud) ||
                 other.longitud == longitud) &&
@@ -459,9 +530,12 @@ class _$_VisitaLocalDTO extends _VisitaLocalDTO {
       clienteProvisionalNombre,
       clienteProvisionalEmail,
       clienteProvisionalTelefono,
+      clienteProvisionalPoblacion,
       numEmpl,
       contacto,
+      atendidoPor,
       resumen,
+      marcasCompetencia,
       latitud,
       longitud,
       enviada,
@@ -498,12 +572,18 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
           final String? clienteProvisionalEmail,
       @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
           final String? clienteProvisionalTelefono,
+      @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+          final String? clienteProvisionalPoblacion,
       @JsonKey(name: 'NUM_EMPL')
           required final String numEmpl,
       @JsonKey(name: 'CONTACTO')
           required final String contacto,
+      @JsonKey(name: 'ATENDIDO_POR')
+          final String? atendidoPor,
       @JsonKey(name: 'RESUMEN')
           final String? resumen,
+      @JsonKey(name: 'MARCAS_COMPETENCIA')
+          final String? marcasCompetencia,
       @JsonKey(name: 'LATITUD')
           required final double latitud,
       @JsonKey(name: 'LONGITUD')
@@ -541,14 +621,23 @@ abstract class _VisitaLocalDTO extends VisitaLocalDTO {
   @JsonKey(name: 'CLIENTE_POTENCIAL_TELEFONO')
   String? get clienteProvisionalTelefono;
   @override
+  @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
+  String? get clienteProvisionalPoblacion;
+  @override
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl;
   @override
   @JsonKey(name: 'CONTACTO')
   String get contacto;
   @override
+  @JsonKey(name: 'ATENDIDO_POR')
+  String? get atendidoPor;
+  @override
   @JsonKey(name: 'RESUMEN')
   String? get resumen;
+  @override
+  @JsonKey(name: 'MARCAS_COMPETENCIA')
+  String? get marcasCompetencia;
   @override
   @JsonKey(name: 'LATITUD')
   double get latitud;

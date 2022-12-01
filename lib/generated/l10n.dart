@@ -2534,6 +2534,36 @@ class S {
     );
   }
 
+  /// `City`
+  String get visitas_show_visitaDetalle_poblacion {
+    return Intl.message(
+      'City',
+      name: 'visitas_show_visitaDetalle_poblacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attended by`
+  String get visitas_show_visitaDetalle_atendidoPor {
+    return Intl.message(
+      'Attended by',
+      name: 'visitas_show_visitaDetalle_atendidoPor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Competitor brands`
+  String get visitas_show_visitaDetalle_marcasCompetencia {
+    return Intl.message(
+      'Competitor brands',
+      name: 'visitas_show_visitaDetalle_marcasCompetencia',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Provisional customer`
   String get visitas_show_visitaDetalle_clienteProvisional {
     return Intl.message(
@@ -2639,6 +2669,36 @@ class S {
     return Intl.message(
       'Phone',
       name: 'visitas_edit_visitaEditar_telefono',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get visitas_edit_visitaEditar_poblacion {
+    return Intl.message(
+      'City',
+      name: 'visitas_edit_visitaEditar_poblacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attended by`
+  String get visitas_edit_visitaEditar_atendidoPor {
+    return Intl.message(
+      'Attended by',
+      name: 'visitas_edit_visitaEditar_atendidoPor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Competitor brands`
+  String get visitas_edit_visitaEditar_marcasCompetencia {
+    return Intl.message(
+      'Competitor brands',
+      name: 'visitas_edit_visitaEditar_marcasCompetencia',
       desc: '',
       args: [],
     );
