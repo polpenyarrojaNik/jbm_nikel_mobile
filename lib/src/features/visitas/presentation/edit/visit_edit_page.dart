@@ -117,12 +117,29 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: state.when(
-          loading: () => const ProgressIndicatorWidget(),
-          data: (visita) {
-            return _VisitaForm(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: state.when(
+            loading: () => const ProgressIndicatorWidget(),
+            data: (visita) {
+              return _VisitaForm(
+                formKey: formKey,
+                visita: visita,
+                onChanged: _onChanged,
+                onSelectedCliente: onSelectedCliente,
+                onChangeClientePotencial: onChangeClientePotencial,
+                isClienteProvisional: isClientePotencial,
+                readOnly: false,
+                isNew: widget.isNew,
+              );
+            },
+            error: (Object error, StackTrace? _) => ErrorMessageWidget(
+              (error is AppException)
+                  ? error.details.message
+                  : error.toString(),
+            ),
+            saved: (visita) => _VisitaForm(
               formKey: formKey,
               visita: visita,
               onChanged: _onChanged,
@@ -131,43 +148,30 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
               isClienteProvisional: isClientePotencial,
               readOnly: false,
               isNew: widget.isNew,
-            );
-          },
-          error: (Object error, StackTrace? _) => ErrorMessageWidget(
-            (error is AppException) ? error.details.message : error.toString(),
+            ),
+            saving: (visita) => _VisitaForm(
+              formKey: formKey,
+              visita: visita,
+              onChanged: _onChanged,
+              onSelectedCliente: onSelectedCliente,
+              onChangeClientePotencial: onChangeClientePotencial,
+              isClienteProvisional: isClientePotencial,
+              readOnly: true,
+              isNew: widget.isNew,
+            ),
+            savedError: (Visita visita, Object error, StackTrace? stackTrace) =>
+                _VisitaForm(
+              formKey: formKey,
+              visita: visita,
+              onChanged: _onChanged,
+              onSelectedCliente: onSelectedCliente,
+              onChangeClientePotencial: onChangeClientePotencial,
+              isClienteProvisional: isClientePotencial,
+              readOnly: false,
+              isNew: widget.isNew,
+            ),
+            deleted: () => const ProgressIndicatorWidget(),
           ),
-          saved: (visita) => _VisitaForm(
-            formKey: formKey,
-            visita: visita,
-            onChanged: _onChanged,
-            onSelectedCliente: onSelectedCliente,
-            onChangeClientePotencial: onChangeClientePotencial,
-            isClienteProvisional: isClientePotencial,
-            readOnly: false,
-            isNew: widget.isNew,
-          ),
-          saving: (visita) => _VisitaForm(
-            formKey: formKey,
-            visita: visita,
-            onChanged: _onChanged,
-            onSelectedCliente: onSelectedCliente,
-            onChangeClientePotencial: onChangeClientePotencial,
-            isClienteProvisional: isClientePotencial,
-            readOnly: true,
-            isNew: widget.isNew,
-          ),
-          savedError: (Visita visita, Object error, StackTrace? stackTrace) =>
-              _VisitaForm(
-            formKey: formKey,
-            visita: visita,
-            onChanged: _onChanged,
-            onSelectedCliente: onSelectedCliente,
-            onChangeClientePotencial: onChangeClientePotencial,
-            isClienteProvisional: isClientePotencial,
-            readOnly: false,
-            isNew: widget.isNew,
-          ),
-          deleted: () => const ProgressIndicatorWidget(),
         ),
       ),
     );
