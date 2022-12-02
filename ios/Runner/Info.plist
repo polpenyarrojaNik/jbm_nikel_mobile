@@ -33,6 +33,8 @@
       <string>comgooglemaps</string>
       <string>iosamap</string>
     </array>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>JBM Nikel Mobile requires location permissons when is using to show your location in map</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>JBM Nikel Mobile requires location permissons when is using to show your location in map</string>
     <key>UILaunchStoryboardName</key>
