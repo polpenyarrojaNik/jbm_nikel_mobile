@@ -569,7 +569,8 @@ class _ArticuloPrecioContainer extends StatelessWidget {
             FormBuilderTextField(
               name: 'precio',
               controller: precioController,
-              keyboardType: TextInputType.number,
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_precio,
                 suffix: Text(

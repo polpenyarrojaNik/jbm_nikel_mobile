@@ -22,7 +22,7 @@ import 'articulo_lista_tile.dart';
 import 'articulo_search_controller.dart';
 
 class ArticuloListaPage extends ConsumerStatefulWidget {
-  ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
+  const ArticuloListaPage({super.key, required this.isSearchArticuloForForm});
 
   final bool isSearchArticuloForForm;
 
