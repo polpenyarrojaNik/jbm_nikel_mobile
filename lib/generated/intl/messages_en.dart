@@ -376,6 +376,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("New sales order"),
         "pedido_edit_pedidoEdit_observaciones":
             MessageLookupByLibrary.simpleMessage("Remarks"),
+        "pedido_edit_pedidoEdit_oferta":
+            MessageLookupByLibrary.simpleMessage("Offer"),
         "pedido_edit_pedidoEdit_pedidoCliente":
             MessageLookupByLibrary.simpleMessage("Customer sales order"),
         "pedido_edit_pedidoEdit_seleccioneCliente":

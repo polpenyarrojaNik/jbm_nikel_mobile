@@ -213,6 +213,7 @@
   "pedido_edit_pedidoEdit_stockDisponible": "Available stock:",
   "pedido_edit_pedidoEdit_totalLineas": "Total lines",
   "pedido_edit_pedidoEdit_lineas": "Lines",
+  "pedido_edit_pedidoEdit_oferta": "Offer",
   "pedido_edit_lineaNuevoTile_precio": "Price:",
   "pedido_edit_lineaNuevoTile_dto": "Disc.:",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Select quantity",

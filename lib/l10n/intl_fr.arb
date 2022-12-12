@@ -179,6 +179,7 @@
   "pedido_edit_pedidoEdit_sinArticulos": "Sans articles",
   "pedido_edit_pedidoEdit_stockDisponible": "Stock disponible:",
   "pedido_edit_pedidoEdit_totalLineas": "Lignes totales:",
+  "pedido_edit_pedidoEdit_oferta": "Offer",
   "pedido_edit_selectQuantity_artiuclosSustitutivos": "Article de remplacement:",
   "pedido_edit_selectQuantity_cantidad": "Quantité",
   "pedido_edit_selectQuantity_descuneto1": "Remise 1",

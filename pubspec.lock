@@ -245,14 +245,14 @@ packages:
       name: data_table_2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.8"
+    version: "2.3.10"
   decimal:
     dependency: transitive
     description:
       name: decimal
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   dependency_validator:
     dependency: "direct dev"
     description:
@@ -468,7 +468,7 @@ packages:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "10.2.1"
+    version: "10.3.0"
   form_builder_validators:
     dependency: "direct main"
     description:
@@ -482,7 +482,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.2"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -566,7 +566,7 @@ packages:
       name: google_maps_flutter_android
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.3"
+    version: "2.4.0"
   google_maps_flutter_ios:
     dependency: transitive
     description:
@@ -902,7 +902,7 @@ packages:
       name: rational
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   reactive_forms:
     dependency: "direct main"
     description:
@@ -1054,7 +1054,7 @@ packages:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   sqflite_common:
     dependency: transitive
     description:

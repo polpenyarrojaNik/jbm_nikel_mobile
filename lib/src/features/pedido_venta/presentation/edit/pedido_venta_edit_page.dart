@@ -739,7 +739,7 @@ class StepObservacionesContent extends ConsumerWidget {
           children: [
             FormBuilderSwitch(
               name: 'oferta',
-              title: Text('Oferta'),
+              title: Text(S.of(context).pedido_edit_pedidoEdit_oferta),
               initialValue: oferta,
               enabled: !isClientePotencial,
               onChanged: (value) => ref
@@ -836,7 +836,7 @@ class StepResumenContent extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Oferta',
+                    S.of(context).pedido_edit_pedidoEdit_oferta,
                     style: Theme.of(context).textTheme.subtitle2!.copyWith(
                         color: Theme.of(context).textTheme.caption!.color),
                   ),

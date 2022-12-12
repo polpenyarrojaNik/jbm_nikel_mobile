@@ -2194,6 +2194,16 @@ class S {
     );
   }
 
+  /// `Offer`
+  String get pedido_edit_pedidoEdit_oferta {
+    return Intl.message(
+      'Offer',
+      name: 'pedido_edit_pedidoEdit_oferta',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price:`
   String get pedido_edit_lineaNuevoTile_precio {
     return Intl.message(
