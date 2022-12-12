@@ -46,6 +46,7 @@ extension MoneyParsing on String {
             symbol: 'zł', invertSeparators: true, pattern: 'S#.##0'),
         Currency.create('CLP', 1, invertSeparators: true, pattern: 'S#.##0'),
         Currency.create('USD', 1, pattern: 'S#,##0'),
+        Currency.create('US', 1, pattern: 'S#,##0'),
       ],
     );
 
@@ -75,6 +76,7 @@ extension MoneyParsingDouble on num {
             symbol: 'zł', invertSeparators: true, pattern: 'S#.##0,00'),
         Currency.create('CLP', 2, invertSeparators: true, pattern: 'S#.##0,##'),
         Currency.create('USD', 2, pattern: 'S#,##0.00'),
+        Currency.create('US', 2, pattern: 'S#,##0.00'),
       ],
     );
 

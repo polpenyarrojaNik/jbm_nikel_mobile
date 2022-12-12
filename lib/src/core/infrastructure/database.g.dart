@@ -16419,6 +16419,7 @@ class PedidoVentaLocalTableCompanion
   final Value<String?> divisaId;
   final Value<String?> pedidoCliente;
   final Value<String?> observaciones;
+  final Value<String> oferta;
   final Value<double> iva;
   final Value<double> dtoBonificacion;
   final Value<String> enviada;
@@ -16441,6 +16442,7 @@ class PedidoVentaLocalTableCompanion
     this.divisaId = const Value.absent(),
     this.pedidoCliente = const Value.absent(),
     this.observaciones = const Value.absent(),
+    this.oferta = const Value.absent(),
     this.iva = const Value.absent(),
     this.dtoBonificacion = const Value.absent(),
     this.enviada = const Value.absent(),
@@ -16464,6 +16466,7 @@ class PedidoVentaLocalTableCompanion
     this.divisaId = const Value.absent(),
     this.pedidoCliente = const Value.absent(),
     this.observaciones = const Value.absent(),
+    required String oferta,
     required double iva,
     required double dtoBonificacion,
     this.enviada = const Value.absent(),
@@ -16474,6 +16477,7 @@ class PedidoVentaLocalTableCompanion
         fechaAlta = Value(fechaAlta),
         clienteId = Value(clienteId),
         nombreCliente = Value(nombreCliente),
+        oferta = Value(oferta),
         iva = Value(iva),
         dtoBonificacion = Value(dtoBonificacion);
   static Insertable<PedidoVentaLocalDTO> custom({
@@ -16493,6 +16497,7 @@ class PedidoVentaLocalTableCompanion
     Expression<String>? divisaId,
     Expression<String>? pedidoCliente,
     Expression<String>? observaciones,
+    Expression<String>? oferta,
     Expression<double>? iva,
     Expression<double>? dtoBonificacion,
     Expression<String>? enviada,
@@ -16516,6 +16521,7 @@ class PedidoVentaLocalTableCompanion
       if (divisaId != null) 'DIVISA_ID': divisaId,
       if (pedidoCliente != null) 'PEDIDO_CLIENTE': pedidoCliente,
       if (observaciones != null) 'OBSERVACIONES': observaciones,
+      if (oferta != null) 'OFERTA_SN': oferta,
       if (iva != null) 'IVA': iva,
       if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
       if (enviada != null) 'ENVIADA': enviada,
@@ -16541,6 +16547,7 @@ class PedidoVentaLocalTableCompanion
       Value<String?>? divisaId,
       Value<String?>? pedidoCliente,
       Value<String?>? observaciones,
+      Value<String>? oferta,
       Value<double>? iva,
       Value<double>? dtoBonificacion,
       Value<String>? enviada,
@@ -16563,6 +16570,7 @@ class PedidoVentaLocalTableCompanion
       divisaId: divisaId ?? this.divisaId,
       pedidoCliente: pedidoCliente ?? this.pedidoCliente,
       observaciones: observaciones ?? this.observaciones,
+      oferta: oferta ?? this.oferta,
       iva: iva ?? this.iva,
       dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
       enviada: enviada ?? this.enviada,
@@ -16622,6 +16630,9 @@ class PedidoVentaLocalTableCompanion
     if (observaciones.present) {
       map['OBSERVACIONES'] = Variable<String>(observaciones.value);
     }
+    if (oferta.present) {
+      map['OFERTA_SN'] = Variable<String>(oferta.value);
+    }
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
     }
@@ -16659,6 +16670,7 @@ class PedidoVentaLocalTableCompanion
           ..write('divisaId: $divisaId, ')
           ..write('pedidoCliente: $pedidoCliente, ')
           ..write('observaciones: $observaciones, ')
+          ..write('oferta: $oferta, ')
           ..write('iva: $iva, ')
           ..write('dtoBonificacion: $dtoBonificacion, ')
           ..write('enviada: $enviada, ')
@@ -16776,6 +16788,11 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
       'OBSERVACIONES', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _ofertaMeta = const VerificationMeta('oferta');
+  @override
+  late final GeneratedColumn<String> oferta = GeneratedColumn<String>(
+      'OFERTA_SN', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
@@ -16827,6 +16844,7 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
         divisaId,
         pedidoCliente,
         observaciones,
+        oferta,
         iva,
         dtoBonificacion,
         enviada,
@@ -16933,6 +16951,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
           observaciones.isAcceptableOrUnknown(
               data['OBSERVACIONES']!, _observacionesMeta));
     }
+    if (data.containsKey('OFERTA_SN')) {
+      context.handle(_ofertaMeta,
+          oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta));
+    } else if (isInserting) {
+      context.missing(_ofertaMeta);
+    }
     if (data.containsKey('IVA')) {
       context.handle(
           _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
@@ -17000,6 +17024,8 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_CLIENTE']),
       observaciones: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
+      oferta: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
       fechaAlta: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALTA'])!,
       iva: attachedDatabase.typeMapping

@@ -36,6 +36,7 @@ class PedidoVentaLocalDTO
     @JsonKey(name: 'DIVISA_ID') String? divisaId,
     @JsonKey(name: 'PEDIDO_CLIENTE') String? pedidoCliente,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
+    @JsonKey(name: 'OFERTA_SN') required String oferta,
     @JsonKey(name: 'FECHA_ALTA') required DateTime fechaAlta,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'DTO_BONIFICACION') required double dtoBonificacion,
@@ -64,6 +65,7 @@ class PedidoVentaLocalDTO
       paisId: _.pais?.id,
       pedidoCliente: _.pedidoCliente,
       observaciones: _.observaciones,
+      oferta: (_.oferta ?? false) ? 'S' : 'N',
       divisaId: _.divisa.id,
       iva: _.iva,
       dtoBonificacion: _.dtoBonificacion!,
@@ -79,7 +81,8 @@ class PedidoVentaLocalDTO
       Cliente cliente,
       ClienteDireccion? clienteDireccion,
       String? pedidoCliente,
-      String? observaciones) {
+      String? observaciones,
+      bool oferta) {
     return PedidoVentaLocalDTO(
       usuarioId: usuarioId,
       pedidoVentaAppId: pedidoVentaAppId,
@@ -97,6 +100,7 @@ class PedidoVentaLocalDTO
       paisId: clienteDireccion?.pais!.id ?? cliente.paisFiscal!.id,
       pedidoCliente: pedidoCliente,
       observaciones: observaciones,
+      oferta: oferta ? 'S' : 'N',
       divisaId: cliente.divisa!.id,
       iva: cliente.iva,
       dtoBonificacion: 0,
@@ -140,7 +144,7 @@ class PedidoVentaLocalDTO
       importeIva: importeIva,
       total: total,
       pedidoVentaEstado: null,
-      oferta: null,
+      oferta: oferta == 'S' ? true : false,
       lastUpdated: DateTime.now().toUtc(),
       deleted: false,
       enviada: (enviada == 'S') ? true : false,
@@ -167,6 +171,7 @@ class PedidoVentaLocalDTO
       paisId: Value(paisId),
       pedidoCliente: Value(pedidoCliente),
       observaciones: Value(observaciones),
+      oferta: Value(oferta),
       divisaId: Value(divisaId),
       iva: Value(iva),
       dtoBonificacion: Value(dtoBonificacion),
@@ -198,6 +203,7 @@ class PedidoVentaLocalTable extends Table {
       text().nullable().references(DivisaTable, #id).named('DIVISA_ID')();
   TextColumn get pedidoCliente => text().nullable().named('PEDIDO_CLIENTE')();
   TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
+  TextColumn get oferta => text().named('OFERTA_SN')();
   RealColumn get iva => real().named('IVA')();
   RealColumn get dtoBonificacion => real().named('DTO_BONIFICACION')();
   TextColumn get enviada =>

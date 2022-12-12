@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import '../application/log_service.dart';
 import '../exceptions/app_exception.dart';
 
-const int databaseRelease = 12;
+const int databaseRelease = 14;
 
 Future<void> deleteLocalDatabase() async {
   const localDatabaseName = 'jbm.sqlite';

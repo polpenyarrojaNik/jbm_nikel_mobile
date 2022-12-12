@@ -18,12 +18,14 @@ class PedidoVentaEditPageControllerState
 
   const factory PedidoVentaEditPageControllerState.loading() = _loading;
   const factory PedidoVentaEditPageControllerState.data(
-      Cliente? cliente,
-      ClienteDireccion? clienteDireccion,
-      List<PedidoVentaLinea> pedidoVentaLinea,
-      int currentStep,
-      String? observaciones,
-      String? pedidoCliente) = _data;
+    Cliente? cliente,
+    ClienteDireccion? clienteDireccion,
+    List<PedidoVentaLinea> pedidoVentaLinea,
+    int currentStep,
+    String? observaciones,
+    String? pedidoCliente,
+    bool oferta,
+  ) = _data;
   const factory PedidoVentaEditPageControllerState.error(Object error,
       {StackTrace? stackTrace}) = _error;
   const factory PedidoVentaEditPageControllerState.deleted() = _deleted;
@@ -37,6 +39,7 @@ class PedidoVentaEditPageControllerState
       int currentStep,
       String? observaciones,
       String? pedidoCliente,
+      bool oferta,
       Object error,
       {StackTrace? stackTrace}) = _savedError;
 }
@@ -63,6 +66,7 @@ class PedidoVentaEditPageController
   int _currentStep = 0;
   String? _observaciones;
   String? _pedidoCliente;
+  bool _oferta = false;
 
   PedidoVentaEditPageController({
     required this.pedidoVentaIdIsLocalParam,
@@ -87,6 +91,7 @@ class PedidoVentaEditPageController
         _currentStep,
         _observaciones,
         _pedidoCliente,
+        _oferta,
       );
     } else {
       try {
@@ -112,6 +117,8 @@ class PedidoVentaEditPageController
 
         _pedidoCliente = pedidoVenta.pedidoCliente;
 
+        _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
+
         state = PedidoVentaEditPageControllerState.data(
           _cliente,
           _clienteDireccion,
@@ -119,6 +126,7 @@ class PedidoVentaEditPageController
           _currentStep,
           _observaciones,
           _pedidoCliente,
+          _oferta,
         );
       } catch (err, stack) {
         state =
@@ -127,13 +135,15 @@ class PedidoVentaEditPageController
     }
   }
 
-  Future<void> upsertPedidoVenta(
-      {required String pedidoVentaAppId,
-      required Cliente cliente,
-      required ClienteDireccion? clienteDireccion,
-      required List<PedidoVentaLinea> pedidoVentaLineaList,
-      String? observaciones,
-      String? pedidoCliente}) async {
+  Future<void> upsertPedidoVenta({
+    required String pedidoVentaAppId,
+    required Cliente cliente,
+    required ClienteDireccion? clienteDireccion,
+    required List<PedidoVentaLinea> pedidoVentaLineaList,
+    String? observaciones,
+    String? pedidoCliente,
+    required bool oferta,
+  }) async {
     state = const PedidoVentaEditPageControllerState.loading();
 
     try {
@@ -144,6 +154,7 @@ class PedidoVentaEditPageController
         pedidoVentaLineaList: pedidoVentaLineaList,
         pedidoCliente: pedidoCliente,
         observaciones: observaciones,
+        oferta: oferta,
       );
       state = PedidoVentaEditPageControllerState.saved(pedidoVentaAppId);
     } catch (err, stack) {
@@ -154,6 +165,7 @@ class PedidoVentaEditPageController
           _currentStep,
           _observaciones,
           _pedidoCliente,
+          _oferta,
           err,
           stackTrace: stack);
     }
@@ -182,6 +194,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -194,6 +207,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -209,12 +223,15 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
   Future<void> selectCliente({required Cliente cliente}) async {
     _cliente = cliente;
     _clienteDireccion = null;
+
+    _oferta = cliente.clientePotencial ?? false;
 
     pedidoVentaLineaList.clear();
     state = PedidoVentaEditPageControllerState.data(
@@ -224,6 +241,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -237,6 +255,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -252,6 +271,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -267,6 +287,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -283,6 +304,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -295,6 +317,7 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
     );
   }
 
@@ -307,6 +330,20 @@ class PedidoVentaEditPageController
       _currentStep,
       _observaciones,
       _pedidoCliente,
+      _oferta,
+    );
+  }
+
+  Future<void> setOfertaSN(bool? newValueOferta) async {
+    _oferta = newValueOferta ?? _oferta;
+    state = PedidoVentaEditPageControllerState.data(
+      _cliente,
+      _clienteDireccion,
+      pedidoVentaLineaList,
+      _currentStep,
+      _observaciones,
+      _pedidoCliente,
+      _oferta,
     );
   }
 

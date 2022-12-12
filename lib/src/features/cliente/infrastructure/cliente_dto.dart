@@ -239,21 +239,25 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
   }
 
   Money calculateRiesgoExcedido(double? riesgoConcedido, String divisaId) {
-    final riesgoActual = calculateRiesgoActual(
-        riesgoPendienteCobroVencido,
-        riesgoPendienteCobroNoVencido,
-        riesgoPendienteServir,
-        riesgoPendienteFacturar,
-        divisaId);
+    try {
+      final riesgoActual = calculateRiesgoActual(
+          riesgoPendienteCobroVencido,
+          riesgoPendienteCobroNoVencido,
+          riesgoPendienteServir,
+          riesgoPendienteFacturar,
+          divisaId);
 
-    final riesgoExcedidoFixed =
-        Fixed.parse(riesgoConcedido?.toString() ?? '0') - riesgoActual.amount;
+      final riesgoExcedidoFixed =
+          Fixed.parse(riesgoConcedido?.toString() ?? '0') - riesgoActual.amount;
 
-    if (riesgoExcedidoFixed.isNegative) {
-      return Money.fromFixedWithCurrency(
-          riesgoExcedidoFixed.abs, Currencies().findByCode(divisaId)!);
-    } else {
-      return Money.parseWithCurrency('0', Currencies().findByCode(divisaId)!);
+      if (riesgoExcedidoFixed.isNegative) {
+        return Money.fromFixedWithCurrency(
+            riesgoExcedidoFixed.abs, Currencies().find(divisaId)!);
+      } else {
+        return Money.parseWithCurrency('0', Currencies().find(divisaId)!);
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 }

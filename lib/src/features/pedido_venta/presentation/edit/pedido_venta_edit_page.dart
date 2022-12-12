@@ -83,8 +83,9 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             context.router.pop();
           },
           deleted: () => context.router.popUntilRouteWithName('/pedido'),
-          savedError: (_, __, ___, ____, _____, ______, error, _______) =>
-              context.showErrorBar(
+          savedError:
+              (_, __, ___, ____, _____, ______, _________, error, _______) =>
+                  context.showErrorBar(
             duration: const Duration(seconds: 5),
             content: Text((error is AppException)
                 ? error.details.message
@@ -113,6 +114,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             currentStep,
             observaciones,
             pedidoCliente,
+            oferta,
           ) =>
               PedidoVentaEditForm(
             isNew: widget.isNew,
@@ -123,12 +125,20 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             currentStep: currentStep,
             observaciones: observaciones,
             pedidoCliente: pedidoCliente,
+            oferta: oferta,
           ),
           error: (Object error, StackTrace? _) => ErrorMessageWidget(
             (error is AppException) ? error.details.message : error.toString(),
           ),
-          savedError: (cliente, clienteDireccion, pedidoVentaLineaList,
-                  currentStep, observaciones, pedidoCliente, error, _) =>
+          savedError: (cliente,
+                  clienteDireccion,
+                  pedidoVentaLineaList,
+                  currentStep,
+                  observaciones,
+                  pedidoCliente,
+                  oferta,
+                  error,
+                  _) =>
               PedidoVentaEditForm(
             isNew: widget.isNew,
             pedidoVentaIdLocalParam: pedidoVentaIdLocalParam!,
@@ -138,6 +148,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             currentStep: currentStep,
             observaciones: observaciones,
             pedidoCliente: pedidoCliente,
+            oferta: oferta,
           ),
         ),
       ),
@@ -156,6 +167,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     required this.currentStep,
     required this.observaciones,
     required this.pedidoCliente,
+    required this.oferta,
   });
 
   final bool isNew;
@@ -166,6 +178,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
   final int currentStep;
   final String? observaciones;
   final String? pedidoCliente;
+  final bool oferta;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -230,6 +243,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
               pedidoVentaLineaList: pedidoVentaLineaList,
               observaciones: observaciones,
               pedidoCliente: pedidoCliente,
+              oferta: oferta,
             );
         break;
       default:
@@ -337,6 +351,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
           pedidoVentaIdLocalParam: pedidoVentaIdLocalParam,
           observaciones: observaciones,
           pedidoCliente: pedidoCliente,
+          oferta: oferta,
+          isClientePotencial: cliente?.clientePotencial ?? false,
         ),
         state: (currentStep >= 3)
             ? (currentStep == 3)
@@ -354,6 +370,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
           pedidoVentaLineaList: pedidoVentaLineaList,
           observaciones: observaciones,
           pedidoCliente: pedidoCliente,
+          oferta: oferta,
         ),
         state: currentStep >= 4
             ? (currentStep == 4)
@@ -701,11 +718,15 @@ class StepObservacionesContent extends ConsumerWidget {
     required this.pedidoVentaIdLocalParam,
     required this.observaciones,
     required this.pedidoCliente,
+    required this.oferta,
+    required this.isClientePotencial,
   });
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
   final String? observaciones;
   final String? pedidoCliente;
+  final bool oferta;
+  final bool isClientePotencial;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -716,6 +737,17 @@ class StepObservacionesContent extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            FormBuilderSwitch(
+              name: 'oferta',
+              title: Text('Oferta'),
+              initialValue: oferta,
+              enabled: !isClientePotencial,
+              onChanged: (value) => ref
+                  .read(pedidoVentaEditPageControllerProvider(
+                          pedidoVentaIdLocalParam)
+                      .notifier)
+                  .setOfertaSN(value),
+            ),
             FormBuilderTextField(
               name: 'pedidoCliente',
               keyboardType: TextInputType.multiline,
@@ -760,6 +792,7 @@ class StepResumenContent extends ConsumerWidget {
     required this.pedidoVentaLineaList,
     required this.observaciones,
     required this.pedidoCliente,
+    required this.oferta,
   });
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
@@ -769,6 +802,7 @@ class StepResumenContent extends ConsumerWidget {
   final List<PedidoVentaLinea> pedidoVentaLineaList;
   final String? observaciones;
   final String? pedidoCliente;
+  final bool oferta;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -798,6 +832,17 @@ class StepResumenContent extends ConsumerWidget {
                 ),
               ),
               gapH8,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Oferta',
+                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        color: Theme.of(context).textTheme.caption!.color),
+                  ),
+                  Switch(value: oferta, onChanged: null),
+                ],
+              ),
               if (pedidoCliente != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue:
