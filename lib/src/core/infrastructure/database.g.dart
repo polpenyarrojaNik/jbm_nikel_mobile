@@ -14831,7 +14831,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   final Value<String?> clienteProvisionalTelefono;
   final Value<String?> clienteProvisionalPoblacion;
   final Value<String> numEmpl;
-  final Value<String> contacto;
+  final Value<String?> contacto;
   final Value<String?> atendidoPor;
   final Value<String?> resumen;
   final Value<String?> marcasCompetencia;
@@ -14870,7 +14870,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
     this.clienteProvisionalTelefono = const Value.absent(),
     this.clienteProvisionalPoblacion = const Value.absent(),
     required String numEmpl,
-    required String contacto,
+    this.contacto = const Value.absent(),
     this.atendidoPor = const Value.absent(),
     this.resumen = const Value.absent(),
     this.marcasCompetencia = const Value.absent(),
@@ -14883,7 +14883,6 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
         fecha = Value(fecha),
         isClienteProvisional = Value(isClienteProvisional),
         numEmpl = Value(numEmpl),
-        contacto = Value(contacto),
         latitud = Value(latitud),
         longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
@@ -14944,7 +14943,7 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
       Value<String?>? clienteProvisionalTelefono,
       Value<String?>? clienteProvisionalPoblacion,
       Value<String>? numEmpl,
-      Value<String>? contacto,
+      Value<String?>? contacto,
       Value<String?>? atendidoPor,
       Value<String?>? resumen,
       Value<String?>? marcasCompetencia,
@@ -15132,8 +15131,8 @@ class $VisitaTableTable extends VisitaTable
       const VerificationMeta('contacto');
   @override
   late final GeneratedColumn<String> contacto = GeneratedColumn<String>(
-      'CONTACTO', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      'CONTACTO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _atendidoPorMeta =
       const VerificationMeta('atendidoPor');
   @override
@@ -15274,8 +15273,6 @@ class $VisitaTableTable extends VisitaTable
     if (data.containsKey('CONTACTO')) {
       context.handle(_contactoMeta,
           contacto.isAcceptableOrUnknown(data['CONTACTO']!, _contactoMeta));
-    } else if (isInserting) {
-      context.missing(_contactoMeta);
     }
     if (data.containsKey('ATENDIDO_POR')) {
       context.handle(
@@ -15355,7 +15352,7 @@ class $VisitaTableTable extends VisitaTable
       numEmpl: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}NUM_EMPL'])!,
       contacto: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO']),
       atendidoPor: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ATENDIDO_POR']),
       resumen: attachedDatabase.typeMapping

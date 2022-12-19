@@ -29,8 +29,13 @@ class ClienteDetallePage extends StatelessWidget {
         title: Text(S.of(context).cliente_show_clienteDetalle_titulo),
         actions: [
           IconButton(
-              onPressed: () => navigateToCreatePedido(context, clienteId),
-              icon: const Icon(Icons.shopping_cart_outlined)),
+            onPressed: () => navigateToCreatePedido(context, clienteId),
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
+          IconButton(
+            onPressed: () => navigateToCreateVisita(context, clienteId),
+            icon: const Icon(Icons.shopping_basket),
+          ),
         ],
       ),
       body: Consumer(
@@ -54,8 +59,14 @@ class ClienteDetallePage extends StatelessWidget {
   }
 
   void navigateToCreatePedido(BuildContext context, String clienteId) {
-    context.router.push(PedidoVentaEditRoute(
-        isNew: true, createPedidoFromClienteId: clienteId));
+    context.router.push(
+      PedidoVentaEditRoute(isNew: true, createPedidoFromClienteId: clienteId),
+    );
+  }
+
+  void navigateToCreateVisita(BuildContext context, String clienteId) {
+    context.router.push(
+        VisitaEditRoute(isNew: true, createVisitaFromClienteId: clienteId));
   }
 }
 

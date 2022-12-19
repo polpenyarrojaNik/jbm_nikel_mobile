@@ -51,7 +51,7 @@ class VisitaLocalDTO
       clienteProvisionalTelefono: _.clienteProvisionalTelefono,
       clienteProvisionalPoblacion: _.clienteProvisionalPoblacion,
       numEmpl: _.numEmpl,
-      contacto: _.contacto,
+      contacto: _.contacto!,
       atendidoPor: _.atendidoPor,
       resumen: _.resumen,
       marcasCompetencia: _.marcasCompetencia,

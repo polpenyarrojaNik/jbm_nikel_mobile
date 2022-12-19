@@ -17,7 +17,7 @@ _$_VisitaDTO _$$_VisitaDTOFromJson(Map<String, dynamic> json) => _$_VisitaDTO(
       clienteProvisionalPoblacion:
           json['CLIENTE_POTENCIAL_POBLACION'] as String?,
       numEmpl: json['NUM_EMPL'] as String,
-      contacto: json['CONTACTO'] as String,
+      contacto: json['CONTACTO'] as String?,
       atendidoPor: json['ATENDIDO_POR'] as String?,
       resumen: json['RESUMEN'] as String?,
       marcasCompetencia: json['MARCAS_COMPETENCIA'] as String?,

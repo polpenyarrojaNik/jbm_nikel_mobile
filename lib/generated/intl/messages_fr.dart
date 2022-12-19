@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "articulo": MessageLookupByLibrary.simpleMessage("Article"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Chercher des articles"),
         "articulo_index_titulo":
@@ -346,6 +347,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Éffacer"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Dernière syncronisation"),
+        "familia": MessageLookupByLibrary.simpleMessage(""),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Une érreur est survenue"),
         "pedido_edit_askPopAlertDialog_aceptar":
@@ -487,6 +489,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "splash_visitas": MessageLookupByLibrary.simpleMessage(
             "Synchronisation des visites…"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
+        "subfamilia": MessageLookupByLibrary.simpleMessage(""),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Chercher…"),
         "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Prix"),

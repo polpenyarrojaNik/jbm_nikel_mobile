@@ -35,17 +35,15 @@ class ArticuloTopRepository {
 ,IFNULL((SELECT SUM (estadisticas_venta.importe)
 FROM estadisticas_venta
 WHERE estadisticas_venta.articulo_id = estadisticas_articulos_top.articulo_id
-AND estadisticas_venta.anyo = strftime('%Y', DATE(DATE(),'-12 month'))
-AND estadisticas_venta.mes = strftime('%m',DATE(DATE(),'-12 month')))
+AND estadisticas_venta.anyo * 100 + estadisticas_venta.mes >= strftime('%Y', DATE(DATE(),'-12 month')) * 100 + strftime('%m',DATE(DATE(),'-12 month')))
  ,0) VENTAS_TOTAL
 ,IFNULL((SELECT SUM (estadisticas_venta.importe)
 FROM estadisticas_venta
 WHERE estadisticas_venta.articulo_id = estadisticas_articulos_top.articulo_id
 AND estadisticas_venta.cliente_id = :clienteId
-AND estadisticas_venta.anyo = strftime('%Y', DATE(DATE(),'-12 month'))
-AND estadisticas_venta.mes = strftime('%m', DATE(DATE(),'-12 month'))
-),0) VENTAS_CLIENTE
-, (SELECT DIVISA_ID FROM CLIENTES WHERE cliente_id = '7982') DIVISA_ID
+AND estadisticas_venta.anyo * 100 + estadisticas_venta.mes >= strftime('%Y', DATE(DATE(),'-12 month')) * 100 + strftime('%m',DATE(DATE(),'-12 month')))
+,0) VENTAS_CLIENTE
+, (SELECT DIVISA_ID FROM CLIENTES WHERE cliente_id = :clienteId) DIVISA_ID
 FROM estadisticas_articulos_top
 INNER JOIN ARTICULOS ON ARTICULOS.articulo_id = ESTADISTICAS_ARTICULOS_TOP.ARTICULO_ID
 ORDER BY VENTAS_TOTAL DESC

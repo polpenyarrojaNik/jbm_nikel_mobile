@@ -26,7 +26,7 @@ mixin _$Visita {
   String? get clienteProvisionalPoblacion => throw _privateConstructorUsedError;
   DateTime get fecha => throw _privateConstructorUsedError;
   String get numEmpl => throw _privateConstructorUsedError;
-  String get contacto => throw _privateConstructorUsedError;
+  String? get contacto => throw _privateConstructorUsedError;
   String? get atendidoPor => throw _privateConstructorUsedError;
   String? get resumen => throw _privateConstructorUsedError;
   String? get marcasCompetencia => throw _privateConstructorUsedError;
@@ -59,7 +59,7 @@ abstract class $VisitaCopyWith<$Res> {
       String? clienteProvisionalPoblacion,
       DateTime fecha,
       String numEmpl,
-      String contacto,
+      String? contacto,
       String? atendidoPor,
       String? resumen,
       String? marcasCompetencia,
@@ -96,7 +96,7 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
     Object? clienteProvisionalPoblacion = freezed,
     Object? fecha = null,
     Object? numEmpl = null,
-    Object? contacto = null,
+    Object? contacto = freezed,
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
@@ -150,10 +150,10 @@ class _$VisitaCopyWithImpl<$Res, $Val extends Visita>
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: null == contacto
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       atendidoPor: freezed == atendidoPor
           ? _value.atendidoPor
           : atendidoPor // ignore: cast_nullable_to_non_nullable
@@ -219,7 +219,7 @@ abstract class _$$_VisitaCopyWith<$Res> implements $VisitaCopyWith<$Res> {
       String? clienteProvisionalPoblacion,
       DateTime fecha,
       String numEmpl,
-      String contacto,
+      String? contacto,
       String? atendidoPor,
       String? resumen,
       String? marcasCompetencia,
@@ -253,7 +253,7 @@ class __$$_VisitaCopyWithImpl<$Res>
     Object? clienteProvisionalPoblacion = freezed,
     Object? fecha = null,
     Object? numEmpl = null,
-    Object? contacto = null,
+    Object? contacto = freezed,
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
@@ -307,10 +307,10 @@ class __$$_VisitaCopyWithImpl<$Res>
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: null == contacto
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       atendidoPor: freezed == atendidoPor
           ? _value.atendidoPor
           : atendidoPor // ignore: cast_nullable_to_non_nullable
@@ -373,7 +373,7 @@ class _$_Visita extends _Visita {
       this.clienteProvisionalPoblacion,
       required this.fecha,
       required this.numEmpl,
-      required this.contacto,
+      this.contacto,
       this.atendidoPor,
       this.resumen,
       this.marcasCompetencia,
@@ -408,7 +408,7 @@ class _$_Visita extends _Visita {
   @override
   final String numEmpl;
   @override
-  final String contacto;
+  final String? contacto;
   @override
   final String? atendidoPor;
   @override
@@ -531,7 +531,7 @@ abstract class _Visita extends Visita {
       final String? clienteProvisionalPoblacion,
       required final DateTime fecha,
       required final String numEmpl,
-      required final String contacto,
+      final String? contacto,
       final String? atendidoPor,
       final String? resumen,
       final String? marcasCompetencia,
@@ -566,7 +566,7 @@ abstract class _Visita extends Visita {
   @override
   String get numEmpl;
   @override
-  String get contacto;
+  String? get contacto;
   @override
   String? get atendidoPor;
   @override

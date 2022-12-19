@@ -23,7 +23,7 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
     @JsonKey(name: 'CLIENTE_POTENCIAL_POBLACION')
         String? clienteProvisionalPoblacion,
     @JsonKey(name: 'NUM_EMPL') required String numEmpl,
-    @JsonKey(name: 'CONTACTO') required String contacto,
+    @JsonKey(name: 'CONTACTO') String? contacto,
     @JsonKey(name: 'ATENDIDO_POR') String? atendidoPor,
     @JsonKey(name: 'RESUMEN') String? resumen,
     @JsonKey(name: 'MARCAS_COMPETENCIA') String? marcasCompetencia,
@@ -112,7 +112,7 @@ class VisitaTable extends Table {
   TextColumn get clienteProvisionalPoblacion =>
       text().nullable().named('CLIENTE_POTENCIAL_POBLACION')();
   TextColumn get numEmpl => text().named('NUM_EMPL')();
-  TextColumn get contacto => text().named('CONTACTO')();
+  TextColumn get contacto => text().nullable().named('CONTACTO')();
   TextColumn get atendidoPor => text().nullable().named('ATENDIDO_POR')();
   TextColumn get resumen => text().nullable().named('RESUMEN')();
   TextColumn get marcasCompetencia =>

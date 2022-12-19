@@ -33,7 +33,9 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             await ref
                 .read(logRepositoryProvider)
                 .insetLog(level: 'I', message: 'Inizialize App');
-            ref.read(syncNotifierProvider.notifier).syncAllInCompute();
+            ref
+                .read(syncNotifierProvider.notifier)
+                .syncAllInCompute(initAppProcess: true);
             context.router.replace(
               ArticuloListaRoute(isSearchArticuloForForm: false),
             );

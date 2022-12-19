@@ -39,7 +39,7 @@ mixin _$VisitaDTO {
   @JsonKey(name: 'NUM_EMPL')
   String get numEmpl => throw _privateConstructorUsedError;
   @JsonKey(name: 'CONTACTO')
-  String get contacto => throw _privateConstructorUsedError;
+  String? get contacto => throw _privateConstructorUsedError;
   @JsonKey(name: 'ATENDIDO_POR')
   String? get atendidoPor => throw _privateConstructorUsedError;
   @JsonKey(name: 'RESUMEN')
@@ -88,7 +88,7 @@ abstract class $VisitaDTOCopyWith<$Res> {
       @JsonKey(name: 'NUM_EMPL')
           String numEmpl,
       @JsonKey(name: 'CONTACTO')
-          String contacto,
+          String? contacto,
       @JsonKey(name: 'ATENDIDO_POR')
           String? atendidoPor,
       @JsonKey(name: 'RESUMEN')
@@ -129,7 +129,7 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
     Object? clienteProvisionalTelefono = freezed,
     Object? clienteProvisionalPoblacion = freezed,
     Object? numEmpl = null,
-    Object? contacto = null,
+    Object? contacto = freezed,
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
@@ -176,10 +176,10 @@ class _$VisitaDTOCopyWithImpl<$Res, $Val extends VisitaDTO>
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: null == contacto
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       atendidoPor: freezed == atendidoPor
           ? _value.atendidoPor
           : atendidoPor // ignore: cast_nullable_to_non_nullable
@@ -243,7 +243,7 @@ abstract class _$$_VisitaDTOCopyWith<$Res> implements $VisitaDTOCopyWith<$Res> {
       @JsonKey(name: 'NUM_EMPL')
           String numEmpl,
       @JsonKey(name: 'CONTACTO')
-          String contacto,
+          String? contacto,
       @JsonKey(name: 'ATENDIDO_POR')
           String? atendidoPor,
       @JsonKey(name: 'RESUMEN')
@@ -282,7 +282,7 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
     Object? clienteProvisionalTelefono = freezed,
     Object? clienteProvisionalPoblacion = freezed,
     Object? numEmpl = null,
-    Object? contacto = null,
+    Object? contacto = freezed,
     Object? atendidoPor = freezed,
     Object? resumen = freezed,
     Object? marcasCompetencia = freezed,
@@ -329,10 +329,10 @@ class __$$_VisitaDTOCopyWithImpl<$Res>
           ? _value.numEmpl
           : numEmpl // ignore: cast_nullable_to_non_nullable
               as String,
-      contacto: null == contacto
+      contacto: freezed == contacto
           ? _value.contacto
           : contacto // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       atendidoPor: freezed == atendidoPor
           ? _value.atendidoPor
           : atendidoPor // ignore: cast_nullable_to_non_nullable
@@ -392,7 +392,7 @@ class _$_VisitaDTO extends _VisitaDTO {
       @JsonKey(name: 'NUM_EMPL')
           required this.numEmpl,
       @JsonKey(name: 'CONTACTO')
-          required this.contacto,
+          this.contacto,
       @JsonKey(name: 'ATENDIDO_POR')
           this.atendidoPor,
       @JsonKey(name: 'RESUMEN')
@@ -443,7 +443,7 @@ class _$_VisitaDTO extends _VisitaDTO {
   final String numEmpl;
   @override
   @JsonKey(name: 'CONTACTO')
-  final String contacto;
+  final String? contacto;
   @override
   @JsonKey(name: 'ATENDIDO_POR')
   final String? atendidoPor;
@@ -575,7 +575,7 @@ abstract class _VisitaDTO extends VisitaDTO {
       @JsonKey(name: 'NUM_EMPL')
           required final String numEmpl,
       @JsonKey(name: 'CONTACTO')
-          required final String contacto,
+          final String? contacto,
       @JsonKey(name: 'ATENDIDO_POR')
           final String? atendidoPor,
       @JsonKey(name: 'RESUMEN')
@@ -626,7 +626,7 @@ abstract class _VisitaDTO extends VisitaDTO {
   String get numEmpl;
   @override
   @JsonKey(name: 'CONTACTO')
-  String get contacto;
+  String? get contacto;
   @override
   @JsonKey(name: 'ATENDIDO_POR')
   String? get atendidoPor;

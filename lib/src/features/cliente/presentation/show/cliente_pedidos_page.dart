@@ -40,8 +40,8 @@ class ClientePedidosPage extends ConsumerWidget {
                       itemBuilder: (context, i) => Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: PedidoVentaListaTile(
-                            pedidoVenta: clientePedidoVentaList[i],
-                            navigatedFromCliente: true),
+                          pedidoVenta: clientePedidoVentaList[i],
+                        ),
                       ),
                       separatorBuilder: (context, i) => const Divider(),
                       itemCount: clientePedidoVentaList.length,
@@ -58,4 +58,7 @@ class ClientePedidosPage extends ConsumerWidget {
       ),
     );
   }
+
+  void navigateToPedidoVentaDetalle(
+      {required BuildContext context, String? pedidoVentaId}) {}
 }

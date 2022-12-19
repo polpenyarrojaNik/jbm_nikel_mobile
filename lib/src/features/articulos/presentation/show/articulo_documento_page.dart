@@ -24,16 +24,19 @@ class ArticuloDocumentoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listen<ArticuloDocumentoState>(articuloDocumentoControllerProvider,
-        (_, state) {
-      state.when(
+    ref.listen<ArticuloDocumentoState>(
+      articuloDocumentoControllerProvider,
+      (_, state) {
+        state.when(
           data: (file) => (file != null) ? OpenFile.open(file.path) : null,
           error: (error) => showToast(error.toString(), context),
           loading: () => showToast(
               S.of(context).cliente_show_clienteAdjunto_abriendoArchivo,
               context),
-          initial: () => null);
-    });
+          initial: () => null,
+        );
+      },
+    );
     final state = ref.watch(articuloDocumentListProvider(articuloId));
 
     return Scaffold(

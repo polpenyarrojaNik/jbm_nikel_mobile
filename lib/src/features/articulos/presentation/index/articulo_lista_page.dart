@@ -36,7 +36,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   void initState() {
     super.initState();
-
     checkAppVersion();
   }
 
@@ -66,6 +65,7 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
+    syncAllTables();
 
     ref.listen<AsyncValue>(
       articuloIndexScreenControllerProvider,
@@ -85,15 +85,17 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
       ),
       body: stateSync.maybeWhen(
         orElse: () => ArticleListViewWidget(
-            stateSync: stateSync,
-            ref: ref,
-            isSearchArticuloForForm: widget.isSearchArticuloForForm),
+          stateSync: stateSync,
+          ref: ref,
+          isSearchArticuloForForm: widget.isSearchArticuloForForm,
+        ),
         synchronized: () => RefreshIndicator(
           onRefresh: () => refreshArticleDb(ref),
           child: ArticleListViewWidget(
-              stateSync: stateSync,
-              ref: ref,
-              isSearchArticuloForForm: widget.isSearchArticuloForForm),
+            stateSync: stateSync,
+            ref: ref,
+            isSearchArticuloForForm: widget.isSearchArticuloForForm,
+          ),
         ),
       ),
     );
@@ -107,6 +109,12 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     ref.invalidate(articuloLastSyncDateProvider);
 
     ref.invalidate(articuloIndexScreenControllerProvider);
+  }
+
+  void syncAllTables() async {
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
   }
 }
 

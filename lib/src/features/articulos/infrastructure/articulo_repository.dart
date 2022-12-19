@@ -367,9 +367,10 @@ SELECT *
         final articuloSustitutivo =
             await getArticuloById(articuloId: row.articuloSustitutivoId);
         return row.toDomain(
-            articuloSustitutivoDescripcion:
-                getDescriptionArticuloInLocalLanguage(
-                    articulo: articuloSustitutivo));
+          articuloSustitutivoDescripcion: getDescriptionArticuloInLocalLanguage(
+              articulo: articuloSustitutivo),
+          stockDisponible: articuloSustitutivo.stockDisponible,
+        );
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());

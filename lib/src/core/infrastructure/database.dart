@@ -122,7 +122,7 @@ class AppDatabase extends _$AppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 15;
+  int get schemaVersion => 16;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

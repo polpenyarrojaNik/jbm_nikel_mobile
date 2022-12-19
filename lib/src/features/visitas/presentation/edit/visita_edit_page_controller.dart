@@ -1,8 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/domain/visita.dart';
 
 import '../../../../core/domain/entity_id_is_local_param.dart';
+import '../../../cliente/infrastructure/cliente_repository.dart';
 import '../../infrastructure/visita_repository.dart';
 
 part 'visita_edit_page_controller.freezed.dart';
@@ -34,6 +36,8 @@ final visitaEditPageControllerProvider = StateNotifierProvider.autoDispose
         EntityIdIsLocalParam>((ref, visitaIdIsLocalParam) {
   return VisitaEditPageController(
     visitaRepository: ref.watch(visitaRepositoryProvider),
+    clienteRepository: ref.watch(clienteRepositoryProvider),
+    usuarioId: ref.watch(usuarioNotifierProvider)!.id,
     visitaIdIsLocalParam: visitaIdIsLocalParam,
   );
 });
@@ -41,10 +45,14 @@ final visitaEditPageControllerProvider = StateNotifierProvider.autoDispose
 class VisitaEditPageController
     extends StateNotifier<VisitaEditPageControllerState> {
   final VisitaRepository visitaRepository;
+  final ClienteRepository clienteRepository;
+  final String usuarioId;
   final EntityIdIsLocalParam visitaIdIsLocalParam;
 
   VisitaEditPageController({
     required this.visitaIdIsLocalParam,
+    required this.clienteRepository,
+    required this.usuarioId,
     required this.visitaRepository,
   }) : super(const VisitaEditPageControllerState.loading()) {
     getVisita();
@@ -54,8 +62,26 @@ class VisitaEditPageController
     state = const VisitaEditPageControllerState.loading();
 
     if (visitaIdIsLocalParam.isNew) {
-      state = const VisitaEditPageControllerState.data(
-        null,
+      final cliente = await clienteRepository.getClienteById(
+        clienteId: visitaIdIsLocalParam.createVisitaFromClienteId!,
+      );
+      state = VisitaEditPageControllerState.data(
+        Visita(
+          clienteId: cliente.id,
+          nombreCliente: cliente.nombreCliente,
+          isClienteProvisional: cliente.clientePotencial ?? false,
+          clienteProvisionalNombre: (cliente.clientePotencial ?? false)
+              ? cliente.nombreCliente
+              : null,
+          fecha: DateTime.now().toUtc(),
+          numEmpl: usuarioId,
+          latitud: 0,
+          longitud: 0,
+          lastUpdated: DateTime.now().toUtc(),
+          deleted: false,
+          enviada: false,
+          tratada: false,
+        ),
       );
     } else {
       try {

@@ -10,6 +10,7 @@ class ArticuloSustitutivo with _$ArticuloSustitutivo {
       required String articuloSustitutivoId,
       required String articuloSustitutivoDescription,
       required int orden,
+      required int stockDisponible,
       required DateTime lastUpdated,
       required bool deleted}) = _ArticuloSustitutivo;
 }

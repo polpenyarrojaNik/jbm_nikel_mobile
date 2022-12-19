@@ -21,6 +21,7 @@ mixin _$ArticuloSustitutivo {
   String get articuloSustitutivoDescription =>
       throw _privateConstructorUsedError;
   int get orden => throw _privateConstructorUsedError;
+  int get stockDisponible => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -40,6 +41,7 @@ abstract class $ArticuloSustitutivoCopyWith<$Res> {
       String articuloSustitutivoId,
       String articuloSustitutivoDescription,
       int orden,
+      int stockDisponible,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -61,6 +63,7 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res, $Val extends ArticuloSustitutivo>
     Object? articuloSustitutivoId = null,
     Object? articuloSustitutivoDescription = null,
     Object? orden = null,
+    Object? stockDisponible = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -80,6 +83,10 @@ class _$ArticuloSustitutivoCopyWithImpl<$Res, $Val extends ArticuloSustitutivo>
       orden: null == orden
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
+              as int,
+      stockDisponible: null == stockDisponible
+          ? _value.stockDisponible
+          : stockDisponible // ignore: cast_nullable_to_non_nullable
               as int,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
@@ -106,6 +113,7 @@ abstract class _$$_ArticuloSustitutivoCopyWith<$Res>
       String articuloSustitutivoId,
       String articuloSustitutivoDescription,
       int orden,
+      int stockDisponible,
       DateTime lastUpdated,
       bool deleted});
 }
@@ -125,6 +133,7 @@ class __$$_ArticuloSustitutivoCopyWithImpl<$Res>
     Object? articuloSustitutivoId = null,
     Object? articuloSustitutivoDescription = null,
     Object? orden = null,
+    Object? stockDisponible = null,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -144,6 +153,10 @@ class __$$_ArticuloSustitutivoCopyWithImpl<$Res>
       orden: null == orden
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
+              as int,
+      stockDisponible: null == stockDisponible
+          ? _value.stockDisponible
+          : stockDisponible // ignore: cast_nullable_to_non_nullable
               as int,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
@@ -165,6 +178,7 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
       required this.articuloSustitutivoId,
       required this.articuloSustitutivoDescription,
       required this.orden,
+      required this.stockDisponible,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -178,13 +192,15 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
   @override
   final int orden;
   @override
+  final int stockDisponible;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, articuloSustitutivoDescription: $articuloSustitutivoDescription, orden: $orden, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloSustitutivo(articuloId: $articuloId, articuloSustitutivoId: $articuloSustitutivoId, articuloSustitutivoDescription: $articuloSustitutivoDescription, orden: $orden, stockDisponible: $stockDisponible, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -201,6 +217,8 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
                 other.articuloSustitutivoDescription ==
                     articuloSustitutivoDescription) &&
             (identical(other.orden, orden) || other.orden == orden) &&
+            (identical(other.stockDisponible, stockDisponible) ||
+                other.stockDisponible == stockDisponible) &&
             (identical(other.lastUpdated, lastUpdated) ||
                 other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
@@ -213,6 +231,7 @@ class _$_ArticuloSustitutivo extends _ArticuloSustitutivo {
       articuloSustitutivoId,
       articuloSustitutivoDescription,
       orden,
+      stockDisponible,
       lastUpdated,
       deleted);
 
@@ -230,6 +249,7 @@ abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
       required final String articuloSustitutivoId,
       required final String articuloSustitutivoDescription,
       required final int orden,
+      required final int stockDisponible,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_ArticuloSustitutivo;
   const _ArticuloSustitutivo._() : super._();
@@ -242,6 +262,8 @@ abstract class _ArticuloSustitutivo extends ArticuloSustitutivo {
   String get articuloSustitutivoDescription;
   @override
   int get orden;
+  @override
+  int get stockDisponible;
   @override
   DateTime get lastUpdated;
   @override

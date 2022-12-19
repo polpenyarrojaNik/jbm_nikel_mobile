@@ -69,8 +69,19 @@ class ArticuloSustitutivoTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(articuloSustitutivo.articuloSustitutivoId,
-              style: Theme.of(context).textTheme.subtitle2),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                articuloSustitutivo.articuloSustitutivoId,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+              Text(
+                '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${articuloSustitutivo.stockDisponible} ${S.of(context).unidad}',
+                style: Theme.of(context).textTheme.caption,
+              ),
+            ],
+          ),
           Text(articuloSustitutivo.articuloSustitutivoDescription),
         ],
       ),

@@ -22,12 +22,14 @@ import '../../infrastructure/visita_repository.dart';
 import '../index/visita_search_controller.dart';
 
 class VisitaEditPage extends ConsumerStatefulWidget {
-  VisitaEditPage({super.key, String? id, bool? isNew})
+  VisitaEditPage(
+      {super.key, String? id, bool? isNew, this.createVisitaFromClienteId})
       : id = id ?? const Uuid().v4(),
         isNew = id == null ? true : false;
 
   final String id;
   final bool isNew;
+  final String? createVisitaFromClienteId;
 
   @override
   ConsumerState<VisitaEditPage> createState() => _VisitaEditPageState();
@@ -68,8 +70,12 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
   @override
   void initState() {
     super.initState();
-    visitaIdLocalParam =
-        EntityIdIsLocalParam(id: widget.id, isLocal: true, isNew: widget.isNew);
+    visitaIdLocalParam = EntityIdIsLocalParam(
+      id: widget.id,
+      isLocal: true,
+      isNew: widget.isNew,
+      createVisitaFromClienteId: widget.createVisitaFromClienteId,
+    );
   }
 
   @override
@@ -217,8 +223,9 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
           );
     } else {
       context.showErrorBar(
-          content: Text(
-              S.of(context).visitas_edit_visitaEditar_errorValidarFormulario));
+        content: Text(
+            S.of(context).visitas_edit_visitaEditar_errorValidarFormulario),
+      );
     }
   }
 }

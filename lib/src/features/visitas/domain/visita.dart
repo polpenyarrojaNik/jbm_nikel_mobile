@@ -16,7 +16,7 @@ class Visita with _$Visita {
     String? clienteProvisionalPoblacion,
     required DateTime fecha,
     required String numEmpl,
-    required String contacto,
+    String? contacto,
     String? atendidoPor,
     String? resumen,
     String? marcasCompetencia,

@@ -155,7 +155,6 @@ class PedidosListViewWidget extends StatelessWidget {
                     data: (pedidoVentaList) => PedidoVentaListaTile(
                       pedidoVenta:
                           pedidoVentaList[i % PedidoVentaRepository.pageSize],
-                      navigatedFromCliente: false,
                     ),
                   ),
             ),

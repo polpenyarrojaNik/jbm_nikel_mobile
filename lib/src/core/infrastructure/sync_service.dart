@@ -708,6 +708,7 @@ class SyncService {
         await remotePageItems.maybeWhen(
           orElse: () {},
           withNewData: (data, maxPage, totalRows) async {
+            print('NUM VALUES ${tableInfo.actualTableName}: $totalRows');
             final tableValueDTOList = data.map((e) => fromJson(e)).toList();
 
             for (var i = 0; i < tableValueDTOList.length; i++) {

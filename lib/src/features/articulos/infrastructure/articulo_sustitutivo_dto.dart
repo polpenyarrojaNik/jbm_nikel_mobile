@@ -27,12 +27,14 @@ class ArticuloSustitutivoDTO
       _$ArticuloSustitutivoDTOFromJson(json);
 
   ArticuloSustitutivo toDomain(
-      {required String articuloSustitutivoDescripcion}) {
+      {required String articuloSustitutivoDescripcion,
+      required int stockDisponible}) {
     return ArticuloSustitutivo(
       articuloId: articuloId,
       articuloSustitutivoId: articuloSustitutivoId,
       articuloSustitutivoDescription: articuloSustitutivoDescripcion,
       orden: orden,
+      stockDisponible: stockDisponible,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );

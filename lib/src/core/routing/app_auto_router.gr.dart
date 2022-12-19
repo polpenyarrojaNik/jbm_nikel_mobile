@@ -406,6 +406,7 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           id: args.id,
           isNew: args.isNew,
+          createVisitaFromClienteId: args.createVisitaFromClienteId,
         ),
       );
     },
@@ -1894,6 +1895,7 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
     Key? key,
     String? id,
     bool? isNew,
+    String? createVisitaFromClienteId,
   }) : super(
           VisitaEditRoute.name,
           path: '/visita/edit',
@@ -1901,6 +1903,7 @@ class VisitaEditRoute extends PageRouteInfo<VisitaEditRouteArgs> {
             key: key,
             id: id,
             isNew: isNew,
+            createVisitaFromClienteId: createVisitaFromClienteId,
           ),
         );
 
@@ -1912,6 +1915,7 @@ class VisitaEditRouteArgs {
     this.key,
     this.id,
     this.isNew,
+    this.createVisitaFromClienteId,
   });
 
   final Key? key;
@@ -1920,9 +1924,11 @@ class VisitaEditRouteArgs {
 
   final bool? isNew;
 
+  final String? createVisitaFromClienteId;
+
   @override
   String toString() {
-    return 'VisitaEditRouteArgs{key: $key, id: $id, isNew: $isNew}';
+    return 'VisitaEditRouteArgs{key: $key, id: $id, isNew: $isNew, createVisitaFromClienteId: $createVisitaFromClienteId}';
   }
 }
 
