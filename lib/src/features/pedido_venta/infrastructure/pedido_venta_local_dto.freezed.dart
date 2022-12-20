@@ -52,6 +52,8 @@ mixin _$PedidoVentaLocalDTO {
   String? get observaciones => throw _privateConstructorUsedError;
   @JsonKey(name: 'OFERTA_SN')
   String get oferta => throw _privateConstructorUsedError;
+  @JsonKey(name: 'OFERTA_FECHA_HASTA')
+  DateTime? get ofertaFechaHasta => throw _privateConstructorUsedError;
   @JsonKey(name: 'FECHA_ALTA')
   DateTime get fechaAlta => throw _privateConstructorUsedError;
   @JsonKey(name: 'IVA')
@@ -94,6 +96,7 @@ abstract class $PedidoVentaLocalDTOCopyWith<$Res> {
       @JsonKey(name: 'PEDIDO_CLIENTE') String? pedidoCliente,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones,
       @JsonKey(name: 'OFERTA_SN') String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') DateTime? ofertaFechaHasta,
       @JsonKey(name: 'FECHA_ALTA') DateTime fechaAlta,
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'DTO_BONIFICACION') double dtoBonificacion,
@@ -131,6 +134,7 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res, $Val extends PedidoVentaLocalDTO>
     Object? pedidoCliente = freezed,
     Object? observaciones = freezed,
     Object? oferta = null,
+    Object? ofertaFechaHasta = freezed,
     Object? fechaAlta = null,
     Object? iva = null,
     Object? dtoBonificacion = null,
@@ -203,6 +207,10 @@ class _$PedidoVentaLocalDTOCopyWithImpl<$Res, $Val extends PedidoVentaLocalDTO>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as String,
+      ofertaFechaHasta: freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       fechaAlta: null == fechaAlta
           ? _value.fechaAlta
           : fechaAlta // ignore: cast_nullable_to_non_nullable
@@ -256,6 +264,7 @@ abstract class _$$_PedidoVentaLocalDTOCopyWith<$Res>
       @JsonKey(name: 'PEDIDO_CLIENTE') String? pedidoCliente,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones,
       @JsonKey(name: 'OFERTA_SN') String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') DateTime? ofertaFechaHasta,
       @JsonKey(name: 'FECHA_ALTA') DateTime fechaAlta,
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'DTO_BONIFICACION') double dtoBonificacion,
@@ -291,6 +300,7 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
     Object? pedidoCliente = freezed,
     Object? observaciones = freezed,
     Object? oferta = null,
+    Object? ofertaFechaHasta = freezed,
     Object? fechaAlta = null,
     Object? iva = null,
     Object? dtoBonificacion = null,
@@ -363,6 +373,10 @@ class __$$_PedidoVentaLocalDTOCopyWithImpl<$Res>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as String,
+      ofertaFechaHasta: freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       fechaAlta: null == fechaAlta
           ? _value.fechaAlta
           : fechaAlta // ignore: cast_nullable_to_non_nullable
@@ -411,6 +425,7 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
       @JsonKey(name: 'PEDIDO_CLIENTE') this.pedidoCliente,
       @JsonKey(name: 'OBSERVACIONES') this.observaciones,
       @JsonKey(name: 'OFERTA_SN') required this.oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') this.ofertaFechaHasta,
       @JsonKey(name: 'FECHA_ALTA') required this.fechaAlta,
       @JsonKey(name: 'IVA') required this.iva,
       @JsonKey(name: 'DTO_BONIFICACION') required this.dtoBonificacion,
@@ -471,6 +486,9 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
   @JsonKey(name: 'OFERTA_SN')
   final String oferta;
   @override
+  @JsonKey(name: 'OFERTA_FECHA_HASTA')
+  final DateTime? ofertaFechaHasta;
+  @override
   @JsonKey(name: 'FECHA_ALTA')
   final DateTime fechaAlta;
   @override
@@ -491,7 +509,7 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
 
   @override
   String toString() {
-    return 'PedidoVentaLocalDTO(usuarioId: $usuarioId, pedidoVentaAppId: $pedidoVentaAppId, empresaId: $empresaId, clienteId: $clienteId, nombreCliente: $nombreCliente, direccionId: $direccionId, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, pedidoCliente: $pedidoCliente, observaciones: $observaciones, oferta: $oferta, fechaAlta: $fechaAlta, iva: $iva, dtoBonificacion: $dtoBonificacion, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'PedidoVentaLocalDTO(usuarioId: $usuarioId, pedidoVentaAppId: $pedidoVentaAppId, empresaId: $empresaId, clienteId: $clienteId, nombreCliente: $nombreCliente, direccionId: $direccionId, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, pedidoCliente: $pedidoCliente, observaciones: $observaciones, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, fechaAlta: $fechaAlta, iva: $iva, dtoBonificacion: $dtoBonificacion, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -529,6 +547,8 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
             (identical(other.observaciones, observaciones) ||
                 other.observaciones == observaciones) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
+            (identical(other.ofertaFechaHasta, ofertaFechaHasta) ||
+                other.ofertaFechaHasta == ofertaFechaHasta) &&
             (identical(other.fechaAlta, fechaAlta) ||
                 other.fechaAlta == fechaAlta) &&
             (identical(other.iva, iva) || other.iva == iva) &&
@@ -560,6 +580,7 @@ class _$_PedidoVentaLocalDTO extends _PedidoVentaLocalDTO {
         pedidoCliente,
         observaciones,
         oferta,
+        ofertaFechaHasta,
         fechaAlta,
         iva,
         dtoBonificacion,
@@ -617,6 +638,8 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
           final String? observaciones,
       @JsonKey(name: 'OFERTA_SN')
           required final String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA')
+          final DateTime? ofertaFechaHasta,
       @JsonKey(name: 'FECHA_ALTA')
           required final DateTime fechaAlta,
       @JsonKey(name: 'IVA')
@@ -682,6 +705,9 @@ abstract class _PedidoVentaLocalDTO extends PedidoVentaLocalDTO {
   @override
   @JsonKey(name: 'OFERTA_SN')
   String get oferta;
+  @override
+  @JsonKey(name: 'OFERTA_FECHA_HASTA')
+  DateTime? get ofertaFechaHasta;
   @override
   @JsonKey(name: 'FECHA_ALTA')
   DateTime get fechaAlta;

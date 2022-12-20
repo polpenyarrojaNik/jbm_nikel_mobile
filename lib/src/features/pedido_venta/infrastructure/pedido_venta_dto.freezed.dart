@@ -62,6 +62,8 @@ mixin _$PedidoVentaDTO {
   int get pedidoVentaEstadoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OFERTA_SN')
   String get oferta => throw _privateConstructorUsedError;
+  @JsonKey(name: 'OFERTA_FECHA_HASTA')
+  DateTime? get ofertaFechaHasta => throw _privateConstructorUsedError;
   @JsonKey(name: 'PEDIDO_APP_ID')
   String? get pedidoVentaAppId => throw _privateConstructorUsedError;
   @JsonKey(name: 'IVA')
@@ -105,6 +107,7 @@ abstract class $PedidoVentaDTOCopyWith<$Res> {
       @JsonKey(name: 'TOTAL') double total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') DateTime? ofertaFechaHasta,
       @JsonKey(name: 'PEDIDO_APP_ID') String? pedidoVentaAppId,
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
@@ -145,6 +148,7 @@ class _$PedidoVentaDTOCopyWithImpl<$Res, $Val extends PedidoVentaDTO>
     Object? total = null,
     Object? pedidoVentaEstadoId = null,
     Object? oferta = null,
+    Object? ofertaFechaHasta = freezed,
     Object? pedidoVentaAppId = freezed,
     Object? iva = null,
     Object? lastUpdated = null,
@@ -235,6 +239,10 @@ class _$PedidoVentaDTOCopyWithImpl<$Res, $Val extends PedidoVentaDTO>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as String,
+      ofertaFechaHasta: freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       pedidoVentaAppId: freezed == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
@@ -285,6 +293,7 @@ abstract class _$$_PedidoVentaDTOCopyWith<$Res>
       @JsonKey(name: 'TOTAL') double total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') DateTime? ofertaFechaHasta,
       @JsonKey(name: 'PEDIDO_APP_ID') String? pedidoVentaAppId,
       @JsonKey(name: 'IVA') double iva,
       @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
@@ -323,6 +332,7 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
     Object? total = null,
     Object? pedidoVentaEstadoId = null,
     Object? oferta = null,
+    Object? ofertaFechaHasta = freezed,
     Object? pedidoVentaAppId = freezed,
     Object? iva = null,
     Object? lastUpdated = null,
@@ -413,6 +423,10 @@ class __$$_PedidoVentaDTOCopyWithImpl<$Res>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as String,
+      ofertaFechaHasta: freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       pedidoVentaAppId: freezed == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
@@ -458,6 +472,7 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
       @JsonKey(name: 'TOTAL') required this.total,
       @JsonKey(name: 'ESTADO_PEDIDO_ID') required this.pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN') required this.oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA') this.ofertaFechaHasta,
       @JsonKey(name: 'PEDIDO_APP_ID') this.pedidoVentaAppId,
       @JsonKey(name: 'IVA') required this.iva,
       @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
@@ -531,6 +546,9 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
   @JsonKey(name: 'OFERTA_SN')
   final String oferta;
   @override
+  @JsonKey(name: 'OFERTA_FECHA_HASTA')
+  final DateTime? ofertaFechaHasta;
+  @override
   @JsonKey(name: 'PEDIDO_APP_ID')
   final String? pedidoVentaAppId;
   @override
@@ -545,7 +563,7 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
 
   @override
   String toString() {
-    return 'PedidoVentaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, baseImponible: $baseImponible, totalLineas: $totalLineas, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstadoId: $pedidoVentaEstadoId, oferta: $oferta, pedidoVentaAppId: $pedidoVentaAppId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'PedidoVentaDTO(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, paisId: $paisId, divisaId: $divisaId, baseImponible: $baseImponible, totalLineas: $totalLineas, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstadoId: $pedidoVentaEstadoId, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, pedidoVentaAppId: $pedidoVentaAppId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -592,6 +610,8 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
             (identical(other.pedidoVentaEstadoId, pedidoVentaEstadoId) ||
                 other.pedidoVentaEstadoId == pedidoVentaEstadoId) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
+            (identical(other.ofertaFechaHasta, ofertaFechaHasta) ||
+                other.ofertaFechaHasta == ofertaFechaHasta) &&
             (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
                 other.pedidoVentaAppId == pedidoVentaAppId) &&
             (identical(other.iva, iva) || other.iva == iva) &&
@@ -625,6 +645,7 @@ class _$_PedidoVentaDTO extends _PedidoVentaDTO {
         total,
         pedidoVentaEstadoId,
         oferta,
+        ofertaFechaHasta,
         pedidoVentaAppId,
         iva,
         lastUpdated,
@@ -689,6 +710,8 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
           required final int pedidoVentaEstadoId,
       @JsonKey(name: 'OFERTA_SN')
           required final String oferta,
+      @JsonKey(name: 'OFERTA_FECHA_HASTA')
+          final DateTime? ofertaFechaHasta,
       @JsonKey(name: 'PEDIDO_APP_ID')
           final String? pedidoVentaAppId,
       @JsonKey(name: 'IVA')
@@ -765,6 +788,9 @@ abstract class _PedidoVentaDTO extends PedidoVentaDTO {
   @override
   @JsonKey(name: 'OFERTA_SN')
   String get oferta;
+  @override
+  @JsonKey(name: 'OFERTA_FECHA_HASTA')
+  DateTime? get ofertaFechaHasta;
   @override
   @JsonKey(name: 'PEDIDO_APP_ID')
   String? get pedidoVentaAppId;

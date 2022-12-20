@@ -3,6 +3,7 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -83,9 +84,9 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             context.router.pop();
           },
           deleted: () => context.router.popUntilRouteWithName('/pedido'),
-          savedError:
-              (_, __, ___, ____, _____, ______, _________, error, _______) =>
-                  context.showErrorBar(
+          savedError: (_, __, ___, ____, _____, ______, _________, __________,
+                  error, _______) =>
+              context.showErrorBar(
             duration: const Duration(seconds: 5),
             content: Text((error is AppException)
                 ? error.details.message
@@ -115,6 +116,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             observaciones,
             pedidoCliente,
             oferta,
+            ofertaFechaHasta,
           ) =>
               PedidoVentaEditForm(
             isNew: widget.isNew,
@@ -126,6 +128,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             observaciones: observaciones,
             pedidoCliente: pedidoCliente,
             oferta: oferta,
+            ofertaFechaHasta: ofertaFechaHasta,
           ),
           error: (Object error, StackTrace? _) => ErrorMessageWidget(
             (error is AppException) ? error.details.message : error.toString(),
@@ -137,6 +140,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
                   observaciones,
                   pedidoCliente,
                   oferta,
+                  ofertaFechaHasta,
                   error,
                   _) =>
               PedidoVentaEditForm(
@@ -149,6 +153,7 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             observaciones: observaciones,
             pedidoCliente: pedidoCliente,
             oferta: oferta,
+            ofertaFechaHasta: ofertaFechaHasta,
           ),
         ),
       ),
@@ -168,6 +173,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     required this.observaciones,
     required this.pedidoCliente,
     required this.oferta,
+    required this.ofertaFechaHasta,
   });
 
   final bool isNew;
@@ -179,6 +185,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
   final String? observaciones;
   final String? pedidoCliente;
   final bool oferta;
+  final DateTime? ofertaFechaHasta;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -244,6 +251,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
               observaciones: observaciones,
               pedidoCliente: pedidoCliente,
               oferta: oferta,
+              ofertaFechaHasta: ofertaFechaHasta,
             );
         break;
       default:
@@ -352,6 +360,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
           observaciones: observaciones,
           pedidoCliente: pedidoCliente,
           oferta: oferta,
+          ofertaFechaHasta: ofertaFechaHasta,
           isClientePotencial: cliente?.clientePotencial ?? false,
         ),
         state: (currentStep >= 3)
@@ -371,6 +380,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
           observaciones: observaciones,
           pedidoCliente: pedidoCliente,
           oferta: oferta,
+          ofertaFechaHasta: ofertaFechaHasta,
         ),
         state: currentStep >= 4
             ? (currentStep == 4)
@@ -712,13 +722,14 @@ class StepArticuloListContent extends ConsumerWidget {
   }
 }
 
-class StepObservacionesContent extends ConsumerWidget {
+class StepObservacionesContent extends ConsumerStatefulWidget {
   const StepObservacionesContent({
     super.key,
     required this.pedidoVentaIdLocalParam,
     required this.observaciones,
     required this.pedidoCliente,
     required this.oferta,
+    required this.ofertaFechaHasta,
     required this.isClientePotencial,
   });
 
@@ -726,10 +737,35 @@ class StepObservacionesContent extends ConsumerWidget {
   final String? observaciones;
   final String? pedidoCliente;
   final bool oferta;
+  final DateTime? ofertaFechaHasta;
   final bool isClientePotencial;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<StepObservacionesContent> createState() =>
+      _StepObservacionesContentState();
+}
+
+class _StepObservacionesContentState
+    extends ConsumerState<StepObservacionesContent> {
+  final TextEditingController ofertaFechaHastaController =
+      TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    ofertaFechaHastaController.text = (widget.ofertaFechaHasta != null)
+        ? dateFormatter(widget.ofertaFechaHasta!.toLocal().toIso8601String())
+        : '';
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    ofertaFechaHastaController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: FormBuilder(
@@ -740,24 +776,35 @@ class StepObservacionesContent extends ConsumerWidget {
             FormBuilderSwitch(
               name: 'oferta',
               title: Text(S.of(context).pedido_edit_pedidoEdit_oferta),
-              initialValue: oferta,
-              enabled: !isClientePotencial,
+              initialValue: widget.oferta,
+              enabled: !widget.isClientePotencial,
               onChanged: (value) => ref
                   .read(pedidoVentaEditPageControllerProvider(
-                          pedidoVentaIdLocalParam)
+                          widget.pedidoVentaIdLocalParam)
                       .notifier)
                   .setOfertaSN(value),
             ),
             FormBuilderTextField(
+              name: 'ofertaFechaHasta',
+              keyboardType: TextInputType.datetime,
+              decoration: const InputDecoration(
+                labelText: 'Fecha validez oferta',
+              ),
+              readOnly: true,
+              enabled: widget.oferta,
+              controller: ofertaFechaHastaController,
+              onTap: () => selectDate(context, ref, widget.ofertaFechaHasta),
+            ),
+            FormBuilderTextField(
               name: 'pedidoCliente',
               keyboardType: TextInputType.multiline,
-              initialValue: pedidoCliente,
+              initialValue: widget.pedidoCliente,
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_pedidoEdit_pedidoCliente,
               ),
               onChanged: (value) => ref
                   .read(pedidoVentaEditPageControllerProvider(
-                          pedidoVentaIdLocalParam)
+                          widget.pedidoVentaIdLocalParam)
                       .notifier)
                   .setPedidoCliente(value),
             ),
@@ -766,13 +813,13 @@ class StepObservacionesContent extends ConsumerWidget {
               keyboardType: TextInputType.multiline,
               maxLines: null,
               minLines: 3,
-              initialValue: observaciones,
+              initialValue: widget.observaciones,
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_pedidoEdit_observaciones,
               ),
               onChanged: (value) => ref
                   .read(pedidoVentaEditPageControllerProvider(
-                          pedidoVentaIdLocalParam)
+                          widget.pedidoVentaIdLocalParam)
                       .notifier)
                   .setObservaciones(value),
             ),
@@ -780,6 +827,26 @@ class StepObservacionesContent extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void selectDate(
+      BuildContext context, WidgetRef ref, DateTime? ofertaFechaHasta) async {
+    final selectedDate = await showDatePicker(
+      context: context,
+      initialDate: ofertaFechaHasta?.toLocal() ?? DateTime.now(),
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+    );
+
+    ref
+        .read(pedidoVentaEditPageControllerProvider(
+                widget.pedidoVentaIdLocalParam)
+            .notifier)
+        .setOfertaFechaHasta(selectedDate);
+
+    ofertaFechaHastaController.text = (selectedDate != null)
+        ? dateFormatter(selectedDate.toLocal().toIso8601String())
+        : '';
   }
 }
 
@@ -793,6 +860,7 @@ class StepResumenContent extends ConsumerWidget {
     required this.observaciones,
     required this.pedidoCliente,
     required this.oferta,
+    required this.ofertaFechaHasta,
   });
 
   final EntityIdIsLocalParam pedidoVentaIdLocalParam;
@@ -803,6 +871,7 @@ class StepResumenContent extends ConsumerWidget {
   final String? observaciones;
   final String? pedidoCliente;
   final bool oferta;
+  final DateTime? ofertaFechaHasta;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -843,6 +912,12 @@ class StepResumenContent extends ConsumerWidget {
                   Switch(value: oferta, onChanged: null),
                 ],
               ),
+              if (oferta)
+                ColumnFieldTextDetalle(
+                  fieldTitleValue: 'Oferta fecha hasta',
+                  value: dateFormatter(
+                      ofertaFechaHasta!.toLocal().toIso8601String()),
+                ),
               if (pedidoCliente != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue:

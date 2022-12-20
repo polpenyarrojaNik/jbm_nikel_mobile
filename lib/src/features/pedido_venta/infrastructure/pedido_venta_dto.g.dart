@@ -29,6 +29,9 @@ _$_PedidoVentaDTO _$$_PedidoVentaDTOFromJson(Map<String, dynamic> json) =>
       total: (json['TOTAL'] as num).toDouble(),
       pedidoVentaEstadoId: json['ESTADO_PEDIDO_ID'] as int,
       oferta: json['OFERTA_SN'] as String,
+      ofertaFechaHasta: json['OFERTA_FECHA_HASTA'] == null
+          ? null
+          : DateTime.parse(json['OFERTA_FECHA_HASTA'] as String),
       pedidoVentaAppId: json['PEDIDO_APP_ID'] as String?,
       iva: (json['IVA'] as num).toDouble(),
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
@@ -58,6 +61,7 @@ Map<String, dynamic> _$$_PedidoVentaDTOToJson(_$_PedidoVentaDTO instance) =>
       'TOTAL': instance.total,
       'ESTADO_PEDIDO_ID': instance.pedidoVentaEstadoId,
       'OFERTA_SN': instance.oferta,
+      'OFERTA_FECHA_HASTA': instance.ofertaFechaHasta?.toIso8601String(),
       'PEDIDO_APP_ID': instance.pedidoVentaAppId,
       'IVA': instance.iva,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),

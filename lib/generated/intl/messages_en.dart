@@ -368,6 +368,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Shipping addresess"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Edit sales order"),
+        "pedido_edit_pedidoEdit_fecha":
+            MessageLookupByLibrary.simpleMessage("Lines"),
+        "pedido_edit_pedidoEdit_fechaValidez":
+            MessageLookupByLibrary.simpleMessage("Validate date"),
         "pedido_edit_pedidoEdit_lineas":
             MessageLookupByLibrary.simpleMessage("Lines"),
         "pedido_edit_pedidoEdit_noPuedesCambiarCliente":

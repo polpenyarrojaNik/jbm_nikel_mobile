@@ -369,6 +369,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Direcciones envío"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Editar pedido"),
+        "pedido_edit_pedidoEdit_fechaValidez":
+            MessageLookupByLibrary.simpleMessage("Fecha de validez"),
         "pedido_edit_pedidoEdit_lineas":
             MessageLookupByLibrary.simpleMessage("Líneas"),
         "pedido_edit_pedidoEdit_noPuedesCambiarCliente":

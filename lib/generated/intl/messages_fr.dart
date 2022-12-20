@@ -370,6 +370,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adresses d\'envois"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Éditer la comande"),
+        "pedido_edit_pedidoEdit_fechaValidez":
+            MessageLookupByLibrary.simpleMessage("Date de validaté"),
         "pedido_edit_pedidoEdit_lineas":
             MessageLookupByLibrary.simpleMessage("Lignes"),
         "pedido_edit_pedidoEdit_noPuedesCambiarCliente":
@@ -489,7 +491,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "splash_visitas": MessageLookupByLibrary.simpleMessage(
             "Synchronisation des visites…"),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
-        "subfamilia": MessageLookupByLibrary.simpleMessage(""),
+        "subfamilia": MessageLookupByLibrary.simpleMessage("Sous-famille"),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Chercher…"),
         "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Prix"),

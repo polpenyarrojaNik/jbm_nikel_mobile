@@ -42,6 +42,7 @@ class PedidoVentaDTO
     @JsonKey(name: 'TOTAL') required double total,
     @JsonKey(name: 'ESTADO_PEDIDO_ID') required int pedidoVentaEstadoId,
     @JsonKey(name: 'OFERTA_SN') required String oferta,
+    @JsonKey(name: 'OFERTA_FECHA_HASTA') DateTime? ofertaFechaHasta,
     @JsonKey(name: 'PEDIDO_APP_ID') String? pedidoVentaAppId,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
@@ -103,6 +104,7 @@ class PedidoVentaDTO
       total: total.toMoney(currencyId: divisaId),
       pedidoVentaEstado: pedidoVentaEstado,
       oferta: (oferta == 'S') ? true : false,
+      ofertaFechaHasta: ofertaFechaHasta,
       iva: iva,
       pedidoVentaAppId: pedidoVentaAppId,
       lastUpdated: lastUpdated,
@@ -137,6 +139,7 @@ class PedidoVentaDTO
       pedidoVentaEstadoId: Value(pedidoVentaEstadoId),
       pedidoVentaAppId: Value(pedidoVentaAppId),
       oferta: Value(oferta),
+      ofertaFechaHasta: Value(ofertaFechaHasta),
       iva: Value(iva),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
@@ -190,6 +193,8 @@ class PedidoVentaTable extends Table {
       .named('ESTADO_PEDIDO_ID')();
   TextColumn get oferta =>
       text().withDefault(const Constant('N')).named('OFERTA_SN')();
+  DateTimeColumn get ofertaFechaHasta =>
+      dateTime().nullable().named('OFERTA_FECHA_HASTA')();
   TextColumn get pedidoVentaAppId => text().nullable().named('PEDIDO_APP_ID')();
   RealColumn get iva => real().withDefault(const Constant(0.0)).named('IVA')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();

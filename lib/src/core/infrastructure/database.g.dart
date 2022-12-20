@@ -1713,6 +1713,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
   final Value<double> total;
   final Value<int> pedidoVentaEstadoId;
   final Value<String> oferta;
+  final Value<DateTime?> ofertaFechaHasta;
   final Value<String?> pedidoVentaAppId;
   final Value<double> iva;
   final Value<DateTime> lastUpdated;
@@ -1739,6 +1740,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.total = const Value.absent(),
     this.pedidoVentaEstadoId = const Value.absent(),
     this.oferta = const Value.absent(),
+    this.ofertaFechaHasta = const Value.absent(),
     this.pedidoVentaAppId = const Value.absent(),
     this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
@@ -1766,6 +1768,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     this.total = const Value.absent(),
     this.pedidoVentaEstadoId = const Value.absent(),
     this.oferta = const Value.absent(),
+    this.ofertaFechaHasta = const Value.absent(),
     this.pedidoVentaAppId = const Value.absent(),
     this.iva = const Value.absent(),
     required DateTime lastUpdated,
@@ -1800,6 +1803,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     Expression<double>? total,
     Expression<int>? pedidoVentaEstadoId,
     Expression<String>? oferta,
+    Expression<DateTime>? ofertaFechaHasta,
     Expression<String>? pedidoVentaAppId,
     Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
@@ -1827,6 +1831,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       if (total != null) 'TOTAL': total,
       if (pedidoVentaEstadoId != null) 'ESTADO_PEDIDO_ID': pedidoVentaEstadoId,
       if (oferta != null) 'OFERTA_SN': oferta,
+      if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
       if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
       if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
@@ -1856,6 +1861,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       Value<double>? total,
       Value<int>? pedidoVentaEstadoId,
       Value<String>? oferta,
+      Value<DateTime?>? ofertaFechaHasta,
       Value<String?>? pedidoVentaAppId,
       Value<double>? iva,
       Value<DateTime>? lastUpdated,
@@ -1882,6 +1888,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
       total: total ?? this.total,
       pedidoVentaEstadoId: pedidoVentaEstadoId ?? this.pedidoVentaEstadoId,
       oferta: oferta ?? this.oferta,
+      ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
       iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
@@ -1955,6 +1962,9 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
     if (oferta.present) {
       map['OFERTA_SN'] = Variable<String>(oferta.value);
     }
+    if (ofertaFechaHasta.present) {
+      map['OFERTA_FECHA_HASTA'] = Variable<DateTime>(ofertaFechaHasta.value);
+    }
     if (pedidoVentaAppId.present) {
       map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
     }
@@ -1994,6 +2004,7 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
           ..write('total: $total, ')
           ..write('pedidoVentaEstadoId: $pedidoVentaEstadoId, ')
           ..write('oferta: $oferta, ')
+          ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
           ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
           ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
@@ -2176,6 +2187,12 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
+  static const VerificationMeta _ofertaFechaHastaMeta =
+      const VerificationMeta('ofertaFechaHasta');
+  @override
+  late final GeneratedColumn<DateTime> ofertaFechaHasta =
+      GeneratedColumn<DateTime>('OFERTA_FECHA_HASTA', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   static const VerificationMeta _pedidoVentaAppIdMeta =
       const VerificationMeta('pedidoVentaAppId');
   @override
@@ -2226,6 +2243,7 @@ class $PedidoVentaTableTable extends PedidoVentaTable
         total,
         pedidoVentaEstadoId,
         oferta,
+        ofertaFechaHasta,
         pedidoVentaAppId,
         iva,
         lastUpdated,
@@ -2362,6 +2380,12 @@ class $PedidoVentaTableTable extends PedidoVentaTable
       context.handle(_ofertaMeta,
           oferta.isAcceptableOrUnknown(data['OFERTA_SN']!, _ofertaMeta));
     }
+    if (data.containsKey('OFERTA_FECHA_HASTA')) {
+      context.handle(
+          _ofertaFechaHastaMeta,
+          ofertaFechaHasta.isAcceptableOrUnknown(
+              data['OFERTA_FECHA_HASTA']!, _ofertaFechaHastaMeta));
+    }
     if (data.containsKey('PEDIDO_APP_ID')) {
       context.handle(
           _pedidoVentaAppIdMeta,
@@ -2435,6 +2459,8 @@ class $PedidoVentaTableTable extends PedidoVentaTable
           .read(DriftSqlType.int, data['${effectivePrefix}ESTADO_PEDIDO_ID'])!,
       oferta: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
+      ofertaFechaHasta: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}OFERTA_FECHA_HASTA']),
       pedidoVentaAppId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PEDIDO_APP_ID']),
       iva: attachedDatabase.typeMapping
@@ -16417,6 +16443,7 @@ class PedidoVentaLocalTableCompanion
   final Value<String?> pedidoCliente;
   final Value<String?> observaciones;
   final Value<String> oferta;
+  final Value<DateTime?> ofertaFechaHasta;
   final Value<double> iva;
   final Value<double> dtoBonificacion;
   final Value<String> enviada;
@@ -16440,6 +16467,7 @@ class PedidoVentaLocalTableCompanion
     this.pedidoCliente = const Value.absent(),
     this.observaciones = const Value.absent(),
     this.oferta = const Value.absent(),
+    this.ofertaFechaHasta = const Value.absent(),
     this.iva = const Value.absent(),
     this.dtoBonificacion = const Value.absent(),
     this.enviada = const Value.absent(),
@@ -16464,6 +16492,7 @@ class PedidoVentaLocalTableCompanion
     this.pedidoCliente = const Value.absent(),
     this.observaciones = const Value.absent(),
     required String oferta,
+    this.ofertaFechaHasta = const Value.absent(),
     required double iva,
     required double dtoBonificacion,
     this.enviada = const Value.absent(),
@@ -16495,6 +16524,7 @@ class PedidoVentaLocalTableCompanion
     Expression<String>? pedidoCliente,
     Expression<String>? observaciones,
     Expression<String>? oferta,
+    Expression<DateTime>? ofertaFechaHasta,
     Expression<double>? iva,
     Expression<double>? dtoBonificacion,
     Expression<String>? enviada,
@@ -16519,6 +16549,7 @@ class PedidoVentaLocalTableCompanion
       if (pedidoCliente != null) 'PEDIDO_CLIENTE': pedidoCliente,
       if (observaciones != null) 'OBSERVACIONES': observaciones,
       if (oferta != null) 'OFERTA_SN': oferta,
+      if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
       if (iva != null) 'IVA': iva,
       if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
       if (enviada != null) 'ENVIADA': enviada,
@@ -16545,6 +16576,7 @@ class PedidoVentaLocalTableCompanion
       Value<String?>? pedidoCliente,
       Value<String?>? observaciones,
       Value<String>? oferta,
+      Value<DateTime?>? ofertaFechaHasta,
       Value<double>? iva,
       Value<double>? dtoBonificacion,
       Value<String>? enviada,
@@ -16568,6 +16600,7 @@ class PedidoVentaLocalTableCompanion
       pedidoCliente: pedidoCliente ?? this.pedidoCliente,
       observaciones: observaciones ?? this.observaciones,
       oferta: oferta ?? this.oferta,
+      ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
       iva: iva ?? this.iva,
       dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
       enviada: enviada ?? this.enviada,
@@ -16630,6 +16663,9 @@ class PedidoVentaLocalTableCompanion
     if (oferta.present) {
       map['OFERTA_SN'] = Variable<String>(oferta.value);
     }
+    if (ofertaFechaHasta.present) {
+      map['OFERTA_FECHA_HASTA'] = Variable<DateTime>(ofertaFechaHasta.value);
+    }
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
     }
@@ -16668,6 +16704,7 @@ class PedidoVentaLocalTableCompanion
           ..write('pedidoCliente: $pedidoCliente, ')
           ..write('observaciones: $observaciones, ')
           ..write('oferta: $oferta, ')
+          ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
           ..write('iva: $iva, ')
           ..write('dtoBonificacion: $dtoBonificacion, ')
           ..write('enviada: $enviada, ')
@@ -16790,6 +16827,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   late final GeneratedColumn<String> oferta = GeneratedColumn<String>(
       'OFERTA_SN', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _ofertaFechaHastaMeta =
+      const VerificationMeta('ofertaFechaHasta');
+  @override
+  late final GeneratedColumn<DateTime> ofertaFechaHasta =
+      GeneratedColumn<DateTime>('OFERTA_FECHA_HASTA', aliasedName, true,
+          type: DriftSqlType.dateTime, requiredDuringInsert: false);
   static const VerificationMeta _ivaMeta = const VerificationMeta('iva');
   @override
   late final GeneratedColumn<double> iva = GeneratedColumn<double>(
@@ -16842,6 +16885,7 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
         pedidoCliente,
         observaciones,
         oferta,
+        ofertaFechaHasta,
         iva,
         dtoBonificacion,
         enviada,
@@ -16954,6 +16998,12 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
     } else if (isInserting) {
       context.missing(_ofertaMeta);
     }
+    if (data.containsKey('OFERTA_FECHA_HASTA')) {
+      context.handle(
+          _ofertaFechaHastaMeta,
+          ofertaFechaHasta.isAcceptableOrUnknown(
+              data['OFERTA_FECHA_HASTA']!, _ofertaFechaHastaMeta));
+    }
     if (data.containsKey('IVA')) {
       context.handle(
           _ivaMeta, iva.isAcceptableOrUnknown(data['IVA']!, _ivaMeta));
@@ -17023,6 +17073,8 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
           .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
       oferta: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}OFERTA_SN'])!,
+      ofertaFechaHasta: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}OFERTA_FECHA_HASTA']),
       fechaAlta: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA_ALTA'])!,
       iva: attachedDatabase.typeMapping

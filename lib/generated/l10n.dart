@@ -2204,6 +2204,26 @@ class S {
     );
   }
 
+  /// `Validate date`
+  String get pedido_edit_pedidoEdit_fechaValidez {
+    return Intl.message(
+      'Validate date',
+      name: 'pedido_edit_pedidoEdit_fechaValidez',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lines`
+  String get pedido_edit_pedidoEdit_fecha {
+    return Intl.message(
+      'Lines',
+      name: 'pedido_edit_pedidoEdit_fecha',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price:`
   String get pedido_edit_lineaNuevoTile_precio {
     return Intl.message(

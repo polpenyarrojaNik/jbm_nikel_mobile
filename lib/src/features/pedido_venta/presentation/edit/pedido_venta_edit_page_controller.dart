@@ -25,6 +25,7 @@ class PedidoVentaEditPageControllerState
     String? observaciones,
     String? pedidoCliente,
     bool oferta,
+    DateTime? ofertaFechaHasta,
   ) = _data;
   const factory PedidoVentaEditPageControllerState.error(Object error,
       {StackTrace? stackTrace}) = _error;
@@ -40,6 +41,7 @@ class PedidoVentaEditPageControllerState
       String? observaciones,
       String? pedidoCliente,
       bool oferta,
+      DateTime? ofertaFechaHasta,
       Object error,
       {StackTrace? stackTrace}) = _savedError;
 }
@@ -67,6 +69,7 @@ class PedidoVentaEditPageController
   String? _observaciones;
   String? _pedidoCliente;
   bool _oferta = false;
+  DateTime? _ofertaFechaHasta;
 
   PedidoVentaEditPageController({
     required this.pedidoVentaIdIsLocalParam,
@@ -92,6 +95,7 @@ class PedidoVentaEditPageController
         _observaciones,
         _pedidoCliente,
         _oferta,
+        _ofertaFechaHasta,
       );
     } else {
       try {
@@ -119,6 +123,8 @@ class PedidoVentaEditPageController
 
         _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
 
+        _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
+
         state = PedidoVentaEditPageControllerState.data(
           _cliente,
           _clienteDireccion,
@@ -127,6 +133,7 @@ class PedidoVentaEditPageController
           _observaciones,
           _pedidoCliente,
           _oferta,
+          _ofertaFechaHasta,
         );
       } catch (err, stack) {
         state =
@@ -143,6 +150,7 @@ class PedidoVentaEditPageController
     String? observaciones,
     String? pedidoCliente,
     required bool oferta,
+    DateTime? ofertaFechaHasta,
   }) async {
     state = const PedidoVentaEditPageControllerState.loading();
 
@@ -155,19 +163,22 @@ class PedidoVentaEditPageController
         pedidoCliente: pedidoCliente,
         observaciones: observaciones,
         oferta: oferta,
+        ofertaFechaHasta: ofertaFechaHasta,
       );
       state = PedidoVentaEditPageControllerState.saved(pedidoVentaAppId);
     } catch (err, stack) {
       state = PedidoVentaEditPageControllerState.savedError(
-          _cliente,
-          _clienteDireccion,
-          pedidoVentaLineaList,
-          _currentStep,
-          _observaciones,
-          _pedidoCliente,
-          _oferta,
-          err,
-          stackTrace: stack);
+        _cliente,
+        _clienteDireccion,
+        pedidoVentaLineaList,
+        _currentStep,
+        _observaciones,
+        _pedidoCliente,
+        _oferta,
+        _ofertaFechaHasta,
+        err,
+        stackTrace: stack,
+      );
     }
   }
 
@@ -195,6 +206,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -208,6 +220,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -224,6 +237,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -242,6 +256,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -256,6 +271,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -272,6 +288,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -288,6 +305,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -305,6 +323,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -318,6 +337,7 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
@@ -331,11 +351,12 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
     );
   }
 
-  Future<void> setOfertaSN(bool? newValueOferta) async {
-    _oferta = newValueOferta ?? _oferta;
+  Future<void> setOfertaFechaHasta(DateTime? ofertaFechaHasta) async {
+    _ofertaFechaHasta = ofertaFechaHasta;
     state = PedidoVentaEditPageControllerState.data(
       _cliente,
       _clienteDireccion,
@@ -344,6 +365,24 @@ class PedidoVentaEditPageController
       _observaciones,
       _pedidoCliente,
       _oferta,
+      _ofertaFechaHasta,
+    );
+  }
+
+  Future<void> setOfertaSN(bool? newValueOferta) async {
+    _oferta = newValueOferta ?? _oferta;
+    if (!_oferta) {
+      _ofertaFechaHasta = null;
+    }
+    state = PedidoVentaEditPageControllerState.data(
+      _cliente,
+      _clienteDireccion,
+      pedidoVentaLineaList,
+      _currentStep,
+      _observaciones,
+      _pedidoCliente,
+      _oferta,
+      _ofertaFechaHasta,
     );
   }
 

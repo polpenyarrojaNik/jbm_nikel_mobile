@@ -37,6 +37,7 @@ class PedidoVentaLocalDTO
     @JsonKey(name: 'PEDIDO_CLIENTE') String? pedidoCliente,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
     @JsonKey(name: 'OFERTA_SN') required String oferta,
+    @JsonKey(name: 'OFERTA_FECHA_HASTA') DateTime? ofertaFechaHasta,
     @JsonKey(name: 'FECHA_ALTA') required DateTime fechaAlta,
     @JsonKey(name: 'IVA') required double iva,
     @JsonKey(name: 'DTO_BONIFICACION') required double dtoBonificacion,
@@ -66,6 +67,7 @@ class PedidoVentaLocalDTO
       pedidoCliente: _.pedidoCliente,
       observaciones: _.observaciones,
       oferta: (_.oferta ?? false) ? 'S' : 'N',
+      ofertaFechaHasta: _.ofertaFechaHasta,
       divisaId: _.divisa.id,
       iva: _.iva,
       dtoBonificacion: _.dtoBonificacion!,
@@ -76,13 +78,15 @@ class PedidoVentaLocalDTO
   }
 
   factory PedidoVentaLocalDTO.fromForm(
-      String pedidoVentaAppId,
-      String usuarioId,
-      Cliente cliente,
-      ClienteDireccion? clienteDireccion,
-      String? pedidoCliente,
-      String? observaciones,
-      bool oferta) {
+    String pedidoVentaAppId,
+    String usuarioId,
+    Cliente cliente,
+    ClienteDireccion? clienteDireccion,
+    String? pedidoCliente,
+    String? observaciones,
+    bool oferta,
+    DateTime? ofertaFechaHasta,
+  ) {
     return PedidoVentaLocalDTO(
       usuarioId: usuarioId,
       pedidoVentaAppId: pedidoVentaAppId,
@@ -101,6 +105,7 @@ class PedidoVentaLocalDTO
       pedidoCliente: pedidoCliente,
       observaciones: observaciones,
       oferta: oferta ? 'S' : 'N',
+      ofertaFechaHasta: ofertaFechaHasta,
       divisaId: cliente.divisa!.id,
       iva: cliente.iva,
       dtoBonificacion: 0,
@@ -145,6 +150,7 @@ class PedidoVentaLocalDTO
       total: total,
       pedidoVentaEstado: null,
       oferta: oferta == 'S' ? true : false,
+      ofertaFechaHasta: ofertaFechaHasta,
       lastUpdated: DateTime.now().toUtc(),
       deleted: false,
       enviada: (enviada == 'S') ? true : false,
@@ -172,6 +178,7 @@ class PedidoVentaLocalDTO
       pedidoCliente: Value(pedidoCliente),
       observaciones: Value(observaciones),
       oferta: Value(oferta),
+      ofertaFechaHasta: Value(ofertaFechaHasta),
       divisaId: Value(divisaId),
       iva: Value(iva),
       dtoBonificacion: Value(dtoBonificacion),
@@ -204,6 +211,8 @@ class PedidoVentaLocalTable extends Table {
   TextColumn get pedidoCliente => text().nullable().named('PEDIDO_CLIENTE')();
   TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
   TextColumn get oferta => text().named('OFERTA_SN')();
+  DateTimeColumn get ofertaFechaHasta =>
+      dateTime().nullable().named('OFERTA_FECHA_HASTA')();
   RealColumn get iva => real().named('IVA')();
   RealColumn get dtoBonificacion => real().named('DTO_BONIFICACION')();
   TextColumn get enviada =>

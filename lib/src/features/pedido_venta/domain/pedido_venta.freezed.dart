@@ -42,6 +42,7 @@ mixin _$PedidoVenta {
   PedidoVentaEstado? get pedidoVentaEstado =>
       throw _privateConstructorUsedError;
   bool? get oferta => throw _privateConstructorUsedError;
+  DateTime? get ofertaFechaHasta => throw _privateConstructorUsedError;
   double? get dtoBonificacion => throw _privateConstructorUsedError;
   String? get pedidoAppId => throw _privateConstructorUsedError;
   double get iva => throw _privateConstructorUsedError;
@@ -88,6 +89,7 @@ abstract class $PedidoVentaCopyWith<$Res> {
       Money? total,
       PedidoVentaEstado? pedidoVentaEstado,
       bool? oferta,
+      DateTime? ofertaFechaHasta,
       double? dtoBonificacion,
       String? pedidoAppId,
       double iva,
@@ -140,6 +142,7 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     Object? total = freezed,
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
+    Object? ofertaFechaHasta = freezed,
     Object? dtoBonificacion = freezed,
     Object? pedidoAppId = freezed,
     Object? iva = null,
@@ -250,6 +253,10 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as bool?,
+      ofertaFechaHasta: freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       dtoBonificacion: freezed == dtoBonificacion
           ? _value.dtoBonificacion
           : dtoBonificacion // ignore: cast_nullable_to_non_nullable
@@ -352,6 +359,7 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       Money? total,
       PedidoVentaEstado? pedidoVentaEstado,
       bool? oferta,
+      DateTime? ofertaFechaHasta,
       double? dtoBonificacion,
       String? pedidoAppId,
       double iva,
@@ -405,6 +413,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
     Object? total = freezed,
     Object? pedidoVentaEstado = freezed,
     Object? oferta = freezed,
+    Object? ofertaFechaHasta = freezed,
     Object? dtoBonificacion = freezed,
     Object? pedidoAppId = freezed,
     Object? iva = null,
@@ -515,6 +524,10 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
           ? _value.oferta
           : oferta // ignore: cast_nullable_to_non_nullable
               as bool?,
+      ofertaFechaHasta: freezed == ofertaFechaHasta
+          ? _value.ofertaFechaHasta
+          : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       dtoBonificacion: freezed == dtoBonificacion
           ? _value.dtoBonificacion
           : dtoBonificacion // ignore: cast_nullable_to_non_nullable
@@ -580,6 +593,7 @@ class _$_PedidoVenta extends _PedidoVenta {
       this.total,
       this.pedidoVentaEstado,
       this.oferta,
+      this.ofertaFechaHasta,
       this.dtoBonificacion,
       this.pedidoAppId,
       required this.iva,
@@ -641,6 +655,8 @@ class _$_PedidoVenta extends _PedidoVenta {
   @override
   final bool? oferta;
   @override
+  final DateTime? ofertaFechaHasta;
+  @override
   final double? dtoBonificacion;
   @override
   final String? pedidoAppId;
@@ -659,7 +675,7 @@ class _$_PedidoVenta extends _PedidoVenta {
 
   @override
   String toString() {
-    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, totalLineas: $totalLineas, baseImponible: $baseImponible, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, dtoBonificacion: $dtoBonificacion, pedidoAppId: $pedidoAppId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, totalLineas: $totalLineas, baseImponible: $baseImponible, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, dtoBonificacion: $dtoBonificacion, pedidoAppId: $pedidoAppId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -713,6 +729,8 @@ class _$_PedidoVenta extends _PedidoVenta {
             (identical(other.pedidoVentaEstado, pedidoVentaEstado) ||
                 other.pedidoVentaEstado == pedidoVentaEstado) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
+            (identical(other.ofertaFechaHasta, ofertaFechaHasta) ||
+                other.ofertaFechaHasta == ofertaFechaHasta) &&
             (identical(other.dtoBonificacion, dtoBonificacion) ||
                 other.dtoBonificacion == dtoBonificacion) &&
             (identical(other.pedidoAppId, pedidoAppId) ||
@@ -755,6 +773,7 @@ class _$_PedidoVenta extends _PedidoVenta {
         total,
         pedidoVentaEstado,
         oferta,
+        ofertaFechaHasta,
         dtoBonificacion,
         pedidoAppId,
         iva,
@@ -799,6 +818,7 @@ abstract class _PedidoVenta extends PedidoVenta {
       final Money? total,
       final PedidoVentaEstado? pedidoVentaEstado,
       final bool? oferta,
+      final DateTime? ofertaFechaHasta,
       final double? dtoBonificacion,
       final String? pedidoAppId,
       required final double iva,
@@ -859,6 +879,8 @@ abstract class _PedidoVenta extends PedidoVenta {
   PedidoVentaEstado? get pedidoVentaEstado;
   @override
   bool? get oferta;
+  @override
+  DateTime? get ofertaFechaHasta;
   @override
   double? get dtoBonificacion;
   @override

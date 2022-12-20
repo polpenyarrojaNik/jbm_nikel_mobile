@@ -595,16 +595,19 @@ class PedidoVentaRepository {
     String? observaciones,
     String? pedidoCliente,
     required bool oferta,
+    DateTime? ofertaFechaHasta,
   }) async {
     try {
       final pedidoVentaLocalDTO = PedidoVentaLocalDTO.fromForm(
-          pedidoVentaAppId,
-          usuario.id,
-          cliente,
-          clienteDireccion,
-          pedidoCliente,
-          observaciones,
-          oferta);
+        pedidoVentaAppId,
+        usuario.id,
+        cliente,
+        clienteDireccion,
+        pedidoCliente,
+        observaciones,
+        oferta,
+        ofertaFechaHasta?.toUtc(),
+      );
 
       final pedidoVentaLineaLocalDTOList = pedidoVentaLineaList
           .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
@@ -879,11 +882,11 @@ class PedidoVentaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/v2/pedidos',
+              'api/v1/online/pedidos',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/v2/pedidos',
+              'api/v1/online/pedidos',
             );
 
       final response = await _dio.postUri(
