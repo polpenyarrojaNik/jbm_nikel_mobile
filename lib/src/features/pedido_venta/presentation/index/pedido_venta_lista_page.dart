@@ -36,7 +36,9 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
     ref.listen<AsyncValue>(
       pedidoVentaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),

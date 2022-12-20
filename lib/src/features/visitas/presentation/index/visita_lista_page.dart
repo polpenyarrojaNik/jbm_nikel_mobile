@@ -26,7 +26,9 @@ class VisitaListaPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final stateSync = ref.watch(syncNotifierProvider);
-
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
     ref.listen<AsyncValue>(
       visitaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),

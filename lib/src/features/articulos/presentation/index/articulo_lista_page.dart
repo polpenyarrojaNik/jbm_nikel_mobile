@@ -65,7 +65,9 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-    syncAllTables();
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
 
     ref.listen<AsyncValue>(
       articuloIndexScreenControllerProvider,
@@ -109,12 +111,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
     ref.invalidate(articuloLastSyncDateProvider);
 
     ref.invalidate(articuloIndexScreenControllerProvider);
-  }
-
-  void syncAllTables() async {
-    ref
-        .read(syncNotifierProvider.notifier)
-        .syncAllInCompute(initAppProcess: false);
   }
 }
 
