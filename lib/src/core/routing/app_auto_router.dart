@@ -20,6 +20,7 @@ import '../../features/articulos/presentation/show/articulo_grupos_netos_page.da
 import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
+import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_page.dart';
@@ -111,6 +112,7 @@ part 'app_auto_router.gr.dart';
     AutoRoute(page: VisitaListaPage, path: '/visita'),
     AutoRoute(page: VisitaDetallePage, path: '/visita/:id'),
     AutoRoute(page: VisitaEditPage, path: '/visita/edit'),
+    AutoRoute(page: CatalogoListaPage, path: '/catalogo'),
     AutoRoute(page: SettingsPage, path: '/settings'),
   ],
   replaceInRouteName: 'Page,Route',

@@ -20,6 +20,7 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
+import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -111,6 +112,7 @@ const localDatabaseName = 'jbm.sqlite';
   PedidoAlbaranTable,
   DescuentoGeneralTable,
   LogTable,
+  CatalogoFavoritoTable,
 ])
 class AppDatabase extends _$AppDatabase {
   final bool test;
@@ -122,7 +124,7 @@ class AppDatabase extends _$AppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 16;
+  int get schemaVersion => 17;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

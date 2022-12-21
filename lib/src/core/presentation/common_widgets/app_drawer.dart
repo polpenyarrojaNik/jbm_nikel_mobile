@@ -92,6 +92,16 @@ class AppDrawer extends StatelessWidget {
           // ),
           ListTile(
             leading: const Icon(
+              Icons.list,
+              size: 30,
+            ),
+            title: Text('Catalogue'),
+            onTap: () => context.router.pushAndPopUntil(
+                const CatalogoListaRoute(),
+                predicate: (route) => false),
+          ),
+          ListTile(
+            leading: const Icon(
               Icons.settings_outlined,
               size: 30,
             ),
