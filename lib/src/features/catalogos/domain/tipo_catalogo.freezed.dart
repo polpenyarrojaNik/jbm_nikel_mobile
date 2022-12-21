@@ -1,0 +1,471 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'tipo_catalogo.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$TipoCatalogo {
+  String get tipoCatalogoId => throw _privateConstructorUsedError;
+  String get descripcionES => throw _privateConstructorUsedError;
+  String? get descripcionEN => throw _privateConstructorUsedError;
+  String? get descripcionFR => throw _privateConstructorUsedError;
+  String? get descripcionDE => throw _privateConstructorUsedError;
+  String? get descripcionCA => throw _privateConstructorUsedError;
+  String? get descripcionGB => throw _privateConstructorUsedError;
+  String? get descripcionHU => throw _privateConstructorUsedError;
+  String? get descripcionIT => throw _privateConstructorUsedError;
+  String? get descripcionNL => throw _privateConstructorUsedError;
+  String? get descripcionPL => throw _privateConstructorUsedError;
+  String? get descripcionPT => throw _privateConstructorUsedError;
+  String? get descripcionRO => throw _privateConstructorUsedError;
+  String? get descripcionRU => throw _privateConstructorUsedError;
+  String? get descripcionCN => throw _privateConstructorUsedError;
+  String? get descripcionEL => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $TipoCatalogoCopyWith<TipoCatalogo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TipoCatalogoCopyWith<$Res> {
+  factory $TipoCatalogoCopyWith(
+          TipoCatalogo value, $Res Function(TipoCatalogo) then) =
+      _$TipoCatalogoCopyWithImpl<$Res, TipoCatalogo>;
+  @useResult
+  $Res call(
+      {String tipoCatalogoId,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL});
+}
+
+/// @nodoc
+class _$TipoCatalogoCopyWithImpl<$Res, $Val extends TipoCatalogo>
+    implements $TipoCatalogoCopyWith<$Res> {
+  _$TipoCatalogoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tipoCatalogoId = null,
+    Object? descripcionES = null,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
+  }) {
+    return _then(_value.copyWith(
+      tipoCatalogoId: null == tipoCatalogoId
+          ? _value.tipoCatalogoId
+          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_TipoCatalogoCopyWith<$Res>
+    implements $TipoCatalogoCopyWith<$Res> {
+  factory _$$_TipoCatalogoCopyWith(
+          _$_TipoCatalogo value, $Res Function(_$_TipoCatalogo) then) =
+      __$$_TipoCatalogoCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String tipoCatalogoId,
+      String descripcionES,
+      String? descripcionEN,
+      String? descripcionFR,
+      String? descripcionDE,
+      String? descripcionCA,
+      String? descripcionGB,
+      String? descripcionHU,
+      String? descripcionIT,
+      String? descripcionNL,
+      String? descripcionPL,
+      String? descripcionPT,
+      String? descripcionRO,
+      String? descripcionRU,
+      String? descripcionCN,
+      String? descripcionEL});
+}
+
+/// @nodoc
+class __$$_TipoCatalogoCopyWithImpl<$Res>
+    extends _$TipoCatalogoCopyWithImpl<$Res, _$_TipoCatalogo>
+    implements _$$_TipoCatalogoCopyWith<$Res> {
+  __$$_TipoCatalogoCopyWithImpl(
+      _$_TipoCatalogo _value, $Res Function(_$_TipoCatalogo) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tipoCatalogoId = null,
+    Object? descripcionES = null,
+    Object? descripcionEN = freezed,
+    Object? descripcionFR = freezed,
+    Object? descripcionDE = freezed,
+    Object? descripcionCA = freezed,
+    Object? descripcionGB = freezed,
+    Object? descripcionHU = freezed,
+    Object? descripcionIT = freezed,
+    Object? descripcionNL = freezed,
+    Object? descripcionPL = freezed,
+    Object? descripcionPT = freezed,
+    Object? descripcionRO = freezed,
+    Object? descripcionRU = freezed,
+    Object? descripcionCN = freezed,
+    Object? descripcionEL = freezed,
+  }) {
+    return _then(_$_TipoCatalogo(
+      tipoCatalogoId: null == tipoCatalogoId
+          ? _value.tipoCatalogoId
+          : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionES: null == descripcionES
+          ? _value.descripcionES
+          : descripcionES // ignore: cast_nullable_to_non_nullable
+              as String,
+      descripcionEN: freezed == descripcionEN
+          ? _value.descripcionEN
+          : descripcionEN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionFR: freezed == descripcionFR
+          ? _value.descripcionFR
+          : descripcionFR // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionDE: freezed == descripcionDE
+          ? _value.descripcionDE
+          : descripcionDE // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCA: freezed == descripcionCA
+          ? _value.descripcionCA
+          : descripcionCA // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionGB: freezed == descripcionGB
+          ? _value.descripcionGB
+          : descripcionGB // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionHU: freezed == descripcionHU
+          ? _value.descripcionHU
+          : descripcionHU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionIT: freezed == descripcionIT
+          ? _value.descripcionIT
+          : descripcionIT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionNL: freezed == descripcionNL
+          ? _value.descripcionNL
+          : descripcionNL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPL: freezed == descripcionPL
+          ? _value.descripcionPL
+          : descripcionPL // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionPT: freezed == descripcionPT
+          ? _value.descripcionPT
+          : descripcionPT // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRO: freezed == descripcionRO
+          ? _value.descripcionRO
+          : descripcionRO // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionRU: freezed == descripcionRU
+          ? _value.descripcionRU
+          : descripcionRU // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionCN: freezed == descripcionCN
+          ? _value.descripcionCN
+          : descripcionCN // ignore: cast_nullable_to_non_nullable
+              as String?,
+      descripcionEL: freezed == descripcionEL
+          ? _value.descripcionEL
+          : descripcionEL // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TipoCatalogo extends _TipoCatalogo {
+  const _$_TipoCatalogo(
+      {required this.tipoCatalogoId,
+      required this.descripcionES,
+      this.descripcionEN,
+      this.descripcionFR,
+      this.descripcionDE,
+      this.descripcionCA,
+      this.descripcionGB,
+      this.descripcionHU,
+      this.descripcionIT,
+      this.descripcionNL,
+      this.descripcionPL,
+      this.descripcionPT,
+      this.descripcionRO,
+      this.descripcionRU,
+      this.descripcionCN,
+      this.descripcionEL})
+      : super._();
+
+  @override
+  final String tipoCatalogoId;
+  @override
+  final String descripcionES;
+  @override
+  final String? descripcionEN;
+  @override
+  final String? descripcionFR;
+  @override
+  final String? descripcionDE;
+  @override
+  final String? descripcionCA;
+  @override
+  final String? descripcionGB;
+  @override
+  final String? descripcionHU;
+  @override
+  final String? descripcionIT;
+  @override
+  final String? descripcionNL;
+  @override
+  final String? descripcionPL;
+  @override
+  final String? descripcionPT;
+  @override
+  final String? descripcionRO;
+  @override
+  final String? descripcionRU;
+  @override
+  final String? descripcionCN;
+  @override
+  final String? descripcionEL;
+
+  @override
+  String toString() {
+    return 'TipoCatalogo(tipoCatalogoId: $tipoCatalogoId, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TipoCatalogo &&
+            (identical(other.tipoCatalogoId, tipoCatalogoId) ||
+                other.tipoCatalogoId == tipoCatalogoId) &&
+            (identical(other.descripcionES, descripcionES) ||
+                other.descripcionES == descripcionES) &&
+            (identical(other.descripcionEN, descripcionEN) ||
+                other.descripcionEN == descripcionEN) &&
+            (identical(other.descripcionFR, descripcionFR) ||
+                other.descripcionFR == descripcionFR) &&
+            (identical(other.descripcionDE, descripcionDE) ||
+                other.descripcionDE == descripcionDE) &&
+            (identical(other.descripcionCA, descripcionCA) ||
+                other.descripcionCA == descripcionCA) &&
+            (identical(other.descripcionGB, descripcionGB) ||
+                other.descripcionGB == descripcionGB) &&
+            (identical(other.descripcionHU, descripcionHU) ||
+                other.descripcionHU == descripcionHU) &&
+            (identical(other.descripcionIT, descripcionIT) ||
+                other.descripcionIT == descripcionIT) &&
+            (identical(other.descripcionNL, descripcionNL) ||
+                other.descripcionNL == descripcionNL) &&
+            (identical(other.descripcionPL, descripcionPL) ||
+                other.descripcionPL == descripcionPL) &&
+            (identical(other.descripcionPT, descripcionPT) ||
+                other.descripcionPT == descripcionPT) &&
+            (identical(other.descripcionRO, descripcionRO) ||
+                other.descripcionRO == descripcionRO) &&
+            (identical(other.descripcionRU, descripcionRU) ||
+                other.descripcionRU == descripcionRU) &&
+            (identical(other.descripcionCN, descripcionCN) ||
+                other.descripcionCN == descripcionCN) &&
+            (identical(other.descripcionEL, descripcionEL) ||
+                other.descripcionEL == descripcionEL));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      tipoCatalogoId,
+      descripcionES,
+      descripcionEN,
+      descripcionFR,
+      descripcionDE,
+      descripcionCA,
+      descripcionGB,
+      descripcionHU,
+      descripcionIT,
+      descripcionNL,
+      descripcionPL,
+      descripcionPT,
+      descripcionRO,
+      descripcionRU,
+      descripcionCN,
+      descripcionEL);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TipoCatalogoCopyWith<_$_TipoCatalogo> get copyWith =>
+      __$$_TipoCatalogoCopyWithImpl<_$_TipoCatalogo>(this, _$identity);
+}
+
+abstract class _TipoCatalogo extends TipoCatalogo {
+  const factory _TipoCatalogo(
+      {required final String tipoCatalogoId,
+      required final String descripcionES,
+      final String? descripcionEN,
+      final String? descripcionFR,
+      final String? descripcionDE,
+      final String? descripcionCA,
+      final String? descripcionGB,
+      final String? descripcionHU,
+      final String? descripcionIT,
+      final String? descripcionNL,
+      final String? descripcionPL,
+      final String? descripcionPT,
+      final String? descripcionRO,
+      final String? descripcionRU,
+      final String? descripcionCN,
+      final String? descripcionEL}) = _$_TipoCatalogo;
+  const _TipoCatalogo._() : super._();
+
+  @override
+  String get tipoCatalogoId;
+  @override
+  String get descripcionES;
+  @override
+  String? get descripcionEN;
+  @override
+  String? get descripcionFR;
+  @override
+  String? get descripcionDE;
+  @override
+  String? get descripcionCA;
+  @override
+  String? get descripcionGB;
+  @override
+  String? get descripcionHU;
+  @override
+  String? get descripcionIT;
+  @override
+  String? get descripcionNL;
+  @override
+  String? get descripcionPL;
+  @override
+  String? get descripcionPT;
+  @override
+  String? get descripcionRO;
+  @override
+  String? get descripcionRU;
+  @override
+  String? get descripcionCN;
+  @override
+  String? get descripcionEL;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TipoCatalogoCopyWith<_$_TipoCatalogo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
