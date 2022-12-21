@@ -380,11 +380,9 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     VisitaListaRoute.name: (routeData) {
-      final args = routeData.argsAs<VisitaListaRouteArgs>(
-          orElse: () => const VisitaListaRouteArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: VisitaListaPage(key: args.key),
+        child: const VisitaListaPage(),
       );
     },
     VisitaDetalleRoute.name: (routeData) {
@@ -1832,26 +1830,14 @@ class ArticuloDocumentoRouteArgs {
 
 /// generated route for
 /// [VisitaListaPage]
-class VisitaListaRoute extends PageRouteInfo<VisitaListaRouteArgs> {
-  VisitaListaRoute({Key? key})
+class VisitaListaRoute extends PageRouteInfo<void> {
+  const VisitaListaRoute()
       : super(
           VisitaListaRoute.name,
           path: '/visita',
-          args: VisitaListaRouteArgs(key: key),
         );
 
   static const String name = 'VisitaListaRoute';
-}
-
-class VisitaListaRouteArgs {
-  const VisitaListaRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'VisitaListaRouteArgs{key: $key}';
-  }
 }
 
 /// generated route for
