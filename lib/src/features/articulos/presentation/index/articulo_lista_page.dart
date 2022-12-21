@@ -37,6 +37,9 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   void initState() {
     super.initState();
     checkAppVersion();
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
   }
 
   void checkAppVersion() async {
@@ -65,9 +68,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-    ref
-        .read(syncNotifierProvider.notifier)
-        .syncAllInCompute(initAppProcess: false);
 
     ref.listen<AsyncValue>(
       articuloIndexScreenControllerProvider,

@@ -62,27 +62,46 @@ class VisitaEditPageController
     state = const VisitaEditPageControllerState.loading();
 
     if (visitaIdIsLocalParam.isNew) {
-      final cliente = await clienteRepository.getClienteById(
-        clienteId: visitaIdIsLocalParam.createVisitaFromClienteId!,
-      );
-      state = VisitaEditPageControllerState.data(
-        Visita(
-          clienteId: cliente.id,
-          nombreCliente: cliente.nombreCliente,
-          isClienteProvisional: cliente.clientePotencial ?? false,
-          clienteProvisionalNombre: (cliente.clientePotencial ?? false)
-              ? cliente.nombreCliente
-              : null,
-          fecha: DateTime.now().toUtc(),
-          numEmpl: usuarioId,
-          latitud: 0,
-          longitud: 0,
-          lastUpdated: DateTime.now().toUtc(),
-          deleted: false,
-          enviada: false,
-          tratada: false,
-        ),
-      );
+      if (visitaIdIsLocalParam.createVisitaFromClienteId != null) {
+        final cliente = await clienteRepository.getClienteById(
+          clienteId: visitaIdIsLocalParam.createVisitaFromClienteId!,
+        );
+        state = VisitaEditPageControllerState.data(
+          Visita(
+            clienteId: cliente.id,
+            nombreCliente: cliente.nombreCliente,
+            isClienteProvisional: cliente.clientePotencial ?? false,
+            clienteProvisionalNombre: (cliente.clientePotencial ?? false)
+                ? cliente.nombreCliente
+                : null,
+            fecha: DateTime.now().toUtc(),
+            numEmpl: usuarioId,
+            latitud: 0,
+            longitud: 0,
+            lastUpdated: DateTime.now().toUtc(),
+            deleted: false,
+            enviada: false,
+            tratada: false,
+          ),
+        );
+      } else {
+        state = VisitaEditPageControllerState.data(
+          Visita(
+            clienteId: null,
+            nombreCliente: null,
+            isClienteProvisional: false,
+            clienteProvisionalNombre: null,
+            fecha: DateTime.now().toUtc(),
+            numEmpl: usuarioId,
+            latitud: 0,
+            longitud: 0,
+            lastUpdated: DateTime.now().toUtc(),
+            deleted: false,
+            enviada: false,
+            tratada: false,
+          ),
+        );
+      }
     } else {
       try {
         final visita = await visitaRepository.getVisitaById(

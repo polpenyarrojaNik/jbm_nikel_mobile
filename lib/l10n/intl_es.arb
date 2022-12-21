@@ -215,6 +215,7 @@
   "pedido_edit_pedidoEdit_lineas": "Líneas",
   "pedido_edit_pedidoEdit_oferta": "Oferta",
   "pedido_edit_pedidoEdit_fechaValidez": "Fecha de validez",
+  "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia": "Fecha de validez no puede estar vacía",
   "pedido_edit_lineaNuevoTile_precio": "Precio:",
   "pedido_edit_lineaNuevoTile_dto": "Dto.:",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Seleccionar cantidad",

@@ -234,10 +234,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
         selectLineasValidate(context, ref);
         break;
       case 3:
-        ref
-            .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
-                .notifier)
-            .navigateToNextStep();
+        remarksValidate(context, ref);
         break;
       case 4:
         ref
@@ -305,6 +302,20 @@ class PedidoVentaEditForm extends ConsumerWidget {
           .navigateToNextStep();
     } else {
       showToast(S.of(context).pedido_edit_pedidoEdit_anadeAlgunaLinea, context);
+    }
+  }
+
+  void remarksValidate(BuildContext context, WidgetRef ref) {
+    if (oferta && ofertaFechaHasta != null) {
+      ref
+          .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
+              .notifier)
+          .navigateToNextStep();
+    } else {
+      showToast(
+        S.of(context).pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia,
+        context,
+      );
     }
   }
 

@@ -187,11 +187,11 @@ class VisitaRepository {
       final requestUri = (test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/visitas',
+              'api/v1/online/v3/visitas',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/visitas',
+              'api/v1/online/v3/visitas',
             );
 
       final response = await _dio.postUri(

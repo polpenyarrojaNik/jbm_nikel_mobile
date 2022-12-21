@@ -96,12 +96,6 @@ class VisitaDetallePage extends ConsumerWidget {
                     S.of(context).visitas_show_visitaDetalle_contacto,
                 value: visita.contacto,
               ),
-              if (visita.resumen != null)
-                ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).visitas_show_visitaDetalle_contacto,
-                  value: visita.contacto,
-                ),
               if (visita.atendidoPor != null)
                 ColumnFieldTextDetalle(
                   fieldTitleValue:
