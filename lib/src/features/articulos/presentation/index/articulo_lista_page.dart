@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
@@ -9,7 +8,6 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
-import 'package:new_version_plus/new_version_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
