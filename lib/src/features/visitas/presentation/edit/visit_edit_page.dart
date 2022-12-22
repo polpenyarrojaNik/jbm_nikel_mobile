@@ -371,6 +371,9 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_nombre,
           ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.required(),
+          ]),
         ),
         FormBuilderTextField(
           name: 'email',

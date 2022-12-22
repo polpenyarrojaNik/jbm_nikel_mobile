@@ -18,17 +18,28 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../sync/application/sync_notifier_provider.dart';
 import '../../infrastructure/visita_repository.dart';
 
-class VisitaListaPage extends ConsumerWidget {
-  VisitaListaPage({super.key});
+class VisitaListaPage extends ConsumerStatefulWidget {
+  const VisitaListaPage({super.key});
 
+  @override
+  ConsumerState<VisitaListaPage> createState() => _VisitaListaPageState();
+}
+
+class _VisitaListaPageState extends ConsumerState<VisitaListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final stateSync = ref.watch(syncNotifierProvider);
+  void initState() {
+    super.initState();
     ref
         .read(syncNotifierProvider.notifier)
         .syncAllInCompute(initAppProcess: false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final stateSync = ref.watch(syncNotifierProvider);
+
     ref.listen<AsyncValue>(
       visitaIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),

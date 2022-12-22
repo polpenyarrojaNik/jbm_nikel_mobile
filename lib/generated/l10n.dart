@@ -2224,6 +2224,16 @@ class S {
     );
   }
 
+  /// `Validate date cannot be empty`
+  String get pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia {
+    return Intl.message(
+      'Validate date cannot be empty',
+      name: 'pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Lines`
   String get pedido_edit_pedidoEdit_fecha {
     return Intl.message(

@@ -51,9 +51,6 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-    ref
-        .read(syncNotifierProvider.notifier)
-        .syncAllInCompute(initAppProcess: false);
 
     ref.listen<AsyncValue>(
       articuloIndexScreenControllerProvider,

@@ -32,13 +32,18 @@ class _ClienteListPageState extends ConsumerState<ClienteListaPage> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   bool searchClientesPotenciales = false;
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .read(syncNotifierProvider.notifier)
+        .syncAllInCompute(initAppProcess: false);
+  }
 
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-    ref
-        .read(syncNotifierProvider.notifier)
-        .syncAllInCompute(initAppProcess: false);
+
     ref.listen<AsyncValue>(
       clienteIndexScreenControllerProvider,
       (_, state) => state.showAlertDialogOnError(context),

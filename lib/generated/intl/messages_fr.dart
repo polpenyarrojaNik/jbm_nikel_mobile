@@ -385,6 +385,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Éditer la comande"),
         "pedido_edit_pedidoEdit_fechaValidez":
             MessageLookupByLibrary.simpleMessage("Date de validaté"),
+        "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
+            MessageLookupByLibrary.simpleMessage(
+                "La date de validation ne peut pas être vide"),
         "pedido_edit_pedidoEdit_lineas":
             MessageLookupByLibrary.simpleMessage("Lignes"),
         "pedido_edit_pedidoEdit_noPuedesCambiarCliente":
