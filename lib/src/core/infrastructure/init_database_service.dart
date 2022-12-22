@@ -27,21 +27,21 @@ class InitDatabaseService {
 
   static final remoteInitDatabaseEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v1/sync/init-db',
+    '/api/v2/sync/init-db',
   );
 
   static final remoteInitDatabaseTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v1/sync/init-db',
+    '/api/v2/sync/init-db',
   );
 
   static final remoteInitialDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v1/sync/init-db-date',
+    '/api/v2/sync/init-db-date',
   );
   static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v1/sync/init-db-date',
+    '/api/v2/sync/init-db-date',
   );
 
   InitDatabaseService(this.dio, this.usuario);

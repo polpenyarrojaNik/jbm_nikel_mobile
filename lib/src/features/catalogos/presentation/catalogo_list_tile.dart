@@ -20,58 +20,71 @@ class CatalogoListTile extends ConsumerWidget {
         ref.watch(catalogoFavoritoControllerProvider(catalogo.catalogoId));
     return GestureDetector(
       onTap: () => downloadAttachment(ref),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+          side: BorderSide(
+            color: Colors.grey.withOpacity(0.2),
+            width: 1,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                catalogo.nombre,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle2
-                    ?.copyWith(color: Theme.of(context).colorScheme.primary),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    catalogo.nombre,
+                    style: Theme.of(context).textTheme.subtitle2?.copyWith(
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
+                  stateFavorite.maybeWhen(
+                    orElse: () => const ProgressIndicatorWidget(),
+                    favorite: () => IconButton(
+                      onPressed: () => removeCatlalogoFavorite(
+                        ref: ref,
+                        catalogoId: catalogo.catalogoId,
+                      ),
+                      icon: Icon(Icons.star,
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    noFavorite: () => IconButton(
+                      onPressed: () => setCatlalogoToFavorite(
+                        ref: ref,
+                        catalogoId: catalogo.catalogoId,
+                      ),
+                      icon: Icon(Icons.star_outline,
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                  )
+                ],
               ),
-              stateFavorite.maybeWhen(
-                orElse: () => const ProgressIndicatorWidget(),
-                favorite: () => IconButton(
-                  onPressed: () => removeCatlalogoFavorite(
-                    ref: ref,
-                    catalogoId: catalogo.catalogoId,
+              SizedBox(
+                width: 600,
+                child: CachedNetworkImage(
+                  imageUrl: catalogo.urlFicherPortada,
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      Image.asset(
+                    width: 600,
+                    fit: BoxFit.contain,
+                    'assets/image-placeholder.png',
                   ),
-                  icon: Icon(Icons.star,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-                noFavorite: () => IconButton(
-                  onPressed: () => setCatlalogoToFavorite(
-                    ref: ref,
-                    catalogoId: catalogo.catalogoId,
+                  errorWidget: (context, error, _) => Center(
+                    child: Text(S
+                        .of(context)
+                        .articulo_show_articuloDetalle_noDisponible),
                   ),
-                  icon: Icon(Icons.star_outline,
-                      color: Theme.of(context).colorScheme.primary),
+                  width: 600,
+                  fit: BoxFit.contain,
                 ),
-              )
+              ),
             ],
           ),
-          SizedBox(
-            width: 600,
-            child: CachedNetworkImage(
-              imageUrl: catalogo.urlFicherPortada,
-              progressIndicatorBuilder: (context, url, progress) => Image.asset(
-                width: 600,
-                fit: BoxFit.contain,
-                'assets/image-placeholder.png',
-              ),
-              errorWidget: (context, error, _) => Center(
-                child: Text(
-                    S.of(context).articulo_show_articuloDetalle_noDisponible),
-              ),
-              width: 600,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
