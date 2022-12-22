@@ -421,7 +421,7 @@ class CatalogoRepository {
     }
 
     if (searchText != null) {
-      query.addAll({'busqueda': searchText});
+      query.addAll({'busqueda': searchText.toUpperCase()});
     }
 
     return query;
