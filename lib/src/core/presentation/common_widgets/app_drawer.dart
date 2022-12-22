@@ -95,7 +95,7 @@ class AppDrawer extends StatelessWidget {
               Icons.list,
               size: 30,
             ),
-            title: Text('Catalogue'),
+            title: Text(S.of(context).commonWidgets_appDrawer_catalogos),
             onTap: () => context.router.pushAndPopUntil(
                 const CatalogoListaRoute(),
                 predicate: (route) => false),

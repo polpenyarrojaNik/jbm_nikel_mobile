@@ -126,6 +126,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("bem-vindo a"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("usuário"),
+        "catalogos_index_buscarCatalogo":
+            MessageLookupByLibrary.simpleMessage("Buscar catálogos..."),
+        "catalogos_index_catalogoAdjunto_abriendoArchivo":
+            MessageLookupByLibrary.simpleMessage("Abrindo arquivo..."),
+        "catalogos_index_idioma":
+            MessageLookupByLibrary.simpleMessage("Língua"),
+        "catalogos_index_precio": MessageLookupByLibrary.simpleMessage("Preço"),
+        "catalogos_index_tipoCatalogo":
+            MessageLookupByLibrary.simpleMessage("Tipo de catálogo"),
+        "catalogos_index_titulo":
+            MessageLookupByLibrary.simpleMessage("Catálogos"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Carregando mapa"),
         "cliente_alrededor_margenAnoActual":
@@ -338,6 +349,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ajustes"),
         "commonWidgets_appDrawer_articulos":
             MessageLookupByLibrary.simpleMessage("Produtos"),
+        "commonWidgets_appDrawer_catalogos":
+            MessageLookupByLibrary.simpleMessage("Catálogos"),
         "commonWidgets_appDrawer_clientes":
             MessageLookupByLibrary.simpleMessage("Clientes"),
         "commonWidgets_appDrawer_kpi":

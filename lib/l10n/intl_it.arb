@@ -159,6 +159,7 @@
   "commonWidgets_appDrawer_kpi": "KPI",
   "commonWidgets_appDrawer_pedidos": "Ordini",
   "commonWidgets_appDrawer_visitas": "Visite",
+  "commonWidgets_appDrawer_catalogos": "Cataloghi",
   "commonWidgets_emptyPlaceholder_irAIncio": "Tornare a inizio",
   "commonWidgets_sliderBackground_borrar": "Elimina",
   "commonWidgets_ultimaSincronizacion": "Ultima sincronizzazione",
@@ -272,5 +273,11 @@
   "visitas_show_visitaDetalle_nombre": "Nome",
   "visitas_show_visitaDetalle_poblacion": "Città",
   "visitas_show_visitaDetalle_resumen": "Riepilogo",
-  "visitas_show_visitaDetalle_telefono": "Telefono"
+  "visitas_show_visitaDetalle_telefono": "Telefono",
+  "catalogos_index_catalogoAdjunto_abriendoArchivo": "Aprendo file...",
+  "catalogos_index_titulo": "Cataloghi",
+  "catalogos_index_buscarCatalogo": "Cercare cataloghi...",
+  "catalogos_index_tipoCatalogo": "Tipo di catalogo",
+  "catalogos_index_precio": "Prezzo",
+  "catalogos_index_idioma": "Linguaggio"
 }

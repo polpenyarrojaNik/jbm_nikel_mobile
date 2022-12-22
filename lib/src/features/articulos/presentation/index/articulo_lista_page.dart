@@ -36,30 +36,18 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   void initState() {
     super.initState();
-    checkAppVersion();
-  }
+    // final locale = CountryCodes.getDeviceLocale();
 
-  void checkAppVersion() async {
-    final locale = CountryCodes.getDeviceLocale();
+    // final newVersion = NewVersionPlus(
+    //   iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
+    //   androidId: 'es.nikel.jbm.jbm_nikel_mobile',
+    //   iOSAppStoreCountry: locale?.countryCode,
+    // );
 
-    final newVersion = NewVersionPlus(
-      iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
-      androidId: 'es.nikel.jbm.jbm_nikel_mobile',
-      iOSAppStoreCountry: locale?.countryCode,
-    );
-
-    await basicStatusCheck(newVersion);
-  }
-
-  Future<void> basicStatusCheck(NewVersionPlus newVersion) async {
-    try {
-      await newVersion.getVersionStatus();
-      await newVersion.showAlertIfNecessary(
-        context: context,
-      );
-    } catch (e) {
-      print(e);
-    }
+    // final VersionStatus? versionStatus = await newVersion.getVersionStatus();
+    // if (versionStatus != null && versionStatus.canUpdate) {
+    //   newVersion.showUpdateDialog(context: context, versionStatus: versionStatus);
+    // }
   }
 
   @override

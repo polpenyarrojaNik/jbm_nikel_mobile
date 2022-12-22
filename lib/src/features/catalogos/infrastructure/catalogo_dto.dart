@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/domain/catalogo.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
@@ -16,6 +17,8 @@ class CatalogoDTO with _$CatalogoDTO {
     @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
     @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
         required String tipoPrecioCatalogoId,
+    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+        required String tipoPrecioCatalogoNombre,
     @JsonKey(name: 'TIPO_CATALOGO_ID') required String tipoCatalogoId,
     @JsonKey(name: 'TAG_BUSQUEDA') required String tagBusqueda,
     @JsonKey(name: 'ORDEN') required int orden,
@@ -28,27 +31,36 @@ class CatalogoDTO with _$CatalogoDTO {
   factory CatalogoDTO.fromJson(Map<String, dynamic> json) =>
       _$CatalogoDTOFromJson(json);
 
-  Catalogo toDomain({required List<CatalogoFavoritoDTO> favoriteList}) {
+  Catalogo toDomain({required bool test, required String? tipoPrecioCatalogo}) {
     return Catalogo(
       catalogoId: catalogoId,
-      nombre: nombre,
+      nombre: getNombre(),
       idiomaId: idiomaId,
       tipoPrecioCatalogoId: tipoPrecioCatalogoId,
+      tipoPrecioCatalogoNombre: tipoPrecioCatalogoNombre,
       tipoCatalogoId: tipoCatalogoId,
       tagBusqueda: tagBusqueda,
       orden: orden,
-      nombreFicherPortada: nombreFicheroPortada,
+      urlFicherPortada: getImageUrl(test),
       nombreFicheroCatalogo: nombreFicheroCatalogo,
-      isFavorite: checkIsFavorite(favoriteList),
+      // isFavorite: checkIsFavorite(favoriteList),
     );
   }
 
-  bool checkIsFavorite(List<CatalogoFavoritoDTO> favoriteList) {
-    for (var i = 0; i < favoriteList.length; i++) {
-      if (favoriteList[i].catalogoId == catalogoId) {
-        return true;
-      }
-    }
-    return false;
+  // bool checkIsFavorite(List<CatalogoFavoritoDTO> favoriteList) {
+  //   for (var i = 0; i < favoriteList.length; i++) {
+  //     if (favoriteList[i].catalogoId == catalogoId) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
+
+  String getImageUrl(bool test) {
+    return (test)
+        ? 'http://${dotenv.get('URLTEST', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada'
+        : 'https://${dotenv.get('URL', fallback: 'localhost:3001')}/api/v1/online/adjunto/catalogo/$catalogoId?NOMBRE_ARCHIVO=$nombreFicheroPortada';
   }
+
+  String getNombre() => '$nombre ($idiomaId) $tipoPrecioCatalogoNombre';
 }

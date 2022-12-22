@@ -1,19 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+import 'package:jbm_nikel_mobile/src/features/catalogos/domain/idioma_catalogo.dart';
 
-import '../domain/tipo_precio_catalogo.dart';
-
-part 'tipo_catalogo_precio_dto.freezed.dart';
-part 'tipo_catalogo_precio_dto.g.dart';
+part 'idioma_catalogo_dto.freezed.dart';
+part 'idioma_catalogo_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class TipoPrecioCatalogoDTO with _$TipoPrecioCatalogoDTO {
-  const TipoPrecioCatalogoDTO._();
-  const factory TipoPrecioCatalogoDTO({
-    @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
-        required String tipoPrecioCatalogoId,
+class IdiomaCatalogoDTO with _$IdiomaCatalogoDTO {
+  const IdiomaCatalogoDTO._();
+  const factory IdiomaCatalogoDTO({
+    @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
     @JsonKey(name: 'DESCRIPCION_ES') required String descripcionES,
     @JsonKey(name: 'DESCRIPCION_EN') String? descripcionEN,
     @JsonKey(name: 'DESCRIPCION_FR') String? descripcionFR,
@@ -24,14 +22,14 @@ class TipoPrecioCatalogoDTO with _$TipoPrecioCatalogoDTO {
     @JsonKey(name: 'DESCRIPCION_IT') String? descripcionIT,
     @JsonKey(name: 'DESCRIPCION_NL') String? descripcionNL,
     @JsonKey(name: 'DESCRIPCION_PL') String? descripcionPL,
-  }) = _TipoCatalogoDTO;
+  }) = _IdiomaCatalogoDTO;
 
-  factory TipoPrecioCatalogoDTO.fromJson(Map<String, dynamic> json) =>
-      _$TipoPrecioCatalogoDTOFromJson(json);
+  factory IdiomaCatalogoDTO.fromJson(Map<String, dynamic> json) =>
+      _$IdiomaCatalogoDTOFromJson(json);
 
-  TipoPrecioCatalogo toDomain() {
-    return TipoPrecioCatalogo(
-      tipoPrecioCatalogoId: tipoPrecioCatalogoId,
+  IdiomaCatalogo toDomain() {
+    return IdiomaCatalogo(
+      idiomaId: idiomaId,
       descripcion: getDescriptionInLocalLanguage(),
     );
   }

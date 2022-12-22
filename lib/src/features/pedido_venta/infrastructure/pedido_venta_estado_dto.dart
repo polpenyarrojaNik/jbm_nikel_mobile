@@ -52,10 +52,14 @@ class PedidoVentaEstadoDTO
     if (currentLocale == 'es') {
     } else if (currentLocale == 'en' && descripcionEN != null) {
       return descripcionEN!;
+    } else if (currentLocale == 'fr' && descripcionFR != null) {
+      return descripcionFR!;
+    } else if (currentLocale == 'it' && descripcionIT != null) {
+      return descripcionIT!;
+    } else if (currentLocale == 'pt' && descripcionPT != null) {
+      return descripcionPT!;
     }
-    // else if (currentLocale == 'fr' && descripcionFR != null) {
-    //   return descripcionFR!;
-    // } else if (currentLocale == 'de' && descripcionDE != null) {
+    //else if (currentLocale == 'de' && descripcionDE != null) {
     //   return descripcionDE!;
     // } else if (currentLocale == 'ca' && descripcionCA != null) {
     //   return descripcionCA!;
@@ -63,15 +67,13 @@ class PedidoVentaEstadoDTO
     //   return descripcionGB!;
     // } else if (currentLocale == 'hu' && descripcionHU != null) {
     //   return descripcionHU!;
-    // } else if (currentLocale == 'it' && descripcionIT != null) {
-    //   return descripcionIT!;
-    // } else if (currentLocale == 'nl' && descripcionNL != null) {
+    // }
+    //else if (currentLocale == 'nl' && descripcionNL != null) {
     //   return descripcionNL!;
     // } else if (currentLocale == 'pl' && descripcionPL != null) {
     //   return descripcionPL!;
-    // } else if (currentLocale == 'pt' && descripcionPT != null) {
-    //   return descripcionPT!;
-    // } else if (currentLocale == 'ro' && descripcionRO != null) {
+    // }
+    //else if (currentLocale == 'ro' && descripcionRO != null) {
     //   return descripcionRO!;
     // } else if (currentLocale == 'ru' && descripcionRU != null) {
     //   return descripcionRU!;

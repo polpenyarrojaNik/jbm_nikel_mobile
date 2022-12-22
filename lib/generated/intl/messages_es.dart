@@ -22,7 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "articulo": MessageLookupByLibrary.simpleMessage("Article"),
+        "articulo": MessageLookupByLibrary.simpleMessage("Artículo"),
         "articulo_index_buscarArticulos":
             MessageLookupByLibrary.simpleMessage("Buscar artículos"),
         "articulo_index_titulo":
@@ -124,6 +124,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bienvenido a"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Usuario"),
+        "catalogos_index_buscarCatalogo":
+            MessageLookupByLibrary.simpleMessage("Buscar catálogos..."),
+        "catalogos_index_catalogoAdjunto_abriendoArchivo":
+            MessageLookupByLibrary.simpleMessage("Abriendo archivo..."),
+        "catalogos_index_idioma":
+            MessageLookupByLibrary.simpleMessage("Idioma"),
+        "catalogos_index_precio":
+            MessageLookupByLibrary.simpleMessage("Precio"),
+        "catalogos_index_tipoCatalogo":
+            MessageLookupByLibrary.simpleMessage("Tipo de catálogo"),
+        "catalogos_index_titulo":
+            MessageLookupByLibrary.simpleMessage("Catálogos"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Cargando mapa"),
         "cliente_alrededor_margenAnoActual":
@@ -332,6 +344,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ajustes"),
         "commonWidgets_appDrawer_articulos":
             MessageLookupByLibrary.simpleMessage("Artículos"),
+        "commonWidgets_appDrawer_catalogos":
+            MessageLookupByLibrary.simpleMessage("Catálogos"),
         "commonWidgets_appDrawer_clientes":
             MessageLookupByLibrary.simpleMessage("Clientes"),
         "commonWidgets_appDrawer_kpi":
@@ -346,7 +360,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Borrar"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Última sincronización"),
-        "familia": MessageLookupByLibrary.simpleMessage("Family"),
+        "familia": MessageLookupByLibrary.simpleMessage("Familia"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Ha ocurrido un error"),
         "pedido_edit_askPopAlertDialog_aceptar":
@@ -488,7 +502,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "splash_visitas":
             MessageLookupByLibrary.simpleMessage("Sincronizando visitas..."),
         "stock": MessageLookupByLibrary.simpleMessage("Stock"),
-        "subfamilia": MessageLookupByLibrary.simpleMessage("Subfamily"),
+        "subfamilia": MessageLookupByLibrary.simpleMessage("Subfamilia"),
         "ultimosPrecios_buscarUltimosPrecios":
             MessageLookupByLibrary.simpleMessage("Buscar..."),
         "ultimosPrecios_precio": MessageLookupByLibrary.simpleMessage("Precio"),

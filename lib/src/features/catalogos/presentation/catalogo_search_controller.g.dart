@@ -30,7 +30,7 @@ class _SystemHash {
 }
 
 String $CatalogoIndexScreenControllerHash() =>
-    r'f93224b29d1bebb19845178db6f610b14c1c99ed';
+    r'4147fae714d8f268e0e4a68a40297256a106ae42';
 
 /// See also [CatalogoIndexScreenController].
 final catalogoIndexScreenControllerProvider = AutoDisposeAsyncNotifierProvider<

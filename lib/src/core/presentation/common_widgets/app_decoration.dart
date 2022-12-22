@@ -47,4 +47,20 @@ class AppDecoration {
         color: color,
         borderRadius: BorderRadius.circular(4),
       );
+
+  static InputDecoration inputDecorationinFilter(
+    BuildContext context,
+    String hintText,
+  ) {
+    return InputDecoration(
+      alignLabelWithHint: true,
+      isCollapsed: true,
+      hintText: hintText,
+      labelText: hintText,
+      contentPadding: const EdgeInsets.all(8),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary),
+      ),
+    );
+  }
 }

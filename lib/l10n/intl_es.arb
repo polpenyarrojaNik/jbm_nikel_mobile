@@ -10,6 +10,7 @@
   "commonWidgets_appDrawer_visitas": "Visitas",
   "commonWidgets_appDrawer_kpi": "KPI",
   "commonWidgets_appDrawer_ajustes": "Ajustes",
+  "commonWidgets_appDrawer_catalogos": "Catálogos",
   "commonWidgets_emptyPlaceholder_irAIncio": "Ir a inicio",
   "commonWidgets_ultimaSincronizacion": "Última sincronización",
   "commonWidgets_sliderBackground_borrar": "Borrar",
@@ -270,7 +271,13 @@
   "visitas_edit_visitaEditar_resumen": "Resumen",
   "visitas_edit_visitaEditar_cliente": "Cliente",
   "visitas_edit_visitaEditar_saved": "Saved",
-  "articulo": "Article",
-  "familia": "Family",
-  "subfamilia": "Subfamily"
+  "articulo": "Artículo",
+  "familia": "Familia",
+  "subfamilia": "Subfamilia",
+  "catalogos_index_catalogoAdjunto_abriendoArchivo": "Abriendo archivo...",
+  "catalogos_index_titulo": "Catálogos",
+  "catalogos_index_buscarCatalogo": "Buscar catálogos...",
+  "catalogos_index_tipoCatalogo": "Tipo de catálogo",
+  "catalogos_index_precio": "Precio",
+  "catalogos_index_idioma": "Idioma"
 }

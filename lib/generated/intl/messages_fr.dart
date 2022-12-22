@@ -124,6 +124,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bienvenue chez"),
         "auth_loginPage_usuario":
             MessageLookupByLibrary.simpleMessage("Identifiant"),
+        "catalogos_index_buscarCatalogo":
+            MessageLookupByLibrary.simpleMessage("Chercher catalogues…"),
+        "catalogos_index_catalogoAdjunto_abriendoArchivo":
+            MessageLookupByLibrary.simpleMessage("Ouverture du fichier…"),
+        "catalogos_index_idioma":
+            MessageLookupByLibrary.simpleMessage("Langage"),
+        "catalogos_index_precio": MessageLookupByLibrary.simpleMessage("Prix"),
+        "catalogos_index_tipoCatalogo":
+            MessageLookupByLibrary.simpleMessage("Type de catalogue"),
+        "catalogos_index_titulo":
+            MessageLookupByLibrary.simpleMessage("Catalogues"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Chergement carte"),
         "cliente_alrededor_margenAnoActual":
@@ -333,6 +344,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Paramètres"),
         "commonWidgets_appDrawer_articulos":
             MessageLookupByLibrary.simpleMessage("Articles"),
+        "commonWidgets_appDrawer_catalogos":
+            MessageLookupByLibrary.simpleMessage("Catalogues"),
         "commonWidgets_appDrawer_clientes":
             MessageLookupByLibrary.simpleMessage("Clients"),
         "commonWidgets_appDrawer_kpi":
@@ -347,7 +360,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Éffacer"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Dernière syncronisation"),
-        "familia": MessageLookupByLibrary.simpleMessage(""),
+        "familia": MessageLookupByLibrary.simpleMessage("Famille"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Une érreur est survenue"),
         "pedido_edit_askPopAlertDialog_aceptar":

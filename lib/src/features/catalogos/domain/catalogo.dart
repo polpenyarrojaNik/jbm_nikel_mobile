@@ -10,11 +10,12 @@ class Catalogo with _$Catalogo {
     required String nombre,
     required String idiomaId,
     required String tipoPrecioCatalogoId,
+    required String tipoPrecioCatalogoNombre,
     required String tipoCatalogoId,
     required String tagBusqueda,
     required int orden,
-    required String nombreFicherPortada,
+    required String urlFicherPortada,
     required String nombreFicheroCatalogo,
-    required bool isFavorite,
+    // required bool isFavorite,
   }) = _Catalogo;
 }

@@ -160,6 +160,16 @@ class S {
     );
   }
 
+  /// `Catalogs`
+  String get commonWidgets_appDrawer_catalogos {
+    return Intl.message(
+      'Catalogs',
+      name: 'commonWidgets_appDrawer_catalogos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Go Home`
   String get commonWidgets_emptyPlaceholder_irAIncio {
     return Intl.message(
@@ -2774,31 +2784,91 @@ class S {
     );
   }
 
-  /// `Artículo`
+  /// `Articile`
   String get articulo {
     return Intl.message(
-      'Artículo',
+      'Articile',
       name: 'articulo',
       desc: '',
       args: [],
     );
   }
 
-  /// `Familia`
+  /// `Family`
   String get familia {
     return Intl.message(
-      'Familia',
+      'Family',
       name: 'familia',
       desc: '',
       args: [],
     );
   }
 
-  /// `Subfamilia`
+  /// `Subfamily`
   String get subfamilia {
     return Intl.message(
-      'Subfamilia',
+      'Subfamily',
       name: 'subfamilia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Open attachment...`
+  String get catalogos_index_catalogoAdjunto_abriendoArchivo {
+    return Intl.message(
+      'Open attachment...',
+      name: 'catalogos_index_catalogoAdjunto_abriendoArchivo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Catalogs`
+  String get catalogos_index_titulo {
+    return Intl.message(
+      'Catalogs',
+      name: 'catalogos_index_titulo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Catalogs type`
+  String get catalogos_index_tipoCatalogo {
+    return Intl.message(
+      'Catalogs type',
+      name: 'catalogos_index_tipoCatalogo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get catalogos_index_precio {
+    return Intl.message(
+      'Price',
+      name: 'catalogos_index_precio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get catalogos_index_idioma {
+    return Intl.message(
+      'Language',
+      name: 'catalogos_index_idioma',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search catalogs...`
+  String get catalogos_index_buscarCatalogo {
+    return Intl.message(
+      'Search catalogs...',
+      name: 'catalogos_index_buscarCatalogo',
       desc: '',
       args: [],
     );

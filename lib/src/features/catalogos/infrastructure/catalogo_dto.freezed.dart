@@ -28,6 +28,8 @@ mixin _$CatalogoDTO {
   String get idiomaId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
   String get tipoPrecioCatalogoId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+  String get tipoPrecioCatalogoNombre => throw _privateConstructorUsedError;
   @JsonKey(name: 'TIPO_CATALOGO_ID')
   String get tipoCatalogoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'TAG_BUSQUEDA')
@@ -52,15 +54,26 @@ abstract class $CatalogoDTOCopyWith<$Res> {
       _$CatalogoDTOCopyWithImpl<$Res, CatalogoDTO>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
-      @JsonKey(name: 'NOMBRE') String nombre,
-      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
-      @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
-      @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
-      @JsonKey(name: 'ORDEN') int orden,
-      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
-      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo});
+      {@JsonKey(name: 'CATALOGO_ID')
+          int catalogoId,
+      @JsonKey(name: 'NOMBRE')
+          String nombre,
+      @JsonKey(name: 'IDIOMA_ID')
+          String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+          String tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+          String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID')
+          String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA')
+          String tagBusqueda,
+      @JsonKey(name: 'ORDEN')
+          int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
+          String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
+          String nombreFicheroCatalogo});
 }
 
 /// @nodoc
@@ -80,6 +93,7 @@ class _$CatalogoDTOCopyWithImpl<$Res, $Val extends CatalogoDTO>
     Object? nombre = null,
     Object? idiomaId = null,
     Object? tipoPrecioCatalogoId = null,
+    Object? tipoPrecioCatalogoNombre = null,
     Object? tipoCatalogoId = null,
     Object? tagBusqueda = null,
     Object? orden = null,
@@ -102,6 +116,10 @@ class _$CatalogoDTOCopyWithImpl<$Res, $Val extends CatalogoDTO>
       tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
           ? _value.tipoPrecioCatalogoId
           : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
               as String,
       tipoCatalogoId: null == tipoCatalogoId
           ? _value.tipoCatalogoId
@@ -136,15 +154,26 @@ abstract class _$$_CatalogoDTOCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'CATALOGO_ID') int catalogoId,
-      @JsonKey(name: 'NOMBRE') String nombre,
-      @JsonKey(name: 'IDIOMA_ID') String idiomaId,
-      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID') String tipoPrecioCatalogoId,
-      @JsonKey(name: 'TIPO_CATALOGO_ID') String tipoCatalogoId,
-      @JsonKey(name: 'TAG_BUSQUEDA') String tagBusqueda,
-      @JsonKey(name: 'ORDEN') int orden,
-      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA') String nombreFicheroPortada,
-      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO') String nombreFicheroCatalogo});
+      {@JsonKey(name: 'CATALOGO_ID')
+          int catalogoId,
+      @JsonKey(name: 'NOMBRE')
+          String nombre,
+      @JsonKey(name: 'IDIOMA_ID')
+          String idiomaId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
+          String tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+          String tipoPrecioCatalogoNombre,
+      @JsonKey(name: 'TIPO_CATALOGO_ID')
+          String tipoCatalogoId,
+      @JsonKey(name: 'TAG_BUSQUEDA')
+          String tagBusqueda,
+      @JsonKey(name: 'ORDEN')
+          int orden,
+      @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
+          String nombreFicheroPortada,
+      @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
+          String nombreFicheroCatalogo});
 }
 
 /// @nodoc
@@ -162,6 +191,7 @@ class __$$_CatalogoDTOCopyWithImpl<$Res>
     Object? nombre = null,
     Object? idiomaId = null,
     Object? tipoPrecioCatalogoId = null,
+    Object? tipoPrecioCatalogoNombre = null,
     Object? tipoCatalogoId = null,
     Object? tagBusqueda = null,
     Object? orden = null,
@@ -184,6 +214,10 @@ class __$$_CatalogoDTOCopyWithImpl<$Res>
       tipoPrecioCatalogoId: null == tipoPrecioCatalogoId
           ? _value.tipoPrecioCatalogoId
           : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
               as String,
       tipoCatalogoId: null == tipoCatalogoId
           ? _value.tipoCatalogoId
@@ -221,6 +255,8 @@ class _$_CatalogoDTO extends _CatalogoDTO {
           required this.idiomaId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
           required this.tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+          required this.tipoPrecioCatalogoNombre,
       @JsonKey(name: 'TIPO_CATALOGO_ID')
           required this.tipoCatalogoId,
       @JsonKey(name: 'TAG_BUSQUEDA')
@@ -249,6 +285,9 @@ class _$_CatalogoDTO extends _CatalogoDTO {
   @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
   final String tipoPrecioCatalogoId;
   @override
+  @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+  final String tipoPrecioCatalogoNombre;
+  @override
   @JsonKey(name: 'TIPO_CATALOGO_ID')
   final String tipoCatalogoId;
   @override
@@ -266,7 +305,7 @@ class _$_CatalogoDTO extends _CatalogoDTO {
 
   @override
   String toString() {
-    return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo)';
+    return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo)';
   }
 
   @override
@@ -281,6 +320,9 @@ class _$_CatalogoDTO extends _CatalogoDTO {
                 other.idiomaId == idiomaId) &&
             (identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) ||
                 other.tipoPrecioCatalogoId == tipoPrecioCatalogoId) &&
+            (identical(
+                    other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) ||
+                other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre) &&
             (identical(other.tipoCatalogoId, tipoCatalogoId) ||
                 other.tipoCatalogoId == tipoCatalogoId) &&
             (identical(other.tagBusqueda, tagBusqueda) ||
@@ -300,6 +342,7 @@ class _$_CatalogoDTO extends _CatalogoDTO {
       nombre,
       idiomaId,
       tipoPrecioCatalogoId,
+      tipoPrecioCatalogoNombre,
       tipoCatalogoId,
       tagBusqueda,
       orden,
@@ -330,6 +373,8 @@ abstract class _CatalogoDTO extends CatalogoDTO {
           required final String idiomaId,
       @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
           required final String tipoPrecioCatalogoId,
+      @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+          required final String tipoPrecioCatalogoNombre,
       @JsonKey(name: 'TIPO_CATALOGO_ID')
           required final String tipoCatalogoId,
       @JsonKey(name: 'TAG_BUSQUEDA')
@@ -357,6 +402,9 @@ abstract class _CatalogoDTO extends CatalogoDTO {
   @override
   @JsonKey(name: 'TIPO_PRECIO_CATALOGO_ID')
   String get tipoPrecioCatalogoId;
+  @override
+  @JsonKey(name: 'TIPO_PRECIO_CATALOGO_NOMBRE')
+  String get tipoPrecioCatalogoNombre;
   @override
   @JsonKey(name: 'TIPO_CATALOGO_ID')
   String get tipoCatalogoId;

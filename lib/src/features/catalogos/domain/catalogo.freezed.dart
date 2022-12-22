@@ -20,12 +20,12 @@ mixin _$Catalogo {
   String get nombre => throw _privateConstructorUsedError;
   String get idiomaId => throw _privateConstructorUsedError;
   String get tipoPrecioCatalogoId => throw _privateConstructorUsedError;
+  String get tipoPrecioCatalogoNombre => throw _privateConstructorUsedError;
   String get tipoCatalogoId => throw _privateConstructorUsedError;
   String get tagBusqueda => throw _privateConstructorUsedError;
   int get orden => throw _privateConstructorUsedError;
-  String get nombreFicherPortada => throw _privateConstructorUsedError;
+  String get urlFicherPortada => throw _privateConstructorUsedError;
   String get nombreFicheroCatalogo => throw _privateConstructorUsedError;
-  bool get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CatalogoCopyWith<Catalogo> get copyWith =>
@@ -42,12 +42,12 @@ abstract class $CatalogoCopyWith<$Res> {
       String nombre,
       String idiomaId,
       String tipoPrecioCatalogoId,
+      String tipoPrecioCatalogoNombre,
       String tipoCatalogoId,
       String tagBusqueda,
       int orden,
-      String nombreFicherPortada,
-      String nombreFicheroCatalogo,
-      bool isFavorite});
+      String urlFicherPortada,
+      String nombreFicheroCatalogo});
 }
 
 /// @nodoc
@@ -67,12 +67,12 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
     Object? nombre = null,
     Object? idiomaId = null,
     Object? tipoPrecioCatalogoId = null,
+    Object? tipoPrecioCatalogoNombre = null,
     Object? tipoCatalogoId = null,
     Object? tagBusqueda = null,
     Object? orden = null,
-    Object? nombreFicherPortada = null,
+    Object? urlFicherPortada = null,
     Object? nombreFicheroCatalogo = null,
-    Object? isFavorite = null,
   }) {
     return _then(_value.copyWith(
       catalogoId: null == catalogoId
@@ -91,6 +91,10 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
           ? _value.tipoPrecioCatalogoId
           : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
               as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoCatalogoId: null == tipoCatalogoId
           ? _value.tipoCatalogoId
           : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
@@ -103,18 +107,14 @@ class _$CatalogoCopyWithImpl<$Res, $Val extends Catalogo>
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
               as int,
-      nombreFicherPortada: null == nombreFicherPortada
-          ? _value.nombreFicherPortada
-          : nombreFicherPortada // ignore: cast_nullable_to_non_nullable
+      urlFicherPortada: null == urlFicherPortada
+          ? _value.urlFicherPortada
+          : urlFicherPortada // ignore: cast_nullable_to_non_nullable
               as String,
       nombreFicheroCatalogo: null == nombreFicheroCatalogo
           ? _value.nombreFicheroCatalogo
           : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
               as String,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -131,12 +131,12 @@ abstract class _$$_CatalogoCopyWith<$Res> implements $CatalogoCopyWith<$Res> {
       String nombre,
       String idiomaId,
       String tipoPrecioCatalogoId,
+      String tipoPrecioCatalogoNombre,
       String tipoCatalogoId,
       String tagBusqueda,
       int orden,
-      String nombreFicherPortada,
-      String nombreFicheroCatalogo,
-      bool isFavorite});
+      String urlFicherPortada,
+      String nombreFicheroCatalogo});
 }
 
 /// @nodoc
@@ -154,12 +154,12 @@ class __$$_CatalogoCopyWithImpl<$Res>
     Object? nombre = null,
     Object? idiomaId = null,
     Object? tipoPrecioCatalogoId = null,
+    Object? tipoPrecioCatalogoNombre = null,
     Object? tipoCatalogoId = null,
     Object? tagBusqueda = null,
     Object? orden = null,
-    Object? nombreFicherPortada = null,
+    Object? urlFicherPortada = null,
     Object? nombreFicheroCatalogo = null,
-    Object? isFavorite = null,
   }) {
     return _then(_$_Catalogo(
       catalogoId: null == catalogoId
@@ -178,6 +178,10 @@ class __$$_CatalogoCopyWithImpl<$Res>
           ? _value.tipoPrecioCatalogoId
           : tipoPrecioCatalogoId // ignore: cast_nullable_to_non_nullable
               as String,
+      tipoPrecioCatalogoNombre: null == tipoPrecioCatalogoNombre
+          ? _value.tipoPrecioCatalogoNombre
+          : tipoPrecioCatalogoNombre // ignore: cast_nullable_to_non_nullable
+              as String,
       tipoCatalogoId: null == tipoCatalogoId
           ? _value.tipoCatalogoId
           : tipoCatalogoId // ignore: cast_nullable_to_non_nullable
@@ -190,18 +194,14 @@ class __$$_CatalogoCopyWithImpl<$Res>
           ? _value.orden
           : orden // ignore: cast_nullable_to_non_nullable
               as int,
-      nombreFicherPortada: null == nombreFicherPortada
-          ? _value.nombreFicherPortada
-          : nombreFicherPortada // ignore: cast_nullable_to_non_nullable
+      urlFicherPortada: null == urlFicherPortada
+          ? _value.urlFicherPortada
+          : urlFicherPortada // ignore: cast_nullable_to_non_nullable
               as String,
       nombreFicheroCatalogo: null == nombreFicheroCatalogo
           ? _value.nombreFicheroCatalogo
           : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
               as String,
-      isFavorite: null == isFavorite
-          ? _value.isFavorite
-          : isFavorite // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -214,12 +214,12 @@ class _$_Catalogo extends _Catalogo {
       required this.nombre,
       required this.idiomaId,
       required this.tipoPrecioCatalogoId,
+      required this.tipoPrecioCatalogoNombre,
       required this.tipoCatalogoId,
       required this.tagBusqueda,
       required this.orden,
-      required this.nombreFicherPortada,
-      required this.nombreFicheroCatalogo,
-      required this.isFavorite})
+      required this.urlFicherPortada,
+      required this.nombreFicheroCatalogo})
       : super._();
 
   @override
@@ -231,21 +231,21 @@ class _$_Catalogo extends _Catalogo {
   @override
   final String tipoPrecioCatalogoId;
   @override
+  final String tipoPrecioCatalogoNombre;
+  @override
   final String tipoCatalogoId;
   @override
   final String tagBusqueda;
   @override
   final int orden;
   @override
-  final String nombreFicherPortada;
+  final String urlFicherPortada;
   @override
   final String nombreFicheroCatalogo;
-  @override
-  final bool isFavorite;
 
   @override
   String toString() {
-    return 'Catalogo(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicherPortada: $nombreFicherPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, isFavorite: $isFavorite)';
+    return 'Catalogo(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, urlFicherPortada: $urlFicherPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo)';
   }
 
   @override
@@ -260,17 +260,18 @@ class _$_Catalogo extends _Catalogo {
                 other.idiomaId == idiomaId) &&
             (identical(other.tipoPrecioCatalogoId, tipoPrecioCatalogoId) ||
                 other.tipoPrecioCatalogoId == tipoPrecioCatalogoId) &&
+            (identical(
+                    other.tipoPrecioCatalogoNombre, tipoPrecioCatalogoNombre) ||
+                other.tipoPrecioCatalogoNombre == tipoPrecioCatalogoNombre) &&
             (identical(other.tipoCatalogoId, tipoCatalogoId) ||
                 other.tipoCatalogoId == tipoCatalogoId) &&
             (identical(other.tagBusqueda, tagBusqueda) ||
                 other.tagBusqueda == tagBusqueda) &&
             (identical(other.orden, orden) || other.orden == orden) &&
-            (identical(other.nombreFicherPortada, nombreFicherPortada) ||
-                other.nombreFicherPortada == nombreFicherPortada) &&
+            (identical(other.urlFicherPortada, urlFicherPortada) ||
+                other.urlFicherPortada == urlFicherPortada) &&
             (identical(other.nombreFicheroCatalogo, nombreFicheroCatalogo) ||
-                other.nombreFicheroCatalogo == nombreFicheroCatalogo) &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite));
+                other.nombreFicheroCatalogo == nombreFicheroCatalogo));
   }
 
   @override
@@ -280,12 +281,12 @@ class _$_Catalogo extends _Catalogo {
       nombre,
       idiomaId,
       tipoPrecioCatalogoId,
+      tipoPrecioCatalogoNombre,
       tipoCatalogoId,
       tagBusqueda,
       orden,
-      nombreFicherPortada,
-      nombreFicheroCatalogo,
-      isFavorite);
+      urlFicherPortada,
+      nombreFicheroCatalogo);
 
   @JsonKey(ignore: true)
   @override
@@ -300,12 +301,12 @@ abstract class _Catalogo extends Catalogo {
       required final String nombre,
       required final String idiomaId,
       required final String tipoPrecioCatalogoId,
+      required final String tipoPrecioCatalogoNombre,
       required final String tipoCatalogoId,
       required final String tagBusqueda,
       required final int orden,
-      required final String nombreFicherPortada,
-      required final String nombreFicheroCatalogo,
-      required final bool isFavorite}) = _$_Catalogo;
+      required final String urlFicherPortada,
+      required final String nombreFicheroCatalogo}) = _$_Catalogo;
   const _Catalogo._() : super._();
 
   @override
@@ -317,17 +318,17 @@ abstract class _Catalogo extends Catalogo {
   @override
   String get tipoPrecioCatalogoId;
   @override
+  String get tipoPrecioCatalogoNombre;
+  @override
   String get tipoCatalogoId;
   @override
   String get tagBusqueda;
   @override
   int get orden;
   @override
-  String get nombreFicherPortada;
+  String get urlFicherPortada;
   @override
   String get nombreFicheroCatalogo;
-  @override
-  bool get isFavorite;
   @override
   @JsonKey(ignore: true)
   _$$_CatalogoCopyWith<_$_Catalogo> get copyWith =>
