@@ -18043,6 +18043,124 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   }
 }
 
+class CatalogoFavoritoTableCompanion
+    extends UpdateCompanion<CatalogoFavoritoDTO> {
+  final Value<int> id;
+  final Value<int> catalogoId;
+  const CatalogoFavoritoTableCompanion({
+    this.id = const Value.absent(),
+    this.catalogoId = const Value.absent(),
+  });
+  CatalogoFavoritoTableCompanion.insert({
+    this.id = const Value.absent(),
+    required int catalogoId,
+  }) : catalogoId = Value(catalogoId);
+  static Insertable<CatalogoFavoritoDTO> custom({
+    Expression<int>? id,
+    Expression<int>? catalogoId,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'ID': id,
+      if (catalogoId != null) 'CATALOGO_ID': catalogoId,
+    });
+  }
+
+  CatalogoFavoritoTableCompanion copyWith(
+      {Value<int>? id, Value<int>? catalogoId}) {
+    return CatalogoFavoritoTableCompanion(
+      id: id ?? this.id,
+      catalogoId: catalogoId ?? this.catalogoId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['ID'] = Variable<int>(id.value);
+    }
+    if (catalogoId.present) {
+      map['CATALOGO_ID'] = Variable<int>(catalogoId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CatalogoFavoritoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('catalogoId: $catalogoId')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
+    with TableInfo<$CatalogoFavoritoTableTable, CatalogoFavoritoDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CatalogoFavoritoTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'ID', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _catalogoIdMeta =
+      const VerificationMeta('catalogoId');
+  @override
+  late final GeneratedColumn<int> catalogoId = GeneratedColumn<int>(
+      'CATALOGO_ID', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, catalogoId];
+  @override
+  String get aliasedName => _alias ?? 'CATALOGO_FAVORITO';
+  @override
+  String get actualTableName => 'CATALOGO_FAVORITO';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<CatalogoFavoritoDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('ID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['ID']!, _idMeta));
+    }
+    if (data.containsKey('CATALOGO_ID')) {
+      context.handle(
+          _catalogoIdMeta,
+          catalogoId.isAcceptableOrUnknown(
+              data['CATALOGO_ID']!, _catalogoIdMeta));
+    } else if (isInserting) {
+      context.missing(_catalogoIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  CatalogoFavoritoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CatalogoFavoritoDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
+      catalogoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}CATALOGO_ID'])!,
+    );
+  }
+
+  @override
+  $CatalogoFavoritoTableTable createAlias(String alias) {
+    return $CatalogoFavoritoTableTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -18115,6 +18233,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $DescuentoGeneralTableTable descuentoGeneralTable =
       $DescuentoGeneralTableTable(this);
   late final $LogTableTable logTable = $LogTableTable(this);
+  late final $CatalogoFavoritoTableTable catalogoFavoritoTable =
+      $CatalogoFavoritoTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -18156,7 +18276,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         pedidoVentaLocalTable,
         pedidoAlbaranTable,
         descuentoGeneralTable,
-        logTable
+        logTable,
+        catalogoFavoritoTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -157,6 +157,7 @@
   "commonWidgets_appDrawer_kpi": "KPI",
   "commonWidgets_appDrawer_pedidos": "Commandes",
   "commonWidgets_appDrawer_visitas": "Visites",
+  "commonWidgets_appDrawer_catalogos": "Catalogues",
   "commonWidgets_emptyPlaceholder_irAIncio": "Retournet au commencement",
   "commonWidgets_sliderBackground_borrar": "Éffacer",
   "commonWidgets_ultimaSincronizacion": "Dernière syncronisation",
@@ -272,6 +273,12 @@
   "visitas_show_visitaDetalle_clienteProvisional": "Client provisoire",
   "articulo_todos": "Toute",
   "articulo": "Article",
-  "familia": "",
-  "subfamilia": "Sous-famille"
+  "familia": "Famille",
+  "subfamilia": "Sous-famille",
+  "catalogos_index_catalogoAdjunto_abriendoArchivo": "Ouverture du fichier…",
+  "catalogos_index_titulo": "Catalogues",
+  "catalogos_index_buscarCatalogo": "Chercher catalogues…",
+  "catalogos_index_tipoCatalogo": "Type de catalogue",
+  "catalogos_index_precio": "Prix",
+  "catalogos_index_idioma": "Langage"
 }

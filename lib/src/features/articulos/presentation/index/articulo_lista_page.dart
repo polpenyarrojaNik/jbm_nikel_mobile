@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:country_codes/country_codes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_service.dart';
@@ -9,7 +8,6 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_list_shimmer.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
-import 'package:new_version_plus/new_version_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/debouncer.dart';
@@ -36,33 +34,18 @@ class _ArticuloListaPageState extends ConsumerState<ArticuloListaPage> {
   @override
   void initState() {
     super.initState();
-    checkAppVersion();
-    ref
-        .read(syncNotifierProvider.notifier)
-        .syncAllInCompute(initAppProcess: false);
-  }
+    // final locale = CountryCodes.getDeviceLocale();
 
-  void checkAppVersion() async {
-    final locale = CountryCodes.getDeviceLocale();
+    // final newVersion = NewVersionPlus(
+    //   iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
+    //   androidId: 'es.nikel.jbm.jbm_nikel_mobile',
+    //   iOSAppStoreCountry: locale?.countryCode,
+    // );
 
-    final newVersion = NewVersionPlus(
-      iOSId: 'es.nikel.jbm.jbm-nikel-mobile',
-      androidId: 'es.nikel.jbm.jbm_nikel_mobile',
-      iOSAppStoreCountry: locale?.countryCode,
-    );
-
-    await basicStatusCheck(newVersion);
-  }
-
-  Future<void> basicStatusCheck(NewVersionPlus newVersion) async {
-    try {
-      await newVersion.getVersionStatus();
-      await newVersion.showAlertIfNecessary(
-        context: context,
-      );
-    } catch (e) {
-      print(e);
-    }
+    // final VersionStatus? versionStatus = await newVersion.getVersionStatus();
+    // if (versionStatus != null && versionStatus.canUpdate) {
+    //   newVersion.showUpdateDialog(context: context, versionStatus: versionStatus);
+    // }
   }
 
   @override

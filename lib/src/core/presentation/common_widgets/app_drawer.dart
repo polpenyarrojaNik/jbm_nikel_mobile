@@ -78,7 +78,8 @@ class AppDrawer extends StatelessWidget {
               size: 30,
             ),
             title: Text(S.of(context).commonWidgets_appDrawer_visitas),
-            onTap: () => context.router.pushAndPopUntil(VisitaListaRoute(),
+            onTap: () => context.router.pushAndPopUntil(
+                const VisitaListaRoute(),
                 predicate: (route) => false),
           ),
           // ListTile(
@@ -90,6 +91,16 @@ class AppDrawer extends StatelessWidget {
           //   title: Text(S.of(context).commonWidgets_appDrawer_kpi),
           // onTap: () => context.goNamed(AppRoutes.articuloindex.name),
           // ),
+          ListTile(
+            leading: const Icon(
+              Icons.list,
+              size: 30,
+            ),
+            title: Text(S.of(context).commonWidgets_appDrawer_catalogos),
+            onTap: () => context.router.pushAndPopUntil(
+                const CatalogoListaRoute(),
+                predicate: (route) => false),
+          ),
           ListTile(
             leading: const Icon(
               Icons.settings_outlined,

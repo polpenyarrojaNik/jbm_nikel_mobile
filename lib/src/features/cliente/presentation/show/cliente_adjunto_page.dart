@@ -128,7 +128,8 @@ class ClienteAdjuntoTile extends ConsumerWidget {
       required String nombreAdjunto,
       required WidgetRef ref}) {
     ref.read(clienteAdjuntoControllerProvider.notifier).getAttachmentFile(
-        adjuntoParam:
-            AdjuntoParam(id: clienteId, nombreArchivo: nombreAdjunto));
+          adjuntoParam:
+              AdjuntoParam(id: clienteId, nombreArchivo: nombreAdjunto),
+        );
   }
 }

@@ -1017,12 +1017,39 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   String getDescriptionInLocalLanguage({required Articulo articulo}) {
     final currentLocale = Intl.getCurrentLocale();
-
     if (currentLocale == 'es') {
-      return articulo.descripcionES;
     } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
       return articulo.descripcionEN!;
+    } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
+      return articulo.descripcionFR!;
+    } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
+      return articulo.descripcionIT!;
+    } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
+      return articulo.descripcionPT!;
     }
+    //else if (currentLocale == 'de' && descripcionDE != null) {
+    //   return descripcionDE!;
+    // } else if (currentLocale == 'ca' && descripcionCA != null) {
+    //   return descripcionCA!;
+    // } else if (currentLocale == 'gb' && descripcionGB != null) {
+    //   return descripcionGB!;
+    // } else if (currentLocale == 'hu' && descripcionHU != null) {
+    //   return descripcionHU!;
+    // }
+    //else if (currentLocale == 'nl' && descripcionNL != null) {
+    //   return descripcionNL!;
+    // } else if (currentLocale == 'pl' && descripcionPL != null) {
+    //   return descripcionPL!;
+    // }
+    //else if (currentLocale == 'ro' && descripcionRO != null) {
+    //   return descripcionRO!;
+    // } else if (currentLocale == 'ru' && descripcionRU != null) {
+    //   return descripcionRU!;
+    // } else if (currentLocale == 'cn' && descripcionCN != null) {
+    //   return descripcionCN!;
+    // } else if (currentLocale == 'el' && descripcionEL != null) {
+    //   return descripcionEL!;
+    // }
 
     return articulo.descripcionES;
   }

@@ -159,6 +159,7 @@
   "commonWidgets_appDrawer_kpi": "KPI",
   "commonWidgets_appDrawer_pedidos": "Encomendas",
   "commonWidgets_appDrawer_visitas": "Visitas",
+  "commonWidgets_appDrawer_catalogos": "Catálogos",
   "commonWidgets_emptyPlaceholder_irAIncio": "Ir ao início",
   "commonWidgets_sliderBackground_borrar": "Apagar",
   "commonWidgets_ultimaSincronizacion": "última sincronização",
@@ -273,5 +274,11 @@
   "visitas_show_visitaDetalle_nombre": "Nome",
   "visitas_show_visitaDetalle_poblacion": "Cidade",
   "visitas_show_visitaDetalle_resumen": "Resume",
-  "visitas_show_visitaDetalle_telefono": "Telefone"
+  "visitas_show_visitaDetalle_telefono": "Telefone",
+  "catalogos_index_titulo": "Catálogos",
+  "catalogos_index_buscarCatalogo": "Buscar catálogos...",
+  "catalogos_index_catalogoAdjunto_abriendoArchivo": "Abrindo arquivo...",
+  "catalogos_index_tipoCatalogo": "Tipo de catálogo",
+  "catalogos_index_precio": "Preço",
+  "catalogos_index_idioma": "Língua"
 }

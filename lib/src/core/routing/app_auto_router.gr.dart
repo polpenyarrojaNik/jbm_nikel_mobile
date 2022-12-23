@@ -408,6 +408,12 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    CatalogoListaRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const CatalogoListaPage(),
+      );
+    },
     SettingsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -575,6 +581,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           VisitaEditRoute.name,
           path: '/visita/edit',
+        ),
+        RouteConfig(
+          CatalogoListaRoute.name,
+          path: '/catalogo',
         ),
         RouteConfig(
           SettingsRoute.name,
@@ -1916,6 +1926,18 @@ class VisitaEditRouteArgs {
   String toString() {
     return 'VisitaEditRouteArgs{key: $key, id: $id, isNew: $isNew, createVisitaFromClienteId: $createVisitaFromClienteId}';
   }
+}
+
+/// generated route for
+/// [CatalogoListaPage]
+class CatalogoListaRoute extends PageRouteInfo<void> {
+  const CatalogoListaRoute()
+      : super(
+          CatalogoListaRoute.name,
+          path: '/catalogo',
+        );
+
+  static const String name = 'CatalogoListaRoute';
 }
 
 /// generated route for
