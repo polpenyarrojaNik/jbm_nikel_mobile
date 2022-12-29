@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_favorito_controller.dart';
 
-import '../../../../generated/l10n.dart';
 import '../../../core/domain/adjunto_param.dart';
 import '../domain/catalogo.dart';
 import 'catalogo_adjunto_controller.dart';
@@ -73,10 +72,12 @@ class CatalogoListTile extends ConsumerWidget {
                     fit: BoxFit.contain,
                     'assets/image-placeholder.png',
                   ),
-                  errorWidget: (context, error, _) => Center(
-                    child: Text(S
-                        .of(context)
-                        .articulo_show_articuloDetalle_noDisponible),
+                  errorWidget: (context, error, _) =>
+                      //
+                      Image.asset(
+                    width: 600,
+                    fit: BoxFit.contain,
+                    'assets/image-placeholder.png',
                   ),
                   width: 600,
                   fit: BoxFit.contain,

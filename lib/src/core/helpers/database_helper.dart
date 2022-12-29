@@ -15,7 +15,8 @@ Future<void> deleteLocalDatabase() async {
     final Directory directory = await getApplicationDocumentsDirectory();
     if (await _databaseFileExist(
         directory: directory, localDatabaseName: localDatabaseName)) {
-      File((join(directory.path, localDatabaseName))).deleteSync();
+      File((join(directory.path, localDatabaseName)))
+          .deleteSync(recursive: true);
     }
   } on AppException catch (e) {
     log.e(e.details);
