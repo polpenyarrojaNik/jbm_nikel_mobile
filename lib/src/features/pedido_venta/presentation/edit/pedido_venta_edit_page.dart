@@ -777,64 +777,66 @@ class _StepObservacionesContentState
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: FormBuilder(
-        autovalidateMode: AutovalidateMode.disabled,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FormBuilderSwitch(
-              name: 'oferta',
-              title: Text(S.of(context).pedido_edit_pedidoEdit_oferta),
-              initialValue: widget.oferta,
-              enabled: !widget.isClientePotencial,
-              onChanged: (value) => ref
-                  .read(pedidoVentaEditPageControllerProvider(
-                          widget.pedidoVentaIdLocalParam)
-                      .notifier)
-                  .setOfertaSN(value),
-            ),
-            FormBuilderTextField(
-              name: 'ofertaFechaHasta',
-              keyboardType: TextInputType.datetime,
-              decoration: const InputDecoration(
-                labelText: 'Fecha validez oferta',
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: FormBuilder(
+          autovalidateMode: AutovalidateMode.disabled,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FormBuilderSwitch(
+                name: 'oferta',
+                title: Text(S.of(context).pedido_edit_pedidoEdit_oferta),
+                initialValue: widget.oferta,
+                enabled: !widget.isClientePotencial,
+                onChanged: (value) => ref
+                    .read(pedidoVentaEditPageControllerProvider(
+                            widget.pedidoVentaIdLocalParam)
+                        .notifier)
+                    .setOfertaSN(value),
               ),
-              readOnly: true,
-              enabled: widget.oferta,
-              controller: ofertaFechaHastaController,
-              onTap: () => selectDate(context, ref, widget.ofertaFechaHasta),
-            ),
-            FormBuilderTextField(
-              name: 'pedidoCliente',
-              keyboardType: TextInputType.multiline,
-              initialValue: widget.pedidoCliente,
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_pedidoEdit_pedidoCliente,
+              FormBuilderTextField(
+                name: 'ofertaFechaHasta',
+                keyboardType: TextInputType.datetime,
+                decoration: const InputDecoration(
+                  labelText: 'Fecha validez oferta',
+                ),
+                readOnly: true,
+                enabled: widget.oferta,
+                controller: ofertaFechaHastaController,
+                onTap: () => selectDate(context, ref, widget.ofertaFechaHasta),
               ),
-              onChanged: (value) => ref
-                  .read(pedidoVentaEditPageControllerProvider(
-                          widget.pedidoVentaIdLocalParam)
-                      .notifier)
-                  .setPedidoCliente(value),
-            ),
-            FormBuilderTextField(
-              name: 'observaciones',
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              minLines: 3,
-              initialValue: widget.observaciones,
-              decoration: InputDecoration(
-                labelText: S.of(context).pedido_edit_pedidoEdit_observaciones,
+              FormBuilderTextField(
+                name: 'pedidoCliente',
+                keyboardType: TextInputType.multiline,
+                initialValue: widget.pedidoCliente,
+                decoration: InputDecoration(
+                  labelText: S.of(context).pedido_edit_pedidoEdit_pedidoCliente,
+                ),
+                onChanged: (value) => ref
+                    .read(pedidoVentaEditPageControllerProvider(
+                            widget.pedidoVentaIdLocalParam)
+                        .notifier)
+                    .setPedidoCliente(value),
               ),
-              onChanged: (value) => ref
-                  .read(pedidoVentaEditPageControllerProvider(
-                          widget.pedidoVentaIdLocalParam)
-                      .notifier)
-                  .setObservaciones(value),
-            ),
-          ],
+              FormBuilderTextField(
+                name: 'observaciones',
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                minLines: 3,
+                initialValue: widget.observaciones,
+                decoration: InputDecoration(
+                  labelText: S.of(context).pedido_edit_pedidoEdit_observaciones,
+                ),
+                onChanged: (value) => ref
+                    .read(pedidoVentaEditPageControllerProvider(
+                            widget.pedidoVentaIdLocalParam)
+                        .notifier)
+                    .setObservaciones(value),
+              ),
+            ],
+          ),
         ),
       ),
     );
