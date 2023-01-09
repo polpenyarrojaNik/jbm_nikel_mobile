@@ -10,12 +10,18 @@ const int databaseRelease = 18;
 
 Future<void> deleteLocalDatabase() async {
   const localDatabaseName = 'jbm.sqlite';
+  const localDatabaseJournalName = 'jbm.sqlite-journal';
 
   try {
     final Directory directory = await getApplicationDocumentsDirectory();
     if (await _databaseFileExist(
         directory: directory, localDatabaseName: localDatabaseName)) {
       File((join(directory.path, localDatabaseName)))
+          .deleteSync(recursive: true);
+    }
+    if (await _databaseFileExist(
+        directory: directory, localDatabaseName: localDatabaseJournalName)) {
+      File((join(directory.path, localDatabaseJournalName)))
           .deleteSync(recursive: true);
     }
   } on AppException catch (e) {

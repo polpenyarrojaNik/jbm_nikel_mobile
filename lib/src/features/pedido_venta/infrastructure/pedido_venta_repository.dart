@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
+import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -11,6 +13,8 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:money2/money2.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/articulo_precio.dart';
@@ -843,6 +847,8 @@ class PedidoVentaRepository {
 
   Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO,
       List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList) async {
+    throw AppException.insertDataFailure(e.toString());
+
     try {
       return await _db.transaction(() async {
         await _db
@@ -863,6 +869,38 @@ class PedidoVentaRepository {
       {required PedidoVentaLocalDTO pedidoVentaLocalDTO}) async {
     try {
       await _db.update(_db.pedidoVentaLocalTable).replace(pedidoVentaLocalDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<File> createPedidoVentaLineasCSV(
+      {required String pedidoVentaAppId,
+      required List<PedidoVentaLinea> pedidoVentaLineaList}) async {
+    try {
+      final getTempDirectory = await getTemporaryDirectory();
+      final fileName = '$pedidoVentaAppId.csv';
+
+      if (!await _csvFileExists(
+          directory: getTempDirectory, fileName: fileName)) {
+        final List<List<dynamic>> rows = [];
+        _addNombreDeLosCampos(rows);
+        for (var i = 0; i < pedidoVentaLineaList.length; i++) {
+          final row = _addValoresDeLosCampos(pedidoVentaLineaList[i]);
+
+          rows.add(row);
+        }
+        final res = const ListToCsvConverter(fieldDelimiter: ';').convert(rows);
+        print(res);
+
+        final csvFile = await File(join(getTempDirectory.path, fileName))
+            .create(recursive: true);
+        await csvFile.writeAsString(res);
+
+        return csvFile;
+      } else {
+        return File(join(getTempDirectory.path, fileName));
+      }
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -1713,5 +1751,43 @@ class PedidoVentaRepository {
       importeIve,
       importeBaseImponible.currency,
     );
+  }
+
+  void _addNombreDeLosCampos(List rows) {
+    final row = [];
+    row.add('PEDIDO_ID');
+    row.add('PEDIDO_LINEA_ID');
+    row.add('ARTICULO_ID');
+    row.add('ARTICULO_DESCRIPCION');
+    row.add('CANTIDAD');
+    row.add('PRECIO_DIVISA');
+    row.add('TIPO_PRECIO');
+    row.add('DESCUENTO1');
+    row.add('DESCUENTO2');
+    row.add('DESCUENTO3');
+    row.add('TOTAL_LINEA');
+    rows.add(row);
+  }
+
+  List<dynamic> _addValoresDeLosCampos(PedidoVentaLinea pedidoVentaLinea) {
+    final row = [];
+
+    row.add(pedidoVentaLinea.pedidoVentaAppId);
+    row.add(pedidoVentaLinea.pedidoVentaLineaAppId);
+    row.add(pedidoVentaLinea.articuloId);
+    row.add(pedidoVentaLinea.articuloDescription);
+    row.add(pedidoVentaLinea.cantidad);
+    row.add(pedidoVentaLinea.precioDivisa.amount.toDecimal().toDouble());
+    row.add(pedidoVentaLinea.tipoPrecio);
+    row.add(pedidoVentaLinea.descuento1);
+    row.add(pedidoVentaLinea.descuento2);
+    row.add(pedidoVentaLinea.descuento3);
+    row.add(pedidoVentaLinea.importeLinea?.amount.toDecimal().toDouble() ?? '');
+    return row;
+  }
+
+  Future<bool> _csvFileExists(
+      {required Directory directory, required String fileName}) async {
+    return (await File((join(directory.path, fileName))).exists());
   }
 }

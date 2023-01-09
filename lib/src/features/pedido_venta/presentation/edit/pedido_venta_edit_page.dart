@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:better_open_file/better_open_file.dart';
 import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -33,6 +36,7 @@ import '../../domain/seleccionar_cantidad_param.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
 import '../index/pedido_search_controller.dart';
 import 'ask_pop_alert_dialog.dart';
+import 'crear_csv_controller.dart';
 import 'icon_stepper.dart';
 
 class PedidoVentaEditPage extends ConsumerStatefulWidget {
@@ -97,6 +101,15 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       },
     );
 
+    ref.listen<CrearCsvControllerState>(
+        crearCsvControllerProvider,
+        (_, state) => state.maybeWhen(
+              orElse: () => null,
+              loading: () =>
+                  showToast('Creating csv file to send mail...', context),
+              data: (csvFile) => openFile(csvFile),
+            ));
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -104,6 +117,16 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
               ? S.of(context).pedido_edit_pedidoEdit_nuevoPedido
               : S.of(context).pedido_edit_pedidoEdit_editarPedido,
         ),
+        actions: state.maybeWhen(
+            orElse: () => null,
+            savedError: (_, __, pedidoVentaLineasList, ____, _____, ______,
+                    _________, __________, error, _______) =>
+                [
+                  IconButton(
+                      icon: const Icon(Icons.share),
+                      onPressed: () =>
+                          createCsvFile(widget.id, pedidoVentaLineasList)),
+                ]),
       ),
       body: SafeArea(
         child: state.maybeWhen(
@@ -158,6 +181,24 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         ),
       ),
     );
+  }
+
+  void createCsvFile(String pedidoVentaAppId,
+      List<PedidoVentaLinea> pedidoVentaLineaList) async {
+    ref.read(crearCsvControllerProvider.notifier).crearCsvController(
+        pedidoVentaAppId: pedidoVentaAppId,
+        pedidoVentaLineaList: pedidoVentaLineaList);
+  }
+
+  void openFile(File csvFile) async {
+    try {
+      final res = await OpenFile.open(csvFile.path)
+          .catchError((error, _) => throw error);
+
+      print(res.message);
+    } catch (e) {
+      print(e);
+    }
   }
 }
 
