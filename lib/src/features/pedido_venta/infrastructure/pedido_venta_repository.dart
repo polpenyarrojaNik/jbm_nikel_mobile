@@ -847,8 +847,6 @@ class PedidoVentaRepository {
 
   Future<void> insertPedidoInDB(PedidoVentaLocalDTO pedidoVentaLocalDTO,
       List<PedidoVentaLineaLocalDTO> pedidoVentaLineaLocalDTOList) async {
-    throw AppException.insertDataFailure(e.toString());
-
     try {
       return await _db.transaction(() async {
         await _db
