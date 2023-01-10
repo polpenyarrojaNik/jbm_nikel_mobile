@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -20,8 +21,8 @@ class ClientePedidosPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clientePedidosProvider(clienteId));
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clientePedidos_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).cliente_show_clientePedidos_titulo),
       ),
       body: Column(
         children: [

@@ -11,6 +11,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/show/ped
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
@@ -30,9 +31,9 @@ class PedidoVentaDetallePage extends ConsumerWidget {
     final state = ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            '${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoVentaIdIsLocalParam.isLocal) ? 'Provisional' : pedidoVentaIdIsLocalParam.id}'),
+      appBar: CommonAppBar(
+        titleText:
+            ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoVentaIdIsLocalParam.isLocal) ? 'Provisional' : pedidoVentaIdIsLocalParam.id}'),
         actions: state.maybeWhen(
             orElse: () => null,
             data: (pedidoVenta) => (pedidoVenta.isEditable())

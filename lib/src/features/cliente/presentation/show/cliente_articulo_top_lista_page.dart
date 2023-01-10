@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/infrastructure/articulo_top_repository.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -21,8 +22,8 @@ class ClienteArticulosTopListPage extends ConsumerWidget {
     final state = ref.watch(articuloTopProvider(clienteId));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clienteArticulosTop_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).cliente_show_clienteArticulosTop_titulo),
       ),
       body: Column(
         children: [

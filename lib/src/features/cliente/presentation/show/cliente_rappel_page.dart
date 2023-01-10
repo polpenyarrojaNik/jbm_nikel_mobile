@@ -6,6 +6,7 @@ import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/adjunto_param.dart';
 import '../../../../core/helpers/formatters.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -35,8 +36,8 @@ class ClienteRappelPage extends ConsumerWidget {
     });
     final state = ref.watch(clienteRappelProvider(clienteId));
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clienteRappel_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).cliente_show_clienteRappel_titulo),
       ),
       body: Column(
         children: [

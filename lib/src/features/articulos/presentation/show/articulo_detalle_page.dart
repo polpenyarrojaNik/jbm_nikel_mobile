@@ -12,6 +12,7 @@ import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -25,8 +26,8 @@ class ArticuloDetallePage extends StatelessWidget {
     final params = {'articuloId': articuloId};
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).articulo_show_articuloDetalle_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).articulo_show_articuloDetalle_titulo),
       ),
       body: Consumer(
         builder: (context, ref, _) {

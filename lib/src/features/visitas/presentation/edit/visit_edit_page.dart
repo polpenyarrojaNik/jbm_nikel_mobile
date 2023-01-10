@@ -14,6 +14,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../cliente/domain/cliente.dart';
@@ -107,12 +108,10 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
       );
     });
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          (widget.isNew)
-              ? S.of(context).visitas_edit_visitaEditar_titleNueva
-              : S.of(context).visitas_edit_visitaEditar_titleEditar,
-        ),
+      appBar: CommonAppBar(
+        titleText: ((widget.isNew)
+            ? S.of(context).visitas_edit_visitaEditar_titleNueva
+            : S.of(context).visitas_edit_visitaEditar_titleEditar),
         actions: [
           state.maybeWhen(
             saving: (_) => const ProgressIndicatorWidget(),

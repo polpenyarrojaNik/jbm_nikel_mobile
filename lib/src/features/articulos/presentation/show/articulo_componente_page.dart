@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/common_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_componente.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
@@ -21,8 +22,8 @@ class ArticuloComponentePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(articuloComponenteListProvider(articuloId));
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).articulo_show_articuloComponentes_titulo),
+      appBar: CommonAppBar(
+        titleText: S.of(context).articulo_show_articuloComponentes_titulo,
       ),
       body: Column(
         children: [

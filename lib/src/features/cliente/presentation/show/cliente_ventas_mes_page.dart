@@ -6,6 +6,7 @@ import 'package:money2/money2.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/bar_data.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/legend_widget.dart';
@@ -25,8 +26,8 @@ class ClienteVentasMesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteVentasMesProvider(clienteId));
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clienteVentasMes_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).cliente_show_clienteVentasMes_titulo),
       ),
       body: Column(
         children: [

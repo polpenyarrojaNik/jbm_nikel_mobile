@@ -12,6 +12,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../infrastructure/cliente_repository.dart';
@@ -25,8 +26,8 @@ class ClienteDetallePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final params = {'clienteId': clienteId};
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clienteDetalle_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
         actions: [
           IconButton(
             onPressed: () => navigateToCreatePedido(context, clienteId),

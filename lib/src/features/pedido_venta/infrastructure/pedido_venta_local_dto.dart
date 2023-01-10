@@ -93,7 +93,7 @@ class PedidoVentaLocalDTO
       empresaId: cliente.empresaId,
       fechaAlta: DateTime.now().toUtc(),
       clienteId: cliente.id,
-      nombreCliente: cliente.nombreCliente,
+      nombreCliente: clienteDireccion?.nombre ?? cliente.nombreCliente,
       direccionId: clienteDireccion?.direccionId,
       direccion1: clienteDireccion?.direccion1 ?? cliente.direccionFiscal1,
       direccion2: clienteDireccion?.direccion2 ?? cliente.direccionFiscal2,

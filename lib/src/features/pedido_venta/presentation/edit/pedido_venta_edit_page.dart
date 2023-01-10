@@ -20,7 +20,9 @@ import 'package:uuid/uuid.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/domain/entity_id_is_local_param.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/presentation/common_widgets/address_text_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/slider_background.dart';
@@ -111,12 +113,10 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
             ));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          (widget.isNew)
-              ? S.of(context).pedido_edit_pedidoEdit_nuevoPedido
-              : S.of(context).pedido_edit_pedidoEdit_editarPedido,
-        ),
+      appBar: CommonAppBar(
+        titleText: ((widget.isNew)
+            ? S.of(context).pedido_edit_pedidoEdit_nuevoPedido
+            : S.of(context).pedido_edit_pedidoEdit_editarPedido),
         actions: state.maybeWhen(
             orElse: () => null,
             savedError: (_, __, pedidoVentaLineasList, ____, _____, ______,
@@ -949,8 +949,9 @@ class StepResumenContent extends ConsumerWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ClienteListaTile(
+                  child: _ClienteResumenTile(
                     cliente: cliente!,
+                    clienteDireccion: clienteDireccion,
                   ),
                 ),
               ),
@@ -1011,6 +1012,44 @@ class StepResumenContent extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ClienteResumenTile extends StatelessWidget {
+  const _ClienteResumenTile(
+      {required this.cliente, required this.clienteDireccion});
+
+  final Cliente cliente;
+  final ClienteDireccion? clienteDireccion;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      padding: listPadding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  '#${(clienteDireccion != null) ? clienteDireccion!.clienteId : cliente.id} ${(clienteDireccion != null) ? clienteDireccion?.nombre : cliente.nombreCliente}',
+                  style: Theme.of(context).textTheme.subtitle2,
+                ),
+              ),
+            ],
+          ),
+          AddressTextWidget(
+            codigoPostal: cliente.codigoPostalFiscal,
+            poblacion: cliente.poblacionFiscal,
+            provincia: cliente.provinciaFiscal,
+            pais: cliente.paisFiscal,
+          )
+        ],
+      ),
     );
   }
 }

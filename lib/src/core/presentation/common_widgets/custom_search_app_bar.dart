@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 
-class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
+class CustomSearchAppBar extends ConsumerStatefulWidget
+    with PreferredSizeWidget {
   const CustomSearchAppBar(
       {super.key,
       required this.title,
@@ -17,13 +21,13 @@ class CustomSearchAppBar extends StatefulWidget with PreferredSizeWidget {
   final List<IconButton>? actionButtons;
 
   @override
-  State<CustomSearchAppBar> createState() => _CustomSearchAppBarState();
+  ConsumerState<CustomSearchAppBar> createState() => _CustomSearchAppBarState();
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
+class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
   bool isSearching = false;
   final Icon icon = const Icon(Icons.search);
   final Icon searchIcon = const Icon(Icons.close);
@@ -48,6 +52,7 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(packageInfoProvider);
     return AppBar(
       title: (isSearching)
           ? SearchListTile(
@@ -55,7 +60,30 @@ class _CustomSearchAppBarState extends State<CustomSearchAppBar> {
               onChanged: widget.onChanged,
               focusNode: focusNode,
             )
-          : Text(widget.title),
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(widget.title),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    state.maybeWhen(
+                      orElse: () => Container(),
+                      data: (packageInfo) => Text(
+                        packageInfo.version,
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    ),
+                    gapW8,
+                    Text(
+                      ref.watch(usuarioNotifierProvider)!.id,
+                      style: Theme.of(context).textTheme.caption,
+                    )
+                  ],
+                )
+              ],
+            ),
       actions: getListActionButtons(widget.actionButtons),
     );
   }

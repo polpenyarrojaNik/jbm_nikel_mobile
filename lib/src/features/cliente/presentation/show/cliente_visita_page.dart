@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -22,8 +23,8 @@ class ClienteVisitasPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteVisitasProvider(clienteId));
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).cliente_show_clienteVisitas_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).cliente_show_clienteVisitas_titulo),
       ),
       body: Column(
         children: [

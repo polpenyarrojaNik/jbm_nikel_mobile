@@ -7,6 +7,7 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_fie
 import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/chip_container.dart';
+import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/visita.dart';
@@ -22,8 +23,8 @@ class VisitaDetallePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(visitaProvider(visitaIdIsLocalParam));
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).visita_show_visitaDetalle_titulo),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).visita_show_visitaDetalle_titulo),
         actions: state.maybeWhen(
             orElse: () => null,
             data: (visita) => (visita.isEditable())

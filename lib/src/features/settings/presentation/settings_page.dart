@@ -10,6 +10,7 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/database_helper.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
+import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 
@@ -24,10 +25,8 @@ class SettingsPage extends ConsumerWidget {
 
     return Scaffold(
       drawer: const AppDrawer(),
-      appBar: AppBar(
-        title: Text(
-          S.of(context).settings_titulo,
-        ),
+      appBar: CommonAppBar(
+        titleText: (S.of(context).settings_titulo),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
