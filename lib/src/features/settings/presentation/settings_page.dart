@@ -127,7 +127,7 @@ class _EnviarBaseDeDatosLocalButton extends StatelessWidget {
           const Icon(Icons.email),
           const SizedBox(width: 5),
           Text(
-            'Enviar base de datos pr email',
+            S.of(context).settings_enviarBaseDeDatos,
           )
         ],
       ),

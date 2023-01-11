@@ -483,10 +483,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantidade pendente"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Fechar Sessão"),
+        "settings_enviarBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage("Enviar banco de dados"),
         "settings_nombre_usuario":
             MessageLookupByLibrary.simpleMessage("Nome de usuário"),
         "settings_reemplazarBaseDeDatos":
-            MessageLookupByLibrary.simpleMessage("substituir banco de dados"),
+            MessageLookupByLibrary.simpleMessage("Substituir banco de dados"),
         "settings_sincronicacionRealizadaConExito":
             MessageLookupByLibrary.simpleMessage(
                 "Sincronização realizada com sucesso"),
