@@ -91,6 +91,12 @@ final getStockDisponibleProvider =
   return pedidoVentaRepository.getStockActual(articuloId: articuloId);
 });
 
+final getPedidoVentaBorradorPendienteId =
+    FutureProvider.autoDispose<String?>((ref) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.getBorradorPendieteId();
+});
+
 class PedidoVentaRepository {
   static const pageSize = 100;
 
@@ -328,7 +334,7 @@ class PedidoVentaRepository {
     final List<PedidoVenta> pedidoVentaList = [];
     final query = _localDb.select(_localDb.pedidoVentaLocalTable);
 
-    query.where((tbl) => tbl.tratada.equals('N'));
+    query.where((tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -479,6 +485,49 @@ class PedidoVentaRepository {
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
+  }
+
+  Future<String?> getBorradorPendieteId() async {
+    try {
+      final pedidoVentaBorrador =
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)
+                ..where((tbl) => tbl.borrador.equals('S')))
+              .getSingleOrNull();
+
+      return pedidoVentaBorrador?.pedidoVentaAppId;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<PedidoVenta> getPedidoVentaBorrador() async {
+    final pedidoVentaBorradorDTO =
+        await (_localDb.select(_localDb.pedidoVentaLocalTable)
+              ..where((tbl) => tbl.borrador.equals('S')))
+            .getSingle();
+
+    final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
+          ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.divisaId!)))
+        .getSingle();
+    final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+          ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.paisId!)))
+        .getSingle();
+
+    final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
+        pedidoVentaAppId: pedidoVentaBorradorDTO.pedidoVentaAppId);
+
+    final importeBaseImponible =
+        getBaseImponible(pedidoVentaLineas, divisaDTO.id);
+    final importeIva =
+        getImporteIva(importeBaseImponible, pedidoVentaBorradorDTO.iva);
+
+    return pedidoVentaBorradorDTO.toDomain(
+      pais: paisDTO.toDomain(),
+      divisa: divisaDTO.toDomain(),
+      baseImponible: importeBaseImponible,
+      importeIva: importeIva,
+      total: importeBaseImponible + importeIva,
+    );
   }
 
   Future<PedidoVenta> getSyncPedidoVentaById(

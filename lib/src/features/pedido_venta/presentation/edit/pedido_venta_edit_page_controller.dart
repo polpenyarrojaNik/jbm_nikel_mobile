@@ -31,7 +31,7 @@ class PedidoVentaEditPageControllerState
       {StackTrace? stackTrace}) = _error;
   const factory PedidoVentaEditPageControllerState.deleted() = _deleted;
   const factory PedidoVentaEditPageControllerState.saved(
-      String pedidoVentaAppId) = _saved;
+      String pedidoVentaAppId, bool isBorrador) = _saved;
 
   const factory PedidoVentaEditPageControllerState.savedError(
       Cliente? cliente,
@@ -81,49 +81,32 @@ class PedidoVentaEditPageController
 
   Future<void> getPedidoVenta() async {
     state = const PedidoVentaEditPageControllerState.loading();
-
-    if (pedidoVentaIdIsLocalParam.isNew) {
-      if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
-        _cliente = await clienteRepository.getClienteById(
-            clienteId: pedidoVentaIdIsLocalParam.createPedidoFromClienteId!);
-      }
-      state = PedidoVentaEditPageControllerState.data(
-        _cliente,
-        _clienteDireccion,
-        pedidoVentaLineaList,
-        _currentStep,
-        _observaciones,
-        _pedidoCliente,
-        _oferta,
-        _ofertaFechaHasta,
-      );
-    } else {
-      try {
-        final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
-          pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
-        );
-
+    try {
+      if (await pedidoVentaRepository.getBorradorPendieteId() != null) {
+        final pedidoVentaBorrador =
+            await pedidoVentaRepository.getPedidoVentaBorrador();
         pedidoVentaLineaList =
             await pedidoVentaRepository.getPedidoVentaLineaListById(
                 pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 
         _cliente = await clienteRepository.getClienteById(
-            clienteId: pedidoVenta.clienteId!);
+            clienteId: pedidoVentaBorrador.clienteId!);
 
         _clienteDireccion =
             await clienteRepository.getClienteDireccionByDireccionId(
-                clienteId: pedidoVenta.clienteId!,
-                direccionId: pedidoVenta.direccionId);
+                clienteId: pedidoVentaBorrador.clienteId!,
+                direccionId: pedidoVentaBorrador.direccionId);
 
         _currentStep = 1;
 
-        _observaciones = pedidoVenta.observaciones;
+        _observaciones = pedidoVentaBorrador.observaciones;
 
-        _pedidoCliente = pedidoVenta.pedidoCliente;
+        _pedidoCliente = pedidoVentaBorrador.pedidoCliente;
 
-        _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
+        _oferta =
+            pedidoVentaBorrador.oferta ?? _cliente?.clientePotencial ?? false;
 
-        _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
+        _ofertaFechaHasta = pedidoVentaBorrador.ofertaFechaHasta;
 
         state = PedidoVentaEditPageControllerState.data(
           _cliente,
@@ -135,10 +118,64 @@ class PedidoVentaEditPageController
           _oferta,
           _ofertaFechaHasta,
         );
-      } catch (err, stack) {
-        state =
-            PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
+      } else {
+        if (pedidoVentaIdIsLocalParam.isNew) {
+          if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
+            _cliente = await clienteRepository.getClienteById(
+                clienteId:
+                    pedidoVentaIdIsLocalParam.createPedidoFromClienteId!);
+          }
+          state = PedidoVentaEditPageControllerState.data(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+          );
+        } else {
+          final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
+            pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+          );
+
+          pedidoVentaLineaList =
+              await pedidoVentaRepository.getPedidoVentaLineaListById(
+                  pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+
+          _cliente = await clienteRepository.getClienteById(
+              clienteId: pedidoVenta.clienteId!);
+
+          _clienteDireccion =
+              await clienteRepository.getClienteDireccionByDireccionId(
+                  clienteId: pedidoVenta.clienteId!,
+                  direccionId: pedidoVenta.direccionId);
+
+          _currentStep = 1;
+
+          _observaciones = pedidoVenta.observaciones;
+
+          _pedidoCliente = pedidoVenta.pedidoCliente;
+
+          _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
+
+          _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
+
+          state = PedidoVentaEditPageControllerState.data(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+          );
+        }
       }
+    } catch (err, stack) {
+      state = PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
     }
   }
 
@@ -151,6 +188,7 @@ class PedidoVentaEditPageController
     String? pedidoCliente,
     required bool oferta,
     DateTime? ofertaFechaHasta,
+    required bool isBorrador,
   }) async {
     state = const PedidoVentaEditPageControllerState.loading();
 
@@ -164,9 +202,10 @@ class PedidoVentaEditPageController
         observaciones: observaciones,
         oferta: oferta,
         ofertaFechaHasta: ofertaFechaHasta,
-        isBorrador: false,
+        isBorrador: isBorrador,
       );
-      state = PedidoVentaEditPageControllerState.saved(pedidoVentaAppId);
+      state = PedidoVentaEditPageControllerState.saved(
+          pedidoVentaAppId, isBorrador);
     } catch (err, stack) {
       state = PedidoVentaEditPageControllerState.savedError(
         _cliente,

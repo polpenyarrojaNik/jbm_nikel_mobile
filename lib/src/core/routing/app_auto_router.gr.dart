@@ -233,7 +233,6 @@ class _$AppRouter extends RootStackRouter {
         child: PedidoVentaEditPage(
           key: args.key,
           id: args.id,
-          isNew: args.isNew,
           createPedidoFromClienteId: args.createPedidoFromClienteId,
         ),
         fullscreenDialog: true,
@@ -1301,7 +1300,6 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
   PedidoVentaEditRoute({
     Key? key,
     String? id,
-    bool? isNew,
     String? createPedidoFromClienteId,
   }) : super(
           PedidoVentaEditRoute.name,
@@ -1309,7 +1307,6 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
           args: PedidoVentaEditRouteArgs(
             key: key,
             id: id,
-            isNew: isNew,
             createPedidoFromClienteId: createPedidoFromClienteId,
           ),
         );
@@ -1321,7 +1318,6 @@ class PedidoVentaEditRouteArgs {
   const PedidoVentaEditRouteArgs({
     this.key,
     this.id,
-    this.isNew,
     this.createPedidoFromClienteId,
   });
 
@@ -1329,13 +1325,11 @@ class PedidoVentaEditRouteArgs {
 
   final String? id;
 
-  final bool? isNew;
-
   final String? createPedidoFromClienteId;
 
   @override
   String toString() {
-    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, isNew: $isNew, createPedidoFromClienteId: $createPedidoFromClienteId}';
+    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, createPedidoFromClienteId: $createPedidoFromClienteId}';
   }
 }
 

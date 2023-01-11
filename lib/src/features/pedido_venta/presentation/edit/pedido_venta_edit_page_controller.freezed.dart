@@ -31,7 +31,7 @@ mixin _$PedidoVentaEditPageControllerState {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -61,7 +61,7 @@ mixin _$PedidoVentaEditPageControllerState {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -91,7 +91,7 @@ mixin _$PedidoVentaEditPageControllerState {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -211,7 +211,7 @@ class _$_loading extends _loading {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -244,7 +244,7 @@ class _$_loading extends _loading {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -277,7 +277,7 @@ class _$_loading extends _loading {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -545,7 +545,7 @@ class _$_data extends _data {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -579,7 +579,7 @@ class _$_data extends _data {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -613,7 +613,7 @@ class _$_data extends _data {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -785,7 +785,7 @@ class _$_error extends _error {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -818,7 +818,7 @@ class _$_error extends _error {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -851,7 +851,7 @@ class _$_error extends _error {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -978,7 +978,7 @@ class _$_deleted extends _deleted {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1011,7 +1011,7 @@ class _$_deleted extends _deleted {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1044,7 +1044,7 @@ class _$_deleted extends _deleted {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1119,7 +1119,7 @@ abstract class _$$_savedCopyWith<$Res> {
   factory _$$_savedCopyWith(_$_saved value, $Res Function(_$_saved) then) =
       __$$_savedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String pedidoVentaAppId});
+  $Res call({String pedidoVentaAppId, bool isBorrador});
 }
 
 /// @nodoc
@@ -1133,12 +1133,17 @@ class __$$_savedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pedidoVentaAppId = null,
+    Object? isBorrador = null,
   }) {
     return _then(_$_saved(
       null == pedidoVentaAppId
           ? _value.pedidoVentaAppId
           : pedidoVentaAppId // ignore: cast_nullable_to_non_nullable
               as String,
+      null == isBorrador
+          ? _value.isBorrador
+          : isBorrador // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1146,14 +1151,16 @@ class __$$_savedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_saved extends _saved {
-  const _$_saved(this.pedidoVentaAppId) : super._();
+  const _$_saved(this.pedidoVentaAppId, this.isBorrador) : super._();
 
   @override
   final String pedidoVentaAppId;
+  @override
+  final bool isBorrador;
 
   @override
   String toString() {
-    return 'PedidoVentaEditPageControllerState.saved(pedidoVentaAppId: $pedidoVentaAppId)';
+    return 'PedidoVentaEditPageControllerState.saved(pedidoVentaAppId: $pedidoVentaAppId, isBorrador: $isBorrador)';
   }
 
   @override
@@ -1162,11 +1169,13 @@ class _$_saved extends _saved {
         (other.runtimeType == runtimeType &&
             other is _$_saved &&
             (identical(other.pedidoVentaAppId, pedidoVentaAppId) ||
-                other.pedidoVentaAppId == pedidoVentaAppId));
+                other.pedidoVentaAppId == pedidoVentaAppId) &&
+            (identical(other.isBorrador, isBorrador) ||
+                other.isBorrador == isBorrador));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, pedidoVentaAppId);
+  int get hashCode => Object.hash(runtimeType, pedidoVentaAppId, isBorrador);
 
   @JsonKey(ignore: true)
   @override
@@ -1190,7 +1199,7 @@ class _$_saved extends _saved {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1204,7 +1213,7 @@ class _$_saved extends _saved {
             StackTrace? stackTrace)
         savedError,
   }) {
-    return saved(pedidoVentaAppId);
+    return saved(pedidoVentaAppId, isBorrador);
   }
 
   @override
@@ -1223,7 +1232,7 @@ class _$_saved extends _saved {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1237,7 +1246,7 @@ class _$_saved extends _saved {
             StackTrace? stackTrace)?
         savedError,
   }) {
-    return saved?.call(pedidoVentaAppId);
+    return saved?.call(pedidoVentaAppId, isBorrador);
   }
 
   @override
@@ -1256,7 +1265,7 @@ class _$_saved extends _saved {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1272,7 +1281,7 @@ class _$_saved extends _saved {
     required TResult orElse(),
   }) {
     if (saved != null) {
-      return saved(pedidoVentaAppId);
+      return saved(pedidoVentaAppId, isBorrador);
     }
     return orElse();
   }
@@ -1322,10 +1331,12 @@ class _$_saved extends _saved {
 }
 
 abstract class _saved extends PedidoVentaEditPageControllerState {
-  const factory _saved(final String pedidoVentaAppId) = _$_saved;
+  const factory _saved(final String pedidoVentaAppId, final bool isBorrador) =
+      _$_saved;
   const _saved._() : super._();
 
   String get pedidoVentaAppId;
+  bool get isBorrador;
   @JsonKey(ignore: true)
   _$$_savedCopyWith<_$_saved> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1551,7 +1562,7 @@ class _$_savedError extends _savedError {
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
-    required TResult Function(String pedidoVentaAppId) saved,
+    required TResult Function(String pedidoVentaAppId, bool isBorrador) saved,
     required TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1594,7 +1605,7 @@ class _$_savedError extends _savedError {
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
-    TResult? Function(String pedidoVentaAppId)? saved,
+    TResult? Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult? Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,
@@ -1637,7 +1648,7 @@ class _$_savedError extends _savedError {
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
-    TResult Function(String pedidoVentaAppId)? saved,
+    TResult Function(String pedidoVentaAppId, bool isBorrador)? saved,
     TResult Function(
             Cliente? cliente,
             ClienteDireccion? clienteDireccion,

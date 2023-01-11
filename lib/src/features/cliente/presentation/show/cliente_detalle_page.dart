@@ -61,7 +61,7 @@ class ClienteDetallePage extends StatelessWidget {
 
   void navigateToCreatePedido(BuildContext context, String clienteId) {
     context.router.push(
-      PedidoVentaEditRoute(isNew: true, createPedidoFromClienteId: clienteId),
+      PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
     );
   }
 
