@@ -223,6 +223,7 @@
   "settings_cerrar_sesion": "Se déconnecter",
   "settings_nombre_usuario": "Nom identifiant",
   "settings_reemplazarBaseDeDatos": "Remplacer la base des données",
+  "settings_enviarBaseDeDatos": "Envoyer la base de données",
   "settings_sincronicacionRealizadaConExito": "Synchronisation effectuée avec succès",
   "settings_sincronizarDatos": "Synchroniser les données",
   "settings_titulo": "Paramètres",

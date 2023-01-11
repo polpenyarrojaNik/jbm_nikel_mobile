@@ -480,6 +480,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantità in sospeso"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Chiudere la sessione"),
+        "settings_enviarBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage("Invia banca dati"),
         "settings_nombre_usuario":
             MessageLookupByLibrary.simpleMessage("Nome utente"),
         "settings_reemplazarBaseDeDatos":

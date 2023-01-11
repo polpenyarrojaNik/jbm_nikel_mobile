@@ -227,6 +227,7 @@
   "settings_nombre_usuario": "Nome utente",
   "settings_reemplazarBaseDeDatos": "Sostituire il database",
   "settings_sincronicacionRealizadaConExito": "Sincronizzazione eseguita correttamente",
+  "settings_enviarBaseDeDatos": "Invia banca dati",
   "settings_sincronizarDatos": "Sincronizzare i dati",
   "settings_titulo": "Impostazioni",
   "settings_user": "Utente",

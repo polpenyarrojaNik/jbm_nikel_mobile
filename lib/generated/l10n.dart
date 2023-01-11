@@ -2484,6 +2484,16 @@ class S {
     );
   }
 
+  /// `Send database`
+  String get settings_enviarBaseDeDatos {
+    return Intl.message(
+      'Send database',
+      name: 'settings_enviarBaseDeDatos',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sync data`
   String get settings_sincronizarDatos {
     return Intl.message(

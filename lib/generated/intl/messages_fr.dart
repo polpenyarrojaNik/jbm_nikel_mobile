@@ -480,6 +480,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quantités en attente"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Se déconnecter"),
+        "settings_enviarBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage("Envoyer la base de données"),
         "settings_nombre_usuario":
             MessageLookupByLibrary.simpleMessage("Nom identifiant"),
         "settings_reemplazarBaseDeDatos": MessageLookupByLibrary.simpleMessage(

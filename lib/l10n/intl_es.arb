@@ -239,6 +239,7 @@
   "settings_nombre_usuario": "Nombre usuario",
   "settings_version": "Versión",
   "settings_sincronicacionRealizadaConExito": "Sincronización relaizado con éxito",
+  "settings_enviarBaseDeDatos": "Enviar base de datos",
   "settings_titulo": "Ajustes",
   "settings_sincronizarDatos": "Sincronizar datos",
   "settings_reemplazarBaseDeDatos": "Reemplazar base de datos",
