@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 
 part 'estadisticas_articulos_top_dto.freezed.dart';
 part 'estadisticas_articulos_top_dto.g.dart';

@@ -50,6 +50,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                         ref.read(deletePedidoVentaProvider(
                             pedidoVentaIdIsLocalParam.id));
                         ref.invalidate(
+                            pedidoVentaIndexScreenPaginatedControllerProvider);
+                        ref.invalidate(
                             pedidoVentaIndexScreenControllerProvider);
                         context.router.pop();
                       },

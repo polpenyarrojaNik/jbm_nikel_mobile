@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
@@ -99,7 +99,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
   }
 
   void deleteDatabase(WidgetRef ref) async {
-    ref.invalidate(appDatabaseProvider);
+    ref.invalidate(appRemoteDatabaseProvider);
     await deleteLocalDatabase();
     await ref.read(usuarioNotifierProvider.notifier).signOut();
   }

@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
@@ -12,16 +12,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/local_database.dart' as local;
 import '../../../core/presentation/app.dart';
 import '../../usuario/domain/usuario.dart';
 import '../domain/visita.dart';
 
 final visitaRepositoryProvider = Provider.autoDispose<VisitaRepository>(
   (ref) {
-    final db = ref.watch(appDatabaseProvider);
+    final remoteDb = ref.watch(appRemoteDatabaseProvider);
+    final localDb = ref.watch(local.appLocalDatabaseProvider);
+
     final dio = ref.watch(dioProvider);
     final user = ref.watch(usuarioNotifierProvider);
-    return VisitaRepository(db, dio, user);
+    return VisitaRepository(remoteDb, localDb, dio, user);
   },
 );
 
@@ -40,11 +43,13 @@ final visitaProvider = FutureProvider.autoDispose
 
 class VisitaRepository {
   static const pageSize = 100;
-  final AppDatabase _db;
+  final RemoteAppDatabase _remoteDb;
+  final local.LocalAppDatabase _localDb;
+
   final Dio _dio;
   final Usuario? _usuario;
 
-  VisitaRepository(this._db, this._dio, this._usuario);
+  VisitaRepository(this._remoteDb, this._localDb, this._dio, this._usuario);
 
   Future<List<Visita>> getVisitaList({
     required int page,
@@ -126,7 +131,7 @@ class VisitaRepository {
   }
 
   Future<void> deleteVisita(String visitaAppId) async {
-    (_db.delete(_db.visitaLocalTable))
+    (_localDb.delete(_localDb.visitaLocalTable))
         .where((tbl) => tbl.visitaAppId.equals(visitaAppId));
   }
 
@@ -161,11 +166,11 @@ class VisitaRepository {
   Future<void> updateWithError(
       VisitaLocalDTO visitaLocalDto, String errorMessage) async {
     try {
-      (_db.update(_db.visitaLocalTable)
+      (_localDb.update(_localDb.visitaLocalTable)
             ..where(
                 (tbl) => tbl.visitaAppId.equals(visitaLocalDto.visitaAppId!)))
-          .write(
-              VisitaLocalTableCompanion(errorSyncMessage: Value(errorMessage)));
+          .write(local.VisitaLocalTableCompanion(
+              errorSyncMessage: Value(errorMessage)));
     } catch (e) {
       rethrow;
     }
@@ -173,8 +178,8 @@ class VisitaRepository {
 
   Future<void> insertVisitaInDb(VisitaLocalDTO visitaLocalDto) async {
     try {
-      await _db
-          .into(_db.visitaLocalTable)
+      await _localDb
+          .into(_localDb.visitaLocalTable)
           .insertOnConflictUpdate(visitaLocalDto);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
@@ -234,7 +239,7 @@ class VisitaRepository {
   Future<void> updateVisitaInDB(
       {required VisitaLocalDTO visitaLocalDto}) async {
     try {
-      await _db.update(_db.visitaLocalTable).replace(visitaLocalDto);
+      await _localDb.update(_localDb.visitaLocalTable).replace(visitaLocalDto);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -245,72 +250,80 @@ class VisitaRepository {
       required String usuarioId,
       String? clienteId}) async {
     try {
-      final query = _db.select(_db.visitaLocalTable).join([
-        leftOuterJoin(
-          _db.clienteUsuarioTable,
-          _db.clienteUsuarioTable.clienteId
-              .equalsExp(_db.visitaLocalTable.clienteId),
-        ),
-        leftOuterJoin(
-          _db.clienteTable,
-          _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
-        ),
-      ]);
-      query.where(_db.visitaLocalTable.tratada.equals('N') &
-          (_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-              (_db.visitaLocalTable.numEmpl.equals(usuarioId) &
-                  _db.visitaLocalTable.clienteId.isNull())));
+      final List<Visita> visitaLocalList = [];
+      final query = _localDb.select(_localDb.visitaLocalTable);
+
+      query.where((tbl) => tbl.tratada.equals('N'));
 
       if (searchText != '') {
         final busqueda = searchText.split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
           if (predicate == null) {
-            predicate = (_db.visitaLocalTable.resumen.like('%$searchText%') |
-                _db.visitaLocalTable.clienteId.like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalNombre
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalEmail
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalTelefono
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalPoblacion
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.contacto.like('%$searchText%'));
+            predicate =
+                (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteProvisionalNombre
+                        .like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteProvisionalEmail
+                        .like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteProvisionalTelefono
+                        .like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteProvisionalPoblacion
+                        .like('%$searchText%') |
+                    _localDb.visitaLocalTable.contacto.like('%$searchText%'));
           } else {
             predicate = predicate &
-                (_db.visitaLocalTable.resumen.like('%$searchText%') |
-                    _db.visitaLocalTable.clienteId.like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalNombre
+                (_localDb.visitaLocalTable.resumen.like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteId.like('%$searchText%') |
+                    _localDb.visitaLocalTable.clienteProvisionalNombre
                         .like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalEmail
+                    _localDb.visitaLocalTable.clienteProvisionalEmail
                         .like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalTelefono
+                    _localDb.visitaLocalTable.clienteProvisionalTelefono
                         .like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalPoblacion
+                    _localDb.visitaLocalTable.clienteProvisionalPoblacion
                         .like('%$searchText%') |
-                    _db.visitaLocalTable.contacto.like('%$searchText%'));
+                    _localDb.visitaLocalTable.contacto.like('%$searchText%'));
           }
         }
-        query.where(predicate!);
+        query.where((tbl) => predicate!);
       }
 
       if (clienteId != null) {
-        query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
+        query.where((tbl) => tbl.clienteId.equals(clienteId));
       }
 
-      query.groupBy([_db.visitaLocalTable.visitaAppId]);
       query.orderBy([
-        OrderingTerm.asc(_db.visitaLocalTable.enviada),
-        OrderingTerm.desc(_db.visitaLocalTable.fecha),
+        (tbl) => OrderingTerm.asc(tbl.enviada),
+        (tbl) => OrderingTerm.desc(tbl.fecha),
       ]);
 
-      return query.map((row) {
-        final clienteDTO = row.readTableOrNull(_db.clienteTable);
-        final visitaLocalDTO = row.readTable(_db.visitaLocalTable);
-        return visitaLocalDTO.toDomain(
-            nombreCliente: clienteDTO?.nombreCliente);
-      }).get();
+      final visitaLocalDTOList = await query.get();
+
+      for (var i = 0; i < visitaLocalDTOList.length; i++) {
+        final visitaLocalDTO = visitaLocalDTOList[i];
+        final clienteUsuarioDTO =
+            await (_remoteDb.select(_remoteDb.clienteUsuarioTable)
+                  ..where((tbl) =>
+                      tbl.clienteId.equalsNullable(visitaLocalDTO.clienteId) &
+                      tbl.usuarioId.equals(usuarioId)))
+                .getSingleOrNull();
+
+        if (clienteUsuarioDTO != null ||
+            (visitaLocalDTO.numEmpl == usuarioId &&
+                visitaLocalDTO.clienteId == null)) {
+          final clienteDTO = await (_remoteDb.select(_remoteDb.clienteTable)
+                ..where(
+                    (tbl) => tbl.id.equalsNullable(visitaLocalDTO.clienteId)))
+              .getSingleOrNull();
+
+          visitaLocalList.add(visitaLocalDTO.toDomain(
+              nombreCliente: clienteDTO?.nombreCliente));
+        }
+      }
+
+      return visitaLocalList;
     } catch (e) {
       rethrow;
     }
@@ -321,66 +334,78 @@ class VisitaRepository {
       required String usuarioId,
       String? clienteId}) async {
     try {
-      final countExp = _db.visitaLocalTable.visitaAppId.count();
+      //TODO Count visita correctamente.
 
-      final query = _db.selectOnly(_db.visitaLocalTable).join([
-        leftOuterJoin(
-          _db.clienteTable,
-          _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
-        ),
-        leftOuterJoin(
-          _db.clienteUsuarioTable,
-          _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
-        )
-      ]);
+      // final countExp = _localDb.visitaLocalTable.visitaAppId.count();
 
-      query.where(_db.visitaLocalTable.tratada.equals('N') &
-          (_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-              (_db.visitaLocalTable.numEmpl.equals(usuarioId) &
-                  _db.visitaLocalTable.clienteId.isNull())));
+      // final query = _remoteDb.selectOnly(_remoteDb.visitaLocalTable).join([
+      //   leftOuterJoin(
+      //     _remoteDb.clienteTable,
+      //     _remoteDb.clienteTable.id
+      //         .equalsExp(_remoteDb.visitaLocalTable.clienteId),
+      //   ),
+      //   leftOuterJoin(
+      //     _remoteDb.clienteUsuarioTable,
+      //     _remoteDb.clienteUsuarioTable.clienteId
+      //         .equalsExp(_remoteDb.clienteTable.id),
+      //   )
+      // ]);
 
-      if (searchText != '') {
-        final busqueda = searchText.split(' ');
-        Expression<bool>? predicate;
-        for (var i = 0; i < busqueda.length; i++) {
-          if (predicate == null) {
-            predicate = (_db.visitaLocalTable.resumen.like('%$searchText%') |
-                _db.visitaLocalTable.clienteId.like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalNombre
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalEmail
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalTelefono
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.clienteProvisionalPoblacion
-                    .like('%$searchText%') |
-                _db.visitaLocalTable.contacto.like('%$searchText%'));
-          } else {
-            predicate = predicate &
-                (_db.visitaLocalTable.resumen.like('%$searchText%') |
-                    _db.visitaLocalTable.clienteId.like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalNombre
-                        .like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalEmail
-                        .like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalTelefono
-                        .like('%$searchText%') |
-                    _db.visitaLocalTable.clienteProvisionalPoblacion
-                        .like('%$searchText%') |
-                    _db.visitaLocalTable.contacto.like('%$searchText%'));
-          }
-        }
-        query.where(predicate!);
-      }
+      // query.where(_remoteDb.visitaLocalTable.tratada.equals('N') &
+      //     (_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+      //         (_remoteDb.visitaLocalTable.numEmpl.equals(usuarioId) &
+      //             _remoteDb.visitaLocalTable.clienteId.isNull())));
 
-      if (clienteId != null) {
-        query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
-      }
+      // if (searchText != '') {
+      //   final busqueda = searchText.split(' ');
+      //   Expression<bool>? predicate;
+      //   for (var i = 0; i < busqueda.length; i++) {
+      //     if (predicate == null) {
+      //       predicate =
+      //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
+      //     } else {
+      //       predicate = predicate &
+      //           (_remoteDb.visitaLocalTable.resumen.like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteId.like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalNombre
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalEmail
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalTelefono
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.clienteProvisionalPoblacion
+      //                   .like('%$searchText%') |
+      //               _remoteDb.visitaLocalTable.contacto.like('%$searchText%'));
+      //     }
+      //   }
+      //   query.where(predicate!);
+      // }
 
-      query.addColumns([countExp]);
+      // if (clienteId != null) {
+      //   query.where(_remoteDb.visitaLocalTable.clienteId.equals(clienteId));
+      // }
 
-      final count = await query.map((row) => row.read(countExp)).getSingle();
-      return count ?? 0;
+      // query.addColumns([countExp]);
+
+      // final count = await query.map((row) => row.read(countExp)).getSingle();
+      // return count ?? 0;
+
+      final visitaLocalList = await getVisitasLocal(
+        searchText: searchText,
+        usuarioId: usuarioId,
+        clienteId: clienteId,
+      );
+      return visitaLocalList.length;
     } catch (e) {
       rethrow;
     }
@@ -391,68 +416,72 @@ class VisitaRepository {
       required int page,
       required String searchText,
       String? clienteId}) async {
-    final query = _db.select(_db.visitaTable).join([
+    final query = _remoteDb.select(_remoteDb.visitaTable).join([
       leftOuterJoin(
-        _db.clienteTable,
-        _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
+        _remoteDb.clienteTable,
+        _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
       leftOuterJoin(
-        _db.clienteUsuarioTable,
-        _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
+        _remoteDb.clienteUsuarioTable,
+        _remoteDb.clienteUsuarioTable.clienteId
+            .equalsExp(_remoteDb.clienteTable.id),
       )
     ]);
 
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-        (_db.visitaTable.numEmpl.equals(usuarioId) &
-            _db.visitaTable.clienteId.isNull()));
+    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+        (_remoteDb.visitaTable.numEmpl.equals(usuarioId) &
+            _remoteDb.visitaTable.clienteId.isNull()));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
-          predicate = (_db.visitaTable.resumen.like('%$searchText%') |
-              _db.visitaTable.clienteId.like('%$searchText%') |
-              _db.clienteTable.nombreCliente.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalNombre.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalEmail.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalTelefono.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalPoblacion
+          predicate = (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+              _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+              _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+              _remoteDb.visitaTable.clienteProvisionalNombre
                   .like('%$searchText%') |
-              _db.visitaTable.contacto.like('%$searchText%'));
+              _remoteDb.visitaTable.clienteProvisionalEmail
+                  .like('%$searchText%') |
+              _remoteDb.visitaTable.clienteProvisionalTelefono
+                  .like('%$searchText%') |
+              _remoteDb.visitaTable.clienteProvisionalPoblacion
+                  .like('%$searchText%') |
+              _remoteDb.visitaTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
-              (_db.visitaTable.resumen.like('%$searchText%') |
-                  _db.visitaTable.clienteId.like('%$searchText%') |
-                  _db.clienteTable.nombreCliente.like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalNombre
+              (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteProvisionalNombre
                       .like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalEmail
+                  _remoteDb.visitaTable.clienteProvisionalEmail
                       .like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalTelefono
+                  _remoteDb.visitaTable.clienteProvisionalTelefono
                       .like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalPoblacion
+                  _remoteDb.visitaTable.clienteProvisionalPoblacion
                       .like('%$searchText%') |
-                  _db.visitaTable.contacto.like('%$searchText%'));
+                  _remoteDb.visitaTable.contacto.like('%$searchText%'));
         }
       }
       query.where(predicate!);
     }
 
     if (clienteId != null) {
-      query.where(_db.visitaTable.clienteId.equals(clienteId));
+      query.where(_remoteDb.visitaTable.clienteId.equals(clienteId));
     }
 
     query.limit(pageSize, offset: page * pageSize);
 
     query.orderBy([
-      OrderingTerm.desc(_db.visitaTable.fecha),
+      OrderingTerm.desc(_remoteDb.visitaTable.fecha),
     ]);
 
     return query.asyncMap((row) async {
-      final clienteDTO = row.readTableOrNull(_db.clienteTable);
+      final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
 
-      final visitaDTO = row.readTable(_db.visitaTable);
+      final visitaDTO = row.readTable(_remoteDb.visitaTable);
       return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
     }).get();
   }
@@ -461,56 +490,60 @@ class VisitaRepository {
       {required String usuarioId,
       required String searchText,
       String? clienteId}) async {
-    final countExp = _db.visitaTable.id.count();
+    final countExp = _remoteDb.visitaTable.id.count();
 
-    final query = _db.selectOnly(_db.visitaTable).join([
+    final query = _remoteDb.selectOnly(_remoteDb.visitaTable).join([
       leftOuterJoin(
-        _db.clienteTable,
-        _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
+        _remoteDb.clienteTable,
+        _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
       leftOuterJoin(
-        _db.clienteUsuarioTable,
-        _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id),
+        _remoteDb.clienteUsuarioTable,
+        _remoteDb.clienteUsuarioTable.clienteId
+            .equalsExp(_remoteDb.clienteTable.id),
       )
     ]);
 
-    query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId) |
-        (_db.visitaTable.numEmpl.equals(usuarioId) &
-            _db.visitaTable.clienteId.isNull()));
+    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) |
+        (_remoteDb.visitaTable.numEmpl.equals(usuarioId) &
+            _remoteDb.visitaTable.clienteId.isNull()));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
-          predicate = (_db.visitaTable.resumen.like('%$searchText%') |
-              _db.visitaTable.clienteId.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalNombre.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalEmail.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalTelefono.like('%$searchText%') |
-              _db.visitaTable.clienteProvisionalPoblacion
+          predicate = (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+              _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+              _remoteDb.visitaTable.clienteProvisionalNombre
                   .like('%$searchText%') |
-              _db.visitaTable.contacto.like('%$searchText%'));
+              _remoteDb.visitaTable.clienteProvisionalEmail
+                  .like('%$searchText%') |
+              _remoteDb.visitaTable.clienteProvisionalTelefono
+                  .like('%$searchText%') |
+              _remoteDb.visitaTable.clienteProvisionalPoblacion
+                  .like('%$searchText%') |
+              _remoteDb.visitaTable.contacto.like('%$searchText%'));
         } else {
           predicate = predicate &
-              (_db.visitaTable.resumen.like('%$searchText%') |
-                  _db.visitaTable.clienteId.like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalNombre
+              (_remoteDb.visitaTable.resumen.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                  _remoteDb.visitaTable.clienteProvisionalNombre
                       .like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalEmail
+                  _remoteDb.visitaTable.clienteProvisionalEmail
                       .like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalTelefono
+                  _remoteDb.visitaTable.clienteProvisionalTelefono
                       .like('%$searchText%') |
-                  _db.visitaTable.clienteProvisionalPoblacion
+                  _remoteDb.visitaTable.clienteProvisionalPoblacion
                       .like('%$searchText%') |
-                  _db.visitaTable.contacto.like('%$searchText%'));
+                  _remoteDb.visitaTable.contacto.like('%$searchText%'));
         }
       }
       query.where(predicate!);
     }
 
     if (clienteId != null) {
-      query.where(_db.visitaTable.clienteId.equals(clienteId));
+      query.where(_remoteDb.visitaTable.clienteId.equals(clienteId));
     }
 
     query.addColumns([countExp]);
@@ -520,37 +553,32 @@ class VisitaRepository {
   }
 
   Future<Visita> getVisita({required String visitaId}) async {
-    final query = _db.select(_db.visitaTable).join([
+    final query = _remoteDb.select(_remoteDb.visitaTable).join([
       leftOuterJoin(
-        _db.clienteTable,
-        _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId),
+        _remoteDb.clienteTable,
+        _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       )
     ]);
-    query.where(_db.visitaTable.id.equals(visitaId));
+    query.where(_remoteDb.visitaTable.id.equals(visitaId));
 
     return query.asyncMap((row) async {
-      final clienteDTO = row.readTableOrNull(_db.clienteTable);
+      final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
 
-      final visitaDTO = row.readTable(_db.visitaTable);
+      final visitaDTO = row.readTable(_remoteDb.visitaTable);
       return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
     }).getSingle();
   }
 
   Future<Visita> getVisitaLocal({required String visitaAppId}) async {
-    final query = _db.select(_db.visitaLocalTable).join([
-      leftOuterJoin(
-        _db.clienteTable,
-        _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId),
-      )
-    ]);
-    query.where(_db.visitaLocalTable.visitaAppId.equals(visitaAppId));
+    final visitaDTO = await (_localDb.select(_localDb.visitaLocalTable)
+          ..where((tbl) => tbl.visitaAppId.equals(visitaAppId)))
+        .getSingle();
 
-    return query.asyncMap((row) async {
-      final clienteDTO = row.readTableOrNull(_db.clienteTable);
+    final clienteDTO = await (_remoteDb.select(_remoteDb.clienteTable)
+          ..where((tbl) => tbl.id.equalsNullable(visitaDTO.clienteId)))
+        .getSingleOrNull();
 
-      final visitaDTO = row.readTable(_db.visitaLocalTable);
-      return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
-    }).getSingle();
+    return visitaDTO.toDomain(nombreCliente: clienteDTO?.nombreCliente);
   }
 
   Future<DateTime> getLastSyncDate() async {

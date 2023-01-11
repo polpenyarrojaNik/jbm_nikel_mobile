@@ -14,7 +14,7 @@ import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../helpers/database_helper.dart';
 import '../presentation/app.dart';
-import 'database.dart';
+import 'remote_database.dart';
 
 final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>(
   (ref) => InitDatabaseService(
@@ -27,21 +27,21 @@ class InitDatabaseService {
 
   static final remoteInitDatabaseEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v2/sync/init-db',
+    '/api/v3/sync/init-db',
   );
 
   static final remoteInitDatabaseTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v2/sync/init-db',
+    '/api/v3/sync/init-db',
   );
 
   static final remoteInitialDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v2/sync/init-db-date',
+    '/api/v3/sync/init-db-date',
   );
   static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v2/sync/init-db-date',
+    '/api/v3/sync/init-db-date',
   );
 
   InitDatabaseService(this.dio, this.usuario);
@@ -70,7 +70,7 @@ class InitDatabaseService {
   }
 
   Future<bool> _databaseFileExist({required Directory directory}) async {
-    return await File((join(directory.path, localDatabaseName))).exists();
+    return await File((join(directory.path, remoteDatabaseName))).exists();
   }
 
   Future<dynamic> _getRemoteInitialDatabase() async {

@@ -164,6 +164,7 @@ class PedidoVentaEditPageController
         observaciones: observaciones,
         oferta: oferta,
         ofertaFechaHasta: ofertaFechaHasta,
+        isBorrador: false,
       );
       state = PedidoVentaEditPageControllerState.saved(pedidoVentaAppId);
     } catch (err, stack) {

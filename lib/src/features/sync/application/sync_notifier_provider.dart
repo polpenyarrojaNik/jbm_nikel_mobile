@@ -3,11 +3,12 @@ import 'package:drift/isolate.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/isolate_args.dart';
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../app_initialization/domain/sync_progress.dart';
@@ -37,7 +38,8 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
             syncInBackground,
             IsolateArgs(
               user!,
-              isolateConnectPort!,
+              isolateRemoteDatabaseConnectPort!,
+              isolateLocalDatabaseConnectPort!,
             ));
 
         await updateSyncDates(syncProgress);
@@ -76,9 +78,11 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
 
 Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
   try {
-    final database = await createDatabaseConnection(isolateArgs);
+    final remoteDb = await createRemoteDatabaseConnection(isolateArgs);
+    final localDb = await createLocalDatabaseConnection(isolateArgs);
+
     final SyncService syncService =
-        SyncService(database, Dio(), isolateArgs.user);
+        SyncService(remoteDb, localDb, Dio(), isolateArgs.user);
 
     return await syncService.syncAllTable();
   } catch (e) {
@@ -86,12 +90,22 @@ Future<SyncProgress> syncInBackground(IsolateArgs isolateArgs) async {
   }
 }
 
-Future<AppDatabase> createDatabaseConnection(IsolateArgs isolateArgs) async {
-  final isolateSendPort = isolateArgs.isolateSendPort;
-  final isolate = DriftIsolate.fromConnectPort(isolateSendPort);
-  isolateSendPort.send(isolate.connectPort);
+Future<RemoteAppDatabase> createRemoteDatabaseConnection(
+    IsolateArgs isolateArgs) async {
+  final isolateRemoteSendPort = isolateArgs.isolateRemoteSendPort;
+  final isolate = DriftIsolate.fromConnectPort(isolateRemoteSendPort);
+  isolateRemoteSendPort.send(isolate.connectPort);
   final connection = await isolate.connect();
-  return AppDatabase.connect(connection);
+  return RemoteAppDatabase.connect(connection);
+}
+
+Future<LocalAppDatabase> createLocalDatabaseConnection(
+    IsolateArgs isolateArgs) async {
+  final isolateLocalSendPort = isolateArgs.isolateLocalSendPort;
+  final isolate = DriftIsolate.fromConnectPort(isolateLocalSendPort);
+  isolateLocalSendPort.send(isolate.connectPort);
+  final connection = await isolate.connect();
+  return LocalAppDatabase.connect(connection);
 }
 
 Future<bool> more30MinFromLastSync() async {

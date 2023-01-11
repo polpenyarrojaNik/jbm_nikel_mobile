@@ -1,9 +1,9 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:money2/money2.dart';
 
+import '../../../core/infrastructure/local_database.dart';
 import '../domain/pedido_venta_linea.dart';
 
 part 'pedido_venta_linea_local_dto.freezed.dart';

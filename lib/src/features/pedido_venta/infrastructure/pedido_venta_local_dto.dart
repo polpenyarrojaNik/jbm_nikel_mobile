@@ -1,12 +1,10 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
 import 'package:money2/money2.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
-import '../../../core/infrastructure/divisa_dto.dart';
-import '../../../core/infrastructure/pais_dto.dart';
+import '../../../core/infrastructure/local_database.dart';
 import '../../cliente/domain/cliente.dart';
 import '../../cliente/domain/cliente_direccion.dart';
 import '../domain/pedido_venta.dart';
@@ -43,6 +41,7 @@ class PedidoVentaLocalDTO
     @JsonKey(name: 'DTO_BONIFICACION') required double dtoBonificacion,
     @JsonKey(name: 'ENVIADA') required String enviada,
     @JsonKey(name: 'TRATADA') required String tratada,
+    @JsonKey(name: 'BORRADOR') required String borrador,
     @JsonKey(name: 'ERROR_SYNC') String? errorSyncMessage,
   }) = _PedidoVentaLocalDTO;
 
@@ -73,6 +72,7 @@ class PedidoVentaLocalDTO
       dtoBonificacion: _.dtoBonificacion!,
       enviada: (_.enviada) ? 'S' : 'N',
       tratada: (_.tratada) ? 'S' : 'N',
+      borrador: (_.borrador) ? 'S' : 'N',
       errorSyncMessage: _.errorSyncMessage,
     );
   }
@@ -86,6 +86,7 @@ class PedidoVentaLocalDTO
     String? observaciones,
     bool oferta,
     DateTime? ofertaFechaHasta,
+    bool isBorrador,
   ) {
     return PedidoVentaLocalDTO(
       usuarioId: usuarioId,
@@ -111,6 +112,7 @@ class PedidoVentaLocalDTO
       dtoBonificacion: 0,
       enviada: 'N',
       tratada: 'N',
+      borrador: isBorrador ? 'S' : 'N',
       errorSyncMessage: null,
     );
   }
@@ -155,6 +157,7 @@ class PedidoVentaLocalDTO
       deleted: false,
       enviada: (enviada == 'S') ? true : false,
       tratada: (tratada == 'S') ? true : false,
+      borrador: (borrador == 'S') ? true : false,
       errorSyncMessage: errorSyncMessage,
     );
   }
@@ -184,6 +187,7 @@ class PedidoVentaLocalDTO
       dtoBonificacion: Value(dtoBonificacion),
       enviada: Value(enviada),
       tratada: Value(tratada),
+      borrador: Value(borrador),
       errorSyncMessage: Value(errorSyncMessage),
     ).toColumns(nullToAbsent);
   }
@@ -204,10 +208,8 @@ class PedidoVentaLocalTable extends Table {
   TextColumn get codigoPostal => text().nullable().named('CODIGO_POSTAL')();
   TextColumn get poblacion => text().nullable().named('POBLACION')();
   TextColumn get provincia => text().nullable().named('PROVINCIA')();
-  TextColumn get paisId =>
-      text().nullable().references(PaisTable, #id).named('PAIS_ID')();
-  TextColumn get divisaId =>
-      text().nullable().references(DivisaTable, #id).named('DIVISA_ID')();
+  TextColumn get paisId => text().nullable().named('PAIS_ID')();
+  TextColumn get divisaId => text().nullable().named('DIVISA_ID')();
   TextColumn get pedidoCliente => text().nullable().named('PEDIDO_CLIENTE')();
   TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
   TextColumn get oferta => text().named('OFERTA_SN')();
@@ -219,6 +221,8 @@ class PedidoVentaLocalTable extends Table {
       text().withDefault(const Constant('N')).named('ENVIADA')();
   TextColumn get tratada =>
       text().withDefault(const Constant('N')).named('TRATADA')();
+  TextColumn get borrador =>
+      text().withDefault(const Constant('S')).named('BORRADOR')();
   TextColumn get errorSyncMessage => text().nullable().named('ERROR_SYNC')();
 
   @override

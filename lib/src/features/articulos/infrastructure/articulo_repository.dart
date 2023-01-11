@@ -6,7 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_precio_tarifa.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_recambio.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_documento_dto.dart';
@@ -39,7 +39,7 @@ import 'articulo_ventas_mes_dto.dart';
 
 final articuloRepositoryProvider = Provider.autoDispose<ArticuloRepository>(
   (ref) {
-    final db = ref.watch(appDatabaseProvider);
+    final db = ref.watch(appRemoteDatabaseProvider);
     final dio = ref.watch(dioProvider);
     return ArticuloRepository(db, dio);
   },
@@ -174,7 +174,7 @@ final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
 class ArticuloRepository {
   static const pageSize = 100;
 
-  final AppDatabase _db;
+  final RemoteAppDatabase _db;
   final Dio _dio;
 
   ArticuloRepository(this._db, this._dio);

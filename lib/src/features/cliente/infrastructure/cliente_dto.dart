@@ -5,7 +5,7 @@ import 'package:money2/money2.dart';
 
 import '../../../core/domain/divisa.dart';
 import '../../../core/domain/pais.dart';
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../../../core/infrastructure/divisa_dto.dart';
 import '../../../core/infrastructure/pais_dto.dart';
 import '../domain/cliente.dart';

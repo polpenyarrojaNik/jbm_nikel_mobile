@@ -50,6 +50,7 @@ mixin _$PedidoVenta {
   bool get deleted => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
   bool get tratada => throw _privateConstructorUsedError;
+  bool get borrador => throw _privateConstructorUsedError;
   String? get errorSyncMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -97,6 +98,7 @@ abstract class $PedidoVentaCopyWith<$Res> {
       bool deleted,
       bool enviada,
       bool tratada,
+      bool borrador,
       String? errorSyncMessage});
 
   $PaisCopyWith<$Res>? get pais;
@@ -150,6 +152,7 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
     Object? deleted = null,
     Object? enviada = null,
     Object? tratada = null,
+    Object? borrador = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_value.copyWith(
@@ -285,6 +288,10 @@ class _$PedidoVentaCopyWithImpl<$Res, $Val extends PedidoVenta>
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
+      borrador: null == borrador
+          ? _value.borrador
+          : borrador // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
@@ -367,6 +374,7 @@ abstract class _$$_PedidoVentaCopyWith<$Res>
       bool deleted,
       bool enviada,
       bool tratada,
+      bool borrador,
       String? errorSyncMessage});
 
   @override
@@ -421,6 +429,7 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
     Object? deleted = null,
     Object? enviada = null,
     Object? tratada = null,
+    Object? borrador = null,
     Object? errorSyncMessage = freezed,
   }) {
     return _then(_$_PedidoVenta(
@@ -556,6 +565,10 @@ class __$$_PedidoVentaCopyWithImpl<$Res>
           ? _value.tratada
           : tratada // ignore: cast_nullable_to_non_nullable
               as bool,
+      borrador: null == borrador
+          ? _value.borrador
+          : borrador // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorSyncMessage: freezed == errorSyncMessage
           ? _value.errorSyncMessage
           : errorSyncMessage // ignore: cast_nullable_to_non_nullable
@@ -601,6 +614,7 @@ class _$_PedidoVenta extends _PedidoVenta {
       required this.deleted,
       required this.enviada,
       required this.tratada,
+      required this.borrador,
       this.errorSyncMessage})
       : super._();
 
@@ -671,11 +685,13 @@ class _$_PedidoVenta extends _PedidoVenta {
   @override
   final bool tratada;
   @override
+  final bool borrador;
+  @override
   final String? errorSyncMessage;
 
   @override
   String toString() {
-    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, totalLineas: $totalLineas, baseImponible: $baseImponible, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, dtoBonificacion: $dtoBonificacion, pedidoAppId: $pedidoAppId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, errorSyncMessage: $errorSyncMessage)';
+    return 'PedidoVenta(empresaId: $empresaId, pedidoVentaId: $pedidoVentaId, pedidoVentaAppId: $pedidoVentaAppId, usuarioId: $usuarioId, pedidoVentaDate: $pedidoVentaDate, tipoVenta: $tipoVenta, clienteId: $clienteId, direccionId: $direccionId, nombreCliente: $nombreCliente, direccionEntrga1: $direccionEntrga1, direccionEntrga2: $direccionEntrga2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, divisa: $divisa, pedidoCliente: $pedidoCliente, observaciones: $observaciones, totalLineas: $totalLineas, baseImponible: $baseImponible, importePortes: $importePortes, importeIva: $importeIva, total: $total, pedidoVentaEstado: $pedidoVentaEstado, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, dtoBonificacion: $dtoBonificacion, pedidoAppId: $pedidoAppId, iva: $iva, lastUpdated: $lastUpdated, deleted: $deleted, enviada: $enviada, tratada: $tratada, borrador: $borrador, errorSyncMessage: $errorSyncMessage)';
   }
 
   @override
@@ -741,6 +757,8 @@ class _$_PedidoVenta extends _PedidoVenta {
             (identical(other.deleted, deleted) || other.deleted == deleted) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
             (identical(other.tratada, tratada) || other.tratada == tratada) &&
+            (identical(other.borrador, borrador) ||
+                other.borrador == borrador) &&
             (identical(other.errorSyncMessage, errorSyncMessage) ||
                 other.errorSyncMessage == errorSyncMessage));
   }
@@ -781,6 +799,7 @@ class _$_PedidoVenta extends _PedidoVenta {
         deleted,
         enviada,
         tratada,
+        borrador,
         errorSyncMessage
       ]);
 
@@ -826,6 +845,7 @@ abstract class _PedidoVenta extends PedidoVenta {
       required final bool deleted,
       required final bool enviada,
       required final bool tratada,
+      required final bool borrador,
       final String? errorSyncMessage}) = _$_PedidoVenta;
   const _PedidoVenta._() : super._();
 
@@ -895,6 +915,8 @@ abstract class _PedidoVenta extends PedidoVenta {
   bool get enviada;
   @override
   bool get tratada;
+  @override
+  bool get borrador;
   @override
   String? get errorSyncMessage;
   @override

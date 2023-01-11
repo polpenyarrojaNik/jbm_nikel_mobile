@@ -6,22 +6,22 @@ import 'package:path_provider/path_provider.dart';
 import '../application/log_service.dart';
 import '../exceptions/app_exception.dart';
 
-const int databaseRelease = 18;
+const int databaseRelease = 19;
 
 Future<void> deleteLocalDatabase() async {
-  const localDatabaseName = 'jbm.sqlite';
-  const localDatabaseJournalName = 'jbm.sqlite-journal';
+  const remoteDatabaseName = 'jbm.sqlite';
+  const remoteDatabaseJournalName = 'jbm.sqlite-journal';
 
   try {
     final Directory directory = await getApplicationDocumentsDirectory();
     if (await _databaseFileExist(
-        directory: directory, localDatabaseName: localDatabaseName)) {
-      File((join(directory.path, localDatabaseName)))
+        directory: directory, remoteDatabaseName: remoteDatabaseName)) {
+      File((join(directory.path, remoteDatabaseName)))
           .deleteSync(recursive: true);
     }
     if (await _databaseFileExist(
-        directory: directory, localDatabaseName: localDatabaseJournalName)) {
-      File((join(directory.path, localDatabaseJournalName)))
+        directory: directory, remoteDatabaseName: remoteDatabaseJournalName)) {
+      File((join(directory.path, remoteDatabaseJournalName)))
           .deleteSync(recursive: true);
     }
   } on AppException catch (e) {
@@ -33,6 +33,6 @@ Future<void> deleteLocalDatabase() async {
 }
 
 Future<bool> _databaseFileExist(
-    {required Directory directory, required String localDatabaseName}) async {
-  return await File((join(directory.path, localDatabaseName))).exists();
+    {required Directory directory, required String remoteDatabaseName}) async {
+  return await File((join(directory.path, remoteDatabaseName))).exists();
 }

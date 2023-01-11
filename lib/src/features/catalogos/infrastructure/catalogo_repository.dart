@@ -5,7 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_dto.dart';
@@ -26,7 +26,7 @@ import 'idioma_catalogo_dto.dart';
 
 final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>(
   (ref) {
-    final db = ref.watch(appDatabaseProvider);
+    final db = ref.watch(appRemoteDatabaseProvider);
     final dio = ref.watch(dioProvider);
     final usuario = ref.watch(usuarioNotifierProvider)!;
 
@@ -57,7 +57,7 @@ final idiomaCatalogoListProvider =
 
 class CatalogoRepository {
   final Dio _dio;
-  final AppDatabase _db;
+  final RemoteAppDatabase _db;
   final Usuario _usuario;
 
   CatalogoRepository(this._dio, this._db, this._usuario);
