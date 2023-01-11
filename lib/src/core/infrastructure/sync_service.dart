@@ -6,8 +6,6 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
 import '../../features/app_initialization/domain/sync_progress.dart';
@@ -117,7 +115,7 @@ class SyncService {
       await syncDescuentoGeneral();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
+        await saveLastSyncDateTimeInArticulos();
       }
     } catch (e) {
       rethrow;
@@ -140,7 +138,7 @@ class SyncService {
       await syncVentasUsuario();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
+        await saveLastSyncDateTimeInClientes();
       }
     } catch (e) {
       rethrow;
@@ -157,7 +155,7 @@ class SyncService {
       await syncPedidoVentaEstado();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
+        await saveLastSyncDateTimeInPedidos();
       }
     } catch (e) {
       rethrow;
@@ -170,7 +168,7 @@ class SyncService {
     await checkVisitasTratadas();
     if (isInMainThread) {
       await syncAllAuxiliares();
-      await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
+      await saveLastSyncDateTimeInVisitas();
     }
   }
 
@@ -1029,12 +1027,41 @@ class SyncService {
     }
   }
 
-  Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
+  Future<void> saveLastSyncDateTimeInArticulos() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              articuloUltimaSync: Value(DateTime.now().toUtc())));
+    } catch (e) {
+      rethrow;
+    }
+  }
 
-      await sharedPreferences.setString(
-          entityKey, DateTime.now().toUtc().toIso8601String());
+  Future<void> saveLastSyncDateTimeInClientes() async {
+    try {
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              clienteUltimaSync: Value(DateTime.now().toUtc())));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> saveLastSyncDateTimeInPedidos() async {
+    try {
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              pedidoUltimaSync: Value(DateTime.now().toUtc())));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> saveLastSyncDateTimeInVisitas() async {
+    try {
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              visitaUltimaSync: Value(DateTime.now().toUtc())));
     } catch (e) {
       rethrow;
     }

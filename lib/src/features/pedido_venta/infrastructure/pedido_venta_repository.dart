@@ -15,7 +15,6 @@ import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifi
 import 'package:money2/money2.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/articulo_precio.dart';
 import '../../../core/domain/entity_id_is_local_param.dart';
@@ -1798,10 +1797,9 @@ class PedidoVentaRepository {
 
   Future<DateTime> getLastSyncDate() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      final dateUTCString =
-          sharedPreferences.getString(pedidoVentaFechaUltimaSyncKey) as String;
-      return DateTime.parse(dateUTCString);
+      final lastSyncDTO =
+          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+      return lastSyncDTO.pedidoUltimaSync;
     } catch (e) {
       rethrow;
     }

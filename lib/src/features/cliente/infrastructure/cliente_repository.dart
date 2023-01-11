@@ -11,7 +11,6 @@ import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -1094,10 +1093,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<DateTime> getLastSyncDate() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      final dateUTCString =
-          sharedPreferences.getString(clienteFechaUltimaSyncKey) as String;
-      return DateTime.parse(dateUTCString);
+      final lastSyncDTO =
+          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+      return lastSyncDTO.clienteUltimaSync;
     } catch (e) {
       rethrow;
     }

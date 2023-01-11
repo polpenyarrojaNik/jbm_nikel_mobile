@@ -8,7 +8,6 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/dio_extension.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/visitas/infrastructure/visita_local_dto.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/entity_id_is_local_param.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -583,10 +582,9 @@ class VisitaRepository {
 
   Future<DateTime> getLastSyncDate() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      final dateUTCString =
-          sharedPreferences.getString(visitaFechaUltimaSyncKey) as String;
-      return DateTime.parse(dateUTCString);
+      final lastSyncDTO =
+          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+      return lastSyncDTO.visitaUltimaSync;
     } catch (e) {
       rethrow;
     }

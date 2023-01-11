@@ -1715,6 +1715,244 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   }
 }
 
+class SyncDateTimeTableCompanion extends UpdateCompanion<SyncDateTimeDTO> {
+  final Value<int> id;
+  final Value<int> dbSchemaVersion;
+  final Value<DateTime> articuloUltimaSync;
+  final Value<DateTime> clienteUltimaSync;
+  final Value<DateTime> pedidoUltimaSync;
+  final Value<DateTime> visitaUltimaSync;
+  const SyncDateTimeTableCompanion({
+    this.id = const Value.absent(),
+    this.dbSchemaVersion = const Value.absent(),
+    this.articuloUltimaSync = const Value.absent(),
+    this.clienteUltimaSync = const Value.absent(),
+    this.pedidoUltimaSync = const Value.absent(),
+    this.visitaUltimaSync = const Value.absent(),
+  });
+  SyncDateTimeTableCompanion.insert({
+    this.id = const Value.absent(),
+    required int dbSchemaVersion,
+    required DateTime articuloUltimaSync,
+    required DateTime clienteUltimaSync,
+    required DateTime pedidoUltimaSync,
+    required DateTime visitaUltimaSync,
+  })  : dbSchemaVersion = Value(dbSchemaVersion),
+        articuloUltimaSync = Value(articuloUltimaSync),
+        clienteUltimaSync = Value(clienteUltimaSync),
+        pedidoUltimaSync = Value(pedidoUltimaSync),
+        visitaUltimaSync = Value(visitaUltimaSync);
+  static Insertable<SyncDateTimeDTO> custom({
+    Expression<int>? id,
+    Expression<int>? dbSchemaVersion,
+    Expression<DateTime>? articuloUltimaSync,
+    Expression<DateTime>? clienteUltimaSync,
+    Expression<DateTime>? pedidoUltimaSync,
+    Expression<DateTime>? visitaUltimaSync,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'ID': id,
+      if (dbSchemaVersion != null) 'DB_SCHEMA_VERSION': dbSchemaVersion,
+      if (articuloUltimaSync != null)
+        'ARTICULO_ULTIMA_SYNC': articuloUltimaSync,
+      if (clienteUltimaSync != null) 'CLIENTE_ULTIMA_SYNC': clienteUltimaSync,
+      if (pedidoUltimaSync != null) 'PEDIDO_ULTIMA_SYNC': pedidoUltimaSync,
+      if (visitaUltimaSync != null) 'VISITA_ULTIMA_SYNC': visitaUltimaSync,
+    });
+  }
+
+  SyncDateTimeTableCompanion copyWith(
+      {Value<int>? id,
+      Value<int>? dbSchemaVersion,
+      Value<DateTime>? articuloUltimaSync,
+      Value<DateTime>? clienteUltimaSync,
+      Value<DateTime>? pedidoUltimaSync,
+      Value<DateTime>? visitaUltimaSync}) {
+    return SyncDateTimeTableCompanion(
+      id: id ?? this.id,
+      dbSchemaVersion: dbSchemaVersion ?? this.dbSchemaVersion,
+      articuloUltimaSync: articuloUltimaSync ?? this.articuloUltimaSync,
+      clienteUltimaSync: clienteUltimaSync ?? this.clienteUltimaSync,
+      pedidoUltimaSync: pedidoUltimaSync ?? this.pedidoUltimaSync,
+      visitaUltimaSync: visitaUltimaSync ?? this.visitaUltimaSync,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['ID'] = Variable<int>(id.value);
+    }
+    if (dbSchemaVersion.present) {
+      map['DB_SCHEMA_VERSION'] = Variable<int>(dbSchemaVersion.value);
+    }
+    if (articuloUltimaSync.present) {
+      map['ARTICULO_ULTIMA_SYNC'] =
+          Variable<DateTime>(articuloUltimaSync.value);
+    }
+    if (clienteUltimaSync.present) {
+      map['CLIENTE_ULTIMA_SYNC'] = Variable<DateTime>(clienteUltimaSync.value);
+    }
+    if (pedidoUltimaSync.present) {
+      map['PEDIDO_ULTIMA_SYNC'] = Variable<DateTime>(pedidoUltimaSync.value);
+    }
+    if (visitaUltimaSync.present) {
+      map['VISITA_ULTIMA_SYNC'] = Variable<DateTime>(visitaUltimaSync.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SyncDateTimeTableCompanion(')
+          ..write('id: $id, ')
+          ..write('dbSchemaVersion: $dbSchemaVersion, ')
+          ..write('articuloUltimaSync: $articuloUltimaSync, ')
+          ..write('clienteUltimaSync: $clienteUltimaSync, ')
+          ..write('pedidoUltimaSync: $pedidoUltimaSync, ')
+          ..write('visitaUltimaSync: $visitaUltimaSync')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SyncDateTimeTableTable extends SyncDateTimeTable
+    with TableInfo<$SyncDateTimeTableTable, SyncDateTimeDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SyncDateTimeTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'ID', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultValue: const Constant(1));
+  static const VerificationMeta _dbSchemaVersionMeta =
+      const VerificationMeta('dbSchemaVersion');
+  @override
+  late final GeneratedColumn<int> dbSchemaVersion = GeneratedColumn<int>(
+      'DB_SCHEMA_VERSION', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _articuloUltimaSyncMeta =
+      const VerificationMeta('articuloUltimaSync');
+  @override
+  late final GeneratedColumn<DateTime> articuloUltimaSync =
+      GeneratedColumn<DateTime>('ARTICULO_ULTIMA_SYNC', aliasedName, false,
+          type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _clienteUltimaSyncMeta =
+      const VerificationMeta('clienteUltimaSync');
+  @override
+  late final GeneratedColumn<DateTime> clienteUltimaSync =
+      GeneratedColumn<DateTime>('CLIENTE_ULTIMA_SYNC', aliasedName, false,
+          type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _pedidoUltimaSyncMeta =
+      const VerificationMeta('pedidoUltimaSync');
+  @override
+  late final GeneratedColumn<DateTime> pedidoUltimaSync =
+      GeneratedColumn<DateTime>('PEDIDO_ULTIMA_SYNC', aliasedName, false,
+          type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _visitaUltimaSyncMeta =
+      const VerificationMeta('visitaUltimaSync');
+  @override
+  late final GeneratedColumn<DateTime> visitaUltimaSync =
+      GeneratedColumn<DateTime>('VISITA_ULTIMA_SYNC', aliasedName, false,
+          type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        dbSchemaVersion,
+        articuloUltimaSync,
+        clienteUltimaSync,
+        pedidoUltimaSync,
+        visitaUltimaSync
+      ];
+  @override
+  String get aliasedName => _alias ?? 'SYNC_DATETIME';
+  @override
+  String get actualTableName => 'SYNC_DATETIME';
+  @override
+  VerificationContext validateIntegrity(Insertable<SyncDateTimeDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('ID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['ID']!, _idMeta));
+    }
+    if (data.containsKey('DB_SCHEMA_VERSION')) {
+      context.handle(
+          _dbSchemaVersionMeta,
+          dbSchemaVersion.isAcceptableOrUnknown(
+              data['DB_SCHEMA_VERSION']!, _dbSchemaVersionMeta));
+    } else if (isInserting) {
+      context.missing(_dbSchemaVersionMeta);
+    }
+    if (data.containsKey('ARTICULO_ULTIMA_SYNC')) {
+      context.handle(
+          _articuloUltimaSyncMeta,
+          articuloUltimaSync.isAcceptableOrUnknown(
+              data['ARTICULO_ULTIMA_SYNC']!, _articuloUltimaSyncMeta));
+    } else if (isInserting) {
+      context.missing(_articuloUltimaSyncMeta);
+    }
+    if (data.containsKey('CLIENTE_ULTIMA_SYNC')) {
+      context.handle(
+          _clienteUltimaSyncMeta,
+          clienteUltimaSync.isAcceptableOrUnknown(
+              data['CLIENTE_ULTIMA_SYNC']!, _clienteUltimaSyncMeta));
+    } else if (isInserting) {
+      context.missing(_clienteUltimaSyncMeta);
+    }
+    if (data.containsKey('PEDIDO_ULTIMA_SYNC')) {
+      context.handle(
+          _pedidoUltimaSyncMeta,
+          pedidoUltimaSync.isAcceptableOrUnknown(
+              data['PEDIDO_ULTIMA_SYNC']!, _pedidoUltimaSyncMeta));
+    } else if (isInserting) {
+      context.missing(_pedidoUltimaSyncMeta);
+    }
+    if (data.containsKey('VISITA_ULTIMA_SYNC')) {
+      context.handle(
+          _visitaUltimaSyncMeta,
+          visitaUltimaSync.isAcceptableOrUnknown(
+              data['VISITA_ULTIMA_SYNC']!, _visitaUltimaSyncMeta));
+    } else if (isInserting) {
+      context.missing(_visitaUltimaSyncMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SyncDateTimeDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SyncDateTimeDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}ID'])!,
+      dbSchemaVersion: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}DB_SCHEMA_VERSION'])!,
+      articuloUltimaSync: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime,
+          data['${effectivePrefix}ARTICULO_ULTIMA_SYNC'])!,
+      clienteUltimaSync: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime,
+          data['${effectivePrefix}CLIENTE_ULTIMA_SYNC'])!,
+      pedidoUltimaSync: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}PEDIDO_ULTIMA_SYNC'])!,
+      visitaUltimaSync: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}VISITA_ULTIMA_SYNC'])!,
+    );
+  }
+
+  @override
+  $SyncDateTimeTableTable createAlias(String alias) {
+    return $SyncDateTimeTableTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -1724,12 +1962,18 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       $PedidoVentaLineaLocalTableTable(this);
   late final $PedidoVentaLocalTableTable pedidoVentaLocalTable =
       $PedidoVentaLocalTableTable(this);
+  late final $SyncDateTimeTableTable syncDateTimeTable =
+      $SyncDateTimeTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [visitaLocalTable, pedidoVentaLineaLocalTable, pedidoVentaLocalTable];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [
+        visitaLocalTable,
+        pedidoVentaLineaLocalTable,
+        pedidoVentaLocalTable,
+        syncDateTimeTable
+      ];
   @override
   DriftDatabaseOptions get options =>
       const DriftDatabaseOptions(storeDateTimeAsText: true);
