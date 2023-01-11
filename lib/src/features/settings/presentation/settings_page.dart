@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../core/helpers/database_helper.dart';
@@ -69,6 +72,11 @@ class SettingsPage extends ConsumerWidget {
             ),
             stateSync.maybeWhen(
               orElse: () => Container(),
+              synchronized: () =>
+                  _EnviarBaseDeDatosLocalButton(usuarioId: usuario!.id),
+            ),
+            stateSync.maybeWhen(
+              orElse: () => Container(),
               synchronized: () => const _SignoutButton(),
             ),
           ],
@@ -101,7 +109,38 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
   void deleteDatabase(WidgetRef ref) async {
     ref.invalidate(appRemoteDatabaseProvider);
     await deleteLocalDatabase();
-    await ref.read(usuarioNotifierProvider.notifier).signOut();
+  }
+}
+
+class _EnviarBaseDeDatosLocalButton extends StatelessWidget {
+  const _EnviarBaseDeDatosLocalButton({required this.usuarioId});
+
+  final String usuarioId;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () => enviarDatabase(context, usuarioId),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.email),
+          const SizedBox(width: 5),
+          Text(
+            'Enviar base de datos pr email',
+          )
+        ],
+      ),
+    );
+  }
+
+  void enviarDatabase(BuildContext context, String usuarioId) async {
+    final box = context.findRenderObject() as RenderBox?;
+    final directory = await getApplicationDocumentsDirectory();
+    final file = XFile('${directory.path}/$localDatabaseName');
+    await Share.shareXFiles([file],
+        subject: 'Base de datos local #$usuarioId',
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
   }
 }
 
