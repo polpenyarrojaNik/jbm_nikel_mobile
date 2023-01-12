@@ -234,6 +234,7 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           id: args.id,
           createPedidoFromClienteId: args.createPedidoFromClienteId,
+          addLineaDesdeArticulo: args.addLineaDesdeArticulo,
         ),
         fullscreenDialog: true,
       );
@@ -1301,6 +1302,7 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
     Key? key,
     String? id,
     String? createPedidoFromClienteId,
+    PedidoVentaLinea? addLineaDesdeArticulo,
   }) : super(
           PedidoVentaEditRoute.name,
           path: '/pedido/edit',
@@ -1308,6 +1310,7 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
             key: key,
             id: id,
             createPedidoFromClienteId: createPedidoFromClienteId,
+            addLineaDesdeArticulo: addLineaDesdeArticulo,
           ),
         );
 
@@ -1319,6 +1322,7 @@ class PedidoVentaEditRouteArgs {
     this.key,
     this.id,
     this.createPedidoFromClienteId,
+    this.addLineaDesdeArticulo,
   });
 
   final Key? key;
@@ -1327,9 +1331,11 @@ class PedidoVentaEditRouteArgs {
 
   final String? createPedidoFromClienteId;
 
+  final PedidoVentaLinea? addLineaDesdeArticulo;
+
   @override
   String toString() {
-    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, createPedidoFromClienteId: $createPedidoFromClienteId}';
+    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo}';
   }
 }
 

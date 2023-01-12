@@ -8,7 +8,7 @@ import '../exceptions/app_exception.dart';
 
 const int databaseRelease = 19;
 
-Future<void> deleteLocalDatabase() async {
+Future<void> deleteRemoteDatabase() async {
   const remoteDatabaseName = 'jbm.sqlite';
   const remoteDatabaseJournalName = 'jbm.sqlite-journal';
 

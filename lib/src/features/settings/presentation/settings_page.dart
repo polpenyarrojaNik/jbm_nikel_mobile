@@ -108,7 +108,7 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
 
   void deleteDatabase(WidgetRef ref) async {
     ref.invalidate(appRemoteDatabaseProvider);
-    await deleteLocalDatabase();
+    await deleteRemoteDatabase();
   }
 }
 

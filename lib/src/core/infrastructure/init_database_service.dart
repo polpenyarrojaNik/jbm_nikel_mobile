@@ -50,7 +50,7 @@ class InitDatabaseService {
   Future<void> downloadInitDatabase() async {
     try {
       if (await _getSchemaVersionFromPreferences() != databaseRelease) {
-        await deleteLocalDatabase();
+        await deleteRemoteDatabase();
       }
 
       final Directory directory = await getApplicationDocumentsDirectory();

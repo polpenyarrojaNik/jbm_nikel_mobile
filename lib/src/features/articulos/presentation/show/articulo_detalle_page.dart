@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/entity_id_is_local_param.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
@@ -10,24 +11,53 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_i
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo.dart';
+import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/seleccionar_cantidad_param.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../infrastructure/articulo_repository.dart';
 
-class ArticuloDetallePage extends StatelessWidget {
+class ArticuloDetallePage extends ConsumerWidget {
   const ArticuloDetallePage({super.key, required this.articuloId});
 
   final String articuloId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final params = {'articuloId': articuloId};
-
+    final stateBorradorPendiente = ref.watch(getPedidoVentaBorradorPendiente);
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).articulo_show_articuloDetalle_titulo),
+        actions: stateBorradorPendiente.maybeWhen(
+          orElse: () => null,
+          data: (pedidoBorrador) {
+            if (pedidoBorrador != null) {
+              final pedidoVentaIdIsLocalParam = EntityIdIsLocalParam(
+                  id: pedidoBorrador.pedidoVentaAppId!,
+                  isLocal: true,
+                  isNew: false);
+              final state = ref
+                  .watch(pedidoVentaLineaProvider(pedidoVentaIdIsLocalParam));
+              return state.maybeWhen(
+                  orElse: () => null,
+                  data: (pedidoVentaLinea) => [
+                        IconButton(
+                          onPressed: () => naviagateToSelectCantidad(
+                              context,
+                              pedidoVentaIdIsLocalParam,
+                              pedidoBorrador.clienteId!,
+                              pedidoVentaLinea.length),
+                          icon: const Icon(Icons.add_shopping_cart_outlined),
+                        )
+                      ]);
+            } else {
+              return null;
+            }
+          },
+        ),
       ),
       body: Consumer(
         builder: (context, ref, _) {
@@ -45,6 +75,23 @@ class ArticuloDetallePage extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+
+  void naviagateToSelectCantidad(
+      BuildContext context,
+      EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+      String clienteId,
+      int posicionLinea) {
+    context.router.push(
+      SeleccionarCantidadRoute(
+        seleccionarCantidadParam: SeleccionarCantidadParam(
+            pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+            clienteId: clienteId,
+            articuloId: articuloId,
+            posicionLinea: posicionLinea,
+            addNewLineaDesdeArticulo: true),
       ),
     );
   }
@@ -258,9 +305,10 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                 context: context),
                           ),
                         if (articulo.comprasEntregaFecha3 != null) gapH8,
-                        const Text(
-                          '',
-                        ),
+                        if (articulo.comprasEntregaCantidadMas3 != 0)
+                          const Text(
+                            '',
+                          ),
                       ],
                     ),
                     const Spacer(),

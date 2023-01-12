@@ -15,27 +15,41 @@ import '../../../../core/presentation/common_widgets/column_field_text_detail.da
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
 import '../../../../core/routing/app_auto_router.dart';
+import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
+import '../../../pedido_venta/presentation/edit/ask_pop_alert_dialog.dart';
 import '../../infrastructure/cliente_repository.dart';
 
-class ClienteDetallePage extends StatelessWidget {
+class ClienteDetallePage extends ConsumerWidget {
   const ClienteDetallePage({super.key, required this.clienteId});
 
   final String clienteId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final params = {'clienteId': clienteId};
+    final statePedidoBorrador = ref.watch(getPedidoVentaBorradorPendiente);
+
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
         actions: [
           IconButton(
-            onPressed: () => navigateToCreatePedido(context, clienteId),
+            onPressed: () => statePedidoBorrador.maybeWhen(
+              orElse: () => navigateToCreatePedido(
+                  context: context, ref: ref, clienteId: clienteId),
+              data: (pedidoVentaBorrador) => navigateToCreatePedido(
+                context: context,
+                ref: ref,
+                clienteId: clienteId,
+                pedidoVentaBorradorId: pedidoVentaBorrador?.pedidoVentaAppId,
+                pedidoVentaClienteId: pedidoVentaBorrador?.clienteId,
+              ),
+            ),
             icon: const Icon(Icons.shopping_cart_outlined),
           ),
           IconButton(
             onPressed: () => navigateToCreateVisita(context, clienteId),
-            icon: const Icon(Icons.shopping_basket),
+            icon: const Icon(Icons.group_add),
           ),
         ],
       ),
@@ -59,10 +73,40 @@ class ClienteDetallePage extends StatelessWidget {
     );
   }
 
-  void navigateToCreatePedido(BuildContext context, String clienteId) {
-    context.router.push(
-      PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
-    );
+  void navigateToCreatePedido(
+      {required BuildContext context,
+      required WidgetRef ref,
+      required String clienteId,
+      String? pedidoVentaBorradorId,
+      String? pedidoVentaClienteId}) async {
+    if (pedidoVentaBorradorId != null && clienteId != pedidoVentaClienteId) {
+      final result = await showDialog(
+        context: context,
+        builder: (ctx) {
+          return AskPopAlertDialog(
+              contextEditPage: context,
+              text: S
+                  .of(context)
+                  .pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador);
+        },
+      ) as bool?;
+      if (result ?? false) {
+        ref.read(deletePedidoVentaProvider(pedidoVentaBorradorId));
+        context.router.push(
+          PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
+        );
+      }
+    } else if (pedidoVentaBorradorId != null &&
+        clienteId == pedidoVentaClienteId) {
+      context.router.push(
+        PedidoVentaEditRoute(
+            id: pedidoVentaBorradorId, createPedidoFromClienteId: clienteId),
+      );
+    } else {
+      context.router.push(
+        PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
+      );
+    }
   }
 
   void navigateToCreateVisita(BuildContext context, String clienteId) {

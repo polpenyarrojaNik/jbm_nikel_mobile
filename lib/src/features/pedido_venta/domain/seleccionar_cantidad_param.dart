@@ -17,6 +17,7 @@ class SeleccionarCantidadParam with _$SeleccionarCantidadParam {
     double? descuento2,
     bool? createdFromCliente,
     required int posicionLinea,
+    required bool addNewLineaDesdeArticulo,
   }) = _SeleccionarCantidadParam;
 
   bool isUpdatingLinea() => cantidad != null;

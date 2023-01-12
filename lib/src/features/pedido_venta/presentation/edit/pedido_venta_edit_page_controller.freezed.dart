@@ -27,7 +27,8 @@ mixin _$PedidoVentaEditPageControllerState {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -41,6 +42,7 @@ mixin _$PedidoVentaEditPageControllerState {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
@@ -57,7 +59,8 @@ mixin _$PedidoVentaEditPageControllerState {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -71,6 +74,7 @@ mixin _$PedidoVentaEditPageControllerState {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -87,7 +91,8 @@ mixin _$PedidoVentaEditPageControllerState {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -101,6 +106,7 @@ mixin _$PedidoVentaEditPageControllerState {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -207,7 +213,8 @@ class _$_loading extends _loading {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -221,6 +228,7 @@ class _$_loading extends _loading {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
@@ -240,7 +248,8 @@ class _$_loading extends _loading {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -254,6 +263,7 @@ class _$_loading extends _loading {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -273,7 +283,8 @@ class _$_loading extends _loading {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -287,6 +298,7 @@ class _$_loading extends _loading {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -360,7 +372,8 @@ abstract class _$$_dataCopyWith<$Res> {
       String? observaciones,
       String? pedidoCliente,
       bool oferta,
-      DateTime? ofertaFechaHasta});
+      DateTime? ofertaFechaHasta,
+      bool isBorrador});
 
   $ClienteCopyWith<$Res>? get cliente;
   $ClienteDireccionCopyWith<$Res>? get clienteDireccion;
@@ -384,6 +397,7 @@ class __$$_dataCopyWithImpl<$Res>
     Object? pedidoCliente = freezed,
     Object? oferta = null,
     Object? ofertaFechaHasta = freezed,
+    Object? isBorrador = null,
   }) {
     return _then(_$_data(
       freezed == cliente
@@ -418,6 +432,10 @@ class __$$_dataCopyWithImpl<$Res>
           ? _value.ofertaFechaHasta
           : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      null == isBorrador
+          ? _value.isBorrador
+          : isBorrador // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -457,7 +475,8 @@ class _$_data extends _data {
       this.observaciones,
       this.pedidoCliente,
       this.oferta,
-      this.ofertaFechaHasta)
+      this.ofertaFechaHasta,
+      this.isBorrador)
       : _pedidoVentaLinea = pedidoVentaLinea,
         super._();
 
@@ -484,10 +503,12 @@ class _$_data extends _data {
   final bool oferta;
   @override
   final DateTime? ofertaFechaHasta;
+  @override
+  final bool isBorrador;
 
   @override
   String toString() {
-    return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta)';
+    return 'PedidoVentaEditPageControllerState.data(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador)';
   }
 
   @override
@@ -508,7 +529,9 @@ class _$_data extends _data {
                 other.pedidoCliente == pedidoCliente) &&
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
             (identical(other.ofertaFechaHasta, ofertaFechaHasta) ||
-                other.ofertaFechaHasta == ofertaFechaHasta));
+                other.ofertaFechaHasta == ofertaFechaHasta) &&
+            (identical(other.isBorrador, isBorrador) ||
+                other.isBorrador == isBorrador));
   }
 
   @override
@@ -521,7 +544,8 @@ class _$_data extends _data {
       observaciones,
       pedidoCliente,
       oferta,
-      ofertaFechaHasta);
+      ofertaFechaHasta,
+      isBorrador);
 
   @JsonKey(ignore: true)
   @override
@@ -541,7 +565,8 @@ class _$_data extends _data {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -555,12 +580,13 @@ class _$_data extends _data {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
   }) {
     return data(cliente, clienteDireccion, pedidoVentaLinea, currentStep,
-        observaciones, pedidoCliente, oferta, ofertaFechaHasta);
+        observaciones, pedidoCliente, oferta, ofertaFechaHasta, isBorrador);
   }
 
   @override
@@ -575,7 +601,8 @@ class _$_data extends _data {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -589,12 +616,13 @@ class _$_data extends _data {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
   }) {
     return data?.call(cliente, clienteDireccion, pedidoVentaLinea, currentStep,
-        observaciones, pedidoCliente, oferta, ofertaFechaHasta);
+        observaciones, pedidoCliente, oferta, ofertaFechaHasta, isBorrador);
   }
 
   @override
@@ -609,7 +637,8 @@ class _$_data extends _data {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -623,6 +652,7 @@ class _$_data extends _data {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -630,7 +660,7 @@ class _$_data extends _data {
   }) {
     if (data != null) {
       return data(cliente, clienteDireccion, pedidoVentaLinea, currentStep,
-          observaciones, pedidoCliente, oferta, ofertaFechaHasta);
+          observaciones, pedidoCliente, oferta, ofertaFechaHasta, isBorrador);
     }
     return orElse();
   }
@@ -688,7 +718,8 @@ abstract class _data extends PedidoVentaEditPageControllerState {
       final String? observaciones,
       final String? pedidoCliente,
       final bool oferta,
-      final DateTime? ofertaFechaHasta) = _$_data;
+      final DateTime? ofertaFechaHasta,
+      final bool isBorrador) = _$_data;
   const _data._() : super._();
 
   Cliente? get cliente;
@@ -699,6 +730,7 @@ abstract class _data extends PedidoVentaEditPageControllerState {
   String? get pedidoCliente;
   bool get oferta;
   DateTime? get ofertaFechaHasta;
+  bool get isBorrador;
   @JsonKey(ignore: true)
   _$$_dataCopyWith<_$_data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -781,7 +813,8 @@ class _$_error extends _error {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -795,6 +828,7 @@ class _$_error extends _error {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
@@ -814,7 +848,8 @@ class _$_error extends _error {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -828,6 +863,7 @@ class _$_error extends _error {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -847,7 +883,8 @@ class _$_error extends _error {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -861,6 +898,7 @@ class _$_error extends _error {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -974,7 +1012,8 @@ class _$_deleted extends _deleted {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -988,6 +1027,7 @@ class _$_deleted extends _deleted {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
@@ -1007,7 +1047,8 @@ class _$_deleted extends _deleted {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -1021,6 +1062,7 @@ class _$_deleted extends _deleted {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -1040,7 +1082,8 @@ class _$_deleted extends _deleted {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -1054,6 +1097,7 @@ class _$_deleted extends _deleted {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -1195,7 +1239,8 @@ class _$_saved extends _saved {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -1209,6 +1254,7 @@ class _$_saved extends _saved {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
@@ -1228,7 +1274,8 @@ class _$_saved extends _saved {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -1242,6 +1289,7 @@ class _$_saved extends _saved {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -1261,7 +1309,8 @@ class _$_saved extends _saved {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -1275,6 +1324,7 @@ class _$_saved extends _saved {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -1357,6 +1407,7 @@ abstract class _$$_savedErrorCopyWith<$Res> {
       String? pedidoCliente,
       bool oferta,
       DateTime? ofertaFechaHasta,
+      bool isBorrador,
       Object error,
       StackTrace? stackTrace});
 
@@ -1383,6 +1434,7 @@ class __$$_savedErrorCopyWithImpl<$Res>
     Object? pedidoCliente = freezed,
     Object? oferta = null,
     Object? ofertaFechaHasta = freezed,
+    Object? isBorrador = null,
     Object? error = null,
     Object? stackTrace = freezed,
   }) {
@@ -1419,6 +1471,10 @@ class __$$_savedErrorCopyWithImpl<$Res>
           ? _value.ofertaFechaHasta
           : ofertaFechaHasta // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      null == isBorrador
+          ? _value.isBorrador
+          : isBorrador // ignore: cast_nullable_to_non_nullable
+              as bool,
       null == error ? _value.error : error,
       stackTrace: freezed == stackTrace
           ? _value.stackTrace
@@ -1464,6 +1520,7 @@ class _$_savedError extends _savedError {
       this.pedidoCliente,
       this.oferta,
       this.ofertaFechaHasta,
+      this.isBorrador,
       this.error,
       {this.stackTrace})
       : _pedidoVentaLinea = pedidoVentaLinea,
@@ -1493,13 +1550,15 @@ class _$_savedError extends _savedError {
   @override
   final DateTime? ofertaFechaHasta;
   @override
+  final bool isBorrador;
+  @override
   final Object error;
   @override
   final StackTrace? stackTrace;
 
   @override
   String toString() {
-    return 'PedidoVentaEditPageControllerState.savedError(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, error: $error, stackTrace: $stackTrace)';
+    return 'PedidoVentaEditPageControllerState.savedError(cliente: $cliente, clienteDireccion: $clienteDireccion, pedidoVentaLinea: $pedidoVentaLinea, currentStep: $currentStep, observaciones: $observaciones, pedidoCliente: $pedidoCliente, oferta: $oferta, ofertaFechaHasta: $ofertaFechaHasta, isBorrador: $isBorrador, error: $error, stackTrace: $stackTrace)';
   }
 
   @override
@@ -1521,6 +1580,8 @@ class _$_savedError extends _savedError {
             (identical(other.oferta, oferta) || other.oferta == oferta) &&
             (identical(other.ofertaFechaHasta, ofertaFechaHasta) ||
                 other.ofertaFechaHasta == ofertaFechaHasta) &&
+            (identical(other.isBorrador, isBorrador) ||
+                other.isBorrador == isBorrador) &&
             const DeepCollectionEquality().equals(other.error, error) &&
             (identical(other.stackTrace, stackTrace) ||
                 other.stackTrace == stackTrace));
@@ -1537,6 +1598,7 @@ class _$_savedError extends _savedError {
       pedidoCliente,
       oferta,
       ofertaFechaHasta,
+      isBorrador,
       const DeepCollectionEquality().hash(error),
       stackTrace);
 
@@ -1558,7 +1620,8 @@ class _$_savedError extends _savedError {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)
         data,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() deleted,
@@ -1572,6 +1635,7 @@ class _$_savedError extends _savedError {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)
         savedError,
@@ -1585,6 +1649,7 @@ class _$_savedError extends _savedError {
         pedidoCliente,
         oferta,
         ofertaFechaHasta,
+        isBorrador,
         this.error,
         stackTrace);
   }
@@ -1601,7 +1666,8 @@ class _$_savedError extends _savedError {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? deleted,
@@ -1615,6 +1681,7 @@ class _$_savedError extends _savedError {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -1628,6 +1695,7 @@ class _$_savedError extends _savedError {
         pedidoCliente,
         oferta,
         ofertaFechaHasta,
+        isBorrador,
         this.error,
         stackTrace);
   }
@@ -1644,7 +1712,8 @@ class _$_savedError extends _savedError {
             String? observaciones,
             String? pedidoCliente,
             bool oferta,
-            DateTime? ofertaFechaHasta)?
+            DateTime? ofertaFechaHasta,
+            bool isBorrador)?
         data,
     TResult Function(Object error, StackTrace? stackTrace)? error,
     TResult Function()? deleted,
@@ -1658,6 +1727,7 @@ class _$_savedError extends _savedError {
             String? pedidoCliente,
             bool oferta,
             DateTime? ofertaFechaHasta,
+            bool isBorrador,
             Object error,
             StackTrace? stackTrace)?
         savedError,
@@ -1673,6 +1743,7 @@ class _$_savedError extends _savedError {
           pedidoCliente,
           oferta,
           ofertaFechaHasta,
+          isBorrador,
           this.error,
           stackTrace);
     }
@@ -1733,6 +1804,7 @@ abstract class _savedError extends PedidoVentaEditPageControllerState {
       final String? pedidoCliente,
       final bool oferta,
       final DateTime? ofertaFechaHasta,
+      final bool isBorrador,
       final Object error,
       {final StackTrace? stackTrace}) = _$_savedError;
   const _savedError._() : super._();
@@ -1745,6 +1817,7 @@ abstract class _savedError extends PedidoVentaEditPageControllerState {
   String? get pedidoCliente;
   bool get oferta;
   DateTime? get ofertaFechaHasta;
+  bool get isBorrador;
   Object get error;
   StackTrace? get stackTrace;
   @JsonKey(ignore: true)

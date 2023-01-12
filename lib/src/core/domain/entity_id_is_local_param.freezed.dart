@@ -21,6 +21,8 @@ mixin _$EntityIdIsLocalParam {
   bool get isNew => throw _privateConstructorUsedError;
   String? get createPedidoFromClienteId => throw _privateConstructorUsedError;
   String? get createVisitaFromClienteId => throw _privateConstructorUsedError;
+  PedidoVentaLinea? get addLineaDesdeArticulo =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityIdIsLocalParamCopyWith<EntityIdIsLocalParam> get copyWith =>
@@ -38,7 +40,10 @@ abstract class $EntityIdIsLocalParamCopyWith<$Res> {
       bool isLocal,
       bool isNew,
       String? createPedidoFromClienteId,
-      String? createVisitaFromClienteId});
+      String? createVisitaFromClienteId,
+      PedidoVentaLinea? addLineaDesdeArticulo});
+
+  $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
 }
 
 /// @nodoc
@@ -60,6 +65,7 @@ class _$EntityIdIsLocalParamCopyWithImpl<$Res,
     Object? isNew = null,
     Object? createPedidoFromClienteId = freezed,
     Object? createVisitaFromClienteId = freezed,
+    Object? addLineaDesdeArticulo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -82,7 +88,24 @@ class _$EntityIdIsLocalParamCopyWithImpl<$Res,
           ? _value.createVisitaFromClienteId
           : createVisitaFromClienteId // ignore: cast_nullable_to_non_nullable
               as String?,
+      addLineaDesdeArticulo: freezed == addLineaDesdeArticulo
+          ? _value.addLineaDesdeArticulo
+          : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+              as PedidoVentaLinea?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo {
+    if (_value.addLineaDesdeArticulo == null) {
+      return null;
+    }
+
+    return $PedidoVentaLineaCopyWith<$Res>(_value.addLineaDesdeArticulo!,
+        (value) {
+      return _then(_value.copyWith(addLineaDesdeArticulo: value) as $Val);
+    });
   }
 }
 
@@ -99,7 +122,11 @@ abstract class _$$_EntityIdIsLocalParamCopyWith<$Res>
       bool isLocal,
       bool isNew,
       String? createPedidoFromClienteId,
-      String? createVisitaFromClienteId});
+      String? createVisitaFromClienteId,
+      PedidoVentaLinea? addLineaDesdeArticulo});
+
+  @override
+  $PedidoVentaLineaCopyWith<$Res>? get addLineaDesdeArticulo;
 }
 
 /// @nodoc
@@ -118,6 +145,7 @@ class __$$_EntityIdIsLocalParamCopyWithImpl<$Res>
     Object? isNew = null,
     Object? createPedidoFromClienteId = freezed,
     Object? createVisitaFromClienteId = freezed,
+    Object? addLineaDesdeArticulo = freezed,
   }) {
     return _then(_$_EntityIdIsLocalParam(
       id: null == id
@@ -140,6 +168,10 @@ class __$$_EntityIdIsLocalParamCopyWithImpl<$Res>
           ? _value.createVisitaFromClienteId
           : createVisitaFromClienteId // ignore: cast_nullable_to_non_nullable
               as String?,
+      addLineaDesdeArticulo: freezed == addLineaDesdeArticulo
+          ? _value.addLineaDesdeArticulo
+          : addLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+              as PedidoVentaLinea?,
     ));
   }
 }
@@ -152,7 +184,8 @@ class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
       required this.isLocal,
       required this.isNew,
       this.createPedidoFromClienteId,
-      this.createVisitaFromClienteId})
+      this.createVisitaFromClienteId,
+      this.addLineaDesdeArticulo})
       : super._();
 
   @override
@@ -165,10 +198,12 @@ class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
   final String? createPedidoFromClienteId;
   @override
   final String? createVisitaFromClienteId;
+  @override
+  final PedidoVentaLinea? addLineaDesdeArticulo;
 
   @override
   String toString() {
-    return 'EntityIdIsLocalParam(id: $id, isLocal: $isLocal, isNew: $isNew, createPedidoFromClienteId: $createPedidoFromClienteId, createVisitaFromClienteId: $createVisitaFromClienteId)';
+    return 'EntityIdIsLocalParam(id: $id, isLocal: $isLocal, isNew: $isNew, createPedidoFromClienteId: $createPedidoFromClienteId, createVisitaFromClienteId: $createVisitaFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo)';
   }
 
   @override
@@ -184,12 +219,20 @@ class _$_EntityIdIsLocalParam extends _EntityIdIsLocalParam {
                 other.createPedidoFromClienteId == createPedidoFromClienteId) &&
             (identical(other.createVisitaFromClienteId,
                     createVisitaFromClienteId) ||
-                other.createVisitaFromClienteId == createVisitaFromClienteId));
+                other.createVisitaFromClienteId == createVisitaFromClienteId) &&
+            (identical(other.addLineaDesdeArticulo, addLineaDesdeArticulo) ||
+                other.addLineaDesdeArticulo == addLineaDesdeArticulo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, isLocal, isNew,
-      createPedidoFromClienteId, createVisitaFromClienteId);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      isLocal,
+      isNew,
+      createPedidoFromClienteId,
+      createVisitaFromClienteId,
+      addLineaDesdeArticulo);
 
   @JsonKey(ignore: true)
   @override
@@ -205,7 +248,8 @@ abstract class _EntityIdIsLocalParam extends EntityIdIsLocalParam {
       required final bool isLocal,
       required final bool isNew,
       final String? createPedidoFromClienteId,
-      final String? createVisitaFromClienteId}) = _$_EntityIdIsLocalParam;
+      final String? createVisitaFromClienteId,
+      final PedidoVentaLinea? addLineaDesdeArticulo}) = _$_EntityIdIsLocalParam;
   const _EntityIdIsLocalParam._() : super._();
 
   @override
@@ -218,6 +262,8 @@ abstract class _EntityIdIsLocalParam extends EntityIdIsLocalParam {
   String? get createPedidoFromClienteId;
   @override
   String? get createVisitaFromClienteId;
+  @override
+  PedidoVentaLinea? get addLineaDesdeArticulo;
   @override
   @JsonKey(ignore: true)
   _$$_EntityIdIsLocalParamCopyWith<_$_EntityIdIsLocalParam> get copyWith =>

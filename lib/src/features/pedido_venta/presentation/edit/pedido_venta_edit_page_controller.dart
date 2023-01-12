@@ -26,6 +26,7 @@ class PedidoVentaEditPageControllerState
     String? pedidoCliente,
     bool oferta,
     DateTime? ofertaFechaHasta,
+    bool isBorrador,
   ) = _data;
   const factory PedidoVentaEditPageControllerState.error(Object error,
       {StackTrace? stackTrace}) = _error;
@@ -42,6 +43,7 @@ class PedidoVentaEditPageControllerState
       String? pedidoCliente,
       bool oferta,
       DateTime? ofertaFechaHasta,
+      bool isBorrador,
       Object error,
       {StackTrace? stackTrace}) = _savedError;
 }
@@ -70,6 +72,7 @@ class PedidoVentaEditPageController
   String? _pedidoCliente;
   bool _oferta = false;
   DateTime? _ofertaFechaHasta;
+  bool _isBorrador = false;
 
   PedidoVentaEditPageController({
     required this.pedidoVentaIdIsLocalParam,
@@ -82,7 +85,8 @@ class PedidoVentaEditPageController
   Future<void> getPedidoVenta() async {
     state = const PedidoVentaEditPageControllerState.loading();
     try {
-      if (await pedidoVentaRepository.getBorradorPendieteId() != null) {
+      if (await pedidoVentaRepository.getBorradorPendiete() != null) {
+        _isBorrador = true;
         final pedidoVentaBorrador =
             await pedidoVentaRepository.getPedidoVentaBorrador();
         pedidoVentaLineaList =
@@ -97,7 +101,7 @@ class PedidoVentaEditPageController
                 clienteId: pedidoVentaBorrador.clienteId!,
                 direccionId: pedidoVentaBorrador.direccionId);
 
-        _currentStep = 1;
+        _currentStep = 2;
 
         _observaciones = pedidoVentaBorrador.observaciones;
 
@@ -117,8 +121,10 @@ class PedidoVentaEditPageController
           _pedidoCliente,
           _oferta,
           _ofertaFechaHasta,
+          _isBorrador,
         );
       } else {
+        _isBorrador = false;
         if (pedidoVentaIdIsLocalParam.isNew) {
           if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
             _cliente = await clienteRepository.getClienteById(
@@ -134,6 +140,7 @@ class PedidoVentaEditPageController
             _pedidoCliente,
             _oferta,
             _ofertaFechaHasta,
+            _isBorrador,
           );
         } else {
           final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
@@ -163,15 +170,15 @@ class PedidoVentaEditPageController
           _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
 
           state = PedidoVentaEditPageControllerState.data(
-            _cliente,
-            _clienteDireccion,
-            pedidoVentaLineaList,
-            _currentStep,
-            _observaciones,
-            _pedidoCliente,
-            _oferta,
-            _ofertaFechaHasta,
-          );
+              _cliente,
+              _clienteDireccion,
+              pedidoVentaLineaList,
+              _currentStep,
+              _observaciones,
+              _pedidoCliente,
+              _oferta,
+              _ofertaFechaHasta,
+              _isBorrador);
         }
       }
     } catch (err, stack) {
@@ -216,6 +223,7 @@ class PedidoVentaEditPageController
         _pedidoCliente,
         _oferta,
         _ofertaFechaHasta,
+        _isBorrador,
         err,
         stackTrace: stack,
       );
@@ -247,6 +255,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -261,6 +270,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -278,6 +288,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -297,6 +308,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -312,6 +324,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -329,6 +342,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -346,6 +360,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -364,6 +379,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -378,6 +394,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -392,6 +409,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -406,6 +424,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -423,6 +442,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 

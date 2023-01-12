@@ -91,10 +91,10 @@ final getStockDisponibleProvider =
   return pedidoVentaRepository.getStockActual(articuloId: articuloId);
 });
 
-final getPedidoVentaBorradorPendienteId =
-    FutureProvider.autoDispose<String?>((ref) {
+final getPedidoVentaBorradorPendiente =
+    FutureProvider.autoDispose<PedidoVenta?>((ref) {
   final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
-  return pedidoVentaRepository.getBorradorPendieteId();
+  return pedidoVentaRepository.getBorradorPendiete();
 });
 
 class PedidoVentaRepository {
@@ -487,14 +487,39 @@ class PedidoVentaRepository {
     }
   }
 
-  Future<String?> getBorradorPendieteId() async {
+  Future<PedidoVenta?> getBorradorPendiete() async {
     try {
-      final pedidoVentaBorrador =
+      final pedidoVentaBorradorDTO =
           await (_localDb.select(_localDb.pedidoVentaLocalTable)
                 ..where((tbl) => tbl.borrador.equals('S')))
               .getSingleOrNull();
 
-      return pedidoVentaBorrador?.pedidoVentaAppId;
+      if (pedidoVentaBorradorDTO != null) {
+        final divisaDTO = await (_remoteDb.select(_remoteDb.divisaTable)
+              ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.divisaId!)))
+            .getSingle();
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((tbl) => tbl.id.equals(pedidoVentaBorradorDTO.paisId!)))
+            .getSingle();
+
+        final pedidoVentaLineas = await getLocalPedidoVentaLineaList(
+            pedidoVentaAppId: pedidoVentaBorradorDTO.pedidoVentaAppId);
+
+        final importeBaseImponible =
+            getBaseImponible(pedidoVentaLineas, divisaDTO.id);
+        final importeIva =
+            getImporteIva(importeBaseImponible, pedidoVentaBorradorDTO.iva);
+
+        return pedidoVentaBorradorDTO.toDomain(
+          pais: paisDTO.toDomain(),
+          divisa: divisaDTO.toDomain(),
+          baseImponible: importeBaseImponible,
+          importeIva: importeIva,
+          total: importeBaseImponible + importeIva,
+        );
+      }
+
+      return null;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -597,7 +622,9 @@ class PedidoVentaRepository {
             pedidoVentaId: pedidoVentaIdIsLocalParam.id);
       } else {
         return await getLocalPedidoVentaLineaList(
-            pedidoVentaAppId: pedidoVentaIdIsLocalParam.id);
+            pedidoVentaAppId: pedidoVentaIdIsLocalParam.id,
+            addLineaDesdeArticulo:
+                pedidoVentaIdIsLocalParam.addLineaDesdeArticulo);
       }
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -629,7 +656,8 @@ class PedidoVentaRepository {
   }
 
   Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList(
-      {required String pedidoVentaAppId}) async {
+      {required String pedidoVentaAppId,
+      PedidoVentaLinea? addLineaDesdeArticulo}) async {
     try {
       final query = _localDb.select(_localDb.pedidoVentaLineaLocalTable).join([
         innerJoin(
@@ -641,7 +669,7 @@ class PedidoVentaRepository {
       query.where(_localDb.pedidoVentaLineaLocalTable.pedidoVentaAppId
           .equals(pedidoVentaAppId));
 
-      return query.map((row) {
+      final pedidoVentaLineaList = await query.map((row) {
         final pedidoVentaLocalDTO =
             row.readTable(_localDb.pedidoVentaLocalTable);
         final pedidoVentaLineaDTO =
@@ -660,6 +688,12 @@ class PedidoVentaRepository {
               descuento3: pedidoVentaLineaDTO.descuento3,
             ));
       }).get();
+
+      if (addLineaDesdeArticulo != null) {
+        pedidoVentaLineaList.add(addLineaDesdeArticulo);
+      }
+
+      return pedidoVentaLineaList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

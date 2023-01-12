@@ -2045,10 +2045,10 @@ class S {
   }
 
   /// `Attention:`
-  String get pedido_edit_askPopAlertDialog_atencion {
+  String get askPopAlertDialog_atencion {
     return Intl.message(
       'Attention:',
-      name: 'pedido_edit_askPopAlertDialog_atencion',
+      name: 'askPopAlertDialog_atencion',
       desc: '',
       args: [],
     );
@@ -2064,21 +2064,31 @@ class S {
     );
   }
 
+  /// `Are you sure to close that sales order?\nThe order draft will be deleted.`
+  String get pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador {
+    return Intl.message(
+      'Are you sure to close that sales order?\nThe order draft will be deleted.',
+      name: 'pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel`
-  String get pedido_edit_askPopAlertDialog_cancelar {
+  String get askPopAlertDialog_cancelar {
     return Intl.message(
       'Cancel',
-      name: 'pedido_edit_askPopAlertDialog_cancelar',
+      name: 'askPopAlertDialog_cancelar',
       desc: '',
       args: [],
     );
   }
 
   /// `Accept`
-  String get pedido_edit_askPopAlertDialog_aceptar {
+  String get askPopAlertDialog_aceptar {
     return Intl.message(
       'Accept',
-      name: 'pedido_edit_askPopAlertDialog_aceptar',
+      name: 'askPopAlertDialog_aceptar',
       desc: '',
       args: [],
     );
@@ -2099,6 +2109,16 @@ class S {
     return Intl.message(
       'Edit sales order',
       name: 'pedido_edit_pedidoEdit_editarPedido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creating CSV file to send mail...`
+  String get pedido_edit_pedidoEdit_creandoCsvFile {
+    return Intl.message(
+      'Creating CSV file to send mail...',
+      name: 'pedido_edit_pedidoEdit_creandoCsvFile',
       desc: '',
       args: [],
     );

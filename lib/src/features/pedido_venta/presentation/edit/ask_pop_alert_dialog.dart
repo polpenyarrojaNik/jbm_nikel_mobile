@@ -4,27 +4,27 @@ import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 
 class AskPopAlertDialog extends StatelessWidget {
-  const AskPopAlertDialog({super.key, required this.contextEditPage});
+  const AskPopAlertDialog(
+      {super.key, required this.contextEditPage, required this.text});
   final BuildContext contextEditPage;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(S.of(context).pedido_edit_askPopAlertDialog_atencion),
-      content: Text(
-        S.of(context).pedido_edit_askPopAlertDialog_seguroQuieresSales,
-      ),
+      title: Text(S.of(context).askPopAlertDialog_atencion),
+      content: Text(text),
       actions: <Widget>[
         TextButton(
           onPressed: () => context.router.pop(false),
           child: Text(
-            S.of(context).pedido_edit_askPopAlertDialog_cancelar,
+            S.of(context).askPopAlertDialog_cancelar,
           ),
         ),
         TextButton(
           onPressed: () => context.router.pop(true),
           child: Text(
-            S.of(context).pedido_edit_askPopAlertDialog_aceptar,
+            S.of(context).askPopAlertDialog_aceptar,
           ),
         )
       ],

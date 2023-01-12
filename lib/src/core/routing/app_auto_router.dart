@@ -36,6 +36,8 @@ import '../../features/cliente/presentation/show/cliente_visita_page.dart';
 import '../../features/cliente/presentation/show/ultimos_precios/cliente_ultimos_precios_page.dart';
 import '../../features/cliente_alrededor/presentation/clientes_alrededor_page.dart';
 import '../../features/pedido_venta/domain/seleccionar_cantidad_param.dart';
+import '../../features/pedido_venta/domain/pedido_venta_linea.dart';
+
 import '../../features/pedido_venta/presentation/edit/pedido_venta_edit_page.dart';
 import '../../features/pedido_venta/presentation/index/pedido_venta_lista_page.dart';
 import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.dart';
