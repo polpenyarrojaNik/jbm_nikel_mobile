@@ -391,7 +391,7 @@ class PedidoVentaEditForm extends ConsumerWidget {
     ref
         .read(pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam)
             .notifier)
-        .navigateToNextStep();
+        .navigateToTappedStep(tappedStep: value);
   }
 
   void selectClienteValidate(BuildContext context, WidgetRef ref) {
