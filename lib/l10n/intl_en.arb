@@ -245,6 +245,7 @@
   "settings_titulo": "Settings",
   "settings_reemplazarBaseDeDatos": "Replace database",
   "settings_enviarBaseDeDatos": "Send database",
+  "settings_creandoArchivo": "Creating file...",
   "settings_sincronizarDatos": "Sync data",
   "visita_index_titulo": "Visits",
   "visita_enviada": "Sent",

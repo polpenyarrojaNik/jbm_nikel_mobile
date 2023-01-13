@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/column_field_text_detail.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/toasts.dart';
 import 'package:jbm_nikel_mobile/src/features/settings/infrastructure/settings_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/settings/presentation/export_database_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/sync/application/sync_notifier_provider.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
@@ -25,6 +29,17 @@ class SettingsPage extends ConsumerWidget {
     final usuario = ref.watch(usuarioNotifierProvider);
     final statePackageInfo = ref.watch(packageInfoProvider);
     final stateSync = ref.watch(syncNotifierProvider);
+
+    ref.listen<ExportDatabaseControllerState>(exportDatabaseControllerProvider,
+        (_, state) {
+      state.maybeWhen(
+          orElse: () => null,
+          loading: () =>
+              showToast(S.of(context).settings_creandoArchivo, context),
+          data: (file) => enviarDatabase(
+              file: file, context: context, usuarioId: usuario!.id),
+          error: (error, _) => showToast(error.toString(), context));
+    });
 
     return Scaffold(
       drawer: const AppDrawer(),
@@ -84,6 +99,18 @@ class SettingsPage extends ConsumerWidget {
       ),
     );
   }
+
+  void enviarDatabase(
+      {required BuildContext context,
+      required File file,
+      required String usuarioId}) async {
+    final box = context.findRenderObject() as RenderBox?;
+    final directory = await getApplicationDocumentsDirectory();
+    final file = XFile('${directory.path}/$localDatabaseName');
+    await Share.shareXFiles([file],
+        subject: 'Base de datos local #$usuarioId',
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  }
 }
 
 class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
@@ -112,15 +139,15 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
   }
 }
 
-class _EnviarBaseDeDatosLocalButton extends StatelessWidget {
+class _EnviarBaseDeDatosLocalButton extends ConsumerWidget {
   const _EnviarBaseDeDatosLocalButton({required this.usuarioId});
 
   final String usuarioId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
-      onPressed: () => enviarDatabase(context, usuarioId),
+      onPressed: () => exportDatabaseIntoFile(ref),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -134,13 +161,10 @@ class _EnviarBaseDeDatosLocalButton extends StatelessWidget {
     );
   }
 
-  void enviarDatabase(BuildContext context, String usuarioId) async {
-    final box = context.findRenderObject() as RenderBox?;
-    final directory = await getApplicationDocumentsDirectory();
-    final file = XFile('${directory.path}/$localDatabaseName');
-    await Share.shareXFiles([file],
-        subject: 'Base de datos local #$usuarioId',
-        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+  void exportDatabaseIntoFile(WidgetRef ref) {
+    ref
+        .read(exportDatabaseControllerProvider.notifier)
+        .exportDatabaseIntoFile();
   }
 }
 

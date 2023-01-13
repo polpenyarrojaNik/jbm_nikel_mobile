@@ -484,6 +484,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cantidad pendiente"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
+        "settings_creandoArchivo":
+            MessageLookupByLibrary.simpleMessage("Creando archivo..."),
         "settings_enviarBaseDeDatos":
             MessageLookupByLibrary.simpleMessage("Enviar base de datos"),
         "settings_nombre_usuario":

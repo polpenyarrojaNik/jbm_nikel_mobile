@@ -295,7 +295,6 @@ class PedidoVentaEditPageController
   Future<void> selectCliente({required Cliente cliente}) async {
     _cliente = cliente;
     _clienteDireccion = null;
-
     _oferta = cliente.clientePotencial ?? false;
 
     pedidoVentaLineaList.clear();

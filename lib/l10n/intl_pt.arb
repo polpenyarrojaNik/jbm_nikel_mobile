@@ -230,6 +230,7 @@
   "settings_reemplazarBaseDeDatos": "Substituir banco de dados",
   "settings_sincronicacionRealizadaConExito": "Sincronização realizada com sucesso",
   "settings_enviarBaseDeDatos": "Enviar banco de dados",
+  "settings_creandoArchivo": "Criando arquivo...",
   "settings_sincronizarDatos": "Sincronizar dados",
   "settings_titulo": "Ajustes",
   "settings_user": "Usuário",

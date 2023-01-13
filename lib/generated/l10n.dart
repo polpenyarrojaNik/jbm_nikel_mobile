@@ -2514,6 +2514,16 @@ class S {
     );
   }
 
+  /// `Creating file...`
+  String get settings_creandoArchivo {
+    return Intl.message(
+      'Creating file...',
+      name: 'settings_creandoArchivo',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sync data`
   String get settings_sincronizarDatos {
     return Intl.message(
