@@ -202,6 +202,7 @@
   "pedido_edit_selectQuantity_stockDisponible": "Stock disponível",
   "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Deve ser um múltiplo de",
   "pedido_enviado": "Enviado",
+  "pedido_borrador": "Rascunho",
   "pedido_index_buscarPedidos": "Buscar pedidos",
   "pedido_index_estados": "Estado",
   "pedido_index_filtrar": "Filtrar",

@@ -202,6 +202,7 @@
   "pedido_edit_selectQuantity_stockDisponible": "Magazzino disponibile:",
   "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Deve essere un multiplo di",
   "pedido_enviado": "Spedito",
+  "pedido_borrador": "Brutta copia",
   "pedido_index_buscarPedidos": "Cercare ordini...",
   "pedido_index_estados": "Stato",
   "pedido_index_filtrar": "Filtro",

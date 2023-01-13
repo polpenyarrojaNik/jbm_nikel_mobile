@@ -49,5 +49,5 @@ class PedidoVenta with _$PedidoVenta {
 
   bool getIsLocal() => !tratada;
 
-  bool isEditable() => (!tratada && !enviada);
+  bool isEditable() => (!borrador && !tratada && !enviada);
 }

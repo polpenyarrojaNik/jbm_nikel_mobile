@@ -2424,6 +2424,16 @@ class S {
     );
   }
 
+  /// `Draft`
+  String get pedido_borrador {
+    return Intl.message(
+      'Draft',
+      name: 'pedido_borrador',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Not sent`
   String get pedido_noEnviado {
     return Intl.message(

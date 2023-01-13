@@ -17,15 +17,20 @@ class PedidoVentaListaTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.router.push(
-        PedidoVentaDetalleRoute(
-          pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
-            id: pedidoVenta.pedidoVentaId ?? pedidoVenta.pedidoVentaAppId!,
-            isNew: false,
-            isLocal: !pedidoVenta.tratada,
-          ),
-        ),
-      ),
+      onTap: () => (!pedidoVenta.borrador)
+          ? context.router.push(
+              PedidoVentaDetalleRoute(
+                pedidoVentaIdIsLocalParam: EntityIdIsLocalParam(
+                  id: pedidoVenta.pedidoVentaId ??
+                      pedidoVenta.pedidoVentaAppId!,
+                  isNew: false,
+                  isLocal: !pedidoVenta.tratada,
+                ),
+              ),
+            )
+          : context.router.push(
+              PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
+            ),
       child: IntrinsicHeight(
         child: Container(
           padding: const EdgeInsets.only(right: 16),
@@ -68,8 +73,11 @@ class PedidoVentaListaTile extends StatelessWidget {
                         Text(
                           ((pedidoVenta.pedidoVentaEstado != null))
                               ? pedidoVenta.pedidoVentaEstado!.descripcion
-                              : getEstadoPedidoLocal(context,
-                                  pedidoVenta.enviada, pedidoVenta.tratada)!,
+                              : getEstadoPedidoLocal(
+                                  context,
+                                  pedidoVenta.borrador,
+                                  pedidoVenta.enviada,
+                                  pedidoVenta.tratada)!,
                           style: Theme.of(context).textTheme.caption,
                         ),
                       ],

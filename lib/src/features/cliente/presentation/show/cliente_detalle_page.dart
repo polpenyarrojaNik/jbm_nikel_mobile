@@ -33,19 +33,15 @@ class ClienteDetallePage extends ConsumerWidget {
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDetalle_titulo),
         actions: [
-          IconButton(
-            onPressed: () => statePedidoBorrador.maybeWhen(
-              orElse: () => navigateToCreatePedido(
-                  context: context, ref: ref, clienteId: clienteId),
-              data: (pedidoVentaBorrador) => navigateToCreatePedido(
-                context: context,
-                ref: ref,
-                clienteId: clienteId,
-                pedidoVentaBorradorId: pedidoVentaBorrador?.pedidoVentaAppId,
-                pedidoVentaClienteId: pedidoVentaBorrador?.clienteId,
-              ),
-            ),
-            icon: const Icon(Icons.shopping_cart_outlined),
+          statePedidoBorrador.maybeWhen(
+            orElse: () => Container(),
+            data: (pedidoVentaBorrador) => (pedidoVentaBorrador == null)
+                ? IconButton(
+                    onPressed: () => navigateToCreatePedido(
+                        context: context, ref: ref, clienteId: clienteId),
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                  )
+                : Container(),
           ),
           IconButton(
             onPressed: () => navigateToCreateVisita(context, clienteId),

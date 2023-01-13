@@ -199,6 +199,7 @@
   "pedido_edit_selectQuantity_stockDisponible": "Stock disponible:",
   "pedido_edit_selectQuantity_tieneQueSerMultiploDe": "Doit être multiple de",
   "pedido_enviado": "Envoyé",
+  "pedido_borrador": "Brouillon",
   "pedido_index_buscarPedidos": "Chercher commandes…",
   "pedido_index_estados": "États",
   "pedido_index_filtrar": "Filtrer",

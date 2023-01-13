@@ -84,24 +84,12 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
       pedidoVentaEditPageControllerProvider(pedidoVentaIdLocalParam!),
       (__, state) {
         state.maybeWhen(
-          saved: (pedidoVentaAppId, isBorrador) {
-            if (!widget.isNew) {
-              ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
-              ref.invalidate(
-                  pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
-            }
-            if (!isBorrador) {
-              ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
-              ref.invalidate(pedidoVentaIndexScreenControllerProvider);
-            }
-            ref.invalidate(getPedidoVentaBorradorPendiente);
-
-            context.router.pop();
-          },
+          saved: (_, __) => onSavedOrSavedErrorMessage(),
           deleted: () => context.router.popUntilRouteWithName('/pedido'),
           savedError: (_, __, ___, ____, _____, ______, _________, __________,
                   ________, error, _______) =>
-              context.showErrorBar(
+              onSavedOrSavedErrorMessage(error: error),
+          error: (error, _) => context.showErrorBar(
             duration: const Duration(seconds: 5),
             content: Text((error is AppException)
                 ? error.details.message
@@ -116,10 +104,8 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         crearCsvControllerProvider,
         (_, state) => state.maybeWhen(
               orElse: () => null,
-              loading: () =>
-                  //TODO Añadir traduccion
-                  showToast(S.of(context).pedido_edit_pedidoEdit_creandoCsvFile,
-                      context),
+              loading: () => showToast(
+                  S.of(context).pedido_edit_pedidoEdit_creandoCsvFile, context),
               data: (csvFile) => openFile(csvFile),
             ));
 
@@ -264,6 +250,29 @@ class _PedidoVentaEditPageState extends ConsumerState<PedidoVentaEditPage> {
         );
 
     ref.invalidate(getPedidoVentaBorradorPendiente);
+    ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
+    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+    ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
+  }
+
+  void onSavedOrSavedErrorMessage({Object? error}) {
+    if (error != null) {
+      context.showErrorBar(
+        duration: const Duration(seconds: 5),
+        content: Text(
+            (error is AppException) ? error.details.message : error.toString()),
+      );
+    }
+    if (!widget.isNew) {
+      ref.invalidate(pedidoVentaProvider(pedidoVentaIdLocalParam!));
+      ref.invalidate(pedidoVentaLineaProvider(pedidoVentaIdLocalParam!));
+    }
+    ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
+    ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+
+    ref.invalidate(getPedidoVentaBorradorPendiente);
+
+    context.router.pop();
   }
 }
 
@@ -338,6 +347,8 @@ class PedidoVentaEditForm extends ConsumerWidget {
     if (isBorrador && (result ?? false)) {
       ref.read(deletePedidoVentaProvider(pedidoVentaIdLocalParam.id));
       ref.invalidate(getPedidoVentaBorradorPendiente);
+      ref.invalidate(pedidoVentaIndexScreenPaginatedControllerProvider);
+      ref.invalidate(pedidoVentaIndexScreenControllerProvider);
     }
     return result ?? false;
   }

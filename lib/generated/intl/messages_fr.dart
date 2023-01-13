@@ -369,6 +369,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "familia": MessageLookupByLibrary.simpleMessage("Famille"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Une érreur est survenue"),
+        "pedido_borrador": MessageLookupByLibrary.simpleMessage("Brouillon"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
                 "Êtes vous sur de vouloir sortir?"),

@@ -334,7 +334,7 @@ class PedidoVentaRepository {
     final List<PedidoVenta> pedidoVentaList = [];
     final query = _localDb.select(_localDb.pedidoVentaLocalTable);
 
-    query.where((tbl) => tbl.tratada.equals('N') & tbl.borrador.equals('N'));
+    query.where((tbl) => tbl.tratada.equals('N'));
 
     if (searchText != '') {
       final busqueda = searchText.split(' ');
@@ -751,6 +751,7 @@ class PedidoVentaRepository {
           .toList();
 
       await insertPedidoInDB(pedidoVentaLocalDTO, pedidoVentaLineaLocalDTOList);
+
       if (!isBorrador) {
         try {
           final pedidoVentaLocalDTOEnviado = await _remoteCreatePedidoVenta(
@@ -766,7 +767,6 @@ class PedidoVentaRepository {
                     updateWithError(pedidoVentaLocalDTO, e.details.message),
                 restApiFailure: (error, _) =>
                     updateWithError(pedidoVentaLocalDTO, e.details.message));
-            return;
           }
           rethrow;
         }

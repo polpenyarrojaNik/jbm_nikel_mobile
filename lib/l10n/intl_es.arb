@@ -235,6 +235,7 @@
   "pedido_edit_selectQuantity_noPuedeEstarVacio": "No puede estar vacío",
   "pedido_edit_selectQuantity_multiplo": "Múltiplo",
   "pedido_enviado": "Enviado",
+  "pedido_borrador": "Borrador",
   "pedido_noEnviado": "No enviado",
   "settings_cerrar_sesion": "Cerrar sesión",
   "settings_user": "Usuario",

@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta.d
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_linea.dart';
 
 import '../../../../core/domain/entity_id_is_local_param.dart';
+import '../../../../core/exceptions/app_exception.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
@@ -213,18 +214,42 @@ class PedidoVentaEditPageController
       );
       state = PedidoVentaEditPageControllerState.saved(
           pedidoVentaAppId, isBorrador);
-    } catch (err, stack) {
-      state = PedidoVentaEditPageControllerState.savedError(
-        _cliente,
-        _clienteDireccion,
-        pedidoVentaLineaList,
-        _currentStep,
-        _observaciones,
-        _pedidoCliente,
-        _oferta,
-        _ofertaFechaHasta,
-        _isBorrador,
-        err,
+    } catch (e, stack) {
+      if (e is AppException) {
+        e.maybeWhen(
+          orElse: () {},
+          notConnection: () =>
+              state = PedidoVentaEditPageControllerState.savedError(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+            _isBorrador,
+            e,
+            stackTrace: stack,
+          ),
+          restApiFailure: (error, _) =>
+              state = PedidoVentaEditPageControllerState.savedError(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+            _isBorrador,
+            e,
+            stackTrace: stack,
+          ),
+        );
+      }
+      state = PedidoVentaEditPageControllerState.error(
+        e.toString(),
         stackTrace: stack,
       );
     }

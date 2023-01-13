@@ -44,7 +44,8 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
   @override
   Widget build(BuildContext context) {
     final stateSync = ref.watch(syncNotifierProvider);
-    final stateFloattingButton = ref.watch(getPedidoVentaBorradorPendiente);
+    final stateGetBorradorPendiente =
+        ref.watch(getPedidoVentaBorradorPendiente);
 
     ref.listen<AsyncValue>(
       pedidoVentaIndexScreenControllerProvider,
@@ -80,7 +81,7 @@ class _PedidoVentaListPageState extends ConsumerState<PedidoVentaListPage> {
             child: PedidosListViewWidget(stateSync: stateSync, ref: ref),
           ),
         ),
-        floatingActionButton: stateFloattingButton.maybeWhen(
+        floatingActionButton: stateGetBorradorPendiente.maybeWhen(
           orElse: () => const CircularProgressIndicator(),
           data: (pedidoVentaBorrador) => FloatingActionButton(
             onPressed: () => (pedidoVentaBorrador != null)
