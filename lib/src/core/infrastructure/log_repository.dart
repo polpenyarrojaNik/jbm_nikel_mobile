@@ -12,13 +12,11 @@ import '../domain/log.dart';
 import '../exceptions/app_exception.dart';
 import '../presentation/app.dart';
 import 'local_database.dart';
-import 'remote_database.dart';
 import 'log_dto.dart';
 
 final logRepositoryProvider = Provider.autoDispose<LogRepository>(
   (ref) => LogRepository(
     ref.watch(dioProvider),
-    ref.watch(appRemoteDatabaseProvider),
     ref.watch(appLocalDatabaseProvider),
     ref.watch(usuarioNotifierProvider),
   ),
@@ -26,9 +24,7 @@ final logRepositoryProvider = Provider.autoDispose<LogRepository>(
 
 class LogRepository {
   final Dio dio;
-  final RemoteAppDatabase remoteDb;
   final LocalAppDatabase localDb;
-
   final Usuario? usuario;
 
   static final remoteLogEndpoint = Uri.http(
@@ -40,7 +36,7 @@ class LogRepository {
     '/api/v1/online/log',
   );
 
-  LogRepository(this.dio, this.remoteDb, this.localDb, this.usuario);
+  LogRepository(this.dio, this.localDb, this.usuario);
 
   Future<void> insetLog(
       {required String level, required String message, String? error}) async {
@@ -59,7 +55,7 @@ class LogRepository {
     final logDto = LogDTO.fromDomain(appLog);
 
     try {
-      await remoteDb.into(remoteDb.logTable).insert(logDto);
+      await localDb.into(localDb.logTable).insert(logDto);
       await syncLogs();
     } catch (e) {
       log.e(e);
@@ -81,7 +77,7 @@ class LogRepository {
 
   Future<List<LogDTO>> getLogsFromDb() async {
     try {
-      final logsDto = await remoteDb.select(remoteDb.logTable).get();
+      final logsDto = await localDb.select(localDb.logTable).get();
       return logsDto;
     } catch (e) {
       rethrow;
@@ -115,7 +111,7 @@ class LogRepository {
 
   Future<void> deleteLogInLocalDb({required int logId}) async {
     try {
-      await (remoteDb.delete(remoteDb.logTable)
+      await (localDb.delete(localDb.logTable)
             ..where((tbl) => tbl.id.equals(logId)))
           .go();
     } catch (e) {

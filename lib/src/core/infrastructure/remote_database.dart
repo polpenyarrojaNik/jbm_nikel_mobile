@@ -20,7 +20,6 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
-import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -40,14 +39,11 @@ import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
-import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
-import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
+
 import '../../features/visitas/infrastructure/visita_dto.dart';
-import '../../features/visitas/infrastructure/visita_local_dto.dart';
 
 import '../domain/isolate_request.dart';
 import 'familia_dto.dart';
-import 'log_dto.dart';
 
 part 'remote_database.g.dart';
 
@@ -110,11 +106,6 @@ const remoteDatabaseName = 'jbm.sqlite';
   DivisaTable,
   PedidoAlbaranTable,
   DescuentoGeneralTable,
-  LogTable,
-  CatalogoFavoritoTable,
-  PedidoVentaLocalTable,
-  PedidoVentaLineaLocalTable,
-  VisitaLocalTable,
 ])
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
@@ -126,7 +117,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 19;
+  int get schemaVersion => 20;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

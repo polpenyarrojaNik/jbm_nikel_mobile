@@ -16,10 +16,12 @@ import '../helpers/database_helper.dart';
 import '../presentation/app.dart';
 import 'remote_database.dart';
 
-final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>(
-  (ref) => InitDatabaseService(ref.watch(dioProvider),
-      ref.watch(appLocalDatabaseProvider), ref.watch(usuarioNotifierProvider)),
-);
+final initDatabaseServiceProvider =
+    Provider.autoDispose<InitDatabaseService>((ref) {
+  ref.read(appRemoteDatabaseProvider);
+  return InitDatabaseService(ref.watch(dioProvider),
+      ref.watch(appLocalDatabaseProvider), ref.watch(usuarioNotifierProvider));
+});
 
 class InitDatabaseService {
   final Dio dio;

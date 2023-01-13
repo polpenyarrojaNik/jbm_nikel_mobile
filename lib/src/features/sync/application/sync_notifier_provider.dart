@@ -29,6 +29,7 @@ final syncNotifierProvider =
 class SyncNotifier extends StateNotifier<SyncControllerState> {
   final Usuario? user;
   final LocalAppDatabase _localDb;
+
   SyncNotifier(this.user, this._localDb)
       : super(const SyncControllerState.initial());
 

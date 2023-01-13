@@ -5,7 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/tipo_catalogo_dto.dart';
@@ -26,11 +26,11 @@ import 'idioma_catalogo_dto.dart';
 
 final catalogoRepositoryProvider = Provider.autoDispose<CatalogoRepository>(
   (ref) {
-    final db = ref.watch(appRemoteDatabaseProvider);
+    final localDb = ref.watch(appLocalDatabaseProvider);
     final dio = ref.watch(dioProvider);
     final usuario = ref.watch(usuarioNotifierProvider)!;
 
-    return CatalogoRepository(dio, db, usuario);
+    return CatalogoRepository(dio, localDb, usuario);
   },
 );
 
@@ -57,10 +57,10 @@ final idiomaCatalogoListProvider =
 
 class CatalogoRepository {
   final Dio _dio;
-  final RemoteAppDatabase _db;
+  final LocalAppDatabase _localDb;
   final Usuario _usuario;
 
-  CatalogoRepository(this._dio, this._db, this._usuario);
+  CatalogoRepository(this._dio, this._localDb, this._usuario);
 
   Future<List<Catalogo>> getCatalogoList({
     TipoCatalogo? tipoCatalogo,
@@ -221,7 +221,9 @@ class CatalogoRepository {
 
   Future<void> setCatalogoToFavorite({required int catalogoId}) async {
     try {
-      await _db.into(_db.catalogoFavoritoTable).insertOnConflictUpdate(
+      await _localDb
+          .into(_localDb.catalogoFavoritoTable)
+          .insertOnConflictUpdate(
             CatalogoFavoritoTableCompanion(
               catalogoId: Value(catalogoId),
             ),
@@ -233,7 +235,7 @@ class CatalogoRepository {
 
   Future<void> removeCatalogoFavorito({required int catalogoId}) async {
     try {
-      await (_db.delete(_db.catalogoFavoritoTable)
+      await (_localDb.delete(_localDb.catalogoFavoritoTable)
             ..where(
               (tbl) => tbl.catalogoId.equals(catalogoId),
             ))
@@ -245,7 +247,7 @@ class CatalogoRepository {
 
   Future<bool> isCatalogoFavorite({required int catalogoId}) async {
     try {
-      final query = await (_db.select(_db.catalogoFavoritoTable)
+      final query = await (_localDb.select(_localDb.catalogoFavoritoTable)
             ..where((tbl) => tbl.catalogoId.equals(catalogoId)))
           .get();
 
@@ -262,7 +264,7 @@ class CatalogoRepository {
     String? searchText,
   }) async {
     try {
-      final query = _db.select(_db.catalogoFavoritoTable);
+      final query = _localDb.select(_localDb.catalogoFavoritoTable);
 
       // if (tipoCatalogo != null && tipoCatalogo.tipoCatalogoId != '00') {
       //   query.where((tbl) => tbl-)

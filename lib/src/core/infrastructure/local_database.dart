@@ -5,7 +5,9 @@ import 'package:drift/drift.dart';
 import 'package:drift/isolate.dart';
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/log_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/sync_datetime_dto.dart';
+import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -47,6 +49,8 @@ const localDatabaseName = 'local_jbm.sqlite';
   PedidoVentaLineaLocalTable,
   PedidoVentaLocalTable,
   SyncDateTimeTable,
+  LogTable,
+  CatalogoFavoritoTable,
 ])
 class LocalAppDatabase extends _$LocalAppDatabase {
   final bool test;
