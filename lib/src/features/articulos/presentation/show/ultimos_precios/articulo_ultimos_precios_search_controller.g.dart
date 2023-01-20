@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $ArticuloUltimosPreciosIndexScreenControllerHash() =>
+String _$ArticuloUltimosPreciosIndexScreenControllerHash() =>
     r'1dd1821f890011dfa5278fa991bfc60093d5d7cf';
 
 /// See also [ArticuloUltimosPreciosIndexScreenController].
@@ -46,7 +46,7 @@ class ArticuloUltimosPreciosIndexScreenControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : $ArticuloUltimosPreciosIndexScreenControllerHash,
+                  : _$ArticuloUltimosPreciosIndexScreenControllerHash,
         );
 
   final String articuloId;
@@ -123,7 +123,7 @@ abstract class _$ArticuloUltimosPreciosIndexScreenController
   });
 }
 
-String $ArticuloUltimosPreciosIndexScreenPaginatedControllerHash() =>
+String _$ArticuloUltimosPreciosIndexScreenPaginatedControllerHash() =>
     r'463df4f655692cec411990f3b1d20e68fe28cc71';
 
 /// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
@@ -143,7 +143,7 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : $ArticuloUltimosPreciosIndexScreenPaginatedControllerHash,
+                  : _$ArticuloUltimosPreciosIndexScreenPaginatedControllerHash,
         );
 
   final int page;

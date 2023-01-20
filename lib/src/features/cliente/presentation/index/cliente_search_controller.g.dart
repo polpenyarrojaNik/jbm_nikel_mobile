@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $ClienteIndexScreenControllerHash() =>
+String _$ClienteIndexScreenControllerHash() =>
     r'9f7924fc492bbbcf99b44cb898e9579d000da373';
 
 /// See also [ClienteIndexScreenController].
@@ -39,7 +39,7 @@ final clienteIndexScreenControllerProvider =
   name: r'clienteIndexScreenControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $ClienteIndexScreenControllerHash,
+      : _$ClienteIndexScreenControllerHash,
 );
 typedef ClienteIndexScreenControllerRef
     = AutoDisposeAsyncNotifierProviderRef<int>;
@@ -50,7 +50,7 @@ abstract class _$ClienteIndexScreenController
   FutureOr<int> build();
 }
 
-String $ClienteIndexScreenPaginatedControllerHash() =>
+String _$ClienteIndexScreenPaginatedControllerHash() =>
     r'7bd995c24a5638026dec0e2a9663e0c07f68a07e';
 
 /// See also [ClienteIndexScreenPaginatedController].
@@ -66,7 +66,7 @@ class ClienteIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : $ClienteIndexScreenPaginatedControllerHash,
+                  : _$ClienteIndexScreenPaginatedControllerHash,
         );
 
   final int page;

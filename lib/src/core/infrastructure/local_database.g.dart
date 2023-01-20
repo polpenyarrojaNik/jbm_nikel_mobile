@@ -3,254 +3,6 @@
 part of 'local_database.dart';
 
 // ignore_for_file: type=lint
-class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
-  final Value<String> visitaAppId;
-  final Value<String?> clienteId;
-  final Value<String> isClienteProvisional;
-  final Value<String?> clienteProvisionalNombre;
-  final Value<String?> clienteProvisionalEmail;
-  final Value<String?> clienteProvisionalTelefono;
-  final Value<String?> clienteProvisionalPoblacion;
-  final Value<DateTime> fecha;
-  final Value<String> numEmpl;
-  final Value<String> contacto;
-  final Value<String?> atendidoPor;
-  final Value<String?> resumen;
-  final Value<String?> marcasCompetencia;
-  final Value<double> latitud;
-  final Value<double> longitud;
-  final Value<String> enviada;
-  final Value<String> tratada;
-  final Value<String?> errorSyncMessage;
-  const VisitaLocalTableCompanion({
-    this.visitaAppId = const Value.absent(),
-    this.clienteId = const Value.absent(),
-    this.isClienteProvisional = const Value.absent(),
-    this.clienteProvisionalNombre = const Value.absent(),
-    this.clienteProvisionalEmail = const Value.absent(),
-    this.clienteProvisionalTelefono = const Value.absent(),
-    this.clienteProvisionalPoblacion = const Value.absent(),
-    this.fecha = const Value.absent(),
-    this.numEmpl = const Value.absent(),
-    this.contacto = const Value.absent(),
-    this.atendidoPor = const Value.absent(),
-    this.resumen = const Value.absent(),
-    this.marcasCompetencia = const Value.absent(),
-    this.latitud = const Value.absent(),
-    this.longitud = const Value.absent(),
-    this.enviada = const Value.absent(),
-    this.tratada = const Value.absent(),
-    this.errorSyncMessage = const Value.absent(),
-  });
-  VisitaLocalTableCompanion.insert({
-    required String visitaAppId,
-    this.clienteId = const Value.absent(),
-    required String isClienteProvisional,
-    this.clienteProvisionalNombre = const Value.absent(),
-    this.clienteProvisionalEmail = const Value.absent(),
-    this.clienteProvisionalTelefono = const Value.absent(),
-    this.clienteProvisionalPoblacion = const Value.absent(),
-    required DateTime fecha,
-    required String numEmpl,
-    required String contacto,
-    this.atendidoPor = const Value.absent(),
-    this.resumen = const Value.absent(),
-    this.marcasCompetencia = const Value.absent(),
-    required double latitud,
-    required double longitud,
-    this.enviada = const Value.absent(),
-    this.tratada = const Value.absent(),
-    this.errorSyncMessage = const Value.absent(),
-  })  : visitaAppId = Value(visitaAppId),
-        isClienteProvisional = Value(isClienteProvisional),
-        fecha = Value(fecha),
-        numEmpl = Value(numEmpl),
-        contacto = Value(contacto),
-        latitud = Value(latitud),
-        longitud = Value(longitud);
-  static Insertable<VisitaLocalDTO> custom({
-    Expression<String>? visitaAppId,
-    Expression<String>? clienteId,
-    Expression<String>? isClienteProvisional,
-    Expression<String>? clienteProvisionalNombre,
-    Expression<String>? clienteProvisionalEmail,
-    Expression<String>? clienteProvisionalTelefono,
-    Expression<String>? clienteProvisionalPoblacion,
-    Expression<DateTime>? fecha,
-    Expression<String>? numEmpl,
-    Expression<String>? contacto,
-    Expression<String>? atendidoPor,
-    Expression<String>? resumen,
-    Expression<String>? marcasCompetencia,
-    Expression<double>? latitud,
-    Expression<double>? longitud,
-    Expression<String>? enviada,
-    Expression<String>? tratada,
-    Expression<String>? errorSyncMessage,
-  }) {
-    return RawValuesInsertable({
-      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (isClienteProvisional != null)
-        'CLIENTE_POTENCIAL_SN': isClienteProvisional,
-      if (clienteProvisionalNombre != null)
-        'CLIENTE_POTENCIAL_NOMBRE': clienteProvisionalNombre,
-      if (clienteProvisionalEmail != null)
-        'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
-      if (clienteProvisionalTelefono != null)
-        'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
-      if (clienteProvisionalPoblacion != null)
-        'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
-      if (fecha != null) 'FECHA': fecha,
-      if (numEmpl != null) 'NUM_EMPL': numEmpl,
-      if (contacto != null) 'CONTACTO': contacto,
-      if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
-      if (resumen != null) 'RESUMEN': resumen,
-      if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
-      if (latitud != null) 'LATITUD': latitud,
-      if (longitud != null) 'LONGITUD': longitud,
-      if (enviada != null) 'ENVIADA': enviada,
-      if (tratada != null) 'TRATADA': tratada,
-      if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
-    });
-  }
-
-  VisitaLocalTableCompanion copyWith(
-      {Value<String>? visitaAppId,
-      Value<String?>? clienteId,
-      Value<String>? isClienteProvisional,
-      Value<String?>? clienteProvisionalNombre,
-      Value<String?>? clienteProvisionalEmail,
-      Value<String?>? clienteProvisionalTelefono,
-      Value<String?>? clienteProvisionalPoblacion,
-      Value<DateTime>? fecha,
-      Value<String>? numEmpl,
-      Value<String>? contacto,
-      Value<String?>? atendidoPor,
-      Value<String?>? resumen,
-      Value<String?>? marcasCompetencia,
-      Value<double>? latitud,
-      Value<double>? longitud,
-      Value<String>? enviada,
-      Value<String>? tratada,
-      Value<String?>? errorSyncMessage}) {
-    return VisitaLocalTableCompanion(
-      visitaAppId: visitaAppId ?? this.visitaAppId,
-      clienteId: clienteId ?? this.clienteId,
-      isClienteProvisional: isClienteProvisional ?? this.isClienteProvisional,
-      clienteProvisionalNombre:
-          clienteProvisionalNombre ?? this.clienteProvisionalNombre,
-      clienteProvisionalEmail:
-          clienteProvisionalEmail ?? this.clienteProvisionalEmail,
-      clienteProvisionalTelefono:
-          clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
-      clienteProvisionalPoblacion:
-          clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
-      fecha: fecha ?? this.fecha,
-      numEmpl: numEmpl ?? this.numEmpl,
-      contacto: contacto ?? this.contacto,
-      atendidoPor: atendidoPor ?? this.atendidoPor,
-      resumen: resumen ?? this.resumen,
-      marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
-      latitud: latitud ?? this.latitud,
-      longitud: longitud ?? this.longitud,
-      enviada: enviada ?? this.enviada,
-      tratada: tratada ?? this.tratada,
-      errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
-    );
-  }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    if (visitaAppId.present) {
-      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
-    }
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
-    }
-    if (isClienteProvisional.present) {
-      map['CLIENTE_POTENCIAL_SN'] =
-          Variable<String>(isClienteProvisional.value);
-    }
-    if (clienteProvisionalNombre.present) {
-      map['CLIENTE_POTENCIAL_NOMBRE'] =
-          Variable<String>(clienteProvisionalNombre.value);
-    }
-    if (clienteProvisionalEmail.present) {
-      map['CLIENTE_POTENCIAL_EMAIL'] =
-          Variable<String>(clienteProvisionalEmail.value);
-    }
-    if (clienteProvisionalTelefono.present) {
-      map['CLIENTE_POTENCIAL_TELEFONO'] =
-          Variable<String>(clienteProvisionalTelefono.value);
-    }
-    if (clienteProvisionalPoblacion.present) {
-      map['CLIENTE_POTENCIAL_POBLACION'] =
-          Variable<String>(clienteProvisionalPoblacion.value);
-    }
-    if (fecha.present) {
-      map['FECHA'] = Variable<DateTime>(fecha.value);
-    }
-    if (numEmpl.present) {
-      map['NUM_EMPL'] = Variable<String>(numEmpl.value);
-    }
-    if (contacto.present) {
-      map['CONTACTO'] = Variable<String>(contacto.value);
-    }
-    if (atendidoPor.present) {
-      map['ATENDIDO_POR'] = Variable<String>(atendidoPor.value);
-    }
-    if (resumen.present) {
-      map['RESUMEN'] = Variable<String>(resumen.value);
-    }
-    if (marcasCompetencia.present) {
-      map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
-    }
-    if (latitud.present) {
-      map['LATITUD'] = Variable<double>(latitud.value);
-    }
-    if (longitud.present) {
-      map['LONGITUD'] = Variable<double>(longitud.value);
-    }
-    if (enviada.present) {
-      map['ENVIADA'] = Variable<String>(enviada.value);
-    }
-    if (tratada.present) {
-      map['TRATADA'] = Variable<String>(tratada.value);
-    }
-    if (errorSyncMessage.present) {
-      map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
-    }
-    return map;
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('VisitaLocalTableCompanion(')
-          ..write('visitaAppId: $visitaAppId, ')
-          ..write('clienteId: $clienteId, ')
-          ..write('isClienteProvisional: $isClienteProvisional, ')
-          ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
-          ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
-          ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
-          ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
-          ..write('fecha: $fecha, ')
-          ..write('numEmpl: $numEmpl, ')
-          ..write('contacto: $contacto, ')
-          ..write('atendidoPor: $atendidoPor, ')
-          ..write('resumen: $resumen, ')
-          ..write('marcasCompetencia: $marcasCompetencia, ')
-          ..write('latitud: $latitud, ')
-          ..write('longitud: $longitud, ')
-          ..write('enviada: $enviada, ')
-          ..write('tratada: $tratada, ')
-          ..write('errorSyncMessage: $errorSyncMessage')
-          ..write(')'))
-        .toString();
-  }
-}
-
 class $VisitaLocalTableTable extends VisitaLocalTable
     with TableInfo<$VisitaLocalTableTable, VisitaLocalDTO> {
   @override
@@ -563,199 +315,249 @@ class $VisitaLocalTableTable extends VisitaLocalTable
   }
 }
 
-class PedidoVentaLineaLocalTableCompanion
-    extends UpdateCompanion<PedidoVentaLineaLocalDTO> {
-  final Value<String> pedidoVentaAppId;
-  final Value<String> pedidoVentaLineaAppId;
-  final Value<String> articuloId;
-  final Value<String> articuloDescription;
-  final Value<int> cantidad;
-  final Value<double> precioDivisa;
-  final Value<int> tipoPrecio;
-  final Value<double> descuento1;
-  final Value<double> descuento2;
-  final Value<double> descuento3;
-  final Value<double> descuentoProntoPago;
-  final Value<String> stockDisponibleSN;
-  final Value<DateTime?> fechaDisponible;
-  final Value<double> iva;
-  const PedidoVentaLineaLocalTableCompanion({
-    this.pedidoVentaAppId = const Value.absent(),
-    this.pedidoVentaLineaAppId = const Value.absent(),
-    this.articuloId = const Value.absent(),
-    this.articuloDescription = const Value.absent(),
-    this.cantidad = const Value.absent(),
-    this.precioDivisa = const Value.absent(),
-    this.tipoPrecio = const Value.absent(),
-    this.descuento1 = const Value.absent(),
-    this.descuento2 = const Value.absent(),
-    this.descuento3 = const Value.absent(),
-    this.descuentoProntoPago = const Value.absent(),
-    this.stockDisponibleSN = const Value.absent(),
-    this.fechaDisponible = const Value.absent(),
-    this.iva = const Value.absent(),
+class VisitaLocalTableCompanion extends UpdateCompanion<VisitaLocalDTO> {
+  final Value<String> visitaAppId;
+  final Value<String?> clienteId;
+  final Value<String> isClienteProvisional;
+  final Value<String?> clienteProvisionalNombre;
+  final Value<String?> clienteProvisionalEmail;
+  final Value<String?> clienteProvisionalTelefono;
+  final Value<String?> clienteProvisionalPoblacion;
+  final Value<DateTime> fecha;
+  final Value<String> numEmpl;
+  final Value<String> contacto;
+  final Value<String?> atendidoPor;
+  final Value<String?> resumen;
+  final Value<String?> marcasCompetencia;
+  final Value<double> latitud;
+  final Value<double> longitud;
+  final Value<String> enviada;
+  final Value<String> tratada;
+  final Value<String?> errorSyncMessage;
+  const VisitaLocalTableCompanion({
+    this.visitaAppId = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.isClienteProvisional = const Value.absent(),
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.numEmpl = const Value.absent(),
+    this.contacto = const Value.absent(),
+    this.atendidoPor = const Value.absent(),
+    this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
+    this.latitud = const Value.absent(),
+    this.longitud = const Value.absent(),
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
   });
-  PedidoVentaLineaLocalTableCompanion.insert({
-    required String pedidoVentaAppId,
-    required String pedidoVentaLineaAppId,
-    required String articuloId,
-    required String articuloDescription,
-    required int cantidad,
-    required double precioDivisa,
-    required int tipoPrecio,
-    required double descuento1,
-    required double descuento2,
-    required double descuento3,
-    required double descuentoProntoPago,
-    required String stockDisponibleSN,
-    this.fechaDisponible = const Value.absent(),
-    required double iva,
-  })  : pedidoVentaAppId = Value(pedidoVentaAppId),
-        pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
-        articuloId = Value(articuloId),
-        articuloDescription = Value(articuloDescription),
-        cantidad = Value(cantidad),
-        precioDivisa = Value(precioDivisa),
-        tipoPrecio = Value(tipoPrecio),
-        descuento1 = Value(descuento1),
-        descuento2 = Value(descuento2),
-        descuento3 = Value(descuento3),
-        descuentoProntoPago = Value(descuentoProntoPago),
-        stockDisponibleSN = Value(stockDisponibleSN),
-        iva = Value(iva);
-  static Insertable<PedidoVentaLineaLocalDTO> custom({
-    Expression<String>? pedidoVentaAppId,
-    Expression<String>? pedidoVentaLineaAppId,
-    Expression<String>? articuloId,
-    Expression<String>? articuloDescription,
-    Expression<int>? cantidad,
-    Expression<double>? precioDivisa,
-    Expression<int>? tipoPrecio,
-    Expression<double>? descuento1,
-    Expression<double>? descuento2,
-    Expression<double>? descuento3,
-    Expression<double>? descuentoProntoPago,
-    Expression<String>? stockDisponibleSN,
-    Expression<DateTime>? fechaDisponible,
-    Expression<double>? iva,
+  VisitaLocalTableCompanion.insert({
+    required String visitaAppId,
+    this.clienteId = const Value.absent(),
+    required String isClienteProvisional,
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
+    required DateTime fecha,
+    required String numEmpl,
+    required String contacto,
+    this.atendidoPor = const Value.absent(),
+    this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
+    required double latitud,
+    required double longitud,
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
+  })  : visitaAppId = Value(visitaAppId),
+        isClienteProvisional = Value(isClienteProvisional),
+        fecha = Value(fecha),
+        numEmpl = Value(numEmpl),
+        contacto = Value(contacto),
+        latitud = Value(latitud),
+        longitud = Value(longitud);
+  static Insertable<VisitaLocalDTO> custom({
+    Expression<String>? visitaAppId,
+    Expression<String>? clienteId,
+    Expression<String>? isClienteProvisional,
+    Expression<String>? clienteProvisionalNombre,
+    Expression<String>? clienteProvisionalEmail,
+    Expression<String>? clienteProvisionalTelefono,
+    Expression<String>? clienteProvisionalPoblacion,
+    Expression<DateTime>? fecha,
+    Expression<String>? numEmpl,
+    Expression<String>? contacto,
+    Expression<String>? atendidoPor,
+    Expression<String>? resumen,
+    Expression<String>? marcasCompetencia,
+    Expression<double>? latitud,
+    Expression<double>? longitud,
+    Expression<String>? enviada,
+    Expression<String>? tratada,
+    Expression<String>? errorSyncMessage,
   }) {
     return RawValuesInsertable({
-      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
-      if (pedidoVentaLineaAppId != null) 'LIN_APP_ID': pedidoVentaLineaAppId,
-      if (articuloId != null) 'PRODUCTO_ID': articuloId,
-      if (articuloDescription != null) 'DENOMINACION': articuloDescription,
-      if (cantidad != null) 'CANTIDAD': cantidad,
-      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
-      if (tipoPrecio != null) 'TPRECIO': tipoPrecio,
-      if (descuento1 != null) 'DTO1': descuento1,
-      if (descuento2 != null) 'DTO2': descuento2,
-      if (descuento3 != null) 'DTO3': descuento3,
-      if (descuentoProntoPago != null) 'DTO_PP': descuentoProntoPago,
-      if (stockDisponibleSN != null) 'STOCK_DISPONIBLE_SN': stockDisponibleSN,
-      if (fechaDisponible != null) 'F_DISPONIBLE': fechaDisponible,
-      if (iva != null) 'IVA': iva,
+      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (isClienteProvisional != null)
+        'CLIENTE_POTENCIAL_SN': isClienteProvisional,
+      if (clienteProvisionalNombre != null)
+        'CLIENTE_POTENCIAL_NOMBRE': clienteProvisionalNombre,
+      if (clienteProvisionalEmail != null)
+        'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
+      if (clienteProvisionalTelefono != null)
+        'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
+      if (clienteProvisionalPoblacion != null)
+        'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
+      if (fecha != null) 'FECHA': fecha,
+      if (numEmpl != null) 'NUM_EMPL': numEmpl,
+      if (contacto != null) 'CONTACTO': contacto,
+      if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
+      if (resumen != null) 'RESUMEN': resumen,
+      if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
+      if (latitud != null) 'LATITUD': latitud,
+      if (longitud != null) 'LONGITUD': longitud,
+      if (enviada != null) 'ENVIADA': enviada,
+      if (tratada != null) 'TRATADA': tratada,
+      if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
     });
   }
 
-  PedidoVentaLineaLocalTableCompanion copyWith(
-      {Value<String>? pedidoVentaAppId,
-      Value<String>? pedidoVentaLineaAppId,
-      Value<String>? articuloId,
-      Value<String>? articuloDescription,
-      Value<int>? cantidad,
-      Value<double>? precioDivisa,
-      Value<int>? tipoPrecio,
-      Value<double>? descuento1,
-      Value<double>? descuento2,
-      Value<double>? descuento3,
-      Value<double>? descuentoProntoPago,
-      Value<String>? stockDisponibleSN,
-      Value<DateTime?>? fechaDisponible,
-      Value<double>? iva}) {
-    return PedidoVentaLineaLocalTableCompanion(
-      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
-      pedidoVentaLineaAppId:
-          pedidoVentaLineaAppId ?? this.pedidoVentaLineaAppId,
-      articuloId: articuloId ?? this.articuloId,
-      articuloDescription: articuloDescription ?? this.articuloDescription,
-      cantidad: cantidad ?? this.cantidad,
-      precioDivisa: precioDivisa ?? this.precioDivisa,
-      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
-      descuento1: descuento1 ?? this.descuento1,
-      descuento2: descuento2 ?? this.descuento2,
-      descuento3: descuento3 ?? this.descuento3,
-      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
-      stockDisponibleSN: stockDisponibleSN ?? this.stockDisponibleSN,
-      fechaDisponible: fechaDisponible ?? this.fechaDisponible,
-      iva: iva ?? this.iva,
+  VisitaLocalTableCompanion copyWith(
+      {Value<String>? visitaAppId,
+      Value<String?>? clienteId,
+      Value<String>? isClienteProvisional,
+      Value<String?>? clienteProvisionalNombre,
+      Value<String?>? clienteProvisionalEmail,
+      Value<String?>? clienteProvisionalTelefono,
+      Value<String?>? clienteProvisionalPoblacion,
+      Value<DateTime>? fecha,
+      Value<String>? numEmpl,
+      Value<String>? contacto,
+      Value<String?>? atendidoPor,
+      Value<String?>? resumen,
+      Value<String?>? marcasCompetencia,
+      Value<double>? latitud,
+      Value<double>? longitud,
+      Value<String>? enviada,
+      Value<String>? tratada,
+      Value<String?>? errorSyncMessage}) {
+    return VisitaLocalTableCompanion(
+      visitaAppId: visitaAppId ?? this.visitaAppId,
+      clienteId: clienteId ?? this.clienteId,
+      isClienteProvisional: isClienteProvisional ?? this.isClienteProvisional,
+      clienteProvisionalNombre:
+          clienteProvisionalNombre ?? this.clienteProvisionalNombre,
+      clienteProvisionalEmail:
+          clienteProvisionalEmail ?? this.clienteProvisionalEmail,
+      clienteProvisionalTelefono:
+          clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
+      clienteProvisionalPoblacion:
+          clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
+      fecha: fecha ?? this.fecha,
+      numEmpl: numEmpl ?? this.numEmpl,
+      contacto: contacto ?? this.contacto,
+      atendidoPor: atendidoPor ?? this.atendidoPor,
+      resumen: resumen ?? this.resumen,
+      marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
+      latitud: latitud ?? this.latitud,
+      longitud: longitud ?? this.longitud,
+      enviada: enviada ?? this.enviada,
+      tratada: tratada ?? this.tratada,
+      errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (pedidoVentaAppId.present) {
-      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    if (visitaAppId.present) {
+      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
     }
-    if (pedidoVentaLineaAppId.present) {
-      map['LIN_APP_ID'] = Variable<String>(pedidoVentaLineaAppId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (articuloId.present) {
-      map['PRODUCTO_ID'] = Variable<String>(articuloId.value);
+    if (isClienteProvisional.present) {
+      map['CLIENTE_POTENCIAL_SN'] =
+          Variable<String>(isClienteProvisional.value);
     }
-    if (articuloDescription.present) {
-      map['DENOMINACION'] = Variable<String>(articuloDescription.value);
+    if (clienteProvisionalNombre.present) {
+      map['CLIENTE_POTENCIAL_NOMBRE'] =
+          Variable<String>(clienteProvisionalNombre.value);
     }
-    if (cantidad.present) {
-      map['CANTIDAD'] = Variable<int>(cantidad.value);
+    if (clienteProvisionalEmail.present) {
+      map['CLIENTE_POTENCIAL_EMAIL'] =
+          Variable<String>(clienteProvisionalEmail.value);
     }
-    if (precioDivisa.present) {
-      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
+    if (clienteProvisionalTelefono.present) {
+      map['CLIENTE_POTENCIAL_TELEFONO'] =
+          Variable<String>(clienteProvisionalTelefono.value);
     }
-    if (tipoPrecio.present) {
-      map['TPRECIO'] = Variable<int>(tipoPrecio.value);
+    if (clienteProvisionalPoblacion.present) {
+      map['CLIENTE_POTENCIAL_POBLACION'] =
+          Variable<String>(clienteProvisionalPoblacion.value);
     }
-    if (descuento1.present) {
-      map['DTO1'] = Variable<double>(descuento1.value);
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
     }
-    if (descuento2.present) {
-      map['DTO2'] = Variable<double>(descuento2.value);
+    if (numEmpl.present) {
+      map['NUM_EMPL'] = Variable<String>(numEmpl.value);
     }
-    if (descuento3.present) {
-      map['DTO3'] = Variable<double>(descuento3.value);
+    if (contacto.present) {
+      map['CONTACTO'] = Variable<String>(contacto.value);
     }
-    if (descuentoProntoPago.present) {
-      map['DTO_PP'] = Variable<double>(descuentoProntoPago.value);
+    if (atendidoPor.present) {
+      map['ATENDIDO_POR'] = Variable<String>(atendidoPor.value);
     }
-    if (stockDisponibleSN.present) {
-      map['STOCK_DISPONIBLE_SN'] = Variable<String>(stockDisponibleSN.value);
+    if (resumen.present) {
+      map['RESUMEN'] = Variable<String>(resumen.value);
     }
-    if (fechaDisponible.present) {
-      map['F_DISPONIBLE'] = Variable<DateTime>(fechaDisponible.value);
+    if (marcasCompetencia.present) {
+      map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
     }
-    if (iva.present) {
-      map['IVA'] = Variable<double>(iva.value);
+    if (latitud.present) {
+      map['LATITUD'] = Variable<double>(latitud.value);
+    }
+    if (longitud.present) {
+      map['LONGITUD'] = Variable<double>(longitud.value);
+    }
+    if (enviada.present) {
+      map['ENVIADA'] = Variable<String>(enviada.value);
+    }
+    if (tratada.present) {
+      map['TRATADA'] = Variable<String>(tratada.value);
+    }
+    if (errorSyncMessage.present) {
+      map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('PedidoVentaLineaLocalTableCompanion(')
-          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
-          ..write('pedidoVentaLineaAppId: $pedidoVentaLineaAppId, ')
-          ..write('articuloId: $articuloId, ')
-          ..write('articuloDescription: $articuloDescription, ')
-          ..write('cantidad: $cantidad, ')
-          ..write('precioDivisa: $precioDivisa, ')
-          ..write('tipoPrecio: $tipoPrecio, ')
-          ..write('descuento1: $descuento1, ')
-          ..write('descuento2: $descuento2, ')
-          ..write('descuento3: $descuento3, ')
-          ..write('descuentoProntoPago: $descuentoProntoPago, ')
-          ..write('stockDisponibleSN: $stockDisponibleSN, ')
-          ..write('fechaDisponible: $fechaDisponible, ')
-          ..write('iva: $iva')
+    return (StringBuffer('VisitaLocalTableCompanion(')
+          ..write('visitaAppId: $visitaAppId, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('isClienteProvisional: $isClienteProvisional, ')
+          ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
+          ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
+          ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
+          ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
+          ..write('fecha: $fecha, ')
+          ..write('numEmpl: $numEmpl, ')
+          ..write('contacto: $contacto, ')
+          ..write('atendidoPor: $atendidoPor, ')
+          ..write('resumen: $resumen, ')
+          ..write('marcasCompetencia: $marcasCompetencia, ')
+          ..write('latitud: $latitud, ')
+          ..write('longitud: $longitud, ')
+          ..write('enviada: $enviada, ')
+          ..write('tratada: $tratada, ')
+          ..write('errorSyncMessage: $errorSyncMessage')
           ..write(')'))
         .toString();
   }
@@ -1023,303 +825,199 @@ class $PedidoVentaLineaLocalTableTable extends PedidoVentaLineaLocalTable
   }
 }
 
-class PedidoVentaLocalTableCompanion
-    extends UpdateCompanion<PedidoVentaLocalDTO> {
-  final Value<String?> usuarioId;
+class PedidoVentaLineaLocalTableCompanion
+    extends UpdateCompanion<PedidoVentaLineaLocalDTO> {
   final Value<String> pedidoVentaAppId;
-  final Value<String> empresaId;
-  final Value<DateTime> fechaAlta;
-  final Value<String> clienteId;
-  final Value<String> nombreCliente;
-  final Value<String?> direccionId;
-  final Value<String?> direccion1;
-  final Value<String?> direccion2;
-  final Value<String?> codigoPostal;
-  final Value<String?> poblacion;
-  final Value<String?> provincia;
-  final Value<String?> paisId;
-  final Value<String?> divisaId;
-  final Value<String?> pedidoCliente;
-  final Value<String?> observaciones;
-  final Value<String> oferta;
-  final Value<DateTime?> ofertaFechaHasta;
+  final Value<String> pedidoVentaLineaAppId;
+  final Value<String> articuloId;
+  final Value<String> articuloDescription;
+  final Value<int> cantidad;
+  final Value<double> precioDivisa;
+  final Value<int> tipoPrecio;
+  final Value<double> descuento1;
+  final Value<double> descuento2;
+  final Value<double> descuento3;
+  final Value<double> descuentoProntoPago;
+  final Value<String> stockDisponibleSN;
+  final Value<DateTime?> fechaDisponible;
   final Value<double> iva;
-  final Value<double> dtoBonificacion;
-  final Value<String> enviada;
-  final Value<String> tratada;
-  final Value<String> borrador;
-  final Value<String?> errorSyncMessage;
-  const PedidoVentaLocalTableCompanion({
-    this.usuarioId = const Value.absent(),
+  const PedidoVentaLineaLocalTableCompanion({
     this.pedidoVentaAppId = const Value.absent(),
-    this.empresaId = const Value.absent(),
-    this.fechaAlta = const Value.absent(),
-    this.clienteId = const Value.absent(),
-    this.nombreCliente = const Value.absent(),
-    this.direccionId = const Value.absent(),
-    this.direccion1 = const Value.absent(),
-    this.direccion2 = const Value.absent(),
-    this.codigoPostal = const Value.absent(),
-    this.poblacion = const Value.absent(),
-    this.provincia = const Value.absent(),
-    this.paisId = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.pedidoCliente = const Value.absent(),
-    this.observaciones = const Value.absent(),
-    this.oferta = const Value.absent(),
-    this.ofertaFechaHasta = const Value.absent(),
+    this.pedidoVentaLineaAppId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.articuloDescription = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.precioDivisa = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.descuento1 = const Value.absent(),
+    this.descuento2 = const Value.absent(),
+    this.descuento3 = const Value.absent(),
+    this.descuentoProntoPago = const Value.absent(),
+    this.stockDisponibleSN = const Value.absent(),
+    this.fechaDisponible = const Value.absent(),
     this.iva = const Value.absent(),
-    this.dtoBonificacion = const Value.absent(),
-    this.enviada = const Value.absent(),
-    this.tratada = const Value.absent(),
-    this.borrador = const Value.absent(),
-    this.errorSyncMessage = const Value.absent(),
   });
-  PedidoVentaLocalTableCompanion.insert({
-    this.usuarioId = const Value.absent(),
+  PedidoVentaLineaLocalTableCompanion.insert({
     required String pedidoVentaAppId,
-    required String empresaId,
-    required DateTime fechaAlta,
-    required String clienteId,
-    required String nombreCliente,
-    this.direccionId = const Value.absent(),
-    this.direccion1 = const Value.absent(),
-    this.direccion2 = const Value.absent(),
-    this.codigoPostal = const Value.absent(),
-    this.poblacion = const Value.absent(),
-    this.provincia = const Value.absent(),
-    this.paisId = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.pedidoCliente = const Value.absent(),
-    this.observaciones = const Value.absent(),
-    required String oferta,
-    this.ofertaFechaHasta = const Value.absent(),
+    required String pedidoVentaLineaAppId,
+    required String articuloId,
+    required String articuloDescription,
+    required int cantidad,
+    required double precioDivisa,
+    required int tipoPrecio,
+    required double descuento1,
+    required double descuento2,
+    required double descuento3,
+    required double descuentoProntoPago,
+    required String stockDisponibleSN,
+    this.fechaDisponible = const Value.absent(),
     required double iva,
-    required double dtoBonificacion,
-    this.enviada = const Value.absent(),
-    this.tratada = const Value.absent(),
-    this.borrador = const Value.absent(),
-    this.errorSyncMessage = const Value.absent(),
   })  : pedidoVentaAppId = Value(pedidoVentaAppId),
-        empresaId = Value(empresaId),
-        fechaAlta = Value(fechaAlta),
-        clienteId = Value(clienteId),
-        nombreCliente = Value(nombreCliente),
-        oferta = Value(oferta),
-        iva = Value(iva),
-        dtoBonificacion = Value(dtoBonificacion);
-  static Insertable<PedidoVentaLocalDTO> custom({
-    Expression<String>? usuarioId,
+        pedidoVentaLineaAppId = Value(pedidoVentaLineaAppId),
+        articuloId = Value(articuloId),
+        articuloDescription = Value(articuloDescription),
+        cantidad = Value(cantidad),
+        precioDivisa = Value(precioDivisa),
+        tipoPrecio = Value(tipoPrecio),
+        descuento1 = Value(descuento1),
+        descuento2 = Value(descuento2),
+        descuento3 = Value(descuento3),
+        descuentoProntoPago = Value(descuentoProntoPago),
+        stockDisponibleSN = Value(stockDisponibleSN),
+        iva = Value(iva);
+  static Insertable<PedidoVentaLineaLocalDTO> custom({
     Expression<String>? pedidoVentaAppId,
-    Expression<String>? empresaId,
-    Expression<DateTime>? fechaAlta,
-    Expression<String>? clienteId,
-    Expression<String>? nombreCliente,
-    Expression<String>? direccionId,
-    Expression<String>? direccion1,
-    Expression<String>? direccion2,
-    Expression<String>? codigoPostal,
-    Expression<String>? poblacion,
-    Expression<String>? provincia,
-    Expression<String>? paisId,
-    Expression<String>? divisaId,
-    Expression<String>? pedidoCliente,
-    Expression<String>? observaciones,
-    Expression<String>? oferta,
-    Expression<DateTime>? ofertaFechaHasta,
+    Expression<String>? pedidoVentaLineaAppId,
+    Expression<String>? articuloId,
+    Expression<String>? articuloDescription,
+    Expression<int>? cantidad,
+    Expression<double>? precioDivisa,
+    Expression<int>? tipoPrecio,
+    Expression<double>? descuento1,
+    Expression<double>? descuento2,
+    Expression<double>? descuento3,
+    Expression<double>? descuentoProntoPago,
+    Expression<String>? stockDisponibleSN,
+    Expression<DateTime>? fechaDisponible,
     Expression<double>? iva,
-    Expression<double>? dtoBonificacion,
-    Expression<String>? enviada,
-    Expression<String>? tratada,
-    Expression<String>? borrador,
-    Expression<String>? errorSyncMessage,
   }) {
     return RawValuesInsertable({
-      if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
-      if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (fechaAlta != null) 'FECHA_ALTA': fechaAlta,
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (nombreCliente != null) 'NOMBRE_CLIENTE': nombreCliente,
-      if (direccionId != null) 'DIRECCION_ID': direccionId,
-      if (direccion1 != null) 'DIRECCION1': direccion1,
-      if (direccion2 != null) 'DIRECCION2': direccion2,
-      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
-      if (poblacion != null) 'POBLACION': poblacion,
-      if (provincia != null) 'PROVINCIA': provincia,
-      if (paisId != null) 'PAIS_ID': paisId,
-      if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (pedidoCliente != null) 'PEDIDO_CLIENTE': pedidoCliente,
-      if (observaciones != null) 'OBSERVACIONES': observaciones,
-      if (oferta != null) 'OFERTA_SN': oferta,
-      if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
+      if (pedidoVentaLineaAppId != null) 'LIN_APP_ID': pedidoVentaLineaAppId,
+      if (articuloId != null) 'PRODUCTO_ID': articuloId,
+      if (articuloDescription != null) 'DENOMINACION': articuloDescription,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
+      if (tipoPrecio != null) 'TPRECIO': tipoPrecio,
+      if (descuento1 != null) 'DTO1': descuento1,
+      if (descuento2 != null) 'DTO2': descuento2,
+      if (descuento3 != null) 'DTO3': descuento3,
+      if (descuentoProntoPago != null) 'DTO_PP': descuentoProntoPago,
+      if (stockDisponibleSN != null) 'STOCK_DISPONIBLE_SN': stockDisponibleSN,
+      if (fechaDisponible != null) 'F_DISPONIBLE': fechaDisponible,
       if (iva != null) 'IVA': iva,
-      if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
-      if (enviada != null) 'ENVIADA': enviada,
-      if (tratada != null) 'TRATADA': tratada,
-      if (borrador != null) 'BORRADOR': borrador,
-      if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
     });
   }
 
-  PedidoVentaLocalTableCompanion copyWith(
-      {Value<String?>? usuarioId,
-      Value<String>? pedidoVentaAppId,
-      Value<String>? empresaId,
-      Value<DateTime>? fechaAlta,
-      Value<String>? clienteId,
-      Value<String>? nombreCliente,
-      Value<String?>? direccionId,
-      Value<String?>? direccion1,
-      Value<String?>? direccion2,
-      Value<String?>? codigoPostal,
-      Value<String?>? poblacion,
-      Value<String?>? provincia,
-      Value<String?>? paisId,
-      Value<String?>? divisaId,
-      Value<String?>? pedidoCliente,
-      Value<String?>? observaciones,
-      Value<String>? oferta,
-      Value<DateTime?>? ofertaFechaHasta,
-      Value<double>? iva,
-      Value<double>? dtoBonificacion,
-      Value<String>? enviada,
-      Value<String>? tratada,
-      Value<String>? borrador,
-      Value<String?>? errorSyncMessage}) {
-    return PedidoVentaLocalTableCompanion(
-      usuarioId: usuarioId ?? this.usuarioId,
+  PedidoVentaLineaLocalTableCompanion copyWith(
+      {Value<String>? pedidoVentaAppId,
+      Value<String>? pedidoVentaLineaAppId,
+      Value<String>? articuloId,
+      Value<String>? articuloDescription,
+      Value<int>? cantidad,
+      Value<double>? precioDivisa,
+      Value<int>? tipoPrecio,
+      Value<double>? descuento1,
+      Value<double>? descuento2,
+      Value<double>? descuento3,
+      Value<double>? descuentoProntoPago,
+      Value<String>? stockDisponibleSN,
+      Value<DateTime?>? fechaDisponible,
+      Value<double>? iva}) {
+    return PedidoVentaLineaLocalTableCompanion(
       pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
-      empresaId: empresaId ?? this.empresaId,
-      fechaAlta: fechaAlta ?? this.fechaAlta,
-      clienteId: clienteId ?? this.clienteId,
-      nombreCliente: nombreCliente ?? this.nombreCliente,
-      direccionId: direccionId ?? this.direccionId,
-      direccion1: direccion1 ?? this.direccion1,
-      direccion2: direccion2 ?? this.direccion2,
-      codigoPostal: codigoPostal ?? this.codigoPostal,
-      poblacion: poblacion ?? this.poblacion,
-      provincia: provincia ?? this.provincia,
-      paisId: paisId ?? this.paisId,
-      divisaId: divisaId ?? this.divisaId,
-      pedidoCliente: pedidoCliente ?? this.pedidoCliente,
-      observaciones: observaciones ?? this.observaciones,
-      oferta: oferta ?? this.oferta,
-      ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
+      pedidoVentaLineaAppId:
+          pedidoVentaLineaAppId ?? this.pedidoVentaLineaAppId,
+      articuloId: articuloId ?? this.articuloId,
+      articuloDescription: articuloDescription ?? this.articuloDescription,
+      cantidad: cantidad ?? this.cantidad,
+      precioDivisa: precioDivisa ?? this.precioDivisa,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      descuento1: descuento1 ?? this.descuento1,
+      descuento2: descuento2 ?? this.descuento2,
+      descuento3: descuento3 ?? this.descuento3,
+      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
+      stockDisponibleSN: stockDisponibleSN ?? this.stockDisponibleSN,
+      fechaDisponible: fechaDisponible ?? this.fechaDisponible,
       iva: iva ?? this.iva,
-      dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
-      enviada: enviada ?? this.enviada,
-      tratada: tratada ?? this.tratada,
-      borrador: borrador ?? this.borrador,
-      errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (usuarioId.present) {
-      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
-    }
     if (pedidoVentaAppId.present) {
       map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
     }
-    if (empresaId.present) {
-      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    if (pedidoVentaLineaAppId.present) {
+      map['LIN_APP_ID'] = Variable<String>(pedidoVentaLineaAppId.value);
     }
-    if (fechaAlta.present) {
-      map['FECHA_ALTA'] = Variable<DateTime>(fechaAlta.value);
+    if (articuloId.present) {
+      map['PRODUCTO_ID'] = Variable<String>(articuloId.value);
     }
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    if (articuloDescription.present) {
+      map['DENOMINACION'] = Variable<String>(articuloDescription.value);
     }
-    if (nombreCliente.present) {
-      map['NOMBRE_CLIENTE'] = Variable<String>(nombreCliente.value);
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
-    if (direccionId.present) {
-      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    if (precioDivisa.present) {
+      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
     }
-    if (direccion1.present) {
-      map['DIRECCION1'] = Variable<String>(direccion1.value);
+    if (tipoPrecio.present) {
+      map['TPRECIO'] = Variable<int>(tipoPrecio.value);
     }
-    if (direccion2.present) {
-      map['DIRECCION2'] = Variable<String>(direccion2.value);
+    if (descuento1.present) {
+      map['DTO1'] = Variable<double>(descuento1.value);
     }
-    if (codigoPostal.present) {
-      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    if (descuento2.present) {
+      map['DTO2'] = Variable<double>(descuento2.value);
     }
-    if (poblacion.present) {
-      map['POBLACION'] = Variable<String>(poblacion.value);
+    if (descuento3.present) {
+      map['DTO3'] = Variable<double>(descuento3.value);
     }
-    if (provincia.present) {
-      map['PROVINCIA'] = Variable<String>(provincia.value);
+    if (descuentoProntoPago.present) {
+      map['DTO_PP'] = Variable<double>(descuentoProntoPago.value);
     }
-    if (paisId.present) {
-      map['PAIS_ID'] = Variable<String>(paisId.value);
+    if (stockDisponibleSN.present) {
+      map['STOCK_DISPONIBLE_SN'] = Variable<String>(stockDisponibleSN.value);
     }
-    if (divisaId.present) {
-      map['DIVISA_ID'] = Variable<String>(divisaId.value);
-    }
-    if (pedidoCliente.present) {
-      map['PEDIDO_CLIENTE'] = Variable<String>(pedidoCliente.value);
-    }
-    if (observaciones.present) {
-      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
-    }
-    if (oferta.present) {
-      map['OFERTA_SN'] = Variable<String>(oferta.value);
-    }
-    if (ofertaFechaHasta.present) {
-      map['OFERTA_FECHA_HASTA'] = Variable<DateTime>(ofertaFechaHasta.value);
+    if (fechaDisponible.present) {
+      map['F_DISPONIBLE'] = Variable<DateTime>(fechaDisponible.value);
     }
     if (iva.present) {
       map['IVA'] = Variable<double>(iva.value);
-    }
-    if (dtoBonificacion.present) {
-      map['DTO_BONIFICACION'] = Variable<double>(dtoBonificacion.value);
-    }
-    if (enviada.present) {
-      map['ENVIADA'] = Variable<String>(enviada.value);
-    }
-    if (tratada.present) {
-      map['TRATADA'] = Variable<String>(tratada.value);
-    }
-    if (borrador.present) {
-      map['BORRADOR'] = Variable<String>(borrador.value);
-    }
-    if (errorSyncMessage.present) {
-      map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('PedidoVentaLocalTableCompanion(')
-          ..write('usuarioId: $usuarioId, ')
+    return (StringBuffer('PedidoVentaLineaLocalTableCompanion(')
           ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
-          ..write('empresaId: $empresaId, ')
-          ..write('fechaAlta: $fechaAlta, ')
-          ..write('clienteId: $clienteId, ')
-          ..write('nombreCliente: $nombreCliente, ')
-          ..write('direccionId: $direccionId, ')
-          ..write('direccion1: $direccion1, ')
-          ..write('direccion2: $direccion2, ')
-          ..write('codigoPostal: $codigoPostal, ')
-          ..write('poblacion: $poblacion, ')
-          ..write('provincia: $provincia, ')
-          ..write('paisId: $paisId, ')
-          ..write('divisaId: $divisaId, ')
-          ..write('pedidoCliente: $pedidoCliente, ')
-          ..write('observaciones: $observaciones, ')
-          ..write('oferta: $oferta, ')
-          ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
-          ..write('iva: $iva, ')
-          ..write('dtoBonificacion: $dtoBonificacion, ')
-          ..write('enviada: $enviada, ')
-          ..write('tratada: $tratada, ')
-          ..write('borrador: $borrador, ')
-          ..write('errorSyncMessage: $errorSyncMessage')
+          ..write('pedidoVentaLineaAppId: $pedidoVentaLineaAppId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloDescription: $articuloDescription, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('precioDivisa: $precioDivisa, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('descuento1: $descuento1, ')
+          ..write('descuento2: $descuento2, ')
+          ..write('descuento3: $descuento3, ')
+          ..write('descuentoProntoPago: $descuentoProntoPago, ')
+          ..write('stockDisponibleSN: $stockDisponibleSN, ')
+          ..write('fechaDisponible: $fechaDisponible, ')
+          ..write('iva: $iva')
           ..write(')'))
         .toString();
   }
@@ -1715,103 +1413,303 @@ class $PedidoVentaLocalTableTable extends PedidoVentaLocalTable
   }
 }
 
-class SyncDateTimeTableCompanion extends UpdateCompanion<SyncDateTimeDTO> {
-  final Value<int> id;
-  final Value<int> dbSchemaVersion;
-  final Value<DateTime> articuloUltimaSync;
-  final Value<DateTime> clienteUltimaSync;
-  final Value<DateTime> pedidoUltimaSync;
-  final Value<DateTime> visitaUltimaSync;
-  const SyncDateTimeTableCompanion({
-    this.id = const Value.absent(),
-    this.dbSchemaVersion = const Value.absent(),
-    this.articuloUltimaSync = const Value.absent(),
-    this.clienteUltimaSync = const Value.absent(),
-    this.pedidoUltimaSync = const Value.absent(),
-    this.visitaUltimaSync = const Value.absent(),
+class PedidoVentaLocalTableCompanion
+    extends UpdateCompanion<PedidoVentaLocalDTO> {
+  final Value<String?> usuarioId;
+  final Value<String> pedidoVentaAppId;
+  final Value<String> empresaId;
+  final Value<DateTime> fechaAlta;
+  final Value<String> clienteId;
+  final Value<String> nombreCliente;
+  final Value<String?> direccionId;
+  final Value<String?> direccion1;
+  final Value<String?> direccion2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
+  final Value<String?> divisaId;
+  final Value<String?> pedidoCliente;
+  final Value<String?> observaciones;
+  final Value<String> oferta;
+  final Value<DateTime?> ofertaFechaHasta;
+  final Value<double> iva;
+  final Value<double> dtoBonificacion;
+  final Value<String> enviada;
+  final Value<String> tratada;
+  final Value<String> borrador;
+  final Value<String?> errorSyncMessage;
+  const PedidoVentaLocalTableCompanion({
+    this.usuarioId = const Value.absent(),
+    this.pedidoVentaAppId = const Value.absent(),
+    this.empresaId = const Value.absent(),
+    this.fechaAlta = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.pedidoCliente = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    this.oferta = const Value.absent(),
+    this.ofertaFechaHasta = const Value.absent(),
+    this.iva = const Value.absent(),
+    this.dtoBonificacion = const Value.absent(),
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+    this.borrador = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
   });
-  SyncDateTimeTableCompanion.insert({
-    this.id = const Value.absent(),
-    required int dbSchemaVersion,
-    required DateTime articuloUltimaSync,
-    required DateTime clienteUltimaSync,
-    required DateTime pedidoUltimaSync,
-    required DateTime visitaUltimaSync,
-  })  : dbSchemaVersion = Value(dbSchemaVersion),
-        articuloUltimaSync = Value(articuloUltimaSync),
-        clienteUltimaSync = Value(clienteUltimaSync),
-        pedidoUltimaSync = Value(pedidoUltimaSync),
-        visitaUltimaSync = Value(visitaUltimaSync);
-  static Insertable<SyncDateTimeDTO> custom({
-    Expression<int>? id,
-    Expression<int>? dbSchemaVersion,
-    Expression<DateTime>? articuloUltimaSync,
-    Expression<DateTime>? clienteUltimaSync,
-    Expression<DateTime>? pedidoUltimaSync,
-    Expression<DateTime>? visitaUltimaSync,
+  PedidoVentaLocalTableCompanion.insert({
+    this.usuarioId = const Value.absent(),
+    required String pedidoVentaAppId,
+    required String empresaId,
+    required DateTime fechaAlta,
+    required String clienteId,
+    required String nombreCliente,
+    this.direccionId = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.pedidoCliente = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    required String oferta,
+    this.ofertaFechaHasta = const Value.absent(),
+    required double iva,
+    required double dtoBonificacion,
+    this.enviada = const Value.absent(),
+    this.tratada = const Value.absent(),
+    this.borrador = const Value.absent(),
+    this.errorSyncMessage = const Value.absent(),
+  })  : pedidoVentaAppId = Value(pedidoVentaAppId),
+        empresaId = Value(empresaId),
+        fechaAlta = Value(fechaAlta),
+        clienteId = Value(clienteId),
+        nombreCliente = Value(nombreCliente),
+        oferta = Value(oferta),
+        iva = Value(iva),
+        dtoBonificacion = Value(dtoBonificacion);
+  static Insertable<PedidoVentaLocalDTO> custom({
+    Expression<String>? usuarioId,
+    Expression<String>? pedidoVentaAppId,
+    Expression<String>? empresaId,
+    Expression<DateTime>? fechaAlta,
+    Expression<String>? clienteId,
+    Expression<String>? nombreCliente,
+    Expression<String>? direccionId,
+    Expression<String>? direccion1,
+    Expression<String>? direccion2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
+    Expression<String>? divisaId,
+    Expression<String>? pedidoCliente,
+    Expression<String>? observaciones,
+    Expression<String>? oferta,
+    Expression<DateTime>? ofertaFechaHasta,
+    Expression<double>? iva,
+    Expression<double>? dtoBonificacion,
+    Expression<String>? enviada,
+    Expression<String>? tratada,
+    Expression<String>? borrador,
+    Expression<String>? errorSyncMessage,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'ID': id,
-      if (dbSchemaVersion != null) 'DB_SCHEMA_VERSION': dbSchemaVersion,
-      if (articuloUltimaSync != null)
-        'ARTICULO_ULTIMA_SYNC': articuloUltimaSync,
-      if (clienteUltimaSync != null) 'CLIENTE_ULTIMA_SYNC': clienteUltimaSync,
-      if (pedidoUltimaSync != null) 'PEDIDO_ULTIMA_SYNC': pedidoUltimaSync,
-      if (visitaUltimaSync != null) 'VISITA_ULTIMA_SYNC': visitaUltimaSync,
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
+      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (fechaAlta != null) 'FECHA_ALTA': fechaAlta,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (nombreCliente != null) 'NOMBRE_CLIENTE': nombreCliente,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (direccion1 != null) 'DIRECCION1': direccion1,
+      if (direccion2 != null) 'DIRECCION2': direccion2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (pedidoCliente != null) 'PEDIDO_CLIENTE': pedidoCliente,
+      if (observaciones != null) 'OBSERVACIONES': observaciones,
+      if (oferta != null) 'OFERTA_SN': oferta,
+      if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
+      if (iva != null) 'IVA': iva,
+      if (dtoBonificacion != null) 'DTO_BONIFICACION': dtoBonificacion,
+      if (enviada != null) 'ENVIADA': enviada,
+      if (tratada != null) 'TRATADA': tratada,
+      if (borrador != null) 'BORRADOR': borrador,
+      if (errorSyncMessage != null) 'ERROR_SYNC': errorSyncMessage,
     });
   }
 
-  SyncDateTimeTableCompanion copyWith(
-      {Value<int>? id,
-      Value<int>? dbSchemaVersion,
-      Value<DateTime>? articuloUltimaSync,
-      Value<DateTime>? clienteUltimaSync,
-      Value<DateTime>? pedidoUltimaSync,
-      Value<DateTime>? visitaUltimaSync}) {
-    return SyncDateTimeTableCompanion(
-      id: id ?? this.id,
-      dbSchemaVersion: dbSchemaVersion ?? this.dbSchemaVersion,
-      articuloUltimaSync: articuloUltimaSync ?? this.articuloUltimaSync,
-      clienteUltimaSync: clienteUltimaSync ?? this.clienteUltimaSync,
-      pedidoUltimaSync: pedidoUltimaSync ?? this.pedidoUltimaSync,
-      visitaUltimaSync: visitaUltimaSync ?? this.visitaUltimaSync,
+  PedidoVentaLocalTableCompanion copyWith(
+      {Value<String?>? usuarioId,
+      Value<String>? pedidoVentaAppId,
+      Value<String>? empresaId,
+      Value<DateTime>? fechaAlta,
+      Value<String>? clienteId,
+      Value<String>? nombreCliente,
+      Value<String?>? direccionId,
+      Value<String?>? direccion1,
+      Value<String?>? direccion2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
+      Value<String?>? divisaId,
+      Value<String?>? pedidoCliente,
+      Value<String?>? observaciones,
+      Value<String>? oferta,
+      Value<DateTime?>? ofertaFechaHasta,
+      Value<double>? iva,
+      Value<double>? dtoBonificacion,
+      Value<String>? enviada,
+      Value<String>? tratada,
+      Value<String>? borrador,
+      Value<String?>? errorSyncMessage}) {
+    return PedidoVentaLocalTableCompanion(
+      usuarioId: usuarioId ?? this.usuarioId,
+      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
+      empresaId: empresaId ?? this.empresaId,
+      fechaAlta: fechaAlta ?? this.fechaAlta,
+      clienteId: clienteId ?? this.clienteId,
+      nombreCliente: nombreCliente ?? this.nombreCliente,
+      direccionId: direccionId ?? this.direccionId,
+      direccion1: direccion1 ?? this.direccion1,
+      direccion2: direccion2 ?? this.direccion2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
+      divisaId: divisaId ?? this.divisaId,
+      pedidoCliente: pedidoCliente ?? this.pedidoCliente,
+      observaciones: observaciones ?? this.observaciones,
+      oferta: oferta ?? this.oferta,
+      ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
+      iva: iva ?? this.iva,
+      dtoBonificacion: dtoBonificacion ?? this.dtoBonificacion,
+      enviada: enviada ?? this.enviada,
+      tratada: tratada ?? this.tratada,
+      borrador: borrador ?? this.borrador,
+      errorSyncMessage: errorSyncMessage ?? this.errorSyncMessage,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['ID'] = Variable<int>(id.value);
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
     }
-    if (dbSchemaVersion.present) {
-      map['DB_SCHEMA_VERSION'] = Variable<int>(dbSchemaVersion.value);
+    if (pedidoVentaAppId.present) {
+      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
     }
-    if (articuloUltimaSync.present) {
-      map['ARTICULO_ULTIMA_SYNC'] =
-          Variable<DateTime>(articuloUltimaSync.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (clienteUltimaSync.present) {
-      map['CLIENTE_ULTIMA_SYNC'] = Variable<DateTime>(clienteUltimaSync.value);
+    if (fechaAlta.present) {
+      map['FECHA_ALTA'] = Variable<DateTime>(fechaAlta.value);
     }
-    if (pedidoUltimaSync.present) {
-      map['PEDIDO_ULTIMA_SYNC'] = Variable<DateTime>(pedidoUltimaSync.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (visitaUltimaSync.present) {
-      map['VISITA_ULTIMA_SYNC'] = Variable<DateTime>(visitaUltimaSync.value);
+    if (nombreCliente.present) {
+      map['NOMBRE_CLIENTE'] = Variable<String>(nombreCliente.value);
+    }
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    }
+    if (direccion1.present) {
+      map['DIRECCION1'] = Variable<String>(direccion1.value);
+    }
+    if (direccion2.present) {
+      map['DIRECCION2'] = Variable<String>(direccion2.value);
+    }
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    }
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
+    }
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
+    }
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
+    }
+    if (divisaId.present) {
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
+    }
+    if (pedidoCliente.present) {
+      map['PEDIDO_CLIENTE'] = Variable<String>(pedidoCliente.value);
+    }
+    if (observaciones.present) {
+      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
+    }
+    if (oferta.present) {
+      map['OFERTA_SN'] = Variable<String>(oferta.value);
+    }
+    if (ofertaFechaHasta.present) {
+      map['OFERTA_FECHA_HASTA'] = Variable<DateTime>(ofertaFechaHasta.value);
+    }
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
+    }
+    if (dtoBonificacion.present) {
+      map['DTO_BONIFICACION'] = Variable<double>(dtoBonificacion.value);
+    }
+    if (enviada.present) {
+      map['ENVIADA'] = Variable<String>(enviada.value);
+    }
+    if (tratada.present) {
+      map['TRATADA'] = Variable<String>(tratada.value);
+    }
+    if (borrador.present) {
+      map['BORRADOR'] = Variable<String>(borrador.value);
+    }
+    if (errorSyncMessage.present) {
+      map['ERROR_SYNC'] = Variable<String>(errorSyncMessage.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('SyncDateTimeTableCompanion(')
-          ..write('id: $id, ')
-          ..write('dbSchemaVersion: $dbSchemaVersion, ')
-          ..write('articuloUltimaSync: $articuloUltimaSync, ')
-          ..write('clienteUltimaSync: $clienteUltimaSync, ')
-          ..write('pedidoUltimaSync: $pedidoUltimaSync, ')
-          ..write('visitaUltimaSync: $visitaUltimaSync')
+    return (StringBuffer('PedidoVentaLocalTableCompanion(')
+          ..write('usuarioId: $usuarioId, ')
+          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
+          ..write('empresaId: $empresaId, ')
+          ..write('fechaAlta: $fechaAlta, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('nombreCliente: $nombreCliente, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('direccion1: $direccion1, ')
+          ..write('direccion2: $direccion2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('pedidoCliente: $pedidoCliente, ')
+          ..write('observaciones: $observaciones, ')
+          ..write('oferta: $oferta, ')
+          ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
+          ..write('iva: $iva, ')
+          ..write('dtoBonificacion: $dtoBonificacion, ')
+          ..write('enviada: $enviada, ')
+          ..write('tratada: $tratada, ')
+          ..write('borrador: $borrador, ')
+          ..write('errorSyncMessage: $errorSyncMessage')
           ..write(')'))
         .toString();
   }
@@ -1953,109 +1851,66 @@ class $SyncDateTimeTableTable extends SyncDateTimeTable
   }
 }
 
-class LogTableCompanion extends UpdateCompanion<LogDTO> {
+class SyncDateTimeTableCompanion extends UpdateCompanion<SyncDateTimeDTO> {
   final Value<int> id;
-  final Value<String> level;
-  final Value<String> message;
-  final Value<String?> error;
-  final Value<String?> stackTrace;
-  final Value<String> appId;
-  final Value<String> appBuild;
-  final Value<String> appBuildName;
-  final Value<String> userId;
-  final Value<String?> userEmail;
-  final Value<String?> userName;
-  final Value<DateTime> timestamp;
-  const LogTableCompanion({
+  final Value<int> dbSchemaVersion;
+  final Value<DateTime> articuloUltimaSync;
+  final Value<DateTime> clienteUltimaSync;
+  final Value<DateTime> pedidoUltimaSync;
+  final Value<DateTime> visitaUltimaSync;
+  const SyncDateTimeTableCompanion({
     this.id = const Value.absent(),
-    this.level = const Value.absent(),
-    this.message = const Value.absent(),
-    this.error = const Value.absent(),
-    this.stackTrace = const Value.absent(),
-    this.appId = const Value.absent(),
-    this.appBuild = const Value.absent(),
-    this.appBuildName = const Value.absent(),
-    this.userId = const Value.absent(),
-    this.userEmail = const Value.absent(),
-    this.userName = const Value.absent(),
-    this.timestamp = const Value.absent(),
+    this.dbSchemaVersion = const Value.absent(),
+    this.articuloUltimaSync = const Value.absent(),
+    this.clienteUltimaSync = const Value.absent(),
+    this.pedidoUltimaSync = const Value.absent(),
+    this.visitaUltimaSync = const Value.absent(),
   });
-  LogTableCompanion.insert({
+  SyncDateTimeTableCompanion.insert({
     this.id = const Value.absent(),
-    required String level,
-    required String message,
-    this.error = const Value.absent(),
-    this.stackTrace = const Value.absent(),
-    required String appId,
-    required String appBuild,
-    required String appBuildName,
-    required String userId,
-    this.userEmail = const Value.absent(),
-    this.userName = const Value.absent(),
-    required DateTime timestamp,
-  })  : level = Value(level),
-        message = Value(message),
-        appId = Value(appId),
-        appBuild = Value(appBuild),
-        appBuildName = Value(appBuildName),
-        userId = Value(userId),
-        timestamp = Value(timestamp);
-  static Insertable<LogDTO> custom({
+    required int dbSchemaVersion,
+    required DateTime articuloUltimaSync,
+    required DateTime clienteUltimaSync,
+    required DateTime pedidoUltimaSync,
+    required DateTime visitaUltimaSync,
+  })  : dbSchemaVersion = Value(dbSchemaVersion),
+        articuloUltimaSync = Value(articuloUltimaSync),
+        clienteUltimaSync = Value(clienteUltimaSync),
+        pedidoUltimaSync = Value(pedidoUltimaSync),
+        visitaUltimaSync = Value(visitaUltimaSync);
+  static Insertable<SyncDateTimeDTO> custom({
     Expression<int>? id,
-    Expression<String>? level,
-    Expression<String>? message,
-    Expression<String>? error,
-    Expression<String>? stackTrace,
-    Expression<String>? appId,
-    Expression<String>? appBuild,
-    Expression<String>? appBuildName,
-    Expression<String>? userId,
-    Expression<String>? userEmail,
-    Expression<String>? userName,
-    Expression<DateTime>? timestamp,
+    Expression<int>? dbSchemaVersion,
+    Expression<DateTime>? articuloUltimaSync,
+    Expression<DateTime>? clienteUltimaSync,
+    Expression<DateTime>? pedidoUltimaSync,
+    Expression<DateTime>? visitaUltimaSync,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ID': id,
-      if (level != null) 'LOG_LEVEL': level,
-      if (message != null) 'LOG_MESSAGE': message,
-      if (error != null) 'LOG_ERROR': error,
-      if (stackTrace != null) 'LOG_STACK_TRACE': stackTrace,
-      if (appId != null) 'APP_ID': appId,
-      if (appBuild != null) 'APP_BUILD': appBuild,
-      if (appBuildName != null) 'APP_BUILD_NAME': appBuildName,
-      if (userId != null) 'USER_ID': userId,
-      if (userEmail != null) 'USER_EMAIL': userEmail,
-      if (userName != null) 'USER_NAME': userName,
-      if (timestamp != null) 'TIMESTAMP': timestamp,
+      if (dbSchemaVersion != null) 'DB_SCHEMA_VERSION': dbSchemaVersion,
+      if (articuloUltimaSync != null)
+        'ARTICULO_ULTIMA_SYNC': articuloUltimaSync,
+      if (clienteUltimaSync != null) 'CLIENTE_ULTIMA_SYNC': clienteUltimaSync,
+      if (pedidoUltimaSync != null) 'PEDIDO_ULTIMA_SYNC': pedidoUltimaSync,
+      if (visitaUltimaSync != null) 'VISITA_ULTIMA_SYNC': visitaUltimaSync,
     });
   }
 
-  LogTableCompanion copyWith(
+  SyncDateTimeTableCompanion copyWith(
       {Value<int>? id,
-      Value<String>? level,
-      Value<String>? message,
-      Value<String?>? error,
-      Value<String?>? stackTrace,
-      Value<String>? appId,
-      Value<String>? appBuild,
-      Value<String>? appBuildName,
-      Value<String>? userId,
-      Value<String?>? userEmail,
-      Value<String?>? userName,
-      Value<DateTime>? timestamp}) {
-    return LogTableCompanion(
+      Value<int>? dbSchemaVersion,
+      Value<DateTime>? articuloUltimaSync,
+      Value<DateTime>? clienteUltimaSync,
+      Value<DateTime>? pedidoUltimaSync,
+      Value<DateTime>? visitaUltimaSync}) {
+    return SyncDateTimeTableCompanion(
       id: id ?? this.id,
-      level: level ?? this.level,
-      message: message ?? this.message,
-      error: error ?? this.error,
-      stackTrace: stackTrace ?? this.stackTrace,
-      appId: appId ?? this.appId,
-      appBuild: appBuild ?? this.appBuild,
-      appBuildName: appBuildName ?? this.appBuildName,
-      userId: userId ?? this.userId,
-      userEmail: userEmail ?? this.userEmail,
-      userName: userName ?? this.userName,
-      timestamp: timestamp ?? this.timestamp,
+      dbSchemaVersion: dbSchemaVersion ?? this.dbSchemaVersion,
+      articuloUltimaSync: articuloUltimaSync ?? this.articuloUltimaSync,
+      clienteUltimaSync: clienteUltimaSync ?? this.clienteUltimaSync,
+      pedidoUltimaSync: pedidoUltimaSync ?? this.pedidoUltimaSync,
+      visitaUltimaSync: visitaUltimaSync ?? this.visitaUltimaSync,
     );
   }
 
@@ -2065,57 +1920,34 @@ class LogTableCompanion extends UpdateCompanion<LogDTO> {
     if (id.present) {
       map['ID'] = Variable<int>(id.value);
     }
-    if (level.present) {
-      map['LOG_LEVEL'] = Variable<String>(level.value);
+    if (dbSchemaVersion.present) {
+      map['DB_SCHEMA_VERSION'] = Variable<int>(dbSchemaVersion.value);
     }
-    if (message.present) {
-      map['LOG_MESSAGE'] = Variable<String>(message.value);
+    if (articuloUltimaSync.present) {
+      map['ARTICULO_ULTIMA_SYNC'] =
+          Variable<DateTime>(articuloUltimaSync.value);
     }
-    if (error.present) {
-      map['LOG_ERROR'] = Variable<String>(error.value);
+    if (clienteUltimaSync.present) {
+      map['CLIENTE_ULTIMA_SYNC'] = Variable<DateTime>(clienteUltimaSync.value);
     }
-    if (stackTrace.present) {
-      map['LOG_STACK_TRACE'] = Variable<String>(stackTrace.value);
+    if (pedidoUltimaSync.present) {
+      map['PEDIDO_ULTIMA_SYNC'] = Variable<DateTime>(pedidoUltimaSync.value);
     }
-    if (appId.present) {
-      map['APP_ID'] = Variable<String>(appId.value);
-    }
-    if (appBuild.present) {
-      map['APP_BUILD'] = Variable<String>(appBuild.value);
-    }
-    if (appBuildName.present) {
-      map['APP_BUILD_NAME'] = Variable<String>(appBuildName.value);
-    }
-    if (userId.present) {
-      map['USER_ID'] = Variable<String>(userId.value);
-    }
-    if (userEmail.present) {
-      map['USER_EMAIL'] = Variable<String>(userEmail.value);
-    }
-    if (userName.present) {
-      map['USER_NAME'] = Variable<String>(userName.value);
-    }
-    if (timestamp.present) {
-      map['TIMESTAMP'] = Variable<DateTime>(timestamp.value);
+    if (visitaUltimaSync.present) {
+      map['VISITA_ULTIMA_SYNC'] = Variable<DateTime>(visitaUltimaSync.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('LogTableCompanion(')
+    return (StringBuffer('SyncDateTimeTableCompanion(')
           ..write('id: $id, ')
-          ..write('level: $level, ')
-          ..write('message: $message, ')
-          ..write('error: $error, ')
-          ..write('stackTrace: $stackTrace, ')
-          ..write('appId: $appId, ')
-          ..write('appBuild: $appBuild, ')
-          ..write('appBuildName: $appBuildName, ')
-          ..write('userId: $userId, ')
-          ..write('userEmail: $userEmail, ')
-          ..write('userName: $userName, ')
-          ..write('timestamp: $timestamp')
+          ..write('dbSchemaVersion: $dbSchemaVersion, ')
+          ..write('articuloUltimaSync: $articuloUltimaSync, ')
+          ..write('clienteUltimaSync: $clienteUltimaSync, ')
+          ..write('pedidoUltimaSync: $pedidoUltimaSync, ')
+          ..write('visitaUltimaSync: $visitaUltimaSync')
           ..write(')'))
         .toString();
   }
@@ -2326,33 +2158,109 @@ class $LogTableTable extends LogTable with TableInfo<$LogTableTable, LogDTO> {
   }
 }
 
-class CatalogoFavoritoTableCompanion
-    extends UpdateCompanion<CatalogoFavoritoDTO> {
+class LogTableCompanion extends UpdateCompanion<LogDTO> {
   final Value<int> id;
-  final Value<int> catalogoId;
-  const CatalogoFavoritoTableCompanion({
+  final Value<String> level;
+  final Value<String> message;
+  final Value<String?> error;
+  final Value<String?> stackTrace;
+  final Value<String> appId;
+  final Value<String> appBuild;
+  final Value<String> appBuildName;
+  final Value<String> userId;
+  final Value<String?> userEmail;
+  final Value<String?> userName;
+  final Value<DateTime> timestamp;
+  const LogTableCompanion({
     this.id = const Value.absent(),
-    this.catalogoId = const Value.absent(),
+    this.level = const Value.absent(),
+    this.message = const Value.absent(),
+    this.error = const Value.absent(),
+    this.stackTrace = const Value.absent(),
+    this.appId = const Value.absent(),
+    this.appBuild = const Value.absent(),
+    this.appBuildName = const Value.absent(),
+    this.userId = const Value.absent(),
+    this.userEmail = const Value.absent(),
+    this.userName = const Value.absent(),
+    this.timestamp = const Value.absent(),
   });
-  CatalogoFavoritoTableCompanion.insert({
+  LogTableCompanion.insert({
     this.id = const Value.absent(),
-    required int catalogoId,
-  }) : catalogoId = Value(catalogoId);
-  static Insertable<CatalogoFavoritoDTO> custom({
+    required String level,
+    required String message,
+    this.error = const Value.absent(),
+    this.stackTrace = const Value.absent(),
+    required String appId,
+    required String appBuild,
+    required String appBuildName,
+    required String userId,
+    this.userEmail = const Value.absent(),
+    this.userName = const Value.absent(),
+    required DateTime timestamp,
+  })  : level = Value(level),
+        message = Value(message),
+        appId = Value(appId),
+        appBuild = Value(appBuild),
+        appBuildName = Value(appBuildName),
+        userId = Value(userId),
+        timestamp = Value(timestamp);
+  static Insertable<LogDTO> custom({
     Expression<int>? id,
-    Expression<int>? catalogoId,
+    Expression<String>? level,
+    Expression<String>? message,
+    Expression<String>? error,
+    Expression<String>? stackTrace,
+    Expression<String>? appId,
+    Expression<String>? appBuild,
+    Expression<String>? appBuildName,
+    Expression<String>? userId,
+    Expression<String>? userEmail,
+    Expression<String>? userName,
+    Expression<DateTime>? timestamp,
   }) {
     return RawValuesInsertable({
       if (id != null) 'ID': id,
-      if (catalogoId != null) 'CATALOGO_ID': catalogoId,
+      if (level != null) 'LOG_LEVEL': level,
+      if (message != null) 'LOG_MESSAGE': message,
+      if (error != null) 'LOG_ERROR': error,
+      if (stackTrace != null) 'LOG_STACK_TRACE': stackTrace,
+      if (appId != null) 'APP_ID': appId,
+      if (appBuild != null) 'APP_BUILD': appBuild,
+      if (appBuildName != null) 'APP_BUILD_NAME': appBuildName,
+      if (userId != null) 'USER_ID': userId,
+      if (userEmail != null) 'USER_EMAIL': userEmail,
+      if (userName != null) 'USER_NAME': userName,
+      if (timestamp != null) 'TIMESTAMP': timestamp,
     });
   }
 
-  CatalogoFavoritoTableCompanion copyWith(
-      {Value<int>? id, Value<int>? catalogoId}) {
-    return CatalogoFavoritoTableCompanion(
+  LogTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? level,
+      Value<String>? message,
+      Value<String?>? error,
+      Value<String?>? stackTrace,
+      Value<String>? appId,
+      Value<String>? appBuild,
+      Value<String>? appBuildName,
+      Value<String>? userId,
+      Value<String?>? userEmail,
+      Value<String?>? userName,
+      Value<DateTime>? timestamp}) {
+    return LogTableCompanion(
       id: id ?? this.id,
-      catalogoId: catalogoId ?? this.catalogoId,
+      level: level ?? this.level,
+      message: message ?? this.message,
+      error: error ?? this.error,
+      stackTrace: stackTrace ?? this.stackTrace,
+      appId: appId ?? this.appId,
+      appBuild: appBuild ?? this.appBuild,
+      appBuildName: appBuildName ?? this.appBuildName,
+      userId: userId ?? this.userId,
+      userEmail: userEmail ?? this.userEmail,
+      userName: userName ?? this.userName,
+      timestamp: timestamp ?? this.timestamp,
     );
   }
 
@@ -2362,17 +2270,57 @@ class CatalogoFavoritoTableCompanion
     if (id.present) {
       map['ID'] = Variable<int>(id.value);
     }
-    if (catalogoId.present) {
-      map['CATALOGO_ID'] = Variable<int>(catalogoId.value);
+    if (level.present) {
+      map['LOG_LEVEL'] = Variable<String>(level.value);
+    }
+    if (message.present) {
+      map['LOG_MESSAGE'] = Variable<String>(message.value);
+    }
+    if (error.present) {
+      map['LOG_ERROR'] = Variable<String>(error.value);
+    }
+    if (stackTrace.present) {
+      map['LOG_STACK_TRACE'] = Variable<String>(stackTrace.value);
+    }
+    if (appId.present) {
+      map['APP_ID'] = Variable<String>(appId.value);
+    }
+    if (appBuild.present) {
+      map['APP_BUILD'] = Variable<String>(appBuild.value);
+    }
+    if (appBuildName.present) {
+      map['APP_BUILD_NAME'] = Variable<String>(appBuildName.value);
+    }
+    if (userId.present) {
+      map['USER_ID'] = Variable<String>(userId.value);
+    }
+    if (userEmail.present) {
+      map['USER_EMAIL'] = Variable<String>(userEmail.value);
+    }
+    if (userName.present) {
+      map['USER_NAME'] = Variable<String>(userName.value);
+    }
+    if (timestamp.present) {
+      map['TIMESTAMP'] = Variable<DateTime>(timestamp.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('CatalogoFavoritoTableCompanion(')
+    return (StringBuffer('LogTableCompanion(')
           ..write('id: $id, ')
-          ..write('catalogoId: $catalogoId')
+          ..write('level: $level, ')
+          ..write('message: $message, ')
+          ..write('error: $error, ')
+          ..write('stackTrace: $stackTrace, ')
+          ..write('appId: $appId, ')
+          ..write('appBuild: $appBuild, ')
+          ..write('appBuildName: $appBuildName, ')
+          ..write('userId: $userId, ')
+          ..write('userEmail: $userEmail, ')
+          ..write('userName: $userName, ')
+          ..write('timestamp: $timestamp')
           ..write(')'))
         .toString();
   }
@@ -2441,6 +2389,58 @@ class $CatalogoFavoritoTableTable extends CatalogoFavoritoTable
   @override
   $CatalogoFavoritoTableTable createAlias(String alias) {
     return $CatalogoFavoritoTableTable(attachedDatabase, alias);
+  }
+}
+
+class CatalogoFavoritoTableCompanion
+    extends UpdateCompanion<CatalogoFavoritoDTO> {
+  final Value<int> id;
+  final Value<int> catalogoId;
+  const CatalogoFavoritoTableCompanion({
+    this.id = const Value.absent(),
+    this.catalogoId = const Value.absent(),
+  });
+  CatalogoFavoritoTableCompanion.insert({
+    this.id = const Value.absent(),
+    required int catalogoId,
+  }) : catalogoId = Value(catalogoId);
+  static Insertable<CatalogoFavoritoDTO> custom({
+    Expression<int>? id,
+    Expression<int>? catalogoId,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'ID': id,
+      if (catalogoId != null) 'CATALOGO_ID': catalogoId,
+    });
+  }
+
+  CatalogoFavoritoTableCompanion copyWith(
+      {Value<int>? id, Value<int>? catalogoId}) {
+    return CatalogoFavoritoTableCompanion(
+      id: id ?? this.id,
+      catalogoId: catalogoId ?? this.catalogoId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['ID'] = Variable<int>(id.value);
+    }
+    if (catalogoId.present) {
+      map['CATALOGO_ID'] = Variable<int>(catalogoId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CatalogoFavoritoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('catalogoId: $catalogoId')
+          ..write(')'))
+        .toString();
   }
 }
 

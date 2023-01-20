@@ -35,8 +35,7 @@ class ExportDatabaseController
     try {
       state = const ExportDatabaseControllerState.loading();
 
-      final file =
-          await _settingsRepository.exportDatabaseInto();
+      final file = await _settingsRepository.exportDatabaseInto();
 
       state = ExportDatabaseControllerState.data(file);
     } on AppException catch (e, stackTrace) {

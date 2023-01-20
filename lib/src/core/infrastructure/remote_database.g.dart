@@ -3,247 +3,6 @@
 part of 'remote_database.dart';
 
 // ignore_for_file: type=lint
-class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
-  final Value<String> id;
-  final Value<String?> isoCode;
-  final Value<String> descripcionES;
-  final Value<String?> descripcionEN;
-  final Value<String?> descripcionFR;
-  final Value<String?> descripcionDE;
-  final Value<String?> descripcionCA;
-  final Value<String?> descripcionGB;
-  final Value<String?> descripcionHU;
-  final Value<String?> descripcionIT;
-  final Value<String?> descripcionNL;
-  final Value<String?> descripcionPL;
-  final Value<String?> descripcionPT;
-  final Value<String?> descripcionRO;
-  final Value<String?> descripcionRU;
-  final Value<String?> descripcionCN;
-  final Value<String?> descripcionEL;
-  final Value<DateTime> lastUpdated;
-  final Value<String> deleted;
-  const PaisTableCompanion({
-    this.id = const Value.absent(),
-    this.isoCode = const Value.absent(),
-    this.descripcionES = const Value.absent(),
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
-    this.lastUpdated = const Value.absent(),
-    this.deleted = const Value.absent(),
-  });
-  PaisTableCompanion.insert({
-    required String id,
-    this.isoCode = const Value.absent(),
-    required String descripcionES,
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
-    required DateTime lastUpdated,
-    this.deleted = const Value.absent(),
-  })  : id = Value(id),
-        descripcionES = Value(descripcionES),
-        lastUpdated = Value(lastUpdated);
-  static Insertable<PaisDTO> custom({
-    Expression<String>? id,
-    Expression<String>? isoCode,
-    Expression<String>? descripcionES,
-    Expression<String>? descripcionEN,
-    Expression<String>? descripcionFR,
-    Expression<String>? descripcionDE,
-    Expression<String>? descripcionCA,
-    Expression<String>? descripcionGB,
-    Expression<String>? descripcionHU,
-    Expression<String>? descripcionIT,
-    Expression<String>? descripcionNL,
-    Expression<String>? descripcionPL,
-    Expression<String>? descripcionPT,
-    Expression<String>? descripcionRO,
-    Expression<String>? descripcionRU,
-    Expression<String>? descripcionCN,
-    Expression<String>? descripcionEL,
-    Expression<DateTime>? lastUpdated,
-    Expression<String>? deleted,
-  }) {
-    return RawValuesInsertable({
-      if (id != null) 'PAIS_ID': id,
-      if (isoCode != null) 'CODIGO_ISO': isoCode,
-      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
-      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
-      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
-      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
-      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
-      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
-      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
-      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
-      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
-      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
-      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
-      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
-      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
-      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
-      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
-      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
-      if (deleted != null) 'DELETED': deleted,
-    });
-  }
-
-  PaisTableCompanion copyWith(
-      {Value<String>? id,
-      Value<String?>? isoCode,
-      Value<String>? descripcionES,
-      Value<String?>? descripcionEN,
-      Value<String?>? descripcionFR,
-      Value<String?>? descripcionDE,
-      Value<String?>? descripcionCA,
-      Value<String?>? descripcionGB,
-      Value<String?>? descripcionHU,
-      Value<String?>? descripcionIT,
-      Value<String?>? descripcionNL,
-      Value<String?>? descripcionPL,
-      Value<String?>? descripcionPT,
-      Value<String?>? descripcionRO,
-      Value<String?>? descripcionRU,
-      Value<String?>? descripcionCN,
-      Value<String?>? descripcionEL,
-      Value<DateTime>? lastUpdated,
-      Value<String>? deleted}) {
-    return PaisTableCompanion(
-      id: id ?? this.id,
-      isoCode: isoCode ?? this.isoCode,
-      descripcionES: descripcionES ?? this.descripcionES,
-      descripcionEN: descripcionEN ?? this.descripcionEN,
-      descripcionFR: descripcionFR ?? this.descripcionFR,
-      descripcionDE: descripcionDE ?? this.descripcionDE,
-      descripcionCA: descripcionCA ?? this.descripcionCA,
-      descripcionGB: descripcionGB ?? this.descripcionGB,
-      descripcionHU: descripcionHU ?? this.descripcionHU,
-      descripcionIT: descripcionIT ?? this.descripcionIT,
-      descripcionNL: descripcionNL ?? this.descripcionNL,
-      descripcionPL: descripcionPL ?? this.descripcionPL,
-      descripcionPT: descripcionPT ?? this.descripcionPT,
-      descripcionRO: descripcionRO ?? this.descripcionRO,
-      descripcionRU: descripcionRU ?? this.descripcionRU,
-      descripcionCN: descripcionCN ?? this.descripcionCN,
-      descripcionEL: descripcionEL ?? this.descripcionEL,
-      lastUpdated: lastUpdated ?? this.lastUpdated,
-      deleted: deleted ?? this.deleted,
-    );
-  }
-
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    if (id.present) {
-      map['PAIS_ID'] = Variable<String>(id.value);
-    }
-    if (isoCode.present) {
-      map['CODIGO_ISO'] = Variable<String>(isoCode.value);
-    }
-    if (descripcionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
-    }
-    if (descripcionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
-    }
-    if (descripcionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
-    }
-    if (descripcionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
-    }
-    if (descripcionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
-    }
-    if (descripcionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
-    }
-    if (descripcionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
-    }
-    if (descripcionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
-    }
-    if (descripcionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
-    }
-    if (descripcionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
-    }
-    if (descripcionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
-    }
-    if (descripcionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
-    }
-    if (descripcionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
-    }
-    if (descripcionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
-    }
-    if (descripcionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
-    }
-    if (lastUpdated.present) {
-      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
-    }
-    if (deleted.present) {
-      map['DELETED'] = Variable<String>(deleted.value);
-    }
-    return map;
-  }
-
-  @override
-  String toString() {
-    return (StringBuffer('PaisTableCompanion(')
-          ..write('id: $id, ')
-          ..write('isoCode: $isoCode, ')
-          ..write('descripcionES: $descripcionES, ')
-          ..write('descripcionEN: $descripcionEN, ')
-          ..write('descripcionFR: $descripcionFR, ')
-          ..write('descripcionDE: $descripcionDE, ')
-          ..write('descripcionCA: $descripcionCA, ')
-          ..write('descripcionGB: $descripcionGB, ')
-          ..write('descripcionHU: $descripcionHU, ')
-          ..write('descripcionIT: $descripcionIT, ')
-          ..write('descripcionNL: $descripcionNL, ')
-          ..write('descripcionPL: $descripcionPL, ')
-          ..write('descripcionPT: $descripcionPT, ')
-          ..write('descripcionRO: $descripcionRO, ')
-          ..write('descripcionRU: $descripcionRU, ')
-          ..write('descripcionCN: $descripcionCN, ')
-          ..write('descripcionEL: $descripcionEL, ')
-          ..write('lastUpdated: $lastUpdated, ')
-          ..write('deleted: $deleted')
-          ..write(')'))
-        .toString();
-  }
-}
-
 class $PaisTableTable extends PaisTable
     with TableInfo<$PaisTableTable, PaisDTO> {
   @override
@@ -566,11 +325,9 @@ class $PaisTableTable extends PaisTable
   }
 }
 
-class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
+class PaisTableCompanion extends UpdateCompanion<PaisDTO> {
   final Value<String> id;
-  final Value<String> abv;
-  final Value<String?> simbolo;
-  final Value<double?> redondeo;
+  final Value<String?> isoCode;
   final Value<String> descripcionES;
   final Value<String?> descripcionEN;
   final Value<String?> descripcionFR;
@@ -588,11 +345,9 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const DivisaTableCompanion({
+  const PaisTableCompanion({
     this.id = const Value.absent(),
-    this.abv = const Value.absent(),
-    this.simbolo = const Value.absent(),
-    this.redondeo = const Value.absent(),
+    this.isoCode = const Value.absent(),
     this.descripcionES = const Value.absent(),
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -611,11 +366,9 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  DivisaTableCompanion.insert({
+  PaisTableCompanion.insert({
     required String id,
-    required String abv,
-    this.simbolo = const Value.absent(),
-    this.redondeo = const Value.absent(),
+    this.isoCode = const Value.absent(),
     required String descripcionES,
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -634,14 +387,11 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        abv = Value(abv),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<DivisaDTO> custom({
+  static Insertable<PaisDTO> custom({
     Expression<String>? id,
-    Expression<String>? abv,
-    Expression<String>? simbolo,
-    Expression<double>? redondeo,
+    Expression<String>? isoCode,
     Expression<String>? descripcionES,
     Expression<String>? descripcionEN,
     Expression<String>? descripcionFR,
@@ -661,10 +411,8 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'DIVISA_ID': id,
-      if (abv != null) 'ABREVIACION': abv,
-      if (simbolo != null) 'SIMBOLO': simbolo,
-      if (redondeo != null) 'REDONDEO': redondeo,
+      if (id != null) 'PAIS_ID': id,
+      if (isoCode != null) 'CODIGO_ISO': isoCode,
       if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
       if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
       if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
@@ -685,11 +433,9 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
     });
   }
 
-  DivisaTableCompanion copyWith(
+  PaisTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? abv,
-      Value<String?>? simbolo,
-      Value<double?>? redondeo,
+      Value<String?>? isoCode,
       Value<String>? descripcionES,
       Value<String?>? descripcionEN,
       Value<String?>? descripcionFR,
@@ -707,11 +453,9 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return DivisaTableCompanion(
+    return PaisTableCompanion(
       id: id ?? this.id,
-      abv: abv ?? this.abv,
-      simbolo: simbolo ?? this.simbolo,
-      redondeo: redondeo ?? this.redondeo,
+      isoCode: isoCode ?? this.isoCode,
       descripcionES: descripcionES ?? this.descripcionES,
       descripcionEN: descripcionEN ?? this.descripcionEN,
       descripcionFR: descripcionFR ?? this.descripcionFR,
@@ -736,16 +480,10 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['DIVISA_ID'] = Variable<String>(id.value);
+      map['PAIS_ID'] = Variable<String>(id.value);
     }
-    if (abv.present) {
-      map['ABREVIACION'] = Variable<String>(abv.value);
-    }
-    if (simbolo.present) {
-      map['SIMBOLO'] = Variable<String>(simbolo.value);
-    }
-    if (redondeo.present) {
-      map['REDONDEO'] = Variable<double>(redondeo.value);
+    if (isoCode.present) {
+      map['CODIGO_ISO'] = Variable<String>(isoCode.value);
     }
     if (descripcionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
@@ -803,11 +541,9 @@ class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('DivisaTableCompanion(')
+    return (StringBuffer('PaisTableCompanion(')
           ..write('id: $id, ')
-          ..write('abv: $abv, ')
-          ..write('simbolo: $simbolo, ')
-          ..write('redondeo: $redondeo, ')
+          ..write('isoCode: $isoCode, ')
           ..write('descripcionES: $descripcionES, ')
           ..write('descripcionEN: $descripcionEN, ')
           ..write('descripcionFR: $descripcionFR, ')
@@ -1179,9 +915,11 @@ class $DivisaTableTable extends DivisaTable
   }
 }
 
-class PedidoVentaEstadoTableCompanion
-    extends UpdateCompanion<PedidoVentaEstadoDTO> {
-  final Value<int> id;
+class DivisaTableCompanion extends UpdateCompanion<DivisaDTO> {
+  final Value<String> id;
+  final Value<String> abv;
+  final Value<String?> simbolo;
+  final Value<double?> redondeo;
   final Value<String> descripcionES;
   final Value<String?> descripcionEN;
   final Value<String?> descripcionFR;
@@ -1191,6 +929,7 @@ class PedidoVentaEstadoTableCompanion
   final Value<String?> descripcionHU;
   final Value<String?> descripcionIT;
   final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
   final Value<String?> descripcionPT;
   final Value<String?> descripcionRO;
   final Value<String?> descripcionRU;
@@ -1198,8 +937,11 @@ class PedidoVentaEstadoTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const PedidoVentaEstadoTableCompanion({
+  const DivisaTableCompanion({
     this.id = const Value.absent(),
+    this.abv = const Value.absent(),
+    this.simbolo = const Value.absent(),
+    this.redondeo = const Value.absent(),
     this.descripcionES = const Value.absent(),
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -1209,6 +951,7 @@ class PedidoVentaEstadoTableCompanion
     this.descripcionHU = const Value.absent(),
     this.descripcionIT = const Value.absent(),
     this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
     this.descripcionPT = const Value.absent(),
     this.descripcionRO = const Value.absent(),
     this.descripcionRU = const Value.absent(),
@@ -1217,8 +960,11 @@ class PedidoVentaEstadoTableCompanion
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  PedidoVentaEstadoTableCompanion.insert({
-    this.id = const Value.absent(),
+  DivisaTableCompanion.insert({
+    required String id,
+    required String abv,
+    this.simbolo = const Value.absent(),
+    this.redondeo = const Value.absent(),
     required String descripcionES,
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -1228,6 +974,7 @@ class PedidoVentaEstadoTableCompanion
     this.descripcionHU = const Value.absent(),
     this.descripcionIT = const Value.absent(),
     this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
     this.descripcionPT = const Value.absent(),
     this.descripcionRO = const Value.absent(),
     this.descripcionRU = const Value.absent(),
@@ -1235,10 +982,15 @@ class PedidoVentaEstadoTableCompanion
     this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : descripcionES = Value(descripcionES),
+  })  : id = Value(id),
+        abv = Value(abv),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<PedidoVentaEstadoDTO> custom({
-    Expression<int>? id,
+  static Insertable<DivisaDTO> custom({
+    Expression<String>? id,
+    Expression<String>? abv,
+    Expression<String>? simbolo,
+    Expression<double>? redondeo,
     Expression<String>? descripcionES,
     Expression<String>? descripcionEN,
     Expression<String>? descripcionFR,
@@ -1248,6 +1000,7 @@ class PedidoVentaEstadoTableCompanion
     Expression<String>? descripcionHU,
     Expression<String>? descripcionIT,
     Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
     Expression<String>? descripcionPT,
     Expression<String>? descripcionRO,
     Expression<String>? descripcionRU,
@@ -1257,7 +1010,10 @@ class PedidoVentaEstadoTableCompanion
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'ESTADO_PEDIDO_ID': id,
+      if (id != null) 'DIVISA_ID': id,
+      if (abv != null) 'ABREVIACION': abv,
+      if (simbolo != null) 'SIMBOLO': simbolo,
+      if (redondeo != null) 'REDONDEO': redondeo,
       if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
       if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
       if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
@@ -1267,6 +1023,7 @@ class PedidoVentaEstadoTableCompanion
       if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
       if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
       if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
       if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
       if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
       if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
@@ -1277,8 +1034,11 @@ class PedidoVentaEstadoTableCompanion
     });
   }
 
-  PedidoVentaEstadoTableCompanion copyWith(
-      {Value<int>? id,
+  DivisaTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? abv,
+      Value<String?>? simbolo,
+      Value<double?>? redondeo,
       Value<String>? descripcionES,
       Value<String?>? descripcionEN,
       Value<String?>? descripcionFR,
@@ -1288,6 +1048,7 @@ class PedidoVentaEstadoTableCompanion
       Value<String?>? descripcionHU,
       Value<String?>? descripcionIT,
       Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
       Value<String?>? descripcionPT,
       Value<String?>? descripcionRO,
       Value<String?>? descripcionRU,
@@ -1295,8 +1056,11 @@ class PedidoVentaEstadoTableCompanion
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return PedidoVentaEstadoTableCompanion(
+    return DivisaTableCompanion(
       id: id ?? this.id,
+      abv: abv ?? this.abv,
+      simbolo: simbolo ?? this.simbolo,
+      redondeo: redondeo ?? this.redondeo,
       descripcionES: descripcionES ?? this.descripcionES,
       descripcionEN: descripcionEN ?? this.descripcionEN,
       descripcionFR: descripcionFR ?? this.descripcionFR,
@@ -1306,6 +1070,7 @@ class PedidoVentaEstadoTableCompanion
       descripcionHU: descripcionHU ?? this.descripcionHU,
       descripcionIT: descripcionIT ?? this.descripcionIT,
       descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
       descripcionPT: descripcionPT ?? this.descripcionPT,
       descripcionRO: descripcionRO ?? this.descripcionRO,
       descripcionRU: descripcionRU ?? this.descripcionRU,
@@ -1320,7 +1085,16 @@ class PedidoVentaEstadoTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['ESTADO_PEDIDO_ID'] = Variable<int>(id.value);
+      map['DIVISA_ID'] = Variable<String>(id.value);
+    }
+    if (abv.present) {
+      map['ABREVIACION'] = Variable<String>(abv.value);
+    }
+    if (simbolo.present) {
+      map['SIMBOLO'] = Variable<String>(simbolo.value);
+    }
+    if (redondeo.present) {
+      map['REDONDEO'] = Variable<double>(redondeo.value);
     }
     if (descripcionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
@@ -1349,6 +1123,9 @@ class PedidoVentaEstadoTableCompanion
     if (descripcionNL.present) {
       map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
     if (descripcionPT.present) {
       map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
@@ -1375,8 +1152,11 @@ class PedidoVentaEstadoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('PedidoVentaEstadoTableCompanion(')
+    return (StringBuffer('DivisaTableCompanion(')
           ..write('id: $id, ')
+          ..write('abv: $abv, ')
+          ..write('simbolo: $simbolo, ')
+          ..write('redondeo: $redondeo, ')
           ..write('descripcionES: $descripcionES, ')
           ..write('descripcionEN: $descripcionEN, ')
           ..write('descripcionFR: $descripcionFR, ')
@@ -1386,6 +1166,7 @@ class PedidoVentaEstadoTableCompanion
           ..write('descripcionHU: $descripcionHU, ')
           ..write('descripcionIT: $descripcionIT, ')
           ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
           ..write('descripcionPT: $descripcionPT, ')
           ..write('descripcionRO: $descripcionRO, ')
           ..write('descripcionRU: $descripcionRU, ')
@@ -1691,206 +1472,138 @@ class $PedidoVentaEstadoTableTable extends PedidoVentaEstadoTable
   }
 }
 
-class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
-  final Value<String> empresaId;
-  final Value<String> pedidoVentaId;
-  final Value<DateTime> pedidoVentaDate;
-  final Value<String> tipoVenta;
-  final Value<String> clienteId;
-  final Value<String> nombreCliente;
-  final Value<String?> direccionId;
-  final Value<String?> direccionEntrga1;
-  final Value<String?> direccionEntrga2;
-  final Value<String?> codigoPostal;
-  final Value<String?> poblacion;
-  final Value<String?> provincia;
-  final Value<String?> paisId;
-  final Value<String> divisaId;
-  final Value<double> baseImponible;
-  final Value<double> totalLineas;
-  final Value<double> importePortes;
-  final Value<double> importeIva;
-  final Value<double> total;
-  final Value<int> pedidoVentaEstadoId;
-  final Value<String> oferta;
-  final Value<DateTime?> ofertaFechaHasta;
-  final Value<String?> pedidoVentaAppId;
-  final Value<double> iva;
+class PedidoVentaEstadoTableCompanion
+    extends UpdateCompanion<PedidoVentaEstadoDTO> {
+  final Value<int> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const PedidoVentaTableCompanion({
-    this.empresaId = const Value.absent(),
-    this.pedidoVentaId = const Value.absent(),
-    this.pedidoVentaDate = const Value.absent(),
-    this.tipoVenta = const Value.absent(),
-    this.clienteId = const Value.absent(),
-    this.nombreCliente = const Value.absent(),
-    this.direccionId = const Value.absent(),
-    this.direccionEntrga1 = const Value.absent(),
-    this.direccionEntrga2 = const Value.absent(),
-    this.codigoPostal = const Value.absent(),
-    this.poblacion = const Value.absent(),
-    this.provincia = const Value.absent(),
-    this.paisId = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.baseImponible = const Value.absent(),
-    this.totalLineas = const Value.absent(),
-    this.importePortes = const Value.absent(),
-    this.importeIva = const Value.absent(),
-    this.total = const Value.absent(),
-    this.pedidoVentaEstadoId = const Value.absent(),
-    this.oferta = const Value.absent(),
-    this.ofertaFechaHasta = const Value.absent(),
-    this.pedidoVentaAppId = const Value.absent(),
-    this.iva = const Value.absent(),
+  const PedidoVentaEstadoTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  PedidoVentaTableCompanion.insert({
-    required String empresaId,
-    required String pedidoVentaId,
-    required DateTime pedidoVentaDate,
-    required String tipoVenta,
-    required String clienteId,
-    required String nombreCliente,
-    this.direccionId = const Value.absent(),
-    this.direccionEntrga1 = const Value.absent(),
-    this.direccionEntrga2 = const Value.absent(),
-    this.codigoPostal = const Value.absent(),
-    this.poblacion = const Value.absent(),
-    this.provincia = const Value.absent(),
-    this.paisId = const Value.absent(),
-    required String divisaId,
-    this.baseImponible = const Value.absent(),
-    this.totalLineas = const Value.absent(),
-    this.importePortes = const Value.absent(),
-    this.importeIva = const Value.absent(),
-    this.total = const Value.absent(),
-    this.pedidoVentaEstadoId = const Value.absent(),
-    this.oferta = const Value.absent(),
-    this.ofertaFechaHasta = const Value.absent(),
-    this.pedidoVentaAppId = const Value.absent(),
-    this.iva = const Value.absent(),
+  PedidoVentaEstadoTableCompanion.insert({
+    this.id = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : empresaId = Value(empresaId),
-        pedidoVentaId = Value(pedidoVentaId),
-        pedidoVentaDate = Value(pedidoVentaDate),
-        tipoVenta = Value(tipoVenta),
-        clienteId = Value(clienteId),
-        nombreCliente = Value(nombreCliente),
-        divisaId = Value(divisaId),
+  })  : descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<PedidoVentaDTO> custom({
-    Expression<String>? empresaId,
-    Expression<String>? pedidoVentaId,
-    Expression<DateTime>? pedidoVentaDate,
-    Expression<String>? tipoVenta,
-    Expression<String>? clienteId,
-    Expression<String>? nombreCliente,
-    Expression<String>? direccionId,
-    Expression<String>? direccionEntrga1,
-    Expression<String>? direccionEntrga2,
-    Expression<String>? codigoPostal,
-    Expression<String>? poblacion,
-    Expression<String>? provincia,
-    Expression<String>? paisId,
-    Expression<String>? divisaId,
-    Expression<double>? baseImponible,
-    Expression<double>? totalLineas,
-    Expression<double>? importePortes,
-    Expression<double>? importeIva,
-    Expression<double>? total,
-    Expression<int>? pedidoVentaEstadoId,
-    Expression<String>? oferta,
-    Expression<DateTime>? ofertaFechaHasta,
-    Expression<String>? pedidoVentaAppId,
-    Expression<double>? iva,
+  static Insertable<PedidoVentaEstadoDTO> custom({
+    Expression<int>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
-      if (pedidoVentaDate != null) 'FECHA_PEDIDO': pedidoVentaDate,
-      if (tipoVenta != null) 'TIPO_VENTA': tipoVenta,
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (nombreCliente != null) 'NOMRE_CLIENTE': nombreCliente,
-      if (direccionId != null) 'DIRECCION_ID': direccionId,
-      if (direccionEntrga1 != null) 'DIRECCION_ENVIO1': direccionEntrga1,
-      if (direccionEntrga2 != null) 'DIRECCION_ENVIO2': direccionEntrga2,
-      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
-      if (poblacion != null) 'POBLACION': poblacion,
-      if (provincia != null) 'PROVINCIA': provincia,
-      if (paisId != null) 'PAIS_ID': paisId,
-      if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (baseImponible != null) 'BASE_IMPONIBLE': baseImponible,
-      if (totalLineas != null) 'TOTAL_LINEAS': totalLineas,
-      if (importePortes != null) 'IMPORTE_PORTES': importePortes,
-      if (importeIva != null) 'IMPORTE_IVA': importeIva,
-      if (total != null) 'TOTAL': total,
-      if (pedidoVentaEstadoId != null) 'ESTADO_PEDIDO_ID': pedidoVentaEstadoId,
-      if (oferta != null) 'OFERTA_SN': oferta,
-      if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
-      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
-      if (iva != null) 'IVA': iva,
+      if (id != null) 'ESTADO_PEDIDO_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  PedidoVentaTableCompanion copyWith(
-      {Value<String>? empresaId,
-      Value<String>? pedidoVentaId,
-      Value<DateTime>? pedidoVentaDate,
-      Value<String>? tipoVenta,
-      Value<String>? clienteId,
-      Value<String>? nombreCliente,
-      Value<String?>? direccionId,
-      Value<String?>? direccionEntrga1,
-      Value<String?>? direccionEntrga2,
-      Value<String?>? codigoPostal,
-      Value<String?>? poblacion,
-      Value<String?>? provincia,
-      Value<String?>? paisId,
-      Value<String>? divisaId,
-      Value<double>? baseImponible,
-      Value<double>? totalLineas,
-      Value<double>? importePortes,
-      Value<double>? importeIva,
-      Value<double>? total,
-      Value<int>? pedidoVentaEstadoId,
-      Value<String>? oferta,
-      Value<DateTime?>? ofertaFechaHasta,
-      Value<String?>? pedidoVentaAppId,
-      Value<double>? iva,
+  PedidoVentaEstadoTableCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return PedidoVentaTableCompanion(
-      empresaId: empresaId ?? this.empresaId,
-      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
-      pedidoVentaDate: pedidoVentaDate ?? this.pedidoVentaDate,
-      tipoVenta: tipoVenta ?? this.tipoVenta,
-      clienteId: clienteId ?? this.clienteId,
-      nombreCliente: nombreCliente ?? this.nombreCliente,
-      direccionId: direccionId ?? this.direccionId,
-      direccionEntrga1: direccionEntrga1 ?? this.direccionEntrga1,
-      direccionEntrga2: direccionEntrga2 ?? this.direccionEntrga2,
-      codigoPostal: codigoPostal ?? this.codigoPostal,
-      poblacion: poblacion ?? this.poblacion,
-      provincia: provincia ?? this.provincia,
-      paisId: paisId ?? this.paisId,
-      divisaId: divisaId ?? this.divisaId,
-      baseImponible: baseImponible ?? this.baseImponible,
-      totalLineas: totalLineas ?? this.totalLineas,
-      importePortes: importePortes ?? this.importePortes,
-      importeIva: importeIva ?? this.importeIva,
-      total: total ?? this.total,
-      pedidoVentaEstadoId: pedidoVentaEstadoId ?? this.pedidoVentaEstadoId,
-      oferta: oferta ?? this.oferta,
-      ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
-      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
-      iva: iva ?? this.iva,
+    return PedidoVentaEstadoTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -1899,77 +1612,50 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (empresaId.present) {
-      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    if (id.present) {
+      map['ESTADO_PEDIDO_ID'] = Variable<int>(id.value);
     }
-    if (pedidoVentaId.present) {
-      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (pedidoVentaDate.present) {
-      map['FECHA_PEDIDO'] = Variable<DateTime>(pedidoVentaDate.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (tipoVenta.present) {
-      map['TIPO_VENTA'] = Variable<String>(tipoVenta.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (nombreCliente.present) {
-      map['NOMRE_CLIENTE'] = Variable<String>(nombreCliente.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (direccionId.present) {
-      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (direccionEntrga1.present) {
-      map['DIRECCION_ENVIO1'] = Variable<String>(direccionEntrga1.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (direccionEntrga2.present) {
-      map['DIRECCION_ENVIO2'] = Variable<String>(direccionEntrga2.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (codigoPostal.present) {
-      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (poblacion.present) {
-      map['POBLACION'] = Variable<String>(poblacion.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (provincia.present) {
-      map['PROVINCIA'] = Variable<String>(provincia.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (paisId.present) {
-      map['PAIS_ID'] = Variable<String>(paisId.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (divisaId.present) {
-      map['DIVISA_ID'] = Variable<String>(divisaId.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (baseImponible.present) {
-      map['BASE_IMPONIBLE'] = Variable<double>(baseImponible.value);
-    }
-    if (totalLineas.present) {
-      map['TOTAL_LINEAS'] = Variable<double>(totalLineas.value);
-    }
-    if (importePortes.present) {
-      map['IMPORTE_PORTES'] = Variable<double>(importePortes.value);
-    }
-    if (importeIva.present) {
-      map['IMPORTE_IVA'] = Variable<double>(importeIva.value);
-    }
-    if (total.present) {
-      map['TOTAL'] = Variable<double>(total.value);
-    }
-    if (pedidoVentaEstadoId.present) {
-      map['ESTADO_PEDIDO_ID'] = Variable<int>(pedidoVentaEstadoId.value);
-    }
-    if (oferta.present) {
-      map['OFERTA_SN'] = Variable<String>(oferta.value);
-    }
-    if (ofertaFechaHasta.present) {
-      map['OFERTA_FECHA_HASTA'] = Variable<DateTime>(ofertaFechaHasta.value);
-    }
-    if (pedidoVentaAppId.present) {
-      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
-    }
-    if (iva.present) {
-      map['IVA'] = Variable<double>(iva.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -1982,31 +1668,22 @@ class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('PedidoVentaTableCompanion(')
-          ..write('empresaId: $empresaId, ')
-          ..write('pedidoVentaId: $pedidoVentaId, ')
-          ..write('pedidoVentaDate: $pedidoVentaDate, ')
-          ..write('tipoVenta: $tipoVenta, ')
-          ..write('clienteId: $clienteId, ')
-          ..write('nombreCliente: $nombreCliente, ')
-          ..write('direccionId: $direccionId, ')
-          ..write('direccionEntrga1: $direccionEntrga1, ')
-          ..write('direccionEntrga2: $direccionEntrga2, ')
-          ..write('codigoPostal: $codigoPostal, ')
-          ..write('poblacion: $poblacion, ')
-          ..write('provincia: $provincia, ')
-          ..write('paisId: $paisId, ')
-          ..write('divisaId: $divisaId, ')
-          ..write('baseImponible: $baseImponible, ')
-          ..write('totalLineas: $totalLineas, ')
-          ..write('importePortes: $importePortes, ')
-          ..write('importeIva: $importeIva, ')
-          ..write('total: $total, ')
-          ..write('pedidoVentaEstadoId: $pedidoVentaEstadoId, ')
-          ..write('oferta: $oferta, ')
-          ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
-          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
-          ..write('iva: $iva, ')
+    return (StringBuffer('PedidoVentaEstadoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -2478,145 +2155,206 @@ class $PedidoVentaTableTable extends PedidoVentaTable
   }
 }
 
-class PedidoVentaLineaTableCompanion
-    extends UpdateCompanion<PedidoVentaLineaDTO> {
+class PedidoVentaTableCompanion extends UpdateCompanion<PedidoVentaDTO> {
   final Value<String> empresaId;
   final Value<String> pedidoVentaId;
-  final Value<String> pedidoVentaLineaId;
-  final Value<String> articuloId;
-  final Value<String> articuloDescription;
-  final Value<int> cantidad;
-  final Value<double> precioDivisa;
-  final Value<int> tipoPrecio;
-  final Value<double> descuento1;
-  final Value<double> descuento2;
-  final Value<double> descuento3;
-  final Value<String?> pedidoLineaIdComponente;
-  final Value<double?> importeLinea;
-  final Value<int> cantidadServida;
+  final Value<DateTime> pedidoVentaDate;
+  final Value<String> tipoVenta;
+  final Value<String> clienteId;
+  final Value<String> nombreCliente;
+  final Value<String?> direccionId;
+  final Value<String?> direccionEntrga1;
+  final Value<String?> direccionEntrga2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
+  final Value<String> divisaId;
+  final Value<double> baseImponible;
+  final Value<double> totalLineas;
+  final Value<double> importePortes;
+  final Value<double> importeIva;
+  final Value<double> total;
+  final Value<int> pedidoVentaEstadoId;
+  final Value<String> oferta;
+  final Value<DateTime?> ofertaFechaHasta;
+  final Value<String?> pedidoVentaAppId;
+  final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const PedidoVentaLineaTableCompanion({
+  const PedidoVentaTableCompanion({
     this.empresaId = const Value.absent(),
     this.pedidoVentaId = const Value.absent(),
-    this.pedidoVentaLineaId = const Value.absent(),
-    this.articuloId = const Value.absent(),
-    this.articuloDescription = const Value.absent(),
-    this.cantidad = const Value.absent(),
-    this.precioDivisa = const Value.absent(),
-    this.tipoPrecio = const Value.absent(),
-    this.descuento1 = const Value.absent(),
-    this.descuento2 = const Value.absent(),
-    this.descuento3 = const Value.absent(),
-    this.pedidoLineaIdComponente = const Value.absent(),
-    this.importeLinea = const Value.absent(),
-    this.cantidadServida = const Value.absent(),
+    this.pedidoVentaDate = const Value.absent(),
+    this.tipoVenta = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.direccionEntrga1 = const Value.absent(),
+    this.direccionEntrga2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.baseImponible = const Value.absent(),
+    this.totalLineas = const Value.absent(),
+    this.importePortes = const Value.absent(),
+    this.importeIva = const Value.absent(),
+    this.total = const Value.absent(),
+    this.pedidoVentaEstadoId = const Value.absent(),
+    this.oferta = const Value.absent(),
+    this.ofertaFechaHasta = const Value.absent(),
+    this.pedidoVentaAppId = const Value.absent(),
+    this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  PedidoVentaLineaTableCompanion.insert({
+  PedidoVentaTableCompanion.insert({
     required String empresaId,
     required String pedidoVentaId,
-    required String pedidoVentaLineaId,
-    required String articuloId,
-    required String articuloDescription,
-    required int cantidad,
-    required double precioDivisa,
-    required int tipoPrecio,
-    required double descuento1,
-    required double descuento2,
-    required double descuento3,
-    this.pedidoLineaIdComponente = const Value.absent(),
-    this.importeLinea = const Value.absent(),
-    required int cantidadServida,
+    required DateTime pedidoVentaDate,
+    required String tipoVenta,
+    required String clienteId,
+    required String nombreCliente,
+    this.direccionId = const Value.absent(),
+    this.direccionEntrga1 = const Value.absent(),
+    this.direccionEntrga2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    required String divisaId,
+    this.baseImponible = const Value.absent(),
+    this.totalLineas = const Value.absent(),
+    this.importePortes = const Value.absent(),
+    this.importeIva = const Value.absent(),
+    this.total = const Value.absent(),
+    this.pedidoVentaEstadoId = const Value.absent(),
+    this.oferta = const Value.absent(),
+    this.ofertaFechaHasta = const Value.absent(),
+    this.pedidoVentaAppId = const Value.absent(),
+    this.iva = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : empresaId = Value(empresaId),
         pedidoVentaId = Value(pedidoVentaId),
-        pedidoVentaLineaId = Value(pedidoVentaLineaId),
-        articuloId = Value(articuloId),
-        articuloDescription = Value(articuloDescription),
-        cantidad = Value(cantidad),
-        precioDivisa = Value(precioDivisa),
-        tipoPrecio = Value(tipoPrecio),
-        descuento1 = Value(descuento1),
-        descuento2 = Value(descuento2),
-        descuento3 = Value(descuento3),
-        cantidadServida = Value(cantidadServida),
+        pedidoVentaDate = Value(pedidoVentaDate),
+        tipoVenta = Value(tipoVenta),
+        clienteId = Value(clienteId),
+        nombreCliente = Value(nombreCliente),
+        divisaId = Value(divisaId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<PedidoVentaLineaDTO> custom({
+  static Insertable<PedidoVentaDTO> custom({
     Expression<String>? empresaId,
     Expression<String>? pedidoVentaId,
-    Expression<String>? pedidoVentaLineaId,
-    Expression<String>? articuloId,
-    Expression<String>? articuloDescription,
-    Expression<int>? cantidad,
-    Expression<double>? precioDivisa,
-    Expression<int>? tipoPrecio,
-    Expression<double>? descuento1,
-    Expression<double>? descuento2,
-    Expression<double>? descuento3,
-    Expression<String>? pedidoLineaIdComponente,
-    Expression<double>? importeLinea,
-    Expression<int>? cantidadServida,
+    Expression<DateTime>? pedidoVentaDate,
+    Expression<String>? tipoVenta,
+    Expression<String>? clienteId,
+    Expression<String>? nombreCliente,
+    Expression<String>? direccionId,
+    Expression<String>? direccionEntrga1,
+    Expression<String>? direccionEntrga2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
+    Expression<String>? divisaId,
+    Expression<double>? baseImponible,
+    Expression<double>? totalLineas,
+    Expression<double>? importePortes,
+    Expression<double>? importeIva,
+    Expression<double>? total,
+    Expression<int>? pedidoVentaEstadoId,
+    Expression<String>? oferta,
+    Expression<DateTime>? ofertaFechaHasta,
+    Expression<String>? pedidoVentaAppId,
+    Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (empresaId != null) 'EMPRESA_ID': empresaId,
       if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
-      if (pedidoVentaLineaId != null) 'PEDIDO_LINEA_ID': pedidoVentaLineaId,
-      if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (articuloDescription != null)
-        'ARTICULO_DESCRIPCION': articuloDescription,
-      if (cantidad != null) 'CANTIDAD': cantidad,
-      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
-      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
-      if (descuento1 != null) 'DESCUENTO1': descuento1,
-      if (descuento2 != null) 'DESCUENTO2': descuento2,
-      if (descuento3 != null) 'DESCUENTO3': descuento3,
-      if (pedidoLineaIdComponente != null)
-        'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
-      if (importeLinea != null) 'TOTAL_LINEA': importeLinea,
-      if (cantidadServida != null) 'CANTIDAD_SERVIDA': cantidadServida,
+      if (pedidoVentaDate != null) 'FECHA_PEDIDO': pedidoVentaDate,
+      if (tipoVenta != null) 'TIPO_VENTA': tipoVenta,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (nombreCliente != null) 'NOMRE_CLIENTE': nombreCliente,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (direccionEntrga1 != null) 'DIRECCION_ENVIO1': direccionEntrga1,
+      if (direccionEntrga2 != null) 'DIRECCION_ENVIO2': direccionEntrga2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (baseImponible != null) 'BASE_IMPONIBLE': baseImponible,
+      if (totalLineas != null) 'TOTAL_LINEAS': totalLineas,
+      if (importePortes != null) 'IMPORTE_PORTES': importePortes,
+      if (importeIva != null) 'IMPORTE_IVA': importeIva,
+      if (total != null) 'TOTAL': total,
+      if (pedidoVentaEstadoId != null) 'ESTADO_PEDIDO_ID': pedidoVentaEstadoId,
+      if (oferta != null) 'OFERTA_SN': oferta,
+      if (ofertaFechaHasta != null) 'OFERTA_FECHA_HASTA': ofertaFechaHasta,
+      if (pedidoVentaAppId != null) 'PEDIDO_APP_ID': pedidoVentaAppId,
+      if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  PedidoVentaLineaTableCompanion copyWith(
+  PedidoVentaTableCompanion copyWith(
       {Value<String>? empresaId,
       Value<String>? pedidoVentaId,
-      Value<String>? pedidoVentaLineaId,
-      Value<String>? articuloId,
-      Value<String>? articuloDescription,
-      Value<int>? cantidad,
-      Value<double>? precioDivisa,
-      Value<int>? tipoPrecio,
-      Value<double>? descuento1,
-      Value<double>? descuento2,
-      Value<double>? descuento3,
-      Value<String?>? pedidoLineaIdComponente,
-      Value<double?>? importeLinea,
-      Value<int>? cantidadServida,
+      Value<DateTime>? pedidoVentaDate,
+      Value<String>? tipoVenta,
+      Value<String>? clienteId,
+      Value<String>? nombreCliente,
+      Value<String?>? direccionId,
+      Value<String?>? direccionEntrga1,
+      Value<String?>? direccionEntrga2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
+      Value<String>? divisaId,
+      Value<double>? baseImponible,
+      Value<double>? totalLineas,
+      Value<double>? importePortes,
+      Value<double>? importeIva,
+      Value<double>? total,
+      Value<int>? pedidoVentaEstadoId,
+      Value<String>? oferta,
+      Value<DateTime?>? ofertaFechaHasta,
+      Value<String?>? pedidoVentaAppId,
+      Value<double>? iva,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return PedidoVentaLineaTableCompanion(
+    return PedidoVentaTableCompanion(
       empresaId: empresaId ?? this.empresaId,
       pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
-      pedidoVentaLineaId: pedidoVentaLineaId ?? this.pedidoVentaLineaId,
-      articuloId: articuloId ?? this.articuloId,
-      articuloDescription: articuloDescription ?? this.articuloDescription,
-      cantidad: cantidad ?? this.cantidad,
-      precioDivisa: precioDivisa ?? this.precioDivisa,
-      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
-      descuento1: descuento1 ?? this.descuento1,
-      descuento2: descuento2 ?? this.descuento2,
-      descuento3: descuento3 ?? this.descuento3,
-      pedidoLineaIdComponente:
-          pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
-      importeLinea: importeLinea ?? this.importeLinea,
-      cantidadServida: cantidadServida ?? this.cantidadServida,
+      pedidoVentaDate: pedidoVentaDate ?? this.pedidoVentaDate,
+      tipoVenta: tipoVenta ?? this.tipoVenta,
+      clienteId: clienteId ?? this.clienteId,
+      nombreCliente: nombreCliente ?? this.nombreCliente,
+      direccionId: direccionId ?? this.direccionId,
+      direccionEntrga1: direccionEntrga1 ?? this.direccionEntrga1,
+      direccionEntrga2: direccionEntrga2 ?? this.direccionEntrga2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
+      divisaId: divisaId ?? this.divisaId,
+      baseImponible: baseImponible ?? this.baseImponible,
+      totalLineas: totalLineas ?? this.totalLineas,
+      importePortes: importePortes ?? this.importePortes,
+      importeIva: importeIva ?? this.importeIva,
+      total: total ?? this.total,
+      pedidoVentaEstadoId: pedidoVentaEstadoId ?? this.pedidoVentaEstadoId,
+      oferta: oferta ?? this.oferta,
+      ofertaFechaHasta: ofertaFechaHasta ?? this.ofertaFechaHasta,
+      pedidoVentaAppId: pedidoVentaAppId ?? this.pedidoVentaAppId,
+      iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -2631,42 +2369,71 @@ class PedidoVentaLineaTableCompanion
     if (pedidoVentaId.present) {
       map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
     }
-    if (pedidoVentaLineaId.present) {
-      map['PEDIDO_LINEA_ID'] = Variable<String>(pedidoVentaLineaId.value);
+    if (pedidoVentaDate.present) {
+      map['FECHA_PEDIDO'] = Variable<DateTime>(pedidoVentaDate.value);
     }
-    if (articuloId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    if (tipoVenta.present) {
+      map['TIPO_VENTA'] = Variable<String>(tipoVenta.value);
     }
-    if (articuloDescription.present) {
-      map['ARTICULO_DESCRIPCION'] = Variable<String>(articuloDescription.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (cantidad.present) {
-      map['CANTIDAD'] = Variable<int>(cantidad.value);
+    if (nombreCliente.present) {
+      map['NOMRE_CLIENTE'] = Variable<String>(nombreCliente.value);
     }
-    if (precioDivisa.present) {
-      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
     }
-    if (tipoPrecio.present) {
-      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
+    if (direccionEntrga1.present) {
+      map['DIRECCION_ENVIO1'] = Variable<String>(direccionEntrga1.value);
     }
-    if (descuento1.present) {
-      map['DESCUENTO1'] = Variable<double>(descuento1.value);
+    if (direccionEntrga2.present) {
+      map['DIRECCION_ENVIO2'] = Variable<String>(direccionEntrga2.value);
     }
-    if (descuento2.present) {
-      map['DESCUENTO2'] = Variable<double>(descuento2.value);
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
     }
-    if (descuento3.present) {
-      map['DESCUENTO3'] = Variable<double>(descuento3.value);
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
     }
-    if (pedidoLineaIdComponente.present) {
-      map['PEDIDO_LINEA_ID_COMPONENTE'] =
-          Variable<String>(pedidoLineaIdComponente.value);
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
     }
-    if (importeLinea.present) {
-      map['TOTAL_LINEA'] = Variable<double>(importeLinea.value);
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
     }
-    if (cantidadServida.present) {
-      map['CANTIDAD_SERVIDA'] = Variable<int>(cantidadServida.value);
+    if (divisaId.present) {
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
+    }
+    if (baseImponible.present) {
+      map['BASE_IMPONIBLE'] = Variable<double>(baseImponible.value);
+    }
+    if (totalLineas.present) {
+      map['TOTAL_LINEAS'] = Variable<double>(totalLineas.value);
+    }
+    if (importePortes.present) {
+      map['IMPORTE_PORTES'] = Variable<double>(importePortes.value);
+    }
+    if (importeIva.present) {
+      map['IMPORTE_IVA'] = Variable<double>(importeIva.value);
+    }
+    if (total.present) {
+      map['TOTAL'] = Variable<double>(total.value);
+    }
+    if (pedidoVentaEstadoId.present) {
+      map['ESTADO_PEDIDO_ID'] = Variable<int>(pedidoVentaEstadoId.value);
+    }
+    if (oferta.present) {
+      map['OFERTA_SN'] = Variable<String>(oferta.value);
+    }
+    if (ofertaFechaHasta.present) {
+      map['OFERTA_FECHA_HASTA'] = Variable<DateTime>(ofertaFechaHasta.value);
+    }
+    if (pedidoVentaAppId.present) {
+      map['PEDIDO_APP_ID'] = Variable<String>(pedidoVentaAppId.value);
+    }
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -2679,21 +2446,31 @@ class PedidoVentaLineaTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('PedidoVentaLineaTableCompanion(')
+    return (StringBuffer('PedidoVentaTableCompanion(')
           ..write('empresaId: $empresaId, ')
           ..write('pedidoVentaId: $pedidoVentaId, ')
-          ..write('pedidoVentaLineaId: $pedidoVentaLineaId, ')
-          ..write('articuloId: $articuloId, ')
-          ..write('articuloDescription: $articuloDescription, ')
-          ..write('cantidad: $cantidad, ')
-          ..write('precioDivisa: $precioDivisa, ')
-          ..write('tipoPrecio: $tipoPrecio, ')
-          ..write('descuento1: $descuento1, ')
-          ..write('descuento2: $descuento2, ')
-          ..write('descuento3: $descuento3, ')
-          ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
-          ..write('importeLinea: $importeLinea, ')
-          ..write('cantidadServida: $cantidadServida, ')
+          ..write('pedidoVentaDate: $pedidoVentaDate, ')
+          ..write('tipoVenta: $tipoVenta, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('nombreCliente: $nombreCliente, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('direccionEntrga1: $direccionEntrga1, ')
+          ..write('direccionEntrga2: $direccionEntrga2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('baseImponible: $baseImponible, ')
+          ..write('totalLineas: $totalLineas, ')
+          ..write('importePortes: $importePortes, ')
+          ..write('importeIva: $importeIva, ')
+          ..write('total: $total, ')
+          ..write('pedidoVentaEstadoId: $pedidoVentaEstadoId, ')
+          ..write('oferta: $oferta, ')
+          ..write('ofertaFechaHasta: $ofertaFechaHasta, ')
+          ..write('pedidoVentaAppId: $pedidoVentaAppId, ')
+          ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -3003,145 +2780,145 @@ class $PedidoVentaLineaTableTable extends PedidoVentaLineaTable
   }
 }
 
-class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
-  final Value<String> id;
-  final Value<String> descripcionES;
-  final Value<String?> descripcionEN;
-  final Value<String?> descripcionFR;
-  final Value<String?> descripcionDE;
-  final Value<String?> descripcionCA;
-  final Value<String?> descripcionGB;
-  final Value<String?> descripcionHU;
-  final Value<String?> descripcionIT;
-  final Value<String?> descripcionNL;
-  final Value<String?> descripcionPL;
-  final Value<String?> descripcionPT;
-  final Value<String?> descripcionRO;
-  final Value<String?> descripcionRU;
-  final Value<String?> descripcionCN;
-  final Value<String?> descripcionEL;
+class PedidoVentaLineaTableCompanion
+    extends UpdateCompanion<PedidoVentaLineaDTO> {
+  final Value<String> empresaId;
+  final Value<String> pedidoVentaId;
+  final Value<String> pedidoVentaLineaId;
+  final Value<String> articuloId;
+  final Value<String> articuloDescription;
+  final Value<int> cantidad;
+  final Value<double> precioDivisa;
+  final Value<int> tipoPrecio;
+  final Value<double> descuento1;
+  final Value<double> descuento2;
+  final Value<double> descuento3;
+  final Value<String?> pedidoLineaIdComponente;
+  final Value<double?> importeLinea;
+  final Value<int> cantidadServida;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const PlazoDeCobroTableCompanion({
-    this.id = const Value.absent(),
-    this.descripcionES = const Value.absent(),
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
+  const PedidoVentaLineaTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.pedidoVentaId = const Value.absent(),
+    this.pedidoVentaLineaId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.articuloDescription = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.precioDivisa = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.descuento1 = const Value.absent(),
+    this.descuento2 = const Value.absent(),
+    this.descuento3 = const Value.absent(),
+    this.pedidoLineaIdComponente = const Value.absent(),
+    this.importeLinea = const Value.absent(),
+    this.cantidadServida = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  PlazoDeCobroTableCompanion.insert({
-    required String id,
-    required String descripcionES,
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
+  PedidoVentaLineaTableCompanion.insert({
+    required String empresaId,
+    required String pedidoVentaId,
+    required String pedidoVentaLineaId,
+    required String articuloId,
+    required String articuloDescription,
+    required int cantidad,
+    required double precioDivisa,
+    required int tipoPrecio,
+    required double descuento1,
+    required double descuento2,
+    required double descuento3,
+    this.pedidoLineaIdComponente = const Value.absent(),
+    this.importeLinea = const Value.absent(),
+    required int cantidadServida,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : id = Value(id),
-        descripcionES = Value(descripcionES),
+  })  : empresaId = Value(empresaId),
+        pedidoVentaId = Value(pedidoVentaId),
+        pedidoVentaLineaId = Value(pedidoVentaLineaId),
+        articuloId = Value(articuloId),
+        articuloDescription = Value(articuloDescription),
+        cantidad = Value(cantidad),
+        precioDivisa = Value(precioDivisa),
+        tipoPrecio = Value(tipoPrecio),
+        descuento1 = Value(descuento1),
+        descuento2 = Value(descuento2),
+        descuento3 = Value(descuento3),
+        cantidadServida = Value(cantidadServida),
         lastUpdated = Value(lastUpdated);
-  static Insertable<PlazoDeCobroDTO> custom({
-    Expression<String>? id,
-    Expression<String>? descripcionES,
-    Expression<String>? descripcionEN,
-    Expression<String>? descripcionFR,
-    Expression<String>? descripcionDE,
-    Expression<String>? descripcionCA,
-    Expression<String>? descripcionGB,
-    Expression<String>? descripcionHU,
-    Expression<String>? descripcionIT,
-    Expression<String>? descripcionNL,
-    Expression<String>? descripcionPL,
-    Expression<String>? descripcionPT,
-    Expression<String>? descripcionRO,
-    Expression<String>? descripcionRU,
-    Expression<String>? descripcionCN,
-    Expression<String>? descripcionEL,
+  static Insertable<PedidoVentaLineaDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? pedidoVentaId,
+    Expression<String>? pedidoVentaLineaId,
+    Expression<String>? articuloId,
+    Expression<String>? articuloDescription,
+    Expression<int>? cantidad,
+    Expression<double>? precioDivisa,
+    Expression<int>? tipoPrecio,
+    Expression<double>? descuento1,
+    Expression<double>? descuento2,
+    Expression<double>? descuento3,
+    Expression<String>? pedidoLineaIdComponente,
+    Expression<double>? importeLinea,
+    Expression<int>? cantidadServida,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'PLAZO_COBRO_ID': id,
-      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
-      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
-      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
-      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
-      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
-      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
-      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
-      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
-      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
-      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
-      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
-      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
-      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
-      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
-      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
+      if (pedidoVentaLineaId != null) 'PEDIDO_LINEA_ID': pedidoVentaLineaId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (articuloDescription != null)
+        'ARTICULO_DESCRIPCION': articuloDescription,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (descuento1 != null) 'DESCUENTO1': descuento1,
+      if (descuento2 != null) 'DESCUENTO2': descuento2,
+      if (descuento3 != null) 'DESCUENTO3': descuento3,
+      if (pedidoLineaIdComponente != null)
+        'PEDIDO_LINEA_ID_COMPONENTE': pedidoLineaIdComponente,
+      if (importeLinea != null) 'TOTAL_LINEA': importeLinea,
+      if (cantidadServida != null) 'CANTIDAD_SERVIDA': cantidadServida,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  PlazoDeCobroTableCompanion copyWith(
-      {Value<String>? id,
-      Value<String>? descripcionES,
-      Value<String?>? descripcionEN,
-      Value<String?>? descripcionFR,
-      Value<String?>? descripcionDE,
-      Value<String?>? descripcionCA,
-      Value<String?>? descripcionGB,
-      Value<String?>? descripcionHU,
-      Value<String?>? descripcionIT,
-      Value<String?>? descripcionNL,
-      Value<String?>? descripcionPL,
-      Value<String?>? descripcionPT,
-      Value<String?>? descripcionRO,
-      Value<String?>? descripcionRU,
-      Value<String?>? descripcionCN,
-      Value<String?>? descripcionEL,
+  PedidoVentaLineaTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? pedidoVentaId,
+      Value<String>? pedidoVentaLineaId,
+      Value<String>? articuloId,
+      Value<String>? articuloDescription,
+      Value<int>? cantidad,
+      Value<double>? precioDivisa,
+      Value<int>? tipoPrecio,
+      Value<double>? descuento1,
+      Value<double>? descuento2,
+      Value<double>? descuento3,
+      Value<String?>? pedidoLineaIdComponente,
+      Value<double?>? importeLinea,
+      Value<int>? cantidadServida,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return PlazoDeCobroTableCompanion(
-      id: id ?? this.id,
-      descripcionES: descripcionES ?? this.descripcionES,
-      descripcionEN: descripcionEN ?? this.descripcionEN,
-      descripcionFR: descripcionFR ?? this.descripcionFR,
-      descripcionDE: descripcionDE ?? this.descripcionDE,
-      descripcionCA: descripcionCA ?? this.descripcionCA,
-      descripcionGB: descripcionGB ?? this.descripcionGB,
-      descripcionHU: descripcionHU ?? this.descripcionHU,
-      descripcionIT: descripcionIT ?? this.descripcionIT,
-      descripcionNL: descripcionNL ?? this.descripcionNL,
-      descripcionPL: descripcionPL ?? this.descripcionPL,
-      descripcionPT: descripcionPT ?? this.descripcionPT,
-      descripcionRO: descripcionRO ?? this.descripcionRO,
-      descripcionRU: descripcionRU ?? this.descripcionRU,
-      descripcionCN: descripcionCN ?? this.descripcionCN,
-      descripcionEL: descripcionEL ?? this.descripcionEL,
+    return PedidoVentaLineaTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
+      pedidoVentaLineaId: pedidoVentaLineaId ?? this.pedidoVentaLineaId,
+      articuloId: articuloId ?? this.articuloId,
+      articuloDescription: articuloDescription ?? this.articuloDescription,
+      cantidad: cantidad ?? this.cantidad,
+      precioDivisa: precioDivisa ?? this.precioDivisa,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      descuento1: descuento1 ?? this.descuento1,
+      descuento2: descuento2 ?? this.descuento2,
+      descuento3: descuento3 ?? this.descuento3,
+      pedidoLineaIdComponente:
+          pedidoLineaIdComponente ?? this.pedidoLineaIdComponente,
+      importeLinea: importeLinea ?? this.importeLinea,
+      cantidadServida: cantidadServida ?? this.cantidadServida,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -3150,53 +2927,48 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['PLAZO_COBRO_ID'] = Variable<String>(id.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (descripcionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    if (pedidoVentaId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
     }
-    if (descripcionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    if (pedidoVentaLineaId.present) {
+      map['PEDIDO_LINEA_ID'] = Variable<String>(pedidoVentaLineaId.value);
     }
-    if (descripcionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (descripcionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    if (articuloDescription.present) {
+      map['ARTICULO_DESCRIPCION'] = Variable<String>(articuloDescription.value);
     }
-    if (descripcionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
-    if (descripcionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    if (precioDivisa.present) {
+      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
     }
-    if (descripcionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
-    if (descripcionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    if (descuento1.present) {
+      map['DESCUENTO1'] = Variable<double>(descuento1.value);
     }
-    if (descripcionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    if (descuento2.present) {
+      map['DESCUENTO2'] = Variable<double>(descuento2.value);
     }
-    if (descripcionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    if (descuento3.present) {
+      map['DESCUENTO3'] = Variable<double>(descuento3.value);
     }
-    if (descripcionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    if (pedidoLineaIdComponente.present) {
+      map['PEDIDO_LINEA_ID_COMPONENTE'] =
+          Variable<String>(pedidoLineaIdComponente.value);
     }
-    if (descripcionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    if (importeLinea.present) {
+      map['TOTAL_LINEA'] = Variable<double>(importeLinea.value);
     }
-    if (descripcionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
-    }
-    if (descripcionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
-    }
-    if (descripcionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    if (cantidadServida.present) {
+      map['CANTIDAD_SERVIDA'] = Variable<int>(cantidadServida.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -3209,23 +2981,21 @@ class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('PlazoDeCobroTableCompanion(')
-          ..write('id: $id, ')
-          ..write('descripcionES: $descripcionES, ')
-          ..write('descripcionEN: $descripcionEN, ')
-          ..write('descripcionFR: $descripcionFR, ')
-          ..write('descripcionDE: $descripcionDE, ')
-          ..write('descripcionCA: $descripcionCA, ')
-          ..write('descripcionGB: $descripcionGB, ')
-          ..write('descripcionHU: $descripcionHU, ')
-          ..write('descripcionIT: $descripcionIT, ')
-          ..write('descripcionNL: $descripcionNL, ')
-          ..write('descripcionPL: $descripcionPL, ')
-          ..write('descripcionPT: $descripcionPT, ')
-          ..write('descripcionRO: $descripcionRO, ')
-          ..write('descripcionRU: $descripcionRU, ')
-          ..write('descripcionCN: $descripcionCN, ')
-          ..write('descripcionEL: $descripcionEL, ')
+    return (StringBuffer('PedidoVentaLineaTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('pedidoVentaId: $pedidoVentaId, ')
+          ..write('pedidoVentaLineaId: $pedidoVentaLineaId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloDescription: $articuloDescription, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('precioDivisa: $precioDivisa, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('descuento1: $descuento1, ')
+          ..write('descuento2: $descuento2, ')
+          ..write('descuento3: $descuento3, ')
+          ..write('pedidoLineaIdComponente: $pedidoLineaIdComponente, ')
+          ..write('importeLinea: $importeLinea, ')
+          ..write('cantidadServida: $cantidadServida, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -3542,7 +3312,7 @@ class $PlazoDeCobroTableTable extends PlazoDeCobroTable
   }
 }
 
-class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
+class PlazoDeCobroTableCompanion extends UpdateCompanion<PlazoDeCobroDTO> {
   final Value<String> id;
   final Value<String> descripcionES;
   final Value<String?> descripcionEN;
@@ -3561,7 +3331,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const MetodoDeCobroTableCompanion({
+  const PlazoDeCobroTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
     this.descripcionEN = const Value.absent(),
@@ -3581,7 +3351,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  MetodoDeCobroTableCompanion.insert({
+  PlazoDeCobroTableCompanion.insert({
     required String id,
     required String descripcionES,
     this.descripcionEN = const Value.absent(),
@@ -3603,7 +3373,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<MetodoDeCobroDTO> custom({
+  static Insertable<PlazoDeCobroDTO> custom({
     Expression<String>? id,
     Expression<String>? descripcionES,
     Expression<String>? descripcionEN,
@@ -3624,7 +3394,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'METODO_COBRO_ID': id,
+      if (id != null) 'PLAZO_COBRO_ID': id,
       if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
       if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
       if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
@@ -3645,7 +3415,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
     });
   }
 
-  MetodoDeCobroTableCompanion copyWith(
+  PlazoDeCobroTableCompanion copyWith(
       {Value<String>? id,
       Value<String>? descripcionES,
       Value<String?>? descripcionEN,
@@ -3664,7 +3434,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return MetodoDeCobroTableCompanion(
+    return PlazoDeCobroTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
       descripcionEN: descripcionEN ?? this.descripcionEN,
@@ -3690,7 +3460,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['METODO_COBRO_ID'] = Variable<String>(id.value);
+      map['PLAZO_COBRO_ID'] = Variable<String>(id.value);
     }
     if (descripcionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
@@ -3748,7 +3518,7 @@ class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('MetodoDeCobroTableCompanion(')
+    return (StringBuffer('PlazoDeCobroTableCompanion(')
           ..write('id: $id, ')
           ..write('descripcionES: $descripcionES, ')
           ..write('descripcionEN: $descripcionEN, ')
@@ -4081,433 +3851,145 @@ class $MetodoDeCobroTableTable extends MetodoDeCobroTable
   }
 }
 
-class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
+class MetodoDeCobroTableCompanion extends UpdateCompanion<MetodoDeCobroDTO> {
   final Value<String> id;
-  final Value<String> nombreCliente;
-  final Value<String?> nif;
-  final Value<String> nombreFiscal;
-  final Value<String?> direccionFiscal1;
-  final Value<String?> direccionFiscal2;
-  final Value<String?> codigoPostalFiscal;
-  final Value<String?> poblacionFiscal;
-  final Value<String?> provinciaFiscal;
-  final Value<String?> paisFiscalId;
-  final Value<double> latitudFiscal;
-  final Value<double> longitudFiscal;
-  final Value<String> empresaId;
-  final Value<double> iva;
-  final Value<double> ventasAnyoActual;
-  final Value<double> ventasAnyoAnterior;
-  final Value<double> ventasHaceDosAnyos;
-  final Value<double> margenAnyoActual;
-  final Value<double> margenAnyoAnterior;
-  final Value<double> margenHaceDosAnyos;
-  final Value<double> porcentajeAbonos;
-  final Value<double> porcentajeGarantias;
-  final Value<String?> centralCompras;
-  final Value<String?> urlWeb;
-  final Value<String?> divisaId;
-  final Value<String?> tarifaId;
-  final Value<String?> tarifaDescripcion;
-  final Value<String?> descuentoGeneralId;
-  final Value<String?> descripcionDescuentoGeneral;
-  final Value<String> tipoCalculoPrecio;
-  final Value<String?> plazoDeCobroId;
-  final Value<String?> metodoDeCobroId;
-  final Value<double> descuentoProntoPago;
-  final Value<double> riesgoConcedidoInterno;
-  final Value<DateTime?> riesgoConcedidoInternoDate;
-  final Value<double> riesgoConcedidoCoafe;
-  final Value<DateTime?> riesgoConcedidoCoafeFecha;
-  final Value<double?> riesgoConcedido;
-  final Value<double?> riesgoPendienteCobroVencido;
-  final Value<double?> riesgoPendienteCobroNoVencido;
-  final Value<double?> riesgoPendienteServir;
-  final Value<double?> riesgoPendienteFacturar;
-  final Value<String?> obvservacionesInternas;
-  final Value<String?> clientePotencial;
-  final Value<String?> clienteEstadoPotencialId;
-  final Value<String?> clienteTipoPotencialId;
-  final Value<String?> representante1Id;
-  final Value<String?> representante1Nombre;
-  final Value<String?> representante2Id;
-  final Value<String?> representante2Nombre;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteTableCompanion({
+  const MetodoDeCobroTableCompanion({
     this.id = const Value.absent(),
-    this.nombreCliente = const Value.absent(),
-    this.nif = const Value.absent(),
-    this.nombreFiscal = const Value.absent(),
-    this.direccionFiscal1 = const Value.absent(),
-    this.direccionFiscal2 = const Value.absent(),
-    this.codigoPostalFiscal = const Value.absent(),
-    this.poblacionFiscal = const Value.absent(),
-    this.provinciaFiscal = const Value.absent(),
-    this.paisFiscalId = const Value.absent(),
-    this.latitudFiscal = const Value.absent(),
-    this.longitudFiscal = const Value.absent(),
-    this.empresaId = const Value.absent(),
-    this.iva = const Value.absent(),
-    this.ventasAnyoActual = const Value.absent(),
-    this.ventasAnyoAnterior = const Value.absent(),
-    this.ventasHaceDosAnyos = const Value.absent(),
-    this.margenAnyoActual = const Value.absent(),
-    this.margenAnyoAnterior = const Value.absent(),
-    this.margenHaceDosAnyos = const Value.absent(),
-    this.porcentajeAbonos = const Value.absent(),
-    this.porcentajeGarantias = const Value.absent(),
-    this.centralCompras = const Value.absent(),
-    this.urlWeb = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.tarifaId = const Value.absent(),
-    this.tarifaDescripcion = const Value.absent(),
-    this.descuentoGeneralId = const Value.absent(),
-    this.descripcionDescuentoGeneral = const Value.absent(),
-    this.tipoCalculoPrecio = const Value.absent(),
-    this.plazoDeCobroId = const Value.absent(),
-    this.metodoDeCobroId = const Value.absent(),
-    this.descuentoProntoPago = const Value.absent(),
-    this.riesgoConcedidoInterno = const Value.absent(),
-    this.riesgoConcedidoInternoDate = const Value.absent(),
-    this.riesgoConcedidoCoafe = const Value.absent(),
-    this.riesgoConcedidoCoafeFecha = const Value.absent(),
-    this.riesgoConcedido = const Value.absent(),
-    this.riesgoPendienteCobroVencido = const Value.absent(),
-    this.riesgoPendienteCobroNoVencido = const Value.absent(),
-    this.riesgoPendienteServir = const Value.absent(),
-    this.riesgoPendienteFacturar = const Value.absent(),
-    this.obvservacionesInternas = const Value.absent(),
-    this.clientePotencial = const Value.absent(),
-    this.clienteEstadoPotencialId = const Value.absent(),
-    this.clienteTipoPotencialId = const Value.absent(),
-    this.representante1Id = const Value.absent(),
-    this.representante1Nombre = const Value.absent(),
-    this.representante2Id = const Value.absent(),
-    this.representante2Nombre = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteTableCompanion.insert({
+  MetodoDeCobroTableCompanion.insert({
     required String id,
-    required String nombreCliente,
-    this.nif = const Value.absent(),
-    required String nombreFiscal,
-    this.direccionFiscal1 = const Value.absent(),
-    this.direccionFiscal2 = const Value.absent(),
-    this.codigoPostalFiscal = const Value.absent(),
-    this.poblacionFiscal = const Value.absent(),
-    this.provinciaFiscal = const Value.absent(),
-    this.paisFiscalId = const Value.absent(),
-    required double latitudFiscal,
-    required double longitudFiscal,
-    required String empresaId,
-    required double iva,
-    required double ventasAnyoActual,
-    required double ventasAnyoAnterior,
-    required double ventasHaceDosAnyos,
-    required double margenAnyoActual,
-    required double margenAnyoAnterior,
-    required double margenHaceDosAnyos,
-    required double porcentajeAbonos,
-    required double porcentajeGarantias,
-    this.centralCompras = const Value.absent(),
-    this.urlWeb = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.tarifaId = const Value.absent(),
-    this.tarifaDescripcion = const Value.absent(),
-    this.descuentoGeneralId = const Value.absent(),
-    this.descripcionDescuentoGeneral = const Value.absent(),
-    required String tipoCalculoPrecio,
-    this.plazoDeCobroId = const Value.absent(),
-    this.metodoDeCobroId = const Value.absent(),
-    required double descuentoProntoPago,
-    required double riesgoConcedidoInterno,
-    this.riesgoConcedidoInternoDate = const Value.absent(),
-    required double riesgoConcedidoCoafe,
-    this.riesgoConcedidoCoafeFecha = const Value.absent(),
-    this.riesgoConcedido = const Value.absent(),
-    this.riesgoPendienteCobroVencido = const Value.absent(),
-    this.riesgoPendienteCobroNoVencido = const Value.absent(),
-    this.riesgoPendienteServir = const Value.absent(),
-    this.riesgoPendienteFacturar = const Value.absent(),
-    this.obvservacionesInternas = const Value.absent(),
-    this.clientePotencial = const Value.absent(),
-    this.clienteEstadoPotencialId = const Value.absent(),
-    this.clienteTipoPotencialId = const Value.absent(),
-    this.representante1Id = const Value.absent(),
-    this.representante1Nombre = const Value.absent(),
-    this.representante2Id = const Value.absent(),
-    this.representante2Nombre = const Value.absent(),
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        nombreCliente = Value(nombreCliente),
-        nombreFiscal = Value(nombreFiscal),
-        latitudFiscal = Value(latitudFiscal),
-        longitudFiscal = Value(longitudFiscal),
-        empresaId = Value(empresaId),
-        iva = Value(iva),
-        ventasAnyoActual = Value(ventasAnyoActual),
-        ventasAnyoAnterior = Value(ventasAnyoAnterior),
-        ventasHaceDosAnyos = Value(ventasHaceDosAnyos),
-        margenAnyoActual = Value(margenAnyoActual),
-        margenAnyoAnterior = Value(margenAnyoAnterior),
-        margenHaceDosAnyos = Value(margenHaceDosAnyos),
-        porcentajeAbonos = Value(porcentajeAbonos),
-        porcentajeGarantias = Value(porcentajeGarantias),
-        tipoCalculoPrecio = Value(tipoCalculoPrecio),
-        descuentoProntoPago = Value(descuentoProntoPago),
-        riesgoConcedidoInterno = Value(riesgoConcedidoInterno),
-        riesgoConcedidoCoafe = Value(riesgoConcedidoCoafe),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteDTO> custom({
+  static Insertable<MetodoDeCobroDTO> custom({
     Expression<String>? id,
-    Expression<String>? nombreCliente,
-    Expression<String>? nif,
-    Expression<String>? nombreFiscal,
-    Expression<String>? direccionFiscal1,
-    Expression<String>? direccionFiscal2,
-    Expression<String>? codigoPostalFiscal,
-    Expression<String>? poblacionFiscal,
-    Expression<String>? provinciaFiscal,
-    Expression<String>? paisFiscalId,
-    Expression<double>? latitudFiscal,
-    Expression<double>? longitudFiscal,
-    Expression<String>? empresaId,
-    Expression<double>? iva,
-    Expression<double>? ventasAnyoActual,
-    Expression<double>? ventasAnyoAnterior,
-    Expression<double>? ventasHaceDosAnyos,
-    Expression<double>? margenAnyoActual,
-    Expression<double>? margenAnyoAnterior,
-    Expression<double>? margenHaceDosAnyos,
-    Expression<double>? porcentajeAbonos,
-    Expression<double>? porcentajeGarantias,
-    Expression<String>? centralCompras,
-    Expression<String>? urlWeb,
-    Expression<String>? divisaId,
-    Expression<String>? tarifaId,
-    Expression<String>? tarifaDescripcion,
-    Expression<String>? descuentoGeneralId,
-    Expression<String>? descripcionDescuentoGeneral,
-    Expression<String>? tipoCalculoPrecio,
-    Expression<String>? plazoDeCobroId,
-    Expression<String>? metodoDeCobroId,
-    Expression<double>? descuentoProntoPago,
-    Expression<double>? riesgoConcedidoInterno,
-    Expression<DateTime>? riesgoConcedidoInternoDate,
-    Expression<double>? riesgoConcedidoCoafe,
-    Expression<DateTime>? riesgoConcedidoCoafeFecha,
-    Expression<double>? riesgoConcedido,
-    Expression<double>? riesgoPendienteCobroVencido,
-    Expression<double>? riesgoPendienteCobroNoVencido,
-    Expression<double>? riesgoPendienteServir,
-    Expression<double>? riesgoPendienteFacturar,
-    Expression<String>? obvservacionesInternas,
-    Expression<String>? clientePotencial,
-    Expression<String>? clienteEstadoPotencialId,
-    Expression<String>? clienteTipoPotencialId,
-    Expression<String>? representante1Id,
-    Expression<String>? representante1Nombre,
-    Expression<String>? representante2Id,
-    Expression<String>? representante2Nombre,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'CLIENTE_ID': id,
-      if (nombreCliente != null) 'NOMBRE': nombreCliente,
-      if (nif != null) 'NIF': nif,
-      if (nombreFiscal != null) 'NOMBRE_FISCAL': nombreFiscal,
-      if (direccionFiscal1 != null) 'DIRECCION_FISCAL1': direccionFiscal1,
-      if (direccionFiscal2 != null) 'DIRECCION_FISCAL2': direccionFiscal2,
-      if (codigoPostalFiscal != null)
-        'CODIGO_POSTAL_FISCAL': codigoPostalFiscal,
-      if (poblacionFiscal != null) 'POBLACION_FISCAL': poblacionFiscal,
-      if (provinciaFiscal != null) 'PROVINCIA_FISCAL': provinciaFiscal,
-      if (paisFiscalId != null) 'PAIS_ID_FISCAL': paisFiscalId,
-      if (latitudFiscal != null) 'LATITUD_FISCAL': latitudFiscal,
-      if (longitudFiscal != null) 'LONGITUD_FISCAL': longitudFiscal,
-      if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (iva != null) 'IVA': iva,
-      if (ventasAnyoActual != null) 'VENTAS_ANYO_ACTUAL': ventasAnyoActual,
-      if (ventasAnyoAnterior != null)
-        'VENTAS_ANYO_ANTERIOR': ventasAnyoAnterior,
-      if (ventasHaceDosAnyos != null)
-        'VENTAS_HACE_DOS_ANYOS': ventasHaceDosAnyos,
-      if (margenAnyoActual != null) 'MARGEN_ANYO_ACTUAL': margenAnyoActual,
-      if (margenAnyoAnterior != null)
-        'MARGEN_ANYO_ANTERIOR': margenAnyoAnterior,
-      if (margenHaceDosAnyos != null)
-        'MARGEN_HACE_DOS_ANYOS': margenHaceDosAnyos,
-      if (porcentajeAbonos != null) 'PORCENTAJE_ABONOS': porcentajeAbonos,
-      if (porcentajeGarantias != null)
-        'PORCENTAJE_GARANTIAS': porcentajeGarantias,
-      if (centralCompras != null) 'CENTRAL_COMPRAS_NOMBRE': centralCompras,
-      if (urlWeb != null) 'URL_WEB': urlWeb,
-      if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (tarifaId != null) 'TARIFA_ID': tarifaId,
-      if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
-      if (descuentoGeneralId != null)
-        'DESCUENTO_GENERAL_ID': descuentoGeneralId,
-      if (descripcionDescuentoGeneral != null)
-        'DESCUENTO_GENERAL_DESCRIPCION': descripcionDescuentoGeneral,
-      if (tipoCalculoPrecio != null) 'TIPO_CALCULO_PRECIO': tipoCalculoPrecio,
-      if (plazoDeCobroId != null) 'PLAZO_COBRO_ID': plazoDeCobroId,
-      if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
-      if (descuentoProntoPago != null)
-        'DESCUENTO_PRONTO_PAGO': descuentoProntoPago,
-      if (riesgoConcedidoInterno != null)
-        'RIESGO_CONCEDIDO_INTERNO': riesgoConcedidoInterno,
-      if (riesgoConcedidoInternoDate != null)
-        'RIESGO_CONCEDIDO_INTERNO_FECHA': riesgoConcedidoInternoDate,
-      if (riesgoConcedidoCoafe != null)
-        'RIESGO_CONCEDIDO_COFACE': riesgoConcedidoCoafe,
-      if (riesgoConcedidoCoafeFecha != null)
-        'RIESGO_CONCEDIDO_COFACE_FECHA': riesgoConcedidoCoafeFecha,
-      if (riesgoConcedido != null) 'RIESGO_CONCEDIDO': riesgoConcedido,
-      if (riesgoPendienteCobroVencido != null)
-        'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE': riesgoPendienteCobroVencido,
-      if (riesgoPendienteCobroNoVencido != null)
-        'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE': riesgoPendienteCobroNoVencido,
-      if (riesgoPendienteServir != null)
-        'RIESGO_PDTE_SERVIR_CLIENTE': riesgoPendienteServir,
-      if (riesgoPendienteFacturar != null)
-        'RIESGO_PDTE_FACTURAR_CLIENTE': riesgoPendienteFacturar,
-      if (obvservacionesInternas != null)
-        'OBSERVACIONES_INTERNAS': obvservacionesInternas,
-      if (clientePotencial != null) 'CLIENTE_POTENCIAL': clientePotencial,
-      if (clienteEstadoPotencialId != null)
-        'ESTADO_POTENCIAL_ID': clienteEstadoPotencialId,
-      if (clienteTipoPotencialId != null)
-        'TIPO_POTENCIAL_ID': clienteTipoPotencialId,
-      if (representante1Id != null) 'REPRESENTANTE1_ID': representante1Id,
-      if (representante1Nombre != null)
-        'REPRESENTANTE1_NOMBRE': representante1Nombre,
-      if (representante2Id != null) 'REPRESENTANTE2_ID': representante2Id,
-      if (representante2Nombre != null)
-        'REPRESENTANTE2_NOMBRE': representante2Nombre,
+      if (id != null) 'METODO_COBRO_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteTableCompanion copyWith(
+  MetodoDeCobroTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? nombreCliente,
-      Value<String?>? nif,
-      Value<String>? nombreFiscal,
-      Value<String?>? direccionFiscal1,
-      Value<String?>? direccionFiscal2,
-      Value<String?>? codigoPostalFiscal,
-      Value<String?>? poblacionFiscal,
-      Value<String?>? provinciaFiscal,
-      Value<String?>? paisFiscalId,
-      Value<double>? latitudFiscal,
-      Value<double>? longitudFiscal,
-      Value<String>? empresaId,
-      Value<double>? iva,
-      Value<double>? ventasAnyoActual,
-      Value<double>? ventasAnyoAnterior,
-      Value<double>? ventasHaceDosAnyos,
-      Value<double>? margenAnyoActual,
-      Value<double>? margenAnyoAnterior,
-      Value<double>? margenHaceDosAnyos,
-      Value<double>? porcentajeAbonos,
-      Value<double>? porcentajeGarantias,
-      Value<String?>? centralCompras,
-      Value<String?>? urlWeb,
-      Value<String?>? divisaId,
-      Value<String?>? tarifaId,
-      Value<String?>? tarifaDescripcion,
-      Value<String?>? descuentoGeneralId,
-      Value<String?>? descripcionDescuentoGeneral,
-      Value<String>? tipoCalculoPrecio,
-      Value<String?>? plazoDeCobroId,
-      Value<String?>? metodoDeCobroId,
-      Value<double>? descuentoProntoPago,
-      Value<double>? riesgoConcedidoInterno,
-      Value<DateTime?>? riesgoConcedidoInternoDate,
-      Value<double>? riesgoConcedidoCoafe,
-      Value<DateTime?>? riesgoConcedidoCoafeFecha,
-      Value<double?>? riesgoConcedido,
-      Value<double?>? riesgoPendienteCobroVencido,
-      Value<double?>? riesgoPendienteCobroNoVencido,
-      Value<double?>? riesgoPendienteServir,
-      Value<double?>? riesgoPendienteFacturar,
-      Value<String?>? obvservacionesInternas,
-      Value<String?>? clientePotencial,
-      Value<String?>? clienteEstadoPotencialId,
-      Value<String?>? clienteTipoPotencialId,
-      Value<String?>? representante1Id,
-      Value<String?>? representante1Nombre,
-      Value<String?>? representante2Id,
-      Value<String?>? representante2Nombre,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteTableCompanion(
+    return MetodoDeCobroTableCompanion(
       id: id ?? this.id,
-      nombreCliente: nombreCliente ?? this.nombreCliente,
-      nif: nif ?? this.nif,
-      nombreFiscal: nombreFiscal ?? this.nombreFiscal,
-      direccionFiscal1: direccionFiscal1 ?? this.direccionFiscal1,
-      direccionFiscal2: direccionFiscal2 ?? this.direccionFiscal2,
-      codigoPostalFiscal: codigoPostalFiscal ?? this.codigoPostalFiscal,
-      poblacionFiscal: poblacionFiscal ?? this.poblacionFiscal,
-      provinciaFiscal: provinciaFiscal ?? this.provinciaFiscal,
-      paisFiscalId: paisFiscalId ?? this.paisFiscalId,
-      latitudFiscal: latitudFiscal ?? this.latitudFiscal,
-      longitudFiscal: longitudFiscal ?? this.longitudFiscal,
-      empresaId: empresaId ?? this.empresaId,
-      iva: iva ?? this.iva,
-      ventasAnyoActual: ventasAnyoActual ?? this.ventasAnyoActual,
-      ventasAnyoAnterior: ventasAnyoAnterior ?? this.ventasAnyoAnterior,
-      ventasHaceDosAnyos: ventasHaceDosAnyos ?? this.ventasHaceDosAnyos,
-      margenAnyoActual: margenAnyoActual ?? this.margenAnyoActual,
-      margenAnyoAnterior: margenAnyoAnterior ?? this.margenAnyoAnterior,
-      margenHaceDosAnyos: margenHaceDosAnyos ?? this.margenHaceDosAnyos,
-      porcentajeAbonos: porcentajeAbonos ?? this.porcentajeAbonos,
-      porcentajeGarantias: porcentajeGarantias ?? this.porcentajeGarantias,
-      centralCompras: centralCompras ?? this.centralCompras,
-      urlWeb: urlWeb ?? this.urlWeb,
-      divisaId: divisaId ?? this.divisaId,
-      tarifaId: tarifaId ?? this.tarifaId,
-      tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
-      descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
-      descripcionDescuentoGeneral:
-          descripcionDescuentoGeneral ?? this.descripcionDescuentoGeneral,
-      tipoCalculoPrecio: tipoCalculoPrecio ?? this.tipoCalculoPrecio,
-      plazoDeCobroId: plazoDeCobroId ?? this.plazoDeCobroId,
-      metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
-      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
-      riesgoConcedidoInterno:
-          riesgoConcedidoInterno ?? this.riesgoConcedidoInterno,
-      riesgoConcedidoInternoDate:
-          riesgoConcedidoInternoDate ?? this.riesgoConcedidoInternoDate,
-      riesgoConcedidoCoafe: riesgoConcedidoCoafe ?? this.riesgoConcedidoCoafe,
-      riesgoConcedidoCoafeFecha:
-          riesgoConcedidoCoafeFecha ?? this.riesgoConcedidoCoafeFecha,
-      riesgoConcedido: riesgoConcedido ?? this.riesgoConcedido,
-      riesgoPendienteCobroVencido:
-          riesgoPendienteCobroVencido ?? this.riesgoPendienteCobroVencido,
-      riesgoPendienteCobroNoVencido:
-          riesgoPendienteCobroNoVencido ?? this.riesgoPendienteCobroNoVencido,
-      riesgoPendienteServir:
-          riesgoPendienteServir ?? this.riesgoPendienteServir,
-      riesgoPendienteFacturar:
-          riesgoPendienteFacturar ?? this.riesgoPendienteFacturar,
-      obvservacionesInternas:
-          obvservacionesInternas ?? this.obvservacionesInternas,
-      clientePotencial: clientePotencial ?? this.clientePotencial,
-      clienteEstadoPotencialId:
-          clienteEstadoPotencialId ?? this.clienteEstadoPotencialId,
-      clienteTipoPotencialId:
-          clienteTipoPotencialId ?? this.clienteTipoPotencialId,
-      representante1Id: representante1Id ?? this.representante1Id,
-      representante1Nombre: representante1Nombre ?? this.representante1Nombre,
-      representante2Id: representante2Id ?? this.representante2Id,
-      representante2Nombre: representante2Nombre ?? this.representante2Nombre,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -4517,168 +3999,52 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['CLIENTE_ID'] = Variable<String>(id.value);
+      map['METODO_COBRO_ID'] = Variable<String>(id.value);
     }
-    if (nombreCliente.present) {
-      map['NOMBRE'] = Variable<String>(nombreCliente.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (nif.present) {
-      map['NIF'] = Variable<String>(nif.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (nombreFiscal.present) {
-      map['NOMBRE_FISCAL'] = Variable<String>(nombreFiscal.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
     }
-    if (direccionFiscal1.present) {
-      map['DIRECCION_FISCAL1'] = Variable<String>(direccionFiscal1.value);
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
     }
-    if (direccionFiscal2.present) {
-      map['DIRECCION_FISCAL2'] = Variable<String>(direccionFiscal2.value);
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
     }
-    if (codigoPostalFiscal.present) {
-      map['CODIGO_POSTAL_FISCAL'] = Variable<String>(codigoPostalFiscal.value);
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
     }
-    if (poblacionFiscal.present) {
-      map['POBLACION_FISCAL'] = Variable<String>(poblacionFiscal.value);
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
     }
-    if (provinciaFiscal.present) {
-      map['PROVINCIA_FISCAL'] = Variable<String>(provinciaFiscal.value);
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
     }
-    if (paisFiscalId.present) {
-      map['PAIS_ID_FISCAL'] = Variable<String>(paisFiscalId.value);
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
     }
-    if (latitudFiscal.present) {
-      map['LATITUD_FISCAL'] = Variable<double>(latitudFiscal.value);
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
     }
-    if (longitudFiscal.present) {
-      map['LONGITUD_FISCAL'] = Variable<double>(longitudFiscal.value);
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
     }
-    if (empresaId.present) {
-      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
     }
-    if (iva.present) {
-      map['IVA'] = Variable<double>(iva.value);
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
     }
-    if (ventasAnyoActual.present) {
-      map['VENTAS_ANYO_ACTUAL'] = Variable<double>(ventasAnyoActual.value);
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
     }
-    if (ventasAnyoAnterior.present) {
-      map['VENTAS_ANYO_ANTERIOR'] = Variable<double>(ventasAnyoAnterior.value);
-    }
-    if (ventasHaceDosAnyos.present) {
-      map['VENTAS_HACE_DOS_ANYOS'] = Variable<double>(ventasHaceDosAnyos.value);
-    }
-    if (margenAnyoActual.present) {
-      map['MARGEN_ANYO_ACTUAL'] = Variable<double>(margenAnyoActual.value);
-    }
-    if (margenAnyoAnterior.present) {
-      map['MARGEN_ANYO_ANTERIOR'] = Variable<double>(margenAnyoAnterior.value);
-    }
-    if (margenHaceDosAnyos.present) {
-      map['MARGEN_HACE_DOS_ANYOS'] = Variable<double>(margenHaceDosAnyos.value);
-    }
-    if (porcentajeAbonos.present) {
-      map['PORCENTAJE_ABONOS'] = Variable<double>(porcentajeAbonos.value);
-    }
-    if (porcentajeGarantias.present) {
-      map['PORCENTAJE_GARANTIAS'] = Variable<double>(porcentajeGarantias.value);
-    }
-    if (centralCompras.present) {
-      map['CENTRAL_COMPRAS_NOMBRE'] = Variable<String>(centralCompras.value);
-    }
-    if (urlWeb.present) {
-      map['URL_WEB'] = Variable<String>(urlWeb.value);
-    }
-    if (divisaId.present) {
-      map['DIVISA_ID'] = Variable<String>(divisaId.value);
-    }
-    if (tarifaId.present) {
-      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
-    }
-    if (tarifaDescripcion.present) {
-      map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
-    }
-    if (descuentoGeneralId.present) {
-      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneralId.value);
-    }
-    if (descripcionDescuentoGeneral.present) {
-      map['DESCUENTO_GENERAL_DESCRIPCION'] =
-          Variable<String>(descripcionDescuentoGeneral.value);
-    }
-    if (tipoCalculoPrecio.present) {
-      map['TIPO_CALCULO_PRECIO'] = Variable<String>(tipoCalculoPrecio.value);
-    }
-    if (plazoDeCobroId.present) {
-      map['PLAZO_COBRO_ID'] = Variable<String>(plazoDeCobroId.value);
-    }
-    if (metodoDeCobroId.present) {
-      map['METODO_COBRO_ID'] = Variable<String>(metodoDeCobroId.value);
-    }
-    if (descuentoProntoPago.present) {
-      map['DESCUENTO_PRONTO_PAGO'] =
-          Variable<double>(descuentoProntoPago.value);
-    }
-    if (riesgoConcedidoInterno.present) {
-      map['RIESGO_CONCEDIDO_INTERNO'] =
-          Variable<double>(riesgoConcedidoInterno.value);
-    }
-    if (riesgoConcedidoInternoDate.present) {
-      map['RIESGO_CONCEDIDO_INTERNO_FECHA'] =
-          Variable<DateTime>(riesgoConcedidoInternoDate.value);
-    }
-    if (riesgoConcedidoCoafe.present) {
-      map['RIESGO_CONCEDIDO_COFACE'] =
-          Variable<double>(riesgoConcedidoCoafe.value);
-    }
-    if (riesgoConcedidoCoafeFecha.present) {
-      map['RIESGO_CONCEDIDO_COFACE_FECHA'] =
-          Variable<DateTime>(riesgoConcedidoCoafeFecha.value);
-    }
-    if (riesgoConcedido.present) {
-      map['RIESGO_CONCEDIDO'] = Variable<double>(riesgoConcedido.value);
-    }
-    if (riesgoPendienteCobroVencido.present) {
-      map['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] =
-          Variable<double>(riesgoPendienteCobroVencido.value);
-    }
-    if (riesgoPendienteCobroNoVencido.present) {
-      map['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] =
-          Variable<double>(riesgoPendienteCobroNoVencido.value);
-    }
-    if (riesgoPendienteServir.present) {
-      map['RIESGO_PDTE_SERVIR_CLIENTE'] =
-          Variable<double>(riesgoPendienteServir.value);
-    }
-    if (riesgoPendienteFacturar.present) {
-      map['RIESGO_PDTE_FACTURAR_CLIENTE'] =
-          Variable<double>(riesgoPendienteFacturar.value);
-    }
-    if (obvservacionesInternas.present) {
-      map['OBSERVACIONES_INTERNAS'] =
-          Variable<String>(obvservacionesInternas.value);
-    }
-    if (clientePotencial.present) {
-      map['CLIENTE_POTENCIAL'] = Variable<String>(clientePotencial.value);
-    }
-    if (clienteEstadoPotencialId.present) {
-      map['ESTADO_POTENCIAL_ID'] =
-          Variable<String>(clienteEstadoPotencialId.value);
-    }
-    if (clienteTipoPotencialId.present) {
-      map['TIPO_POTENCIAL_ID'] = Variable<String>(clienteTipoPotencialId.value);
-    }
-    if (representante1Id.present) {
-      map['REPRESENTANTE1_ID'] = Variable<String>(representante1Id.value);
-    }
-    if (representante1Nombre.present) {
-      map['REPRESENTANTE1_NOMBRE'] =
-          Variable<String>(representante1Nombre.value);
-    }
-    if (representante2Id.present) {
-      map['REPRESENTANTE2_ID'] = Variable<String>(representante2Id.value);
-    }
-    if (representante2Nombre.present) {
-      map['REPRESENTANTE2_NOMBRE'] =
-          Variable<String>(representante2Nombre.value);
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -4691,58 +4057,23 @@ class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ClienteTableCompanion(')
+    return (StringBuffer('MetodoDeCobroTableCompanion(')
           ..write('id: $id, ')
-          ..write('nombreCliente: $nombreCliente, ')
-          ..write('nif: $nif, ')
-          ..write('nombreFiscal: $nombreFiscal, ')
-          ..write('direccionFiscal1: $direccionFiscal1, ')
-          ..write('direccionFiscal2: $direccionFiscal2, ')
-          ..write('codigoPostalFiscal: $codigoPostalFiscal, ')
-          ..write('poblacionFiscal: $poblacionFiscal, ')
-          ..write('provinciaFiscal: $provinciaFiscal, ')
-          ..write('paisFiscalId: $paisFiscalId, ')
-          ..write('latitudFiscal: $latitudFiscal, ')
-          ..write('longitudFiscal: $longitudFiscal, ')
-          ..write('empresaId: $empresaId, ')
-          ..write('iva: $iva, ')
-          ..write('ventasAnyoActual: $ventasAnyoActual, ')
-          ..write('ventasAnyoAnterior: $ventasAnyoAnterior, ')
-          ..write('ventasHaceDosAnyos: $ventasHaceDosAnyos, ')
-          ..write('margenAnyoActual: $margenAnyoActual, ')
-          ..write('margenAnyoAnterior: $margenAnyoAnterior, ')
-          ..write('margenHaceDosAnyos: $margenHaceDosAnyos, ')
-          ..write('porcentajeAbonos: $porcentajeAbonos, ')
-          ..write('porcentajeGarantias: $porcentajeGarantias, ')
-          ..write('centralCompras: $centralCompras, ')
-          ..write('urlWeb: $urlWeb, ')
-          ..write('divisaId: $divisaId, ')
-          ..write('tarifaId: $tarifaId, ')
-          ..write('tarifaDescripcion: $tarifaDescripcion, ')
-          ..write('descuentoGeneralId: $descuentoGeneralId, ')
-          ..write('descripcionDescuentoGeneral: $descripcionDescuentoGeneral, ')
-          ..write('tipoCalculoPrecio: $tipoCalculoPrecio, ')
-          ..write('plazoDeCobroId: $plazoDeCobroId, ')
-          ..write('metodoDeCobroId: $metodoDeCobroId, ')
-          ..write('descuentoProntoPago: $descuentoProntoPago, ')
-          ..write('riesgoConcedidoInterno: $riesgoConcedidoInterno, ')
-          ..write('riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, ')
-          ..write('riesgoConcedidoCoafe: $riesgoConcedidoCoafe, ')
-          ..write('riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, ')
-          ..write('riesgoConcedido: $riesgoConcedido, ')
-          ..write('riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, ')
-          ..write(
-              'riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, ')
-          ..write('riesgoPendienteServir: $riesgoPendienteServir, ')
-          ..write('riesgoPendienteFacturar: $riesgoPendienteFacturar, ')
-          ..write('obvservacionesInternas: $obvservacionesInternas, ')
-          ..write('clientePotencial: $clientePotencial, ')
-          ..write('clienteEstadoPotencialId: $clienteEstadoPotencialId, ')
-          ..write('clienteTipoPotencialId: $clienteTipoPotencialId, ')
-          ..write('representante1Id: $representante1Id, ')
-          ..write('representante1Nombre: $representante1Nombre, ')
-          ..write('representante2Id: $representante2Id, ')
-          ..write('representante2Nombre: $representante2Nombre, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -5622,47 +4953,433 @@ class $ClienteTableTable extends ClienteTable
   }
 }
 
-class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
-  final Value<String> clienteId;
-  final Value<String> usuarioId;
+class ClienteTableCompanion extends UpdateCompanion<ClienteDTO> {
+  final Value<String> id;
+  final Value<String> nombreCliente;
+  final Value<String?> nif;
+  final Value<String> nombreFiscal;
+  final Value<String?> direccionFiscal1;
+  final Value<String?> direccionFiscal2;
+  final Value<String?> codigoPostalFiscal;
+  final Value<String?> poblacionFiscal;
+  final Value<String?> provinciaFiscal;
+  final Value<String?> paisFiscalId;
+  final Value<double> latitudFiscal;
+  final Value<double> longitudFiscal;
+  final Value<String> empresaId;
+  final Value<double> iva;
+  final Value<double> ventasAnyoActual;
+  final Value<double> ventasAnyoAnterior;
+  final Value<double> ventasHaceDosAnyos;
+  final Value<double> margenAnyoActual;
+  final Value<double> margenAnyoAnterior;
+  final Value<double> margenHaceDosAnyos;
+  final Value<double> porcentajeAbonos;
+  final Value<double> porcentajeGarantias;
+  final Value<String?> centralCompras;
+  final Value<String?> urlWeb;
+  final Value<String?> divisaId;
+  final Value<String?> tarifaId;
+  final Value<String?> tarifaDescripcion;
+  final Value<String?> descuentoGeneralId;
+  final Value<String?> descripcionDescuentoGeneral;
+  final Value<String> tipoCalculoPrecio;
+  final Value<String?> plazoDeCobroId;
+  final Value<String?> metodoDeCobroId;
+  final Value<double> descuentoProntoPago;
+  final Value<double> riesgoConcedidoInterno;
+  final Value<DateTime?> riesgoConcedidoInternoDate;
+  final Value<double> riesgoConcedidoCoafe;
+  final Value<DateTime?> riesgoConcedidoCoafeFecha;
+  final Value<double?> riesgoConcedido;
+  final Value<double?> riesgoPendienteCobroVencido;
+  final Value<double?> riesgoPendienteCobroNoVencido;
+  final Value<double?> riesgoPendienteServir;
+  final Value<double?> riesgoPendienteFacturar;
+  final Value<String?> obvservacionesInternas;
+  final Value<String?> clientePotencial;
+  final Value<String?> clienteEstadoPotencialId;
+  final Value<String?> clienteTipoPotencialId;
+  final Value<String?> representante1Id;
+  final Value<String?> representante1Nombre;
+  final Value<String?> representante2Id;
+  final Value<String?> representante2Nombre;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteUsuarioTableCompanion({
-    this.clienteId = const Value.absent(),
-    this.usuarioId = const Value.absent(),
+  const ClienteTableCompanion({
+    this.id = const Value.absent(),
+    this.nombreCliente = const Value.absent(),
+    this.nif = const Value.absent(),
+    this.nombreFiscal = const Value.absent(),
+    this.direccionFiscal1 = const Value.absent(),
+    this.direccionFiscal2 = const Value.absent(),
+    this.codigoPostalFiscal = const Value.absent(),
+    this.poblacionFiscal = const Value.absent(),
+    this.provinciaFiscal = const Value.absent(),
+    this.paisFiscalId = const Value.absent(),
+    this.latitudFiscal = const Value.absent(),
+    this.longitudFiscal = const Value.absent(),
+    this.empresaId = const Value.absent(),
+    this.iva = const Value.absent(),
+    this.ventasAnyoActual = const Value.absent(),
+    this.ventasAnyoAnterior = const Value.absent(),
+    this.ventasHaceDosAnyos = const Value.absent(),
+    this.margenAnyoActual = const Value.absent(),
+    this.margenAnyoAnterior = const Value.absent(),
+    this.margenHaceDosAnyos = const Value.absent(),
+    this.porcentajeAbonos = const Value.absent(),
+    this.porcentajeGarantias = const Value.absent(),
+    this.centralCompras = const Value.absent(),
+    this.urlWeb = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.tarifaDescripcion = const Value.absent(),
+    this.descuentoGeneralId = const Value.absent(),
+    this.descripcionDescuentoGeneral = const Value.absent(),
+    this.tipoCalculoPrecio = const Value.absent(),
+    this.plazoDeCobroId = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    this.descuentoProntoPago = const Value.absent(),
+    this.riesgoConcedidoInterno = const Value.absent(),
+    this.riesgoConcedidoInternoDate = const Value.absent(),
+    this.riesgoConcedidoCoafe = const Value.absent(),
+    this.riesgoConcedidoCoafeFecha = const Value.absent(),
+    this.riesgoConcedido = const Value.absent(),
+    this.riesgoPendienteCobroVencido = const Value.absent(),
+    this.riesgoPendienteCobroNoVencido = const Value.absent(),
+    this.riesgoPendienteServir = const Value.absent(),
+    this.riesgoPendienteFacturar = const Value.absent(),
+    this.obvservacionesInternas = const Value.absent(),
+    this.clientePotencial = const Value.absent(),
+    this.clienteEstadoPotencialId = const Value.absent(),
+    this.clienteTipoPotencialId = const Value.absent(),
+    this.representante1Id = const Value.absent(),
+    this.representante1Nombre = const Value.absent(),
+    this.representante2Id = const Value.absent(),
+    this.representante2Nombre = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteUsuarioTableCompanion.insert({
-    required String clienteId,
-    required String usuarioId,
+  ClienteTableCompanion.insert({
+    required String id,
+    required String nombreCliente,
+    this.nif = const Value.absent(),
+    required String nombreFiscal,
+    this.direccionFiscal1 = const Value.absent(),
+    this.direccionFiscal2 = const Value.absent(),
+    this.codigoPostalFiscal = const Value.absent(),
+    this.poblacionFiscal = const Value.absent(),
+    this.provinciaFiscal = const Value.absent(),
+    this.paisFiscalId = const Value.absent(),
+    required double latitudFiscal,
+    required double longitudFiscal,
+    required String empresaId,
+    required double iva,
+    required double ventasAnyoActual,
+    required double ventasAnyoAnterior,
+    required double ventasHaceDosAnyos,
+    required double margenAnyoActual,
+    required double margenAnyoAnterior,
+    required double margenHaceDosAnyos,
+    required double porcentajeAbonos,
+    required double porcentajeGarantias,
+    this.centralCompras = const Value.absent(),
+    this.urlWeb = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.tarifaDescripcion = const Value.absent(),
+    this.descuentoGeneralId = const Value.absent(),
+    this.descripcionDescuentoGeneral = const Value.absent(),
+    required String tipoCalculoPrecio,
+    this.plazoDeCobroId = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    required double descuentoProntoPago,
+    required double riesgoConcedidoInterno,
+    this.riesgoConcedidoInternoDate = const Value.absent(),
+    required double riesgoConcedidoCoafe,
+    this.riesgoConcedidoCoafeFecha = const Value.absent(),
+    this.riesgoConcedido = const Value.absent(),
+    this.riesgoPendienteCobroVencido = const Value.absent(),
+    this.riesgoPendienteCobroNoVencido = const Value.absent(),
+    this.riesgoPendienteServir = const Value.absent(),
+    this.riesgoPendienteFacturar = const Value.absent(),
+    this.obvservacionesInternas = const Value.absent(),
+    this.clientePotencial = const Value.absent(),
+    this.clienteEstadoPotencialId = const Value.absent(),
+    this.clienteTipoPotencialId = const Value.absent(),
+    this.representante1Id = const Value.absent(),
+    this.representante1Nombre = const Value.absent(),
+    this.representante2Id = const Value.absent(),
+    this.representante2Nombre = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : clienteId = Value(clienteId),
-        usuarioId = Value(usuarioId),
+  })  : id = Value(id),
+        nombreCliente = Value(nombreCliente),
+        nombreFiscal = Value(nombreFiscal),
+        latitudFiscal = Value(latitudFiscal),
+        longitudFiscal = Value(longitudFiscal),
+        empresaId = Value(empresaId),
+        iva = Value(iva),
+        ventasAnyoActual = Value(ventasAnyoActual),
+        ventasAnyoAnterior = Value(ventasAnyoAnterior),
+        ventasHaceDosAnyos = Value(ventasHaceDosAnyos),
+        margenAnyoActual = Value(margenAnyoActual),
+        margenAnyoAnterior = Value(margenAnyoAnterior),
+        margenHaceDosAnyos = Value(margenHaceDosAnyos),
+        porcentajeAbonos = Value(porcentajeAbonos),
+        porcentajeGarantias = Value(porcentajeGarantias),
+        tipoCalculoPrecio = Value(tipoCalculoPrecio),
+        descuentoProntoPago = Value(descuentoProntoPago),
+        riesgoConcedidoInterno = Value(riesgoConcedidoInterno),
+        riesgoConcedidoCoafe = Value(riesgoConcedidoCoafe),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteUsuarioDTO> custom({
-    Expression<String>? clienteId,
-    Expression<String>? usuarioId,
+  static Insertable<ClienteDTO> custom({
+    Expression<String>? id,
+    Expression<String>? nombreCliente,
+    Expression<String>? nif,
+    Expression<String>? nombreFiscal,
+    Expression<String>? direccionFiscal1,
+    Expression<String>? direccionFiscal2,
+    Expression<String>? codigoPostalFiscal,
+    Expression<String>? poblacionFiscal,
+    Expression<String>? provinciaFiscal,
+    Expression<String>? paisFiscalId,
+    Expression<double>? latitudFiscal,
+    Expression<double>? longitudFiscal,
+    Expression<String>? empresaId,
+    Expression<double>? iva,
+    Expression<double>? ventasAnyoActual,
+    Expression<double>? ventasAnyoAnterior,
+    Expression<double>? ventasHaceDosAnyos,
+    Expression<double>? margenAnyoActual,
+    Expression<double>? margenAnyoAnterior,
+    Expression<double>? margenHaceDosAnyos,
+    Expression<double>? porcentajeAbonos,
+    Expression<double>? porcentajeGarantias,
+    Expression<String>? centralCompras,
+    Expression<String>? urlWeb,
+    Expression<String>? divisaId,
+    Expression<String>? tarifaId,
+    Expression<String>? tarifaDescripcion,
+    Expression<String>? descuentoGeneralId,
+    Expression<String>? descripcionDescuentoGeneral,
+    Expression<String>? tipoCalculoPrecio,
+    Expression<String>? plazoDeCobroId,
+    Expression<String>? metodoDeCobroId,
+    Expression<double>? descuentoProntoPago,
+    Expression<double>? riesgoConcedidoInterno,
+    Expression<DateTime>? riesgoConcedidoInternoDate,
+    Expression<double>? riesgoConcedidoCoafe,
+    Expression<DateTime>? riesgoConcedidoCoafeFecha,
+    Expression<double>? riesgoConcedido,
+    Expression<double>? riesgoPendienteCobroVencido,
+    Expression<double>? riesgoPendienteCobroNoVencido,
+    Expression<double>? riesgoPendienteServir,
+    Expression<double>? riesgoPendienteFacturar,
+    Expression<String>? obvservacionesInternas,
+    Expression<String>? clientePotencial,
+    Expression<String>? clienteEstadoPotencialId,
+    Expression<String>? clienteTipoPotencialId,
+    Expression<String>? representante1Id,
+    Expression<String>? representante1Nombre,
+    Expression<String>? representante2Id,
+    Expression<String>? representante2Nombre,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (usuarioId != null) 'USUARIO_ID': usuarioId,
+      if (id != null) 'CLIENTE_ID': id,
+      if (nombreCliente != null) 'NOMBRE': nombreCliente,
+      if (nif != null) 'NIF': nif,
+      if (nombreFiscal != null) 'NOMBRE_FISCAL': nombreFiscal,
+      if (direccionFiscal1 != null) 'DIRECCION_FISCAL1': direccionFiscal1,
+      if (direccionFiscal2 != null) 'DIRECCION_FISCAL2': direccionFiscal2,
+      if (codigoPostalFiscal != null)
+        'CODIGO_POSTAL_FISCAL': codigoPostalFiscal,
+      if (poblacionFiscal != null) 'POBLACION_FISCAL': poblacionFiscal,
+      if (provinciaFiscal != null) 'PROVINCIA_FISCAL': provinciaFiscal,
+      if (paisFiscalId != null) 'PAIS_ID_FISCAL': paisFiscalId,
+      if (latitudFiscal != null) 'LATITUD_FISCAL': latitudFiscal,
+      if (longitudFiscal != null) 'LONGITUD_FISCAL': longitudFiscal,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (iva != null) 'IVA': iva,
+      if (ventasAnyoActual != null) 'VENTAS_ANYO_ACTUAL': ventasAnyoActual,
+      if (ventasAnyoAnterior != null)
+        'VENTAS_ANYO_ANTERIOR': ventasAnyoAnterior,
+      if (ventasHaceDosAnyos != null)
+        'VENTAS_HACE_DOS_ANYOS': ventasHaceDosAnyos,
+      if (margenAnyoActual != null) 'MARGEN_ANYO_ACTUAL': margenAnyoActual,
+      if (margenAnyoAnterior != null)
+        'MARGEN_ANYO_ANTERIOR': margenAnyoAnterior,
+      if (margenHaceDosAnyos != null)
+        'MARGEN_HACE_DOS_ANYOS': margenHaceDosAnyos,
+      if (porcentajeAbonos != null) 'PORCENTAJE_ABONOS': porcentajeAbonos,
+      if (porcentajeGarantias != null)
+        'PORCENTAJE_GARANTIAS': porcentajeGarantias,
+      if (centralCompras != null) 'CENTRAL_COMPRAS_NOMBRE': centralCompras,
+      if (urlWeb != null) 'URL_WEB': urlWeb,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (tarifaId != null) 'TARIFA_ID': tarifaId,
+      if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
+      if (descuentoGeneralId != null)
+        'DESCUENTO_GENERAL_ID': descuentoGeneralId,
+      if (descripcionDescuentoGeneral != null)
+        'DESCUENTO_GENERAL_DESCRIPCION': descripcionDescuentoGeneral,
+      if (tipoCalculoPrecio != null) 'TIPO_CALCULO_PRECIO': tipoCalculoPrecio,
+      if (plazoDeCobroId != null) 'PLAZO_COBRO_ID': plazoDeCobroId,
+      if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
+      if (descuentoProntoPago != null)
+        'DESCUENTO_PRONTO_PAGO': descuentoProntoPago,
+      if (riesgoConcedidoInterno != null)
+        'RIESGO_CONCEDIDO_INTERNO': riesgoConcedidoInterno,
+      if (riesgoConcedidoInternoDate != null)
+        'RIESGO_CONCEDIDO_INTERNO_FECHA': riesgoConcedidoInternoDate,
+      if (riesgoConcedidoCoafe != null)
+        'RIESGO_CONCEDIDO_COFACE': riesgoConcedidoCoafe,
+      if (riesgoConcedidoCoafeFecha != null)
+        'RIESGO_CONCEDIDO_COFACE_FECHA': riesgoConcedidoCoafeFecha,
+      if (riesgoConcedido != null) 'RIESGO_CONCEDIDO': riesgoConcedido,
+      if (riesgoPendienteCobroVencido != null)
+        'RIESGO_PDTE_COBRO_VENCIDO_CLIENTE': riesgoPendienteCobroVencido,
+      if (riesgoPendienteCobroNoVencido != null)
+        'RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE': riesgoPendienteCobroNoVencido,
+      if (riesgoPendienteServir != null)
+        'RIESGO_PDTE_SERVIR_CLIENTE': riesgoPendienteServir,
+      if (riesgoPendienteFacturar != null)
+        'RIESGO_PDTE_FACTURAR_CLIENTE': riesgoPendienteFacturar,
+      if (obvservacionesInternas != null)
+        'OBSERVACIONES_INTERNAS': obvservacionesInternas,
+      if (clientePotencial != null) 'CLIENTE_POTENCIAL': clientePotencial,
+      if (clienteEstadoPotencialId != null)
+        'ESTADO_POTENCIAL_ID': clienteEstadoPotencialId,
+      if (clienteTipoPotencialId != null)
+        'TIPO_POTENCIAL_ID': clienteTipoPotencialId,
+      if (representante1Id != null) 'REPRESENTANTE1_ID': representante1Id,
+      if (representante1Nombre != null)
+        'REPRESENTANTE1_NOMBRE': representante1Nombre,
+      if (representante2Id != null) 'REPRESENTANTE2_ID': representante2Id,
+      if (representante2Nombre != null)
+        'REPRESENTANTE2_NOMBRE': representante2Nombre,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteUsuarioTableCompanion copyWith(
-      {Value<String>? clienteId,
-      Value<String>? usuarioId,
+  ClienteTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? nombreCliente,
+      Value<String?>? nif,
+      Value<String>? nombreFiscal,
+      Value<String?>? direccionFiscal1,
+      Value<String?>? direccionFiscal2,
+      Value<String?>? codigoPostalFiscal,
+      Value<String?>? poblacionFiscal,
+      Value<String?>? provinciaFiscal,
+      Value<String?>? paisFiscalId,
+      Value<double>? latitudFiscal,
+      Value<double>? longitudFiscal,
+      Value<String>? empresaId,
+      Value<double>? iva,
+      Value<double>? ventasAnyoActual,
+      Value<double>? ventasAnyoAnterior,
+      Value<double>? ventasHaceDosAnyos,
+      Value<double>? margenAnyoActual,
+      Value<double>? margenAnyoAnterior,
+      Value<double>? margenHaceDosAnyos,
+      Value<double>? porcentajeAbonos,
+      Value<double>? porcentajeGarantias,
+      Value<String?>? centralCompras,
+      Value<String?>? urlWeb,
+      Value<String?>? divisaId,
+      Value<String?>? tarifaId,
+      Value<String?>? tarifaDescripcion,
+      Value<String?>? descuentoGeneralId,
+      Value<String?>? descripcionDescuentoGeneral,
+      Value<String>? tipoCalculoPrecio,
+      Value<String?>? plazoDeCobroId,
+      Value<String?>? metodoDeCobroId,
+      Value<double>? descuentoProntoPago,
+      Value<double>? riesgoConcedidoInterno,
+      Value<DateTime?>? riesgoConcedidoInternoDate,
+      Value<double>? riesgoConcedidoCoafe,
+      Value<DateTime?>? riesgoConcedidoCoafeFecha,
+      Value<double?>? riesgoConcedido,
+      Value<double?>? riesgoPendienteCobroVencido,
+      Value<double?>? riesgoPendienteCobroNoVencido,
+      Value<double?>? riesgoPendienteServir,
+      Value<double?>? riesgoPendienteFacturar,
+      Value<String?>? obvservacionesInternas,
+      Value<String?>? clientePotencial,
+      Value<String?>? clienteEstadoPotencialId,
+      Value<String?>? clienteTipoPotencialId,
+      Value<String?>? representante1Id,
+      Value<String?>? representante1Nombre,
+      Value<String?>? representante2Id,
+      Value<String?>? representante2Nombre,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteUsuarioTableCompanion(
-      clienteId: clienteId ?? this.clienteId,
-      usuarioId: usuarioId ?? this.usuarioId,
+    return ClienteTableCompanion(
+      id: id ?? this.id,
+      nombreCliente: nombreCliente ?? this.nombreCliente,
+      nif: nif ?? this.nif,
+      nombreFiscal: nombreFiscal ?? this.nombreFiscal,
+      direccionFiscal1: direccionFiscal1 ?? this.direccionFiscal1,
+      direccionFiscal2: direccionFiscal2 ?? this.direccionFiscal2,
+      codigoPostalFiscal: codigoPostalFiscal ?? this.codigoPostalFiscal,
+      poblacionFiscal: poblacionFiscal ?? this.poblacionFiscal,
+      provinciaFiscal: provinciaFiscal ?? this.provinciaFiscal,
+      paisFiscalId: paisFiscalId ?? this.paisFiscalId,
+      latitudFiscal: latitudFiscal ?? this.latitudFiscal,
+      longitudFiscal: longitudFiscal ?? this.longitudFiscal,
+      empresaId: empresaId ?? this.empresaId,
+      iva: iva ?? this.iva,
+      ventasAnyoActual: ventasAnyoActual ?? this.ventasAnyoActual,
+      ventasAnyoAnterior: ventasAnyoAnterior ?? this.ventasAnyoAnterior,
+      ventasHaceDosAnyos: ventasHaceDosAnyos ?? this.ventasHaceDosAnyos,
+      margenAnyoActual: margenAnyoActual ?? this.margenAnyoActual,
+      margenAnyoAnterior: margenAnyoAnterior ?? this.margenAnyoAnterior,
+      margenHaceDosAnyos: margenHaceDosAnyos ?? this.margenHaceDosAnyos,
+      porcentajeAbonos: porcentajeAbonos ?? this.porcentajeAbonos,
+      porcentajeGarantias: porcentajeGarantias ?? this.porcentajeGarantias,
+      centralCompras: centralCompras ?? this.centralCompras,
+      urlWeb: urlWeb ?? this.urlWeb,
+      divisaId: divisaId ?? this.divisaId,
+      tarifaId: tarifaId ?? this.tarifaId,
+      tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
+      descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
+      descripcionDescuentoGeneral:
+          descripcionDescuentoGeneral ?? this.descripcionDescuentoGeneral,
+      tipoCalculoPrecio: tipoCalculoPrecio ?? this.tipoCalculoPrecio,
+      plazoDeCobroId: plazoDeCobroId ?? this.plazoDeCobroId,
+      metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
+      descuentoProntoPago: descuentoProntoPago ?? this.descuentoProntoPago,
+      riesgoConcedidoInterno:
+          riesgoConcedidoInterno ?? this.riesgoConcedidoInterno,
+      riesgoConcedidoInternoDate:
+          riesgoConcedidoInternoDate ?? this.riesgoConcedidoInternoDate,
+      riesgoConcedidoCoafe: riesgoConcedidoCoafe ?? this.riesgoConcedidoCoafe,
+      riesgoConcedidoCoafeFecha:
+          riesgoConcedidoCoafeFecha ?? this.riesgoConcedidoCoafeFecha,
+      riesgoConcedido: riesgoConcedido ?? this.riesgoConcedido,
+      riesgoPendienteCobroVencido:
+          riesgoPendienteCobroVencido ?? this.riesgoPendienteCobroVencido,
+      riesgoPendienteCobroNoVencido:
+          riesgoPendienteCobroNoVencido ?? this.riesgoPendienteCobroNoVencido,
+      riesgoPendienteServir:
+          riesgoPendienteServir ?? this.riesgoPendienteServir,
+      riesgoPendienteFacturar:
+          riesgoPendienteFacturar ?? this.riesgoPendienteFacturar,
+      obvservacionesInternas:
+          obvservacionesInternas ?? this.obvservacionesInternas,
+      clientePotencial: clientePotencial ?? this.clientePotencial,
+      clienteEstadoPotencialId:
+          clienteEstadoPotencialId ?? this.clienteEstadoPotencialId,
+      clienteTipoPotencialId:
+          clienteTipoPotencialId ?? this.clienteTipoPotencialId,
+      representante1Id: representante1Id ?? this.representante1Id,
+      representante1Nombre: representante1Nombre ?? this.representante1Nombre,
+      representante2Id: representante2Id ?? this.representante2Id,
+      representante2Nombre: representante2Nombre ?? this.representante2Nombre,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -5671,11 +5388,169 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    if (id.present) {
+      map['CLIENTE_ID'] = Variable<String>(id.value);
     }
-    if (usuarioId.present) {
-      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
+    if (nombreCliente.present) {
+      map['NOMBRE'] = Variable<String>(nombreCliente.value);
+    }
+    if (nif.present) {
+      map['NIF'] = Variable<String>(nif.value);
+    }
+    if (nombreFiscal.present) {
+      map['NOMBRE_FISCAL'] = Variable<String>(nombreFiscal.value);
+    }
+    if (direccionFiscal1.present) {
+      map['DIRECCION_FISCAL1'] = Variable<String>(direccionFiscal1.value);
+    }
+    if (direccionFiscal2.present) {
+      map['DIRECCION_FISCAL2'] = Variable<String>(direccionFiscal2.value);
+    }
+    if (codigoPostalFiscal.present) {
+      map['CODIGO_POSTAL_FISCAL'] = Variable<String>(codigoPostalFiscal.value);
+    }
+    if (poblacionFiscal.present) {
+      map['POBLACION_FISCAL'] = Variable<String>(poblacionFiscal.value);
+    }
+    if (provinciaFiscal.present) {
+      map['PROVINCIA_FISCAL'] = Variable<String>(provinciaFiscal.value);
+    }
+    if (paisFiscalId.present) {
+      map['PAIS_ID_FISCAL'] = Variable<String>(paisFiscalId.value);
+    }
+    if (latitudFiscal.present) {
+      map['LATITUD_FISCAL'] = Variable<double>(latitudFiscal.value);
+    }
+    if (longitudFiscal.present) {
+      map['LONGITUD_FISCAL'] = Variable<double>(longitudFiscal.value);
+    }
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    }
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
+    }
+    if (ventasAnyoActual.present) {
+      map['VENTAS_ANYO_ACTUAL'] = Variable<double>(ventasAnyoActual.value);
+    }
+    if (ventasAnyoAnterior.present) {
+      map['VENTAS_ANYO_ANTERIOR'] = Variable<double>(ventasAnyoAnterior.value);
+    }
+    if (ventasHaceDosAnyos.present) {
+      map['VENTAS_HACE_DOS_ANYOS'] = Variable<double>(ventasHaceDosAnyos.value);
+    }
+    if (margenAnyoActual.present) {
+      map['MARGEN_ANYO_ACTUAL'] = Variable<double>(margenAnyoActual.value);
+    }
+    if (margenAnyoAnterior.present) {
+      map['MARGEN_ANYO_ANTERIOR'] = Variable<double>(margenAnyoAnterior.value);
+    }
+    if (margenHaceDosAnyos.present) {
+      map['MARGEN_HACE_DOS_ANYOS'] = Variable<double>(margenHaceDosAnyos.value);
+    }
+    if (porcentajeAbonos.present) {
+      map['PORCENTAJE_ABONOS'] = Variable<double>(porcentajeAbonos.value);
+    }
+    if (porcentajeGarantias.present) {
+      map['PORCENTAJE_GARANTIAS'] = Variable<double>(porcentajeGarantias.value);
+    }
+    if (centralCompras.present) {
+      map['CENTRAL_COMPRAS_NOMBRE'] = Variable<String>(centralCompras.value);
+    }
+    if (urlWeb.present) {
+      map['URL_WEB'] = Variable<String>(urlWeb.value);
+    }
+    if (divisaId.present) {
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
+    }
+    if (tarifaId.present) {
+      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
+    }
+    if (tarifaDescripcion.present) {
+      map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
+    }
+    if (descuentoGeneralId.present) {
+      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneralId.value);
+    }
+    if (descripcionDescuentoGeneral.present) {
+      map['DESCUENTO_GENERAL_DESCRIPCION'] =
+          Variable<String>(descripcionDescuentoGeneral.value);
+    }
+    if (tipoCalculoPrecio.present) {
+      map['TIPO_CALCULO_PRECIO'] = Variable<String>(tipoCalculoPrecio.value);
+    }
+    if (plazoDeCobroId.present) {
+      map['PLAZO_COBRO_ID'] = Variable<String>(plazoDeCobroId.value);
+    }
+    if (metodoDeCobroId.present) {
+      map['METODO_COBRO_ID'] = Variable<String>(metodoDeCobroId.value);
+    }
+    if (descuentoProntoPago.present) {
+      map['DESCUENTO_PRONTO_PAGO'] =
+          Variable<double>(descuentoProntoPago.value);
+    }
+    if (riesgoConcedidoInterno.present) {
+      map['RIESGO_CONCEDIDO_INTERNO'] =
+          Variable<double>(riesgoConcedidoInterno.value);
+    }
+    if (riesgoConcedidoInternoDate.present) {
+      map['RIESGO_CONCEDIDO_INTERNO_FECHA'] =
+          Variable<DateTime>(riesgoConcedidoInternoDate.value);
+    }
+    if (riesgoConcedidoCoafe.present) {
+      map['RIESGO_CONCEDIDO_COFACE'] =
+          Variable<double>(riesgoConcedidoCoafe.value);
+    }
+    if (riesgoConcedidoCoafeFecha.present) {
+      map['RIESGO_CONCEDIDO_COFACE_FECHA'] =
+          Variable<DateTime>(riesgoConcedidoCoafeFecha.value);
+    }
+    if (riesgoConcedido.present) {
+      map['RIESGO_CONCEDIDO'] = Variable<double>(riesgoConcedido.value);
+    }
+    if (riesgoPendienteCobroVencido.present) {
+      map['RIESGO_PDTE_COBRO_VENCIDO_CLIENTE'] =
+          Variable<double>(riesgoPendienteCobroVencido.value);
+    }
+    if (riesgoPendienteCobroNoVencido.present) {
+      map['RIESGO_PDTE_COBRO_NO_VENCIDO_CLIENTE'] =
+          Variable<double>(riesgoPendienteCobroNoVencido.value);
+    }
+    if (riesgoPendienteServir.present) {
+      map['RIESGO_PDTE_SERVIR_CLIENTE'] =
+          Variable<double>(riesgoPendienteServir.value);
+    }
+    if (riesgoPendienteFacturar.present) {
+      map['RIESGO_PDTE_FACTURAR_CLIENTE'] =
+          Variable<double>(riesgoPendienteFacturar.value);
+    }
+    if (obvservacionesInternas.present) {
+      map['OBSERVACIONES_INTERNAS'] =
+          Variable<String>(obvservacionesInternas.value);
+    }
+    if (clientePotencial.present) {
+      map['CLIENTE_POTENCIAL'] = Variable<String>(clientePotencial.value);
+    }
+    if (clienteEstadoPotencialId.present) {
+      map['ESTADO_POTENCIAL_ID'] =
+          Variable<String>(clienteEstadoPotencialId.value);
+    }
+    if (clienteTipoPotencialId.present) {
+      map['TIPO_POTENCIAL_ID'] = Variable<String>(clienteTipoPotencialId.value);
+    }
+    if (representante1Id.present) {
+      map['REPRESENTANTE1_ID'] = Variable<String>(representante1Id.value);
+    }
+    if (representante1Nombre.present) {
+      map['REPRESENTANTE1_NOMBRE'] =
+          Variable<String>(representante1Nombre.value);
+    }
+    if (representante2Id.present) {
+      map['REPRESENTANTE2_ID'] = Variable<String>(representante2Id.value);
+    }
+    if (representante2Nombre.present) {
+      map['REPRESENTANTE2_NOMBRE'] =
+          Variable<String>(representante2Nombre.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -5688,9 +5563,58 @@ class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ClienteUsuarioTableCompanion(')
-          ..write('clienteId: $clienteId, ')
-          ..write('usuarioId: $usuarioId, ')
+    return (StringBuffer('ClienteTableCompanion(')
+          ..write('id: $id, ')
+          ..write('nombreCliente: $nombreCliente, ')
+          ..write('nif: $nif, ')
+          ..write('nombreFiscal: $nombreFiscal, ')
+          ..write('direccionFiscal1: $direccionFiscal1, ')
+          ..write('direccionFiscal2: $direccionFiscal2, ')
+          ..write('codigoPostalFiscal: $codigoPostalFiscal, ')
+          ..write('poblacionFiscal: $poblacionFiscal, ')
+          ..write('provinciaFiscal: $provinciaFiscal, ')
+          ..write('paisFiscalId: $paisFiscalId, ')
+          ..write('latitudFiscal: $latitudFiscal, ')
+          ..write('longitudFiscal: $longitudFiscal, ')
+          ..write('empresaId: $empresaId, ')
+          ..write('iva: $iva, ')
+          ..write('ventasAnyoActual: $ventasAnyoActual, ')
+          ..write('ventasAnyoAnterior: $ventasAnyoAnterior, ')
+          ..write('ventasHaceDosAnyos: $ventasHaceDosAnyos, ')
+          ..write('margenAnyoActual: $margenAnyoActual, ')
+          ..write('margenAnyoAnterior: $margenAnyoAnterior, ')
+          ..write('margenHaceDosAnyos: $margenHaceDosAnyos, ')
+          ..write('porcentajeAbonos: $porcentajeAbonos, ')
+          ..write('porcentajeGarantias: $porcentajeGarantias, ')
+          ..write('centralCompras: $centralCompras, ')
+          ..write('urlWeb: $urlWeb, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('tarifaId: $tarifaId, ')
+          ..write('tarifaDescripcion: $tarifaDescripcion, ')
+          ..write('descuentoGeneralId: $descuentoGeneralId, ')
+          ..write('descripcionDescuentoGeneral: $descripcionDescuentoGeneral, ')
+          ..write('tipoCalculoPrecio: $tipoCalculoPrecio, ')
+          ..write('plazoDeCobroId: $plazoDeCobroId, ')
+          ..write('metodoDeCobroId: $metodoDeCobroId, ')
+          ..write('descuentoProntoPago: $descuentoProntoPago, ')
+          ..write('riesgoConcedidoInterno: $riesgoConcedidoInterno, ')
+          ..write('riesgoConcedidoInternoDate: $riesgoConcedidoInternoDate, ')
+          ..write('riesgoConcedidoCoafe: $riesgoConcedidoCoafe, ')
+          ..write('riesgoConcedidoCoafeFecha: $riesgoConcedidoCoafeFecha, ')
+          ..write('riesgoConcedido: $riesgoConcedido, ')
+          ..write('riesgoPendienteCobroVencido: $riesgoPendienteCobroVencido, ')
+          ..write(
+              'riesgoPendienteCobroNoVencido: $riesgoPendienteCobroNoVencido, ')
+          ..write('riesgoPendienteServir: $riesgoPendienteServir, ')
+          ..write('riesgoPendienteFacturar: $riesgoPendienteFacturar, ')
+          ..write('obvservacionesInternas: $obvservacionesInternas, ')
+          ..write('clientePotencial: $clientePotencial, ')
+          ..write('clienteEstadoPotencialId: $clienteEstadoPotencialId, ')
+          ..write('clienteTipoPotencialId: $clienteTipoPotencialId, ')
+          ..write('representante1Id: $representante1Id, ')
+          ..write('representante1Nombre: $representante1Nombre, ')
+          ..write('representante2Id: $representante2Id, ')
+          ..write('representante2Nombre: $representante2Nombre, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -5792,65 +5716,47 @@ class $ClienteUsuarioTableTable extends ClienteUsuarioTable
   }
 }
 
-class ClienteGrupoNetoTableCompanion
-    extends UpdateCompanion<ClienteGrupoNetoDTO> {
+class ClienteUsuarioTableCompanion extends UpdateCompanion<ClienteUsuarioDTO> {
   final Value<String> clienteId;
-  final Value<String> grupoNetoId;
-  final Value<String> grupoNetoDescripcion;
-  final Value<double> dtoAdicional;
+  final Value<String> usuarioId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteGrupoNetoTableCompanion({
+  const ClienteUsuarioTableCompanion({
     this.clienteId = const Value.absent(),
-    this.grupoNetoId = const Value.absent(),
-    this.grupoNetoDescripcion = const Value.absent(),
-    this.dtoAdicional = const Value.absent(),
+    this.usuarioId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteGrupoNetoTableCompanion.insert({
+  ClienteUsuarioTableCompanion.insert({
     required String clienteId,
-    required String grupoNetoId,
-    required String grupoNetoDescripcion,
-    required double dtoAdicional,
+    required String usuarioId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
-        grupoNetoId = Value(grupoNetoId),
-        grupoNetoDescripcion = Value(grupoNetoDescripcion),
-        dtoAdicional = Value(dtoAdicional),
+        usuarioId = Value(usuarioId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteGrupoNetoDTO> custom({
+  static Insertable<ClienteUsuarioDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? grupoNetoId,
-    Expression<String>? grupoNetoDescripcion,
-    Expression<double>? dtoAdicional,
+    Expression<String>? usuarioId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
-      if (grupoNetoDescripcion != null)
-        'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
-      if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteGrupoNetoTableCompanion copyWith(
+  ClienteUsuarioTableCompanion copyWith(
       {Value<String>? clienteId,
-      Value<String>? grupoNetoId,
-      Value<String>? grupoNetoDescripcion,
-      Value<double>? dtoAdicional,
+      Value<String>? usuarioId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteGrupoNetoTableCompanion(
+    return ClienteUsuarioTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      grupoNetoId: grupoNetoId ?? this.grupoNetoId,
-      grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
-      dtoAdicional: dtoAdicional ?? this.dtoAdicional,
+      usuarioId: usuarioId ?? this.usuarioId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -5862,15 +5768,8 @@ class ClienteGrupoNetoTableCompanion
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (grupoNetoId.present) {
-      map['GRUPO_NETO_ID'] = Variable<String>(grupoNetoId.value);
-    }
-    if (grupoNetoDescripcion.present) {
-      map['GRUPO_NETO_DESCRIPCION'] =
-          Variable<String>(grupoNetoDescripcion.value);
-    }
-    if (dtoAdicional.present) {
-      map['DTO_ADICIONAL'] = Variable<double>(dtoAdicional.value);
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -5883,11 +5782,9 @@ class ClienteGrupoNetoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClienteGrupoNetoTableCompanion(')
+    return (StringBuffer('ClienteUsuarioTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('grupoNetoId: $grupoNetoId, ')
-          ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
-          ..write('dtoAdicional: $dtoAdicional, ')
+          ..write('usuarioId: $usuarioId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -6031,145 +5928,65 @@ class $ClienteGrupoNetoTableTable extends ClienteGrupoNetoTable
   }
 }
 
-class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
-  final Value<String> id;
-  final Value<String> descripcionES;
-  final Value<String?> descripcionEN;
-  final Value<String?> descripcionFR;
-  final Value<String?> descripcionDE;
-  final Value<String?> descripcionCA;
-  final Value<String?> descripcionGB;
-  final Value<String?> descripcionHU;
-  final Value<String?> descripcionIT;
-  final Value<String?> descripcionNL;
-  final Value<String?> descripcionPL;
-  final Value<String?> descripcionPT;
-  final Value<String?> descripcionRO;
-  final Value<String?> descripcionRU;
-  final Value<String?> descripcionCN;
-  final Value<String?> descripcionEL;
+class ClienteGrupoNetoTableCompanion
+    extends UpdateCompanion<ClienteGrupoNetoDTO> {
+  final Value<String> clienteId;
+  final Value<String> grupoNetoId;
+  final Value<String> grupoNetoDescripcion;
+  final Value<double> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const FamiliaTableCompanion({
-    this.id = const Value.absent(),
-    this.descripcionES = const Value.absent(),
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
+  const ClienteGrupoNetoTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.grupoNetoId = const Value.absent(),
+    this.grupoNetoDescripcion = const Value.absent(),
+    this.dtoAdicional = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  FamiliaTableCompanion.insert({
-    required String id,
-    required String descripcionES,
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
+  ClienteGrupoNetoTableCompanion.insert({
+    required String clienteId,
+    required String grupoNetoId,
+    required String grupoNetoDescripcion,
+    required double dtoAdicional,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : id = Value(id),
-        descripcionES = Value(descripcionES),
+  })  : clienteId = Value(clienteId),
+        grupoNetoId = Value(grupoNetoId),
+        grupoNetoDescripcion = Value(grupoNetoDescripcion),
+        dtoAdicional = Value(dtoAdicional),
         lastUpdated = Value(lastUpdated);
-  static Insertable<FamiliaDTO> custom({
-    Expression<String>? id,
-    Expression<String>? descripcionES,
-    Expression<String>? descripcionEN,
-    Expression<String>? descripcionFR,
-    Expression<String>? descripcionDE,
-    Expression<String>? descripcionCA,
-    Expression<String>? descripcionGB,
-    Expression<String>? descripcionHU,
-    Expression<String>? descripcionIT,
-    Expression<String>? descripcionNL,
-    Expression<String>? descripcionPL,
-    Expression<String>? descripcionPT,
-    Expression<String>? descripcionRO,
-    Expression<String>? descripcionRU,
-    Expression<String>? descripcionCN,
-    Expression<String>? descripcionEL,
+  static Insertable<ClienteGrupoNetoDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? grupoNetoId,
+    Expression<String>? grupoNetoDescripcion,
+    Expression<double>? dtoAdicional,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'FAMILIA_ID': id,
-      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
-      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
-      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
-      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
-      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
-      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
-      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
-      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
-      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
-      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
-      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
-      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
-      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
-      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
-      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
+      if (grupoNetoDescripcion != null)
+        'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
+      if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  FamiliaTableCompanion copyWith(
-      {Value<String>? id,
-      Value<String>? descripcionES,
-      Value<String?>? descripcionEN,
-      Value<String?>? descripcionFR,
-      Value<String?>? descripcionDE,
-      Value<String?>? descripcionCA,
-      Value<String?>? descripcionGB,
-      Value<String?>? descripcionHU,
-      Value<String?>? descripcionIT,
-      Value<String?>? descripcionNL,
-      Value<String?>? descripcionPL,
-      Value<String?>? descripcionPT,
-      Value<String?>? descripcionRO,
-      Value<String?>? descripcionRU,
-      Value<String?>? descripcionCN,
-      Value<String?>? descripcionEL,
+  ClienteGrupoNetoTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? grupoNetoId,
+      Value<String>? grupoNetoDescripcion,
+      Value<double>? dtoAdicional,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return FamiliaTableCompanion(
-      id: id ?? this.id,
-      descripcionES: descripcionES ?? this.descripcionES,
-      descripcionEN: descripcionEN ?? this.descripcionEN,
-      descripcionFR: descripcionFR ?? this.descripcionFR,
-      descripcionDE: descripcionDE ?? this.descripcionDE,
-      descripcionCA: descripcionCA ?? this.descripcionCA,
-      descripcionGB: descripcionGB ?? this.descripcionGB,
-      descripcionHU: descripcionHU ?? this.descripcionHU,
-      descripcionIT: descripcionIT ?? this.descripcionIT,
-      descripcionNL: descripcionNL ?? this.descripcionNL,
-      descripcionPL: descripcionPL ?? this.descripcionPL,
-      descripcionPT: descripcionPT ?? this.descripcionPT,
-      descripcionRO: descripcionRO ?? this.descripcionRO,
-      descripcionRU: descripcionRU ?? this.descripcionRU,
-      descripcionCN: descripcionCN ?? this.descripcionCN,
-      descripcionEL: descripcionEL ?? this.descripcionEL,
+    return ClienteGrupoNetoTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      grupoNetoId: grupoNetoId ?? this.grupoNetoId,
+      grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
+      dtoAdicional: dtoAdicional ?? this.dtoAdicional,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -6178,53 +5995,18 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['FAMILIA_ID'] = Variable<String>(id.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (descripcionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    if (grupoNetoId.present) {
+      map['GRUPO_NETO_ID'] = Variable<String>(grupoNetoId.value);
     }
-    if (descripcionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    if (grupoNetoDescripcion.present) {
+      map['GRUPO_NETO_DESCRIPCION'] =
+          Variable<String>(grupoNetoDescripcion.value);
     }
-    if (descripcionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
-    }
-    if (descripcionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
-    }
-    if (descripcionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
-    }
-    if (descripcionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
-    }
-    if (descripcionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
-    }
-    if (descripcionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
-    }
-    if (descripcionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
-    }
-    if (descripcionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
-    }
-    if (descripcionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
-    }
-    if (descripcionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
-    }
-    if (descripcionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
-    }
-    if (descripcionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
-    }
-    if (descripcionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    if (dtoAdicional.present) {
+      map['DTO_ADICIONAL'] = Variable<double>(dtoAdicional.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -6237,23 +6019,11 @@ class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('FamiliaTableCompanion(')
-          ..write('id: $id, ')
-          ..write('descripcionES: $descripcionES, ')
-          ..write('descripcionEN: $descripcionEN, ')
-          ..write('descripcionFR: $descripcionFR, ')
-          ..write('descripcionDE: $descripcionDE, ')
-          ..write('descripcionCA: $descripcionCA, ')
-          ..write('descripcionGB: $descripcionGB, ')
-          ..write('descripcionHU: $descripcionHU, ')
-          ..write('descripcionIT: $descripcionIT, ')
-          ..write('descripcionNL: $descripcionNL, ')
-          ..write('descripcionPL: $descripcionPL, ')
-          ..write('descripcionPT: $descripcionPT, ')
-          ..write('descripcionRO: $descripcionRO, ')
-          ..write('descripcionRU: $descripcionRU, ')
-          ..write('descripcionCN: $descripcionCN, ')
-          ..write('descripcionEL: $descripcionEL, ')
+    return (StringBuffer('ClienteGrupoNetoTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('grupoNetoId: $grupoNetoId, ')
+          ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
+          ..write('dtoAdicional: $dtoAdicional, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -6570,9 +6340,8 @@ class $FamiliaTableTable extends FamiliaTable
   }
 }
 
-class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
+class FamiliaTableCompanion extends UpdateCompanion<FamiliaDTO> {
   final Value<String> id;
-  final Value<String> familiaId;
   final Value<String> descripcionES;
   final Value<String?> descripcionEN;
   final Value<String?> descripcionFR;
@@ -6590,9 +6359,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const SubfamiliaTableCompanion({
+  const FamiliaTableCompanion({
     this.id = const Value.absent(),
-    this.familiaId = const Value.absent(),
     this.descripcionES = const Value.absent(),
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -6611,9 +6379,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  SubfamiliaTableCompanion.insert({
+  FamiliaTableCompanion.insert({
     required String id,
-    required String familiaId,
     required String descripcionES,
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -6632,12 +6399,10 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
-        familiaId = Value(familiaId),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<SubfamiliaDTO> custom({
+  static Insertable<FamiliaDTO> custom({
     Expression<String>? id,
-    Expression<String>? familiaId,
     Expression<String>? descripcionES,
     Expression<String>? descripcionEN,
     Expression<String>? descripcionFR,
@@ -6657,8 +6422,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'SUBFAMILIA_ID': id,
-      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (id != null) 'FAMILIA_ID': id,
       if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
       if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
       if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
@@ -6679,9 +6443,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
     });
   }
 
-  SubfamiliaTableCompanion copyWith(
+  FamiliaTableCompanion copyWith(
       {Value<String>? id,
-      Value<String>? familiaId,
       Value<String>? descripcionES,
       Value<String?>? descripcionEN,
       Value<String?>? descripcionFR,
@@ -6699,9 +6462,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return SubfamiliaTableCompanion(
+    return FamiliaTableCompanion(
       id: id ?? this.id,
-      familiaId: familiaId ?? this.familiaId,
       descripcionES: descripcionES ?? this.descripcionES,
       descripcionEN: descripcionEN ?? this.descripcionEN,
       descripcionFR: descripcionFR ?? this.descripcionFR,
@@ -6726,10 +6488,7 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['SUBFAMILIA_ID'] = Variable<String>(id.value);
-    }
-    if (familiaId.present) {
-      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
+      map['FAMILIA_ID'] = Variable<String>(id.value);
     }
     if (descripcionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
@@ -6787,9 +6546,8 @@ class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('SubfamiliaTableCompanion(')
+    return (StringBuffer('FamiliaTableCompanion(')
           ..write('id: $id, ')
-          ..write('familiaId: $familiaId, ')
           ..write('descripcionES: $descripcionES, ')
           ..write('descripcionEN: $descripcionEN, ')
           ..write('descripcionFR: $descripcionFR, ')
@@ -7136,80 +6894,153 @@ class $SubfamiliaTableTable extends SubfamiliaTable
   }
 }
 
-class ClienteDescuentoTableCompanion
-    extends UpdateCompanion<ClienteDescuentoDTO> {
-  final Value<String> clienteId;
-  final Value<String> articuloId;
+class SubfamiliaTableCompanion extends UpdateCompanion<SubfamiliaDTO> {
+  final Value<String> id;
   final Value<String> familiaId;
-  final Value<String> subfamiliaId;
-  final Value<int> cantidadDesde;
-  final Value<double> descuento;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteDescuentoTableCompanion({
-    this.clienteId = const Value.absent(),
-    this.articuloId = const Value.absent(),
+  const SubfamiliaTableCompanion({
+    this.id = const Value.absent(),
     this.familiaId = const Value.absent(),
-    this.subfamiliaId = const Value.absent(),
-    this.cantidadDesde = const Value.absent(),
-    this.descuento = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteDescuentoTableCompanion.insert({
-    required String clienteId,
-    required String articuloId,
+  SubfamiliaTableCompanion.insert({
+    required String id,
     required String familiaId,
-    required String subfamiliaId,
-    required int cantidadDesde,
-    required double descuento,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : clienteId = Value(clienteId),
-        articuloId = Value(articuloId),
+  })  : id = Value(id),
         familiaId = Value(familiaId),
-        subfamiliaId = Value(subfamiliaId),
-        cantidadDesde = Value(cantidadDesde),
-        descuento = Value(descuento),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteDescuentoDTO> custom({
-    Expression<String>? clienteId,
-    Expression<String>? articuloId,
+  static Insertable<SubfamiliaDTO> custom({
+    Expression<String>? id,
     Expression<String>? familiaId,
-    Expression<String>? subfamiliaId,
-    Expression<int>? cantidadDesde,
-    Expression<double>? descuento,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (id != null) 'SUBFAMILIA_ID': id,
       if (familiaId != null) 'FAMILIA_ID': familiaId,
-      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
-      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
-      if (descuento != null) 'DESCUENTO': descuento,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteDescuentoTableCompanion copyWith(
-      {Value<String>? clienteId,
-      Value<String>? articuloId,
+  SubfamiliaTableCompanion copyWith(
+      {Value<String>? id,
       Value<String>? familiaId,
-      Value<String>? subfamiliaId,
-      Value<int>? cantidadDesde,
-      Value<double>? descuento,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteDescuentoTableCompanion(
-      clienteId: clienteId ?? this.clienteId,
-      articuloId: articuloId ?? this.articuloId,
+    return SubfamiliaTableCompanion(
+      id: id ?? this.id,
       familiaId: familiaId ?? this.familiaId,
-      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
-      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
-      descuento: descuento ?? this.descuento,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -7218,23 +7049,56 @@ class ClienteDescuentoTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
-    }
-    if (articuloId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    if (id.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(id.value);
     }
     if (familiaId.present) {
       map['FAMILIA_ID'] = Variable<String>(familiaId.value);
     }
-    if (subfamiliaId.present) {
-      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
     }
-    if (cantidadDesde.present) {
-      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
     }
-    if (descuento.present) {
-      map['DESCUENTO'] = Variable<double>(descuento.value);
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7247,13 +7111,24 @@ class ClienteDescuentoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClienteDescuentoTableCompanion(')
-          ..write('clienteId: $clienteId, ')
-          ..write('articuloId: $articuloId, ')
+    return (StringBuffer('SubfamiliaTableCompanion(')
+          ..write('id: $id, ')
           ..write('familiaId: $familiaId, ')
-          ..write('subfamiliaId: $subfamiliaId, ')
-          ..write('cantidadDesde: $cantidadDesde, ')
-          ..write('descuento: $descuento, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -7433,97 +7308,80 @@ class $ClienteDescuentoTableTable extends ClienteDescuentoTable
   }
 }
 
-class ClienteContactoTableCompanion
-    extends UpdateCompanion<ClienteContactoDTO> {
+class ClienteDescuentoTableCompanion
+    extends UpdateCompanion<ClienteDescuentoDTO> {
   final Value<String> clienteId;
-  final Value<String> contactoId;
-  final Value<String?> observaciones;
-  final Value<String?> nombre;
-  final Value<String?> apellido1;
-  final Value<String?> apellido2;
-  final Value<String?> telefono1;
-  final Value<String?> telefono2;
-  final Value<String?> email;
+  final Value<String> articuloId;
+  final Value<String> familiaId;
+  final Value<String> subfamiliaId;
+  final Value<int> cantidadDesde;
+  final Value<double> descuento;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteContactoTableCompanion({
+  const ClienteDescuentoTableCompanion({
     this.clienteId = const Value.absent(),
-    this.contactoId = const Value.absent(),
-    this.observaciones = const Value.absent(),
-    this.nombre = const Value.absent(),
-    this.apellido1 = const Value.absent(),
-    this.apellido2 = const Value.absent(),
-    this.telefono1 = const Value.absent(),
-    this.telefono2 = const Value.absent(),
-    this.email = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    this.cantidadDesde = const Value.absent(),
+    this.descuento = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteContactoTableCompanion.insert({
+  ClienteDescuentoTableCompanion.insert({
     required String clienteId,
-    required String contactoId,
-    this.observaciones = const Value.absent(),
-    this.nombre = const Value.absent(),
-    this.apellido1 = const Value.absent(),
-    this.apellido2 = const Value.absent(),
-    this.telefono1 = const Value.absent(),
-    this.telefono2 = const Value.absent(),
-    this.email = const Value.absent(),
+    required String articuloId,
+    required String familiaId,
+    required String subfamiliaId,
+    required int cantidadDesde,
+    required double descuento,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
-        contactoId = Value(contactoId),
+        articuloId = Value(articuloId),
+        familiaId = Value(familiaId),
+        subfamiliaId = Value(subfamiliaId),
+        cantidadDesde = Value(cantidadDesde),
+        descuento = Value(descuento),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteContactoDTO> custom({
+  static Insertable<ClienteDescuentoDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? contactoId,
-    Expression<String>? observaciones,
-    Expression<String>? nombre,
-    Expression<String>? apellido1,
-    Expression<String>? apellido2,
-    Expression<String>? telefono1,
-    Expression<String>? telefono2,
-    Expression<String>? email,
+    Expression<String>? articuloId,
+    Expression<String>? familiaId,
+    Expression<String>? subfamiliaId,
+    Expression<int>? cantidadDesde,
+    Expression<double>? descuento,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (contactoId != null) 'CONTACTO_ID': contactoId,
-      if (observaciones != null) 'OBSERVACIONES': observaciones,
-      if (nombre != null) 'NOMBRE': nombre,
-      if (apellido1 != null) 'APELLIDO1': apellido1,
-      if (apellido2 != null) 'APELLIDO2': apellido2,
-      if (telefono1 != null) 'TELEFONO1': telefono1,
-      if (telefono2 != null) 'TELEFONO2': telefono2,
-      if (email != null) 'EMAIL': email,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
+      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
+      if (descuento != null) 'DESCUENTO': descuento,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteContactoTableCompanion copyWith(
+  ClienteDescuentoTableCompanion copyWith(
       {Value<String>? clienteId,
-      Value<String>? contactoId,
-      Value<String?>? observaciones,
-      Value<String?>? nombre,
-      Value<String?>? apellido1,
-      Value<String?>? apellido2,
-      Value<String?>? telefono1,
-      Value<String?>? telefono2,
-      Value<String?>? email,
+      Value<String>? articuloId,
+      Value<String>? familiaId,
+      Value<String>? subfamiliaId,
+      Value<int>? cantidadDesde,
+      Value<double>? descuento,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteContactoTableCompanion(
+    return ClienteDescuentoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      contactoId: contactoId ?? this.contactoId,
-      observaciones: observaciones ?? this.observaciones,
-      nombre: nombre ?? this.nombre,
-      apellido1: apellido1 ?? this.apellido1,
-      apellido2: apellido2 ?? this.apellido2,
-      telefono1: telefono1 ?? this.telefono1,
-      telefono2: telefono2 ?? this.telefono2,
-      email: email ?? this.email,
+      articuloId: articuloId ?? this.articuloId,
+      familiaId: familiaId ?? this.familiaId,
+      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
+      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
+      descuento: descuento ?? this.descuento,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -7535,29 +7393,20 @@ class ClienteContactoTableCompanion
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (contactoId.present) {
-      map['CONTACTO_ID'] = Variable<String>(contactoId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (observaciones.present) {
-      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
     }
-    if (nombre.present) {
-      map['NOMBRE'] = Variable<String>(nombre.value);
+    if (subfamiliaId.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
     }
-    if (apellido1.present) {
-      map['APELLIDO1'] = Variable<String>(apellido1.value);
+    if (cantidadDesde.present) {
+      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
     }
-    if (apellido2.present) {
-      map['APELLIDO2'] = Variable<String>(apellido2.value);
-    }
-    if (telefono1.present) {
-      map['TELEFONO1'] = Variable<String>(telefono1.value);
-    }
-    if (telefono2.present) {
-      map['TELEFONO2'] = Variable<String>(telefono2.value);
-    }
-    if (email.present) {
-      map['EMAIL'] = Variable<String>(email.value);
+    if (descuento.present) {
+      map['DESCUENTO'] = Variable<double>(descuento.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7570,16 +7419,13 @@ class ClienteContactoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClienteContactoTableCompanion(')
+    return (StringBuffer('ClienteDescuentoTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('contactoId: $contactoId, ')
-          ..write('observaciones: $observaciones, ')
-          ..write('nombre: $nombre, ')
-          ..write('apellido1: $apellido1, ')
-          ..write('apellido2: $apellido2, ')
-          ..write('telefono1: $telefono1, ')
-          ..write('telefono2: $telefono2, ')
-          ..write('email: $email, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('subfamiliaId: $subfamiliaId, ')
+          ..write('cantidadDesde: $cantidadDesde, ')
+          ..write('descuento: $descuento, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -7778,121 +7624,97 @@ class $ClienteContactoTableTable extends ClienteContactoTable
   }
 }
 
-class ClienteDireccionTableCompanion
-    extends UpdateCompanion<ClienteDireccionDTO> {
+class ClienteContactoTableCompanion
+    extends UpdateCompanion<ClienteContactoDTO> {
   final Value<String> clienteId;
-  final Value<String> direccionId;
-  final Value<String> nombre;
-  final Value<String?> direccion1;
-  final Value<String?> direccion2;
-  final Value<String?> codigoPostal;
-  final Value<String?> poblacion;
-  final Value<String?> provincia;
-  final Value<String?> paisId;
-  final Value<double> latitud;
-  final Value<double> longitud;
-  final Value<String?> predeterminada;
+  final Value<String> contactoId;
+  final Value<String?> observaciones;
+  final Value<String?> nombre;
+  final Value<String?> apellido1;
+  final Value<String?> apellido2;
+  final Value<String?> telefono1;
+  final Value<String?> telefono2;
+  final Value<String?> email;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteDireccionTableCompanion({
+  const ClienteContactoTableCompanion({
     this.clienteId = const Value.absent(),
-    this.direccionId = const Value.absent(),
+    this.contactoId = const Value.absent(),
+    this.observaciones = const Value.absent(),
     this.nombre = const Value.absent(),
-    this.direccion1 = const Value.absent(),
-    this.direccion2 = const Value.absent(),
-    this.codigoPostal = const Value.absent(),
-    this.poblacion = const Value.absent(),
-    this.provincia = const Value.absent(),
-    this.paisId = const Value.absent(),
-    this.latitud = const Value.absent(),
-    this.longitud = const Value.absent(),
-    this.predeterminada = const Value.absent(),
+    this.apellido1 = const Value.absent(),
+    this.apellido2 = const Value.absent(),
+    this.telefono1 = const Value.absent(),
+    this.telefono2 = const Value.absent(),
+    this.email = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteDireccionTableCompanion.insert({
+  ClienteContactoTableCompanion.insert({
     required String clienteId,
-    required String direccionId,
-    required String nombre,
-    this.direccion1 = const Value.absent(),
-    this.direccion2 = const Value.absent(),
-    this.codigoPostal = const Value.absent(),
-    this.poblacion = const Value.absent(),
-    this.provincia = const Value.absent(),
-    this.paisId = const Value.absent(),
-    required double latitud,
-    required double longitud,
-    this.predeterminada = const Value.absent(),
+    required String contactoId,
+    this.observaciones = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.apellido1 = const Value.absent(),
+    this.apellido2 = const Value.absent(),
+    this.telefono1 = const Value.absent(),
+    this.telefono2 = const Value.absent(),
+    this.email = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
-        direccionId = Value(direccionId),
-        nombre = Value(nombre),
-        latitud = Value(latitud),
-        longitud = Value(longitud),
+        contactoId = Value(contactoId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteDireccionDTO> custom({
+  static Insertable<ClienteContactoDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? direccionId,
+    Expression<String>? contactoId,
+    Expression<String>? observaciones,
     Expression<String>? nombre,
-    Expression<String>? direccion1,
-    Expression<String>? direccion2,
-    Expression<String>? codigoPostal,
-    Expression<String>? poblacion,
-    Expression<String>? provincia,
-    Expression<String>? paisId,
-    Expression<double>? latitud,
-    Expression<double>? longitud,
-    Expression<String>? predeterminada,
+    Expression<String>? apellido1,
+    Expression<String>? apellido2,
+    Expression<String>? telefono1,
+    Expression<String>? telefono2,
+    Expression<String>? email,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (contactoId != null) 'CONTACTO_ID': contactoId,
+      if (observaciones != null) 'OBSERVACIONES': observaciones,
       if (nombre != null) 'NOMBRE': nombre,
-      if (direccion1 != null) 'DIRECCION1': direccion1,
-      if (direccion2 != null) 'DIRECCION2': direccion2,
-      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
-      if (poblacion != null) 'POBLACION': poblacion,
-      if (provincia != null) 'PROVINCIA': provincia,
-      if (paisId != null) 'PAIS_ID': paisId,
-      if (latitud != null) 'LATITUD': latitud,
-      if (longitud != null) 'LONGITUD': longitud,
-      if (predeterminada != null) 'PREDETERMINADA_SN': predeterminada,
+      if (apellido1 != null) 'APELLIDO1': apellido1,
+      if (apellido2 != null) 'APELLIDO2': apellido2,
+      if (telefono1 != null) 'TELEFONO1': telefono1,
+      if (telefono2 != null) 'TELEFONO2': telefono2,
+      if (email != null) 'EMAIL': email,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteDireccionTableCompanion copyWith(
+  ClienteContactoTableCompanion copyWith(
       {Value<String>? clienteId,
-      Value<String>? direccionId,
-      Value<String>? nombre,
-      Value<String?>? direccion1,
-      Value<String?>? direccion2,
-      Value<String?>? codigoPostal,
-      Value<String?>? poblacion,
-      Value<String?>? provincia,
-      Value<String?>? paisId,
-      Value<double>? latitud,
-      Value<double>? longitud,
-      Value<String?>? predeterminada,
+      Value<String>? contactoId,
+      Value<String?>? observaciones,
+      Value<String?>? nombre,
+      Value<String?>? apellido1,
+      Value<String?>? apellido2,
+      Value<String?>? telefono1,
+      Value<String?>? telefono2,
+      Value<String?>? email,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteDireccionTableCompanion(
+    return ClienteContactoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      direccionId: direccionId ?? this.direccionId,
+      contactoId: contactoId ?? this.contactoId,
+      observaciones: observaciones ?? this.observaciones,
       nombre: nombre ?? this.nombre,
-      direccion1: direccion1 ?? this.direccion1,
-      direccion2: direccion2 ?? this.direccion2,
-      codigoPostal: codigoPostal ?? this.codigoPostal,
-      poblacion: poblacion ?? this.poblacion,
-      provincia: provincia ?? this.provincia,
-      paisId: paisId ?? this.paisId,
-      latitud: latitud ?? this.latitud,
-      longitud: longitud ?? this.longitud,
-      predeterminada: predeterminada ?? this.predeterminada,
+      apellido1: apellido1 ?? this.apellido1,
+      apellido2: apellido2 ?? this.apellido2,
+      telefono1: telefono1 ?? this.telefono1,
+      telefono2: telefono2 ?? this.telefono2,
+      email: email ?? this.email,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -7904,38 +7726,29 @@ class ClienteDireccionTableCompanion
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (direccionId.present) {
-      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    if (contactoId.present) {
+      map['CONTACTO_ID'] = Variable<String>(contactoId.value);
+    }
+    if (observaciones.present) {
+      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
     }
     if (nombre.present) {
       map['NOMBRE'] = Variable<String>(nombre.value);
     }
-    if (direccion1.present) {
-      map['DIRECCION1'] = Variable<String>(direccion1.value);
+    if (apellido1.present) {
+      map['APELLIDO1'] = Variable<String>(apellido1.value);
     }
-    if (direccion2.present) {
-      map['DIRECCION2'] = Variable<String>(direccion2.value);
+    if (apellido2.present) {
+      map['APELLIDO2'] = Variable<String>(apellido2.value);
     }
-    if (codigoPostal.present) {
-      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    if (telefono1.present) {
+      map['TELEFONO1'] = Variable<String>(telefono1.value);
     }
-    if (poblacion.present) {
-      map['POBLACION'] = Variable<String>(poblacion.value);
+    if (telefono2.present) {
+      map['TELEFONO2'] = Variable<String>(telefono2.value);
     }
-    if (provincia.present) {
-      map['PROVINCIA'] = Variable<String>(provincia.value);
-    }
-    if (paisId.present) {
-      map['PAIS_ID'] = Variable<String>(paisId.value);
-    }
-    if (latitud.present) {
-      map['LATITUD'] = Variable<double>(latitud.value);
-    }
-    if (longitud.present) {
-      map['LONGITUD'] = Variable<double>(longitud.value);
-    }
-    if (predeterminada.present) {
-      map['PREDETERMINADA_SN'] = Variable<String>(predeterminada.value);
+    if (email.present) {
+      map['EMAIL'] = Variable<String>(email.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -7948,19 +7761,16 @@ class ClienteDireccionTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClienteDireccionTableCompanion(')
+    return (StringBuffer('ClienteContactoTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('direccionId: $direccionId, ')
+          ..write('contactoId: $contactoId, ')
+          ..write('observaciones: $observaciones, ')
           ..write('nombre: $nombre, ')
-          ..write('direccion1: $direccion1, ')
-          ..write('direccion2: $direccion2, ')
-          ..write('codigoPostal: $codigoPostal, ')
-          ..write('poblacion: $poblacion, ')
-          ..write('provincia: $provincia, ')
-          ..write('paisId: $paisId, ')
-          ..write('latitud: $latitud, ')
-          ..write('longitud: $longitud, ')
-          ..write('predeterminada: $predeterminada, ')
+          ..write('apellido1: $apellido1, ')
+          ..write('apellido2: $apellido2, ')
+          ..write('telefono1: $telefono1, ')
+          ..write('telefono2: $telefono2, ')
+          ..write('email: $email, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -8214,106 +8024,121 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   }
 }
 
-class ClientePagoPendienteTableCompanion
-    extends UpdateCompanion<ClientePagoPendienteDTO> {
+class ClienteDireccionTableCompanion
+    extends UpdateCompanion<ClienteDireccionDTO> {
   final Value<String> clienteId;
-  final Value<String> efectoId;
-  final Value<String?> facutaId;
-  final Value<DateTime?> fechaFactura;
-  final Value<DateTime?> fechaExpiracion;
-  final Value<String?> metodoDeCobroId;
-  final Value<String?> estadoCobroId;
-  final Value<double?> importe;
-  final Value<DateTime?> fechaExpiracionInicial;
-  final Value<String?> vencidoJBM;
+  final Value<String> direccionId;
+  final Value<String> nombre;
+  final Value<String?> direccion1;
+  final Value<String?> direccion2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
+  final Value<double> latitud;
+  final Value<double> longitud;
+  final Value<String?> predeterminada;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClientePagoPendienteTableCompanion({
+  const ClienteDireccionTableCompanion({
     this.clienteId = const Value.absent(),
-    this.efectoId = const Value.absent(),
-    this.facutaId = const Value.absent(),
-    this.fechaFactura = const Value.absent(),
-    this.fechaExpiracion = const Value.absent(),
-    this.metodoDeCobroId = const Value.absent(),
-    this.estadoCobroId = const Value.absent(),
-    this.importe = const Value.absent(),
-    this.fechaExpiracionInicial = const Value.absent(),
-    this.vencidoJBM = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.latitud = const Value.absent(),
+    this.longitud = const Value.absent(),
+    this.predeterminada = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClientePagoPendienteTableCompanion.insert({
+  ClienteDireccionTableCompanion.insert({
     required String clienteId,
-    required String efectoId,
-    this.facutaId = const Value.absent(),
-    this.fechaFactura = const Value.absent(),
-    this.fechaExpiracion = const Value.absent(),
-    this.metodoDeCobroId = const Value.absent(),
-    this.estadoCobroId = const Value.absent(),
-    this.importe = const Value.absent(),
-    this.fechaExpiracionInicial = const Value.absent(),
-    this.vencidoJBM = const Value.absent(),
+    required String direccionId,
+    required String nombre,
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    required double latitud,
+    required double longitud,
+    this.predeterminada = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
-        efectoId = Value(efectoId),
+        direccionId = Value(direccionId),
+        nombre = Value(nombre),
+        latitud = Value(latitud),
+        longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClientePagoPendienteDTO> custom({
+  static Insertable<ClienteDireccionDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? efectoId,
-    Expression<String>? facutaId,
-    Expression<DateTime>? fechaFactura,
-    Expression<DateTime>? fechaExpiracion,
-    Expression<String>? metodoDeCobroId,
-    Expression<String>? estadoCobroId,
-    Expression<double>? importe,
-    Expression<DateTime>? fechaExpiracionInicial,
-    Expression<String>? vencidoJBM,
+    Expression<String>? direccionId,
+    Expression<String>? nombre,
+    Expression<String>? direccion1,
+    Expression<String>? direccion2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
+    Expression<double>? latitud,
+    Expression<double>? longitud,
+    Expression<String>? predeterminada,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (efectoId != null) 'EFECTO_ID': efectoId,
-      if (facutaId != null) 'FACTURA_ID': facutaId,
-      if (fechaFactura != null) 'FECHA_FACTURA': fechaFactura,
-      if (fechaExpiracion != null) 'FECHA_VENCIMIENTO': fechaExpiracion,
-      if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
-      if (estadoCobroId != null) 'ESTADO_COBRO_ID': estadoCobroId,
-      if (importe != null) 'IMPORTE': importe,
-      if (fechaExpiracionInicial != null)
-        'FECHA_VENCIMIENTO_INICIAL': fechaExpiracionInicial,
-      if (vencidoJBM != null) 'VENCIDO_JBM': vencidoJBM,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (direccion1 != null) 'DIRECCION1': direccion1,
+      if (direccion2 != null) 'DIRECCION2': direccion2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (latitud != null) 'LATITUD': latitud,
+      if (longitud != null) 'LONGITUD': longitud,
+      if (predeterminada != null) 'PREDETERMINADA_SN': predeterminada,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClientePagoPendienteTableCompanion copyWith(
+  ClienteDireccionTableCompanion copyWith(
       {Value<String>? clienteId,
-      Value<String>? efectoId,
-      Value<String?>? facutaId,
-      Value<DateTime?>? fechaFactura,
-      Value<DateTime?>? fechaExpiracion,
-      Value<String?>? metodoDeCobroId,
-      Value<String?>? estadoCobroId,
-      Value<double?>? importe,
-      Value<DateTime?>? fechaExpiracionInicial,
-      Value<String?>? vencidoJBM,
+      Value<String>? direccionId,
+      Value<String>? nombre,
+      Value<String?>? direccion1,
+      Value<String?>? direccion2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
+      Value<double>? latitud,
+      Value<double>? longitud,
+      Value<String?>? predeterminada,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClientePagoPendienteTableCompanion(
+    return ClienteDireccionTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      efectoId: efectoId ?? this.efectoId,
-      facutaId: facutaId ?? this.facutaId,
-      fechaFactura: fechaFactura ?? this.fechaFactura,
-      fechaExpiracion: fechaExpiracion ?? this.fechaExpiracion,
-      metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
-      estadoCobroId: estadoCobroId ?? this.estadoCobroId,
-      importe: importe ?? this.importe,
-      fechaExpiracionInicial:
-          fechaExpiracionInicial ?? this.fechaExpiracionInicial,
-      vencidoJBM: vencidoJBM ?? this.vencidoJBM,
+      direccionId: direccionId ?? this.direccionId,
+      nombre: nombre ?? this.nombre,
+      direccion1: direccion1 ?? this.direccion1,
+      direccion2: direccion2 ?? this.direccion2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
+      latitud: latitud ?? this.latitud,
+      longitud: longitud ?? this.longitud,
+      predeterminada: predeterminada ?? this.predeterminada,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8325,33 +8150,38 @@ class ClientePagoPendienteTableCompanion
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (efectoId.present) {
-      map['EFECTO_ID'] = Variable<String>(efectoId.value);
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
     }
-    if (facutaId.present) {
-      map['FACTURA_ID'] = Variable<String>(facutaId.value);
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
     }
-    if (fechaFactura.present) {
-      map['FECHA_FACTURA'] = Variable<DateTime>(fechaFactura.value);
+    if (direccion1.present) {
+      map['DIRECCION1'] = Variable<String>(direccion1.value);
     }
-    if (fechaExpiracion.present) {
-      map['FECHA_VENCIMIENTO'] = Variable<DateTime>(fechaExpiracion.value);
+    if (direccion2.present) {
+      map['DIRECCION2'] = Variable<String>(direccion2.value);
     }
-    if (metodoDeCobroId.present) {
-      map['METODO_COBRO_ID'] = Variable<String>(metodoDeCobroId.value);
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
     }
-    if (estadoCobroId.present) {
-      map['ESTADO_COBRO_ID'] = Variable<String>(estadoCobroId.value);
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
     }
-    if (importe.present) {
-      map['IMPORTE'] = Variable<double>(importe.value);
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
     }
-    if (fechaExpiracionInicial.present) {
-      map['FECHA_VENCIMIENTO_INICIAL'] =
-          Variable<DateTime>(fechaExpiracionInicial.value);
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
     }
-    if (vencidoJBM.present) {
-      map['VENCIDO_JBM'] = Variable<String>(vencidoJBM.value);
+    if (latitud.present) {
+      map['LATITUD'] = Variable<double>(latitud.value);
+    }
+    if (longitud.present) {
+      map['LONGITUD'] = Variable<double>(longitud.value);
+    }
+    if (predeterminada.present) {
+      map['PREDETERMINADA_SN'] = Variable<String>(predeterminada.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -8364,17 +8194,19 @@ class ClientePagoPendienteTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClientePagoPendienteTableCompanion(')
+    return (StringBuffer('ClienteDireccionTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('efectoId: $efectoId, ')
-          ..write('facutaId: $facutaId, ')
-          ..write('fechaFactura: $fechaFactura, ')
-          ..write('fechaExpiracion: $fechaExpiracion, ')
-          ..write('metodoDeCobroId: $metodoDeCobroId, ')
-          ..write('estadoCobroId: $estadoCobroId, ')
-          ..write('importe: $importe, ')
-          ..write('fechaExpiracionInicial: $fechaExpiracionInicial, ')
-          ..write('vencidoJBM: $vencidoJBM, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('nombre: $nombre, ')
+          ..write('direccion1: $direccion1, ')
+          ..write('direccion2: $direccion2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
+          ..write('latitud: $latitud, ')
+          ..write('longitud: $longitud, ')
+          ..write('predeterminada: $predeterminada, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -8602,80 +8434,106 @@ class $ClientePagoPendienteTableTable extends ClientePagoPendienteTable
   }
 }
 
-class ClientePrecioNetoTableCompanion
-    extends UpdateCompanion<ClientePrecioNetoDTO> {
+class ClientePagoPendienteTableCompanion
+    extends UpdateCompanion<ClientePagoPendienteDTO> {
   final Value<String> clienteId;
-  final Value<String> articuloId;
-  final Value<int> cantidadDesde;
-  final Value<double> precio;
-  final Value<int> tipoPrecio;
-  final Value<double> dtoAdicional;
+  final Value<String> efectoId;
+  final Value<String?> facutaId;
+  final Value<DateTime?> fechaFactura;
+  final Value<DateTime?> fechaExpiracion;
+  final Value<String?> metodoDeCobroId;
+  final Value<String?> estadoCobroId;
+  final Value<double?> importe;
+  final Value<DateTime?> fechaExpiracionInicial;
+  final Value<String?> vencidoJBM;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClientePrecioNetoTableCompanion({
+  const ClientePagoPendienteTableCompanion({
     this.clienteId = const Value.absent(),
-    this.articuloId = const Value.absent(),
-    this.cantidadDesde = const Value.absent(),
-    this.precio = const Value.absent(),
-    this.tipoPrecio = const Value.absent(),
-    this.dtoAdicional = const Value.absent(),
+    this.efectoId = const Value.absent(),
+    this.facutaId = const Value.absent(),
+    this.fechaFactura = const Value.absent(),
+    this.fechaExpiracion = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    this.estadoCobroId = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.fechaExpiracionInicial = const Value.absent(),
+    this.vencidoJBM = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClientePrecioNetoTableCompanion.insert({
+  ClientePagoPendienteTableCompanion.insert({
     required String clienteId,
-    required String articuloId,
-    required int cantidadDesde,
-    required double precio,
-    required int tipoPrecio,
-    required double dtoAdicional,
+    required String efectoId,
+    this.facutaId = const Value.absent(),
+    this.fechaFactura = const Value.absent(),
+    this.fechaExpiracion = const Value.absent(),
+    this.metodoDeCobroId = const Value.absent(),
+    this.estadoCobroId = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.fechaExpiracionInicial = const Value.absent(),
+    this.vencidoJBM = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
-        articuloId = Value(articuloId),
-        cantidadDesde = Value(cantidadDesde),
-        precio = Value(precio),
-        tipoPrecio = Value(tipoPrecio),
-        dtoAdicional = Value(dtoAdicional),
+        efectoId = Value(efectoId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClientePrecioNetoDTO> custom({
+  static Insertable<ClientePagoPendienteDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? articuloId,
-    Expression<int>? cantidadDesde,
-    Expression<double>? precio,
-    Expression<int>? tipoPrecio,
-    Expression<double>? dtoAdicional,
+    Expression<String>? efectoId,
+    Expression<String>? facutaId,
+    Expression<DateTime>? fechaFactura,
+    Expression<DateTime>? fechaExpiracion,
+    Expression<String>? metodoDeCobroId,
+    Expression<String>? estadoCobroId,
+    Expression<double>? importe,
+    Expression<DateTime>? fechaExpiracionInicial,
+    Expression<String>? vencidoJBM,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
-      if (precio != null) 'PRECIO': precio,
-      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
-      if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
+      if (efectoId != null) 'EFECTO_ID': efectoId,
+      if (facutaId != null) 'FACTURA_ID': facutaId,
+      if (fechaFactura != null) 'FECHA_FACTURA': fechaFactura,
+      if (fechaExpiracion != null) 'FECHA_VENCIMIENTO': fechaExpiracion,
+      if (metodoDeCobroId != null) 'METODO_COBRO_ID': metodoDeCobroId,
+      if (estadoCobroId != null) 'ESTADO_COBRO_ID': estadoCobroId,
+      if (importe != null) 'IMPORTE': importe,
+      if (fechaExpiracionInicial != null)
+        'FECHA_VENCIMIENTO_INICIAL': fechaExpiracionInicial,
+      if (vencidoJBM != null) 'VENCIDO_JBM': vencidoJBM,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClientePrecioNetoTableCompanion copyWith(
+  ClientePagoPendienteTableCompanion copyWith(
       {Value<String>? clienteId,
-      Value<String>? articuloId,
-      Value<int>? cantidadDesde,
-      Value<double>? precio,
-      Value<int>? tipoPrecio,
-      Value<double>? dtoAdicional,
+      Value<String>? efectoId,
+      Value<String?>? facutaId,
+      Value<DateTime?>? fechaFactura,
+      Value<DateTime?>? fechaExpiracion,
+      Value<String?>? metodoDeCobroId,
+      Value<String?>? estadoCobroId,
+      Value<double?>? importe,
+      Value<DateTime?>? fechaExpiracionInicial,
+      Value<String?>? vencidoJBM,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClientePrecioNetoTableCompanion(
+    return ClientePagoPendienteTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      articuloId: articuloId ?? this.articuloId,
-      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
-      precio: precio ?? this.precio,
-      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
-      dtoAdicional: dtoAdicional ?? this.dtoAdicional,
+      efectoId: efectoId ?? this.efectoId,
+      facutaId: facutaId ?? this.facutaId,
+      fechaFactura: fechaFactura ?? this.fechaFactura,
+      fechaExpiracion: fechaExpiracion ?? this.fechaExpiracion,
+      metodoDeCobroId: metodoDeCobroId ?? this.metodoDeCobroId,
+      estadoCobroId: estadoCobroId ?? this.estadoCobroId,
+      importe: importe ?? this.importe,
+      fechaExpiracionInicial:
+          fechaExpiracionInicial ?? this.fechaExpiracionInicial,
+      vencidoJBM: vencidoJBM ?? this.vencidoJBM,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8687,20 +8545,33 @@ class ClientePrecioNetoTableCompanion
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (articuloId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    if (efectoId.present) {
+      map['EFECTO_ID'] = Variable<String>(efectoId.value);
     }
-    if (cantidadDesde.present) {
-      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
+    if (facutaId.present) {
+      map['FACTURA_ID'] = Variable<String>(facutaId.value);
     }
-    if (precio.present) {
-      map['PRECIO'] = Variable<double>(precio.value);
+    if (fechaFactura.present) {
+      map['FECHA_FACTURA'] = Variable<DateTime>(fechaFactura.value);
     }
-    if (tipoPrecio.present) {
-      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
+    if (fechaExpiracion.present) {
+      map['FECHA_VENCIMIENTO'] = Variable<DateTime>(fechaExpiracion.value);
     }
-    if (dtoAdicional.present) {
-      map['DTO_ADICIONAL'] = Variable<double>(dtoAdicional.value);
+    if (metodoDeCobroId.present) {
+      map['METODO_COBRO_ID'] = Variable<String>(metodoDeCobroId.value);
+    }
+    if (estadoCobroId.present) {
+      map['ESTADO_COBRO_ID'] = Variable<String>(estadoCobroId.value);
+    }
+    if (importe.present) {
+      map['IMPORTE'] = Variable<double>(importe.value);
+    }
+    if (fechaExpiracionInicial.present) {
+      map['FECHA_VENCIMIENTO_INICIAL'] =
+          Variable<DateTime>(fechaExpiracionInicial.value);
+    }
+    if (vencidoJBM.present) {
+      map['VENCIDO_JBM'] = Variable<String>(vencidoJBM.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -8713,13 +8584,17 @@ class ClientePrecioNetoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClientePrecioNetoTableCompanion(')
+    return (StringBuffer('ClientePagoPendienteTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('articuloId: $articuloId, ')
-          ..write('cantidadDesde: $cantidadDesde, ')
-          ..write('precio: $precio, ')
-          ..write('tipoPrecio: $tipoPrecio, ')
-          ..write('dtoAdicional: $dtoAdicional, ')
+          ..write('efectoId: $efectoId, ')
+          ..write('facutaId: $facutaId, ')
+          ..write('fechaFactura: $fechaFactura, ')
+          ..write('fechaExpiracion: $fechaExpiracion, ')
+          ..write('metodoDeCobroId: $metodoDeCobroId, ')
+          ..write('estadoCobroId: $estadoCobroId, ')
+          ..write('importe: $importe, ')
+          ..write('fechaExpiracionInicial: $fechaExpiracionInicial, ')
+          ..write('vencidoJBM: $vencidoJBM, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -8894,84 +8769,80 @@ class $ClientePrecioNetoTableTable extends ClientePrecioNetoTable
   }
 }
 
-class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
+class ClientePrecioNetoTableCompanion
+    extends UpdateCompanion<ClientePrecioNetoDTO> {
   final Value<String> clienteId;
-  final Value<String> rappelId;
-  final Value<String> descripcion;
-  final Value<DateTime> fechaDesDe;
-  final Value<DateTime?> fechaHasta;
-  final Value<String?> nombreArchivo;
-  final Value<String?> firmado;
+  final Value<String> articuloId;
+  final Value<int> cantidadDesde;
+  final Value<double> precio;
+  final Value<int> tipoPrecio;
+  final Value<double> dtoAdicional;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteRappelTableCompanion({
+  const ClientePrecioNetoTableCompanion({
     this.clienteId = const Value.absent(),
-    this.rappelId = const Value.absent(),
-    this.descripcion = const Value.absent(),
-    this.fechaDesDe = const Value.absent(),
-    this.fechaHasta = const Value.absent(),
-    this.nombreArchivo = const Value.absent(),
-    this.firmado = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.cantidadDesde = const Value.absent(),
+    this.precio = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.dtoAdicional = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteRappelTableCompanion.insert({
+  ClientePrecioNetoTableCompanion.insert({
     required String clienteId,
-    required String rappelId,
-    required String descripcion,
-    required DateTime fechaDesDe,
-    this.fechaHasta = const Value.absent(),
-    this.nombreArchivo = const Value.absent(),
-    this.firmado = const Value.absent(),
+    required String articuloId,
+    required int cantidadDesde,
+    required double precio,
+    required int tipoPrecio,
+    required double dtoAdicional,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
-        rappelId = Value(rappelId),
-        descripcion = Value(descripcion),
-        fechaDesDe = Value(fechaDesDe),
+        articuloId = Value(articuloId),
+        cantidadDesde = Value(cantidadDesde),
+        precio = Value(precio),
+        tipoPrecio = Value(tipoPrecio),
+        dtoAdicional = Value(dtoAdicional),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteRappelDTO> custom({
+  static Insertable<ClientePrecioNetoDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? rappelId,
-    Expression<String>? descripcion,
-    Expression<DateTime>? fechaDesDe,
-    Expression<DateTime>? fechaHasta,
-    Expression<String>? nombreArchivo,
-    Expression<String>? firmado,
+    Expression<String>? articuloId,
+    Expression<int>? cantidadDesde,
+    Expression<double>? precio,
+    Expression<int>? tipoPrecio,
+    Expression<double>? dtoAdicional,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (rappelId != null) 'RAPPEL_ID': rappelId,
-      if (descripcion != null) 'DESCRIPCION': descripcion,
-      if (fechaDesDe != null) 'FECHA_DESDE': fechaDesDe,
-      if (fechaHasta != null) 'FECHA_HASTA': fechaHasta,
-      if (nombreArchivo != null) 'NOMBRE_ARCHIVO': nombreArchivo,
-      if (firmado != null) 'FIRMADO': firmado,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
+      if (precio != null) 'PRECIO': precio,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (dtoAdicional != null) 'DTO_ADICIONAL': dtoAdicional,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteRappelTableCompanion copyWith(
+  ClientePrecioNetoTableCompanion copyWith(
       {Value<String>? clienteId,
-      Value<String>? rappelId,
-      Value<String>? descripcion,
-      Value<DateTime>? fechaDesDe,
-      Value<DateTime?>? fechaHasta,
-      Value<String?>? nombreArchivo,
-      Value<String?>? firmado,
+      Value<String>? articuloId,
+      Value<int>? cantidadDesde,
+      Value<double>? precio,
+      Value<int>? tipoPrecio,
+      Value<double>? dtoAdicional,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteRappelTableCompanion(
+    return ClientePrecioNetoTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      rappelId: rappelId ?? this.rappelId,
-      descripcion: descripcion ?? this.descripcion,
-      fechaDesDe: fechaDesDe ?? this.fechaDesDe,
-      fechaHasta: fechaHasta ?? this.fechaHasta,
-      nombreArchivo: nombreArchivo ?? this.nombreArchivo,
-      firmado: firmado ?? this.firmado,
+      articuloId: articuloId ?? this.articuloId,
+      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
+      precio: precio ?? this.precio,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      dtoAdicional: dtoAdicional ?? this.dtoAdicional,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -8983,23 +8854,20 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (rappelId.present) {
-      map['RAPPEL_ID'] = Variable<String>(rappelId.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (descripcion.present) {
-      map['DESCRIPCION'] = Variable<String>(descripcion.value);
+    if (cantidadDesde.present) {
+      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
     }
-    if (fechaDesDe.present) {
-      map['FECHA_DESDE'] = Variable<DateTime>(fechaDesDe.value);
+    if (precio.present) {
+      map['PRECIO'] = Variable<double>(precio.value);
     }
-    if (fechaHasta.present) {
-      map['FECHA_HASTA'] = Variable<DateTime>(fechaHasta.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
-    if (nombreArchivo.present) {
-      map['NOMBRE_ARCHIVO'] = Variable<String>(nombreArchivo.value);
-    }
-    if (firmado.present) {
-      map['FIRMADO'] = Variable<String>(firmado.value);
+    if (dtoAdicional.present) {
+      map['DTO_ADICIONAL'] = Variable<double>(dtoAdicional.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9012,14 +8880,13 @@ class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ClienteRappelTableCompanion(')
+    return (StringBuffer('ClientePrecioNetoTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('rappelId: $rappelId, ')
-          ..write('descripcion: $descripcion, ')
-          ..write('fechaDesDe: $fechaDesDe, ')
-          ..write('fechaHasta: $fechaHasta, ')
-          ..write('nombreArchivo: $nombreArchivo, ')
-          ..write('firmado: $firmado, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('cantidadDesde: $cantidadDesde, ')
+          ..write('precio: $precio, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('dtoAdicional: $dtoAdicional, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -9202,146 +9069,84 @@ class $ClienteRappelTableTable extends ClienteRappelTable
   }
 }
 
-class ClienteEstadoPotencialTableCompanion
-    extends UpdateCompanion<ClienteEstadoPotencialDTO> {
-  final Value<String> id;
-  final Value<String> descripcionES;
-  final Value<String?> descripcionEN;
-  final Value<String?> descripcionFR;
-  final Value<String?> descripcionDE;
-  final Value<String?> descripcionCA;
-  final Value<String?> descripcionGB;
-  final Value<String?> descripcionHU;
-  final Value<String?> descripcionIT;
-  final Value<String?> descripcionNL;
-  final Value<String?> descripcionPL;
-  final Value<String?> descripcionPT;
-  final Value<String?> descripcionRO;
-  final Value<String?> descripcionRU;
-  final Value<String?> descripcionCN;
-  final Value<String?> descripcionEL;
+class ClienteRappelTableCompanion extends UpdateCompanion<ClienteRappelDTO> {
+  final Value<String> clienteId;
+  final Value<String> rappelId;
+  final Value<String> descripcion;
+  final Value<DateTime> fechaDesDe;
+  final Value<DateTime?> fechaHasta;
+  final Value<String?> nombreArchivo;
+  final Value<String?> firmado;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteEstadoPotencialTableCompanion({
-    this.id = const Value.absent(),
-    this.descripcionES = const Value.absent(),
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
+  const ClienteRappelTableCompanion({
+    this.clienteId = const Value.absent(),
+    this.rappelId = const Value.absent(),
+    this.descripcion = const Value.absent(),
+    this.fechaDesDe = const Value.absent(),
+    this.fechaHasta = const Value.absent(),
+    this.nombreArchivo = const Value.absent(),
+    this.firmado = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteEstadoPotencialTableCompanion.insert({
-    required String id,
-    required String descripcionES,
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
+  ClienteRappelTableCompanion.insert({
+    required String clienteId,
+    required String rappelId,
+    required String descripcion,
+    required DateTime fechaDesDe,
+    this.fechaHasta = const Value.absent(),
+    this.nombreArchivo = const Value.absent(),
+    this.firmado = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : id = Value(id),
-        descripcionES = Value(descripcionES),
+  })  : clienteId = Value(clienteId),
+        rappelId = Value(rappelId),
+        descripcion = Value(descripcion),
+        fechaDesDe = Value(fechaDesDe),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteEstadoPotencialDTO> custom({
-    Expression<String>? id,
-    Expression<String>? descripcionES,
-    Expression<String>? descripcionEN,
-    Expression<String>? descripcionFR,
-    Expression<String>? descripcionDE,
-    Expression<String>? descripcionCA,
-    Expression<String>? descripcionGB,
-    Expression<String>? descripcionHU,
-    Expression<String>? descripcionIT,
-    Expression<String>? descripcionNL,
-    Expression<String>? descripcionPL,
-    Expression<String>? descripcionPT,
-    Expression<String>? descripcionRO,
-    Expression<String>? descripcionRU,
-    Expression<String>? descripcionCN,
-    Expression<String>? descripcionEL,
+  static Insertable<ClienteRappelDTO> custom({
+    Expression<String>? clienteId,
+    Expression<String>? rappelId,
+    Expression<String>? descripcion,
+    Expression<DateTime>? fechaDesDe,
+    Expression<DateTime>? fechaHasta,
+    Expression<String>? nombreArchivo,
+    Expression<String>? firmado,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'ESTADO_POTENCIAL_ID': id,
-      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
-      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
-      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
-      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
-      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
-      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
-      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
-      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
-      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
-      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
-      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
-      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
-      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
-      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
-      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (rappelId != null) 'RAPPEL_ID': rappelId,
+      if (descripcion != null) 'DESCRIPCION': descripcion,
+      if (fechaDesDe != null) 'FECHA_DESDE': fechaDesDe,
+      if (fechaHasta != null) 'FECHA_HASTA': fechaHasta,
+      if (nombreArchivo != null) 'NOMBRE_ARCHIVO': nombreArchivo,
+      if (firmado != null) 'FIRMADO': firmado,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ClienteEstadoPotencialTableCompanion copyWith(
-      {Value<String>? id,
-      Value<String>? descripcionES,
-      Value<String?>? descripcionEN,
-      Value<String?>? descripcionFR,
-      Value<String?>? descripcionDE,
-      Value<String?>? descripcionCA,
-      Value<String?>? descripcionGB,
-      Value<String?>? descripcionHU,
-      Value<String?>? descripcionIT,
-      Value<String?>? descripcionNL,
-      Value<String?>? descripcionPL,
-      Value<String?>? descripcionPT,
-      Value<String?>? descripcionRO,
-      Value<String?>? descripcionRU,
-      Value<String?>? descripcionCN,
-      Value<String?>? descripcionEL,
+  ClienteRappelTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? rappelId,
+      Value<String>? descripcion,
+      Value<DateTime>? fechaDesDe,
+      Value<DateTime?>? fechaHasta,
+      Value<String?>? nombreArchivo,
+      Value<String?>? firmado,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteEstadoPotencialTableCompanion(
-      id: id ?? this.id,
-      descripcionES: descripcionES ?? this.descripcionES,
-      descripcionEN: descripcionEN ?? this.descripcionEN,
-      descripcionFR: descripcionFR ?? this.descripcionFR,
-      descripcionDE: descripcionDE ?? this.descripcionDE,
-      descripcionCA: descripcionCA ?? this.descripcionCA,
-      descripcionGB: descripcionGB ?? this.descripcionGB,
-      descripcionHU: descripcionHU ?? this.descripcionHU,
-      descripcionIT: descripcionIT ?? this.descripcionIT,
-      descripcionNL: descripcionNL ?? this.descripcionNL,
-      descripcionPL: descripcionPL ?? this.descripcionPL,
-      descripcionPT: descripcionPT ?? this.descripcionPT,
-      descripcionRO: descripcionRO ?? this.descripcionRO,
-      descripcionRU: descripcionRU ?? this.descripcionRU,
-      descripcionCN: descripcionCN ?? this.descripcionCN,
-      descripcionEL: descripcionEL ?? this.descripcionEL,
+    return ClienteRappelTableCompanion(
+      clienteId: clienteId ?? this.clienteId,
+      rappelId: rappelId ?? this.rappelId,
+      descripcion: descripcion ?? this.descripcion,
+      fechaDesDe: fechaDesDe ?? this.fechaDesDe,
+      fechaHasta: fechaHasta ?? this.fechaHasta,
+      nombreArchivo: nombreArchivo ?? this.nombreArchivo,
+      firmado: firmado ?? this.firmado,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -9350,53 +9155,26 @@ class ClienteEstadoPotencialTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['ESTADO_POTENCIAL_ID'] = Variable<String>(id.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (descripcionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    if (rappelId.present) {
+      map['RAPPEL_ID'] = Variable<String>(rappelId.value);
     }
-    if (descripcionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    if (descripcion.present) {
+      map['DESCRIPCION'] = Variable<String>(descripcion.value);
     }
-    if (descripcionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    if (fechaDesDe.present) {
+      map['FECHA_DESDE'] = Variable<DateTime>(fechaDesDe.value);
     }
-    if (descripcionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    if (fechaHasta.present) {
+      map['FECHA_HASTA'] = Variable<DateTime>(fechaHasta.value);
     }
-    if (descripcionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    if (nombreArchivo.present) {
+      map['NOMBRE_ARCHIVO'] = Variable<String>(nombreArchivo.value);
     }
-    if (descripcionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
-    }
-    if (descripcionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
-    }
-    if (descripcionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
-    }
-    if (descripcionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
-    }
-    if (descripcionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
-    }
-    if (descripcionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
-    }
-    if (descripcionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
-    }
-    if (descripcionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
-    }
-    if (descripcionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
-    }
-    if (descripcionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    if (firmado.present) {
+      map['FIRMADO'] = Variable<String>(firmado.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -9409,23 +9187,14 @@ class ClienteEstadoPotencialTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClienteEstadoPotencialTableCompanion(')
-          ..write('id: $id, ')
-          ..write('descripcionES: $descripcionES, ')
-          ..write('descripcionEN: $descripcionEN, ')
-          ..write('descripcionFR: $descripcionFR, ')
-          ..write('descripcionDE: $descripcionDE, ')
-          ..write('descripcionCA: $descripcionCA, ')
-          ..write('descripcionGB: $descripcionGB, ')
-          ..write('descripcionHU: $descripcionHU, ')
-          ..write('descripcionIT: $descripcionIT, ')
-          ..write('descripcionNL: $descripcionNL, ')
-          ..write('descripcionPL: $descripcionPL, ')
-          ..write('descripcionPT: $descripcionPT, ')
-          ..write('descripcionRO: $descripcionRO, ')
-          ..write('descripcionRU: $descripcionRU, ')
-          ..write('descripcionCN: $descripcionCN, ')
-          ..write('descripcionEL: $descripcionEL, ')
+    return (StringBuffer('ClienteRappelTableCompanion(')
+          ..write('clienteId: $clienteId, ')
+          ..write('rappelId: $rappelId, ')
+          ..write('descripcion: $descripcion, ')
+          ..write('fechaDesDe: $fechaDesDe, ')
+          ..write('fechaHasta: $fechaHasta, ')
+          ..write('nombreArchivo: $nombreArchivo, ')
+          ..write('firmado: $firmado, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -9746,8 +9515,8 @@ class $ClienteEstadoPotencialTableTable extends ClienteEstadoPotencialTable
   }
 }
 
-class ClienteTipoPotencialTableCompanion
-    extends UpdateCompanion<ClienteTipoPotencialDTO> {
+class ClienteEstadoPotencialTableCompanion
+    extends UpdateCompanion<ClienteEstadoPotencialDTO> {
   final Value<String> id;
   final Value<String> descripcionES;
   final Value<String?> descripcionEN;
@@ -9766,7 +9535,7 @@ class ClienteTipoPotencialTableCompanion
   final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ClienteTipoPotencialTableCompanion({
+  const ClienteEstadoPotencialTableCompanion({
     this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
     this.descripcionEN = const Value.absent(),
@@ -9786,7 +9555,7 @@ class ClienteTipoPotencialTableCompanion
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ClienteTipoPotencialTableCompanion.insert({
+  ClienteEstadoPotencialTableCompanion.insert({
     required String id,
     required String descripcionES,
     this.descripcionEN = const Value.absent(),
@@ -9808,7 +9577,7 @@ class ClienteTipoPotencialTableCompanion
   })  : id = Value(id),
         descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteTipoPotencialDTO> custom({
+  static Insertable<ClienteEstadoPotencialDTO> custom({
     Expression<String>? id,
     Expression<String>? descripcionES,
     Expression<String>? descripcionEN,
@@ -9829,7 +9598,7 @@ class ClienteTipoPotencialTableCompanion
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'TIPO_POTENCIAL_ID': id,
+      if (id != null) 'ESTADO_POTENCIAL_ID': id,
       if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
       if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
       if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
@@ -9850,7 +9619,7 @@ class ClienteTipoPotencialTableCompanion
     });
   }
 
-  ClienteTipoPotencialTableCompanion copyWith(
+  ClienteEstadoPotencialTableCompanion copyWith(
       {Value<String>? id,
       Value<String>? descripcionES,
       Value<String?>? descripcionEN,
@@ -9869,7 +9638,7 @@ class ClienteTipoPotencialTableCompanion
       Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ClienteTipoPotencialTableCompanion(
+    return ClienteEstadoPotencialTableCompanion(
       id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
       descripcionEN: descripcionEN ?? this.descripcionEN,
@@ -9895,7 +9664,7 @@ class ClienteTipoPotencialTableCompanion
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['TIPO_POTENCIAL_ID'] = Variable<String>(id.value);
+      map['ESTADO_POTENCIAL_ID'] = Variable<String>(id.value);
     }
     if (descripcionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
@@ -9953,7 +9722,7 @@ class ClienteTipoPotencialTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ClienteTipoPotencialTableCompanion(')
+    return (StringBuffer('ClienteEstadoPotencialTableCompanion(')
           ..write('id: $id, ')
           ..write('descripcionES: $descripcionES, ')
           ..write('descripcionEN: $descripcionEN, ')
@@ -10288,40 +10057,146 @@ class $ClienteTipoPotencialTableTable extends ClienteTipoPotencialTable
   }
 }
 
-class EstadisticasArticulosTopTableCompanion
-    extends UpdateCompanion<EstadisitcasArticulosTopDTO> {
-  final Value<String> articuloId;
+class ClienteTipoPotencialTableCompanion
+    extends UpdateCompanion<ClienteTipoPotencialDTO> {
+  final Value<String> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const EstadisticasArticulosTopTableCompanion({
-    this.articuloId = const Value.absent(),
+  const ClienteTipoPotencialTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  EstadisticasArticulosTopTableCompanion.insert({
-    required String articuloId,
+  ClienteTipoPotencialTableCompanion.insert({
+    required String id,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articuloId = Value(articuloId),
+  })  : id = Value(id),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<EstadisitcasArticulosTopDTO> custom({
-    Expression<String>? articuloId,
+  static Insertable<ClienteTipoPotencialDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (id != null) 'TIPO_POTENCIAL_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  EstadisticasArticulosTopTableCompanion copyWith(
-      {Value<String>? articuloId,
+  ClienteTipoPotencialTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return EstadisticasArticulosTopTableCompanion(
-      articuloId: articuloId ?? this.articuloId,
+    return ClienteTipoPotencialTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -10330,8 +10205,53 @@ class EstadisticasArticulosTopTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articuloId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    if (id.present) {
+      map['TIPO_POTENCIAL_ID'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -10344,8 +10264,23 @@ class EstadisticasArticulosTopTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('EstadisticasArticulosTopTableCompanion(')
-          ..write('articuloId: $articuloId, ')
+    return (StringBuffer('ClienteTipoPotencialTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -10438,504 +10373,40 @@ class $EstadisticasArticulosTopTableTable extends EstadisticasArticulosTopTable
   }
 }
 
-class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
-  final Value<String> id;
-  final Value<String> descripcionES;
-  final Value<String?> descripcionEN;
-  final Value<String?> descripcionFR;
-  final Value<String?> descripcionDE;
-  final Value<String?> descripcionCA;
-  final Value<String?> descripcionGB;
-  final Value<String?> descripcionHU;
-  final Value<String?> descripcionIT;
-  final Value<String?> descripcionNL;
-  final Value<String?> descripcionPL;
-  final Value<String?> descripcionPT;
-  final Value<String?> descripcionRO;
-  final Value<String?> descripcionRU;
-  final Value<String?> descripcionCN;
-  final Value<String?> descripcionEL;
-  final Value<String?> familiaId;
-  final Value<String?> subfamiliaId;
-  final Value<int> ventaMinimo;
-  final Value<int> ventaMultiplo;
-  final Value<int> unidadesSubcaja;
-  final Value<int> unidadesCaja;
-  final Value<int> unidadesPalet;
-  final Value<String> activoWeb;
-  final Value<String> activoApp;
-  final Value<String> enCatalogo;
-  final Value<String> descatalogado;
-  final Value<String?> paginaEnCatalgo;
-  final Value<String?> paginaEnCatalgo2;
-  final Value<double> pesoKg;
-  final Value<double> largoCm;
-  final Value<double> anchoCm;
-  final Value<double> altoCm;
-  final Value<String?> resumenES;
-  final Value<String?> resumenEN;
-  final Value<String?> resumenFR;
-  final Value<String?> resumenDE;
-  final Value<String?> resumenCA;
-  final Value<String?> resumenGB;
-  final Value<String?> resumenHU;
-  final Value<String?> resumenIT;
-  final Value<String?> resumenNL;
-  final Value<String?> resumenPL;
-  final Value<String?> resumenPT;
-  final Value<String?> resumenRO;
-  final Value<String?> resumenRU;
-  final Value<String?> resumenCN;
-  final Value<String?> resumenEL;
-  final Value<int> stockDisponible;
-  final Value<double> ventasActual;
-  final Value<double> ventasAnterior;
-  final Value<int> comprasEntregaCantidad1;
-  final Value<int> comprasEntregaCantidad2;
-  final Value<int> comprasEntregaCantidad3;
-  final Value<int> comprasEntregaCantidadMas3;
-  final Value<DateTime?> comprasEntregaFecha1;
-  final Value<DateTime?> comprasEntregaFecha2;
-  final Value<DateTime?> comprasEntregaFecha3;
-  final Value<String?> comprasEntregaEstado1;
-  final Value<String?> comprasEntregaEstado2;
-  final Value<String?> comprasEntregaEstado3;
-  final Value<String?> imagenPrincipal;
+class EstadisticasArticulosTopTableCompanion
+    extends UpdateCompanion<EstadisitcasArticulosTopDTO> {
+  final Value<String> articuloId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloTableCompanion({
-    this.id = const Value.absent(),
-    this.descripcionES = const Value.absent(),
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
-    this.familiaId = const Value.absent(),
-    this.subfamiliaId = const Value.absent(),
-    this.ventaMinimo = const Value.absent(),
-    this.ventaMultiplo = const Value.absent(),
-    this.unidadesSubcaja = const Value.absent(),
-    this.unidadesCaja = const Value.absent(),
-    this.unidadesPalet = const Value.absent(),
-    this.activoWeb = const Value.absent(),
-    this.activoApp = const Value.absent(),
-    this.enCatalogo = const Value.absent(),
-    this.descatalogado = const Value.absent(),
-    this.paginaEnCatalgo = const Value.absent(),
-    this.paginaEnCatalgo2 = const Value.absent(),
-    this.pesoKg = const Value.absent(),
-    this.largoCm = const Value.absent(),
-    this.anchoCm = const Value.absent(),
-    this.altoCm = const Value.absent(),
-    this.resumenES = const Value.absent(),
-    this.resumenEN = const Value.absent(),
-    this.resumenFR = const Value.absent(),
-    this.resumenDE = const Value.absent(),
-    this.resumenCA = const Value.absent(),
-    this.resumenGB = const Value.absent(),
-    this.resumenHU = const Value.absent(),
-    this.resumenIT = const Value.absent(),
-    this.resumenNL = const Value.absent(),
-    this.resumenPL = const Value.absent(),
-    this.resumenPT = const Value.absent(),
-    this.resumenRO = const Value.absent(),
-    this.resumenRU = const Value.absent(),
-    this.resumenCN = const Value.absent(),
-    this.resumenEL = const Value.absent(),
-    this.stockDisponible = const Value.absent(),
-    this.ventasActual = const Value.absent(),
-    this.ventasAnterior = const Value.absent(),
-    this.comprasEntregaCantidad1 = const Value.absent(),
-    this.comprasEntregaCantidad2 = const Value.absent(),
-    this.comprasEntregaCantidad3 = const Value.absent(),
-    this.comprasEntregaCantidadMas3 = const Value.absent(),
-    this.comprasEntregaFecha1 = const Value.absent(),
-    this.comprasEntregaFecha2 = const Value.absent(),
-    this.comprasEntregaFecha3 = const Value.absent(),
-    this.comprasEntregaEstado1 = const Value.absent(),
-    this.comprasEntregaEstado2 = const Value.absent(),
-    this.comprasEntregaEstado3 = const Value.absent(),
-    this.imagenPrincipal = const Value.absent(),
+  const EstadisticasArticulosTopTableCompanion({
+    this.articuloId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloTableCompanion.insert({
-    required String id,
-    required String descripcionES,
-    this.descripcionEN = const Value.absent(),
-    this.descripcionFR = const Value.absent(),
-    this.descripcionDE = const Value.absent(),
-    this.descripcionCA = const Value.absent(),
-    this.descripcionGB = const Value.absent(),
-    this.descripcionHU = const Value.absent(),
-    this.descripcionIT = const Value.absent(),
-    this.descripcionNL = const Value.absent(),
-    this.descripcionPL = const Value.absent(),
-    this.descripcionPT = const Value.absent(),
-    this.descripcionRO = const Value.absent(),
-    this.descripcionRU = const Value.absent(),
-    this.descripcionCN = const Value.absent(),
-    this.descripcionEL = const Value.absent(),
-    this.familiaId = const Value.absent(),
-    this.subfamiliaId = const Value.absent(),
-    required int ventaMinimo,
-    required int ventaMultiplo,
-    required int unidadesSubcaja,
-    required int unidadesCaja,
-    required int unidadesPalet,
-    required String activoWeb,
-    required String activoApp,
-    required String enCatalogo,
-    required String descatalogado,
-    this.paginaEnCatalgo = const Value.absent(),
-    this.paginaEnCatalgo2 = const Value.absent(),
-    required double pesoKg,
-    required double largoCm,
-    required double anchoCm,
-    required double altoCm,
-    this.resumenES = const Value.absent(),
-    this.resumenEN = const Value.absent(),
-    this.resumenFR = const Value.absent(),
-    this.resumenDE = const Value.absent(),
-    this.resumenCA = const Value.absent(),
-    this.resumenGB = const Value.absent(),
-    this.resumenHU = const Value.absent(),
-    this.resumenIT = const Value.absent(),
-    this.resumenNL = const Value.absent(),
-    this.resumenPL = const Value.absent(),
-    this.resumenPT = const Value.absent(),
-    this.resumenRO = const Value.absent(),
-    this.resumenRU = const Value.absent(),
-    this.resumenCN = const Value.absent(),
-    this.resumenEL = const Value.absent(),
-    required int stockDisponible,
-    required double ventasActual,
-    required double ventasAnterior,
-    required int comprasEntregaCantidad1,
-    required int comprasEntregaCantidad2,
-    required int comprasEntregaCantidad3,
-    required int comprasEntregaCantidadMas3,
-    this.comprasEntregaFecha1 = const Value.absent(),
-    this.comprasEntregaFecha2 = const Value.absent(),
-    this.comprasEntregaFecha3 = const Value.absent(),
-    this.comprasEntregaEstado1 = const Value.absent(),
-    this.comprasEntregaEstado2 = const Value.absent(),
-    this.comprasEntregaEstado3 = const Value.absent(),
-    this.imagenPrincipal = const Value.absent(),
+  EstadisticasArticulosTopTableCompanion.insert({
+    required String articuloId,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : id = Value(id),
-        descripcionES = Value(descripcionES),
-        ventaMinimo = Value(ventaMinimo),
-        ventaMultiplo = Value(ventaMultiplo),
-        unidadesSubcaja = Value(unidadesSubcaja),
-        unidadesCaja = Value(unidadesCaja),
-        unidadesPalet = Value(unidadesPalet),
-        activoWeb = Value(activoWeb),
-        activoApp = Value(activoApp),
-        enCatalogo = Value(enCatalogo),
-        descatalogado = Value(descatalogado),
-        pesoKg = Value(pesoKg),
-        largoCm = Value(largoCm),
-        anchoCm = Value(anchoCm),
-        altoCm = Value(altoCm),
-        stockDisponible = Value(stockDisponible),
-        ventasActual = Value(ventasActual),
-        ventasAnterior = Value(ventasAnterior),
-        comprasEntregaCantidad1 = Value(comprasEntregaCantidad1),
-        comprasEntregaCantidad2 = Value(comprasEntregaCantidad2),
-        comprasEntregaCantidad3 = Value(comprasEntregaCantidad3),
-        comprasEntregaCantidadMas3 = Value(comprasEntregaCantidadMas3),
+  })  : articuloId = Value(articuloId),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloDTO> custom({
-    Expression<String>? id,
-    Expression<String>? descripcionES,
-    Expression<String>? descripcionEN,
-    Expression<String>? descripcionFR,
-    Expression<String>? descripcionDE,
-    Expression<String>? descripcionCA,
-    Expression<String>? descripcionGB,
-    Expression<String>? descripcionHU,
-    Expression<String>? descripcionIT,
-    Expression<String>? descripcionNL,
-    Expression<String>? descripcionPL,
-    Expression<String>? descripcionPT,
-    Expression<String>? descripcionRO,
-    Expression<String>? descripcionRU,
-    Expression<String>? descripcionCN,
-    Expression<String>? descripcionEL,
-    Expression<String>? familiaId,
-    Expression<String>? subfamiliaId,
-    Expression<int>? ventaMinimo,
-    Expression<int>? ventaMultiplo,
-    Expression<int>? unidadesSubcaja,
-    Expression<int>? unidadesCaja,
-    Expression<int>? unidadesPalet,
-    Expression<String>? activoWeb,
-    Expression<String>? activoApp,
-    Expression<String>? enCatalogo,
-    Expression<String>? descatalogado,
-    Expression<String>? paginaEnCatalgo,
-    Expression<String>? paginaEnCatalgo2,
-    Expression<double>? pesoKg,
-    Expression<double>? largoCm,
-    Expression<double>? anchoCm,
-    Expression<double>? altoCm,
-    Expression<String>? resumenES,
-    Expression<String>? resumenEN,
-    Expression<String>? resumenFR,
-    Expression<String>? resumenDE,
-    Expression<String>? resumenCA,
-    Expression<String>? resumenGB,
-    Expression<String>? resumenHU,
-    Expression<String>? resumenIT,
-    Expression<String>? resumenNL,
-    Expression<String>? resumenPL,
-    Expression<String>? resumenPT,
-    Expression<String>? resumenRO,
-    Expression<String>? resumenRU,
-    Expression<String>? resumenCN,
-    Expression<String>? resumenEL,
-    Expression<int>? stockDisponible,
-    Expression<double>? ventasActual,
-    Expression<double>? ventasAnterior,
-    Expression<int>? comprasEntregaCantidad1,
-    Expression<int>? comprasEntregaCantidad2,
-    Expression<int>? comprasEntregaCantidad3,
-    Expression<int>? comprasEntregaCantidadMas3,
-    Expression<DateTime>? comprasEntregaFecha1,
-    Expression<DateTime>? comprasEntregaFecha2,
-    Expression<DateTime>? comprasEntregaFecha3,
-    Expression<String>? comprasEntregaEstado1,
-    Expression<String>? comprasEntregaEstado2,
-    Expression<String>? comprasEntregaEstado3,
-    Expression<String>? imagenPrincipal,
+  static Insertable<EstadisitcasArticulosTopDTO> custom({
+    Expression<String>? articuloId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'ARTICULO_ID': id,
-      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
-      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
-      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
-      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
-      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
-      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
-      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
-      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
-      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
-      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
-      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
-      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
-      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
-      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
-      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
-      if (familiaId != null) 'FAMILIA_ID': familiaId,
-      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
-      if (ventaMinimo != null) 'VENTA_MINIMO': ventaMinimo,
-      if (ventaMultiplo != null) 'VENTA_MULTIPLO': ventaMultiplo,
-      if (unidadesSubcaja != null) 'UNIDADES_SUBCAJA': unidadesSubcaja,
-      if (unidadesCaja != null) 'UNIDADES_CAJA': unidadesCaja,
-      if (unidadesPalet != null) 'UNIDADES_PALET': unidadesPalet,
-      if (activoWeb != null) 'ACTIVO_WEB': activoWeb,
-      if (activoApp != null) 'ACTIVO_APP': activoApp,
-      if (enCatalogo != null) 'EN_CATALOGO': enCatalogo,
-      if (descatalogado != null) 'DESCATALOGADO': descatalogado,
-      if (paginaEnCatalgo != null) 'PAGINA_EN_CATALOGO': paginaEnCatalgo,
-      if (paginaEnCatalgo2 != null) 'PAGINA_EN_CATALOGO2': paginaEnCatalgo2,
-      if (pesoKg != null) 'PESO_KG': pesoKg,
-      if (largoCm != null) 'LARGO_CM': largoCm,
-      if (anchoCm != null) 'ANCHO_CM': anchoCm,
-      if (altoCm != null) 'ALTO_CM': altoCm,
-      if (resumenES != null) 'RESUMEN_ES': resumenES,
-      if (resumenEN != null) 'RESUMEN_EN': resumenEN,
-      if (resumenFR != null) 'RESUMEN_FR': resumenFR,
-      if (resumenDE != null) 'RESUMEN_DE': resumenDE,
-      if (resumenCA != null) 'RESUMEN_CA': resumenCA,
-      if (resumenGB != null) 'RESUMEN_GB': resumenGB,
-      if (resumenHU != null) 'RESUMEN_HU': resumenHU,
-      if (resumenIT != null) 'RESUMEN_IT': resumenIT,
-      if (resumenNL != null) 'RESUMEN_NL': resumenNL,
-      if (resumenPL != null) 'RESUMEN_PL': resumenPL,
-      if (resumenPT != null) 'RESUMEN_PT': resumenPT,
-      if (resumenRO != null) 'RESUMEN_RO': resumenRO,
-      if (resumenRU != null) 'RESUMEN_RU': resumenRU,
-      if (resumenCN != null) 'RESUMEN_CN': resumenCN,
-      if (resumenEL != null) 'RESUMEN_EL': resumenEL,
-      if (stockDisponible != null) 'STOCK_DISPONIBLE': stockDisponible,
-      if (ventasActual != null) 'VENTAS_ACTUAL': ventasActual,
-      if (ventasAnterior != null) 'VENTAS_ANTERIOR': ventasAnterior,
-      if (comprasEntregaCantidad1 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_1': comprasEntregaCantidad1,
-      if (comprasEntregaCantidad2 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_2': comprasEntregaCantidad2,
-      if (comprasEntregaCantidad3 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_3': comprasEntregaCantidad3,
-      if (comprasEntregaCantidadMas3 != null)
-        'COMPRAS_ENTREGA_CANTIDAD_MAS_3': comprasEntregaCantidadMas3,
-      if (comprasEntregaFecha1 != null)
-        'COMPRAS_ENTREGA_FECHA_1': comprasEntregaFecha1,
-      if (comprasEntregaFecha2 != null)
-        'COMPRAS_ENTREGA_FECHA_2': comprasEntregaFecha2,
-      if (comprasEntregaFecha3 != null)
-        'COMPRAS_ENTREGA_FECHA_3': comprasEntregaFecha3,
-      if (comprasEntregaEstado1 != null)
-        'COMPRAS_ENTREGA_ESTADO_1': comprasEntregaEstado1,
-      if (comprasEntregaEstado2 != null)
-        'COMPRAS_ENTREGA_ESTADO_2': comprasEntregaEstado2,
-      if (comprasEntregaEstado3 != null)
-        'COMPRAS_ENTREGA_ESTADO_3': comprasEntregaEstado3,
-      if (imagenPrincipal != null) 'IMAGEN_PRINCIPAL': imagenPrincipal,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticuloTableCompanion copyWith(
-      {Value<String>? id,
-      Value<String>? descripcionES,
-      Value<String?>? descripcionEN,
-      Value<String?>? descripcionFR,
-      Value<String?>? descripcionDE,
-      Value<String?>? descripcionCA,
-      Value<String?>? descripcionGB,
-      Value<String?>? descripcionHU,
-      Value<String?>? descripcionIT,
-      Value<String?>? descripcionNL,
-      Value<String?>? descripcionPL,
-      Value<String?>? descripcionPT,
-      Value<String?>? descripcionRO,
-      Value<String?>? descripcionRU,
-      Value<String?>? descripcionCN,
-      Value<String?>? descripcionEL,
-      Value<String?>? familiaId,
-      Value<String?>? subfamiliaId,
-      Value<int>? ventaMinimo,
-      Value<int>? ventaMultiplo,
-      Value<int>? unidadesSubcaja,
-      Value<int>? unidadesCaja,
-      Value<int>? unidadesPalet,
-      Value<String>? activoWeb,
-      Value<String>? activoApp,
-      Value<String>? enCatalogo,
-      Value<String>? descatalogado,
-      Value<String?>? paginaEnCatalgo,
-      Value<String?>? paginaEnCatalgo2,
-      Value<double>? pesoKg,
-      Value<double>? largoCm,
-      Value<double>? anchoCm,
-      Value<double>? altoCm,
-      Value<String?>? resumenES,
-      Value<String?>? resumenEN,
-      Value<String?>? resumenFR,
-      Value<String?>? resumenDE,
-      Value<String?>? resumenCA,
-      Value<String?>? resumenGB,
-      Value<String?>? resumenHU,
-      Value<String?>? resumenIT,
-      Value<String?>? resumenNL,
-      Value<String?>? resumenPL,
-      Value<String?>? resumenPT,
-      Value<String?>? resumenRO,
-      Value<String?>? resumenRU,
-      Value<String?>? resumenCN,
-      Value<String?>? resumenEL,
-      Value<int>? stockDisponible,
-      Value<double>? ventasActual,
-      Value<double>? ventasAnterior,
-      Value<int>? comprasEntregaCantidad1,
-      Value<int>? comprasEntregaCantidad2,
-      Value<int>? comprasEntregaCantidad3,
-      Value<int>? comprasEntregaCantidadMas3,
-      Value<DateTime?>? comprasEntregaFecha1,
-      Value<DateTime?>? comprasEntregaFecha2,
-      Value<DateTime?>? comprasEntregaFecha3,
-      Value<String?>? comprasEntregaEstado1,
-      Value<String?>? comprasEntregaEstado2,
-      Value<String?>? comprasEntregaEstado3,
-      Value<String?>? imagenPrincipal,
+  EstadisticasArticulosTopTableCompanion copyWith(
+      {Value<String>? articuloId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloTableCompanion(
-      id: id ?? this.id,
-      descripcionES: descripcionES ?? this.descripcionES,
-      descripcionEN: descripcionEN ?? this.descripcionEN,
-      descripcionFR: descripcionFR ?? this.descripcionFR,
-      descripcionDE: descripcionDE ?? this.descripcionDE,
-      descripcionCA: descripcionCA ?? this.descripcionCA,
-      descripcionGB: descripcionGB ?? this.descripcionGB,
-      descripcionHU: descripcionHU ?? this.descripcionHU,
-      descripcionIT: descripcionIT ?? this.descripcionIT,
-      descripcionNL: descripcionNL ?? this.descripcionNL,
-      descripcionPL: descripcionPL ?? this.descripcionPL,
-      descripcionPT: descripcionPT ?? this.descripcionPT,
-      descripcionRO: descripcionRO ?? this.descripcionRO,
-      descripcionRU: descripcionRU ?? this.descripcionRU,
-      descripcionCN: descripcionCN ?? this.descripcionCN,
-      descripcionEL: descripcionEL ?? this.descripcionEL,
-      familiaId: familiaId ?? this.familiaId,
-      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
-      ventaMinimo: ventaMinimo ?? this.ventaMinimo,
-      ventaMultiplo: ventaMultiplo ?? this.ventaMultiplo,
-      unidadesSubcaja: unidadesSubcaja ?? this.unidadesSubcaja,
-      unidadesCaja: unidadesCaja ?? this.unidadesCaja,
-      unidadesPalet: unidadesPalet ?? this.unidadesPalet,
-      activoWeb: activoWeb ?? this.activoWeb,
-      activoApp: activoApp ?? this.activoApp,
-      enCatalogo: enCatalogo ?? this.enCatalogo,
-      descatalogado: descatalogado ?? this.descatalogado,
-      paginaEnCatalgo: paginaEnCatalgo ?? this.paginaEnCatalgo,
-      paginaEnCatalgo2: paginaEnCatalgo2 ?? this.paginaEnCatalgo2,
-      pesoKg: pesoKg ?? this.pesoKg,
-      largoCm: largoCm ?? this.largoCm,
-      anchoCm: anchoCm ?? this.anchoCm,
-      altoCm: altoCm ?? this.altoCm,
-      resumenES: resumenES ?? this.resumenES,
-      resumenEN: resumenEN ?? this.resumenEN,
-      resumenFR: resumenFR ?? this.resumenFR,
-      resumenDE: resumenDE ?? this.resumenDE,
-      resumenCA: resumenCA ?? this.resumenCA,
-      resumenGB: resumenGB ?? this.resumenGB,
-      resumenHU: resumenHU ?? this.resumenHU,
-      resumenIT: resumenIT ?? this.resumenIT,
-      resumenNL: resumenNL ?? this.resumenNL,
-      resumenPL: resumenPL ?? this.resumenPL,
-      resumenPT: resumenPT ?? this.resumenPT,
-      resumenRO: resumenRO ?? this.resumenRO,
-      resumenRU: resumenRU ?? this.resumenRU,
-      resumenCN: resumenCN ?? this.resumenCN,
-      resumenEL: resumenEL ?? this.resumenEL,
-      stockDisponible: stockDisponible ?? this.stockDisponible,
-      ventasActual: ventasActual ?? this.ventasActual,
-      ventasAnterior: ventasAnterior ?? this.ventasAnterior,
-      comprasEntregaCantidad1:
-          comprasEntregaCantidad1 ?? this.comprasEntregaCantidad1,
-      comprasEntregaCantidad2:
-          comprasEntregaCantidad2 ?? this.comprasEntregaCantidad2,
-      comprasEntregaCantidad3:
-          comprasEntregaCantidad3 ?? this.comprasEntregaCantidad3,
-      comprasEntregaCantidadMas3:
-          comprasEntregaCantidadMas3 ?? this.comprasEntregaCantidadMas3,
-      comprasEntregaFecha1: comprasEntregaFecha1 ?? this.comprasEntregaFecha1,
-      comprasEntregaFecha2: comprasEntregaFecha2 ?? this.comprasEntregaFecha2,
-      comprasEntregaFecha3: comprasEntregaFecha3 ?? this.comprasEntregaFecha3,
-      comprasEntregaEstado1:
-          comprasEntregaEstado1 ?? this.comprasEntregaEstado1,
-      comprasEntregaEstado2:
-          comprasEntregaEstado2 ?? this.comprasEntregaEstado2,
-      comprasEntregaEstado3:
-          comprasEntregaEstado3 ?? this.comprasEntregaEstado3,
-      imagenPrincipal: imagenPrincipal ?? this.imagenPrincipal,
+    return EstadisticasArticulosTopTableCompanion(
+      articuloId: articuloId ?? this.articuloId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -10944,201 +10415,8 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['ARTICULO_ID'] = Variable<String>(id.value);
-    }
-    if (descripcionES.present) {
-      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
-    }
-    if (descripcionEN.present) {
-      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
-    }
-    if (descripcionFR.present) {
-      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
-    }
-    if (descripcionDE.present) {
-      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
-    }
-    if (descripcionCA.present) {
-      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
-    }
-    if (descripcionGB.present) {
-      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
-    }
-    if (descripcionHU.present) {
-      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
-    }
-    if (descripcionIT.present) {
-      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
-    }
-    if (descripcionNL.present) {
-      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
-    }
-    if (descripcionPL.present) {
-      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
-    }
-    if (descripcionPT.present) {
-      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
-    }
-    if (descripcionRO.present) {
-      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
-    }
-    if (descripcionRU.present) {
-      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
-    }
-    if (descripcionCN.present) {
-      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
-    }
-    if (descripcionEL.present) {
-      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
-    }
-    if (familiaId.present) {
-      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
-    }
-    if (subfamiliaId.present) {
-      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
-    }
-    if (ventaMinimo.present) {
-      map['VENTA_MINIMO'] = Variable<int>(ventaMinimo.value);
-    }
-    if (ventaMultiplo.present) {
-      map['VENTA_MULTIPLO'] = Variable<int>(ventaMultiplo.value);
-    }
-    if (unidadesSubcaja.present) {
-      map['UNIDADES_SUBCAJA'] = Variable<int>(unidadesSubcaja.value);
-    }
-    if (unidadesCaja.present) {
-      map['UNIDADES_CAJA'] = Variable<int>(unidadesCaja.value);
-    }
-    if (unidadesPalet.present) {
-      map['UNIDADES_PALET'] = Variable<int>(unidadesPalet.value);
-    }
-    if (activoWeb.present) {
-      map['ACTIVO_WEB'] = Variable<String>(activoWeb.value);
-    }
-    if (activoApp.present) {
-      map['ACTIVO_APP'] = Variable<String>(activoApp.value);
-    }
-    if (enCatalogo.present) {
-      map['EN_CATALOGO'] = Variable<String>(enCatalogo.value);
-    }
-    if (descatalogado.present) {
-      map['DESCATALOGADO'] = Variable<String>(descatalogado.value);
-    }
-    if (paginaEnCatalgo.present) {
-      map['PAGINA_EN_CATALOGO'] = Variable<String>(paginaEnCatalgo.value);
-    }
-    if (paginaEnCatalgo2.present) {
-      map['PAGINA_EN_CATALOGO2'] = Variable<String>(paginaEnCatalgo2.value);
-    }
-    if (pesoKg.present) {
-      map['PESO_KG'] = Variable<double>(pesoKg.value);
-    }
-    if (largoCm.present) {
-      map['LARGO_CM'] = Variable<double>(largoCm.value);
-    }
-    if (anchoCm.present) {
-      map['ANCHO_CM'] = Variable<double>(anchoCm.value);
-    }
-    if (altoCm.present) {
-      map['ALTO_CM'] = Variable<double>(altoCm.value);
-    }
-    if (resumenES.present) {
-      map['RESUMEN_ES'] = Variable<String>(resumenES.value);
-    }
-    if (resumenEN.present) {
-      map['RESUMEN_EN'] = Variable<String>(resumenEN.value);
-    }
-    if (resumenFR.present) {
-      map['RESUMEN_FR'] = Variable<String>(resumenFR.value);
-    }
-    if (resumenDE.present) {
-      map['RESUMEN_DE'] = Variable<String>(resumenDE.value);
-    }
-    if (resumenCA.present) {
-      map['RESUMEN_CA'] = Variable<String>(resumenCA.value);
-    }
-    if (resumenGB.present) {
-      map['RESUMEN_GB'] = Variable<String>(resumenGB.value);
-    }
-    if (resumenHU.present) {
-      map['RESUMEN_HU'] = Variable<String>(resumenHU.value);
-    }
-    if (resumenIT.present) {
-      map['RESUMEN_IT'] = Variable<String>(resumenIT.value);
-    }
-    if (resumenNL.present) {
-      map['RESUMEN_NL'] = Variable<String>(resumenNL.value);
-    }
-    if (resumenPL.present) {
-      map['RESUMEN_PL'] = Variable<String>(resumenPL.value);
-    }
-    if (resumenPT.present) {
-      map['RESUMEN_PT'] = Variable<String>(resumenPT.value);
-    }
-    if (resumenRO.present) {
-      map['RESUMEN_RO'] = Variable<String>(resumenRO.value);
-    }
-    if (resumenRU.present) {
-      map['RESUMEN_RU'] = Variable<String>(resumenRU.value);
-    }
-    if (resumenCN.present) {
-      map['RESUMEN_CN'] = Variable<String>(resumenCN.value);
-    }
-    if (resumenEL.present) {
-      map['RESUMEN_EL'] = Variable<String>(resumenEL.value);
-    }
-    if (stockDisponible.present) {
-      map['STOCK_DISPONIBLE'] = Variable<int>(stockDisponible.value);
-    }
-    if (ventasActual.present) {
-      map['VENTAS_ACTUAL'] = Variable<double>(ventasActual.value);
-    }
-    if (ventasAnterior.present) {
-      map['VENTAS_ANTERIOR'] = Variable<double>(ventasAnterior.value);
-    }
-    if (comprasEntregaCantidad1.present) {
-      map['COMPRAS_ENTREGA_CANTIDAD_1'] =
-          Variable<int>(comprasEntregaCantidad1.value);
-    }
-    if (comprasEntregaCantidad2.present) {
-      map['COMPRAS_ENTREGA_CANTIDAD_2'] =
-          Variable<int>(comprasEntregaCantidad2.value);
-    }
-    if (comprasEntregaCantidad3.present) {
-      map['COMPRAS_ENTREGA_CANTIDAD_3'] =
-          Variable<int>(comprasEntregaCantidad3.value);
-    }
-    if (comprasEntregaCantidadMas3.present) {
-      map['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] =
-          Variable<int>(comprasEntregaCantidadMas3.value);
-    }
-    if (comprasEntregaFecha1.present) {
-      map['COMPRAS_ENTREGA_FECHA_1'] =
-          Variable<DateTime>(comprasEntregaFecha1.value);
-    }
-    if (comprasEntregaFecha2.present) {
-      map['COMPRAS_ENTREGA_FECHA_2'] =
-          Variable<DateTime>(comprasEntregaFecha2.value);
-    }
-    if (comprasEntregaFecha3.present) {
-      map['COMPRAS_ENTREGA_FECHA_3'] =
-          Variable<DateTime>(comprasEntregaFecha3.value);
-    }
-    if (comprasEntregaEstado1.present) {
-      map['COMPRAS_ENTREGA_ESTADO_1'] =
-          Variable<String>(comprasEntregaEstado1.value);
-    }
-    if (comprasEntregaEstado2.present) {
-      map['COMPRAS_ENTREGA_ESTADO_2'] =
-          Variable<String>(comprasEntregaEstado2.value);
-    }
-    if (comprasEntregaEstado3.present) {
-      map['COMPRAS_ENTREGA_ESTADO_3'] =
-          Variable<String>(comprasEntregaEstado3.value);
-    }
-    if (imagenPrincipal.present) {
-      map['IMAGEN_PRINCIPAL'] = Variable<String>(imagenPrincipal.value);
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -11151,69 +10429,8 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloTableCompanion(')
-          ..write('id: $id, ')
-          ..write('descripcionES: $descripcionES, ')
-          ..write('descripcionEN: $descripcionEN, ')
-          ..write('descripcionFR: $descripcionFR, ')
-          ..write('descripcionDE: $descripcionDE, ')
-          ..write('descripcionCA: $descripcionCA, ')
-          ..write('descripcionGB: $descripcionGB, ')
-          ..write('descripcionHU: $descripcionHU, ')
-          ..write('descripcionIT: $descripcionIT, ')
-          ..write('descripcionNL: $descripcionNL, ')
-          ..write('descripcionPL: $descripcionPL, ')
-          ..write('descripcionPT: $descripcionPT, ')
-          ..write('descripcionRO: $descripcionRO, ')
-          ..write('descripcionRU: $descripcionRU, ')
-          ..write('descripcionCN: $descripcionCN, ')
-          ..write('descripcionEL: $descripcionEL, ')
-          ..write('familiaId: $familiaId, ')
-          ..write('subfamiliaId: $subfamiliaId, ')
-          ..write('ventaMinimo: $ventaMinimo, ')
-          ..write('ventaMultiplo: $ventaMultiplo, ')
-          ..write('unidadesSubcaja: $unidadesSubcaja, ')
-          ..write('unidadesCaja: $unidadesCaja, ')
-          ..write('unidadesPalet: $unidadesPalet, ')
-          ..write('activoWeb: $activoWeb, ')
-          ..write('activoApp: $activoApp, ')
-          ..write('enCatalogo: $enCatalogo, ')
-          ..write('descatalogado: $descatalogado, ')
-          ..write('paginaEnCatalgo: $paginaEnCatalgo, ')
-          ..write('paginaEnCatalgo2: $paginaEnCatalgo2, ')
-          ..write('pesoKg: $pesoKg, ')
-          ..write('largoCm: $largoCm, ')
-          ..write('anchoCm: $anchoCm, ')
-          ..write('altoCm: $altoCm, ')
-          ..write('resumenES: $resumenES, ')
-          ..write('resumenEN: $resumenEN, ')
-          ..write('resumenFR: $resumenFR, ')
-          ..write('resumenDE: $resumenDE, ')
-          ..write('resumenCA: $resumenCA, ')
-          ..write('resumenGB: $resumenGB, ')
-          ..write('resumenHU: $resumenHU, ')
-          ..write('resumenIT: $resumenIT, ')
-          ..write('resumenNL: $resumenNL, ')
-          ..write('resumenPL: $resumenPL, ')
-          ..write('resumenPT: $resumenPT, ')
-          ..write('resumenRO: $resumenRO, ')
-          ..write('resumenRU: $resumenRU, ')
-          ..write('resumenCN: $resumenCN, ')
-          ..write('resumenEL: $resumenEL, ')
-          ..write('stockDisponible: $stockDisponible, ')
-          ..write('ventasActual: $ventasActual, ')
-          ..write('ventasAnterior: $ventasAnterior, ')
-          ..write('comprasEntregaCantidad1: $comprasEntregaCantidad1, ')
-          ..write('comprasEntregaCantidad2: $comprasEntregaCantidad2, ')
-          ..write('comprasEntregaCantidad3: $comprasEntregaCantidad3, ')
-          ..write('comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, ')
-          ..write('comprasEntregaFecha1: $comprasEntregaFecha1, ')
-          ..write('comprasEntregaFecha2: $comprasEntregaFecha2, ')
-          ..write('comprasEntregaFecha3: $comprasEntregaFecha3, ')
-          ..write('comprasEntregaEstado1: $comprasEntregaEstado1, ')
-          ..write('comprasEntregaEstado2: $comprasEntregaEstado2, ')
-          ..write('comprasEntregaEstado3: $comprasEntregaEstado3, ')
-          ..write('imagenPrincipal: $imagenPrincipal, ')
+    return (StringBuffer('EstadisticasArticulosTopTableCompanion(')
+          ..write('articuloId: $articuloId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12234,11 +11451,8 @@ class $ArticuloTableTable extends ArticuloTable
   }
 }
 
-class ArticuloComponenteTableCompanion
-    extends UpdateCompanion<ArticuloComponenteDTO> {
-  final Value<String> articuloId;
-  final Value<String> articuloComponenteId;
-  final Value<int> cantidad;
+class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
+  final Value<String> id;
   final Value<String> descripcionES;
   final Value<String?> descripcionEN;
   final Value<String?> descripcionFR;
@@ -12254,12 +11468,56 @@ class ArticuloComponenteTableCompanion
   final Value<String?> descripcionRU;
   final Value<String?> descripcionCN;
   final Value<String?> descripcionEL;
+  final Value<String?> familiaId;
+  final Value<String?> subfamiliaId;
+  final Value<int> ventaMinimo;
+  final Value<int> ventaMultiplo;
+  final Value<int> unidadesSubcaja;
+  final Value<int> unidadesCaja;
+  final Value<int> unidadesPalet;
+  final Value<String> activoWeb;
+  final Value<String> activoApp;
+  final Value<String> enCatalogo;
+  final Value<String> descatalogado;
+  final Value<String?> paginaEnCatalgo;
+  final Value<String?> paginaEnCatalgo2;
+  final Value<double> pesoKg;
+  final Value<double> largoCm;
+  final Value<double> anchoCm;
+  final Value<double> altoCm;
+  final Value<String?> resumenES;
+  final Value<String?> resumenEN;
+  final Value<String?> resumenFR;
+  final Value<String?> resumenDE;
+  final Value<String?> resumenCA;
+  final Value<String?> resumenGB;
+  final Value<String?> resumenHU;
+  final Value<String?> resumenIT;
+  final Value<String?> resumenNL;
+  final Value<String?> resumenPL;
+  final Value<String?> resumenPT;
+  final Value<String?> resumenRO;
+  final Value<String?> resumenRU;
+  final Value<String?> resumenCN;
+  final Value<String?> resumenEL;
+  final Value<int> stockDisponible;
+  final Value<double> ventasActual;
+  final Value<double> ventasAnterior;
+  final Value<int> comprasEntregaCantidad1;
+  final Value<int> comprasEntregaCantidad2;
+  final Value<int> comprasEntregaCantidad3;
+  final Value<int> comprasEntregaCantidadMas3;
+  final Value<DateTime?> comprasEntregaFecha1;
+  final Value<DateTime?> comprasEntregaFecha2;
+  final Value<DateTime?> comprasEntregaFecha3;
+  final Value<String?> comprasEntregaEstado1;
+  final Value<String?> comprasEntregaEstado2;
+  final Value<String?> comprasEntregaEstado3;
+  final Value<String?> imagenPrincipal;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloComponenteTableCompanion({
-    this.articuloId = const Value.absent(),
-    this.articuloComponenteId = const Value.absent(),
-    this.cantidad = const Value.absent(),
+  const ArticuloTableCompanion({
+    this.id = const Value.absent(),
     this.descripcionES = const Value.absent(),
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -12275,13 +11533,57 @@ class ArticuloComponenteTableCompanion
     this.descripcionRU = const Value.absent(),
     this.descripcionCN = const Value.absent(),
     this.descripcionEL = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    this.ventaMinimo = const Value.absent(),
+    this.ventaMultiplo = const Value.absent(),
+    this.unidadesSubcaja = const Value.absent(),
+    this.unidadesCaja = const Value.absent(),
+    this.unidadesPalet = const Value.absent(),
+    this.activoWeb = const Value.absent(),
+    this.activoApp = const Value.absent(),
+    this.enCatalogo = const Value.absent(),
+    this.descatalogado = const Value.absent(),
+    this.paginaEnCatalgo = const Value.absent(),
+    this.paginaEnCatalgo2 = const Value.absent(),
+    this.pesoKg = const Value.absent(),
+    this.largoCm = const Value.absent(),
+    this.anchoCm = const Value.absent(),
+    this.altoCm = const Value.absent(),
+    this.resumenES = const Value.absent(),
+    this.resumenEN = const Value.absent(),
+    this.resumenFR = const Value.absent(),
+    this.resumenDE = const Value.absent(),
+    this.resumenCA = const Value.absent(),
+    this.resumenGB = const Value.absent(),
+    this.resumenHU = const Value.absent(),
+    this.resumenIT = const Value.absent(),
+    this.resumenNL = const Value.absent(),
+    this.resumenPL = const Value.absent(),
+    this.resumenPT = const Value.absent(),
+    this.resumenRO = const Value.absent(),
+    this.resumenRU = const Value.absent(),
+    this.resumenCN = const Value.absent(),
+    this.resumenEL = const Value.absent(),
+    this.stockDisponible = const Value.absent(),
+    this.ventasActual = const Value.absent(),
+    this.ventasAnterior = const Value.absent(),
+    this.comprasEntregaCantidad1 = const Value.absent(),
+    this.comprasEntregaCantidad2 = const Value.absent(),
+    this.comprasEntregaCantidad3 = const Value.absent(),
+    this.comprasEntregaCantidadMas3 = const Value.absent(),
+    this.comprasEntregaFecha1 = const Value.absent(),
+    this.comprasEntregaFecha2 = const Value.absent(),
+    this.comprasEntregaFecha3 = const Value.absent(),
+    this.comprasEntregaEstado1 = const Value.absent(),
+    this.comprasEntregaEstado2 = const Value.absent(),
+    this.comprasEntregaEstado3 = const Value.absent(),
+    this.imagenPrincipal = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloComponenteTableCompanion.insert({
-    required String articuloId,
-    required String articuloComponenteId,
-    required int cantidad,
+  ArticuloTableCompanion.insert({
+    required String id,
     required String descripcionES,
     this.descripcionEN = const Value.absent(),
     this.descripcionFR = const Value.absent(),
@@ -12297,17 +11599,79 @@ class ArticuloComponenteTableCompanion
     this.descripcionRU = const Value.absent(),
     this.descripcionCN = const Value.absent(),
     this.descripcionEL = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    required int ventaMinimo,
+    required int ventaMultiplo,
+    required int unidadesSubcaja,
+    required int unidadesCaja,
+    required int unidadesPalet,
+    required String activoWeb,
+    required String activoApp,
+    required String enCatalogo,
+    required String descatalogado,
+    this.paginaEnCatalgo = const Value.absent(),
+    this.paginaEnCatalgo2 = const Value.absent(),
+    required double pesoKg,
+    required double largoCm,
+    required double anchoCm,
+    required double altoCm,
+    this.resumenES = const Value.absent(),
+    this.resumenEN = const Value.absent(),
+    this.resumenFR = const Value.absent(),
+    this.resumenDE = const Value.absent(),
+    this.resumenCA = const Value.absent(),
+    this.resumenGB = const Value.absent(),
+    this.resumenHU = const Value.absent(),
+    this.resumenIT = const Value.absent(),
+    this.resumenNL = const Value.absent(),
+    this.resumenPL = const Value.absent(),
+    this.resumenPT = const Value.absent(),
+    this.resumenRO = const Value.absent(),
+    this.resumenRU = const Value.absent(),
+    this.resumenCN = const Value.absent(),
+    this.resumenEL = const Value.absent(),
+    required int stockDisponible,
+    required double ventasActual,
+    required double ventasAnterior,
+    required int comprasEntregaCantidad1,
+    required int comprasEntregaCantidad2,
+    required int comprasEntregaCantidad3,
+    required int comprasEntregaCantidadMas3,
+    this.comprasEntregaFecha1 = const Value.absent(),
+    this.comprasEntregaFecha2 = const Value.absent(),
+    this.comprasEntregaFecha3 = const Value.absent(),
+    this.comprasEntregaEstado1 = const Value.absent(),
+    this.comprasEntregaEstado2 = const Value.absent(),
+    this.comprasEntregaEstado3 = const Value.absent(),
+    this.imagenPrincipal = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : articuloId = Value(articuloId),
-        articuloComponenteId = Value(articuloComponenteId),
-        cantidad = Value(cantidad),
+  })  : id = Value(id),
         descripcionES = Value(descripcionES),
+        ventaMinimo = Value(ventaMinimo),
+        ventaMultiplo = Value(ventaMultiplo),
+        unidadesSubcaja = Value(unidadesSubcaja),
+        unidadesCaja = Value(unidadesCaja),
+        unidadesPalet = Value(unidadesPalet),
+        activoWeb = Value(activoWeb),
+        activoApp = Value(activoApp),
+        enCatalogo = Value(enCatalogo),
+        descatalogado = Value(descatalogado),
+        pesoKg = Value(pesoKg),
+        largoCm = Value(largoCm),
+        anchoCm = Value(anchoCm),
+        altoCm = Value(altoCm),
+        stockDisponible = Value(stockDisponible),
+        ventasActual = Value(ventasActual),
+        ventasAnterior = Value(ventasAnterior),
+        comprasEntregaCantidad1 = Value(comprasEntregaCantidad1),
+        comprasEntregaCantidad2 = Value(comprasEntregaCantidad2),
+        comprasEntregaCantidad3 = Value(comprasEntregaCantidad3),
+        comprasEntregaCantidadMas3 = Value(comprasEntregaCantidadMas3),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloComponenteDTO> custom({
-    Expression<String>? articuloId,
-    Expression<String>? articuloComponenteId,
-    Expression<int>? cantidad,
+  static Insertable<ArticuloDTO> custom({
+    Expression<String>? id,
     Expression<String>? descripcionES,
     Expression<String>? descripcionEN,
     Expression<String>? descripcionFR,
@@ -12323,14 +11687,57 @@ class ArticuloComponenteTableCompanion
     Expression<String>? descripcionRU,
     Expression<String>? descripcionCN,
     Expression<String>? descripcionEL,
+    Expression<String>? familiaId,
+    Expression<String>? subfamiliaId,
+    Expression<int>? ventaMinimo,
+    Expression<int>? ventaMultiplo,
+    Expression<int>? unidadesSubcaja,
+    Expression<int>? unidadesCaja,
+    Expression<int>? unidadesPalet,
+    Expression<String>? activoWeb,
+    Expression<String>? activoApp,
+    Expression<String>? enCatalogo,
+    Expression<String>? descatalogado,
+    Expression<String>? paginaEnCatalgo,
+    Expression<String>? paginaEnCatalgo2,
+    Expression<double>? pesoKg,
+    Expression<double>? largoCm,
+    Expression<double>? anchoCm,
+    Expression<double>? altoCm,
+    Expression<String>? resumenES,
+    Expression<String>? resumenEN,
+    Expression<String>? resumenFR,
+    Expression<String>? resumenDE,
+    Expression<String>? resumenCA,
+    Expression<String>? resumenGB,
+    Expression<String>? resumenHU,
+    Expression<String>? resumenIT,
+    Expression<String>? resumenNL,
+    Expression<String>? resumenPL,
+    Expression<String>? resumenPT,
+    Expression<String>? resumenRO,
+    Expression<String>? resumenRU,
+    Expression<String>? resumenCN,
+    Expression<String>? resumenEL,
+    Expression<int>? stockDisponible,
+    Expression<double>? ventasActual,
+    Expression<double>? ventasAnterior,
+    Expression<int>? comprasEntregaCantidad1,
+    Expression<int>? comprasEntregaCantidad2,
+    Expression<int>? comprasEntregaCantidad3,
+    Expression<int>? comprasEntregaCantidadMas3,
+    Expression<DateTime>? comprasEntregaFecha1,
+    Expression<DateTime>? comprasEntregaFecha2,
+    Expression<DateTime>? comprasEntregaFecha3,
+    Expression<String>? comprasEntregaEstado1,
+    Expression<String>? comprasEntregaEstado2,
+    Expression<String>? comprasEntregaEstado3,
+    Expression<String>? imagenPrincipal,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (articuloComponenteId != null)
-        'ARTICULO_COMPONENTE_ID': articuloComponenteId,
-      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (id != null) 'ARTICULO_ID': id,
       if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
       if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
       if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
@@ -12346,15 +11753,69 @@ class ArticuloComponenteTableCompanion
       if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
       if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
       if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
+      if (ventaMinimo != null) 'VENTA_MINIMO': ventaMinimo,
+      if (ventaMultiplo != null) 'VENTA_MULTIPLO': ventaMultiplo,
+      if (unidadesSubcaja != null) 'UNIDADES_SUBCAJA': unidadesSubcaja,
+      if (unidadesCaja != null) 'UNIDADES_CAJA': unidadesCaja,
+      if (unidadesPalet != null) 'UNIDADES_PALET': unidadesPalet,
+      if (activoWeb != null) 'ACTIVO_WEB': activoWeb,
+      if (activoApp != null) 'ACTIVO_APP': activoApp,
+      if (enCatalogo != null) 'EN_CATALOGO': enCatalogo,
+      if (descatalogado != null) 'DESCATALOGADO': descatalogado,
+      if (paginaEnCatalgo != null) 'PAGINA_EN_CATALOGO': paginaEnCatalgo,
+      if (paginaEnCatalgo2 != null) 'PAGINA_EN_CATALOGO2': paginaEnCatalgo2,
+      if (pesoKg != null) 'PESO_KG': pesoKg,
+      if (largoCm != null) 'LARGO_CM': largoCm,
+      if (anchoCm != null) 'ANCHO_CM': anchoCm,
+      if (altoCm != null) 'ALTO_CM': altoCm,
+      if (resumenES != null) 'RESUMEN_ES': resumenES,
+      if (resumenEN != null) 'RESUMEN_EN': resumenEN,
+      if (resumenFR != null) 'RESUMEN_FR': resumenFR,
+      if (resumenDE != null) 'RESUMEN_DE': resumenDE,
+      if (resumenCA != null) 'RESUMEN_CA': resumenCA,
+      if (resumenGB != null) 'RESUMEN_GB': resumenGB,
+      if (resumenHU != null) 'RESUMEN_HU': resumenHU,
+      if (resumenIT != null) 'RESUMEN_IT': resumenIT,
+      if (resumenNL != null) 'RESUMEN_NL': resumenNL,
+      if (resumenPL != null) 'RESUMEN_PL': resumenPL,
+      if (resumenPT != null) 'RESUMEN_PT': resumenPT,
+      if (resumenRO != null) 'RESUMEN_RO': resumenRO,
+      if (resumenRU != null) 'RESUMEN_RU': resumenRU,
+      if (resumenCN != null) 'RESUMEN_CN': resumenCN,
+      if (resumenEL != null) 'RESUMEN_EL': resumenEL,
+      if (stockDisponible != null) 'STOCK_DISPONIBLE': stockDisponible,
+      if (ventasActual != null) 'VENTAS_ACTUAL': ventasActual,
+      if (ventasAnterior != null) 'VENTAS_ANTERIOR': ventasAnterior,
+      if (comprasEntregaCantidad1 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_1': comprasEntregaCantidad1,
+      if (comprasEntregaCantidad2 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_2': comprasEntregaCantidad2,
+      if (comprasEntregaCantidad3 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_3': comprasEntregaCantidad3,
+      if (comprasEntregaCantidadMas3 != null)
+        'COMPRAS_ENTREGA_CANTIDAD_MAS_3': comprasEntregaCantidadMas3,
+      if (comprasEntregaFecha1 != null)
+        'COMPRAS_ENTREGA_FECHA_1': comprasEntregaFecha1,
+      if (comprasEntregaFecha2 != null)
+        'COMPRAS_ENTREGA_FECHA_2': comprasEntregaFecha2,
+      if (comprasEntregaFecha3 != null)
+        'COMPRAS_ENTREGA_FECHA_3': comprasEntregaFecha3,
+      if (comprasEntregaEstado1 != null)
+        'COMPRAS_ENTREGA_ESTADO_1': comprasEntregaEstado1,
+      if (comprasEntregaEstado2 != null)
+        'COMPRAS_ENTREGA_ESTADO_2': comprasEntregaEstado2,
+      if (comprasEntregaEstado3 != null)
+        'COMPRAS_ENTREGA_ESTADO_3': comprasEntregaEstado3,
+      if (imagenPrincipal != null) 'IMAGEN_PRINCIPAL': imagenPrincipal,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticuloComponenteTableCompanion copyWith(
-      {Value<String>? articuloId,
-      Value<String>? articuloComponenteId,
-      Value<int>? cantidad,
+  ArticuloTableCompanion copyWith(
+      {Value<String>? id,
       Value<String>? descripcionES,
       Value<String?>? descripcionEN,
       Value<String?>? descripcionFR,
@@ -12370,12 +11831,56 @@ class ArticuloComponenteTableCompanion
       Value<String?>? descripcionRU,
       Value<String?>? descripcionCN,
       Value<String?>? descripcionEL,
+      Value<String?>? familiaId,
+      Value<String?>? subfamiliaId,
+      Value<int>? ventaMinimo,
+      Value<int>? ventaMultiplo,
+      Value<int>? unidadesSubcaja,
+      Value<int>? unidadesCaja,
+      Value<int>? unidadesPalet,
+      Value<String>? activoWeb,
+      Value<String>? activoApp,
+      Value<String>? enCatalogo,
+      Value<String>? descatalogado,
+      Value<String?>? paginaEnCatalgo,
+      Value<String?>? paginaEnCatalgo2,
+      Value<double>? pesoKg,
+      Value<double>? largoCm,
+      Value<double>? anchoCm,
+      Value<double>? altoCm,
+      Value<String?>? resumenES,
+      Value<String?>? resumenEN,
+      Value<String?>? resumenFR,
+      Value<String?>? resumenDE,
+      Value<String?>? resumenCA,
+      Value<String?>? resumenGB,
+      Value<String?>? resumenHU,
+      Value<String?>? resumenIT,
+      Value<String?>? resumenNL,
+      Value<String?>? resumenPL,
+      Value<String?>? resumenPT,
+      Value<String?>? resumenRO,
+      Value<String?>? resumenRU,
+      Value<String?>? resumenCN,
+      Value<String?>? resumenEL,
+      Value<int>? stockDisponible,
+      Value<double>? ventasActual,
+      Value<double>? ventasAnterior,
+      Value<int>? comprasEntregaCantidad1,
+      Value<int>? comprasEntregaCantidad2,
+      Value<int>? comprasEntregaCantidad3,
+      Value<int>? comprasEntregaCantidadMas3,
+      Value<DateTime?>? comprasEntregaFecha1,
+      Value<DateTime?>? comprasEntregaFecha2,
+      Value<DateTime?>? comprasEntregaFecha3,
+      Value<String?>? comprasEntregaEstado1,
+      Value<String?>? comprasEntregaEstado2,
+      Value<String?>? comprasEntregaEstado3,
+      Value<String?>? imagenPrincipal,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloComponenteTableCompanion(
-      articuloId: articuloId ?? this.articuloId,
-      articuloComponenteId: articuloComponenteId ?? this.articuloComponenteId,
-      cantidad: cantidad ?? this.cantidad,
+    return ArticuloTableCompanion(
+      id: id ?? this.id,
       descripcionES: descripcionES ?? this.descripcionES,
       descripcionEN: descripcionEN ?? this.descripcionEN,
       descripcionFR: descripcionFR ?? this.descripcionFR,
@@ -12391,6 +11896,59 @@ class ArticuloComponenteTableCompanion
       descripcionRU: descripcionRU ?? this.descripcionRU,
       descripcionCN: descripcionCN ?? this.descripcionCN,
       descripcionEL: descripcionEL ?? this.descripcionEL,
+      familiaId: familiaId ?? this.familiaId,
+      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
+      ventaMinimo: ventaMinimo ?? this.ventaMinimo,
+      ventaMultiplo: ventaMultiplo ?? this.ventaMultiplo,
+      unidadesSubcaja: unidadesSubcaja ?? this.unidadesSubcaja,
+      unidadesCaja: unidadesCaja ?? this.unidadesCaja,
+      unidadesPalet: unidadesPalet ?? this.unidadesPalet,
+      activoWeb: activoWeb ?? this.activoWeb,
+      activoApp: activoApp ?? this.activoApp,
+      enCatalogo: enCatalogo ?? this.enCatalogo,
+      descatalogado: descatalogado ?? this.descatalogado,
+      paginaEnCatalgo: paginaEnCatalgo ?? this.paginaEnCatalgo,
+      paginaEnCatalgo2: paginaEnCatalgo2 ?? this.paginaEnCatalgo2,
+      pesoKg: pesoKg ?? this.pesoKg,
+      largoCm: largoCm ?? this.largoCm,
+      anchoCm: anchoCm ?? this.anchoCm,
+      altoCm: altoCm ?? this.altoCm,
+      resumenES: resumenES ?? this.resumenES,
+      resumenEN: resumenEN ?? this.resumenEN,
+      resumenFR: resumenFR ?? this.resumenFR,
+      resumenDE: resumenDE ?? this.resumenDE,
+      resumenCA: resumenCA ?? this.resumenCA,
+      resumenGB: resumenGB ?? this.resumenGB,
+      resumenHU: resumenHU ?? this.resumenHU,
+      resumenIT: resumenIT ?? this.resumenIT,
+      resumenNL: resumenNL ?? this.resumenNL,
+      resumenPL: resumenPL ?? this.resumenPL,
+      resumenPT: resumenPT ?? this.resumenPT,
+      resumenRO: resumenRO ?? this.resumenRO,
+      resumenRU: resumenRU ?? this.resumenRU,
+      resumenCN: resumenCN ?? this.resumenCN,
+      resumenEL: resumenEL ?? this.resumenEL,
+      stockDisponible: stockDisponible ?? this.stockDisponible,
+      ventasActual: ventasActual ?? this.ventasActual,
+      ventasAnterior: ventasAnterior ?? this.ventasAnterior,
+      comprasEntregaCantidad1:
+          comprasEntregaCantidad1 ?? this.comprasEntregaCantidad1,
+      comprasEntregaCantidad2:
+          comprasEntregaCantidad2 ?? this.comprasEntregaCantidad2,
+      comprasEntregaCantidad3:
+          comprasEntregaCantidad3 ?? this.comprasEntregaCantidad3,
+      comprasEntregaCantidadMas3:
+          comprasEntregaCantidadMas3 ?? this.comprasEntregaCantidadMas3,
+      comprasEntregaFecha1: comprasEntregaFecha1 ?? this.comprasEntregaFecha1,
+      comprasEntregaFecha2: comprasEntregaFecha2 ?? this.comprasEntregaFecha2,
+      comprasEntregaFecha3: comprasEntregaFecha3 ?? this.comprasEntregaFecha3,
+      comprasEntregaEstado1:
+          comprasEntregaEstado1 ?? this.comprasEntregaEstado1,
+      comprasEntregaEstado2:
+          comprasEntregaEstado2 ?? this.comprasEntregaEstado2,
+      comprasEntregaEstado3:
+          comprasEntregaEstado3 ?? this.comprasEntregaEstado3,
+      imagenPrincipal: imagenPrincipal ?? this.imagenPrincipal,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12399,15 +11957,8 @@ class ArticuloComponenteTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (articuloId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
-    }
-    if (articuloComponenteId.present) {
-      map['ARTICULO_COMPONENTE_ID'] =
-          Variable<String>(articuloComponenteId.value);
-    }
-    if (cantidad.present) {
-      map['CANTIDAD'] = Variable<int>(cantidad.value);
+    if (id.present) {
+      map['ARTICULO_ID'] = Variable<String>(id.value);
     }
     if (descripcionES.present) {
       map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
@@ -12454,6 +12005,154 @@ class ArticuloComponenteTableCompanion
     if (descripcionEL.present) {
       map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
+    }
+    if (subfamiliaId.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
+    }
+    if (ventaMinimo.present) {
+      map['VENTA_MINIMO'] = Variable<int>(ventaMinimo.value);
+    }
+    if (ventaMultiplo.present) {
+      map['VENTA_MULTIPLO'] = Variable<int>(ventaMultiplo.value);
+    }
+    if (unidadesSubcaja.present) {
+      map['UNIDADES_SUBCAJA'] = Variable<int>(unidadesSubcaja.value);
+    }
+    if (unidadesCaja.present) {
+      map['UNIDADES_CAJA'] = Variable<int>(unidadesCaja.value);
+    }
+    if (unidadesPalet.present) {
+      map['UNIDADES_PALET'] = Variable<int>(unidadesPalet.value);
+    }
+    if (activoWeb.present) {
+      map['ACTIVO_WEB'] = Variable<String>(activoWeb.value);
+    }
+    if (activoApp.present) {
+      map['ACTIVO_APP'] = Variable<String>(activoApp.value);
+    }
+    if (enCatalogo.present) {
+      map['EN_CATALOGO'] = Variable<String>(enCatalogo.value);
+    }
+    if (descatalogado.present) {
+      map['DESCATALOGADO'] = Variable<String>(descatalogado.value);
+    }
+    if (paginaEnCatalgo.present) {
+      map['PAGINA_EN_CATALOGO'] = Variable<String>(paginaEnCatalgo.value);
+    }
+    if (paginaEnCatalgo2.present) {
+      map['PAGINA_EN_CATALOGO2'] = Variable<String>(paginaEnCatalgo2.value);
+    }
+    if (pesoKg.present) {
+      map['PESO_KG'] = Variable<double>(pesoKg.value);
+    }
+    if (largoCm.present) {
+      map['LARGO_CM'] = Variable<double>(largoCm.value);
+    }
+    if (anchoCm.present) {
+      map['ANCHO_CM'] = Variable<double>(anchoCm.value);
+    }
+    if (altoCm.present) {
+      map['ALTO_CM'] = Variable<double>(altoCm.value);
+    }
+    if (resumenES.present) {
+      map['RESUMEN_ES'] = Variable<String>(resumenES.value);
+    }
+    if (resumenEN.present) {
+      map['RESUMEN_EN'] = Variable<String>(resumenEN.value);
+    }
+    if (resumenFR.present) {
+      map['RESUMEN_FR'] = Variable<String>(resumenFR.value);
+    }
+    if (resumenDE.present) {
+      map['RESUMEN_DE'] = Variable<String>(resumenDE.value);
+    }
+    if (resumenCA.present) {
+      map['RESUMEN_CA'] = Variable<String>(resumenCA.value);
+    }
+    if (resumenGB.present) {
+      map['RESUMEN_GB'] = Variable<String>(resumenGB.value);
+    }
+    if (resumenHU.present) {
+      map['RESUMEN_HU'] = Variable<String>(resumenHU.value);
+    }
+    if (resumenIT.present) {
+      map['RESUMEN_IT'] = Variable<String>(resumenIT.value);
+    }
+    if (resumenNL.present) {
+      map['RESUMEN_NL'] = Variable<String>(resumenNL.value);
+    }
+    if (resumenPL.present) {
+      map['RESUMEN_PL'] = Variable<String>(resumenPL.value);
+    }
+    if (resumenPT.present) {
+      map['RESUMEN_PT'] = Variable<String>(resumenPT.value);
+    }
+    if (resumenRO.present) {
+      map['RESUMEN_RO'] = Variable<String>(resumenRO.value);
+    }
+    if (resumenRU.present) {
+      map['RESUMEN_RU'] = Variable<String>(resumenRU.value);
+    }
+    if (resumenCN.present) {
+      map['RESUMEN_CN'] = Variable<String>(resumenCN.value);
+    }
+    if (resumenEL.present) {
+      map['RESUMEN_EL'] = Variable<String>(resumenEL.value);
+    }
+    if (stockDisponible.present) {
+      map['STOCK_DISPONIBLE'] = Variable<int>(stockDisponible.value);
+    }
+    if (ventasActual.present) {
+      map['VENTAS_ACTUAL'] = Variable<double>(ventasActual.value);
+    }
+    if (ventasAnterior.present) {
+      map['VENTAS_ANTERIOR'] = Variable<double>(ventasAnterior.value);
+    }
+    if (comprasEntregaCantidad1.present) {
+      map['COMPRAS_ENTREGA_CANTIDAD_1'] =
+          Variable<int>(comprasEntregaCantidad1.value);
+    }
+    if (comprasEntregaCantidad2.present) {
+      map['COMPRAS_ENTREGA_CANTIDAD_2'] =
+          Variable<int>(comprasEntregaCantidad2.value);
+    }
+    if (comprasEntregaCantidad3.present) {
+      map['COMPRAS_ENTREGA_CANTIDAD_3'] =
+          Variable<int>(comprasEntregaCantidad3.value);
+    }
+    if (comprasEntregaCantidadMas3.present) {
+      map['COMPRAS_ENTREGA_CANTIDAD_MAS_3'] =
+          Variable<int>(comprasEntregaCantidadMas3.value);
+    }
+    if (comprasEntregaFecha1.present) {
+      map['COMPRAS_ENTREGA_FECHA_1'] =
+          Variable<DateTime>(comprasEntregaFecha1.value);
+    }
+    if (comprasEntregaFecha2.present) {
+      map['COMPRAS_ENTREGA_FECHA_2'] =
+          Variable<DateTime>(comprasEntregaFecha2.value);
+    }
+    if (comprasEntregaFecha3.present) {
+      map['COMPRAS_ENTREGA_FECHA_3'] =
+          Variable<DateTime>(comprasEntregaFecha3.value);
+    }
+    if (comprasEntregaEstado1.present) {
+      map['COMPRAS_ENTREGA_ESTADO_1'] =
+          Variable<String>(comprasEntregaEstado1.value);
+    }
+    if (comprasEntregaEstado2.present) {
+      map['COMPRAS_ENTREGA_ESTADO_2'] =
+          Variable<String>(comprasEntregaEstado2.value);
+    }
+    if (comprasEntregaEstado3.present) {
+      map['COMPRAS_ENTREGA_ESTADO_3'] =
+          Variable<String>(comprasEntregaEstado3.value);
+    }
+    if (imagenPrincipal.present) {
+      map['IMAGEN_PRINCIPAL'] = Variable<String>(imagenPrincipal.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -12465,10 +12164,8 @@ class ArticuloComponenteTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloComponenteTableCompanion(')
-          ..write('articuloId: $articuloId, ')
-          ..write('articuloComponenteId: $articuloComponenteId, ')
-          ..write('cantidad: $cantidad, ')
+    return (StringBuffer('ArticuloTableCompanion(')
+          ..write('id: $id, ')
           ..write('descripcionES: $descripcionES, ')
           ..write('descripcionEN: $descripcionEN, ')
           ..write('descripcionFR: $descripcionFR, ')
@@ -12484,6 +12181,52 @@ class ArticuloComponenteTableCompanion
           ..write('descripcionRU: $descripcionRU, ')
           ..write('descripcionCN: $descripcionCN, ')
           ..write('descripcionEL: $descripcionEL, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('subfamiliaId: $subfamiliaId, ')
+          ..write('ventaMinimo: $ventaMinimo, ')
+          ..write('ventaMultiplo: $ventaMultiplo, ')
+          ..write('unidadesSubcaja: $unidadesSubcaja, ')
+          ..write('unidadesCaja: $unidadesCaja, ')
+          ..write('unidadesPalet: $unidadesPalet, ')
+          ..write('activoWeb: $activoWeb, ')
+          ..write('activoApp: $activoApp, ')
+          ..write('enCatalogo: $enCatalogo, ')
+          ..write('descatalogado: $descatalogado, ')
+          ..write('paginaEnCatalgo: $paginaEnCatalgo, ')
+          ..write('paginaEnCatalgo2: $paginaEnCatalgo2, ')
+          ..write('pesoKg: $pesoKg, ')
+          ..write('largoCm: $largoCm, ')
+          ..write('anchoCm: $anchoCm, ')
+          ..write('altoCm: $altoCm, ')
+          ..write('resumenES: $resumenES, ')
+          ..write('resumenEN: $resumenEN, ')
+          ..write('resumenFR: $resumenFR, ')
+          ..write('resumenDE: $resumenDE, ')
+          ..write('resumenCA: $resumenCA, ')
+          ..write('resumenGB: $resumenGB, ')
+          ..write('resumenHU: $resumenHU, ')
+          ..write('resumenIT: $resumenIT, ')
+          ..write('resumenNL: $resumenNL, ')
+          ..write('resumenPL: $resumenPL, ')
+          ..write('resumenPT: $resumenPT, ')
+          ..write('resumenRO: $resumenRO, ')
+          ..write('resumenRU: $resumenRU, ')
+          ..write('resumenCN: $resumenCN, ')
+          ..write('resumenEL: $resumenEL, ')
+          ..write('stockDisponible: $stockDisponible, ')
+          ..write('ventasActual: $ventasActual, ')
+          ..write('ventasAnterior: $ventasAnterior, ')
+          ..write('comprasEntregaCantidad1: $comprasEntregaCantidad1, ')
+          ..write('comprasEntregaCantidad2: $comprasEntregaCantidad2, ')
+          ..write('comprasEntregaCantidad3: $comprasEntregaCantidad3, ')
+          ..write('comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, ')
+          ..write('comprasEntregaFecha1: $comprasEntregaFecha1, ')
+          ..write('comprasEntregaFecha2: $comprasEntregaFecha2, ')
+          ..write('comprasEntregaFecha3: $comprasEntregaFecha3, ')
+          ..write('comprasEntregaEstado1: $comprasEntregaEstado1, ')
+          ..write('comprasEntregaEstado2: $comprasEntregaEstado2, ')
+          ..write('comprasEntregaEstado3: $comprasEntregaEstado3, ')
+          ..write('imagenPrincipal: $imagenPrincipal, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -12837,56 +12580,163 @@ class $ArticuloComponenteTableTable extends ArticuloComponenteTable
   }
 }
 
-class ArticuloEmpresaIvaTableCompanion
-    extends UpdateCompanion<ArticuloEmpresaIvaDTO> {
+class ArticuloComponenteTableCompanion
+    extends UpdateCompanion<ArticuloComponenteDTO> {
   final Value<String> articuloId;
-  final Value<String> empresaId;
-  final Value<double> iva;
+  final Value<String> articuloComponenteId;
+  final Value<int> cantidad;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloEmpresaIvaTableCompanion({
+  const ArticuloComponenteTableCompanion({
     this.articuloId = const Value.absent(),
-    this.empresaId = const Value.absent(),
-    this.iva = const Value.absent(),
+    this.articuloComponenteId = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloEmpresaIvaTableCompanion.insert({
+  ArticuloComponenteTableCompanion.insert({
     required String articuloId,
-    required String empresaId,
-    required double iva,
+    required String articuloComponenteId,
+    required int cantidad,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
-        empresaId = Value(empresaId),
-        iva = Value(iva),
+        articuloComponenteId = Value(articuloComponenteId),
+        cantidad = Value(cantidad),
+        descripcionES = Value(descripcionES),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloEmpresaIvaDTO> custom({
+  static Insertable<ArticuloComponenteDTO> custom({
     Expression<String>? articuloId,
-    Expression<String>? empresaId,
-    Expression<double>? iva,
+    Expression<String>? articuloComponenteId,
+    Expression<int>? cantidad,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (iva != null) 'IVA': iva,
+      if (articuloComponenteId != null)
+        'ARTICULO_COMPONENTE_ID': articuloComponenteId,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticuloEmpresaIvaTableCompanion copyWith(
+  ArticuloComponenteTableCompanion copyWith(
       {Value<String>? articuloId,
-      Value<String>? empresaId,
-      Value<double>? iva,
+      Value<String>? articuloComponenteId,
+      Value<int>? cantidad,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloEmpresaIvaTableCompanion(
+    return ArticuloComponenteTableCompanion(
       articuloId: articuloId ?? this.articuloId,
-      empresaId: empresaId ?? this.empresaId,
-      iva: iva ?? this.iva,
+      articuloComponenteId: articuloComponenteId ?? this.articuloComponenteId,
+      cantidad: cantidad ?? this.cantidad,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12898,11 +12748,57 @@ class ArticuloEmpresaIvaTableCompanion
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (empresaId.present) {
-      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    if (articuloComponenteId.present) {
+      map['ARTICULO_COMPONENTE_ID'] =
+          Variable<String>(articuloComponenteId.value);
     }
-    if (iva.present) {
-      map['IVA'] = Variable<double>(iva.value);
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -12915,10 +12811,25 @@ class ArticuloEmpresaIvaTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloEmpresaIvaTableCompanion(')
+    return (StringBuffer('ArticuloComponenteTableCompanion(')
           ..write('articuloId: $articuloId, ')
-          ..write('empresaId: $empresaId, ')
-          ..write('iva: $iva, ')
+          ..write('articuloComponenteId: $articuloComponenteId, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13036,64 +12947,56 @@ class $ArticuloEmpresaIvaTableTable extends ArticuloEmpresaIvaTable
   }
 }
 
-class ArticuloRecambioTableCompanion
-    extends UpdateCompanion<ArticuloRecambioDTO> {
+class ArticuloEmpresaIvaTableCompanion
+    extends UpdateCompanion<ArticuloEmpresaIvaDTO> {
   final Value<String> articuloId;
-  final Value<String> id;
-  final Value<String> descripcion;
-  final Value<int> cantidad;
+  final Value<String> empresaId;
+  final Value<double> iva;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloRecambioTableCompanion({
+  const ArticuloEmpresaIvaTableCompanion({
     this.articuloId = const Value.absent(),
-    this.id = const Value.absent(),
-    this.descripcion = const Value.absent(),
-    this.cantidad = const Value.absent(),
+    this.empresaId = const Value.absent(),
+    this.iva = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloRecambioTableCompanion.insert({
+  ArticuloEmpresaIvaTableCompanion.insert({
     required String articuloId,
-    required String id,
-    required String descripcion,
-    required int cantidad,
+    required String empresaId,
+    required double iva,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
-        id = Value(id),
-        descripcion = Value(descripcion),
-        cantidad = Value(cantidad),
+        empresaId = Value(empresaId),
+        iva = Value(iva),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloRecambioDTO> custom({
+  static Insertable<ArticuloEmpresaIvaDTO> custom({
     Expression<String>? articuloId,
-    Expression<String>? id,
-    Expression<String>? descripcion,
-    Expression<int>? cantidad,
+    Expression<String>? empresaId,
+    Expression<double>? iva,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (id != null) 'RECAMBIO_ID': id,
-      if (descripcion != null) 'DESCRIPCION': descripcion,
-      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (iva != null) 'IVA': iva,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticuloRecambioTableCompanion copyWith(
+  ArticuloEmpresaIvaTableCompanion copyWith(
       {Value<String>? articuloId,
-      Value<String>? id,
-      Value<String>? descripcion,
-      Value<int>? cantidad,
+      Value<String>? empresaId,
+      Value<double>? iva,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloRecambioTableCompanion(
+    return ArticuloEmpresaIvaTableCompanion(
       articuloId: articuloId ?? this.articuloId,
-      id: id ?? this.id,
-      descripcion: descripcion ?? this.descripcion,
-      cantidad: cantidad ?? this.cantidad,
+      empresaId: empresaId ?? this.empresaId,
+      iva: iva ?? this.iva,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13105,14 +13008,11 @@ class ArticuloRecambioTableCompanion
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (id.present) {
-      map['RECAMBIO_ID'] = Variable<String>(id.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (descripcion.present) {
-      map['DESCRIPCION'] = Variable<String>(descripcion.value);
-    }
-    if (cantidad.present) {
-      map['CANTIDAD'] = Variable<int>(cantidad.value);
+    if (iva.present) {
+      map['IVA'] = Variable<double>(iva.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13125,11 +13025,10 @@ class ArticuloRecambioTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloRecambioTableCompanion(')
+    return (StringBuffer('ArticuloEmpresaIvaTableCompanion(')
           ..write('articuloId: $articuloId, ')
-          ..write('id: $id, ')
-          ..write('descripcion: $descripcion, ')
-          ..write('cantidad: $cantidad, ')
+          ..write('empresaId: $empresaId, ')
+          ..write('iva: $iva, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13263,58 +13162,64 @@ class $ArticuloRecambioTableTable extends ArticuloRecambioTable
   }
 }
 
-class ArticuloSustitutivoTableCompanion
-    extends UpdateCompanion<ArticuloSustitutivoDTO> {
+class ArticuloRecambioTableCompanion
+    extends UpdateCompanion<ArticuloRecambioDTO> {
   final Value<String> articuloId;
-  final Value<String> articuloSustitutivoId;
-  final Value<int> orden;
+  final Value<String> id;
+  final Value<String> descripcion;
+  final Value<int> cantidad;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloSustitutivoTableCompanion({
+  const ArticuloRecambioTableCompanion({
     this.articuloId = const Value.absent(),
-    this.articuloSustitutivoId = const Value.absent(),
-    this.orden = const Value.absent(),
+    this.id = const Value.absent(),
+    this.descripcion = const Value.absent(),
+    this.cantidad = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloSustitutivoTableCompanion.insert({
+  ArticuloRecambioTableCompanion.insert({
     required String articuloId,
-    required String articuloSustitutivoId,
-    required int orden,
+    required String id,
+    required String descripcion,
+    required int cantidad,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
-        articuloSustitutivoId = Value(articuloSustitutivoId),
-        orden = Value(orden),
+        id = Value(id),
+        descripcion = Value(descripcion),
+        cantidad = Value(cantidad),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloSustitutivoDTO> custom({
+  static Insertable<ArticuloRecambioDTO> custom({
     Expression<String>? articuloId,
-    Expression<String>? articuloSustitutivoId,
-    Expression<int>? orden,
+    Expression<String>? id,
+    Expression<String>? descripcion,
+    Expression<int>? cantidad,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (articuloSustitutivoId != null)
-        'ARTICULO_ID_SUSTITUTIVO': articuloSustitutivoId,
-      if (orden != null) 'ORDEN': orden,
+      if (id != null) 'RECAMBIO_ID': id,
+      if (descripcion != null) 'DESCRIPCION': descripcion,
+      if (cantidad != null) 'CANTIDAD': cantidad,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticuloSustitutivoTableCompanion copyWith(
+  ArticuloRecambioTableCompanion copyWith(
       {Value<String>? articuloId,
-      Value<String>? articuloSustitutivoId,
-      Value<int>? orden,
+      Value<String>? id,
+      Value<String>? descripcion,
+      Value<int>? cantidad,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloSustitutivoTableCompanion(
+    return ArticuloRecambioTableCompanion(
       articuloId: articuloId ?? this.articuloId,
-      articuloSustitutivoId:
-          articuloSustitutivoId ?? this.articuloSustitutivoId,
-      orden: orden ?? this.orden,
+      id: id ?? this.id,
+      descripcion: descripcion ?? this.descripcion,
+      cantidad: cantidad ?? this.cantidad,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13326,12 +13231,14 @@ class ArticuloSustitutivoTableCompanion
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (articuloSustitutivoId.present) {
-      map['ARTICULO_ID_SUSTITUTIVO'] =
-          Variable<String>(articuloSustitutivoId.value);
+    if (id.present) {
+      map['RECAMBIO_ID'] = Variable<String>(id.value);
     }
-    if (orden.present) {
-      map['ORDEN'] = Variable<int>(orden.value);
+    if (descripcion.present) {
+      map['DESCRIPCION'] = Variable<String>(descripcion.value);
+    }
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13344,10 +13251,11 @@ class ArticuloSustitutivoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloSustitutivoTableCompanion(')
+    return (StringBuffer('ArticuloRecambioTableCompanion(')
           ..write('articuloId: $articuloId, ')
-          ..write('articuloSustitutivoId: $articuloSustitutivoId, ')
-          ..write('orden: $orden, ')
+          ..write('id: $id, ')
+          ..write('descripcion: $descripcion, ')
+          ..write('cantidad: $cantidad, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13468,87 +13376,58 @@ class $ArticuloSustitutivoTableTable extends ArticuloSustitutivoTable
   }
 }
 
-class ArticuloPrecioTarifaTableCompanion
-    extends UpdateCompanion<ArticuloPrecioTarifaDTO> {
+class ArticuloSustitutivoTableCompanion
+    extends UpdateCompanion<ArticuloSustitutivoDTO> {
   final Value<String> articuloId;
-  final Value<String> tarifaId;
-  final Value<String?> tarifaDescripcion;
-  final Value<int> cantidadDesde;
-  final Value<double> precio;
-  final Value<String> divisaId;
-  final Value<int> tipoPrecio;
+  final Value<String> articuloSustitutivoId;
+  final Value<int> orden;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloPrecioTarifaTableCompanion({
+  const ArticuloSustitutivoTableCompanion({
     this.articuloId = const Value.absent(),
-    this.tarifaId = const Value.absent(),
-    this.tarifaDescripcion = const Value.absent(),
-    this.cantidadDesde = const Value.absent(),
-    this.precio = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.tipoPrecio = const Value.absent(),
+    this.articuloSustitutivoId = const Value.absent(),
+    this.orden = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloPrecioTarifaTableCompanion.insert({
+  ArticuloSustitutivoTableCompanion.insert({
     required String articuloId,
-    required String tarifaId,
-    this.tarifaDescripcion = const Value.absent(),
-    required int cantidadDesde,
-    required double precio,
-    required String divisaId,
-    required int tipoPrecio,
+    required String articuloSustitutivoId,
+    required int orden,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
-        tarifaId = Value(tarifaId),
-        cantidadDesde = Value(cantidadDesde),
-        precio = Value(precio),
-        divisaId = Value(divisaId),
-        tipoPrecio = Value(tipoPrecio),
+        articuloSustitutivoId = Value(articuloSustitutivoId),
+        orden = Value(orden),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloPrecioTarifaDTO> custom({
+  static Insertable<ArticuloSustitutivoDTO> custom({
     Expression<String>? articuloId,
-    Expression<String>? tarifaId,
-    Expression<String>? tarifaDescripcion,
-    Expression<int>? cantidadDesde,
-    Expression<double>? precio,
-    Expression<String>? divisaId,
-    Expression<int>? tipoPrecio,
+    Expression<String>? articuloSustitutivoId,
+    Expression<int>? orden,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (tarifaId != null) 'TARIFA_ID': tarifaId,
-      if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
-      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
-      if (precio != null) 'PRECIO': precio,
-      if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (articuloSustitutivoId != null)
+        'ARTICULO_ID_SUSTITUTIVO': articuloSustitutivoId,
+      if (orden != null) 'ORDEN': orden,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  ArticuloPrecioTarifaTableCompanion copyWith(
+  ArticuloSustitutivoTableCompanion copyWith(
       {Value<String>? articuloId,
-      Value<String>? tarifaId,
-      Value<String?>? tarifaDescripcion,
-      Value<int>? cantidadDesde,
-      Value<double>? precio,
-      Value<String>? divisaId,
-      Value<int>? tipoPrecio,
+      Value<String>? articuloSustitutivoId,
+      Value<int>? orden,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloPrecioTarifaTableCompanion(
+    return ArticuloSustitutivoTableCompanion(
       articuloId: articuloId ?? this.articuloId,
-      tarifaId: tarifaId ?? this.tarifaId,
-      tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
-      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
-      precio: precio ?? this.precio,
-      divisaId: divisaId ?? this.divisaId,
-      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      articuloSustitutivoId:
+          articuloSustitutivoId ?? this.articuloSustitutivoId,
+      orden: orden ?? this.orden,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -13560,23 +13439,12 @@ class ArticuloPrecioTarifaTableCompanion
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (tarifaId.present) {
-      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
+    if (articuloSustitutivoId.present) {
+      map['ARTICULO_ID_SUSTITUTIVO'] =
+          Variable<String>(articuloSustitutivoId.value);
     }
-    if (tarifaDescripcion.present) {
-      map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
-    }
-    if (cantidadDesde.present) {
-      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
-    }
-    if (precio.present) {
-      map['PRECIO'] = Variable<double>(precio.value);
-    }
-    if (divisaId.present) {
-      map['DIVISA_ID'] = Variable<String>(divisaId.value);
-    }
-    if (tipoPrecio.present) {
-      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
+    if (orden.present) {
+      map['ORDEN'] = Variable<int>(orden.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -13589,14 +13457,10 @@ class ArticuloPrecioTarifaTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloPrecioTarifaTableCompanion(')
+    return (StringBuffer('ArticuloSustitutivoTableCompanion(')
           ..write('articuloId: $articuloId, ')
-          ..write('tarifaId: $tarifaId, ')
-          ..write('tarifaDescripcion: $tarifaDescripcion, ')
-          ..write('cantidadDesde: $cantidadDesde, ')
-          ..write('precio: $precio, ')
-          ..write('divisaId: $divisaId, ')
-          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('articuloSustitutivoId: $articuloSustitutivoId, ')
+          ..write('orden: $orden, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -13784,21 +13648,21 @@ class $ArticuloPrecioTarifaTableTable extends ArticuloPrecioTarifaTable
   }
 }
 
-class ArticuloGrupoNetoTableCompanion
-    extends UpdateCompanion<ArticuloGrupoNetoDTO> {
+class ArticuloPrecioTarifaTableCompanion
+    extends UpdateCompanion<ArticuloPrecioTarifaDTO> {
   final Value<String> articuloId;
-  final Value<String> grupoNetoId;
-  final Value<String> grupoNetoDescripcion;
+  final Value<String> tarifaId;
+  final Value<String?> tarifaDescripcion;
   final Value<int> cantidadDesde;
   final Value<double> precio;
   final Value<String> divisaId;
   final Value<int> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const ArticuloGrupoNetoTableCompanion({
+  const ArticuloPrecioTarifaTableCompanion({
     this.articuloId = const Value.absent(),
-    this.grupoNetoId = const Value.absent(),
-    this.grupoNetoDescripcion = const Value.absent(),
+    this.tarifaId = const Value.absent(),
+    this.tarifaDescripcion = const Value.absent(),
     this.cantidadDesde = const Value.absent(),
     this.precio = const Value.absent(),
     this.divisaId = const Value.absent(),
@@ -13806,10 +13670,10 @@ class ArticuloGrupoNetoTableCompanion
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  ArticuloGrupoNetoTableCompanion.insert({
+  ArticuloPrecioTarifaTableCompanion.insert({
     required String articuloId,
-    required String grupoNetoId,
-    required String grupoNetoDescripcion,
+    required String tarifaId,
+    this.tarifaDescripcion = const Value.absent(),
     required int cantidadDesde,
     required double precio,
     required String divisaId,
@@ -13817,17 +13681,16 @@ class ArticuloGrupoNetoTableCompanion
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : articuloId = Value(articuloId),
-        grupoNetoId = Value(grupoNetoId),
-        grupoNetoDescripcion = Value(grupoNetoDescripcion),
+        tarifaId = Value(tarifaId),
         cantidadDesde = Value(cantidadDesde),
         precio = Value(precio),
         divisaId = Value(divisaId),
         tipoPrecio = Value(tipoPrecio),
         lastUpdated = Value(lastUpdated);
-  static Insertable<ArticuloGrupoNetoDTO> custom({
+  static Insertable<ArticuloPrecioTarifaDTO> custom({
     Expression<String>? articuloId,
-    Expression<String>? grupoNetoId,
-    Expression<String>? grupoNetoDescripcion,
+    Expression<String>? tarifaId,
+    Expression<String>? tarifaDescripcion,
     Expression<int>? cantidadDesde,
     Expression<double>? precio,
     Expression<String>? divisaId,
@@ -13837,9 +13700,8 @@ class ArticuloGrupoNetoTableCompanion
   }) {
     return RawValuesInsertable({
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
-      if (grupoNetoDescripcion != null)
-        'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
+      if (tarifaId != null) 'TARIFA_ID': tarifaId,
+      if (tarifaDescripcion != null) 'TARIFA_DESCRIPCION': tarifaDescripcion,
       if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
       if (precio != null) 'PRECIO': precio,
       if (divisaId != null) 'DIVISA_ID': divisaId,
@@ -13849,20 +13711,20 @@ class ArticuloGrupoNetoTableCompanion
     });
   }
 
-  ArticuloGrupoNetoTableCompanion copyWith(
+  ArticuloPrecioTarifaTableCompanion copyWith(
       {Value<String>? articuloId,
-      Value<String>? grupoNetoId,
-      Value<String>? grupoNetoDescripcion,
+      Value<String>? tarifaId,
+      Value<String?>? tarifaDescripcion,
       Value<int>? cantidadDesde,
       Value<double>? precio,
       Value<String>? divisaId,
       Value<int>? tipoPrecio,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return ArticuloGrupoNetoTableCompanion(
+    return ArticuloPrecioTarifaTableCompanion(
       articuloId: articuloId ?? this.articuloId,
-      grupoNetoId: grupoNetoId ?? this.grupoNetoId,
-      grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
+      tarifaId: tarifaId ?? this.tarifaId,
+      tarifaDescripcion: tarifaDescripcion ?? this.tarifaDescripcion,
       cantidadDesde: cantidadDesde ?? this.cantidadDesde,
       precio: precio ?? this.precio,
       divisaId: divisaId ?? this.divisaId,
@@ -13878,12 +13740,11 @@ class ArticuloGrupoNetoTableCompanion
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (grupoNetoId.present) {
-      map['GRUPO_NETO_ID'] = Variable<String>(grupoNetoId.value);
+    if (tarifaId.present) {
+      map['TARIFA_ID'] = Variable<String>(tarifaId.value);
     }
-    if (grupoNetoDescripcion.present) {
-      map['GRUPO_NETO_DESCRIPCION'] =
-          Variable<String>(grupoNetoDescripcion.value);
+    if (tarifaDescripcion.present) {
+      map['TARIFA_DESCRIPCION'] = Variable<String>(tarifaDescripcion.value);
     }
     if (cantidadDesde.present) {
       map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
@@ -13908,10 +13769,10 @@ class ArticuloGrupoNetoTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ArticuloGrupoNetoTableCompanion(')
+    return (StringBuffer('ArticuloPrecioTarifaTableCompanion(')
           ..write('articuloId: $articuloId, ')
-          ..write('grupoNetoId: $grupoNetoId, ')
-          ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
+          ..write('tarifaId: $tarifaId, ')
+          ..write('tarifaDescripcion: $tarifaDescripcion, ')
           ..write('cantidadDesde: $cantidadDesde, ')
           ..write('precio: $precio, ')
           ..write('divisaId: $divisaId, ')
@@ -14108,85 +13969,89 @@ class $ArticuloGrupoNetoTableTable extends ArticuloGrupoNetoTable
   }
 }
 
-class EstadisticasClienteUsuarioVentasTableCompanion
-    extends UpdateCompanion<EstadisticasVentaClienteUsuarioDTO> {
-  final Value<double> anyo;
-  final Value<double> mes;
-  final Value<String> clienteId;
+class ArticuloGrupoNetoTableCompanion
+    extends UpdateCompanion<ArticuloGrupoNetoDTO> {
   final Value<String> articuloId;
-  final Value<double?> unidades;
-  final Value<double?> importe;
-  final Value<double?> coste;
+  final Value<String> grupoNetoId;
+  final Value<String> grupoNetoDescripcion;
+  final Value<int> cantidadDesde;
+  final Value<double> precio;
+  final Value<String> divisaId;
+  final Value<int> tipoPrecio;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const EstadisticasClienteUsuarioVentasTableCompanion({
-    this.anyo = const Value.absent(),
-    this.mes = const Value.absent(),
-    this.clienteId = const Value.absent(),
+  const ArticuloGrupoNetoTableCompanion({
     this.articuloId = const Value.absent(),
-    this.unidades = const Value.absent(),
-    this.importe = const Value.absent(),
-    this.coste = const Value.absent(),
+    this.grupoNetoId = const Value.absent(),
+    this.grupoNetoDescripcion = const Value.absent(),
+    this.cantidadDesde = const Value.absent(),
+    this.precio = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  EstadisticasClienteUsuarioVentasTableCompanion.insert({
-    required double anyo,
-    required double mes,
-    required String clienteId,
+  ArticuloGrupoNetoTableCompanion.insert({
     required String articuloId,
-    this.unidades = const Value.absent(),
-    this.importe = const Value.absent(),
-    this.coste = const Value.absent(),
+    required String grupoNetoId,
+    required String grupoNetoDescripcion,
+    required int cantidadDesde,
+    required double precio,
+    required String divisaId,
+    required int tipoPrecio,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : anyo = Value(anyo),
-        mes = Value(mes),
-        clienteId = Value(clienteId),
-        articuloId = Value(articuloId),
+  })  : articuloId = Value(articuloId),
+        grupoNetoId = Value(grupoNetoId),
+        grupoNetoDescripcion = Value(grupoNetoDescripcion),
+        cantidadDesde = Value(cantidadDesde),
+        precio = Value(precio),
+        divisaId = Value(divisaId),
+        tipoPrecio = Value(tipoPrecio),
         lastUpdated = Value(lastUpdated);
-  static Insertable<EstadisticasVentaClienteUsuarioDTO> custom({
-    Expression<double>? anyo,
-    Expression<double>? mes,
-    Expression<String>? clienteId,
+  static Insertable<ArticuloGrupoNetoDTO> custom({
     Expression<String>? articuloId,
-    Expression<double>? unidades,
-    Expression<double>? importe,
-    Expression<double>? coste,
+    Expression<String>? grupoNetoId,
+    Expression<String>? grupoNetoDescripcion,
+    Expression<int>? cantidadDesde,
+    Expression<double>? precio,
+    Expression<String>? divisaId,
+    Expression<int>? tipoPrecio,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (anyo != null) 'ANYO': anyo,
-      if (mes != null) 'MES': mes,
-      if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (unidades != null) 'UNIDADES': unidades,
-      if (importe != null) 'IMPORTE': importe,
-      if (coste != null) 'COSTE': coste,
+      if (grupoNetoId != null) 'GRUPO_NETO_ID': grupoNetoId,
+      if (grupoNetoDescripcion != null)
+        'GRUPO_NETO_DESCRIPCION': grupoNetoDescripcion,
+      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
+      if (precio != null) 'PRECIO': precio,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  EstadisticasClienteUsuarioVentasTableCompanion copyWith(
-      {Value<double>? anyo,
-      Value<double>? mes,
-      Value<String>? clienteId,
-      Value<String>? articuloId,
-      Value<double?>? unidades,
-      Value<double?>? importe,
-      Value<double?>? coste,
+  ArticuloGrupoNetoTableCompanion copyWith(
+      {Value<String>? articuloId,
+      Value<String>? grupoNetoId,
+      Value<String>? grupoNetoDescripcion,
+      Value<int>? cantidadDesde,
+      Value<double>? precio,
+      Value<String>? divisaId,
+      Value<int>? tipoPrecio,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return EstadisticasClienteUsuarioVentasTableCompanion(
-      anyo: anyo ?? this.anyo,
-      mes: mes ?? this.mes,
-      clienteId: clienteId ?? this.clienteId,
+    return ArticuloGrupoNetoTableCompanion(
       articuloId: articuloId ?? this.articuloId,
-      unidades: unidades ?? this.unidades,
-      importe: importe ?? this.importe,
-      coste: coste ?? this.coste,
+      grupoNetoId: grupoNetoId ?? this.grupoNetoId,
+      grupoNetoDescripcion: grupoNetoDescripcion ?? this.grupoNetoDescripcion,
+      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
+      precio: precio ?? this.precio,
+      divisaId: divisaId ?? this.divisaId,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -14195,26 +14060,27 @@ class EstadisticasClienteUsuarioVentasTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (anyo.present) {
-      map['ANYO'] = Variable<double>(anyo.value);
-    }
-    if (mes.present) {
-      map['MES'] = Variable<double>(mes.value);
-    }
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
-    }
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (unidades.present) {
-      map['UNIDADES'] = Variable<double>(unidades.value);
+    if (grupoNetoId.present) {
+      map['GRUPO_NETO_ID'] = Variable<String>(grupoNetoId.value);
     }
-    if (importe.present) {
-      map['IMPORTE'] = Variable<double>(importe.value);
+    if (grupoNetoDescripcion.present) {
+      map['GRUPO_NETO_DESCRIPCION'] =
+          Variable<String>(grupoNetoDescripcion.value);
     }
-    if (coste.present) {
-      map['COSTE'] = Variable<double>(coste.value);
+    if (cantidadDesde.present) {
+      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
+    }
+    if (precio.present) {
+      map['PRECIO'] = Variable<double>(precio.value);
+    }
+    if (divisaId.present) {
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
+    }
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -14227,14 +14093,14 @@ class EstadisticasClienteUsuarioVentasTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('EstadisticasClienteUsuarioVentasTableCompanion(')
-          ..write('anyo: $anyo, ')
-          ..write('mes: $mes, ')
-          ..write('clienteId: $clienteId, ')
+    return (StringBuffer('ArticuloGrupoNetoTableCompanion(')
           ..write('articuloId: $articuloId, ')
-          ..write('unidades: $unidades, ')
-          ..write('importe: $importe, ')
-          ..write('coste: $coste, ')
+          ..write('grupoNetoId: $grupoNetoId, ')
+          ..write('grupoNetoDescripcion: $grupoNetoDescripcion, ')
+          ..write('cantidadDesde: $cantidadDesde, ')
+          ..write('precio: $precio, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -14414,120 +14280,85 @@ class $EstadisticasClienteUsuarioVentasTableTable
   }
 }
 
-class EstadisticasUltimosPreciosTableCompanion
-    extends UpdateCompanion<EstadisticasUltimosPreciosDTO> {
+class EstadisticasClienteUsuarioVentasTableCompanion
+    extends UpdateCompanion<EstadisticasVentaClienteUsuarioDTO> {
+  final Value<double> anyo;
+  final Value<double> mes;
   final Value<String> clienteId;
   final Value<String> articuloId;
-  final Value<int> linea;
-  final Value<int> cantidad;
-  final Value<DateTime> fecha;
-  final Value<double> precioDivisa;
-  final Value<int> tipoPrecio;
-  final Value<String> divisaId;
-  final Value<double> descuento1;
-  final Value<double> descuento2;
-  final Value<double> descuento3;
+  final Value<double?> unidades;
+  final Value<double?> importe;
+  final Value<double?> coste;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const EstadisticasUltimosPreciosTableCompanion({
+  const EstadisticasClienteUsuarioVentasTableCompanion({
+    this.anyo = const Value.absent(),
+    this.mes = const Value.absent(),
     this.clienteId = const Value.absent(),
     this.articuloId = const Value.absent(),
-    this.linea = const Value.absent(),
-    this.cantidad = const Value.absent(),
-    this.fecha = const Value.absent(),
-    this.precioDivisa = const Value.absent(),
-    this.tipoPrecio = const Value.absent(),
-    this.divisaId = const Value.absent(),
-    this.descuento1 = const Value.absent(),
-    this.descuento2 = const Value.absent(),
-    this.descuento3 = const Value.absent(),
+    this.unidades = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.coste = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  EstadisticasUltimosPreciosTableCompanion.insert({
+  EstadisticasClienteUsuarioVentasTableCompanion.insert({
+    required double anyo,
+    required double mes,
     required String clienteId,
     required String articuloId,
-    required int linea,
-    required int cantidad,
-    required DateTime fecha,
-    required double precioDivisa,
-    required int tipoPrecio,
-    required String divisaId,
-    required double descuento1,
-    required double descuento2,
-    required double descuento3,
+    this.unidades = const Value.absent(),
+    this.importe = const Value.absent(),
+    this.coste = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : clienteId = Value(clienteId),
+  })  : anyo = Value(anyo),
+        mes = Value(mes),
+        clienteId = Value(clienteId),
         articuloId = Value(articuloId),
-        linea = Value(linea),
-        cantidad = Value(cantidad),
-        fecha = Value(fecha),
-        precioDivisa = Value(precioDivisa),
-        tipoPrecio = Value(tipoPrecio),
-        divisaId = Value(divisaId),
-        descuento1 = Value(descuento1),
-        descuento2 = Value(descuento2),
-        descuento3 = Value(descuento3),
         lastUpdated = Value(lastUpdated);
-  static Insertable<EstadisticasUltimosPreciosDTO> custom({
+  static Insertable<EstadisticasVentaClienteUsuarioDTO> custom({
+    Expression<double>? anyo,
+    Expression<double>? mes,
     Expression<String>? clienteId,
     Expression<String>? articuloId,
-    Expression<int>? linea,
-    Expression<int>? cantidad,
-    Expression<DateTime>? fecha,
-    Expression<double>? precioDivisa,
-    Expression<int>? tipoPrecio,
-    Expression<String>? divisaId,
-    Expression<double>? descuento1,
-    Expression<double>? descuento2,
-    Expression<double>? descuento3,
+    Expression<double>? unidades,
+    Expression<double>? importe,
+    Expression<double>? coste,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
+      if (anyo != null) 'ANYO': anyo,
+      if (mes != null) 'MES': mes,
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (linea != null) 'LINEA': linea,
-      if (cantidad != null) 'CANTIDAD': cantidad,
-      if (fecha != null) 'FECHA': fecha,
-      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
-      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
-      if (divisaId != null) 'DIVISA_ID': divisaId,
-      if (descuento1 != null) 'DESCUENTO1': descuento1,
-      if (descuento2 != null) 'DESCUENTO2': descuento2,
-      if (descuento3 != null) 'DESCUENTO3': descuento3,
+      if (unidades != null) 'UNIDADES': unidades,
+      if (importe != null) 'IMPORTE': importe,
+      if (coste != null) 'COSTE': coste,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  EstadisticasUltimosPreciosTableCompanion copyWith(
-      {Value<String>? clienteId,
+  EstadisticasClienteUsuarioVentasTableCompanion copyWith(
+      {Value<double>? anyo,
+      Value<double>? mes,
+      Value<String>? clienteId,
       Value<String>? articuloId,
-      Value<int>? linea,
-      Value<int>? cantidad,
-      Value<DateTime>? fecha,
-      Value<double>? precioDivisa,
-      Value<int>? tipoPrecio,
-      Value<String>? divisaId,
-      Value<double>? descuento1,
-      Value<double>? descuento2,
-      Value<double>? descuento3,
+      Value<double?>? unidades,
+      Value<double?>? importe,
+      Value<double?>? coste,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return EstadisticasUltimosPreciosTableCompanion(
+    return EstadisticasClienteUsuarioVentasTableCompanion(
+      anyo: anyo ?? this.anyo,
+      mes: mes ?? this.mes,
       clienteId: clienteId ?? this.clienteId,
       articuloId: articuloId ?? this.articuloId,
-      linea: linea ?? this.linea,
-      cantidad: cantidad ?? this.cantidad,
-      fecha: fecha ?? this.fecha,
-      precioDivisa: precioDivisa ?? this.precioDivisa,
-      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
-      divisaId: divisaId ?? this.divisaId,
-      descuento1: descuento1 ?? this.descuento1,
-      descuento2: descuento2 ?? this.descuento2,
-      descuento3: descuento3 ?? this.descuento3,
+      unidades: unidades ?? this.unidades,
+      importe: importe ?? this.importe,
+      coste: coste ?? this.coste,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -14536,38 +14367,26 @@ class EstadisticasUltimosPreciosTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (anyo.present) {
+      map['ANYO'] = Variable<double>(anyo.value);
+    }
+    if (mes.present) {
+      map['MES'] = Variable<double>(mes.value);
+    }
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
     if (articuloId.present) {
       map['ARTICULO_ID'] = Variable<String>(articuloId.value);
     }
-    if (linea.present) {
-      map['LINEA'] = Variable<int>(linea.value);
+    if (unidades.present) {
+      map['UNIDADES'] = Variable<double>(unidades.value);
     }
-    if (cantidad.present) {
-      map['CANTIDAD'] = Variable<int>(cantidad.value);
+    if (importe.present) {
+      map['IMPORTE'] = Variable<double>(importe.value);
     }
-    if (fecha.present) {
-      map['FECHA'] = Variable<DateTime>(fecha.value);
-    }
-    if (precioDivisa.present) {
-      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
-    }
-    if (tipoPrecio.present) {
-      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
-    }
-    if (divisaId.present) {
-      map['DIVISA_ID'] = Variable<String>(divisaId.value);
-    }
-    if (descuento1.present) {
-      map['DESCUENTO1'] = Variable<double>(descuento1.value);
-    }
-    if (descuento2.present) {
-      map['DESCUENTO2'] = Variable<double>(descuento2.value);
-    }
-    if (descuento3.present) {
-      map['DESCUENTO3'] = Variable<double>(descuento3.value);
+    if (coste.present) {
+      map['COSTE'] = Variable<double>(coste.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -14580,18 +14399,14 @@ class EstadisticasUltimosPreciosTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('EstadisticasUltimosPreciosTableCompanion(')
+    return (StringBuffer('EstadisticasClienteUsuarioVentasTableCompanion(')
+          ..write('anyo: $anyo, ')
+          ..write('mes: $mes, ')
           ..write('clienteId: $clienteId, ')
           ..write('articuloId: $articuloId, ')
-          ..write('linea: $linea, ')
-          ..write('cantidad: $cantidad, ')
-          ..write('fecha: $fecha, ')
-          ..write('precioDivisa: $precioDivisa, ')
-          ..write('tipoPrecio: $tipoPrecio, ')
-          ..write('divisaId: $divisaId, ')
-          ..write('descuento1: $descuento1, ')
-          ..write('descuento2: $descuento2, ')
-          ..write('descuento3: $descuento3, ')
+          ..write('unidades: $unidades, ')
+          ..write('importe: $importe, ')
+          ..write('coste: $coste, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -14847,158 +14662,120 @@ class $EstadisticasUltimosPreciosTableTable
   }
 }
 
-class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
-  final Value<String> id;
+class EstadisticasUltimosPreciosTableCompanion
+    extends UpdateCompanion<EstadisticasUltimosPreciosDTO> {
+  final Value<String> clienteId;
+  final Value<String> articuloId;
+  final Value<int> linea;
+  final Value<int> cantidad;
   final Value<DateTime> fecha;
-  final Value<String?> clienteId;
-  final Value<String> isClienteProvisional;
-  final Value<String?> clienteProvisionalNombre;
-  final Value<String?> clienteProvisionalEmail;
-  final Value<String?> clienteProvisionalTelefono;
-  final Value<String?> clienteProvisionalPoblacion;
-  final Value<String> numEmpl;
-  final Value<String?> contacto;
-  final Value<String?> atendidoPor;
-  final Value<String?> resumen;
-  final Value<String?> marcasCompetencia;
-  final Value<double> latitud;
-  final Value<double> longitud;
-  final Value<String?> visitaAppId;
+  final Value<double> precioDivisa;
+  final Value<int> tipoPrecio;
+  final Value<String> divisaId;
+  final Value<double> descuento1;
+  final Value<double> descuento2;
+  final Value<double> descuento3;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const VisitaTableCompanion({
-    this.id = const Value.absent(),
-    this.fecha = const Value.absent(),
+  const EstadisticasUltimosPreciosTableCompanion({
     this.clienteId = const Value.absent(),
-    this.isClienteProvisional = const Value.absent(),
-    this.clienteProvisionalNombre = const Value.absent(),
-    this.clienteProvisionalEmail = const Value.absent(),
-    this.clienteProvisionalTelefono = const Value.absent(),
-    this.clienteProvisionalPoblacion = const Value.absent(),
-    this.numEmpl = const Value.absent(),
-    this.contacto = const Value.absent(),
-    this.atendidoPor = const Value.absent(),
-    this.resumen = const Value.absent(),
-    this.marcasCompetencia = const Value.absent(),
-    this.latitud = const Value.absent(),
-    this.longitud = const Value.absent(),
-    this.visitaAppId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.linea = const Value.absent(),
+    this.cantidad = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.precioDivisa = const Value.absent(),
+    this.tipoPrecio = const Value.absent(),
+    this.divisaId = const Value.absent(),
+    this.descuento1 = const Value.absent(),
+    this.descuento2 = const Value.absent(),
+    this.descuento3 = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  VisitaTableCompanion.insert({
-    required String id,
+  EstadisticasUltimosPreciosTableCompanion.insert({
+    required String clienteId,
+    required String articuloId,
+    required int linea,
+    required int cantidad,
     required DateTime fecha,
-    this.clienteId = const Value.absent(),
-    required String isClienteProvisional,
-    this.clienteProvisionalNombre = const Value.absent(),
-    this.clienteProvisionalEmail = const Value.absent(),
-    this.clienteProvisionalTelefono = const Value.absent(),
-    this.clienteProvisionalPoblacion = const Value.absent(),
-    required String numEmpl,
-    this.contacto = const Value.absent(),
-    this.atendidoPor = const Value.absent(),
-    this.resumen = const Value.absent(),
-    this.marcasCompetencia = const Value.absent(),
-    required double latitud,
-    required double longitud,
-    this.visitaAppId = const Value.absent(),
+    required double precioDivisa,
+    required int tipoPrecio,
+    required String divisaId,
+    required double descuento1,
+    required double descuento2,
+    required double descuento3,
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : id = Value(id),
+  })  : clienteId = Value(clienteId),
+        articuloId = Value(articuloId),
+        linea = Value(linea),
+        cantidad = Value(cantidad),
         fecha = Value(fecha),
-        isClienteProvisional = Value(isClienteProvisional),
-        numEmpl = Value(numEmpl),
-        latitud = Value(latitud),
-        longitud = Value(longitud),
+        precioDivisa = Value(precioDivisa),
+        tipoPrecio = Value(tipoPrecio),
+        divisaId = Value(divisaId),
+        descuento1 = Value(descuento1),
+        descuento2 = Value(descuento2),
+        descuento3 = Value(descuento3),
         lastUpdated = Value(lastUpdated);
-  static Insertable<VisitaDTO> custom({
-    Expression<String>? id,
-    Expression<DateTime>? fecha,
+  static Insertable<EstadisticasUltimosPreciosDTO> custom({
     Expression<String>? clienteId,
-    Expression<String>? isClienteProvisional,
-    Expression<String>? clienteProvisionalNombre,
-    Expression<String>? clienteProvisionalEmail,
-    Expression<String>? clienteProvisionalTelefono,
-    Expression<String>? clienteProvisionalPoblacion,
-    Expression<String>? numEmpl,
-    Expression<String>? contacto,
-    Expression<String>? atendidoPor,
-    Expression<String>? resumen,
-    Expression<String>? marcasCompetencia,
-    Expression<double>? latitud,
-    Expression<double>? longitud,
-    Expression<String>? visitaAppId,
+    Expression<String>? articuloId,
+    Expression<int>? linea,
+    Expression<int>? cantidad,
+    Expression<DateTime>? fecha,
+    Expression<double>? precioDivisa,
+    Expression<int>? tipoPrecio,
+    Expression<String>? divisaId,
+    Expression<double>? descuento1,
+    Expression<double>? descuento2,
+    Expression<double>? descuento3,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'VISITA_ID': id,
-      if (fecha != null) 'FECHA': fecha,
       if (clienteId != null) 'CLIENTE_ID': clienteId,
-      if (isClienteProvisional != null)
-        'CLIENTE_POTENCIAL_SN': isClienteProvisional,
-      if (clienteProvisionalNombre != null)
-        'CLIENTE_POTENCIAL_NOMBRE': clienteProvisionalNombre,
-      if (clienteProvisionalEmail != null)
-        'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
-      if (clienteProvisionalTelefono != null)
-        'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
-      if (clienteProvisionalPoblacion != null)
-        'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
-      if (numEmpl != null) 'NUM_EMPL': numEmpl,
-      if (contacto != null) 'CONTACTO': contacto,
-      if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
-      if (resumen != null) 'RESUMEN': resumen,
-      if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
-      if (latitud != null) 'LATITUD': latitud,
-      if (longitud != null) 'LONGITUD': longitud,
-      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (linea != null) 'LINEA': linea,
+      if (cantidad != null) 'CANTIDAD': cantidad,
+      if (fecha != null) 'FECHA': fecha,
+      if (precioDivisa != null) 'PRECIO_DIVISA': precioDivisa,
+      if (tipoPrecio != null) 'TIPO_PRECIO': tipoPrecio,
+      if (divisaId != null) 'DIVISA_ID': divisaId,
+      if (descuento1 != null) 'DESCUENTO1': descuento1,
+      if (descuento2 != null) 'DESCUENTO2': descuento2,
+      if (descuento3 != null) 'DESCUENTO3': descuento3,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  VisitaTableCompanion copyWith(
-      {Value<String>? id,
+  EstadisticasUltimosPreciosTableCompanion copyWith(
+      {Value<String>? clienteId,
+      Value<String>? articuloId,
+      Value<int>? linea,
+      Value<int>? cantidad,
       Value<DateTime>? fecha,
-      Value<String?>? clienteId,
-      Value<String>? isClienteProvisional,
-      Value<String?>? clienteProvisionalNombre,
-      Value<String?>? clienteProvisionalEmail,
-      Value<String?>? clienteProvisionalTelefono,
-      Value<String?>? clienteProvisionalPoblacion,
-      Value<String>? numEmpl,
-      Value<String?>? contacto,
-      Value<String?>? atendidoPor,
-      Value<String?>? resumen,
-      Value<String?>? marcasCompetencia,
-      Value<double>? latitud,
-      Value<double>? longitud,
-      Value<String?>? visitaAppId,
+      Value<double>? precioDivisa,
+      Value<int>? tipoPrecio,
+      Value<String>? divisaId,
+      Value<double>? descuento1,
+      Value<double>? descuento2,
+      Value<double>? descuento3,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return VisitaTableCompanion(
-      id: id ?? this.id,
-      fecha: fecha ?? this.fecha,
+    return EstadisticasUltimosPreciosTableCompanion(
       clienteId: clienteId ?? this.clienteId,
-      isClienteProvisional: isClienteProvisional ?? this.isClienteProvisional,
-      clienteProvisionalNombre:
-          clienteProvisionalNombre ?? this.clienteProvisionalNombre,
-      clienteProvisionalEmail:
-          clienteProvisionalEmail ?? this.clienteProvisionalEmail,
-      clienteProvisionalTelefono:
-          clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
-      clienteProvisionalPoblacion:
-          clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
-      numEmpl: numEmpl ?? this.numEmpl,
-      contacto: contacto ?? this.contacto,
-      atendidoPor: atendidoPor ?? this.atendidoPor,
-      resumen: resumen ?? this.resumen,
-      marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
-      latitud: latitud ?? this.latitud,
-      longitud: longitud ?? this.longitud,
-      visitaAppId: visitaAppId ?? this.visitaAppId,
+      articuloId: articuloId ?? this.articuloId,
+      linea: linea ?? this.linea,
+      cantidad: cantidad ?? this.cantidad,
+      fecha: fecha ?? this.fecha,
+      precioDivisa: precioDivisa ?? this.precioDivisa,
+      tipoPrecio: tipoPrecio ?? this.tipoPrecio,
+      divisaId: divisaId ?? this.divisaId,
+      descuento1: descuento1 ?? this.descuento1,
+      descuento2: descuento2 ?? this.descuento2,
+      descuento3: descuento3 ?? this.descuento3,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -15007,58 +14784,38 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['VISITA_ID'] = Variable<String>(id.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    }
+    if (linea.present) {
+      map['LINEA'] = Variable<int>(linea.value);
+    }
+    if (cantidad.present) {
+      map['CANTIDAD'] = Variable<int>(cantidad.value);
     }
     if (fecha.present) {
       map['FECHA'] = Variable<DateTime>(fecha.value);
     }
-    if (clienteId.present) {
-      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    if (precioDivisa.present) {
+      map['PRECIO_DIVISA'] = Variable<double>(precioDivisa.value);
     }
-    if (isClienteProvisional.present) {
-      map['CLIENTE_POTENCIAL_SN'] =
-          Variable<String>(isClienteProvisional.value);
+    if (tipoPrecio.present) {
+      map['TIPO_PRECIO'] = Variable<int>(tipoPrecio.value);
     }
-    if (clienteProvisionalNombre.present) {
-      map['CLIENTE_POTENCIAL_NOMBRE'] =
-          Variable<String>(clienteProvisionalNombre.value);
+    if (divisaId.present) {
+      map['DIVISA_ID'] = Variable<String>(divisaId.value);
     }
-    if (clienteProvisionalEmail.present) {
-      map['CLIENTE_POTENCIAL_EMAIL'] =
-          Variable<String>(clienteProvisionalEmail.value);
+    if (descuento1.present) {
+      map['DESCUENTO1'] = Variable<double>(descuento1.value);
     }
-    if (clienteProvisionalTelefono.present) {
-      map['CLIENTE_POTENCIAL_TELEFONO'] =
-          Variable<String>(clienteProvisionalTelefono.value);
+    if (descuento2.present) {
+      map['DESCUENTO2'] = Variable<double>(descuento2.value);
     }
-    if (clienteProvisionalPoblacion.present) {
-      map['CLIENTE_POTENCIAL_POBLACION'] =
-          Variable<String>(clienteProvisionalPoblacion.value);
-    }
-    if (numEmpl.present) {
-      map['NUM_EMPL'] = Variable<String>(numEmpl.value);
-    }
-    if (contacto.present) {
-      map['CONTACTO'] = Variable<String>(contacto.value);
-    }
-    if (atendidoPor.present) {
-      map['ATENDIDO_POR'] = Variable<String>(atendidoPor.value);
-    }
-    if (resumen.present) {
-      map['RESUMEN'] = Variable<String>(resumen.value);
-    }
-    if (marcasCompetencia.present) {
-      map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
-    }
-    if (latitud.present) {
-      map['LATITUD'] = Variable<double>(latitud.value);
-    }
-    if (longitud.present) {
-      map['LONGITUD'] = Variable<double>(longitud.value);
-    }
-    if (visitaAppId.present) {
-      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
+    if (descuento3.present) {
+      map['DESCUENTO3'] = Variable<double>(descuento3.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -15071,23 +14828,18 @@ class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('VisitaTableCompanion(')
-          ..write('id: $id, ')
-          ..write('fecha: $fecha, ')
+    return (StringBuffer('EstadisticasUltimosPreciosTableCompanion(')
           ..write('clienteId: $clienteId, ')
-          ..write('isClienteProvisional: $isClienteProvisional, ')
-          ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
-          ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
-          ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
-          ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
-          ..write('numEmpl: $numEmpl, ')
-          ..write('contacto: $contacto, ')
-          ..write('atendidoPor: $atendidoPor, ')
-          ..write('resumen: $resumen, ')
-          ..write('marcasCompetencia: $marcasCompetencia, ')
-          ..write('latitud: $latitud, ')
-          ..write('longitud: $longitud, ')
-          ..write('visitaAppId: $visitaAppId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('linea: $linea, ')
+          ..write('cantidad: $cantidad, ')
+          ..write('fecha: $fecha, ')
+          ..write('precioDivisa: $precioDivisa, ')
+          ..write('tipoPrecio: $tipoPrecio, ')
+          ..write('divisaId: $divisaId, ')
+          ..write('descuento1: $descuento1, ')
+          ..write('descuento2: $descuento2, ')
+          ..write('descuento3: $descuento3, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -15404,77 +15156,158 @@ class $VisitaTableTable extends VisitaTable
   }
 }
 
-class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
-  final Value<String> empresaId;
-  final Value<String> pedidoVentaId;
-  final Value<String> albaranId;
-  final Value<DateTime> fechaAlbaran;
-  final Value<String?> agencia;
-  final Value<String?> trackId;
+class VisitaTableCompanion extends UpdateCompanion<VisitaDTO> {
+  final Value<String> id;
+  final Value<DateTime> fecha;
+  final Value<String?> clienteId;
+  final Value<String> isClienteProvisional;
+  final Value<String?> clienteProvisionalNombre;
+  final Value<String?> clienteProvisionalEmail;
+  final Value<String?> clienteProvisionalTelefono;
+  final Value<String?> clienteProvisionalPoblacion;
+  final Value<String> numEmpl;
+  final Value<String?> contacto;
+  final Value<String?> atendidoPor;
+  final Value<String?> resumen;
+  final Value<String?> marcasCompetencia;
+  final Value<double> latitud;
+  final Value<double> longitud;
+  final Value<String?> visitaAppId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const PedidoAlbaranTableCompanion({
-    this.empresaId = const Value.absent(),
-    this.pedidoVentaId = const Value.absent(),
-    this.albaranId = const Value.absent(),
-    this.fechaAlbaran = const Value.absent(),
-    this.agencia = const Value.absent(),
-    this.trackId = const Value.absent(),
+  const VisitaTableCompanion({
+    this.id = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.isClienteProvisional = const Value.absent(),
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
+    this.numEmpl = const Value.absent(),
+    this.contacto = const Value.absent(),
+    this.atendidoPor = const Value.absent(),
+    this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
+    this.latitud = const Value.absent(),
+    this.longitud = const Value.absent(),
+    this.visitaAppId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  PedidoAlbaranTableCompanion.insert({
-    required String empresaId,
-    required String pedidoVentaId,
-    required String albaranId,
-    required DateTime fechaAlbaran,
-    this.agencia = const Value.absent(),
-    this.trackId = const Value.absent(),
+  VisitaTableCompanion.insert({
+    required String id,
+    required DateTime fecha,
+    this.clienteId = const Value.absent(),
+    required String isClienteProvisional,
+    this.clienteProvisionalNombre = const Value.absent(),
+    this.clienteProvisionalEmail = const Value.absent(),
+    this.clienteProvisionalTelefono = const Value.absent(),
+    this.clienteProvisionalPoblacion = const Value.absent(),
+    required String numEmpl,
+    this.contacto = const Value.absent(),
+    this.atendidoPor = const Value.absent(),
+    this.resumen = const Value.absent(),
+    this.marcasCompetencia = const Value.absent(),
+    required double latitud,
+    required double longitud,
+    this.visitaAppId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : empresaId = Value(empresaId),
-        pedidoVentaId = Value(pedidoVentaId),
-        albaranId = Value(albaranId),
-        fechaAlbaran = Value(fechaAlbaran),
+  })  : id = Value(id),
+        fecha = Value(fecha),
+        isClienteProvisional = Value(isClienteProvisional),
+        numEmpl = Value(numEmpl),
+        latitud = Value(latitud),
+        longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
-  static Insertable<PedidoAlbaranDTO> custom({
-    Expression<String>? empresaId,
-    Expression<String>? pedidoVentaId,
-    Expression<String>? albaranId,
-    Expression<DateTime>? fechaAlbaran,
-    Expression<String>? agencia,
-    Expression<String>? trackId,
+  static Insertable<VisitaDTO> custom({
+    Expression<String>? id,
+    Expression<DateTime>? fecha,
+    Expression<String>? clienteId,
+    Expression<String>? isClienteProvisional,
+    Expression<String>? clienteProvisionalNombre,
+    Expression<String>? clienteProvisionalEmail,
+    Expression<String>? clienteProvisionalTelefono,
+    Expression<String>? clienteProvisionalPoblacion,
+    Expression<String>? numEmpl,
+    Expression<String>? contacto,
+    Expression<String>? atendidoPor,
+    Expression<String>? resumen,
+    Expression<String>? marcasCompetencia,
+    Expression<double>? latitud,
+    Expression<double>? longitud,
+    Expression<String>? visitaAppId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (empresaId != null) 'EMPRESA_ID': empresaId,
-      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
-      if (albaranId != null) 'ALBARAN_ID': albaranId,
-      if (fechaAlbaran != null) 'FECHA_ALBARAN': fechaAlbaran,
-      if (agencia != null) 'AGENCIA': agencia,
-      if (trackId != null) 'TRACK_ID': trackId,
+      if (id != null) 'VISITA_ID': id,
+      if (fecha != null) 'FECHA': fecha,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (isClienteProvisional != null)
+        'CLIENTE_POTENCIAL_SN': isClienteProvisional,
+      if (clienteProvisionalNombre != null)
+        'CLIENTE_POTENCIAL_NOMBRE': clienteProvisionalNombre,
+      if (clienteProvisionalEmail != null)
+        'CLIENTE_POTENCIAL_EMAIL': clienteProvisionalEmail,
+      if (clienteProvisionalTelefono != null)
+        'CLIENTE_POTENCIAL_TELEFONO': clienteProvisionalTelefono,
+      if (clienteProvisionalPoblacion != null)
+        'CLIENTE_POTENCIAL_POBLACION': clienteProvisionalPoblacion,
+      if (numEmpl != null) 'NUM_EMPL': numEmpl,
+      if (contacto != null) 'CONTACTO': contacto,
+      if (atendidoPor != null) 'ATENDIDO_POR': atendidoPor,
+      if (resumen != null) 'RESUMEN': resumen,
+      if (marcasCompetencia != null) 'MARCAS_COMPETENCIA': marcasCompetencia,
+      if (latitud != null) 'LATITUD': latitud,
+      if (longitud != null) 'LONGITUD': longitud,
+      if (visitaAppId != null) 'COD_VISITA_APP': visitaAppId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  PedidoAlbaranTableCompanion copyWith(
-      {Value<String>? empresaId,
-      Value<String>? pedidoVentaId,
-      Value<String>? albaranId,
-      Value<DateTime>? fechaAlbaran,
-      Value<String?>? agencia,
-      Value<String?>? trackId,
+  VisitaTableCompanion copyWith(
+      {Value<String>? id,
+      Value<DateTime>? fecha,
+      Value<String?>? clienteId,
+      Value<String>? isClienteProvisional,
+      Value<String?>? clienteProvisionalNombre,
+      Value<String?>? clienteProvisionalEmail,
+      Value<String?>? clienteProvisionalTelefono,
+      Value<String?>? clienteProvisionalPoblacion,
+      Value<String>? numEmpl,
+      Value<String?>? contacto,
+      Value<String?>? atendidoPor,
+      Value<String?>? resumen,
+      Value<String?>? marcasCompetencia,
+      Value<double>? latitud,
+      Value<double>? longitud,
+      Value<String?>? visitaAppId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return PedidoAlbaranTableCompanion(
-      empresaId: empresaId ?? this.empresaId,
-      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
-      albaranId: albaranId ?? this.albaranId,
-      fechaAlbaran: fechaAlbaran ?? this.fechaAlbaran,
-      agencia: agencia ?? this.agencia,
-      trackId: trackId ?? this.trackId,
+    return VisitaTableCompanion(
+      id: id ?? this.id,
+      fecha: fecha ?? this.fecha,
+      clienteId: clienteId ?? this.clienteId,
+      isClienteProvisional: isClienteProvisional ?? this.isClienteProvisional,
+      clienteProvisionalNombre:
+          clienteProvisionalNombre ?? this.clienteProvisionalNombre,
+      clienteProvisionalEmail:
+          clienteProvisionalEmail ?? this.clienteProvisionalEmail,
+      clienteProvisionalTelefono:
+          clienteProvisionalTelefono ?? this.clienteProvisionalTelefono,
+      clienteProvisionalPoblacion:
+          clienteProvisionalPoblacion ?? this.clienteProvisionalPoblacion,
+      numEmpl: numEmpl ?? this.numEmpl,
+      contacto: contacto ?? this.contacto,
+      atendidoPor: atendidoPor ?? this.atendidoPor,
+      resumen: resumen ?? this.resumen,
+      marcasCompetencia: marcasCompetencia ?? this.marcasCompetencia,
+      latitud: latitud ?? this.latitud,
+      longitud: longitud ?? this.longitud,
+      visitaAppId: visitaAppId ?? this.visitaAppId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -15483,23 +15316,58 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (empresaId.present) {
-      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    if (id.present) {
+      map['VISITA_ID'] = Variable<String>(id.value);
     }
-    if (pedidoVentaId.present) {
-      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
     }
-    if (albaranId.present) {
-      map['ALBARAN_ID'] = Variable<String>(albaranId.value);
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
-    if (fechaAlbaran.present) {
-      map['FECHA_ALBARAN'] = Variable<DateTime>(fechaAlbaran.value);
+    if (isClienteProvisional.present) {
+      map['CLIENTE_POTENCIAL_SN'] =
+          Variable<String>(isClienteProvisional.value);
     }
-    if (agencia.present) {
-      map['AGENCIA'] = Variable<String>(agencia.value);
+    if (clienteProvisionalNombre.present) {
+      map['CLIENTE_POTENCIAL_NOMBRE'] =
+          Variable<String>(clienteProvisionalNombre.value);
     }
-    if (trackId.present) {
-      map['TRACK_ID'] = Variable<String>(trackId.value);
+    if (clienteProvisionalEmail.present) {
+      map['CLIENTE_POTENCIAL_EMAIL'] =
+          Variable<String>(clienteProvisionalEmail.value);
+    }
+    if (clienteProvisionalTelefono.present) {
+      map['CLIENTE_POTENCIAL_TELEFONO'] =
+          Variable<String>(clienteProvisionalTelefono.value);
+    }
+    if (clienteProvisionalPoblacion.present) {
+      map['CLIENTE_POTENCIAL_POBLACION'] =
+          Variable<String>(clienteProvisionalPoblacion.value);
+    }
+    if (numEmpl.present) {
+      map['NUM_EMPL'] = Variable<String>(numEmpl.value);
+    }
+    if (contacto.present) {
+      map['CONTACTO'] = Variable<String>(contacto.value);
+    }
+    if (atendidoPor.present) {
+      map['ATENDIDO_POR'] = Variable<String>(atendidoPor.value);
+    }
+    if (resumen.present) {
+      map['RESUMEN'] = Variable<String>(resumen.value);
+    }
+    if (marcasCompetencia.present) {
+      map['MARCAS_COMPETENCIA'] = Variable<String>(marcasCompetencia.value);
+    }
+    if (latitud.present) {
+      map['LATITUD'] = Variable<double>(latitud.value);
+    }
+    if (longitud.present) {
+      map['LONGITUD'] = Variable<double>(longitud.value);
+    }
+    if (visitaAppId.present) {
+      map['COD_VISITA_APP'] = Variable<String>(visitaAppId.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -15512,13 +15380,23 @@ class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
 
   @override
   String toString() {
-    return (StringBuffer('PedidoAlbaranTableCompanion(')
-          ..write('empresaId: $empresaId, ')
-          ..write('pedidoVentaId: $pedidoVentaId, ')
-          ..write('albaranId: $albaranId, ')
-          ..write('fechaAlbaran: $fechaAlbaran, ')
-          ..write('agencia: $agencia, ')
-          ..write('trackId: $trackId, ')
+    return (StringBuffer('VisitaTableCompanion(')
+          ..write('id: $id, ')
+          ..write('fecha: $fecha, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('isClienteProvisional: $isClienteProvisional, ')
+          ..write('clienteProvisionalNombre: $clienteProvisionalNombre, ')
+          ..write('clienteProvisionalEmail: $clienteProvisionalEmail, ')
+          ..write('clienteProvisionalTelefono: $clienteProvisionalTelefono, ')
+          ..write('clienteProvisionalPoblacion: $clienteProvisionalPoblacion, ')
+          ..write('numEmpl: $numEmpl, ')
+          ..write('contacto: $contacto, ')
+          ..write('atendidoPor: $atendidoPor, ')
+          ..write('resumen: $resumen, ')
+          ..write('marcasCompetencia: $marcasCompetencia, ')
+          ..write('latitud: $latitud, ')
+          ..write('longitud: $longitud, ')
+          ..write('visitaAppId: $visitaAppId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -15684,81 +15562,77 @@ class $PedidoAlbaranTableTable extends PedidoAlbaranTable
   }
 }
 
-class DescuentoGeneralTableCompanion
-    extends UpdateCompanion<DescuentoGeneralDTO> {
-  final Value<String> descuentoGeneralId;
-  final Value<String> articuloId;
-  final Value<String> familiaId;
-  final Value<String> subfamiliaId;
-  final Value<int> cantidadDesde;
-  final Value<double> descuento;
+class PedidoAlbaranTableCompanion extends UpdateCompanion<PedidoAlbaranDTO> {
+  final Value<String> empresaId;
+  final Value<String> pedidoVentaId;
+  final Value<String> albaranId;
+  final Value<DateTime> fechaAlbaran;
+  final Value<String?> agencia;
+  final Value<String?> trackId;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
-  const DescuentoGeneralTableCompanion({
-    this.descuentoGeneralId = const Value.absent(),
-    this.articuloId = const Value.absent(),
-    this.familiaId = const Value.absent(),
-    this.subfamiliaId = const Value.absent(),
-    this.cantidadDesde = const Value.absent(),
-    this.descuento = const Value.absent(),
+  const PedidoAlbaranTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.pedidoVentaId = const Value.absent(),
+    this.albaranId = const Value.absent(),
+    this.fechaAlbaran = const Value.absent(),
+    this.agencia = const Value.absent(),
+    this.trackId = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
-  DescuentoGeneralTableCompanion.insert({
-    required String descuentoGeneralId,
-    required String articuloId,
-    required String familiaId,
-    required String subfamiliaId,
-    required int cantidadDesde,
-    required double descuento,
+  PedidoAlbaranTableCompanion.insert({
+    required String empresaId,
+    required String pedidoVentaId,
+    required String albaranId,
+    required DateTime fechaAlbaran,
+    this.agencia = const Value.absent(),
+    this.trackId = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
-  })  : descuentoGeneralId = Value(descuentoGeneralId),
-        articuloId = Value(articuloId),
-        familiaId = Value(familiaId),
-        subfamiliaId = Value(subfamiliaId),
-        cantidadDesde = Value(cantidadDesde),
-        descuento = Value(descuento),
+  })  : empresaId = Value(empresaId),
+        pedidoVentaId = Value(pedidoVentaId),
+        albaranId = Value(albaranId),
+        fechaAlbaran = Value(fechaAlbaran),
         lastUpdated = Value(lastUpdated);
-  static Insertable<DescuentoGeneralDTO> custom({
-    Expression<String>? descuentoGeneralId,
-    Expression<String>? articuloId,
-    Expression<String>? familiaId,
-    Expression<String>? subfamiliaId,
-    Expression<int>? cantidadDesde,
-    Expression<double>? descuento,
+  static Insertable<PedidoAlbaranDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? pedidoVentaId,
+    Expression<String>? albaranId,
+    Expression<DateTime>? fechaAlbaran,
+    Expression<String>? agencia,
+    Expression<String>? trackId,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
     return RawValuesInsertable({
-      if (descuentoGeneralId != null)
-        'DESCUENTO_GENERAL_ID': descuentoGeneralId,
-      if (articuloId != null) 'ARTICULO_ID': articuloId,
-      if (familiaId != null) 'FAMILIA_ID': familiaId,
-      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
-      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
-      if (descuento != null) 'DESCUENTO': descuento,
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (pedidoVentaId != null) 'PEDIDO_ID': pedidoVentaId,
+      if (albaranId != null) 'ALBARAN_ID': albaranId,
+      if (fechaAlbaran != null) 'FECHA_ALBARAN': fechaAlbaran,
+      if (agencia != null) 'AGENCIA': agencia,
+      if (trackId != null) 'TRACK_ID': trackId,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
   }
 
-  DescuentoGeneralTableCompanion copyWith(
-      {Value<String>? descuentoGeneralId,
-      Value<String>? articuloId,
-      Value<String>? familiaId,
-      Value<String>? subfamiliaId,
-      Value<int>? cantidadDesde,
-      Value<double>? descuento,
+  PedidoAlbaranTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? pedidoVentaId,
+      Value<String>? albaranId,
+      Value<DateTime>? fechaAlbaran,
+      Value<String?>? agencia,
+      Value<String?>? trackId,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
-    return DescuentoGeneralTableCompanion(
-      descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
-      articuloId: articuloId ?? this.articuloId,
-      familiaId: familiaId ?? this.familiaId,
-      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
-      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
-      descuento: descuento ?? this.descuento,
+    return PedidoAlbaranTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      pedidoVentaId: pedidoVentaId ?? this.pedidoVentaId,
+      albaranId: albaranId ?? this.albaranId,
+      fechaAlbaran: fechaAlbaran ?? this.fechaAlbaran,
+      agencia: agencia ?? this.agencia,
+      trackId: trackId ?? this.trackId,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -15767,23 +15641,23 @@ class DescuentoGeneralTableCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (descuentoGeneralId.present) {
-      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneralId.value);
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
     }
-    if (articuloId.present) {
-      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    if (pedidoVentaId.present) {
+      map['PEDIDO_ID'] = Variable<String>(pedidoVentaId.value);
     }
-    if (familiaId.present) {
-      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
+    if (albaranId.present) {
+      map['ALBARAN_ID'] = Variable<String>(albaranId.value);
     }
-    if (subfamiliaId.present) {
-      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
+    if (fechaAlbaran.present) {
+      map['FECHA_ALBARAN'] = Variable<DateTime>(fechaAlbaran.value);
     }
-    if (cantidadDesde.present) {
-      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
+    if (agencia.present) {
+      map['AGENCIA'] = Variable<String>(agencia.value);
     }
-    if (descuento.present) {
-      map['DESCUENTO'] = Variable<double>(descuento.value);
+    if (trackId.present) {
+      map['TRACK_ID'] = Variable<String>(trackId.value);
     }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
@@ -15796,13 +15670,13 @@ class DescuentoGeneralTableCompanion
 
   @override
   String toString() {
-    return (StringBuffer('DescuentoGeneralTableCompanion(')
-          ..write('descuentoGeneralId: $descuentoGeneralId, ')
-          ..write('articuloId: $articuloId, ')
-          ..write('familiaId: $familiaId, ')
-          ..write('subfamiliaId: $subfamiliaId, ')
-          ..write('cantidadDesde: $cantidadDesde, ')
-          ..write('descuento: $descuento, ')
+    return (StringBuffer('PedidoAlbaranTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('pedidoVentaId: $pedidoVentaId, ')
+          ..write('albaranId: $albaranId, ')
+          ..write('fechaAlbaran: $fechaAlbaran, ')
+          ..write('agencia: $agencia, ')
+          ..write('trackId: $trackId, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))
@@ -15975,6 +15849,132 @@ class $DescuentoGeneralTableTable extends DescuentoGeneralTable
   @override
   $DescuentoGeneralTableTable createAlias(String alias) {
     return $DescuentoGeneralTableTable(attachedDatabase, alias);
+  }
+}
+
+class DescuentoGeneralTableCompanion
+    extends UpdateCompanion<DescuentoGeneralDTO> {
+  final Value<String> descuentoGeneralId;
+  final Value<String> articuloId;
+  final Value<String> familiaId;
+  final Value<String> subfamiliaId;
+  final Value<int> cantidadDesde;
+  final Value<double> descuento;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DescuentoGeneralTableCompanion({
+    this.descuentoGeneralId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.familiaId = const Value.absent(),
+    this.subfamiliaId = const Value.absent(),
+    this.cantidadDesde = const Value.absent(),
+    this.descuento = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DescuentoGeneralTableCompanion.insert({
+    required String descuentoGeneralId,
+    required String articuloId,
+    required String familiaId,
+    required String subfamiliaId,
+    required int cantidadDesde,
+    required double descuento,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : descuentoGeneralId = Value(descuentoGeneralId),
+        articuloId = Value(articuloId),
+        familiaId = Value(familiaId),
+        subfamiliaId = Value(subfamiliaId),
+        cantidadDesde = Value(cantidadDesde),
+        descuento = Value(descuento),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DescuentoGeneralDTO> custom({
+    Expression<String>? descuentoGeneralId,
+    Expression<String>? articuloId,
+    Expression<String>? familiaId,
+    Expression<String>? subfamiliaId,
+    Expression<int>? cantidadDesde,
+    Expression<double>? descuento,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (descuentoGeneralId != null)
+        'DESCUENTO_GENERAL_ID': descuentoGeneralId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (familiaId != null) 'FAMILIA_ID': familiaId,
+      if (subfamiliaId != null) 'SUBFAMILIA_ID': subfamiliaId,
+      if (cantidadDesde != null) 'CANTIDAD_DESDE': cantidadDesde,
+      if (descuento != null) 'DESCUENTO': descuento,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DescuentoGeneralTableCompanion copyWith(
+      {Value<String>? descuentoGeneralId,
+      Value<String>? articuloId,
+      Value<String>? familiaId,
+      Value<String>? subfamiliaId,
+      Value<int>? cantidadDesde,
+      Value<double>? descuento,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DescuentoGeneralTableCompanion(
+      descuentoGeneralId: descuentoGeneralId ?? this.descuentoGeneralId,
+      articuloId: articuloId ?? this.articuloId,
+      familiaId: familiaId ?? this.familiaId,
+      subfamiliaId: subfamiliaId ?? this.subfamiliaId,
+      cantidadDesde: cantidadDesde ?? this.cantidadDesde,
+      descuento: descuento ?? this.descuento,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (descuentoGeneralId.present) {
+      map['DESCUENTO_GENERAL_ID'] = Variable<String>(descuentoGeneralId.value);
+    }
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    }
+    if (familiaId.present) {
+      map['FAMILIA_ID'] = Variable<String>(familiaId.value);
+    }
+    if (subfamiliaId.present) {
+      map['SUBFAMILIA_ID'] = Variable<String>(subfamiliaId.value);
+    }
+    if (cantidadDesde.present) {
+      map['CANTIDAD_DESDE'] = Variable<int>(cantidadDesde.value);
+    }
+    if (descuento.present) {
+      map['DESCUENTO'] = Variable<double>(descuento.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DescuentoGeneralTableCompanion(')
+          ..write('descuentoGeneralId: $descuentoGeneralId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('familiaId: $familiaId, ')
+          ..write('subfamiliaId: $subfamiliaId, ')
+          ..write('cantidadDesde: $cantidadDesde, ')
+          ..write('descuento: $descuento, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
   }
 }
 

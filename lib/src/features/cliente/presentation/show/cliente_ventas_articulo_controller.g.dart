@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $ClienteVentasArticuloIndexScreenPaginatedControllerHash() =>
+String _$ClienteVentasArticuloIndexScreenPaginatedControllerHash() =>
     r'1893290fa7827b98c106fef93e4838df08c82313';
 
 /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
@@ -47,7 +47,7 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : $ClienteVentasArticuloIndexScreenPaginatedControllerHash,
+                  : _$ClienteVentasArticuloIndexScreenPaginatedControllerHash,
         );
 
   final String clienteId;

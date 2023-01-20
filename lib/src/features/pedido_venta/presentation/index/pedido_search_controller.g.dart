@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $PedidoVentaIndexScreenControllerHash() =>
+String _$PedidoVentaIndexScreenControllerHash() =>
     r'bcb2dc10f3c39b5c53798e4f8f1e7c6b8665347b';
 
 /// See also [PedidoVentaIndexScreenController].
@@ -39,7 +39,7 @@ final pedidoVentaIndexScreenControllerProvider =
   name: r'pedidoVentaIndexScreenControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $PedidoVentaIndexScreenControllerHash,
+      : _$PedidoVentaIndexScreenControllerHash,
 );
 typedef PedidoVentaIndexScreenControllerRef
     = AutoDisposeAsyncNotifierProviderRef<int>;
@@ -50,7 +50,7 @@ abstract class _$PedidoVentaIndexScreenController
   FutureOr<int> build();
 }
 
-String $PedidoVentaIndexScreenPaginatedControllerHash() =>
+String _$PedidoVentaIndexScreenPaginatedControllerHash() =>
     r'98ec005bc9b56d783b01ce8ae8e34de3b1c13043';
 
 /// See also [PedidoVentaIndexScreenPaginatedController].
@@ -66,7 +66,7 @@ class PedidoVentaIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : $PedidoVentaIndexScreenPaginatedControllerHash,
+                  : _$PedidoVentaIndexScreenPaginatedControllerHash,
         );
 
   final int page;

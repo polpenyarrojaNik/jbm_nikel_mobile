@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $VisitaIndexScreenControllerHash() =>
+String _$VisitaIndexScreenControllerHash() =>
     r'6aa47f60efab2d24a7ea4a12cb55560850c78eec';
 
 /// See also [VisitaIndexScreenController].
@@ -39,7 +39,7 @@ final visitaIndexScreenControllerProvider =
   name: r'visitaIndexScreenControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $VisitaIndexScreenControllerHash,
+      : _$VisitaIndexScreenControllerHash,
 );
 typedef VisitaIndexScreenControllerRef
     = AutoDisposeAsyncNotifierProviderRef<int>;
@@ -50,7 +50,7 @@ abstract class _$VisitaIndexScreenController
   FutureOr<int> build();
 }
 
-String $VisitaIndexScreenPaginatedControllerHash() =>
+String _$VisitaIndexScreenPaginatedControllerHash() =>
     r'652caea9461bb21cd5cf3b6e0e79c11f2f58da92';
 
 /// See also [VisitaIndexScreenPaginatedController].
@@ -66,7 +66,7 @@ class VisitaIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : $VisitaIndexScreenPaginatedControllerHash,
+                  : _$VisitaIndexScreenPaginatedControllerHash,
         );
 
   final int page;

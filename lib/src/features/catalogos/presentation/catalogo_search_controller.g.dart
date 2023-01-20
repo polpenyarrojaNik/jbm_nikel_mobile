@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String $CatalogoIndexScreenControllerHash() =>
+String _$CatalogoIndexScreenControllerHash() =>
     r'4147fae714d8f268e0e4a68a40297256a106ae42';
 
 /// See also [CatalogoIndexScreenController].
@@ -39,7 +39,7 @@ final catalogoIndexScreenControllerProvider = AutoDisposeAsyncNotifierProvider<
   name: r'catalogoIndexScreenControllerProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : $CatalogoIndexScreenControllerHash,
+      : _$CatalogoIndexScreenControllerHash,
 );
 typedef CatalogoIndexScreenControllerRef
     = AutoDisposeAsyncNotifierProviderRef<List<Catalogo>>;
