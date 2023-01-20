@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 
 import '../../../core/domain/divisa.dart';
@@ -111,6 +111,7 @@ class PedidoVentaDTO
       deleted: (deleted == 'S') ? true : false,
       enviada: true,
       tratada: true,
+      borrador: false,
     );
   }
 

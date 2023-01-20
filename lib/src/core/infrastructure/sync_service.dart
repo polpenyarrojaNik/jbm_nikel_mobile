@@ -6,8 +6,6 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
 import '../../features/app_initialization/domain/sync_progress.dart';
@@ -48,20 +46,26 @@ import '../application/log_service.dart';
 import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../presentation/app.dart';
-import 'database.dart';
+import 'local_database.dart' as local;
+import 'remote_database.dart';
 import 'divisa_dto.dart';
 import 'familia_dto.dart';
 import 'jbm_headers.dart';
 import 'remote_response.dart';
 
 final syncServiceProvider = Provider.autoDispose<SyncService>(
-  (ref) => SyncService(ref.watch(appDatabaseProvider), ref.watch(dioProvider),
+  (ref) => SyncService(
+      ref.watch(appRemoteDatabaseProvider),
+      ref.watch(local.appLocalDatabaseProvider),
+      ref.watch(dioProvider),
       ref.watch(usuarioNotifierProvider)),
 );
 
 class SyncService {
   final Dio _dio;
-  final AppDatabase _db;
+  final RemoteAppDatabase _remoteDb;
+  final local.LocalAppDatabase _localDb;
+
   final Usuario? _usuario;
 
   static final remoteDatabaseDateTimeEndpoint = Uri.http(
@@ -73,7 +77,7 @@ class SyncService {
     '/api/v1/sync/db-datetime',
   );
 
-  SyncService(this._db, this._dio, this._usuario);
+  SyncService(this._remoteDb, this._localDb, this._dio, this._usuario);
 
   Future<DateTime> getRemoteDatabaseDateTime() async {
     try {
@@ -111,7 +115,7 @@ class SyncService {
       await syncDescuentoGeneral();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncInSharedPreferences(articuloFechaUltimaSyncKey);
+        await saveLastSyncDateTimeInArticulos();
       }
     } catch (e) {
       rethrow;
@@ -134,7 +138,7 @@ class SyncService {
       await syncVentasUsuario();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
+        await saveLastSyncDateTimeInClientes();
       }
     } catch (e) {
       rethrow;
@@ -144,7 +148,6 @@ class SyncService {
   Future<void> syncAllPedidosRelacionados(
       {required bool isInMainThread}) async {
     try {
-      await enviarPedidosNoEnviados();
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
@@ -152,7 +155,7 @@ class SyncService {
       await syncPedidoVentaEstado();
       if (isInMainThread) {
         await syncAllAuxiliares();
-        await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
+        await saveLastSyncDateTimeInPedidos();
       }
     } catch (e) {
       rethrow;
@@ -161,12 +164,11 @@ class SyncService {
 
   Future<void> syncAllVisitasRelacionados(
       {required bool isInMainThread}) async {
-    await enviarVisitasNoEnviadas();
     await syncVisitas();
     await checkVisitasTratadas();
     if (isInMainThread) {
       await syncAllAuxiliares();
-      await saveLastSyncInSharedPreferences(visitaFechaUltimaSyncKey);
+      await saveLastSyncDateTimeInVisitas();
     }
   }
 
@@ -185,7 +187,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos',
-        tableInfo: _db.articuloTable,
+        tableInfo: _remoteDb.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -200,7 +202,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/empresa-iva',
-        tableInfo: _db.articuloEmpresaIvaTable,
+        tableInfo: _remoteDb.articuloEmpresaIvaTable,
         fromJson: (e) => ArticuloEmpresaIvaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -215,7 +217,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/componentes',
-        tableInfo: _db.articuloComponenteTable,
+        tableInfo: _remoteDb.articuloComponenteTable,
         fromJson: (e) => ArticuloComponenteDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -230,7 +232,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/grupos-netos',
-        tableInfo: _db.articuloGrupoNetoTable,
+        tableInfo: _remoteDb.articuloGrupoNetoTable,
         fromJson: (e) => ArticuloGrupoNetoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -245,7 +247,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/precios-tarifa',
-        tableInfo: _db.articuloPrecioTarifaTable,
+        tableInfo: _remoteDb.articuloPrecioTarifaTable,
         fromJson: (e) => ArticuloPrecioTarifaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -260,7 +262,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/recambios',
-        tableInfo: _db.articuloRecambioTable,
+        tableInfo: _remoteDb.articuloRecambioTable,
         fromJson: (e) => ArticuloRecambioDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -275,7 +277,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/sustitutivos',
-        tableInfo: _db.articuloSustitutivoTable,
+        tableInfo: _remoteDb.articuloSustitutivoTable,
         fromJson: (e) => ArticuloSustitutivoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -290,7 +292,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/estadisticas/ultimos-precios-cliente-articulo',
-        tableInfo: _db.estadisticasUltimosPreciosTable,
+        tableInfo: _remoteDb.estadisticasUltimosPreciosTable,
         fromJson: (e) => EstadisticasUltimosPreciosDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -305,7 +307,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/estadisticas/ventas-usuario',
-        tableInfo: _db.estadisticasClienteUsuarioVentasTable,
+        tableInfo: _remoteDb.estadisticasClienteUsuarioVentasTable,
         fromJson: (e) => EstadisticasVentaClienteUsuarioDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -320,7 +322,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v2/sync/clientes',
-        tableInfo: _db.clienteTable,
+        tableInfo: _remoteDb.clienteTable,
         fromJson: (e) => ClienteDTO.fromJson(e),
       );
       // await saveLastSyncInSharedPreferences(clienteFechaUltimaSyncKey);
@@ -336,7 +338,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes-usuario',
-        tableInfo: _db.clienteUsuarioTable,
+        tableInfo: _remoteDb.clienteUsuarioTable,
         fromJson: (e) => ClienteUsuarioDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -351,7 +353,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/direcciones',
-        tableInfo: _db.clienteDireccionTable,
+        tableInfo: _remoteDb.clienteDireccionTable,
         fromJson: (e) => ClienteDireccionDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -366,7 +368,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/contactos',
-        tableInfo: _db.clienteContactoTable,
+        tableInfo: _remoteDb.clienteContactoTable,
         fromJson: (e) => ClienteContactoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -381,7 +383,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/descuentos',
-        tableInfo: _db.clienteDescuentoTable,
+        tableInfo: _remoteDb.clienteDescuentoTable,
         fromJson: (e) => ClienteDescuentoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -396,7 +398,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/grupos-netos',
-        tableInfo: _db.clienteGrupoNetoTable,
+        tableInfo: _remoteDb.clienteGrupoNetoTable,
         fromJson: (e) => ClienteGrupoNetoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -411,7 +413,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v2/sync/clientes/precios-netos',
-        tableInfo: _db.clientePrecioNetoTable,
+        tableInfo: _remoteDb.clientePrecioNetoTable,
         fromJson: (e) => ClientePrecioNetoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -426,7 +428,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/pagos-pendientes',
-        tableInfo: _db.clientePagoPendienteTable,
+        tableInfo: _remoteDb.clientePagoPendienteTable,
         fromJson: (e) => ClientePagoPendienteDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -441,7 +443,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/rappels',
-        tableInfo: _db.clienteRappelTable,
+        tableInfo: _remoteDb.clienteRappelTable,
         fromJson: (e) => ClienteRappelDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -456,7 +458,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/clientes/articulos-top',
-        tableInfo: _db.estadisticasArticulosTopTable,
+        tableInfo: _remoteDb.estadisticasArticulosTopTable,
         fromJson: (e) => EstadisitcasArticulosTopDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -489,23 +491,19 @@ class SyncService {
   Future<List<PedidoVentaLinea>> getLocalPedidoVentaLineaList(
       {required String pedidoVentaAppId}) async {
     try {
-      final query = _db.select(_db.pedidoVentaLineaLocalTable).join([
-        innerJoin(
-            _db.pedidoVentaLocalTable,
-            _db.pedidoVentaLocalTable.pedidoVentaAppId
-                .equalsExp(_db.pedidoVentaLineaLocalTable.pedidoVentaAppId))
-      ]);
+      final pedidoVentaLineaLocalListDTO =
+          await (_localDb.select(_localDb.pedidoVentaLineaLocalTable)
+                ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+              .get();
 
-      query.where(_db.pedidoVentaLineaLocalTable.pedidoVentaAppId
-          .equals(pedidoVentaAppId));
+      final pedidoVentaLocalDTO =
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)
+                ..where((tbl) => tbl.pedidoVentaAppId.equals(pedidoVentaAppId)))
+              .getSingle();
 
-      return query.map((row) {
-        final pedidoVentaLocalDTO = row.readTable(_db.pedidoVentaLocalTable);
-        final pedidoVentaLineaDTO =
-            row.readTable(_db.pedidoVentaLineaLocalTable);
-        return pedidoVentaLineaDTO.toDomain(
-            divisaId: pedidoVentaLocalDTO.divisaId!);
-      }).get();
+      return pedidoVentaLineaLocalListDTO
+          .map((e) => e.toDomain(divisaId: pedidoVentaLocalDTO.divisaId!))
+          .toList();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -515,7 +513,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/pedidos',
-        tableInfo: _db.pedidoVentaTable,
+        tableInfo: _remoteDb.pedidoVentaTable,
         fromJson: (e) => PedidoVentaDTO.fromJson(e),
       );
       // await saveLastSyncInSharedPreferences(pedidoVentaFechaUltimaSyncKey);
@@ -531,7 +529,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v2/sync/pedidos/detalle',
-        tableInfo: _db.pedidoVentaLineaTable,
+        tableInfo: _remoteDb.pedidoVentaLineaTable,
         fromJson: (e) => PedidoVentaLineaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -546,7 +544,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/pedidos/albaranes',
-        tableInfo: _db.pedidoAlbaranTable,
+        tableInfo: _remoteDb.pedidoAlbaranTable,
         fromJson: (e) => PedidoAlbaranDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -561,7 +559,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/pedidos/estados',
-        tableInfo: _db.pedidoVentaEstadoTable,
+        tableInfo: _remoteDb.pedidoVentaEstadoTable,
         fromJson: (e) => PedidoVentaEstadoDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -576,7 +574,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/v3/visitas',
-        tableInfo: _db.visitaTable,
+        tableInfo: _remoteDb.visitaTable,
         fromJson: (e) => VisitaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -591,7 +589,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/paises',
-        tableInfo: _db.paisTable,
+        tableInfo: _remoteDb.paisTable,
         fromJson: (e) => PaisDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -606,7 +604,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/divisa',
-        tableInfo: _db.divisaTable,
+        tableInfo: _remoteDb.divisaTable,
         fromJson: (e) => DivisaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -621,7 +619,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/plazos-cobro',
-        tableInfo: _db.plazoDeCobroTable,
+        tableInfo: _remoteDb.plazoDeCobroTable,
         fromJson: (e) => PlazoDeCobroDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -636,7 +634,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/metodos-cobro',
-        tableInfo: _db.metodoDeCobroTable,
+        tableInfo: _remoteDb.metodoDeCobroTable,
         fromJson: (e) => MetodoDeCobroDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -651,7 +649,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/familia',
-        tableInfo: _db.familiaTable,
+        tableInfo: _remoteDb.familiaTable,
         fromJson: (e) => FamiliaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -666,7 +664,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/subfamilia',
-        tableInfo: _db.subfamiliaTable,
+        tableInfo: _remoteDb.subfamiliaTable,
         fromJson: (e) => SubfamiliaDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -739,7 +737,7 @@ class SyncService {
       {required TableInfo<Table, dynamic> tableInfo,
       required dynamic dto}) async {
     try {
-      await _db.into(tableInfo).insertOnConflictUpdate(dto);
+      await _remoteDb.into(tableInfo).insertOnConflictUpdate(dto);
     } catch (e) {
       rethrow;
     }
@@ -749,7 +747,7 @@ class SyncService {
       {required TableInfo<Table, dynamic> tableInfo,
       required dynamic dto}) async {
     try {
-      await _db.delete(tableInfo).delete(dto);
+      await _remoteDb.delete(tableInfo).delete(dto);
     } catch (e) {
       rethrow;
     }
@@ -821,7 +819,7 @@ class SyncService {
   Future<DateTime?> getLastUpdatedDate(
       {required TableInfo<Table, dynamic> tableInfo}) async {
     try {
-      final query = await _db.customSelect(
+      final query = await _remoteDb.customSelect(
           ''' SELECT MAX(LAST_UPDATED) as MAX_DATE FROM ${tableInfo.actualTableName}
           ''').getSingle();
 
@@ -850,7 +848,7 @@ class SyncService {
 
   Future<List<VisitaLocalDTO>> getVisitasNoEnviadas() async {
     try {
-      return (_db.select(_db.visitaLocalTable)
+      return (_localDb.select(_localDb.visitaLocalTable)
             ..where((tbl) => tbl.enviada.equals('N')))
           .get();
     } catch (e) {
@@ -860,7 +858,7 @@ class SyncService {
 
   Future<List<PedidoVentaLocalDTO>> getPedidosNoEnviados() async {
     try {
-      return (_db.select(_db.pedidoVentaLocalTable)
+      return (_localDb.select(_localDb.pedidoVentaLocalTable)
             ..where((tbl) => tbl.enviada.equals('N')))
           .get();
     } catch (e) {
@@ -945,7 +943,9 @@ class SyncService {
   Future<void> updatePedidoVentaInDB(
       {required PedidoVentaLocalDTO pedidoVentaLocalDto}) async {
     try {
-      await _db.update(_db.pedidoVentaLocalTable).replace(pedidoVentaLocalDto);
+      await _localDb
+          .update(_localDb.pedidoVentaLocalTable)
+          .replace(pedidoVentaLocalDto);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -954,7 +954,7 @@ class SyncService {
   Future<void> updateVisitaInDB(
       {required VisitaLocalDTO visitaLocalDto}) async {
     try {
-      await _db.update(_db.visitaLocalTable).replace(visitaLocalDto);
+      await _localDb.update(_localDb.visitaLocalTable).replace(visitaLocalDto);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -962,23 +962,24 @@ class SyncService {
 
   Future<void> checkPedidoVentaTratados() async {
     try {
-      final query = _db.select(_db.pedidoVentaLocalTable).join([
-        innerJoin(
-            _db.pedidoVentaTable,
-            _db.pedidoVentaTable.pedidoVentaAppId
-                .equalsExp(_db.pedidoVentaLocalTable.pedidoVentaAppId))
-      ]);
-
-      query.where(_db.pedidoVentaLocalTable.tratada.equals('N'));
-
-      final pedidosNoTratadosDTO = await query
-          .map((row) => row.readTable(_db.pedidoVentaLocalTable))
-          .get();
+      final pedidosNoTratadosDTO =
+          await (_localDb.select(_localDb.pedidoVentaLocalTable)
+                ..where((tbl) => tbl.tratada.equals('N')))
+              .get();
 
       for (var i = 0; i < pedidosNoTratadosDTO.length; i++) {
-        _db
-            .update(_db.pedidoVentaLocalTable)
-            .write(const PedidoVentaLocalTableCompanion(tratada: Value('S')));
+        final pedidoNoTratado = pedidosNoTratadosDTO[i];
+
+        final pedidoNoTratadoExisitInPedidos =
+            await (_remoteDb.select(_remoteDb.pedidoVentaTable)
+                  ..where((tbl) => tbl.pedidoVentaAppId
+                      .equals(pedidoNoTratado.pedidoVentaAppId)))
+                .getSingleOrNull();
+
+        if (pedidoNoTratadoExisitInPedidos != null) {
+          _localDb.update(_localDb.pedidoVentaLocalTable).write(
+              const local.PedidoVentaLocalTableCompanion(tratada: Value('S')));
+        }
       }
     } catch (e) {
       rethrow;
@@ -987,23 +988,24 @@ class SyncService {
 
   Future<void> checkVisitasTratadas() async {
     try {
-      final query = _db.select(_db.visitaLocalTable).join([
-        innerJoin(
-            _db.visitaTable,
-            _db.visitaTable.visitaAppId
-                .equalsExp(_db.visitaLocalTable.visitaAppId))
-      ]);
-
-      query.where(_db.visitaTable.visitaAppId.isNotNull() &
-          _db.visitaLocalTable.tratada.equals('N'));
-
       final visitasNoTratadasDTO =
-          await query.map((row) => row.readTable(_db.visitaLocalTable)).get();
+          await (_localDb.select(_localDb.visitaLocalTable)
+                ..where((tbl) => tbl.tratada.equals('N')))
+              .get();
 
       for (var i = 0; i < visitasNoTratadasDTO.length; i++) {
-        _db
-            .update(_db.visitaLocalTable)
-            .write(const VisitaLocalTableCompanion(tratada: Value('S')));
+        final visitaNoTratada = visitasNoTratadasDTO[i];
+
+        final visitaNoTratadaExisitInVisitas = await (_remoteDb
+                .select(_remoteDb.visitaTable)
+              ..where((tbl) =>
+                  tbl.visitaAppId.equalsNullable(visitaNoTratada.visitaAppId)))
+            .getSingleOrNull();
+
+        if (visitaNoTratadaExisitInVisitas != null) {
+          _localDb.update(_localDb.visitaLocalTable).write(
+              const local.VisitaLocalTableCompanion(tratada: Value('S')));
+        }
       }
     } catch (e) {
       rethrow;
@@ -1014,7 +1016,7 @@ class SyncService {
     try {
       await _syncTable(
         apiPath: 'api/v1/sync/articulos/descuento-general',
-        tableInfo: _db.descuentoGeneralTable,
+        tableInfo: _remoteDb.descuentoGeneralTable,
         fromJson: (e) => DescuentoGeneralDTO.fromJson(e),
       );
     } on AppException catch (e) {
@@ -1025,12 +1027,45 @@ class SyncService {
     }
   }
 
-  Future<void> saveLastSyncInSharedPreferences(String entityKey) async {
+  Future<void> saveLastSyncDateTimeInArticulos() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              id: const Value(1),
+              articuloUltimaSync: Value(DateTime.now().toUtc())));
+    } catch (e) {
+      rethrow;
+    }
+  }
 
-      await sharedPreferences.setString(
-          entityKey, DateTime.now().toUtc().toIso8601String());
+  Future<void> saveLastSyncDateTimeInClientes() async {
+    try {
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              id: const Value(1),
+              clienteUltimaSync: Value(DateTime.now().toUtc())));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> saveLastSyncDateTimeInPedidos() async {
+    try {
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              id: const Value(1),
+              pedidoUltimaSync: Value(DateTime.now().toUtc())));
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> saveLastSyncDateTimeInVisitas() async {
+    try {
+      await _localDb.update(_localDb.syncDateTimeTable).write(
+          local.SyncDateTimeTableCompanion(
+              id: const Value(1),
+              visitaUltimaSync: Value(DateTime.now().toUtc())));
     } catch (e) {
       rethrow;
     }

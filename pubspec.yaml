@@ -45,7 +45,6 @@ dependencies:
   path: ^1.8.0
   reactive_forms: ^14.1.0
   riverpod_annotation: ^1.0.6
-  shared_preferences: ^2.0.15
   shimmer: ^2.0.0
   sqlite3_flutter_libs: ^0.5.0
   url_launcher: ^6.1.0
@@ -53,6 +52,7 @@ dependencies:
   new_version_plus: ^0.0.4
   country_codes: ^2.2.0
   csv: ^5.0.1
+  share_plus: ^6.3.0
 
 dev_dependencies:
   flutter_test:

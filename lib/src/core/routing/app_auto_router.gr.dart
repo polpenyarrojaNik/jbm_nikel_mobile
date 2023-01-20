@@ -233,8 +233,8 @@ class _$AppRouter extends RootStackRouter {
         child: PedidoVentaEditPage(
           key: args.key,
           id: args.id,
-          isNew: args.isNew,
           createPedidoFromClienteId: args.createPedidoFromClienteId,
+          addLineaDesdeArticulo: args.addLineaDesdeArticulo,
         ),
         fullscreenDialog: true,
       );
@@ -1301,16 +1301,16 @@ class PedidoVentaEditRoute extends PageRouteInfo<PedidoVentaEditRouteArgs> {
   PedidoVentaEditRoute({
     Key? key,
     String? id,
-    bool? isNew,
     String? createPedidoFromClienteId,
+    PedidoVentaLinea? addLineaDesdeArticulo,
   }) : super(
           PedidoVentaEditRoute.name,
           path: '/pedido/edit',
           args: PedidoVentaEditRouteArgs(
             key: key,
             id: id,
-            isNew: isNew,
             createPedidoFromClienteId: createPedidoFromClienteId,
+            addLineaDesdeArticulo: addLineaDesdeArticulo,
           ),
         );
 
@@ -1321,21 +1321,21 @@ class PedidoVentaEditRouteArgs {
   const PedidoVentaEditRouteArgs({
     this.key,
     this.id,
-    this.isNew,
     this.createPedidoFromClienteId,
+    this.addLineaDesdeArticulo,
   });
 
   final Key? key;
 
   final String? id;
 
-  final bool? isNew;
-
   final String? createPedidoFromClienteId;
+
+  final PedidoVentaLinea? addLineaDesdeArticulo;
 
   @override
   String toString() {
-    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, isNew: $isNew, createPedidoFromClienteId: $createPedidoFromClienteId}';
+    return 'PedidoVentaEditRouteArgs{key: $key, id: $id, createPedidoFromClienteId: $createPedidoFromClienteId, addLineaDesdeArticulo: $addLineaDesdeArticulo}';
   }
 }
 

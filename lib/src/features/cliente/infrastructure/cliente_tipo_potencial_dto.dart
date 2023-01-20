@@ -1,7 +1,7 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/cliente_tipo_potencial.dart';
 
 part 'cliente_tipo_potencial_dto.freezed.dart';

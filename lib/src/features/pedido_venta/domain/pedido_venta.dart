@@ -43,10 +43,11 @@ class PedidoVenta with _$PedidoVenta {
     required bool deleted,
     required bool enviada,
     required bool tratada,
+    required bool borrador,
     String? errorSyncMessage,
   }) = _PedidoVenta;
 
   bool getIsLocal() => !tratada;
 
-  bool isEditable() => (!tratada && !enviada);
+  bool isEditable() => (!borrador && !tratada && !enviada);
 }

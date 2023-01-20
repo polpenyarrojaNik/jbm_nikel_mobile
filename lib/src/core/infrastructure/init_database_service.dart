@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
+import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../features/usuario/application/usuario_notifier.dart';
 import '../../features/usuario/domain/usuario.dart';
 import '../application/log_service.dart';
@@ -14,42 +14,45 @@ import '../exceptions/app_exception.dart';
 import '../exceptions/get_api_error.dart';
 import '../helpers/database_helper.dart';
 import '../presentation/app.dart';
-import 'database.dart';
+import 'remote_database.dart';
 
-final initDatabaseServiceProvider = Provider.autoDispose<InitDatabaseService>(
-  (ref) => InitDatabaseService(
-      ref.watch(dioProvider), ref.watch(usuarioNotifierProvider)),
-);
+final initDatabaseServiceProvider =
+    Provider.autoDispose<InitDatabaseService>((ref) {
+  ref.read(appRemoteDatabaseProvider);
+  return InitDatabaseService(ref.watch(dioProvider),
+      ref.watch(appLocalDatabaseProvider), ref.watch(usuarioNotifierProvider));
+});
 
 class InitDatabaseService {
   final Dio dio;
+  final LocalAppDatabase localDb;
   final Usuario? usuario;
 
   static final remoteInitDatabaseEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v2/sync/init-db',
+    '/api/v3/sync/init-db',
   );
 
   static final remoteInitDatabaseTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v2/sync/init-db',
+    '/api/v3/sync/init-db',
   );
 
   static final remoteInitialDatabaseDateTimeEndpoint = Uri.http(
     'jbm-api.nikel.es',
-    '/api/v2/sync/init-db-date',
+    '/api/v3/sync/init-db-date',
   );
   static final remoteInitialDatabaseDateTimeTestEndpoint = Uri.http(
     'jbm-api-test.nikel.es:8080',
-    '/api/v2/sync/init-db-date',
+    '/api/v3/sync/init-db-date',
   );
 
-  InitDatabaseService(this.dio, this.usuario);
+  InitDatabaseService(this.dio, this.localDb, this.usuario);
 
   Future<void> downloadInitDatabase() async {
     try {
       if (await _getSchemaVersionFromPreferences() != databaseRelease) {
-        await deleteLocalDatabase();
+        await deleteRemoteDatabase();
       }
 
       final Directory directory = await getApplicationDocumentsDirectory();
@@ -70,7 +73,7 @@ class InitDatabaseService {
   }
 
   Future<bool> _databaseFileExist({required Directory directory}) async {
-    return await File((join(directory.path, localDatabaseName))).exists();
+    return await File((join(directory.path, remoteDatabaseName))).exists();
   }
 
   Future<dynamic> _getRemoteInitialDatabase() async {
@@ -118,18 +121,18 @@ class InitDatabaseService {
 
   Future<void> _saveDataInPreferences() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-
       final initialDatabaseDate = await _getRemoteInitialDatabaseDate();
-      await sharedPreferences.setString(
-          articuloFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
-      await sharedPreferences.setString(
-          clienteFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
-      await sharedPreferences.setString(
-          pedidoVentaFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
-      await sharedPreferences.setString(
-          visitaFechaUltimaSyncKey, initialDatabaseDate.toIso8601String());
-      await sharedPreferences.setInt(dbSchemaVersionKey, databaseRelease);
+
+      await localDb
+          .into(localDb.syncDateTimeTable)
+          .insertOnConflictUpdate(SyncDateTimeTableCompanion(
+            id: const Value(1),
+            dbSchemaVersion: const Value(databaseRelease),
+            articuloUltimaSync: Value(initialDatabaseDate),
+            clienteUltimaSync: Value(initialDatabaseDate),
+            pedidoUltimaSync: Value(initialDatabaseDate),
+            visitaUltimaSync: Value(initialDatabaseDate),
+          ));
     } catch (e) {
       rethrow;
     }
@@ -155,9 +158,13 @@ class InitDatabaseService {
   }
 
   Future<int> _getSchemaVersionFromPreferences() async {
-    final SharedPreferences sharedPreferences =
-        await SharedPreferences.getInstance();
+    try {
+      final syncDateTime =
+          await localDb.select(localDb.syncDateTimeTable).getSingleOrNull();
 
-    return sharedPreferences.getInt(dbSchemaVersionKey) ?? -1;
+      return syncDateTime?.dbSchemaVersion ?? -1;
+    } catch (e) {
+      return -1;
+    }
   }
 }

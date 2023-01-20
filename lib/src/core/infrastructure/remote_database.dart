@@ -20,7 +20,6 @@ import '../../features/articulos/infrastructure/articulo_precio_tarifa_dto.dart'
 import '../../features/articulos/infrastructure/articulo_recambio_dto.dart';
 import '../../features/articulos/infrastructure/articulo_sustitutivo_dto.dart';
 import '../../features/articulos/infrastructure/descuento_general_dto.dart';
-import '../../features/catalogos/infrastructure/catalogo_favorito_dto.dart';
 import '../../features/cliente/infrastructure/cliente_contacto_dto.dart';
 import '../../features/cliente/infrastructure/cliente_descuento_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_dto.dart';
@@ -40,39 +39,38 @@ import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_estado_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_dto.dart';
-import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
-import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
+
 import '../../features/visitas/infrastructure/visita_dto.dart';
-import '../../features/visitas/infrastructure/visita_local_dto.dart';
 
+import '../domain/isolate_request.dart';
 import 'familia_dto.dart';
-import 'log_dto.dart';
 
-part 'database.g.dart';
+part 'remote_database.g.dart';
 
-SendPort? isolateConnectPort;
+SendPort? isolateRemoteDatabaseConnectPort;
 
-final appDatabaseProvider = Provider<AppDatabase>(
+final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>(
   (ref) {
     DatabaseConnection connection = DatabaseConnection.delayed(() async {
       late DriftIsolate isolate;
-      if (isolateConnectPort != null) {
-        isolate = DriftIsolate.fromConnectPort(isolateConnectPort!);
+      if (isolateRemoteDatabaseConnectPort != null) {
+        isolate =
+            DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!);
       } else {
         isolate = await _createDriftIsolate();
 
-        isolateConnectPort = isolate.connectPort;
+        isolateRemoteDatabaseConnectPort = isolate.connectPort;
       }
       return await isolate.connect();
     }());
-    final database = AppDatabase.connect(connection);
+    final database = RemoteAppDatabase.connect(connection);
     ref.onDispose(
       () => database.close(),
     );
     return database;
   },
 );
-const localDatabaseName = 'jbm.sqlite';
+const remoteDatabaseName = 'jbm.sqlite';
 
 @DriftDatabase(tables: [
   PedidoVentaTable,
@@ -102,39 +100,34 @@ const localDatabaseName = 'jbm.sqlite';
   FamiliaTable,
   SubfamiliaTable,
   VisitaTable,
-  VisitaLocalTable,
   MetodoDeCobroTable,
   PlazoDeCobroTable,
   PaisTable,
   DivisaTable,
-  PedidoVentaLineaLocalTable,
-  PedidoVentaLocalTable,
   PedidoAlbaranTable,
   DescuentoGeneralTable,
-  LogTable,
-  CatalogoFavoritoTable,
 ])
-class AppDatabase extends _$AppDatabase {
+class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
 
-  AppDatabase.connect(super.connection)
+  RemoteAppDatabase.connect(super.connection)
       : test = false,
         super.connect();
-  AppDatabase.test()
+  RemoteAppDatabase.test()
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 18;
+  int get schemaVersion => 20;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {
   final dir = await getApplicationDocumentsDirectory();
-  final path = p.join(dir.path, localDatabaseName);
+  final path = p.join(dir.path, remoteDatabaseName);
   final receivePort = ReceivePort();
 
   await Isolate.spawn(
       _startBackground, IsolateRequest(receivePort.sendPort, path),
-      debugName: 'DB Isolate');
+      debugName: 'REMOTE DB Isolate');
 
   // ReceivePort will receive the DriftIsolate from background isolate, send by _startBackground
   return await receivePort.first as DriftIsolate;
@@ -152,11 +145,4 @@ void _startBackground(IsolateRequest request) {
   );
   // send back created DriftIsolate to main thread through SendPort
   request.sendDriftIsolate.send(driftIsolate);
-}
-
-class IsolateRequest {
-  final SendPort sendDriftIsolate;
-  final String targetPath;
-
-  IsolateRequest(this.sendDriftIsolate, this.targetPath);
 }

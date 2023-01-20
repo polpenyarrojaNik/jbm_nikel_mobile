@@ -22,11 +22,11 @@ Error getApiError(Object e) {
           throw AppException.restApiFailure(
               e.response?.statusCode ?? 400, errorString);
         } else {
-          responseJson = responseData['error'];
+          responseJson = responseData;
         }
 
-        final responseErrorJson =
-            responseJson['detail'] ?? responseJson['message'] as String?;
+        final responseErrorJson = responseJson['detail'] ??
+            '${responseJson['message']}${(responseJson['body'][0] != null && responseJson['body'][0]['error'] != null) ? ': ${responseJson['body'][0]['error']}' : ''}';
 
         throw AppException.restApiFailure(
             e.response?.statusCode ?? 400, responseErrorJson ?? '');

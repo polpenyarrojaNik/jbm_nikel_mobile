@@ -6,15 +6,15 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
+import '../../../core/infrastructure/local_database.dart';
 import '../../articulos/domain/articulo.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
 import '../../pedido_venta/domain/pedido_venta.dart';
@@ -38,10 +38,12 @@ import 'cliente_ventas_mes_dto.dart';
 
 final clienteRepositoryProvider = Provider.autoDispose<ClienteRepository>(
   (ref) {
-    final db = ref.watch(appDatabaseProvider);
+    final remoteDb = ref.watch(appRemoteDatabaseProvider);
+    final localDb = ref.watch(appLocalDatabaseProvider);
+
     final dio = ref.watch(dioProvider);
     final usuarioId = ref.watch(usuarioNotifierProvider)!.id;
-    return ClienteRepository(db, dio, usuarioId);
+    return ClienteRepository(remoteDb, localDb, dio, usuarioId);
   },
 );
 
@@ -133,63 +135,74 @@ class ClienteRepository {
   static const pageSize = 100;
   static const clienteVentasArticuloPageSize = 50;
 
-  final AppDatabase _db;
+  final RemoteAppDatabase _remoteDb;
+  final LocalAppDatabase _localDb;
   final Dio _dio;
   final String usuarioId;
 
-  ClienteRepository(this._db, this._dio, this.usuarioId);
+  ClienteRepository(this._remoteDb, this._localDb, this._dio, this.usuarioId);
 
   Future<List<Cliente>> getClienteLista(
       {required int page,
       required String searchText,
       required bool searchPotenciales}) async {
     try {
-      final query = _db.select(_db.clienteTable).join([
-        innerJoin(_db.clienteUsuarioTable,
-            _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
-        leftOuterJoin(_db.paisTable,
-            _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
-        leftOuterJoin(_db.divisaTable,
-            _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
+      final query = _remoteDb.select(_remoteDb.clienteTable).join([
+        innerJoin(
+            _remoteDb.clienteUsuarioTable,
+            _remoteDb.clienteUsuarioTable.clienteId
+                .equalsExp(_remoteDb.clienteTable.id)),
         leftOuterJoin(
-            _db.metodoDeCobroTable,
-            _db.metodoDeCobroTable.id
-                .equalsExp(_db.clienteTable.metodoDeCobroId)),
+            _remoteDb.paisTable,
+            _remoteDb.paisTable.id
+                .equalsExp(_remoteDb.clienteTable.paisFiscalId)),
         leftOuterJoin(
-            _db.plazoDeCobroTable,
-            _db.plazoDeCobroTable.id
-                .equalsExp(_db.clienteTable.plazoDeCobroId)),
+            _remoteDb.divisaTable,
+            _remoteDb.divisaTable.id
+                .equalsExp(_remoteDb.clienteTable.divisaId)),
         leftOuterJoin(
-            _db.clienteTipoPotencialTable,
-            _db.clienteTipoPotencialTable.id
-                .equalsExp(_db.clienteTable.clienteTipoPotencialId)),
+            _remoteDb.metodoDeCobroTable,
+            _remoteDb.metodoDeCobroTable.id
+                .equalsExp(_remoteDb.clienteTable.metodoDeCobroId)),
         leftOuterJoin(
-            _db.clienteEstadoPotencialTable,
-            _db.clienteEstadoPotencialTable.id
-                .equalsExp(_db.clienteTable.clienteEstadoPotencialId))
+            _remoteDb.plazoDeCobroTable,
+            _remoteDb.plazoDeCobroTable.id
+                .equalsExp(_remoteDb.clienteTable.plazoDeCobroId)),
+        leftOuterJoin(
+            _remoteDb.clienteTipoPotencialTable,
+            _remoteDb.clienteTipoPotencialTable.id
+                .equalsExp(_remoteDb.clienteTable.clienteTipoPotencialId)),
+        leftOuterJoin(
+            _remoteDb.clienteEstadoPotencialTable,
+            _remoteDb.clienteEstadoPotencialTable.id
+                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId))
       ]);
 
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId));
 
       if (searchText != '') {
         final busqueda = searchText.split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
           if (predicate == null) {
-            predicate = ((_db.clienteTable.id.like('%${busqueda[i]}%') |
-                (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
-                    _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
-                    _db.clienteTable.poblacionFiscal.like('%${busqueda[i]}%') |
-                    _db.clienteTable.provinciaFiscal
+            predicate = ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                (_remoteDb.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                    _remoteDb.clienteTable.nombreFiscal
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.clienteTable.poblacionFiscal
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.clienteTable.provinciaFiscal
                         .like('%${busqueda[i]}%'))));
           } else {
             predicate = predicate &
-                ((_db.clienteTable.id.like('%${busqueda[i]}%') |
-                    (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
-                        _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
-                        _db.clienteTable.poblacionFiscal
+                ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                    (_remoteDb.clienteTable.nombreCliente
                             .like('%${busqueda[i]}%') |
-                        _db.clienteTable.provinciaFiscal
+                        _remoteDb.clienteTable.nombreFiscal
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.clienteTable.poblacionFiscal
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.clienteTable.provinciaFiscal
                             .like('%${busqueda[i]}%'))));
           }
         }
@@ -197,25 +210,27 @@ class ClienteRepository {
       }
 
       if (searchPotenciales) {
-        query.where(_db.clienteTable.clientePotencial.equals('S'));
+        query.where(_remoteDb.clienteTable.clientePotencial.equals('S'));
       }
 
       query.limit(pageSize, offset: page * pageSize);
       query.orderBy([
-        OrderingTerm.asc(_db.clienteTable.nombreCliente),
-        OrderingTerm.asc(_db.clienteTable.id)
+        OrderingTerm.asc(_remoteDb.clienteTable.nombreCliente),
+        OrderingTerm.asc(_remoteDb.clienteTable.id)
       ]);
 
       final clienteList = await query.asyncMap((row) async {
-        final clienteDTO = row.readTable(_db.clienteTable);
-        final paisDTO = row.readTableOrNull(_db.paisTable);
-        final divisaDTO = row.readTableOrNull(_db.divisaTable);
-        final metodoDeCobroDTO = row.readTableOrNull(_db.metodoDeCobroTable);
-        final plazoDeCobroDTO = row.readTableOrNull(_db.plazoDeCobroTable);
+        final clienteDTO = row.readTable(_remoteDb.clienteTable);
+        final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
+        final divisaDTO = row.readTableOrNull(_remoteDb.divisaTable);
+        final metodoDeCobroDTO =
+            row.readTableOrNull(_remoteDb.metodoDeCobroTable);
+        final plazoDeCobroDTO =
+            row.readTableOrNull(_remoteDb.plazoDeCobroTable);
         final clienteEstadoPotencialDTO =
-            row.readTableOrNull(_db.clienteEstadoPotencialTable);
+            row.readTableOrNull(_remoteDb.clienteEstadoPotencialTable);
         final clienteTipoPotencialDTO =
-            row.readTableOrNull(_db.clienteTipoPotencialTable);
+            row.readTableOrNull(_remoteDb.clienteTipoPotencialTable);
 
         return clienteDTO.toDomain(
           paisFiscal: paisDTO?.toDomain(),
@@ -235,54 +250,64 @@ class ClienteRepository {
   Future<int> getClienteCountList(
       {required String searchText, required bool searchPotenciales}) async {
     try {
-      final countExp = _db.clienteTable.id.count();
+      final countExp = _remoteDb.clienteTable.id.count();
 
-      final query = _db.selectOnly(_db.clienteTable).join([
-        innerJoin(_db.clienteUsuarioTable,
-            _db.clienteUsuarioTable.clienteId.equalsExp(_db.clienteTable.id)),
-        leftOuterJoin(_db.paisTable,
-            _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
-        leftOuterJoin(_db.divisaTable,
-            _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
+      final query = _remoteDb.selectOnly(_remoteDb.clienteTable).join([
+        innerJoin(
+            _remoteDb.clienteUsuarioTable,
+            _remoteDb.clienteUsuarioTable.clienteId
+                .equalsExp(_remoteDb.clienteTable.id)),
         leftOuterJoin(
-            _db.metodoDeCobroTable,
-            _db.metodoDeCobroTable.id
-                .equalsExp(_db.clienteTable.metodoDeCobroId)),
+            _remoteDb.paisTable,
+            _remoteDb.paisTable.id
+                .equalsExp(_remoteDb.clienteTable.paisFiscalId)),
         leftOuterJoin(
-            _db.plazoDeCobroTable,
-            _db.plazoDeCobroTable.id
-                .equalsExp(_db.clienteTable.plazoDeCobroId)),
+            _remoteDb.divisaTable,
+            _remoteDb.divisaTable.id
+                .equalsExp(_remoteDb.clienteTable.divisaId)),
         leftOuterJoin(
-            _db.clienteTipoPotencialTable,
-            _db.clienteTipoPotencialTable.id
-                .equalsExp(_db.clienteTable.clienteTipoPotencialId)),
+            _remoteDb.metodoDeCobroTable,
+            _remoteDb.metodoDeCobroTable.id
+                .equalsExp(_remoteDb.clienteTable.metodoDeCobroId)),
         leftOuterJoin(
-            _db.clienteEstadoPotencialTable,
-            _db.clienteEstadoPotencialTable.id
-                .equalsExp(_db.clienteTable.clienteEstadoPotencialId))
+            _remoteDb.plazoDeCobroTable,
+            _remoteDb.plazoDeCobroTable.id
+                .equalsExp(_remoteDb.clienteTable.plazoDeCobroId)),
+        leftOuterJoin(
+            _remoteDb.clienteTipoPotencialTable,
+            _remoteDb.clienteTipoPotencialTable.id
+                .equalsExp(_remoteDb.clienteTable.clienteTipoPotencialId)),
+        leftOuterJoin(
+            _remoteDb.clienteEstadoPotencialTable,
+            _remoteDb.clienteEstadoPotencialTable.id
+                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId))
       ]);
       query.addColumns([countExp]);
-      query.where(_db.clienteUsuarioTable.usuarioId.equals(usuarioId));
+      query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId));
 
       if (searchText != '') {
         final busqueda = searchText.split(' ');
         Expression<bool>? predicate;
         for (var i = 0; i < busqueda.length; i++) {
           if (predicate == null) {
-            predicate = ((_db.clienteTable.id.like('%${busqueda[i]}%') |
-                (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
-                    _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
-                    _db.clienteTable.poblacionFiscal.like('%${busqueda[i]}%') |
-                    _db.clienteTable.provinciaFiscal
+            predicate = ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                (_remoteDb.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
+                    _remoteDb.clienteTable.nombreFiscal
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.clienteTable.poblacionFiscal
+                        .like('%${busqueda[i]}%') |
+                    _remoteDb.clienteTable.provinciaFiscal
                         .like('%${busqueda[i]}%'))));
           } else {
             predicate = predicate &
-                ((_db.clienteTable.id.like('%${busqueda[i]}%') |
-                    (_db.clienteTable.nombreCliente.like('%${busqueda[i]}%') |
-                        _db.clienteTable.nombreFiscal.like('%${busqueda[i]}%') |
-                        _db.clienteTable.poblacionFiscal
+                ((_remoteDb.clienteTable.id.like('%${busqueda[i]}%') |
+                    (_remoteDb.clienteTable.nombreCliente
                             .like('%${busqueda[i]}%') |
-                        _db.clienteTable.provinciaFiscal
+                        _remoteDb.clienteTable.nombreFiscal
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.clienteTable.poblacionFiscal
+                            .like('%${busqueda[i]}%') |
+                        _remoteDb.clienteTable.provinciaFiscal
                             .like('%${busqueda[i]}%'))));
           }
         }
@@ -290,7 +315,7 @@ class ClienteRepository {
       }
 
       if (searchPotenciales) {
-        query.where(_db.clienteTable.clientePotencial.equals('S'));
+        query.where(_remoteDb.clienteTable.clientePotencial.equals('S'));
       }
 
       final count = await query.map((row) => row.read(countExp)).getSingle();
@@ -302,41 +327,47 @@ class ClienteRepository {
 
   Future<Cliente> getClienteById({required String clienteId}) async {
     try {
-      final query = _db.select(_db.clienteTable).join([
-        leftOuterJoin(_db.paisTable,
-            _db.paisTable.id.equalsExp(_db.clienteTable.paisFiscalId)),
-        leftOuterJoin(_db.divisaTable,
-            _db.divisaTable.id.equalsExp(_db.clienteTable.divisaId)),
+      final query = _remoteDb.select(_remoteDb.clienteTable).join([
         leftOuterJoin(
-            _db.metodoDeCobroTable,
-            _db.metodoDeCobroTable.id
-                .equalsExp(_db.clienteTable.metodoDeCobroId)),
+            _remoteDb.paisTable,
+            _remoteDb.paisTable.id
+                .equalsExp(_remoteDb.clienteTable.paisFiscalId)),
         leftOuterJoin(
-            _db.plazoDeCobroTable,
-            _db.plazoDeCobroTable.id
-                .equalsExp(_db.clienteTable.plazoDeCobroId)),
+            _remoteDb.divisaTable,
+            _remoteDb.divisaTable.id
+                .equalsExp(_remoteDb.clienteTable.divisaId)),
         leftOuterJoin(
-            _db.clienteTipoPotencialTable,
-            _db.clienteTipoPotencialTable.id
-                .equalsExp(_db.clienteTable.clienteTipoPotencialId)),
+            _remoteDb.metodoDeCobroTable,
+            _remoteDb.metodoDeCobroTable.id
+                .equalsExp(_remoteDb.clienteTable.metodoDeCobroId)),
         leftOuterJoin(
-            _db.clienteEstadoPotencialTable,
-            _db.clienteEstadoPotencialTable.id
-                .equalsExp(_db.clienteTable.clienteEstadoPotencialId))
+            _remoteDb.plazoDeCobroTable,
+            _remoteDb.plazoDeCobroTable.id
+                .equalsExp(_remoteDb.clienteTable.plazoDeCobroId)),
+        leftOuterJoin(
+            _remoteDb.clienteTipoPotencialTable,
+            _remoteDb.clienteTipoPotencialTable.id
+                .equalsExp(_remoteDb.clienteTable.clienteTipoPotencialId)),
+        leftOuterJoin(
+            _remoteDb.clienteEstadoPotencialTable,
+            _remoteDb.clienteEstadoPotencialTable.id
+                .equalsExp(_remoteDb.clienteTable.clienteEstadoPotencialId))
       ]);
 
-      query.where(_db.clienteTable.id.equals(clienteId));
+      query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
       return query.map((row) {
-        final clienteDTO = row.readTable(_db.clienteTable);
-        final paisDTO = row.readTableOrNull(_db.paisTable);
-        final divisaDTO = row.readTableOrNull(_db.divisaTable);
-        final metodoDeCobroDTO = row.readTableOrNull(_db.metodoDeCobroTable);
-        final plazoDeCobroDTO = row.readTableOrNull(_db.plazoDeCobroTable);
+        final clienteDTO = row.readTable(_remoteDb.clienteTable);
+        final paisDTO = row.readTableOrNull(_remoteDb.paisTable);
+        final divisaDTO = row.readTableOrNull(_remoteDb.divisaTable);
+        final metodoDeCobroDTO =
+            row.readTableOrNull(_remoteDb.metodoDeCobroTable);
+        final plazoDeCobroDTO =
+            row.readTableOrNull(_remoteDb.plazoDeCobroTable);
         final clienteEstadoPotencialDTO =
-            row.readTableOrNull(_db.clienteEstadoPotencialTable);
+            row.readTableOrNull(_remoteDb.clienteEstadoPotencialTable);
         final clienteTipoPotencialDTO =
-            row.readTableOrNull(_db.clienteTipoPotencialTable);
+            row.readTableOrNull(_remoteDb.clienteTipoPotencialTable);
 
         return clienteDTO.toDomain(
           paisFiscal: paisDTO?.toDomain(),
@@ -355,12 +386,13 @@ class ClienteRepository {
   Future<List<ClienteDireccion>> getClienteDireccionById(
       {required String clienteId}) async {
     try {
-      final queryDirecciones = (_db.select(_db.clienteDireccionTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
+      final queryDirecciones =
+          (_remoteDb.select(_remoteDb.clienteDireccionTable)
+            ..where((t) => t.clienteId.equals(clienteId)));
 
       final clientesDireccionList =
           await queryDirecciones.asyncMap((row) async {
-        final paisDTO = await (_db.select(_db.paisTable)
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
               ..where((t) => t.id.equals(row.paisId ?? '')))
             .getSingleOrNull();
         return row.toDomain(
@@ -377,7 +409,7 @@ class ClienteRepository {
   Future<List<ClienteContacto>> getClienteContactoById(
       {required String clienteId}) {
     try {
-      final query = (_db.select(_db.clienteContactoTable)
+      final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
       return query.map((row) {
@@ -391,20 +423,20 @@ class ClienteRepository {
   Future<List<ClienteDescuento>> getClienteDescuentoById(
       {required String clienteId}) {
     try {
-      final query = (_db.select(_db.clienteDescuentoTable)
+      final query = (_remoteDb.select(_remoteDb.clienteDescuentoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
       return query.asyncMap((row) async {
         final articuloDto = (row.articuloId != '*')
-            ? await (_db.select(_db.articuloTable)
+            ? await (_remoteDb.select(_remoteDb.articuloTable)
                   ..where((t) => t.id.equals(row.articuloId)))
                 .getSingle()
             : null;
 
-        final familiaDTO = await (_db.select(_db.familiaTable)
+        final familiaDTO = await (_remoteDb.select(_remoteDb.familiaTable)
               ..where((t) => t.id.equals(row.familiaId)))
             .getSingle();
-        final subfamiliaDTO = await (_db.select(_db.subfamiliaTable)
+        final subfamiliaDTO = await (_remoteDb.select(_remoteDb.subfamiliaTable)
               ..where((t) => t.id.equals(row.subfamiliaId)))
             .getSingle();
         return row.toDomain(
@@ -425,25 +457,25 @@ class ClienteRepository {
   Future<List<ClientePrecioNeto>> getClientePrecioNetoById(
       {required String clienteId}) {
     try {
-      final query = _db.select(_db.clientePrecioNetoTable).join([
+      final query = _remoteDb.select(_remoteDb.clientePrecioNetoTable).join([
         innerJoin(
-            _db.clienteTable,
-            _db.clienteTable.id
-                .equalsExp(_db.clientePrecioNetoTable.clienteId)),
+            _remoteDb.clienteTable,
+            _remoteDb.clienteTable.id
+                .equalsExp(_remoteDb.clientePrecioNetoTable.clienteId)),
         innerJoin(
-            _db.articuloTable,
-            _db.articuloTable.id
-                .equalsExp(_db.clientePrecioNetoTable.articuloId)),
+            _remoteDb.articuloTable,
+            _remoteDb.articuloTable.id
+                .equalsExp(_remoteDb.clientePrecioNetoTable.articuloId)),
       ]);
-      query.where(_db.clienteTable.id.equals(clienteId));
+      query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
       return query.map((row) {
-        final clienteDTO = row.readTable(_db.clienteTable);
+        final clienteDTO = row.readTable(_remoteDb.clienteTable);
         final articulo = row
-            .readTable(_db.articuloTable)
+            .readTable(_remoteDb.articuloTable)
             .toDomain(familia: null, subfamilia: null);
 
-        final precioNetoDTO = row.readTable(_db.clientePrecioNetoTable);
+        final precioNetoDTO = row.readTable(_remoteDb.clientePrecioNetoTable);
         return precioNetoDTO.toDomain(
             divisaId: clienteDTO.divisaId,
             descripcion: getDescriptionInLocalLanguage(
@@ -458,7 +490,7 @@ class ClienteRepository {
   Future<List<ClienteGrupoNeto>> getClienteGrupoNetoById(
       {required String clienteId}) {
     try {
-      final query = (_db.select(_db.clienteGrupoNetoTable)
+      final query = (_remoteDb.select(_remoteDb.clienteGrupoNetoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
       return query.map((row) {
@@ -472,7 +504,7 @@ class ClienteRepository {
   Future<List<ClienteRappel>> getClienteRappelById(
       {required String clienteId}) {
     try {
-      final query = (_db.select(_db.clienteRappelTable)
+      final query = (_remoteDb.select(_remoteDb.clienteRappelTable)
         ..where((t) => t.clienteId.equals(clienteId))
         ..orderBy([
           (t) => OrderingTerm.desc(t.fechaDesDe),
@@ -489,23 +521,25 @@ class ClienteRepository {
   Future<List<ClientePagoPendiente>> getClientePagoPendienteById(
       {required String clienteId}) {
     try {
-      final query = _db.select(_db.clientePagoPendienteTable).join([
+      final query = _remoteDb.select(_remoteDb.clientePagoPendienteTable).join([
         innerJoin(
-            _db.clienteTable,
-            _db.clienteTable.id
-                .equalsExp(_db.clientePagoPendienteTable.clienteId)),
+            _remoteDb.clienteTable,
+            _remoteDb.clienteTable.id
+                .equalsExp(_remoteDb.clientePagoPendienteTable.clienteId)),
       ]);
 
-      query.where(_db.clienteTable.id.equals(clienteId));
+      query.where(_remoteDb.clienteTable.id.equals(clienteId));
 
       return query.asyncMap((row) async {
-        final clienteDTO = row.readTable(_db.clienteTable);
+        final clienteDTO = row.readTable(_remoteDb.clienteTable);
 
-        final metodoDeCobroDTO = await (_db.select(_db.metodoDeCobroTable)
-              ..where((t) => t.id.equals(clienteDTO.metodoDeCobroId ?? '')))
-            .getSingleOrNull();
+        final metodoDeCobroDTO =
+            await (_remoteDb.select(_remoteDb.metodoDeCobroTable)
+                  ..where((t) => t.id.equals(clienteDTO.metodoDeCobroId ?? '')))
+                .getSingleOrNull();
 
-        final pagosPendienteDTO = row.readTable(_db.clientePagoPendienteTable);
+        final pagosPendienteDTO =
+            row.readTable(_remoteDb.clientePagoPendienteTable);
         return pagosPendienteDTO.toDomain(
             metodoDeCobro: metodoDeCobroDTO?.toDomain(),
             divisaId: clienteDTO.divisaId);
@@ -519,10 +553,10 @@ class ClienteRepository {
       {required String clienteId}) async {
     try {
       final query =
-          await _db.customSelect(_getVentasMesCustomSelect(), variables: [
+          await _remoteDb.customSelect(_getVentasMesCustomSelect(), variables: [
         Variable(clienteId),
       ], readsFrom: {
-        _db.estadisticasClienteUsuarioVentasTable,
+        _remoteDb.estadisticasClienteUsuarioVentasTable,
       }).get();
 
       return query.map((row) {
@@ -537,12 +571,12 @@ class ClienteRepository {
       {required String clienteId, required String searchText}) async {
     try {
       final idioma = Intl.getCurrentLocale();
-      final query = await _db
+      final query = await _remoteDb
           .customSelect(_getVentasArticuloCustomSelect(searchText), variables: [
         Variable(idioma),
         Variable(clienteId),
       ], readsFrom: {
-        _db.estadisticasClienteUsuarioVentasTable,
+        _remoteDb.estadisticasClienteUsuarioVentasTable,
       }).get();
 
       return query.map((row) {
@@ -923,13 +957,13 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       {required String clienteId, required String? direccionId}) async {
     try {
       if (direccionId != null) {
-        final query = (_db.select(_db.clienteDireccionTable)
+        final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
           ..where((t) =>
               t.clienteId.equals(clienteId) &
               t.direccionId.equals(direccionId)));
 
         return query.asyncMap((row) async {
-          final paisDTO = await (_db.select(_db.paisTable)
+          final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
                 ..where((t) => t.id.equals(row.paisId ?? '')))
               .getSingleOrNull();
           return row.toDomain(
@@ -948,32 +982,33 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       required int page,
       required String searchText}) async {
     try {
-      final query = _db.select(_db.estadisticasUltimosPreciosTable).join([
+      final query =
+          _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
         innerJoin(
-            _db.articuloTable,
-            _db.articuloTable.id
-                .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
+            _remoteDb.articuloTable,
+            _remoteDb.articuloTable.id.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.articuloId)),
       ]);
       if (searchText != '') {
-        query.where(
-            (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId) &
-                (_db.articuloTable.id.contains(searchText) |
-                    _filtrarPorDescripcion(searchText))));
+        query.where((_remoteDb.estadisticasUltimosPreciosTable.clienteId
+                .equals(clienteId) &
+            (_remoteDb.articuloTable.id.contains(searchText) |
+                _filtrarPorDescripcion(searchText))));
       } else {
-        query.where(
-            _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
+        query.where(_remoteDb.estadisticasUltimosPreciosTable.clienteId
+            .equals(clienteId));
       }
 
       query.limit(pageSize, offset: page * pageSize);
 
       query.orderBy(
-        [OrderingTerm.desc(_db.estadisticasUltimosPreciosTable.fecha)],
+        [OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha)],
       );
 
       return query.asyncMap((row) async {
         final lastPriceArticuloDTO =
-            row.readTable(_db.estadisticasUltimosPreciosTable);
-        final articuloDTO = row.readTableOrNull(_db.articuloTable);
+            row.readTable(_remoteDb.estadisticasUltimosPreciosTable);
+        final articuloDTO = row.readTableOrNull(_remoteDb.articuloTable);
         return lastPriceArticuloDTO.toDomain(
             descripcion: getDescriptionInLocalLanguage(
                 articulo:
@@ -987,23 +1022,25 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   Future<int> getClienteUltimosPreciosCountList(
       {required String clienteId, required String searchText}) async {
     try {
-      final countExp = _db.estadisticasUltimosPreciosTable.clienteId.count();
+      final countExp =
+          _remoteDb.estadisticasUltimosPreciosTable.clienteId.count();
 
-      final query = _db.selectOnly(_db.estadisticasUltimosPreciosTable).join([
+      final query =
+          _remoteDb.selectOnly(_remoteDb.estadisticasUltimosPreciosTable).join([
         leftOuterJoin(
-            _db.articuloTable,
-            _db.articuloTable.id
-                .equalsExp(_db.estadisticasUltimosPreciosTable.articuloId)),
+            _remoteDb.articuloTable,
+            _remoteDb.articuloTable.id.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.articuloId)),
       ]);
 
       if (searchText != '') {
-        query.where(
-            (_db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId)) &
-                (_db.articuloTable.id.contains(searchText) |
-                    _filtrarPorDescripcion(searchText)));
+        query.where((_remoteDb.estadisticasUltimosPreciosTable.clienteId
+                .equals(clienteId)) &
+            (_remoteDb.articuloTable.id.contains(searchText) |
+                _filtrarPorDescripcion(searchText)));
       } else {
-        query.where(
-            _db.estadisticasUltimosPreciosTable.clienteId.equals(clienteId));
+        query.where(_remoteDb.estadisticasUltimosPreciosTable.clienteId
+            .equals(clienteId));
       }
 
       query.addColumns([countExp]);
@@ -1056,10 +1093,9 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<DateTime> getLastSyncDate() async {
     try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      final dateUTCString =
-          sharedPreferences.getString(clienteFechaUltimaSyncKey) as String;
-      return DateTime.parse(dateUTCString);
+      final lastSyncDTO =
+          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+      return lastSyncDTO.clienteUltimaSync;
     } catch (e) {
       rethrow;
     }
@@ -1084,16 +1120,18 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<List<Visita>> _getVisitasById({required String clienteId}) async {
     try {
-      final query = _db.select(_db.visitaTable).join([
-        innerJoin(_db.clienteTable,
-            _db.clienteTable.id.equalsExp(_db.visitaTable.clienteId))
+      final query = _remoteDb.select(_remoteDb.visitaTable).join([
+        innerJoin(
+            _remoteDb.clienteTable,
+            _remoteDb.clienteTable.id
+                .equalsExp(_remoteDb.visitaTable.clienteId))
       ]);
 
-      query.where(_db.visitaTable.clienteId.equals(clienteId));
+      query.where(_remoteDb.visitaTable.clienteId.equals(clienteId));
 
       return query.map((row) {
-        final visitaDTO = row.readTable(_db.visitaTable);
-        final clienteDto = row.readTable(_db.clienteTable);
+        final visitaDTO = row.readTable(_remoteDb.visitaTable);
+        final clienteDto = row.readTable(_remoteDb.clienteTable);
         return visitaDTO.toDomain(nombreCliente: clienteDto.nombreCliente);
       }).get();
     } catch (e) {
@@ -1103,18 +1141,17 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
   Future<List<Visita>> _getVisitasLocalById({required String clienteId}) async {
     try {
-      final query = _db.select(_db.visitaLocalTable).join([
-        innerJoin(_db.clienteTable,
-            _db.clienteTable.id.equalsExp(_db.visitaLocalTable.clienteId))
-      ]);
+      final visitasLocalDto = await (_localDb.select(_localDb.visitaLocalTable)
+            ..where((tbl) => tbl.clienteId.equals(clienteId)))
+          .get();
 
-      query.where(_db.visitaLocalTable.clienteId.equals(clienteId));
+      final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
+            ..where((tbl) => tbl.id.equals(clienteId)))
+          .getSingle();
 
-      return query.map((row) {
-        final visitaDTO = row.readTable(_db.visitaLocalTable);
-        final clienteDto = row.readTable(_db.clienteTable);
-        return visitaDTO.toDomain(nombreCliente: clienteDto.nombreCliente);
-      }).get();
+      return visitasLocalDto
+          .map((e) => e.toDomain(nombreCliente: clienteDto.nombreCliente))
+          .toList();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -1124,17 +1161,17 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     final currentLocale = Intl.getCurrentLocale();
 
     if (currentLocale == 'es') {
-      return _db.articuloTable.descripcionES.contains(searchText);
+      return _remoteDb.articuloTable.descripcionES.contains(searchText);
     } else if (currentLocale == 'en') {
-      return _db.articuloTable.descripcionEN.contains(searchText);
+      return _remoteDb.articuloTable.descripcionEN.contains(searchText);
     } else if (currentLocale == 'de') {
-      return _db.articuloTable.descripcionDE.contains(searchText);
+      return _remoteDb.articuloTable.descripcionDE.contains(searchText);
     } else if (currentLocale == 'fr') {
-      return _db.articuloTable.descripcionFR.contains(searchText);
+      return _remoteDb.articuloTable.descripcionFR.contains(searchText);
     } else if (currentLocale == 'it') {
-      return _db.articuloTable.descripcionIT.contains(searchText);
+      return _remoteDb.articuloTable.descripcionIT.contains(searchText);
     } else {
-      return _db.articuloTable.descripcionES.contains(searchText);
+      return _remoteDb.articuloTable.descripcionES.contains(searchText);
     }
   }
 }

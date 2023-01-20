@@ -1,6 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/articulo_top_dto.dart';
 
 import '../../features/articulos/domain/articulo.dart';
@@ -10,7 +10,7 @@ import '../exceptions/app_exception.dart';
 final articuloTopRepositoryProvider =
     Provider.autoDispose<ArticuloTopRepository>(
   (ref) {
-    final db = ref.watch(appDatabaseProvider);
+    final db = ref.watch(appRemoteDatabaseProvider);
     return ArticuloTopRepository(db);
   },
 );
@@ -22,7 +22,7 @@ final articuloTopProvider = FutureProvider.family
 });
 
 class ArticuloTopRepository {
-  final AppDatabase db;
+  final RemoteAppDatabase db;
 
   ArticuloTopRepository(this.db);
 

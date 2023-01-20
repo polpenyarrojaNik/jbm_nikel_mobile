@@ -114,6 +114,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "articulo_show_articuloVentasMes_total":
             MessageLookupByLibrary.simpleMessage("Total"),
         "articulo_todos": MessageLookupByLibrary.simpleMessage("Todos"),
+        "askPopAlertDialog_aceptar":
+            MessageLookupByLibrary.simpleMessage("Aceptar"),
+        "askPopAlertDialog_atencion":
+            MessageLookupByLibrary.simpleMessage("Atención:"),
+        "askPopAlertDialog_cancelar":
+            MessageLookupByLibrary.simpleMessage("Cancelar"),
         "auth_loginPage_contrasena":
             MessageLookupByLibrary.simpleMessage("Contraseña"),
         "auth_loginPage_iniciarSesion":
@@ -363,15 +369,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "familia": MessageLookupByLibrary.simpleMessage("Familia"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Ha ocurrido un error"),
-        "pedido_edit_askPopAlertDialog_aceptar":
-            MessageLookupByLibrary.simpleMessage("Aceptar"),
-        "pedido_edit_askPopAlertDialog_atencion":
-            MessageLookupByLibrary.simpleMessage("Atención:"),
-        "pedido_edit_askPopAlertDialog_cancelar":
-            MessageLookupByLibrary.simpleMessage("Cancelar"),
+        "pedido_borrador": MessageLookupByLibrary.simpleMessage("Borrador"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
                 "¿Estás seguro qué quieres salir?"),
+        "pedido_edit_askPopAlertDialog_seguroQuieresSalesBorrador":
+            MessageLookupByLibrary.simpleMessage(
+                "¿Estás seguro qué quieres salir?\nSe eliminará el borrador del pedido."),
         "pedido_edit_lineaNuevoTile_dto":
             MessageLookupByLibrary.simpleMessage("Dto.:"),
         "pedido_edit_lineaNuevoTile_precio":
@@ -379,6 +383,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_edit_pedidoEdit_anadeAlgunaLinea":
             MessageLookupByLibrary.simpleMessage(
                 "Añade alguna línea al pedido"),
+        "pedido_edit_pedidoEdit_creandoCsvFile":
+            MessageLookupByLibrary.simpleMessage(
+                "Creando archivo CSV para enviar por email..."),
         "pedido_edit_pedidoEdit_direccionesEnvio":
             MessageLookupByLibrary.simpleMessage("Direcciones envío"),
         "pedido_edit_pedidoEdit_editarPedido":
@@ -478,6 +485,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cantidad pendiente"),
         "settings_cerrar_sesion":
             MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
+        "settings_creandoArchivo":
+            MessageLookupByLibrary.simpleMessage("Creando archivo..."),
+        "settings_enviarBaseDeDatos":
+            MessageLookupByLibrary.simpleMessage("Enviar base de datos"),
         "settings_nombre_usuario":
             MessageLookupByLibrary.simpleMessage("Nombre usuario"),
         "settings_reemplazarBaseDeDatos":

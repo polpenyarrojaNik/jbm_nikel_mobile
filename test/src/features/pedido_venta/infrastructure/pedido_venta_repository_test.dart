@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/articulo_precio.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/precio.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/infrastructure/pedido_venta_repository.dart';
 
@@ -11,44 +12,49 @@ import '../../../../resources/test_constants.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  late AppDatabase db;
+  late RemoteAppDatabase remoteDb;
+  late LocalAppDatabase localDb;
+
   late PedidoVentaRepository pedidoVentaRepository;
 
   setUp(() async {
     final Dio dio = Dio();
-    db = AppDatabase.test();
+    remoteDb = RemoteAppDatabase.test();
+    localDb = LocalAppDatabase.test();
+
     pedidoVentaRepository = PedidoVentaRepository(
-      db,
+      remoteDb,
+      localDb,
       dio,
       kUsuario,
     );
   });
 
   tearDown(() async {
-    await db.close();
+    await remoteDb.close();
   });
 
   group('photoGearRepository', () {
     group('getArticuloPrecio', () {
       setUp(() async {
         // Clientes
-        await db.into(db.clienteTable).insert(kClienteDTO.copyWith(
+        await remoteDb.into(remoteDb.clienteTable).insert(kClienteDTO.copyWith(
               id: 'CLI-MEJOR',
               tipoCalculoPrecio: 'M',
               tarifaId: kTarifaId,
               descuentoGeneralId: kDescuentoGeneralId,
             ));
-        await db.into(db.clienteTable).insert(kClienteDTO.copyWith(
+        await remoteDb.into(remoteDb.clienteTable).insert(kClienteDTO.copyWith(
               id: 'CLI-NETO',
               tipoCalculoPrecio: 'N',
               tarifaId: kTarifaId,
               descuentoGeneralId: kDescuentoGeneralId,
             ));
         // Articulos
-        await db.into(db.articuloTable).insert(kArticuloDTO);
+        await remoteDb.into(remoteDb.articuloTable).insert(kArticuloDTO);
         // IVA
-        await db
-            .into(db.articuloEmpresaIvaTable)
+        await remoteDb
+            .into(remoteDb.articuloEmpresaIvaTable)
             .insert(kArticuloEmpresaIvaDTO);
       });
       test('Precio 0 si no existe cliente', () async {
@@ -64,16 +70,16 @@ void main() {
 
       test('Tarifa con descuento general', () async {
         // Precio Tarifa 100€
-        await db
-            .into(db.articuloPrecioTarifaTable)
+        await remoteDb
+            .into(remoteDb.articuloPrecioTarifaTable)
             .insert(kArticuloPrecioTarifaDTO.copyWith(
               cantidadDesde: 1,
               precio: 100,
             ));
 
         // Descuento general 10% todos los articulos
-        await db
-            .into(db.descuentoGeneralTable)
+        await remoteDb
+            .into(remoteDb.descuentoGeneralTable)
             .insert(kDescuentoGeneralDTO.copyWith(
               descuentoGeneralId: kDescuentoGeneralId,
               articuloId: '*',
@@ -84,8 +90,8 @@ void main() {
             ));
 
         // Descuento general 5% articulo concreto. Debe aplicar este
-        await db
-            .into(db.descuentoGeneralTable)
+        await remoteDb
+            .into(remoteDb.descuentoGeneralTable)
             .insert(kDescuentoGeneralDTO.copyWith(
               articuloId: kArticuloId,
               familiaId: '*',
@@ -116,16 +122,16 @@ void main() {
 
       test('Tarifa con descuento cliente', () async {
         // Precio Tarifa 100€
-        await db
-            .into(db.articuloPrecioTarifaTable)
+        await remoteDb
+            .into(remoteDb.articuloPrecioTarifaTable)
             .insert(kArticuloPrecioTarifaDTO.copyWith(
               cantidadDesde: 1,
               precio: 100,
             ));
 
         // Descuento general 10% todos los articulos
-        await db
-            .into(db.clienteDescuentoTable)
+        await remoteDb
+            .into(remoteDb.clienteDescuentoTable)
             .insert(kClienteDescuentoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
               articuloId: '*',
@@ -136,8 +142,8 @@ void main() {
             ));
 
         // Descuento general 5% articulo concreto. Debe aplicar este
-        await db
-            .into(db.clienteDescuentoTable)
+        await remoteDb
+            .into(remoteDb.clienteDescuentoTable)
             .insert(kClienteDescuentoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
               articuloId: kArticuloId,
@@ -168,8 +174,8 @@ void main() {
       });
 
       test('Precio Neto', () async {
-        await db
-            .into(db.clientePrecioNetoTable)
+        await remoteDb
+            .into(remoteDb.clientePrecioNetoTable)
             .insert(kClientePrecioNetoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
               cantidadDesde: 1,
@@ -197,15 +203,15 @@ void main() {
       });
 
       test('Precio Grupo Neto', () async {
-        await db
-            .into(db.articuloGrupoNetoTable)
+        await remoteDb
+            .into(remoteDb.articuloGrupoNetoTable)
             .insert(kArticuloGrupoNetoDTO.copyWith(
               cantidadDesde: 1,
               precio: 100,
             ));
 
-        await db
-            .into(db.clienteGrupoNetoTable)
+        await remoteDb
+            .into(remoteDb.clienteGrupoNetoTable)
             .insert(kClienteGrupoNetoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
             ));
@@ -232,16 +238,16 @@ void main() {
 
       test('Mejor Precio', () async {
         // Precio Tarifa 100€
-        await db
-            .into(db.articuloPrecioTarifaTable)
+        await remoteDb
+            .into(remoteDb.articuloPrecioTarifaTable)
             .insert(kArticuloPrecioTarifaDTO.copyWith(
               cantidadDesde: 1,
               precio: 100,
             ));
 
         // Descuento cliente 50% todos los articulos
-        await db
-            .into(db.clienteDescuentoTable)
+        await remoteDb
+            .into(remoteDb.clienteDescuentoTable)
             .insert(kClienteDescuentoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
               articuloId: '*',
@@ -252,8 +258,8 @@ void main() {
             ));
 
         // Descuento general 10% todos los articulos
-        await db
-            .into(db.descuentoGeneralTable)
+        await remoteDb
+            .into(remoteDb.descuentoGeneralTable)
             .insert(kDescuentoGeneralDTO.copyWith(
               descuentoGeneralId: kDescuentoGeneralId,
               articuloId: '*',
@@ -264,22 +270,22 @@ void main() {
             ));
 
         // Grupo Neto 100€
-        await db
-            .into(db.articuloGrupoNetoTable)
+        await remoteDb
+            .into(remoteDb.articuloGrupoNetoTable)
             .insert(kArticuloGrupoNetoDTO.copyWith(
               cantidadDesde: 1,
               precio: 90,
             ));
 
-        await db
-            .into(db.clienteGrupoNetoTable)
+        await remoteDb
+            .into(remoteDb.clienteGrupoNetoTable)
             .insert(kClienteGrupoNetoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
             ));
 
         // Precio Neto 50€
-        await db
-            .into(db.clientePrecioNetoTable)
+        await remoteDb
+            .into(remoteDb.clientePrecioNetoTable)
             .insert(kClientePrecioNetoDTO.copyWith(
               clienteId: 'CLI-MEJOR',
               cantidadDesde: 1,
@@ -308,16 +314,16 @@ void main() {
 
       test('Mejor Neto Precio', () async {
         // Precio Tarifa 100€
-        await db
-            .into(db.articuloPrecioTarifaTable)
+        await remoteDb
+            .into(remoteDb.articuloPrecioTarifaTable)
             .insert(kArticuloPrecioTarifaDTO.copyWith(
               cantidadDesde: 1,
               precio: 100,
             ));
 
         // Descuento cliente 50% todos los articulos
-        await db
-            .into(db.clienteDescuentoTable)
+        await remoteDb
+            .into(remoteDb.clienteDescuentoTable)
             .insert(kClienteDescuentoDTO.copyWith(
               clienteId: 'CLI-NETO',
               articuloId: '*',
@@ -328,8 +334,8 @@ void main() {
             ));
 
         // Descuento general 10% todos los articulos
-        await db
-            .into(db.descuentoGeneralTable)
+        await remoteDb
+            .into(remoteDb.descuentoGeneralTable)
             .insert(kDescuentoGeneralDTO.copyWith(
               descuentoGeneralId: kDescuentoGeneralId,
               articuloId: '*',
@@ -340,22 +346,22 @@ void main() {
             ));
 
         // Grupo Neto 100€
-        await db
-            .into(db.articuloGrupoNetoTable)
+        await remoteDb
+            .into(remoteDb.articuloGrupoNetoTable)
             .insert(kArticuloGrupoNetoDTO.copyWith(
               cantidadDesde: 1,
               precio: 90,
             ));
 
-        await db
-            .into(db.clienteGrupoNetoTable)
+        await remoteDb
+            .into(remoteDb.clienteGrupoNetoTable)
             .insert(kClienteGrupoNetoDTO.copyWith(
               clienteId: 'CLI-NETO',
             ));
 
         // Precio Neto 50€
-        await db
-            .into(db.clientePrecioNetoTable)
+        await remoteDb
+            .into(remoteDb.clientePrecioNetoTable)
             .insert(kClientePrecioNetoDTO.copyWith(
               clienteId: 'CLI-NETO',
               cantidadDesde: 1,

@@ -4,6 +4,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta.d
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_venta_linea.dart';
 
 import '../../../../core/domain/entity_id_is_local_param.dart';
+import '../../../../core/exceptions/app_exception.dart';
 import '../../../cliente/domain/cliente.dart';
 import '../../../cliente/domain/cliente_direccion.dart';
 import '../../../cliente/infrastructure/cliente_repository.dart';
@@ -26,12 +27,13 @@ class PedidoVentaEditPageControllerState
     String? pedidoCliente,
     bool oferta,
     DateTime? ofertaFechaHasta,
+    bool isBorrador,
   ) = _data;
   const factory PedidoVentaEditPageControllerState.error(Object error,
       {StackTrace? stackTrace}) = _error;
   const factory PedidoVentaEditPageControllerState.deleted() = _deleted;
   const factory PedidoVentaEditPageControllerState.saved(
-      String pedidoVentaAppId) = _saved;
+      String pedidoVentaAppId, bool isBorrador) = _saved;
 
   const factory PedidoVentaEditPageControllerState.savedError(
       Cliente? cliente,
@@ -42,6 +44,7 @@ class PedidoVentaEditPageControllerState
       String? pedidoCliente,
       bool oferta,
       DateTime? ofertaFechaHasta,
+      bool isBorrador,
       Object error,
       {StackTrace? stackTrace}) = _savedError;
 }
@@ -70,6 +73,7 @@ class PedidoVentaEditPageController
   String? _pedidoCliente;
   bool _oferta = false;
   DateTime? _ofertaFechaHasta;
+  bool _isBorrador = false;
 
   PedidoVentaEditPageController({
     required this.pedidoVentaIdIsLocalParam,
@@ -81,49 +85,33 @@ class PedidoVentaEditPageController
 
   Future<void> getPedidoVenta() async {
     state = const PedidoVentaEditPageControllerState.loading();
-
-    if (pedidoVentaIdIsLocalParam.isNew) {
-      if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
-        _cliente = await clienteRepository.getClienteById(
-            clienteId: pedidoVentaIdIsLocalParam.createPedidoFromClienteId!);
-      }
-      state = PedidoVentaEditPageControllerState.data(
-        _cliente,
-        _clienteDireccion,
-        pedidoVentaLineaList,
-        _currentStep,
-        _observaciones,
-        _pedidoCliente,
-        _oferta,
-        _ofertaFechaHasta,
-      );
-    } else {
-      try {
-        final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
-          pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
-        );
-
+    try {
+      if (await pedidoVentaRepository.getBorradorPendiete() != null) {
+        _isBorrador = true;
+        final pedidoVentaBorrador =
+            await pedidoVentaRepository.getPedidoVentaBorrador();
         pedidoVentaLineaList =
             await pedidoVentaRepository.getPedidoVentaLineaListById(
                 pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
 
         _cliente = await clienteRepository.getClienteById(
-            clienteId: pedidoVenta.clienteId!);
+            clienteId: pedidoVentaBorrador.clienteId!);
 
         _clienteDireccion =
             await clienteRepository.getClienteDireccionByDireccionId(
-                clienteId: pedidoVenta.clienteId!,
-                direccionId: pedidoVenta.direccionId);
+                clienteId: pedidoVentaBorrador.clienteId!,
+                direccionId: pedidoVentaBorrador.direccionId);
 
-        _currentStep = 1;
+        _currentStep = 2;
 
-        _observaciones = pedidoVenta.observaciones;
+        _observaciones = pedidoVentaBorrador.observaciones;
 
-        _pedidoCliente = pedidoVenta.pedidoCliente;
+        _pedidoCliente = pedidoVentaBorrador.pedidoCliente;
 
-        _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
+        _oferta =
+            pedidoVentaBorrador.oferta ?? _cliente?.clientePotencial ?? false;
 
-        _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
+        _ofertaFechaHasta = pedidoVentaBorrador.ofertaFechaHasta;
 
         state = PedidoVentaEditPageControllerState.data(
           _cliente,
@@ -134,11 +122,68 @@ class PedidoVentaEditPageController
           _pedidoCliente,
           _oferta,
           _ofertaFechaHasta,
+          _isBorrador,
         );
-      } catch (err, stack) {
-        state =
-            PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
+      } else {
+        _isBorrador = false;
+        if (pedidoVentaIdIsLocalParam.isNew) {
+          if (pedidoVentaIdIsLocalParam.createPedidoFromClienteId != null) {
+            _cliente = await clienteRepository.getClienteById(
+                clienteId:
+                    pedidoVentaIdIsLocalParam.createPedidoFromClienteId!);
+          }
+          state = PedidoVentaEditPageControllerState.data(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+            _isBorrador,
+          );
+        } else {
+          final pedidoVenta = await pedidoVentaRepository.getPedidoVentaById(
+            pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam,
+          );
+
+          pedidoVentaLineaList =
+              await pedidoVentaRepository.getPedidoVentaLineaListById(
+                  pedidoVentaIdIsLocalParam: pedidoVentaIdIsLocalParam);
+
+          _cliente = await clienteRepository.getClienteById(
+              clienteId: pedidoVenta.clienteId!);
+
+          _clienteDireccion =
+              await clienteRepository.getClienteDireccionByDireccionId(
+                  clienteId: pedidoVenta.clienteId!,
+                  direccionId: pedidoVenta.direccionId);
+
+          _currentStep = 1;
+
+          _observaciones = pedidoVenta.observaciones;
+
+          _pedidoCliente = pedidoVenta.pedidoCliente;
+
+          _oferta = pedidoVenta.oferta ?? _cliente?.clientePotencial ?? false;
+
+          _ofertaFechaHasta = pedidoVenta.ofertaFechaHasta;
+
+          state = PedidoVentaEditPageControllerState.data(
+              _cliente,
+              _clienteDireccion,
+              pedidoVentaLineaList,
+              _currentStep,
+              _observaciones,
+              _pedidoCliente,
+              _oferta,
+              _ofertaFechaHasta,
+              _isBorrador);
+        }
       }
+    } catch (err, stack) {
+      state = PedidoVentaEditPageControllerState.error(err, stackTrace: stack);
     }
   }
 
@@ -151,6 +196,7 @@ class PedidoVentaEditPageController
     String? pedidoCliente,
     required bool oferta,
     DateTime? ofertaFechaHasta,
+    required bool isBorrador,
   }) async {
     state = const PedidoVentaEditPageControllerState.loading();
 
@@ -164,19 +210,46 @@ class PedidoVentaEditPageController
         observaciones: observaciones,
         oferta: oferta,
         ofertaFechaHasta: ofertaFechaHasta,
+        isBorrador: isBorrador,
       );
-      state = PedidoVentaEditPageControllerState.saved(pedidoVentaAppId);
-    } catch (err, stack) {
-      state = PedidoVentaEditPageControllerState.savedError(
-        _cliente,
-        _clienteDireccion,
-        pedidoVentaLineaList,
-        _currentStep,
-        _observaciones,
-        _pedidoCliente,
-        _oferta,
-        _ofertaFechaHasta,
-        err,
+      state = PedidoVentaEditPageControllerState.saved(
+          pedidoVentaAppId, isBorrador);
+    } catch (e, stack) {
+      if (e is AppException) {
+        e.maybeWhen(
+          orElse: () {},
+          notConnection: () =>
+              state = PedidoVentaEditPageControllerState.savedError(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+            _isBorrador,
+            e,
+            stackTrace: stack,
+          ),
+          restApiFailure: (error, _) =>
+              state = PedidoVentaEditPageControllerState.savedError(
+            _cliente,
+            _clienteDireccion,
+            pedidoVentaLineaList,
+            _currentStep,
+            _observaciones,
+            _pedidoCliente,
+            _oferta,
+            _ofertaFechaHasta,
+            _isBorrador,
+            e,
+            stackTrace: stack,
+          ),
+        );
+      }
+      state = PedidoVentaEditPageControllerState.error(
+        e.toString(),
         stackTrace: stack,
       );
     }
@@ -207,6 +280,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -221,6 +295,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -238,13 +313,13 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
   Future<void> selectCliente({required Cliente cliente}) async {
     _cliente = cliente;
     _clienteDireccion = null;
-
     _oferta = cliente.clientePotencial ?? false;
 
     pedidoVentaLineaList.clear();
@@ -257,6 +332,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -272,6 +348,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -289,6 +366,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -306,6 +384,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -324,6 +403,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -338,6 +418,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -352,6 +433,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -366,6 +448,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 
@@ -383,6 +466,7 @@ class PedidoVentaEditPageController
       _pedidoCliente,
       _oferta,
       _ofertaFechaHasta,
+      _isBorrador,
     );
   }
 

@@ -50,6 +50,8 @@ class PedidoVentaDetallePage extends ConsumerWidget {
                         ref.read(deletePedidoVentaProvider(
                             pedidoVentaIdIsLocalParam.id));
                         ref.invalidate(
+                            pedidoVentaIndexScreenPaginatedControllerProvider);
+                        ref.invalidate(
                             pedidoVentaIndexScreenControllerProvider);
                         context.router.pop();
                       },
@@ -111,8 +113,8 @@ class ClienteInfoContainer extends StatelessWidget {
             ChipContainer(
               text: (pedidoVenta.pedidoVentaEstado != null)
                   ? pedidoVenta.pedidoVentaEstado!.descripcion
-                  : getEstadoPedidoLocal(
-                      context, pedidoVenta.enviada, pedidoVenta.tratada)!,
+                  : getEstadoPedidoLocal(context, pedidoVenta.enviada,
+                      pedidoVenta.enviada, pedidoVenta.tratada)!,
               color: pedidoVentaEstadoColor(
                   pedidoVentaEstadoId: pedidoVenta.pedidoVentaEstado?.id,
                   opacidad: 0.25),

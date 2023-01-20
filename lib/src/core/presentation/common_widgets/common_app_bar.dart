@@ -37,7 +37,7 @@ class CommonAppBar extends ConsumerWidget with PreferredSizeWidget {
               ),
               gapW8,
               Text(
-                ref.watch(usuarioNotifierProvider)!.id,
+                ref.watch(usuarioNotifierProvider)?.id ?? '',
                 style: Theme.of(context).textTheme.caption,
               )
             ],

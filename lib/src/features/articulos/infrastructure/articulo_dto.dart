@@ -6,7 +6,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/familia_dto.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/subfamilia_dto.dart';
 
 import '../../../core/domain/subfamilia.dart';
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/articulo.dart';
 
 part 'articulo_dto.freezed.dart';

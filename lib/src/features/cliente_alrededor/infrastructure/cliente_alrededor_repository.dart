@@ -7,13 +7,13 @@ import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
 
 import '../../../core/exceptions/app_exception.dart';
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
 
 final clientesAlrededorRepositoryProvider =
     Provider.autoDispose<ClienteAlrededorRepository>(
   (ref) {
-    final db = ref.watch(appDatabaseProvider);
+    final db = ref.watch(appRemoteDatabaseProvider);
     return ClienteAlrededorRepository(db);
   },
 );
@@ -37,7 +37,7 @@ final clientesAlrededorListStream = FutureProvider.autoDispose
 });
 
 class ClienteAlrededorRepository {
-  AppDatabase db;
+  RemoteAppDatabase db;
 
   ClienteAlrededorRepository(this.db);
 

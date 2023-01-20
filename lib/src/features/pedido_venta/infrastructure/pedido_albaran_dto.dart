@@ -2,7 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/pedido_albaran.dart';
 
-import '../../../core/infrastructure/database.dart';
+import '../../../core/infrastructure/remote_database.dart';
 
 part 'pedido_albaran_dto.freezed.dart';
 part 'pedido_albaran_dto.g.dart';

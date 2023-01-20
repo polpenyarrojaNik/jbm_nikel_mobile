@@ -334,11 +334,14 @@ String? getEstadoVisitaLocal(BuildContext context, bool enviada, bool tratada) {
   }
 }
 
-String? getEstadoPedidoLocal(BuildContext context, bool enviada, bool tratada) {
+String? getEstadoPedidoLocal(
+    BuildContext context, bool borrador, bool enviada, bool tratada) {
   if (tratada) {
     return null;
   } else if (enviada) {
     return S.of(context).pedido_enviado;
+  } else if (borrador) {
+    return S.of(context).pedido_borrador;
   } else {
     return S.of(context).pedido_noEnviado;
   }

@@ -6,6 +6,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/extension.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
+import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/domain/articulo_sustitutivo.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
@@ -65,6 +66,11 @@ class _SelecionarCantidadPageState
     // descuento2Controller.text = numberFormatCantidades(descuento2);
     quanitityController.selection = TextSelection(
         baseOffset: 0, extentOffset: quanitityController.text.length);
+
+    if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
+      Future.microtask(() => ref.invalidate(
+          articuloProvider(widget.seleccionarCantidadParam.articuloId)));
+    }
   }
 
   @override
@@ -256,25 +262,38 @@ class _SelecionarCantidadPageState
         deleted: false,
       );
 
-      if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
-        ref
-            .read(pedidoVentaEditPageControllerProvider(
-                    widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
-                .notifier)
-            .updatePedidoVentaLinea(
-              pedidoVentaLinea: linea,
-              posicionActualizar: widget.seleccionarCantidadParam.posicionLinea,
-            );
-      } else {
-        ref
-            .read(pedidoVentaEditPageControllerProvider(
-                    widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
-                .notifier)
-            .addPedidoVentaLinea(
-              newLinea: linea,
-            );
+      if (!widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
+        if (widget.seleccionarCantidadParam.isUpdatingLinea()) {
+          ref
+              .read(pedidoVentaEditPageControllerProvider(
+                      widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                  .notifier)
+              .updatePedidoVentaLinea(
+                pedidoVentaLinea: linea,
+                posicionActualizar:
+                    widget.seleccionarCantidadParam.posicionLinea,
+              );
+        } else {
+          ref
+              .read(pedidoVentaEditPageControllerProvider(
+                      widget.seleccionarCantidadParam.pedidoVentaIdIsLocalParam)
+                  .notifier)
+              .addPedidoVentaLinea(
+                newLinea: linea,
+              );
+        }
       }
-      context.router.pop();
+
+      if (widget.seleccionarCantidadParam.addNewLineaDesdeArticulo) {
+        context.router.pushAndPopUntil(
+            PedidoVentaEditRoute(
+                id: linea.pedidoVentaAppId, addLineaDesdeArticulo: linea),
+            predicate: (route) =>
+                route.settings.name ==
+                ArticuloListaRoute(isSearchArticuloForForm: false).routeName);
+      } else {
+        context.router.pop();
+      }
     }
   }
 

@@ -26,6 +26,7 @@ mixin _$SeleccionarCantidadParam {
   double? get descuento2 => throw _privateConstructorUsedError;
   bool? get createdFromCliente => throw _privateConstructorUsedError;
   int get posicionLinea => throw _privateConstructorUsedError;
+  bool get addNewLineaDesdeArticulo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SeleccionarCantidadParamCopyWith<SeleccionarCantidadParam> get copyWith =>
@@ -47,7 +48,8 @@ abstract class $SeleccionarCantidadParamCopyWith<$Res> {
       double? descuento1,
       double? descuento2,
       bool? createdFromCliente,
-      int posicionLinea});
+      int posicionLinea,
+      bool addNewLineaDesdeArticulo});
 
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
 }
@@ -75,6 +77,7 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
     Object? descuento2 = freezed,
     Object? createdFromCliente = freezed,
     Object? posicionLinea = null,
+    Object? addNewLineaDesdeArticulo = null,
   }) {
     return _then(_value.copyWith(
       pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
@@ -113,6 +116,10 @@ class _$SeleccionarCantidadParamCopyWithImpl<$Res,
           ? _value.posicionLinea
           : posicionLinea // ignore: cast_nullable_to_non_nullable
               as int,
+      addNewLineaDesdeArticulo: null == addNewLineaDesdeArticulo
+          ? _value.addNewLineaDesdeArticulo
+          : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -144,7 +151,8 @@ abstract class _$$_SeleccionarCantidadParamCopyWith<$Res>
       double? descuento1,
       double? descuento2,
       bool? createdFromCliente,
-      int posicionLinea});
+      int posicionLinea,
+      bool addNewLineaDesdeArticulo});
 
   @override
   $EntityIdIsLocalParamCopyWith<$Res> get pedidoVentaIdIsLocalParam;
@@ -171,6 +179,7 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
     Object? descuento2 = freezed,
     Object? createdFromCliente = freezed,
     Object? posicionLinea = null,
+    Object? addNewLineaDesdeArticulo = null,
   }) {
     return _then(_$_SeleccionarCantidadParam(
       pedidoVentaIdIsLocalParam: null == pedidoVentaIdIsLocalParam
@@ -209,6 +218,10 @@ class __$$_SeleccionarCantidadParamCopyWithImpl<$Res>
           ? _value.posicionLinea
           : posicionLinea // ignore: cast_nullable_to_non_nullable
               as int,
+      addNewLineaDesdeArticulo: null == addNewLineaDesdeArticulo
+          ? _value.addNewLineaDesdeArticulo
+          : addNewLineaDesdeArticulo // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -225,7 +238,8 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       this.descuento1,
       this.descuento2,
       this.createdFromCliente,
-      required this.posicionLinea})
+      required this.posicionLinea,
+      required this.addNewLineaDesdeArticulo})
       : super._();
 
   @override
@@ -246,10 +260,12 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
   final bool? createdFromCliente;
   @override
   final int posicionLinea;
+  @override
+  final bool addNewLineaDesdeArticulo;
 
   @override
   String toString() {
-    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea)';
+    return 'SeleccionarCantidadParam(pedidoVentaIdIsLocalParam: $pedidoVentaIdIsLocalParam, clienteId: $clienteId, articuloId: $articuloId, cantidad: $cantidad, precio: $precio, descuento1: $descuento1, descuento2: $descuento2, createdFromCliente: $createdFromCliente, posicionLinea: $posicionLinea, addNewLineaDesdeArticulo: $addNewLineaDesdeArticulo)';
   }
 
   @override
@@ -274,7 +290,10 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
             (identical(other.createdFromCliente, createdFromCliente) ||
                 other.createdFromCliente == createdFromCliente) &&
             (identical(other.posicionLinea, posicionLinea) ||
-                other.posicionLinea == posicionLinea));
+                other.posicionLinea == posicionLinea) &&
+            (identical(
+                    other.addNewLineaDesdeArticulo, addNewLineaDesdeArticulo) ||
+                other.addNewLineaDesdeArticulo == addNewLineaDesdeArticulo));
   }
 
   @override
@@ -288,7 +307,8 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
       descuento1,
       descuento2,
       createdFromCliente,
-      posicionLinea);
+      posicionLinea,
+      addNewLineaDesdeArticulo);
 
   @JsonKey(ignore: true)
   @override
@@ -300,15 +320,17 @@ class _$_SeleccionarCantidadParam extends _SeleccionarCantidadParam {
 
 abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   const factory _SeleccionarCantidadParam(
-      {required final EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
-      required final String clienteId,
-      required final String articuloId,
-      final int? cantidad,
-      final double? precio,
-      final double? descuento1,
-      final double? descuento2,
-      final bool? createdFromCliente,
-      required final int posicionLinea}) = _$_SeleccionarCantidadParam;
+          {required final EntityIdIsLocalParam pedidoVentaIdIsLocalParam,
+          required final String clienteId,
+          required final String articuloId,
+          final int? cantidad,
+          final double? precio,
+          final double? descuento1,
+          final double? descuento2,
+          final bool? createdFromCliente,
+          required final int posicionLinea,
+          required final bool addNewLineaDesdeArticulo}) =
+      _$_SeleccionarCantidadParam;
   const _SeleccionarCantidadParam._() : super._();
 
   @override
@@ -329,6 +351,8 @@ abstract class _SeleccionarCantidadParam extends SeleccionarCantidadParam {
   bool? get createdFromCliente;
   @override
   int get posicionLinea;
+  @override
+  bool get addNewLineaDesdeArticulo;
   @override
   @JsonKey(ignore: true)
   _$$_SeleccionarCantidadParamCopyWith<_$_SeleccionarCantidadParam>
