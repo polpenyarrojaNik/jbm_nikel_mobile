@@ -214,12 +214,16 @@ class PedidoVentaRepository {
           predicate = (_remoteDb.pedidoVentaTable.nombreCliente
                   .like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
+              _remoteDb.pedidoVentaTable.pedidoVentaId
+                  .like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.codigoPostal.like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
         } else {
           predicate = predicate &
               ((_remoteDb.pedidoVentaTable.nombreCliente
+                      .like('%${busqueda[i]}%') |
+                  _remoteDb.pedidoVentaTable.pedidoVentaId
                       .like('%${busqueda[i]}%') |
                   _remoteDb.pedidoVentaTable.clienteId
                       .like('%${busqueda[i]}%') |

@@ -59,23 +59,23 @@ class SyncNotifier extends StateNotifier<SyncControllerState> {
     if (syncProgress.index > 0) {
       await _localDb.update(_localDb.syncDateTimeTable).write(
           SyncDateTimeTableCompanion(
-              articuloUltimaSync: Value(finishSyncDate)));
+              id: const Value(1), articuloUltimaSync: Value(finishSyncDate)));
 
       if (syncProgress.index > 1) {
         await _localDb.update(_localDb.syncDateTimeTable).write(
             SyncDateTimeTableCompanion(
-                clienteUltimaSync: Value(finishSyncDate)));
+                id: const Value(1), clienteUltimaSync: Value(finishSyncDate)));
       }
 
       if (syncProgress.index > 2) {
         await _localDb.update(_localDb.syncDateTimeTable).write(
             SyncDateTimeTableCompanion(
-                pedidoUltimaSync: Value(finishSyncDate)));
+                id: const Value(1), pedidoUltimaSync: Value(finishSyncDate)));
       }
       if (syncProgress.index > 3) {
         await _localDb.update(_localDb.syncDateTimeTable).write(
             SyncDateTimeTableCompanion(
-                visitaUltimaSync: Value(finishSyncDate)));
+                id: const Value(1), visitaUltimaSync: Value(finishSyncDate)));
       }
     }
   }

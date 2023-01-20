@@ -126,6 +126,7 @@ class InitDatabaseService {
       await localDb
           .into(localDb.syncDateTimeTable)
           .insertOnConflictUpdate(SyncDateTimeTableCompanion(
+            id: const Value(1),
             dbSchemaVersion: const Value(databaseRelease),
             articuloUltimaSync: Value(initialDatabaseDate),
             clienteUltimaSync: Value(initialDatabaseDate),
@@ -157,9 +158,13 @@ class InitDatabaseService {
   }
 
   Future<int> _getSchemaVersionFromPreferences() async {
-    final syncDateTime =
-        await localDb.select(localDb.syncDateTimeTable).getSingleOrNull();
+    try {
+      final syncDateTime =
+          await localDb.select(localDb.syncDateTimeTable).getSingleOrNull();
 
-    return syncDateTime?.dbSchemaVersion ?? -1;
+      return syncDateTime?.dbSchemaVersion ?? -1;
+    } catch (e) {
+      return -1;
+    }
   }
 }

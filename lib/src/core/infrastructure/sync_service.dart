@@ -1031,6 +1031,7 @@ class SyncService {
     try {
       await _localDb.update(_localDb.syncDateTimeTable).write(
           local.SyncDateTimeTableCompanion(
+              id: const Value(1),
               articuloUltimaSync: Value(DateTime.now().toUtc())));
     } catch (e) {
       rethrow;
@@ -1041,6 +1042,7 @@ class SyncService {
     try {
       await _localDb.update(_localDb.syncDateTimeTable).write(
           local.SyncDateTimeTableCompanion(
+              id: const Value(1),
               clienteUltimaSync: Value(DateTime.now().toUtc())));
     } catch (e) {
       rethrow;
@@ -1051,6 +1053,7 @@ class SyncService {
     try {
       await _localDb.update(_localDb.syncDateTimeTable).write(
           local.SyncDateTimeTableCompanion(
+              id: const Value(1),
               pedidoUltimaSync: Value(DateTime.now().toUtc())));
     } catch (e) {
       rethrow;
@@ -1061,6 +1064,7 @@ class SyncService {
     try {
       await _localDb.update(_localDb.syncDateTimeTable).write(
           local.SyncDateTimeTableCompanion(
+              id: const Value(1),
               visitaUltimaSync: Value(DateTime.now().toUtc())));
     } catch (e) {
       rethrow;

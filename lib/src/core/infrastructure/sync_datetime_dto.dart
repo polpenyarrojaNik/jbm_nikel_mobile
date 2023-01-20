@@ -44,9 +44,8 @@ class SyncDateTimeTable extends Table {
   String get tableName => 'SYNC_DATETIME';
 
   @override
-  Set<Column> get primaryKey => {id};
+  Set<Column> get primaryKey => {dbSchemaVersion};
 
-  IntColumn get id => integer().named('ID').withDefault(const Constant(1))();
   IntColumn get dbSchemaVersion => integer().named('DB_SCHEMA_VERSION')();
   DateTimeColumn get articuloUltimaSync =>
       dateTime().named('ARTICULO_ULTIMA_SYNC')();
