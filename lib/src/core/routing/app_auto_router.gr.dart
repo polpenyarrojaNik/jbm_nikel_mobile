@@ -414,6 +414,17 @@ class _$AppRouter extends RootStackRouter {
         child: const CatalogoListaPage(),
       );
     },
+    CatalogoPdfViewerRoute.name: (routeData) {
+      final args = routeData.argsAs<CatalogoPdfViewerRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: CatalogoPdfViewerPage(
+          key: args.key,
+          pdfFile: args.pdfFile,
+        ),
+        fullscreenDialog: true,
+      );
+    },
     SettingsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -585,6 +596,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           CatalogoListaRoute.name,
           path: '/catalogo',
+        ),
+        RouteConfig(
+          CatalogoPdfViewerRoute.name,
+          path: '/catalogo/viewer',
         ),
         RouteConfig(
           SettingsRoute.name,
@@ -1938,6 +1953,40 @@ class CatalogoListaRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CatalogoListaRoute';
+}
+
+/// generated route for
+/// [CatalogoPdfViewerPage]
+class CatalogoPdfViewerRoute extends PageRouteInfo<CatalogoPdfViewerRouteArgs> {
+  CatalogoPdfViewerRoute({
+    Key? key,
+    required File pdfFile,
+  }) : super(
+          CatalogoPdfViewerRoute.name,
+          path: '/catalogo/viewer',
+          args: CatalogoPdfViewerRouteArgs(
+            key: key,
+            pdfFile: pdfFile,
+          ),
+        );
+
+  static const String name = 'CatalogoPdfViewerRoute';
+}
+
+class CatalogoPdfViewerRouteArgs {
+  const CatalogoPdfViewerRouteArgs({
+    this.key,
+    required this.pdfFile,
+  });
+
+  final Key? key;
+
+  final File pdfFile;
+
+  @override
+  String toString() {
+    return 'CatalogoPdfViewerRouteArgs{key: $key, pdfFile: $pdfFile}';
+  }
 }
 
 /// generated route for

@@ -349,7 +349,7 @@ String? getEstadoPedidoLocal(
 
 TextStyle? getTextStyleFechaEntregaByEstado(
     {required BuildContext context, String? estado}) {
-  final defaultTextTheme = Theme.of(context).textTheme.bodyText2;
+  final defaultTextTheme = Theme.of(context).textTheme.bodyMedium;
   switch (estado) {
     case 'E':
       return defaultTextTheme?.copyWith(color: Colors.blue);

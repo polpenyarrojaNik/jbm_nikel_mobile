@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AdjuntoParam {
   String get id => throw _privateConstructorUsedError;
   String? get nombreArchivo => throw _privateConstructorUsedError;
+  bool? get descarga => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdjuntoParamCopyWith<AdjuntoParam> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $AdjuntoParamCopyWith<$Res> {
           AdjuntoParam value, $Res Function(AdjuntoParam) then) =
       _$AdjuntoParamCopyWithImpl<$Res, AdjuntoParam>;
   @useResult
-  $Res call({String id, String? nombreArchivo});
+  $Res call({String id, String? nombreArchivo, bool? descarga});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$AdjuntoParamCopyWithImpl<$Res, $Val extends AdjuntoParam>
   $Res call({
     Object? id = null,
     Object? nombreArchivo = freezed,
+    Object? descarga = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -58,6 +60,10 @@ class _$AdjuntoParamCopyWithImpl<$Res, $Val extends AdjuntoParam>
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
+      descarga: freezed == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -70,7 +76,7 @@ abstract class _$$_AdjuntoParamCopyWith<$Res>
       __$$_AdjuntoParamCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String? nombreArchivo});
+  $Res call({String id, String? nombreArchivo, bool? descarga});
 }
 
 /// @nodoc
@@ -86,6 +92,7 @@ class __$$_AdjuntoParamCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? nombreArchivo = freezed,
+    Object? descarga = freezed,
   }) {
     return _then(_$_AdjuntoParam(
       id: null == id
@@ -96,6 +103,10 @@ class __$$_AdjuntoParamCopyWithImpl<$Res>
           ? _value.nombreArchivo
           : nombreArchivo // ignore: cast_nullable_to_non_nullable
               as String?,
+      descarga: freezed == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -103,17 +114,20 @@ class __$$_AdjuntoParamCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AdjuntoParam extends _AdjuntoParam {
-  const _$_AdjuntoParam({required this.id, required this.nombreArchivo})
+  const _$_AdjuntoParam(
+      {required this.id, required this.nombreArchivo, this.descarga})
       : super._();
 
   @override
   final String id;
   @override
   final String? nombreArchivo;
+  @override
+  final bool? descarga;
 
   @override
   String toString() {
-    return 'AdjuntoParam(id: $id, nombreArchivo: $nombreArchivo)';
+    return 'AdjuntoParam(id: $id, nombreArchivo: $nombreArchivo, descarga: $descarga)';
   }
 
   @override
@@ -123,11 +137,13 @@ class _$_AdjuntoParam extends _AdjuntoParam {
             other is _$_AdjuntoParam &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nombreArchivo, nombreArchivo) ||
-                other.nombreArchivo == nombreArchivo));
+                other.nombreArchivo == nombreArchivo) &&
+            (identical(other.descarga, descarga) ||
+                other.descarga == descarga));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, nombreArchivo);
+  int get hashCode => Object.hash(runtimeType, id, nombreArchivo, descarga);
 
   @JsonKey(ignore: true)
   @override
@@ -139,13 +155,16 @@ class _$_AdjuntoParam extends _AdjuntoParam {
 abstract class _AdjuntoParam extends AdjuntoParam {
   const factory _AdjuntoParam(
       {required final String id,
-      required final String? nombreArchivo}) = _$_AdjuntoParam;
+      required final String? nombreArchivo,
+      final bool? descarga}) = _$_AdjuntoParam;
   const _AdjuntoParam._() : super._();
 
   @override
   String get id;
   @override
   String? get nombreArchivo;
+  @override
+  bool? get descarga;
   @override
   @JsonKey(ignore: true)
   _$$_AdjuntoParamCopyWith<_$_AdjuntoParam> get copyWith =>

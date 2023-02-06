@@ -18,6 +18,7 @@ _$_CatalogoDTO _$$_CatalogoDTOFromJson(Map<String, dynamic> json) =>
       orden: json['ORDEN'] as int,
       nombreFicheroPortada: json['NOMBRE_FICHERO_PORTADA'] as String,
       nombreFicheroCatalogo: json['NOMBRE_FICHERO_CATALOGO'] as String,
+      descarga: json['DESCARGA_SN'] as String,
     );
 
 Map<String, dynamic> _$$_CatalogoDTOToJson(_$_CatalogoDTO instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$_CatalogoDTOToJson(_$_CatalogoDTO instance) =>
       'ORDEN': instance.orden,
       'NOMBRE_FICHERO_PORTADA': instance.nombreFicheroPortada,
       'NOMBRE_FICHERO_CATALOGO': instance.nombreFicheroCatalogo,
+      'DESCARGA_SN': instance.descarga,
     };

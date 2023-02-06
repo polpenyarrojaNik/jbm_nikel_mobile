@@ -16,6 +16,7 @@ class Catalogo with _$Catalogo {
     required int orden,
     required String urlFicherPortada,
     required String nombreFicheroCatalogo,
+    required bool descarga,
     // required bool isFavorite,
   }) = _Catalogo;
 }

@@ -8,5 +8,6 @@ class AdjuntoParam with _$AdjuntoParam {
   const factory AdjuntoParam({
     required String id,
     required String? nombreArchivo,
+    bool? descarga,
   }) = _AdjuntoParam;
 }

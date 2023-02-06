@@ -53,6 +53,7 @@ dependencies:
   country_codes: ^2.2.0
   csv: ^5.0.1
   share_plus: ^6.3.0
+  syncfusion_flutter_pdfviewer: ^20.4.48
 
 dev_dependencies:
   flutter_test:

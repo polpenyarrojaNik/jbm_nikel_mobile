@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,6 +13,7 @@ import '../../../core/helpers/debouncer.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/custom_search_app_bar.dart';
 import '../../../core/presentation/toasts.dart';
+import '../../../core/routing/app_auto_router.dart';
 import 'catalogo_adjunto_controller.dart';
 import 'catalogo_search_controller.dart';
 
@@ -36,7 +38,13 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
       catalogoAdjuntoControllerProvider,
       (_, state) {
         state.when(
-            data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+            data: (file, descarga) => (file != null && descarga)
+                ? OpenFile.open(file.path)
+                : (file != null)
+                    ? context.router.push(
+                        CatalogoPdfViewerRoute(pdfFile: file),
+                      )
+                    : null,
             error: (error) => showToast(error.toString(), context),
             loading: () => showToast(
                 S.of(context).catalogos_index_catalogoAdjunto_abriendoArchivo,
@@ -141,6 +149,7 @@ class IdiomaCatalogoFilterDropdown extends ConsumerWidget {
         setFilter: (filterValue) => ref
             .read(idiomaCatalogoQueryStateProvider.notifier)
             .state = filterValue,
+        isIdioma: true,
       ),
     );
   }

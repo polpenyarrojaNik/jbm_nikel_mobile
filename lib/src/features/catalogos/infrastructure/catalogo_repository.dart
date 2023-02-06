@@ -406,6 +406,7 @@ class CatalogoRepository {
     print('Locale ${Intl.getCurrentLocale()}');
     final Map<String, String> query = {
       'idiomaDispositivo': Intl.getCurrentLocale().toUpperCase(),
+      'usuarioId': _usuario.id,
     };
 
     if (tipoCatalogo != null && tipoCatalogo.tipoCatalogoId != '00') {
@@ -420,6 +421,8 @@ class CatalogoRepository {
 
     if (idiomaCatalogo != null && idiomaCatalogo.idiomaId != '00') {
       query.addAll({'idiomaId': idiomaCatalogo.idiomaId});
+    } else {
+      query.addAll({'idiomaId': _usuario.idiomaId});
     }
 
     if (searchText != null) {

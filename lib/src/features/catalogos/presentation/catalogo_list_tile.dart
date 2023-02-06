@@ -97,6 +97,7 @@ class CatalogoListTile extends ConsumerWidget {
           adjuntoParam: AdjuntoParam(
             id: catalogo.catalogoId.toString(),
             nombreArchivo: catalogo.nombreFicheroCatalogo,
+            descarga: catalogo.descarga,
           ),
         );
   }

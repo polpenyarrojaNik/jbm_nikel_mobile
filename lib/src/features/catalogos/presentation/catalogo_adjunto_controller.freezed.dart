@@ -20,7 +20,7 @@ mixin _$CatalogoAdjuntoState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(File? file) data,
+    required TResult Function(File? file, bool descarga) data,
     required TResult Function(String failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CatalogoAdjuntoState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(File? file)? data,
+    TResult? Function(File? file, bool descarga)? data,
     TResult? Function(String failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CatalogoAdjuntoState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(File? file)? data,
+    TResult Function(File? file, bool descarga)? data,
     TResult Function(String failure)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$_Initial extends _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(File? file) data,
+    required TResult Function(File? file, bool descarga) data,
     required TResult Function(String failure) error,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$_Initial extends _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(File? file)? data,
+    TResult? Function(File? file, bool descarga)? data,
     TResult? Function(String failure)? error,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$_Initial extends _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(File? file)? data,
+    TResult Function(File? file, bool descarga)? data,
     TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$_Loading extends _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(File? file) data,
+    required TResult Function(File? file, bool descarga) data,
     required TResult Function(String failure) error,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$_Loading extends _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(File? file)? data,
+    TResult? Function(File? file, bool descarga)? data,
     TResult? Function(String failure)? error,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$_Loading extends _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(File? file)? data,
+    TResult Function(File? file, bool descarga)? data,
     TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$_DataCopyWith<$Res> {
   factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
       __$$_DataCopyWithImpl<$Res>;
   @useResult
-  $Res call({File? file});
+  $Res call({File? file, bool descarga});
 }
 
 /// @nodoc
@@ -334,12 +334,17 @@ class __$$_DataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? file = freezed,
+    Object? descarga = null,
   }) {
     return _then(_$_Data(
       freezed == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
               as File?,
+      null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -347,14 +352,16 @@ class __$$_DataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Data extends _Data {
-  const _$_Data(this.file) : super._();
+  const _$_Data(this.file, this.descarga) : super._();
 
   @override
   final File? file;
+  @override
+  final bool descarga;
 
   @override
   String toString() {
-    return 'CatalogoAdjuntoState.data(file: $file)';
+    return 'CatalogoAdjuntoState.data(file: $file, descarga: $descarga)';
   }
 
   @override
@@ -362,11 +369,13 @@ class _$_Data extends _Data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Data &&
-            (identical(other.file, file) || other.file == file));
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.descarga, descarga) ||
+                other.descarga == descarga));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, file);
+  int get hashCode => Object.hash(runtimeType, file, descarga);
 
   @JsonKey(ignore: true)
   @override
@@ -379,10 +388,10 @@ class _$_Data extends _Data {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(File? file) data,
+    required TResult Function(File? file, bool descarga) data,
     required TResult Function(String failure) error,
   }) {
-    return data(file);
+    return data(file, descarga);
   }
 
   @override
@@ -390,10 +399,10 @@ class _$_Data extends _Data {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(File? file)? data,
+    TResult? Function(File? file, bool descarga)? data,
     TResult? Function(String failure)? error,
   }) {
-    return data?.call(file);
+    return data?.call(file, descarga);
   }
 
   @override
@@ -401,12 +410,12 @@ class _$_Data extends _Data {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(File? file)? data,
+    TResult Function(File? file, bool descarga)? data,
     TResult Function(String failure)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(file);
+      return data(file, descarga);
     }
     return orElse();
   }
@@ -450,10 +459,11 @@ class _$_Data extends _Data {
 }
 
 abstract class _Data extends CatalogoAdjuntoState {
-  const factory _Data(final File? file) = _$_Data;
+  const factory _Data(final File? file, final bool descarga) = _$_Data;
   const _Data._() : super._();
 
   File? get file;
+  bool get descarga;
   @JsonKey(ignore: true)
   _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -522,7 +532,7 @@ class _$_Error extends _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(File? file) data,
+    required TResult Function(File? file, bool descarga) data,
     required TResult Function(String failure) error,
   }) {
     return error(failure);
@@ -533,7 +543,7 @@ class _$_Error extends _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(File? file)? data,
+    TResult? Function(File? file, bool descarga)? data,
     TResult? Function(String failure)? error,
   }) {
     return error?.call(failure);
@@ -544,7 +554,7 @@ class _$_Error extends _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(File? file)? data,
+    TResult Function(File? file, bool descarga)? data,
     TResult Function(String failure)? error,
     required TResult orElse(),
   }) {

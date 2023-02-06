@@ -40,6 +40,8 @@ mixin _$CatalogoDTO {
   String get nombreFicheroPortada => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
   String get nombreFicheroCatalogo => throw _privateConstructorUsedError;
+  @JsonKey(name: 'DESCARGA_SN')
+  String get descarga => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,7 +75,9 @@ abstract class $CatalogoDTOCopyWith<$Res> {
       @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
           String nombreFicheroPortada,
       @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          String nombreFicheroCatalogo});
+          String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN')
+          String descarga});
 }
 
 /// @nodoc
@@ -99,6 +103,7 @@ class _$CatalogoDTOCopyWithImpl<$Res, $Val extends CatalogoDTO>
     Object? orden = null,
     Object? nombreFicheroPortada = null,
     Object? nombreFicheroCatalogo = null,
+    Object? descarga = null,
   }) {
     return _then(_value.copyWith(
       catalogoId: null == catalogoId
@@ -141,6 +146,10 @@ class _$CatalogoDTOCopyWithImpl<$Res, $Val extends CatalogoDTO>
           ? _value.nombreFicheroCatalogo
           : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
               as String,
+      descarga: null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -173,7 +182,9 @@ abstract class _$$_CatalogoDTOCopyWith<$Res>
       @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
           String nombreFicheroPortada,
       @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          String nombreFicheroCatalogo});
+          String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN')
+          String descarga});
 }
 
 /// @nodoc
@@ -197,6 +208,7 @@ class __$$_CatalogoDTOCopyWithImpl<$Res>
     Object? orden = null,
     Object? nombreFicheroPortada = null,
     Object? nombreFicheroCatalogo = null,
+    Object? descarga = null,
   }) {
     return _then(_$_CatalogoDTO(
       catalogoId: null == catalogoId
@@ -239,6 +251,10 @@ class __$$_CatalogoDTOCopyWithImpl<$Res>
           ? _value.nombreFicheroCatalogo
           : nombreFicheroCatalogo // ignore: cast_nullable_to_non_nullable
               as String,
+      descarga: null == descarga
+          ? _value.descarga
+          : descarga // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -266,7 +282,9 @@ class _$_CatalogoDTO extends _CatalogoDTO {
       @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
           required this.nombreFicheroPortada,
       @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          required this.nombreFicheroCatalogo})
+          required this.nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN')
+          required this.descarga})
       : super._();
 
   factory _$_CatalogoDTO.fromJson(Map<String, dynamic> json) =>
@@ -302,10 +320,13 @@ class _$_CatalogoDTO extends _CatalogoDTO {
   @override
   @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
   final String nombreFicheroCatalogo;
+  @override
+  @JsonKey(name: 'DESCARGA_SN')
+  final String descarga;
 
   @override
   String toString() {
-    return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo)';
+    return 'CatalogoDTO(catalogoId: $catalogoId, nombre: $nombre, idiomaId: $idiomaId, tipoPrecioCatalogoId: $tipoPrecioCatalogoId, tipoPrecioCatalogoNombre: $tipoPrecioCatalogoNombre, tipoCatalogoId: $tipoCatalogoId, tagBusqueda: $tagBusqueda, orden: $orden, nombreFicheroPortada: $nombreFicheroPortada, nombreFicheroCatalogo: $nombreFicheroCatalogo, descarga: $descarga)';
   }
 
   @override
@@ -331,7 +352,9 @@ class _$_CatalogoDTO extends _CatalogoDTO {
             (identical(other.nombreFicheroPortada, nombreFicheroPortada) ||
                 other.nombreFicheroPortada == nombreFicheroPortada) &&
             (identical(other.nombreFicheroCatalogo, nombreFicheroCatalogo) ||
-                other.nombreFicheroCatalogo == nombreFicheroCatalogo));
+                other.nombreFicheroCatalogo == nombreFicheroCatalogo) &&
+            (identical(other.descarga, descarga) ||
+                other.descarga == descarga));
   }
 
   @JsonKey(ignore: true)
@@ -347,7 +370,8 @@ class _$_CatalogoDTO extends _CatalogoDTO {
       tagBusqueda,
       orden,
       nombreFicheroPortada,
-      nombreFicheroCatalogo);
+      nombreFicheroCatalogo,
+      descarga);
 
   @JsonKey(ignore: true)
   @override
@@ -384,7 +408,9 @@ abstract class _CatalogoDTO extends CatalogoDTO {
       @JsonKey(name: 'NOMBRE_FICHERO_PORTADA')
           required final String nombreFicheroPortada,
       @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
-          required final String nombreFicheroCatalogo}) = _$_CatalogoDTO;
+          required final String nombreFicheroCatalogo,
+      @JsonKey(name: 'DESCARGA_SN')
+          required final String descarga}) = _$_CatalogoDTO;
   const _CatalogoDTO._() : super._();
 
   factory _CatalogoDTO.fromJson(Map<String, dynamic> json) =
@@ -420,6 +446,9 @@ abstract class _CatalogoDTO extends CatalogoDTO {
   @override
   @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
   String get nombreFicheroCatalogo;
+  @override
+  @JsonKey(name: 'DESCARGA_SN')
+  String get descarga;
   @override
   @JsonKey(ignore: true)
   _$$_CatalogoDTOCopyWith<_$_CatalogoDTO> get copyWith =>

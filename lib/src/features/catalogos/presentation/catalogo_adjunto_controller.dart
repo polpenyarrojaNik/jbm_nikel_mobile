@@ -15,7 +15,7 @@ class CatalogoAdjuntoState with _$CatalogoAdjuntoState {
   const CatalogoAdjuntoState._();
   const factory CatalogoAdjuntoState.initial() = _Initial;
   const factory CatalogoAdjuntoState.loading() = _Loading;
-  const factory CatalogoAdjuntoState.data(File? file) = _Data;
+  const factory CatalogoAdjuntoState.data(File? file, bool descarga) = _Data;
   const factory CatalogoAdjuntoState.error(
     String failure,
   ) = _Error;
@@ -42,7 +42,7 @@ class CatalogoAdjuntoController extends StateNotifier<CatalogoAdjuntoState> {
             provisionalToken: user!.provisionalToken,
             test: user.test,
           );
-      state = CatalogoAdjuntoState.data(file);
+      state = CatalogoAdjuntoState.data(file, adjuntoParam.descarga ?? false);
     } on AppException catch (e) {
       state = CatalogoAdjuntoState.error(e.details.message);
     } catch (e) {

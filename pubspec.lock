@@ -1226,6 +1226,62 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: b3e500b1896d40c8961ab430a94fc22eff8fa1b33af03584e2f0b89371c3fa6a
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
+  syncfusion_flutter_pdf:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_pdf
+      sha256: "526738a904dc1d9336bc01ddc92924e9776a06f6aaee63b4dbee691187321d74"
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
+  syncfusion_flutter_pdfviewer:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_pdfviewer
+      sha256: "2eacec666d3f69eb86752769c0efe533cf9342c47d28b1bff154843436eade96"
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
+  syncfusion_pdfviewer_macos:
+    dependency: transitive
+    description:
+      name: syncfusion_pdfviewer_macos
+      sha256: f12af6784fdae437fd5cd49278f0c844ef6c496f1fc1cdd2d8f21b098997b59e
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
+  syncfusion_pdfviewer_platform_interface:
+    dependency: transitive
+    description:
+      name: syncfusion_pdfviewer_platform_interface
+      sha256: "8e9c4e40e008425c966d11a457e4c1a69461a39dd0f2807d411a8726c5189a8e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
+  syncfusion_pdfviewer_web:
+    dependency: transitive
+    description:
+      name: syncfusion_pdfviewer_web
+      sha256: "5782c78a96bec51f8c48c0a45e777e822c7c49901a820c8d0202b6b6996306c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
+  syncfusion_pdfviewer_windows:
+    dependency: transitive
+    description:
+      name: syncfusion_pdfviewer_windows
+      sha256: "9481c1fb2bdf080a6079dee834d70d7a32ddd65ad26b6a1051c56b56338dc775"
+      url: "https://pub.dev"
+    source: hosted
+    version: "20.4.48"
   synchronized:
     dependency: transitive
     description:

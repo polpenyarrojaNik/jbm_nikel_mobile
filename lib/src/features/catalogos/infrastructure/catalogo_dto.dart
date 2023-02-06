@@ -25,6 +25,7 @@ class CatalogoDTO with _$CatalogoDTO {
         required String nombreFicheroPortada,
     @JsonKey(name: 'NOMBRE_FICHERO_CATALOGO')
         required String nombreFicheroCatalogo,
+    @JsonKey(name: 'DESCARGA_SN') required String descarga,
   }) = _CatalogoDTO;
 
   factory CatalogoDTO.fromJson(Map<String, dynamic> json) =>
@@ -42,6 +43,7 @@ class CatalogoDTO with _$CatalogoDTO {
       orden: orden,
       urlFicherPortada: getImageUrl(test),
       nombreFicheroCatalogo: nombreFicheroCatalogo,
+      descarga: descarga == 'S',
       // isFavorite: checkIsFavorite(favoriteList),
     );
   }

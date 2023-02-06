@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:jbm_nikel_mobile/src/features/articulos/presentation/index/articulo_lista_page.dart';
@@ -21,6 +23,7 @@ import '../../features/articulos/presentation/show/articulo_recambio_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.dart';
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
+import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_page.dart';
@@ -44,8 +47,8 @@ import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
-import '../domain/entity_id_is_local_param.dart';
 
+import '../domain/entity_id_is_local_param.dart';
 part 'app_auto_router.gr.dart';
 
 @MaterialAutoRouter(
@@ -115,6 +118,10 @@ part 'app_auto_router.gr.dart';
     AutoRoute(page: VisitaDetallePage, path: '/visita/:id'),
     AutoRoute(page: VisitaEditPage, path: '/visita/edit'),
     AutoRoute(page: CatalogoListaPage, path: '/catalogo'),
+    AutoRoute(
+        page: CatalogoPdfViewerPage,
+        path: '/catalogo/viewer',
+        fullscreenDialog: true),
     AutoRoute(page: SettingsPage, path: '/settings'),
   ],
   replaceInRouteName: 'Page,Route',
