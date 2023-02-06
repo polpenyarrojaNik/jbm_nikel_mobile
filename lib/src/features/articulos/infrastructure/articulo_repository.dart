@@ -168,6 +168,16 @@ final articuloVentasClienteProvider = FutureProvider.autoDispose
   );
 });
 
+final articuloUltimosPreciosProvider = FutureProvider.autoDispose
+    .family<EstadisticasUltimosPrecios, String>((ref, articuloId) async {
+  final articuloRepository = ref.watch(articuloRepositoryProvider);
+  final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
+  return articuloRepository.getArticuloUltimosPrecios(
+    articuloId: articuloId,
+    usuarioId: usuario!.id,
+  );
+});
+
 final syncAllArticuloDb = FutureProvider.autoDispose<void>((ref) async {
   final syncRepository = ref.watch(syncServiceProvider);
   return syncRepository.syncArticulos();
@@ -644,6 +654,43 @@ SELECT *
           descripcion: '',
         );
       }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<EstadisticasUltimosPrecios> getArticuloUltimosPrecios(
+      {required String articuloId, required String usuarioId}) async {
+    try {
+      final query =
+          _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
+        innerJoin(
+            _remoteDb.clienteUsuarioTable,
+            _remoteDb.clienteUsuarioTable.clienteId.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
+        leftOuterJoin(
+            _remoteDb.clienteTable,
+            _remoteDb.clienteTable.id.equalsExp(
+                _remoteDb.estadisticasUltimosPreciosTable.clienteId)),
+      ]);
+      query.where((_remoteDb.estadisticasUltimosPreciosTable.articuloId
+              .equals(articuloId) &
+          _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId)));
+      query.limit(1);
+
+      query.orderBy(
+        [OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha)],
+      );
+
+      return query.asyncMap((row) async {
+        final lastPriceArticuloDTO =
+            row.readTable(_remoteDb.estadisticasUltimosPreciosTable);
+        final clienteDTO = row.readTableOrNull(_remoteDb.clienteTable);
+        return lastPriceArticuloDTO.toDomain(
+          nombreCliente: clienteDTO!.nombreCliente,
+          descripcion: '',
+        );
+      }).getSingle();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

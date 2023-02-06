@@ -416,6 +416,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Stock disponible:"),
         "pedido_edit_pedidoEdit_totalLineas":
             MessageLookupByLibrary.simpleMessage("Total líneas"),
+        "pedido_edit_pedidoEdit_ultimoPrecioDeCompra":
+            MessageLookupByLibrary.simpleMessage("Último precio de compra"),
         "pedido_edit_selectQuantity_artiuclosSustitutivos":
             MessageLookupByLibrary.simpleMessage("Artículos sustitutivos:"),
         "pedido_edit_selectQuantity_cantidad":

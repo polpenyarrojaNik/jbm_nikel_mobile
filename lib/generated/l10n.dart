@@ -2264,6 +2264,16 @@ class S {
     );
   }
 
+  /// `Last purchase price`
+  String get pedido_edit_pedidoEdit_ultimoPrecioDeCompra {
+    return Intl.message(
+      'Last purchase price',
+      name: 'pedido_edit_pedidoEdit_ultimoPrecioDeCompra',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Price:`
   String get pedido_edit_lineaNuevoTile_precio {
     return Intl.message(

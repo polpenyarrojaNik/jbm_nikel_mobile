@@ -220,6 +220,7 @@
   "pedido_edit_pedidoEdit_fechaValidez": "Validate date",
   "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia": "Validate date cannot be empty",
   "pedido_edit_pedidoEdit_fecha": "Lines",
+  "pedido_edit_pedidoEdit_ultimoPrecioDeCompra": "Last purchase price",
   "pedido_edit_lineaNuevoTile_precio": "Price:",
   "pedido_edit_lineaNuevoTile_dto": "Disc.:",
   "pedido_edit_selectQuantity_seleccionarCantidad": "Select quantity",

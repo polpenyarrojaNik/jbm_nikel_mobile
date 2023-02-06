@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/generated/l10n.dart';
+import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_repository.dart';
 
 import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta_linea.dart';
 
-class PedidoVentaLineaNuevoTile extends StatelessWidget {
+class PedidoVentaLineaNuevoTile extends ConsumerWidget {
   const PedidoVentaLineaNuevoTile({super.key, required this.pedidoVentaLinea});
 
   final PedidoVentaLinea pedidoVentaLinea;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final articuloPrecioValue =
+        ref.watch(articuloUltimosPreciosProvider(pedidoVentaLinea.articuloId));
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       color: (pedidoVentaLinea.pedidoLineaIdComponente != null)
@@ -83,7 +87,14 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                   Text(
                     '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
                     style: Theme.of(context).textTheme.bodySmall,
-                  )
+                  ),
+                  articuloPrecioValue.maybeWhen(
+                    orElse: () => Container(),
+                    data: (ultimosPrecios) => Text(
+                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}: ${ultimosPrecios.precioDivisa.toString()}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
                 ],
               ),
             ),
