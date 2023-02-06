@@ -196,7 +196,7 @@ class _SelecionarCantidadPageState
                                   descuento2: descuento2,
                                   descuento3: articuloPrecio!.descuento3)
                               .toString(),
-                          style: Theme.of(context).textTheme.subtitle2,
+                          style: Theme.of(context).textTheme.titleSmall,
                         )
                       ],
                     ),
@@ -386,11 +386,11 @@ class _ArticuloInfo extends ConsumerWidget {
                   children: [
                     Text(
                       articulo.id,
-                      style: Theme.of(context).textTheme.subtitle2,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Text(
                       '${S.of(context).pedido_edit_selectQuantity_stockDisponible} ${articulo.stockDisponible} ${S.of(context).unidad}',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
                 ),
@@ -422,7 +422,7 @@ class _ArticuloInfo extends ConsumerWidget {
                                         .articuloSustitutivoId,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .bodyText2
+                                        .bodyMedium
                                         ?.copyWith(
                                           decoration: TextDecoration.underline,
                                         ),
@@ -516,7 +516,7 @@ class _SelectQuantityFrom extends StatelessWidget {
             gapH4,
             Text(
                 '${S.of(context).pedido_edit_selectQuantity_multiplo} x$ventaMultiplo ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.caption),
+                style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
       ),
@@ -594,7 +594,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
                 labelText: S.of(context).pedido_edit_selectQuantity_precio,
                 suffix: Text(
                   'x$tipoPrecio',
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               validator: FormBuilderValidators.compose([
@@ -623,7 +623,7 @@ class _ArticuloPrecioContainer extends StatelessWidget {
               controller: descuento1Controller,
               decoration: InputDecoration(
                 labelText: S.of(context).pedido_edit_selectQuantity_descuneto1,
-                suffix: Text('%', style: Theme.of(context).textTheme.caption),
+                suffix: Text('%', style: Theme.of(context).textTheme.bodySmall),
               ),
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),

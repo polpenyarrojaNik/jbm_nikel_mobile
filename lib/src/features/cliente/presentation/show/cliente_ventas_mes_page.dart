@@ -259,7 +259,7 @@ class _VentasMesDataTableState extends State<VentasMesDataTable> {
             children: [
               Center(
                 child: Text(S.of(context).cliente_show_clienteVentasMes_total,
-                    style: Theme.of(context).textTheme.subtitle2),
+                    style: Theme.of(context).textTheme.titleSmall),
               ),
             ],
           ),
@@ -470,10 +470,8 @@ class _GraficaVentasMesState extends State<GraficaVentasMes> {
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
       child: Text(
         valueString,
-        style: Theme.of(context)
-            .textTheme
-            .bodyText2
-            ?.copyWith(fontSize: Theme.of(context).textTheme.caption?.fontSize),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            fontSize: Theme.of(context).textTheme.bodySmall?.fontSize),
       ),
     );
   }

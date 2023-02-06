@@ -87,12 +87,12 @@ class CatalogoRepository {
         requestUri: (_usuario.test)
             ? Uri.http(
                 dotenv.get('URLTEST', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo',
+                'api/v2/online/catalogo',
                 query,
               )
             : Uri.https(
                 dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/catalogo',
+                'api/v2/online/catalogo',
                 query,
               ),
         jsonDataSelector: (json) => json['data'] as List<dynamic>,

@@ -13,5 +13,6 @@ class Usuario with _$Usuario {
     String? refreshToken,
     required String provisionalToken,
     required bool test,
+    required String idiomaId,
   }) = _Usuario;
 }

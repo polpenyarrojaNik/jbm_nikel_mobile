@@ -94,14 +94,14 @@ class ClienteVisitaListaTile extends StatelessWidget {
           if (visita.contacto != null)
             Text(
               visita.contacto!,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           gapH8,
           if (visita.resumen != null)
             Text(
               visita.resumen!,
               maxLines: 3,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
         ],
       ),

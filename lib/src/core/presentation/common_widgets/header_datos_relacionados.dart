@@ -22,13 +22,13 @@ class HeaderDatosRelacionados extends StatelessWidget {
         children: [
           Text(
             entityId,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
             overflow: TextOverflow.ellipsis,
           ),
           if (subtitle != null)
             Text(
               subtitle!,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
               overflow: TextOverflow.ellipsis,
             ),
         ],

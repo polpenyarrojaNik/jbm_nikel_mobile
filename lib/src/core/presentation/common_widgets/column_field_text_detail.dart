@@ -15,8 +15,8 @@ class ColumnFieldTextDetalle extends StatelessWidget {
             children: [
               Text(
                 fieldTitleValue,
-                style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                    color: Theme.of(context).textTheme.caption!.color),
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall!.color),
               ),
               (value is String)
                   ? Text(

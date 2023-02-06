@@ -72,13 +72,13 @@ class _CustomSearchAppBarState extends ConsumerState<CustomSearchAppBar> {
                       orElse: () => Container(),
                       data: (packageInfo) => Text(
                         packageInfo.version,
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
                     gapW8,
                     Text(
                       ref.watch(usuarioNotifierProvider)!.id,
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     )
                   ],
                 )

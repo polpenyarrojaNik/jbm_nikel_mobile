@@ -14,7 +14,7 @@ class UltimaSyncDateWidget extends StatelessWidget {
       child: Text(
           '${S.of(context).commonWidgets_ultimaSincronizacion}: ${dateFormatter(ultimaSyncDate.toLocal().toIso8601String(), allDay: true)}',
           textAlign: TextAlign.end,
-          style: Theme.of(context).textTheme.caption),
+          style: Theme.of(context).textTheme.bodySmall),
     );
   }
 }

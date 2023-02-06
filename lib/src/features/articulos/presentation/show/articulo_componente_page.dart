@@ -76,11 +76,11 @@ class ArticuloComponenteTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(articuloComponente.articuloComponenteId,
-                  style: Theme.of(context).textTheme.subtitle2),
+                  style: Theme.of(context).textTheme.titleSmall),
               Text(
                   '${numberFormatCantidades(articuloComponente.cantidad)} ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Theme.of(context).textTheme.caption?.color)),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color)),
             ],
           ),
           Text(getDescriptionArticuloComponenteInLocalLanguage(

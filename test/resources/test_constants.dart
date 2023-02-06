@@ -89,11 +89,13 @@ final kArticuloPrecioTarifaDTO = ArticuloPrecioTarifaDTO(
 );
 
 const kUsuario = Usuario(
-    id: 'TEST',
-    usuario: 'TEST',
-    contrasenya: '1234',
-    provisionalToken: 'TEST-TOKEN',
-    test: true);
+  id: 'TEST',
+  usuario: 'TEST',
+  contrasenya: '1234',
+  provisionalToken: 'TEST-TOKEN',
+  test: true,
+  idiomaId: 'ES',
+);
 
 final kArticuloGrupoNetoDTO = ArticuloGrupoNetoDTO(
   articuloId: kArticuloId,

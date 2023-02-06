@@ -43,26 +43,29 @@ class PedidoVentaLineaTile extends StatelessWidget {
                         Text(
                           pedidoVentaLinea.articuloId,
                           style: (!pedidoVentaLinea.isComponente())
-                              ? Theme.of(context).textTheme.subtitle2
-                              : Theme.of(context).textTheme.subtitle2?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .caption
-                                      ?.color),
+                              ? Theme.of(context).textTheme.titleSmall
+                              : Theme.of(context)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.color),
                         ),
                         Row(
                           children: [
                             Text(
                               '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
                               style: (!pedidoVentaLinea.isComponente())
-                                  ? Theme.of(context).textTheme.subtitle2
+                                  ? Theme.of(context).textTheme.titleSmall
                                   : Theme.of(context)
                                       .textTheme
-                                      .subtitle2
+                                      .titleSmall
                                       ?.copyWith(
                                           color: Theme.of(context)
                                               .textTheme
-                                              .caption
+                                              .bodySmall
                                               ?.color),
                             ),
                           ],
@@ -72,7 +75,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                     pedidoVentaLinea.articuloDescription,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   if (!pedidoVentaLinea.isComponente()) const Spacer(),
                   if (!pedidoVentaLinea.isComponente())
@@ -88,7 +91,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                             descuento2: pedidoVentaLinea.descuento2,
                             descuento3: pedidoVentaLinea.descuento3,
                           )}',
-                          style: Theme.of(context).textTheme.caption,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                         if (pedidoVentaLinea.importeLinea != null)
                           Column(
@@ -104,7 +107,7 @@ class PedidoVentaLineaTile extends StatelessWidget {
                   if (pedidoVentaLinea.cantidadPendiente != 0)
                     Text(
                       '${S.of(context).pedido_show_pedidoVentaLineas_cantidadPendiente}: ${pedidoVentaLinea.cantidadPendiente} ${S.of(context).unidad}',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     )
                 ],
               ),

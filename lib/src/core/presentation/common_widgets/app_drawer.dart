@@ -29,7 +29,7 @@ class AppDrawer extends StatelessWidget {
                   'JBM Nikel Mobile',
                   style: Theme.of(context)
                       .textTheme
-                      .headline5!
+                      .headlineSmall!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
                 gapH4,

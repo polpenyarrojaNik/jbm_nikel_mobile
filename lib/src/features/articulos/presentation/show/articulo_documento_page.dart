@@ -117,7 +117,7 @@ class ArticuloDocumentoTile extends ConsumerWidget {
               children: [
                 Icon(
                   getIconoFromExtension(articuloDocumento.nombreArchivo ?? ''),
-                  color: Theme.of(context).textTheme.caption!.color,
+                  color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
                 gapW8,
                 Flexible(

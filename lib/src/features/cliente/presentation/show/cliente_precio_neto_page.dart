@@ -81,8 +81,8 @@ class ClientePrecioNetoTile extends StatelessWidget {
                 formatPrecios(
                     precio: clientePrecioNeto.precio,
                     tipoPrecio: clientePrecioNeto.tipoPrecio),
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Theme.of(context).textTheme.caption?.color,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color,
                     ),
               ),
             ],
@@ -93,7 +93,7 @@ class ClientePrecioNetoTile extends StatelessWidget {
               Flexible(
                 child: Text(
                   clientePrecioNeto.descripcion,
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -101,8 +101,8 @@ class ClientePrecioNetoTile extends StatelessWidget {
               if (clientePrecioNeto.cantidadDesde != 1)
                 Text(
                   '≥ ${numberFormatCantidades(clientePrecioNeto.cantidadDesde)} ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Theme.of(context).textTheme.caption?.color),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color),
                 ),
             ],
           ),

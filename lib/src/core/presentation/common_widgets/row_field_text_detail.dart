@@ -17,14 +17,14 @@ class RowFieldTextDetalle extends StatelessWidget {
           textAlign: TextAlign.end,
           style: Theme.of(context)
               .textTheme
-              .subtitle2!
-              .copyWith(color: Theme.of(context).textTheme.caption!.color),
+              .titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
         ),
         (value is String)
             ? Flexible(
                 child: Text(
                   value,
-                  style: Theme.of(context).textTheme.bodyText2!,
+                  style: Theme.of(context).textTheme.bodyMedium!,
                   textAlign: TextAlign.end,
                 ),
               )

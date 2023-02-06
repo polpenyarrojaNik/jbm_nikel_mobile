@@ -36,10 +36,12 @@ class CatalogoListTile extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    catalogo.nombre,
-                    style: Theme.of(context).textTheme.subtitle2?.copyWith(
-                        color: Theme.of(context).colorScheme.primary),
+                  Flexible(
+                    child: Text(
+                      catalogo.nombre,
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
                   ),
                   stateFavorite.maybeWhen(
                     orElse: () => const ProgressIndicatorWidget(),

@@ -80,8 +80,8 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
                 formatPrecios(
                     precio: articuloGrupoNeto.precio,
                     tipoPrecio: articuloGrupoNeto.tipoPrecio),
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Theme.of(context).textTheme.caption?.color,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color,
                     ),
               ),
             ],
@@ -91,14 +91,14 @@ class ArticuloGrupoNetoTile extends StatelessWidget {
             children: [
               Text(
                 articuloGrupoNeto.grupoNetoDescripcion,
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
               if (articuloGrupoNeto.cantidadDesde != 1) const Spacer(),
               if (articuloGrupoNeto.cantidadDesde != 1)
                 Text(
                   '≥ ${numberFormatCantidades(articuloGrupoNeto.cantidadDesde)} ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Theme.of(context).textTheme.caption?.color),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color),
                 ),
             ],
           ),

@@ -73,7 +73,7 @@ class ClienteGrupoNetoTile extends StatelessWidget {
           Text(clienteGrupoNeto.grupoNetoId),
           Text(
             clienteGrupoNeto.grupoNetoDescripcion,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
         ],
       ),

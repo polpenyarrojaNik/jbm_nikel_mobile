@@ -116,7 +116,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 color: Theme.of(context).colorScheme.secondaryContainer,
                 child: Text(articulo.id,
-                    style: Theme.of(context).textTheme.subtitle2),
+                    style: Theme.of(context).textTheme.titleSmall),
               ),
               const Spacer(),
             ],
@@ -138,7 +138,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
               Flexible(
                 child: Text(
                   getDescriptionArticuloInLocalLanguage(articulo: articulo),
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               IconButton(
@@ -157,7 +157,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
             (articulo.subfamilia != null)
                 ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
                 : '${articulo.familia?.descripcion}',
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ),
         gapH8,
@@ -194,11 +194,11 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                 .articulo_show_articuloDetalle_entrega1,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle2!
+                                .titleSmall!
                                 .copyWith(
                                     color: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .color),
                           ),
                           if (articulo.comprasEntregaCantidad1 != 0) gapH8,
@@ -209,11 +209,11 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   .articulo_show_articuloDetalle_entrega2,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color),
                             ),
                           if (articulo.comprasEntregaCantidad2 != 0) gapH8,
@@ -224,11 +224,11 @@ class _ArticuloInfoContainer extends StatelessWidget {
                                   .articulo_show_articuloDetalle_entrega3,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color),
                             ),
                           if (articulo.comprasEntregaCantidad3 != 0) gapH8,
@@ -237,11 +237,11 @@ class _ArticuloInfoContainer extends StatelessWidget {
                               S.of(context).articulo_show_articuloDetalle_mas,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color),
                             ),
                         ],
@@ -728,12 +728,13 @@ class _DescriptionResumenRow extends StatelessWidget {
           title,
           style: Theme.of(context)
               .textTheme
-              .caption
-              ?.copyWith(color: Theme.of(context).textTheme.bodyText2?.color),
+              .bodySmall
+              ?.copyWith(color: Theme.of(context).textTheme.bodyMedium?.color),
         ),
         gapW4,
         Flexible(
-          child: Text(description!, style: Theme.of(context).textTheme.caption),
+          child:
+              Text(description!, style: Theme.of(context).textTheme.bodySmall),
         ),
       ],
     );

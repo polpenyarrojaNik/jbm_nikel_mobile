@@ -104,13 +104,13 @@ class _UltimosPreciosTile extends StatelessWidget {
               children: [
                 Text(
                   '#${ultimosPrecios.articuloId}',
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 gapW16,
                 Flexible(
                   child: Text(
                     '${(ultimosPrecios.descripcion != null) ? ultimosPrecios.descripcion : ''}',
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

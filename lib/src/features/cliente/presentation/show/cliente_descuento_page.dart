@@ -97,8 +97,8 @@ class ClienteDescuentoTile extends StatelessWidget {
               if (clienteDescuento.cantidadDesde != 1)
                 Text(
                   '≥ ${numberFormatCantidades(clienteDescuento.cantidadDesde)} ${S.of(context).unidad}',
-                  style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                      color: Theme.of(context).textTheme.caption?.color),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color),
                 ),
             ],
           ),

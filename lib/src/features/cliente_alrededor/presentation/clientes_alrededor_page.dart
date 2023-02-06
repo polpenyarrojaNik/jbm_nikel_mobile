@@ -297,8 +297,8 @@ class ClienteAlrededorDialog extends StatelessWidget {
           gapH2,
           Text(
             cliente.direccionFiscal1 ?? '',
-            style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                  color: Theme.of(context).textTheme.caption!.color,
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
           ),
           gapH2,

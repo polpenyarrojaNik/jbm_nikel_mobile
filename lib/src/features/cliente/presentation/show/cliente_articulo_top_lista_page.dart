@@ -147,7 +147,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
                     width: 50,
                     child: Text(
                       articulosTopList[i].articuloId,
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
                 ],
@@ -162,7 +162,7 @@ class _ArticulosTopDataTableState extends State<ArticulosTopDataTable> {
                     Flexible(
                       child: Text(
                         articulosTopList[i].descripcion,
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
                   ],

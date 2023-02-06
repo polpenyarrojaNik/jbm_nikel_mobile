@@ -79,7 +79,7 @@ class ClienteContactoTile extends StatelessWidget {
                   Row(
                     children: [
                       Icon(Icons.email,
-                          color: Theme.of(context).textTheme.caption?.color,
+                          color: Theme.of(context).textTheme.bodySmall?.color,
                           size: 14),
                       gapW4,
                       Flexible(
@@ -87,11 +87,11 @@ class ClienteContactoTile extends StatelessWidget {
                           clienteContacto.email!,
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText2
+                              .bodyMedium
                               ?.copyWith(
                                   color: Theme.of(context)
                                       .textTheme
-                                      .caption
+                                      .bodySmall
                                       ?.color),
                         ),
                       ),
@@ -101,7 +101,7 @@ class ClienteContactoTile extends StatelessWidget {
                   Row(
                     children: [
                       Icon(Icons.phone,
-                          color: Theme.of(context).textTheme.caption?.color,
+                          color: Theme.of(context).textTheme.bodySmall?.color,
                           size: 14),
                       gapW4,
                       Flexible(
@@ -109,11 +109,11 @@ class ClienteContactoTile extends StatelessWidget {
                           clienteContacto.telefono1!,
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText2
+                              .bodyMedium
                               ?.copyWith(
                                   color: Theme.of(context)
                                       .textTheme
-                                      .caption
+                                      .bodySmall
                                       ?.color),
                         ),
                       ),
@@ -123,13 +123,14 @@ class ClienteContactoTile extends StatelessWidget {
                   Row(
                     children: [
                       Icon(Icons.phone,
-                          color: Theme.of(context).textTheme.caption?.color,
+                          color: Theme.of(context).textTheme.bodySmall?.color,
                           size: 14),
                       gapW4,
                       Text(
                         clienteContacto.telefono2!,
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodySmall?.color),
                       ),
                     ],
                   ),
@@ -246,7 +247,7 @@ class ContactButtons extends StatelessWidget {
 //                       Row(
 //                         children: [
 //                           Icon(Icons.email,
-//                               color: Theme.of(context).textTheme.caption?.color,
+//                               color: Theme.of(context).textTheme.bodySmall?.color,
 //                               size: 14),
 //                           gapW4,
 //                           Flexible(
@@ -254,11 +255,11 @@ class ContactButtons extends StatelessWidget {
 //                               clienteContacto.email!,
 //                               style: Theme.of(context)
 //                                   .textTheme
-//                                   .bodyText2
+//                                   .bodyMedium
 //                                   ?.copyWith(
 //                                       color: Theme.of(context)
 //                                           .textTheme
-//                                           .caption
+//                                           .bodySmall
 //                                           ?.color),
 //                             ),
 //                           ),
@@ -268,18 +269,18 @@ class ContactButtons extends StatelessWidget {
 //                       Row(
 //                         children: [
 //                           Icon(Icons.phone,
-//                               color: Theme.of(context).textTheme.caption?.color,
+//                               color: Theme.of(context).textTheme.bodySmall?.color,
 //                               size: 14),
 //                           gapW4,
 //                           Text(
 //                             clienteContacto.telefono1!,
 //                             style: Theme.of(context)
 //                                 .textTheme
-//                                 .bodyText2
+//                                 .bodyMedium
 //                                 ?.copyWith(
 //                                     color: Theme.of(context)
 //                                         .textTheme
-//                                         .caption
+//                                         .bodySmall
 //                                         ?.color),
 //                           ),
 //                         ],
@@ -288,18 +289,18 @@ class ContactButtons extends StatelessWidget {
 //                       Row(
 //                         children: [
 //                           Icon(Icons.phone,
-//                               color: Theme.of(context).textTheme.caption?.color,
+//                               color: Theme.of(context).textTheme.bodySmall?.color,
 //                               size: 14),
 //                           gapW4,
 //                           Text(
 //                             clienteContacto.telefono2!,
 //                             style: Theme.of(context)
 //                                 .textTheme
-//                                 .bodyText2
+//                                 .bodyMedium
 //                                 ?.copyWith(
 //                                     color: Theme.of(context)
 //                                         .textTheme
-//                                         .caption
+//                                         .bodySmall
 //                                         ?.color),
 //                           ),
 //                         ],

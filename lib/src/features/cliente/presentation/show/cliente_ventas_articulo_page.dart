@@ -388,7 +388,7 @@ class _ClienteVentasArticuloDataList extends DataTableSource {
           DataCell(
             Text(
               clienteVentasArticuloList[i].descripcion,
-              style: Theme.of(context).textTheme.caption,
+              style: Theme.of(context).textTheme.bodySmall,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),

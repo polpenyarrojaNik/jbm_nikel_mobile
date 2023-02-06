@@ -64,7 +64,7 @@ class VisitaDetallePage extends ConsumerWidget {
               Flexible(
                 child: Text(
                   visita.getNombreMostrar(),
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               if (visita.clienteProvisionalEmail != null)
@@ -116,7 +116,7 @@ class VisitaDetallePage extends ConsumerWidget {
                   visita.errorSyncMessage!,
                   style: Theme.of(context)
                       .textTheme
-                      .caption
+                      .bodySmall
                       ?.copyWith(color: Theme.of(context).colorScheme.error),
                 )
             ],

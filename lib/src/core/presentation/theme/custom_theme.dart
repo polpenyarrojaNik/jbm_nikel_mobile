@@ -132,8 +132,8 @@ class CustomTheme {
       textTheme: GoogleFonts.montserratTextTheme(
         ThemeData.light().textTheme,
       ).copyWith(
-          subtitle2: GoogleFonts.montserrat(
-                  textStyle: ThemeData.light().textTheme.subtitle2)
+          titleSmall: GoogleFonts.montserrat(
+                  textStyle: ThemeData.light().textTheme.titleSmall)
               .copyWith(fontWeight: FontWeight.w600)),
     );
   }
@@ -154,8 +154,8 @@ class CustomTheme {
       textTheme: GoogleFonts.montserratTextTheme(
         ThemeData.dark().textTheme,
       ).copyWith(
-          subtitle2: GoogleFonts.montserrat(
-                  textStyle: ThemeData.dark().textTheme.subtitle2)
+          titleSmall: GoogleFonts.montserrat(
+                  textStyle: ThemeData.dark().textTheme.titleSmall)
               .copyWith(fontWeight: FontWeight.w600)),
     );
   }

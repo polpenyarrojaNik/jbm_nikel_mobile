@@ -74,11 +74,11 @@ class ArticuloRecambioTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(articuloRecambio.id,
-                  style: Theme.of(context).textTheme.subtitle2),
+                  style: Theme.of(context).textTheme.titleSmall),
               Text(
                 '${numberFormatCantidades(articuloRecambio.cantidad)} ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    color: Theme.of(context).textTheme.caption?.color),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall?.color),
               ),
             ],
           ),

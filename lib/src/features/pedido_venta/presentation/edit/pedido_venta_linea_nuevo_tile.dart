@@ -37,12 +37,12 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(pedidoVentaLinea.articuloId,
-                            style: Theme.of(context).textTheme.subtitle2),
+                            style: Theme.of(context).textTheme.titleSmall),
                         Row(
                           children: [
                             Text(
                               '${numberFormatCantidades(pedidoVentaLinea.cantidad)} ${S.of(context).unidad}',
-                              style: Theme.of(context).textTheme.subtitle2,
+                              style: Theme.of(context).textTheme.titleSmall,
                             ),
                           ],
                         ),
@@ -51,7 +51,7 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                     pedidoVentaLinea.articuloDescription,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Spacer(),
                   Row(
@@ -66,7 +66,7 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                           descuento2: pedidoVentaLinea.descuento2,
                           descuento3: pedidoVentaLinea.descuento3,
                         )}',
-                        style: Theme.of(context).textTheme.caption,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       if (pedidoVentaLinea.importeLinea != null &&
                           !pedidoVentaLinea.isComponente())
@@ -82,7 +82,7 @@ class PedidoVentaLineaNuevoTile extends StatelessWidget {
                   ),
                   Text(
                     '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${pedidoVentaLinea.stockDisponible} ${S.of(context).unidad}',
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],
               ),

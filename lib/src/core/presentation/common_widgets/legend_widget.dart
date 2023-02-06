@@ -33,7 +33,7 @@ class LeyendaWidget extends StatelessWidget {
                   gapW4,
                   Text(
                     (DateTime.now().year).toString(),
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
               ),
@@ -53,7 +53,7 @@ class LeyendaWidget extends StatelessWidget {
                   gapW4,
                   Text(
                     (DateTime.now().year - 1).toString(),
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
               ),

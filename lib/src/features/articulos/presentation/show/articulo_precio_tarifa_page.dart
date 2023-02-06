@@ -83,8 +83,8 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
                 if (articuloPrecioTarifa.cantidadDesde != 1)
                   Text(
                     '≥ ${numberFormatCantidades(articuloPrecioTarifa.cantidadDesde)} ${S.of(context).unidad}',
-                    style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                        color: Theme.of(context).textTheme.caption?.color),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).textTheme.bodySmall?.color),
                   ),
               ],
             ),
@@ -95,8 +95,8 @@ class ArticuloPrecioTarifaTile extends StatelessWidget {
                 tipoPrecio: articuloPrecioTarifa.tipoPrecio),
             style: Theme.of(context)
                 .textTheme
-                .bodyText2
-                ?.copyWith(color: Theme.of(context).textTheme.caption?.color),
+                .bodyMedium
+                ?.copyWith(color: Theme.of(context).textTheme.bodySmall?.color),
           ),
         ],
       ),

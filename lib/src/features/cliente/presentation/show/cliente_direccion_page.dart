@@ -85,13 +85,13 @@ class ClienteDireccionTile extends StatelessWidget {
                   children: [
                     Text(
                       clienteDireccion.nombre,
-                      style: Theme.of(context).textTheme.subtitle2,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     gapH4,
                     if (clienteDireccion.direccion1 != null)
                       Text(
                         clienteDireccion.direccion1!,
-                        style: Theme.of(context).textTheme.caption!,
+                        style: Theme.of(context).textTheme.bodySmall!,
                       ),
                     Text(
                         formatCodigoPostalAndPoblacion(
@@ -100,7 +100,7 @@ class ClienteDireccionTile extends StatelessWidget {
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.caption),
+                        style: Theme.of(context).textTheme.bodySmall),
                     Text(
                         formatProvinciaAndPais(
                           province: clienteDireccion.provincia,
@@ -108,7 +108,7 @@ class ClienteDireccionTile extends StatelessWidget {
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.caption),
+                        style: Theme.of(context).textTheme.bodySmall),
                   ],
                 ),
               ),

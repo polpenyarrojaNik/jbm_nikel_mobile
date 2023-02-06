@@ -25,7 +25,7 @@ class ClienteListaTile extends StatelessWidget {
               Flexible(
                 child: Text(
                   '#${cliente.id} ${cliente.nombreCliente}',
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
               if (cliente.clientePotencial ?? false) gapW12,

@@ -71,13 +71,13 @@ class LoginPageState extends ConsumerState<LoginPage> {
                   gapH48,
                   Text(
                     S.of(context).auth_loginPage_titulo,
-                    style: Theme.of(context).textTheme.headline5!,
+                    style: Theme.of(context).textTheme.headlineSmall!,
                   ),
                   Text(
                     'JBM Nikel Mobile',
                     style: Theme.of(context)
                         .textTheme
-                        .headline4!
+                        .headlineMedium!
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   gapH16,

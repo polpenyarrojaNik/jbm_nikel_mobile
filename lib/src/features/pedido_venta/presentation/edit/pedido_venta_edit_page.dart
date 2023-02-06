@@ -747,7 +747,7 @@ class StepArticuloListContent extends ConsumerWidget {
                         .getBaseImponible(
                             pedidoVentaLineaList, cliente!.divisa!.id)
                         .toString(),
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   )
                 ],
               ),
@@ -1055,8 +1055,8 @@ class StepResumenContent extends ConsumerWidget {
                 children: [
                   Text(
                     S.of(context).pedido_edit_pedidoEdit_oferta,
-                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                        color: Theme.of(context).textTheme.caption!.color),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Theme.of(context).textTheme.bodySmall!.color),
                   ),
                   Switch(value: oferta, onChanged: null),
                 ],
@@ -1131,7 +1131,7 @@ class _ClienteResumenTile extends StatelessWidget {
               Flexible(
                 child: Text(
                   '#${(clienteDireccion != null) ? clienteDireccion!.clienteId : cliente.id} ${(clienteDireccion != null) ? clienteDireccion?.nombre : cliente.nombreCliente}',
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ),
             ],

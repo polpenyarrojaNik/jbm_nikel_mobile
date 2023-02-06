@@ -87,7 +87,7 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                     pedidoVentaLinea.pedidoVentaId,
                   ),
                   Text(pedidoVentaLinea.id,
-                      style: Theme.of(context).textTheme.caption),
+                      style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
             ),
@@ -103,7 +103,7 @@ class ArticuloPedidoVentaLineaTile extends StatelessWidget {
                       Flexible(
                         child: Text(
                           '#${pedidoVentaLinea.clienteId} ${pedidoVentaLinea.nombreCliente}',
-                          style: Theme.of(context).textTheme.subtitle2,
+                          style: Theme.of(context).textTheme.titleSmall,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

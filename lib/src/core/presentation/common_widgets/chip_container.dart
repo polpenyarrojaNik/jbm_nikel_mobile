@@ -17,7 +17,7 @@ class ChipContainer extends StatelessWidget {
         padding: const EdgeInsets.all(4.0),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.caption,
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ),
     );

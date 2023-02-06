@@ -18,6 +18,7 @@ class UsuarioDTO with _$UsuarioDTO {
     @JsonKey(name: 'PROVISIONAL_TOKEN') required String provisionalToken,
     @JsonKey(name: 'REFRESH_TOKEN') String? refreshToken,
     @JsonKey(name: 'TEST') required String test,
+    @JsonKey(name: 'IDIOMA_ID') required String idiomaId,
   }) = _UsuarioDTO;
 
   DateTime? get expiration {
@@ -45,6 +46,7 @@ class UsuarioDTO with _$UsuarioDTO {
       provisionalToken: _.provisionalToken,
       refreshToken: _.refreshToken,
       test: (_.test) ? 'S' : 'N',
+      idiomaId: _.idiomaId,
     );
   }
 
@@ -57,6 +59,7 @@ class UsuarioDTO with _$UsuarioDTO {
       provisionalToken: provisionalToken,
       refreshToken: refreshToken,
       test: (test == 'S') ? true : false,
+      idiomaId: idiomaId,
     );
   }
 }

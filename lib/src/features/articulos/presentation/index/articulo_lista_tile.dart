@@ -23,11 +23,11 @@ class ArticuloListaTile extends StatelessWidget {
             children: [
               Text(
                 articulo.id,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               Text(
                 '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ],
           ),
@@ -38,7 +38,7 @@ class ArticuloListaTile extends StatelessWidget {
             (articulo.subfamilia != null)
                 ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
                 : '${articulo.familia?.descripcion}',
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       ),

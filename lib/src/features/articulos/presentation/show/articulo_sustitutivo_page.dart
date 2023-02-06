@@ -75,11 +75,11 @@ class ArticuloSustitutivoTile extends StatelessWidget {
             children: [
               Text(
                 articuloSustitutivo.articuloSustitutivoId,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               Text(
                 '${S.of(context).pedido_edit_pedidoEdit_stockDisponible} ${articuloSustitutivo.stockDisponible} ${S.of(context).unidad}',
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ],
           ),

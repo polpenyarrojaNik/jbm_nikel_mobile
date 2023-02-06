@@ -163,7 +163,7 @@ class _ClienteHeader extends StatelessWidget {
           gapH8,
           Text(
             cliente.nombreFiscal,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           gapH4,
           if (cliente.direccionFiscal1 != null)
@@ -176,23 +176,26 @@ class _ClienteHeader extends StatelessWidget {
                     children: [
                       Text(
                         cliente.direccionFiscal1!,
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodySmall?.color),
                       ),
                       Text(
                         formatCodigoPostalAndPoblacion(
                           codigoPostal: cliente.codigoPostalFiscal,
                           poblacion: cliente.poblacionFiscal,
                         ),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodySmall?.color),
                       ),
                       Text(
                         formatProvinciaAndPais(
                             province: cliente.provinciaFiscal,
                             pais: cliente.paisFiscal),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodySmall?.color),
                       )
                     ],
                   ),
@@ -324,8 +327,8 @@ class _VentasRowWidget extends StatelessWidget {
           S.of(context).cliente_show_clienteDetalle_ventas,
           style: Theme.of(context)
               .textTheme
-              .subtitle2!
-              .copyWith(color: Theme.of(context).textTheme.caption!.color),
+              .titleSmall!
+              .copyWith(color: Theme.of(context).textTheme.bodySmall!.color),
         ),
         gapH4,
         Row(
@@ -335,8 +338,8 @@ class _VentasRowWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Text(S.of(context).cliente_show_clienteDetalle_anoActual,
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: Theme.of(context).textTheme.caption!.color)),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
                   Text(
                     formatPrecios(
                         precio: cliente.ventasAnyoActual, tipoPrecio: null),
@@ -348,8 +351,8 @@ class _VentasRowWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: Theme.of(context).textTheme.caption!.color)),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
                   Text(
                     formatPrecios(
                         precio: cliente.ventasAnyoAnterior, tipoPrecio: null),
@@ -361,8 +364,8 @@ class _VentasRowWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Text(S.of(context).cliente_show_clienteDetalle_hace2Anos,
-                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                          color: Theme.of(context).textTheme.caption!.color)),
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).textTheme.bodySmall!.color)),
                   Text(
                     formatPrecios(
                         precio: cliente.ventasHaceDosAnyos, tipoPrecio: null),
@@ -481,11 +484,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_riesgoActual,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle2!
+                                .titleSmall!
                                 .copyWith(
                                     color: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .color),
                           ),
                           Text(
@@ -504,11 +507,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                   .cliente_show_clienteDetalle_riesgoExcedido,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color),
                             ),
                             Text(
@@ -518,7 +521,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                               ),
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .bodyMedium!
                                   .copyWith(
                                     color: Theme.of(context).colorScheme.error,
                                   ),
@@ -534,11 +537,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                 .cliente_show_clienteDetalle_pdteCobroVencido,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText2!
+                                .bodyMedium!
                                 .copyWith(
                                     color: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .color),
                           ),
                           Text(
@@ -550,12 +553,12 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                     .riesgoPendienteCobroVencido!.isZero)
                                 ? Theme.of(context)
                                     .textTheme
-                                    .bodyText2!
+                                    .bodyMedium!
                                     .copyWith(
                                       color:
                                           Theme.of(context).colorScheme.error,
                                     )
-                                : Theme.of(context).textTheme.bodyText2,
+                                : Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
                       ),
@@ -568,11 +571,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                   .cliente_show_clienteDetalle_pdteCobroNoVencido,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .bodyMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color)),
                           Text(
                             formatPrecios(
@@ -590,11 +593,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                   .cliente_show_clienteDetalle_pdteServir,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .bodyMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color)),
                           Text(
                             formatPrecios(
@@ -612,11 +615,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                   .cliente_show_clienteDetalle_pdteFacturar,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .bodyMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color)),
                           Text(
                             formatPrecios(
@@ -641,11 +644,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                     .cliente_show_clienteDetalle_riesgoConcedido,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .textTheme
-                                            .caption!
+                                            .bodySmall!
                                             .color)),
                             Text(
                               formatPrecios(
@@ -660,11 +663,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           Text('JBM',
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .bodyMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color)),
                           Text(
                             formatPrecios(
@@ -676,7 +679,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                               dateFormatter(cliente.riesgoConcedidoInternoDate!
                                   .toLocal()
                                   .toIso8601String()),
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                         ],
                       ),
@@ -686,11 +689,11 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                           Text('COFACE',
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2!
+                                  .bodyMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .color)),
                           Text(
                             formatPrecios(
@@ -702,7 +705,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                               dateFormatter(cliente.riesgoConcedidoCoafeFecha!
                                   .toLocal()
                                   .toIso8601String()),
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                         ],
                       ),

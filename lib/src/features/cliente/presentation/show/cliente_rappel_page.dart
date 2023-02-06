@@ -100,8 +100,9 @@ class ClienteRappelTile extends ConsumerWidget {
                         dateFormatter(clienteRappel.fechaDesDe
                             .toLocal()
                             .toIso8601String()),
-                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                            color: Theme.of(context).textTheme.caption?.color)),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color:
+                                Theme.of(context).textTheme.bodySmall?.color)),
                     if (clienteRappel.fechaHasta != null) const Spacer(),
                     if (clienteRappel.fechaHasta != null)
                       Text(
@@ -110,11 +111,11 @@ class ClienteRappelTile extends ConsumerWidget {
                               .toIso8601String()),
                           style: Theme.of(context)
                               .textTheme
-                              .bodyText2
+                              .bodyMedium
                               ?.copyWith(
                                   color: Theme.of(context)
                                       .textTheme
-                                      .caption
+                                      .bodySmall
                                       ?.color)),
                   ],
                 ),
@@ -123,9 +124,9 @@ class ClienteRappelTile extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(clienteRappel.descripcion,
-                      style: Theme.of(context).textTheme.subtitle2),
+                      style: Theme.of(context).textTheme.titleSmall),
                   Text(clienteRappel.firmado ? 'Firmado' : 'Sin firmar',
-                      style: Theme.of(context).textTheme.caption),
+                      style: Theme.of(context).textTheme.bodySmall),
                 ],
               ),
               const Spacer(),

@@ -112,7 +112,7 @@ class ClienteAdjuntoTile extends ConsumerWidget {
               children: [
                 Icon(
                   getIconoFromExtension(clienteAdjunto.nombreAdjunto),
-                  color: Theme.of(context).textTheme.caption!.color,
+                  color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
                 gapW8,
                 Flexible(child: Text(clienteAdjunto.nombreAdjunto)),

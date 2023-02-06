@@ -107,7 +107,7 @@ class ClienteInfoContainer extends StatelessWidget {
             Flexible(
               child: Text(
                 pedidoVenta.nombreCliente,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
             ChipContainer(
@@ -146,8 +146,8 @@ class ClienteInfoContainer extends StatelessWidget {
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                color: Theme.of(context).textTheme.caption!.color,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: Theme.of(context).textTheme.bodySmall!.color,
               ),
         ),
         Text(
@@ -157,8 +157,8 @@ class ClienteInfoContainer extends StatelessWidget {
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                color: Theme.of(context).textTheme.caption!.color,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: Theme.of(context).textTheme.bodySmall!.color,
               ),
         ),
       ],
@@ -232,8 +232,8 @@ class AlbaranesContainer extends ConsumerWidget {
                 children: [
                   Text(
                     S.of(context).pedido_show_pedidoVentaDetalle_albaranes,
-                    style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                        color: Theme.of(context).textTheme.caption!.color),
+                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Theme.of(context).textTheme.bodySmall!.color),
                   ),
                   gapH4,
                   ListView.separated(
@@ -255,7 +255,7 @@ class AlbaranesContainer extends ConsumerWidget {
                                         .toLocal()
                                         .toIso8601String(),
                                     allDay: true),
-                                style: Theme.of(context).textTheme.caption),
+                                style: Theme.of(context).textTheme.bodySmall),
                           ],
                         ),
                         if (albaranes[i].trackId != null ||
@@ -265,10 +265,12 @@ class AlbaranesContainer extends ConsumerWidget {
                             children: [
                               if (albaranes[i].trackId != null)
                                 Text(albaranes[i].trackId!,
-                                    style: Theme.of(context).textTheme.caption),
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall),
                               if (albaranes[i].agencia != null)
                                 Text(albaranes[i].agencia!,
-                                    style: Theme.of(context).textTheme.caption),
+                                    style:
+                                        Theme.of(context).textTheme.bodySmall),
                             ],
                           ),
                       ],

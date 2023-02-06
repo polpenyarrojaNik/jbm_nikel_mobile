@@ -94,7 +94,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
                       getEstadoCobroFactura(
                           context: context,
                           estadoCobro: clientePagoPendiente.estadoCobroId!),
-                      style: Theme.of(context).textTheme.caption),
+                      style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
             const VerticalDivider(),
@@ -110,13 +110,13 @@ class ClientePagoPendienteTile extends StatelessWidget {
                   if (clientePagoPendiente.fechaFactura != null)
                     Text(
                         '${S.of(context).cliente_show_clienteFacturasPendientes_fFactura} ${dateFormatter(clientePagoPendiente.fechaFactura!.toLocal().toIso8601String())}',
-                        style: Theme.of(context).textTheme.caption),
+                        style: Theme.of(context).textTheme.bodySmall),
                   if (clientePagoPendiente.fechaExpiracionInicial != null)
                     gapH4,
                   if (clientePagoPendiente.fechaExpiracionInicial != null)
                     Text(
                       '${S.of(context).cliente_show_clienteFacturasPendientes_fvctoOriginal} ${dateFormatter(clientePagoPendiente.fechaExpiracionInicial!.toLocal().toIso8601String())}',
-                      style: Theme.of(context).textTheme.caption,
+                      style: Theme.of(context).textTheme.bodySmall,
                     ),
                 ],
               ),
