@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:better_open_file/better_open_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/async_value_widget.dart';
@@ -16,9 +17,11 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/common_widgets/row_field_text_detail.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../../../core/presentation/toasts.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/pedido_venta.dart';
 import '../../infrastructure/pedido_venta_repository.dart';
+import 'pedido_venta_adjunto_controller.dart';
 
 class PedidoVentaDetallePage extends ConsumerWidget {
   const PedidoVentaDetallePage(
@@ -30,34 +33,71 @@ class PedidoVentaDetallePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pedidoVentaProvider(pedidoVentaIdIsLocalParam));
 
+    ref.listen<PedidoVentaAdjuntoState>(
+      pedidoVentaAdjuntoControllerProvider,
+      (_, state) => state.when(
+        data: (file) => (file != null) ? OpenFile.open(file.path) : null,
+        error: (error) => showToast(error.toString(), context),
+        loading: () => showToast(
+            S.of(context).cliente_show_clienteAdjunto_abriendoArchivo, context),
+        initial: () => null,
+      ),
+    );
+
     return Scaffold(
       appBar: CommonAppBar(
         titleText:
-            ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoVentaIdIsLocalParam.isLocal) ? 'Provisional' : pedidoVentaIdIsLocalParam.id}'),
+            ('${S.of(context).pedido_show_pedidoVentaDetalle_titulo} ${(pedidoVentaIdIsLocalParam.isLocal) ? S.of(context).pedido_index_offline : pedidoVentaIdIsLocalParam.id}'),
         actions: state.maybeWhen(
-            orElse: () => null,
-            data: (pedidoVenta) => (pedidoVenta.isEditable())
-                ? [
-                    IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () => context.router.push(
-                        PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
-                      ),
+          orElse: () => null,
+          data: (pedidoVenta) {
+            if (pedidoVenta.oferta ?? false) {
+              final ofertaAdjuntoValue = ref.watch(
+                  ofertaHaveAttachmentProvider(pedidoVentaIdIsLocalParam.id));
+              return ofertaAdjuntoValue.maybeWhen(
+                  orElse: () => [
+                        const SizedBox(
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.5,
+                          ),
+                        )
+                      ],
+                  data: (ofertaHaveAttachment) => ofertaHaveAttachment
+                      ? [
+                          IconButton(
+                            onPressed: () => _donwloadOfertaAttachment(
+                                ref, pedidoVentaIdIsLocalParam.id),
+                            icon: const Icon(Icons.picture_as_pdf),
+                          )
+                        ]
+                      : null);
+            } else {
+              if (pedidoVenta.isEditable()) {
+                return [
+                  IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () => context.router.push(
+                      PedidoVentaEditRoute(id: pedidoVenta.pedidoVentaAppId),
                     ),
-                    IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        ref.read(deletePedidoVentaProvider(
-                            pedidoVentaIdIsLocalParam.id));
-                        ref.invalidate(
-                            pedidoVentaIndexScreenPaginatedControllerProvider);
-                        ref.invalidate(
-                            pedidoVentaIndexScreenControllerProvider);
-                        context.router.pop();
-                      },
-                    ),
-                  ]
-                : null),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () {
+                      ref.read(deletePedidoVentaProvider(
+                          pedidoVentaIdIsLocalParam.id));
+                      ref.invalidate(
+                          pedidoVentaIndexScreenPaginatedControllerProvider);
+                      ref.invalidate(pedidoVentaIndexScreenControllerProvider);
+                      context.router.pop();
+                    },
+                  ),
+                ];
+              }
+              return null;
+            }
+          },
+        ),
       ),
       body: AsyncValueWidget<PedidoVenta>(
         value: state,
@@ -88,6 +128,12 @@ class PedidoVentaDetallePage extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  void _donwloadOfertaAttachment(WidgetRef ref, String pedidoVentaId) {
+    ref
+        .read(pedidoVentaAdjuntoControllerProvider.notifier)
+        .getAttachmentFile(pedidoVentaId: pedidoVentaId);
   }
 }
 

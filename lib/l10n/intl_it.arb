@@ -207,7 +207,7 @@
   "pedido_index_estados": "Stato",
   "pedido_index_filtrar": "Filtro",
   "pedido_index_filtros": "Filtri",
-  "pedido_index_provisional": "Provvisorio",
+  "pedido_index_provisional": "Offline",
   "pedido_index_reset": "Ripristina",
   "pedido_index_titulo": "Ordini",
   "pedido_noEnviado": "Non inviato",

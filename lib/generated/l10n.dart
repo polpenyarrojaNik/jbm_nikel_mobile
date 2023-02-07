@@ -1874,11 +1874,11 @@ class S {
     );
   }
 
-  /// `Provisional`
-  String get pedido_index_provisional {
+  /// `Offline`
+  String get pedido_index_offline {
     return Intl.message(
-      'Provisional',
-      name: 'pedido_index_provisional',
+      'Offline',
+      name: 'pedido_index_offline',
       desc: '',
       args: [],
     );

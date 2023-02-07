@@ -449,8 +449,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_estados": MessageLookupByLibrary.simpleMessage("Stato"),
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtro"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtri"),
-        "pedido_index_provisional":
-            MessageLookupByLibrary.simpleMessage("Provvisorio"),
         "pedido_index_reset":
             MessageLookupByLibrary.simpleMessage("Ripristina"),
         "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Ordini"),

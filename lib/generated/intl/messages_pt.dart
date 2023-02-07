@@ -453,8 +453,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_estados": MessageLookupByLibrary.simpleMessage("Estado"),
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrar"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtos"),
-        "pedido_index_provisional":
-            MessageLookupByLibrary.simpleMessage("Data"),
         "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Redefinir"),
         "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedido"),
         "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Não enviado"),

@@ -376,6 +376,8 @@ Color pedidoVentaEstadoColor({
       return Colors.red.withOpacity(opacidad ?? 1);
     case 4: // Oferta
       return Colors.orange.withOpacity(opacidad ?? 1);
+    case 90: //Abierto
+      return Colors.greenAccent.withOpacity(opacidad ?? 1);
     case 98: //En preparación
       return Colors.yellow.shade300.withOpacity(opacidad ?? 1);
     case 99: //Liberado

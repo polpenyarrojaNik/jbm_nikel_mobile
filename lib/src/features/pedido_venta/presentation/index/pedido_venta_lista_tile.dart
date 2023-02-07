@@ -56,7 +56,7 @@ class PedidoVentaListaTile extends StatelessWidget {
                       children: [
                         Text(
                           pedidoVenta.pedidoVentaId ??
-                              S.of(context).pedido_index_provisional,
+                              S.of(context).pedido_index_offline,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall

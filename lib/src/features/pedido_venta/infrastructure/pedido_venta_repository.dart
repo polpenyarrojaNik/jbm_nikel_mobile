@@ -97,6 +97,12 @@ final getPedidoVentaBorradorPendiente =
   return pedidoVentaRepository.getBorradorPendiete();
 });
 
+final ofertaHaveAttachmentProvider =
+    FutureProvider.autoDispose.family<bool, String>((ref, pedidoVentaId) {
+  final pedidoVentaRepository = ref.watch(pedidoVentaRepositoryProvider);
+  return pedidoVentaRepository.ofertaHaveAttachment(pedidoVentaId);
+});
+
 class PedidoVentaRepository {
   static const pageSize = 100;
 
@@ -211,7 +217,9 @@ class PedidoVentaRepository {
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
-          predicate = (_remoteDb.pedidoVentaTable.nombreCliente
+          predicate = (_remoteDb.pedidoVentaTable.pedidoVentaId
+                  .like('%${busqueda[i]}%') |
+              _remoteDb.pedidoVentaTable.nombreCliente
                   .like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.pedidoVentaId
@@ -221,18 +229,20 @@ class PedidoVentaRepository {
               _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
         } else {
           predicate = predicate &
-              ((_remoteDb.pedidoVentaTable.nombreCliente
+              (_remoteDb.pedidoVentaTable.pedidoVentaId
                       .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.pedidoVentaId
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.clienteId
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.poblacion
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.codigoPostal
-                      .like('%${busqueda[i]}%') |
-                  _remoteDb.pedidoVentaTable.provincia
-                      .like('%${busqueda[i]}%')));
+                  (_remoteDb.pedidoVentaTable.nombreCliente
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.pedidoVentaTable.pedidoVentaId
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.pedidoVentaTable.clienteId
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.pedidoVentaTable.poblacion
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.pedidoVentaTable.codigoPostal
+                          .like('%${busqueda[i]}%') |
+                      _remoteDb.pedidoVentaTable.provincia
+                          .like('%${busqueda[i]}%')));
         }
       }
       query.where(predicate!);
@@ -270,10 +280,10 @@ class PedidoVentaRepository {
     final countExp = _remoteDb.pedidoVentaTable.pedidoVentaId.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.pedidoVentaTable).join([
-      innerJoin(
-          _remoteDb.clienteUsuarioTable,
-          _remoteDb.clienteUsuarioTable.clienteId
-              .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
+      // innerJoin(
+      //     _remoteDb.clienteUsuarioTable,
+      //     _remoteDb.clienteUsuarioTable.clienteId
+      //         .equalsExp(_remoteDb.pedidoVentaTable.clienteId)),
       leftOuterJoin(_remoteDb.paisTable,
           _remoteDb.paisTable.id.equalsExp(_remoteDb.pedidoVentaTable.paisId)),
       leftOuterJoin(
@@ -286,7 +296,7 @@ class PedidoVentaRepository {
               .equalsExp(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId)),
     ]);
 
-    query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
+    // query.where(_remoteDb.clienteUsuarioTable.usuarioId.equals(usuario.id));
 
     if (pedidoVentaEstado != null) {
       query.where(_remoteDb.pedidoVentaTable.pedidoVentaEstadoId
@@ -298,7 +308,9 @@ class PedidoVentaRepository {
       Expression<bool>? predicate;
       for (var i = 0; i < busqueda.length; i++) {
         if (predicate == null) {
-          predicate = (_remoteDb.pedidoVentaTable.nombreCliente
+          predicate = (_remoteDb.pedidoVentaTable.pedidoVentaId
+                  .like('%${busqueda[i]}%') |
+              _remoteDb.pedidoVentaTable.nombreCliente
                   .like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.clienteId.like('%${busqueda[i]}%') |
               _remoteDb.pedidoVentaTable.poblacion.like('%${busqueda[i]}%') |
@@ -306,7 +318,9 @@ class PedidoVentaRepository {
               _remoteDb.pedidoVentaTable.provincia.like('%${busqueda[i]}%'));
         } else {
           predicate = predicate &
-              ((_remoteDb.pedidoVentaTable.nombreCliente
+              ((_remoteDb.pedidoVentaTable.pedidoVentaId
+                      .like('%${busqueda[i]}%') |
+                  _remoteDb.pedidoVentaTable.nombreCliente
                       .like('%${busqueda[i]}%') |
                   _remoteDb.pedidoVentaTable.clienteId
                       .like('%${busqueda[i]}%') |
@@ -948,6 +962,41 @@ class PedidoVentaRepository {
       descuento3: descuento3,
       iva: iva,
     );
+  }
+
+  Future<bool> ofertaHaveAttachment(String pedidoVentaId) async {
+    try {
+      return _remoteOfertaHaveAttachment(pedidoVentaId);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<File?> getDocumentFile({required String pedidoVentaId}) async {
+    try {
+      final data = await _remoteGetAttachment(
+          requestUri: Uri.https(
+            dotenv.get('URL', fallback: 'localhost:3001'),
+            'api/v1/online/adjunto/pedido/$pedidoVentaId',
+          ),
+          provisionalToken: usuario.provisionalToken);
+
+      try {
+        final cahceDirectories = await getTemporaryDirectory();
+
+        final File file = await File(
+                '${cahceDirectories.path}/pedido/$pedidoVentaId/PV$pedidoVentaId.PDF')
+            .create(recursive: true);
+        final raf = file.openSync(mode: FileMode.write);
+        raf.writeFromSync(data);
+        await raf.close();
+        return file;
+      } catch (e) {
+        throw AppException.createFileInCacheFailure(e.toString());
+      }
+    } catch (e) {
+      rethrow;
+    }
   }
 
   Future<double> _getIvaClienteArticulo({
@@ -1939,5 +1988,59 @@ class PedidoVentaRepository {
   Future<bool> _csvFileExists(
       {required Directory directory, required String fileName}) async {
     return (await File((join(directory.path, fileName))).exists());
+  }
+
+  Future<bool> _remoteOfertaHaveAttachment(String pedidoVentaId) async {
+    try {
+      try {
+        final requestUri = Uri.https(
+          dotenv.get('URL', fallback: 'localhost:3001'),
+          'api/v1/online/adjunto/pedido/$pedidoVentaId/exist',
+        );
+
+        final response = await _dio.getUri(
+          requestUri,
+          options: Options(
+            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+          ),
+        );
+        if (response.statusCode == 200) {
+          final responsaData = response.data['data'] as bool;
+
+          return responsaData;
+        } else {
+          throw AppException.restApiFailure(
+              response.statusCode ?? 400, response.statusMessage ?? '');
+        }
+      } catch (e) {
+        throw getApiError(e);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<int>> _remoteGetAttachment({
+    required Uri requestUri,
+    required String provisionalToken,
+  }) async {
+    try {
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer $provisionalToken'},
+          responseType: ResponseType.bytes,
+          receiveDataWhenStatusError: true,
+        ),
+      );
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
   }
 }

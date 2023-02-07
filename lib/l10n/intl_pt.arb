@@ -207,7 +207,7 @@
   "pedido_index_estados": "Estado",
   "pedido_index_filtrar": "Filtrar",
   "pedido_index_filtros": "Filtos",
-  "pedido_index_provisional": "Data",
+  "pedido_index_provisional": "Offline",
   "pedido_index_reset": "Redefinir",
   "pedido_index_titulo": "Pedido",
   "pedido_noEnviado": "Não enviado",
