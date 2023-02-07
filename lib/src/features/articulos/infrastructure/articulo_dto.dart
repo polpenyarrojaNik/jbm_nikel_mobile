@@ -84,6 +84,10 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
     @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_2') String? comprasEntregaEstado2,
     @JsonKey(name: 'COMPRAS_ENTREGA_ESTADO_') String? comprasEntregaEstado3,
     @JsonKey(name: 'IMAGEN_PRINCIPAL') String? imagenPrincipal,
+    @JsonKey(name: 'GTIN_13_UNIDAD') String? gtin13Unidad,
+    @JsonKey(name: 'GS1_128_SUBCAJA') String? gs1128Subcaja,
+    @JsonKey(name: 'GS1_128_CAJA') String? gs1128Caja,
+    @JsonKey(name: 'GS1_128_PALET') String? gs1128Palet,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
   }) = _ArticuloDTO;
@@ -158,6 +162,10 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       comprasEntregaEstado2: comprasEntregaEstado2,
       comprasEntregaEstado3: comprasEntregaEstado3,
       imagenPrincipal: imagenPrincipal,
+      gtin13Unidad: gtin13Unidad,
+      gs1128Subcaja: gs1128Subcaja,
+      gs1128Caja: gs1128Caja,
+      gs1128Palet: gs1128Palet,
       lastUpdated: lastUpdated,
       deleted: (deleted == 'S') ? true : false,
     );
@@ -228,6 +236,10 @@ class ArticuloDTO with _$ArticuloDTO implements Insertable<ArticuloDTO> {
       comprasEntregaEstado2: Value(comprasEntregaEstado2),
       comprasEntregaEstado3: Value(comprasEntregaEstado3),
       imagenPrincipal: Value(imagenPrincipal),
+      gtin13Unidad: Value(gtin13Unidad),
+      gs1128Subcaja: Value(gs1128Subcaja),
+      gs1128Caja: Value(gs1128Caja),
+      gs1128Palet: Value(gs1128Palet),
       lastUpdated: Value(lastUpdated),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
@@ -321,6 +333,10 @@ class ArticuloTable extends Table {
       text().nullable().named('COMPRAS_ENTREGA_ESTADO_3')();
   TextColumn get imagenPrincipal =>
       text().nullable().named('IMAGEN_PRINCIPAL')();
+  TextColumn get gtin13Unidad => text().nullable().named('GTIN_13_UNIDAD')();
+  TextColumn get gs1128Subcaja => text().nullable().named('GS1_128_SUBCAJA')();
+  TextColumn get gs1128Caja => text().nullable().named('GS1_128_CAJA')();
+  TextColumn get gs1128Palet => text().nullable().named('GS1_128_PALET')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();

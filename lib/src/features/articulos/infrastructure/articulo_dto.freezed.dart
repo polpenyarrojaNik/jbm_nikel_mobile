@@ -144,6 +144,14 @@ mixin _$ArticuloDTO {
   String? get comprasEntregaEstado3 => throw _privateConstructorUsedError;
   @JsonKey(name: 'IMAGEN_PRINCIPAL')
   String? get imagenPrincipal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'GTIN_13_UNIDAD')
+  String? get gtin13Unidad => throw _privateConstructorUsedError;
+  @JsonKey(name: 'GS1_128_SUBCAJA')
+  String? get gs1128Subcaja => throw _privateConstructorUsedError;
+  @JsonKey(name: 'GS1_128_CAJA')
+  String? get gs1128Caja => throw _privateConstructorUsedError;
+  @JsonKey(name: 'GS1_128_PALET')
+  String? get gs1128Palet => throw _privateConstructorUsedError;
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   @JsonKey(name: 'DELETED')
@@ -286,6 +294,14 @@ abstract class $ArticuloDTOCopyWith<$Res> {
           String? comprasEntregaEstado3,
       @JsonKey(name: 'IMAGEN_PRINCIPAL')
           String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD')
+          String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA')
+          String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA')
+          String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET')
+          String? gs1128Palet,
       @JsonKey(name: 'LAST_UPDATED')
           DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -367,6 +383,10 @@ class _$ArticuloDTOCopyWithImpl<$Res, $Val extends ArticuloDTO>
     Object? comprasEntregaEstado2 = freezed,
     Object? comprasEntregaEstado3 = freezed,
     Object? imagenPrincipal = freezed,
+    Object? gtin13Unidad = freezed,
+    Object? gs1128Subcaja = freezed,
+    Object? gs1128Caja = freezed,
+    Object? gs1128Palet = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -619,6 +639,22 @@ class _$ArticuloDTOCopyWithImpl<$Res, $Val extends ArticuloDTO>
           ? _value.imagenPrincipal
           : imagenPrincipal // ignore: cast_nullable_to_non_nullable
               as String?,
+      gtin13Unidad: freezed == gtin13Unidad
+          ? _value.gtin13Unidad
+          : gtin13Unidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Subcaja: freezed == gs1128Subcaja
+          ? _value.gs1128Subcaja
+          : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Caja: freezed == gs1128Caja
+          ? _value.gs1128Caja
+          : gs1128Caja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Palet: freezed == gs1128Palet
+          ? _value.gs1128Palet
+          : gs1128Palet // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -764,6 +800,14 @@ abstract class _$$_ArticuloDTOCopyWith<$Res>
           String? comprasEntregaEstado3,
       @JsonKey(name: 'IMAGEN_PRINCIPAL')
           String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD')
+          String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA')
+          String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA')
+          String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET')
+          String? gs1128Palet,
       @JsonKey(name: 'LAST_UPDATED')
           DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -843,6 +887,10 @@ class __$$_ArticuloDTOCopyWithImpl<$Res>
     Object? comprasEntregaEstado2 = freezed,
     Object? comprasEntregaEstado3 = freezed,
     Object? imagenPrincipal = freezed,
+    Object? gtin13Unidad = freezed,
+    Object? gs1128Subcaja = freezed,
+    Object? gs1128Caja = freezed,
+    Object? gs1128Palet = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -1095,6 +1143,22 @@ class __$$_ArticuloDTOCopyWithImpl<$Res>
           ? _value.imagenPrincipal
           : imagenPrincipal // ignore: cast_nullable_to_non_nullable
               as String?,
+      gtin13Unidad: freezed == gtin13Unidad
+          ? _value.gtin13Unidad
+          : gtin13Unidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Subcaja: freezed == gs1128Subcaja
+          ? _value.gs1128Subcaja
+          : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Caja: freezed == gs1128Caja
+          ? _value.gs1128Caja
+          : gs1128Caja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Palet: freezed == gs1128Palet
+          ? _value.gs1128Palet
+          : gs1128Palet // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1235,6 +1299,14 @@ class _$_ArticuloDTO extends _ArticuloDTO {
           this.comprasEntregaEstado3,
       @JsonKey(name: 'IMAGEN_PRINCIPAL')
           this.imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD')
+          this.gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA')
+          this.gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA')
+          this.gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET')
+          this.gs1128Palet,
       @JsonKey(name: 'LAST_UPDATED')
           required this.lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -1431,6 +1503,18 @@ class _$_ArticuloDTO extends _ArticuloDTO {
   @JsonKey(name: 'IMAGEN_PRINCIPAL')
   final String? imagenPrincipal;
   @override
+  @JsonKey(name: 'GTIN_13_UNIDAD')
+  final String? gtin13Unidad;
+  @override
+  @JsonKey(name: 'GS1_128_SUBCAJA')
+  final String? gs1128Subcaja;
+  @override
+  @JsonKey(name: 'GS1_128_CAJA')
+  final String? gs1128Caja;
+  @override
+  @JsonKey(name: 'GS1_128_PALET')
+  final String? gs1128Palet;
+  @override
   @JsonKey(name: 'LAST_UPDATED')
   final DateTime lastUpdated;
   @override
@@ -1439,7 +1523,7 @@ class _$_ArticuloDTO extends _ArticuloDTO {
 
   @override
   String toString() {
-    return 'ArticuloDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familiaId: $familiaId, subfamiliaId: $subfamiliaId, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ArticuloDTO(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familiaId: $familiaId, subfamiliaId: $subfamiliaId, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1552,6 +1636,10 @@ class _$_ArticuloDTO extends _ArticuloDTO {
             (identical(other.comprasEntregaEstado2, comprasEntregaEstado2) || other.comprasEntregaEstado2 == comprasEntregaEstado2) &&
             (identical(other.comprasEntregaEstado3, comprasEntregaEstado3) || other.comprasEntregaEstado3 == comprasEntregaEstado3) &&
             (identical(other.imagenPrincipal, imagenPrincipal) || other.imagenPrincipal == imagenPrincipal) &&
+            (identical(other.gtin13Unidad, gtin13Unidad) || other.gtin13Unidad == gtin13Unidad) &&
+            (identical(other.gs1128Subcaja, gs1128Subcaja) || other.gs1128Subcaja == gs1128Subcaja) &&
+            (identical(other.gs1128Caja, gs1128Caja) || other.gs1128Caja == gs1128Caja) &&
+            (identical(other.gs1128Palet, gs1128Palet) || other.gs1128Palet == gs1128Palet) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1622,6 +1710,10 @@ class _$_ArticuloDTO extends _ArticuloDTO {
         comprasEntregaEstado2,
         comprasEntregaEstado3,
         imagenPrincipal,
+        gtin13Unidad,
+        gs1128Subcaja,
+        gs1128Caja,
+        gs1128Palet,
         lastUpdated,
         deleted
       ]);
@@ -1766,6 +1858,14 @@ abstract class _ArticuloDTO extends ArticuloDTO {
           final String? comprasEntregaEstado3,
       @JsonKey(name: 'IMAGEN_PRINCIPAL')
           final String? imagenPrincipal,
+      @JsonKey(name: 'GTIN_13_UNIDAD')
+          final String? gtin13Unidad,
+      @JsonKey(name: 'GS1_128_SUBCAJA')
+          final String? gs1128Subcaja,
+      @JsonKey(name: 'GS1_128_CAJA')
+          final String? gs1128Caja,
+      @JsonKey(name: 'GS1_128_PALET')
+          final String? gs1128Palet,
       @JsonKey(name: 'LAST_UPDATED')
           required final DateTime lastUpdated,
       @JsonKey(name: 'DELETED')
@@ -1961,6 +2061,18 @@ abstract class _ArticuloDTO extends ArticuloDTO {
   @override
   @JsonKey(name: 'IMAGEN_PRINCIPAL')
   String? get imagenPrincipal;
+  @override
+  @JsonKey(name: 'GTIN_13_UNIDAD')
+  String? get gtin13Unidad;
+  @override
+  @JsonKey(name: 'GS1_128_SUBCAJA')
+  String? get gs1128Subcaja;
+  @override
+  @JsonKey(name: 'GS1_128_CAJA')
+  String? get gs1128Caja;
+  @override
+  @JsonKey(name: 'GS1_128_PALET')
+  String? get gs1128Palet;
   @override
   @JsonKey(name: 'LAST_UPDATED')
   DateTime get lastUpdated;

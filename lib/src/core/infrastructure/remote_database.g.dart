@@ -10819,6 +10819,30 @@ class $ArticuloTableTable extends ArticuloTable
   late final GeneratedColumn<String> imagenPrincipal = GeneratedColumn<String>(
       'IMAGEN_PRINCIPAL', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _gtin13UnidadMeta =
+      const VerificationMeta('gtin13Unidad');
+  @override
+  late final GeneratedColumn<String> gtin13Unidad = GeneratedColumn<String>(
+      'GTIN_13_UNIDAD', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _gs1128SubcajaMeta =
+      const VerificationMeta('gs1128Subcaja');
+  @override
+  late final GeneratedColumn<String> gs1128Subcaja = GeneratedColumn<String>(
+      'GS1_128_SUBCAJA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _gs1128CajaMeta =
+      const VerificationMeta('gs1128Caja');
+  @override
+  late final GeneratedColumn<String> gs1128Caja = GeneratedColumn<String>(
+      'GS1_128_CAJA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _gs1128PaletMeta =
+      const VerificationMeta('gs1128Palet');
+  @override
+  late final GeneratedColumn<String> gs1128Palet = GeneratedColumn<String>(
+      'GS1_128_PALET', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _lastUpdatedMeta =
       const VerificationMeta('lastUpdated');
   @override
@@ -10897,6 +10921,10 @@ class $ArticuloTableTable extends ArticuloTable
         comprasEntregaEstado2,
         comprasEntregaEstado3,
         imagenPrincipal,
+        gtin13Unidad,
+        gs1128Subcaja,
+        gs1128Caja,
+        gs1128Palet,
         lastUpdated,
         deleted
       ];
@@ -11283,6 +11311,30 @@ class $ArticuloTableTable extends ArticuloTable
           imagenPrincipal.isAcceptableOrUnknown(
               data['IMAGEN_PRINCIPAL']!, _imagenPrincipalMeta));
     }
+    if (data.containsKey('GTIN_13_UNIDAD')) {
+      context.handle(
+          _gtin13UnidadMeta,
+          gtin13Unidad.isAcceptableOrUnknown(
+              data['GTIN_13_UNIDAD']!, _gtin13UnidadMeta));
+    }
+    if (data.containsKey('GS1_128_SUBCAJA')) {
+      context.handle(
+          _gs1128SubcajaMeta,
+          gs1128Subcaja.isAcceptableOrUnknown(
+              data['GS1_128_SUBCAJA']!, _gs1128SubcajaMeta));
+    }
+    if (data.containsKey('GS1_128_CAJA')) {
+      context.handle(
+          _gs1128CajaMeta,
+          gs1128Caja.isAcceptableOrUnknown(
+              data['GS1_128_CAJA']!, _gs1128CajaMeta));
+    }
+    if (data.containsKey('GS1_128_PALET')) {
+      context.handle(
+          _gs1128PaletMeta,
+          gs1128Palet.isAcceptableOrUnknown(
+              data['GS1_128_PALET']!, _gs1128PaletMeta));
+    }
     if (data.containsKey('LAST_UPDATED')) {
       context.handle(
           _lastUpdatedMeta,
@@ -11438,6 +11490,14 @@ class $ArticuloTableTable extends ArticuloTable
           data['${effectivePrefix}COMPRAS_ENTREGA_ESTADO_3']),
       imagenPrincipal: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}IMAGEN_PRINCIPAL']),
+      gtin13Unidad: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GTIN_13_UNIDAD']),
+      gs1128Subcaja: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_SUBCAJA']),
+      gs1128Caja: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_CAJA']),
+      gs1128Palet: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GS1_128_PALET']),
       lastUpdated: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       deleted: attachedDatabase.typeMapping
@@ -11514,6 +11574,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
   final Value<String?> comprasEntregaEstado2;
   final Value<String?> comprasEntregaEstado3;
   final Value<String?> imagenPrincipal;
+  final Value<String?> gtin13Unidad;
+  final Value<String?> gs1128Subcaja;
+  final Value<String?> gs1128Caja;
+  final Value<String?> gs1128Palet;
   final Value<DateTime> lastUpdated;
   final Value<String> deleted;
   const ArticuloTableCompanion({
@@ -11579,6 +11643,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.comprasEntregaEstado2 = const Value.absent(),
     this.comprasEntregaEstado3 = const Value.absent(),
     this.imagenPrincipal = const Value.absent(),
+    this.gtin13Unidad = const Value.absent(),
+    this.gs1128Subcaja = const Value.absent(),
+    this.gs1128Caja = const Value.absent(),
+    this.gs1128Palet = const Value.absent(),
     this.lastUpdated = const Value.absent(),
     this.deleted = const Value.absent(),
   });
@@ -11645,6 +11713,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     this.comprasEntregaEstado2 = const Value.absent(),
     this.comprasEntregaEstado3 = const Value.absent(),
     this.imagenPrincipal = const Value.absent(),
+    this.gtin13Unidad = const Value.absent(),
+    this.gs1128Subcaja = const Value.absent(),
+    this.gs1128Caja = const Value.absent(),
+    this.gs1128Palet = const Value.absent(),
     required DateTime lastUpdated,
     this.deleted = const Value.absent(),
   })  : id = Value(id),
@@ -11733,6 +11805,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     Expression<String>? comprasEntregaEstado2,
     Expression<String>? comprasEntregaEstado3,
     Expression<String>? imagenPrincipal,
+    Expression<String>? gtin13Unidad,
+    Expression<String>? gs1128Subcaja,
+    Expression<String>? gs1128Caja,
+    Expression<String>? gs1128Palet,
     Expression<DateTime>? lastUpdated,
     Expression<String>? deleted,
   }) {
@@ -11809,6 +11885,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       if (comprasEntregaEstado3 != null)
         'COMPRAS_ENTREGA_ESTADO_3': comprasEntregaEstado3,
       if (imagenPrincipal != null) 'IMAGEN_PRINCIPAL': imagenPrincipal,
+      if (gtin13Unidad != null) 'GTIN_13_UNIDAD': gtin13Unidad,
+      if (gs1128Subcaja != null) 'GS1_128_SUBCAJA': gs1128Subcaja,
+      if (gs1128Caja != null) 'GS1_128_CAJA': gs1128Caja,
+      if (gs1128Palet != null) 'GS1_128_PALET': gs1128Palet,
       if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (deleted != null) 'DELETED': deleted,
     });
@@ -11877,6 +11957,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       Value<String?>? comprasEntregaEstado2,
       Value<String?>? comprasEntregaEstado3,
       Value<String?>? imagenPrincipal,
+      Value<String?>? gtin13Unidad,
+      Value<String?>? gs1128Subcaja,
+      Value<String?>? gs1128Caja,
+      Value<String?>? gs1128Palet,
       Value<DateTime>? lastUpdated,
       Value<String>? deleted}) {
     return ArticuloTableCompanion(
@@ -11949,6 +12033,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
       comprasEntregaEstado3:
           comprasEntregaEstado3 ?? this.comprasEntregaEstado3,
       imagenPrincipal: imagenPrincipal ?? this.imagenPrincipal,
+      gtin13Unidad: gtin13Unidad ?? this.gtin13Unidad,
+      gs1128Subcaja: gs1128Subcaja ?? this.gs1128Subcaja,
+      gs1128Caja: gs1128Caja ?? this.gs1128Caja,
+      gs1128Palet: gs1128Palet ?? this.gs1128Palet,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       deleted: deleted ?? this.deleted,
     );
@@ -12153,6 +12241,18 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
     if (imagenPrincipal.present) {
       map['IMAGEN_PRINCIPAL'] = Variable<String>(imagenPrincipal.value);
     }
+    if (gtin13Unidad.present) {
+      map['GTIN_13_UNIDAD'] = Variable<String>(gtin13Unidad.value);
+    }
+    if (gs1128Subcaja.present) {
+      map['GS1_128_SUBCAJA'] = Variable<String>(gs1128Subcaja.value);
+    }
+    if (gs1128Caja.present) {
+      map['GS1_128_CAJA'] = Variable<String>(gs1128Caja.value);
+    }
+    if (gs1128Palet.present) {
+      map['GS1_128_PALET'] = Variable<String>(gs1128Palet.value);
+    }
     if (lastUpdated.present) {
       map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
     }
@@ -12227,6 +12327,10 @@ class ArticuloTableCompanion extends UpdateCompanion<ArticuloDTO> {
           ..write('comprasEntregaEstado2: $comprasEntregaEstado2, ')
           ..write('comprasEntregaEstado3: $comprasEntregaEstado3, ')
           ..write('imagenPrincipal: $imagenPrincipal, ')
+          ..write('gtin13Unidad: $gtin13Unidad, ')
+          ..write('gs1128Subcaja: $gs1128Subcaja, ')
+          ..write('gs1128Caja: $gs1128Caja, ')
+          ..write('gs1128Palet: $gs1128Palet, ')
           ..write('lastUpdated: $lastUpdated, ')
           ..write('deleted: $deleted')
           ..write(')'))

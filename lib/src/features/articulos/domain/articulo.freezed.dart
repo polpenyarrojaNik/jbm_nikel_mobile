@@ -78,6 +78,10 @@ mixin _$Articulo {
   String? get comprasEntregaEstado2 => throw _privateConstructorUsedError;
   String? get comprasEntregaEstado3 => throw _privateConstructorUsedError;
   String? get imagenPrincipal => throw _privateConstructorUsedError;
+  String? get gtin13Unidad => throw _privateConstructorUsedError;
+  String? get gs1128Subcaja => throw _privateConstructorUsedError;
+  String? get gs1128Caja => throw _privateConstructorUsedError;
+  String? get gs1128Palet => throw _privateConstructorUsedError;
   DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get deleted => throw _privateConstructorUsedError;
 
@@ -154,6 +158,10 @@ abstract class $ArticuloCopyWith<$Res> {
       String? comprasEntregaEstado2,
       String? comprasEntregaEstado3,
       String? imagenPrincipal,
+      String? gtin13Unidad,
+      String? gs1128Subcaja,
+      String? gs1128Caja,
+      String? gs1128Palet,
       DateTime lastUpdated,
       bool deleted});
 
@@ -236,6 +244,10 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
     Object? comprasEntregaEstado2 = freezed,
     Object? comprasEntregaEstado3 = freezed,
     Object? imagenPrincipal = freezed,
+    Object? gtin13Unidad = freezed,
+    Object? gs1128Subcaja = freezed,
+    Object? gs1128Caja = freezed,
+    Object? gs1128Palet = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -488,6 +500,22 @@ class _$ArticuloCopyWithImpl<$Res, $Val extends Articulo>
           ? _value.imagenPrincipal
           : imagenPrincipal // ignore: cast_nullable_to_non_nullable
               as String?,
+      gtin13Unidad: freezed == gtin13Unidad
+          ? _value.gtin13Unidad
+          : gtin13Unidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Subcaja: freezed == gs1128Subcaja
+          ? _value.gs1128Subcaja
+          : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Caja: freezed == gs1128Caja
+          ? _value.gs1128Caja
+          : gs1128Caja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Palet: freezed == gs1128Palet
+          ? _value.gs1128Palet
+          : gs1128Palet // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -594,6 +622,10 @@ abstract class _$$_ArticuloCopyWith<$Res> implements $ArticuloCopyWith<$Res> {
       String? comprasEntregaEstado2,
       String? comprasEntregaEstado3,
       String? imagenPrincipal,
+      String? gtin13Unidad,
+      String? gs1128Subcaja,
+      String? gs1128Caja,
+      String? gs1128Palet,
       DateTime lastUpdated,
       bool deleted});
 
@@ -676,6 +708,10 @@ class __$$_ArticuloCopyWithImpl<$Res>
     Object? comprasEntregaEstado2 = freezed,
     Object? comprasEntregaEstado3 = freezed,
     Object? imagenPrincipal = freezed,
+    Object? gtin13Unidad = freezed,
+    Object? gs1128Subcaja = freezed,
+    Object? gs1128Caja = freezed,
+    Object? gs1128Palet = freezed,
     Object? lastUpdated = null,
     Object? deleted = null,
   }) {
@@ -928,6 +964,22 @@ class __$$_ArticuloCopyWithImpl<$Res>
           ? _value.imagenPrincipal
           : imagenPrincipal // ignore: cast_nullable_to_non_nullable
               as String?,
+      gtin13Unidad: freezed == gtin13Unidad
+          ? _value.gtin13Unidad
+          : gtin13Unidad // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Subcaja: freezed == gs1128Subcaja
+          ? _value.gs1128Subcaja
+          : gs1128Subcaja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Caja: freezed == gs1128Caja
+          ? _value.gs1128Caja
+          : gs1128Caja // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gs1128Palet: freezed == gs1128Palet
+          ? _value.gs1128Palet
+          : gs1128Palet // ignore: cast_nullable_to_non_nullable
+              as String?,
       lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
@@ -1006,6 +1058,10 @@ class _$_Articulo extends _Articulo {
       this.comprasEntregaEstado2,
       this.comprasEntregaEstado3,
       this.imagenPrincipal,
+      this.gtin13Unidad,
+      this.gs1128Subcaja,
+      this.gs1128Caja,
+      this.gs1128Palet,
       required this.lastUpdated,
       required this.deleted})
       : super._();
@@ -1135,13 +1191,21 @@ class _$_Articulo extends _Articulo {
   @override
   final String? imagenPrincipal;
   @override
+  final String? gtin13Unidad;
+  @override
+  final String? gs1128Subcaja;
+  @override
+  final String? gs1128Caja;
+  @override
+  final String? gs1128Palet;
+  @override
   final DateTime lastUpdated;
   @override
   final bool deleted;
 
   @override
   String toString() {
-    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'Articulo(id: $id, descripcionES: $descripcionES, descripcionEN: $descripcionEN, descripcionFR: $descripcionFR, descripcionDE: $descripcionDE, descripcionCA: $descripcionCA, descripcionGB: $descripcionGB, descripcionHU: $descripcionHU, descripcionIT: $descripcionIT, descripcionNL: $descripcionNL, descripcionPL: $descripcionPL, descripcionPT: $descripcionPT, descripcionRO: $descripcionRO, descripcionRU: $descripcionRU, descripcionCN: $descripcionCN, descripcionEL: $descripcionEL, familia: $familia, subfamilia: $subfamilia, ventaMinimo: $ventaMinimo, ventaMultiplo: $ventaMultiplo, unidadesSubcaja: $unidadesSubcaja, unidadesCaja: $unidadesCaja, unidadesPalet: $unidadesPalet, activoWeb: $activoWeb, activoApp: $activoApp, enCatalogo: $enCatalogo, descatalogado: $descatalogado, paginaEnCatalgo: $paginaEnCatalgo, paginaEnCatalgo2: $paginaEnCatalgo2, pesoKg: $pesoKg, largoCm: $largoCm, anchoCm: $anchoCm, altoCm: $altoCm, resumenES: $resumenES, resumenEN: $resumenEN, resumenFR: $resumenFR, resumenDE: $resumenDE, resumenCA: $resumenCA, resumenGB: $resumenGB, resumenHU: $resumenHU, resumenIT: $resumenIT, resumenNL: $resumenNL, resumenPL: $resumenPL, resumenPT: $resumenPT, resumenRO: $resumenRO, resumenRU: $resumenRU, resumenCN: $resumenCN, resumenEL: $resumenEL, stockDisponible: $stockDisponible, ventasActual: $ventasActual, ventasAnterior: $ventasAnterior, comprasEntregaCantidad1: $comprasEntregaCantidad1, comprasEntregaCantidad2: $comprasEntregaCantidad2, comprasEntregaCantidad3: $comprasEntregaCantidad3, comprasEntregaCantidadMas3: $comprasEntregaCantidadMas3, comprasEntregaFecha1: $comprasEntregaFecha1, comprasEntregaFecha2: $comprasEntregaFecha2, comprasEntregaFecha3: $comprasEntregaFecha3, comprasEntregaEstado1: $comprasEntregaEstado1, comprasEntregaEstado2: $comprasEntregaEstado2, comprasEntregaEstado3: $comprasEntregaEstado3, imagenPrincipal: $imagenPrincipal, gtin13Unidad: $gtin13Unidad, gs1128Subcaja: $gs1128Subcaja, gs1128Caja: $gs1128Caja, gs1128Palet: $gs1128Palet, lastUpdated: $lastUpdated, deleted: $deleted)';
   }
 
   @override
@@ -1254,6 +1318,10 @@ class _$_Articulo extends _Articulo {
             (identical(other.comprasEntregaEstado2, comprasEntregaEstado2) || other.comprasEntregaEstado2 == comprasEntregaEstado2) &&
             (identical(other.comprasEntregaEstado3, comprasEntregaEstado3) || other.comprasEntregaEstado3 == comprasEntregaEstado3) &&
             (identical(other.imagenPrincipal, imagenPrincipal) || other.imagenPrincipal == imagenPrincipal) &&
+            (identical(other.gtin13Unidad, gtin13Unidad) || other.gtin13Unidad == gtin13Unidad) &&
+            (identical(other.gs1128Subcaja, gs1128Subcaja) || other.gs1128Subcaja == gs1128Subcaja) &&
+            (identical(other.gs1128Caja, gs1128Caja) || other.gs1128Caja == gs1128Caja) &&
+            (identical(other.gs1128Palet, gs1128Palet) || other.gs1128Palet == gs1128Palet) &&
             (identical(other.lastUpdated, lastUpdated) || other.lastUpdated == lastUpdated) &&
             (identical(other.deleted, deleted) || other.deleted == deleted));
   }
@@ -1323,6 +1391,10 @@ class _$_Articulo extends _Articulo {
         comprasEntregaEstado2,
         comprasEntregaEstado3,
         imagenPrincipal,
+        gtin13Unidad,
+        gs1128Subcaja,
+        gs1128Caja,
+        gs1128Palet,
         lastUpdated,
         deleted
       ]);
@@ -1398,6 +1470,10 @@ abstract class _Articulo extends Articulo {
       final String? comprasEntregaEstado2,
       final String? comprasEntregaEstado3,
       final String? imagenPrincipal,
+      final String? gtin13Unidad,
+      final String? gs1128Subcaja,
+      final String? gs1128Caja,
+      final String? gs1128Palet,
       required final DateTime lastUpdated,
       required final bool deleted}) = _$_Articulo;
   const _Articulo._() : super._();
@@ -1526,6 +1602,14 @@ abstract class _Articulo extends Articulo {
   String? get comprasEntregaEstado3;
   @override
   String? get imagenPrincipal;
+  @override
+  String? get gtin13Unidad;
+  @override
+  String? get gs1128Subcaja;
+  @override
+  String? get gs1128Caja;
+  @override
+  String? get gs1128Palet;
   @override
   DateTime get lastUpdated;
   @override

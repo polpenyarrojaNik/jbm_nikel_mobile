@@ -76,6 +76,10 @@ _$_ArticuloDTO _$$_ArticuloDTOFromJson(Map<String, dynamic> json) =>
       comprasEntregaEstado2: json['COMPRAS_ENTREGA_ESTADO_2'] as String?,
       comprasEntregaEstado3: json['COMPRAS_ENTREGA_ESTADO_'] as String?,
       imagenPrincipal: json['IMAGEN_PRINCIPAL'] as String?,
+      gtin13Unidad: json['GTIN_13_UNIDAD'] as String?,
+      gs1128Subcaja: json['GS1_128_SUBCAJA'] as String?,
+      gs1128Caja: json['GS1_128_CAJA'] as String?,
+      gs1128Palet: json['GS1_128_PALET'] as String?,
       lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       deleted: json['DELETED'] as String? ?? 'N',
     );
@@ -147,6 +151,10 @@ Map<String, dynamic> _$$_ArticuloDTOToJson(_$_ArticuloDTO instance) =>
       'COMPRAS_ENTREGA_ESTADO_2': instance.comprasEntregaEstado2,
       'COMPRAS_ENTREGA_ESTADO_': instance.comprasEntregaEstado3,
       'IMAGEN_PRINCIPAL': instance.imagenPrincipal,
+      'GTIN_13_UNIDAD': instance.gtin13Unidad,
+      'GS1_128_SUBCAJA': instance.gs1128Subcaja,
+      'GS1_128_CAJA': instance.gs1128Caja,
+      'GS1_128_PALET': instance.gs1128Palet,
       'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'DELETED': instance.deleted,
     };

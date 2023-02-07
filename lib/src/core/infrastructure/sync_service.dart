@@ -186,7 +186,7 @@ class SyncService {
   Future<void> syncArticulos() async {
     try {
       await _syncTable(
-        apiPath: 'api/v1/sync/articulos',
+        apiPath: 'api/v2/sync/articulos',
         tableInfo: _remoteDb.articuloTable,
         fromJson: (e) => ArticuloDTO.fromJson(e),
       );

@@ -72,6 +72,10 @@ class Articulo with _$Articulo {
       String? comprasEntregaEstado2,
       String? comprasEntregaEstado3,
       String? imagenPrincipal,
+      String? gtin13Unidad,
+      String? gs1128Subcaja,
+      String? gs1128Caja,
+      String? gs1128Palet,
       required DateTime lastUpdated,
       required bool deleted}) = _Articulo;
 }

@@ -946,7 +946,12 @@ FROM (
     WHERE ventas.cliente_id = :clienteId
     AND ventas.anyo = strftime('%Y' ,DATE()) - 4
   )
-WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%' OR DESCRIPCION LIKE '%$searchText%')
+WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%' 
+                                    OR DESCRIPCION LIKE '%$searchText%'
+                                    OR art.GTIN_13_UNIDAD LIKE '%$searchText%'
+                                    OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
+                                    OR art.GS1_128_CAJA LIKE '%$searchText%'
+                                    OR art.GS1_128_PALET LIKE '%$searchText%')
 GROUP BY ARTICULO_ID, DESCRIPCION
 ''';
 

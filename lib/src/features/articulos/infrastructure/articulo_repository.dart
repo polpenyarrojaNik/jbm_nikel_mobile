@@ -196,14 +196,17 @@ class ArticuloRepository {
   Future<List<Articulo>> getArticuloLista(
       {required int page, required String searchText}) async {
     try {
-      final List<Articulo> articulos = [];
       final query = await _remoteDb.customSelect('''
           SELECT art.*
           FROM ARTICULOS art
           WHERE ${descripcionSegunLocale(searchText)}
           OR art.ARTICULO_ID LIKE '%$searchText%'
+          OR art.GTIN_13_UNIDAD LIKE '%$searchText%'
+          OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
+          OR art.GS1_128_CAJA LIKE '%$searchText%'
+          OR art.GS1_128_PALET LIKE '%$searchText%'
           ORDER BY CASE
-            WHEN art.ARTICULO_ID = '$searchText' THEN 1
+            WHEN art.ARTICULO_ID = '%$searchText' THEN 1
             ELSE 2
           END
           , art.ARTICULO_ID
@@ -215,7 +218,7 @@ class ArticuloRepository {
         _remoteDb.articuloTable,
       }).get();
 
-      final articlesList = query.map((row) async {
+      return await Future.wait(query.map((row) async {
         final articuloDTO = ArticuloDTO.fromJson(row.data);
         final familiaDTO = await (_remoteDb.select(_remoteDb.familiaTable)
               ..where((t) => t.id.equals(row.data['FAMILIA_ID'] ?? '')))
@@ -226,13 +229,7 @@ class ArticuloRepository {
         return articuloDTO.toDomain(
             familia: familiaDTO?.toDomain(),
             subfamilia: subfamiliaDTO?.toDomain());
-      }).toList();
-
-      for (var i = 0; i < articlesList.length; i++) {
-        articulos.add(await articlesList[i]);
-      }
-
-      return articulos;
+      }).toList());
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -245,6 +242,10 @@ class ArticuloRepository {
           FROM ARTICULOS art
           WHERE ${descripcionSegunLocale(searchText)}
           OR art.ARTICULO_ID LIKE '%$searchText%'
+          OR art.GTIN_13_UNIDAD LIKE '%$searchText%'
+          OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
+          OR art.GS1_128_CAJA LIKE '%$searchText%'
+          OR art.GS1_128_PALET LIKE '%$searchText%'
 ''', readsFrom: {
         _remoteDb.articuloTable,
       }).getSingle();
