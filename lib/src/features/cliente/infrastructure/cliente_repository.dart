@@ -824,6 +824,10 @@ GROUP BY mes
     String select = '''
 SELECT ARTICULO_ID
         , DESCRIPCION
+        , GTIN_13_UNIDAD
+        , GS1_128_SUBCAJA
+        , GS1_128_CAJA
+        , GS1_128_PALET
         , SUM(importe_anyo_0) IMPORTE_ANYO
         , SUM(importe_anyo_1) IMPORTE_ANYO_1
         , SUM(importe_anyo_2) IMPORTE_ANYO_2
@@ -842,6 +846,10 @@ FROM (
                   when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
                   when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
                   else art.descripcion_ES end DESCRIPCION
+                , art.gtin_13_unidad GTIN_13_UNIDAD
+                , art.gs1_128_subcaja GS1_128_SUBCAJA
+                , art.gs1_128_caja GS1_128_CAJA
+                , art.gs1_128_palet GS1_128_PALET
                 , ventas.importe importe_anyo_0
                 , 0 importe_anyo_1
                 , 0 importe_anyo_2
@@ -864,6 +872,10 @@ FROM (
                   when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
                   when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
                   else art.descripcion_ES end DESCRIPCION
+                                , art.gtin_13_unidad GTIN_13_UNIDAD
+                , art.gs1_128_subcaja GS1_128_SUBCAJA
+                , art.gs1_128_caja GS1_128_CAJA
+                , art.gs1_128_palet GS1_128_PALET
                 , 0 importe_anyo_0
                 , ventas.importe importe_anyo_1
                 , 0 importe_anyo_2
@@ -886,6 +898,10 @@ FROM (
                   when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
                   when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
                   else art.descripcion_ES end DESCRIPCION
+                                , art.gtin_13_unidad GTIN_13_UNIDAD
+                , art.gs1_128_subcaja GS1_128_SUBCAJA
+                , art.gs1_128_caja GS1_128_CAJA
+                , art.gs1_128_palet GS1_128_PALET
                 , 0 importe_anyo_0
                 , 0 importe_anyo_1
                 , ventas.importe importe_anyo_2
@@ -908,6 +924,10 @@ FROM (
                   when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
                   when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
                   else art.descripcion_ES end DESCRIPCION
+                                , art.gtin_13_unidad GTIN_13_UNIDAD
+                , art.gs1_128_subcaja GS1_128_SUBCAJA
+                , art.gs1_128_caja GS1_128_CAJA
+                , art.gs1_128_palet GS1_128_PALET
                 , 0 importe_anyo_0
                 , 0 importe_anyo_1
                 , 0 importe_anyo_2
@@ -931,6 +951,10 @@ FROM (
                   when 'fr' then IFNULL(art.descripcion_FR,  art.descripcion_ES)
                   when 'it' then IFNULL(art.descripcion_IT,  art.descripcion_ES)
                   else art.descripcion_ES end DESCRIPCION
+                                , art.gtin_13_unidad GTIN_13_UNIDAD
+                , art.gs1_128_subcaja GS1_128_SUBCAJA
+                , art.gs1_128_caja GS1_128_CAJA
+                , art.gs1_128_palet GS1_128_PALET
                 , 0 importe_anyo_0
                 , 0 importe_anyo_1
                 , 0 importe_anyo_2
@@ -948,10 +972,10 @@ FROM (
   )
 WHERE ARTICULO_ID IS NOT NULL AND (ARTICULO_ID LIKE '%$searchText%' 
                                     OR DESCRIPCION LIKE '%$searchText%'
-                                    OR art.GTIN_13_UNIDAD LIKE '%$searchText%'
-                                    OR art.GS1_128_SUBCAJA LIKE '%$searchText%'
-                                    OR art.GS1_128_CAJA LIKE '%$searchText%'
-                                    OR art.GS1_128_PALET LIKE '%$searchText%')
+                                    OR GTIN_13_UNIDAD LIKE '%$searchText%'
+                                    OR GS1_128_SUBCAJA LIKE '%$searchText%'
+                                    OR GS1_128_CAJA LIKE '%$searchText%'
+                                    OR GS1_128_PALET LIKE '%$searchText%')
 GROUP BY ARTICULO_ID, DESCRIPCION
 ''';
 
