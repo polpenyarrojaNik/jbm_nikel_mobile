@@ -14,6 +14,7 @@ import '../../../../core/presentation/common_widgets/async_value_widget.dart';
 import '../../../../core/presentation/common_widgets/column_field_text_detail.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/datos_extra_row.dart';
+import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../../pedido_venta/presentation/edit/ask_pop_alert_dialog.dart';
@@ -161,77 +162,64 @@ class _ClienteHeader extends StatelessWidget {
             ],
           ),
           gapH8,
-          Text(
+          SelectableText(
             cliente.nombreFiscal,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           gapH4,
-          if (cliente.direccionFiscal1 != null)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        cliente.direccionFiscal1!,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color),
-                      ),
-                      Text(
-                        formatCodigoPostalAndPoblacion(
-                          codigoPostal: cliente.codigoPostalFiscal,
-                          poblacion: cliente.poblacionFiscal,
-                        ),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color),
-                      ),
-                      Text(
-                        formatProvinciaAndPais(
-                            province: cliente.provinciaFiscal,
-                            pais: cliente.paisFiscal),
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color),
-                      )
-                    ],
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: SelectableText(
+                  selectionControls: MaterialTextSelectionControls(),
+                  formatCustomerAddress(
+                      cliente.direccionFiscal1,
+                      cliente.codigoPostalFiscal,
+                      cliente.poblacionFiscal,
+                      cliente.provinciaFiscal,
+                      cliente.paisFiscal),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: Theme.of(context).textTheme.bodySmall?.color),
                 ),
-                IconButton(
-                  onPressed: () => navigateToGoogleMapsAddress(
-                    cliente.nombreFiscal,
-                    cliente.latitudFiscal,
-                    cliente.longitudFiscal,
-                  ),
-                  icon: const Icon(MdiIcons.googleMaps),
-                )
-              ],
-            ),
+              ),
+              IconButton(
+                onPressed: () => navigateToGoogleMapsAddress(
+                  cliente.nombreFiscal,
+                  cliente.latitudFiscal,
+                  cliente.longitudFiscal,
+                ),
+                icon: const Icon(MdiIcons.googleMaps),
+              )
+            ],
+          ),
           gapH8,
           if (cliente.nif != null)
             ColumnFieldTextDetalle(
-                fieldTitleValue: S.of(context).cliente_show_clienteDetalle_nif,
-                value: cliente.nif!),
+              fieldTitleValue: S.of(context).cliente_show_clienteDetalle_nif,
+              value: cliente.nif!,
+              selectable: true,
+            ),
           if (cliente.centralCompras != null)
             ColumnFieldTextDetalle(
               fieldTitleValue:
                   S.of(context).cliente_show_clienteDetalle_centralCompras,
               value: cliente.centralCompras!,
+              selectable: true,
             ),
           if (cliente.representante1Nombre != null)
             ColumnFieldTextDetalle(
               fieldTitleValue:
                   S.of(context).cliente_show_clienteDetalle_comercial1,
               value: cliente.representante1Nombre!,
+              selectable: true,
             ),
           if (cliente.representante2Nombre != null)
             ColumnFieldTextDetalle(
               fieldTitleValue:
                   S.of(context).cliente_show_clienteDetalle_comercial2,
               value: cliente.representante2Nombre!,
+              selectable: true,
             ),
         ],
       ),
@@ -287,19 +275,23 @@ class _ClienteAnalisis extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_porcentajeGarantias,
-                        value:
-                            '${numberFormatDecimal(cliente.porcentajeGarantias)}%'),
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_porcentajeGarantias,
+                      value:
+                          '${numberFormatDecimal(cliente.porcentajeGarantias)}%',
+                      selectable: true,
+                    ),
                   ),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue: S
-                            .of(context)
-                            .cliente_show_clienteDetalle_porcentajeAbonos,
-                        value:
-                            '${numberFormatDecimal(cliente.porcentajeAbonos)}%'),
+                      fieldTitleValue: S
+                          .of(context)
+                          .cliente_show_clienteDetalle_porcentajeAbonos,
+                      value:
+                          '${numberFormatDecimal(cliente.porcentajeAbonos)}%',
+                      selectable: true,
+                    ),
                   ),
                 ],
               ),
@@ -340,7 +332,7 @@ class _VentasRowWidget extends StatelessWidget {
                   Text(S.of(context).cliente_show_clienteDetalle_anoActual,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).textTheme.bodySmall!.color)),
-                  Text(
+                  SelectableTextWidget(
                     formatPrecios(
                         precio: cliente.ventasAnyoActual, tipoPrecio: null),
                   ),
@@ -353,7 +345,7 @@ class _VentasRowWidget extends StatelessWidget {
                   Text(S.of(context).cliente_show_clienteDetalle_anoAnterior,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).textTheme.bodySmall!.color)),
-                  Text(
+                  SelectableTextWidget(
                     formatPrecios(
                         precio: cliente.ventasAnyoAnterior, tipoPrecio: null),
                   ),
@@ -366,7 +358,7 @@ class _VentasRowWidget extends StatelessWidget {
                   Text(S.of(context).cliente_show_clienteDetalle_hace2Anos,
                       style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).textTheme.bodySmall!.color)),
-                  Text(
+                  SelectableTextWidget(
                     formatPrecios(
                         precio: cliente.ventasHaceDosAnyos, tipoPrecio: null),
                   ),
@@ -400,28 +392,35 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
             children: [
               if (cliente.divisa != null)
                 ColumnFieldTextDetalle(
-                    fieldTitleValue:
-                        S.of(context).cliente_show_clienteDetalle_divisa,
-                    value: cliente.divisa?.descripcion),
+                  fieldTitleValue:
+                      S.of(context).cliente_show_clienteDetalle_divisa,
+                  value: cliente.divisa?.descripcion,
+                  selectable: true,
+                ),
               if (cliente.tarifaDescripcion != null) gapH4,
               if (cliente.tarifaDescripcion != null)
                 ColumnFieldTextDetalle(
-                    fieldTitleValue:
-                        S.of(context).cliente_show_clienteDetalle_tarifa,
-                    value: cliente.tarifaDescripcion ?? ''),
+                  fieldTitleValue:
+                      S.of(context).cliente_show_clienteDetalle_tarifa,
+                  value: cliente.tarifaDescripcion ?? '',
+                  selectable: true,
+                ),
               if (cliente.descripcionDescuentoGeneral != null) gapH4,
               if (cliente.descripcionDescuentoGeneral != null)
                 ColumnFieldTextDetalle(
-                    fieldTitleValue: S
-                        .of(context)
-                        .cliente_show_clienteDetalle_descuentoGeneral,
-                    value: cliente.descripcionDescuentoGeneral!),
+                  fieldTitleValue: S
+                      .of(context)
+                      .cliente_show_clienteDetalle_descuentoGeneral,
+                  value: cliente.descripcionDescuentoGeneral!,
+                  selectable: true,
+                ),
               gapH4,
               ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).cliente_show_clienteDetalle_descuentoPP,
-                  value:
-                      '${numberFormatDecimal(cliente.descuentoProntoPago)}%'),
+                fieldTitleValue:
+                    S.of(context).cliente_show_clienteDetalle_descuentoPP,
+                value: '${numberFormatDecimal(cliente.descuentoProntoPago)}%',
+                selectable: true,
+              ),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -429,11 +428,13 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                   if (cliente.plazoDeCobro != null)
                     Expanded(
                       child: ColumnFieldTextDetalle(
-                          fieldTitleValue: S
-                              .of(context)
-                              .cliente_show_clienteDetalle_plazoDeCobro,
-                          value: getPlazoCorboInLocalLanguage(
-                              plazoDeCobro: cliente.plazoDeCobro!)),
+                        fieldTitleValue: S
+                            .of(context)
+                            .cliente_show_clienteDetalle_plazoDeCobro,
+                        value: getPlazoCorboInLocalLanguage(
+                            plazoDeCobro: cliente.plazoDeCobro!),
+                        selectable: true,
+                      ),
                     ),
                   if (cliente.metodoDeCobro != null)
                     Expanded(
@@ -443,6 +444,7 @@ class _ClientePreciosAndFormaDePago extends StatelessWidget {
                             .cliente_show_clienteDetalle_metodoDeCobro,
                         value: getMetodoCobroInLocalLanguage(
                             metodoDeCobro: cliente.metodoDeCobro!),
+                        selectable: true,
                       ),
                     ),
                 ],
@@ -491,7 +493,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                         .bodySmall!
                                         .color),
                           ),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                                 precio: cliente.riesgoActual, tipoPrecio: null),
                           ),
@@ -514,7 +516,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                           .bodySmall!
                                           .color),
                             ),
-                            Text(
+                            SelectableTextWidget(
                               formatPrecios(
                                 precio: cliente.riesgoExcedido,
                                 tipoPrecio: null,
@@ -544,7 +546,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                         .bodySmall!
                                         .color),
                           ),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                               precio: cliente.riesgoPendienteCobroVencido!,
                               tipoPrecio: null,
@@ -577,7 +579,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                           .textTheme
                                           .bodySmall!
                                           .color)),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                                 precio: cliente.riesgoPendienteCobroNoVencido!,
                                 tipoPrecio: null),
@@ -599,7 +601,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                           .textTheme
                                           .bodySmall!
                                           .color)),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                                 precio: cliente.riesgoPendienteServir!,
                                 tipoPrecio: null),
@@ -621,7 +623,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                           .textTheme
                                           .bodySmall!
                                           .color)),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                                 precio: cliente.riesgoPendienteFacturar!,
                                 tipoPrecio: null),
@@ -650,7 +652,7 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                             .textTheme
                                             .bodySmall!
                                             .color)),
-                            Text(
+                            SelectableTextWidget(
                               formatPrecios(
                                   precio: cliente.riesgoConcedido!,
                                   tipoPrecio: null),
@@ -669,13 +671,13 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                           .textTheme
                                           .bodySmall!
                                           .color)),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                                 precio: cliente.riesgoConcedidoInterno,
                                 tipoPrecio: null),
                           ),
                           if (cliente.riesgoConcedidoInternoDate != null)
-                            Text(
+                            SelectableTextWidget(
                               dateFormatter(cliente.riesgoConcedidoInternoDate!
                                   .toLocal()
                                   .toIso8601String()),
@@ -695,13 +697,13 @@ class _ClienteRiesgosContainer extends StatelessWidget {
                                           .textTheme
                                           .bodySmall!
                                           .color)),
-                          Text(
+                          SelectableTextWidget(
                             formatPrecios(
                                 precio: cliente.riesgoConcedidoCoafe,
                                 tipoPrecio: null),
                           ),
                           if (cliente.riesgoConcedidoCoafeFecha != null)
-                            Text(
+                            SelectableTextWidget(
                               dateFormatter(cliente.riesgoConcedidoCoafeFecha!
                                   .toLocal()
                                   .toIso8601String()),

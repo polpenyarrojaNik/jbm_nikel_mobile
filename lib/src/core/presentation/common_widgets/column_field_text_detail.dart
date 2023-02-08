@@ -3,9 +3,13 @@ import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 class ColumnFieldTextDetalle extends StatelessWidget {
   const ColumnFieldTextDetalle(
-      {super.key, required this.fieldTitleValue, required this.value});
+      {super.key,
+      required this.fieldTitleValue,
+      required this.value,
+      this.selectable = false});
   final String fieldTitleValue;
   final dynamic value;
+  final bool selectable;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +23,12 @@ class ColumnFieldTextDetalle extends StatelessWidget {
                     color: Theme.of(context).textTheme.bodySmall!.color),
               ),
               (value is String)
-                  ? Text(
-                      value,
-                    )
+                  ? (selectable)
+                      ? SelectableText(
+                          value,
+                          selectionControls: MaterialTextSelectionControls(),
+                        )
+                      : Text(value)
                   : value,
               gapH4,
             ],

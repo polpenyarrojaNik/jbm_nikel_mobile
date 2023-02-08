@@ -16,6 +16,7 @@ import 'package:jbm_nikel_mobile/src/features/pedido_venta/domain/seleccionar_ca
 import '../../../../../generated/l10n.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/mobile_custom_separatos.dart';
+import '../../../../core/presentation/common_widgets/selectable_text_widget.dart';
 import '../../../pedido_venta/infrastructure/pedido_venta_repository.dart';
 import '../../infrastructure/articulo_repository.dart';
 
@@ -136,7 +137,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Text(
+                child: SelectableText(
+                  selectionControls: MaterialTextSelectionControls(),
                   getDescriptionArticuloInLocalLanguage(articulo: articulo),
                   style: Theme.of(context).textTheme.titleSmall,
                 ),
@@ -153,7 +155,8 @@ class _ArticuloInfoContainer extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text(
+          child: SelectableText(
+            selectionControls: MaterialTextSelectionControls(),
             (articulo.subfamilia != null)
                 ? '${articulo.familia?.descripcion}/${articulo.subfamilia?.descripcion}'
                 : '${articulo.familia?.descripcion}',
@@ -176,9 +179,11 @@ class _ArticuloInfoContainer extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ColumnFieldTextDetalle(
-                    fieldTitleValue: S.of(context).stock,
-                    value:
-                        '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}'),
+                  fieldTitleValue: S.of(context).stock,
+                  value:
+                      '${numberFormatCantidades(articulo.stockDisponible)} ${S.of(context).unidad}',
+                  selectable: true,
+                ),
               ),
               Expanded(
                 flex: 2,
@@ -250,19 +255,20 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     Column(
                       children: [
                         if (articulo.comprasEntregaCantidad1 != 0)
-                          Text(
-                              '${numberFormatCantidades(articulo.comprasEntregaCantidad1)} ${S.of(context).unidad}'),
+                          SelectableTextWidget(
+                            '${numberFormatCantidades(articulo.comprasEntregaCantidad1)} ${S.of(context).unidad}',
+                          ),
                         if (articulo.comprasEntregaCantidad1 != 0) gapH8,
                         if (articulo.comprasEntregaCantidad2 != 0)
-                          Text(
+                          SelectableTextWidget(
                               '${numberFormatCantidades(articulo.comprasEntregaCantidad2)}  ${S.of(context).unidad}'),
                         if (articulo.comprasEntregaCantidad2 != 0) gapH8,
                         if (articulo.comprasEntregaCantidad3 != 0)
-                          Text(
+                          SelectableTextWidget(
                               '${numberFormatCantidades(articulo.comprasEntregaCantidad3)}  ${S.of(context).unidad}'),
                         if (articulo.comprasEntregaCantidad3 != 0) gapH8,
                         if (articulo.comprasEntregaCantidadMas3 != 0)
-                          Text(
+                          SelectableTextWidget(
                               '${numberFormatCantidades(articulo.comprasEntregaCantidadMas3)}  ${S.of(context).unidad}'),
                       ],
                     ),
@@ -270,7 +276,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                     Column(
                       children: [
                         if (articulo.comprasEntregaFecha1 != null)
-                          Text(
+                          SelectableTextWidget(
                             dateFormatter(
                               articulo.comprasEntregaFecha1!
                                   .toLocal()
@@ -282,7 +288,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           ),
                         if (articulo.comprasEntregaFecha1 != null) gapH8,
                         if (articulo.comprasEntregaFecha2 != null)
-                          Text(
+                          SelectableTextWidget(
                             dateFormatter(
                               articulo.comprasEntregaFecha2!
                                   .toLocal()
@@ -294,7 +300,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           ),
                         if (articulo.comprasEntregaFecha2 != null) gapH8,
                         if (articulo.comprasEntregaFecha3 != null)
-                          Text(
+                          SelectableTextWidget(
                             dateFormatter(
                               articulo.comprasEntregaFecha3!
                                   .toLocal()
@@ -328,21 +334,26 @@ class _ArticuloInfoContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColumnFieldTextDetalle(
-                  fieldTitleValue: S
-                      .of(context)
-                      .articulo_show_articuloDetalle_cantidadSubcaja,
-                  value:
-                      '${numberFormatCantidades(articulo.unidadesSubcaja)} ${S.of(context).unidad}'),
+                fieldTitleValue:
+                    S.of(context).articulo_show_articuloDetalle_cantidadSubcaja,
+                value:
+                    '${numberFormatCantidades(articulo.unidadesSubcaja)} ${S.of(context).unidad}',
+                selectable: true,
+              ),
               ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).articulo_show_articuloDetalle_cantidadCaja,
-                  value:
-                      '${numberFormatCantidades(articulo.unidadesCaja)} ${S.of(context).unidad}'),
+                fieldTitleValue:
+                    S.of(context).articulo_show_articuloDetalle_cantidadCaja,
+                value:
+                    '${numberFormatCantidades(articulo.unidadesCaja)} ${S.of(context).unidad}',
+                selectable: true,
+              ),
               ColumnFieldTextDetalle(
-                  fieldTitleValue:
-                      S.of(context).articulo_show_articuloDetalle_cantidadPalet,
-                  value:
-                      '${numberFormatCantidades(articulo.unidadesPalet)} ${S.of(context).unidad}'),
+                fieldTitleValue:
+                    S.of(context).articulo_show_articuloDetalle_cantidadPalet,
+                value:
+                    '${numberFormatCantidades(articulo.unidadesPalet)} ${S.of(context).unidad}',
+                selectable: true,
+              ),
               const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -353,14 +364,17 @@ class _ArticuloInfoContainer extends StatelessWidget {
                           S.of(context).articulo_show_articuloDetalle_peso,
                       value:
                           '${numberFormatCantidades(articulo.pesoKg)} ${S.of(context).articulo_show_articuloDetalle_kg}',
+                      selectable: true,
                     ),
                   ),
                   Expanded(
                     child: ColumnFieldTextDetalle(
-                        fieldTitleValue:
-                            S.of(context).articulo_show_articuloDetalle_medidas,
-                        value:
-                            '${numberFormatCantidades(articulo.altoCm)} cm x ${numberFormatCantidades(articulo.largoCm)} cm x ${numberFormatCantidades(articulo.anchoCm)} cm'),
+                      fieldTitleValue:
+                          S.of(context).articulo_show_articuloDetalle_medidas,
+                      value:
+                          '${numberFormatCantidades(articulo.altoCm)} cm x ${numberFormatCantidades(articulo.largoCm)} cm x ${numberFormatCantidades(articulo.anchoCm)} cm',
+                      selectable: true,
+                    ),
                   ),
                 ],
               ),
@@ -385,6 +399,7 @@ class _ArticuloInfoContainer extends StatelessWidget {
                             .of(context)
                             .articulo_show_articuloDetalle_paginaEnCatalogo,
                         value: Text(articulo.paginaEnCatalgo!),
+                        selectable: true,
                       ),
                     ),
                   if (articulo.paginaEnCatalgo2 != null)
@@ -393,7 +408,10 @@ class _ArticuloInfoContainer extends StatelessWidget {
                         fieldTitleValue: S
                             .of(context)
                             .articulo_show_articuloDetalle_pagina2Edicion,
-                        value: Text(articulo.paginaEnCatalgo2!),
+                        value: Text(
+                          articulo.paginaEnCatalgo2!,
+                        ),
+                        selectable: true,
                       ),
                     ),
                 ],
@@ -733,8 +751,10 @@ class _DescriptionResumenRow extends StatelessWidget {
         ),
         gapW4,
         Flexible(
-          child:
-              Text(description!, style: Theme.of(context).textTheme.bodySmall),
+          child: SelectableText(
+              selectionControls: MaterialTextSelectionControls(),
+              description!,
+              style: Theme.of(context).textTheme.bodySmall),
         ),
       ],
     );
@@ -1017,9 +1037,11 @@ class _SummaryTextWidgetState extends State<SummaryTextWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Text(
+                child: SelectableText(
+                  selectionControls: MaterialTextSelectionControls(),
                   getSummaryInLocalLanguage(articulo: widget.articulo)!,
-                  overflow: (showAllText) ? null : TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      overflow: (showAllText) ? null : TextOverflow.ellipsis),
                   maxLines: (showAllText) ? null : 3,
                 ),
               ),

@@ -44,6 +44,27 @@ String numberFormatCantidades(dynamic number) {
   return formatter.format(number);
 }
 
+String formatCustomerAddress(
+  String? direccionFiscal,
+  String? codigoPostal,
+  String? poblacion,
+  String? province,
+  Pais? pais,
+) {
+  String customerAddress = '';
+  if (direccionFiscal != null) {
+    customerAddress = direccionFiscal;
+  }
+
+  customerAddress +=
+      '\n${formatCodigoPostalAndPoblacion(codigoPostal: codigoPostal, poblacion: poblacion)}';
+
+  customerAddress +=
+      '\n${formatProvinciaAndPais(province: province, pais: pais)}';
+
+  return customerAddress;
+}
+
 String formatCodigoPostalAndPoblacion({
   String? codigoPostal,
   String? poblacion,
