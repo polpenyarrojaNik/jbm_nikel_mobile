@@ -170,8 +170,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Customer sales"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Total sales"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_apellido":
+            MessageLookupByLibrary.simpleMessage("Last Name"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito":
+            MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado":
+            MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto":
+            MessageLookupByLibrary.simpleMessage("Edit contact"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_email":
+            MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_nombre":
+            MessageLookupByLibrary.simpleMessage("Name"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_observaciones":
+            MessageLookupByLibrary.simpleMessage("Remarks"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido":
+            MessageLookupByLibrary.simpleMessage("Second Last Name"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono1":
+            MessageLookupByLibrary.simpleMessage("Phone"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono2":
+            MessageLookupByLibrary.simpleMessage("Phone 2"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_hayCambiosSinTramitar":
+            MessageLookupByLibrary.simpleMessage("Have changes to process"),
         "cliente_show_clienteContacto_id":
             MessageLookupByLibrary.simpleMessage("Id"),
         "cliente_show_clienteContacto_nombre":

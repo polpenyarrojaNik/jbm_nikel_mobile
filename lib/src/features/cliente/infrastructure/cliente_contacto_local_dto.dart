@@ -1,19 +1,20 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
 
-part 'cliente_contacto_dto.freezed.dart';
-part 'cliente_contacto_dto.g.dart';
+import '../../../core/infrastructure/local_database.dart';
+
+part 'cliente_contacto_local_dto.freezed.dart';
+part 'cliente_contacto_local_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteContactoDTO
-    with _$ClienteContactoDTO
-    implements Insertable<ClienteContactoDTO> {
-  const ClienteContactoDTO._();
-  const factory ClienteContactoDTO({
+class ClienteContactoLocalDTO
+    with _$ClienteContactoLocalDTO
+    implements Insertable<ClienteContactoLocalDTO> {
+  const ClienteContactoLocalDTO._();
+  const factory ClienteContactoLocalDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'CONTACTO_ID') required String contactoId,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
@@ -24,33 +25,47 @@ class ClienteContactoDTO
     @JsonKey(name: 'TELEFONO2') String? telefono2,
     @JsonKey(name: 'EMAIL') String? email,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'ENVIADO') @Default('N') String enviado,
+    @JsonKey(name: 'TRATADO') @Default('N') String tratado,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
-  }) = _ClienteContactoDTO;
+  }) = _ClienteContactoLocalDTO;
 
-  factory ClienteContactoDTO.fromJson(Map<String, dynamic> json) =>
-      _$ClienteContactoDTOFromJson(json);
+  factory ClienteContactoLocalDTO.fromJson(Map<String, dynamic> json) =>
+      _$ClienteContactoLocalDTOFromJson(json);
 
-  ClienteContacto toDomain({bool enviado = true, bool tratado = true}) {
+  factory ClienteContactoLocalDTO.fromDomain(ClienteContacto _) =>
+      ClienteContactoLocalDTO(
+        clienteId: _.clienteId,
+        contactoId: _.contactoId,
+        observaciones: _.observaciones,
+        nombre: _.nombre,
+        apellido1: _.apellido1,
+        apellido2: _.apellido2,
+        telefono1: _.telefono1,
+        telefono2: _.telefono2,
+        email: _.email,
+        lastUpdated: _.lastUpdated,
+      );
+
+  ClienteContacto toDomain() {
     return ClienteContacto(
       clienteId: clienteId,
       contactoId: contactoId,
       observaciones: observaciones,
-      nombre: nombre,
-      apellido1: apellido1,
-      apellido2: apellido2,
+      nombre: getName(nombre, apellido1, apellido2),
       telefono1: telefono1,
       telefono2: telefono2,
       email: email,
       lastUpdated: lastUpdated,
-      enviado: enviado,
-      tratado: tratado,
+      enviado: (enviado == 'S') ? true : false,
+      tratado: (tratado == 'S') ? true : false,
       deleted: (deleted == 'S') ? true : false,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
-    return ClienteContactoTableCompanion(
+    return ClienteContactoLocalTableCompanion(
       clienteId: Value(clienteId),
       contactoId: Value(contactoId),
       observaciones: Value(observaciones),
@@ -61,15 +76,28 @@ class ClienteContactoDTO
       telefono2: Value(telefono2),
       email: Value(email),
       lastUpdated: Value(lastUpdated),
+      enviado: Value(enviado),
+      tratado: Value(tratado),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
   }
+
+  String? getName(String? nombre, String? apellido1, String? apellido2) {
+    if (nombre != null && apellido1 != null && apellido2 != null) {
+      return '$nombre $apellido1 $apellido2';
+    } else if (nombre != null && apellido1 != null) {
+      return '$nombre $apellido1';
+    } else if (nombre != null) {
+      return nombre;
+    }
+    return null;
+  }
 }
 
-@UseRowClass(ClienteContactoDTO)
-class ClienteContactoTable extends Table {
+@UseRowClass(ClienteContactoLocalDTO)
+class ClienteContactoLocalTable extends Table {
   @override
-  String get tableName => 'CLIENTES_CONTACTOS';
+  String get tableName => 'CLIENTES_CONTACTOS_LOCAL_IMP';
 
   @override
   Set<Column> get primaryKey => {clienteId, contactoId};
@@ -84,6 +112,10 @@ class ClienteContactoTable extends Table {
   TextColumn get telefono2 => text().nullable().named('TELEFONO2')();
   TextColumn get email => text().nullable().named('EMAIL')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get enviado =>
+      text().withDefault(const Constant('N')).named('ENVIADO')();
+  TextColumn get tratado =>
+      text().withDefault(const Constant('N')).named('TRATADO')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();
 }

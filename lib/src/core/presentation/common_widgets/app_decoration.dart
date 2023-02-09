@@ -16,12 +16,15 @@ class AppDecoration {
         errorStyle: const TextStyle(height: 0.7),
       );
 
-  static InputDecoration defaultFieldDecoration(String text) => InputDecoration(
+  static InputDecoration defaultFieldDecoration(String text,
+          {IconButton? suffixButton}) =>
+      InputDecoration(
         contentPadding: const EdgeInsets.all(5),
         labelText: text,
         border: const OutlineInputBorder(
           borderSide: BorderSide(),
         ),
+        suffixIcon: suffixButton,
       );
   static InputDecoration mailFieldDecoration(String text) => InputDecoration(
         contentPadding: const EdgeInsets.all(5),

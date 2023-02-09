@@ -24,6 +24,7 @@ import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
+import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_page.dart';
@@ -47,6 +48,7 @@ import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
+import '../../features/cliente/domain/cliente_contacto_edit_param.dart';
 
 import '../domain/entity_id_is_local_param.dart';
 part 'app_auto_router.gr.dart';
@@ -78,6 +80,11 @@ part 'app_auto_router.gr.dart';
         page: ClienteArticulosTopListPage, path: '/cliente/:id/top-articulos'),
     AutoRoute(page: ClienteAdjuntoPage, path: '/cliente/:id/adjuntos'),
     AutoRoute(page: ClienteContactoPage, path: '/cliente/:id/contactos'),
+    AutoRoute(
+      page: ClienteContactoEditPage,
+      path: '/cliente/:id/contactos/:contactoId',
+      fullscreenDialog: true,
+    ),
     AutoRoute(page: ClienteDescuentoPage, path: '/cliente/:id/descuentos'),
     AutoRoute(page: ClienteDireccionesPage, path: '/cliente/:id/direcciones'),
     AutoRoute(page: ClientePrecioNetoPage, path: '/cliente/:id/precios-netos'),

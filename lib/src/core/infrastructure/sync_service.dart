@@ -129,6 +129,7 @@ class SyncService {
       await syncTopArticulos();
       await syncClienteGruposNetos();
       await syncClienteContactos();
+      await checkClienteContactoNoTratados();
       await syncClienteDescuentos();
       await syncClienteDirecciones();
       await syncClientePreciosNetos();
@@ -1012,6 +1013,32 @@ class SyncService {
     }
   }
 
+  Future<void> checkClienteContactoNoTratados() async {
+    try {
+      final clienteContactoNoTratadosListDTO =
+          await (_localDb.select(_localDb.clienteContactoLocalTable)
+                ..where((tbl) => tbl.tratado.equals('N')))
+              .get();
+
+      for (var i = 0; i < clienteContactoNoTratadosListDTO.length; i++) {
+        final clienteContactoNoTratado = clienteContactoNoTratadosListDTO[i];
+
+        final haveBeenTratado = await _checkIfClienteContactoHaveBeenTratado(
+            clienteContactoNoTratado.clienteId,
+            clienteContactoNoTratado.contactoId);
+
+        if (haveBeenTratado) {
+          await (_localDb.delete(_localDb.clienteContactoLocalTable)
+                ..where((tbl) =>
+                    tbl.contactoId.equals(clienteContactoNoTratado.contactoId)))
+              .go();
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncDescuentoGeneral() async {
     try {
       await _syncTable(
@@ -1089,6 +1116,39 @@ class SyncService {
       return splashProgress;
     } catch (e) {
       return splashProgress;
+    }
+  }
+
+  Future<bool> _checkIfClienteContactoHaveBeenTratado(
+      String clienteId, String contactoId) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/online/clientes/$clienteId/contacto/$contactoId',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/$clienteId/contacto/$contactoId',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final clienteContactoHaveBeenTratado = response.data['data'] as bool;
+
+        return clienteContactoHaveBeenTratado;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
     }
   }
 }

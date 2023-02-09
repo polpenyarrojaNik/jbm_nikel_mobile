@@ -1524,6 +1524,124 @@ class S {
     );
   }
 
+  /// `Have changes to process`
+  String get cliente_show_clienteContacto_hayCambiosSinTramitar {
+    return Intl.message(
+      'Have changes to process',
+      name: 'cliente_show_clienteContacto_hayCambiosSinTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit contact`
+  String
+      get cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto {
+    return Intl.message(
+      'Edit contact',
+      name:
+          'cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact saved successfully`
+  String
+      get cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito {
+    return Intl.message(
+      'Contact saved successfully',
+      name:
+          'cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact saved successfully`
+  String
+      get cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado {
+    return Intl.message(
+      'Contact saved successfully',
+      name:
+          'cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get cliente_show_clienteContacto_clienteConatcoEditPage_nombre {
+    return Intl.message(
+      'Name',
+      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_nombre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get cliente_show_clienteContacto_clienteConatcoEditPage_apellido {
+    return Intl.message(
+      'Last Name',
+      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_apellido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Second Last Name`
+  String
+      get cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido {
+    return Intl.message(
+      'Second Last Name',
+      name:
+          'cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get cliente_show_clienteContacto_clienteConatcoEditPage_telefono1 {
+    return Intl.message(
+      'Phone',
+      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_telefono1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone 2`
+  String get cliente_show_clienteContacto_clienteConatcoEditPage_telefono2 {
+    return Intl.message(
+      'Phone 2',
+      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_telefono2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get cliente_show_clienteContacto_clienteConatcoEditPage_email {
+    return Intl.message(
+      'Email',
+      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remarks`
+  String get cliente_show_clienteContacto_clienteConatcoEditPage_observaciones {
+    return Intl.message(
+      'Remarks',
+      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_observaciones',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Attachments`
   String get cliente_show_clienteAdjunto_titulo {
     return Intl.message(

@@ -37,10 +37,11 @@ class VisitaDTO with _$VisitaDTO implements Insertable<VisitaDTO> {
   factory VisitaDTO.fromJson(Map<String, dynamic> json) =>
       _$VisitaDTOFromJson(json);
 
-  Visita toDomain(
-      {required String? nombreCliente,
-      bool? enviada = true,
-      bool? tratada = true}) {
+  Visita toDomain({
+    required String? nombreCliente,
+    bool? enviada = true,
+    bool? tratada = true,
+  }) {
     return Visita(
       id: id,
       fecha: fecha,

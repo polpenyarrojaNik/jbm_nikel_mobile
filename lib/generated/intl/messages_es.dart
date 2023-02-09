@@ -172,8 +172,32 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas cliente"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Ventas total"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_apellido":
+            MessageLookupByLibrary.simpleMessage("Apellido"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito":
+            MessageLookupByLibrary.simpleMessage("Contacto guardado con éxito"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado":
+            MessageLookupByLibrary.simpleMessage(
+                "El contacto no se ha podiod guardar"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto":
+            MessageLookupByLibrary.simpleMessage("Editar contacto"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_email":
+            MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_nombre":
+            MessageLookupByLibrary.simpleMessage("Nombre"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_observaciones":
+            MessageLookupByLibrary.simpleMessage("Observaciones"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido":
+            MessageLookupByLibrary.simpleMessage("Segundo apellido"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono1":
+            MessageLookupByLibrary.simpleMessage("Teléfono"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono2":
+            MessageLookupByLibrary.simpleMessage("Teléfono 2"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_hayCambiosSinTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Hay cambios pendiente de tramitar"),
         "cliente_show_clienteContacto_id":
             MessageLookupByLibrary.simpleMessage("Id"),
         "cliente_show_clienteContacto_nombre":
