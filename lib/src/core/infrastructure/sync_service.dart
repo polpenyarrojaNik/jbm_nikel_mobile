@@ -132,6 +132,7 @@ class SyncService {
       await checkClienteContactoNoTratados();
       await syncClienteDescuentos();
       await syncClienteDirecciones();
+      await checkClienteDireccionesNoTratadas();
       await syncClientePreciosNetos();
       await syncClientesPagosPendients();
       await syncClientesRappels();
@@ -1039,6 +1040,33 @@ class SyncService {
     }
   }
 
+  Future<void> checkClienteDireccionesNoTratadas() async {
+    try {
+      final clienteDireccionesNoTratadasListDTO =
+          await (_localDb.select(_localDb.clienteDireccionLocalTable)
+                ..where((tbl) => tbl.tratada.equals('N')))
+              .get();
+
+      for (var i = 0; i < clienteDireccionesNoTratadasListDTO.length; i++) {
+        final clienteDireccionNoTratada =
+            clienteDireccionesNoTratadasListDTO[i];
+
+        final haveBeenTratada = await _checkIfClienteDireccionHaveBeenTratada(
+            clienteDireccionNoTratada.clienteId,
+            clienteDireccionNoTratada.direccionId);
+
+        if (haveBeenTratada) {
+          await (_localDb.delete(_localDb.clienteDireccionLocalTable)
+                ..where((tbl) => tbl.direccionId
+                    .equals(clienteDireccionNoTratada.direccionId)))
+              .go();
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncDescuentoGeneral() async {
     try {
       await _syncTable(
@@ -1143,6 +1171,39 @@ class SyncService {
         final clienteContactoHaveBeenTratado = response.data['data'] as bool;
 
         return clienteContactoHaveBeenTratado;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
+
+  Future<bool> _checkIfClienteDireccionHaveBeenTratada(
+      String clienteId, String direccionId) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/online/clientes/$clienteId/direccion/$direccionId',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/$clienteId/direccion/$direccionId',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final clienteContactoHaveBeenTratada = response.data['data'] as bool;
+
+        return clienteContactoHaveBeenTratada;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

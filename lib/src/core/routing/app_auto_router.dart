@@ -29,6 +29,7 @@ import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_page.dart';
 import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
+import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_page.dart';
 import '../../features/cliente/presentation/show/cliente_grupo_neto_page.dart';
 import '../../features/cliente/presentation/show/cliente_pedidos_page.dart';
@@ -49,6 +50,7 @@ import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
 import '../../features/cliente/domain/cliente_contacto_edit_param.dart';
+import '../../features/cliente/domain/cliente_direccion_edit_param.dart';
 
 import '../domain/entity_id_is_local_param.dart';
 part 'app_auto_router.gr.dart';
@@ -87,6 +89,11 @@ part 'app_auto_router.gr.dart';
     ),
     AutoRoute(page: ClienteDescuentoPage, path: '/cliente/:id/descuentos'),
     AutoRoute(page: ClienteDireccionesPage, path: '/cliente/:id/direcciones'),
+    AutoRoute(
+      page: ClienteDireccionEditPage,
+      path: '/cliente/:id/direcciones/:direccionId',
+      fullscreenDialog: true,
+    ),
     AutoRoute(page: ClientePrecioNetoPage, path: '/cliente/:id/precios-netos'),
     AutoRoute(page: ClienteGrupoNetoPage, path: '/cliente/:id/grupos-netos'),
     AutoRoute(page: ClienteRappelPage, path: '/cliente/:id/rappels'),

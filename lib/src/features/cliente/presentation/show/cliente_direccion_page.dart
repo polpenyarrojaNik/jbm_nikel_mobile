@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
@@ -8,7 +9,9 @@ import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/cliente_direccion.dart';
+import '../../domain/cliente_direccion_edit_param.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteDireccionesPage extends ConsumerWidget {
@@ -20,7 +23,7 @@ class ClienteDireccionesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(clienteDireccionProvider(clienteId));
+    final state = ref.watch(clienteDireccionListProvider(clienteId));
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteDireccion_titulo),
@@ -51,6 +54,19 @@ class ClienteDireccionesPage extends ConsumerWidget {
                       ],
                     )),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => navigateToCreateClienteDireccion(context),
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  void navigateToCreateClienteDireccion(BuildContext context) {
+    context.router.push(
+      ClienteDireccionEditRoute(
+        clienteId: clienteId,
+        clienteDireccionEditParam: const ClienteDireccionEditParam(null, false),
       ),
     );
   }
@@ -112,9 +128,28 @@ class ClienteDireccionTile extends StatelessWidget {
                   ],
                 ),
               ),
+              IconButton(
+                onPressed: () => navigateToEditClienteDireccion(
+                    context,
+                    clienteDireccion.clienteId,
+                    clienteDireccion.direccionId!,
+                    clienteDireccion.tratada),
+                icon: const Icon(Icons.edit),
+              ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  void navigateToEditClienteDireccion(BuildContext context, String clienteId,
+      String direccionId, bool tratada) {
+    context.router.push(
+      ClienteDireccionEditRoute(
+        clienteId: clienteId,
+        clienteDireccionEditParam:
+            ClienteDireccionEditParam(direccionId, tratada),
       ),
     );
   }

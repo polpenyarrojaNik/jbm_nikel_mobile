@@ -36,6 +36,7 @@ import '../domain/cliente_rappel.dart';
 import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
 import 'cliente_contacto_local_dto.dart';
+import 'cliente_direccion_local_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
 
@@ -62,11 +63,11 @@ final clienteLastSyncDateProvider =
   return clienteRepository.getLastSyncDate();
 });
 
-final clienteDireccionProvider = FutureProvider.autoDispose
+final clienteDireccionListProvider = FutureProvider.autoDispose
     .family<List<ClienteDireccion>, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
 
-  return clienteRepository.getClienteDireccionById(clienteId: clienteId);
+  return clienteRepository.getClienteDireccionListById(clienteId: clienteId);
 });
 
 final clienteContactosListProvider = FutureProvider.autoDispose
@@ -386,26 +387,64 @@ class ClienteRepository {
     }
   }
 
-  Future<List<ClienteDireccion>> getClienteDireccionById(
+  Future<List<ClienteDireccion>> getClienteDireccionListById(
       {required String clienteId}) async {
+    final List<ClienteDireccion> clienteDireccionList = [];
     try {
-      final queryDirecciones =
-          (_remoteDb.select(_remoteDb.clienteDireccionTable)
-            ..where((t) => t.clienteId.equals(clienteId)));
+      final clienteDireccionLocalList =
+          await _getClienteDireccionLocalList(clienteId);
 
-      final clientesDireccionList =
-          await queryDirecciones.asyncMap((row) async {
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((t) => t.id.equals(row.paisId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(
-          pais: paisDTO?.toDomain(),
-        );
-      }).get();
+      final clienteDireccionSyncList = await _getClienteDireccionSyncList(
+          clienteId, clienteDireccionLocalList);
 
-      return clientesDireccionList;
+      clienteDireccionList.addAll(clienteDireccionSyncList);
+
+      for (var i = 0; i < clienteDireccionLocalList.length; i++) {
+        final clienteDireccionLocal = clienteDireccionLocalList[i];
+        bool existInSync = _existDireccionInSync(
+            clienteDireccionLocal, clienteDireccionLocalList);
+
+        if (!existInSync) {
+          clienteDireccionList.add(clienteDireccionLocalList[i]);
+        }
+      }
+
+      return clienteDireccionList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteDireccion> getClienteDireccionById(
+      {required String clienteDireccionId, bool tratado = true}) async {
+    try {
+      if (tratado) {
+        return await _getClienteDireccionSyncById(clienteDireccionId);
+      } else {
+        return await _getClienteDireccionLocalById(clienteDireccionId);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<ClienteDireccion> upsertClienteDireccion(
+      ClienteDireccion upsertClienteDireccion) async {
+    try {
+      final clienteDireccionLocalDto =
+          ClienteDireccionLocalDTO.fromDomain(upsertClienteDireccion);
+
+      await _insertClienteDireccionInLocalDB(clienteDireccionLocalDto);
+
+      final clienteDireccionLocalDtoEnviado =
+          await _remoteUpsertClienteDireccion(clienteDireccionLocalDto);
+
+      await _updateClienteDireccionInDB(clienteDireccionLocalDtoEnviado);
+
+      return clienteDireccionLocalDtoEnviado.toDomain(
+          pais: upsertClienteDireccion.pais);
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -1324,20 +1363,20 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<ClienteContactoLocalDTO> _remoteUpsertClienteContacto(
-    ClienteContactoLocalDTO clienteConatctoLocalDTO,
+    ClienteContactoLocalDTO clienteContactoLocalDTO,
   ) async {
     try {
-      final clienteContactoLocalToJson = clienteConatctoLocalDTO.toJson();
+      final clienteContactoLocalToJson = clienteContactoLocalDTO.toJson();
       print(jsonEncode(clienteContactoLocalToJson));
 
       final requestUri = (usuario.test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteConatctoLocalDTO.clienteId}/contacto',
+              'api/v1/online/clientes/${clienteContactoLocalDTO.clienteId}/contacto',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteConatctoLocalDTO.clienteId}/contacto',
+              'api/v1/online/clientes/${clienteContactoLocalDTO.clienteId}/contacto',
             );
 
       final response = await _dio.postUri(
@@ -1371,13 +1410,163 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  bool _existContactoInSync(ClienteContacto clienteConactoLocal,
+  bool _existContactoInSync(ClienteContacto clienteContactoLocal,
       List<ClienteContacto> clienteContactoSyncList) {
     bool existInSync = false;
 
     for (var i = 0; i < clienteContactoSyncList.length; i++) {
-      if (clienteConactoLocal.contactoId ==
+      if (clienteContactoLocal.contactoId ==
           clienteContactoSyncList[i].contactoId) {
+        existInSync = true;
+      }
+    }
+    return existInSync;
+  }
+
+  Future<List<ClienteDireccion>> _getClienteDireccionLocalList(
+      String clienteId) async {
+    try {
+      final query = (_localDb.select(_localDb.clienteDireccionLocalTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
+
+      return await query.asyncMap((row) async {
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((t) => t.id.equals(row.paisId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(pais: paisDTO?.toDomain());
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<ClienteDireccion>> _getClienteDireccionSyncList(String clienteId,
+      List<ClienteDireccion> clienteDireccionLocalList) async {
+    try {
+      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
+
+      return await query.asyncMap((row) async {
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((t) => t.id.equals(row.paisId ?? '')))
+            .getSingleOrNull();
+        for (var i = 0; i < clienteDireccionLocalList.length; i++) {
+          if (clienteDireccionLocalList[i].direccionId == row.direccionId &&
+              !clienteDireccionLocalList[i].tratada) {
+            return row.toDomain(
+              pais: paisDTO?.toDomain(),
+              enviada: clienteDireccionLocalList[i].enviada,
+              tratada: clienteDireccionLocalList[i].tratada,
+            );
+          }
+        }
+        return row.toDomain(pais: paisDTO?.toDomain());
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteDireccion> _getClienteDireccionLocalById(
+      String clienteDireccionId) async {
+    try {
+      final query = (_localDb.select(_localDb.clienteDireccionLocalTable)
+        ..where((t) => t.direccionId.equals(clienteDireccionId)));
+
+      return await query.asyncMap((row) async {
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((t) => t.id.equals(row.paisId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(pais: paisDTO?.toDomain());
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteDireccion> _getClienteDireccionSyncById(
+      String clienteDireccionId) async {
+    try {
+      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+        ..where((t) => t.direccionId.equals(clienteDireccionId)));
+
+      return await query.asyncMap((row) async {
+        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+              ..where((t) => t.id.equals(row.paisId ?? '')))
+            .getSingleOrNull();
+        return row.toDomain(pais: paisDTO?.toDomain());
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<void> _insertClienteDireccionInLocalDB(
+      ClienteDireccionLocalDTO clienteDireccionLocalDTO) async {
+    try {
+      await _localDb
+          .into(_localDb.clienteDireccionLocalTable)
+          .insertOnConflictUpdate(clienteDireccionLocalDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteDireccionLocalDTO> _remoteUpsertClienteDireccion(
+    ClienteDireccionLocalDTO clienteDireccionLocalDTO,
+  ) async {
+    try {
+      final clienteDireccionLocalToJson = clienteDireccionLocalDTO.toJson();
+      print(jsonEncode(clienteDireccionLocalToJson));
+
+      final requestUri = (usuario.test)
+          ? Uri.http(
+              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteDireccionLocalDTO.clienteId}/direccion',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/online/clientes/${clienteDireccionLocalDTO.clienteId}/direccion',
+            );
+
+      final response = await _dio.postUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+        ),
+        data: jsonEncode(clienteDireccionLocalToJson),
+      );
+      if (response.statusCode == 200) {
+        final json = response.data['data'] as Map<String, dynamic>;
+
+        return ClienteDireccionLocalDTO.fromJson(json);
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
+
+  Future<void> _updateClienteDireccionInDB(
+      ClienteDireccionLocalDTO clienteDireccionLocalDTO) async {
+    try {
+      await _localDb
+          .update(_localDb.clienteDireccionLocalTable)
+          .replace(clienteDireccionLocalDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  bool _existDireccionInSync(ClienteDireccion clienteDireccionLocal,
+      List<ClienteDireccion> clienteDireccionSyncList) {
+    bool existInSync = false;
+
+    for (var i = 0; i < clienteDireccionSyncList.length; i++) {
+      if (clienteDireccionLocal.direccionId ==
+          clienteDireccionSyncList[i].direccionId) {
         existInSync = true;
       }
     }

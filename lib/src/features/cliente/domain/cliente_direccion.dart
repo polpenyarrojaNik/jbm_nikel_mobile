@@ -20,5 +20,7 @@ class ClienteDireccion with _$ClienteDireccion {
       required double longitud,
       required bool predeterminada,
       required DateTime lastUpdated,
+      required bool enviada,
+      required bool tratada,
       required bool deleted}) = _ClienteDireccion;
 }

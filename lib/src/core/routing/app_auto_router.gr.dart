@@ -155,6 +155,18 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ClienteDireccionEditRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDireccionEditRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteDireccionEditPage(
+          key: args.key,
+          clienteId: args.clienteId,
+          clienteDireccionEditParam: args.clienteDireccionEditParam,
+        ),
+        fullscreenDialog: true,
+      );
+    },
     ClientePrecioNetoRoute.name: (routeData) {
       final args = routeData.argsAs<ClientePrecioNetoRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -508,6 +520,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ClienteDireccionesRoute.name,
           path: '/cliente/:id/direcciones',
+        ),
+        RouteConfig(
+          ClienteDireccionEditRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId',
         ),
         RouteConfig(
           ClientePrecioNetoRoute.name,
@@ -1081,6 +1097,46 @@ class ClienteDireccionesRouteArgs {
   @override
   String toString() {
     return 'ClienteDireccionesRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteDireccionEditPage]
+class ClienteDireccionEditRoute
+    extends PageRouteInfo<ClienteDireccionEditRouteArgs> {
+  ClienteDireccionEditRoute({
+    Key? key,
+    required String clienteId,
+    required ClienteDireccionEditParam clienteDireccionEditParam,
+  }) : super(
+          ClienteDireccionEditRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId',
+          args: ClienteDireccionEditRouteArgs(
+            key: key,
+            clienteId: clienteId,
+            clienteDireccionEditParam: clienteDireccionEditParam,
+          ),
+        );
+
+  static const String name = 'ClienteDireccionEditRoute';
+}
+
+class ClienteDireccionEditRouteArgs {
+  const ClienteDireccionEditRouteArgs({
+    this.key,
+    required this.clienteId,
+    required this.clienteDireccionEditParam,
+  });
+
+  final Key? key;
+
+  final String clienteId;
+
+  final ClienteDireccionEditParam clienteDireccionEditParam;
+
+  @override
+  String toString() {
+    return 'ClienteDireccionEditRouteArgs{key: $key, clienteId: $clienteId, clienteDireccionEditParam: $clienteDireccionEditParam}';
   }
 }
 

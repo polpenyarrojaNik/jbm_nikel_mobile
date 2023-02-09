@@ -1,22 +1,22 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
-import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 
+import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/pais_dto.dart';
 
-part 'cliente_direccion_dto.freezed.dart';
-part 'cliente_direccion_dto.g.dart';
+part 'cliente_direccion_local_dto.freezed.dart';
+part 'cliente_direccion_local_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteDireccionDTO
-    with _$ClienteDireccionDTO
-    implements Insertable<ClienteDireccionDTO> {
-  const ClienteDireccionDTO._();
-  const factory ClienteDireccionDTO({
+class ClienteDireccionLocalDTO
+    with _$ClienteDireccionLocalDTO
+    implements Insertable<ClienteDireccionLocalDTO> {
+  const ClienteDireccionLocalDTO._();
+  const factory ClienteDireccionLocalDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'DIRECCION_ID') required String direccionId,
     @JsonKey(name: 'NOMBRE') required String nombre,
@@ -30,14 +30,32 @@ class ClienteDireccionDTO
     @JsonKey(name: 'LONGITUD') required double longitud,
     @JsonKey(name: 'PREDETERMINADA_SN') String? predeterminada,
     @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
+    @JsonKey(name: 'ENVIADA') @Default('N') String enviada,
+    @JsonKey(name: 'TRATADA') @Default('N') String tratada,
     @JsonKey(name: 'DELETED') @Default('N') String deleted,
-  }) = _ClienteDireccionDTO;
+  }) = _ClienteDireccionLocalDTO;
 
-  factory ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =>
-      _$ClienteDireccionDTOFromJson(json);
+  factory ClienteDireccionLocalDTO.fromJson(Map<String, dynamic> json) =>
+      _$ClienteDireccionLocalDTOFromJson(json);
 
-  ClienteDireccion toDomain(
-      {required Pais? pais, bool enviada = true, bool tratada = true}) {
+  factory ClienteDireccionLocalDTO.fromDomain(ClienteDireccion _) =>
+      ClienteDireccionLocalDTO(
+        clienteId: _.clienteId,
+        direccionId: _.direccionId!,
+        nombre: _.nombre,
+        direccion1: _.direccion1,
+        direccion2: _.direccion2,
+        codigoPostal: _.codigoPostal,
+        poblacion: _.poblacion,
+        provincia: _.provincia,
+        paisId: _.pais?.id,
+        latitud: _.latitud,
+        longitud: _.longitud,
+        predeterminada: (_.predeterminada) ? 'S' : 'N',
+        lastUpdated: _.lastUpdated,
+      );
+
+  ClienteDireccion toDomain({required Pais? pais}) {
     return ClienteDireccion(
       clienteId: clienteId,
       direccionId: direccionId,
@@ -52,15 +70,15 @@ class ClienteDireccionDTO
       longitud: longitud,
       predeterminada: (predeterminada == 'S') ? true : false,
       lastUpdated: lastUpdated,
-      enviada: enviada,
-      tratada: tratada,
+      enviada: (enviada == 'S') ? true : false,
+      tratada: (tratada == 'S') ? true : false,
       deleted: (deleted == 'S') ? true : false,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
-    return ClienteDireccionTableCompanion(
+    return ClienteDireccionLocalTableCompanion(
       clienteId: Value(clienteId),
       direccionId: Value(direccionId),
       nombre: Value(nombre),
@@ -74,15 +92,17 @@ class ClienteDireccionDTO
       longitud: Value(longitud),
       predeterminada: Value(predeterminada),
       lastUpdated: Value(lastUpdated),
+      enviada: Value(enviada),
+      tratada: Value(tratada),
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
   }
 }
 
-@UseRowClass(ClienteDireccionDTO)
-class ClienteDireccionTable extends Table {
+@UseRowClass(ClienteDireccionLocalDTO)
+class ClienteDireccionLocalTable extends Table {
   @override
-  String get tableName => 'CLIENTES_DIRECCIONES_ENVIO';
+  String get tableName => 'CLIENTES_DIRECCIONES_ENVIO_LOCAL_IMP';
 
   @override
   Set<Column> get primaryKey => {clienteId, direccionId};
@@ -102,6 +122,10 @@ class ClienteDireccionTable extends Table {
   TextColumn get predeterminada =>
       text().nullable().named('PREDETERMINADA_SN')();
   DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
+  TextColumn get enviada =>
+      text().withDefault(const Constant('N')).named('ENVIADA')();
+  TextColumn get tratada =>
+      text().withDefault(const Constant('N')).named('TRATADA')();
   TextColumn get deleted =>
       text().withDefault(const Constant('N')).named('DELETED')();
 }

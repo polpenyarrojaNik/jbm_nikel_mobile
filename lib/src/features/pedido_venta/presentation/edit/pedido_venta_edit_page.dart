@@ -653,7 +653,7 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<List<ClienteDireccion>>>(
-      clienteDireccionProvider(cliente!.id),
+      clienteDireccionListProvider(cliente!.id),
       (_, state) {
         state.whenData(
           (clienteDireccionesList) {
@@ -673,7 +673,7 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
         );
       },
     );
-    final state = ref.watch(clienteDireccionProvider(cliente!.id));
+    final state = ref.watch(clienteDireccionListProvider(cliente!.id));
     return state.when(
       data: (clienteDireccionesList) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
