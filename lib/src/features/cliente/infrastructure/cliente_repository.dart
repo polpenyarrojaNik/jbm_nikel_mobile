@@ -450,7 +450,7 @@ class ClienteRepository {
       final clienteDireccionLocalDtoEnviado =
           await _remoteUpsertClienteDireccion(clienteDireccionLocalDto);
 
-      await _updateClienteDireccionInDB(clienteDireccionLocalDtoEnviado);
+      await _updateClienteDireccionLocalInDB(clienteDireccionLocalDtoEnviado);
 
       return clienteDireccionLocalDtoEnviado.toDomain(
           pais: upsertClienteDireccion.pais);
@@ -473,8 +473,8 @@ class ClienteRepository {
 
       for (var i = 0; i < clienteContactoLocalList.length; i++) {
         final clienteContactoLocal = clienteContactoLocalList[i];
-        bool existInSync = _existContactoInSync(
-            clienteContactoLocal, clienteContactoLocalList);
+        bool existInSync =
+            _existContactoInSync(clienteContactoLocal, clienteContactoSyncList);
 
         if (!existInSync) {
           clienteContactoList.add(clienteContactoLocalList[i]);
@@ -1085,12 +1085,30 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       {required String clienteId, required String? direccionId}) async {
     try {
       if (direccionId != null) {
-        final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+        final queryRemote = (_remoteDb.select(_remoteDb.clienteDireccionTable)
           ..where((t) =>
               t.clienteId.equals(clienteId) &
               t.direccionId.equals(direccionId)));
 
-        return query.asyncMap((row) async {
+        final clienteDireccionSync = await queryRemote.asyncMap((row) async {
+          final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
+                ..where((t) => t.id.equals(row.paisId ?? '')))
+              .getSingleOrNull();
+          return row.toDomain(
+            pais: paisDTO?.toDomain(),
+          );
+        }).getSingleOrNull();
+
+        if (clienteDireccionSync != null) {
+          return clienteDireccionSync;
+        }
+
+        final queryLocal = (_localDb.select(_localDb.clienteDireccionLocalTable)
+          ..where((t) =>
+              t.clienteId.equals(clienteId) &
+              t.direccionId.equals(direccionId)));
+
+        return await queryLocal.asyncMap((row) async {
           final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
                 ..where((t) => t.id.equals(row.paisId ?? '')))
               .getSingleOrNull();
@@ -1527,6 +1545,32 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
+  Future<void> _deleteClienteDireccionInLocalDB(
+      String clienteId, String direccionId) async {
+    try {
+      await (_localDb.delete(_localDb.clienteDireccionLocalTable)
+            ..where((tbl) =>
+                tbl.direccionId.equals(direccionId) &
+                tbl.clienteId.equals(clienteId)))
+          .go();
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> _deleteClienteContactoInLocalDB(
+      String clienteId, String contactoId) async {
+    try {
+      await (_localDb.delete(_localDb.clienteContactoLocalTable)
+            ..where((tbl) =>
+                tbl.contactoId.equals(contactoId) &
+                tbl.clienteId.equals(clienteId)))
+          .go();
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
   Future<ClienteDireccionLocalDTO> _remoteUpsertClienteDireccion(
     ClienteDireccionLocalDTO clienteDireccionLocalDTO,
   ) async {
@@ -1564,7 +1608,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> _updateClienteDireccionInDB(
+  Future<void> _updateClienteDireccionLocalInDB(
       ClienteDireccionLocalDTO clienteDireccionLocalDTO) async {
     try {
       await _localDb
@@ -1650,6 +1694,71 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return _remoteDb.paisTable.descripcionIT;
     } else {
       return _remoteDb.paisTable.descripcionES;
+    }
+  }
+
+  Future<void> deleteClienteDireccion(
+      String clienteId, String clienteDireccionId) async {
+    try {
+      final direccion = await getClienteDireccionByDireccionId(
+          clienteId: clienteId, direccionId: clienteDireccionId);
+
+      final deleteDireccion = direccion?.copyWith(deleted: true);
+
+      if (deleteDireccion != null) {
+        final deletedDireccionLocalDto = ClienteDireccionLocalDTO(
+          clienteId: clienteId,
+          direccionId: clienteDireccionId,
+          nombre: '',
+          latitud: 0,
+          longitud: 0,
+          lastUpdated: DateTime.now().toUtc(),
+          tratada: 'N',
+          deleted: 'S',
+        );
+
+        if (deleteDireccion.tratada) {
+          await _insertClienteDireccionInLocalDB(deletedDireccionLocalDto);
+          //TODO SEND TO API
+        } else {
+          await _deleteClienteDireccionInLocalDB(clienteId, clienteDireccionId);
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteClienteContacto(
+      String clienteId, String clienteContactoId, bool tratado) async {
+    try {
+      final contacto = await getClienteContactoById(
+          clienteContactoId: clienteContactoId, tratado: tratado);
+
+      final deleteContacto = contacto.copyWith(deleted: true);
+
+      final deletedContactoLocalDto = ClienteContactoLocalDTO(
+        clienteId: clienteId,
+        contactoId: clienteContactoId,
+        nombre: '',
+        apellido1: null,
+        apellido2: null,
+        telefono1: null,
+        telefono2: null,
+        email: null,
+        lastUpdated: DateTime.now().toUtc(),
+        tratado: 'N',
+        deleted: 'S',
+      );
+
+      if (deleteContacto.tratado) {
+        await _insertClienteContactoInLocalDB(deletedContactoLocalDto);
+        //TODO SEND TO API
+      } else {
+        await _deleteClienteContactoInLocalDB(clienteId, clienteContactoId);
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 }

@@ -36,6 +36,25 @@ class ClienteDireccionDTO
   factory ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteDireccionDTOFromJson(json);
 
+  factory ClienteDireccionDTO.fromDomain(ClienteDireccion _) {
+    return ClienteDireccionDTO(
+      clienteId: _.clienteId,
+      direccionId: _.direccionId!,
+      nombre: _.nombre,
+      direccion1: _.direccion1,
+      direccion2: _.direccion2,
+      codigoPostal: _.codigoPostal,
+      poblacion: _.poblacion,
+      provincia: _.provincia,
+      paisId: _.pais?.id,
+      latitud: _.latitud,
+      longitud: _.longitud,
+      predeterminada: (_.predeterminada) ? 'S' : 'N',
+      lastUpdated: _.lastUpdated,
+      deleted: _.deleted ? 'S' : 'N',
+    );
+  }
+
   ClienteDireccion toDomain(
       {required Pais? pais, bool enviada = true, bool tratada = true}) {
     return ClienteDireccion(

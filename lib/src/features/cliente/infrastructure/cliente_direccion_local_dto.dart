@@ -52,6 +52,7 @@ class ClienteDireccionLocalDTO
         longitud: _.longitud,
         predeterminada: (_.predeterminada) ? 'S' : 'N',
         lastUpdated: _.lastUpdated,
+        deleted: _.deleted ? 'S' : 'N',
       );
 
   ClienteDireccion toDomain({required Pais? pais}) {

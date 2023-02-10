@@ -6,6 +6,7 @@ part 'cliente_contacto_edit_param.freezed.dart';
 class ClienteContactoEditParam with _$ClienteContactoEditParam {
   const ClienteContactoEditParam._();
   const factory ClienteContactoEditParam(
+    String clienteId,
     String? clienteContactoId,
     bool tratado,
   ) = _ClienteContactoEditParam;

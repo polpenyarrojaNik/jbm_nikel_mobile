@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ClienteContactoEditParam {
+  String get clienteId => throw _privateConstructorUsedError;
   String? get clienteContactoId => throw _privateConstructorUsedError;
   bool get tratado => throw _privateConstructorUsedError;
 
@@ -30,7 +31,7 @@ abstract class $ClienteContactoEditParamCopyWith<$Res> {
           $Res Function(ClienteContactoEditParam) then) =
       _$ClienteContactoEditParamCopyWithImpl<$Res, ClienteContactoEditParam>;
   @useResult
-  $Res call({String? clienteContactoId, bool tratado});
+  $Res call({String clienteId, String? clienteContactoId, bool tratado});
 }
 
 /// @nodoc
@@ -47,10 +48,15 @@ class _$ClienteContactoEditParamCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? clienteId = null,
     Object? clienteContactoId = freezed,
     Object? tratado = null,
   }) {
     return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
       clienteContactoId: freezed == clienteContactoId
           ? _value.clienteContactoId
           : clienteContactoId // ignore: cast_nullable_to_non_nullable
@@ -72,7 +78,7 @@ abstract class _$$_ClienteContactoEditParamCopyWith<$Res>
       __$$_ClienteContactoEditParamCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? clienteContactoId, bool tratado});
+  $Res call({String clienteId, String? clienteContactoId, bool tratado});
 }
 
 /// @nodoc
@@ -87,10 +93,15 @@ class __$$_ClienteContactoEditParamCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? clienteId = null,
     Object? clienteContactoId = freezed,
     Object? tratado = null,
   }) {
     return _then(_$_ClienteContactoEditParam(
+      null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
       freezed == clienteContactoId
           ? _value.clienteContactoId
           : clienteContactoId // ignore: cast_nullable_to_non_nullable
@@ -106,9 +117,12 @@ class __$$_ClienteContactoEditParamCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClienteContactoEditParam extends _ClienteContactoEditParam {
-  const _$_ClienteContactoEditParam(this.clienteContactoId, this.tratado)
+  const _$_ClienteContactoEditParam(
+      this.clienteId, this.clienteContactoId, this.tratado)
       : super._();
 
+  @override
+  final String clienteId;
   @override
   final String? clienteContactoId;
   @override
@@ -116,7 +130,7 @@ class _$_ClienteContactoEditParam extends _ClienteContactoEditParam {
 
   @override
   String toString() {
-    return 'ClienteContactoEditParam(clienteContactoId: $clienteContactoId, tratado: $tratado)';
+    return 'ClienteContactoEditParam(clienteId: $clienteId, clienteContactoId: $clienteContactoId, tratado: $tratado)';
   }
 
   @override
@@ -124,13 +138,16 @@ class _$_ClienteContactoEditParam extends _ClienteContactoEditParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteContactoEditParam &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
             (identical(other.clienteContactoId, clienteContactoId) ||
                 other.clienteContactoId == clienteContactoId) &&
             (identical(other.tratado, tratado) || other.tratado == tratado));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteContactoId, tratado);
+  int get hashCode =>
+      Object.hash(runtimeType, clienteId, clienteContactoId, tratado);
 
   @JsonKey(ignore: true)
   @override
@@ -142,10 +159,13 @@ class _$_ClienteContactoEditParam extends _ClienteContactoEditParam {
 
 abstract class _ClienteContactoEditParam extends ClienteContactoEditParam {
   const factory _ClienteContactoEditParam(
-          final String? clienteContactoId, final bool tratado) =
-      _$_ClienteContactoEditParam;
+      final String clienteId,
+      final String? clienteContactoId,
+      final bool tratado) = _$_ClienteContactoEditParam;
   const _ClienteContactoEditParam._() : super._();
 
+  @override
+  String get clienteId;
   @override
   String? get clienteContactoId;
   @override

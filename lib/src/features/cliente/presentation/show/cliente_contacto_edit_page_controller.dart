@@ -50,4 +50,30 @@ class ClienteContactoEditPageController
       rethrow;
     }
   }
+
+  Future<void> deleteClienteContacto() async {
+    state = const AsyncLoading();
+
+    try {
+      await ref.read(clienteRepositoryProvider).deleteClienteContacto(
+          clienteContactoEditParam.clienteId,
+          clienteContactoEditParam.clienteContactoId!,
+          clienteContactoEditParam.tratado);
+      state = const AsyncData(
+          ClienteContactoEditPageData(isSent: true, clienteContacto: null));
+    } on AppException catch (e, stackTrace) {
+      final clienteContacto =
+          await ref.read(clienteRepositoryProvider).getClienteContactoById(
+                clienteContactoId: clienteContactoEditParam.clienteContactoId!,
+                tratado: clienteContactoEditParam.tratado,
+              );
+      state = AsyncError(
+        ClienteContactoEditPageData(
+            clienteContacto: clienteContacto, isSent: true, error: e),
+        stackTrace,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

@@ -67,7 +67,8 @@ class ClienteContactoPage extends ConsumerWidget {
     context.router.push(
       ClienteContactoEditRoute(
         clienteId: clienteId,
-        clienteContactoEditParam: const ClienteContactoEditParam(null, false),
+        clienteContactoEditParam:
+            ClienteContactoEditParam(clienteId, null, false),
       ),
     );
   }
@@ -231,7 +232,8 @@ class ClienteContactoTile extends StatelessWidget {
     context.router.push(
       ClienteContactoEditRoute(
         clienteId: clienteId,
-        clienteContactoEditParam: ClienteContactoEditParam(contactoId, tratado),
+        clienteContactoEditParam:
+            ClienteContactoEditParam(clienteId, contactoId, tratado),
       ),
     );
   }

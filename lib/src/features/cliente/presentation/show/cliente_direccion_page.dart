@@ -40,25 +40,26 @@ class ClienteDireccionesPage extends ConsumerWidget {
           ),
           gapH8,
           state.maybeWhen(
-              orElse: () => const ProgressIndicatorWidget(),
-              error: (e, st) => ErrorMessageWidget(e.toString()),
-              data: (clienteDireccionList) => (clienteDireccionList.isNotEmpty)
-                  ? Expanded(
-                      child: ListView.separated(
-                        itemCount: clienteDireccionList.length,
-                        itemBuilder: (context, i) => ClienteDireccionTile(
-                          clienteDireccion: clienteDireccionList[i],
-                          paisCliente: paisCliente,
-                        ),
-                        separatorBuilder: (context, i) => const Divider(),
+            orElse: () => const ProgressIndicatorWidget(),
+            error: (e, st) => ErrorMessageWidget(e.toString()),
+            data: (clienteDireccionList) => (clienteDireccionList.isNotEmpty)
+                ? Expanded(
+                    child: ListView.separated(
+                      itemCount: clienteDireccionList.length,
+                      itemBuilder: (context, i) => ClienteDireccionTile(
+                        clienteDireccion: clienteDireccionList[i],
+                        paisCliente: paisCliente,
                       ),
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).sinResultados),
-                      ],
-                    )),
+                      separatorBuilder: (context, i) => const Divider(),
+                    ),
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(S.of(context).sinResultados),
+                    ],
+                  ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -108,7 +109,7 @@ class ClienteDireccionTile extends StatelessWidget {
                 child: (clienteDireccion.direccionId != null)
                     ? Text(
                         (clienteDireccion.direccionId!.length > 3)
-                            ? 'PRO'
+                            ? 'PRV'
                             : clienteDireccion.direccionId!,
                       )
                     : null,

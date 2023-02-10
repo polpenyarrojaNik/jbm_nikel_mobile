@@ -6,21 +6,22 @@ part 'cliente_direccion.freezed.dart';
 @freezed
 class ClienteDireccion with _$ClienteDireccion {
   const ClienteDireccion._();
-  const factory ClienteDireccion(
-      {required String clienteId,
-      required String? direccionId,
-      required String nombre,
-      String? direccion1,
-      String? direccion2,
-      String? codigoPostal,
-      String? poblacion,
-      String? provincia,
-      Pais? pais,
-      required double latitud,
-      required double longitud,
-      required bool predeterminada,
-      required DateTime lastUpdated,
-      required bool enviada,
-      required bool tratada,
-      required bool deleted}) = _ClienteDireccion;
+  const factory ClienteDireccion({
+    required String clienteId,
+    required String? direccionId,
+    required String nombre,
+    String? direccion1,
+    String? direccion2,
+    String? codigoPostal,
+    String? poblacion,
+    String? provincia,
+    Pais? pais,
+    required double latitud,
+    required double longitud,
+    required bool predeterminada,
+    required DateTime lastUpdated,
+    required bool enviada,
+    required bool tratada,
+    required bool deleted,
+  }) = _ClienteDireccion;
 }

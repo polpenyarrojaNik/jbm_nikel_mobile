@@ -1057,8 +1057,10 @@ class SyncService {
 
         if (haveBeenTratada) {
           await (_localDb.delete(_localDb.clienteDireccionLocalTable)
-                ..where((tbl) => tbl.direccionId
-                    .equals(clienteDireccionNoTratada.direccionId)))
+                ..where((tbl) =>
+                    tbl.direccionId
+                        .equals(clienteDireccionNoTratada.direccionId) &
+                    tbl.clienteId.equals(clienteDireccionNoTratada.clienteId)))
               .go();
         }
       }

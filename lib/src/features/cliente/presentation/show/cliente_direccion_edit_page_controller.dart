@@ -54,4 +54,31 @@ class ClienteDireccionEditPageController
       rethrow;
     }
   }
+
+  Future<void> deleteClienteDireccion() async {
+    state = const AsyncLoading();
+
+    try {
+      await ref.read(clienteRepositoryProvider).deleteClienteDireccion(
+          clienteDireccionEditParam.clienteId,
+          clienteDireccionEditParam.clienteDireccionId!);
+      state = const AsyncData(
+          ClienteDireccionEditPageData(isSent: true, clienteDireccion: null));
+    } on AppException catch (e, stackTrace) {
+      final clienteDireccion = await ref
+          .read(clienteRepositoryProvider)
+          .getClienteDireccionById(
+            clienteId: clienteDireccionEditParam.clienteId,
+            clienteDireccionId: clienteDireccionEditParam.clienteDireccionId!,
+            tratado: clienteDireccionEditParam.tratado,
+          );
+      state = AsyncError(
+        ClienteDireccionEditPageData(
+            clienteDireccion: clienteDireccion, isSent: true, error: e),
+        stackTrace,
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

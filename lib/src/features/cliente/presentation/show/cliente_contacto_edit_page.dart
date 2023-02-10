@@ -73,6 +73,11 @@ class ClienteContactoEditPage extends ConsumerWidget {
               .of(context)
               .cliente_show_clienteContacto_clienteContacoEditPage_editarContacto,
           actions: [
+            if (clienteContactoEditParam.clienteContactoId != null)
+              IconButton(
+                onPressed: () => deleteClienteContacto(context, ref),
+                icon: const Icon(Icons.delete),
+              ),
             IconButton(
                 onPressed: () => saveClienteContacto(context, ref, formKey),
                 icon: const Icon(Icons.save)),
@@ -131,6 +136,17 @@ class ClienteContactoEditPage extends ConsumerWidget {
               .notifier)
           .upsertClienteContacto(clienteConatctoToUpsert);
     }
+  }
+
+  void deleteClienteContacto(BuildContext context, WidgetRef ref) async {
+    await ref
+        .read(
+            clienteContactoEditPageControllerProvider(clienteContactoEditParam)
+                .notifier)
+        .deleteClienteContacto();
+
+    ref.invalidate(clienteContactosListProvider);
+    context.router.pop();
   }
 }
 

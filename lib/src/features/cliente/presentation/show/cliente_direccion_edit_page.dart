@@ -94,9 +94,15 @@ class _ClienteDireccionEditPageState
               .of(context)
               .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
           actions: [
+            if (widget.clienteDireccionEditParam.clienteDireccionId != null)
+              IconButton(
+                onPressed: () => deleteClienteDireccion(context, ref),
+                icon: const Icon(Icons.delete),
+              ),
             IconButton(
-                onPressed: () => saveClienteDireccion(context, ref, formKey),
-                icon: const Icon(Icons.save)),
+              onPressed: () => saveClienteDireccion(context, ref, formKey),
+              icon: const Icon(Icons.save),
+            ),
           ]),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -160,6 +166,17 @@ class _ClienteDireccionEditPageState
               .notifier)
           .upsertClienteDireccion(clienteDireccionToUpsert);
     }
+  }
+
+  void deleteClienteDireccion(BuildContext context, WidgetRef ref) async {
+    await ref
+        .read(clienteDireccionEditPageControllerProvider(
+                widget.clienteDireccionEditParam)
+            .notifier)
+        .deleteClienteDireccion();
+
+    ref.invalidate(clienteDireccionListProvider);
+    context.router.pop();
   }
 }
 
