@@ -6,6 +6,7 @@ import 'package:drift/drift.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
@@ -133,6 +134,12 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
       clienteId: clienteId,
       provisionalToken: usuario!.provisionalToken,
       test: usuario.test);
+});
+
+final clientePaisProvider =
+    FutureProvider.autoDispose.family<Pais?, String>((ref, clienteId) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository.getPaisCliente(clienteId: clienteId);
 });
 
 class ClienteRepository {
@@ -402,7 +409,7 @@ class ClienteRepository {
       for (var i = 0; i < clienteDireccionLocalList.length; i++) {
         final clienteDireccionLocal = clienteDireccionLocalList[i];
         bool existInSync = _existDireccionInSync(
-            clienteDireccionLocal, clienteDireccionLocalList);
+            clienteDireccionLocal, clienteDireccionSyncList);
 
         if (!existInSync) {
           clienteDireccionList.add(clienteDireccionLocalList[i]);
@@ -416,12 +423,16 @@ class ClienteRepository {
   }
 
   Future<ClienteDireccion> getClienteDireccionById(
-      {required String clienteDireccionId, bool tratado = true}) async {
+      {required String clienteId,
+      required String clienteDireccionId,
+      bool tratado = true}) async {
     try {
       if (tratado) {
-        return await _getClienteDireccionSyncById(clienteDireccionId);
+        return await _getClienteDireccionSyncById(
+            clienteId, clienteDireccionId);
       } else {
-        return await _getClienteDireccionLocalById(clienteDireccionId);
+        return await _getClienteDireccionLocalById(
+            clienteId, clienteDireccionId);
       }
     } catch (e) {
       rethrow;
@@ -1110,7 +1121,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         query.where((_remoteDb.estadisticasUltimosPreciosTable.clienteId
                 .equals(clienteId) &
             (_remoteDb.articuloTable.id.contains(searchText) |
-                _filtrarPorDescripcion(searchText))));
+                _filtrarArticuloPorDescripcion(searchText))));
       } else {
         query.where(_remoteDb.estadisticasUltimosPreciosTable.clienteId
             .equals(clienteId));
@@ -1154,7 +1165,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         query.where((_remoteDb.estadisticasUltimosPreciosTable.clienteId
                 .equals(clienteId)) &
             (_remoteDb.articuloTable.id.contains(searchText) |
-                _filtrarPorDescripcion(searchText)));
+                _filtrarArticuloPorDescripcion(searchText)));
       } else {
         query.where(_remoteDb.estadisticasUltimosPreciosTable.clienteId
             .equals(clienteId));
@@ -1274,7 +1285,7 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Expression<bool> _filtrarPorDescripcion(String searchText) {
+  Expression<bool> _filtrarArticuloPorDescripcion(String searchText) {
     final currentLocale = Intl.getCurrentLocale();
 
     if (currentLocale == 'es') {
@@ -1468,10 +1479,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<ClienteDireccion> _getClienteDireccionLocalById(
-      String clienteDireccionId) async {
+      String clienteId, String clienteDireccionId) async {
     try {
       final query = (_localDb.select(_localDb.clienteDireccionLocalTable)
-        ..where((t) => t.direccionId.equals(clienteDireccionId)));
+        ..where((t) =>
+            t.direccionId.equals(clienteDireccionId) &
+            t.clienteId.equals(clienteId)));
 
       return await query.asyncMap((row) async {
         final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
@@ -1485,10 +1498,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
   }
 
   Future<ClienteDireccion> _getClienteDireccionSyncById(
-      String clienteDireccionId) async {
+      String clienteId, String clienteDireccionId) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
-        ..where((t) => t.direccionId.equals(clienteDireccionId)));
+        ..where((t) =>
+            t.direccionId.equals(clienteDireccionId) &
+            t.clienteId.equals(clienteId)));
 
       return await query.asyncMap((row) async {
         final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
@@ -1571,5 +1586,70 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       }
     }
     return existInSync;
+  }
+
+  Future<Pais?> getPaisCliente({required String clienteId}) async {
+    final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
+          ..where((tbl) => tbl.id.equals(clienteId)))
+        .getSingle();
+
+    final paisDto = await (_remoteDb.select(_remoteDb.paisTable)
+          ..where((tbl) => tbl.id.equalsNullable(clienteDto.paisFiscalId)))
+        .getSingleOrNull();
+
+    return paisDto?.toDomain();
+  }
+
+  Future<List<Pais>> getPaisList({required String searchText}) async {
+    final query = _remoteDb.select(_remoteDb.paisTable);
+
+    if (searchText != '') {
+      query.where((tbl) =>
+          tbl.id.contains(searchText) | _filtrarPaisPorDescripcion(searchText));
+    }
+
+    query.orderBy(
+      [(tbl) => OrderingTerm.asc(_orderByPaisPorDescripcion())],
+    );
+
+    final paisDtoList = await query.get();
+
+    return paisDtoList.map((e) => e.toDomain()).toList();
+  }
+
+  Expression<bool> _filtrarPaisPorDescripcion(String searchText) {
+    final currentLocale = Intl.getCurrentLocale();
+
+    if (currentLocale == 'es') {
+      return _remoteDb.paisTable.descripcionES.contains(searchText);
+    } else if (currentLocale == 'en') {
+      return _remoteDb.paisTable.descripcionEN.contains(searchText);
+    } else if (currentLocale == 'de') {
+      return _remoteDb.paisTable.descripcionDE.contains(searchText);
+    } else if (currentLocale == 'fr') {
+      return _remoteDb.paisTable.descripcionFR.contains(searchText);
+    } else if (currentLocale == 'it') {
+      return _remoteDb.paisTable.descripcionIT.contains(searchText);
+    } else {
+      return _remoteDb.paisTable.descripcionES.contains(searchText);
+    }
+  }
+
+  Expression<Object> _orderByPaisPorDescripcion() {
+    final currentLocale = Intl.getCurrentLocale();
+
+    if (currentLocale == 'es') {
+      return _remoteDb.paisTable.descripcionES;
+    } else if (currentLocale == 'en') {
+      return _remoteDb.paisTable.descripcionEN;
+    } else if (currentLocale == 'de') {
+      return _remoteDb.paisTable.descripcionDE;
+    } else if (currentLocale == 'fr') {
+      return _remoteDb.paisTable.descripcionFR;
+    } else if (currentLocale == 'it') {
+      return _remoteDb.paisTable.descripcionIT;
+    } else {
+      return _remoteDb.paisTable.descripcionES;
+    }
   }
 }

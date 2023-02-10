@@ -16,7 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ClienteDireccionEditParam {
+  String get clienteId => throw _privateConstructorUsedError;
   String? get clienteDireccionId => throw _privateConstructorUsedError;
+  Pais? get paisCliente => throw _privateConstructorUsedError;
   bool get tratado => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +32,13 @@ abstract class $ClienteDireccionEditParamCopyWith<$Res> {
           $Res Function(ClienteDireccionEditParam) then) =
       _$ClienteDireccionEditParamCopyWithImpl<$Res, ClienteDireccionEditParam>;
   @useResult
-  $Res call({String? clienteDireccionId, bool tratado});
+  $Res call(
+      {String clienteId,
+      String? clienteDireccionId,
+      Pais? paisCliente,
+      bool tratado});
+
+  $PaisCopyWith<$Res>? get paisCliente;
 }
 
 /// @nodoc
@@ -47,19 +55,41 @@ class _$ClienteDireccionEditParamCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? clienteId = null,
     Object? clienteDireccionId = freezed,
+    Object? paisCliente = freezed,
     Object? tratado = null,
   }) {
     return _then(_value.copyWith(
+      clienteId: null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
       clienteDireccionId: freezed == clienteDireccionId
           ? _value.clienteDireccionId
           : clienteDireccionId // ignore: cast_nullable_to_non_nullable
               as String?,
+      paisCliente: freezed == paisCliente
+          ? _value.paisCliente
+          : paisCliente // ignore: cast_nullable_to_non_nullable
+              as Pais?,
       tratado: null == tratado
           ? _value.tratado
           : tratado // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaisCopyWith<$Res>? get paisCliente {
+    if (_value.paisCliente == null) {
+      return null;
+    }
+
+    return $PaisCopyWith<$Res>(_value.paisCliente!, (value) {
+      return _then(_value.copyWith(paisCliente: value) as $Val);
+    });
   }
 }
 
@@ -72,7 +102,14 @@ abstract class _$$_ClienteDireccionEditParamCopyWith<$Res>
       __$$_ClienteDireccionEditParamCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? clienteDireccionId, bool tratado});
+  $Res call(
+      {String clienteId,
+      String? clienteDireccionId,
+      Pais? paisCliente,
+      bool tratado});
+
+  @override
+  $PaisCopyWith<$Res>? get paisCliente;
 }
 
 /// @nodoc
@@ -88,14 +125,24 @@ class __$$_ClienteDireccionEditParamCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? clienteId = null,
     Object? clienteDireccionId = freezed,
+    Object? paisCliente = freezed,
     Object? tratado = null,
   }) {
     return _then(_$_ClienteDireccionEditParam(
+      null == clienteId
+          ? _value.clienteId
+          : clienteId // ignore: cast_nullable_to_non_nullable
+              as String,
       freezed == clienteDireccionId
           ? _value.clienteDireccionId
           : clienteDireccionId // ignore: cast_nullable_to_non_nullable
               as String?,
+      freezed == paisCliente
+          ? _value.paisCliente
+          : paisCliente // ignore: cast_nullable_to_non_nullable
+              as Pais?,
       null == tratado
           ? _value.tratado
           : tratado // ignore: cast_nullable_to_non_nullable
@@ -107,17 +154,22 @@ class __$$_ClienteDireccionEditParamCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClienteDireccionEditParam extends _ClienteDireccionEditParam {
-  const _$_ClienteDireccionEditParam(this.clienteDireccionId, this.tratado)
+  const _$_ClienteDireccionEditParam(
+      this.clienteId, this.clienteDireccionId, this.paisCliente, this.tratado)
       : super._();
 
   @override
+  final String clienteId;
+  @override
   final String? clienteDireccionId;
+  @override
+  final Pais? paisCliente;
   @override
   final bool tratado;
 
   @override
   String toString() {
-    return 'ClienteDireccionEditParam(clienteDireccionId: $clienteDireccionId, tratado: $tratado)';
+    return 'ClienteDireccionEditParam(clienteId: $clienteId, clienteDireccionId: $clienteDireccionId, paisCliente: $paisCliente, tratado: $tratado)';
   }
 
   @override
@@ -125,13 +177,18 @@ class _$_ClienteDireccionEditParam extends _ClienteDireccionEditParam {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClienteDireccionEditParam &&
+            (identical(other.clienteId, clienteId) ||
+                other.clienteId == clienteId) &&
             (identical(other.clienteDireccionId, clienteDireccionId) ||
                 other.clienteDireccionId == clienteDireccionId) &&
+            (identical(other.paisCliente, paisCliente) ||
+                other.paisCliente == paisCliente) &&
             (identical(other.tratado, tratado) || other.tratado == tratado));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteDireccionId, tratado);
+  int get hashCode => Object.hash(
+      runtimeType, clienteId, clienteDireccionId, paisCliente, tratado);
 
   @JsonKey(ignore: true)
   @override
@@ -143,12 +200,18 @@ class _$_ClienteDireccionEditParam extends _ClienteDireccionEditParam {
 
 abstract class _ClienteDireccionEditParam extends ClienteDireccionEditParam {
   const factory _ClienteDireccionEditParam(
-          final String? clienteDireccionId, final bool tratado) =
-      _$_ClienteDireccionEditParam;
+      final String clienteId,
+      final String? clienteDireccionId,
+      final Pais? paisCliente,
+      final bool tratado) = _$_ClienteDireccionEditParam;
   const _ClienteDireccionEditParam._() : super._();
 
   @override
+  String get clienteId;
+  @override
   String? get clienteDireccionId;
+  @override
+  Pais? get paisCliente;
   @override
   bool get tratado;
   @override

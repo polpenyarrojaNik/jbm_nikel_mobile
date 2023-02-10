@@ -171,8 +171,33 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventes clients"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Ventes totales"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_apellido":
+            MessageLookupByLibrary.simpleMessage("Le nom"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito":
+            MessageLookupByLibrary.simpleMessage(
+                "Contact enregistré avec succès"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado":
+            MessageLookupByLibrary.simpleMessage(
+                "Le contact n\'a pas pu être enregistré"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_editarContacto":
+            MessageLookupByLibrary.simpleMessage("Modifier le contact"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_email":
+            MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_nombre":
+            MessageLookupByLibrary.simpleMessage("Nom"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_observaciones":
+            MessageLookupByLibrary.simpleMessage("Observations"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido":
+            MessageLookupByLibrary.simpleMessage("Deuxième nom de famille"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_telefono1":
+            MessageLookupByLibrary.simpleMessage("Téléphone"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_telefono2":
+            MessageLookupByLibrary.simpleMessage("Téléphone 2"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("E-mail"),
+        "cliente_show_clienteContacto_hayCambiosSinTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Il y a des changements en attente de traitement"),
         "cliente_show_clienteContacto_id":
             MessageLookupByLibrary.simpleMessage("Id"),
         "cliente_show_clienteContacto_nombre":
@@ -390,6 +415,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Adresses d\'envois"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Éditer la comande"),
+        "pedido_edit_pedidoEdit_fecha":
+            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_pedidoEdit_fechaValidez":
             MessageLookupByLibrary.simpleMessage("Date de validaté"),
         "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
@@ -416,6 +443,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Stock disponible:"),
         "pedido_edit_pedidoEdit_totalLineas":
             MessageLookupByLibrary.simpleMessage("Lignes totales:"),
+        "pedido_edit_pedidoEdit_ultimoPrecioDeCompra":
+            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_selectQuantity_artiuclosSustitutivos":
             MessageLookupByLibrary.simpleMessage("Article de remplacement:"),
         "pedido_edit_selectQuantity_cantidad":
@@ -448,6 +477,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_estados": MessageLookupByLibrary.simpleMessage("États"),
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrer"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtres"),
+        "pedido_index_offline": MessageLookupByLibrary.simpleMessage(""),
+        "pedido_index_provisional":
+            MessageLookupByLibrary.simpleMessage("Offline"),
         "pedido_index_reset":
             MessageLookupByLibrary.simpleMessage("Redémarrer"),
         "pedido_index_titulo":

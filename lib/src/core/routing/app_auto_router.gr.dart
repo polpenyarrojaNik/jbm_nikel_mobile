@@ -151,6 +151,7 @@ class _$AppRouter extends RootStackRouter {
         child: ClienteDireccionesPage(
           key: args.key,
           clienteId: args.clienteId,
+          paisCliente: args.paisCliente,
           nombreCliente: args.nombreCliente,
         ),
       );
@@ -161,10 +162,17 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ClienteDireccionEditPage(
           key: args.key,
-          clienteId: args.clienteId,
           clienteDireccionEditParam: args.clienteDireccionEditParam,
         ),
         fullscreenDialog: true,
+      );
+    },
+    ClienteDireccionSeleccionarPaisRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDireccionSeleccionarPaisRouteArgs>(
+          orElse: () => const ClienteDireccionSeleccionarPaisRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteDireccionSeleccionarPaisPage(key: args.key),
       );
     },
     ClientePrecioNetoRoute.name: (routeData) {
@@ -524,6 +532,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ClienteDireccionEditRoute.name,
           path: '/cliente/:id/direcciones/:direccionId',
+        ),
+        RouteConfig(
+          ClienteDireccionSeleccionarPaisRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId/pais',
         ),
         RouteConfig(
           ClientePrecioNetoRoute.name,
@@ -1067,6 +1079,7 @@ class ClienteDireccionesRoute
   ClienteDireccionesRoute({
     Key? key,
     required String clienteId,
+    required Pais? paisCliente,
     required String? nombreCliente,
   }) : super(
           ClienteDireccionesRoute.name,
@@ -1074,6 +1087,7 @@ class ClienteDireccionesRoute
           args: ClienteDireccionesRouteArgs(
             key: key,
             clienteId: clienteId,
+            paisCliente: paisCliente,
             nombreCliente: nombreCliente,
           ),
         );
@@ -1085,6 +1099,7 @@ class ClienteDireccionesRouteArgs {
   const ClienteDireccionesRouteArgs({
     this.key,
     required this.clienteId,
+    required this.paisCliente,
     required this.nombreCliente,
   });
 
@@ -1092,11 +1107,13 @@ class ClienteDireccionesRouteArgs {
 
   final String clienteId;
 
+  final Pais? paisCliente;
+
   final String? nombreCliente;
 
   @override
   String toString() {
-    return 'ClienteDireccionesRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+    return 'ClienteDireccionesRouteArgs{key: $key, clienteId: $clienteId, paisCliente: $paisCliente, nombreCliente: $nombreCliente}';
   }
 }
 
@@ -1106,14 +1123,12 @@ class ClienteDireccionEditRoute
     extends PageRouteInfo<ClienteDireccionEditRouteArgs> {
   ClienteDireccionEditRoute({
     Key? key,
-    required String clienteId,
     required ClienteDireccionEditParam clienteDireccionEditParam,
   }) : super(
           ClienteDireccionEditRoute.name,
           path: '/cliente/:id/direcciones/:direccionId',
           args: ClienteDireccionEditRouteArgs(
             key: key,
-            clienteId: clienteId,
             clienteDireccionEditParam: clienteDireccionEditParam,
           ),
         );
@@ -1124,19 +1139,41 @@ class ClienteDireccionEditRoute
 class ClienteDireccionEditRouteArgs {
   const ClienteDireccionEditRouteArgs({
     this.key,
-    required this.clienteId,
     required this.clienteDireccionEditParam,
   });
 
   final Key? key;
 
-  final String clienteId;
-
   final ClienteDireccionEditParam clienteDireccionEditParam;
 
   @override
   String toString() {
-    return 'ClienteDireccionEditRouteArgs{key: $key, clienteId: $clienteId, clienteDireccionEditParam: $clienteDireccionEditParam}';
+    return 'ClienteDireccionEditRouteArgs{key: $key, clienteDireccionEditParam: $clienteDireccionEditParam}';
+  }
+}
+
+/// generated route for
+/// [ClienteDireccionSeleccionarPaisPage]
+class ClienteDireccionSeleccionarPaisRoute
+    extends PageRouteInfo<ClienteDireccionSeleccionarPaisRouteArgs> {
+  ClienteDireccionSeleccionarPaisRoute({Key? key})
+      : super(
+          ClienteDireccionSeleccionarPaisRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId/pais',
+          args: ClienteDireccionSeleccionarPaisRouteArgs(key: key),
+        );
+
+  static const String name = 'ClienteDireccionSeleccionarPaisRoute';
+}
+
+class ClienteDireccionSeleccionarPaisRouteArgs {
+  const ClienteDireccionSeleccionarPaisRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ClienteDireccionSeleccionarPaisRouteArgs{key: $key}';
   }
 }
 

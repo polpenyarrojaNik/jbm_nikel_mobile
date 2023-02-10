@@ -1536,11 +1536,11 @@ class S {
 
   /// `Edit contact`
   String
-      get cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto {
+      get cliente_show_clienteContacto_clienteContacoEditPage_editarContacto {
     return Intl.message(
       'Edit contact',
       name:
-          'cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto',
+          'cliente_show_clienteContacto_clienteContacoEditPage_editarContacto',
       desc: '',
       args: [],
     );
@@ -1548,11 +1548,11 @@ class S {
 
   /// `Contact saved successfully`
   String
-      get cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito {
+      get cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito {
     return Intl.message(
       'Contact saved successfully',
       name:
-          'cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito',
+          'cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito',
       desc: '',
       args: [],
     );
@@ -1560,31 +1560,31 @@ class S {
 
   /// `Contact saved successfully`
   String
-      get cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado {
+      get cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado {
     return Intl.message(
       'Contact saved successfully',
       name:
-          'cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado',
+          'cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado',
       desc: '',
       args: [],
     );
   }
 
   /// `Name`
-  String get cliente_show_clienteContacto_clienteConatcoEditPage_nombre {
+  String get cliente_show_clienteContacto_clienteContacoEditPage_nombre {
     return Intl.message(
       'Name',
-      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_nombre',
+      name: 'cliente_show_clienteContacto_clienteContacoEditPage_nombre',
       desc: '',
       args: [],
     );
   }
 
   /// `Last Name`
-  String get cliente_show_clienteContacto_clienteConatcoEditPage_apellido {
+  String get cliente_show_clienteContacto_clienteContacoEditPage_apellido {
     return Intl.message(
       'Last Name',
-      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_apellido',
+      name: 'cliente_show_clienteContacto_clienteContacoEditPage_apellido',
       desc: '',
       args: [],
     );
@@ -1592,51 +1592,169 @@ class S {
 
   /// `Second Last Name`
   String
-      get cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido {
+      get cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido {
     return Intl.message(
       'Second Last Name',
       name:
-          'cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido',
+          'cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido',
       desc: '',
       args: [],
     );
   }
 
   /// `Phone`
-  String get cliente_show_clienteContacto_clienteConatcoEditPage_telefono1 {
+  String get cliente_show_clienteContacto_clienteContacoEditPage_telefono1 {
     return Intl.message(
       'Phone',
-      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_telefono1',
+      name: 'cliente_show_clienteContacto_clienteContacoEditPage_telefono1',
       desc: '',
       args: [],
     );
   }
 
   /// `Phone 2`
-  String get cliente_show_clienteContacto_clienteConatcoEditPage_telefono2 {
+  String get cliente_show_clienteContacto_clienteContacoEditPage_telefono2 {
     return Intl.message(
       'Phone 2',
-      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_telefono2',
+      name: 'cliente_show_clienteContacto_clienteContacoEditPage_telefono2',
       desc: '',
       args: [],
     );
   }
 
   /// `Email`
-  String get cliente_show_clienteContacto_clienteConatcoEditPage_email {
+  String get cliente_show_clienteContacto_clienteContacoEditPage_email {
     return Intl.message(
       'Email',
-      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_email',
+      name: 'cliente_show_clienteContacto_clienteContacoEditPage_email',
       desc: '',
       args: [],
     );
   }
 
   /// `Remarks`
-  String get cliente_show_clienteContacto_clienteConatcoEditPage_observaciones {
+  String get cliente_show_clienteContacto_clienteContacoEditPage_observaciones {
     return Intl.message(
       'Remarks',
-      name: 'cliente_show_clienteContacto_clienteConatcoEditPage_observaciones',
+      name: 'cliente_show_clienteContacto_clienteContacoEditPage_observaciones',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have changes to process`
+  String get cliente_show_clienteDireccion_hayCambiosSinTramitar {
+    return Intl.message(
+      'Have changes to process',
+      name: 'cliente_show_clienteDireccion_hayCambiosSinTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit shipping address`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion {
+    return Intl.message(
+      'Edit shipping address',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping address saved successfully`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito {
+    return Intl.message(
+      'Shipping address saved successfully',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping address saved successfully`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada {
+    return Intl.message(
+      'Shipping address saved successfully',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get cliente_show_clienteDireccion_clienteDireccionEditPage_nombre {
+    return Intl.message(
+      'Name',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_nombre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping address 1`
+  String get cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1 {
+    return Intl.message(
+      'Shipping address 1',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping Address 2`
+  String get cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2 {
+    return Intl.message(
+      'Shipping Address 2',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zip code`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal {
+    return Intl.message(
+      'Zip code',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion {
+    return Intl.message(
+      'City',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Province`
+  String get cliente_show_clienteDireccion_clienteDireccionEditPage_provincia {
+    return Intl.message(
+      'Province',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_provincia',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country`
+  String get cliente_show_clienteDireccion_clienteDireccionEditPage_pais {
+    return Intl.message(
+      'Country',
+      name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_pais',
       desc: '',
       args: [],
     );
@@ -3057,6 +3175,16 @@ class S {
     return Intl.message(
       'Search catalogs...',
       name: 'catalogos_index_buscarCatalogo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get pedido_index_provisional {
+    return Intl.message(
+      '',
+      name: 'pedido_index_provisional',
       desc: '',
       args: [],
     );

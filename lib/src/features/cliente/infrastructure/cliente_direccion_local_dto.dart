@@ -4,7 +4,6 @@ import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 
 import '../../../core/infrastructure/local_database.dart';
-import '../../../core/infrastructure/pais_dto.dart';
 
 part 'cliente_direccion_local_dto.freezed.dart';
 part 'cliente_direccion_local_dto.g.dart';
@@ -115,8 +114,7 @@ class ClienteDireccionLocalTable extends Table {
   TextColumn get codigoPostal => text().nullable().named('CODIGO_POSTAL')();
   TextColumn get poblacion => text().nullable().named('POBLACION')();
   TextColumn get provincia => text().nullable().named('PROVINCIA')();
-  TextColumn get paisId =>
-      text().nullable().references(PaisTable, #id).named('PAIS_ID')();
+  TextColumn get paisId => text().nullable().named('PAIS_ID')();
   RealColumn get latitud => real().named('LATITUD')();
   RealColumn get longitud => real().named('LONGITUD')();
   TextColumn get predeterminada =>

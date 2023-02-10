@@ -698,7 +698,10 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
                   ? Theme.of(context).colorScheme.secondaryContainer
                   : Colors.transparent,
               child: ClienteDireccionTile(
-                  clienteDireccion: clienteDireccionesList[i]),
+                clienteDireccion: clienteDireccionesList[i],
+                paisCliente: null,
+                isFromPedido: true,
+              ),
             ),
           ),
           separatorBuilder: (context, i) => const Divider(),

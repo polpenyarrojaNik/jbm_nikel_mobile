@@ -20,12 +20,16 @@ class ClienteDireccionEditPageController
       clienteDireccion = await ref
           .read(clienteRepositoryProvider)
           .getClienteDireccionById(
-              clienteDireccionId: clienteDireccionEditParam.clienteDireccionId!,
-              tratado: clienteDireccionEditParam.tratado);
+            clienteId: clienteDireccionEditParam.clienteId,
+            clienteDireccionId: clienteDireccionEditParam.clienteDireccionId!,
+            tratado: clienteDireccionEditParam.tratado,
+          );
     }
 
     return ClienteDireccionEditPageData(
-        isSent: false, clienteDireccion: clienteDireccion);
+      isSent: false,
+      clienteDireccion: clienteDireccion,
+    );
   }
 
   Future<void> upsertClienteDireccion(

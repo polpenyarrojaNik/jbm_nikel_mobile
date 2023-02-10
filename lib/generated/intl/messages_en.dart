@@ -170,25 +170,25 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Customer sales"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Total sales"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_apellido":
+        "cliente_show_clienteContacto_clienteContacoEditPage_apellido":
             MessageLookupByLibrary.simpleMessage("Last Name"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito":
+        "cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito":
             MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado":
+        "cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado":
             MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto":
+        "cliente_show_clienteContacto_clienteContacoEditPage_editarContacto":
             MessageLookupByLibrary.simpleMessage("Edit contact"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_email":
+        "cliente_show_clienteContacto_clienteContacoEditPage_email":
             MessageLookupByLibrary.simpleMessage("Email"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_nombre":
+        "cliente_show_clienteContacto_clienteContacoEditPage_nombre":
             MessageLookupByLibrary.simpleMessage("Name"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_observaciones":
+        "cliente_show_clienteContacto_clienteContacoEditPage_observaciones":
             MessageLookupByLibrary.simpleMessage("Remarks"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido":
+        "cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido":
             MessageLookupByLibrary.simpleMessage("Second Last Name"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono1":
+        "cliente_show_clienteContacto_clienteContacoEditPage_telefono1":
             MessageLookupByLibrary.simpleMessage("Phone"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono2":
+        "cliente_show_clienteContacto_clienteContacoEditPage_telefono2":
             MessageLookupByLibrary.simpleMessage("Phone 2"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
@@ -314,6 +314,30 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sales"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal":
+            MessageLookupByLibrary.simpleMessage("Zip code"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1":
+            MessageLookupByLibrary.simpleMessage("Shipping address 1"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2":
+            MessageLookupByLibrary.simpleMessage("Shipping Address 2"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito":
+            MessageLookupByLibrary.simpleMessage(
+                "Shipping address saved successfully"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada":
+            MessageLookupByLibrary.simpleMessage(
+                "Shipping address saved successfully"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion":
+            MessageLookupByLibrary.simpleMessage("Edit shipping address"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_nombre":
+            MessageLookupByLibrary.simpleMessage("Name"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_pais":
+            MessageLookupByLibrary.simpleMessage("Country"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion":
+            MessageLookupByLibrary.simpleMessage("City"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_provincia":
+            MessageLookupByLibrary.simpleMessage("Province"),
+        "cliente_show_clienteDireccion_hayCambiosSinTramitar":
+            MessageLookupByLibrary.simpleMessage("Have changes to process"),
         "cliente_show_clienteDireccion_titulo":
             MessageLookupByLibrary.simpleMessage("Shipping Addresses"),
         "cliente_show_clienteFacturasPendientes_estadoCobrado":
@@ -472,6 +496,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filter"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filters"),
         "pedido_index_offline": MessageLookupByLibrary.simpleMessage("Offline"),
+        "pedido_index_provisional": MessageLookupByLibrary.simpleMessage(""),
         "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "pedido_index_titulo":
             MessageLookupByLibrary.simpleMessage("Sales orders"),

@@ -742,6 +742,7 @@ class _DatosRelacionados extends StatelessWidget {
           navigationTo: () => context.router.push(
             ClienteDireccionesRoute(
               clienteId: cliente.id,
+              paisCliente: cliente.paisFiscal,
               nombreCliente: cliente.nombreCliente,
             ),
           ),

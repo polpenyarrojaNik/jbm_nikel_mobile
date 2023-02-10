@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/domain/pais.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
@@ -16,9 +17,13 @@ import '../../infrastructure/cliente_repository.dart';
 
 class ClienteDireccionesPage extends ConsumerWidget {
   const ClienteDireccionesPage(
-      {super.key, required this.clienteId, required this.nombreCliente});
+      {super.key,
+      required this.clienteId,
+      required this.paisCliente,
+      required this.nombreCliente});
 
   final String clienteId;
+  final Pais? paisCliente;
   final String? nombreCliente;
 
   @override
@@ -43,6 +48,7 @@ class ClienteDireccionesPage extends ConsumerWidget {
                         itemCount: clienteDireccionList.length,
                         itemBuilder: (context, i) => ClienteDireccionTile(
                           clienteDireccion: clienteDireccionList[i],
+                          paisCliente: paisCliente,
                         ),
                         separatorBuilder: (context, i) => const Divider(),
                       ),
@@ -65,17 +71,27 @@ class ClienteDireccionesPage extends ConsumerWidget {
   void navigateToCreateClienteDireccion(BuildContext context) {
     context.router.push(
       ClienteDireccionEditRoute(
-        clienteId: clienteId,
-        clienteDireccionEditParam: const ClienteDireccionEditParam(null, false),
+        clienteDireccionEditParam: ClienteDireccionEditParam(
+          clienteId,
+          null,
+          paisCliente,
+          false,
+        ),
       ),
     );
   }
 }
 
 class ClienteDireccionTile extends StatelessWidget {
-  const ClienteDireccionTile({super.key, required this.clienteDireccion});
+  const ClienteDireccionTile(
+      {super.key,
+      required this.clienteDireccion,
+      required this.paisCliente,
+      this.isFromPedido = false});
 
   final ClienteDireccion clienteDireccion;
+  final Pais? paisCliente;
+  final bool isFromPedido;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +107,9 @@ class ClienteDireccionTile extends StatelessWidget {
                 width: 50,
                 child: (clienteDireccion.direccionId != null)
                     ? Text(
-                        clienteDireccion.direccionId!,
+                        (clienteDireccion.direccionId!.length > 3)
+                            ? 'PRO'
+                            : clienteDireccion.direccionId!,
                       )
                     : null,
               ),
@@ -106,36 +124,50 @@ class ClienteDireccionTile extends StatelessWidget {
                     gapH4,
                     if (clienteDireccion.direccion1 != null)
                       Text(
-                        clienteDireccion.direccion1!,
+                        formatCustomerAddress(
+                          clienteDireccion.direccion1,
+                          clienteDireccion.codigoPostal,
+                          clienteDireccion.poblacion,
+                          clienteDireccion.provincia,
+                          clienteDireccion.pais,
+                        ),
                         style: Theme.of(context).textTheme.bodySmall!,
                       ),
-                    Text(
-                        formatCodigoPostalAndPoblacion(
-                          codigoPostal: clienteDireccion.codigoPostal,
-                          poblacion: clienteDireccion.poblacion,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodySmall),
-                    Text(
-                        formatProvinciaAndPais(
-                          province: clienteDireccion.provincia,
-                          pais: clienteDireccion.pais,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodySmall),
+                    gapH4,
+                    if (!clienteDireccion.tratada)
+                      Row(
+                        children: [
+                          Icon(Icons.error,
+                              color: Theme.of(context).colorScheme.error,
+                              size: 14),
+                          gapW4,
+                          Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteDireccion_hayCambiosSinTramitar,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.error,
+                                ),
+                          ),
+                        ],
+                      )
                   ],
                 ),
               ),
-              IconButton(
-                onPressed: () => navigateToEditClienteDireccion(
+              if (!isFromPedido)
+                IconButton(
+                  onPressed: () => navigateToEditClienteDireccion(
                     context,
                     clienteDireccion.clienteId,
                     clienteDireccion.direccionId!,
-                    clienteDireccion.tratada),
-                icon: const Icon(Icons.edit),
-              ),
+                    clienteDireccion.tratada,
+                    paisCliente,
+                  ),
+                  icon: const Icon(Icons.edit),
+                ),
             ],
           ),
         ],
@@ -144,12 +176,15 @@ class ClienteDireccionTile extends StatelessWidget {
   }
 
   void navigateToEditClienteDireccion(BuildContext context, String clienteId,
-      String direccionId, bool tratada) {
+      String direccionId, bool tratada, Pais? paisCliente) {
     context.router.push(
       ClienteDireccionEditRoute(
-        clienteId: clienteId,
-        clienteDireccionEditParam:
-            ClienteDireccionEditParam(direccionId, tratada),
+        clienteDireccionEditParam: ClienteDireccionEditParam(
+          clienteId,
+          direccionId,
+          paisCliente,
+          tratada,
+        ),
       ),
     );
   }
