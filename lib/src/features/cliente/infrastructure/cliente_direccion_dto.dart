@@ -36,7 +36,7 @@ class ClienteDireccionDTO
   factory ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteDireccionDTOFromJson(json);
 
-  ClienteDireccion toDomain({required Pais? pais}) {
+  ClienteDireccion toDomain({required Pais? pais, bool? clientePotencial}) {
     return ClienteDireccion(
       clienteId: clienteId,
       direccionId: direccionId,
@@ -47,6 +47,7 @@ class ClienteDireccionDTO
       poblacion: poblacion,
       provincia: provincia,
       pais: pais,
+      clientePotencial: clientePotencial,
       latitud: latitud,
       longitud: longitud,
       predeterminada: (predeterminada == 'S') ? true : false,

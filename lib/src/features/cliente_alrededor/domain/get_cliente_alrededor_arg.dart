@@ -9,5 +9,6 @@ class GetClienteAlrededorArg with _$GetClienteAlrededorArg {
   const factory GetClienteAlrededorArg({
     required LatLng latLng,
     required double radiusDistance,
+    required bool showDireccionesEnvio,
   }) = _GetClienteAlrededorArg;
 }

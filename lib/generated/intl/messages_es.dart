@@ -144,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Catálogos"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Cargando mapa"),
+        "cliente_alrededor_direccionesEnvio":
+            MessageLookupByLibrary.simpleMessage("Direcciones de envío"),
         "cliente_alrededor_margenAnoActual":
             MessageLookupByLibrary.simpleMessage("Margen año actual"),
         "cliente_alrededor_porcentajeAbonos":
@@ -414,6 +416,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Direcciones envío"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Editar pedido"),
+        "pedido_edit_pedidoEdit_fecha":
+            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_pedidoEdit_fechaValidez":
             MessageLookupByLibrary.simpleMessage("Fecha de validez"),
         "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
@@ -475,6 +479,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrar"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtros"),
         "pedido_index_offline": MessageLookupByLibrary.simpleMessage("Offline"),
+        "pedido_index_provisional": MessageLookupByLibrary.simpleMessage(""),
         "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedidos"),
         "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("No enviado"),

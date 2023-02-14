@@ -121,18 +121,6 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    ClienteContactoEditRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteContactoEditRouteArgs>();
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: ClienteContactoEditPage(
-          key: args.key,
-          clienteId: args.clienteId,
-          clienteContactoEditParam: args.clienteContactoEditParam,
-        ),
-        fullscreenDialog: true,
-      );
-    },
     ClienteDescuentoRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteDescuentoRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -496,10 +484,6 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ClienteContactoRoute.name,
           path: '/cliente/:id/contactos',
-        ),
-        RouteConfig(
-          ClienteContactoEditRoute.name,
-          path: '/cliente/:id/contactos/:contactoId',
         ),
         RouteConfig(
           ClienteDescuentoRoute.name,
@@ -962,46 +946,6 @@ class ClienteContactoRouteArgs {
   @override
   String toString() {
     return 'ClienteContactoRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
-  }
-}
-
-/// generated route for
-/// [ClienteContactoEditPage]
-class ClienteContactoEditRoute
-    extends PageRouteInfo<ClienteContactoEditRouteArgs> {
-  ClienteContactoEditRoute({
-    Key? key,
-    required String clienteId,
-    required ClienteContactoEditParam clienteContactoEditParam,
-  }) : super(
-          ClienteContactoEditRoute.name,
-          path: '/cliente/:id/contactos/:contactoId',
-          args: ClienteContactoEditRouteArgs(
-            key: key,
-            clienteId: clienteId,
-            clienteContactoEditParam: clienteContactoEditParam,
-          ),
-        );
-
-  static const String name = 'ClienteContactoEditRoute';
-}
-
-class ClienteContactoEditRouteArgs {
-  const ClienteContactoEditRouteArgs({
-    this.key,
-    required this.clienteId,
-    required this.clienteContactoEditParam,
-  });
-
-  final Key? key;
-
-  final String clienteId;
-
-  final ClienteContactoEditParam clienteContactoEditParam;
-
-  @override
-  String toString() {
-    return 'ClienteContactoEditRouteArgs{key: $key, clienteId: $clienteId, clienteContactoEditParam: $clienteContactoEditParam}';
   }
 }
 

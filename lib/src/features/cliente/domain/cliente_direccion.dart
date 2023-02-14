@@ -16,6 +16,7 @@ class ClienteDireccion with _$ClienteDireccion {
       String? poblacion,
       String? provincia,
       Pais? pais,
+      bool? clientePotencial,
       required double latitud,
       required double longitud,
       required bool predeterminada,

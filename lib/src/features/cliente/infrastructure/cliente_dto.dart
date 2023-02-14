@@ -91,12 +91,12 @@ class ClienteDTO with _$ClienteDTO implements Insertable<ClienteDTO> {
       _$ClienteDTOFromJson(json);
 
   Cliente toDomain({
-    required Pais? paisFiscal,
-    required Divisa? divisa,
-    required MetodoDeCobro? metodoDeCobro,
-    required PlazoDeCobro? plazoDeCobro,
-    required ClienteTipoPotencial? clienteTipoPotencial,
-    required ClienteEstadoPotencial? clienteEstadoPotencial,
+    Pais? paisFiscal,
+    Divisa? divisa,
+    MetodoDeCobro? metodoDeCobro,
+    PlazoDeCobro? plazoDeCobro,
+    ClienteTipoPotencial? clienteTipoPotencial,
+    ClienteEstadoPotencial? clienteEstadoPotencial,
   }) {
     return Cliente(
       id: id,

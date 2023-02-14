@@ -145,6 +145,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Catálogos"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Carregando mapa"),
+        "cliente_alrededor_direccionesEnvio":
+            MessageLookupByLibrary.simpleMessage("Endereços de Envio"),
         "cliente_alrededor_margenAnoActual":
             MessageLookupByLibrary.simpleMessage("Margem ano atual"),
         "cliente_alrededor_porcentajeAbonos":
@@ -174,8 +176,32 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vendas cliente"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Vendas total"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_apellido":
+            MessageLookupByLibrary.simpleMessage("Apelido"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito":
+            MessageLookupByLibrary.simpleMessage("Contato salvo com sucesso"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado":
+            MessageLookupByLibrary.simpleMessage(
+                "O contato não pôde ser salvo"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto":
+            MessageLookupByLibrary.simpleMessage("Editar contato"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_email":
+            MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_nombre":
+            MessageLookupByLibrary.simpleMessage("Nome"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_observaciones":
+            MessageLookupByLibrary.simpleMessage("Observações"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido":
+            MessageLookupByLibrary.simpleMessage("Segundo sobrenome"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono1":
+            MessageLookupByLibrary.simpleMessage("Telefone"),
+        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono2":
+            MessageLookupByLibrary.simpleMessage("Telefone 2"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_hayCambiosSinTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Há alterações com processamento pendente"),
         "cliente_show_clienteContacto_id":
             MessageLookupByLibrary.simpleMessage("Id"),
         "cliente_show_clienteContacto_nombre":
@@ -395,6 +421,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Endereços de Envio"),
         "pedido_edit_pedidoEdit_editarPedido":
             MessageLookupByLibrary.simpleMessage("Editar pedido"),
+        "pedido_edit_pedidoEdit_fecha":
+            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_pedidoEdit_fechaValidez":
             MessageLookupByLibrary.simpleMessage("Data de validação"),
         "pedido_edit_pedidoEdit_fechaValidezNoPuedeEstarVacia":
@@ -421,6 +449,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Stock disponível"),
         "pedido_edit_pedidoEdit_totalLineas":
             MessageLookupByLibrary.simpleMessage("Total linhas"),
+        "pedido_edit_pedidoEdit_ultimoPrecioDeCompra":
+            MessageLookupByLibrary.simpleMessage(""),
         "pedido_edit_selectQuantity_artiuclosSustitutivos":
             MessageLookupByLibrary.simpleMessage("Itens substitutos:"),
         "pedido_edit_selectQuantity_cantidad":
@@ -453,6 +483,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_estados": MessageLookupByLibrary.simpleMessage("Estado"),
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filtrar"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filtos"),
+        "pedido_index_offline": MessageLookupByLibrary.simpleMessage(""),
+        "pedido_index_provisional":
+            MessageLookupByLibrary.simpleMessage("Offline"),
         "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Redefinir"),
         "pedido_index_titulo": MessageLookupByLibrary.simpleMessage("Pedido"),
         "pedido_noEnviado": MessageLookupByLibrary.simpleMessage("Não enviado"),

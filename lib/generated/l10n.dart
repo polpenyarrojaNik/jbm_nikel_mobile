@@ -1942,6 +1942,16 @@ class S {
     );
   }
 
+  /// `Shipping addresses`
+  String get cliente_alrededor_direccionesEnvio {
+    return Intl.message(
+      'Shipping addresses',
+      name: 'cliente_alrededor_direccionesEnvio',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sales orders`
   String get pedido_index_titulo {
     return Intl.message(
@@ -3057,6 +3067,16 @@ class S {
     return Intl.message(
       'Search catalogs...',
       name: 'catalogos_index_buscarCatalogo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get pedido_index_provisional {
+    return Intl.message(
+      '',
+      name: 'pedido_index_provisional',
       desc: '',
       args: [],
     );

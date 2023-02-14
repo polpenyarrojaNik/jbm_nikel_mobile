@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -35,7 +34,6 @@ import '../domain/cliente_precio_neto.dart';
 import '../domain/cliente_rappel.dart';
 import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
-import 'cliente_contacto_local_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
 
@@ -411,59 +409,17 @@ class ClienteRepository {
 
   Future<List<ClienteContacto>> getClienteContactosListById(
       {required String clienteId}) async {
-    final List<ClienteContacto> clienteContactoList = [];
     try {
-      final clienteContactoLocalList =
-          await _getClienteContactoLocalList(clienteId);
-
-      final clienteContactoSyncList = await _getClienteContactoSyncList(
-          clienteId, clienteContactoLocalList);
-
-      clienteContactoList.addAll(clienteContactoSyncList);
-
-      for (var i = 0; i < clienteContactoLocalList.length; i++) {
-        final clienteContactoLocal = clienteContactoLocalList[i];
-        bool existInSync = _existContactoInSync(
-            clienteContactoLocal, clienteContactoLocalList);
-
-        if (!existInSync) {
-          clienteContactoList.add(clienteContactoLocalList[i]);
-        }
-      }
-
-      return clienteContactoList;
+      return await _getClienteContactoSyncList(clienteId);
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
   Future<ClienteContacto> getClienteContactoById(
-      {required String clienteContactoId, bool tratado = true}) async {
+      {required String clienteContactoId}) async {
     try {
-      if (tratado) {
-        return await _getClienteContactoSyncById(clienteContactoId);
-      } else {
-        return await _getClienteContactoLocalById(clienteContactoId);
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<ClienteContacto> upsertClienteContacto(
-      ClienteContacto upsertClienteContacto) async {
-    try {
-      final clienteContactoLocalDto =
-          ClienteContactoLocalDTO.fromDomain(upsertClienteContacto);
-
-      await _insertClienteContactoInLocalDB(clienteContactoLocalDto);
-
-      final clienteContactoLocalDtoEnviado =
-          await _remoteUpsertClienteContacto(clienteContactoLocalDto);
-
-      await _updateClienteContactoInDB(clienteContactoLocalDtoEnviado);
-
-      return clienteContactoLocalDtoEnviado.toDomain();
+      return await _getClienteContactoSyncById(clienteContactoId);
     } catch (e) {
       rethrow;
     }
@@ -1253,48 +1209,14 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<List<ClienteContacto>> _getClienteContactoLocalList(
-      String clienteId) async {
-    try {
-      final query = (_localDb.select(_localDb.clienteContactoLocalTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
-
-      return query.map((row) => row.toDomain()).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
   Future<List<ClienteContacto>> _getClienteContactoSyncList(
-      String clienteId, List<ClienteContacto> clienteContactoLocalList) async {
+    String clienteId,
+  ) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.map((row) {
-        for (var i = 0; i < clienteContactoLocalList.length; i++) {
-          if (clienteContactoLocalList[i].contactoId == row.contactoId &&
-              !clienteContactoLocalList[i].tratado) {
-            return row.toDomain(
-              enviado: clienteContactoLocalList[i].enviado,
-              tratado: clienteContactoLocalList[i].tratado,
-            );
-          }
-        }
-        return row.toDomain();
-      }).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteContacto> _getClienteContactoLocalById(
-      String clienteContactoId) async {
-    try {
-      final query = (_localDb.select(_localDb.clienteContactoLocalTable)
-        ..where((t) => t.contactoId.equals(clienteContactoId)));
-
-      return query.map((row) => row.toDomain()).getSingle();
+      return query.map((row) => row.toDomain()).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -1310,77 +1232,5 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
-  }
-
-  Future<void> _insertClienteContactoInLocalDB(
-      ClienteContactoLocalDTO clienteContactoLocalDTO) async {
-    try {
-      await _localDb
-          .into(_localDb.clienteContactoLocalTable)
-          .insertOnConflictUpdate(clienteContactoLocalDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteContactoLocalDTO> _remoteUpsertClienteContacto(
-    ClienteContactoLocalDTO clienteConatctoLocalDTO,
-  ) async {
-    try {
-      final clienteContactoLocalToJson = clienteConatctoLocalDTO.toJson();
-      print(jsonEncode(clienteContactoLocalToJson));
-
-      final requestUri = (usuario.test)
-          ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteConatctoLocalDTO.clienteId}/contacto',
-            )
-          : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteConatctoLocalDTO.clienteId}/contacto',
-            );
-
-      final response = await _dio.postUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-        ),
-        data: jsonEncode(clienteContactoLocalToJson),
-      );
-      if (response.statusCode == 200) {
-        final json = response.data['data'] as Map<String, dynamic>;
-
-        return ClienteContactoLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
-      }
-    } catch (e) {
-      throw getApiError(e);
-    }
-  }
-
-  Future<void> _updateClienteContactoInDB(
-      ClienteContactoLocalDTO clienteContactoLocalDTO) async {
-    try {
-      await _localDb
-          .update(_localDb.clienteContactoLocalTable)
-          .replace(clienteContactoLocalDTO);
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
-    }
-  }
-
-  bool _existContactoInSync(ClienteContacto clienteConactoLocal,
-      List<ClienteContacto> clienteContactoSyncList) {
-    bool existInSync = false;
-
-    for (var i = 0; i < clienteContactoSyncList.length; i++) {
-      if (clienteConactoLocal.contactoId ==
-          clienteContactoSyncList[i].contactoId) {
-        existInSync = true;
-      }
-    }
-    return existInSync;
   }
 }

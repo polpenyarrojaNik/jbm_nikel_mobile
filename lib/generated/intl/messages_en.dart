@@ -142,6 +142,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Catalogs"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Loading map"),
+        "cliente_alrededor_direccionesEnvio":
+            MessageLookupByLibrary.simpleMessage("Shipping addresses"),
         "cliente_alrededor_margenAnoActual":
             MessageLookupByLibrary.simpleMessage("Current year margin"),
         "cliente_alrededor_porcentajeAbonos":
@@ -472,6 +474,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pedido_index_filtrar": MessageLookupByLibrary.simpleMessage("Filter"),
         "pedido_index_filtros": MessageLookupByLibrary.simpleMessage("Filters"),
         "pedido_index_offline": MessageLookupByLibrary.simpleMessage("Offline"),
+        "pedido_index_provisional": MessageLookupByLibrary.simpleMessage(""),
         "pedido_index_reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "pedido_index_titulo":
             MessageLookupByLibrary.simpleMessage("Sales orders"),

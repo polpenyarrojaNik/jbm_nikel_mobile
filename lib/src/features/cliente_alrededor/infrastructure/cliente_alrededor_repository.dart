@@ -2,19 +2,23 @@ import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/pais_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_direccion_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_dto.dart';
-import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_service.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 
 import '../../../core/exceptions/app_exception.dart';
 import '../../../core/infrastructure/remote_database.dart';
+import '../domain/cliente_alrededor.dart';
 import '../domain/get_cliente_alrededor_arg.dart';
+import 'cliente_alrededor_dto.dart';
 
 final clientesAlrededorRepositoryProvider =
     Provider.autoDispose<ClienteAlrededorRepository>(
   (ref) {
-    final db = ref.watch(appRemoteDatabaseProvider);
-    return ClienteAlrededorRepository(db);
+    final remoteDb = ref.watch(appRemoteDatabaseProvider);
+    final usuario = ref.watch(usuarioNotifierProvider);
+    return ClienteAlrededorRepository(remoteDb, usuario!);
   },
 );
 
@@ -25,21 +29,20 @@ final ubicacionActualProvider = FutureProvider.autoDispose<Position>((ref) {
   return clientesAlrededorRepository.getUbicacionActual();
 });
 
-final clientesAlrededorListStream = FutureProvider.autoDispose
-    .family<List<Cliente>, GetClienteAlrededorArg>(
+final clientesDireccionesAlrededorListStream = FutureProvider.autoDispose
+    .family<List<ClienteAlrededor>, GetClienteAlrededorArg>(
         (ref, clienteAlrededorArg) async {
   final clientesAlrededorRepository =
       ref.watch(clientesAlrededorRepositoryProvider);
-  final usuarioService = ref.watch(usuarioServiceProvider);
-  final usuario = await usuarioService.getSignedInUsuario();
-  return clientesAlrededorRepository.getClientesAlrededorLista(
-      usuarioId: usuario!.id, clienteAlrededorArg: clienteAlrededorArg);
+  return clientesAlrededorRepository.getClienteAlrededoresLista(
+      clienteAlrededorArg: clienteAlrededorArg);
 });
 
 class ClienteAlrededorRepository {
-  RemoteAppDatabase db;
+  RemoteAppDatabase remoteDb;
+  Usuario usuario;
 
-  ClienteAlrededorRepository(this.db);
+  ClienteAlrededorRepository(this.remoteDb, this.usuario);
 
   Future<Position> getUbicacionActual() async {
     try {
@@ -50,11 +53,31 @@ class ClienteAlrededorRepository {
     }
   }
 
-  Future<List<Cliente>> getClientesAlrededorLista(
-      {required String usuarioId,
-      required GetClienteAlrededorArg clienteAlrededorArg}) {
+  Future<List<ClienteAlrededor>> getClienteAlrededoresLista(
+      {required GetClienteAlrededorArg clienteAlrededorArg}) async {
+    final List<ClienteAlrededor> clienteAlrededorList = [];
     try {
-      final query = db.customSelect('''SELECT c.*, paises.*
+      final clienteDireccionesFiscalesAlrededorList =
+          await _getClienteDireccionesFiscalesList(clienteAlrededorArg);
+      clienteAlrededorList.addAll(clienteDireccionesFiscalesAlrededorList);
+
+      if (clienteAlrededorArg.showDireccionesEnvio) {
+        final clienteDireccionesAlrededorList =
+            await _getClienteDireccionesAlrededorList(clienteAlrededorArg);
+
+        clienteAlrededorList.addAll(clienteDireccionesAlrededorList);
+      }
+
+      return clienteAlrededorList;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<ClienteAlrededor>> _getClienteDireccionesFiscalesList(
+      GetClienteAlrededorArg clienteAlrededorArg) async {
+    try {
+      final query = remoteDb.customSelect('''SELECT c.*, paises.*
         from CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES c ON c.cliente_id = cUsuario.cliente_id
         INNER JOIN PAISES paises ON c.pais_id_fiscal = paises.pais_id
@@ -63,31 +86,71 @@ class ClienteAlrededorRepository {
           as distanceKm
           ) < :radiusKm
           ''', variables: [
-        Variable.withString(usuarioId),
+        Variable.withString(usuario.id),
         Variable.withReal(clienteAlrededorArg.latLng.latitude),
         Variable.withReal(0.017453292519943295),
         Variable.withReal(clienteAlrededorArg.latLng.longitude),
         Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
       ], readsFrom: {
-        db.clienteTable,
-        db.clienteUsuarioTable,
-        db.paisTable,
+        remoteDb.clienteTable,
+        remoteDb.clienteUsuarioTable,
+        remoteDb.paisTable,
       });
 
-      return query.map((rows) {
-        final clienteDTO = ClienteDTO.fromJson(rows.data);
+      return await query.map((rows) {
         final paisDTO =
             (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
+        final clienteDTO = ClienteDTO.fromJson(rows.data);
 
-        final cliente = clienteDTO.toDomain(
-          paisFiscal: paisDTO?.toDomain(),
-          divisa: null,
-          metodoDeCobro: null,
-          plazoDeCobro: null,
-          clienteEstadoPotencial: null,
-          clienteTipoPotencial: null,
+        final clienteAlerdedorDTO =
+            ClienteAlrededorDTO.fromClienteDTO(clienteDTO);
+
+        return clienteAlerdedorDTO.toDomain(pais: paisDTO?.toDomain());
+      }).get();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<ClienteAlrededor>> _getClienteDireccionesAlrededorList(
+      GetClienteAlrededorArg clienteAlrededorArg) async {
+    try {
+      final query = remoteDb.customSelect('''SELECT cd.*, paises.*
+        FROM CLIENTES_USUARIO cUsuario
+        INNER JOIN CLIENTES_DIRECCIONES_ENVIO cd ON cd.cliente_id = cUsuario.cliente_id
+        INNER JOIN PAISES paises ON cd.pais_id = paises.pais_id
+        WHERE (cUsuario.USUARIO_ID = :usuarioId AND cd.latitud is not null AND cd.longitud is not null) AND(
+          SELECT (12742 * ASIN(SQRT(0.5 - COS((cd.latitud - :latitud) * :p) /2 + COS(:latitud * :p) * COS(cd.latitud * :p) * (1 - COS((cd.longitud - :longitud) * :p)) / 2)))
+          as distanceKm
+          ) < :radiusKm
+          ''', variables: [
+        Variable.withString(usuario.id),
+        Variable.withReal(clienteAlrededorArg.latLng.latitude),
+        Variable.withReal(0.017453292519943295),
+        Variable.withReal(clienteAlrededorArg.latLng.longitude),
+        Variable.withReal(clienteAlrededorArg.radiusDistance / 1000),
+      ], readsFrom: {
+        remoteDb.clienteDireccionTable,
+        remoteDb.clienteUsuarioTable,
+        remoteDb.paisTable,
+      });
+
+      return await query.asyncMap((rows) async {
+        final paisDTO =
+            (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
+        final clienteDireccionDto = ClienteDireccionDTO.fromJson(rows.data);
+        final clienteDto =
+            await _getClienteDtoById(clienteDireccionDto.clienteId);
+        await _getClienteDtoById(clienteDireccionDto.clienteId);
+        final clienteAlrededorDto = ClienteAlrededorDTO.fromClienteDireccionDTO(
+          clienteDireccionDto,
+          clienteDto.ventasAnyoActual,
+          clienteDto.porcentajeAbonos,
+          clienteDto.representante1Nombre,
+          clienteDto.representante2Nombre,
         );
-        return cliente;
+
+        return clienteAlrededorDto.toDomain(pais: paisDTO?.toDomain());
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
@@ -110,6 +173,19 @@ class ClienteAlrededorRepository {
       }
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<ClienteDTO> _getClienteDtoById(
+    String clienteId,
+  ) async {
+    try {
+      final query = (remoteDb.select(remoteDb.clienteTable)
+        ..where((t) => t.id.equals(clienteId)));
+
+      return query.getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 }

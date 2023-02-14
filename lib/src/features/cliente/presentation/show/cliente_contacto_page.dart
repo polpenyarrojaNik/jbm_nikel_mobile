@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,9 +8,7 @@ import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
-import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/cliente_contacto.dart';
-import '../../domain/cliente_contacto_edit_param.dart';
 import '../../infrastructure/cliente_repository.dart';
 
 class ClienteContactoPage extends ConsumerWidget {
@@ -55,19 +52,6 @@ class ClienteContactoPage extends ConsumerWidget {
                   ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => navigateToCreateClienteContacto(context),
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-  void navigateToCreateClienteContacto(BuildContext context) {
-    context.router.push(
-      ClienteContactoEditRoute(
-        clienteId: clienteId,
-        clienteContactoEditParam: const ClienteContactoEditParam(null, false),
       ),
     );
   }
@@ -171,15 +155,6 @@ class ClienteContactoTile extends StatelessWidget {
             ),
           ),
           gapW8,
-          IconButton(
-            onPressed: () => navigateToEditClienteContacto(
-                context,
-                clienteContacto.clienteId,
-                clienteContacto.contactoId,
-                clienteContacto.tratado),
-            icon: const Icon(Icons.edit),
-          ),
-          gapW8,
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -224,16 +199,6 @@ class ClienteContactoTile extends StatelessWidget {
       path: contactEmail,
     );
     await launchUrl(params, mode: LaunchMode.externalApplication);
-  }
-
-  void navigateToEditClienteContacto(
-      BuildContext context, String clienteId, String contactoId, bool tratado) {
-    context.router.push(
-      ClienteContactoEditRoute(
-        clienteId: clienteId,
-        clienteContactoEditParam: ClienteContactoEditParam(contactoId, tratado),
-      ),
-    );
   }
 }
 
