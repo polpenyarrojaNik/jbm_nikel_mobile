@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/header_datos_relacionados.dart';
@@ -11,11 +13,12 @@ import '../../../../core/presentation/common_widgets/progress_indicator_widget.d
 import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
 import '../../domain/cliente_contacto.dart';
-import '../../domain/cliente_contacto_edit_param.dart';
+import '../../domain/cliente_modificacion_param.dart';
 import '../../infrastructure/cliente_repository.dart';
+import 'cliente_contacto_delete_controller.dart';
 
-class ClienteContactoPage extends ConsumerWidget {
-  const ClienteContactoPage(
+class ClienteContactoListPage extends ConsumerWidget {
+  const ClienteContactoListPage(
       {super.key, required this.clienteId, required this.nombreCliente});
 
   final String clienteId;
@@ -24,6 +27,7 @@ class ClienteContactoPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(clienteContactosListProvider(clienteId));
+
     return Scaffold(
       appBar: CommonAppBar(
         titleText: (S.of(context).cliente_show_clienteContacto_titulo),
@@ -41,8 +45,13 @@ class ClienteContactoPage extends ConsumerWidget {
                 ? Expanded(
                     child: ListView.separated(
                       itemCount: clienteContactoList.length,
-                      itemBuilder: (context, i) => ClienteContactoTile(
+                      itemBuilder: (context, i) => _ClienteContactoTile(
                         clienteContacto: clienteContactoList[i],
+                        clienteModificacionParm: ClienteModificacionParam(
+                          clienteId,
+                          clienteContactoList[i].contactoId,
+                          clienteContactoList[i].tratado,
+                        ),
                       ),
                       separatorBuilder: (context, i) => const Divider(),
                     ),
@@ -66,21 +75,48 @@ class ClienteContactoPage extends ConsumerWidget {
   void navigateToCreateClienteContacto(BuildContext context) {
     context.router.push(
       ClienteContactoEditRoute(
-        clienteId: clienteId,
-        clienteContactoEditParam:
-            ClienteContactoEditParam(clienteId, null, false),
+        clienteModificacionParam:
+            ClienteModificacionParam(clienteId, null, false),
       ),
     );
   }
 }
 
-class ClienteContactoTile extends StatelessWidget {
-  const ClienteContactoTile({super.key, required this.clienteContacto});
+class _ClienteContactoTile extends ConsumerWidget {
+  const _ClienteContactoTile(
+      {required this.clienteContacto, required this.clienteModificacionParm});
 
   final ClienteContacto clienteContacto;
+  final ClienteModificacionParam clienteModificacionParm;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<AsyncValue<bool>>(
+        clienteContactoDeleteControllerProvider(clienteModificacionParm),
+        (_, state) {
+      state.maybeWhen(
+        orElse: () {},
+        error: (error, _) {
+          final errorMessage = (error is AppException)
+              ? error.details.message
+              : error.toString();
+
+          context.showErrorBar(
+              content: Text(errorMessage),
+              duration: const Duration(seconds: 5));
+        },
+        data: (isDeleted) {
+          if (isDeleted) {
+            ref.invalidate(
+              clienteContactosListProvider(clienteModificacionParm.clienteId),
+            );
+          }
+        },
+      );
+    });
+
+    final deleteContactoValue = ref.watch(
+        clienteContactoDeleteControllerProvider(clienteModificacionParm));
     return Padding(
       padding: listPadding,
       child: Row(
@@ -140,9 +176,11 @@ class ClienteContactoTile extends StatelessWidget {
                 if (clienteContacto.telefono2 != null)
                   Row(
                     children: [
-                      Icon(Icons.phone,
-                          color: Theme.of(context).textTheme.bodySmall?.color,
-                          size: 14),
+                      Icon(
+                        Icons.phone,
+                        color: Theme.of(context).textTheme.bodySmall?.color,
+                        size: 14,
+                      ),
                       gapW4,
                       Text(
                         clienteContacto.telefono2!,
@@ -152,33 +190,62 @@ class ClienteContactoTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                if (!clienteContacto.tratado)
-                  Row(
-                    children: [
-                      Icon(Icons.error,
-                          color: Theme.of(context).colorScheme.error, size: 14),
-                      gapW4,
-                      Text(
-                        S
-                            .of(context)
-                            .cliente_show_clienteContacto_hayCambiosSinTramitar,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                      ),
-                    ],
-                  )
+                if (!clienteContacto.enviado ||
+                    (!clienteContacto.enviado && clienteContacto.deleted))
+                  GestureDetector(
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.error,
+                          color: Theme.of(context).colorScheme.error,
+                          size: 14,
+                        ),
+                        gapW4,
+                        Flexible(
+                          child: Text(
+                            S
+                                .of(context)
+                                .cliente_show_clienteContacto_hayCambiosDeEnviar,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.error,
+                                ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                if (clienteContacto.enviado)
+                  _ModificacionesListView(
+                    clienteContacto.clienteId,
+                    clienteContacto.contactoId!,
+                  ),
               ],
             ),
           ),
-          gapW8,
+          gapW4,
           IconButton(
+            visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
             onPressed: () => navigateToEditClienteContacto(
-                context,
-                clienteContacto.clienteId,
-                clienteContacto.contactoId,
-                clienteContacto.tratado),
+              context,
+              clienteModificacionParm,
+            ),
             icon: const Icon(Icons.edit),
+          ),
+          deleteContactoValue.maybeWhen(
+            loading: () => const CircularProgressIndicator(
+              strokeWidth: 2.5,
+            ),
+            orElse: () => IconButton(
+              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+              onPressed: () => navigateToDeleteClienteContacto(
+                ref,
+                clienteModificacionParm,
+              ),
+              icon: const Icon(Icons.delete_outline),
+            ),
           ),
           gapW8,
           Column(
@@ -228,14 +295,22 @@ class ClienteContactoTile extends StatelessWidget {
   }
 
   void navigateToEditClienteContacto(
-      BuildContext context, String clienteId, String contactoId, bool tratado) {
+      BuildContext context, ClienteModificacionParam clienteModificacionParam) {
     context.router.push(
       ClienteContactoEditRoute(
-        clienteId: clienteId,
-        clienteContactoEditParam:
-            ClienteContactoEditParam(clienteId, contactoId, tratado),
+        clienteModificacionParam: clienteModificacionParam,
       ),
     );
+  }
+
+  void navigateToDeleteClienteContacto(
+      WidgetRef ref, ClienteModificacionParam clienteModificacionEditParam) {
+    ref
+        .read(
+          clienteContactoDeleteControllerProvider(clienteModificacionEditParam)
+              .notifier,
+        )
+        .deleteClienteContacto();
   }
 }
 
@@ -272,142 +347,16 @@ class ContactButtons extends StatelessWidget {
   }
 }
 
-// class ClienteContactoTile extends StatelessWidget {
-//   const ClienteContactoTile({super.key, required this.clienteContacto});
+class _ModificacionesListView extends ConsumerWidget {
+  const _ModificacionesListView(this.clienteId, this.contactoId);
 
-//   final ClienteContacto clienteContacto;
+  final String contactoId;
+  final String clienteId;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: const EdgeInsets.symmetric(vertical: 4.0),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Flexible(
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     if (clienteContacto.nombre != null)
-//                       Row(
-//                         children: [
-//                           Text(clienteContacto.nombre!),
-//                         ],
-//                       ),
-//                     if (clienteContacto.email != null)
-//                       Row(
-//                         children: [
-//                           Icon(Icons.email,
-//                               color: Theme.of(context).textTheme.bodySmall?.color,
-//                               size: 14),
-//                           gapW4,
-//                           Flexible(
-//                             child: Text(
-//                               clienteContacto.email!,
-//                               style: Theme.of(context)
-//                                   .textTheme
-//                                   .bodyMedium
-//                                   ?.copyWith(
-//                                       color: Theme.of(context)
-//                                           .textTheme
-//                                           .bodySmall
-//                                           ?.color),
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     if (clienteContacto.telefono1 != null)
-//                       Row(
-//                         children: [
-//                           Icon(Icons.phone,
-//                               color: Theme.of(context).textTheme.bodySmall?.color,
-//                               size: 14),
-//                           gapW4,
-//                           Text(
-//                             clienteContacto.telefono1!,
-//                             style: Theme.of(context)
-//                                 .textTheme
-//                                 .bodyMedium
-//                                 ?.copyWith(
-//                                     color: Theme.of(context)
-//                                         .textTheme
-//                                         .bodySmall
-//                                         ?.color),
-//                           ),
-//                         ],
-//                       ),
-//                     if (clienteContacto.telefono2 != null)
-//                       Row(
-//                         children: [
-//                           Icon(Icons.phone,
-//                               color: Theme.of(context).textTheme.bodySmall?.color,
-//                               size: 14),
-//                           gapW4,
-//                           Text(
-//                             clienteContacto.telefono2!,
-//                             style: Theme.of(context)
-//                                 .textTheme
-//                                 .bodyMedium
-//                                 ?.copyWith(
-//                                     color: Theme.of(context)
-//                                         .textTheme
-//                                         .bodySmall
-//                                         ?.color),
-//                           ),
-//                         ],
-//                       ),
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         if (clienteContacto.email != null)
-//                           ContactButtons(
-//                             icon: Icons.email,
-//                             onPressFunction: () =>
-//                                 navigateToEmailApp(clienteContacto.email!),
-//                           ),
-//                         if (clienteContacto.telefono1 != null) gapW12,
-//                         if (clienteContacto.telefono1 != null)
-//                           ContactButtons(
-//                             icon: Icons.phone,
-//                             onPressFunction: () =>
-//                                 openPhoneCall(clienteContacto.telefono1!),
-//                           ),
-//                         if (clienteContacto.telefono2 != null) gapW12,
-//                         if (clienteContacto.telefono2 != null)
-//                           ContactButtons(
-//                             icon: Icons.phone,
-//                             onPressFunction: () =>
-//                                 openPhoneCall(clienteContacto.telefono2!),
-//                           ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//         const Divider(),
-//       ],
-//     );
-//   }
-
-//   void openPhoneCall(String phone) async {
-//     final Uri params = Uri(
-//       scheme: 'tel',
-//       path: phone,
-//     );
-//     await launchUrl(params, mode: LaunchMode.externalApplication);
-//   }
-
-//   void navigateToEmailApp(String contactEmail) async {
-//     final Uri params = Uri(
-//       scheme: 'mailto',
-//       path: contactEmail,
-//     );
-//     await launchUrl(params, mode: LaunchMode.externalApplication);
-//   }
-// }
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final modificacionesValue =
+    //     ref.watch(clienteContactoModificacionesProvider(contactoId));
+    return Container();
+  }
+}

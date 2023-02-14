@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cliente_contacto_local_dto.dart';
+part of 'cliente_contacto_modificacion_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -10,7 +10,7 @@ _$_ClienteContactoLocalDTO _$$_ClienteContactoLocalDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ClienteContactoLocalDTO(
       clienteId: json['CLIENTE_ID'] as String,
-      contactoId: json['CONTACTO_ID'] as String,
+      contactoId: json['CONTACTO_ID'] as String?,
       observaciones: json['OBSERVACIONES'] as String?,
       nombre: json['NOMBRE'] as String?,
       apellido1: json['APELLIDO1'] as String?,

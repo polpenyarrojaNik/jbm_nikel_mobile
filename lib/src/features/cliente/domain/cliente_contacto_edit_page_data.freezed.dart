@@ -15,23 +15,23 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ClienteContactoEditPageData {
+mixin _$ContactoModificacionEditPageData {
   ClienteContacto? get clienteContacto => throw _privateConstructorUsedError;
   bool get isSent => throw _privateConstructorUsedError;
   Object? get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ClienteContactoEditPageDataCopyWith<ClienteContactoEditPageData>
+  $ContactoModificacionEditPageDataCopyWith<ContactoModificacionEditPageData>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClienteContactoEditPageDataCopyWith<$Res> {
-  factory $ClienteContactoEditPageDataCopyWith(
-          ClienteContactoEditPageData value,
-          $Res Function(ClienteContactoEditPageData) then) =
-      _$ClienteContactoEditPageDataCopyWithImpl<$Res,
-          ClienteContactoEditPageData>;
+abstract class $ContactoModificacionEditPageDataCopyWith<$Res> {
+  factory $ContactoModificacionEditPageDataCopyWith(
+          ContactoModificacionEditPageData value,
+          $Res Function(ContactoModificacionEditPageData) then) =
+      _$ContactoModificacionEditPageDataCopyWithImpl<$Res,
+          ContactoModificacionEditPageData>;
   @useResult
   $Res call({ClienteContacto? clienteContacto, bool isSent, Object? error});
 
@@ -39,10 +39,10 @@ abstract class $ClienteContactoEditPageDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClienteContactoEditPageDataCopyWithImpl<$Res,
-        $Val extends ClienteContactoEditPageData>
-    implements $ClienteContactoEditPageDataCopyWith<$Res> {
-  _$ClienteContactoEditPageDataCopyWithImpl(this._value, this._then);
+class _$ContactoModificacionEditPageDataCopyWithImpl<$Res,
+        $Val extends ContactoModificacionEditPageData>
+    implements $ContactoModificacionEditPageDataCopyWith<$Res> {
+  _$ContactoModificacionEditPageDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,12 +83,12 @@ class _$ClienteContactoEditPageDataCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ClienteContactoEditPageDataCopyWith<$Res>
-    implements $ClienteContactoEditPageDataCopyWith<$Res> {
-  factory _$$_ClienteContactoEditPageDataCopyWith(
-          _$_ClienteContactoEditPageData value,
-          $Res Function(_$_ClienteContactoEditPageData) then) =
-      __$$_ClienteContactoEditPageDataCopyWithImpl<$Res>;
+abstract class _$$_ContactoModificacionEditPageDataCopyWith<$Res>
+    implements $ContactoModificacionEditPageDataCopyWith<$Res> {
+  factory _$$_ContactoModificacionEditPageDataCopyWith(
+          _$_ContactoModificacionEditPageData value,
+          $Res Function(_$_ContactoModificacionEditPageData) then) =
+      __$$_ContactoModificacionEditPageDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ClienteContacto? clienteContacto, bool isSent, Object? error});
@@ -98,13 +98,13 @@ abstract class _$$_ClienteContactoEditPageDataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ClienteContactoEditPageDataCopyWithImpl<$Res>
-    extends _$ClienteContactoEditPageDataCopyWithImpl<$Res,
-        _$_ClienteContactoEditPageData>
-    implements _$$_ClienteContactoEditPageDataCopyWith<$Res> {
-  __$$_ClienteContactoEditPageDataCopyWithImpl(
-      _$_ClienteContactoEditPageData _value,
-      $Res Function(_$_ClienteContactoEditPageData) _then)
+class __$$_ContactoModificacionEditPageDataCopyWithImpl<$Res>
+    extends _$ContactoModificacionEditPageDataCopyWithImpl<$Res,
+        _$_ContactoModificacionEditPageData>
+    implements _$$_ContactoModificacionEditPageDataCopyWith<$Res> {
+  __$$_ContactoModificacionEditPageDataCopyWithImpl(
+      _$_ContactoModificacionEditPageData _value,
+      $Res Function(_$_ContactoModificacionEditPageData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +114,7 @@ class __$$_ClienteContactoEditPageDataCopyWithImpl<$Res>
     Object? isSent = null,
     Object? error = freezed,
   }) {
-    return _then(_$_ClienteContactoEditPageData(
+    return _then(_$_ContactoModificacionEditPageData(
       clienteContacto: freezed == clienteContacto
           ? _value.clienteContacto
           : clienteContacto // ignore: cast_nullable_to_non_nullable
@@ -130,8 +130,9 @@ class __$$_ClienteContactoEditPageDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteContactoEditPageData extends _ClienteContactoEditPageData {
-  const _$_ClienteContactoEditPageData(
+class _$_ContactoModificacionEditPageData
+    extends _ContactoModificacionEditPageData {
+  const _$_ContactoModificacionEditPageData(
       {required this.clienteContacto, required this.isSent, this.error})
       : super._();
 
@@ -144,14 +145,14 @@ class _$_ClienteContactoEditPageData extends _ClienteContactoEditPageData {
 
   @override
   String toString() {
-    return 'ClienteContactoEditPageData(clienteContacto: $clienteContacto, isSent: $isSent, error: $error)';
+    return 'ContactoModificacionEditPageData(clienteContacto: $clienteContacto, isSent: $isSent, error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteContactoEditPageData &&
+            other is _$_ContactoModificacionEditPageData &&
             (identical(other.clienteContacto, clienteContacto) ||
                 other.clienteContacto == clienteContacto) &&
             (identical(other.isSent, isSent) || other.isSent == isSent) &&
@@ -165,18 +166,19 @@ class _$_ClienteContactoEditPageData extends _ClienteContactoEditPageData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteContactoEditPageDataCopyWith<_$_ClienteContactoEditPageData>
-      get copyWith => __$$_ClienteContactoEditPageDataCopyWithImpl<
-          _$_ClienteContactoEditPageData>(this, _$identity);
+  _$$_ContactoModificacionEditPageDataCopyWith<
+          _$_ContactoModificacionEditPageData>
+      get copyWith => __$$_ContactoModificacionEditPageDataCopyWithImpl<
+          _$_ContactoModificacionEditPageData>(this, _$identity);
 }
 
-abstract class _ClienteContactoEditPageData
-    extends ClienteContactoEditPageData {
-  const factory _ClienteContactoEditPageData(
+abstract class _ContactoModificacionEditPageData
+    extends ContactoModificacionEditPageData {
+  const factory _ContactoModificacionEditPageData(
       {required final ClienteContacto? clienteContacto,
       required final bool isSent,
-      final Object? error}) = _$_ClienteContactoEditPageData;
-  const _ClienteContactoEditPageData._() : super._();
+      final Object? error}) = _$_ContactoModificacionEditPageData;
+  const _ContactoModificacionEditPageData._() : super._();
 
   @override
   ClienteContacto? get clienteContacto;
@@ -186,6 +188,7 @@ abstract class _ClienteContactoEditPageData
   Object? get error;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteContactoEditPageDataCopyWith<_$_ClienteContactoEditPageData>
+  _$$_ContactoModificacionEditPageDataCopyWith<
+          _$_ContactoModificacionEditPageData>
       get copyWith => throw _privateConstructorUsedError;
 }

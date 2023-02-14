@@ -751,7 +751,7 @@ class _DatosRelacionados extends StatelessWidget {
         DatosExtraRow(
           title: S.of(context).cliente_show_clienteContacto_titulo,
           navigationTo: () => context.router.push(
-            ClienteContactoRoute(
+            ClienteContactoListRoute(
               clienteId: cliente.id,
               nombreCliente: cliente.nombreCliente,
             ),

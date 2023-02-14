@@ -1524,11 +1524,21 @@ class S {
     );
   }
 
-  /// `Have changes to process`
+  /// `Have changes pending to process`
   String get cliente_show_clienteContacto_hayCambiosSinTramitar {
     return Intl.message(
-      'Have changes to process',
+      'Have changes pending to process',
       name: 'cliente_show_clienteContacto_hayCambiosSinTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Have changes pending to send`
+  String get cliente_show_clienteContacto_hayCambiosDeEnviar {
+    return Intl.message(
+      'Have changes pending to send',
+      name: 'cliente_show_clienteContacto_hayCambiosDeEnviar',
       desc: '',
       args: [],
     );

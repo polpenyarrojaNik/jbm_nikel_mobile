@@ -192,8 +192,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Phone 2"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_hayCambiosDeEnviar":
+            MessageLookupByLibrary.simpleMessage(
+                "Have changes pending to send"),
         "cliente_show_clienteContacto_hayCambiosSinTramitar":
-            MessageLookupByLibrary.simpleMessage("Have changes to process"),
+            MessageLookupByLibrary.simpleMessage(
+                "Have changes pending to process"),
         "cliente_show_clienteContacto_id":
             MessageLookupByLibrary.simpleMessage("Id"),
         "cliente_show_clienteContacto_nombre":

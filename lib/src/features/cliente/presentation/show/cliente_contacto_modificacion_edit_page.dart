@@ -5,35 +5,34 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/common_app_bar.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_edit_page_data.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_edit_param.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_modificacion_param.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'cliente_contacto_edit_page_controller.dart';
+import 'cliente_contacto_modificacion_edit_page_controller.dart';
+import 'cliente_contacto_modificacion_list_tile.dart';
 
 class ClienteContactoEditPage extends ConsumerWidget {
-  ClienteContactoEditPage(
-      {super.key,
-      required this.clienteId,
-      required this.clienteContactoEditParam});
+  ClienteContactoEditPage({super.key, required this.clienteModificacionParam});
 
-  final ClienteContactoEditParam clienteContactoEditParam;
-  final String clienteId;
+  final ClienteModificacionParam clienteModificacionParam;
   final formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final value = ref.watch(
-        clienteContactoEditPageControllerProvider(clienteContactoEditParam));
+        clienteContactoModificacionEditPageControllerProvider(
+            clienteModificacionParam));
 
     ref.listen<AsyncValue>(
-      clienteContactoEditPageControllerProvider(clienteContactoEditParam),
+      clienteContactoModificacionEditPageControllerProvider(
+          clienteModificacionParam),
       (_, state) => state.maybeWhen(
           orElse: () {},
           error: (error, _) {
@@ -41,19 +40,23 @@ class ClienteContactoEditPage extends ConsumerWidget {
                 ? error.details.message
                 : error.toString();
 
-            context.showErrorBar(content: Text(errorMessage));
+            context.showErrorBar(
+                content: Text(errorMessage),
+                duration: const Duration(seconds: 5));
+            ref.invalidate(clienteContactosListProvider(
+                clienteModificacionParam.clienteId));
+            context.router.pop();
           },
-          data: (clienteContactoEditPageData) {
-            clienteContactoEditPageData =
-                clienteContactoEditPageData as ClienteContactoEditPageData;
-            if (clienteContactoEditPageData.isSent) {
-              if (clienteContactoEditPageData.clienteContacto != null) {
+          data: (contactoModificacionEditPageData) {
+            contactoModificacionEditPageData = contactoModificacionEditPageData
+                as ContactoModificacionEditPageData;
+            if (contactoModificacionEditPageData.isSent) {
+              if (contactoModificacionEditPageData.clienteContacto != null) {
                 context.showSuccessBar(
                   content: Text(S
                       .of(context)
                       .cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito),
                 );
-                savedContactoSuccessNavigation(context, ref);
               } else {
                 context.showErrorBar(
                   content: Text(
@@ -63,39 +66,52 @@ class ClienteContactoEditPage extends ConsumerWidget {
                   ),
                 );
               }
+              ref.invalidate(clienteContactosListProvider(
+                  clienteModificacionParam.clienteId));
+              context.router.pop();
             }
           }),
     );
 
     return Scaffold(
       appBar: CommonAppBar(
-          titleText: S
-              .of(context)
-              .cliente_show_clienteContacto_clienteContacoEditPage_editarContacto,
-          actions: [
-            if (clienteContactoEditParam.clienteContactoId != null)
-              IconButton(
-                onPressed: () => deleteClienteContacto(context, ref),
-                icon: const Icon(Icons.delete),
-              ),
-            IconButton(
-                onPressed: () => saveClienteContacto(context, ref, formKey),
-                icon: const Icon(Icons.save)),
-          ]),
+        titleText: S
+            .of(context)
+            .cliente_show_clienteContacto_clienteContacoEditPage_editarContacto,
+        actions: [
+          IconButton(
+              onPressed: () => _saveContactoModificacion(context, ref, formKey),
+              icon: const Icon(Icons.save)),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: value.when(
-          data: (clienteContactoEditPageData) => ClienteContactoEditForm(
-            clienteContacto: clienteContactoEditPageData.clienteContacto,
-            formKey: formKey,
+          data: (clienteContactoEditPageData) => Column(
+            children: [
+              _ContactoModificacionEditForm(
+                clienteContacto: clienteContactoEditPageData.clienteContacto,
+                formKey: formKey,
+              ),
+              _ModificacionesListView(
+                clienteModificacionParam: clienteModificacionParam,
+              ),
+            ],
           ),
           error: (error, _) {
             final clienteContactoEditPageData =
-                error as ClienteContactoEditPageData;
+                error as ContactoModificacionEditPageData;
 
-            return ClienteContactoEditForm(
-              clienteContacto: clienteContactoEditPageData.clienteContacto,
-              formKey: formKey,
+            return Column(
+              children: [
+                _ContactoModificacionEditForm(
+                  clienteContacto: clienteContactoEditPageData.clienteContacto,
+                  formKey: formKey,
+                ),
+                _ModificacionesListView(
+                  clienteModificacionParam: clienteModificacionParam,
+                ),
+              ],
             );
           },
           loading: () => const Center(
@@ -106,18 +122,13 @@ class ClienteContactoEditPage extends ConsumerWidget {
     );
   }
 
-  void savedContactoSuccessNavigation(BuildContext context, WidgetRef ref) {
-    ref.invalidate(clienteContactosListProvider(clienteId));
-    context.router.pop();
-  }
-
-  void saveClienteContacto(BuildContext context, WidgetRef ref,
+  void _saveContactoModificacion(BuildContext context, WidgetRef ref,
       GlobalKey<FormBuilderState> formKey) async {
     if (formKey.currentState!.saveAndValidate()) {
-      final clienteConatctoToUpsert = ClienteContacto(
-        clienteId: clienteId,
-        contactoId:
-            clienteContactoEditParam.clienteContactoId ?? const Uuid().v1(),
+      //TODO cambair por modificación
+      final conatctoModificacionToUpsert = ClienteContacto(
+        clienteId: clienteModificacionParam.clienteId,
+        contactoId: clienteModificacionParam.id,
         nombre: formKey.currentState!.value['nombre'] as String,
         apellido1: formKey.currentState!.value['apellido1'] as String?,
         apellido2: formKey.currentState!.value['apellido2'] as String?,
@@ -131,28 +142,17 @@ class ClienteContactoEditPage extends ConsumerWidget {
         deleted: false,
       );
       await ref
-          .read(clienteContactoEditPageControllerProvider(
-                  clienteContactoEditParam)
+          .read(clienteContactoModificacionEditPageControllerProvider(
+                  clienteModificacionParam)
               .notifier)
-          .upsertClienteContacto(clienteConatctoToUpsert);
+          .upsertContactoModificacion(conatctoModificacionToUpsert);
     }
-  }
-
-  void deleteClienteContacto(BuildContext context, WidgetRef ref) async {
-    await ref
-        .read(
-            clienteContactoEditPageControllerProvider(clienteContactoEditParam)
-                .notifier)
-        .deleteClienteContacto();
-
-    ref.invalidate(clienteContactosListProvider);
-    context.router.pop();
   }
 }
 
-class ClienteContactoEditForm extends StatelessWidget {
-  const ClienteContactoEditForm(
-      {super.key, required this.clienteContacto, required this.formKey});
+class _ContactoModificacionEditForm extends StatelessWidget {
+  const _ContactoModificacionEditForm(
+      {required this.clienteContacto, required this.formKey});
 
   final ClienteContacto? clienteContacto;
   final GlobalKey<FormBuilderState> formKey;
@@ -264,5 +264,27 @@ class ClienteContactoEditForm extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _ModificacionesListView extends ConsumerWidget {
+  const _ModificacionesListView({required this.clienteModificacionParam});
+
+  final ClienteModificacionParam clienteModificacionParam;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final modificacionesValue = ref
+        .watch(clienteContactoModificacionesProvider(clienteModificacionParam));
+    return modificacionesValue.when(
+        data: (modificacionesList) => ListView.separated(
+              itemBuilder: (context, i) => ClienteContactoModificacionListTile(
+                  contactoModificacion: modificacionesList[i]),
+              separatorBuilder: (context, i) => const Divider(),
+              itemCount: modificacionesList.length,
+            ),
+        error: (error, _) => ErrorMessageWidget(
+            (error is AppException) ? error.details.message : error.toString()),
+        loading: () => const Center(child: CircularProgressIndicator()));
   }
 }

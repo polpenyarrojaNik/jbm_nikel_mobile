@@ -5,11 +5,11 @@ import 'cliente_contacto.dart';
 part 'cliente_contacto_edit_page_data.freezed.dart';
 
 @freezed
-class ClienteContactoEditPageData with _$ClienteContactoEditPageData {
-  const ClienteContactoEditPageData._();
-  const factory ClienteContactoEditPageData({
+class ContactoModificacionEditPageData with _$ContactoModificacionEditPageData {
+  const ContactoModificacionEditPageData._();
+  const factory ContactoModificacionEditPageData({
     required ClienteContacto? clienteContacto,
     required bool isSent,
     Object? error,
-  }) = _ClienteContactoEditPageData;
+  }) = _ContactoModificacionEditPageData;
 }

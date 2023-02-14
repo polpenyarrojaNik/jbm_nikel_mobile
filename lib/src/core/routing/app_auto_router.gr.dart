@@ -110,11 +110,11 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    ClienteContactoRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteContactoRouteArgs>();
+    ClienteContactoListRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteContactoListRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: ClienteContactoPage(
+        child: ClienteContactoListPage(
           key: args.key,
           clienteId: args.clienteId,
           nombreCliente: args.nombreCliente,
@@ -127,8 +127,7 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ClienteContactoEditPage(
           key: args.key,
-          clienteId: args.clienteId,
-          clienteContactoEditParam: args.clienteContactoEditParam,
+          clienteModificacionParam: args.clienteModificacionParam,
         ),
         fullscreenDialog: true,
       );
@@ -514,7 +513,7 @@ class _$AppRouter extends RootStackRouter {
           path: '/cliente/:id/adjuntos',
         ),
         RouteConfig(
-          ClienteContactoRoute.name,
+          ClienteContactoListRoute.name,
           path: '/cliente/:id/contactos',
         ),
         RouteConfig(
@@ -955,27 +954,28 @@ class ClienteAdjuntoRouteArgs {
 }
 
 /// generated route for
-/// [ClienteContactoPage]
-class ClienteContactoRoute extends PageRouteInfo<ClienteContactoRouteArgs> {
-  ClienteContactoRoute({
+/// [ClienteContactoListPage]
+class ClienteContactoListRoute
+    extends PageRouteInfo<ClienteContactoListRouteArgs> {
+  ClienteContactoListRoute({
     Key? key,
     required String clienteId,
     required String? nombreCliente,
   }) : super(
-          ClienteContactoRoute.name,
+          ClienteContactoListRoute.name,
           path: '/cliente/:id/contactos',
-          args: ClienteContactoRouteArgs(
+          args: ClienteContactoListRouteArgs(
             key: key,
             clienteId: clienteId,
             nombreCliente: nombreCliente,
           ),
         );
 
-  static const String name = 'ClienteContactoRoute';
+  static const String name = 'ClienteContactoListRoute';
 }
 
-class ClienteContactoRouteArgs {
-  const ClienteContactoRouteArgs({
+class ClienteContactoListRouteArgs {
+  const ClienteContactoListRouteArgs({
     this.key,
     required this.clienteId,
     required this.nombreCliente,
@@ -989,7 +989,7 @@ class ClienteContactoRouteArgs {
 
   @override
   String toString() {
-    return 'ClienteContactoRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+    return 'ClienteContactoListRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
   }
 }
 
@@ -999,15 +999,13 @@ class ClienteContactoEditRoute
     extends PageRouteInfo<ClienteContactoEditRouteArgs> {
   ClienteContactoEditRoute({
     Key? key,
-    required String clienteId,
-    required ClienteContactoEditParam clienteContactoEditParam,
+    required ClienteModificacionParam clienteModificacionParam,
   }) : super(
           ClienteContactoEditRoute.name,
           path: '/cliente/:id/contactos/:contactoId',
           args: ClienteContactoEditRouteArgs(
             key: key,
-            clienteId: clienteId,
-            clienteContactoEditParam: clienteContactoEditParam,
+            clienteModificacionParam: clienteModificacionParam,
           ),
         );
 
@@ -1017,19 +1015,16 @@ class ClienteContactoEditRoute
 class ClienteContactoEditRouteArgs {
   const ClienteContactoEditRouteArgs({
     this.key,
-    required this.clienteId,
-    required this.clienteContactoEditParam,
+    required this.clienteModificacionParam,
   });
 
   final Key? key;
 
-  final String clienteId;
-
-  final ClienteContactoEditParam clienteContactoEditParam;
+  final ClienteModificacionParam clienteModificacionParam;
 
   @override
   String toString() {
-    return 'ClienteContactoEditRouteArgs{key: $key, clienteId: $clienteId, clienteContactoEditParam: $clienteContactoEditParam}';
+    return 'ClienteContactoEditRouteArgs{key: $key, clienteModificacionParam: $clienteModificacionParam}';
   }
 }
 

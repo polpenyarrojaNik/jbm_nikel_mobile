@@ -4,8 +4,8 @@ import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.da
 
 import '../../../core/infrastructure/local_database.dart';
 
-part 'cliente_contacto_local_dto.freezed.dart';
-part 'cliente_contacto_local_dto.g.dart';
+part 'cliente_contacto_modificacion_dto.freezed.dart';
+part 'cliente_contacto_modificacion_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 
@@ -16,7 +16,7 @@ class ClienteContactoLocalDTO
   const ClienteContactoLocalDTO._();
   const factory ClienteContactoLocalDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'CONTACTO_ID') required String contactoId,
+    @JsonKey(name: 'CONTACTO_ID') required String? contactoId,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
     @JsonKey(name: 'NOMBRE') String? nombre,
     @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -52,7 +52,9 @@ class ClienteContactoLocalDTO
       clienteId: clienteId,
       contactoId: contactoId,
       observaciones: observaciones,
-      nombre: getName(nombre, apellido1, apellido2),
+      nombre: nombre,
+      apellido1: apellido1,
+      apellido2: apellido2,
       telefono1: telefono1,
       telefono2: telefono2,
       email: email,
@@ -81,17 +83,6 @@ class ClienteContactoLocalDTO
       deleted: Value(deleted),
     ).toColumns(nullToAbsent);
   }
-
-  String? getName(String? nombre, String? apellido1, String? apellido2) {
-    if (nombre != null && apellido1 != null && apellido2 != null) {
-      return '$nombre $apellido1 $apellido2';
-    } else if (nombre != null && apellido1 != null) {
-      return '$nombre $apellido1';
-    } else if (nombre != null) {
-      return nombre;
-    }
-    return null;
-  }
 }
 
 @UseRowClass(ClienteContactoLocalDTO)
@@ -103,7 +94,7 @@ class ClienteContactoLocalTable extends Table {
   Set<Column> get primaryKey => {clienteId, contactoId};
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
-  TextColumn get contactoId => text().named('CONTACTO_ID')();
+  TextColumn get contactoId => text().nullable().named('CONTACTO_ID')();
   TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
   TextColumn get nombre => text().nullable().named('NOMBRE')();
   TextColumn get apellido1 => text().nullable().named('APELLIDO1')();

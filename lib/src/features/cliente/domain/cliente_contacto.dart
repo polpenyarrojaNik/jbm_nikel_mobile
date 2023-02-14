@@ -7,7 +7,7 @@ class ClienteContacto with _$ClienteContacto {
   const ClienteContacto._();
   const factory ClienteContacto(
       {required String clienteId,
-      required String contactoId,
+      required String? contactoId,
       String? observaciones,
       String? nombre,
       String? apellido1,

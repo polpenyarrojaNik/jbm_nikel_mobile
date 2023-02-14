@@ -12,7 +12,7 @@ import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
-import '../../features/cliente/infrastructure/cliente_contacto_local_dto.dart';
+import '../../features/cliente/infrastructure/cliente_contacto_modificacion_dto.dart';
 import '../../features/cliente/infrastructure/cliente_direccion_local_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
