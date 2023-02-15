@@ -24,7 +24,7 @@ import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
-import '../../features/cliente/presentation/show/cliente_contacto_modificacion_edit_page.dart';
+import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
@@ -50,7 +50,7 @@ import '../../features/pedido_venta/presentation/show/pedido_venta_detalle_page.
 import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
-import '../../features/cliente/domain/cliente_modificacion_param.dart';
+import '../../features/cliente/domain/cliente_imp_param.dart';
 import '../../features/cliente/domain/cliente_direccion_edit_param.dart';
 import '../domain/pais.dart';
 import '../domain/entity_id_is_local_param.dart';

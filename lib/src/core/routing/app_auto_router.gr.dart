@@ -127,7 +127,7 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ClienteContactoEditPage(
           key: args.key,
-          clienteModificacionParam: args.clienteModificacionParam,
+          clienteImpParam: args.clienteImpParam,
         ),
         fullscreenDialog: true,
       );
@@ -999,13 +999,13 @@ class ClienteContactoEditRoute
     extends PageRouteInfo<ClienteContactoEditRouteArgs> {
   ClienteContactoEditRoute({
     Key? key,
-    required ClienteModificacionParam clienteModificacionParam,
+    required ClienteImpParam clienteImpParam,
   }) : super(
           ClienteContactoEditRoute.name,
           path: '/cliente/:id/contactos/:contactoId',
           args: ClienteContactoEditRouteArgs(
             key: key,
-            clienteModificacionParam: clienteModificacionParam,
+            clienteImpParam: clienteImpParam,
           ),
         );
 
@@ -1015,16 +1015,16 @@ class ClienteContactoEditRoute
 class ClienteContactoEditRouteArgs {
   const ClienteContactoEditRouteArgs({
     this.key,
-    required this.clienteModificacionParam,
+    required this.clienteImpParam,
   });
 
   final Key? key;
 
-  final ClienteModificacionParam clienteModificacionParam;
+  final ClienteImpParam clienteImpParam;
 
   @override
   String toString() {
-    return 'ClienteContactoEditRouteArgs{key: $key, clienteModificacionParam: $clienteModificacionParam}';
+    return 'ClienteContactoEditRouteArgs{key: $key, clienteImpParam: $clienteImpParam}';
   }
 }
 

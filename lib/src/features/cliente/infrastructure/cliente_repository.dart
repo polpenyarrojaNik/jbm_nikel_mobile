@@ -10,10 +10,12 @@ import 'package:jbm_nikel_mobile/src/core/domain/pais.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/app.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_adjunto_dto.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/domain/usuario.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../core/domain/adjunto_param.dart';
 import '../../../core/exceptions/app_exception.dart';
@@ -31,13 +33,14 @@ import '../domain/cliente_contacto.dart';
 import '../domain/cliente_descuento.dart';
 import '../domain/cliente_direccion.dart';
 import '../domain/cliente_grupo_neto.dart';
-import '../domain/cliente_modificacion_param.dart';
+import '../domain/cliente_imp_param.dart';
 import '../domain/cliente_pago_pendiente.dart';
 import '../domain/cliente_precio_neto.dart';
 import '../domain/cliente_rappel.dart';
 import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
-import 'cliente_contacto_modificacion_dto.dart';
+import 'cliente_contacto_dto.dart';
+import 'cliente_contacto_imp_dto.dart';
 import 'cliente_direccion_local_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
@@ -143,11 +146,11 @@ final clientePaisProvider =
   return clienteRepository.getPaisCliente(clienteId: clienteId);
 });
 
-final clienteContactoModificacionesProvider = FutureProvider.autoDispose
-    .family<List<Modificacion>, ClienteModificacionParam>(
-        (ref, clienteModificacionParam) {
+final clienteContactoImpListInSyncByClienteProvider = FutureProvider.autoDispose
+    .family<List<ClienteContactoImp>, ClienteImpParam>((ref, clienteImpParam) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getContactoModificaciones(clienteModificacionParam);
+  return clienteRepository
+      .getClienteContactosImpListInSyncByCliente(clienteImpParam);
 });
 
 class ClienteRepository {
@@ -471,14 +474,19 @@ class ClienteRepository {
       {required String clienteId}) async {
     final List<ClienteContacto> clienteContactoList = [];
     try {
-      final clienteContactoLocalList =
-          await _getNewLocalClienteContactoModificacionesList(clienteId);
+      final clienteContactoImpList =
+          await _getClienteContactoImpList(clienteId);
 
       final clienteContactoSyncList =
-          await _getClienteContactoSyncList(clienteId);
+          await _getClienteContactoSyncList(clienteId, clienteContactoImpList);
 
       clienteContactoList.addAll(clienteContactoSyncList);
-      clienteContactoList.addAll(clienteContactoLocalList);
+
+      for (var i = 0; i < clienteContactoImpList.length; i++) {
+        if (clienteContactoImpList[i].contactoId == null) {
+          clienteContactoList.add(clienteContactoImpList[i]);
+        }
+      }
 
       return clienteContactoList;
     } catch (e) {
@@ -486,34 +494,51 @@ class ClienteRepository {
     }
   }
 
-  Future<ClienteContacto> getClienteContactoById(
-      {required String clienteContactoId, bool tratado = true}) async {
+  Future<ClienteContacto> getClienteContactoSyncById(
+    String clienteContactoId,
+  ) async {
     try {
-      if (tratado) {
-        return await _getClienteContactoSyncById(clienteContactoId);
-      } else {
-        return await _getClienteContactoLocalById(clienteContactoId);
-      }
+      return await _getClienteContactoSyncById(clienteContactoId);
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<ClienteContacto> upsertContactoModificacion(
-      ClienteContacto upsertClienteContacto, bool isNew) async {
+  Future<ClienteContacto> getClienteContactoImpById(
+      String contactoImpGuid) async {
     try {
-      final clienteContactoLocalDto =
-          ClienteContactoLocalDTO.fromDomain(upsertClienteContacto);
+      final query = (_localDb.select(_localDb.clienteContactoImpTable)
+        ..where((t) => t.id.equals(contactoImpGuid)));
 
-      await _insertContactoModificacionInLocalDB(clienteContactoLocalDto);
+      final clienteConatctoImpDto = await query.getSingle();
 
-      final clienteContactoLocalDtoEnviado =
-          await _remoteUpsertContactoModificacion(clienteContactoLocalDto);
+      return ClienteContactoDTO.fromContactoImp(clienteConatctoImpDto)
+          .toDomain(enviado: false, tratado: false);
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
 
-      await _updateContactoModificacionInDB(
-          clienteContactoLocalDtoEnviado, isNew);
+  Future<ClienteContacto> upsertClienteContactoImp(
+      ClienteContactoImp upsertClienteContactoImp, bool isNew) async {
+    try {
+      final clienteContactoImpDto =
+          ClienteContactoImpDTO.fromDomain(upsertClienteContactoImp);
+      await _insertClienteContactoImpInLocalDB(clienteContactoImpDto);
 
-      return clienteContactoLocalDtoEnviado.toDomain();
+      throw AppException.articuloNotFound();
+
+      final clienteContactoImpDtoEnviado =
+          await _remoteUpsertClienteContactoImp(clienteContactoImpDto);
+
+      if (!isNew) {
+        await _deleteContactoImpEnviadoInLocalDB(clienteContactoImpDtoEnviado);
+      } else {
+        await _updateContactoImpInLocalDB(clienteContactoImpDtoEnviado);
+      }
+
+      return ClienteContactoDTO.fromContactoImp(clienteContactoImpDtoEnviado)
+          .toDomain();
     } catch (e) {
       rethrow;
     }
@@ -1321,37 +1346,41 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<List<ClienteContacto>> _getNewLocalClienteContactoModificacionesList(
-      String clienteId) async {
-    try {
-      final query = (_localDb.select(_localDb.clienteContactoLocalTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
-
-      return query.map((row) => row.toDomain()).get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
   Future<List<ClienteContacto>> _getClienteContactoSyncList(
-      String clienteId) async {
+      String clienteId, List<ClienteContacto> clienteContactoImpList) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.map((row) => row.toDomain()).get();
+      return query.map((row) {
+        for (var i = 0; i < clienteContactoImpList.length; i++) {
+          final clienteContactoImp = clienteContactoImpList[i];
+          if (!clienteContactoImp.enviado &&
+              row.clienteId == clienteContactoImp.clienteId &&
+              row.contactoId == clienteContactoImp.contactoId) {
+            return row.toDomain(
+                enviado: clienteContactoImp.enviado,
+                tratado: clienteContactoImp.tratado,
+                contactoImpGuid: clienteContactoImp.contactoImpGuid);
+          }
+        }
+
+        return row.toDomain();
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<ClienteContacto> _getClienteContactoLocalById(
-      String clienteContactoId) async {
+  Future<List<ClienteContacto>> _getClienteContactoImpList(
+      String clienteId) async {
     try {
-      final query = (_localDb.select(_localDb.clienteContactoLocalTable)
-        ..where((t) => t.contactoId.equals(clienteContactoId)));
+      final query = (_localDb.select(_localDb.clienteContactoImpTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
-      return query.map((row) => row.toDomain()).getSingle();
+      return await query
+          .map((row) => ClienteContacto.fromClienteContactoImp(row.toDomain()))
+          .get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -1369,32 +1398,32 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> _insertContactoModificacionInLocalDB(
-      ClienteContactoLocalDTO clienteContactoLocalDTO) async {
+  Future<void> _insertClienteContactoImpInLocalDB(
+      ClienteContactoImpDTO clienteContactoImpDTO) async {
     try {
       await _localDb
-          .into(_localDb.clienteContactoLocalTable)
-          .insertOnConflictUpdate(clienteContactoLocalDTO);
+          .into(_localDb.clienteContactoImpTable)
+          .insertOnConflictUpdate(clienteContactoImpDTO);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
   }
 
-  Future<ClienteContactoLocalDTO> _remoteUpsertContactoModificacion(
-    ClienteContactoLocalDTO clienteContactoLocalDTO,
+  Future<ClienteContactoImpDTO> _remoteUpsertClienteContactoImp(
+    ClienteContactoImpDTO clienteContactoImpDTO,
   ) async {
     try {
-      final clienteContactoLocalToJson = clienteContactoLocalDTO.toJson();
-      print(jsonEncode(clienteContactoLocalToJson));
+      final clienteContactoImpToJson = clienteContactoImpDTO.toJson();
+      print(jsonEncode(clienteContactoImpToJson));
 
       final requestUri = (usuario.test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteContactoLocalDTO.clienteId}/contacto',
+              'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteContactoLocalDTO.clienteId}/contacto',
+              'api/v1/online/clientes/${clienteContactoImpDTO.clienteId}/contacto',
             );
 
       final response = await _dio.postUri(
@@ -1402,12 +1431,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         options: Options(
           headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
         ),
-        data: jsonEncode(clienteContactoLocalToJson),
+        data: jsonEncode(clienteContactoImpToJson),
       );
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
 
-        return ClienteContactoLocalDTO.fromJson(json);
+        return ClienteContactoImpDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -1417,21 +1446,26 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> _updateContactoModificacionInDB(
-      ClienteContactoLocalDTO clienteContactoLocalDTO, bool isNew) async {
+  Future<void> _deleteContactoImpEnviadoInLocalDB(
+      ClienteContactoImpDTO clienteContactoImpDTO) async {
     try {
-      if (isNew) {
-        await _localDb
-            .update(_localDb.clienteContactoLocalTable)
-            .replace(clienteContactoLocalDTO);
-      } else {
-        await (_localDb.delete(_localDb.clienteContactoLocalTable)
-              ..where((tbl) =>
-                  tbl.contactoId
-                      .equalsNullable(clienteContactoLocalDTO.contactoId) &
-                  tbl.clienteId.equals(clienteContactoLocalDTO.clienteId)))
-            .go();
-      }
+      await (_localDb.delete(_localDb.clienteContactoImpTable)
+            ..where((tbl) =>
+                tbl.contactoId
+                    .equalsNullable(clienteContactoImpDTO.contactoId) &
+                tbl.clienteId.equals(clienteContactoImpDTO.clienteId)))
+          .go();
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> _updateContactoImpInLocalDB(
+      ClienteContactoImpDTO clienteContactoImpDTO) async {
+    try {
+      await _localDb
+          .update(_localDb.clienteContactoImpTable)
+          .replace(clienteContactoImpDTO);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -1536,19 +1570,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       await (_localDb.delete(_localDb.clienteDireccionLocalTable)
             ..where((tbl) =>
                 tbl.direccionId.equals(direccionId) &
-                tbl.clienteId.equals(clienteId)))
-          .go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
-    }
-  }
-
-  Future<void> _deleteClienteContactoInLocalDB(
-      String clienteId, String contactoId) async {
-    try {
-      await (_localDb.delete(_localDb.clienteContactoLocalTable)
-            ..where((tbl) =>
-                tbl.contactoId.equals(contactoId) &
                 tbl.clienteId.equals(clienteId)))
           .go();
     } catch (e) {
@@ -1682,6 +1703,42 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
+  Future<void> deleteClienteContactoImp(String contactoGuidImp) async {
+    try {
+      await (_localDb.delete(_localDb.clienteContactoImpTable)
+            ..where((tbl) => tbl.id.equals(contactoGuidImp)))
+          .go();
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> deleteClienteContactoTratado(
+      String clienteId, String clienteContactoId) async {
+    try {
+      final deletedContactoImpDto = ClienteContactoImpDTO(
+        id: const Uuid().v4(),
+        fecha: DateTime.now().toUtc().toLocal(),
+        usuarioId: usuario.id,
+        clienteId: clienteId,
+        contactoId: clienteContactoId,
+        enviado: 'N',
+        borrar: 'S',
+      );
+
+      await _insertClienteContactoImpInLocalDB(deletedContactoImpDto);
+      final contactoImpEnviado =
+          await _remoteUpsertClienteContactoImp(deletedContactoImpDto);
+      if (contactoImpEnviado.enviado == 'S') {
+        await _deleteContactoImpEnviadoInLocalDB(deletedContactoImpDto);
+      } else {
+        await _updateContactoImpInLocalDB(deletedContactoImpDto);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> deleteClienteDireccion(
       String clienteId, String clienteDireccionId) async {
     try {
@@ -1714,80 +1771,57 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> deleteClienteContacto(
-      String clienteId, String clienteContactoId, bool tratado) async {
+  Future<List<ClienteContactoImp>> getClienteContactosImpListInLocalByCliente(
+      ClienteImpParam clienteContactoImpParam) async {
     try {
-      final contacto = await getClienteContactoById(
-          clienteContactoId: clienteContactoId, tratado: tratado);
+      final query = _localDb.select(_localDb.clienteContactoImpTable)
+        ..where(
+            (tbl) => tbl.clienteId.equals(clienteContactoImpParam.clienteId));
 
-      final deleteContacto = contacto.copyWith(deleted: true);
-
-      final deletedContactoLocalDto = ClienteContactoLocalDTO(
-        clienteId: clienteId,
-        contactoId: clienteContactoId,
-        nombre: '',
-        apellido1: null,
-        apellido2: null,
-        telefono1: null,
-        telefono2: null,
-        email: null,
-        lastUpdated: DateTime.now().toUtc(),
-        tratado: 'N',
-        enviado: 'N',
-        deleted: 'S',
-      );
-
-      if (deleteContacto.tratado) {
-        await _insertContactoModificacionInLocalDB(deletedContactoLocalDto);
-        //TODO DELETE MODIFICACIONES AND DELETE CONTACTO FROM API
-        //TODO DELETE MODIFICACIONES IN LOCAL DB
-        await _deleteClienteContactoInLocalDB(clienteId, clienteContactoId);
-      } else {
-        await _deleteClienteContactoInLocalDB(clienteId, clienteContactoId);
-        if (deleteContacto.enviado) {
-          //TODO DELETE MODIFICACIONES AND DELETE CONTACTO FROM API
-        }
-      }
+      return await query.map((row) {
+        return row.toDomain();
+      }).get();
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<ClienteDireccionLocalDTO> _remoteDeleteClienteDireccion(
-      String clienteId, String direccionId) async {
+  Future<List<ClienteContactoImp>> getClienteContactosImpListInSyncByCliente(
+      ClienteImpParam clienteContactoImpParam) async {
     try {
-      final requestUri = (usuario.test)
-          ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/$clienteId/direccion/$direccionId',
-            )
-          : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/$clienteId/direccion/$direccionId',
-            );
+      try {
+        final requestUri = (usuario.test)
+            ? Uri.http(
+                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+              );
 
-      final response = await _dio.deleteUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-        ),
-      );
-      if (response.statusCode == 200) {
-        final json = response.data['data'] as Map<String, dynamic>;
+        final response = await _dio.getUri(
+          requestUri,
+          options: Options(
+            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+          ),
+        );
+        if (response.statusCode == 200) {
+          final jsonData = response.data['data'] as List<dynamic>;
 
-        return ClienteDireccionLocalDTO.fromJson(json);
-      } else {
-        throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
+          final clienteContactoDTOList =
+              jsonData.map((e) => ClienteContactoImpDTO.fromJson(e));
+
+          return clienteContactoDTOList.map((e) => e.toDomain()).toList();
+        } else {
+          throw AppException.restApiFailure(
+              response.statusCode ?? 400, response.statusMessage ?? '');
+        }
+      } catch (e) {
+        throw getApiError(e);
       }
     } catch (e) {
-      throw getApiError(e);
+      rethrow;
     }
   }
-
-  // Future<> getClienteContactoModificaciones({required ClienteModificacionParam clienteModificacionParam}) {
-  //   try {} catch (e) {
-  //     rethrow;
-  //   }
-  // }
 }

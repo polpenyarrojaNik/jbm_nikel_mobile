@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'cliente_contacto_dto.dart';
+part of 'cliente_contacto_imp.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,65 +14,55 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ClienteContactoDTO _$ClienteContactoDTOFromJson(Map<String, dynamic> json) {
-  return _ClienteContactoDTO.fromJson(json);
-}
-
 /// @nodoc
-mixin _$ClienteContactoDTO {
-  @JsonKey(name: 'CLIENTE_ID')
+mixin _$ClienteContactoImp {
+  String get id => throw _privateConstructorUsedError;
+  DateTime get fecha => throw _privateConstructorUsedError;
+  String get usuarioId => throw _privateConstructorUsedError;
   String get clienteId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CONTACTO_ID')
   String? get contactoId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones => throw _privateConstructorUsedError;
-  @JsonKey(name: 'NOMBRE')
   String? get nombre => throw _privateConstructorUsedError;
-  @JsonKey(name: 'APELLIDO1')
   String? get apellido1 => throw _privateConstructorUsedError;
-  @JsonKey(name: 'APELLIDO2')
   String? get apellido2 => throw _privateConstructorUsedError;
-  @JsonKey(name: 'TELEFONO1')
   String? get telefono1 => throw _privateConstructorUsedError;
-  @JsonKey(name: 'TELEFONO2')
   String? get telefono2 => throw _privateConstructorUsedError;
-  @JsonKey(name: 'EMAIL')
   String? get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DELETED')
-  String get deleted => throw _privateConstructorUsedError;
+  bool get enviado => throw _privateConstructorUsedError;
+  bool get borrar => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ClienteContactoDTOCopyWith<ClienteContactoDTO> get copyWith =>
+  $ClienteContactoImpCopyWith<ClienteContactoImp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClienteContactoDTOCopyWith<$Res> {
-  factory $ClienteContactoDTOCopyWith(
-          ClienteContactoDTO value, $Res Function(ClienteContactoDTO) then) =
-      _$ClienteContactoDTOCopyWithImpl<$Res, ClienteContactoDTO>;
+abstract class $ClienteContactoImpCopyWith<$Res> {
+  factory $ClienteContactoImpCopyWith(
+          ClienteContactoImp value, $Res Function(ClienteContactoImp) then) =
+      _$ClienteContactoImpCopyWithImpl<$Res, ClienteContactoImp>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') String? contactoId,
-      @JsonKey(name: 'OBSERVACIONES') String? observaciones,
-      @JsonKey(name: 'NOMBRE') String? nombre,
-      @JsonKey(name: 'APELLIDO1') String? apellido1,
-      @JsonKey(name: 'APELLIDO2') String? apellido2,
-      @JsonKey(name: 'TELEFONO1') String? telefono1,
-      @JsonKey(name: 'TELEFONO2') String? telefono2,
-      @JsonKey(name: 'EMAIL') String? email,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      {String id,
+      DateTime fecha,
+      String usuarioId,
+      String clienteId,
+      String? contactoId,
+      String? observaciones,
+      String? nombre,
+      String? apellido1,
+      String? apellido2,
+      String? telefono1,
+      String? telefono2,
+      String? email,
+      bool enviado,
+      bool borrar});
 }
 
 /// @nodoc
-class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
-    implements $ClienteContactoDTOCopyWith<$Res> {
-  _$ClienteContactoDTOCopyWithImpl(this._value, this._then);
+class _$ClienteContactoImpCopyWithImpl<$Res, $Val extends ClienteContactoImp>
+    implements $ClienteContactoImpCopyWith<$Res> {
+  _$ClienteContactoImpCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -82,6 +72,9 @@ class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? fecha = null,
+    Object? usuarioId = null,
     Object? clienteId = null,
     Object? contactoId = freezed,
     Object? observaciones = freezed,
@@ -91,10 +84,22 @@ class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
     Object? telefono1 = freezed,
     Object? telefono2 = freezed,
     Object? email = freezed,
-    Object? lastUpdated = null,
-    Object? deleted = null,
+    Object? enviado = null,
+    Object? borrar = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -131,51 +136,57 @@ class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
+      enviado: null == enviado
+          ? _value.enviado
+          : enviado // ignore: cast_nullable_to_non_nullable
+              as bool,
+      borrar: null == borrar
+          ? _value.borrar
+          : borrar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_ClienteContactoDTOCopyWith<$Res>
-    implements $ClienteContactoDTOCopyWith<$Res> {
-  factory _$$_ClienteContactoDTOCopyWith(_$_ClienteContactoDTO value,
-          $Res Function(_$_ClienteContactoDTO) then) =
-      __$$_ClienteContactoDTOCopyWithImpl<$Res>;
+abstract class _$$_ClienteContactoImpCopyWith<$Res>
+    implements $ClienteContactoImpCopyWith<$Res> {
+  factory _$$_ClienteContactoImpCopyWith(_$_ClienteContactoImp value,
+          $Res Function(_$_ClienteContactoImp) then) =
+      __$$_ClienteContactoImpCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') String? contactoId,
-      @JsonKey(name: 'OBSERVACIONES') String? observaciones,
-      @JsonKey(name: 'NOMBRE') String? nombre,
-      @JsonKey(name: 'APELLIDO1') String? apellido1,
-      @JsonKey(name: 'APELLIDO2') String? apellido2,
-      @JsonKey(name: 'TELEFONO1') String? telefono1,
-      @JsonKey(name: 'TELEFONO2') String? telefono2,
-      @JsonKey(name: 'EMAIL') String? email,
-      @JsonKey(name: 'LAST_UPDATED') DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') String deleted});
+      {String id,
+      DateTime fecha,
+      String usuarioId,
+      String clienteId,
+      String? contactoId,
+      String? observaciones,
+      String? nombre,
+      String? apellido1,
+      String? apellido2,
+      String? telefono1,
+      String? telefono2,
+      String? email,
+      bool enviado,
+      bool borrar});
 }
 
 /// @nodoc
-class __$$_ClienteContactoDTOCopyWithImpl<$Res>
-    extends _$ClienteContactoDTOCopyWithImpl<$Res, _$_ClienteContactoDTO>
-    implements _$$_ClienteContactoDTOCopyWith<$Res> {
-  __$$_ClienteContactoDTOCopyWithImpl(
-      _$_ClienteContactoDTO _value, $Res Function(_$_ClienteContactoDTO) _then)
+class __$$_ClienteContactoImpCopyWithImpl<$Res>
+    extends _$ClienteContactoImpCopyWithImpl<$Res, _$_ClienteContactoImp>
+    implements _$$_ClienteContactoImpCopyWith<$Res> {
+  __$$_ClienteContactoImpCopyWithImpl(
+      _$_ClienteContactoImp _value, $Res Function(_$_ClienteContactoImp) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? fecha = null,
+    Object? usuarioId = null,
     Object? clienteId = null,
     Object? contactoId = freezed,
     Object? observaciones = freezed,
@@ -185,10 +196,22 @@ class __$$_ClienteContactoDTOCopyWithImpl<$Res>
     Object? telefono1 = freezed,
     Object? telefono2 = freezed,
     Object? email = freezed,
-    Object? lastUpdated = null,
-    Object? deleted = null,
+    Object? enviado = null,
+    Object? borrar = null,
   }) {
-    return _then(_$_ClienteContactoDTO(
+    return _then(_$_ClienteContactoImp(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -225,82 +248,81 @@ class __$$_ClienteContactoDTOCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
-              as String,
+      enviado: null == enviado
+          ? _value.enviado
+          : enviado // ignore: cast_nullable_to_non_nullable
+              as bool,
+      borrar: null == borrar
+          ? _value.borrar
+          : borrar // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_ClienteContactoDTO extends _ClienteContactoDTO {
-  const _$_ClienteContactoDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required this.clienteId,
-      @JsonKey(name: 'CONTACTO_ID') required this.contactoId,
-      @JsonKey(name: 'OBSERVACIONES') this.observaciones,
-      @JsonKey(name: 'NOMBRE') this.nombre,
-      @JsonKey(name: 'APELLIDO1') this.apellido1,
-      @JsonKey(name: 'APELLIDO2') this.apellido2,
-      @JsonKey(name: 'TELEFONO1') this.telefono1,
-      @JsonKey(name: 'TELEFONO2') this.telefono2,
-      @JsonKey(name: 'EMAIL') this.email,
-      @JsonKey(name: 'LAST_UPDATED') required this.lastUpdated,
-      @JsonKey(name: 'DELETED') this.deleted = 'N'})
+
+class _$_ClienteContactoImp extends _ClienteContactoImp {
+  const _$_ClienteContactoImp(
+      {required this.id,
+      required this.fecha,
+      required this.usuarioId,
+      required this.clienteId,
+      required this.contactoId,
+      this.observaciones,
+      this.nombre,
+      this.apellido1,
+      this.apellido2,
+      this.telefono1,
+      this.telefono2,
+      this.email,
+      required this.enviado,
+      required this.borrar})
       : super._();
 
-  factory _$_ClienteContactoDTO.fromJson(Map<String, dynamic> json) =>
-      _$$_ClienteContactoDTOFromJson(json);
-
   @override
-  @JsonKey(name: 'CLIENTE_ID')
+  final String id;
+  @override
+  final DateTime fecha;
+  @override
+  final String usuarioId;
+  @override
   final String clienteId;
   @override
-  @JsonKey(name: 'CONTACTO_ID')
   final String? contactoId;
   @override
-  @JsonKey(name: 'OBSERVACIONES')
   final String? observaciones;
   @override
-  @JsonKey(name: 'NOMBRE')
   final String? nombre;
   @override
-  @JsonKey(name: 'APELLIDO1')
   final String? apellido1;
   @override
-  @JsonKey(name: 'APELLIDO2')
   final String? apellido2;
   @override
-  @JsonKey(name: 'TELEFONO1')
   final String? telefono1;
   @override
-  @JsonKey(name: 'TELEFONO2')
   final String? telefono2;
   @override
-  @JsonKey(name: 'EMAIL')
   final String? email;
   @override
-  @JsonKey(name: 'LAST_UPDATED')
-  final DateTime lastUpdated;
+  final bool enviado;
   @override
-  @JsonKey(name: 'DELETED')
-  final String deleted;
+  final bool borrar;
 
   @override
   String toString() {
-    return 'ClienteContactoDTO(clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, lastUpdated: $lastUpdated, deleted: $deleted)';
+    return 'ClienteContactoImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, enviado: $enviado, borrar: $borrar)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteContactoDTO &&
+            other is _$_ClienteContactoImp &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.usuarioId, usuarioId) ||
+                other.usuarioId == usuarioId) &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.contactoId, contactoId) ||
@@ -317,15 +339,16 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
             (identical(other.telefono2, telefono2) ||
                 other.telefono2 == telefono2) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
+            (identical(other.enviado, enviado) || other.enviado == enviado) &&
+            (identical(other.borrar, borrar) || other.borrar == borrar));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
+      fecha,
+      usuarioId,
       clienteId,
       contactoId,
       observaciones,
@@ -335,77 +358,65 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
       telefono1,
       telefono2,
       email,
-      lastUpdated,
-      deleted);
+      enviado,
+      borrar);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteContactoDTOCopyWith<_$_ClienteContactoDTO> get copyWith =>
-      __$$_ClienteContactoDTOCopyWithImpl<_$_ClienteContactoDTO>(
+  _$$_ClienteContactoImpCopyWith<_$_ClienteContactoImp> get copyWith =>
+      __$$_ClienteContactoImpCopyWithImpl<_$_ClienteContactoImp>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ClienteContactoDTOToJson(
-      this,
-    );
-  }
 }
 
-abstract class _ClienteContactoDTO extends ClienteContactoDTO {
-  const factory _ClienteContactoDTO(
-      {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') required final String? contactoId,
-      @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
-      @JsonKey(name: 'NOMBRE') final String? nombre,
-      @JsonKey(name: 'APELLIDO1') final String? apellido1,
-      @JsonKey(name: 'APELLIDO2') final String? apellido2,
-      @JsonKey(name: 'TELEFONO1') final String? telefono1,
-      @JsonKey(name: 'TELEFONO2') final String? telefono2,
-      @JsonKey(name: 'EMAIL') final String? email,
-      @JsonKey(name: 'LAST_UPDATED') required final DateTime lastUpdated,
-      @JsonKey(name: 'DELETED') final String deleted}) = _$_ClienteContactoDTO;
-  const _ClienteContactoDTO._() : super._();
-
-  factory _ClienteContactoDTO.fromJson(Map<String, dynamic> json) =
-      _$_ClienteContactoDTO.fromJson;
+abstract class _ClienteContactoImp extends ClienteContactoImp {
+  const factory _ClienteContactoImp(
+      {required final String id,
+      required final DateTime fecha,
+      required final String usuarioId,
+      required final String clienteId,
+      required final String? contactoId,
+      final String? observaciones,
+      final String? nombre,
+      final String? apellido1,
+      final String? apellido2,
+      final String? telefono1,
+      final String? telefono2,
+      final String? email,
+      required final bool enviado,
+      required final bool borrar}) = _$_ClienteContactoImp;
+  const _ClienteContactoImp._() : super._();
 
   @override
-  @JsonKey(name: 'CLIENTE_ID')
+  String get id;
+  @override
+  DateTime get fecha;
+  @override
+  String get usuarioId;
+  @override
   String get clienteId;
   @override
-  @JsonKey(name: 'CONTACTO_ID')
   String? get contactoId;
   @override
-  @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones;
   @override
-  @JsonKey(name: 'NOMBRE')
   String? get nombre;
   @override
-  @JsonKey(name: 'APELLIDO1')
   String? get apellido1;
   @override
-  @JsonKey(name: 'APELLIDO2')
   String? get apellido2;
   @override
-  @JsonKey(name: 'TELEFONO1')
   String? get telefono1;
   @override
-  @JsonKey(name: 'TELEFONO2')
   String? get telefono2;
   @override
-  @JsonKey(name: 'EMAIL')
   String? get email;
   @override
-  @JsonKey(name: 'LAST_UPDATED')
-  DateTime get lastUpdated;
+  bool get enviado;
   @override
-  @JsonKey(name: 'DELETED')
-  String get deleted;
+  bool get borrar;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteContactoDTOCopyWith<_$_ClienteContactoDTO> get copyWith =>
+  _$$_ClienteContactoImpCopyWith<_$_ClienteContactoImp> get copyWith =>
       throw _privateConstructorUsedError;
 }

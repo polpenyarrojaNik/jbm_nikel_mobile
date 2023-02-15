@@ -1,14 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cliente_contacto_modificacion_dto.dart';
+part of 'cliente_contacto_imp_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteContactoLocalDTO _$$_ClienteContactoLocalDTOFromJson(
+_$_ClienteContactoImpDTO _$$_ClienteContactoImpDTOFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteContactoLocalDTO(
+    _$_ClienteContactoImpDTO(
+      id: json['GUID'] as String,
+      fecha: DateTime.parse(json['FECHA'] as String),
+      usuarioId: json['USUARIO_ID'] as String,
       clienteId: json['CLIENTE_ID'] as String,
       contactoId: json['CONTACTO_ID'] as String?,
       observaciones: json['OBSERVACIONES'] as String?,
@@ -18,15 +21,16 @@ _$_ClienteContactoLocalDTO _$$_ClienteContactoLocalDTOFromJson(
       telefono1: json['TELEFONO1'] as String?,
       telefono2: json['TELEFONO2'] as String?,
       email: json['EMAIL'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
       enviado: json['ENVIADO'] as String? ?? 'N',
-      tratado: json['TRATADO'] as String? ?? 'N',
-      deleted: json['DELETED'] as String? ?? 'N',
+      borrar: json['BORRAR'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteContactoLocalDTOToJson(
-        _$_ClienteContactoLocalDTO instance) =>
+Map<String, dynamic> _$$_ClienteContactoImpDTOToJson(
+        _$_ClienteContactoImpDTO instance) =>
     <String, dynamic>{
+      'GUID': instance.id,
+      'FECHA': instance.fecha.toIso8601String(),
+      'USUARIO_ID': instance.usuarioId,
       'CLIENTE_ID': instance.clienteId,
       'CONTACTO_ID': instance.contactoId,
       'OBSERVACIONES': instance.observaciones,
@@ -36,8 +40,6 @@ Map<String, dynamic> _$$_ClienteContactoLocalDTOToJson(
       'TELEFONO1': instance.telefono1,
       'TELEFONO2': instance.telefono2,
       'EMAIL': instance.email,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
       'ENVIADO': instance.enviado,
-      'TRATADO': instance.tratado,
-      'DELETED': instance.deleted,
+      'BORRAR': instance.borrar,
     };

@@ -129,10 +129,9 @@ class SyncService {
       await syncTopArticulos();
       await syncClienteGruposNetos();
       await syncClienteContactos();
-      await checkClienteContactoNoTratados();
+      await checkClientesContactosImp();
       await syncClienteDescuentos();
       await syncClienteDirecciones();
-      await checkClienteDireccionesNoTratadas();
       await syncClientePreciosNetos();
       await syncClientesPagosPendients();
       await syncClientesRappels();
@@ -1014,53 +1013,20 @@ class SyncService {
     }
   }
 
-  Future<void> checkClienteContactoNoTratados() async {
+  Future<void> checkClientesContactosImp() async {
     try {
-      final clienteContactoNoTratadosListDTO =
-          await (_localDb.select(_localDb.clienteContactoLocalTable)
-                ..where((tbl) => tbl.tratado.equals('N')))
-              .get();
+      final clienteContactoImpListDTO =
+          await (_localDb.select(_localDb.clienteContactoImpTable)).get();
 
-      for (var i = 0; i < clienteContactoNoTratadosListDTO.length; i++) {
-        final clienteContactoNoTratado = clienteContactoNoTratadosListDTO[i];
-
-        final haveBeenTratado = await _checkIfClienteContactoHaveBeenTratado(
-            clienteContactoNoTratado.clienteId,
-            clienteContactoNoTratado.contactoId);
+      for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
+        final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
+            clienteContactoImpListDTO[i].clienteId,
+            clienteContactoImpListDTO[i].id);
 
         if (haveBeenTratado) {
-          await (_localDb.delete(_localDb.clienteContactoLocalTable)
-                ..where((tbl) =>
-                    tbl.contactoId.equals(clienteContactoNoTratado.contactoId)))
-              .go();
-        }
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<void> checkClienteDireccionesNoTratadas() async {
-    try {
-      final clienteDireccionesNoTratadasListDTO =
-          await (_localDb.select(_localDb.clienteDireccionLocalTable)
-                ..where((tbl) => tbl.tratada.equals('N')))
-              .get();
-
-      for (var i = 0; i < clienteDireccionesNoTratadasListDTO.length; i++) {
-        final clienteDireccionNoTratada =
-            clienteDireccionesNoTratadasListDTO[i];
-
-        final haveBeenTratada = await _checkIfClienteDireccionHaveBeenTratada(
-            clienteDireccionNoTratada.clienteId,
-            clienteDireccionNoTratada.direccionId);
-
-        if (haveBeenTratada) {
-          await (_localDb.delete(_localDb.clienteDireccionLocalTable)
-                ..where((tbl) =>
-                    tbl.direccionId
-                        .equals(clienteDireccionNoTratada.direccionId) &
-                    tbl.clienteId.equals(clienteDireccionNoTratada.clienteId)))
+          await (_localDb.delete(_localDb.clienteContactoImpTable)
+                ..where(
+                    (tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id)))
               .go();
         }
       }
@@ -1149,18 +1115,18 @@ class SyncService {
     }
   }
 
-  Future<bool> _checkIfClienteContactoHaveBeenTratado(
-      String clienteId, String contactoId) async {
+  Future<bool> _checkIfClienteContactoImpHaveBeenTratado(
+      String clienteId, String contactoImpGuid) async {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
               // dotenv.get('URLTEST', fallback: 'localhost:3001'),
               'jbm-api-test.nikel.es:8080',
-              'api/v1/online/clientes/$clienteId/contacto/$contactoId',
+              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/$clienteId/contacto/$contactoId',
+              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             );
 
       final response = await _dio.getUri(
@@ -1173,39 +1139,6 @@ class SyncService {
         final clienteContactoHaveBeenTratado = response.data['data'] as bool;
 
         return clienteContactoHaveBeenTratado;
-      } else {
-        throw AppException.restApiFailure(
-            response.statusCode ?? 400, response.statusMessage ?? '');
-      }
-    } catch (e) {
-      throw getApiError(e);
-    }
-  }
-
-  Future<bool> _checkIfClienteDireccionHaveBeenTratada(
-      String clienteId, String direccionId) async {
-    try {
-      final requestUri = (_usuario!.test)
-          ? Uri.http(
-              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'jbm-api-test.nikel.es:8080',
-              'api/v1/online/clientes/$clienteId/direccion/$direccionId',
-            )
-          : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/$clienteId/direccion/$direccionId',
-            );
-
-      final response = await _dio.getUri(
-        requestUri,
-        options: Options(
-          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
-        ),
-      );
-      if (response.statusCode == 200) {
-        final clienteContactoHaveBeenTratada = response.data['data'] as bool;
-
-        return clienteContactoHaveBeenTratada;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

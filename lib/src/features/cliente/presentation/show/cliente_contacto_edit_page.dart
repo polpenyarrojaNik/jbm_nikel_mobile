@@ -7,32 +7,34 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/common_app_bar.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_edit_page_data.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_modificacion_param.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp_edit_page_data.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/application/usuario_notifier.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
-import 'cliente_contacto_modificacion_edit_page_controller.dart';
-import 'cliente_contacto_modificacion_list_tile.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
+import '../../domain/cliente_imp_param.dart';
+import 'cliente_contacto_edit_page_controller.dart';
+import 'cliente_contacto_imp_list_tile.dart';
 
 class ClienteContactoEditPage extends ConsumerWidget {
-  ClienteContactoEditPage({super.key, required this.clienteModificacionParam});
+  ClienteContactoEditPage({super.key, required this.clienteImpParam});
 
-  final ClienteModificacionParam clienteModificacionParam;
+  final ClienteImpParam clienteImpParam;
   final formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final value = ref.watch(
-        clienteContactoModificacionEditPageControllerProvider(
-            clienteModificacionParam));
+    final value =
+        ref.watch(clienteContactoEditPageControllerProvider(clienteImpParam));
 
     ref.listen<AsyncValue>(
-      clienteContactoModificacionEditPageControllerProvider(
-          clienteModificacionParam),
+      clienteContactoEditPageControllerProvider(clienteImpParam),
       (_, state) => state.maybeWhen(
           orElse: () {},
           error: (error, _) {
@@ -43,13 +45,13 @@ class ClienteContactoEditPage extends ConsumerWidget {
             context.showErrorBar(
                 content: Text(errorMessage),
                 duration: const Duration(seconds: 5));
-            ref.invalidate(clienteContactosListProvider(
-                clienteModificacionParam.clienteId));
+            ref.invalidate(
+                clienteContactosListProvider(clienteImpParam.clienteId));
             context.router.pop();
           },
           data: (contactoModificacionEditPageData) {
             contactoModificacionEditPageData = contactoModificacionEditPageData
-                as ContactoModificacionEditPageData;
+                as ClienteContactoImpEditPageData;
             if (contactoModificacionEditPageData.isSent) {
               if (contactoModificacionEditPageData.clienteContacto != null) {
                 context.showSuccessBar(
@@ -66,8 +68,8 @@ class ClienteContactoEditPage extends ConsumerWidget {
                   ),
                 );
               }
-              ref.invalidate(clienteContactosListProvider(
-                  clienteModificacionParam.clienteId));
+              ref.invalidate(
+                  clienteContactosListProvider(clienteImpParam.clienteId));
               context.router.pop();
             }
           }),
@@ -80,7 +82,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
             .cliente_show_clienteContacto_clienteContacoEditPage_editarContacto,
         actions: [
           IconButton(
-              onPressed: () => _saveContactoModificacion(context, ref, formKey),
+              onPressed: () => _saveClienteContactoImp(context, ref, formKey),
               icon: const Icon(Icons.save)),
         ],
       ),
@@ -89,28 +91,30 @@ class ClienteContactoEditPage extends ConsumerWidget {
         child: value.when(
           data: (clienteContactoEditPageData) => Column(
             children: [
-              _ContactoModificacionEditForm(
+              _ClienteContactoImpEditForm(
                 clienteContacto: clienteContactoEditPageData.clienteContacto,
                 formKey: formKey,
               ),
-              _ModificacionesListView(
-                clienteModificacionParam: clienteModificacionParam,
-              ),
+              if (clienteImpParam.id != null)
+                _ModificacionesListView(
+                  clienteImpParam: clienteImpParam,
+                ),
             ],
           ),
           error: (error, _) {
             final clienteContactoEditPageData =
-                error as ContactoModificacionEditPageData;
+                error as ClienteContactoImpEditPageData;
 
             return Column(
               children: [
-                _ContactoModificacionEditForm(
+                _ClienteContactoImpEditForm(
                   clienteContacto: clienteContactoEditPageData.clienteContacto,
                   formKey: formKey,
                 ),
-                _ModificacionesListView(
-                  clienteModificacionParam: clienteModificacionParam,
-                ),
+                if (clienteImpParam.id != null)
+                  _ModificacionesListView(
+                    clienteImpParam: clienteImpParam,
+                  ),
               ],
             );
           },
@@ -122,13 +126,16 @@ class ClienteContactoEditPage extends ConsumerWidget {
     );
   }
 
-  void _saveContactoModificacion(BuildContext context, WidgetRef ref,
+  void _saveClienteContactoImp(BuildContext context, WidgetRef ref,
       GlobalKey<FormBuilderState> formKey) async {
     if (formKey.currentState!.saveAndValidate()) {
-      //TODO cambair por modificación
-      final conatctoModificacionToUpsert = ClienteContacto(
-        clienteId: clienteModificacionParam.clienteId,
-        contactoId: clienteModificacionParam.id,
+      final usuario = ref.watch(usuarioNotifierProvider)!;
+      final clienteContactoImp = ClienteContactoImp(
+        id: clienteImpParam.impId ?? const Uuid().v4(),
+        fecha: DateTime.now().toUtc(),
+        usuarioId: usuario.id,
+        clienteId: clienteImpParam.clienteId,
+        contactoId: clienteImpParam.id,
         nombre: formKey.currentState!.value['nombre'] as String,
         apellido1: formKey.currentState!.value['apellido1'] as String?,
         apellido2: formKey.currentState!.value['apellido2'] as String?,
@@ -136,22 +143,19 @@ class ClienteContactoEditPage extends ConsumerWidget {
         telefono2: formKey.currentState!.value['telefono2'] as String?,
         email: formKey.currentState!.value['email'] as String?,
         observaciones: formKey.currentState!.value['observaciones'] as String?,
-        lastUpdated: DateTime.now().toUtc(),
         enviado: false,
-        tratado: false,
-        deleted: false,
+        borrar: false,
       );
       await ref
-          .read(clienteContactoModificacionEditPageControllerProvider(
-                  clienteModificacionParam)
+          .read(clienteContactoEditPageControllerProvider(clienteImpParam)
               .notifier)
-          .upsertContactoModificacion(conatctoModificacionToUpsert);
+          .upsertClienteContactoImp(clienteContactoImp);
     }
   }
 }
 
-class _ContactoModificacionEditForm extends StatelessWidget {
-  const _ContactoModificacionEditForm(
+class _ClienteContactoImpEditForm extends StatelessWidget {
+  const _ClienteContactoImpEditForm(
       {required this.clienteContacto, required this.formKey});
 
   final ClienteContacto? clienteContacto;
@@ -268,21 +272,35 @@ class _ContactoModificacionEditForm extends StatelessWidget {
 }
 
 class _ModificacionesListView extends ConsumerWidget {
-  const _ModificacionesListView({required this.clienteModificacionParam});
+  const _ModificacionesListView({required this.clienteImpParam});
 
-  final ClienteModificacionParam clienteModificacionParam;
+  final ClienteImpParam clienteImpParam;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final modificacionesValue = ref
-        .watch(clienteContactoModificacionesProvider(clienteModificacionParam));
-    return modificacionesValue.when(
-        data: (modificacionesList) => ListView.separated(
-              itemBuilder: (context, i) => ClienteContactoModificacionListTile(
-                  contactoModificacion: modificacionesList[i]),
-              separatorBuilder: (context, i) => const Divider(),
-              itemCount: modificacionesList.length,
-            ),
+    final clienteConatctoImpValue = ref
+        .watch(clienteContactoImpListInSyncByClienteProvider(clienteImpParam));
+    return clienteConatctoImpValue.when(
+        data: (clienteContactoImpList) => clienteContactoImpList.isEmpty
+            ? Container()
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Modificaciones pendientes',
+                        style: Theme.of(context).textTheme.titleSmall),
+                    gapH4,
+                    ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, i) => ClienteContactoImpListTile(
+                          clienteContactoImp: clienteContactoImpList[i]),
+                      separatorBuilder: (context, i) => const Divider(),
+                      itemCount: clienteContactoImpList.length,
+                    ),
+                  ],
+                ),
+              ),
         error: (error, _) => ErrorMessageWidget(
             (error is AppException) ? error.details.message : error.toString()),
         loading: () => const Center(child: CircularProgressIndicator()));

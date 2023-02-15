@@ -10,7 +10,7 @@ _$_ClienteContactoDTO _$$_ClienteContactoDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ClienteContactoDTO(
       clienteId: json['CLIENTE_ID'] as String,
-      contactoId: json['CONTACTO_ID'] as String,
+      contactoId: json['CONTACTO_ID'] as String?,
       observaciones: json['OBSERVACIONES'] as String?,
       nombre: json['NOMBRE'] as String?,
       apellido1: json['APELLIDO1'] as String?,

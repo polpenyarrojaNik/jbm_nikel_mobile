@@ -1,20 +1,23 @@
 import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
 
 import '../../../core/infrastructure/local_database.dart';
+import '../domain/cliente_contacto_imp.dart';
 
-part 'cliente_contacto_modificacion_dto.freezed.dart';
-part 'cliente_contacto_modificacion_dto.g.dart';
+part 'cliente_contacto_imp_dto.freezed.dart';
+part 'cliente_contacto_imp_dto.g.dart';
 
 // ignore_for_file: invalid_annotation_target
 
 @freezed
-class ClienteContactoLocalDTO
-    with _$ClienteContactoLocalDTO
-    implements Insertable<ClienteContactoLocalDTO> {
-  const ClienteContactoLocalDTO._();
-  const factory ClienteContactoLocalDTO({
+class ClienteContactoImpDTO
+    with _$ClienteContactoImpDTO
+    implements Insertable<ClienteContactoImpDTO> {
+  const ClienteContactoImpDTO._();
+  const factory ClienteContactoImpDTO({
+    @JsonKey(name: 'GUID') required String id,
+    @JsonKey(name: 'FECHA') required DateTime fecha,
+    @JsonKey(name: 'USUARIO_ID') required String usuarioId,
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
     @JsonKey(name: 'CONTACTO_ID') required String? contactoId,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
@@ -24,17 +27,18 @@ class ClienteContactoLocalDTO
     @JsonKey(name: 'TELEFONO1') String? telefono1,
     @JsonKey(name: 'TELEFONO2') String? telefono2,
     @JsonKey(name: 'EMAIL') String? email,
-    @JsonKey(name: 'LAST_UPDATED') required DateTime lastUpdated,
-    @JsonKey(name: 'ENVIADO') @Default('N') String enviado,
-    @JsonKey(name: 'TRATADO') @Default('N') String tratado,
-    @JsonKey(name: 'DELETED') @Default('N') String deleted,
-  }) = _ClienteContactoLocalDTO;
+    @JsonKey(name: 'ENVIADO', defaultValue: 'N') required String enviado,
+    @JsonKey(name: 'BORRAR', defaultValue: 'N') required String borrar,
+  }) = _ClienteContactoImpDTO;
 
-  factory ClienteContactoLocalDTO.fromJson(Map<String, dynamic> json) =>
-      _$ClienteContactoLocalDTOFromJson(json);
+  factory ClienteContactoImpDTO.fromJson(Map<String, dynamic> json) =>
+      _$ClienteContactoImpDTOFromJson(json);
 
-  factory ClienteContactoLocalDTO.fromDomain(ClienteContacto _) =>
-      ClienteContactoLocalDTO(
+  factory ClienteContactoImpDTO.fromDomain(ClienteContactoImp _) =>
+      ClienteContactoImpDTO(
+        id: _.id,
+        fecha: _.fecha,
+        usuarioId: _.usuarioId,
         clienteId: _.clienteId,
         contactoId: _.contactoId,
         observaciones: _.observaciones,
@@ -44,11 +48,15 @@ class ClienteContactoLocalDTO
         telefono1: _.telefono1,
         telefono2: _.telefono2,
         email: _.email,
-        lastUpdated: _.lastUpdated,
+        enviado: _.enviado ? 'S' : 'N',
+        borrar: _.borrar ? 'S' : 'N',
       );
 
-  ClienteContacto toDomain() {
-    return ClienteContacto(
+  ClienteContactoImp toDomain() {
+    return ClienteContactoImp(
+      id: id,
+      fecha: fecha,
+      usuarioId: usuarioId,
       clienteId: clienteId,
       contactoId: contactoId,
       observaciones: observaciones,
@@ -58,16 +66,17 @@ class ClienteContactoLocalDTO
       telefono1: telefono1,
       telefono2: telefono2,
       email: email,
-      lastUpdated: lastUpdated,
-      enviado: (enviado == 'S') ? true : false,
-      tratado: (tratado == 'S') ? true : false,
-      deleted: (deleted == 'S') ? true : false,
+      enviado: enviado == 'S',
+      borrar: borrar == 'S',
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
-    return ClienteContactoLocalTableCompanion(
+    return ClienteContactoImpTableCompanion(
+      id: Value(id),
+      fecha: Value(fecha),
+      usuarioId: Value(usuarioId),
       clienteId: Value(clienteId),
       contactoId: Value(contactoId),
       observaciones: Value(observaciones),
@@ -77,22 +86,23 @@ class ClienteContactoLocalDTO
       telefono1: Value(telefono1),
       telefono2: Value(telefono2),
       email: Value(email),
-      lastUpdated: Value(lastUpdated),
       enviado: Value(enviado),
-      tratado: Value(tratado),
-      deleted: Value(deleted),
+      borrar: Value(borrar),
     ).toColumns(nullToAbsent);
   }
 }
 
-@UseRowClass(ClienteContactoLocalDTO)
-class ClienteContactoLocalTable extends Table {
+@UseRowClass(ClienteContactoImpDTO)
+class ClienteContactoImpTable extends Table {
   @override
-  String get tableName => 'CLIENTES_CONTACTOS_LOCAL_IMP';
+  String get tableName => 'CLIENTES_CONTACTOS_IMP';
 
   @override
-  Set<Column> get primaryKey => {clienteId, contactoId};
+  Set<Column> get primaryKey => {id};
 
+  TextColumn get id => text().named('GUID')();
+  DateTimeColumn get fecha => dateTime().named('FECHA')();
+  TextColumn get usuarioId => text().named('USUARIO_ID')();
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get contactoId => text().nullable().named('CONTACTO_ID')();
   TextColumn get observaciones => text().nullable().named('OBSERVACIONES')();
@@ -102,11 +112,8 @@ class ClienteContactoLocalTable extends Table {
   TextColumn get telefono1 => text().nullable().named('TELEFONO1')();
   TextColumn get telefono2 => text().nullable().named('TELEFONO2')();
   TextColumn get email => text().nullable().named('EMAIL')();
-  DateTimeColumn get lastUpdated => dateTime().named('LAST_UPDATED')();
   TextColumn get enviado =>
       text().withDefault(const Constant('N')).named('ENVIADO')();
-  TextColumn get tratado =>
-      text().withDefault(const Constant('N')).named('TRATADO')();
-  TextColumn get deleted =>
-      text().withDefault(const Constant('N')).named('DELETED')();
+  TextColumn get borrar =>
+      text().withDefault(const Constant('N')).named('BORRAR')();
 }
