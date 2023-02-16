@@ -137,15 +137,12 @@ class ClienteAlrededorRepository {
       });
 
       return await query.asyncMap((rows) async {
-        print('Cliente ID: ${rows.data['CLIENTE_ID']}');
         final paisDTO =
             (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
         final clienteDireccionDto = ClienteDireccionDTO.fromJson(rows.data);
-        print('Cliente direccion dto created');
 
         final clienteDto =
             await _getClienteDtoById(clienteDireccionDto.clienteId);
-        print('Cliente dto created');
         final clienteAlrededorDto = ClienteAlrededorDTO.fromClienteDireccionDTO(
           clienteDireccionDto,
           clienteDto.ventasAnyoActual,
@@ -153,7 +150,6 @@ class ClienteAlrededorRepository {
           clienteDto.representante1Nombre,
           clienteDto.representante2Nombre,
         );
-        print('Cliente alrededor dto created');
 
         return clienteAlrededorDto.toDomain(pais: paisDTO?.toDomain());
       }).get();
