@@ -118,6 +118,7 @@ class ClienteAlrededorRepository {
       final query = remoteDb.customSelect('''SELECT cd.*, paises.*
         FROM CLIENTES_USUARIO cUsuario
         INNER JOIN CLIENTES_DIRECCIONES_ENVIO cd ON cd.cliente_id = cUsuario.cliente_id
+        INNER JOIN CLIENTES c ON c.CLIENTE_ID = cd.CLIENTE_ID
         INNER JOIN PAISES paises ON cd.pais_id = paises.pais_id
         WHERE (cUsuario.USUARIO_ID = :usuarioId AND cd.latitud is not null AND cd.longitud is not null) AND(
           SELECT (12742 * ASIN(SQRT(0.5 - COS((cd.latitud - :latitud) * :p) /2 + COS(:latitud * :p) * COS(cd.latitud * :p) * (1 - COS((cd.longitud - :longitud) * :p)) / 2)))
@@ -136,12 +137,15 @@ class ClienteAlrededorRepository {
       });
 
       return await query.asyncMap((rows) async {
+        print('Cliente ID: ${rows.data['CLIENTE_ID']}');
         final paisDTO =
             (rows.data['PAIS_ID'] != null) ? PaisDTO.fromJson(rows.data) : null;
         final clienteDireccionDto = ClienteDireccionDTO.fromJson(rows.data);
+        print('Cliente direccion dto created');
+
         final clienteDto =
             await _getClienteDtoById(clienteDireccionDto.clienteId);
-        await _getClienteDtoById(clienteDireccionDto.clienteId);
+        print('Cliente dto created');
         final clienteAlrededorDto = ClienteAlrededorDTO.fromClienteDireccionDTO(
           clienteDireccionDto,
           clienteDto.ventasAnyoActual,
@@ -149,6 +153,7 @@ class ClienteAlrededorRepository {
           clienteDto.representante1Nombre,
           clienteDto.representante2Nombre,
         );
+        print('Cliente alrededor dto created');
 
         return clienteAlrededorDto.toDomain(pais: paisDTO?.toDomain());
       }).get();
