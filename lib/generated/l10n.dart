@@ -1652,6 +1652,42 @@ class S {
     );
   }
 
+  /// `Changes pending to process`
+  String
+      get cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar {
+    return Intl.message(
+      'Changes pending to process',
+      name:
+          'cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes pending to process`
+  String
+      get cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar {
+    return Intl.message(
+      'Changes pending to process',
+      name:
+          'cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact deleted`
+  String
+      get cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado {
+    return Intl.message(
+      'Contact deleted',
+      name:
+          'cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Have changes to process`
   String get cliente_show_clienteDireccion_hayCambiosSinTramitar {
     return Intl.message(

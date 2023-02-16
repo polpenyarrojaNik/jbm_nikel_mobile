@@ -96,7 +96,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
                 formKey: formKey,
               ),
               if (clienteImpParam.id != null)
-                _ModificacionesListView(
+                _CambiosPendientesListView(
                   clienteImpParam: clienteImpParam,
                 ),
             ],
@@ -112,7 +112,7 @@ class ClienteContactoEditPage extends ConsumerWidget {
                   formKey: formKey,
                 ),
                 if (clienteImpParam.id != null)
-                  _ModificacionesListView(
+                  _CambiosPendientesListView(
                     clienteImpParam: clienteImpParam,
                   ),
               ],
@@ -271,8 +271,8 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
   }
 }
 
-class _ModificacionesListView extends ConsumerWidget {
-  const _ModificacionesListView({required this.clienteImpParam});
+class _CambiosPendientesListView extends ConsumerWidget {
+  const _CambiosPendientesListView({required this.clienteImpParam});
 
   final ClienteImpParam clienteImpParam;
 
@@ -288,7 +288,10 @@ class _ModificacionesListView extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Modificaciones pendientes',
+                    Text(
+                        S
+                            .of(context)
+                            .cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar,
                         style: Theme.of(context).textTheme.titleSmall),
                     gapH4,
                     ListView.separated(

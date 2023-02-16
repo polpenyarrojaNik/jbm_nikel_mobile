@@ -18,16 +18,12 @@ class ClienteContactoDeleteController
     state = const AsyncLoading();
 
     try {
-      if (clienteImpParam.impId != null) {
-        await ref.read(clienteRepositoryProvider).deleteClienteContactoImp(
-              clienteImpParam.impId!,
-            );
-      } else {
-        await ref.read(clienteRepositoryProvider).deleteClienteContactoTratado(
-              clienteImpParam.clienteId,
-              clienteImpParam.id!,
-            );
-      }
+      await ref.read(clienteRepositoryProvider).deleteClienteContacto(
+            clienteImpParam.clienteId,
+            contactoId: clienteImpParam.id,
+            contactoImpGuid: clienteImpParam.impId,
+          );
+
       state = const AsyncData(true);
     } on AppException catch (e, stackTrace) {
       state = AsyncError(

@@ -174,6 +174,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas total"),
         "cliente_show_clienteContacto_clienteContacoEditPage_apellido":
             MessageLookupByLibrary.simpleMessage("Apellido"),
+        "cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
         "cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito":
             MessageLookupByLibrary.simpleMessage("Contacto guardado con éxito"),
         "cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado":
@@ -193,6 +196,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Teléfono"),
         "cliente_show_clienteContacto_clienteContacoEditPage_telefono2":
             MessageLookupByLibrary.simpleMessage("Teléfono 2"),
+        "cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado":
+            MessageLookupByLibrary.simpleMessage("Contacto eliminado"),
+        "cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
         "cliente_show_clienteContacto_hayCambiosDeEnviar":

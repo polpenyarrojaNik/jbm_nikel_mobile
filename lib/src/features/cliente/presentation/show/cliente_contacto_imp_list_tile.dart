@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto_imp.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../core/helpers/formatters.dart';
 import '../../../../core/presentation/theme/app_sizes.dart';
 
@@ -106,7 +107,9 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                   ),
                 if (clienteContactoImp.borrar)
                   Text(
-                    'Contacto eliminado',
+                    S
+                        .of(context)
+                        .cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall

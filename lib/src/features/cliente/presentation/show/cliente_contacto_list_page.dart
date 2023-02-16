@@ -421,7 +421,9 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Modificaciones'),
+        title: Text(S
+            .of(context)
+            .cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar),
         content: SizedBox(
           width: double.maxFinite,
           child: ListView.separated(

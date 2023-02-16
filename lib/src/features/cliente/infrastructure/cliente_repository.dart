@@ -470,80 +470,6 @@ class ClienteRepository {
     }
   }
 
-  Future<List<ClienteContacto>> getClienteContactosListById(
-      {required String clienteId}) async {
-    final List<ClienteContacto> clienteContactoList = [];
-    try {
-      final clienteContactoImpList =
-          await _getClienteContactoImpList(clienteId);
-
-      final clienteContactoSyncList =
-          await _getClienteContactoSyncList(clienteId, clienteContactoImpList);
-
-      clienteContactoList.addAll(clienteContactoSyncList);
-
-      for (var i = 0; i < clienteContactoImpList.length; i++) {
-        if (clienteContactoImpList[i].contactoId == null) {
-          clienteContactoList.add(clienteContactoImpList[i]);
-        }
-      }
-
-      return clienteContactoList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteContacto> getClienteContactoSyncById(
-    String clienteContactoId,
-  ) async {
-    try {
-      return await _getClienteContactoSyncById(clienteContactoId);
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<ClienteContacto> getClienteContactoImpById(
-      String contactoImpGuid) async {
-    try {
-      final query = (_localDb.select(_localDb.clienteContactoImpTable)
-        ..where((t) => t.id.equals(contactoImpGuid)));
-
-      final clienteConatctoImpDto = await query.getSingle();
-
-      return ClienteContactoDTO.fromContactoImp(clienteConatctoImpDto)
-          .toDomain(enviado: false, tratado: false);
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteContacto> upsertClienteContactoImp(
-      ClienteContactoImp upsertClienteContactoImp, bool isNew) async {
-    try {
-      final clienteContactoImpDto =
-          ClienteContactoImpDTO.fromDomain(upsertClienteContactoImp);
-      await _insertClienteContactoImpInLocalDB(clienteContactoImpDto);
-
-      throw AppException.articuloNotFound();
-
-      final clienteContactoImpDtoEnviado =
-          await _remoteUpsertClienteContactoImp(clienteContactoImpDto);
-
-      if (!isNew) {
-        await _deleteContactoImpEnviadoInLocalDB(clienteContactoImpDtoEnviado);
-      } else {
-        await _updateContactoImpInLocalDB(clienteContactoImpDtoEnviado);
-      }
-
-      return ClienteContactoDTO.fromContactoImp(clienteContactoImpDtoEnviado)
-          .toDomain();
-    } catch (e) {
-      rethrow;
-    }
-  }
-
   Future<List<ClienteDescuento>> getClienteDescuentoById(
       {required String clienteId}) {
     try {
@@ -1223,55 +1149,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  String getDescriptionInLocalLanguage({required Articulo articulo}) {
-    final currentLocale = Intl.getCurrentLocale();
-    if (currentLocale == 'es') {
-    } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
-      return articulo.descripcionEN!;
-    } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
-      return articulo.descripcionFR!;
-    } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
-      return articulo.descripcionIT!;
-    } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
-      return articulo.descripcionPT!;
-    }
-    //else if (currentLocale == 'de' && descripcionDE != null) {
-    //   return descripcionDE!;
-    // } else if (currentLocale == 'ca' && descripcionCA != null) {
-    //   return descripcionCA!;
-    // } else if (currentLocale == 'gb' && descripcionGB != null) {
-    //   return descripcionGB!;
-    // } else if (currentLocale == 'hu' && descripcionHU != null) {
-    //   return descripcionHU!;
-    // }
-    //else if (currentLocale == 'nl' && descripcionNL != null) {
-    //   return descripcionNL!;
-    // } else if (currentLocale == 'pl' && descripcionPL != null) {
-    //   return descripcionPL!;
-    // }
-    //else if (currentLocale == 'ro' && descripcionRO != null) {
-    //   return descripcionRO!;
-    // } else if (currentLocale == 'ru' && descripcionRU != null) {
-    //   return descripcionRU!;
-    // } else if (currentLocale == 'cn' && descripcionCN != null) {
-    //   return descripcionCN!;
-    // } else if (currentLocale == 'el' && descripcionEL != null) {
-    //   return descripcionEL!;
-    // }
-
-    return articulo.descripcionES;
-  }
-
-  Future<DateTime> getLastSyncDate() async {
-    try {
-      final lastSyncDTO =
-          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
-      return lastSyncDTO.clienteUltimaSync;
-    } catch (e) {
-      rethrow;
-    }
-  }
-
   Future<List<Visita>> getVisitasByClienteId(
       {required String clienteId}) async {
     try {
@@ -1328,21 +1205,130 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Expression<bool> _filtrarArticuloPorDescripcion(String searchText) {
-    final currentLocale = Intl.getCurrentLocale();
+  Future<List<ClienteContacto>> getClienteContactosListById(
+      {required String clienteId}) async {
+    final List<ClienteContacto> clienteContactoList = [];
+    try {
+      final clienteContactoImpList =
+          await _getClienteContactoImpList(clienteId);
 
-    if (currentLocale == 'es') {
-      return _remoteDb.articuloTable.descripcionES.contains(searchText);
-    } else if (currentLocale == 'en') {
-      return _remoteDb.articuloTable.descripcionEN.contains(searchText);
-    } else if (currentLocale == 'de') {
-      return _remoteDb.articuloTable.descripcionDE.contains(searchText);
-    } else if (currentLocale == 'fr') {
-      return _remoteDb.articuloTable.descripcionFR.contains(searchText);
-    } else if (currentLocale == 'it') {
-      return _remoteDb.articuloTable.descripcionIT.contains(searchText);
-    } else {
-      return _remoteDb.articuloTable.descripcionES.contains(searchText);
+      final clienteContactoSyncList =
+          await _getClienteContactoSyncList(clienteId, clienteContactoImpList);
+
+      clienteContactoList.addAll(clienteContactoSyncList);
+
+      for (var i = 0; i < clienteContactoImpList.length; i++) {
+        if (clienteContactoImpList[i].contactoId == null) {
+          clienteContactoList.add(clienteContactoImpList[i]);
+        }
+      }
+
+      return clienteContactoList;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteContacto> getClienteContactoSyncById(
+      String clienteContactoId) async {
+    try {
+      final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
+        ..where((t) => t.contactoId.equals(clienteContactoId)));
+
+      return query.map((row) => row.toDomain()).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteContacto> getClienteContactoImpById(
+      String contactoImpGuid) async {
+    try {
+      final query = (_localDb.select(_localDb.clienteContactoImpTable)
+        ..where((t) => t.id.equals(contactoImpGuid)));
+
+      final clienteConatctoImpDto = await query.getSingle();
+
+      return ClienteContactoDTO.fromContactoImp(clienteConatctoImpDto)
+          .toDomain(enviado: false, tratado: false);
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteContacto> upsertClienteContactoImp(
+      ClienteContactoImp upsertClienteContactoImp, bool isNew) async {
+    try {
+      final clienteContactoImpDto =
+          ClienteContactoImpDTO.fromDomain(upsertClienteContactoImp);
+      await _insertClienteContactoImpInLocalDB(clienteContactoImpDto);
+
+      final clienteContactoImpDtoEnviado =
+          await _remoteUpsertClienteContactoImp(clienteContactoImpDto);
+
+      if (!isNew) {
+        await _deleteClienteContactoImpInLocalDB(
+            clienteContactoImpDtoEnviado.id);
+      } else {
+        await _updateContactoImpInLocalDB(clienteContactoImpDtoEnviado);
+      }
+
+      return ClienteContactoDTO.fromContactoImp(clienteContactoImpDtoEnviado)
+          .toDomain();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteClienteContacto(String clienteId,
+      {String? contactoId, String? contactoImpGuid}) async {
+    try {
+      if (contactoImpGuid != null) {
+        await _deleteClienteContactoImpInLocalDB(contactoImpGuid);
+      } else {
+        await _deleteClienteContactoTratado(clienteId, contactoId!);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<ClienteContactoImp>> getClienteContactosImpListInSyncByCliente(
+      ClienteImpParam clienteContactoImpParam) async {
+    try {
+      try {
+        final requestUri = (usuario.test)
+            ? Uri.http(
+                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
+              );
+
+        final response = await _dio.getUri(
+          requestUri,
+          options: Options(
+            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+          ),
+        );
+        if (response.statusCode == 200) {
+          final jsonData = response.data['data'] as List<dynamic>;
+
+          final clienteContactoDTOList =
+              jsonData.map((e) => ClienteContactoImpDTO.fromJson(e));
+
+          return clienteContactoDTOList.map((e) => e.toDomain()).toList();
+        } else {
+          throw AppException.restApiFailure(
+              response.statusCode ?? 400, response.statusMessage ?? '');
+        }
+      } catch (e) {
+        throw getApiError(e);
+      }
+    } catch (e) {
+      rethrow;
     }
   }
 
@@ -1381,18 +1367,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
       return await query
           .map((row) => ClienteContacto.fromClienteContactoImp(row.toDomain()))
           .get();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteContacto> _getClienteContactoSyncById(
-      String clienteContactoId) async {
-    try {
-      final query = (_remoteDb.select(_remoteDb.clienteContactoTable)
-        ..where((t) => t.contactoId.equals(clienteContactoId)));
-
-      return query.map((row) => row.toDomain()).getSingle();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -1446,26 +1420,49 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> _deleteContactoImpEnviadoInLocalDB(
-      ClienteContactoImpDTO clienteContactoImpDTO) async {
-    try {
-      await (_localDb.delete(_localDb.clienteContactoImpTable)
-            ..where((tbl) =>
-                tbl.contactoId
-                    .equalsNullable(clienteContactoImpDTO.contactoId) &
-                tbl.clienteId.equals(clienteContactoImpDTO.clienteId)))
-          .go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
-    }
-  }
-
   Future<void> _updateContactoImpInLocalDB(
       ClienteContactoImpDTO clienteContactoImpDTO) async {
     try {
       await _localDb
           .update(_localDb.clienteContactoImpTable)
           .replace(clienteContactoImpDTO);
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<void> _deleteClienteContactoTratado(
+      String clienteId, String clienteContactoId) async {
+    try {
+      final deletedContactoImpDto = ClienteContactoImpDTO(
+        id: const Uuid().v4(),
+        fecha: DateTime.now().toUtc().toLocal(),
+        usuarioId: usuario.id,
+        clienteId: clienteId,
+        contactoId: clienteContactoId,
+        enviado: 'N',
+        borrar: 'S',
+      );
+
+      await _insertClienteContactoImpInLocalDB(deletedContactoImpDto);
+      final contactoImpEnviado =
+          await _remoteUpsertClienteContactoImp(deletedContactoImpDto);
+      if (contactoImpEnviado.enviado == 'S') {
+        await _deleteClienteContactoImpInLocalDB(deletedContactoImpDto.id);
+      } else {
+        await _updateContactoImpInLocalDB(deletedContactoImpDto);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> _deleteClienteContactoImpInLocalDB(
+      String contactoGuidImp) async {
+    try {
+      await (_localDb.delete(_localDb.clienteContactoImpTable)
+            ..where((tbl) => tbl.id.equals(contactoGuidImp)))
+          .go();
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
@@ -1667,24 +1664,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     return paisDtoList.map((e) => e.toDomain()).toList();
   }
 
-  Expression<bool> _filtrarPaisPorDescripcion(String searchText) {
-    final currentLocale = Intl.getCurrentLocale();
-
-    if (currentLocale == 'es') {
-      return _remoteDb.paisTable.descripcionES.contains(searchText);
-    } else if (currentLocale == 'en') {
-      return _remoteDb.paisTable.descripcionEN.contains(searchText);
-    } else if (currentLocale == 'de') {
-      return _remoteDb.paisTable.descripcionDE.contains(searchText);
-    } else if (currentLocale == 'fr') {
-      return _remoteDb.paisTable.descripcionFR.contains(searchText);
-    } else if (currentLocale == 'it') {
-      return _remoteDb.paisTable.descripcionIT.contains(searchText);
-    } else {
-      return _remoteDb.paisTable.descripcionES.contains(searchText);
-    }
-  }
-
   Expression<Object> _orderByPaisPorDescripcion() {
     final currentLocale = Intl.getCurrentLocale();
 
@@ -1703,125 +1682,88 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> deleteClienteContactoImp(String contactoGuidImp) async {
-    try {
-      await (_localDb.delete(_localDb.clienteContactoImpTable)
-            ..where((tbl) => tbl.id.equals(contactoGuidImp)))
-          .go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
+  Expression<bool> _filtrarPaisPorDescripcion(String searchText) {
+    final currentLocale = Intl.getCurrentLocale();
+
+    if (currentLocale == 'es') {
+      return _remoteDb.paisTable.descripcionES.contains(searchText);
+    } else if (currentLocale == 'en') {
+      return _remoteDb.paisTable.descripcionEN.contains(searchText);
+    } else if (currentLocale == 'de') {
+      return _remoteDb.paisTable.descripcionDE.contains(searchText);
+    } else if (currentLocale == 'fr') {
+      return _remoteDb.paisTable.descripcionFR.contains(searchText);
+    } else if (currentLocale == 'it') {
+      return _remoteDb.paisTable.descripcionIT.contains(searchText);
+    } else {
+      return _remoteDb.paisTable.descripcionES.contains(searchText);
     }
   }
 
-  Future<void> deleteClienteContactoTratado(
-      String clienteId, String clienteContactoId) async {
-    try {
-      final deletedContactoImpDto = ClienteContactoImpDTO(
-        id: const Uuid().v4(),
-        fecha: DateTime.now().toUtc().toLocal(),
-        usuarioId: usuario.id,
-        clienteId: clienteId,
-        contactoId: clienteContactoId,
-        enviado: 'N',
-        borrar: 'S',
-      );
+  String getDescriptionInLocalLanguage({required Articulo articulo}) {
+    final currentLocale = Intl.getCurrentLocale();
+    if (currentLocale == 'es') {
+    } else if (currentLocale == 'en' && articulo.descripcionEN != null) {
+      return articulo.descripcionEN!;
+    } else if (currentLocale == 'fr' && articulo.descripcionFR != null) {
+      return articulo.descripcionFR!;
+    } else if (currentLocale == 'it' && articulo.descripcionIT != null) {
+      return articulo.descripcionIT!;
+    } else if (currentLocale == 'pt' && articulo.descripcionPT != null) {
+      return articulo.descripcionPT!;
+    }
+    //else if (currentLocale == 'de' && descripcionDE != null) {
+    //   return descripcionDE!;
+    // } else if (currentLocale == 'ca' && descripcionCA != null) {
+    //   return descripcionCA!;
+    // } else if (currentLocale == 'gb' && descripcionGB != null) {
+    //   return descripcionGB!;
+    // } else if (currentLocale == 'hu' && descripcionHU != null) {
+    //   return descripcionHU!;
+    // }
+    //else if (currentLocale == 'nl' && descripcionNL != null) {
+    //   return descripcionNL!;
+    // } else if (currentLocale == 'pl' && descripcionPL != null) {
+    //   return descripcionPL!;
+    // }
+    //else if (currentLocale == 'ro' && descripcionRO != null) {
+    //   return descripcionRO!;
+    // } else if (currentLocale == 'ru' && descripcionRU != null) {
+    //   return descripcionRU!;
+    // } else if (currentLocale == 'cn' && descripcionCN != null) {
+    //   return descripcionCN!;
+    // } else if (currentLocale == 'el' && descripcionEL != null) {
+    //   return descripcionEL!;
+    // }
 
-      await _insertClienteContactoImpInLocalDB(deletedContactoImpDto);
-      final contactoImpEnviado =
-          await _remoteUpsertClienteContactoImp(deletedContactoImpDto);
-      if (contactoImpEnviado.enviado == 'S') {
-        await _deleteContactoImpEnviadoInLocalDB(deletedContactoImpDto);
-      } else {
-        await _updateContactoImpInLocalDB(deletedContactoImpDto);
-      }
+    return articulo.descripcionES;
+  }
+
+  Future<DateTime> getLastSyncDate() async {
+    try {
+      final lastSyncDTO =
+          await _localDb.select(_localDb.syncDateTimeTable).getSingle();
+      return lastSyncDTO.clienteUltimaSync;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<void> deleteClienteDireccion(
-      String clienteId, String clienteDireccionId) async {
-    try {
-      final direccion = await getClienteDireccionByDireccionId(
-          clienteId: clienteId, direccionId: clienteDireccionId);
+  Expression<bool> _filtrarArticuloPorDescripcion(String searchText) {
+    final currentLocale = Intl.getCurrentLocale();
 
-      final deleteDireccion = direccion?.copyWith(deleted: true);
-
-      if (deleteDireccion != null) {
-        final deletedDireccionLocalDto = ClienteDireccionLocalDTO(
-          clienteId: clienteId,
-          direccionId: clienteDireccionId,
-          nombre: '',
-          latitud: 0,
-          longitud: 0,
-          lastUpdated: DateTime.now().toUtc(),
-          tratada: 'N',
-          deleted: 'S',
-        );
-
-        if (deleteDireccion.tratada) {
-          await _insertClienteDireccionInLocalDB(deletedDireccionLocalDto);
-          //TODO SEND TO API
-        } else {
-          await _deleteClienteDireccionInLocalDB(clienteId, clienteDireccionId);
-        }
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<List<ClienteContactoImp>> getClienteContactosImpListInLocalByCliente(
-      ClienteImpParam clienteContactoImpParam) async {
-    try {
-      final query = _localDb.select(_localDb.clienteContactoImpTable)
-        ..where(
-            (tbl) => tbl.clienteId.equals(clienteContactoImpParam.clienteId));
-
-      return await query.map((row) {
-        return row.toDomain();
-      }).get();
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<List<ClienteContactoImp>> getClienteContactosImpListInSyncByCliente(
-      ClienteImpParam clienteContactoImpParam) async {
-    try {
-      try {
-        final requestUri = (usuario.test)
-            ? Uri.http(
-                dotenv.get('URLTEST', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
-              )
-            : Uri.https(
-                dotenv.get('URL', fallback: 'localhost:3001'),
-                'api/v1/online/clientes/${clienteContactoImpParam.clienteId}/contactos/${clienteContactoImpParam.id!}',
-              );
-
-        final response = await _dio.getUri(
-          requestUri,
-          options: Options(
-            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
-          ),
-        );
-        if (response.statusCode == 200) {
-          final jsonData = response.data['data'] as List<dynamic>;
-
-          final clienteContactoDTOList =
-              jsonData.map((e) => ClienteContactoImpDTO.fromJson(e));
-
-          return clienteContactoDTOList.map((e) => e.toDomain()).toList();
-        } else {
-          throw AppException.restApiFailure(
-              response.statusCode ?? 400, response.statusMessage ?? '');
-        }
-      } catch (e) {
-        throw getApiError(e);
-      }
-    } catch (e) {
-      rethrow;
+    if (currentLocale == 'es') {
+      return _remoteDb.articuloTable.descripcionES.contains(searchText);
+    } else if (currentLocale == 'en') {
+      return _remoteDb.articuloTable.descripcionEN.contains(searchText);
+    } else if (currentLocale == 'de') {
+      return _remoteDb.articuloTable.descripcionDE.contains(searchText);
+    } else if (currentLocale == 'fr') {
+      return _remoteDb.articuloTable.descripcionFR.contains(searchText);
+    } else if (currentLocale == 'it') {
+      return _remoteDb.articuloTable.descripcionIT.contains(searchText);
+    } else {
+      return _remoteDb.articuloTable.descripcionES.contains(searchText);
     }
   }
 }
