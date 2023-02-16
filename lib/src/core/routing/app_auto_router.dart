@@ -30,7 +30,7 @@ import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';
-import '../../features/cliente/presentation/show/cliente_direccion_page.dart';
+import '../../features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_seleccionar_pais_page.dart';
 import '../../features/cliente/presentation/show/cliente_grupo_neto_page.dart';
 import '../../features/cliente/presentation/show/cliente_pedidos_page.dart';
@@ -51,7 +51,6 @@ import '../../features/visitas/presentation/edit/visit_edit_page.dart';
 import '../../features/visitas/presentation/index/visita_lista_page.dart';
 import '../../features/visitas/presentation/show/visita_detalle_page.dart';
 import '../../features/cliente/domain/cliente_imp_param.dart';
-import '../../features/cliente/domain/cliente_direccion_edit_param.dart';
 import '../domain/pais.dart';
 import '../domain/entity_id_is_local_param.dart';
 part 'app_auto_router.gr.dart';
@@ -89,7 +88,8 @@ part 'app_auto_router.gr.dart';
       fullscreenDialog: true,
     ),
     AutoRoute(page: ClienteDescuentoPage, path: '/cliente/:id/descuentos'),
-    AutoRoute(page: ClienteDireccionesPage, path: '/cliente/:id/direcciones'),
+    AutoRoute(
+        page: ClienteDireccionesListPage, path: '/cliente/:id/direcciones'),
     AutoRoute(
       page: ClienteDireccionEditPage,
       path: '/cliente/:id/direcciones/:direccionId',

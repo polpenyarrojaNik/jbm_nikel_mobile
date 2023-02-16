@@ -11,8 +11,9 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_cus
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_imp_param.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_page.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_linea_nuevo_tile.dart';
 import 'package:uuid/uuid.dart';
@@ -699,7 +700,8 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
                   : Colors.transparent,
               child: ClienteDireccionTile(
                 clienteDireccion: clienteDireccionesList[i],
-                paisCliente: null,
+                clienteImpParam:
+                    ClienteImpParam(clienteDireccionesList[i].clienteId),
                 isFromPedido: true,
               ),
             ),

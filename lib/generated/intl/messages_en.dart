@@ -324,6 +324,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sales"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage("Changes pending to process"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal":
             MessageLookupByLibrary.simpleMessage("Zip code"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1":
@@ -346,6 +348,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("City"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_provincia":
             MessageLookupByLibrary.simpleMessage("Province"),
+        "cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada":
+            MessageLookupByLibrary.simpleMessage("Shipping address deleted"),
+        "cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage("Changes pending to process"),
+        "cliente_show_clienteDireccion_hayCambiosDeEnviar":
+            MessageLookupByLibrary.simpleMessage(
+                "Have changes pending to send"),
         "cliente_show_clienteDireccion_hayCambiosSinTramitar":
             MessageLookupByLibrary.simpleMessage("Have changes to process"),
         "cliente_show_clienteDireccion_titulo":

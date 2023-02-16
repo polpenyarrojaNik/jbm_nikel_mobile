@@ -32,6 +32,7 @@ import '../domain/cliente_adjunto.dart';
 import '../domain/cliente_contacto.dart';
 import '../domain/cliente_descuento.dart';
 import '../domain/cliente_direccion.dart';
+import '../domain/cliente_direccion_imp.dart';
 import '../domain/cliente_grupo_neto.dart';
 import '../domain/cliente_imp_param.dart';
 import '../domain/cliente_pago_pendiente.dart';
@@ -41,7 +42,8 @@ import '../domain/cliente_ventas_articulo.dart';
 import '../domain/cliente_ventas_mes.dart';
 import 'cliente_contacto_dto.dart';
 import 'cliente_contacto_imp_dto.dart';
-import 'cliente_direccion_local_dto.dart';
+import 'cliente_direccion_dto.dart';
+import 'cliente_direccion_imp_dto.dart';
 import 'cliente_ventas_articulo_dto.dart';
 import 'cliente_ventas_mes_dto.dart';
 
@@ -72,7 +74,7 @@ final clienteDireccionListProvider = FutureProvider.autoDispose
     .family<List<ClienteDireccion>, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
 
-  return clienteRepository.getClienteDireccionListById(clienteId: clienteId);
+  return clienteRepository.getClienteDireccionesListById(clienteId: clienteId);
 });
 
 final clienteContactosListProvider = FutureProvider.autoDispose
@@ -143,7 +145,7 @@ final clienteAdjuntoProvider = FutureProvider.autoDispose
 final clientePaisProvider =
     FutureProvider.autoDispose.family<Pais?, String>((ref, clienteId) {
   final clienteRepository = ref.watch(clienteRepositoryProvider);
-  return clienteRepository.getPaisCliente(clienteId: clienteId);
+  return clienteRepository._getPaisCliente(clienteId: clienteId);
 });
 
 final clienteContactoImpListInSyncByClienteProvider = FutureProvider.autoDispose
@@ -151,6 +153,14 @@ final clienteContactoImpListInSyncByClienteProvider = FutureProvider.autoDispose
   final clienteRepository = ref.watch(clienteRepositoryProvider);
   return clienteRepository
       .getClienteContactosImpListInSyncByCliente(clienteImpParam);
+});
+
+final clienteDireccionImpListInSyncByClienteProvider = FutureProvider
+    .autoDispose
+    .family<List<ClienteDireccionImp>, ClienteImpParam>((ref, clienteImpParam) {
+  final clienteRepository = ref.watch(clienteRepositoryProvider);
+  return clienteRepository
+      .getClienteDireccionesImpListInSyncByCliente(clienteImpParam);
 });
 
 class ClienteRepository {
@@ -402,71 +412,6 @@ class ClienteRepository {
       }).getSingle();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<List<ClienteDireccion>> getClienteDireccionListById(
-      {required String clienteId}) async {
-    final List<ClienteDireccion> clienteDireccionList = [];
-    try {
-      final clienteDireccionLocalList =
-          await _getClienteDireccionLocalList(clienteId);
-
-      final clienteDireccionSyncList = await _getClienteDireccionSyncList(
-          clienteId, clienteDireccionLocalList);
-
-      clienteDireccionList.addAll(clienteDireccionSyncList);
-
-      for (var i = 0; i < clienteDireccionLocalList.length; i++) {
-        final clienteDireccionLocal = clienteDireccionLocalList[i];
-        bool existInSync = _existDireccionInSync(
-            clienteDireccionLocal, clienteDireccionSyncList);
-
-        if (!existInSync) {
-          clienteDireccionList.add(clienteDireccionLocalList[i]);
-        }
-      }
-
-      return clienteDireccionList;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteDireccion> getClienteDireccionById(
-      {required String clienteId,
-      required String clienteDireccionId,
-      bool tratado = true}) async {
-    try {
-      if (tratado) {
-        return await _getClienteDireccionSyncById(
-            clienteId, clienteDireccionId);
-      } else {
-        return await _getClienteDireccionLocalById(
-            clienteId, clienteDireccionId);
-      }
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<ClienteDireccion> upsertClienteDireccion(
-      ClienteDireccion upsertClienteDireccion) async {
-    try {
-      final clienteDireccionLocalDto =
-          ClienteDireccionLocalDTO.fromDomain(upsertClienteDireccion);
-
-      await _insertClienteDireccionInLocalDB(clienteDireccionLocalDto);
-
-      final clienteDireccionLocalDtoEnviado =
-          await _remoteUpsertClienteDireccion(clienteDireccionLocalDto);
-
-      await _updateClienteDireccionLocalInDB(clienteDireccionLocalDtoEnviado);
-
-      return clienteDireccionLocalDtoEnviado.toDomain(
-          pais: upsertClienteDireccion.pais);
-    } catch (e) {
-      rethrow;
     }
   }
 
@@ -1032,48 +977,6 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     return select;
   }
 
-  Future<ClienteDireccion?> getClienteDireccionByDireccionId(
-      {required String clienteId, required String? direccionId}) async {
-    try {
-      if (direccionId != null) {
-        final queryRemote = (_remoteDb.select(_remoteDb.clienteDireccionTable)
-          ..where((t) =>
-              t.clienteId.equals(clienteId) &
-              t.direccionId.equals(direccionId)));
-
-        final clienteDireccionSync = await queryRemote.asyncMap((row) async {
-          final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-                ..where((t) => t.id.equals(row.paisId ?? '')))
-              .getSingleOrNull();
-          return row.toDomain(
-            pais: paisDTO?.toDomain(),
-          );
-        }).getSingleOrNull();
-
-        if (clienteDireccionSync != null) {
-          return clienteDireccionSync;
-        }
-
-        final queryLocal = (_localDb.select(_localDb.clienteDireccionLocalTable)
-          ..where((t) =>
-              t.clienteId.equals(clienteId) &
-              t.direccionId.equals(direccionId)));
-
-        return await queryLocal.asyncMap((row) async {
-          final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-                ..where((t) => t.id.equals(row.paisId ?? '')))
-              .getSingleOrNull();
-          return row.toDomain(
-            pais: paisDTO?.toDomain(),
-          );
-        }).getSingle();
-      }
-      return null;
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
   Future<List<EstadisticasUltimosPrecios>> getClienteUltimosPreciosList(
       {required String clienteId,
       required int page,
@@ -1249,8 +1152,11 @@ GROUP BY ARTICULO_ID, DESCRIPCION
 
       final clienteConatctoImpDto = await query.getSingle();
 
-      return ClienteContactoDTO.fromContactoImp(clienteConatctoImpDto)
-          .toDomain(enviado: false, tratado: false);
+      return ClienteContactoDTO.fromContactoImp(clienteConatctoImpDto).toDomain(
+        enviado: false,
+        tratado: false,
+        contactoImpGuid: clienteConatctoImpDto.id,
+      );
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
@@ -1468,127 +1374,253 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<List<ClienteDireccion>> _getClienteDireccionLocalList(
-      String clienteId) async {
+  Future<List<ClienteDireccion>> getClienteDireccionesListById(
+      {required String clienteId}) async {
+    final List<ClienteDireccion> clienteDireccionList = [];
     try {
-      final query = (_localDb.select(_localDb.clienteDireccionLocalTable)
-        ..where((t) => t.clienteId.equals(clienteId)));
+      final clienteDireccionImpList =
+          await _getClienteDireccionImpList(clienteId);
 
-      return await query.asyncMap((row) async {
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((t) => t.id.equals(row.paisId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(pais: paisDTO?.toDomain());
-      }).get();
+      final clienteDireccionSyncList = await _getClienteDireccionSyncList(
+          clienteId, clienteDireccionImpList);
+
+      clienteDireccionList.addAll(clienteDireccionSyncList);
+
+      for (var i = 0; i < clienteDireccionImpList.length; i++) {
+        if (clienteDireccionImpList[i].direccionId == null) {
+          clienteDireccionList.add(clienteDireccionImpList[i]);
+        }
+      }
+
+      return clienteDireccionList;
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<List<ClienteDireccion>> _getClienteDireccionSyncList(String clienteId,
-      List<ClienteDireccion> clienteDireccionLocalList) async {
+  Future<ClienteDireccion> getClienteDireccionSyncById(
+      String clienteId, String clienteDireccionId) async {
+    try {
+      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+        ..where((t) =>
+            t.clienteId.equals(clienteId) &
+            t.direccionId.equals(clienteDireccionId)));
+
+      return await query.asyncMap((row) async {
+        final pais = await _getPaisCliente(clienteId: clienteId);
+        return row.toDomain(pais);
+      }).getSingle();
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteDireccion> getClienteDireccionImpById(
+      String direccionImpGuid) async {
+    try {
+      final query = (_localDb.select(_localDb.clienteDireccionImpTable)
+        ..where((t) => t.id.equals(direccionImpGuid)));
+
+      final clienteDireccionImpDto = await query.getSingle();
+
+      final pais =
+          await _getPaisCliente(clienteId: clienteDireccionImpDto.clienteId);
+
+      return ClienteDireccionDTO.fromDireccionImp(clienteDireccionImpDto)
+          .toDomain(
+        pais,
+        enviada: false,
+        tratada: false,
+        direccionImpGuid: clienteDireccionImpDto.id,
+      );
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<ClienteDireccion> upsertClienteDireccionImp(
+      ClienteDireccionImp upsertClienteDireccionImp, bool isNew) async {
+    try {
+      final clienteDireccionImpDto =
+          ClienteDireccionImpDTO.fromDomain(upsertClienteDireccionImp);
+      await _insertClienteDireccionImpInLocalDB(clienteDireccionImpDto);
+
+      final clienteDireccionImpDtoEnviada =
+          await _remoteUpsertClienteDireccionImp(clienteDireccionImpDto);
+
+      if (!isNew) {
+        await _deleteClienteDireccionImpInLocalDB(
+            clienteDireccionImpDtoEnviada.id);
+      } else {
+        await _updateDireccionImpInLocalDB(clienteDireccionImpDtoEnviada);
+      }
+
+      final pais = await _getPaisCliente(
+          clienteId: clienteDireccionImpDtoEnviada.clienteId);
+      return ClienteDireccionDTO.fromDireccionImp(clienteDireccionImpDtoEnviada)
+          .toDomain(pais);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteClienteDireccion(String clienteId,
+      {String? direccionId, String? direccionImpGuid}) async {
+    try {
+      if (direccionImpGuid != null) {
+        await _deleteClienteDireccionImpInLocalDB(direccionImpGuid);
+      } else {
+        await _deleteClienteDireccionTratada(clienteId, direccionId!);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<List<ClienteDireccionImp>> getClienteDireccionesImpListInSyncByCliente(
+      ClienteImpParam clienteDireccionImpParam) async {
+    try {
+      try {
+        final requestUri = (usuario.test)
+            ? Uri.http(
+                dotenv.get('URLTEST', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
+              )
+            : Uri.https(
+                dotenv.get('URL', fallback: 'localhost:3001'),
+                'api/v1/online/clientes/${clienteDireccionImpParam.clienteId}/direcciones/${clienteDireccionImpParam.id!}',
+              );
+
+        final response = await _dio.getUri(
+          requestUri,
+          options: Options(
+            headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
+          ),
+        );
+        if (response.statusCode == 200) {
+          final jsonData = response.data['data'] as List<dynamic>;
+
+          final clienteDireccionDTOList =
+              jsonData.map((e) => ClienteDireccionImpDTO.fromJson(e));
+
+          return await Future.wait(clienteDireccionDTOList.map((e) async {
+            final pais = await _getPaisCliente(clienteId: e.clienteId);
+            return e.toDomain(pais);
+          }).toList());
+        } else {
+          throw AppException.restApiFailure(
+              response.statusCode ?? 400, response.statusMessage ?? '');
+        }
+      } catch (e) {
+        throw getApiError(e);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<ClienteDireccion?> getClienteDireccionByDireccionId(
+      {required String clienteId, required String? direccionId}) async {
+    try {
+      final pais = await _getPaisCliente(clienteId: clienteId);
+      if (direccionId != null) {
+        final queryRemote = (_remoteDb.select(_remoteDb.clienteDireccionTable)
+          ..where((t) =>
+              t.clienteId.equals(clienteId) &
+              t.direccionId.equals(direccionId)));
+
+        final clienteDireccionSync = await queryRemote
+            .map((row) => row.toDomain(pais))
+            .getSingleOrNull();
+
+        if (clienteDireccionSync != null) {
+          return clienteDireccionSync;
+        }
+
+        final queryLocal = (_localDb.select(_localDb.clienteDireccionImpTable)
+          ..where((t) =>
+              t.clienteId.equals(clienteId) &
+              t.direccionId.equals(direccionId)));
+
+        return await queryLocal
+            .map((row) =>
+                ClienteDireccion.fromClienteDireccionImp(row.toDomain(pais)))
+            .getSingle();
+      }
+      return null;
+    } catch (e) {
+      throw AppException.fetchLocalDataFailure(e.toString());
+    }
+  }
+
+  Future<List<ClienteDireccion>> _getClienteDireccionSyncList(
+      String clienteId, List<ClienteDireccion> clienteDireccionImpList) async {
     try {
       final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
         ..where((t) => t.clienteId.equals(clienteId)));
 
       return await query.asyncMap((row) async {
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((t) => t.id.equals(row.paisId ?? '')))
-            .getSingleOrNull();
-        for (var i = 0; i < clienteDireccionLocalList.length; i++) {
-          if (clienteDireccionLocalList[i].direccionId == row.direccionId &&
-              !clienteDireccionLocalList[i].tratada) {
-            return row.toDomain(
-              pais: paisDTO?.toDomain(),
-              enviada: clienteDireccionLocalList[i].enviada,
-              tratada: clienteDireccionLocalList[i].tratada,
-            );
+        final pais = await _getPaisCliente(clienteId: clienteId);
+        for (var i = 0; i < clienteDireccionImpList.length; i++) {
+          final clienteContactoImp = clienteDireccionImpList[i];
+          if (!clienteContactoImp.enviada &&
+              row.clienteId == clienteContactoImp.clienteId &&
+              row.direccionId == clienteContactoImp.direccionId) {
+            return row.toDomain(pais,
+                enviada: clienteContactoImp.enviada,
+                tratada: clienteContactoImp.tratada,
+                direccionImpGuid: clienteContactoImp.direccionImpGuid);
           }
         }
-        return row.toDomain(pais: paisDTO?.toDomain());
+
+        return row.toDomain(pais);
       }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<ClienteDireccion> _getClienteDireccionLocalById(
-      String clienteId, String clienteDireccionId) async {
+  Future<List<ClienteDireccion>> _getClienteDireccionImpList(
+      String clienteId) async {
     try {
-      final query = (_localDb.select(_localDb.clienteDireccionLocalTable)
-        ..where((t) =>
-            t.direccionId.equals(clienteDireccionId) &
-            t.clienteId.equals(clienteId)));
+      final query = (_localDb.select(_localDb.clienteDireccionImpTable)
+        ..where((t) => t.clienteId.equals(clienteId)));
 
       return await query.asyncMap((row) async {
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((t) => t.id.equals(row.paisId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(pais: paisDTO?.toDomain());
-      }).getSingle();
+        final pais = await _getPaisCliente(clienteId: row.clienteId);
+        return ClienteDireccion.fromClienteDireccionImp(row.toDomain(pais));
+      }).get();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
   }
 
-  Future<ClienteDireccion> _getClienteDireccionSyncById(
-      String clienteId, String clienteDireccionId) async {
-    try {
-      final query = (_remoteDb.select(_remoteDb.clienteDireccionTable)
-        ..where((t) =>
-            t.direccionId.equals(clienteDireccionId) &
-            t.clienteId.equals(clienteId)));
-
-      return await query.asyncMap((row) async {
-        final paisDTO = await (_remoteDb.select(_remoteDb.paisTable)
-              ..where((t) => t.id.equals(row.paisId ?? '')))
-            .getSingleOrNull();
-        return row.toDomain(pais: paisDTO?.toDomain());
-      }).getSingle();
-    } catch (e) {
-      throw AppException.fetchLocalDataFailure(e.toString());
-    }
-  }
-
-  Future<void> _insertClienteDireccionInLocalDB(
-      ClienteDireccionLocalDTO clienteDireccionLocalDTO) async {
+  Future<void> _insertClienteDireccionImpInLocalDB(
+      ClienteDireccionImpDTO clienteDireccionImpDTO) async {
     try {
       await _localDb
-          .into(_localDb.clienteDireccionLocalTable)
-          .insertOnConflictUpdate(clienteDireccionLocalDTO);
+          .into(_localDb.clienteDireccionImpTable)
+          .insertOnConflictUpdate(clienteDireccionImpDTO);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
   }
 
-  Future<void> _deleteClienteDireccionInLocalDB(
-      String clienteId, String direccionId) async {
-    try {
-      await (_localDb.delete(_localDb.clienteDireccionLocalTable)
-            ..where((tbl) =>
-                tbl.direccionId.equals(direccionId) &
-                tbl.clienteId.equals(clienteId)))
-          .go();
-    } catch (e) {
-      throw AppException.insertDataFailure(e.toString());
-    }
-  }
-
-  Future<ClienteDireccionLocalDTO> _remoteUpsertClienteDireccion(
-    ClienteDireccionLocalDTO clienteDireccionLocalDTO,
+  Future<ClienteDireccionImpDTO> _remoteUpsertClienteDireccionImp(
+    ClienteDireccionImpDTO clienteDireccionImpDTO,
   ) async {
     try {
-      final clienteDireccionLocalToJson = clienteDireccionLocalDTO.toJson();
-      print(jsonEncode(clienteDireccionLocalToJson));
+      final clienteDireccionImpToJson = clienteDireccionImpDTO.toJson();
+      print(jsonEncode(clienteDireccionImpToJson));
 
       final requestUri = (usuario.test)
           ? Uri.http(
               dotenv.get('URLTEST', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteDireccionLocalDTO.clienteId}/direccion',
+              'api/v1/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             )
           : Uri.https(
               dotenv.get('URL', fallback: 'localhost:3001'),
-              'api/v1/online/clientes/${clienteDireccionLocalDTO.clienteId}/direccion',
+              'api/v1/online/clientes/${clienteDireccionImpDTO.clienteId}/direccion',
             );
 
       final response = await _dio.postUri(
@@ -1596,12 +1628,12 @@ GROUP BY ARTICULO_ID, DESCRIPCION
         options: Options(
           headers: {'authorization': 'Bearer ${usuario.provisionalToken}'},
         ),
-        data: jsonEncode(clienteDireccionLocalToJson),
+        data: jsonEncode(clienteDireccionImpToJson),
       );
       if (response.statusCode == 200) {
         final json = response.data['data'] as Map<String, dynamic>;
 
-        return ClienteDireccionLocalDTO.fromJson(json);
+        return ClienteDireccionImpDTO.fromJson(json);
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');
@@ -1611,31 +1643,55 @@ GROUP BY ARTICULO_ID, DESCRIPCION
     }
   }
 
-  Future<void> _updateClienteDireccionLocalInDB(
-      ClienteDireccionLocalDTO clienteDireccionLocalDTO) async {
+  Future<void> _updateDireccionImpInLocalDB(
+      ClienteDireccionImpDTO clienteDireccionImpDTO) async {
     try {
       await _localDb
-          .update(_localDb.clienteDireccionLocalTable)
-          .replace(clienteDireccionLocalDTO);
+          .update(_localDb.clienteDireccionImpTable)
+          .replace(clienteDireccionImpDTO);
     } catch (e) {
       throw AppException.insertDataFailure(e.toString());
     }
   }
 
-  bool _existDireccionInSync(ClienteDireccion clienteDireccionLocal,
-      List<ClienteDireccion> clienteDireccionSyncList) {
-    bool existInSync = false;
+  Future<void> _deleteClienteDireccionTratada(
+      String clienteId, String clienteDireccionId) async {
+    try {
+      final deletedDireccionImpDto = ClienteDireccionImpDTO(
+        id: const Uuid().v4(),
+        fecha: DateTime.now().toUtc().toLocal(),
+        usuarioId: usuario.id,
+        clienteId: clienteId,
+        direccionId: clienteDireccionId,
+        enviada: 'N',
+        borrar: 'S',
+      );
 
-    for (var i = 0; i < clienteDireccionSyncList.length; i++) {
-      if (clienteDireccionLocal.direccionId ==
-          clienteDireccionSyncList[i].direccionId) {
-        existInSync = true;
+      await _insertClienteDireccionImpInLocalDB(deletedDireccionImpDto);
+      final direccionImpEnviado =
+          await _remoteUpsertClienteDireccionImp(deletedDireccionImpDto);
+      if (direccionImpEnviado.enviada == 'S') {
+        await _deleteClienteDireccionImpInLocalDB(deletedDireccionImpDto.id);
+      } else {
+        await _updateDireccionImpInLocalDB(deletedDireccionImpDto);
       }
+    } catch (e) {
+      rethrow;
     }
-    return existInSync;
   }
 
-  Future<Pais?> getPaisCliente({required String clienteId}) async {
+  Future<void> _deleteClienteDireccionImpInLocalDB(
+      String direccionGuidImp) async {
+    try {
+      await (_localDb.delete(_localDb.clienteDireccionImpTable)
+            ..where((tbl) => tbl.id.equals(direccionGuidImp)))
+          .go();
+    } catch (e) {
+      throw AppException.insertDataFailure(e.toString());
+    }
+  }
+
+  Future<Pais?> _getPaisCliente({required String clienteId}) async {
     final clienteDto = await (_remoteDb.select(_remoteDb.clienteTable)
           ..where((tbl) => tbl.id.equals(clienteId)))
         .getSingle();

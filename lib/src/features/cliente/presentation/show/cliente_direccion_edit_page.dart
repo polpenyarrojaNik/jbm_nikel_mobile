@@ -12,18 +12,22 @@ import '../../../../core/domain/pais.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/presentation/common_widgets/app_decoration.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
+import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import '../../../../core/presentation/theme/app_sizes.dart';
 import '../../../../core/routing/app_auto_router.dart';
+import '../../../usuario/application/usuario_notifier.dart';
 import '../../domain/cliente_direccion_edit_page_data.dart';
-import '../../domain/cliente_direccion_edit_param.dart';
+import '../../domain/cliente_direccion_imp.dart';
+import '../../domain/cliente_imp_param.dart';
 import '../../infrastructure/cliente_repository.dart';
 import 'cliente_direccion_edit_page_controller.dart';
+import 'cliente_direccion_list_imp_tile.dart';
 
 class ClienteDireccionEditPage extends ConsumerStatefulWidget {
-  const ClienteDireccionEditPage(
-      {super.key, required this.clienteDireccionEditParam});
+  const ClienteDireccionEditPage({super.key, required this.clienteImpParam});
 
-  final ClienteDireccionEditParam clienteDireccionEditParam;
+  final ClienteImpParam clienteImpParam;
 
   @override
   ConsumerState<ClienteDireccionEditPage> createState() =>
@@ -38,7 +42,7 @@ class _ClienteDireccionEditPageState
   @override
   void initState() {
     super.initState();
-    paisDireccion = widget.clienteDireccionEditParam.paisCliente;
+    paisDireccion = widget.clienteImpParam.clientePais!;
   }
 
   void onPaisChanged(Pais? newPaisValue) {
@@ -49,12 +53,11 @@ class _ClienteDireccionEditPageState
 
   @override
   Widget build(BuildContext context) {
-    final value = ref.watch(clienteDireccionEditPageControllerProvider(
-        widget.clienteDireccionEditParam));
+    final value = ref.watch(
+        clienteDireccionEditPageControllerProvider(widget.clienteImpParam));
 
     ref.listen<AsyncValue>(
-      clienteDireccionEditPageControllerProvider(
-          widget.clienteDireccionEditParam),
+      clienteDireccionEditPageControllerProvider(widget.clienteImpParam),
       (_, state) => state.maybeWhen(
           orElse: () {},
           error: (error, _) {
@@ -63,6 +66,10 @@ class _ClienteDireccionEditPageState
                 : error.toString();
 
             context.showErrorBar(content: Text(errorMessage));
+
+            ref.invalidate(
+                clienteDireccionListProvider(widget.clienteImpParam.clienteId));
+            context.router.pop();
           },
           data: (clienteDireccionEditPageData) {
             clienteDireccionEditPageData =
@@ -74,7 +81,6 @@ class _ClienteDireccionEditPageState
                       .of(context)
                       .cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito),
                 );
-                savedDireccionSuccessNavigation(context, ref);
               } else {
                 context.showErrorBar(
                   content: Text(
@@ -84,6 +90,11 @@ class _ClienteDireccionEditPageState
                   ),
                 );
               }
+              ref.invalidate(clienteDireccionListProvider(
+                  widget.clienteImpParam.clienteId));
+              ref.invalidate(clienteDireccionImpListInSyncByClienteProvider(
+                  widget.clienteImpParam));
+              context.router.pop();
             }
           }),
     );
@@ -94,11 +105,6 @@ class _ClienteDireccionEditPageState
               .of(context)
               .cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion,
           actions: [
-            if (widget.clienteDireccionEditParam.clienteDireccionId != null)
-              IconButton(
-                onPressed: () => deleteClienteDireccion(context, ref),
-                icon: const Icon(Icons.delete),
-              ),
             IconButton(
               onPressed: () => saveClienteDireccion(context, ref, formKey),
               icon: const Icon(Icons.save),
@@ -107,21 +113,37 @@ class _ClienteDireccionEditPageState
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: value.when(
-          data: (clienteDireccionEditPageData) => ClienteDireccionEditForm(
-            clienteDireccion: clienteDireccionEditPageData.clienteDireccion,
-            formKey: formKey,
-            paisCliente: widget.clienteDireccionEditParam.paisCliente,
-            onPaisChanged: onPaisChanged,
+          data: (clienteDireccionEditPageData) => Column(
+            children: [
+              ClienteDireccionEditForm(
+                clienteDireccion: clienteDireccionEditPageData.clienteDireccion,
+                formKey: formKey,
+                paisCliente: widget.clienteImpParam.clientePais,
+                onPaisChanged: onPaisChanged,
+              ),
+              if (widget.clienteImpParam.id != null)
+                _CambiosPendientesListView(
+                  clienteImpParam: widget.clienteImpParam,
+                )
+            ],
           ),
           error: (error, _) {
             final clienteDireccionEditPageData =
                 error as ClienteDireccionEditPageData;
 
-            return ClienteDireccionEditForm(
-              clienteDireccion: clienteDireccionEditPageData.clienteDireccion,
-              formKey: formKey,
-              paisCliente: widget.clienteDireccionEditParam.paisCliente,
-              onPaisChanged: onPaisChanged,
+            return Column(
+              children: [
+                ClienteDireccionEditForm(
+                  clienteDireccion:
+                      clienteDireccionEditPageData.clienteDireccion,
+                  formKey: formKey,
+                  paisCliente: widget.clienteImpParam.clientePais,
+                  onPaisChanged: onPaisChanged,
+                ),
+                _CambiosPendientesListView(
+                  clienteImpParam: widget.clienteImpParam,
+                )
+              ],
             );
           },
           loading: () => const Center(
@@ -132,19 +154,17 @@ class _ClienteDireccionEditPageState
     );
   }
 
-  void savedDireccionSuccessNavigation(BuildContext context, WidgetRef ref) {
-    ref.invalidate(clienteDireccionListProvider(
-        widget.clienteDireccionEditParam.clienteId));
-    context.router.pop();
-  }
-
   void saveClienteDireccion(BuildContext context, WidgetRef ref,
       GlobalKey<FormBuilderState> formKey) async {
     if (formKey.currentState!.saveAndValidate()) {
-      final clienteDireccionToUpsert = ClienteDireccion(
-        clienteId: widget.clienteDireccionEditParam.clienteId,
-        direccionId: widget.clienteDireccionEditParam.clienteDireccionId ??
-            const Uuid().v1(),
+      final usuario = ref.watch(usuarioNotifierProvider)!;
+
+      final clienteDireccionToUpsert = ClienteDireccionImp(
+        id: widget.clienteImpParam.impId ?? const Uuid().v4(),
+        fecha: DateTime.now().toUtc(),
+        usuarioId: usuario.id,
+        clienteId: widget.clienteImpParam.clienteId,
+        direccionId: widget.clienteImpParam.id,
         nombre: formKey.currentState!.value['nombre'] as String,
         direccion1: formKey.currentState!.value['direccion1'] as String,
         direccion2: formKey.currentState!.value['direccion2'] as String?,
@@ -152,31 +172,15 @@ class _ClienteDireccionEditPageState
         poblacion: formKey.currentState!.value['poblacion'] as String?,
         provincia: formKey.currentState!.value['provincia'] as String?,
         pais: paisDireccion,
-        latitud: 0,
-        longitud: 0,
-        predeterminada: false,
-        lastUpdated: DateTime.now().toUtc(),
         enviada: false,
-        tratada: false,
-        deleted: false,
+        borrar: false,
       );
       await ref
-          .read(clienteDireccionEditPageControllerProvider(
-                  widget.clienteDireccionEditParam)
-              .notifier)
-          .upsertClienteDireccion(clienteDireccionToUpsert);
+          .read(
+              clienteDireccionEditPageControllerProvider(widget.clienteImpParam)
+                  .notifier)
+          .upsertClienteDireccionImp(clienteDireccionToUpsert);
     }
-  }
-
-  void deleteClienteDireccion(BuildContext context, WidgetRef ref) async {
-    await ref
-        .read(clienteDireccionEditPageControllerProvider(
-                widget.clienteDireccionEditParam)
-            .notifier)
-        .deleteClienteDireccion();
-
-    ref.invalidate(clienteDireccionListProvider);
-    context.router.pop();
   }
 }
 
@@ -304,5 +308,44 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
       widget.formKey.currentState?.fields['pais']
           ?.didChange(newPaisValue.descripcion);
     }
+  }
+}
+
+class _CambiosPendientesListView extends ConsumerWidget {
+  const _CambiosPendientesListView({required this.clienteImpParam});
+
+  final ClienteImpParam clienteImpParam;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final clienteDireccionImpValue = ref
+        .watch(clienteDireccionImpListInSyncByClienteProvider(clienteImpParam));
+    return clienteDireccionImpValue.when(
+        data: (clienteDireccionImpList) => clienteDireccionImpList.isEmpty
+            ? Container()
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                        S
+                            .of(context)
+                            .cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar,
+                        style: Theme.of(context).textTheme.titleSmall),
+                    gapH4,
+                    ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, i) => ClienteDireccionImpListTile(
+                          clienteDireccionImp: clienteDireccionImpList[i]),
+                      separatorBuilder: (context, i) => const Divider(),
+                      itemCount: clienteDireccionImpList.length,
+                    ),
+                  ],
+                ),
+              ),
+        error: (error, _) => ErrorMessageWidget(
+            (error is AppException) ? error.details.message : error.toString()),
+        loading: () => const Center(child: CircularProgressIndicator()));
   }
 }

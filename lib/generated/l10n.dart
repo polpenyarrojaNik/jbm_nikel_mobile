@@ -1544,6 +1544,16 @@ class S {
     );
   }
 
+  /// `Have changes pending to send`
+  String get cliente_show_clienteDireccion_hayCambiosDeEnviar {
+    return Intl.message(
+      'Have changes pending to send',
+      name: 'cliente_show_clienteDireccion_hayCambiosDeEnviar',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit contact`
   String
       get cliente_show_clienteContacto_clienteContacoEditPage_editarContacto {
@@ -1801,6 +1811,42 @@ class S {
     return Intl.message(
       'Country',
       name: 'cliente_show_clienteDireccion_clienteDireccionEditPage_pais',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes pending to process`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar {
+    return Intl.message(
+      'Changes pending to process',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes pending to process`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar {
+    return Intl.message(
+      'Changes pending to process',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shipping address deleted`
+  String
+      get cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada {
+    return Intl.message(
+      'Shipping address deleted',
+      name:
+          'cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada',
       desc: '',
       args: [],
     );

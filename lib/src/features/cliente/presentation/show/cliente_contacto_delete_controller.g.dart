@@ -30,7 +30,7 @@ class _SystemHash {
 }
 
 String _$ClienteContactoDeleteControllerHash() =>
-    r'fb765df6e383541b859157189a1fccf1af3715fa';
+    r'2b2c16262cc1247b16c0410464ae961fc0e54433';
 
 /// See also [ClienteContactoDeleteController].
 class ClienteContactoDeleteControllerProvider

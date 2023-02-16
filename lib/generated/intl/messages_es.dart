@@ -329,6 +329,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal":
             MessageLookupByLibrary.simpleMessage("Código postal"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1":
@@ -351,6 +354,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Población"),
         "cliente_show_clienteDireccion_clienteDireccionEditPage_provincia":
             MessageLookupByLibrary.simpleMessage("Provincia"),
+        "cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada":
+            MessageLookupByLibrary.simpleMessage("Dirección eliminada"),
+        "cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
+        "cliente_show_clienteDireccion_hayCambiosDeEnviar":
+            MessageLookupByLibrary.simpleMessage(
+                "Hay cambios pendientes de enviar"),
         "cliente_show_clienteDireccion_hayCambiosSinTramitar":
             MessageLookupByLibrary.simpleMessage("Hay cambios por tramitar"),
         "cliente_show_clienteDireccion_titulo":

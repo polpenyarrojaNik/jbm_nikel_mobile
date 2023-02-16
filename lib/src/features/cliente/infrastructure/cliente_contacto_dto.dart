@@ -42,7 +42,7 @@ class ClienteContactoDTO
       telefono1: _.telefono1,
       telefono2: _.telefono2,
       email: _.email,
-      lastUpdated: DateTime.now(),
+      lastUpdated: DateTime.now().toUtc(),
       deleted: _.borrar,
     );
   }

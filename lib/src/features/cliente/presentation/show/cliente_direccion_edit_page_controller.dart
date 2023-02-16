@@ -4,7 +4,8 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../domain/cliente_direccion.dart';
 import '../../domain/cliente_direccion_edit_page_data.dart';
-import '../../domain/cliente_direccion_edit_param.dart';
+import '../../domain/cliente_direccion_imp.dart';
+import '../../domain/cliente_imp_param.dart';
 
 part 'cliente_direccion_edit_page_controller.g.dart';
 
@@ -13,32 +14,34 @@ class ClienteDireccionEditPageController
     extends _$ClienteDireccionEditPageController {
   @override
   Future<ClienteDireccionEditPageData> build(
-      ClienteDireccionEditParam clienteDireccionEditParam) async {
+      ClienteImpParam clienteImpParam) async {
     ClienteDireccion? clienteDireccion;
 
-    if (clienteDireccionEditParam.clienteDireccionId != null) {
+    if (clienteImpParam.impId != null) {
       clienteDireccion = await ref
           .read(clienteRepositoryProvider)
-          .getClienteDireccionById(
-            clienteId: clienteDireccionEditParam.clienteId,
-            clienteDireccionId: clienteDireccionEditParam.clienteDireccionId!,
-            tratado: clienteDireccionEditParam.tratado,
-          );
+          .getClienteDireccionImpById(clienteImpParam.impId!);
+    } else if (clienteImpParam.id != null) {
+      clienteDireccion = await ref
+          .read(clienteRepositoryProvider)
+          .getClienteDireccionSyncById(
+              clienteImpParam.clienteId, clienteImpParam.id!);
     }
-
     return ClienteDireccionEditPageData(
       isSent: false,
       clienteDireccion: clienteDireccion,
     );
   }
 
-  Future<void> upsertClienteDireccion(
-      ClienteDireccion clienteDireccionToUpsert) async {
+  Future<void> upsertClienteDireccionImp(
+      ClienteDireccionImp clienteDireccionImp) async {
     state = const AsyncLoading();
     try {
-      final clienteDireccion = await ref
-          .read(clienteRepositoryProvider)
-          .upsertClienteDireccion(clienteDireccionToUpsert);
+      final clienteDireccion =
+          await ref.read(clienteRepositoryProvider).upsertClienteDireccionImp(
+                clienteDireccionImp,
+                clienteImpParam.id == null,
+              );
 
       state = AsyncData(
         ClienteDireccionEditPageData(
@@ -47,34 +50,11 @@ class ClienteDireccionEditPageController
     } on AppException catch (e, stackTrace) {
       state = AsyncError(
         ClienteDireccionEditPageData(
-            clienteDireccion: clienteDireccionToUpsert, isSent: true, error: e),
-        stackTrace,
-      );
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<void> deleteClienteDireccion() async {
-    state = const AsyncLoading();
-
-    try {
-      await ref.read(clienteRepositoryProvider).deleteClienteDireccion(
-          clienteDireccionEditParam.clienteId,
-          clienteDireccionEditParam.clienteDireccionId!);
-      state = const AsyncData(
-          ClienteDireccionEditPageData(isSent: true, clienteDireccion: null));
-    } on AppException catch (e, stackTrace) {
-      final clienteDireccion = await ref
-          .read(clienteRepositoryProvider)
-          .getClienteDireccionById(
-            clienteId: clienteDireccionEditParam.clienteId,
-            clienteDireccionId: clienteDireccionEditParam.clienteDireccionId!,
-            tratado: clienteDireccionEditParam.tratado,
-          );
-      state = AsyncError(
-        ClienteDireccionEditPageData(
-            clienteDireccion: clienteDireccion, isSent: true, error: e),
+            clienteDireccion: ClienteDireccion.fromClienteDireccionImp(
+              clienteDireccionImp,
+            ),
+            isSent: true,
+            error: e),
         stackTrace,
       );
     } catch (e) {

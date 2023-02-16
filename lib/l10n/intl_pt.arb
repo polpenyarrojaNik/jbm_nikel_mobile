@@ -310,5 +310,13 @@
 	"cliente_show_clienteDireccion_clienteDireccionEditPage_pais": "Country",
 	"cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion": "População",
 	"cliente_show_clienteDireccion_clienteDireccionEditPage_provincia": "Província",
-	"cliente_show_clienteDireccion_hayCambiosSinTramitar": "Há mudanças para processar"
+	"cliente_show_clienteDireccion_hayCambiosSinTramitar": "Há mudanças para processar",
+	"cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar": "Alterações pendentes de processamento",
+	"cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado": "Contato deletado",
+	"cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar": "Alterações pendentes de processamento",
+	"cliente_show_clienteContacto_hayCambiosDeEnviar": "Há alterações pendentes para envio",
+	"cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar": "Alterações pendentes de processamento",
+	"cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada": "Endereço removido",
+	"cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar": "Alterações pendentes de processamento",
+	"cliente_show_clienteDireccion_hayCambiosDeEnviar": "Há alterações pendentes para envio"
 }

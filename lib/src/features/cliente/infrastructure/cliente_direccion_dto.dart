@@ -5,6 +5,7 @@ import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_direccion.dart';
 
 import '../../../core/infrastructure/pais_dto.dart';
+import 'cliente_direccion_imp_dto.dart';
 
 part 'cliente_direccion_dto.freezed.dart';
 part 'cliente_direccion_dto.g.dart';
@@ -18,8 +19,8 @@ class ClienteDireccionDTO
   const ClienteDireccionDTO._();
   const factory ClienteDireccionDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'DIRECCION_ID') required String direccionId,
-    @JsonKey(name: 'NOMBRE') required String nombre,
+    @JsonKey(name: 'DIRECCION_ID') required String? direccionId,
+    @JsonKey(name: 'NOMBRE') String? nombre,
     @JsonKey(name: 'DIRECCION1') String? direccion1,
     @JsonKey(name: 'DIRECCION2') String? direccion2,
     @JsonKey(name: 'CODIGO_POSTAL') String? codigoPostal,
@@ -36,30 +37,31 @@ class ClienteDireccionDTO
   factory ClienteDireccionDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteDireccionDTOFromJson(json);
 
-  factory ClienteDireccionDTO.fromDomain(ClienteDireccion _) {
+  factory ClienteDireccionDTO.fromDireccionImp(ClienteDireccionImpDTO _) {
     return ClienteDireccionDTO(
       clienteId: _.clienteId,
-      direccionId: _.direccionId!,
+      direccionId: _.direccionId,
       nombre: _.nombre,
       direccion1: _.direccion1,
       direccion2: _.direccion2,
       codigoPostal: _.codigoPostal,
       poblacion: _.poblacion,
       provincia: _.provincia,
-      paisId: _.pais?.id,
-      latitud: _.latitud,
-      longitud: _.longitud,
-      predeterminada: (_.predeterminada) ? 'S' : 'N',
-      lastUpdated: _.lastUpdated,
-      deleted: _.deleted ? 'S' : 'N',
+      paisId: _.paisId,
+      latitud: 0,
+      longitud: 0,
+      predeterminada: 'N',
+      lastUpdated: DateTime.now().toUtc(),
+      deleted: _.borrar,
     );
   }
 
-  ClienteDireccion toDomain(
-      {required Pais? pais, bool enviada = true, bool tratada = true}) {
+  ClienteDireccion toDomain(Pais? pais,
+      {bool enviada = true, bool tratada = true, String? direccionImpGuid}) {
     return ClienteDireccion(
       clienteId: clienteId,
       direccionId: direccionId,
+      direccionImpGuid: direccionImpGuid,
       nombre: nombre,
       direccion1: direccion1,
       direccion2: direccion2,
@@ -81,7 +83,7 @@ class ClienteDireccionDTO
   Map<String, Expression> toColumns(bool nullToAbsent) {
     return ClienteDireccionTableCompanion(
       clienteId: Value(clienteId),
-      direccionId: Value(direccionId),
+      direccionId: Value(direccionId!),
       nombre: Value(nombre),
       direccion1: Value(direccion1),
       direccion2: Value(direccion2),
@@ -108,7 +110,7 @@ class ClienteDireccionTable extends Table {
 
   TextColumn get clienteId => text().named('CLIENTE_ID')();
   TextColumn get direccionId => text().named('DIRECCION_ID')();
-  TextColumn get nombre => text().named('NOMBRE')();
+  TextColumn get nombre => text().nullable().named('NOMBRE')();
   TextColumn get direccion1 => text().nullable().named('DIRECCION1')();
   TextColumn get direccion2 => text().nullable().named('DIRECCION2')();
   TextColumn get codigoPostal => text().nullable().named('CODIGO_POSTAL')();

@@ -2861,12 +2861,28 @@ class ClienteContactoImpTableCompanion
   }
 }
 
-class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
-    with TableInfo<$ClienteDireccionLocalTableTable, ClienteDireccionLocalDTO> {
+class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
+    with TableInfo<$ClienteDireccionImpTableTable, ClienteDireccionImpDTO> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ClienteDireccionLocalTableTable(this.attachedDatabase, [this._alias]);
+  $ClienteDireccionImpTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'GUID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  @override
+  late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
+      'FECHA', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _usuarioIdMeta =
+      const VerificationMeta('usuarioId');
+  @override
+  late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
+      'USUARIO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _clienteIdMeta =
       const VerificationMeta('clienteId');
   @override
@@ -2877,13 +2893,13 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
       const VerificationMeta('direccionId');
   @override
   late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
-      'DIRECCION_ID', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      'DIRECCION_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
-      'NOMBRE', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      'NOMBRE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _direccion1Meta =
       const VerificationMeta('direccion1');
   @override
@@ -2919,30 +2935,6 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
   late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
       'PAIS_ID', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _latitudMeta =
-      const VerificationMeta('latitud');
-  @override
-  late final GeneratedColumn<double> latitud = GeneratedColumn<double>(
-      'LATITUD', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _longitudMeta =
-      const VerificationMeta('longitud');
-  @override
-  late final GeneratedColumn<double> longitud = GeneratedColumn<double>(
-      'LONGITUD', aliasedName, false,
-      type: DriftSqlType.double, requiredDuringInsert: true);
-  static const VerificationMeta _predeterminadaMeta =
-      const VerificationMeta('predeterminada');
-  @override
-  late final GeneratedColumn<String> predeterminada = GeneratedColumn<String>(
-      'PREDETERMINADA_SN', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _lastUpdatedMeta =
-      const VerificationMeta('lastUpdated');
-  @override
-  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
-      'LAST_UPDATED', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _enviadaMeta =
       const VerificationMeta('enviada');
   @override
@@ -2951,24 +2943,18 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
-  static const VerificationMeta _tratadaMeta =
-      const VerificationMeta('tratada');
+  static const VerificationMeta _borrarMeta = const VerificationMeta('borrar');
   @override
-  late final GeneratedColumn<String> tratada = GeneratedColumn<String>(
-      'TRATADA', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      defaultValue: const Constant('N'));
-  static const VerificationMeta _deletedMeta =
-      const VerificationMeta('deleted');
-  @override
-  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
-      'DELETED', aliasedName, false,
+  late final GeneratedColumn<String> borrar = GeneratedColumn<String>(
+      'BORRAR', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
       defaultValue: const Constant('N'));
   @override
   List<GeneratedColumn> get $columns => [
+        id,
+        fecha,
+        usuarioId,
         clienteId,
         direccionId,
         nombre,
@@ -2978,24 +2964,36 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
         poblacion,
         provincia,
         paisId,
-        latitud,
-        longitud,
-        predeterminada,
-        lastUpdated,
         enviada,
-        tratada,
-        deleted
+        borrar
       ];
   @override
-  String get aliasedName => _alias ?? 'CLIENTES_DIRECCIONES_ENVIO_LOCAL_IMP';
+  String get aliasedName => _alias ?? 'CLIENTES_DIRECCIONES_ENVIO_IMP';
   @override
-  String get actualTableName => 'CLIENTES_DIRECCIONES_ENVIO_LOCAL_IMP';
+  String get actualTableName => 'CLIENTES_DIRECCIONES_ENVIO_IMP';
   @override
   VerificationContext validateIntegrity(
-      Insertable<ClienteDireccionLocalDTO> instance,
+      Insertable<ClienteDireccionImpDTO> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('GUID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['GUID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('FECHA')) {
+      context.handle(
+          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+    } else if (isInserting) {
+      context.missing(_fechaMeta);
+    }
+    if (data.containsKey('USUARIO_ID')) {
+      context.handle(_usuarioIdMeta,
+          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+    } else if (isInserting) {
+      context.missing(_usuarioIdMeta);
+    }
     if (data.containsKey('CLIENTE_ID')) {
       context.handle(_clienteIdMeta,
           clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
@@ -3007,14 +3005,10 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
           _direccionIdMeta,
           direccionId.isAcceptableOrUnknown(
               data['DIRECCION_ID']!, _direccionIdMeta));
-    } else if (isInserting) {
-      context.missing(_direccionIdMeta);
     }
     if (data.containsKey('NOMBRE')) {
       context.handle(_nombreMeta,
           nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
-    } else if (isInserting) {
-      context.missing(_nombreMeta);
     }
     if (data.containsKey('DIRECCION1')) {
       context.handle(
@@ -3046,60 +3040,35 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
       context.handle(_paisIdMeta,
           paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
     }
-    if (data.containsKey('LATITUD')) {
-      context.handle(_latitudMeta,
-          latitud.isAcceptableOrUnknown(data['LATITUD']!, _latitudMeta));
-    } else if (isInserting) {
-      context.missing(_latitudMeta);
-    }
-    if (data.containsKey('LONGITUD')) {
-      context.handle(_longitudMeta,
-          longitud.isAcceptableOrUnknown(data['LONGITUD']!, _longitudMeta));
-    } else if (isInserting) {
-      context.missing(_longitudMeta);
-    }
-    if (data.containsKey('PREDETERMINADA_SN')) {
-      context.handle(
-          _predeterminadaMeta,
-          predeterminada.isAcceptableOrUnknown(
-              data['PREDETERMINADA_SN']!, _predeterminadaMeta));
-    }
-    if (data.containsKey('LAST_UPDATED')) {
-      context.handle(
-          _lastUpdatedMeta,
-          lastUpdated.isAcceptableOrUnknown(
-              data['LAST_UPDATED']!, _lastUpdatedMeta));
-    } else if (isInserting) {
-      context.missing(_lastUpdatedMeta);
-    }
     if (data.containsKey('ENVIADA')) {
       context.handle(_enviadaMeta,
           enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
     }
-    if (data.containsKey('TRATADA')) {
-      context.handle(_tratadaMeta,
-          tratada.isAcceptableOrUnknown(data['TRATADA']!, _tratadaMeta));
-    }
-    if (data.containsKey('DELETED')) {
-      context.handle(_deletedMeta,
-          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    if (data.containsKey('BORRAR')) {
+      context.handle(_borrarMeta,
+          borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta));
     }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {clienteId, direccionId};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ClienteDireccionLocalDTO map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  ClienteDireccionImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ClienteDireccionLocalDTO(
+    return ClienteDireccionImpDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GUID'])!,
+      fecha: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      usuarioId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
       clienteId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
       direccionId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
       nombre: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
       direccion1: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
       direccion2: attachedDatabase.typeMapping
@@ -3112,48 +3081,39 @@ class $ClienteDireccionLocalTableTable extends ClienteDireccionLocalTable
           .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
       paisId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
-      latitud: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}LATITUD'])!,
-      longitud: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}LONGITUD'])!,
-      predeterminada: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}PREDETERMINADA_SN']),
-      lastUpdated: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
       enviada: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
-      tratada: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}TRATADA'])!,
-      deleted: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+      borrar: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}BORRAR'])!,
     );
   }
 
   @override
-  $ClienteDireccionLocalTableTable createAlias(String alias) {
-    return $ClienteDireccionLocalTableTable(attachedDatabase, alias);
+  $ClienteDireccionImpTableTable createAlias(String alias) {
+    return $ClienteDireccionImpTableTable(attachedDatabase, alias);
   }
 }
 
-class ClienteDireccionLocalTableCompanion
-    extends UpdateCompanion<ClienteDireccionLocalDTO> {
+class ClienteDireccionImpTableCompanion
+    extends UpdateCompanion<ClienteDireccionImpDTO> {
+  final Value<String> id;
+  final Value<DateTime> fecha;
+  final Value<String> usuarioId;
   final Value<String> clienteId;
-  final Value<String> direccionId;
-  final Value<String> nombre;
+  final Value<String?> direccionId;
+  final Value<String?> nombre;
   final Value<String?> direccion1;
   final Value<String?> direccion2;
   final Value<String?> codigoPostal;
   final Value<String?> poblacion;
   final Value<String?> provincia;
   final Value<String?> paisId;
-  final Value<double> latitud;
-  final Value<double> longitud;
-  final Value<String?> predeterminada;
-  final Value<DateTime> lastUpdated;
   final Value<String> enviada;
-  final Value<String> tratada;
-  final Value<String> deleted;
-  const ClienteDireccionLocalTableCompanion({
+  final Value<String> borrar;
+  const ClienteDireccionImpTableCompanion({
+    this.id = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.usuarioId = const Value.absent(),
     this.clienteId = const Value.absent(),
     this.direccionId = const Value.absent(),
     this.nombre = const Value.absent(),
@@ -3163,38 +3123,32 @@ class ClienteDireccionLocalTableCompanion
     this.poblacion = const Value.absent(),
     this.provincia = const Value.absent(),
     this.paisId = const Value.absent(),
-    this.latitud = const Value.absent(),
-    this.longitud = const Value.absent(),
-    this.predeterminada = const Value.absent(),
-    this.lastUpdated = const Value.absent(),
     this.enviada = const Value.absent(),
-    this.tratada = const Value.absent(),
-    this.deleted = const Value.absent(),
+    this.borrar = const Value.absent(),
   });
-  ClienteDireccionLocalTableCompanion.insert({
+  ClienteDireccionImpTableCompanion.insert({
+    required String id,
+    required DateTime fecha,
+    required String usuarioId,
     required String clienteId,
-    required String direccionId,
-    required String nombre,
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
     this.direccion1 = const Value.absent(),
     this.direccion2 = const Value.absent(),
     this.codigoPostal = const Value.absent(),
     this.poblacion = const Value.absent(),
     this.provincia = const Value.absent(),
     this.paisId = const Value.absent(),
-    required double latitud,
-    required double longitud,
-    this.predeterminada = const Value.absent(),
-    required DateTime lastUpdated,
     this.enviada = const Value.absent(),
-    this.tratada = const Value.absent(),
-    this.deleted = const Value.absent(),
-  })  : clienteId = Value(clienteId),
-        direccionId = Value(direccionId),
-        nombre = Value(nombre),
-        latitud = Value(latitud),
-        longitud = Value(longitud),
-        lastUpdated = Value(lastUpdated);
-  static Insertable<ClienteDireccionLocalDTO> custom({
+    this.borrar = const Value.absent(),
+  })  : id = Value(id),
+        fecha = Value(fecha),
+        usuarioId = Value(usuarioId),
+        clienteId = Value(clienteId);
+  static Insertable<ClienteDireccionImpDTO> custom({
+    Expression<String>? id,
+    Expression<DateTime>? fecha,
+    Expression<String>? usuarioId,
     Expression<String>? clienteId,
     Expression<String>? direccionId,
     Expression<String>? nombre,
@@ -3204,15 +3158,13 @@ class ClienteDireccionLocalTableCompanion
     Expression<String>? poblacion,
     Expression<String>? provincia,
     Expression<String>? paisId,
-    Expression<double>? latitud,
-    Expression<double>? longitud,
-    Expression<String>? predeterminada,
-    Expression<DateTime>? lastUpdated,
     Expression<String>? enviada,
-    Expression<String>? tratada,
-    Expression<String>? deleted,
+    Expression<String>? borrar,
   }) {
     return RawValuesInsertable({
+      if (id != null) 'GUID': id,
+      if (fecha != null) 'FECHA': fecha,
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
       if (clienteId != null) 'CLIENTE_ID': clienteId,
       if (direccionId != null) 'DIRECCION_ID': direccionId,
       if (nombre != null) 'NOMBRE': nombre,
@@ -3222,34 +3174,30 @@ class ClienteDireccionLocalTableCompanion
       if (poblacion != null) 'POBLACION': poblacion,
       if (provincia != null) 'PROVINCIA': provincia,
       if (paisId != null) 'PAIS_ID': paisId,
-      if (latitud != null) 'LATITUD': latitud,
-      if (longitud != null) 'LONGITUD': longitud,
-      if (predeterminada != null) 'PREDETERMINADA_SN': predeterminada,
-      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
       if (enviada != null) 'ENVIADA': enviada,
-      if (tratada != null) 'TRATADA': tratada,
-      if (deleted != null) 'DELETED': deleted,
+      if (borrar != null) 'BORRAR': borrar,
     });
   }
 
-  ClienteDireccionLocalTableCompanion copyWith(
-      {Value<String>? clienteId,
-      Value<String>? direccionId,
-      Value<String>? nombre,
+  ClienteDireccionImpTableCompanion copyWith(
+      {Value<String>? id,
+      Value<DateTime>? fecha,
+      Value<String>? usuarioId,
+      Value<String>? clienteId,
+      Value<String?>? direccionId,
+      Value<String?>? nombre,
       Value<String?>? direccion1,
       Value<String?>? direccion2,
       Value<String?>? codigoPostal,
       Value<String?>? poblacion,
       Value<String?>? provincia,
       Value<String?>? paisId,
-      Value<double>? latitud,
-      Value<double>? longitud,
-      Value<String?>? predeterminada,
-      Value<DateTime>? lastUpdated,
       Value<String>? enviada,
-      Value<String>? tratada,
-      Value<String>? deleted}) {
-    return ClienteDireccionLocalTableCompanion(
+      Value<String>? borrar}) {
+    return ClienteDireccionImpTableCompanion(
+      id: id ?? this.id,
+      fecha: fecha ?? this.fecha,
+      usuarioId: usuarioId ?? this.usuarioId,
       clienteId: clienteId ?? this.clienteId,
       direccionId: direccionId ?? this.direccionId,
       nombre: nombre ?? this.nombre,
@@ -3259,19 +3207,23 @@ class ClienteDireccionLocalTableCompanion
       poblacion: poblacion ?? this.poblacion,
       provincia: provincia ?? this.provincia,
       paisId: paisId ?? this.paisId,
-      latitud: latitud ?? this.latitud,
-      longitud: longitud ?? this.longitud,
-      predeterminada: predeterminada ?? this.predeterminada,
-      lastUpdated: lastUpdated ?? this.lastUpdated,
       enviada: enviada ?? this.enviada,
-      tratada: tratada ?? this.tratada,
-      deleted: deleted ?? this.deleted,
+      borrar: borrar ?? this.borrar,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (id.present) {
+      map['GUID'] = Variable<String>(id.value);
+    }
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
+    }
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
+    }
     if (clienteId.present) {
       map['CLIENTE_ID'] = Variable<String>(clienteId.value);
     }
@@ -3299,33 +3251,21 @@ class ClienteDireccionLocalTableCompanion
     if (paisId.present) {
       map['PAIS_ID'] = Variable<String>(paisId.value);
     }
-    if (latitud.present) {
-      map['LATITUD'] = Variable<double>(latitud.value);
-    }
-    if (longitud.present) {
-      map['LONGITUD'] = Variable<double>(longitud.value);
-    }
-    if (predeterminada.present) {
-      map['PREDETERMINADA_SN'] = Variable<String>(predeterminada.value);
-    }
-    if (lastUpdated.present) {
-      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
-    }
     if (enviada.present) {
       map['ENVIADA'] = Variable<String>(enviada.value);
     }
-    if (tratada.present) {
-      map['TRATADA'] = Variable<String>(tratada.value);
-    }
-    if (deleted.present) {
-      map['DELETED'] = Variable<String>(deleted.value);
+    if (borrar.present) {
+      map['BORRAR'] = Variable<String>(borrar.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('ClienteDireccionLocalTableCompanion(')
+    return (StringBuffer('ClienteDireccionImpTableCompanion(')
+          ..write('id: $id, ')
+          ..write('fecha: $fecha, ')
+          ..write('usuarioId: $usuarioId, ')
           ..write('clienteId: $clienteId, ')
           ..write('direccionId: $direccionId, ')
           ..write('nombre: $nombre, ')
@@ -3335,13 +3275,8 @@ class ClienteDireccionLocalTableCompanion
           ..write('poblacion: $poblacion, ')
           ..write('provincia: $provincia, ')
           ..write('paisId: $paisId, ')
-          ..write('latitud: $latitud, ')
-          ..write('longitud: $longitud, ')
-          ..write('predeterminada: $predeterminada, ')
-          ..write('lastUpdated: $lastUpdated, ')
           ..write('enviada: $enviada, ')
-          ..write('tratada: $tratada, ')
-          ..write('deleted: $deleted')
+          ..write('borrar: $borrar')
           ..write(')'))
         .toString();
   }
@@ -3363,8 +3298,8 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
       $CatalogoFavoritoTableTable(this);
   late final $ClienteContactoImpTableTable clienteContactoImpTable =
       $ClienteContactoImpTableTable(this);
-  late final $ClienteDireccionLocalTableTable clienteDireccionLocalTable =
-      $ClienteDireccionLocalTableTable(this);
+  late final $ClienteDireccionImpTableTable clienteDireccionImpTable =
+      $ClienteDireccionImpTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -3377,7 +3312,7 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
         logTable,
         catalogoFavoritoTable,
         clienteContactoImpTable,
-        clienteDireccionLocalTable
+        clienteDireccionImpTable
       ];
   @override
   DriftDatabaseOptions get options =>

@@ -7799,8 +7799,8 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
   static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
   @override
   late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
-      'NOMBRE', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+      'NOMBRE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _direccion1Meta =
       const VerificationMeta('direccion1');
   @override
@@ -7915,8 +7915,6 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
     if (data.containsKey('NOMBRE')) {
       context.handle(_nombreMeta,
           nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
-    } else if (isInserting) {
-      context.missing(_nombreMeta);
     }
     if (data.containsKey('DIRECCION1')) {
       context.handle(
@@ -7992,7 +7990,7 @@ class $ClienteDireccionTableTable extends ClienteDireccionTable
       direccionId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID'])!,
       nombre: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
       direccion1: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
       direccion2: attachedDatabase.typeMapping
@@ -8028,7 +8026,7 @@ class ClienteDireccionTableCompanion
     extends UpdateCompanion<ClienteDireccionDTO> {
   final Value<String> clienteId;
   final Value<String> direccionId;
-  final Value<String> nombre;
+  final Value<String?> nombre;
   final Value<String?> direccion1;
   final Value<String?> direccion2;
   final Value<String?> codigoPostal;
@@ -8059,7 +8057,7 @@ class ClienteDireccionTableCompanion
   ClienteDireccionTableCompanion.insert({
     required String clienteId,
     required String direccionId,
-    required String nombre,
+    this.nombre = const Value.absent(),
     this.direccion1 = const Value.absent(),
     this.direccion2 = const Value.absent(),
     this.codigoPostal = const Value.absent(),
@@ -8073,7 +8071,6 @@ class ClienteDireccionTableCompanion
     this.deleted = const Value.absent(),
   })  : clienteId = Value(clienteId),
         direccionId = Value(direccionId),
-        nombre = Value(nombre),
         latitud = Value(latitud),
         longitud = Value(longitud),
         lastUpdated = Value(lastUpdated);
@@ -8114,7 +8111,7 @@ class ClienteDireccionTableCompanion
   ClienteDireccionTableCompanion copyWith(
       {Value<String>? clienteId,
       Value<String>? direccionId,
-      Value<String>? nombre,
+      Value<String?>? nombre,
       Value<String?>? direccion1,
       Value<String?>? direccion2,
       Value<String?>? codigoPostal,

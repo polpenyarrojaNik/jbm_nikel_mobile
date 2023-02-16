@@ -1,14 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cliente_direccion_dto.dart';
+part of 'cliente_direccion_imp_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ClienteDireccionDTO _$$_ClienteDireccionDTOFromJson(
+_$_ClienteDireccionImpDTO _$$_ClienteDireccionImpDTOFromJson(
         Map<String, dynamic> json) =>
-    _$_ClienteDireccionDTO(
+    _$_ClienteDireccionImpDTO(
+      id: json['GUID'] as String,
+      fecha: DateTime.parse(json['FECHA'] as String),
+      usuarioId: json['USUARIO_ID'] as String,
       clienteId: json['CLIENTE_ID'] as String,
       direccionId: json['DIRECCION_ID'] as String?,
       nombre: json['NOMBRE'] as String?,
@@ -18,16 +21,16 @@ _$_ClienteDireccionDTO _$$_ClienteDireccionDTOFromJson(
       poblacion: json['POBLACION'] as String?,
       provincia: json['PROVINCIA'] as String?,
       paisId: json['PAIS_ID'] as String?,
-      latitud: (json['LATITUD'] as num).toDouble(),
-      longitud: (json['LONGITUD'] as num).toDouble(),
-      predeterminada: json['PREDETERMINADA_SN'] as String?,
-      lastUpdated: DateTime.parse(json['LAST_UPDATED'] as String),
-      deleted: json['DELETED'] as String? ?? 'N',
+      enviada: json['ENVIADA'] as String? ?? 'N',
+      borrar: json['BORRAR'] as String? ?? 'N',
     );
 
-Map<String, dynamic> _$$_ClienteDireccionDTOToJson(
-        _$_ClienteDireccionDTO instance) =>
+Map<String, dynamic> _$$_ClienteDireccionImpDTOToJson(
+        _$_ClienteDireccionImpDTO instance) =>
     <String, dynamic>{
+      'GUID': instance.id,
+      'FECHA': instance.fecha.toIso8601String(),
+      'USUARIO_ID': instance.usuarioId,
       'CLIENTE_ID': instance.clienteId,
       'DIRECCION_ID': instance.direccionId,
       'NOMBRE': instance.nombre,
@@ -37,9 +40,6 @@ Map<String, dynamic> _$$_ClienteDireccionDTOToJson(
       'POBLACION': instance.poblacion,
       'PROVINCIA': instance.provincia,
       'PAIS_ID': instance.paisId,
-      'LATITUD': instance.latitud,
-      'LONGITUD': instance.longitud,
-      'PREDETERMINADA_SN': instance.predeterminada,
-      'LAST_UPDATED': instance.lastUpdated.toIso8601String(),
-      'DELETED': instance.deleted,
+      'ENVIADA': instance.enviada,
+      'BORRAR': instance.borrar,
     };

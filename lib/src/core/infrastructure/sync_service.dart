@@ -132,6 +132,7 @@ class SyncService {
       await checkClientesContactosImp();
       await syncClienteDescuentos();
       await syncClienteDirecciones();
+      await checkClientesDireccionesImp();
       await syncClientePreciosNetos();
       await syncClientesPagosPendients();
       await syncClientesRappels();
@@ -1016,7 +1017,9 @@ class SyncService {
   Future<void> checkClientesContactosImp() async {
     try {
       final clienteContactoImpListDTO =
-          await (_localDb.select(_localDb.clienteContactoImpTable)).get();
+          await (_localDb.select(_localDb.clienteContactoImpTable)
+                ..where((tbl) => tbl.enviado.equals('S')))
+              .get();
 
       for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
         final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
@@ -1027,6 +1030,31 @@ class SyncService {
           await (_localDb.delete(_localDb.clienteContactoImpTable)
                 ..where(
                     (tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id)))
+              .go();
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> checkClientesDireccionesImp() async {
+    try {
+      final clienteDireccionImpListDTO =
+          await (_localDb.select(_localDb.clienteDireccionImpTable)
+                ..where((tbl) => tbl.enviada.equals('S')))
+              .get();
+
+      for (var i = 0; i < clienteDireccionImpListDTO.length; i++) {
+        final haveBeenTratado =
+            await _checkIfClienteDireccionImpHaveBeenTratada(
+                clienteDireccionImpListDTO[i].clienteId,
+                clienteDireccionImpListDTO[i].id);
+
+        if (haveBeenTratado) {
+          await (_localDb.delete(_localDb.clienteDireccionImpTable)
+                ..where(
+                    (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id)))
               .go();
         }
       }
@@ -1139,6 +1167,39 @@ class SyncService {
         final clienteContactoHaveBeenTratado = response.data['data'] as bool;
 
         return clienteContactoHaveBeenTratado;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
+
+  Future<bool> _checkIfClienteDireccionImpHaveBeenTratada(
+      String clienteId, String direccionImpGuid) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+            )
+          : Uri.https(
+              dotenv.get('URL', fallback: 'localhost:3001'),
+              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final clienteDireccionHaveBeenTratada = response.data['data'] as bool;
+
+        return clienteDireccionHaveBeenTratada;
       } else {
         throw AppException.restApiFailure(
             response.statusCode ?? 400, response.statusMessage ?? '');

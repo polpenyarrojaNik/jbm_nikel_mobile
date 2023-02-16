@@ -310,5 +310,13 @@
 	"cliente_show_clienteDireccion_clienteDireccionEditPage_pais": "Pays",
 	"cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion": "Ville",
 	"cliente_show_clienteDireccion_clienteDireccionEditPage_provincia": "Province",
-	"cliente_show_clienteDireccion_hayCambiosSinTramitar": "Il y a des changements à traiter"
+	"cliente_show_clienteDireccion_hayCambiosSinTramitar": "Il y a des changements à traiter",
+	"cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar": "Modifications en attente de traitement",
+	"cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado": "Contact supprimé",
+	"cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar": "Modifications en attente de traitement",
+	"cliente_show_clienteContacto_hayCambiosDeEnviar": "Il y a des changements en attente d'envoi",
+	"cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar": "Modifications en attente de traitement",
+	"cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada": "Adresse supprimée",
+	"cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar": "Modifications en attente de traitement",
+	"cliente_show_clienteDireccion_hayCambiosDeEnviar": "Il y a des changements en attente d'envoi"
 }

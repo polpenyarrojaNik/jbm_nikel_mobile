@@ -19,6 +19,7 @@ mixin _$ClienteImpParam {
   String get clienteId => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
   String? get impId => throw _privateConstructorUsedError;
+  Pais? get clientePais => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ClienteImpParamCopyWith<ClienteImpParam> get copyWith =>
@@ -31,7 +32,9 @@ abstract class $ClienteImpParamCopyWith<$Res> {
           ClienteImpParam value, $Res Function(ClienteImpParam) then) =
       _$ClienteImpParamCopyWithImpl<$Res, ClienteImpParam>;
   @useResult
-  $Res call({String clienteId, String? id, String? impId});
+  $Res call({String clienteId, String? id, String? impId, Pais? clientePais});
+
+  $PaisCopyWith<$Res>? get clientePais;
 }
 
 /// @nodoc
@@ -50,6 +53,7 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
     Object? clienteId = null,
     Object? id = freezed,
     Object? impId = freezed,
+    Object? clientePais = freezed,
   }) {
     return _then(_value.copyWith(
       clienteId: null == clienteId
@@ -64,7 +68,23 @@ class _$ClienteImpParamCopyWithImpl<$Res, $Val extends ClienteImpParam>
           ? _value.impId
           : impId // ignore: cast_nullable_to_non_nullable
               as String?,
+      clientePais: freezed == clientePais
+          ? _value.clientePais
+          : clientePais // ignore: cast_nullable_to_non_nullable
+              as Pais?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PaisCopyWith<$Res>? get clientePais {
+    if (_value.clientePais == null) {
+      return null;
+    }
+
+    return $PaisCopyWith<$Res>(_value.clientePais!, (value) {
+      return _then(_value.copyWith(clientePais: value) as $Val);
+    });
   }
 }
 
@@ -76,7 +96,10 @@ abstract class _$$_ClienteImpParamCopyWith<$Res>
       __$$_ClienteImpParamCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String clienteId, String? id, String? impId});
+  $Res call({String clienteId, String? id, String? impId, Pais? clientePais});
+
+  @override
+  $PaisCopyWith<$Res>? get clientePais;
 }
 
 /// @nodoc
@@ -93,6 +116,7 @@ class __$$_ClienteImpParamCopyWithImpl<$Res>
     Object? clienteId = null,
     Object? id = freezed,
     Object? impId = freezed,
+    Object? clientePais = freezed,
   }) {
     return _then(_$_ClienteImpParam(
       null == clienteId
@@ -107,6 +131,10 @@ class __$$_ClienteImpParamCopyWithImpl<$Res>
           ? _value.impId
           : impId // ignore: cast_nullable_to_non_nullable
               as String?,
+      clientePais: freezed == clientePais
+          ? _value.clientePais
+          : clientePais // ignore: cast_nullable_to_non_nullable
+              as Pais?,
     ));
   }
 }
@@ -114,7 +142,9 @@ class __$$_ClienteImpParamCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ClienteImpParam extends _ClienteImpParam {
-  const _$_ClienteImpParam(this.clienteId, {this.id, this.impId}) : super._();
+  const _$_ClienteImpParam(this.clienteId,
+      {this.id, this.impId, this.clientePais})
+      : super._();
 
   @override
   final String clienteId;
@@ -122,10 +152,12 @@ class _$_ClienteImpParam extends _ClienteImpParam {
   final String? id;
   @override
   final String? impId;
+  @override
+  final Pais? clientePais;
 
   @override
   String toString() {
-    return 'ClienteImpParam(clienteId: $clienteId, id: $id, impId: $impId)';
+    return 'ClienteImpParam(clienteId: $clienteId, id: $id, impId: $impId, clientePais: $clientePais)';
   }
 
   @override
@@ -136,11 +168,14 @@ class _$_ClienteImpParam extends _ClienteImpParam {
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.impId, impId) || other.impId == impId));
+            (identical(other.impId, impId) || other.impId == impId) &&
+            (identical(other.clientePais, clientePais) ||
+                other.clientePais == clientePais));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, clienteId, id, impId);
+  int get hashCode =>
+      Object.hash(runtimeType, clienteId, id, impId, clientePais);
 
   @JsonKey(ignore: true)
   @override
@@ -151,7 +186,9 @@ class _$_ClienteImpParam extends _ClienteImpParam {
 
 abstract class _ClienteImpParam extends ClienteImpParam {
   const factory _ClienteImpParam(final String clienteId,
-      {final String? id, final String? impId}) = _$_ClienteImpParam;
+      {final String? id,
+      final String? impId,
+      final Pais? clientePais}) = _$_ClienteImpParam;
   const _ClienteImpParam._() : super._();
 
   @override
@@ -160,6 +197,8 @@ abstract class _ClienteImpParam extends ClienteImpParam {
   String? get id;
   @override
   String? get impId;
+  @override
+  Pais? get clientePais;
   @override
   @JsonKey(ignore: true)
   _$$_ClienteImpParamCopyWith<_$_ClienteImpParam> get copyWith =>

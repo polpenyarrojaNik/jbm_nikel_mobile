@@ -70,6 +70,8 @@ class ClienteContactoEditPage extends ConsumerWidget {
               }
               ref.invalidate(
                   clienteContactosListProvider(clienteImpParam.clienteId));
+              ref.invalidate(clienteContactoImpListInSyncByClienteProvider(
+                  clienteImpParam));
               context.router.pop();
             }
           }),

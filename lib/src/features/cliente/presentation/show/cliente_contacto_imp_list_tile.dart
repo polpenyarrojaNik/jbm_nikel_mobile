@@ -27,13 +27,13 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      clienteContactoImp.usuarioId,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    Text(
                       dateFormatter(
                           clienteContactoImp.fecha.toLocal().toIso8601String(),
                           allDay: true),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    Text(
+                      clienteContactoImp.usuarioId,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],

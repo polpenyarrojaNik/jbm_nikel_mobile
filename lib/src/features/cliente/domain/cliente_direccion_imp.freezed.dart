@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'cliente_direccion.dart';
+part of 'cliente_direccion_imp.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,10 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ClienteDireccion {
+mixin _$ClienteDireccionImp {
+  String get id => throw _privateConstructorUsedError;
+  DateTime get fecha => throw _privateConstructorUsedError;
+  String get usuarioId => throw _privateConstructorUsedError;
   String get clienteId => throw _privateConstructorUsedError;
   String? get direccionId => throw _privateConstructorUsedError;
-  String? get direccionImpGuid => throw _privateConstructorUsedError;
   String? get nombre => throw _privateConstructorUsedError;
   String? get direccion1 => throw _privateConstructorUsedError;
   String? get direccion2 => throw _privateConstructorUsedError;
@@ -26,29 +28,26 @@ mixin _$ClienteDireccion {
   String? get poblacion => throw _privateConstructorUsedError;
   String? get provincia => throw _privateConstructorUsedError;
   Pais? get pais => throw _privateConstructorUsedError;
-  double get latitud => throw _privateConstructorUsedError;
-  double get longitud => throw _privateConstructorUsedError;
-  bool get predeterminada => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
   bool get enviada => throw _privateConstructorUsedError;
-  bool get tratada => throw _privateConstructorUsedError;
-  bool get deleted => throw _privateConstructorUsedError;
+  bool get borrar => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ClienteDireccionCopyWith<ClienteDireccion> get copyWith =>
+  $ClienteDireccionImpCopyWith<ClienteDireccionImp> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ClienteDireccionCopyWith<$Res> {
-  factory $ClienteDireccionCopyWith(
-          ClienteDireccion value, $Res Function(ClienteDireccion) then) =
-      _$ClienteDireccionCopyWithImpl<$Res, ClienteDireccion>;
+abstract class $ClienteDireccionImpCopyWith<$Res> {
+  factory $ClienteDireccionImpCopyWith(
+          ClienteDireccionImp value, $Res Function(ClienteDireccionImp) then) =
+      _$ClienteDireccionImpCopyWithImpl<$Res, ClienteDireccionImp>;
   @useResult
   $Res call(
-      {String clienteId,
+      {String id,
+      DateTime fecha,
+      String usuarioId,
+      String clienteId,
       String? direccionId,
-      String? direccionImpGuid,
       String? nombre,
       String? direccion1,
       String? direccion2,
@@ -56,21 +55,16 @@ abstract class $ClienteDireccionCopyWith<$Res> {
       String? poblacion,
       String? provincia,
       Pais? pais,
-      double latitud,
-      double longitud,
-      bool predeterminada,
-      DateTime lastUpdated,
       bool enviada,
-      bool tratada,
-      bool deleted});
+      bool borrar});
 
   $PaisCopyWith<$Res>? get pais;
 }
 
 /// @nodoc
-class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
-    implements $ClienteDireccionCopyWith<$Res> {
-  _$ClienteDireccionCopyWithImpl(this._value, this._then);
+class _$ClienteDireccionImpCopyWithImpl<$Res, $Val extends ClienteDireccionImp>
+    implements $ClienteDireccionImpCopyWith<$Res> {
+  _$ClienteDireccionImpCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,9 +74,11 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? fecha = null,
+    Object? usuarioId = null,
     Object? clienteId = null,
     Object? direccionId = freezed,
-    Object? direccionImpGuid = freezed,
     Object? nombre = freezed,
     Object? direccion1 = freezed,
     Object? direccion2 = freezed,
@@ -90,15 +86,22 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? pais = freezed,
-    Object? latitud = null,
-    Object? longitud = null,
-    Object? predeterminada = null,
-    Object? lastUpdated = null,
     Object? enviada = null,
-    Object? tratada = null,
-    Object? deleted = null,
+    Object? borrar = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -106,10 +109,6 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
       direccionId: freezed == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionImpGuid: freezed == direccionImpGuid
-          ? _value.direccionImpGuid
-          : direccionImpGuid // ignore: cast_nullable_to_non_nullable
               as String?,
       nombre: freezed == nombre
           ? _value.nombre
@@ -139,33 +138,13 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
               as Pais?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      predeterminada: null == predeterminada
-          ? _value.predeterminada
-          : predeterminada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
+      borrar: null == borrar
+          ? _value.borrar
+          : borrar // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -184,17 +163,19 @@ class _$ClienteDireccionCopyWithImpl<$Res, $Val extends ClienteDireccion>
 }
 
 /// @nodoc
-abstract class _$$_ClienteDireccionCopyWith<$Res>
-    implements $ClienteDireccionCopyWith<$Res> {
-  factory _$$_ClienteDireccionCopyWith(
-          _$_ClienteDireccion value, $Res Function(_$_ClienteDireccion) then) =
-      __$$_ClienteDireccionCopyWithImpl<$Res>;
+abstract class _$$_ClienteDireccionImpCopyWith<$Res>
+    implements $ClienteDireccionImpCopyWith<$Res> {
+  factory _$$_ClienteDireccionImpCopyWith(_$_ClienteDireccionImp value,
+          $Res Function(_$_ClienteDireccionImp) then) =
+      __$$_ClienteDireccionImpCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String clienteId,
+      {String id,
+      DateTime fecha,
+      String usuarioId,
+      String clienteId,
       String? direccionId,
-      String? direccionImpGuid,
       String? nombre,
       String? direccion1,
       String? direccion2,
@@ -202,32 +183,29 @@ abstract class _$$_ClienteDireccionCopyWith<$Res>
       String? poblacion,
       String? provincia,
       Pais? pais,
-      double latitud,
-      double longitud,
-      bool predeterminada,
-      DateTime lastUpdated,
       bool enviada,
-      bool tratada,
-      bool deleted});
+      bool borrar});
 
   @override
   $PaisCopyWith<$Res>? get pais;
 }
 
 /// @nodoc
-class __$$_ClienteDireccionCopyWithImpl<$Res>
-    extends _$ClienteDireccionCopyWithImpl<$Res, _$_ClienteDireccion>
-    implements _$$_ClienteDireccionCopyWith<$Res> {
-  __$$_ClienteDireccionCopyWithImpl(
-      _$_ClienteDireccion _value, $Res Function(_$_ClienteDireccion) _then)
+class __$$_ClienteDireccionImpCopyWithImpl<$Res>
+    extends _$ClienteDireccionImpCopyWithImpl<$Res, _$_ClienteDireccionImp>
+    implements _$$_ClienteDireccionImpCopyWith<$Res> {
+  __$$_ClienteDireccionImpCopyWithImpl(_$_ClienteDireccionImp _value,
+      $Res Function(_$_ClienteDireccionImp) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? fecha = null,
+    Object? usuarioId = null,
     Object? clienteId = null,
     Object? direccionId = freezed,
-    Object? direccionImpGuid = freezed,
     Object? nombre = freezed,
     Object? direccion1 = freezed,
     Object? direccion2 = freezed,
@@ -235,15 +213,22 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
     Object? poblacion = freezed,
     Object? provincia = freezed,
     Object? pais = freezed,
-    Object? latitud = null,
-    Object? longitud = null,
-    Object? predeterminada = null,
-    Object? lastUpdated = null,
     Object? enviada = null,
-    Object? tratada = null,
-    Object? deleted = null,
+    Object? borrar = null,
   }) {
-    return _then(_$_ClienteDireccion(
+    return _then(_$_ClienteDireccionImp(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      fecha: null == fecha
+          ? _value.fecha
+          : fecha // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      usuarioId: null == usuarioId
+          ? _value.usuarioId
+          : usuarioId // ignore: cast_nullable_to_non_nullable
+              as String,
       clienteId: null == clienteId
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
@@ -251,10 +236,6 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
       direccionId: freezed == direccionId
           ? _value.direccionId
           : direccionId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      direccionImpGuid: freezed == direccionImpGuid
-          ? _value.direccionImpGuid
-          : direccionImpGuid // ignore: cast_nullable_to_non_nullable
               as String?,
       nombre: freezed == nombre
           ? _value.nombre
@@ -284,33 +265,13 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
           ? _value.pais
           : pais // ignore: cast_nullable_to_non_nullable
               as Pais?,
-      latitud: null == latitud
-          ? _value.latitud
-          : latitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      longitud: null == longitud
-          ? _value.longitud
-          : longitud // ignore: cast_nullable_to_non_nullable
-              as double,
-      predeterminada: null == predeterminada
-          ? _value.predeterminada
-          : predeterminada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      lastUpdated: null == lastUpdated
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       enviada: null == enviada
           ? _value.enviada
           : enviada // ignore: cast_nullable_to_non_nullable
               as bool,
-      tratada: null == tratada
-          ? _value.tratada
-          : tratada // ignore: cast_nullable_to_non_nullable
-              as bool,
-      deleted: null == deleted
-          ? _value.deleted
-          : deleted // ignore: cast_nullable_to_non_nullable
+      borrar: null == borrar
+          ? _value.borrar
+          : borrar // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -318,11 +279,13 @@ class __$$_ClienteDireccionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ClienteDireccion extends _ClienteDireccion {
-  const _$_ClienteDireccion(
-      {required this.clienteId,
+class _$_ClienteDireccionImp extends _ClienteDireccionImp {
+  const _$_ClienteDireccionImp(
+      {required this.id,
+      required this.fecha,
+      required this.usuarioId,
+      required this.clienteId,
       required this.direccionId,
-      required this.direccionImpGuid,
       this.nombre,
       this.direccion1,
       this.direccion2,
@@ -330,21 +293,20 @@ class _$_ClienteDireccion extends _ClienteDireccion {
       this.poblacion,
       this.provincia,
       this.pais,
-      required this.latitud,
-      required this.longitud,
-      required this.predeterminada,
-      required this.lastUpdated,
       required this.enviada,
-      required this.tratada,
-      required this.deleted})
+      required this.borrar})
       : super._();
 
+  @override
+  final String id;
+  @override
+  final DateTime fecha;
+  @override
+  final String usuarioId;
   @override
   final String clienteId;
   @override
   final String? direccionId;
-  @override
-  final String? direccionImpGuid;
   @override
   final String? nombre;
   @override
@@ -360,36 +322,28 @@ class _$_ClienteDireccion extends _ClienteDireccion {
   @override
   final Pais? pais;
   @override
-  final double latitud;
-  @override
-  final double longitud;
-  @override
-  final bool predeterminada;
-  @override
-  final DateTime lastUpdated;
-  @override
   final bool enviada;
   @override
-  final bool tratada;
-  @override
-  final bool deleted;
+  final bool borrar;
 
   @override
   String toString() {
-    return 'ClienteDireccion(clienteId: $clienteId, direccionId: $direccionId, direccionImpGuid: $direccionImpGuid, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, latitud: $latitud, longitud: $longitud, predeterminada: $predeterminada, lastUpdated: $lastUpdated, enviada: $enviada, tratada: $tratada, deleted: $deleted)';
+    return 'ClienteDireccionImp(id: $id, fecha: $fecha, usuarioId: $usuarioId, clienteId: $clienteId, direccionId: $direccionId, nombre: $nombre, direccion1: $direccion1, direccion2: $direccion2, codigoPostal: $codigoPostal, poblacion: $poblacion, provincia: $provincia, pais: $pais, enviada: $enviada, borrar: $borrar)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ClienteDireccion &&
+            other is _$_ClienteDireccionImp &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.fecha, fecha) || other.fecha == fecha) &&
+            (identical(other.usuarioId, usuarioId) ||
+                other.usuarioId == usuarioId) &&
             (identical(other.clienteId, clienteId) ||
                 other.clienteId == clienteId) &&
             (identical(other.direccionId, direccionId) ||
                 other.direccionId == direccionId) &&
-            (identical(other.direccionImpGuid, direccionImpGuid) ||
-                other.direccionImpGuid == direccionImpGuid) &&
             (identical(other.nombre, nombre) || other.nombre == nombre) &&
             (identical(other.direccion1, direccion1) ||
                 other.direccion1 == direccion1) &&
@@ -402,24 +356,18 @@ class _$_ClienteDireccion extends _ClienteDireccion {
             (identical(other.provincia, provincia) ||
                 other.provincia == provincia) &&
             (identical(other.pais, pais) || other.pais == pais) &&
-            (identical(other.latitud, latitud) || other.latitud == latitud) &&
-            (identical(other.longitud, longitud) ||
-                other.longitud == longitud) &&
-            (identical(other.predeterminada, predeterminada) ||
-                other.predeterminada == predeterminada) &&
-            (identical(other.lastUpdated, lastUpdated) ||
-                other.lastUpdated == lastUpdated) &&
             (identical(other.enviada, enviada) || other.enviada == enviada) &&
-            (identical(other.tratada, tratada) || other.tratada == tratada) &&
-            (identical(other.deleted, deleted) || other.deleted == deleted));
+            (identical(other.borrar, borrar) || other.borrar == borrar));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
+      fecha,
+      usuarioId,
       clienteId,
       direccionId,
-      direccionImpGuid,
       nombre,
       direccion1,
       direccion2,
@@ -427,26 +375,24 @@ class _$_ClienteDireccion extends _ClienteDireccion {
       poblacion,
       provincia,
       pais,
-      latitud,
-      longitud,
-      predeterminada,
-      lastUpdated,
       enviada,
-      tratada,
-      deleted);
+      borrar);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ClienteDireccionCopyWith<_$_ClienteDireccion> get copyWith =>
-      __$$_ClienteDireccionCopyWithImpl<_$_ClienteDireccion>(this, _$identity);
+  _$$_ClienteDireccionImpCopyWith<_$_ClienteDireccionImp> get copyWith =>
+      __$$_ClienteDireccionImpCopyWithImpl<_$_ClienteDireccionImp>(
+          this, _$identity);
 }
 
-abstract class _ClienteDireccion extends ClienteDireccion {
-  const factory _ClienteDireccion(
-      {required final String clienteId,
+abstract class _ClienteDireccionImp extends ClienteDireccionImp {
+  const factory _ClienteDireccionImp(
+      {required final String id,
+      required final DateTime fecha,
+      required final String usuarioId,
+      required final String clienteId,
       required final String? direccionId,
-      required final String? direccionImpGuid,
       final String? nombre,
       final String? direccion1,
       final String? direccion2,
@@ -454,21 +400,20 @@ abstract class _ClienteDireccion extends ClienteDireccion {
       final String? poblacion,
       final String? provincia,
       final Pais? pais,
-      required final double latitud,
-      required final double longitud,
-      required final bool predeterminada,
-      required final DateTime lastUpdated,
       required final bool enviada,
-      required final bool tratada,
-      required final bool deleted}) = _$_ClienteDireccion;
-  const _ClienteDireccion._() : super._();
+      required final bool borrar}) = _$_ClienteDireccionImp;
+  const _ClienteDireccionImp._() : super._();
 
+  @override
+  String get id;
+  @override
+  DateTime get fecha;
+  @override
+  String get usuarioId;
   @override
   String get clienteId;
   @override
   String? get direccionId;
-  @override
-  String? get direccionImpGuid;
   @override
   String? get nombre;
   @override
@@ -484,21 +429,11 @@ abstract class _ClienteDireccion extends ClienteDireccion {
   @override
   Pais? get pais;
   @override
-  double get latitud;
-  @override
-  double get longitud;
-  @override
-  bool get predeterminada;
-  @override
-  DateTime get lastUpdated;
-  @override
   bool get enviada;
   @override
-  bool get tratada;
-  @override
-  bool get deleted;
+  bool get borrar;
   @override
   @JsonKey(ignore: true)
-  _$$_ClienteDireccionCopyWith<_$_ClienteDireccion> get copyWith =>
+  _$$_ClienteDireccionImpCopyWith<_$_ClienteDireccionImp> get copyWith =>
       throw _privateConstructorUsedError;
 }

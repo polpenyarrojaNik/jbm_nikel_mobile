@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cliente_direccion_edit_page_controller.dart';
+part of 'cliente_direccion_delete_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,31 +29,31 @@ class _SystemHash {
   }
 }
 
-String _$ClienteDireccionEditPageControllerHash() =>
-    r'039ada5b66b4e4172203d1572041b1ea1c797755';
+String _$ClienteDireccionDeleteControllerHash() =>
+    r'8cd0d1acbd308ed4e263bebf8dde77d99cf0aa00';
 
-/// See also [ClienteDireccionEditPageController].
-class ClienteDireccionEditPageControllerProvider
+/// See also [ClienteDireccionDeleteController].
+class ClienteDireccionDeleteControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
-        ClienteDireccionEditPageController, ClienteDireccionEditPageData> {
-  ClienteDireccionEditPageControllerProvider(
+        ClienteDireccionDeleteController, bool> {
+  ClienteDireccionDeleteControllerProvider(
     this.clienteImpParam,
   ) : super(
-          () => ClienteDireccionEditPageController()
+          () => ClienteDireccionDeleteController()
             ..clienteImpParam = clienteImpParam,
-          from: clienteDireccionEditPageControllerProvider,
-          name: r'clienteDireccionEditPageControllerProvider',
+          from: clienteDireccionDeleteControllerProvider,
+          name: r'clienteDireccionDeleteControllerProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$ClienteDireccionEditPageControllerHash,
+                  : _$ClienteDireccionDeleteControllerHash,
         );
 
   final ClienteImpParam clienteImpParam;
 
   @override
   bool operator ==(Object other) {
-    return other is ClienteDireccionEditPageControllerProvider &&
+    return other is ClienteDireccionDeleteControllerProvider &&
         other.clienteImpParam == clienteImpParam;
   }
 
@@ -66,8 +66,8 @@ class ClienteDireccionEditPageControllerProvider
   }
 
   @override
-  FutureOr<ClienteDireccionEditPageData> runNotifierBuild(
-    covariant _$ClienteDireccionEditPageController notifier,
+  FutureOr<bool> runNotifierBuild(
+    covariant _$ClienteDireccionDeleteController notifier,
   ) {
     return notifier.build(
       clienteImpParam,
@@ -75,29 +75,28 @@ class ClienteDireccionEditPageControllerProvider
   }
 }
 
-typedef ClienteDireccionEditPageControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<ClienteDireccionEditPageData>;
+typedef ClienteDireccionDeleteControllerRef
+    = AutoDisposeAsyncNotifierProviderRef<bool>;
 
-/// See also [ClienteDireccionEditPageController].
-final clienteDireccionEditPageControllerProvider =
-    ClienteDireccionEditPageControllerFamily();
+/// See also [ClienteDireccionDeleteController].
+final clienteDireccionDeleteControllerProvider =
+    ClienteDireccionDeleteControllerFamily();
 
-class ClienteDireccionEditPageControllerFamily
-    extends Family<AsyncValue<ClienteDireccionEditPageData>> {
-  ClienteDireccionEditPageControllerFamily();
+class ClienteDireccionDeleteControllerFamily extends Family<AsyncValue<bool>> {
+  ClienteDireccionDeleteControllerFamily();
 
-  ClienteDireccionEditPageControllerProvider call(
+  ClienteDireccionDeleteControllerProvider call(
     ClienteImpParam clienteImpParam,
   ) {
-    return ClienteDireccionEditPageControllerProvider(
+    return ClienteDireccionDeleteControllerProvider(
       clienteImpParam,
     );
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderImpl<ClienteDireccionEditPageController,
-      ClienteDireccionEditPageData> getProviderOverride(
-    covariant ClienteDireccionEditPageControllerProvider provider,
+  AutoDisposeAsyncNotifierProviderImpl<ClienteDireccionDeleteController, bool>
+      getProviderOverride(
+    covariant ClienteDireccionDeleteControllerProvider provider,
   ) {
     return call(
       provider.clienteImpParam,
@@ -111,14 +110,14 @@ class ClienteDireccionEditPageControllerFamily
   List<ProviderOrFamily>? get dependencies => null;
 
   @override
-  String? get name => r'clienteDireccionEditPageControllerProvider';
+  String? get name => r'clienteDireccionDeleteControllerProvider';
 }
 
-abstract class _$ClienteDireccionEditPageController
-    extends BuildlessAutoDisposeAsyncNotifier<ClienteDireccionEditPageData> {
+abstract class _$ClienteDireccionDeleteController
+    extends BuildlessAutoDisposeAsyncNotifier<bool> {
   late final ClienteImpParam clienteImpParam;
 
-  FutureOr<ClienteDireccionEditPageData> build(
+  FutureOr<bool> build(
     ClienteImpParam clienteImpParam,
   );
 }

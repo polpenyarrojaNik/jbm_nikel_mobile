@@ -143,11 +143,11 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    ClienteDireccionesRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDireccionesRouteArgs>();
+    ClienteDireccionesListRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDireccionesListRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: ClienteDireccionesPage(
+        child: ClienteDireccionesListPage(
           key: args.key,
           clienteId: args.clienteId,
           paisCliente: args.paisCliente,
@@ -161,7 +161,7 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ClienteDireccionEditPage(
           key: args.key,
-          clienteDireccionEditParam: args.clienteDireccionEditParam,
+          clienteImpParam: args.clienteImpParam,
         ),
         fullscreenDialog: true,
       );
@@ -525,7 +525,7 @@ class _$AppRouter extends RootStackRouter {
           path: '/cliente/:id/descuentos',
         ),
         RouteConfig(
-          ClienteDireccionesRoute.name,
+          ClienteDireccionesListRoute.name,
           path: '/cliente/:id/direcciones',
         ),
         RouteConfig(
@@ -1068,18 +1068,18 @@ class ClienteDescuentoRouteArgs {
 }
 
 /// generated route for
-/// [ClienteDireccionesPage]
-class ClienteDireccionesRoute
-    extends PageRouteInfo<ClienteDireccionesRouteArgs> {
-  ClienteDireccionesRoute({
+/// [ClienteDireccionesListPage]
+class ClienteDireccionesListRoute
+    extends PageRouteInfo<ClienteDireccionesListRouteArgs> {
+  ClienteDireccionesListRoute({
     Key? key,
     required String clienteId,
     required Pais? paisCliente,
     required String? nombreCliente,
   }) : super(
-          ClienteDireccionesRoute.name,
+          ClienteDireccionesListRoute.name,
           path: '/cliente/:id/direcciones',
-          args: ClienteDireccionesRouteArgs(
+          args: ClienteDireccionesListRouteArgs(
             key: key,
             clienteId: clienteId,
             paisCliente: paisCliente,
@@ -1087,11 +1087,11 @@ class ClienteDireccionesRoute
           ),
         );
 
-  static const String name = 'ClienteDireccionesRoute';
+  static const String name = 'ClienteDireccionesListRoute';
 }
 
-class ClienteDireccionesRouteArgs {
-  const ClienteDireccionesRouteArgs({
+class ClienteDireccionesListRouteArgs {
+  const ClienteDireccionesListRouteArgs({
     this.key,
     required this.clienteId,
     required this.paisCliente,
@@ -1108,7 +1108,7 @@ class ClienteDireccionesRouteArgs {
 
   @override
   String toString() {
-    return 'ClienteDireccionesRouteArgs{key: $key, clienteId: $clienteId, paisCliente: $paisCliente, nombreCliente: $nombreCliente}';
+    return 'ClienteDireccionesListRouteArgs{key: $key, clienteId: $clienteId, paisCliente: $paisCliente, nombreCliente: $nombreCliente}';
   }
 }
 
@@ -1118,13 +1118,13 @@ class ClienteDireccionEditRoute
     extends PageRouteInfo<ClienteDireccionEditRouteArgs> {
   ClienteDireccionEditRoute({
     Key? key,
-    required ClienteDireccionEditParam clienteDireccionEditParam,
+    required ClienteImpParam clienteImpParam,
   }) : super(
           ClienteDireccionEditRoute.name,
           path: '/cliente/:id/direcciones/:direccionId',
           args: ClienteDireccionEditRouteArgs(
             key: key,
-            clienteDireccionEditParam: clienteDireccionEditParam,
+            clienteImpParam: clienteImpParam,
           ),
         );
 
@@ -1134,16 +1134,16 @@ class ClienteDireccionEditRoute
 class ClienteDireccionEditRouteArgs {
   const ClienteDireccionEditRouteArgs({
     this.key,
-    required this.clienteDireccionEditParam,
+    required this.clienteImpParam,
   });
 
   final Key? key;
 
-  final ClienteDireccionEditParam clienteDireccionEditParam;
+  final ClienteImpParam clienteImpParam;
 
   @override
   String toString() {
-    return 'ClienteDireccionEditRouteArgs{key: $key, clienteDireccionEditParam: $clienteDireccionEditParam}';
+    return 'ClienteDireccionEditRouteArgs{key: $key, clienteImpParam: $clienteImpParam}';
   }
 }
 
