@@ -34,7 +34,7 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
   void initState() {
     super.initState();
     radiusKm = 10000;
-    showDireccionesEnvio = true;
+    showDireccionesEnvio = false;
   }
 
   @override
