@@ -94,140 +94,149 @@ class _ClienteContactoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: listPadding,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
         children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (clienteContacto.nombre != null)
-                  Text(clienteContacto.getName(clienteContacto.nombre,
-                      clienteContacto.apellido1, clienteContacto.apellido2)!),
-                if (clienteContacto.email != null)
-                  Row(
-                    children: [
-                      Icon(Icons.email,
-                          color: Theme.of(context).textTheme.bodySmall?.color,
-                          size: 14),
-                      gapW4,
-                      Flexible(
-                        child: Text(
-                          clienteContacto.email!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.color),
-                        ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (clienteContacto.nombre != null)
+                      Text(clienteContacto.getName(
+                          clienteContacto.nombre,
+                          clienteContacto.apellido1,
+                          clienteContacto.apellido2)!),
+                    if (clienteContacto.email != null)
+                      Row(
+                        children: [
+                          Icon(Icons.email,
+                              color:
+                                  Theme.of(context).textTheme.bodySmall?.color,
+                              size: 14),
+                          gapW4,
+                          Flexible(
+                            child: Text(
+                              clienteContacto.email!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.color),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                if (clienteContacto.telefono1 != null)
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        color: Theme.of(context).textTheme.bodySmall?.color,
-                        size: 14,
+                    if (clienteContacto.telefono1 != null)
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.phone,
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                            size: 14,
+                          ),
+                          gapW4,
+                          Flexible(
+                            child: Text(
+                              clienteContacto.telefono1!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.color),
+                            ),
+                          ),
+                        ],
                       ),
-                      gapW4,
-                      Flexible(
-                        child: Text(
-                          clienteContacto.telefono1!,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.color),
-                        ),
-                      ),
-                    ],
-                  ),
-                if (clienteContacto.telefono2 != null)
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.phone,
-                        color: Theme.of(context).textTheme.bodySmall?.color,
-                        size: 14,
-                      ),
-                      gapW4,
-                      Text(
-                        clienteContacto.telefono2!,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color:
-                                Theme.of(context).textTheme.bodySmall?.color),
-                      ),
-                    ],
-                  ),
-                if (!clienteContacto.enviado ||
-                    (!clienteContacto.enviado && clienteContacto.deleted))
-                  GestureDetector(
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.error,
-                          color: Theme.of(context).colorScheme.error,
-                          size: 14,
-                        ),
-                        gapW4,
-                        Flexible(
-                          child: Text(
-                            S
-                                .of(context)
-                                .cliente_show_clienteContacto_hayCambiosDeEnviar,
+                    if (clienteContacto.telefono2 != null)
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.phone,
+                            color: Theme.of(context).textTheme.bodySmall?.color,
+                            size: 14,
+                          ),
+                          gapW4,
+                          Text(
+                            clienteContacto.telefono2!,
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
                                 ?.copyWith(
-                                  color: Theme.of(context).colorScheme.error,
-                                ),
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall
+                                        ?.color),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                  ],
+                ),
+              ),
+              if (!(clienteContacto.enviado && !clienteContacto.tratado))
+                _ClienteContactoActionButtons(clienteImpParam),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  if (clienteContacto.email != null)
+                    ContactButtons(
+                      icon: Icons.email,
+                      onPressFunction: () =>
+                          navigateToEmailApp(clienteContacto.email!),
                     ),
-                  ),
-                if (clienteContacto.tratado)
-                  _CambiosPendientesDeTramitarListView(
-                    clienteImpParam,
-                  ),
-              ],
-            ),
-          ),
-          if (!(clienteContacto.enviado && !clienteContacto.tratado))
-            _ClienteContactoActionButtons(clienteImpParam),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              if (clienteContacto.email != null)
-                ContactButtons(
-                  icon: Icons.email,
-                  onPressFunction: () =>
-                      navigateToEmailApp(clienteContacto.email!),
-                ),
-              if (clienteContacto.telefono1 != null) gapW12,
-              if (clienteContacto.telefono1 != null)
-                ContactButtons(
-                  icon: Icons.phone,
-                  onPressFunction: () =>
-                      openPhoneCall(clienteContacto.telefono1!),
-                ),
-              if (clienteContacto.telefono2 != null) gapW12,
-              if (clienteContacto.telefono2 != null)
-                ContactButtons(
-                  icon: Icons.phone,
-                  onPressFunction: () =>
-                      openPhoneCall(clienteContacto.telefono2!),
-                ),
+                  if (clienteContacto.telefono1 != null) gapW12,
+                  if (clienteContacto.telefono1 != null)
+                    ContactButtons(
+                      icon: Icons.phone,
+                      onPressFunction: () =>
+                          openPhoneCall(clienteContacto.telefono1!),
+                    ),
+                  if (clienteContacto.telefono2 != null) gapW12,
+                  if (clienteContacto.telefono2 != null)
+                    ContactButtons(
+                      icon: Icons.phone,
+                      onPressFunction: () =>
+                          openPhoneCall(clienteContacto.telefono2!),
+                    ),
+                ],
+              ),
             ],
           ),
+          if (!clienteContacto.enviado ||
+              (!clienteContacto.enviado && clienteContacto.deleted))
+            GestureDetector(
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.error,
+                    color: Theme.of(context).colorScheme.error,
+                    size: 14,
+                  ),
+                  gapW4,
+                  Flexible(
+                    child: Text(
+                      S
+                          .of(context)
+                          .cliente_show_clienteContacto_hayCambiosDeEnviar,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          if (clienteContacto.tratado)
+            _CambiosPendientesDeTramitarListView(
+              clienteImpParam,
+            ),
         ],
       ),
     );
@@ -423,7 +432,7 @@ class _CambiosPendientesDeTramitarListView extends ConsumerWidget {
       builder: (context) => AlertDialog(
         title: Text(S
             .of(context)
-            .cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar),
+            .cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar),
         content: SizedBox(
           width: double.maxFinite,
           child: ListView.separated(

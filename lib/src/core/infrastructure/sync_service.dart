@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
@@ -150,6 +149,7 @@ class SyncService {
   Future<void> syncAllPedidosRelacionados(
       {required bool isInMainThread}) async {
     try {
+      await enviarPedidosNoEnviados();
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
@@ -881,11 +881,13 @@ class SyncService {
 
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
               'api/v1/online/pedidos',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
               'api/v1/online/pedidos',
             );
 
@@ -914,11 +916,13 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
               'api/v1/online/v3/visitas',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
               'api/v1/online/v3/visitas',
             );
 
@@ -1153,7 +1157,8 @@ class SyncService {
               'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
               'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
             );
 
@@ -1186,7 +1191,8 @@ class SyncService {
               'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
               'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
             );
 

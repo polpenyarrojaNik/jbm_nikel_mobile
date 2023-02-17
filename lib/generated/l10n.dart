@@ -1556,11 +1556,11 @@ class S {
 
   /// `Edit contact`
   String
-      get cliente_show_clienteContacto_clienteContacoEditPage_editarContacto {
+      get cliente_show_clienteContacto_clienteContactoEditPage_editarContacto {
     return Intl.message(
       'Edit contact',
       name:
-          'cliente_show_clienteContacto_clienteContacoEditPage_editarContacto',
+          'cliente_show_clienteContacto_clienteContactoEditPage_editarContacto',
       desc: '',
       args: [],
     );
@@ -1568,11 +1568,11 @@ class S {
 
   /// `Contact saved successfully`
   String
-      get cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito {
+      get cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito {
     return Intl.message(
       'Contact saved successfully',
       name:
-          'cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito',
+          'cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito',
       desc: '',
       args: [],
     );
@@ -1580,31 +1580,31 @@ class S {
 
   /// `Contact saved successfully`
   String
-      get cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado {
+      get cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado {
     return Intl.message(
       'Contact saved successfully',
       name:
-          'cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado',
+          'cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado',
       desc: '',
       args: [],
     );
   }
 
   /// `Name`
-  String get cliente_show_clienteContacto_clienteContacoEditPage_nombre {
+  String get cliente_show_clienteContacto_clienteContactoEditPage_nombre {
     return Intl.message(
       'Name',
-      name: 'cliente_show_clienteContacto_clienteContacoEditPage_nombre',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_nombre',
       desc: '',
       args: [],
     );
   }
 
   /// `Last Name`
-  String get cliente_show_clienteContacto_clienteContacoEditPage_apellido {
+  String get cliente_show_clienteContacto_clienteContactoEditPage_apellido {
     return Intl.message(
       'Last Name',
-      name: 'cliente_show_clienteContacto_clienteContacoEditPage_apellido',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_apellido',
       desc: '',
       args: [],
     );
@@ -1612,51 +1612,53 @@ class S {
 
   /// `Second Last Name`
   String
-      get cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido {
+      get cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido {
     return Intl.message(
       'Second Last Name',
       name:
-          'cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido',
+          'cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido',
       desc: '',
       args: [],
     );
   }
 
   /// `Phone`
-  String get cliente_show_clienteContacto_clienteContacoEditPage_telefono1 {
+  String get cliente_show_clienteContacto_clienteContactoEditPage_telefono1 {
     return Intl.message(
       'Phone',
-      name: 'cliente_show_clienteContacto_clienteContacoEditPage_telefono1',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_telefono1',
       desc: '',
       args: [],
     );
   }
 
   /// `Phone 2`
-  String get cliente_show_clienteContacto_clienteContacoEditPage_telefono2 {
+  String get cliente_show_clienteContacto_clienteContactoEditPage_telefono2 {
     return Intl.message(
       'Phone 2',
-      name: 'cliente_show_clienteContacto_clienteContacoEditPage_telefono2',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_telefono2',
       desc: '',
       args: [],
     );
   }
 
   /// `Email`
-  String get cliente_show_clienteContacto_clienteContacoEditPage_email {
+  String get cliente_show_clienteContacto_clienteContactoEditPage_email {
     return Intl.message(
       'Email',
-      name: 'cliente_show_clienteContacto_clienteContacoEditPage_email',
+      name: 'cliente_show_clienteContacto_clienteContactoEditPage_email',
       desc: '',
       args: [],
     );
   }
 
   /// `Remarks`
-  String get cliente_show_clienteContacto_clienteContacoEditPage_observaciones {
+  String
+      get cliente_show_clienteContacto_clienteContactoEditPage_observaciones {
     return Intl.message(
       'Remarks',
-      name: 'cliente_show_clienteContacto_clienteContacoEditPage_observaciones',
+      name:
+          'cliente_show_clienteContacto_clienteContactoEditPage_observaciones',
       desc: '',
       args: [],
     );
@@ -1664,11 +1666,11 @@ class S {
 
   /// `Changes pending to process`
   String
-      get cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar {
+      get cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar {
     return Intl.message(
       'Changes pending to process',
       name:
-          'cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar',
+          'cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar',
       desc: '',
       args: [],
     );
@@ -1676,11 +1678,11 @@ class S {
 
   /// `Changes pending to process`
   String
-      get cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar {
+      get cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar {
     return Intl.message(
       'Changes pending to process',
       name:
-          'cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar',
+          'cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar',
       desc: '',
       args: [],
     );
@@ -1688,20 +1690,20 @@ class S {
 
   /// `Contact deleted`
   String
-      get cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado {
+      get cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado {
     return Intl.message(
       'Contact deleted',
       name:
-          'cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado',
+          'cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado',
       desc: '',
       args: [],
     );
   }
 
-  /// `Have changes to process`
+  /// `Have changes pending to process`
   String get cliente_show_clienteDireccion_hayCambiosSinTramitar {
     return Intl.message(
-      'Have changes to process',
+      'Have changes pending to process',
       name: 'cliente_show_clienteDireccion_hayCambiosSinTramitar',
       desc: '',
       args: [],

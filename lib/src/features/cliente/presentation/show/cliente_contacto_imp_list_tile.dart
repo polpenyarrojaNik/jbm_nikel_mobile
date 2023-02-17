@@ -109,7 +109,7 @@ class ClienteContactoImpListTile extends ConsumerWidget {
                   Text(
                     S
                         .of(context)
-                        .cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado,
+                        .cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall

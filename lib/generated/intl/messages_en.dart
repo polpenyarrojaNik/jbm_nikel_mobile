@@ -170,31 +170,31 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Customer sales"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Total sales"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_apellido":
+        "cliente_show_clienteContacto_clienteContactoEditPage_apellido":
             MessageLookupByLibrary.simpleMessage("Last Name"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_cambiosPendientesDeTramitar":
+        "cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar":
             MessageLookupByLibrary.simpleMessage("Changes pending to process"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_contactoGuardadoConExito":
+        "cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito":
             MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_contactoNoGuardado":
+        "cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado":
             MessageLookupByLibrary.simpleMessage("Contact saved successfully"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_editarContacto":
+        "cliente_show_clienteContacto_clienteContactoEditPage_editarContacto":
             MessageLookupByLibrary.simpleMessage("Edit contact"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_email":
+        "cliente_show_clienteContacto_clienteContactoEditPage_email":
             MessageLookupByLibrary.simpleMessage("Email"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_nombre":
+        "cliente_show_clienteContacto_clienteContactoEditPage_nombre":
             MessageLookupByLibrary.simpleMessage("Name"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_observaciones":
+        "cliente_show_clienteContacto_clienteContactoEditPage_observaciones":
             MessageLookupByLibrary.simpleMessage("Remarks"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_segundoApellido":
+        "cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido":
             MessageLookupByLibrary.simpleMessage("Second Last Name"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_telefono1":
+        "cliente_show_clienteContacto_clienteContactoEditPage_telefono1":
             MessageLookupByLibrary.simpleMessage("Phone"),
-        "cliente_show_clienteContacto_clienteContacoEditPage_telefono2":
+        "cliente_show_clienteContacto_clienteContactoEditPage_telefono2":
             MessageLookupByLibrary.simpleMessage("Phone 2"),
-        "cliente_show_clienteContacto_clienteContacoImpListTile_contactoEliminado":
+        "cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado":
             MessageLookupByLibrary.simpleMessage("Contact deleted"),
-        "cliente_show_clienteContacto_clienteContacoListPage_cambiosPendientesDeTramitar":
+        "cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar":
             MessageLookupByLibrary.simpleMessage("Changes pending to process"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
@@ -356,7 +356,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Have changes pending to send"),
         "cliente_show_clienteDireccion_hayCambiosSinTramitar":
-            MessageLookupByLibrary.simpleMessage("Have changes to process"),
+            MessageLookupByLibrary.simpleMessage(
+                "Have changes pending to process"),
         "cliente_show_clienteDireccion_titulo":
             MessageLookupByLibrary.simpleMessage("Shipping Addresses"),
         "cliente_show_clienteFacturasPendientes_estadoCobrado":
