@@ -117,7 +117,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 21;
+  int get schemaVersion => 22;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

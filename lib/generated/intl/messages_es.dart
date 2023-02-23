@@ -174,32 +174,43 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas cliente"),
         "cliente_show_clienteArticulosTop_ventasTotal":
             MessageLookupByLibrary.simpleMessage("Ventas total"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_apellido":
+        "cliente_show_clienteContacto_clienteContactoEditPage_apellido":
             MessageLookupByLibrary.simpleMessage("Apellido"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoGuardadoConExito":
+        "cliente_show_clienteContacto_clienteContactoEditPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
+        "cliente_show_clienteContacto_clienteContactoEditPage_contactoGuardadoConExito":
             MessageLookupByLibrary.simpleMessage("Contacto guardado con éxito"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_contactoNoGuardado":
+        "cliente_show_clienteContacto_clienteContactoEditPage_contactoNoGuardado":
             MessageLookupByLibrary.simpleMessage(
                 "El contacto no se ha podiod guardar"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_editarContacto":
+        "cliente_show_clienteContacto_clienteContactoEditPage_editarContacto":
             MessageLookupByLibrary.simpleMessage("Editar contacto"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_email":
+        "cliente_show_clienteContacto_clienteContactoEditPage_email":
             MessageLookupByLibrary.simpleMessage("Email"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_nombre":
+        "cliente_show_clienteContacto_clienteContactoEditPage_nombre":
             MessageLookupByLibrary.simpleMessage("Nombre"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_observaciones":
+        "cliente_show_clienteContacto_clienteContactoEditPage_observaciones":
             MessageLookupByLibrary.simpleMessage("Observaciones"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_segundoApellido":
+        "cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido":
             MessageLookupByLibrary.simpleMessage("Segundo apellido"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono1":
+        "cliente_show_clienteContacto_clienteContactoEditPage_telefono1":
             MessageLookupByLibrary.simpleMessage("Teléfono"),
-        "cliente_show_clienteContacto_clienteConatcoEditPage_telefono2":
+        "cliente_show_clienteContacto_clienteContactoEditPage_telefono2":
             MessageLookupByLibrary.simpleMessage("Teléfono 2"),
+        "cliente_show_clienteContacto_clienteContactoImpListTile_contactoEliminado":
+            MessageLookupByLibrary.simpleMessage("Contacto eliminado"),
+        "cliente_show_clienteContacto_clienteContactoListPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
         "cliente_show_clienteContacto_email":
             MessageLookupByLibrary.simpleMessage("Email"),
+        "cliente_show_clienteContacto_hayCambiosDeEnviar":
+            MessageLookupByLibrary.simpleMessage(
+                "Hay cambios pendientes de enviar"),
         "cliente_show_clienteContacto_hayCambiosSinTramitar":
             MessageLookupByLibrary.simpleMessage(
-                "Hay cambios pendiente de tramitar"),
+                "Hay cambios pendientes de tramitar"),
         "cliente_show_clienteContacto_id":
             MessageLookupByLibrary.simpleMessage("Id"),
         "cliente_show_clienteContacto_nombre":
@@ -320,6 +331,42 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ventas"),
         "cliente_show_clienteDetalle_web":
             MessageLookupByLibrary.simpleMessage("Web"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal":
+            MessageLookupByLibrary.simpleMessage("Código postal"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1":
+            MessageLookupByLibrary.simpleMessage("Dirección 1"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2":
+            MessageLookupByLibrary.simpleMessage("Dirección 2"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccionGuardadaConExito":
+            MessageLookupByLibrary.simpleMessage(
+                "Dirección de envío guardada con éxito"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_direccionNoGuardada":
+            MessageLookupByLibrary.simpleMessage(
+                "Dirección de envío no guardada"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_editarDireccion":
+            MessageLookupByLibrary.simpleMessage("Edit shipping address"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_nombre":
+            MessageLookupByLibrary.simpleMessage("Nombre"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_pais":
+            MessageLookupByLibrary.simpleMessage("País"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion":
+            MessageLookupByLibrary.simpleMessage("Población"),
+        "cliente_show_clienteDireccion_clienteDireccionEditPage_provincia":
+            MessageLookupByLibrary.simpleMessage("Provincia"),
+        "cliente_show_clienteDireccion_clienteDireccionImpListTile_direccionEliminada":
+            MessageLookupByLibrary.simpleMessage("Dirección eliminada"),
+        "cliente_show_clienteDireccion_clienteDireccionListPage_cambiosPendientesDeTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Cambios pendientes de tramitar"),
+        "cliente_show_clienteDireccion_hayCambiosDeEnviar":
+            MessageLookupByLibrary.simpleMessage(
+                "Hay cambios pendientes de enviar"),
+        "cliente_show_clienteDireccion_hayCambiosSinTramitar":
+            MessageLookupByLibrary.simpleMessage(
+                "Hay cambios pendientes de tramitar"),
         "cliente_show_clienteDireccion_titulo":
             MessageLookupByLibrary.simpleMessage("Direcciones envío"),
         "cliente_show_clienteFacturasPendientes_estadoCobrado":

@@ -10,8 +10,8 @@ _$_ClienteDireccionDTO _$$_ClienteDireccionDTOFromJson(
         Map<String, dynamic> json) =>
     _$_ClienteDireccionDTO(
       clienteId: json['CLIENTE_ID'] as String,
-      direccionId: json['DIRECCION_ID'] as String,
-      nombre: json['NOMBRE'] as String,
+      direccionId: json['DIRECCION_ID'] as String?,
+      nombre: json['NOMBRE'] as String?,
       direccion1: json['DIRECCION1'] as String?,
       direccion2: json['DIRECCION2'] as String?,
       codigoPostal: json['CODIGO_POSTAL'] as String?,

@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ClienteContacto {
   String get clienteId => throw _privateConstructorUsedError;
-  String get contactoId => throw _privateConstructorUsedError;
+  String? get contactoId => throw _privateConstructorUsedError;
+  String? get contactoImpGuid => throw _privateConstructorUsedError;
   String? get observaciones => throw _privateConstructorUsedError;
   String? get nombre => throw _privateConstructorUsedError;
   String? get apellido1 => throw _privateConstructorUsedError;
@@ -43,7 +44,8 @@ abstract class $ClienteContactoCopyWith<$Res> {
   @useResult
   $Res call(
       {String clienteId,
-      String contactoId,
+      String? contactoId,
+      String? contactoImpGuid,
       String? observaciones,
       String? nombre,
       String? apellido1,
@@ -71,7 +73,8 @@ class _$ClienteContactoCopyWithImpl<$Res, $Val extends ClienteContacto>
   @override
   $Res call({
     Object? clienteId = null,
-    Object? contactoId = null,
+    Object? contactoId = freezed,
+    Object? contactoImpGuid = freezed,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? apellido1 = freezed,
@@ -89,10 +92,14 @@ class _$ClienteContactoCopyWithImpl<$Res, $Val extends ClienteContacto>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: null == contactoId
+      contactoId: freezed == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      contactoImpGuid: freezed == contactoImpGuid
+          ? _value.contactoImpGuid
+          : contactoImpGuid // ignore: cast_nullable_to_non_nullable
+              as String?,
       observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
@@ -151,7 +158,8 @@ abstract class _$$_ClienteContactoCopyWith<$Res>
   @useResult
   $Res call(
       {String clienteId,
-      String contactoId,
+      String? contactoId,
+      String? contactoImpGuid,
       String? observaciones,
       String? nombre,
       String? apellido1,
@@ -177,7 +185,8 @@ class __$$_ClienteContactoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clienteId = null,
-    Object? contactoId = null,
+    Object? contactoId = freezed,
+    Object? contactoImpGuid = freezed,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? apellido1 = freezed,
@@ -195,10 +204,14 @@ class __$$_ClienteContactoCopyWithImpl<$Res>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: null == contactoId
+      contactoId: freezed == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      contactoImpGuid: freezed == contactoImpGuid
+          ? _value.contactoImpGuid
+          : contactoImpGuid // ignore: cast_nullable_to_non_nullable
+              as String?,
       observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
@@ -253,6 +266,7 @@ class _$_ClienteContacto extends _ClienteContacto {
   const _$_ClienteContacto(
       {required this.clienteId,
       required this.contactoId,
+      required this.contactoImpGuid,
       this.observaciones,
       this.nombre,
       this.apellido1,
@@ -269,7 +283,9 @@ class _$_ClienteContacto extends _ClienteContacto {
   @override
   final String clienteId;
   @override
-  final String contactoId;
+  final String? contactoId;
+  @override
+  final String? contactoImpGuid;
   @override
   final String? observaciones;
   @override
@@ -295,7 +311,7 @@ class _$_ClienteContacto extends _ClienteContacto {
 
   @override
   String toString() {
-    return 'ClienteContacto(clienteId: $clienteId, contactoId: $contactoId, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, lastUpdated: $lastUpdated, enviado: $enviado, tratado: $tratado, deleted: $deleted)';
+    return 'ClienteContacto(clienteId: $clienteId, contactoId: $contactoId, contactoImpGuid: $contactoImpGuid, observaciones: $observaciones, nombre: $nombre, apellido1: $apellido1, apellido2: $apellido2, telefono1: $telefono1, telefono2: $telefono2, email: $email, lastUpdated: $lastUpdated, enviado: $enviado, tratado: $tratado, deleted: $deleted)';
   }
 
   @override
@@ -307,6 +323,8 @@ class _$_ClienteContacto extends _ClienteContacto {
                 other.clienteId == clienteId) &&
             (identical(other.contactoId, contactoId) ||
                 other.contactoId == contactoId) &&
+            (identical(other.contactoImpGuid, contactoImpGuid) ||
+                other.contactoImpGuid == contactoImpGuid) &&
             (identical(other.observaciones, observaciones) ||
                 other.observaciones == observaciones) &&
             (identical(other.nombre, nombre) || other.nombre == nombre) &&
@@ -331,6 +349,7 @@ class _$_ClienteContacto extends _ClienteContacto {
       runtimeType,
       clienteId,
       contactoId,
+      contactoImpGuid,
       observaciones,
       nombre,
       apellido1,
@@ -353,7 +372,8 @@ class _$_ClienteContacto extends _ClienteContacto {
 abstract class _ClienteContacto extends ClienteContacto {
   const factory _ClienteContacto(
       {required final String clienteId,
-      required final String contactoId,
+      required final String? contactoId,
+      required final String? contactoImpGuid,
       final String? observaciones,
       final String? nombre,
       final String? apellido1,
@@ -370,7 +390,9 @@ abstract class _ClienteContacto extends ClienteContacto {
   @override
   String get clienteId;
   @override
-  String get contactoId;
+  String? get contactoId;
+  @override
+  String? get contactoImpGuid;
   @override
   String? get observaciones;
   @override

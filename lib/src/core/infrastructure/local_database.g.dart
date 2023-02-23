@@ -2444,6 +2444,844 @@ class CatalogoFavoritoTableCompanion
   }
 }
 
+class $ClienteContactoImpTableTable extends ClienteContactoImpTable
+    with TableInfo<$ClienteContactoImpTableTable, ClienteContactoImpDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ClienteContactoImpTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'GUID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  @override
+  late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
+      'FECHA', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _usuarioIdMeta =
+      const VerificationMeta('usuarioId');
+  @override
+  late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
+      'USUARIO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _contactoIdMeta =
+      const VerificationMeta('contactoId');
+  @override
+  late final GeneratedColumn<String> contactoId = GeneratedColumn<String>(
+      'CONTACTO_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _observacionesMeta =
+      const VerificationMeta('observaciones');
+  @override
+  late final GeneratedColumn<String> observaciones = GeneratedColumn<String>(
+      'OBSERVACIONES', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  @override
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
+      'NOMBRE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _apellido1Meta =
+      const VerificationMeta('apellido1');
+  @override
+  late final GeneratedColumn<String> apellido1 = GeneratedColumn<String>(
+      'APELLIDO1', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _apellido2Meta =
+      const VerificationMeta('apellido2');
+  @override
+  late final GeneratedColumn<String> apellido2 = GeneratedColumn<String>(
+      'APELLIDO2', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _telefono1Meta =
+      const VerificationMeta('telefono1');
+  @override
+  late final GeneratedColumn<String> telefono1 = GeneratedColumn<String>(
+      'TELEFONO1', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _telefono2Meta =
+      const VerificationMeta('telefono2');
+  @override
+  late final GeneratedColumn<String> telefono2 = GeneratedColumn<String>(
+      'TELEFONO2', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+      'EMAIL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _enviadoMeta =
+      const VerificationMeta('enviado');
+  @override
+  late final GeneratedColumn<String> enviado = GeneratedColumn<String>(
+      'ENVIADO', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  static const VerificationMeta _borrarMeta = const VerificationMeta('borrar');
+  @override
+  late final GeneratedColumn<String> borrar = GeneratedColumn<String>(
+      'BORRAR', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        fecha,
+        usuarioId,
+        clienteId,
+        contactoId,
+        observaciones,
+        nombre,
+        apellido1,
+        apellido2,
+        telefono1,
+        telefono2,
+        email,
+        enviado,
+        borrar
+      ];
+  @override
+  String get aliasedName => _alias ?? 'CLIENTES_CONTACTOS_IMP';
+  @override
+  String get actualTableName => 'CLIENTES_CONTACTOS_IMP';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<ClienteContactoImpDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('GUID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['GUID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('FECHA')) {
+      context.handle(
+          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+    } else if (isInserting) {
+      context.missing(_fechaMeta);
+    }
+    if (data.containsKey('USUARIO_ID')) {
+      context.handle(_usuarioIdMeta,
+          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+    } else if (isInserting) {
+      context.missing(_usuarioIdMeta);
+    }
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('CONTACTO_ID')) {
+      context.handle(
+          _contactoIdMeta,
+          contactoId.isAcceptableOrUnknown(
+              data['CONTACTO_ID']!, _contactoIdMeta));
+    }
+    if (data.containsKey('OBSERVACIONES')) {
+      context.handle(
+          _observacionesMeta,
+          observaciones.isAcceptableOrUnknown(
+              data['OBSERVACIONES']!, _observacionesMeta));
+    }
+    if (data.containsKey('NOMBRE')) {
+      context.handle(_nombreMeta,
+          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+    }
+    if (data.containsKey('APELLIDO1')) {
+      context.handle(_apellido1Meta,
+          apellido1.isAcceptableOrUnknown(data['APELLIDO1']!, _apellido1Meta));
+    }
+    if (data.containsKey('APELLIDO2')) {
+      context.handle(_apellido2Meta,
+          apellido2.isAcceptableOrUnknown(data['APELLIDO2']!, _apellido2Meta));
+    }
+    if (data.containsKey('TELEFONO1')) {
+      context.handle(_telefono1Meta,
+          telefono1.isAcceptableOrUnknown(data['TELEFONO1']!, _telefono1Meta));
+    }
+    if (data.containsKey('TELEFONO2')) {
+      context.handle(_telefono2Meta,
+          telefono2.isAcceptableOrUnknown(data['TELEFONO2']!, _telefono2Meta));
+    }
+    if (data.containsKey('EMAIL')) {
+      context.handle(
+          _emailMeta, email.isAcceptableOrUnknown(data['EMAIL']!, _emailMeta));
+    }
+    if (data.containsKey('ENVIADO')) {
+      context.handle(_enviadoMeta,
+          enviado.isAcceptableOrUnknown(data['ENVIADO']!, _enviadoMeta));
+    }
+    if (data.containsKey('BORRAR')) {
+      context.handle(_borrarMeta,
+          borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ClienteContactoImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ClienteContactoImpDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GUID'])!,
+      fecha: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      usuarioId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      contactoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CONTACTO_ID']),
+      observaciones: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}OBSERVACIONES']),
+      nombre: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
+      apellido1: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO1']),
+      apellido2: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}APELLIDO2']),
+      telefono1: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO1']),
+      telefono2: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}TELEFONO2']),
+      email: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}EMAIL']),
+      enviado: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADO'])!,
+      borrar: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}BORRAR'])!,
+    );
+  }
+
+  @override
+  $ClienteContactoImpTableTable createAlias(String alias) {
+    return $ClienteContactoImpTableTable(attachedDatabase, alias);
+  }
+}
+
+class ClienteContactoImpTableCompanion
+    extends UpdateCompanion<ClienteContactoImpDTO> {
+  final Value<String> id;
+  final Value<DateTime> fecha;
+  final Value<String> usuarioId;
+  final Value<String> clienteId;
+  final Value<String?> contactoId;
+  final Value<String?> observaciones;
+  final Value<String?> nombre;
+  final Value<String?> apellido1;
+  final Value<String?> apellido2;
+  final Value<String?> telefono1;
+  final Value<String?> telefono2;
+  final Value<String?> email;
+  final Value<String> enviado;
+  final Value<String> borrar;
+  const ClienteContactoImpTableCompanion({
+    this.id = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.usuarioId = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.contactoId = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.apellido1 = const Value.absent(),
+    this.apellido2 = const Value.absent(),
+    this.telefono1 = const Value.absent(),
+    this.telefono2 = const Value.absent(),
+    this.email = const Value.absent(),
+    this.enviado = const Value.absent(),
+    this.borrar = const Value.absent(),
+  });
+  ClienteContactoImpTableCompanion.insert({
+    required String id,
+    required DateTime fecha,
+    required String usuarioId,
+    required String clienteId,
+    this.contactoId = const Value.absent(),
+    this.observaciones = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.apellido1 = const Value.absent(),
+    this.apellido2 = const Value.absent(),
+    this.telefono1 = const Value.absent(),
+    this.telefono2 = const Value.absent(),
+    this.email = const Value.absent(),
+    this.enviado = const Value.absent(),
+    this.borrar = const Value.absent(),
+  })  : id = Value(id),
+        fecha = Value(fecha),
+        usuarioId = Value(usuarioId),
+        clienteId = Value(clienteId);
+  static Insertable<ClienteContactoImpDTO> custom({
+    Expression<String>? id,
+    Expression<DateTime>? fecha,
+    Expression<String>? usuarioId,
+    Expression<String>? clienteId,
+    Expression<String>? contactoId,
+    Expression<String>? observaciones,
+    Expression<String>? nombre,
+    Expression<String>? apellido1,
+    Expression<String>? apellido2,
+    Expression<String>? telefono1,
+    Expression<String>? telefono2,
+    Expression<String>? email,
+    Expression<String>? enviado,
+    Expression<String>? borrar,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'GUID': id,
+      if (fecha != null) 'FECHA': fecha,
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (contactoId != null) 'CONTACTO_ID': contactoId,
+      if (observaciones != null) 'OBSERVACIONES': observaciones,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (apellido1 != null) 'APELLIDO1': apellido1,
+      if (apellido2 != null) 'APELLIDO2': apellido2,
+      if (telefono1 != null) 'TELEFONO1': telefono1,
+      if (telefono2 != null) 'TELEFONO2': telefono2,
+      if (email != null) 'EMAIL': email,
+      if (enviado != null) 'ENVIADO': enviado,
+      if (borrar != null) 'BORRAR': borrar,
+    });
+  }
+
+  ClienteContactoImpTableCompanion copyWith(
+      {Value<String>? id,
+      Value<DateTime>? fecha,
+      Value<String>? usuarioId,
+      Value<String>? clienteId,
+      Value<String?>? contactoId,
+      Value<String?>? observaciones,
+      Value<String?>? nombre,
+      Value<String?>? apellido1,
+      Value<String?>? apellido2,
+      Value<String?>? telefono1,
+      Value<String?>? telefono2,
+      Value<String?>? email,
+      Value<String>? enviado,
+      Value<String>? borrar}) {
+    return ClienteContactoImpTableCompanion(
+      id: id ?? this.id,
+      fecha: fecha ?? this.fecha,
+      usuarioId: usuarioId ?? this.usuarioId,
+      clienteId: clienteId ?? this.clienteId,
+      contactoId: contactoId ?? this.contactoId,
+      observaciones: observaciones ?? this.observaciones,
+      nombre: nombre ?? this.nombre,
+      apellido1: apellido1 ?? this.apellido1,
+      apellido2: apellido2 ?? this.apellido2,
+      telefono1: telefono1 ?? this.telefono1,
+      telefono2: telefono2 ?? this.telefono2,
+      email: email ?? this.email,
+      enviado: enviado ?? this.enviado,
+      borrar: borrar ?? this.borrar,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['GUID'] = Variable<String>(id.value);
+    }
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
+    }
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
+    }
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (contactoId.present) {
+      map['CONTACTO_ID'] = Variable<String>(contactoId.value);
+    }
+    if (observaciones.present) {
+      map['OBSERVACIONES'] = Variable<String>(observaciones.value);
+    }
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
+    }
+    if (apellido1.present) {
+      map['APELLIDO1'] = Variable<String>(apellido1.value);
+    }
+    if (apellido2.present) {
+      map['APELLIDO2'] = Variable<String>(apellido2.value);
+    }
+    if (telefono1.present) {
+      map['TELEFONO1'] = Variable<String>(telefono1.value);
+    }
+    if (telefono2.present) {
+      map['TELEFONO2'] = Variable<String>(telefono2.value);
+    }
+    if (email.present) {
+      map['EMAIL'] = Variable<String>(email.value);
+    }
+    if (enviado.present) {
+      map['ENVIADO'] = Variable<String>(enviado.value);
+    }
+    if (borrar.present) {
+      map['BORRAR'] = Variable<String>(borrar.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ClienteContactoImpTableCompanion(')
+          ..write('id: $id, ')
+          ..write('fecha: $fecha, ')
+          ..write('usuarioId: $usuarioId, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('contactoId: $contactoId, ')
+          ..write('observaciones: $observaciones, ')
+          ..write('nombre: $nombre, ')
+          ..write('apellido1: $apellido1, ')
+          ..write('apellido2: $apellido2, ')
+          ..write('telefono1: $telefono1, ')
+          ..write('telefono2: $telefono2, ')
+          ..write('email: $email, ')
+          ..write('enviado: $enviado, ')
+          ..write('borrar: $borrar')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ClienteDireccionImpTableTable extends ClienteDireccionImpTable
+    with TableInfo<$ClienteDireccionImpTableTable, ClienteDireccionImpDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ClienteDireccionImpTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'GUID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _fechaMeta = const VerificationMeta('fecha');
+  @override
+  late final GeneratedColumn<DateTime> fecha = GeneratedColumn<DateTime>(
+      'FECHA', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _usuarioIdMeta =
+      const VerificationMeta('usuarioId');
+  @override
+  late final GeneratedColumn<String> usuarioId = GeneratedColumn<String>(
+      'USUARIO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _direccionIdMeta =
+      const VerificationMeta('direccionId');
+  @override
+  late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
+      'DIRECCION_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  @override
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
+      'NOMBRE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _direccion1Meta =
+      const VerificationMeta('direccion1');
+  @override
+  late final GeneratedColumn<String> direccion1 = GeneratedColumn<String>(
+      'DIRECCION1', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _direccion2Meta =
+      const VerificationMeta('direccion2');
+  @override
+  late final GeneratedColumn<String> direccion2 = GeneratedColumn<String>(
+      'DIRECCION2', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _codigoPostalMeta =
+      const VerificationMeta('codigoPostal');
+  @override
+  late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
+      'CODIGO_POSTAL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _poblacionMeta =
+      const VerificationMeta('poblacion');
+  @override
+  late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
+      'POBLACION', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _provinciaMeta =
+      const VerificationMeta('provincia');
+  @override
+  late final GeneratedColumn<String> provincia = GeneratedColumn<String>(
+      'PROVINCIA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  @override
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
+      'PAIS_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _enviadaMeta =
+      const VerificationMeta('enviada');
+  @override
+  late final GeneratedColumn<String> enviada = GeneratedColumn<String>(
+      'ENVIADA', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  static const VerificationMeta _borrarMeta = const VerificationMeta('borrar');
+  @override
+  late final GeneratedColumn<String> borrar = GeneratedColumn<String>(
+      'BORRAR', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        fecha,
+        usuarioId,
+        clienteId,
+        direccionId,
+        nombre,
+        direccion1,
+        direccion2,
+        codigoPostal,
+        poblacion,
+        provincia,
+        paisId,
+        enviada,
+        borrar
+      ];
+  @override
+  String get aliasedName => _alias ?? 'CLIENTES_DIRECCIONES_ENVIO_IMP';
+  @override
+  String get actualTableName => 'CLIENTES_DIRECCIONES_ENVIO_IMP';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<ClienteDireccionImpDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('GUID')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['GUID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('FECHA')) {
+      context.handle(
+          _fechaMeta, fecha.isAcceptableOrUnknown(data['FECHA']!, _fechaMeta));
+    } else if (isInserting) {
+      context.missing(_fechaMeta);
+    }
+    if (data.containsKey('USUARIO_ID')) {
+      context.handle(_usuarioIdMeta,
+          usuarioId.isAcceptableOrUnknown(data['USUARIO_ID']!, _usuarioIdMeta));
+    } else if (isInserting) {
+      context.missing(_usuarioIdMeta);
+    }
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    } else if (isInserting) {
+      context.missing(_clienteIdMeta);
+    }
+    if (data.containsKey('DIRECCION_ID')) {
+      context.handle(
+          _direccionIdMeta,
+          direccionId.isAcceptableOrUnknown(
+              data['DIRECCION_ID']!, _direccionIdMeta));
+    }
+    if (data.containsKey('NOMBRE')) {
+      context.handle(_nombreMeta,
+          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+    }
+    if (data.containsKey('DIRECCION1')) {
+      context.handle(
+          _direccion1Meta,
+          direccion1.isAcceptableOrUnknown(
+              data['DIRECCION1']!, _direccion1Meta));
+    }
+    if (data.containsKey('DIRECCION2')) {
+      context.handle(
+          _direccion2Meta,
+          direccion2.isAcceptableOrUnknown(
+              data['DIRECCION2']!, _direccion2Meta));
+    }
+    if (data.containsKey('CODIGO_POSTAL')) {
+      context.handle(
+          _codigoPostalMeta,
+          codigoPostal.isAcceptableOrUnknown(
+              data['CODIGO_POSTAL']!, _codigoPostalMeta));
+    }
+    if (data.containsKey('POBLACION')) {
+      context.handle(_poblacionMeta,
+          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
+    }
+    if (data.containsKey('PROVINCIA')) {
+      context.handle(_provinciaMeta,
+          provincia.isAcceptableOrUnknown(data['PROVINCIA']!, _provinciaMeta));
+    }
+    if (data.containsKey('PAIS_ID')) {
+      context.handle(_paisIdMeta,
+          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
+    }
+    if (data.containsKey('ENVIADA')) {
+      context.handle(_enviadaMeta,
+          enviada.isAcceptableOrUnknown(data['ENVIADA']!, _enviadaMeta));
+    }
+    if (data.containsKey('BORRAR')) {
+      context.handle(_borrarMeta,
+          borrar.isAcceptableOrUnknown(data['BORRAR']!, _borrarMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ClienteDireccionImpDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ClienteDireccionImpDTO(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}GUID'])!,
+      fecha: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}FECHA'])!,
+      usuarioId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}USUARIO_ID'])!,
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID'])!,
+      direccionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
+      nombre: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
+      direccion1: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION1']),
+      direccion2: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION2']),
+      codigoPostal: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
+      poblacion: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
+      provincia: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PROVINCIA']),
+      paisId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      enviada: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ENVIADA'])!,
+      borrar: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}BORRAR'])!,
+    );
+  }
+
+  @override
+  $ClienteDireccionImpTableTable createAlias(String alias) {
+    return $ClienteDireccionImpTableTable(attachedDatabase, alias);
+  }
+}
+
+class ClienteDireccionImpTableCompanion
+    extends UpdateCompanion<ClienteDireccionImpDTO> {
+  final Value<String> id;
+  final Value<DateTime> fecha;
+  final Value<String> usuarioId;
+  final Value<String> clienteId;
+  final Value<String?> direccionId;
+  final Value<String?> nombre;
+  final Value<String?> direccion1;
+  final Value<String?> direccion2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> provincia;
+  final Value<String?> paisId;
+  final Value<String> enviada;
+  final Value<String> borrar;
+  const ClienteDireccionImpTableCompanion({
+    this.id = const Value.absent(),
+    this.fecha = const Value.absent(),
+    this.usuarioId = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.enviada = const Value.absent(),
+    this.borrar = const Value.absent(),
+  });
+  ClienteDireccionImpTableCompanion.insert({
+    required String id,
+    required DateTime fecha,
+    required String usuarioId,
+    required String clienteId,
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.direccion1 = const Value.absent(),
+    this.direccion2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.provincia = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.enviada = const Value.absent(),
+    this.borrar = const Value.absent(),
+  })  : id = Value(id),
+        fecha = Value(fecha),
+        usuarioId = Value(usuarioId),
+        clienteId = Value(clienteId);
+  static Insertable<ClienteDireccionImpDTO> custom({
+    Expression<String>? id,
+    Expression<DateTime>? fecha,
+    Expression<String>? usuarioId,
+    Expression<String>? clienteId,
+    Expression<String>? direccionId,
+    Expression<String>? nombre,
+    Expression<String>? direccion1,
+    Expression<String>? direccion2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? provincia,
+    Expression<String>? paisId,
+    Expression<String>? enviada,
+    Expression<String>? borrar,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'GUID': id,
+      if (fecha != null) 'FECHA': fecha,
+      if (usuarioId != null) 'USUARIO_ID': usuarioId,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (direccion1 != null) 'DIRECCION1': direccion1,
+      if (direccion2 != null) 'DIRECCION2': direccion2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (provincia != null) 'PROVINCIA': provincia,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (enviada != null) 'ENVIADA': enviada,
+      if (borrar != null) 'BORRAR': borrar,
+    });
+  }
+
+  ClienteDireccionImpTableCompanion copyWith(
+      {Value<String>? id,
+      Value<DateTime>? fecha,
+      Value<String>? usuarioId,
+      Value<String>? clienteId,
+      Value<String?>? direccionId,
+      Value<String?>? nombre,
+      Value<String?>? direccion1,
+      Value<String?>? direccion2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? provincia,
+      Value<String?>? paisId,
+      Value<String>? enviada,
+      Value<String>? borrar}) {
+    return ClienteDireccionImpTableCompanion(
+      id: id ?? this.id,
+      fecha: fecha ?? this.fecha,
+      usuarioId: usuarioId ?? this.usuarioId,
+      clienteId: clienteId ?? this.clienteId,
+      direccionId: direccionId ?? this.direccionId,
+      nombre: nombre ?? this.nombre,
+      direccion1: direccion1 ?? this.direccion1,
+      direccion2: direccion2 ?? this.direccion2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      provincia: provincia ?? this.provincia,
+      paisId: paisId ?? this.paisId,
+      enviada: enviada ?? this.enviada,
+      borrar: borrar ?? this.borrar,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['GUID'] = Variable<String>(id.value);
+    }
+    if (fecha.present) {
+      map['FECHA'] = Variable<DateTime>(fecha.value);
+    }
+    if (usuarioId.present) {
+      map['USUARIO_ID'] = Variable<String>(usuarioId.value);
+    }
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    }
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
+    }
+    if (direccion1.present) {
+      map['DIRECCION1'] = Variable<String>(direccion1.value);
+    }
+    if (direccion2.present) {
+      map['DIRECCION2'] = Variable<String>(direccion2.value);
+    }
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    }
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
+    }
+    if (provincia.present) {
+      map['PROVINCIA'] = Variable<String>(provincia.value);
+    }
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
+    }
+    if (enviada.present) {
+      map['ENVIADA'] = Variable<String>(enviada.value);
+    }
+    if (borrar.present) {
+      map['BORRAR'] = Variable<String>(borrar.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ClienteDireccionImpTableCompanion(')
+          ..write('id: $id, ')
+          ..write('fecha: $fecha, ')
+          ..write('usuarioId: $usuarioId, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('nombre: $nombre, ')
+          ..write('direccion1: $direccion1, ')
+          ..write('direccion2: $direccion2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('provincia: $provincia, ')
+          ..write('paisId: $paisId, ')
+          ..write('enviada: $enviada, ')
+          ..write('borrar: $borrar')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$LocalAppDatabase extends GeneratedDatabase {
   _$LocalAppDatabase(QueryExecutor e) : super(e);
   _$LocalAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -2458,6 +3296,10 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
   late final $LogTableTable logTable = $LogTableTable(this);
   late final $CatalogoFavoritoTableTable catalogoFavoritoTable =
       $CatalogoFavoritoTableTable(this);
+  late final $ClienteContactoImpTableTable clienteContactoImpTable =
+      $ClienteContactoImpTableTable(this);
+  late final $ClienteDireccionImpTableTable clienteDireccionImpTable =
+      $ClienteDireccionImpTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -2468,7 +3310,9 @@ abstract class _$LocalAppDatabase extends GeneratedDatabase {
         pedidoVentaLocalTable,
         syncDateTimeTable,
         logTable,
-        catalogoFavoritoTable
+        catalogoFavoritoTable,
+        clienteContactoImpTable,
+        clienteDireccionImpTable
       ];
   @override
   DriftDatabaseOptions get options =>

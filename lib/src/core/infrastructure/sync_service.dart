@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
@@ -129,8 +128,10 @@ class SyncService {
       await syncTopArticulos();
       await syncClienteGruposNetos();
       await syncClienteContactos();
+      await checkClientesContactosImp();
       await syncClienteDescuentos();
       await syncClienteDirecciones();
+      await checkClientesDireccionesImp();
       await syncClientePreciosNetos();
       await syncClientesPagosPendients();
       await syncClientesRappels();
@@ -148,6 +149,7 @@ class SyncService {
   Future<void> syncAllPedidosRelacionados(
       {required bool isInMainThread}) async {
     try {
+      await enviarPedidosNoEnviados();
       await syncPedidos();
       await checkPedidoVentaTratados();
       await syncPedidoVentaLinea();
@@ -879,11 +881,13 @@ class SyncService {
 
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
               'api/v1/online/pedidos',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
               'api/v1/online/pedidos',
             );
 
@@ -912,11 +916,13 @@ class SyncService {
     try {
       final requestUri = (_usuario!.test)
           ? Uri.http(
-              dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              // dotenv.get('URLTEST', fallback: 'localhost:3001')
+              'jbm-api-test.nikel.es:8080',
               'api/v1/online/v3/visitas',
             )
           : Uri.https(
-              dotenv.get('URL', fallback: 'localhost:3001'),
+              // dotenv.get('URL', fallback: 'localhost:3001')
+              'jbm-api.nikel.es',
               'api/v1/online/v3/visitas',
             );
 
@@ -1012,6 +1018,55 @@ class SyncService {
     }
   }
 
+  Future<void> checkClientesContactosImp() async {
+    try {
+      final clienteContactoImpListDTO =
+          await (_localDb.select(_localDb.clienteContactoImpTable)
+                ..where((tbl) => tbl.enviado.equals('S')))
+              .get();
+
+      for (var i = 0; i < clienteContactoImpListDTO.length; i++) {
+        final haveBeenTratado = await _checkIfClienteContactoImpHaveBeenTratado(
+            clienteContactoImpListDTO[i].clienteId,
+            clienteContactoImpListDTO[i].id);
+
+        if (haveBeenTratado) {
+          await (_localDb.delete(_localDb.clienteContactoImpTable)
+                ..where(
+                    (tbl) => tbl.id.equals(clienteContactoImpListDTO[i].id)))
+              .go();
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> checkClientesDireccionesImp() async {
+    try {
+      final clienteDireccionImpListDTO =
+          await (_localDb.select(_localDb.clienteDireccionImpTable)
+                ..where((tbl) => tbl.enviada.equals('S')))
+              .get();
+
+      for (var i = 0; i < clienteDireccionImpListDTO.length; i++) {
+        final haveBeenTratado =
+            await _checkIfClienteDireccionImpHaveBeenTratada(
+                clienteDireccionImpListDTO[i].clienteId,
+                clienteDireccionImpListDTO[i].id);
+
+        if (haveBeenTratado) {
+          await (_localDb.delete(_localDb.clienteDireccionImpTable)
+                ..where(
+                    (tbl) => tbl.id.equals(clienteDireccionImpListDTO[i].id)))
+              .go();
+        }
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> syncDescuentoGeneral() async {
     try {
       await _syncTable(
@@ -1089,6 +1144,74 @@ class SyncService {
       return splashProgress;
     } catch (e) {
       return splashProgress;
+    }
+  }
+
+  Future<bool> _checkIfClienteContactoImpHaveBeenTratado(
+      String clienteId, String contactoImpGuid) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/clientes/$clienteId/contactos/$contactoImpGuid',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final clienteContactoHaveBeenTratado = response.data['data'] as bool;
+
+        return clienteContactoHaveBeenTratado;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
+    }
+  }
+
+  Future<bool> _checkIfClienteDireccionImpHaveBeenTratada(
+      String clienteId, String direccionImpGuid) async {
+    try {
+      final requestUri = (_usuario!.test)
+          ? Uri.http(
+              // dotenv.get('URLTEST', fallback: 'localhost:3001'),
+              'jbm-api-test.nikel.es:8080',
+              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+            )
+          : Uri.https(
+              // dotenv.get('URL', fallback: 'localhost:3001'),
+              'jbm-api.nikel.es',
+              'api/v1/sync/clientes/$clienteId/direcciones/$direccionImpGuid',
+            );
+
+      final response = await _dio.getUri(
+        requestUri,
+        options: Options(
+          headers: {'authorization': 'Bearer ${_usuario!.provisionalToken}'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        final clienteDireccionHaveBeenTratada = response.data['data'] as bool;
+
+        return clienteDireccionHaveBeenTratada;
+      } else {
+        throw AppException.restApiFailure(
+            response.statusCode ?? 400, response.statusMessage ?? '');
+      }
+    } catch (e) {
+      throw getApiError(e);
     }
   }
 }

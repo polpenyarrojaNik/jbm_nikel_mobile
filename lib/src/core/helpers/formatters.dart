@@ -56,11 +56,15 @@ String formatCustomerAddress(
     customerAddress = direccionFiscal;
   }
 
-  customerAddress +=
-      '\n${formatCodigoPostalAndPoblacion(codigoPostal: codigoPostal, poblacion: poblacion)}';
+  if (codigoPostal != null && poblacion != null) {
+    customerAddress +=
+        '\n${formatCodigoPostalAndPoblacion(codigoPostal: codigoPostal, poblacion: poblacion)}';
+  }
 
-  customerAddress +=
-      '\n${formatProvinciaAndPais(province: province, pais: pais)}';
+  if (province != null && pais != null) {
+    customerAddress +=
+        '\n${formatProvinciaAndPais(province: province, pais: pais)}';
+  }
 
   return customerAddress;
 }

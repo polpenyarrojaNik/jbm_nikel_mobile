@@ -12,6 +12,8 @@ import 'package:jbm_nikel_mobile/src/features/catalogos/infrastructure/catalogo_
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../../features/cliente/infrastructure/cliente_contacto_imp_dto.dart';
+import '../../features/cliente/infrastructure/cliente_direccion_imp_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_linea_local_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_venta_local_dto.dart';
 import '../../features/visitas/infrastructure/visita_local_dto.dart';
@@ -51,6 +53,8 @@ const localDatabaseName = 'local_jbm.sqlite';
   SyncDateTimeTable,
   LogTable,
   CatalogoFavoritoTable,
+  ClienteContactoImpTable,
+  ClienteDireccionImpTable,
 ])
 class LocalAppDatabase extends _$LocalAppDatabase {
   final bool test;
@@ -62,7 +66,19 @@ class LocalAppDatabase extends _$LocalAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration {
+    return MigrationStrategy(
+      onUpgrade: ((m, from, to) async {
+        if (from == 1) {
+          await m.createTable(clienteContactoImpTable);
+          await m.createTable(clienteDireccionImpTable);
+        }
+      }),
+    );
+  }
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

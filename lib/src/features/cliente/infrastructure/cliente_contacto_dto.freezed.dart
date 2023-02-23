@@ -23,7 +23,7 @@ mixin _$ClienteContactoDTO {
   @JsonKey(name: 'CLIENTE_ID')
   String get clienteId => throw _privateConstructorUsedError;
   @JsonKey(name: 'CONTACTO_ID')
-  String get contactoId => throw _privateConstructorUsedError;
+  String? get contactoId => throw _privateConstructorUsedError;
   @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones => throw _privateConstructorUsedError;
   @JsonKey(name: 'NOMBRE')
@@ -57,7 +57,7 @@ abstract class $ClienteContactoDTOCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') String contactoId,
+      @JsonKey(name: 'CONTACTO_ID') String? contactoId,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones,
       @JsonKey(name: 'NOMBRE') String? nombre,
       @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -83,7 +83,7 @@ class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
   @override
   $Res call({
     Object? clienteId = null,
-    Object? contactoId = null,
+    Object? contactoId = freezed,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? apellido1 = freezed,
@@ -99,10 +99,10 @@ class _$ClienteContactoDTOCopyWithImpl<$Res, $Val extends ClienteContactoDTO>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: null == contactoId
+      contactoId: freezed == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
@@ -153,7 +153,7 @@ abstract class _$$_ClienteContactoDTOCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'CLIENTE_ID') String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') String contactoId,
+      @JsonKey(name: 'CONTACTO_ID') String? contactoId,
       @JsonKey(name: 'OBSERVACIONES') String? observaciones,
       @JsonKey(name: 'NOMBRE') String? nombre,
       @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -177,7 +177,7 @@ class __$$_ClienteContactoDTOCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clienteId = null,
-    Object? contactoId = null,
+    Object? contactoId = freezed,
     Object? observaciones = freezed,
     Object? nombre = freezed,
     Object? apellido1 = freezed,
@@ -193,10 +193,10 @@ class __$$_ClienteContactoDTOCopyWithImpl<$Res>
           ? _value.clienteId
           : clienteId // ignore: cast_nullable_to_non_nullable
               as String,
-      contactoId: null == contactoId
+      contactoId: freezed == contactoId
           ? _value.contactoId
           : contactoId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       observaciones: freezed == observaciones
           ? _value.observaciones
           : observaciones // ignore: cast_nullable_to_non_nullable
@@ -262,7 +262,7 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
   final String clienteId;
   @override
   @JsonKey(name: 'CONTACTO_ID')
-  final String contactoId;
+  final String? contactoId;
   @override
   @JsonKey(name: 'OBSERVACIONES')
   final String? observaciones;
@@ -356,7 +356,7 @@ class _$_ClienteContactoDTO extends _ClienteContactoDTO {
 abstract class _ClienteContactoDTO extends ClienteContactoDTO {
   const factory _ClienteContactoDTO(
       {@JsonKey(name: 'CLIENTE_ID') required final String clienteId,
-      @JsonKey(name: 'CONTACTO_ID') required final String contactoId,
+      @JsonKey(name: 'CONTACTO_ID') required final String? contactoId,
       @JsonKey(name: 'OBSERVACIONES') final String? observaciones,
       @JsonKey(name: 'NOMBRE') final String? nombre,
       @JsonKey(name: 'APELLIDO1') final String? apellido1,
@@ -376,7 +376,7 @@ abstract class _ClienteContactoDTO extends ClienteContactoDTO {
   String get clienteId;
   @override
   @JsonKey(name: 'CONTACTO_ID')
-  String get contactoId;
+  String? get contactoId;
   @override
   @JsonKey(name: 'OBSERVACIONES')
   String? get observaciones;

@@ -67,7 +67,7 @@ class ClienteAlrededorDTO with _$ClienteAlrededorDTO {
     return ClienteAlrededorDTO(
       clienteId: _.clienteId,
       markerId: '${_.clienteId}/${_.direccionId}',
-      nombre: _.nombre,
+      nombre: _.nombre!,
       isDireccionFiscal: 'N',
       direccion: _.direccion1,
       codigoPostal: _.codigoPostal,

@@ -11,8 +11,9 @@ import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_cus
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_imp_param.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/presentation/index/cliente_lista_tile.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_page.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/presentation/show/cliente_direccion_list_page.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_edit_page_controller.dart';
 import 'package:jbm_nikel_mobile/src/features/pedido_venta/presentation/edit/pedido_venta_linea_nuevo_tile.dart';
 import 'package:uuid/uuid.dart';
@@ -653,7 +654,7 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue<List<ClienteDireccion>>>(
-      clienteDireccionProvider(cliente!.id),
+      clienteDireccionListProvider(cliente!.id),
       (_, state) {
         state.whenData(
           (clienteDireccionesList) {
@@ -673,7 +674,7 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
         );
       },
     );
-    final state = ref.watch(clienteDireccionProvider(cliente!.id));
+    final state = ref.watch(clienteDireccionListProvider(cliente!.id));
     return state.when(
       data: (clienteDireccionesList) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -698,7 +699,11 @@ class StepSelectClienteDireccionContent extends ConsumerWidget {
                   ? Theme.of(context).colorScheme.secondaryContainer
                   : Colors.transparent,
               child: ClienteDireccionTile(
-                  clienteDireccion: clienteDireccionesList[i]),
+                clienteDireccion: clienteDireccionesList[i],
+                clienteImpParam:
+                    ClienteImpParam(clienteDireccionesList[i].clienteId),
+                isFromPedido: true,
+              ),
             ),
           ),
           separatorBuilder: (context, i) => const Divider(),

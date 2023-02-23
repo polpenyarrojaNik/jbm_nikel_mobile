@@ -74,7 +74,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ErrorMessageWidget(e.toString()),
+              Expanded(child: ErrorMessageWidget(e.toString())),
               const _ReintentarSyncButton(),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' hide JsonKey;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/remote_database.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente_contacto.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente/infrastructure/cliente_contacto_imp_dto.dart';
 
 part 'cliente_contacto_dto.freezed.dart';
 part 'cliente_contacto_dto.g.dart';
@@ -15,7 +16,7 @@ class ClienteContactoDTO
   const ClienteContactoDTO._();
   const factory ClienteContactoDTO({
     @JsonKey(name: 'CLIENTE_ID') required String clienteId,
-    @JsonKey(name: 'CONTACTO_ID') required String contactoId,
+    @JsonKey(name: 'CONTACTO_ID') required String? contactoId,
     @JsonKey(name: 'OBSERVACIONES') String? observaciones,
     @JsonKey(name: 'NOMBRE') String? nombre,
     @JsonKey(name: 'APELLIDO1') String? apellido1,
@@ -30,10 +31,28 @@ class ClienteContactoDTO
   factory ClienteContactoDTO.fromJson(Map<String, dynamic> json) =>
       _$ClienteContactoDTOFromJson(json);
 
-  ClienteContacto toDomain({bool enviado = true, bool tratado = true}) {
+  factory ClienteContactoDTO.fromContactoImp(ClienteContactoImpDTO _) {
+    return ClienteContactoDTO(
+      clienteId: _.clienteId,
+      contactoId: _.contactoId,
+      observaciones: _.observaciones,
+      nombre: _.nombre,
+      apellido1: _.apellido1,
+      apellido2: _.apellido2,
+      telefono1: _.telefono1,
+      telefono2: _.telefono2,
+      email: _.email,
+      lastUpdated: DateTime.now().toUtc(),
+      deleted: _.borrar,
+    );
+  }
+
+  ClienteContacto toDomain(
+      {bool enviado = true, bool tratado = true, String? contactoImpGuid}) {
     return ClienteContacto(
       clienteId: clienteId,
       contactoId: contactoId,
+      contactoImpGuid: contactoImpGuid,
       observaciones: observaciones,
       nombre: nombre,
       apellido1: apellido1,
@@ -52,7 +71,7 @@ class ClienteContactoDTO
   Map<String, Expression> toColumns(bool nullToAbsent) {
     return ClienteContactoTableCompanion(
       clienteId: Value(clienteId),
-      contactoId: Value(contactoId),
+      contactoId: Value(contactoId!),
       observaciones: Value(observaciones),
       nombre: Value(nombre),
       apellido1: Value(apellido1),

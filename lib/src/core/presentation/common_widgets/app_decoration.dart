@@ -19,7 +19,7 @@ class AppDecoration {
   static InputDecoration defaultFieldDecoration(String text,
           {IconButton? suffixButton}) =>
       InputDecoration(
-        contentPadding: const EdgeInsets.all(5),
+        contentPadding: const EdgeInsets.all(8),
         labelText: text,
         border: const OutlineInputBorder(
           borderSide: BorderSide(),

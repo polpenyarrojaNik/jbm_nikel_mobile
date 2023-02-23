@@ -110,15 +110,26 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    ClienteContactoRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteContactoRouteArgs>();
+    ClienteContactoListRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteContactoListRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: ClienteContactoPage(
+        child: ClienteContactoListPage(
           key: args.key,
           clienteId: args.clienteId,
           nombreCliente: args.nombreCliente,
         ),
+      );
+    },
+    ClienteContactoEditRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteContactoEditRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteContactoEditPage(
+          key: args.key,
+          clienteImpParam: args.clienteImpParam,
+        ),
+        fullscreenDialog: true,
       );
     },
     ClienteDescuentoRoute.name: (routeData) {
@@ -132,15 +143,35 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    ClienteDireccionesRoute.name: (routeData) {
-      final args = routeData.argsAs<ClienteDireccionesRouteArgs>();
+    ClienteDireccionesListRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDireccionesListRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: ClienteDireccionesPage(
+        child: ClienteDireccionesListPage(
           key: args.key,
           clienteId: args.clienteId,
+          paisCliente: args.paisCliente,
           nombreCliente: args.nombreCliente,
         ),
+      );
+    },
+    ClienteDireccionEditRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDireccionEditRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteDireccionEditPage(
+          key: args.key,
+          clienteImpParam: args.clienteImpParam,
+        ),
+        fullscreenDialog: true,
+      );
+    },
+    ClienteDireccionSeleccionarPaisRoute.name: (routeData) {
+      final args = routeData.argsAs<ClienteDireccionSeleccionarPaisRouteArgs>(
+          orElse: () => const ClienteDireccionSeleccionarPaisRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ClienteDireccionSeleccionarPaisPage(key: args.key),
       );
     },
     ClientePrecioNetoRoute.name: (routeData) {
@@ -482,16 +513,28 @@ class _$AppRouter extends RootStackRouter {
           path: '/cliente/:id/adjuntos',
         ),
         RouteConfig(
-          ClienteContactoRoute.name,
+          ClienteContactoListRoute.name,
           path: '/cliente/:id/contactos',
+        ),
+        RouteConfig(
+          ClienteContactoEditRoute.name,
+          path: '/cliente/:id/contactos/:contactoId',
         ),
         RouteConfig(
           ClienteDescuentoRoute.name,
           path: '/cliente/:id/descuentos',
         ),
         RouteConfig(
-          ClienteDireccionesRoute.name,
+          ClienteDireccionesListRoute.name,
           path: '/cliente/:id/direcciones',
+        ),
+        RouteConfig(
+          ClienteDireccionEditRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId',
+        ),
+        RouteConfig(
+          ClienteDireccionSeleccionarPaisRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId/pais',
         ),
         RouteConfig(
           ClientePrecioNetoRoute.name,
@@ -911,27 +954,28 @@ class ClienteAdjuntoRouteArgs {
 }
 
 /// generated route for
-/// [ClienteContactoPage]
-class ClienteContactoRoute extends PageRouteInfo<ClienteContactoRouteArgs> {
-  ClienteContactoRoute({
+/// [ClienteContactoListPage]
+class ClienteContactoListRoute
+    extends PageRouteInfo<ClienteContactoListRouteArgs> {
+  ClienteContactoListRoute({
     Key? key,
     required String clienteId,
     required String? nombreCliente,
   }) : super(
-          ClienteContactoRoute.name,
+          ClienteContactoListRoute.name,
           path: '/cliente/:id/contactos',
-          args: ClienteContactoRouteArgs(
+          args: ClienteContactoListRouteArgs(
             key: key,
             clienteId: clienteId,
             nombreCliente: nombreCliente,
           ),
         );
 
-  static const String name = 'ClienteContactoRoute';
+  static const String name = 'ClienteContactoListRoute';
 }
 
-class ClienteContactoRouteArgs {
-  const ClienteContactoRouteArgs({
+class ClienteContactoListRouteArgs {
+  const ClienteContactoListRouteArgs({
     this.key,
     required this.clienteId,
     required this.nombreCliente,
@@ -945,7 +989,42 @@ class ClienteContactoRouteArgs {
 
   @override
   String toString() {
-    return 'ClienteContactoRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+    return 'ClienteContactoListRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteContactoEditPage]
+class ClienteContactoEditRoute
+    extends PageRouteInfo<ClienteContactoEditRouteArgs> {
+  ClienteContactoEditRoute({
+    Key? key,
+    required ClienteImpParam clienteImpParam,
+  }) : super(
+          ClienteContactoEditRoute.name,
+          path: '/cliente/:id/contactos/:contactoId',
+          args: ClienteContactoEditRouteArgs(
+            key: key,
+            clienteImpParam: clienteImpParam,
+          ),
+        );
+
+  static const String name = 'ClienteContactoEditRoute';
+}
+
+class ClienteContactoEditRouteArgs {
+  const ClienteContactoEditRouteArgs({
+    this.key,
+    required this.clienteImpParam,
+  });
+
+  final Key? key;
+
+  final ClienteImpParam clienteImpParam;
+
+  @override
+  String toString() {
+    return 'ClienteContactoEditRouteArgs{key: $key, clienteImpParam: $clienteImpParam}';
   }
 }
 
@@ -989,30 +1068,33 @@ class ClienteDescuentoRouteArgs {
 }
 
 /// generated route for
-/// [ClienteDireccionesPage]
-class ClienteDireccionesRoute
-    extends PageRouteInfo<ClienteDireccionesRouteArgs> {
-  ClienteDireccionesRoute({
+/// [ClienteDireccionesListPage]
+class ClienteDireccionesListRoute
+    extends PageRouteInfo<ClienteDireccionesListRouteArgs> {
+  ClienteDireccionesListRoute({
     Key? key,
     required String clienteId,
+    required Pais? paisCliente,
     required String? nombreCliente,
   }) : super(
-          ClienteDireccionesRoute.name,
+          ClienteDireccionesListRoute.name,
           path: '/cliente/:id/direcciones',
-          args: ClienteDireccionesRouteArgs(
+          args: ClienteDireccionesListRouteArgs(
             key: key,
             clienteId: clienteId,
+            paisCliente: paisCliente,
             nombreCliente: nombreCliente,
           ),
         );
 
-  static const String name = 'ClienteDireccionesRoute';
+  static const String name = 'ClienteDireccionesListRoute';
 }
 
-class ClienteDireccionesRouteArgs {
-  const ClienteDireccionesRouteArgs({
+class ClienteDireccionesListRouteArgs {
+  const ClienteDireccionesListRouteArgs({
     this.key,
     required this.clienteId,
+    required this.paisCliente,
     required this.nombreCliente,
   });
 
@@ -1020,11 +1102,73 @@ class ClienteDireccionesRouteArgs {
 
   final String clienteId;
 
+  final Pais? paisCliente;
+
   final String? nombreCliente;
 
   @override
   String toString() {
-    return 'ClienteDireccionesRouteArgs{key: $key, clienteId: $clienteId, nombreCliente: $nombreCliente}';
+    return 'ClienteDireccionesListRouteArgs{key: $key, clienteId: $clienteId, paisCliente: $paisCliente, nombreCliente: $nombreCliente}';
+  }
+}
+
+/// generated route for
+/// [ClienteDireccionEditPage]
+class ClienteDireccionEditRoute
+    extends PageRouteInfo<ClienteDireccionEditRouteArgs> {
+  ClienteDireccionEditRoute({
+    Key? key,
+    required ClienteImpParam clienteImpParam,
+  }) : super(
+          ClienteDireccionEditRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId',
+          args: ClienteDireccionEditRouteArgs(
+            key: key,
+            clienteImpParam: clienteImpParam,
+          ),
+        );
+
+  static const String name = 'ClienteDireccionEditRoute';
+}
+
+class ClienteDireccionEditRouteArgs {
+  const ClienteDireccionEditRouteArgs({
+    this.key,
+    required this.clienteImpParam,
+  });
+
+  final Key? key;
+
+  final ClienteImpParam clienteImpParam;
+
+  @override
+  String toString() {
+    return 'ClienteDireccionEditRouteArgs{key: $key, clienteImpParam: $clienteImpParam}';
+  }
+}
+
+/// generated route for
+/// [ClienteDireccionSeleccionarPaisPage]
+class ClienteDireccionSeleccionarPaisRoute
+    extends PageRouteInfo<ClienteDireccionSeleccionarPaisRouteArgs> {
+  ClienteDireccionSeleccionarPaisRoute({Key? key})
+      : super(
+          ClienteDireccionSeleccionarPaisRoute.name,
+          path: '/cliente/:id/direcciones/:direccionId/pais',
+          args: ClienteDireccionSeleccionarPaisRouteArgs(key: key),
+        );
+
+  static const String name = 'ClienteDireccionSeleccionarPaisRoute';
+}
+
+class ClienteDireccionSeleccionarPaisRouteArgs {
+  const ClienteDireccionSeleccionarPaisRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ClienteDireccionSeleccionarPaisRouteArgs{key: $key}';
   }
 }
 
