@@ -206,7 +206,7 @@ class ArticuloRepository {
           OR art.GS1_128_CAJA LIKE '%$searchText%'
           OR art.GS1_128_PALET LIKE '%$searchText%'
           ORDER BY CASE
-            WHEN art.ARTICULO_ID = '%$searchText' THEN 1
+            WHEN art.ARTICULO_ID = '$searchText' OR art.ARTICULO_ID like'$searchText%' THEN 1
             ELSE 2
           END
           , art.ARTICULO_ID
