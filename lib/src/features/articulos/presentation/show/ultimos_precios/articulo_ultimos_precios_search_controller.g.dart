@@ -6,7 +6,8 @@ part of 'articulo_ultimos_precios_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$articuloUltimosPreciosIndexScreenControllerHash() =>
+    r'1dd1821f890011dfa5278fa991bfc60093d5d7cf';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,16 +30,67 @@ class _SystemHash {
   }
 }
 
-String _$ArticuloUltimosPreciosIndexScreenControllerHash() =>
-    r'1dd1821f890011dfa5278fa991bfc60093d5d7cf';
+abstract class _$ArticuloUltimosPreciosIndexScreenController
+    extends BuildlessAutoDisposeAsyncNotifier<int> {
+  late final String articuloId;
+
+  Future<int> build({
+    required String articuloId,
+  });
+}
+
+/// See also [ArticuloUltimosPreciosIndexScreenController].
+@ProviderFor(ArticuloUltimosPreciosIndexScreenController)
+const articuloUltimosPreciosIndexScreenControllerProvider =
+    ArticuloUltimosPreciosIndexScreenControllerFamily();
+
+/// See also [ArticuloUltimosPreciosIndexScreenController].
+class ArticuloUltimosPreciosIndexScreenControllerFamily
+    extends Family<AsyncValue<int>> {
+  /// See also [ArticuloUltimosPreciosIndexScreenController].
+  const ArticuloUltimosPreciosIndexScreenControllerFamily();
+
+  /// See also [ArticuloUltimosPreciosIndexScreenController].
+  ArticuloUltimosPreciosIndexScreenControllerProvider call({
+    required String articuloId,
+  }) {
+    return ArticuloUltimosPreciosIndexScreenControllerProvider(
+      articuloId: articuloId,
+    );
+  }
+
+  @override
+  ArticuloUltimosPreciosIndexScreenControllerProvider getProviderOverride(
+    covariant ArticuloUltimosPreciosIndexScreenControllerProvider provider,
+  ) {
+    return call(
+      articuloId: provider.articuloId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'articuloUltimosPreciosIndexScreenControllerProvider';
+}
 
 /// See also [ArticuloUltimosPreciosIndexScreenController].
 class ArticuloUltimosPreciosIndexScreenControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
         ArticuloUltimosPreciosIndexScreenController, int> {
+  /// See also [ArticuloUltimosPreciosIndexScreenController].
   ArticuloUltimosPreciosIndexScreenControllerProvider({
     required this.articuloId,
-  }) : super(
+  }) : super.internal(
           () => ArticuloUltimosPreciosIndexScreenController()
             ..articuloId = articuloId,
           from: articuloUltimosPreciosIndexScreenControllerProvider,
@@ -46,7 +98,12 @@ class ArticuloUltimosPreciosIndexScreenControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$ArticuloUltimosPreciosIndexScreenControllerHash,
+                  : _$articuloUltimosPreciosIndexScreenControllerHash,
+          dependencies:
+              ArticuloUltimosPreciosIndexScreenControllerFamily._dependencies,
+          allTransitiveDependencies:
+              ArticuloUltimosPreciosIndexScreenControllerFamily
+                  ._allTransitiveDependencies,
         );
 
   final String articuloId;
@@ -66,8 +123,8 @@ class ArticuloUltimosPreciosIndexScreenControllerProvider
   }
 
   @override
-  FutureOr<int> runNotifierBuild(
-    covariant _$ArticuloUltimosPreciosIndexScreenController notifier,
+  Future<int> runNotifierBuild(
+    covariant ArticuloUltimosPreciosIndexScreenController notifier,
   ) {
     return notifier.build(
       articuloId: articuloId,
@@ -75,66 +132,81 @@ class ArticuloUltimosPreciosIndexScreenControllerProvider
   }
 }
 
-typedef ArticuloUltimosPreciosIndexScreenControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<int>;
+String _$articuloUltimosPreciosIndexScreenPaginatedControllerHash() =>
+    r'463df4f655692cec411990f3b1d20e68fe28cc71';
 
-/// See also [ArticuloUltimosPreciosIndexScreenController].
-final articuloUltimosPreciosIndexScreenControllerProvider =
-    ArticuloUltimosPreciosIndexScreenControllerFamily();
+abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
+    extends BuildlessAutoDisposeAsyncNotifier<
+        List<EstadisticasUltimosPrecios>> {
+  late final int page;
+  late final String articuloId;
 
-class ArticuloUltimosPreciosIndexScreenControllerFamily
-    extends Family<AsyncValue<int>> {
-  ArticuloUltimosPreciosIndexScreenControllerFamily();
+  Future<List<EstadisticasUltimosPrecios>> build({
+    required int page,
+    required String articuloId,
+  });
+}
 
-  ArticuloUltimosPreciosIndexScreenControllerProvider call({
+/// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
+@ProviderFor(ArticuloUltimosPreciosIndexScreenPaginatedController)
+const articuloUltimosPreciosIndexScreenPaginatedControllerProvider =
+    ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily();
+
+/// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
+class ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
+    extends Family<AsyncValue<List<EstadisticasUltimosPrecios>>> {
+  /// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
+  const ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily();
+
+  /// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
+  ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider call({
+    required int page,
     required String articuloId,
   }) {
-    return ArticuloUltimosPreciosIndexScreenControllerProvider(
+    return ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider(
+      page: page,
       articuloId: articuloId,
     );
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderImpl<
-      ArticuloUltimosPreciosIndexScreenController, int> getProviderOverride(
-    covariant ArticuloUltimosPreciosIndexScreenControllerProvider provider,
+  ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
+      getProviderOverride(
+    covariant ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
+        provider,
   ) {
     return call(
+      page: provider.page,
       articuloId: provider.articuloId,
     );
   }
 
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
-  List<ProviderOrFamily>? get dependencies => null;
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  String? get name => r'articuloUltimosPreciosIndexScreenControllerProvider';
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name =>
+      r'articuloUltimosPreciosIndexScreenPaginatedControllerProvider';
 }
-
-abstract class _$ArticuloUltimosPreciosIndexScreenController
-    extends BuildlessAutoDisposeAsyncNotifier<int> {
-  late final String articuloId;
-
-  FutureOr<int> build({
-    required String articuloId,
-  });
-}
-
-String _$ArticuloUltimosPreciosIndexScreenPaginatedControllerHash() =>
-    r'463df4f655692cec411990f3b1d20e68fe28cc71';
 
 /// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
 class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
         ArticuloUltimosPreciosIndexScreenPaginatedController,
         List<EstadisticasUltimosPrecios>> {
+  /// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
   ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider({
     required this.page,
     required this.articuloId,
-  }) : super(
+  }) : super.internal(
           () => ArticuloUltimosPreciosIndexScreenPaginatedController()
             ..page = page
             ..articuloId = articuloId,
@@ -143,7 +215,13 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$ArticuloUltimosPreciosIndexScreenPaginatedControllerHash,
+                  : _$articuloUltimosPreciosIndexScreenPaginatedControllerHash,
+          dependencies:
+              ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
+                  ._dependencies,
+          allTransitiveDependencies:
+              ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
+                  ._allTransitiveDependencies,
         );
 
   final int page;
@@ -167,8 +245,8 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
   }
 
   @override
-  FutureOr<List<EstadisticasUltimosPrecios>> runNotifierBuild(
-    covariant _$ArticuloUltimosPreciosIndexScreenPaginatedController notifier,
+  Future<List<EstadisticasUltimosPrecios>> runNotifierBuild(
+    covariant ArticuloUltimosPreciosIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(
       page: page,
@@ -176,60 +254,4 @@ class ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
     );
   }
 }
-
-typedef ArticuloUltimosPreciosIndexScreenPaginatedControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<List<EstadisticasUltimosPrecios>>;
-
-/// See also [ArticuloUltimosPreciosIndexScreenPaginatedController].
-final articuloUltimosPreciosIndexScreenPaginatedControllerProvider =
-    ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily();
-
-class ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<EstadisticasUltimosPrecios>>> {
-  ArticuloUltimosPreciosIndexScreenPaginatedControllerFamily();
-
-  ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider call({
-    required int page,
-    required String articuloId,
-  }) {
-    return ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider(
-      page: page,
-      articuloId: articuloId,
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderImpl<
-      ArticuloUltimosPreciosIndexScreenPaginatedController,
-      List<EstadisticasUltimosPrecios>> getProviderOverride(
-    covariant ArticuloUltimosPreciosIndexScreenPaginatedControllerProvider
-        provider,
-  ) {
-    return call(
-      page: provider.page,
-      articuloId: provider.articuloId,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name =>
-      r'articuloUltimosPreciosIndexScreenPaginatedControllerProvider';
-}
-
-abstract class _$ArticuloUltimosPreciosIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<
-        List<EstadisticasUltimosPrecios>> {
-  late final int page;
-  late final String articuloId;
-
-  FutureOr<List<EstadisticasUltimosPrecios>> build({
-    required int page,
-    required String articuloId,
-  });
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

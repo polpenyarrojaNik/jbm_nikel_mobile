@@ -6,7 +6,8 @@ part of 'cliente_contacto_edit_page_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$clienteContactoEditPageControllerHash() =>
+    r'4506a1811e2986106c2a4bc14f650392e9dc2163';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,16 +30,67 @@ class _SystemHash {
   }
 }
 
-String _$ClienteContactoEditPageControllerHash() =>
-    r'4506a1811e2986106c2a4bc14f650392e9dc2163';
+abstract class _$ClienteContactoEditPageController
+    extends BuildlessAutoDisposeAsyncNotifier<ClienteContactoImpEditPageData> {
+  late final ClienteImpParam clienteImpParam;
+
+  Future<ClienteContactoImpEditPageData> build(
+    ClienteImpParam clienteImpParam,
+  );
+}
+
+/// See also [ClienteContactoEditPageController].
+@ProviderFor(ClienteContactoEditPageController)
+const clienteContactoEditPageControllerProvider =
+    ClienteContactoEditPageControllerFamily();
+
+/// See also [ClienteContactoEditPageController].
+class ClienteContactoEditPageControllerFamily
+    extends Family<AsyncValue<ClienteContactoImpEditPageData>> {
+  /// See also [ClienteContactoEditPageController].
+  const ClienteContactoEditPageControllerFamily();
+
+  /// See also [ClienteContactoEditPageController].
+  ClienteContactoEditPageControllerProvider call(
+    ClienteImpParam clienteImpParam,
+  ) {
+    return ClienteContactoEditPageControllerProvider(
+      clienteImpParam,
+    );
+  }
+
+  @override
+  ClienteContactoEditPageControllerProvider getProviderOverride(
+    covariant ClienteContactoEditPageControllerProvider provider,
+  ) {
+    return call(
+      provider.clienteImpParam,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'clienteContactoEditPageControllerProvider';
+}
 
 /// See also [ClienteContactoEditPageController].
 class ClienteContactoEditPageControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
         ClienteContactoEditPageController, ClienteContactoImpEditPageData> {
+  /// See also [ClienteContactoEditPageController].
   ClienteContactoEditPageControllerProvider(
     this.clienteImpParam,
-  ) : super(
+  ) : super.internal(
           () => ClienteContactoEditPageController()
             ..clienteImpParam = clienteImpParam,
           from: clienteContactoEditPageControllerProvider,
@@ -46,7 +98,10 @@ class ClienteContactoEditPageControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$ClienteContactoEditPageControllerHash,
+                  : _$clienteContactoEditPageControllerHash,
+          dependencies: ClienteContactoEditPageControllerFamily._dependencies,
+          allTransitiveDependencies: ClienteContactoEditPageControllerFamily
+              ._allTransitiveDependencies,
         );
 
   final ClienteImpParam clienteImpParam;
@@ -66,59 +121,12 @@ class ClienteContactoEditPageControllerProvider
   }
 
   @override
-  FutureOr<ClienteContactoImpEditPageData> runNotifierBuild(
-    covariant _$ClienteContactoEditPageController notifier,
+  Future<ClienteContactoImpEditPageData> runNotifierBuild(
+    covariant ClienteContactoEditPageController notifier,
   ) {
     return notifier.build(
       clienteImpParam,
     );
   }
 }
-
-typedef ClienteContactoEditPageControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<ClienteContactoImpEditPageData>;
-
-/// See also [ClienteContactoEditPageController].
-final clienteContactoEditPageControllerProvider =
-    ClienteContactoEditPageControllerFamily();
-
-class ClienteContactoEditPageControllerFamily
-    extends Family<AsyncValue<ClienteContactoImpEditPageData>> {
-  ClienteContactoEditPageControllerFamily();
-
-  ClienteContactoEditPageControllerProvider call(
-    ClienteImpParam clienteImpParam,
-  ) {
-    return ClienteContactoEditPageControllerProvider(
-      clienteImpParam,
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderImpl<ClienteContactoEditPageController,
-      ClienteContactoImpEditPageData> getProviderOverride(
-    covariant ClienteContactoEditPageControllerProvider provider,
-  ) {
-    return call(
-      provider.clienteImpParam,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'clienteContactoEditPageControllerProvider';
-}
-
-abstract class _$ClienteContactoEditPageController
-    extends BuildlessAutoDisposeAsyncNotifier<ClienteContactoImpEditPageData> {
-  late final ClienteImpParam clienteImpParam;
-
-  FutureOr<ClienteContactoImpEditPageData> build(
-    ClienteImpParam clienteImpParam,
-  );
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

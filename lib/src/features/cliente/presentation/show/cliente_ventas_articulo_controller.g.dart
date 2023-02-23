@@ -6,7 +6,8 @@ part of 'cliente_ventas_articulo_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$clienteVentasArticuloIndexScreenPaginatedControllerHash() =>
+    r'1893290fa7827b98c106fef93e4838df08c82313';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,17 +30,71 @@ class _SystemHash {
   }
 }
 
-String _$ClienteVentasArticuloIndexScreenPaginatedControllerHash() =>
-    r'1893290fa7827b98c106fef93e4838df08c82313';
+abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
+    extends BuildlessAutoDisposeAsyncNotifier<List<ClienteVentasArticulo>> {
+  late final String clienteId;
+
+  Future<List<ClienteVentasArticulo>> build({
+    required String clienteId,
+  });
+}
+
+/// See also [ClienteVentasArticuloIndexScreenPaginatedController].
+@ProviderFor(ClienteVentasArticuloIndexScreenPaginatedController)
+const clienteVentasArticuloIndexScreenPaginatedControllerProvider =
+    ClienteVentasArticuloIndexScreenPaginatedControllerFamily();
+
+/// See also [ClienteVentasArticuloIndexScreenPaginatedController].
+class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
+    extends Family<AsyncValue<List<ClienteVentasArticulo>>> {
+  /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
+  const ClienteVentasArticuloIndexScreenPaginatedControllerFamily();
+
+  /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
+  ClienteVentasArticuloIndexScreenPaginatedControllerProvider call({
+    required String clienteId,
+  }) {
+    return ClienteVentasArticuloIndexScreenPaginatedControllerProvider(
+      clienteId: clienteId,
+    );
+  }
+
+  @override
+  ClienteVentasArticuloIndexScreenPaginatedControllerProvider
+      getProviderOverride(
+    covariant ClienteVentasArticuloIndexScreenPaginatedControllerProvider
+        provider,
+  ) {
+    return call(
+      clienteId: provider.clienteId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name =>
+      r'clienteVentasArticuloIndexScreenPaginatedControllerProvider';
+}
 
 /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
 class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
         ClienteVentasArticuloIndexScreenPaginatedController,
         List<ClienteVentasArticulo>> {
+  /// See also [ClienteVentasArticuloIndexScreenPaginatedController].
   ClienteVentasArticuloIndexScreenPaginatedControllerProvider({
     required this.clienteId,
-  }) : super(
+  }) : super.internal(
           () => ClienteVentasArticuloIndexScreenPaginatedController()
             ..clienteId = clienteId,
           from: clienteVentasArticuloIndexScreenPaginatedControllerProvider,
@@ -47,7 +102,13 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$ClienteVentasArticuloIndexScreenPaginatedControllerHash,
+                  : _$clienteVentasArticuloIndexScreenPaginatedControllerHash,
+          dependencies:
+              ClienteVentasArticuloIndexScreenPaginatedControllerFamily
+                  ._dependencies,
+          allTransitiveDependencies:
+              ClienteVentasArticuloIndexScreenPaginatedControllerFamily
+                  ._allTransitiveDependencies,
         );
 
   final String clienteId;
@@ -68,62 +129,12 @@ class ClienteVentasArticuloIndexScreenPaginatedControllerProvider
   }
 
   @override
-  FutureOr<List<ClienteVentasArticulo>> runNotifierBuild(
-    covariant _$ClienteVentasArticuloIndexScreenPaginatedController notifier,
+  Future<List<ClienteVentasArticulo>> runNotifierBuild(
+    covariant ClienteVentasArticuloIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(
       clienteId: clienteId,
     );
   }
 }
-
-typedef ClienteVentasArticuloIndexScreenPaginatedControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<List<ClienteVentasArticulo>>;
-
-/// See also [ClienteVentasArticuloIndexScreenPaginatedController].
-final clienteVentasArticuloIndexScreenPaginatedControllerProvider =
-    ClienteVentasArticuloIndexScreenPaginatedControllerFamily();
-
-class ClienteVentasArticuloIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<ClienteVentasArticulo>>> {
-  ClienteVentasArticuloIndexScreenPaginatedControllerFamily();
-
-  ClienteVentasArticuloIndexScreenPaginatedControllerProvider call({
-    required String clienteId,
-  }) {
-    return ClienteVentasArticuloIndexScreenPaginatedControllerProvider(
-      clienteId: clienteId,
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderImpl<
-      ClienteVentasArticuloIndexScreenPaginatedController,
-      List<ClienteVentasArticulo>> getProviderOverride(
-    covariant ClienteVentasArticuloIndexScreenPaginatedControllerProvider
-        provider,
-  ) {
-    return call(
-      clienteId: provider.clienteId,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name =>
-      r'clienteVentasArticuloIndexScreenPaginatedControllerProvider';
-}
-
-abstract class _$ClienteVentasArticuloIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<List<ClienteVentasArticulo>> {
-  late final String clienteId;
-
-  FutureOr<List<ClienteVentasArticulo>> build({
-    required String clienteId,
-  });
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

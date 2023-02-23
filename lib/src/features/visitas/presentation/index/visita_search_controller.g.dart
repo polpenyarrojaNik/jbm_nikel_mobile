@@ -6,7 +6,25 @@ part of 'visita_search_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// ignore_for_file: avoid_private_typedef_functions, non_constant_identifier_names, subtype_of_sealed_class, invalid_use_of_internal_member, unused_element, constant_identifier_names, unnecessary_raw_strings, library_private_types_in_public_api
+String _$visitaIndexScreenControllerHash() =>
+    r'6aa47f60efab2d24a7ea4a12cb55560850c78eec';
+
+/// See also [VisitaIndexScreenController].
+@ProviderFor(VisitaIndexScreenController)
+final visitaIndexScreenControllerProvider =
+    AutoDisposeAsyncNotifierProvider<VisitaIndexScreenController, int>.internal(
+  VisitaIndexScreenController.new,
+  name: r'visitaIndexScreenControllerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$visitaIndexScreenControllerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$VisitaIndexScreenController = AutoDisposeAsyncNotifier<int>;
+String _$visitaIndexScreenPaginatedControllerHash() =>
+    r'652caea9461bb21cd5cf3b6e0e79c11f2f58da92';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,44 +47,78 @@ class _SystemHash {
   }
 }
 
-String _$VisitaIndexScreenControllerHash() =>
-    r'6aa47f60efab2d24a7ea4a12cb55560850c78eec';
+abstract class _$VisitaIndexScreenPaginatedController
+    extends BuildlessAutoDisposeAsyncNotifier<List<Visita>> {
+  late final int page;
 
-/// See also [VisitaIndexScreenController].
-final visitaIndexScreenControllerProvider =
-    AutoDisposeAsyncNotifierProvider<VisitaIndexScreenController, int>(
-  VisitaIndexScreenController.new,
-  name: r'visitaIndexScreenControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$VisitaIndexScreenControllerHash,
-);
-typedef VisitaIndexScreenControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<int>;
-
-abstract class _$VisitaIndexScreenController
-    extends AutoDisposeAsyncNotifier<int> {
-  @override
-  FutureOr<int> build();
+  Future<List<Visita>> build({
+    required int page,
+  });
 }
 
-String _$VisitaIndexScreenPaginatedControllerHash() =>
-    r'652caea9461bb21cd5cf3b6e0e79c11f2f58da92';
+/// See also [VisitaIndexScreenPaginatedController].
+@ProviderFor(VisitaIndexScreenPaginatedController)
+const visitaIndexScreenPaginatedControllerProvider =
+    VisitaIndexScreenPaginatedControllerFamily();
+
+/// See also [VisitaIndexScreenPaginatedController].
+class VisitaIndexScreenPaginatedControllerFamily
+    extends Family<AsyncValue<List<Visita>>> {
+  /// See also [VisitaIndexScreenPaginatedController].
+  const VisitaIndexScreenPaginatedControllerFamily();
+
+  /// See also [VisitaIndexScreenPaginatedController].
+  VisitaIndexScreenPaginatedControllerProvider call({
+    required int page,
+  }) {
+    return VisitaIndexScreenPaginatedControllerProvider(
+      page: page,
+    );
+  }
+
+  @override
+  VisitaIndexScreenPaginatedControllerProvider getProviderOverride(
+    covariant VisitaIndexScreenPaginatedControllerProvider provider,
+  ) {
+    return call(
+      page: provider.page,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'visitaIndexScreenPaginatedControllerProvider';
+}
 
 /// See also [VisitaIndexScreenPaginatedController].
 class VisitaIndexScreenPaginatedControllerProvider
     extends AutoDisposeAsyncNotifierProviderImpl<
         VisitaIndexScreenPaginatedController, List<Visita>> {
+  /// See also [VisitaIndexScreenPaginatedController].
   VisitaIndexScreenPaginatedControllerProvider({
     required this.page,
-  }) : super(
+  }) : super.internal(
           () => VisitaIndexScreenPaginatedController()..page = page,
           from: visitaIndexScreenPaginatedControllerProvider,
           name: r'visitaIndexScreenPaginatedControllerProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$VisitaIndexScreenPaginatedControllerHash,
+                  : _$visitaIndexScreenPaginatedControllerHash,
+          dependencies:
+              VisitaIndexScreenPaginatedControllerFamily._dependencies,
+          allTransitiveDependencies: VisitaIndexScreenPaginatedControllerFamily
+              ._allTransitiveDependencies,
         );
 
   final int page;
@@ -86,59 +138,12 @@ class VisitaIndexScreenPaginatedControllerProvider
   }
 
   @override
-  FutureOr<List<Visita>> runNotifierBuild(
-    covariant _$VisitaIndexScreenPaginatedController notifier,
+  Future<List<Visita>> runNotifierBuild(
+    covariant VisitaIndexScreenPaginatedController notifier,
   ) {
     return notifier.build(
       page: page,
     );
   }
 }
-
-typedef VisitaIndexScreenPaginatedControllerRef
-    = AutoDisposeAsyncNotifierProviderRef<List<Visita>>;
-
-/// See also [VisitaIndexScreenPaginatedController].
-final visitaIndexScreenPaginatedControllerProvider =
-    VisitaIndexScreenPaginatedControllerFamily();
-
-class VisitaIndexScreenPaginatedControllerFamily
-    extends Family<AsyncValue<List<Visita>>> {
-  VisitaIndexScreenPaginatedControllerFamily();
-
-  VisitaIndexScreenPaginatedControllerProvider call({
-    required int page,
-  }) {
-    return VisitaIndexScreenPaginatedControllerProvider(
-      page: page,
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderImpl<VisitaIndexScreenPaginatedController,
-      List<Visita>> getProviderOverride(
-    covariant VisitaIndexScreenPaginatedControllerProvider provider,
-  ) {
-    return call(
-      page: provider.page,
-    );
-  }
-
-  @override
-  List<ProviderOrFamily>? get allTransitiveDependencies => null;
-
-  @override
-  List<ProviderOrFamily>? get dependencies => null;
-
-  @override
-  String? get name => r'visitaIndexScreenPaginatedControllerProvider';
-}
-
-abstract class _$VisitaIndexScreenPaginatedController
-    extends BuildlessAutoDisposeAsyncNotifier<List<Visita>> {
-  late final int page;
-
-  FutureOr<List<Visita>> build({
-    required int page,
-  });
-}
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
