@@ -69,6 +69,7 @@ class ClienteDireccionDTO
       poblacion: poblacion,
       provincia: provincia,
       pais: pais,
+      clientePotencial: clientePotencial,
       latitud: latitud,
       longitud: longitud,
       predeterminada: (predeterminada == 'S') ? true : false,

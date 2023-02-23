@@ -206,6 +206,7 @@
   "cliente_alrededor_margenAnoActual": "Margen año actual",
   "cliente_alrededor_porcentajeAbonos": "Porcentaje abonos",
   "cliente_alrededor_cargandoMapa": "Cargando mapa",
+  "cliente_alrededor_direccionesEnvio": "Direcciones de envío",
   "pedido_index_titulo": "Pedidos",
   "pedido_index_reset": "Reset",
   "pedido_index_filtrar": "Filtrar",

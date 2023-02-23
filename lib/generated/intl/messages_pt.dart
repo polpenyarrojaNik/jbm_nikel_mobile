@@ -145,6 +145,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Catálogos"),
         "cliente_alrededor_cargandoMapa":
             MessageLookupByLibrary.simpleMessage("Carregando mapa"),
+        "cliente_alrededor_direccionesEnvio":
+            MessageLookupByLibrary.simpleMessage("Endereços de Envio"),
         "cliente_alrededor_margenAnoActual":
             MessageLookupByLibrary.simpleMessage("Margem ano atual"),
         "cliente_alrededor_porcentajeAbonos":

@@ -24,9 +24,9 @@ import '../../features/articulos/presentation/show/articulo_ventas_cliente_page.
 import '../../features/articulos/presentation/show/articulo_ventas_mes_page.dart';
 import '../../features/catalogos/presentation/catalogo_list_page.dart';
 import '../../features/catalogos/presentation/catalogo_pdf_viewer.dart';
-import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/index/cliente_lista_page.dart';
 import '../../features/cliente/presentation/show/cliente_adjunto_page.dart';
+import '../../features/cliente/presentation/show/cliente_contacto_edit_page.dart';
 import '../../features/cliente/presentation/show/cliente_contacto_list_page.dart';
 import '../../features/cliente/presentation/show/cliente_descuento_page.dart';
 import '../../features/cliente/presentation/show/cliente_direccion_edit_page.dart';

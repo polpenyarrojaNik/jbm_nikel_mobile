@@ -7,7 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/error_message_widget.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/core/routing/app_auto_router.dart';
-import 'package:jbm_nikel_mobile/src/features/cliente/domain/cliente.dart';
+import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/cliente_alrededor.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/domain/get_cliente_alrededor_arg.dart';
 import 'package:jbm_nikel_mobile/src/features/cliente_alrededor/infrastructure/cliente_alrededor_repository.dart';
 
@@ -26,12 +26,15 @@ class ClientesAlrededorPage extends ConsumerStatefulWidget {
 }
 
 class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
-  double radiusKm = 10000;
+  late double radiusKm;
+
+  late bool showDireccionesEnvio;
 
   @override
   void initState() {
     super.initState();
     radiusKm = 10000;
+    showDireccionesEnvio = false;
   }
 
   @override
@@ -46,9 +49,17 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
           children: [
             GoogleMapsContainer(
               radiusKm: radiusKm,
-              currentLatLng: LatLng(position.latitude, position.longitude),
+              currentLatLng: LatLng(
+                position.latitude,
+                position.longitude,
+              ),
+              showDireccionesEnvio: showDireccionesEnvio,
             ),
-            SliderKm(
+            _CheckboxDireccionesEnvio(
+              onShowDireccionesEnvioChanged: (_) => onChangeDireccionesEnvio(),
+              showDireccionesEnvio: showDireccionesEnvio,
+            ),
+            _SliderKm(
               onSliderChanged: (radiusKm) => onSliderChanged(radiusKm),
               radiusKm: radiusKm,
             )
@@ -70,6 +81,12 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
     );
   }
 
+  void onChangeDireccionesEnvio() {
+    setState(() {
+      showDireccionesEnvio = !showDireccionesEnvio;
+    });
+  }
+
   void onSliderChanged(double value) {
     setState(() {
       value = (value == 0) ? 1 : value;
@@ -80,10 +97,14 @@ class _ClientesAlrededorPageState extends ConsumerState<ClientesAlrededorPage> {
 
 class GoogleMapsContainer extends ConsumerStatefulWidget {
   const GoogleMapsContainer(
-      {super.key, required this.radiusKm, required this.currentLatLng});
+      {super.key,
+      required this.radiusKm,
+      required this.currentLatLng,
+      required this.showDireccionesEnvio});
 
   final double radiusKm;
   final LatLng currentLatLng;
+  final bool showDireccionesEnvio;
 
   @override
   ConsumerState<GoogleMapsContainer> createState() =>
@@ -107,9 +128,12 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
   @override
   Widget build(BuildContext context) {
     final stateMarkers = ref.watch(
-      clientesAlrededorListStream(
+      clientesDireccionesAlrededorListStream(
         GetClienteAlrededorArg(
-            latLng: mapLatLng!, radiusDistance: widget.radiusKm),
+          latLng: mapLatLng!,
+          radiusDistance: widget.radiusKm,
+          showDireccionesEnvio: widget.showDireccionesEnvio,
+        ),
       ),
     );
     final circle = createCircleInCurrentPosition(
@@ -167,20 +191,22 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
     );
   }
 
-  Set<Marker> createMarkerSet(List<Cliente> clientesAlrededorList) {
-    return clientesAlrededorList
+  Set<Marker> createMarkerSet(List<ClienteAlrededor> clienteAlrededorList) {
+    return clienteAlrededorList
         .map(
           (c) => Marker(
-            markerId: MarkerId(c.id),
-            position: LatLng(c.latitudFiscal, c.longitudFiscal),
+            markerId: MarkerId(c.markerId),
+            position: LatLng(c.latitud, c.longitud),
             icon: BitmapDescriptor.defaultMarkerWithHue(
-              (c.clientePotencial ?? false)
+              (c.isClientePotencial ?? false)
                   ? BitmapDescriptor.hueYellow
-                  : BitmapDescriptor.hueGreen,
+                  : (c.isDireccionFiscal)
+                      ? BitmapDescriptor.hueGreen
+                      : BitmapDescriptor.hueCyan,
             ),
             onTap: () => showDialog(
               context: context,
-              builder: (ctx) => ClienteAlrededorDialog(cliente: c),
+              builder: (ctx) => _ClienteAlrededorDialog(clienteAlrededor: c),
             ),
           ),
         )
@@ -198,7 +224,8 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
     }
   }
 
-  Set<Marker> setMarkerList({required List<Cliente> clientesAlrededorList}) {
+  Set<Marker> setMarkerList(
+      {required List<ClienteAlrededor> clientesAlrededorList}) {
     final markerList = createMarkerSet(clientesAlrededorList);
 
     if (mapLatLng!.latitude.toStringAsFixed(4) !=
@@ -216,9 +243,8 @@ class _GoogleMapsContainerState extends ConsumerState<GoogleMapsContainer> {
   }
 }
 
-class SliderKm extends StatelessWidget {
-  const SliderKm(
-      {super.key, required this.onSliderChanged, required this.radiusKm});
+class _SliderKm extends StatelessWidget {
+  const _SliderKm({required this.onSliderChanged, required this.radiusKm});
 
   final Function(double value) onSliderChanged;
   final double radiusKm;
@@ -266,10 +292,48 @@ class SliderKm extends StatelessWidget {
   }
 }
 
-class ClienteAlrededorDialog extends StatelessWidget {
-  const ClienteAlrededorDialog({super.key, required this.cliente});
+class _CheckboxDireccionesEnvio extends StatelessWidget {
+  const _CheckboxDireccionesEnvio(
+      {required this.showDireccionesEnvio,
+      required this.onShowDireccionesEnvioChanged});
 
-  final Cliente cliente;
+  final bool showDireccionesEnvio;
+  final Function(bool value) onShowDireccionesEnvioChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 8,
+      right: 8,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.background,
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(width: 0.5),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(S.of(context).cliente_alrededor_direccionesEnvio),
+              gapW8,
+              Switch(
+                value: showDireccionesEnvio,
+                onChanged: (_) => onShowDireccionesEnvioChanged(_),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _ClienteAlrededorDialog extends StatelessWidget {
+  const _ClienteAlrededorDialog({required this.clienteAlrededor});
+
+  final ClienteAlrededor clienteAlrededor;
 
   @override
   Widget build(BuildContext context) {
@@ -278,13 +342,13 @@ class ClienteAlrededorDialog extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              cliente.nombreCliente,
+              clienteAlrededor.nombre,
             ),
           ),
           gapW4,
           IconButton(
-            onPressed: () =>
-                context.router.push(ClienteDetalleRoute(clienteId: cliente.id)),
+            onPressed: () => context.router.push(
+                ClienteDetalleRoute(clienteId: clienteAlrededor.clienteId)),
             icon: const Icon(Icons.info),
           )
         ],
@@ -293,41 +357,42 @@ class ClienteAlrededorDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('#${cliente.id} ${cliente.nombreFiscal}'),
+          Text('#${clienteAlrededor.clienteId} ${clienteAlrededor.nombre}'),
           gapH2,
           Text(
-            cliente.direccionFiscal1 ?? '',
+            clienteAlrededor.direccion ?? '',
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   color: Theme.of(context).textTheme.bodySmall!.color,
                 ),
           ),
           gapH2,
           AddressTextWidget(
-              codigoPostal: cliente.codigoPostalFiscal,
-              poblacion: cliente.poblacionFiscal,
-              provincia: cliente.provinciaFiscal,
-              pais: cliente.paisFiscal),
-          if (cliente.representante1Nombre != null) gapH2,
-          if (cliente.representante1Nombre != null)
+              codigoPostal: clienteAlrededor.codigoPostal,
+              poblacion: clienteAlrededor.poblacion,
+              provincia: clienteAlrededor.provincia,
+              pais: clienteAlrededor.pais),
+          if (clienteAlrededor.nombreRepresentante1 != null) gapH2,
+          if (clienteAlrededor.nombreRepresentante1 != null)
             RowFieldTextDetalle(
                 fieldTitleValue:
                     S.of(context).cliente_show_clienteDetalle_comercial1,
-                value: cliente.representante1Nombre!),
-          if (cliente.representante1Nombre != null) gapH2,
-          if (cliente.representante2Nombre != null)
+                value: clienteAlrededor.nombreRepresentante1!),
+          if (clienteAlrededor.nombreRepresentante1 != null) gapH2,
+          if (clienteAlrededor.nombreRepresentante2 != null)
             RowFieldTextDetalle(
                 fieldTitleValue:
                     S.of(context).cliente_show_clienteDetalle_comercial2,
-                value: cliente.representante2Nombre),
+                value: clienteAlrededor.nombreRepresentante2),
           const Divider(),
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_ventasAnoActual,
               value: formatPrecios(
-                  precio: cliente.ventasAnyoActual, tipoPrecio: null)),
+                  precio: clienteAlrededor.ventasAnyoActual, tipoPrecio: null)),
           gapH2,
           RowFieldTextDetalle(
               fieldTitleValue: S.of(context).cliente_alrededor_porcentajeAbonos,
-              value: '${numberFormatDecimal(cliente.porcentajeAbonos)}%'),
+              value:
+                  '${numberFormatDecimal(clienteAlrededor.porcentajeAbonos)}%'),
         ],
       ),
     );

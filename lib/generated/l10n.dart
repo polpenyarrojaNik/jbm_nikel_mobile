@@ -2154,6 +2154,16 @@ class S {
     );
   }
 
+  /// `Shipping addresses`
+  String get cliente_alrededor_direccionesEnvio {
+    return Intl.message(
+      'Shipping addresses',
+      name: 'cliente_alrededor_direccionesEnvio',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sales orders`
   String get pedido_index_titulo {
     return Intl.message(

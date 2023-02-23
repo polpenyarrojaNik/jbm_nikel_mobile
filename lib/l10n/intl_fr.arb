@@ -54,6 +54,7 @@
   "cliente_alrededor_porcentajeAbonos": "Pourcentage d'avoirs",
   "cliente_alrededor_titulo": "Clients aux alentours",
   "cliente_alrededor_ventasAnoActual": "Ventes de l'année actuelle",
+  "cliente_alrededor_direccionesEnvio": "Adresses d'envois",
   "cliente_index_buscarClientes": "Chercher des clients…",
   "cliente_index_titulo": "Clients ",
   "cliente_show_clienteAdjunto_abriendoArchivo": "Ouverture du fichier…",
