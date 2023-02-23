@@ -121,7 +121,6 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-<<<<<<< HEAD
     ClienteContactoEditRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteContactoEditRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -133,8 +132,6 @@ class _$AppRouter extends RootStackRouter {
         fullscreenDialog: true,
       );
     },
-=======
->>>>>>> main
     ClienteDescuentoRoute.name: (routeData) {
       final args = routeData.argsAs<ClienteDescuentoRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -518,6 +515,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           ClienteContactoListRoute.name,
           path: '/cliente/:id/contactos',
+        ),
+        RouteConfig(
+          ClienteContactoEditRoute.name,
+          path: '/cliente/:id/contactos/:contactoId',
         ),
         RouteConfig(
           ClienteDescuentoRoute.name,
@@ -993,7 +994,6 @@ class ClienteContactoListRouteArgs {
 }
 
 /// generated route for
-<<<<<<< HEAD
 /// [ClienteContactoEditPage]
 class ClienteContactoEditRoute
     extends PageRouteInfo<ClienteContactoEditRouteArgs> {
@@ -1029,8 +1029,6 @@ class ClienteContactoEditRouteArgs {
 }
 
 /// generated route for
-=======
->>>>>>> main
 /// [ClienteDescuentoPage]
 class ClienteDescuentoRoute extends PageRouteInfo<ClienteDescuentoRouteArgs> {
   ClienteDescuentoRoute({
