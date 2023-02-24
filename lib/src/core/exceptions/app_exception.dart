@@ -43,8 +43,9 @@ class AppException with _$AppException {
 class AppExceptionData {
   final String code;
   final String message;
+  final int? statusCode;
 
-  AppExceptionData(this.code, this.message);
+  AppExceptionData(this.code, this.message, {this.statusCode});
 
   @override
   String toString() => 'AppExceptionData(code: $code, message: $message';
@@ -58,6 +59,7 @@ extension AppExceptionDetalles on AppException {
         'Error authenticating $errorMessage',
       ),
       restApiFailure: (errorCode, errorMessage) => AppExceptionData(
+        statusCode: errorCode,
         'rest-api-failure',
         'API ERROR: $errorCode: $errorMessage',
       ),

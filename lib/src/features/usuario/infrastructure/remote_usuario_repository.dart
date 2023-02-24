@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/exceptions/get_api_error.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
 
 import '../../../core/exceptions/app_exception.dart';
@@ -94,19 +95,8 @@ class RemoteUsuarioRepository {
               'Internet Error',
         );
       }
-    } on DioError catch (e) {
-      if (e.response != null) {
-        throw AppException.restApiFailure(
-          e.response?.statusCode ?? 400,
-          e.response?.data['detail'] ??
-              e.response?.data['message'] ??
-              'Internet Error',
-        );
-      } else {
-        rethrow;
-      }
     } catch (e) {
-      rethrow;
+      throw getApiError(e);
     }
   }
 }

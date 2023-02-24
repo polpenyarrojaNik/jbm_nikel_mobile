@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/local_usuario_repository.dart';
 import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/remote_usuario_repository.dart';
+import 'package:jbm_nikel_mobile/src/features/usuario/infrastructure/usuario_dto.dart';
 
 import '../domain/usuario.dart';
 
@@ -20,7 +22,11 @@ class UsuarioService {
   UsuarioService(this._localUsuarioRepository, this._remoteUsuarioRepository);
 
   Future<Usuario?> getSignedInUsuario() async {
-    final storedCredentials = await _localUsuarioRepository.read();
+    UsuarioDTO? storedCredentials = await _localUsuarioRepository.read();
+
+    if (storedCredentials?.isExpired ?? false) {
+      return await refresh();
+    }
 
     return storedCredentials?.toDomain();
   }
@@ -43,13 +49,24 @@ class UsuarioService {
   Future<Usuario?> refresh() async {
     try {
       final storedCredentials = await _localUsuarioRepository.read();
-      if (storedCredentials != null && storedCredentials.canRefresh) {
-        final refreshedUsuarioDTO =
-            await _remoteUsuarioRepository.refresh(storedCredentials);
-        await _localUsuarioRepository.save(refreshedUsuarioDTO);
-        return refreshedUsuarioDTO.toDomain();
+
+      try {
+        if (storedCredentials != null && storedCredentials.canRefresh) {
+          final refreshedUsuarioDTO =
+              await _remoteUsuarioRepository.refresh(storedCredentials);
+          await _localUsuarioRepository.save(refreshedUsuarioDTO);
+          return refreshedUsuarioDTO.toDomain();
+        }
+        return null;
+      } on AppException catch (e) {
+        if (e.details.statusCode == 400) {
+          return null;
+        } else {
+          return storedCredentials?.toDomain();
+        }
+      } catch (e) {
+        return storedCredentials?.toDomain();
       }
-      return null;
     } catch (e) {
       return null;
     }
