@@ -416,14 +416,14 @@ class VisitaRepository {
       required String searchText,
       String? clienteId}) async {
     final query = _remoteDb.select(_remoteDb.visitaTable).join([
-      leftOuterJoin(
+      innerJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
-      leftOuterJoin(
+      innerJoin(
         _remoteDb.clienteUsuarioTable,
         _remoteDb.clienteUsuarioTable.clienteId
-            .equalsExp(_remoteDb.clienteTable.id),
+            .equalsExp(_remoteDb.visitaTable.clienteId),
       )
     ]);
 
@@ -492,14 +492,14 @@ class VisitaRepository {
     final countExp = _remoteDb.visitaTable.id.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.visitaTable).join([
-      leftOuterJoin(
+      innerJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
-      leftOuterJoin(
+      innerJoin(
         _remoteDb.clienteUsuarioTable,
         _remoteDb.clienteUsuarioTable.clienteId
-            .equalsExp(_remoteDb.clienteTable.id),
+            .equalsExp(_remoteDb.visitaTable.clienteId),
       )
     ]);
 
