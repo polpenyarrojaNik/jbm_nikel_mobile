@@ -633,6 +633,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edit visit"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("New visit"),
+        "visitas_edit_visitaEditar_validatorExisitingEmail":
+            MessageLookupByLibrary.simpleMessage(""),
+        "visitas_edit_visitaEditar_validatorExisitingPhone":
+            MessageLookupByLibrary.simpleMessage(""),
         "visitas_edit_visitaEditar_validatorExistEmailMessage":
             MessageLookupByLibrary.simpleMessage(
                 "Exist a customer with this email.\nAre you sure that you want to save visit anyway?"),

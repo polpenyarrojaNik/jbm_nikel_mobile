@@ -83,7 +83,7 @@ Future<bool?> showDialogSaveVisitAnyway(
         BuildContext context, String contentText) =>
     showAlertDialog(
       context: context,
-      title: S.of(context).visitas_edit_visitaEditar_validatorExistEmailMessage,
+      title: S.of(context).commonWidgets_visitDialogue_saving,
       content: contentText,
       defaultActionText: S.of(context).yes,
       cancelActionText: S.of(context).no,

@@ -444,9 +444,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Elimina"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Ultima sincronizzazione"),
+        "commonWidgets_visitDialogue_saving":
+            MessageLookupByLibrary.simpleMessage("Salvataggio..."),
         "familia": MessageLookupByLibrary.simpleMessage("Famiglia"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("C\'è stato un errore"),
+        "no": MessageLookupByLibrary.simpleMessage("Non"),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Brutta copia"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage("Sei sicuro che vuoi uscire?"),
@@ -646,6 +649,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Modifica visita"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nuova visita"),
+        "visitas_edit_visitaEditar_validatorExisitingEmail":
+            MessageLookupByLibrary.simpleMessage(
+                "C\'è un cliente con questa email."),
+        "visitas_edit_visitaEditar_validatorExisitingPhone":
+            MessageLookupByLibrary.simpleMessage(
+                "C\'è un cliente con questo telefono."),
+        "visitas_edit_visitaEditar_validatorExistEmailMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "C\'è un cliente con questa email.\nSei sicuro di voler salvare comunque la visita?"),
+        "visitas_edit_visitaEditar_validatorExistPhoneMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "C\'è un cliente con questo telefono.\nSei sicuro di voler salvare comunque la visita?"),
         "visitas_show_visitaDetalle_atendidoPor":
             MessageLookupByLibrary.simpleMessage("Accolto da"),
         "visitas_show_visitaDetalle_clienteProvisional":
@@ -663,6 +678,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_show_visitaDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Riepilogo"),
         "visitas_show_visitaDetalle_telefono":
-            MessageLookupByLibrary.simpleMessage("Telefono")
+            MessageLookupByLibrary.simpleMessage("Telefono"),
+        "yes": MessageLookupByLibrary.simpleMessage("Sì")
       };
 }

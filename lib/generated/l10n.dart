@@ -3343,6 +3343,26 @@ class S {
       args: [],
     );
   }
+
+  /// ``
+  String get visitas_edit_visitaEditar_validatorExisitingEmail {
+    return Intl.message(
+      '',
+      name: 'visitas_edit_visitaEditar_validatorExisitingEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get visitas_edit_visitaEditar_validatorExisitingPhone {
+    return Intl.message(
+      '',
+      name: 'visitas_edit_visitaEditar_validatorExisitingPhone',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

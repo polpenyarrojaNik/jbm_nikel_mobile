@@ -443,9 +443,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Apagar"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("última sincronização"),
+        "commonWidgets_visitDialogue_saving":
+            MessageLookupByLibrary.simpleMessage("Salvando..."),
         "familia": MessageLookupByLibrary.simpleMessage("Desc. :"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("ocorreu um erro"),
+        "no": MessageLookupByLibrary.simpleMessage("Não"),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Rascunho"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -644,6 +647,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar visita"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nova visita"),
+        "visitas_edit_visitaEditar_validatorExisitingEmail":
+            MessageLookupByLibrary.simpleMessage(
+                "Há um cliente com este e-mail."),
+        "visitas_edit_visitaEditar_validatorExisitingPhone":
+            MessageLookupByLibrary.simpleMessage(
+                "Há um cliente com este telefone."),
+        "visitas_edit_visitaEditar_validatorExistEmailMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Há um cliente com este e-mail.\nTem certeza de que deseja salvar a visita mesmo assim?"),
+        "visitas_edit_visitaEditar_validatorExistPhoneMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Há um cliente com este telefone.\nTem certeza de que deseja salvar a visita mesmo assim?"),
         "visitas_show_visitaDetalle_atendidoPor":
             MessageLookupByLibrary.simpleMessage("Com a presença de"),
         "visitas_show_visitaDetalle_clienteProvisional":
@@ -661,6 +676,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_show_visitaDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Resume"),
         "visitas_show_visitaDetalle_telefono":
-            MessageLookupByLibrary.simpleMessage("Telefone")
+            MessageLookupByLibrary.simpleMessage("Telefone"),
+        "yes": MessageLookupByLibrary.simpleMessage("Sim")
       };
 }
