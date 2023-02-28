@@ -200,6 +200,16 @@ class S {
     );
   }
 
+  /// `Saving...`
+  String get commonWidgets_visitDialogue_saving {
+    return Intl.message(
+      'Saving...',
+      name: 'commonWidgets_visitDialogue_saving',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Downloading initial database...\n\nThis process is done only once and can take several minutes depending on your Internet connection.`
   String get splash_descargandoBaseDeDatos {
     return Intl.message(
@@ -3194,6 +3204,26 @@ class S {
     );
   }
 
+  /// `Exist a customer with this phone.\nAre you sure that you want to save visit anyway?`
+  String get visitas_edit_visitaEditar_validatorExistPhoneMessage {
+    return Intl.message(
+      'Exist a customer with this phone.\nAre you sure that you want to save visit anyway?',
+      name: 'visitas_edit_visitaEditar_validatorExistPhoneMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exist a customer with this email.\nAre you sure that you want to save visit anyway?`
+  String get visitas_edit_visitaEditar_validatorExistEmailMessage {
+    return Intl.message(
+      'Exist a customer with this email.\nAre you sure that you want to save visit anyway?',
+      name: 'visitas_edit_visitaEditar_validatorExistEmailMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Articile`
   String get articulo {
     return Intl.message(
@@ -3289,6 +3319,26 @@ class S {
     return Intl.message(
       '',
       name: 'pedido_index_provisional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
       desc: '',
       args: [],
     );

@@ -589,4 +589,28 @@ class VisitaRepository {
       rethrow;
     }
   }
+
+  Future<bool> existClientePotencialPhone(String phoneValue) async {
+    try {
+      final visitasList = await (_remoteDb.select(_remoteDb.visitaTable)
+            ..where((tbl) => tbl.clienteProvisionalTelefono.equals(phoneValue)))
+          .get();
+
+      return visitasList.isNotEmpty;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> existClientePotencialEmail(String emailValue) async {
+    try {
+      final visitasList = await (_remoteDb.select(_remoteDb.visitaTable)
+            ..where((tbl) => tbl.clienteProvisionalEmail.equals(emailValue)))
+          .get();
+
+      return visitasList.isNotEmpty;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

@@ -432,9 +432,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Delete"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Last sync"),
+        "commonWidgets_visitDialogue_saving":
+            MessageLookupByLibrary.simpleMessage("Saving..."),
         "familia": MessageLookupByLibrary.simpleMessage("Family"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("An error occurred"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Draft"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -630,6 +633,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edit visit"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("New visit"),
+        "visitas_edit_visitaEditar_validatorExistEmailMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Exist a customer with this email.\nAre you sure that you want to save visit anyway?"),
+        "visitas_edit_visitaEditar_validatorExistPhoneMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Exist a customer with this phone.\nAre you sure that you want to save visit anyway?"),
         "visitas_show_visitaDetalle_atendidoPor":
             MessageLookupByLibrary.simpleMessage("Attended by"),
         "visitas_show_visitaDetalle_clienteProvisional":
@@ -647,6 +656,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_show_visitaDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Summary"),
         "visitas_show_visitaDetalle_telefono":
-            MessageLookupByLibrary.simpleMessage("Phone")
+            MessageLookupByLibrary.simpleMessage("Phone"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

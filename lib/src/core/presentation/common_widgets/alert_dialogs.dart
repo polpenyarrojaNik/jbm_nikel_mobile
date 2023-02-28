@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
+
 const kDialogDefaultKey = Key('dialog-default-key');
 
 /// Generic function to show a platform-aware Material or Cupertino dialog
@@ -75,4 +77,14 @@ Future<void> showNotImplementedAlertDialog({required BuildContext context}) =>
     showAlertDialog(
       context: context,
       title: 'Not implemented',
+    );
+
+Future<bool?> showDialogSaveVisitAnyway(
+        BuildContext context, String contentText) =>
+    showAlertDialog(
+      context: context,
+      title: S.of(context).visitas_edit_visitaEditar_validatorExistEmailMessage,
+      content: contentText,
+      defaultActionText: S.of(context).yes,
+      cancelActionText: S.of(context).no,
     );

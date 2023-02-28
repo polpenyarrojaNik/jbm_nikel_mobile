@@ -14,6 +14,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../core/exceptions/app_exception.dart';
+import '../../../../core/presentation/common_widgets/alert_dialogs.dart';
 import '../../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../../core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -184,6 +185,15 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
 
   void saveForm() async {
     if (formKey.currentState!.saveAndValidate()) {
+      if (isClientePotencial) {
+        final contiueToSavingVisit = await _checkClientePotencialValues(
+            formKey.currentState!.value['telefono'] as String?,
+            formKey.currentState!.value['email'] as String?);
+        if (!contiueToSavingVisit) {
+          return;
+        }
+      }
+
       ref
           .read(visitaEditPageControllerProvider(visitaIdLocalParam!).notifier)
           .upsertVisita(
@@ -226,6 +236,40 @@ class _VisitaEditPageState extends ConsumerState<VisitaEditPage> {
             S.of(context).visitas_edit_visitaEditar_errorValidarFormulario),
       );
     }
+  }
+
+  Future<bool> _checkClientePotencialValues(
+      String? telefono, String? email) async {
+    if (telefono != null) {
+      final existTelefono = await ref
+          .read(visitaRepositoryProvider)
+          .existClientePotencialPhone(telefono);
+      if (existTelefono) {
+        final dialogPhoneResult = await showDialogSaveVisitAnyway(context,
+            S.current.visitas_edit_visitaEditar_validatorExistPhoneMessage);
+
+        if (dialogPhoneResult == null || !dialogPhoneResult) {
+          return false;
+        }
+      }
+    }
+
+    if (email != null) {
+      final existEmail = await ref
+          .read(visitaRepositoryProvider)
+          .existClientePotencialEmail(email);
+
+      if (existEmail) {
+        final dialogEmailResult = await showDialogSaveVisitAnyway(context,
+            S.current.visitas_edit_visitaEditar_validatorExistEmailMessage);
+
+        if (dialogEmailResult == null || !dialogEmailResult) {
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 }
 
@@ -376,7 +420,7 @@ class _ClienteProvisionalContainer extends StatelessWidget {
         ),
         FormBuilderTextField(
           name: 'email',
-          onChanged: onChanged,
+          onChanged: (_) => onChanged(_),
           initialValue: visita?.clienteProvisionalEmail,
           enabled: !readOnly,
           keyboardType: TextInputType.emailAddress,
@@ -389,7 +433,7 @@ class _ClienteProvisionalContainer extends StatelessWidget {
         ),
         FormBuilderTextField(
           name: 'telefono',
-          onChanged: onChanged,
+          onChanged: (_) => onChanged,
           initialValue: visita?.clienteProvisionalTelefono,
           enabled: !readOnly,
           keyboardType: TextInputType.phone,

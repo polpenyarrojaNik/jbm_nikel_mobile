@@ -439,9 +439,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Borrar"),
         "commonWidgets_ultimaSincronizacion":
             MessageLookupByLibrary.simpleMessage("Última sincronización"),
+        "commonWidgets_visitDialogue_saving":
+            MessageLookupByLibrary.simpleMessage("Guardando..."),
         "familia": MessageLookupByLibrary.simpleMessage("Familia"),
         "haOcurridoUnError":
             MessageLookupByLibrary.simpleMessage("Ha ocurrido un error"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "pedido_borrador": MessageLookupByLibrary.simpleMessage("Borrador"),
         "pedido_edit_askPopAlertDialog_seguroQuieresSales":
             MessageLookupByLibrary.simpleMessage(
@@ -639,6 +642,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar visita"),
         "visitas_edit_visitaEditar_titleNueva":
             MessageLookupByLibrary.simpleMessage("Nueva visita"),
+        "visitas_edit_visitaEditar_validatorExistEmailMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Existe un cliente con este email.\nEstás seguro que quieres guardar la visita de todos modos?"),
+        "visitas_edit_visitaEditar_validatorExistPhoneMessage":
+            MessageLookupByLibrary.simpleMessage(
+                "Existe un cliente con este teléfono.\nEstás seguro que quieres guardar la visita de todos modos?"),
         "visitas_show_visitaDetalle_atendidoPor":
             MessageLookupByLibrary.simpleMessage("Atendido por"),
         "visitas_show_visitaDetalle_clienteProvisional":
@@ -656,6 +665,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "visitas_show_visitaDetalle_resumen":
             MessageLookupByLibrary.simpleMessage("Resumen"),
         "visitas_show_visitaDetalle_telefono":
-            MessageLookupByLibrary.simpleMessage("Teléfono")
+            MessageLookupByLibrary.simpleMessage("Teléfono"),
+        "yes": MessageLookupByLibrary.simpleMessage("Sí")
       };
 }
