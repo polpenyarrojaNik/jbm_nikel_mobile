@@ -602,7 +602,14 @@ class VisitaRepository {
             ..where((tbl) => tbl.clienteProvisionalTelefono.equals(phoneValue)))
           .get();
 
-      return visitasList.isNotEmpty;
+      final clienteContactoList =
+          await (_remoteDb.select(_remoteDb.clienteContactoTable)
+                ..where((tbl) =>
+                    tbl.telefono1.equals(phoneValue) |
+                    tbl.telefono2.equals(phoneValue)))
+              .get();
+
+      return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
     } catch (e) {
       rethrow;
     }
@@ -614,7 +621,12 @@ class VisitaRepository {
             ..where((tbl) => tbl.clienteProvisionalEmail.equals(emailValue)))
           .get();
 
-      return visitasList.isNotEmpty;
+      final clienteContactoList =
+          await (_remoteDb.select(_remoteDb.clienteContactoTable)
+                ..where((tbl) => tbl.email.equals(emailValue)))
+              .get();
+
+      return visitasList.isNotEmpty || clienteContactoList.isNotEmpty;
     } catch (e) {
       rethrow;
     }
