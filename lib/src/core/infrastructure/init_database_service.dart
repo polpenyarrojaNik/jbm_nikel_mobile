@@ -72,6 +72,24 @@ class InitDatabaseService {
     }
   }
 
+  Future<bool> existDatabase() async {
+    try {
+      final Directory directory = await getApplicationDocumentsDirectory();
+
+      if (await _getSchemaVersionFromPreferences() == databaseRelease &&
+          await _databaseFileExist(directory: directory)) {
+        return true;
+      } else {
+        return false;
+      }
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<bool> _databaseFileExist({required Directory directory}) async {
     return await File((join(directory.path, remoteDatabaseName))).exists();
   }

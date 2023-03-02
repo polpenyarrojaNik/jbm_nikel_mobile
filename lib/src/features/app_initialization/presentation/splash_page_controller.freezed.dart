@@ -19,6 +19,7 @@ mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadDatabase,
+    required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
@@ -28,6 +29,7 @@ mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
@@ -37,6 +39,7 @@ mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadDatabase,
+    TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
@@ -47,6 +50,7 @@ mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
     required TResult Function(_initial value) initial,
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
@@ -56,6 +60,7 @@ mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
     TResult? Function(_initial value)? initial,
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
@@ -65,6 +70,7 @@ mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
     TResult Function(_initial value)? initial,
     TResult Function(_notDownloaded value)? notDownloaded,
     TResult Function(_error value)? error,
@@ -140,6 +146,7 @@ class _$_downloadDatabase extends _downloadDatabase
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadDatabase,
+    required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
@@ -152,6 +159,7 @@ class _$_downloadDatabase extends _downloadDatabase
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
@@ -164,6 +172,7 @@ class _$_downloadDatabase extends _downloadDatabase
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadDatabase,
+    TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
@@ -180,6 +189,7 @@ class _$_downloadDatabase extends _downloadDatabase
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
     required TResult Function(_initial value) initial,
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
@@ -192,6 +202,7 @@ class _$_downloadDatabase extends _downloadDatabase
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
     TResult? Function(_initial value)? initial,
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
@@ -204,6 +215,7 @@ class _$_downloadDatabase extends _downloadDatabase
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
     TResult Function(_initial value)? initial,
     TResult Function(_notDownloaded value)? notDownloaded,
     TResult Function(_error value)? error,
@@ -220,6 +232,139 @@ class _$_downloadDatabase extends _downloadDatabase
 abstract class _downloadDatabase extends SplashControllerState {
   const factory _downloadDatabase() = _$_downloadDatabase;
   const _downloadDatabase._() : super._();
+}
+
+/// @nodoc
+abstract class _$$_loadingCopyWith<$Res> {
+  factory _$$_loadingCopyWith(
+          _$_loading value, $Res Function(_$_loading) then) =
+      __$$_loadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_loadingCopyWithImpl<$Res>
+    extends _$SplashControllerStateCopyWithImpl<$Res, _$_loading>
+    implements _$$_loadingCopyWith<$Res> {
+  __$$_loadingCopyWithImpl(_$_loading _value, $Res Function(_$_loading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_loading extends _loading with DiagnosticableTreeMixin {
+  const _$_loading() : super._();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SplashControllerState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'SplashControllerState.loading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() downloadDatabase,
+    required TResult Function() loading,
+    required TResult Function() initial,
+    required TResult Function() notDownloaded,
+    required TResult Function(Object error, StackTrace? stackTrace) error,
+    required TResult Function() data,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
+    TResult? Function()? initial,
+    TResult? Function()? notDownloaded,
+    TResult? Function(Object error, StackTrace? stackTrace)? error,
+    TResult? Function()? data,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? downloadDatabase,
+    TResult Function()? loading,
+    TResult Function()? initial,
+    TResult Function()? notDownloaded,
+    TResult Function(Object error, StackTrace? stackTrace)? error,
+    TResult Function()? data,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
+    required TResult Function(_initial value) initial,
+    required TResult Function(_notDownloaded value) notDownloaded,
+    required TResult Function(_error value) error,
+    required TResult Function(_data value) data,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_initial value)? initial,
+    TResult? Function(_notDownloaded value)? notDownloaded,
+    TResult? Function(_error value)? error,
+    TResult? Function(_data value)? data,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
+    TResult Function(_initial value)? initial,
+    TResult Function(_notDownloaded value)? notDownloaded,
+    TResult Function(_error value)? error,
+    TResult Function(_data value)? data,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _loading extends SplashControllerState {
+  const factory _loading() = _$_loading;
+  const _loading._() : super._();
 }
 
 /// @nodoc
@@ -267,6 +412,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadDatabase,
+    required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
@@ -279,6 +425,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
@@ -291,6 +438,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadDatabase,
+    TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
@@ -307,6 +455,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
     required TResult Function(_initial value) initial,
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
@@ -319,6 +468,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
     TResult? Function(_initial value)? initial,
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
@@ -331,6 +481,7 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
     TResult Function(_initial value)? initial,
     TResult Function(_notDownloaded value)? notDownloaded,
     TResult Function(_error value)? error,
@@ -395,6 +546,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadDatabase,
+    required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
@@ -407,6 +559,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
@@ -419,6 +572,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadDatabase,
+    TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
@@ -435,6 +589,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
     required TResult Function(_initial value) initial,
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
@@ -447,6 +602,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
     TResult? Function(_initial value)? initial,
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
@@ -459,6 +615,7 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
     TResult Function(_initial value)? initial,
     TResult Function(_notDownloaded value)? notDownloaded,
     TResult Function(_error value)? error,
@@ -556,6 +713,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadDatabase,
+    required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
@@ -568,6 +726,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
@@ -580,6 +739,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadDatabase,
+    TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
@@ -596,6 +756,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
     required TResult Function(_initial value) initial,
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
@@ -608,6 +769,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
     TResult? Function(_initial value)? initial,
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
@@ -620,6 +782,7 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
     TResult Function(_initial value)? initial,
     TResult Function(_notDownloaded value)? notDownloaded,
     TResult Function(_error value)? error,
@@ -688,6 +851,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadDatabase,
+    required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
@@ -700,6 +864,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? downloadDatabase,
+    TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
@@ -712,6 +877,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadDatabase,
+    TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
     TResult Function(Object error, StackTrace? stackTrace)? error,
@@ -728,6 +894,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_downloadDatabase value) downloadDatabase,
+    required TResult Function(_loading value) loading,
     required TResult Function(_initial value) initial,
     required TResult Function(_notDownloaded value) notDownloaded,
     required TResult Function(_error value) error,
@@ -740,6 +907,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_downloadDatabase value)? downloadDatabase,
+    TResult? Function(_loading value)? loading,
     TResult? Function(_initial value)? initial,
     TResult? Function(_notDownloaded value)? notDownloaded,
     TResult? Function(_error value)? error,
@@ -752,6 +920,7 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_downloadDatabase value)? downloadDatabase,
+    TResult Function(_loading value)? loading,
     TResult Function(_initial value)? initial,
     TResult Function(_notDownloaded value)? notDownloaded,
     TResult Function(_error value)? error,

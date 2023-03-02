@@ -72,6 +72,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             ],
           ),
           orElse: () => Container(),
+          loading: () => const Center(child: CircularProgressIndicator()),
           error: (e, _) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -15,6 +15,7 @@ final splashPageControllerProvider = StateNotifierProvider.autoDispose<
 class SplashControllerState with _$SplashControllerState {
   const SplashControllerState._();
   const factory SplashControllerState.downloadDatabase() = _downloadDatabase;
+  const factory SplashControllerState.loading() = _loading;
 
   const factory SplashControllerState.initial() = _initial;
   const factory SplashControllerState.notDownloaded() = _notDownloaded;
@@ -34,9 +35,16 @@ class SplashPageController extends StateNotifier<SplashControllerState> {
 
   Future<void> initializeApp() async {
     try {
-      state = const SplashControllerState.downloadDatabase();
+      state = const SplashControllerState.loading();
+
+      final existDatabase = await _initDatabaseService.existDatabase();
+
       try {
-        await _initDatabaseService.downloadInitDatabase();
+        if (!existDatabase) {
+          state = const SplashControllerState.downloadDatabase();
+
+          await _initDatabaseService.downloadInitDatabase();
+        }
       } catch (e) {
         rethrow;
       }
