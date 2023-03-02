@@ -4,7 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/exceptions/app_exception.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../core/application/log_service.dart';
 
 final settingsRepositoryProvider = Provider.autoDispose<SettingsRepository>(
   (ref) {
@@ -44,5 +47,38 @@ class SettingsRepository {
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }
+  }
+
+  Future<void> deleteRemoteDatabase() async {
+    const remoteDatabaseName = 'jbm.sqlite';
+    const remoteDatabaseJournalName = 'jbm.sqlite-journal';
+
+    try {
+      final Directory directory = await getApplicationDocumentsDirectory();
+      if (await _databaseFileExist(
+          directory: directory, remoteDatabaseName: remoteDatabaseName)) {
+        File((join(directory.path, remoteDatabaseName)))
+            .deleteSync(recursive: true);
+      }
+      if (await _databaseFileExist(
+          directory: directory,
+          remoteDatabaseName: remoteDatabaseJournalName)) {
+        File((join(directory.path, remoteDatabaseJournalName)))
+            .deleteSync(recursive: true);
+      }
+
+      await localDb.delete(localDb.syncDateTimeTable).go();
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<bool> _databaseFileExist(
+      {required Directory directory,
+      required String remoteDatabaseName}) async {
+    return await File((join(directory.path, remoteDatabaseName))).exists();
   }
 }

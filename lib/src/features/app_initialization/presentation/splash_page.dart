@@ -38,9 +38,11 @@ class _SplashPageState extends ConsumerState<SplashPage> {
             ref
                 .read(syncNotifierProvider.notifier)
                 .syncAllInCompute(initAppProcess: true);
-            context.router.replace(
-              ArticuloListaRoute(isSearchArticuloForForm: false),
-            );
+            if (context.mounted) {
+              context.router.replace(
+                ArticuloListaRoute(isSearchArticuloForForm: false),
+              );
+            }
           },
           error: (e, _) {
             if (e is AppException) {

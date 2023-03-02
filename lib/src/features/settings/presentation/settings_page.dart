@@ -15,11 +15,11 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../core/helpers/database_helper.dart';
 import '../../../core/presentation/common_widgets/app_drawer.dart';
 import '../../../core/presentation/common_widgets/common_app_bar.dart';
 import '../../../core/presentation/common_widgets/error_message_widget.dart';
 import '../../../core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'delete_database_controller.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({super.key});
@@ -118,6 +118,18 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<DeleteDatabaseControllerState>(deleteDatabaseControllerProvider,
+        (_, state) {
+      state.maybeWhen(
+          orElse: () {},
+          data: (deleted) {
+            if (deleted) {
+              ref.invalidate(appLocalDatabaseProvider);
+              ref.invalidate(syncNotifierProvider);
+              ref.read(usuarioNotifierProvider.notifier).signOut();
+            }
+          });
+    });
     return ElevatedButton(
       onPressed: () => deleteDatabase(ref),
       child: Row(
@@ -133,9 +145,10 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
     );
   }
 
-  void deleteDatabase(WidgetRef ref) async {
+  void deleteDatabase(WidgetRef ref) {
     ref.invalidate(appRemoteDatabaseProvider);
-    await deleteRemoteDatabase();
+
+    ref.read(deleteDatabaseControllerProvider.notifier).deleteRemoteDatabase();
   }
 }
 

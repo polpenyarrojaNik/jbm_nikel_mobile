@@ -89,9 +89,11 @@ class ClienteDetallePage extends ConsumerWidget {
       ) as bool?;
       if (result ?? false) {
         ref.read(deletePedidoVentaProvider(pedidoVentaBorradorId));
-        context.router.push(
-          PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
-        );
+        if (context.mounted) {
+          context.router.push(
+            PedidoVentaEditRoute(createPedidoFromClienteId: clienteId),
+          );
+        }
       }
     } else if (pedidoVentaBorradorId != null &&
         clienteId == pedidoVentaClienteId) {

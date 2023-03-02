@@ -416,11 +416,11 @@ class VisitaRepository {
       required String searchText,
       String? clienteId}) async {
     final query = _remoteDb.select(_remoteDb.visitaTable).join([
-      innerJoin(
+      leftOuterJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
-      innerJoin(
+      leftOuterJoin(
         _remoteDb.clienteUsuarioTable,
         _remoteDb.clienteUsuarioTable.clienteId
             .equalsExp(_remoteDb.visitaTable.clienteId),
@@ -439,6 +439,7 @@ class VisitaRepository {
           predicate = (_remoteDb.visitaTable.resumen.like('%$searchText%') |
               _remoteDb.visitaTable.clienteId.like('%$searchText%') |
               _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+              _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
               _remoteDb.visitaTable.clienteProvisionalNombre
                   .like('%$searchText%') |
               _remoteDb.visitaTable.clienteProvisionalEmail
@@ -453,6 +454,7 @@ class VisitaRepository {
               (_remoteDb.visitaTable.resumen.like('%$searchText%') |
                   _remoteDb.visitaTable.clienteId.like('%$searchText%') |
                   _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
                   _remoteDb.visitaTable.clienteProvisionalNombre
                       .like('%$searchText%') |
                   _remoteDb.visitaTable.clienteProvisionalEmail
@@ -492,11 +494,11 @@ class VisitaRepository {
     final countExp = _remoteDb.visitaTable.id.count();
 
     final query = _remoteDb.selectOnly(_remoteDb.visitaTable).join([
-      innerJoin(
+      leftOuterJoin(
         _remoteDb.clienteTable,
         _remoteDb.clienteTable.id.equalsExp(_remoteDb.visitaTable.clienteId),
       ),
-      innerJoin(
+      leftOuterJoin(
         _remoteDb.clienteUsuarioTable,
         _remoteDb.clienteUsuarioTable.clienteId
             .equalsExp(_remoteDb.visitaTable.clienteId),
@@ -514,6 +516,8 @@ class VisitaRepository {
         if (predicate == null) {
           predicate = (_remoteDb.visitaTable.resumen.like('%$searchText%') |
               _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+              _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+              _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
               _remoteDb.visitaTable.clienteProvisionalNombre
                   .like('%$searchText%') |
               _remoteDb.visitaTable.clienteProvisionalEmail
@@ -527,6 +531,8 @@ class VisitaRepository {
           predicate = predicate &
               (_remoteDb.visitaTable.resumen.like('%$searchText%') |
                   _remoteDb.visitaTable.clienteId.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreCliente.like('%$searchText%') |
+                  _remoteDb.clienteTable.nombreFiscal.like('%$searchText%') |
                   _remoteDb.visitaTable.clienteProvisionalNombre
                       .like('%$searchText%') |
                   _remoteDb.visitaTable.clienteProvisionalEmail
