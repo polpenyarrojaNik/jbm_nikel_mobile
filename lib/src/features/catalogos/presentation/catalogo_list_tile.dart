@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
+import 'package:jbm_nikel_mobile/src/core/presentation/theme/app_sizes.dart';
 import 'package:jbm_nikel_mobile/src/features/catalogos/presentation/catalogo_favorito_controller.dart';
 
 import '../../../core/domain/adjunto_param.dart';
@@ -9,9 +10,11 @@ import '../domain/catalogo.dart';
 import 'catalogo_adjunto_controller.dart';
 
 class CatalogoListTile extends ConsumerWidget {
-  const CatalogoListTile({super.key, required this.catalogo});
+  const CatalogoListTile(
+      {super.key, required this.catalogo, required this.boxConstrains});
 
   final Catalogo catalogo;
+  final BoxConstraints boxConstrains;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +42,7 @@ class CatalogoListTile extends ConsumerWidget {
                   Flexible(
                     child: Text(
                       catalogo.nombre,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           color: Theme.of(context).colorScheme.primary),
                     ),
                   ),
@@ -64,25 +67,25 @@ class CatalogoListTile extends ConsumerWidget {
                   )
                 ],
               ),
-              SizedBox(
-                width: 600,
-                child: CachedNetworkImage(
-                  imageUrl: catalogo.urlFicherPortada,
-                  progressIndicatorBuilder: (context, url, progress) =>
-                      Image.asset(
-                    width: 600,
-                    fit: BoxFit.contain,
-                    'assets/image-placeholder.png',
-                  ),
-                  errorWidget: (context, error, _) =>
-                      //
-                      Image.asset(
-                    width: 600,
-                    fit: BoxFit.contain,
-                    'assets/image-placeholder.png',
-                  ),
-                  width: 600,
+              gapH8,
+              CachedNetworkImage(
+                imageUrl: catalogo.urlFicherPortada,
+                width: boxConstrains.maxWidth > 960
+                    ? boxConstrains.maxWidth / 3.5
+                    : boxConstrains.maxWidth > 350
+                        ? boxConstrains.maxWidth / 2.25
+                        : boxConstrains.maxWidth / 2.125,
+                fit: BoxFit.contain,
+                progressIndicatorBuilder: (context, url, progress) =>
+                    Image.asset(
+                  // width: 300,
                   fit: BoxFit.contain,
+                  'assets/image-placeholder.png',
+                ),
+                errorWidget: (context, error, _) => Image.asset(
+                  // width: 300,
+                  fit: BoxFit.contain,
+                  'assets/image-placeholder.png',
                 ),
               ),
             ],

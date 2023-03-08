@@ -166,6 +166,7 @@ class SyncService {
 
   Future<void> syncAllVisitasRelacionados(
       {required bool isInMainThread}) async {
+    await enviarVisitasNoEnviadas();
     await syncVisitas();
     await checkVisitasTratadas();
     if (isInMainThread) {
@@ -477,13 +478,17 @@ class SyncService {
       for (var i = 0; i < pedidosNoEnviados.length; i++) {
         final pedidoVentaLineaDTOList = await getLocalPedidoVentaLineaList(
             pedidoVentaAppId: pedidosNoEnviados[i].pedidoVentaAppId);
-        final pedidoLocalEnviado = await _remoteCreatePedidos(
-            pedidosNoEnviados[i],
-            pedidoVentaLineaDTOList
-                .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
-                .toList(),
-            _usuario!.provisionalToken);
-        await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
+        try {
+          final pedidoLocalEnviado = await _remoteCreatePedidos(
+              pedidosNoEnviados[i],
+              pedidoVentaLineaDTOList
+                  .map((e) => PedidoVentaLineaLocalDTO.fromDomain(e))
+                  .toList(),
+              _usuario!.provisionalToken);
+          await updatePedidoVentaInDB(pedidoVentaLocalDto: pedidoLocalEnviado);
+        } catch (e) {
+          print(e);
+        }
       }
     } catch (e) {
       rethrow;
@@ -839,9 +844,13 @@ class SyncService {
     try {
       final visitasNoEnviadas = await getVisitasNoEnviadas();
       for (var i = 0; i < visitasNoEnviadas.length; i++) {
-        final visitaLocalEnviada = await _remoteCreateVisita(
-            visitasNoEnviadas[i], _usuario!.provisionalToken);
-        await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
+        try {
+          final visitaLocalEnviada = await _remoteCreateVisita(
+              visitasNoEnviadas[i], _usuario!.provisionalToken);
+          await updateVisitaInDB(visitaLocalDto: visitaLocalEnviada);
+        } catch (e) {
+          print(e);
+        }
       }
     } catch (e) {
       rethrow;

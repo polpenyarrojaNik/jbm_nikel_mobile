@@ -172,7 +172,7 @@ class ClienteDireccionTile extends StatelessWidget {
                           ],
                         ),
                       ),
-                    if (clienteDireccion.tratada)
+                    if (clienteDireccion.tratada && clienteImpParam.id != null)
                       _CambiosPendientesDeTramitarListView(
                         clienteImpParam,
                       ),

@@ -59,10 +59,8 @@ class _CatalogoListaPageState extends ConsumerState<CatalogoListaPage> {
         title: S.of(context).catalogos_index_titulo,
         searchTitle: S.of(context).catalogos_index_buscarCatalogo,
         onChanged: (searchText) => _debouncer.run(
-          () {
-            ref.read(catalogoSearchQueryStateProvider.notifier).state =
-                searchText;
-          },
+          () => ref.read(catalogoSearchQueryStateProvider.notifier).state =
+              searchText,
         ),
       ),
       body: Padding(
@@ -165,12 +163,23 @@ class CatalogoListViewWidget extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: stateCatalogoList.maybeWhen(
         orElse: () => const ProgressIndicatorWidget(),
-        data: (catalgoList) => ListView.separated(
-          shrinkWrap: true,
-          separatorBuilder: (context, i) => const Divider(),
-          itemBuilder: (context, i) =>
-              CatalogoListTile(catalogo: catalgoList[i]),
-          itemCount: catalgoList.length,
+        data: (catalgoList) => LayoutBuilder(
+          builder: (context, boxConstrains) => GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: 8,
+              crossAxisSpacing: 8,
+              crossAxisCount: boxConstrains.maxWidth > 960 ? 3 : 2,
+              mainAxisExtent: boxConstrains.maxWidth > 960
+                  ? boxConstrains.maxWidth / 2
+                  : boxConstrains.maxWidth > 350
+                      ? boxConstrains.maxWidth / 1.125
+                      : boxConstrains.maxWidth / 1,
+            ),
+            itemCount: catalgoList.length,
+            itemBuilder: (context, i) => CatalogoListTile(
+                catalogo: catalgoList[i], boxConstrains: boxConstrains),
+          ),
         ),
       ),
     );
