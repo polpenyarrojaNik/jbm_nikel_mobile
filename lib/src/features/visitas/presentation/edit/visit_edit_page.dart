@@ -342,6 +342,7 @@ class _VisitaForm extends StatelessWidget {
             enabled: !readOnly,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
+              FormBuilderValidators.maxLength(255),
             ]),
             decoration: InputDecoration(
               labelText: S.of(context).visitas_edit_visitaEditar_contacto,
@@ -355,6 +356,9 @@ class _VisitaForm extends StatelessWidget {
             decoration: InputDecoration(
               labelText: S.of(context).visitas_edit_visitaEditar_atendidoPor,
             ),
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.maxLength(255),
+            ]),
           ),
           FormBuilderTextField(
             name: 'resumen',
@@ -365,6 +369,7 @@ class _VisitaForm extends StatelessWidget {
             enabled: !readOnly,
             validator: FormBuilderValidators.compose([
               FormBuilderValidators.required(),
+              FormBuilderValidators.maxLength(255),
             ]),
             decoration: InputDecoration(
               labelText: S.of(context).visitas_edit_visitaEditar_resumen,
@@ -381,6 +386,9 @@ class _VisitaForm extends StatelessWidget {
               labelText:
                   S.of(context).visitas_edit_visitaEditar_marcasCompetencia,
             ),
+            validator: FormBuilderValidators.compose([
+              FormBuilderValidators.maxLength(255),
+            ]),
           ),
         ],
       ),
@@ -416,6 +424,7 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           ),
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.required(),
+            FormBuilderValidators.maxLength(500),
           ]),
         ),
         FormBuilderTextField(
@@ -426,6 +435,7 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.email(),
+            FormBuilderValidators.maxLength(500),
           ]),
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_email,
@@ -439,6 +449,7 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           keyboardType: TextInputType.phone,
           validator: FormBuilderValidators.compose([
             FormBuilderValidators.numeric(),
+            FormBuilderValidators.maxLength(50),
           ]),
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_telefono,
@@ -452,6 +463,9 @@ class _ClienteProvisionalContainer extends StatelessWidget {
           decoration: InputDecoration(
             labelText: S.of(context).visitas_edit_visitaEditar_poblacion,
           ),
+          validator: FormBuilderValidators.compose([
+            FormBuilderValidators.maxLength(60),
+          ]),
         ),
       ],
     );

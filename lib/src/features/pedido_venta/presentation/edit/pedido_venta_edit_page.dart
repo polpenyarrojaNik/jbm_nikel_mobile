@@ -6,6 +6,7 @@ import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:jbm_nikel_mobile/src/core/helpers/formatters.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/mobile_custom_separatos.dart';
 import 'package:jbm_nikel_mobile/src/core/presentation/common_widgets/progress_indicator_widget.dart';
@@ -954,6 +955,8 @@ class _StepObservacionesContentState
                 decoration: InputDecoration(
                   labelText: S.of(context).pedido_edit_pedidoEdit_pedidoCliente,
                 ),
+                validator: FormBuilderValidators.compose(
+                    [FormBuilderValidators.maxLength(50)]),
                 onChanged: (value) => ref
                     .read(pedidoVentaEditPageControllerProvider(
                             widget.pedidoVentaIdLocalParam)
@@ -969,6 +972,8 @@ class _StepObservacionesContentState
                 decoration: InputDecoration(
                   labelText: S.of(context).pedido_edit_pedidoEdit_observaciones,
                 ),
+                validator: FormBuilderValidators.compose(
+                    [FormBuilderValidators.maxLength(4000)]),
                 onChanged: (value) => ref
                     .read(pedidoVentaEditPageControllerProvider(
                             widget.pedidoVentaIdLocalParam)

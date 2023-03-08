@@ -182,6 +182,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     .cliente_show_clienteContacto_clienteContactoEditPage_nombre),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
+                  FormBuilderValidators.maxLength(60),
                 ]),
               ),
             ),
@@ -193,6 +194,9 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                 decoration: AppDecoration.defaultFieldDecoration(S
                     .of(context)
                     .cliente_show_clienteContacto_clienteContactoEditPage_apellido),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.maxLength(60),
+                ]),
               ),
             ),
             Padding(
@@ -203,6 +207,9 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                 decoration: AppDecoration.defaultFieldDecoration(S
                     .of(context)
                     .cliente_show_clienteContacto_clienteContactoEditPage_segundoApellido),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.maxLength(60),
+                ]),
               ),
             ),
             Padding(
@@ -216,6 +223,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     .cliente_show_clienteContacto_clienteContactoEditPage_telefono1),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.numeric(),
+                  FormBuilderValidators.maxLength(25),
                 ]),
               ),
             ),
@@ -230,6 +238,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     .cliente_show_clienteContacto_clienteContactoEditPage_telefono2),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.numeric(),
+                  FormBuilderValidators.maxLength(25),
                 ]),
               ),
             ),
@@ -244,6 +253,7 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     .cliente_show_clienteContacto_clienteContactoEditPage_email),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.email(),
+                  FormBuilderValidators.maxLength(255),
                 ]),
               ),
             ),
@@ -264,6 +274,9 @@ class _ClienteContactoImpEditForm extends StatelessWidget {
                     icon: const Icon(Icons.cancel_outlined),
                   ),
                 ),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.maxLength(4000),
+                ]),
               ),
             ),
           ],

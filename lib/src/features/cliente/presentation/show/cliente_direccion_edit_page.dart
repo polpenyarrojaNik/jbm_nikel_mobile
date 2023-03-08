@@ -222,6 +222,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_nombre),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
+                  FormBuilderValidators.maxLength(100),
                 ]),
               ),
             ),
@@ -236,6 +237,7 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion1),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(),
+                  FormBuilderValidators.maxLength(60),
                 ]),
               ),
             ),
@@ -248,6 +250,9 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 decoration: AppDecoration.defaultFieldDecoration(S
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_direccion2),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.maxLength(60),
+                ]),
               ),
             ),
             Padding(
@@ -258,6 +263,9 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 decoration: AppDecoration.defaultFieldDecoration(S
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_codigoPostal),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.maxLength(10),
+                ]),
               ),
             ),
             Padding(
@@ -268,6 +276,10 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 decoration: AppDecoration.defaultFieldDecoration(S
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_poblacion),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(),
+                  FormBuilderValidators.maxLength(60),
+                ]),
               ),
             ),
             Padding(
@@ -278,6 +290,9 @@ class _ClienteDireccionEditFormState extends State<ClienteDireccionEditForm> {
                 decoration: AppDecoration.defaultFieldDecoration(S
                     .of(context)
                     .cliente_show_clienteDireccion_clienteDireccionEditPage_provincia),
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.maxLength(50),
+                ]),
               ),
             ),
             Padding(
