@@ -16,6 +16,8 @@
 	"commonWidgets_sliderBackground_borrar": "Delete",
 	"commonWidgets_visitDialogue_saving": "Saving...",
 	"splash_descargandoBaseDeDatos": "Downloading initial database...\n\nThis process is done only once and can take several minutes depending on your Internet connection.",
+	"splash_actualizandoBaseDeDatosDe": "Updating version database",
+	"splash_a": "to version",
 	"splash_articulos": "Synchronizing articles...",
 	"splash_clientes": "Synchronizing customers...",
 	"splash_pedidos": "Synchronizing sales orders...",

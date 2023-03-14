@@ -16,6 +16,8 @@
 	"commonWidgets_ultimaSincronizacion": "Última sincronización",
 	"commonWidgets_sliderBackground_borrar": "Borrar",
 	"splash_descargandoBaseDeDatos": "Descargando base de datos inicial...\n\nEste proceso se realizará solamente una vez y puede durar varios minutos en función de su conexión a Internet.",
+	"splash_actualizandoBaseDeDatosDe": "Actualizando base de datos de versión",
+	"splash_a": "a versión",
 	"splash_articulos": "Sincronizando artículos...",
 	"splash_clientes": "Sincronizando clientes...",
 	"splash_pedidos": "Sincronizando pedidos...",

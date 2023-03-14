@@ -326,5 +326,7 @@
 	"no": "Não",
 	"visitas_edit_visitaEditar_validatorExistEmailMessage": "Há um cliente com este e-mail.\nTem certeza de que deseja salvar a visita mesmo assim?",
 	"visitas_edit_visitaEditar_validatorExistPhoneMessage": "Há um cliente com este telefone.\nTem certeza de que deseja salvar a visita mesmo assim?",
-	"yes": "Sim"
+	"yes": "Sim",
+	"splash_a": "para versão",
+	"splash_actualizandoBaseDeDatosDe": "Atualizando o banco de dados da versão"
 }

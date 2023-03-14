@@ -62,13 +62,14 @@ class _SplashPageState extends ConsumerState<SplashPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: state.maybeWhen(
-          downloadDatabase: () => Column(
+          downloadDatabase: (lastSchemaDatabase, newSchemaDatabase) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const ProgressIndicatorWidget(),
               gapH32,
-              Text(S.of(context).splash_descargandoBaseDeDatos),
+              Text(
+                  '${S.of(context).splash_descargandoBaseDeDatos}\n${S.of(context).splash_actualizandoBaseDeDatosDe} $lastSchemaDatabase ${S.of(context).splash_a} $newSchemaDatabase...'),
             ],
           ),
           orElse: () => Container(),

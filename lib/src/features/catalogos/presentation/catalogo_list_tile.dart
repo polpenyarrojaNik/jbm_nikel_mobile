@@ -70,11 +70,6 @@ class CatalogoListTile extends ConsumerWidget {
               gapH8,
               CachedNetworkImage(
                 imageUrl: catalogo.urlFicherPortada,
-                width: boxConstrains.maxWidth > 960
-                    ? boxConstrains.maxWidth / 3.5
-                    : boxConstrains.maxWidth > 350
-                        ? boxConstrains.maxWidth / 2.25
-                        : boxConstrains.maxWidth / 2.125,
                 fit: BoxFit.contain,
                 progressIndicatorBuilder: (context, url, progress) =>
                     Image.asset(

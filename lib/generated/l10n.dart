@@ -220,6 +220,26 @@ class S {
     );
   }
 
+  /// `Upgading database from`
+  String get splash_actualizandoBaseDeDatosDe {
+    return Intl.message(
+      'Upgading database from',
+      name: 'splash_actualizandoBaseDeDatosDe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `to`
+  String get splash_a {
+    return Intl.message(
+      'to',
+      name: 'splash_a',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Synchronizing articles...`
   String get splash_articulos {
     return Intl.message(

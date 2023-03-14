@@ -326,5 +326,7 @@
 	"no": "Non",
 	"visitas_edit_visitaEditar_validatorExistEmailMessage": "Il y a un client avec cet e-mail.\nVoulez-vous vraiment enregistrer la visite malgré tout ?",
 	"visitas_edit_visitaEditar_validatorExistPhoneMessage": "Il y a un client avec ce téléphone.\nVoulez-vous vraiment enregistrer la visite malgré tout ?",
-	"yes": "Oui"
+	"yes": "Oui",
+	"splash_a": "à la version",
+	"splash_actualizandoBaseDeDatosDe": "Mise à jour de la base de données des versions"
 }

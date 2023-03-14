@@ -167,15 +167,14 @@ class CatalogoListViewWidget extends ConsumerWidget {
           builder: (context, boxConstrains) => GridView.builder(
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisSpacing: 8,
-              crossAxisSpacing: 8,
-              crossAxisCount: boxConstrains.maxWidth > 960 ? 3 : 2,
-              mainAxisExtent: boxConstrains.maxWidth > 960
-                  ? boxConstrains.maxWidth / 2
-                  : boxConstrains.maxWidth > 350
-                      ? boxConstrains.maxWidth / 1.125
-                      : boxConstrains.maxWidth / 1,
-            ),
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                crossAxisCount: boxConstrains.maxWidth > 1080
+                    ? 5
+                    : boxConstrains.maxWidth > 560
+                        ? 3
+                        : 2,
+                childAspectRatio: 1 / 1.95),
             itemCount: catalgoList.length,
             itemBuilder: (context, i) => CatalogoListTile(
                 catalogo: catalgoList[i], boxConstrains: boxConstrains),

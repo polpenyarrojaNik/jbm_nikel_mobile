@@ -18,7 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SplashControllerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -28,7 +29,8 @@ mixin _$SplashControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -38,7 +40,8 @@ mixin _$SplashControllerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -104,6 +107,8 @@ abstract class _$$_downloadDatabaseCopyWith<$Res> {
   factory _$$_downloadDatabaseCopyWith(
           _$_downloadDatabase value, $Res Function(_$_downloadDatabase) then) =
       __$$_downloadDatabaseCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int lastScehmaVersion, int newScehmaVersion});
 }
 
 /// @nodoc
@@ -113,65 +118,107 @@ class __$$_downloadDatabaseCopyWithImpl<$Res>
   __$$_downloadDatabaseCopyWithImpl(
       _$_downloadDatabase _value, $Res Function(_$_downloadDatabase) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastScehmaVersion = null,
+    Object? newScehmaVersion = null,
+  }) {
+    return _then(_$_downloadDatabase(
+      null == lastScehmaVersion
+          ? _value.lastScehmaVersion
+          : lastScehmaVersion // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == newScehmaVersion
+          ? _value.newScehmaVersion
+          : newScehmaVersion // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_downloadDatabase extends _downloadDatabase
     with DiagnosticableTreeMixin {
-  const _$_downloadDatabase() : super._();
+  const _$_downloadDatabase(this.lastScehmaVersion, this.newScehmaVersion)
+      : super._();
+
+  @override
+  final int lastScehmaVersion;
+  @override
+  final int newScehmaVersion;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SplashControllerState.downloadDatabase()';
+    return 'SplashControllerState.downloadDatabase(lastScehmaVersion: $lastScehmaVersion, newScehmaVersion: $newScehmaVersion)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'));
+    properties
+      ..add(
+          DiagnosticsProperty('type', 'SplashControllerState.downloadDatabase'))
+      ..add(DiagnosticsProperty('lastScehmaVersion', lastScehmaVersion))
+      ..add(DiagnosticsProperty('newScehmaVersion', newScehmaVersion));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_downloadDatabase);
+        (other.runtimeType == runtimeType &&
+            other is _$_downloadDatabase &&
+            (identical(other.lastScehmaVersion, lastScehmaVersion) ||
+                other.lastScehmaVersion == lastScehmaVersion) &&
+            (identical(other.newScehmaVersion, newScehmaVersion) ||
+                other.newScehmaVersion == newScehmaVersion));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, lastScehmaVersion, newScehmaVersion);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_downloadDatabaseCopyWith<_$_downloadDatabase> get copyWith =>
+      __$$_downloadDatabaseCopyWithImpl<_$_downloadDatabase>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
     required TResult Function(Object error, StackTrace? stackTrace) error,
     required TResult Function() data,
   }) {
-    return downloadDatabase();
+    return downloadDatabase(lastScehmaVersion, newScehmaVersion);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
     TResult? Function(Object error, StackTrace? stackTrace)? error,
     TResult? Function()? data,
   }) {
-    return downloadDatabase?.call();
+    return downloadDatabase?.call(lastScehmaVersion, newScehmaVersion);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -180,7 +227,7 @@ class _$_downloadDatabase extends _downloadDatabase
     required TResult orElse(),
   }) {
     if (downloadDatabase != null) {
-      return downloadDatabase();
+      return downloadDatabase(lastScehmaVersion, newScehmaVersion);
     }
     return orElse();
   }
@@ -230,8 +277,16 @@ class _$_downloadDatabase extends _downloadDatabase
 }
 
 abstract class _downloadDatabase extends SplashControllerState {
-  const factory _downloadDatabase() = _$_downloadDatabase;
+  const factory _downloadDatabase(
+          final int lastScehmaVersion, final int newScehmaVersion) =
+      _$_downloadDatabase;
   const _downloadDatabase._() : super._();
+
+  int get lastScehmaVersion;
+  int get newScehmaVersion;
+  @JsonKey(ignore: true)
+  _$$_downloadDatabaseCopyWith<_$_downloadDatabase> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -278,7 +333,8 @@ class _$_loading extends _loading with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -291,7 +347,8 @@ class _$_loading extends _loading with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -304,7 +361,8 @@ class _$_loading extends _loading with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -411,7 +469,8 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -424,7 +483,8 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -437,7 +497,8 @@ class _$_initial extends _initial with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -545,7 +606,8 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -558,7 +620,8 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -571,7 +634,8 @@ class _$_notDownloaded extends _notDownloaded with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -712,7 +776,8 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -725,7 +790,8 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -738,7 +804,8 @@ class _$_error extends _error with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,
@@ -850,7 +917,8 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() downloadDatabase,
+    required TResult Function(int lastScehmaVersion, int newScehmaVersion)
+        downloadDatabase,
     required TResult Function() loading,
     required TResult Function() initial,
     required TResult Function() notDownloaded,
@@ -863,7 +931,8 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? downloadDatabase,
+    TResult? Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult? Function()? loading,
     TResult? Function()? initial,
     TResult? Function()? notDownloaded,
@@ -876,7 +945,8 @@ class _$_data extends _data with DiagnosticableTreeMixin {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? downloadDatabase,
+    TResult Function(int lastScehmaVersion, int newScehmaVersion)?
+        downloadDatabase,
     TResult Function()? loading,
     TResult Function()? initial,
     TResult Function()? notDownloaded,

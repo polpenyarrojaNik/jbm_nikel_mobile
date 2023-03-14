@@ -51,7 +51,7 @@ class InitDatabaseService {
 
   Future<void> downloadInitDatabase() async {
     try {
-      if (await _getSchemaVersionFromPreferences() != databaseRelease) {
+      if (await getSchemaVersionFromPreferences() != databaseRelease) {
         await deleteRemoteDatabase();
       }
 
@@ -76,7 +76,7 @@ class InitDatabaseService {
     try {
       final Directory directory = await getApplicationDocumentsDirectory();
 
-      if (await _getSchemaVersionFromPreferences() == databaseRelease &&
+      if (await getSchemaVersionFromPreferences() == databaseRelease &&
           await _databaseFileExist(directory: directory)) {
         return true;
       } else {
@@ -175,12 +175,12 @@ class InitDatabaseService {
     }
   }
 
-  Future<int> _getSchemaVersionFromPreferences() async {
+  Future<int> getSchemaVersionFromPreferences() async {
     try {
-      final syncDateTime =
+      final syncDateTimeTable =
           await localDb.select(localDb.syncDateTimeTable).getSingleOrNull();
 
-      return syncDateTime?.dbSchemaVersion ?? -1;
+      return syncDateTimeTable?.dbSchemaVersion ?? -1;
     } catch (e) {
       return -1;
     }
