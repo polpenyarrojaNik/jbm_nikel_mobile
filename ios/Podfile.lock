@@ -110,7 +110,7 @@ SPEC CHECKSUMS:
   flutter_secure_storage: 23fc622d89d073675f2eaa109381aefbcf5a49be
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
-  google_maps_flutter_ios: 53f75334bad87ccd0473f4b0142756169846b42b
+  google_maps_flutter_ios: 3e0b99383a8003b8169d06e7e324170bd0424105
   GoogleMaps: 20d7b12be49a14287f797e88e0e31bc4156aaeb4
   map_launcher: e325db1261d029ff33e08e03baccffe09593ffea
   package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e

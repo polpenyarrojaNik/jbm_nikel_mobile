@@ -220,20 +220,20 @@ class S {
     );
   }
 
-  /// `Upgading database from`
+  /// `Updating version database`
   String get splash_actualizandoBaseDeDatosDe {
     return Intl.message(
-      'Upgading database from',
+      'Updating version database',
       name: 'splash_actualizandoBaseDeDatosDe',
       desc: '',
       args: [],
     );
   }
 
-  /// `to`
+  /// `to version`
   String get splash_a {
     return Intl.message(
-      'to',
+      'to version',
       name: 'splash_a',
       desc: '',
       args: [],

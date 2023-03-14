@@ -588,6 +588,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_version": MessageLookupByLibrary.simpleMessage("Versão"),
         "sinResultados": MessageLookupByLibrary.simpleMessage("Sem resultados"),
         "sincConexion": MessageLookupByLibrary.simpleMessage("Sem conexão"),
+        "splash_a": MessageLookupByLibrary.simpleMessage("para versão"),
+        "splash_actualizandoBaseDeDatosDe":
+            MessageLookupByLibrary.simpleMessage(
+                "Atualizando o banco de dados da versão"),
         "splash_articulos":
             MessageLookupByLibrary.simpleMessage("Sincronizando produtos..."),
         "splash_clientes":

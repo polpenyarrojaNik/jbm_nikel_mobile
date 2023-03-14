@@ -575,9 +575,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings_version": MessageLookupByLibrary.simpleMessage("Version"),
         "sinResultados": MessageLookupByLibrary.simpleMessage("No Results"),
         "sincConexion": MessageLookupByLibrary.simpleMessage("Not connection"),
-        "splash_a": MessageLookupByLibrary.simpleMessage("to"),
+        "splash_a": MessageLookupByLibrary.simpleMessage("to version"),
         "splash_actualizandoBaseDeDatosDe":
-            MessageLookupByLibrary.simpleMessage("Upgading database from"),
+            MessageLookupByLibrary.simpleMessage("Updating version database"),
         "splash_articulos":
             MessageLookupByLibrary.simpleMessage("Synchronizing articles..."),
         "splash_clientes":
