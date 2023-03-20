@@ -385,7 +385,9 @@ class CatalogoRepository {
   List<Catalogo> _orderByCatalogos(
       {required List<Catalogo> catalogosList,
       required List<CatalogoFavoritoDTO> favoriteLocalList}) {
-    for (var i = 0; i < catalogosList.length; i++) {
+    catalogosList.sort((a, b) => a.orden.compareTo(b.orden));
+
+    for (var i = 0; i < favoriteLocalList.length; i++) {
       for (var j = 0; j < favoriteLocalList.length; j++) {
         if (catalogosList[i].catalogoId == favoriteLocalList[j].catalogoId) {
           final favoriteCatalogo = catalogosList[i];
