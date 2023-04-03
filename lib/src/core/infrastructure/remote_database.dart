@@ -53,6 +53,7 @@ final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>(
   (ref) {
     DatabaseConnection connection = DatabaseConnection.delayed(() async {
       late DriftIsolate isolate;
+
       if (isolateRemoteDatabaseConnectPort != null) {
         isolate =
             DriftIsolate.fromConnectPort(isolateRemoteDatabaseConnectPort!);
@@ -64,9 +65,7 @@ final appRemoteDatabaseProvider = Provider<RemoteAppDatabase>(
       return await isolate.connect();
     }());
     final database = RemoteAppDatabase.connect(connection);
-    ref.onDispose(
-      () => database.close(),
-    );
+    ref.onDispose(() async => await database.close());
     return database;
   },
 );

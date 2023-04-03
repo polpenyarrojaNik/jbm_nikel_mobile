@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
@@ -992,8 +993,9 @@ class SyncService {
                 .getSingleOrNull();
 
         if (pedidoNoTratadoExisitInPedidos != null) {
-          _localDb.update(_localDb.pedidoVentaLocalTable).write(
-              const local.PedidoVentaLocalTableCompanion(tratada: Value('S')));
+          await _localDb
+              .update(_localDb.pedidoVentaLocalTable)
+              .write(const PedidoVentaLocalTableCompanion(tratada: Value('S')));
         }
       }
     } catch (e) {
