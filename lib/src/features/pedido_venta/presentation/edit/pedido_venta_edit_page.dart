@@ -783,6 +783,7 @@ class StepArticuloListContent extends ConsumerWidget {
                                 pedidoVentaLineaList[i], ref),
                             child: PedidoVentaLineaNuevoTile(
                               pedidoVentaLinea: pedidoVentaLineaList[i],
+                              clienteId: cliente!.id,
                             ),
                           ),
                         ),
@@ -1110,6 +1111,7 @@ class StepResumenContent extends ConsumerWidget {
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, i) => PedidoVentaLineaNuevoTile(
               pedidoVentaLinea: pedidoVentaLineaList[i],
+              clienteId: cliente!.id,
             ),
             separatorBuilder: (context, i) => const Divider(),
             itemCount: pedidoVentaLineaList.length,
@@ -1146,6 +1148,13 @@ class _ClienteResumenTile extends StatelessWidget {
               ),
             ],
           ),
+          if (clienteDireccion != null)
+            Text(
+              clienteDireccion!.direccion1!,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).textTheme.bodySmall!.color,
+                  ),
+            ),
           AddressTextWidget(
             codigoPostal: cliente.codigoPostalFiscal,
             poblacion: cliente.poblacionFiscal,

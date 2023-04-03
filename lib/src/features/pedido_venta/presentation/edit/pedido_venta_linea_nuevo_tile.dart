@@ -5,16 +5,20 @@ import 'package:jbm_nikel_mobile/src/features/articulos/infrastructure/articulo_
 
 import '../../../../core/helpers/formatters.dart';
 import '../../domain/pedido_venta_linea.dart';
+import '../../domain/pedido_venta_linea_ultimos_precios_param.dart';
 
 class PedidoVentaLineaNuevoTile extends ConsumerWidget {
-  const PedidoVentaLineaNuevoTile({super.key, required this.pedidoVentaLinea});
+  const PedidoVentaLineaNuevoTile(
+      {super.key, required this.pedidoVentaLinea, required this.clienteId});
 
   final PedidoVentaLinea pedidoVentaLinea;
+  final String clienteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final articuloPrecioValue =
-        ref.watch(articuloUltimosPreciosProvider(pedidoVentaLinea.articuloId));
+    final articuloPrecioValue = ref.watch(articuloUltimosPreciosProvider(
+        PedidoVentaLineaUltimosPreciosParam(
+            clienteId: clienteId, articuloId: pedidoVentaLinea.articuloId)));
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       color: (pedidoVentaLinea.pedidoLineaIdComponente != null)

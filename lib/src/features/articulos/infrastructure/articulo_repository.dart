@@ -21,6 +21,7 @@ import '../../../core/infrastructure/local_database.dart';
 import '../../../core/infrastructure/sync_service.dart';
 import '../../../core/presentation/app.dart';
 import '../../estadisticas/domain/estadisticas_ultimos_precios.dart';
+import '../../pedido_venta/domain/pedido_venta_linea_ultimos_precios_param.dart';
 import '../../usuario/infrastructure/usuario_service.dart';
 import '../domain/articulo.dart';
 import '../domain/articulo_componente.dart';
@@ -169,11 +170,13 @@ final articuloVentasClienteProvider = FutureProvider.autoDispose
 });
 
 final articuloUltimosPreciosProvider = FutureProvider.autoDispose
-    .family<EstadisticasUltimosPrecios, String>((ref, articuloId) async {
+    .family<EstadisticasUltimosPrecios, PedidoVentaLineaUltimosPreciosParam>(
+        (ref, ultimosPreciosParam) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
   return articuloRepository.getArticuloUltimosPrecios(
-    articuloId: articuloId,
+    articuloId: ultimosPreciosParam.articuloId,
+    clienteId: ultimosPreciosParam.clienteId,
     usuarioId: usuario!.id,
   );
 });
@@ -661,7 +664,9 @@ SELECT *
   }
 
   Future<EstadisticasUltimosPrecios> getArticuloUltimosPrecios(
-      {required String articuloId, required String usuarioId}) async {
+      {required String articuloId,
+      required String clienteId,
+      required String usuarioId}) async {
     try {
       final query =
           _remoteDb.select(_remoteDb.estadisticasUltimosPreciosTable).join([
@@ -676,12 +681,14 @@ SELECT *
       ]);
       query.where((_remoteDb.estadisticasUltimosPreciosTable.articuloId
               .equals(articuloId) &
-          _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId)));
-      query.limit(1);
+          _remoteDb.clienteUsuarioTable.usuarioId.equals(usuarioId) &
+          _remoteDb.clienteTable.id.equals(clienteId)));
 
       query.orderBy(
         [OrderingTerm.desc(_remoteDb.estadisticasUltimosPreciosTable.fecha)],
       );
+
+      query.limit(1);
 
       return query.asyncMap((row) async {
         final lastPriceArticuloDTO =

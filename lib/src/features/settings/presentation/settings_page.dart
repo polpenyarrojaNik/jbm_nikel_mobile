@@ -124,8 +124,9 @@ class _ActualizarArchivoBaseDeDatosButton extends ConsumerWidget {
           orElse: () {},
           data: (deleted) {
             if (deleted) {
-              ref.invalidate(appLocalDatabaseProvider);
               ref.invalidate(syncNotifierProvider);
+              ref.invalidate(appLocalDatabaseProvider);
+              ref.invalidate(appRemoteDatabaseProvider);
               ref.read(usuarioNotifierProvider.notifier).signOut();
             }
           });

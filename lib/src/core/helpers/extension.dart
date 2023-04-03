@@ -91,7 +91,15 @@ extension MoneyParsingDouble on num {
     try {
       return Money.parseWithCurrency(importeStr, currency);
     } on MoneyParseException {
-      return Money.fromIntWithCurrency(0, currency);
+      if (isNegative) {
+        try {
+          return Money.fromNumWithCurrency(this, currency);
+        } on MoneyParseException {
+          return Money.fromNumWithCurrency(0, currency);
+        }
+      } else {
+        return Money.fromNumWithCurrency(0, currency);
+      }
     }
   }
 }

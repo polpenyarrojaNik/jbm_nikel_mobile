@@ -310,9 +310,10 @@ class AlbaranesContainer extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               if (albaranes[i].trackId != null)
-                                Text(albaranes[i].trackId!,
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall),
+                                SelectableText(
+                                  'Tracking: ${albaranes[i].trackId!}',
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
                               if (albaranes[i].agencia != null)
                                 Text(albaranes[i].agencia!,
                                     style:

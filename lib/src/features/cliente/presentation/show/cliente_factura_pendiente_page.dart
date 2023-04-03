@@ -87,6 +87,8 @@ class ClientePagoPendienteTile extends StatelessWidget {
                 if (clientePagoPendiente.facutaId != null)
                   Text(
                     clientePagoPendiente.facutaId!,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Theme.of(context).textTheme.bodyMedium?.color),
                   ),
                 const Spacer(),
                 if (clientePagoPendiente.estadoCobroId != null)
@@ -105,6 +107,8 @@ class ClientePagoPendienteTile extends StatelessWidget {
                   if (clientePagoPendiente.fechaExpiracion != null)
                     Text(
                       '${S.of(context).cliente_show_clienteFacturasPendientes_fvcto} ${dateFormatter(clientePagoPendiente.fechaExpiracion!.toLocal().toIso8601String())}',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: Theme.of(context).textTheme.bodyMedium?.color),
                     ),
                   if (clientePagoPendiente.fechaFactura != null) gapH4,
                   if (clientePagoPendiente.fechaFactura != null)
@@ -124,7 +128,7 @@ class ClientePagoPendienteTile extends StatelessWidget {
             const VerticalDivider(),
             if (clientePagoPendiente.importe != null)
               SizedBox(
-                width: 70,
+                width: 75,
                 child: Text(
                   formatPrecios(
                     precio: clientePagoPendiente.importe!,
