@@ -170,7 +170,7 @@ final articuloVentasClienteProvider = FutureProvider.autoDispose
 });
 
 final articuloUltimosPreciosProvider = FutureProvider.autoDispose
-    .family<EstadisticasUltimosPrecios, PedidoVentaLineaUltimosPreciosParam>(
+    .family<EstadisticasUltimosPrecios?, PedidoVentaLineaUltimosPreciosParam>(
         (ref, ultimosPreciosParam) async {
   final articuloRepository = ref.watch(articuloRepositoryProvider);
   final usuario = await ref.watch(usuarioServiceProvider).getSignedInUsuario();
@@ -663,7 +663,7 @@ SELECT *
     }
   }
 
-  Future<EstadisticasUltimosPrecios> getArticuloUltimosPrecios(
+  Future<EstadisticasUltimosPrecios?> getArticuloUltimosPrecios(
       {required String articuloId,
       required String clienteId,
       required String usuarioId}) async {
@@ -698,7 +698,7 @@ SELECT *
           nombreCliente: clienteDTO!.nombreCliente,
           descripcion: '',
         );
-      }).getSingle();
+      }).getSingleOrNull();
     } catch (e) {
       throw AppException.fetchLocalDataFailure(e.toString());
     }

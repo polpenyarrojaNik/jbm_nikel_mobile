@@ -94,10 +94,12 @@ class PedidoVentaLineaNuevoTile extends ConsumerWidget {
                   ),
                   articuloPrecioValue.maybeWhen(
                     orElse: () => Container(),
-                    data: (ultimosPrecios) => Text(
-                      '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}: ${ultimosPrecios.precioDivisa.toString()}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
+                    data: (ultimosPrecios) => ultimosPrecios != null
+                        ? Text(
+                            '${S.of(context).pedido_edit_pedidoEdit_ultimoPrecioDeCompra}: ${ultimosPrecios.precioDivisa.toString()}',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          )
+                        : Container(),
                   ),
                 ],
               ),
