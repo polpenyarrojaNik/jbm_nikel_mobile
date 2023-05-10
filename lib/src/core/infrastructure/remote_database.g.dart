@@ -16077,6 +16077,2506 @@ class DescuentoGeneralTableCompanion
   }
 }
 
+class $DevolucionTipoTableTable extends DevolucionTipoTable
+    with TableInfo<$DevolucionTipoTableTable, DevolucionTipoDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DevolucionTipoTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'DEVOLUCION_TIPO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'DEVOLUCIONES_TIPOS';
+  @override
+  String get actualTableName => 'DEVOLUCIONES_TIPOS';
+  @override
+  VerificationContext validateIntegrity(Insertable<DevolucionTipoDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('DEVOLUCION_TIPO_ID')) {
+      context.handle(_idMeta,
+          id.isAcceptableOrUnknown(data['DEVOLUCION_TIPO_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DevolucionTipoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DevolucionTipoDTO(
+      id: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_TIPO_ID'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descripcionPT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $DevolucionTipoTableTable createAlias(String alias) {
+    return $DevolucionTipoTableTable(attachedDatabase, alias);
+  }
+}
+
+class DevolucionTipoTableCompanion extends UpdateCompanion<DevolucionTipoDTO> {
+  final Value<String> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DevolucionTipoTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DevolucionTipoTableCompanion.insert({
+    required String id,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : id = Value(id),
+        descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DevolucionTipoDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'DEVOLUCION_TIPO_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DevolucionTipoTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DevolucionTipoTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['DEVOLUCION_TIPO_ID'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DevolucionTipoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DevolucionMotivoTableTable extends DevolucionMotivoTable
+    with TableInfo<$DevolucionMotivoTableTable, DevolucionMotivoDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DevolucionMotivoTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'DEVOLUCION_MOTIVO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'DEVOLUCIONES_MOTIVOS';
+  @override
+  String get actualTableName => 'DEVOLUCIONES_MOTIVOS';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<DevolucionMotivoDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('DEVOLUCION_MOTIVO_ID')) {
+      context.handle(_idMeta,
+          id.isAcceptableOrUnknown(data['DEVOLUCION_MOTIVO_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DevolucionMotivoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DevolucionMotivoDTO(
+      id: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_MOTIVO_ID'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descripcionPT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $DevolucionMotivoTableTable createAlias(String alias) {
+    return $DevolucionMotivoTableTable(attachedDatabase, alias);
+  }
+}
+
+class DevolucionMotivoTableCompanion
+    extends UpdateCompanion<DevolucionMotivoDTO> {
+  final Value<String> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DevolucionMotivoTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DevolucionMotivoTableCompanion.insert({
+    required String id,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : id = Value(id),
+        descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DevolucionMotivoDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'DEVOLUCION_MOTIVO_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DevolucionMotivoTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DevolucionMotivoTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['DEVOLUCION_MOTIVO_ID'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DevolucionMotivoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DevolucionEstadoTableTable extends DevolucionEstadoTable
+    with TableInfo<$DevolucionEstadoTableTable, DevolucionEstadoDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DevolucionEstadoTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'DEVOLUCION_ESTADO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionESMeta =
+      const VerificationMeta('descripcionES');
+  @override
+  late final GeneratedColumn<String> descripcionES = GeneratedColumn<String>(
+      'DESCRIPCION_ES', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _descripcionENMeta =
+      const VerificationMeta('descripcionEN');
+  @override
+  late final GeneratedColumn<String> descripcionEN = GeneratedColumn<String>(
+      'DESCRIPCION_EN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionFRMeta =
+      const VerificationMeta('descripcionFR');
+  @override
+  late final GeneratedColumn<String> descripcionFR = GeneratedColumn<String>(
+      'DESCRIPCION_FR', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionDEMeta =
+      const VerificationMeta('descripcionDE');
+  @override
+  late final GeneratedColumn<String> descripcionDE = GeneratedColumn<String>(
+      'DESCRIPCION_DE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCAMeta =
+      const VerificationMeta('descripcionCA');
+  @override
+  late final GeneratedColumn<String> descripcionCA = GeneratedColumn<String>(
+      'DESCRIPCION_CA', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionGBMeta =
+      const VerificationMeta('descripcionGB');
+  @override
+  late final GeneratedColumn<String> descripcionGB = GeneratedColumn<String>(
+      'DESCRIPCION_GB', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionHUMeta =
+      const VerificationMeta('descripcionHU');
+  @override
+  late final GeneratedColumn<String> descripcionHU = GeneratedColumn<String>(
+      'DESCRIPCION_HU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionITMeta =
+      const VerificationMeta('descripcionIT');
+  @override
+  late final GeneratedColumn<String> descripcionIT = GeneratedColumn<String>(
+      'DESCRIPCION_IT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionNLMeta =
+      const VerificationMeta('descripcionNL');
+  @override
+  late final GeneratedColumn<String> descripcionNL = GeneratedColumn<String>(
+      'DESCRIPCION_NL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPLMeta =
+      const VerificationMeta('descripcionPL');
+  @override
+  late final GeneratedColumn<String> descripcionPL = GeneratedColumn<String>(
+      'DESCRIPCION_PL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionPTMeta =
+      const VerificationMeta('descripcionPT');
+  @override
+  late final GeneratedColumn<String> descripcionPT = GeneratedColumn<String>(
+      'DESCRIPCION_PT', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionROMeta =
+      const VerificationMeta('descripcionRO');
+  @override
+  late final GeneratedColumn<String> descripcionRO = GeneratedColumn<String>(
+      'DESCRIPCION_RO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionRUMeta =
+      const VerificationMeta('descripcionRU');
+  @override
+  late final GeneratedColumn<String> descripcionRU = GeneratedColumn<String>(
+      'DESCRIPCION_RU', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionCNMeta =
+      const VerificationMeta('descripcionCN');
+  @override
+  late final GeneratedColumn<String> descripcionCN = GeneratedColumn<String>(
+      'DESCRIPCION_CN', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _descripcionELMeta =
+      const VerificationMeta('descripcionEL');
+  @override
+  late final GeneratedColumn<String> descripcionEL = GeneratedColumn<String>(
+      'DESCRIPCION_EL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        descripcionES,
+        descripcionEN,
+        descripcionFR,
+        descripcionDE,
+        descripcionCA,
+        descripcionGB,
+        descripcionHU,
+        descripcionIT,
+        descripcionNL,
+        descripcionPL,
+        descripcionPT,
+        descripcionRO,
+        descripcionRU,
+        descripcionCN,
+        descripcionEL,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'DEVOLUCIONES_ESTADOS';
+  @override
+  String get actualTableName => 'DEVOLUCIONES_ESTADOS';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<DevolucionEstadoDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('DEVOLUCION_ESTADO_ID')) {
+      context.handle(_idMeta,
+          id.isAcceptableOrUnknown(data['DEVOLUCION_ESTADO_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('DESCRIPCION_ES')) {
+      context.handle(
+          _descripcionESMeta,
+          descripcionES.isAcceptableOrUnknown(
+              data['DESCRIPCION_ES']!, _descripcionESMeta));
+    } else if (isInserting) {
+      context.missing(_descripcionESMeta);
+    }
+    if (data.containsKey('DESCRIPCION_EN')) {
+      context.handle(
+          _descripcionENMeta,
+          descripcionEN.isAcceptableOrUnknown(
+              data['DESCRIPCION_EN']!, _descripcionENMeta));
+    }
+    if (data.containsKey('DESCRIPCION_FR')) {
+      context.handle(
+          _descripcionFRMeta,
+          descripcionFR.isAcceptableOrUnknown(
+              data['DESCRIPCION_FR']!, _descripcionFRMeta));
+    }
+    if (data.containsKey('DESCRIPCION_DE')) {
+      context.handle(
+          _descripcionDEMeta,
+          descripcionDE.isAcceptableOrUnknown(
+              data['DESCRIPCION_DE']!, _descripcionDEMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CA')) {
+      context.handle(
+          _descripcionCAMeta,
+          descripcionCA.isAcceptableOrUnknown(
+              data['DESCRIPCION_CA']!, _descripcionCAMeta));
+    }
+    if (data.containsKey('DESCRIPCION_GB')) {
+      context.handle(
+          _descripcionGBMeta,
+          descripcionGB.isAcceptableOrUnknown(
+              data['DESCRIPCION_GB']!, _descripcionGBMeta));
+    }
+    if (data.containsKey('DESCRIPCION_HU')) {
+      context.handle(
+          _descripcionHUMeta,
+          descripcionHU.isAcceptableOrUnknown(
+              data['DESCRIPCION_HU']!, _descripcionHUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_IT')) {
+      context.handle(
+          _descripcionITMeta,
+          descripcionIT.isAcceptableOrUnknown(
+              data['DESCRIPCION_IT']!, _descripcionITMeta));
+    }
+    if (data.containsKey('DESCRIPCION_NL')) {
+      context.handle(
+          _descripcionNLMeta,
+          descripcionNL.isAcceptableOrUnknown(
+              data['DESCRIPCION_NL']!, _descripcionNLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PL')) {
+      context.handle(
+          _descripcionPLMeta,
+          descripcionPL.isAcceptableOrUnknown(
+              data['DESCRIPCION_PL']!, _descripcionPLMeta));
+    }
+    if (data.containsKey('DESCRIPCION_PT')) {
+      context.handle(
+          _descripcionPTMeta,
+          descripcionPT.isAcceptableOrUnknown(
+              data['DESCRIPCION_PT']!, _descripcionPTMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RO')) {
+      context.handle(
+          _descripcionROMeta,
+          descripcionRO.isAcceptableOrUnknown(
+              data['DESCRIPCION_RO']!, _descripcionROMeta));
+    }
+    if (data.containsKey('DESCRIPCION_RU')) {
+      context.handle(
+          _descripcionRUMeta,
+          descripcionRU.isAcceptableOrUnknown(
+              data['DESCRIPCION_RU']!, _descripcionRUMeta));
+    }
+    if (data.containsKey('DESCRIPCION_CN')) {
+      context.handle(
+          _descripcionCNMeta,
+          descripcionCN.isAcceptableOrUnknown(
+              data['DESCRIPCION_CN']!, _descripcionCNMeta));
+    }
+    if (data.containsKey('DESCRIPCION_EL')) {
+      context.handle(
+          _descripcionELMeta,
+          descripcionEL.isAcceptableOrUnknown(
+              data['DESCRIPCION_EL']!, _descripcionELMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DevolucionEstadoDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DevolucionEstadoDTO(
+      id: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_ESTADO_ID'])!,
+      descripcionES: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_ES'])!,
+      descripcionEN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EN']),
+      descripcionFR: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_FR']),
+      descripcionDE: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_DE']),
+      descripcionCA: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CA']),
+      descripcionGB: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_GB']),
+      descripcionHU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_HU']),
+      descripcionIT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_IT']),
+      descripcionNL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_NL']),
+      descripcionPL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PL']),
+      descripcionPT: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_PT']),
+      descripcionRO: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RO']),
+      descripcionRU: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_RU']),
+      descripcionCN: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_CN']),
+      descripcionEL: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DESCRIPCION_EL']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $DevolucionEstadoTableTable createAlias(String alias) {
+    return $DevolucionEstadoTableTable(attachedDatabase, alias);
+  }
+}
+
+class DevolucionEstadoTableCompanion
+    extends UpdateCompanion<DevolucionEstadoDTO> {
+  final Value<String> id;
+  final Value<String> descripcionES;
+  final Value<String?> descripcionEN;
+  final Value<String?> descripcionFR;
+  final Value<String?> descripcionDE;
+  final Value<String?> descripcionCA;
+  final Value<String?> descripcionGB;
+  final Value<String?> descripcionHU;
+  final Value<String?> descripcionIT;
+  final Value<String?> descripcionNL;
+  final Value<String?> descripcionPL;
+  final Value<String?> descripcionPT;
+  final Value<String?> descripcionRO;
+  final Value<String?> descripcionRU;
+  final Value<String?> descripcionCN;
+  final Value<String?> descripcionEL;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DevolucionEstadoTableCompanion({
+    this.id = const Value.absent(),
+    this.descripcionES = const Value.absent(),
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DevolucionEstadoTableCompanion.insert({
+    required String id,
+    required String descripcionES,
+    this.descripcionEN = const Value.absent(),
+    this.descripcionFR = const Value.absent(),
+    this.descripcionDE = const Value.absent(),
+    this.descripcionCA = const Value.absent(),
+    this.descripcionGB = const Value.absent(),
+    this.descripcionHU = const Value.absent(),
+    this.descripcionIT = const Value.absent(),
+    this.descripcionNL = const Value.absent(),
+    this.descripcionPL = const Value.absent(),
+    this.descripcionPT = const Value.absent(),
+    this.descripcionRO = const Value.absent(),
+    this.descripcionRU = const Value.absent(),
+    this.descripcionCN = const Value.absent(),
+    this.descripcionEL = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : id = Value(id),
+        descripcionES = Value(descripcionES),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DevolucionEstadoDTO> custom({
+    Expression<String>? id,
+    Expression<String>? descripcionES,
+    Expression<String>? descripcionEN,
+    Expression<String>? descripcionFR,
+    Expression<String>? descripcionDE,
+    Expression<String>? descripcionCA,
+    Expression<String>? descripcionGB,
+    Expression<String>? descripcionHU,
+    Expression<String>? descripcionIT,
+    Expression<String>? descripcionNL,
+    Expression<String>? descripcionPL,
+    Expression<String>? descripcionPT,
+    Expression<String>? descripcionRO,
+    Expression<String>? descripcionRU,
+    Expression<String>? descripcionCN,
+    Expression<String>? descripcionEL,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'DEVOLUCION_ESTADO_ID': id,
+      if (descripcionES != null) 'DESCRIPCION_ES': descripcionES,
+      if (descripcionEN != null) 'DESCRIPCION_EN': descripcionEN,
+      if (descripcionFR != null) 'DESCRIPCION_FR': descripcionFR,
+      if (descripcionDE != null) 'DESCRIPCION_DE': descripcionDE,
+      if (descripcionCA != null) 'DESCRIPCION_CA': descripcionCA,
+      if (descripcionGB != null) 'DESCRIPCION_GB': descripcionGB,
+      if (descripcionHU != null) 'DESCRIPCION_HU': descripcionHU,
+      if (descripcionIT != null) 'DESCRIPCION_IT': descripcionIT,
+      if (descripcionNL != null) 'DESCRIPCION_NL': descripcionNL,
+      if (descripcionPL != null) 'DESCRIPCION_PL': descripcionPL,
+      if (descripcionPT != null) 'DESCRIPCION_PT': descripcionPT,
+      if (descripcionRO != null) 'DESCRIPCION_RO': descripcionRO,
+      if (descripcionRU != null) 'DESCRIPCION_RU': descripcionRU,
+      if (descripcionCN != null) 'DESCRIPCION_CN': descripcionCN,
+      if (descripcionEL != null) 'DESCRIPCION_EL': descripcionEL,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DevolucionEstadoTableCompanion copyWith(
+      {Value<String>? id,
+      Value<String>? descripcionES,
+      Value<String?>? descripcionEN,
+      Value<String?>? descripcionFR,
+      Value<String?>? descripcionDE,
+      Value<String?>? descripcionCA,
+      Value<String?>? descripcionGB,
+      Value<String?>? descripcionHU,
+      Value<String?>? descripcionIT,
+      Value<String?>? descripcionNL,
+      Value<String?>? descripcionPL,
+      Value<String?>? descripcionPT,
+      Value<String?>? descripcionRO,
+      Value<String?>? descripcionRU,
+      Value<String?>? descripcionCN,
+      Value<String?>? descripcionEL,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DevolucionEstadoTableCompanion(
+      id: id ?? this.id,
+      descripcionES: descripcionES ?? this.descripcionES,
+      descripcionEN: descripcionEN ?? this.descripcionEN,
+      descripcionFR: descripcionFR ?? this.descripcionFR,
+      descripcionDE: descripcionDE ?? this.descripcionDE,
+      descripcionCA: descripcionCA ?? this.descripcionCA,
+      descripcionGB: descripcionGB ?? this.descripcionGB,
+      descripcionHU: descripcionHU ?? this.descripcionHU,
+      descripcionIT: descripcionIT ?? this.descripcionIT,
+      descripcionNL: descripcionNL ?? this.descripcionNL,
+      descripcionPL: descripcionPL ?? this.descripcionPL,
+      descripcionPT: descripcionPT ?? this.descripcionPT,
+      descripcionRO: descripcionRO ?? this.descripcionRO,
+      descripcionRU: descripcionRU ?? this.descripcionRU,
+      descripcionCN: descripcionCN ?? this.descripcionCN,
+      descripcionEL: descripcionEL ?? this.descripcionEL,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['DEVOLUCION_ESTADO_ID'] = Variable<String>(id.value);
+    }
+    if (descripcionES.present) {
+      map['DESCRIPCION_ES'] = Variable<String>(descripcionES.value);
+    }
+    if (descripcionEN.present) {
+      map['DESCRIPCION_EN'] = Variable<String>(descripcionEN.value);
+    }
+    if (descripcionFR.present) {
+      map['DESCRIPCION_FR'] = Variable<String>(descripcionFR.value);
+    }
+    if (descripcionDE.present) {
+      map['DESCRIPCION_DE'] = Variable<String>(descripcionDE.value);
+    }
+    if (descripcionCA.present) {
+      map['DESCRIPCION_CA'] = Variable<String>(descripcionCA.value);
+    }
+    if (descripcionGB.present) {
+      map['DESCRIPCION_GB'] = Variable<String>(descripcionGB.value);
+    }
+    if (descripcionHU.present) {
+      map['DESCRIPCION_HU'] = Variable<String>(descripcionHU.value);
+    }
+    if (descripcionIT.present) {
+      map['DESCRIPCION_IT'] = Variable<String>(descripcionIT.value);
+    }
+    if (descripcionNL.present) {
+      map['DESCRIPCION_NL'] = Variable<String>(descripcionNL.value);
+    }
+    if (descripcionPL.present) {
+      map['DESCRIPCION_PL'] = Variable<String>(descripcionPL.value);
+    }
+    if (descripcionPT.present) {
+      map['DESCRIPCION_PT'] = Variable<String>(descripcionPT.value);
+    }
+    if (descripcionRO.present) {
+      map['DESCRIPCION_RO'] = Variable<String>(descripcionRO.value);
+    }
+    if (descripcionRU.present) {
+      map['DESCRIPCION_RU'] = Variable<String>(descripcionRU.value);
+    }
+    if (descripcionCN.present) {
+      map['DESCRIPCION_CN'] = Variable<String>(descripcionCN.value);
+    }
+    if (descripcionEL.present) {
+      map['DESCRIPCION_EL'] = Variable<String>(descripcionEL.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DevolucionEstadoTableCompanion(')
+          ..write('id: $id, ')
+          ..write('descripcionES: $descripcionES, ')
+          ..write('descripcionEN: $descripcionEN, ')
+          ..write('descripcionFR: $descripcionFR, ')
+          ..write('descripcionDE: $descripcionDE, ')
+          ..write('descripcionCA: $descripcionCA, ')
+          ..write('descripcionGB: $descripcionGB, ')
+          ..write('descripcionHU: $descripcionHU, ')
+          ..write('descripcionIT: $descripcionIT, ')
+          ..write('descripcionNL: $descripcionNL, ')
+          ..write('descripcionPL: $descripcionPL, ')
+          ..write('descripcionPT: $descripcionPT, ')
+          ..write('descripcionRO: $descripcionRO, ')
+          ..write('descripcionRU: $descripcionRU, ')
+          ..write('descripcionCN: $descripcionCN, ')
+          ..write('descripcionEL: $descripcionEL, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DevolucionLineaTableTable extends DevolucionLineaTable
+    with TableInfo<$DevolucionLineaTableTable, DevolucionLineaDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DevolucionLineaTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+      'EMPRESA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _devolucionIdMeta =
+      const VerificationMeta('devolucionId');
+  @override
+  late final GeneratedColumn<String> devolucionId = GeneratedColumn<String>(
+      'DEVOLUCION_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _articuloIdMeta =
+      const VerificationMeta('articuloId');
+  @override
+  late final GeneratedColumn<String> articuloId = GeneratedColumn<String>(
+      'ARTICULO_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _articuloDescriptionMeta =
+      const VerificationMeta('articuloDescription');
+  @override
+  late final GeneratedColumn<String> articuloDescription =
+      GeneratedColumn<String>('ARTICULO_DESCRIPCION', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _cantidadDevolucionMeta =
+      const VerificationMeta('cantidadDevolucion');
+  @override
+  late final GeneratedColumn<double> cantidadDevolucion =
+      GeneratedColumn<double>('CANTIDAD_DEVOLUCION', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _cantidadRecibidaMeta =
+      const VerificationMeta('cantidadRecibida');
+  @override
+  late final GeneratedColumn<double> cantidadRecibida = GeneratedColumn<double>(
+      'CANTIDAD_RECIBIDA', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _devolucionEstadoIdMeta =
+      const VerificationMeta('devolucionEstadoId');
+  @override
+  late final GeneratedColumn<String> devolucionEstadoId =
+      GeneratedColumn<String>('DEVOLUCION_ESTADO_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _devolucionMotivoIdMeta =
+      const VerificationMeta('devolucionMotivoId');
+  @override
+  late final GeneratedColumn<String> devolucionMotivoId =
+      GeneratedColumn<String>('DEVOLUCION_MOTIVO_ID', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        empresaId,
+        devolucionId,
+        articuloId,
+        articuloDescription,
+        cantidadDevolucion,
+        cantidadRecibida,
+        devolucionEstadoId,
+        devolucionMotivoId,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'DEVOLUCIONES_LINEAS';
+  @override
+  String get actualTableName => 'DEVOLUCIONES_LINEAS';
+  @override
+  VerificationContext validateIntegrity(Insertable<DevolucionLineaDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('EMPRESA_ID')) {
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('DEVOLUCION_ID')) {
+      context.handle(
+          _devolucionIdMeta,
+          devolucionId.isAcceptableOrUnknown(
+              data['DEVOLUCION_ID']!, _devolucionIdMeta));
+    } else if (isInserting) {
+      context.missing(_devolucionIdMeta);
+    }
+    if (data.containsKey('ARTICULO_ID')) {
+      context.handle(
+          _articuloIdMeta,
+          articuloId.isAcceptableOrUnknown(
+              data['ARTICULO_ID']!, _articuloIdMeta));
+    } else if (isInserting) {
+      context.missing(_articuloIdMeta);
+    }
+    if (data.containsKey('ARTICULO_DESCRIPCION')) {
+      context.handle(
+          _articuloDescriptionMeta,
+          articuloDescription.isAcceptableOrUnknown(
+              data['ARTICULO_DESCRIPCION']!, _articuloDescriptionMeta));
+    } else if (isInserting) {
+      context.missing(_articuloDescriptionMeta);
+    }
+    if (data.containsKey('CANTIDAD_DEVOLUCION')) {
+      context.handle(
+          _cantidadDevolucionMeta,
+          cantidadDevolucion.isAcceptableOrUnknown(
+              data['CANTIDAD_DEVOLUCION']!, _cantidadDevolucionMeta));
+    }
+    if (data.containsKey('CANTIDAD_RECIBIDA')) {
+      context.handle(
+          _cantidadRecibidaMeta,
+          cantidadRecibida.isAcceptableOrUnknown(
+              data['CANTIDAD_RECIBIDA']!, _cantidadRecibidaMeta));
+    }
+    if (data.containsKey('DEVOLUCION_ESTADO_ID')) {
+      context.handle(
+          _devolucionEstadoIdMeta,
+          devolucionEstadoId.isAcceptableOrUnknown(
+              data['DEVOLUCION_ESTADO_ID']!, _devolucionEstadoIdMeta));
+    }
+    if (data.containsKey('DEVOLUCION_MOTIVO_ID')) {
+      context.handle(
+          _devolucionMotivoIdMeta,
+          devolucionMotivoId.isAcceptableOrUnknown(
+              data['DEVOLUCION_MOTIVO_ID']!, _devolucionMotivoIdMeta));
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {devolucionId, empresaId, articuloId};
+  @override
+  DevolucionLineaDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DevolucionLineaDTO(
+      empresaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      devolucionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_ID'])!,
+      articuloId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ARTICULO_ID'])!,
+      articuloDescription: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}ARTICULO_DESCRIPCION'])!,
+      cantidadDevolucion: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}CANTIDAD_DEVOLUCION']),
+      cantidadRecibida: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}CANTIDAD_RECIBIDA']),
+      devolucionMotivoId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_MOTIVO_ID']),
+      devolucionEstadoId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_ESTADO_ID']),
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $DevolucionLineaTableTable createAlias(String alias) {
+    return $DevolucionLineaTableTable(attachedDatabase, alias);
+  }
+}
+
+class DevolucionLineaTableCompanion
+    extends UpdateCompanion<DevolucionLineaDTO> {
+  final Value<String> empresaId;
+  final Value<String> devolucionId;
+  final Value<String> articuloId;
+  final Value<String> articuloDescription;
+  final Value<double?> cantidadDevolucion;
+  final Value<double?> cantidadRecibida;
+  final Value<String?> devolucionEstadoId;
+  final Value<String?> devolucionMotivoId;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DevolucionLineaTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.devolucionId = const Value.absent(),
+    this.articuloId = const Value.absent(),
+    this.articuloDescription = const Value.absent(),
+    this.cantidadDevolucion = const Value.absent(),
+    this.cantidadRecibida = const Value.absent(),
+    this.devolucionEstadoId = const Value.absent(),
+    this.devolucionMotivoId = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DevolucionLineaTableCompanion.insert({
+    required String empresaId,
+    required String devolucionId,
+    required String articuloId,
+    required String articuloDescription,
+    this.cantidadDevolucion = const Value.absent(),
+    this.cantidadRecibida = const Value.absent(),
+    this.devolucionEstadoId = const Value.absent(),
+    this.devolucionMotivoId = const Value.absent(),
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : empresaId = Value(empresaId),
+        devolucionId = Value(devolucionId),
+        articuloId = Value(articuloId),
+        articuloDescription = Value(articuloDescription),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DevolucionLineaDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? devolucionId,
+    Expression<String>? articuloId,
+    Expression<String>? articuloDescription,
+    Expression<double>? cantidadDevolucion,
+    Expression<double>? cantidadRecibida,
+    Expression<String>? devolucionEstadoId,
+    Expression<String>? devolucionMotivoId,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (devolucionId != null) 'DEVOLUCION_ID': devolucionId,
+      if (articuloId != null) 'ARTICULO_ID': articuloId,
+      if (articuloDescription != null)
+        'ARTICULO_DESCRIPCION': articuloDescription,
+      if (cantidadDevolucion != null) 'CANTIDAD_DEVOLUCION': cantidadDevolucion,
+      if (cantidadRecibida != null) 'CANTIDAD_RECIBIDA': cantidadRecibida,
+      if (devolucionEstadoId != null)
+        'DEVOLUCION_ESTADO_ID': devolucionEstadoId,
+      if (devolucionMotivoId != null)
+        'DEVOLUCION_MOTIVO_ID': devolucionMotivoId,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DevolucionLineaTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? devolucionId,
+      Value<String>? articuloId,
+      Value<String>? articuloDescription,
+      Value<double?>? cantidadDevolucion,
+      Value<double?>? cantidadRecibida,
+      Value<String?>? devolucionEstadoId,
+      Value<String?>? devolucionMotivoId,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DevolucionLineaTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      devolucionId: devolucionId ?? this.devolucionId,
+      articuloId: articuloId ?? this.articuloId,
+      articuloDescription: articuloDescription ?? this.articuloDescription,
+      cantidadDevolucion: cantidadDevolucion ?? this.cantidadDevolucion,
+      cantidadRecibida: cantidadRecibida ?? this.cantidadRecibida,
+      devolucionEstadoId: devolucionEstadoId ?? this.devolucionEstadoId,
+      devolucionMotivoId: devolucionMotivoId ?? this.devolucionMotivoId,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    }
+    if (devolucionId.present) {
+      map['DEVOLUCION_ID'] = Variable<String>(devolucionId.value);
+    }
+    if (articuloId.present) {
+      map['ARTICULO_ID'] = Variable<String>(articuloId.value);
+    }
+    if (articuloDescription.present) {
+      map['ARTICULO_DESCRIPCION'] = Variable<String>(articuloDescription.value);
+    }
+    if (cantidadDevolucion.present) {
+      map['CANTIDAD_DEVOLUCION'] = Variable<double>(cantidadDevolucion.value);
+    }
+    if (cantidadRecibida.present) {
+      map['CANTIDAD_RECIBIDA'] = Variable<double>(cantidadRecibida.value);
+    }
+    if (devolucionEstadoId.present) {
+      map['DEVOLUCION_ESTADO_ID'] = Variable<String>(devolucionEstadoId.value);
+    }
+    if (devolucionMotivoId.present) {
+      map['DEVOLUCION_MOTIVO_ID'] = Variable<String>(devolucionMotivoId.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DevolucionLineaTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('devolucionId: $devolucionId, ')
+          ..write('articuloId: $articuloId, ')
+          ..write('articuloDescription: $articuloDescription, ')
+          ..write('cantidadDevolucion: $cantidadDevolucion, ')
+          ..write('cantidadRecibida: $cantidadRecibida, ')
+          ..write('devolucionEstadoId: $devolucionEstadoId, ')
+          ..write('devolucionMotivoId: $devolucionMotivoId, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $DevolucionTableTable extends DevolucionTable
+    with TableInfo<$DevolucionTableTable, DevolucionDTO> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DevolucionTableTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _empresaIdMeta =
+      const VerificationMeta('empresaId');
+  @override
+  late final GeneratedColumn<String> empresaId = GeneratedColumn<String>(
+      'EMPRESA_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'DEVOLUCION_ID', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _fechaDevolucionMeta =
+      const VerificationMeta('fechaDevolucion');
+  @override
+  late final GeneratedColumn<DateTime> fechaDevolucion =
+      GeneratedColumn<DateTime>('FECHA_DEVOLUCION', aliasedName, false,
+          type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _clienteIdMeta =
+      const VerificationMeta('clienteId');
+  @override
+  late final GeneratedColumn<String> clienteId = GeneratedColumn<String>(
+      'CLIENTE_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _direccionIdMeta =
+      const VerificationMeta('direccionId');
+  @override
+  late final GeneratedColumn<String> direccionId = GeneratedColumn<String>(
+      'DIRECCION_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _nombreMeta = const VerificationMeta('nombre');
+  @override
+  late final GeneratedColumn<String> nombre = GeneratedColumn<String>(
+      'NOMBRE', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _direccionRecogida1Meta =
+      const VerificationMeta('direccionRecogida1');
+  @override
+  late final GeneratedColumn<String> direccionRecogida1 =
+      GeneratedColumn<String>('DIRECCION_RECOGIDA1', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _direccionRecogida2Meta =
+      const VerificationMeta('direccionRecogida2');
+  @override
+  late final GeneratedColumn<String> direccionRecogida2 =
+      GeneratedColumn<String>('DIRECCION_RECOGIDA2', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _codigoPostalMeta =
+      const VerificationMeta('codigoPostal');
+  @override
+  late final GeneratedColumn<String> codigoPostal = GeneratedColumn<String>(
+      'CODIGO_POSTAL', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _poblacionMeta =
+      const VerificationMeta('poblacion');
+  @override
+  late final GeneratedColumn<String> poblacion = GeneratedColumn<String>(
+      'POBLACION', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _paisIdMeta = const VerificationMeta('paisId');
+  @override
+  late final GeneratedColumn<String> paisId = GeneratedColumn<String>(
+      'PAIS_ID', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _almacenDestinoMeta =
+      const VerificationMeta('almacenDestino');
+  @override
+  late final GeneratedColumn<String> almacenDestino = GeneratedColumn<String>(
+      'ALMACEN_DESTINO', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _agenciaTransporteMeta =
+      const VerificationMeta('agenciaTransporte');
+  @override
+  late final GeneratedColumn<String> agenciaTransporte =
+      GeneratedColumn<String>('AGENCIA_TRANSPORTE', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _devolucionEstadoIdMeta =
+      const VerificationMeta('devolucionEstadoId');
+  @override
+  late final GeneratedColumn<String> devolucionEstadoId =
+      GeneratedColumn<String>('DEVOLUCION_ESTADO_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _kilosDevolucionMeta =
+      const VerificationMeta('kilosDevolucion');
+  @override
+  late final GeneratedColumn<double> kilosDevolucion = GeneratedColumn<double>(
+      'KILOS_DEVOLUCION', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _bultosMeta = const VerificationMeta('bultos');
+  @override
+  late final GeneratedColumn<double> bultos = GeneratedColumn<double>(
+      'BULTOS', aliasedName, false,
+      type: DriftSqlType.double, requiredDuringInsert: true);
+  static const VerificationMeta _lastUpdatedMeta =
+      const VerificationMeta('lastUpdated');
+  @override
+  late final GeneratedColumn<DateTime> lastUpdated = GeneratedColumn<DateTime>(
+      'LAST_UPDATED', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  static const VerificationMeta _deletedMeta =
+      const VerificationMeta('deleted');
+  @override
+  late final GeneratedColumn<String> deleted = GeneratedColumn<String>(
+      'DELETED', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: false,
+      defaultValue: const Constant('N'));
+  @override
+  List<GeneratedColumn> get $columns => [
+        empresaId,
+        id,
+        fechaDevolucion,
+        clienteId,
+        direccionId,
+        nombre,
+        direccionRecogida1,
+        direccionRecogida2,
+        codigoPostal,
+        poblacion,
+        paisId,
+        almacenDestino,
+        agenciaTransporte,
+        devolucionEstadoId,
+        kilosDevolucion,
+        bultos,
+        lastUpdated,
+        deleted
+      ];
+  @override
+  String get aliasedName => _alias ?? 'DEVOLUCIONES';
+  @override
+  String get actualTableName => 'DEVOLUCIONES';
+  @override
+  VerificationContext validateIntegrity(Insertable<DevolucionDTO> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('EMPRESA_ID')) {
+      context.handle(_empresaIdMeta,
+          empresaId.isAcceptableOrUnknown(data['EMPRESA_ID']!, _empresaIdMeta));
+    } else if (isInserting) {
+      context.missing(_empresaIdMeta);
+    }
+    if (data.containsKey('DEVOLUCION_ID')) {
+      context.handle(
+          _idMeta, id.isAcceptableOrUnknown(data['DEVOLUCION_ID']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('FECHA_DEVOLUCION')) {
+      context.handle(
+          _fechaDevolucionMeta,
+          fechaDevolucion.isAcceptableOrUnknown(
+              data['FECHA_DEVOLUCION']!, _fechaDevolucionMeta));
+    } else if (isInserting) {
+      context.missing(_fechaDevolucionMeta);
+    }
+    if (data.containsKey('CLIENTE_ID')) {
+      context.handle(_clienteIdMeta,
+          clienteId.isAcceptableOrUnknown(data['CLIENTE_ID']!, _clienteIdMeta));
+    }
+    if (data.containsKey('DIRECCION_ID')) {
+      context.handle(
+          _direccionIdMeta,
+          direccionId.isAcceptableOrUnknown(
+              data['DIRECCION_ID']!, _direccionIdMeta));
+    }
+    if (data.containsKey('NOMBRE')) {
+      context.handle(_nombreMeta,
+          nombre.isAcceptableOrUnknown(data['NOMBRE']!, _nombreMeta));
+    }
+    if (data.containsKey('DIRECCION_RECOGIDA1')) {
+      context.handle(
+          _direccionRecogida1Meta,
+          direccionRecogida1.isAcceptableOrUnknown(
+              data['DIRECCION_RECOGIDA1']!, _direccionRecogida1Meta));
+    }
+    if (data.containsKey('DIRECCION_RECOGIDA2')) {
+      context.handle(
+          _direccionRecogida2Meta,
+          direccionRecogida2.isAcceptableOrUnknown(
+              data['DIRECCION_RECOGIDA2']!, _direccionRecogida2Meta));
+    }
+    if (data.containsKey('CODIGO_POSTAL')) {
+      context.handle(
+          _codigoPostalMeta,
+          codigoPostal.isAcceptableOrUnknown(
+              data['CODIGO_POSTAL']!, _codigoPostalMeta));
+    }
+    if (data.containsKey('POBLACION')) {
+      context.handle(_poblacionMeta,
+          poblacion.isAcceptableOrUnknown(data['POBLACION']!, _poblacionMeta));
+    }
+    if (data.containsKey('PAIS_ID')) {
+      context.handle(_paisIdMeta,
+          paisId.isAcceptableOrUnknown(data['PAIS_ID']!, _paisIdMeta));
+    }
+    if (data.containsKey('ALMACEN_DESTINO')) {
+      context.handle(
+          _almacenDestinoMeta,
+          almacenDestino.isAcceptableOrUnknown(
+              data['ALMACEN_DESTINO']!, _almacenDestinoMeta));
+    }
+    if (data.containsKey('AGENCIA_TRANSPORTE')) {
+      context.handle(
+          _agenciaTransporteMeta,
+          agenciaTransporte.isAcceptableOrUnknown(
+              data['AGENCIA_TRANSPORTE']!, _agenciaTransporteMeta));
+    }
+    if (data.containsKey('DEVOLUCION_ESTADO_ID')) {
+      context.handle(
+          _devolucionEstadoIdMeta,
+          devolucionEstadoId.isAcceptableOrUnknown(
+              data['DEVOLUCION_ESTADO_ID']!, _devolucionEstadoIdMeta));
+    } else if (isInserting) {
+      context.missing(_devolucionEstadoIdMeta);
+    }
+    if (data.containsKey('KILOS_DEVOLUCION')) {
+      context.handle(
+          _kilosDevolucionMeta,
+          kilosDevolucion.isAcceptableOrUnknown(
+              data['KILOS_DEVOLUCION']!, _kilosDevolucionMeta));
+    } else if (isInserting) {
+      context.missing(_kilosDevolucionMeta);
+    }
+    if (data.containsKey('BULTOS')) {
+      context.handle(_bultosMeta,
+          bultos.isAcceptableOrUnknown(data['BULTOS']!, _bultosMeta));
+    } else if (isInserting) {
+      context.missing(_bultosMeta);
+    }
+    if (data.containsKey('LAST_UPDATED')) {
+      context.handle(
+          _lastUpdatedMeta,
+          lastUpdated.isAcceptableOrUnknown(
+              data['LAST_UPDATED']!, _lastUpdatedMeta));
+    } else if (isInserting) {
+      context.missing(_lastUpdatedMeta);
+    }
+    if (data.containsKey('DELETED')) {
+      context.handle(_deletedMeta,
+          deleted.isAcceptableOrUnknown(data['DELETED']!, _deletedMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id, empresaId};
+  @override
+  DevolucionDTO map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DevolucionDTO(
+      empresaId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}EMPRESA_ID'])!,
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_ID'])!,
+      fechaDevolucion: attachedDatabase.typeMapping.read(
+          DriftSqlType.dateTime, data['${effectivePrefix}FECHA_DEVOLUCION'])!,
+      clienteId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CLIENTE_ID']),
+      direccionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DIRECCION_ID']),
+      nombre: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}NOMBRE']),
+      direccionRecogida1: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DIRECCION_RECOGIDA1']),
+      direccionRecogida2: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DIRECCION_RECOGIDA2']),
+      codigoPostal: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}CODIGO_POSTAL']),
+      poblacion: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}POBLACION']),
+      paisId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}PAIS_ID']),
+      almacenDestino: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ALMACEN_DESTINO']),
+      agenciaTransporte: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}AGENCIA_TRANSPORTE']),
+      devolucionEstadoId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}DEVOLUCION_ESTADO_ID'])!,
+      kilosDevolucion: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}KILOS_DEVOLUCION'])!,
+      bultos: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}BULTOS'])!,
+      lastUpdated: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}LAST_UPDATED'])!,
+      deleted: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}DELETED'])!,
+    );
+  }
+
+  @override
+  $DevolucionTableTable createAlias(String alias) {
+    return $DevolucionTableTable(attachedDatabase, alias);
+  }
+}
+
+class DevolucionTableCompanion extends UpdateCompanion<DevolucionDTO> {
+  final Value<String> empresaId;
+  final Value<String> id;
+  final Value<DateTime> fechaDevolucion;
+  final Value<String?> clienteId;
+  final Value<String?> direccionId;
+  final Value<String?> nombre;
+  final Value<String?> direccionRecogida1;
+  final Value<String?> direccionRecogida2;
+  final Value<String?> codigoPostal;
+  final Value<String?> poblacion;
+  final Value<String?> paisId;
+  final Value<String?> almacenDestino;
+  final Value<String?> agenciaTransporte;
+  final Value<String> devolucionEstadoId;
+  final Value<double> kilosDevolucion;
+  final Value<double> bultos;
+  final Value<DateTime> lastUpdated;
+  final Value<String> deleted;
+  const DevolucionTableCompanion({
+    this.empresaId = const Value.absent(),
+    this.id = const Value.absent(),
+    this.fechaDevolucion = const Value.absent(),
+    this.clienteId = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.direccionRecogida1 = const Value.absent(),
+    this.direccionRecogida2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.almacenDestino = const Value.absent(),
+    this.agenciaTransporte = const Value.absent(),
+    this.devolucionEstadoId = const Value.absent(),
+    this.kilosDevolucion = const Value.absent(),
+    this.bultos = const Value.absent(),
+    this.lastUpdated = const Value.absent(),
+    this.deleted = const Value.absent(),
+  });
+  DevolucionTableCompanion.insert({
+    required String empresaId,
+    required String id,
+    required DateTime fechaDevolucion,
+    this.clienteId = const Value.absent(),
+    this.direccionId = const Value.absent(),
+    this.nombre = const Value.absent(),
+    this.direccionRecogida1 = const Value.absent(),
+    this.direccionRecogida2 = const Value.absent(),
+    this.codigoPostal = const Value.absent(),
+    this.poblacion = const Value.absent(),
+    this.paisId = const Value.absent(),
+    this.almacenDestino = const Value.absent(),
+    this.agenciaTransporte = const Value.absent(),
+    required String devolucionEstadoId,
+    required double kilosDevolucion,
+    required double bultos,
+    required DateTime lastUpdated,
+    this.deleted = const Value.absent(),
+  })  : empresaId = Value(empresaId),
+        id = Value(id),
+        fechaDevolucion = Value(fechaDevolucion),
+        devolucionEstadoId = Value(devolucionEstadoId),
+        kilosDevolucion = Value(kilosDevolucion),
+        bultos = Value(bultos),
+        lastUpdated = Value(lastUpdated);
+  static Insertable<DevolucionDTO> custom({
+    Expression<String>? empresaId,
+    Expression<String>? id,
+    Expression<DateTime>? fechaDevolucion,
+    Expression<String>? clienteId,
+    Expression<String>? direccionId,
+    Expression<String>? nombre,
+    Expression<String>? direccionRecogida1,
+    Expression<String>? direccionRecogida2,
+    Expression<String>? codigoPostal,
+    Expression<String>? poblacion,
+    Expression<String>? paisId,
+    Expression<String>? almacenDestino,
+    Expression<String>? agenciaTransporte,
+    Expression<String>? devolucionEstadoId,
+    Expression<double>? kilosDevolucion,
+    Expression<double>? bultos,
+    Expression<DateTime>? lastUpdated,
+    Expression<String>? deleted,
+  }) {
+    return RawValuesInsertable({
+      if (empresaId != null) 'EMPRESA_ID': empresaId,
+      if (id != null) 'DEVOLUCION_ID': id,
+      if (fechaDevolucion != null) 'FECHA_DEVOLUCION': fechaDevolucion,
+      if (clienteId != null) 'CLIENTE_ID': clienteId,
+      if (direccionId != null) 'DIRECCION_ID': direccionId,
+      if (nombre != null) 'NOMBRE': nombre,
+      if (direccionRecogida1 != null) 'DIRECCION_RECOGIDA1': direccionRecogida1,
+      if (direccionRecogida2 != null) 'DIRECCION_RECOGIDA2': direccionRecogida2,
+      if (codigoPostal != null) 'CODIGO_POSTAL': codigoPostal,
+      if (poblacion != null) 'POBLACION': poblacion,
+      if (paisId != null) 'PAIS_ID': paisId,
+      if (almacenDestino != null) 'ALMACEN_DESTINO': almacenDestino,
+      if (agenciaTransporte != null) 'AGENCIA_TRANSPORTE': agenciaTransporte,
+      if (devolucionEstadoId != null)
+        'DEVOLUCION_ESTADO_ID': devolucionEstadoId,
+      if (kilosDevolucion != null) 'KILOS_DEVOLUCION': kilosDevolucion,
+      if (bultos != null) 'BULTOS': bultos,
+      if (lastUpdated != null) 'LAST_UPDATED': lastUpdated,
+      if (deleted != null) 'DELETED': deleted,
+    });
+  }
+
+  DevolucionTableCompanion copyWith(
+      {Value<String>? empresaId,
+      Value<String>? id,
+      Value<DateTime>? fechaDevolucion,
+      Value<String?>? clienteId,
+      Value<String?>? direccionId,
+      Value<String?>? nombre,
+      Value<String?>? direccionRecogida1,
+      Value<String?>? direccionRecogida2,
+      Value<String?>? codigoPostal,
+      Value<String?>? poblacion,
+      Value<String?>? paisId,
+      Value<String?>? almacenDestino,
+      Value<String?>? agenciaTransporte,
+      Value<String>? devolucionEstadoId,
+      Value<double>? kilosDevolucion,
+      Value<double>? bultos,
+      Value<DateTime>? lastUpdated,
+      Value<String>? deleted}) {
+    return DevolucionTableCompanion(
+      empresaId: empresaId ?? this.empresaId,
+      id: id ?? this.id,
+      fechaDevolucion: fechaDevolucion ?? this.fechaDevolucion,
+      clienteId: clienteId ?? this.clienteId,
+      direccionId: direccionId ?? this.direccionId,
+      nombre: nombre ?? this.nombre,
+      direccionRecogida1: direccionRecogida1 ?? this.direccionRecogida1,
+      direccionRecogida2: direccionRecogida2 ?? this.direccionRecogida2,
+      codigoPostal: codigoPostal ?? this.codigoPostal,
+      poblacion: poblacion ?? this.poblacion,
+      paisId: paisId ?? this.paisId,
+      almacenDestino: almacenDestino ?? this.almacenDestino,
+      agenciaTransporte: agenciaTransporte ?? this.agenciaTransporte,
+      devolucionEstadoId: devolucionEstadoId ?? this.devolucionEstadoId,
+      kilosDevolucion: kilosDevolucion ?? this.kilosDevolucion,
+      bultos: bultos ?? this.bultos,
+      lastUpdated: lastUpdated ?? this.lastUpdated,
+      deleted: deleted ?? this.deleted,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (empresaId.present) {
+      map['EMPRESA_ID'] = Variable<String>(empresaId.value);
+    }
+    if (id.present) {
+      map['DEVOLUCION_ID'] = Variable<String>(id.value);
+    }
+    if (fechaDevolucion.present) {
+      map['FECHA_DEVOLUCION'] = Variable<DateTime>(fechaDevolucion.value);
+    }
+    if (clienteId.present) {
+      map['CLIENTE_ID'] = Variable<String>(clienteId.value);
+    }
+    if (direccionId.present) {
+      map['DIRECCION_ID'] = Variable<String>(direccionId.value);
+    }
+    if (nombre.present) {
+      map['NOMBRE'] = Variable<String>(nombre.value);
+    }
+    if (direccionRecogida1.present) {
+      map['DIRECCION_RECOGIDA1'] = Variable<String>(direccionRecogida1.value);
+    }
+    if (direccionRecogida2.present) {
+      map['DIRECCION_RECOGIDA2'] = Variable<String>(direccionRecogida2.value);
+    }
+    if (codigoPostal.present) {
+      map['CODIGO_POSTAL'] = Variable<String>(codigoPostal.value);
+    }
+    if (poblacion.present) {
+      map['POBLACION'] = Variable<String>(poblacion.value);
+    }
+    if (paisId.present) {
+      map['PAIS_ID'] = Variable<String>(paisId.value);
+    }
+    if (almacenDestino.present) {
+      map['ALMACEN_DESTINO'] = Variable<String>(almacenDestino.value);
+    }
+    if (agenciaTransporte.present) {
+      map['AGENCIA_TRANSPORTE'] = Variable<String>(agenciaTransporte.value);
+    }
+    if (devolucionEstadoId.present) {
+      map['DEVOLUCION_ESTADO_ID'] = Variable<String>(devolucionEstadoId.value);
+    }
+    if (kilosDevolucion.present) {
+      map['KILOS_DEVOLUCION'] = Variable<double>(kilosDevolucion.value);
+    }
+    if (bultos.present) {
+      map['BULTOS'] = Variable<double>(bultos.value);
+    }
+    if (lastUpdated.present) {
+      map['LAST_UPDATED'] = Variable<DateTime>(lastUpdated.value);
+    }
+    if (deleted.present) {
+      map['DELETED'] = Variable<String>(deleted.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DevolucionTableCompanion(')
+          ..write('empresaId: $empresaId, ')
+          ..write('id: $id, ')
+          ..write('fechaDevolucion: $fechaDevolucion, ')
+          ..write('clienteId: $clienteId, ')
+          ..write('direccionId: $direccionId, ')
+          ..write('nombre: $nombre, ')
+          ..write('direccionRecogida1: $direccionRecogida1, ')
+          ..write('direccionRecogida2: $direccionRecogida2, ')
+          ..write('codigoPostal: $codigoPostal, ')
+          ..write('poblacion: $poblacion, ')
+          ..write('paisId: $paisId, ')
+          ..write('almacenDestino: $almacenDestino, ')
+          ..write('agenciaTransporte: $agenciaTransporte, ')
+          ..write('devolucionEstadoId: $devolucionEstadoId, ')
+          ..write('kilosDevolucion: $kilosDevolucion, ')
+          ..write('bultos: $bultos, ')
+          ..write('lastUpdated: $lastUpdated, ')
+          ..write('deleted: $deleted')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$RemoteAppDatabase extends GeneratedDatabase {
   _$RemoteAppDatabase(QueryExecutor e) : super(e);
   _$RemoteAppDatabase.connect(DatabaseConnection c) : super.connect(c);
@@ -16142,6 +18642,16 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
       $PedidoAlbaranTableTable(this);
   late final $DescuentoGeneralTableTable descuentoGeneralTable =
       $DescuentoGeneralTableTable(this);
+  late final $DevolucionTipoTableTable devolucionTipoTable =
+      $DevolucionTipoTableTable(this);
+  late final $DevolucionMotivoTableTable devolucionMotivoTable =
+      $DevolucionMotivoTableTable(this);
+  late final $DevolucionEstadoTableTable devolucionEstadoTable =
+      $DevolucionEstadoTableTable(this);
+  late final $DevolucionLineaTableTable devolucionLineaTable =
+      $DevolucionLineaTableTable(this);
+  late final $DevolucionTableTable devolucionTable =
+      $DevolucionTableTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -16179,7 +18689,12 @@ abstract class _$RemoteAppDatabase extends GeneratedDatabase {
         estadisticasUltimosPreciosTable,
         visitaTable,
         pedidoAlbaranTable,
-        descuentoGeneralTable
+        descuentoGeneralTable,
+        devolucionTipoTable,
+        devolucionMotivoTable,
+        devolucionEstadoTable,
+        devolucionLineaTable,
+        devolucionTable
       ];
   @override
   DriftDatabaseOptions get options =>

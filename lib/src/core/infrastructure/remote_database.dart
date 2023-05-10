@@ -33,6 +33,11 @@ import '../../features/cliente/infrastructure/cliente_tipo_potencial_dto.dart';
 import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_estado_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_linea_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_motivo_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_tipo_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/pedido_venta/infrastructure/pedido_albaran_dto.dart';
@@ -105,6 +110,11 @@ const remoteDatabaseName = 'jbm.sqlite';
   DivisaTable,
   PedidoAlbaranTable,
   DescuentoGeneralTable,
+  DevolucionTipoTable,
+  DevolucionMotivoTable,
+  DevolucionEstadoTable,
+  DevolucionLineaTable,
+  DevolucionTable,
 ])
 class RemoteAppDatabase extends _$RemoteAppDatabase {
   final bool test;
@@ -116,7 +126,7 @@ class RemoteAppDatabase extends _$RemoteAppDatabase {
       : test = true,
         super(NativeDatabase.memory());
   @override
-  int get schemaVersion => 23;
+  int get schemaVersion => 24;
 }
 
 Future<DriftIsolate> _createDriftIsolate() async {

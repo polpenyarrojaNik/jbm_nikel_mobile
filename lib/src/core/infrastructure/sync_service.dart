@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:drift/drift.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jbm_nikel_mobile/src/core/infrastructure/local_database.dart';
+import 'package:jbm_nikel_mobile/src/features/devoluciones/infrastructure/devolucion_dto.dart';
 
 import '../../core/infrastructure/pais_dto.dart';
 import '../../core/infrastructure/subfamilia_dto.dart';
@@ -28,6 +29,8 @@ import '../../features/cliente/infrastructure/cliente_rappel_dto.dart';
 import '../../features/cliente/infrastructure/cliente_usuario_dto.dart';
 import '../../features/cliente/infrastructure/metodo_cobro_dto.dart';
 import '../../features/cliente/infrastructure/plazo_cobro_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_estado_dto.dart';
+import '../../features/devoluciones/infrastructure/devolucion_linea_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_articulos_top_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_ultimos_precios_dto.dart';
 import '../../features/estadisticas/infrastructure/estadisticas_venta_cliente_usuario_dto.dart';
@@ -138,6 +141,12 @@ class SyncService {
       await syncClientesRappels();
       await syncClientesUsuario();
       await syncVentasUsuario();
+      await syncDevoluciones();
+      await syncDevolucionesLineas();
+      await syncDevolucionesTipos();
+      await syncDevolucionesEstados();
+      await syncDevolucionesMotivos();
+
       if (isInMainThread) {
         await syncAllAuxiliares();
         await saveLastSyncDateTimeInClientes();
@@ -449,6 +458,81 @@ class SyncService {
         apiPath: 'api/v1/sync/clientes/rappels',
         tableInfo: _remoteDb.clienteRappelTable,
         fromJson: (e) => ClienteRappelDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncDevoluciones() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/devolucion',
+        tableInfo: _remoteDb.devolucionTable,
+        fromJson: (e) => DevolucionDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncDevolucionesLineas() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/devolucion/lineas',
+        tableInfo: _remoteDb.devolucionLineaTable,
+        fromJson: (e) => DevolucionLineaDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncDevolucionesEstados() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/devolucion/estados',
+        tableInfo: _remoteDb.devolucionEstadoTable,
+        fromJson: (e) => DevolucionEstadoDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncDevolucionesTipos() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/devolucion/tipos',
+        tableInfo: _remoteDb.devolucionTipoTable,
+        fromJson: (e) => DevolucionEstadoDTO.fromJson(e),
+      );
+    } on AppException catch (e) {
+      log.e(e.details);
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> syncDevolucionesMotivos() async {
+    try {
+      await _syncTable(
+        apiPath: 'api/v1/sync/devolucion/motivos',
+        tableInfo: _remoteDb.devolucionMotivoTable,
+        fromJson: (e) => DevolucionEstadoDTO.fromJson(e),
       );
     } on AppException catch (e) {
       log.e(e.details);
